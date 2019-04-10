@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d886c60a_22737440",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d395db9e_54472dc8",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 14
+      },
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca661635_313de1a8",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71888790_f11558af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca661635_313de1a8",
+      "range": {
+        "startLine": 126,
+        "startChar": 4,
+        "endLine": 126,
+        "endChar": 9
+      },
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "646e29c1_2b467463",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca8e4ef2_b2e74a4c",
+      "range": {
+        "startLine": 133,
+        "startChar": 12,
+        "endLine": 133,
+        "endChar": 18
+      },
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7ae4a2b_2e1490f6",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 8
@@ -85,6 +157,24 @@
       "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32f5459b_4b5afcbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7ae4a2b_2e1490f6",
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "628b63fd_0389a6ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4699ef1_0fdede50",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 44
+      },
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b860a80_81398868",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 8
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "af04dd26_cbac8eb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b860a80_81398868",
+      "range": {
+        "startLine": 162,
+        "startChar": 4,
+        "endLine": 162,
+        "endChar": 9
+      },
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ff24cc3_74842f41",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 8
@@ -145,6 +283,24 @@
       "writtenOn": "2019-04-10T13:42:21Z",
       "side": 1,
       "message": "you don\u0027t need to select here, do you? can you just do \"if ctx.Err() !\u003d nil {\"?",
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa1f6f89_86f1c523",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "You\u0027re right.",
+      "parentUuid": "5ff24cc3_74842f41",
       "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -174,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "9918df88_eac6cdc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcd5919a_3a63ce98",
+      "range": {
+        "startLine": 217,
+        "startChar": 55,
+        "endLine": 217,
+        "endChar": 56
+      },
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec88c8d7_249ec531",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 8
@@ -188,6 +368,24 @@
       "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50798aa9_52e8eea7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec88c8d7_249ec531",
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -238,6 +436,30 @@
     },
     {
       "key": {
+        "uuid": "7aa6deb0_cb7cf099",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ce00488_ec37c873",
+      "range": {
+        "startLine": 258,
+        "startChar": 61,
+        "endLine": 258,
+        "endChar": 67
+      },
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ad64839_d274ce6d",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 8
@@ -285,6 +507,30 @@
     },
     {
       "key": {
+        "uuid": "bfa16fcb_3a13bc92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbefb891_75ecfde1",
+      "range": {
+        "startLine": 273,
+        "startChar": 37,
+        "endLine": 273,
+        "endChar": 43
+      },
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "031db64b_a7f9a9b8",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 8
@@ -299,6 +545,24 @@
       "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea381267_6444498c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "031db64b_a7f9a9b8",
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -325,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "03326f3c_d35a2467",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72772a97_4847d6f0",
+      "range": {
+        "startLine": 320,
+        "startChar": 38,
+        "endLine": 320,
+        "endChar": 60
+      },
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e60c4bd_af5142f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 8
@@ -339,6 +627,24 @@
       "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98bcafcb_64ecfb54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e60c4bd_af5142f0",
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -359,6 +665,24 @@
     },
     {
       "key": {
+        "uuid": "aa42839b_2a1be863",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done.\nBut as I proposed in previous comment, maybe let KeyWriter/RawWriter return its underlying device so there\u0027s no chance to be out-of-sync? Also it eliminates some duplicated logic.",
+      "parentUuid": "83779408_e927b988",
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4a7f401_a2129ab0",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 8
@@ -376,6 +700,24 @@
     },
     {
       "key": {
+        "uuid": "10aef164_4a5b9b71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4a7f401_a2129ab0",
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eba3f87d_0862b945",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 8
@@ -390,6 +732,24 @@
       "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c4ddbb1_9137fca8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eba3f87d_0862b945",
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -440,6 +800,30 @@
     },
     {
       "key": {
+        "uuid": "eac5148b_bc0d5960",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9bba6b3_03e7d8b1",
+      "range": {
+        "startLine": 377,
+        "startChar": 9,
+        "endLine": 377,
+        "endChar": 29
+      },
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4d9ccf9_fd1a5149",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 8
@@ -463,6 +847,30 @@
     },
     {
       "key": {
+        "uuid": "43391208_6d20705c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4d9ccf9_fd1a5149",
+      "range": {
+        "startLine": 422,
+        "startChar": 42,
+        "endLine": 422,
+        "endChar": 52
+      },
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d2f17ce_61d2b8bb",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 8
@@ -477,6 +885,24 @@
       "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a6d412e_1f47afc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d2f17ce_61d2b8bb",
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -497,6 +923,24 @@
     },
     {
       "key": {
+        "uuid": "852b4872_00f8627c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ee01c76_18252622",
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cebdfba4_b5ec3d07",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 8
@@ -514,6 +958,24 @@
     },
     {
       "key": {
+        "uuid": "434725cd_4206beb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cebdfba4_b5ec3d07",
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d596ac1_8ddd2297",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 8
@@ -528,6 +990,24 @@
       "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13658317_a6b8f198",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d596ac1_8ddd2297",
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -554,6 +1034,30 @@
     },
     {
       "key": {
+        "uuid": "0367e6f9_75a13a4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89c48401_4100d6cb",
+      "range": {
+        "startLine": 445,
+        "startChar": 58,
+        "endLine": 445,
+        "endChar": 65
+      },
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ed26d45_cc915edf",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 8
@@ -568,6 +1072,24 @@
       "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26e2eb9b_93f70df5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ed26d45_cc915edf",
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -617,6 +1139,54 @@
     },
     {
       "key": {
+        "uuid": "672e7dce_1e140ba1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2776ddde_53df2ded",
+      "range": {
+        "startLine": 478,
+        "startChar": 68,
+        "endLine": 478,
+        "endChar": 75
+      },
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b072201_dbd65919",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "774d2bd0_98aa1a0b",
+      "range": {
+        "startLine": 478,
+        "startChar": 41,
+        "endLine": 478,
+        "endChar": 46
+      },
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55d2827f_ddc88d5c",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 8
@@ -637,6 +1207,30 @@
       "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b687dc1e_ac3b368d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55d2827f_ddc88d5c",
+      "range": {
+        "startLine": 506,
+        "startChar": 14,
+        "endLine": 506,
+        "endChar": 41
+      },
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -675,6 +1269,24 @@
     },
     {
       "key": {
+        "uuid": "67b21b53_23fdab88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "312e06c4_2be47272",
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5ed0700_1764dc07",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 8
@@ -686,6 +1298,24 @@
       "writtenOn": "2019-04-10T13:42:21Z",
       "side": 1,
       "message": "doesn\u0027t the channel return an optional error? should you check that instead and return it if non-nil?",
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a3ddd51_e8c72e58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "it shouldn\u0027t receive any more message from the channel when the line is executed. It\u0027s used to waiting for the channel to be closed. If it received any message here, it indicates an error case so I think no more error checking is needed.",
+      "parentUuid": "b5ed0700_1764dc07",
       "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -706,6 +1336,24 @@
       "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1e3b38f_b874380d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1eae6283_6db69239",
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -732,6 +1380,30 @@
     },
     {
       "key": {
+        "uuid": "14d2830c_3fa7161b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5864c77b_3ae99f0c",
+      "range": {
+        "startLine": 522,
+        "startChar": 43,
+        "endLine": 522,
+        "endChar": 52
+      },
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e662d5e2_a7f41a59",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 8
@@ -752,6 +1424,30 @@
       "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba6db7d0_bd52da70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-10T20:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e662d5e2_a7f41a59",
+      "range": {
+        "startLine": 532,
+        "startChar": 44,
+        "endLine": 532,
+        "endChar": 62
+      },
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
