@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9f693069_4b5a8f72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/memtester/memtester.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-10T04:36:39Z",
+      "side": 1,
+      "message": "hmm, i think that int64 may be more common in go for bytes; see e.g. https://golang.org/pkg/os/#FileInfo. i also tend to defer to https://google.github.io/styleguide/cppguide.html#Integer_Types here (even though it\u0027s c++), which says only to use unsigned for bitfields, and not to use it to prevent a number from being negative.",
+      "parentUuid": "ca74a997_bd549c0f",
+      "range": {
+        "startLine": 21,
+        "startChar": 36,
+        "endLine": 21,
+        "endChar": 41
+      },
+      "revId": "38d6b2ac4cda900bf128f50adfeade76d8f6d9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9007d308_8de365a6",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/memtester/memtester.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "dcbc6a89_1032ef81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/memtester/memtester.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-10T04:36:39Z",
+      "side": 1,
+      "message": "sure, made this return an error",
+      "parentUuid": "9007d308_8de365a6",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 2
+      },
+      "revId": "38d6b2ac4cda900bf128f50adfeade76d8f6d9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e0acf94_afbeee12",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/memtester_fast.go",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2019-04-09T09:59:13Z",
       "side": 1,
       "message": "I think this is not the correct ML...? Do we want to own this...? (Sorry, overlooked in the last iteration).",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 28
+      },
+      "revId": "38d6b2ac4cda900bf128f50adfeade76d8f6d9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1706a31e_fe280d54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/memtester_fast.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-10T04:36:39Z",
+      "side": 1,
+      "message": "hmm. opal, do you have suggestions for other owners? should this fall under the power team?",
+      "parentUuid": "5e0acf94_afbeee12",
       "range": {
         "startLine": 21,
         "startChar": 3,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "6009e42e_a211382c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/memtester_full.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-10T04:36:39Z",
+      "side": 1,
+      "message": "whoops, thanks. i forgot to update this.",
+      "parentUuid": "d3ff587a_b8d96fb7",
+      "range": {
+        "startLine": 20,
+        "startChar": 12,
+        "endLine": 20,
+        "endChar": 58
+      },
+      "revId": "38d6b2ac4cda900bf128f50adfeade76d8f6d9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f2a61479_508c1bbc",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/memtester_full.go",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2019-04-09T18:19:05Z",
       "side": 1,
       "message": "FYI: it took about 5-10 minutes per 1 GB of memory.",
+      "range": {
+        "startLine": 28,
+        "startChar": 15,
+        "endLine": 28,
+        "endChar": 44
+      },
+      "revId": "38d6b2ac4cda900bf128f50adfeade76d8f6d9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12141f8c_43b626ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/memtester_full.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-10T04:36:39Z",
+      "side": 1,
+      "message": "yeah, that matches what i\u0027m seeing. i\u0027m more concerned about the later version of this test that will do 100 iterations. :-)",
+      "parentUuid": "f2a61479_508c1bbc",
       "range": {
         "startLine": 28,
         "startChar": 15,
