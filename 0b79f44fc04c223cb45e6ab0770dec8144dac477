@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "df3c1cd7_d1ff2ec4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-04-10T14:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc6246d_4ae4cfc3",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 2
+      },
+      "revId": "0b79f44fc04c223cb45e6ab0770dec8144dac477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d2bb45f_4bae4fe7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d08f99af_587dfb0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-04-10T14:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d2bb45f_4bae4fe7",
+      "range": {
+        "startLine": 185,
+        "startChar": 25,
+        "endLine": 185,
+        "endChar": 34
+      },
+      "revId": "0b79f44fc04c223cb45e6ab0770dec8144dac477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a7dbd4d_1aeb3ff6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
         "patchSetId": 6
@@ -68,6 +116,30 @@
       "revId": "0b79f44fc04c223cb45e6ab0770dec8144dac477",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36d99970_066a813c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-04-10T14:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a7dbd4d_1aeb3ff6",
+      "range": {
+        "startLine": 189,
+        "startChar": 35,
+        "endLine": 189,
+        "endChar": 55
+      },
+      "revId": "0b79f44fc04c223cb45e6ab0770dec8144dac477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
