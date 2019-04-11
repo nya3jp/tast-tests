@@ -80,7 +80,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"bluetoothd", "bluetooth", "bluetooth", restrictCaps | noNewPrivs},
 		{"debugd", "root", "root", mntNS},
 		{"cras", "cras", "cras", mntNS | restrictCaps | noNewPrivs},
-		{"tcsd", "tss", "root", restrictCaps},
+		{"tcsd", "tss", "tss", restrictCaps},
 		{"cromo", "cromo", "cromo", 0},
 		{"wimax-manager", "root", "root", 0},
 		{"mtpd", "mtp", "mtp", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
@@ -122,6 +122,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"imageloader", "imageloaderd", "imageloaderd", mntNSNoPivotRoot | restrictCaps | noNewPrivs | seccomp},
 		{"arc-networkd", "root", "root", noNewPrivs},
 		{"arc-networkd", "arc-networkd", "arc-networkd", restrictCaps},
+		{"run_oci", "root", "root", 0}, // used to run other processes
 
 		// These processes run as root in the ARC container.
 		{"app_process", "android-root", "android-root", pidNS | mntNS},
@@ -215,6 +216,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		truncateProcName("kthreadd"):           {}, // kernel processes
 		truncateProcName("local_test_runner"):  {}, // Tast-related processes
 		truncateProcName("periodic_scheduler"): {}, // runs cron scripts
+		truncateProcName("arc-setup"):          {}, // runs patchoat and other Android programs
 	}
 
 	baselineMap := make(map[string][]*procReqs, len(baseline))
