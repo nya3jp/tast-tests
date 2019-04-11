@@ -20,6 +20,7 @@ type KeyboardEventWriter struct {
 	rw   *RawEventWriter
 	virt *os.File // if non-nil, used to hold a virtual device open
 	fast bool     // if true, do not sleep after type; useful for unit tests
+	dev  string   // path to underlying device in /dev/input
 }
 
 var nextVirtKbdNum = 1 // appended to virtual keyboard device name
@@ -48,7 +49,7 @@ func Keyboard(ctx context.Context) (*KeyboardEventWriter, error) {
 				if err != nil {
 					return nil, err
 				}
-				return &KeyboardEventWriter{rw: rw}, nil
+				return &KeyboardEventWriter{rw: rw, dev: info.path}, nil
 			}
 		}
 	}
@@ -66,14 +67,12 @@ func VirtualKeyboard(ctx context.Context) (*KeyboardEventWriter, error) {
 	nextVirtKbdNum++
 	testing.ContextLogf(ctx, "Creating virtual keyboard device %q", name)
 
-	var dev string // device node in /dev/input
-	var err error
-
 	// These values are copied from the "AT Translated Set 2 keyboard" device on an amd64-generic VM.
 	// The one exception is the bus, which we hardcode as USB, as 0x11 (BUS_I8042) doesn't work on some hardware.
 	// See https://crrev.com/c/1407138 for more discussion.
 	const usbBus = 0x3 // BUS_USB from input.h
-	if dev, kw.virt, err = createVirtual(name, devID{usbBus, 0x1, 0x1, 0xab41}, 0, 0x120013,
+	var err error
+	if kw.dev, kw.virt, err = createVirtual(name, devID{usbBus, 0x1, 0x1, 0xab41}, 0, 0x120013,
 		map[EventType]*big.Int{
 			EV_KEY: makeBigInt([]uint64{0x402000000, 0x3803078f800d001, 0xfeffffdfffefffff, 0xfffffffffffffffe}),
 			EV_MSC: makeBigInt([]uint64{0x10}),
@@ -90,9 +89,9 @@ func VirtualKeyboard(ctx context.Context) (*KeyboardEventWriter, error) {
 	case <-ctx.Done():
 	}
 
-	testing.ContextLog(ctx, "Using virtual keyboard device ", dev)
+	testing.ContextLog(ctx, "Using virtual keyboard device ", kw.dev)
 
-	if kw.rw, err = Device(ctx, dev); err != nil {
+	if kw.rw, err = Device(ctx, kw.dev); err != nil {
 		kw.Close()
 		return nil, err
 	}
@@ -113,6 +112,10 @@ func (kw *KeyboardEventWriter) Close() error {
 	}
 	return firstErr
 }
+
+// Device returns the path of the underlying device, e.g. "/dev/input/event3".
+// This can be useful if the keyboard also needs to be monitored by another process, e.g. evtest.
+func (kw *KeyboardEventWriter) Device() string { return kw.dev }
 
 // sendKey writes a EV_KEY event containing the specified code and value, followed by a EV_SYN event.
 // If firstErr points at a non-nil error, no events are written.
