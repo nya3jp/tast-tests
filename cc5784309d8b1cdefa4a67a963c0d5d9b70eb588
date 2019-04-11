@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "df65623a_d52583db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mount_obb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-11T07:44:13Z",
+      "side": 1,
+      "message": "skipping 0644 and better error msgs incl. stack trace.\ninlining this to below makes the code a bit more complex.",
+      "parentUuid": "a90325f3_dc8b3139",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 11
+      },
+      "revId": "cc5784309d8b1cdefa4a67a963c0d5d9b70eb588",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d4ec04f_b036c449",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/mount_obb.go",
         "patchSetId": 1
@@ -56,6 +80,24 @@
       "revId": "cc5784309d8b1cdefa4a67a963c0d5d9b70eb588",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ae743ec_42d595fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mount_obb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-11T07:44:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d4ec04f_b036c449",
+      "revId": "cc5784309d8b1cdefa4a67a963c0d5d9b70eb588",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +124,30 @@
     },
     {
       "key": {
+        "uuid": "8a48f115_bb00c850",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mount_obb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-11T07:44:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce06a69d_6458b887",
+      "range": {
+        "startLine": 152,
+        "startChar": 17,
+        "endLine": 152,
+        "endChar": 28
+      },
+      "revId": "cc5784309d8b1cdefa4a67a963c0d5d9b70eb588",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa80bb3e_5b577cdf",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/mount_obb.go",
         "patchSetId": 1
@@ -105,6 +171,30 @@
     },
     {
       "key": {
+        "uuid": "c4de37d0_3b30da2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mount_obb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-11T07:44:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa80bb3e_5b577cdf",
+      "range": {
+        "startLine": 162,
+        "startChar": 2,
+        "endLine": 174,
+        "endChar": 4
+      },
+      "revId": "cc5784309d8b1cdefa4a67a963c0d5d9b70eb588",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3176d876_872881f1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/mount_obb.go",
         "patchSetId": 1
@@ -116,6 +206,30 @@
       "writtenOn": "2019-04-11T07:07:26Z",
       "side": 1,
       "message": "huge nit: create",
+      "range": {
+        "startLine": 185,
+        "startChar": 22,
+        "endLine": 185,
+        "endChar": 27
+      },
+      "revId": "cc5784309d8b1cdefa4a67a963c0d5d9b70eb588",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "646ef94d_072b910e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mount_obb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-11T07:44:13Z",
+      "side": 1,
+      "message": "Good catch. This is one of the most famous typo in programming :-P",
+      "parentUuid": "3176d876_872881f1",
       "range": {
         "startLine": 185,
         "startChar": 22,
@@ -148,6 +262,30 @@
       "revId": "cc5784309d8b1cdefa4a67a963c0d5d9b70eb588",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbc00a0b_4f250772",
+        "filename": "src/chromiumos/tast/local/sysutil/mountinfo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-11T07:44:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb950d43_4f58dc8c",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 54
+      },
+      "revId": "cc5784309d8b1cdefa4a67a963c0d5d9b70eb588",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
