@@ -149,6 +149,13 @@ func ARCEnabled() option {
 	return func(c *Chrome) { c.arcMode = arcEnabled }
 }
 
+// RestrictARCCPU returns an option that can be passed to New which controls whether
+// to let Chrome use CGroups to limit the CPU time of ARC when in the background.
+// Most ARC-related tests should not pass this option.
+func RestrictARCCPU() option {
+	return func(c *Chrome) { c.restrictARCCPU = true }
+}
+
 // ExtraArgs returns an option that can be passed to New to append additional arguments to Chrome's command line.
 func ExtraArgs(args ...string) option {
 	return func(c *Chrome) { c.extraArgs = append(c.extraArgs, args...) }
@@ -174,6 +181,7 @@ type Chrome struct {
 	keepCryptohome     bool
 	loginMode          loginMode
 	arcMode            arcMode
+	restrictARCCPU     bool // a flag to control cpu restrictions on ARC
 	extraArgs          []string
 
 	extDirs     []string // directories containing all unpacked extensions to load
@@ -462,6 +470,11 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 			"--disable-arc-opt-in-verification",
 			// Always start ARC to avoid unnecessarily stopping mini containers.
 			"--arc-start-mode=always-start-with-no-play-store")
+		if !c.restrictARCCPU {
+			args = append(args,
+				// Disable CPU restrictions to let tests run faster
+				"--disable-arc-cpu-restriction")
+		}
 	}
 	args = append(args, c.extraArgs...)
 	envVars := []string{
