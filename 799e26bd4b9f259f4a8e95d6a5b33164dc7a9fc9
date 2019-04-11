@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01f568a0_29729a49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-11T14:48:44Z",
+      "side": 1,
+      "message": "optional: how about printing |err| too?",
+      "revId": "799e26bd4b9f259f4a8e95d6a5b33164dc7a9fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c717149_58b59beb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-11T14:48:44Z",
+      "side": 1,
+      "message": "err should be checked? Ditto for below. (I know it\u0027s not regression, though).",
+      "revId": "799e26bd4b9f259f4a8e95d6a5b33164dc7a9fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9af5ebf9_62cdd9dc",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-11T14:48:44Z",
+      "side": 1,
+      "message": "may want to return an error on timeout?",
+      "revId": "799e26bd4b9f259f4a8e95d6a5b33164dc7a9fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
