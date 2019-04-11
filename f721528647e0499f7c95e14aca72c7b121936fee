@@ -49,6 +49,143 @@
     },
     {
       "key": {
+        "uuid": "f503a2ff_79f6f39b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_pressure_preallocator.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-11T00:48:50Z",
+      "side": 1,
+      "message": "nit: uglily",
+      "range": {
+        "startLine": 36,
+        "startChar": 38,
+        "endLine": 36,
+        "endChar": 44
+      },
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a63389b_f67d8baf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-11T00:48:50Z",
+      "side": 1,
+      "message": "nit: mimics",
+      "range": {
+        "startLine": 291,
+        "startChar": 51,
+        "endLine": 291,
+        "endChar": 58
+      },
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ffc6278_3c5b2741",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-11T00:48:50Z",
+      "side": 1,
+      "message": "what are the units? i\u0027d recommend naming the return values so this is clear to callers.",
+      "range": {
+        "startLine": 293,
+        "startChar": 22,
+        "endLine": 293,
+        "endChar": 28
+      },
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99e91b03_85237aa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-11T00:48:50Z",
+      "side": 1,
+      "message": "nit: delete extra blank line",
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff3f41da_28dcf13b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-11T00:48:50Z",
+      "side": 1,
+      "message": "don\u0027t need to test this; it\u0027s already guaranteed by regexp",
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a0eed40_a20a7f59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-11T00:48:50Z",
+      "side": 1,
+      "message": "don\u0027t need to test this; it\u0027s already guaranteed by regexp",
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4051b10_16c5fa9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-11T00:48:50Z",
+      "side": 1,
+      "message": "any reason not to use bytes throughout? that seems less likely to cause unit bugs in the future.",
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b43f01c2_d847a039",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 4
@@ -131,6 +268,30 @@
       "side": 1,
       "message": "\"Once this test process dies\" yes, but one problem is that Tast runs multiple test sequentially in the same process, so we may affect later tests.  I proposed something similar earlier on, but the Tast maintainers (Dan) didn\u0027t like it.  However, I did not suggest using mmap directly.\n\nIn any case, at this point I am pretty happy with the auxiliary process, even if it\u0027s not the best option.",
       "parentUuid": "9ad89e4e_bac16f44",
+      "range": {
+        "startLine": 911,
+        "startChar": 0,
+        "endLine": 911,
+        "endChar": 69
+      },
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccda479e_94be6875",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-11T00:48:50Z",
+      "side": 1,
+      "message": "yes, i think that a separate process is preferable based on the current design where all tests are running in the same process.",
+      "parentUuid": "dbd7751b_03cf9db9",
       "range": {
         "startLine": 911,
         "startChar": 0,
