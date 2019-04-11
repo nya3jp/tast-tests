@@ -86,7 +86,7 @@ func readAllEvents(r io.Reader) ([]string, error) {
 func TestEventWriterSuccess(t *testing.T) {
 	b := testBuffer{}
 	now := time.Unix(1, 0)
-	kw := KeyboardEventWriter{&RawEventWriter{&b, func() time.Time { return now }}, nil, true}
+	kw := KeyboardEventWriter{rw: &RawEventWriter{&b, func() time.Time { return now }}, fast: true}
 
 	if err := kw.rw.Event(EV_KEY, KEY_A, 1); err != nil {
 		t.Error("Writing key down failed: ", err)
@@ -125,7 +125,7 @@ func TestEventWriterWriteError(t *testing.T) {
 	// Create a buffer that always returns an error on write.
 	b := testBuffer{}
 	b.err = errors.New("intentional error")
-	kw := KeyboardEventWriter{&RawEventWriter{&b, time.Now}, nil, true}
+	kw := KeyboardEventWriter{rw: &RawEventWriter{&b, time.Now}, fast: true}
 	defer kw.Close()
 
 	if err := kw.rw.Event(EV_KEY, KEY_A, 1); err == nil {
@@ -147,7 +147,7 @@ func TestEventWriterOpenError(t *testing.T) {
 func TestEventWriterType(t *testing.T) {
 	b := testBuffer{}
 	now := time.Unix(5, 0)
-	kw := KeyboardEventWriter{&RawEventWriter{&b, func() time.Time { return now }}, nil, true}
+	kw := KeyboardEventWriter{rw: &RawEventWriter{&b, func() time.Time { return now }}, fast: true}
 
 	const str = "AHa!"
 	if err := kw.Type(context.Background(), str); err != nil {
@@ -183,7 +183,7 @@ func TestEventWriterType(t *testing.T) {
 func TestEventWriterAccel(t *testing.T) {
 	b := testBuffer{}
 	now := time.Unix(5, 0)
-	kw := KeyboardEventWriter{&RawEventWriter{&b, func() time.Time { return now }}, nil, true}
+	kw := KeyboardEventWriter{rw: &RawEventWriter{&b, func() time.Time { return now }}, fast: true}
 
 	const accel = "Ctrl+Alt+T"
 	if err := kw.Accel(context.Background(), accel); err != nil {
