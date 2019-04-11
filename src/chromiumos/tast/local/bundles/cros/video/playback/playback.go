@@ -251,10 +251,8 @@ func savePerfResults(ctx context.Context, perfData collectedPerfData, videoDesc,
 // measureCPUUsage obtains CPU usage percentage.
 func measureCPUUsage(ctx context.Context, conn *chrome.Conn) (map[metricDesc]metricValue, error) {
 	testing.ContextLogf(ctx, "Sleeping %v to wait for CPU usage to stabilize", stabilizationDuration.Round(time.Second))
-	select {
-	case <-ctx.Done():
-		return nil, errors.Wrap(ctx.Err(), "failed waiting for CPU usage to stabilize")
-	case <-time.After(stabilizationDuration):
+	if err := testing.Sleep(ctx, stabilizationDuration); err != nil {
+		return nil, errors.Wrap(err, "failed waiting for CPU usage to stabilize")
 	}
 
 	testing.ContextLogf(ctx, "Sleeping %v to measure CPU usage while playing video", measurementDuration.Round(time.Second))

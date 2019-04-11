@@ -28,11 +28,9 @@ func init() {
 }
 
 func Touch(ctx context.Context, s *testing.State) {
-	sleep := func(ctx context.Context, t time.Duration) {
-		select {
-		case <-time.After(t):
-		case <-ctx.Done():
-			s.Fatal("Timeout reached: ", ctx.Err())
+	sleep := func(t time.Duration) {
+		if err := testing.Sleep(ctx, t); err != nil {
+			s.Fatal("Timeout reached: ", err)
 		}
 	}
 
@@ -101,7 +99,7 @@ func Touch(ctx context.Context, s *testing.State) {
 		// Values must be in "touchscreen coordinates", not pixel coordinates.
 		stw.Move(input.TouchCoord(centerX+float64(i)*50.0), input.TouchCoord(centerY+float64(i)*50.0))
 		stw.End()
-		sleep(ctx, 100*time.Millisecond)
+		sleep(100 * time.Millisecond)
 	}
 
 	// Draw a circle:
@@ -124,7 +122,7 @@ func Touch(ctx context.Context, s *testing.State) {
 		if err := stw.Move(input.TouchCoord(centerX+x), input.TouchCoord(centerY+y)); err != nil {
 			s.Fatal("Failed to move the touch event: ", err)
 		}
-		sleep(ctx, 15*time.Millisecond)
+		sleep(15 * time.Millisecond)
 	}
 	// And finally "end" (lift the finger) the line.
 	if err := stw.End(); err != nil {
@@ -180,7 +178,7 @@ func Touch(ctx context.Context, s *testing.State) {
 		ts0.SetPos(input.TouchCoord(centerX-deltaX), input.TouchCoord(centerY-deltaY))
 		ts1.SetPos(input.TouchCoord(centerX+deltaX), input.TouchCoord(centerY+deltaY))
 		mtw.Send()
-		sleep(ctx, 15*time.Millisecond)
+		sleep(15 * time.Millisecond)
 	}
 
 	// Zoom in
@@ -191,7 +189,7 @@ func Touch(ctx context.Context, s *testing.State) {
 		ts0.SetPos(input.TouchCoord(centerX-deltaX), input.TouchCoord(centerY-deltaY))
 		ts1.SetPos(input.TouchCoord(centerX+deltaX), input.TouchCoord(centerY+deltaY))
 		mtw.Send()
-		sleep(ctx, 15*time.Millisecond)
+		sleep(15 * time.Millisecond)
 	}
 	mtw.End()
 }

@@ -164,10 +164,8 @@ func waitForCryptohomeService(ctx context.Context, log func(string)) error {
 	if uptime < minUptime {
 		d := minUptime - uptime
 		log(fmt.Sprintf("Waiting %v for cryptohomed to stabilize", d.Round(time.Millisecond)))
-		select {
-		case <-time.After(d):
-		case <-ctx.Done():
-			return ctx.Err()
+		if err := testing.Sleep(ctx, d); err != nil {
+			return err
 		}
 	}
 

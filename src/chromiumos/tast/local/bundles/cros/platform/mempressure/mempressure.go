@@ -368,20 +368,25 @@ func googleLogIn(ctx context.Context, cr *chrome.Chrome) error {
 	if err := focusElement(ctx, loginTab, emailSelector); err != nil {
 		return errors.Wrap(err, "cannot focus on email entry field")
 	}
-	lightSleep(ctx, 5*time.Second)
+	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+		return err
+	}
 	// Enter email.
-	if err = emulateTyping(ctx, cr, loginTab, "wpr.memory.pressure.test@gmail.com"); err != nil {
+	if err := emulateTyping(ctx, cr, loginTab, "wpr.memory.pressure.test@gmail.com"); err != nil {
 		return errors.Wrap(err, "cannot enter login name")
 	}
 	testing.ContextLog(ctx, "Email entered")
-	lightSleep(ctx, 1*time.Second)
-	if err = emulateTyping(ctx, cr, loginTab, "\n"); err != nil {
+	if err := testing.Sleep(ctx, 1*time.Second); err != nil {
+		return err
+	}
+	if err := emulateTyping(ctx, cr, loginTab, "\n"); err != nil {
 		return errors.Wrap(err, "cannot enter login name")
 	}
 	const passwordSelector = "input[type=password]"
 	// TODO: need to figure out why waitForElement below is not sufficient
 	// to properly delay further input.
-	lightSleep(ctx, 5*time.Second)
+	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+	}
 	// Wait for password prompt.
 	if err := waitForElement(ctx, loginTab, passwordSelector); err != nil {
 		return errors.Wrap(err, "password field not found")
@@ -391,17 +396,21 @@ func googleLogIn(ctx context.Context, cr *chrome.Chrome) error {
 		return errors.Wrap(err, "cannot focus on password field")
 	}
 	// Enter password.
-	if err = emulateTyping(ctx, cr, loginTab, "google.memory.chrome"); err != nil {
+	if err := emulateTyping(ctx, cr, loginTab, "google.memory.chrome"); err != nil {
 		return errors.Wrap(err, "cannot enter password")
 	}
 	testing.ContextLog(ctx, "Password entered")
 	// TODO: figure out if and why this wait is needed.
-	lightSleep(ctx, 5*time.Second)
-	if err = emulateTyping(ctx, cr, loginTab, "\n"); err != nil {
+	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+		return err
+	}
+	if err := emulateTyping(ctx, cr, loginTab, "\n"); err != nil {
 		return errors.Wrap(err, "cannot enter 'enter'")
 	}
 	// TODO: figure out if and why this wait is needed.
-	lightSleep(ctx, 10*time.Second)
+	if err := testing.Sleep(ctx, 10*time.Second); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -420,21 +429,17 @@ func wiggleTab(ctx context.Context, r *renderer) error {
 		if err := r.conn.Exec(ctx, scrollDownCode); err != nil {
 			return errors.Wrap(err, "scroll down failed")
 		}
-		lightSleep(ctx, scrollDelay)
+		if err := testing.Sleep(ctx, scrollDelay); err != nil {
+			return err
+		}
 	}
 	if err := r.conn.Exec(ctx, scrollUpCode); err != nil {
 		return errors.Wrap(err, "scroll up failed")
 	}
-	lightSleep(ctx, scrollDelay)
-	return nil
-}
-
-// lightSleep pauses execution for time span t, or less if a timeout intervenes.
-func lightSleep(ctx context.Context, t time.Duration) {
-	select {
-	case <-time.After(t):
-	case <-ctx.Done():
+	if err := testing.Sleep(ctx, scrollDelay); err != nil {
+		return err
 	}
+	return nil
 }
 
 // rendererSet maintains a set of renderers and tab IDs in the order in which
@@ -662,7 +667,9 @@ func cycleTabs(ctx context.Context, cr *chrome.Chrome, tabIDs []int, rset *rende
 				return times, errors.Wrapf(err, "cannot wiggle tab %d", id)
 			}
 		} else {
-			lightSleep(ctx, pause)
+			if err := testing.Sleep(ctx, pause); err != nil {
+				return times, err
+			}
 		}
 	}
 	return times, nil
@@ -931,11 +938,15 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		if p.RecordPageSet {
 			// When recording, add extra time in case the quiesce
 			// test had a false positive.
-			lightSleep(ctx, 10*time.Second)
+			if err := testing.Sleep(ctx, 10*time.Second); err != nil {
+				s.Fatal("Timed out: ", err)
+			}
 		}
 	}
 	// Wait a bit so we will notice any additional tab discards.
-	lightSleep(ctx, 10*time.Second)
+	if err := testing.Sleep(ctx, 10*time.Second); err != nil {
+		s.Fatal("Timed out: ", err)
+	}
 
 	// Output metrics.
 	openedTabsMetric := perf.Metric{
@@ -987,7 +998,9 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	// Phase 2: quiesce.
 	// -----------------
 	// Wait a bit to help the system stabilize.
-	lightSleep(ctx, 10*time.Second)
+	if err := testing.Sleep(ctx, 10*time.Second); err != nil {
+		s.Fatal("Timed out: ", err)
+	}
 	fullMeter.Reset()
 	// Measure tab switching under pressure.
 	if err := runTabSwitches(ctx, cr, rset, workingTabIDs, "heavy", tabSwitchRepeatCount); err != nil {

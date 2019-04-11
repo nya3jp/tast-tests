@@ -56,18 +56,18 @@ func logCmd(ctx context.Context, outfile, cmdStr string, args ...string) {
 	}
 	defer file.Close()
 	for {
-		select {
-		case <-ctx.Done():
-		case <-time.After(5 * time.Second):
-			fmt.Fprintf(file, "%s\n", time.Now())
+		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+			return
+		}
 
-			cmd := testexec.CommandContext(ctx, cmdStr, args...)
-			cmd.Stdout = file
-			cmd.Stderr = file
-			if err := cmd.Run(); err != nil {
-				testing.ContextLogf(ctx, "Command %s failed: %v", cmdStr, err)
-				return
-			}
+		fmt.Fprintf(file, "%s\n", time.Now())
+
+		cmd := testexec.CommandContext(ctx, cmdStr, args...)
+		cmd.Stdout = file
+		cmd.Stderr = file
+		if err := cmd.Run(); err != nil {
+			testing.ContextLogf(ctx, "Command %s failed: %v", cmdStr, err)
+			return
 		}
 	}
 }

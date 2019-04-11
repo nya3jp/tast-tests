@@ -209,10 +209,8 @@ func Memd(ctx context.Context, s *testing.State) {
 	// filling the ring buffer.  The wait must be longer than
 	// SLOW_POLL_PERIOD_DURATION in memd/src/main.rs.
 	s.Log("Waiting for memd to enter fast-poll mode")
-	select {
-	case <-time.After(3 * time.Second):
-	case <-ctx.Done():
-		s.Fatal("Failed waiting for memd: ", ctx.Err())
+	if err := testing.Sleep(ctx, 3*time.Second); err != nil {
+		s.Fatal("Failed waiting for memd: ", err)
 	}
 
 	// Send a fake tab-discard notification.
