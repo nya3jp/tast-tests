@@ -80,7 +80,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"bluetoothd", "bluetooth", "bluetooth", restrictCaps | noNewPrivs},
 		{"debugd", "root", "root", mntNS},
 		{"cras", "cras", "cras", mntNS | restrictCaps | noNewPrivs},
-		{"tcsd", "tss", "root", restrictCaps},
+		{"tcsd", "tss", "tss", restrictCaps},
 		{"cromo", "cromo", "cromo", 0},
 		{"wimax-manager", "root", "root", 0},
 		{"mtpd", "mtp", "mtp", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
@@ -188,6 +188,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		"python3.5",
 		"python3.6",
 		"python3.7",
+		"run_oci", // used to run other processes
 		"sh",
 		"minijail0", // just launches other daemons; also runs as root to drop privs
 		"minijail-init",
@@ -215,6 +216,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		truncateProcName("kthreadd"):           {}, // kernel processes
 		truncateProcName("local_test_runner"):  {}, // Tast-related processes
 		truncateProcName("periodic_scheduler"): {}, // runs cron scripts
+		truncateProcName("arc-setup"):          {}, // runs patchoat and other Android programs
 	}
 
 	baselineMap := make(map[string][]*procReqs, len(baseline))
