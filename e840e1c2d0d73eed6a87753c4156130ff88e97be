@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5de2c7c9_fd51dd76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-11T07:01:36Z",
+      "side": 1,
+      "message": "nit: this type should probably be exported now that it\u0027s passed to an exported function, i.e. rename to StartProcFunc",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 18
+      },
+      "revId": "e840e1c2d0d73eed6a87753c4156130ff88e97be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
