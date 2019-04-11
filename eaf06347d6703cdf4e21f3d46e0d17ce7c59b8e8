@@ -16,6 +16,24 @@
       "revId": "eaf06347d6703cdf4e21f3d46e0d17ce7c59b8e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3caa56e_f7d78ba1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2019-04-11T22:05:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "896d1e70_a7b1f733",
+      "revId": "eaf06347d6703cdf4e21f3d46e0d17ce7c59b8e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
