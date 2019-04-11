@@ -79,14 +79,16 @@ func CoreScheduler(ctx context.Context, s *testing.State) {
 	}{
 		{debugd.Performance, false},
 		{debugd.Conservative, supportsHT},
-		{debugd.Performance, false},
-		{debugd.Performance, false},
 		{debugd.Conservative, supportsHT},
-		{debugd.Conservative, supportsHT},
-		{debugd.Performance, false},
 		{debugd.Performance, false},
 	} {
 		if err := testScheduler(tc.sched, tc.expectOfflineCPUs); err != nil {
+			s.Errorf("Case #%d using %s scheduler failed: %v",
+				i, string(tc.sched), err)
+		}
+		select {
+		case <-time.After(time.Second):
+		case <-ctx.Done():
 			s.Errorf("Case #%d using %s scheduler failed: %v",
 				i, string(tc.sched), err)
 		}
