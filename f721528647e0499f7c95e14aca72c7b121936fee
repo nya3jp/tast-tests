@@ -325,6 +325,30 @@
       "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e49b40b0_064dcc50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-11T02:42:23Z",
+      "side": 1,
+      "message": "my concern wasn\u0027t about the defer not running; it was around not being sure whether the process size (for the purposes of tests running after this one) actually shrinks back down after syscall.Munmap is called. if it does, then mmap seems simpler to me.",
+      "parentUuid": "7c901bb5_871815db",
+      "range": {
+        "startLine": 911,
+        "startChar": 0,
+        "endLine": 911,
+        "endChar": 69
+      },
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
