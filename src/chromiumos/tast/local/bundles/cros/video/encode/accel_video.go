@@ -214,10 +214,8 @@ func runBinaryTestWithCPUMeasurement(ctx context.Context, exec string, args []st
 	}
 
 	testing.ContextLogf(shortCtx, "Sleeping %v to wait for CPU usage to stabilize", stabilize.Round(time.Second))
-	select {
-	case <-shortCtx.Done():
+	if err := testing.Sleep(shortCtx, stabilize); err != nil {
 		return errors.Wrap(err, "failed waiting for CPU usage to stabilize")
-	case <-time.After(stabilize):
 	}
 
 	cpuUsage, err := cpu.MeasureUsage(shortCtx, measure)

@@ -33,9 +33,7 @@ func ChromeCrashNotLoggedIn(ctx context.Context, s *testing.State) {
 	// when this test sends SIGSEGV to Chrome soon after it starts: https://crbug.com/906690
 	const delay = 3 * time.Second
 	s.Logf("Sleeping %v to wait for Chrome to stabilize", delay)
-	select {
-	case <-time.After(delay):
-	case <-ctx.Done():
+	if err := testing.Sleep(ctx, delay); err != nil {
 		s.Fatal("Timed out while waiting for Chrome startup: ", err)
 	}
 

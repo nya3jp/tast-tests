@@ -121,10 +121,8 @@ func runJPEGPerfBenchmark(ctx context.Context, s *testing.State, tempDir string,
 	}
 
 	s.Logf("Sleeping %v to wait for CPU usage to stabilize", stabilizationDuration.Round(time.Second))
-	select {
-	case <-ctx.Done():
+	if err := testing.Sleep(ctx, stabilizationDuration); err != nil {
 		s.Fatal("Failed waiting for CPU usage to stabilize: ", err)
-	case <-time.After(stabilizationDuration):
 	}
 
 	s.Logf("Sleeping %v to measure CPU usage", measurementDuration.Round(time.Second))

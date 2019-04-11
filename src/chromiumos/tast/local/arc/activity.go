@@ -380,10 +380,8 @@ func (ac *Activity) swipe(ctx context.Context, from, to Point, t time.Duration) 
 		return errors.Wrap(err, "failed to start the swipe gesture")
 	}
 
-	select {
-	case <-time.After(delayToPreventGesture):
-	case <-ctx.Done():
-		return errors.Wrap(ctx.Err(), "timeout while sleeping")
+	if err := testing.Sleep(ctx, delayToPreventGesture); err != nil {
+		return errors.Wrap(err, "timeout while sleeping")
 	}
 	return nil
 }

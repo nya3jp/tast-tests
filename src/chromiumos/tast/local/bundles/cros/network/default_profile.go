@@ -79,10 +79,8 @@ func DefaultProfile(ctx context.Context, s *testing.State) {
 		}
 
 		for !isDefaultProfileReady() {
-			select {
-			case <-time.After(100 * time.Millisecond):
-			case <-ctx.Done():
-				s.Fatal("Timed out waiting for the default profile to get ready")
+			if err := testing.Sleep(ctx, 100*time.Millisecond); err != nil {
+				s.Fatal("Timed out waiting for the default profile to get ready: ", err)
 			}
 		}
 	}()

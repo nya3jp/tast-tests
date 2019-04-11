@@ -132,10 +132,8 @@ func (d *Device) waitServer(ctx context.Context) error {
 			break
 		}
 
-		select {
-		case <-time.After(100 * time.Millisecond):
-		case <-ctx.Done():
-			return ctx.Err()
+		if err := testing.Sleep(ctx, 100*time.Millisecond); err != nil {
+			return err
 		}
 	}
 	return nil

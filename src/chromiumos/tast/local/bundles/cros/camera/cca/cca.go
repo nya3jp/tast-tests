@@ -113,10 +113,8 @@ func (a *App) checkVideoState(ctx context.Context, active bool, duration time.Du
 	// Due to the pipeline delay in camera stack, animation delay, and other
 	// reasons, sometimes a bug would be triggered after several frames. Wait
 	// |duration| here and check that the state does not change afterwards.
-	select {
-	case <-time.After(duration):
-	case <-ctx.Done():
-		return ctx.Err()
+	if err := testing.Sleep(ctx, duration); err != nil {
+		return err
 	}
 
 	var ok bool
