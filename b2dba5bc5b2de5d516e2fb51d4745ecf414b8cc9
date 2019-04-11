@@ -683,6 +683,24 @@
     },
     {
       "key": {
+        "uuid": "fc9d9bd8_dce35b63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-11T01:03:10Z",
+      "side": 1,
+      "message": "sure, uploaded https://crrev.com/c/1562673 to do this. can you make this change depend on it and remove this function?",
+      "parentUuid": "aa42839b_2a1be863",
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b4a7f401_a2129ab0",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 8
