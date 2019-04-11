@@ -149,6 +149,13 @@ func ARCEnabled() option {
 	return func(c *Chrome) { c.arcMode = arcEnabled }
 }
 
+// ARCDisableCPURestriction returns an option that can be passed to New which controls whether
+// a flag is passed to Chrome to disable CGroups.  This is true by default and is the correct
+// behavior for most ARC-related tests.
+func ARCDisableCPURestriction(disable bool) option {
+	return func(c *Chrome) { c.arcDisableCPURestriction = disable }
+}
+
 // ExtraArgs returns an option that can be passed to New to append additional arguments to Chrome's command line.
 func ExtraArgs(args ...string) option {
 	return func(c *Chrome) { c.extraArgs = append(c.extraArgs, args...) }
@@ -169,12 +176,13 @@ type Chrome struct {
 	client    *cdp.Client         // DevTools client using wsConn
 	sm        *cdpsession.Manager // manages connections to multiple targets over wsConn
 
-	user, pass, gaiaID string // login credentials
-	normalizedUser     string // user with domain added, periods removed, etc.
-	keepCryptohome     bool
-	loginMode          loginMode
-	arcMode            arcMode
-	extraArgs          []string
+	user, pass, gaiaID       string // login credentials
+	normalizedUser           string // user with domain added, periods removed, etc.
+	keepCryptohome           bool
+	loginMode                loginMode
+	arcMode                  arcMode
+	arcDisableCPURestriction bool // a flag to disable cpu restrictions on ARC to let tests run faster
+	extraArgs                []string
 
 	extDirs     []string // directories containing all unpacked extensions to load
 	testExtID   string   // ID for test extension exposing APIs
@@ -203,13 +211,14 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 	defer timing.Start(ctx, "chrome_new").End()
 
 	c := &Chrome{
-		user:           DefaultUser,
-		pass:           defaultPass,
-		gaiaID:         defaultGaiaID,
-		keepCryptohome: false,
-		loginMode:      fakeLogin,
-		watcher:        newBrowserWatcher(),
-		logMaster:      jslog.NewMaster(),
+		user:                     DefaultUser,
+		pass:                     defaultPass,
+		gaiaID:                   defaultGaiaID,
+		keepCryptohome:           false,
+		loginMode:                fakeLogin,
+		arcDisableCPURestriction: true,
+		watcher:                  newBrowserWatcher(),
+		logMaster:                jslog.NewMaster(),
 	}
 	for _, opt := range opts {
 		opt(c)
@@ -462,6 +471,11 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 			"--disable-arc-opt-in-verification",
 			// Always start ARC to avoid unnecessarily stopping mini containers.
 			"--arc-start-mode=always-start-with-no-play-store")
+		if c.arcDisableCPURestriction {
+			args = append(args,
+				// Disable CPU restrictions to let tests run faster
+				"--disable-arc-cpu-restriction")
+		}
 	}
 	args = append(args, c.extraArgs...)
 	envVars := []string{
