@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3e9f2ede_eb55de9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-04-11T06:18:30Z",
+      "side": 1,
+      "message": "Currently we only support h264 in ARC++ encoding.\nI will add a check for that.",
+      "parentUuid": "d3736439_51edad32",
+      "range": {
+        "startLine": 183,
+        "startChar": 65,
+        "endLine": 183,
+        "endChar": 72
+      },
+      "revId": "2a9d1104e4dae3910b6a9fc85a6ab488235ee55c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85c1d2e3_b575ab26",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -154,6 +178,24 @@
     },
     {
       "key": {
+        "uuid": "5c0f8b02_d53c0280",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-04-11T06:18:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41b0d1a5_00bb8b7d",
+      "revId": "2a9d1104e4dae3910b6a9fc85a6ab488235ee55c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "047af8cf_d4b25851",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -168,6 +210,24 @@
       "revId": "2a9d1104e4dae3910b6a9fc85a6ab488235ee55c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab684d22_5aa1488b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-04-11T06:18:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "047af8cf_d4b25851",
+      "revId": "2a9d1104e4dae3910b6a9fc85a6ab488235ee55c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
