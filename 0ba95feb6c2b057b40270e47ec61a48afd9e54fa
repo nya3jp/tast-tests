@@ -1,0 +1,187 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7414d29_0ebbfa6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-11T02:39:12Z",
+      "side": 1,
+      "message": "i think that you need to run evtestCleanup (as long as it\u0027s non-nil) even if startEvtest returns an error, no? otherwise it seems like the process could be leaked in some cases.\n\ni\u0027d recommend always making startEvtest return a non-nil cleanup function (i.e. initialize the return val to a function that just returns nil at the start of startEvtest), and then document that callers need to run it unconditionally.",
+      "revId": "0ba95feb6c2b057b40270e47ec61a48afd9e54fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9f34775_e9ba6f7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-11T02:39:12Z",
+      "side": 1,
+      "message": "same comment here: i think that cleanup needs to be run unconditionally",
+      "revId": "0ba95feb6c2b057b40270e47ec61a48afd9e54fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74035105_2f11ec53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-11T02:39:12Z",
+      "side": 1,
+      "message": "is guestSock being leaked? i don\u0027t see its Close method getting called anywhere.",
+      "revId": "0ba95feb6c2b057b40270e47ec61a48afd9e54fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8718a343_7964aeed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-11T02:39:12Z",
+      "side": 1,
+      "message": "can you keep \"chan\u003c-\" like you had before?",
+      "range": {
+        "startLine": 389,
+        "startChar": 60,
+        "endLine": 389,
+        "endChar": 64
+      },
+      "revId": "0ba95feb6c2b057b40270e47ec61a48afd9e54fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5195bc81_b7f77f96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-11T02:39:12Z",
+      "side": 1,
+      "message": "optional readability suggestion: since you have multiple functions that return cleanup functions of this type, you could just declare a type for it to make signatures easier to read:\n\n    type cleanupFunc func() error\n\nthen you can just return e.g. (cleanupFunc, error) here -- no need to name these return vals since the types are now descriptive",
+      "range": {
+        "startLine": 389,
+        "startChar": 77,
+        "endLine": 389,
+        "endChar": 97
+      },
+      "revId": "0ba95feb6c2b057b40270e47ec61a48afd9e54fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e282fc3_7a24c744",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-11T02:39:12Z",
+      "side": 1,
+      "message": "huge nit: still pretty long. :-) how about wrapping closer the halfway point, e.g.\n\nfunc startInputLatencyServer(ctx context.Context, cont *vm.Container, socketServerFile, socketServerLog fileMapping,\n    errFile io.Writer) (cleanup func() error, port uint16, err error) {\n\nstill a bit hard to read, but what can you do -- go\u0027s line-wrapping conventions are weird :-(",
+      "revId": "0ba95feb6c2b057b40270e47ec61a48afd9e54fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1ff91e8_dcff81fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-11T02:39:12Z",
+      "side": 1,
+      "message": "this is never non-nil, is it? if that\u0027s correct, please drop it and just return the cleanup func.",
+      "range": {
+        "startLine": 547,
+        "startChar": 105,
+        "endLine": 547,
+        "endChar": 114
+      },
+      "revId": "0ba95feb6c2b057b40270e47ec61a48afd9e54fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfa19962_c35e33a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-11T02:39:12Z",
+      "side": 1,
+      "message": "nit: please make this a unidirectional channel if possible, and consider also just naming it \u0027ch\u0027 (since it\u0027s unclear to me what the \u0027r\u0027 stands for)",
+      "range": {
+        "startLine": 547,
+        "startChar": 62,
+        "endLine": 547,
+        "endChar": 70
+      },
+      "revId": "0ba95feb6c2b057b40270e47ec61a48afd9e54fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebcfd4d6_38c3ce21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-11T02:39:12Z",
+      "side": 1,
+      "message": "nit: unexpected",
+      "range": {
+        "startLine": 573,
+        "startChar": 23,
+        "endLine": 573,
+        "endChar": 32
+      },
+      "revId": "0ba95feb6c2b057b40270e47ec61a48afd9e54fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
