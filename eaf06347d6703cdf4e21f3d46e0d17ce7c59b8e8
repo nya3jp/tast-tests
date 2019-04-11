@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "896d1e70_a7b1f733",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-11T22:01:24Z",
+      "side": 1,
+      "message": "nit: after https://crrev.com/c/1563811 is in, can you update this to use testing.Sleep?",
+      "revId": "eaf06347d6703cdf4e21f3d46e0d17ce7c59b8e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
