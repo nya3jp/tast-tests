@@ -299,10 +299,8 @@ func (stw *SingleTouchEventWriter) Swipe(ctx context.Context, x0, y0, x1, y1 Tou
 			return err
 		}
 
-		select {
-		case <-time.After(touchFrequency):
-		case <-ctx.Done():
-			return errors.Wrap(ctx.Err(), "timeout while doing sleep")
+		if err := testing.Sleep(ctx, touchFrequency); err != nil {
+			return errors.Wrap(err, "timeout while doing sleep")
 		}
 	}
 	return nil

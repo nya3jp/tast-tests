@@ -107,10 +107,8 @@ func MeasureUsage(ctx context.Context, duration time.Duration) (float64, error) 
 		return 0, err
 	}
 
-	select {
-	case <-time.After(duration):
-	case <-ctx.Done():
-		return 0, ctx.Err()
+	if err := testing.Sleep(ctx, duration); err != nil {
+		return 0, err
 	}
 
 	// Get the total time the CPU spent in different states again. By looking at

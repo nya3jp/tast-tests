@@ -85,10 +85,7 @@ func VirtualKeyboard(ctx context.Context) (*KeyboardEventWriter, error) {
 	// Sleep briefly to give Chrome and other processes time to see the new device.
 	// TODO(derat): Add some way to skip this delay; it's probably unnecessary if
 	// the device is created before calling chrome.New.
-	select {
-	case <-time.After(5 * time.Second):
-	case <-ctx.Done():
-	}
+	testing.Sleep(ctx, 5*time.Second)
 
 	testing.ContextLog(ctx, "Using virtual keyboard device ", dev)
 
@@ -210,9 +207,7 @@ func (kw *KeyboardEventWriter) sleepAfterType(ctx context.Context, firstErr *err
 		return
 	}
 
-	select {
-	case <-time.After(50 * time.Millisecond):
-	case <-ctx.Done():
-		*firstErr = errors.Wrap(ctx.Err(), "timeout while typing")
+	if err := testing.Sleep(ctx, 50*time.Millisecond); err != nil {
+		*firstErr = errors.Wrap(err, "timeout while typing")
 	}
 }

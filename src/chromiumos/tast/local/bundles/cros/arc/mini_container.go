@@ -64,10 +64,8 @@ func MiniContainer(ctx context.Context, s *testing.State) {
 
 	// Wait for a while after login to make sure the Android mini container is not turned down
 	// even if we do not call arc.New immediately (crbug.com/872135).
-	select {
-	case <-time.After(3 * time.Second):
-	case <-ctx.Done():
-		s.Fatal("Timed out while sleeping after login: ", ctx.Err())
+	if err := testing.Sleep(ctx, 3*time.Second); err != nil {
+		s.Fatal("Timed out while sleeping after login: ", err)
 	}
 
 	select {
