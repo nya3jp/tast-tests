@@ -701,6 +701,24 @@
     },
     {
       "key": {
+        "uuid": "a201420e_6c6ad3af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-11T20:38:15Z",
+      "side": 1,
+      "message": "Cool ! Thanks for the quick CL. I\u0027ll remove the function once that has been merged.",
+      "parentUuid": "fc9d9bd8_dce35b63",
+      "revId": "b2dba5bc5b2de5d516e2fb51d4745ecf414b8cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b4a7f401_a2129ab0",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 8

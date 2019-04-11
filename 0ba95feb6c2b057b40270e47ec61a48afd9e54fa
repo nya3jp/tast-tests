@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3f8970b1_aec6270f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-11T20:38:15Z",
+      "side": 1,
+      "message": "Ah nice catch. I added a util function runCleanup() to handle cleanup functions.\nI feel a nil cleanup function also makes sense (to indicate there\u0027s no cleanup needed). The nil checking is done in runCleanup().",
+      "parentUuid": "f7414d29_0ebbfa6a",
+      "revId": "0ba95feb6c2b057b40270e47ec61a48afd9e54fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e9f34775_e9ba6f7c",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 10
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "dfd77519_5200a066",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-11T20:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9f34775_e9ba6f7c",
+      "revId": "0ba95feb6c2b057b40270e47ec61a48afd9e54fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74035105_2f11ec53",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 10
@@ -47,6 +83,24 @@
       "writtenOn": "2019-04-11T02:39:12Z",
       "side": 1,
       "message": "is guestSock being leaked? i don\u0027t see its Close method getting called anywhere.",
+      "revId": "0ba95feb6c2b057b40270e47ec61a48afd9e54fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "616f43ba_2f00ec56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-11T20:38:15Z",
+      "side": 1,
+      "message": "Yes in previous version the socket listening goroutine doesn\u0027t finish so I can\u0027t close it. Added the cleanup now.",
+      "parentUuid": "74035105_2f11ec53",
       "revId": "0ba95feb6c2b057b40270e47ec61a48afd9e54fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -99,6 +153,54 @@
     },
     {
       "key": {
+        "uuid": "6464adbe_9373abc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-11T20:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8718a343_7964aeed",
+      "range": {
+        "startLine": 389,
+        "startChar": 60,
+        "endLine": 389,
+        "endChar": 64
+      },
+      "revId": "0ba95feb6c2b057b40270e47ec61a48afd9e54fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "154701d4_581e548c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-11T20:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5195bc81_b7f77f96",
+      "range": {
+        "startLine": 389,
+        "startChar": 77,
+        "endLine": 389,
+        "endChar": 97
+      },
+      "revId": "0ba95feb6c2b057b40270e47ec61a48afd9e54fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e282fc3_7a24c744",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 10
@@ -113,6 +215,24 @@
       "revId": "0ba95feb6c2b057b40270e47ec61a48afd9e54fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78c72733_42b2b2a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-11T20:38:15Z",
+      "side": 1,
+      "message": "Done. \ngofmt suggests 8 spaces instead of 4 spaces.",
+      "parentUuid": "9e282fc3_7a24c744",
+      "revId": "0ba95feb6c2b057b40270e47ec61a48afd9e54fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -162,6 +282,54 @@
     },
     {
       "key": {
+        "uuid": "83382fd9_b225e3fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-11T20:38:15Z",
+      "side": 1,
+      "message": "Previously it reads from the channel at L571 to check whether the read is finished.  So it\u0027s both a receiver and a sender for this function. I created a separate channel for the checking so it\u0027s unidirectional now.\n\nThe name is a mistake - I copied your code snippet in previous review comment and maybe added a \u0027r\u0027 accidentally somewhat...",
+      "parentUuid": "cfa19962_c35e33a0",
+      "range": {
+        "startLine": 547,
+        "startChar": 62,
+        "endLine": 547,
+        "endChar": 70
+      },
+      "revId": "0ba95feb6c2b057b40270e47ec61a48afd9e54fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "775ce778_828e87ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-11T20:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1ff91e8_dcff81fd",
+      "range": {
+        "startLine": 547,
+        "startChar": 105,
+        "endLine": 547,
+        "endChar": 114
+      },
+      "revId": "0ba95feb6c2b057b40270e47ec61a48afd9e54fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebcfd4d6_38c3ce21",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 10
@@ -182,6 +350,30 @@
       "revId": "0ba95feb6c2b057b40270e47ec61a48afd9e54fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0d3be64_f75c1158",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-11T20:38:15Z",
+      "side": 1,
+      "message": "Removed the case.",
+      "parentUuid": "ebcfd4d6_38c3ce21",
+      "range": {
+        "startLine": 573,
+        "startChar": 23,
+        "endLine": 573,
+        "endChar": 32
+      },
+      "revId": "0ba95feb6c2b057b40270e47ec61a48afd9e54fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
