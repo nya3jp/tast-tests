@@ -301,6 +301,30 @@
       "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c901bb5_871815db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-11T02:27:40Z",
+      "side": 1,
+      "message": "I don\u0027t know about this argument, using a defer on syscall.Munmap seems pretty safe:\n\ndata, err :\u003d syscall.Mmap(-1, 0, size, syscall.PROT_READ|syscall.PROT_WRITE, syscall.MAP_ANON|syscall.MAP_PRIVATE)\nif err !\u003d nil { \n  // Error however tast prefers. \n}\ndefer syscall.Munmap(data)\n\nI would argue that you have a higher chance of leaking memory when it\u0027s less contained such as one or more dd processes running around.",
+      "parentUuid": "ccda479e_94be6875",
+      "range": {
+        "startLine": 911,
+        "startChar": 0,
+        "endLine": 911,
+        "endChar": 69
+      },
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
