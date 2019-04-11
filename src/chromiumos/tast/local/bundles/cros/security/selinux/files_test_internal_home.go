@@ -33,6 +33,7 @@ func CheckHomeDirectory(s *testing.State) {
 		{`/home/chronos/u-[0-9a-f]*/(Downloads|MyFiles)(/.*)?`, `(media_rw_data_file|cros_downloads_file)`},
 		// Not logged in users doesn't have real data bind-mounted (cros_home_chronos).
 		{`/home/chronos/u-.*`, `(cros_home_shadow_uid_user|cros_home_chronos)`},
+		{`/home/chronos/crash(/.*)?`, `cros_home_chronos_crash`},
 		{`/home/chronos(/.*)?`, `cros_home_chronos`},
 		{`/home/root`, `cros_home_root`},
 		{`/home/root/[0-9a-f]*(/.*)?`, skipTest},
