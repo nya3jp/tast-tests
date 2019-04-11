@@ -349,6 +349,30 @@
       "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e706f577_51f89e29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-11T02:57:50Z",
+      "side": 1,
+      "message": "Yes, an munmap syscall would mean that the task is no longer charged with that memory, the page table entries are dropped, here is an example of what happens in the 3.18 kernel: https://elixir.bootlin.com/linux/v3.18/source/mm/mmap.c#L2394 . Any access after that point would immediately result in a SIGSEGV.",
+      "parentUuid": "e49b40b0_064dcc50",
+      "range": {
+        "startLine": 911,
+        "startChar": 0,
+        "endLine": 911,
+        "endChar": 69
+      },
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
