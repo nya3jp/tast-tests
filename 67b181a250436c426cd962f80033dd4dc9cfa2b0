@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bed0b084_c79c1ed7",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-04-12T19:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "453b4265_44788581",
+      "revId": "67b181a250436c426cd962f80033dd4dc9cfa2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98f6de45_c7239aba",
         "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
         "patchSetId": 6
@@ -33,6 +51,24 @@
       "revId": "67b181a250436c426cd962f80033dd4dc9cfa2b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a295859a_39b6c445",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-04-12T19:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98f6de45_c7239aba",
+      "revId": "67b181a250436c426cd962f80033dd4dc9cfa2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "1185baf3_4b3f71b7",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-04-12T19:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9018275_1a2fc9cb",
+      "revId": "67b181a250436c426cd962f80033dd4dc9cfa2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be4874a1_d708e938",
         "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
         "patchSetId": 6
@@ -64,6 +118,24 @@
       "writtenOn": "2019-03-30T02:23:49Z",
       "side": 1,
       "message": "looking at this a bit more closely, i think there may be an issue here -- this returns (and closes both local and remote) as soon as either of the goroutines returns, but the other goroutine may still be using the connection. does something like this work?\n\n  defer local.Close()\n  defer remote.Close()\n  \n  ch :\u003d make(chan err)\n  go func() {\n      _, err :\u003d io.Copy(local, remote)\n      ch \u003c- err\n  }()\n  go func() {\n      _, err :\u003d io.Copy(remote, local)\n      ch \u003c- err\n  }\n  \n  // Wait for both readers to complete.\n  var firstErr error\n  for i :\u003d 0; i \u003c 2; i++ {\n      if err :\u003d \u003c-ch; firstErr \u003d\u003d nil {\n          firstErr \u003d err\n      }\n  }\n  return firstErr\n\nthis is dependent on both of the copies reporting an error if there\u0027s a problem -- hopefully that happens.",
+      "revId": "67b181a250436c426cd962f80033dd4dc9cfa2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ecea538_70c5a9f7",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-04-12T19:08:58Z",
+      "side": 1,
+      "message": "Thanks for catching - the above code works!\n\nWould it make sense to return after the first err is caught and cancel both goroutines to hedge against the chance they don\u0027t both return errors?",
+      "parentUuid": "be4874a1_d708e938",
       "revId": "67b181a250436c426cd962f80033dd4dc9cfa2b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -93,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "4769dc96_356297be",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-04-12T19:08:58Z",
+      "side": 1,
+      "message": "Do you mean delete it everywhere (including type ConnFunc)? I think it might be useful there eventually. But on the other hand right now it\u0027s YAGNI. I\u0027ll remove it everywhere. Lmk if that\u0027s not what you had in mind.",
+      "parentUuid": "dede7ba9_1f91e9b0",
+      "range": {
+        "startLine": 22,
+        "startChar": 12,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "67b181a250436c426cd962f80033dd4dc9cfa2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4dad7e9d_4e755b61",
         "filename": "src/chromiumos/tast/remote/servo/servod_proxy_test.go",
         "patchSetId": 6
@@ -110,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "54d93af3_9e59a1d1",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-04-12T19:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dad7e9d_4e755b61",
+      "revId": "67b181a250436c426cd962f80033dd4dc9cfa2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aff89757_b24e71f0",
         "filename": "src/chromiumos/tast/remote/servo/servod_proxy_test.go",
         "patchSetId": 6
@@ -121,6 +235,24 @@
       "writtenOn": "2019-03-30T02:23:49Z",
       "side": 1,
       "message": "don\u0027t defer this here; it\u0027s already getting closed in the goroutine",
+      "revId": "67b181a250436c426cd962f80033dd4dc9cfa2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "239ec088_e6895b49",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-04-12T19:08:58Z",
+      "side": 1,
+      "message": "If I don\u0027t close it here it causes the test to spin forever - what\u0027s the idiomatic way to handle this in Go? Should the place where the connection is created be responsible for closing it?",
+      "parentUuid": "aff89757_b24e71f0",
       "revId": "67b181a250436c426cd962f80033dd4dc9cfa2b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
