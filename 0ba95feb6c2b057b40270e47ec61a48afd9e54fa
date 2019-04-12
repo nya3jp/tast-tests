@@ -254,6 +254,24 @@
     },
     {
       "key": {
+        "uuid": "a7a6b2f1_7cc96a16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-12T06:48:13Z",
+      "side": 1,
+      "message": "Oh got it. It\u0027s clear now :)",
+      "parentUuid": "7a2f17e1_8b70318e",
+      "revId": "0ba95feb6c2b057b40270e47ec61a48afd9e54fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1ff91e8_dcff81fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 10
