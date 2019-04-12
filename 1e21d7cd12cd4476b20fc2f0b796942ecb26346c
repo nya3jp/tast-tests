@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60e038d3_7298237c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-12T06:59:55Z",
+      "side": 1,
+      "message": "nit: prefer \"var args []string\" in slice declarations (since it declares a nil slice instead of allocating an empty slice)",
+      "revId": "1e21d7cd12cd4476b20fc2f0b796942ecb26346c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
