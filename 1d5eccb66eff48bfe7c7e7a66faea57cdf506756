@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "663d1246_66d90762",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-12T03:24:31Z",
+      "side": 1,
+      "message": "nit: maybe \"cleanupFunc runs c if non-nil and reports any error that it returns.\"?",
+      "revId": "1d5eccb66eff48bfe7c7e7a66faea57cdf506756",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78b814d7_182d7d99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-12T03:24:31Z",
+      "side": 1,
+      "message": "nit: this isn\u0027t starting evtest; it\u0027s stopping it, right? maybe \"Failed cleaning up evtest\"?",
+      "revId": "1d5eccb66eff48bfe7c7e7a66faea57cdf506756",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39c4e0d8_358a6e34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-12T03:24:31Z",
+      "side": 1,
+      "message": "nit: \"Failed cleaning up input latency server\"",
+      "revId": "1d5eccb66eff48bfe7c7e7a66faea57cdf506756",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07f7d54b_8225365e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-12T03:24:31Z",
+      "side": 1,
+      "message": "move this after L177 since it\u0027s probably nil if an error is returned (that\u0027s the go convention)",
+      "revId": "1d5eccb66eff48bfe7c7e7a66faea57cdf506756",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a75e288_0149f83e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-12T03:24:31Z",
+      "side": 1,
+      "message": "nit: \"Failed cleaning up socket listener\"",
+      "revId": "1d5eccb66eff48bfe7c7e7a66faea57cdf506756",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e551cb5e_4d7f3d46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-12T03:24:31Z",
+      "side": 1,
+      "message": "nit: remove \"if not nil\" since it\u0027s never nil",
+      "range": {
+        "startLine": 549,
+        "startChar": 40,
+        "endLine": 549,
+        "endChar": 50
+      },
+      "revId": "1d5eccb66eff48bfe7c7e7a66faea57cdf506756",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
