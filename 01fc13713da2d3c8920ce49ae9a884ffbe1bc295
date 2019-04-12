@@ -16,6 +16,24 @@
       "revId": "01fc13713da2d3c8920ce49ae9a884ffbe1bc295",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42771c4f_4597a455",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/file_system_xattrs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-12T04:53:52Z",
+      "side": 1,
+      "message": "Thank you for pointing this out. Filed an issue. crbug.com/952125\nLet\u0027s continue to discuss there.",
+      "parentUuid": "8aa331e6_9b48f9ab",
+      "revId": "01fc13713da2d3c8920ce49ae9a884ffbe1bc295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
