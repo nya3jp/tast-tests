@@ -22,6 +22,30 @@
       "revId": "9d191ec518236a6bce3bdd871e24abb9cb5e79cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "945e7b6b_bc461ca2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mount_obb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-12T10:14:51Z",
+      "side": 1,
+      "message": "Removed the line.\n\nbackground: In older code, I just ignored errors, but it looks like logging in deferred is more common approach, so I made the change. The line was just remained by mistake. (actually, errors are not ignored now :-)",
+      "parentUuid": "161097d1_50e0d49f",
+      "range": {
+        "startLine": 122,
+        "startChar": 45,
+        "endLine": 122,
+        "endChar": 47
+      },
+      "revId": "9d191ec518236a6bce3bdd871e24abb9cb5e79cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
