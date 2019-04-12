@@ -90,6 +90,10 @@ const (
 // First API level is expected to be the same as current SDK version if the
 // device name doesn't exist in this map.
 var expectedFirstAPILevelMap = map[string]string{
+	"betty":            apiLevelN,
+	"betty-arc64":      apiLevelN,
+	"betty-arcmaster":  apiLevelN,
+	"betty-arcnext":    apiLevelN,
 	"caroline":         apiLevelN,
 	"caroline-arcnext": apiLevelN,
 	"eve":              apiLevelN,
