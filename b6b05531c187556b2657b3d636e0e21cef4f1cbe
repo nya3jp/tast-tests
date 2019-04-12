@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07521f78_f0af0a4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_device.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-04-12T03:37:40Z",
+      "side": 1,
+      "message": "HAL does support external camera. \"cros_camera_test\" would be a more accurate name here.",
+      "range": {
+        "startLine": 21,
+        "startChar": 22,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "b6b05531c187556b2657b3d636e0e21cef4f1cbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76a7e9e1_f6870b4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_device.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-04-12T03:37:40Z",
+      "side": 1,
+      "message": "I think it\u0027s not worth to add a TODO for every hal3* tests here. Could we just add it in hal3_module.go and mention other hal3* there?",
+      "revId": "b6b05531c187556b2657b3d636e0e21cef4f1cbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
