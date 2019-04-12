@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a508dde2_5ff151d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-04-12T18:38:19Z",
+      "side": 1,
+      "message": "Should that not be P?\nAnd -arcmaster who knows what? (Change detector test?)",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 31
+      },
+      "revId": "6f606e8167066967706c29349afebbe94afde4b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
