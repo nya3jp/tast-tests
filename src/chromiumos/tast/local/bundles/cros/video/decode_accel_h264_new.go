@@ -15,12 +15,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     DecodeAccelH264New,
-		Desc:     "Run Chrome video_decode_accelerator_tests with an H.264 video",
-		Contacts: []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:     []string{"informational"},
-		// VDA unittest cannot run with IMPORT mode on devices where ARC++ is disabled. (cf. crbug.com/881729)
-		SoftwareDeps: []string{"android", caps.HWDecodeH264},
+		Func:         DecodeAccelH264New,
+		Desc:         "Run Chrome video_decode_accelerator_tests with an H.264 video",
+		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
+		Attr:         []string{"informational"},
+		SoftwareDeps: []string{caps.HWDecodeH264},
 		Data:         append(decode.DataFiles(videotype.H264Prof, decode.ImportBuffer), decode.Test25FPSH264.Name+".json"),
 	})
 }
