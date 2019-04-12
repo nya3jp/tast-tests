@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f87bc410_bb996b29",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-12T21:23:31Z",
+      "side": 1,
+      "message": ".",
+      "parentUuid": "f50bd017_e8780800",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 50
+      },
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f503a2ff_79f6f39b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_pressure_preallocator.sh",
         "patchSetId": 4
@@ -69,6 +93,30 @@
       "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f16a3eb_48d49d6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_pressure_preallocator.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-12T21:23:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f503a2ff_79f6f39b",
+      "range": {
+        "startLine": 36,
+        "startChar": 38,
+        "endLine": 36,
+        "endChar": 44
+      },
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "fbd14827_8c74dd25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-12T21:23:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a63389b_f67d8baf",
+      "range": {
+        "startLine": 291,
+        "startChar": 51,
+        "endLine": 291,
+        "endChar": 58
+      },
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ffc6278_3c5b2741",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 4
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "6b93be22_72bffc84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-12T21:23:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ffc6278_3c5b2741",
+      "range": {
+        "startLine": 293,
+        "startChar": 22,
+        "endLine": 293,
+        "endChar": 28
+      },
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99e91b03_85237aa1",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 4
@@ -132,6 +228,24 @@
       "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5858e05_ab6e32bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-12T21:23:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99e91b03_85237aa1",
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -152,6 +266,24 @@
     },
     {
       "key": {
+        "uuid": "0e1a737e_1cf5bc39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-12T21:23:31Z",
+      "side": 1,
+      "message": "Yes thank you.",
+      "parentUuid": "ff3f41da_28dcf13b",
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a0eed40_a20a7f59",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 4
@@ -169,6 +301,24 @@
     },
     {
       "key": {
+        "uuid": "ff26e15a_d2007674",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-12T21:23:31Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "9a0eed40_a20a7f59",
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4051b10_16c5fa9e",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 4
@@ -183,6 +333,24 @@
       "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37d1ff97_644917b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-12T21:23:31Z",
+      "side": 1,
+      "message": "These numbers are unreadable in bytes.  I could convert them when printing, but it\u0027s easier to do everything in MiBs.",
+      "parentUuid": "e4051b10_16c5fa9e",
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -230,6 +398,30 @@
       "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84d1efa5_e488eb66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-12T21:23:31Z",
+      "side": 1,
+      "message": "OK---I think I have a better explanation and calculation.  Thanks.",
+      "parentUuid": "f36b78f3_2625fad3",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 33
+      },
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -373,6 +565,30 @@
       "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d2a9a52_d30c16ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-12T21:23:31Z",
+      "side": 1,
+      "message": "OK thanks.  Good idea, but not in this CL.  (Note that it was introduced in a previous CL, not here.)",
+      "parentUuid": "e706f577_51f89e29",
+      "range": {
+        "startLine": 911,
+        "startChar": 0,
+        "endLine": 911,
+        "endChar": 69
+      },
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
