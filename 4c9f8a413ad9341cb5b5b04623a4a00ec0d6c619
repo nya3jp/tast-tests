@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb175b35_48399a21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-13T02:04:07Z",
+      "side": 1,
+      "message": "huge nit: \"var swapReductionMiB uint64\" has less clutter",
+      "revId": "4c9f8a413ad9341cb5b5b04623a4a00ec0d6c619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "462d36f7_98eee038",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-13T02:04:07Z",
+      "side": 1,
+      "message": "should this be rounded?",
+      "range": {
+        "startLine": 238,
+        "startChar": 49,
+        "endLine": 238,
+        "endChar": 97
+      },
+      "revId": "4c9f8a413ad9341cb5b5b04623a4a00ec0d6c619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7d1e870_28aac319",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-13T02:04:07Z",
+      "side": 1,
+      "message": "nit: just use errors.Errorf iirc",
+      "range": {
+        "startLine": 241,
+        "startChar": 12,
+        "endLine": 241,
+        "endChar": 25
+      },
+      "revId": "4c9f8a413ad9341cb5b5b04623a4a00ec0d6c619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a55238b1_ac3c1fe9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-13T02:04:07Z",
+      "side": 1,
+      "message": "if this will be used more later, i\u0027d recommend creating a \u0027size\u0027 type here with w and h fields",
+      "revId": "4c9f8a413ad9341cb5b5b04623a4a00ec0d6c619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fa89516_346a3454",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-13T02:04:07Z",
+      "side": 1,
+      "message": "there\u0027s no reason to use a promise here, but i guess that the current structure makes it more work to get a chrome.Conn here that you can just call Eval on, right?",
+      "revId": "4c9f8a413ad9341cb5b5b04623a4a00ec0d6c619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d67040ff_5854e85a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-13T02:04:07Z",
+      "side": 1,
+      "message": "delete this?",
+      "revId": "4c9f8a413ad9341cb5b5b04623a4a00ec0d6c619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef7fa2b4_1ce93fe5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-13T02:04:07Z",
+      "side": 1,
+      "message": "and this",
+      "revId": "4c9f8a413ad9341cb5b5b04623a4a00ec0d6c619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "995866f4_3e7c8b3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-13T02:04:07Z",
+      "side": 1,
+      "message": "nit: Window",
+      "range": {
+        "startLine": 960,
+        "startChar": 9,
+        "endLine": 960,
+        "endChar": 15
+      },
+      "revId": "4c9f8a413ad9341cb5b5b04623a4a00ec0d6c619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

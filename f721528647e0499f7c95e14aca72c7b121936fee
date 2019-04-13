@@ -354,6 +354,24 @@
     },
     {
       "key": {
+        "uuid": "87dcef7b_952abf59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-13T02:04:07Z",
+      "side": 1,
+      "message": "one possibly-nicer approach is to just declare a type:\n\n    type Size int64\n\n    func (s Size) String() string {\n        return fmt.Sprintf(\"%.1f MiB\", float64(s)/(1024*1024))\n    }\n\n    func (s Size) Bytes() int64 { return int64(s) }\n\nno ambiguity there, and you can just print it with %v",
+      "parentUuid": "37d1ff97_644917b2",
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b43f01c2_d847a039",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 4
