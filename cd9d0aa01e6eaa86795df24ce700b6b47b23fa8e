@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "136b36c4_a9817997",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-13T00:02:21Z",
+      "side": 1,
+      "message": "please invert this and make it not take a bool: passing true to it is a no-op right now, which feels like a confusing API.\n\n    func AllowARCCPURestriction() option {\n\nor even\n\n    func RestrictARCCPU() option {\n\nthe consecutive acronyms are ugly, but i think it\u0027s better to make it clearer that the restriction just applies to arc.",
+      "range": {
+        "startLine": 152,
+        "startChar": 3,
+        "endLine": 152,
+        "endChar": 27
+      },
+      "revId": "cd9d0aa01e6eaa86795df24ce700b6b47b23fa8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab52ed4a_2e303150",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-13T00:02:21Z",
+      "side": 1,
+      "message": "nit: rename to align with updated option",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 25
+      },
+      "revId": "cd9d0aa01e6eaa86795df24ce700b6b47b23fa8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
