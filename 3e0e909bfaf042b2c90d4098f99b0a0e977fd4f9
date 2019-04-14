@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b63c240_acfda7d7",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-14T22:24:12Z",
+      "side": 1,
+      "message": "these aren\u0027t getting closed now, are they?\n\ni think that the right approach may be to defer closing them in the goroutine in NewServodProxy. then your unit test that\u0027s calling handleProxyConnection also has flexibility to close the pipes itself to make the copy finish.",
+      "revId": "3e0e909bfaf042b2c90d4098f99b0a0e977fd4f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

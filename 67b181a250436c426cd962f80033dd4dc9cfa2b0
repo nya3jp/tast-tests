@@ -142,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "6ab6812c_3a5e4dd8",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-14T22:24:12Z",
+      "side": 1,
+      "message": "i don\u0027t think there\u0027s any way to interrupt a goroutine while it\u0027s in the middle of io.Copy other than closing one of the pipes.\n\ntry playing around with the order of the src.Close() and dst.Close() calls here: https://play.golang.org/p/Kzr68j9btHT\n\nwhen i close dst first, i don\u0027t get an error, while if i close src first, i get io.ErrClosedPipe: https://golang.org/pkg/io/#pkg-variables\n\ni think that for now, it\u0027s probably best to just assume that both of the goroutines will return when one of them decides to return. does that seem reasonable?",
+      "parentUuid": "7ecea538_70c5a9f7",
+      "revId": "67b181a250436c426cd962f80033dd4dc9cfa2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dede7ba9_1f91e9b0",
         "filename": "src/chromiumos/tast/remote/servo/servod_proxy_test.go",
         "patchSetId": 6
@@ -177,6 +195,30 @@
       "side": 1,
       "message": "Do you mean delete it everywhere (including type ConnFunc)? I think it might be useful there eventually. But on the other hand right now it\u0027s YAGNI. I\u0027ll remove it everywhere. Lmk if that\u0027s not what you had in mind.",
       "parentUuid": "dede7ba9_1f91e9b0",
+      "range": {
+        "startLine": 22,
+        "startChar": 12,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "67b181a250436c426cd962f80033dd4dc9cfa2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec771e3a_e281146e",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-14T22:24:12Z",
+      "side": 1,
+      "message": "sorry for not being clearer. i just meant \"leave the argument unnamed here, i.e. \"cf :\u003d func(context.Context) ...\". i think that ConnectFunc should still receive a context.",
+      "parentUuid": "4769dc96_356297be",
       "range": {
         "startLine": 22,
         "startChar": 12,
@@ -253,6 +295,24 @@
       "side": 1,
       "message": "If I don\u0027t close it here it causes the test to spin forever - what\u0027s the idiomatic way to handle this in Go? Should the place where the connection is created be responsible for closing it?",
       "parentUuid": "aff89757_b24e71f0",
+      "revId": "67b181a250436c426cd962f80033dd4dc9cfa2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48489a72_78aa99bd",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-14T22:24:12Z",
+      "side": 1,
+      "message": "i meant that it\u0027s already getting closed on L67. can you tell where the hang is occurring?\n\ni would expect the write on L66 to not block since you\u0027re draining the pipe on L70, and then i\u0027d hope that the read on L70 would return after the goroutine closes one end at L67.",
+      "parentUuid": "239ec088_e6895b49",
       "revId": "67b181a250436c426cd962f80033dd4dc9cfa2b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
