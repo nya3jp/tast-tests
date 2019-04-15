@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9cd74912_e80a6b65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-15T09:02:16Z",
+      "side": 1,
+      "message": "I think other tests might need it, albeit not for the current set of tests. For example, we might have \"Settings\" test where I would change the resolution for capturing and take a picture again.",
+      "parentUuid": "76cdfce5_6552c313",
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "caa01330_83f7f8b3",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 7
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "59e95267_d0f2b3de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-15T09:02:16Z",
+      "side": 1,
+      "message": "I wonder if I can just do s.Fatal here instead of returning an error and let it handled by the test function. One advantage of letting the test function handle errors is it can decide whether to use s.Fatal to terminate the test immediately.",
+      "parentUuid": "caa01330_83f7f8b3",
+      "range": {
+        "startLine": 44,
+        "startChar": 37,
+        "endLine": 44,
+        "endChar": 55
+      },
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "69839f3d_a06681fa",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 7
@@ -53,6 +95,24 @@
       "writtenOn": "2019-04-10T16:35:08Z",
       "side": 1,
       "message": "Should this return an error?\nIf there\u0027s a case that switching is not necessary, could you explicitly find the case?",
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "832fbc78_ffe6f1a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-15T09:02:16Z",
+      "side": 1,
+      "message": "Hmm... I\u0027m debating for StillCapture test, should I explicitly switch to photo mode first.\ngca.RunTest(...) {\n\tgca.SwitchMode(..., PhotoMode) // Add this line\n\tgca.ClickShutterButtonAndVerifyFile(...)\n\nI don\u0027t there will be a case where I might switch to the same mode.",
+      "parentUuid": "69839f3d_a06681fa",
       "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -122,6 +182,30 @@
     },
     {
       "key": {
+        "uuid": "8d5a3daa_5a89212d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-15T09:02:16Z",
+      "side": 1,
+      "message": "The issue I have with this is I need to perform some initial operations first (get the list of file names in the directory or get the timestamp before clicking the shutter button).\n\nSo if we split the file verification part, the code will look like this:\n\tfiles :\u003d gca.GetFiles(...)\n\tgca.ClickShutterButton(...)\n\tgca.VerifyFile(..., files, pattern)\nOr,\n\tts :\u003d gca.GetTimestamp(...)\n\tgca.ClickShutterButton(...)\n\tgca.VerifyFile(..., ts) // Find files created after ts\n\nI personally prefer writing the test this way. However, I\u0027m fine with going with either options above. Do you think I should write the test like above?",
+      "parentUuid": "1d75570c_f5c328b7",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 36
+      },
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a9d555f_030609af",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 7
@@ -139,6 +223,24 @@
     },
     {
       "key": {
+        "uuid": "dd50488c_f531529d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-15T09:02:16Z",
+      "side": 1,
+      "message": "Done. Updated locally (need to discuss test design on other parts).",
+      "parentUuid": "5a9d555f_030609af",
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2a1061b_4b7840f8",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 7
@@ -150,6 +252,30 @@
       "writtenOn": "2019-04-10T16:35:08Z",
       "side": 1,
       "message": "Optional: another approach is to look at file creation time stamp, so that the remebering part can be simplified. Up to you.",
+      "range": {
+        "startLine": 100,
+        "startChar": 6,
+        "endLine": 100,
+        "endChar": 24
+      },
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99a32126_8f4ce4d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-15T09:02:16Z",
+      "side": 1,
+      "message": "I think the timestamp approach looks cleaner. Going to change it after the discussion about ClickShutterButtonAndVerifyFile function",
+      "parentUuid": "e2a1061b_4b7840f8",
       "range": {
         "startLine": 100,
         "startChar": 6,
@@ -225,6 +351,30 @@
     },
     {
       "key": {
+        "uuid": "cf07591f_b8eac387",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-15T09:02:16Z",
+      "side": 1,
+      "message": "Removed. Thanks. I launched GCA this way but then I forgot about migrating the files directory. I will use this somewhere else, because a particular test would require me to restart GCA.",
+      "parentUuid": "345a9c41_55a711c5",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 8
+      },
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e09c049c_9450ec14",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 7
@@ -239,6 +389,24 @@
       "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da15df48_d3e17971",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-15T09:02:16Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "e09c049c_9450ec14",
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -265,6 +433,30 @@
     },
     {
       "key": {
+        "uuid": "5bc77039_5890329f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-15T09:02:16Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "0bbdb4c3_783b2883",
+      "range": {
+        "startLine": 154,
+        "startChar": 65,
+        "endLine": 154,
+        "endChar": 66
+      },
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7e6e629_aa62b624",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
         "patchSetId": 7
@@ -276,6 +468,24 @@
       "writtenOn": "2019-04-10T16:35:08Z",
       "side": 1,
       "message": "must is used for non-uiautomator errors, too. So the NOLINT explanation does not make sense...",
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "709427f4_17ab2cd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-15T09:02:16Z",
+      "side": 1,
+      "message": "I wonder if I can just have SwitchMode and ClickShutterButton directly call s.Fatal? Would this be discouraged for Tast or Go tests in general?",
+      "parentUuid": "c7e6e629_aa62b624",
       "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -299,6 +509,24 @@
     },
     {
       "key": {
+        "uuid": "2b0f2077_94df5015",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-15T09:02:16Z",
+      "side": 1,
+      "message": "Changed to testing.Sleep.",
+      "parentUuid": "afba803e_84841c61",
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e957744b_55b090ac",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
         "patchSetId": 7
@@ -310,6 +538,24 @@
       "writtenOn": "2019-04-10T16:08:08Z",
       "side": 1,
       "message": "Hmm, this code looks somehow tricky.\nI wonder if we really need |must| function, which is just a wrapper of s.Fatal. \n\nIt seems that gca.RunTest consists of two phases: (i) Setting up device, (ii) Calling f.\nSo, how about splitting it and creating a function like \"gca.SetUpDevice\"?\n\nThen, the code would be like this:\n\nfunc GCARecording(...) {\n\n\ta :\u003d s.PreValue().(arc.PreData).ARC\n\td, err :\u003d ui.NewDevice(ctx, a)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to initialize UI Automator: \", err)\n\t}\n\tdefer d.Close()\n\n\tgca.SetUpDevice(ctx, \u0026d)\n\n\tgca.SwitchMode(...)\n\tgca.ClickShutterButton(...)\n\t...\n}\n\nYou can simply call s.Fatal() in gca.PrepareDevice, gca.SwitchMode and other functions.\nWDYT?",
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28373558_e7118185",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-15T09:02:16Z",
+      "side": 1,
+      "message": "Hmm... What I don\u0027t like about this solution is: we would create code duplication for the UIAutomator setup part.\nCan we do something like:\n\nfunc GCARecording(...) {\n\td :\u003d gca.SetUpDevice(...) // Put UIAutomator initialization code here\n\n\t// Test body\n\n\tgca.TearDownDevice(d) // Calls d.Close() and close GCA\n\nHowever the naming - \"SetUp/TearDown\" makes them look like they should be called/handled by the testing framework.\n\n\nI copied the design from mediasession: https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/media_session_gain.go?l\u003d45\n\nHmm... Can I keep the RunTest design and have the functions (ClickShutterButton, SwitchMode) directly call s.Fatal?",
+      "parentUuid": "e957744b_55b090ac",
       "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
