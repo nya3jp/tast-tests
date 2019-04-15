@@ -1,0 +1,186 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "579118bc_1091777c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-15T03:52:01Z",
+      "side": 1,
+      "message": "the append() here doesn\u0027t appear to be doing anything. you can likely just do this:\n\n  commonArgs :\u003d []string{createStreamDataArg(...)}",
+      "revId": "b4339f045fe31126f5821ae96e289226399d09ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58ed7efd_28d04ebf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-15T03:52:01Z",
+      "side": 1,
+      "message": "i\u0027d probably avoid using append() like this, as it may modify the underlying array backing commonArgs:\n\n  args :\u003d []string{...}\n  a :\u003d append(args, \"a\")\n  b :\u003d append(args, \"b\") // may modify a\n\nsee https://blog.golang.org/slices for a lot more details\n\nconsider doing this instead so you have a new backing array:\n\n  args :\u003d append([]string, commonArgs...)\n  args \u003d append(args, ba.extraArgs...)",
+      "revId": "b4339f045fe31126f5821ae96e289226399d09ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5afd68b_d517fe06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-15T03:52:01Z",
+      "side": 1,
+      "message": "nit: please include the error here:\n\n  s.Fatal(\"Failed to set values for verbose logging: \", err)",
+      "revId": "b4339f045fe31126f5821ae96e289226399d09ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "225158b7_88ed6306",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-15T03:52:01Z",
+      "side": 1,
+      "message": "nit: same here",
+      "revId": "b4339f045fe31126f5821ae96e289226399d09ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f1530a9_a5678e30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/arctest/arctest.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-15T03:52:01Z",
+      "side": 1,
+      "message": "nit: maybe %q here?",
+      "range": {
+        "startLine": 28,
+        "startChar": 35,
+        "endLine": 28,
+        "endChar": 37
+      },
+      "revId": "b4339f045fe31126f5821ae96e289226399d09ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97476762_f61a4b00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-15T03:52:01Z",
+      "side": 1,
+      "message": "nit: maybe just something like MeasureProcessCPU or MeasureCommandCPU?",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 31
+      },
+      "revId": "b4339f045fe31126f5821ae96e289226399d09ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44cc2293_f89b98de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-15T03:52:01Z",
+      "side": 1,
+      "message": "nit: probably don\u0027t need this sentence now that StartProcFunc is documented. how about just \"RunCommandWithCPUMeasurement calls runCmdAsync and measures CPU usage before killing the process.\"?",
+      "revId": "b4339f045fe31126f5821ae96e289226399d09ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a62173c7_937fba99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-15T03:52:01Z",
+      "side": 1,
+      "message": "huge nit: consider just using brief end-of-line comments here to improve readability; these don\u0027t need to be godoc comments (since these constants aren\u0027t exported outside the package):\n\nconst (\n    stabilize \u003d ... // time to wait for CPU to stabilize after launching proc\n    measure \u003d ...   // duration for measuring usage\n)",
+      "revId": "b4339f045fe31126f5821ae96e289226399d09ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f53bf03_3f937f37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-15T03:52:01Z",
+      "side": 1,
+      "message": "this seems like it should maybe be a function arg, since it doesn\u0027t seem like this function has any builtin way of knowing how long the command needs to run",
+      "revId": "b4339f045fe31126f5821ae96e289226399d09ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc16a1a1_e4783a62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-15T03:52:01Z",
+      "side": 1,
+      "message": "nit: i think you can just return err directly; iirc it\u0027ll include the path and a detailed message",
+      "revId": "b4339f045fe31126f5821ae96e289226399d09ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
