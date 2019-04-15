@@ -580,6 +580,24 @@
     },
     {
       "key": {
+        "uuid": "fef5b586_afcaa60e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-15T10:40:21Z",
+      "side": 1,
+      "message": "Good idea! I\u0027ll go with this route.\nThanks!",
+      "parentUuid": "e57c7f82_fef8132d",
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d7d81c9_c239d24f",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_still_capture.go",
         "patchSetId": 7
