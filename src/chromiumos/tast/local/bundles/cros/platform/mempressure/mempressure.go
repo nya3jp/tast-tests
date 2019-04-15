@@ -13,7 +13,8 @@ import (
 	"math"
 	"net"
 	"os"
-	"strconv"
+	"runtime"
+	"syscall"
 	"time"
 
 	"github.com/shirou/gopsutil/mem"
@@ -32,8 +33,6 @@ const (
 	CompressibleData = "memory_pressure_page.lzo.40"
 	// DormantCode is JS code that detects the end of a page load.
 	DormantCode = "memory_pressure_dormant.js"
-	// PreallocatorScript is a shell script that preallocates memory.
-	PreallocatorScript = "memory_pressure_preallocator.sh"
 	// WPRArchiveName is the external file name for the wpr archive.
 	WPRArchiveName = "memory_pressure_mixed_sites.wprgo"
 )
@@ -737,9 +736,6 @@ type RunParameters struct {
 	PageFilePath string
 	// PageFileCompressionRatio is the approximate zram compression ratio of the content of PageFilePath.
 	PageFileCompressionRatio float64
-	// PreallocatorPath is the path name of a program which preallocates
-	// RAM.
-	PreallocatorPath string
 	// WPRArchivePath is the path name of a WPR archive.
 	WPRArchivePath string
 	// UseLogIn controls whether Run should use GAIA login.
@@ -772,19 +768,35 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		s.Fatal("Cannot compute preallocation amount: ", err)
 	}
 	if allocMiB > 0 && !p.RecordPageSet {
-		s.Logf("Preallocating %d MiB", allocMiB)
-		preallocatorCmd := testexec.CommandContext(ctx, p.PreallocatorPath,
-			strconv.FormatUint(allocMiB, 10), p.PageFilePath)
-		if err := preallocatorCmd.Start(); err != nil {
-			preallocatorCmd.DumpLog(ctx)
-			s.Fatal("Cannot start preallocator: ", err)
-		}
-		defer func() {
-			if err := preallocatorCmd.Kill(); err != nil {
-				s.Error("Cannot kill memory preallocator: ", err)
+		s.Logf("Preallocating %d MiB via mmap", allocMiB)
+		allocBytes := uint64(allocMiB * 1024 * 1024)
+
+		// If we're on a 32bit architecture and we want to preallocate more than the address space can handle we have to fail.
+		// arm and 386 are the only 32bit architectures we would see, 64bit arm is arm64.
+		if runtime.GOARCH == "arm" || runtime.GOARCH == "386" {
+			if allocBytes >= math.MaxUint32 {
+				s.Fatalf("Preallocation on 32bit architecture is too large: %d", allocBytes)
 			}
-			preallocatorCmd.Wait()
-		}()
+		}
+
+		data, err := syscall.Mmap(-1, 0, int(allocBytes), syscall.PROT_READ|syscall.PROT_WRITE, syscall.MAP_ANON|syscall.MAP_PRIVATE)
+		if err != nil {
+			s.Fatalf("Preallocating %d MiB failed: %v", allocMiB, err)
+		}
+		defer syscall.Munmap(data)
+
+		pf, err := ioutil.ReadFile(p.PageFilePath)
+		if err != nil {
+			s.Fatalf("Unable to read pagefile contents from %s: %v", p.PageFilePath, err)
+		}
+
+		if len(pf) != os.Getpagesize() {
+			s.Fatalf("Pagefile contents in %s were not page sized got: %d expecting: %d", p.PageFilePath, len(pf), os.Getpagesize())
+		}
+
+		for i := 0; i < int(allocBytes); i += len(pf) {
+			copy(data[i:], pf)
+		}
 	} else {
 		s.Log("No preallocation needed")
 	}
