@@ -562,6 +562,24 @@
     },
     {
       "key": {
+        "uuid": "e57c7f82_fef8132d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-15T09:24:08Z",
+      "side": 1,
+      "message": "How about using \u0027defer\u0027 to call TearDown so that we can call s.Fatal directly in helper functions like ClickShutterButton?\n\nfunc GCARecording(...) {\n\td, err :\u003d gca.SetUpDevice(...)\n\tif err !\u003d nil {\n\t\t...\n\t}\n\tdefer gca.TearDownDevice(d)\n\n\t// Test body\n}\n\nBut, I don\u0027t have strong opinion anymore since the current RunTest design would work as well.\nBoth are okay for me.",
+      "parentUuid": "28373558_e7118185",
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d7d81c9_c239d24f",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_still_capture.go",
         "patchSetId": 7
