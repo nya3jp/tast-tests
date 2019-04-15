@@ -1,0 +1,187 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "320f983d_8844ae27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-15T04:13:51Z",
+      "side": 1,
+      "message": "nit: s/cleanupFunc/runCleanup/",
+      "range": {
+        "startLine": 119,
+        "startChar": 4,
+        "endLine": 119,
+        "endChar": 15
+      },
+      "revId": "15fc873f45f217d4f01bef937a2a608bfecf6910",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f054158_2be050f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-15T04:13:51Z",
+      "side": 1,
+      "message": "nit: if you don\u0027t plan to add more to this loop, i\u0027d maybe just use if/else to make the code simpler:\n\nif rtt, err :\u003d pingGuest(); err !\u003d nil {\n    s.Error(...)\n} else {\n    sumRTT +\u003d rtt\n}",
+      "revId": "15fc873f45f217d4f01bef937a2a608bfecf6910",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e33ea28_d8cb0e45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-15T04:13:51Z",
+      "side": 1,
+      "message": "this will include failed pings even though you don\u0027t increment sumRTT for them. should you keep a count of successful pings to use as the denominator here?",
+      "range": {
+        "startLine": 230,
+        "startChar": 20,
+        "endLine": 230,
+        "endChar": 27
+      },
+      "revId": "15fc873f45f217d4f01bef937a2a608bfecf6910",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e89f7874_d090e471",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-15T04:13:51Z",
+      "side": 1,
+      "message": "same comment here: should you keep track of the successful count?",
+      "range": {
+        "startLine": 310,
+        "startChar": 34,
+        "endLine": 310,
+        "endChar": 54
+      },
+      "revId": "15fc873f45f217d4f01bef937a2a608bfecf6910",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "659d845a_ff544702",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-15T04:13:51Z",
+      "side": 1,
+      "message": "https://crrev.com/c/1562673 has landed now, so this can hopefully be removed",
+      "revId": "15fc873f45f217d4f01bef937a2a608bfecf6910",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ba97101_13a96c43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-15T04:13:51Z",
+      "side": 1,
+      "message": "nit: \"exited with error\"?",
+      "range": {
+        "startLine": 515,
+        "startChar": 42,
+        "endLine": 515,
+        "endChar": 53
+      },
+      "revId": "15fc873f45f217d4f01bef937a2a608bfecf6910",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f2b8597_9aa44081",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-15T04:13:51Z",
+      "side": 1,
+      "message": "nit: maybe \"sftpCommand executes an SFTP command to perform a file transfer with the container.\"?",
+      "revId": "15fc873f45f217d4f01bef937a2a608bfecf6910",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e4fd285_07e9329f",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-15T04:13:51Z",
+      "side": 1,
+      "message": "nit: go favors short variable names in short functions. i\u0027d consider just using something like \u0027cf\u0027 (for \"command file\") here\n\nhttps://talks.golang.org/2014/names.slide#1",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 251,
+        "endChar": 12
+      },
+      "revId": "15fc873f45f217d4f01bef937a2a608bfecf6910",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a6913c5_2a16030c",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-15T04:13:51Z",
+      "side": 1,
+      "message": "this leaks the FD; please call sftpCmdFile.Close() before returning",
+      "revId": "15fc873f45f217d4f01bef937a2a608bfecf6910",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
