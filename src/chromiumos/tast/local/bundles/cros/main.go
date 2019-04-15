@@ -1,4 +1,4 @@
-// Copyright 2017 The Chromium OS Authors. All rights reserved.
+// Copyright 2019 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -15,11 +15,11 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/arc"
 	_ "chromiumos/tast/local/bundles/cros/audio"
 	_ "chromiumos/tast/local/bundles/cros/camera"
-	_ "chromiumos/tast/local/bundles/cros/cryptohome"
 	_ "chromiumos/tast/local/bundles/cros/debugd"
 	_ "chromiumos/tast/local/bundles/cros/example"
 	_ "chromiumos/tast/local/bundles/cros/graphics"
 	_ "chromiumos/tast/local/bundles/cros/hardware"
+	_ "chromiumos/tast/local/bundles/cros/hwsec"
 	_ "chromiumos/tast/local/bundles/cros/kernel"
 	_ "chromiumos/tast/local/bundles/cros/meta"
 	_ "chromiumos/tast/local/bundles/cros/network"
