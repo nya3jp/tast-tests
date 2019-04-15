@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "183c5045_5b2c6081",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-15T12:04:33Z",
+      "side": 1,
+      "message": "Changed behavior to calling s.Fatal instead of returning an error.",
+      "parentUuid": "59e95267_d0f2b3de",
+      "range": {
+        "startLine": 44,
+        "startChar": 37,
+        "endLine": 44,
+        "endChar": 55
+      },
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69839f3d_a06681fa",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 7
@@ -119,6 +143,24 @@
     },
     {
       "key": {
+        "uuid": "c16f1721_0714f8ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-15T12:04:33Z",
+      "side": 1,
+      "message": "I changed to s.Fatal here.",
+      "parentUuid": "832fbc78_ffe6f1a6",
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f987af7e_b900cd9b",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 7
@@ -139,6 +181,30 @@
       "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85cd8e57_4d97d51c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-15T12:04:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f987af7e_b900cd9b",
+      "range": {
+        "startLine": 62,
+        "startChar": 28,
+        "endLine": 62,
+        "endChar": 62
+      },
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -203,6 +269,48 @@
       "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f7fccd0_8968eeba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-15T12:04:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d5a3daa_5a89212d",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 36
+      },
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aaca3f20_84e54a60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-15T12:04:33Z",
+      "side": 1,
+      "message": "Not sure what this Ditto refers to..",
+      "parentUuid": "2009052a_12f7e431",
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -288,6 +396,30 @@
     },
     {
       "key": {
+        "uuid": "cf401814_b8066e07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-15T12:04:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99a32126_8f4ce4d0",
+      "range": {
+        "startLine": 100,
+        "startChar": 6,
+        "endLine": 100,
+        "endChar": 24
+      },
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "204b448f_6f98197c",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 7
@@ -302,6 +434,24 @@
       "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5771b459_fadee11f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-15T12:04:33Z",
+      "side": 1,
+      "message": "Removed using the timestamp approach suggested by Hidehiko-san.",
+      "parentUuid": "204b448f_6f98197c",
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -325,6 +475,30 @@
       "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15e41800_c6ea7e65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-15T12:04:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7153c093_0d1ebc4d",
+      "range": {
+        "startLine": 117,
+        "startChar": 44,
+        "endLine": 117,
+        "endChar": 62
+      },
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -372,6 +546,30 @@
       "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95461a3f_79e93e28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-15T12:04:33Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "cf07591f_b8eac387",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 8
+      },
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -492,6 +690,24 @@
     },
     {
       "key": {
+        "uuid": "b68186b8_51167f62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-15T12:04:33Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "709427f4_17ab2cd4",
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "afba803e_84841c61",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
         "patchSetId": 7
@@ -598,6 +814,24 @@
     },
     {
       "key": {
+        "uuid": "bf6735a9_6cc54d64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-15T12:04:33Z",
+      "side": 1,
+      "message": "Modified following Keiichi-san\u0027s suggestion!",
+      "parentUuid": "fef5b586_afcaa60e",
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d7d81c9_c239d24f",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_still_capture.go",
         "patchSetId": 7
@@ -612,6 +846,24 @@
       "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cfa27f4_97147643",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_still_capture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-15T12:04:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d7d81c9_c239d24f",
+      "revId": "e7e37219f57415202df64e8484b42b25efcd8842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
