@@ -124,6 +124,24 @@ func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to activate ARC Test IME: ", err)
 	}
 
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var actualID string
+		if err := tconn.EvalPromise(ctx,
+			`new Promise(function(resolve, reject) {
+			  chrome.inputMethodPrivate.getCurrentInputMethod(function(id) {
+			    resolve(id);
+			  });
+			})`, &actualID); err != nil {
+			return err
+		}
+		if actualID != id {
+			return errors.Errorf("got input method ID %q while expecting %q", actualID, id)
+		}
+		return nil
+	}, &testing.PollOptions{Interval: time.Second}); err != nil {
+		s.Fatal("Failed to activate ARC Test IME: ", err)
+	}
+
 	// Show a page with a text field that autofocuses. Turn off autocorrect as it
 	// can interfere with the test.
 	const html = `<input type="text" id="text" autocorrect="off" autofocus/>`
