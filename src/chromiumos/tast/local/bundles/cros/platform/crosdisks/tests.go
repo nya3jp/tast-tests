@@ -45,6 +45,7 @@ func verifyProp(prop map[string]dbus.Variant) []error {
 		{"DriveModel", "s"},
 		{"IdLabel", "s"},
 		{"NativePath", "s"},
+		{"StorageDevicePath", "s"},
 		{"FileSystemType", "s"},
 	} {
 		if v, ok := prop[f.name]; !ok {
