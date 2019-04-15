@@ -13,7 +13,8 @@ import (
 	"math"
 	"net"
 	"os"
-	"strconv"
+	"runtime"
+	"syscall"
 	"time"
 
 	"github.com/shirou/gopsutil/mem"
@@ -32,8 +33,6 @@ const (
 	CompressibleData = "memory_pressure_page.lzo.40"
 	// DormantCode is JS code that detects the end of a page load.
 	DormantCode = "memory_pressure_dormant.js"
-	// PreallocatorScript is a shell script that preallocates memory.
-	PreallocatorScript = "memory_pressure_preallocator.sh"
 	// WPRArchiveName is the external file name for the wpr archive.
 	WPRArchiveName = "memory_pressure_mixed_sites.wprgo"
 )
@@ -737,9 +736,6 @@ type RunParameters struct {
 	PageFilePath string
 	// PageFileCompressionRatio is the approximate zram compression ratio of the content of PageFilePath.
 	PageFileCompressionRatio float64
-	// PreallocatorPath is the path name of a program which preallocates
-	// RAM.
-	PreallocatorPath string
 	// WPRArchivePath is the path name of a WPR archive.
 	WPRArchivePath string
 	// UseLogIn controls whether Run should use GAIA login.
@@ -751,6 +747,47 @@ type RunParameters struct {
 	// RecordPageSet instructs Run to run in record mode
 	// vs. replay mode.
 	RecordPageSet bool
+}
+
+// createMemoryMapping will create a memory mapping of size allocBytes.
+// On success the method will return a byte slice and a function which can be
+// used to unmap the mapping.
+func createMemoryMapping(allocBytes uint64) ([]byte, func(), error) {
+	// If we're on a 32-bit architecture and we want to preallocate more than the address space can handle we have to fail.
+	// arm and 386 are the only 32-bit architectures we would see, 64-bit arm is arm64.
+	if runtime.GOARCH == "arm" || runtime.GOARCH == "386" {
+		if allocBytes >= math.MaxUint32 {
+			return nil, nil, errors.Errorf("Attempt to create memory mapping on 32-bit architecture that is too large: %d bytes", allocBytes)
+		}
+	}
+
+	data, err := syscall.Mmap(-1, 0, int(allocBytes), syscall.PROT_READ|syscall.PROT_WRITE, syscall.MAP_ANON|syscall.MAP_PRIVATE)
+	if err != nil {
+		return nil, nil, errors.Wrapf(err, "Unable to create a mapping of size %d bytes via mmap", allocBytes)
+	}
+
+	return data, func() {
+		syscall.Munmap(data)
+	}, nil
+}
+
+// populateWithPageContents will attempt to populate a byte slice with the PageFile contents.
+func populateWithPageContents(b []byte, p *RunParameters) error {
+	pf, err := ioutil.ReadFile(p.PageFilePath)
+	if err != nil {
+		return errors.Wrapf(err, "Unable to read pagefile contents from %s", p.PageFilePath)
+	}
+
+	// The pagefile should be the size of exactly one page.
+	if len(pf) != os.Getpagesize() {
+		return errors.Errorf("Pagefile contents in %s were not page sized got: %d bytes; want: %d bytes", p.PageFilePath, len(pf), os.Getpagesize())
+	}
+
+	for i := 0; i < len(b); i += len(pf) {
+		copy(b[i:], pf)
+	}
+
+	return nil
 }
 
 // Run creates a memory pressure situation by loading multiple tabs into Chrome
@@ -772,19 +809,18 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		s.Fatal("Cannot compute preallocation amount: ", err)
 	}
 	if allocMiB > 0 && !p.RecordPageSet {
-		s.Logf("Preallocating %d MiB", allocMiB)
-		preallocatorCmd := testexec.CommandContext(ctx, p.PreallocatorPath,
-			strconv.FormatUint(allocMiB, 10), p.PageFilePath)
-		if err := preallocatorCmd.Start(); err != nil {
-			preallocatorCmd.DumpLog(ctx)
-			s.Fatal("Cannot start preallocator: ", err)
+		s.Logf("Preallocating %d MiB via mmap", allocMiB)
+		allocBytes := uint64(allocMiB * 1024 * 1024)
+		data, unmapFunc, err := createMemoryMapping(allocBytes)
+		if err != nil {
+			s.Fatal("Unable to create memory mapping: ", err)
 		}
-		defer func() {
-			if err := preallocatorCmd.Kill(); err != nil {
-				s.Error("Cannot kill memory preallocator: ", err)
-			}
-			preallocatorCmd.Wait()
-		}()
+		defer unmapFunc()
+
+		err = populateWithPageContents(data, p)
+		if err != nil {
+			s.Fatal("Unable to populate mapping: ", err)
+		}
 	} else {
 		s.Log("No preallocation needed")
 	}

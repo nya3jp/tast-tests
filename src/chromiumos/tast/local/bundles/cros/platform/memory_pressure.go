@@ -22,7 +22,6 @@ func init() {
 		Data: []string{
 			mempressure.CompressibleData,
 			mempressure.DormantCode,
-			mempressure.PreallocatorScript,
 			mempressure.WPRArchiveName,
 		},
 		SoftwareDeps: []string{"chrome_login"},
@@ -35,7 +34,6 @@ func MemoryPressure(ctx context.Context, s *testing.State) {
 		DormantCodePath:          s.DataPath(mempressure.DormantCode),
 		PageFilePath:             s.DataPath(mempressure.CompressibleData),
 		PageFileCompressionRatio: 0.40,
-		PreallocatorPath:         s.DataPath(mempressure.PreallocatorScript),
 		WPRArchivePath:           s.DataPath(mempressure.WPRArchiveName),
 	}
 	mempressure.Run(ctx, s, p)
