@@ -46,6 +46,30 @@
       "revId": "9d191ec518236a6bce3bdd871e24abb9cb5e79cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "631991a4_b1d1e467",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mount_obb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-15T04:40:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "945e7b6b_bc461ca2",
+      "range": {
+        "startLine": 122,
+        "startChar": 45,
+        "endLine": 122,
+        "endChar": 47
+      },
+      "revId": "9d191ec518236a6bce3bdd871e24abb9cb5e79cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
