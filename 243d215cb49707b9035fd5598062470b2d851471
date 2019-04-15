@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "511c5099_9f007369",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-15T09:20:27Z",
+      "side": 1,
+      "message": "nit: maybe just 100*time.Millisecond to make the test faster?",
+      "range": {
+        "startLine": 141,
+        "startChar": 35,
+        "endLine": 141,
+        "endChar": 46
+      },
+      "revId": "243d215cb49707b9035fd5598062470b2d851471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
