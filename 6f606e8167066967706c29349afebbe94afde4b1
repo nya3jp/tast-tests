@@ -22,6 +22,53 @@
       "revId": "6f606e8167066967706c29349afebbe94afde4b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdc8a81f_7dff9bfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2019-04-15T02:29:30Z",
+      "side": 1,
+      "message": "It probably depends on what we want to test.\n\nIncreasing this value would mean we have more tests running.\nbetty did \"launch\" in N so this isn\u0027t wrong but we can enforce different things to get better coverage.",
+      "parentUuid": "a508dde2_5ff151d3",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 31
+      },
+      "revId": "6f606e8167066967706c29349afebbe94afde4b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f5c2ec3_11a5b5b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2019-04-15T02:29:30Z",
+      "side": 1,
+      "message": "can we have apiLevelP tests somewhere too? \nfor things like nocturne and grunt.",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 31
+      },
+      "revId": "6f606e8167066967706c29349afebbe94afde4b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
