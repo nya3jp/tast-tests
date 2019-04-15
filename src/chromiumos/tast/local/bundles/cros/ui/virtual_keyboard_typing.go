@@ -17,11 +17,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     VirtualKeyboardTyping,
-		Desc:     "Checks that the virtual keyboard can type into a text field",
-		Contacts: []string{"essential-inputs-team@google.com"},
-		// "cros_internal" is needed to use the official proprietary virtual keyboard.
-		SoftwareDeps: []string{"chrome_login", "cros_internal"},
+		Func:         VirtualKeyboardTyping,
+		Desc:         "Checks that the virtual keyboard can type into a text field",
+		Contacts:     []string{"essential-inputs-team@google.com"},
+		SoftwareDeps: []string{"chrome_login", "google_virtual_keyboard"},
 	})
 }
 

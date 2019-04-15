@@ -16,11 +16,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     VirtualKeyboardOmnibox,
-		Desc:     "Checks that the virtual keyboard appears when clicking on the omnibox",
-		Contacts: []string{"essential-inputs-team@google.com"},
-		// "cros_internal" is needed to use the official proprietary virtual keyboard.
-		SoftwareDeps: []string{"chrome_login", "cros_internal"},
+		Func:         VirtualKeyboardOmnibox,
+		Desc:         "Checks that the virtual keyboard appears when clicking on the omnibox",
+		Contacts:     []string{"essential-inputs-team@google.com"},
+		SoftwareDeps: []string{"chrome_login", "google_virtual_keyboard"},
 	})
 }
 
