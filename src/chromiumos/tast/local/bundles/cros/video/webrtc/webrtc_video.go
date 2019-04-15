@@ -66,6 +66,8 @@ func openWebRTCPageAndCheckBucket(ctx context.Context, fileSystem http.FileSyste
 		return errors.Wrap(err, "failed to open video page")
 	}
 	defer conn.Close()
+	// Close the tab to stop loopback after test.
+	defer conn.CloseTarget(ctx)
 
 	if err := conn.WaitForExpr(ctx, "streamReady"); err != nil {
 		return errors.Wrap(err, "timed out waiting for stream ready")
@@ -90,7 +92,6 @@ func openWebRTCPageAndCheckBucket(ctx context.Context, fileSystem http.FileSyste
 		return errors.Wrapf(err, "unexpected histogram update: %v", bucket)
 	}
 
-	// TODO(hiroh): Stop video on loopback.html.
 	return nil
 }
 
