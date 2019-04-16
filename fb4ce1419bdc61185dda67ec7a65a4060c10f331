@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2dc0bf92_9e254629",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-16T06:25:39Z",
+      "side": 1,
+      "message": "nit: godoc may wrap these lines, so please add an extra space to L8-13:\n\n  // See details of ...\n  //  https://...\n  //  https://...",
+      "revId": "fb4ce1419bdc61185dda67ec7a65a4060c10f331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
