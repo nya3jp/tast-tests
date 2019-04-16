@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "727e3df3_6f7ff19a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-16T18:25:24Z",
+      "side": 1,
+      "message": "I generally prefer the present tense (here and below).  The future is more words, does not convey more meaning, and does not read better.",
+      "range": {
+        "startLine": 752,
+        "startChar": 23,
+        "endLine": 752,
+        "endChar": 34
+      },
+      "revId": "d69a6ded41466da26814a89941d2d3744d52d40a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a1194db_87600e26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-16T18:25:24Z",
+      "side": 1,
+      "message": "Maybe this should be just the page file path, since that\u0027s all we\u0027re using.",
+      "range": {
+        "startLine": 775,
+        "startChar": 40,
+        "endLine": 775,
+        "endChar": 56
+      },
+      "revId": "d69a6ded41466da26814a89941d2d3744d52d40a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4cf775d_e3d6fde9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-16T18:25:24Z",
+      "side": 1,
+      "message": "(To quote Dan) huge nit: The size of the pagefile should be exactly one page.\n\nBTW, nothing really breaks here (or elsewhere) if the page file has a different size.  In fact I had considered making it 4097 bytes so that the page content would not repeat identically.  However, that wasn\u0027t needed, and this check is fine, for sanity.",
+      "range": {
+        "startLine": 781,
+        "startChar": 4,
+        "endLine": 781,
+        "endChar": 56
+      },
+      "revId": "d69a6ded41466da26814a89941d2d3744d52d40a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
