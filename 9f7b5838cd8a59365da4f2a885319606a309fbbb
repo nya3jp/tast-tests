@@ -278,6 +278,23 @@
     },
     {
       "key": {
+        "uuid": "e9524b02_1e446c4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-04-16T03:19:51Z",
+      "side": 1,
+      "message": "There is no camera on some devices such as chromeboxes. Should we add caps.BuiltinCamera here? (from chromiumos/tast/local/bundles/cros/video/lib/caps)",
+      "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "25190159_70fedb38",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
         "patchSetId": 9
@@ -318,6 +335,23 @@
         "endLine": 43,
         "endChar": 34
       },
+      "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f21799d_396f3f0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_still_capture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-04-16T03:19:51Z",
+      "side": 1,
+      "message": "There is no camera on some devices such as chromeboxes. Should we add caps.BuiltinCamera here? (from chromiumos/tast/local/bundles/cros/video/lib/caps)",
       "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
