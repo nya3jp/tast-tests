@@ -236,6 +236,24 @@
     },
     {
       "key": {
+        "uuid": "286e6bdc_97043ece",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-16T09:54:51Z",
+      "side": 1,
+      "message": "i agree that it\u0027s a bit weird, but i think that casts like this are common when working with time.Durations :-)",
+      "parentUuid": "fe3bd176_1f953561",
+      "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47c76315_06252a50",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 15
