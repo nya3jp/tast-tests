@@ -141,6 +141,30 @@
       "revId": "6f606e8167066967706c29349afebbe94afde4b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41ff2dfa_cab02be9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-16T09:44:54Z",
+      "side": 1,
+      "message": "I think what uekawa-san said is something like \"how about adding P hardcoded tests for nocturne and grunt?\".\n\nIMO, it depends on design of the implementation and how to test it.\nCould you discuss and come up with an agreement separately?",
+      "parentUuid": "14808944_e16a6861",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 31
+      },
+      "revId": "6f606e8167066967706c29349afebbe94afde4b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
