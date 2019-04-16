@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "803b3b90_bb6a6dff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-16T06:44:57Z",
+      "side": 1,
+      "message": "Thank you for explanation, Junichi.\n\nAs this is conceptually following the fact that betty is launched in N,\ncan we move forward to prioritize fixing betty-arcnext failures?\n\nWhat we\u0027d like to test via betty-arcmaster/betty-arcnext is still open question,\nat the moment, and will need some agreement across teams, which would take more time.",
+      "parentUuid": "bdc8a81f_7dff9bfa",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 31
+      },
+      "revId": "6f606e8167066967706c29349afebbe94afde4b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f5c2ec3_11a5b5b3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2019-04-15T02:29:30Z",
       "side": 1,
       "message": "can we have apiLevelP tests somewhere too? \nfor things like nocturne and grunt.",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 31
+      },
+      "revId": "6f606e8167066967706c29349afebbe94afde4b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd395149_086ff61f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-16T06:44:57Z",
+      "side": 1,
+      "message": "Please let me focus on fixing betty family failures, in this CL.\nTBH, I\u0027m not very sure what we\u0027d like to ensure by this test... I\u0027d defer the work to niwa@, the original author.",
+      "parentUuid": "8f5c2ec3_11a5b5b3",
       "range": {
         "startLine": 103,
         "startChar": 0,
