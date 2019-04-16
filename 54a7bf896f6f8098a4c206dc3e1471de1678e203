@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6e760388_f4b94c31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-16T17:54:22Z",
+      "side": 1,
+      "message": "Good idea, I also did the same for the step which populates the mapping as we may do an experiment to do this dynamically later and keeping this in a separate method will make that clear if we try that.",
+      "parentUuid": "8f0e5e17_016e0e96",
+      "revId": "54a7bf896f6f8098a4c206dc3e1471de1678e203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b49b3bb_5afa9b82",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "4b4acac0_0dda8ebc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-16T17:54:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b49b3bb_5afa9b82",
+      "range": {
+        "startLine": 774,
+        "startChar": 19,
+        "endLine": 774,
+        "endChar": 24
+      },
+      "revId": "54a7bf896f6f8098a4c206dc3e1471de1678e203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "071c259d_f5926990",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 2
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "496babf8_692c9152",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-16T17:54:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "071c259d_f5926990",
+      "revId": "54a7bf896f6f8098a4c206dc3e1471de1678e203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e57a8f2d_cbc781a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 2
@@ -73,6 +133,24 @@
       "revId": "54a7bf896f6f8098a4c206dc3e1471de1678e203",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bf7d5eb_6791032d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-16T17:54:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e57a8f2d_cbc781a1",
+      "revId": "54a7bf896f6f8098a4c206dc3e1471de1678e203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
