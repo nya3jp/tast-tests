@@ -372,6 +372,24 @@
     },
     {
       "key": {
+        "uuid": "25b86d46_4a242abc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-16T19:21:06Z",
+      "side": 1,
+      "message": "Yes, that\u0027s nice.  In fact I\u0027d use two: RAMSize and ProcessSize.  (Because part of a process can be compressed, the two aren\u0027t equivalent and explicit conversions would be helpful.)\n\nNot sure it\u0027s worth the trouble though.",
+      "parentUuid": "87dcef7b_952abf59",
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b43f01c2_d847a039",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 4
@@ -431,6 +449,30 @@
       "side": 1,
       "message": "OK---I think I have a better explanation and calculation.  Thanks.",
       "parentUuid": "f36b78f3_2625fad3",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 33
+      },
+      "revId": "f721528647e0499f7c95e14aca72c7b121936fee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f27146d_5c44e48f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-16T19:21:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84d1efa5_e488eb66",
       "range": {
         "startLine": 227,
         "startChar": 0,
