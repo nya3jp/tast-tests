@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f0e5e17_016e0e96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-16T03:02:31Z",
+      "side": 1,
+      "message": "since this seems standalone and the Run() function is very long, please move it into a separate helper function, e.g.\n\n// prealloc mmaps allocMiB of memory. The caller is responsible for passing\n// the returned buffer to syscall.Munmap if err is nil.\nfunc prealloc(allocMiB uint64) ([]byte, error)",
+      "revId": "54a7bf896f6f8098a4c206dc3e1471de1678e203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b49b3bb_5afa9b82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-16T03:02:31Z",
+      "side": 1,
+      "message": "huge nit: \"32-bit\" (also L775 and L778)",
+      "range": {
+        "startLine": 774,
+        "startChar": 19,
+        "endLine": 774,
+        "endChar": 24
+      },
+      "revId": "54a7bf896f6f8098a4c206dc3e1471de1678e203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "071c259d_f5926990",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-16T03:02:31Z",
+      "side": 1,
+      "message": "nit: s.Fatal(\"Preallocation on 32-bit architecture is too large: \", allocBytes)",
+      "revId": "54a7bf896f6f8098a4c206dc3e1471de1678e203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e57a8f2d_cbc781a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-16T03:02:31Z",
+      "side": 1,
+      "message": "nit: we usually follow the common go unit test assertion failure message style here, e.g.\n\n \"... not page-sized: got %d; want %d\"",
+      "revId": "54a7bf896f6f8098a4c206dc3e1471de1678e203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
