@@ -34,6 +34,24 @@
       "revId": "2e3f07f2c0904ee3f91b23621a24c33fa957d763",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f66439a0_7ebe32d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-04-16T10:16:06Z",
+      "side": 1,
+      "message": "reverted.",
+      "parentUuid": "ae8dbb4c_0ab68afd",
+      "revId": "2e3f07f2c0904ee3f91b23621a24c33fa957d763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
