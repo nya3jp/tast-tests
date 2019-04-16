@@ -29,5 +29,5 @@ func init() {
 // PlaybackPerfH2642160P30FPS plays H264 2160P 30 FPS video and measures the performance values with/without
 // HW decoding acceleration. The values are reported to performance dashboard.
 func PlaybackPerfH2642160P30FPS(ctx context.Context, s *testing.State) {
-	playback.RunTest(ctx, s, "2160p_30fps_300frames.h264.mp4", "h264_2160p_30fps")
+	playback.RunTest(ctx, s, "2160p_30fps_300frames.h264.mp4", "h264_2160p_30fps", false)
 }

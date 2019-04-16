@@ -28,5 +28,5 @@ func init() {
 // PlaybackPerfVP92160P30FPS plays VP9 2160P 30 FPS video and measures the performance values with/without
 // HW decoding acceleration. The values are reported to performance dashboard.
 func PlaybackPerfVP92160P30FPS(ctx context.Context, s *testing.State) {
-	playback.RunTest(ctx, s, "2160p_30fps_300frames.vp9.webm", "vp9_2160p_30fps")
+	playback.RunTest(ctx, s, "2160p_30fps_300frames.vp9.webm", "vp9_2160p_30fps", false)
 }

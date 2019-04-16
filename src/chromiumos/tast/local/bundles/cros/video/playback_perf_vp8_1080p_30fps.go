@@ -28,5 +28,5 @@ func init() {
 // PlaybackPerfVP81080P30FPS plays VP8 1080P 30 FPS video and measures the performance values with/without
 // HW decoding acceleration. The values are reported to performance dashboard.
 func PlaybackPerfVP81080P30FPS(ctx context.Context, s *testing.State) {
-	playback.RunTest(ctx, s, "1080p_30fps_300frames.vp8.webm", "vp8_1080p_30fps")
+	playback.RunTest(ctx, s, "1080p_30fps_300frames.vp8.webm", "vp8_1080p_30fps", false)
 }

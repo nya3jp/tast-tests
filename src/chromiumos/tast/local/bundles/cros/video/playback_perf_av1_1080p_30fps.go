@@ -26,5 +26,5 @@ func init() {
 }
 
 func PlaybackPerfAV11080P30FPS(ctx context.Context, s *testing.State) {
-	playback.RunTest(ctx, s, "1080p_30fps_300frames.av1.mp4", "av1_1080p_30fps")
+	playback.RunTest(ctx, s, "1080p_30fps_300frames.av1.mp4", "av1_1080p_30fps", false)
 }
