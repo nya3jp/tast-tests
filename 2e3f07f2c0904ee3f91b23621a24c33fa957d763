@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bdb066b7_89c60081",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-16T09:38:14Z",
+      "side": 1,
+      "message": "Do we need to update copyright for every year...?",
+      "revId": "2e3f07f2c0904ee3f91b23621a24c33fa957d763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
