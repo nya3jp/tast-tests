@@ -1,0 +1,244 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6ad5f2f_418746fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-16T03:38:07Z",
+      "side": 1,
+      "message": "nit: goodPings may be clearer",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 12
+      },
+      "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efc16f92_0a4efb3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-16T03:38:07Z",
+      "side": 1,
+      "message": "nit: don\u0027t need this \u0027continue\u0027 now",
+      "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "850ef901_935c0d91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-16T03:38:07Z",
+      "side": 1,
+      "message": "why do you expect any of these to fail?",
+      "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6a7f781_1b7ebd56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-16T03:38:07Z",
+      "side": 1,
+      "message": "nit: \"many\" (since pings are countable)",
+      "range": {
+        "startLine": 213,
+        "startChar": 16,
+        "endLine": 213,
+        "endChar": 20
+      },
+      "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c95532e2_dca5f721",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-16T03:38:07Z",
+      "side": 1,
+      "message": "nit: i think that \"All pings failed\" is shorter and just as clear",
+      "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52359bdc_c6ac03c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-16T03:38:07Z",
+      "side": 1,
+      "message": "nit: simpler if it works:\n\navgRTT :\u003d sumRTT / time.Duration(goodPings)",
+      "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47c76315_06252a50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-16T03:38:07Z",
+      "side": 1,
+      "message": "nit: maybe numKeystrokes and goodKeystrokes?",
+      "range": {
+        "startLine": 286,
+        "startChar": 7,
+        "endLine": 286,
+        "endChar": 15
+      },
+      "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e373cc08_551f3c9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-16T03:38:07Z",
+      "side": 1,
+      "message": "why do you expect any of these to fail?",
+      "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ca9fa4d_2e72a0e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-16T03:38:07Z",
+      "side": 1,
+      "message": "nit: many",
+      "range": {
+        "startLine": 313,
+        "startChar": 16,
+        "endLine": 313,
+        "endChar": 20
+      },
+      "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08ced37a_8fc0a98a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-16T03:38:07Z",
+      "side": 1,
+      "message": "nit: simpler if it works:\n\navgKeyLatency :\u003d sumKeyLatency / time.Duration(goodKeystrokes)",
+      "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c053fa50_aa56bc2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-16T03:38:07Z",
+      "side": 1,
+      "message": "nit: exited",
+      "range": {
+        "startLine": 459,
+        "startChar": 42,
+        "endLine": 459,
+        "endChar": 47
+      },
+      "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84b12924_c97b81df",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-16T03:38:07Z",
+      "side": 1,
+      "message": "huge nit: \"an\" (since SFTP is pronounced with a leading vowel sound)",
+      "range": {
+        "startLine": 241,
+        "startChar": 24,
+        "endLine": 241,
+        "endChar": 25
+      },
+      "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
