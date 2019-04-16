@@ -13,7 +13,6 @@ import (
 	"math"
 	"net"
 	"os"
-	"strconv"
 	"time"
 
 	"github.com/shirou/gopsutil/mem"
@@ -115,86 +114,13 @@ func stdDev(values []time.Duration) time.Duration {
 	return time.Duration(float64(time.Second) * math.Sqrt((s2-s*s/n)/(n-1)))
 }
 
-// memoryEqualizingAmount computes how much RAM should be preallocated in order
-// to give the test approximately workingSetMiB to fill with tabs before the
-// first discard.  If the system has swap, it is assumed to be zram.
-//
-// The goal is to be able to control how many tabs we can open between
-// preallocation and discard.  Too few tabs is bad because the test won't work
-// properly.  Too many tabs is also bad because the test will take hours.
-//
-// The first discard happens when available < margin.  Recall that, roughly
-// speaking,
-//
-//  available = free RAM + 1/4 free swap
-//
-// on most systems.  Let Q(s) to be the value of quantity Q at test start time,
-// and Q(d) its value at discard time.
-//
-// We assume UsedSwap(s) is low, i.e. FreeSwap(s) is close to TotalSwap(s).
-// Depending on system configuration, FreeSwap(d) could be zero, but it could
-// also still be a substantial amount.  We'll get back to this.
-//
-// minFreeRAM is the amount of RAM that the kernel tries to keep free with
-// kswapd.  At discard time, FreeRAM can be slightly below that, but not by
-// much.  We approximate FreeRAM(d) with minFreeRAM.
-//
-// In the best case (i.e. when we're allowed to use all of the swap space),
-// total virtual memory usable by running processes is
-//
-//  MaxProcessMem = TotalRAM - minFreeRAM + SwapBonus
-//
-// The latter term is the extra virtual memory we can get from using zram with
-// compression ratio R.  This is
-//
-//  SwapBonus = TotalSwap - (TotalSwap * R) = TotalSwap(1 - R)
-//
-// so
-//
-//  MaxProcessMem = TotalRAM - minFreeRAM + TotalSwap(1 - R)
-//
-// However, we don't always get to use all of it, because we may be discarding
-// before we fill swap (by design).
-//
-// ProcessMem is virtual memory allocated by processes.  It can be in RAM or it
-// can be swapped out.  By definition we have
-//
-//  ProcessMem(s) + EqualizingAmount + workingSetMiB = ProcessMem(d)
-//
-// thus
-//
-//  EqualizingAmount = ProcessMem(d) - ProcessMem(s) - workingSetMiB
-//
-// There are two cases:
-//
-// 1. Swap is full at discard.  Then we have available < minFreeRAM (otherwise
-// the system would have stopped swapping before full) and
-//
-//  ProcessMem(d) = MaxProcessMem
-//
-// and the rest of the calculation of EqualizingEmount is obvious.
-//
-// 2. Swap is not full at discard.  This happens because available = free RAM +
-// 1/4 free swap.  Let's figure out how much free swap is left.  As process
-// memory grows, free RAM stays near minFreeRAM.  At discard time, available =
-// margin, thus replacing these two variables we get
-//
-//  margin = minFreeRAM + 1/4 FreeSwap(d)
-//
-//  FreeSwap(d) = (margin - minFreeRAM) * 4
-//
-// So the swap bonus is no longer TotalSwap, but TotalSwap - FreeSwap(d).  Then
-//
-//  MaxProcessMem = TotalRAM - minFreeRAM + (TotalSwap - (margin - minFreeRAM) * 4)(1 - R).
-//
-// Also note that the condition that decides if we're in case 1 or 2 is whether
-// margin - minFreeRAM is positive or negative.
-func memoryEqualizingAmount(ctx context.Context, workingSetMiB uint64, ratio float64) (allocMiB uint64, err error) {
-	// Most calculations are rounded to 1 MiB.
+// logMemoryManagerParameters logs various kernel parameters as well as some
+// calculated quantities to help understand the memory manager behavior.
+func logMemoryParameters(ctx context.Context, ratio float64) error {
 	const MiB = 1024 * 1024
 	availableMiB, marginMiB, ramWeight, err := kernelmeter.ChromeosLowMem()
 	if err != nil {
-		return 0, errors.Wrap(err, "cannot obtain low-mem info")
+		return errors.Wrap(err, "cannot obtain low-mem info")
 	}
 	if !kernelmeter.HasZram() {
 		// If anybody is experimenting with regular swap, do the
@@ -204,33 +130,28 @@ func memoryEqualizingAmount(ctx context.Context, workingSetMiB uint64, ratio flo
 	}
 	memInfo, err := mem.VirtualMemory()
 	if err != nil {
-		return 0, errors.Wrap(err, "cannot obtain memory info")
+		return errors.Wrap(err, "cannot obtain memory info")
 	}
 	totalMiB := memInfo.Total / MiB
 
 	swapInfo, err := mem.SwapMemory()
 	if err != nil {
-		return 0, errors.Wrap(err, "cannot obtain swap info")
+		return errors.Wrap(err, "cannot obtain swap info")
 	}
 	totalSwapMiB := swapInfo.Total / MiB
 	usedSwapMiB := swapInfo.Used / MiB
 
-	// We expect little or no swap at the beginning of the test.
-	if totalSwapMiB > 0 && float64(usedSwapMiB)/float64(totalSwapMiB) > 0.2 {
-		return 0, errors.Errorf("too much swap in use/total (%v/%v)", usedSwapMiB, totalSwapMiB)
-	}
-
 	// processMemory is how much memory is in use by processes at this time.
 	processMiB, err := kernelmeter.ProcessMemory()
 	if err != nil {
-		return 0, err
+		testing.ContextLog(ctx, "Cannot compute process footprint: ", err)
 	}
 
 	// minFreeMiB is how much free RAM the kernel tries to maintain by
 	// swapping (or other reclaim)
 	minFreeMiB, err := kernelmeter.KernelMinFree()
 	if err != nil {
-		return 0, errors.Wrap(err, "cannot compute kernel min free")
+		testing.ContextLog(ctx, "Cannot compute min free: ", err)
 	}
 
 	// swapReduction is the amount to be taken out of swapTotal because we
@@ -244,19 +165,18 @@ func memoryEqualizingAmount(ctx context.Context, workingSetMiB uint64, ratio flo
 			swapReductionMiB = 0
 		}
 	}
-	maxProcessMiB := totalMiB - minFreeMiB + uint64(float64(totalSwapMiB-swapReductionMiB)*(1-ratio))
+	usableSwapMiB := totalSwapMiB - swapReductionMiB
+	// maxProcessMiB is the amount of allocated process memory at which the
+	// low-mem device triggers.
+	maxProcessMiB := totalMiB - minFreeMiB + uint64(float64(usableSwapMiB)*(1-ratio))
 	if maxProcessMiB < processMiB {
-		return 0, errors.Errorf("bad process size calculation: max %v MiB, current %v MiB", maxProcessMiB, processMiB)
+		return errors.Errorf("bad process size calculation: max %v MiB, current %v MiB", maxProcessMiB, processMiB)
 	}
-	testing.ContextLogf(ctx, "equalizer: available %d, margin %d, RAM weight %d",
-		availableMiB, marginMiB, ramWeight)
-	testing.ContextLogf(ctx, "equalizer: swap %d (used %d)", totalSwapMiB, usedSwapMiB)
-	testing.ContextLogf(ctx, "equalizer: kernel min free %d, process allocation %d", minFreeMiB, processMiB)
-	testing.ContextLogf(ctx, "equalizer: swap reduction %d, process max %d", swapReductionMiB, maxProcessMiB)
-	if workingSetMiB > maxProcessMiB-processMiB {
-		return 0, nil
-	}
-	return maxProcessMiB - processMiB - workingSetMiB, nil
+	testing.ContextLogf(ctx, "Metrics: low-mem: available %v, margin %v, RAM weight %v", availableMiB, marginMiB, ramWeight)
+	testing.ContextLogf(ctx, "Metrics: swap: total %d, used %d, usable %v", totalSwapMiB, usedSwapMiB, usableSwapMiB)
+	testing.ContextLog(ctx, "Metrics: kernel min free: ", minFreeMiB)
+	testing.ContextLogf(ctx, "Metrics: process allocation: current: %v, max: %v", processMiB, maxProcessMiB)
+	return nil
 }
 
 // evalPromiseBody executes a JS promise on connection conn.  promiseBody
@@ -857,6 +777,15 @@ func runAndLogSwapStats(ctx context.Context, f func(), meter *kernelmeter.Meter)
 		stats.SwapIn.AverageRate, stats.SwapIn.RecentRate, stats.SwapIn.Count)
 	testing.ContextLogf(ctx, "Metrics: tab switch swap-out average rate, 10s rate, and count: %.1f %.1f swaps/second, %d swaps",
 		stats.SwapOut.AverageRate, stats.SwapOut.RecentRate, stats.SwapOut.Count)
+	if swapInfo, err := mem.SwapMemory(); err == nil {
+		testing.ContextLogf(ctx, "Metrics: free swap %v MiB", (swapInfo.Total-swapInfo.Used)/(1<<6))
+	}
+	if availableMiB, _, _, err := kernelmeter.ChromeosLowMem(); err == nil {
+		testing.ContextLogf(ctx, "Metrics: available %v MiB", availableMiB)
+	}
+	if m, err := kernelmeter.MemInfo(); err == nil {
+		testing.ContextLogf(ctx, "Metrics: free %v MiB, anon %v MiB, file %v MiB", m.Free, m.Anon, m.File)
+	}
 }
 
 // RunParameters contains the configurable parameters for Run.
@@ -896,7 +825,6 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		tabWorkingSetSize        = 5
 		tabCycleDelay            = 300 * time.Millisecond
 		tabSwitchRepeatCount     = 10
-		workingSetMiB            = 4000 // usable memory (RAM + swap) after preallocation and before discard.
 	)
 
 	memInfo, err := mem.VirtualMemory()
@@ -948,21 +876,37 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		}
 	}()
 
-	// Now steal a bunch of RAM to make the test run faster on systems with
-	// a lot of memory.  We do this after restarting the browser so that we
-	// start from a more consistent state of system memory allocation.
-	// Please see comments in data/memory_pressure_preallocator.sh for
-	// details of the allocation.
-	allocMiB, err := memoryEqualizingAmount(ctx, workingSetMiB, p.PageFileCompressionRatio)
-	if err != nil {
-		s.Fatal("Cannot compute preallocation amount: ", err)
+	// Log various system measurements, to help understand the memory
+	// manager behavior.
+	if err := logMemoryParameters(ctx, p.PageFileCompressionRatio); err != nil {
+		s.Fatal("Cannot log memory parameters: ", err)
 	}
-	initialTabSetSize := defaultInitialTabSetSize
 
-	if allocMiB > 0 && !p.RecordPageSet {
-		s.Logf("Preallocating %d MiB", allocMiB)
+	// On larger systems, the first tab discard happens when there is a
+	// larger amount of anonymous memory.  We need to increase the size of
+	// the initial tab set so that tab switching through the set induces
+	// swapping.
+	initialTabSetSize := defaultInitialTabSetSize
+	preallocMiB := 0
+	if memInfo.Total > (5<<9) && memInfo.Total <= (9<<9) {
+		// 8 GiB device
+		initialTabSetSize = 60
+		preallocMiB = 3500 // empirically chosen for 15-20 additional tabs
+		s.Logf("Adjust for large RAM (%v MiB): initial size %v, preallocMiB %v",
+			memInfo.Total/(1<<6), initialTabSetSize, preallocMiB)
+	}
+	if memInfo.Total > (9 << 9) {
+		// 16 GiB device
+		initialTabSetSize = 100
+		preallocMiB = 15500 // empirically chosen for 15-20 additional tabs
+		s.Logf("Adjust for large RAM (%v MiB): initial size %v, preallocMiB %v",
+			memInfo.Total/(1<<6), initialTabSetSize, preallocMiB)
+	}
+
+	if preallocMiB > 0 && !p.RecordPageSet {
+		s.Logf("Preallocating %d MiB", preallocMiB)
 		preallocatorCmd := testexec.CommandContext(ctx, p.PreallocatorPath,
-			strconv.FormatUint(allocMiB, 10), p.PageFilePath)
+			fmt.Sprintf("%v", preallocMiB), p.PageFilePath)
 		if err := preallocatorCmd.Start(); err != nil {
 			preallocatorCmd.DumpLog(ctx)
 			s.Fatal("Cannot start preallocator: ", err)

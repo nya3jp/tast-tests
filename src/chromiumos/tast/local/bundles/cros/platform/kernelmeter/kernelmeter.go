@@ -358,6 +358,24 @@ func memInfo() (map[string]uint64, error) {
 	return info, nil
 }
 
+// MemInfoFields is used to return selected fields of /proc/meminfo.
+type MemInfoFields struct {
+	Free, Anon, File uint64
+}
+
+// MemInfo returns selected /proc/meminfo fields.
+func MemInfo() (data *MemInfoFields, err error) {
+	info, err := memInfo()
+	if err != nil {
+		return nil, err
+	}
+	return &MemInfoFields{
+		Free: info["MemFree"] / 1024,
+		Anon: (info["Active(anon)"] + info["Inactive(anon)"]) / 1024,
+		File: (info["Active(file)"] + info["Inactive(file)"]) / 1024,
+	}, nil
+}
+
 // Return the numeric value of the content of filename, which is typically a
 // sysfs or procfs entry.
 func readUint64FromFile(filename string) (uint64, error) {
