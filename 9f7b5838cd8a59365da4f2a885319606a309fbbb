@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "5752e38e_cfcd2693",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-04-16T11:16:44Z",
+      "side": 1,
+      "message": "Per our gchat discussion, can we add some hidden elements in the app so that we can depend on the presence of the element of certain ID to determine the current mode?",
+      "parentUuid": "615790b3_1742bfaa",
+      "range": {
+        "startLine": 67,
+        "startChar": 45,
+        "endLine": 67,
+        "endChar": 79
+      },
+      "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "67eeb337_475c3a20",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 9
@@ -790,6 +814,29 @@
     },
     {
       "key": {
+        "uuid": "c99ff684_342c294a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-04-16T11:16:44Z",
+      "side": 1,
+      "message": "Don\u0027t need to address in this CL, but I think having some checks to validate the produced video files will be helpful. It can prevent bugs like https://b.corp.google.com/issues/126769611 from happening.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 1
+      },
+      "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1f21799d_396f3f0a",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_still_capture.go",
         "patchSetId": 9
@@ -840,6 +887,87 @@
       "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37e472a4_05ae85b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_still_capture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-04-16T11:16:44Z",
+      "side": 1,
+      "message": "It seems that caps.BuiltinOrVividCamera is not added?",
+      "parentUuid": "6505406c_457ad2a2",
+      "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5caca641_535ab498",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_still_capture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-04-16T11:16:44Z",
+      "side": 1,
+      "message": "Please document this function, such as how it determines whether the still capture is successful (An image file is created? Does it validate the image file? Does it validate the content of the image?) and what stream it uses (real camera stream or faked stream from video file?).",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fea177f_978a6e41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_still_capture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-04-16T11:16:44Z",
+      "side": 1,
+      "message": "Can we move this line before \"if\" so we can get rid of line 31?",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 36
+      },
+      "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74e5b6b2_dccbf698",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_still_capture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-04-16T11:16:44Z",
+      "side": 1,
+      "message": "Can we call gca.SwitchMode(ctx, s, d, gca.PhotoMode) here (and make SwitchMode() more defensive by doing nothing when the current mode is the same as the requested mode)? Otherwise we have an implicit assumption that the default mode is photo mode after app starts. If it\u0027s not true, the test will fail. It kind of violates the one-test-for-one-thing principle. We can have a separate test to check whether default mode is photo mode so that the regression in one case will not mess up with the others.",
+      "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
