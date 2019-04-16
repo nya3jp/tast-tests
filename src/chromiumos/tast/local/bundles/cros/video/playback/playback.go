@@ -38,6 +38,16 @@ const (
 	hwAccelEnabled
 )
 
+// DefaultPerfState specifies whether to record perf metrics of default playback.
+type DefaultPerfState int
+
+const (
+	// DefaultPerfDisabled disables recording metrics of default playback.
+	DefaultPerfDisabled DefaultPerfState = iota
+	// DefaultPerfEnabled enables recording metrics of default playback.
+	DefaultPerfEnabled
+)
+
 type metricDesc string
 type metricValue float64
 
@@ -81,7 +91,9 @@ var metricDefs = []metricDef{
 
 // RunTest measures dropped frames, dropped frames percentage and CPU usage percentage in playing a video with/without HW Acceleration.
 // The measured values are reported to a dashboard. videoDesc is a video description shown on the dashboard.
-func RunTest(ctx context.Context, s *testing.State, videoName, videoDesc string) {
+// If dps is DefaultPerfEnabled, an additional set of perf metrics will be recorded for default video playback. The default video playback
+// stands for HW-accelerated one if available, otherwise software playback.
+func RunTest(ctx context.Context, s *testing.State, videoName, videoDesc string, dps DefaultPerfState) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -100,7 +112,7 @@ func RunTest(ctx context.Context, s *testing.State, videoName, videoDesc string)
 	}
 	s.Log("Measured CPU usage, dropped frames and percent: ", perfData)
 
-	if err := savePerfResults(ctx, perfData, videoDesc, s.OutDir()); err != nil {
+	if err := savePerfResults(ctx, perfData, videoDesc, s.OutDir(), dps); err != nil {
 		s.Fatal("Failed to save perf data: ", perfData)
 	}
 }
@@ -215,10 +227,9 @@ func recordMetrics(ctx context.Context, vs map[metricDesc]metricValue, perfData 
 }
 
 // savePerfResults saves performance results in outDir.
-func savePerfResults(ctx context.Context, perfData collectedPerfData, videoDesc, outDir string) error {
-	// TODO(hiroh): Remove tastPrefix after removing video_PlaybackPerf in autotest.
+func savePerfResults(ctx context.Context, perfData collectedPerfData, videoDesc, outDir string, dps DefaultPerfState) error {
 	p := perf.NewValues()
-	const tastPrefix = "tast_"
+	defaultPerfRecorded := false
 	for _, pType := range []playbackType{playbackWithHWAccel, playbackWithoutHWAccel} {
 		keyval, found := perfData[pType]
 		if !found {
@@ -230,19 +241,29 @@ func savePerfResults(ctx context.Context, perfData collectedPerfData, videoDesc,
 				return errors.Errorf("no SW playback performance result: %v", perfData)
 			}
 		}
-		perfPrefix := tastPrefix
+		var perfPrefixes []string
 		if pType == playbackWithHWAccel {
-			perfPrefix += "hw_"
+			perfPrefixes = append(perfPrefixes, "hw_")
 		} else {
-			perfPrefix += "sw_"
+			perfPrefixes = append(perfPrefixes, "sw_")
+		}
+
+		// Default metrics represent perf in default playback, which will be hardware-accelerated playback if it is
+		// available on the device; otherwise fallback to software playback.
+		if dps == DefaultPerfEnabled && !defaultPerfRecorded {
+			perfPrefixes = append(perfPrefixes, "default_")
+			defaultPerfRecorded = true
 		}
 		for _, m := range metricDefs {
 			val, found := keyval[m.desc]
-			perfName := perfPrefix + string(m.desc) + videoDesc
-			if !found {
-				return errors.Errorf("no performance result for %s: %v", perfName, perfData)
+			for _, pp := range perfPrefixes {
+				// TODO(hiroh): Remove prefix "tast_" after removing video_PlaybackPerf in autotest.
+				perfName := "tast_" + pp + string(m.desc) + videoDesc
+				if !found {
+					return errors.Errorf("no performance result for %s: %v", perfName, perfData)
+				}
+				p.Set(perf.Metric{Name: perfName, Unit: m.unit, Direction: m.dir}, float64(val))
 			}
-			p.Set(perf.Metric{Name: perfName, Unit: m.unit, Direction: m.dir}, float64(val))
 		}
 	}
 	return p.Save(outDir)
