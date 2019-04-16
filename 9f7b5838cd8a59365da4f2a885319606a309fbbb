@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "0a696cfa_63e9a007",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-16T08:06:34Z",
+      "side": 1,
+      "message": "(I suggested to call s.Fatal in helper functions in the previous patch. Sorry!)",
+      "parentUuid": "29148768_64991412",
+      "range": {
+        "startLine": 47,
+        "startChar": 37,
+        "endLine": 47,
+        "endChar": 53
+      },
+      "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e15a229c_b781f26c",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 9
@@ -311,6 +335,29 @@
         "startChar": 0,
         "endLine": 31,
         "endChar": 31
+      },
+      "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f325ef59_5669a1f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-16T08:06:34Z",
+      "side": 1,
+      "message": "You need to use shortened ctx to save time for TearDownDevice here and below.\n\ne.g.\n\n...\ndefer gca.TearDownDevice(ctx, s, d)\n\n// Shorten context to save time for cleaning up the environment.\n// (I\u0027m not sure 10 seconds are enough for TearDownDevice, though)\nshortCtx, cancel \u003d ctxutil.Shorten(ctx, 10 * time.Second)\ndefer cancel()\n\n// Use shortCtx instead of ctx below\n...",
+      "range": {
+        "startLine": 37,
+        "startChar": 16,
+        "endLine": 37,
+        "endChar": 19
       },
       "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
