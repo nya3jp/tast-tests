@@ -42,7 +42,6 @@ func getLogSpecs() ([]logSpec, error) {
 	for _, l := range []struct {
 		glob, enable, disable, desc string
 	}{
-		{"/sys/module/videobuf2_*/parameters/debug", "1", "0", "videobuf2"},
 		{"/sys/module/s5p_mfc/parameters/debug", "1", "0", "s5p_mfc"},
 		{"/sys/module/go2001/parameters/go2001_debug_level", "1", "0", "go2001"},
 
