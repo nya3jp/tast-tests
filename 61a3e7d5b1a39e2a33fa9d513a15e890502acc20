@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e7f89a77_de4c510b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-16T10:42:47Z",
+      "side": 1,
+      "message": "Sounds better. Done.",
+      "parentUuid": "0c6a9263_da04f8ba",
+      "revId": "61a3e7d5b1a39e2a33fa9d513a15e890502acc20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "477524d4_6f26bf44",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 16
@@ -30,6 +48,24 @@
       "writtenOn": "2019-04-16T09:54:51Z",
       "side": 1,
       "message": "actually, it seems like there\u0027s no reason to report this additional error, as you already report an error for each individual ping on L203. did you mean for this to be s.Fatalf instead to abort testing?",
+      "revId": "61a3e7d5b1a39e2a33fa9d513a15e890502acc20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39c8a685_4bc60aa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-16T10:42:47Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "477524d4_6f26bf44",
       "revId": "61a3e7d5b1a39e2a33fa9d513a15e890502acc20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
