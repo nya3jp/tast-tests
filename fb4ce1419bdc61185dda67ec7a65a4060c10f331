@@ -16,6 +16,24 @@
       "revId": "fb4ce1419bdc61185dda67ec7a65a4060c10f331",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d8eded4_f4cfc392",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-04-16T06:30:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dc0bf92_9e254629",
+      "revId": "fb4ce1419bdc61185dda67ec7a65a4060c10f331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
