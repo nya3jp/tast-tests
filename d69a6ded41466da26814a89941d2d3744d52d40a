@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3817e7eb_1780202c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-16T20:56:50Z",
+      "side": 1,
+      "message": "Oh sorry, I didn\u0027t click resolve. But basically I was thinking that if we want to experiment with dynamic allocations later we may need more parameters and it doesn\u0027t simplify the code much to only pass a string so that\u0027s why I did it this way.",
+      "parentUuid": "5a1194db_87600e26",
+      "range": {
+        "startLine": 775,
+        "startChar": 40,
+        "endLine": 775,
+        "endChar": 56
+      },
+      "revId": "d69a6ded41466da26814a89941d2d3744d52d40a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4cf775d_e3d6fde9",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 3
