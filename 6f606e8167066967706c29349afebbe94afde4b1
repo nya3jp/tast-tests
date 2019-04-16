@@ -117,6 +117,30 @@
       "revId": "6f606e8167066967706c29349afebbe94afde4b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14808944_e16a6861",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/build_properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-04-16T06:52:39Z",
+      "side": 1,
+      "message": "\u003e can we have apiLevelP tests somewhere too? \n\nPlease see the comment at L90.\nThis test runs for all boards including ones that are expected to have apiLevelP such as nocturne.\n\nThis is just a exceptional list of boards whose First API level is different from current SDK version.",
+      "parentUuid": "fd395149_086ff61f",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 31
+      },
+      "revId": "6f606e8167066967706c29349afebbe94afde4b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
