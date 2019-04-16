@@ -2,6 +2,236 @@
   "comments": [
     {
       "key": {
+        "uuid": "42ef7faa_d3e4dd4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-16T03:15:39Z",
+      "side": 1,
+      "message": "Mind declaring these regexps with regexp.MustCompile?\n\n var (\n   ImagePattern \u003d regexp.MustCompile(...)\n   VideoPattern \u003d regexp.MustCompile(...)\n )\n\nThen these variables will have Regexp type and we can ensure type safety.\n\n(I also suggest renaming s/Format/Pattern/g; in fact you refer them as pat below :))\n\nAlso, I believe you need to use ^ and $ to make sure regexps are matched to the entire file name, not its substring.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 37
+      },
+      "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29148768_64991412",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-16T03:15:39Z",
+      "side": 1,
+      "message": "Please avoid passing testing.State to utility functions. Since it contains many things, it makes harder to tell which information this function needs.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\nFor this function, you can return error, and call s.Fatal in the test body function instead.",
+      "range": {
+        "startLine": 47,
+        "startChar": 37,
+        "endLine": 47,
+        "endChar": 53
+      },
+      "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e15a229c_b781f26c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-16T03:15:39Z",
+      "side": 1,
+      "message": "Could you use WaitForExists with an explicit timeout instead? The default time is ctx\u0027s timeout, and it\u0027s often too long. Same below.",
+      "range": {
+        "startLine": 61,
+        "startChar": 24,
+        "endLine": 61,
+        "endChar": 55
+      },
+      "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a50c4c1_ef94a9a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-16T03:15:39Z",
+      "side": 1,
+      "message": "Please drop this else clause to reduce nesting.",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 63,
+        "endChar": 9
+      },
+      "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4324d7b4_0bc48017",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-16T03:15:39Z",
+      "side": 1,
+      "message": "Do we need to match with the description? I think ID match is sufficient. I\u0027m rather afraid this test won\u0027t work on non-English locales.",
+      "range": {
+        "startLine": 67,
+        "startChar": 45,
+        "endLine": 67,
+        "endChar": 79
+      },
+      "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67eeb337_475c3a20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-16T03:15:39Z",
+      "side": 1,
+      "message": "You can pass chrome.Chrome (or just user) instead.",
+      "range": {
+        "startLine": 86,
+        "startChar": 37,
+        "endLine": 86,
+        "endChar": 53
+      },
+      "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffa24473_b09b0446",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-16T03:15:39Z",
+      "side": 1,
+      "message": "nit: Mind using the guard style to reduce nesting? That is:\n\n if file.ModTime().Before(ts) {\n   continue\n }\n ...",
+      "range": {
+        "startLine": 101,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 32
+      },
+      "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "252d181b_8924f549",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-16T03:15:39Z",
+      "side": 1,
+      "message": "nit: re.MatchString should be enough since we don\u0027t care about indices.",
+      "range": {
+        "startLine": 103,
+        "startChar": 10,
+        "endLine": 103,
+        "endChar": 38
+      },
+      "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "995d50ca_5ecced7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-16T03:15:39Z",
+      "side": 1,
+      "message": "err should be always nil in this case. Please use errors.New instead.\n\nAlso nit: it might be better to explicitly say there was no matching file, rather than simply saying \"failed to find\".",
+      "range": {
+        "startLine": 109,
+        "startChar": 21,
+        "endLine": 109,
+        "endChar": 24
+      },
+      "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5295d85_edb2ac9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-16T03:15:39Z",
+      "side": 1,
+      "message": "As for this function, you can pass arc.ARC instead of testing.State. Logging can be done with testing.ContextLog.",
+      "range": {
+        "startLine": 116,
+        "startChar": 38,
+        "endLine": 116,
+        "endChar": 54
+      },
+      "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6c7f8e01_294c2dd5",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 9
@@ -18,6 +248,75 @@
         "startChar": 33,
         "endLine": 118,
         "endChar": 44
+      },
+      "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7ba8724_26b61bd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-16T03:15:39Z",
+      "side": 1,
+      "message": "In this case d.Close() is not called. Generally, we usually don\u0027t want to do early-return for tear-down functions. One typical way is:\n\n func TearDownDevice(...) error {\n   var firstErr error\n \n   if d !\u003d nil {\n     defer d.Close()\n\n     if err :\u003d a.Command(...); err !\u003d nil {\n       err \u003d errors.Wrap(err, \"failed to close GCA\")\n       testing.ContextLog(ctx, \"Error during teardown: \", err)\n       if firstErr \u003d\u003d nil {\n         firstErr \u003d err\n       }\n     }\n   }\n\n   ...\n\n   return firstErr\n }",
+      "range": {
+        "startLine": 159,
+        "startChar": 3,
+        "endLine": 159,
+        "endChar": 40
+      },
+      "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25190159_70fedb38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-16T03:15:39Z",
+      "side": 1,
+      "message": "Typically in Go, APIs are designed so that callers don\u0027t need to call a cleanup function if a setup function returns a non-nil error; it is the callee\u0027s responsibility to roll back the setup. Could you try to design gca.SetUpDevice/TearDownDevice accordingly?\n\nOne way would be like:\n\n func SetUpDevice(...) (*ui.Device, error) {\n   success :\u003d false\n   defer func() {\n     if !success {\n       TearDownDevice(...)\n     }\n   }\n \n   ...\n \n   success \u003d true\n   return d, nil\n }",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 31
+      },
+      "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df3d5fe7_1928197e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-16T03:15:39Z",
+      "side": 1,
+      "message": "Thanks for using this new function :)\n\nCould you also check the returned error? It can return non-nil error if we hit ctx timeout.\n\n if err :\u003d testing.Sleep(ctx, 3*time.Second); err !\u003d nil {\n   s.Fatal(\"Timed out on recording video: \", err)\n }",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 34
       },
       "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
