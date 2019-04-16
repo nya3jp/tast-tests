@@ -28,5 +28,5 @@ func init() {
 // PlaybackPerfVP91080P60FPS plays VP9 1080P 60 FPS video and measures the performance values with/without
 // HW decoding acceleration. The values are reported to performance dashboard.
 func PlaybackPerfVP91080P60FPS(ctx context.Context, s *testing.State) {
-	playback.RunTest(ctx, s, "1080p_60fps_600frames.vp9.webm", "vp9_1080p_60fps")
+	playback.RunTest(ctx, s, "1080p_60fps_600frames.vp9.webm", "vp9_1080p_60fps", playback.DefaultPerfDisabled)
 }

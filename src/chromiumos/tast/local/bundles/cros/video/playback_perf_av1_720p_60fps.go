@@ -26,5 +26,5 @@ func init() {
 }
 
 func PlaybackPerfAV1720P60FPS(ctx context.Context, s *testing.State) {
-	playback.RunTest(ctx, s, "720p_60fps_600frames.av1.mp4", "av1_720p_60fps")
+	playback.RunTest(ctx, s, "720p_60fps_600frames.av1.mp4", "av1_720p_60fps", playback.DefaultPerfDisabled)
 }
