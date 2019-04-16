@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1286b893_66089076",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-16T08:47:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6ad5f2f_418746fe",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 12
+      },
+      "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "efc16f92_0a4efb3d",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 15
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "c24afe9b_c9e386dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-16T08:47:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efc16f92_0a4efb3d",
+      "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "850ef901_935c0d91",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 15
@@ -53,6 +95,24 @@
       "writtenOn": "2019-04-16T03:38:07Z",
       "side": 1,
       "message": "why do you expect any of these to fail?",
+      "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a84304d6_ed5b0c62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-16T08:47:52Z",
+      "side": 1,
+      "message": "I don\u0027t. But since it reads from a socket and every conn.Read(buf) could returns an error, I\u0027d like to get a heads-up if something wrong happens badly.",
+      "parentUuid": "850ef901_935c0d91",
       "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "3e9f417b_5b747b19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-16T08:47:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6a7f781_1b7ebd56",
+      "range": {
+        "startLine": 213,
+        "startChar": 16,
+        "endLine": 213,
+        "endChar": 20
+      },
+      "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c95532e2_dca5f721",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 15
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "8e8f429a_39edc269",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-16T08:47:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c95532e2_dca5f721",
+      "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52359bdc_c6ac03c7",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 15
@@ -110,6 +212,24 @@
       "writtenOn": "2019-04-16T03:38:07Z",
       "side": 1,
       "message": "nit: simpler if it works:\n\navgRTT :\u003d sumRTT / time.Duration(goodPings)",
+      "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe3bd176_1f953561",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-16T08:47:52Z",
+      "side": 1,
+      "message": "Yes I knew it works, but I think it\u0027s semantically weird to convert \"goodPings\" to a time.Duration. No?",
+      "parentUuid": "52359bdc_c6ac03c7",
       "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -139,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "4f9e2164_424eec25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-16T08:47:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47c76315_06252a50",
+      "range": {
+        "startLine": 286,
+        "startChar": 7,
+        "endLine": 286,
+        "endChar": 15
+      },
+      "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e373cc08_551f3c9f",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 15
@@ -150,6 +294,24 @@
       "writtenOn": "2019-04-16T03:38:07Z",
       "side": 1,
       "message": "why do you expect any of these to fail?",
+      "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d496f393_f6603599",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-16T08:47:52Z",
+      "side": 1,
+      "message": "The same as above, I don\u0027t expect it to fail but I\u0027d like to get a notification is something is broken heavily.",
+      "parentUuid": "e373cc08_551f3c9f",
       "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -179,6 +341,30 @@
     },
     {
       "key": {
+        "uuid": "4442c4f6_ad05fc9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-16T08:47:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ca9fa4d_2e72a0e5",
+      "range": {
+        "startLine": 313,
+        "startChar": 16,
+        "endLine": 313,
+        "endChar": 20
+      },
+      "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08ced37a_8fc0a98a",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
         "patchSetId": 15
@@ -190,6 +376,24 @@
       "writtenOn": "2019-04-16T03:38:07Z",
       "side": 1,
       "message": "nit: simpler if it works:\n\navgKeyLatency :\u003d sumKeyLatency / time.Duration(goodKeystrokes)",
+      "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b79827cf_3f7402a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-16T08:47:52Z",
+      "side": 1,
+      "message": "The same. Wouldn\u0027t it be weird semantically?",
+      "parentUuid": "08ced37a_8fc0a98a",
       "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -219,6 +423,30 @@
     },
     {
       "key": {
+        "uuid": "3ac531dc_1874e335",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-16T08:47:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c053fa50_aa56bc2c",
+      "range": {
+        "startLine": 459,
+        "startChar": 42,
+        "endLine": 459,
+        "endChar": 47
+      },
+      "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84b12924_c97b81df",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 15
@@ -230,6 +458,30 @@
       "writtenOn": "2019-04-16T03:38:07Z",
       "side": 1,
       "message": "huge nit: \"an\" (since SFTP is pronounced with a leading vowel sound)",
+      "range": {
+        "startLine": 241,
+        "startChar": 24,
+        "endLine": 241,
+        "endChar": 25
+      },
+      "revId": "32d6df3b417e2e3fd5ccda383adf06ef677bd20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "463b61d9_35a0cdcb",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-04-16T08:47:52Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "84b12924_c97b81df",
       "range": {
         "startLine": 241,
         "startChar": 24,
