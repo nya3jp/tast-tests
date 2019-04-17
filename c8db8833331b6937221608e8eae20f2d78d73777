@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "388d9101_757990db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-17T05:38:52Z",
+      "side": 1,
+      "message": "Not sure why Close() is returning an error here...",
+      "range": {
+        "startLine": 181,
+        "startChar": 2,
+        "endLine": 190,
+        "endChar": 4
+      },
+      "revId": "c8db8833331b6937221608e8eae20f2d78d73777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
