@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3984289f_a4b448c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-04-17T00:52:05Z",
+      "side": 1,
+      "message": "Why do we need to make this assumption? We should just test to see if this is true or not.",
+      "range": {
+        "startLine": 120,
+        "startChar": 18,
+        "endLine": 120,
+        "endChar": 68
+      },
+      "revId": "845b660d7401c11bfbc161f39707679ac95e57d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "992dc847_202014f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-04-17T00:52:05Z",
+      "side": 1,
+      "message": "where does that come from?  Are you assuming ram_vs_swap_weight?  If so you shouldn\u0027t do that.",
+      "range": {
+        "startLine": 234,
+        "startChar": 45,
+        "endLine": 234,
+        "endChar": 49
+      },
+      "revId": "845b660d7401c11bfbc161f39707679ac95e57d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
