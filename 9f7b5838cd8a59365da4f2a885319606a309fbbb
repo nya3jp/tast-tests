@@ -839,6 +839,30 @@
     },
     {
       "key": {
+        "uuid": "c1bf8d64_928e4eff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-17T13:07:15Z",
+      "side": 1,
+      "message": "make sense. It sounds reasonable to me. Thank you for the clear explanation!",
+      "parentUuid": "5cb20918_b0f1f568",
+      "range": {
+        "startLine": 37,
+        "startChar": 16,
+        "endLine": 37,
+        "endChar": 19
+      },
+      "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df3d5fe7_1928197e",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
         "patchSetId": 9
