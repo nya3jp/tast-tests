@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "afd51947_de8fdd08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-17T18:45:37Z",
+      "side": 1,
+      "message": "But that\u0027s not the idea.  Why should we preallocate with zram, and not preallocate without?",
+      "parentUuid": "5772ad0e_919d1bb4",
+      "range": {
+        "startLine": 120,
+        "startChar": 19,
+        "endLine": 120,
+        "endChar": 68
+      },
+      "revId": "7a3a8ae4cc6009289d9727c18f2265d1b5cedc97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0cd9b08c_303d75ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 9
@@ -36,6 +60,30 @@
       "writtenOn": "2019-04-17T18:21:04Z",
       "side": 1,
       "message": "This is very non-intuitive behavior.  Instead do the simplest thing and skip preallocation and return 0 here.",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 16
+      },
+      "revId": "7a3a8ae4cc6009289d9727c18f2265d1b5cedc97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cb8c403_a486826a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-17T18:45:37Z",
+      "side": 1,
+      "message": "See above comment.",
+      "parentUuid": "0cd9b08c_303d75ab",
       "range": {
         "startLine": 200,
         "startChar": 0,
