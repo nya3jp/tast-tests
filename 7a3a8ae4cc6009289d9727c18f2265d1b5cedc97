@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "8f6ea1e8_8a4ddf3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-17T21:12:28Z",
+      "side": 1,
+      "message": "Are you saying that the preallocation is too complex?  I agree that the automated calculation is.\n\nAnyway, it\u0027s fine to remove preallocation.  The test will take over 1 hour and 1/2 for 16GB, which may be OK for the nightlies.  Unfortunately it is going to impact future test development.  Take a look at the following CL (https://crrev.com/c/1572304).  With that CL, we pick different sizes of the initial tab set depending on total RAM, with the goal of triggering swap-ins on the larger systems.  Right now there are no swap-ins on those, because the initial set is small enough and is never swapped out.  Calculating a meaningful size for the initial test would be even worse than the calculations in here, so I figured it out experimentally.  Each experiment now takes 10-15 minutes, so it\u0027s a lot faster.\n\nOr perhaps we don\u0027t care about triggering swap-ins on the 16GB devices?  Just the number of tabs?",
+      "parentUuid": "02d20f3a_45a5843e",
+      "range": {
+        "startLine": 120,
+        "startChar": 19,
+        "endLine": 120,
+        "endChar": 68
+      },
+      "revId": "7a3a8ae4cc6009289d9727c18f2265d1b5cedc97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0cd9b08c_303d75ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 9
