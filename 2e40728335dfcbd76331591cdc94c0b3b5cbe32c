@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ab3744e_27ef7735",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-17T14:12:08Z",
+      "side": 1,
+      "message": "Could you define this as file-scope constant so that you can share it with other methods, like ClickShutterButton?",
+      "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cca95d77_9a653374",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-17T14:12:08Z",
+      "side": 1,
+      "message": "huge nit: nil",
+      "range": {
+        "startLine": 156,
+        "startChar": 9,
+        "endLine": 156,
+        "endChar": 10
+      },
+      "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b4ee6c2_d282a432",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-17T14:12:08Z",
+      "side": 1,
+      "message": "nil",
+      "range": {
+        "startLine": 159,
+        "startChar": 9,
+        "endLine": 159,
+        "endChar": 10
+      },
+      "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53c87386_70abd0c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-17T14:12:08Z",
+      "side": 1,
+      "message": "nil",
+      "range": {
+        "startLine": 165,
+        "startChar": 9,
+        "endLine": 165,
+        "endChar": 10
+      },
+      "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd7825fd_5630e0e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-17T14:12:08Z",
+      "side": 1,
+      "message": "nil",
+      "range": {
+        "startLine": 169,
+        "startChar": 9,
+        "endLine": 169,
+        "endChar": 10
+      },
+      "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62641a38_c86df097",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-17T14:12:08Z",
+      "side": 1,
+      "message": "Nice to use guard pattern.\n\nif d \u003d\u003d nil {\n  return\n}\n\n...",
+      "range": {
+        "startLine": 178,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 2
+      },
+      "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8b020d2_fb87cd4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-17T14:12:08Z",
+      "side": 1,
+      "message": "nice to check if this runs during the error return or during success return.\nIf latter, you can just log the error message to prioritize the existing error. Otherwise s.Fatal or s.Error makes sense.",
+      "range": {
+        "startLine": 213,
+        "startChar": 2,
+        "endLine": 215,
+        "endChar": 3
+      },
+      "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

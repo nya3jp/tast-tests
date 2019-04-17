@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5f4bb28f_69408e39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-17T14:12:08Z",
+      "side": 1,
+      "message": "Any error logs? E.g. logcat.txt in the test log directory?",
+      "parentUuid": "388d9101_757990db",
+      "range": {
+        "startLine": 181,
+        "startChar": 2,
+        "endLine": 190,
+        "endChar": 4
+      },
+      "revId": "c8db8833331b6937221608e8eae20f2d78d73777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b2ca1c20_2589125b",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
         "patchSetId": 11
