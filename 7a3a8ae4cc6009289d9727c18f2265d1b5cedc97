@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "50dd4604_b673cdb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-04-17T19:12:43Z",
+      "side": 1,
+      "message": "I\u0027ll be straightforward -- I\u0027m not a big fan of pre-allocation.  I understand the desire to make the test run faster, but the implementation is apparently complex enough that it didn\u0027t work properly the first time and took several tries to get one that does.  Right now what people are actually doing to test these different configurations is disabling preallocation and it works fine, it just takes longer to run the test.  You stated in the comment that you\u0027re assuming zram and that\u0027s baked into the calculations.  I think you\u0027re being excessively clever by doing things like setting the compression ratio to 0.0001 and it reduces the value of the test by making it harder to understand what is happening.",
+      "parentUuid": "afd51947_de8fdd08",
+      "range": {
+        "startLine": 120,
+        "startChar": 19,
+        "endLine": 120,
+        "endChar": 68
+      },
+      "revId": "7a3a8ae4cc6009289d9727c18f2265d1b5cedc97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0cd9b08c_303d75ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 9
