@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "39b8d2c6_ca1dc209",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-17T21:26:53Z",
+      "side": 1,
+      "message": "nit: time.Duration has pretty formatting method which you can use with %v. Also, %s looks unused.\n\n return errors.Wrapf(err, \"no matching output file found after %v\", shortTimeout)",
+      "range": {
+        "startLine": 127,
+        "startChar": 64,
+        "endLine": 127,
+        "endChar": 74
+      },
+      "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cca95d77_9a653374",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 12
@@ -111,6 +134,29 @@
     },
     {
       "key": {
+        "uuid": "d53dee5d_48399360",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-17T21:26:53Z",
+      "side": 1,
+      "message": "Oh I didn\u0027t know this, thanks for catching it.\n\nWould you mind removing code from the comments? It\u0027s easy to write this code once the issue is fixed.\n\n // Close UIAutomator server.\n // TODO: Check the error. Currently Close always returns an error.\n d.Close()",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 4
+      },
+      "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "62641a38_c86df097",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 12
@@ -150,6 +196,53 @@
         "startChar": 2,
         "endLine": 215,
         "endChar": 3
+      },
+      "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e374cecf_22db916d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-17T21:26:53Z",
+      "side": 1,
+      "message": "I think s.Error is preferred here since we\u0027re already processing panics. Calling s.Error won\u0027t suppress the previous errors.",
+      "parentUuid": "f8b020d2_fb87cd4a",
+      "range": {
+        "startLine": 213,
+        "startChar": 2,
+        "endLine": 215,
+        "endChar": 3
+      },
+      "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1155c938_339c7a2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-17T21:26:53Z",
+      "side": 1,
+      "message": "Would you mind leaving a short comment mentioning we do this for cleanup?",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 218,
+        "endChar": 19
       },
       "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",

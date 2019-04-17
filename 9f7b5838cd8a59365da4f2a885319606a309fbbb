@@ -309,6 +309,30 @@
     },
     {
       "key": {
+        "uuid": "c1d12943_39d5f44c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-17T21:26:53Z",
+      "side": 1,
+      "message": "Thanks for explanation, it makes sense. Could you describe it briefly in the code comments too for future readers?",
+      "parentUuid": "77a90169_63113212",
+      "range": {
+        "startLine": 67,
+        "startChar": 45,
+        "endLine": 67,
+        "endChar": 79
+      },
+      "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "67eeb337_475c3a20",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 9
