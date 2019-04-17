@@ -42,6 +42,29 @@
     },
     {
       "key": {
+        "uuid": "47de53f1_c81741ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-17T23:44:58Z",
+      "side": 1,
+      "message": "nit/style: Could you combine those lines?\n\nif err :\u003d ...; err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 17
+      },
+      "revId": "af8a3d21d1095726cef542c42209d90c862526f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7df30db0_755c32e0",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
         "patchSetId": 2
