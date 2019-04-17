@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bd6d0c2f_81828eb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-17T18:39:21Z",
+      "side": 1,
+      "message": "Ping? I think mosys at least won\u0027t work on betty, so we should exclude it.\n\n localhost ~ # mosys platform name\n Platform not supported\n Application error: Platform not supported\n localhost ~ # echo $?\n 1",
+      "parentUuid": "358c1021_50703c0d",
+      "revId": "3ae01c373085bb62af904921bfcec5bc6e37e55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b223441_69054d45",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
         "patchSetId": 1

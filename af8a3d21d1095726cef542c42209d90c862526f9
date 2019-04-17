@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36a5a6b5_f2e376f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-17T18:39:21Z",
+      "side": 1,
+      "message": "In this case, using just %s would be more convenient since we can easily cut \u0026 paste.\n\n s.Logf(\"Verifying the command mosys %s\", shutil.EscapeSlice(mosysCmd))",
+      "range": {
+        "startLine": 39,
+        "startChar": 32,
+        "endLine": 39,
+        "endChar": 34
+      },
+      "revId": "af8a3d21d1095726cef542c42209d90c862526f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7df30db0_755c32e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-17T18:39:21Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 42,
+        "startChar": 12,
+        "endLine": 42,
+        "endChar": 16
+      },
+      "revId": "af8a3d21d1095726cef542c42209d90c862526f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
