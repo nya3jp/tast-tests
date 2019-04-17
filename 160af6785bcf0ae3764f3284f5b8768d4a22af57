@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "4c52ed30_1055fe06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-17T15:32:30Z",
+      "side": 1,
+      "message": "Done. Thanks for pointing out the issue with shared constants!",
+      "parentUuid": "8ffa8887_319e00ec",
+      "revId": "160af6785bcf0ae3764f3284f5b8768d4a22af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4f0e5da_25703740",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/challenge_response_mount.go",
         "patchSetId": 2
@@ -71,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "11dd667a_8c4c85d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-17T15:32:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4f0e5da_25703740",
+      "revId": "160af6785bcf0ae3764f3284f5b8768d4a22af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62ed012b_72fadc22",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/challenge_response_mount.go",
         "patchSetId": 2
@@ -85,6 +121,24 @@
       "revId": "160af6785bcf0ae3764f3284f5b8768d4a22af57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f83a6a9b_58d1a152",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-17T15:32:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62ed012b_72fadc22",
+      "revId": "160af6785bcf0ae3764f3284f5b8768d4a22af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "0e1d0ddc_080fdb3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-17T15:32:30Z",
+      "side": 1,
+      "message": "Done, good catch!\n(this was a leftover of debug logging)",
+      "parentUuid": "28c77464_7b670aab",
+      "range": {
+        "startLine": 88,
+        "startChar": 22,
+        "endLine": 88,
+        "endChar": 38
+      },
+      "revId": "160af6785bcf0ae3764f3284f5b8768d4a22af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d60f9e4_88d20d51",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/challenge_response_mount.go",
         "patchSetId": 2
@@ -125,6 +203,24 @@
       "revId": "160af6785bcf0ae3764f3284f5b8768d4a22af57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d38d7d8c_d1f3cfa8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-17T15:32:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d60f9e4_88d20d51",
+      "revId": "160af6785bcf0ae3764f3284f5b8768d4a22af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +247,30 @@
     },
     {
       "key": {
+        "uuid": "18747dbc_f2d30397",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-17T15:32:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b949251_280f3a14",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 9
+      },
+      "revId": "160af6785bcf0ae3764f3284f5b8768d4a22af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9270fea_eeeb7947",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/challenge_response_mount.go",
         "patchSetId": 2
@@ -174,6 +294,30 @@
     },
     {
       "key": {
+        "uuid": "2dcb897a_215a5023",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-17T15:32:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9270fea_eeeb7947",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 14
+      },
+      "revId": "160af6785bcf0ae3764f3284f5b8768d4a22af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54278e54_27326055",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/challenge_response_mount.go",
         "patchSetId": 2
@@ -191,6 +335,24 @@
     },
     {
       "key": {
+        "uuid": "f034f228_6656918d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-17T15:32:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54278e54_27326055",
+      "revId": "160af6785bcf0ae3764f3284f5b8768d4a22af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87c1698d_e2c064c7",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/challenge_response_mount.go",
         "patchSetId": 2
@@ -205,6 +367,24 @@
       "revId": "160af6785bcf0ae3764f3284f5b8768d4a22af57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a11d6c5f_1a7fa38d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-17T15:32:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87c1698d_e2c064c7",
+      "revId": "160af6785bcf0ae3764f3284f5b8768d4a22af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

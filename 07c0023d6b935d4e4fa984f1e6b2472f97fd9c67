@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcc1a7c3_97bb4fb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-17T15:32:30Z",
+      "side": 1,
+      "message": "Functional change since the last patchset: this makes the crypto keys and signatures used in the test stable and predictable. I think it\u0027s good for the test, but if anyone has objections I can revert back to \"crypto.rand\".",
+      "revId": "07c0023d6b935d4e4fa984f1e6b2472f97fd9c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

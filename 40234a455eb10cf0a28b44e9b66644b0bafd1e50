@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a9a8fc1a_13f09fde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-17T15:32:30Z",
+      "side": 1,
+      "message": "@apronin: Andrey, would cros-hwsec@google.com be fine here?",
+      "parentUuid": "756c6a06_77c3aa67",
+      "revId": "40234a455eb10cf0a28b44e9b66644b0bafd1e50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ba120057_de666abb",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2019-04-17T14:00:52Z",
       "side": 1,
       "message": "Is there any plans to call cryptohome D-Bus methods directly from tests in later CLs?\nIf so, could you extract this into a struct/method similar to what we do for other D-Bus client, e.g. session_manager? (chromiumos/tast/local/session/...).",
+      "revId": "40234a455eb10cf0a28b44e9b66644b0bafd1e50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "507357ee_cd3ce503",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-17T15:32:30Z",
+      "side": 1,
+      "message": "Thanks, I\u0027ll think a bit more about that and address this in a later patchset.",
+      "parentUuid": "ba120057_de666abb",
       "revId": "40234a455eb10cf0a28b44e9b66644b0bafd1e50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "bea04dad_2fc7ac8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-17T15:32:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42c4769b_6522718a",
+      "revId": "40234a455eb10cf0a28b44e9b66644b0bafd1e50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e45ac917_4529b070",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
         "patchSetId": 3
@@ -64,6 +118,30 @@
       "writtenOn": "2019-04-17T14:00:52Z",
       "side": 1,
       "message": "Could you extract this part into a struct and methods?\nAlso, is it necessary to disconnect on test completion?",
+      "range": {
+        "startLine": 164,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 0
+      },
+      "revId": "40234a455eb10cf0a28b44e9b66644b0bafd1e50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5db3cdb_747e4e4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-17T15:32:30Z",
+      "side": 1,
+      "message": "Thanks. I\u0027ll think a bit more on this and address in a future patchset.\n\n\u003e Also, is it necessary to disconnect on test completion?\n\nNot sure whether it\u0027d be good to do so, given that dbus.SystemBus() returns the same object for every caller, so conceptually the test code here isn\u0027t the owner of this connection.\nOTOH, it\u0027d be good to \"unexport\" the methods exported here; I\u0027ll check how this could be done.",
+      "parentUuid": "e45ac917_4529b070",
       "range": {
         "startLine": 164,
         "startChar": 1,
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "08af3c9a_6e4c36ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-17T15:32:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a61fbdb_26493bb7",
+      "revId": "40234a455eb10cf0a28b44e9b66644b0bafd1e50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4401da94_74657040",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
         "patchSetId": 3
@@ -107,6 +203,24 @@
       "revId": "40234a455eb10cf0a28b44e9b66644b0bafd1e50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66a87f4b_ad4aeb5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-17T15:32:30Z",
+      "side": 1,
+      "message": "Ack - I changed this call to be a \"defer\", since when the test fails we probably still need to do proper cleanup, but cryptohome.RemoveUserDir() will fail unless preceded with cryptohome.UnmountVault().",
+      "parentUuid": "4401da94_74657040",
+      "revId": "40234a455eb10cf0a28b44e9b66644b0bafd1e50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
