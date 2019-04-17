@@ -11,13 +11,13 @@ import (
 // Echo calls the Servo echo method.
 func (s *Servo) Echo(ctx context.Context, message string) (string, error) {
 	var val string
-	err := s.run(ctx, newCall("echo", message), &val)
+	err := s.Run(ctx, NewCall("echo", message), &val)
 	return val, err
 }
 
 // PowerNormalPress calls the Servo power_normal_press method.
 func (s *Servo) PowerNormalPress(ctx context.Context) (bool, error) {
 	var val bool
-	err := s.run(ctx, newCall("power_normal_press"), &val)
+	err := s.Run(ctx, NewCall("power_normal_press"), &val)
 	return val, err
 }
