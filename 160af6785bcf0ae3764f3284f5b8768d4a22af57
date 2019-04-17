@@ -1,0 +1,192 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b49af24_2a86e8e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T03:11:50Z",
+      "side": 1,
+      "message": "this directory/package is being renamed to hwsec, i think: https://crrev.com/c/1569166",
+      "revId": "160af6785bcf0ae3764f3284f5b8768d4a22af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ffa8887_319e00ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T03:11:50Z",
+      "side": 1,
+      "message": "where possible, please just define these constants in the functions that use them. the top-level namespace is shared across all tests in a category (unfortunately that\u0027s just how go works), so we generally prefer scoping things with somewhat-generic names",
+      "revId": "160af6785bcf0ae3764f3284f5b8768d4a22af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4f0e5da_25703740",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T03:11:50Z",
+      "side": 1,
+      "message": "nit: please move init() just below the imports so the test metadata is easy to find",
+      "revId": "160af6785bcf0ae3764f3284f5b8768d4a22af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62ed012b_72fadc22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T03:11:50Z",
+      "side": 1,
+      "message": "nit: go code typically doesn\u0027t follow a one-arg-per-line formatting style; i\u0027d recommend packing these more tightly",
+      "revId": "160af6785bcf0ae3764f3284f5b8768d4a22af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28c77464_7b670aab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T03:11:50Z",
+      "side": 1,
+      "message": "i don\u0027t think you need to pass this here, do you?",
+      "range": {
+        "startLine": 88,
+        "startChar": 22,
+        "endLine": 88,
+        "endChar": 38
+      },
+      "revId": "160af6785bcf0ae3764f3284f5b8768d4a22af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d60f9e4_88d20d51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T03:11:50Z",
+      "side": 1,
+      "message": "how about making this just return \"err error\" and having a single dbus.MakeFailedError call in the method call implementation?",
+      "revId": "160af6785bcf0ae3764f3284f5b8768d4a22af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b949251_280f3a14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T03:11:50Z",
+      "side": 1,
+      "message": "nit: \"wrong\" (and please also use lowercase for all the error values below)\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 9
+      },
+      "revId": "160af6785bcf0ae3764f3284f5b8768d4a22af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9270fea_eeeb7947",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T03:11:50Z",
+      "side": 1,
+      "message": "nit: please capitalize acronyms, e.g. pubKeySPKIDER\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 14
+      },
+      "revId": "160af6785bcf0ae3764f3284f5b8768d4a22af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54278e54_27326055",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T03:11:50Z",
+      "side": 1,
+      "message": "nit: consider making this shorter, e.g.\n\ndbusConn.ExportMethodTable(map[string]interface{} {\n    \"ChallengeKey\": func(...) (...) {\n        return ...\n    },\n}, \"...\", \"...\")",
+      "revId": "160af6785bcf0ae3764f3284f5b8768d4a22af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87c1698d_e2c064c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/challenge_response_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T03:11:50Z",
+      "side": 1,
+      "message": "nit: there\u0027s no line-length limit in go, so i\u0027d consider moving this to the previous line",
+      "revId": "160af6785bcf0ae3764f3284f5b8768d4a22af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
