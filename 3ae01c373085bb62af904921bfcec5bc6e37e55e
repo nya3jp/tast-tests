@@ -53,6 +53,29 @@
     },
     {
       "key": {
+        "uuid": "a7ff2094_bb58b4f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-17T14:47:09Z",
+      "side": 1,
+      "message": "could you run go vet / goimport(formatter), too?",
+      "range": {
+        "startLine": 21,
+        "startChar": 28,
+        "endLine": 21,
+        "endChar": 30
+      },
+      "revId": "3ae01c373085bb62af904921bfcec5bc6e37e55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2a21d6fd_7362d790",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
         "patchSetId": 1
@@ -81,6 +104,23 @@
       "writtenOn": "2019-04-17T14:43:38Z",
       "side": 1,
       "message": "nit: delete unnecessary comment",
+      "revId": "3ae01c373085bb62af904921bfcec5bc6e37e55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b435891_07230be6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-17T14:47:09Z",
+      "side": 1,
+      "message": "Please use [][]string, instead to avoid escaping problems.",
       "revId": "3ae01c373085bb62af904921bfcec5bc6e37e55e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
