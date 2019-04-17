@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "cc855636_ce7f4ffd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-17T06:33:43Z",
+      "side": 1,
+      "message": "nit: lower case?",
+      "range": {
+        "startLine": 87,
+        "startChar": 27,
+        "endLine": 87,
+        "endChar": 28
+      },
+      "revId": "c8db8833331b6937221608e8eae20f2d78d73777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "388d9101_757990db",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 11
@@ -18,6 +41,75 @@
         "startChar": 2,
         "endLine": 190,
         "endChar": 4
+      },
+      "revId": "c8db8833331b6937221608e8eae20f2d78d73777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2ca1c20_2589125b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-17T06:33:43Z",
+      "side": 1,
+      "message": "caps.BuiltinOrVividCamera is a constant defined here:\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/lib/caps/caps.go?rcl\u003d3c3e87bffab5ea48ddb844409451033d9c77c7ad\u0026l\u003d58\n\nSorry for the lack of explanation.\n\nFYI:\nAll values that can be used in SoftwareDeps are listed in go/tast-deps#existing-features.\ncaps.BuiltinOrVividCamera is a constant that represents \"autotest-capability:builtin_or_vivid_camera\"",
+      "range": {
+        "startLine": 22,
+        "startChar": 52,
+        "endLine": 22,
+        "endChar": 79
+      },
+      "revId": "c8db8833331b6937221608e8eae20f2d78d73777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f56e2654_de2741c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-17T06:33:43Z",
+      "side": 1,
+      "message": "hmm, I wonder if it\u0027s better to call s.Fatal with more detailed messages here instead of using \"must\".\n\nif err !\u003d gca.SwitchMode(ctx, d, gca.VideoMode); nil {\n\ts.Fatal(\"Failed to switch to video mode: \", err);\n}\n\nReasons:\n* We can add information about the argument. (e.g. \"video mode\" in this case)\n* Since we call gca.ClickShutterButton twice, we want to know which one failed.\n* Error messages should start with an upper case letter.\n\nWDYT?",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 5
+      },
+      "revId": "c8db8833331b6937221608e8eae20f2d78d73777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e546334_d8ddb0df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_still_capture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-17T06:33:43Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 22,
+        "startChar": 52,
+        "endLine": 22,
+        "endChar": 79
       },
       "revId": "c8db8833331b6937221608e8eae20f2d78d73777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
