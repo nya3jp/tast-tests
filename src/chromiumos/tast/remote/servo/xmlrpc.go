@@ -102,7 +102,7 @@ func newParams(args []interface{}) ([]param, error) {
 	return params, nil
 }
 
-func newCall(method string, args ...interface{}) call {
+func NewCall(method string, args ...interface{}) call {
 	return call{method, args}
 }
 
@@ -151,8 +151,8 @@ func (r *response) unpack(out []interface{}) error {
 	return nil
 }
 
-// run makes an XML-RPC call to servod.
-func (s *Servo) run(ctx context.Context, cl call, out ...interface{}) error {
+// Run makes an XML-RPC call to servod.
+func (s *Servo) Run(ctx context.Context, cl call, out ...interface{}) error {
 	body, err := serializeMethodCall(cl)
 	if err != nil {
 		return err
