@@ -81,6 +81,24 @@
       "revId": "2eb64e1a501879e48d512d8374fafdb7ac415060",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce24fc7f_036444b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-17T04:49:42Z",
+      "side": 1,
+      "message": "opps, I suggested Sprintf before, but \u0027+\u0027 is simple and better in this case.\nSorry!",
+      "parentUuid": "f291845b_8e5979a7",
+      "revId": "2eb64e1a501879e48d512d8374fafdb7ac415060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
