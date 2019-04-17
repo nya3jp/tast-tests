@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54c5eaab_1b32323b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T02:29:23Z",
+      "side": 1,
+      "message": "nit: \"attempt\" since this is an error value rather than a logged message: see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 760,
+        "startChar": 35,
+        "endLine": 760,
+        "endChar": 42
+      },
+      "revId": "e4f80af69e82aee6b82b5ff1538e0ddc9cc1a9b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b76fd20c_af457578",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T02:29:23Z",
+      "side": 1,
+      "message": "nit: unable",
+      "range": {
+        "startLine": 766,
+        "startChar": 38,
+        "endLine": 766,
+        "endChar": 44
+      },
+      "revId": "e4f80af69e82aee6b82b5ff1538e0ddc9cc1a9b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb7a9ddd_69e6204d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T02:29:23Z",
+      "side": 1,
+      "message": "nit: i think that this may be more readable on a single line, i.e.\n\n  return data, func() { syscall.Munmap(data) }, nil",
+      "revId": "e4f80af69e82aee6b82b5ff1538e0ddc9cc1a9b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07879564_ee7b49d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T02:29:23Z",
+      "side": 1,
+      "message": "nit: populates",
+      "range": {
+        "startLine": 774,
+        "startChar": 28,
+        "endLine": 774,
+        "endChar": 41
+      },
+      "revId": "e4f80af69e82aee6b82b5ff1538e0ddc9cc1a9b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bb8ee8e_e6390d30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T02:29:23Z",
+      "side": 1,
+      "message": "bikeshed: maybe s/populate/fill/?",
+      "range": {
+        "startLine": 775,
+        "startChar": 5,
+        "endLine": 775,
+        "endChar": 29
+      },
+      "revId": "e4f80af69e82aee6b82b5ff1538e0ddc9cc1a9b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "379f09c1_8fb9df8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T02:29:23Z",
+      "side": 1,
+      "message": "nit: since the rest of p doesn\u0027t appear to be used, how about just passing the path?",
+      "range": {
+        "startLine": 775,
+        "startChar": 40,
+        "endLine": 775,
+        "endChar": 56
+      },
+      "revId": "e4f80af69e82aee6b82b5ff1538e0ddc9cc1a9b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0558bbac_a56a402c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T02:29:23Z",
+      "side": 1,
+      "message": "nit: unable (but i think you can just return err directly here, as ioutil.ReadFile already returns a good error including the path)",
+      "range": {
+        "startLine": 778,
+        "startChar": 28,
+        "endLine": 778,
+        "endChar": 34
+      },
+      "revId": "e4f80af69e82aee6b82b5ff1538e0ddc9cc1a9b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e491842_f72b2442",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T02:29:23Z",
+      "side": 1,
+      "message": "nit: \"pagefile\", also i\u0027d recommend \"... were not page-sized: got %d bytes, want %d\"",
+      "range": {
+        "startLine": 783,
+        "startChar": 24,
+        "endLine": 783,
+        "endChar": 32
+      },
+      "revId": "e4f80af69e82aee6b82b5ff1538e0ddc9cc1a9b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
