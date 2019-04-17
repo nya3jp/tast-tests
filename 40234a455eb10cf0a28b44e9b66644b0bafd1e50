@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "756c6a06_77c3aa67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-17T14:00:52Z",
+      "side": 1,
+      "message": "Could you add team alias, too?",
+      "revId": "40234a455eb10cf0a28b44e9b66644b0bafd1e50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba120057_de666abb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-17T14:00:52Z",
+      "side": 1,
+      "message": "Is there any plans to call cryptohome D-Bus methods directly from tests in later CLs?\nIf so, could you extract this into a struct/method similar to what we do for other D-Bus client, e.g. session_manager? (chromiumos/tast/local/session/...).",
+      "revId": "40234a455eb10cf0a28b44e9b66644b0bafd1e50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42c4769b_6522718a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-17T14:00:52Z",
+      "side": 1,
+      "message": "This looks not very trivial to me. Could you add document?",
+      "revId": "40234a455eb10cf0a28b44e9b66644b0bafd1e50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e45ac917_4529b070",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-17T14:00:52Z",
+      "side": 1,
+      "message": "Could you extract this part into a struct and methods?\nAlso, is it necessary to disconnect on test completion?",
+      "range": {
+        "startLine": 164,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 0
+      },
+      "revId": "40234a455eb10cf0a28b44e9b66644b0bafd1e50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a61fbdb_26493bb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-17T14:00:52Z",
+      "side": 1,
+      "message": "Error needs to be checked?",
+      "revId": "40234a455eb10cf0a28b44e9b66644b0bafd1e50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4401da94_74657040",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-17T14:00:52Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "40234a455eb10cf0a28b44e9b66644b0bafd1e50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
