@@ -1,0 +1,214 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "358c1021_50703c0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T14:43:38Z",
+      "side": 1,
+      "message": "are all of these commands expected to work on every chromium-os-derived device? if not, you\u0027ll need to add a dependency to skip them on unsupported devices. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md",
+      "revId": "3ae01c373085bb62af904921bfcec5bc6e37e55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b223441_69054d45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T14:43:38Z",
+      "side": 1,
+      "message": "please put yourself first since you\u0027re adding this test and will be responsible for it :-)",
+      "revId": "3ae01c373085bb62af904921bfcec5bc6e37e55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63e7cbf8_4997b68f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T14:43:38Z",
+      "side": 1,
+      "message": "you need the \"informational\" attribute. please make sure that you\u0027re uploading with \"repo upload\", as a pre-upload check should\u0027ve complained about this",
+      "revId": "3ae01c373085bb62af904921bfcec5bc6e37e55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a21d6fd_7362d790",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T14:43:38Z",
+      "side": 1,
+      "message": "nit: please always include a space after \u0027//\u0027 here and below, e.g. \u0027// CheckMosys ...\u0027\n\nyou can also omit these godoc comments on main test functions, as the function is already documented in Test.Desc above",
+      "revId": "3ae01c373085bb62af904921bfcec5bc6e37e55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f192ca93_600b6481",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T14:43:38Z",
+      "side": 1,
+      "message": "nit: delete unnecessary comment",
+      "revId": "3ae01c373085bb62af904921bfcec5bc6e37e55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2299974c_cdb4a34e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T14:43:38Z",
+      "side": 1,
+      "message": "please use escaping style described below",
+      "revId": "3ae01c373085bb62af904921bfcec5bc6e37e55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe160b03_9fedfce1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T14:43:38Z",
+      "side": 1,
+      "message": "please don\u0027t use sh if unneeded: change commands above to be a [][]string containing e.g. []string{\"mosys\", \"smbios\", ...} and then pass the exec and args directly to CommandContext",
+      "revId": "3ae01c373085bb62af904921bfcec5bc6e37e55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2645fd03_b8917b9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T14:43:38Z",
+      "side": 1,
+      "message": "nit: please use \u0027err\u0027 to match go conventions\n\nalso use Run instead of Output if you don\u0027t care about the output",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 11
+      },
+      "revId": "3ae01c373085bb62af904921bfcec5bc6e37e55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10097b3e_e7b1105c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T14:43:38Z",
+      "side": 1,
+      "message": "nit: shorter:\n\nif err :\u003d cmd.Run(); err !\u003d nil {",
+      "revId": "3ae01c373085bb62af904921bfcec5bc6e37e55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0e419c7_0a9b39c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T14:43:38Z",
+      "side": 1,
+      "message": "please use testexec.DumpLogOnError earlier instead",
+      "revId": "3ae01c373085bb62af904921bfcec5bc6e37e55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9773e54e_9f9ad3d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T14:43:38Z",
+      "side": 1,
+      "message": "nit: please follow the style used elsewhere: \"%q failed: %v\", shutil.EscapeSlice(args), err)",
+      "revId": "3ae01c373085bb62af904921bfcec5bc6e37e55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb91df55_f2539d12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-17T14:43:38Z",
+      "side": 1,
+      "message": "nit: delete blank line",
+      "revId": "3ae01c373085bb62af904921bfcec5bc6e37e55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
