@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "903e1d88_0dd870d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-17T11:48:02Z",
+      "side": 1,
+      "message": "Nice catch! Thanks.",
+      "parentUuid": "cc855636_ce7f4ffd",
+      "range": {
+        "startLine": 87,
+        "startChar": 27,
+        "endLine": 87,
+        "endChar": 28
+      },
+      "revId": "c8db8833331b6937221608e8eae20f2d78d73777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "388d9101_757990db",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 11
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "0aee7246_394e90f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-17T11:48:02Z",
+      "side": 1,
+      "message": "Oops... That was awkward haha\nThanks for the information! :)",
+      "parentUuid": "b2ca1c20_2589125b",
+      "range": {
+        "startLine": 22,
+        "startChar": 52,
+        "endLine": 22,
+        "endChar": 79
+      },
+      "revId": "c8db8833331b6937221608e8eae20f2d78d73777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f56e2654_de2741c0",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
         "patchSetId": 11
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "a18c58ca_b5660258",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-17T11:48:02Z",
+      "side": 1,
+      "message": "I think having more verbose logs do work better in our favor. I guess the only downside is making the test code a bit less readable. But I agree. I\u0027ve removed all the must function calls.",
+      "parentUuid": "f56e2654_de2741c0",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 5
+      },
+      "revId": "c8db8833331b6937221608e8eae20f2d78d73777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e546334_d8ddb0df",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_still_capture.go",
         "patchSetId": 11
@@ -114,6 +186,30 @@
       "revId": "c8db8833331b6937221608e8eae20f2d78d73777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cee8d5a_b0cff3e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_still_capture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-17T11:48:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e546334_d8ddb0df",
+      "range": {
+        "startLine": 22,
+        "startChar": 52,
+        "endLine": 22,
+        "endChar": 79
+      },
+      "revId": "c8db8833331b6937221608e8eae20f2d78d73777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
