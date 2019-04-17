@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "82e2dc46_25cb9f43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-17T19:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf1f2fef_3e08006c",
+      "revId": "40234a455eb10cf0a28b44e9b66644b0bafd1e50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba120057_de666abb",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
         "patchSetId": 3
@@ -87,6 +105,24 @@
       "revId": "40234a455eb10cf0a28b44e9b66644b0bafd1e50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ea3c271_204a9e8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-17T19:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "507357ee_cd3ce503",
+      "revId": "40234a455eb10cf0a28b44e9b66644b0bafd1e50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -169,6 +205,30 @@
       "revId": "40234a455eb10cf0a28b44e9b66644b0bafd1e50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59e502b2_a58a722c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-17T19:06:24Z",
+      "side": 1,
+      "message": "Done (both extracting into a struct and \"unexporting\" the D-Bus methods after the test end)",
+      "parentUuid": "e5db3cdb_747e4e4e",
+      "range": {
+        "startLine": 164,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 0
+      },
+      "revId": "40234a455eb10cf0a28b44e9b66644b0bafd1e50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
