@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3429e225_e1370efb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-17T19:07:17Z",
+      "side": 1,
+      "message": "Another functional change: Added checks that my D-Bus fake implementation actually gets called.",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 2
+      },
+      "revId": "55b480a5936620679be9bfe2af0407e2f7f3a801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
