@@ -34,4 +34,9 @@ const (
 	RTCJPEGInitStatus = "Media.VideoCaptureGpuJpegDecoder.InitDecodeSuccess"
 	// RTCJPEGInitSuccess is the bucket value in Media.VideoCaptureGpuJpegDecoder.InitDecodeSuccess to be incremented in success.
 	RTCJPEGInitSuccess = 1
+
+	// RTCLoopbackPage is a webpage for WebRTC loopback test
+	RTCLoopbackPage = "loopback.html"
+	// RTCAddStatsJs is a JavaScript stored in ./data for replacing addStats() in chrome://webrtc-internals
+	RTCAddStatsJs = "add_stats.js"
 )
