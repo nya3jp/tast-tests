@@ -22,6 +22,31 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const (
+	// LoopbackPage is a webpage for WebRTC loopback test
+	LoopbackPage = "loopback.html"
+	// AddStatsJSFile is a JavaScript file for replacing addStats() in chrome://webrtc-internals
+	AddStatsJSFile = "add_stats.js"
+)
+
+// chromeArgsWithCameraInput returns Chrome extra args as string slice
+// for video test with Y4M stream file as live camera input.
+func chromeArgsWithCameraInput(stream string) []string {
+	return []string{
+		logging.ChromeVmoduleFlag(),
+		// See https://webrtc.org/testing/
+		// Feed a test pattern to getUserMedia() instead of live camera input.
+		"--use-fake-device-for-media-stream",
+		// Avoid the need to grant camera/microphone permissions.
+		"--use-fake-ui-for-media-stream",
+		// Feed a Y4M test file to getUserMedia() instead of live camera input.
+		"--use-file-for-fake-video-capture=" + stream,
+		// Disable the autoplay policy not to be affected by actions from outside of tests.
+		// cf. https://developers.google.com/web/updates/2017/09/autoplay-policy-changes
+		"--autoplay-policy=no-user-gesture-required",
+	}
+}
+
 // DataFiles returns a list of required files that tests that use this package
 // should include in their Data fields.
 func DataFiles() []string {
@@ -30,6 +55,11 @@ func DataFiles() []string {
 		"third_party/munge_sdp.js",
 		"third_party/ssim.js",
 	}
+}
+
+// LoopbackDataFiles returns a list of required files for opening WebRTC loopback test page.
+func LoopbackDataFiles() []string {
+	return append(DataFiles(), LoopbackPage)
 }
 
 // runTest checks if the given WebRTC tests work correctly.

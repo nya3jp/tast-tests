@@ -20,7 +20,7 @@ func init() {
 		Contacts:     []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login", caps.HWDecodeJPEG},
-		Data:         append(webrtc.DataFiles(), "crowd720_25frames.mjpeg", "loopback.html"),
+		Data:         append(webrtc.LoopbackDataFiles(), "crowd720_25frames.mjpeg"),
 	})
 }
 

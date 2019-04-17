@@ -35,17 +35,7 @@ func RunWebRTCVideo(ctx context.Context, s *testing.State, streamName, histogram
 // openWebRTCPageAndCheckBucket opens video/data/loopback.html and communicates via WebRTC in a fake way. The stream on WebRTC is streamFile.
 // It checks bucketValue on histogramName counts up in the end of the test.
 func openWebRTCPageAndCheckBucket(ctx context.Context, fileSystem http.FileSystem, streamFile, histogramName string, bucketValue int64) error {
-	chromeArgs := []string{
-		logging.ChromeVmoduleFlag(),
-		// See https://webrtc.org/testing/
-		// "--use-fake-device-for-media-stream" feeds a test pattern to getUserMedia() instead of live camera input.
-		// "--use-fake-ui-for-media-stream" avoids the need to grant camera/microphone permissions.
-		// "--use-file-for-fake-video-capture=" feeds a Y4M test file to getUserMedia() instead of live camera input.
-		"--use-fake-device-for-media-stream",
-		"--use-fake-ui-for-media-stream",
-		"--use-file-for-fake-video-capture=" + streamFile,
-	}
-
+	chromeArgs := chromeArgsWithCameraInput(streamFile)
 	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to Chrome")
@@ -61,7 +51,7 @@ func openWebRTCPageAndCheckBucket(ctx context.Context, fileSystem http.FileSyste
 	}
 	testing.ContextLogf(ctx, "Initial %s histogram: %v", histogramName, initHistogram.Buckets)
 
-	conn, err := cr.NewConn(ctx, server.URL+"/loopback.html")
+	conn, err := cr.NewConn(ctx, server.URL+"/"+LoopbackPage)
 	if err != nil {
 		return errors.Wrap(err, "failed to open video page")
 	}
