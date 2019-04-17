@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "15a3a47e_bad0fb5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-17T19:26:42Z",
+      "side": 1,
+      "message": "There are two issues.  The first is preallocation, the second the automated calculation of the preallocation amount.  The following CL (https://crrev.com/c/1572304) removes the automated calculation.  If you prefer, I can merge the CLs.  If you want to completely remove preallocation, I can make another CL.  If you want to preallocate with zram, and not without, then we have to discuss more.",
+      "parentUuid": "50dd4604_b673cdb6",
+      "range": {
+        "startLine": 120,
+        "startChar": 19,
+        "endLine": 120,
+        "endChar": 68
+      },
+      "revId": "7a3a8ae4cc6009289d9727c18f2265d1b5cedc97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0cd9b08c_303d75ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 9
