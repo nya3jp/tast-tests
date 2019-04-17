@@ -14,6 +14,8 @@ import (
 	"net"
 	"os"
 	"runtime"
+	"strconv"
+	"strings"
 	"syscall"
 	"time"
 
@@ -112,45 +114,6 @@ func stdDev(values []time.Duration) time.Duration {
 	}
 	n := float64(len(values))
 	return time.Duration(float64(time.Second) * math.Sqrt((s2-s*s/n)/(n-1)))
-}
-
-// memoryEqualizingAmount computes how much RAM should be preallocated to
-// approximate the behavior of a device with targetSizeGB.  If the system has
-// swap, it is assumed to be zram.  The preallocated data may be partly or
-// fully swapped, in which case it is assumed that it will compress down to
-// ratio (e.g. if ratio = 0.33, 1 GiB will compress to 330 MiB).
-func memoryEqualizingAmount(targetSizeMiB uint64, ratio float64) (allocMiB uint64, err error) {
-	const MiB = 1024 * 1024
-	// Compute how much memory to steal.  Assume that the stolen memory
-	// will be compressed with the given ratio.  Calculations are rounded
-	// to 1 MiB.
-	memInfo, err := mem.VirtualMemory()
-	if err != nil {
-		return 0, errors.Wrap(err, "cannot obtain memory info")
-	}
-	totalMiB := memInfo.Total / MiB
-
-	swapInfo, err := mem.SwapMemory()
-	if err != nil {
-		return 0, errors.Wrap(err, "cannot obtain swap info")
-	}
-	swapMiB := swapInfo.Total / MiB
-
-	if totalMiB <= targetSizeMiB {
-		return 0, nil
-	}
-	// fillMiB is how much RAM we would need to allocate if none is swapped.
-	fillMiB := totalMiB - targetSizeMiB
-	// Compute how much memory we should allocate if it is all swapped.
-	allocMiB = uint64((float64(fillMiB)) / ratio)
-	// But if the allocation does not all fit in the swap, the difference
-	// must stay outside.  The first swapMiB worth of allocation is
-	// compressed to swapMiB * ratio, and the rest, up to fillMiB, remains
-	// uncompressed.
-	if allocMiB > swapMiB {
-		allocMiB = swapMiB + (fillMiB - uint64(float64(swapMiB)*ratio))
-	}
-	return allocMiB, nil
 }
 
 // evalPromiseBody executes a JS promise on connection conn.  promiseBody
@@ -769,7 +732,23 @@ func createMemoryMapping(allocBytes uint64) ([]byte, func(), error) {
 	return data, func() { syscall.Munmap(data) }, nil
 }
 
-// fillWithPageContents fills a byte slice with the PageFile contents.
+// getAvailableMemoryMB returns the current value in the sysfs available file.
+func getAvailableMemoryMB() (uint64, error) {
+	avail, err := ioutil.ReadFile("/sys/kernel/mm/chromeos-low_mem/available")
+	if err != nil {
+		return 0, err
+	}
+
+	i, err := strconv.ParseUint(strings.TrimSpace(string(avail)), 10, 64)
+	if err != nil {
+		return 0, errors.Wrapf(err, "failed converting available memory %q", avail)
+	}
+	return i, nil
+
+}
+
+// fillWithPageContents fills a byte slice with size bytes of PageFile contents.
+// size must be a multiple of the page size.
 func fillWithPageContents(b []byte, p *RunParameters) error {
 	pf, err := ioutil.ReadFile(p.PageFilePath)
 	if err != nil {
@@ -779,6 +758,10 @@ func fillWithPageContents(b []byte, p *RunParameters) error {
 	// The pagefile should be exactly one page.
 	if len(pf) != os.Getpagesize() {
 		return errors.Errorf("pagefile contents in %s were not page-sized got: %d bytes; want: %d bytes", p.PageFilePath, len(pf), os.Getpagesize())
+	}
+
+	if len(b)%len(pf) != 0 {
+		return errors.Errorf("size of slice is not a multiple of the page size %d", len(b), len(pf))
 	}
 
 	for i := 0; i < len(b); i += len(pf) {
@@ -796,32 +779,8 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		tabWorkingSetSize    = 5
 		tabCycleDelay        = 300 * time.Millisecond
 		tabSwitchRepeatCount = 10
-		postShrinkMiB        = 3500 // try to shrink RAM down to this size
 	)
 
-	// First, steal a bunch of RAM to make the test run faster on systems
-	// with a lot of memory.  Please see comments in
-	// data/memory_pressure_preallocator.sh for details.
-	allocMiB, err := memoryEqualizingAmount(postShrinkMiB, p.PageFileCompressionRatio)
-	if err != nil {
-		s.Fatal("Cannot compute preallocation amount: ", err)
-	}
-	if allocMiB > 0 && !p.RecordPageSet {
-		s.Logf("Preallocating %d MiB via mmap", allocMiB)
-		allocBytes := uint64(allocMiB * 1024 * 1024)
-		data, unmapFunc, err := createMemoryMapping(allocBytes)
-		if err != nil {
-			s.Fatal("Unable to create memory mapping: ", err)
-		}
-		defer unmapFunc()
-
-		err = fillWithPageContents(data, p)
-		if err != nil {
-			s.Fatal("Unable to fill mapping: ", err)
-		}
-	} else {
-		s.Log("No preallocation needed")
-	}
 	if p.RecordPageSet {
 		memInfo, err := mem.VirtualMemory()
 		if err != nil {
@@ -887,6 +846,41 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		s.Fatal("Cannot get tab list: ", err)
 	}
 	initialTabCount := len(validTabIDs)
+
+	// Once the browser is running and the UI job has restarted we should be in steady memory state and can
+	// begin prefilling memory before running the test.
+	avail, err := getAvailableMemoryMB()
+	if err != nil {
+		s.Fatal("Unable to load available memory sysfs file: ", err)
+	}
+	s.Logf("Restarted UI; %d MiB available", avail)
+
+	const target = uint64(1600)
+	const oneMB = uint64(1 << 20) // 1 MB
+	if avail > target && !p.RecordPageSet {
+		// Create a single 32GB mapping and touch pages until we hit 1200MB available.
+		b, unmapFunc, err := createMemoryMapping(32 << 30)
+		if err != nil {
+			s.Fatal("Unable to create mapping: ", err)
+		}
+		defer unmapFunc()
+
+		var filled uint64
+		for avail > target {
+			endPos := filled + oneMB
+			err = fillWithPageContents(b[filled:endPos], p)
+			if err != nil {
+				s.Fatal("Filling page contents failed: ", err)
+			}
+			filled += oneMB
+
+			avail, err = getAvailableMemoryMB()
+			if err != nil {
+				s.Fatal("Unable to load available memory sysfs file: ", err)
+			}
+		}
+		s.Logf("Preallocated to %d MB by touching %d MB worth of pages", avail, filled/oneMB)
+	}
 
 	// Open enough tabs for a "working set", i.e. the number of tabs that an
 	// imaginary user will cycle through in their imaginary workflow.
