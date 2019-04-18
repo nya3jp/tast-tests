@@ -45,6 +45,54 @@
       "revId": "9c018b2f234344135d0f9ae322696075c1791464",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c059dc6d_c8b41d25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-18T15:58:09Z",
+      "side": 1,
+      "message": "I think sudo is not required in chromebook to run mosys",
+      "parentUuid": "44e4ca16_c1f166af",
+      "range": {
+        "startLine": 37,
+        "startChar": 12,
+        "endLine": 37,
+        "endChar": 62
+      },
+      "revId": "9c018b2f234344135d0f9ae322696075c1791464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0147f875_d1fbea5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-18T15:58:09Z",
+      "side": 1,
+      "message": "Just checking the command execution.",
+      "parentUuid": "116f3289_fc6b1509",
+      "range": {
+        "startLine": 37,
+        "startChar": 42,
+        "endLine": 37,
+        "endChar": 47
+      },
+      "revId": "9c018b2f234344135d0f9ae322696075c1791464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
