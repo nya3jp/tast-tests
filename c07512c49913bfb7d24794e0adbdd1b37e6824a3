@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4711e6ba_335d1c6c",
+        "filename": "src/chromiumos/tast/local/arc/ui/object.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-18T20:24:33Z",
+      "side": 1,
+      "message": "I\u0027m sorry, but could you please remove WaitUntilGoneWithDefaultTimeout? Actually I\u0027m going to remove WaitForExistsWithDefaultTimeout, but forgot to file a bug for it... I filed crbug.com/954314.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 1
+      },
+      "revId": "c07512c49913bfb7d24794e0adbdd1b37e6824a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
