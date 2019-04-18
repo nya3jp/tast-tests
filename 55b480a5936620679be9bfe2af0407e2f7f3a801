@@ -2,6 +2,91 @@
   "comments": [
     {
       "key": {
+        "uuid": "a90e4958_9efc0295",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-18T06:41:13Z",
+      "side": 1,
+      "message": "can you add some more details about what\u0027s going on here? does this implement a d-bus service that\u0027s called by cryptohomed?",
+      "revId": "55b480a5936620679be9bfe2af0407e2f7f3a801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc283284_7a7e2bec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-18T06:41:13Z",
+      "side": 1,
+      "message": "would it make sense to move this to the cryptohome package, or is it likely to only be useful for this one test?",
+      "revId": "55b480a5936620679be9bfe2af0407e2f7f3a801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7ca1cc2_3a9304d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-18T06:41:13Z",
+      "side": 1,
+      "message": "it looks like this is passed just for logging -- is that right? if the logging is really needed, could you just accept a logging function instead, e.g. lf func(string, ...interface{}), and then pass s.Logf? we generally try to minimize passing testing.State around when possible since it has such a large API surface.",
+      "revId": "55b480a5936620679be9bfe2af0407e2f7f3a801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "720f3c79_1c480761",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-18T06:41:13Z",
+      "side": 1,
+      "message": "what about instead having an e.g. newCryptohomeKeyDelegate function that also exports the service, and then adding a close() method to the delegate that unexports it?",
+      "revId": "55b480a5936620679be9bfe2af0407e2f7f3a801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b13963f5_f695672d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-18T06:41:13Z",
+      "side": 1,
+      "message": "nit: s.Fatal(\"...: \", err)",
+      "revId": "55b480a5936620679be9bfe2af0407e2f7f3a801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3429e225_e1370efb",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
         "patchSetId": 6
@@ -18,6 +103,46 @@
         "startChar": 0,
         "endLine": 206,
         "endChar": 2
+      },
+      "revId": "55b480a5936620679be9bfe2af0407e2f7f3a801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5d2f14a_277b3554",
+        "filename": "src/chromiumos/tast/local/cryptohome/dbus.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-18T06:41:13Z",
+      "side": 1,
+      "message": "please add copyright header",
+      "revId": "55b480a5936620679be9bfe2af0407e2f7f3a801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed17e23a_eee153a0",
+        "filename": "src/chromiumos/tast/local/cryptohome/dbus.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-18T06:41:13Z",
+      "side": 1,
+      "message": "nit: DBus\n\nbut this doesn\u0027t seem like a really accurate name for this. how about something like \"Client\" instead? or maybe \"Daemon\" is better?",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 9
       },
       "revId": "55b480a5936620679be9bfe2af0407e2f7f3a801",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",

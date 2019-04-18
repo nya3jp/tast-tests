@@ -16,6 +16,24 @@
       "revId": "07c0023d6b935d4e4fa984f1e6b2472f97fd9c67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34639bfd_8a09fd12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-18T06:41:13Z",
+      "side": 1,
+      "message": "this seems like a good idea to me",
+      "parentUuid": "bcc1a7c3_97bb4fb9",
+      "revId": "07c0023d6b935d4e4fa984f1e6b2472f97fd9c67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
