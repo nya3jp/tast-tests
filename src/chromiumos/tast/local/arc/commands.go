@@ -13,9 +13,6 @@ import (
 )
 
 // Command runs a command in Android container via adb.
-//
-// Be aware of many restrictions of adb: return code is always 0, stdin is not
-// connected, and stderr is mixed to stdout.
 func (a *ARC) Command(ctx context.Context, name string, arg ...string) *testexec.Cmd {
 	// adb exec-out is like adb shell, but skips CR/LF conversion.
 	// Unfortunately, adb exec-out always passes the command line to /bin/sh, so

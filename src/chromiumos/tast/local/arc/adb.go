@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"os"
 	"strings"
+	"syscall"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
@@ -91,10 +92,8 @@ func setUpADBAuth(ctx context.Context) error {
 	}
 
 	// Restart local ADB server to use the newly installed private key.
-	// We do not use adb kill-server since it is unreliable (crbug.com/855325).
-	testexec.CommandContext(ctx, "killall", "--quiet", "--wait", "-KILL", "adb").Run()
-	if err := adbCommand(ctx, "start-server").Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "failed starting ADB local server")
+	if err := restartADBLocalServer(ctx); err != nil {
+		return errors.Wrap(err, "failed restarting ADB local server")
 	}
 
 	return nil
@@ -152,6 +151,22 @@ func restartADBDaemon(ctx context.Context) error {
 		return err
 	}
 	return setProp(ctx, "ctl.restart", "adbd")
+}
+
+// restartADBLocalServer restarts the ADB local server.
+func restartADBLocalServer(ctx context.Context) error {
+	// We do not use adb kill-server since it is unreliable (crbug.com/855325).
+	testexec.CommandContext(ctx, "killall", "--quiet", "--wait", "-KILL", "adb").Run()
+
+	// Start a ADB local server with a new session so that it is not killed
+	// on the completion of the test bundle (crbug.com/954226).
+	cmd := adbCommand(ctx, "start-server")
+	if cmd.SysProcAttr == nil {
+		cmd.SysProcAttr = &syscall.SysProcAttr{}
+	}
+	cmd.SysProcAttr.Setsid = true
+	cmd.SysProcAttr.Setpgid = false
+	return adbCommand(ctx, "start-server").Run(testexec.DumpLogOnError)
 }
 
 func setProp(ctx context.Context, name, value string) error {
