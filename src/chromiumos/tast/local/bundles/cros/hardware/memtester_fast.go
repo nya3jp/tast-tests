@@ -20,7 +20,6 @@ func init() {
 			"derat@chromium.org",  // Tast port author
 			"cros-partner-avl@google.com",
 		},
-		Attr: []string{"informational"},
 	})
 }
 
