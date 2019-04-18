@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "116f3289_fc6b1509",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1128435
+      },
+      "writtenOn": "2019-04-18T15:30:12Z",
+      "side": 1,
+      "message": "This test doesn\u0027t do any validation on the output? Can you add some smoke test like output is not just empty?",
+      "range": {
+        "startLine": 37,
+        "startChar": 42,
+        "endLine": 37,
+        "endChar": 47
+      },
+      "revId": "9c018b2f234344135d0f9ae322696075c1791464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44e4ca16_c1f166af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1128435
+      },
+      "writtenOn": "2019-04-18T15:30:12Z",
+      "side": 1,
+      "message": "you would need sudo to run mosys, just make sure that this does run the command under sudo",
+      "range": {
+        "startLine": 37,
+        "startChar": 12,
+        "endLine": 37,
+        "endChar": 62
+      },
+      "revId": "9c018b2f234344135d0f9ae322696075c1791464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
