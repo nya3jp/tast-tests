@@ -1,0 +1,395 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41f062d5_7b5a3b11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-04-18T13:48:21Z",
+      "side": 1,
+      "message": "If this CL will only implement test_decode_time. The title should be\n\ntast-tests: Migrate video_WebRtcPerf.test_decode_time to Tast",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "5e9301d258bf9e7a6e7798b2aebb309b5b3fb2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e25de36_a0bf0ede",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-04-18T13:48:21Z",
+      "side": 1,
+      "message": "Why do we need this? I don\u0027t see any external caller.\nIf this will be used by later CLs, I would recommend to add it in that CL.",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 22
+      },
+      "revId": "5e9301d258bf9e7a6e7798b2aebb309b5b3fb2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "025c692d_9a949032",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-04-18T13:48:21Z",
+      "side": 1,
+      "message": "If there is external caller, maybe just use\n\nconst DefaultChromeArgs \u003d []string...\n\nand remove the above function",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "5e9301d258bf9e7a6e7798b2aebb309b5b3fb2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8661f924_1c294cfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-04-18T13:48:21Z",
+      "side": 1,
+      "message": "Tast style is no space --\u003e a+b",
+      "range": {
+        "startLine": 25,
+        "startChar": 13,
+        "endLine": 25,
+        "endChar": 16
+      },
+      "revId": "5e9301d258bf9e7a6e7798b2aebb309b5b3fb2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "985a31b6_9b2cb11f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-04-18T13:48:21Z",
+      "side": 1,
+      "message": "const is recommended to define in the function if there is only one usage",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 5
+      },
+      "revId": "5e9301d258bf9e7a6e7798b2aebb309b5b3fb2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55927afc_6db7479e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-04-18T13:48:21Z",
+      "side": 1,
+      "message": "nit: time.Minute * 1",
+      "range": {
+        "startLine": 41,
+        "startChar": 24,
+        "endLine": 41,
+        "endChar": 35
+      },
+      "revId": "5e9301d258bf9e7a6e7798b2aebb309b5b3fb2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eb1e168_1e5f029f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-04-18T13:48:21Z",
+      "side": 1,
+      "message": "nit: Tast comment style\n\nopenWebRTCInternalsPage opens WebRTC....",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 8
+      },
+      "revId": "5e9301d258bf9e7a6e7798b2aebb309b5b3fb2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4da6575_26ac76c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-04-18T13:48:21Z",
+      "side": 1,
+      "message": ")/2",
+      "range": {
+        "startLine": 77,
+        "startChar": 38,
+        "endLine": 77,
+        "endChar": 42
+      },
+      "revId": "5e9301d258bf9e7a6e7798b2aebb309b5b3fb2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cc30808_a3086130",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-04-18T13:48:21Z",
+      "side": 1,
+      "message": "max \u003d math.Max(max, n)",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 3
+      },
+      "revId": "5e9301d258bf9e7a6e7798b2aebb309b5b3fb2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7475e4fe_ee0f49fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-04-18T13:48:21Z",
+      "side": 1,
+      "message": "don\u0027t need this line",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 14
+      },
+      "revId": "5e9301d258bf9e7a6e7798b2aebb309b5b3fb2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "182f5971_4cbf3ada",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-04-18T13:48:21Z",
+      "side": 1,
+      "message": "If err !\u003d nil, conn should be nil. So it should be implemented as:\n\nif err !\u003d nil {\n  s.Fatal(...)\n}\ndefer conn.Close()\ndefer conn.CloseTarget(ctx)\n\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_video.go?type\u003dcs\u0026q\u003dconn.CloseTarget+package:chromeos_public+file:tast\u0026g\u003d0\u0026l\u003d64",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 28
+      },
+      "revId": "5e9301d258bf9e7a6e7798b2aebb309b5b3fb2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "835500b3_a84d4869",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-04-18T13:48:21Z",
+      "side": 1,
+      "message": "no need \"var e error\"\n\nif e :\u003d conn.Eval...",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 108,
+        "endChar": 11
+      },
+      "revId": "5e9301d258bf9e7a6e7798b2aebb309b5b3fb2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc4346e8_79ce56d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-04-18T13:48:21Z",
+      "side": 1,
+      "message": "Capitalize the word for s.Logf()\n\n\"Max decode time list \u003d %v\"",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 8
+      },
+      "revId": "5e9301d258bf9e7a6e7798b2aebb309b5b3fb2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4601e922_a6a8d813",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-04-18T13:48:21Z",
+      "side": 1,
+      "message": "I think the common sense is if you have passed testing.State in this function, you could just use s.Fatal(..) s.Error(...) to judge the test, rather than returning error.",
+      "range": {
+        "startLine": 138,
+        "startChar": 40,
+        "endLine": 138,
+        "endChar": 82
+      },
+      "revId": "5e9301d258bf9e7a6e7798b2aebb309b5b3fb2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94564431_98acfb0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-04-18T13:48:21Z",
+      "side": 1,
+      "message": "tast style: RunWebRtcPerf",
+      "range": {
+        "startLine": 138,
+        "startChar": 5,
+        "endLine": 138,
+        "endChar": 18
+      },
+      "revId": "5e9301d258bf9e7a6e7798b2aebb309b5b3fb2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b01644e4_b44e31a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-04-18T13:48:21Z",
+      "side": 1,
+      "message": "\"chrome_login\"?",
+      "range": {
+        "startLine": 20,
+        "startChar": 25,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "5e9301d258bf9e7a6e7798b2aebb309b5b3fb2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73b421ed_8e204171",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-04-18T13:48:21Z",
+      "side": 1,
+      "message": "RunWebRTCPerf return error however you don\u0027t catch it",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 54
+      },
+      "revId": "5e9301d258bf9e7a6e7798b2aebb309b5b3fb2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
