@@ -93,6 +93,54 @@
       "revId": "9c018b2f234344135d0f9ae322696075c1791464",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46a2b6bf_61ed87f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1128435
+      },
+      "writtenOn": "2019-04-18T17:30:11Z",
+      "side": 1,
+      "message": "Can you expand the check to assert the output is non empty (or containing only whitespace)?",
+      "parentUuid": "0147f875_d1fbea5d",
+      "range": {
+        "startLine": 37,
+        "startChar": 42,
+        "endLine": 37,
+        "endChar": 47
+      },
+      "revId": "9c018b2f234344135d0f9ae322696075c1791464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17bb3003_16b540fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1128435
+      },
+      "writtenOn": "2019-04-18T17:30:11Z",
+      "side": 1,
+      "message": "I checked on my nami device \u0026 need mosys to run :-/\n\nI wouldn\u0027t object if this doesn\u0027t fail on the builders though",
+      "parentUuid": "c059dc6d_c8b41d25",
+      "range": {
+        "startLine": 37,
+        "startChar": 12,
+        "endLine": 37,
+        "endChar": 62
+      },
+      "revId": "9c018b2f234344135d0f9ae322696075c1791464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
