@@ -1117,6 +1117,30 @@
     },
     {
       "key": {
+        "uuid": "548e7c3e_efdb44df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_still_capture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-04-18T04:07:30Z",
+      "side": 1,
+      "message": "I see. Then please add these to line 19 mentioning that this test only checks the existence of captured image. It doesn\u0027t validate the file format or content inside it.",
+      "parentUuid": "0c359a97_bf4835bf",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "9f7b5838cd8a59365da4f2a885319606a309fbbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4fea177f_978a6e41",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_still_capture.go",
         "patchSetId": 9
