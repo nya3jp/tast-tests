@@ -81,6 +81,9 @@ func UIAutomator(ctx context.Context, s *testing.State) {
 	must(input.SetText(ctx, customTitle))
 	must(d.Object(ui.ID(doneButtonID)).Click(ctx))
 
+	// Wait until the done button is gone.
+	must(d.Object(ui.ID(doneButtonID)).WaitUntilGoneWithDefaultTimeout(ctx))
+
 	// Wait for our new entry to show up.
 	must(d.Object(ui.ID(titleID), ui.Text(customTitle)).WaitForExistsWithDefaultTimeout(ctx))
 

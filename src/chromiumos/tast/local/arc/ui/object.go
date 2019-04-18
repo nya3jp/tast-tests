@@ -68,6 +68,20 @@ func (o *Object) WaitForExistsWithDefaultTimeout(ctx context.Context) error {
 	return o.callSimple(ctx, "waitForExists", o.s, 24*time.Hour /* long enough timeout */)
 }
 
+// WaitUntilGone waits for a view matching the selector to disappear.
+//
+// This method corresponds to UiObject.waitUntilGone().
+// https://developer.android.com/reference/android/support/test/uiautomator/UiObject.html#waitUntilGone(long)
+func (o *Object) WaitUntilGone(ctx context.Context, timeout time.Duration) error {
+	return o.callSimple(ctx, "waitUntilGone", o.s, timeout/time.Millisecond)
+}
+
+// WaitUntilGoneWithDefaultTimeout is same as WaitUntilGone, but waits until ctx expires.
+// See WaitUntilGone.
+func (o *Object) WaitUntilGoneWithDefaultTimeout(ctx context.Context) error {
+	return o.callSimple(ctx, "waitUntilGone", o.s, 24*time.Hour /* long enough timeout */)
+}
+
 // Click clicks a view matching the selector.
 //
 // This method corresponds to UiObject.click().
