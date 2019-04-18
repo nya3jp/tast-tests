@@ -77,6 +77,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"metrics_daemon", "root", "root", 0},
 		{"disks", "cros-disks", "cros-disks", restrictCaps | noNewPrivs},
 		{"update_engine", "root", "root", 0},
+		{"update_engine_client", "root", "root", 0},
 		{"bluetoothd", "bluetooth", "bluetooth", restrictCaps | noNewPrivs},
 		{"debugd", "root", "root", mntNS},
 		{"cras", "cras", "cras", mntNS | restrictCaps | noNewPrivs},
@@ -194,6 +195,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		"minijail-init",
 		"(agetty)", // initial name when systemd starts serial-getty; changes to "agetty" later
 		"adb",      // sometimes appears on test images: https://crbug.com/792541
+		"postinst", // runs cros_installer
 	}
 
 	// Per TASK_COMM_LEN, the kernel only uses 16 null-terminated bytes to hold process names
@@ -217,6 +219,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		truncateProcName("local_test_runner"):  {}, // Tast-related processes
 		truncateProcName("periodic_scheduler"): {}, // runs cron scripts
 		truncateProcName("arc-setup"):          {}, // runs patchoat and other Android programs
+		truncateProcName("cros_installer"):     {}, // runs during system updates
 	}
 
 	baselineMap := make(map[string][]*procReqs, len(baseline))
