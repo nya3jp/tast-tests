@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "2ffd06d4_2eb30df0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-18T02:37:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd6d0c2f_81828eb4",
+      "revId": "3ae01c373085bb62af904921bfcec5bc6e37e55e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b223441_69054d45",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
         "patchSetId": 1

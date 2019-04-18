@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e05ad27c_53e4c085",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-18T02:37:45Z",
+      "side": 1,
+      "message": "Ok. Not spoken to mosys team yet. I will do it.\n\nThank You",
+      "parentUuid": "4bf6f67d_811eca94",
+      "revId": "af8a3d21d1095726cef542c42209d90c862526f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36a5a6b5_f2e376f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2019-04-17T18:39:21Z",
       "side": 1,
       "message": "In this case, using just %s would be more convenient since we can easily cut \u0026 paste.\n\n s.Logf(\"Verifying the command mosys %s\", shutil.EscapeSlice(mosysCmd))",
+      "range": {
+        "startLine": 39,
+        "startChar": 32,
+        "endLine": 39,
+        "endChar": 34
+      },
+      "revId": "af8a3d21d1095726cef542c42209d90c862526f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0abbe44b_2ac534c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-18T02:37:45Z",
+      "side": 1,
+      "message": "I used %q for separating the command from normal logging info. Ex:\nWith %s:\nVerifying the command ec info\nWith %q:\nVerifying the command \"ec info\"",
+      "parentUuid": "36a5a6b5_f2e376f0",
       "range": {
         "startLine": 39,
         "startChar": 32,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "d09a7ede_9212c303",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-18T02:37:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47de53f1_c81741ed",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 17
+      },
+      "revId": "af8a3d21d1095726cef542c42209d90c862526f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7df30db0_755c32e0",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
         "patchSetId": 2
@@ -85,6 +151,30 @@
       "revId": "af8a3d21d1095726cef542c42209d90c862526f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94388a23_71558b1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-18T02:37:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7df30db0_755c32e0",
+      "range": {
+        "startLine": 42,
+        "startChar": 12,
+        "endLine": 42,
+        "endChar": 16
+      },
+      "revId": "af8a3d21d1095726cef542c42209d90c862526f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
