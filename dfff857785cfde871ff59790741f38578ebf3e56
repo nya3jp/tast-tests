@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af9e9e82_0e286a7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-19T04:50:39Z",
+      "side": 1,
+      "message": "iirc you can just pass testexec.DumpLogOnError to Output on L39",
+      "revId": "dfff857785cfde871ff59790741f38578ebf3e56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4203f1c4_92f2065d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-19T04:50:39Z",
+      "side": 1,
+      "message": "nit: consider just doing\n\n  } else if strings.TrimSpace(...) \u003d\u003d \"\" {",
+      "revId": "dfff857785cfde871ff59790741f38578ebf3e56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
