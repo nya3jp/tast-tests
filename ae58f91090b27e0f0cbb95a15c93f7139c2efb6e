@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0dfcfb5_6fffde3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-19T20:34:08Z",
+      "side": 1,
+      "message": "perhaps this should be:\n\nreturn nil, errors.Wrapf(\"/proc/meminfo contained an unexpected line: %q\", line)",
+      "range": {
+        "startLine": 349,
+        "startChar": 3,
+        "endLine": 349,
+        "endChar": 8
+      },
+      "revId": "ae58f91090b27e0f0cbb95a15c93f7139c2efb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb1452e5_4cd09a02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-19T20:34:08Z",
+      "side": 1,
+      "message": "This should really be criticalMarginMiB because we now support moderate in the margin file also.",
+      "range": {
+        "startLine": 394,
+        "startChar": 37,
+        "endLine": 394,
+        "endChar": 46
+      },
+      "revId": "ae58f91090b27e0f0cbb95a15c93f7139c2efb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62eded74_75c5dcfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-19T20:34:08Z",
+      "side": 1,
+      "message": "margin can contain more than one value I finished porting this to all the other kernels, please validate that readUint64FromFile can handle more than one value in the file and in this context it would return the first.\n\nBut I believe we may want the moderate value too, that would likely be a useful thing to log.",
+      "range": {
+        "startLine": 396,
+        "startChar": 42,
+        "endLine": 396,
+        "endChar": 48
+      },
+      "revId": "ae58f91090b27e0f0cbb95a15c93f7139c2efb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cc2838b_7a25ff85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-19T20:34:08Z",
+      "side": 1,
+      "message": "Why wouldn\u0027t we just make these two new fields in the MemInfoFields struct presumably these methods would be called at the same time, why bother parsing /proc/meminfo twice?",
+      "range": {
+        "startLine": 408,
+        "startChar": 5,
+        "endLine": 408,
+        "endChar": 18
+      },
+      "revId": "ae58f91090b27e0f0cbb95a15c93f7139c2efb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be55cfdf_ec0b5007",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-19T20:34:08Z",
+      "side": 1,
+      "message": "Why are we still relying on gopsutil? We\u0027re already parsing /proc/meminfo, why not just add more fields to MemInfoFields? We\u0027re using gopsutil to get at two values VirtualMemory and SwapMemory both of which we should be able to get now.",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 36
+      },
+      "revId": "ae58f91090b27e0f0cbb95a15c93f7139c2efb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51981f7b_aa309720",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-19T20:34:08Z",
+      "side": 1,
+      "message": "Should we be returning a counter of the number of tabs we found dead all the code below seems like it could be _too_ resilient.",
+      "range": {
+        "startLine": 712,
+        "startChar": 20,
+        "endLine": 712,
+        "endChar": 27
+      },
+      "revId": "ae58f91090b27e0f0cbb95a15c93f7139c2efb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83f14778_8f532793",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-19T20:34:08Z",
+      "side": 1,
+      "message": "This is really cool that we can receive these notifications over dbus.\n\nThe message will contain a payload with the reason for the dbus message [1] it has an event type field which will be TAB_DISCARDED, should we be reading that event to make sure it\u0027s a TAB_DISCARDED? \n\n1. https://cs.chromium.org/chromium/src/chrome/browser/chromeos/dbus/metrics_event_service_provider.cc?type\u003dcs\u0026sq\u003dpackage:chromium\u0026g\u003d0\u0026l\u003d61",
+      "revId": "ae58f91090b27e0f0cbb95a15c93f7139c2efb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
