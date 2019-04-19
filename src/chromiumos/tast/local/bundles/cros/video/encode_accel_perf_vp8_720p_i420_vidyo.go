@@ -19,7 +19,7 @@ func init() {
 		Desc:         "Runs Chrome video_encode_accelerator_unittest to measure the performance of VP8 encoding for 720p I420 video vidyo1, which is more representative of a video-conference scenario",
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Contacts:     []string{"johnylin@chromium.org", "chromeos-video-eng@google.com"},
-		SoftwareDeps: []string{caps.HWEncodeVP8},
+		SoftwareDeps: []string{"chrome", caps.HWEncodeVP8},
 		Data:         []string{encode.Vidyo720P.Name},
 	})
 }

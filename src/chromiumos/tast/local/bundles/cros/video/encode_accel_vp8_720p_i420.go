@@ -19,7 +19,7 @@ func init() {
 		Desc:         "Run Chrome video_encode_accelerator_unittest from 720p I420 raw frames to VP8 stream",
 		Contacts:     []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{caps.HWEncodeVP8},
+		SoftwareDeps: []string{"chrome", caps.HWEncodeVP8},
 		Data:         []string{encode.Tulip720P.Name},
 	})
 }
