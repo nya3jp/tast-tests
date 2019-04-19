@@ -378,6 +378,24 @@
       "revId": "82fe5e766400492ed83a0dca9b57fb86525f2bfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffbeb1f8_de64fe30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T12:03:48Z",
+      "side": 1,
+      "message": "There is no rule in Golang. You can break lines at any point.\nI think most of comments in Tast tests are less than 100-char-length. (but no guarantee)\n\nI commented just because it seems that you were trying to break lines not to violate 80-characters limit.",
+      "parentUuid": "edd967b0_fe501c4b",
+      "revId": "82fe5e766400492ed83a0dca9b57fb86525f2bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

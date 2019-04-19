@@ -1,0 +1,341 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e49e282c_9d949acb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T12:03:48Z",
+      "side": 1,
+      "message": "We don\u0027t usually use this prefix.\nWe use either \"tast-tests:\" or \"video:\".",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9b27673_1bc9629e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T12:03:48Z",
+      "side": 1,
+      "message": "nit: WebRTCPerfDecodeTime?",
+      "range": {
+        "startLine": 12,
+        "startChar": 28,
+        "endLine": 12,
+        "endChar": 38
+      },
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57ac45e0_ba2ce7fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/add_stats.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T12:03:48Z",
+      "side": 1,
+      "message": "Please make sure that this follows Google JS Style Guide by using some tools such as ESLint.\n\nHere is my ESLint\u0027s output for this file.\n\n 5:23  error  The array literal notation [] is preferable  no-array-constructor\n 6:20  error  The array literal notation [] is preferable  no-array-constructor\n10:28  error  Strings must use singlequote                 quotes\n13:9   error  Expected { after \u0027if\u0027 condition              curly\n13:26  error  Strings must use singlequote                 quotes\n15:14  error  Expected { after \u0027if\u0027 condition              curly\n15:31  error  Strings must use singlequote                 quotes\n20:2   error  Missing semicolon                            semi",
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8bfe7d7_388ee053",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/add_stats.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T12:03:48Z",
+      "side": 1,
+      "message": "const\n\nsame for googDecodeMs",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 3
+      },
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39a0d8b4_35973418",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/add_stats.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T12:03:48Z",
+      "side": 1,
+      "message": "\u003d\u003d\u003d",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a50496a2_60e4a60c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/add_stats.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T12:03:48Z",
+      "side": 1,
+      "message": "\u003d\u003d\u003d",
+      "range": {
+        "startLine": 13,
+        "startChar": 22,
+        "endLine": 13,
+        "endChar": 24
+      },
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca384ef1_a46789f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/add_stats.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T12:03:48Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 15,
+        "startChar": 27,
+        "endLine": 15,
+        "endChar": 29
+      },
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d39dafb0_0c5c6508",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/constants/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T12:03:48Z",
+      "side": 1,
+      "message": "Please move these test-specific constants to webrtc_perf.go.\n\nWe are using constants.go only for names of histograms.",
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dfed447_e2b9b636",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T12:03:48Z",
+      "side": 1,
+      "message": "webrtc_perf.go might be a somehow confusing name because we already have webrtc.go in the same directory and it also has functions for performance tests.\n\nSo, I\u0027d suggest to rename this file to webrtc_decode_perf.go. WDYT?",
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8ffc789_a9e1d272",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T12:03:48Z",
+      "side": 1,
+      "message": "nit: addStatsJS\nSee https://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 30,
+        "startChar": 69,
+        "endLine": 30,
+        "endChar": 79
+      },
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41ddad94_c22fb4d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T12:03:48Z",
+      "side": 1,
+      "message": "As I added a comment at pre.go in the previous patchset, please don\u0027t use \"pre\" package.",
+      "range": {
+        "startLine": 118,
+        "startChar": 15,
+        "endLine": 118,
+        "endChar": 19
+      },
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30ece659_cf75e39f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T12:03:48Z",
+      "side": 1,
+      "message": "nit: move this definition to the place where it is used. Perhaps, L173?",
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b19d84bb_c5b5c5bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T12:03:48Z",
+      "side": 1,
+      "message": "please add a comment like:\n// TODO(deanliao): Remove \"tast_\" prefix after removing video_WebRtcPerf in autotest.",
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb9ff0d9_0793acd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T12:03:48Z",
+      "side": 1,
+      "message": "Just to confirm, if HW decoder is unavailable, we want to measure only the performance of SW decoder, right?\n\nIf so, please add a comment about what will happen HW accelerator is unavailable.",
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "258c1ca0_4b48b54c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T12:03:48Z",
+      "side": 1,
+      "message": "I think we need p.Save even when HW accelerator is unavailable.\n\nSo, perhaps, we can write like this.\n\nif hwAccelUsed {\n\t// If previous run is hardware accelerated, run without hardware acceleration again.\n\twebRTCPerf(ctx, s, streamFilePath, loopbackURL, true, p)\n\n}\np.Save(s.OutDir())",
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "047fcb44_13626117",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_perf_decode_time.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T12:03:48Z",
+      "side": 1,
+      "message": "I\u0027m wondering if \"webrtc_decode_perf_time.go\" would be better.\n\nWe will have similar tests for CPU usage and power usage and all of them are tests for decoder.\nSo, the word \"decode\" should appear before \"perf\" in test names.\n\nThen, we will have the following tests finally:\n* WebRTCDecodePerfTime\n* WebRTCDecodePerfCPU\n* WebRTCDecodePerfPower\n\nWDYT?",
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50b07672_2e0fe769",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_perf_decode_time.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T12:03:48Z",
+      "side": 1,
+      "message": "If \"loopback.html\" and \"addStats.js\" are widely used among your tests, how about defining a function like webrtc.PerfDataFiles() just like perf test version of webrtc.DataFiles?",
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
