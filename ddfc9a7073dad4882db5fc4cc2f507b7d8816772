@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8374de8e_0f272ec9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-19T00:41:17Z",
+      "side": 1,
+      "message": "nit: maybe just \"failed converting available memory %q\"? (favor %q when including arbitrary unknown strings)",
+      "range": {
+        "startLine": 744,
+        "startChar": 31,
+        "endLine": 744,
+        "endChar": 79
+      },
+      "revId": "ddfc9a7073dad4882db5fc4cc2f507b7d8816772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67a9c5c3_0b5343e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-19T00:41:17Z",
+      "side": 1,
+      "message": "nit: mind naming this return val, e.g. (availBytes uint64, err error)?\n\ni\u0027d also recommend including the units in the \"size\" name since iirc this code uses MiB elsewhere, e.g. sizeBytes",
+      "range": {
+        "startLine": 752,
+        "startChar": 68,
+        "endLine": 752,
+        "endChar": 81
+      },
+      "revId": "ddfc9a7073dad4882db5fc4cc2f507b7d8816772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72543013_863e7fd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 856,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-19T00:41:17Z",
+      "side": 1,
+      "message": "nit: maybe \"Restarted UI; %d MiB available\"?",
+      "range": {
+        "startLine": 856,
+        "startChar": 30,
+        "endLine": 856,
+        "endChar": 31
+      },
+      "revId": "ddfc9a7073dad4882db5fc4cc2f507b7d8816772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0437ce2_4b894ba1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-19T00:41:17Z",
+      "side": 1,
+      "message": "\"const target \u003d 1200\"?",
+      "revId": "ddfc9a7073dad4882db5fc4cc2f507b7d8816772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfee1ed1_fd897299",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-19T00:41:17Z",
+      "side": 1,
+      "message": "nit: \"var filled uint64\" is equivalent and cleaner",
+      "revId": "ddfc9a7073dad4882db5fc4cc2f507b7d8816772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9cc61dc_0a717d4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-19T00:41:17Z",
+      "side": 1,
+      "message": "nit: pull this into a constant so it isn\u0027t repeated?",
+      "range": {
+        "startLine": 870,
+        "startChar": 49,
+        "endLine": 870,
+        "endChar": 54
+      },
+      "revId": "ddfc9a7073dad4882db5fc4cc2f507b7d8816772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
