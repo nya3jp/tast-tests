@@ -22,6 +22,30 @@
       "revId": "c07512c49913bfb7d24794e0adbdd1b37e6824a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85c6537b_315a1c28",
+        "filename": "src/chromiumos/tast/local/arc/ui/object.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-19T03:01:03Z",
+      "side": 1,
+      "message": "Removed and changed the test as well. Thanks!",
+      "parentUuid": "4711e6ba_335d1c6c",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 1
+      },
+      "revId": "c07512c49913bfb7d24794e0adbdd1b37e6824a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
