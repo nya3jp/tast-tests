@@ -52,8 +52,8 @@ func MIDIClient(ctx context.Context, s *testing.State) {
 
 	const (
 		apk = "ArcMidiClientTest.apk"
-		pkg = "org.chromium.arc.testapp.arcmidiclienttest"
-		cls = "org.chromium.arc.testapp.arcmidiclienttest.MainActivity"
+		pkg = "org.chromium.arc.testapp.arcmidiclient"
+		cls = "org.chromium.arc.testapp.arcmidiclient.MainActivity"
 	)
 
 	s.Log("Installing app")
