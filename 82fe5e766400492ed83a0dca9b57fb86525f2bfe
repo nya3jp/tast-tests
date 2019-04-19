@@ -1,0 +1,209 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f126847d_27403155",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T06:52:58Z",
+      "side": 1,
+      "message": "This file is only for Chrome Precondition.\nSo, please don\u0027t add a function unrelated to precondition.\ncf. http://go/tast-writing#Preconditions\n\nInstead, you can write flags directly like this:\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_video.go?rcl\u003de7087388875384760c8de5dc45a1a900dbb1a19a\u0026l\u003d38\n\nAlso, I don\u0027t think we need --vmodule flags for performance tests because it just add debug logs.",
+      "revId": "82fe5e766400492ed83a0dca9b57fb86525f2bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8455cee1_13d7889f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T06:52:58Z",
+      "side": 1,
+      "message": "I wonder if we can have this file\u0027s contents in webrtc_perf.go directly because webrtc_perf is the only user of these functions.\nDo you have a plan to have other tests using this file?",
+      "revId": "82fe5e766400492ed83a0dca9b57fb86525f2bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82c26d2a_be052588",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T06:52:58Z",
+      "side": 1,
+      "message": "Please create a separate JS file in /data/ directory and read it. It would increase maintainability.\n\ncf. camera.cca_api test is doing similar thing\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/camera/cca_api.go?rcl\u003de7087388875384760c8de5dc45a1a900dbb1a19a\u0026l\u003d60\n\nIn addition, please follow Google JS Style guide. https://google.github.io/styleguide/jsguide.html\ne.g. we don\u0027t use \"var\" and use \"const\" or \"let\" instead.\n\nI\u0027d recommend to use ESLint (or some other linter) to fix style errors.\nhttps://github.com/google/eslint-config-google",
+      "revId": "82fe5e766400492ed83a0dca9b57fb86525f2bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "134476f3_74c3e2b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T06:52:58Z",
+      "side": 1,
+      "message": "Use \u0027\u003d\u003d\u003d\u0027 instead of \u0027\u003d\u003d\u0027",
+      "range": {
+        "startLine": 52,
+        "startChar": 50,
+        "endLine": 52,
+        "endChar": 52
+      },
+      "revId": "82fe5e766400492ed83a0dca9b57fb86525f2bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4300148a_1ddff6a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T06:52:58Z",
+      "side": 1,
+      "message": "This variable\u0027s \u0027goog\u0027-prefix looks somehow strange to me. \nDoes this name corresponds to the variable name in JS, doesn\u0027t it? \nSo, how about renaming them both here and in JS?",
+      "range": {
+        "startLine": 98,
+        "startChar": 5,
+        "endLine": 98,
+        "endChar": 20
+      },
+      "revId": "82fe5e766400492ed83a0dca9b57fb86525f2bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c11e01af_d51df7cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T06:52:58Z",
+      "side": 1,
+      "message": "We need to shorten context here to save the time for cr.Close, conn.Close and conn.CloseTarget in the case that performance tests spend too much time.\n\nshortCtx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\ndefer cancel()\n\n// Use shorCtx instead of ctx below.",
+      "revId": "82fe5e766400492ed83a0dca9b57fb86525f2bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6803c3a_8a4e6003",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T06:52:58Z",
+      "side": 1,
+      "message": "I think we need \"tast_\"-prefix here. Otherwise, the same values will be stored by autotest-version and Tast-version.\n\ncf.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/playback/playback.go?rcl\u003de7087388875384760c8de5dc45a1a900dbb1a19a\u0026l\u003d261",
+      "revId": "82fe5e766400492ed83a0dca9b57fb86525f2bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46624c16_9d793abf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T06:52:58Z",
+      "side": 1,
+      "message": "no need",
+      "range": {
+        "startLine": 212,
+        "startChar": 1,
+        "endLine": 212,
+        "endChar": 7
+      },
+      "revId": "82fe5e766400492ed83a0dca9b57fb86525f2bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "868202c4_091b9872",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T06:52:58Z",
+      "side": 1,
+      "message": "Test.Desc should be written in Godoc-style.\n\nSo, how about \"Measures WebRTC loopback performance\"?",
+      "revId": "82fe5e766400492ed83a0dca9b57fb86525f2bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "273f3f45_39a29678",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T06:52:58Z",
+      "side": 1,
+      "message": "Instead of  \u0027[]string{\"informational\"}\u0027, please use \u0027[]string{\"group:crosbolt\", \"crosbolt_perbuild\"}\u0027 for performance tests.\n\ncf. go/tast-attr#manually_added-attributes",
+      "revId": "82fe5e766400492ed83a0dca9b57fb86525f2bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a29916e4_0c536cb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-19T06:52:58Z",
+      "side": 1,
+      "message": "huge nit: we don\u0027t have 80 characters limits per line in Golang:)\nWe can break lines at any point where we want to make them easier to read.",
+      "revId": "82fe5e766400492ed83a0dca9b57fb86525f2bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
