@@ -20,7 +20,7 @@ func init() {
 		Desc:         "Run Chrome video_encode_accelerator_unittest from 720p I420 raw frames to H264 stream",
 		Contacts:     []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{caps.HWEncodeH264},
+		SoftwareDeps: []string{"chrome", caps.HWEncodeH264},
 		Data:         []string{encode.Tulip720P.Name},
 		// This test takes up to 3 minutes when it passes. Allow 4 minutes with 1-minute buffer.
 		Timeout: 4 * time.Minute,

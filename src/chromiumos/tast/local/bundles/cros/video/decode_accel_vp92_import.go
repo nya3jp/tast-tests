@@ -21,7 +21,7 @@ func init() {
 		Contacts: []string{"keiichiw@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:     []string{"informational"},
 		// VDA unittest cannot run with IMPORT mode on devices where ARC++ is disabled. (cf. crbug.com/881729)
-		SoftwareDeps: []string{"android", caps.HWDecodeVP9_2},
+		SoftwareDeps: []string{"chrome", "android", caps.HWDecodeVP9_2},
 		Data:         decode.DataFiles(videotype.VP9_2Prof, decode.ImportBuffer),
 		Timeout:      4 * time.Minute,
 	})

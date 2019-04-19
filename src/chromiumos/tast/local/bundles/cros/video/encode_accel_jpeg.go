@@ -19,7 +19,7 @@ func init() {
 		Desc:         "Run Chrome jpeg_encode_accelerator_unittest",
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{caps.HWEncodeJPEG},
+		SoftwareDeps: []string{"chrome", caps.HWEncodeJPEG},
 		Data:         []string{"bali_640x360_P420.yuv"},
 	})
 }

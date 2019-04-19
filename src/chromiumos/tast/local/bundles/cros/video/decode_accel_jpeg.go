@@ -21,7 +21,7 @@ func init() {
 		Desc:         "Run Chrome jpeg_decode_accelerator_unittest",
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{caps.HWDecodeJPEG},
+		SoftwareDeps: []string{"chrome", caps.HWDecodeJPEG},
 		Data:         jpegTestFiles,
 	})
 }
