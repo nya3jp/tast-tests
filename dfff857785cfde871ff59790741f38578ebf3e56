@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "58eb1401_b6209b67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-19T05:16:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af9e9e82_0e286a7f",
+      "revId": "dfff857785cfde871ff59790741f38578ebf3e56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4203f1c4_92f2065d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "dfff857785cfde871ff59790741f38578ebf3e56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44835c87_4586b522",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-19T05:16:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4203f1c4_92f2065d",
+      "revId": "dfff857785cfde871ff59790741f38578ebf3e56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
