@@ -29,7 +29,7 @@ func init() {
 		Desc:         "Measures jpeg_encode_accelerator_unittest performance",
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{caps.HWEncodeJPEG},
+		SoftwareDeps: []string{"chrome", caps.HWEncodeJPEG},
 		Data:         []string{"lake_4160x3120_P420.yuv"},
 		Timeout:      3 * time.Minute,
 	})

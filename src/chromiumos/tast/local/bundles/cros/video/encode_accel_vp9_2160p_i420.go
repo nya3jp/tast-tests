@@ -20,7 +20,7 @@ func init() {
 		Desc:         "Runs Chrome video_encode_accelerator_unittest from 2160p I420 raw frames to VP9 stream",
 		Contacts:     []string{"johnylin@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{caps.HWEncodeVP9_4K},
+		SoftwareDeps: []string{"chrome", caps.HWEncodeVP9_4K},
 		Data:         []string{encode.Crowd2160P.Name},
 		Timeout:      4 * time.Minute,
 	})

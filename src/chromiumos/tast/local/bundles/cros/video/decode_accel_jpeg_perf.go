@@ -27,7 +27,7 @@ func init() {
 		Desc:         "Measures jpeg_decode_accelerator_unittest performance",
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{caps.HWDecodeJPEG},
+		SoftwareDeps: []string{"chrome", caps.HWDecodeJPEG},
 		Data:         jpegPerfTestFiles,
 	})
 }
