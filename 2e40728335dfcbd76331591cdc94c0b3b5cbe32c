@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "45f05327_4f73d100",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-19T07:57:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ab3744e_27ef7735",
+      "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39b8d2c6_ca1dc209",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 12
@@ -39,6 +57,30 @@
       "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f110c73_cba63db2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-19T07:57:52Z",
+      "side": 1,
+      "message": "Thanks for %v! Didn\u0027t know this exist in Go.",
+      "parentUuid": "39b8d2c6_ca1dc209",
+      "range": {
+        "startLine": 127,
+        "startChar": 64,
+        "endLine": 127,
+        "endChar": 74
+      },
+      "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "32462c74_38835f64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-19T07:57:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cca95d77_9a653374",
+      "range": {
+        "startLine": 156,
+        "startChar": 9,
+        "endLine": 156,
+        "endChar": 10
+      },
+      "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b4ee6c2_d282a432",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 12
@@ -85,6 +151,30 @@
       "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b07be6c_a447209a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-19T07:57:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b4ee6c2_d282a432",
+      "range": {
+        "startLine": 159,
+        "startChar": 9,
+        "endLine": 159,
+        "endChar": 10
+      },
+      "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "35f3f7f8_7c535fe5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-19T07:57:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53c87386_70abd0c3",
+      "range": {
+        "startLine": 165,
+        "startChar": 9,
+        "endLine": 165,
+        "endChar": 10
+      },
+      "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd7825fd_5630e0e5",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 12
@@ -131,6 +245,30 @@
       "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d2f5368_776953b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-19T07:57:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd7825fd_5630e0e5",
+      "range": {
+        "startLine": 169,
+        "startChar": 9,
+        "endLine": 169,
+        "endChar": 10
+      },
+      "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "86310ced_e550e783",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-19T07:57:52Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "d53dee5d_48399360",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 4
+      },
+      "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62641a38_c86df097",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 12
@@ -177,6 +339,30 @@
       "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0721f12f_32a041fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-19T07:57:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62641a38_c86df097",
+      "range": {
+        "startLine": 178,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 2
+      },
+      "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -227,6 +413,30 @@
     },
     {
       "key": {
+        "uuid": "dfd0ced0_a8a81ac3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-19T07:57:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e374cecf_22db916d",
+      "range": {
+        "startLine": 213,
+        "startChar": 2,
+        "endLine": 215,
+        "endChar": 3
+      },
+      "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1155c938_339c7a2c",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 12
@@ -247,6 +457,30 @@
       "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0592022a_f7b634f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-19T07:57:52Z",
+      "side": 1,
+      "message": "Yes, of course. Sorry I didn\u0027t carry the comments over.",
+      "parentUuid": "1155c938_339c7a2c",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 218,
+        "endChar": 19
+      },
+      "revId": "2e40728335dfcbd76331591cdc94c0b3b5cbe32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
