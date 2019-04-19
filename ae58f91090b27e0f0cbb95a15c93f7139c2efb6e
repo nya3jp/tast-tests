@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "26e88126_3c727859",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-19T22:12:33Z",
+      "side": 1,
+      "message": "Sure.  I was using this to skip the last (empty) line.",
+      "parentUuid": "f0dfcfb5_6fffde3f",
+      "range": {
+        "startLine": 349,
+        "startChar": 3,
+        "endLine": 349,
+        "endChar": 8
+      },
+      "revId": "ae58f91090b27e0f0cbb95a15c93f7139c2efb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb1452e5_4cd09a02",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "952a0f98_6f3befc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-19T22:12:33Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "fb1452e5_4cd09a02",
+      "range": {
+        "startLine": 394,
+        "startChar": 37,
+        "endLine": 394,
+        "endChar": 46
+      },
+      "revId": "ae58f91090b27e0f0cbb95a15c93f7139c2efb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62eded74_75c5dcfb",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2019-04-19T20:34:08Z",
       "side": 1,
       "message": "margin can contain more than one value I finished porting this to all the other kernels, please validate that readUint64FromFile can handle more than one value in the file and in this context it would return the first.\n\nBut I believe we may want the moderate value too, that would likely be a useful thing to log.",
+      "range": {
+        "startLine": 396,
+        "startChar": 42,
+        "endLine": 396,
+        "endChar": 48
+      },
+      "revId": "ae58f91090b27e0f0cbb95a15c93f7139c2efb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c4d43ac_ab3d327d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-19T22:12:33Z",
+      "side": 1,
+      "message": "Is this a backward-incompatible change?  Other programs read this file.",
+      "parentUuid": "62eded74_75c5dcfb",
       "range": {
         "startLine": 396,
         "startChar": 42,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "6e21a197_b70956f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-19T22:12:33Z",
+      "side": 1,
+      "message": "This is a derived value, so maybe it\u0027s better to keep it out of MemInfoFields.\n\nWith the frequency these are called, parsing /proc/meminfo twice should not be a concern.",
+      "parentUuid": "3cc2838b_7a25ff85",
+      "range": {
+        "startLine": 408,
+        "startChar": 5,
+        "endLine": 408,
+        "endChar": 18
+      },
+      "revId": "ae58f91090b27e0f0cbb95a15c93f7139c2efb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be55cfdf_ec0b5007",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 3
@@ -114,6 +210,30 @@
       "revId": "ae58f91090b27e0f0cbb95a15c93f7139c2efb6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82e15db9_ee460711",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-19T22:12:33Z",
+      "side": 1,
+      "message": "Sure.  Dan had suggested gopsutil, but that was before we needed the extra info.",
+      "parentUuid": "be55cfdf_ec0b5007",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 36
+      },
+      "revId": "ae58f91090b27e0f0cbb95a15c93f7139c2efb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "f52104c7_1feebd80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-19T22:12:33Z",
+      "side": 1,
+      "message": "Not sure I understand.  What would we do with the number of broken connections?",
+      "parentUuid": "51981f7b_aa309720",
+      "range": {
+        "startLine": 712,
+        "startChar": 20,
+        "endLine": 712,
+        "endChar": 27
+      },
+      "revId": "ae58f91090b27e0f0cbb95a15c93f7139c2efb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83f14778_8f532793",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 3
@@ -154,6 +298,24 @@
       "revId": "ae58f91090b27e0f0cbb95a15c93f7139c2efb6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1ebc8e6_110c0088",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-19T22:12:33Z",
+      "side": 1,
+      "message": "Yes that\u0027s a bit of a pain though, because I have to generate some Go data structure definition from the protobuf file to unmarshall the payload.  I\u0027ll add a bug, so that in the meanwhile we can start using this.",
+      "parentUuid": "83f14778_8f532793",
+      "revId": "ae58f91090b27e0f0cbb95a15c93f7139c2efb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
