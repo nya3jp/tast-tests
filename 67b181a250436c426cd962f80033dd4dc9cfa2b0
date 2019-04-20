@@ -160,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "6428f82f_5bfeafcd",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-04-20T00:26:54Z",
+      "side": 1,
+      "message": "\u003e i don\u0027t think there\u0027s any way to interrupt a goroutine while it\u0027s in the middle of io.Copy other than closing one of the pipes.\n\nAh got it, so we have to wait for it to finish, but we\u0027re reasonably confident both will return if one end is closed.\n\nThat sounds reasonable!",
+      "parentUuid": "6ab6812c_3a5e4dd8",
+      "revId": "67b181a250436c426cd962f80033dd4dc9cfa2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dede7ba9_1f91e9b0",
         "filename": "src/chromiumos/tast/remote/servo/servod_proxy_test.go",
         "patchSetId": 6
@@ -228,6 +246,30 @@
       "revId": "67b181a250436c426cd962f80033dd4dc9cfa2b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc8a3a4d_642b0afb",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1168241
+      },
+      "writtenOn": "2019-04-20T00:26:54Z",
+      "side": 1,
+      "message": "Ah my bad, updated.",
+      "parentUuid": "ec771e3a_e281146e",
+      "range": {
+        "startLine": 22,
+        "startChar": 12,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "67b181a250436c426cd962f80033dd4dc9cfa2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
