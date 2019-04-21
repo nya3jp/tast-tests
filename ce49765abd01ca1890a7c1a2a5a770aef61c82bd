@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e474bf0f_72cf9186",
+        "filename": "src/chromiumos/tast/remote/servo/servod_proxy.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-21T12:40:00Z",
+      "side": 1,
+      "message": "thinking about this a bit more, should part of this happen in a goroutine? that is:\n\nfor {\n    local, err :\u003d ...\n    if err !\u003d nil {\n        ...\n        continue\n    }\n\n    go func() {\n        remote, err :\u003d cf(ctx)\n        ...\n        handleProxyConnection(local, remote)\n    }()\n}\n\notherwise, i\u0027m worried that we can only handle a single connection at a time, which probably isn\u0027t what we want. let me know if i\u0027m misreading, though.",
+      "revId": "ce49765abd01ca1890a7c1a2a5a770aef61c82bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
