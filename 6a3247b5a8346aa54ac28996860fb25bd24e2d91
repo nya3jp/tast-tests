@@ -1,0 +1,232 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "618aa3b4_4a70183d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-21T12:29:05Z",
+      "side": 1,
+      "message": "this is complicated enough that i think the parsing code should probably be moved to an unexported function that can be unit-tested",
+      "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1df94f78_4ee8b194",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-21T12:29:05Z",
+      "side": 1,
+      "message": "nit: consider deleting this \u0027:\u0027 since i think there will also be a \u0027:\u0027 added before the wrapped error when this is printed",
+      "range": {
+        "startLine": 308,
+        "startChar": 51,
+        "endLine": 308,
+        "endChar": 52
+      },
+      "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fa400d7_1dda0b89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-21T12:29:05Z",
+      "side": 1,
+      "message": "nit: delete this \u0027:\u0027 too?",
+      "range": {
+        "startLine": 324,
+        "startChar": 45,
+        "endLine": 324,
+        "endChar": 46
+      },
+      "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d5be5fc_5a7def2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-21T12:29:05Z",
+      "side": 1,
+      "message": "nit: maybe just save a line and do \"totalMinFree +\u003d zoneMinFree + max\"?",
+      "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b00e5a2_7a9a8563",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-21T12:29:05Z",
+      "side": 1,
+      "message": "please rename this to something like readMemInfo, since it\u0027s easy to confuse memInfo() and MemInfo() otherwise",
+      "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa712c3f_f06eb674",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-21T12:29:05Z",
+      "side": 1,
+      "message": "if there\u0027s only trailing blank line, how about just trimming the trailing newline off of bytes before you split it?",
+      "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39a5891b_2953abab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-21T12:29:05Z",
+      "side": 1,
+      "message": "please document that all fields are in (i think) MiB. this seems like it\u0027d be unexpected to callers, since the existing comment says that it returns fields of /proc/meminfo, which i think is in KiB.\n\n(i\u0027m still concerned by how i think i\u0027ve seen this test use all of MiB, KiB, and bytes...)\n\nalso nit: \"MemInfoFields holds selected fields of /proc/meminfo.\"",
+      "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0303e182_acc31b7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-21T12:29:05Z",
+      "side": 1,
+      "message": "nit: maybe just \u0027b\u0027? i think it\u0027s generally better to avoid naming variables \u0027bytes\u0027, as it\u0027s also the name of a standard package.",
+      "range": {
+        "startLine": 388,
+        "startChar": 1,
+        "endLine": 388,
+        "endChar": 6
+      },
+      "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5af23599_aef9657b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-21T12:29:05Z",
+      "side": 1,
+      "message": "i fear that this is getting too long. even if it only runs nightly, i doubt we want to spend 2+ hours running tests. i\u0027m worried that the autotest job that we use to run tast tests might hit a limit, too.",
+      "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe4c8129_700431a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-21T12:29:05Z",
+      "side": 1,
+      "message": "please document what \"survive\" is. it\u0027s not obvious to me from the name.",
+      "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd3a428d_297af9d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-21T12:29:05Z",
+      "side": 1,
+      "message": "nit: D-Bus",
+      "range": {
+        "startLine": 828,
+        "startChar": 28,
+        "endLine": 828,
+        "endChar": 32
+      },
+      "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fc913a9_ac65cbc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 914,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-21T12:29:05Z",
+      "side": 1,
+      "message": "did you mean to delete this before uploading?",
+      "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
