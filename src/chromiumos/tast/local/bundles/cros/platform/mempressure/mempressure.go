@@ -714,6 +714,15 @@ func runAndLogSwapStats(ctx context.Context, f func(), meter *kernelmeter.Meter)
 		stats.SwapIn.AverageRate, stats.SwapIn.RecentRate, stats.SwapIn.Count)
 	testing.ContextLogf(ctx, "Metrics: tab switch swap-out average rate, 10s rate, and count: %.1f %.1f swaps/second, %d swaps",
 		stats.SwapOut.AverageRate, stats.SwapOut.RecentRate, stats.SwapOut.Count)
+	if swapInfo, err := mem.SwapMemory(); err == nil {
+		testing.ContextLogf(ctx, "Metrics: free swap %v MiB", (swapInfo.Total-swapInfo.Used)/(1<<20))
+	}
+	if availableMiB, _, _, err := kernelmeter.ChromeosLowMem(); err == nil {
+		testing.ContextLogf(ctx, "Metrics: available %v MiB", availableMiB)
+	}
+	if m, err := kernelmeter.MemInfo(); err == nil {
+		testing.ContextLogf(ctx, "Metrics: free %v MiB, anon %v MiB, file %v MiB", m.Free, m.Anon, m.File)
+	}
 }
 
 // RunParameters contains the configurable parameters for Run.
@@ -864,6 +873,12 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		}
 	} else {
 		s.Log("No preallocation needed")
+	}
+
+	// Log various system measurements, to help understand the memory
+	// manager behavior.
+	if err := kernelmeter.LogMemoryParameters(ctx, p.PageFileCompressionRatio); err != nil {
+		s.Fatal("Cannot log memory parameters: ", err)
 	}
 
 	// Log in.  TODO(semenzato): this is not working (yet), we would like
