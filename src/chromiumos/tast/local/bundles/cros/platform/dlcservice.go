@@ -52,7 +52,7 @@ func DLCService(ctx context.Context, s *testing.State) {
 		if err := testexec.CommandContext(ctx, "imageloader", "--unmount_all").Run(testexec.DumpLogOnError); err != nil {
 			s.Error("Failed to unmount all: ", err)
 		}
-		if err := os.RemoveAll("/var/lib/dlc/" + dlcModuleID); err != nil {
+		if err := os.RemoveAll("/var/cache/dlc/" + dlcModuleID); err != nil {
 			s.Error("Failed to clean up: ", err)
 		}
 	}()
