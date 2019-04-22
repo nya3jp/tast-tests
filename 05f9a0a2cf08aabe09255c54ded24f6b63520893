@@ -22,6 +22,30 @@
       "revId": "05f9a0a2cf08aabe09255c54ded24f6b63520893",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f13f1b1_050a1aaf",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-22T05:01:32Z",
+      "side": 1,
+      "message": "Ugh, thanks for catching this. It seems I mixed up the patch. My work env is a bit complicated during travel...\n\nLet me send a follow-up change to fix this.",
+      "parentUuid": "02579031_0686020e",
+      "range": {
+        "startLine": 185,
+        "startChar": 8,
+        "endLine": 185,
+        "endChar": 39
+      },
+      "revId": "05f9a0a2cf08aabe09255c54ded24f6b63520893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
