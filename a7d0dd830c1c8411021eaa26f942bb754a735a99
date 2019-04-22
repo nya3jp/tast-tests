@@ -1,0 +1,210 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99e1bd65_27eed155",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:45:16Z",
+      "side": 1,
+      "message": "please nest this within the CheckCrossystem function (since the top-level scope of this file is shared across the \u0027platform\u0027 package)",
+      "revId": "a7d0dd830c1c8411021eaa26f942bb754a735a99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9030e18_64f9df45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:45:16Z",
+      "side": 1,
+      "message": "please use backticks for these to avoid needing to escape backslashes",
+      "revId": "a7d0dd830c1c8411021eaa26f942bb754a735a99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12e16948_b5cceb49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:45:16Z",
+      "side": 1,
+      "message": "nit: hexNum, or just hex?",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 8
+      },
+      "revId": "a7d0dd830c1c8411021eaa26f942bb754a735a99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7b0e20f_7cd02810",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:45:16Z",
+      "side": 1,
+      "message": "this seems a bit odd since you\u0027re prepending \u0027^\u0027 later...",
+      "range": {
+        "startLine": 22,
+        "startChar": 33,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "a7d0dd830c1c8411021eaa26f942bb754a735a99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b54f8ba7_8d08e011",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:45:16Z",
+      "side": 1,
+      "message": "nit: add missing space",
+      "range": {
+        "startLine": 31,
+        "startChar": 35,
+        "endLine": 31,
+        "endChar": 39
+      },
+      "revId": "a7d0dd830c1c8411021eaa26f942bb754a735a99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfd41837_0df3e500",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:45:16Z",
+      "side": 1,
+      "message": "why is this disabled?",
+      "range": {
+        "startLine": 33,
+        "startChar": 17,
+        "endLine": 33,
+        "endChar": 27
+      },
+      "revId": "a7d0dd830c1c8411021eaa26f942bb754a735a99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8b2464e_2055a73d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:45:16Z",
+      "side": 1,
+      "message": "typo: \"Output\"\n\nbut please just nest this in CheckCrossystem as e.g. checkOutput",
+      "range": {
+        "startLine": 37,
+        "startChar": 7,
+        "endLine": 37,
+        "endChar": 12
+      },
+      "revId": "a7d0dd830c1c8411021eaa26f942bb754a735a99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e71ead7d_dffe34d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:45:16Z",
+      "side": 1,
+      "message": "it seems a bit confusing to me how an extra non-regexp character is being prepended to the regexp to invert it. how about instead just having the convention (documented in a comment) that a negative string means \"match everything that isn\u0027t an error\"?",
+      "revId": "a7d0dd830c1c8411021eaa26f942bb754a735a99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee51e047_df4e0a73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:45:16Z",
+      "side": 1,
+      "message": "nit: s.Errorf(\"%q failed: %v\", shutil.EscapeSlice(cmd.Args))",
+      "range": {
+        "startLine": 72,
+        "startChar": 40,
+        "endLine": 72,
+        "endChar": 65
+      },
+      "revId": "a7d0dd830c1c8411021eaa26f942bb754a735a99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db8565fb_cb90917f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:45:16Z",
+      "side": 1,
+      "message": "s.Errorf(\"%q printed %q, which isn\u0027t matched by %q\", ..., output, regExp)",
+      "revId": "a7d0dd830c1c8411021eaa26f942bb754a735a99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
