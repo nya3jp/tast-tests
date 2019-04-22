@@ -105,8 +105,8 @@ func verifyHWOverlay(ctx context.Context, a *arc.Activity, path string) error {
 	if err != nil {
 		return errors.Wrap(err, "could not get activity surface bounds")
 	}
-	w := bounds.Right - bounds.Left
-	h := bounds.Bottom - bounds.Top
+	w := bounds.Width
+	h := bounds.Height
 
 	// Might be possible that while rotating, the surface bounds contains invalid values.
 	if w <= 0 || h <= 0 {
