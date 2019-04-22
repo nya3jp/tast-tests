@@ -354,6 +354,24 @@
     },
     {
       "key": {
+        "uuid": "c1be4ce3_7b91c4d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/constants/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-22T12:18:12Z",
+      "side": 1,
+      "message": "make sense.\nWould you mind if you would make this change (maybe in a separate CL)?",
+      "parentUuid": "9dce921d_98f264a6",
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1dfed447_e2b9b636",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
         "patchSetId": 4
@@ -383,6 +401,24 @@
       "side": 1,
       "message": "I checked webrtc.go and webrtc_video.go. I feel that webrtc.go should place common code for video.WebRTC* instead of WebRTCCamrea and WebRTCPeerConnCamera specfic code.\n\nAlso, the code webrtc_video and webrtc_perf have similar / duplicate code block.\n\nIn the end, the layout could be:\nwebrtc.go: common code for video.WebRTC* (at least used in two modules)\nwebrtc_camera.go: WebRTCCamera specific\nwebrtc_peer_conn_camera.go: WebRTCPeerConnCamera specific\nwebrtc_codec.go: WebRTC{Encode|Decode}AccelUsed* specific\nwebrtc_decode_perf.go: WebRTCDecodePerf* specific\n\nFor the first stage, I would place common code to webrtc.go and leave the current webrtc and webrtc_video code unchanged. After the migration of WebRTCDecodePerf{Time|CPU|Powewr} are done, we can reshape the code to above structure.\n\nWhat do you think?",
       "parentUuid": "1dfed447_e2b9b636",
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e59ec2c4_2c397fc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-22T12:18:12Z",
+      "side": 1,
+      "message": "Sounds nice! Thanks!\n\nSome suggestions:\n\n\u003e webrtc.go: common code for video.WebRTC* (at least used in two modules)\n\nHow about webrtc_common.go to make it clearer that this is only for common code?\nBut, I wonder how much code will be in?\nCurrently, only \"DataFiles\" is used by both video.WebRTC*Camera tests and video.WebRTC*AccelUsed* tests.\nIf the amount of the common code is not so big, it might make sense to split them into separate packages.\nI mean we can have three (or more) packages like the following:\n- /cros/video/webrtc_camera/\n- /cros/video/webrtc_codec/\n- /cros/video/webrtc_decode_perf/\n\n\u003e webrtc_camera.go: WebRTCCamera specific\n\u003e webrtc_peer_conn_camera.go: WebRTCPeerConnCamera specific\n\nSince these two types of tests are almost same, I\u0027d like to have them in one file. webrtc_camera.go would be a good name because both will exercise real cameras (and other WebRTC tests won\u0027t).",
+      "parentUuid": "f20b6795_abea2e40",
       "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

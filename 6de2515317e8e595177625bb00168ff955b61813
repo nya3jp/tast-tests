@@ -1,0 +1,193 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2646df3b_5839d530",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/add_stats.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-22T12:18:12Z",
+      "side": 1,
+      "message": "can we make this const?",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 5
+      },
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5edfccf_ab7d8d07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/add_stats.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-22T12:18:12Z",
+      "side": 1,
+      "message": "can we make this const?",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eac86f3d_6cda3739",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-22T12:18:12Z",
+      "side": 1,
+      "message": "nit: no need?\nActually, \"loopback.html\" is stored at same place.",
+      "range": {
+        "startLine": 28,
+        "startChar": 35,
+        "endLine": 28,
+        "endChar": 52
+      },
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b76e29e_c35c2dbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-22T12:18:12Z",
+      "side": 1,
+      "message": "Don\u0027t we need a check here like this?\nif len(maxDecodeTimes) \u003c numDecodeTimeSamples {\n...\n}",
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be228844_cbb82d7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-22T12:18:12Z",
+      "side": 1,
+      "message": "It\u0027s unclear from this message whether obtained # of maxDecodeTimes is too small or too big. \nSo, how about this?\n\"failed to enough number of maxDecodeTimes: actual %d, expected: %d\"",
+      "range": {
+        "startLine": 104,
+        "startChar": 24,
+        "endLine": 104,
+        "endChar": 47
+      },
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be648aa3_48aa47d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-22T12:18:12Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3109a275_2004caf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-22T12:18:12Z",
+      "side": 1,
+      "message": "nit: Please move this two variables to L160, where these variables are actually needed.",
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73570b09_675f4a7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-22T12:18:12Z",
+      "side": 1,
+      "message": "err",
+      "range": {
+        "startLine": 161,
+        "startChar": 51,
+        "endLine": 161,
+        "endChar": 60
+      },
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b33eaa1_46a5fc83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_video.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-22T12:18:12Z",
+      "side": 1,
+      "message": "nit: LoopbackPage?",
+      "range": {
+        "startLine": 54,
+        "startChar": 43,
+        "endLine": 54,
+        "endChar": 56
+      },
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
