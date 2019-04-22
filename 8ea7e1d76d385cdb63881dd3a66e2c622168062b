@@ -1,0 +1,443 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8aae086c_9b349073",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-22T12:34:23Z",
+      "side": 1,
+      "message": "Do you have tracking issues? If not could you file?",
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6737d58e_cd31ce6e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_ec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-22T12:34:23Z",
+      "side": 1,
+      "message": "Could you add team/group contact address, too?",
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15a10c23_cffd51fa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_ec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-22T12:34:23Z",
+      "side": 1,
+      "message": "Is this intentionally, disabled? If so, what\u0027s the blocker? Could you comment?",
+      "range": {
+        "startLine": 20,
+        "startChar": 21,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e11ba34e_a3d56c3b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_ec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-22T12:34:23Z",
+      "side": 1,
+      "message": "This sounds like a Desc: field at L18?, then you can drop this line.",
+      "range": {
+        "startLine": 24,
+        "startChar": 12,
+        "endLine": 24,
+        "endChar": 91
+      },
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a232136c_314c1089",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_ec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-22T12:34:23Z",
+      "side": 1,
+      "message": "style/optional: we often say something like \"Failed to obtain servo: \".",
+      "range": {
+        "startLine": 33,
+        "startChar": 11,
+        "endLine": 33,
+        "endChar": 29
+      },
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a44d6f4d_dbfeee94",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_ec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-22T12:34:23Z",
+      "side": 1,
+      "message": "- How about using raw string literals to avoid so many \"\\\\\"?\n- Could you comment example/expected output format?",
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "227c0cf7_8f846b9e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_ec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-22T12:34:23Z",
+      "side": 1,
+      "message": "How about following common sentences?\n\ns.Fatal(\"Failed in version SendEcCommandAndGetOutput: \", err)",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 87
+      },
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "634d8110_11597bae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_ec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-22T12:34:23Z",
+      "side": 1,
+      "message": "nit: nice to output logs before val check at L40.",
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1649a1a_5dfdc12a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_ec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-22T12:34:23Z",
+      "side": 1,
+      "message": "style: Could you merge this line into below?\n\nif _, err :\u003d d.Run(...); err !\u003d nil {\n  ...\n}",
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb43c699_fd80c53c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-22T12:34:23Z",
+      "side": 1,
+      "message": "Do you have plans to add more firmware tests?",
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa6b4eba_302159d3",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-22T12:34:23Z",
+      "side": 1,
+      "message": "it: ecRegexp",
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09110243_38a6f7dd",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-22T12:34:23Z",
+      "side": 1,
+      "message": "These EC methods look like implemented on top of Servo, that means they are in different layers.\nHow about introducing EC struct, which holds *Servo, and add these methods?\n# I\u0027m guessing that you\u0027d add more variation of EC methods... Am I right?\nE.g.;\n\npackage ec\n\nstruct EC {\n  s *servo.Servo\n}\n\nfunc New(s *servo.Servo) *EC {\n  ...\n}\n\nfunc (e *EC) uartCmd(...) ... {\n  ...\n}\n\nfunc (e *EC) uartRegexp(...) ... {\n  ...\n}\n\nfunc (e *EC) Output(ctx context.Context, command string, regexp []string) (string, error) {\n  if err :\u003d e.uartRegexp(regexp); err !\u003d nil {\n    return \"\", err \n  }\n\n  ...\n}\n\n\nAs for line comment, could you follow godoc style?\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#documentation\nDitto for below.",
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e05ca7b7_de7ddfd3",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-22T12:34:23Z",
+      "side": 1,
+      "message": "ec_uart_cmd, and ec_uart_regexp looks like a utilities to implement some more higher layer methods? If so, these are nice to be private methods.\n\nstyle/Clar: is UART acronym? Then SetUARTRegexp",
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0c4ded9_888b48ed",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-22T12:34:23Z",
+      "side": 1,
+      "message": "probably:\n\nregexp :\u003d \"[\u0027\" + strings.Join(regexps, \"\u0027,\u0027\") + \"\u0027]\"\n\nJust clarification: no need to escape regexp?",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 15
+      },
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8254f4a_72fdf66f",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-22T12:34:23Z",
+      "side": 1,
+      "message": "style: could you merge L47 and L48?\n\nif err :\u003d s.run(...); err !\u003d nil {\n  ...\n}",
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb2e13dc_e7ac81c7",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-22T12:34:23Z",
+      "side": 1,
+      "message": "Could you propagate err to caller, and let them handle it properly?",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 14
+      },
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40438575_92952008",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-22T12:34:23Z",
+      "side": 1,
+      "message": "If EC is extracted into a struct, maybe \"Run\" (following the naming convention of exec/testexec package)?\nBTW, this method looks unused.",
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bd40b47_c4892c92",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-22T12:34:23Z",
+      "side": 1,
+      "message": "nit: []string{}",
+      "range": {
+        "startLine": 57,
+        "startChar": 26,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d182951_3cf2f31a",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-22T12:34:23Z",
+      "side": 1,
+      "message": "style: ditto for line merge with if below.\n\nif err :\u003d s.run(...); err !\u003d nil {\n  ...\n}",
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18c6a2b2_528d9235",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-22T12:34:23Z",
+      "side": 1,
+      "message": "Should val be returned?",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 12
+      },
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcb5945d_8bce2f14",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-22T12:34:23Z",
+      "side": 1,
+      "message": "Ditto for naming. How about \"Output()\" ?",
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1de695e_460d754a",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-22T12:34:23Z",
+      "side": 1,
+      "message": "Returned error should be handled properly.\nIf val is false, should this method report error?",
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c1f1115_8c1331ce",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-22T12:34:23Z",
+      "side": 1,
+      "message": "style: ditto for if stmt.\n\nif err :\u003d s.run(...); err !\u003d nil {\n  ...\n}",
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
