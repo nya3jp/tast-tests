@@ -796,32 +796,9 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		tabWorkingSetSize    = 5
 		tabCycleDelay        = 300 * time.Millisecond
 		tabSwitchRepeatCount = 10
-		postShrinkMiB        = 3500 // try to shrink RAM down to this size
+		preAllocMiB          = 0 // change this for faster test runs while developing
 	)
 
-	// First, steal a bunch of RAM to make the test run faster on systems
-	// with a lot of memory.  Please see comments in
-	// data/memory_pressure_preallocator.sh for details.
-	allocMiB, err := memoryEqualizingAmount(postShrinkMiB, p.PageFileCompressionRatio)
-	if err != nil {
-		s.Fatal("Cannot compute preallocation amount: ", err)
-	}
-	if allocMiB > 0 && !p.RecordPageSet {
-		s.Logf("Preallocating %d MiB via mmap", allocMiB)
-		allocBytes := uint64(allocMiB * 1024 * 1024)
-		data, unmapFunc, err := createMemoryMapping(allocBytes)
-		if err != nil {
-			s.Fatal("Unable to create memory mapping: ", err)
-		}
-		defer unmapFunc()
-
-		err = fillWithPageContents(data, p)
-		if err != nil {
-			s.Fatal("Unable to fill mapping: ", err)
-		}
-	} else {
-		s.Log("No preallocation needed")
-	}
 	if p.RecordPageSet {
 		memInfo, err := mem.VirtualMemory()
 		if err != nil {
@@ -871,6 +848,31 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 			s.Fatal("Cannot kill WPR")
 		}
 	}()
+
+	// Steal a bunch of RAM to make the test run faster on systems
+	// with a lot of memory.  This is for test development.
+	if preAllocMiB > 0 && !p.RecordPageSet {
+		s.Logf("Preallocating %d MiB via mmap", preAllocMiB)
+		allocBytes := uint64(preAllocMiB * 1024 * 1024)
+		data, unmapFunc, err := createMemoryMapping(allocBytes)
+		if err != nil {
+			s.Fatal("Unable to create memory mapping: ", err)
+		}
+		defer unmapFunc()
+
+		err = fillWithPageContents(data, p)
+		if err != nil {
+			s.Fatal("Unable to fill mapping: ", err)
+		}
+	} else {
+		s.Log("No preallocation needed")
+	}
+
+	// Log various system measurements, to help understand the memory
+	// manager behavior.
+	if err := logMemoryParameters(ctx, p.PageFileCompressionRatio); err != nil {
+		s.Fatal("Cannot log memory parameters: ", err)
+	}
 
 	// Log in.  TODO(semenzato): this is not working (yet), we would like
 	// to have it for gmail and similar.
