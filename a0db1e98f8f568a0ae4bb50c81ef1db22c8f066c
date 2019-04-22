@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0055a833_7e33be73",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-22T05:30:27Z",
+      "side": 1,
+      "message": "Use your email address first as you are creating the test",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 93
+      },
+      "revId": "a0db1e98f8f568a0ae4bb50c81ef1db22c8f066c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "491c5b35_5bff1f0a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-22T05:30:27Z",
+      "side": 1,
+      "message": "Use softwareDeps: \"mosys\"",
+      "revId": "a0db1e98f8f568a0ae4bb50c81ef1db22c8f066c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecd4cb90_a0368037",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-22T05:30:27Z",
+      "side": 1,
+      "message": "what is the use of mosysOutput? Just to log the information?",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 12
+      },
+      "revId": "a0db1e98f8f568a0ae4bb50c81ef1db22c8f066c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b818c866_65202410",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-22T05:30:27Z",
+      "side": 1,
+      "message": "Use strings.TrimSpace",
+      "range": {
+        "startLine": 49,
+        "startChar": 24,
+        "endLine": 49,
+        "endChar": 55
+      },
+      "revId": "a0db1e98f8f568a0ae4bb50c81ef1db22c8f066c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1dc8a05_77b16da0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-22T05:30:27Z",
+      "side": 1,
+      "message": "Can you check the ec using \"ectool\" command also?",
+      "revId": "a0db1e98f8f568a0ae4bb50c81ef1db22c8f066c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a02ff66_d5cadc82",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-22T05:30:27Z",
+      "side": 1,
+      "message": "Add a comment and sample output of the logic",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 2
+      },
+      "revId": "a0db1e98f8f568a0ae4bb50c81ef1db22c8f066c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95bc5291_52906198",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-22T05:30:27Z",
+      "side": 1,
+      "message": "Add space after //",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 2
+      },
+      "revId": "a0db1e98f8f568a0ae4bb50c81ef1db22c8f066c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60c17401_81974ae5",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-22T05:30:27Z",
+      "side": 1,
+      "message": "Create a constant variable",
+      "range": {
+        "startLine": 67,
+        "startChar": 28,
+        "endLine": 67,
+        "endChar": 39
+      },
+      "revId": "a0db1e98f8f568a0ae4bb50c81ef1db22c8f066c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
