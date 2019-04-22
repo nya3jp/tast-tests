@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76057757_0df969fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-04-22T20:30:30Z",
+      "side": 1,
+      "message": "I\u0027ve seen it take almost 2 hours before -- I\u0027d go with 3 hours to be safe.",
+      "range": {
+        "startLine": 21,
+        "startChar": 11,
+        "endLine": 21,
+        "endChar": 30
+      },
+      "revId": "ef27fb88338b6be267bf7a72a23a38167d9d07e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
