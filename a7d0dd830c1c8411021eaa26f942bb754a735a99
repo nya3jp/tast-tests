@@ -300,6 +300,24 @@
     },
     {
       "key": {
+        "uuid": "582ddc53_e9d09ecf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-22T17:02:58Z",
+      "side": 1,
+      "message": "To avoid the confusion, changed the reg-expressions and logic :)",
+      "parentUuid": "e71ead7d_dffe34d8",
+      "revId": "a7d0dd830c1c8411021eaa26f942bb754a735a99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee51e047_df4e0a73",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
         "patchSetId": 2
