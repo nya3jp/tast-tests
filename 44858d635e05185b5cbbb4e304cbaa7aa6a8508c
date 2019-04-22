@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "e82281a0_9468b76f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T23:46:20Z",
+      "side": 1,
+      "message": "thanks for the explanation! i\u0027ve filed https://crbug.com/955183 about introducing a new suite for these tests",
+      "parentUuid": "f656bc07_c0bec3c6",
+      "revId": "44858d635e05185b5cbbb4e304cbaa7aa6a8508c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b6996ba0_8f7025bd",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 2
