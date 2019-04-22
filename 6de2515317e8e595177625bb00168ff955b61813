@@ -71,6 +71,236 @@
     },
     {
       "key": {
+        "uuid": "920a3a34_c99195f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:30:04Z",
+      "side": 1,
+      "message": "nit: also \"... JavaScript file for replacing ...\"",
+      "parentUuid": "eac86f3d_6cda3739",
+      "range": {
+        "startLine": 28,
+        "startChar": 35,
+        "endLine": 28,
+        "endChar": 52
+      },
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d058d22f_2219ef39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:30:04Z",
+      "side": 1,
+      "message": "nit: s/obtains/returns/",
+      "range": {
+        "startLine": 32,
+        "startChar": 29,
+        "endLine": 32,
+        "endChar": 36
+      },
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9883a872_5f3e0a57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:30:04Z",
+      "side": 1,
+      "message": "nit: mind putting each of these above the corresponding flag, or using end-of-line comments?\n\n  // Feed a test pattern ...\n  \"--use-fake-device-...\",\n  // Avoid the need ...\n  \"--use-fake-ui-...\",\n  etc.\n\nor\n\n  \"--use-fake-device-...\", // feed test pattern ...\n  \"--use-fake-ui-...\",     // avoid need to grant ...\n  ...",
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4b5ab72_f97df89c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:30:04Z",
+      "side": 1,
+      "message": "nit: return 0 (or some fixed value) if len(s) is 0?",
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bdf34e0_01e2d1ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:30:04Z",
+      "side": 1,
+      "message": "if these are out-params, please return (max int, median float64, err error) instead\n\nbut i think it would be better to return time.Durations here",
+      "range": {
+        "startLine": 69,
+        "startChar": 81,
+        "endLine": 69,
+        "endChar": 106
+      },
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e4c3293_c37e7009",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:30:04Z",
+      "side": 1,
+      "message": "nit: s/gather/measure/, maybe?",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 21
+      },
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a240d48_42583e03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:30:04Z",
+      "side": 1,
+      "message": "nit: just time.Minute",
+      "range": {
+        "startLine": 71,
+        "startChar": 25,
+        "endLine": 71,
+        "endChar": 40
+      },
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9460ab7_256b1294",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:30:04Z",
+      "side": 1,
+      "message": "nit: please use 500 * time.Millisecond, as it\u0027s easier to read",
+      "range": {
+        "startLine": 72,
+        "startChar": 25,
+        "endLine": 72,
+        "endChar": 47
+      },
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb23e3b4_14a36901",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:30:04Z",
+      "side": 1,
+      "message": "nit: just numSamples? no need to repeat the method name",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 22
+      },
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96ea4da7_c7febe11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:30:04Z",
+      "side": 1,
+      "message": "can you store time.Durations here too? i think it\u0027ll make some of the logging clearer later",
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d284c93_a7020a25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:30:04Z",
+      "side": 1,
+      "message": "i don\u0027t think i\u0027ve seen testing.Poll used as a data-collection loop before, but i think that it works here :-)",
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b76e29e_c35c2dbf",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
         "patchSetId": 6
@@ -111,6 +341,30 @@
     },
     {
       "key": {
+        "uuid": "d57216eb_89a4ddff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:30:04Z",
+      "side": 1,
+      "message": "maybe just \"got %d max decode sample(s); want %d\"?",
+      "parentUuid": "be228844_cbb82d7e",
+      "range": {
+        "startLine": 104,
+        "startChar": 24,
+        "endLine": 104,
+        "endChar": 47
+      },
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be648aa3_48aa47d9",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
         "patchSetId": 6
@@ -128,6 +382,86 @@
     },
     {
       "key": {
+        "uuid": "4ab5727d_623d4f29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:30:04Z",
+      "side": 1,
+      "message": "nit: how about just:\n\ntesting.ContextLog(ctx, \"Max decode times: \", maxDecodeTimes)\ntesting.ContextLog(ctx, \"Decode times: \", decodeTimes)\ntesting.ContextLogf(ctx, \"Largest max is %d, median is %f\")",
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bd4ee38_c688eca0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:30:04Z",
+      "side": 1,
+      "message": "please add a comment documenting what this does, since it isn\u0027t obvious from the name",
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19b4e2c5_4498ace5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:30:04Z",
+      "side": 1,
+      "message": "please name the return value, e.g. (hwAccelUsed bool). otherwise, someone needs to read the implementation to figure out what it is",
+      "range": {
+        "startLine": 118,
+        "startChar": 38,
+        "endLine": 118,
+        "endChar": 42
+      },
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27295124_eba9f2c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:30:04Z",
+      "side": 1,
+      "message": "nit: HW",
+      "range": {
+        "startLine": 118,
+        "startChar": 8,
+        "endLine": 118,
+        "endChar": 10
+      },
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3109a275_2004caf9",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
         "patchSetId": 6
@@ -139,6 +473,41 @@
       "writtenOn": "2019-04-22T12:18:12Z",
       "side": 1,
       "message": "nit: Please move this two variables to L160, where these variables are actually needed.",
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd0c9f91_ffb71237",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:30:04Z",
+      "side": 1,
+      "message": "and please use time.Duration instead to avoid ambiguity around units",
+      "parentUuid": "3109a275_2004caf9",
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da0d99e7_48ba891f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:30:04Z",
+      "side": 1,
+      "message": "this is a broken format string (only %s, but two more args). but i think you can omit the path since it may already be in err:\n\naddStatsJS, err :\u003d ioutil.ReadFile(s.DataPath(...))\nif err !\u003d nil {\n    s.Fatal(\"Failed to read JS for gathering decode time: \", err)\n}",
       "revId": "6de2515317e8e595177625bb00168ff955b61813",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -168,6 +537,87 @@
     },
     {
       "key": {
+        "uuid": "eb3407b7_568a0775",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:30:04Z",
+      "side": 1,
+      "message": "should this be s.Fatal? otherwise, it looks like you\u0027re reporting these values later even though you weren\u0027t successful in computing them",
+      "parentUuid": "73570b09_675f4a7d",
+      "range": {
+        "startLine": 161,
+        "startChar": 51,
+        "endLine": 161,
+        "endChar": 60
+      },
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "354c5bb4_a63aee1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:30:04Z",
+      "side": 1,
+      "message": "nit: \"HW decode unexpectedly used\"?",
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2adc1f10_41552933",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:30:04Z",
+      "side": 1,
+      "message": "can you reword this to make it clearer what it\u0027s doing? e.g. \"streams a video\", \"simulates a session\", etc.",
+      "range": {
+        "startLine": 191,
+        "startChar": 56,
+        "endLine": 191,
+        "endChar": 89
+      },
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c28a456_43d67448",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:30:04Z",
+      "side": 1,
+      "message": "nit: please declare this around L199 or L202 instead, just before it\u0027s used",
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6b33eaa1_46a5fc83",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_video.go",
         "patchSetId": 6
@@ -184,6 +634,52 @@
         "startChar": 43,
         "endLine": 54,
         "endChar": 56
+      },
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83263a39_f8fe0289",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:30:04Z",
+      "side": 1,
+      "message": "nit: since this name is fairly generic and this is a top-level constant that\u0027s shared across the whole \u0027video\u0027 package, how about prefixing this with part of the test name, e.g. webRTCDecodeStreamFile, or making it more unique in some other way, e.g. y4mCameraStreamFile?",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 16
+      },
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d549fab_509aabc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T14:30:04Z",
+      "side": 1,
+      "message": "nit: can probably delete this part?",
+      "range": {
+        "startLine": 20,
+        "startChar": 129,
+        "endLine": 20,
+        "endChar": 157
       },
       "revId": "6de2515317e8e595177625bb00168ff955b61813",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
