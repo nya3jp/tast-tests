@@ -209,6 +209,15 @@ func execPromiseBodyInBrowser(ctx context.Context, cr *chrome.Chrome, promiseBod
 	return evalPromiseBodyInBrowser(ctx, cr, promiseBody, nil)
 }
 
+// evalInBrowser evaluates synchronous code in the browser.
+func evalInBrowser(ctx context.Context, cr *chrome.Chrome, code string, out interface{}) error {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "cannot create test API connection")
+	}
+	return tconn.Eval(ctx, code, out)
+}
+
 // getActiveTabID returns the tab ID for the currently active tab.
 func getActiveTabID(ctx context.Context, cr *chrome.Chrome) (int, error) {
 	const promiseBody = "chrome.tabs.query({active: true}, (tlist) => { resolve(tlist[0].id) })"
@@ -320,6 +329,18 @@ chrome.tabs.query({discarded: false}, function(tabList) {
 		return nil, errors.Wrap(err, "cannot query tab list")
 	}
 	return out, nil
+}
+
+// logScreenDimensions logs width and height of the current window (outer
+// dimensions) and screen.
+func logScreenDimensions(ctx context.Context, cr *chrome.Chrome) error {
+	var out []int
+	const code = `[window.outerWidth, window.outerHeight, window.screen.width, window.screen.height]`
+	if err := evalInBrowser(ctx, cr, code, &out); err != nil {
+		return err
+	}
+	testing.ContextLogf(ctx, "Display: window %vx%v, screen %vx%v", out[0], out[1], out[2], out[3])
+	return nil
 }
 
 // emulateTyping emulates typing from some layer outside the browser.
@@ -528,8 +549,8 @@ func availableTCPPorts(count int) ([]int, error) {
 //
 // If recordPageSet is true, the test records a page set instead of replaying
 // the pre-recorded set.
-func initBrowser(ctx context.Context, useLiveSites, recordPageSet bool, wprArchivePath string) (*chrome.Chrome, *testexec.Cmd, error) {
-	if useLiveSites {
+func initBrowser(ctx context.Context, p *RunParameters) (*chrome.Chrome, *testexec.Cmd, error) {
+	if p.UseLiveSites {
 		testing.ContextLog(ctx, "Starting Chrome with live sites")
 		cr, err := chrome.New(ctx)
 		return cr, nil, err
@@ -570,17 +591,17 @@ func initBrowser(ctx context.Context, useLiveSites, recordPageSet bool, wprArchi
 	// recommended) and the call to initBrowser should be updated to
 	// reflect that location.
 	mode := "replay"
-	if recordPageSet {
+	if p.RecordPageSet {
 		mode = "record"
 	}
-	testing.ContextLog(ctx, "Using WPR archive ", wprArchivePath)
+	testing.ContextLog(ctx, "Using WPR archive ", p.WPRArchivePath)
 	tentativeWPR = testexec.CommandContext(ctx, "wpr", mode,
 		fmt.Sprintf("--http_port=%d", httpPort),
 		fmt.Sprintf("--https_port=%d", httpsPort),
 		"--https_cert_file=/usr/local/share/wpr/wpr_cert.pem",
 		"--https_key_file=/usr/local/share/wpr/wpr_key.pem",
 		"--inject_scripts=/usr/local/share/wpr/deterministic.js",
-		wprArchivePath)
+		p.WPRArchivePath)
 
 	if err := tentativeWPR.Start(); err != nil {
 		tentativeWPR.DumpLog(ctx)
@@ -594,7 +615,15 @@ func initBrowser(ctx context.Context, useLiveSites, recordPageSet bool, wprArchi
 	resolverRulesFlag := fmt.Sprintf("--host-resolver-rules=%q", resolverRules)
 	spkiList := "PhrPvGIaAMmd29hj8BCZOq096yj7uMpRNHpn5PDxI6I="
 	spkiListFlag := fmt.Sprintf("--ignore-certificate-errors-spki-list=%s", spkiList)
-	tentativeCr, err = chrome.New(ctx, chrome.ExtraArgs(resolverRulesFlag, spkiListFlag))
+	args := []string{resolverRulesFlag, spkiListFlag}
+	if p.FakeLargeScreen {
+		// The first flag makes Chrome create a larger window.  The
+		// second flag is only effective if the device does not have a
+		// display (chromeboxes).  Without it, Chrome uses a 1366x768
+		// default.
+		args = append(args, "--ash-host-window-bounds=3840x2048", "--screen-config=3840x2048/i")
+	}
+	tentativeCr, err = chrome.New(ctx, chrome.ExtraArgs(args...))
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "cannot start Chrome")
 	}
@@ -778,6 +807,11 @@ type RunParameters struct {
 	// RecordPageSet instructs Run to run in record mode
 	// vs. replay mode.
 	RecordPageSet bool
+	// FakeLargeScreen instructs Chrome to use a large screen when no
+	// displays are connected, which can happen, for instance, with
+	// chromeboxes (otherwise Chrome will configure a default 1366x768
+	// screen).
+	FakeLargeScreen bool
 }
 
 // createMemoryMapping creates a memory mapping of size allocBytes.
@@ -865,7 +899,7 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 
 	perfValues := perf.NewValues()
 
-	cr, wpr, err := initBrowser(ctx, p.UseLiveSites, p.RecordPageSet, p.WPRArchivePath)
+	cr, wpr, err := initBrowser(ctx, p)
 	if err != nil {
 		s.Fatal("Cannot start browser: ", err)
 	}
@@ -913,6 +947,10 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		if err := googleLogIn(ctx, cr); err != nil {
 			s.Fatal("Cannot login to google: ", err)
 		}
+	}
+
+	if err := logScreenDimensions(ctx, cr); err != nil {
+		s.Fatal("Cannot get screen dimensions: ", err)
 	}
 
 	// Figure out how many tabs already exist (typically 1).
