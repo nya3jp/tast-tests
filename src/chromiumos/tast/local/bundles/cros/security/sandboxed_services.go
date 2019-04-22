@@ -183,7 +183,6 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		"dash",
 		"python",
 		"python2",
-		"python2.7",
 		"python3",
 		"python3.4",
 		"python3.5",
@@ -220,6 +219,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		truncateProcName("periodic_scheduler"): {}, // runs cron scripts
 		truncateProcName("arc-setup"):          {}, // runs patchoat and other Android programs
 		truncateProcName("cros_installer"):     {}, // runs during system updates
+		truncateProcName("python2.7"):          {}, // stale Autotest processes: https://crbug.com/936703#c39
 	}
 
 	baselineMap := make(map[string][]*procReqs, len(baseline))
