@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "482d028b_e0e00339",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T22:24:20Z",
+      "side": 1,
+      "message": "nit: just inline these on L622? that saves two lines, and the constant names don\u0027t appear to add any info beyond what\u0027s already present in the flags themselves.",
+      "revId": "838cf30e09fb5aa67bd0a68893a3a014ec268173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2575b71f_0c8c7eaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T22:24:20Z",
+      "side": 1,
+      "message": "instead of duplicating flags, please just do:\n\nchromeArgs :\u003d []string{resolverRulesFlag, spkiListFlag}\nif p.FakeLargeScreen {\n    chromeArgs \u003d append(chromeArgs, \"--ash-host-window-bounds\u003d...\", \"--screen-config\u003d...\")\n}\ntentativeCr, err \u003d chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))",
+      "revId": "838cf30e09fb5aa67bd0a68893a3a014ec268173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69345219_c97dd938",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 808,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T22:24:20Z",
+      "side": 1,
+      "message": "how does the \"not connected\" part work? do you mean on chromeboxes? if so, what happens if this is false when running on a chromebox?",
+      "revId": "838cf30e09fb5aa67bd0a68893a3a014ec268173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
