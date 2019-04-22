@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f656bc07_c0bec3c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-04-22T21:40:32Z",
+      "side": 1,
+      "message": "The test is primarily trying to measure capacity of the system (and hopefully catch regressions).  The length is a function of system memory, screen resolution, and speed of the system. For 16GB systems, it can take a long time.\n\nThis test is used not just in the lab but for experimentation by folks looking at different alternatives to zram (swap to disk etc), and it\u0027s nice to not have to tell other folks that they need to increase this timeout to run this test.  In practice like Luigi mentioned with a reasonable screen resolution and a 16GB system it will run in under 2 hours.\n\nOne issue with making it run shorter by \"pre-allocating\" memory is that it can reduce the fidelity of the test as a measurement of system capacity, so this is why I prefer not to do this even if it means the test takes a while.  If it\u0027s really an issue, we should look at running it less often on 16GB systems.",
+      "parentUuid": "6d2b2132_fae4a823",
+      "revId": "44858d635e05185b5cbbb4e304cbaa7aa6a8508c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b6996ba0_8f7025bd",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 2
