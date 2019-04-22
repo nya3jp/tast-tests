@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75a46428_16bedded",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T21:57:29Z",
+      "side": 1,
+      "message": "huge nit: this can be simplified as \"Checks the crossystem command\u0027s basic functionality\"",
+      "revId": "845c29af49dea048eebf75e2bfd54230b016d053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5b12e01_c02b6d3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T21:57:29Z",
+      "side": 1,
+      "message": "nit: please put the closing } on its own line:\n\nContacts: []string{\n    ...,\n    ...,\n},\nAttr: ...\n\nthis makes it easier to modify the slice contents in the future",
+      "revId": "845c29af49dea048eebf75e2bfd54230b016d053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7f87f1c_b4eaa0fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T21:57:29Z",
+      "side": 1,
+      "message": "these should all still be consts:\n\nconst (\n    crossystemCmd \u003d ...\n    alphaNum \u003d ...\n    ...\n)",
+      "revId": "845c29af49dea048eebf75e2bfd54230b016d053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89fb920f_06c4c53a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T21:57:29Z",
+      "side": 1,
+      "message": "this doesn\u0027t seem like it does what you intended. it looks like it matches a single character that isn\u0027t one of \")(eor\". it will match the character \u0027a\u0027 but not the character \u0027e\u0027, for example: https://play.golang.org/p/72G93Sv_9Ox\n\ngo\u0027s regexp library doesn\u0027t support negative lookahead, iirc.\n\nplease just do something like\n\n  anything \u003d \"\"\n\nand then special-case the empty string in checkOutput:\n\n  if pattern \u003d\u003d \"\" {\n      return out !\u003d \"\" \u0026\u0026 out !\u003d \"(error)\"\n  }",
+      "revId": "845c29af49dea048eebf75e2bfd54230b016d053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "479ee37d_25cd4943",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T21:57:29Z",
+      "side": 1,
+      "message": "nit: how about \"pattern\", and then document that this can be either a regexp or an empty string?\n\ni\u0027d also s/cmdOutput/out/. go favors short variable names",
+      "range": {
+        "startLine": 55,
+        "startChar": 21,
+        "endLine": 55,
+        "endChar": 34
+      },
+      "revId": "845c29af49dea048eebf75e2bfd54230b016d053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2aaaceea_e5fd82ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T21:57:29Z",
+      "side": 1,
+      "message": "how about:\n\n  return regexp.MustCompile(pattern).Match(out)\n\n?",
+      "revId": "845c29af49dea048eebf75e2bfd54230b016d053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
