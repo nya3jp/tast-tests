@@ -59,7 +59,11 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{"/etc/passwd", "cros_passwd_file", false, nil},
 		{"/etc/selinux", "cros_selinux_config_file", true, nil},
 		{"/etc/shadow", "cros_shadow_file", false, nil},
-		{"/run/avahi-daemon", "cros_run_avahi_daemon", true, nil},
+		{"/run/avahi-daemon", "cros_run_avahi_daemon", true, selinux.IgnorePaths([]string{
+			"/run/avahi-daemon/pid", "/run/avahi-daemon/socket",
+		})},
+		{"/run/avahi-daemon/pid", "cros_avahi_daemon_pid_file", false, selinux.SkipNotExist},
+		{"/run/avahi-daemon/socket", "cros_avahi_socket", false, selinux.SkipNotExist},
 		{"/run/cras", "cras_socket", true, nil},
 		{"/run/dbus", "cros_run_dbus", false, nil},
 		{"/run/dbus.pid", "cros_dbus_daemon_pid_file", false, nil},
