@@ -14,8 +14,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: RemoteFiles,
-		Desc: "Helper test that uses data and output files",
+		Func:     RemoteFiles,
+		Desc:     "Helper test that uses data and output files",
 		Contacts: []string{"derat@chromium.org", "tast-users@chromium.org"},
 		// This test is called by remote tests in the meta package.
 		Attr: []string{"disabled"},
