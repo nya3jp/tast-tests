@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a2ff0c19_f4af66a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-04-22T07:26:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e49e282c_9d949acb",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9b27673_1bc9629e",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b92fb84c_656a4f16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-04-22T07:26:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9b27673_1bc9629e",
+      "range": {
+        "startLine": 12,
+        "startChar": 28,
+        "endLine": 12,
+        "endChar": 38
+      },
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57ac45e0_ba2ce7fc",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/add_stats.js",
         "patchSetId": 4
@@ -62,6 +110,24 @@
       "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b568392d_f7f39312",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/add_stats.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-04-22T07:26:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57ac45e0_ba2ce7fc",
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "8f1f0131_0a2b4415",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/add_stats.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-04-22T07:26:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8bfe7d7_388ee053",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 3
+      },
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39a0d8b4_35973418",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/add_stats.js",
         "patchSetId": 4
@@ -108,6 +198,30 @@
       "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bcd4c88_b07ecc64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/add_stats.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-04-22T07:26:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39a0d8b4_35973418",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "c690c864_b348e2d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/add_stats.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-04-22T07:26:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a50496a2_60e4a60c",
+      "range": {
+        "startLine": 13,
+        "startChar": 22,
+        "endLine": 13,
+        "endChar": 24
+      },
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca384ef1_a46789f2",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/add_stats.js",
         "patchSetId": 4
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "ac205a9a_b4835753",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/add_stats.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-04-22T07:26:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca384ef1_a46789f2",
+      "range": {
+        "startLine": 15,
+        "startChar": 27,
+        "endLine": 15,
+        "endChar": 29
+      },
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d39dafb0_0c5c6508",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/constants/constants.go",
         "patchSetId": 4
@@ -174,6 +336,24 @@
     },
     {
       "key": {
+        "uuid": "9dce921d_98f264a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/constants/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-04-22T07:26:10Z",
+      "side": 1,
+      "message": "If so, the file comment should be modified. Otherwise I think it can store constants used by multiple modules under video/",
+      "parentUuid": "d39dafb0_0c5c6508",
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1dfed447_e2b9b636",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
         "patchSetId": 4
@@ -185,6 +365,24 @@
       "writtenOn": "2019-04-19T12:03:48Z",
       "side": 1,
       "message": "webrtc_perf.go might be a somehow confusing name because we already have webrtc.go in the same directory and it also has functions for performance tests.\n\nSo, I\u0027d suggest to rename this file to webrtc_decode_perf.go. WDYT?",
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f20b6795_abea2e40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-04-22T07:26:10Z",
+      "side": 1,
+      "message": "I checked webrtc.go and webrtc_video.go. I feel that webrtc.go should place common code for video.WebRTC* instead of WebRTCCamrea and WebRTCPeerConnCamera specfic code.\n\nAlso, the code webrtc_video and webrtc_perf have similar / duplicate code block.\n\nIn the end, the layout could be:\nwebrtc.go: common code for video.WebRTC* (at least used in two modules)\nwebrtc_camera.go: WebRTCCamera specific\nwebrtc_peer_conn_camera.go: WebRTCPeerConnCamera specific\nwebrtc_codec.go: WebRTC{Encode|Decode}AccelUsed* specific\nwebrtc_decode_perf.go: WebRTCDecodePerf* specific\n\nFor the first stage, I would place common code to webrtc.go and leave the current webrtc and webrtc_video code unchanged. After the migration of WebRTCDecodePerf{Time|CPU|Powewr} are done, we can reshape the code to above structure.\n\nWhat do you think?",
+      "parentUuid": "1dfed447_e2b9b636",
       "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -214,6 +412,30 @@
     },
     {
       "key": {
+        "uuid": "a0d27c59_f311af9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-04-22T07:26:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8ffc789_a9e1d272",
+      "range": {
+        "startLine": 30,
+        "startChar": 69,
+        "endLine": 30,
+        "endChar": 79
+      },
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41ddad94_c22fb4d3",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
         "patchSetId": 4
@@ -237,6 +459,30 @@
     },
     {
       "key": {
+        "uuid": "5c4f75fb_5d8e9361",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-04-22T07:26:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41ddad94_c22fb4d3",
+      "range": {
+        "startLine": 118,
+        "startChar": 15,
+        "endLine": 118,
+        "endChar": 19
+      },
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30ece659_cf75e39f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
         "patchSetId": 4
@@ -251,6 +497,24 @@
       "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2965dba8_35a3566a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-04-22T07:26:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30ece659_cf75e39f",
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -271,6 +535,24 @@
     },
     {
       "key": {
+        "uuid": "aefca3b0_4dd359c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-04-22T07:26:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b19d84bb_c5b5c5bf",
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb9ff0d9_0793acd7",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
         "patchSetId": 4
@@ -285,6 +567,24 @@
       "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1171f6a_0b5e2b26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-04-22T07:26:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb9ff0d9_0793acd7",
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -305,6 +605,24 @@
     },
     {
       "key": {
+        "uuid": "88fc34bf_a7b750c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-04-22T07:26:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "258c1ca0_4b48b54c",
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "047fcb44_13626117",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_perf_decode_time.go",
         "patchSetId": 4
@@ -322,6 +640,24 @@
     },
     {
       "key": {
+        "uuid": "14009487_accbe704",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_perf_decode_time.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-04-22T07:26:10Z",
+      "side": 1,
+      "message": "Prefer WebRTCDecodePerf as tests which output to performance dashboards have names end with \"_perf\": webrtc_camera.go, webrtc_peer_conn_camera_h264_perf.go, webrtc_peer_conn_camera_vp8_perf.go\n\nAlso, its autotest counterpart has two controls:\nhttps://cs.corp.google.com/chromeos_public/src/third_party/autotest/files/client/site_tests/video_WebRtcPerf/control is for CPU usage and decode time.\nhttps://cs.corp.google.com/chromeos_public/src/third_party/autotest/files/client/site_tests/video_WebRtcPerf/control.power?g\u003d0 is for power measurement.\n\nSo I plan to have webrtc_decode_perf.go and webrtc_decode_power.go",
+      "parentUuid": "047fcb44_13626117",
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50b07672_2e0fe769",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_perf_decode_time.go",
         "patchSetId": 4
@@ -336,6 +672,24 @@
       "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4901da68_0d42d004",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_perf_decode_time.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-04-22T07:26:10Z",
+      "side": 1,
+      "message": "addStats.js is only used for WebRTCDecodePerf.\n\nIn webrtc/webrtc.go, I add LoopbackDataFiles() to return files needed for WebRTC loopback page.",
+      "parentUuid": "50b07672_2e0fe769",
+      "revId": "c6a09a17398ac576d2b16364fc6d334676933685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

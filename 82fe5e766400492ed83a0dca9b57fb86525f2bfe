@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fca4bd32_4b8d3eb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-04-22T07:26:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f126847d_27403155",
+      "revId": "82fe5e766400492ed83a0dca9b57fb86525f2bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8455cee1_13d7889f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
         "patchSetId": 3
@@ -147,6 +165,30 @@
       "writtenOn": "2019-04-19T06:52:58Z",
       "side": 1,
       "message": "This variable\u0027s \u0027goog\u0027-prefix looks somehow strange to me. \nDoes this name corresponds to the variable name in JS, doesn\u0027t it? \nSo, how about renaming them both here and in JS?",
+      "range": {
+        "startLine": 98,
+        "startChar": 5,
+        "endLine": 98,
+        "endChar": 20
+      },
+      "revId": "82fe5e766400492ed83a0dca9b57fb86525f2bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b665c979_b3fe12ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-04-22T07:26:10Z",
+      "side": 1,
+      "message": "I renamed googDecodeMs, googMaxDecodeMs as decodeTimes, maxDecodeTimes, respectively. However, I didn\u0027t rename JavaScript counterpart as they are mapped to webrtc-internals\u0027 googDecodeMs and googMaxDecodeMs fields.",
+      "parentUuid": "4300148a_1ddff6a0",
       "range": {
         "startLine": 98,
         "startChar": 5,
@@ -396,6 +438,24 @@
       "revId": "82fe5e766400492ed83a0dca9b57fb86525f2bfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e9ffec8_3eba387e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-04-22T07:26:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ffbeb1f8_de64fe30",
+      "revId": "82fe5e766400492ed83a0dca9b57fb86525f2bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
