@@ -18,12 +18,14 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"regexp"
 	"strconv"
 	"strings"
 	"sync"
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // Meter collects kernel performance statistics.
@@ -232,17 +234,16 @@ func (v *vmStatsMeter) stats() (*VMStatsData, error) {
 // /proc/vmstat are left unchanged.
 func (s *vmSample) read() {
 	s.time = time.Now()
-	bytes, err := ioutil.ReadFile("/proc/vmstat")
+	b, err := ioutil.ReadFile("/proc/vmstat")
 	if err != nil {
 		panic(fmt.Sprint("Cannot read /proc/vmstat: ", err))
 	}
 	seen := make(map[string]struct{})
-	for _, line := range strings.Split(string(bytes), "\n") {
-		if len(line) == 0 {
-			// at last line
-			break
-		}
+	for _, line := range strings.Split(strings.TrimSuffix(string(b), "\n"), "\n") {
 		nameValue := strings.Split(line, " ")
+		if len(nameValue) != 2 {
+			panic(fmt.Sprintf("Unexpected vmstat line %q", line))
+		}
 		name := nameValue[0]
 		value := nameValue[1]
 		i, present := vmFieldIndices[name]
@@ -284,4 +285,248 @@ func (m *Meter) start(ctx context.Context) {
 // max rates, for various memory manager events.
 func (m *Meter) VMStats() (*VMStatsData, error) {
 	return m.vmsm.stats()
+}
+
+// KernelMinFree returns an estimate of the minimum amount of free memory that
+// the kernel tries to maintain.  This calculation mimics the calculation of
+// totalreserve_pages, which is not exported, in calculate_totalreserve_pages().
+func KernelMinFree() (amountMiB uint64, err error) {
+	b, err := ioutil.ReadFile("/proc/zoneinfo")
+	if err != nil {
+		return 0, err
+	}
+	return kernelMinFree(string(b))
+}
+
+// kernelMinFree is the internal version of KernelMinFree, for unit testing.
+// s is the content of /proc/zoneinfo.  Result is in MiB.
+func kernelMinFree(s string) (amountMiB uint64, err error) {
+	highRE := regexp.MustCompile(`high\s+(\d+)`)
+	managedRE := regexp.MustCompile(`managed\s+(\d+)`)
+	reserveRE := regexp.MustCompile(`protection: \((.*)\)`)
+	type parseState int
+	const (
+		lookingForHigh parseState = iota
+		lookingForManaged
+		lookingForProtection
+		foundBoth
+	)
+	// Internal calculations are in pages.
+	state := lookingForHigh // initial parsing state
+	maxReserve := 0         // highest value in "protection" array
+	var highWM int          // high watermark for zone
+	var managedPages int    // managed pages for zone
+	totalMinFree := 0       // total reserve
+
+	for _, line := range strings.Split(strings.TrimSuffix(string(s), "\n"), "\n") {
+		if groups := highRE.FindStringSubmatch(line); groups != nil {
+			if state != lookingForHigh {
+				return 0, errors.New("field 'high' out of order in zoneinfo")
+			}
+			var err error
+			if highWM, err = strconv.Atoi(groups[1]); err != nil {
+				return 0, errors.Wrapf(err, "bad zoneinfo 'high' field %q", groups[1])
+			}
+			state = lookingForManaged
+			continue
+		}
+		if groups := managedRE.FindStringSubmatch(line); groups != nil {
+			if state != lookingForManaged {
+				return 0, errors.New("field 'managed' out of order in zoneinfo")
+			}
+			var err error
+			if managedPages, err = strconv.Atoi(groups[1]); err != nil {
+				return 0, errors.Wrapf(err, "bad zoneinfo 'managed' field %q", groups[1])
+			}
+			state = lookingForProtection
+			continue
+		}
+
+		if groups := reserveRE.FindStringSubmatch(line); groups != nil {
+			if state != lookingForProtection {
+				return 0, errors.New("field 'protection' out of order in zoneinfo")
+			}
+			for _, field := range strings.Split(groups[1], ", ") {
+				pages, err := strconv.Atoi(field)
+				if err != nil {
+					return 0, errors.Wrapf(err, "bad reserve %q", groups[1])
+				}
+				if maxReserve < pages {
+					maxReserve = pages
+				}
+			}
+			state = foundBoth
+		}
+		if state == foundBoth {
+			zoneReserve := highWM + maxReserve
+			if zoneReserve > managedPages {
+				zoneReserve = managedPages
+			}
+			totalMinFree += zoneReserve
+			state = lookingForHigh
+		}
+	}
+	if state != lookingForHigh {
+		return 0, errors.New("zoneinfo ended prematurely")
+	}
+
+	// Convert result from pages to MiB.
+	const pageSize = 4096
+	return uint64(totalMinFree) * pageSize / (1024 * 1024), nil
+}
+
+// readMemInfo returns all name-value pairs from /proc/meminfo, with the values
+// in MiB rather than KiB.
+func readMemInfo() (map[string]uint64, error) {
+	b, err := ioutil.ReadFile("/proc/meminfo")
+	if err != nil {
+		return nil, err
+	}
+	re := regexp.MustCompile(`(\S+):\s+(\d+) kB\n`)
+	info := make(map[string]uint64)
+	for _, groups := range re.FindAllStringSubmatch(string(b), -1) {
+		v, err := strconv.ParseUint(groups[2], 10, 64)
+		if err != nil {
+			return nil, errors.Wrapf(err, "bad meminfo value: %q", groups[2])
+		}
+		info[groups[1]] = v / 1024
+	}
+	return info, nil
+}
+
+// MemInfoFields holds selected fields of /proc/meminfo.
+type MemInfoFields struct {
+	Total, Free, Anon, File, SwapTotal, SwapUsed uint64
+}
+
+// MemInfo returns selected /proc/meminfo fields.
+func MemInfo() (data *MemInfoFields, err error) {
+	info, err := readMemInfo()
+	if err != nil {
+		return nil, err
+	}
+	return &MemInfoFields{
+		Total:     info["MemTotal"],
+		Free:      info["MemFree"],
+		Anon:      info["Active(anon)"] + info["Inactive(anon)"],
+		File:      info["Active(file)"] + info["Inactive(file)"],
+		SwapTotal: info["SwapTotal"],
+		SwapUsed:  info["SwapTotal"] - info["SwapFree"],
+	}, nil
+}
+
+// readFirstUint64FromFile assumes filename contains one or more
+// space-separated items, and returns the value of the first item which must be
+// an integer.
+func readFirstUint64FromFile(filename string) (uint64, error) {
+	b, err := ioutil.ReadFile(filename)
+	if err != nil {
+		return 0, err
+	}
+	f := strings.Fields(string(b))
+	if len(f) == 0 {
+		return 0, errors.Wrapf(err, "no fields in file %v", filename)
+	}
+	x, err := strconv.ParseUint(f[0], 10, 64)
+	if err != nil {
+		return 0, errors.Wrapf(err, "bad integer: %q", b)
+	}
+	return x, nil
+}
+
+// ChromeosLowMem returns sysfs information from the chromeos low-mem module.
+func ChromeosLowMem() (availableMiB, criticalMarginMiB, ramWeight uint64, err error) {
+	var v [3]uint64
+	for i, f := range []string{"available", "margin", "ram_vs_swap_weight"} {
+		x, err := readFirstUint64FromFile("/sys/kernel/mm/chromeos-low_mem/" + f)
+		if err != nil {
+			return 0, 0, 0, err
+		}
+		v[i] = x
+	}
+	return v[0], v[1], v[2], nil
+}
+
+// ProcessMemory returns the approximate amount of virtual memory (swapped or
+// not) currently allocated by processes.
+func ProcessMemory() (allocatedMiB uint64, err error) {
+	meminfo, err := MemInfo()
+	if err != nil {
+		return 0, err
+	}
+	return meminfo.Anon + meminfo.SwapUsed, nil
+}
+
+// HasZram returns true when the system uses swap on a zram device,
+// and no other device.
+func HasZram() bool {
+	b, err := ioutil.ReadFile("/proc/swaps")
+	if err != nil {
+		return false
+	}
+	lines := strings.Split(string(b), "\n")
+	if len(lines) < 2 {
+		return false
+	}
+	return strings.HasPrefix(lines[1], "/dev/zram")
+}
+
+// LogMemoryParameters logs various kernel parameters as well as some
+// calculated quantities to help understand the memory manager behavior.
+func LogMemoryParameters(ctx context.Context, ratio float64) error {
+	availableMiB, marginMiB, ramWeight, err := ChromeosLowMem()
+	if err != nil {
+		return errors.Wrap(err, "cannot obtain low-mem info")
+	}
+	hasZram := HasZram()
+	if !hasZram {
+		// Swap to disk is the same as if the compression ratio was 0.
+		ratio = 0.0
+		testing.ContextLog(ctx, "Device is not using zram")
+	}
+	memInfo, err := MemInfo()
+	if err != nil {
+		return errors.Wrap(err, "cannot obtain memory info")
+	}
+	totalMiB := memInfo.Total
+	totalSwapMiB := memInfo.SwapTotal
+	usedSwapMiB := memInfo.SwapUsed
+
+	// processMemory is how much memory is in use by processes at this time.
+	processMiB, err := ProcessMemory()
+	if err != nil {
+		testing.ContextLog(ctx, "Cannot compute process footprint: ", err)
+	}
+
+	// minFreeMiB is how much free RAM the kernel tries to maintain by
+	// swapping (or other reclaim)
+	minFreeMiB, err := KernelMinFree()
+	if err != nil {
+		testing.ContextLog(ctx, "Cannot compute min free: ", err)
+	}
+
+	// swapReduction is the amount to be taken out of swapTotal because we
+	// start discarding before swap is full.  If ramWeight is large, free
+	// swap has little or no influence on available, and we assume all swap
+	// space can be used.
+	var swapReductionMiB uint64
+	if marginMiB > minFreeMiB {
+		swapReductionMiB = (marginMiB - minFreeMiB) * ramWeight
+		if swapReductionMiB > totalSwapMiB {
+			swapReductionMiB = 0
+		}
+	}
+	usableSwapMiB := totalSwapMiB - swapReductionMiB
+	// maxProcessMiB is the amount of allocated process memory at which the
+	// low-mem device triggers.
+	maxProcessMiB := totalMiB - minFreeMiB + uint64(float64(usableSwapMiB)*(1-ratio))
+	if maxProcessMiB < processMiB {
+		return errors.Errorf("bad process size calculation: max %v MiB, current %v MiB", maxProcessMiB, processMiB)
+	}
+	testing.ContextLogf(ctx, "Metrics: meminfo: total %v, has zram %v", totalMiB, hasZram)
+	testing.ContextLogf(ctx, "Metrics: swap: total %d, used %d, usable %v", totalSwapMiB, usedSwapMiB, usableSwapMiB)
+	testing.ContextLogf(ctx, "Metrics: low-mem: available %v, margin %v, RAM weight %v", availableMiB, marginMiB, ramWeight)
+	testing.ContextLog(ctx, "Metrics: kernel min free: ", minFreeMiB)
+	testing.ContextLogf(ctx, "Metrics: process allocation: current: %v, max: %v", processMiB, maxProcessMiB)
+	return nil
 }
