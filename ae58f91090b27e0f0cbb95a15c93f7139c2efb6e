@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "6dd06648_8deee60c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-22T16:01:49Z",
+      "side": 1,
+      "message": "Given that margin will contain multiple values maybe this should just return a slice of uint64? What do you think about something like this:\n\nfunc readAllUint64FromFile(filename string) ([]uint64, error) {\n    b, err :\u003d ioutil.ReadFile(filename)\n    if err !\u003d nil {\n       return 0, err\n    }\n\n    var r []uint64\n    for _, n :\u003d range strings.Fields(string(b)) {\n      x, err :\u003d strconv.ParseUint(n, 10, 64)\n      if err !\u003d nil {\n        return 0, errors.Wrapf(err, \"bad integer: %q\", n)\n      }\n      r \u003d append(r, x)\n    }\n    return r, nil\n}",
+      "range": {
+        "startLine": 381,
+        "startChar": 0,
+        "endLine": 381,
+        "endChar": 58
+      },
+      "revId": "ae58f91090b27e0f0cbb95a15c93f7139c2efb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fb1452e5_4cd09a02",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 3
@@ -131,6 +154,30 @@
       "side": 1,
       "message": "Is this a backward-incompatible change?  Other programs read this file.",
       "parentUuid": "62eded74_75c5dcfb",
+      "range": {
+        "startLine": 396,
+        "startChar": 42,
+        "endLine": 396,
+        "endChar": 48
+      },
+      "revId": "ae58f91090b27e0f0cbb95a15c93f7139c2efb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "443735a8_34d4df17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-22T16:01:49Z",
+      "side": 1,
+      "message": "It is, the only things that read it are crosvm (Sonny is working on fixing that), and then memd, which we will also need to fix to support margin files with multiple values. Other than that we\u0027re good. But I want to make sure we don\u0027t introduce another place that we have to fix once we enable the multiple memory pressure levels in the margin file.",
+      "parentUuid": "6c4d43ac_ab3d327d",
       "range": {
         "startLine": 396,
         "startChar": 42,
@@ -272,6 +319,30 @@
       "side": 1,
       "message": "Not sure I understand.  What would we do with the number of broken connections?",
       "parentUuid": "51981f7b_aa309720",
+      "range": {
+        "startLine": 712,
+        "startChar": 20,
+        "endLine": 712,
+        "endChar": 27
+      },
+      "revId": "ae58f91090b27e0f0cbb95a15c93f7139c2efb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "160ea7f6_df278b7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-22T16:01:49Z",
+      "side": 1,
+      "message": "Sorry, let me rephrase. What I meant was survive is just a boolean that allows the test to be resilient to tab failures; the source of the failure isn\u0027t differentiated at the moment. All we have is a count of the number of dbus messages we\u0027ve received. My thought was that we should keep track of how many dead tabs we found and if it was greater than the number of dbus messages we received we should bail on the test as that means that we cannot reason about the correctness of the numbers. This was my understanding of what we all discussed last Thursday.",
+      "parentUuid": "f52104c7_1feebd80",
       "range": {
         "startLine": 712,
         "startChar": 20,
