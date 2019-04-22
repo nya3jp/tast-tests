@@ -17,11 +17,13 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/godbus/dbus"
 	"github.com/shirou/gopsutil/mem"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/testexec"
@@ -638,20 +640,21 @@ func pinTabs(ctx context.Context, cr *chrome.Chrome, tabIDs []int) {
 
 // cycleTabs activates in turn each tab passed in tabIDs, then it wiggles it or
 // pauses for a duration of pause, depending on the value of wiggle.  It
-// returns a slice of tab switch times.
+// returns a slice of tab switch times.  If tolerateLostConn is true, a broken
+// devtools connection to the renderer is not treated as an error.
 func cycleTabs(ctx context.Context, cr *chrome.Chrome, tabIDs []int, rset *rendererSet,
-	pause time.Duration, wiggle bool) ([]time.Duration, error) {
+	pause time.Duration, wiggle, tolerateLostConn bool) ([]time.Duration, error) {
 	var times []time.Duration
 	for _, id := range tabIDs {
 		r := rset.renderersByTabID[id]
 		t, err := activateTab(ctx, cr, id, r)
-		if err != nil {
+		if err != nil && !tolerateLostConn {
 			// Likely tab was discarded and connection was closed.
 			return times, errors.Wrapf(err, "cannot activate tab %d", id)
 		}
 		times = append(times, t)
 		if wiggle {
-			if err := wiggleTab(ctx, r); err != nil {
+			if err := wiggleTab(ctx, r); err != nil && !tolerateLostConn {
 				// Here it is also possible to get a "connection closed" error.
 				return times, errors.Wrapf(err, "cannot wiggle tab %d", id)
 			}
@@ -664,12 +667,36 @@ func cycleTabs(ctx context.Context, cr *chrome.Chrome, tabIDs []int, rset *rende
 	return times, nil
 }
 
+// logTabSwitchTimes takes a slice of tab switch times produced by switching
+// through tabCount tabs multiple times, and outputs per-tab stats of those
+// times.
+func logTabSwitchTimes(ctx context.Context, switchTimes []time.Duration, tabCount int, label string) {
+	if len(switchTimes) == tabCount {
+		// One switch per tab
+		for i, t := range switchTimes {
+			testing.ContextLogf(ctx, "Metrics: %s: switch time for tab index %d: %7.2f (ms)",
+				label, i, t.Seconds()*1000)
+		}
+		return
+	}
+	// Multiple switches per tab.
+	tabTimes := make([][]time.Duration, tabCount)
+	for i, t := 0, 0; i < len(switchTimes); i++ {
+		tabTimes[t] = append(tabTimes[t], switchTimes[i])
+		t = (t + 1) % tabCount
+	}
+	for i, times := range tabTimes {
+		testing.ContextLogf(ctx, "Metrics: %s: mean/stdev switch time for tab index %d: %7.2f %7.2f (ms)",
+			label, i, mean(times).Seconds()*1000, stdDev(times).Seconds()*1000)
+	}
+}
+
 // runTabSwitches performs multiple set of tab switches through the tabs in
 // tabIDs, and logs switch times and their stats.
 func runTabSwitches(ctx context.Context, cr *chrome.Chrome, rset *rendererSet,
-	tabIDs []int, label string, repeatCount int) error {
+	tabIDs []int, label string, repeatCount int, tolerateLostConn bool) error {
 	// Cycle through the tabs once to warm them up (no wiggling).
-	if _, err := cycleTabs(ctx, cr, tabIDs, rset, time.Second, false); err != nil {
+	if _, err := cycleTabs(ctx, cr, tabIDs, rset, time.Second, false, false); err != nil {
 		return errors.Wrap(err, "cannot warm-up initial set of tabs")
 	}
 	// Cycle through tabs a few times, still without wiggling, and collect
@@ -677,7 +704,7 @@ func runTabSwitches(ctx context.Context, cr *chrome.Chrome, rset *rendererSet,
 	var switchTimes []time.Duration
 	const shortTabSwitchDelay = 200 * time.Millisecond
 	for i := 0; i < repeatCount; i++ {
-		times, err := cycleTabs(ctx, cr, tabIDs, rset, shortTabSwitchDelay, false)
+		times, err := cycleTabs(ctx, cr, tabIDs, rset, shortTabSwitchDelay, false, tolerateLostConn)
 		if err != nil {
 			return errors.Wrap(err, "failed to run tab switches")
 		}
@@ -688,15 +715,7 @@ func runTabSwitches(ctx context.Context, cr *chrome.Chrome, rset *rendererSet,
 		label, mean(switchTimes).Seconds()*1000, stdDev(switchTimes).Seconds()*1000)
 
 	// Log tab switch stats on a per-tab basis.
-	tabTimes := make([][]time.Duration, len(tabIDs))
-	for i, t := 0, 0; i < len(switchTimes); i++ {
-		tabTimes[t] = append(tabTimes[t], switchTimes[i])
-		t = (t + 1) % len(tabIDs)
-	}
-	for i, times := range tabTimes {
-		testing.ContextLogf(ctx, "Metrics: %s: mean/stdev switch time for tab index %d: %7.2f %7.2f (ms)",
-			label, i, mean(times).Seconds()*1000, stdDev(times).Seconds()*1000)
-	}
+	logTabSwitchTimes(ctx, switchTimes, len(tabIDs), label)
 	return nil
 }
 
@@ -753,6 +772,45 @@ type RunParameters struct {
 	FakeLargeScreen bool
 }
 
+// discardWatcher sets up a D-Bus signal watcher which waits for a D-Bus discard
+// signal from chrome and closes c upon its delivery.
+func discardWatcher(ctx context.Context, c chan struct{}) error {
+	conn, err := dbus.SystemBus()
+	if err != nil {
+		return err
+	}
+	spec := dbusutil.MatchSpec{
+		Type:      "signal",
+		Interface: "org.chromium.MetricsEventServiceInterface",
+		Member:    "ChromeEvent",
+	}
+	w, err := dbusutil.NewSignalWatcher(ctx, conn, spec)
+	if err != nil {
+		return err
+	}
+	go func() {
+		select {
+		case <-w.Signals:
+			// TODO(crbug.com/954622): must check that signal
+			// payload matches TAB_DISCARD.
+			close(c)
+		case <-ctx.Done():
+		}
+	}()
+	return nil
+}
+
+func checkDiscards(ctx context.Context, c chan struct{}) (bool, error) {
+	select {
+	case <-c:
+		return true, nil
+	case <-time.After(time.Second):
+		return false, nil
+	case <-ctx.Done():
+		return false, ctx.Err()
+	}
+}
+
 // createMemoryMapping creates a memory mapping of size allocBytes.
 // The method returns a byte slice and a function which can be
 // used to unmap the mapping, otherwise an error.
@@ -797,7 +855,9 @@ func fillWithPageContents(b []byte, p *RunParameters) error {
 // pressure increases (phase 1) and afterwards (phase 2).
 func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	const (
-		tabWorkingSetSize    = 5
+		initialTabSetSize    = 5
+		recentTabSetSize     = 5
+		coldTabSetSize       = 10
 		tabCycleDelay        = 300 * time.Millisecond
 		tabSwitchRepeatCount = 10
 		// For faster test runs during development, use preAllocMiB to
@@ -806,12 +866,12 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		preAllocMiB = 0
 	)
 
-	if p.RecordPageSet {
-		memInfo, err := mem.VirtualMemory()
-		if err != nil {
-			s.Fatal("Cannot obtain memory info: ", err)
-		}
+	memInfo, err := kernelmeter.MemInfo()
+	if err != nil {
+		s.Fatal("Cannot obtain memory info: ", err)
+	}
 
+	if p.RecordPageSet {
 		const minimumRAM uint64 = 4 * 1000 * 1000 * 1000
 		if memInfo.Total < minimumRAM {
 			s.Fatalf("Not enough RAM to record page set: have %v, want %v or more",
@@ -856,8 +916,12 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		}
 	}()
 
-	// Steal a bunch of RAM to make the test run faster on systems
-	// with a lot of memory.  This is for test development.
+	// Log various system measurements, to help understand the memory
+	// manager behavior.
+	if err := kernelmeter.LogMemoryParameters(ctx, p.PageFileCompressionRatio); err != nil {
+		s.Fatal("Cannot log memory parameters: ", err)
+	}
+
 	if preAllocMiB > 0 && !p.RecordPageSet {
 		s.Logf("Preallocating %d MiB via mmap", preAllocMiB)
 		allocBytes := uint64(preAllocMiB * 1024 * 1024)
@@ -875,12 +939,6 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		s.Log("No preallocation needed")
 	}
 
-	// Log various system measurements, to help understand the memory
-	// manager behavior.
-	if err := kernelmeter.LogMemoryParameters(ctx, p.PageFileCompressionRatio); err != nil {
-		s.Fatal("Cannot log memory parameters: ", err)
-	}
-
 	// Log in.  TODO(semenzato): this is not working (yet), we would like
 	// to have it for gmail and similar.
 	if p.UseLogIn {
@@ -894,6 +952,13 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		s.Fatal("Cannot get screen dimensions: ", err)
 	}
 
+	// Set up a channel where a goroutine signals arrival of the D-Bus tab
+	// discard signal from chrome.
+	discardChannel := make(chan struct{})
+	if err := discardWatcher(ctx, discardChannel); err != nil {
+		s.Fatal("Cannot setup discard watcher: ", err)
+	}
+
 	// Figure out how many tabs already exist (typically 1).
 	validTabIDs, err := getValidTabIDs(ctx, cr)
 	if err != nil {
@@ -903,13 +968,13 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 
 	// Open enough tabs for a "working set", i.e. the number of tabs that an
 	// imaginary user will cycle through in their imaginary workflow.
-	s.Logf("Opening %d initial tabs", tabWorkingSetSize)
+	s.Logf("Opening %d initial tabs", initialTabSetSize)
 	tabLoadTimeout := 20 * time.Second
 	if p.RecordPageSet {
 		tabLoadTimeout = 50 * time.Second
 	}
 	urlIndex := 0
-	for i := 0; i < tabWorkingSetSize; i++ {
+	for i := 0; i < initialTabSetSize; i++ {
 		renderer, err := addTab(ctx, cr, rset, tabURLs[urlIndex], isDormantExpr, tabLoadTimeout)
 		urlIndex = (1 + urlIndex) % len(tabURLs)
 		if err != nil {
@@ -920,10 +985,10 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 			s.Error("Cannot wiggle initial tab: ", err)
 		}
 	}
-	workingTabIDs := rset.tabIDs[:tabWorkingSetSize]
-	pinTabs(ctx, cr, workingTabIDs)
+	initialTabSetIDs := rset.tabIDs[:initialTabSetSize]
+	pinTabs(ctx, cr, initialTabSetIDs)
 	// Collect and log tab-switching times in the absence of memory pressure.
-	if err := runTabSwitches(ctx, cr, rset, workingTabIDs, "light", tabSwitchRepeatCount); err != nil {
+	if err := runTabSwitches(ctx, cr, rset, initialTabSetIDs, "light", tabSwitchRepeatCount, false); err != nil {
 		s.Error("Cannot run tab switches with light load: ", err)
 	}
 	logAndResetStats(s, partialMeter, "initial")
@@ -943,14 +1008,21 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		s.Logf("Cycling tabs (opened %v, present %v, initial %v)",
 			len(rset.tabIDs), len(validTabIDs), initialTabCount)
 		if len(rset.tabIDs)+initialTabCount > len(validTabIDs) {
+			discardHappened, err := checkDiscards(ctx, discardChannel)
+			if err != nil {
+				s.Fatal("Could not check for discard signal: ", err)
+			}
 			s.Log("Ending allocation because one or more targets (tabs) have gone")
-			break
+			if discardHappened {
+				break
+			}
+			s.Fatal("Some tabs have crashed")
 		}
 		// Switch among recently loaded tabs to encourage loading.
 		// Errors are usually from a renderer crash or, less likely, a tab discard.
 		// We fail in those cases because they are not expected.
-		recentTabs := rset.tabIDs[len(rset.tabIDs)-tabWorkingSetSize:]
-		times, err := cycleTabs(ctx, cr, recentTabs, rset, time.Second, true)
+		recentTabs := rset.tabIDs[len(rset.tabIDs)-recentTabSetSize:]
+		times, err := cycleTabs(ctx, cr, recentTabs, rset, time.Second, true, true)
 		if err != nil {
 			s.Fatal("Tab cycling error: ", err)
 		}
@@ -959,7 +1031,7 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		// measurements and position the tabs high in the LRU list.
 		s.Log("Refreshing LRU order of initial tab set")
 		runAndLogSwapStats(ctx, func() {
-			if _, err := cycleTabs(ctx, cr, rset.tabIDs[0:tabWorkingSetSize], rset, 0, false); err != nil {
+			if _, err := cycleTabs(ctx, cr, initialTabSetIDs, rset, 0, false, true); err != nil {
 				s.Fatal("Tab LRU refresh error: ", err)
 			}
 		}, switchMeter)
@@ -1042,7 +1114,19 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	s.Logf("Metrics: Phase 1: stddev of tab switch times %7.2f ms", stdDev(times).Seconds()*1000)
 
 	// -----------------
-	// Phase 2: quiesce.
+	// Phase 2: measure tab switch times to cold tabs.
+	// -----------------
+	coldTabLower := initialTabSetSize + 1
+	coldTabUpper := coldTabLower + coldTabSetSize
+	if coldTabUpper > len(rset.tabIDs) {
+		coldTabUpper = len(rset.tabIDs)
+	}
+	coldTabIDs := rset.tabIDs[coldTabLower:coldTabUpper]
+	times, err = cycleTabs(ctx, cr, coldTabIDs, rset, 0, false, true)
+	logTabSwitchTimes(ctx, times, len(coldTabIDs), "coldswitch")
+
+	// -----------------
+	// Phase 3: quiesce.
 	// -----------------
 	// Wait a bit to help the system stabilize.
 	if err := testing.Sleep(ctx, 10*time.Second); err != nil {
@@ -1050,7 +1134,7 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	}
 	fullMeter.Reset()
 	// Measure tab switching under pressure.
-	if err := runTabSwitches(ctx, cr, rset, workingTabIDs, "heavy", tabSwitchRepeatCount); err != nil {
+	if err := runTabSwitches(ctx, cr, rset, initialTabSetIDs, "heavy", tabSwitchRepeatCount, true); err != nil {
 		s.Error("Cannot run tab switches with heavy load: ", err)
 	}
 	stats, err = fullMeter.VMStats()
@@ -1075,10 +1159,10 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	perfValues.Set(totalPageFaultCount2Metric, float64(stats.PageFault.Count))
 	perfValues.Set(averagePageFaultRate2Metric, stats.PageFault.AverageRate)
 	perfValues.Set(maxPageFaultRate2Metric, stats.PageFault.MaxRate)
-	s.Log("Metrics: Phase 2: total page fault count ", stats.PageFault.Count)
-	s.Log("Metrics: Phase 2: oom count ", stats.OOM.Count)
-	s.Logf("Metrics: Phase 2: average page fault rate %v pf/second", stats.PageFault.AverageRate)
-	s.Logf("Metrics: Phase 2: max page fault rate %v pf/second", stats.PageFault.MaxRate)
+	s.Log("Metrics: Phase 3: total page fault count ", stats.PageFault.Count)
+	s.Log("Metrics: Phase 3: oom count ", stats.OOM.Count)
+	s.Logf("Metrics: Phase 3: average page fault rate %v pf/second", stats.PageFault.AverageRate)
+	s.Logf("Metrics: Phase 3: max page fault rate %v pf/second", stats.PageFault.MaxRate)
 
 	if err = perfValues.Save(s.OutDir()); err != nil {
 		s.Error("Cannot save perf data: ", err)
