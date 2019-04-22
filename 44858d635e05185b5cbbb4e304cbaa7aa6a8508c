@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d2b2132_fae4a823",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T21:31:09Z",
+      "side": 1,
+      "message": "pasting my comment from https://crrev.com/c/1575648 (sorry if you replied and i didn\u0027t find it):\n\n\"i fear that this is getting too long. even if it only runs nightly, i doubt we want to spend 2+ hours running tests. i\u0027m worried that the autotest job that we use to run tast tests might hit a limit, too.\"\n\nwhy does this test take so long? is there any way you can make it faster?",
+      "revId": "44858d635e05185b5cbbb4e304cbaa7aa6a8508c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6996ba0_8f7025bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T21:31:09Z",
+      "side": 1,
+      "message": "nit: maybe add an end-of-line comment like \"// can increase to X for test development\"",
+      "revId": "44858d635e05185b5cbbb4e304cbaa7aa6a8508c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a972dfb_9166e124",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-22T21:31:09Z",
+      "side": 1,
+      "message": "nit: if err \u003d fillWithPageContents(...) err !\u003d nil {",
+      "revId": "44858d635e05185b5cbbb4e304cbaa7aa6a8508c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
