@@ -22,6 +22,30 @@
       "revId": "047c34e617c941a6d59af7d3d3f688b737f331e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5eecbaff_332876b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_ec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1341792
+      },
+      "writtenOn": "2019-04-22T09:27:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9ed2a69_63b442cc",
+      "range": {
+        "startLine": 38,
+        "startChar": 79,
+        "endLine": 38,
+        "endChar": 86
+      },
+      "revId": "047c34e617c941a6d59af7d3d3f688b737f331e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
