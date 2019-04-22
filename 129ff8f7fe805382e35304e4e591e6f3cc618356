@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "04b6e39b_ec4c52d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-22T03:33:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0a4f465_c81d0084",
+      "range": {
+        "startLine": 128,
+        "startChar": 67,
+        "endLine": 128,
+        "endChar": 74
+      },
+      "revId": "129ff8f7fe805382e35304e4e591e6f3cc618356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5db3b4df_f557a503",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
         "patchSetId": 13
@@ -39,6 +63,24 @@
       "revId": "129ff8f7fe805382e35304e4e591e6f3cc618356",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "539b5787_d11f2636",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-04-22T03:33:41Z",
+      "side": 1,
+      "message": "I\u0027ve changed it back.\n\nOn adding more details,\nI\u0027m seeing 2 approaches in the existing tests.\n\nThere\u0027s the approach you mentioned.\n```\ns.Log(\"Doing something\")\nmust(DoSomething())\n\ns.Log(\"Doing something else\")\nmust(DoSomethingElse())\n```\n\nThere\u0027s also this approach currently used in this CL.\n```\nif err :\u003d DoSomething(); err !\u003d nil {\n\ts.Fatal(\"Some verbose error\")\n}\nif err :\u003d DoSomethingElse(); err !\u003d nil {\n\ts.Fatal(\"Some verbose error\")\n}\n```\n\nI don\u0027t see tests doing both (maybe there are).\nI wonder if there\u0027s a preferred style here.\nIMO combining the two seem a bit redundant (3 LoC for one function call).",
+      "parentUuid": "5db3b4df_f557a503",
+      "revId": "129ff8f7fe805382e35304e4e591e6f3cc618356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
