@@ -18,6 +18,7 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"regexp"
 	"strconv"
 	"strings"
 	"sync"
@@ -232,16 +233,13 @@ func (v *vmStatsMeter) stats() (*VMStatsData, error) {
 // /proc/vmstat are left unchanged.
 func (s *vmSample) read() {
 	s.time = time.Now()
-	bytes, err := ioutil.ReadFile("/proc/vmstat")
+	b, err := ioutil.ReadFile("/proc/vmstat")
 	if err != nil {
 		panic(fmt.Sprint("Cannot read /proc/vmstat: ", err))
 	}
 	seen := make(map[string]struct{})
-	for _, line := range strings.Split(string(bytes), "\n") {
-		if len(line) == 0 {
-			// at last line
-			break
-		}
+	lines := strings.Split(string(b), "\n")
+	for _, line := range lines[:len(lines)-1] {
 		nameValue := strings.Split(line, " ")
 		name := nameValue[0]
 		value := nameValue[1]
@@ -284,4 +282,155 @@ func (m *Meter) start(ctx context.Context) {
 // max rates, for various memory manager events.
 func (m *Meter) VMStats() (*VMStatsData, error) {
 	return m.vmsm.stats()
+}
+
+// KernelMinFree returns an estimate of the minimum amount of free memory that
+// the kernel tries to maintain.  This calculation mimics the calculation of
+// totalreserve_pages, which is not exported, in calculate_totalreserve_pages()
+func KernelMinFree() (amountMiB uint64, err error) {
+	b, err := ioutil.ReadFile("/proc/zoneinfo")
+	if err != nil {
+		return 0, err
+	}
+	v, e := kernelMinFree(string(b))
+	return v, e
+}
+
+// kernelMinFree is the internal version of KernelMinFree, for unit testing.
+// s is the content of /proc/zoneinfo.
+func kernelMinFree(s string) (amountMiB uint64, err error) {
+	highRE := regexp.MustCompile("high\\s+(\\d+)")
+	reserveRE := regexp.MustCompile("protection: \\((.*)\\)")
+	// Internal calculations are in pages.
+	zoneMinFree := 0
+	totalMinFree := -1
+	for _, line := range strings.Split(s, "\n") {
+		groups := highRE.FindStringSubmatch(line)
+		if groups != nil {
+			high, err := strconv.ParseInt(groups[1], 10, 32)
+			if err != nil {
+				return 0, errors.Wrapf(err, "bad zoneinfo field %q", groups[1])
+			}
+			zoneMinFree = int(high)
+			continue
+		}
+
+		groups = reserveRE.FindStringSubmatch(line)
+		if groups != nil {
+			if zoneMinFree == -1 {
+				return 0, errors.New("out-of-order zoneinfo fields")
+			}
+			fields := strings.Split(groups[1], ", ")
+			max := 0
+			for _, field := range fields {
+				pages, err := strconv.ParseInt(field, 10, 32)
+				if err != nil {
+					return 0, errors.Wrapf(err, "bad reserve %q", groups[1])
+				}
+				if max < int(pages) {
+					max = int(pages)
+				}
+			}
+			totalMinFree += zoneMinFree + max
+			zoneMinFree = 0
+		}
+	}
+
+	return uint64(totalMinFree) * 4096 / (1024 * 1024), nil
+}
+
+// readMemInfo returns all name-value pairs from /proc/meminfo, with the values
+// in MiB rather than KiB.
+func readMemInfo() (map[string]uint64, error) {
+	b, err := ioutil.ReadFile("/proc/meminfo")
+	if err != nil {
+		return nil, err
+	}
+	info := make(map[string]uint64)
+	lines := strings.Split(string(b), "\n")
+	for _, line := range lines[:len(lines)-1] {
+		fields := strings.Fields(line)
+		if len(fields) != 3 {
+			return nil, errors.Errorf("unexpected line in /proc/meminfo: %q", line)
+		}
+		v, err := strconv.ParseUint(fields[1], 10, 64)
+		if err != nil {
+			return nil, errors.Wrapf(err, "bad meminfo value: %q", fields[1])
+		}
+		// Assume last character is a colon.
+		info[fields[0][:len(fields[0])-1]] = v
+	}
+	return info, nil
+}
+
+// MemInfoFields holds selected fields of /proc/meminfo.
+type MemInfoFields struct {
+	Total, Free, Anon, File, SwapTotal, SwapUsed uint64
+}
+
+// MemInfo returns selected /proc/meminfo fields.
+func MemInfo() (data *MemInfoFields, err error) {
+	info, err := readMemInfo()
+	if err != nil {
+		return nil, err
+	}
+	return &MemInfoFields{
+		Total:     info["MemTotal"] / 1024,
+		Free:      info["MemFree"] / 1024,
+		Anon:      (info["Active(anon)"] + info["Inactive(anon)"]) / 1024,
+		File:      (info["Active(file)"] + info["Inactive(file)"]) / 1024,
+		SwapTotal: info["SwapTotal"] / 1024,
+		SwapUsed:  (info["SwapTotal"] - info["SwapFree"]) / 1024,
+	}, nil
+}
+
+// Return the numeric value of the content of filename, which is typically a
+// sysfs or procfs entry.
+func readUint64FromFile(filename string) (uint64, error) {
+	b, err := ioutil.ReadFile(filename)
+	if err != nil {
+		return 0, err
+	}
+	x, err := strconv.ParseUint(strings.TrimSpace(string(b)), 10, 64)
+	if err != nil {
+		return 0, errors.Wrapf(err, "bad integer: %q", b)
+	}
+	return x, nil
+}
+
+// ChromeosLowMem returns sysfs information from the chromeos low-mem module.
+func ChromeosLowMem() (availableMiB, criticalMarginMiB, ramWeight uint64, err error) {
+	var v [3]uint64
+	for i, f := range []string{"available", "margin", "ram_vs_swap_weight"} {
+		x, err := readUint64FromFile("/sys/kernel/mm/chromeos-low_mem/" + f)
+		if err != nil {
+			return 0, 0, 0, err
+		}
+		v[i] = x
+	}
+	return v[0], v[1], v[2], nil
+}
+
+// ProcessMemory returns the approximate amount of virtual memory (swapped or
+// not) currently allocated by processes.
+func ProcessMemory() (allocatedMiB uint64, err error) {
+	// Internal calculations are in KiB.
+	meminfo, err := MemInfo()
+	if err != nil {
+		return 0, err
+	}
+	return (meminfo.Anon + meminfo.SwapUsed) / 1024, nil
+}
+
+// HasZram returns true when the system uses swap on a zram device.
+func HasZram() bool {
+	b, err := ioutil.ReadFile("/proc/swaps")
+	if err != nil {
+		return false
+	}
+	lines := strings.Split(string(b), "\n")
+	if len(lines) < 2 {
+		return false
+	}
+	return strings.HasPrefix(lines[1], "/dev/zram")
 }
