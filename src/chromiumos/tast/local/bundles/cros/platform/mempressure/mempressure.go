@@ -114,45 +114,6 @@ func stdDev(values []time.Duration) time.Duration {
 	return time.Duration(float64(time.Second) * math.Sqrt((s2-s*s/n)/(n-1)))
 }
 
-// memoryEqualizingAmount computes how much RAM should be preallocated to
-// approximate the behavior of a device with targetSizeGB.  If the system has
-// swap, it is assumed to be zram.  The preallocated data may be partly or
-// fully swapped, in which case it is assumed that it will compress down to
-// ratio (e.g. if ratio = 0.33, 1 GiB will compress to 330 MiB).
-func memoryEqualizingAmount(targetSizeMiB uint64, ratio float64) (allocMiB uint64, err error) {
-	const MiB = 1024 * 1024
-	// Compute how much memory to steal.  Assume that the stolen memory
-	// will be compressed with the given ratio.  Calculations are rounded
-	// to 1 MiB.
-	memInfo, err := mem.VirtualMemory()
-	if err != nil {
-		return 0, errors.Wrap(err, "cannot obtain memory info")
-	}
-	totalMiB := memInfo.Total / MiB
-
-	swapInfo, err := mem.SwapMemory()
-	if err != nil {
-		return 0, errors.Wrap(err, "cannot obtain swap info")
-	}
-	swapMiB := swapInfo.Total / MiB
-
-	if totalMiB <= targetSizeMiB {
-		return 0, nil
-	}
-	// fillMiB is how much RAM we would need to allocate if none is swapped.
-	fillMiB := totalMiB - targetSizeMiB
-	// Compute how much memory we should allocate if it is all swapped.
-	allocMiB = uint64((float64(fillMiB)) / ratio)
-	// But if the allocation does not all fit in the swap, the difference
-	// must stay outside.  The first swapMiB worth of allocation is
-	// compressed to swapMiB * ratio, and the rest, up to fillMiB, remains
-	// uncompressed.
-	if allocMiB > swapMiB {
-		allocMiB = swapMiB + (fillMiB - uint64(float64(swapMiB)*ratio))
-	}
-	return allocMiB, nil
-}
-
 // evalPromiseBody executes a JS promise on connection conn.  promiseBody
 // is the code run as a promise, and it must contain a call to resolve().
 // Returns in out a value whose type must match the type of the object
@@ -796,32 +757,12 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		tabWorkingSetSize    = 5
 		tabCycleDelay        = 300 * time.Millisecond
 		tabSwitchRepeatCount = 10
-		postShrinkMiB        = 3500 // try to shrink RAM down to this size
+		// For faster test runs during development, use preAllocMiB to
+		// specify how many MiB worth of process space should be
+		// preallocated and filled with compressible data.
+		preAllocMiB = 0
 	)
 
-	// First, steal a bunch of RAM to make the test run faster on systems
-	// with a lot of memory.  Please see comments in
-	// data/memory_pressure_preallocator.sh for details.
-	allocMiB, err := memoryEqualizingAmount(postShrinkMiB, p.PageFileCompressionRatio)
-	if err != nil {
-		s.Fatal("Cannot compute preallocation amount: ", err)
-	}
-	if allocMiB > 0 && !p.RecordPageSet {
-		s.Logf("Preallocating %d MiB via mmap", allocMiB)
-		allocBytes := uint64(allocMiB * 1024 * 1024)
-		data, unmapFunc, err := createMemoryMapping(allocBytes)
-		if err != nil {
-			s.Fatal("Unable to create memory mapping: ", err)
-		}
-		defer unmapFunc()
-
-		err = fillWithPageContents(data, p)
-		if err != nil {
-			s.Fatal("Unable to fill mapping: ", err)
-		}
-	} else {
-		s.Log("No preallocation needed")
-	}
 	if p.RecordPageSet {
 		memInfo, err := mem.VirtualMemory()
 		if err != nil {
@@ -871,6 +812,31 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 			s.Fatal("Cannot kill WPR")
 		}
 	}()
+
+	// Steal a bunch of RAM to make the test run faster on systems
+	// with a lot of memory.  This is for test development.
+	if preAllocMiB > 0 && !p.RecordPageSet {
+		s.Logf("Preallocating %d MiB via mmap", preAllocMiB)
+		allocBytes := uint64(preAllocMiB * 1024 * 1024)
+		data, unmapFunc, err := createMemoryMapping(allocBytes)
+		if err != nil {
+			s.Fatal("Unable to create memory mapping: ", err)
+		}
+		defer unmapFunc()
+
+		err = fillWithPageContents(data, p)
+		if err != nil {
+			s.Fatal("Unable to fill mapping: ", err)
+		}
+	} else {
+		s.Log("No preallocation needed")
+	}
+
+	// Log various system measurements, to help understand the memory
+	// manager behavior.
+	if err := logMemoryParameters(ctx, p.PageFileCompressionRatio); err != nil {
+		s.Fatal("Cannot log memory parameters: ", err)
+	}
 
 	// Log in.  TODO(semenzato): this is not working (yet), we would like
 	// to have it for gmail and similar.
