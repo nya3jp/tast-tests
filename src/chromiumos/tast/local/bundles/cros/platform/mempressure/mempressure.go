@@ -114,43 +114,65 @@ func stdDev(values []time.Duration) time.Duration {
 	return time.Duration(float64(time.Second) * math.Sqrt((s2-s*s/n)/(n-1)))
 }
 
-// memoryEqualizingAmount computes how much RAM should be preallocated to
-// approximate the behavior of a device with targetSizeGB.  If the system has
-// swap, it is assumed to be zram.  The preallocated data may be partly or
-// fully swapped, in which case it is assumed that it will compress down to
-// ratio (e.g. if ratio = 0.33, 1 GiB will compress to 330 MiB).
-func memoryEqualizingAmount(targetSizeMiB uint64, ratio float64) (allocMiB uint64, err error) {
+// logMemoryManagerParameters logs various kernel parameters as well as some
+// calculated quantities to help understand the memory manager behavior.
+func logMemoryParameters(ctx context.Context, ratio float64) error {
 	const MiB = 1024 * 1024
-	// Compute how much memory to steal.  Assume that the stolen memory
-	// will be compressed with the given ratio.  Calculations are rounded
-	// to 1 MiB.
-	memInfo, err := mem.VirtualMemory()
+	availableMiB, marginMiB, ramWeight, err := kernelmeter.ChromeosLowMem()
 	if err != nil {
-		return 0, errors.Wrap(err, "cannot obtain memory info")
+		return errors.Wrap(err, "cannot obtain low-mem info")
 	}
-	totalMiB := memInfo.Total / MiB
-
-	swapInfo, err := mem.SwapMemory()
+	hasZram := kernelmeter.HasZram()
+	if !hasZram {
+		// Swap to disk is the same as if the compression ratio was 0.
+		ratio = 0.0
+		testing.ContextLog(ctx, "Device is not using zram")
+	}
+	memInfo, err := kernelmeter.MemInfo()
 	if err != nil {
-		return 0, errors.Wrap(err, "cannot obtain swap info")
+		return errors.Wrap(err, "cannot obtain memory info")
 	}
-	swapMiB := swapInfo.Total / MiB
+	totalMiB := memInfo.Total
+	totalSwapMiB := memInfo.SwapTotal
+	usedSwapMiB := memInfo.SwapUsed
 
-	if totalMiB <= targetSizeMiB {
-		return 0, nil
+	// processMemory is how much memory is in use by processes at this time.
+	processMiB, err := kernelmeter.ProcessMemory()
+	if err != nil {
+		testing.ContextLog(ctx, "Cannot compute process footprint: ", err)
 	}
-	// fillMiB is how much RAM we would need to allocate if none is swapped.
-	fillMiB := totalMiB - targetSizeMiB
-	// Compute how much memory we should allocate if it is all swapped.
-	allocMiB = uint64((float64(fillMiB)) / ratio)
-	// But if the allocation does not all fit in the swap, the difference
-	// must stay outside.  The first swapMiB worth of allocation is
-	// compressed to swapMiB * ratio, and the rest, up to fillMiB, remains
-	// uncompressed.
-	if allocMiB > swapMiB {
-		allocMiB = swapMiB + (fillMiB - uint64(float64(swapMiB)*ratio))
+
+	// minFreeMiB is how much free RAM the kernel tries to maintain by
+	// swapping (or other reclaim)
+	minFreeMiB, err := kernelmeter.KernelMinFree()
+	if err != nil {
+		testing.ContextLog(ctx, "Cannot compute min free: ", err)
 	}
-	return allocMiB, nil
+
+	// swapReduction is the amount to be taken out of swapTotal because we
+	// start discarding before swap is full.  If ramWeight is large, free
+	// swap has little or no influence on available, and we assume all swap
+	// space can be used.
+	var swapReductionMiB uint64
+	if marginMiB > minFreeMiB {
+		swapReductionMiB = (marginMiB - minFreeMiB) * ramWeight
+		if swapReductionMiB > totalSwapMiB {
+			swapReductionMiB = 0
+		}
+	}
+	usableSwapMiB := totalSwapMiB - swapReductionMiB
+	// maxProcessMiB is the amount of allocated process memory at which the
+	// low-mem device triggers.
+	maxProcessMiB := totalMiB - minFreeMiB + uint64(float64(usableSwapMiB)*(1-ratio))
+	if maxProcessMiB < processMiB {
+		return errors.Errorf("bad process size calculation: max %v MiB, current %v MiB", maxProcessMiB, processMiB)
+	}
+	testing.ContextLogf(ctx, "Metrics: meminfo: total %v, has zram %v", totalMiB, hasZram)
+	testing.ContextLogf(ctx, "Metrics: swap: total %d, used %d, usable %v", totalSwapMiB, usedSwapMiB, usableSwapMiB)
+	testing.ContextLogf(ctx, "Metrics: low-mem: available %v, margin %v, RAM weight %v", availableMiB, marginMiB, ramWeight)
+	testing.ContextLog(ctx, "Metrics: kernel min free: ", minFreeMiB)
+	testing.ContextLogf(ctx, "Metrics: process allocation: current: %v, max: %v", processMiB, maxProcessMiB)
+	return nil
 }
 
 // evalPromiseBody executes a JS promise on connection conn.  promiseBody
@@ -724,6 +746,15 @@ func runAndLogSwapStats(ctx context.Context, f func(), meter *kernelmeter.Meter)
 		stats.SwapIn.AverageRate, stats.SwapIn.RecentRate, stats.SwapIn.Count)
 	testing.ContextLogf(ctx, "Metrics: tab switch swap-out average rate, 10s rate, and count: %.1f %.1f swaps/second, %d swaps",
 		stats.SwapOut.AverageRate, stats.SwapOut.RecentRate, stats.SwapOut.Count)
+	if swapInfo, err := mem.SwapMemory(); err == nil {
+		testing.ContextLogf(ctx, "Metrics: free swap %v MiB", (swapInfo.Total-swapInfo.Used)/(1<<20))
+	}
+	if availableMiB, _, _, err := kernelmeter.ChromeosLowMem(); err == nil {
+		testing.ContextLogf(ctx, "Metrics: available %v MiB", availableMiB)
+	}
+	if m, err := kernelmeter.MemInfo(); err == nil {
+		testing.ContextLogf(ctx, "Metrics: free %v MiB, anon %v MiB, file %v MiB", m.Free, m.Anon, m.File)
+	}
 }
 
 // RunParameters contains the configurable parameters for Run.
