@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c47675d7_89676c4e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1341792
+      },
+      "writtenOn": "2019-04-22T07:11:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0055a833_7e33be73",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 93
+      },
+      "revId": "a0db1e98f8f568a0ae4bb50c81ef1db22c8f066c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "491c5b35_5bff1f0a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_ec.go",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "a0db1e98f8f568a0ae4bb50c81ef1db22c8f066c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b7535c6_97ecae6b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1341792
+      },
+      "writtenOn": "2019-04-22T07:11:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "491c5b35_5bff1f0a",
+      "revId": "a0db1e98f8f568a0ae4bb50c81ef1db22c8f066c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +130,54 @@
     },
     {
       "key": {
+        "uuid": "bc928107_578694b8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1341792
+      },
+      "writtenOn": "2019-04-22T07:11:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b818c866_65202410",
+      "range": {
+        "startLine": 49,
+        "startChar": 24,
+        "endLine": 49,
+        "endChar": 55
+      },
+      "revId": "a0db1e98f8f568a0ae4bb50c81ef1db22c8f066c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86a76c93_1d6b0bb5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1341792
+      },
+      "writtenOn": "2019-04-22T07:11:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecd4cb90_a0368037",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 12
+      },
+      "revId": "a0db1e98f8f568a0ae4bb50c81ef1db22c8f066c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1dc8a05_77b16da0",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_ec.go",
         "patchSetId": 1
@@ -102,6 +192,24 @@
       "revId": "a0db1e98f8f568a0ae4bb50c81ef1db22c8f066c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3d9b796_0015a3cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_ec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1341792
+      },
+      "writtenOn": "2019-04-22T07:11:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1dc8a05_77b16da0",
+      "revId": "a0db1e98f8f568a0ae4bb50c81ef1db22c8f066c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -148,6 +256,30 @@
       "revId": "a0db1e98f8f568a0ae4bb50c81ef1db22c8f066c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9924c230_31bea055",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1341792
+      },
+      "writtenOn": "2019-04-22T07:11:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95bc5291_52906198",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 2
+      },
+      "revId": "a0db1e98f8f568a0ae4bb50c81ef1db22c8f066c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
