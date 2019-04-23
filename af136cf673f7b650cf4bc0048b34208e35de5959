@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83dcc268_0a540eb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T03:50:12Z",
+      "side": 1,
+      "message": "since i\u0027m concerned about this impacting other performance tests (https://crbug.com/955183), would you mind holding off on submitting this until this test is running in a separate job? i\u0027m hopeful that https://crrev.com/c/1578180 can go in soon.",
+      "revId": "af136cf673f7b650cf4bc0048b34208e35de5959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7cb245d_6d71dc5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T03:50:12Z",
+      "side": 1,
+      "message": "this function looks like it isn\u0027t called now. if that\u0027s correct, please delete it",
+      "revId": "af136cf673f7b650cf4bc0048b34208e35de5959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e1ce5a1_50f1e5cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T03:50:12Z",
+      "side": 1,
+      "message": "nit: mind adding an end-of-line comment here like \"// set this to a larger value to make test faster during development\"?",
+      "revId": "af136cf673f7b650cf4bc0048b34208e35de5959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
