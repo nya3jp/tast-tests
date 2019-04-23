@@ -27,6 +27,8 @@ func CheckHomeDirectory(s *testing.State) {
 	}{
 		// First match wins, so please do NOT sort this list by ASCII order.
 		{`/home`, `cros_home`},
+		// TODO(crbug.com/955116): test file created by other tests but not gets cleaned-up correctly.
+		{`/home/\.test_file_to_be_deleted`, skipTest},
 		{`/home/chronos/user/(Downloads|MyFiles)(/.*)?`, `(media_rw_data_file|cros_downloads_file)`},
 		// Not logged in users doesn't have real data bind-mounted (cros_home_chronos).
 		{`/home/chronos/user(/.*)?`, `(cros_home_shadow_uid_user|cros_home_chronos)`},
