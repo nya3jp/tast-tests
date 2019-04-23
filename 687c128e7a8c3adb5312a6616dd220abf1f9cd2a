@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a463658e_bcc6a616",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-23T02:44:15Z",
+      "side": 1,
+      "message": "I had previously left a comment about this on your old CL. We\u0027re going to have both the critical and moderate values in the margin file very soon and Sonny will work to make CrosVM support it and we will do the same for memd, besides chromium those are the only users of margin. So we should really make sure this code can deal with that, I propose a method that returns a slice of all uint64s in a file and then we can still leave this method to return the first if it\u0027s easier that way what do you think about the following:\n\nfunc readAllUint64FromFile(filename string) ([]uint64, error) {\n    b, err :\u003d ioutil.ReadFile(filename)\n    if err !\u003d nil {\n       return nil, err\n    }\n    var r []uint64\n    for _, n :\u003d range strings.Fields(string(b)) {\n      x, err :\u003d strconv.ParseUint(n, 10, 64)\n      if err !\u003d nil {\n        return nil, errors.Wrapf(err, \"bad integer: %q\", n)\n      }\n      r \u003d append(r, x)\n    }\n    return r, nil\n}\n\nfunc readUint64FromFile(filename string) (uint64, error) {\n  i, err :\u003d readAllUint64FromFile(filename)\n  if err !\u003d nil {\n    return 0, err\n  }\n  if len(i) \u003d\u003d 0 {\n    return 0, errors.Wrapf(\"file %s was empty\", filename)\n  }\n  return i[0], nil\n}",
+      "range": {
+        "startLine": 441,
+        "startChar": 12,
+        "endLine": 441,
+        "endChar": 30
+      },
+      "revId": "687c128e7a8c3adb5312a6616dd220abf1f9cd2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04f56057_befee8d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-23T02:44:15Z",
+      "side": 1,
+      "message": "Nit: this is a nit and feel free to leave it as is, but I was wondering can we guarantee that there will only be one line here, should we consider iterating through all lines looking for /dev/zram?\n\nb, err :\u003d ioutil.ReadFile(\"/proc/swaps\")\nif err !\u003d nil {\n    return false\n}\nfor _, l :\u003d range strings.Split(string(b), \"\\n\") {\n  if strings.HasPrefix(l, \"/dev/zram\") {\n    return true\n  }\n}\nreturn false",
+      "range": {
+        "startLine": 471,
+        "startChar": 0,
+        "endLine": 471,
+        "endChar": 48
+      },
+      "revId": "687c128e7a8c3adb5312a6616dd220abf1f9cd2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
