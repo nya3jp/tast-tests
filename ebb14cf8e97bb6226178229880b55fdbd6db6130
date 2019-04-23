@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "8103613a_f8456658",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-23T18:33:04Z",
+      "side": 1,
+      "message": "make it in the next line",
+      "range": {
+        "startLine": 20,
+        "startChar": 21,
+        "endLine": 20,
+        "endChar": 54
+      },
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3cac90ad_49510bb4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_sanity.go",
         "patchSetId": 9
