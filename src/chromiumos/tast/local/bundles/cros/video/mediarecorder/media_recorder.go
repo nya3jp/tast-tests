@@ -11,6 +11,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/video/lib/constants"
 	"chromiumos/tast/local/bundles/cros/video/lib/histogram"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
@@ -66,4 +67,45 @@ func VerifyEncodeAccelUsed(ctx context.Context, s *testing.State, codec videotyp
 	} else if !hwUsed {
 		s.Error("HW accel was not used")
 	}
+}
+
+// LaunchTest executes a test function with given name and parameters.
+func LaunchTest(ctx context.Context, fileSystem http.FileSystem, chromeArgs []string, funcName string, funcParams string) error {
+	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))
+	if err != nil {
+		return errors.Wrap(err, "Failed to connect to Chrome")
+	}
+	defer cr.Close(ctx)
+
+	server := httptest.NewServer(http.FileServer(fileSystem))
+	defer server.Close()
+
+	conn, err := cr.NewConn(ctx, server.URL+"/webrtc_media_recorder.html")
+	if err != nil {
+		return errors.Wrap(err, "Failed to open recorder page")
+	}
+	defer conn.Close()
+
+	if err := conn.WaitForExpr(ctx, "pageLoaded"); err != nil {
+		return errors.Wrap(err, "Timed out waiting for page loading")
+	}
+
+	funcCall := fmt.Sprintf("%s(%s)", funcName, funcParams)
+	if err := conn.Eval(ctx, funcCall, nil); err != nil {
+		return errors.Wrapf(err, "Failed to call %v", funcCall)
+	}
+
+	if err := conn.WaitForExpr(ctx, "testProgress"); err != nil {
+		return errors.Wrap(err, "Timed out waiting for test completion")
+	}
+
+	result := ""
+	if err := conn.Eval(ctx, "result", &result); err != nil {
+		return errors.Wrap(err, "Failed to evaluate |result| ")
+	}
+
+	if result != "PASS" {
+		return errors.Wrapf(err, "Test %v failed. Got %v", funcCall, result)
+	}
+	return nil
 }
