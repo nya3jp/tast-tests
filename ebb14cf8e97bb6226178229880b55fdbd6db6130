@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cac90ad_49510bb4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-23T17:33:34Z",
+      "side": 1,
+      "message": "nit/style:\n\nregexps :\u003d []string{...}",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 12
+      },
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51af49fa_37601a16",
+        "filename": "src/chromiumos/tast/remote/ec/ec.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-23T17:33:34Z",
+      "side": 1,
+      "message": "For public things (type, var, method etc.), could you add document for each?",
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c69fda26_681919fc",
+        "filename": "src/chromiumos/tast/remote/ec/ec.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-23T17:33:34Z",
+      "side": 1,
+      "message": "should returned value be checked? Ditto for below.",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 5
+      },
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3f42af9_552b91f0",
+        "filename": "src/chromiumos/tast/remote/ec/ec.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-23T17:33:34Z",
+      "side": 1,
+      "message": "Could you return errors by wrapping err?\n\nerrors.Wrap(err, \"...\")\n\nDitto for below.",
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dde3023_b0201963",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-23T17:33:34Z",
+      "side": 1,
+      "message": "Instead of exposing this, as nya@ commented, could you introduce Get/Set methods for Servo?",
+      "range": {
+        "startLine": 105,
+        "startChar": 5,
+        "endLine": 105,
+        "endChar": 12
+      },
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
