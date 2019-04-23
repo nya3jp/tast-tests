@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0add08e_5749ca6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/files_test_internal_home.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T14:41:03Z",
+      "side": 1,
+      "message": "nit: s/gets/getting/",
+      "range": {
+        "startLine": 30,
+        "startChar": 70,
+        "endLine": 30,
+        "endChar": 74
+      },
+      "revId": "828dab905fbc9fd67ac3f30d09ab943ada1c21d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
