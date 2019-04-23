@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2600193e_12af0476",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T03:43:36Z",
+      "side": 1,
+      "message": "sorry for not mentioning it earlier, but unless you\u0027re planning on adding more crossystem tests, i\u0027d recommend renaming the file to crossystem.go and renaming the test to just be \"Crossystem\". i don\u0027t think that the \"Check\" in the name adds anything, and it makes the test name more work to type. :-)",
+      "revId": "706285aab812ea026ceccf93b34fa8a858e937bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3da089f2_9e300af3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T03:43:36Z",
+      "side": 1,
+      "message": "nit: s/and/or/ may be clearer",
+      "range": {
+        "startLine": 41,
+        "startChar": 61,
+        "endLine": 41,
+        "endChar": 64
+      },
+      "revId": "706285aab812ea026ceccf93b34fa8a858e937bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c9162a4_3d2fdb96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T03:43:36Z",
+      "side": 1,
+      "message": "nit: \"if pattern \u003d\u003d anything {\"",
+      "revId": "706285aab812ea026ceccf93b34fa8a858e937bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6444e595_0d7b9709",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T03:43:36Z",
+      "side": 1,
+      "message": "i\u0027m a bit surprised that TrimSpace is needed here but not on L64. should checkOutput instead do something like \"s :\u003d strings.TrimSpace(string(out))\" instead and then use that variable throughout?",
+      "revId": "706285aab812ea026ceccf93b34fa8a858e937bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
