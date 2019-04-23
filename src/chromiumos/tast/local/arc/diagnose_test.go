@@ -25,7 +25,7 @@ func verifyDiagnose(t *testing.T, logcat, exp string) {
 	}
 }
 
-func TestDiagnose(t *testing.T) {
+func TestDiagnoseNativeCrash(t *testing.T) {
 	const logcat = `
 --------- beginning of crash
 11-14 17:04:58.241    68   128 F libc    : Fatal signal 11 (SIGSEGV), code 1, fault addr 0x8 in tid 128 (Binder:68_1)
@@ -42,6 +42,26 @@ func TestDiagnose(t *testing.T) {
 11-14 17:04:58.440   718   718 F DEBUG   :     ip ed5f2860  sp eaed56b0  lr ed5bdfa3  pc ec5bb9aa  cpsr 600f0030
 `
 	const exp = "Android failed to boot (mediaserver crashed): failed"
+
+	verifyDiagnose(t, logcat, exp)
+}
+
+func TestDiagnoseSystemServerCrash(t *testing.T) {
+	const logcat = `
+--------- beginning of crash
+04-18 07:31:54.851   129   129 E AndroidRuntime: *** FATAL EXCEPTION IN SYSTEM PROCESS: main
+04-18 07:31:54.851   129   129 E AndroidRuntime: java.lang.Error: No workspace configuration on boot!
+04-18 07:31:54.851   129   129 E AndroidRuntime: 	at com.android.server.am.ActivityManagerInjectorArc.onBootPhase(ActivityManagerInjectorArc.java:603)
+04-18 07:31:54.851   129   129 E AndroidRuntime: 	at com.android.server.am.ActivityManagerService$Lifecycle.onBootPhase(ActivityManagerService.java:2944)
+04-18 07:31:54.851   129   129 E AndroidRuntime: 	at com.android.server.SystemServiceManager.startBootPhase(SystemServiceManager.java:155)
+04-18 07:31:54.851   129   129 E AndroidRuntime: 	at com.android.server.SystemServer.startBootstrapServices(SystemServer.java:611)
+04-18 07:31:54.851   129   129 E AndroidRuntime: 	at com.android.server.SystemServer.run(SystemServer.java:434)
+04-18 07:31:54.851   129   129 E AndroidRuntime: 	at com.android.server.SystemServer.main(SystemServer.java:299)
+04-18 07:31:54.851   129   129 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+04-18 07:31:54.851   129   129 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:493)
+04-18 07:31:54.851   129   129 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:845)
+`
+	const exp = "Android failed to boot (system_server crashed): failed"
 
 	verifyDiagnose(t, logcat, exp)
 }
