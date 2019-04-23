@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe7ff334_cedf796d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T15:44:55Z",
+      "side": 1,
+      "message": "nit: similar to the other change, how about renaming this to mosys.go and the function to \"Mosys\"?",
+      "revId": "e2de06001ea8a095d6fb32be2ab26332ff36de5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34e14653_f2f0413b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T15:44:55Z",
+      "side": 1,
+      "message": "nit: command\u0027s",
+      "range": {
+        "startLine": 19,
+        "startChar": 34,
+        "endLine": 19,
+        "endChar": 41
+      },
+      "revId": "e2de06001ea8a095d6fb32be2ab26332ff36de5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34f849d5_919d01b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T15:44:55Z",
+      "side": 1,
+      "message": "please list some additional contacts here in case you\u0027re unavailable",
+      "revId": "e2de06001ea8a095d6fb32be2ab26332ff36de5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
