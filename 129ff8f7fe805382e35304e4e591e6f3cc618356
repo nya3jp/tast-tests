@@ -81,6 +81,24 @@
       "revId": "129ff8f7fe805382e35304e4e591e6f3cc618356",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a714386_ce642915",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_recording.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T22:28:19Z",
+      "side": 1,
+      "message": "these serve different purposes, in my view:\n\n- s.Log(\"Doing something\") helps before running a long operation, because if the test times out or someone is running it manually, they can quickly see what it\u0027s doing\n- s.Error and s.Fatal are used to report errors (and maybe also stop the test). they should be descriptive so that it\u0027s easy for someone to see why the test failed without reading the full logs.\n\nso for slow operations, i\u0027d recommend using this:\n\ns.Log(\"Doing something\")\nif err :\u003d DoSomething(); err !\u003d nil {\n    s.Error(\"Doing something failed: \", err)\n}\n\nif the operation is fast, the original s.Log is unnecessary.\n\ndoes that sound reasonable?",
+      "parentUuid": "539b5787_d11f2636",
+      "revId": "129ff8f7fe805382e35304e4e591e6f3cc618356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
