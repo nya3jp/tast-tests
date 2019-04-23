@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "450e3c6f_49e47a40",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_ec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-23T05:24:45Z",
+      "side": 1,
+      "message": "Please avoid \"check\" in test names since it\u0027s as redundant as FooTest.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Test-names\n\nThis looks like a sanity check of EC, so how about ECSanity?",
+      "range": {
+        "startLine": 17,
+        "startChar": 12,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6737d58e_cd31ce6e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_ec.go",
         "patchSetId": 4
@@ -73,6 +96,29 @@
       "range": {
         "startLine": 24,
         "startChar": 12,
+        "endLine": 24,
+        "endChar": 91
+      },
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d993dd02_36669a93",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_ec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-23T05:24:45Z",
+      "side": 1,
+      "message": "nit: Please insert a space between \"//\" and \"CheckEC\". Also, Go has standard comment format for exported entities:\n\nhttps://golang.org/doc/effective_go.html#commentary\n\nThat said, we don\u0027t require doc comments to test main functions. Please consider move this sentence to Desc field above. That\u0027s more helpful.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
         "endLine": 24,
         "endChar": 91
       },
@@ -162,6 +208,29 @@
     },
     {
       "key": {
+        "uuid": "1bf77b6e_51343052",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_ec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-23T05:24:45Z",
+      "side": 1,
+      "message": "huge nit: EC",
+      "range": {
+        "startLine": 43,
+        "startChar": 9,
+        "endLine": 43,
+        "endChar": 11
+      },
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1649a1a_5dfdc12a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_ec.go",
         "patchSetId": 4
@@ -230,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "49466bf0_9675383c",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-23T05:24:45Z",
+      "side": 1,
+      "message": "+1. We can add only Set and Get here, and put this new EC struct in the test main file (check_ec.go). If we find this EC type useful for other tests too, we can move to a common place any time later.",
+      "parentUuid": "09110243_38a6f7dd",
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e05ca7b7_de7ddfd3",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 4
@@ -247,6 +334,52 @@
     },
     {
       "key": {
+        "uuid": "caa05e85_db008307",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-23T05:24:45Z",
+      "side": 1,
+      "message": "nit: Having two similar variables \"regexp\" and \"regexps\" in different formats is a bit confusing. How about \"expr\" since this is actually a Python literal?\n\nAlso huge nit: since we don\u0027t have any meaning in the default value, please prefer \"var\" declaration:\n\n var expr string",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 7
+      },
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d81cea4_e98da65f",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-23T05:24:45Z",
+      "side": 1,
+      "message": "Convert Go string array to Python string array literal.",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 78
+      },
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e0c4ded9_888b48ed",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 4
@@ -258,6 +391,30 @@
       "writtenOn": "2019-04-22T12:34:23Z",
       "side": 1,
       "message": "probably:\n\nregexp :\u003d \"[\u0027\" + strings.Join(regexps, \"\u0027,\u0027\") + \"\u0027]\"\n\nJust clarification: no need to escape regexp?",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 15
+      },
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73c14661_36c58678",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-23T05:24:45Z",
+      "side": 1,
+      "message": "IIUC this is a Python literal string. I\u0027m not sure if there\u0027s easy way to get this right, but I guess strconv.Quote or fmt.Sprintf(\"%q\", ...) would work in most cases since string escape in Python and Go are similar:\n\n var escaped []string\n for _, r :\u003d range regexps {\n   escaped \u003d append(escaped, strconv.Quote(r))\n }\n regexp \u003d fmt.Sprintf(\"[%s]\", strings.Join(escaped, \", \"))",
+      "parentUuid": "e0c4ded9_888b48ed",
       "range": {
         "startLine": 40,
         "startChar": 2,
@@ -327,6 +484,29 @@
     },
     {
       "key": {
+        "uuid": "6297f687_2bc5f4ea",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-23T05:24:45Z",
+      "side": 1,
+      "message": "nit: SendECCommand",
+      "range": {
+        "startLine": 56,
+        "startChar": 16,
+        "endLine": 56,
+        "endChar": 29
+      },
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4bd40b47_c4892c92",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 4
@@ -338,6 +518,30 @@
       "writtenOn": "2019-04-22T12:34:23Z",
       "side": 1,
       "message": "nit: []string{}",
+      "range": {
+        "startLine": 57,
+        "startChar": 26,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "8ea7e1d76d385cdb63881dd3a66e2c622168062b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d77aa14_f8600b1d",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-23T05:24:45Z",
+      "side": 1,
+      "message": "nil should be used instead of zero-sized slice.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices",
+      "parentUuid": "4bd40b47_c4892c92",
       "range": {
         "startLine": 57,
         "startChar": 26,
