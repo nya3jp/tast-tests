@@ -22,6 +22,30 @@
       "revId": "f45f2e9fb9fe43b5ea5dcc7f854562f4499cff1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a513c68_9ecf98c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capture_unittests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-23T08:31:38Z",
+      "side": 1,
+      "message": "\"chrome_login\" is used for tests that require to login procedure.\ne.g. video.PlayVP8: login to ChromeOS -\u003e Open Chrome Tab -\u003e Play a video\n\n\"chrome\" is used for tests that exercise Chrome process but don\u0027t need login procedure.\nSince capture_unittests is a binary test, \"chrome\" is suitable.\n\n\nActually, CL:1575182 will add \"chrome\" dependency to all our Chrome binary tests.\n(So, this CL would conflict with it.)",
+      "parentUuid": "dcb70f6b_6b6ecf96",
+      "range": {
+        "startLine": 29,
+        "startChar": 68,
+        "endLine": 29,
+        "endChar": 74
+      },
+      "revId": "f45f2e9fb9fe43b5ea5dcc7f854562f4499cff1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
