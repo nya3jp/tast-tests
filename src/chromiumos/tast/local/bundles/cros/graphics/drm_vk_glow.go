@@ -21,7 +21,11 @@ func init() {
 			"chromeos-gfx@google.com",
 			"hidehiko@chromium.org", // Tast port.
 		},
-		Attr:         []string{"informational"},
+		Attr: []string{
+			// This test always causes kernel panic on some boards (crbug.com/955608).
+			"disabled",
+			"informational",
+		},
 		SoftwareDeps: []string{"display_backlight", "vulkan"},
 	})
 }
