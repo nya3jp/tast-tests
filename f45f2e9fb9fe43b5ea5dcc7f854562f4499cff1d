@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcb70f6b_6b6ecf96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/capture_unittests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-04-23T08:22:45Z",
+      "side": 1,
+      "message": "Should we use \"chrome\" or \"chrome_login\" here? It looks like most of the tests are using \"chrome_login\".",
+      "range": {
+        "startLine": 29,
+        "startChar": 68,
+        "endLine": 29,
+        "endChar": 74
+      },
+      "revId": "f45f2e9fb9fe43b5ea5dcc7f854562f4499cff1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
