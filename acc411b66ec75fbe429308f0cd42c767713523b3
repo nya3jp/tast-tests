@@ -178,6 +178,29 @@
     },
     {
       "key": {
+        "uuid": "5283b4a3_075d0d0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-23T16:57:06Z",
+      "side": 1,
+      "message": "v \u003e\u003e 10, to make it return in MB or did you mean for it to be KB, if so the comment needs to be updated.",
+      "range": {
+        "startLine": 397,
+        "startChar": 20,
+        "endLine": 397,
+        "endChar": 21
+      },
+      "revId": "acc411b66ec75fbe429308f0cd42c767713523b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77d6b5b3_9c34a8b1",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter_test.go",
         "patchSetId": 5
