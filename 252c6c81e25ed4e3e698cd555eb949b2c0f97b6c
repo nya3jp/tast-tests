@@ -37,6 +37,29 @@
     },
     {
       "key": {
+        "uuid": "7225ddfe_b253528c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-23T00:03:26Z",
+      "side": 1,
+      "message": "This is the wrong type and wrong initial value, you increment total min free by zoneMinFree which means this will always be off by 1 byte. Aside from that, if you had an empty file you\u0027ll convert this value which will convert to math.Uint64max * 4096 and overflow when you return. Instead I think you should do: var totalMinFree uint64 and subsequently use 0 as an initial value.",
+      "range": {
+        "startLine": 302,
+        "startChar": 1,
+        "endLine": 302,
+        "endChar": 13
+      },
+      "revId": "252c6c81e25ed4e3e698cd555eb949b2c0f97b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fcf303d3_5aaa2642",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 1
@@ -69,6 +92,23 @@
       "revId": "252c6c81e25ed4e3e698cd555eb949b2c0f97b6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fd4fd06_c3f3e4f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-23T00:03:26Z",
+      "side": 1,
+      "message": "Above you set totalMinFree to -1, I think now reading your code you meant to do zoneMinFree :\u003d -1.",
+      "revId": "252c6c81e25ed4e3e698cd555eb949b2c0f97b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -139,6 +179,29 @@
       "revId": "252c6c81e25ed4e3e698cd555eb949b2c0f97b6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0657ca04_46803cc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-23T00:03:26Z",
+      "side": 1,
+      "message": "Based on your code I think you meant \u003d -1?",
+      "range": {
+        "startLine": 332,
+        "startChar": 17,
+        "endLine": 332,
+        "endChar": 18
+      },
+      "revId": "252c6c81e25ed4e3e698cd555eb949b2c0f97b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -221,6 +284,29 @@
       "revId": "252c6c81e25ed4e3e698cd555eb949b2c0f97b6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48183ec2_40f77a75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-23T00:03:26Z",
+      "side": 1,
+      "message": "Fwiw, this might be easier as a regex which will deal with that last line issue too:\n\nre :\u003d regexp.MustCompile(\"(\\\\S+):\\\\s+(\\\\d+) kB\\\\n\")\nfor _, m :\u003d range re.FindAllStringSubmatch(bytes, -1) {\n\n}",
+      "range": {
+        "startLine": 340,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 43
+      },
+      "revId": "252c6c81e25ed4e3e698cd555eb949b2c0f97b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
