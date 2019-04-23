@@ -1264,6 +1264,30 @@
     },
     {
       "key": {
+        "uuid": "be8cd8a5_4d8d16b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_decode_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T16:38:35Z",
+      "side": 1,
+      "message": "no, not to the best of my knowledge. top-level identifiers are always package-scoped.",
+      "parentUuid": "9c8700dc_4ea97b69",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 16
+      },
+      "revId": "6de2515317e8e595177625bb00168ff955b61813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d549fab_509aabc5",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_decode_perf.go",
         "patchSetId": 6

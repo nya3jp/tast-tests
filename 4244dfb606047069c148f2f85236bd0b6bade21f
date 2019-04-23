@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eef41924_b4d56f7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T16:38:35Z",
+      "side": 1,
+      "message": "if you\u0027re just declaring this for sorting, i think you can remove it and use sort.Slice instead",
+      "revId": "4244dfb606047069c148f2f85236bd0b6bade21f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc04f5d5_07c84276",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T16:38:35Z",
+      "side": 1,
+      "message": "nit: cleaner/shorter: \"var max time.Duration\"",
+      "revId": "4244dfb606047069c148f2f85236bd0b6bade21f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ca261a9_59ac0af7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T16:38:35Z",
+      "side": 1,
+      "message": "you don\u0027t need to initialize these; they\u0027re already 0",
+      "revId": "4244dfb606047069c148f2f85236bd0b6bade21f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d664a5c2_57145d9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T16:38:35Z",
+      "side": 1,
+      "message": "i think it might be confusing to store these non-time.Duration values in a []time.Duration. i\u0027d recommend doing something like this here in your poll function instead:\n\n  var maxTimesMs []int\n  if err :\u003d ...; err !\u003d nil {\n      ...\n  }\n  [check enough samples]\n  maxDecodeTimes \u003d make([]time.Duration, len(maxTimesMs))\n  for i, ms :\u003d range maxTimesMs {\n      maxDecodeTimes[i] \u003d time.Duration(ms)*time.Millisecond\n  }\n  return nil\n\n(please s/e/err/ above to match go conventions)",
+      "revId": "4244dfb606047069c148f2f85236bd0b6bade21f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94f824bf_e87bc01b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T16:38:35Z",
+      "side": 1,
+      "message": "same comment here",
+      "revId": "4244dfb606047069c148f2f85236bd0b6bade21f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05cbedb7_43d1faa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T16:38:35Z",
+      "side": 1,
+      "message": "(see comment about moving this into loop)",
+      "revId": "4244dfb606047069c148f2f85236bd0b6bade21f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9da56294_1609b097",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T16:38:35Z",
+      "side": 1,
+      "message": "here too",
+      "revId": "4244dfb606047069c148f2f85236bd0b6bade21f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d21732f5_016816d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T16:38:35Z",
+      "side": 1,
+      "message": "since this is trivial and only appears to be called once, i\u0027d recommend just inlining it below to make the code clearer:\n\nb, err :\u003d ioutil.ReadFile(s.DataPath(AddStatsJSFile))\nif err !\u003d nil {\n    ...\n}\naddStatsJS :\u003d string(b)\n\nor if you want to avoid the cast, webRTCPerf can just take the JS as a []byte instead of a string.",
+      "revId": "4244dfb606047069c148f2f85236bd0b6bade21f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f8aabfe_d68494f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_decode_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T16:38:35Z",
+      "side": 1,
+      "message": "sorry, one more nit: mind moving this down so init() comes first? (the order of top-level declarations doesn\u0027t matter)",
+      "revId": "4244dfb606047069c148f2f85236bd0b6bade21f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
