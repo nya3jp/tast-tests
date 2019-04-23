@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adbcffc4_ca6bcf8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2019-04-23T22:34:41Z",
+      "side": 1,
+      "message": "https://cs.chromium.org/chromium/src/chromeos/services/assistant/platform/volume_control_impl.cc?rcl\u003ddd2a064bc1f1b6bc068b6e80c9e51449f0d4f633\u0026l\u003d99\n\nMaybe the platform has changed volume range from 1-100 to 1-10. Let\u0027s update the code above to make the original queries work for end users.",
+      "revId": "acbb561ae81c8423cf8264406b9d6b6b99605075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78f5b8a8_cc49c970",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2019-04-23T22:34:41Z",
+      "side": 1,
+      "message": "why does the new query work? does it go through the same code path in the above comment?",
+      "range": {
+        "startLine": 138,
+        "startChar": 77,
+        "endLine": 138,
+        "endChar": 84
+      },
+      "revId": "acbb561ae81c8423cf8264406b9d6b6b99605075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
