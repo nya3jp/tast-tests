@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61e19746_9cd1ab30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm_vk_glow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T19:44:43Z",
+      "side": 1,
+      "message": "nit: mind using an end-of-line comment to attach this to the \"disabled\" attribute? e.g.\n\n  \"disabled\", // test always causes kernel panic on some boards: https://crbug...",
+      "revId": "a37f007752d20f3ebb029a6c36100105f992fee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
