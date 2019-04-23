@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d469481_0d794295",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_sanity.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-23T16:13:04Z",
+      "side": 1,
+      "message": "Can you add emails as shown in below?\n\nContacts: []string{\n\t\t\t\"ningappa.tirakannavar@intel.com\",\n                        \"kasaiah.bogineni@intel.com\",\n\n\t\t},",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 85
+      },
+      "revId": "85cbfa8f89e06e3ed3f03adc4682d98223ffbce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57c9245c_3790f09c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_sanity.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-23T16:13:04Z",
+      "side": 1,
+      "message": "Change the error message",
+      "range": {
+        "startLine": 39,
+        "startChar": 11,
+        "endLine": 39,
+        "endChar": 54
+      },
+      "revId": "85cbfa8f89e06e3ed3f03adc4682d98223ffbce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70e96f97_03f50e47",
+        "filename": "src/chromiumos/tast/remote/ec/ec.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-23T16:13:04Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 2
+      },
+      "revId": "85cbfa8f89e06e3ed3f03adc4682d98223ffbce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
