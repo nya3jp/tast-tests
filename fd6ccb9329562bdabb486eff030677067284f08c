@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac393cd4_dfee9a8f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T22:28:59Z",
+      "side": 1,
+      "message": "\"parts are\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 13
+      },
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffdf4a20_c4d23430",
+        "filename": "src/chromiumos/tast/local/arc/version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T22:28:59Z",
+      "side": 1,
+      "message": "nit: is it lsb-release?",
+      "range": {
+        "startLine": 31,
+        "startChar": 53,
+        "endLine": 31,
+        "endChar": 63
+      },
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a6a3d21_ecdea49a",
+        "filename": "src/chromiumos/tast/local/arc/version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T22:28:59Z",
+      "side": 1,
+      "message": "nit: mind using \"failed to parse SDK version %q\" instead? i usually favor %q when interpolating arbitrary strings, and omit colons before strings\n\n(bit of guidance about colons at the end of https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting)",
+      "range": {
+        "startLine": 35,
+        "startChar": 58,
+        "endLine": 35,
+        "endChar": 62
+      },
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c1ab23a_a2e246dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shutdown.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T22:28:59Z",
+      "side": 1,
+      "message": "optional nit: struct{} (0-byte) and then s/0/{}/ below",
+      "range": {
+        "startLine": 81,
+        "startChar": 35,
+        "endLine": 81,
+        "endChar": 38
+      },
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
