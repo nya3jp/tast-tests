@@ -128,6 +128,29 @@
     },
     {
       "key": {
+        "uuid": "f9033c48_12059db7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-23T14:00:20Z",
+      "side": 1,
+      "message": "Could you remove this flag?\nWe decided to disable verbose logs for performance tests.\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d955079",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 29
+      },
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5cb32b5e_0374d494",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go",
         "patchSetId": 5
