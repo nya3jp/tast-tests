@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "e29e1a15_87bce0a1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-23T23:33:49Z",
+      "side": 1,
+      "message": "Go uses tabs to indent codes. Have you run gofmt? It should run automatically with repo upload hooks.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 36
+      },
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3cac90ad_49510bb4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_sanity.go",
         "patchSetId": 9
@@ -41,6 +64,98 @@
         "startChar": 1,
         "endLine": 38,
         "endChar": 12
+      },
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80e1bbdf_85d848a1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-23T23:33:49Z",
+      "side": 1,
+      "message": "huge nit: please remove a space before the colon",
+      "range": {
+        "startLine": 41,
+        "startChar": 32,
+        "endLine": 41,
+        "endChar": 33
+      },
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea1ea44e_2a165c32",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-23T23:33:49Z",
+      "side": 1,
+      "message": "Please also print err for better debugging:\n\n s.Error(\"No support for Google EC: \", err)",
+      "range": {
+        "startLine": 48,
+        "startChar": 35,
+        "endLine": 48,
+        "endChar": 37
+      },
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "138e3823_2c205b9d",
+        "filename": "src/chromiumos/tast/remote/ec/ec.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-23T23:33:49Z",
+      "side": 1,
+      "message": "Could you move merge this file to ec_sanity.go? If another test want to use it, you can isolate this to a separate library at any time.\n\nGenerally, we want to be lazy about introducing support libraries. Rules of thumb:\n\n- If a library is used only by one test, it should be kept in the test file itself.\n- If a library is used by several tests in the same category, it should be kept as a subpackage of the category.\n- If a library is used by several tests among different categories, it should be kept under chromiumos/tast/{local,remote}.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef7942fb_0fdcc200",
+        "filename": "src/chromiumos/tast/remote/ec/ec.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-23T23:33:49Z",
+      "side": 1,
+      "message": "huge nit: please remove extra space here",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 2
       },
       "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -105,6 +220,115 @@
     },
     {
       "key": {
+        "uuid": "6e968bf6_cfff63b9",
+        "filename": "src/chromiumos/tast/remote/ec/ec.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-23T23:33:49Z",
+      "side": 1,
+      "message": "nit: Please start error messages with lower letters.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings\n\n errors.Wrap(err, \"failed to set ec_uart_regexp\")",
+      "range": {
+        "startLine": 31,
+        "startChar": 28,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99b171bb_58e000d6",
+        "filename": "src/chromiumos/tast/remote/ec/ec.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-23T23:33:49Z",
+      "side": 1,
+      "message": "Please see my earlier comment; strconv.Quote or fmt.Sprintf(\"%q\", ...)",
+      "range": {
+        "startLine": 46,
+        "startChar": 29,
+        "endLine": 46,
+        "endChar": 37
+      },
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d505dc4_d7602652",
+        "filename": "src/chromiumos/tast/remote/ec/ec.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-23T23:33:49Z",
+      "side": 1,
+      "message": "huge nit: please remove this extra blank line.",
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "924a6421_67c07131",
+        "filename": "src/chromiumos/tast/remote/ec/ec.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-23T23:33:49Z",
+      "side": 1,
+      "message": "ditto: Please use errors.Wrap with message starting with a lower letter.",
+      "range": {
+        "startLine": 56,
+        "startChar": 13,
+        "endLine": 56,
+        "endChar": 23
+      },
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea9f0fe9_5bfdc4ef",
+        "filename": "src/chromiumos/tast/remote/ec/ec.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-23T23:33:49Z",
+      "side": 1,
+      "message": "Need to check err.",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 61
+      },
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3dde3023_b0201963",
         "filename": "src/chromiumos/tast/remote/servo/xmlrpc.go",
         "patchSetId": 9
@@ -116,6 +340,30 @@
       "writtenOn": "2019-04-23T17:33:34Z",
       "side": 1,
       "message": "Instead of exposing this, as nya@ commented, could you introduce Get/Set methods for Servo?",
+      "range": {
+        "startLine": 105,
+        "startChar": 5,
+        "endLine": 105,
+        "endChar": 12
+      },
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a23acbf_e1035192",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-23T23:33:49Z",
+      "side": 1,
+      "message": "Yes, that\u0027s what I meant.",
+      "parentUuid": "3dde3023_b0201963",
       "range": {
         "startLine": 105,
         "startChar": 5,
