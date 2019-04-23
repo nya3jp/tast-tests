@@ -167,8 +167,11 @@ func LowMemoryKiller(ctx context.Context, s *testing.State) {
 
 	// Run memory-eater and monitor for low memory kills
 	const (
-		minMemoryMarginMB = 100
-		chromeLogFile     = "/var/log/chrome/chrome"
+		minMemoryMarginMB             = 100
+		deviceMinMemoryMarginMB int64 = 200
+		deviceMarginSysFile           = "/sys/kernel/mm/chromeos-low_mem/margin"
+		chromeLogFile                 = "/var/log/chrome/chrome"
+		kernelOOMKill                 = "OOM_KILL"
 	)
 	var bgJobs []*testexec.Cmd
 	defer func() {
@@ -177,6 +180,13 @@ func LowMemoryKiller(ctx context.Context, s *testing.State) {
 			cmd.Wait()
 		}
 	}()
+
+	// Set on-device minimum memory margin before eating memory. This way
+	// we are sure to consume below the margin and trigger low memory kills.
+	margin := strconv.FormatInt(deviceMinMemoryMarginMB, 10)
+	if err = ioutil.WriteFile(deviceMarginSysFile, []byte(margin), 0644); err != nil {
+		s.Fatalf("Unable to set low-memory margin to %v in file %v: %v", deviceMinMemoryMarginMB, deviceMarginSysFile, err)
+	}
 
 	s.Log("Monitoring for low memory kill logs in ", chromeLogFile)
 	for {
@@ -199,13 +209,13 @@ func LowMemoryKiller(ctx context.Context, s *testing.State) {
 		}
 		bgJobs = append(bgJobs, cmd)
 
-		var killEvent string
+		var killEvent []string
 		testing.Poll(ctx, func(ctx context.Context) error {
 			killEvent, err = findLowMemoryKill(chromeLogFile)
 			if err != nil {
 				return err
 			}
-			if killEvent != "" {
+			if killEvent != nil {
 				return nil
 			}
 			return errors.New("could not find memory kill")
@@ -213,8 +223,11 @@ func LowMemoryKiller(ctx context.Context, s *testing.State) {
 			Timeout:  2 * time.Second,
 			Interval: time.Second,
 		})
-		if killEvent != "" {
-			s.Logf("Memory kill event: %q", killEvent)
+		if killEvent != nil {
+			s.Logf("Memory kill event: %q", killEvent[0])
+			if killEvent[2] == kernelOOMKill {
+				s.Fatal("Kernel OOM kill happened before Chrome low-memory kill")
+			}
 			break
 		}
 	}
@@ -274,24 +287,24 @@ func checkOOMScoreSet(pid int) (bool, error) {
 // findLowMemoryKill scans chromeLogPath to find a low memory kill event.
 // chromeLogPath should be the path of a Chrome log file, usually
 // /var/log/chrome/chrome.
-func findLowMemoryKill(chromeLogPath string) (string, error) {
+func findLowMemoryKill(chromeLogPath string) ([]string, error) {
 	var lowMemoryKillPattern *regexp.Regexp = regexp.MustCompile(
-		`memory_kills_monitor.* (\d+), (LOW_MEMORY_KILL_APP|LOW_MEMORY_KILL_TAB)`)
+		`memory_kills_monitor.* (\d+), (LOW_MEMORY_KILL_APP|LOW_MEMORY_KILL_TAB|OOM_KILL)`)
 
 	chromeLog, err := os.Open(chromeLogPath)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 	defer chromeLog.Close()
 
 	scanner := bufio.NewScanner(chromeLog)
 	for scanner.Scan() {
-		match := lowMemoryKillPattern.FindString(scanner.Text())
-		if match != "" {
+		match := lowMemoryKillPattern.FindStringSubmatch(scanner.Text())
+		if match != nil {
 			return match, nil
 		}
 	}
-	return "", scanner.Err()
+	return nil, scanner.Err()
 }
 
 func estimatedFreeMemoryMB() (int, error) {
