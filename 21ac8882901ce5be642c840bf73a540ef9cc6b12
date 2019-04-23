@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d854bc7e_5918fd9a",
+        "filename": "src/chromiumos/tast/local/arc/diagnose.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T19:53:17Z",
+      "side": 1,
+      "message": "nit: should this be \"PROCESS\", or is it actually truncated like this?",
+      "range": {
+        "startLine": 41,
+        "startChar": 59,
+        "endLine": 41,
+        "endChar": 65
+      },
+      "revId": "21ac8882901ce5be642c840bf73a540ef9cc6b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
