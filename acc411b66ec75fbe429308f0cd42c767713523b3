@@ -387,6 +387,30 @@
     },
     {
       "key": {
+        "uuid": "fadeda07_0fa5ccb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-23T17:37:16Z",
+      "side": 1,
+      "message": "Thanks.  The conversion happens below, but it\u0027s better to stick to the comment.",
+      "parentUuid": "5283b4a3_075d0d0d",
+      "range": {
+        "startLine": 397,
+        "startChar": 20,
+        "endLine": 397,
+        "endChar": 21
+      },
+      "revId": "acc411b66ec75fbe429308f0cd42c767713523b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77d6b5b3_9c34a8b1",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter_test.go",
         "patchSetId": 5
