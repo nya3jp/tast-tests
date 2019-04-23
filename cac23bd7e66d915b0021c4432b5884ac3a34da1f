@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d611cbe8_35e669b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T15:31:59Z",
+      "side": 1,
+      "message": "optional nit: \"if err :\u003d fill...; err !\u003d nil {\" -- shorter and scopes \u0027err\u0027 to the only place it\u0027s used",
+      "revId": "cac23bd7e66d915b0021c4432b5884ac3a34da1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
