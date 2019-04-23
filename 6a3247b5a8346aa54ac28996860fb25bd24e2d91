@@ -352,6 +352,24 @@
     },
     {
       "key": {
+        "uuid": "7c651c1a_17f67452",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-23T00:35:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe4c8129_700431a6",
+      "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd3a428d_297af9d9",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 4
@@ -375,6 +393,30 @@
     },
     {
       "key": {
+        "uuid": "4d0f6e9b_c0e6ad7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-23T00:35:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd3a428d_297af9d9",
+      "range": {
+        "startLine": 828,
+        "startChar": 28,
+        "endLine": 828,
+        "endChar": 32
+      },
+      "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fc913a9_ac65cbc9",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 4
@@ -389,6 +431,24 @@
       "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15a2dd5e_8377f3a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 914,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-23T00:35:53Z",
+      "side": 1,
+      "message": "No, it needs to stay there to help future test development (those 16GiB devices).",
+      "parentUuid": "7fc913a9_ac65cbc9",
+      "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
