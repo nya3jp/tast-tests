@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "505edef6_d29c6d21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T17:58:06Z",
+      "side": 1,
+      "message": "nit: how about just %v and t.Round(time.Millisecond)?",
+      "range": {
+        "startLine": 677,
+        "startChar": 72,
+        "endLine": 677,
+        "endChar": 82
+      },
+      "revId": "7c74de375f5576100c2d5775cd6f86310ac15fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c5a626d_ba5d4135",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T17:58:06Z",
+      "side": 1,
+      "message": "nit: same here",
+      "revId": "7c74de375f5576100c2d5775cd6f86310ac15fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e7c900e_42e91eaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T17:58:06Z",
+      "side": 1,
+      "message": "nit: watchDiscardSignal, maybe?\n\nalso, please return the chan instead of taking it as a parameter. can probably be a \u003c-chan in that case",
+      "range": {
+        "startLine": 777,
+        "startChar": 5,
+        "endLine": 777,
+        "endChar": 19
+      },
+      "revId": "7c74de375f5576100c2d5775cd6f86310ac15fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e7471bd_e43204fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T17:58:06Z",
+      "side": 1,
+      "message": "think you need defer w.Close(), maybe in the goroutine?",
+      "revId": "7c74de375f5576100c2d5775cd6f86310ac15fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3b6b774_dbe76487",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T17:58:06Z",
+      "side": 1,
+      "message": "nit: waitForDiscardSignal? also please make this take a \u003c-chan, name the return value, and add a comment describing what it does",
+      "revId": "7c74de375f5576100c2d5775cd6f86310ac15fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "303928e0_13a598d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T17:58:06Z",
+      "side": 1,
+      "message": "this seems a bit short...",
+      "revId": "7c74de375f5576100c2d5775cd6f86310ac15fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f81390d_0ed859a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T17:58:06Z",
+      "side": 1,
+      "message": "nit: \"set up\" (setup is noun, set up is verb)",
+      "range": {
+        "startLine": 959,
+        "startChar": 18,
+        "endLine": 959,
+        "endChar": 23
+      },
+      "revId": "7c74de375f5576100c2d5775cd6f86310ac15fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
