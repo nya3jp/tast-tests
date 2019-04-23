@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2a3b97f9_1b121e5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-04-23T02:26:26Z",
+      "side": 1,
+      "message": "Done.\nCL to introduce WaitForChromeVoxStopSpeaking https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1530149\n\nand this CL will fix the accessibilityTree test",
+      "parentUuid": "bb35729d_d1719a04",
+      "revId": "6ff7dab128bccdfd15677eacd17f141a25945f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e97785f_120e994e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 16
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "2af4016b_5b47073b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-04-23T02:26:26Z",
+      "side": 1,
+      "message": "Done, thanks for the suggestion. Renamed functions accordingly.",
+      "parentUuid": "5e97785f_120e994e",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 49
+      },
+      "revId": "6ff7dab128bccdfd15677eacd17f141a25945f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d521de5c_58073c50",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 16
@@ -56,6 +98,24 @@
       "revId": "6ff7dab128bccdfd15677eacd17f141a25945f21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42c2fb62_84a64367",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-04-23T02:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d521de5c_58073c50",
+      "revId": "6ff7dab128bccdfd15677eacd17f141a25945f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "10681f22_e5f7eb5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-04-23T02:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d486df54_33558469",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 68
+      },
+      "revId": "6ff7dab128bccdfd15677eacd17f141a25945f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bffb4986_a1510e61",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 16
@@ -102,6 +186,30 @@
       "revId": "6ff7dab128bccdfd15677eacd17f141a25945f21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36b673b7_d45bea3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-04-23T02:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bffb4986_a1510e61",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 2
+      },
+      "revId": "6ff7dab128bccdfd15677eacd17f141a25945f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -149,6 +257,30 @@
       "revId": "6ff7dab128bccdfd15677eacd17f141a25945f21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cfbc919_a42cbcd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected.txt",
+        "patchSetId": 16
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-04-23T02:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cfd96bc_0a952fe1",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "6ff7dab128bccdfd15677eacd17f141a25945f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
