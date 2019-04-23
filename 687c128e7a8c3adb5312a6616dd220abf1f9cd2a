@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a768b472_42c996d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-23T17:18:20Z",
+      "side": 1,
+      "message": "OK good point, I\u0027ll make this forward-compatible with the new implementation.",
+      "parentUuid": "a463658e_bcc6a616",
+      "range": {
+        "startLine": 441,
+        "startChar": 12,
+        "endLine": 441,
+        "endChar": 30
+      },
+      "revId": "687c128e7a8c3adb5312a6616dd220abf1f9cd2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04f56057_befee8d6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "687c128e7a8c3adb5312a6616dd220abf1f9cd2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "105cf135_e8b821a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-23T17:18:20Z",
+      "side": 1,
+      "message": "Considering that this is only informational, I am happy to assume that HasZram meaning HasOnlyZram.",
+      "parentUuid": "04f56057_befee8d6",
+      "range": {
+        "startLine": 471,
+        "startChar": 0,
+        "endLine": 471,
+        "endChar": 48
+      },
+      "revId": "687c128e7a8c3adb5312a6616dd220abf1f9cd2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
