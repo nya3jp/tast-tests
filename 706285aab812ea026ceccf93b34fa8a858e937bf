@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5a9a699a_8786accf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-23T04:45:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2600193e_12af0476",
+      "revId": "706285aab812ea026ceccf93b34fa8a858e937bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3da089f2_9e300af3",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
         "patchSetId": 5
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "0b8164f8_e4f5179b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-23T04:45:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3da089f2_9e300af3",
+      "range": {
+        "startLine": 41,
+        "startChar": 61,
+        "endLine": 41,
+        "endChar": 64
+      },
+      "revId": "706285aab812ea026ceccf93b34fa8a858e937bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c9162a4_3d2fdb96",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
         "patchSetId": 5
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "0e8cc187_620f9de7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-23T04:45:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c9162a4_3d2fdb96",
+      "revId": "706285aab812ea026ceccf93b34fa8a858e937bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6444e595_0d7b9709",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
         "patchSetId": 5
@@ -70,6 +130,24 @@
       "writtenOn": "2019-04-23T03:43:36Z",
       "side": 1,
       "message": "i\u0027m a bit surprised that TrimSpace is needed here but not on L64. should checkOutput instead do something like \"s :\u003d strings.TrimSpace(string(out))\" instead and then use that variable throughout?",
+      "revId": "706285aab812ea026ceccf93b34fa8a858e937bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6f44baf_fbccee07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-23T04:45:25Z",
+      "side": 1,
+      "message": "Match func will take byte type as parameter. Need to add TrimSpace, Using MatchString func now. Thanks!",
+      "parentUuid": "6444e595_0d7b9709",
       "revId": "706285aab812ea026ceccf93b34fa8a858e937bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
