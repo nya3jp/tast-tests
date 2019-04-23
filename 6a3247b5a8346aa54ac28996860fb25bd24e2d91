@@ -271,6 +271,24 @@
     },
     {
       "key": {
+        "uuid": "392f3278_e1a56db5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T03:52:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "60150478_69644016",
+      "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0303e182_acc31b7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 4
@@ -446,6 +464,24 @@
       "side": 1,
       "message": "No, it needs to stay there to help future test development (those 16GiB devices).",
       "parentUuid": "7fc913a9_ac65cbc9",
+      "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa7a8283_e24c441f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 914,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T03:52:33Z",
+      "side": 1,
+      "message": "thanks. added a request on the other change to make the comment clearer",
+      "parentUuid": "15a2dd5e_8377f3a0",
       "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
