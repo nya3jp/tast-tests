@@ -9,6 +9,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"strings"
 
 	"chromiumos/tast/errors"
 )
@@ -37,6 +38,10 @@ func diagnose(logcatPath string, observedErr error) error {
 	sc := bufio.NewScanner(f)
 	for sc.Scan() {
 		line := sc.Text()
+		if strings.Contains(line, "*** FATAL EXCEPTION IN SYSTEM PROCES") {
+			crashed = "system_server"
+			break
+		}
 		m := crashRegexp.FindStringSubmatch(line)
 		if len(m) > 0 {
 			crashed = filepath.Base(m[1])
