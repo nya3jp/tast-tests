@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d38ff052_9b5499dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-04-23T21:32:02Z",
+      "side": 1,
+      "message": "does this do exactly what we want? I thought we wanted to distinguish between a discard and a renderer crash.  In the case of renderer crash we should abort the test and report that a renderer crashed.  This is because if we had a crash the results of the test are invalid since that renderer\u0027s memory got unexpectedly freed.",
+      "range": {
+        "startLine": 650,
+        "startChar": 0,
+        "endLine": 651,
+        "endChar": 38
+      },
+      "revId": "214511b904e65bde761b474b0d471ebc854dfdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
