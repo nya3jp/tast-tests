@@ -22,6 +22,30 @@
       "revId": "214511b904e65bde761b474b0d471ebc854dfdb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c82163f_e647a345",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-23T21:38:51Z",
+      "side": 1,
+      "message": "Yes, this can be more precise.  In an earlier part of the review, Brian and I discussed this.  I proposed to commit this and then send another CL, since large parts of this have been reviewed already.",
+      "parentUuid": "d38ff052_9b5499dd",
+      "range": {
+        "startLine": 650,
+        "startChar": 0,
+        "endLine": 651,
+        "endChar": 38
+      },
+      "revId": "214511b904e65bde761b474b0d471ebc854dfdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
