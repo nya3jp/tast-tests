@@ -1,0 +1,358 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15f1a60b_662f3614",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback_media_recorder.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-23T11:05:20Z",
+      "side": 1,
+      "message": "nit: const",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 3
+      },
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1865c31_2c6f634e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/loopback_media_recorder.html",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-23T11:05:20Z",
+      "side": 1,
+      "message": "just a question:\nWhy is audio enabled?",
+      "range": {
+        "startLine": 17,
+        "startChar": 67,
+        "endLine": 17,
+        "endChar": 71
+      },
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d98b99a_93c627e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-23T11:05:20Z",
+      "side": 1,
+      "message": "Question: Do you have a plan to add a same test for a different codec?",
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cde0cf8a_771ae08e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-23T11:05:20Z",
+      "side": 1,
+      "message": "[]string{\"group:crosbolt\", \"crosbolt_perbuild\"},\n\nFor performance tests, we need to specify \"group:crosbolt\" instead of \"informational\".\nSee http://go/tast-attr#manually_added-attributes",
+      "range": {
+        "startLine": 29,
+        "startChar": 12,
+        "endLine": 29,
+        "endChar": 37
+      },
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "742f9d78_e4f6f9f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-23T11:05:20Z",
+      "side": 1,
+      "message": "How about running this test also on boards that don\u0027t have HW encoder?\nWe can still measure SW encoder\u0027s performance on such boards.\nWe will actually do so for Dean\u0027s WebRTCDecodePerf in CL:1573298.",
+      "range": {
+        "startLine": 31,
+        "startChar": 25,
+        "endLine": 31,
+        "endChar": 42
+      },
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4971375_66370bc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-23T11:05:20Z",
+      "side": 1,
+      "message": "How about making this function simpler and do everything in media_recodor.go instead?\ni.e.,\nfunc MediaRecorderPerfH264(ctx context.Context, s *testing.State) {\n\tmediarecorder.MeasurePerf(ctx, s, streamFile, videotype.H264Prof)\n}\n\nSince I don\u0027t think we will use mediarecorder.MeasurePerf and mediarecorder.ReportPerf in other ways, I guess we don\u0027t need to export ReportPerf function.",
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cb32b5e_0374d494",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-23T11:05:20Z",
+      "side": 1,
+      "message": "Could you add comments explaining meanings of each flag?\n\ncf.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1573298/6/src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go#38",
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f48df762_a0f1e428",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-23T11:05:20Z",
+      "side": 1,
+      "message": "Since this is almost same with flags for SW encode, can we create a function like getChromeArgs() (or some better name)?",
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b997fa8_77f67da6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-23T11:05:20Z",
+      "side": 1,
+      "message": "It seems that there are code duplication between HW encode and SW encode.\nCan we have a common function that receives an argument \"disableHwAccel bool\"?\n\ncf. webRTCPerf in CL:1573298 might be similar\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1573298/6/src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go#117",
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5158ce24_32c84bcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-23T11:05:20Z",
+      "side": 1,
+      "message": "Could you add \"tast_\" prefix to the name? This is needed because autotest version also upload metrics with same name.\n\nSo, it would be like this:\n\n// TODO(shenghao): Remove \"tast_\" prefix after removing video_MediaRecoderPerf in autotest\nName: \"tast_\" + name,",
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6baf7923_c67c6277",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-23T11:05:20Z",
+      "side": 1,
+      "message": "Error strings should not be capitalized.\nSee http://go/tast-writing#formatting\n\nSame for all other error.Wrap expressions.",
+      "range": {
+        "startLine": 57,
+        "startChar": 27,
+        "endLine": 57,
+        "endChar": 28
+      },
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d66b7005_62f8abe2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-23T11:05:20Z",
+      "side": 1,
+      "message": "Could you add a brief comment what will happen when startRecoding is called?\nOtherwise, we need to read JS code to understand the test behavior.",
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8f217fe_1b704473",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-23T11:05:20Z",
+      "side": 1,
+      "message": "nit: Could you add a comment like \"Recorded video content will be stored in videoBuffer in base64 format\"?\nIdeally, we don\u0027t want to read JS code to understand test\u0027s behavior.",
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f2f6afe_4d64652d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-23T11:05:20Z",
+      "side": 1,
+      "message": "How about just returning \"int, error\" instead of receiving *int? It would be simpler.",
+      "range": {
+        "startLine": 116,
+        "startChar": 55,
+        "endLine": 116,
+        "endChar": 75
+      },
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "540f4abc_08da09e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-23T11:05:20Z",
+      "side": 1,
+      "message": "Hmm, it\u0027s difficult for me to understand what this function is doing...\nCould you add comments about what this function is doing?\nAlso, it might be helpful to have unit tests for parsing the performance values.\n\nFor example, we have a test for encoder perf tests:\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/encode/perf_test.go",
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcab6833_d6601d63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-23T11:05:20Z",
+      "side": 1,
+      "message": "I think you can use \"label\" to escape from a nested scope.\ne.g. https://golang.org/test/label1.go",
+      "range": {
+        "startLine": 132,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 9
+      },
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7639f5f9_be9844f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-23T11:05:20Z",
+      "side": 1,
+      "message": "How about just returning \"float64, error\" instead of receiving *float64?",
+      "range": {
+        "startLine": 168,
+        "startChar": 61,
+        "endLine": 168,
+        "endChar": 82
+      },
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d948fa12_dbd9af96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-23T11:05:20Z",
+      "side": 1,
+      "message": "How about using testing.Sleep?\nSee https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts",
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
