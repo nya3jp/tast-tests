@@ -135,7 +135,7 @@ func parseTimeNearNow(fallback string, now time.Time) (time.Time, error) {
 func testAssistantVolumeQueries(ctx context.Context, tconn *chrome.Conn, s *testing.State) {
 	const testVolume = 25
 	// Sends set volume query and verifies the result.
-	_, err := assistant.SendTextQuery(ctx, tconn, fmt.Sprintf("set volume to %d.", testVolume))
+	_, err := assistant.SendTextQuery(ctx, tconn, fmt.Sprintf("set volume to %d percent.", testVolume))
 	if err != nil {
 		s.Errorf("Failed to set volume to %d via Assistant: %v", testVolume, err)
 		return
