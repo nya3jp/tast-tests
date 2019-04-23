@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cfbf177c_d835a996",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-23T00:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "618aa3b4_4a70183d",
+      "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1df94f78_4ee8b194",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "875ccb0b_44ebe343",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-23T00:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1df94f78_4ee8b194",
+      "range": {
+        "startLine": 308,
+        "startChar": 51,
+        "endLine": 308,
+        "endChar": 52
+      },
+      "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "51aa5d11_cfbd4725",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-23T00:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fa400d7_1dda0b89",
+      "range": {
+        "startLine": 324,
+        "startChar": 45,
+        "endLine": 324,
+        "endChar": 46
+      },
+      "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d5be5fc_5a7def2c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 4
@@ -79,6 +145,24 @@
       "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7f6eb10_495129e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-23T00:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d5be5fc_5a7def2c",
+      "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "e06bb5d9_5a3a381d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-23T00:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b00e5a2_7a9a8563",
+      "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa712c3f_f06eb674",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 4
@@ -116,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "4c70957a_5c24184c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-23T00:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa712c3f_f06eb674",
+      "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39a5891b_2953abab",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 4
@@ -130,6 +250,24 @@
       "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60150478_69644016",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-23T00:02:15Z",
+      "side": 1,
+      "message": "OK.  I am saving the conversion to bytes for a later CL, so it\u0027s cleaner.",
+      "parentUuid": "39a5891b_2953abab",
+      "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -153,6 +291,30 @@
       "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a36148f_c0e89af9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-23T00:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0303e182_acc31b7d",
+      "range": {
+        "startLine": 388,
+        "startChar": 1,
+        "endLine": 388,
+        "endChar": 6
+      },
+      "revId": "6a3247b5a8346aa54ac28996860fb25bd24e2d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
