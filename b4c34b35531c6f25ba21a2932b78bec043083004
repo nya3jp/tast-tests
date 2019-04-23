@@ -65,6 +65,46 @@
     },
     {
       "key": {
+        "uuid": "12ea4f1a_1d2aab4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T17:29:07Z",
+      "side": 1,
+      "message": "please don\u0027t declare top-level constants in tests when you don\u0027t have to. \u0027fps\u0027 and \u0027codec\u0027 should both be declared down where you use them, and please rename streamFile to something test-specific since this namespace is shared with other video tests, e.g. mediaRecorderH264StreamFile. i\u0027d also prefer that it appear after init() so the test metadata comes first.",
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8acd1378_c329b187",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T17:29:07Z",
+      "side": 1,
+      "message": "nit: H.264",
+      "range": {
+        "startLine": 27,
+        "startChar": 78,
+        "endLine": 27,
+        "endChar": 82
+      },
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cde0cf8a_771ae08e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go",
         "patchSetId": 5
@@ -168,6 +208,46 @@
     },
     {
       "key": {
+        "uuid": "fe5985cb_3eefe010",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T17:29:07Z",
+      "side": 1,
+      "message": "please always use time.Duration for times when possible, as it removes ambiguity around units",
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f36c8496_414469f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T17:29:07Z",
+      "side": 1,
+      "message": "don\u0027t use out-params in go; it supports multiple return values",
+      "range": {
+        "startLine": 49,
+        "startChar": 93,
+        "endLine": 49,
+        "endChar": 123
+      },
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f48df762_a0f1e428",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go",
         "patchSetId": 5
@@ -179,6 +259,23 @@
       "writtenOn": "2019-04-23T11:05:20Z",
       "side": 1,
       "message": "Since this is almost same with flags for SW encode, can we create a function like getChromeArgs() (or some better name)?",
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bdcd1f9_221b41fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T17:29:07Z",
+      "side": 1,
+      "message": "time.Duration",
       "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -202,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "e0770bbd_d2ff16a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T17:29:07Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "0b997fa8_77f67da6",
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5158ce24_32c84bcb",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
         "patchSetId": 5
@@ -213,6 +328,29 @@
       "writtenOn": "2019-04-23T11:05:20Z",
       "side": 1,
       "message": "Could you add \"tast_\" prefix to the name? This is needed because autotest version also upload metrics with same name.\n\nSo, it would be like this:\n\n// TODO(shenghao): Remove \"tast_\" prefix after removing video_MediaRecoderPerf in autotest\nName: \"tast_\" + name,",
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61c13fff_1007c870",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T17:29:07Z",
+      "side": 1,
+      "message": "get rid of out-params",
+      "range": {
+        "startLine": 54,
+        "startChar": 125,
+        "endLine": 54,
+        "endChar": 163
+      },
       "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -259,6 +397,23 @@
     },
     {
       "key": {
+        "uuid": "3136018f_a0c5c15f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T17:29:07Z",
+      "side": 1,
+      "message": "const, but i\u0027d recommend just inlining this on L93 and changing L94 to something like:\n\n  return errors.Wrap(err, \"failed to stop recording\")",
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b8f217fe_1b704473",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
         "patchSetId": 5
@@ -270,6 +425,23 @@
       "writtenOn": "2019-04-23T11:05:20Z",
       "side": 1,
       "message": "nit: Could you add a comment like \"Recorded video content will be stored in videoBuffer in base64 format\"?\nIdeally, we don\u0027t want to read JS code to understand test\u0027s behavior.",
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5879835_94020ef3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T17:29:07Z",
+      "side": 1,
+      "message": "how large is this data?",
       "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -310,6 +482,30 @@
       "writtenOn": "2019-04-23T11:05:20Z",
       "side": 1,
       "message": "Hmm, it\u0027s difficult for me to understand what this function is doing...\nCould you add comments about what this function is doing?\nAlso, it might be helpful to have unit tests for parsing the performance values.\n\nFor example, we have a test for encoder perf tests:\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/encode/perf_test.go",
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23b66560_2a62f043",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T17:29:07Z",
+      "side": 1,
+      "message": "yes, please don\u0027t use out-params",
+      "parentUuid": "2f2f6afe_4d64652d",
+      "range": {
+        "startLine": 116,
+        "startChar": 55,
+        "endLine": 116,
+        "endChar": 75
+      },
       "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
