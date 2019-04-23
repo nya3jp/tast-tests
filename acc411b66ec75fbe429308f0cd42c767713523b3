@@ -1,0 +1,237 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "270bc759_b321e3fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T04:08:21Z",
+      "side": 1,
+      "message": "this is making an assumption about the length of \u0027lines\u0027 now. why not just do:\n\n  for _, line :\u003d range strings.Split(strings.TrimSuffix(string(b), \"\\n\"), \"\\n\") {\n\n? (or TrimRight if you want)",
+      "revId": "acc411b66ec75fbe429308f0cd42c767713523b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78112d54_f49e52a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T04:08:21Z",
+      "side": 1,
+      "message": "please check len(nameValue) first",
+      "revId": "acc411b66ec75fbe429308f0cd42c767713523b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9bdfd49_299459c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T04:08:21Z",
+      "side": 1,
+      "message": "return kernelMinFree(string(b))",
+      "revId": "acc411b66ec75fbe429308f0cd42c767713523b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aef9b615_85f4c97b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T04:08:21Z",
+      "side": 1,
+      "message": "nit: use backticks around the string on this line and the next two lines so you don\u0027t need to escape backslashes",
+      "range": {
+        "startLine": 302,
+        "startChar": 30,
+        "endLine": 302,
+        "endChar": 46
+      },
+      "revId": "acc411b66ec75fbe429308f0cd42c767713523b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5aa870a5_8e7833dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T04:08:21Z",
+      "side": 1,
+      "message": "nit: how about changing this line to \"type parseState int\" and L307 to \"lookingForHigh parseState \u003d iota\"? same number of lines of code, but then you get type-checking for the \u0027state\u0027 var",
+      "revId": "acc411b66ec75fbe429308f0cd42c767713523b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b344020f_c11e4990",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T04:08:21Z",
+      "side": 1,
+      "message": "same re trimming trailing newline",
+      "revId": "acc411b66ec75fbe429308f0cd42c767713523b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c722a59e_2b749d7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T04:08:21Z",
+      "side": 1,
+      "message": "nit: you can save a line on all of these and improve the scoping of \u0027groups\u0027 by doing e.g. \"if groups :\u003d highRE.FindStringSubmatch(line); groups !\u003d nil {\"",
+      "revId": "acc411b66ec75fbe429308f0cd42c767713523b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bec90269_6e81ce32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T04:08:21Z",
+      "side": 1,
+      "message": "nit: can save a line here too :-)",
+      "revId": "acc411b66ec75fbe429308f0cd42c767713523b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9abea3c_8a506e10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T04:08:21Z",
+      "side": 1,
+      "message": "nit: and here",
+      "revId": "acc411b66ec75fbe429308f0cd42c767713523b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "002d4b5c_9fe1ff2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T04:08:21Z",
+      "side": 1,
+      "message": "nit: just split after \u0027range\u0027?",
+      "revId": "acc411b66ec75fbe429308f0cd42c767713523b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77d6b5b3_9c34a8b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T04:08:21Z",
+      "side": 1,
+      "message": "nit: just use t.Fatal on L15 instead; then you don\u0027t need to return",
+      "revId": "acc411b66ec75fbe429308f0cd42c767713523b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "572f96d3_dd54f1b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T04:08:21Z",
+      "side": 1,
+      "message": "nit: use semicolon instead of comma (see example in overview at https://golang.org/pkg/testing/)",
+      "range": {
+        "startLine": 19,
+        "startChar": 37,
+        "endLine": 19,
+        "endChar": 38
+      },
+      "revId": "acc411b66ec75fbe429308f0cd42c767713523b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "942969d7_f950fbdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T04:08:21Z",
+      "side": 1,
+      "message": "nit: how about moving this declaration into TestKernelMinFree since it\u0027s only needed there?",
+      "revId": "acc411b66ec75fbe429308f0cd42c767713523b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
