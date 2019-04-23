@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c9b12d3_b36ce184",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crossystem.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-23T05:01:05Z",
+      "side": 1,
+      "message": "huge nit: there\u0027s also bytes.TrimSpace, so this can probably just be \".Match(bytes.TrimSpace(out))\"",
+      "revId": "2e7aad0ecc200cfbe938c980e54ba83af3eab906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
