@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "358dd258_be03c2fb",
+        "filename": "src/chromiumos/tast/remote/ec/ec.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-23T12:40:45Z",
+      "side": 1,
+      "message": "Can you arrange the imports as shown in below?\n\n\"context\"\n\"errors\"\n\"strings\"\n\n\"chromiumos/tast/remote/servo\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 10
+      },
+      "revId": "7e06fbd1bfa5116072d1a83a76c135309bbc4dde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69bec047_a2bc9450",
+        "filename": "src/chromiumos/tast/remote/ec/ec.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-23T12:40:45Z",
+      "side": 1,
+      "message": "Remove empty line",
+      "revId": "7e06fbd1bfa5116072d1a83a76c135309bbc4dde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
