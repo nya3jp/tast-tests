@@ -151,6 +151,24 @@
       "revId": "706285aab812ea026ceccf93b34fa8a858e937bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b074348f_fa69a525",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_crossystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-23T04:46:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6f44baf_fbccee07",
+      "revId": "706285aab812ea026ceccf93b34fa8a858e937bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
