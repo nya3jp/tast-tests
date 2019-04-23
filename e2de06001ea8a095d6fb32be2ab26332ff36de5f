@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8f6d0448_ac05c327",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-23T16:03:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe7ff334_cedf796d",
+      "revId": "e2de06001ea8a095d6fb32be2ab26332ff36de5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34e14653_f2f0413b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
         "patchSetId": 5
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "5943c759_71e3dba1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-23T16:03:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34e14653_f2f0413b",
+      "range": {
+        "startLine": 19,
+        "startChar": 34,
+        "endLine": 19,
+        "endChar": 41
+      },
+      "revId": "e2de06001ea8a095d6fb32be2ab26332ff36de5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34f849d5_919d01b9",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
         "patchSetId": 5
@@ -56,6 +98,24 @@
       "revId": "e2de06001ea8a095d6fb32be2ab26332ff36de5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cc4f0c9_96cf09ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_mosys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-23T16:03:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34f849d5_919d01b9",
+      "revId": "e2de06001ea8a095d6fb32be2ab26332ff36de5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
