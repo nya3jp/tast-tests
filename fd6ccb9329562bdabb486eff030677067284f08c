@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "529a0ca8_fb33bf48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:37:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac393cd4_dfee9a8f",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 13
+      },
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffdf4a20_c4d23430",
         "filename": "src/chromiumos/tast/local/arc/version.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91886e57_33b0f3f2",
+        "filename": "src/chromiumos/tast/local/arc/version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:37:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffdf4a20_c4d23430",
+      "range": {
+        "startLine": 31,
+        "startChar": 53,
+        "endLine": 31,
+        "endChar": 63
+      },
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3575d6aa_42d592d8",
+        "filename": "src/chromiumos/tast/local/arc/version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:37:56Z",
+      "side": 1,
+      "message": "Done. Thank you for pointing the doc.",
+      "parentUuid": "1a6a3d21_ecdea49a",
+      "range": {
+        "startLine": 35,
+        "startChar": 58,
+        "endLine": 35,
+        "endChar": 62
+      },
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "def4e3a0_359c5799",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
         "patchSetId": 2
@@ -82,6 +154,24 @@
       "writtenOn": "2019-04-24T00:48:04Z",
       "side": 1,
       "message": "i was going to say that it might be safer to check the state, but i see that i documented that 0 is returned if the job isn\u0027t running, so this seems fine. :-)",
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36eb144c_12c66787",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:37:56Z",
+      "side": 1,
+      "message": "Yes, that\u0027s what I checked actually :-)",
+      "parentUuid": "def4e3a0_359c5799",
       "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -105,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "1b58bcf3_57e9a008",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:37:56Z",
+      "side": 1,
+      "message": "Hmmm, I\u0027d like to keep the name of subtest in the logging, which looks easier to see what happened when checking log.\n\nOr, \"Running testNoARCLeak()\" (with paren) may be better to represent my intention...? WDYT?",
+      "parentUuid": "b5a8f4a2_62b108d5",
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1610d2fd_8f3fbf74",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
         "patchSetId": 2
@@ -122,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "6e863c49_18ce7166",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:37:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1610d2fd_8f3fbf74",
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1fc210d_24293b28",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
         "patchSetId": 2
@@ -136,6 +262,24 @@
       "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9eea1182_2e9a155a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:37:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1fc210d_24293b28",
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -159,6 +303,30 @@
       "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d811a8a7_98cc55fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:37:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c412e759_be6bf2e5",
+      "range": {
+        "startLine": 231,
+        "startChar": 66,
+        "endLine": 231,
+        "endChar": 68
+      },
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -197,6 +365,24 @@
     },
     {
       "key": {
+        "uuid": "7472ad26_c53d8dc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:37:56Z",
+      "side": 1,
+      "message": "I was thinking, but I couldn\u0027t find a good place, other than creating another test file. Because this is porting, can we keep this now with TODO comment in RunTest()?",
+      "parentUuid": "3d3cd844_a797bc4f",
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b8701cf4_34013a1e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
         "patchSetId": 2
@@ -217,6 +403,30 @@
       "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fd5955c_208c4e51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:37:56Z",
+      "side": 1,
+      "message": "Thank you for finding this.\n\ncrrev.com/i/1203488 is created. And, the condition here is now fixed.",
+      "parentUuid": "b8701cf4_34013a1e",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 2
+      },
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -243,6 +453,30 @@
     },
     {
       "key": {
+        "uuid": "cab736b5_23a6b008",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:37:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bff30f2_5168d597",
+      "range": {
+        "startLine": 293,
+        "startChar": 49,
+        "endLine": 293,
+        "endChar": 60
+      },
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61b4a0cc_eeaad1dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
         "patchSetId": 2
@@ -263,6 +497,30 @@
       "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3e2b3bf_e6cb18f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:37:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61b4a0cc_eeaad1dd",
+      "range": {
+        "startLine": 298,
+        "startChar": 49,
+        "endLine": 298,
+        "endChar": 51
+      },
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -289,6 +547,30 @@
     },
     {
       "key": {
+        "uuid": "6a54de15_bf616b89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:37:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96b99a28_b9537485",
+      "range": {
+        "startLine": 331,
+        "startChar": 52,
+        "endLine": 331,
+        "endChar": 53
+      },
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f402e1c7_45f0dab0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
         "patchSetId": 2
@@ -309,6 +591,30 @@
       "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6592eb5_fe7d1faf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:37:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f402e1c7_45f0dab0",
+      "range": {
+        "startLine": 345,
+        "startChar": 24,
+        "endLine": 345,
+        "endChar": 30
+      },
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -335,6 +641,30 @@
     },
     {
       "key": {
+        "uuid": "6fb782ce_fdae4178",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:37:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c184efb_2b307c56",
+      "range": {
+        "startLine": 352,
+        "startChar": 24,
+        "endLine": 352,
+        "endChar": 30
+      },
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90759712_5ced56f5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
         "patchSetId": 2
@@ -349,6 +679,24 @@
       "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db5c06a5_884b32f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:37:56Z",
+      "side": 1,
+      "message": "Done.\n\n(Maybe nice to have a lint.",
+      "parentUuid": "90759712_5ced56f5",
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -375,6 +723,30 @@
     },
     {
       "key": {
+        "uuid": "f46d44a8_0f46ae31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:37:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef9725af_647f857e",
+      "range": {
+        "startLine": 465,
+        "startChar": 34,
+        "endLine": 465,
+        "endChar": 93
+      },
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c1ab23a_a2e246dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/shutdown.go",
         "patchSetId": 2
@@ -395,6 +767,30 @@
       "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d041ce9a_b4012463",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shutdown.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:37:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c1ab23a_a2e246dd",
+      "range": {
+        "startLine": 81,
+        "startChar": 35,
+        "endLine": 81,
+        "endChar": 38
+      },
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
