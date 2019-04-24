@@ -71,6 +71,269 @@
     },
     {
       "key": {
+        "uuid": "def4e3a0_359c5799",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-24T00:48:04Z",
+      "side": 1,
+      "message": "i was going to say that it might be safer to check the state, but i see that i documented that 0 is returned if the job isn\u0027t running, so this seems fine. :-)",
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5a8f4a2_62b108d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-24T00:48:04Z",
+      "side": 1,
+      "message": "nit: what do you think about changing these to instead be more descriptive, e.g. \"Testing that mounts are not leaked into ARC container\" (or whatever this is testing)?",
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1610d2fd_8f3fbf74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-24T00:48:04Z",
+      "side": 1,
+      "message": "nit: consider just doing \"var numTracing, numSync int\"",
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1fc210d_24293b28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-24T00:48:04Z",
+      "side": 1,
+      "message": "optional nit: \"switch m.Fstype {\"\n\nmight be one more line in total, but probably fewer chars :-)",
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c412e759_be6bf2e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-24T00:48:04Z",
+      "side": 1,
+      "message": "nit: just inline the \"1\" here instead of passing as an arg? :-)",
+      "range": {
+        "startLine": 231,
+        "startChar": 66,
+        "endLine": 231,
+        "endChar": 68
+      },
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2315477e_acb05305",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-24T00:48:04Z",
+      "side": 1,
+      "message": "this seems like a surprising thing to have in this test :-)",
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bff30f2_5168d597",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-24T00:48:04Z",
+      "side": 1,
+      "message": "nit: %q for these?",
+      "range": {
+        "startLine": 293,
+        "startChar": 49,
+        "endLine": 293,
+        "endChar": 60
+      },
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61b4a0cc_eeaad1dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-24T00:48:04Z",
+      "side": 1,
+      "message": "nit: %q",
+      "range": {
+        "startLine": 298,
+        "startChar": 49,
+        "endLine": 298,
+        "endChar": 51
+      },
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96b99a28_b9537485",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-24T00:48:04Z",
+      "side": 1,
+      "message": "nit: \u0027:\u0027",
+      "range": {
+        "startLine": 331,
+        "startChar": 52,
+        "endLine": 331,
+        "endChar": 53
+      },
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f402e1c7_45f0dab0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-24T00:48:04Z",
+      "side": 1,
+      "message": "nit: i think proper form is \"SD card\"",
+      "range": {
+        "startLine": 345,
+        "startChar": 24,
+        "endLine": 345,
+        "endChar": 30
+      },
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c184efb_2b307c56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-24T00:48:04Z",
+      "side": 1,
+      "message": "nit: here too",
+      "range": {
+        "startLine": 352,
+        "startChar": 24,
+        "endLine": 352,
+        "endChar": 30
+      },
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90759712_5ced56f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-24T00:48:04Z",
+      "side": 1,
+      "message": "i might be misremembering, but i thought we said earlier that we don\u0027t want to access precondition data from outside of test files. if that\u0027s correct, mind passing *arc.ARC as well?",
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef9725af_647f857e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-24T00:48:04Z",
+      "side": 1,
+      "message": "hmm, i wonder if there\u0027s a cleaner way to do this. :-/ maybe add a simple concat function here, even though it\u0027ll only be called once? also, i\u0027d recommend starting with an empty slice to avoid mutating global\u0027s backing memory, since that\u0027s a potential source of future bugs.",
+      "range": {
+        "startLine": 465,
+        "startChar": 34,
+        "endLine": 465,
+        "endChar": 93
+      },
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0c1ab23a_a2e246dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/shutdown.go",
         "patchSetId": 2
