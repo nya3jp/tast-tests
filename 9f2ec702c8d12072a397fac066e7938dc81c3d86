@@ -45,6 +45,30 @@
       "revId": "9f2ec702c8d12072a397fac066e7938dc81c3d86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c3b00ca_39266e1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 968,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-24T01:49:51Z",
+      "side": 1,
+      "message": "yes, that seems similar. both close() and cancel() will be asynchronous.\n\none caveat is that context typically aren\u0027t supposed to be stored in structs (just by convention), while it\u0027s fine to do so with a channel. that doesn\u0027t seem relevant here.\n\nif the sender wants to wait until the receiver had consumed the message, then an unbuffered channel is likely necessary, but that also doesn\u0027t seem relevant here.\n\ni don\u0027t have strong feelings one way or the other. i think using a context is one more line of code. :-P",
+      "parentUuid": "ad3cdb9c_8198f4c3",
+      "range": {
+        "startLine": 968,
+        "startChar": 1,
+        "endLine": 968,
+        "endChar": 60
+      },
+      "revId": "9f2ec702c8d12072a397fac066e7938dc81c3d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

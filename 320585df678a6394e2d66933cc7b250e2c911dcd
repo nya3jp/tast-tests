@@ -81,6 +81,30 @@
       "revId": "320585df678a6394e2d66933cc7b250e2c911dcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "300a1363_3ac61f4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-24T01:49:51Z",
+      "side": 1,
+      "message": "oh yeah, that\u0027s one downside. i guess go won\u0027t let you shadow return values?",
+      "parentUuid": "24153ef2_180a1729",
+      "range": {
+        "startLine": 778,
+        "startChar": 60,
+        "endLine": 778,
+        "endChar": 64
+      },
+      "revId": "320585df678a6394e2d66933cc7b250e2c911dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
