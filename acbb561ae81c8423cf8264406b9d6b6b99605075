@@ -39,6 +39,30 @@
       "revId": "acbb561ae81c8423cf8264406b9d6b6b99605075",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa998972_3189d645",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-24T00:21:23Z",
+      "side": 1,
+      "message": "if \"25 percent\" gets mapped to something in [0,10] or [1,10] by the assistant, then i\u0027m also worried about rounding issues if we later compare the chrome os value (in [0,100], i think) to 25.",
+      "parentUuid": "78f5b8a8_cc49c970",
+      "range": {
+        "startLine": 138,
+        "startChar": 77,
+        "endLine": 138,
+        "endChar": 84
+      },
+      "revId": "acbb561ae81c8423cf8264406b9d6b6b99605075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
