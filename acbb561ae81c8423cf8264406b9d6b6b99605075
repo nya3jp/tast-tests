@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2b117cbc_8df3c9a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-04-24T00:37:39Z",
+      "side": 1,
+      "message": "If the absolute volume is above 10, it will return early at [1], before run into the client op [2].\n\n[1]https://cs.corp.google.com/piper///depot/google3/assistant/assistant_server/conversation/device/device_volume_interaction.cc?rcl\u003d244601282\u0026l\u003d607\n[2]https://cs.corp.google.com/piper///depot/google3/assistant/assistant_server/conversation/device/device_volume_interaction.cc?rcl\u003d244601282\u0026l\u003d634",
+      "parentUuid": "adbcffc4_ca6bcf8c",
+      "revId": "acbb561ae81c8423cf8264406b9d6b6b99605075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78f5b8a8_cc49c970",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
         "patchSetId": 1
@@ -53,6 +71,30 @@
       "writtenOn": "2019-04-24T00:21:23Z",
       "side": 1,
       "message": "if \"25 percent\" gets mapped to something in [0,10] or [1,10] by the assistant, then i\u0027m also worried about rounding issues if we later compare the chrome os value (in [0,100], i think) to 25.",
+      "parentUuid": "78f5b8a8_cc49c970",
+      "range": {
+        "startLine": 138,
+        "startChar": 77,
+        "endLine": 138,
+        "endChar": 84
+      },
+      "revId": "acbb561ae81c8423cf8264406b9d6b6b99605075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53eb5fbf_6e704f9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-04-24T00:37:39Z",
+      "side": 1,
+      "message": "Yes they go through the same client op: device.UPDATE_VOLUME. The server side handles set volume action here [1]. If user means % in the query, it will directly use it, while if user use the absolute volume, it will check if it is within boundary [2] and convert it to percentage.\n\n[1]\nhttps://cs.corp.google.com/piper///depot/google3/assistant/assistant_server/conversation/device/device_volume_interaction.cc?rcl\u003d244729307\u0026l\u003d380\n[2]\nhttps://cs.corp.google.com/piper///depot/google3/assistant/assistant_server/conversation/device/device_volume_interaction.cc?rcl\u003d244601282\u0026l\u003d607",
       "parentUuid": "78f5b8a8_cc49c970",
       "range": {
         "startLine": 138,
