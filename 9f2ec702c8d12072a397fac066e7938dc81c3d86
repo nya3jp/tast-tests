@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdec6815_32fbd22c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-24T01:15:27Z",
+      "side": 1,
+      "message": "Please see other comment on context.WithCancel.",
+      "range": {
+        "startLine": 803,
+        "startChar": 2,
+        "endLine": 803,
+        "endChar": 11
+      },
+      "revId": "9f2ec702c8d12072a397fac066e7938dc81c3d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad3cdb9c_8198f4c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 968,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-24T01:15:27Z",
+      "side": 1,
+      "message": "I think this pattern is context.WithCancel(), https://golang.org/pkg/context/#WithCancel\n\nYou would do something like:\ndiscardCtx, cancel :\u003d context.WithCancel(ctx)\ndefer cancel()\ndiscardChannel, err :\u003d watchDiscardSignal(discardCtx)\n\nAnd then you can use ctx.Done() in watchDiscardSignal(). I\u0027m not sure how important this is, so I\u0027ll leave it up to you.",
+      "range": {
+        "startLine": 968,
+        "startChar": 1,
+        "endLine": 968,
+        "endChar": 60
+      },
+      "revId": "9f2ec702c8d12072a397fac066e7938dc81c3d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
