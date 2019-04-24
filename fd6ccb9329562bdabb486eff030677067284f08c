@@ -179,6 +179,47 @@
     },
     {
       "key": {
+        "uuid": "3d3cd844_a797bc4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2019-04-24T01:19:00Z",
+      "side": 1,
+      "message": "yeah.. please feel free to move this to a separate go file.",
+      "parentUuid": "2315477e_acb05305",
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8701cf4_34013a1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2019-04-24T01:19:00Z",
+      "side": 1,
+      "message": "This cap will break boards with 5+ cores like kevin. Such boards (except for betty* that are only for testing) tend to have heterogeneous cores and are shipped with their own special init.cpusets.rc. The rc file allows the board to give all 5+ cores to fg and top processes:\n\n src/overlays/baseboard-cheza/chromeos-base/chromeos-bsp-baseboard-cheza/files/init.cpusets.rc\n src/overlays/baseboard-gru/chromeos-base/chromeos-bsp-baseboard-gru/files/init.cpusets.rc\n src/overlays/baseboard-kukui/chromeos-base/chromeos-bsp-baseboard-kukui/files/init.cpusets.rc\n src/overlays/baseboard-nami/chromeos-base/chromeos-bsp-baseboard-nami/files/init.cpusets.rc\n src/overlays/baseboard-oak/chromeos-base/chromeos-bsp-baseboard-oak/files/init.cpusets-mt8173-3_18.rc\n src/overlays/baseboard-oak/chromeos-base/chromeos-bsp-baseboard-oak/files/init.cpusets-mt8173-4_4.rc\n src/overlays/baseboard-oak/chromeos-base/chromeos-bsp-baseboard-oak/files/init.cpusets-mt8176-3_18.rc\n src/overlays/baseboard-oak/chromeos-base/chromeos-bsp-baseboard-oak/files/init.cpusets-mt8176-4_4.rc\n\nCan you instead add init.cpusets.rc for betty*? That one can be the same as src/overlays/baseboard-nami/chromeos-base/chromeos-bsp-baseboard-nami/files/init.cpusets.rc:\n\n # Pantheon has 0-7 cpus instead of the default 0-3, so it needs custom\n # cpus assignment.\n on property:sys.boot_completed\u003d1\n     copy /dev/cpuset/cpus /dev/cpuset/foreground/cpus\n     copy /dev/cpuset/cpus /dev/cpuset/top-app/cpus",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 2
+      },
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8bff30f2_5168d597",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
         "patchSetId": 2
