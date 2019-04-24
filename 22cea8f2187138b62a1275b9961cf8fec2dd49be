@@ -85,6 +85,30 @@
       "revId": "22cea8f2187138b62a1275b9961cf8fec2dd49be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56bd4c9f_411b110b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-24T20:18:25Z",
+      "side": 1,
+      "message": "if you just want to use the first value as a string and don\u0027t need to convert it to an int, that\u0027s fine too; i\u0027d just recommend two separate named string vals instead of a slice, since it results in an easier-to-understand signature.",
+      "parentUuid": "59f5901d_f889793e",
+      "range": {
+        "startLine": 290,
+        "startChar": 46,
+        "endLine": 290,
+        "endChar": 54
+      },
+      "revId": "22cea8f2187138b62a1275b9961cf8fec2dd49be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
