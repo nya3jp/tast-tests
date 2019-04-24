@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "28308c32_2fef1019",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/storage/hotplug_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-24T02:16:36Z",
+      "side": 1,
+      "message": "Uploading through \"git push\"",
+      "parentUuid": "94ed07dc_7ffb8ddd",
+      "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "97e1f838_1c4423c1",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 2
