@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "d1700d47_8b3d6c83",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/storage/hotplug_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-24T02:20:35Z",
+      "side": 1,
+      "message": "is there a reason that you can\u0027t use \"repo upload\", as described by the contributing guide at https://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md?\n\nwith \"git push\", you\u0027re bypassing pre-upload check that are intended to catch common errors so that reviewers won\u0027t need to point them out.",
+      "parentUuid": "28308c32_2fef1019",
+      "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "97e1f838_1c4423c1",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 2
