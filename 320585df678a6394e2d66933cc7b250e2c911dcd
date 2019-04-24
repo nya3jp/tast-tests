@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c4e51f0c_1de97bb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-24T01:02:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24b33439_217e1c7b",
+      "revId": "320585df678a6394e2d66933cc7b250e2c911dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c4f9ec1_72bb396f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 9
@@ -39,6 +57,30 @@
       "revId": "320585df678a6394e2d66933cc7b250e2c911dcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24153ef2_180a1729",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-24T01:02:14Z",
+      "side": 1,
+      "message": "Ah---that was a little tricky, had to introduce some temp variables.",
+      "parentUuid": "3c4f9ec1_72bb396f",
+      "range": {
+        "startLine": 778,
+        "startChar": 60,
+        "endLine": 778,
+        "endChar": 64
+      },
+      "revId": "320585df678a6394e2d66933cc7b250e2c911dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
