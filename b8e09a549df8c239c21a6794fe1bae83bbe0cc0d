@@ -186,6 +186,29 @@
     },
     {
       "key": {
+        "uuid": "932b3e60_6f911520",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-24T15:42:03Z",
+      "side": 1,
+      "message": "nit: exercises",
+      "range": {
+        "startLine": 228,
+        "startChar": 11,
+        "endLine": 228,
+        "endChar": 20
+      },
+      "revId": "b8e09a549df8c239c21a6794fe1bae83bbe0cc0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "14a8131d_46a3baa4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
         "patchSetId": 1
