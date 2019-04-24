@@ -50,5 +50,5 @@ func WebRTCPeerConnCameraVP8(ctx context.Context, s *testing.State) {
 		duration = 10 * time.Second
 	}
 
-	webrtc.RunWebRTCPeerConnCamera(ctx, s, s.PreValue().(*chrome.Chrome), videotype.VP8, duration)
+	webrtc.RunWebRTCPeerConnCamera(ctx, s, s.PreValue().(*chrome.Chrome), videotype.VP8, duration, true)
 }

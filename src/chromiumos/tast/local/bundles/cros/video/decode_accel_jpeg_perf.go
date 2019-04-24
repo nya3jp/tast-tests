@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/video/lib/binsetup"
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
 	"chromiumos/tast/local/bundles/cros/video/lib/cpu"
-	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/chrome/bintest"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/testexec"
@@ -50,12 +49,6 @@ var jpegPerfTestFiles = []string{
 // possible. But this means a performant HW decoder might actually increase
 // CPU usage, as the CPU becomes the bottleneck.
 func DecodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
-	vl, err := logging.NewVideoLogger()
-	if err != nil {
-		s.Fatal("Failed to set values for verbose logging")
-	}
-	defer vl.Close()
-
 	const (
 		// Time to wait for CPU to stabilize after launching test binary.
 		stabilizationDuration = 1 * time.Second
@@ -108,7 +101,6 @@ func runJPEGPerfBenchmark(ctx context.Context, s *testing.State, tempDir string,
 	stabilizationDuration time.Duration, measurementDuration time.Duration,
 	perfJPEGDecodeTimes int, filter string) float64 {
 	args := []string{
-		logging.ChromeVmoduleFlag(),
 		"--perf_decode_times=" + strconv.Itoa(perfJPEGDecodeTimes),
 		"--test_data_path=" + tempDir + "/",
 		"--gtest_filter=" + filter,

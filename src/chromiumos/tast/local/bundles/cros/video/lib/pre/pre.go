@@ -14,6 +14,7 @@ import (
 
 // ChromeVideo returns a precondition that Chrome is started with video tests-specific
 // flags and is already logged in when a test is run.
+// This precondition must not be used for performance tests.
 func ChromeVideo() testing.Precondition { return chromeVideoPre }
 
 var chromeVideoPre = chrome.NewPrecondition("video",
