@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aab057f6_94225cfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-24T10:30:53Z",
+      "side": 1,
+      "message": "I think we should explain how metricValue will be used before explaining why perf.Values is unavailable in such use case.",
+      "revId": "c602dbdc9904158ee6395e756f625e7f63acf90b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
