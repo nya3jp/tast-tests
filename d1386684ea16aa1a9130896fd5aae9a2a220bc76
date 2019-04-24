@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "94ed07dc_7ffb8ddd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/storage/hotplug_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-24T01:33:20Z",
+      "side": 1,
+      "message": "how are you uploading changes? i think you should\u0027ve seen a pre-upload warning telling you that this new test needs an \"informational\" attribute.\n\nwith that said, servo tests can\u0027t run in the lab yet, as proper servod connection specs are not passed. see https://crbug.com/867312. this needs to have a \"disabled\" attribute if it goes in before then.",
+      "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "97e1f838_1c4423c1",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 2
