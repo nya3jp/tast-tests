@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "81a7cfd6_2b2e19a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/file_system_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2019-04-24T19:36:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b5841a75_8a4353b1",
+      "revId": "be6b0312e1bca8aad490460ce397413cf0dcc183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d941bf7_d342f53a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/file_system_permissions.go",
         "patchSetId": 2
@@ -30,6 +48,70 @@
       "writtenOn": "2019-04-24T17:57:32Z",
       "side": 1,
       "message": "The TODO was assigned to lhchavez@, who left ARC...\nYusuke-san, could you assign someone in arc-storage team to address this?\n# I quickly took a look, but it looked not trivial.",
+      "revId": "be6b0312e1bca8aad490460ce397413cf0dcc183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d10455f0_7bd741ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/file_system_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2019-04-24T19:36:48Z",
+      "side": 1,
+      "message": "We removed the mount point from P+, so you can actually just remove the TODO:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform2/+/1090516/",
+      "parentUuid": "1d941bf7_d342f53a",
+      "revId": "be6b0312e1bca8aad490460ce397413cf0dcc183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ed487a0_fb1a033d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/file_system_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2019-04-24T19:36:48Z",
+      "side": 1,
+      "message": "nit: Can you remove this? It\u0027s always used these days.",
+      "range": {
+        "startLine": 90,
+        "startChar": 5,
+        "endLine": 90,
+        "endChar": 35
+      },
+      "revId": "be6b0312e1bca8aad490460ce397413cf0dcc183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2645d018_a45b8c54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/file_system_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2019-04-24T19:36:48Z",
+      "side": 1,
+      "message": "nit: Can we check this only on N? TODO is fine.",
+      "range": {
+        "startLine": 99,
+        "startChar": 38,
+        "endLine": 99,
+        "endChar": 61
+      },
       "revId": "be6b0312e1bca8aad490460ce397413cf0dcc183",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
