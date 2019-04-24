@@ -13,8 +13,6 @@ import (
 	"math"
 	"net"
 	"os"
-	"runtime"
-	"syscall"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -822,45 +820,6 @@ func checkDiscards(ctx context.Context, c <-chan struct{}) (discardHappened bool
 	}
 }
 
-// createMemoryMapping creates a memory mapping of size allocBytes.
-// The method returns a byte slice and a function which can be
-// used to unmap the mapping, otherwise an error.
-func createMemoryMapping(allocBytes uint64) ([]byte, func(), error) {
-	// If we're on a 32-bit architecture and we want to preallocate more than the address space can handle we have to fail.
-	// arm and 386 are the only 32-bit architectures we would see, 64-bit arm is arm64.
-	if runtime.GOARCH == "arm" || runtime.GOARCH == "386" {
-		if allocBytes >= math.MaxUint32 {
-			return nil, nil, errors.Errorf("attempt to create memory mapping on 32-bit architecture that is too large: %d bytes", allocBytes)
-		}
-	}
-
-	data, err := syscall.Mmap(-1, 0, int(allocBytes), syscall.PROT_READ|syscall.PROT_WRITE, syscall.MAP_ANON|syscall.MAP_PRIVATE)
-	if err != nil {
-		return nil, nil, errors.Wrapf(err, "unable to create a mapping of size %d bytes via mmap", allocBytes)
-	}
-
-	return data, func() { syscall.Munmap(data) }, nil
-}
-
-// fillWithPageContents fills a byte slice with the PageFile contents.
-func fillWithPageContents(b []byte, p *RunParameters) error {
-	pf, err := ioutil.ReadFile(p.PageFilePath)
-	if err != nil {
-		return err
-	}
-
-	// The pagefile should be exactly one page.
-	if len(pf) != os.Getpagesize() {
-		return errors.Errorf("pagefile contents in %s were not page-sized got: %d bytes; want: %d bytes", p.PageFilePath, len(pf), os.Getpagesize())
-	}
-
-	for i := 0; i < len(b); i += len(pf) {
-		copy(b[i:], pf)
-	}
-
-	return nil
-}
-
 // Run creates a memory pressure situation by loading multiple tabs into Chrome
 // until the first tab discard occurs.  It takes various measurements as the
 // pressure increases (phase 1) and afterwards (phase 2).
@@ -871,10 +830,6 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		coldTabSetSize       = 10
 		tabCycleDelay        = 300 * time.Millisecond
 		tabSwitchRepeatCount = 10
-		// For faster test runs during development, use preAllocMiB to
-		// specify how many MiB worth of process space should be
-		// preallocated and filled with compressible data.
-		preAllocMiB = 0
 	)
 
 	memInfo, err := kernelmeter.MemInfo()
@@ -931,23 +886,6 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	// manager behavior.
 	if err := kernelmeter.LogMemoryParameters(ctx, p.PageFileCompressionRatio); err != nil {
 		s.Fatal("Cannot log memory parameters: ", err)
-	}
-
-	if preAllocMiB > 0 && !p.RecordPageSet {
-		s.Logf("Preallocating %d MiB via mmap", preAllocMiB)
-		allocBytes := uint64(preAllocMiB * 1024 * 1024)
-		data, unmapFunc, err := createMemoryMapping(allocBytes)
-		if err != nil {
-			s.Fatal("Unable to create memory mapping: ", err)
-		}
-		defer unmapFunc()
-
-		err = fillWithPageContents(data, p)
-		if err != nil {
-			s.Fatal("Unable to fill mapping: ", err)
-		}
-	} else {
-		s.Log("No preallocation needed")
 	}
 
 	// Log in.  TODO(semenzato): this is not working (yet), we would like
