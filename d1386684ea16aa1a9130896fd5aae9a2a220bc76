@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97e1f838_1c4423c1",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-24T00:52:59Z",
+      "side": 1,
+      "message": "Please add periods to make the comments full sentences.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences\n\nSame for other doc comments and inline comments.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 40
+      },
+      "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6412767_edd3febd",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-24T00:52:59Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with the existing servo implementations, but is it usual that we need to make sure the change took effect? Would you mind pointing me some existing implementation (maybe in autotest) doing the similar thing?\n\nI\u0027m asking this because it\u0027s surprising to users of the servo package if Set does more than calling \"set\" RPC. Evne if it\u0027s a usual thing, I\u0027d like to name this function differently to clarify this does more than just setting a value, for example SetCheck.",
+      "range": {
+        "startLine": 28,
+        "startChar": 3,
+        "endLine": 28,
+        "endChar": 70
+      },
+      "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0589ac1a_f3f23ff4",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-24T00:52:59Z",
+      "side": 1,
+      "message": "Hmm, should we make args so generic?\n\nI guess at least we can assume we have exactly two arguments.\n\nAnd in the current use cases, name and value are both strings. Actually this method panics if value is not a string (in the type assertion at the end of this method).\n\nSo, please define this method as:\n\n func (s *Servo) Set(ctx context.Context, name, value string) error\n\nI guess we may want to support non-string value later, but it can be implemented when it\u0027s needed.",
+      "range": {
+        "startLine": 29,
+        "startChar": 41,
+        "endLine": 29,
+        "endChar": 60
+      },
+      "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09fa6569_6aa04990",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-24T00:52:59Z",
+      "side": 1,
+      "message": "Please move this declaration to just before it\u0027s used, that is before s.run(ctx, newCall(\"set\", args...) call.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f2ebbe0_83a66c01",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-24T00:52:59Z",
+      "side": 1,
+      "message": "Please call Get instead.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 2
+      },
+      "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d86ae0cb_5c39c8ed",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-24T00:52:59Z",
+      "side": 1,
+      "message": "Let\u0027s call SetNoCheck.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "680577d3_eebf88b1",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-24T00:52:59Z",
+      "side": 1,
+      "message": "This means this method panics if args[1] is not a string.",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 31
+      },
+      "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25cfe08b_665c4d64",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-24T00:52:59Z",
+      "side": 1,
+      "message": "Please start error type\u0027s strings with lower case letters.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings\n\nSame for other errors too.",
+      "range": {
+        "startLine": 62,
+        "startChar": 24,
+        "endLine": 62,
+        "endChar": 30
+      },
+      "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b1d6fd6_378570af",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-24T00:52:59Z",
+      "side": 1,
+      "message": "Please define a type for type safety. For example\n\n type USBState string\n\n const (\n   Host USBState \u003d \"servo_sees_usbkey\"\n   DUT \u003d \"dut_sees_usbkey\"\n )",
+      "range": {
+        "startLine": 78,
+        "startChar": 50,
+        "endLine": 78,
+        "endChar": 65
+      },
+      "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9430e36d_70cf0f37",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-24T00:52:59Z",
+      "side": 1,
+      "message": "Please define a type similarly.",
+      "range": {
+        "startLine": 94,
+        "startChar": 55,
+        "endLine": 94,
+        "endChar": 72
+      },
+      "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
