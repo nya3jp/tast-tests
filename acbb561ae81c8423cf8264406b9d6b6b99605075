@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "6eec8822_5b62f192",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2019-04-24T19:36:45Z",
+      "side": 1,
+      "message": "I see. it\u0027s a server-side behavior change.",
+      "parentUuid": "2b117cbc_8df3c9a6",
+      "revId": "acbb561ae81c8423cf8264406b9d6b6b99605075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78f5b8a8_cc49c970",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
         "patchSetId": 1
