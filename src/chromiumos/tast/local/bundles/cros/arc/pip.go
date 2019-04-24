@@ -130,6 +130,9 @@ func PIP(ctx context.Context, s *testing.State) {
 			// Press button that triggers PIP mode in activity.
 			const pipButtonID = pkgName + ":id/enter_pip"
 			must(dev.Object(ui.ID(pipButtonID)).Click(ctx))
+			// TODO(b/131248000) WaitForIdle doesn't catch all PIP possible animations.
+			// Add temporary delay until it gets fixed.
+			must(testing.Sleep(ctx, 200*time.Millisecond))
 			must(act.WaitForIdle(ctx, time.Second))
 
 			if err := test.fn(ctx, tconn, act, dev, dispMode); err != nil {
@@ -197,6 +200,9 @@ func testPIPResize(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d
 	// https://android.googlesource.com/platform/frameworks/base/+/refs/heads/pie-release/services/core/java/com/android/server/policy/PhoneWindowManager.java#6387
 	if err := dev.PressKeyCode(ctx, ui.KEYCODE_WINDOW, 0); err != nil {
 		return errors.Wrap(err, "could not activate PIP menu")
+	}
+	if err := act.WaitForIdle(ctx, time.Second); err != nil {
+		return err
 	}
 
 	bounds, err := act.WindowBounds(ctx)
@@ -288,6 +294,10 @@ func testPIPFling(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, de
 		{1, 0, right},  // swipe to right
 		{0, 1, bottom}, // swipe to bottom
 	} {
+		if err := act.WaitForIdle(ctx, time.Second); err != nil {
+			return err
+		}
+
 		bounds, err := act.WindowBounds(ctx)
 		if err != nil {
 			return errors.Wrap(err, "could not get PIP window bounds")
@@ -309,6 +319,11 @@ func testPIPFling(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, de
 			return errors.Wrap(err, "failed to finish the swipe gesture")
 		}
 
+		// TODO(b/131248000): WaitForIdle doesn't catch all PIP possible animations, like fling.
+		// Add temporary delay until it gets fixed.
+		if err := testing.Sleep(ctx, 500*time.Millisecond); err != nil {
+			return err
+		}
 		if err := act.WaitForIdle(ctx, time.Second); err != nil {
 			return err
 		}
