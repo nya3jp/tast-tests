@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e81032ec_4dfbdad3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-24T21:44:06Z",
+      "side": 1,
+      "message": "nit: var chromeArgs []string\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 25
+      },
+      "revId": "b4ff19f8e70e1add6cc5c50b0f9fc05da15e174d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f08f9c1_63908677",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-24T21:44:06Z",
+      "side": 1,
+      "message": "Could you define a type for this? Even if verbose is always true or false, using a new type and named constants makes it easier to understand the caller:\n\n webrtc.RunWebRTCCamera(ctx, s, cr, time.Minute, false)\n\nvs.\n\n webrtc.RunWebRTCCamera(ctx, s, cr, time.Minute, webrtc.NoVerboseLogging)",
+      "range": {
+        "startLine": 174,
+        "startChar": 25,
+        "endLine": 174,
+        "endChar": 37
+      },
+      "revId": "b4ff19f8e70e1add6cc5c50b0f9fc05da15e174d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb57166c_d634596d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-24T21:44:06Z",
+      "side": 1,
+      "message": "huge nit: since duration is time.Duration, it\u0027s not always in seconds. Maybe:\n\n duration specifies how long video capturing will ...",
+      "range": {
+        "startLine": 248,
+        "startChar": 22,
+        "endLine": 248,
+        "endChar": 38
+      },
+      "revId": "b4ff19f8e70e1add6cc5c50b0f9fc05da15e174d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
