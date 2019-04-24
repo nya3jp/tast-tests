@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
-	"chromiumos/tast/local/bundles/cros/video/lib/pre"
 	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
 	"chromiumos/tast/local/bundles/cros/video/webrtc"
 	"chromiumos/tast/local/chrome"
@@ -24,7 +23,6 @@ func init() {
 		Contacts:     []string{"keiichiw@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome_login"},
-		Pre:          pre.ChromeVideo(),
 		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback_camera.html"),
 	})
 }
@@ -40,7 +38,8 @@ func init() {
 func WebRTCPeerConnCameraVP8Perf(ctx context.Context, s *testing.State) {
 	// Run loopback call for 20 seconds.
 	result := webrtc.RunWebRTCPeerConnCamera(ctx, s,
-		s.PreValue().(*chrome.Chrome), videotype.VP8, 20*time.Second)
+		s.PreValue().(*chrome.Chrome), videotype.VP8,
+		20*time.Second, webrtc.NoVerboseLogging)
 
 	if !s.HasError() {
 		// Set and upload perf metrics below.

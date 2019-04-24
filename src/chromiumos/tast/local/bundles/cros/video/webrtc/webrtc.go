@@ -166,15 +166,27 @@ func (r *CameraResults) SetPerf(p *perf.Values) {
 	}
 }
 
+// VerboseLoggingMode describes whether video driver's verbose debug log is enabled.
+type VerboseLoggingMode int
+
+const (
+	VerboseLogging   VerboseLoggingMode = iota // Enables verbose logging.
+	NoVerboseLogging                           // Do not enable verbose logging.
+)
+
 // RunWebRTCCamera run a test in /video/data/getusermedia.html.
-// duration is an integer that specify how many seconds video capturing will run in for each resolution.
+// duration specifies how long video capturing will run for each resolution.
+// If verbose is true, video drivers' verbose messages will be enabled.
+// verbose must be false for performance tests.
 func RunWebRTCCamera(ctx context.Context, s *testing.State, cr *chrome.Chrome,
-	duration time.Duration) CameraResults {
-	vl, err := logging.NewVideoLogger()
-	if err != nil {
-		s.Fatal("Failed to set values for verbose logging")
+	duration time.Duration, verbose VerboseLoggingMode) CameraResults {
+	if verbose == VerboseLogging {
+		vl, err := logging.NewVideoLogger()
+		if err != nil {
+			s.Fatal("Failed to set values for verbose logging")
+		}
+		defer vl.Close()
 	}
-	defer vl.Close()
 
 	var results CameraResults
 	runTest(ctx, s, cr, "getusermedia.html", fmt.Sprintf("testNextResolution(%d)", duration/time.Second), &results)
@@ -240,15 +252,19 @@ func (r *PeerConnCameraResult) SetPerf(p *perf.Values, codec videotype.Codec) {
 }
 
 // RunWebRTCPeerConnCamera run a test in /video/data/loopback_camera.html.
-// duration is an integer that specify how many seconds video capturing will run in for each resolution.
 // codec is a video codec to exercise in testing.
+// duration specifies how long video capturing will run for each resolution.
+// If verbose is true, video drivers' verbose messages will be enabled.
+// verbose must be false for performance tests.
 func RunWebRTCPeerConnCamera(ctx context.Context, s *testing.State, cr *chrome.Chrome,
-	codec videotype.Codec, duration time.Duration) PeerConnCameraResult {
-	vl, err := logging.NewVideoLogger()
-	if err != nil {
-		s.Fatal("Failed to set values for verbose logging")
+	codec videotype.Codec, duration time.Duration, verbose VerboseLoggingMode) PeerConnCameraResult {
+	if verbose == VerboseLogging {
+		vl, err := logging.NewVideoLogger()
+		if err != nil {
+			s.Fatal("Failed to set values for verbose logging")
+		}
+		defer vl.Close()
 	}
-	defer vl.Close()
 
 	var result PeerConnCameraResult
 	runTest(ctx, s, cr, "loopback_camera.html",

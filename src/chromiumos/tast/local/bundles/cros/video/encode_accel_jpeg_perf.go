@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
 	"chromiumos/tast/local/bundles/cros/video/lib/cpu"
-	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/chrome/bintest"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
@@ -38,12 +37,6 @@ func init() {
 // EncodeAccelJPEGPerf measures SW/HW JPEG encode performance by running the
 // SimpleEncode test in jpeg_encode_accelerator_unittest.
 func EncodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
-	vl, err := logging.NewVideoLogger()
-	if err != nil {
-		s.Fatal("Failed to set values for verbose logging")
-	}
-	defer vl.Close()
-
 	const (
 		// GTest filter used to run JPEG encode tests.
 		filter = "JpegEncodeAcceleratorTest.SimpleEncode"
@@ -65,7 +58,6 @@ func EncodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 	s.Log("Measuring JPEG encode performance")
 	testLogPath := filepath.Join(s.OutDir(), "test.log")
 	args := []string{
-		logging.ChromeVmoduleFlag(),
 		"--repeat=" + strconv.Itoa(perfJPEGEncodeTimes),
 		"--output_log=" + testLogPath,
 		"--gtest_filter=" + filter,

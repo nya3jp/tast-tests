@@ -47,5 +47,6 @@ func WebRTCCamera(ctx context.Context, s *testing.State) {
 	}
 
 	// Run tests for 480p and 720p.
-	webrtc.RunWebRTCCamera(ctx, s, s.PreValue().(*chrome.Chrome), duration)
+	webrtc.RunWebRTCCamera(ctx, s, s.PreValue().(*chrome.Chrome), duration,
+		webrtc.VerboseLogging)
 }

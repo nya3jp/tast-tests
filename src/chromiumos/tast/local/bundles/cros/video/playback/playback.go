@@ -136,7 +136,7 @@ func measurePerformance(ctx context.Context, fileSystem http.FileSystem, videoNa
 // measureWithConfig plays video one time and measures performance values.
 // The measured values are recorded in perfData.
 func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, videoName string, perfData collectedPerfData, hwState hwAccelState) error {
-	chromeArgs := []string{logging.ChromeVmoduleFlag()}
+	var chromeArgs []string
 	if hwState == hwAccelDisabled {
 		chromeArgs = append(chromeArgs, "--disable-accelerated-video-decode")
 	}
