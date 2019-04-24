@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5841a75_8a4353b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/file_system_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T17:57:32Z",
+      "side": 1,
+      "message": "original author was dspaid@, who left ChromeOS unfortunately.\nYusuke-san, can I list you here?",
+      "revId": "be6b0312e1bca8aad490460ce397413cf0dcc183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d941bf7_d342f53a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/file_system_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T17:57:32Z",
+      "side": 1,
+      "message": "The TODO was assigned to lhchavez@, who left ARC...\nYusuke-san, could you assign someone in arc-storage team to address this?\n# I quickly took a look, but it looked not trivial.",
+      "revId": "be6b0312e1bca8aad490460ce397413cf0dcc183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
