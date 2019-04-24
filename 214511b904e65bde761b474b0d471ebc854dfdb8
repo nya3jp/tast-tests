@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "eacd28b4_f3ed478e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-24T00:03:35Z",
+      "side": 1,
+      "message": "Resolved.",
+      "parentUuid": "1c82163f_e647a345",
+      "range": {
+        "startLine": 650,
+        "startChar": 0,
+        "endLine": 651,
+        "endChar": 38
+      },
+      "revId": "214511b904e65bde761b474b0d471ebc854dfdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eebb0532_d8211131",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 8
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "306dfa1e_b469543b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-24T00:03:35Z",
+      "side": 1,
+      "message": "No it\u0027s fine.  If there\u0027s no zram, LogMemoryParameters just logs it.",
+      "parentUuid": "eebb0532_d8211131",
+      "range": {
+        "startLine": 922,
+        "startChar": 2,
+        "endLine": 922,
+        "endChar": 48
+      },
+      "revId": "214511b904e65bde761b474b0d471ebc854dfdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0dcb1e40_94868e4a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 8
@@ -92,6 +140,30 @@
       "revId": "214511b904e65bde761b474b0d471ebc854dfdb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7177b128_4c435874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1119,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-24T00:03:35Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "0dcb1e40_94868e4a",
+      "range": {
+        "startLine": 1119,
+        "startChar": 34,
+        "endLine": 1119,
+        "endChar": 38
+      },
+      "revId": "214511b904e65bde761b474b0d471ebc854dfdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

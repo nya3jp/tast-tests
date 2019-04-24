@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "417a1c80_c8152144",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-24T00:03:35Z",
+      "side": 1,
+      "message": "Ah, nice.  It\u0027s good to know I can do it this way, but I\u0027d prefer to keep it as is if it\u0027s OK.  I am using the %7.2f in a lot of places and I like it.",
+      "parentUuid": "505edef6_d29c6d21",
+      "range": {
+        "startLine": 677,
+        "startChar": 72,
+        "endLine": 677,
+        "endChar": 82
+      },
+      "revId": "7c74de375f5576100c2d5775cd6f86310ac15fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c5a626d_ba5d4135",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 5
@@ -36,6 +60,24 @@
       "writtenOn": "2019-04-23T17:58:06Z",
       "side": 1,
       "message": "nit: same here",
+      "revId": "7c74de375f5576100c2d5775cd6f86310ac15fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cc13b8e_cc7ba282",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-24T00:03:35Z",
+      "side": 1,
+      "message": "Same as above, pretty please!",
+      "parentUuid": "2c5a626d_ba5d4135",
       "revId": "7c74de375f5576100c2d5775cd6f86310ac15fe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "1b1e4dc6_eb1c719d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-24T00:03:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e7c900e_42e91eaf",
+      "range": {
+        "startLine": 777,
+        "startChar": 5,
+        "endLine": 777,
+        "endChar": 19
+      },
+      "revId": "7c74de375f5576100c2d5775cd6f86310ac15fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e7471bd_e43204fc",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 5
@@ -79,6 +145,24 @@
       "revId": "7c74de375f5576100c2d5775cd6f86310ac15fe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb53ab0f_6a5b1103",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-24T00:03:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e7471bd_e43204fc",
+      "revId": "7c74de375f5576100c2d5775cd6f86310ac15fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "7ec192b7_2e66c1af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-24T00:03:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3b6b774_dbe76487",
+      "revId": "7c74de375f5576100c2d5775cd6f86310ac15fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "303928e0_13a598d9",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 5
@@ -113,6 +215,24 @@
       "revId": "7c74de375f5576100c2d5775cd6f86310ac15fe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dad4c2ff_e471ce09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-24T00:03:35Z",
+      "side": 1,
+      "message": "It should be OK, maybe too long.  This is called immediately after discovering that a tab has been lost.  It\u0027s plenty of time for Chrome to send the corresponding tab discard signal.\n\nI am going to redo all this in a following CL anyway.  It\u0027s related to the question that Sonny asked you about detecting renderer crashes.",
+      "parentUuid": "303928e0_13a598d9",
+      "revId": "7c74de375f5576100c2d5775cd6f86310ac15fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -136,6 +256,30 @@
       "revId": "7c74de375f5576100c2d5775cd6f86310ac15fe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8930819a_14cbd338",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-24T00:03:35Z",
+      "side": 1,
+      "message": "Unforgivable!  Thank you for catchingup this.",
+      "parentUuid": "8f81390d_0ed859a7",
+      "range": {
+        "startLine": 959,
+        "startChar": 18,
+        "endLine": 959,
+        "endChar": 23
+      },
+      "revId": "7c74de375f5576100c2d5775cd6f86310ac15fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
