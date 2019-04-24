@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/video/lib/constants"
+	"chromiumos/tast/local/bundles/cros/video/lib/cpu"
 	"chromiumos/tast/local/bundles/cros/video/lib/histogram"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
@@ -74,24 +75,63 @@ func getMax(s []time.Duration) time.Duration {
 	return max
 }
 
-// measureDecodeTime returns largest observed frames' decode time and median of decode time samples.
-// The decode time samples are obtained from chrome://webrtc-internals page.
-func measureDecodeTime(ctx context.Context, webRTCInternals *chrome.Conn) (max, median time.Duration, err error) {
+// Function signature to measure performance and writes result to perf.Values.
+// Note that metric's name prefix is given.
+type measureFunc func(ctx context.Context, s *testing.State, cr *chrome.Chrome, pv *perf.Values, prefix string) error
+
+// measureCPU measures CPU usage for a period of time after a short period for stabilization and writes CPU usage to perf.Values.
+func measureCPU(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *perf.Values, prefix string) error {
+	const (
+		stabilize = 10 * time.Second // time to wait for CPU to stabilize after launching proc.
+		measure   = 30 * time.Second // duration for measuring CPU usage.
+	)
+
+	s.Logf("Sleeping %v to wait for CPU usage to stabilize", stabilize)
+	if err := testing.Sleep(ctx, stabilize); err != nil {
+		return err
+	}
+	s.Log("Measuring CPU usage for ", measure)
+	cpuUsage, err := cpu.MeasureUsage(ctx, measure)
+	if err != nil {
+		return err
+	}
+	s.Logf("CPU usage: %f%%", cpuUsage)
+	p.Set(perf.Metric{
+		Name:      prefix + "video_cpu_usage",
+		Unit:      "percent",
+		Direction: perf.SmallerIsBetter},
+		cpuUsage)
+	return nil
+}
+
+// measureDecodeTime measures frames' decode time and recent frames' max decode time via
+// chrome://webrtc-internals dashboard. It writes largest max recent decode time and median
+// decode time to perf.Values.
+func measureDecodeTime(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *perf.Values, prefix string) error {
+	addStatsJS, err := ioutil.ReadFile(s.DataPath(AddStatsJSFile))
+	if err != nil {
+		return errors.Wrap(err, "failed to read JS for gathering decode time")
+	}
+	conn, err := openWebRTCInternalsPage(ctx, cr, string(addStatsJS))
+	if err != nil {
+		return errors.Wrap(err, "failed to open WebRTC-internals page")
+	}
+	defer conn.Close()
+	defer conn.CloseTarget(ctx)
+
 	const (
 		measureTimeout  = time.Minute
 		measureInterval = 500 * time.Millisecond
 		numSamples      = 10
 	)
-
 	// Current frame's decode time.
 	var decodeTimes []time.Duration
 	// Maximum observed frame decode time.
 	var maxDecodeTimes []time.Duration
-
 	err = testing.Poll(ctx,
 		func(ctx context.Context) error {
 			var maxTimesMs []int
-			if err := webRTCInternals.Eval(ctx, "googMaxDecodeMs", &maxTimesMs); err != nil {
+			if err := conn.Eval(ctx, "googMaxDecodeMs", &maxTimesMs); err != nil {
 				return testing.PollBreak(errors.Wrap(err, "unable to eval googMaxDecodeMs"))
 
 			}
@@ -104,7 +144,7 @@ func measureDecodeTime(ctx context.Context, webRTCInternals *chrome.Conn) (max, 
 			}
 
 			var timesMs []int
-			if err := webRTCInternals.Eval(ctx, "googDecodeMs", &timesMs); err != nil {
+			if err := conn.Eval(ctx, "googDecodeMs", &timesMs); err != nil {
 				return testing.PollBreak(errors.Wrap(err, "unable to eval googDecodeMs"))
 			}
 			if len(timesMs) < numSamples {
@@ -117,28 +157,37 @@ func measureDecodeTime(ctx context.Context, webRTCInternals *chrome.Conn) (max, 
 			return nil
 		}, &testing.PollOptions{Interval: measureInterval, Timeout: measureTimeout})
 	if err != nil {
-		return
+		return err
 	}
 	if len(maxDecodeTimes) < numSamples {
-		return max, median, errors.Errorf("got %d max decode time sample(s); want %d", len(maxDecodeTimes), numSamples)
+		return errors.Errorf("got %d max decode time sample(s); want %d", len(maxDecodeTimes), numSamples)
 	}
 	if len(decodeTimes) < numSamples {
-		return max, median, errors.Errorf("got %d decode time sample(s); want %d", len(decodeTimes), numSamples)
+		return errors.Errorf("got %d decode time sample(s); want %d", len(decodeTimes), numSamples)
 	}
-	max = getMax(maxDecodeTimes)
-	median = getMedian(decodeTimes)
+	max := getMax(maxDecodeTimes)
+	median := getMedian(decodeTimes)
 	testing.ContextLog(ctx, "Max decode times: ", maxDecodeTimes)
 	testing.ContextLog(ctx, "Decode times: ", decodeTimes)
 	testing.ContextLogf(ctx, "Largest max is %v, median is %v", max, median)
-	return
+	p.Set(perf.Metric{
+		Name:      prefix + "decode_time.percentile_0.50",
+		Unit:      "milliseconds",
+		Direction: perf.SmallerIsBetter},
+		float64(median)/float64(time.Millisecond))
+	p.Set(perf.Metric{
+		Name:      prefix + "decode_time.max",
+		Unit:      "milliseconds",
+		Direction: perf.SmallerIsBetter},
+		float64(max)/float64(time.Millisecond))
+	return nil
 }
 
-// webRTCPerf starts a Chrome instance (with or without hardware video decoder),
-// opens an WebRTC loopback page that repeatly loopbacks a video stream
-// to measure decode time by looking at chrome://webrtc-internals page,
-// and stores to perf.Values struct.
-// webRTCPerf returns true if video decode is hardware accelerated; otherwise, returns false.
-func webRTCPerf(ctx context.Context, s *testing.State, streamFile, loopbackURL, addStatsJS string,
+// webRTCDecodePerf starts a Chrome instance (with or without hardware video decoder),
+// opens an WebRTC loopback page that repeatly loopbacks a video stream. After setting up,
+// it calls measure() to measure performance metrics and stores to perf.Values.
+// webRTCDecodePerf returns true if video decode is hardware accelerated; otherwise, returns false.
+func webRTCDecodePerf(ctx context.Context, s *testing.State, streamFile, loopbackURL string, measure measureFunc,
 	disableHWAccel bool, p *perf.Values) (hwAccelUsed bool) {
 	chromeArgs := chromeArgsWithCameraInput(streamFile, false)
 	if disableHWAccel {
@@ -174,68 +223,66 @@ func webRTCPerf(ctx context.Context, s *testing.State, streamFile, loopbackURL, 
 		s.Fatal("Error sanity check loopback web page: ", err)
 	}
 
-	webRTCInternals, err := openWebRTCInternalsPage(shortCtx, cr, addStatsJS)
-	if err != nil {
-		s.Fatal("Failed to open WebRTC-internals page: ", err)
-	}
-	defer webRTCInternals.Close()
-	// Close the page after test. Note that it uses original ctx.
-	defer webRTCInternals.CloseTarget(ctx)
-
-	max, median, err := measureDecodeTime(shortCtx, webRTCInternals)
-	if err != nil {
-		s.Fatal("Failed to measure decode time: ", err)
-	}
-
 	hwAccelUsed, err = histogram.WasHWAccelUsed(shortCtx, cr, rtcInitHistogram, constants.RTCVDInitStatus, int64(constants.RTCVDInitSuccess))
 	s.Log("Use hardware video decoder? ", hwAccelUsed)
 	if disableHWAccel && hwAccelUsed {
 		s.Fatal("Hardware video decoder unexpectedly used")
 	}
 
-	hwPrefix := "sw_"
+	prefix := "sw_"
 	if hwAccelUsed {
-		hwPrefix = "hw_"
+		prefix = "hw_"
 	}
-
 	// TODO(crbug.com/955957): Remove "tast_" prefix after removing video_WebRtcPerf in autotest.
-	const tastPrefix = "tast_"
-	p.Set(perf.Metric{
-		Name:      tastPrefix + hwPrefix + "decode_time.max",
-		Unit:      "milliseconds",
-		Direction: perf.SmallerIsBetter},
-		float64(max)/float64(time.Millisecond))
-	p.Set(perf.Metric{
-		Name:      tastPrefix + hwPrefix + "decode_time.percentile_0.50",
-		Unit:      "milliseconds",
-		Direction: perf.SmallerIsBetter},
-		float64(median)/float64(time.Millisecond))
+	prefix = "tast_" + prefix
+	if err := measure(shortCtx, s, cr, p, prefix); err != nil {
+		s.Fatal("Failed to measure: ", err)
+	}
 
 	return hwAccelUsed
 }
 
-// RunWebRTCDecodePerf starts a Chrome instance (with or without hardware video decoder),
+// RunWebRTCDecodePerfTime starts a Chrome instance (with or without hardware video decoder),
 // opens an WebRTC loopback page that repeatly loopbacks a camera stream
 // to measure decode time by looking at chrome://webrtc-internals page,
 // and stores decode time measurements to perf.
-func RunWebRTCDecodePerf(ctx context.Context, s *testing.State, streamName string) {
+func RunWebRTCDecodePerfTime(ctx context.Context, s *testing.State, streamName string) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 	loopbackURL := server.URL + "/" + LoopbackPage
-
-	b, err := ioutil.ReadFile(s.DataPath(AddStatsJSFile))
-	if err != nil {
-		s.Fatal("Failed to read JS for gathering decode time: ", err)
-	}
-	addStatsJS := string(b)
 
 	p := perf.NewValues()
 	// Try hardware accelerated WebRTC first.
 	// If it is hardware accelerated, run without hardware acceleration again.
 	streamFilePath := s.DataPath(streamName)
-	hwAccelUsed := webRTCPerf(ctx, s, streamFilePath, loopbackURL, addStatsJS, false, p)
+	hwAccelUsed := webRTCDecodePerf(ctx, s, streamFilePath, loopbackURL, measureDecodeTime, false, p)
 	if hwAccelUsed {
-		webRTCPerf(ctx, s, streamFilePath, loopbackURL, addStatsJS, true, p)
+		webRTCDecodePerf(ctx, s, streamFilePath, loopbackURL, measureDecodeTime, true, p)
+	}
+	p.Save(s.OutDir())
+}
+
+// RunWebRTCDecodePerfCPU starts a Chrome instance (with or without hardware video decoder),
+// opens an WebRTC loopback page that repeatly loopbacks a video stream
+// to measure CPU usage and stores decode time measurements to perf.
+func RunWebRTCDecodePerfCPU(ctx context.Context, s *testing.State, streamName string) {
+	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer server.Close()
+	loopbackURL := server.URL + "/" + LoopbackPage
+
+	shortCtx, cleanupBenchmark, err := cpu.SetUpBenchmark(ctx)
+	if err != nil {
+		s.Fatal("Failed to set up CPU benchmark mode: ", err)
+	}
+	defer cleanupBenchmark()
+
+	p := perf.NewValues()
+	// Try hardware accelerated WebRTC first.
+	// If it is hardware accelerated, run without hardware acceleration again.
+	streamFilePath := s.DataPath(streamName)
+	hwAccelUsed := webRTCDecodePerf(shortCtx, s, streamFilePath, loopbackURL, measureCPU, false, p)
+	if hwAccelUsed {
+		webRTCDecodePerf(shortCtx, s, streamFilePath, loopbackURL, measureCPU, true, p)
 	}
 	p.Save(s.OutDir())
 }
