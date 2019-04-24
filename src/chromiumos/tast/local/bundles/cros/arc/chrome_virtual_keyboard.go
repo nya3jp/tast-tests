@@ -107,9 +107,20 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 
 	expected := ""
 
-	for _, key := range keys {
+	for i, key := range keys {
 		if err := vkb.TapKey(ctx, kconn, key); err != nil {
-			s.Fatalf("Failed to tap %q: %v", key, err)
+			if i > 0 {
+				s.Fatalf("Failed to tap %q: %v", key, err)
+			}
+
+			// The first letter couldn't be found probably because shift was enabled.
+			s.Log("Retrying after tapping shift")
+			if err := vkb.TapKey(ctx, kconn, "shift"); err != nil {
+				s.Fatal("Failed to tap shift: ", err)
+			}
+			if err := vkb.TapKey(ctx, kconn, key); err != nil {
+				s.Fatalf("Failed to tap %q: %v", key, err)
+			}
 		}
 
 		if key == "backspace" {
