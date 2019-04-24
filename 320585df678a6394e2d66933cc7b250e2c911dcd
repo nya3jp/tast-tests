@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24b33439_217e1c7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-24T00:18:12Z",
+      "side": 1,
+      "message": "nit: please reword this to make it clearer how the two channels are used. in particular, please mention that the caller must close stop rather than writing to it, as there\u0027s a potential deadlock otherwise",
+      "revId": "320585df678a6394e2d66933cc7b250e2c911dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c4f9ec1_72bb396f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-24T00:18:12Z",
+      "side": 1,
+      "message": "\"discard \u003c-chan struct{}, stop chan\u003c- struct{}\" to both document how the caller should use the channels and prevent them from doing the wrong thing\n\n(but man the syntax is painful)",
+      "range": {
+        "startLine": 778,
+        "startChar": 60,
+        "endLine": 778,
+        "endChar": 64
+      },
+      "revId": "320585df678a6394e2d66933cc7b250e2c911dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
