@@ -290,12 +290,6 @@ func RunAllAccelVideoTests(ctx context.Context, s *testing.State, opts TestOptio
 
 // RunAccelVideoPerfTest runs video_encode_accelerator_unittest multiple times with different arguments to gather perf metrics.
 func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts TestOptions) {
-	vl, err := logging.NewVideoLogger()
-	if err != nil {
-		s.Fatal("Failed to set values for verbose logging")
-	}
-	defer vl.Close()
-
 	const (
 		// testLogSuffix is the log name suffix of dumping log from test binary.
 		testLogSuffix = "test.log"
@@ -378,12 +372,6 @@ func RunARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts Tes
 
 // RunARCPerfVideoTest runs all perf tests of arcvideoencoder_test in ARC.
 func RunARCPerfVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts TestOptions) {
-	vl, err := logging.NewVideoLogger()
-	if err != nil {
-		s.Fatal("Failed to set values for verbose logging: ", err)
-	}
-	defer vl.Close()
-
 	pv := perf.NewValues()
 	runARCVideoTest(ctx, s, a, opts, pv,
 		// Measure FPS and latency.

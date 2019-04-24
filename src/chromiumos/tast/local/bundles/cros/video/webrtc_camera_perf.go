@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
-	"chromiumos/tast/local/bundles/cros/video/lib/pre"
 	"chromiumos/tast/local/bundles/cros/video/webrtc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/perf"
@@ -23,7 +22,6 @@ func init() {
 		Contacts:     []string{"keiichiw@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome_login", "camera_720p"},
-		Pre:          pre.ChromeVideo(),
 		Data:         append(webrtc.DataFiles(), "getusermedia.html"),
 	})
 }
@@ -39,7 +37,8 @@ func init() {
 // used as an external USB camera.
 func WebRTCCameraPerf(ctx context.Context, s *testing.State) {
 	// Run tests for 20 seconds per resolution.
-	results := webrtc.RunWebRTCCamera(ctx, s, s.PreValue().(*chrome.Chrome), 20*time.Second)
+	results := webrtc.RunWebRTCCamera(ctx, s, s.PreValue().(*chrome.Chrome), 20*time.Second,
+		webrtc.NoVerboseLogging)
 
 	if !s.HasError() {
 		// Set and upload frame statistics below.

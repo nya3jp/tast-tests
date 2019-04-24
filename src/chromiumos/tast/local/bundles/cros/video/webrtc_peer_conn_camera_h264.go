@@ -51,5 +51,6 @@ func WebRTCPeerConnCameraH264(ctx context.Context, s *testing.State) {
 		duration = 10 * time.Second
 	}
 
-	webrtc.RunWebRTCPeerConnCamera(ctx, s, s.PreValue().(*chrome.Chrome), videotype.H264, duration)
+	webrtc.RunWebRTCPeerConnCamera(ctx, s, s.PreValue().(*chrome.Chrome), videotype.H264,
+		duration, webrtc.VerboseLogging)
 }
