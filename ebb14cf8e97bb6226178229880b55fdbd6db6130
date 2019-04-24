@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4db6f450_3bfa27a5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1341792
+      },
+      "writtenOn": "2019-04-24T06:12:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8103613a_f8456658",
+      "range": {
+        "startLine": 20,
+        "startChar": 21,
+        "endLine": 20,
+        "endChar": 54
+      },
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e29e1a15_87bce0a1",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_sanity.go",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcbd4a85_c4e69394",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1341792
+      },
+      "writtenOn": "2019-04-24T06:12:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e29e1a15_87bce0a1",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 36
+      },
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "fd548ecd_5cfde52c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1341792
+      },
+      "writtenOn": "2019-04-24T06:12:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea1ea44e_2a165c32",
+      "range": {
+        "startLine": 48,
+        "startChar": 35,
+        "endLine": 48,
+        "endChar": 37
+      },
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "138e3823_2c205b9d",
         "filename": "src/chromiumos/tast/remote/ec/ec.go",
         "patchSetId": 9
@@ -163,6 +235,30 @@
     },
     {
       "key": {
+        "uuid": "d34405fc_502fec9b",
+        "filename": "src/chromiumos/tast/remote/ec/ec.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1341792
+      },
+      "writtenOn": "2019-04-24T06:12:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef7942fb_0fdcc200",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 2
+      },
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51af49fa_37601a16",
         "filename": "src/chromiumos/tast/remote/ec/ec.go",
         "patchSetId": 9
@@ -180,6 +276,24 @@
     },
     {
       "key": {
+        "uuid": "3b5e3c0d_b031a572",
+        "filename": "src/chromiumos/tast/remote/ec/ec.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1341792
+      },
+      "writtenOn": "2019-04-24T06:12:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51af49fa_37601a16",
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c69fda26_681919fc",
         "filename": "src/chromiumos/tast/remote/ec/ec.go",
         "patchSetId": 9
@@ -191,6 +305,30 @@
       "writtenOn": "2019-04-23T17:33:34Z",
       "side": 1,
       "message": "should returned value be checked? Ditto for below.",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 5
+      },
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "445248c7_caad9293",
+        "filename": "src/chromiumos/tast/remote/ec/ec.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1341792
+      },
+      "writtenOn": "2019-04-24T06:12:51Z",
+      "side": 1,
+      "message": "Moved EC functionality to the test",
+      "parentUuid": "c69fda26_681919fc",
       "range": {
         "startLine": 30,
         "startChar": 4,
@@ -243,6 +381,48 @@
     },
     {
       "key": {
+        "uuid": "521e81c7_7544a47f",
+        "filename": "src/chromiumos/tast/remote/ec/ec.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1341792
+      },
+      "writtenOn": "2019-04-24T06:12:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3f42af9_552b91f0",
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd3c7b03_ebc1544f",
+        "filename": "src/chromiumos/tast/remote/ec/ec.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1341792
+      },
+      "writtenOn": "2019-04-24T06:12:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e968bf6_cfff63b9",
+      "range": {
+        "startLine": 31,
+        "startChar": 28,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99b171bb_58e000d6",
         "filename": "src/chromiumos/tast/remote/ec/ec.go",
         "patchSetId": 9
@@ -266,6 +446,30 @@
     },
     {
       "key": {
+        "uuid": "42095d98_ea776c1c",
+        "filename": "src/chromiumos/tast/remote/ec/ec.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1341792
+      },
+      "writtenOn": "2019-04-24T06:12:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99b171bb_58e000d6",
+      "range": {
+        "startLine": 46,
+        "startChar": 29,
+        "endLine": 46,
+        "endChar": 37
+      },
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d505dc4_d7602652",
         "filename": "src/chromiumos/tast/remote/ec/ec.go",
         "patchSetId": 9
@@ -280,6 +484,24 @@
       "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21cc334e_6429c94d",
+        "filename": "src/chromiumos/tast/remote/ec/ec.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1341792
+      },
+      "writtenOn": "2019-04-24T06:12:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d505dc4_d7602652",
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -306,6 +528,30 @@
     },
     {
       "key": {
+        "uuid": "0b0c7e00_81dce547",
+        "filename": "src/chromiumos/tast/remote/ec/ec.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1341792
+      },
+      "writtenOn": "2019-04-24T06:12:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "924a6421_67c07131",
+      "range": {
+        "startLine": 56,
+        "startChar": 13,
+        "endLine": 56,
+        "endChar": 23
+      },
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea9f0fe9_5bfdc4ef",
         "filename": "src/chromiumos/tast/remote/ec/ec.go",
         "patchSetId": 9
@@ -317,6 +563,30 @@
       "writtenOn": "2019-04-23T23:33:49Z",
       "side": 1,
       "message": "Need to check err.",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 61
+      },
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b60551f2_73d47b4c",
+        "filename": "src/chromiumos/tast/remote/ec/ec.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1341792
+      },
+      "writtenOn": "2019-04-24T06:12:51Z",
+      "side": 1,
+      "message": "err is expected. so avoiding the check. even autotest fallow the same.",
+      "parentUuid": "ea9f0fe9_5bfdc4ef",
       "range": {
         "startLine": 59,
         "startChar": 1,
@@ -364,6 +634,30 @@
       "side": 1,
       "message": "Yes, that\u0027s what I meant.",
       "parentUuid": "3dde3023_b0201963",
+      "range": {
+        "startLine": 105,
+        "startChar": 5,
+        "endLine": 105,
+        "endChar": 12
+      },
+      "revId": "ebb14cf8e97bb6226178229880b55fdbd6db6130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8178b624_d46f9e69",
+        "filename": "src/chromiumos/tast/remote/servo/xmlrpc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1341792
+      },
+      "writtenOn": "2019-04-24T06:12:51Z",
+      "side": 1,
+      "message": "created the Set/Get",
+      "parentUuid": "0a23acbf_e1035192",
       "range": {
         "startLine": 105,
         "startChar": 5,
