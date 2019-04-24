@@ -107,9 +107,8 @@ func parseJPEGEncodeLog(testLogPath, outputDir, testFilename string) error {
 		var dur time.Duration
 		if usec, err := strconv.ParseUint(strings.TrimSpace(tokens[1]), 10, 32); err != nil {
 			return errors.Wrapf(err, "failed to parse time from line %q", line)
-		} else {
-			dur = time.Duration(usec)*time.Microsecond
 		}
+		dur = time.Duration(usec) * time.Microsecond
 
 		if name := strings.TrimSpace(tokens[0]); name == "hw_encode_time" {
 			encodeTimesHW = append(encodeTimesHW, dur)
