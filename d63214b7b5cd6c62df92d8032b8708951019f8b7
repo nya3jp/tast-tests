@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "598446ce_447eaf21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mini_container_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2019-04-24T19:24:27Z",
+      "side": 1,
+      "message": "Don\u0027t know what\u0027s the standard setting on Tast, but this test doesn\u0027t require signing into user session. Can this be shorter than 4m?",
+      "revId": "d63214b7b5cd6c62df92d8032b8708951019f8b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dd8ba9d_bd8094c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2019-04-24T19:24:27Z",
+      "side": 1,
+      "message": "Argh, checking arc.log size doesn\u0027t make sense... (the original python test is broken)  This was originally for checking /var/log/android.kmsg size, but someone rewrote it when we migrated to arc.log.\n\nCan you instead use cmtm\u0027s journald to get logs from arc-kmsg-logger for the most recent session and count total bytes of the logs? Then the test can verify if it\u0027s more than 2k. TODO with a bug is fine.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 59
+      },
+      "revId": "d63214b7b5cd6c62df92d8032b8708951019f8b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
