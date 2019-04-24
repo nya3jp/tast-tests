@@ -16,6 +16,47 @@
       "revId": "4b67299b80c8267666940957b4287f7aa2d0515b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0321a98_d7fc5a74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-24T01:40:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7bd64226_5f3f42c1",
+      "revId": "4b67299b80c8267666940957b4287f7aa2d0515b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88f54488_87aeee92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-24T01:40:54Z",
+      "side": 1,
+      "message": "nit: i\u0027d recommend not naming this and instead declaring it as a local var, since it\u0027s already obvious from the function name that it\u0027s going to be the max. see https://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters",
+      "range": {
+        "startLine": 67,
+        "startChar": 32,
+        "endLine": 67,
+        "endChar": 35
+      },
+      "revId": "4b67299b80c8267666940957b4287f7aa2d0515b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
