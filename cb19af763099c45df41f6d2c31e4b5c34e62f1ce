@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de84aff8_f20b4e83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-04-24T18:11:21Z",
+      "side": 1,
+      "message": "the naming is a bit confusing -- based on the function name I would have guessed this is trying to get min watermark, but here it\u0027s looking for high?  I\u0027d call this Kernel High Watermark or something along those lines.",
+      "range": {
+        "startLine": 304,
+        "startChar": 1,
+        "endLine": 304,
+        "endChar": 45
+      },
+      "revId": "cb19af763099c45df41f6d2c31e4b5c34e62f1ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
