@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7f9c5cb_c76a0fe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-24T08:49:15Z",
+      "side": 1,
+      "message": "Could you stop passing ChromeVmoduleFlag() when running performance tests?\n\nIt\u0027s because we recently decided not to enable verbose log in our video performance tests.\nhttp://crbug.com/955079\n(I will remove ChromeVmoduleFlag() from all other video perf tests later.)\n\nPerhaps, we should have an additional Boolean argument like \"verbose\" in chromeArgWithCameraInput, I think.",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 30
+      },
+      "revId": "b0eb0e1309200605a82c86e42978a566e13ef680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44c099ca_4dd2d4e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-24T08:49:15Z",
+      "side": 1,
+      "message": "video stream?",
+      "range": {
+        "startLine": 137,
+        "startChar": 59,
+        "endLine": 137,
+        "endChar": 72
+      },
+      "revId": "b0eb0e1309200605a82c86e42978a566e13ef680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "796367f8_99d72d81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-24T08:49:15Z",
+      "side": 1,
+      "message": "Why is this needed? Aren\u0027t conn.Close() or/and cr.Close(ctx) enough? \n\nI think CloseTarget(shortCtx) will fail if the below procedure runs out time in shortCtx.\nSo, it may be need to shorten shortCtx here if we really need conn.CloseTarget here.",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 33
+      },
+      "revId": "b0eb0e1309200605a82c86e42978a566e13ef680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a6c5ae3_fc810e21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-24T08:49:15Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "b0eb0e1309200605a82c86e42978a566e13ef680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30d44e10_4177bad2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-24T08:49:15Z",
+      "side": 1,
+      "message": "This issue is not appropriate here because crbug.com/918362 should be going to be closed after this CL is merged, \n\nI created crbug.com/955957 for this task. So, please use this instead.",
+      "range": {
+        "startLine": 199,
+        "startChar": 9,
+        "endLine": 199,
+        "endChar": 25
+      },
+      "revId": "b0eb0e1309200605a82c86e42978a566e13ef680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "261b6820_33437e68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_decode_perf.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-24T08:49:15Z",
+      "side": 1,
+      "message": "nit: we might want to avoid to have a top-level constant here because this constant will be shared among all video tests. I think just writing \"\"crowd720_25frames.y4m\" twice in this file is acceptable.\n\ncf. https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1575191/5/src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go#18\n\nOr, we can rename this variable to \"webRTCDecodePerfStreamFile\" to make it clear that it\u0027s specific to this test.",
+      "revId": "b0eb0e1309200605a82c86e42978a566e13ef680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
