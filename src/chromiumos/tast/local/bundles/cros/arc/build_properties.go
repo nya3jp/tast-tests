@@ -92,8 +92,10 @@ const (
 var expectedFirstAPILevelMap = map[string]string{
 	"caroline":         apiLevelN,
 	"caroline-arcnext": apiLevelN,
+	"coral":            apiLevelN,
 	"eve":              apiLevelN,
 	"eve-arcnext":      apiLevelN,
+	"fizz":             apiLevelN,
 	"kevin":            apiLevelN,
 	"kevin-arcnext":    apiLevelN,
 	"nautilus":         apiLevelN,
