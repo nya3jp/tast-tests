@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04d2b8de_6536698e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mini_container_state.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-24T00:22:35Z",
+      "side": 1,
+      "message": "Do you want to delete arc.MiniContainer in this CL? I guess this test replaces arc.MiniContainer.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "b8e09a549df8c239c21a6794fe1bae83bbe0cc0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d85bac6c_7a768226",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-24T00:22:35Z",
+      "side": 1,
+      "message": "typo: container\u0027s",
+      "range": {
+        "startLine": 5,
+        "startChar": 65,
+        "endLine": 5,
+        "endChar": 74
+      },
+      "revId": "b8e09a549df8c239c21a6794fe1bae83bbe0cc0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26e16f60_c9cab88c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-24T00:22:35Z",
+      "side": 1,
+      "message": "Do we have a reason to use killall instead of pgrep? If there\u0027s any, could you leave a comment?",
+      "range": {
+        "startLine": 50,
+        "startChar": 41,
+        "endLine": 50,
+        "endChar": 48
+      },
+      "revId": "b8e09a549df8c239c21a6794fe1bae83bbe0cc0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5627197_aa4e6bba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-24T00:22:35Z",
+      "side": 1,
+      "message": "typo: starting?",
+      "range": {
+        "startLine": 105,
+        "startChar": 37,
+        "endLine": 105,
+        "endChar": 44
+      },
+      "revId": "b8e09a549df8c239c21a6794fe1bae83bbe0cc0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f51f5f50_ed09d30b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-24T00:22:35Z",
+      "side": 1,
+      "message": "\u003e\u003d 2048",
+      "range": {
+        "startLine": 107,
+        "startChar": 44,
+        "endLine": 107,
+        "endChar": 48
+      },
+      "revId": "b8e09a549df8c239c21a6794fe1bae83bbe0cc0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c16510b_e550bd42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-24T00:22:35Z",
+      "side": 1,
+      "message": "nit: there\u0027s",
+      "range": {
+        "startLine": 112,
+        "startChar": 4,
+        "endLine": 112,
+        "endChar": 11
+      },
+      "revId": "b8e09a549df8c239c21a6794fe1bae83bbe0cc0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "529d6b8f_c79a6a31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-24T00:22:35Z",
+      "side": 1,
+      "message": "off topic: I\u0027m coming to think that we might want to make this default and instead add testexec.NoDumpLogOnError.",
+      "range": {
+        "startLine": 191,
+        "startChar": 69,
+        "endLine": 191,
+        "endChar": 92
+      },
+      "revId": "b8e09a549df8c239c21a6794fe1bae83bbe0cc0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b899f9a3_428cb798",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-24T00:22:35Z",
+      "side": 1,
+      "message": "These comments don\u0027t add much value, how about removing them?",
+      "range": {
+        "startLine": 204,
+        "startChar": 28,
+        "endLine": 208,
+        "endChar": 44
+      },
+      "revId": "b8e09a549df8c239c21a6794fe1bae83bbe0cc0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14a8131d_46a3baa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-04-24T00:22:35Z",
+      "side": 1,
+      "message": "Don\u0027t we need to return to the login screen by restarting ui and waiting for some Android boot phase?",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 53
+      },
+      "revId": "b8e09a549df8c239c21a6794fe1bae83bbe0cc0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
