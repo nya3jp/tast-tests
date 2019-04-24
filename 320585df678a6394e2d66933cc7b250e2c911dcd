@@ -129,6 +129,30 @@
       "revId": "320585df678a6394e2d66933cc7b250e2c911dcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3f4b96_ace2ec02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-24T04:46:42Z",
+      "side": 1,
+      "message": "i meant just doing \"discard :\u003d ...\" and \"stop :\u003d ...\" to declare bidirectional channels with the same names, and then returning them later (they\u0027d be automatically converted to unidirectional, i think). but i\u0027m guessing it won\u0027t let you since it\u0027s still in the same scope.",
+      "parentUuid": "c15a4eaa_1734b307",
+      "range": {
+        "startLine": 778,
+        "startChar": 60,
+        "endLine": 778,
+        "endChar": 64
+      },
+      "revId": "320585df678a6394e2d66933cc7b250e2c911dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
