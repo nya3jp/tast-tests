@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2659158e_1afa9256",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-24T16:33:41Z",
+      "side": 1,
+      "message": "Done (also fixed the file name).",
+      "parentUuid": "a90e4958_9efc0295",
+      "revId": "55b480a5936620679be9bfe2af0407e2f7f3a801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc283284_7a7e2bec",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
         "patchSetId": 6
@@ -33,6 +51,24 @@
       "revId": "55b480a5936620679be9bfe2af0407e2f7f3a801",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea545b36_1037cfa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-24T16:33:41Z",
+      "side": 1,
+      "message": "Ack - This part is pretty specific to this one test, so I\u0027d propose to keep it here for now.",
+      "parentUuid": "dc283284_7a7e2bec",
+      "revId": "55b480a5936620679be9bfe2af0407e2f7f3a801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "ead0d568_5138ebec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-24T16:33:41Z",
+      "side": 1,
+      "message": "Done, thanks for the detailed explanation.",
+      "parentUuid": "c7ca1cc2_3a9304d2",
+      "revId": "55b480a5936620679be9bfe2af0407e2f7f3a801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "720f3c79_1c480761",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
         "patchSetId": 6
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "0854322a_5c18f9ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-24T16:33:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "720f3c79_1c480761",
+      "revId": "55b480a5936620679be9bfe2af0407e2f7f3a801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b13963f5_f695672d",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
         "patchSetId": 6
@@ -84,6 +156,24 @@
       "revId": "55b480a5936620679be9bfe2af0407e2f7f3a801",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60a82626_aa8bcdf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-24T16:33:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b13963f5_f695672d",
+      "revId": "55b480a5936620679be9bfe2af0407e2f7f3a801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -147,6 +237,30 @@
       "revId": "55b480a5936620679be9bfe2af0407e2f7f3a801",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0fb500e_6de57b81",
+        "filename": "src/chromiumos/tast/local/cryptohome/dbus.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-24T16:33:41Z",
+      "side": 1,
+      "message": "Done, went with \"Client\".",
+      "parentUuid": "ed17e23a_eee153a0",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 9
+      },
+      "revId": "55b480a5936620679be9bfe2af0407e2f7f3a801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
