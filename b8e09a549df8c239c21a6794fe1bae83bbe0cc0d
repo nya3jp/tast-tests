@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2bca4df5_3ccc2abe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mini_container_state.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:54:03Z",
+      "side": 1,
+      "message": "It is not. arc.MiniContainer checks if ARC Mini container can be upgraded to full container.\nThis test checks the conditions which Mini container should satisfy.\n\n# Welcome renaming suggestion. Maybe rename arc.MiniContainer -\u003e arc.Upgrade or arc.ContainerUpgrade.\n# Though, probably we\u0027d like to avoid reusing \"arc.MiniContainer\" for this, right?",
+      "parentUuid": "04d2b8de_6536698e",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "b8e09a549df8c239c21a6794fe1bae83bbe0cc0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d85bac6c_7a768226",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "b8e09a549df8c239c21a6794fe1bae83bbe0cc0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c62ae801_48ed23cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:54:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d85bac6c_7a768226",
+      "range": {
+        "startLine": 5,
+        "startChar": 65,
+        "endLine": 5,
+        "endChar": 74
+      },
+      "revId": "b8e09a549df8c239c21a6794fe1bae83bbe0cc0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e0ba1272_711d09d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:54:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26e16f60_c9cab88c",
+      "range": {
+        "startLine": 50,
+        "startChar": 41,
+        "endLine": 50,
+        "endChar": 48
+      },
+      "revId": "b8e09a549df8c239c21a6794fe1bae83bbe0cc0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5627197_aa4e6bba",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "b8e09a549df8c239c21a6794fe1bae83bbe0cc0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a35595e_04534288",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:54:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5627197_aa4e6bba",
+      "range": {
+        "startLine": 105,
+        "startChar": 37,
+        "endLine": 105,
+        "endChar": 44
+      },
+      "revId": "b8e09a549df8c239c21a6794fe1bae83bbe0cc0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "5f41c4a3_16cdb661",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:54:03Z",
+      "side": 1,
+      "message": "Done. introduced a constant.",
+      "parentUuid": "f51f5f50_ed09d30b",
+      "range": {
+        "startLine": 107,
+        "startChar": 44,
+        "endLine": 107,
+        "endChar": 48
+      },
+      "revId": "b8e09a549df8c239c21a6794fe1bae83bbe0cc0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c16510b_e550bd42",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
         "patchSetId": 1
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "64e00414_ecc1504c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:54:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c16510b_e550bd42",
+      "range": {
+        "startLine": 112,
+        "startChar": 4,
+        "endLine": 112,
+        "endChar": 11
+      },
+      "revId": "b8e09a549df8c239c21a6794fe1bae83bbe0cc0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "529d6b8f_c79a6a31",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
         "patchSetId": 1
@@ -151,6 +295,30 @@
       "writtenOn": "2019-04-24T00:22:35Z",
       "side": 1,
       "message": "off topic: I\u0027m coming to think that we might want to make this default and instead add testexec.NoDumpLogOnError.",
+      "range": {
+        "startLine": 191,
+        "startChar": 69,
+        "endLine": 191,
+        "endChar": 92
+      },
+      "revId": "b8e09a549df8c239c21a6794fe1bae83bbe0cc0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fecdeaca_8a5f0fcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:54:03Z",
+      "side": 1,
+      "message": "That\u0027s an option, but it will make another gap from exec.Run() family?",
+      "parentUuid": "529d6b8f_c79a6a31",
       "range": {
         "startLine": 191,
         "startChar": 69,
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "1221bc81_0d0673b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:54:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b899f9a3_428cb798",
+      "range": {
+        "startLine": 204,
+        "startChar": 28,
+        "endLine": 208,
+        "endChar": 44
+      },
+      "revId": "b8e09a549df8c239c21a6794fe1bae83bbe0cc0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "932b3e60_6f911520",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
         "patchSetId": 1
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "7b42bd84_262eb1d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:54:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "932b3e60_6f911520",
+      "range": {
+        "startLine": 228,
+        "startChar": 11,
+        "endLine": 228,
+        "endChar": 20
+      },
+      "revId": "b8e09a549df8c239c21a6794fe1bae83bbe0cc0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14a8131d_46a3baa4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
         "patchSetId": 1
@@ -229,6 +445,30 @@
       "revId": "b8e09a549df8c239c21a6794fe1bae83bbe0cc0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83fd2420_6844dc9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-24T15:54:03Z",
+      "side": 1,
+      "message": "Good catch. Done.",
+      "parentUuid": "14a8131d_46a3baa4",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 53
+      },
+      "revId": "b8e09a549df8c239c21a6794fe1bae83bbe0cc0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
