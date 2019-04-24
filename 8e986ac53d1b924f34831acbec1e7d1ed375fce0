@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee4a6990_de4a3e46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/container_mount.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2019-04-24T19:29:58Z",
+      "side": 1,
+      "message": "Don\u0027t we usually annotate each ldap? e.g. // original author",
+      "revId": "8e986ac53d1b924f34831acbec1e7d1ed375fce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
