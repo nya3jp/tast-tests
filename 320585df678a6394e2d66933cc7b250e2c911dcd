@@ -105,6 +105,30 @@
       "revId": "320585df678a6394e2d66933cc7b250e2c911dcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c15a4eaa_1734b307",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-24T04:41:04Z",
+      "side": 1,
+      "message": "Not sure what you mean by shadowing here---the problem is that I am returning a read-only channel (discard) but it\u0027s write-only on my side, so I can\u0027t assign it to the return variable and also use it locally.",
+      "parentUuid": "300a1363_3ac61f4a",
+      "range": {
+        "startLine": 778,
+        "startChar": 60,
+        "endLine": 778,
+        "endChar": 64
+      },
+      "revId": "320585df678a6394e2d66933cc7b250e2c911dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

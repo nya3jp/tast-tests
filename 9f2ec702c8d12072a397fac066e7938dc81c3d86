@@ -69,6 +69,30 @@
       "revId": "9f2ec702c8d12072a397fac066e7938dc81c3d86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e9562bb_3beb1d65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 968,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-24T04:41:04Z",
+      "side": 1,
+      "message": "Thank you Brian, this is delightful information.  For next time.  This code might not survive a CL in the near future (I forgot I can do a global query for tabs with discarded \u003d true) so it\u0027s not worth changing anyway.",
+      "parentUuid": "2c3b00ca_39266e1c",
+      "range": {
+        "startLine": 968,
+        "startChar": 1,
+        "endLine": 968,
+        "endChar": 60
+      },
+      "revId": "9f2ec702c8d12072a397fac066e7938dc81c3d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
