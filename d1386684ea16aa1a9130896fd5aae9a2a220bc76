@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "f0d723e9_8d5b3d0d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/storage/hotplug_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-24T04:48:44Z",
+      "side": 1,
+      "message": "Done. Used repo upload now.\n\nThanks Dan",
+      "parentUuid": "d1700d47_8b3d6c83",
+      "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97e1f838_1c4423c1",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 2
@@ -75,6 +93,30 @@
       "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "466381f9_10f50c0b",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-24T04:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97e1f838_1c4423c1",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 40
+      },
+      "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -101,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "9c21ade4_20081f3e",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-24T04:48:44Z",
+      "side": 1,
+      "message": "Done\nhttps://chromium.googlesource.com/chromiumos/third_party/autotest/+/refs/heads/master/server/cros/servo/servo.py",
+      "parentUuid": "c6412767_edd3febd",
+      "range": {
+        "startLine": 28,
+        "startChar": 3,
+        "endLine": 28,
+        "endChar": 70
+      },
+      "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0589ac1a_f3f23ff4",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 2
@@ -121,6 +187,30 @@
       "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65bbc742_9ebb8723",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-24T04:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0589ac1a_f3f23ff4",
+      "range": {
+        "startLine": 29,
+        "startChar": 41,
+        "endLine": 29,
+        "endChar": 60
+      },
+      "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -147,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "94583947_004ffdc1",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-24T04:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09fa6569_6aa04990",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f2ebbe0_83a66c01",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 2
@@ -158,6 +272,30 @@
       "writtenOn": "2019-04-24T00:52:59Z",
       "side": 1,
       "message": "Please call Get instead.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 2
+      },
+      "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a2c4d6b_ecd716f5",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-24T04:48:44Z",
+      "side": 1,
+      "message": "Sorry I am not getting",
+      "parentUuid": "8f2ebbe0_83a66c01",
       "range": {
         "startLine": 32,
         "startChar": 1,
@@ -193,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "00991a10_95a8f343",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-24T04:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d86ae0cb_5c39c8ed",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "680577d3_eebf88b1",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 2
@@ -213,6 +375,30 @@
       "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92681e01_2e7d7c9f",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-24T04:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "680577d3_eebf88b1",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 31
+      },
+      "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -239,6 +425,30 @@
     },
     {
       "key": {
+        "uuid": "9ff977d3_c6a2a376",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-24T04:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25cfe08b_665c4d64",
+      "range": {
+        "startLine": 62,
+        "startChar": 24,
+        "endLine": 62,
+        "endChar": 30
+      },
+      "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b1d6fd6_378570af",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 2
@@ -250,6 +460,30 @@
       "writtenOn": "2019-04-24T00:52:59Z",
       "side": 1,
       "message": "Please define a type for type safety. For example\n\n type USBState string\n\n const (\n   Host USBState \u003d \"servo_sees_usbkey\"\n   DUT \u003d \"dut_sees_usbkey\"\n )",
+      "range": {
+        "startLine": 78,
+        "startChar": 50,
+        "endLine": 78,
+        "endChar": 65
+      },
+      "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a003a9e4_cc9f8b01",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-24T04:48:44Z",
+      "side": 1,
+      "message": "I think if we use USBState and PowerState types then other functions like SetNoCheck and SetCheck will be broken because these functions are getting string parameter. Could you suggest me if any idea you have? thanks",
+      "parentUuid": "7b1d6fd6_378570af",
       "range": {
         "startLine": 78,
         "startChar": 50,
@@ -282,6 +516,30 @@
       "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73b18db7_94772edb",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-04-24T04:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9430e36d_70cf0f37",
+      "range": {
+        "startLine": 94,
+        "startChar": 55,
+        "endLine": 94,
+        "endChar": 72
+      },
+      "revId": "d1386684ea16aa1a9130896fd5aae9a2a220bc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
