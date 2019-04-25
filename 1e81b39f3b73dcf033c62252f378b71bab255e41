@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "41da677c_d029407a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-25T05:31:44Z",
+      "side": 1,
+      "message": "Question: How long does it take to run this test locally?\nIf this test needs longer timeout than 2 minutes (especially on low-end devices), we can extend timeout.\ne.g. https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/playback_perf_vp9_2160p_60fps.go?rcl\u003d6e2e6dd8220a5b0eaa2befd8f14ec23565f262de\u0026l\u003d24",
+      "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66caddcb_6f2948bf",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
         "patchSetId": 6
