@@ -22,6 +22,29 @@
       "revId": "cf13eb2c4ced53e32eee207dedf31fb1a7d2b334",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae9739af_5a998912",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-04-25T18:37:13Z",
+      "side": 1,
+      "message": "This won\u0027t change over time, so can we just log it one time?",
+      "range": {
+        "startLine": 501,
+        "startChar": 0,
+        "endLine": 507,
+        "endChar": 2
+      },
+      "revId": "cf13eb2c4ced53e32eee207dedf31fb1a7d2b334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
