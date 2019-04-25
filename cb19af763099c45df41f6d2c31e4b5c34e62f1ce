@@ -46,6 +46,30 @@
       "revId": "cb19af763099c45df41f6d2c31e4b5c34e62f1ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ac576ab_303b3189",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-04-25T03:05:59Z",
+      "side": 1,
+      "message": "Yes, none of this is clear from the comment describing what this function does.  As I said, my initial assumption based on the description was that this reported what the kernel calls \"min watermark\"  It seems like you want to see both high watermark and totalreserve, why not just just report both of those separately instead of calling it \"min\" which is confusing because there\u0027s already something the kernel calls \"min\".  This would remove ambiguity and keep the names consistent between the kernel and what the test reports.",
+      "parentUuid": "8bfc6a9c_d2226e1b",
+      "range": {
+        "startLine": 304,
+        "startChar": 1,
+        "endLine": 304,
+        "endChar": 45
+      },
+      "revId": "cb19af763099c45df41f6d2c31e4b5c34e62f1ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
