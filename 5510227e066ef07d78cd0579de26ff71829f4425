@@ -16,6 +16,24 @@
       "revId": "5510227e066ef07d78cd0579de26ff71829f4425",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11d2cb39_a6b65be7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/run_oci.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1313582
+      },
+      "writtenOn": "2019-04-25T23:24:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6899d868_65100174",
+      "revId": "5510227e066ef07d78cd0579de26ff71829f4425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
