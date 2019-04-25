@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14112698_74e7a12b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-25T13:14:25Z",
+      "side": 1,
+      "message": "drop",
+      "range": {
+        "startLine": 236,
+        "startChar": 9,
+        "endLine": 236,
+        "endChar": 19
+      },
+      "revId": "1bea87bcd296dde116d1f2aeb6c21c36f28f7a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c93160d6_af991ce5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_cpu_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-25T13:14:25Z",
+      "side": 1,
+      "message": "Does this test use H.264 decoder? If so, we need \"chrome_internal\" dependency.\ne.g.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/play_h264.go?rcl\u003d6e2e6dd8220a5b0eaa2befd8f14ec23565f262de\u0026l\u003d23",
+      "revId": "1bea87bcd296dde116d1f2aeb6c21c36f28f7a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d536f11_18df7391",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_cpu_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-25T13:14:25Z",
+      "side": 1,
+      "message": "As per offline discussion, we will rename this to WebRTCDecodePerfCPU",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 18
+      },
+      "revId": "1bea87bcd296dde116d1f2aeb6c21c36f28f7a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
