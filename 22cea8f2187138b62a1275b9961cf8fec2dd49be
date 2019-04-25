@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "229f2ae9_b7e86e07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2019-04-25T18:21:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f9f9a13_81648f79",
+      "range": {
+        "startLine": 171,
+        "startChar": 26,
+        "endLine": 171,
+        "endChar": 31
+      },
+      "revId": "22cea8f2187138b62a1275b9961cf8fec2dd49be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "340fa70f_410e6169",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "22cea8f2187138b62a1275b9961cf8fec2dd49be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "651d6e75_c65dcf98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2019-04-25T18:21:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "340fa70f_410e6169",
+      "range": {
+        "startLine": 186,
+        "startChar": 19,
+        "endLine": 186,
+        "endChar": 28
+      },
+      "revId": "22cea8f2187138b62a1275b9961cf8fec2dd49be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "ae25228a_455f64f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2019-04-25T18:21:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5cb0a25_54a0bd3c",
+      "range": {
+        "startLine": 188,
+        "startChar": 58,
+        "endLine": 188,
+        "endChar": 60
+      },
+      "revId": "22cea8f2187138b62a1275b9961cf8fec2dd49be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "325edc74_e77ff8f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2019-04-25T18:21:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9aceffd2_2f25e8b4",
+      "range": {
+        "startLine": 188,
+        "startChar": 47,
+        "endLine": 188,
+        "endChar": 49
+      },
+      "revId": "22cea8f2187138b62a1275b9961cf8fec2dd49be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c2e506d_7b92098f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
         "patchSetId": 1
@@ -108,6 +204,24 @@
       "revId": "22cea8f2187138b62a1275b9961cf8fec2dd49be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a47d1dc_968d9810",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2019-04-25T18:21:57Z",
+      "side": 1,
+      "message": "Yes, that\u0027s intentional. If a memory kill isn\u0027t found, the test should continue consuming memory until it hits the margin, and then throw a fatal error.",
+      "parentUuid": "8c2e506d_7b92098f",
+      "revId": "22cea8f2187138b62a1275b9961cf8fec2dd49be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -131,6 +245,30 @@
       "revId": "22cea8f2187138b62a1275b9961cf8fec2dd49be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7b1570d_cf9f3436",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2019-04-25T18:21:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffdf88f8_916bfbeb",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 26
+      },
+      "revId": "22cea8f2187138b62a1275b9961cf8fec2dd49be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -181,6 +319,30 @@
     },
     {
       "key": {
+        "uuid": "997b8bf4_030520bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2019-04-25T18:21:57Z",
+      "side": 1,
+      "message": "I ended up re-simplifying the method to return a single string with the event type (_APP, _TAB, OOM_KILL), since the calling function doesn\u0027t need the whole log line.",
+      "parentUuid": "56bd4c9f_411b110b",
+      "range": {
+        "startLine": 290,
+        "startChar": 46,
+        "endLine": 290,
+        "endChar": 54
+      },
+      "revId": "22cea8f2187138b62a1275b9961cf8fec2dd49be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f2d5ffa_bb21f36f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
         "patchSetId": 1
@@ -201,6 +363,30 @@
       "revId": "22cea8f2187138b62a1275b9961cf8fec2dd49be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5391447a_59bb655e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1303273
+      },
+      "writtenOn": "2019-04-25T18:21:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f2d5ffa_bb21f36f",
+      "range": {
+        "startLine": 292,
+        "startChar": 26,
+        "endLine": 292,
+        "endChar": 31
+      },
+      "revId": "22cea8f2187138b62a1275b9961cf8fec2dd49be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
