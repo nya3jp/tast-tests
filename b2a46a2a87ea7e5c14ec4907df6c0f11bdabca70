@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f85a51a5_6614c950",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-25T17:45:14Z",
+      "side": 1,
+      "message": "i\u0027d usually expect an error to be returned here instead of s.Fatal being called -- it seems a bit surprising that this is fatal but that the next Eval call failing isn\u0027t. if you really want to abort immediately here, you can use testing.PollBreak: https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/testing#PollBreak",
+      "revId": "b2a46a2a87ea7e5c14ec4907df6c0f11bdabca70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca008b22_900b6804",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-25T17:45:14Z",
+      "side": 1,
+      "message": "what\u0027s the reason for needing to call this method repeatedly? i didn\u0027t see this discussed on the linked bug; sorry if i missed it. i\u0027d recommend adding a comment explaining why this is necessary, as i would expected us to instead just call this show method once and then poll waiting for the keyboard to be shown (if the operation is async).",
+      "revId": "b2a46a2a87ea7e5c14ec4907df6c0f11bdabca70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
