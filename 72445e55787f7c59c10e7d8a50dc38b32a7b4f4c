@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8de07666_0217c00f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-25T10:27:08Z",
+      "side": 1,
+      "message": "Hmm, this code in L68-L70 is same with writing \"return p.Save(outDir)\", isn\u0027t it?\nI wanted to suggest a way of using errors.Wrap like this:\n\nif err :\u003d p.Save(outDir); err !\u003d nil {\n\treturn errors.Wrap(err, \"failed to store performance data\");\n}\nreturn nil\n\nSorry for unclear comments!",
+      "revId": "72445e55787f7c59c10e7d8a50dc38b32a7b4f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4f81b65_296b0c4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-25T10:27:08Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "72445e55787f7c59c10e7d8a50dc38b32a7b4f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
