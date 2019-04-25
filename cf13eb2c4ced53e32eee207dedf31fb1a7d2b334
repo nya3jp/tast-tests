@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79fe6443_ff7df25f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-04-25T18:31:42Z",
+      "side": 1,
+      "message": "I think you need to set maxReserve to 0 here, otherwise it could have a stale value from a previous zone.  this is what the kernel does in the calculate_totalreserve_pages() function that is is mimiced here.",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 66
+      },
+      "revId": "cf13eb2c4ced53e32eee207dedf31fb1a7d2b334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
