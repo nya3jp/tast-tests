@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e4c2dc72_ad124682",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-25T14:15:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4613f78_03332a7c",
+      "range": {
+        "startLine": 42,
+        "startChar": 18,
+        "endLine": 42,
+        "endChar": 46
+      },
+      "revId": "a6f0c8000b5c8fed01c9c69f6c9c12f9023ba34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7727ba5f_77872674",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
         "patchSetId": 8
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d86019d7_66be8fe3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-25T14:15:15Z",
+      "side": 1,
+      "message": "Done. I left the result parameters names in other functions, since they have non-obvious types like \"[]byte\".",
+      "parentUuid": "7727ba5f_77872674",
+      "range": {
+        "startLine": 74,
+        "startChar": 24,
+        "endLine": 74,
+        "endChar": 69
+      },
+      "revId": "a6f0c8000b5c8fed01c9c69f6c9c12f9023ba34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d77c7f68_9e3838f6",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
         "patchSetId": 8
@@ -68,6 +116,30 @@
       "revId": "a6f0c8000b5c8fed01c9c69f6c9c12f9023ba34d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "387b2b2e_5023da90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-04-25T14:15:15Z",
+      "side": 1,
+      "message": "Done.\n(I had to split my \"if\" into two, one for the \"nil\" case and another for the \"string is set, but is different\". But that\u0027s good anyway - I missed that \"%v\" actually produced something unreadable for the |*string| type.)",
+      "parentUuid": "d77c7f68_9e3838f6",
+      "range": {
+        "startLine": 108,
+        "startChar": 31,
+        "endLine": 108,
+        "endChar": 41
+      },
+      "revId": "a6f0c8000b5c8fed01c9c69f6c9c12f9023ba34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
