@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07d802ef_638546f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-25T04:11:01Z",
+      "side": 1,
+      "message": "What we need here is to wait for CL:1583024 coming to Chrome OS tree, right? Buildbots cannot use CQ-DEPEND for this purpose, iiuc.\nSo, could you add an explanation like \"we need to wait for Chrome uprev that contains CL:1583024\"?\n\n--\nFYI (just in case): We can use new Cq-Depend syntax\n\nhttps://groups.google.com/a/google.com/forum/?utm_medium\u003demail\u0026utm_source\u003dfooter#!msg/chromeos-platform-eng/40PhgtOFB_g/uQ7gRt9XAgAJ",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 20
+      },
+      "revId": "f45ef91ac2c1ba49d35755766db343da95900d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f49eafb6_bfe11ac5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_resolution_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-25T04:11:01Z",
+      "side": 1,
+      "message": "Runs",
+      "range": {
+        "startLine": 18,
+        "startChar": 17,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "f45ef91ac2c1ba49d35755766db343da95900d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
