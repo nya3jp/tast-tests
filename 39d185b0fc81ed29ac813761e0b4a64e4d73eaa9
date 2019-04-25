@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7354ef1_5c1551ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-25T09:04:58Z",
+      "side": 1,
+      "message": "We should not use \"defer\"  here because p.Save(outDir) will be called even if an error happened in measureAndReport, I think.\nIn addition,we should check the return value of p.Save.",
+      "revId": "39d185b0fc81ed29ac813761e0b4a64e4d73eaa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f81d48c_7c5270ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-25T09:04:58Z",
+      "side": 1,
+      "message": "nit: I think Dan suggested that just have \u0027fmt.Sprintf(\"--use-fake-device-for-media-stream\u003d\\\"fps\u003d%d\\\"\", fps)\u0027 here instead of a new variable |fakeDeviceArg|?\nOtherwise, it\u0027s difficult to find what L93\u0027s comment describes.",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 15
+      },
+      "revId": "39d185b0fc81ed29ac813761e0b4a64e4d73eaa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16995ada_feb904fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-25T09:04:58Z",
+      "side": 1,
+      "message": "I think we can keep it as non-exported function (i.e. computeNumFrames) because unittest is in the same package.",
+      "range": {
+        "startLine": 192,
+        "startChar": 5,
+        "endLine": 192,
+        "endChar": 21
+      },
+      "revId": "39d185b0fc81ed29ac813761e0b4a64e4d73eaa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a66d1b0_9c794f6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-25T09:04:58Z",
+      "side": 1,
+      "message": "Thank you for adding this test!",
+      "revId": "39d185b0fc81ed29ac813761e0b4a64e4d73eaa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
