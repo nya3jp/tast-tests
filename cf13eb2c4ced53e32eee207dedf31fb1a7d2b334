@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "daf733bf_ef4cb981",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-25T22:36:30Z",
+      "side": 1,
+      "message": "Yes, thank you for finding this bug.",
+      "parentUuid": "79fe6443_ff7df25f",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 66
+      },
+      "revId": "cf13eb2c4ced53e32eee207dedf31fb1a7d2b334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae9739af_5a998912",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "cf13eb2c4ced53e32eee207dedf31fb1a7d2b334",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8ad4e7d_2f5f26c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-25T22:36:30Z",
+      "side": 1,
+      "message": "But we do.  kernelMeter.LogMemoryParameters is only called once, near the beginning of the test.",
+      "parentUuid": "ae9739af_5a998912",
+      "range": {
+        "startLine": 501,
+        "startChar": 0,
+        "endLine": 507,
+        "endChar": 2
+      },
+      "revId": "cf13eb2c4ced53e32eee207dedf31fb1a7d2b334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
