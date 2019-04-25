@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29897718_5e94a849",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-25T04:11:38Z",
+      "side": 1,
+      "message": "nit: per previous comment, mind moving this after init() so the metadata comes first?\n\n(i should add a tast-lint suggestion for this, if others agree...)\n\nyou can also just do \"const foo \u003d ...\" for single assignments like this one",
+      "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ada323c8_2ec2d8e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-25T04:11:38Z",
+      "side": 1,
+      "message": "this appears to be unused. did you mean to check it and report an error if true?",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 12
+      },
+      "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f8e2989_e29d35f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-25T04:11:38Z",
+      "side": 1,
+      "message": "i\u0027d recommend just inlining this on L98 below, e.g.\n\n  fmt.Sprintf(`--use-fake...\u003d\"fps\u003d%d\"`, fps),",
+      "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5ae171b_812be600",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-25T04:11:38Z",
+      "side": 1,
+      "message": "nit: consider wrapping long lines like this to make them easier to read",
+      "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb4a506b_3060c288",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-25T04:11:38Z",
+      "side": 1,
+      "message": "nit: does returning 0 here and below work, or is the cast necessary?",
+      "range": {
+        "startLine": 123,
+        "startChar": 9,
+        "endLine": 123,
+        "endChar": 25
+      },
+      "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3345440b_484d0c73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-25T04:11:38Z",
+      "side": 1,
+      "message": "please use time.Millisecond instead, e.g.\n\ntime.Duration(elapsedTimeMs / frames) * time.Millisecond",
+      "range": {
+        "startLine": 191,
+        "startChar": 57,
+        "endLine": 191,
+        "endChar": 64
+      },
+      "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
