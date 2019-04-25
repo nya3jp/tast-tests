@@ -149,6 +149,24 @@
     },
     {
       "key": {
+        "uuid": "e54e04ff_7340760a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-04-25T06:57:14Z",
+      "side": 1,
+      "message": "The H264 one is the only format we have verified working well with MediaRecorder (by this project: https://docs.google.com/document/d/1Kh5rGcHN717qUss244C3vNGYyobfGWzZcqWUVyzglZ8/edit#heading\u003dh.xgjl2srtytjt).  We haven\u0027t taken a look into other formats.",
+      "parentUuid": "6a83df04_3486db1d",
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12ea4f1a_1d2aab4c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go",
         "patchSetId": 5

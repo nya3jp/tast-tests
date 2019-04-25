@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "101519f3_4706cb5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-04-25T06:57:14Z",
+      "side": 1,
+      "message": "Sorry. I didn\u0027t realize that it can compile with declaration coming after the usage. Just changed.",
+      "parentUuid": "29897718_5e94a849",
+      "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41da677c_d029407a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go",
         "patchSetId": 6
@@ -33,6 +51,24 @@
       "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8424ec5_53b0e15a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-04-25T06:57:14Z",
+      "side": 1,
+      "message": "Abou 1.2 minutes. I changed to 3 min to be safe.",
+      "parentUuid": "41da677c_d029407a",
+      "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "8faf7441_52738c87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-04-25T06:57:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66caddcb_6f2948bf",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 22
+      },
+      "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7bbf709_0c019e1c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
         "patchSetId": 6
@@ -79,6 +139,30 @@
       "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "407a6a7f_8dcbae5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-04-25T06:57:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7bbf709_0c019e1c",
+      "range": {
+        "startLine": 45,
+        "startChar": 10,
+        "endLine": 45,
+        "endChar": 18
+      },
+      "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "df377579_710739df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-04-25T06:57:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a28d566c_c712f3d9",
+      "range": {
+        "startLine": 53,
+        "startChar": 50,
+        "endLine": 53,
+        "endChar": 68
+      },
+      "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ada323c8_2ec2d8e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
         "patchSetId": 6
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "f8dbdb36_55ee108e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-04-25T06:57:14Z",
+      "side": 1,
+      "message": "The error case regarding hwAccelUsed is handled inside measureAndReport(). Deleted it.",
+      "parentUuid": "ada323c8_2ec2d8e9",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 12
+      },
+      "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f8e2989_e29d35f1",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
         "patchSetId": 6
@@ -145,6 +277,24 @@
     },
     {
       "key": {
+        "uuid": "af872745_bd507969",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-04-25T06:57:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f8e2989_e29d35f1",
+      "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5ae171b_812be600",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
         "patchSetId": 6
@@ -159,6 +309,24 @@
       "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8db09d0_1b175f1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-04-25T06:57:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5ae171b_812be600",
+      "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -185,6 +353,30 @@
     },
     {
       "key": {
+        "uuid": "ad7d9279_b9714d32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-04-25T06:57:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb4a506b_3060c288",
+      "range": {
+        "startLine": 123,
+        "startChar": 9,
+        "endLine": 123,
+        "endChar": 25
+      },
+      "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8349928_788641f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
         "patchSetId": 6
@@ -199,6 +391,24 @@
       "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8389752f_0ac52e65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-04-25T06:57:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8349928_788641f0",
+      "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -225,6 +435,30 @@
     },
     {
       "key": {
+        "uuid": "2b715df3_715d1922",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-04-25T06:57:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3345440b_484d0c73",
+      "range": {
+        "startLine": 191,
+        "startChar": 57,
+        "endLine": 191,
+        "endChar": 64
+      },
+      "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee65b56e_688cbd28",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
         "patchSetId": 6
@@ -245,6 +479,30 @@
       "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70bd4ab1_832254f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-04-25T06:57:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee65b56e_688cbd28",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 218,
+        "endChar": 7
+      },
+      "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
