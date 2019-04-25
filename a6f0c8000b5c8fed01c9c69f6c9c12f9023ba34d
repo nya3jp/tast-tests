@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4613f78_03332a7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-25T04:19:07Z",
+      "side": 1,
+      "message": "nit: to avoid repeating this lengthy type, consider declaring it earlier:\n\n  type logFunc func(...)",
+      "range": {
+        "startLine": 42,
+        "startChar": 18,
+        "endLine": 42,
+        "endChar": 46
+      },
+      "revId": "a6f0c8000b5c8fed01c9c69f6c9c12f9023ba34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7727ba5f_77872674",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-25T04:19:07Z",
+      "side": 1,
+      "message": "nit: omit naming these: https://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters",
+      "range": {
+        "startLine": 74,
+        "startChar": 24,
+        "endLine": 74,
+        "endChar": 69
+      },
+      "revId": "a6f0c8000b5c8fed01c9c69f6c9c12f9023ba34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d77c7f68_9e3838f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-25T04:19:07Z",
+      "side": 1,
+      "message": "nit: consider using %q for both of these (assuming that they\u0027re both strings); then they\u0027ll be quoted, which is helpful if they\u0027re e.g. empty or contain spaces",
+      "range": {
+        "startLine": 108,
+        "startChar": 31,
+        "endLine": 108,
+        "endChar": 41
+      },
+      "revId": "a6f0c8000b5c8fed01c9c69f6c9c12f9023ba34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
