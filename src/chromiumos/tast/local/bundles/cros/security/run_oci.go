@@ -63,6 +63,7 @@ func RunOCI(ctx context.Context, s *testing.State) {
 		runOCIArgs []string             // additional top-level run_oci command-line args
 		expStdout  string               // expected stdout from run_oci
 		expStderr  string               // expected stderr from run_oci
+		expFail    bool                 // expected non-zero exit status from run_oci
 		modifyCfg  func(cfg *ociConfig) // makes per-test modifications to default config
 	}
 
@@ -108,9 +109,17 @@ func RunOCI(ctx context.Context, s *testing.State) {
 		cmd.Stderr = &stderr
 
 		s.Logf("Case %v: running %v", tc.name, shutil.EscapeSlice(cmd.Args))
-		cmd.Run() // ignore errors (many test cases intentionally run failing commands)
+		err = cmd.Run()
 
 		failed := false
+
+		if err != nil && !tc.expFail {
+			failed = true
+			s.Errorf("Case %v failed: %v", tc.name, err)
+		} else if err == nil && tc.expFail {
+			failed = true
+			s.Errorf("Case %v unexpectedly succeeded", tc.name)
+		}
 		if stdout.String() != tc.expStdout {
 			failed = true
 			s.Errorf("Case %v got stdout %q; want %q", tc.name, stdout.String(), tc.expStdout)
@@ -136,6 +145,7 @@ func RunOCI(ctx context.Context, s *testing.State) {
 			},
 			expStdout: "Mon Jan  1 00:00:00 UTC 2001\n",
 			expStderr: "date: cannot set date: Function not implemented\n",
+			expFail:   true,
 		},
 		{
 			name:       "bind-mount",
@@ -161,6 +171,7 @@ func RunOCI(ctx context.Context, s *testing.State) {
 			name:      "device-cgroup-deny",
 			modifyCfg: func(cfg *ociConfig) { cfg.Process.Args = []string{"/usr/bin/hexdump", "-n1", "/dev/urandom"} },
 			expStderr: "hexdump: /dev/urandom: Operation not permitted\nhexdump: all input file arguments failed\n",
+			expFail:   true,
 		},
 		{
 			name:      "gid",
@@ -186,6 +197,7 @@ func RunOCI(ctx context.Context, s *testing.State) {
 				cfg.Process.Args = []string{"/bin/echo", "-n", "This should not run"}
 				cfg.Hooks.PreStart = append(cfg.Hooks.PreStart, ociHook{Path: "/bin/false", Args: []string{"false"}})
 			},
+			expFail: true,
 		},
 		{
 			name:      "uid",
