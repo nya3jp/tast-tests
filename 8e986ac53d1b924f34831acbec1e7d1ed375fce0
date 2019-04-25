@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "d7b0d735_0269dcae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-25T09:17:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "832242b0_fc5ebb6b",
+      "range": {
+        "startLine": 347,
+        "startChar": 24,
+        "endLine": 347,
+        "endChar": 31
+      },
+      "revId": "8e986ac53d1b924f34831acbec1e7d1ed375fce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd12d8cb_641f462c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
         "patchSetId": 5
@@ -80,6 +104,30 @@
       "revId": "8e986ac53d1b924f34831acbec1e7d1ed375fce0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0afa6118_836882d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-25T09:17:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd12d8cb_641f462c",
+      "range": {
+        "startLine": 354,
+        "startChar": 24,
+        "endLine": 354,
+        "endChar": 31
+      },
+      "revId": "8e986ac53d1b924f34831acbec1e7d1ed375fce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
