@@ -17,7 +17,7 @@ func init() {
 		Func:         HeavyMemoryUser,
 		Desc:         "Tests heavy memory use with Chrome, ARC and VMs running",
 		Contacts:     []string{"asavery@chromium.org", "chromeos-storage@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
+		Attr:         []string{"group:crosbolt", "crosbolt_memory_nightly"},
 		Timeout:      10 * time.Minute,
 		SoftwareDeps: []string{"android", "chrome_login", "vm_host"},
 	})
