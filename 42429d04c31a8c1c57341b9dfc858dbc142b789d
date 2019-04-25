@@ -22,6 +22,30 @@
       "revId": "42429d04c31a8c1c57341b9dfc858dbc142b789d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c37829c_186c79de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test-25fps.h264.json.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-04-25T01:04:14Z",
+      "side": 1,
+      "message": "The files will sort a bit better like this:\ntest-25fps_20190418.h264\ntest-25fps_20190418.h264.json\n\nSince these files always need to be used together this naming seemed the most appropriate. I actually used this style for other metadata files, but accidentally used the wrong naming here.",
+      "parentUuid": "b3cac1be_41560a93",
+      "range": {
+        "startLine": 2,
+        "startChar": 61,
+        "endLine": 2,
+        "endChar": 90
+      },
+      "revId": "42429d04c31a8c1c57341b9dfc858dbc142b789d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
