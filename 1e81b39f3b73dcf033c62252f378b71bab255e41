@@ -19,6 +19,75 @@
     },
     {
       "key": {
+        "uuid": "66caddcb_6f2948bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-25T05:29:21Z",
+      "side": 1,
+      "message": "Instead of calling perf.NewValues() and p.Store() in reportMetric for each metric, could you call them only once in this whole test?\n\nI think it\u0027s the expected usage as far as I see this example code:\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/example/perf.go\n\nYou might be able to write a similar code to WebRTCDecodePerf tests.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1573298/12/src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go#235",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 22
+      },
+      "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7bbf709_0c019e1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-25T05:29:21Z",
+      "side": 1,
+      "message": "I created a crbug.com/955957 yesterday. So, could you change this to \"TODO(crbug.com/955957)\"?",
+      "range": {
+        "startLine": 45,
+        "startChar": 10,
+        "endLine": 45,
+        "endChar": 18
+      },
+      "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a28d566c_c712f3d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-25T05:29:21Z",
+      "side": 1,
+      "message": "string\nNo need to use named return value",
+      "range": {
+        "startLine": 53,
+        "startChar": 50,
+        "endLine": 53,
+        "endChar": 68
+      },
+      "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ada323c8_2ec2d8e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
         "patchSetId": 6
@@ -99,6 +168,23 @@
     },
     {
       "key": {
+        "uuid": "a8349928_788641f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-25T05:29:21Z",
+      "side": 1,
+      "message": "I think \"err !\u003d nil\" means that \"failed to get histogram\" here. So, I wonder if we should return an error in this case.\n\nIn addition, we should return error if disableHWAccel \u003d\u003d true \u0026\u0026 hwUsed \u003d\u003d true.",
+      "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3345440b_484d0c73",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
         "patchSetId": 6
@@ -115,6 +201,29 @@
         "startChar": 57,
         "endLine": 191,
         "endChar": 64
+      },
+      "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee65b56e_688cbd28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-25T05:29:21Z",
+      "side": 1,
+      "message": "nit: Could you rename this to \"frameNum\" because it\u0027s used as a return value\u0027s  name.",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 218,
+        "endChar": 7
       },
       "revId": "1e81b39f3b73dcf033c62252f378b71bab255e41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",

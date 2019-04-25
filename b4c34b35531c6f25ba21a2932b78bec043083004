@@ -131,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "6a83df04_3486db1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-25T05:29:21Z",
+      "side": 1,
+      "message": "Doesn\u0027t it make sense to add other codec version? No need?",
+      "parentUuid": "5cc2c4eb_7e6737e4",
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12ea4f1a_1d2aab4c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go",
         "patchSetId": 5
@@ -998,6 +1016,24 @@
         "endLine": 116,
         "endChar": 75
       },
+      "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bcf5603_92f89224",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-25T05:29:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "38e181f7_ddb8d1cf",
       "revId": "b4c34b35531c6f25ba21a2932b78bec043083004",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
