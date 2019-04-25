@@ -16,6 +16,70 @@
       "revId": "8e986ac53d1b924f34831acbec1e7d1ed375fce0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b93e6d3_1e9aa0ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/container_mount.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-25T04:24:05Z",
+      "side": 1,
+      "message": "i think that for the most part, we\u0027ve just be doing this for ported tests. i think that hidehiko-san was also the author of the original test, so this seems fine. :-)",
+      "parentUuid": "ee4a6990_de4a3e46",
+      "revId": "8e986ac53d1b924f34831acbec1e7d1ed375fce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "832242b0_fc5ebb6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-25T04:24:05Z",
+      "side": 1,
+      "message": "i think that nya-san told me some history: apparently \"SDCard\" is correct, and this does not specifically refer to SD cards. :-) sorry!",
+      "range": {
+        "startLine": 347,
+        "startChar": 24,
+        "endLine": 347,
+        "endChar": 31
+      },
+      "revId": "8e986ac53d1b924f34831acbec1e7d1ed375fce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd12d8cb_641f462c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-25T04:24:05Z",
+      "side": 1,
+      "message": "nit: same here?",
+      "range": {
+        "startLine": 354,
+        "startChar": 24,
+        "endLine": 354,
+        "endChar": 31
+      },
+      "revId": "8e986ac53d1b924f34831acbec1e7d1ed375fce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

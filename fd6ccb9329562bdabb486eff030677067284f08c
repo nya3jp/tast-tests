@@ -213,6 +213,24 @@
     },
     {
       "key": {
+        "uuid": "e5056ca9_2d8f1a73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-25T04:24:05Z",
+      "side": 1,
+      "message": "the current way is fine with me if it makes sense to you :-)",
+      "parentUuid": "1b58bcf3_57e9a008",
+      "revId": "fd6ccb9329562bdabb486eff030677067284f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1610d2fd_8f3fbf74",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
         "patchSetId": 2
