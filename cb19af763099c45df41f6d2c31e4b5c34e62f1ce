@@ -70,6 +70,30 @@
       "revId": "cb19af763099c45df41f6d2c31e4b5c34e62f1ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "624d6564_10b4a9bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-25T15:29:35Z",
+      "side": 1,
+      "message": "Indeed.  Please see if the new comment is sufficient (I think it is).",
+      "parentUuid": "4ac576ab_303b3189",
+      "range": {
+        "startLine": 304,
+        "startChar": 1,
+        "endLine": 304,
+        "endChar": 45
+      },
+      "revId": "cb19af763099c45df41f6d2c31e4b5c34e62f1ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
