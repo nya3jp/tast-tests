@@ -48,6 +48,52 @@
     },
     {
       "key": {
+        "uuid": "9aceffd2_2f25e8b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-25T16:18:11Z",
+      "side": 1,
+      "message": "huge nit: %d",
+      "range": {
+        "startLine": 188,
+        "startChar": 47,
+        "endLine": 188,
+        "endChar": 49
+      },
+      "revId": "22cea8f2187138b62a1275b9961cf8fec2dd49be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5cb0a25_54a0bd3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-25T16:18:11Z",
+      "side": 1,
+      "message": "huge nit: %s",
+      "range": {
+        "startLine": 188,
+        "startChar": 58,
+        "endLine": 188,
+        "endChar": 60
+      },
+      "revId": "22cea8f2187138b62a1275b9961cf8fec2dd49be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c2e506d_7b92098f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
         "patchSetId": 1
@@ -59,6 +105,29 @@
       "writtenOn": "2019-04-24T20:13:02Z",
       "side": 1,
       "message": "should you be testing err !\u003d nil instead? it looks like this ignores cases where a memory kill isn\u0027t found; is that intentional?",
+      "revId": "22cea8f2187138b62a1275b9961cf8fec2dd49be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffdf88f8_916bfbeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-25T16:18:11Z",
+      "side": 1,
+      "message": "Could you update the doc to explain the return value?",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 26
+      },
       "revId": "22cea8f2187138b62a1275b9961cf8fec2dd49be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -105,6 +174,29 @@
         "startChar": 46,
         "endLine": 290,
         "endChar": 54
+      },
+      "revId": "22cea8f2187138b62a1275b9961cf8fec2dd49be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f2d5ffa_bb21f36f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/low_memory_killer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-04-25T16:18:11Z",
+      "side": 1,
+      "message": "nit: (?:\\d+), in order not to return the value.",
+      "range": {
+        "startLine": 292,
+        "startChar": 26,
+        "endLine": 292,
+        "endChar": 31
       },
       "revId": "22cea8f2187138b62a1275b9961cf8fec2dd49be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
