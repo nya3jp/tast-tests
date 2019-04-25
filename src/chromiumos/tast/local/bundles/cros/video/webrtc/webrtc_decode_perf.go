@@ -75,17 +75,11 @@ func getMax(s []time.Duration) time.Duration {
 	return max
 }
 
-// Note: perf.Values cannot be used because we need to iterate each (metric, value) pair.
-type metricValue struct {
-	m perf.Metric
-	v float64
-}
-
-// Function signature to measure performance and returns result as an array of metricValue.
-type measureFunc func(ctx context.Context, s *testing.State, cr *chrome.Chrome) (pv []metricValue, err error)
+// Function signature to measure performance and returns perf.Values.
+type measureFunc func(ctx context.Context, s *testing.State, cr *chrome.Chrome) (pv *perf.Values, err error)
 
 // measureCPU returns an array of metricValue which has CPU usage samples.
-func measureCPU(ctx context.Context, s *testing.State, cr *chrome.Chrome) (pv []metricValue, err error) {
+func measureCPU(ctx context.Context, s *testing.State, cr *chrome.Chrome) (pv *perf.Values, err error) {
 	const (
 		stabilize = 10 * time.Second // time to wait for CPU to stabilize after launching proc.
 		measure   = 30 * time.Second // duration for measuring CPU usage.
@@ -98,20 +92,19 @@ func measureCPU(ctx context.Context, s *testing.State, cr *chrome.Chrome) (pv []
 	s.Log("Measuring CPU usage for ", measure)
 	cpuUsage, err := cpu.MeasureUsage(ctx, measure)
 	s.Logf("CPU usage: %f%%", cpuUsage)
-	pv = make([]metricValue, 1)
-	pv[0] = metricValue{
-		m: perf.Metric{
-			Name:      "video_cpu_usage",
-			Unit:      "percent",
-			Direction: perf.SmallerIsBetter},
-		v: cpuUsage}
+	pv = perf.NewValues()
+	pv.Set(perf.Metric{
+		Name:      "video_cpu_usage",
+		Unit:      "percent",
+		Direction: perf.SmallerIsBetter},
+		cpuUsage)
 	return
 }
 
 // measureDecodeTime returns an array of metricValue which has largest observed frames' decode time
 // and median of decode time samples.
 // It obtains frame's decode time via chrome://webrtc-internals page.
-func measureDecodeTime(ctx context.Context, s *testing.State, cr *chrome.Chrome) (pv []metricValue, err error) {
+func measureDecodeTime(ctx context.Context, s *testing.State, cr *chrome.Chrome) (pv *perf.Values, err error) {
 	addStatsJS, err := ioutil.ReadFile(s.DataPath(AddStatsJSFile))
 	if err != nil {
 		s.Fatal("Failed to read JS for gathering decode time: ", err)
@@ -174,19 +167,17 @@ func measureDecodeTime(ctx context.Context, s *testing.State, cr *chrome.Chrome)
 	testing.ContextLog(ctx, "Max decode times: ", maxDecodeTimes)
 	testing.ContextLog(ctx, "Decode times: ", decodeTimes)
 	testing.ContextLogf(ctx, "Largest max is %v, median is %v", max, median)
-	pv = make([]metricValue, 2)
-	pv[0] = metricValue{
-		m: perf.Metric{
-			Name:      "decode_time.percentile_0.50",
-			Unit:      "milliseconds",
-			Direction: perf.SmallerIsBetter},
-		v: float64(median) / float64(time.Millisecond)}
-	pv[1] = metricValue{
-		m: perf.Metric{
-			Name:      "decode_time.max",
-			Unit:      "milliseconds",
-			Direction: perf.SmallerIsBetter},
-		v: float64(max) / float64(time.Millisecond)}
+	pv = perf.NewValues()
+	pv.Set(perf.Metric{
+		Name:      "decode_time.percentile_0.50",
+		Unit:      "milliseconds",
+		Direction: perf.SmallerIsBetter},
+		float64(median)/float64(time.Millisecond))
+	pv.Set(perf.Metric{
+		Name:      "decode_time.max",
+		Unit:      "milliseconds",
+		Direction: perf.SmallerIsBetter},
+		float64(max)/float64(time.Millisecond))
 	return
 }
 
@@ -230,7 +221,7 @@ func webRTCPerf(ctx context.Context, s *testing.State, streamFile, loopbackURL s
 		s.Fatal("Error sanity check loopback web page: ", err)
 	}
 
-	perfValues, err := measure(shortCtx, s, cr)
+	pv, err := measure(shortCtx, s, cr)
 	if err != nil {
 		s.Fatal("Failed to measure: ", err)
 	}
@@ -248,10 +239,9 @@ func webRTCPerf(ctx context.Context, s *testing.State, streamFile, loopbackURL s
 
 	// TODO(crbug.com/crbug.com/955957): Remove "tast_" prefix after removing video_WebRtcPerf in autotest.
 	prefix := "tast_" + hwPrefix
-	for _, mv := range perfValues {
-		m := mv.m
+	for m, v := range pv.CloneValues() {
 		m.Name = prefix + m.Name
-		p.Set(m, mv.v)
+		p.Set(m, v...)
 	}
 
 	return hwAccelUsed

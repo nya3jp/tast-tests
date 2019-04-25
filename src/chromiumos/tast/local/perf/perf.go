@@ -112,6 +112,16 @@ func (p *Values) Set(s Metric, vs ...float64) {
 	validate(s, p.values[s])
 }
 
+// CloneValues returns a copy of p.values.
+func (p *Values) CloneValues() map[Metric][]float64 {
+	ret := make(map[Metric][]float64)
+	for k, v := range p.values {
+		ret[k] = make([]float64, len(v))
+		copy(ret[k], v)
+	}
+	return ret
+}
+
 // traceData is a struct corresponding to a trace entry in Chrome Performance Dashboard JSON.
 // See: https://github.com/catapult-project/catapult/blob/master/dashboard/docs/data-format.md
 type traceData struct {
