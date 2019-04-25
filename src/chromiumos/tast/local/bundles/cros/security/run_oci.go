@@ -63,6 +63,7 @@ func RunOCI(ctx context.Context, s *testing.State) {
 		runOCIArgs []string             // additional top-level run_oci command-line args
 		expStdout  string               // expected stdout from run_oci
 		expStderr  string               // expected stderr from run_oci
+		expSuccess bool                 // expected 0 exit status from run_oci
 		modifyCfg  func(cfg *ociConfig) // makes per-test modifications to default config
 	}
 
@@ -108,9 +109,17 @@ func RunOCI(ctx context.Context, s *testing.State) {
 		cmd.Stderr = &stderr
 
 		s.Logf("Case %v: running %v", tc.name, shutil.EscapeSlice(cmd.Args))
-		cmd.Run() // ignore errors (many test cases intentionally run failing commands)
+		err = cmd.Run()
 
 		failed := false
+
+		if err != nil && tc.expSuccess {
+			failed = true
+			s.Errorf("Case %v failed: %v", tc.name, err)
+		} else if err == nil && !tc.expSuccess {
+			failed = true
+			s.Errorf("Case %v unexpectedly succeeded", tc.name)
+		}
 		if stdout.String() != tc.expStdout {
 			failed = true
 			s.Errorf("Case %v got stdout %q; want %q", tc.name, stdout.String(), tc.expStdout)
@@ -134,14 +143,16 @@ func RunOCI(ctx context.Context, s *testing.State) {
 				cfg.Process.Args = []string{"/bin/date", "-u", "--set", "010101"}
 				cfg.Linux.AltSyscall = "third_party"
 			},
-			expStdout: "Mon Jan  1 00:00:00 UTC 2001\n",
-			expStderr: "date: cannot set date: Function not implemented\n",
+			expStdout:  "Mon Jan  1 00:00:00 UTC 2001\n",
+			expStderr:  "date: cannot set date: Function not implemented\n",
+			expSuccess: false,
 		},
 		{
 			name:       "bind-mount",
 			runOCIArgs: []string{"--bind_mount=/bin:/var/log"},
 			modifyCfg:  func(cfg *ociConfig) { cfg.Process.Args = []string{"/bin/ls", "/var/log/bash"} },
 			expStdout:  "/var/log/bash\n",
+			expSuccess: true,
 		},
 		{
 			name: "device",
@@ -150,22 +161,26 @@ func RunOCI(ctx context.Context, s *testing.State) {
 				cfg.Mounts = append(cfg.Mounts, ociMount{Source: "tmpfs", Destination: "/dev", Type: "tmpfs", Options: []string{"noexec", "nosuid"}, PerformInIntermediateNamespace: true})
 				cfg.Linux.Devices = append(cfg.Linux.Devices, ociLinuxDevice{Path: "/dev/null_test", Type: "c", Major: 1, Minor: 3, FileMode: 0666, UID: 0, GID: 0})
 			},
-			expStdout: "/dev/null_test\n",
+			expStdout:  "/dev/null_test\n",
+			expSuccess: true,
 		},
 		{
-			name:      "device-cgroup-allow",
-			modifyCfg: func(cfg *ociConfig) { cfg.Process.Args = []string{"/usr/bin/hexdump", "-n16", "/dev/zero"} },
-			expStdout: "0000000 0000 0000 0000 0000 0000 0000 0000 0000\n0000010\n",
+			name:       "device-cgroup-allow",
+			modifyCfg:  func(cfg *ociConfig) { cfg.Process.Args = []string{"/usr/bin/hexdump", "-n16", "/dev/zero"} },
+			expStdout:  "0000000 0000 0000 0000 0000 0000 0000 0000 0000\n0000010\n",
+			expSuccess: true,
 		},
 		{
-			name:      "device-cgroup-deny",
-			modifyCfg: func(cfg *ociConfig) { cfg.Process.Args = []string{"/usr/bin/hexdump", "-n1", "/dev/urandom"} },
-			expStderr: "hexdump: /dev/urandom: Operation not permitted\nhexdump: all input file arguments failed\n",
+			name:       "device-cgroup-deny",
+			modifyCfg:  func(cfg *ociConfig) { cfg.Process.Args = []string{"/usr/bin/hexdump", "-n1", "/dev/urandom"} },
+			expStderr:  "hexdump: /dev/urandom: Operation not permitted\nhexdump: all input file arguments failed\n",
+			expSuccess: false,
 		},
 		{
-			name:      "gid",
-			modifyCfg: func(cfg *ociConfig) { cfg.Process.Args = []string{"/usr/bin/id", "-g"} },
-			expStdout: "0\n",
+			name:       "gid",
+			modifyCfg:  func(cfg *ociConfig) { cfg.Process.Args = []string{"/usr/bin/id", "-g"} },
+			expStdout:  "0\n",
+			expSuccess: true,
 		},
 		{
 			name: "hooks",
@@ -178,7 +193,8 @@ func RunOCI(ctx context.Context, s *testing.State) {
 				)
 				cfg.Hooks.PostStop = append(cfg.Hooks.PostStop, ociHook{Path: "/bin/echo", Args: []string{"echo", "-n", "4"}})
 			},
-			expStdout: "01234",
+			expStdout:  "01234",
+			expSuccess: true,
 		},
 		{
 			name: "hooks-failure",
@@ -186,11 +202,13 @@ func RunOCI(ctx context.Context, s *testing.State) {
 				cfg.Process.Args = []string{"/bin/echo", "-n", "This should not run"}
 				cfg.Hooks.PreStart = append(cfg.Hooks.PreStart, ociHook{Path: "/bin/false", Args: []string{"false"}})
 			},
+			expSuccess: false,
 		},
 		{
-			name:      "uid",
-			modifyCfg: func(cfg *ociConfig) { cfg.Process.Args = []string{"/usr/bin/id", "-u"} },
-			expStdout: "0\n",
+			name:       "uid",
+			modifyCfg:  func(cfg *ociConfig) { cfg.Process.Args = []string{"/usr/bin/id", "-u"} },
+			expStdout:  "0\n",
+			expSuccess: true,
 		},
 	} {
 		runTest(tc)
