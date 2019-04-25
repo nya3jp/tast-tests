@@ -22,6 +22,30 @@
       "revId": "cb19af763099c45df41f6d2c31e4b5c34e62f1ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bfc6a9c_d2226e1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-25T00:49:14Z",
+      "side": 1,
+      "message": "I guess there\u0027s some ambiguity because kswapd starts at low and stops at high, but under pressure kswapd is running, so I think using high here is reasonable because MemFree gets back to this value pretty quickly.\n\nBut really, there are two things going on.  I need to comment this better.\n\n1. This is the actual calculation of totalreserve_pages (it actually uses the high watermark).  I\u0027d like to see that number anyway, since we use it in the computation of available.  That is a global number, but all calculations are per-zone, so in that sense this is already not precise.\n\n2. watermark_ok adds the per-zone reserve to the initial watermark value, and balance_pgdat uses watermark_ok, so the stopping point of kswapd seems to be roughly high wmark + totalreserve.\n\nBut that\u0027s not completely correct---there\u0027s one thing I don\u0027t understand and it has to do with each zone containing an array of reserves rather than just one for itself.  watermark_ok uses ac-\u003epreferred_zoneref to choose the array index into the zone reserve array.  Preferred_zoneref is set by calling first_zones_zonelist().  That\u0027s where I gave up.  RIght now the calculation gives an upper bound which was quite close to what I saw in MemFree when under pressure.",
+      "parentUuid": "de84aff8_f20b4e83",
+      "range": {
+        "startLine": 304,
+        "startChar": 1,
+        "endLine": 304,
+        "endChar": 45
+      },
+      "revId": "cb19af763099c45df41f6d2c31e4b5c34e62f1ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
