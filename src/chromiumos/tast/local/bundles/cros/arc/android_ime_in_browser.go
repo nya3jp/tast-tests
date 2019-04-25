@@ -52,6 +52,20 @@ func getThirdPartyInputMethodID(ctx context.Context, tconn *chrome.Conn, pkg str
 	return "", errors.New(fmt.Sprintf("%s not found in the list", pkg))
 }
 
+func isKeyboardShown(ctx context.Context, tconn *chrome.Conn) (bool, error) {
+	var shown bool
+	if err := tconn.EvalPromise(ctx,
+		`new Promise(function(resolve, reject) {
+		  chrome.automation.getDesktop(function(root){
+		    var keyboard = root.find({ attributes: { className: 'ArcVirtualKeyboardContainer' }});
+		    resolve(keyboard && keyboard.children.length > 0);
+		  });
+		})`, &shown); err != nil {
+		return false, err
+	}
+	return shown, nil
+}
+
 func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 	const (
 		apk         = "ArcInputMethodTest.apk"
@@ -162,7 +176,19 @@ func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 		`document.getElementById('text') === document.activeElement`); err != nil {
 		s.Fatal("Failed to wait for text field to focus: ", err)
 	}
-	if err := tconn.Eval(ctx, `chrome.autotestPrivate.showVirtualKeyboardIfEnabled();`, nil); err != nil {
+
+	s.Log("Showing the virtual keyboard")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if shown, err := isKeyboardShown(ctx, tconn); err != nil {
+			s.Fatal("Failed to get if virtual keyboard is shown: ", err)
+		} else if shown {
+			return nil
+		}
+		if err := tconn.Eval(ctx, `chrome.autotestPrivate.showVirtualKeyboardIfEnabled();`, nil); err != nil {
+			return err
+		}
+		return errors.New("virtual keyboard still not shown")
+	}, &testing.PollOptions{Interval: time.Second}); err != nil {
 		s.Fatal("Failed to show the virtual keyboard: ", err)
 	}
 
