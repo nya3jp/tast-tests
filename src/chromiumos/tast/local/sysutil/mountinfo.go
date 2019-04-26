@@ -71,18 +71,18 @@ type MountInfo struct {
 var lineRe = regexp.MustCompile(
 	"^(\\d+) (\\d+) (\\d+):(\\d+) (\\S+) (\\S+) (\\S+)(?: shared:(\\d+))?(?: master:(\\d+))?(?: propagate_from:(\\d+))?(?: (unbindable))? - (\\S+) (\\S+) (\\S+)$")
 
-// String components has escaped characters for ' ', LF, Tab and '\'.
-var unescapeRe = regexp.MustCompile("\\\\040|\\\\011|\\\\012|\\\\134")
+// String components has escaped characters for ' ', Tab, LF and '\'.
+var unescapeRe = regexp.MustCompile(`\\040|\\011|\\012|\\134`)
 
 func unescape(s string) (string, error) {
 	var errs []error
 	val := unescapeRe.ReplaceAllStringFunc(s, func(c string) string {
-		u, err := strconv.Unquote(c)
+		u, _, _, err := strconv.UnquoteChar(c, 0)
 		if err != nil {
 			errs = append(errs, err)
 			return c
 		}
-		return u
+		return string(u)
 	})
 	if errs != nil {
 		return "", errors.Errorf("Failed to unescape %q: %v", s, errs)
