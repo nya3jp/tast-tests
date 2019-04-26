@@ -75,29 +75,33 @@ func getMax(s []time.Duration) time.Duration {
 	return max
 }
 
+// MeasureParam is a set of parameters for measureFunc to reference.
+type MeasureParam struct {
+	NamePrefix        string
+	CPUStabilize      time.Duration
+	CPUMeasure        time.Duration
+	DecodeTimeTimeout time.Duration
+	DecodeTimeSamples int // 1 second per sample
+}
+
 // Function signature to measure performance and writes result to perf.Values.
 // Note that metric's name prefix is given.
-type measureFunc func(ctx context.Context, s *testing.State, cr *chrome.Chrome, pv *perf.Values, prefix string) error
+type measureFunc func(ctx context.Context, s *testing.State, cr *chrome.Chrome, pv *perf.Values, param MeasureParam) error
 
 // measureCPU measures CPU usage for a period of time after a short period for stabilization and writes CPU usage to perf.Values.
-func measureCPU(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *perf.Values, prefix string) error {
-	const (
-		stabilize = 10 * time.Second // time to wait for CPU to stabilize after launching proc.
-		measure   = 30 * time.Second // duration for measuring CPU usage.
-	)
-
-	s.Logf("Sleeping %v to wait for CPU usage to stabilize", stabilize)
-	if err := testing.Sleep(ctx, stabilize); err != nil {
+func measureCPU(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *perf.Values, param MeasureParam) error {
+	s.Logf("Sleeping %v to wait for CPU usage to stabilize", param.CPUStabilize)
+	if err := testing.Sleep(ctx, param.CPUStabilize); err != nil {
 		return err
 	}
-	s.Log("Measuring CPU usage for ", measure)
-	cpuUsage, err := cpu.MeasureUsage(ctx, measure)
+	s.Log("Measuring CPU usage for ", param.CPUMeasure)
+	cpuUsage, err := cpu.MeasureUsage(ctx, param.CPUMeasure)
 	if err != nil {
 		return err
 	}
 	s.Logf("CPU usage: %f%%", cpuUsage)
 	p.Set(perf.Metric{
-		Name:      prefix + "video_cpu_usage",
+		Name:      param.NamePrefix + "video_cpu_usage",
 		Unit:      "percent",
 		Direction: perf.SmallerIsBetter},
 		cpuUsage)
@@ -107,7 +111,7 @@ func measureCPU(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *per
 // measureDecodeTime measures frames' decode time and recent frames' max decode time via
 // chrome://webrtc-internals dashboard. It writes largest max recent decode time and median
 // decode time to perf.Values.
-func measureDecodeTime(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *perf.Values, prefix string) error {
+func measureDecodeTime(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *perf.Values, param MeasureParam) error {
 	addStatsJS, err := ioutil.ReadFile(s.DataPath(AddStatsJSFile))
 	if err != nil {
 		return errors.Wrap(err, "failed to read JS for gathering decode time")
@@ -119,11 +123,6 @@ func measureDecodeTime(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
-	const (
-		measureTimeout  = time.Minute
-		measureInterval = 500 * time.Millisecond
-		numSamples      = 10
-	)
 	// Current frame's decode time.
 	var decodeTimes []time.Duration
 	// Maximum observed frame decode time.
@@ -135,7 +134,7 @@ func measureDecodeTime(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 				return testing.PollBreak(errors.Wrap(err, "unable to eval googMaxDecodeMs"))
 
 			}
-			if len(maxTimesMs) < numSamples {
+			if len(maxTimesMs) < param.DecodeTimeSamples {
 				return errors.New("insufficient samples")
 			}
 			maxDecodeTimes = make([]time.Duration, len(maxTimesMs))
@@ -147,7 +146,7 @@ func measureDecodeTime(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 			if err := conn.Eval(ctx, "googDecodeMs", &timesMs); err != nil {
 				return testing.PollBreak(errors.Wrap(err, "unable to eval googDecodeMs"))
 			}
-			if len(timesMs) < numSamples {
+			if len(timesMs) < param.DecodeTimeSamples {
 				return errors.New("insufficient samples")
 			}
 			decodeTimes = make([]time.Duration, len(timesMs))
@@ -155,15 +154,15 @@ func measureDecodeTime(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 				decodeTimes[i] = time.Duration(ms) * time.Millisecond
 			}
 			return nil
-		}, &testing.PollOptions{Interval: measureInterval, Timeout: measureTimeout})
+		}, &testing.PollOptions{Interval: time.Second, Timeout: param.DecodeTimeTimeout})
 	if err != nil {
 		return err
 	}
-	if len(maxDecodeTimes) < numSamples {
-		return errors.Errorf("got %d max decode time sample(s); want %d", len(maxDecodeTimes), numSamples)
+	if len(maxDecodeTimes) < param.DecodeTimeSamples {
+		return errors.Errorf("got %d max decode time sample(s); want %d", len(maxDecodeTimes), param.DecodeTimeSamples)
 	}
-	if len(decodeTimes) < numSamples {
-		return errors.Errorf("got %d decode time sample(s); want %d", len(decodeTimes), numSamples)
+	if len(decodeTimes) < param.DecodeTimeSamples {
+		return errors.Errorf("got %d decode time sample(s); want %d", len(decodeTimes), param.DecodeTimeSamples)
 	}
 	max := getMax(maxDecodeTimes)
 	median := getMedian(decodeTimes)
@@ -171,15 +170,26 @@ func measureDecodeTime(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	testing.ContextLog(ctx, "Decode times: ", decodeTimes)
 	testing.ContextLogf(ctx, "Largest max is %v, median is %v", max, median)
 	p.Set(perf.Metric{
-		Name:      prefix + "decode_time.percentile_0.50",
+		Name:      param.NamePrefix + "decode_time.percentile_0.50",
 		Unit:      "milliseconds",
 		Direction: perf.SmallerIsBetter},
 		float64(median)/float64(time.Millisecond))
 	p.Set(perf.Metric{
-		Name:      prefix + "decode_time.max",
+		Name:      param.NamePrefix + "decode_time.max",
 		Unit:      "milliseconds",
 		Direction: perf.SmallerIsBetter},
 		float64(max)/float64(time.Millisecond))
+	return nil
+}
+
+// measureCPUDecodeTime measures CPU usage and frame decode time.
+func measureCPUDecodeTime(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *perf.Values, param MeasureParam) error {
+	if err := measureCPU(ctx, s, cr, p, param); err != nil {
+		return err
+	}
+	if err := measureDecodeTime(ctx, s, cr, p, param); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -188,7 +198,7 @@ func measureDecodeTime(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 // it calls measure() to measure performance metrics and stores to perf.Values.
 // webRTCDecodePerf returns true if video decode is hardware accelerated; otherwise, returns false.
 func webRTCDecodePerf(ctx context.Context, s *testing.State, streamFile, loopbackURL string, measure measureFunc,
-	disableHWAccel bool, p *perf.Values) (hwAccelUsed bool) {
+	disableHWAccel bool, p *perf.Values, param MeasureParam) (hwAccelUsed bool) {
 	chromeArgs := chromeArgsWithCameraInput(streamFile, false)
 	if disableHWAccel {
 		chromeArgs = append(chromeArgs, "--disable-accelerated-video-decode")
@@ -234,38 +244,18 @@ func webRTCDecodePerf(ctx context.Context, s *testing.State, streamFile, loopbac
 		prefix = "hw_"
 	}
 	// TODO(crbug.com/955957): Remove "tast_" prefix after removing video_WebRtcPerf in autotest.
-	prefix = "tast_" + prefix
-	if err := measure(shortCtx, s, cr, p, prefix); err != nil {
+	param.NamePrefix = "tast_" + prefix
+	if err := measure(shortCtx, s, cr, p, param); err != nil {
 		s.Fatal("Failed to measure: ", err)
 	}
 
 	return hwAccelUsed
 }
 
-// RunWebRTCDecodePerfTime starts a Chrome instance (with or without hardware video decoder),
+// RunWebRTCDecodePerf starts a Chrome instance (with or without hardware video decoder),
 // opens an WebRTC loopback page that repeatly loopbacks a camera stream
-// to measure decode time by looking at chrome://webrtc-internals page,
-// and stores decode time measurements to perf.
-func RunWebRTCDecodePerfTime(ctx context.Context, s *testing.State, streamName string) {
-	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
-	defer server.Close()
-	loopbackURL := server.URL + "/" + LoopbackPage
-
-	p := perf.NewValues()
-	// Try hardware accelerated WebRTC first.
-	// If it is hardware accelerated, run without hardware acceleration again.
-	streamFilePath := s.DataPath(streamName)
-	hwAccelUsed := webRTCDecodePerf(ctx, s, streamFilePath, loopbackURL, measureDecodeTime, false, p)
-	if hwAccelUsed {
-		webRTCDecodePerf(ctx, s, streamFilePath, loopbackURL, measureDecodeTime, true, p)
-	}
-	p.Save(s.OutDir())
-}
-
-// RunWebRTCDecodePerfCPU starts a Chrome instance (with or without hardware video decoder),
-// opens an WebRTC loopback page that repeatly loopbacks a video stream
-// to measure CPU usage and stores decode time measurements to perf.
-func RunWebRTCDecodePerfCPU(ctx context.Context, s *testing.State, streamName string) {
+// to measure CPU usage and frame decode time and stores them to perf.
+func RunWebRTCDecodePerf(ctx context.Context, s *testing.State, streamName string, param MeasureParam) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 	loopbackURL := server.URL + "/" + LoopbackPage
@@ -280,9 +270,9 @@ func RunWebRTCDecodePerfCPU(ctx context.Context, s *testing.State, streamName st
 	// Try hardware accelerated WebRTC first.
 	// If it is hardware accelerated, run without hardware acceleration again.
 	streamFilePath := s.DataPath(streamName)
-	hwAccelUsed := webRTCDecodePerf(shortCtx, s, streamFilePath, loopbackURL, measureCPU, false, p)
+	hwAccelUsed := webRTCDecodePerf(shortCtx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, false, p, param)
 	if hwAccelUsed {
-		webRTCDecodePerf(shortCtx, s, streamFilePath, loopbackURL, measureCPU, true, p)
+		webRTCDecodePerf(shortCtx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, true, p, param)
 	}
 	p.Save(s.OutDir())
 }

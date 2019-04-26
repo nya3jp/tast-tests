@@ -14,8 +14,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WebRTCDecodePerfCPU,
-		Desc:         "Measures WebRTC decode performance in terms of CPU usage with and without hardware acceleration",
+		Func:         WebRTCDecodePerf,
+		Desc:         "Measures WebRTC decode performance in terms of CPU usage and decode time with and without hardware acceleration",
 		Contacts:     []string{"deanliao@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome_login"},
@@ -25,8 +25,12 @@ func init() {
 	})
 }
 
-// WebRTCDecodePerfCPU opens a WebRTC loopback page that loops a given capture stream
-// to measure CPU usage.
-func WebRTCDecodePerfCPU(ctx context.Context, s *testing.State) {
-	webrtc.RunWebRTCDecodePerfCPU(ctx, s, "crowd720_25frames.y4m")
+// WebRTCDecodePerf opens a WebRTC loopback page that loops a given capture stream to measure decode time and CPU usage.
+func WebRTCDecodePerf(ctx context.Context, s *testing.State) {
+	webrtc.RunWebRTCDecodePerf(ctx, s, "crowd720_25frames.y4m", webrtc.MeasureParam{
+		CPUStabilize:      10 * time.Second,
+		CPUMeasure:        30 * time.Second,
+		DecodeTimeTimeout: 30 * time.Second,
+		DecodeTimeSamples: 10,
+	})
 }
