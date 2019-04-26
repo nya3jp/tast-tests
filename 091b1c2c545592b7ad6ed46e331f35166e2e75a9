@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cacd5be3_b2bd1d5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-26T23:21:37Z",
+      "side": 1,
+      "message": "optional nit: the control flow might be simpler if you return immediately in the non-error case:\n\nif err :\u003d tapKey(key); err !\u003d nil {\n    return nil\n}\n// The key couldn\u0027t be found ...\nif err :\u003d tapKey(\"shift\"); err !\u003d nil {\n    return err\n}\nreturn tapKey(key)",
+      "revId": "091b1c2c545592b7ad6ed46e331f35166e2e75a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
