@@ -810,7 +810,8 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	}
 
 	if p.RecordPageSet {
-		const minimumRAM uint64 = 4 * 1000 * 1000 * 1000
+		// Don't attempt to record the pageset on a 2GB device.
+		minimumRAM := kernelmeter.MiBToBytes(3 * 1024)
 		if memInfo.Total < minimumRAM {
 			s.Fatalf("Not enough RAM to record page set: have %v, want %v or more",
 				memInfo.Total, minimumRAM)
