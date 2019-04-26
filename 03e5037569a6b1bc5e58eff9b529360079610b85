@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "604066aa_0a224529",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-26T19:41:54Z",
+      "side": 1,
+      "message": "Should we also add the unit MiB here?",
+      "range": {
+        "startLine": 297,
+        "startChar": 22,
+        "endLine": 297,
+        "endChar": 24
+      },
+      "revId": "03e5037569a6b1bc5e58eff9b529360079610b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b46700ac_c0764ebe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-26T19:41:54Z",
+      "side": 1,
+      "message": "nit: os.Pagesize()",
+      "range": {
+        "startLine": 323,
+        "startChar": 18,
+        "endLine": 323,
+        "endChar": 22
+      },
+      "revId": "03e5037569a6b1bc5e58eff9b529360079610b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01197a3a_6dfb0ee0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-26T19:41:54Z",
+      "side": 1,
+      "message": "wouldn\u0027t this be f[0]?",
+      "range": {
+        "startLine": 494,
+        "startChar": 49,
+        "endLine": 494,
+        "endChar": 50
+      },
+      "revId": "03e5037569a6b1bc5e58eff9b529360079610b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
