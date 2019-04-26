@@ -22,6 +22,30 @@
       "revId": "908213f572b32328fbcbb83ce00eb1d0fc668afe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2790834_dba04602",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/run_oci.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1313582
+      },
+      "writtenOn": "2019-04-26T00:35:19Z",
+      "side": 1,
+      "message": "Most of the time, run_oci returns -1 on error, unless the jailed process itself or the container teardown fails, in which case it\u0027s something like the exit status of the process (exit code or 128 + signum), or the -errno of whatever step failed. I don\u0027t think it\u0027s terribly interesting, especially since all of this *should* be logged, and I don\u0027t see the non-zero exit status\u0027 of run_oci as part of it\u0027s spec, so I\u0027d vote to leave it as is. If someone wants it though, we can add it.",
+      "parentUuid": "ef5beb5e_f3ca774d",
+      "range": {
+        "startLine": 66,
+        "startChar": 37,
+        "endLine": 66,
+        "endChar": 45
+      },
+      "revId": "908213f572b32328fbcbb83ce00eb1d0fc668afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
