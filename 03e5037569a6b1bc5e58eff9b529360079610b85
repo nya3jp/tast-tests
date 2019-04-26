@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1f165eef_0af8d3f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-26T23:20:07Z",
+      "side": 1,
+      "message": "Right, that\u0027s what I am not sure about.  I find that the logs are more readable without the units.\n\nFor instance\n\n2019/04/26 11:24:13 [11:24:13.213] Metrics: watermarks 87 109 131, total reserve 140\n\nvs.\n\n2019/04/26 11:24:13 [11:24:13.213] Metrics: watermarks 87 MiB 109 MiB 131 MiB, total reserve 140 MiB\n\nif you know what I mean.",
+      "parentUuid": "604066aa_0a224529",
+      "range": {
+        "startLine": 297,
+        "startChar": 22,
+        "endLine": 297,
+        "endChar": 24
+      },
+      "revId": "03e5037569a6b1bc5e58eff9b529360079610b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b46700ac_c0764ebe",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "24947056_0ccdad59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-26T23:20:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b46700ac_c0764ebe",
+      "range": {
+        "startLine": 323,
+        "startChar": 18,
+        "endLine": 323,
+        "endChar": 22
+      },
+      "revId": "03e5037569a6b1bc5e58eff9b529360079610b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01197a3a_6dfb0ee0",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "03e5037569a6b1bc5e58eff9b529360079610b85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aad0cf0_5d55e13b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-26T23:20:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01197a3a_6dfb0ee0",
+      "range": {
+        "startLine": 494,
+        "startChar": 49,
+        "endLine": 494,
+        "endChar": 50
+      },
+      "revId": "03e5037569a6b1bc5e58eff9b529360079610b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
