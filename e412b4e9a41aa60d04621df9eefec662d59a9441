@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "555f215f_ee194e92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-04-26T09:34:33Z",
+      "side": 1,
+      "message": "It is used to get s.DataPath(AddStatsJSFile) in measureDecodeTime. However, to pass information as little as it needs, I removed testing.State and passed AddStatsJS via MeasureConfig.",
+      "parentUuid": "3e874216_1a1035fa",
+      "range": {
+        "startLine": 97,
+        "startChar": 37,
+        "endLine": 97,
+        "endChar": 53
+      },
+      "revId": "e412b4e9a41aa60d04621df9eefec662d59a9441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa8efa92_e2f7ee78",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
         "patchSetId": 13
@@ -45,6 +69,30 @@
       "revId": "e412b4e9a41aa60d04621df9eefec662d59a9441",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57a85672_8ac89042",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-04-26T09:34:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa8efa92_e2f7ee78",
+      "range": {
+        "startLine": 119,
+        "startChar": 44,
+        "endLine": 119,
+        "endChar": 60
+      },
+      "revId": "e412b4e9a41aa60d04621df9eefec662d59a9441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "966a392d_5082699f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-04-26T09:34:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b51276a6_144566ef",
+      "range": {
+        "startLine": 191,
+        "startChar": 47,
+        "endLine": 191,
+        "endChar": 63
+      },
+      "revId": "e412b4e9a41aa60d04621df9eefec662d59a9441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85ff7cd3_b11988e8",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
         "patchSetId": 13
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "d7e27359_fae577aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-04-26T09:34:33Z",
+      "side": 1,
+      "message": "This is in preparation of measurePower.\nAdd a Note: comment.",
+      "parentUuid": "85ff7cd3_b11988e8",
+      "range": {
+        "startLine": 202,
+        "startChar": 92,
+        "endLine": 202,
+        "endChar": 113
+      },
+      "revId": "e412b4e9a41aa60d04621df9eefec662d59a9441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b1327c3_be55b03b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
         "patchSetId": 13
@@ -108,6 +204,24 @@
       "revId": "e412b4e9a41aa60d04621df9eefec662d59a9441",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83364595_8a860809",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-04-26T09:34:33Z",
+      "side": 1,
+      "message": "Sure",
+      "parentUuid": "2b1327c3_be55b03b",
+      "revId": "e412b4e9a41aa60d04621df9eefec662d59a9441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -131,6 +245,30 @@
       "revId": "e412b4e9a41aa60d04621df9eefec662d59a9441",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7be0be9_3bb150a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-04-26T09:34:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2891114f_195986e0",
+      "range": {
+        "startLine": 258,
+        "startChar": 59,
+        "endLine": 258,
+        "endChar": 66
+      },
+      "revId": "e412b4e9a41aa60d04621df9eefec662d59a9441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
