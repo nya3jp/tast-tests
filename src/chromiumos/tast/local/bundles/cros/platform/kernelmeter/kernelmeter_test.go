@@ -117,25 +117,26 @@ Node 0, zone  Movable
         protection: (0, 0, 0, 0)
 `
 	const (
-		expectedMinMiB          = 131
-		expectedLowMiB          = 164
-		expectedHighMiB         = 196
-		expectedTotalReserveMiB = 236
+		pageSize             = MemSize(4096)
+		expectedMin          = 33791 * pageSize
+		expectedLow          = 42237 * pageSize
+		expectedHigh         = 50683 * pageSize
+		expectedTotalReserve = 72811 * pageSize
 	)
 	w, err := stringToWatermarks(testInput)
 	if err != nil {
 		t.Fatal("error in stringToWatermarks", err)
 	}
-	if w.minMiB != expectedMinMiB {
-		t.Fatalf("minMiB: got %v; want %v", w.minMiB, expectedMinMiB)
+	if w.min != expectedMin {
+		t.Fatalf("min: got %v; want %v", w.min, expectedMin)
 	}
-	if w.lowMiB != expectedLowMiB {
-		t.Fatalf("lowMiB: got %v; want %v", w.lowMiB, expectedLowMiB)
+	if w.low != expectedLow {
+		t.Fatalf("low: got %v; want %v", w.low, expectedLow)
 	}
-	if w.highMiB != expectedHighMiB {
-		t.Fatalf("highMiB: got %v; want %v", w.highMiB, expectedHighMiB)
+	if w.high != expectedHigh {
+		t.Fatalf("high: got %v; want %v", w.high, expectedHigh)
 	}
-	if w.totalReserveMiB != expectedTotalReserveMiB {
-		t.Fatalf("totalReserve: got %v; want %v", w.totalReserveMiB, expectedTotalReserveMiB)
+	if w.totalReserve != expectedTotalReserve {
+		t.Fatalf("totalReserve: got %v; want %v", w.totalReserve, expectedTotalReserve)
 	}
 }
