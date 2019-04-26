@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e874216_1a1035fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-26T08:34:10Z",
+      "side": 1,
+      "message": "Could you avoid passing s to this function?\nYou can use testing.ContextLog for logging instead.\n\ncf.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\u003e If a function just needs to log its progress, pass a context.Context so it can call testing.ContextLog.",
+      "range": {
+        "startLine": 97,
+        "startChar": 37,
+        "endLine": 97,
+        "endChar": 53
+      },
+      "revId": "e412b4e9a41aa60d04621df9eefec662d59a9441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa8efa92_e2f7ee78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-26T08:34:10Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 119,
+        "startChar": 44,
+        "endLine": 119,
+        "endChar": 60
+      },
+      "revId": "e412b4e9a41aa60d04621df9eefec662d59a9441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b51276a6_144566ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-26T08:34:10Z",
+      "side": 1,
+      "message": "no need to pass s here anymore because of my above comment.",
+      "range": {
+        "startLine": 191,
+        "startChar": 47,
+        "endLine": 191,
+        "endChar": 63
+      },
+      "revId": "e412b4e9a41aa60d04621df9eefec662d59a9441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85ff7cd3_b11988e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-26T08:34:10Z",
+      "side": 1,
+      "message": "I guess we don\u0027t need to pass this as a function-type argument anymore because this arguement is always \"measureCPUDecodeTime\" now.\n\nI think we can just inline measureCPUDecodeTime\u0027s body in this function. \nWDYT?",
+      "range": {
+        "startLine": 202,
+        "startChar": 92,
+        "endLine": 202,
+        "endChar": 113
+      },
+      "revId": "e412b4e9a41aa60d04621df9eefec662d59a9441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b1327c3_be55b03b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-26T08:34:10Z",
+      "side": 1,
+      "message": "nit: Could you add  a comment that explain that streaming will start automatically when loopback page is opened? It would be also okay to have it in function comment of this function.",
+      "revId": "e412b4e9a41aa60d04621df9eefec662d59a9441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2891114f_195986e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-04-26T08:34:10Z",
+      "side": 1,
+      "message": "nit: video",
+      "range": {
+        "startLine": 258,
+        "startChar": 59,
+        "endLine": 258,
+        "endChar": 66
+      },
+      "revId": "e412b4e9a41aa60d04621df9eefec662d59a9441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
