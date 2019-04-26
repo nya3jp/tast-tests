@@ -100,6 +100,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"sslh-fork", "sslh", "sslh", pidNS | mntNS | restrictCaps | seccomp},
 		{"upstart-socket-bridge", "root", "root", 0},
 		{"timberslide", "root", "root", 0},
+		{"auditd", "root", "root", 0},
 		{"firewalld", "firewall", "firewall", pidNS | mntNS | restrictCaps | noNewPrivs},
 		{"conntrackd", "nfqueue", "nfqueue", mntNS | restrictCaps | noNewPrivs | seccomp},
 		{"avahi-daemon", "avahi", "avahi", restrictCaps},
@@ -117,6 +118,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"brcm_patchram_plus", "root", "root", 0},          // runs on some veyron boards
 		{"rialto_cellular_autoconnect", "root", "root", 0}, // runs on veyron_rialto
 		{"rialto_modem_watchdog", "root", "root", 0},       // runs on veyron_rialto
+		{"netperf", "root", "root", 0},                     // started by Autotest tests
 		{"tpm_managerd", "root", "root", 0},
 		{"trunksd", "trunks", "trunks", restrictCaps | noNewPrivs | seccomp},
 		{"imageloader", "root", "root", 0}, // uses NNP/seccomp but sometimes seen before sandboxing: https://crbug.com/936703#c16
