@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3883e81c_9472b0a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-26T22:44:55Z",
+      "side": 1,
+      "message": "I just realized some fields are in pages and don\u0027t have units. If you care about those you can change this to the following, if you don\u0027t then feel free to leave it as-is.\n`(\\S+):\\s+(\\d+) (kB)?\\n`",
+      "range": {
+        "startLine": 403,
+        "startChar": 42,
+        "endLine": 403,
+        "endChar": 44
+      },
+      "revId": "ba54ac555268fbba3de1307626e6d5d1156878c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ca94002_fea1828f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-04-26T22:44:55Z",
+      "side": 1,
+      "message": "you don\u0027t need x, this is v[i].",
+      "range": {
+        "startLine": 459,
+        "startChar": 2,
+        "endLine": 459,
+        "endChar": 3
+      },
+      "revId": "ba54ac555268fbba3de1307626e6d5d1156878c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
