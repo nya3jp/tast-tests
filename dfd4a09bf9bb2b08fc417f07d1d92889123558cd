@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6263c10_6139887b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-26T15:05:37Z",
+      "side": 1,
+      "message": "nit: please add a trailing period to this comment and the one on L28. godoc comments should always be full sentences.",
+      "revId": "dfd4a09bf9bb2b08fc417f07d1d92889123558cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a761b7f2_ec9154fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-26T15:05:37Z",
+      "side": 1,
+      "message": "nit: args",
+      "range": {
+        "startLine": 34,
+        "startChar": 40,
+        "endLine": 34,
+        "endChar": 43
+      },
+      "revId": "dfd4a09bf9bb2b08fc417f07d1d92889123558cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "188f9c94_3d4db7e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-26T15:05:37Z",
+      "side": 1,
+      "message": "nit: i\u0027d consider doing \"args \u003d append(...)\" here, just because there doesn\u0027t seem to be any particular need to return within this statement",
+      "revId": "dfd4a09bf9bb2b08fc417f07d1d92889123558cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ce3735d_bfa39a93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-26T15:05:37Z",
+      "side": 1,
+      "message": "nit: please add trailing period",
+      "revId": "dfd4a09bf9bb2b08fc417f07d1d92889123558cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "334cb628_5e230664",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-26T15:05:37Z",
+      "side": 1,
+      "message": "nit: i\u0027d recommend ending this line with \u0027,\u0027 and putting \u0027}, cpuUsage)\u0027 on the next line. this is the normal style we use with multiline struct literals, since it makes it a bit easier to add or delete fields in the future without needing to move the closing brace.",
+      "range": {
+        "startLine": 114,
+        "startChar": 33,
+        "endLine": 114,
+        "endChar": 35
+      },
+      "revId": "dfd4a09bf9bb2b08fc417f07d1d92889123558cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d263450_aa5b4619",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-26T15:05:37Z",
+      "side": 1,
+      "message": "nit: merge this comment with the one on L231? they both seem to be documenting L232",
+      "revId": "dfd4a09bf9bb2b08fc417f07d1d92889123558cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "123d8493_3116261e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-26T15:05:37Z",
+      "side": 1,
+      "message": "nit: maybe \"plays a loopback video stream\"? i think that this might be merging both \"loops\" and \"loopback\" into a single word. :-)\n\nalso, s/repeatly/repeatedly/",
+      "range": {
+        "startLine": 261,
+        "startChar": 47,
+        "endLine": 261,
+        "endChar": 56
+      },
+      "revId": "dfd4a09bf9bb2b08fc417f07d1d92889123558cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
