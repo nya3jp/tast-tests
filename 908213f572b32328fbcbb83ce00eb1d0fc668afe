@@ -46,6 +46,30 @@
       "revId": "908213f572b32328fbcbb83ce00eb1d0fc668afe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa67b9bf_96f2eccb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/run_oci.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-26T04:01:56Z",
+      "side": 1,
+      "message": "got it, sounds good. my only minor nit is to reword this comment to something like \"whether run_oci should return a non-zero exit status\". the \"expected\" in the \"expected stdout\" and \"expected stderr\" is referring to expected values, so when i saw this comment, i was initially confused and thought it was saying that the field contains the expected exit status, e.g. 1 or 2 or whatever.",
+      "parentUuid": "f2790834_dba04602",
+      "range": {
+        "startLine": 66,
+        "startChar": 37,
+        "endLine": 66,
+        "endChar": 45
+      },
+      "revId": "908213f572b32328fbcbb83ce00eb1d0fc668afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
