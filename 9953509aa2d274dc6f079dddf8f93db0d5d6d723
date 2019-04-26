@@ -1,0 +1,193 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2758c181_92074bf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-26T04:49:26Z",
+      "side": 1,
+      "message": "nit: MeasureParams since this holds multiple parameters?",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 79,
+        "endChar": 17
+      },
+      "revId": "9953509aa2d274dc6f079dddf8f93db0d5d6d723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3c79ce9_ed880ae2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-26T04:49:26Z",
+      "side": 1,
+      "message": "nit: mind adding godoc comments for these fields, e.g. \"NamePrefix is ...\"? some of them (well, mostly this one) seem non-obvious.",
+      "revId": "9953509aa2d274dc6f079dddf8f93db0d5d6d723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bb49b24_875aa021",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-26T04:49:26Z",
+      "side": 1,
+      "message": "nit: you can omit the arg names in this type decl, since they don\u0027t add any useful information:\n\n  type measureFunc func(context.Context, *testing.State, ...)",
+      "revId": "9953509aa2d274dc6f079dddf8f93db0d5d6d723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89350507_54a9d64c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-26T04:49:26Z",
+      "side": 1,
+      "message": "nit: params here too?",
+      "range": {
+        "startLine": 92,
+        "startChar": 90,
+        "endLine": 92,
+        "endChar": 95
+      },
+      "revId": "9953509aa2d274dc6f079dddf8f93db0d5d6d723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edcf7f9e_f7f46583",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-26T04:49:26Z",
+      "side": 1,
+      "message": "nit: params",
+      "range": {
+        "startLine": 114,
+        "startChar": 97,
+        "endLine": 114,
+        "endChar": 102
+      },
+      "revId": "9953509aa2d274dc6f079dddf8f93db0d5d6d723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bd93fa4_58528d44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-26T04:49:26Z",
+      "side": 1,
+      "message": "nit: params",
+      "range": {
+        "startLine": 186,
+        "startChar": 100,
+        "endLine": 186,
+        "endChar": 105
+      },
+      "revId": "9953509aa2d274dc6f079dddf8f93db0d5d6d723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8624b1b_00fa5e7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-26T04:49:26Z",
+      "side": 1,
+      "message": "nit: can just do:\n\n  return measureDecodeTime(...)",
+      "revId": "9953509aa2d274dc6f079dddf8f93db0d5d6d723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a0b17f4_99582ccf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-26T04:49:26Z",
+      "side": 1,
+      "message": "nit: params",
+      "range": {
+        "startLine": 201,
+        "startChar": 38,
+        "endLine": 201,
+        "endChar": 43
+      },
+      "revId": "9953509aa2d274dc6f079dddf8f93db0d5d6d723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "554608bb_7575125e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-26T04:49:26Z",
+      "side": 1,
+      "message": "nit: params",
+      "range": {
+        "startLine": 258,
+        "startChar": 83,
+        "endLine": 258,
+        "endChar": 88
+      },
+      "revId": "9953509aa2d274dc6f079dddf8f93db0d5d6d723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
