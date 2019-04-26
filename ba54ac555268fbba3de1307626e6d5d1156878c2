@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0f96e50d_2d4765ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-26T23:23:56Z",
+      "side": 1,
+      "message": "Oh good point, the hugepage fields.\n\nLet\u0027s just say we don\u0027t care at the moment.  This will be easily fixed when/if we need to log them.",
+      "parentUuid": "3883e81c_9472b0a9",
+      "range": {
+        "startLine": 403,
+        "startChar": 42,
+        "endLine": 403,
+        "endChar": 44
+      },
+      "revId": "ba54ac555268fbba3de1307626e6d5d1156878c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ca94002_fea1828f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 12
@@ -36,6 +60,30 @@
       "writtenOn": "2019-04-26T22:44:55Z",
       "side": 1,
       "message": "you don\u0027t need x, this is v[i].",
+      "range": {
+        "startLine": 459,
+        "startChar": 2,
+        "endLine": 459,
+        "endChar": 3
+      },
+      "revId": "ba54ac555268fbba3de1307626e6d5d1156878c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02c17584_f77744a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-26T23:23:56Z",
+      "side": 1,
+      "message": "Yes, thanks.\n\nHowever, this goes away in https://crrev.com/c/1585613 so should I leave it alone?  Let me leave this unresolved and I\u0027ll fix it if I need to upload a new patchset.",
+      "parentUuid": "4ca94002_fea1828f",
       "range": {
         "startLine": 459,
         "startChar": 2,
