@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1f8c281d_f7f5263c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-26T23:48:28Z",
+      "side": 1,
+      "message": "nit: watermarks?",
+      "range": {
+        "startLine": 307,
+        "startChar": 49,
+        "endLine": 307,
+        "endChar": 59
+      },
+      "revId": "ba54ac555268fbba3de1307626e6d5d1156878c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3883e81c_9472b0a9",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 12
@@ -90,6 +113,23 @@
         "endLine": 459,
         "endChar": 3
       },
+      "revId": "ba54ac555268fbba3de1307626e6d5d1156878c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "778b2c3f_f99aa4bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-26T23:48:28Z",
+      "side": 1,
+      "message": "nit: use a single const block to reduce clutter?",
       "revId": "ba54ac555268fbba3de1307626e6d5d1156878c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
