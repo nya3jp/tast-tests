@@ -18,6 +18,7 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"regexp"
 	"strconv"
 	"strings"
@@ -287,8 +288,22 @@ func (m *Meter) VMStats() (*VMStatsData, error) {
 	return m.vmsm.stats()
 }
 
+// MemSize represents an amount of RAM in bytes.
+type MemSize uint64
+
+// String converts a MemSize to a string for printing.
+func (m MemSize) String() string {
+	const mib = MemSize(1024 * 1024)
+	if m >= mib {
+		return fmt.Sprintf("%d", m/mib)
+	}
+	return fmt.Sprintf("%8.6f", float64(m)/float64(mib))
+}
+
+// watermarkData contains the sums of per-zone watermarks, plus the total
+// memory reserve from the kernel.
 type watermarkData struct {
-	minMiB, lowMiB, highMiB, totalReserveMiB uint64
+	min, low, high, totalReserve MemSize
 }
 
 // watermarks returns the MM watermarks and mimics the calculation of
@@ -304,8 +319,23 @@ func watermarks() (*watermarkData, error) {
 	return stringToWatermarks(string(b))
 }
 
+// pagesToBytes converts a number of pages to its memory size in bytes.
+func pagesToBytes(pages int) MemSize {
+	return MemSize(pages) * MemSize(os.Getpagesize())
+}
+
+// kibToBytes converts an amount in KiB to a memory size in bytes.
+func kibToBytes(kib int) MemSize {
+	return MemSize(kib) * 1024
+}
+
+// kibToBytes converts an amount in MiB to a memory size in bytes.
+func mibToBytes(mib int) MemSize {
+	return MemSize(mib) * 1024 * 1024
+}
+
 // stringToWatermarks is the internal version of Watermarks, for unit testing.
-// s is the content of /proc/zoneinfo.  Result is in MiB.
+// s is the content of /proc/zoneinfo.
 func stringToWatermarks(s string) (*watermarkData, error) {
 	watermarkRE := regexp.MustCompile(`(high|low|min)\s+(\d+)`)
 	managedRE := regexp.MustCompile(`managed\s+(\d+)`)
@@ -318,16 +348,14 @@ func stringToWatermarks(s string) (*watermarkData, error) {
 		lookingForProtection
 		foundAll
 	)
-	// Input and internal calculations are in pages, results in MiB
-	const megabyte = uint64(1 << 20)
-	const pageSize = 4096
+	// Input is in pages.  All quantities are converted to MemSize (bytes).
 
 	state := lookingForWatermarks // initial parsing state
-	var managedPages int          // managed pages for zone
-	totalReserve := 0             // total reserve, based on max per-zone reserves
-	wm := map[string]int{}        // values of min, low, high in a zone
-	var highWM int                // high watermark in a zone
-	var maxReserve int            // highest value in "protection" array for a zone
+	var managed MemSize           // per-zone managed pages
+	var highWM MemSize            // high watermark in a zone
+	var maxReserve MemSize        // highest value in "protection" array for a zone
+	var totalReserve MemSize      // total reserve, based on max per-zone reserves
+	wm := map[string]MemSize{}    // values of min, low, high in a zone
 
 	for _, line := range strings.Split(strings.TrimSuffix(string(s), "\n"), "\n") {
 		if groups := watermarkRE.FindStringSubmatch(line); groups != nil {
@@ -339,14 +367,14 @@ func stringToWatermarks(s string) (*watermarkData, error) {
 			if v, err = strconv.Atoi(groups[2]); err != nil {
 				return nil, errors.Wrapf(err, "bad value %q for zoneinfo field %q", groups[2], groups[1])
 			}
-			wm[groups[1]] = v
+			wm[groups[1]] = pagesToBytes(v)
 			if len(wm) == 3 {
-				w.minMiB += uint64(wm["min"]) * pageSize / megabyte
-				w.lowMiB += uint64(wm["low"]) * pageSize / megabyte
-				highWM = wm["high"]
-				w.highMiB += uint64(highWM) * pageSize / megabyte
+				w.min += wm["min"]
+				w.low += wm["low"]
+				w.high += wm["high"]
+				highWM = w.high
 				state = lookingForManaged
-				wm = map[string]int{} // clear watermarks map
+				wm = map[string]MemSize{} // clear watermarks map
 			}
 			continue
 		}
@@ -354,10 +382,12 @@ func stringToWatermarks(s string) (*watermarkData, error) {
 			if state != lookingForManaged {
 				return nil, errors.New("field 'managed' out of order in zoneinfo")
 			}
+			var m int
 			var err error
-			if managedPages, err = strconv.Atoi(groups[1]); err != nil {
+			if m, err = strconv.Atoi(groups[1]); err != nil {
 				return nil, errors.Wrapf(err, "bad zoneinfo 'managed' field %q", groups[1])
 			}
+			managed = pagesToBytes(m)
 			state = lookingForProtection
 			continue
 		}
@@ -367,20 +397,21 @@ func stringToWatermarks(s string) (*watermarkData, error) {
 				return nil, errors.New("field 'protection' out of order in zoneinfo")
 			}
 			for _, field := range strings.Split(groups[1], ", ") {
-				pages, err := strconv.Atoi(field)
+				r, err := strconv.Atoi(field)
 				if err != nil {
 					return nil, errors.Wrapf(err, "bad reserve %q", groups[1])
 				}
-				if maxReserve < pages {
-					maxReserve = pages
+				reserve := pagesToBytes(r)
+				if maxReserve < reserve {
+					maxReserve = reserve
 				}
 			}
 			state = foundAll
 		}
 		if state == foundAll {
 			zoneReserve := highWM + maxReserve
-			if zoneReserve > managedPages {
-				zoneReserve = managedPages
+			if zoneReserve > managed {
+				zoneReserve = managed
 			}
 			totalReserve += zoneReserve
 			state = lookingForWatermarks
@@ -389,32 +420,32 @@ func stringToWatermarks(s string) (*watermarkData, error) {
 	if state != lookingForWatermarks {
 		return nil, errors.New("zoneinfo ended prematurely")
 	}
-	w.totalReserveMiB = uint64(totalReserve) * pageSize / megabyte
+	w.totalReserve = totalReserve
 	return w, nil
 }
 
-// readMemInfo returns all name-value pairs from /proc/meminfo, with the values
-// in MiB rather than KiB.
-func readMemInfo() (map[string]uint64, error) {
+// readMemInfo returns all name-value pairs from /proc/meminfo.  The values
+// returned are in bytes.
+func readMemInfo() (map[string]MemSize, error) {
 	b, err := ioutil.ReadFile("/proc/meminfo")
 	if err != nil {
 		return nil, err
 	}
 	re := regexp.MustCompile(`(\S+):\s+(\d+) kB\n`)
-	info := make(map[string]uint64)
+	info := make(map[string]MemSize)
 	for _, groups := range re.FindAllStringSubmatch(string(b), -1) {
-		v, err := strconv.ParseUint(groups[2], 10, 64)
+		v, err := strconv.Atoi(groups[2])
 		if err != nil {
 			return nil, errors.Wrapf(err, "bad meminfo value: %q", groups[2])
 		}
-		info[groups[1]] = v / 1024
+		info[groups[1]] = kibToBytes(v)
 	}
 	return info, nil
 }
 
 // MemInfoFields holds selected fields of /proc/meminfo.
 type MemInfoFields struct {
-	Total, Free, Anon, File, SwapTotal, SwapUsed uint64
+	Total, Free, Anon, File, SwapTotal, SwapUsed MemSize
 }
 
 // MemInfo returns selected /proc/meminfo fields.
@@ -433,10 +464,23 @@ func MemInfo() (data *MemInfoFields, err error) {
 	}, nil
 }
 
-// readFirstUint64FromFile assumes filename contains one or more
-// space-separated items, and returns the value of the first item which must be
-// an integer.
-func readFirstUint64FromFile(filename string) (uint64, error) {
+// readIntFromFile returns the numeric value of the content of filename, which
+// is typically a sysfs or procfs entry.
+func readIntFromFile(filename string) (int, error) {
+	b, err := ioutil.ReadFile(filename)
+	if err != nil {
+		return 0, err
+	}
+	x, err := strconv.Atoi(strings.TrimSpace(string(b)))
+	if err != nil {
+		return 0, errors.Wrapf(err, "bad integer: %q", b)
+	}
+	return x, nil
+}
+
+// readFirstIntFromFile assumes filename contains one or more space-separated
+// items, and returns the value of the first item which must be an integer.
+func readFirstIntFromFile(filename string) (int, error) {
 	b, err := ioutil.ReadFile(filename)
 	if err != nil {
 		return 0, err
@@ -445,29 +489,37 @@ func readFirstUint64FromFile(filename string) (uint64, error) {
 	if len(f) == 0 {
 		return 0, errors.Wrapf(err, "no fields in file %v", filename)
 	}
-	x, err := strconv.ParseUint(f[0], 10, 64)
+	x, err := strconv.Atoi(f[0])
 	if err != nil {
-		return 0, errors.Wrapf(err, "bad integer: %q", b)
+		return 0, errors.Wrapf(err, "bad integer: %q", f[0])
 	}
 	return x, nil
 }
 
 // ChromeosLowMem returns sysfs information from the chromeos low-mem module.
-func ChromeosLowMem() (availableMiB, criticalMarginMiB, ramWeight uint64, err error) {
-	var v [3]uint64
-	for i, f := range []string{"available", "margin", "ram_vs_swap_weight"} {
-		x, err := readFirstUint64FromFile("/sys/kernel/mm/chromeos-low_mem/" + f)
-		if err != nil {
-			return 0, 0, 0, err
-		}
-		v[i] = x
+func ChromeosLowMem() (available, criticalMargin MemSize, ramWeight int, err error) {
+	sysdir := "/sys/kernel/mm/chromeos-low_mem/"
+	a, err := readIntFromFile(sysdir + "available")
+	if err != nil {
+		return 0, 0, 0, err
 	}
-	return v[0], v[1], v[2], nil
+	m, err := readFirstIntFromFile(sysdir + "margin")
+	if err != nil {
+		return 0, 0, 0, err
+	}
+	r, err := readIntFromFile(sysdir + "ram_vs_swap_weight")
+	if err != nil {
+		return 0, 0, 0, err
+	}
+	available = mibToBytes(a)
+	criticalMargin = mibToBytes(m)
+	ramWeight = r
+	return
 }
 
 // ProcessMemory returns the approximate amount of virtual memory (swapped or
 // not) currently allocated by processes.
-func ProcessMemory() (allocatedMiB uint64, err error) {
+func ProcessMemory() (allocated MemSize, err error) {
 	meminfo, err := MemInfo()
 	if err != nil {
 		return 0, err
@@ -492,7 +544,7 @@ func HasZram() bool {
 // LogMemoryParameters logs various kernel parameters as well as some
 // calculated quantities to help understand the memory manager behavior.
 func LogMemoryParameters(ctx context.Context, ratio float64) error {
-	availableMiB, marginMiB, ramWeight, err := ChromeosLowMem()
+	available, margin, ramWeight, err := ChromeosLowMem()
 	if err != nil {
 		return errors.Wrap(err, "cannot obtain low-mem info")
 	}
@@ -506,12 +558,12 @@ func LogMemoryParameters(ctx context.Context, ratio float64) error {
 	if err != nil {
 		return errors.Wrap(err, "cannot obtain memory info")
 	}
-	totalMiB := memInfo.Total
-	totalSwapMiB := memInfo.SwapTotal
-	usedSwapMiB := memInfo.SwapUsed
+	total := memInfo.Total
+	totalSwap := memInfo.SwapTotal
+	usedSwap := memInfo.SwapUsed
 
-	// processMemory is how much memory is in use by processes at this time.
-	processMiB, err := ProcessMemory()
+	// process is how much memory is in use by processes at this time.
+	process, err := ProcessMemory()
 	if err != nil {
 		testing.ContextLog(ctx, "Cannot compute process footprint: ", err)
 	}
@@ -525,24 +577,25 @@ func LogMemoryParameters(ctx context.Context, ratio float64) error {
 	// start discarding before swap is full.  If ramWeight is large, free
 	// swap has little or no influence on available, and we assume all swap
 	// space can be used.
-	var swapReductionMiB uint64
-	if marginMiB > wm.totalReserveMiB {
-		swapReductionMiB = (marginMiB - wm.totalReserveMiB) * ramWeight
-		if swapReductionMiB > totalSwapMiB {
-			swapReductionMiB = 0
+	var swapReduction MemSize
+	if margin > wm.totalReserve {
+		swapReduction = (margin - wm.totalReserve) * MemSize(ramWeight)
+		if swapReduction > totalSwap {
+			swapReduction = 0
 		}
 	}
-	usableSwapMiB := totalSwapMiB - swapReductionMiB
-	// maxProcessMiB is the amount of allocated process memory at which the
+	usableSwap := totalSwap - swapReduction
+	// maxProcess is the amount of allocated process memory at which the
 	// low-mem device triggers.
-	maxProcessMiB := totalMiB - wm.totalReserveMiB + uint64(float64(usableSwapMiB)*(1-ratio))
-	if maxProcessMiB < processMiB {
-		return errors.Errorf("bad process size calculation: max %v MiB, current %v MiB", maxProcessMiB, processMiB)
+	maxProcess := total - wm.totalReserve + MemSize(float64(usableSwap)*(1-ratio))
+	if maxProcess < process {
+		return errors.Errorf("bad process size calculation: max %v , current %v ", maxProcess, process)
 	}
-	testing.ContextLogf(ctx, "Metrics: meminfo: total %v, has zram %v", totalMiB, hasZram)
-	testing.ContextLogf(ctx, "Metrics: swap: total %d, used %d, usable %v", totalSwapMiB, usedSwapMiB, usableSwapMiB)
-	testing.ContextLogf(ctx, "Metrics: low-mem: available %v, margin %v, RAM weight %v", availableMiB, marginMiB, ramWeight)
-	testing.ContextLogf(ctx, "Metrics: watermarks %v %v %v, total reserve %v", wm.minMiB, wm.lowMiB, wm.highMiB, wm.totalReserveMiB)
-	testing.ContextLogf(ctx, "Metrics: process allocation: current %v, max %v, ratio %v", processMiB, maxProcessMiB, ratio)
+	testing.ContextLog(ctx, "Metrics: all memory sizes (RAM, swap, process) are in MiB")
+	testing.ContextLogf(ctx, "Metrics: meminfo: total %v, has zram %v", total, hasZram)
+	testing.ContextLogf(ctx, "Metrics: swap: total %v, used %d, usable %v", totalSwap, usedSwap, usableSwap)
+	testing.ContextLogf(ctx, "Metrics: low-mem: available %v, margin %v, RAM weight %v", available, margin, ramWeight)
+	testing.ContextLogf(ctx, "Metrics: watermarks %v %v %v, total reserve %v", wm.min, wm.low, wm.high, wm.totalReserve)
+	testing.ContextLogf(ctx, "Metrics: process allocation: current %v, max %v, compression ratio %v", process, maxProcess, ratio)
 	return nil
 }
