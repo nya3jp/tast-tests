@@ -78,6 +78,8 @@ var tabURLs = []string{
 	"https://chrome.google.com/webstore/category/extensions",
 }
 
+type memSize = kernelmeter.MemSize
+
 // tabSwitchMetric holds tab switch times.
 var tabSwitchMetric = perf.Metric{
 	Name:      "tast_tab_switch_times",
@@ -838,7 +840,7 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	}
 
 	if p.RecordPageSet {
-		const minimumRAM uint64 = 4 * 1000 * 1000 * 1000
+		const minimumRAM memSize = 4 * 1000 * 1000 * 1000
 		if memInfo.Total < minimumRAM {
 			s.Fatalf("Not enough RAM to record page set: have %v, want %v or more",
 				memInfo.Total, minimumRAM)
