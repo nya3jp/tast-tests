@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07f4713f_a14de768",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-27T02:27:10Z",
+      "side": 1,
+      "message": "this isn\u0027t correct anymore, right? i think it\u0027s fine to leave this out since watermarkData is now using MemSize and avoids any unit ambiguity.",
+      "range": {
+        "startLine": 340,
+        "startChar": 40,
+        "endLine": 340,
+        "endChar": 57
+      },
+      "revId": "9f3899beb22b86f4c924c5eaf5e0bcb61f972381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d514e4b9_0518cf60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-27T02:27:10Z",
+      "side": 1,
+      "message": "i\u0027m guessing that this is being constructed manually since it\u0027s a const, right? i\u0027d consider perhaps making it non-const so you can use the MiB constructor function, and maybe also use 4096.",
+      "range": {
+        "startLine": 813,
+        "startChar": 45,
+        "endLine": 813,
+        "endChar": 49
+      },
+      "revId": "9f3899beb22b86f4c924c5eaf5e0bcb61f972381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

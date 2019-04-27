@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "00c65d99_7fcf9936",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-27T02:27:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "193f72cb_08a0174a",
+      "range": {
+        "startLine": 300,
+        "startChar": 21,
+        "endLine": 300,
+        "endChar": 26
+      },
+      "revId": "cc84bdde17f903453eef58ac7f6aa7c484b37e2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df74a6de_96d274fa",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter_test.go",
         "patchSetId": 4
