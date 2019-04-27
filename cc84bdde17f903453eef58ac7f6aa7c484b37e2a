@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ce4ee4d2_3a642cf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-27T01:34:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b885afe_b1b1bbc1",
+      "revId": "cc84bdde17f903453eef58ac7f6aa7c484b37e2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5950fbd9_e9edb685",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "cc84bdde17f903453eef58ac7f6aa7c484b37e2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "193f72cb_08a0174a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-27T01:34:27Z",
+      "side": 1,
+      "message": "Thank you, I am not sure that the discussion (whether to include \"MiB\") has concluded, but I\u0027ll defer to the other \"users\" of the test.  I am OK either way.\n\nThe format is a good point, I\u0027ll follow your suggestion.",
+      "parentUuid": "5950fbd9_e9edb685",
+      "range": {
+        "startLine": 300,
+        "startChar": 21,
+        "endLine": 300,
+        "endChar": 26
+      },
+      "revId": "cc84bdde17f903453eef58ac7f6aa7c484b37e2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
