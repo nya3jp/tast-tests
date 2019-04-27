@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0281ab97_5fe6129f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-27T00:01:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f8c281d_f7f5263c",
+      "range": {
+        "startLine": 307,
+        "startChar": 49,
+        "endLine": 307,
+        "endChar": 59
+      },
+      "revId": "ba54ac555268fbba3de1307626e6d5d1156878c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3883e81c_9472b0a9",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
         "patchSetId": 12
@@ -133,6 +157,24 @@
       "revId": "ba54ac555268fbba3de1307626e6d5d1156878c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "083f33f9_7303ab96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-27T00:01:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "778b2c3f_f99aa4bf",
+      "revId": "ba54ac555268fbba3de1307626e6d5d1156878c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
