@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b885afe_b1b1bbc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-27T00:04:49Z",
+      "side": 1,
+      "message": "nit: document that the returned string is in MiB?",
+      "revId": "cc84bdde17f903453eef58ac7f6aa7c484b37e2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5950fbd9_e9edb685",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-27T00:04:49Z",
+      "side": 1,
+      "message": "just to check, is this formatting intentional? it looks like sizes above 1 MiB are truncated and printed directly, but if it\u0027s less than a meg, there are 6 digits to the right of the decimal point, which is more precision than i\u0027d expect. i\u0027m not sure that the \u00278\u0027 does anything either, as i think the string is always going to be at least 8 runes wide (i.e. \"0.000000\").\n\nwould it make more sense to just use something like \".3f\" here, or maybe even add a suffix and print either e.g. \"3 MiB\" or \"125 KiB\"? see e.g. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/src/chromiumos/cmd/tast/run/local.go#567\n\nafter writing this, i see that you already had this discussion. leaving out the units seems fine, but i\u0027d still recommend considering shortening the precision here unless you actually need it.",
+      "range": {
+        "startLine": 300,
+        "startChar": 21,
+        "endLine": 300,
+        "endChar": 26
+      },
+      "revId": "cc84bdde17f903453eef58ac7f6aa7c484b37e2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df74a6de_96d274fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-27T00:04:49Z",
+      "side": 1,
+      "message": "nit: all in one const block? (i think this is the same code that i commented on in an earlier change, so please feel free to just address it here if that\u0027s easier)",
+      "revId": "cc84bdde17f903453eef58ac7f6aa7c484b37e2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db9bd207_b3ac3cda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-27T00:04:49Z",
+      "side": 1,
+      "message": "nit: since this only appears to be used once, mind just using kernelmeter.MemSize there instead to remove a layer of indirection for readers who are looking for the underlying implementation?",
+      "revId": "cc84bdde17f903453eef58ac7f6aa7c484b37e2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
