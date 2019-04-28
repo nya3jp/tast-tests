@@ -153,6 +153,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 	// exclusions contains names (from the "Name:" field in /proc/<pid>/status) of processes to ignore.
 	exclusions := []string{
 		"agetty",
+		"aplay", // sometimes left behind by Autotest audio tests
 		"autotest",
 		"autotestd",
 		"autotestd_monitor",
@@ -326,6 +327,12 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 			continue
 		}
 
+		// Autotest tests sometimes leave orphaned processes running after they exit,
+		// so ignore anything that might e.g. be using a data file from /usr/local/autotest.
+		if strings.Contains(info.cmdline, "autotest") {
+			continue
+		}
+
 		numChecked++
 
 		// We may have expectations for multiple users in the case of a process that forks and drops privileges.
@@ -407,6 +414,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 type procSandboxInfo struct {
 	name               string // "Name:" value from /proc/<pid>/status
 	exe                string // full executable path
+	cmdline            string // space-separated command line
 	ppid               int32  // parent PID
 	euid, egid         uint32 // effective UID and GID
 	pidNS, mntNS       int64  // PID and mount namespace IDs (-1 if unknown)
@@ -428,7 +436,9 @@ func getProcSandboxInfo(proc *process.Process) (*procSandboxInfo, error) {
 		}
 	}
 
-	info.exe, _ = proc.Exe() // ignore errors for e.g. kernel processes
+	// Ignore errors for e.g. kernel processes.
+	info.exe, _ = proc.Exe()
+	info.cmdline, _ = proc.Cmdline()
 
 	var err error
 	if info.ppid, err = proc.Ppid(); err != nil {
