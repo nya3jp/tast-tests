@@ -251,14 +251,10 @@ func Minijail(ctx context.Context, s *testing.State) {
 		},
 		{
 			name: "pid-file",
-			// The PID file is written by the parent process after forking,
-			// so it may not be there initially: https://crbug.com/949357
-			// It may also be empty at first: https://crbug.com/950504
-			cmd: `while ! read pid < pidfile || [ "${pid}" != $$ ]; do sleep 0.1; done`,
+			cmd:  `read pid < pidfile && [ $$ = "${pid}" ]`,
 			args: []string{
 				"-b", "/bin,/bin",
 				"-b", "/lib,/lib",
-				"-b", "/usr/bin,/usr/bin", // for /usr/bin/coreutils, needed by sleep
 				"-b", "/usr/lib,/usr/lib",
 				"-b", "/usr/local,/usr/local",
 				"-C", "%T/c",
