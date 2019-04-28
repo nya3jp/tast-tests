@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "56be35e4_76ad7e51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-28T19:44:48Z",
+      "side": 1,
+      "message": "Yes, correct.  I missed it in the comment cleanup",
+      "parentUuid": "07f4713f_a14de768",
+      "range": {
+        "startLine": 340,
+        "startChar": 40,
+        "endLine": 340,
+        "endChar": 57
+      },
+      "revId": "9f3899beb22b86f4c924c5eaf5e0bcb61f972381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d514e4b9_0518cf60",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "9f3899beb22b86f4c924c5eaf5e0bcb61f972381",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcf7c171_5c1096b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-28T19:44:48Z",
+      "side": 1,
+      "message": "Thanks, I used the constructor, and clarified the intent of this number.  (And changed the number too.)",
+      "parentUuid": "d514e4b9_0518cf60",
+      "range": {
+        "startLine": 813,
+        "startChar": 45,
+        "endLine": 813,
+        "endChar": 49
+      },
+      "revId": "9f3899beb22b86f4c924c5eaf5e0bcb61f972381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
