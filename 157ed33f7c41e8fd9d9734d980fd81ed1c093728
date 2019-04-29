@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b2f001c_82a79b2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-29T04:20:05Z",
+      "side": 1,
+      "message": "optional nit: all of these would probably be clearer as e.g. NewMemSizeKiB (go constructor functions often start with \"New\")",
+      "range": {
+        "startLine": 330,
+        "startChar": 10,
+        "endLine": 330,
+        "endChar": 15
+      },
+      "revId": "157ed33f7c41e8fd9d9734d980fd81ed1c093728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
