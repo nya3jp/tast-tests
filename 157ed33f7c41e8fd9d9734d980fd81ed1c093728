@@ -22,6 +22,30 @@
       "revId": "157ed33f7c41e8fd9d9734d980fd81ed1c093728",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a6fc0d0_45f83849",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-04-29T15:04:39Z",
+      "side": 1,
+      "message": "Thank you, I was wondering about those names.",
+      "parentUuid": "4b2f001c_82a79b2b",
+      "range": {
+        "startLine": 330,
+        "startChar": 10,
+        "endLine": 330,
+        "endChar": 15
+      },
+      "revId": "157ed33f7c41e8fd9d9734d980fd81ed1c093728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
