@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "332347b2_fb70bc25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-04-29T07:15:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8de07666_0217c00f",
+      "revId": "72445e55787f7c59c10e7d8a50dc38b32a7b4f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4f81b65_296b0c4a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
         "patchSetId": 9
@@ -33,6 +51,24 @@
       "revId": "72445e55787f7c59c10e7d8a50dc38b32a7b4f4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97cef4b0_c48ff27f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-04-29T07:15:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4f81b65_296b0c4a",
+      "revId": "72445e55787f7c59c10e7d8a50dc38b32a7b4f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
