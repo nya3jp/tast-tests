@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d96c909_f7063604",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernelmeter/kernelmeter.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-04-29T23:46:16Z",
+      "side": 1,
+      "message": "nit: if this is a MemSize it should be in bytes and not pages",
+      "range": {
+        "startLine": 356,
+        "startChar": 51,
+        "endLine": 356,
+        "endChar": 56
+      },
+      "revId": "e5ecdb9d6061a31a580b5eb207d5953f7d27b913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
