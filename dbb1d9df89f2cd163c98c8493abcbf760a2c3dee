@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "deb1e83b_49dbd498",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/perf_callgraph.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-30T16:37:48Z",
+      "side": 1,
+      "message": "luis or todd, do you know why this is? when i run against kevin, i see a bunch of samples like this, but nothing longer:\n\n372812956236790 0x2158 [0x40]: PERF_RECORD_SAMPLE(IP, 0x2): 10749/10749: 0xa1c35fe period: 367285 addr: 0\n... FP chain: nr:2\n.....  0: fffffffffffffe00\n.....  1: 000000000a1c35fe\n ... thread: kernel.PerfCall:10749\n ...... dso: /usr/local/libexec/tast/helpers/local/cros/kernel.PerfCallgraph.graph\n\nthe original autotest test from 2015 just excludes everything non-x86 and has a comment \"Waiting on ARM/perf support\". is the limitation tracked or documented anywhere?",
+      "revId": "dbb1d9df89f2cd163c98c8493abcbf760a2c3dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
