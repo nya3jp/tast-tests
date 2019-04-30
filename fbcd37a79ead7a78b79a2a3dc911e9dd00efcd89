@@ -1,0 +1,209 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "451bfaeb_3383467b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-30T15:37:49Z",
+      "side": 1,
+      "message": "are you planning to call this from multiple tests? if not, i\u0027d recommend just moving this code into your test. i\u0027ll leave a comment on the other file",
+      "revId": "fbcd37a79ead7a78b79a2a3dc911e9dd00efcd89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50cb1762_0a54d255",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-30T15:37:49Z",
+      "side": 1,
+      "message": "nit: maybe just \"fs\"? (but see above comment)",
+      "range": {
+        "startLine": 73,
+        "startChar": 37,
+        "endLine": 73,
+        "endChar": 47
+      },
+      "revId": "fbcd37a79ead7a78b79a2a3dc911e9dd00efcd89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47aff99c_e3350536",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-30T15:37:49Z",
+      "side": 1,
+      "message": "how about passing a *chrome.Chrome into this function instead so that callers can e.g. use preconditions? (but see above comment)",
+      "revId": "fbcd37a79ead7a78b79a2a3dc911e9dd00efcd89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "501c0e8a_e605a85c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-30T15:37:49Z",
+      "side": 1,
+      "message": "please follow conventions at https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting\n\ne.g. all of these returned error values should start with lowercase letters",
+      "revId": "fbcd37a79ead7a78b79a2a3dc911e9dd00efcd89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "488843ac_fc45fceb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-30T15:37:49Z",
+      "side": 1,
+      "message": "what\u0027s the reason for passing the function name and params separately like this? how about just taking a single string arg containing the javascript to eval?",
+      "revId": "fbcd37a79ead7a78b79a2a3dc911e9dd00efcd89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b14dd17_9340602b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-30T15:37:49Z",
+      "side": 1,
+      "message": "nit: delete trailing space, and pipes also typically aren\u0027t used around variable names in go. maybe just \"failed to evaluate result\"?",
+      "range": {
+        "startLine": 104,
+        "startChar": 46,
+        "endLine": 104,
+        "endChar": 55
+      },
+      "revId": "fbcd37a79ead7a78b79a2a3dc911e9dd00efcd89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84a1e960_656483c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-30T15:37:49Z",
+      "side": 1,
+      "message": "nit: ...(..., \"result was %q; want %q\", result, \"PASS\", result)",
+      "revId": "fbcd37a79ead7a78b79a2a3dc911e9dd00efcd89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e05bd70_7bca77e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-30T15:37:49Z",
+      "side": 1,
+      "message": "can you just start chrome and the web server here?",
+      "revId": "fbcd37a79ead7a78b79a2a3dc911e9dd00efcd89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec894291_c92bc7f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-30T15:37:49Z",
+      "side": 1,
+      "message": "just follow the normal style for iterating over test cases:\n\nfor _, js :\u003d range []string{\n    \"testStartAndRecorderState()\",\n    \"testStartStopAndRecorderState()\",\n    \"testStartAndDataAvailable(\u0027video/webm; codecs\u003dh264\u0027)\",\n    ...\n} {\n    // test code goes here\n}",
+      "revId": "fbcd37a79ead7a78b79a2a3dc911e9dd00efcd89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14c822d9_a3987a18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-30T15:37:49Z",
+      "side": 1,
+      "message": "this seems way slower than it needs to be. do you really need to start a new chrome instance for each test case? how about just opening the tab, running the js, and then closing the tab?",
+      "revId": "fbcd37a79ead7a78b79a2a3dc911e9dd00efcd89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc85c35d_ceb2cef6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-30T15:37:49Z",
+      "side": 1,
+      "message": "nit: Test",
+      "range": {
+        "startLine": 73,
+        "startChar": 13,
+        "endLine": 73,
+        "endChar": 17
+      },
+      "revId": "fbcd37a79ead7a78b79a2a3dc911e9dd00efcd89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
