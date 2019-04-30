@@ -170,6 +170,30 @@
       "revId": "dbb1d9df89f2cd163c98c8493abcbf760a2c3dee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aec1a543_940d3a16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/perf_callgraph.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1170679
+      },
+      "writtenOn": "2019-04-30T18:41:22Z",
+      "side": 1,
+      "message": "Yeah, my mental model when writing those comments was that ln contained the full block for a sample, not parsing line by line. So, first I was puzzled why you rejected blocks containing \"PERF_RECORD_SAMPLE\". But I realized that it was line by line only at the end.\n\nThat being said, I still think that parsing the output would be easier and more robust if you split it on a blank line, \"\\n\\n\", instead of a newline, \"\\n\".\nThen you can reason that your block has all those conditions:\n- includes text \"PERF_RECORD_SAMPLE\"\n- includes the regex with \"FP chain: nr:\"\n- includes the right DSO name\n- the right chain length.\n\nIt\u0027s perfectly fine if you want to keep the way it is.",
+      "parentUuid": "a6f6eb26_5e50d0af",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 3
+      },
+      "revId": "dbb1d9df89f2cd163c98c8493abcbf760a2c3dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
