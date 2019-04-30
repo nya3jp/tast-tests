@@ -22,6 +22,30 @@
       "revId": "f01bf606334441dcf5a9fa56529f5a3c22f1adc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba07ee56_c25420e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/perf_callgraph.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-30T20:13:52Z",
+      "side": 1,
+      "message": "whoops, very true -- sorry!",
+      "parentUuid": "35dd4427_18c0476f",
+      "range": {
+        "startLine": 91,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 8
+      },
+      "revId": "f01bf606334441dcf5a9fa56529f5a3c22f1adc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
