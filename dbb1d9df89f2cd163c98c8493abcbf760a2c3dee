@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "93fe5f1c_6bf6af66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/perf_callgraph.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-30T18:23:40Z",
+      "side": 1,
+      "message": "thanks, updated the comment!",
+      "parentUuid": "f547ff05_43ab8667",
+      "revId": "dbb1d9df89f2cd163c98c8493abcbf760a2c3dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "caf1b995_0826c7fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/perf_callgraph.go",
         "patchSetId": 1
@@ -57,6 +75,30 @@
       "revId": "dbb1d9df89f2cd163c98c8493abcbf760a2c3dee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1d1c2ca_2a163d7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/perf_callgraph.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-30T18:23:40Z",
+      "side": 1,
+      "message": "i was wondering about this too after looking at the output; it came from the original test. thanks, i\u0027ve deleted this.",
+      "parentUuid": "caf1b995_0826c7fd",
+      "range": {
+        "startLine": 75,
+        "startChar": 5,
+        "endLine": 75,
+        "endChar": 47
+      },
+      "revId": "dbb1d9df89f2cd163c98c8493abcbf760a2c3dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -104,6 +146,30 @@
       "revId": "dbb1d9df89f2cd163c98c8493abcbf760a2c3dee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6f6eb26_5e50d0af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/perf_callgraph.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-30T18:23:40Z",
+      "side": 1,
+      "message": "agreed, but i chose if/else here since we\u0027re handling different cases. if the conditions were more uniform, i would\u0027ve used a switch statement. i think that the proposed version doesn\u0027t do the same thing, for instance -- it\u0027s continuing after a failed regexp match, so the bottom \"dso:\" condition will never be reached.\n\nbut with your suggestion to drop the PERF_RECORD_SAMPLE check, all of this gets simpler, so i\u0027ve flattened it. :-)\n\n(i\u0027m still checking for \"\" since it feels a bit safer to reset the length between records)",
+      "parentUuid": "0c8171c3_5c355176",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 3
+      },
+      "revId": "dbb1d9df89f2cd163c98c8493abcbf760a2c3dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
