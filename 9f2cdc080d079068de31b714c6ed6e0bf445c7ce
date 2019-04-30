@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f93cdb1_155ff1ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_disks_filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-30T06:02:34Z",
+      "side": 1,
+      "message": "what\u0027s the reason for putting this functionality in a crosdisks package instead of putting it directly into this file? do you plan to also call RunFilesystemTests from another test?",
+      "revId": "9f2cdc080d079068de31b714c6ed6e0bf445c7ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bb255fa_3e2345a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/filesystem_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-30T06:02:34Z",
+      "side": 1,
+      "message": "this pattern (capitalized/exported field names in an lowercase/unexported struct) is uncommon. what\u0027s the intent here? should these all be lowercase?",
+      "revId": "9f2cdc080d079068de31b714c6ed6e0bf445c7ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
