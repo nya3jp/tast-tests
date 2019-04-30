@@ -21,6 +21,13 @@ executable("graphics.GBM.gbmtest") {
   ]
 }
 
+executable("kernel.PerfCallgraph.graph") {
+  cflags = [ "-O2", "-g", "-std=c99" ]
+  sources = [
+    "kernel.PerfCallgraph.graph.c",
+  ]
+}
+
 executable("security.AltSyscall.adjtimex") {
   sources = [
     "security.AltSyscall.adjtimex.c",
@@ -93,6 +100,7 @@ executable("security.PtraceThread.thread-prctl") {
 group("all") {
   deps = [
     ":graphics.GBM.gbmtest",
+    ":kernel.PerfCallgraph.graph",
     ":security.Minijail.staticbashexec",
     ":security.MinijailSeccomp.fail",
     ":security.MinijailSeccomp.ok",
