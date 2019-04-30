@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ed32e85_0ac9a0fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/perf_callgraph.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1170679
+      },
+      "writtenOn": "2019-04-30T20:28:45Z",
+      "side": 1,
+      "message": "nit: maybe %q here",
+      "range": {
+        "startLine": 93,
+        "startChar": 66,
+        "endLine": 93,
+        "endChar": 67
+      },
+      "revId": "04248a4e0c0247c3c507f6d649c5e3a73d1469f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
