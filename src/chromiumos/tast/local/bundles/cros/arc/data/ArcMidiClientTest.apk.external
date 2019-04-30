@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/arcapp/ArcMidiClientTest_20190426.apk",
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arcapp/ArcMidiClientTest_20190430.apk",
   "size": 16865,
-  "sha256sum": "726758aaa3111358a748e4bc424a787ffb7044d21392b1569523d2f1fb7de0c7"
+  "sha256sum": "9e08195d833d7d50fd006c3483a7be3f67b65011f10da9436e9b98f97679501a"
 }
