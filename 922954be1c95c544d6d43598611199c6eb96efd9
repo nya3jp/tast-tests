@@ -16,6 +16,24 @@
       "revId": "922954be1c95c544d6d43598611199c6eb96efd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5abb1c1b_1a7b9f44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/mash_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2019-04-30T19:47:21Z",
+      "side": 0,
+      "message": "Thanks for the info.\n\nCreated CL:1589154 for that.",
+      "parentUuid": "593b9c72_5f4613e2",
+      "revId": "922954be1c95c544d6d43598611199c6eb96efd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
