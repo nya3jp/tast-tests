@@ -22,6 +22,30 @@
       "revId": "04248a4e0c0247c3c507f6d649c5e3a73d1469f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44e2d0c7_49ed0a20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/perf_callgraph.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-04-30T20:55:13Z",
+      "side": 1,
+      "message": "I think we use %v instead of %q if we are sure the filename won\u0027t have spaces in it.",
+      "parentUuid": "2ed32e85_0ac9a0fc",
+      "range": {
+        "startLine": 93,
+        "startChar": 66,
+        "endLine": 93,
+        "endChar": 67
+      },
+      "revId": "04248a4e0c0247c3c507f6d649c5e3a73d1469f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
