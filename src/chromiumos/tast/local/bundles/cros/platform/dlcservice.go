@@ -28,9 +28,28 @@ func init() {
 
 func DLCService(ctx context.Context, s *testing.State) {
 	const (
-		dlcModuleID   = "test-dlc"
-		dlcserviceJob = "dlcservice"
+		dlcModuleID     = "test-dlc"
+		dlcserviceJob   = "dlcservice"
+		updateEngineJob = "update-engine"
 	)
+
+	// Delete rollback-version and rollback-happened pref which are
+	// generated during Rollback and Enterprise Rollback.
+	// rollback-version is written when update_engine Rollback D-Bus API is
+	// called. The existence of rollback-version prevents update_engine to
+	// apply payload whose version is the same as rollback-version.
+	// rollback-happened is written when update_engine finished Enterprise
+	// Rollback operation.
+	for _, p := range []string{"rollback-version", "rollback-happened"} {
+		if err := os.RemoveAll(filepath.Join("/var/lib/update_engine/prefs", p)); err != nil {
+			s.Fatal("Failed to clean up pref: ", err)
+		}
+	}
+	// Restart update-engine to pick up the new prefs.
+	s.Logf("Restarting %s job", updateEngineJob)
+	if err := upstart.RestartJob(ctx, updateEngineJob); err != nil {
+		s.Fatalf("Failed to restart %s: %v", updateEngineJob, err)
+	}
 
 	// dumpInstalledDLCModules calls dlcservice's GetInstalled D-Bus method via dlcservice_util command and saves the returned results to filename within the output directory.
 	dumpInstalledDLCModules := func(filename string) {
