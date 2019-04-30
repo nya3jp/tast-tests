@@ -16,6 +16,70 @@
       "revId": "dbb1d9df89f2cd163c98c8493abcbf760a2c3dee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f547ff05_43ab8667",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/perf_callgraph.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1170679
+      },
+      "writtenOn": "2019-04-30T18:02:13Z",
+      "side": 1,
+      "message": "Unwinding on ARM is difficult due to the mix of Thumb and ARM ISAs. The two ISAs use different registers for the frame pointer.\nI am not sure of the current status, but we (go/cwp) also avoid unwinding on ARM.",
+      "parentUuid": "deb1e83b_49dbd498",
+      "revId": "dbb1d9df89f2cd163c98c8493abcbf760a2c3dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caf1b995_0826c7fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/perf_callgraph.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1170679
+      },
+      "writtenOn": "2019-04-30T18:02:13Z",
+      "side": 1,
+      "message": "Do you need this pre filtering if you are looking for lines matching the regex \"FP chain: nr\" anyway?",
+      "range": {
+        "startLine": 75,
+        "startChar": 5,
+        "endLine": 75,
+        "endChar": 47
+      },
+      "revId": "dbb1d9df89f2cd163c98c8493abcbf760a2c3dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c8171c3_5c355176",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/perf_callgraph.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1170679
+      },
+      "writtenOn": "2019-04-30T18:02:13Z",
+      "side": 1,
+      "message": "This is optional, as it\u0027s a matter of style, but Go prefers avoiding deep indentation. Test for errors and exit early in such cases.\n\nconst wantedChainLength \u003d 3\nchainRegexp :\u003d regexp.MustCompile(`chain: nr:(\\d+)`)\n\nfor _, ln :\u003d range strings.Split(string(out), \"\\n\") {\n  if strings.Contains(ln, \"PERF_RECORD_SAMPLE\") || ln \u003d\u003d \"\" {\n    continue\n  }\n  ms :\u003d chainRegexp.FindStringSubmatch(ln)\n  if ms \u003d\u003d nil {\n    continue\n  }\n  chainLength, err :\u003d strconv.Atoi(ms[1])\n  if err !\u003d nil {\n    s.Fatalf(\"Failed to parse callchain length %q: %v\", ms[1], err)\n  }\n  if strings.Contains(ln, \"dso: \"+exe) \u0026\u0026 chainLength \u003e\u003d wantedChainLength {\n    s.Log(\"Found callchain of length \", chainLength)\n    return\n  }\n}\ns.Errorf(\"Failed to find callchain of length %d or greater; see %v\", wantedChainLength, outFile)",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 3
+      },
+      "revId": "dbb1d9df89f2cd163c98c8493abcbf760a2c3dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
