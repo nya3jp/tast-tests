@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d7e3c65_0b20aac9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-04-30T00:44:42Z",
+      "side": 1,
+      "message": "(for future reference, free free to ignore: 3 * time.Hour seems more readable here)",
+      "revId": "4292e8bcfda603cb82602b24a3d8e384c5df82a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
