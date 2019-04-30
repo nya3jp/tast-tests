@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35dd4427_18c0476f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/perf_callgraph.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-04-30T20:03:05Z",
+      "side": 1,
+      "message": "you can just return here and always throw the error below cf. Gabriel\u0027s earlier comment",
+      "range": {
+        "startLine": 91,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 8
+      },
+      "revId": "f01bf606334441dcf5a9fa56529f5a3c22f1adc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
