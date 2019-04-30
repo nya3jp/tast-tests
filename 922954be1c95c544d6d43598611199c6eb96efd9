@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "593b9c72_5f4613e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/mash_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2019-04-30T18:41:42Z",
+      "side": 0,
+      "message": "FYI: The SoftwareDeps \"stable_egl\" can also be removed from platform/tast/src/chromiumos/cmd/local_test_runner/main.go and platform/tast/docs/test_dependencies.md.\n\nIf you\u0027d like me to do it, feel free to file a bug for me.",
+      "revId": "922954be1c95c544d6d43598611199c6eb96efd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
