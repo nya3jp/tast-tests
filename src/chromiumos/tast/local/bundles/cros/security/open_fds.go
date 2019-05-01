@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/asan"
 	"chromiumos/tast/local/bundles/cros/security/openfds"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -37,6 +38,10 @@ func OpenFDs(ctx context.Context, s *testing.State) {
 	if onASan {
 		testing.ContextLog(ctx, "Running on ASan; /proc is allowed")
 	}
+
+	// Log out to clean up any stale FDs that might have been left behind by
+	// things that the previous test did: https://crbug.com/924893
+	upstart.RestartJob(ctx, "ui")
 
 	// Dump a systemwide snapshot of open-fd and process table information
 	// into the results directory, to assist with any triage/debug later.
