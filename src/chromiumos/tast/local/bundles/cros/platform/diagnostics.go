@@ -9,6 +9,7 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
@@ -37,10 +38,17 @@ func init() {
 // and waits until the routine completes and prints the result.
 //
 // This test verifies that 'get_routines' returns a valid list of routines and
-// then runs each routine and checks that the routine passes.
+// then runs the "urandom" routine and checks that it passes.
 //
 // diag is currently only used on the Wilco platform.
 func Diagnostics(ctx context.Context, s *testing.State) {
+	// Start the diagnostics deamon
+	startDeamon := func() {
+		s.Log("Starting diagnostics deamon")
+		testexec.CommandContext(ctx, "start", "wilco_dtc_supportd").Run()
+		testing.Sleep(ctx, 2*time.Second)
+	}
+
 	// Run the diag command with arguments
 	runDiag := func(args ...string) string {
 		cmd := testexec.CommandContext(ctx, "diag", args...)
@@ -70,8 +78,9 @@ func Diagnostics(ctx context.Context, s *testing.State) {
 	}
 
 	// Test a given routine and ensure that it runs and passes
-	testRoutine := func(routine string) {
-		raw := runDiag("--action=run_routine", "--routine="+routine)
+	testRoutine := func(routine string, args ...string) {
+		raw := runDiag(append([]string{
+			"--action=run_routine", "--routine=" + routine}, args...)...)
 		re := regexp.MustCompile(`([^:]+): (.*)`)
 		ran := ""
 		status := ""
@@ -116,13 +125,12 @@ func Diagnostics(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	startDeamon()
 	routines := getRoutines()
 
 	if len(routines) < 2 {
 		s.Fatalf("Found %d routine(s) %v; want >=2", len(routines), routines)
 	}
 
-	for _, routine := range routines {
-		testRoutine(routine)
-	}
+	testRoutine("urandom", "--length_seconds=2")
 }
