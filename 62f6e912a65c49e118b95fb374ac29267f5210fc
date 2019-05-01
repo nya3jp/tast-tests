@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20fa1105_3f8db334",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-01T17:07:18Z",
+      "side": 1,
+      "message": "nit: \"daemon\"; please also add trailing period to single-line comments",
+      "range": {
+        "startLine": 45,
+        "startChar": 26,
+        "endLine": 45,
+        "endChar": 32
+      },
+      "revId": "62f6e912a65c49e118b95fb374ac29267f5210fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a533c29f_45f64701",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-01T17:07:18Z",
+      "side": 1,
+      "message": "\"Daemon\", but this func is trivial (just a log message and a single command) and looks like it\u0027s only called once. how about just inlining it below?",
+      "range": {
+        "startLine": 46,
+        "startChar": 6,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "62f6e912a65c49e118b95fb374ac29267f5210fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18f8e0e9_a004ea4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-01T17:07:18Z",
+      "side": 1,
+      "message": "nit: daemon",
+      "range": {
+        "startLine": 47,
+        "startChar": 30,
+        "endLine": 47,
+        "endChar": 36
+      },
+      "revId": "62f6e912a65c49e118b95fb374ac29267f5210fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd4210c4_a5f1f9b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-01T17:07:18Z",
+      "side": 1,
+      "message": "please use the upstart package instead and check for returned errors",
+      "revId": "62f6e912a65c49e118b95fb374ac29267f5210fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f969f67_506d85c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-01T17:07:18Z",
+      "side": 1,
+      "message": "what\u0027s the reason for this sleep? can you poll for the condition that you\u0027re interested in instead? sleeping often leads to flakiness when things take longer than expected",
+      "revId": "62f6e912a65c49e118b95fb374ac29267f5210fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6014de5f_29b09fb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-01T17:07:18Z",
+      "side": 1,
+      "message": "can you add a comment explaining why this is the only routine being tested now?",
+      "revId": "62f6e912a65c49e118b95fb374ac29267f5210fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
