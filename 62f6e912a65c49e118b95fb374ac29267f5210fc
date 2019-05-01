@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ac2fdea4_752bdcc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-05-01T21:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20fa1105_3f8db334",
+      "range": {
+        "startLine": 45,
+        "startChar": 26,
+        "endLine": 45,
+        "endChar": 32
+      },
+      "revId": "62f6e912a65c49e118b95fb374ac29267f5210fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a533c29f_45f64701",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "62f6e912a65c49e118b95fb374ac29267f5210fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f96c189c_34c71b42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-05-01T21:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a533c29f_45f64701",
+      "range": {
+        "startLine": 46,
+        "startChar": 6,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "62f6e912a65c49e118b95fb374ac29267f5210fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "32a02d77_5e44a6ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-05-01T21:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18f8e0e9_a004ea4a",
+      "range": {
+        "startLine": 47,
+        "startChar": 30,
+        "endLine": 47,
+        "endChar": 36
+      },
+      "revId": "62f6e912a65c49e118b95fb374ac29267f5210fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd4210c4_a5f1f9b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
         "patchSetId": 1
@@ -85,6 +157,24 @@
       "revId": "62f6e912a65c49e118b95fb374ac29267f5210fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1adf3f7b_1ce08dfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-05-01T21:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd4210c4_a5f1f9b4",
+      "revId": "62f6e912a65c49e118b95fb374ac29267f5210fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "a39ba6ad_12e109b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-05-01T21:38:57Z",
+      "side": 1,
+      "message": "I have an upstart change to make sure the daemon is ready.",
+      "parentUuid": "5f969f67_506d85c7",
+      "revId": "62f6e912a65c49e118b95fb374ac29267f5210fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6014de5f_29b09fb2",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
         "patchSetId": 1
@@ -119,6 +227,24 @@
       "revId": "62f6e912a65c49e118b95fb374ac29267f5210fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "152587c6_9a05386d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-05-01T21:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6014de5f_29b09fb2",
+      "revId": "62f6e912a65c49e118b95fb374ac29267f5210fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
