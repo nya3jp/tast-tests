@@ -2,6 +2,63 @@
   "comments": [
     {
       "key": {
+        "uuid": "34abaa28_08318232",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-02T17:51:42Z",
+      "side": 1,
+      "message": "please don\u0027t add top-level functions with names like \"reset\", as this namespace is shared across all tests in the platform package. since this is just called once and is really just three function calls, how about just inlining it directly at the top of your main test function?\n\n(i\u0027m assuming that it doesn\u0027t need to be used by other tests anytime soon)\n\ni just wrote go/tast-codelab-2, which describes some of the considerations about defining helper functions",
+      "revId": "3c930d9a5d5fa8ee7169817eede414dbb2748371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77268a4c_544e0d5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-02T17:51:42Z",
+      "side": 1,
+      "message": "nit: just \"job\"? favor short var names when scope is limited\n\n(also, go uses camel-case, so if this needed the longer name it would be updateEngineJob)",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 17
+      },
+      "revId": "3c930d9a5d5fa8ee7169817eede414dbb2748371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "035a131d_00b50288",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-02T17:51:42Z",
+      "side": 1,
+      "message": "please always log errors. iirc os functions usually include path names, so this can just be:\n\nfor _, p :\u003d range []string{\"rollback-version\", \"rollback-happened\"} {\n    if err : os.RemoveAll(filepath.Join(\"/var/lib/update_engine/prefs\" + p)); err !\u003d nil {\n        s.Fatal(\"Failed to clean up pref: \", err)\n    }\n}\n\ni.e. no need for consts",
+      "revId": "3c930d9a5d5fa8ee7169817eede414dbb2748371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f7712e3_984046cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 1
@@ -13,6 +70,30 @@
       "writtenOn": "2019-05-02T17:30:45Z",
       "side": 1,
       "message": "derat@ I\u0027m not sure if tast offer a \"setup\" fixture for a test (like init). or I should call reset in init?",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 6
+      },
+      "revId": "3c930d9a5d5fa8ee7169817eede414dbb2748371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdf0b176_c18e28db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-02T17:51:42Z",
+      "side": 1,
+      "message": "it intentionally doesn\u0027t. see the last point at https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/design_principles.md#the-test-system-should-have-opinions-about-the-right-way-to-write-tests",
+      "parentUuid": "0f7712e3_984046cd",
       "range": {
         "startLine": 61,
         "startChar": 1,
