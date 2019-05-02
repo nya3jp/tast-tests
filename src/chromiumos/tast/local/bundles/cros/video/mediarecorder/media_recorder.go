@@ -267,6 +267,9 @@ func VerifyEncodeAccelUsed(ctx context.Context, s *testing.State, codec videotyp
 		"--use-fake-device-for-media-stream",
 		"--use-fake-ui-for-media-stream",
 	}
+	if codec == videotype.VP9 {
+		chromeArgs = append(chromeArgs, "--enable-features=VaapiVP9Encoder")
+	}
 
 	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))
 	if err != nil {
