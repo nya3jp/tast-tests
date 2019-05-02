@@ -36,8 +36,10 @@ func CPUCgroup(ctx context.Context, s *testing.State) {
 	}
 	defer testexec.CommandContext(ctx, "umount", td).Run(testexec.DumpLogOnError)
 
+	// Use os.MkdirAll rather than os.Mkdir since the directory already exists
+	// sometimes: https://crbug.com/958816
 	dir := filepath.Join(td, "test")
-	if err := os.Mkdir(dir, 0777); err != nil {
+	if err := os.MkdirAll(dir, 0777); err != nil {
 		s.Fatal("Failed to create cgroup: ", err)
 	}
 
