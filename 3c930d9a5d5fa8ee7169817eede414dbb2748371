@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8384f90e_6172e4e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-05-02T20:55:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34abaa28_08318232",
+      "revId": "3c930d9a5d5fa8ee7169817eede414dbb2748371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77268a4c_544e0d5d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "194a719e_3040017b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-05-02T20:55:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77268a4c_544e0d5d",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 17
+      },
+      "revId": "3c930d9a5d5fa8ee7169817eede414dbb2748371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "035a131d_00b50288",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "3c930d9a5d5fa8ee7169817eede414dbb2748371",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da9d9814_3af98d89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-05-02T20:55:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "035a131d_00b50288",
+      "revId": "3c930d9a5d5fa8ee7169817eede414dbb2748371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +154,30 @@
       "side": 1,
       "message": "it intentionally doesn\u0027t. see the last point at https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/design_principles.md#the-test-system-should-have-opinions-about-the-right-way-to-write-tests",
       "parentUuid": "0f7712e3_984046cd",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 6
+      },
+      "revId": "3c930d9a5d5fa8ee7169817eede414dbb2748371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f250bac2_a92f002b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-05-02T20:55:41Z",
+      "side": 1,
+      "message": "I see. That makes sense. These fixtures do not offer extra help - people can still not clean up the states properly. \n\nOn a side note, a test does not clean up global states may be one of the reasons why our test infra (or cq) can be flaky. Persistent files (e.g. pref files), system service internal states are example states here. Prefs here are even powerwash-proof so a regular powerwash + system reboot is not going to wipe it out. But I see opportunities we can potentially seize to improve infra health - e.g. audit and warn developers these global states (e.g. files in /var/lib/ or /var/cache are touched) have changed. At least such audit and warning provides extra info to dev and sheriffs (if not more noise). wdyt? I can open a bug to track this idea.",
+      "parentUuid": "bdf0b176_c18e28db",
       "range": {
         "startLine": 61,
         "startChar": 1,
