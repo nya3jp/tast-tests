@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f5bd240_ac6f2f99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_media_recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-02T20:54:26Z",
+      "side": 1,
+      "message": "nit: consider using end-of-line comments instead:\n\n  \"--use-fake-ui-for-media-stream\",     // avoid needing to grant camera/microphone permissions\n  \"--use-fake-device-for-media-stream\", // feed fake stream with specified FPS to getUserMedia() instead of live camera input",
+      "revId": "480ede4cf9afcf78ca7faa7afe345d5b72633098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08198c35_1b1c3ee9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_media_recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-02T20:54:26Z",
+      "side": 1,
+      "message": "nit: maybe just delete \"Test\" here and use \"%v failed: %v\", now that you\u0027re already logging JS functions that start with \"test\"",
+      "range": {
+        "startLine": 79,
+        "startChar": 13,
+        "endLine": 79,
+        "endChar": 17
+      },
+      "revId": "480ede4cf9afcf78ca7faa7afe345d5b72633098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70cb103b_5a0de760",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_media_recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-02T20:54:26Z",
+      "side": 1,
+      "message": "this name is a bit too generic for a top-level function, since top-level identifiers are shared across all tests in the \u0027video\u0027 package: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code\n\ni\u0027d recommend just declaring this function within your main test function around L52 instead:\n\n  runTest :\u003d func(js string) error {\n      ...\n  }\n\n  for _, js :\u003d ...",
+      "range": {
+        "startLine": 84,
+        "startChar": 5,
+        "endLine": 84,
+        "endChar": 12
+      },
+      "revId": "480ede4cf9afcf78ca7faa7afe345d5b72633098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5951a722_3b568ace",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_media_recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-02T20:54:26Z",
+      "side": 1,
+      "message": "failed",
+      "range": {
+        "startLine": 87,
+        "startChar": 27,
+        "endLine": 87,
+        "endChar": 33
+      },
+      "revId": "480ede4cf9afcf78ca7faa7afe345d5b72633098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5da41883_eae07b8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_media_recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-02T20:54:26Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need to include the JS here, as it\u0027s already included when you report this error on L79. how about just something like errors.Wrap(err, \"failed to eval test function\")?",
+      "range": {
+        "startLine": 97,
+        "startChar": 43,
+        "endLine": 97,
+        "endChar": 45
+      },
+      "revId": "480ede4cf9afcf78ca7faa7afe345d5b72633098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c53f938f_b0ce4108",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_media_recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-02T20:54:26Z",
+      "side": 1,
+      "message": "nit: \"failed to wait for test completion\" would probably be better, as this can fail for non-timeout reasons (e.g. maybe chrome crashed)",
+      "range": {
+        "startLine": 101,
+        "startChar": 26,
+        "endLine": 101,
+        "endChar": 65
+      },
+      "revId": "480ede4cf9afcf78ca7faa7afe345d5b72633098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d97b02a_d453175a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_media_recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-02T20:54:26Z",
+      "side": 1,
+      "message": "nit: return errors.Errorf(\"result was %q; want %q\", result, \"PASS\")",
+      "revId": "480ede4cf9afcf78ca7faa7afe345d5b72633098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
