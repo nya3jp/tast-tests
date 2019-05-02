@@ -211,6 +211,30 @@
       "revId": "3c930d9a5d5fa8ee7169817eede414dbb2748371",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d213040f_47ebc5d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-05-02T21:34:09Z",
+      "side": 1,
+      "message": "i see. the auditing idea seems to go against the spirit of tast. The other direction sounds great to me. I\u0027ll open a bug to track.",
+      "parentUuid": "e5eaa546_5eeea872",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 6
+      },
+      "revId": "3c930d9a5d5fa8ee7169817eede414dbb2748371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

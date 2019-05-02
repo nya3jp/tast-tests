@@ -16,6 +16,24 @@
       "revId": "9b33e10d7fb48df1a7567201f5a85638a7d382d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d703e50_1365c28e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-05-02T21:34:09Z",
+      "side": 1,
+      "message": "Done\n\nSorry for not checking test results. These two files are touched and clean up properly now.",
+      "parentUuid": "761d97f0_2ab9e40e",
+      "revId": "9b33e10d7fb48df1a7567201f5a85638a7d382d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
