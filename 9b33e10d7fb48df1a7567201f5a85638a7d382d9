@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "761d97f0_2ab9e40e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-02T21:11:07Z",
+      "side": 1,
+      "message": "please make sure that you\u0027re testing this change properly. i had a typo in my suggestion: i called filepath.Join, but i actually appended the two components (without a \u0027/\u0027) using \u0027+\u0027 instead. it should be filepath.Join(\"/var/lib/update_engine/prefs\", p). sorry for the bug; writing code in gerrit comment boxes is hard :-(",
+      "revId": "9b33e10d7fb48df1a7567201f5a85638a7d382d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

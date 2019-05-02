@@ -187,6 +187,30 @@
       "revId": "3c930d9a5d5fa8ee7169817eede414dbb2748371",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5eaa546_5eeea872",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-02T21:11:07Z",
+      "side": 1,
+      "message": "i think it\u0027s hard to do this reliably in a general way, unfortunately.\n\ntast is intentionally lighter-weight in this regard than autotest -- we run tests back-to-back and require them to do all cleanup themselves. autotest runs a repair step between autotest jobs that can even result in the DUT being reimaged, as i understand it, but it still has many problems around e.g. leaked child processes, and sometimes the TPM is left in a state that causes login failures even after reimaging.\n\nultimately, i think that we mostly just need to depend on test authors cleaning up after any changes that they make. that should be made as easy as possible: if there\u0027s a library function for writing a pref, we should defer some other function or a Close() method or whatever that undoes the change.\n\nper the description, that sounds like it\u0027s hard/impossible to do in this particular case, but we can go in the other direction: if/when more tests need to start talking to update_engine, the code that wraps it should automatically delete any stale prefs and restart the service if necessary.",
+      "parentUuid": "f250bac2_a92f002b",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 6
+      },
+      "revId": "3c930d9a5d5fa8ee7169817eede414dbb2748371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
