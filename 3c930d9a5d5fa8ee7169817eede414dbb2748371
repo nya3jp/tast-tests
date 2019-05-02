@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f7712e3_984046cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-05-02T17:30:45Z",
+      "side": 1,
+      "message": "derat@ I\u0027m not sure if tast offer a \"setup\" fixture for a test (like init). or I should call reset in init?",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 6
+      },
+      "revId": "3c930d9a5d5fa8ee7169817eede414dbb2748371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
