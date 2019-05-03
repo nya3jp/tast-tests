@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b4035b5_467998e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-05-03T21:47:48Z",
+      "side": 1,
+      "message": "In my corresponding platform.Telemetry fix (https://crrev.com/c/1595141) I had to add a sleep after this in order for wilco_dtc_supportd to actually be available. Are you sure this is stable without a sleep?",
+      "revId": "cd08d37142c1a0b63f543073e54c9942aa2d1963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
