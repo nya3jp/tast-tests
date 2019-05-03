@@ -11,6 +11,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -49,7 +50,7 @@ func Telemetry(ctx context.Context, s *testing.State) {
 	// Actually run the telem command with its single argument.
 	runTelem := func(arg string) string {
 		cmd := testexec.CommandContext(ctx, "telem", arg)
-		s.Logf(`Running "telem %s"...`, arg)
+		s.Logf(`Running "telem %s"`, arg)
 		out, err := cmd.Output()
 		if err != nil {
 			cmd.DumpLog(ctx)
@@ -146,6 +147,11 @@ func Telemetry(ctx context.Context, s *testing.State) {
 		"runnable_entities": numRange{1, 1000},
 		"existing_entities": numRange{1, 1000},
 		"idle_time_total":   numRange{1, 1000000000},
+	}
+
+	// Ensure that the daemon is available.
+	if err := upstart.EnsureJobRunning(ctx, "wilco_dtc_supportd"); err != nil {
+		s.Fatal("Failed to start wilco_dtc_supportd: ", err)
 	}
 
 	// Ensure each individual item is in range.
