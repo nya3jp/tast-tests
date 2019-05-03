@@ -39,6 +39,11 @@ func openWebRTCInternalsPage(ctx context.Context, cr *chrome.Chrome, addStatsJS 
 		conn.Close()
 		return nil, err
 	}
+	// Switch to legacy mode to reflect webrtc-internals change (crbug.com/803014).
+	if err = conn.Exec(ctx, "currentGetStatsMethod = OPTION_GETSTATS_LEGACY"); err != nil {
+		conn.Close()
+		return nil, err
+	}
 	if err = conn.Exec(ctx, addStatsJS); err != nil {
 		conn.Close()
 		return nil, err
