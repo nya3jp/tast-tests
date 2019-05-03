@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5cc14706_81eeafcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_multi_camera.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-05-03T10:44:56Z",
+      "side": 1,
+      "message": "typo?",
+      "range": {
+        "startLine": 31,
+        "startChar": 26,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "c5c3096cf10b8a307c8fe3ce3a2e46e86037a23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
