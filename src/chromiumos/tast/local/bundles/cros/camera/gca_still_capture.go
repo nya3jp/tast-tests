@@ -37,14 +37,30 @@ func GCAStillCapture(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to switch to photo mode: ", err)
 		}
 
+		s.Log("Taking the first picture")
 		// Get current timestamp and take a picture.
 		ts := time.Now()
 		if err := gca.ClickShutterButton(ctx, d); err != nil {
 			s.Fatal("Failed to take a picture: ", err)
 		}
-
 		// Verify that a new image file is created.
 		if err := gca.VerifyFile(ctx, s.PreValue().(arc.PreData).Chrome, gca.ImagePattern, ts); err != nil {
+			s.Fatal("Failed to verify that a matching output image file is created: ", err)
+		}
+
+		s.Log("Taking the second picture with 3-second countdown")
+		// Get current timestamp.
+		ts = time.Now()
+		// Set timer to 3 seconds.
+		if err := gca.SetTimerOption(ctx, d, gca.ThreeSeconds); err != nil {
+			s.Fatal("Failed to set timer option to 3 seconds: ", err)
+		}
+		// Click shutter button to take a picture.
+		if err := gca.ClickShutterButton(ctx, d); err != nil {
+			s.Fatal("Failed to take a picture: ", err)
+		}
+		// Verify that a new image file is created after 3 Seconds.
+		if err := gca.VerifyFile(ctx, s.PreValue().(arc.PreData).Chrome, gca.ImagePattern, ts.Add(3*time.Second)); err != nil {
 			s.Fatal("Failed to verify that a matching output image file is created: ", err)
 		}
 	})

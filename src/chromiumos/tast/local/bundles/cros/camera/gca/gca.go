@@ -75,6 +75,20 @@ const (
 	Unknown
 )
 
+// TimerOption refers to the setting of the countdown timer for capturing photos.
+type TimerOption int
+
+const (
+	// Off option disables the timer.
+	Off TimerOption = iota
+
+	// ThreeSeconds sets the timer to 3 seconds.
+	ThreeSeconds
+
+	// TenSeconds sets the timer to 10 seconds.
+	TenSeconds
+)
+
 func (facing Facing) String() string {
 	switch facing {
 	case Back:
@@ -154,6 +168,46 @@ func SwitchCamera(ctx context.Context, d *ui.Device) error {
 	// Wait until buttons are clickable again (buttons won't be clickable until preview has successfully started)
 	if err := switchButton.WaitForExists(ctx, longTimeout); err != nil {
 		return errors.Wrap(err, "preview failed to start")
+	}
+	return nil
+}
+
+// SetTimerOption sets the countdown timer to the specified timer option.
+func SetTimerOption(ctx context.Context, d *ui.Device, t TimerOption) error {
+	const (
+		timerButtonID       = "com.google.android.GoogleCameraArc:id/timer_button"
+		offButtonID         = "com.google.android.GoogleCameraArc:id/timer_off"
+		threeSecondButtonID = "com.google.android.GoogleCameraArc:id/timer_3s"
+		tenSecondButtonID   = "com.google.android.GoogleCameraArc:id/timer_10s"
+	)
+	timerButton := d.Object(ui.ID(timerButtonID), ui.Clickable(true))
+	if err := timerButton.WaitForExists(ctx, shortTimeout); err != nil {
+		return errors.Wrap(err, "failed to find timer button")
+	}
+	// Expand timer option menu.
+	if err := timerButton.Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click timer button")
+	}
+	// Find and click the corresponding timer option.
+	var timerOptionButtonID string
+	switch t {
+	case Off:
+		timerOptionButtonID = offButtonID
+	case ThreeSeconds:
+		timerOptionButtonID = threeSecondButtonID
+	case TenSeconds:
+		timerOptionButtonID = tenSecondButtonID
+	}
+	timerOptionButton := d.Object(ui.ID(timerOptionButtonID), ui.Clickable(true))
+	if err := timerOptionButton.WaitForExists(ctx, shortTimeout); err != nil {
+		return errors.Wrap(err, "failed to find the specified timer option")
+	}
+	if err := timerOptionButton.Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click timer option")
+	}
+	// Wait until the timer option is set.
+	if err := d.WaitForIdle(ctx, shortTimeout); err != nil {
+		return errors.Wrap(err, "failed to select specified timer option")
 	}
 	return nil
 }
