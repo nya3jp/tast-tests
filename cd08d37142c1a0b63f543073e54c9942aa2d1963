@@ -16,6 +16,24 @@
       "revId": "cd08d37142c1a0b63f543073e54c9942aa2d1963",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91b6404e_d50589ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/diagnostics.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-05-03T21:50:43Z",
+      "side": 1,
+      "message": "The Cq-Depend cl fixes this, https://chromium-review.googlesource.com/1592273",
+      "parentUuid": "8b4035b5_467998e0",
+      "revId": "cd08d37142c1a0b63f543073e54c9942aa2d1963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
