@@ -1,0 +1,181 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6508001b_bfb788db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-03T20:08:42Z",
+      "side": 1,
+      "message": "i\u0027d recommend avoiding adding an \"unknown\" value just to return when errors are encountered, as now callers need to handle this value even in non-error cases. instead, consider just returning an arbitrary fixed value (e.g. Back) on error -- callers shouldn\u0027t be using the returned value if an error was returned.",
+      "revId": "0784a5cef44287054b774f754277098afcf3bbb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0af9b2bd_f0984472",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-03T20:08:42Z",
+      "side": 1,
+      "message": "nit: maybe just GetFacing? including \"Camera\" here seems unnecessary since it isn\u0027t included in the enum name. (or do you plan to make this package return Facing values for things besides cameras later?)",
+      "range": {
+        "startLine": 92,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 20
+      },
+      "revId": "0784a5cef44287054b774f754277098afcf3bbb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7828b296_3702a074",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-03T20:08:42Z",
+      "side": 1,
+      "message": "how about including the bad info here to aid in debugging? e.g. errors.Errorf(\"got bad camera info %q from viewfinder frame\", camInfo)",
+      "revId": "0784a5cef44287054b774f754277098afcf3bbb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91f6aae5_7e72f1b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-03T20:08:42Z",
+      "side": 1,
+      "message": "this isn\u0027t a proper format string, but maybe just use \"unknown camera direction %q\"",
+      "range": {
+        "startLine": 114,
+        "startChar": 32,
+        "endLine": 114,
+        "endChar": 71
+      },
+      "revId": "0784a5cef44287054b774f754277098afcf3bbb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40910192_68b4a57a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-03T20:08:42Z",
+      "side": 1,
+      "message": "should you expose some other way for the caller to learn about this case?",
+      "revId": "0784a5cef44287054b774f754277098afcf3bbb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b14a8b05_616a0f57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_multi_camera.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-03T20:08:42Z",
+      "side": 1,
+      "message": "nit: s/would switch/switches/, s/verify/verifies/",
+      "range": {
+        "startLine": 31,
+        "startChar": 13,
+        "endLine": 31,
+        "endChar": 25
+      },
+      "revId": "0784a5cef44287054b774f754277098afcf3bbb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e82aa432_ef8a6551",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_multi_camera.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-03T20:08:42Z",
+      "side": 1,
+      "message": "is there any way to query the number of cameras? right now, you\u0027re switching 6 times, so even if the app doesn\u0027t properly switch back to the default camera, wouldn\u0027t we still be at the default if there are e.g. 2 or 3 cameras? a prime number like 5 or 7 seems like it might be safer.",
+      "revId": "0784a5cef44287054b774f754277098afcf3bbb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "864a4ae3_2be1297c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_multi_camera.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-03T20:08:42Z",
+      "side": 1,
+      "message": "nit: can you handle the error separately?\n\nif facing, err :\u003d ...; err !\u003d nil {\n    s.Fatalf(...)\n} else if facing !\u003d defaultFacing {\n    s.Fatalf(...)\n}",
+      "revId": "0784a5cef44287054b774f754277098afcf3bbb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba7ccc52_ce60ebb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_multi_camera.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-03T20:08:42Z",
+      "side": 1,
+      "message": "nit: just \"default\"?",
+      "range": {
+        "startLine": 61,
+        "startChar": 70,
+        "endLine": 61,
+        "endChar": 83
+      },
+      "revId": "0784a5cef44287054b774f754277098afcf3bbb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
