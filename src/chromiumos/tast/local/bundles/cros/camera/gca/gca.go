@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"path/filepath"
 	"regexp"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -44,7 +45,7 @@ var (
 )
 
 // TestFunc is the body of a test and is called after the test environment is setup.
-type TestFunc func(context.Context, *ui.Device)
+type TestFunc func(context.Context, *arc.ARC, *ui.Device)
 
 // Mode refers to the capture mode GCA is in.
 type Mode int
@@ -56,6 +57,82 @@ const (
 	// VideoMode refers to video mode, in which users can record a video.
 	VideoMode
 )
+
+// Facing refers to the direction a camera is facing.
+type Facing int
+
+const (
+	// Back refers to a back-facing camera.
+	Back Facing = iota
+
+	// Front refers to a front-facing camera.
+	Front
+
+	// External refers to an external camera.
+	External
+
+	// Unknown indicates a camera with unknown facing. This should never be the case unless an error occurred while retrieving facing information.
+	Unknown
+)
+
+func (facing Facing) String() string {
+	switch facing {
+	case Back:
+		return "Back"
+	case Front:
+		return "Front"
+	case External:
+		return "External"
+	default:
+		return "Unknown"
+	}
+}
+
+// GetCameraFacing returns the direction the current camera is facing.
+func GetCameraFacing(ctx context.Context, d *ui.Device) (Facing, error) {
+	const viewfinderID = "com.google.android.GoogleCameraArc:id/viewfinder_frame"
+	viewfinder := d.Object(ui.ID(viewfinderID))
+	if err := viewfinder.WaitForExists(ctx, shortTimeout); err != nil {
+		return Unknown, errors.Wrap(err, "failed to find viewfinder frame (did GCA crash?)")
+	}
+	camInfo, err := viewfinder.GetContentDescription(ctx)
+	if err != nil {
+		return Unknown, errors.Wrap(err, "failed to get content description of viewfinder frame")
+	}
+	s := strings.Split(camInfo, "|")
+	if len(s) <= 1 {
+		return Unknown, errors.New("failed to read camera info from viewfinder frame")
+	}
+	switch facing := s[1]; facing {
+	case "BACK":
+		return Back, nil
+	case "FRONT":
+		return Front, nil
+	case "EXTERNAL":
+		return External, nil
+	default:
+		return Unknown, errors.Errorf("camera direction is unknown: ", facing)
+	}
+}
+
+// SwitchCamera synchronously switches the app to the next camera.
+func SwitchCamera(ctx context.Context, d *ui.Device) error {
+	const switchButtonID = "com.google.android.GoogleCameraArc:id/camera_switch_button"
+	switchButton := d.Object(ui.ID(switchButtonID), ui.Clickable(true))
+	if err := switchButton.WaitForExists(ctx, shortTimeout); err != nil {
+		testing.ContextLog(ctx, "Failed to find camera switch button")
+		// We might not have a camera switch button if the device only has one camera.
+		return nil
+	}
+	if err := switchButton.Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click camera switch button")
+	}
+	// Wait until buttons are clickable again (buttons won't be clickable until preview has successfully started)
+	if err := switchButton.WaitForExists(ctx, longTimeout); err != nil {
+		return errors.Wrap(err, "preview failed to start")
+	}
+	return nil
+}
 
 // SwitchMode synchronously switches the current mode of GCA to the specified mode.
 func SwitchMode(ctx context.Context, d *ui.Device, mode Mode) error {
@@ -126,6 +203,24 @@ func VerifyFile(ctx context.Context, cr *chrome.Chrome, pat *regexp.Regexp, ts t
 		return errors.New("no matching output file found")
 	}, &testing.PollOptions{Timeout: shortTimeout}); err != nil {
 		return errors.Wrapf(err, "no matching output file found after %v", shortTimeout)
+	}
+	return nil
+}
+
+// RestartApp restarts GCA.
+func RestartApp(ctx context.Context, a *arc.ARC, d *ui.Device) error {
+	const intent = "com.android.camera.CameraLauncher"
+
+	if err := a.Command(ctx, "am", "force-stop", pkg).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to stop GCA")
+	}
+
+	if err := a.Command(ctx, "am", "start", "-W", "-n", pkg+"/"+intent).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to start GCA")
+	}
+
+	if err := d.WaitForIdle(ctx, longTimeout); err != nil {
+		return errors.Wrap(err, "failed to wait for app to become idle while loading app")
 	}
 	return nil
 }
@@ -215,5 +310,5 @@ func RunTest(ctx context.Context, s *testing.State, f TestFunc) {
 	defer cancel()
 
 	// Run the test.
-	f(shortCtx, d)
+	f(shortCtx, a, d)
 }
