@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd84fd8c_4c3fe8aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/telemetry.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-05-03T21:47:33Z",
+      "side": 1,
+      "message": "I have a fix for this going in, https://crrev.com/c/1592273",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 41
+      },
+      "revId": "d2181ac0aec8ebee47e9ce66407e2df5e94c0770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
