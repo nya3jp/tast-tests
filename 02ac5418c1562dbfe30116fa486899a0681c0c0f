@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d167520f_4853aed4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_media_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-03T15:27:45Z",
+      "side": 1,
+      "message": "per earlier comment: i\u0027d recommend just using this here:\n\n  return errors.Errorf(\"result was %q; want %q\", result, \"PASS\")\n\nthe JS is already included on L107, so it\u0027s better to not duplicate it here. (more generally, i usually try to make functions not include information in errors that\u0027s already known by the caller, e.g. args that the caller passed to the function)",
+      "revId": "02ac5418c1562dbfe30116fa486899a0681c0c0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
