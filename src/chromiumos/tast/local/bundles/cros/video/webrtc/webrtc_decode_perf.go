@@ -26,7 +26,7 @@ import (
 )
 
 // openWebRTCInternalsPage opens WebRTC internals page and replaces JS
-// addStats() to intercept WebRTC performance metrics, "googMaxDecodeMs"
+// addLegacyStats() to intercept WebRTC performance metrics, "googMaxDecodeMs"
 // and "googDecodeMs".
 func openWebRTCInternalsPage(ctx context.Context, cr *chrome.Chrome, addStatsJS string) (*chrome.Conn, error) {
 	const url = "chrome://webrtc-internals"
@@ -36,6 +36,11 @@ func openWebRTCInternalsPage(ctx context.Context, cr *chrome.Chrome, addStatsJS 
 	}
 	err = conn.WaitForExpr(ctx, "document.readyState === 'complete'")
 	if err != nil {
+		conn.Close()
+		return nil, err
+	}
+	// Switch to legacy mode to reflect webrtc-internals change (crbug.com/803014).
+	if err = conn.Exec(ctx, "currentGetStatsMethod = OPTION_GETSTATS_LEGACY"); err != nil {
 		conn.Close()
 		return nil, err
 	}
@@ -88,7 +93,7 @@ type MeasureConfig struct {
 	// DecodeTimeSamples specifies number of frame decode time samples to get.
 	// Sample rate: 1 sample per second.
 	DecodeTimeSamples int
-	// AddStatsJS is a JavaScript used to replace WebRTC internals page's addStats() function.
+	// AddStatsJS is a JavaScript used to replace WebRTC internals page's addLegacyStats() function.
 	AddStatsJS string
 }
 
