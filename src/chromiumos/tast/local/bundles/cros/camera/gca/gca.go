@@ -25,7 +25,8 @@ import (
 const (
 	// GoogleCameraArc (GCA) package.
 	pkg             = "com.google.android.GoogleCameraArc"
-	shutterButtonID = "com.google.android.GoogleCameraArc:id/shutter_button"
+	idBase          = pkg + ":id/"
+	shutterButtonID = idBase + "shutter_button"
 
 	// Predefined timeouts for ease of scaling.
 	// shortTimeout is a shorter timeout for operations that should complete quickly.
@@ -72,6 +73,20 @@ const (
 	External
 )
 
+// TimerOption refers to the setting of the countdown timer for capturing photos.
+type TimerOption int
+
+const (
+	// NoTimer option disables the timer.
+	NoTimer TimerOption = iota
+
+	// ThreeSecondTimer sets the timer to 3 seconds.
+	ThreeSecondTimer
+
+	// TenSecondTimer sets the timer to 10 seconds.
+	TenSecondTimer
+)
+
 func (facing Facing) String() string {
 	switch facing {
 	case Back:
@@ -85,7 +100,7 @@ func (facing Facing) String() string {
 
 // GetFacing returns the direction the current camera is facing.
 func GetFacing(ctx context.Context, d *ui.Device) (Facing, error) {
-	const viewfinderID = "com.google.android.GoogleCameraArc:id/viewfinder_frame"
+	const viewfinderID = idBase + "viewfinder_frame"
 	viewfinder := d.Object(ui.ID(viewfinderID))
 	if err := viewfinder.WaitForExists(ctx, shortTimeout); err != nil {
 		return External, errors.Wrap(err, "failed to find viewfinder frame (did GCA crash?)")
@@ -115,9 +130,9 @@ func SwitchMode(ctx context.Context, d *ui.Device, mode Mode) error {
 	var switchButtonID string
 	switch mode {
 	case PhotoMode:
-		switchButtonID = "com.google.android.GoogleCameraArc:id/photo_switch_button"
+		switchButtonID = idBase + "photo_switch_button"
 	case VideoMode:
-		switchButtonID = "com.google.android.GoogleCameraArc:id/video_switch_button"
+		switchButtonID = idBase + "video_switch_button"
 	}
 	switchButton := d.Object(ui.ID(switchButtonID), ui.Clickable(true))
 	if err := switchButton.WaitForExists(ctx, shortTimeout); err != nil {
@@ -136,7 +151,7 @@ func SwitchMode(ctx context.Context, d *ui.Device, mode Mode) error {
 
 // SwitchCamera synchronously switches the app to the next camera.
 func SwitchCamera(ctx context.Context, d *ui.Device) error {
-	const switchButtonID = "com.google.android.GoogleCameraArc:id/camera_switch_button"
+	const switchButtonID = idBase + "camera_switch_button"
 	switchButton := d.Object(ui.ID(switchButtonID), ui.Clickable(true))
 	if err := switchButton.WaitForExists(ctx, shortTimeout); err != nil {
 		testing.ContextLog(ctx, "Failed to find camera switch button")
@@ -149,6 +164,46 @@ func SwitchCamera(ctx context.Context, d *ui.Device) error {
 	// Wait until buttons are clickable again (buttons won't be clickable until preview has successfully started)
 	if err := switchButton.WaitForExists(ctx, longTimeout); err != nil {
 		return errors.Wrap(err, "preview failed to start")
+	}
+	return nil
+}
+
+// SetTimerOption sets the countdown timer to the specified timer option.
+func SetTimerOption(ctx context.Context, d *ui.Device, t TimerOption) error {
+	const (
+		timerButtonID            = idBase + "timer_button"
+		noTimerButtonID          = idBase + "timer_off"
+		threeSecondTimerButtonID = idBase + "timer_3s"
+		tenSecondTimerButtonID   = idBase + "timer_10s"
+	)
+	timerButton := d.Object(ui.ID(timerButtonID), ui.Clickable(true))
+	if err := timerButton.WaitForExists(ctx, shortTimeout); err != nil {
+		return errors.Wrap(err, "failed to find timer button")
+	}
+	// Expand timer option menu.
+	if err := timerButton.Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click timer button")
+	}
+	// Find and click the corresponding timer option.
+	var timerOptionButtonID string
+	switch t {
+	case NoTimer:
+		timerOptionButtonID = noTimerButtonID
+	case ThreeSecondTimer:
+		timerOptionButtonID = threeSecondTimerButtonID
+	case TenSecondTimer:
+		timerOptionButtonID = tenSecondTimerButtonID
+	}
+	timerOptionButton := d.Object(ui.ID(timerOptionButtonID), ui.Clickable(true))
+	if err := timerOptionButton.WaitForExists(ctx, shortTimeout); err != nil {
+		return errors.Wrap(err, "failed to find the specified timer option")
+	}
+	if err := timerOptionButton.Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click timer option")
+	}
+	// Wait until the timer option is set.
+	if err := d.WaitForIdle(ctx, shortTimeout); err != nil {
+		return errors.Wrap(err, "failed to select specified timer option")
 	}
 	return nil
 }
@@ -226,7 +281,7 @@ func setUpDevice(ctx context.Context, a *arc.ARC) (*ui.Device, error) {
 		// GCA Migration App. This app would change the directory of media files to user's downloads folder and launch GCA after it's done.
 		migrateIntent = "com.android.googlecameramigration/com.android.googlecameramigration.MainActivity"
 
-		appRootViewID = "com.google.android.GoogleCameraArc:id/activity_root_view"
+		appRootViewID = idBase + "activity_root_view"
 	)
 	success := false
 	var d *ui.Device

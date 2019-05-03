@@ -31,20 +31,33 @@ func init() {
 // This test would take a picture with the default resolution and verify that a matching output image file is created.
 // Note that this test doesn't verify the integrity of the output file.
 func GCAStillCapture(ctx context.Context, s *testing.State) {
+	cr := s.PreValue().(arc.PreData).Chrome
 	gca.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, d *ui.Device) {
 		// Switch to photo mode.
 		if err := gca.SwitchMode(ctx, d, gca.PhotoMode); err != nil {
 			s.Fatal("Failed to switch to photo mode: ", err)
 		}
 
+		s.Log("Taking the first picture")
 		// Get current timestamp and take a picture.
 		ts := time.Now()
 		if err := gca.ClickShutterButton(ctx, d); err != nil {
 			s.Fatal("Failed to take a picture: ", err)
 		}
-
 		// Verify that a new image file is created.
-		if err := gca.VerifyFile(ctx, s.PreValue().(arc.PreData).Chrome, gca.ImagePattern, ts); err != nil {
+		if err := gca.VerifyFile(ctx, cr, gca.ImagePattern, ts); err != nil {
+			s.Fatal("Failed to verify that a matching output image file is created: ", err)
+		}
+
+		s.Log("Taking the second picture with 3-second countdown")
+		ts = time.Now()
+		if err := gca.SetTimerOption(ctx, d, gca.ThreeSecondTimer); err != nil {
+			s.Fatal("Failed to set timer option to 3 seconds: ", err)
+		}
+		if err := gca.ClickShutterButton(ctx, d); err != nil {
+			s.Fatal("Failed to take a picture: ", err)
+		}
+		if err := gca.VerifyFile(ctx, cr, gca.ImagePattern, ts.Add(3*time.Second)); err != nil {
 			s.Fatal("Failed to verify that a matching output image file is created: ", err)
 		}
 	})
