@@ -20,7 +20,7 @@ func init() {
 		Contacts:     []string{"johnylin@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome_login", caps.HWDecodeH264},
-		Data:         []string{decode.Test25FPSH264.Name},
+		Data:         []string{decode.Test25FPSH264.Name, decode.FramesMD5FileName(decode.Test25FPSH264.Name)},
 		Pre:          arc.Booted(),
 	})
 }

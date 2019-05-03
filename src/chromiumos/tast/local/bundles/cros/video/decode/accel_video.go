@@ -121,6 +121,16 @@ func (t *testConfig) toArgsList() (args []string) {
 	return args
 }
 
+// md5FileName returns the corresponding MD5 file name for fname.
+func md5FileName(fname string) string {
+	return fname + ".md5"
+}
+
+// FramesMD5FileName returns the corresponding frame-wise MD5 file name for fname.
+func FramesMD5FileName(fname string) string {
+	return fname + ".frames.md5"
+}
+
 // DataFiles returns a list of required files that tests that use this package
 // should include in their Data fields.
 func DataFiles(profile videotype.CodecProfile, mode VDABufferMode) []string {
@@ -138,9 +148,9 @@ func DataFiles(profile videotype.CodecProfile, mode VDABufferMode) []string {
 
 	// TODO(crbug.com/933034) Only add json file when the old VDA tests have been deprecated.
 	fname := "test-25fps." + codec
-	files := []string{fname, fname + ".md5"}
+	files := []string{fname, md5FileName(fname)}
 	if mode == ImportBuffer {
-		files = append(files, fname+".frames.md5")
+		files = append(files, FramesMD5FileName(fname))
 	}
 
 	return files
@@ -185,6 +195,13 @@ func runARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, cfg test
 		s.Fatal("Failed to push video stream to ARC: ", err)
 	}
 	defer a.Command(ctx, "rm", arcVideoPath).Run()
+
+	// Push frames md5 file to ARC container.
+	arcMD5Path, err := a.PushFileToTmpDir(shortCtx, FramesMD5FileName(cfg.dataPath))
+	if err != nil {
+		s.Fatal("Failed to push frames md5 to ARC: ", err)
+	}
+	defer a.Command(ctx, "rm", arcMD5Path).Run()
 
 	args := cfg.toArgsList()
 
