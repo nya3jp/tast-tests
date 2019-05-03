@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23e5e29e_6e0b9e8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-03T04:33:51Z",
+      "side": 1,
+      "message": "optional nit: to simplify this, you can follow a pattern described in go/tast-codelab-2 (search for \"toClose\"):\n\n conn, err :\u003d cr.NewConn(ctx, url)\n if err !\u003d nil {\n     ...\n }\n toClose :\u003d conn\n defer func() {\n     if toClose !\u003d nil {\n         toClose.Close()\n     }\n }()\n \n ...\n toClose \u003d nil\n return conn, nil\n\nthen you don\u0027t need to call conn.Close() in each of these early returns",
+      "revId": "229140f4133b0a53e0e4709a884d4771d9027d72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
