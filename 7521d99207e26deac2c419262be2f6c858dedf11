@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b9ff8b4_4e42eb15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-03T15:42:02Z",
+      "side": 1,
+      "message": "one possibly simpler/clearer option is to just declare constants:\n\nconst (\n    // md5Ext is appended to a video filename to get the name of the corresponding MD5 file.\n    md5Ext \u003d \".md5\"\n    // FrameMD5Ext is appended to a video filename to get the name of the corresponding frame-wise MD5 file.\n    FrameMD5Ext \u003d \".frames.md5\"\n)\n\nthen callers can just append with \u0027+\u0027",
+      "revId": "7521d99207e26deac2c419262be2f6c858dedf11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
