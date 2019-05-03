@@ -9,8 +9,10 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -49,7 +51,7 @@ func Telemetry(ctx context.Context, s *testing.State) {
 	// Actually run the telem command with its single argument.
 	runTelem := func(arg string) string {
 		cmd := testexec.CommandContext(ctx, "telem", arg)
-		s.Logf(`Running "telem %s"...`, arg)
+		s.Logf(`Running "telem %s"`, arg)
 		out, err := cmd.Output()
 		if err != nil {
 			cmd.DumpLog(ctx)
@@ -147,6 +149,15 @@ func Telemetry(ctx context.Context, s *testing.State) {
 		"existing_entities": numRange{1, 1000},
 		"idle_time_total":   numRange{1, 1000000000},
 	}
+
+	// Ensure that the daemon is available.
+	if err := upstart.EnsureJobRunning(ctx, "wilco_dtc_supportd"); err != nil {
+		s.Fatal("Failed to start wilco_dtc_supportd: ", err)
+	}
+	// This wait seems to be necessary for wilco_dtc_supportd to become
+	// available. 50 msec seems to be about the minimum time, so I
+	// set this to a 5x safety margin.
+	testing.Sleep(ctx, 250*time.Millisecond)
 
 	// Ensure each individual item is in range.
 	for name, vr := range validRanges {
