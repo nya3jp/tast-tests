@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// It overrides addStats() defined in chrome://webrtc-internals.
+// It overrides addLegacyStats() defined in chrome://webrtc-internals.
 
 const googMaxDecodeMs = [];
 const googDecodeMs = [];
 
-addStats = function(data) {
+addLegacyStats = function(data) {
   const reports = data.reports;
   for (let i = 0; i < reports.length; i++) {
     if (reports[i].type === 'ssrc') {
