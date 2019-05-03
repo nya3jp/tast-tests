@@ -25,7 +25,7 @@ import (
 const (
 	// LoopbackPage is a webpage for WebRTC loopback test.
 	LoopbackPage = "loopback.html"
-	// AddStatsJSFile is a JavaScript file for replacing addStats() in chrome://webrtc-internals.
+	// AddStatsJSFile is a JavaScript file for replacing addLegacyStats() in chrome://webrtc-internals.
 	AddStatsJSFile = "add_stats.js"
 )
 
@@ -205,8 +205,10 @@ func (r *CameraResults) SetPerf(p *perf.Values) {
 type VerboseLoggingMode int
 
 const (
-	VerboseLogging   VerboseLoggingMode = iota // Enables verbose logging.
-	NoVerboseLogging                           // Do not enable verbose logging.
+	// VerboseLogging enables verbose logging.
+	VerboseLogging VerboseLoggingMode = iota
+	// NoVerboseLogging disables verbose logging.
+	NoVerboseLogging
 )
 
 // RunWebRTCCamera run a test in /video/data/getusermedia.html.
