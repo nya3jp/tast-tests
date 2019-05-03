@@ -31,7 +31,7 @@ func init() {
 // This test would take a picture with the default resolution and verify that a matching output image file is created.
 // Note that this test doesn't verify the integrity of the output file.
 func GCAStillCapture(ctx context.Context, s *testing.State) {
-	gca.RunTest(ctx, s, func(ctx context.Context, d *ui.Device) {
+	gca.RunTest(ctx, s, func(ctx context.Context, a *arc.ARC, d *ui.Device) {
 		// Switch to photo mode.
 		if err := gca.SwitchMode(ctx, d, gca.PhotoMode); err != nil {
 			s.Fatal("Failed to switch to photo mode: ", err)
