@@ -16,6 +16,24 @@
       "revId": "229140f4133b0a53e0e4709a884d4771d9027d72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99249938_8934b78e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-05-03T05:35:04Z",
+      "side": 1,
+      "message": "Awesome. I saw that before but forgot to apply @@",
+      "parentUuid": "23e5e29e_6e0b9e8c",
+      "revId": "229140f4133b0a53e0e4709a884d4771d9027d72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
