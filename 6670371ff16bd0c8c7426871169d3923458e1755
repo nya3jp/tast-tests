@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59a4cb83_b47aba87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-03T20:19:11Z",
+      "side": 1,
+      "message": "since names like \"Off\" are fairly ambiguous, i\u0027d recommend considering other names, e.g.\n\n  type Timer int\n\nand then\n\n  NoTimer\n  ThreeSecondTimer\n  TenSecondTimer",
+      "revId": "6670371ff16bd0c8c7426871169d3923458e1755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d18e728_d4d82e4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-03T20:19:11Z",
+      "side": 1,
+      "message": "please avoid repeating this:\n\nconst (\n   idBase        \u003d \"com.google.android.GoogleCameraArc:id/\"\n   timerButtonID \u003d idBase + \"timer_button\"\n   offButtonID   \u003d idBase + \"timer_off\"\n   ...\n)",
+      "range": {
+        "startLine": 178,
+        "startChar": 25,
+        "endLine": 178,
+        "endChar": 62
+      },
+      "revId": "6670371ff16bd0c8c7426871169d3923458e1755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ceb8de8_6c487d3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_still_capture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-03T20:19:11Z",
+      "side": 1,
+      "message": "please don\u0027t repeat this lengthy expression multiple times. i\u0027d recommend just adding something like:\n\n  cr :\u003d s.PreValue().(arc.PreData).Chrome\n\nright after L33",
+      "range": {
+        "startLine": 47,
+        "startChar": 32,
+        "endLine": 47,
+        "endChar": 65
+      },
+      "revId": "6670371ff16bd0c8c7426871169d3923458e1755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f8c3be0_e595adc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_still_capture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-03T20:19:11Z",
+      "side": 1,
+      "message": "nit: please delete unnecessary comments here, L54, L58, and L62. the code seems clear (and the error messages also describe what is being done)",
+      "revId": "6670371ff16bd0c8c7426871169d3923458e1755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
