@@ -13,6 +13,7 @@ import (
 	"strings"
 	"unicode"
 
+	"chromiumos/tast/local/rialto"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -52,7 +53,16 @@ get_fixed_dst_drive`
 	}
 
 	const gb = 1024 * 1024 * 1024
-	validSizes := []int64{2 * gb, 4 * gb}
+	validSizes := []int64{
+		2 * gb,
+		4 * gb,
+	}
+	// Rialto devices may use 1 GB partitions.
+	if isRialto, err := rialto.IsRialto(); err != nil {
+		s.Error("Failed to check if device is rialto: ", err)
+	} else if isRialto {
+		validSizes = append(validSizes, 1*gb)
+	}
 
 	for _, partNum := range []int{3, 5} {
 		partDev := partPrefix + strconv.Itoa(partNum)
