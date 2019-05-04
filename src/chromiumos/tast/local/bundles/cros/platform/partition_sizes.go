@@ -51,7 +51,11 @@ get_fixed_dst_drive`
 	}
 
 	const gb = 1024 * 1024 * 1024
-	validSizes := []int64{2 * gb, 4 * gb}
+	validSizes := []int64{
+		1 * gb, // veyron_rialto uses 1 GiB partitions
+		2 * gb,
+		4 * gb,
+	}
 
 	for _, partNum := range []int{3, 5} {
 		partDev := partPrefix + strconv.Itoa(partNum)
