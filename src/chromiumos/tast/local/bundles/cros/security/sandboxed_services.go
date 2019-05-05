@@ -95,6 +95,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"anomaly_detector", "root", "root", 0},
 		{"attestationd", "attestation", "attestation", restrictCaps | noNewPrivs | seccomp},
 		{"periodic_scheduler", "root", "root", 0},
+		{"metrics_client", "root", "root", 0},
 		{"esif_ufd", "root", "root", 0},
 		{"easy_unlock", "easy-unlock", "easy-unlock", 0},
 		{"sslh-fork", "sslh", "sslh", pidNS | mntNS | restrictCaps | seccomp},
@@ -214,9 +215,8 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		return s[:maxProcNameLen]
 	}
 
-	// ignoredAncestors contains names of processes whose children should be ignored.
-	// These processes themselves are also ignored.
-	ignoredAncestors := map[string]struct{}{
+	// Names of processes whose children should be ignored. These processes themselves are also ignored.
+	ignoredAncestorNames := map[string]struct{}{
 		truncateProcName("kthreadd"):           {}, // kernel processes
 		truncateProcName("local_test_runner"):  {}, // Tast-related processes
 		truncateProcName("periodic_scheduler"): {}, // runs cron scripts
@@ -286,6 +286,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 	// We don't know that we'll see parent processes before their children (since PIDs can wrap around),
 	// so do an initial pass to gather information.
 	infos := make(map[int32]*procSandboxInfo)
+	ignoredAncestorPIDs := make(map[int32]struct{})
 	for _, proc := range procs {
 		info, err := getProcSandboxInfo(proc)
 		// Even on error, write the partially-filled info to help in debugging.
@@ -301,6 +302,18 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		}
 
 		infos[proc.Pid] = info
+
+		// Determine if all of this process's children should also be ignored.
+		_, ignoredByName := ignoredAncestorNames[info.name]
+		if ignoredByName ||
+			// Assume that any executables under /usr/local are dev- or test-specific,
+			// since /usr/local is mounted noexec if dev mode is disabled.
+			strings.HasPrefix(info.exe, "/usr/local/") ||
+			// Autotest tests sometimes leave orphaned processes running after they exit,
+			// so ignore anything that might e.g. be using a data file from /usr/local/autotest.
+			strings.Contains(info.cmdline, "autotest") {
+			ignoredAncestorPIDs[proc.Pid] = struct{}{}
+		}
 	}
 
 	// We use the init process's info later to determine if other
@@ -320,16 +333,10 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		if _, ok := exclusionsMap[info.name]; ok {
 			continue
 		}
-		if _, ok := ignoredAncestors[info.name]; ok {
+		if _, ok := ignoredAncestorPIDs[pid]; ok {
 			continue
 		}
-		if skip, err := procHasAncestor(pid, ignoredAncestors, infos); err == nil && skip {
-			continue
-		}
-
-		// Autotest tests sometimes leave orphaned processes running after they exit,
-		// so ignore anything that might e.g. be using a data file from /usr/local/autotest.
-		if strings.Contains(info.cmdline, "autotest") {
+		if skip, err := procHasAncestor(pid, ignoredAncestorPIDs, infos); err == nil && skip {
 			continue
 		}
 
@@ -576,9 +583,9 @@ func readProcStatus(pid int32) (map[string]string, error) {
 	return vals, nil
 }
 
-// procHasAncestor returns true if pid has any of ancestorNames as an ancestor process.
+// procHasAncestor returns true if pid has any of ancestorPIDs as an ancestor process.
 // infos should contain the full set of processes and is used to look up data.
-func procHasAncestor(pid int32, ancestorNames map[string]struct{},
+func procHasAncestor(pid int32, ancestorPIDs map[int32]struct{},
 	infos map[int32]*procSandboxInfo) (bool, error) {
 	info, ok := infos[pid]
 	if !ok {
@@ -590,7 +597,7 @@ func procHasAncestor(pid int32, ancestorNames map[string]struct{},
 		if !ok {
 			return false, errors.Errorf("parent process %d not found", info.ppid)
 		}
-		if _, ok := ancestorNames[pinfo.name]; ok {
+		if _, ok := ancestorPIDs[info.ppid]; ok {
 			return true, nil
 		}
 		if info.ppid == 1 {
