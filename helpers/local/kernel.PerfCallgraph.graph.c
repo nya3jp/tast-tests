@@ -12,7 +12,7 @@
 #include <unistd.h>
 
 // Amount of time to spin before returning.
-const int kSpinNs = 1e8;  // 100 ms
+const int kSpinNs = 1e9;  // 1 second
 
 // Number of recursive calls to make.
 const int kRecursionDepth = 8;
