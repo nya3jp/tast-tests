@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbc3a662_6381b9c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-06T14:37:29Z",
+      "side": 1,
+      "message": "fine to declare a function for this, but it can just be a one-liner, e.g.\n\n  ioutil.WriteFile(p, []byte(strings.Join(lines, \"\\n\")+\"\\n\", 0644)",
+      "revId": "c8c422fec237f858e1529ef67ef438749c05c3f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ee1f9f6_0ef2400c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-06T14:37:29Z",
+      "side": 1,
+      "message": "you\u0027re leaking the file",
+      "revId": "c8c422fec237f858e1529ef67ef438749c05c3f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2eaddef_c6e70974",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-06T14:37:29Z",
+      "side": 1,
+      "message": "there\u0027s no reason to wrap the file here; it already implements io.Writer",
+      "revId": "c8c422fec237f858e1529ef67ef438749c05c3f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
