@@ -39,8 +39,9 @@ get_fixed_dst_drive`
 		s.Fatal("Failed to get device: ", err)
 	}
 	baseDev := filepath.Base(strings.TrimSpace(string(out)))
-	if baseDev == "" {
-		s.Fatal("Got empty device")
+	if baseDev == "." { // filepath.Base("") returns "."
+		baseDev = "sda"
+		s.Logf("Got empty device; defaulting to %q (running in VM?)", baseDev)
 	}
 	s.Log("Checking partitions on device ", baseDev)
 
