@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6123adb5_f631cc37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-05-06T11:51:50Z",
+      "side": 1,
+      "message": "I see. Thanks for the tip!",
+      "parentUuid": "6508001b_bfb788db",
+      "revId": "0784a5cef44287054b774f754277098afcf3bbb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0af9b2bd_f0984472",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 7
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "35479e30_89109eb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-05-06T11:51:50Z",
+      "side": 1,
+      "message": "You\u0027re right. In the world of GCA, facing always refers to the direction of the camera.\nRemoved.",
+      "parentUuid": "0af9b2bd_f0984472",
+      "range": {
+        "startLine": 92,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 20
+      },
+      "revId": "0784a5cef44287054b774f754277098afcf3bbb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7828b296_3702a074",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 7
@@ -56,6 +98,24 @@
       "revId": "0784a5cef44287054b774f754277098afcf3bbb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59610847_4363b29e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-05-06T11:51:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7828b296_3702a074",
+      "revId": "0784a5cef44287054b774f754277098afcf3bbb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "b899792d_1d7fa86f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-05-06T11:51:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91f6aae5_7e72f1b4",
+      "range": {
+        "startLine": 114,
+        "startChar": 32,
+        "endLine": 114,
+        "endChar": 71
+      },
+      "revId": "0784a5cef44287054b774f754277098afcf3bbb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40910192_68b4a57a",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 7
@@ -93,6 +177,24 @@
       "writtenOn": "2019-05-03T20:08:42Z",
       "side": 1,
       "message": "should you expose some other way for the caller to learn about this case?",
+      "revId": "0784a5cef44287054b774f754277098afcf3bbb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f73bcca_6f428b09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-05-06T11:51:50Z",
+      "side": 1,
+      "message": "On single-camera devices, it wouldn\u0027t even make sense to run this test at all. I think an alternative would be to not run the test if the device only has one camera, but this is difficult to do technically speaking (camera platform doesn\u0027t statically expose this information).\nI think the following solution might be weird.\n1. Add CanSwitchCamera() which returns a boolean that indicates whether the device currently has more than one camera.\n2. Call CanSwitchCamera() at the start of this test. Run the test if true, but skip the test otherwise.\nThe number of cameras can be changed during runtime as well (e.g., plug in an external USB camera), so I don\u0027t know what the right call is.",
+      "parentUuid": "40910192_68b4a57a",
       "revId": "0784a5cef44287054b774f754277098afcf3bbb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -122,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "aa44b78d_13215378",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_multi_camera.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-05-06T11:51:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b14a8b05_616a0f57",
+      "range": {
+        "startLine": 31,
+        "startChar": 13,
+        "endLine": 31,
+        "endChar": 25
+      },
+      "revId": "0784a5cef44287054b774f754277098afcf3bbb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e82aa432_ef8a6551",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_multi_camera.go",
         "patchSetId": 7
@@ -139,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "3b9479a8_c83f0d8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_multi_camera.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-05-06T11:51:50Z",
+      "side": 1,
+      "message": "It\u0027s not currently exposed by the app nor the platform. Prime number is a great suggestion. I changed to 7.",
+      "parentUuid": "e82aa432_ef8a6551",
+      "revId": "0784a5cef44287054b774f754277098afcf3bbb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "864a4ae3_2be1297c",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_multi_camera.go",
         "patchSetId": 7
@@ -153,6 +297,24 @@
       "revId": "0784a5cef44287054b774f754277098afcf3bbb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2aa59bd_eae1e444",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_multi_camera.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-05-06T11:51:50Z",
+      "side": 1,
+      "message": "Oops I didn\u0027t notice I didn\u0027t handle the error here. Thanks for catching this!",
+      "parentUuid": "864a4ae3_2be1297c",
+      "revId": "0784a5cef44287054b774f754277098afcf3bbb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -176,6 +338,30 @@
       "revId": "0784a5cef44287054b774f754277098afcf3bbb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "071b7240_2ba9e68e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_multi_camera.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-05-06T11:51:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba7ccc52_ce60ebb2",
+      "range": {
+        "startLine": 61,
+        "startChar": 70,
+        "endLine": 61,
+        "endChar": 83
+      },
+      "revId": "0784a5cef44287054b774f754277098afcf3bbb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
