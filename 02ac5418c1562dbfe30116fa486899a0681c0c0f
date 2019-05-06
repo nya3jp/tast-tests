@@ -16,6 +16,24 @@
       "revId": "02ac5418c1562dbfe30116fa486899a0681c0c0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1db0a5cf_d9d29c14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_media_recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-05-06T06:39:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d167520f_4853aed4",
+      "revId": "02ac5418c1562dbfe30116fa486899a0681c0c0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
