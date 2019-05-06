@@ -20,7 +20,7 @@ func init() {
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWDecodeH264},
-		Data:         append(decode.DataFiles(videotype.H264Prof, decode.ImportBuffer), decode.Test25FPSH264.Name+".json"),
+		Data:         decode.DataFiles(videotype.H264Prof),
 	})
 }
 
