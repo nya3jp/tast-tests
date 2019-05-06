@@ -25,7 +25,6 @@ func init() {
 			"pmoy@chromium.org",    // diag tool author
 		},
 		SoftwareDeps: []string{"diagnostics"},
-		Attr:         []string{"informational"},
 	})
 }
 
