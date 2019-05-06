@@ -101,7 +101,7 @@ type testConfig struct {
 	// Only used by video_decode_accelerator_unittest.
 	bufferMode VDABufferMode
 	// requireMD5Files indicates whether to prepare MD5 files for test.
-	// Only used by video_decode_accelerator_unittest.
+	// Used by all binaries.
 	requireMD5Files bool
 	// thumbnailOutputDir is a directory for the unittest to output thumbnail.
 	// If unspecified, the unittest outputs no thumbnail.
@@ -246,12 +246,34 @@ func runARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, cfg test
 	shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	// Push video stream file to ARC container.
-	arcVideoPath, err := a.PushFileToTmpDir(shortCtx, cfg.dataPath)
-	if err != nil {
-		s.Fatal("Failed to push video stream to ARC: ", err)
+	pushFiles := []string{cfg.dataPath}
+
+	if cfg.requireMD5Files {
+		// Parse JSON metadata
+		var md jsonDecodeMetadata
+		if err := md.fromJSONFile(cfg.dataPath + jsonMetadataExt); err != nil {
+			s.Fatal("Failed to get decode metadata from JSON file: ", err)
+		}
+
+		// Prepare frames MD5 file
+		frameMD5Path := cfg.dataPath + frameMD5Ext
+		s.Logf("Preparing frames MD5 file %v from JSON metadata", frameMD5Path)
+		if err := writeLinesToFile(md.MD5Checksums, frameMD5Path); err != nil {
+			s.Fatalf("Failed to prepare frames MD5 file %s: %v", frameMD5Path, err)
+		}
+		defer os.Remove(frameMD5Path)
+
+		pushFiles = append(pushFiles, frameMD5Path)
 	}
-	defer a.Command(ctx, "rm", arcVideoPath).Run()
+
+	// Push files to ARC container.
+	for _, pushFile := range pushFiles {
+		arcPath, err := a.PushFileToTmpDir(shortCtx, pushFile)
+		if err != nil {
+			s.Fatal("Failed to push video stream to ARC: ", err)
+		}
+		defer a.Command(ctx, "rm", arcPath).Run()
+	}
 
 	args := cfg.toArgsList()
 
@@ -364,8 +386,9 @@ func RunAllARCVideoTests(ctx context.Context, s *testing.State, a *arc.ARC, test
 	defer vl.Close()
 
 	runARCVideoTest(ctx, s, a, testConfig{
-		binType:  arcVideoDecoderTest,
-		testData: testData,
-		dataPath: s.DataPath(testData.Name),
+		binType:         arcVideoDecoderTest,
+		testData:        testData,
+		dataPath:        s.DataPath(testData.Name),
+		requireMD5Files: true,
 	})
 }
