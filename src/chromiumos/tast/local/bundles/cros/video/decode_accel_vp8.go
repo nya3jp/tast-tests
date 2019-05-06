@@ -21,7 +21,7 @@ func init() {
 		Contacts:     []string{"keiichiw@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", caps.HWDecodeVP8},
-		Data:         decode.DataFiles(videotype.VP8Prof, decode.AllocateBuffer),
+		Data:         decode.DataFiles(videotype.VP8Prof),
 		Timeout:      4 * time.Minute,
 	})
 }
