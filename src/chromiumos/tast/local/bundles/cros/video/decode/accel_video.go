@@ -7,9 +7,12 @@ package decode
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -87,6 +90,11 @@ type testConfig struct {
 	// bufferMode indicates which buffer mode the unittest runs with.
 	// Only used by video_decode_accelerator_unittest.
 	bufferMode VDABufferMode
+	// requireMD5Files indicates whether to prepare MD5 files for test.
+	// Only used by video_decode_accelerator_unittest.
+	// TODO(crbug.com/953118) Move metadata parsing code into the ARC Tast test once video_decode_accelerator_unittest
+	//                        is deprecated. The new video_decode_accelerator_tests use the metadata file directly.
+	requireMD5Files bool
 	// thumbnailOutputDir is a directory for the unittest to output thumbnail.
 	// If unspecified, the unittest outputs no thumbnail.
 	// Only used by video_decode_accelerator_unittest.
@@ -121,9 +129,22 @@ func (t *testConfig) toArgsList() (args []string) {
 	return args
 }
 
+// decodeMetadata stores parsed metadata from test video JSON files, which are external files located in
+// gs://chromiumos-test-assets-public/tast/cros/video/, e.g. test-25fps.h264.json.
+type decodeMetadata struct {
+	Profile            string   `json:"profile"`
+	Width              int      `json:"width"`
+	Height             int      `json:"height"`
+	FrameRate          int      `json:"frame_rate"`
+	NumFrames          int      `json:"num_frames"`
+	NumFragments       int      `json:"num_fragments"`
+	MD5Checksums       []string `json:"md5_checksums"`
+	ThumbnailChecksums []string `json:"thumbnail_checksums"`
+}
+
 // DataFiles returns a list of required files that tests that use this package
 // should include in their Data fields.
-func DataFiles(profile videotype.CodecProfile, mode VDABufferMode) []string {
+func DataFiles(profile videotype.CodecProfile) []string {
 	var codec string
 	switch profile {
 	case videotype.H264Prof:
@@ -136,14 +157,13 @@ func DataFiles(profile videotype.CodecProfile, mode VDABufferMode) []string {
 		codec = "vp9_2"
 	}
 
-	// TODO(crbug.com/933034) Only add json file when the old VDA tests have been deprecated.
 	fname := "test-25fps." + codec
-	files := []string{fname, fname + ".md5"}
-	if mode == ImportBuffer {
-		files = append(files, fname+".frames.md5")
-	}
+	return []string{fname, fname + ".json"}
+}
 
-	return files
+// writeLinesToFile writes lines to filepath line by line.
+func writeLinesToFile(lines []string, filepath string) error {
+	return ioutil.WriteFile(filepath, []byte(strings.Join(lines, "\n")+"\n"), 0644)
 }
 
 // runAccelVideoTest runs video_decode_accelerator_unittest with given testConfig.
@@ -153,6 +173,38 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, cfg testConfig) {
 		s.Fatal("Failed to set values for verbose logging: ", err)
 	}
 	defer vl.Close()
+
+	if cfg.requireMD5Files {
+		// Parse JSON metadata.
+		jf, err := os.Open(cfg.dataPath + ".json")
+		if err != nil {
+			s.Fatal("Failed to open JSON file: ", err)
+		}
+		defer jf.Close()
+
+		var md decodeMetadata
+		if err := json.NewDecoder(jf).Decode(&md); err != nil {
+			s.Fatal("Failed to parse metadata from JSON file: ", err)
+		}
+
+		// Prepare thumbnail MD5 file.
+		md5Path := cfg.dataPath + ".md5"
+		s.Logf("Preparing thumbnail MD5 file %v from JSON metadata", md5Path)
+		if err := writeLinesToFile(md.ThumbnailChecksums, md5Path); err != nil {
+			s.Fatalf("Failed to prepare thumbnail MD5 file %s: %v", md5Path, err)
+		}
+		defer os.Remove(md5Path)
+
+		// Prepare frames MD5 file if config's bufferMode is ImportBuffer.
+		if cfg.bufferMode == ImportBuffer {
+			frameMD5Path := cfg.dataPath + ".frames.md5"
+			s.Logf("Preparing frames MD5 file %v from JSON metadata", frameMD5Path)
+			if err := writeLinesToFile(md.MD5Checksums, frameMD5Path); err != nil {
+				s.Fatalf("Failed to prepare frames MD5 file %s: %v", frameMD5Path, err)
+			}
+			defer os.Remove(frameMD5Path)
+		}
+	}
 
 	// Reserve time to restart the ui job at the end of the test.
 	// Only a single process can have access to the GPU, so we are required
@@ -265,6 +317,7 @@ func RunAllAccelVideoTest(ctx context.Context, s *testing.State, testData TestVi
 		testData:           testData,
 		dataPath:           s.DataPath(testData.Name),
 		bufferMode:         bufferMode,
+		requireMD5Files:    true,
 		thumbnailOutputDir: s.OutDir(),
 	})
 }
