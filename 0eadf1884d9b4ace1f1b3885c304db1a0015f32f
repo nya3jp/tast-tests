@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0822a171_f57c12cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-06T22:37:01Z",
+      "side": 1,
+      "message": "huge nit: delete \u0027:\u0027 here\n\nsee https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting for a bit more discussion, but basically we just use colons before lists or separate clauses (e.g. a nested error message)",
+      "range": {
+        "startLine": 99,
+        "startChar": 93,
+        "endLine": 99,
+        "endChar": 94
+      },
+      "revId": "0eadf1884d9b4ace1f1b3885c304db1a0015f32f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

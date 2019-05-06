@@ -201,6 +201,24 @@
     },
     {
       "key": {
+        "uuid": "772e27ad_d9b91f8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-06T22:37:01Z",
+      "side": 1,
+      "message": "hmm. yeah, we generally don\u0027t want to return early from non-applicable tests, since it creates the false impression that the test was actually executed and passed. we typically instead want the test to declare dependencies that the framework uses to determine whether it should be skipped entirely.",
+      "parentUuid": "3f73bcca_6f428b09",
+      "revId": "0784a5cef44287054b774f754277098afcf3bbb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b14a8b05_616a0f57",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_multi_camera.go",
         "patchSetId": 7
