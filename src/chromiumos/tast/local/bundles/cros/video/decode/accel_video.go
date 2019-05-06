@@ -91,7 +91,7 @@ type testConfig struct {
 	// Only used by video_decode_accelerator_unittest.
 	bufferMode VDABufferMode
 	// requireMD5Files indicates whether to prepare MD5 files for test.
-	// Only used by video_decode_accelerator_unittest.
+	// Used by all binaries.
 	// TODO(crbug.com/953118) Move metadata parsing code into the ARC Tast test once video_decode_accelerator_unittest
 	//                        is deprecated. The new video_decode_accelerator_tests use the metadata file directly.
 	requireMD5Files bool
@@ -231,12 +231,41 @@ func runARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, cfg test
 	shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	// Push video stream file to ARC container.
-	arcVideoPath, err := a.PushFileToTmpDir(shortCtx, cfg.dataPath)
-	if err != nil {
-		s.Fatal("Failed to push video stream to ARC: ", err)
+	pushFiles := []string{cfg.dataPath}
+
+	if cfg.requireMD5Files {
+		// Parse JSON metadata.
+		// TODO(johnylin) Adapt ARC decoder test to use the json file directly.
+		jf, err := os.Open(cfg.dataPath + ".json")
+		if err != nil {
+			s.Fatal("Failed to open JSON file: ", err)
+		}
+		defer jf.Close()
+
+		var md decodeMetadata
+		if err := json.NewDecoder(jf).Decode(&md); err != nil {
+			s.Fatal("Failed to parse metadata from JSON file: ", err)
+		}
+
+		// Prepare frames MD5 file.
+		frameMD5Path := cfg.dataPath + ".frames.md5"
+		s.Logf("Preparing frames MD5 file %v from JSON metadata", frameMD5Path)
+		if err := writeLinesToFile(md.MD5Checksums, frameMD5Path); err != nil {
+			s.Fatalf("Failed to prepare frames MD5 file %s: %v", frameMD5Path, err)
+		}
+		defer os.Remove(frameMD5Path)
+
+		pushFiles = append(pushFiles, frameMD5Path)
 	}
-	defer a.Command(ctx, "rm", arcVideoPath).Run()
+
+	// Push files to ARC container.
+	for _, pushFile := range pushFiles {
+		arcPath, err := a.PushFileToTmpDir(shortCtx, pushFile)
+		if err != nil {
+			s.Fatal("Failed to push video stream to ARC: ", err)
+		}
+		defer a.Command(ctx, "rm", arcPath).Run()
+	}
 
 	args := cfg.toArgsList()
 
@@ -349,8 +378,9 @@ func RunAllARCVideoTests(ctx context.Context, s *testing.State, a *arc.ARC, test
 	defer vl.Close()
 
 	runARCVideoTest(ctx, s, a, testConfig{
-		binType:  arcVideoDecoderTest,
-		testData: testData,
-		dataPath: s.DataPath(testData.Name),
+		binType:         arcVideoDecoderTest,
+		testData:        testData,
+		dataPath:        s.DataPath(testData.Name),
+		requireMD5Files: true,
 	})
 }
