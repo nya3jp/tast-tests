@@ -16,6 +16,24 @@
       "revId": "7521d99207e26deac2c419262be2f6c858dedf11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7557b983_c866a894",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-05-06T13:16:38Z",
+      "side": 1,
+      "message": "I implemented it in an advanced CL:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1596768/1/src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go#27",
+      "parentUuid": "9b9ff8b4_4e42eb15",
+      "revId": "7521d99207e26deac2c419262be2f6c858dedf11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
