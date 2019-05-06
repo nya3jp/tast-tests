@@ -10,6 +10,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
+	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
 	"chromiumos/tast/testing"
 )
 
@@ -20,7 +21,7 @@ func init() {
 		Contacts:     []string{"johnylin@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome_login", caps.HWDecodeH264},
-		Data:         []string{decode.Test25FPSH264.Name},
+		Data:         decode.DataFiles(videotype.H264Prof),
 		Pre:          arc.Booted(),
 	})
 }
