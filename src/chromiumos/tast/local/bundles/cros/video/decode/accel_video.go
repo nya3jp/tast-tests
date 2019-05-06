@@ -8,18 +8,30 @@ package decode
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/video/lib/arctest"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
+	"chromiumos/tast/local/bundles/cros/video/lib/metadata"
 	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
 	"chromiumos/tast/local/chrome/bintest"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
+)
+
+const (
+	// md5Ext is appended to a video filename to get the name of the corresponding MD5 file.
+	md5Ext = ".md5"
+	// FrameMD5Ext is appended to a video filename to get the name of the corresponding frame-wise MD5 file.
+	frameMD5Ext = ".frames.md5"
+	// jsonMetadataExt is appended to a video filename to get the name of the corresponding metadata json file.
+	jsonMetadataExt = ".json"
 )
 
 // TestVideoData represents a test video data file for video_decode_accelerator_unittest with
@@ -87,6 +99,9 @@ type testConfig struct {
 	// bufferMode indicates which buffer mode the unittest runs with.
 	// Only used by video_decode_accelerator_unittest.
 	bufferMode VDABufferMode
+	// requireMD5Files indicates whether to prepare md5 files for test.
+	// Only used by video_decode_accelerator_unittest.
+	requireMD5Files bool
 	// thumbnailOutputDir is a directory for the unittest to output thumbnail.
 	// If unspecified, the unittest outputs no thumbnail.
 	// Only used by video_decode_accelerator_unittest.
@@ -123,7 +138,7 @@ func (t *testConfig) toArgsList() (args []string) {
 
 // DataFiles returns a list of required files that tests that use this package
 // should include in their Data fields.
-func DataFiles(profile videotype.CodecProfile, mode VDABufferMode) []string {
+func DataFiles(profile videotype.CodecProfile) []string {
 	var codec string
 	switch profile {
 	case videotype.H264Prof:
@@ -136,14 +151,13 @@ func DataFiles(profile videotype.CodecProfile, mode VDABufferMode) []string {
 		codec = "vp9_2"
 	}
 
-	// TODO(crbug.com/933034) Only add json file when the old VDA tests have been deprecated.
 	fname := "test-25fps." + codec
-	files := []string{fname, fname + ".md5"}
-	if mode == ImportBuffer {
-		files = append(files, fname+".frames.md5")
-	}
+	return []string{fname, fname + jsonMetadataExt}
+}
 
-	return files
+// writeLinesToFile writes lines to filepath line by line.
+func writeLinesToFile(lines []string, filepath string) error {
+	return ioutil.WriteFile(filepath, []byte(strings.Join(lines, "\n")+"\n"), 0644)
 }
 
 // runAccelVideoTest runs video_decode_accelerator_unittest with given testConfig.
@@ -153,6 +167,32 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, cfg testConfig) {
 		s.Fatal("Failed to set values for verbose logging: ", err)
 	}
 	defer vl.Close()
+
+	if cfg.requireMD5Files {
+		// Parse json metadata
+		md, err := metadata.GetDecodeMetadataFromJSONFile(cfg.dataPath + jsonMetadataExt)
+		if err != nil {
+			s.Fatal("Failed to get decode metadata from json file: ", err)
+		}
+
+		// Prepare thumbnail md5 file.
+		md5Path := cfg.dataPath + md5Ext
+		s.Logf("Preparing thumbnail md5 file %v from json metadata", md5Path)
+		if err := writeLinesToFile(md.ThumbnailChecksums, md5Path); err != nil {
+			s.Fatalf("Failed to prepare thumbnail md5 file %s: %v", md5Path, err)
+		}
+		defer os.Remove(md5Path)
+
+		// Prepare frames md5 file if config's bufferMode is ImportBuffer.
+		if cfg.bufferMode == ImportBuffer {
+			frameMD5Path := cfg.dataPath + frameMD5Ext
+			s.Logf("Preparing frames md5 file %v from json metadata", frameMD5Path)
+			if err := writeLinesToFile(md.MD5Checksums, frameMD5Path); err != nil {
+				s.Fatalf("Failed to prepare thumbnail md5 file %s: %v", frameMD5Path, err)
+			}
+			defer os.Remove(frameMD5Path)
+		}
+	}
 
 	// Reserve time to restart the ui job at the end of the test.
 	// Only a single process can have access to the GPU, so we are required
@@ -265,6 +305,7 @@ func RunAllAccelVideoTest(ctx context.Context, s *testing.State, testData TestVi
 		testData:           testData,
 		dataPath:           s.DataPath(testData.Name),
 		bufferMode:         bufferMode,
+		requireMD5Files:    true,
 		thumbnailOutputDir: s.OutDir(),
 	})
 }
