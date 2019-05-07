@@ -87,6 +87,24 @@
       "revId": "89867ecf7898eab0d51f0565b6a9b8af8bad28dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "904b544f_75ce7ca5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-07T23:52:28Z",
+      "side": 1,
+      "message": "can you just do something like this?\n\nfunc waitForAssistant(ctx context.Context, conn *chrome.Conn) error {\n    return testing.Poll(ctx, func(ctx context.Context) error {\n        _, err :\u003d assistant.SendTextQuery(ctx, conn, \"what\u0027s the time?\")\n        return err\n    }, \u0026testing.PollOptions{Timeout: 20*time.Second})\n}\n\n(apologies for typos)",
+      "parentUuid": "fa338200_ba38c609",
+      "revId": "89867ecf7898eab0d51f0565b6a9b8af8bad28dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
