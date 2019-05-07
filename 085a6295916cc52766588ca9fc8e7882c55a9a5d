@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "540260ce_0c8e3f83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-07T16:11:52Z",
+      "side": 1,
+      "message": "nit: add trailing period",
+      "revId": "085a6295916cc52766588ca9fc8e7882c55a9a5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d37a930_4dc9480c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-07T16:11:52Z",
+      "side": 1,
+      "message": "nit: add trailing period",
+      "revId": "085a6295916cc52766588ca9fc8e7882c55a9a5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
