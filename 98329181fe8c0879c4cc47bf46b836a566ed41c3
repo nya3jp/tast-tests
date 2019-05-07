@@ -16,6 +16,98 @@
       "revId": "98329181fe8c0879c4cc47bf46b836a566ed41c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7a5ea65_0b962e0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-07T16:06:25Z",
+      "side": 1,
+      "message": "+1. \".json\" is also much shorter than jsonMetadataExt :-)",
+      "parentUuid": "321e5d2b_ef048a1b",
+      "revId": "98329181fe8c0879c4cc47bf46b836a566ed41c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1231066_96e84a04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-07T16:06:25Z",
+      "side": 1,
+      "message": "nit: mind also pointing to the code that writes this (since that\u0027s where the format is defined)?",
+      "revId": "98329181fe8c0879c4cc47bf46b836a566ed41c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7d9387c_2a14f689",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-07T16:06:25Z",
+      "side": 1,
+      "message": "nit: parseJSONFile? \"from\" makes me think it will return a new object.\n\nalternately, i think it\u0027s more common to avoid methods like this and just use json.Decoder at the caller, e.g.\n\n  f, err :\u003d os.Open(jsonfile)\n  if err !\u003d nil {\n      ...\n  }\n  defer f.Close()\n\n  var md jsonDecodeMetadata\n  if err :\u003d json.NewDecoder(f).Decode(\u0026md); err !\u003d nil {\n      ...\n  }",
+      "range": {
+        "startLine": 153,
+        "startChar": 29,
+        "endLine": 153,
+        "endChar": 41
+      },
+      "revId": "98329181fe8c0879c4cc47bf46b836a566ed41c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43ea33ac_5942f457",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-07T16:06:25Z",
+      "side": 1,
+      "message": "nit: you can just return \u0027err\u0027 directly here, i think. ioutil.ReadFile already includes the path (which will probably end in .json) in the returned error.",
+      "revId": "98329181fe8c0879c4cc47bf46b836a566ed41c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd9e088d_c678d53c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-07T16:06:25Z",
+      "side": 1,
+      "message": "tiny nit: add trailing period to match other comments",
+      "revId": "98329181fe8c0879c4cc47bf46b836a566ed41c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
