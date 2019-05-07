@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "9e0f4ecd_cbc77a90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-07T05:25:28Z",
+      "side": 1,
+      "message": "huge nit: const",
+      "range": {
+        "startLine": 60,
+        "startChar": 6,
+        "endLine": 60,
+        "endChar": 9
+      },
+      "revId": "b2a46a2a87ea7e5c14ec4907df6c0f11bdabca70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b051d2aa_235c632b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-07T05:25:28Z",
+      "side": 1,
+      "message": "If |keyboard| is a falsy value (e.g. undefined), the promise resolves with that value instead of false, so I\u0027m afraid EvalPromise returns an error. And such failure is considered critical in the usage below.\n\nThere\u0027s several ways to convert a value to bool in JS, such as: resolve(!!(keyboard \u0026\u0026 keyboard.children.length \u003e 0))",
+      "range": {
+        "startLine": 61,
+        "startChar": 14,
+        "endLine": 61,
+        "endChar": 54
+      },
+      "revId": "b2a46a2a87ea7e5c14ec4907df6c0f11bdabca70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f85a51a5_6614c950",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
         "patchSetId": 1
