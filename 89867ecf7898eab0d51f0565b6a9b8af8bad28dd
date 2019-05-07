@@ -69,6 +69,24 @@
       "revId": "89867ecf7898eab0d51f0565b6a9b8af8bad28dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa338200_ba38c609",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2019-05-07T23:46:31Z",
+      "side": 1,
+      "message": "We don\u0027t have a query like that. A potential signal for fully startup is broken for signed out mode which is what we use in Tast. https://buganizer.corp.google.com/issues/129896357\n\nThis is being fixed and we can also add this bug to the comment.\n\nThe time query probably is the most light weight. Maybe turning on a retry counter to retry the time query could also be an intermediate solution. But it would have the same effect of the timeout in the sense that it would not guarantee the counter/time out is big enough.",
+      "parentUuid": "5f41c86b_a67bf485",
+      "revId": "89867ecf7898eab0d51f0565b6a9b8af8bad28dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
