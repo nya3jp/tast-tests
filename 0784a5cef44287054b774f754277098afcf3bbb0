@@ -219,6 +219,24 @@
     },
     {
       "key": {
+        "uuid": "60b63f40_004c4715",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-05-07T10:05:01Z",
+      "side": 1,
+      "message": "Sheng-hao, What do you think?\nShould I leave the code as is, use the CanSwitchCamera() above, or see if there\u0027s anyway we can get a capability for this?",
+      "parentUuid": "772e27ad_d9b91f8d",
+      "revId": "0784a5cef44287054b774f754277098afcf3bbb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b14a8b05_616a0f57",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_multi_camera.go",
         "patchSetId": 7
