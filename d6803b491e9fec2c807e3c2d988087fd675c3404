@@ -88,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "acdfa13b_fadd8131",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-07T05:55:36Z",
+      "side": 1,
+      "message": "Ah, I found that Dan mentioned the same points at the next patch:)\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1591545/2/src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+      "parentUuid": "5892340f_7d880008",
+      "revId": "d6803b491e9fec2c807e3c2d988087fd675c3404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6eff7a31_04309804",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 1
