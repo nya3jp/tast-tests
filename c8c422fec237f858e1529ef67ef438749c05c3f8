@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0d5bebb9_489c0473",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-07T06:09:36Z",
+      "side": 1,
+      "message": "Is this frame validator test case already enabled?\n(Maybe no, because MD5 files aren\u0027t used in arc_decode_* tests)\n\nWhen will they be enabled?",
+      "range": {
+        "startLine": 9,
+        "startChar": 28,
+        "endLine": 9,
+        "endChar": 60
+      },
+      "revId": "c8c422fec237f858e1529ef67ef438749c05c3f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cbc3a662_6381b9c3",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 2
@@ -47,6 +70,23 @@
       "writtenOn": "2019-05-06T14:37:29Z",
       "side": 1,
       "message": "there\u0027s no reason to wrap the file here; it already implements io.Writer",
+      "revId": "c8c422fec237f858e1529ef67ef438749c05c3f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "075f9811_93a16d7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-07T06:09:36Z",
+      "side": 1,
+      "message": "It\u0027s not related to this CL but why are we shorten context here? What is this 5 seconds used for?",
       "revId": "c8c422fec237f858e1529ef67ef438749c05c3f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
