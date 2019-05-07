@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a177d706_9083ff9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-07T10:04:41Z",
+      "side": 1,
+      "message": "It seems that this test will pass even if it failed to initialize one of cameras and switch button isn\u0027t clickable.\nI wonder if we can statically check if camera switch button should appear.\nWe might want to use autotest-capability.",
+      "revId": "700d12eafaf000dcea3c11cc65cb2dc88bc9c691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d505f4ab_3c8930c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_multi_camera.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-07T10:04:41Z",
+      "side": 1,
+      "message": "Do we really need to run this test on boards that have only one camera?\n\nIf we can focus on boards with multiple cameras, we can use more precise autotest-capability.\n\nIf we can assume that all boards with multiple cameras have both of USB/MIPI cameras, we can use caps.BuiltinUSBCamera and caps.BuiltinMIPICamera as SoftwareDeps to express \u0027AND\u0027 condition.\nOtherwise, we might want to add an autotest-capability for multiple camera.\n\nAlso, please read a comment at gca.go L144.",
+      "range": {
+        "startLine": 24,
+        "startChar": 51,
+        "endLine": 24,
+        "endChar": 77
+      },
+      "revId": "700d12eafaf000dcea3c11cc65cb2dc88bc9c691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "013b42e7_ba4a7ad3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_multi_camera.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-07T10:04:41Z",
+      "side": 1,
+      "message": "How about moving this to the place where the constant is used? (i.e. L45)\nAlso, could you add the reason why you choose \u00277\u0027 here?",
+      "revId": "700d12eafaf000dcea3c11cc65cb2dc88bc9c691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
