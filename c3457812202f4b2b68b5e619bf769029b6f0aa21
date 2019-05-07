@@ -271,6 +271,23 @@
     },
     {
       "key": {
+        "uuid": "f9713768_ca32ca22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_media_recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-07T09:33:22Z",
+      "side": 1,
+      "message": "Question: How long does it take to run this test on your DUT? I just want to make sure that we need to extend timeout.",
+      "revId": "c3457812202f4b2b68b5e619bf769029b6f0aa21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8104a81d_66514987",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_media_recorder.go",
         "patchSetId": 6
