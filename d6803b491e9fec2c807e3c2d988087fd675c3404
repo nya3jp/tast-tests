@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0c3f029b_005480c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-05-07T12:08:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46008e74_4487f729",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 5
+      },
+      "revId": "d6803b491e9fec2c807e3c2d988087fd675c3404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05a694c4_f1db002e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "76d4c953_f995d052",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-05-07T12:08:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05a694c4_f1db002e",
+      "range": {
+        "startLine": 32,
+        "startChar": 98,
+        "endLine": 32,
+        "endChar": 102
+      },
+      "revId": "d6803b491e9fec2c807e3c2d988087fd675c3404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "876ffe72_78b2cec7",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "d6803b491e9fec2c807e3c2d988087fd675c3404",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8046848_89c2f4eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-05-07T12:08:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "876ffe72_78b2cec7",
+      "range": {
+        "startLine": 101,
+        "startChar": 49,
+        "endLine": 101,
+        "endChar": 52
+      },
+      "revId": "d6803b491e9fec2c807e3c2d988087fd675c3404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -106,6 +178,24 @@
     },
     {
       "key": {
+        "uuid": "05f971cb_19488f19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-05-07T12:08:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acdfa13b_fadd8131",
+      "revId": "d6803b491e9fec2c807e3c2d988087fd675c3404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6eff7a31_04309804",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 1
@@ -120,6 +210,24 @@
       "revId": "d6803b491e9fec2c807e3c2d988087fd675c3404",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "700a7f65_a4766edc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-05-07T12:08:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6eff7a31_04309804",
+      "revId": "d6803b491e9fec2c807e3c2d988087fd675c3404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -146,6 +254,30 @@
     },
     {
       "key": {
+        "uuid": "d744fbf5_6c49dab1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-05-07T12:08:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c0fe484_2068d600",
+      "range": {
+        "startLine": 199,
+        "startChar": 32,
+        "endLine": 199,
+        "endChar": 45
+      },
+      "revId": "d6803b491e9fec2c807e3c2d988087fd675c3404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a4c9d6e_e495b7a7",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/metadata/json_metadata.go",
         "patchSetId": 1
@@ -157,6 +289,24 @@
       "writtenOn": "2019-05-07T05:53:27Z",
       "side": 1,
       "message": "How about putting this file under /cros/video/decode/ as a part of the \"decode\" package?\nIt seems that these JSON files are only used for VDA tests.\n\nAlso, I think we can have this content in decode/accel_video.go instead of having them in a separate file. \n\nBoth are okay for me.",
+      "revId": "d6803b491e9fec2c807e3c2d988087fd675c3404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb4a4745_8c213e75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/metadata/json_metadata.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-05-07T12:08:45Z",
+      "side": 1,
+      "message": "The original idea is to make the json parsing code as a common part, if json metadata is the fancy trend then we may have other json metadata in the future. However, after a second thought, the parsed code is quite simple actually, and each metadata will have their own struct for unmarshal. For this reason, move into decode package sounds good to me.",
+      "parentUuid": "7a4c9d6e_e495b7a7",
       "revId": "d6803b491e9fec2c807e3c2d988087fd675c3404",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -186,6 +336,30 @@
     },
     {
       "key": {
+        "uuid": "e9a05d54_b4ac9bf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/metadata/json_metadata.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-05-07T12:08:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cacd3140_4a30f91b",
+      "range": {
+        "startLine": 15,
+        "startChar": 61,
+        "endLine": 15,
+        "endChar": 65
+      },
+      "revId": "d6803b491e9fec2c807e3c2d988087fd675c3404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2c84231_f57cb94d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/metadata/json_metadata.go",
         "patchSetId": 1
@@ -206,6 +380,30 @@
       "revId": "d6803b491e9fec2c807e3c2d988087fd675c3404",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b592e42_b9914ed9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/metadata/json_metadata.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-05-07T12:08:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2c84231_f57cb94d",
+      "range": {
+        "startLine": 27,
+        "startChar": 69,
+        "endLine": 27,
+        "endChar": 74
+      },
+      "revId": "d6803b491e9fec2c807e3c2d988087fd675c3404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
