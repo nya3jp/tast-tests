@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9eb0b08e_cd4d247c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mini_container_state.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-07T04:55:10Z",
+      "side": 1,
+      "message": "I see, thanks for explanation.\n\nRenaming arc.MiniContainer to arc.Upgrade or arc.ContainerUpgrade sounds good to me (either is fine). And this test name arc.MiniContainerState makes sense.",
+      "parentUuid": "2bca4df5_3ccc2abe",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "b8e09a549df8c239c21a6794fe1bae83bbe0cc0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d85bac6c_7a768226",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
         "patchSetId": 1
@@ -319,6 +343,30 @@
       "side": 1,
       "message": "That\u0027s an option, but it will make another gap from exec.Run() family?",
       "parentUuid": "529d6b8f_c79a6a31",
+      "range": {
+        "startLine": 191,
+        "startChar": 69,
+        "endLine": 191,
+        "endChar": 92
+      },
+      "revId": "b8e09a549df8c239c21a6794fe1bae83bbe0cc0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b35d5b38_8f255efc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-07T04:55:10Z",
+      "side": 1,
+      "message": "Yes, but considering we\u0027re getting more and more customizations to testexec package, we might start deviating from original os/exec API...",
+      "parentUuid": "fecdeaca_8a5f0fcf",
       "range": {
         "startLine": 191,
         "startChar": 69,
