@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "eb092276_83fa8ba0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-05-07T22:05:04Z",
+      "side": 1,
+      "message": "According to the libassistant.log of the failed test,the first query got barged in before the interaction finished, and this could possibly caused by some parts of libassitant are still not fully started at that time. So before libassistant can provide something reliable on its ready state (I linked the bug tracking this issue in the comments), we probably need to give libassistant more time to start up to hopefully stabilize our test.",
+      "parentUuid": "83d122a1_18228f7d",
+      "revId": "f23cef63c23fa12a62ed20a1e62f64357b0d4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e82989fb_ad459bf2",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
         "patchSetId": 1
@@ -93,6 +111,30 @@
       "revId": "f23cef63c23fa12a62ed20a1e62f64357b0d4671",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ddc4784_ead3ecb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-05-07T22:05:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e82989fb_ad459bf2",
+      "range": {
+        "startLine": 55,
+        "startChar": 10,
+        "endLine": 55,
+        "endChar": 29
+      },
+      "revId": "f23cef63c23fa12a62ed20a1e62f64357b0d4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
