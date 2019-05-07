@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ca17fd6_d6468fa5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2019-05-07T00:03:21Z",
+      "side": 1,
+      "message": "Do we have is_betty() or is_VM or something like that instead?\n\nIf we always fall back to /dev/sda, this will mask problem when DUT actually has storage drive fail.",
+      "range": {
+        "startLine": 11,
+        "startChar": 30,
+        "endLine": 11,
+        "endChar": 35
+      },
+      "revId": "580789d18626159d65452143ef6593b713135a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
