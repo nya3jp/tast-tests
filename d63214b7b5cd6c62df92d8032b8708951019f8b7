@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "05523a7d_f60f164b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mini_container_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-07T04:55:10Z",
+      "side": 1,
+      "message": "For now we can\u0027t; we have a unit test that ensures all arc.* tests have timeout longer than 3.5 mins. The test makes little sense for this test for sure, but we don\u0027t have a good workaround today.",
+      "parentUuid": "598446ce_447eaf21",
+      "revId": "d63214b7b5cd6c62df92d8032b8708951019f8b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5dd8ba9d_bd8094c5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
         "patchSetId": 2
@@ -35,6 +53,52 @@
         "startChar": 0,
         "endLine": 103,
         "endChar": 59
+      },
+      "revId": "d63214b7b5cd6c62df92d8032b8708951019f8b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "847c1b64_9c65c218",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-07T04:55:10Z",
+      "side": 1,
+      "message": "nit: Just s.Fatal?",
+      "range": {
+        "startLine": 233,
+        "startChar": 2,
+        "endLine": 234,
+        "endChar": 8
+      },
+      "revId": "d63214b7b5cd6c62df92d8032b8708951019f8b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "969dcb11_c24c1c88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-07T04:55:10Z",
+      "side": 1,
+      "message": "Just to make sure, don\u0027t we need to wait for the mini container to start up? If so, could you leave a comment describing why?",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 2
       },
       "revId": "d63214b7b5cd6c62df92d8032b8708951019f8b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
