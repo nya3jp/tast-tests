@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9c9199c8_4d235ce7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-05-07T23:34:14Z",
+      "side": 1,
+      "message": "Got it, will make it inline :)",
+      "parentUuid": "d08fa606_cc8a1358",
+      "revId": "89867ecf7898eab0d51f0565b6a9b8af8bad28dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3df2d415_0cb722ad",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2019-05-07T23:08:14Z",
       "side": 1,
       "message": "but instead of sleeping, is there some sort of lightweight no-op query that you can perform repeatedly to wait for readiness? that will be both faster and less likely to be flaky if initialization sometimes takes longer than 5 seconds. you could add a new waitForAssistant or similar function that calls testing.Poll with a function that calls assistant.SendTextQuery and checks for a nil error.",
+      "revId": "89867ecf7898eab0d51f0565b6a9b8af8bad28dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f41c86b_a67bf485",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-05-07T23:34:14Z",
+      "side": 1,
+      "message": "I am not very sure on whether we have a query like that and will defer this to xiaohuic@.",
+      "parentUuid": "3df2d415_0cb722ad",
       "revId": "89867ecf7898eab0d51f0565b6a9b8af8bad28dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
