@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e824930d_6cfded15",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-05-07T12:13:25Z",
+      "side": 1,
+      "message": "It\u0027s already enabled, that\u0027s why this test is failed in lab now due to lacking of frames md5 file.",
+      "parentUuid": "0d5bebb9_489c0473",
+      "range": {
+        "startLine": 9,
+        "startChar": 28,
+        "endLine": 9,
+        "endChar": 60
+      },
+      "revId": "c8c422fec237f858e1529ef67ef438749c05c3f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cbc3a662_6381b9c3",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "c8c422fec237f858e1529ef67ef438749c05c3f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c65b42e2_6866e61a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-05-07T12:13:25Z",
+      "side": 1,
+      "message": "Done in the previous CL, thanks.",
+      "parentUuid": "cbc3a662_6381b9c3",
+      "revId": "c8c422fec237f858e1529ef67ef438749c05c3f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "114eb7a1_797e0436",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-05-07T12:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ee1f9f6_0ef2400c",
+      "revId": "c8c422fec237f858e1529ef67ef438749c05c3f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2eaddef_c6e70974",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 2
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "965a45a8_94136e49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-05-07T12:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2eaddef_c6e70974",
+      "revId": "c8c422fec237f858e1529ef67ef438749c05c3f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "075f9811_93a16d7b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 2
@@ -87,6 +165,24 @@
       "writtenOn": "2019-05-07T06:09:36Z",
       "side": 1,
       "message": "It\u0027s not related to this CL but why are we shorten context here? What is this 5 seconds used for?",
+      "revId": "c8c422fec237f858e1529ef67ef438749c05c3f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05172495_11bf7ba0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-05-07T12:13:25Z",
+      "side": 1,
+      "message": "it\u0027s the time for the file removals, e.g. os.Remove(frameMD5Path) and a.Command(ctx, \"rm\", arcPath).Run()",
+      "parentUuid": "075f9811_93a16d7b",
       "revId": "c8c422fec237f858e1529ef67ef438749c05c3f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
