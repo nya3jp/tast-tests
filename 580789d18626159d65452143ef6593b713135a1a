@@ -22,6 +22,30 @@
       "revId": "580789d18626159d65452143ef6593b713135a1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "317bb25b_145ca62b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-07T02:29:30Z",
+      "side": 1,
+      "message": "just to clarify, what do you mean by \"storage drive fail\"? are you concerned that get_fixed_dst_drive stops reporting the fixed disk drive correctly, but we don\u0027t notice that because of this code that falls back to /dev/sda? if that\u0027s the case, wouldn\u0027t the test be failing on many devices because they don\u0027t have /dev/sda? or do you think this will mask some other problem?\n\ntesting for betty isn\u0027t enough, as other boards can be run on VMs. amd64-generic can be used either on a VM or on real hardware, for instance. i could create a new dependency that can be used so that this test will be skipped entirely on VMs, but i\u0027d rather not introduce a one-off dependency if it can be avoided.",
+      "parentUuid": "5ca17fd6_d6468fa5",
+      "range": {
+        "startLine": 11,
+        "startChar": 30,
+        "endLine": 11,
+        "endChar": 35
+      },
+      "revId": "580789d18626159d65452143ef6593b713135a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
