@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7149a925_6e31db6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-07T15:50:19Z",
+      "side": 1,
+      "message": "optional nit: unless there\u0027s a reason why this can\u0027t run more frequently, i\u0027d use a shorter interval so the test runs more quickly. you can just pass a nil *testing.PollOptions arg to use the default, 100 ms.",
+      "range": {
+        "startLine": 194,
+        "startChar": 35,
+        "endLine": 194,
+        "endChar": 46
+      },
+      "revId": "5cfb1f23b965bbafc7e6f51aec81eb00cb848631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
