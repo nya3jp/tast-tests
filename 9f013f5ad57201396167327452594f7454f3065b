@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7caeb3c_45071de9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.html",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-08T12:07:52Z",
+      "side": 1,
+      "message": "nit: indent?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 1
+      },
+      "revId": "9f013f5ad57201396167327452594f7454f3065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d6fd2de_4ee197f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-08T12:07:52Z",
+      "side": 1,
+      "message": "comment?",
+      "revId": "9f013f5ad57201396167327452594f7454f3065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "055a8957_f7adec8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-08T12:07:52Z",
+      "side": 1,
+      "message": "Please use default parameter (i.e. slice\u003d1)\nhttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters\n\nThen, you don\u0027t need to check \"slice !\u003d undefined\"",
+      "range": {
+        "startLine": 78,
+        "startChar": 55,
+        "endLine": 78,
+        "endChar": 60
+      },
+      "revId": "9f013f5ad57201396167327452594f7454f3065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b61c8ab_a60f74d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-08T12:07:52Z",
+      "side": 1,
+      "message": "Can we implement createAndStartMediaRecoder by using createMediaRecorder inside?",
+      "revId": "9f013f5ad57201396167327452594f7454f3065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02532487_3f88c740",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-08T12:07:52Z",
+      "side": 1,
+      "message": "Instead of receiving stream, how about including \"navigator.mediaDevices.getUserMedia(DEFAULT_CONSTRAINTS)\" in createMediaRecoder? So, we can reduce code duplication?",
+      "range": {
+        "startLine": 98,
+        "startChar": 29,
+        "endLine": 98,
+        "endChar": 36
+      },
+      "revId": "9f013f5ad57201396167327452594f7454f3065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c592b7fa_21b6123d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-08T12:07:52Z",
+      "side": 1,
+      "message": "\u003e If the MIME type is not supported,\n\nI wonder when this will happen.\n\nWe generally don\u0027t want to say \"Pass\" when the test is skipped. Instead, we should avoid to run the test by using framework\u0027s features (e.g. autotest-capability, SoftwareDeps)",
+      "revId": "9f013f5ad57201396167327452594f7454f3065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "183ad70b_cd77ff33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-08T12:07:52Z",
+      "side": 1,
+      "message": "Nobody uses saved timeStamps, do they?",
+      "revId": "9f013f5ad57201396167327452594f7454f3065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ca5ae37_4d8d2a24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_media_recorder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-08T12:07:52Z",
+      "side": 1,
+      "message": "We can use document.readyState here instead of declaring |pageLoaded| by ourselves.\nhttps://developer.mozilla.org/en-US/docs/Web/API/Document/readyState#readystatechange_as_an_alternative_to_load_event\n\nif err :\u003d conn.WaitForExpr(ctx, \"document.readyState \u003d\u003d\u003d \u0027complete\u0027\"); err !\u003d nil {\n\treturn errors.Wrap(err, \"timed out waiting for page loaded\")\n}",
+      "revId": "9f013f5ad57201396167327452594f7454f3065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
