@@ -123,6 +123,24 @@
       "revId": "89867ecf7898eab0d51f0565b6a9b8af8bad28dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "138e48c9_820f98b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2019-05-08T20:25:47Z",
+      "side": 1,
+      "message": "lgtm",
+      "parentUuid": "6830c0ee_d70aa29b",
+      "revId": "89867ecf7898eab0d51f0565b6a9b8af8bad28dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
