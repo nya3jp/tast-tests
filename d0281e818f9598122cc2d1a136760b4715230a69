@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d29470b_46245214",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-08T14:54:04Z",
+      "side": 1,
+      "message": "i assume that these files already exist and are hard to change, but just for next time: the (surprisingly long!) google json style guide says that property names should be camel-case: https://google.github.io/styleguide/jsoncstyleguide.xml?showone\u003dProperty_Name_Format#Property_Name_Format",
+      "range": {
+        "startLine": 137,
+        "startChar": 36,
+        "endLine": 137,
+        "endChar": 46
+      },
+      "revId": "d0281e818f9598122cc2d1a136760b4715230a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
