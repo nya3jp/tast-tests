@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
+	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
 	"chromiumos/tast/local/bundles/cros/video/mediarecorder"
 	"chromiumos/tast/testing"
 )
@@ -24,5 +25,5 @@ func init() {
 }
 
 func MediaRecorderEncodeAccelUsedVP9(ctx context.Context, s *testing.State) {
-	mediarecorder.VerifyEncodeAccelUsed(ctx, s, "vp9")
+	mediarecorder.VerifyEncodeAccelUsed(ctx, s, videotype.VP9)
 }

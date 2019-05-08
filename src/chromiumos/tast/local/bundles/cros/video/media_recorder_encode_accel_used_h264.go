@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
+	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
 	"chromiumos/tast/local/bundles/cros/video/mediarecorder"
 	"chromiumos/tast/testing"
 )
@@ -25,5 +26,5 @@ func init() {
 }
 
 func MediaRecorderEncodeAccelUsedH264(ctx context.Context, s *testing.State) {
-	mediarecorder.VerifyEncodeAccelUsed(ctx, s, "h264")
+	mediarecorder.VerifyEncodeAccelUsed(ctx, s, videotype.H264)
 }
