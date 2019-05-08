@@ -86,6 +86,26 @@ func WebRTCMediaRecorder(ctx context.Context, s *testing.State) {
 		"testStartAndDataAvailable('video/webm; codecs=h264')",
 		"testStartAndDataAvailable('video/webm; codecs=vp9')",
 		"testStartAndDataAvailable('video/webm; codecs=vp8')",
+		"testStartWithTimeSlice()",
+
+		// Test resume and pause.
+		"testResumeAndRecorderState()",
+		"testResumeAndDataAvailable()",
+		"testPauseAndRecorderState()",
+		"testPauseStopAndRecorderState()",
+		"testPausePreventsDataavailableFromBeingFired()",
+
+		// Test illegal operations handling.
+		"testIllegalResumeThrowsDOMError()",
+		"testIllegalPauseThrowsDOMError()",
+		"testIllegalStopThrowsDOMError()",
+		"testIllegalStartInRecordingStateThrowsDOMError()",
+		"testIllegalStartInPausedStateThrowsDOMError()",
+		"testIllegalRequestDataThrowsDOMError()",
+
+		"testTwoChannelAudio()",
+		"testAddingTrackToMediaStreamFiresErrorEvent()",
+		"testRemovingTrackFromMediaStreamFiresErrorEvent()",
 	} {
 		if err := runTest(js); err != nil {
 			s.Errorf("%v failed: %v", js, err)
