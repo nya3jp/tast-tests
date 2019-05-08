@@ -16,6 +16,24 @@
       "revId": "729420b748f8757b53d9aa43fd2633c1e981ca6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00ed4656_a1e0f4bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-05-08T21:47:48Z",
+      "side": 1,
+      "message": "Thanks for the advice :) Done.",
+      "parentUuid": "dec0e4ee_1978208c",
+      "revId": "729420b748f8757b53d9aa43fd2633c1e981ca6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
