@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cf7b1bcd_768020f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-08T14:07:39Z",
+      "side": 1,
+      "message": "I realized this won\u0027t happen because gca.GetFacing is called before this function.",
+      "parentUuid": "a177d706_9083ff9e",
+      "revId": "700d12eafaf000dcea3c11cc65cb2dc88bc9c691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d505f4ab_3c8930c3",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_multi_camera.go",
         "patchSetId": 9
@@ -63,6 +81,30 @@
       "revId": "700d12eafaf000dcea3c11cc65cb2dc88bc9c691",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3defceff_9d59996a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_multi_camera.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-08T14:07:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7122ab88_0108f93c",
+      "range": {
+        "startLine": 24,
+        "startChar": 51,
+        "endLine": 24,
+        "endChar": 77
+      },
+      "revId": "700d12eafaf000dcea3c11cc65cb2dc88bc9c691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
