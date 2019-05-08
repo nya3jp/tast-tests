@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "7122ab88_0108f93c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_multi_camera.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-05-08T05:38:52Z",
+      "side": 1,
+      "message": "I asked Henry.\nWe have devices with other combinations (MIPI + MIPI, USB + USB), so that probably won\u0027t work.\nI\u0027m not sure how hard/feasible it would be to add an autotest-capability for this.\n+shik for his opinions.",
+      "parentUuid": "d505f4ab_3c8930c3",
+      "range": {
+        "startLine": 24,
+        "startChar": 51,
+        "endLine": 24,
+        "endChar": 77
+      },
+      "revId": "700d12eafaf000dcea3c11cc65cb2dc88bc9c691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "013b42e7_ba4a7ad3",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_multi_camera.go",
         "patchSetId": 9
