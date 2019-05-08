@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "f32a2b18_b30a2f9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.html",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-08T08:04:09Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "175e7449_07ceeb20",
+      "revId": "c3457812202f4b2b68b5e619bf769029b6f0aa21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "46edd5b5_7299d2ee",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.html",
         "patchSetId": 6
@@ -116,6 +134,29 @@
     },
     {
       "key": {
+        "uuid": "eaca2e23_f0ea384e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.html",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-08T08:04:09Z",
+      "side": 1,
+      "message": "Please use const/let instead of var throughout this file.",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 7
+      },
+      "revId": "c3457812202f4b2b68b5e619bf769029b6f0aa21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad945162_fc8a39d6",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.html",
         "patchSetId": 6
@@ -132,6 +173,144 @@
         "startChar": 4,
         "endLine": 28,
         "endChar": 14
+      },
+      "revId": "c3457812202f4b2b68b5e619bf769029b6f0aa21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e31a1fe4_9d92ad50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.html",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-08T08:04:09Z",
+      "side": 1,
+      "message": "Since we rewrite startTime, it\u0027s not a \"start\" time. Please consider different name.",
+      "range": {
+        "startLine": 31,
+        "startChar": 8,
+        "endLine": 31,
+        "endChar": 17
+      },
+      "revId": "c3457812202f4b2b68b5e619bf769029b6f0aa21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81d7b3ac_0f11f264",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.html",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-08T08:04:09Z",
+      "side": 1,
+      "message": "huge nit: want once space after the colon",
+      "range": {
+        "startLine": 44,
+        "startChar": 27,
+        "endLine": 44,
+        "endChar": 28
+      },
+      "revId": "c3457812202f4b2b68b5e619bf769029b6f0aa21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4303c487_55b74abf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.html",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-08T08:04:09Z",
+      "side": 1,
+      "message": "style: We should always throw Error rather than strings.\n\n throw new Error(reason);",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 15
+      },
+      "revId": "c3457812202f4b2b68b5e619bf769029b6f0aa21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1550db00_ff30b870",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.html",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-08T08:04:09Z",
+      "side": 1,
+      "message": "Please use !\u003d\u003d instead of !\u003d. Semantics of \u003d\u003d and !\u003d is very odd, as you know.",
+      "range": {
+        "startLine": 57,
+        "startChar": 13,
+        "endLine": 57,
+        "endChar": 15
+      },
+      "revId": "c3457812202f4b2b68b5e619bf769029b6f0aa21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16659c12_ca2927d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.html",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-08T08:04:09Z",
+      "side": 1,
+      "message": "style: Please always use braces.",
+      "range": {
+        "startLine": 57,
+        "startChar": 24,
+        "endLine": 57,
+        "endChar": 25
+      },
+      "revId": "c3457812202f4b2b68b5e619bf769029b6f0aa21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "302c8d5e_d59fea79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.html",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-08T08:04:09Z",
+      "side": 1,
+      "message": "style: braces",
+      "range": {
+        "startLine": 62,
+        "startChar": 24,
+        "endLine": 62,
+        "endChar": 25
       },
       "revId": "c3457812202f4b2b68b5e619bf769029b6f0aa21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
