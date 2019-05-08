@@ -105,6 +105,24 @@
       "revId": "89867ecf7898eab0d51f0565b6a9b8af8bad28dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6830c0ee_d70aa29b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-05-08T19:02:45Z",
+      "side": 1,
+      "message": "Makes sense to me, wdyt Xiaohui? Any possible side effects on the libassistant side if we keep retrying during its startup?",
+      "parentUuid": "904b544f_75ce7ca5",
+      "revId": "89867ecf7898eab0d51f0565b6a9b8af8bad28dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
