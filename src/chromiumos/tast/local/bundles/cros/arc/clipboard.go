@@ -161,7 +161,7 @@ func Clipboard(ctx context.Context, s *testing.State) {
 	}
 
 	// Wait for App showing up.
-	must(d.Object(ui.ID(titleID), ui.Text(title)).WaitForExistsWithDefaultTimeout(ctx))
+	must(d.Object(ui.ID(titleID), ui.Text(title)).WaitForExists(ctx, 30*time.Second))
 
 	// Copy text from Chrome to Android.
 	valToCopyCmd := `document.getElementById('text_area').value;`

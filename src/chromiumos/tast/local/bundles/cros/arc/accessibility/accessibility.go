@@ -142,16 +142,17 @@ func InstallAndStartSampleApp(ctx context.Context, a *arc.ARC, apkPath string) e
 	defer d.Close()
 
 	// Check UI components exist as expected.
-	if err := d.Object(ui.ID(toggleButtonID)).WaitForExistsWithDefaultTimeout(ctx); err != nil {
+	const timeout = 30 * time.Second
+	if err := d.Object(ui.ID(toggleButtonID)).WaitForExists(ctx, timeout); err != nil {
 		return err
 	}
-	if err := d.Object(ui.ID(checkBoxID)).WaitForExistsWithDefaultTimeout(ctx); err != nil {
+	if err := d.Object(ui.ID(checkBoxID)).WaitForExists(ctx, timeout); err != nil {
 		return err
 	}
-	if err := d.Object(ui.ID(seekBarID)).WaitForExistsWithDefaultTimeout(ctx); err != nil {
+	if err := d.Object(ui.ID(seekBarID)).WaitForExists(ctx, timeout); err != nil {
 		return err
 	}
-	if err := d.Object(ui.ID(seekBarDiscreteID)).WaitForExistsWithDefaultTimeout(ctx); err != nil {
+	if err := d.Object(ui.ID(seekBarDiscreteID)).WaitForExists(ctx, timeout); err != nil {
 		return err
 	}
 	return nil

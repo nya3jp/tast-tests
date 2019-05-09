@@ -53,7 +53,7 @@ func PhysicalKeyboard(ctx context.Context, s *testing.State) {
 
 	const fieldID = "org.chromium.arc.testapp.keyboard:id/text"
 	field := d.Object(ui.ID(fieldID))
-	if err := field.WaitForExistsWithDefaultTimeout(ctx); err != nil {
+	if err := field.WaitForExists(ctx, 30*time.Second); err != nil {
 		s.Fatal("Failed to find field: ", err)
 	}
 	if err := field.Click(ctx); err != nil {
@@ -63,7 +63,7 @@ func PhysicalKeyboard(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to empty field: ", err)
 	}
 
-	if err := d.Object(ui.ID(fieldID), ui.Focused(true)).WaitForExistsWithDefaultTimeout(ctx); err != nil {
+	if err := d.Object(ui.ID(fieldID), ui.Focused(true)).WaitForExists(ctx, 30*time.Second); err != nil {
 		s.Fatal("Failed to focus on field: ", err)
 	}
 

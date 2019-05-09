@@ -71,7 +71,7 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 
 	s.Log("Setting up app's initial state")
 	field := d.Object(ui.ID(fieldID))
-	if err := field.WaitForExistsWithDefaultTimeout(ctx); err != nil {
+	if err := field.WaitForExists(ctx, 30*time.Second); err != nil {
 		s.Fatal("Failed to find field: ", err)
 	}
 	if err := field.Click(ctx); err != nil {
@@ -81,7 +81,7 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to empty field: ", err)
 	}
 
-	if err := d.Object(ui.ID(fieldID), ui.Focused(true)).WaitForExistsWithDefaultTimeout(ctx); err != nil {
+	if err := d.Object(ui.ID(fieldID), ui.Focused(true)).WaitForExists(ctx, 30*time.Second); err != nil {
 		s.Fatal("Failed to focus a text field: ", err)
 	}
 
