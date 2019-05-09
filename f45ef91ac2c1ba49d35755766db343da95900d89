@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b6dec170_c470af72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-05-09T07:15:05Z",
+      "side": 1,
+      "message": "Thanks for the info!",
+      "parentUuid": "07d802ef_638546f6",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 20
+      },
+      "revId": "f45ef91ac2c1ba49d35755766db343da95900d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f49eafb6_bfe11ac5",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_resolution_switch.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "f45ef91ac2c1ba49d35755766db343da95900d89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "320a24ec_c7510a50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_resolution_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-05-09T07:15:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f49eafb6_bfe11ac5",
+      "range": {
+        "startLine": 18,
+        "startChar": 17,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "f45ef91ac2c1ba49d35755766db343da95900d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
