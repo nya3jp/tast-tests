@@ -92,6 +92,10 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	ctx, cancel := context.WithTimeout(ctx, BootTimeout)
 	defer cancel()
 
+	if err := checkSoftwareDeps(ctx); err != nil {
+		return nil, err
+	}
+
 	if err := ensureARCEnabled(); err != nil {
 		return nil, err
 	}
@@ -169,6 +173,32 @@ func (a *ARC) WaitIntentHelper(ctx context.Context) error {
 		return errors.Wrapf(err, "property %s not set", prop)
 	}
 	return nil
+}
+
+// androidDeps contains Android-related software features (see testing.Test.SoftwareDeps).
+// At least one of them must be declared to call New.
+var androidDeps = []string{
+	"android",
+	"android_all",
+	"android_p",
+}
+
+// checkSoftwareDeps ensures the current test declares Android software dependencies.
+func checkSoftwareDeps(ctx context.Context) error {
+	deps, ok := testing.ContextSoftwareDeps(ctx)
+	if !ok {
+		// Test info can be unavailable in unit tests.
+		return nil
+	}
+
+	for _, dep := range deps {
+		for _, adep := range androidDeps {
+			if dep == adep {
+				return nil
+			}
+		}
+	}
+	return errors.Errorf("test must declare at least one of Android software dependencies %v", androidDeps)
 }
 
 // setLogcatFile creates a new logcat output file at p and opens it as a.logcatFile.
