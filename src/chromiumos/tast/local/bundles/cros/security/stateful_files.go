@@ -112,6 +112,7 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.Tree("encrypted/var/lib"), users("root"), groups("root"), chk.NotMode(022)),
 
 		chk.NewPattern(chk.Tree("encrypted/var/log/asan"), users("root"), groups("root"), chk.Mode(0777|os.ModeSticky)),
+		chk.NewPattern(chk.Tree("encrypted/var/log/chrome/Crash Reports/uploads.log"), users("root"), groups("root"), chk.Mode(0644)),
 		chk.NewPattern(chk.Tree("encrypted/var/log/chrome/Crash Reports"), users("chronos"), groups("chronos"), chk.NotMode(077)),
 		chk.NewPattern(chk.Tree("encrypted/var/log/chrome"), users("chronos"), groups("chronos"), chk.NotMode(022)),
 		chk.NewPattern(chk.Path("encrypted/var/log/emerge.log"), users("portage"), groups("portage"), chk.Mode(0660)),
