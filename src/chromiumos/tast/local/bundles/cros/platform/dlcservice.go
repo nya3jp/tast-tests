@@ -8,7 +8,6 @@ import (
 	"context"
 	"os"
 	"path/filepath"
-	"time"
 
 	"chromiumos/tast/local/bundles/cros/platform/updateserver"
 	"chromiumos/tast/local/testexec"
@@ -82,13 +81,8 @@ func DLCService(ctx context.Context, s *testing.State) {
 	}
 	defer srv.Close()
 
-	s.Logf("Restarting %s job", dlcserviceJob)
-	if err := upstart.RestartJob(ctx, dlcserviceJob); err != nil {
-		s.Fatalf("Failed to restart %s: %v", dlcserviceJob, err)
-	}
-	// Checks dlcservice exits on idle (dlcservice is a short-lived process).
-	if err := upstart.WaitForJobStatus(ctx, dlcserviceJob, upstart.StopGoal, upstart.WaitingState, upstart.TolerateWrongGoal, time.Minute); err != nil {
-		s.Fatalf("Job %s did not exit on idle: %v", dlcserviceJob, err)
+	if err := upstart.EnsureJobRunning(ctx, dlcserviceJob); err != nil {
+		s.Fatalf("Failed to ensure %s running: %v", dlcserviceJob, err)
 	}
 
 	dumpInstalledDLCModules("modules_before_install.txt")
@@ -110,9 +104,4 @@ func DLCService(ctx context.Context, s *testing.State) {
 	}
 
 	dumpInstalledDLCModules("modules_after_uninstall.txt")
-
-	// Checks dlcservice exits on idle.
-	if err := upstart.WaitForJobStatus(ctx, dlcserviceJob, upstart.StopGoal, upstart.WaitingState, upstart.TolerateWrongGoal, time.Minute); err != nil {
-		s.Fatalf("Job %s did not exit on idle: %v", dlcserviceJob, err)
-	}
 }
