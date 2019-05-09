@@ -231,6 +231,10 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		}
 	}()
 
+	if err := checkSoftwareDeps(ctx, c.loginMode != noLogin); err != nil {
+		return nil, err
+	}
+
 	// TODO(derat): Remove this if/when https://crbug.com/358427 is fixed.
 	if c.loginMode == gaiaLogin {
 		var err error
@@ -284,6 +288,31 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 
 	toClose = nil
 	return c, nil
+}
+
+// checkSoftwareDeps ensures the current test declares necessary software dependencies.
+// If login is false, the test should declare "chrome" or "chrome_login". Otherwise,
+// the test should declare "chrome_login".
+func checkSoftwareDeps(ctx context.Context, login bool) error {
+	deps, ok := testing.ContextSoftwareDeps(ctx)
+	if !ok {
+		// Test info can be unavailable in unit tests.
+		return nil
+	}
+
+	cdeps := []string{"chrome_login"}
+	if !login {
+		cdeps = append(cdeps, "chrome")
+	}
+
+	for _, dep := range deps {
+		for _, cdep := range cdeps {
+			if dep == cdep {
+				return nil
+			}
+		}
+	}
+	return errors.Errorf("test must declare chrome software dependencies %v", cdeps)
 }
 
 // Close disconnects from Chrome and cleans up standard extensions.
