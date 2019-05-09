@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "87c76af8_abbc89cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-05-09T06:42:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7613084_f87a389f",
+      "revId": "d0281e818f9598122cc2d1a136760b4715230a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d29470b_46245214",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 4
@@ -66,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "40eed78d_8be648bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-05-09T06:42:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "870bad42_749e9d68",
+      "range": {
+        "startLine": 137,
+        "startChar": 36,
+        "endLine": 137,
+        "endChar": 46
+      },
+      "revId": "d0281e818f9598122cc2d1a136760b4715230a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "891e6b19_8cb24c8f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 4
@@ -77,6 +119,24 @@
       "writtenOn": "2019-05-09T03:02:14Z",
       "side": 1,
       "message": "Add TODO to remove this code.",
+      "revId": "d0281e818f9598122cc2d1a136760b4715230a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33ab9d4c_284a1f03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-05-09T06:42:47Z",
+      "side": 1,
+      "message": "But I\u0027m thinking that since we already have TODO in line#268 to replace vda unittest by RunAccelVideoTestNew, this func actually will be totally removed then. We may not need a specific TODO to remove this part.",
+      "parentUuid": "891e6b19_8cb24c8f",
       "revId": "d0281e818f9598122cc2d1a136760b4715230a69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
