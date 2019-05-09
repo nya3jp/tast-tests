@@ -62,12 +62,6 @@ func (o *Object) WaitForExists(ctx context.Context, timeout time.Duration) error
 	return o.callSimple(ctx, "waitForExists", o.s, timeout/time.Millisecond)
 }
 
-// WaitForExistsWithDefaultTimeout is same as WaitForExists, but waits until ctx expires.
-// See WaitForExists.
-func (o *Object) WaitForExistsWithDefaultTimeout(ctx context.Context) error {
-	return o.callSimple(ctx, "waitForExists", o.s, 24*time.Hour /* long enough timeout */)
-}
-
 // WaitUntilGone waits for a view matching the selector to disappear.
 //
 // This method corresponds to UiObject.waitUntilGone().

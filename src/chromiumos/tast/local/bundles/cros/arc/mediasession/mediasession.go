@@ -9,6 +9,7 @@ import (
 	"context"
 	"net/http"
 	"net/http/httptest"
+	"time"
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
@@ -59,7 +60,7 @@ func SwitchToTestApp(ctx context.Context, a *arc.ARC) error {
 
 // WaitForAndroidAudioFocusGain waits for the test app to gain a certain audio focus type and display that it is successful.
 func WaitForAndroidAudioFocusGain(ctx context.Context, d *ui.Device, focusType AudioFocusType) error {
-	if err := d.Object(ui.ID(testResultID), ui.Text(audioFocusSuccess)).WaitForExistsWithDefaultTimeout(ctx); err != nil {
+	if err := d.Object(ui.ID(testResultID), ui.Text(audioFocusSuccess)).WaitForExists(ctx, 30*time.Second); err != nil {
 		return err
 	}
 
@@ -68,7 +69,7 @@ func WaitForAndroidAudioFocusGain(ctx context.Context, d *ui.Device, focusType A
 
 // WaitForAndroidAudioFocusChange waits for the test app to display that its audio focus type changed.
 func WaitForAndroidAudioFocusChange(ctx context.Context, d *ui.Device, focusType AudioFocusType) error {
-	return d.Object(ui.ID(currentFocusID), ui.Text(string(focusType))).WaitForExistsWithDefaultTimeout(ctx)
+	return d.Object(ui.ID(currentFocusID), ui.Text(string(focusType))).WaitForExists(ctx, 30*time.Second)
 }
 
 // AbandonAudioFocusInAndroid tells the test app to abandon audio focus.
@@ -109,11 +110,11 @@ func RunTest(ctx context.Context, s *testing.State, f TestFunc) {
 
 	s.Log("Waiting for the default entries to show up")
 
-	if err := d.Object(ui.ID(testResultID)).WaitForExistsWithDefaultTimeout(ctx); err != nil {
+	if err := d.Object(ui.ID(testResultID)).WaitForExists(ctx, 30*time.Second); err != nil {
 		s.Fatal("Failed to wait for test result text box to appear: ", err)
 	}
 
-	if err := d.Object(ui.ID(currentFocusID)).WaitForExistsWithDefaultTimeout(ctx); err != nil {
+	if err := d.Object(ui.ID(currentFocusID)).WaitForExists(ctx, 30*time.Second); err != nil {
 		s.Fatal("Failed to wait for current focus text box to appear: ", err)
 	}
 

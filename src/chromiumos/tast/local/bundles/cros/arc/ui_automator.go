@@ -77,7 +77,7 @@ func UIAutomator(ctx context.Context, s *testing.State) {
 	input := d.Object(ui.ID(titleInputID))
 
 	// Wait until the resource exists.
-	must(input.WaitForExistsWithDefaultTimeout(ctx))
+	must(input.WaitForExists(ctx, 30*time.Second))
 	must(input.SetText(ctx, customTitle))
 	must(d.Object(ui.ID(doneButtonID)).Click(ctx))
 
@@ -85,7 +85,7 @@ func UIAutomator(ctx context.Context, s *testing.State) {
 	must(d.Object(ui.ID(doneButtonID)).WaitUntilGone(ctx, 5*time.Second))
 
 	// Wait for our new entry to show up.
-	must(d.Object(ui.ID(titleID), ui.Text(customTitle)).WaitForExistsWithDefaultTimeout(ctx))
+	must(d.Object(ui.ID(titleID), ui.Text(customTitle)).WaitForExists(ctx, 30*time.Second))
 
 	// Returns UI Device info like bounds, orientation, current activity and more.
 	info, err := d.GetInfo(ctx)
