@@ -158,6 +158,24 @@
       "revId": "d0281e818f9598122cc2d1a136760b4715230a69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9f9ed2e_9cc0262c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-05-09T23:40:41Z",
+      "side": 1,
+      "message": "You\u0027re absolutely right, thanks!",
+      "parentUuid": "98aeeaf4_52613e83",
+      "revId": "d0281e818f9598122cc2d1a136760b4715230a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

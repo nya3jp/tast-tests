@@ -16,6 +16,24 @@
       "revId": "75fdceff02a904e388d25e140dd2a68120c939f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ce7cf8b_05de29cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-05-09T23:40:41Z",
+      "side": 1,
+      "message": "Didn\u0027t know the ARC test requires an md5 file. Ideally the test should be adapted to read the json file directly. But as an intermediary step we can move all metadata-parsing-related code to the ARC Tast test once video_decode_accelerator_unittest is deprecated.\n\nSo I suggest we keep this TODO, but change it to something like:\nMove all metadata parsing code into the ARC Tast test once the video_decode_accelerator_unittest is deprecated. The new video_decode_accelerator_tests use the metadata file directly.",
+      "parentUuid": "1a56b0da_26be5872",
+      "revId": "75fdceff02a904e388d25e140dd2a68120c939f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
