@@ -140,6 +140,24 @@
       "revId": "d0281e818f9598122cc2d1a136760b4715230a69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98aeeaf4_52613e83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-09T06:50:09Z",
+      "side": 1,
+      "message": "I agree with Johny. When we deprecate the old VDA unittest, we will remove not only this part but also all relevant code.",
+      "parentUuid": "33ab9d4c_284a1f03",
+      "revId": "d0281e818f9598122cc2d1a136760b4715230a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

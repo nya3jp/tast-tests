@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a56b0da_26be5872",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-09T06:50:09Z",
+      "side": 1,
+      "message": "I don\u0027t think this TODO is needed because this field is also used for ARC tests in the next CL.",
+      "revId": "75fdceff02a904e388d25e140dd2a68120c939f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
