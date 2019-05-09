@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "838f1cd7_d9bf3877",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-09T14:06:36Z",
+      "side": 1,
+      "message": "nit: exercises?",
+      "range": {
+        "startLine": 9,
+        "startChar": 10,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "b49f96398a940270765bf959ceab4c3b89e9643d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b5d0bd8_d777ae0c",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-09T14:06:36Z",
+      "side": 1,
+      "message": "nit: mind adding a brief comment, like \"Android-related software features (see testing.Test.SoftwareDeps), at least one of which must be declared to call New.\"?",
+      "revId": "b49f96398a940270765bf959ceab4c3b89e9643d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f09b66cc_26310f6a",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-09T14:06:36Z",
+      "side": 1,
+      "message": "nit: maybe \"test must declare at least one of Android ...\"?",
+      "revId": "b49f96398a940270765bf959ceab4c3b89e9643d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cedf9062_cbc32f8a",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-09T14:06:36Z",
+      "side": 1,
+      "message": "nit: \"at least one of\" here too?",
+      "revId": "b49f96398a940270765bf959ceab4c3b89e9643d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
