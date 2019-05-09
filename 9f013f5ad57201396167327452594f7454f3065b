@@ -82,6 +82,52 @@
     },
     {
       "key": {
+        "uuid": "d1e2466c_60a5ba1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-09T00:45:28Z",
+      "side": 1,
+      "message": "nit: We usually omit quotes for object literal keys (except for dict-like objects).\n\n {mimeType: mimeType}\n\nOptionally you can use ES6 notation:\n\n {mimeType}",
+      "range": {
+        "startLine": 81,
+        "startChar": 47,
+        "endLine": 81,
+        "endChar": 69
+      },
+      "revId": "9f013f5ad57201396167327452594f7454f3065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44d86315_3c5e600f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-09T00:45:28Z",
+      "side": 1,
+      "message": "Please prefer !\u003d\u003d (but this code will be deleted after addressing Keiichi\u0027s comment).",
+      "range": {
+        "startLine": 83,
+        "startChar": 14,
+        "endLine": 83,
+        "endChar": 16
+      },
+      "revId": "9f013f5ad57201396167327452594f7454f3065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "02532487_3f88c740",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
         "patchSetId": 8
@@ -98,6 +144,144 @@
         "startChar": 29,
         "endLine": 98,
         "endChar": 36
+      },
+      "revId": "9f013f5ad57201396167327452594f7454f3065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c76cfa8d_edcb36ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-09T00:45:28Z",
+      "side": 1,
+      "message": "This (and createAndStartMediaRecorder) looks like a synchronous function. But I guess \"new MediaRecoder\" may throw exceptions and the promise will be rejected? If that\u0027s the case, would you mind adding a comment describing it?",
+      "range": {
+        "startLine": 98,
+        "startChar": 9,
+        "endLine": 98,
+        "endChar": 28
+      },
+      "revId": "9f013f5ad57201396167327452594f7454f3065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0ae16df_1f77f501",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-09T00:45:28Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 100,
+        "startChar": 48,
+        "endLine": 100,
+        "endChar": 68
+      },
+      "revId": "9f013f5ad57201396167327452594f7454f3065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c5532ac_029b7879",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-09T00:45:28Z",
+      "side": 1,
+      "message": "Completely optional: Since we always run these tests with latest Chrome, we can use async/await here, which will greatly simplify these asynchronous code. For example:\n\n async function testStartAndRecorderState() {\n   const stream \u003d await navigator.mediaDevices.getUserMedia(DEFAULT_CONSTRAINTS);\n   const recoder \u003d await createMediaRecorder(stream, DEFAULT_RECORDER_MIME_TYPE);\n   ...\n }",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 38
+      },
+      "revId": "9f013f5ad57201396167327452594f7454f3065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "163f3507_a275912e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-09T00:45:28Z",
+      "side": 1,
+      "message": "I\u0027m afraid the exception thrown here is not handled by anyone since this is inside a callback function. It will make the test hang forever.",
+      "range": {
+        "startLine": 119,
+        "startChar": 10,
+        "endLine": 119,
+        "endChar": 52
+      },
+      "revId": "9f013f5ad57201396167327452594f7454f3065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4429dfd_04995e54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-09T00:45:28Z",
+      "side": 1,
+      "message": "Since the former lambda doesn\u0027t return promises, we can merge these two lambdas. And then we can put startEventReceived in the inner scope.\n\n .then(recorder) \u003d\u003e {\n   let startEventReceived \u003d false;\n   recorder.onstart \u003d ...;\n   recorder.start(1);\n   return waitFor(...);\n })\n\nSame comment goes for other test cases.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 19
+      },
+      "revId": "9f013f5ad57201396167327452594f7454f3065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b470bee1_9cbe6e4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-09T00:45:28Z",
+      "side": 1,
+      "message": "This can be simply written as:\n\n () \u003d\u003e startEventReceived\n\nSame below.",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 15
       },
       "revId": "9f013f5ad57201396167327452594f7454f3065b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -122,6 +306,24 @@
     },
     {
       "key": {
+        "uuid": "e73bb16f_ebca1be8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-09T00:45:28Z",
+      "side": 1,
+      "message": "+1. Could you try just removing this check, and see if it fails?",
+      "parentUuid": "c592b7fa_21b6123d",
+      "revId": "9f013f5ad57201396167327452594f7454f3065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "183ad70b_cd77ff33",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
         "patchSetId": 8
@@ -139,6 +341,29 @@
     },
     {
       "key": {
+        "uuid": "dfc4c808_b334812f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_media_recorder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-09T00:45:28Z",
+      "side": 1,
+      "message": "nit: Could you join this two-line comment into one line? This style of inline comments looks a bit unusual. Fortunately, Go code doesn\u0027t have strict column limit.\n\nIf it gets too long, I instead recommend prepending comments, that is:\n\n // This is too long comment\n // spanning multiple lines.\n \"--use-fake-device-for-media-stream\",",
+      "range": {
+        "startLine": 38,
+        "startChar": 40,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "9f013f5ad57201396167327452594f7454f3065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6ca5ae37_4d8d2a24",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_media_recorder.go",
         "patchSetId": 8
@@ -150,6 +375,47 @@
       "writtenOn": "2019-05-08T12:07:52Z",
       "side": 1,
       "message": "We can use document.readyState here instead of declaring |pageLoaded| by ourselves.\nhttps://developer.mozilla.org/en-US/docs/Web/API/Document/readyState#readystatechange_as_an_alternative_to_load_event\n\nif err :\u003d conn.WaitForExpr(ctx, \"document.readyState \u003d\u003d\u003d \u0027complete\u0027\"); err !\u003d nil {\n\treturn errors.Wrap(err, \"timed out waiting for page loaded\")\n}",
+      "revId": "9f013f5ad57201396167327452594f7454f3065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1b7b530_ef572bba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_media_recorder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-09T00:45:28Z",
+      "side": 1,
+      "message": "Good point, that way would be simpler.",
+      "parentUuid": "6ca5ae37_4d8d2a24",
+      "revId": "9f013f5ad57201396167327452594f7454f3065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "367f7ec1_9ef7faf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_media_recorder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-09T00:45:28Z",
+      "side": 1,
+      "message": "For asynchronous calls, we usually use conn.EvalPromise instead of conn.Eval + conn.WaitExpr. Could you try to use that way?\n\nIn such design, I would expect test functions to return a promise that resolves on success and rejects with error messages on failures. It should be easy since test functions are already using promises.",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 0
+      },
       "revId": "9f013f5ad57201396167327452594f7454f3065b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
