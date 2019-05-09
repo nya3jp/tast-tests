@@ -84,7 +84,9 @@ func Keyboard(ctx context.Context, s *testing.State) {
 	// Maybe there's a small delay within Blink between document.activeElement being updated and keyboard
 	// events actually being directed to the element.
 	if err := waitForStringExpr(valueExpr, inputText); err != nil {
-		s.Error("Failed to get input text (this can be flaky): ", err)
+		// Stop test here for getting screenshot of this wrong state.
+		// TODO(yamaguchi): Change back to Error() once the flakiness is fixed.
+		s.Fatal("Failed to get input text (this can be flaky): ", err)
 	}
 
 	const (
