@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "785431de_4430ce3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-05-09T23:42:25Z",
+      "side": 1,
+      "message": "Maybe we should leave a TODO here, to adapt the arc decoder test to use the json file directly?",
+      "revId": "d030bcebca23bb1e8323276bd02358da23e5bc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
