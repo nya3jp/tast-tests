@@ -17,7 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     MediaRecorderPerfH264,
 		Desc:     "Captures performance data about MediaRecorder for SW and HW with H.264",
-		Contacts: []string{"shenghao@chromium.org", "chromeos-video-eng@google.com"},
+		Contacts: []string{"shenghao@chromium.org", "hiroh@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:     []string{"group:crosbolt", "crosbolt_perbuild"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{"chrome_login", "chrome_internal"},
