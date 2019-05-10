@@ -17,7 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         EncodeAccelH264NV12,
 		Desc:         "Run Chrome video_encode_accelerator_unittest from NV12 raw frames to H264 stream",
-		Contacts:     []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
+		Contacts:     []string{"akahuang@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeH264},
 		Data:         []string{encode.Bear192P.Name},

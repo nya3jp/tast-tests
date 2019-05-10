@@ -17,7 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     MediaRecorderEncodeAccelUsedH264,
 		Desc:     "Checks H.264 video encode acceleration is used in MediaRecorder",
-		Contacts: []string{"shenghao@chromium.org", "chromeos-video-eng@google.com"},
+		Contacts: []string{"shenghao@chromium.org", "hiroh@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:     []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{"chrome_login", "chrome_internal", caps.HWEncodeH264},

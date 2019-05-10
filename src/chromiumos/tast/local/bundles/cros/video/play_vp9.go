@@ -17,7 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PlayVP9,
 		Desc:         "Checks VP9 video playback is working",
-		Contacts:     []string{"keiichiw@chromium.org", "chromeos-video-eng@google.com"},
+		Contacts:     []string{"deanliao@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login"},
 		Pre:          pre.ChromeVideo(),

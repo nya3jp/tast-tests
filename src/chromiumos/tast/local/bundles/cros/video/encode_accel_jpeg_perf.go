@@ -26,7 +26,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         EncodeAccelJPEGPerf,
 		Desc:         "Measures jpeg_encode_accelerator_unittest performance",
-		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
+		Contacts:     []string{"shenghao@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeJPEG},
 		Data:         []string{"lake_4160x3120_P420.yuv"},

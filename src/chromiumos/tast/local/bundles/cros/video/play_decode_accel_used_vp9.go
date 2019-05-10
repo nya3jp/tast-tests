@@ -18,7 +18,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PlayDecodeAccelUsedVP9,
 		Desc:         "Verifies that VP9 video decode acceleration works in Chrome",
-		Contacts:     []string{"keiichiw@chromium.org", "chromeos-video-eng@google.com"},
+		Contacts:     []string{"deanliao@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWDecodeVP9, "chrome_login"},
 		Pre:          pre.ChromeVideo(),

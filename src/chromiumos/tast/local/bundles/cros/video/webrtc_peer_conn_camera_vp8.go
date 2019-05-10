@@ -19,9 +19,13 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WebRTCPeerConnCameraVP8,
-		Desc:         "Verifies that WebRTC loopback works (VP8)",
-		Contacts:     []string{"keiichiw@chromium.org", "chromeos-video-eng@google.com"},
+		Func: WebRTCPeerConnCameraVP8,
+		Desc: "Verifies that WebRTC loopback works (VP8)",
+		Contacts: []string{
+			"keiichiw@chromium.org", // Video team
+			"shik@chromium.org",     // Camera team
+			"chromeos-video-eng@google.com",
+		},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome_login"},
 		Pre:          pre.ChromeVideo(),
