@@ -262,12 +262,8 @@ func activateTab(ctx context.Context, cr *chrome.Chrome, tabID int, r *renderer)
 	defer cancel()
 
 	if err := execPromiseBody(waitCtx, r.conn, promiseBody); err != nil {
-		// Don't error out if the error is a timeout and the tab was
-		// discarded, because we blame the timeout to the discard,
-		// which is not an error.
-		if ctx.Err() != context.DeadlineExceeded {
-			return 0, err
-		}
+		// Check if the tab was discarded, and if so blame the error on
+		// the discard and ignore it.
 		discarded, innerErr := tabIsDiscarded(ctx, cr, tabID)
 		if innerErr != nil {
 			return 0, errors.Wrap(innerErr, "failed to verify discard status")
