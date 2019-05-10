@@ -54,11 +54,11 @@ type fioJob struct {
 
 var (
 	fioJobs = []fioJob{
-		{"disk_io_perf_fio_seq_write.ini", "seq_write", reportWrite},
-		{"disk_io_perf_fio_seq_read.ini", "seq_read", reportRead},
-		{"disk_io_perf_fio_rand_write.ini", "rand_write", reportWrite},
-		{"disk_io_perf_fio_rand_read.ini", "rand_read", reportRead},
-		{"disk_io_perf_fio_stress_rw.ini", "stress_rw", reportWrite | reportRead},
+		{"crostini_disk_io_perf_fio_seq_write.ini", "seq_write", reportWrite},
+		{"crostini_disk_io_perf_fio_seq_read.ini", "seq_read", reportRead},
+		{"crostini_disk_io_perf_fio_rand_write.ini", "rand_write", reportWrite},
+		{"crostini_disk_io_perf_fio_rand_read.ini", "rand_read", reportRead},
+		{"crostini_disk_io_perf_fio_stress_rw.ini", "stress_rw", reportWrite | reportRead},
 	}
 )
 

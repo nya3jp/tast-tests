@@ -24,7 +24,7 @@ func init() {
 		Desc:         "Tests Termina VM startup, container startup and other Crostini functionality",
 		Contacts:     []string{"jkardatzke@chromium.org", "smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"informational"},
-		Data:         []string{"cros-tast-tests-deb.deb"},
+		Data:         []string{"crostini_start_everything_cros-tast-tests-deb.deb"},
 		Timeout:      10 * time.Minute,
 		SoftwareDeps: []string{"chrome_login", "vm_host"},
 	})
@@ -140,7 +140,7 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 
 	// Copy a test Debian package file to the container which will be used by
 	// subsequent tests.
-	const debianFilename = "cros-tast-tests-deb.deb"
+	const debianFilename = "crostini_start_everything_cros-tast-tests-deb.deb"
 	containerDebPath := filepath.Join("/home/testuser", debianFilename)
 	err = cont.PushFile(subtestCtx, s.DataPath(debianFilename), containerDebPath)
 	if err != nil {
