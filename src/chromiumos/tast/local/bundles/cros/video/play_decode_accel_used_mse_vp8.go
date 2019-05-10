@@ -18,7 +18,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PlayDecodeAccelUsedMSEVP8,
 		Desc:         "Verifies that VP8 video decode acceleration works when MSE is used",
-		Contacts:     []string{"keiichiw@chromium.org", "chromeos-video-eng@google.com"},
+		Contacts:     []string{"deanliao@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWDecodeVP8, "chrome_login"},
 		Pre:          pre.ChromeVideo(),

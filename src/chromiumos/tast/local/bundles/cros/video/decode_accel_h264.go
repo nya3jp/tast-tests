@@ -18,7 +18,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DecodeAccelH264,
 		Desc:         "Run Chrome video_decode_accelerator_unittest with an H.264 video",
-		Contacts:     []string{"keiichiw@chromium.org", "chromeos-video-eng@google.com"},
+		Contacts:     []string{"acourbot@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		SoftwareDeps: []string{"chrome", caps.HWDecodeH264},
 		Data:         decode.DataFiles(videotype.H264Prof, decode.AllocateBuffer),
 		Timeout:      4 * time.Minute,
