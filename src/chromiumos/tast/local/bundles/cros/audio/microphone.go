@@ -77,7 +77,11 @@ func Microphone(ctx context.Context, s *testing.State) {
 	}
 
 	if err := audio.WaitForDevice(ctx, audio.InputStream); err != nil {
-		s.Fatal("Failed to wait for input stream: ", err)
+		s.Log("Failed to wait for input stream: ", err)
+		s.Log("Try to set internal mic active instead")
+		if err := audio.SetActiveNodeByType(ctx, "INTERNAL_MIC"); err != nil {
+			s.Fatal("Failed to set internal mic active: ", err)
+		}
 	}
 	// Select input device.
 	var inputDev string
