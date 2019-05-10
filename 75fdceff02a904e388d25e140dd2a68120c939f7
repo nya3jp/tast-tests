@@ -34,6 +34,24 @@
       "revId": "75fdceff02a904e388d25e140dd2a68120c939f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a45014ff_45b72dd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-05-10T01:31:24Z",
+      "side": 1,
+      "message": "David\u0027s suggestion sounds good to me",
+      "parentUuid": "0ce7cf8b_05de29cf",
+      "revId": "75fdceff02a904e388d25e140dd2a68120c939f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
