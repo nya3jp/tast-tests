@@ -66,6 +66,8 @@ func NewCras(ctx context.Context) (*Cras, error) {
 // Please find src/third_party/adhd/cras/README.dbus-api for the meaning of
 // each fields.
 type CrasNode struct {
+	ID         uint64
+	Type       string
 	Active     bool
 	IsInput    bool
 	DeviceName string
@@ -88,6 +90,16 @@ func (c *Cras) GetNodes(ctx context.Context) ([]CrasNode, error) {
 	nodes := make([]CrasNode, len(call.Body))
 	for i, n := range call.Body {
 		mp := n.(map[string]dbus.Variant)
+		if id, ok := mp["Id"]; !ok {
+			return nil, errors.Errorf("'Id' not found: %v", mp)
+		} else if nodes[i].ID, ok = id.Value().(uint64); !ok {
+			return nil, errors.Errorf("'Id' is not uint64: %v", mp)
+		}
+		if nodeType, ok := mp["Type"]; !ok {
+			return nil, errors.Errorf("'Type' not found: %v", mp)
+		} else if nodes[i].Type, ok = nodeType.Value().(string); !ok {
+			return nil, errors.Errorf("'Type' is not string: %v", mp)
+		}
 		if active, ok := mp["Active"]; !ok {
 			return nil, errors.Errorf("'Active' not found: %v", mp)
 		} else if nodes[i].Active, ok = active.Value().(bool); !ok {
@@ -115,6 +127,35 @@ func (c *Cras) GetNodes(ctx context.Context) ([]CrasNode, error) {
 // call is a wrapper around CallWithContext for convenience.
 func (c *Cras) call(ctx context.Context, method string, args ...interface{}) *dbus.Call {
 	return c.obj.CallWithContext(ctx, dbusInterface+"."+method, 0, args...)
+}
+
+// SetActiveNode calls cras.Control.SetActiveInput(Output)Node over D-Bus.
+func (c *Cras) SetActiveNode(ctx context.Context, node CrasNode) error {
+	cmd := "SetActiveOutputNode"
+	if node.IsInput {
+		cmd = "SetActiveInputNode"
+	}
+	call := c.call(ctx, cmd, node.ID)
+	return call.Err
+}
+
+// SetActiveNodeByType sets node with specified type active.
+func SetActiveNodeByType(ctx context.Context, nodeType string) error {
+	cras, err := NewCras(ctx)
+	if err != nil {
+		return err
+	}
+	crasNodes, err := cras.GetNodes(ctx)
+	if err != nil {
+		return err
+	}
+
+	for _, n := range crasNodes {
+		if n.Type == nodeType {
+			return cras.SetActiveNode(ctx, n)
+		}
+	}
+	return errors.Errorf("node(s) %+v not contain requested type", crasNodes)
 }
 
 // WaitForDevice waits for specified types of stream nodes to be active.
