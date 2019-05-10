@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5b89ecca_5a89f2d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-05-10T06:21:09Z",
+      "side": 1,
+      "message": "Agreed! Changed to your suggestions. Thanks!",
+      "parentUuid": "59a4cb83_b47aba87",
+      "revId": "6670371ff16bd0c8c7426871169d3923458e1755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d18e728_d4d82e4f",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "6670371ff16bd0c8c7426871169d3923458e1755",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a70318ef_0c7c978e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-05-10T06:21:09Z",
+      "side": 1,
+      "message": "I had my doubts about it as well. I thought there probably was a reason other tests just repeat the package names (e.g., all the IDs in arc.UIAutomator test).",
+      "parentUuid": "4d18e728_d4d82e4f",
+      "range": {
+        "startLine": 178,
+        "startChar": 25,
+        "endLine": 178,
+        "endChar": 62
+      },
+      "revId": "6670371ff16bd0c8c7426871169d3923458e1755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "c922056a_1795f60a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_still_capture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-05-10T06:21:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ceb8de8_6c487d3e",
+      "range": {
+        "startLine": 47,
+        "startChar": 32,
+        "endLine": 47,
+        "endChar": 65
+      },
+      "revId": "6670371ff16bd0c8c7426871169d3923458e1755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f8c3be0_e595adc3",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_still_capture.go",
         "patchSetId": 1
@@ -79,6 +145,24 @@
       "revId": "6670371ff16bd0c8c7426871169d3923458e1755",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "035f23cc_b0973f91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca_still_capture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-05-10T06:21:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f8c3be0_e595adc3",
+      "revId": "6670371ff16bd0c8c7426871169d3923458e1755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
