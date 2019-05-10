@@ -24,7 +24,6 @@ func init() {
 			"pmoy@chromium.org",   // telem tool author
 		},
 		SoftwareDeps: []string{"diagnostics"},
-		Attr:         []string{"informational"},
 	})
 }
 
