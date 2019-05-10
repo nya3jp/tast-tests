@@ -18,7 +18,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     PlayDecodeAccelUsedMSEH264,
 		Desc:     "Verifies that H264 video decode acceleration works when MSE is used",
-		Contacts: []string{"keiichiw@chromium.org", "chromeos-video-eng@google.com"},
+		Contacts: []string{"deanliao@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:     []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{caps.HWDecodeH264, "chrome_login", "chrome_internal"},
