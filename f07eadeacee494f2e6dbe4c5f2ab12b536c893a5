@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cdb12175_19b76a78",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-10T14:23:58Z",
+      "side": 1,
+      "message": "nit: maybe just \"return c.call(...).Err\"?",
+      "revId": "f07eadeacee494f2e6dbe4c5f2ab12b536c893a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
