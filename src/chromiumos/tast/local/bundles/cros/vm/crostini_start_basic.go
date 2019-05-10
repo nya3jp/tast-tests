@@ -20,7 +20,7 @@ func init() {
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"informational"},
 		Timeout:      5 * time.Minute,
-		Data:         []string{"guest_images.tar"},
+		Data:         []string{"crostini_start_basic_guest_images.tar"},
 		SoftwareDeps: []string{"chrome_login", "vm_host"},
 	})
 }
@@ -42,7 +42,7 @@ func CrostiniStartBasic(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Setting up component")
-	artifactPath := s.DataPath("guest_images.tar")
+	artifactPath := s.DataPath("crostini_start_baseic_guest_images.tar")
 	if err := vm.MountArtifactComponent(ctx, artifactPath); err != nil {
 		s.Fatal("Failed to set up component: ", err)
 	}
