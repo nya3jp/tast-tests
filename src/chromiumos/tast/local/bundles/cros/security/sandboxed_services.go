@@ -19,6 +19,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/asan"
+	"chromiumos/tast/local/moblab"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -222,6 +223,10 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		truncateProcName("arc-setup"):          {}, // runs patchoat and other Android programs
 		truncateProcName("cros_installer"):     {}, // runs during system updates
 		truncateProcName("python2.7"):          {}, // stale Autotest processes: https://crbug.com/936703#c39
+		truncateProcName("dev_debug_vboot"):    {}, // executed by chromeos-setgoodkernel: https://crbug.com/962134
+	}
+	if moblab.IsMoblab() {
+		ignoredAncestorNames[truncateProcName("apache2")] = struct{}{} // serves UI and runs other procs: https://crbug.com/962137
 	}
 
 	baselineMap := make(map[string][]*procReqs, len(baseline))
