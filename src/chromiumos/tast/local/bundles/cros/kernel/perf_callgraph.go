@@ -25,7 +25,6 @@ func init() {
 		// Call stacks can't currently be unwound on ARM due to the
 		// Thumb and ARM ISAs using different registers for the frame pointer.
 		SoftwareDeps: []string{"amd64"},
-		Attr:         []string{"informational"},
 	})
 }
 
