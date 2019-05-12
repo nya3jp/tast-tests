@@ -26,23 +26,37 @@ func init() {
 }
 
 func RunTests(ctx context.Context, s *testing.State) {
+	resultsDir := filepath.Join(s.OutDir(), "subtest_results")
+	const (
+		localVarValue  = "a_local_var"
+		remoteVarValue = "a_remote_var"
+	)
+	flags := []string{
+		"-build=false",
+		"-resultsdir=" + resultsDir,
+		"-var=meta.LocalVars.var=" + localVarValue,
+		"-var=meta.RemoteVars.var=" + remoteVarValue,
+	}
 	// This test executes tast with -build=false to run already-installed copies of these helper tests.
 	// If it is run manually with "tast run -build=true", the tast-remote-tests-cros package should be
 	// built for the host and tast-local-tests-cros should be deployed to the DUT first.
 	testNames := []string{
 		"meta.LocalFiles",
 		"meta.LocalPanic",
+		"meta.LocalVars",
 		"meta.RemoteFiles",
+		"meta.RemoteVars",
 	}
-	resultsDir := filepath.Join(s.OutDir(), "subtest_results")
-	stdout, _, err := tastrun.Run(ctx, s, "run", []string{"-build=false", "-resultsdir=" + resultsDir}, testNames)
+	stdout, _, err := tastrun.Run(ctx, s, "run", flags, testNames)
 	if err != nil {
 		lines := strings.Split(strings.TrimSpace(string(stdout)), "\n")
 		s.Fatalf("Failed to run tast: %v (last line: %q)", err, lines[len(lines)-1])
 	}
 
 	// These are subsets of the testing.Error and TestResult structs.
-	type testError struct{}
+	type testError struct {
+		Reason string `json:"reason"`
+	}
 	type testResult struct {
 		Name   string      `json:"name"`
 		Errors []testError `json:"errors"`
@@ -59,19 +73,23 @@ func RunTests(ctx context.Context, s *testing.State) {
 	}
 	expResults := []testResult{
 		testResult{"meta.LocalFiles", nil},
-		testResult{"meta.LocalPanic", []testError{testError{}}},
+		testResult{"meta.LocalPanic", []testError{testError{"Panic: intentionally panicking"}}},
+		testResult{"meta.LocalVars", nil},
 		testResult{"meta.RemoteFiles", nil},
+		testResult{"meta.RemoteVars", nil},
 	}
 	if !reflect.DeepEqual(results, expResults) {
 		s.Errorf("Got results %+v; want %+v", results, expResults)
 	}
 
-	// LocalFiles and RemoteFiles copy their data files to the output directory.
+	// Some tests copy their data files to the output directory.
 	// These filenames and corresponding contents are hardcoded in the tests.
 	for p, v := range map[string]string{
 		"meta.LocalFiles/local_files_internal.txt": "This is an internal data file.\n",
 		"meta.LocalFiles/local_files_external.txt": "This is an external data file.\n",
+		"meta.LocalVars/var.txt":                   localVarValue,
 		"meta.RemoteFiles/remote_files_data.txt":   "This is a data file for a remote test.\n",
+		"meta.RemoteVars/var.txt":                  remoteVarValue,
 	} {
 		p = filepath.Join(resultsDir, "tests", p)
 		if b, err := ioutil.ReadFile(p); err != nil {
