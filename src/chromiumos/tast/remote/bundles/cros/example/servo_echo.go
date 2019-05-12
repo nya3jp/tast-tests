@@ -7,6 +7,7 @@ package example
 import (
 	"context"
 
+	"chromiumos/tast/dut"
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/testing"
 )
@@ -17,22 +18,30 @@ func init() {
 		Desc:     "Demonstrates running a test using Servo",
 		Contacts: []string{"jeffcarp@chromium.org", "derat@chromium.org", "tast-users@chromium.org"},
 		Attr:     []string{"disabled", "informational"},
+		Vars:     []string{"servo"},
 	})
 }
 
 // ServoEcho demonstrates how you'd use Servo in a Tast test using the echo method.
 func ServoEcho(ctx context.Context, s *testing.State) {
-	// TODO(jeffcarp): Parameterize servod host and port.
-	const msg = "hello from servo"
-	svo, err := servo.Default(ctx)
-	if err != nil {
-		s.Fatal("Servo init error: ", err)
+	dut, ok := dut.FromContext(ctx)
+	if !ok {
+		s.Fatal("Failed to get DUT")
 	}
 
-	actualMessage, err := svo.Echo(ctx, "hello from servo")
+	pxy, err := servo.NewProxy(ctx, s.RequiredVar("servo"), dut.KeyFile(), dut.KeyDir())
+	if err != nil {
+		s.Log("Failed to connect to servo: ", err)
+	}
+	defer pxy.Close(ctx)
+
+	const msg = "hello from servo"
+	s.Logf("Sending echo request for %q", msg)
+	actualMessage, err := pxy.Servo().Echo(ctx, msg)
 	if err != nil {
 		s.Fatal("Got error: ", err)
 	}
+	s.Logf("Got response %q", actualMessage)
 	const expectedMessage = "ECH0ING: " + msg
 	if actualMessage != expectedMessage {
 		s.Fatalf("Got message %q; expected %q", actualMessage, expectedMessage)
