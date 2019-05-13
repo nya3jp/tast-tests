@@ -45,6 +45,12 @@ func Touch(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("No display: ", err)
 	}
+	if !info.HasTouchSupport {
+		// TODO(crbug.com/944621): Execute this test only on devices which has a
+		// touchscreen, and remove this workaround.
+		s.Log("The display doesn't have associated touchscreen device. The test should not be run on this device. Treated as passed, as an workaround for crbug.com/944621")
+		return
+	}
 
 	// TODO(ricardoq): This page might change/break in the future. If so, a built-in
 	// HTML page that accepts drawing should be used. Additionally, Kleki seems to ignore
