@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "dc41ec59_286f2810",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-13T11:04:24Z",
+      "side": 1,
+      "message": "Thank you for the explanation. Your idea makes sense and I have no strong opinion.\nSo, let\u0027s keep this as is.",
+      "parentUuid": "9eb18688_b6788252",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 15
+      },
+      "revId": "53db15d7eb0f706095d41767b89180eb58c0afdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c2ba963_a8e6d09d",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 3
@@ -128,6 +152,30 @@
       "revId": "53db15d7eb0f706095d41767b89180eb58c0afdb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6aa5afbd_7ffa1e95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-13T11:04:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e5c1e27b_b6bab4fe",
+      "range": {
+        "startLine": 177,
+        "startChar": 2,
+        "endLine": 177,
+        "endChar": 25
+      },
+      "revId": "53db15d7eb0f706095d41767b89180eb58c0afdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
