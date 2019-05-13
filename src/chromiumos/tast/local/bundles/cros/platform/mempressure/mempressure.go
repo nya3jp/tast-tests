@@ -463,8 +463,8 @@ func (rset *rendererSet) add(id int, r *renderer) {
 
 // waitForTCPSocket tries to connect to socket, which is a string in the form
 // "host:port", e.g. "localhost:8080"
-func waitForTCPSocket(ctx context.Context, socket string) error {
-	return testing.Poll(ctx, func(ctx context.Context) error {
+func waitForTCPSocket(ctx context.Context, socket string, wpr *testexec.Cmd) error {
+	err := testing.Poll(ctx, func(ctx context.Context) error {
 		conn, err := net.Dial("tcp", socket)
 		if err != nil {
 			return err
@@ -475,6 +475,15 @@ func waitForTCPSocket(ctx context.Context, socket string) error {
 		Interval: 1 * time.Second,
 		Timeout:  60 * time.Second,
 	})
+	if err != nil {
+		// Try to collect WPR log to understand why we could not connect.
+		if dumpErr := wpr.DumpLog(ctx); dumpErr != nil {
+			// Log error but do not return it since the earlier
+			// error is more informative.
+			testing.ContextLog(ctx, "Could not dump WPR log: ", dumpErr)
+		}
+	}
+	return err
 }
 
 // availableTCPPorts returns a list of TCP ports on localhost that are not in
@@ -591,11 +600,11 @@ func initBrowser(ctx context.Context, p *RunParameters) (*chrome.Chrome, *testex
 	// Wait for WPR to initialize.
 	httpSocketName := fmt.Sprintf("localhost:%d", httpPort)
 	httpsSocketName := fmt.Sprintf("localhost:%d", httpsPort)
-	if err := waitForTCPSocket(ctx, httpSocketName); err != nil {
+	if err := waitForTCPSocket(ctx, httpSocketName, tentativeWPR); err != nil {
 		return nil, nil, errors.Wrapf(err, "cannot connect to WPR at %s", httpSocketName)
 	}
 	testing.ContextLog(ctx, "WPR HTTP socket is up at ", httpSocketName)
-	if err := waitForTCPSocket(ctx, httpsSocketName); err != nil {
+	if err := waitForTCPSocket(ctx, httpsSocketName, tentativeWPR); err != nil {
 		return nil, nil, errors.Wrapf(err, "cannot connect to WPR at %s", httpsSocketName)
 	}
 	testing.ContextLog(ctx, "WPR HTTPS socket is up at ", httpsSocketName)
