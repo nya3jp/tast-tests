@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "81e9e3a1_dd8bb2e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-05-13T09:27:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcce002e_97760986",
+      "range": {
+        "startLine": 13,
+        "startChar": 43,
+        "endLine": 13,
+        "endChar": 51
+      },
+      "revId": "b80bd3512e55f0d11ca54b5cb92542d80bb102e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "674addf8_43e4977d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "b80bd3512e55f0d11ca54b5cb92542d80bb102e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a048e0a6_39aba75d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-05-13T09:27:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "674addf8_43e4977d",
+      "range": {
+        "startLine": 26,
+        "startChar": 35,
+        "endLine": 26,
+        "endChar": 43
+      },
+      "revId": "b80bd3512e55f0d11ca54b5cb92542d80bb102e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -159,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "58946061_cab4c572",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-05-13T09:27:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbd63b04_59bc6434",
+      "revId": "b80bd3512e55f0d11ca54b5cb92542d80bb102e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b9a48d1_956c6c4d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
         "patchSetId": 6
@@ -223,6 +289,24 @@
     },
     {
       "key": {
+        "uuid": "1814cc42_67137fb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-05-13T09:27:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a58657d2_a802596e",
+      "revId": "b80bd3512e55f0d11ca54b5cb92542d80bb102e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b5f0081_ffe0bde8",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
         "patchSetId": 6
@@ -237,6 +321,24 @@
       "revId": "b80bd3512e55f0d11ca54b5cb92542d80bb102e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2617f9a_70a93294",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-05-13T09:27:11Z",
+      "side": 1,
+      "message": "Actually, the onerror() here is for catching the errors produced from adding a new track, not from start, which is the purpose of this test. The original patchset is incorrect.",
+      "parentUuid": "8b5f0081_ffe0bde8",
+      "revId": "b80bd3512e55f0d11ca54b5cb92542d80bb102e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -257,6 +359,24 @@
     },
     {
       "key": {
+        "uuid": "5a62b104_5ef50ed1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-05-13T09:27:11Z",
+      "side": 1,
+      "message": "This is for triggering the error.",
+      "parentUuid": "552cc5e0_907bfdd0",
+      "revId": "b80bd3512e55f0d11ca54b5cb92542d80bb102e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6a70478_a361bcef",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
         "patchSetId": 6
@@ -271,6 +391,24 @@
       "revId": "b80bd3512e55f0d11ca54b5cb92542d80bb102e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c063acb3_c0246899",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-05-13T09:27:11Z",
+      "side": 1,
+      "message": "The same reason as above.",
+      "parentUuid": "c6a70478_a361bcef",
+      "revId": "b80bd3512e55f0d11ca54b5cb92542d80bb102e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
