@@ -16,6 +16,24 @@
       "revId": "b471027ef986fd9d1787956defc22e948601afa0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbb3edc4_bf92631d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1000028
+      },
+      "writtenOn": "2019-05-13T18:48:48Z",
+      "side": 1,
+      "message": "Good suggestion, thanks.  In fact the name needs changing too.  I am changing it to waitForServerSocket.",
+      "parentUuid": "c469377e_d8b7b9db",
+      "revId": "b471027ef986fd9d1787956defc22e948601afa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
