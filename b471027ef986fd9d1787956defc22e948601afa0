@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c469377e_d8b7b9db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-13T18:25:45Z",
+      "side": 1,
+      "message": "small suggestion: i\u0027d document what wpr is here, e.g.\n\n// wpr is an already-started Web Page Replay process. If connecting to the\n// socket fails, wpr.DumpLog is called to log more information.",
+      "revId": "b471027ef986fd9d1787956defc22e948601afa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
