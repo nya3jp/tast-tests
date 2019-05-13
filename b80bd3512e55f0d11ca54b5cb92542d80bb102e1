@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "3a05409d_4aca3ba8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-05-13T08:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3b9f739_204f84f0",
+      "range": {
+        "startLine": 115,
+        "startChar": 6,
+        "endLine": 115,
+        "endChar": 39
+      },
+      "revId": "b80bd3512e55f0d11ca54b5cb92542d80bb102e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "edb86399_bf92af78",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
         "patchSetId": 6
@@ -91,6 +115,30 @@
       "revId": "b80bd3512e55f0d11ca54b5cb92542d80bb102e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1336b3c0_2418f8d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-05-13T08:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edb86399_bf92af78",
+      "range": {
+        "startLine": 122,
+        "startChar": 10,
+        "endLine": 122,
+        "endChar": 23
+      },
+      "revId": "b80bd3512e55f0d11ca54b5cb92542d80bb102e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -131,6 +179,30 @@
       "revId": "b80bd3512e55f0d11ca54b5cb92542d80bb102e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "648ef180_4329813f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-05-13T08:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b9a48d1_956c6c4d",
+      "range": {
+        "startLine": 222,
+        "startChar": 15,
+        "endLine": 224,
+        "endChar": 5
+      },
+      "revId": "b80bd3512e55f0d11ca54b5cb92542d80bb102e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
