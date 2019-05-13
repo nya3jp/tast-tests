@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3b9f739_204f84f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-13T05:59:08Z",
+      "side": 1,
+      "message": "nit: since timestamp values are not used, it might be more straightforward to have an integer counter instead.",
+      "range": {
+        "startLine": 115,
+        "startChar": 6,
+        "endLine": 115,
+        "endChar": 39
+      },
+      "revId": "b80bd3512e55f0d11ca54b5cb92542d80bb102e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edb86399_bf92af78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-13T05:59:08Z",
+      "side": 1,
+      "message": "This should be always true if timeStamps.length \u003e 10. How about removing videoSize entirely?",
+      "range": {
+        "startLine": 122,
+        "startChar": 10,
+        "endLine": 122,
+        "endChar": 23
+      },
+      "revId": "b80bd3512e55f0d11ca54b5cb92542d80bb102e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b9a48d1_956c6c4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-13T05:59:08Z",
+      "side": 1,
+      "message": "nit: This can be just \"resolve\".",
+      "range": {
+        "startLine": 222,
+        "startChar": 15,
+        "endLine": 224,
+        "endChar": 5
+      },
+      "revId": "b80bd3512e55f0d11ca54b5cb92542d80bb102e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
