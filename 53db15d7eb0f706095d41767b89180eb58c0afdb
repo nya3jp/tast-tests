@@ -16,6 +16,52 @@
       "revId": "53db15d7eb0f706095d41767b89180eb58c0afdb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f815d580_599b7c6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-13T07:06:04Z",
+      "side": 1,
+      "message": "unused?",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 15
+      },
+      "revId": "53db15d7eb0f706095d41767b89180eb58c0afdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c2ba963_a8e6d09d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-13T07:06:04Z",
+      "side": 1,
+      "message": "unused? |t| must not be TenSecondTimer. Or, will you add a test case for it later?",
+      "range": {
+        "startLine": 177,
+        "startChar": 2,
+        "endLine": 177,
+        "endChar": 25
+      },
+      "revId": "53db15d7eb0f706095d41767b89180eb58c0afdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
