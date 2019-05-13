@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "bcce002e_97760986",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-13T07:54:07Z",
+      "side": 1,
+      "message": "nit: we can use default parameter for |mimeTyep| too, instead of having |DEFAULT_RECORDER_MIME_TYPE|. \ni.e., async function createAndStartMediaRecorder(mimeType \u003d \u0027\u0027, slice \u003d 1) { \n\nSorry for not catching in the previous CL.",
+      "range": {
+        "startLine": 13,
+        "startChar": 43,
+        "endLine": 13,
+        "endChar": 51
+      },
+      "revId": "b80bd3512e55f0d11ca54b5cb92542d80bb102e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "674addf8_43e4977d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-13T07:54:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 26,
+        "startChar": 35,
+        "endLine": 26,
+        "endChar": 43
+      },
+      "revId": "b80bd3512e55f0d11ca54b5cb92542d80bb102e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c3b9f739_204f84f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
         "patchSetId": 6
@@ -48,6 +94,23 @@
     },
     {
       "key": {
+        "uuid": "bbd63b04_59bc6434",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-13T07:54:07Z",
+      "side": 1,
+      "message": "nit: could you put this function under |testPausePreventsDataavailableFromBeingFired|? So, we will have functions in the same orders of them in webrtc_media_recorder.go",
+      "revId": "b80bd3512e55f0d11ca54b5cb92542d80bb102e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b9a48d1_956c6c4d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
         "patchSetId": 6
@@ -65,6 +128,74 @@
         "endLine": 224,
         "endChar": 5
       },
+      "revId": "b80bd3512e55f0d11ca54b5cb92542d80bb102e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a58657d2_a802596e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-13T07:54:07Z",
+      "side": 1,
+      "message": "nit: could you put this function between testIllegalRequestDataThrowsDOMError and testAddingTrackToMediaStreamFiresErrorEvent?",
+      "revId": "b80bd3512e55f0d11ca54b5cb92542d80bb102e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b5f0081_ffe0bde8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-13T07:54:07Z",
+      "side": 1,
+      "message": "I guess recorder.onerror should be assigned before recorder.start(1) is called. Otherwise, if recorder.start(1) invokes onerror before the assignment at L334 happens, resolve never be called.\nActually, Patchset 1 did so.",
+      "revId": "b80bd3512e55f0d11ca54b5cb92542d80bb102e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "552cc5e0_907bfdd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-13T07:54:07Z",
+      "side": 1,
+      "message": "I wonder why we need this operation.\nI guess if resolve() is executed immediately, this addTrack won\u0027t be called.",
+      "revId": "b80bd3512e55f0d11ca54b5cb92542d80bb102e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6a70478_a361bcef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webrtc_media_recorder.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-13T07:54:07Z",
+      "side": 1,
+      "message": "same",
       "revId": "b80bd3512e55f0d11ca54b5cb92542d80bb102e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
