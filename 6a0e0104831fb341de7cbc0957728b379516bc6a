@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0c43bf7f_895aa45f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-13T08:34:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ec78f2a_b4d3c20a",
+      "range": {
+        "startLine": 21,
+        "startChar": 25,
+        "endLine": 21,
+        "endChar": 75
+      },
+      "revId": "6a0e0104831fb341de7cbc0957728b379516bc6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "325b37d8_adee7ca6",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_encode_accel_used_h264.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "6a0e0104831fb341de7cbc0957728b379516bc6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a754d3f5_f8180320",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_encode_accel_used_h264.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-13T08:34:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "325b37d8_adee7ca6",
+      "range": {
+        "startLine": 20,
+        "startChar": 99,
+        "endLine": 20,
+        "endChar": 100
+      },
+      "revId": "6a0e0104831fb341de7cbc0957728b379516bc6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
