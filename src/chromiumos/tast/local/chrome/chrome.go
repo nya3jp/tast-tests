@@ -576,9 +576,9 @@ func (c *Chrome) connectToBrowser(ctx context.Context) error {
 }
 
 // NewConn creates a new Chrome renderer and returns a connection to it.
-// If url is empty, an empty page (about:blank) is opened. Otherwise,
-// you can assume that the navigation to the specified URL has been started
-// when this function returns.
+// If url is empty, an empty page (about:blank) is opened. Otherwise, the page
+// from the specified URL is opened. You can assume that the page loading has
+// been finished when this function returns.
 func (c *Chrome) NewConn(ctx context.Context, url string) (*Conn, error) {
 	if url == "" {
 		testing.ContextLog(ctx, "Creating new blank page")
@@ -598,6 +598,9 @@ func (c *Chrome) NewConn(ctx context.Context, url string) (*Conn, error) {
 		if err := conn.WaitForExpr(ctx, fmt.Sprintf("location.href !== %q", blankURL)); err != nil {
 			return nil, errors.Wrap(err, "failed to wait for navigation")
 		}
+	}
+	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for loading")
 	}
 	return conn, nil
 }
