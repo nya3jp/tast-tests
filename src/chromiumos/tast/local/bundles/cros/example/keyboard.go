@@ -64,7 +64,7 @@ func Keyboard(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Waiting for focus")
-	if err := conn.WaitForExpr(ctx, elementExpr+" === document.activeElement"); err != nil {
+	if err := conn.WaitForExpr(ctx, "document.activeElement && document.activeElement === "+elementExpr); err != nil {
 		s.Fatal("Failed waiting for focus: ", err)
 	}
 
