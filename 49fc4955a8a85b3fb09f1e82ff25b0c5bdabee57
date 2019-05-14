@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ecb66a8_373c0558",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-05-14T22:53:39Z",
+      "side": 1,
+      "message": "all these autotest-private helper functions added in this file since I couldn\u0027t find a better place to put them.\nNot sure whether they should be placed somewhere else or not.",
+      "range": {
+        "startLine": 680,
+        "startChar": 0,
+        "endLine": 680,
+        "endChar": 25
+      },
+      "revId": "49fc4955a8a85b3fb09f1e82ff25b0c5bdabee57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
