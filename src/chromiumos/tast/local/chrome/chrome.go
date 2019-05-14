@@ -599,6 +599,9 @@ func (c *Chrome) NewConn(ctx context.Context, url string) (*Conn, error) {
 			return nil, errors.Wrap(err, "failed to wait for navigation")
 		}
 	}
+	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for loading")
+	}
 	return conn, nil
 }
 
