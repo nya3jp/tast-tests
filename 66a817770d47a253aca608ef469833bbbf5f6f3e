@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2df6dfe_a140b124",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-05-14T02:07:16Z",
+      "side": 1,
+      "message": "Unrelated to this change, but I think you missed my comment in the previous change:\nI think you can remove most of these values here, and only keep MD5Checksums and ThumbnailChecksums.",
+      "revId": "66a817770d47a253aca608ef469833bbbf5f6f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58200520_d1a3e2af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-05-14T02:07:16Z",
+      "side": 1,
+      "message": "I find it a bit confusing that all metadata is read from the json file, but most of that metadata is discarded and a \u0027testConfig\u0027 object is passed with the exact same data hardcoded.\n\nChanging this is probably out of the scope of this CL, but could you leave a comment here to fix this in the future.",
+      "revId": "66a817770d47a253aca608ef469833bbbf5f6f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
