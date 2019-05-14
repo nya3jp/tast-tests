@@ -101,6 +101,14 @@ const (
 	guestLogin                  // sign in as ephemeral guest user
 )
 
+// policyMode describes how/if Chrome should get policies.
+type policyMode int
+
+const (
+	noPolicy    policyMode = iota // do not fetch policies
+	fetchPolicy                   // fetch policies like a regular user
+)
+
 // option is a self-referential function can be used to configure Chrome.
 // See https://commandcenter.blogspot.com.au/2014/01/self-referential-functions-and-design.html
 // for details about this pattern.
@@ -143,6 +151,12 @@ func GuestLogin() option {
 	}
 }
 
+// FetchPolicy returns an option that can be passed to New to let the device do a policy fetch
+// upon login. By default, policies are not fetched.
+func FetchPolicy() option {
+	return func(c *Chrome) { c.policyMode = fetchPolicy }
+}
+
 // ARCEnabled returns an option that can be passed to New to enable ARC (without Play Store)
 // for the user session.
 func ARCEnabled() option {
@@ -180,6 +194,7 @@ type Chrome struct {
 	normalizedUser     string // user with domain added, periods removed, etc.
 	keepCryptohome     bool
 	loginMode          loginMode
+	policyMode         policyMode
 	arcMode            arcMode
 	restrictARCCPU     bool // a flag to control cpu restrictions on ARC
 	extraArgs          []string
@@ -216,6 +231,7 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		gaiaID:         defaultGaiaID,
 		keepCryptohome: false,
 		loginMode:      fakeLogin,
+		policyMode:     noPolicy,
 		watcher:        newBrowserWatcher(),
 		logMaster:      jslog.NewMaster(),
 	}
@@ -489,6 +505,12 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 	}
 	if len(c.extDirs) > 0 {
 		args = append(args, "--load-extension="+strings.Join(c.extDirs, ","))
+	}
+	switch c.policyMode {
+	case noPolicy:
+		args = append(args, "--profile-requires-policy=false")
+	case fetchPolicy:
+		args = append(args, "--profile-requires-policy=true")
 	}
 	switch c.arcMode {
 	case arcDisabled:
