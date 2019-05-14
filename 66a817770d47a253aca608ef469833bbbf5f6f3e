@@ -33,6 +33,24 @@
       "revId": "66a817770d47a253aca608ef469833bbbf5f6f3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac96e994_65afaf57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-05-14T02:12:51Z",
+      "side": 1,
+      "message": "Yes, you are right. Ideally we should use information from metadata only for binary\u0027s input arguments. This is indeed a TODO in my future list. And another TODO may be split ARC decoder test and new VDA tests into 2 separate file after video_decode_accelerator_unittest is deprecated, since they don\u0027t have much common codes then.",
+      "parentUuid": "58200520_d1a3e2af",
+      "revId": "66a817770d47a253aca608ef469833bbbf5f6f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
