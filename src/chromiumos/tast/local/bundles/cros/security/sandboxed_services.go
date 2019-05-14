@@ -82,7 +82,6 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"debugd", "root", "root", mntNS},
 		{"cras", "cras", "cras", mntNS | restrictCaps | noNewPrivs},
 		{"tcsd", "tss", "tss", restrictCaps},
-		{"wimax-manager", "root", "root", 0},
 		{"mtpd", "mtp", "mtp", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
 		{"tlsdated", "tlsdate", "tlsdate", restrictCaps},
 		{"tlsdated-setter", "root", "root", noNewPrivs | seccomp},
