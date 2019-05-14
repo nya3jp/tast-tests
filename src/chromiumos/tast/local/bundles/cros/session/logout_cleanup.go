@@ -33,20 +33,27 @@ func init() {
 	})
 }
 
-// isChronosProcess returns true if process with given pid is owned by chronos
-// user.
-func isChronosProcess(pid int32) bool {
+// isActiveChronosProcess returns true if the process with the given pid is owned
+// by the chronos user and not in the zombie state (indicating that it's exited
+// but hasn't yet been waited on by its parent).
+func isActiveChronosProcess(pid int32) bool {
 	p, err := process.NewProcess(pid)
 	if err != nil {
 		// The process may be gone already.
 		return false
 	}
+
+	if status, err := p.Status(); err != nil || status == "Z" {
+		// The process exited already or is a zombie that hasn't yet been reaped
+		// by its parent: https://crbug.com/963144
+		return false
+	}
+
 	uids, err := p.Uids()
 	if err != nil {
 		// The process is gone between NewProcess() and Uids() call.
 		return false
 	}
-
 	// euid is stored at [1].
 	return uint32(uids[1]) == sysutil.ChronosUID
 }
@@ -60,7 +67,7 @@ func findChronosProcesses() ([]int32, error) {
 
 	var pids []int32
 	for _, pid := range all {
-		if isChronosProcess(pid) {
+		if isActiveChronosProcess(pid) {
 			pids = append(pids, pid)
 		}
 	}
@@ -108,7 +115,7 @@ func LogoutCleanup(ctx context.Context, s *testing.State) {
 					return err
 				}
 				for _, child := range children {
-					if !isChronosProcess(child.Pid) {
+					if !isActiveChronosProcess(child.Pid) {
 						// There may be a small chance that the fork succeeded but UID is not yet set.
 						// So, this can be transient error.
 						return errors.New("child job isn't running as chronos user")
@@ -153,7 +160,7 @@ func LogoutCleanup(ctx context.Context, s *testing.State) {
 	// immediately. Thus, wait until they are, actually.
 	if err := testing.Poll(ctx, func(context.Context) error {
 		for _, pid := range chronosPIDs {
-			if isChronosProcess(pid) {
+			if isActiveChronosProcess(pid) {
 				return errors.Errorf("process %d owned by chronos is still alive after logout", pid)
 			}
 		}
