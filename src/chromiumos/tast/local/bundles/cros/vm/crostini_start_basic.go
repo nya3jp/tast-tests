@@ -42,7 +42,7 @@ func CrostiniStartBasic(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Setting up component")
-	artifactPath := s.DataPath("crostini_start_baseic_guest_images.tar")
+	artifactPath := s.DataPath("crostini_start_basic_guest_images.tar")
 	if err := vm.MountArtifactComponent(ctx, artifactPath); err != nil {
 		s.Fatal("Failed to set up component: ", err)
 	}
