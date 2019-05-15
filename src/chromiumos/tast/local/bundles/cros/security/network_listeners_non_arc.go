@@ -35,6 +35,7 @@ func NetworkListenersNonARC(ctx context.Context, s *testing.State) {
 	if moblab.IsMoblab() {
 		ls["*:80"] = "/usr/sbin/apache2"
 		ls["127.0.0.1:3306"] = "/usr/sbin/mysqld"
+		ls["*:5550"] = "/usr/bin/arc-networkd"
 		ls["*:8080"] = "/usr/bin/python2.7"
 		ls["*:9991"] = "/usr/bin/python2.7"
 	}
