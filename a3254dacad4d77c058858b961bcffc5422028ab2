@@ -34,6 +34,24 @@
       "revId": "a3254dacad4d77c058858b961bcffc5422028ab2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b502e62d_091587ad",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T17:56:09Z",
+      "side": 1,
+      "message": "got it, thanks. if you anticipate having more states in the future, this seems fine to me.",
+      "parentUuid": "a830e688_443c30a8",
+      "revId": "a3254dacad4d77c058858b961bcffc5422028ab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
