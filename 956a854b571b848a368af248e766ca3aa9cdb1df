@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a304ab26_b7e3facf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T18:19:29Z",
+      "side": 1,
+      "message": "nit: i think that github imports usually go in their own group between system imports and chromiumos imports",
+      "revId": "956a854b571b848a368af248e766ca3aa9cdb1df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce65cf7f_cc47760a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T18:19:29Z",
+      "side": 1,
+      "message": "nit: please use \"ARC\" instead of \"ARC++\" throughout",
+      "range": {
+        "startLine": 269,
+        "startChar": 41,
+        "endLine": 269,
+        "endChar": 46
+      },
+      "revId": "956a854b571b848a368af248e766ca3aa9cdb1df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25a44a0f_597c22a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T18:19:29Z",
+      "side": 1,
+      "message": "nit: if you don\u0027t plan to use this elsewhere, please rename to initExecPath (so it isn\u0027t exported) and additionally nest it within GetPIDs",
+      "revId": "956a854b571b848a368af248e766ca3aa9cdb1df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1949b518_f6cbd810",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T18:19:29Z",
+      "side": 1,
+      "message": "is it expected that there can be more than one? (sorry, i don\u0027t know much about arc)",
+      "range": {
+        "startLine": 272,
+        "startChar": 51,
+        "endLine": 272,
+        "endChar": 65
+      },
+      "revId": "956a854b571b848a368af248e766ca3aa9cdb1df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f77d834_3ee04522",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T18:19:29Z",
+      "side": 1,
+      "message": "GetInitPIDs?",
+      "range": {
+        "startLine": 273,
+        "startChar": 5,
+        "endLine": 273,
+        "endChar": 12
+      },
+      "revId": "956a854b571b848a368af248e766ca3aa9cdb1df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "824c581f_6fcfa305",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T18:19:29Z",
+      "side": 1,
+      "message": "nit: \"var pids []int\"\n\n(avoids an allocation if you don\u0027t append anything -- always use this if you don\u0027t know the size of the slice before hand; if you do, you can specify a capacity)",
+      "revId": "956a854b571b848a368af248e766ca3aa9cdb1df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f8ba661_503741b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T18:19:29Z",
+      "side": 1,
+      "message": "nit: consider passing testexec.DumpLogOnError to Output() instead to save a line",
+      "revId": "956a854b571b848a368af248e766ca3aa9cdb1df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
