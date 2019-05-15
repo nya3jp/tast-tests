@@ -30,6 +30,13 @@ func init() {
 }
 
 func Login(ctx context.Context, s *testing.State) {
+	// Try to get the system into a consistent state, since it seems like having
+	// an already-mounted user dir can cause problems: https://crbug.com/963084
+	s.Log("Restarting ui job")
+	if err := upstart.RestartJob(ctx, "ui"); err != nil {
+		s.Fatal("Failed to restart ui job: ", err)
+	}
+
 	const (
 		testUser = "cryptohome_test@chromium.org"
 		testPass = "testme"
