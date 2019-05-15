@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4044f364_7c95379d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-15T02:04:48Z",
+      "side": 1,
+      "message": "Could you update this doc to clarify the new behavior?",
+      "range": {
+        "startLine": 578,
+        "startChar": 0,
+        "endLine": 581,
+        "endChar": 30
+      },
+      "revId": "9910b95df1ab21d5669b5d2c43ac0811f6a65953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
