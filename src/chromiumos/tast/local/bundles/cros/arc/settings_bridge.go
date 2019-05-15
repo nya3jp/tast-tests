@@ -22,7 +22,7 @@ func init() {
 		Desc:         "Checks that Chrome settings are persisted in ARC",
 		Contacts:     []string{"sarakato@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"android", "chrome_login"},
+		SoftwareDeps: []string{"android", "chrome"},
 		Timeout:      4 * time.Minute,
 	})
 }

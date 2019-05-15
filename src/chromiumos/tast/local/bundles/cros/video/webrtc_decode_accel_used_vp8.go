@@ -19,7 +19,7 @@ func init() {
 		Desc:         "Checks HW decoding used for WebRTC/VP8",
 		Contacts:     []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome_login", caps.HWDecodeVP8},
+		SoftwareDeps: []string{"chrome", caps.HWDecodeVP8},
 		Data:         append(webrtc.LoopbackDataFiles(), "crowd720_25frames.y4m"),
 	})
 }

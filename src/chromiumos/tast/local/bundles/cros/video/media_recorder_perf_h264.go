@@ -24,7 +24,7 @@ func init() {
 		},
 		Attr: []string{"group:crosbolt", "crosbolt_perbuild"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
-		SoftwareDeps: []string{"chrome_login", "chrome_internal"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Data:         []string{mediaRecorderH264StreamFile, "loopback_media_recorder.html"},
 		Timeout:      3 * time.Minute,
 	})

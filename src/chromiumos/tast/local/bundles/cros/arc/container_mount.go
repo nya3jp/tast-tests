@@ -23,7 +23,7 @@ func init() {
 		},
 		SoftwareDeps: []string{
 			"android",
-			"chrome_login",
+			"chrome",
 		},
 		Attr:    []string{"informational"},
 		Pre:     arc.Booted(),

@@ -22,7 +22,7 @@ func init() {
 			"hidehiko@chromium.org", // Tast port author
 		},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome_login", "cups"},
+		SoftwareDeps: []string{"chrome", "cups"},
 		Data:         []string{epsonPPDFile, epsonToPrintFile, epsonGoldenFile},
 		Pre:          chrome.LoggedIn(),
 	})

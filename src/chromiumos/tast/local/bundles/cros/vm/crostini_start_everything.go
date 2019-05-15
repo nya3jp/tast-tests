@@ -26,7 +26,7 @@ func init() {
 		Attr:         []string{"informational"},
 		Data:         []string{"crostini_start_everything_cros-tast-tests-deb.deb"},
 		Timeout:      10 * time.Minute,
-		SoftwareDeps: []string{"chrome_login", "vm_host"},
+		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
 }
 

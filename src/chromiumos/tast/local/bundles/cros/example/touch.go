@@ -22,7 +22,7 @@ func init() {
 		Contacts: []string{"ricardoq@chromium.org", "tast-users@chromium.org"},
 		Attr:     []string{"informational"},
 		// Adding 'tablet_mode' since it guarantees touch support.
-		SoftwareDeps: []string{"chrome_login", "tablet_mode"},
+		SoftwareDeps: []string{"chrome", "tablet_mode"},
 		Pre:          chrome.LoggedIn(),
 	})
 }

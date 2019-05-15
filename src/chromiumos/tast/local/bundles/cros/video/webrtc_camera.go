@@ -26,7 +26,7 @@ func init() {
 			"chromeos-video-eng@google.com",
 		},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome_login", "camera_720p"},
+		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome", "camera_720p"},
 		Pre:          pre.ChromeVideo(),
 		Data:         append(webrtc.DataFiles(), "getusermedia.html"),
 	})

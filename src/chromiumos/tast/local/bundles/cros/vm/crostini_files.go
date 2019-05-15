@@ -26,7 +26,7 @@ func init() {
 		Contacts:     []string{"joelhockey@chromium.org", "jkardatzke@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"informational"},
 		Timeout:      10 * time.Minute,
-		SoftwareDeps: []string{"chrome_login", "vm_host"},
+		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
 }
 

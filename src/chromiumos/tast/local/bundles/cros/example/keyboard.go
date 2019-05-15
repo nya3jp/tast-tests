@@ -23,7 +23,7 @@ func init() {
 		Desc:         "Demonstrates injecting keyboard events",
 		Contacts:     []string{"derat@chromium.org", "tast-users@chromium.org"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome_login"},
+		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
 	})
 }

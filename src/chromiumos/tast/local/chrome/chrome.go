@@ -231,7 +231,7 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		}
 	}()
 
-	if err := checkSoftwareDeps(ctx, c.loginMode != noLogin); err != nil {
+	if err := checkSoftwareDeps(ctx); err != nil {
 		return nil, err
 	}
 
@@ -291,28 +291,20 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 }
 
 // checkSoftwareDeps ensures the current test declares necessary software dependencies.
-// If login is false, the test should declare "chrome" or "chrome_login". Otherwise,
-// the test should declare "chrome_login".
-func checkSoftwareDeps(ctx context.Context, login bool) error {
+func checkSoftwareDeps(ctx context.Context) error {
 	deps, ok := testing.ContextSoftwareDeps(ctx)
 	if !ok {
 		// Test info can be unavailable in unit tests.
 		return nil
 	}
 
-	cdeps := []string{"chrome_login"}
-	if !login {
-		cdeps = append(cdeps, "chrome")
-	}
-
+	const needed = "chrome"
 	for _, dep := range deps {
-		for _, cdep := range cdeps {
-			if dep == cdep {
-				return nil
-			}
+		if dep == needed {
+			return nil
 		}
 	}
-	return errors.Errorf("test must declare at least one of chrome software dependencies %v", cdeps)
+	return errors.Errorf("test must declare %q", needed)
 }
 
 // Close disconnects from Chrome and cleans up standard extensions.

@@ -20,7 +20,7 @@ func init() {
 		Desc:         "Verifies that VP8 video decode acceleration works in Chrome",
 		Contacts:     []string{"deanliao@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{caps.HWDecodeVP8, "chrome_login"},
+		SoftwareDeps: []string{caps.HWDecodeVP8, "chrome"},
 		Pre:          pre.ChromeVideo(),
 		Data:         []string{"bear-320x240.vp8.webm", "video.html"},
 	})

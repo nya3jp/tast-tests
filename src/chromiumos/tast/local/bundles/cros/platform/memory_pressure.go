@@ -24,7 +24,7 @@ func init() {
 			mempressure.DormantCode,
 			mempressure.WPRArchiveName,
 		},
-		SoftwareDeps: []string{"chrome_login"},
+		SoftwareDeps: []string{"chrome"},
 	})
 }
 

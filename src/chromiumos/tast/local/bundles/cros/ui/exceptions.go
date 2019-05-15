@@ -18,7 +18,7 @@ func init() {
 		Func:         Exceptions,
 		Desc:         "Checks that JavaScript exceptions are reported correctly",
 		Contacts:     []string{"derat@chromium.org"},
-		SoftwareDeps: []string{"chrome_login"},
+		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
 	})
 }
