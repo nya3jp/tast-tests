@@ -1,0 +1,402 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6157da5c_21394128",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:31:00Z",
+      "side": 1,
+      "message": "unless you anticipate adding a bunch more sensors tests in the near future, please consider putting this in an existing package (probably either kernel or hardware) instead of introducing a new one\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_1.md#boring-boilerplate talks about this a bit",
+      "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fda193d_c1d73c1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sensors/crosconfig/crosconfig.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:31:00Z",
+      "side": 1,
+      "message": "nit: add trailing period",
+      "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66406a0a_311b0ba2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sensors/crosconfig/crosconfig.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:31:00Z",
+      "side": 1,
+      "message": "godoc comments should be full sentences, e.g.\n\n// HasBaseAccelerometer is a bool property describing whether the DUT has an accelerometer in its base.",
+      "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "216e7efc_fc22851e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sensors/crosconfig/crosconfig.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:31:00Z",
+      "side": 1,
+      "message": "don\u0027t think you need to repeat HardwareProperty in following consts in the same block",
+      "range": {
+        "startLine": 26,
+        "startChar": 18,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8daf2cc_5f23b380",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sensors/crosconfig/crosconfig.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:31:00Z",
+      "side": 1,
+      "message": "how about switching this up so you can test this without the global?\n\nfunc CheckHardwareProperty(...) ... {\n    out, err :\u003d testexec.CommandContext(...).Output()\n    return handleBoolOutput(out, err)\n}\n\nfunc handleBoolOutput(out []byte, err error) (bool, error) {\n    ...\n}\n\nthen you can write tests for handleBoolOutput, and you don\u0027t need grossness like having the test exec itself.",
+      "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "319cbbea_5456568f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sensors/crosconfig/crosconfig.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:31:00Z",
+      "side": 1,
+      "message": "nit: i\u0027d just do return testexec.CommandContext(...).Output()",
+      "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30041819_026c3c6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sensors/crosconfig/crosconfig.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:31:00Z",
+      "side": 1,
+      "message": "nit: move default last?",
+      "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d03483a1_35207c36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sensors/crosconfig/crosconfig.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:31:00Z",
+      "side": 1,
+      "message": "hmm, this seems risky. can you check the exit code, at least?\n\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/testexec#GetWaitStatus",
+      "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7332ff8d_70431d16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sensors/crosconfig/crosconfig.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:31:00Z",
+      "side": 1,
+      "message": "should you report an error if it\u0027s something other than \"true\" or \"false\"?",
+      "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f76c4c4f_a18348c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sensors/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:31:00Z",
+      "side": 1,
+      "message": "nit: i think that declaring multiple exported types in a single type block is uncommon in go. i\u0027d recommend giving each of these its own \u0027type\u0027 keyword",
+      "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a874b174_be942682",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sensors/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:31:00Z",
+      "side": 1,
+      "message": "please add trailing periods\n\nhttps://blog.golang.org/godoc-documenting-go-code",
+      "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a9060d5_28b67aa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sensors/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:31:00Z",
+      "side": 1,
+      "message": "nit: DUT (also below)",
+      "range": {
+        "startLine": 20,
+        "startChar": 56,
+        "endLine": 20,
+        "endChar": 59
+      },
+      "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42b4c8cf_e5fb308d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sensors/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:31:00Z",
+      "side": 1,
+      "message": "don\u0027t think you need to repeat SensorName",
+      "range": {
+        "startLine": 34,
+        "startChar": 6,
+        "endLine": 34,
+        "endChar": 16
+      },
+      "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af9c1f21_b9482884",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sensors/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:31:00Z",
+      "side": 1,
+      "message": "here too",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 19
+      },
+      "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db995c52_7a5aadf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sensors/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:31:00Z",
+      "side": 1,
+      "message": "this seems weird. if you\u0027re just want to use these maps to check for validity, consider using map[SensorName]struct{}",
+      "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1094f4a6_74f5f75a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sensors/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:31:00Z",
+      "side": 1,
+      "message": "nit: all on one line",
+      "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c2967a8_64842edf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sensors/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:31:00Z",
+      "side": 1,
+      "message": "turn this into a full sentence",
+      "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "257e29a8_9cbb9edb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sensors/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:31:00Z",
+      "side": 1,
+      "message": "nit: please delete blank lines between declaring vars, errors, etc. and using them so that related code is grouped together",
+      "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3968bc4_20b41b75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sensors/iio/iio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:31:00Z",
+      "side": 1,
+      "message": "errors should be lowercase\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80ca80a0_e5f2bcd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sensors/iio/iio_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:31:00Z",
+      "side": 1,
+      "message": "similar comment to earlier: instead of needing to change globals, how about just making GetSensors take a base path arg that can be an empty string by default?\n\nif you really want to keep it this way, please defer funcs that restore the original values",
+      "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73e696f4_e4f2e50b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sensors/iio/testdata/sys/bus/iio/devices/bad:device/name",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:31:00Z",
+      "side": 1,
+      "message": "instead of checking in a bunch of testdata files, how about just writing these to a temp dir in your unit test? then it\u0027s easy to see all the inputs",
+      "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9399f4a6_1a0b279f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sensors/presence.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:31:00Z",
+      "side": 1,
+      "message": "please add more owners here",
+      "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
