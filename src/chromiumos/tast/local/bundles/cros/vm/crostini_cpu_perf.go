@@ -31,7 +31,7 @@ func init() {
 		Contacts:     []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Timeout:      15 * time.Minute,
-		SoftwareDeps: []string{"chrome_login", "vm_host"},
+		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
 }
 

@@ -27,7 +27,7 @@ func init() {
 		},
 		Attr: []string{"group:crosbolt", "crosbolt_perbuild"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
-		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome_login", "chrome_internal"},
+		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome", "chrome_internal"},
 		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback_camera.html"),
 	})
 }

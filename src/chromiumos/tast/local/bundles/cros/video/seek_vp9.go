@@ -19,7 +19,7 @@ func init() {
 		Desc:         "Verifies that VP9 non-resolution-changing seek works in Chrome",
 		Contacts:     []string{"acourbot@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome_login"},
+		SoftwareDeps: []string{"chrome"},
 		Pre:          pre.ChromeVideo(),
 		Data:         []string{"shaka_720.webm", "video.html"},
 	})

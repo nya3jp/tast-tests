@@ -19,7 +19,7 @@ func init() {
 		Desc:         "Checks that Android boots repeatedly",
 		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"disabled"},
-		SoftwareDeps: []string{"android", "chrome_login"},
+		SoftwareDeps: []string{"android", "chrome"},
 		Timeout:      365 * 24 * time.Hour,
 	})
 }

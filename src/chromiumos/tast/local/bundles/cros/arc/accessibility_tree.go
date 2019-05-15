@@ -25,7 +25,7 @@ func init() {
 		Desc:         "Checks Chrome accessibility tree for ARC",
 		Contacts:     []string{"sarakato@chromium.org", "dtseng@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"android", "chrome_login"},
+		SoftwareDeps: []string{"android", "chrome"},
 		Data:         []string{"accessibility_sample.apk", "accessibility_tree_expected.txt"},
 		Timeout:      4 * time.Minute,
 	})

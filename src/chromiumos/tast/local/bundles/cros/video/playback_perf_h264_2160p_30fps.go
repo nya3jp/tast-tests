@@ -19,7 +19,7 @@ func init() {
 		Contacts: []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:     []string{"group:crosbolt", "crosbolt_perbuild"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
-		SoftwareDeps: []string{"chrome_login", "chrome_internal"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Data:         []string{"2160p_30fps_300frames.h264.mp4"},
 		// Default timeout (i.e. 2 minutes) is not enough for low-end devices.
 		Timeout: 3 * time.Minute,

@@ -22,7 +22,7 @@ func init() {
 		Contacts: []string{"shenghao@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:     []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
-		SoftwareDeps: []string{"chrome_login", "chrome_internal"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Data:         []string{"webrtc_media_recorder.html", "webrtc_media_recorder.js"},
 		Timeout:      3 * time.Minute,
 	})

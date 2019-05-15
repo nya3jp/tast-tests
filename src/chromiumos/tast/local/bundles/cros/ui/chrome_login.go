@@ -21,7 +21,7 @@ func init() {
 		Func:         ChromeLogin,
 		Desc:         "Checks that Chrome supports login",
 		Contacts:     []string{"derat@chromium.org"},
-		SoftwareDeps: []string{"chrome_login"},
+		SoftwareDeps: []string{"chrome"},
 	})
 }
 

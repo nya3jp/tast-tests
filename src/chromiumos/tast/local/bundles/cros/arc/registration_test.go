@@ -22,5 +22,5 @@ func TestTimeout(t *testing.T) {
 }
 
 func TestSoftwareDeps(t *testing.T) {
-	testcheck.SoftwareDeps(t, pattern, []string{"chrome_login", "android|android_p|android_all"})
+	testcheck.SoftwareDeps(t, pattern, []string{"chrome", "android|android_p|android_all"})
 }

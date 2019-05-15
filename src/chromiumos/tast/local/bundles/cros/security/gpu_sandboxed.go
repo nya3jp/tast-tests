@@ -21,7 +21,7 @@ func init() {
 			"hidehiko@chromium.org", // Tast port author
 			"chromeos-security@google.com",
 		},
-		SoftwareDeps: []string{"chrome_login", "gpu_sandboxing"},
+		SoftwareDeps: []string{"chrome", "gpu_sandboxing"},
 		Pre:          chrome.LoggedIn(),
 	})
 }

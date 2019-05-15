@@ -17,7 +17,7 @@ func init() {
 		Func:         AssistantStartup,
 		Desc:         "Starts Google Assistant service and checks the running status",
 		Contacts:     []string{"meilinw@chromium.org", "xiaohuic@chromium.org"},
-		SoftwareDeps: []string{"chrome_login", "chrome_internal"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 	})
 }
 

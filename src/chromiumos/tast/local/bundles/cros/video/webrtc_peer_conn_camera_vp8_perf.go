@@ -26,7 +26,7 @@ func init() {
 			"chromeos-video-eng@google.com",
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome_login"},
+		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome"},
 		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback_camera.html"),
 	})
 }

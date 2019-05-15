@@ -20,7 +20,7 @@ func init() {
 		Desc:         "Runs arcvideodecoder_test on ARC++ with an 240p VP9 video test-25fps.vp9",
 		Contacts:     []string{"johnylin@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"android", "chrome_login", caps.HWDecodeVP9},
+		SoftwareDeps: []string{"android", "chrome", caps.HWDecodeVP9},
 		Data:         decode.DataFiles(videotype.VP9Prof),
 		Pre:          arc.Booted(),
 	})
