@@ -18,7 +18,7 @@ func init() {
 		Desc:         "Measures video playback performance with/without HW acceleration for AV1 720p@60fps video",
 		Contacts:     []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome_login"},
+		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"720p_60fps_600frames.av1.mp4"},
 		// Default timeout (i.e. 2 minutes) is not enough for low-end devices.
 		Timeout: 3 * time.Minute,

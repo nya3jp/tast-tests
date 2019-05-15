@@ -27,7 +27,7 @@ func init() {
 			"chromeos-video-eng@google.com",
 		},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome_login"},
+		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome"},
 		Pre:          pre.ChromeVideo(),
 		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback_camera.html"),
 	})

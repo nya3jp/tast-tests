@@ -22,7 +22,7 @@ func init() {
 			mempressure.DormantCode,
 		},
 		Timeout:      60 * time.Minute,
-		SoftwareDeps: []string{"chrome_login"},
+		SoftwareDeps: []string{"chrome"},
 	})
 }
 

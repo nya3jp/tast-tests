@@ -25,7 +25,7 @@ func init() {
 		Desc:         "Tests Assistant's responses to text queries",
 		Contacts:     []string{"meilinw@chromium.org", "xiaohuic@chromium.org"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome_login", "chrome_internal", "audio_play"},
+		SoftwareDeps: []string{"chrome", "chrome_internal", "audio_play"},
 	})
 }
 

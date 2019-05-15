@@ -20,7 +20,7 @@ func init() {
 		Func:         ScreenLock,
 		Desc:         "Checks that screen-locking works in Chrome",
 		Contacts:     []string{"derat@chromium.org"},
-		SoftwareDeps: []string{"chrome_login"},
+		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
 	})
 }

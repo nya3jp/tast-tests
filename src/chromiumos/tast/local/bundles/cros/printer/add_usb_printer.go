@@ -21,7 +21,7 @@ func init() {
 		Desc:         "Verifies setup of a basic USB printer",
 		Contacts:     []string{"valleau@chromium.org"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome_login", "cups", "virtual_usb_printer"},
+		SoftwareDeps: []string{"chrome", "cups", "virtual_usb_printer"},
 		Pre:          chrome.LoggedIn(),
 	})
 }

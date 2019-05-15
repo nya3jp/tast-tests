@@ -21,7 +21,7 @@ func init() {
 			"derat@chromium.org",   // Tast port author
 			"chromeos-security@google.com",
 		},
-		SoftwareDeps: []string{"chrome_login", "android"},
+		SoftwareDeps: []string{"chrome", "android"},
 		Pre:          arc.Booted(),
 		Timeout:      arc.BootTimeout,
 	})

@@ -21,7 +21,7 @@ func init() {
 		Desc:         "Tests video recording with GoogleCameraArc (GCA)",
 		Contacts:     []string{"lnishan@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"android", "chrome_login", caps.BuiltinOrVividCamera},
+		SoftwareDeps: []string{"android", "chrome", caps.BuiltinOrVividCamera},
 		Pre:          arc.Booted(),
 		Timeout:      4 * time.Minute,
 	})

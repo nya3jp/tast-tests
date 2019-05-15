@@ -21,7 +21,7 @@ func init() {
 		Desc:         "Tests that USB print job can be successfully sent",
 		Contacts:     []string{"valleau@chromium.org"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome_login", "cups", "virtual_usb_printer"},
+		SoftwareDeps: []string{"chrome", "cups", "virtual_usb_printer"},
 		Data: []string{"print_usb_ps.ppd.gz", "print_usb_to_print.pdf",
 			"print_usb_golden.ps"},
 		Pre: chrome.LoggedIn(),

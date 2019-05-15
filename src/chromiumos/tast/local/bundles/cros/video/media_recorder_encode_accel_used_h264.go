@@ -23,7 +23,7 @@ func init() {
 			"chromeos-camera-eng@google.com",
 		},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
-		SoftwareDeps: []string{"chrome_login", "chrome_internal", caps.HWEncodeH264},
+		SoftwareDeps: []string{"chrome", "chrome_internal", caps.HWEncodeH264},
 		Data:         []string{"loopback_media_recorder.html"},
 	})
 }

@@ -19,7 +19,7 @@ func init() {
 		Func:         VirtualKeyboardOmnibox,
 		Desc:         "Checks that the virtual keyboard appears when clicking on the omnibox",
 		Contacts:     []string{"essential-inputs-team@google.com"},
-		SoftwareDeps: []string{"chrome_login", "google_virtual_keyboard"},
+		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 	})
 }
 

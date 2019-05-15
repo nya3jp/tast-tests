@@ -21,7 +21,7 @@ func init() {
 			"achuith@chromium.org",  // Original autotest author
 			"hidehiko@chromium.org", // Tast port author
 		},
-		SoftwareDeps: []string{"chrome_login"},
+		SoftwareDeps: []string{"chrome"},
 	})
 }
 

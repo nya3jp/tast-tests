@@ -26,7 +26,7 @@ func init() {
 		Desc:         "Checks MIDI Apps can send messages to devices",
 		Contacts:     []string{"pmalani@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"android", "chrome_login"},
+		SoftwareDeps: []string{"android", "chrome"},
 		Data:         []string{"ArcMidiClientTest.apk"},
 		Pre:          arc.Booted(),
 		Timeout:      4 * time.Minute,

@@ -18,7 +18,7 @@ func init() {
 		Desc:         "Measures video playback performance with/without HW acceleration for VP9 2160p@60fps video",
 		Contacts:     []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome_login"},
+		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"2160p_60fps_600frames.vp9.webm"},
 		// Default timeout (i.e. 2 minutes) is not enough for low-end devices.
 		Timeout: 3 * time.Minute,

@@ -20,7 +20,7 @@ func init() {
 		Contacts: []string{"deanliao@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:     []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
-		SoftwareDeps: []string{"chrome_login", "chrome_internal"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Pre:          pre.ChromeVideo(),
 		Data:         []string{"bear-320x240.h264.mp4", "video.html"},
 	})

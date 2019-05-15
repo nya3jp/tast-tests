@@ -21,7 +21,7 @@ func init() {
 		Desc:         "Checks the play/pause accelerator will play/pause Chrome",
 		Contacts:     []string{"beccahughes@chromium.org", "media-dev@chromium.org"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome_login"},
+		SoftwareDeps: []string{"chrome"},
 		Data: []string{
 			"media_session_60sec_test.ogg",
 			"media_session_test.html",

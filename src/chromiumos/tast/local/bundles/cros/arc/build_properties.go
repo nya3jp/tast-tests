@@ -21,7 +21,7 @@ func init() {
 		Func:         BuildProperties,
 		Desc:         "Checks important Android properties such as first_api_level",
 		Contacts:     []string{"niwa@chromium.org", "risan@chromium.org", "arc-eng@google.com"},
-		SoftwareDeps: []string{"android", "chrome_login"},
+		SoftwareDeps: []string{"android", "chrome"},
 		Timeout:      4 * time.Minute,
 	})
 }

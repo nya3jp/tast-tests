@@ -23,7 +23,7 @@ func init() {
 			"chromeos-camera-eng@google.com",
 		},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome_login", caps.HWEncodeVP9},
+		SoftwareDeps: []string{"chrome", caps.HWEncodeVP9},
 		Data:         []string{"loopback_media_recorder.html"},
 	})
 }

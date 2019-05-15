@@ -33,7 +33,7 @@ func init() {
 		Attr:     []string{"group:crosbolt", "crosbolt_perbuild"},
 		// Data:         dataFiles,
 		Timeout:      10 * time.Minute,
-		SoftwareDeps: []string{"chrome_login", "vm_host"},
+		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
 }
 
