@@ -19,7 +19,7 @@ func init() {
 		Desc:         "Checks that Chrome can establish a Mojo connection to ML Service",
 		Contacts:     []string{"amoylan@chromium.org"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome_login", "ml_service"},
+		SoftwareDeps: []string{"chrome", "ml_service"},
 		Pre:          chrome.LoggedIn(),
 	})
 }

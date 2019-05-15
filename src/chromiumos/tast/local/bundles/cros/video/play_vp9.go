@@ -19,7 +19,7 @@ func init() {
 		Desc:         "Checks VP9 video playback is working",
 		Contacts:     []string{"deanliao@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome_login"},
+		SoftwareDeps: []string{"chrome"},
 		Pre:          pre.ChromeVideo(),
 		Data:         []string{"bear-320x240.vp9.webm", "video.html"},
 	})

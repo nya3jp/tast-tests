@@ -21,7 +21,7 @@ func init() {
 		Contacts: []string{"nya@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{
 			"android_all", // Run on master-arc-dev, too.
-			"chrome_login",
+			"chrome",
 		},
 		Timeout: 4 * time.Minute,
 	})

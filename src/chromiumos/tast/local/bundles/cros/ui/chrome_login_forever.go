@@ -18,7 +18,7 @@ func init() {
 		Desc:         "Checks that Chrome login succeeds repeatedly",
 		Contacts:     []string{"derat@chromium.org"},
 		Attr:         []string{"disabled"},
-		SoftwareDeps: []string{"chrome_login"},
+		SoftwareDeps: []string{"chrome"},
 		Timeout:      365 * 24 * time.Hour,
 	})
 }

@@ -22,7 +22,7 @@ func init() {
 			"derat@chromium.org",   // Tast port author
 			"chromeos-security@google.com",
 		},
-		SoftwareDeps: []string{"chrome_login", "no_android"},
+		SoftwareDeps: []string{"chrome", "no_android"},
 		Pre:          chrome.LoggedIn(),
 	})
 }

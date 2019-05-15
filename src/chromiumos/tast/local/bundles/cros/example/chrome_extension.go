@@ -22,7 +22,7 @@ func init() {
 		Desc:         "Demonstrates loading a custom Chrome extension",
 		Contacts:     []string{"derat@chromium.org", "tast-users@chromium.org"},
 		Data:         []string{"chrome_extension_manifest.json"},
-		SoftwareDeps: []string{"chrome_login"},
+		SoftwareDeps: []string{"chrome"},
 	})
 }
 

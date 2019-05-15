@@ -25,7 +25,7 @@ func init() {
 			"derat@chromium.org",    // session_manager owner
 			"hidehiko@chromium.org", // Tast port author
 		},
-		SoftwareDeps: []string{"chrome_login"},
+		SoftwareDeps: []string{"chrome"},
 	})
 }
 

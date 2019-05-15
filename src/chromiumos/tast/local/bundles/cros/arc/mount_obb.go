@@ -32,12 +32,12 @@ func init() {
 			"hidehiko@chromium.org", // Tast port.
 		},
 		Attr: []string{"informational"},
-		// TODO(hidehiko,nya): regsitration_test.go is too strict.
-		// Actually, this does not actually need "chrome_login", and
+		// TODO(hidehiko,nya): registration_test.go is too strict.
+		// Actually, this does not actually need "chrome", and
 		// should be done very quickly so default Timeout should work.
-		// Added "chrome_login" and Timeout as a workaround, because
+		// Added "chrome" and Timeout as a workaround, because
 		// it is not blocker, but we should revisit here.
-		SoftwareDeps: []string{"android", "chrome_login"},
+		SoftwareDeps: []string{"android", "chrome"},
 		Timeout:      4 * time.Minute,
 	})
 }

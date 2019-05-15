@@ -26,7 +26,7 @@ func init() {
 			"arc-eng@google.com",
 			"hidehiko@chromium.org", // Tast port author.
 		},
-		SoftwareDeps: []string{"android", "chrome_login"},
+		SoftwareDeps: []string{"android", "chrome"},
 		Timeout:      4 * time.Minute,
 	})
 }
