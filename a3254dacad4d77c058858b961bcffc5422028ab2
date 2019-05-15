@@ -16,6 +16,24 @@
       "revId": "a3254dacad4d77c058858b961bcffc5422028ab2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a830e688_443c30a8",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-05-15T17:47:46Z",
+      "side": 1,
+      "message": "To change the policy source you need to pass in another Chrome flag (--device-management-url).  I think it makes sense to have that case as an option through policyMode since the url and fetch flags are not independent.  (I.e. there\u0027s no reason to pass in a management url without also fetching policies)\n\nHappy to leave this as a bool for now if that makes things cleaner.",
+      "parentUuid": "59ce4d9b_6706b527",
+      "revId": "a3254dacad4d77c058858b961bcffc5422028ab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
