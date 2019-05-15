@@ -17,6 +17,8 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/shirou/gopsutil/process"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/sysutil"
@@ -265,8 +267,66 @@ func testCgroup(ctx context.Context, s *testing.State, arc []sysutil.MountInfo) 
 	}
 }
 
+// GetPIDs returns all PIDs corresponding to ARC init processes.
+func GetPIDs() ([]int, error) {
+	// The path to the ARC init executable.
+	const initExecPath = "/init"
+	all, err := process.Pids()
+	if err != nil {
+		return nil, err
+	}
+
+	var pids []int
+	for _, pid := range all {
+		proc, err := process.NewProcess(pid)
+		if err != nil {
+			// Assume that the process exited.
+			continue
+		}
+		if exe, err := proc.Exe(); err == nil && exe == initExecPath {
+			if username, err := proc.Username(); err == nil && username == "android-root" {
+				pids = append(pids, int(pid))
+			}
+		}
+	}
+	return pids, nil
+}
+
+// GetRootPID returns the PID of the root ARC init process.
+func GetRootPID() (int, error) {
+	pids, err := GetPIDs()
+	if err != nil {
+		return -1, err
+	}
+
+	pm := make(map[int]struct{}, len(pids))
+	for _, pid := range pids {
+		pm[pid] = struct{}{}
+	}
+	for _, pid := range pids {
+		// If we see errors, assume that the process exited.
+		proc, err := process.NewProcess(int32(pid))
+		if err != nil {
+			continue
+		}
+		ppid, err := proc.Ppid()
+		if err != nil || ppid <= 0 {
+			continue
+		}
+		if _, ok := pm[int(ppid)]; !ok {
+			return pid, nil
+		}
+	}
+	return -1, errors.New("root not found")
+}
+
 func testCPUSet(ctx context.Context, s *testing.State, a *arc.ARC) {
 	s.Log("Running testCPUSet")
+
+	initPid, err := GetRootPID()
+	if err != nil {
+		s.Error("Failed to get root init process")
+	}
 
 	// Verify that /dev/cpuset is properly set up.
 	types := []string{"foreground", "background", "system-background", "top-app"}
@@ -280,9 +340,11 @@ func testCPUSet(ctx context.Context, s *testing.State, a *arc.ARC) {
 
 	allCPUs := fmt.Sprintf("0-%d", runtime.NumCPU()-1)
 	for _, t := range types {
-		path := fmt.Sprintf("/dev/cpuset/%s/cpus", t)
 		// cgroup psedo file cannot be "adb pull"ed. Instead, read it directly via cat.
-		out, err := a.Command(ctx, "cat", path).Output(testexec.DumpLogOnError)
+		// Also, it is not accessible via adb shell user in P. Access by procfs instead.
+		path := fmt.Sprintf("/proc/%d/root/dev/cpuset/%s/cpus", initPid, t)
+		cmd := testexec.CommandContext(ctx, "cat", path)
+		out, err := cmd.Output(testexec.DumpLogOnError)
 		if err != nil {
 			s.Errorf("Failed to read %s: %v", path, err)
 			continue
