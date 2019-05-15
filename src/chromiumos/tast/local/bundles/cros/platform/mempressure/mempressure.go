@@ -1038,6 +1038,9 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	}
 	coldTabIDs := rset.tabIDs[coldTabLower:coldTabUpper]
 	times, err = cycleTabs(ctx, cr, coldTabIDs, rset, 0, false)
+	if err != nil {
+		s.Fatal("Cannot switch to cold tabs: ", err)
+	}
 	logTabSwitchTimes(ctx, times, len(coldTabIDs), "coldswitch")
 
 	// -----------------
