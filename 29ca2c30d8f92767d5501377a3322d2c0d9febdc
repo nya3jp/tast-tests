@@ -1,0 +1,516 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1655ae98_77ebc2b6",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "2019",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8289914_65ce89a8",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "package docs should only appear in one file in the package\n\nhttps://blog.golang.org/godoc-documenting-go-code",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfb76074_e8be6704",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "godoc comments should be full sentences.\n\nthis should probably be ARCBR0 or ARCBr0; ditto for others involving acronyms: https://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70d0ab8b_d57d8d55",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "var ifnames []string\n\n(avoids an unnecessary allocation if you don\u0027t add anything)",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a027b5d9_bbf14ab9",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "nit: for _, ifname :\u003d range stringsSplit(...) {",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddb77357_10355f88",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "ifname !\u003d Loopback",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efa1a966_0de6c174",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "2019",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1193ea69_d974001a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "MultiNetworkingConnectivity?\n\n\"arc.Connectivity\" sounds like it\u0027s just testing general networking.",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 28
+      },
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcd3860a_34358f78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "please use the arc.Booted precondition\n\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/arc#Booted",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a5867af_28cc46f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "i\u0027d recommend just inlining this and inboundNetworking in the test body. the top-level namespace is shared with other tests and the flow here seems straightforward\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3102af03_7339cb4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "return arc.BootstrapCommand(...).Run()",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee7b079e_fefab52d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "this seems like a short timeout that could lead to flakiness. 10 seconds, maybe?",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d974349_b44e638e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "please add end-of-line comments documenting what these are, and use a more descriptive name than \u0027arc\u0027 (which is already a package name)",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3803aca1_173eb37b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "pointers are typically avoided for small structs like this one",
+      "range": {
+        "startLine": 82,
+        "startChar": 27,
+        "endLine": 82,
+        "endChar": 28
+      },
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad9be9be_dc0fec18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "nit: iface? \u0027i\u0027 is usually an int index",
+      "range": {
+        "startLine": 83,
+        "startChar": 8,
+        "endLine": 83,
+        "endChar": 9
+      },
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b751724_b5c991ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "you don\u0027t need this; this is already the zero value for a string",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdbe64bb_6bdc00e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "nit: for _, iface :\u003d range strings.Split(...) {",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1a80a54_7e0279a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "please check the length before indexing",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e86f87e2_b269c0fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "please check length",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d646bb07_6e3051e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "if you get rid of the pointer above you can just do ifaces[n].arc \u003d ip",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47887cac_233ab628",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "this timeout seems short too",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c63d86e3_52e356e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "iface? this isn\u0027t just an IP",
+      "range": {
+        "startLine": 122,
+        "startChar": 13,
+        "endLine": 122,
+        "endChar": 15
+      },
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e84a6acf_1d350a9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "if ip.arc !\u003d \"\" \u0026\u0026 ifname !\u003d arc.Arc0",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e110144_62be716f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "please don\u0027t launch a goroutine here. there\u0027s no guarantee that this will finish running or even be scheduled before your test exits",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b6f063a_5ea26184",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "errors should be lowercased: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6c223a1_35364b7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "please use a longer timeout to avoid flakiness",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebd2e601_c6d80301",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "instead of taking a state, please make this return an error\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\nplease also go through https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_2.md, as it provides guidance here",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfbf065b_3fe4f2dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-15T23:12:16Z",
+      "side": 1,
+      "message": "please use longer timeout",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
