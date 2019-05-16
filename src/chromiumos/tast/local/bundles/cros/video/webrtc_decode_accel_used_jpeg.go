@@ -18,7 +18,6 @@ func init() {
 		Func:         WebRTCDecodeAccelUsedJPEG,
 		Desc:         "Checks HW decoding used for MJPEG in WebRTC",
 		Contacts:     []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome_login", caps.HWDecodeJPEG},
 		Data:         append(webrtc.LoopbackDataFiles(), "crowd720_25frames.mjpeg"),
 	})
