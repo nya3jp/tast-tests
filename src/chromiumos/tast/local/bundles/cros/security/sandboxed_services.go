@@ -168,6 +168,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		"init",
 		"logger",
 		"login",
+		"mosys", // used to get system info: https://crbug.com/963888
 		"nacl_helper",
 		"nacl_helper_bootstrap",
 		"nacl_helper_nonsfi",
