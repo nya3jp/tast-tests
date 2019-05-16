@@ -1,0 +1,5 @@
+{
+	"url": "gs://chromiumos-test-assets-public/tast/cros/graphics/traces/glxgears.trace",
+	"size": 102790,
+	"sha256sum": "9e41c9bd998813277d884c8054d6d3480046ec06a17a60e31cc044bb1b7b547e"
+}
