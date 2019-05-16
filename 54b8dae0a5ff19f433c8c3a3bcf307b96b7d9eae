@@ -48,6 +48,23 @@
     },
     {
       "key": {
+        "uuid": "11162c52_96085c30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-16T23:35:11Z",
+      "side": 1,
+      "message": "does this belong in the vm package instead, alongside all the other crosvm/crostini tests?",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "598bda34_e038e4a7",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
         "patchSetId": 3
@@ -64,6 +81,93 @@
         "startChar": 16,
         "endLine": 23,
         "endChar": 29
+      },
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f6aebc5_94baea9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-16T23:35:11Z",
+      "side": 1,
+      "message": "we don\u0027t put underscores in test names: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Test-names\n\nCrostiniTraceGlxgears would work here.",
+      "parentUuid": "598bda34_e038e4a7",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d68b59e9_a4acafca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-16T23:35:11Z",
+      "side": 1,
+      "message": "you don\u0027t need to say that it\u0027s a test here. how about something like \"Replays a graphics trace in Crostini VM\"?",
+      "range": {
+        "startLine": 24,
+        "startChar": 24,
+        "endLine": 24,
+        "endChar": 28
+      },
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66dd2c84_c919aa44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-16T23:35:11Z",
+      "side": 1,
+      "message": "this is too long for an informational test that will eventually be promoted to the CQ. did you mean to make this be a performance test? if so, you need to specify one of the crosbolt group attributes above instead of informational\n\n(i see later that you\u0027re trying to report perf keyvals, so crosbolt is probably what you want)",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63ca1887_6c5ec381",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-16T23:35:11Z",
+      "side": 1,
+      "message": "you have a typo here. the correct dependency is \"vm_host\"",
+      "range": {
+        "startLine": 29,
+        "startChar": 41,
+        "endLine": 29,
+        "endChar": 51
       },
       "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -117,6 +221,149 @@
     },
     {
       "key": {
+        "uuid": "a3307a68_df4bd21d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-16T23:35:11Z",
+      "side": 1,
+      "message": "test functions don\u0027t take parameters. if you\u0027ll want to add tests for different traces later, please move the shared code into a subpackage.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code",
+      "parentUuid": "0f348868_9614728f",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 59
+      },
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5ecef67_1d585c03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-16T23:35:11Z",
+      "side": 1,
+      "message": "you probably need to use a shorter context for the rest of the test to make sure that this has time to run\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_2.md#test-setup\n\n(please read both codelabs if you haven\u0027t already)",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de5f4142_46dace68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-16T23:35:11Z",
+      "side": 1,
+      "message": "why are you testing this?",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f273407_ca4f284f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-16T23:35:11Z",
+      "side": 1,
+      "message": "please check errors",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff241847_99d53d06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-16T23:35:11Z",
+      "side": 1,
+      "message": "please fix this first to avoid adding a network dependency to the test",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "401ac985_d6237578",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-16T23:35:11Z",
+      "side": 1,
+      "message": "you can move this const outside of the test function so you can share it with init",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2686cbee_4bbf6236",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-16T23:35:11Z",
+      "side": 1,
+      "message": "nit: \"Replaying trace file\"",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c871ad4_44eadee5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-16T23:35:11Z",
+      "side": 1,
+      "message": "please don\u0027t log potentially long strings. write them to output files instead",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "61bcdf52_dc28cd2b",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
         "patchSetId": 3
@@ -157,6 +404,126 @@
         "endLine": 119,
         "endChar": 23
       },
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d1801e6_2250438a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-16T23:35:11Z",
+      "side": 1,
+      "message": "this namespace is shared by all graphics tests, so please avoid generic names: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code\n\nbut if you\u0027re just calling this once, i\u0027d just inline it in the test function since it\u0027s trivial",
+      "range": {
+        "startLine": 128,
+        "startChar": 5,
+        "endLine": 128,
+        "endChar": 16
+      },
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db2f388e_ff0736d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-16T23:35:11Z",
+      "side": 1,
+      "message": "you don\u0027t need to test this. match will either be nil or a slice of length 4",
+      "range": {
+        "startLine": 131,
+        "startChar": 20,
+        "endLine": 131,
+        "endChar": 35
+      },
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7a427cd_ab3ddba4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-16T23:35:11Z",
+      "side": 1,
+      "message": "use strconv instead?",
+      "range": {
+        "startLine": 135,
+        "startChar": 10,
+        "endLine": 135,
+        "endChar": 20
+      },
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18d085ae_e7832952",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-16T23:35:11Z",
+      "side": 1,
+      "message": "this is ignoring all but the final error",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad93a9bf_4a50ab3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-16T23:35:11Z",
+      "side": 1,
+      "message": "avoid bare returns: https://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "510686f6_d7deb3ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/crostini_trace_glxgears.trace.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-16T23:35:11Z",
+      "side": 1,
+      "message": "please follow the rules about putting dates in filenames: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#External-data-files\n\notherwise it\u0027s impossible to update data files without breaking branches",
       "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
