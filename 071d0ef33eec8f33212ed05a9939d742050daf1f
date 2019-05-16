@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2fd8e6be_d562b212",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-16T14:16:06Z",
+      "side": 1,
+      "message": "sorry for the bad advice re assigning directly to the field here. i was unaware of this weirdness in go, but i think it\u0027s fallout from this being an index expression (https://golang.org/ref/spec#Index_expressions)",
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
