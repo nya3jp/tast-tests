@@ -44,7 +44,6 @@ func verifyProp(prop map[string]dbus.Variant) []error {
 		{"DeviceSize", "t"},
 		{"DriveModel", "s"},
 		{"IdLabel", "s"},
-		{"NativePath", "s"},
 		{"StorageDevicePath", "s"},
 		{"FileSystemType", "s"},
 	} {
