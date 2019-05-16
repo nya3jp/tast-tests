@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "df67ed38_727be5ed",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1655ae98_77ebc2b6",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8289914_65ce89a8",
         "filename": "src/chromiumos/tast/local/arc/networking.go",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eec337aa_e5d89c4e",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8289914_65ce89a8",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "db491807_68971d5b",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfb76074_e8be6704",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70d0ab8b_d57d8d55",
         "filename": "src/chromiumos/tast/local/arc/networking.go",
         "patchSetId": 2
@@ -73,6 +133,24 @@
       "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d088028e_cd84064f",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70d0ab8b_d57d8d55",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "23204bc5_ffc941a4",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a027b5d9_bbf14ab9",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ddb77357_10355f88",
         "filename": "src/chromiumos/tast/local/arc/networking.go",
         "patchSetId": 2
@@ -107,6 +203,24 @@
       "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51c06e65_b7407872",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddb77357_10355f88",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -133,6 +247,30 @@
     },
     {
       "key": {
+        "uuid": "be001129_729e0ca0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efa1a966_0de6c174",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1193ea69_d974001a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
         "patchSetId": 2
@@ -156,6 +294,30 @@
     },
     {
       "key": {
+        "uuid": "b79f41ee_2ab561ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1193ea69_d974001a",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 28
+      },
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcd3860a_34358f78",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
         "patchSetId": 2
@@ -170,6 +332,24 @@
       "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a5a98f8_229bcd2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcd3860a_34358f78",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -190,6 +370,24 @@
     },
     {
       "key": {
+        "uuid": "1e268dba_7539021d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a5867af_28cc46f1",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3102af03_7339cb4c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
         "patchSetId": 2
@@ -204,6 +402,24 @@
       "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c81ec22_e78e8f2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3102af03_7339cb4c",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -224,6 +440,24 @@
     },
     {
       "key": {
+        "uuid": "10b89935_d0705b60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee7b079e_fefab52d",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d974349_b44e638e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
         "patchSetId": 2
@@ -238,6 +472,24 @@
       "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7531ad96_d1b1d02f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d974349_b44e638e",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -264,6 +516,30 @@
     },
     {
       "key": {
+        "uuid": "eb28e678_e6e3c949",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Removed the pointer.",
+      "parentUuid": "3803aca1_173eb37b",
+      "range": {
+        "startLine": 82,
+        "startChar": 27,
+        "endLine": 82,
+        "endChar": 28
+      },
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad9be9be_dc0fec18",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
         "patchSetId": 2
@@ -287,6 +563,30 @@
     },
     {
       "key": {
+        "uuid": "facf2dd6_2c1fc7a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Replaced it with ifc due to iface already being used in the type struct.",
+      "parentUuid": "ad9be9be_dc0fec18",
+      "range": {
+        "startLine": 83,
+        "startChar": 8,
+        "endLine": 83,
+        "endChar": 9
+      },
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b751724_b5c991ac",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
         "patchSetId": 2
@@ -301,6 +601,24 @@
       "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b801f78f_fa5be18b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b751724_b5c991ac",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -321,6 +639,24 @@
     },
     {
       "key": {
+        "uuid": "0c339569_6b5ec23a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdbe64bb_6bdc00e9",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1a80a54_7e0279a8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
         "patchSetId": 2
@@ -335,6 +671,24 @@
       "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "905a14ad_7b845493",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1a80a54_7e0279a8",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -355,6 +709,24 @@
     },
     {
       "key": {
+        "uuid": "b87b969c_607bbef8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e86f87e2_b269c0fc",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d646bb07_6e3051e6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
         "patchSetId": 2
@@ -372,6 +744,24 @@
     },
     {
       "key": {
+        "uuid": "99b9c4b8_1ca36060",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Got rid of the pointer.\nHowever, I tried \u0027ifaces[n].arc \u003d ip\u0027 but it does not seem to work.\n\"cannot assign to struct field **** in map\"\n\nCurrent impl still have the \u0027ok\u0027 if statement, but different due to the deletion of pointer.",
+      "parentUuid": "d646bb07_6e3051e6",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47887cac_233ab628",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
         "patchSetId": 2
@@ -386,6 +776,24 @@
       "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c952d4ba_33929c5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47887cac_233ab628",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -412,6 +820,30 @@
     },
     {
       "key": {
+        "uuid": "e99ffd12_ae358efc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c63d86e3_52e356e2",
+      "range": {
+        "startLine": 122,
+        "startChar": 13,
+        "endLine": 122,
+        "endChar": 15
+      },
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e84a6acf_1d350a9f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
         "patchSetId": 2
@@ -429,6 +861,24 @@
     },
     {
       "key": {
+        "uuid": "1f292475_b6415c07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e84a6acf_1d350a9f",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e110144_62be716f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
         "patchSetId": 2
@@ -440,6 +890,24 @@
       "writtenOn": "2019-05-15T23:12:16Z",
       "side": 1,
       "message": "please don\u0027t launch a goroutine here. there\u0027s no guarantee that this will finish running or even be scheduled before your test exits",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7e24c6b_604d8c3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Edited the goroutine by following the guidance https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_2.md.\n\nStarted the \u0027ping\u0027 command and started goroutine for listening.\nAdds timeout and defers both ping and tcpdump command.",
+      "parentUuid": "8e110144_62be716f",
       "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -463,6 +931,24 @@
     },
     {
       "key": {
+        "uuid": "f4e813a7_17cf867e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b6f063a_5ea26184",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6c223a1_35364b7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
         "patchSetId": 2
@@ -477,6 +963,24 @@
       "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a546070c_2063930b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6c223a1_35364b7d",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -497,6 +1001,24 @@
     },
     {
       "key": {
+        "uuid": "f61fb642_9160f148",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebd2e601_c6d80301",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfbf065b_3fe4f2dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
         "patchSetId": 2
@@ -511,6 +1033,24 @@
       "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4bb5180_f6c27e36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/connectivity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-16T09:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfbf065b_3fe4f2dd",
+      "revId": "29ca2c30d8f92767d5501377a3322d2c0d9febdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
