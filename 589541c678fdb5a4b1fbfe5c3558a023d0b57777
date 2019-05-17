@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c67f530_f6efd85b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-17T03:57:30Z",
+      "side": 1,
+      "message": "FYI: This seems to have moved to:\n\nhttps://cs.chromium.org/chromium/src/ash/wm/collision_detection/collision_detection_utils.h?g\u003d0\u0026l\u003d17",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 74
+      },
+      "revId": "589541c678fdb5a4b1fbfe5c3558a023d0b57777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "045e1464_e9adf73c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-17T03:57:30Z",
+      "side": 1,
+      "message": "This does nothing without calling Run().\n\n if err :\u003d a.Command().Run(); err !\u003d nil {\n   t.Fatal(...)\n }",
+      "range": {
+        "startLine": 151,
+        "startChar": 3,
+        "endLine": 151,
+        "endChar": 86
+      },
+      "revId": "589541c678fdb5a4b1fbfe5c3558a023d0b57777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0149978d_971c3af8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-17T03:57:30Z",
+      "side": 1,
+      "message": "Please try to build a readable message as an English sentence. In this case, how about:\n\n s.Errorf(\"%s test failed with tablet mode %t: %v\", ...)",
+      "range": {
+        "startLine": 167,
+        "startChar": 14,
+        "endLine": 167,
+        "endChar": 41
+      },
+      "revId": "589541c678fdb5a4b1fbfe5c3558a023d0b57777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2254cab_dd14870d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-17T03:57:30Z",
+      "side": 1,
+      "message": "nit: IMO an error message like \"want 10 \u003c\u003d 5 \u003c\u003d 15\" does not clarify which value is actual value. How about:\n\n errors.Wrapf(err, \"invalid height %d; want %d \u003c\u003d h \u003c\u003d %d\", ...)",
+      "range": {
+        "startLine": 272,
+        "startChar": 29,
+        "endLine": 272,
+        "endChar": 65
+      },
+      "revId": "589541c678fdb5a4b1fbfe5c3558a023d0b57777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9203d283_de8b68ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-17T03:57:30Z",
+      "side": 1,
+      "message": "What\u0027s 100? Could you define a named constant?",
+      "range": {
+        "startLine": 425,
+        "startChar": 68,
+        "endLine": 425,
+        "endChar": 71
+      },
+      "revId": "589541c678fdb5a4b1fbfe5c3558a023d0b57777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "617bfd60_75b153bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-17T03:57:30Z",
+      "side": 1,
+      "message": "nit: I think \"(%d, %d)\" is the most recognized format for a 2D point.\n\nAlso, could you consider implementing Stringer in Point so that we can format it nicely with %v:\n\n func (p *Point) String() string {\n   return fmt.Sprintf(\"(%d, %d)\", p.x, p.y)\n }",
+      "range": {
+        "startLine": 426,
+        "startChar": 57,
+        "endLine": 426,
+        "endChar": 62
+      },
+      "revId": "589541c678fdb5a4b1fbfe5c3558a023d0b57777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8816522a_af368a17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-17T03:57:30Z",
+      "side": 1,
+      "message": "Please check err before this.",
+      "range": {
+        "startLine": 443,
+        "startChar": 0,
+        "endLine": 443,
+        "endChar": 89
+      },
+      "revId": "589541c678fdb5a4b1fbfe5c3558a023d0b57777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3845075d_c21917f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-17T03:57:30Z",
+      "side": 1,
+      "message": "huge nit: \"is \u003d \" sounds a bit strange. \"is\" or \"\u003d\" should be sufficient.",
+      "range": {
+        "startLine": 505,
+        "startChar": 36,
+        "endLine": 505,
+        "endChar": 41
+      },
+      "revId": "589541c678fdb5a4b1fbfe5c3558a023d0b57777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9ba74d3_b2712c77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-17T03:57:30Z",
+      "side": 1,
+      "message": "We already have arc.Rect, can we consolidate?",
+      "range": {
+        "startLine": 810,
+        "startChar": 0,
+        "endLine": 815,
+        "endChar": 1
+      },
+      "revId": "589541c678fdb5a4b1fbfe5c3558a023d0b57777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "230a2be4_c9b0ce1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-17T03:57:30Z",
+      "side": 1,
+      "message": "style: indentation is wrong here.",
+      "range": {
+        "startLine": 827,
+        "startChar": 6,
+        "endLine": 827,
+        "endChar": 7
+      },
+      "revId": "589541c678fdb5a4b1fbfe5c3558a023d0b57777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da62eabe_768cb51e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-17T03:57:30Z",
+      "side": 1,
+      "message": "style: indentation is wrong here.",
+      "range": {
+        "startLine": 845,
+        "startChar": 7,
+        "endLine": 845,
+        "endChar": 8
+      },
+      "revId": "589541c678fdb5a4b1fbfe5c3558a023d0b57777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55b24434_5560a13c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-17T03:57:30Z",
+      "side": 1,
+      "message": "Need to return after reject. Same below.",
+      "range": {
+        "startLine": 903,
+        "startChar": 8,
+        "endLine": 903,
+        "endChar": 52
+      },
+      "revId": "589541c678fdb5a4b1fbfe5c3558a023d0b57777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54e2b05d_792cdb6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-17T03:57:30Z",
+      "side": 1,
+      "message": "Off topic: BTW, is \"tuxel\" a generally known term?",
+      "range": {
+        "startLine": 937,
+        "startChar": 39,
+        "endLine": 937,
+        "endChar": 44
+      },
+      "revId": "589541c678fdb5a4b1fbfe5c3558a023d0b57777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "802e8851_98c17b57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-17T03:57:30Z",
+      "side": 1,
+      "message": "Optional: We have many \"pixels\" in this test (DP, PX, TX), and it sounds very error-prone. It\u0027s great if we could catch errors by defining types...",
+      "range": {
+        "startLine": 938,
+        "startChar": 1,
+        "endLine": 939,
+        "endChar": 80
+      },
+      "revId": "589541c678fdb5a4b1fbfe5c3558a023d0b57777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
