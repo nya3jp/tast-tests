@@ -308,6 +308,24 @@
     },
     {
       "key": {
+        "uuid": "597d7898_5e797d05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-17T02:26:10Z",
+      "side": 1,
+      "message": "Ack. Will add crosbolt and limit the timeout. Running it on my machine takes around 1 minutes.",
+      "parentUuid": "15b6970b_64d4ef7c",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63ca1887_6c5ec381",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
         "patchSetId": 3
@@ -328,6 +346,30 @@
       "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2341e76_766ac350",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-17T02:26:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "63ca1887_6c5ec381",
+      "range": {
+        "startLine": 29,
+        "startChar": 41,
+        "endLine": 29,
+        "endChar": 51
+      },
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -573,6 +615,24 @@
     },
     {
       "key": {
+        "uuid": "eae7754f_5544a977",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-17T02:26:10Z",
+      "side": 1,
+      "message": "I believe CreateDefaultContainer checked this and these lines are just copied from vm.crostini_start_* tests. \nI don\u0027t feel strong on this. If you feel not happy about this, I\u0027m happy to delete it.",
+      "parentUuid": "78a324f3_89f679d4",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f273407_ca4f284f",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
         "patchSetId": 3
@@ -657,6 +717,24 @@
       "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db4aabd2_6d876770",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-17T02:26:10Z",
+      "side": 1,
+      "message": "Will do some refactor to move this out.",
+      "parentUuid": "401ac985_d6237578",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -800,6 +878,30 @@
     },
     {
       "key": {
+        "uuid": "ff83abeb_36b3fb0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-17T02:26:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ff53bba3_7a80629d",
+      "range": {
+        "startLine": 119,
+        "startChar": 13,
+        "endLine": 119,
+        "endChar": 23
+      },
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d1801e6_2250438a",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
         "patchSetId": 3
@@ -893,6 +995,30 @@
     },
     {
       "key": {
+        "uuid": "87a53613_33148ac4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-17T02:26:10Z",
+      "side": 1,
+      "message": "Thanks for pointing this. I use Sscanf since I\u0027m more familiar with it.",
+      "parentUuid": "e7a427cd_ab3ddba4",
+      "range": {
+        "startLine": 135,
+        "startChar": 10,
+        "endLine": 135,
+        "endChar": 20
+      },
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18d085ae_e7832952",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
         "patchSetId": 3
@@ -910,6 +1036,24 @@
     },
     {
       "key": {
+        "uuid": "49ea6f33_30033e5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-17T02:26:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "18d085ae_e7832952",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad93a9bf_4a50ab3a",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
         "patchSetId": 3
@@ -924,6 +1068,24 @@
       "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "684c13f8_327b07ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-17T02:26:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ad93a9bf_4a50ab3a",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
