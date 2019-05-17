@@ -65,6 +65,24 @@
     },
     {
       "key": {
+        "uuid": "b62e927d_18750798",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-05-17T00:17:42Z",
+      "side": 1,
+      "message": "No, the tests are going to be graphics specific. They just happen to run in crostini in this case. We will also make sure API traces run without crostini.",
+      "parentUuid": "11162c52_96085c30",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "598bda34_e038e4a7",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
         "patchSetId": 3
@@ -112,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "7f08f451_2990442c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-05-17T00:17:42Z",
+      "side": 1,
+      "message": "Can we have a dot or something in the test name to get a simpler/cleaner mapping? We will have hundreds of traces, so some of this will need to get parameterized. Of course we can write a small generator again to output go/tast templates. But technically the trace name (here glxgears) is the parameter.",
+      "parentUuid": "4f6aebc5_94baea9c",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d68b59e9_a4acafca",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
         "patchSetId": 3
@@ -135,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "64cc084e_00c193be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-05-17T00:17:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d68b59e9_a4acafca",
+      "range": {
+        "startLine": 24,
+        "startChar": 24,
+        "endLine": 24,
+        "endChar": 28
+      },
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66dd2c84_c919aa44",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
         "patchSetId": 3
@@ -146,6 +212,24 @@
       "writtenOn": "2019-05-16T23:35:11Z",
       "side": 1,
       "message": "this is too long for an informational test that will eventually be promoted to the CQ. did you mean to make this be a performance test? if so, you need to specify one of the crosbolt group attributes above instead of informational\n\n(i see later that you\u0027re trying to report perf keyvals, so crosbolt is probably what you want)",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15b6970b_64d4ef7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-05-17T00:17:42Z",
+      "side": 1,
+      "message": "One of the traces (the simplest, like glxgears) should get promoted to the CQ. The rest should be performance tests and crosbolt is a good place.",
+      "parentUuid": "66dd2c84_c919aa44",
       "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -269,6 +353,30 @@
     },
     {
       "key": {
+        "uuid": "4a34e463_c3046d9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-05-17T00:17:42Z",
+      "side": 1,
+      "message": "Sounds good.",
+      "parentUuid": "a3307a68_df4bd21d",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 59
+      },
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e5ecef67_1d585c03",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
         "patchSetId": 3
@@ -280,6 +388,24 @@
       "writtenOn": "2019-05-16T23:35:11Z",
       "side": 1,
       "message": "you probably need to use a shorter context for the rest of the test to make sure that this has time to run\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_2.md#test-setup\n\n(please read both codelabs if you haven\u0027t already)",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb70b371_8a79e807",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-05-17T00:17:42Z",
+      "side": 1,
+      "message": "Actually, as these will be hundreds of performance tests we don\u0027t want to start and stop the VM all the time inbetween (but we still want an identifier for each trace as a test name). Is there a good way to have a shared action and leave state between tests (like logged into Chrome, VM running)? It would be nice to create do this initialization lazily.",
+      "parentUuid": "e5ecef67_1d585c03",
       "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
