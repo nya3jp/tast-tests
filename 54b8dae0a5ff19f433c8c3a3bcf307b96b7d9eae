@@ -202,6 +202,30 @@
     },
     {
       "key": {
+        "uuid": "17095d52_6e5ffb93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-17T00:41:19Z",
+      "side": 1,
+      "message": "i see. i\u0027d prefer to stick with the current naming conventions for now. when we get to the point where we\u0027re ready to run tens or hundreds of similar variations of a single test, i think it makes sense to talk about supporting some form of parameterization.",
+      "parentUuid": "77cf51d6_81d5ec39",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d68b59e9_a4acafca",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
         "patchSetId": 3
