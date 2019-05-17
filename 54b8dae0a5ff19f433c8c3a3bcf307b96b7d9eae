@@ -326,6 +326,24 @@
     },
     {
       "key": {
+        "uuid": "dce17a99_2187138d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-05-17T21:15:27Z",
+      "side": 1,
+      "message": "Notice that logging into Chrome/Starting Android can take 90 seconds. So even if we can replay fast (\u003c1 minute), we probably need to budget 2-3 minutes overhead for spinning up?",
+      "parentUuid": "597d7898_5e797d05",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63ca1887_6c5ec381",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
         "patchSetId": 3
