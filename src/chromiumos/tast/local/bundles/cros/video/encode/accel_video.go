@@ -96,7 +96,10 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, opts TestOptions, 
 	// chrome process and allow us to claim ownership of the GPU.
 	shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
-	upstart.StopJob(shortCtx, "ui")
+
+	if err := upstart.StopJob(shortCtx, "ui"); err != nil {
+		s.Error("Failed to stop ui: ", err)
+	}
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
 	params := opts.Params
