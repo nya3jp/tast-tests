@@ -22,6 +22,30 @@
       "revId": "f1f4f70556bc543c7a71024bbb1261d6c37d2a3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2341c0c1_4268cc09",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-17T01:57:34Z",
+      "side": 1,
+      "message": "ah, thanks. i\u0027d assumed that this error was getting wrapped in another one like \"failed checking software deps\", but i was lazy and didn\u0027t check, and i now see that it isn\u0027t. i\u0027ve updated this. :-)",
+      "parentUuid": "075f8781_d0223110",
+      "range": {
+        "startLine": 307,
+        "startChar": 23,
+        "endLine": 307,
+        "endChar": 44
+      },
+      "revId": "f1f4f70556bc543c7a71024bbb1261d6c37d2a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
