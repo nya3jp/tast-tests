@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package video
+package camera
 
 import (
 	"context"
@@ -19,7 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     WebRTCMediaRecorder,
 		Desc:     "Checks MediaRecorder on local and remote streams",
-		Contacts: []string{"shenghao@chromium.org", "chromeos-video-eng@google.com"},
+		Contacts: []string{"shenghao@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:     []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{"chrome", "chrome_internal"},

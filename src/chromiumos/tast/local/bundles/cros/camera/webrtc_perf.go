@@ -2,12 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package video
+package camera
 
 import (
 	"context"
 	"time"
 
+	// TODO(crbug.com/963772) Move libraries in video to camera or media folder.
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
 	"chromiumos/tast/local/bundles/cros/video/webrtc"
 	"chromiumos/tast/local/chrome"
@@ -17,12 +18,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WebRTCCameraPerf,
+		Func: WebRTCPerf,
 		Desc: "Captures performance data about getUserMedia video capture",
 		Contacts: []string{
 			"keiichiw@chromium.org", // Video team
 			"shik@chromium.org",     // Camera team
-			"chromeos-video-eng@google.com",
+			"chromeos-camera-eng@google.com",
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome", "camera_720p"},
@@ -30,18 +31,17 @@ func init() {
 	})
 }
 
-// WebRTCCameraPerf is the full version of WebRTCCamera.
-// It renders the camera's media stream in VGA and 720p for 20 seconds.
-// If there is no error while exercising the camera, it uploads statistics of
-// black/frozen frames.
-// This test will fail when an error occurs or too many frames are broken.
+// WebRTCPerf is the full version of WebRTC. It renders the camera's media
+// stream in VGA and 720p for 20 seconds. If there is no error while exercising
+// the camera, it uploads statistics of black/frozen frames. This test will fail
+// when an error occurs or too many frames are broken.
 //
 // This test uses the real webcam unless it is running under QEMU. Under QEMU,
 // it uses "vivid" instead, which is the virtual video test driver and can be
 // used as an external USB camera.
-func WebRTCCameraPerf(ctx context.Context, s *testing.State) {
+func WebRTCPerf(ctx context.Context, s *testing.State) {
 	// Run tests for 20 seconds per resolution.
-	results := webrtc.RunWebRTCCamera(ctx, s, s.PreValue().(*chrome.Chrome), 20*time.Second,
+	results := webrtc.RunWebRTC(ctx, s, s.PreValue().(*chrome.Chrome), 20*time.Second,
 		webrtc.NoVerboseLogging)
 
 	if !s.HasError() {
