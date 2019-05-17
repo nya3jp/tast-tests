@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package video
+package camera
 
 import (
 	"bufio"
@@ -15,6 +15,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	// TODO(crbug.com/963772) Move libraries in video to camera or media folder.
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
 	"chromiumos/tast/local/bundles/cros/video/lib/cpu"
 	"chromiumos/tast/local/chrome/bintest"
