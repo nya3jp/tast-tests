@@ -2,12 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package video
+package camera
 
 import (
 	"context"
 	"time"
 
+	// TODO(crbug.com/963772) Move libraries in video to camera or media folder.
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
 	"chromiumos/tast/local/bundles/cros/video/lib/pre"
 	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
@@ -19,12 +20,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WebRTCPeerConnCameraH264,
+		Func: WebRTCPeerConnH264,
 		Desc: "Verifies that WebRTC loopback works (H264)",
 		Contacts: []string{
 			"keiichiw@chromium.org", // Video team
 			"shik@chromium.org",     // Camera team
-			"chromeos-video-eng@google.com",
+			"chromeos-camera-eng@google.com",
 		},
 		Attr: []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
@@ -34,11 +35,10 @@ func init() {
 	})
 }
 
-// WebRTCPeerConnCameraH264 starts a loopback WebRTC call with two
-// peer connections and ensures it successfully establishes the call (otherwise
-// the test will simply fail). If successful, it looks at the video frames
-// coming out on the receiving side of the call and looks for freezes and black
-// frames.
+// WebRTCPeerConnH264 starts a loopback WebRTC call with two peer connections
+// and ensures it successfully establishes the call (otherwise the test will
+// simply fail). If successful, it looks at the video frames coming out on the
+// receiving side of the call and looks for freezes and black frames.
 //
 // If this test shows black frames and video.WebRTCCamera does not, it could
 // mean H264 video isn't encoded/decoded right on this device but that the
@@ -47,7 +47,7 @@ func init() {
 // This test uses the real webcam unless it is running under QEMU. Under QEMU,
 // it uses "vivid" instead, which is the virtual video test driver and can be
 // used as an external USB camera.
-func WebRTCPeerConnCameraH264(ctx context.Context, s *testing.State) {
+func WebRTCPeerConnH264(ctx context.Context, s *testing.State) {
 	duration := 3 * time.Second
 	// Since we use vivid on VM and it's slower than real cameras,
 	// we use a longer time limit: https://crbug.com/929537
@@ -55,6 +55,6 @@ func WebRTCPeerConnCameraH264(ctx context.Context, s *testing.State) {
 		duration = 10 * time.Second
 	}
 
-	webrtc.RunWebRTCPeerConnCamera(ctx, s, s.PreValue().(*chrome.Chrome), videotype.H264,
+	webrtc.RunWebRTCPeerConn(ctx, s, s.PreValue().(*chrome.Chrome), videotype.H264,
 		duration, webrtc.VerboseLogging)
 }
