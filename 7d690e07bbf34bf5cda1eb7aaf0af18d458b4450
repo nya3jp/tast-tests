@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "241d9e24_3f5edef1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_recorder_encode_accel_used_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-17T05:49:33Z",
+      "side": 1,
+      "message": "Should we move libraries to /camera/, too?\n\nSame for others.",
+      "range": {
+        "startLine": 12,
+        "startChar": 37,
+        "endLine": 12,
+        "endChar": 56
+      },
+      "revId": "7d690e07bbf34bf5cda1eb7aaf0af18d458b4450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ddd5835_b8b9dc2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/webrtc_camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-17T05:49:33Z",
+      "side": 1,
+      "message": "\"camera.WebRTCCamera\" would be a redundant name.\nPerhaps, \"camera.WebRTC\" is enough.\n\nSame for \n\n- WebRTCCamera\n- WebRTCCameraPerf\n- WebRTCPeerConnCamera{VP8,H264}\n- WebRTCPeerConnCamera{VP8,H264}Perf",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 20
+      },
+      "revId": "7d690e07bbf34bf5cda1eb7aaf0af18d458b4450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "726a0b4b_49cdee91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/webrtc_camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-17T05:49:33Z",
+      "side": 1,
+      "message": "we should have changed this to \"camera\".\nSame for \n* WebRTCCamera\n* WebRTCCameraPerf\n* WebRTCPeerConnCamera{VP8,H264}\n* WebRTCPeerConnCamera{VP8,H264}Perf",
+      "range": {
+        "startLine": 26,
+        "startChar": 13,
+        "endLine": 26,
+        "endChar": 18
+      },
+      "revId": "7d690e07bbf34bf5cda1eb7aaf0af18d458b4450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fbea598_ed9d847c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/webrtc_decode_accel_used_jpeg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-17T05:49:33Z",
+      "side": 1,
+      "message": "This should be in /video/ because \"Contacts\" contains \"chromeos-video-eng@google.com\" not \"chromeos-camera-eng@google.com\".\n\nSame for other tests.\n\nActually, this test doesn\u0027t exercise camera. (It uses a video file as if it\u0027s an input from a camera)",
+      "revId": "7d690e07bbf34bf5cda1eb7aaf0af18d458b4450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
