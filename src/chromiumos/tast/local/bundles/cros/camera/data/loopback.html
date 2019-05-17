@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head><title>Loopback test</title></head>
+<body>
+  <video id="localVideo" autoplay muted></video>
+  <video id="remoteVideo" autoplay muted></video>
+<script src="third_party/blackframe.js"></script>
+<script src="third_party/munge_sdp.js"></script>
+<script src="third_party/ssim.js"></script>
+<script>
+let localStream = null;
+let localPeerConnection = null;
+let remotePeerConnection = null;
+const remoteVideo = document.getElementById('remoteVideo');
+let streamReady = false;
+let getUserMediaError = '';
+let gotLocalDescriptionError = '';
+let gotRemoteDescriptionError = '';
+
+function start() {
+  navigator.mediaDevices.getUserMedia(
+      {
+        audio: false,
+        video: {
+          width: {min: 1280},
+          height: {min: 720},
+        },
+      }
+  ).then(initialize).catch((error) => {
+    getUserMediaError = error.toString();
+  });
+}
+
+function initialize(stream) {
+  localStream = stream;
+  const servers = null;
+
+  localPeerConnection = new webkitRTCPeerConnection(servers);
+  localPeerConnection.onicecandidate = gotLocalIceCandidate;
+
+  remotePeerConnection = new webkitRTCPeerConnection(servers);
+  remotePeerConnection.onicecandidate = gotRemoteIceCandidate;
+  remotePeerConnection.onaddstream = gotRemoteStream;
+
+  localPeerConnection.addStream(localStream);
+  localPeerConnection.createOffer(gotLocalDescription, (error) => {
+    gotLocalDescriptionError = error.toString();
+  });
+}
+
+function gotRemoteStream(event) {
+  remoteVideo.srcObject = event.stream;
+}
+
+function gotLocalDescription(description) {
+  localPeerConnection.setLocalDescription(description);
+  remotePeerConnection.setRemoteDescription(description);
+  remotePeerConnection.createAnswer(gotRemoteDescription, (error) => {
+    gotRemoteDescriptionError = error.toString();
+  });
+}
+
+function gotRemoteDescription(description) {
+  remotePeerConnection.setLocalDescription(description);
+  localPeerConnection.setRemoteDescription(description);
+  streamReady = true;
+}
+
+function gotLocalIceCandidate(event) {
+  if (event.candidate) {
+    remotePeerConnection.addIceCandidate(new RTCIceCandidate(event.candidate));
+  }
+}
+
+function gotRemoteIceCandidate(event) {
+  if (event.candidate) {
+    localPeerConnection.addIceCandidate(new RTCIceCandidate(event.candidate));
+  }
+}
+
+window.onload=start;
+</script>
+</body>
+</html>
