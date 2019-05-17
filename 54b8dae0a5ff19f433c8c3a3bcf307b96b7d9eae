@@ -198,6 +198,30 @@
     },
     {
       "key": {
+        "uuid": "5849cfab_5c4d0a7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-17T00:11:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "312346f7_45f67995",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 1
+      },
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f348868_9614728f",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
         "patchSetId": 3
@@ -279,6 +303,24 @@
     },
     {
       "key": {
+        "uuid": "c0b3447f_a20c75b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-17T00:11:00Z",
+      "side": 1,
+      "message": "It\u0027s simple and fast way to make sure vm exists.",
+      "parentUuid": "de5f4142_46dace68",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f273407_ca4f284f",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
         "patchSetId": 3
@@ -296,6 +338,24 @@
     },
     {
       "key": {
+        "uuid": "2c7276a3_ff3af94e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-17T00:11:00Z",
+      "side": 1,
+      "message": "Ack. Will add.",
+      "parentUuid": "0f273407_ca4f284f",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ff241847_99d53d06",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
         "patchSetId": 3
@@ -307,6 +367,24 @@
       "writtenOn": "2019-05-16T23:35:11Z",
       "side": 1,
       "message": "please fix this first to avoid adding a network dependency to the test",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ae5510e_748e4121",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-17T00:11:00Z",
+      "side": 1,
+      "message": "Ack. I understand this is a bad behavior.",
+      "parentUuid": "ff241847_99d53d06",
       "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -347,6 +425,24 @@
     },
     {
       "key": {
+        "uuid": "932c8582_4e8bf779",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-17T00:11:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2686cbee_4bbf6236",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c871ad4_44eadee5",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
         "patchSetId": 3
@@ -364,6 +460,24 @@
     },
     {
       "key": {
+        "uuid": "34a2f1c0_7f81cc8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-17T00:11:00Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "7c871ad4_44eadee5",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61bcdf52_dc28cd2b",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
         "patchSetId": 3
@@ -375,6 +489,30 @@
       "writtenOn": "2019-05-16T23:24:10Z",
       "side": 1,
       "message": "Can you also please parse the number of frames and the wall_time needed to replay?\n\nUltimately we will completely revamp the replay and what we measure. Like cpu_time, rapl etc.",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 31
+      },
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d029084_a178f702",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-17T00:11:00Z",
+      "side": 1,
+      "message": "Sure. But let us report the fps for now.",
+      "parentUuid": "61bcdf52_dc28cd2b",
       "range": {
         "startLine": 117,
         "startChar": 1,
@@ -453,6 +591,30 @@
       "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "205f8202_e3453a85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-17T00:11:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "db2f388e_ff0736d0",
+      "range": {
+        "startLine": 131,
+        "startChar": 20,
+        "endLine": 131,
+        "endChar": 35
+      },
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
