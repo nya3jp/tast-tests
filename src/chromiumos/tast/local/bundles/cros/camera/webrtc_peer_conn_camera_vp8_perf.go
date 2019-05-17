@@ -2,13 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package video
+package camera
 
 import (
 	"context"
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
+	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
 	"chromiumos/tast/local/bundles/cros/video/webrtc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/perf"
@@ -17,37 +18,37 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WebRTCCameraPerf,
-		Desc: "Captures performance data about getUserMedia video capture",
+		Func: WebRTCPeerConnCameraVP8Perf,
+		Desc: "Captures performance data about WebRTC loopback (VP8)",
 		Contacts: []string{
 			"keiichiw@chromium.org", // Video team
 			"shik@chromium.org",     // Camera team
 			"chromeos-video-eng@google.com",
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome_login", "camera_720p"},
-		Data:         append(webrtc.DataFiles(), "getusermedia.html"),
+		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome_login"},
+		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback_camera.html"),
 	})
 }
 
-// WebRTCCameraPerf is the full version of WebRTCCamera.
-// It renders the camera's media stream in VGA and 720p for 20 seconds.
+// WebRTCPeerConnCameraVP8Perf is the full version of video.WebRTCPeerConnCameraVP8.
+// This test performs a WebRTC loopback call for 20 seconds.
 // If there is no error while exercising the camera, it uploads statistics of
-// black/frozen frames.
-// This test will fail when an error occurs or too many frames are broken.
+// black/frozen frames and input/output FPS will be logged.
 //
 // This test uses the real webcam unless it is running under QEMU. Under QEMU,
 // it uses "vivid" instead, which is the virtual video test driver and can be
 // used as an external USB camera.
-func WebRTCCameraPerf(ctx context.Context, s *testing.State) {
-	// Run tests for 20 seconds per resolution.
-	results := webrtc.RunWebRTCCamera(ctx, s, s.PreValue().(*chrome.Chrome), 20*time.Second,
-		webrtc.NoVerboseLogging)
+func WebRTCPeerConnCameraVP8Perf(ctx context.Context, s *testing.State) {
+	// Run loopback call for 20 seconds.
+	result := webrtc.RunWebRTCPeerConnCamera(ctx, s,
+		s.PreValue().(*chrome.Chrome), videotype.VP8,
+		20*time.Second, webrtc.NoVerboseLogging)
 
 	if !s.HasError() {
-		// Set and upload frame statistics below.
+		// Set and upload perf metrics below.
 		p := perf.NewValues()
-		results.SetPerf(p)
+		result.SetPerf(p, videotype.VP8)
 		if err := p.Save(s.OutDir()); err != nil {
 			s.Error("Failed saving perf data: ", err)
 		}

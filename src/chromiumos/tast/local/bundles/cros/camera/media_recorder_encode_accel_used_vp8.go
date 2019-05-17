@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package video
+package camera
 
 import (
 	"context"
@@ -15,20 +15,19 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: MediaRecorderEncodeAccelUsedH264,
-		Desc: "Checks H.264 video encode acceleration is used in MediaRecorder",
+		Func: MediaRecorderEncodeAccelUsedVP8,
+		Desc: "Checks VP8 video encode acceleration is used in MediaRecorder",
 		Contacts: []string{
 			"hiroh@chromium.org",    // Video team
 			"shenghao@chromium.org", // Camera team
 			"chromeos-camera-eng@google.com",
 		},
-		Attr: []string{"informational"},
-		// "chrome_internal" is needed because H.264 is a proprietary codec.
-		SoftwareDeps: []string{"chrome_login", "chrome_internal", caps.HWEncodeH264},
+		Attr:         []string{"informational"},
+		SoftwareDeps: []string{"chrome_login", caps.HWEncodeVP8},
 		Data:         []string{"loopback_media_recorder.html"},
 	})
 }
 
-func MediaRecorderEncodeAccelUsedH264(ctx context.Context, s *testing.State) {
-	mediarecorder.VerifyEncodeAccelUsed(ctx, s, videotype.H264)
+func MediaRecorderEncodeAccelUsedVP8(ctx context.Context, s *testing.State) {
+	mediarecorder.VerifyEncodeAccelUsed(ctx, s, videotype.VP8)
 }

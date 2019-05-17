@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package video
+package camera
 
 import (
 	"context"
@@ -15,15 +15,15 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WebRTCDecodeAccelUsedVP8,
-		Desc:         "Checks HW decoding used for WebRTC/VP8",
+		Func:         WebRTCEncodeAccelUsedVP8,
+		Desc:         "Checks HW encoding used for WebRTC/VP8",
 		Contacts:     []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome_login", caps.HWDecodeVP8},
+		SoftwareDeps: []string{"chrome_login", caps.HWEncodeVP8},
 		Data:         append(webrtc.LoopbackDataFiles(), "crowd720_25frames.y4m"),
 	})
 }
 
-func WebRTCDecodeAccelUsedVP8(ctx context.Context, s *testing.State) {
-	webrtc.RunWebRTCVideo(ctx, s, "crowd720_25frames.y4m", constants.RTCVDInitStatus, constants.RTCVDInitSuccess)
+func WebRTCEncodeAccelUsedVP8(ctx context.Context, s *testing.State) {
+	webrtc.RunWebRTCVideo(ctx, s, "crowd720_25frames.y4m", constants.RTCVEInitStatus, constants.RTCVEInitSuccess)
 }
