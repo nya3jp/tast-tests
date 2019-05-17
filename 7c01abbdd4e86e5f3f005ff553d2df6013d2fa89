@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3df75549_f19de50e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-17T17:34:25Z",
+      "side": 1,
+      "message": "2019",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "7c01abbdd4e86e5f3f005ff553d2df6013d2fa89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1455dd9c_cb0dcfcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-17T17:34:25Z",
+      "side": 1,
+      "message": "(i\u0027ll leave this comment, but note that it doesn\u0027t completely apply since i i wrote it before seeing L58 and writing the comment there)\n\nyou\u0027re putting this all into memory at once anyway, so i\u0027d recommend just doing:\n\nb, err :\u003d ioutil.ReadFile(path)\nif err !\u003d nil {\n    ...\n}\nlines :\u003d strings.Split(strings.TrimRight(string(b), \"\\n\"), \"\\n\")\n\ni\u0027d probably just inline this in your test function, too, since it has a name that could conflict with other tests in the package.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code",
+      "revId": "7c01abbdd4e86e5f3f005ff553d2df6013d2fa89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3c57cea_556d8fda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-17T17:34:25Z",
+      "side": 1,
+      "message": "does auditd have an upstart job? if so, can you just use https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/upstart#JobStatus instead? much shorter",
+      "revId": "7c01abbdd4e86e5f3f005ff553d2df6013d2fa89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52e50f74_96afe031",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-17T17:34:25Z",
+      "side": 1,
+      "message": "this makes me very uneasy. this is checking a bunch of unknown log messages, some of which could have been produced by other tests (even autotest tests) that ran on the DUT.\n\n(as a side note, these logs can get very big, and the regexp seems like it\u0027s potentially slow. the right way to check a large file line-by-line is by iterating over the scanner and checking one line at a time instead of loading all lines into a slice and iterating over it.)\n\nif you need to check logs, i\u0027d recommend performing some action and then just checking the logs that were produced while you did that.",
+      "revId": "7c01abbdd4e86e5f3f005ff553d2df6013d2fa89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35ff0137_351aaa25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-17T17:34:25Z",
+      "side": 1,
+      "message": "if all you care is that there\u0027s at least one line, why not just check that there\u0027s at least one non-empty file?",
+      "revId": "7c01abbdd4e86e5f3f005ff553d2df6013d2fa89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
