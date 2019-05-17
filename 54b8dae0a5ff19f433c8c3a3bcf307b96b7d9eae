@@ -154,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "2d0eb8d2_db34d3de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-17T00:25:51Z",
+      "side": 1,
+      "message": "is it reasonable to run multiple traces in a single test? remember that multiple errors can be reported by a single test.\n\ni think that a smaller number of tests containing loops will be much easier to maintain than hundreds of test files.",
+      "parentUuid": "7f08f451_2990442c",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d68b59e9_a4acafca",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
         "patchSetId": 3
@@ -412,6 +436,24 @@
     },
     {
       "key": {
+        "uuid": "40ff3df3_007fa9ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-17T00:25:51Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Preconditions",
+      "parentUuid": "eb70b371_8a79e807",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "de5f4142_46dace68",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
         "patchSetId": 3
@@ -441,6 +483,24 @@
       "side": 1,
       "message": "It\u0027s simple and fast way to make sure vm exists.",
       "parentUuid": "de5f4142_46dace68",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78a324f3_89f679d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-17T00:25:51Z",
+      "side": 1,
+      "message": "shouldn\u0027t vm.CreateDefaultContainer or the earlier vm functions be returning an error if a vm wasn\u0027t created successfully?",
+      "parentUuid": "c0b3447f_a20c75b6",
       "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
