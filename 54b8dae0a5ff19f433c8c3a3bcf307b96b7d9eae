@@ -178,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "77cf51d6_81d5ec39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-05-17T00:33:25Z",
+      "side": 1,
+      "message": "Each trace will run for seconds or minutes. Each trace has its own results. Each trace can crash, hang, reboot a machine. Each trace will need its own test.",
+      "parentUuid": "2d0eb8d2_db34d3de",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d68b59e9_a4acafca",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
         "patchSetId": 3
@@ -448,6 +472,24 @@
       "side": 1,
       "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Preconditions",
       "parentUuid": "eb70b371_8a79e807",
+      "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5c932e2_f3d77461",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-05-17T00:33:25Z",
+      "side": 1,
+      "message": "Cool.",
+      "parentUuid": "40ff3df3_007fa9ba",
       "revId": "54b8dae0a5ff19f433c8c3a3bcf307b96b7d9eae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
