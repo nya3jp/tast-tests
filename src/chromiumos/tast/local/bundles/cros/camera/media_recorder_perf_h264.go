@@ -2,12 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package video
+package camera
 
 import (
 	"context"
 	"time"
 
+	// TODO(crbug.com/963772) Move libraries in video to camera or media folder.
 	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
 	"chromiumos/tast/local/bundles/cros/video/mediarecorder"
 	"chromiumos/tast/testing"

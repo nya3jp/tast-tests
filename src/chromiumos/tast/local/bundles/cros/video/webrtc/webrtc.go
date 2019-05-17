@@ -185,7 +185,7 @@ func (s *frameStats) setPerf(p *perf.Values, suffix string) {
 	p.Set(frozenFrames, s.frozenFramesPercentage())
 }
 
-// CameraResults is a type for decoding JSON objects obtained from /video/data/getusermedia.html.
+// CameraResults is a type for decoding JSON objects obtained from /camera/data/getusermedia.html.
 type CameraResults []struct {
 	Width      int        `json:"width"`
 	Height     int        `json:"height"`
@@ -211,11 +211,11 @@ const (
 	NoVerboseLogging
 )
 
-// RunWebRTCCamera run a test in /video/data/getusermedia.html.
+// RunWebRTC run a test in /camera/data/getusermedia.html.
 // duration specifies how long video capturing will run for each resolution.
 // If verbose is true, video drivers' verbose messages will be enabled.
 // verbose must be false for performance tests.
-func RunWebRTCCamera(ctx context.Context, s *testing.State, cr *chrome.Chrome,
+func RunWebRTC(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	duration time.Duration, verbose VerboseLoggingMode) CameraResults {
 	if verbose == VerboseLogging {
 		vl, err := logging.NewVideoLogger()
@@ -288,12 +288,12 @@ func (r *PeerConnCameraResult) SetPerf(p *perf.Values, codec videotype.Codec) {
 	r.PeerConnectionStats.setPerf(p, string(codec))
 }
 
-// RunWebRTCPeerConnCamera run a test in /video/data/loopback_camera.html.
+// RunWebRTCPeerConn run a test in /video/data/loopback_camera.html.
 // codec is a video codec to exercise in testing.
 // duration specifies how long video capturing will run for each resolution.
 // If verbose is true, video drivers' verbose messages will be enabled.
 // verbose must be false for performance tests.
-func RunWebRTCPeerConnCamera(ctx context.Context, s *testing.State, cr *chrome.Chrome,
+func RunWebRTCPeerConn(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	codec videotype.Codec, duration time.Duration, verbose VerboseLoggingMode) PeerConnCameraResult {
 	if verbose == VerboseLogging {
 		vl, err := logging.NewVideoLogger()
