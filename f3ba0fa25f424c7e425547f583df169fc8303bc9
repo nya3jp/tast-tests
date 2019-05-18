@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d370d29c_d796a051",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_glxgears.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-18T00:39:00Z",
+      "side": 1,
+      "message": "The problem of shortening is that golang global variable scope is not per file. It will have naming conflict if we have more tests.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code\n\nI don\u0027t find a convenient way to pass variable from init function to test Func. Maybe I just missed something?",
+      "parentUuid": "4aa6e0ea_797ab4ee",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 37
+      },
+      "revId": "f3ba0fa25f424c7e425547f583df169fc8303bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa144fb6_0e32401a",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_glxgears.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "99d1f82f_49d78216",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_glxgears.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-18T00:39:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aa144fb6_0e32401a",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 35
+      },
+      "revId": "f3ba0fa25f424c7e425547f583df169fc8303bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91c13ec1_91448724",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_glxgears.go",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2019-05-18T00:29:23Z",
       "side": 1,
       "message": "Not all traces will be Glxgear. Make this a stub so we get the right name (CrostiniTraceGlxgears) on the result dashboards. Then make everything below a generic function CrostiniTrace[Replay]()?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 67
+      },
+      "revId": "f3ba0fa25f424c7e425547f583df169fc8303bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbb592a4_1624727e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_glxgears.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-18T00:39:00Z",
+      "side": 1,
+      "message": "RunAPITrace is the stub function. IIUC, the chromeperf will have tast.graphics.CrostiniTraceGlxgears/cros-$BOARD/glxgears for the fps count in the current design.",
+      "parentUuid": "91c13ec1_91448724",
       "range": {
         "startLine": 42,
         "startChar": 0,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "f092fd0b_f49532af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_glxgears.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-18T00:39:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e1e76e55_031e1f98",
+      "range": {
+        "startLine": 90,
+        "startChar": 14,
+        "endLine": 90,
+        "endChar": 20
+      },
+      "revId": "f3ba0fa25f424c7e425547f583df169fc8303bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18ea5bf1_bb4c78ad",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
         "patchSetId": 4
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "95f42465_4c4b778c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-18T00:39:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "18ea5bf1_bb4c78ad",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 21
+      },
+      "revId": "f3ba0fa25f424c7e425547f583df169fc8303bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10ee8ea0_e6c49ec0",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
         "patchSetId": 4
@@ -137,6 +257,30 @@
       "revId": "f3ba0fa25f424c7e425547f583df169fc8303bc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9579e591_a69dd04d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-18T00:39:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "10ee8ea0_e6c49ec0",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 1
+      },
+      "revId": "f3ba0fa25f424c7e425547f583df169fc8303bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
