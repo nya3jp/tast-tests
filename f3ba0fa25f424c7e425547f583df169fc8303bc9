@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4aa6e0ea_797ab4ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_glxgears.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-05-18T00:29:23Z",
+      "side": 1,
+      "message": "Just shorten to crostiniTraces.",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 37
+      },
+      "revId": "f3ba0fa25f424c7e425547f583df169fc8303bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa144fb6_0e32401a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_glxgears.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-05-18T00:29:23Z",
+      "side": 1,
+      "message": "Just shorten to crostiniTraceNames.",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 35
+      },
+      "revId": "f3ba0fa25f424c7e425547f583df169fc8303bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91c13ec1_91448724",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_glxgears.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-05-18T00:29:23Z",
+      "side": 1,
+      "message": "Not all traces will be Glxgear. Make this a stub so we get the right name (CrostiniTraceGlxgears) on the result dashboards. Then make everything below a generic function CrostiniTrace[Replay]()?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 67
+      },
+      "revId": "f3ba0fa25f424c7e425547f583df169fc8303bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1e76e55_031e1f98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_glxgears.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-05-18T00:29:23Z",
+      "side": 1,
+      "message": "Also time and frames count.",
+      "range": {
+        "startLine": 90,
+        "startChar": 14,
+        "endLine": 90,
+        "endChar": 20
+      },
+      "revId": "f3ba0fa25f424c7e425547f583df169fc8303bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18ea5bf1_bb4c78ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-05-18T00:29:23Z",
+      "side": 1,
+      "message": "// Write trace output.",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 21
+      },
+      "revId": "f3ba0fa25f424c7e425547f583df169fc8303bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10ee8ea0_e6c49ec0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-05-18T00:29:23Z",
+      "side": 1,
+      "message": "Can you have a TODO() here to write a function that cleans up disk in best effort? I don\u0027t think at the moment there is much to do, but we should keep it in mind.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 1
+      },
+      "revId": "f3ba0fa25f424c7e425547f583df169fc8303bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
