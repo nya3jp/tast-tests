@@ -1,0 +1,198 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0b0bc51_519b9126",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-19T15:36:48Z",
+      "side": 1,
+      "message": "copyright header",
+      "revId": "ffc77a05451e892c759364299fadbf7587c7e0de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18452d29_ab588725",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-19T15:36:48Z",
+      "side": 1,
+      "message": "add godoc comment describing the package\n\nhttps://blog.golang.org/godoc-documenting-go-code\n\n(see other packages for examples)",
+      "revId": "ffc77a05451e892c759364299fadbf7587c7e0de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c0b1f7c_70323304",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-19T15:36:48Z",
+      "side": 1,
+      "message": "can you just call this Result? see \"avoid stutter\" at https://blog.golang.org/package-names",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "ffc77a05451e892c759364299fadbf7587c7e0de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec3c396c_728415d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-19T15:36:48Z",
+      "side": 1,
+      "message": "FPS\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms\n\nplease also document all exported fields with godoc comments",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "ffc77a05451e892c759364299fadbf7587c7e0de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaba87cd_1f9f833e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-19T15:36:48Z",
+      "side": 1,
+      "message": "why is this exported? it looks like it\u0027s only called internally. also note that you need to be consistent in how you name things; L21 uses APITrace. if you\u0027re just referring to the name of a command-line program named \"apitrace\", \"Apitrace\" is appropriate when it needs to be capitalized.\n\nalso don\u0027t name the return error value: https://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters\n\nalso don\u0027t take a *testing.State arg. you don\u0027t need it; just return a non-nil error if there\u0027s a problem. right now, this is reporting errors in multiple ways:\n\n- the test may be aborted with s.Fatal\n- an error may be return",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "ffc77a05451e892c759364299fadbf7587c7e0de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0d10acd_1deb082f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-19T15:36:48Z",
+      "side": 1,
+      "message": "return an error instead of crashing",
+      "revId": "ffc77a05451e892c759364299fadbf7587c7e0de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a28e88d9_e7ca5174",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-19T15:36:48Z",
+      "side": 1,
+      "message": "please don\u0027t write verbose output like this directly to the log; it makes it hard for people to interpret failures.\n\nwrite an output file instead",
+      "revId": "ffc77a05451e892c759364299fadbf7587c7e0de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96efaf80_0a83b485",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-19T15:36:48Z",
+      "side": 1,
+      "message": "this code looks like it\u0027s copied-and-pasted directly from crostini_start_everything.go. please don\u0027t copy-and-paste code. either make the vm package do this by default if appropriate or move it into a function in the vm package so it can be shared.",
+      "revId": "ffc77a05451e892c759364299fadbf7587c7e0de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "687e0065_232fe448",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-19T15:36:48Z",
+      "side": 1,
+      "message": "why tmpErr? just do this:\n\nerr :\u003d cmd.Run()\nif err !\u003d nil {\n    cmd.DumpLog(ctx)\n}\nreturn err",
+      "revId": "ffc77a05451e892c759364299fadbf7587c7e0de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6840d6b2_17f98f75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-19T15:36:48Z",
+      "side": 1,
+      "message": "RunTest",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 20
+      },
+      "revId": "ffc77a05451e892c759364299fadbf7587c7e0de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
