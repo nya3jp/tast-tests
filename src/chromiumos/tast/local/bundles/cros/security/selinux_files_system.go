@@ -186,8 +186,8 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{"/var/log/tlsdate.log", "cros_tlsdate_log", false, nil},
 		{"/var/log/asan", "cros_var_log_asan", true, nil},
 		{"/var/spool", "cros_var_spool", false, nil},
+		{"/var/spool/crash", "cros_crash_spool", true, selinux.SkipNotExist},
 		{"/var/spool/cron-lite", "cros_periodic_scheduler_cache_t", true, nil},
-		{"/var/spool/crash", "cros_crash_spool", true, nil},
 	}
 
 	for _, testArg := range testArgs {
