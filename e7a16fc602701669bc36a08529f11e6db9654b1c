@@ -69,6 +69,24 @@
       "revId": "e7a16fc602701669bc36a08529f11e6db9654b1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "015a314c_bc63266a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-20T19:49:47Z",
+      "side": 1,
+      "message": "yeah, agreed that this is weird. i think it\u0027s ultimately the \"fault\" of the protobuf library, but at the same time, the alternative would be to not able to use struct literals at all and instead needing to do something like:\n\n  var authReq cpb.AuthorizationRequest\n  key :\u003d authReq.AddKey()\n  data :\u003d key.AddData()\n  data.SetType(keyType)\n  ...\n\ni think they ultimately made the right choice here. :-P",
+      "parentUuid": "7a0bc214_c139a1a0",
+      "revId": "e7a16fc602701669bc36a08529f11e6db9654b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
