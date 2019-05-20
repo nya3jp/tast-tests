@@ -140,6 +140,24 @@
     },
     {
       "key": {
+        "uuid": "d4923236_53b97758",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-20T03:33:58Z",
+      "side": 1,
+      "message": "i think that\u0027s better, but i\u0027m still worried against flaky failures since this is testing an essentially-arbitrary environment, i.e. everything that has happened on the DUT since it was booted.",
+      "parentUuid": "f91438d0_05f0f56b",
+      "revId": "7c01abbdd4e86e5f3f005ff553d2df6013d2fa89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca051650_d28e12ad",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
         "patchSetId": 1
