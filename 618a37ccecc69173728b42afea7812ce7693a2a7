@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "166d200d_1efa9ed2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-20T04:55:36Z",
+      "side": 1,
+      "message": "can you move this up to keep the list sorted (where possible)?",
+      "revId": "618a37ccecc69173728b42afea7812ce7693a2a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
