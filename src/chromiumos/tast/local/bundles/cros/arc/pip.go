@@ -237,17 +237,16 @@ func testPIPResize(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d
 	pipMaxSizeW := dispMode.WidthInNativePixels / pipMaxSizeFactor
 	pipMaxSizeH := (dispMode.HeightInNativePixels - shelfHeightPX) / pipMaxSizeFactor
 
-	w := bounds.Right - bounds.Left
-	h := bounds.Bottom - bounds.Top
-
 	// Aspect ratio gets honored after resize. Only test one dimension.
 	if pipMaxSizeH < pipMaxSizeW {
-		if pipMaxSizeH-h > pipPositionErrorMarginPX {
-			return errors.Wrapf(err, "invalid height %d; want %d (error margin is %d)", pipMaxSizeH, h, pipPositionErrorMarginPX)
+		if bounds.Height < pipMaxSizeH-pipPositionErrorMarginPX {
+			return errors.Wrapf(err, "invalid height %d; want %d (error margin is %d)",
+				pipMaxSizeH, bounds.Height, pipPositionErrorMarginPX)
 		}
 	} else {
-		if pipMaxSizeW-w > pipPositionErrorMarginPX {
-			return errors.Wrapf(err, "invalid width %d; want %d (error margin is %d)", pipMaxSizeW, w, pipPositionErrorMarginPX)
+		if bounds.Width < pipMaxSizeW-pipPositionErrorMarginPX {
+			return errors.Wrapf(err, "invalid width %d; want %d (error margin is %d)",
+				pipMaxSizeW, bounds.Width, pipPositionErrorMarginPX)
 		}
 	}
 	return nil
@@ -303,8 +302,8 @@ func testPIPFling(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, de
 			return errors.Wrap(err, "could not get PIP window bounds")
 		}
 
-		pipCenterX := float64(bounds.Left + (bounds.Right-bounds.Left)/2)
-		pipCenterY := float64(bounds.Top + (bounds.Bottom-bounds.Top)/2)
+		pipCenterX := float64(bounds.Left + bounds.Width/2)
+		pipCenterY := float64(bounds.Top + bounds.Height/2)
 
 		x0 := input.TouchCoord(pipCenterX * pixelToTuxelX)
 		y0 := input.TouchCoord(pipCenterY * pixelToTuxelY)
@@ -336,18 +335,19 @@ func testPIPFling(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, de
 		switch dir.border {
 		case left:
 			if bounds.Left < 0 || bounds.Left > pipWorkAreaInsetsPX {
-				return errors.Errorf("failed swipe to left; expected bounds.Left 0 <= %d <= %d",
-					bounds.Left, pipWorkAreaInsetsPX)
+				return errors.Errorf("failed swipe to left; invalid left bounds %d; want 0 <= %d <= %d",
+					bounds.Left, bounds.Left, pipWorkAreaInsetsPX)
 			}
 		case right:
-			if bounds.Right > dispW || dispW-bounds.Right > pipWorkAreaInsetsPX {
-				return errors.Errorf("failed swipe to right; expected bounds.Right %d <= %d <= %d",
-					dispW-pipWorkAreaInsetsPX, bounds.Right, dispW)
+			boundsRight := bounds.Left + bounds.Width
+			if boundsRight > dispW || boundsRight < dispW-pipWorkAreaInsetsPX {
+				return errors.Errorf("failed swipe to right; invalid right bounds %d; want %d <= %d <= %d",
+					boundsRight, dispW-pipWorkAreaInsetsPX, boundsRight, dispW)
 			}
 		case top:
 			if bounds.Top < 0 || bounds.Top > pipWorkAreaInsetsPX {
-				return errors.Errorf("failed swipe to top; expected bounds.Top 0 <= %d <= %d",
-					bounds.Top, pipWorkAreaInsetsPX)
+				return errors.Errorf("failed swipe to top; invalid top bounds %d; want 0 <= %d <= %d",
+					bounds.Top, bounds.Top, pipWorkAreaInsetsPX)
 			}
 		case bottom:
 			rectDP, err := getShelfRect(ctx, tconn)
@@ -355,9 +355,10 @@ func testPIPFling(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, de
 				return errors.Wrap(err, "failed to get shelf rect")
 			}
 			shelfTopPX := int(math.Round(float64(rectDP.Top) * dispMode.DeviceScaleFactor))
-			if bounds.Bottom >= shelfTopPX || shelfTopPX-bounds.Bottom > pipWorkAreaInsetsPX {
-				return errors.Errorf("failed swipe to bottom; expected bounds.Bottom %d <= %d < %d",
-					bounds.Bottom-pipWorkAreaInsetsPX, bounds.Bottom, shelfTopPX)
+			boundsBottom := bounds.Top + bounds.Height
+			if boundsBottom >= shelfTopPX || boundsBottom < shelfTopPX-pipWorkAreaInsetsPX {
+				return errors.Errorf("failed swipe to bottom; invalid bottom bounds %d; want %d <= %d < %d",
+					boundsBottom, boundsBottom-pipWorkAreaInsetsPX, boundsBottom, shelfTopPX)
 			}
 		}
 	}

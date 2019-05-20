@@ -93,7 +93,7 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get window bounds: ", err)
 	}
 
-	centerHeight := bounds.Top + (bounds.Bottom-bounds.Top)/2
+	centerHeight := bounds.Top + bounds.Height/2
 
 	// Perform 3 different subtests: resize from right border, from bottom border and from bottom-right border.
 	// If one of these subtests fail, the test fails and the remaining subtests are not executed.
@@ -134,7 +134,7 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 
 		subImage := img.(interface {
 			SubImage(r image.Rectangle) image.Image
-		}).SubImage(image.Rect(bounds.Left, bounds.Top, bounds.Right-bounds.Left, bounds.Bottom-bounds.Top))
+		}).SubImage(image.Rect(bounds.Left, bounds.Top, bounds.Width, bounds.Height))
 
 		blackPixels := countBlackPixels(subImage)
 		rect := subImage.Bounds()
