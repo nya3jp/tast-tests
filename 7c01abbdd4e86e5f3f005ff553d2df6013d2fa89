@@ -356,6 +356,24 @@
     },
     {
       "key": {
+        "uuid": "3d745b21_98164f67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-20T04:38:03Z",
+      "side": 1,
+      "message": "Thanks for clarifications!\n\nIf the purpose of this test is to check auditd captures all audit logs, I recommend:\n\n- waiting for auditd to start,\n- artificially emiting audit logs,\n- checking journal log not containing new audit lines,\n- checking /var/log/audit containing a new audit line.\n\nThis way we don\u0027t need to make not-always-true assumptions, such as:\n\n- When this test starts, DUT\u0027s uptime is more than N seconds.\n- auditd starts in N seconds after boot.\n- Some audit logs should be emitted after N seconds after boot.",
+      "parentUuid": "e493eb2b_2918cece",
+      "revId": "7c01abbdd4e86e5f3f005ff553d2df6013d2fa89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca051650_d28e12ad",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
         "patchSetId": 1
