@@ -302,6 +302,24 @@
     },
     {
       "key": {
+        "uuid": "3fb7f507_de7477ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-20T04:08:03Z",
+      "side": 1,
+      "message": "\u003e If audit log exists long after system boot, which means auditd is not working correctly.\n\nHmm, what do you mean? For example, my betty VM has this audit log in every 30 seconds, does it mean auditd is broken?\n\n [ 1095.110705] kernel: audit: type\u003d1400 audit(1555788966.652:73): avc:  denied  { getattr } for  pid\u003d2564 comm\u003d\"metrics_daemon\" path\u003d\"/sys/devices/virtual/block/zram0/mm_stat\" dev\u003d\"sysfs\" ino\u003d17393 scontext\u003du:r:cros_metrics_daemon:s0 tcontext\u003du:object_r:sysfs:",
+      "parentUuid": "454715ca_24eb2c24",
+      "revId": "7c01abbdd4e86e5f3f005ff553d2df6013d2fa89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca051650_d28e12ad",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
         "patchSetId": 1
