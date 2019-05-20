@@ -284,6 +284,24 @@
     },
     {
       "key": {
+        "uuid": "454715ca_24eb2c24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-20T04:05:18Z",
+      "side": 1,
+      "message": "Hmm, that\u0027s true. I guess we can do some operations like logging into Chrome and see no new audit message is seen. It\u0027s not exhaustive, but it would be a good start.",
+      "parentUuid": "d4923236_53b97758",
+      "revId": "7c01abbdd4e86e5f3f005ff553d2df6013d2fa89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca051650_d28e12ad",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
         "patchSetId": 1
