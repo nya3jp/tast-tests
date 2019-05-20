@@ -374,6 +374,24 @@
     },
     {
       "key": {
+        "uuid": "07c66282_760747c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-05-20T05:00:41Z",
+      "side": 1,
+      "message": "sounds good.\nactually the TODO below is for this.\n\ni\u0027ll work on some policy change first before a non-enforced test can emit audit message.",
+      "parentUuid": "3d745b21_98164f67",
+      "revId": "7c01abbdd4e86e5f3f005ff553d2df6013d2fa89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca051650_d28e12ad",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
         "patchSetId": 1
