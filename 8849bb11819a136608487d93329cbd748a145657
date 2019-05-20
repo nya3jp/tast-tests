@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66d7a4c6_90dd107a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-20T12:58:32Z",
+      "side": 1,
+      "message": "Could you add more context?",
+      "revId": "8849bb11819a136608487d93329cbd748a145657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46453387_3bc22450",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-20T12:58:32Z",
+      "side": 1,
+      "message": "Perhaps, we need \"Cq-Depend: chromium:1617180\"?",
+      "revId": "8849bb11819a136608487d93329cbd748a145657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23fdcf77_2db4b4b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-20T12:58:32Z",
+      "side": 1,
+      "message": "nit: Could you add a comment like \"// Create a temporal XML for Google Test\u0027s output owned by arc-camera\"?",
+      "revId": "8849bb11819a136608487d93329cbd748a145657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c5519f5_c647c885",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-20T12:58:32Z",
+      "side": 1,
+      "message": "huge nit: remove this blank line for the readablity if you add a line comment above.\nIt\u0027d make it clear which block is setting up gtestFile.",
+      "revId": "8849bb11819a136608487d93329cbd748a145657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fe8e446_6f6c65c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-20T12:58:32Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "8849bb11819a136608487d93329cbd748a145657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b89e63eb_efb514ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-20T12:58:32Z",
+      "side": 1,
+      "message": "nit: Could you add a comment like \"// Run cros_camera_test as arc-camera.\" here?\nIt\u0027d be helpful for persons  like me who don\u0027t remember the meaning of \"sudo -u\":)",
+      "revId": "8849bb11819a136608487d93329cbd748a145657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
