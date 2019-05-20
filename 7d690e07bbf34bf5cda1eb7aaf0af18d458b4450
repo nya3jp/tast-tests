@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "507ecbc3_68cac5c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_recorder_encode_accel_used_h264.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-05-20T05:44:07Z",
+      "side": 1,
+      "message": "Let\u0027s do that in another CL, to not over-complicate things. I added a TODO.",
+      "parentUuid": "241d9e24_3f5edef1",
+      "range": {
+        "startLine": 12,
+        "startChar": 37,
+        "endLine": 12,
+        "endChar": 56
+      },
+      "revId": "7d690e07bbf34bf5cda1eb7aaf0af18d458b4450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ddd5835_b8b9dc2b",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/webrtc_camera.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "7d690e07bbf34bf5cda1eb7aaf0af18d458b4450",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01d7a726_6cc0b985",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/webrtc_camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-05-20T05:44:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ddd5835_b8b9dc2b",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 20
+      },
+      "revId": "7d690e07bbf34bf5cda1eb7aaf0af18d458b4450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1e21e87e_3801e312",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/webrtc_camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-05-20T05:44:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "726a0b4b_49cdee91",
+      "range": {
+        "startLine": 26,
+        "startChar": 13,
+        "endLine": 26,
+        "endChar": 18
+      },
+      "revId": "7d690e07bbf34bf5cda1eb7aaf0af18d458b4450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fbea598_ed9d847c",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/webrtc_decode_accel_used_jpeg.go",
         "patchSetId": 1
@@ -85,6 +157,24 @@
       "revId": "7d690e07bbf34bf5cda1eb7aaf0af18d458b4450",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c89c5fa3_62508622",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/webrtc_decode_accel_used_jpeg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-05-20T05:44:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fbea598_ed9d847c",
+      "revId": "7d690e07bbf34bf5cda1eb7aaf0af18d458b4450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
