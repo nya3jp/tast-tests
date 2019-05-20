@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c53e622_6f2289f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-20T06:38:05Z",
+      "side": 1,
+      "message": "Could you add a list of tests moved by this CL for future reference?\n\nIn addition, we might want to have more description about changes for WebRTC camera tests:\n- changed the owner of WebRTC camera tests from video team to camera team\n- got rid of \"camera\" from the tests names",
+      "revId": "8b5218be4131b931b81e80f0b26f868c312381cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8774b71_6ff8f76a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/loopback.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-20T06:38:05Z",
+      "side": 1,
+      "message": "We shouldn\u0027t need this file because this is only used by video.WebRTCDecodeUsed* tests, iirc.",
+      "revId": "8b5218be4131b931b81e80f0b26f868c312381cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "004f1998_8845d7ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/third_party/blackframe.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-20T06:38:05Z",
+      "side": 1,
+      "message": "Please use symlink for files used by both video tests and camera tests.\nSame for other data files\ncf. CL:1459909",
+      "revId": "8b5218be4131b931b81e80f0b26f868c312381cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f121e661_d9257419",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-20T06:38:05Z",
+      "side": 1,
+      "message": "nit: camera\nsame for other occurrences of \"/video/data/\" in this file.",
+      "range": {
+        "startLine": 214,
+        "startChar": 28,
+        "endLine": 214,
+        "endChar": 33
+      },
+      "revId": "8b5218be4131b931b81e80f0b26f868c312381cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
