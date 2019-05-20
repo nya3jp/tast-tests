@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "781bdacd_e641b4ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-20T18:59:44Z",
+      "side": 1,
+      "message": "huge nit: in cases like this, where you\u0027re checking an error returned by a call and also don\u0027t need to assign any other variables that will be used after the error-handling, i\u0027d recommend this form:\n\n  if _, err :\u003d dbusConn.RequestName(...); err !\u003d nil {\n      ...\n  }\n\nthe main benefit (in addition to it being one line shorter :-P) is that you shadow any existing \u0027err\u0027 variable with one scoped to the inside of the if block, so you don\u0027t need to worry about accidentally using the error that was returned here later.",
+      "revId": "e7a16fc602701669bc36a08529f11e6db9654b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88add19c_e7487a9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-20T18:59:44Z",
+      "side": 1,
+      "message": "i take it that you can\u0027t take the address of the const on L226 later, right?",
+      "revId": "e7a16fc602701669bc36a08529f11e6db9654b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
