@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/perf"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/shutil"
@@ -160,6 +161,7 @@ func runCrosCameraTest(ctx context.Context, s *testing.State, cfg crosCameraTest
 		s.Fatal("The cros-camera service must be stopped before calling runCrosCameraTest: ", err)
 	}
 
+	// Create a temporal XML for Google Test's output owned by arc-camera
 	gtestFile, err := ioutil.TempFile(s.OutDir(), "gtest.*.xml")
 	if err != nil {
 		s.Fatal("Failed to open gtest output file: ", err)
@@ -169,6 +171,13 @@ func runCrosCameraTest(ctx context.Context, s *testing.State, cfg crosCameraTest
 			s.Error("Failed to close gtest output file: ", err)
 		}
 	}()
+	uid, err := sysutil.GetUID("arc-camera")
+	if err != nil {
+		s.Fatal("Failed to get uid of arc-camera: ", err)
+	}
+	if err := os.Chown(gtestFile.Name(), int(uid), 0); err != nil {
+		s.Fatal("Failed to chown the gtest output file: ", err)
+	}
 
 	logPath := filepath.Join(s.OutDir(), "cros_camera_test.log")
 	logFile, err := os.OpenFile(logPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
@@ -181,7 +190,8 @@ func runCrosCameraTest(ctx context.Context, s *testing.State, cfg crosCameraTest
 		}
 	}()
 
-	cmd := testexec.CommandContext(ctx, "cros_camera_test", cfg.toArgs()...)
+	sudoArgs := []string{"--preserve-env", "--user=arc-camera", "cros_camera_test"}
+	cmd := testexec.CommandContext(ctx, "sudo", append(sudoArgs, cfg.toArgs()...)...)
 	cmd.Env = []string{"GTEST_OUTPUT=xml:" + gtestFile.Name()}
 	cmd.Stdout = logFile
 	cmd.Stderr = logFile
