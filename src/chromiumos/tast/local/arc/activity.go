@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"strconv"
 	"time"
@@ -118,9 +119,18 @@ func NewPoint(x, y int) Point {
 	return Point{x, y}
 }
 
-// Rect represents a rectangle.
+// String returns the string representation of Point.
+func (p *Point) String() string {
+	return fmt.Sprintf("(%d, %d)", p.X, p.Y)
+}
+
+// Rect represents a rectangle, as defined here:
+// https://developers.chrome.com/extensions/automation#type-Rect
 type Rect struct {
-	Left, Top, Right, Bottom int
+	Left   int `json:"left"`
+	Top    int `json:"top"`
+	Width  int `json:"width"`
+	Height int `json:"height"`
 }
 
 // NewActivity returns a new Activity instance.
@@ -263,12 +273,12 @@ func (ac *Activity) MoveWindow(ctx context.Context, to Point, t time.Duration) e
 	if err != nil {
 		return errors.Wrap(err, "could not get caption height")
 	}
-	halfWidth := (bounds.Right - bounds.Left) / 2
+	halfWidth := bounds.Width / 2
 	from.X = bounds.Left + halfWidth
 	to.X += halfWidth
 	if task.windowState == WindowStatePIP {
 		// PiP windows are dragged from its center
-		halfHeight := (bounds.Bottom - bounds.Top) / 2
+		halfHeight := bounds.Height / 2
 		from.Y = bounds.Top + halfHeight
 		to.Y += halfHeight
 	} else {
@@ -300,8 +310,8 @@ func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to Poin
 	// Default value: center of window.
 	bounds := task.bounds
 	src := Point{
-		bounds.Left + (bounds.Right-bounds.Left)/2,
-		bounds.Top + (bounds.Bottom-bounds.Top)/2,
+		bounds.Left + bounds.Width/2,
+		bounds.Top + bounds.Height/2,
 	}
 
 	borderOffset := borderOffsetForNormal
@@ -313,14 +323,14 @@ func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to Poin
 	if border&BorderTop != 0 {
 		src.Y = bounds.Top - borderOffset
 	} else if border&BorderBottom != 0 {
-		src.Y = bounds.Bottom + borderOffset
+		src.Y = bounds.Top + bounds.Height + borderOffset
 	}
 
 	// Left & Right are exclusive.
 	if border&BorderLeft != 0 {
 		src.X = bounds.Left - borderOffset
 	} else if border&BorderRight != 0 {
-		src.X = bounds.Right + borderOffset
+		src.X = bounds.Left + bounds.Width + borderOffset
 	}
 
 	return ac.swipe(ctx, src, to, t)
@@ -535,11 +545,14 @@ func parseBounds(s []string) (bounds Rect, err error) {
 	if len(s) != 4 {
 		return Rect{}, errors.Errorf("expecting a slice of length 4, got %d", len(s))
 	}
-	for i, dst := range []*int{&bounds.Left, &bounds.Top, &bounds.Right, &bounds.Bottom} {
+	var right, bottom int
+	for i, dst := range []*int{&bounds.Left, &bounds.Top, &right, &bottom} {
 		*dst, err = strconv.Atoi(s[i])
 		if err != nil {
 			return Rect{}, errors.Wrapf(err, "could not parse %q", s[i])
 		}
 	}
+	bounds.Width = right - bounds.Left
+	bounds.Height = bottom - bounds.Top
 	return bounds, nil
 }
