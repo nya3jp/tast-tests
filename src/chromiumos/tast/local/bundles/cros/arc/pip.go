@@ -22,10 +22,10 @@ import (
 )
 
 const (
-	// kPipWorkAreaInsetsDP is hardcoded to 8dp. Using a bigger value to safe.
-	// See: https://cs.chromium.org/chromium/src/ash/wm/pip/pip_positioner.cc
+	// kCollisionWindowWorkAreaInsetsDp is hardcoded to 8dp. Using a bigger value to safe.
+	// See: https://cs.chromium.org/chromium/src/ash/wm/collision_detection/collision_detection_utils.h
 	// TODO(crbug.com/949754): Get this value in runtime.
-	pipWorkAreaInsetsDP = 8 + 5
+	collisionWindowWorkAreaInsetsDP = 8 + 5
 
 	// pipPositionErrorMarginPX represents the error margin in pixels when comparing positions. See b/129976114 for more info.
 	// TODO(ricardoq): Remove this constant once the bug gets fixed.
@@ -52,7 +52,8 @@ func PIP(ctx context.Context, s *testing.State) {
 	}
 
 	// For debugging, add chrome.ExtraArgs("--show-taps")
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
+	// --use-test-config is needed to enable Shelf's Mojo testing interface.
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--use-test-config"))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
@@ -88,6 +89,31 @@ func PIP(ctx context.Context, s *testing.State) {
 	}
 	defer dev.Close()
 
+	dispInfo, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get internal display info: ", err)
+	}
+
+	origShelfAlignment, err := getShelfAlignment(ctx, tconn, dispInfo.ID)
+	if err != nil {
+		s.Fatal("Failed to get shelf alignment: ", err)
+	}
+	if err := setShelfAlignment(ctx, tconn, dispInfo.ID, shelfAlignmentBottom); err != nil {
+		s.Fatal("Failed to set shelf alignment to Bottom: ", err)
+	}
+	// Be nice and restore shelf alignment to its original state on exit.
+	defer setShelfAlignment(ctx, tconn, dispInfo.ID, origShelfAlignment)
+
+	origShelfBehavior, err := getShelfBehavior(ctx, tconn, dispInfo.ID)
+	if err != nil {
+		s.Fatal("Failed to get shelf behavior: ", err)
+	}
+	if err := setShelfBehavior(ctx, tconn, dispInfo.ID, shelfBehaviorNeverAutoHide); err != nil {
+		s.Fatal("Failed to set shelf behavior to Never Auto Hide: ", err)
+	}
+	// Be nice and restore shelf behavior to its original state on exit.
+	defer setShelfBehavior(ctx, tconn, dispInfo.ID, origShelfBehavior)
+
 	tabletModeEnabled, err := isTabletModeEnabled(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get tablet mode: ", err)
@@ -98,11 +124,6 @@ func PIP(ctx context.Context, s *testing.State) {
 	dispMode, err := getInternalDisplayMode(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get display mode: ", err)
-	}
-
-	// TODO(ricardoq): replace check with "force shelf at bottom"
-	if err := checkShelfAtBottom(ctx, tconn, dispMode); err != nil {
-		s.Fatal("Cannot run test; shelf must be placed at bottom: ", err)
 	}
 
 	// Run all subtests twice. First, with tablet mode disabled. And then, with it enabled.
@@ -124,7 +145,9 @@ func PIP(ctx context.Context, s *testing.State) {
 		} {
 			s.Logf("Running %q", test.name)
 			// Clear task WM state. Windows should be positioned at their default location.
-			a.Command(ctx, "am", "broadcast", "-a", "android.intent.action.arc.cleartaskstate")
+			if err := a.Command(ctx, "am", "broadcast", "-a", "android.intent.action.arc.cleartaskstate").Run(); err != nil {
+				s.Fatal("Failed to clear WM state: ", err)
+			}
 			must(act.Start(ctx))
 			must(act.WaitForIdle(ctx, time.Second))
 			// Press button that triggers PIP mode in activity.
@@ -140,7 +163,7 @@ func PIP(ctx context.Context, s *testing.State) {
 				if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
 					s.Log("Failed to capture screenshot: ", err)
 				}
-				s.Errorf("%q + tablet mode(%t) failed: %v", test.name, tabletMode, err)
+				s.Errorf("%q with tablet mode(%t) failed: %v", test.name, tabletMode, err)
 			}
 			must(act.Stop(ctx))
 		}
@@ -237,16 +260,21 @@ func testPIPResize(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d
 	pipMaxSizeW := dispMode.WidthInNativePixels / pipMaxSizeFactor
 	pipMaxSizeH := (dispMode.HeightInNativePixels - shelfHeightPX) / pipMaxSizeFactor
 
+	w := bounds.Width
+	h := bounds.Height
+
 	// Aspect ratio gets honored after resize. Only test one dimension.
 	if pipMaxSizeH < pipMaxSizeW {
-		if bounds.Height < pipMaxSizeH-pipPositionErrorMarginPX {
-			return errors.Wrapf(err, "invalid height %d; want %d (error margin is %d)",
-				pipMaxSizeH, bounds.Height, pipPositionErrorMarginPX)
+		min := pipMaxSizeH - pipPositionErrorMarginPX
+		max := pipMaxSizeH + pipPositionErrorMarginPX
+		if h < min || h > max {
+			return errors.Wrapf(err, "invalid height %d; want %d <= %d <= %d)", h, min, h, max)
 		}
 	} else {
-		if bounds.Width < pipMaxSizeW-pipPositionErrorMarginPX {
-			return errors.Wrapf(err, "invalid width %d; want %d (error margin is %d)",
-				pipMaxSizeW, bounds.Width, pipPositionErrorMarginPX)
+		min := pipMaxSizeW - pipPositionErrorMarginPX
+		max := pipMaxSizeW + pipPositionErrorMarginPX
+		if w < min || w > max {
+			return errors.Wrapf(err, "invalid width %d; want %d <= %d <= %d", w, min, w, max)
 		}
 	}
 	return nil
@@ -275,8 +303,8 @@ func testPIPFling(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, de
 	}
 	defer stw.Close()
 
-	pipWorkAreaInsetsPX := int(math.Round(pipWorkAreaInsetsDP * dispMode.DeviceScaleFactor))
-	testing.ContextLog(ctx, "Using: pipWorkAreaInsetsPX = ", pipWorkAreaInsetsPX)
+	collisionWindowWorkAreaInsetsPX := int(math.Round(collisionWindowWorkAreaInsetsDP * dispMode.DeviceScaleFactor))
+	testing.ContextLog(ctx, "Using: collisionWindowWorkAreaInsetsPX = ", collisionWindowWorkAreaInsetsPX)
 
 	// Calculate Pixel (screen display) / Tuxel (touch device) ratio.
 	dispW := dispMode.WidthInNativePixels
@@ -334,20 +362,20 @@ func testPIPFling(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, de
 		}
 		switch dir.border {
 		case left:
-			if bounds.Left < 0 || bounds.Left > pipWorkAreaInsetsPX {
+			if bounds.Left < 0 || bounds.Left > collisionWindowWorkAreaInsetsPX {
 				return errors.Errorf("failed swipe to left; invalid left bounds %d; want 0 <= %d <= %d",
-					bounds.Left, bounds.Left, pipWorkAreaInsetsPX)
+					bounds.Left, bounds.Left, collisionWindowWorkAreaInsetsPX)
 			}
 		case right:
 			boundsRight := bounds.Left + bounds.Width
-			if boundsRight > dispW || boundsRight < dispW-pipWorkAreaInsetsPX {
+			if boundsRight > dispW || boundsRight < dispW-collisionWindowWorkAreaInsetsPX {
 				return errors.Errorf("failed swipe to right; invalid right bounds %d; want %d <= %d <= %d",
-					boundsRight, dispW-pipWorkAreaInsetsPX, boundsRight, dispW)
+					boundsRight, dispW-collisionWindowWorkAreaInsetsPX, boundsRight, dispW)
 			}
 		case top:
-			if bounds.Top < 0 || bounds.Top > pipWorkAreaInsetsPX {
+			if bounds.Top < 0 || bounds.Top > collisionWindowWorkAreaInsetsPX {
 				return errors.Errorf("failed swipe to top; invalid top bounds %d; want 0 <= %d <= %d",
-					bounds.Top, bounds.Top, pipWorkAreaInsetsPX)
+					bounds.Top, bounds.Top, collisionWindowWorkAreaInsetsPX)
 			}
 		case bottom:
 			rectDP, err := getShelfRect(ctx, tconn)
@@ -356,9 +384,9 @@ func testPIPFling(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, de
 			}
 			shelfTopPX := int(math.Round(float64(rectDP.Top) * dispMode.DeviceScaleFactor))
 			boundsBottom := bounds.Top + bounds.Height
-			if boundsBottom >= shelfTopPX || boundsBottom < shelfTopPX-pipWorkAreaInsetsPX {
+			if boundsBottom >= shelfTopPX || boundsBottom < shelfTopPX-collisionWindowWorkAreaInsetsPX {
 				return errors.Errorf("failed swipe to bottom; invalid bottom bounds %d; want %d <= %d < %d",
-					boundsBottom, boundsBottom-pipWorkAreaInsetsPX, boundsBottom, shelfTopPX)
+					boundsBottom, boundsBottom-collisionWindowWorkAreaInsetsPX, boundsBottom, shelfTopPX)
 			}
 		}
 	}
@@ -450,18 +478,122 @@ func isTabletModeEnabled(ctx context.Context, tconn *chrome.Conn) (bool, error) 
 	return enabled, err
 }
 
-// rect represents a rectangle, as defined here:
-// https://developers.chrome.com/extensions/automation#type-Rect
-type rect struct {
-	Left   int `json:"left"`
-	Top    int `json:"top"`
-	Width  int `json:"width"`
-	Height int `json:"height"`
+// shelfBehavior represents the different Chrome OS shelf behaviors.
+type shelfBehavior string
+
+// As defined in ShelfAutoHideBehavior here:
+// https://cs.chromium.org/chromium/src/ash/public/cpp/shelf_types.h
+const (
+	// shelfBehaviorAlwaysAutoHide represents always auto-hide.
+	shelfBehaviorAlwaysAutoHide shelfBehavior = "always"
+	//shelfBehaviorNeverAutoHide represents never auto-hide, meaning that it is always visible.
+	shelfBehaviorNeverAutoHide = "never"
+	// shelfBehaviorHidden represents always hidden, used for debugging, since this state is not exposed to the user.
+	shelfBehaviorHidden = "hidden"
+	// shelfBehaviorInvalid represents an invalid state.
+	shelfBehaviorInvalid = "invalid"
+)
+
+// setShelfBehavior sets the shelf visibility behavior.
+// displayId is the display that contains the shelf.
+func setShelfBehavior(ctx context.Context, c *chrome.Conn, displayID string, b shelfBehavior) error {
+	expr := fmt.Sprintf(
+		`new Promise(function(resolve, reject) {
+		  chrome.autotestPrivate.setShelfAutoHideBehavior(%q, %q, function() {
+		    if (chrome.runtime.lastError) {
+		      reject(new Error(chrome.runtime.lastError.message));
+		    } else {
+		      resolve();
+		    }
+		  });
+		})`, displayID, b)
+	return c.EvalPromise(ctx, expr, nil)
+}
+
+// getShelfBehavior returns the shelf visibility behavior.
+// displayId is the display that contains the shelf.
+func getShelfBehavior(ctx context.Context, c *chrome.Conn, displayID string) (shelfBehavior, error) {
+	var b shelfBehavior
+	expr := fmt.Sprintf(
+		`new Promise(function(resolve, reject) {
+		  chrome.autotestPrivate.getShelfAutoHideBehavior(%q, function(behavior) {
+		    if (chrome.runtime.lastError) {
+		      reject(new Error(chrome.runtime.lastError.message));
+		    } else {
+		      resolve(behavior);
+		    }
+		  });
+		})`, displayID)
+	err := c.EvalPromise(ctx, expr, &b)
+	if err != nil {
+		return shelfBehaviorInvalid, err
+	}
+	switch b {
+	case shelfBehaviorAlwaysAutoHide, shelfBehaviorNeverAutoHide, shelfBehaviorHidden:
+	default:
+		return shelfBehaviorInvalid, errors.Errorf("invalid shelf behavior %q", b)
+	}
+	return b, nil
+}
+
+// shelfAlignment represents the different Chrome OS shelf alignments.
+type shelfAlignment string
+
+// As defined in ShelfAlignment here:
+// https://cs.chromium.org/chromium/src/ash/public/cpp/shelf_types.h
+const (
+	shelfAlignmentBottom       shelfAlignment = "Bottom"
+	shelfAlignmentLeft                        = "Left"
+	shelfAlignmentRight                       = "Right"
+	shelfAlignmentBottomLocked                = "BottomLocked"
+	shelfAlignmentInvalid                     = "Invalid"
+)
+
+// setShelfAlignment sets the shelf alignment.
+// displayId is the display that contains the shelf.
+func setShelfAlignment(ctx context.Context, c *chrome.Conn, displayID string, a shelfAlignment) error {
+	expr := fmt.Sprintf(
+		`new Promise(function(resolve, reject) {
+		  chrome.autotestPrivate.setShelfAlignment(%q, %q, function() {
+		    if (chrome.runtime.lastError) {
+		      reject(new Error(chrome.runtime.lastError.message));
+		    } else {
+		      resolve();
+		    }
+		  });
+		})`, displayID, a)
+	return c.EvalPromise(ctx, expr, nil)
+}
+
+// getShelfAlignment returns the shelf alignment.
+// displayId is the display that contains the shelf.
+func getShelfAlignment(ctx context.Context, c *chrome.Conn, displayID string) (shelfAlignment, error) {
+	var a shelfAlignment
+	expr := fmt.Sprintf(
+		`new Promise(function(resolve, reject) {
+		  chrome.autotestPrivate.getShelfAlignment(%q, function(alignment) {
+		    if (chrome.runtime.lastError) {
+		      reject(new Error(chrome.runtime.lastError.message));
+		    } else {
+		      resolve(alignment);
+		    }
+		  });
+		})`, displayID)
+	err := c.EvalPromise(ctx, expr, &a)
+	if err != nil {
+		return shelfAlignmentInvalid, err
+	}
+	switch a {
+	case shelfAlignmentBottom, shelfAlignmentLeft, shelfAlignmentRight, shelfAlignmentBottomLocked:
+	default:
+		return shelfAlignmentInvalid, errors.Errorf("invalid shelf alignment %q", a)
+	}
+	return a, nil
 }
 
 // getShelfRect returns Chrome OS's shelf rect, in DPs.
-func getShelfRect(ctx context.Context, tconn *chrome.Conn) (rect, error) {
-	var r rect
+func getShelfRect(ctx context.Context, tconn *chrome.Conn) (arc.Rect, error) {
+	var r arc.Rect
 	err := tconn.EvalPromise(ctx,
 		`new Promise(function(resolve, reject) {
 		  chrome.automation.getDesktop(function(root) {
@@ -469,22 +601,128 @@ func getShelfRect(ctx context.Context, tconn *chrome.Conn) (rect, error) {
 		    if (!appWindow) {
 		      reject(new Error("Failed to locate ShelfWidget"));
 		    } else {
-		       resolve(appWindow.location);
+		      resolve(appWindow.location);
 		    }
 		  })
 		})`, &r)
 	return r, err
 }
 
-// checkShelfAtBottom verifies that Chrome OS shelf is placed at the bottom of the screen, as opposed to left / right placed.
-func checkShelfAtBottom(ctx context.Context, tconn *chrome.Conn, dispMode *display.DisplayMode) error {
-	r, err := getShelfRect(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to get shelf rect")
+// getStatusAreaRect returns Chrome OS's Status Area rect, in DPs.
+// Returns error if Status Area is not present.
+func getStatusAreaRect(ctx context.Context, tconn *chrome.Conn) (arc.Rect, error) {
+	var r arc.Rect
+	err := tconn.EvalPromise(ctx,
+		`new Promise(function(resolve, reject) {
+		  chrome.automation.getDesktop(function(root) {
+		    const appWindow = root.find({attributes: {className: 'BubbleFrameView'}});
+		    if (!appWindow) {
+		      reject(new Error("Failed to locate BubbleFrameView"));
+		    } else {
+		      resolve(appWindow.location);
+		    }
+		  })
+		})`, &r)
+	return r, err
+}
+
+// showSystemStatusArea shows the System Status Area in case it is not already shown.
+func showSystemStatusArea(ctx context.Context, tconn *chrome.Conn) error {
+	// Already visible ?
+	if _, err := getStatusAreaRect(ctx, tconn); err == nil {
+		return nil
 	}
-	// Testing Top as well in case placing the shelf at the top becomes valid.
-	if r.Width != dispMode.Width || r.Top < dispMode.Height/2 {
-		return errors.Errorf("invalid shelf position %+v", r)
+
+	if err := toggleSystemStatusArea(ctx, tconn); err != nil {
+		return err
+	}
+
+	// Verify that it is visible.
+	if _, err := getStatusAreaRect(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to show the Status Area")
 	}
 	return nil
+}
+
+// hideSystemStatusArea hides the System Status Area in case it is not already hidden.
+func hideSystemStatusArea(ctx context.Context, tconn *chrome.Conn) error {
+	// Already hidden ?
+	if _, err := getStatusAreaRect(ctx, tconn); err != nil {
+		return nil
+	}
+
+	if err := toggleSystemStatusArea(ctx, tconn); err != nil {
+		return err
+	}
+
+	// Verify that it is hidden.
+	if _, err := getStatusAreaRect(ctx, tconn); err == nil {
+		return errors.New("failed to hide the Status Area")
+	}
+	return nil
+}
+
+// toggleSystemStatusArea toggles Chrome OS's system status area.
+func toggleSystemStatusArea(ctx context.Context, tconn *chrome.Conn) error {
+	// A reliable way to toggle the status area is by injecting Alt+Shift+s. But on tablet mode
+	// it doesn't work since the keyboard is disabled.
+	// Instead, we inject a touch event in the StatusAreaWidget's button. The problem is that in tablet mode
+	// there are two buttons and we cannot identify them in a reliable way. We assume that the first button
+	// in the StatusAreaWidget hierarchy is the one that toggles the status area.
+	// TODO(ricardoq): Find a reliable way to find "status tray" button.
+
+	var r arc.Rect
+	err := tconn.EvalPromise(ctx,
+		`new Promise((resolve, reject) => {
+		  chrome.automation.getDesktop(function(root) {
+		    const areaWidget = root.find({ attributes: { className: 'StatusAreaWidget'}});
+		    if (!areaWidget) {
+		      reject("Failed to locate StatusAreaWidget");
+		      return;
+		    }
+		    const button = areaWidget.find({ attributes: { role: 'button'}})
+		    if (!button) {
+		      reject("Failed to locate button in StatusAreaWidget");
+		      return;
+		    }
+		    resolve(button.location);
+		  })
+		})`, &r)
+	if err != nil {
+		return errors.Wrap(err, "failed to find StatusAreaWidget")
+	}
+
+	tsw, err := input.Touchscreen(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to open touchscreen device")
+	}
+	defer tsw.Close()
+
+	stw, err := tsw.NewSingleTouchWriter()
+	if err != nil {
+		return errors.Wrap(err, "could not create TouchEventWriter")
+	}
+	defer stw.Close()
+
+	dispMode, err := getInternalDisplayMode(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get display mode")
+	}
+
+	// Inject touch at button's center. Coordinates coming from Chrome are in DPs.
+	x := float64(r.Left+r.Width/2) * dispMode.DeviceScaleFactor
+	y := float64(r.Top+r.Height/2) * dispMode.DeviceScaleFactor
+
+	// Calculate Pixel (screen display) / Tuxel (touch device) ratio.
+	pixelToTuxelX := float64(tsw.Width()) / float64(dispMode.WidthInNativePixels)
+	pixelToTuxelY := float64(tsw.Height()) / float64(dispMode.HeightInNativePixels)
+
+	if err := stw.Move(input.TouchCoord(x*pixelToTuxelX), input.TouchCoord(y*pixelToTuxelY)); err != nil {
+		return err
+	}
+	const touchDuration = 100 * time.Millisecond
+	if err := testing.Sleep(ctx, touchDuration); err != nil {
+		return err
+	}
+	return stw.End()
 }
