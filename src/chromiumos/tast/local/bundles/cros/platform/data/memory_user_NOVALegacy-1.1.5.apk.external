@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromeos-test-assets-private/tast/crosint/platform/memory_user_NOVALegacy-1.1.5_20190520.apk",
+  "size": 25976760,
+  "sha256sum": "40d53371a22e40a3f105068d0ced7e377ec467b298612320c5d9e207b30c1551"
+}
