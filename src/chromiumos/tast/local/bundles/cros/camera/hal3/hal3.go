@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/perf"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/shutil"
@@ -170,6 +171,15 @@ func runCrosCameraTest(ctx context.Context, s *testing.State, cfg crosCameraTest
 		}
 	}()
 
+	uid, err := sysutil.GetUID("arc-camera")
+	if err != nil {
+		s.Fatal("Failed to get uid of arc-camera: ", err)
+	}
+
+	if err := os.Chown(gtestFile.Name(), int(uid), 0); err != nil {
+		s.Fatal("Failed to chown the gtest output file: ", err)
+	}
+
 	logPath := filepath.Join(s.OutDir(), "cros_camera_test.log")
 	logFile, err := os.OpenFile(logPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
@@ -181,7 +191,8 @@ func runCrosCameraTest(ctx context.Context, s *testing.State, cfg crosCameraTest
 		}
 	}()
 
-	cmd := testexec.CommandContext(ctx, "cros_camera_test", cfg.toArgs()...)
+	args := append([]string{"-E", "-u", "arc-camera", "cros_camera_test"}, cfg.toArgs()...)
+	cmd := testexec.CommandContext(ctx, "sudo", args...)
 	cmd.Env = []string{"GTEST_OUTPUT=xml:" + gtestFile.Name()}
 	cmd.Stdout = logFile
 	cmd.Stderr = logFile
