@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "089e93fa_be607475",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-05-20T19:11:43Z",
+      "side": 1,
+      "message": "Done, thanks for the detailed explanation!",
+      "parentUuid": "781bdacd_e641b4ab",
+      "revId": "e7a16fc602701669bc36a08529f11e6db9654b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88add19c_e7487a9d",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "e7a16fc602701669bc36a08529f11e6db9654b1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a0bc214_c139a1a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2019-05-20T19:11:43Z",
+      "side": 1,
+      "message": "Ack - yes, that\u0027s the reason.\n\n(To me that\u0027s the most annoying quirk in Go. Or in the Go protobuf library?..)",
+      "parentUuid": "88add19c_e7487a9d",
+      "revId": "e7a16fc602701669bc36a08529f11e6db9654b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
