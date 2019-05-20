@@ -320,6 +320,24 @@
     },
     {
       "key": {
+        "uuid": "59099699_a2011044",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-05-20T04:10:39Z",
+      "side": 1,
+      "message": "Compared to Chrome. I\u0027m more worrid about some daemon processes.\nrecent reverts are all daemon processes.\n\nThe test is NOT to test no things get denied in the long system run, it\u0027s used to test no audit log is written to kernel ring buffer (and then syslog) in the long system run because all audit log after auditd starts should be captured by auditd and write to different place without going to kernel ring buffer.\n\nThe main goal is to test auditd is working correctly in this test, not the correctness of the policy. This is to prevent potential batch denials gets into kernel ring buffer to affect other teams digging into syslog for their debugging.",
+      "parentUuid": "454715ca_24eb2c24",
+      "revId": "7c01abbdd4e86e5f3f005ff553d2df6013d2fa89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca051650_d28e12ad",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
         "patchSetId": 1
