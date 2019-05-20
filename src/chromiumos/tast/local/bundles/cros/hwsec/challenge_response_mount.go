@@ -155,6 +155,7 @@ func handleChallengeKey(
 
 func ChallengeResponseMount(ctx context.Context, s *testing.State) {
 	const (
+		dbusName    = "org.chromium.TestingCryptohomeKeyDelegate"
 		testUser    = "cryptohome_test@chromium.org"
 		keyLabel    = "testkey"
 		keySizeBits = 2048
@@ -184,7 +185,10 @@ func ChallengeResponseMount(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to system D-Bus bus: ", err)
 	}
-	selfDbusObjName := dbusConn.Names()[0]
+	if _, err := dbusConn.RequestName(dbusName, 0 /* flags */); err != nil {
+		s.Fatal("Failed to request the well-known D-Bus name: ", err)
+	}
+	defer dbusConn.ReleaseName(dbusName)
 
 	keyDelegate, err := newCryptohomeKeyDelegate(
 		s.Logf, dbusConn, testUser, keyAlg, rsaKey, pubKeySPKIDER)
@@ -201,7 +205,7 @@ func ChallengeResponseMount(ctx context.Context, s *testing.State) {
 	// Create the challenge-response protected cryptohome.
 	keyType := cpb.KeyData_KEY_TYPE_CHALLENGE_RESPONSE
 	localKeyLabel := keyLabel
-	keyDelegateDbusObjPath := "/org/chromium/CryptohomeKeyDelegate"
+	dbusServiceName := dbusName
 	authReq := cpb.AuthorizationRequest{
 		Key: &cpb.Key{
 			Data: &cpb.KeyData{
@@ -218,8 +222,8 @@ func ChallengeResponseMount(ctx context.Context, s *testing.State) {
 			},
 		},
 		KeyDelegate: &cpb.KeyDelegate{
-			DbusServiceName: &selfDbusObjName,
-			DbusObjectPath:  &keyDelegateDbusObjPath,
+			DbusServiceName: &dbusServiceName,
+			DbusObjectPath:  &keyDelegate.dbusPath,
 		},
 	}
 	copyAuthKey := true
