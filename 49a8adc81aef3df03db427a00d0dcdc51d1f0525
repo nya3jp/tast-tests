@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f0fc7888_b3eba3c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-05-21T06:29:49Z",
+      "side": 1,
+      "message": "Hiro, did you test that MediaRecorder works fine with VP8 and VP9?",
+      "parentUuid": "228ef2b1_422d27f8",
+      "revId": "49a8adc81aef3df03db427a00d0dcdc51d1f0525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "544229cf_8b280001",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_vp8.go",
         "patchSetId": 1
