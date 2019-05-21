@@ -320,6 +320,30 @@
     },
     {
       "key": {
+        "uuid": "7e53962f_de3c15f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T21:03:29Z",
+      "side": 1,
+      "message": "Alright, if you insist, Done.",
+      "parentUuid": "98679f1c_a6492ffe",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 11
+      },
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38154f15_f17657ec",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
         "patchSetId": 6
@@ -587,6 +611,24 @@
       "revId": "579f4f2240835847895fb2c2079a920d5010e047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bb0cf7d_e4f71e03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T21:03:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4aa6d88f_7d691628",
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
