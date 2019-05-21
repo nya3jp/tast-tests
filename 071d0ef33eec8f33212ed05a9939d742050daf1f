@@ -2,6 +2,144 @@
   "comments": [
     {
       "key": {
+        "uuid": "3a2fe96c_d412f11f",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-05-21T00:22:12Z",
+      "side": 1,
+      "message": "Generally in Go we keep acronyms as they are, so these would be CLAT and VPN, unless you mean to intentionally not export these? If so, then the other consts should be lowercase as well.",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 6
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c948caae_57089751",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-05-21T00:22:12Z",
+      "side": 1,
+      "message": "I would at least tease apart each sub-test into separate functions to make this a little easier to follow, e.g.\n\nget interfaces\ntest outbound \ntest inbound\netc etc\n\nalso, please add comments especially about which things run in which environment and how they work",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 32
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dacfe582_87509cbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-05-21T00:22:12Z",
+      "side": 1,
+      "message": "you don\u0027t need to reference your own package",
+      "range": {
+        "startLine": 41,
+        "startChar": 14,
+        "endLine": 41,
+        "endChar": 19
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab6b9924_35a34216",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-05-21T00:22:12Z",
+      "side": 1,
+      "message": "why BootstrapCommand instead of Command?",
+      "range": {
+        "startLine": 45,
+        "startChar": 14,
+        "endLine": 45,
+        "endChar": 30
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2864651_739e7fed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-05-21T00:22:12Z",
+      "side": 1,
+      "message": "always prefer less nesting: flip the check and continue instead",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 52
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fffc3fb2_f5ddee12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-05-21T00:22:12Z",
+      "side": 1,
+      "message": "So TrimPrefix will return the original string if the prefix doesn\u0027t exist, which is the same as HasPrefix. So you can combine these things like so:\n\nif n :\u003d strings.TrimPrefix(name, ...); n \u003d\u003d name {\n  continue\n}\naddrs, err :\u003d ...\nif err !\u003d nil ...\nif len(addrs) \u003d\u003d 0 { continue }\nifaces[n] \u003d ...",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 54
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2fd8e6be_d562b212",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
         "patchSetId": 3
@@ -13,6 +151,230 @@
       "writtenOn": "2019-05-16T14:16:06Z",
       "side": 1,
       "message": "sorry for the bad advice re assigning directly to the field here. i was unaware of this weirdness in go, but i think it\u0027s fallout from this being an index expression (https://golang.org/ref/spec#Index_expressions)",
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4641b58_f3fd82fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-05-21T00:22:12Z",
+      "side": 1,
+      "message": "why 4? comment or (better?) use consts for these indices",
+      "range": {
+        "startLine": 88,
+        "startChar": 20,
+        "endLine": 88,
+        "endChar": 21
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38728367_ea62996b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-05-21T00:22:12Z",
+      "side": 1,
+      "message": "declare you vars close to where you use them, especially since you can continue in the next line without using n",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 25
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff0c25d3_67818f52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-05-21T00:22:12Z",
+      "side": 1,
+      "message": "would prefer to make these sort of things consts",
+      "range": {
+        "startLine": 104,
+        "startChar": 34,
+        "endLine": 104,
+        "endChar": 51
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cef350f_716dcca9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-05-21T00:22:12Z",
+      "side": 1,
+      "message": "as above, everything below here should be it\u0027s own test function",
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93a36b8f_c08528e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-05-21T00:22:12Z",
+      "side": 1,
+      "message": "why do you need this?",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 76
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25ca2e10_823900fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-05-21T00:22:12Z",
+      "side": 1,
+      "message": "flip the check and continue, unnest everything below",
+      "range": {
+        "startLine": 115,
+        "startChar": 4,
+        "endLine": 115,
+        "endChar": 5
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ad69914_b1be3242",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-05-21T00:22:12Z",
+      "side": 1,
+      "message": "this is sufficiently non-trivial that it should be pulled out into separate functions and well named.\n\n\ncurious did you try running this for each interface concurrently via a go func? that would seemingly take less time?",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 7
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ad0a93b_129a3f24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-05-21T00:22:12Z",
+      "side": 1,
+      "message": "why do you need this much time?",
+      "range": {
+        "startLine": 131,
+        "startChar": 59,
+        "endLine": 131,
+        "endChar": 61
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8eb697b5_f2935c65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-05-21T00:22:12Z",
+      "side": 1,
+      "message": "separate func, get rid of the label and just return",
+      "range": {
+        "startLine": 134,
+        "startChar": 3,
+        "endLine": 145,
+        "endChar": 5
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "969d0609_8db5d3ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-05-21T00:22:12Z",
+      "side": 1,
+      "message": "don\u0027t return a channel here, it\u0027s almost always better to have the caller decide how to process your data and whether or not they want to use a concurrency construct. also the channel writer is typically the one responsible for closing it. the usual pattern is to take function as a param and call that and stop when that tells you to, e.g.\n\nstreamTcp(ctx, ifname, out func(string) bool) {\n  start cmd\n  defer wait\n  defer kill\n  for {\n    case ctx done: return\n    case scan():  // or default:\n    if out(sc.Text()) \u003d\u003d false { return }\n  }\n}\n\nthen something like...\n\nctx, cancel :\u003d withtimeout\nbool found\nstreamTcp(ctx, func(msg string) bool {\n  if string contains ip {\n    found \u003d true\n    return false\n  }\n  return true\n})\n\nif !found s.Errorf...\n\nthis way you don\u0027t bake in the concurrency and have to do that delay sync or anything else.\nyou could put this in a go routine later if needed, for example, if you test each iface at the same time, you can use a waitgroup and block until they\u0027re all done.",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 24
+      },
       "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
