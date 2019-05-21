@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "96bfd4f5_dcda5512",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_glxgears.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-05-21T05:43:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8642d3aa_a40b1088",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 64
+      },
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f53e36db_6f7b3797",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_glxgears.go",
         "patchSetId": 6
@@ -36,6 +60,24 @@
       "writtenOn": "2019-05-21T04:26:23Z",
       "side": 1,
       "message": "i\u0027m not sure that it\u0027s a good idea to use this precondition in a test that also starts crostini, as it will leave crostini running for other tests that use the same precondition. i\u0027d recommend letting the test start chrome itself",
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d829d17b_df304d0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_glxgears.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-05-21T05:43:52Z",
+      "side": 1,
+      "message": "We can deal with the correct precondition later.",
+      "parentUuid": "f53e36db_6f7b3797",
       "revId": "579f4f2240835847895fb2c2079a920d5010e047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -70,6 +112,24 @@
       "writtenOn": "2019-05-21T04:26:23Z",
       "side": 1,
       "message": "please always include dates in external data filenames per https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#External-data-files\n\notherwise it\u0027s impossible to update data files without breaking tests on older branches",
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "711890b4_1d52b7b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/crostini_trace_glxgears_glxgears.trace.external",
+        "patchSetId": 6
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-05-21T05:43:52Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "6ff76164_0fb4c092",
       "revId": "579f4f2240835847895fb2c2079a920d5010e047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -493,6 +553,24 @@
       "writtenOn": "2019-05-21T04:26:23Z",
       "side": 1,
       "message": "what does this mean?",
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d7e6730_1ae0c99a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-05-21T05:43:52Z",
+      "side": 1,
+      "message": "That is based on our discussion that tests can keep a lot of cruft around. apireplay has that potential, as input and output can be large.",
+      "parentUuid": "cfd94f9f_be404827",
       "revId": "579f4f2240835847895fb2c2079a920d5010e047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
