@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a1d3053_b2efe430",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-21T09:12:33Z",
+      "side": 1,
+      "message": "I intentionally not export just the \"clatPrefix\" and \"vpnPrefix\" due to the minimal possibility of it being used outside this code (as it is an Android interface).\n\nI used the constants in this code (func GetARCInterfaceNames) to filter out the interfaces.",
+      "parentUuid": "3a2fe96c_d412f11f",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 6
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c948caae_57089751",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-05-21T00:22:12Z",
       "side": 1,
       "message": "I would at least tease apart each sub-test into separate functions to make this a little easier to follow, e.g.\n\nget interfaces\ntest outbound \ntest inbound\netc etc\n\nalso, please add comments especially about which things run in which environment and how they work",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 32
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac66a74e_0629a3f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-21T09:12:33Z",
+      "side": 1,
+      "message": "Added comments to parts of the code.\n\nAs for the sub-tests, currently still inside one big function, however added block of comment to separate the sub-tests. It might still be confusing, and if it is, I\u0027m down to split it in the next patch.",
+      "parentUuid": "c948caae_57089751",
       "range": {
         "startLine": 33,
         "startChar": 5,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "509b6673_79546085",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-21T09:12:33Z",
+      "side": 1,
+      "message": "It is from another package \"chromiumos/tast/local/arc\".\nI can alias the package (as previously mentioned), however other ARC TAST tests don\u0027t alias the package. By not aliasing it provides consistency to the other tests.\n\nWhat do you think?",
+      "parentUuid": "dacfe582_87509cbf",
+      "range": {
+        "startLine": 41,
+        "startChar": 14,
+        "endLine": 41,
+        "endChar": 19
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab6b9924_35a34216",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07b5e7e9_e64ec5ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-21T09:12:33Z",
+      "side": 1,
+      "message": "Missed the function \"Command\" and thought it runs on the host. My bad, sorry...\nReplaced \"BootstrapCommand\" to \"Command\".",
+      "parentUuid": "ab6b9924_35a34216",
+      "range": {
+        "startLine": 45,
+        "startChar": 14,
+        "endLine": 45,
+        "endChar": 30
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "6bb001ee_4b038b56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-21T09:12:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2864651_739e7fed",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 52
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fffc3fb2_f5ddee12",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
         "patchSetId": 3
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "c711d761_64be2dfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-21T09:12:33Z",
+      "side": 1,
+      "message": "Well noted, thanks for the suggestion! Done.",
+      "parentUuid": "fffc3fb2_f5ddee12",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 54
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2fd8e6be_d562b212",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
         "patchSetId": 3
@@ -154,6 +298,24 @@
       "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d7d9fad_228cf6c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-21T09:12:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fd8e6be_d562b212",
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "8f110710_36fbde63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-21T09:12:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4641b58_f3fd82fc",
+      "range": {
+        "startLine": 88,
+        "startChar": 20,
+        "endLine": 88,
+        "endChar": 21
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38728367_ea62996b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
         "patchSetId": 3
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "466888ba_5b375431",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-21T09:12:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38728367_ea62996b",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 25
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff0c25d3_67818f52",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
         "patchSetId": 3
@@ -214,6 +424,30 @@
       "writtenOn": "2019-05-21T00:22:12Z",
       "side": 1,
       "message": "would prefer to make these sort of things consts",
+      "range": {
+        "startLine": 104,
+        "startChar": 34,
+        "endLine": 104,
+        "endChar": 51
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f4c97d3_559d2b2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-21T09:12:33Z",
+      "side": 1,
+      "message": "I\u0027m currently putting it as a local const (and I\u0027m not sure if I\u0027m doing it correctly).\nAs the global variable is scoped at package level, I\u0027m afraid putting it as a global might ended up making other files unable to use \u0027timeout\u0027 var.\nAny thoughts are welcome.",
+      "parentUuid": "ff0c25d3_67818f52",
       "range": {
         "startLine": 104,
         "startChar": 34,
@@ -266,6 +500,30 @@
     },
     {
       "key": {
+        "uuid": "9866fc28_b7a21fec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-21T09:12:33Z",
+      "side": 1,
+      "message": "Removed the context shorten as it is no longer being used.",
+      "parentUuid": "93a36b8f_c08528e8",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 76
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25ca2e10_823900fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
         "patchSetId": 3
@@ -286,6 +544,30 @@
       "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a4fb604_270c461b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-21T09:12:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25ca2e10_823900fe",
+      "range": {
+        "startLine": 115,
+        "startChar": 4,
+        "endLine": 115,
+        "endChar": 5
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -312,6 +594,30 @@
     },
     {
       "key": {
+        "uuid": "d7115f32_553525ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-21T09:12:33Z",
+      "side": 1,
+      "message": "Separated the anonymous function.\n\nDid thought of that, but due to the complexity (many goroutines) didn\u0027t try.\nAdded concurrency on the new patch and it seems to give better performance (2 interfaces, 11s to 6s, not considering ARC boot time).",
+      "parentUuid": "2ad69914_b1be3242",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 7
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ad0a93b_129a3f24",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
         "patchSetId": 3
@@ -332,6 +638,30 @@
       "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ceae22d_5851cce7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-21T09:12:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ad0a93b_129a3f24",
+      "range": {
+        "startLine": 131,
+        "startChar": 59,
+        "endLine": 131,
+        "endChar": 61
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -358,6 +688,30 @@
     },
     {
       "key": {
+        "uuid": "ed9af6da_4bc9c4da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-21T09:12:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8eb697b5_f2935c65",
+      "range": {
+        "startLine": 134,
+        "startChar": 3,
+        "endLine": 145,
+        "endChar": 5
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "969d0609_8db5d3ed",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
         "patchSetId": 3
@@ -369,6 +723,30 @@
       "writtenOn": "2019-05-21T00:22:12Z",
       "side": 1,
       "message": "don\u0027t return a channel here, it\u0027s almost always better to have the caller decide how to process your data and whether or not they want to use a concurrency construct. also the channel writer is typically the one responsible for closing it. the usual pattern is to take function as a param and call that and stop when that tells you to, e.g.\n\nstreamTcp(ctx, ifname, out func(string) bool) {\n  start cmd\n  defer wait\n  defer kill\n  for {\n    case ctx done: return\n    case scan():  // or default:\n    if out(sc.Text()) \u003d\u003d false { return }\n  }\n}\n\nthen something like...\n\nctx, cancel :\u003d withtimeout\nbool found\nstreamTcp(ctx, func(msg string) bool {\n  if string contains ip {\n    found \u003d true\n    return false\n  }\n  return true\n})\n\nif !found s.Errorf...\n\nthis way you don\u0027t bake in the concurrency and have to do that delay sync or anything else.\nyou could put this in a go routine later if needed, for example, if you test each iface at the same time, you can use a waitgroup and block until they\u0027re all done.",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 24
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8af6dec_e0bc7b29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-21T09:12:33Z",
+      "side": 1,
+      "message": "Thanks for the guidance!\nFollowed it, removed the channel.\n\nI might not get the full context, but isn\u0027t \"case scan()\" blocking?\nIf no message get through the func, we won\u0027t get to the \"case ctx done\" block.\n\nCurrently uses testing.Poll for timeout instead.\nAny suggestions about these would be greatly appreciated!",
+      "parentUuid": "969d0609_8db5d3ed",
       "range": {
         "startLine": 162,
         "startChar": 1,
