@@ -143,6 +143,29 @@
       "revId": "49a8adc81aef3df03db427a00d0dcdc51d1f0525",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49a66fd8_15a15e09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-21T06:33:35Z",
+      "side": 1,
+      "message": "Could you add a short comment why this extra flag is needed for VP9 only?",
+      "range": {
+        "startLine": 106,
+        "startChar": 44,
+        "endLine": 106,
+        "endChar": 52
+      },
+      "revId": "49a8adc81aef3df03db427a00d0dcdc51d1f0525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
