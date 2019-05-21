@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aeb9f7bf_85150e1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-21T19:29:54Z",
+      "side": 1,
+      "message": "carrying over nya@\u0027s comment: please use bufio.Scanner instead, as it will reduce the amount of code here",
+      "revId": "163fdf30cf88dd0a2fa666169fb9bd82c4710131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7a38d3d_bdc0a529",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-21T19:29:54Z",
+      "side": 1,
+      "message": "nit: don\u0027t think you need this trailing slash",
+      "range": {
+        "startLine": 69,
+        "startChar": 32,
+        "endLine": 69,
+        "endChar": 33
+      },
+      "revId": "163fdf30cf88dd0a2fa666169fb9bd82c4710131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2763e93c_34e5f96f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-21T19:29:54Z",
+      "side": 1,
+      "message": "please move this after the error check. you don\u0027t want to try to remove this if creation was unsuccessful.",
+      "revId": "163fdf30cf88dd0a2fa666169fb9bd82c4710131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fc78551_ec91758a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-21T19:29:54Z",
+      "side": 1,
+      "message": "can you delete randStr and just use https://golang.org/pkg/io/ioutil/#TempFile?\n\nalso consider using \u0027f\u0027 for files, as that\u0027s more common. \u0027fi\u0027 is often used for os.FileInfo",
+      "revId": "163fdf30cf88dd0a2fa666169fb9bd82c4710131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9976e41_9724f1de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-21T19:29:54Z",
+      "side": 1,
+      "message": "nit: can shorten this if you want to; see L103",
+      "revId": "163fdf30cf88dd0a2fa666169fb9bd82c4710131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10100aa4_6986c54a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-21T19:29:54Z",
+      "side": 1,
+      "message": "nit: delete colon\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 93,
+        "startChar": 58,
+        "endLine": 93,
+        "endChar": 59
+      },
+      "revId": "163fdf30cf88dd0a2fa666169fb9bd82c4710131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e16e6f6_ed31cbd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-21T19:29:54Z",
+      "side": 1,
+      "message": "please include the error:\n\n  s.Fatal(\"Failed to open audit log: \", err)",
+      "revId": "163fdf30cf88dd0a2fa666169fb9bd82c4710131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc549daa_9f4491cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-21T19:29:54Z",
+      "side": 1,
+      "message": "nit: can make this shorter if you want to:\n\n  if foundLine, err :\u003d findFirstMatchedLine(...); err !\u003d nil {\n      s.Fatal(...)\n  } else if foundLine \u003d\u003d \"\" {\n      s.Error(...)\n  }",
+      "revId": "163fdf30cf88dd0a2fa666169fb9bd82c4710131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
