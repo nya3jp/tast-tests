@@ -296,6 +296,30 @@
     },
     {
       "key": {
+        "uuid": "98679f1c_a6492ffe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-21T20:23:26Z",
+      "side": 1,
+      "message": "hmm. but if you want to do that, wouldn\u0027t you also be reporting the new data as additional perf keyvals? right now, this just feels like an unnecessary intermediate struct to me.\n\n(if you kept the struct, you\u0027d also want to rename it to \u0027result\u0027 since it doesn\u0027t need to be exported outside of the class)",
+      "parentUuid": "c24a8efd_b1d941f3",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 11
+      },
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "38154f15_f17657ec",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
         "patchSetId": 6
@@ -495,6 +519,24 @@
     },
     {
       "key": {
+        "uuid": "daecd438_d02a8e8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-21T20:23:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6def3561_35b7a692",
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03a6ff3e_5c7c9e93",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
         "patchSetId": 6
@@ -524,6 +566,24 @@
       "side": 1,
       "message": "I understand your concern and I do not like duplicate code too. I filed a bug about this. (crbug.com/965398)",
       "parentUuid": "03a6ff3e_5c7c9e93",
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4aa6d88f_7d691628",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-21T20:23:26Z",
+      "side": 1,
+      "message": "thanks! and sorry, it looks like there were already a few bugs about this. :-)\n\nmind adding a short TODO comment here pointing at the remaining bug? (i duped the rest into it)",
+      "parentUuid": "eae16aa3_3db4ce7c",
       "revId": "579f4f2240835847895fb2c2079a920d5010e047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -1075,6 +1135,24 @@
       "side": 1,
       "message": "That is based on our discussion that tests can keep a lot of cruft around. apireplay has that potential, as input and output can be large.",
       "parentUuid": "cfd94f9f_be404827",
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85a7767e_c332598b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-21T20:23:26Z",
+      "side": 1,
+      "message": "does it just write to the container? in that case, will the data be thrown out at the end of the test anyway?",
+      "parentUuid": "1d7e6730_1ae0c99a",
       "revId": "579f4f2240835847895fb2c2079a920d5010e047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

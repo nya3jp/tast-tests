@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "782a403b_d783d253",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-21T20:23:26Z",
+      "side": 1,
+      "message": "you can just return \u0027err\u0027 directly here; the os package typically includes the path in errors already",
+      "revId": "e019012cb459ed2e5a97333fd96c72775c06c7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de10c5af_3c456eff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-21T20:23:26Z",
+      "side": 1,
+      "message": "nit: don\u0027t need %s here:\n\n  s.Log(\"Logging container gfx environment to \", envFile)\n\nsee https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Log_Error_Fatal-vs_Logf_Errorf_Fatalf",
+      "revId": "e019012cb459ed2e5a97333fd96c72775c06c7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62de84b9_d8049a99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-21T20:23:26Z",
+      "side": 1,
+      "message": "nit: remove the \"%s here too and switch to ContextLog",
+      "revId": "e019012cb459ed2e5a97333fd96c72775c06c7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bcf930f_06559daf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-21T20:23:26Z",
+      "side": 1,
+      "message": "nit: ContextLog, delete \"%s\"\n\nalso s/Dump/Dumping/",
+      "revId": "e019012cb459ed2e5a97333fd96c72775c06c7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
