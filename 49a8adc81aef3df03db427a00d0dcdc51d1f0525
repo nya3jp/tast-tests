@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "228ef2b1_422d27f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-21T06:26:24Z",
+      "side": 1,
+      "message": "FYI: we had a comment thread about whether it\u0027s worth having VP8/VP9 version of these tests.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1575191/5/src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_h264.go\n\nI don\u0027t have any opinion and want to ask shenghao@\u0027s opinion.",
+      "revId": "49a8adc81aef3df03db427a00d0dcdc51d1f0525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "544229cf_8b280001",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_vp8.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-21T06:26:24Z",
+      "side": 1,
+      "message": "It looks this file is shared with all mediaRecoderPerf tests. So, how about this constants in media_recorder.go?",
+      "revId": "49a8adc81aef3df03db427a00d0dcdc51d1f0525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f65cd92c_09a6610a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_vp8.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-21T06:26:24Z",
+      "side": 1,
+      "message": "VP8?",
+      "range": {
+        "startLine": 21,
+        "startChar": 73,
+        "endLine": 21,
+        "endChar": 79
+      },
+      "revId": "49a8adc81aef3df03db427a00d0dcdc51d1f0525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d41dd38_54a2333b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_vp8.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-21T06:26:24Z",
+      "side": 1,
+      "message": "\"chrome_login\" will be deprecated. Please use \"chrome\" instead.\ncf. https://groups.google.com/a/chromium.org/forum/?utm_medium\u003demail\u0026utm_source\u003dfooter#!topic/tast-users/XCaFRxWQzvg",
+      "range": {
+        "startLine": 28,
+        "startChar": 26,
+        "endLine": 28,
+        "endChar": 38
+      },
+      "revId": "49a8adc81aef3df03db427a00d0dcdc51d1f0525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bedf619_2687840e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_vp9.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-21T06:26:24Z",
+      "side": 1,
+      "message": "VP9?",
+      "range": {
+        "startLine": 21,
+        "startChar": 74,
+        "endLine": 21,
+        "endChar": 79
+      },
+      "revId": "49a8adc81aef3df03db427a00d0dcdc51d1f0525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bcc56c5_323465fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_vp9.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-21T06:26:24Z",
+      "side": 1,
+      "message": "\"chrome\"",
+      "range": {
+        "startLine": 28,
+        "startChar": 26,
+        "endLine": 28,
+        "endChar": 38
+      },
+      "revId": "49a8adc81aef3df03db427a00d0dcdc51d1f0525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
