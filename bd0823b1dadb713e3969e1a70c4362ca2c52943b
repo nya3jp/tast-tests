@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6cdcc5eb_0771e540",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-21T03:18:34Z",
+      "side": 1,
+      "message": "Optional: Since there are so many similar comparisons in this file, it might be worth introducing a helper function like this:\n\n func checkRange(name string, value, min, max int) error {\n   if value \u003c min || value \u003e max {\n     return errors.Errorf(\"%s (%d) not in the expected range [%d, %d]\", name, value, min, max)\n   }\n   return nil\n }\n\n ...\n\n if err :\u003d checkRange(\"right bounds\", bounds.Left + bound.Width, dispMode.WidthInNativePixels - collisionWindowWorkAreaInsetsPX, dispMode.WidthInNativePixels); err !\u003d nil {\n   return err\n }",
+      "range": {
+        "startLine": 419,
+        "startChar": 1,
+        "endLine": 422,
+        "endChar": 45
+      },
+      "revId": "bd0823b1dadb713e3969e1a70c4362ca2c52943b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37576d8d_b14956df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-21T03:18:34Z",
+      "side": 1,
+      "message": "nit: Mind inserting a space after the colon?",
+      "range": {
+        "startLine": 432,
+        "startChar": 60,
+        "endLine": 432,
+        "endChar": 61
+      },
+      "revId": "bd0823b1dadb713e3969e1a70c4362ca2c52943b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a50d9fdd_6a4a4ba7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-21T03:18:34Z",
+      "side": 1,
+      "message": "nit: (%d, %d)",
+      "range": {
+        "startLine": 568,
+        "startChar": 41,
+        "endLine": 568,
+        "endChar": 46
+      },
+      "revId": "bd0823b1dadb713e3969e1a70c4362ca2c52943b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "976b78c1_09ed0d02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-21T03:18:34Z",
+      "side": 1,
+      "message": "nit: (%d, %d)",
+      "range": {
+        "startLine": 570,
+        "startChar": 57,
+        "endLine": 570,
+        "endChar": 62
+      },
+      "revId": "bd0823b1dadb713e3969e1a70c4362ca2c52943b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
