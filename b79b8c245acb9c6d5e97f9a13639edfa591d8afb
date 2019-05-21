@@ -53,6 +53,29 @@
     },
     {
       "key": {
+        "uuid": "d61ed97a_b8570d65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-21T04:15:04Z",
+      "side": 1,
+      "message": "Also, can we just use strings.Contains(string(content), fileName) instead of regexp?",
+      "range": {
+        "startLine": 55,
+        "startChar": 44,
+        "endLine": 55,
+        "endChar": 52
+      },
+      "revId": "b79b8c245acb9c6d5e97f9a13639edfa591d8afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a4872a9_cb389dd3",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
         "patchSetId": 4
