@@ -22,6 +22,30 @@
       "revId": "92dcc5a793f7b5165bb954ffa92eaa39ae9e51ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "276ed098_4d65b069",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_glxgears.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T22:03:07Z",
+      "side": 1,
+      "message": "I got \"Failed to connect to Chrome: test must declare at least one of chrome software dependencies [chrome_login]\" once I changed this to chrome. Is this expected?",
+      "parentUuid": "d1fb787a_a541e4b0",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 38
+      },
+      "revId": "92dcc5a793f7b5165bb954ffa92eaa39ae9e51ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
