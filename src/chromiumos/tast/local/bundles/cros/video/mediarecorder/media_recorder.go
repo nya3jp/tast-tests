@@ -91,7 +91,7 @@ func measureAndReport(ctx context.Context, fileSystem http.FileSystem, outDir st
 	return hwAccelUsed, nil
 }
 
-func getChromeArgs(fps int, streamFile string, disableHWAccel bool) (chromeArgs []string) {
+func getChromeArgs(fps int, streamFile string, disableHWAccel bool, codec videotype.Codec) (chromeArgs []string) {
 	chromeArgs = []string{
 		// "--use-fake-ui-for-media-stream" avoids the need to grant camera/microphone permissions.
 		// "--use-fake-device-for-media-stream" feeds fake stream with specified fps to getUserMedia() instead of live camera input.
@@ -102,7 +102,10 @@ func getChromeArgs(fps int, streamFile string, disableHWAccel bool) (chromeArgs 
 	}
 	if disableHWAccel {
 		chromeArgs = append(chromeArgs, "--disable-accelerated-video-encode")
+	} else if codec == videotype.VP9 {
+		chromeArgs = append(chromeArgs, "--enable-features=VaapiVP9Encoder")
 	}
+
 	return chromeArgs
 }
 
@@ -116,7 +119,7 @@ func reportPerf(processingTime time.Duration, cpuUsage float64, hwAccelUsed bool
 // doMeasurePerf measures the frame processing time and CPU usage while recording.
 func doMeasurePerf(ctx context.Context, fileSystem http.FileSystem, outDir string, codec videotype.Codec, disableHWAccel bool,
 	streamFile string, fps int) (processingTime time.Duration, cpuUsage float64, hwAccelUsed bool, err error) {
-	cr, err := chrome.New(ctx, chrome.ExtraArgs(getChromeArgs(fps, streamFile, disableHWAccel)...))
+	cr, err := chrome.New(ctx, chrome.ExtraArgs(getChromeArgs(fps, streamFile, disableHWAccel, codec)...))
 	if err != nil {
 		return 0, 0, false, errors.Wrap(err, "failed to connect to Chrome")
 	}
