@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "f3ae3541_f771e815",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-21T04:26:23Z",
+      "side": 1,
+      "message": "not for a single-file package. having a doc.go file is mostly useful if you have a large package with no clear \"main\" .go file, and there\u0027s also a long package-level godoc comment.\n\n(if you search for \"doc.go\" on the above blog post, it gives similar guidance)",
+      "parentUuid": "40e05b7f_9797819e",
+      "revId": "ffc77a05451e892c759364299fadbf7587c7e0de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c0b1f7c_70323304",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
         "patchSetId": 5
