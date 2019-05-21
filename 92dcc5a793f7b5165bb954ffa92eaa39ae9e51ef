@@ -46,6 +46,30 @@
       "revId": "92dcc5a793f7b5165bb954ffa92eaa39ae9e51ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "695cde41_0c206a27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_glxgears.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-21T22:08:17Z",
+      "side": 1,
+      "message": "ah, sorry; that\u0027s probably because https://crrev.com/c/1614597 isn\u0027t in yet -- the CQ is taking its time.",
+      "parentUuid": "276ed098_4d65b069",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 38
+      },
+      "revId": "92dcc5a793f7b5165bb954ffa92eaa39ae9e51ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
