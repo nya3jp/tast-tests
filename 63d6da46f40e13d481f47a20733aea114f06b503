@@ -49,6 +49,52 @@
     },
     {
       "key": {
+        "uuid": "276764b6_13937875",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-05-21T21:41:15Z",
+      "side": 1,
+      "message": "Please change gfx to graphics.",
+      "range": {
+        "startLine": 84,
+        "startChar": 27,
+        "endLine": 84,
+        "endChar": 30
+      },
+      "revId": "63d6da46f40e13d481f47a20733aea114f06b503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "151dffb2_8e416e6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-05-21T21:41:15Z",
+      "side": 1,
+      "message": "I don\u0027t think we should check in this code, as it will cause many pulls from the lab and can add to overhead and flakes. It is useful to triage problems though. Can you change this to checking if it is installed instead? Say, \"apt list apitrace\" or \"dpkg -l apitrace\".",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 2
+      },
+      "revId": "63d6da46f40e13d481f47a20733aea114f06b503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4534f582_598fdfe5",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
         "patchSetId": 8
