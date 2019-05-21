@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ec1414b5_936d6060",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-05-21T04:31:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c1db8bc_9f1aebc4",
+      "revId": "b79b8c245acb9c6d5e97f9a13639edfa591d8afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07b64582_b4d61fe0",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "b79b8c245acb9c6d5e97f9a13639edfa591d8afb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b0413bb_d44076d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-05-21T04:31:46Z",
+      "side": 1,
+      "message": "the directory name must be cros_selinux_audit_sanity_test (consistent with the policy) under tmpfs to trigger an audit event for this test-only (but not adding other audit spams when other tests are creating tmpfiles)",
+      "parentUuid": "07b64582_b4d61fe0",
+      "revId": "b79b8c245acb9c6d5e97f9a13639edfa591d8afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +112,48 @@
     },
     {
       "key": {
+        "uuid": "63965cb9_42dcacb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-05-21T04:31:46Z",
+      "side": 1,
+      "message": "Done with move.\n\nit\u0027s not loading everything. --grep already greped by journalctl. see below on why contains check is still needed.",
+      "parentUuid": "61c6b9ea_75760cc5",
+      "revId": "b79b8c245acb9c6d5e97f9a13639edfa591d8afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5552a26c_82bf3d24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-05-21T04:31:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d61ed97a_b8570d65",
+      "range": {
+        "startLine": 55,
+        "startChar": 44,
+        "endLine": 55,
+        "endChar": 52
+      },
+      "revId": "b79b8c245acb9c6d5e97f9a13639edfa591d8afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a4872a9_cb389dd3",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
         "patchSetId": 4
@@ -90,6 +168,24 @@
       "revId": "b79b8c245acb9c6d5e97f9a13639edfa591d8afb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe96e244_a7b80d34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-05-21T04:31:46Z",
+      "side": 1,
+      "message": "actually content is already the offending line(s) since --grep in journalctl command line.\nthe regexp is just because journalctl output is not empty but have a line says no result found even it\u0027s not hit.",
+      "parentUuid": "5a4872a9_cb389dd3",
+      "revId": "b79b8c245acb9c6d5e97f9a13639edfa591d8afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -113,6 +209,30 @@
       "revId": "b79b8c245acb9c6d5e97f9a13639edfa591d8afb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a77c96f_44dbe42f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-05-21T04:31:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97e2967a_a7874eca",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 8
+      },
+      "revId": "b79b8c245acb9c6d5e97f9a13639edfa591d8afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
