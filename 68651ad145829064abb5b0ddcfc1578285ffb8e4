@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6530a34f_da10d4d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-21T03:03:26Z",
+      "side": 1,
+      "message": "Optional: Do we want to use Error instead of Fatal? Considering that we have not been running the command at all before, it seems to imply the following tests may succeed even if this command fails, so it might be worth continuing. It\u0027s not a big deal though.",
+      "range": {
+        "startLine": 149,
+        "startChar": 6,
+        "endLine": 149,
+        "endChar": 11
+      },
+      "revId": "68651ad145829064abb5b0ddcfc1578285ffb8e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ba21fbe_0af35340",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-21T03:03:26Z",
+      "side": 1,
+      "message": "Would you mind making this \"%s test with ...\" to make this read more like an usual English sentence?",
+      "range": {
+        "startLine": 166,
+        "startChar": 14,
+        "endLine": 166,
+        "endChar": 16
+      },
+      "revId": "68651ad145829064abb5b0ddcfc1578285ffb8e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92e3dcc2_e589ea60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-21T03:03:26Z",
+      "side": 1,
+      "message": "nit: displayID. Same below.",
+      "range": {
+        "startLine": 498,
+        "startChar": 3,
+        "endLine": 498,
+        "endChar": 12
+      },
+      "revId": "68651ad145829064abb5b0ddcfc1578285ffb8e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8e96385_2bd7d02f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-21T03:03:26Z",
+      "side": 1,
+      "message": "Thanks for checking lastError. People (including myself) often forget to check this...",
+      "range": {
+        "startLine": 503,
+        "startChar": 6,
+        "endLine": 503,
+        "endChar": 37
+      },
+      "revId": "68651ad145829064abb5b0ddcfc1578285ffb8e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86159d1e_e058006b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-21T03:03:26Z",
+      "side": 1,
+      "message": "nit: Could you combine this into one line since it\u0027s more common in Go:\n\n if err :\u003d ...; err !\u003d nil {\n   ...\n }",
+      "range": {
+        "startLine": 527,
+        "startChar": 1,
+        "endLine": 528,
+        "endChar": 16
+      },
+      "revId": "68651ad145829064abb5b0ddcfc1578285ffb8e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
