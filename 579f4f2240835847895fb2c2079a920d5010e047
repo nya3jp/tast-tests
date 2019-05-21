@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2e46c661_f0ec87a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_glxgears.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T08:28:15Z",
+      "side": 1,
+      "message": "Ack. I somehow thought we need the test name as prefix. Done.",
+      "parentUuid": "96bfd4f5_dcda5512",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 64
+      },
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f53e36db_6f7b3797",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_glxgears.go",
         "patchSetId": 6
@@ -84,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "843b0527_a6e5b3c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_glxgears.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T08:28:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d829d17b_df304d0e",
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e903284_1d6559c9",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_glxgears.go",
         "patchSetId": 6
@@ -98,6 +140,24 @@
       "revId": "579f4f2240835847895fb2c2079a920d5010e047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f2b5da4_23ffe4f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_glxgears.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T08:28:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e903284_1d6559c9",
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -136,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "4f0775e4_eea0978e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/crostini_trace_glxgears_glxgears.trace.external",
+        "patchSetId": 6
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T08:28:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "711890b4_1d52b7b1",
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8a57f00_787d67e4",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
         "patchSetId": 6
@@ -153,6 +231,24 @@
     },
     {
       "key": {
+        "uuid": "02df0922_b9407247",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T08:28:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8a57f00_787d67e4",
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96e766e4_249888ee",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
         "patchSetId": 6
@@ -164,6 +260,30 @@
       "writtenOn": "2019-05-21T04:26:23Z",
       "side": 1,
       "message": "this doesn\u0027t look like it needs to be exported outside of the package, so please make it lowercase instead\n\nbut do you even need this struct? it looks like it\u0027s just used to produce a perf.Values. can parseResult either take or return a perf.Values instead, and just fill it?",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 11
+      },
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c24a8efd_b1d941f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T08:28:15Z",
+      "side": 1,
+      "message": "Changed to not export its member. I think the struct makes things clearer in the future if we want to extend the result filed, such as CPU/GPU usage. WDYT?",
+      "parentUuid": "96e766e4_249888ee",
       "range": {
         "startLine": 32,
         "startChar": 5,
@@ -193,6 +313,24 @@
     },
     {
       "key": {
+        "uuid": "6df4b169_a3d87164",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T08:28:15Z",
+      "side": 1,
+      "message": "Changed to not exported. And deleted all the comment.",
+      "parentUuid": "38154f15_f17657ec",
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8dceef1_b6db0edd",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
         "patchSetId": 6
@@ -204,6 +342,30 @@
       "writtenOn": "2019-05-21T04:26:23Z",
       "side": 1,
       "message": "please use time.Duration whenever you store durations, as it removes any ambiguity about units",
+      "range": {
+        "startLine": 36,
+        "startChar": 10,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cac4602_abfd62a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T08:28:15Z",
+      "side": 1,
+      "message": "What\u0027s the benefit of using time.Duration? This is parsed from the output not measured by time package. We don\u0027t have nanosecond accuracy and the unit must be the same apitrace is reported.",
+      "parentUuid": "d8dceef1_b6db0edd",
       "range": {
         "startLine": 36,
         "startChar": 10,
@@ -239,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "0515fba1_f4897ce9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T08:28:15Z",
+      "side": 1,
+      "message": "Sorry. Done.",
+      "parentUuid": "335b09e1_eaae8b4e",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 12
+      },
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c031379f_79d0321d",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
         "patchSetId": 6
@@ -253,6 +439,24 @@
       "revId": "579f4f2240835847895fb2c2079a920d5010e047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f335b0a0_6954866e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T08:28:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c031379f_79d0321d",
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -273,6 +477,24 @@
     },
     {
       "key": {
+        "uuid": "6def3561_35b7a692",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T08:28:15Z",
+      "side": 1,
+      "message": "Changed the precondition.",
+      "parentUuid": "3286e1a7_61a8f5ed",
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03a6ff3e_5c7c9e93",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
         "patchSetId": 6
@@ -284,6 +506,24 @@
       "writtenOn": "2019-05-21T04:26:23Z",
       "side": 1,
       "message": "if most/all of this code was copy-and-pasted from somewhere else, please add a TODO (filing a bug if one doesn\u0027t already exist) to move it to a shared location.",
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eae16aa3_3db4ce7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T08:28:15Z",
+      "side": 1,
+      "message": "I understand your concern and I do not like duplicate code too. I filed a bug about this. (crbug.com/965398)",
+      "parentUuid": "03a6ff3e_5c7c9e93",
       "revId": "579f4f2240835847895fb2c2079a920d5010e047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -304,6 +544,24 @@
       "revId": "579f4f2240835847895fb2c2079a920d5010e047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01d8b700_4ef0beed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T08:28:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cbaf249_badcf84e",
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -330,6 +588,30 @@
     },
     {
       "key": {
+        "uuid": "a142b177_0049413a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T08:28:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b8a4fa9_df35158d",
+      "range": {
+        "startLine": 104,
+        "startChar": 25,
+        "endLine": 104,
+        "endChar": 33
+      },
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1aa036c1_c895e09d",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
         "patchSetId": 6
@@ -350,6 +632,30 @@
       "revId": "579f4f2240835847895fb2c2079a920d5010e047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8b3fa9f_12eb3035",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T08:28:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aa036c1_c895e09d",
+      "range": {
+        "startLine": 116,
+        "startChar": 73,
+        "endLine": 116,
+        "endChar": 112
+      },
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -376,6 +682,30 @@
     },
     {
       "key": {
+        "uuid": "df3ff937_3fd40306",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T08:28:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaa3778e_83c1222c",
+      "range": {
+        "startLine": 117,
+        "startChar": 8,
+        "endLine": 117,
+        "endChar": 12
+      },
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90c743e7_813d2775",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
         "patchSetId": 6
@@ -399,6 +729,30 @@
     },
     {
       "key": {
+        "uuid": "88d60217_9997a767",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T08:28:15Z",
+      "side": 1,
+      "message": "Changed to /tmp",
+      "parentUuid": "90c743e7_813d2775",
+      "range": {
+        "startLine": 118,
+        "startChar": 32,
+        "endLine": 118,
+        "endChar": 48
+      },
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f307258_64b250a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
         "patchSetId": 6
@@ -413,6 +767,24 @@
       "revId": "579f4f2240835847895fb2c2079a920d5010e047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c39a022f_90f442fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T08:28:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f307258_64b250a1",
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -439,6 +811,30 @@
     },
     {
       "key": {
+        "uuid": "adfcbbae_df237659",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T08:28:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aa5365d_8e6a4778",
+      "range": {
+        "startLine": 123,
+        "startChar": 8,
+        "endLine": 123,
+        "endChar": 14
+      },
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3435216b_654ce1ca",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
         "patchSetId": 6
@@ -462,6 +858,30 @@
     },
     {
       "key": {
+        "uuid": "1c3ff699_21b12e88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T08:28:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3435216b_654ce1ca",
+      "range": {
+        "startLine": 131,
+        "startChar": 34,
+        "endLine": 131,
+        "endChar": 36
+      },
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de29b81a_e5c80c72",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
         "patchSetId": 6
@@ -473,6 +893,30 @@
       "writtenOn": "2019-05-21T04:26:23Z",
       "side": 1,
       "message": "nit: how about just calling this PerfValues?",
+      "range": {
+        "startLine": 143,
+        "startChar": 22,
+        "endLine": 143,
+        "endChar": 35
+      },
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf26f6da_9fce79ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T08:28:15Z",
+      "side": 1,
+      "message": "Not feel strong about the naming. Done.",
+      "parentUuid": "de29b81a_e5c80c72",
       "range": {
         "startLine": 143,
         "startChar": 22,
@@ -502,6 +946,24 @@
     },
     {
       "key": {
+        "uuid": "d5b0bddd_ea7c087a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T08:28:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9968620_7b218b8f",
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9843754_5d2773a3",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
         "patchSetId": 6
@@ -516,6 +978,24 @@
       "revId": "579f4f2240835847895fb2c2079a920d5010e047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36035cad_0fa2fd8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T08:28:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9843754_5d2773a3",
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -539,6 +1019,30 @@
       "revId": "579f4f2240835847895fb2c2079a920d5010e047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f249b8b2_605ee6c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-05-21T08:28:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ca0c977_dabb4542",
+      "range": {
+        "startLine": 174,
+        "startChar": 5,
+        "endLine": 174,
+        "endChar": 8
+      },
+      "revId": "579f4f2240835847895fb2c2079a920d5010e047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
