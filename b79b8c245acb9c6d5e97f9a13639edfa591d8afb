@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "db0ab65a_33823186",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-21T06:47:57Z",
+      "side": 1,
+      "message": "Should it be a dir directly under tmpfs root? Does indirect dir work, such as /tmp/tmpdirfoo.12345/cros_selinux_audit_sanity_test?\n\n td, err :\u003d ioutil.TempDir(\"/tmp\", \"tast.security.SELinuxAuditSanity.\")\n if err !\u003d nil { ... }\n if err :\u003d os.Mkdir(filepath.Join(td, markerDirName), 0700); err !\u003d nil { ... }\n\nGenerally we want to avoid writing a temporary file to a fixed path to avoid possible interference between repeated tests.\n\nThat said, if using a randomly-named dir is difficult, please leave a comment here about the constraint.",
+      "parentUuid": "7b0413bb_d44076d8",
+      "revId": "b79b8c245acb9c6d5e97f9a13639edfa591d8afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "61c6b9ea_75760cc5",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
         "patchSetId": 4
