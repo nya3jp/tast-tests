@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "bf4e8a1b_5b68225b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-05-21T07:06:01Z",
+      "side": 1,
+      "message": "indirect work as long as the parent inherits from tmpfs.",
+      "parentUuid": "db0ab65a_33823186",
+      "revId": "b79b8c245acb9c6d5e97f9a13639edfa591d8afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "61c6b9ea_75760cc5",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
         "patchSetId": 4
