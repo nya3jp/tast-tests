@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9169d6c2_b5e452c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-05-21T03:59:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66d7a4c6_90dd107a",
+      "revId": "8849bb11819a136608487d93329cbd748a145657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46453387_3bc22450",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "8849bb11819a136608487d93329cbd748a145657",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7507fe9_fd411522",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-05-21T03:59:00Z",
+      "side": 1,
+      "message": "chromium:1619519 is already depending on chromium:1617180.",
+      "parentUuid": "46453387_3bc22450",
+      "revId": "8849bb11819a136608487d93329cbd748a145657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "6f3ba9ca_47cefd51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-05-21T03:59:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23fdcf77_2db4b4b5",
+      "revId": "8849bb11819a136608487d93329cbd748a145657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c5519f5_c647c885",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 2
@@ -67,6 +121,24 @@
       "revId": "8849bb11819a136608487d93329cbd748a145657",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "758c9c8e_caf591f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-05-21T03:59:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c5519f5_c647c885",
+      "revId": "8849bb11819a136608487d93329cbd748a145657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "aababe33_25973156",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-05-21T03:59:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fe8e446_6f6c65c9",
+      "revId": "8849bb11819a136608487d93329cbd748a145657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b89e63eb_efb514ac",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
         "patchSetId": 2
@@ -101,6 +191,24 @@
       "revId": "8849bb11819a136608487d93329cbd748a145657",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9859b5d0_631caed2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-05-21T03:59:00Z",
+      "side": 1,
+      "message": "Use the full name variants of sudo options such as --preserve-env and --user\u003darc-camera, so it should be self-explanatory now.",
+      "parentUuid": "b89e63eb_efb514ac",
+      "revId": "8849bb11819a136608487d93329cbd748a145657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
