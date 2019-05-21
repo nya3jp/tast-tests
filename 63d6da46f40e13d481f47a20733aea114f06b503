@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "5720da60_ca9450cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-21T21:48:16Z",
+      "side": 1,
+      "message": "if you expect to be able to add it to the image soon, please just add a \"disabled\" attribute to the test and then remove it (leaving just \"informational\") once apitrace has been added to the image.",
+      "parentUuid": "151dffb2_8e416e6e",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 2
+      },
+      "revId": "63d6da46f40e13d481f47a20733aea114f06b503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4534f582_598fdfe5",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
         "patchSetId": 8
