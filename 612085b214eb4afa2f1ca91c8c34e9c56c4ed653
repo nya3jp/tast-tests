@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c15986c9_5eafc24f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-22T22:43:45Z",
+      "side": 1,
+      "message": "nit: \"wait\"\n\nshould you use a longer delay than a single second?",
+      "range": {
+        "startLine": 66,
+        "startChar": 21,
+        "endLine": 66,
+        "endChar": 25
+      },
+      "revId": "612085b214eb4afa2f1ca91c8c34e9c56c4ed653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c115dff9_13a77a56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-22T22:43:45Z",
+      "side": 1,
+      "message": "nit: \"wait\", and same question about the timeout",
+      "range": {
+        "startLine": 173,
+        "startChar": 22,
+        "endLine": 173,
+        "endChar": 26
+      },
+      "revId": "612085b214eb4afa2f1ca91c8c34e9c56c4ed653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
