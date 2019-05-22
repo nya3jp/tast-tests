@@ -22,6 +22,30 @@
       "revId": "623c3f0c555ce8e51f1211a77d8f6958c61c4b47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4346fb6b_aa90d9ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-05-22T16:44:00Z",
+      "side": 1,
+      "message": "yes. thanks. the -1 is needed. The previous code was not taking that into account, but the right bounds of the window should be at least be -1 pixel less that the display width.",
+      "parentUuid": "8af26bb4_75c6331c",
+      "range": {
+        "startLine": 367,
+        "startChar": 48,
+        "endLine": 367,
+        "endChar": 50
+      },
+      "revId": "623c3f0c555ce8e51f1211a77d8f6958c61c4b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
