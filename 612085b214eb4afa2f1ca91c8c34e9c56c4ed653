@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7e3aa275_d57afc47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-05-22T23:10:24Z",
+      "side": 1,
+      "message": "good point. since the test is failing mostly on slow machines it is better to add a bigger timeout",
+      "parentUuid": "c15986c9_5eafc24f",
+      "range": {
+        "startLine": 66,
+        "startChar": 21,
+        "endLine": 66,
+        "endChar": 25
+      },
+      "revId": "612085b214eb4afa2f1ca91c8c34e9c56c4ed653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c115dff9_13a77a56",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "612085b214eb4afa2f1ca91c8c34e9c56c4ed653",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a1577da_b2c682f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-05-22T23:10:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c115dff9_13a77a56",
+      "range": {
+        "startLine": 173,
+        "startChar": 22,
+        "endLine": 173,
+        "endChar": 26
+      },
+      "revId": "612085b214eb4afa2f1ca91c8c34e9c56c4ed653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
