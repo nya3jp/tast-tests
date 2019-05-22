@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "057740cd_48c70d48",
+        "filename": "src/chromiumos/tast/local/arc/networking.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-22T22:38:46Z",
+      "side": 1,
+      "message": "sure, that makes sense to me",
+      "parentUuid": "b59a9f25_4e5ca484",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 25
+      },
+      "revId": "8494a2b9f96b59368f4045f68b16ebb78c783d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce1ffb32_8cfc9218",
         "filename": "src/chromiumos/tast/local/arc/networking.go",
         "patchSetId": 4
@@ -230,6 +254,24 @@
       "side": 1,
       "message": "I think the current output is simple and consistent enough to use just string methods.\nBut I\u0027m down to change it to regex. Any input as to why regex would be a better alternative?",
       "parentUuid": "0147cf8d_a5f153b4",
+      "revId": "8494a2b9f96b59368f4045f68b16ebb78c783d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "517491e9_53ee0f52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-22T22:38:46Z",
+      "side": 1,
+      "message": "mainly readability (which i don\u0027t usually say about regular expressions!). with multiple const indexes, you need additional boundary-checking and splitting logic (e.g. removing subnet from cidr notation), and it feels a bit harder to me to see the big picture.\n\ni feel like seeing an example string (like what you have on L41) followed by a regexp (like  \"^(\\d+):\\s+([a-z0-9]+)\\s+...\" or whatever) is more straightforward.",
+      "parentUuid": "7b02ff44_b8901545",
       "revId": "8494a2b9f96b59368f4045f68b16ebb78c783d75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

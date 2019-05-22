@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f18f99e_f6798c1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-22T22:38:46Z",
+      "side": 1,
+      "message": "nit: Android",
+      "range": {
+        "startLine": 96,
+        "startChar": 25,
+        "endLine": 96,
+        "endChar": 32
+      },
+      "revId": "5ecf928a635863cabb98765d0bf75f82b1fd0df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab174fe9_99d33d87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-22T22:38:46Z",
+      "side": 1,
+      "message": "i think that this could result in your test hanging instead of respecting its timeout. if i\u0027m reading correctly, this runs in a goroutine (launched on L135), and the main goroutine blocks until all of these goroutines exit (L145). the sc.Scan call on this line won\u0027t honor the context\u0027s deadline, so the goroutine can block indefinitely if tcpdump is hanging.\n\ni think that you can avoid this by reworking it to be more like the approach used in http://go/tast-codelab-2. if you scan in a separate goroutine and then pass back the result in a channel, then you can select between that channel and the context, and then kill the tcpdump process (which should also interrupt the scan) if the deadline is reached.",
+      "revId": "5ecf928a635863cabb98765d0bf75f82b1fd0df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
