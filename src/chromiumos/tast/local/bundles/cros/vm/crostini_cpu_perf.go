@@ -35,51 +35,7 @@ func init() {
 	})
 }
 
-func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
-	// TODO(cylee): Consolidate container creation logic in a util function since it appears in multiple files.
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
-	s.Log("Enabling Crostini preference setting")
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create test API connection: ", err)
-	}
-	if err = vm.EnableCrostini(ctx, tconn); err != nil {
-		s.Fatal("Failed to enable Crostini preference setting: ", err)
-	}
-
-	s.Log("Setting up component ", vm.StagingComponent)
-	err = vm.SetUpComponent(ctx, vm.StagingComponent)
-	if err != nil {
-		s.Fatal("Failed to set up component: ", err)
-	}
-	defer vm.UnmountComponent(ctx)
-
-	s.Log("Creating default container")
-	cont, err := vm.CreateDefaultContainer(ctx, s.OutDir(), cr.User(), vm.StagingImageServer)
-	if err != nil {
-		s.Fatal("Failed to set up default container: ", err)
-	}
-	defer vm.StopConcierge(ctx)
-	defer func() {
-		if err := cont.DumpLog(ctx, s.OutDir()); err != nil {
-			s.Error("Failure dumping container log: ", err)
-		}
-	}()
-
-	perfValues := perf.NewValues()
-	defer perfValues.Save(s.OutDir())
-
-	// Prepare error log file.
-	errFile, err := os.Create(filepath.Join(s.OutDir(), "error_log.txt"))
-	if err != nil {
-		s.Fatal("Failed to create error log: ", err)
-	}
-	defer errFile.Close()
+func testSysbench(ctx context.Context, s *testing.State, errFile *os.File, cont *vm.Container, perfValues *perf.Values) {
 
 	// Parse sysbench result for "sysbench cpu run". We care about "total number of events" only so far.
 	// Sample output:
@@ -127,8 +83,14 @@ func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
 	// Find sysbench binary location.
 	out, err := perfutil.RunCmd(ctx, testexec.CommandContext(ctx, "which", "sysbench"), errFile)
 	if err != nil {
-		s.Fatal("Failed to find sysbench binary location: ", err)
+		// TODO(dverkamp): sysbench is not currently built on arm platforms,
+		// so instead of failing the whole test, just don't report sysbench
+		// results if the binary isn't available.
+		// See https://crbug.com/922178 for additional details.
+		s.Log("Failed to find sysbench binary location: ", err)
+		return
 	}
+
 	sysbenchBinaryFile := strings.TrimSpace(string(out))
 	s.Log("Found sysbench binary location: ", sysbenchBinaryFile)
 
@@ -213,10 +175,59 @@ func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
 			}
 		}
 	}
+}
+
+func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
+	// TODO(cylee): Consolidate container creation logic in a util function since it appears in multiple files.
+	cr, err := chrome.New(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to Chrome: ", err)
+	}
+	defer cr.Close(ctx)
+
+	s.Log("Enabling Crostini preference setting")
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create test API connection: ", err)
+	}
+	if err = vm.EnableCrostini(ctx, tconn); err != nil {
+		s.Fatal("Failed to enable Crostini preference setting: ", err)
+	}
+
+	s.Log("Setting up component ", vm.StagingComponent)
+	err = vm.SetUpComponent(ctx, vm.StagingComponent)
+	if err != nil {
+		s.Fatal("Failed to set up component: ", err)
+	}
+	defer vm.UnmountComponent(ctx)
+
+	s.Log("Creating default container")
+	cont, err := vm.CreateDefaultContainer(ctx, s.OutDir(), cr.User(), vm.StagingImageServer)
+	if err != nil {
+		s.Fatal("Failed to set up default container: ", err)
+	}
+	defer vm.StopConcierge(ctx)
+	defer func() {
+		if err := cont.DumpLog(ctx, s.OutDir()); err != nil {
+			s.Error("Failure dumping container log: ", err)
+		}
+	}()
+
+	perfValues := perf.NewValues()
+	defer perfValues.Save(s.OutDir())
+
+	// Prepare error log file.
+	errFile, err := os.Create(filepath.Join(s.OutDir(), "error_log.txt"))
+	if err != nil {
+		s.Fatal("Failed to create error log: ", err)
+	}
+	defer errFile.Close()
+
+	testSysbench(ctx, s, errFile, cont, perfValues)
 
 	// Latest lmbench defaults to install individual microbenchamrks in /usr/lib/lmbench/bin/<arch dependent folder>
 	// (e.g., /usr/lib/lmbench/bin/x86_64-linux-gnu). So needs to find the exact path.
-	out, err = perfutil.RunCmd(ctx, cont.Command(ctx, "find", "/usr/lib/lmbench", "-name", "lat_syscall"), errFile)
+	out, err := perfutil.RunCmd(ctx, cont.Command(ctx, "find", "/usr/lib/lmbench", "-name", "lat_syscall"), errFile)
 	if err != nil {
 		s.Fatal("Failed to find syscall benchmark binary in container: ", err)
 	}
