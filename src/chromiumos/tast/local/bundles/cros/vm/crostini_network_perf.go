@@ -162,6 +162,7 @@ func CrostiniNetworkPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to set up default container: ", err)
 	}
+	defer vm.StopConcierge(ctx)
 	defer func() {
 		if err := cont.DumpLog(ctx, s.OutDir()); err != nil {
 			s.Error("Failure dumping container log: ", err)
