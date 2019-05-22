@@ -161,9 +161,10 @@ type TouchState struct {
 }
 
 // SetPos sets TouchState X and Y coordinates.
+// X and Y must be between [0, touchscreen width) and [0, touchscreen height).
 func (ts *TouchState) SetPos(x, y TouchCoord) error {
-	if x >= ts.tsw.width || y >= ts.tsw.height {
-		return errors.Errorf("coordinates (%d, %d) outside valid bounds (%d, %d)",
+	if x < 0 || x >= ts.tsw.width || y < 0 || y >= ts.tsw.height {
+		return errors.Errorf("coordinates (%d, %d) outside valid bounds [0, %d), [0, %d)",
 			x, y, ts.tsw.width, ts.tsw.height)
 	}
 	ts.x = x
@@ -293,9 +294,9 @@ func (stw *SingleTouchEventWriter) Swipe(ctx context.Context, x0, y0, x1, y1 Tou
 	deltaY := float64(y1-y0) / float64(steps-1)
 
 	for i := 0; i < steps; i++ {
-		x := float64(x0) + deltaX*float64(i)
-		y := float64(y0) + deltaY*float64(i)
-		if err := stw.Move(TouchCoord(math.Round(x)), TouchCoord(math.Round(y))); err != nil {
+		x := x0 + TouchCoord(math.Round(deltaX*float64(i)))
+		y := y0 + TouchCoord(math.Round(deltaY*float64(i)))
+		if err := stw.Move(x, y); err != nil {
 			return err
 		}
 
