@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ffd40ee_f4073bc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-22T20:42:51Z",
+      "side": 1,
+      "message": "optional suggestion: you can condense this a bit if you want:\n\nif bus, err :\u003d dbus.SystemBus(); err !\u003d nil {\n    s.Fatal(...)\n} else if err :\u003d dbusutil.WaitForService(...); err !\u003d nil {\n    s.Fatal(...)\n}",
+      "revId": "7779e59f8162724bae8285e6934a7bac62c5d7b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04b7a622_ed70fbf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-22T20:42:51Z",
+      "side": 1,
+      "message": "nit: just use Fatal",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 10
+      },
+      "revId": "7779e59f8162724bae8285e6934a7bac62c5d7b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95c42d8e_c5c9d488",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-22T20:42:51Z",
+      "side": 1,
+      "message": "nit: just use Fatal",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 10
+      },
+      "revId": "7779e59f8162724bae8285e6934a7bac62c5d7b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
