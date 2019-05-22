@@ -62,6 +62,10 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set window state to Normal: ", err)
 	}
 
+	if err := act.WaitForIdle(ctx, 4*time.Second); err != nil {
+		s.Fatal("Failed to wait for idle activity: ", err)
+	}
+
 	bounds, err := act.WindowBounds(ctx)
 	if err != nil {
 		s.Fatal("Failed to get activity bounds: ", err)
@@ -79,13 +83,17 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 
 	// Make it as small as possible before the resizing, and place it on the left-top corner
 	// in order to have maximum real-estate for the resizing.
-	if err := act.ResizeWindow(ctx, arc.BorderBottomRight, arc.Point{X: bounds.Left, Y: bounds.Top}, 300*time.Millisecond); err != nil {
+	if err := act.ResizeWindow(ctx, arc.BorderBottomRight, arc.NewPoint(bounds.Left, bounds.Top), 300*time.Millisecond); err != nil {
 		s.Fatal("Failed to resize window: ", err)
 	}
 
 	// Moving the window slowly (in one second) to prevent triggering any kind of gesture like "snap to border", or "maximize".
-	if err := act.MoveWindow(ctx, arc.Point{X: 0, Y: 0}, time.Second); err != nil {
+	if err := act.MoveWindow(ctx, arc.NewPoint(0, 0), time.Second); err != nil {
 		s.Fatal("Failed to move window: ", err)
+	}
+
+	if err := act.WaitForIdle(ctx, 4*time.Second); err != nil {
+		s.Fatal("Failed to wait for idle activity: ", err)
 	}
 
 	restoreBounds, err := act.WindowBounds(ctx)
@@ -113,14 +121,16 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 		dst      arc.Point
 		duration time.Duration
 	}{
-		{"right", arc.BorderRight, arc.Point{X: dispSize.W - marginForShelf, Y: centerHeight}, 100 * time.Millisecond},
-		{"bottom", arc.BorderBottom, arc.Point{X: bounds.Left, Y: dispSize.H - marginForShelf}, 300 * time.Millisecond},
-		{"bottom-right", arc.BorderBottomRight, arc.Point{X: dispSize.W - marginForShelf, Y: dispSize.H - marginForShelf}, 100 * time.Millisecond},
+		{"right", arc.BorderRight, arc.NewPoint(dispSize.W-marginForShelf, centerHeight), 100 * time.Millisecond},
+		{"bottom", arc.BorderBottom, arc.NewPoint(bounds.Left, dispSize.H-marginForShelf), 300 * time.Millisecond},
+		{"bottom-right", arc.BorderBottomRight, arc.NewPoint(dispSize.W-marginForShelf, dispSize.H-marginForShelf), 100 * time.Millisecond},
 	} {
 		s.Logf("Resizing window from %s border to %+v", entry.desc, entry.dst)
 		if err := act.ResizeWindow(ctx, entry.border, entry.dst, entry.duration); err != nil {
 			s.Fatal("Failed to resize activity: ", err)
 		}
+
+		// Not calling WaitForIdle() on purpose. We have to grab the screenshot as soon as ResizeWindow() returns.
 
 		img, err := grabScreenshot(ctx, cr, fmt.Sprintf("%s/screenshot-%d.png", s.OutDir(), idx))
 		if err != nil {
@@ -159,7 +169,13 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 		}
 
 		// Restore the activity bounds.
-		act.ResizeWindow(ctx, entry.border, arc.Point{X: restoreBounds.Left, Y: restoreBounds.Top}, 500*time.Millisecond)
+		if err := act.ResizeWindow(ctx, entry.border, arc.NewPoint(restoreBounds.Left, restoreBounds.Top), 500*time.Millisecond); err != nil {
+			s.Fatal("Failed to resize activity: ", err)
+		}
+
+		if err := act.WaitForIdle(ctx, 4*time.Second); err != nil {
+			s.Fatal("Failed to wait for idle activity: ", err)
+		}
 	}
 }
 
