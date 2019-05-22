@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "d0fd03b4_783346c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-22T05:40:37Z",
+      "side": 1,
+      "message": "Reverted some of the \"Command\" back to \"BootstrapCommand\" to allow SO_BINDTODEVICE used in \"ping -I interface\".",
+      "parentUuid": "07b5e7e9_e64ec5ac",
+      "range": {
+        "startLine": 45,
+        "startChar": 14,
+        "endLine": 45,
+        "endChar": 30
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2864651_739e7fed",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
         "patchSetId": 3
