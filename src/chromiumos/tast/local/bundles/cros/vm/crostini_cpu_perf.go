@@ -81,6 +81,31 @@ func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
 	}
 	defer errFile.Close()
 
+	testSysbench(ctx, s, errFile, cont, perfValues)
+	testLmbench(ctx, s, errFile, cont, perfValues)
+}
+
+func testSysbench(ctx context.Context, s *testing.State, errFile *os.File, cont *vm.Container, perfValues *perf.Values) {
+	// Find sysbench binary location.
+	out, err := perfutil.RunCmd(ctx, testexec.CommandContext(ctx, "which", "sysbench"), errFile)
+	if err != nil {
+		// TODO(dverkamp): sysbench is not currently built on arm platforms,
+		// so instead of failing the whole test, just don't report sysbench
+		// results if the binary isn't available.
+		// See https://crbug.com/922178 for additional details.
+		s.Log("Failed to find sysbench binary location: ", err)
+		return
+	}
+
+	sysbenchBinaryFile := strings.TrimSpace(string(out))
+	s.Log("Found sysbench binary location: ", sysbenchBinaryFile)
+
+	// Util object to run sysbench in container.
+	sysbenchRunner, err := perfutil.NewHostBinaryRunner(ctx, sysbenchBinaryFile, cont, errFile)
+	if err != nil {
+		s.Fatal("Failed to setup sysbench to run in container: ", err)
+	}
+
 	// Parse sysbench result for "sysbench cpu run". We care about "total number of events" only so far.
 	// Sample output:
 	// Running the test with following options:
@@ -124,21 +149,7 @@ func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
 		return numEvents, nil
 	}
 
-	// Find sysbench binary location.
-	out, err := perfutil.RunCmd(ctx, testexec.CommandContext(ctx, "which", "sysbench"), errFile)
-	if err != nil {
-		s.Fatal("Failed to find sysbench binary location: ", err)
-	}
-	sysbenchBinaryFile := strings.TrimSpace(string(out))
-	s.Log("Found sysbench binary location: ", sysbenchBinaryFile)
-
-	// Util object to run sysbench in container.
-	sysBenchRunner, err := perfutil.NewHostBinaryRunner(ctx, sysbenchBinaryFile, cont, errFile)
-	if err != nil {
-		s.Fatal("Failed to setup sysbench to run in container: ", err)
-	}
-
-	measureSysBench := func(numThread int) error {
+	measureSysbench := func(numThread int) error {
 		args := []string{
 			"cpu",
 			"run",
@@ -155,7 +166,7 @@ func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to parse sysbench output on host")
 		}
 
-		guestCmd := sysBenchRunner.Command(ctx, args...)
+		guestCmd := sysbenchRunner.Command(ctx, args...)
 		out, err = perfutil.RunCmd(ctx, guestCmd, errFile)
 		if err != nil {
 			return errors.Wrap(err, "failed to run sysbench on guest")
@@ -208,15 +219,17 @@ func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
 	for numThreads := 1; numThreads <= numCPU; numThreads++ {
 		for numTry := 1; numTry <= repeatNum; numTry++ {
 			s.Logf("Measuring sysbench for %v thread(s) (%v/%v)", numThreads, numTry, repeatNum)
-			if err := measureSysBench(numThreads); err != nil {
+			if err := measureSysbench(numThreads); err != nil {
 				s.Errorf("sysbench for %d thread(s) failed: %v", numThreads, err)
 			}
 		}
 	}
+}
 
+func testLmbench(ctx context.Context, s *testing.State, errFile *os.File, cont *vm.Container, perfValues *perf.Values) {
 	// Latest lmbench defaults to install individual microbenchamrks in /usr/lib/lmbench/bin/<arch dependent folder>
 	// (e.g., /usr/lib/lmbench/bin/x86_64-linux-gnu). So needs to find the exact path.
-	out, err = perfutil.RunCmd(ctx, cont.Command(ctx, "find", "/usr/lib/lmbench", "-name", "lat_syscall"), errFile)
+	out, err := perfutil.RunCmd(ctx, cont.Command(ctx, "find", "/usr/lib/lmbench", "-name", "lat_syscall"), errFile)
 	if err != nil {
 		s.Fatal("Failed to find syscall benchmark binary in container: ", err)
 	}
