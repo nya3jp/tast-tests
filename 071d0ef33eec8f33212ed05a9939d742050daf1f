@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "e9c126c6_16c1eb96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-22T00:00:45Z",
+      "side": 1,
+      "message": "this seems fine to me",
+      "parentUuid": "509b6673_79546085",
+      "range": {
+        "startLine": 41,
+        "startChar": 14,
+        "endLine": 41,
+        "endChar": 19
+      },
+      "revId": "071d0ef33eec8f33212ed05a9939d742050daf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab6b9924_35a34216",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
         "patchSetId": 3
