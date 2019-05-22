@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"math"
 	"regexp"
 	"strconv"
 	"time"
@@ -322,6 +323,14 @@ func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to Poin
 	} else if border&BorderRight != 0 {
 		src.X = bounds.Right + borderOffset
 	}
+
+	// After updating src, clamp it to valid display bounds.
+	ds, err := ac.disp.Size(ctx)
+	if err != nil {
+		return errors.Wrap(err, "could not get display size")
+	}
+	src.X = int(math.Max(0, math.Min(float64(ds.W-1), float64(src.X))))
+	src.Y = int(math.Max(0, math.Min(float64(ds.H-1), float64(src.Y))))
 
 	return ac.swipe(ctx, src, to, t)
 }
