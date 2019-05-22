@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1b4cc29_74cf1051",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-22T20:53:22Z",
+      "side": 1,
+      "message": "nit: s/traceNames/traces/",
+      "range": {
+        "startLine": 43,
+        "startChar": 45,
+        "endLine": 43,
+        "endChar": 55
+      },
+      "revId": "3d6c23d46c397220a74c4d6858e048c253c681d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3fd69a6_a135200c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-22T20:53:22Z",
+      "side": 1,
+      "message": "nit: maybe just \"... which maps from trace filenames (passed to s.DataPath) to output filenames (written to s.OutDir).\"\n\nbut see comment below -- might be better to just say that it maps to \"a human-readable name for the trace\"",
+      "range": {
+        "startLine": 43,
+        "startChar": 109,
+        "endLine": 43,
+        "endChar": 141
+      },
+      "revId": "3d6c23d46c397220a74c4d6858e048c253c681d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32b9313d_78f52f64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-22T20:53:22Z",
+      "side": 1,
+      "message": "this seems like it might be a bit fragile. how about instead making the map just contain a human-readable name for the trace that you can use directly here, and appending the .txt suffix within this package when you write the output file?",
+      "revId": "3d6c23d46c397220a74c4d6858e048c253c681d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
