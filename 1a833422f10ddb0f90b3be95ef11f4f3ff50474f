@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18e369fa_2addf0c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_glxgears.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-22T03:04:59Z",
+      "side": 1,
+      "message": "nit: what\u0027s the format of the output file? if it\u0027s a text file, would it be better to include an extension like .txt or .log to make it clearer that it can be opened in a text editor?",
+      "range": {
+        "startLine": 28,
+        "startChar": 75,
+        "endLine": 28,
+        "endChar": 83
+      },
+      "revId": "1a833422f10ddb0f90b3be95ef11f4f3ff50474f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41c4437f_20a053cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-22T03:04:59Z",
+      "side": 1,
+      "message": "nit: maybe this? \"RunTest starts a VM and runs all traces in traceNames, which maps from filenames (passed to s.DataPath) to output file names.\"",
+      "revId": "1a833422f10ddb0f90b3be95ef11f4f3ff50474f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdbd4cf7_1cb04af9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-22T03:04:59Z",
+      "side": 1,
+      "message": "nit: how about just traces? i\u0027d recommend avoiding describing the variable\u0027s type in its name",
+      "range": {
+        "startLine": 43,
+        "startChar": 52,
+        "endLine": 43,
+        "endChar": 64
+      },
+      "revId": "1a833422f10ddb0f90b3be95ef11f4f3ff50474f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb7b6075_84a23d41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-22T03:04:59Z",
+      "side": 1,
+      "message": "instead of reading all the output into memory, can you just open the output file first and assign it to cmd.Stdout and cmd.Stderr?",
+      "revId": "1a833422f10ddb0f90b3be95ef11f4f3ff50474f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
