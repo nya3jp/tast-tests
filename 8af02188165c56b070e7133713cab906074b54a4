@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a368e73_8ecd9f6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-22T22:54:47Z",
+      "side": 1,
+      "message": "sorry, one more nit: how about adding this at the end? \"... that is used both for the output file\u0027s name and for the reported perf keyval.\"",
+      "revId": "8af02188165c56b070e7133713cab906074b54a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47da6a25_e396a78f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-22T22:54:47Z",
+      "side": 1,
+      "message": "instead of doing this here, how about passing traceName directly to runTrace? then you can skip the filepath.Base calls there and pass traceName directly to parseResult.\n\nto generate the output path in runTrace, you can use https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/testing#ContextOutDir:\n\noutDir, ok :\u003d testing.ContextOutDir(ctx)\nif !ok {\n    return ...\n}\noutputFile :\u003d filepath.Join(outDir, traceName+\".txt\")\n\nbasically, i recommend avoiding doing things like converting the trace name into an output path but then later needing to convert that path back into the trace name, since that can be fragile. instead, pass around the core piece of data (i.e. the trace name) and only convert it into a path right before you need to do so.",
+      "revId": "8af02188165c56b070e7133713cab906074b54a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdadca76_f6affa76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-22T22:54:47Z",
+      "side": 1,
+      "message": "per above, i\u0027d recommend passing traceName here instead",
+      "range": {
+        "startLine": 112,
+        "startChar": 66,
+        "endLine": 112,
+        "endChar": 76
+      },
+      "revId": "8af02188165c56b070e7133713cab906074b54a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2dcd077_896acf73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-22T22:54:47Z",
+      "side": 1,
+      "message": "traceName?",
+      "range": {
+        "startLine": 136,
+        "startChar": 17,
+        "endLine": 136,
+        "endChar": 25
+      },
+      "revId": "8af02188165c56b070e7133713cab906074b54a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
