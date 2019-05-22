@@ -127,89 +127,94 @@ func CrostiniCPUPerf(ctx context.Context, s *testing.State) {
 	// Find sysbench binary location.
 	out, err := perfutil.RunCmd(ctx, testexec.CommandContext(ctx, "which", "sysbench"), errFile)
 	if err != nil {
-		s.Fatal("Failed to find sysbench binary location: ", err)
-	}
-	sysbenchBinaryFile := strings.TrimSpace(string(out))
-	s.Log("Found sysbench binary location: ", sysbenchBinaryFile)
+		// TODO(dverkamp): sysbench is not currently built on arm platforms,
+		// so instead of failing the whole test, just don't report sysbench
+		// results if the binary isn't available.
+		// See https://crbug.com/922178 for additional details.
+		s.Log("Failed to find sysbench binary location: ", err)
+	} else {
+		sysbenchBinaryFile := strings.TrimSpace(string(out))
+		s.Log("Found sysbench binary location: ", sysbenchBinaryFile)
 
-	// Util object to run sysbench in container.
-	sysBenchRunner, err := perfutil.NewHostBinaryRunner(ctx, sysbenchBinaryFile, cont, errFile)
-	if err != nil {
-		s.Fatal("Failed to setup sysbench to run in container: ", err)
-	}
-
-	measureSysBench := func(numThread int) error {
-		args := []string{
-			"cpu",
-			"run",
-			fmt.Sprintf("--num-threads=%d", numThread),
-		}
-		hostCmd := testexec.CommandContext(ctx, "sysbench", args...)
-		out, err := perfutil.RunCmd(ctx, hostCmd, errFile)
+		// Util object to run sysbench in container.
+		sysBenchRunner, err := perfutil.NewHostBinaryRunner(ctx, sysbenchBinaryFile, cont, errFile)
 		if err != nil {
-			return errors.Wrap(err, "failed to run sysbench on host")
-		}
-		hostNumEvents, err := parseSysbenchOutput(string(out))
-		if err != nil {
-			perfutil.WriteError(ctx, errFile, strings.Join(hostCmd.Args, " "), out)
-			return errors.Wrap(err, "failed to parse sysbench output on host")
+			s.Fatal("Failed to setup sysbench to run in container: ", err)
 		}
 
-		guestCmd := sysBenchRunner.Command(ctx, args...)
-		out, err = perfutil.RunCmd(ctx, guestCmd, errFile)
-		if err != nil {
-			return errors.Wrap(err, "failed to run sysbench on guest")
-		}
-		guestNumEvents, err := parseSysbenchOutput(string(out))
-		if err != nil {
-			perfutil.WriteError(ctx, errFile, strings.Join(guestCmd.Args, " "), out)
-			return errors.Wrap(err, "failed to parse sysbench output on guest")
+		measureSysBench := func(numThread int) error {
+			args := []string{
+				"cpu",
+				"run",
+				fmt.Sprintf("--num-threads=%d", numThread),
+			}
+			hostCmd := testexec.CommandContext(ctx, "sysbench", args...)
+			out, err := perfutil.RunCmd(ctx, hostCmd, errFile)
+			if err != nil {
+				return errors.Wrap(err, "failed to run sysbench on host")
+			}
+			hostNumEvents, err := parseSysbenchOutput(string(out))
+			if err != nil {
+				perfutil.WriteError(ctx, errFile, strings.Join(hostCmd.Args, " "), out)
+				return errors.Wrap(err, "failed to parse sysbench output on host")
+			}
+
+			guestCmd := sysBenchRunner.Command(ctx, args...)
+			out, err = perfutil.RunCmd(ctx, guestCmd, errFile)
+			if err != nil {
+				return errors.Wrap(err, "failed to run sysbench on guest")
+			}
+			guestNumEvents, err := parseSysbenchOutput(string(out))
+			if err != nil {
+				perfutil.WriteError(ctx, errFile, strings.Join(guestCmd.Args, " "), out)
+				return errors.Wrap(err, "failed to parse sysbench output on guest")
+			}
+
+			ratio := float64(guestNumEvents) / float64(hostNumEvents)
+			s.Logf("sysbench num threads: %v, host events: %v, guest events %v, guest/host ratio %.3f",
+				numThread, hostNumEvents, guestNumEvents, ratio)
+
+			metricName := func(subName string) string {
+				return fmt.Sprintf("sysbench_%v_threads_%v", numThread, subName)
+			}
+			perfValues.Append(
+				perf.Metric{
+					Name:      "crostini_cpu",
+					Variant:   metricName("host"),
+					Unit:      "events",
+					Direction: perf.BiggerIsBetter,
+					Multiple:  true,
+				},
+				float64(hostNumEvents))
+			perfValues.Append(
+				perf.Metric{
+					Name:      "crostini_cpu",
+					Variant:   metricName("guest"),
+					Unit:      "events",
+					Direction: perf.BiggerIsBetter,
+					Multiple:  true,
+				},
+				float64(guestNumEvents))
+			perfValues.Append(
+				perf.Metric{
+					Name:      "crostini_cpu",
+					Variant:   metricName("ratio"),
+					Unit:      "percentage",
+					Direction: perf.BiggerIsBetter,
+					Multiple:  true,
+				},
+				ratio)
+			return nil
 		}
 
-		ratio := float64(guestNumEvents) / float64(hostNumEvents)
-		s.Logf("sysbench num threads: %v, host events: %v, guest events %v, guest/host ratio %.3f",
-			numThread, hostNumEvents, guestNumEvents, ratio)
-
-		metricName := func(subName string) string {
-			return fmt.Sprintf("sysbench_%v_threads_%v", numThread, subName)
-		}
-		perfValues.Append(
-			perf.Metric{
-				Name:      "crostini_cpu",
-				Variant:   metricName("host"),
-				Unit:      "events",
-				Direction: perf.BiggerIsBetter,
-				Multiple:  true,
-			},
-			float64(hostNumEvents))
-		perfValues.Append(
-			perf.Metric{
-				Name:      "crostini_cpu",
-				Variant:   metricName("guest"),
-				Unit:      "events",
-				Direction: perf.BiggerIsBetter,
-				Multiple:  true,
-			},
-			float64(guestNumEvents))
-		perfValues.Append(
-			perf.Metric{
-				Name:      "crostini_cpu",
-				Variant:   metricName("ratio"),
-				Unit:      "percentage",
-				Direction: perf.BiggerIsBetter,
-				Multiple:  true,
-			},
-			ratio)
-		return nil
-	}
-
-	numCPU := runtime.NumCPU()
-	const repeatNum = 3
-	for numThreads := 1; numThreads <= numCPU; numThreads++ {
-		for numTry := 1; numTry <= repeatNum; numTry++ {
-			s.Logf("Measuring sysbench for %v thread(s) (%v/%v)", numThreads, numTry, repeatNum)
-			if err := measureSysBench(numThreads); err != nil {
-				s.Errorf("sysbench for %d thread(s) failed: %v", numThreads, err)
+		numCPU := runtime.NumCPU()
+		const repeatNum = 3
+		for numThreads := 1; numThreads <= numCPU; numThreads++ {
+			for numTry := 1; numTry <= repeatNum; numTry++ {
+				s.Logf("Measuring sysbench for %v thread(s) (%v/%v)", numThreads, numTry, repeatNum)
+				if err := measureSysBench(numThreads); err != nil {
+					s.Errorf("sysbench for %d thread(s) failed: %v", numThreads, err)
+				}
 			}
 		}
 	}
