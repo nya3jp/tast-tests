@@ -9,7 +9,10 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/godbus/dbus"
+
 	"chromiumos/tast/local/bundles/cros/platform/updateserver"
+	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -40,7 +43,7 @@ func DLCService(ctx context.Context, s *testing.State) {
 	// rollback-happened is written when update_engine finished Enterprise
 	// Rollback operation.
 	for _, p := range []string{"rollback-version", "rollback-happened"} {
-		if err := os.RemoveAll(filepath.Join("/var/lib/update_engine/prefs", p)); err != nil {
+		if err := os.RemoveAll(filepath.Join("/mnt/stateful_partition/unencrypted/preserve/update_engine/prefs", p)); err != nil {
 			s.Fatal("Failed to clean up pref: ", err)
 		}
 	}
@@ -48,6 +51,12 @@ func DLCService(ctx context.Context, s *testing.State) {
 	s.Logf("Restarting %s job", updateEngineJob)
 	if err := upstart.RestartJob(ctx, updateEngineJob); err != nil {
 		s.Fatalf("Failed to restart %s: %v", updateEngineJob, err)
+	}
+	// Wait for update-engine to be ready.
+	if bus, err := dbus.SystemBus(); err != nil {
+		s.Fatal("Failed to connect to the message bus: ", err)
+	} else if err := dbusutil.WaitForService(ctx, bus, "org.chromium.UpdateEngine"); err != nil {
+		s.Fatal("Failed to wait for D-Bus service: ", err)
 	}
 
 	// dumpInstalledDLCModules calls dlcservice's GetInstalled D-Bus method via dlcservice_util command and saves the returned results to filename within the output directory.
