@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8af26bb4_75c6331c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-22T01:55:56Z",
+      "side": 1,
+      "message": "Do we need -1 here? boundsRight \u003d\u003d dispW was allowed in the last PS. I\u0027m not sure if it makes difference, but just to make sure it\u0027s intentional.",
+      "range": {
+        "startLine": 367,
+        "startChar": 48,
+        "endLine": 367,
+        "endChar": 50
+      },
+      "revId": "623c3f0c555ce8e51f1211a77d8f6958c61c4b47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
