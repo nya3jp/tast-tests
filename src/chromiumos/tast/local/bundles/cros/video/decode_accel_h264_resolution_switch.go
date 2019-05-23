@@ -18,7 +18,7 @@ func init() {
 		Desc:         "Runs Chrome video_decode_accelerator_tests with an H.264 resolution switching video",
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{caps.HWDecodeH264},
+		SoftwareDeps: []string{"chrome", caps.HWDecodeH264},
 		// TODO(crbug.com/933034) Use decode.DataFiles when the old VDA tests have been deprecated.
 		Data: []string{"switch_1080p_720p_240frames.h264", "switch_1080p_720p_240frames.h264.json"},
 	})
