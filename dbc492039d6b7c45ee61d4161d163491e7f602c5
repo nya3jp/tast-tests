@@ -2,6 +2,63 @@
   "comments": [
     {
       "key": {
+        "uuid": "a506eacf_86858664",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-23T23:52:48Z",
+      "side": 1,
+      "message": "just to mention it, top-level identifiers can appear in any order. moving this down below the main CrostiniCPUPerf function may make it easier to see the overall flow of the test.",
+      "revId": "dbc492039d6b7c45ee61d4161d163491e7f602c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c17e497e_e98c880d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-23T23:52:48Z",
+      "side": 1,
+      "message": "nit: how about moving this (down to L101) to the top of this function to get it out of the way first? right now, it feels a bit hard to read since it seems to be:\n\n* parseSysbenchOutput function definition\n* some initialization code that runs inline\n* measureSysBench function definition\n* main code that runs inline and calls measureSysBench",
+      "revId": "dbc492039d6b7c45ee61d4161d163491e7f602c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2eb6caa_ddb96fb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-23T23:52:48Z",
+      "side": 1,
+      "message": "please be consistent with \"sysbench\" vs. \"sysBench\" throughout this function; there\u0027s a mix of both, which makes it harder to modify the code. i\u0027d recommend just sticking with the uniform-case \"sysbench\" (or \"Sysbench\" when in the middle of a camel-cased identifier) throughout since that\u0027s the literal binary name.",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 15
+      },
+      "revId": "dbc492039d6b7c45ee61d4161d163491e7f602c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d733f7f4_5d2319de",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
         "patchSetId": 2
@@ -13,6 +70,24 @@
       "writtenOn": "2019-05-23T23:42:07Z",
       "side": 1,
       "message": "The diff looks odd here because this function was split in half, but really none of this is new - just moved around.",
+      "revId": "dbc492039d6b7c45ee61d4161d163491e7f602c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52d245e0_8c1c9aa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-23T23:52:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d733f7f4_5d2319de",
       "revId": "dbc492039d6b7c45ee61d4161d163491e7f602c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
