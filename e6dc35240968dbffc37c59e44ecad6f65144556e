@@ -16,6 +16,24 @@
       "revId": "e6dc35240968dbffc37c59e44ecad6f65144556e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76eb3141_ecbeadf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1297374
+      },
+      "writtenOn": "2019-05-23T23:41:16Z",
+      "side": 1,
+      "message": "Sure, that sounds cleaner - thanks for the suggestion.",
+      "parentUuid": "eaf23910_95889921",
+      "revId": "e6dc35240968dbffc37c59e44ecad6f65144556e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
