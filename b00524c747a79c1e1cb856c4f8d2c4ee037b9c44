@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "acf3d015_5a2e5e30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-23T01:04:24Z",
+      "side": 1,
+      "message": "it\u0027s not specific to this change, but it may be best to use a slightly-shortened context for the non-cleanup parts of this test to ensure that the deferred functions won\u0027t have an expired context at the end",
+      "revId": "b00524c747a79c1e1cb856c4f8d2c4ee037b9c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
