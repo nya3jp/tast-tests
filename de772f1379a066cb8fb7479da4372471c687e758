@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35b52e9d_eb443a9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/meta/local_vars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-23T17:18:46Z",
+      "side": 1,
+      "message": "instead of introducing a new test for this, i wonder if meta.RunTests should just run a single local and single remote test that exercise multiple features. that seems like it would be more maintainable...",
+      "revId": "de772f1379a066cb8fb7479da4372471c687e758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2e68bf3_dc8fe9e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/meta/local_vars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-23T17:18:46Z",
+      "side": 1,
+      "message": "i got a presubmit error about this (for not including informational), but i decided to ignore it since i don\u0027t think this test\u0027s disabled attribute will ever be removed",
+      "revId": "de772f1379a066cb8fb7479da4372471c687e758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
