@@ -6,7 +6,9 @@ package input
 
 import (
 	"context"
+	"fmt"
 	"math"
+	"math/big"
 	"os"
 	"time"
 	"unsafe"
@@ -35,6 +37,8 @@ type TouchCoord int32
 // Any other code, like MSC_TIMESTAMP, is not implemented.
 type TouchscreenEventWriter struct {
 	rw            *RawEventWriter
+	virt          *os.File // if non-nil, used to hold a virtual device open
+	dev           string   // path to underlying device in /dev/input
 	nextTouchID   int32
 	width         TouchCoord
 	height        TouchCoord
@@ -42,6 +46,8 @@ type TouchscreenEventWriter struct {
 	maxTrackingID int
 	maxPressure   int
 }
+
+var nextVirtTouchNum = 1 // appended to virtual touchscreen device name
 
 // Touchscreen returns an TouchscreenEventWriter to inject events into an arbitrary touchscreen device.
 func Touchscreen(ctx context.Context) (*TouchscreenEventWriter, error) {
@@ -96,7 +102,106 @@ func Touchscreen(ctx context.Context) (*TouchscreenEventWriter, error) {
 			maxPressure:   int(infoPressure.maximum),
 		}, nil
 	}
-	return nil, errors.New("didn't find touchscreen device")
+
+	// If we didn't find a real touchscreen, create a virtual one.
+	return VirtualTouchscreen(ctx)
+}
+
+// VirtualTouchscreen creates a virtual touchscreen device and returns an EventWriter that injects events into it.
+func VirtualTouchscreen(ctx context.Context) (*TouchscreenEventWriter, error) {
+	const (
+		// Most touchscreens use I2C bus. But hardcoding to USB since it is supported
+		// in all Chromebook devices.
+		busType = 0x3 // BUS_USB from input.h
+
+		// Device constants taken from Chromebook Slate.
+		vendor  = 0x2d1f
+		product = 0x5143
+		version = 0x100
+
+		// Input characteristics.
+		props   = 1 << INPUT_PROP_DIRECT
+		evTypes = 1<<EV_KEY | 1<<EV_ABS | 1<<EV_MSC
+
+		// Abs axes supported in our virtual device.
+		absSupportedAxes = (1<<ABS_X | 1<<ABS_Y | 1<<ABS_PRESSURE | 1<<ABS_MT_SLOT |
+			1<<ABS_MT_TOUCH_MAJOR | 1<<ABS_MT_TOUCH_MINOR | 1<<ABS_MT_ORIENTATION |
+			1<<ABS_MT_POSITION_X | 1<<ABS_MT_POSITION_Y | 1<<ABS_MT_TOOL_TYPE |
+			1<<ABS_MT_TRACKING_ID | 1<<ABS_MT_PRESSURE)
+
+		// Abs axis constants. Taken from Chromebook Slate.
+		axisMaxX            = 10404
+		axisMaxY            = 6936
+		axisMaxTracking     = 65535
+		axisMaxPressure     = 255
+		axisCoordResolution = 40
+	)
+	axisMaxTouches := 9
+
+	// Include our PID in the device name to be extra careful in case an old bundle process hasn't exited.
+	name := fmt.Sprintf("Tast virtual touchscreen %d.%d", os.Getpid(), nextVirtTouchNum)
+	nextVirtTouchNum++
+	testing.ContextLogf(ctx, "Creating virtual touchscreen device %q", name)
+
+	dev, virt, err := createVirtual(name, devID{busType, vendor, product, version}, props, evTypes,
+		map[EventType]*big.Int{
+			EV_KEY: makeBigInt([]uint64{0x400, 0, 0, 0, 0, 0}), // BTN_TOUCH
+			EV_ABS: big.NewInt(absSupportedAxes),
+			EV_MSC: big.NewInt(1 << MSC_TIMESTAMP),
+		})
+	if err != nil {
+		return nil, err
+	}
+
+	f, err := os.Open(dev)
+	if err != nil {
+		return nil, err
+	}
+	defer f.Close()
+	fd := int(f.Fd())
+
+	for _, entry := range []struct {
+		ec   EventCode
+		info absInfo
+	}{
+		{ABS_X, absInfo{0, 0, axisMaxX, 0, 0, axisCoordResolution}},
+		{ABS_Y, absInfo{0, 0, axisMaxY, 0, 0, axisCoordResolution}},
+		{ABS_PRESSURE, absInfo{0, 0, axisMaxPressure, 0, 0, 0}},
+		{ABS_MT_SLOT, absInfo{0, 0, uint32(axisMaxTouches), 0, 0, 0}},
+		{ABS_MT_TOUCH_MAJOR, absInfo{0, 0, 255, 0, 0, 1}},
+		{ABS_MT_TOUCH_MINOR, absInfo{0, 0, 255, 0, 0, 1}},
+		{ABS_MT_ORIENTATION, absInfo{0, 0, 1, 0, 0, 0}},
+		{ABS_MT_POSITION_X, absInfo{0, 0, axisMaxX, 0, 0, axisCoordResolution}},
+		{ABS_MT_POSITION_Y, absInfo{0, 0, axisMaxY, 0, 0, axisCoordResolution}},
+		{ABS_MT_TOOL_TYPE, absInfo{0, 0, 2, 0, 0, 0}},
+		{ABS_MT_TRACKING_ID, absInfo{0, 0, axisMaxTracking, 0, 0, 0}},
+		{ABS_MT_PRESSURE, absInfo{0, 0, axisMaxPressure, 0, 0, 0}},
+	} {
+		if err := ioctl(fd, evIOCSAbs(uint(entry.ec)), uintptr(unsafe.Pointer(&entry.info))); err != nil {
+			if entry.ec == ABS_MT_SLOT {
+				// TODO(ricardoq): ABS_MT_SLOT fails, preventing multitouch support. Further research needed.
+				testing.ContextLogf(ctx, "Failed to set ABS_MT_SLOT to %+v. Multitouch disabled", entry.info)
+				axisMaxTouches = 0
+			} else {
+				return nil, errors.Wrapf(err, "failed to set ABS value %d to %+v", entry.ec, entry.info)
+			}
+		}
+	}
+
+	device, err := Device(ctx, dev)
+	if err != nil {
+		return nil, err
+	}
+	return &TouchscreenEventWriter{
+		rw:            device,
+		dev:           dev,
+		virt:          virt,
+		width:         axisMaxX,
+		height:        axisMaxY,
+		maxTouches:    axisMaxTouches,
+		maxTrackingID: axisMaxTracking,
+		maxPressure:   axisMaxPressure,
+	}, nil
 }
 
 // Close closes the touchscreen device.
@@ -108,7 +213,7 @@ func (tsw *TouchscreenEventWriter) Close() error {
 // are going to be used by the TouchEventWriter.
 func (tsw *TouchscreenEventWriter) NewMultiTouchWriter(numTouches int) (*TouchEventWriter, error) {
 	if numTouches < 1 || numTouches > tsw.maxTouches {
-		return nil, errors.Errorf("touch count %d not in range [1, %d]", numTouches, tsw.maxTouches)
+		return nil, errors.Errorf("requested touches: %d; device only supports a max of %d touches", numTouches, tsw.maxTouches+1)
 	}
 
 	tw := TouchEventWriter{tsw: tsw, touchStartTime: tsw.rw.nowFunc()}
@@ -188,6 +293,13 @@ type absInfo struct {
 func evIOCGAbs(ev uint) uint {
 	const sizeofAbsInfo = 0x24
 	return ior('E', 0x40+ev, sizeofAbsInfo)
+}
+
+// evIOCSAbs set an encoded Event-Ioctl-Set-Absolute value to be used for ioctl().
+// Similar to the EVIOCSABS found in include/uapi/linux/input.h
+func evIOCSAbs(ev uint) uint {
+	const sizeofAbsInfo = 0x24
+	return iow('E', 0xc0+ev, sizeofAbsInfo)
 }
 
 type kernelEventEntry struct {
