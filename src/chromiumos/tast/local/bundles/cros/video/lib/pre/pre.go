@@ -33,3 +33,13 @@ var chromeVideoPre = chrome.NewPrecondition("video",
 		"--autoplay-policy=no-user-gesture-required",
 		// Avoid the need to grant camera/microphone permissions.
 		"--use-fake-ui-for-media-stream"))
+
+// ChromeCameraPerf returns a precondition that Chrome is started with camera tests-specific
+// setting and without verbose logging that can affect the performance.
+// This precondition should be used only used for performance tests.
+func ChromeCameraPerf() testing.Precondition { return chromeCameraPerfPre }
+
+var chromeCameraPerfPre = chrome.NewPrecondition("camera_perf",
+	chrome.ExtraArgs(
+		// Avoid the need to grant camera/microphone permissions.
+		"--use-fake-ui-for-media-stream"))

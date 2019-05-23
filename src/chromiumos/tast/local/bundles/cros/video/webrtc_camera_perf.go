@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
+	"chromiumos/tast/local/bundles/cros/video/lib/pre"
 	"chromiumos/tast/local/bundles/cros/video/webrtc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/perf"
@@ -26,6 +27,7 @@ func init() {
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome_login", "camera_720p"},
+		Pre:          pre.ChromeCameraPerf(),
 		Data:         append(webrtc.DataFiles(), "getusermedia.html"),
 	})
 }
