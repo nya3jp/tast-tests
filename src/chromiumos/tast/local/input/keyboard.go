@@ -75,8 +75,8 @@ func VirtualKeyboard(ctx context.Context) (*KeyboardEventWriter, error) {
 	if kw.dev, kw.virt, err = createVirtual(name, devID{usbBus, 0x1, 0x1, 0xab41}, 0, 0x120013,
 		map[EventType]*big.Int{
 			EV_KEY: makeBigInt([]uint64{0x402000000, 0x3803078f800d001, 0xfeffffdfffefffff, 0xfffffffffffffffe}),
-			EV_MSC: makeBigInt([]uint64{0x10}),
-			EV_LED: makeBigInt([]uint64{0x7}),
+			EV_MSC: big.NewInt(1 << MSC_SCAN),
+			EV_LED: big.NewInt(1<<LED_NUML | 1<<LED_CAPSL | 1<<LED_SCROLLL),
 		}); err != nil {
 		return nil, err
 	}
