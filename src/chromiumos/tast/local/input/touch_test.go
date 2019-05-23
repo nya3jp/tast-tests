@@ -29,7 +29,7 @@ func TestEventWriterTouch(t *testing.T) {
 		nextTouchID:   touchID,
 		width:         1000,
 		height:        1000,
-		maxTouches:    9,
+		maxTouchSlot:  9,
 		maxTrackingID: 65536,
 		maxPressure:   128,
 	}
