@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "99ea4f62_c032ee5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-23T06:35:00Z",
+      "side": 1,
+      "message": "This looks clever. :)",
+      "parentUuid": "bd1b2274_1afc3b6c",
+      "revId": "163fdf30cf88dd0a2fa666169fb9bd82c4710131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8fc78551_ec91758a",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_audit_sanity.go",
         "patchSetId": 6
