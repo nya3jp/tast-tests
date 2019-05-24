@@ -64,6 +64,24 @@ func connExec(ctx context.Context, conn *chrome.Conn, expr string) error {
 	return conn.Exec(ctx, expr)
 }
 
+// pollCurrentTime polls JavaScript "currentTime() > threshold" with optioanl PollOptions.
+// It also logs each currentTime it polls for debugging.
+func pollCurrentTime(ctx context.Context, conn *chrome.Conn, threshold float64, opts *testing.PollOptions) error {
+	failToPoll := errors.Errorf("unable to poll currentTime() > %f", threshold)
+	testing.ContextLog(ctx, fmt.Sprintf("poll currentTime() > %f", threshold))
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		t := 0.0
+		if err := conn.Eval(ctx, "currentTime()", &t); err != nil {
+			return err
+		}
+		testing.ContextLog(ctx, fmt.Sprintf("currentTime: %f", t))
+		if t <= threshold {
+			return failToPoll
+		}
+		return nil
+	}, opts)
+}
+
 // prepareVideo makes the video specified in videoFile ready to be played, by
 // waiting for the document to be ready, loading the video source, and waiting
 // until it is ready to play. "play()" can then be called in order to start
@@ -95,7 +113,8 @@ func playVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
 		return errors.Wrap(err, "failed to play a video")
 	}
 
-	if err := connWaitForExpr(ctx, conn, "currentTime() > 0.9"); err != nil {
+	if err := pollCurrentTime(ctx, conn, 0.9,
+		&testing.PollOptions{Timeout: 10 * time.Second, Interval: 100 * time.Millisecond}); err != nil {
 		return errors.Wrap(err, "timed out waiting for playback")
 	}
 
