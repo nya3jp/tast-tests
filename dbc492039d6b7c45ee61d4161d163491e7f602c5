@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "3a5f040b_46db9d74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-24T05:42:34Z",
+      "side": 1,
+      "message": "\u003e Good to see it. But may I raise some questions about the rationale:\n\nthanks for the details!\n\n\u003e 1. testing.State carries a lot of additional information that this function doesn‘t need. It’s often better to practice information hiding and give a function only the information that it needs.\n\u003e \n\u003e Maybe we can refactor the code and single out something like \"logger\" since it\u0027s so widely used.\n\nmaybe the doc needs to make it clearer, but you don\u0027t need a testing.State for logging. you can pass a context (which most functions end up needing anyway) to testing.ContextLog or testing.ContextLogf.\n\n\u003e 2. If errors are reported directly using testing.State\u0027s Error, Fatal, etc. methods, the caller loses the ability to decide how to deal with errors.\n\u003e \n\u003e Yes so I think it backs to your theory. If it\u0027s part of the test it\u0027s fine to pass a testing.State. But there\u0027re gray area. For example in my previous CL\n\u003e https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1539424/19/src/chromiumos/tast/local/bundles/cros/vm/crostini_input_latency.go\n\u003e I think functions like startInputLatencyServer() or startEvtest() could also be deemed as part of the test (?) Also it returns a cleanup function, and the cleanup function may report (or return) errors. So by the end it becomes more complicated.\n\u003e My point if view is that if one function is meant to be called in multiple places (like a util function), then we should make it returns an error. If it\u0027s meant to be called in only one place, it\u0027s tend to be part of the test and we may relax the rule a bit.\n\u003e \n\u003e 3. When errors are reported directly by helper functions, the overall flow of the test becomes \n\u003e harder to see. Every call to a helper function could potentially result in a fatal test error.\n\u003e \n\u003e I remember we can get stack trace of an error. Although one can argue it\u0027s harder to read...\n\u003e \n\u003e just my 2 cents. :)\n\ni think my main feeling here is that code becomes easier to read when you can (safely) make assumptions about what a function will and won\u0027t do. the main things that dictate those assumptions are the function\u0027s name and its arguments (both in and out).\n\nwhen a testing.State is passed, it\u0027s easy for the function to both perform actions and verify assertions. it can be hard to choose a name that expresses the full scope of what the function does.\n\non the other hand, if the function just returns an error, it encourages code authors to choose a narrower scope: the function is likelier to just perform a single, clear operation, which often has the effect of making the calling code easier to reason about.",
+      "parentUuid": "01f2589f_5d2199e6",
+      "revId": "dbc492039d6b7c45ee61d4161d163491e7f602c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c17e497e_e98c880d",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
         "patchSetId": 2
