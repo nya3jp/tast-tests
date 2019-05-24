@@ -6,6 +6,7 @@ package video
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/video/encode"
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
@@ -23,6 +24,7 @@ func init() {
 		// TODO(hiroh): Remove "android" deps once Chrome VEAs and Chrome OS supports DMABUF-backed video frame on all boards.
 		SoftwareDeps: []string{"chrome", "android", caps.HWEncodeVP8},
 		Data:         []string{encode.Bear192P.Name},
+		Timeout:      4 * time.Minute,
 	})
 }
 
