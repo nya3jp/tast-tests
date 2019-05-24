@@ -52,6 +52,21 @@ func MSEDataFiles() []string {
 	}
 }
 
+// pollCurrentTime polls JavaScript "currentTime() > threshold" with optioanl PollOptions.
+// If it fails to poll for condition, it emits error with currentTime() value attached.
+func pollCurrentTime(ctx context.Context, conn *chrome.Conn, threshold float64, opts *testing.PollOptions) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		var t float64
+		if err := conn.Eval(ctx, "currentTime()", &t); err != nil {
+			return err
+		}
+		if t <= threshold {
+			return errors.Errorf("currentTime (%f) is below threshold (%f)", t, threshold)
+		}
+		return nil
+	}, opts)
+}
+
 // prepareVideo makes the video specified in videoFile ready to be played, by
 // waiting for the document to be ready, loading the video source, and waiting
 // until it is ready to play. "play()" can then be called in order to start
@@ -83,7 +98,7 @@ func playVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
 		return errors.Wrap(err, "failed to play a video")
 	}
 
-	if err := conn.WaitForExpr(ctx, "currentTime() > 0.9"); err != nil {
+	if err := pollCurrentTime(ctx, conn, 0.9, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return errors.Wrap(err, "timed out waiting for playback")
 	}
 
