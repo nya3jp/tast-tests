@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c3dcd46_d4bddeb1",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-05-24T18:09:21Z",
+      "side": 1,
+      "message": "Seems to come from here: https://elixir.bootlin.com/linux/latest/source/drivers/input/evdev.c#L1271\nI\u0027ll see if there is a way to change the reserved slots",
+      "range": {
+        "startLine": 182,
+        "startChar": 4,
+        "endLine": 182,
+        "endChar": 97
+      },
+      "revId": "1cfda508710cbf881f10c6aa9636497a789c84c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
