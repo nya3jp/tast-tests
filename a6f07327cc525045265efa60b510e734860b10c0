@@ -81,6 +81,24 @@
       "revId": "a6f07327cc525045265efa60b510e734860b10c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1e4e3c7_cff281ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-24T23:00:21Z",
+      "side": 1,
+      "message": "it\u0027s not much work to add a new suite. instead of informational above, you could add an attribute like \"group:wifi_nightly\" (or whatever), document it at go/tast-attr, and then add a new control file similar to http://cs/chromeos_public/src/third_party/autotest/files/server/site_tests/tast/control.crosbolt-nightly with \u0027!disabled \u0026\u0026 \"group:wifi_nightly\"\u0027. you can set ATTRIBUTES in the control file to make the tast job run as part of an existing nightly wifi autotest suite, if you have one.\n\ni\u0027d recommend against following the existing crosbolt pattern of having both a group attribute and then a more-specific nightly/etc. one. see https://crbug.com/955640.\n\nre your coverage question, that\u0027s still being figured out. i think that the plan is to do something better once there\u0027s more flexibility on the CI side, i.e. ideally tests would be run selectively on the devices where they\u0027ll have the most impact.\n\nre chromeos-config, powerd definitely supports it. i\u0027m not sure how much of an effort you want to make here, but the cleanest approach would probably be to update platform2/power_manager/tools/check_powerd_config.cc to have a --set_wifi_transmit_power flag that checks the pref and then call it from this test. then you\u0027re not replicating powerd\u0027s prefs code in this test.",
+      "parentUuid": "2b6dc8af_f928dd8c",
+      "revId": "a6f07327cc525045265efa60b510e734860b10c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
