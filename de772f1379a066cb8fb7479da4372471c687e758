@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "bf511763_02cd94a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/meta/local_vars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-24T01:34:26Z",
+      "side": 1,
+      "message": "Ack, thanks for add a remote variant.",
+      "parentUuid": "ffca9cd3_af57c2c4",
+      "revId": "de772f1379a066cb8fb7479da4372471c687e758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2e68bf3_dc8fe9e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/meta/local_vars.go",
         "patchSetId": 1
