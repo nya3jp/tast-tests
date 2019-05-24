@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ffca9cd3_af57c2c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/meta/local_vars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-24T01:09:05Z",
+      "side": 1,
+      "message": "it was mostly just the churn of adding both a new local and a new remote test to exercise the -var flag. but i agree that it\u0027s not that bad, and that introducing a separate test for each new feature also has maintainability benefits. i\u0027ve updated this change to also add meta.RemoteVars.",
+      "parentUuid": "2bbbc87f_073c36d7",
+      "revId": "de772f1379a066cb8fb7479da4372471c687e758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2e68bf3_dc8fe9e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/meta/local_vars.go",
         "patchSetId": 1
@@ -92,6 +110,30 @@
       "revId": "de772f1379a066cb8fb7479da4372471c687e758",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ee61cd7_d2fb835b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/meta/local_vars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-24T01:09:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8cc3b1b_4cd91a40",
+      "range": {
+        "startLine": 22,
+        "startChar": 18,
+        "endLine": 22,
+        "endChar": 22
+      },
+      "revId": "de772f1379a066cb8fb7479da4372471c687e758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
