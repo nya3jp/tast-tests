@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "4f50c2c3_cf9b0610",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-24T02:24:01Z",
+      "side": 1,
+      "message": "perhaps, although i\u0027ve found it hard to keep go/tast-writing from getting even larger than it is already. :-)\n\ndid you see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_2.md#creating-the-filesystem? it touches on this topic too.",
+      "parentUuid": "28527eda_deaccfcd",
+      "revId": "dbc492039d6b7c45ee61d4161d163491e7f602c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c17e497e_e98c880d",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
         "patchSetId": 2
