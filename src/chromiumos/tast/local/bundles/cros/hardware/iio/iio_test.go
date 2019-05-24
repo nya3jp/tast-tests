@@ -49,3 +49,39 @@ func TestGetSensors(t *testing.T) {
 		t.Errorf("Expected sensors %v but got %v", expected, sensors)
 	}
 }
+
+func TestSensorReading(t *testing.T) {
+	td := testutil.TempDir(t)
+	defer os.RemoveAll(td)
+
+	if err := testutil.WriteFiles(path.Join(td, "sys", "bus", "iio", "devices"),
+		map[string]string{
+			"iio:device0/name":           "cros-ec-accel",
+			"iio:device0/location":       "lid",
+			"iio:device0/scale":          "0.5",
+			"iio:device0/in_accel_x_raw": "10",
+			"iio:device0/in_accel_y_raw": "12",
+			"iio:device0/in_accel_z_raw": "14",
+		}); err != nil {
+		t.Fatal(err)
+	}
+
+	oldBasePath := basePath
+	basePath = td
+	defer func() { basePath = oldBasePath }()
+
+	sensors, err := GetSensors()
+	if err != nil {
+		t.Fatal("Error getting sensors: ", err)
+	}
+
+	reading, err := sensors[0].Reading()
+	if err != nil {
+		t.Errorf("Error getting sensor reading")
+	}
+
+	expectedReading := SensorReading{5, 6, 7}
+	if !reflect.DeepEqual(expectedReading, reading) {
+		t.Errorf("Expected reading %v but got %v", expectedReading, reading)
+	}
+}
