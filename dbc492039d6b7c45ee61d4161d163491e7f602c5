@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "ecf3e04f_09ef6e79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-24T01:52:02Z",
+      "side": 1,
+      "message": "this is kind of hand-wavy, but in general, i\u0027d say it depends on whether the function is actually performing testing, or performing some discrete task where failures can be reported with a single error value.\n\nin this case, i think that this function is performing testing. on L174, for example, it looks like it wants to be able to potentially report multiple testing errors. that\u0027s hard to do using error return values instead of a testing.State, so it\u0027s an argument for using testing.State here.\n\non the other hand, if there were a function that e.g. just started a sysbench process, or just parsed sysbench\u0027s result, that feels more like a discrete task that should return an error instead of taking a testing.State.\n\nsorry that i can\u0027t provide precise guidelines here, but such is the nature of code. :-)",
+      "parentUuid": "21c6ad7b_c516ec52",
+      "revId": "dbc492039d6b7c45ee61d4161d163491e7f602c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c17e497e_e98c880d",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
         "patchSetId": 2
