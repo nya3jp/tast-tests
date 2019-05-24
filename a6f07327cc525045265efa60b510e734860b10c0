@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4062d6ea_75cdc292",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-05-24T22:09:47Z",
+      "side": 1,
+      "message": "Ah, right. Will fix that.",
+      "parentUuid": "8f479888_e6ccfdfd",
+      "range": {
+        "startLine": 35,
+        "startChar": 22,
+        "endLine": 35,
+        "endChar": 36
+      },
+      "revId": "a6f07327cc525045265efa60b510e734860b10c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1813e209_eadf7392",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2019-05-24T21:39:31Z",
       "side": 1,
       "message": "in general, i\u0027ve been pushing back against making no-op decisions at runtime in tests, since it creates the false impression on test dashboards that the test actually passed (when in fact it really didn\u0027t run).\n\ni don\u0027t see any way to avoid that here, though -- the only mechanism at present for skipping tests is SoftwareDeps, which are derived from USE flags, while this is a powerd pref that we write directly from board overlays (or set via chromeos-config for unibuild).\n\nmy other concern is that if this test is promoted to the CQ, there\u0027s no guarantee that it will actually be scheduled on any DUTs that have set_wifi_transmit_power set to 1.\n\nif this test is just being added so you can run it manually to help with development, adding a \"disabled\" attribute (so it doesn\u0027t run on the CQ) may be good.\n\ncurious about what others think, of course.",
+      "revId": "a6f07327cc525045265efa60b510e734860b10c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b6dc8af_f928dd8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-05-24T22:09:47Z",
+      "side": 1,
+      "message": "This is the sort of test that we tend to do as part of our (non-CQ) WiFi suites, where we run them regularly on everything in the WiFi lab (~1 of each model), to get WiFi chipset coverage. This particular one doesn\u0027t actually exercise any functionality that *requires* the WiFi cells though (e.g., it doesn\u0027t actually connect to an AP), so I didn\u0027t bother arranging that yet.\n\nThis may be part of why kirtika@ was asking about a \"WiFi suite\" even for client tests that had no external dependencies. We have a bunch of stuff we probably want to group together for \"WiFi functional validation\", and it may not have all the same goals as tests-for-CQ.\n\nIn any case, I\u0027m definitely interested in getting tests similar to this run automatically, even if this particular one is very tiny/trivial, and even if it\u0027s not on the CQ. We try to monitor this stuff, and without this, I really wouldn\u0027t know if (for example), I got the driver paths wrong for some odd board in CL:1629093. Scaling Chrome OS with such a variety of form factors and chipset varieties means that we *must* have tests that will not apply to all models, and esp. with unibuild (which essentially discourages USE flags), these differences are harder and harder to determine at build time.\n\nMore notes: there are lots of other similar usage in WiFi tests, as not all features are available everywhere, and we don\u0027t generally want to draw out that matrix at build time. Search Autotest for TestNA in these sorts of files:\n\nserver/site_tests/network_WiFi_*\nserver/site_linux_router.py\nserver/site_linux_system.py\nserver/cros/network/wifi*\n\nAnyway, with my thoughts noted: I\u0027m interested in others\u0027 thoughts as well.\n\nTo put it back to you: is the idea that for a given test, it\u0027s sufficient coverage to run on exactly 1 board that matches SoftwareDeps?\n\n\u003e set via chromeos-config for unibuild\n\nAh, is it available there now? I didn\u0027t notice. So maybe I can remove the TODO on line 30.",
+      "parentUuid": "1813e209_eadf7392",
       "revId": "a6f07327cc525045265efa60b510e734860b10c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
