@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2bbbc87f_073c36d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/meta/local_vars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-24T00:23:24Z",
+      "side": 1,
+      "message": "I thought it\u0027s more maintainable to have different local tests for different cases to excercise. What made you think having a single test is more maintainable? I guess that\u0027s because -build\u003dtrue builds only either one of local/remote bundles?",
+      "parentUuid": "35b52e9d_eb443a9f",
+      "revId": "de772f1379a066cb8fb7479da4372471c687e758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2e68bf3_dc8fe9e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/meta/local_vars.go",
         "patchSetId": 1
@@ -30,6 +48,47 @@
       "writtenOn": "2019-05-23T17:18:46Z",
       "side": 1,
       "message": "i got a presubmit error about this (for not including informational), but i decided to ignore it since i don\u0027t think this test\u0027s disabled attribute will ever be removed",
+      "revId": "de772f1379a066cb8fb7479da4372471c687e758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a815eaaf_ac16d2c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/meta/local_vars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-24T00:23:24Z",
+      "side": 1,
+      "message": "Oops, that\u0027s a false positive. :(",
+      "parentUuid": "c2e68bf3_dc8fe9e7",
+      "revId": "de772f1379a066cb8fb7479da4372471c687e758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8cc3b1b_4cd91a40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/meta/local_vars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-24T00:23:24Z",
+      "side": 1,
+      "message": "Please consider adding some namespace-like prefix to avoid possible conflicts between tests.",
+      "range": {
+        "startLine": 22,
+        "startChar": 18,
+        "endLine": 22,
+        "endChar": 22
+      },
       "revId": "de772f1379a066cb8fb7479da4372471c687e758",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
