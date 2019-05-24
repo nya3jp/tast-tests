@@ -9,6 +9,7 @@ import (
 	"os"
 	"path"
 	"regexp"
+	"strconv"
 	"strings"
 
 	"chromiumos/tast/errors"
@@ -28,6 +29,13 @@ type Sensor struct {
 	Name     SensorName
 	Location SensorLocation
 	Path     string
+}
+
+// SensorReading is one reading from a sensor.
+type SensorReading struct {
+	X float64
+	Y float64
+	Z float64
 }
 
 const (
@@ -61,6 +69,12 @@ var sensorNames = map[SensorName]struct{}{
 var sensorLocations = map[SensorLocation]struct{}{
 	Base: {},
 	Lid:  {},
+}
+
+var readingNames = map[SensorName]string{
+	Accel: "accel",
+	Gyro:  "anglvel",
+	Mag:   "magn",
 }
 
 const iioBasePath = "/sys/bus/iio/devices"
@@ -121,4 +135,52 @@ func parseSensor(file os.FileInfo, iioPath string) (Sensor, error) {
 	}
 
 	return Sensor{name, location, file.Name()}, nil
+}
+
+// Reading returns the current readings of the sensor.
+func (sensor *Sensor) Reading() (SensorReading, error) {
+	var ret SensorReading
+	sensorPath := path.Join(basePath, iioBasePath, sensor.Path)
+	rName, ok := readingNames[sensor.Name]
+	if !ok {
+		return ret, errors.Errorf("cannot read data from %v", sensor.Name)
+	}
+
+	s, err := ioutil.ReadFile(path.Join(sensorPath, "scale"))
+	if err != nil {
+		return ret, err
+	}
+
+	scale, err := strconv.ParseFloat(strings.TrimSpace(string(s)), 64)
+	if err != nil {
+		return ret, err
+	}
+
+	rawReading := func(axis string) (float64, error) {
+		r, err := ioutil.ReadFile(path.Join(sensorPath,
+			strings.Join([]string{"in", rName, axis, "raw"}, "_")))
+		if err != nil {
+			return 0, err
+		}
+
+		return strconv.ParseFloat(strings.TrimSpace(string(r)), 64)
+	}
+
+	for _, tc := range []struct {
+		axis string
+		prop *float64
+	}{
+		{"x", &ret.X},
+		{"y", &ret.Y},
+		{"z", &ret.Z},
+	} {
+		reading, err := rawReading(tc.axis)
+		if err != nil {
+			return ret, err
+		}
+
+		*tc.prop = reading * scale
+	}
+
+	return ret, nil
 }
