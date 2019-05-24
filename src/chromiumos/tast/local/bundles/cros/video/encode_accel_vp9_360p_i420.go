@@ -6,6 +6,7 @@ package video
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/video/encode"
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
@@ -21,6 +22,7 @@ func init() {
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeVP9},
 		Data:         []string{encode.Tulip360P.Name},
+		Timeout:      4 * time.Minute,
 	})
 }
 

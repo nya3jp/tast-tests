@@ -22,8 +22,7 @@ func init() {
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeH264},
 		Data:         []string{encode.Tulip720P.Name},
-		// This test takes up to 3 minutes when it passes. Allow 4 minutes with 1-minute buffer.
-		Timeout: 4 * time.Minute,
+		Timeout:      4 * time.Minute,
 	})
 }
 

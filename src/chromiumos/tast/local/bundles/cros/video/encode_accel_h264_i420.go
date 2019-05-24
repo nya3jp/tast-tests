@@ -6,6 +6,7 @@ package video
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/video/encode"
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
@@ -20,6 +21,7 @@ func init() {
 		Contacts:     []string{"akahuang@chromium.org", "chromeos-video-eng@google.com"},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeH264},
 		Data:         []string{encode.Bear192P.Name},
+		Timeout:      4 * time.Minute,
 	})
 }
 
