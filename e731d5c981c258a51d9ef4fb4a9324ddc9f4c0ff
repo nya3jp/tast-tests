@@ -46,6 +46,30 @@
       "revId": "e731d5c981c258a51d9ef4fb4a9324ddc9f4c0ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1f73d9d_cddf8467",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-24T14:50:51Z",
+      "side": 1,
+      "message": "whoops, sorry for forgetting that that was the approach taken there. :-)",
+      "parentUuid": "a29df6e6_16ec1e68",
+      "range": {
+        "startLine": 42,
+        "startChar": 50,
+        "endLine": 42,
+        "endChar": 61
+      },
+      "revId": "e731d5c981c258a51d9ef4fb4a9324ddc9f4c0ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
