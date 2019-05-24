@@ -126,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "fb808b0f_d292b3be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-05-24T11:57:36Z",
+      "side": 1,
+      "message": "I know we can use a Context for logging, but not for error and fatal. I mean in the document the reason not passing a testing.State is (partly) because of information hiding, but if really we want to log an error/fatal in another function and really worry about information hiding problem then we can invent a logger object (For example in this case we still pass a testing.State for logging purpose)\n\nI got what you mean. It\u0027s good to encourage people writing clear code, but we can still reach the goal without the hard restriction. For example in my previous CL I think it\u0027s 50%-50%. Returning errors make the workflow more clean and clear, I agree, in the expense of refactoring effort.",
+      "parentUuid": "3a5f040b_46db9d74",
+      "revId": "dbc492039d6b7c45ee61d4161d163491e7f602c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c17e497e_e98c880d",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
         "patchSetId": 2
