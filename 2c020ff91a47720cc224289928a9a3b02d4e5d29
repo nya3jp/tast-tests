@@ -16,6 +16,24 @@
       "revId": "2c020ff91a47720cc224289928a9a3b02d4e5d29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97219c37_423c99a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/network_listeners_non_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1119399
+      },
+      "writtenOn": "2019-05-24T23:55:57Z",
+      "side": 1,
+      "message": "moblab is a chromiumos build - it should not have any arc containers installed, if you can help me figure out how to remove them if they are in I would appreciate it.",
+      "parentUuid": "91ee5108_2481883d",
+      "revId": "2c020ff91a47720cc224289928a9a3b02d4e5d29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
