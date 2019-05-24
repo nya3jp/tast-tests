@@ -52,20 +52,32 @@ func MSEDataFiles() []string {
 	}
 }
 
+// connWaitForExpr is a wrapper of conn.WaitForExpr to log JavaScript expression to wait for.
+func connWaitForExpr(ctx context.Context, conn *chrome.Conn, expr string) error {
+	testing.ContextLog(ctx, fmt.Sprintf("Wait for JS expression:%s", expr))
+	return conn.WaitForExpr(ctx, expr)
+}
+
+// connExec is a wrapper of conn.Exec to log JavaScript expression to execute.
+func connExec(ctx context.Context, conn *chrome.Conn, expr string) error {
+	testing.ContextLog(ctx, fmt.Sprintf("Execute JS: %s", expr))
+	return conn.Exec(ctx, expr)
+}
+
 // prepareVideo makes the video specified in videoFile ready to be played, by
 // waiting for the document to be ready, loading the video source, and waiting
 // until it is ready to play. "play()" can then be called in order to start
 // video playback.
 func prepareVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
-	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
+	if err := connWaitForExpr(ctx, conn, "document.readyState === 'complete'"); err != nil {
 		return errors.Wrap(err, "timed out waiting for page load")
 	}
 
-	if err := conn.Exec(ctx, fmt.Sprintf("loadVideoSource(%q)", videoFile)); err != nil {
+	if err := connExec(ctx, conn, fmt.Sprintf("loadVideoSource(%q)", videoFile)); err != nil {
 		return errors.Wrap(err, "failed to load a video source")
 	}
 
-	if err := conn.WaitForExpr(ctx, "canplay()"); err != nil {
+	if err := connWaitForExpr(ctx, conn, "canplay()"); err != nil {
 		return errors.Wrap(err, "timed out waiting for video load")
 	}
 
@@ -79,15 +91,15 @@ func playVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
 		return err
 	}
 
-	if err := conn.Exec(ctx, "play()"); err != nil {
+	if err := connExec(ctx, conn, "play()"); err != nil {
 		return errors.Wrap(err, "failed to play a video")
 	}
 
-	if err := conn.WaitForExpr(ctx, "currentTime() > 0.9"); err != nil {
+	if err := connWaitForExpr(ctx, conn, "currentTime() > 0.9"); err != nil {
 		return errors.Wrap(err, "timed out waiting for playback")
 	}
 
-	if err := conn.Exec(ctx, "pause()"); err != nil {
+	if err := connExec(ctx, conn, "pause()"); err != nil {
 		return errors.Wrap(err, "failed to pause")
 	}
 
@@ -97,18 +109,18 @@ func playVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
 // playMSEVideo plays an MSE video stream in shaka.html by using shaka player.
 // mpdFile is the name of MPD file for the video stream.
 func playMSEVideo(ctx context.Context, conn *chrome.Conn, mpdFile string) error {
-	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
+	if err := connWaitForExpr(ctx, conn, "document.readyState === 'complete'"); err != nil {
 		return errors.Wrap(err, "timed out waiting for page loaded")
 	}
 
-	if err := conn.Exec(ctx, fmt.Sprintf("initPlayer(%q)", mpdFile)); err != nil {
+	if err := connExec(ctx, conn, fmt.Sprintf("initPlayer(%q)", mpdFile)); err != nil {
 		return errors.Wrap(err, "failed to initialize shaka player")
 
 	}
 
 	rctx, rcancel := ctxutil.Shorten(ctx, 3*time.Second)
 	defer rcancel()
-	if err := conn.WaitForExpr(rctx, "isTestDone"); err != nil {
+	if err := connWaitForExpr(rctx, conn, "isTestDone"); err != nil {
 		var messages []interface{}
 		if err := conn.Eval(ctx, "errors", &messages); err != nil {
 			return errors.Wrap(err, "timed out and failed to get error log")
@@ -132,21 +144,21 @@ func seekVideoRandomly(ctx context.Context, conn *chrome.Conn, videoFile string)
 		return err
 	}
 
-	if err := conn.Exec(ctx, "play()"); err != nil {
+	if err := connExec(ctx, conn, "play()"); err != nil {
 		return errors.Wrap(err, "failed to play a video")
 	}
 
 	for i := 0; i < numSeeks; i++ {
-		if err := conn.Exec(ctx, fmt.Sprintf("doFastSeeks(%d)", numFastSeeks)); err != nil {
+		if err := connExec(ctx, conn, fmt.Sprintf("doFastSeeks(%d)", numFastSeeks)); err != nil {
 			return errors.Wrap(err, "failed to fast-seek")
 		}
 
-		if err := conn.WaitForExpr(ctx, "finishedSeeking()"); err != nil {
+		if err := connWaitForExpr(ctx, conn, "finishedSeeking()"); err != nil {
 			return errors.Wrap(err, "timeout while waiting for seek to complete")
 		}
 	}
 
-	if err := conn.Exec(ctx, "pause()"); err != nil {
+	if err := connExec(ctx, conn, "pause()"); err != nil {
 		return errors.Wrap(err, "failed to pause")
 	}
 
