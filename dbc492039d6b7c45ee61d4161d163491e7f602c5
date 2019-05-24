@@ -144,6 +144,24 @@
     },
     {
       "key": {
+        "uuid": "1623a7d4_d2cf62a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1297374
+      },
+      "writtenOn": "2019-05-24T20:09:20Z",
+      "side": 1,
+      "message": "Sounds good, done.",
+      "parentUuid": "a506eacf_86858664",
+      "revId": "dbc492039d6b7c45ee61d4161d163491e7f602c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c17e497e_e98c880d",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
         "patchSetId": 2
@@ -158,6 +176,24 @@
       "revId": "dbc492039d6b7c45ee61d4161d163491e7f602c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8087c36d_4ea2b178",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1297374
+      },
+      "writtenOn": "2019-05-24T20:09:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c17e497e_e98c880d",
+      "revId": "dbc492039d6b7c45ee61d4161d163491e7f602c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -181,6 +217,30 @@
       "revId": "dbc492039d6b7c45ee61d4161d163491e7f602c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24780065_f717a780",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1297374
+      },
+      "writtenOn": "2019-05-24T20:09:20Z",
+      "side": 1,
+      "message": "Agreed, this should be consistent - changed all of the instances to sysbench/Sysbench.",
+      "parentUuid": "a2eb6caa_ddb96fb7",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 15
+      },
+      "revId": "dbc492039d6b7c45ee61d4161d163491e7f602c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -233,6 +293,24 @@
       "revId": "dbc492039d6b7c45ee61d4161d163491e7f602c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d828ab42_b2dbe188",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_cpu_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1297374
+      },
+      "writtenOn": "2019-05-24T20:09:20Z",
+      "side": 1,
+      "message": "Yep, good idea - I\u0027ve split it into its own function as well.",
+      "parentUuid": "69584105_47e03b71",
+      "revId": "dbc492039d6b7c45ee61d4161d163491e7f602c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
