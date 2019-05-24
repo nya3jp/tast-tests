@@ -5,9 +5,11 @@
 package iio
 
 import (
+	"fmt"
 	"io/ioutil"
 	"path"
 	"regexp"
+	"strconv"
 	"strings"
 
 	"chromiumos/tast/errors"
@@ -27,6 +29,13 @@ type Sensor struct {
 	Name     SensorName
 	Location SensorLocation
 	Path     string
+}
+
+// SensorReading is one reading from a sensor.
+type SensorReading struct {
+	// Data contains all values read from the sensor.
+	// Its length depends on the type of sensor being used.
+	Data []float64
 }
 
 const (
@@ -60,6 +69,15 @@ var sensorNames = map[SensorName]struct{}{
 var sensorLocations = map[SensorLocation]struct{}{
 	Base: {},
 	Lid:  {},
+}
+
+// readingNames is a map from the type of sensor to the sensor specific part of the
+// sysfs filename for reading raw sensor values. For example the x axis can be read
+// from in_accel_x_raw for an accelerometer and in_anglvel_x_raw for a gyroscope.
+var readingNames = map[SensorName]string{
+	Accel: "accel",
+	Gyro:  "anglvel",
+	Mag:   "magn",
 }
 
 const iioBasePath = "/sys/bus/iio/devices"
@@ -122,4 +140,50 @@ func parseSensor(devName, iioPath string) (Sensor, error) {
 	}
 
 	return Sensor{name, location, devName}, nil
+}
+
+// Read returns the current readings of the sensor.
+func (s *Sensor) Read() (SensorReading, error) {
+	var ret SensorReading
+	sensorPath := path.Join(basePath, iioBasePath, s.Path)
+	rName, ok := readingNames[s.Name]
+	if !ok {
+		return ret, errors.Errorf("cannot read data from %v", s.Name)
+	}
+
+	sc, err := ioutil.ReadFile(path.Join(sensorPath, "scale"))
+	if err != nil {
+		return ret, errors.Wrapf(err, "cannot read %v scale", s.Name)
+	}
+
+	scale, err := strconv.ParseFloat(strings.TrimSpace(string(sc)), 64)
+	if err != nil {
+		return ret, errors.Wrapf(err, "invalid scale %q", sc)
+	}
+
+	rawReading := func(axis string) (float64, error) {
+		r, err := ioutil.ReadFile(path.Join(sensorPath,
+			fmt.Sprintf("in_%s_%s_raw", rName, axis)))
+		if err != nil {
+			return 0, err
+		}
+
+		return strconv.ParseFloat(strings.TrimSpace(string(r)), 64)
+	}
+
+	ret.Data = make([]float64, 3)
+	for axis, prop := range map[string]*float64{
+		"x": &ret.Data[0],
+		"y": &ret.Data[1],
+		"z": &ret.Data[2],
+	} {
+		reading, err := rawReading(axis)
+		if err != nil {
+			return ret, errors.Wrapf(err, "error reading from sensor %v", s.Name)
+		}
+
+		*prop = reading * scale
+	}
+
+	return ret, nil
 }
