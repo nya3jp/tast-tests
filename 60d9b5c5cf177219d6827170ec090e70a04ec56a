@@ -46,6 +46,30 @@
       "revId": "60d9b5c5cf177219d6827170ec090e70a04ec56a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6198bd86_9fcaec42",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:22:51Z",
+      "side": 1,
+      "message": "would it make sense to rename maxTouches to maxTouchSlot to make this clearer? if not (i.e. you\u0027re matching existing terminology in the kernel), mind adding some comments to make this clearer, both here and in the maxTouches definition?",
+      "parentUuid": "1f822495_fce3c0c1",
+      "range": {
+        "startLine": 216,
+        "startChar": 120,
+        "endLine": 216,
+        "endChar": 122
+      },
+      "revId": "60d9b5c5cf177219d6827170ec090e70a04ec56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
