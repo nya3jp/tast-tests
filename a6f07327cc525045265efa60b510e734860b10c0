@@ -99,6 +99,24 @@
       "revId": "a6f07327cc525045265efa60b510e734860b10c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb16c56f_b349cf97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-05-25T00:09:53Z",
+      "side": 1,
+      "message": "Thanks for all the info! Will see about a WiFi group, and the check_powerd_config tool.\n\n\u003e re your coverage question, that\u0027s still being figured out. i think that the plan is to do something better once there\u0027s more flexibility on the CI side, i.e. ideally tests would be run selectively on the devices where they\u0027ll have the most impact.\n\nAny pointers for that? Bugs to follow? I recall something mentioned generically back a ways, in the Grand Plans of Infra, but I don\u0027t recall seeing specifics.\n\nI wouldn\u0027t immediately jump on moving this to a non-mainline group, if it\u0027s possible to augment our dependency selections with something more dynamic. (In fact, ideally we could have it in both mainline and an eventual WiFi group.) I can\u0027t imagine we\u0027ll be the only ones with similar runtime determinations to make, and if we can improve the targeting for this, then I don\u0027t see why a test like this is not valid for mainline.\n\nBut if non-mainline is the going advice for now, I can do that.",
+      "parentUuid": "b1e4e3c7_cff281ed",
+      "revId": "a6f07327cc525045265efa60b510e734860b10c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
