@@ -22,6 +22,30 @@
       "revId": "60d9b5c5cf177219d6827170ec090e70a04ec56a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f822495_fce3c0c1",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-05-25T00:20:01Z",
+      "side": 1,
+      "message": "maxTouches is the max slot that can be used for a multi-touch event.\nIf it is 0, then it means that only one touch is supported.",
+      "parentUuid": "14e4c614_730411f6",
+      "range": {
+        "startLine": 216,
+        "startChar": 120,
+        "endLine": 216,
+        "endChar": 122
+      },
+      "revId": "60d9b5c5cf177219d6827170ec090e70a04ec56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
