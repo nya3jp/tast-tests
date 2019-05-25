@@ -117,6 +117,24 @@
       "revId": "a6f07327cc525045265efa60b510e734860b10c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a414b2d_32d8f79a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:33:37Z",
+      "side": 1,
+      "message": "so many pointers... :-)\n\nhttps://crbug.com/950346\nhttp://doc/1iYbKgW2syEguKfV6bCWFtmpWncpJsFZIGRm7vDICyQY\nhttp://doc/1Ny0pTCyKHQS282Qn6KVWo7uKXz18XBKJ_r9rDiCr4vo\n...\n\nfor Q2, it\u0027s likely that there will be a way to selectively promote or demote tests from the CQ for specific models. shapiroc@ and others in BLD are working on defining a device database (likely Q3 or beyond) that will be usable for dictating where a test should be run, and i think i\u0027ve heard talk that (in addition to hardware features like tablet mode) it will also include software features like whether ARC is present.\n\nbut i hate saying that people should hold off on testing things now to wait for future work. i\u0027m fine with what you have here going into mainline, since there\u0027s already a \"software\" dependency (tablet_mode) that should make it get skipped on most devices where it isn\u0027t applicable. and even when there\u0027s a device database, it seems unlikely that you\u0027d be able to use it to check this powerd pref.",
+      "parentUuid": "fb16c56f_b349cf97",
+      "revId": "a6f07327cc525045265efa60b510e734860b10c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
