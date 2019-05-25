@@ -1,0 +1,495 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f940f512_01c7847c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/crosconfig/crosconfig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:09:48Z",
+      "side": 1,
+      "message": "nit: please make these typed, i.e.\n\n  HasBaseAccelerometer HardwareProperty \u003d \"has-base-accelerometer\"\n\nyou only need to add the type to the first constant in the block, i think.",
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4d945af_9b2cfc14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/crosconfig/crosconfig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:09:48Z",
+      "side": 1,
+      "message": "nit: args",
+      "range": {
+        "startLine": 43,
+        "startChar": 46,
+        "endLine": 43,
+        "endChar": 49
+      },
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1ff49f7_56465d25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/crosconfig/crosconfig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:09:48Z",
+      "side": 1,
+      "message": "nit: mind moving this down to the \u0027case 0\u0027 block?",
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dac585e1_2f14a3cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/crosconfig/crosconfig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:09:48Z",
+      "side": 1,
+      "message": "nit: %q",
+      "range": {
+        "startLine": 66,
+        "startChar": 47,
+        "endLine": 66,
+        "endChar": 50
+      },
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8692da39_6fb6920f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/crosconfig/crosconfig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:09:48Z",
+      "side": 1,
+      "message": "nit: delete this sentence since it\u0027s obvious from the code",
+      "range": {
+        "startLine": 70,
+        "startChar": 32,
+        "endLine": 70,
+        "endChar": 59
+      },
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "315f371b_e9b7ff7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/crosconfig/crosconfig_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:09:48Z",
+      "side": 1,
+      "message": "please add copyright header",
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5f3eb92_590ec295",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/crosconfig/crosconfig_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:09:48Z",
+      "side": 1,
+      "message": "why not just move the switch statement from crosConfig into this method and return ([]byte, error) directly? that\u0027s much simpler and doesn\u0027t reduce the test coverage.",
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67cfdc42_4674021e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:09:48Z",
+      "side": 1,
+      "message": "please add a bit more detail about how this is used, where it comes from (the kernel?), etc.",
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23b2cfc5_e60937b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:09:48Z",
+      "side": 1,
+      "message": "ditto here",
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d1c00c2_9ff40d7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:09:48Z",
+      "side": 1,
+      "message": "please add a type here",
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96cdba52_034f431c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:09:48Z",
+      "side": 1,
+      "message": "and here",
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4def7176_61b68bbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:09:48Z",
+      "side": 1,
+      "message": "nit: maybe just \"GetSensor enumerates sensors that are exposed by Cros EC as iio devices.\"?",
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fb8c50a_424238be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:09:48Z",
+      "side": 1,
+      "message": "nit: to reduce indenting, consider just moving this down to the end of the file as an unexported function",
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca795349_4f39d21f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:09:48Z",
+      "side": 1,
+      "message": "nit: errors.Wrap",
+      "range": {
+        "startLine": 87,
+        "startChar": 18,
+        "endLine": 87,
+        "endChar": 28
+      },
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eedc858_70eeeae1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:09:48Z",
+      "side": 1,
+      "message": "nit: i don\u0027t think you need this cast",
+      "range": {
+        "startLine": 92,
+        "startChar": 58,
+        "endLine": 92,
+        "endChar": 64
+      },
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1c5c754_f4425b63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:09:48Z",
+      "side": 1,
+      "message": "nit: i don\u0027t think you need this cast",
+      "range": {
+        "startLine": 100,
+        "startChar": 58,
+        "endLine": 100,
+        "endChar": 64
+      },
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd523add_dc54b742",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:09:48Z",
+      "side": 1,
+      "message": "i think you can omit this \u0027dir\u0027. ditto for all the other nested literals; also for \u0027file\u0027 when defining the contents of a []file\n\nbut how about using testutil.WriteFiles from the main tast repo instead?",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 4
+      },
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4e0062f_da1bde88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:09:48Z",
+      "side": 1,
+      "message": "please use ioutil.TempDir instead and then defer a call to delete the temp dir\n\n(i\u0027d recommend using testutil.TempDir from the main tast repo, which avoids some boilerplate)",
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c079df00_9fc94744",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:09:48Z",
+      "side": 1,
+      "message": "you don\u0027t need to wrap this function call; \u0027defer os.RemoveAll(...)\u0027 should wokr",
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b574f152_738c78a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:09:48Z",
+      "side": 1,
+      "message": "nit: consider swapping this, so you use \u0027file\u0027 here and \u0027f\u0027 on the next line. using \u0027f\u0027 for an os.File is a pretty common idiom in go",
+      "range": {
+        "startLine": 99,
+        "startChar": 8,
+        "endLine": 99,
+        "endChar": 9
+      },
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbecaffd_25de910c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:09:48Z",
+      "side": 1,
+      "message": "it doesn\u0027t look like you\u0027re checking this error (or the return value of L105)",
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df974f5d_0cd62e38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_presence.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:09:48Z",
+      "side": 1,
+      "message": "nit: ARC",
+      "range": {
+        "startLine": 33,
+        "startChar": 59,
+        "endLine": 33,
+        "endChar": 62
+      },
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82a878a3_008f4d3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_presence.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:09:48Z",
+      "side": 1,
+      "message": "nit: DUT",
+      "range": {
+        "startLine": 40,
+        "startChar": 36,
+        "endLine": 40,
+        "endChar": 39
+      },
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6845bed_a54b16b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_presence.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:09:48Z",
+      "side": 1,
+      "message": "nit: DUT",
+      "range": {
+        "startLine": 75,
+        "startChar": 56,
+        "endLine": 75,
+        "endChar": 59
+      },
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9212a22a_2884536f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_presence.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:09:48Z",
+      "side": 1,
+      "message": "nit: how about using \u0027else if\u0027 to make it clearer that this should be mutually exclusive with the previous test?",
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
