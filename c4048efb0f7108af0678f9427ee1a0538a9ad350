@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3067f77b_2ab8f62e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/example/servo_echo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T04:16:09Z",
+      "side": 1,
+      "message": "dut.DUT feels like a fairly natural way to access SSH auth info. it\u0027s what\u0027s used to establish the test\u0027s SSH connection to the DUT, so it seems reasonable if we want to use the same credentials to SSH somewhere else.\n\nanother option would be to have a second variable containing servo auth info, or even another variable that also provides the proxy info (if applicable). that would be easy to supply when tast is run from tast.py, but i was concerned that it could make things harder if they run \"tast run\" manually against a DUT in the lab. for that, it seems nice to let them just specify -var\u003dservo\u003dhost:port. (ideally, \"tast run\" could eventually look up the servod spec automatically, but i think that that\u0027s currently not possible: http://g/chromeos-infra-discuss/ZNgMN-iTvAA)",
+      "range": {
+        "startLine": 32,
+        "startChar": 57,
+        "endLine": 32,
+        "endChar": 84
+      },
+      "revId": "c4048efb0f7108af0678f9427ee1a0538a9ad350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b5e8147_32e6c3e4",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T04:16:09Z",
+      "side": 1,
+      "message": "another option would be to just make the Servo type support creating a host.SSH and host.Forwarder. it didn\u0027t seem to really belong there to me, and we\u0027d need another constructor to take additional info (e.g. ssh keys).",
+      "revId": "c4048efb0f7108af0678f9427ee1a0538a9ad350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
