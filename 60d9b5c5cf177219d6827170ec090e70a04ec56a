@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14e4c614_730411f6",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-25T00:17:55Z",
+      "side": 1,
+      "message": "whoops, one more question: what\u0027s the reason for the +1 here?",
+      "range": {
+        "startLine": 216,
+        "startChar": 120,
+        "endLine": 216,
+        "endChar": 122
+      },
+      "revId": "60d9b5c5cf177219d6827170ec090e70a04ec56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
