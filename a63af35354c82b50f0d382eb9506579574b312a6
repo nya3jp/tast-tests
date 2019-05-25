@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "58296762_12c5b886",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-05-25T00:11:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5d76aef_6dd5ce58",
+      "range": {
+        "startLine": 127,
+        "startChar": 21,
+        "endLine": 127,
+        "endChar": 22
+      },
+      "revId": "a63af35354c82b50f0d382eb9506579574b312a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9cf59228_8f0fc2a9",
         "filename": "src/chromiumos/tast/local/input/touch.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d64fb6b2_be38d60c",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-05-25T00:11:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cf59228_8f0fc2a9",
+      "range": {
+        "startLine": 216,
+        "startChar": 29,
+        "endLine": 216,
+        "endChar": 50
+      },
+      "revId": "a63af35354c82b50f0d382eb9506579574b312a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b269ed6a_214547ed",
         "filename": "src/chromiumos/tast/local/input/touch.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "a63af35354c82b50f0d382eb9506579574b312a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fd47583_51186505",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-05-25T00:11:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b269ed6a_214547ed",
+      "range": {
+        "startLine": 298,
+        "startChar": 13,
+        "endLine": 298,
+        "endChar": 16
+      },
+      "revId": "a63af35354c82b50f0d382eb9506579574b312a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
