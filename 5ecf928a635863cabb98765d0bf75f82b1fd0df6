@@ -25,6 +25,52 @@
     },
     {
       "key": {
+        "uuid": "5cefcc70_46a14730",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-05-26T23:49:54Z",
+      "side": 1,
+      "message": "Maybe use an errgroup instead?",
+      "range": {
+        "startLine": 129,
+        "startChar": 12,
+        "endLine": 129,
+        "endChar": 21
+      },
+      "revId": "5ecf928a635863cabb98765d0bf75f82b1fd0df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1c1a482_3ffd778b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-05-26T23:49:54Z",
+      "side": 1,
+      "message": "do you need a new context for each routine or can you use one for all ?",
+      "range": {
+        "startLine": 136,
+        "startChar": 3,
+        "endLine": 136,
+        "endChar": 11
+      },
+      "revId": "5ecf928a635863cabb98765d0bf75f82b1fd0df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab174fe9_99d33d87",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
         "patchSetId": 5
@@ -36,6 +82,24 @@
       "writtenOn": "2019-05-22T22:38:46Z",
       "side": 1,
       "message": "i think that this could result in your test hanging instead of respecting its timeout. if i\u0027m reading correctly, this runs in a goroutine (launched on L135), and the main goroutine blocks until all of these goroutines exit (L145). the sc.Scan call on this line won\u0027t honor the context\u0027s deadline, so the goroutine can block indefinitely if tcpdump is hanging.\n\ni think that you can avoid this by reworking it to be more like the approach used in http://go/tast-codelab-2. if you scan in a separate goroutine and then pass back the result in a channel, then you can select between that channel and the context, and then kill the tcpdump process (which should also interrupt the scan) if the deadline is reached.",
+      "revId": "5ecf928a635863cabb98765d0bf75f82b1fd0df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab993bd1_d9937e55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-05-26T23:49:54Z",
+      "side": 1,
+      "message": "I think if you just put the ping \u0026 tcpdump chunk of this into it\u0027s own go routine and block on the ctx then you should be fine. So in the normal case, you find your string and exit, that kills the context and releases the go routine; or the ctx times out and the go routine exits, which releases the Scan call.\n\nDan if you really prefer to have the code match the codelab that\u0027s fine. It just didn\u0027t seem entirely necessary for this.",
+      "parentUuid": "ab174fe9_99d33d87",
       "revId": "5ecf928a635863cabb98765d0bf75f82b1fd0df6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
