@@ -299,6 +299,12 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts TestOptio
 		cpuEncodeFrames = 10000
 	)
 
+	ctx, cleanupBenchmark, err := cpu.SetUpBenchmark(ctx)
+	if err != nil {
+		s.Fatal("Failed to set up benchmark mode: ", err)
+	}
+	defer cleanupBenchmark()
+
 	schemaName := strings.TrimSuffix(opts.Params.Name, ".vp9.webm")
 	if opts.Profile == videotype.H264Prof {
 		schemaName += "_h264"

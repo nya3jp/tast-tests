@@ -73,11 +73,10 @@ func MeasureProcessCPU(ctx context.Context, runCmdAsync StartProcFunc, cpuLogPat
 	return nil
 }
 
-// SetUpBenchmark performs setup needed for running benchmarks. It enables
-// verbose logging, disables CPU frequency scaling and thermal throttling, and
-// waits for the CPU to become idle. The returned shortCtx should be used to
-// perform testing, to leave time for cleanup operations. A deferred call to the
-// returned undo function should be scheduled by the caller if err is non-nil.
+// SetUpBenchmark performs setup needed for running benchmarks. It disables CPU frequency scaling
+// and thermal throttling, and waits for the CPU to become idle. The returned shortCtx should be
+// used to perform testing, to leave time for cleanup operations. A deferred call to the returned
+// undo function should be scheduled by the caller if err is non-nil.
 func SetUpBenchmark(ctx context.Context) (shortCtx context.Context, undo func(), err error) {
 	const (
 		waitIdleCPUTimeout  = 30 * time.Second // time to wait for CPU to be idle.
