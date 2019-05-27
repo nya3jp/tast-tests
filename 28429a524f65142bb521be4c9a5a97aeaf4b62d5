@@ -70,6 +70,30 @@
       "revId": "28429a524f65142bb521be4c9a5a97aeaf4b62d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29984c87_39d8f7e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/network_listeners_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-05-27T05:12:01Z",
+      "side": 1,
+      "message": "Neither really.\n\nI just noticed that sshd is doing similar, but I don\u0027t know if this is because it escaped security, or if it was considered \"fine\" since by default ports on physical networks are  closed I believe.\n\nIf we fix one, we should fix the other. Ideally, I would lean towards making both listen on localhost.\n\nOne caveat though: I don\u0027t know of any use case that requires sshd listening on any, and I assume that there was none, but there could be some process or some test that needs it and opens 2222 on a physical interface while doing something.\n\nFor the case of arc-networkd\u0027s adb forwarder on 5550, in our current design there is no need to listen on something else localhost for sure.",
+      "parentUuid": "a56d7141_b0b5a6cf",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 6
+      },
+      "revId": "28429a524f65142bb521be4c9a5a97aeaf4b62d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
