@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"net/http"
 	"net/http/httptest"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -87,21 +88,68 @@ func prepareVideo(ctx context.Context, conn *chrome.Conn, videoFile string) erro
 	return nil
 }
 
+// durationLogger records each event's duration and outputs as string when needed.
+// Usage:
+//   var l durationLogger
+//   l.start('a')
+//   // ... do something ...
+//   // It implicitly calls end() if you start a new event.
+//   l.start('b')
+//   // ... do something ...
+//   // You can explicitly end() the previous event if the next event of interest is not happened yet.
+//   l.end()
+//   // ... do something else (not counting) ...
+//   l.start('c')
+//   // Output log of each recorded event duration.
+//   s.Log(l.string())
+type durationLogger struct {
+	logger    strings.Builder
+	name      string
+	startTime time.Time
+}
+
+// start records an event's start time.
+// If a previous event is recorded, it ends previous event first.
+// Note that if name is not given, it won't record the event.
+func (l *durationLogger) start(name string) {
+	l.end()
+	l.name = name
+	l.startTime = time.Now()
+}
+
+// end calcuates current event's duration and stores it if an event was start()'ed before.
+func (l *durationLogger) end() {
+	if len(l.name) > 0 {
+		l.logger.WriteString(fmt.Sprintf("[%s %s]", l.name, time.Now().Sub(l.startTime)))
+		l.name = ""
+	}
+}
+
+// string outputs each event's duration as a "[event_name duration]..." string.
+func (l *durationLogger) string() string {
+	l.end()
+	return l.logger.String()
+}
+
 // playVideo invokes prepareVideo() then plays a normal video in video.html.
 // videoFile is the file name which is played there.
-func playVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
+func playVideo(ctx context.Context, conn *chrome.Conn, videoFile string, logger *durationLogger) error {
+	logger.start("prepareVideo")
 	if err := prepareVideo(ctx, conn, videoFile); err != nil {
 		return err
 	}
 
+	logger.start("play")
 	if err := conn.Exec(ctx, "play()"); err != nil {
 		return errors.Wrap(err, "failed to play a video")
 	}
 
+	logger.start("pollCurrentTime")
 	if err := pollCurrentTime(ctx, conn, 0.9, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return errors.Wrap(err, "timed out waiting for playback")
 	}
 
+	logger.start("pause")
 	if err := conn.Exec(ctx, "pause()"); err != nil {
 		return errors.Wrap(err, "failed to pause")
 	}
@@ -111,16 +159,19 @@ func playVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
 
 // playMSEVideo plays an MSE video stream in shaka.html by using shaka player.
 // mpdFile is the name of MPD file for the video stream.
-func playMSEVideo(ctx context.Context, conn *chrome.Conn, mpdFile string) error {
+func playMSEVideo(ctx context.Context, conn *chrome.Conn, mpdFile string, logger *durationLogger) error {
+	logger.start("documentComplete")
 	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
 		return errors.Wrap(err, "timed out waiting for page loaded")
 	}
 
+	logger.start("initPlayer")
 	if err := conn.Exec(ctx, fmt.Sprintf("initPlayer(%q)", mpdFile)); err != nil {
 		return errors.Wrap(err, "failed to initialize shaka player")
 
 	}
 
+	logger.start("waitForTestDone")
 	rctx, rcancel := ctxutil.Shorten(ctx, 3*time.Second)
 	defer rcancel()
 	if err := conn.WaitForExpr(rctx, "isTestDone"); err != nil {
@@ -175,6 +226,9 @@ func seekVideoRandomly(ctx context.Context, conn *chrome.Conn, videoFile string)
 // was used properly.
 func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	filename string, videotype VideoType, mode HistogramMode) {
+	var logger durationLogger
+	logger.start("preNewConn")
+
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -213,6 +267,8 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	case MSEVideo:
 		htmlName = "shaka.html"
 	}
+
+	logger.start("NewConn")
 	conn, err := cr.NewConn(ctx, server.URL+"/"+htmlName)
 	if err != nil {
 		s.Fatalf("Failed to open %v: %v", htmlName, err)
@@ -223,11 +279,12 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	var playErr error
 	switch videotype {
 	case NormalVideo:
-		playErr = playVideo(ctx, conn, filename)
+		playErr = playVideo(ctx, conn, filename, &logger)
 	case MSEVideo:
-		playErr = playMSEVideo(ctx, conn, filename)
+		playErr = playMSEVideo(ctx, conn, filename, &logger)
 	}
 	if playErr != nil {
+		s.Logf("Test steps duration: %s", logger.string())
 		s.Fatalf("Failed to play %v: %v", filename, playErr)
 	}
 
