@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcce3aa9_afe8dc9d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/example/servo_echo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-27T03:43:14Z",
+      "side": 1,
+      "message": "Off topic: I think we should change the API to pass the DUT object via testing.State, not context.Context, for many obvious reasons.",
+      "range": {
+        "startLine": 27,
+        "startChar": 12,
+        "endLine": 27,
+        "endChar": 32
+      },
+      "revId": "7c3b4717788bd01ede4a49553c73b26255b67f4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ccb2664_6c171625",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-27T03:43:14Z",
+      "side": 1,
+      "message": "To make sure I understand this correctly: I think user@ and :port would not be allowed in `hostname`, so this will always use root@ and :22, right?",
+      "range": {
+        "startLine": 58,
+        "startChar": 12,
+        "endLine": 58,
+        "endChar": 31
+      },
+      "revId": "7c3b4717788bd01ede4a49553c73b26255b67f4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

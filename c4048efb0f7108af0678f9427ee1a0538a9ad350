@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7d553e78_5a6fdae5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/example/servo_echo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-27T03:43:14Z",
+      "side": 1,
+      "message": "I want remote tests in VM tests actually. For example, cheets_ClobberStateful test I\u0027m working on now would be a good candidate.\n\nIn theory VM reboot should be more stable than hardware reboot... Do we have a tracking bug for VM reboot flakiness?",
+      "parentUuid": "2b4ba9b7_51db81a1",
+      "range": {
+        "startLine": 20,
+        "startChar": 22,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "c4048efb0f7108af0678f9427ee1a0538a9ad350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3067f77b_2ab8f62e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/example/servo_echo.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "42ef0850_bd158656",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/example/servo_echo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-27T03:43:14Z",
+      "side": 1,
+      "message": "Ack, this should be a good starting point.",
+      "parentUuid": "3067f77b_2ab8f62e",
+      "range": {
+        "startLine": 32,
+        "startChar": 57,
+        "endLine": 32,
+        "endChar": 84
+      },
+      "revId": "c4048efb0f7108af0678f9427ee1a0538a9ad350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b5e8147_32e6c3e4",
         "filename": "src/chromiumos/tast/remote/servo/proxy.go",
         "patchSetId": 2
@@ -62,6 +110,24 @@
       "revId": "c4048efb0f7108af0678f9427ee1a0538a9ad350",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03d4a1c9_be3fd474",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-27T03:43:14Z",
+      "side": 1,
+      "message": "Isolating SSH proxy from Servo object sounds good to me.",
+      "parentUuid": "0b5e8147_32e6c3e4",
+      "revId": "c4048efb0f7108af0678f9427ee1a0538a9ad350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
