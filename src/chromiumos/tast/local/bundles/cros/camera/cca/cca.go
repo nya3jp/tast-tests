@@ -16,16 +16,23 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const (
+	// FacingBack is the constant string from JavaScript VideoFacingModeEnum
+	FacingBack = "environment"
+	// FacingFront is the constant string from JavaScript VideoFacingModeEnum
+	FacingFront = "user"
+)
+
 // App represents a CCA (Chrome Camera App) instance.
 type App struct {
-	conn       *chrome.Conn
-	cr         *chrome.Chrome
-	scriptPath string
+	conn        *chrome.Conn
+	cr          *chrome.Chrome
+	scriptPaths []string
 }
 
 // New launches a CCA instance and evaluates the helper script within it. The
 // scriptPath should be the data path to the helper script cca_ui.js.
-func New(ctx context.Context, cr *chrome.Chrome, scriptPath string) (*App, error) {
+func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, error) {
 	const ccaID = "hfhhnacclhffhdffklopdkcgdhifgngh"
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -65,16 +72,18 @@ func New(ctx context.Context, cr *chrome.Chrome, scriptPath string) (*App, error
 		return nil, err
 	}
 
-	script, err := ioutil.ReadFile(scriptPath)
-	if err != nil {
-		return nil, err
-	}
-	if err := conn.Eval(ctx, string(script), nil); err != nil {
-		return nil, err
+	for _, scriptPath := range scriptPaths {
+		script, err := ioutil.ReadFile(scriptPath)
+		if err != nil {
+			return nil, err
+		}
+		if err := conn.Eval(ctx, string(script), nil); err != nil {
+			return nil, err
+		}
 	}
 
 	testing.ContextLog(ctx, "CCA launched")
-	return &App{conn, cr, scriptPath}, nil
+	return &App{conn, cr, scriptPaths}, nil
 }
 
 // Close closes the App and the associated connection.
@@ -93,7 +102,7 @@ func (a *App) Restart(ctx context.Context) error {
 	if err := a.Close(ctx); err != nil {
 		return err
 	}
-	newApp, err := New(ctx, a.cr, a.scriptPath)
+	newApp, err := New(ctx, a.cr, a.scriptPaths)
 	if err != nil {
 		return err
 	}
@@ -155,4 +164,53 @@ func (a *App) MaximizeWindow(ctx context.Context) error {
 // FullscreenWindow fullscreens the window.
 func (a *App) FullscreenWindow(ctx context.Context) error {
 	return a.conn.EvalPromise(ctx, "Tast.fullscreenWindow()", nil)
+}
+
+// GetNumOfCameras returns number of camera devices.
+func (a *App) GetNumOfCameras(ctx context.Context) (int, error) {
+	numCameras := 0
+	err := a.conn.EvalPromise(ctx, "CCAUIMultiCamera.getNumOfCameras()", &numCameras)
+	return numCameras, err
+}
+
+// CheckFacing returns an error if the active camera facing is not expected.
+func (a *App) CheckFacing(ctx context.Context, expectedFacing string) error {
+	checkFacing := fmt.Sprintf("CCAUIMultiCamera.checkFacing(%q)", expectedFacing)
+	return a.conn.EvalPromise(ctx, checkFacing, nil)
+}
+
+// CheckSwitchDeviceButtonExist returns an error if whether switch button exists is not expected.
+func (a *App) CheckSwitchDeviceButtonExist(ctx context.Context, expected bool) error {
+	actual := false
+	err := a.conn.Eval(ctx, "CCAUIMultiCamera.switchCameraButtonExist()", &actual)
+	if err != nil {
+		return err
+	} else if actual != expected {
+		return errors.Errorf("Expected switch button exist: %v; got %v", expected, actual)
+	}
+	return nil
+}
+
+// ToggleGridOption toggles the grid option and returns whether it's enabled after toggling.
+func (a *App) ToggleGridOption(ctx context.Context) (bool, error) {
+	grid := false
+	err := a.conn.EvalPromise(ctx, "CCAUIMultiCamera.toggleGrid()", &grid)
+	return grid, err
+}
+
+// SwitchCamera switches to next camera device.
+func (a *App) SwitchCamera(ctx context.Context) error {
+	return a.conn.EvalPromise(ctx, "CCAUIMultiCamera.switchCamera()", nil)
+}
+
+// CheckGridOption checks whether grid option enable state is as expected.
+func (a *App) CheckGridOption(ctx context.Context, expected bool) error {
+	actual := false
+	err := a.conn.Eval(ctx, "cca.state.get('grid')", &actual)
+	if err != nil {
+		return err
+	} else if actual != expected {
+		return errors.Errorf("Expected grid option enabled: %v; got %v", expected, actual)
+	}
+	return nil
 }
