@@ -103,6 +103,24 @@
       "revId": "5ecf928a635863cabb98765d0bf75f82b1fd0df6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b7325d1_5501cf36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-27T02:20:04Z",
+      "side": 1,
+      "message": "it\u0027s possible that this will work already, if the context\u0027s deadline will be honored by killing the ping and tcpdump commands even if the goroutine that started the processes is blocked. i\u0027ll defer to nya@ for the rest of this review since i think he\u0027s more familiar with that code.",
+      "parentUuid": "ab993bd1_d9937e55",
+      "revId": "5ecf928a635863cabb98765d0bf75f82b1fd0df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
