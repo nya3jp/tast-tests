@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2b4ba9b7_51db81a1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/example/servo_echo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-27T02:26:37Z",
+      "side": 1,
+      "message": "some mechanism is needed to skip tests that require servo on VMs, since they\u0027ll never work there. i wonder if it would make sense to just never run remote tests from the TastVMTest stage that\u0027s used on VM builders. we\u0027re already skipping power.Reboot, since rebooting is flaky on VMs. with no servo support and unreliable rebooting, i don\u0027t see much use for remote tests there...",
+      "range": {
+        "startLine": 20,
+        "startChar": 22,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "c4048efb0f7108af0678f9427ee1a0538a9ad350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3067f77b_2ab8f62e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/example/servo_echo.go",
         "patchSetId": 2
