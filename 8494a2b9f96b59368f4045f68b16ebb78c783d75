@@ -278,6 +278,24 @@
     },
     {
       "key": {
+        "uuid": "7482faab_0d9856e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-27T04:03:00Z",
+      "side": 1,
+      "message": "Sounds great! Updated to use regex. Done.",
+      "parentUuid": "517491e9_53ee0f52",
+      "revId": "8494a2b9f96b59368f4045f68b16ebb78c783d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37276ecd_7f1a4acc",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
         "patchSetId": 4

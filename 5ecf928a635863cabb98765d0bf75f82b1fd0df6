@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "84e53158_98a5c26d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-27T04:03:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f18f99e_f6798c1d",
+      "range": {
+        "startLine": 96,
+        "startChar": 25,
+        "endLine": 96,
+        "endChar": 32
+      },
+      "revId": "5ecf928a635863cabb98765d0bf75f82b1fd0df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5cefcc70_46a14730",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9c2a543a_9c444700",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-27T04:03:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cefcc70_46a14730",
+      "range": {
+        "startLine": 129,
+        "startChar": 12,
+        "endLine": 129,
+        "endChar": 21
+      },
+      "revId": "5ecf928a635863cabb98765d0bf75f82b1fd0df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1c1a482_3ffd778b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "5ecf928a635863cabb98765d0bf75f82b1fd0df6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "291d52a8_2b6adfe0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-27T04:03:00Z",
+      "side": 1,
+      "message": "Changed it to only uses one.",
+      "parentUuid": "b1c1a482_3ffd778b",
+      "range": {
+        "startLine": 136,
+        "startChar": 3,
+        "endLine": 136,
+        "endChar": 11
+      },
+      "revId": "5ecf928a635863cabb98765d0bf75f82b1fd0df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +190,24 @@
       "side": 1,
       "message": "it\u0027s possible that this will work already, if the context\u0027s deadline will be honored by killing the ping and tcpdump commands even if the goroutine that started the processes is blocked. i\u0027ll defer to nya@ for the rest of this review since i think he\u0027s more familiar with that code.",
       "parentUuid": "ab993bd1_d9937e55",
+      "revId": "5ecf928a635863cabb98765d0bf75f82b1fd0df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95460cb1_e794b0a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-27T04:03:00Z",
+      "side": 1,
+      "message": "Added a goroutine that block and kill the tcpdump process. I put it in the same function. I think separating the function might add complexity of returning cmd or stdout, etc.\n\nThanks for the detailed review for this one. Definitely learned some stuffs about go.",
+      "parentUuid": "8b7325d1_5501cf36",
       "revId": "5ecf928a635863cabb98765d0bf75f82b1fd0df6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
