@@ -70,6 +70,30 @@
       "revId": "37e1748d423e72d00c8583a0a8841d8fe2dc7e41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9256068d_91bf3e47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/bali_640x360_P420.yuv.external",
+        "patchSetId": 6
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-27T05:24:43Z",
+      "side": 1,
+      "message": "I see. sgtm",
+      "parentUuid": "b693f849_a784e6ac",
+      "range": {
+        "startLine": 2,
+        "startChar": 55,
+        "endLine": 2,
+        "endChar": 60
+      },
+      "revId": "37e1748d423e72d00c8583a0a8841d8fe2dc7e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
