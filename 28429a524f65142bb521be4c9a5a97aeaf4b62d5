@@ -118,6 +118,30 @@
       "revId": "28429a524f65142bb521be4c9a5a97aeaf4b62d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7328b741_11d06a8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/network_listeners_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-05-27T05:59:53Z",
+      "side": 1,
+      "message": "Yes for the general case, but this still looks a bit brittle. For instance somebody might think that just killing sslh or removing the :22 -\u003e :2222 config in sslh would prevent external ssh connections into sshd, but that\u0027s not truly the case if 2222 is open.\n\nI think for now this is acceptable since this is the existing situation, but we might want to be more specific with where sshd listens.\n\nOne reason I though of for explaining this is if sshd has no configurability and just hardcode INADDR_ANY. We have that issue with some third party vpn daemons.",
+      "parentUuid": "bd0e692f_93295dc4",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 6
+      },
+      "revId": "28429a524f65142bb521be4c9a5a97aeaf4b62d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
