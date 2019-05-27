@@ -94,6 +94,30 @@
       "revId": "28429a524f65142bb521be4c9a5a97aeaf4b62d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd0e692f_93295dc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/network_listeners_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-27T05:52:46Z",
+      "side": 1,
+      "message": "Thanks for clarification, and sorry I didn\u0027t get what you meant.\n\nI don\u0027t have opinion about sshd listening all interfaces. It\u0027s open to public anyway since sslh proxies :22 to :2222.",
+      "parentUuid": "29984c87_39d8f7e1",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 6
+      },
+      "revId": "28429a524f65142bb521be4c9a5a97aeaf4b62d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
