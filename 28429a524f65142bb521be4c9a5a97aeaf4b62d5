@@ -46,6 +46,30 @@
       "revId": "28429a524f65142bb521be4c9a5a97aeaf4b62d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a56d7141_b0b5a6cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/network_listeners_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-27T05:05:12Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t think you answered to my question.\n\nDo you mean we can do insecure thing because sshd is always doing similar? I\u0027m not sure such argument can convince security reviewers.\n\nOr do you mean we can listen on arbitrary ports because there\u0027s iptables anyway? Then I\u0027m not sure what value this test adds at all.\n\nAnyway, I\u0027d like to have security expert\u0027s opinion.",
+      "parentUuid": "b57d5a13_ddbb5643",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 6
+      },
+      "revId": "28429a524f65142bb521be4c9a5a97aeaf4b62d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
