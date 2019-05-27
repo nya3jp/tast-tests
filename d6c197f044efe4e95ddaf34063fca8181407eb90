@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c3278ed_f6d54410",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_vp8.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-27T15:02:21Z",
+      "side": 1,
+      "message": "i\u0027ll defer to others, but while keeping an fps const seems useful (if you don\u0027t add a /* fps */ comment in the function call), this codec const feels unnecessary. i\u0027d just put videotype.VP8 in the function call",
+      "revId": "d6c197f044efe4e95ddaf34063fca8181407eb90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8383000_4b481174",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/media_recorder_perf_vp9.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-27T15:02:21Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "d6c197f044efe4e95ddaf34063fca8181407eb90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
