@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "91506e59_9acb33b3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/example/servo_echo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-27T05:10:54Z",
+      "side": 1,
+      "message": "the issue is described at https://crbug.com/909955. it\u0027s very strange. :-(",
+      "parentUuid": "7d553e78_5a6fdae5",
+      "range": {
+        "startLine": 20,
+        "startChar": 22,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "c4048efb0f7108af0678f9427ee1a0538a9ad350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3067f77b_2ab8f62e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/example/servo_echo.go",
         "patchSetId": 2

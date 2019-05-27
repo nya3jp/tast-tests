@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "849115d4_82062ad1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/example/servo_echo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-27T05:10:54Z",
+      "side": 1,
+      "message": "no objections here! i think that testing.ContextLog* feels okay to me, but i regret most other uses of attaching data to contexts. :-)",
+      "parentUuid": "dcce3aa9_afe8dc9d",
+      "range": {
+        "startLine": 27,
+        "startChar": 12,
+        "endLine": 27,
+        "endChar": 32
+      },
+      "revId": "7c3b4717788bd01ede4a49553c73b26255b67f4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ccb2664_6c171625",
         "filename": "src/chromiumos/tast/remote/servo/proxy.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "7c3b4717788bd01ede4a49553c73b26255b67f4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a2cff30_75062816",
+        "filename": "src/chromiumos/tast/remote/servo/proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-27T05:10:54Z",
+      "side": 1,
+      "message": "yes, that\u0027s correct. iirc, i just called this to avoid hardcoding the host package\u0027s default username and port here. i\u0027ll add a comment pointing this out.",
+      "parentUuid": "9ccb2664_6c171625",
+      "range": {
+        "startLine": 58,
+        "startChar": 12,
+        "endLine": 58,
+        "endChar": 31
+      },
+      "revId": "7c3b4717788bd01ede4a49553c73b26255b67f4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
