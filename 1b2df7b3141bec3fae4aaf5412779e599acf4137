@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "79f31b25_b33b771c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/crosconfig/crosconfig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-28T16:32:44Z",
+      "side": 1,
+      "message": "Can you put a comment pointer here that says if you add a new value here, then you should be updating sensor_precense.SensorPrecense function as well.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 5
+      },
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f940f512_01c7847c",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/crosconfig/crosconfig.go",
         "patchSetId": 4
