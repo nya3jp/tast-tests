@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10a822fa_67517201",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-28T12:40:18Z",
+      "side": 1,
+      "message": "nit: It seems users don\u0027t need to call l.end(). So, I wonder if this comment shouldn\u0027t explain its usage.",
+      "range": {
+        "startLine": 96,
+        "startChar": 5,
+        "endLine": 96,
+        "endChar": 12
+      },
+      "revId": "fe09fb442a32ba8229c15a9e32ce277a4d97be5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce7e12ed_34f1a046",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-28T12:40:18Z",
+      "side": 1,
+      "message": "huge nit: it looks strange to assign a string to a variable named \"duration\". Maybe, s.Log(l.string())?",
+      "range": {
+        "startLine": 101,
+        "startChar": 5,
+        "endLine": 101,
+        "endChar": 27
+      },
+      "revId": "fe09fb442a32ba8229c15a9e32ce277a4d97be5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f267400b_c1a1a401",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-28T12:40:18Z",
+      "side": 1,
+      "message": "I wonder if we don\u0027t need to have `started` because we can check if name is nil or not.\n\nThen, we don\u0027t need to have end() and can write this in start() and string().\n\nif l.name !\u003d nil {\n\tl.logger.WriteString(fmt.Sprintf(\"[%s %s]\", l.name, time.Now().Sub(l.startTime)))\n}",
+      "revId": "fe09fb442a32ba8229c15a9e32ce277a4d97be5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7756e150_ec4df67f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-28T12:40:18Z",
+      "side": 1,
+      "message": "nit: this might be misleading because start() doesn\u0027t \"start\" any events actually. It just store the current time and event time.",
+      "range": {
+        "startLine": 109,
+        "startChar": 9,
+        "endLine": 109,
+        "endChar": 25
+      },
+      "revId": "fe09fb442a32ba8229c15a9e32ce277a4d97be5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
