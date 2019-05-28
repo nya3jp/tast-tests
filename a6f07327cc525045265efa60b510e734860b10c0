@@ -153,6 +153,24 @@
       "revId": "a6f07327cc525045265efa60b510e734860b10c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abb07a6a_cd9de73c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-05-28T22:31:01Z",
+      "side": 1,
+      "message": "\u003e \u003e re chromeos-config, powerd definitely supports it.\n\u003e \n\u003e Are you sure it does for this property? I only see \u0027touchpad-wakeup\u0027:\n\nHmm, so looking closer, it looks like there\u0027s a big WARNING text under the \u0027power\u0027 settings, about how it allows arbitrary unvalidated preferences. So I guess there\u0027s technically support.",
+      "parentUuid": "a1678176_b71d8980",
+      "revId": "a6f07327cc525045265efa60b510e734860b10c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
