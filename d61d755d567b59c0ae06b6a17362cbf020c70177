@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e150e3d2_453501bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-05-28T01:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a4a0ca2_1e32e7de",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 22
+      },
+      "revId": "d61d755d567b59c0ae06b6a17362cbf020c70177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6777ad5_d6613999",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 20
@@ -45,6 +69,30 @@
       "revId": "d61d755d567b59c0ae06b6a17362cbf020c70177",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1143c0b2_4742ee59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-05-28T01:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6777ad5_d6613999",
+      "range": {
+        "startLine": 62,
+        "startChar": 21,
+        "endLine": 62,
+        "endChar": 57
+      },
+      "revId": "d61d755d567b59c0ae06b6a17362cbf020c70177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3435fe70_22beec5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-05-28T01:30:32Z",
+      "side": 1,
+      "message": "thanks!",
+      "parentUuid": "14640a85_556492e6",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 36
+      },
+      "revId": "d61d755d567b59c0ae06b6a17362cbf020c70177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9ed8e17_f6bcfb56",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 20
@@ -91,6 +163,30 @@
       "revId": "d61d755d567b59c0ae06b6a17362cbf020c70177",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b0744c7_c496d5e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-05-28T01:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9ed8e17_f6bcfb56",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 18
+      },
+      "revId": "d61d755d567b59c0ae06b6a17362cbf020c70177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "91124eed_50fb0fb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-05-28T01:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fdce2b2_9c20327c",
+      "range": {
+        "startLine": 98,
+        "startChar": 53,
+        "endLine": 98,
+        "endChar": 62
+      },
+      "revId": "d61d755d567b59c0ae06b6a17362cbf020c70177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b1372cd_0998f888",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 20
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "987a7a4b_12ed9388",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-05-28T01:30:32Z",
+      "side": 1,
+      "message": "Done below",
+      "parentUuid": "1b1372cd_0998f888",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 90
+      },
+      "revId": "d61d755d567b59c0ae06b6a17362cbf020c70177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b62f2b15_a3676c56",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 20
@@ -151,6 +295,30 @@
       "writtenOn": "2019-05-27T05:42:12Z",
       "side": 1,
       "message": "We need to modify + signs to reduce nest levels.",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 2
+      },
+      "revId": "d61d755d567b59c0ae06b6a17362cbf020c70177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3347292a_cca59957",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-05-28T01:30:32Z",
+      "side": 1,
+      "message": "done below.\ni\u0027ve left this here, as we are splitting by \"application\u003d...\" (specified by treeHeader), if the length is less than 2, it means that the subtree component won\u0027t exist (and test should fail).",
+      "parentUuid": "b62f2b15_a3676c56",
       "range": {
         "startLine": 104,
         "startChar": 1,
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "1ec40d5e_c94a5d55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-05-28T01:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a197b84_36c4c5b1",
+      "range": {
+        "startLine": 119,
+        "startChar": 10,
+        "endLine": 119,
+        "endChar": 13
+      },
+      "revId": "d61d755d567b59c0ae06b6a17362cbf020c70177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a00b3c8a_e1ae63b0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 20
@@ -206,6 +398,30 @@
       "revId": "d61d755d567b59c0ae06b6a17362cbf020c70177",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f54b29b_2f29ddb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-05-28T01:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a00b3c8a_e1ae63b0",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 3
+      },
+      "revId": "d61d755d567b59c0ae06b6a17362cbf020c70177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
