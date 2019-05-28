@@ -1,0 +1,387 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f35325c_0f09ca5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T09:31:30Z",
+      "side": 1,
+      "message": "path/filepath is a part of standard library, so could you move to the above block?",
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc8b1137_4d2f1d80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T09:31:30Z",
+      "side": 1,
+      "message": "non-project specific imports come before project specific one. So could you swap this and chromiumos/ block?",
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a08cec29_cd187482",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T09:31:30Z",
+      "side": 1,
+      "message": "nit: s.Fatal(\"Failed to get root device: \", err) (non \u0027f\u0027-suffixed one)",
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "181c5b99_1e890e5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T09:31:30Z",
+      "side": 1,
+      "message": "nit: parts (plural form) since it\u0027s an array (expected to contain multiple partitions).",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 5
+      },
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ccff153_3f6279bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T09:31:30Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9326920a_212a50e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T09:31:30Z",
+      "side": 1,
+      "message": "huge nit: could you add a whitespace after \u0027:\u0027 ? (Sorry I overlooked in the last iteration).",
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e0bb258_d25a0134",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T09:31:30Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39b2c6e6_7141a400",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T09:31:30Z",
+      "side": 1,
+      "message": "filepath.Join() joins the components by the directory separator, so I think (\"/proc\", id, \"mounts\") is the needed args?",
+      "range": {
+        "startLine": 54,
+        "startChar": 31,
+        "endLine": 54,
+        "endChar": 32
+      },
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92cf34ed_db97d325",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T09:31:30Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67edf0ce_0952acba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T09:31:30Z",
+      "side": 1,
+      "message": "You can simplify the logging.\n\nout, err :\u003d testexec.CommandContext(ctx, \"/usr/bin/rootdev\", \"-s\", \"-d\").Output(testing.DumpLogOnError)\nif err !\u003d nil {\n  return \"\", err\n}\n\nDitto for below.",
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e4c1cb8_4cdde5e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T09:31:30Z",
+      "side": 1,
+      "message": "FYI: errors.Wrapf() is a way to wrap an existing error instance, so that stack trace is properly printed.",
+      "range": {
+        "startLine": 74,
+        "startChar": 13,
+        "endLine": 74,
+        "endChar": 91
+      },
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53a873ab_b7a55b3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T09:31:30Z",
+      "side": 1,
+      "message": "If this means to trim the trailing \"\\n\", could you use TrimSuffix() here, too?",
+      "range": {
+        "startLine": 76,
+        "startChar": 8,
+        "endLine": 76,
+        "endChar": 50
+      },
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af7ca3c7_b8411ac9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T09:31:30Z",
+      "side": 1,
+      "message": "Could you use nil for array default value? Ditto for below.",
+      "range": {
+        "startLine": 83,
+        "startChar": 9,
+        "endLine": 83,
+        "endChar": 19
+      },
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "296977a5_0d25c809",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T09:31:30Z",
+      "side": 1,
+      "message": "nit/style: how about using \"nil\" literal here instead to be more explicit?",
+      "range": {
+        "startLine": 85,
+        "startChar": 68,
+        "endLine": 85,
+        "endChar": 71
+      },
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ddb267b_65712869",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T09:31:30Z",
+      "side": 1,
+      "message": "Can sysutil.MountInfoForPID() be used?\n(Sorry overlooked in the last iteration).",
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e228268e_5993e5ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T09:31:30Z",
+      "side": 1,
+      "message": "Could you wrap this err by errors.Wrap to make the stacktrace more readable?",
+      "range": {
+        "startLine": 91,
+        "startChar": 21,
+        "endLine": 91,
+        "endChar": 24
+      },
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b76e83e9_505bde8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T09:31:30Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 91,
+        "startChar": 9,
+        "endLine": 91,
+        "endChar": 19
+      },
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f15ff43c_9dcad66a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T09:31:30Z",
+      "side": 1,
+      "message": "(optional): How about simplify to take the only one binary path, because it is the only use? (So that, processFiltered can be merged into this as it is simple enough, I think).",
+      "range": {
+        "startLine": 118,
+        "startChar": 19,
+        "endLine": 118,
+        "endChar": 40
+      },
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b271f37b_6ba7865d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T09:31:30Z",
+      "side": 1,
+      "message": "Too keep this function\u0027s concept encapsulated, could you return []*Process or []int (PIDs)?",
+      "range": {
+        "startLine": 118,
+        "startChar": 43,
+        "endLine": 118,
+        "endChar": 51
+      },
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
