@@ -135,6 +135,24 @@
       "revId": "a6f07327cc525045265efa60b510e734860b10c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1678176_b71d8980",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-05-28T18:02:06Z",
+      "side": 1,
+      "message": "\u003e re chromeos-config, powerd definitely supports it.\n\nAre you sure it does for this property? I only see \u0027touchpad-wakeup\u0027:\n\nhttps://chromium.googlesource.com/chromiumos/platform2/+/master/chromeos-config/#power\nhttp://cs/chromeos_public/src/platform2/power_manager/udev/optional/93-powerd-tags-unibuild-touchpad-wakeup.rules?l\u003d4\u0026rcl\u003da45fb61d436c7b33173877c0836c2d71522482d4\n\nIn any case, if I just extend check_powerd_config for the purpose of this test, then the build details (unibuild vs. not) are no longer relevant.",
+      "parentUuid": "5a414b2d_32d8f79a",
+      "revId": "a6f07327cc525045265efa60b510e734860b10c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
