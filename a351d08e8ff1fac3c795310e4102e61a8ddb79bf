@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85bba58b_70094546",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-28T20:26:46Z",
+      "side": 1,
+      "message": "nit: please avoid repeating the regexp in the comment -- it already appears canonically a few lines down.",
+      "revId": "a351d08e8ff1fac3c795310e4102e61a8ddb79bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5543bc90_8c219093",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-28T20:26:46Z",
+      "side": 1,
+      "message": "i\u0027d remove these constants as well, as they add an extra layer of indirection to someone reading L126 to L128.",
+      "revId": "a351d08e8ff1fac3c795310e4102e61a8ddb79bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "151193de_49ea82ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-28T20:26:46Z",
+      "side": 1,
+      "message": "to shorten this, how about just using \\S+ here? ditto for the next field. also, how about replacing the [0-9] strings that match octets with \\d?",
+      "range": {
+        "startLine": 115,
+        "startChar": 37,
+        "endLine": 115,
+        "endChar": 46
+      },
+      "revId": "a351d08e8ff1fac3c795310e4102e61a8ddb79bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d99604b6_544fae82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-28T20:26:46Z",
+      "side": 1,
+      "message": "nit: \u0027m\u0027 or \u0027matches\u0027 is more common, i think",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 3
+      },
+      "revId": "a351d08e8ff1fac3c795310e4102e61a8ddb79bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e221530_bbe81e12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-28T20:26:46Z",
+      "side": 1,
+      "message": "how about using an intermediate value here to make this easier to read?\n\n  name :\u003d m[1]\n  ifc :\u003d ifaces[name]\n  ifc.arcIP :\u003d m[2]\n  ifaces[name] \u003d ifc",
+      "revId": "a351d08e8ff1fac3c795310e4102e61a8ddb79bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c823c37_1a31a760",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-28T20:26:46Z",
+      "side": 1,
+      "message": "neat, i hadn\u0027t seen errgroup before",
+      "range": {
+        "startLine": 139,
+        "startChar": 16,
+        "endLine": 139,
+        "endChar": 24
+      },
+      "revId": "a351d08e8ff1fac3c795310e4102e61a8ddb79bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8191c4e1_5054d859",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-28T20:26:46Z",
+      "side": 1,
+      "message": "optional, but the more common approach that i\u0027ve seen here is:\n\n  g.Go(func(ifname string, ifc iface) error {\n      ...\n  }(ifname, ifc))",
+      "revId": "a351d08e8ff1fac3c795310e4102e61a8ddb79bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
