@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "804a1af7_b7445b79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-28T08:31:54Z",
+      "side": 1,
+      "message": "huge nit: Please append a dot after the comment.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 20,
+        "startChar": 66,
+        "endLine": 20,
+        "endChar": 73
+      },
+      "revId": "bf0e6c13c798ce488152673ffe8dcb47cef8b489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "644fe4a6_afb0892a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-28T08:31:54Z",
+      "side": 1,
+      "message": "Could you define a type for these constants for better type checking?\n\n type Facing string\n\n const (\n   FacingBack Facing \u003d \"environment\"\n   FacingFront \u003d \"user\"\n )",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 1
+      },
+      "revId": "bf0e6c13c798ce488152673ffe8dcb47cef8b489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "556eede3_dc5992ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-28T08:31:54Z",
+      "side": 1,
+      "message": "huge nit: var numCameras int\n\nSame below.",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 16
+      },
+      "revId": "bf0e6c13c798ce488152673ffe8dcb47cef8b489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c24a8aaa_ed175d5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-28T08:31:54Z",
+      "side": 1,
+      "message": "Please start error messages with lower letters. Also, please put the actual value first.\n\nHow about:\n\n errors.Errorf(\"unexpected switch button existence: got %v, want %v\", actual, expected)\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 189,
+        "startChar": 24,
+        "endLine": 189,
+        "endChar": 32
+      },
+      "revId": "bf0e6c13c798ce488152673ffe8dcb47cef8b489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2210f7b7_34f487e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-28T08:31:54Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 213,
+        "startChar": 9,
+        "endLine": 213,
+        "endChar": 84
+      },
+      "revId": "bf0e6c13c798ce488152673ffe8dcb47cef8b489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b24e72c_aefefdb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-28T08:31:54Z",
+      "side": 1,
+      "message": "Could you insert here:\n\n // TODO(crbug.com/963772): Move libraries in video to camera or media folder.\n\nWe usually don\u0027t import subpackages in different test category.",
+      "range": {
+        "startLine": 11,
+        "startChar": 32,
+        "endLine": 11,
+        "endChar": 52
+      },
+      "revId": "bf0e6c13c798ce488152673ffe8dcb47cef8b489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b600fb3b_05380634",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-28T08:31:54Z",
+      "side": 1,
+      "message": "nit: In this case, we don\u0027t want any explicit default value for gridEnabled, so please prefer var with a type:\n\n var gridEnabled bool\n if gridEnabled, err \u003d ...\n\nThat said, in this case we want to use gridEnabled outside of the if clause, so it\u0027s fine to just do the assignment outside the if clause:\n\n gridEnabled, err :\u003d app.ToggleGridOption(ctx)\n if err !\u003d nil {\n   ...\n }",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 63
+      },
+      "revId": "bf0e6c13c798ce488152673ffe8dcb47cef8b489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b5ca686_dbd1ba0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-28T08:31:54Z",
+      "side": 1,
+      "message": "What if numCameras \u003d\u003d 0 ?",
+      "range": {
+        "startLine": 68,
+        "startChar": 3,
+        "endLine": 68,
+        "endChar": 28
+      },
+      "revId": "bf0e6c13c798ce488152673ffe8dcb47cef8b489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43345c89_14712b5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-28T08:31:54Z",
+      "side": 1,
+      "message": "If app.Restart returns a non-nil error, app.Close is already called, so it is incorrect to call app.Close again with defer.\n\nPossible options to solve this issue are:\n\n1. Make Close idempotent.\n2. Remove Restart method and use call Close explicitly.",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 42
+      },
+      "revId": "bf0e6c13c798ce488152673ffe8dcb47cef8b489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23df5060_c2b63dbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui_multi_camera.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-28T08:31:54Z",
+      "side": 1,
+      "message": "Hmm, why don\u0027t we merge this with cca_ui.js?",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "bf0e6c13c798ce488152673ffe8dcb47cef8b489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a253d4fd_e6dc7bc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui_multi_camera.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-28T08:31:54Z",
+      "side": 1,
+      "message": "nit: This would be more intuitive by using filter, rather than reduce:\n\n return devices.filter((d) \u003d\u003e d.kind \u003d\u003d\u003d \u0027videoinput\u0027).length;",
+      "range": {
+        "startLine": 21,
+        "startChar": 11,
+        "endLine": 21,
+        "endChar": 44
+      },
+      "revId": "bf0e6c13c798ce488152673ffe8dcb47cef8b489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aed80aad_6bbd9651",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui_multi_camera.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-28T08:31:54Z",
+      "side": 1,
+      "message": "What does this mean? I thought `await imageCapture.getPhotoCapabilities()` is never optimized out.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 22
+      },
+      "revId": "bf0e6c13c798ce488152673ffe8dcb47cef8b489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a298fd1_30af53af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui_multi_camera.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-28T08:31:54Z",
+      "side": 1,
+      "message": "nit: const",
+      "range": {
+        "startLine": 69,
+        "startChar": 6,
+        "endLine": 69,
+        "endChar": 9
+      },
+      "revId": "bf0e6c13c798ce488152673ffe8dcb47cef8b489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ffabf2d_bddffd69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui_multi_camera.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-28T08:31:54Z",
+      "side": 1,
+      "message": "nit: const",
+      "range": {
+        "startLine": 87,
+        "startChar": 6,
+        "endLine": 87,
+        "endChar": 9
+      },
+      "revId": "bf0e6c13c798ce488152673ffe8dcb47cef8b489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
