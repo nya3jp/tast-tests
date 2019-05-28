@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72c301e9_bd9d42ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-28T05:34:38Z",
+      "side": 1,
+      "message": "I guess this is not a focused subtree, but the whole desktop tree?\n\nIf so I suggest following modifications:\n\n- getDesktopSubtree -\u003e getDesktopTree (a subtree is also a tree, but when we say a tree is a subtree, it implies that it\u0027s a child of another tree, but IIUC the desktop tree is not a subtree of anything else)\n- \"returns the tree of the current ChromeVox focus\" -\u003e \"returns the tree of the whole desktop\" (c.f. https://developer.chrome.com/extensions/automation#method-getDesktop)",
+      "range": {
+        "startLine": 45,
+        "startChar": 40,
+        "endLine": 45,
+        "endChar": 69
+      },
+      "revId": "1f9b8ec2b981e7712bd5d12a27f3ac86711f4636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "136b55f8_8de78f2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-28T05:34:38Z",
+      "side": 1,
+      "message": "the desktop",
+      "range": {
+        "startLine": 57,
+        "startChar": 64,
+        "endLine": 57,
+        "endChar": 81
+      },
+      "revId": "1f9b8ec2b981e7712bd5d12a27f3ac86711f4636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5a0cd1d_866b151b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-28T05:34:38Z",
+      "side": 1,
+      "message": "In this case we want to report the diff error as the primary error. So I recommend something like:\n\n if diff :\u003d cmp.Diff(...); diff !\u003d \"\" {\n   if err :\u003d ioutil.WriteFile(...); err !\u003d nil {\n     return errors.Wrap(err, \"accessibility tree was not as expected; failed to write diff\")\n   }\n   return errors.Errorf(\"accessibility tree was not as expected, ...)\n }",
+      "range": {
+        "startLine": 66,
+        "startChar": 3,
+        "endLine": 66,
+        "endChar": 68
+      },
+      "revId": "1f9b8ec2b981e7712bd5d12a27f3ac86711f4636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "538af556_a1cf1356",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-28T05:34:38Z",
+      "side": 1,
+      "message": "Strictly speaking, this might not be a tree since it can contain multiple top-level nodes. I recommend including the top node. See my comment about line-based parsing below.",
+      "range": {
+        "startLine": 82,
+        "startChar": 24,
+        "endLine": 82,
+        "endChar": 57
+      },
+      "revId": "1f9b8ec2b981e7712bd5d12a27f3ac86711f4636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73b985f7_fcf7a1bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-28T05:34:38Z",
+      "side": 1,
+      "message": "treeHeader",
+      "range": {
+        "startLine": 85,
+        "startChar": 81,
+        "endLine": 85,
+        "endChar": 84
+      },
+      "revId": "1f9b8ec2b981e7712bd5d12a27f3ac86711f4636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffdb0f62_52c41a2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-28T05:34:38Z",
+      "side": 1,
+      "message": "Logic here is a bit difficult to understand. In particular, splitting the whole gotTree with treeHeader is tricky when there are several matches. Also, using regexp.Split will lose the matched line itself, so we will miss the top element of the matched subtree.\n\nInstead, I recommend line based parsing. You can use bufio.Scanner to process text by lines. https://godoc.org/bufio#Scanner\n\nOverall flow would be like:\n\n import (\n   \"bufio\"\n   \"bytes\"\n )\n \n var subtree []string\n sc :\u003d bufio.NewScanner(bytes.NewBufferString(gotTree))\n for sc.Scan() {\n   line :\u003d sc.Text()\n   if \u003c\u003c\u003c subtree is empty \u003e\u003e\u003e {\n     if \u003c\u003c\u003c treeHeader matches line \u003e\u003e\u003e {\n       subtree \u003d append(subtree, line)\n     }\n   } else {\n     if \u003c\u003c\u003c line has fewer + signs than subtree[0] \u003e\u003e\u003e {\n       break\n     }\n   }\n }\n if err :\u003d sc.Err(); err !\u003d nil {\n   return \"\", false\n }\n \u003c\u003c\u003c dedent + signs in subtree \u003e\u003e\u003e\n return strings.Join(subtree, \"\\n\"), true",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 2
+      },
+      "revId": "1f9b8ec2b981e7712bd5d12a27f3ac86711f4636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc8b9dd1_ff39798e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-28T05:34:38Z",
+      "side": 1,
+      "message": "Please isolate this as a separate function. Otherwise extractSubtree does what is not documented.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 69
+      },
+      "revId": "1f9b8ec2b981e7712bd5d12a27f3ac86711f4636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
