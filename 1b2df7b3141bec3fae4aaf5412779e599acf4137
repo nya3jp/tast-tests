@@ -60,6 +60,24 @@
     },
     {
       "key": {
+        "uuid": "19a7478d_f9822534",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/crosconfig/crosconfig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-28T23:51:50Z",
+      "side": 1,
+      "message": "thanks!",
+      "parentUuid": "865848f1_6d1c8142",
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4d945af_9b2cfc14",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/crosconfig/crosconfig.go",
         "patchSetId": 4
@@ -300,6 +318,24 @@
       "side": 1,
       "message": "It is not trivial (but possible) to create an ExitError in the same manner as running Command.Output. This way I can just call os.Exit(1) and I know that the ExitError will be populated correctly",
       "parentUuid": "e5f3eb92_590ec295",
+      "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bed23091_5b114c50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/crosconfig/crosconfig_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-28T23:51:50Z",
+      "side": 1,
+      "message": "i see. yeah, this seems unfortunate. the easiest way around it would probably be to change runCrosConfig to extract the exit code itself, but what you have here seems okay to me.",
+      "parentUuid": "7a8d9d39_745e2ab4",
       "revId": "1b2df7b3141bec3fae4aaf5412779e599acf4137",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
