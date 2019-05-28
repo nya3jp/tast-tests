@@ -118,6 +118,30 @@
       "revId": "60d9b5c5cf177219d6827170ec090e70a04ec56a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86448d38_710de140",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-05-28T17:31:24Z",
+      "side": 1,
+      "message": "fixed. thanks.",
+      "parentUuid": "ce18ce6d_897de8dc",
+      "range": {
+        "startLine": 216,
+        "startChar": 120,
+        "endLine": 216,
+        "endChar": 122
+      },
+      "revId": "60d9b5c5cf177219d6827170ec090e70a04ec56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
