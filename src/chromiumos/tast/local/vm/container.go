@@ -613,7 +613,6 @@ func ShrinkDefaultContainer(ctx context.Context, ownerID string) error {
 		"/usr/share/locale",
 		"/usr/share/man",
 		"/usr/share/perl",
-		"/usr/share/qt5",
 		"/usr/share/vim",
 		"/var/cache/apt",
 		"/var/lib/apt",
