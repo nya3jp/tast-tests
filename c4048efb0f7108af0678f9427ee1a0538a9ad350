@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "af208157_1837ca19",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/example/servo_echo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-28T04:35:58Z",
+      "side": 1,
+      "message": "Hmm, yes, that\u0027s strange... Thanks for the pointer.",
+      "parentUuid": "91506e59_9acb33b3",
+      "range": {
+        "startLine": 20,
+        "startChar": 22,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "c4048efb0f7108af0678f9427ee1a0538a9ad350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3067f77b_2ab8f62e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/example/servo_echo.go",
         "patchSetId": 2
