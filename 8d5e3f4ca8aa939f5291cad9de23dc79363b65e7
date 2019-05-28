@@ -1,0 +1,266 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4cc2442f_58baa71b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T03:30:32Z",
+      "side": 1,
+      "message": "Could you follow the code review comments guide?\nhttps://github.com/golang/go/wiki/CodeReviewComments#imports\n\n\"bufio\"\n...\n\"strings\"\n\n\"chromiumos/tast/local/testexec\"\n...",
+      "revId": "8d5e3f4ca8aa939f5291cad9de23dc79363b65e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7000bd9c_23a54e43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T03:30:32Z",
+      "side": 1,
+      "message": "This is used only in one function. Could you move to the function body in order not to leak this into other files in this package?\nDitto for below.",
+      "revId": "8d5e3f4ca8aa939f5291cad9de23dc79363b65e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3085afa1_68e6f221",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T03:30:32Z",
+      "side": 1,
+      "message": "for file path, could you use filepath package?\n\ncf) https://golang.org/pkg/path/filepath/#Join",
+      "revId": "8d5e3f4ca8aa939f5291cad9de23dc79363b65e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6a8b4c5_41f093f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T03:30:32Z",
+      "side": 1,
+      "message": "nit: Errorf() for formatting (instead of Error()).",
+      "revId": "8d5e3f4ca8aa939f5291cad9de23dc79363b65e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02cff221_97e92e6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T03:30:32Z",
+      "side": 1,
+      "message": "Could you avoid passing testing.State? Instead, you can return an error.\n\nfunc getRootDevice(ctx context.Context) (string, error) {\n  ...\n}\n\ncf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\n\u003d\u003d\u003dquoted\u003d\u003d\u003d\nNote that it‘s still best to practice information hiding and pass only as much data is needed. Avoid passing testing.State when it’s not actually necessary:\n\u003d\u003d\u003dquoted end\u003d\u003d\u003d\n\n\nDitto for below.",
+      "range": {
+        "startLine": 58,
+        "startChar": 39,
+        "endLine": 58,
+        "endChar": 56
+      },
+      "revId": "8d5e3f4ca8aa939f5291cad9de23dc79363b65e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13f18b98_3e693077",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T03:30:32Z",
+      "side": 1,
+      "message": "As for naming, in {Go, Tast}, we do not use \"get\" or \"is\" suffixes in most cases. Could you rename to... rootDevice(), devicePartitions(), mountedDevices(), ... and so on?",
+      "revId": "8d5e3f4ca8aa939f5291cad9de23dc79363b65e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4879497_5dc85c47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T03:30:32Z",
+      "side": 1,
+      "message": "Could you declare the var just before the use? (i.e., Could you move this line to just before L85?)",
+      "revId": "8d5e3f4ca8aa939f5291cad9de23dc79363b65e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3c8fffe_d1de4c73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T03:30:32Z",
+      "side": 1,
+      "message": "Looks incomplete here.",
+      "revId": "8d5e3f4ca8aa939f5291cad9de23dc79363b65e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "154a0f35_931ca862",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T03:30:32Z",
+      "side": 1,
+      "message": "incomplete here, too?",
+      "revId": "8d5e3f4ca8aa939f5291cad9de23dc79363b65e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6b341fc_7ccc1aea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T03:30:32Z",
+      "side": 1,
+      "message": "Maybe TrimSuffix(..., \"\\n\") instead?",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 48
+      },
+      "revId": "8d5e3f4ca8aa939f5291cad9de23dc79363b65e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40d0639c_380c5b0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T03:30:32Z",
+      "side": 1,
+      "message": "for file path, could you use filepath package?\n\ncf) https://golang.org/pkg/path/filepath/#Join",
+      "range": {
+        "startLine": 99,
+        "startChar": 26,
+        "endLine": 99,
+        "endChar": 38
+      },
+      "revId": "8d5e3f4ca8aa939f5291cad9de23dc79363b65e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad386d93_5d4cfc40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T03:30:32Z",
+      "side": 1,
+      "message": "You can use testing.ContextLog(), instead.",
+      "revId": "8d5e3f4ca8aa939f5291cad9de23dc79363b65e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36cef861_4c09f72a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T03:30:32Z",
+      "side": 1,
+      "message": "The logic looks weird. Could you check?",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 13
+      },
+      "revId": "8d5e3f4ca8aa939f5291cad9de23dc79363b65e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed21e5ec_0c21c13c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-28T03:30:32Z",
+      "side": 1,
+      "message": "Could you use gopsutil library?",
+      "revId": "8d5e3f4ca8aa939f5291cad9de23dc79363b65e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
