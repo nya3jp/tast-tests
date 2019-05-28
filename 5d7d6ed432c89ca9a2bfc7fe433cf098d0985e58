@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa7edd40_84c18ce5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-28T22:37:56Z",
+      "side": 1,
+      "message": "nit: i\u0027d save two lines here since you just have one constant now:\n\n  const setTxPowerExe \u003d \"...\"",
+      "revId": "5d7d6ed432c89ca9a2bfc7fe433cf098d0985e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc125957_d028c8fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-28T22:37:56Z",
+      "side": 1,
+      "message": "it\u0027s probably safer to use https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/testexec#GetWaitStatus instead of checking err directly, since you should then be able to distinguish between 0, 1, and all other errors (which should probably result in a call to s.Fatal)",
+      "revId": "5d7d6ed432c89ca9a2bfc7fe433cf098d0985e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
