@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "258f48b5_dd65b1a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T17:41:59Z",
+      "side": 1,
+      "message": "if TX is being used as an acronym/initialism (as L17 would suggest), then i agree that \"TX\" would be correct here per https://github.com/golang/go/wiki/CodeReviewComments#initialisms.\n\ni think i\u0027ve also seen it written as \"Tx\" in places, which is why i didn\u0027t leave a comment here, but http://go/wiki/Transmitter just mentions \"TX\". so, i think i\u0027d agree that WifiSetTXPower would be correct here.\n\nor how about just WifiSetTransmitPower? :-)",
+      "parentUuid": "9526bf2e_b0580bd8",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 19
+      },
+      "revId": "b04b463d5974d703e22cb1a0e0b035447ebb8702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "324bd202_f3eaaca7",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
         "patchSetId": 4
@@ -131,6 +155,30 @@
     },
     {
       "key": {
+        "uuid": "def9691c_95ec50a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T17:41:59Z",
+      "side": 1,
+      "message": "well, at least you\u0027re getting consistent comments from reviewers. :-)\n\ni think that testexec.DumpLogOnError probably shouldn\u0027t be used here, as i suspect that it\u0027ll make us write some failure-related log messages in the expected non-error case when check_powerd_config exits with 1 since wifi power switching was disabled. that\u0027s why i suggested manually calling cmd.DumpLog in the unexpected-error case. (i suggested using defer so the log appears after the error reported by s.Fatal instead of before it, but that\u0027s optional.)",
+      "parentUuid": "c6bcc022_a29be2ad",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 57
+      },
+      "revId": "b04b463d5974d703e22cb1a0e0b035447ebb8702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c0e27997_caa3d923",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
         "patchSetId": 4
@@ -178,6 +226,30 @@
     },
     {
       "key": {
+        "uuid": "4d690b78_4ef8cb42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T17:41:59Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "c0e27997_caa3d923",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 17
+      },
+      "revId": "b04b463d5974d703e22cb1a0e0b035447ebb8702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d3b220c_581ef119",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
         "patchSetId": 4
@@ -222,6 +294,30 @@
       "revId": "b04b463d5974d703e22cb1a0e0b035447ebb8702",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e801f97e_b7c37a9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T17:41:59Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "6d3b220c_581ef119",
+      "range": {
+        "startLine": 49,
+        "startChar": 26,
+        "endLine": 49,
+        "endChar": 35
+      },
+      "revId": "b04b463d5974d703e22cb1a0e0b035447ebb8702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
