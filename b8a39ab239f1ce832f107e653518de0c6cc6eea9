@@ -189,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "6dbce48a_66194af8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sensors/crosconfig/crosconfig.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-05-29T17:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dce3f924_c66f63a3",
+      "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "319cbbea_5456568f",
         "filename": "src/chromiumos/tast/local/bundles/cros/sensors/crosconfig/crosconfig.go",
         "patchSetId": 2
@@ -835,6 +853,24 @@
       "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "608483aa_9caebf20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sensors/presence.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-05-29T17:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47aa03ce_533dc3cd",
+      "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
