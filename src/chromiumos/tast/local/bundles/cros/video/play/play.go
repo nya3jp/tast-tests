@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 // VideoType represents a type of video played in TestPlay.
@@ -52,9 +53,10 @@ func MSEDataFiles() []string {
 	}
 }
 
-// pollCurrentTime polls JavaScript "currentTime() > threshold" with optioanl PollOptions.
+// pollPlaybackCurrentTime polls JavaScript "currentTime() > threshold" with optioanl PollOptions.
 // If it fails to poll for condition, it emits error with currentTime() value attached.
-func pollCurrentTime(ctx context.Context, conn *chrome.Conn, threshold float64, opts *testing.PollOptions) error {
+func pollPlaybackCurrentTime(ctx context.Context, conn *chrome.Conn, threshold float64, opts *testing.PollOptions) error {
+	defer timing.Start(ctx, "poll_playback_current_time").End()
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		var t float64
 		if err := conn.Eval(ctx, "currentTime()", &t); err != nil {
@@ -67,11 +69,13 @@ func pollCurrentTime(ctx context.Context, conn *chrome.Conn, threshold float64, 
 	}, opts)
 }
 
-// prepareVideo makes the video specified in videoFile ready to be played, by
+// loadVideo makes the video specified in videoFile ready to be played, by
 // waiting for the document to be ready, loading the video source, and waiting
 // until it is ready to play. "play()" can then be called in order to start
 // video playback.
-func prepareVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
+func loadVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
+	defer timing.Start(ctx, "load_video").End()
+
 	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
 		return errors.Wrap(err, "timed out waiting for page load")
 	}
@@ -87,10 +91,30 @@ func prepareVideo(ctx context.Context, conn *chrome.Conn, videoFile string) erro
 	return nil
 }
 
-// playVideo invokes prepareVideo() then plays a normal video in video.html.
+// loadPage opens a new tab to load the specified webpage.
+// Note that if err != nil, conn is nil.
+func loadPage(ctx context.Context, cr *chrome.Chrome, url string) (*chrome.Conn, error) {
+	defer timing.Start(ctx, "load_page").End()
+	conn, err := cr.NewConn(ctx, url)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to open %v", url)
+	}
+	return conn, err
+}
+
+// playVideo invokes loadVideo(), plays a normal video in video.html, and checks if it has progress.
 // videoFile is the file name which is played there.
-func playVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
-	if err := prepareVideo(ctx, conn, videoFile); err != nil {
+// baseURL is the base URL which serves video playback testing webpage.
+func playVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL string) error {
+	defer timing.Start(ctx, "play_video").End()
+
+	conn, err := loadPage(ctx, cr, baseURL+"/video.html")
+	if err != nil {
+		return err
+	}
+	defer conn.Close()
+
+	if err := loadVideo(ctx, conn, videoFile); err != nil {
 		return err
 	}
 
@@ -98,7 +122,7 @@ func playVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
 		return errors.Wrap(err, "failed to play a video")
 	}
 
-	if err := pollCurrentTime(ctx, conn, 0.9, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+	if err := pollPlaybackCurrentTime(ctx, conn, 0.9, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		return errors.Wrap(err, "timed out waiting for playback")
 	}
 
@@ -109,11 +133,12 @@ func playVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
 	return nil
 }
 
-// playMSEVideo plays an MSE video stream in shaka.html by using shaka player.
-// mpdFile is the name of MPD file for the video stream.
-func playMSEVideo(ctx context.Context, conn *chrome.Conn, mpdFile string) error {
+// initShakaPlayer initializes Shaka player with video file.
+func initShakaPlayer(ctx context.Context, conn *chrome.Conn, mpdFile string) error {
+	defer timing.Start(ctx, "init_shaka_player").End()
+
 	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
-		return errors.Wrap(err, "timed out waiting for page loaded")
+		return errors.Wrap(err, "timed out waiting for page load")
 	}
 
 	if err := conn.Exec(ctx, fmt.Sprintf("initPlayer(%q)", mpdFile)); err != nil {
@@ -121,36 +146,52 @@ func playMSEVideo(ctx context.Context, conn *chrome.Conn, mpdFile string) error 
 
 	}
 
+	return nil
+}
+
+// waitForShakaPlayerTestDone waits for Shaka player's isTestDone() JS method returns true.
+func waitForShakaPlayerTestDone(ctx context.Context, conn *chrome.Conn) error {
+	defer timing.Start(ctx, "wait_for_shaka_player_test_done").End()
+
+	// rctx is a shorten ctx to reserve 3 second in case to extract errors in JavaScript.
 	rctx, rcancel := ctxutil.Shorten(ctx, 3*time.Second)
 	defer rcancel()
 	if err := conn.WaitForExpr(rctx, "isTestDone"); err != nil {
 		var messages []interface{}
 		if err := conn.Eval(ctx, "errors", &messages); err != nil {
-			return errors.Wrap(err, "timed out and failed to get error log")
+			return errors.Wrap(err, "timed out getting error log")
 		}
 		return errors.Wrapf(err, "timed out waiting for test completed: %v", messages)
+	}
+	return nil
+}
+
+// playMSEVideo plays an MSE video stream via Shaka player, and checks its play progress.
+// mpdFile is the name of MPD file for the video stream.
+// baseURL is the base URL which serves shaka player webpage.
+func playMSEVideo(ctx context.Context, cr *chrome.Chrome, mpdFile, baseURL string) error {
+	defer timing.Start(ctx, "play_mse_video").End()
+
+	conn, err := loadPage(ctx, cr, baseURL+"/shaka.html")
+	if err != nil {
+		return err
+	}
+	defer conn.Close()
+
+	if err := initShakaPlayer(ctx, conn, mpdFile); err != nil {
+		return err
+	}
+
+	if err := waitForShakaPlayerTestDone(ctx, conn); err != nil {
+		return err
 	}
 
 	return nil
 }
 
-// seekVideoRandomly invokes prepareVideo() then plays the video referenced by videoFile
-// while repeatedly and randomly seeking into it. It returns an error if
-// seeking did not succeed for some reason.
-func seekVideoRandomly(ctx context.Context, conn *chrome.Conn, videoFile string) error {
-	const (
-		numSeeks     = 100
-		numFastSeeks = 16
-	)
-
-	if err := prepareVideo(ctx, conn, videoFile); err != nil {
-		return err
-	}
-
-	if err := conn.Exec(ctx, "play()"); err != nil {
-		return errors.Wrap(err, "failed to play a video")
-	}
-
+// seekVideoRepeatly seeks video numSeeks * numFastSeeks times.
+func seekVideoRepeatly(ctx context.Context, conn *chrome.Conn, numSeeks, numFastSeeks int) error {
+	defer timing.Start(ctx, "seek_video_repeatly").End()
 	for i := 0; i < numSeeks; i++ {
 		if err := conn.Exec(ctx, fmt.Sprintf("doFastSeeks(%d)", numFastSeeks)); err != nil {
 			return errors.Wrap(err, "failed to fast-seek")
@@ -159,6 +200,31 @@ func seekVideoRandomly(ctx context.Context, conn *chrome.Conn, videoFile string)
 		if err := conn.WaitForExpr(ctx, "finishedSeeking()"); err != nil {
 			return errors.Wrap(err, "timeout while waiting for seek to complete")
 		}
+	}
+
+	return nil
+}
+
+// playSeekVideo invokes loadVideo() then plays the video referenced by videoFile
+// while repeatedly and randomly seeking into it. It returns an error if
+// seeking did not succeed for some reason.
+func playSeekVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
+	defer timing.Start(ctx, "play_seek_video").End()
+	const (
+		numSeeks     = 100
+		numFastSeeks = 16
+	)
+
+	if err := loadVideo(ctx, conn, videoFile); err != nil {
+		return err
+	}
+
+	if err := conn.Exec(ctx, "play()"); err != nil {
+		return errors.Wrap(err, "failed to play a video")
+	}
+
+	if err := seekVideoRepeatly(ctx, conn, numSeeks, numFastSeeks); err != nil {
+		return err
 	}
 
 	if err := conn.Exec(ctx, "pause()"); err != nil {
@@ -205,27 +271,13 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 		}
 	}
 
-	// Establish a connection to a video play page
-	var htmlName string
-	switch videotype {
-	case NormalVideo:
-		htmlName = "video.html"
-	case MSEVideo:
-		htmlName = "shaka.html"
-	}
-	conn, err := cr.NewConn(ctx, server.URL+"/"+htmlName)
-	if err != nil {
-		s.Fatalf("Failed to open %v: %v", htmlName, err)
-	}
-	defer conn.Close()
-
 	// Play a video
 	var playErr error
 	switch videotype {
 	case NormalVideo:
-		playErr = playVideo(ctx, conn, filename)
+		playErr = playVideo(ctx, cr, filename, server.URL)
 	case MSEVideo:
-		playErr = playMSEVideo(ctx, conn, filename)
+		playErr = playMSEVideo(ctx, cr, filename, server.URL)
 	}
 	if playErr != nil {
 		s.Fatalf("Failed to play %v: %v", filename, playErr)
@@ -261,15 +313,14 @@ func TestSeek(ctx context.Context, s *testing.State, cr *chrome.Chrome, filename
 	defer server.Close()
 
 	// Establish a connection to a video play page
-	const htmlName = "video.html"
-	conn, err := cr.NewConn(ctx, server.URL+"/"+htmlName)
+	conn, err := loadPage(ctx, cr, server.URL+"/video.html")
 	if err != nil {
-		s.Fatalf("Failed to open %v: %v", htmlName, err)
+		s.Fatal("Failed to open video.html: ", err)
 	}
 	defer conn.Close()
 
 	// Play and seek the video
-	if err := seekVideoRandomly(ctx, conn, filename); err != nil {
+	if err := playSeekVideo(ctx, conn, filename); err != nil {
 		s.Fatalf("Failed to play %v: %v", filename, err)
 	}
 }
