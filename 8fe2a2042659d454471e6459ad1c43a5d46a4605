@@ -1,0 +1,272 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "072ff259_620cc304",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T23:51:12Z",
+      "side": 1,
+      "message": "please put these inside your test function in a single const block",
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be264718_2795832f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T23:51:12Z",
+      "side": 1,
+      "message": "please follow godoc style in comments on exported symbols\n\nhttps://blog.golang.org/godoc-documenting-go-code",
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3639d967_45e16fe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T23:51:12Z",
+      "side": 1,
+      "message": "delete blank line",
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05263c9e_cc1079bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T23:51:12Z",
+      "side": 1,
+      "message": "can you delete everything above this line? it\u0027s not clear to me why it\u0027s necessary.",
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93e8b0e7_06a71416",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T23:51:12Z",
+      "side": 1,
+      "message": "please don\u0027t add sleeps; they lead to flakiness and/or slowness. ideally, the wilco_dtc upstart job wouldn\u0027t report that the service has started until it\u0027s actually ready. failing that, please use testing.Poll to wait for the actual condition that\u0027s needed.",
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71b3f4a6_cdb171a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T23:51:12Z",
+      "side": 1,
+      "message": "nit: \"process status\"",
+      "range": {
+        "startLine": 53,
+        "startChar": 21,
+        "endLine": 53,
+        "endChar": 34
+      },
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15a1cc49_1fcb778b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T23:51:12Z",
+      "side": 1,
+      "message": "nit: process",
+      "range": {
+        "startLine": 56,
+        "startChar": 15,
+        "endLine": 56,
+        "endChar": 21
+      },
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2da20156_15a54abd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T23:51:12Z",
+      "side": 1,
+      "message": "nit: process, also please omit \u0027:\u0027\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 58,
+        "startChar": 13,
+        "endLine": 58,
+        "endChar": 19
+      },
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "625eb5ca_4f3f8ee7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T23:51:12Z",
+      "side": 1,
+      "message": "nit: process status",
+      "range": {
+        "startLine": 60,
+        "startChar": 20,
+        "endLine": 60,
+        "endChar": 26
+      },
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53d8bf55_3b6c67d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T23:51:12Z",
+      "side": 1,
+      "message": "SA process",
+      "range": {
+        "startLine": 63,
+        "startChar": 11,
+        "endLine": 63,
+        "endChar": 21
+      },
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4e21b5c_625f69dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T23:51:12Z",
+      "side": 1,
+      "message": "is this actually needed? what happens if you just leave it running?",
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39caa564_1546f173",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T23:51:12Z",
+      "side": 1,
+      "message": "please just put a loop in your test function to reduce repetitive code, e.g.\n\nfor _, name :\u003d range []string{\"ddv\", \"sa\"} {\n    s.Logf(\"Checking %v process\", name)\n    cmd :\u003d testexec.CommandContext(ctx, ...)\n    cmd.Stdin \u003d ...\n    if out, err :\u003d cmd.CombinedOutput(); err !\u003d nil {\n        s.Errorf(\"%v process not found: %v\", name, err)\n    } else {\n        s.Logf(\"%v process running with PID %v\",\n            name, strings.TrimSpace(string(out)))\n    }\n}",
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d22d6cc7_abb7b909",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T23:51:12Z",
+      "side": 1,
+      "message": "putting these all on a single line may make it more readable:\n\n  \"vsh\", \"--cid\u003d\"+wilcoVMCID, \"--\", \"pgrep\", processName)",
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1319ebfd_02aa017c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T23:51:12Z",
+      "side": 1,
+      "message": "return cmd.CombinedOutput()",
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
