@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "0b2e376b_6de5d5f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-05-29T18:00:40Z",
+      "side": 1,
+      "message": "Eh, don\u0027t take it too personally :) I appreciate the general attempts at being stricter than Autotest, so I can deal with a few bits of awkwardness.",
+      "parentUuid": "8a60f2e4_16466d8f",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 19
+      },
+      "revId": "b04b463d5974d703e22cb1a0e0b035447ebb8702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "324bd202_f3eaaca7",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
         "patchSetId": 4
@@ -200,6 +224,30 @@
       "revId": "b04b463d5974d703e22cb1a0e0b035447ebb8702",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da7b4af1_2bb65bef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-05-29T18:00:40Z",
+      "side": 1,
+      "message": "97% reviewer consistency is impressive!",
+      "parentUuid": "def9691c_95ec50a6",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 57
+      },
+      "revId": "b04b463d5974d703e22cb1a0e0b035447ebb8702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
