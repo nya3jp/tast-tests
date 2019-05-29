@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "08d0ed04_a163a93d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-05-29T02:09:50Z",
+      "side": 1,
+      "message": "I prefer having end() as it provides freedom that user can skip some uninterested blocks. I updated the comment, PTAL.",
+      "parentUuid": "10a822fa_67517201",
+      "range": {
+        "startLine": 96,
+        "startChar": 5,
+        "endLine": 96,
+        "endChar": 12
+      },
+      "revId": "fe09fb442a32ba8229c15a9e32ce277a4d97be5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ce7e12ed_34f1a046",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "64640f87_05fc1893",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-05-29T02:09:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce7e12ed_34f1a046",
+      "range": {
+        "startLine": 101,
+        "startChar": 5,
+        "endLine": 101,
+        "endChar": 27
+      },
+      "revId": "fe09fb442a32ba8229c15a9e32ce277a4d97be5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f267400b_c1a1a401",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -62,6 +110,24 @@
       "revId": "fe09fb442a32ba8229c15a9e32ce277a4d97be5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e909540c_08e5603f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-05-29T02:09:50Z",
+      "side": 1,
+      "message": "A string cannot be nil. Though at first time I leave the freedom to allow unnamed event, but it should be useless in real world case. I adapt your suggestion and use len(l.name) \u003e 0 to check if an event is being recorded.",
+      "parentUuid": "f267400b_c1a1a401",
+      "revId": "fe09fb442a32ba8229c15a9e32ce277a4d97be5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -85,6 +151,30 @@
       "revId": "fe09fb442a32ba8229c15a9e32ce277a4d97be5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb9e87a1_82d55b2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-05-29T02:09:50Z",
+      "side": 1,
+      "message": "Rephrased.",
+      "parentUuid": "7756e150_ec4df67f",
+      "range": {
+        "startLine": 109,
+        "startChar": 9,
+        "endLine": 109,
+        "endChar": 25
+      },
+      "revId": "fe09fb442a32ba8229c15a9e32ce277a4d97be5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
