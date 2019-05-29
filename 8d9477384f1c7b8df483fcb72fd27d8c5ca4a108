@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c9f7382_08765792",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/crosconfig/crosconfig_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T16:05:08Z",
+      "side": 1,
+      "message": "what\u0027s this for? does some other init function get confused otherwise? please add a comment explaining",
+      "revId": "8d9477384f1c7b8df483fcb72fd27d8c5ca4a108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f8b43e2_d1bf722a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/crosconfig/crosconfig_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T16:05:08Z",
+      "side": 1,
+      "message": "maybe use https://golang.org/pkg/os/#Executable here instead? otherwise, i suspect there may be issues if e.g. the test executable is executed using a relative path and something else changes the cwd before your test runs.",
+      "range": {
+        "startLine": 46,
+        "startChar": 33,
+        "endLine": 46,
+        "endChar": 43
+      },
+      "revId": "8d9477384f1c7b8df483fcb72fd27d8c5ca4a108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cee6be7_8fc9c894",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/crosconfig/crosconfig_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T16:05:08Z",
+      "side": 1,
+      "message": "it may be safer to start with the existing environment here, e.g.\n\n  cmd.Env \u003d append(os.Environ(), crosConfigChild+\"\u003d1\")",
+      "revId": "8d9477384f1c7b8df483fcb72fd27d8c5ca4a108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4575a3b_b79f69c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/crosconfig/crosconfig_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T16:05:08Z",
+      "side": 1,
+      "message": "nit: mind moving this up near the top of the file so it\u0027s easier to see, e.g. just after the imports or after the const?",
+      "revId": "8d9477384f1c7b8df483fcb72fd27d8c5ca4a108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a3a998a_3dc22486",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/crosconfig/crosconfig_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T16:05:08Z",
+      "side": 1,
+      "message": "i\u0027d probably just use []string here. variadic functions are mostly a convenience to the caller, but this function looks like it\u0027s only invoked with a slice.",
+      "range": {
+        "startLine": 60,
+        "startChar": 21,
+        "endLine": 60,
+        "endChar": 30
+      },
+      "revId": "8d9477384f1c7b8df483fcb72fd27d8c5ca4a108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caf25cd8_14863bb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T16:05:08Z",
+      "side": 1,
+      "message": "nit: \"devName, iioPath string\" (avoid repeating the type when possible)",
+      "range": {
+        "startLine": 92,
+        "startChar": 17,
+        "endLine": 92,
+        "endChar": 47
+      },
+      "revId": "8d9477384f1c7b8df483fcb72fd27d8c5ca4a108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

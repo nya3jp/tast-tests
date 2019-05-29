@@ -201,6 +201,24 @@
     },
     {
       "key": {
+        "uuid": "b54442f1_8e9bf352",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/crosconfig/crosconfig_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T16:05:08Z",
+      "side": 1,
+      "message": "whoops, sorry; missed that not all of the cases were exiting",
+      "parentUuid": "977916c9_0c9813c6",
+      "revId": "811531229ea7f785a1b1f974a384abf9a5614ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "517d40f3_72c4b51e",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
         "patchSetId": 6
