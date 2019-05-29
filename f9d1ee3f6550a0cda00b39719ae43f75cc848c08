@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d555a7d_3363219a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T16:17:08Z",
+      "side": 1,
+      "message": "nit: i\u0027d recommend deleting all of this, as it will make the commit history harder to read",
+      "revId": "f9d1ee3f6550a0cda00b39719ae43f75cc848c08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6eca00c_46045c07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T16:17:08Z",
+      "side": 1,
+      "message": "please match the naming format used everywhere else in timing.json, e.g. \"poll_current_time\", \"prepare_video\", etc.",
+      "range": {
+        "startLine": 59,
+        "startChar": 26,
+        "endLine": 59,
+        "endChar": 41
+      },
+      "revId": "f9d1ee3f6550a0cda00b39719ae43f75cc848c08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
