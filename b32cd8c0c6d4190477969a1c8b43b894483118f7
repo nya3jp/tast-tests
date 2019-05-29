@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "5723d256_e56c0fcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-05-29T08:30:12Z",
+      "side": 1,
+      "message": "The name \"url\" is too generic and may refer to full URL path. I renamed it to baseURL and gave a description.",
+      "parentUuid": "0af9cf2e_13bcedaa",
+      "range": {
+        "startLine": 106,
+        "startChar": 66,
+        "endLine": 106,
+        "endChar": 75
+      },
+      "revId": "b32cd8c0c6d4190477969a1c8b43b894483118f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "140a7497_c0d88868",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 2
@@ -88,6 +112,54 @@
     },
     {
       "key": {
+        "uuid": "2fd24d64_4280e03f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-05-29T08:30:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "237a19ea_330b7b96",
+      "range": {
+        "startLine": 183,
+        "startChar": 26,
+        "endLine": 183,
+        "endChar": 56
+      },
+      "revId": "b32cd8c0c6d4190477969a1c8b43b894483118f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aae40e6_6618f320",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-05-29T08:30:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "140a7497_c0d88868",
+      "range": {
+        "startLine": 183,
+        "startChar": 57,
+        "endLine": 183,
+        "endChar": 60
+      },
+      "revId": "b32cd8c0c6d4190477969a1c8b43b894483118f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a53faf4_f22c0625",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 2
@@ -108,6 +180,30 @@
       "revId": "b32cd8c0c6d4190477969a1c8b43b894483118f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f58fb4b_072f3800",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-05-29T08:30:12Z",
+      "side": 1,
+      "message": "Either way is fine because loadPage() would add URL in error message.",
+      "parentUuid": "8a53faf4_f22c0625",
+      "range": {
+        "startLine": 309,
+        "startChar": 26,
+        "endLine": 309,
+        "endChar": 42
+      },
+      "revId": "b32cd8c0c6d4190477969a1c8b43b894483118f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

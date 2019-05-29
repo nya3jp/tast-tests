@@ -46,6 +46,30 @@
       "revId": "9638556de9c1194610144fcf33c4a7396cb0a5d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ea0f8b4_3219ed58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-05-29T08:30:12Z",
+      "side": 0,
+      "message": "It is already done in cr.NewConn()\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go?l\u003d616",
+      "parentUuid": "06ea3535_6105b2d7",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 2
+      },
+      "revId": "9638556de9c1194610144fcf33c4a7396cb0a5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
