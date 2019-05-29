@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "8a60f2e4_16466d8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T17:48:33Z",
+      "side": 1,
+      "message": "sorry about the scarring! yeah, i made the rules picky due to frustration after seeing autotest tests that seem arbitrary in how they use capitalization. \"WiFi\" would translate to \"wi_fi\" here, but i agree that that looks weird and will also confuse people.",
+      "parentUuid": "258f48b5_dd65b1a9",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 19
+      },
+      "revId": "b04b463d5974d703e22cb1a0e0b035447ebb8702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "324bd202_f3eaaca7",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
         "patchSetId": 4
