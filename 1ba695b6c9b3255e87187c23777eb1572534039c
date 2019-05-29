@@ -22,6 +22,30 @@
       "revId": "1ba695b6c9b3255e87187c23777eb1572534039c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc914d7b_15af4ec0",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2019-05-29T10:09:31Z",
+      "side": 1,
+      "message": "I think it is fine for this to return error and the caller can make the decision.",
+      "parentUuid": "1266f17f_b73281f2",
+      "range": {
+        "startLine": 621,
+        "startChar": 0,
+        "endLine": 624,
+        "endChar": 3
+      },
+      "revId": "1ba695b6c9b3255e87187c23777eb1572534039c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
