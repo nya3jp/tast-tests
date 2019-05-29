@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4da9e413_18701f41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-29T01:24:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85bba58b_70094546",
+      "revId": "a351d08e8ff1fac3c795310e4102e61a8ddb79bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5543bc90_8c219093",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
         "patchSetId": 6
@@ -33,6 +51,24 @@
       "revId": "a351d08e8ff1fac3c795310e4102e61a8ddb79bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bf15af8_f1cca630",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-29T01:24:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5543bc90_8c219093",
+      "revId": "a351d08e8ff1fac3c795310e4102e61a8ddb79bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "56d08b80_c5b60d4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-29T01:24:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "151193de_49ea82ee",
+      "range": {
+        "startLine": 115,
+        "startChar": 37,
+        "endLine": 115,
+        "endChar": 46
+      },
+      "revId": "a351d08e8ff1fac3c795310e4102e61a8ddb79bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d99604b6_544fae82",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
         "patchSetId": 6
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "89723047_5567d021",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-29T01:24:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d99604b6_544fae82",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 3
+      },
+      "revId": "a351d08e8ff1fac3c795310e4102e61a8ddb79bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e221530_bbe81e12",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
         "patchSetId": 6
@@ -96,6 +180,24 @@
       "revId": "a351d08e8ff1fac3c795310e4102e61a8ddb79bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78c05b01_0215e38b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-29T01:24:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e221530_bbe81e12",
+      "revId": "a351d08e8ff1fac3c795310e4102e61a8ddb79bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "91ee5335_31d00e6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-29T01:24:12Z",
+      "side": 1,
+      "message": "cool, Garrick suggested this one.",
+      "parentUuid": "2c823c37_1a31a760",
+      "range": {
+        "startLine": 139,
+        "startChar": 16,
+        "endLine": 139,
+        "endChar": 24
+      },
+      "revId": "a351d08e8ff1fac3c795310e4102e61a8ddb79bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8191c4e1_5054d859",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
         "patchSetId": 6
@@ -136,6 +262,24 @@
       "revId": "a351d08e8ff1fac3c795310e4102e61a8ddb79bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "041e11aa_d6021ee1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-29T01:24:12Z",
+      "side": 1,
+      "message": "I think for errgroup it only accepts func(), so passing a parameter would not be possible. (https://godoc.org/golang.org/x/sync/errgroup#Group.Go)",
+      "parentUuid": "8191c4e1_5054d859",
+      "revId": "a351d08e8ff1fac3c795310e4102e61a8ddb79bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
