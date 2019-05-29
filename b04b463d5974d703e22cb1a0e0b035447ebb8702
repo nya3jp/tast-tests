@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "324bd202_f3eaaca7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T03:57:44Z",
+      "side": 1,
+      "message": "maybe something like this?\n\nif err :\u003d cmd.Run(); err !\u003d nil {\n    if ws, ok :\u003d testexec.GetWaitStatus(err); ok \u0026\u0026 ws.ExitStatus() \u003d\u003d 1 {\n        s.Log(\"DUT does not support ...\")\n        return\n    }\n    defer cmd.DumpLog(ctx)\n    s.Fatal(\"Failed to run check_powerd_config: \", err)\n}",
+      "revId": "b04b463d5974d703e22cb1a0e0b035447ebb8702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

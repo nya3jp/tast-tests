@@ -69,6 +69,24 @@
       "revId": "5d7d6ed432c89ca9a2bfc7fe433cf098d0985e58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f49d78d_7ce0736b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-29T03:57:44Z",
+      "side": 1,
+      "message": "\u0027ok\u0027 is a go idiom for \"the information you requested was available\". it\u0027s most commonly seen in map lookups:\n\nm :\u003d map[string]int{...}\nif val, ok :\u003d m[\"foo\"]; ok {\n    // do something with val\n} else {\n    // no entry for \"foo\"\n}",
+      "parentUuid": "bd23a630_c05658a4",
+      "revId": "5d7d6ed432c89ca9a2bfc7fe433cf098d0985e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
