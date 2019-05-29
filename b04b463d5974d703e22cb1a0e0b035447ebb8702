@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9526bf2e_b0580bd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-29T04:11:37Z",
+      "side": 1,
+      "message": "Should this be WifiSetTXPower? I\u0027m not sure which is popular, Tx or TX, though. But at least we should be consistent (note that the error message at the bottom of the file says \"Failed to set TX power\").",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 19
+      },
+      "revId": "b04b463d5974d703e22cb1a0e0b035447ebb8702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "324bd202_f3eaaca7",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
         "patchSetId": 4
@@ -13,6 +36,75 @@
       "writtenOn": "2019-05-29T03:57:44Z",
       "side": 1,
       "message": "maybe something like this?\n\nif err :\u003d cmd.Run(); err !\u003d nil {\n    if ws, ok :\u003d testexec.GetWaitStatus(err); ok \u0026\u0026 ws.ExitStatus() \u003d\u003d 1 {\n        s.Log(\"DUT does not support ...\")\n        return\n    }\n    defer cmd.DumpLog(ctx)\n    s.Fatal(\"Failed to run check_powerd_config: \", err)\n}",
+      "revId": "b04b463d5974d703e22cb1a0e0b035447ebb8702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6bcc022_a29be2ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-29T04:11:37Z",
+      "side": 1,
+      "message": "This way, err returned by cmd.Run(), which can contain useful message for debugging, is essentially discarded. To handle it correctly:\n\n if err :\u003d cmd.Run(testexec.DumpLogOnError); err !\u003d nil {\n   if ws, ok :\u003d testexec.GetWaitStatus(err); ok \u0026\u0026 ws.ExitStatus() \u003d\u003d 1 {\n     s.Log(\"DUT does not support WiFi power switching\")\n     return\n   }\n   s.Fatal(\"Failed to run check_powerd_config: \", err)\n }",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 57
+      },
+      "revId": "b04b463d5974d703e22cb1a0e0b035447ebb8702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0e27997_caa3d923",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-29T04:11:37Z",
+      "side": 1,
+      "message": "nit: Please combine the two lines. Also, testexec.DumpLogOnError can be used here:\n\n if err :\u003d testexec.CommandContext(ctx, setTxPowerExe, args...).Run(testexec.DumpLogOnError); err !\u003d nil {\n   ...\n }",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 17
+      },
+      "revId": "b04b463d5974d703e22cb1a0e0b035447ebb8702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d3b220c_581ef119",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-29T04:11:37Z",
+      "side": 1,
+      "message": "When testing several subcases, please try to make the error message clear about the case being tested. For example, if this fails on both tablet/non-tablet mode, errors would be:\n\n Failed to set Tx power: exit status 1\n Failed to set Tx power: exit status 1\n\n\nInstead I recommend something like:\n\n for _, tc :\u003d range []struct {\n   mode string\n   args []string\n }{\n   {\"tablet\", {\"--tablet\"}},\n   {\"non-tablet\", {}},\n } {\n   if err :\u003d ...; err !\u003d nil {\n     s.Error(\"Failed to set TX power in %s mode: %v\", tc.mode, err)\n   }\n }",
+      "range": {
+        "startLine": 49,
+        "startChar": 26,
+        "endLine": 49,
+        "endChar": 35
+      },
       "revId": "b04b463d5974d703e22cb1a0e0b035447ebb8702",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
