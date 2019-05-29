@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b3217202_c1fc4434",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-05-29T01:22:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa7edd40_84c18ce5",
+      "revId": "5d7d6ed432c89ca9a2bfc7fe433cf098d0985e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc125957_d028c8fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "5d7d6ed432c89ca9a2bfc7fe433cf098d0985e58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd23a630_c05658a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-05-29T01:22:28Z",
+      "side": 1,
+      "message": "OK, I think got it right. WaitStatus is fairly under-documented, and I don\u0027t really know what \"ok\" is supposed to mean, but I think I got a working version.",
+      "parentUuid": "fc125957_d028c8fe",
+      "revId": "5d7d6ed432c89ca9a2bfc7fe433cf098d0985e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
