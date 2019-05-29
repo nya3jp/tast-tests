@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fd0f46b0_868e8723",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-05-29T17:41:13Z",
+      "side": 1,
+      "message": "I\u0027ve seen either, but all-caps is probably more common. I\u0027ll go with that.\n\nI got tripped up before, because your name sanitizer doesn\u0027t like regular capitalization like \"WiFi\" in these names:\n\nFailed building or pushing tests: failed to get data file list: Process exited with status 5: exit status 3 (error(s) in registered tests: /home/briannorris/trunk/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go:15: word \"WiFi\" at \"WiFiSetTXPower\"[0] should probably be \"Wifi\" (acronyms also allowed at beginning and end))\n\nso I was a bit scarred and kinda gave up on naming.",
+      "parentUuid": "9526bf2e_b0580bd8",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 19
+      },
+      "revId": "b04b463d5974d703e22cb1a0e0b035447ebb8702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "324bd202_f3eaaca7",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
         "patchSetId": 4
@@ -65,6 +89,48 @@
     },
     {
       "key": {
+        "uuid": "cad9486f_4f891315",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-05-29T17:41:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "324bd202_f3eaaca7",
+      "revId": "b04b463d5974d703e22cb1a0e0b035447ebb8702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44e062a5_7693fba3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-05-29T17:41:13Z",
+      "side": 1,
+      "message": "w.r.t dumping \u0027err\u0027: I got the impression \u0027DumpLog\u0027 was more useful (basically a superset). But I can do both.\n\nI\u0027ll go with Dan\u0027s version I suppose. (I don\u0027t want to dump the log on all errors -- only for exit codes besides 0 or 1.)",
+      "parentUuid": "c6bcc022_a29be2ad",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 57
+      },
+      "revId": "b04b463d5974d703e22cb1a0e0b035447ebb8702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0e27997_caa3d923",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
         "patchSetId": 4
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "00ffcb74_6bb86046",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-05-29T17:41:13Z",
+      "side": 1,
+      "message": "Ah, with DumpLogOnError combining is possible. Thanks!",
+      "parentUuid": "c0e27997_caa3d923",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 17
+      },
+      "revId": "b04b463d5974d703e22cb1a0e0b035447ebb8702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d3b220c_581ef119",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
         "patchSetId": 4
@@ -108,6 +198,30 @@
       "revId": "b04b463d5974d703e22cb1a0e0b035447ebb8702",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b01c03c5_fa331e43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-05-29T17:41:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d3b220c_581ef119",
+      "range": {
+        "startLine": 49,
+        "startChar": 26,
+        "endLine": 49,
+        "endChar": 35
+      },
+      "revId": "b04b463d5974d703e22cb1a0e0b035447ebb8702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
