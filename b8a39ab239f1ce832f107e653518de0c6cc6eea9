@@ -799,6 +799,24 @@
       "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cdd2f67_c0eac20e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/sensors/presence.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-29T16:04:49Z",
+      "side": 1,
+      "message": "you can add me here as well (or should it be a group like chromeos-sensors@google.com)",
+      "parentUuid": "9399f4a6_1a0b279f",
+      "revId": "b8a39ab239f1ce832f107e653518de0c6cc6eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
