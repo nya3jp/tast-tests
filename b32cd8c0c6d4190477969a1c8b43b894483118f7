@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5f4d8e7_a254cf99",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-29T08:08:51Z",
+      "side": 1,
+      "message": "nit: Would you mind explaining which tests will be affected by this change?",
+      "revId": "b32cd8c0c6d4190477969a1c8b43b894483118f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0af9cf2e_13bcedaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-29T08:08:51Z",
+      "side": 1,
+      "message": "huge nit: simply \u0027url\u0027 would be enough.",
+      "range": {
+        "startLine": 106,
+        "startChar": 66,
+        "endLine": 106,
+        "endChar": 75
+      },
+      "revId": "b32cd8c0c6d4190477969a1c8b43b894483118f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "140a7497_c0d88868",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-29T08:08:51Z",
+      "side": 1,
+      "message": "nit: no need?",
+      "range": {
+        "startLine": 183,
+        "startChar": 57,
+        "endLine": 183,
+        "endChar": 60
+      },
+      "revId": "b32cd8c0c6d4190477969a1c8b43b894483118f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "237a19ea_330b7b96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-29T08:08:51Z",
+      "side": 1,
+      "message": "huge nit: no need? because one cannot understand what this is without reading JavaScript code.",
+      "range": {
+        "startLine": 183,
+        "startChar": 26,
+        "endLine": 183,
+        "endChar": 56
+      },
+      "revId": "b32cd8c0c6d4190477969a1c8b43b894483118f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a53faf4_f22c0625",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-29T08:08:51Z",
+      "side": 1,
+      "message": "video.html?",
+      "range": {
+        "startLine": 309,
+        "startChar": 26,
+        "endLine": 309,
+        "endChar": 42
+      },
+      "revId": "b32cd8c0c6d4190477969a1c8b43b894483118f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
