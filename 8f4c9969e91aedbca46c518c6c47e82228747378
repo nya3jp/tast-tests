@@ -22,6 +22,30 @@
       "revId": "8f4c9969e91aedbca46c518c6c47e82228747378",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83784ed3_555ef9d0",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-30T18:18:57Z",
+      "side": 1,
+      "message": "i don\u0027t typically go out of my way to avoid it in go, but sounds fine to me :-)",
+      "parentUuid": "23de2a43_e6b4aabf",
+      "range": {
+        "startLine": 69,
+        "startChar": 11,
+        "endLine": 70,
+        "endChar": 47
+      },
+      "revId": "8f4c9969e91aedbca46c518c6c47e82228747378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
