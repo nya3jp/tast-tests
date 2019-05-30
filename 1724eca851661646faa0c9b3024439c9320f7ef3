@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "59c86715_8fec6e91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-30T07:29:15Z",
+      "side": 1,
+      "message": "Yes, please.\nNote: s.Fatalf(\"...: \", err) would not print |err|, so it\u0027s a real issue.",
+      "parentUuid": "ecde3c36_de588bf7",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 10
+      },
+      "revId": "1724eca851661646faa0c9b3024439c9320f7ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee4891e3_5749c43b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
         "patchSetId": 3
@@ -186,6 +210,30 @@
     },
     {
       "key": {
+        "uuid": "5649d1cd_764d08e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-30T07:29:15Z",
+      "side": 1,
+      "message": "FYI: to be clear, I\u0027d recommend something like\nerrors.Wrapf(err, \"Failed to open: %s\", mount)\n\n(though I think MountInfoForPID can replace the file operations in this method).",
+      "parentUuid": "3d289b32_847c1823",
+      "range": {
+        "startLine": 88,
+        "startChar": 14,
+        "endLine": 88,
+        "endChar": 34
+      },
+      "revId": "1724eca851661646faa0c9b3024439c9320f7ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63ffbf70_cadffe87",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
         "patchSetId": 3
@@ -271,6 +319,29 @@
         "startChar": 24,
         "endLine": 106,
         "endChar": 30
+      },
+      "revId": "1724eca851661646faa0c9b3024439c9320f7ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1235f05b_89433d2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-30T07:29:15Z",
+      "side": 1,
+      "message": "Could you add error message, too?",
+      "range": {
+        "startLine": 109,
+        "startChar": 31,
+        "endLine": 109,
+        "endChar": 33
       },
       "revId": "1724eca851661646faa0c9b3024439c9320f7ef3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
