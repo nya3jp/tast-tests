@@ -2,6 +2,160 @@
   "comments": [
     {
       "key": {
+        "uuid": "97923041_a274c75f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-30T22:14:31Z",
+      "side": 1,
+      "message": "this looks like a vector. if it won\u0027t be applicable to all sensor types, would Vector be a better name?",
+      "revId": "ec019ed403881b57dcde087f7dd7b9472b7aeb6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5907bc21_72a69449",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-30T22:14:31Z",
+      "side": 1,
+      "message": "nit: consider shortening this:\n\n  type SensorReading struct{ X, Y, Z float64 }",
+      "revId": "ec019ed403881b57dcde087f7dd7b9472b7aeb6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82e6bf44_51cf3a5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-30T22:14:31Z",
+      "side": 1,
+      "message": "nit: please use %q when logging strings with unknown content that may contain whitespace",
+      "range": {
+        "startLine": 157,
+        "startChar": 47,
+        "endLine": 157,
+        "endChar": 49
+      },
+      "revId": "ec019ed403881b57dcde087f7dd7b9472b7aeb6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d79d4ba5_d1328e22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-30T22:14:31Z",
+      "side": 1,
+      "message": "nit: fmt.Sprintf(\"in_%s_%s_raw\", rName, axis) seems like it may be clearer and shorter",
+      "revId": "ec019ed403881b57dcde087f7dd7b9472b7aeb6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11fd968d_c1889ded",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-30T22:14:31Z",
+      "side": 1,
+      "message": "nit: \u0027tc\u0027 usually stands for \u0027test case\u0027, so i wouldn\u0027t use it here\n\na map is likely simpler here, though:\n\n  for axis, prop :\u003d range map[string]*float64{\"x\": \u0026ret.X, ...} {",
+      "revId": "ec019ed403881b57dcde087f7dd7b9472b7aeb6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ec0d238_fe1859aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-30T22:14:31Z",
+      "side": 1,
+      "message": "nit: consider using \"sys/bus/iio/devices\" to make this easier to read",
+      "range": {
+        "startLine": 57,
+        "startChar": 45,
+        "endLine": 57,
+        "endChar": 75
+      },
+      "revId": "ec019ed403881b57dcde087f7dd7b9472b7aeb6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfc2d2c2_5594e0f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-30T22:14:31Z",
+      "side": 1,
+      "message": "t.Errorf(\"Error getting sensor reading: \", err)",
+      "revId": "ec019ed403881b57dcde087f7dd7b9472b7aeb6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed5950e8_73052c07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-30T22:14:31Z",
+      "side": 1,
+      "message": "please use \u0027s\u0027 here for consistency with other tests",
+      "range": {
+        "startLine": 32,
+        "startChar": 38,
+        "endLine": 32,
+        "endChar": 40
+      },
+      "revId": "ec019ed403881b57dcde087f7dd7b9472b7aeb6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a237061d_514a5528",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
         "patchSetId": 6
@@ -37,6 +191,29 @@
     },
     {
       "key": {
+        "uuid": "795f8ba1_e76c4d7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-30T22:14:31Z",
+      "side": 1,
+      "message": "nit: sensor? sn?",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 9
+      },
+      "revId": "ec019ed403881b57dcde087f7dd7b9472b7aeb6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5af77cd_c384ec24",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
         "patchSetId": 6
@@ -48,6 +225,29 @@
       "writtenOn": "2019-05-30T20:40:18Z",
       "side": 1,
       "message": "math.Sqrt(r.X*r.X + r.Y*r.Y + r.Z*r.Z) is more readable, we are not going to overflow.",
+      "revId": "ec019ed403881b57dcde087f7dd7b9472b7aeb6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9c15b87_68937af4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-30T22:14:31Z",
+      "side": 1,
+      "message": "nit: consider using something like %.3f for these so the precision doesn\u0027t get out of control",
+      "range": {
+        "startLine": 62,
+        "startChar": 54,
+        "endLine": 62,
+        "endChar": 56
+      },
       "revId": "ec019ed403881b57dcde087f7dd7b9472b7aeb6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
