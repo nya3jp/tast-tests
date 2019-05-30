@@ -105,6 +105,24 @@
     },
     {
       "key": {
+        "uuid": "a2eef27d_98f1c475",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-05-30T15:27:44Z",
+      "side": 1,
+      "message": "Similar to what Mathew did here: https://crrev.com/c/1592273/7/diagnostics/init/wilco_dtc_supportd.conf",
+      "parentUuid": "3d5ba6e0_b6dada76",
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71b3f4a6_cdb171a8",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
         "patchSetId": 2
