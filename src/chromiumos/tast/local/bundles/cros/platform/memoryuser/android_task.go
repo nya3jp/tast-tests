@@ -7,6 +7,7 @@ package memoryuser
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -31,6 +32,7 @@ type AndroidTask struct {
 // Run installs the app APK and runs the test function defined in the AndroidTask in the existing ARC instance.
 func (at *AndroidTask) Run(ctx context.Context, testEnv *TestEnv) error {
 	testing.ContextLog(ctx, "Starting app ", at.APK)
+	startTime := time.Now()
 	if err := testEnv.arc.Install(ctx, at.APKPath); err != nil {
 		return errors.Wrapf(err, "failed installing app %s", at.APKPath)
 	}
@@ -38,7 +40,8 @@ func (at *AndroidTask) Run(ctx context.Context, testEnv *TestEnv) error {
 	if err := testEnv.arc.Command(ctx, "am", "start", "-W", at.Pkg+"/"+at.ActivityName).Run(); err != nil {
 		return errors.Wrapf(err, "failed starting app %s", at.APK)
 	}
-
+	loadingTime := time.Now().Sub(startTime).Seconds()
+	testing.ContextLogf(ctx, "App install/start time for %s: %f", at.APK, loadingTime)
 	at.TestFunc(testEnv.arc, testEnv.arcDevice)
 	return nil
 }
