@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d50621ed_c17085c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-30T01:20:53Z",
+      "side": 1,
+      "message": "huge nit: You don\u0027t need \"Facing\" type here. It\u0027s inferred from the previous entry:\n\nhttps://golang.org/doc/effective_go.html#constants",
+      "range": {
+        "startLine": 26,
+        "startChar": 13,
+        "endLine": 26,
+        "endChar": 19
+      },
+      "revId": "8bc464b8a1b97024d088536ebac493895be8e9c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5eac6829_b90f8e15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-30T01:20:53Z",
+      "side": 1,
+      "message": "Some problems here:\n\n- a.conn.Close must be called for sure to release resources even if a.conn.CloseTarget fails\n- a.conn should be reset even if a.conn.Close fails so that a.conn.Close isn\u0027t called multiple times\n\nTypical way to handle this situation is:\n\n if a.conn \u003d\u003d nil { return nil }\n\n var firstErr error\n\n if err :\u003d a.conn.CloseTarget(ctx); err !\u003d nil \u0026\u0026 firstErr \u003d\u003d nil {\n   firstErr \u003d errors.Wrap(err, \"failed to close target\")\n }\n if err :\u003d a.conn.Close(); err !\u003d nil \u0026\u0026 firstErr \u003d\u003d nil {\n   firstErr \u003d errors.Wrap(err, \"failed to close connection\")\n }\n\n a.conn \u003d nil\n\n return firstErr",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 2
+      },
+      "revId": "8bc464b8a1b97024d088536ebac493895be8e9c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "235ee510_f82a92d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui_multi_camera.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-30T01:20:53Z",
+      "side": 1,
+      "message": "nit: \"const capabilities \u003d\" is not needed.",
+      "range": {
+        "startLine": 30,
+        "startChar": 6,
+        "endLine": 30,
+        "endChar": 27
+      },
+      "revId": "8bc464b8a1b97024d088536ebac493895be8e9c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -378,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "d9be328c_034de5b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-30T01:20:53Z",
+      "side": 1,
+      "message": "Thanks, but unintended situation always happens, so could you please add an else clause with s.Fatal?\n\n if numCameras \u003e 1 { ... }\n else if numCameras \u003d\u003d 1 { ... }\n else {\n   s.Fatal(\"No camera found\")\n }",
+      "parentUuid": "9b198d1f_7fcfd4f5",
+      "range": {
+        "startLine": 68,
+        "startChar": 3,
+        "endLine": 68,
+        "endChar": 28
+      },
+      "revId": "bf0e6c13c798ce488152673ffe8dcb47cef8b489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43345c89_14712b5f",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview.go",
         "patchSetId": 1
@@ -469,6 +493,30 @@
       "revId": "bf0e6c13c798ce488152673ffe8dcb47cef8b489",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "410b74f4_706c4d8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui_multi_camera.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-30T01:20:53Z",
+      "side": 1,
+      "message": "Hmm, that\u0027s unfortunate. Could you please add a comment here describing the background, preferably a TODO to merge with cca_ui.js?",
+      "parentUuid": "1f8ba46b_748795bd",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "bf0e6c13c798ce488152673ffe8dcb47cef8b489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
