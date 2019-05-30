@@ -599,6 +599,24 @@
     },
     {
       "key": {
+        "uuid": "e3375a64_f02259af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-30T00:13:48Z",
+      "side": 1,
+      "message": "not sure i follow, but what\u0027s the docker package referring to? i think hidehiko@ was talking about https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/sysutil#MountInfoForPID",
+      "parentUuid": "0d683c86_5a6304fa",
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e228268e_5993e5ed",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
         "patchSetId": 2
