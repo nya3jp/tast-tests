@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b6a51342_9b3830cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-05-30T05:04:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d555a7d_3363219a",
+      "revId": "f9d1ee3f6550a0cda00b39719ae43f75cc848c08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6eca00c_46045c07",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "f9d1ee3f6550a0cda00b39719ae43f75cc848c08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c647ce69_8bda0ca1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-05-30T05:04:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6eca00c_46045c07",
+      "range": {
+        "startLine": 59,
+        "startChar": 26,
+        "endLine": 59,
+        "endChar": 41
+      },
+      "revId": "f9d1ee3f6550a0cda00b39719ae43f75cc848c08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
