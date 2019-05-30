@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "492a0402_0cdf9bb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-05-30T21:35:15Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "072ff259_620cc304",
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be264718_2795832f",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddbb1f8c_32afc213",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-05-30T21:35:15Z",
+      "side": 1,
+      "message": "I believe it now conforms to godoc. Please let me know if it is not.",
+      "parentUuid": "be264718_2795832f",
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "1f2c2c4b_b3f4dc30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-05-30T21:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3639d967_45e16fe7",
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05263c9e_cc1079bf",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
         "patchSetId": 2
@@ -67,6 +121,24 @@
       "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6723341e_bca2e1fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-05-30T21:35:15Z",
+      "side": 1,
+      "message": "After reading the tast writing tests documentation, it looks like I should always cleanly start the VM. This was an attempt to preserve the state of the system from before the test was run.",
+      "parentUuid": "05263c9e_cc1079bf",
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -123,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "8f6641f4_9d4225de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-05-30T21:35:15Z",
+      "side": 1,
+      "message": "I don\u0027t think we currently have a mechanism to know when the binaries are started. They are currently just launched, and it will take some time to know if they have crashed or not. I\u0027m working on checking if the VM has started, but it require starting a gRPC server which is difficult to do in the upstart script, but should be doable in the tast test. I\u0027ll think on it some more if there is a more robust way.",
+      "parentUuid": "a2eef27d_98f1c475",
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71b3f4a6_cdb171a8",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
         "patchSetId": 2
@@ -143,6 +233,30 @@
       "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89ecbc8b_75bb76e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-05-30T21:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71b3f4a6_cdb171a8",
+      "range": {
+        "startLine": 53,
+        "startChar": 21,
+        "endLine": 53,
+        "endChar": 34
+      },
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -169,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "31b6fa26_2c4bd98e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-05-30T21:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15a1cc49_1fcb778b",
+      "range": {
+        "startLine": 56,
+        "startChar": 15,
+        "endLine": 56,
+        "endChar": 21
+      },
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2da20156_15a54abd",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
         "patchSetId": 2
@@ -189,6 +327,30 @@
       "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21e50f42_f8a013be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-05-30T21:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2da20156_15a54abd",
+      "range": {
+        "startLine": 58,
+        "startChar": 13,
+        "endLine": 58,
+        "endChar": 19
+      },
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -215,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "b43aa897_f5df5a08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-05-30T21:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "625eb5ca_4f3f8ee7",
+      "range": {
+        "startLine": 60,
+        "startChar": 20,
+        "endLine": 60,
+        "endChar": 26
+      },
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53d8bf55_3b6c67d4",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
         "patchSetId": 2
@@ -238,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "1bca67a9_bf050044",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-05-30T21:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53d8bf55_3b6c67d4",
+      "range": {
+        "startLine": 63,
+        "startChar": 11,
+        "endLine": 63,
+        "endChar": 21
+      },
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4e21b5c_625f69dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
         "patchSetId": 2
@@ -252,6 +462,24 @@
       "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "638c4f9b_57ffd1df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-05-30T21:35:15Z",
+      "side": 1,
+      "message": "I think it makes the most sense to always stop it as another facet to the test. This was an attempt to preserve the initial state of the system.",
+      "parentUuid": "d4e21b5c_625f69dd",
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -272,6 +500,24 @@
     },
     {
       "key": {
+        "uuid": "bb908046_45736091",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-05-30T21:35:15Z",
+      "side": 1,
+      "message": "That looks much better. Thanks!",
+      "parentUuid": "39caa564_1546f173",
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d22d6cc7_abb7b909",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
         "patchSetId": 2
@@ -289,6 +535,24 @@
     },
     {
       "key": {
+        "uuid": "5cf06a1d_f8091782",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-05-30T21:35:15Z",
+      "side": 1,
+      "message": "I agree. Done.",
+      "parentUuid": "d22d6cc7_abb7b909",
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1319ebfd_02aa017c",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
         "patchSetId": 2
@@ -303,6 +567,24 @@
       "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccb44b57_d673d78c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-05-30T21:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1319ebfd_02aa017c",
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
