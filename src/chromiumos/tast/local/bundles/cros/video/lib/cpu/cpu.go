@@ -84,7 +84,7 @@ func SetUpBenchmark(ctx context.Context) (shortCtx context.Context, undo func(),
 		cleanupTime         = 10 * time.Second // time reserved for cleanup after running test.
 	)
 
-	var restoreScaling func() error
+	var restoreScaling func()
 	var cancel func()
 	var restoreThrottling func(ctx context.Context) error
 	undo = func() {
@@ -111,7 +111,7 @@ func SetUpBenchmark(ctx context.Context) (shortCtx context.Context, undo func(),
 	shortCtx, cancel = ctxutil.Shorten(ctx, cleanupTime)
 
 	// CPU frequency scaling and thermal throttling might influence our test results.
-	if restoreScaling, err = DisableCPUFrequencyScaling(); err != nil {
+	if restoreScaling, err = DisableCPUFrequencyScaling(ctx); err != nil {
 		return shortCtx, nil, errors.Wrap(err, "failed to disable CPU frequency scaling")
 	}
 	if restoreThrottling, err = DisableThermalThrottling(shortCtx); err != nil {
@@ -204,8 +204,7 @@ func getStat() (*cpu.TimesStat, error) {
 //  - Some Intel-based platforms (e.g. Eve and Nocturne) ignore the values set
 //    in the scaling_governor, and instead use the intel_pstate application to
 //    control CPU frequency scaling.
-func DisableCPUFrequencyScaling() (func() error, error) {
-	origConfig := make(map[string]string)
+func DisableCPUFrequencyScaling(ctx context.Context) (func(), error) {
 	optimizedConfig := make(map[string]string)
 	for glob, value := range map[string]string{
 		"/sys/devices/system/cpu/cpu[0-9]*/cpufreq/scaling_governor": "performance",
@@ -219,32 +218,38 @@ func DisableCPUFrequencyScaling() (func() error, error) {
 			return nil, err
 		}
 		for _, path := range paths {
-			origValue, err := ioutil.ReadFile(path)
-			if err != nil {
-				return nil, err
-			}
-			origConfig[path] = string(origValue)
 			optimizedConfig[path] = value
 		}
 	}
 
-	undo := func() error { return applyConfig(origConfig) }
-	if err := applyConfig(optimizedConfig); err != nil {
-		undo()
-		return nil, err
-	}
+	origConfig := applyConfig(ctx, optimizedConfig)
+	undo := func() { applyConfig(ctx, origConfig) }
 	return undo, nil
 }
 
 // applyConfig applies the specified frequency scaling configuration. A map of
-// path-value pairs need to be provided.
-func applyConfig(config map[string]string) error {
+// path-value pairs need to be provided. A map of the original path-value pairs
+// is returned to allow restoring the original config. On some platforms we
+// might not have the right permissions to disable frequency scaling. In this
+// case we won't return an error but will show a warning, as we are still
+// interested in the test results even though they might be slightly less stable.
+func applyConfig(ctx context.Context, config map[string]string) map[string]string {
+	origConfig := make(map[string]string)
 	for path, value := range config {
-		if err := ioutil.WriteFile(path, []byte(value), 0644); err != nil {
-			return err
+		origValue, err := ioutil.ReadFile(path)
+		if err != nil {
+			testing.ContextLog(ctx, "Warning: failed to read ", path,
+				" while disabling CPU frequency scaling:\n", err)
+			continue
 		}
+		if err := ioutil.WriteFile(path, []byte(value), 0644); err != nil {
+			testing.ContextLog(ctx, "Warning: failed to write to ", path,
+				" while disabling CPU frequency scaling:\n", err)
+			continue
+		}
+		origConfig[path] = string(origValue)
 	}
-	return nil
+	return origConfig
 }
 
 // DisableThermalThrottling disables thermal throttling, as it might interfere
