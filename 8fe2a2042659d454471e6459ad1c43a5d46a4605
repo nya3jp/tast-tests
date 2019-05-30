@@ -87,6 +87,24 @@
     },
     {
       "key": {
+        "uuid": "3d5ba6e0_b6dada76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-05-30T14:57:00Z",
+      "side": 1,
+      "message": "You may need to add a post-start to your upstart config which waits until the VM is in a usable state.",
+      "parentUuid": "93e8b0e7_06a71416",
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71b3f4a6_cdb171a8",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
         "patchSetId": 2
