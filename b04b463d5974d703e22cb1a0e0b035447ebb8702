@@ -251,6 +251,30 @@
     },
     {
       "key": {
+        "uuid": "7a278310_b14f820e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-05-30T00:29:05Z",
+      "side": 1,
+      "message": "Ack, thanks!",
+      "parentUuid": "da7b4af1_2bb65bef",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 57
+      },
+      "revId": "b04b463d5974d703e22cb1a0e0b035447ebb8702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0e27997_caa3d923",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_set_tx_power.go",
         "patchSetId": 4
