@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d7338413_59fddf0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-05-30T00:05:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f35325c_0f09ca5b",
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc8b1137_4d2f1d80",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "b3eff5b5_85ac5292",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-05-30T00:05:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc8b1137_4d2f1d80",
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a08cec29_cd187482",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
         "patchSetId": 2
@@ -50,6 +86,24 @@
       "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee86ef48_4bac16d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-05-30T00:05:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a08cec29_cd187482",
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "7c1916ca_065e2357",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-05-30T00:05:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "181c5b99_1e890e5b",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 5
+      },
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ccff153_3f6279bd",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
         "patchSetId": 2
@@ -90,6 +168,24 @@
       "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "840340ee_5e2eb700",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-05-30T00:05:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ccff153_3f6279bd",
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "b2d062c1_b32892d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-05-30T00:05:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9326920a_212a50e4",
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e0bb258_d25a0134",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
         "patchSetId": 2
@@ -124,6 +238,24 @@
       "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "123de719_c765e1ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-05-30T00:05:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e0bb258_d25a0134",
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -150,6 +282,30 @@
     },
     {
       "key": {
+        "uuid": "616ecaa1_1f5fc88b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-05-30T00:05:24Z",
+      "side": 1,
+      "message": "method does remove trailing \u0027/\u0027 when merging, but that is ok. cleaner to read.",
+      "parentUuid": "39b2c6e6_7141a400",
+      "range": {
+        "startLine": 54,
+        "startChar": 31,
+        "endLine": 54,
+        "endChar": 32
+      },
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92cf34ed_db97d325",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
         "patchSetId": 2
@@ -167,6 +323,24 @@
     },
     {
       "key": {
+        "uuid": "5f00f121_907d5f77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-05-30T00:05:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92cf34ed_db97d325",
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67edf0ce_0952acba",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
         "patchSetId": 2
@@ -181,6 +355,24 @@
       "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7121079b_8705e60a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-05-30T00:05:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67edf0ce_0952acba",
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -207,6 +399,30 @@
     },
     {
       "key": {
+        "uuid": "796d5727_eb6c1194",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-05-30T00:05:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e4c1cb8_4cdde5e4",
+      "range": {
+        "startLine": 74,
+        "startChar": 13,
+        "endLine": 74,
+        "endChar": 91
+      },
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53a873ab_b7a55b3a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
         "patchSetId": 2
@@ -227,6 +443,30 @@
       "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bda950c2_a744f3ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-05-30T00:05:24Z",
+      "side": 1,
+      "message": "ReplaceAll",
+      "parentUuid": "53a873ab_b7a55b3a",
+      "range": {
+        "startLine": 76,
+        "startChar": 8,
+        "endLine": 76,
+        "endChar": 50
+      },
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -253,6 +493,30 @@
     },
     {
       "key": {
+        "uuid": "00391eb4_3525ef50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-05-30T00:05:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af7ca3c7_b8411ac9",
+      "range": {
+        "startLine": 83,
+        "startChar": 9,
+        "endLine": 83,
+        "endChar": 19
+      },
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "296977a5_0d25c809",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
         "patchSetId": 2
@@ -276,6 +540,30 @@
     },
     {
       "key": {
+        "uuid": "bb7d815d_b9c23aa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-05-30T00:05:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "296977a5_0d25c809",
+      "range": {
+        "startLine": 85,
+        "startChar": 68,
+        "endLine": 85,
+        "endChar": 71
+      },
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ddb267b_65712869",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
         "patchSetId": 2
@@ -290,6 +578,24 @@
       "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d683c86_5a6304fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-05-30T00:05:24Z",
+      "side": 1,
+      "message": "not sure https://godoc.org/github.com/docker/docker/pkg/mount#Info contains the info that I am looking for \"/dev/xxx\" we could look at the major/minor then get the root partion then see if the id matches?\nright not /dev/xxx is used to match with the root partition.\nwould rather keep it the same.",
+      "parentUuid": "9ddb267b_65712869",
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -339,6 +645,54 @@
     },
     {
       "key": {
+        "uuid": "501bd1bc_66f6fda8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-05-30T00:05:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b76e83e9_505bde8c",
+      "range": {
+        "startLine": 91,
+        "startChar": 9,
+        "endLine": 91,
+        "endChar": 19
+      },
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "121d90ae_7966cfad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-05-30T00:05:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e228268e_5993e5ed",
+      "range": {
+        "startLine": 91,
+        "startChar": 21,
+        "endLine": 91,
+        "endChar": 24
+      },
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f15ff43c_9dcad66a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
         "patchSetId": 2
@@ -382,6 +736,54 @@
       "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "962ccf3a_dbac7884",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-05-30T00:05:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f15ff43c_9dcad66a",
+      "range": {
+        "startLine": 118,
+        "startChar": 19,
+        "endLine": 118,
+        "endChar": 40
+      },
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb5518da_c3c41283",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-05-30T00:05:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b271f37b_6ba7865d",
+      "range": {
+        "startLine": 118,
+        "startChar": 43,
+        "endLine": 118,
+        "endChar": 51
+      },
+      "revId": "6318e466ebbf2d3b2a7d9b30f5b06f42a7003c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
