@@ -402,6 +402,30 @@
     },
     {
       "key": {
+        "uuid": "e5a80a45_1ad002b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-05-30T05:00:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9be328c_034de5b3",
+      "range": {
+        "startLine": 68,
+        "startChar": 3,
+        "endLine": 68,
+        "endChar": 28
+      },
+      "revId": "bf0e6c13c798ce488152673ffe8dcb47cef8b489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43345c89_14712b5f",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview.go",
         "patchSetId": 1
@@ -517,6 +541,30 @@
       "revId": "bf0e6c13c798ce488152673ffe8dcb47cef8b489",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90659f30_44b35134",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui_multi_camera.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-05-30T05:00:52Z",
+      "side": 1,
+      "message": "I added a comment to explain the reason, but I think it\u0027s better to keep them in separate files. We are going to have a lot of cca_ui_* tests, and putting all the JS in one file will be unmaintainable at some point.",
+      "parentUuid": "410b74f4_706c4d8a",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "bf0e6c13c798ce488152673ffe8dcb47cef8b489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
