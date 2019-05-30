@@ -90,7 +90,9 @@ func SetUpBenchmark(ctx context.Context) (shortCtx context.Context, undo func(),
 	undo = func() {
 		cancel()
 		if restoreScaling != nil {
-			restoreScaling()
+			if err := restoreScaling(); err != nil {
+				testing.ContextLog(ctx, "Failed to restore CPU frequency scaling to original values: ", err)
+			}
 		}
 		if restoreThrottling != nil {
 			restoreThrottling(ctx)
@@ -111,7 +113,7 @@ func SetUpBenchmark(ctx context.Context) (shortCtx context.Context, undo func(),
 	shortCtx, cancel = ctxutil.Shorten(ctx, cleanupTime)
 
 	// CPU frequency scaling and thermal throttling might influence our test results.
-	if restoreScaling, err = DisableCPUFrequencyScaling(); err != nil {
+	if restoreScaling, err = DisableCPUFrequencyScaling(ctx); err != nil {
 		return shortCtx, nil, errors.Wrap(err, "failed to disable CPU frequency scaling")
 	}
 	if restoreThrottling, err = DisableThermalThrottling(shortCtx); err != nil {
@@ -195,6 +197,15 @@ func getStat() (*cpu.TimesStat, error) {
 	return &times[0], nil
 }
 
+// cpuConfigEntry holds a single CPU config entry. If ignoreErrors is true
+// failure to apply the config will result in a warning, rather than an error.
+// This is needed as on some platforms we might not have the right permissions
+// to disable frequency scaling.
+type cpuConfigEntry struct {
+	value        string
+	ignoreErrors bool
+}
+
 // DisableCPUFrequencyScaling disables frequency scaling. All CPU cores will be
 // set to always run at their maximum frequency. A function is returned so the
 // caller can restore the original CPU frequency scaling configuration.
@@ -204,32 +215,31 @@ func getStat() (*cpu.TimesStat, error) {
 //  - Some Intel-based platforms (e.g. Eve and Nocturne) ignore the values set
 //    in the scaling_governor, and instead use the intel_pstate application to
 //    control CPU frequency scaling.
-func DisableCPUFrequencyScaling() (func() error, error) {
-	origConfig := make(map[string]string)
-	optimizedConfig := make(map[string]string)
-	for glob, value := range map[string]string{
-		"/sys/devices/system/cpu/cpu[0-9]*/cpufreq/scaling_governor": "performance",
-		"/sys/class/devfreq/devfreq[0-9]*/governor":                  "performance",
-		"/sys/devices/system/cpu/intel_pstate/no_turbo":              "1",
-		"/sys/devices/system/cpu/intel_pstate/min_perf_pct":          "100",
-		"/sys/devices/system/cpu/intel_pstate/max_perf_pct":          "100",
+func DisableCPUFrequencyScaling(ctx context.Context) (func() error, error) {
+	optimizedConfig := make(map[string]cpuConfigEntry)
+	for glob, config := range map[string]cpuConfigEntry{
+		"/sys/devices/system/cpu/cpu[0-9]*/cpufreq/scaling_governor": {"performance", false},
+		"/sys/class/devfreq/devfreq[0-9]*/governor":                  {"performance", false},
+		// crbug.com/938729: BIOS settings might prevent us from overwriting intel_pstate/no_turbo.
+		"/sys/devices/system/cpu/intel_pstate/no_turbo":     {"1", true},
+		"/sys/devices/system/cpu/intel_pstate/min_perf_pct": {"100", false},
+		"/sys/devices/system/cpu/intel_pstate/max_perf_pct": {"100", false},
 	} {
 		paths, err := filepath.Glob(glob)
 		if err != nil {
 			return nil, err
 		}
 		for _, path := range paths {
-			origValue, err := ioutil.ReadFile(path)
-			if err != nil {
-				return nil, err
-			}
-			origConfig[path] = string(origValue)
-			optimizedConfig[path] = value
+			optimizedConfig[path] = config
 		}
 	}
 
-	undo := func() error { return applyConfig(origConfig) }
-	if err := applyConfig(optimizedConfig); err != nil {
+	origConfig, err := applyConfig(ctx, optimizedConfig)
+	undo := func() error {
+		_, err := applyConfig(ctx, origConfig)
+		return err
+	}
+	if err != nil {
 		undo()
 		return nil, err
 	}
@@ -237,14 +247,31 @@ func DisableCPUFrequencyScaling() (func() error, error) {
 }
 
 // applyConfig applies the specified frequency scaling configuration. A map of
-// path-value pairs need to be provided.
-func applyConfig(config map[string]string) error {
-	for path, value := range config {
-		if err := ioutil.WriteFile(path, []byte(value), 0644); err != nil {
-			return err
+// path-value pairs needs to be provided. A map of the original path-value pairs
+// is returned to allow restoring the original config. If ignoreErrors is true
+// for a config entry we won't return an error upon failure, but will only show
+// a warning.
+func applyConfig(ctx context.Context, cpuConfig map[string]cpuConfigEntry) (map[string]cpuConfigEntry, error) {
+	origConfig := make(map[string]cpuConfigEntry)
+	for path, config := range cpuConfig {
+		origValue, err := ioutil.ReadFile(path)
+		if err != nil {
+			if !config.ignoreErrors {
+				return origConfig, err
+			}
+			testing.ContextLogf(ctx, "Failed to read %v while disabling CPU frequency scaling: %v", path, err)
+			continue
 		}
+		if err = ioutil.WriteFile(path, []byte(config.value), 0644); err != nil {
+			if !config.ignoreErrors {
+				return origConfig, err
+			}
+			testing.ContextLogf(ctx, "Failed to write to %v while disabling CPU frequency scaling: %v", path, err)
+			continue
+		}
+		origConfig[path] = cpuConfigEntry{string(origValue), false}
 	}
-	return nil
+	return origConfig, nil
 }
 
 // DisableThermalThrottling disables thermal throttling, as it might interfere
