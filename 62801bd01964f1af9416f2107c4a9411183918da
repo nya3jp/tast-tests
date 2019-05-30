@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea392d70_ab9847a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_suggestions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-30T18:02:03Z",
+      "side": 1,
+      "message": "nit: please add an end-of-line comment like \"// Temporarily demoted: https://crbug.com/968589\"",
+      "revId": "62801bd01964f1af9416f2107c4a9411183918da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
