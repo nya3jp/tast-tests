@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12477365_f1f8e1e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-30T22:02:06Z",
+      "side": 1,
+      "message": "do you actually need to stop it first, or can you just use EnsureJobRunning?\n\nif the intent is to restart it (or start it if it isn\u0027t already running), then please just use a single call to upstart.RestartJob\n\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/upstart#RestartJob",
+      "revId": "784cc3c1058275fc6a1a384d905ce97cfcdc3918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd37da6c_2f10c44a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-30T22:02:06Z",
+      "side": 1,
+      "message": "nit: Unable\n\ns.Fatal, s.Error, s.Log, testing.ContextLog*, etc. should always be capitalized, while the strings associated with the error type are lowercase\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 38,
+        "startChar": 11,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "784cc3c1058275fc6a1a384d905ce97cfcdc3918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fa2270b_86996687",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-30T22:02:06Z",
+      "side": 1,
+      "message": "nit: Wilco",
+      "range": {
+        "startLine": 41,
+        "startChar": 11,
+        "endLine": 41,
+        "endChar": 16
+      },
+      "revId": "784cc3c1058275fc6a1a384d905ce97cfcdc3918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca06f63f_99f6ae7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-30T22:02:06Z",
+      "side": 1,
+      "message": "instead of calling testing.Sleep here, you could use testing.Poll to wait for pgrep to report that each process is running. that would ensure that you\u0027re waiting as long as needed, but not too long.",
+      "revId": "784cc3c1058275fc6a1a384d905ce97cfcdc3918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0611c01e_246f56c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-30T22:02:06Z",
+      "side": 1,
+      "message": "nit: shorter: \"--cid\u003d\"+wilcoVMCID",
+      "range": {
+        "startLine": 50,
+        "startChar": 10,
+        "endLine": 50,
+        "endChar": 45
+      },
+      "revId": "784cc3c1058275fc6a1a384d905ce97cfcdc3918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdf80288_8cb88a9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-30T22:02:06Z",
+      "side": 1,
+      "message": "do you actually need to do this? if you just leave Stdin set to its default value of nil, it\u0027s documented as reading from os.DevNull, which is presumably equivalent\n\nhttps://golang.org/pkg/os/exec/#Cmd",
+      "revId": "784cc3c1058275fc6a1a384d905ce97cfcdc3918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dd1f335_02b6fb5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-30T22:02:06Z",
+      "side": 1,
+      "message": "nit: consider condensing this:\n\nif err :\u003d upstart.StopJob(...); err !\u003d nil {\n    ...",
+      "revId": "784cc3c1058275fc6a1a384d905ce97cfcdc3918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
