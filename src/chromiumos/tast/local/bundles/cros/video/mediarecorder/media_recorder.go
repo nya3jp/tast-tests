@@ -18,6 +18,7 @@ import (
 	"github.com/pixelbender/go-matroska/matroska"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/video/lib/audio"
 	"chromiumos/tast/local/bundles/cros/video/lib/constants"
 	"chromiumos/tast/local/bundles/cros/video/lib/cpu"
 	"chromiumos/tast/local/bundles/cros/video/lib/histogram"
@@ -60,6 +61,11 @@ func getMetricName(name string, hwAccelUsed bool) string {
 
 // MeasurePerf measures the frame processing time and CPU usage while recording and report the results.
 func MeasurePerf(ctx context.Context, fileSystem http.FileSystem, outDir string, codec videotype.Codec, streamFile string, fps int) error {
+	if err := audio.Mute(ctx); err != nil {
+		return errors.Errorf("Failed to mute device: ", err)
+	}
+	defer audio.Unmute(ctx)
+
 	p := perf.NewValues()
 	hwAccelUsed, err := measureAndReport(ctx, fileSystem, outDir, codec, streamFile, fps, true, p)
 	if err != nil {
@@ -266,6 +272,11 @@ func measureCPUUsage(ctx context.Context, conn *chrome.Conn) (usage float64, err
 // VerifyEncodeAccelUsed checks whether HW encode is used for given codec when running
 // MediaRecorder.
 func VerifyEncodeAccelUsed(ctx context.Context, s *testing.State, codec videotype.Codec) {
+	if err := audio.Mute(ctx); err != nil {
+		s.Fatal("Failed to mute device: ", err)
+	}
+	defer audio.Unmute(ctx)
+
 	chromeArgs := []string{
 		logging.ChromeVmoduleFlag(),
 		// See https://webrtc.org/testing/
