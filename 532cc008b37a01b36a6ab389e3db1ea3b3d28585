@@ -1,0 +1,250 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20d26682_a7a71433",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-30T16:46:58Z",
+      "side": 1,
+      "message": "style: In most cases, receiver var is one or two letters. How about just \"s\"? (and rename \"s\" below, instead)?",
+      "range": {
+        "startLine": 142,
+        "startChar": 6,
+        "endLine": 142,
+        "endChar": 20
+      },
+      "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a33439a_1c9bc76f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-30T16:46:58Z",
+      "side": 1,
+      "message": "Could you wrap err instances returned from standard or thirdparty libraries by errors.Wrap() or errors.Wrapf() so that stacktrace will be printed in case of failure?\nDitto for below.",
+      "range": {
+        "startLine": 152,
+        "startChar": 14,
+        "endLine": 152,
+        "endChar": 17
+      },
+      "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96af3c88_6081ede3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-30T16:46:58Z",
+      "side": 1,
+      "message": "t.Error(\"Error getting sensor reading: \", err)\n\n(could you use non-\"f\"-suffixed version, and print err instance?)",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 42
+      },
+      "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aba2413f_124aa5a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-30T16:46:58Z",
+      "side": 1,
+      "message": "golang prefers shorter name. How about just \"expected\"?",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 16
+      },
+      "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7760aff6_a0046f91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-30T16:46:58Z",
+      "side": 1,
+      "message": "style: in this kind of case, could you follow the \"actual value\" -\u003e \"expected value\" order?\nE.g. \"Unexpected reading: got %v; want %v\", reading, expected.\nfor consistency?",
+      "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8959419a_b2f5f4c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-30T16:46:58Z",
+      "side": 1,
+      "message": "Could you move the constant declaration into the function body in order not to unnecessary leak the scope?\n\nAlso, could you consolidate those declaration into a block?\n\nconst (\n  accel1g \u003d ...\n  accelErr \u003d ...\n)",
+      "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3637b908_e4aa3e98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-30T16:46:58Z",
+      "side": 1,
+      "message": "optional: preferring shorter name, how about \"sensors\" ?",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 11
+      },
+      "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f8909d5_3f7e01c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-30T16:46:58Z",
+      "side": 1,
+      "message": "optional: ditto. how about \"s\" ?",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 14
+      },
+      "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea8f10bc_9cb27280",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-30T16:46:58Z",
+      "side": 1,
+      "message": "If sensors does not contain Accel \"accidentally\", this whole test would pass unexpectedly.\nIs it possible to guard by SoftwareDeps, and to make sure dutSensors contain the one this test needs?",
+      "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2acbed03_b9c27785",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-30T16:46:58Z",
+      "side": 1,
+      "message": "Could you print err, too?\n\ns.Errorf(\"... from %v %v: %v\", sensor.Location, sensor.name, err)",
+      "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50876e05_c32ada6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-30T16:46:58Z",
+      "side": 1,
+      "message": "Clarification: no need to worry about overflow? If so, math.Hypot may be needed.",
+      "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "405b9c68_b1b2ac25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-30T16:46:58Z",
+      "side": 1,
+      "message": "ditto for the printing order.",
+      "range": {
+        "startLine": 59,
+        "startChar": 49,
+        "endLine": 59,
+        "endChar": 73
+      },
+      "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
