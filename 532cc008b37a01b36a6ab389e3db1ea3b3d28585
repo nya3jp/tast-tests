@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ec6d3a5b_f76a8cc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-05-30T18:57:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20d26682_a7a71433",
+      "range": {
+        "startLine": 142,
+        "startChar": 6,
+        "endLine": 142,
+        "endChar": 20
+      },
+      "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a33439a_1c9bc76f",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc623701_0d89421e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-05-30T18:57:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a33439a_1c9bc76f",
+      "range": {
+        "startLine": 152,
+        "startChar": 14,
+        "endLine": 152,
+        "endChar": 17
+      },
+      "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "91a703ac_87a71a21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-05-30T18:57:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96af3c88_6081ede3",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 42
+      },
+      "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aba2413f_124aa5a4",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio_test.go",
         "patchSetId": 5
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "dfd78390_b0215605",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-05-30T18:57:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aba2413f_124aa5a4",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 16
+      },
+      "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7760aff6_a0046f91",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio_test.go",
         "patchSetId": 5
@@ -111,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "b252110e_c0f240ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-05-30T18:57:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7760aff6_a0046f91",
+      "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8959419a_b2f5f4c9",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
         "patchSetId": 5
@@ -125,6 +239,24 @@
       "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2edb0cf5_c9ed8d26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-05-30T18:57:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8959419a_b2f5f4c9",
+      "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "aec9fab0_929b2813",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-05-30T18:57:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3637b908_e4aa3e98",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 11
+      },
+      "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f8909d5_3f7e01c4",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
         "patchSetId": 5
@@ -174,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "fda7eb47_a6bd69c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-05-30T18:57:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f8909d5_3f7e01c4",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 14
+      },
+      "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea8f10bc_9cb27280",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
         "patchSetId": 5
@@ -188,6 +368,24 @@
       "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5eeaccf9_adeceec4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-05-30T18:57:12Z",
+      "side": 1,
+      "message": "We do not have a good way of knowing if a board will have an accelerometer or not based on a use flag. The best we have is to check if the hardware feature is enabled with cros_config which is what sensor_presence.go is doing. So you are correct this will run on DUTs without accelerometers and pass without actually doing anything but we don\u0027t have a good way around that at the moment.",
+      "parentUuid": "ea8f10bc_9cb27280",
+      "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -208,6 +406,24 @@
     },
     {
       "key": {
+        "uuid": "822321ba_684d4474",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-05-30T18:57:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2acbed03_b9c27785",
+      "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50876e05_c32ada6a",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
         "patchSetId": 5
@@ -222,6 +438,24 @@
       "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6471b77d_14843773",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-05-30T18:57:12Z",
+      "side": 1,
+      "message": "Hypot sgtm, done",
+      "parentUuid": "50876e05_c32ada6a",
+      "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -245,6 +479,30 @@
       "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46cbcef7_a1368b05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-05-30T18:57:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "405b9c68_b1b2ac25",
+      "range": {
+        "startLine": 59,
+        "startChar": 49,
+        "endLine": 59,
+        "endChar": 73
+      },
+      "revId": "532cc008b37a01b36a6ab389e3db1ea3b3d28585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
