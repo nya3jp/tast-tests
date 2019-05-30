@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f98deabd_418b7613",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_recorder_perf_h264.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-30T04:48:17Z",
+      "side": 1,
+      "message": "nit: please move this to a single line:\n\n  const fps \u003d 30",
+      "revId": "200d0927c38c06f36c8d7339a05f5b342dd5545a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64dbbc56_86d9e254",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_recorder_perf_vp8.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-30T04:48:17Z",
+      "side": 1,
+      "message": "nit: single line",
+      "revId": "200d0927c38c06f36c8d7339a05f5b342dd5545a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b62896c6_8f019985",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/media_recorder_perf_vp9.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-30T04:48:17Z",
+      "side": 1,
+      "message": "nit: single line",
+      "revId": "200d0927c38c06f36c8d7339a05f5b342dd5545a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39682b7e_2f686739",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-30T04:48:17Z",
+      "side": 1,
+      "message": "please make this a godoc-style comment since the constant is exported:\n\n  // PerfStreamFile is the name of the data file used for performance testing.",
+      "revId": "200d0927c38c06f36c8d7339a05f5b342dd5545a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
