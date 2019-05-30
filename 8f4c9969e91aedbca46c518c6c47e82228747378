@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23de2a43_e6b4aabf",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-30T14:44:33Z",
+      "side": 1,
+      "message": "nit/style/optional: we often avoid to add LF like this?",
+      "range": {
+        "startLine": 69,
+        "startChar": 11,
+        "endLine": 70,
+        "endChar": 47
+      },
+      "revId": "8f4c9969e91aedbca46c518c6c47e82228747378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
