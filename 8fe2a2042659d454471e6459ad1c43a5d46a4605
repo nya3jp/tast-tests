@@ -231,6 +231,24 @@
     },
     {
       "key": {
+        "uuid": "ac159e0a_b81a4b66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2019-05-31T02:01:24Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the binaries be connecting to some service on the host?  Can we somehow check with that service when it receives the connection?",
+      "parentUuid": "8f6641f4_9d4225de",
+      "revId": "8fe2a2042659d454471e6459ad1c43a5d46a4605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71b3f4a6_cdb171a8",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
         "patchSetId": 2
