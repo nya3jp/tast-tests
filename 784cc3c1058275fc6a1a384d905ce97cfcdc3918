@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6781430a_ebb0b9ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-05-31T20:28:48Z",
+      "side": 1,
+      "message": "Sounds good, using RestartJob.",
+      "parentUuid": "12477365_f1f8e1e4",
+      "revId": "784cc3c1058275fc6a1a384d905ce97cfcdc3918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd37da6c_2f10c44a",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "784cc3c1058275fc6a1a384d905ce97cfcdc3918",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aff3b8e8_4d6a5637",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-05-31T20:28:48Z",
+      "side": 1,
+      "message": "Done. Sorry I misinterpreted that section of the documentation.",
+      "parentUuid": "dd37da6c_2f10c44a",
+      "range": {
+        "startLine": 38,
+        "startChar": 11,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "784cc3c1058275fc6a1a384d905ce97cfcdc3918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "6d18f4fb_974c4130",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-05-31T20:28:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fa2270b_86996687",
+      "range": {
+        "startLine": 41,
+        "startChar": 11,
+        "endLine": 41,
+        "endChar": 16
+      },
+      "revId": "784cc3c1058275fc6a1a384d905ce97cfcdc3918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca06f63f_99f6ae7c",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
         "patchSetId": 3
@@ -79,6 +145,24 @@
       "revId": "784cc3c1058275fc6a1a384d905ce97cfcdc3918",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e6f5477_bebf0c44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-05-31T20:28:48Z",
+      "side": 1,
+      "message": "Yes that seem much better. Adding logic for polling.",
+      "parentUuid": "ca06f63f_99f6ae7c",
+      "revId": "784cc3c1058275fc6a1a384d905ce97cfcdc3918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "3aa4d008_6d485f9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-05-31T20:28:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0611c01e_246f56c7",
+      "range": {
+        "startLine": 50,
+        "startChar": 10,
+        "endLine": 50,
+        "endChar": 45
+      },
+      "revId": "784cc3c1058275fc6a1a384d905ce97cfcdc3918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdf80288_8cb88a9c",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
         "patchSetId": 3
@@ -122,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "2211afa1_01a39127",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-05-31T20:28:48Z",
+      "side": 1,
+      "message": "Sorry I copied this line from the vm.Command call, but forgot to include the comment. https://crrev.com/7b6d58b4aa7a60657c99ca4542d75cedd218399b/src/chromiumos/tast/local/vm/vm.go#68 If you don\u0027t add the buffer, the output is polluted with the warning message. I added the comment back.",
+      "parentUuid": "cdf80288_8cb88a9c",
+      "revId": "784cc3c1058275fc6a1a384d905ce97cfcdc3918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6dd1f335_02b6fb5d",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
         "patchSetId": 3
@@ -136,6 +262,24 @@
       "revId": "784cc3c1058275fc6a1a384d905ce97cfcdc3918",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e195bf63_243775a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-05-31T20:28:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dd1f335_02b6fb5d",
+      "revId": "784cc3c1058275fc6a1a384d905ce97cfcdc3918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
