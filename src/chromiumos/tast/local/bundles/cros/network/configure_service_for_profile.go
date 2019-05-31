@@ -11,6 +11,7 @@ import (
 
 	"github.com/godbus/dbus"
 
+	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )
@@ -32,6 +33,14 @@ func ConfigureServiceForProfile(ctx context.Context, s *testing.State) {
 		objectPath = dbus.ObjectPath("/profile/default")
 	)
 
+	// We lose connectivity along the way here, and if that races with the
+	// recover_duts network-recovery hooks, it may interrupt us.
+	unlock, err := network.LockCheckNetworkHook(ctx)
+	if err != nil {
+		s.Fatal("Failed to lock the check network hook: ", err)
+	}
+	defer unlock()
+
 	// Stop shill temporarily and remove the default profile.
 	if err := shill.SafeStop(ctx); err != nil {
 		s.Fatal("Failed stopping shill: ", err)
@@ -45,6 +54,13 @@ func ConfigureServiceForProfile(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed creating shill manager proxy: ", err)
 	}
+
+	// Clean up custom services on exit.
+	defer func() {
+		shill.SafeStop(ctx)
+		os.Remove(filePath)
+		shill.SafeStart(ctx)
+	}()
 
 	props := map[string]interface{}{
 		"Type":                 "ethernet",
