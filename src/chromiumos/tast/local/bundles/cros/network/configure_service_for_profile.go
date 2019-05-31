@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"github.com/godbus/dbus"
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
@@ -29,8 +30,26 @@ func init() {
 func ConfigureServiceForProfile(ctx context.Context, s *testing.State) {
 	const (
 		filePath   = "/var/cache/shill/default.profile"
+		lockPath   = "/run/autotest_pause_ethernet_hook"
 		objectPath = dbus.ObjectPath("/profile/default")
 	)
+
+	// We lose connectivity along the way here, and if that races with
+	// check_ethernet.hook, it may interrupt us.
+	f, _ := os.Create(lockPath)
+	defer unix.Flock(int(f.Fd()), unix.LOCK_UN)
+	c := make(chan error)
+	go func() {
+		c <- unix.Flock(int(f.Fd()), unix.LOCK_SH)
+	}()
+	select {
+	case err := <-c:
+		if err != nil {
+			s.Fatalf("Failed to acquire lock %s: %v", lockPath, err)
+		}
+	case <-time.After(time.Second * 20):
+		s.Fatal("Timed out acquiring lock ", lockPath)
+	}
 
 	// Stop shill temporarily and remove the default profile.
 	if err := shill.SafeStop(ctx); err != nil {
@@ -45,6 +64,13 @@ func ConfigureServiceForProfile(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed creating shill manager proxy: ", err)
 	}
+
+	// Clean up custom services on exit.
+	defer func() {
+		shill.SafeStop(ctx)
+		os.Remove(filePath)
+		shill.SafeStart(ctx)
+	}()
 
 	props := map[string]interface{}{
 		"Type":                 "ethernet",
