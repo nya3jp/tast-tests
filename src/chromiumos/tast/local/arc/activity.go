@@ -79,7 +79,7 @@ type taskInfo struct {
 	stackID int
 	// stackSize represents how many activities are in the stack.
 	stackSize int
-	// bounds represents the task bounds in pixels.
+	// bounds represents the task bounds in pixels. Caption is not taken into account.
 	bounds Rect
 	// windowState represents the window state.
 	windowState WindowState
@@ -199,6 +199,7 @@ func (ac *Activity) WindowBounds(ctx context.Context) (Rect, error) {
 		return Rect{}, errors.Wrap(err, "failed to get caption height")
 	}
 	t.bounds.Top -= captionHeight
+	t.bounds.Height += captionHeight
 	return t.bounds, nil
 }
 
@@ -309,7 +310,10 @@ func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to Poin
 	}
 
 	// Default value: center of window.
-	bounds := task.bounds
+	bounds, err := ac.WindowBounds(ctx)
+	if err != nil {
+		return errors.Wrap(err, "could not get activity bounds")
+	}
 	src := Point{
 		bounds.Left + bounds.Width/2,
 		bounds.Top + bounds.Height/2,
