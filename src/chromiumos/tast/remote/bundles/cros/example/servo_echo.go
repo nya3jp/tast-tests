@@ -17,7 +17,7 @@ func init() {
 		Func:     ServoEcho,
 		Desc:     "Demonstrates running a test using Servo",
 		Contacts: []string{"jeffcarp@chromium.org", "derat@chromium.org", "tast-users@chromium.org"},
-		Attr:     []string{"disabled", "informational"},
+		Attr:     []string{"informational"},
 		Vars:     []string{"servo"},
 	})
 }
@@ -29,6 +29,8 @@ func ServoEcho(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get DUT")
 	}
 
+	// This is expected to fail in VMs, since Servo is unusable there and the "servo" var won't
+	// be supplied. https://crbug.com/967901 tracks finding a way to skip tests when needed.
 	pxy, err := servo.NewProxy(ctx, s.RequiredVar("servo"), dut.KeyFile(), dut.KeyDir())
 	if err != nil {
 		s.Log("Failed to connect to servo: ", err)
