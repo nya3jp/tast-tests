@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "740c6df0_798e45c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-31T06:41:50Z",
+      "side": 1,
+      "message": "Could you handle error properly?",
+      "revId": "e00c546825532a0477388dc20bf2a494a6ef6da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50b7536f_42f9ba50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-31T06:41:50Z",
+      "side": 1,
+      "message": "Could you use syscall.Flock, instead (specifically at L43)?\nhttps://golang.org/pkg/syscall/#Flock",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 17
+      },
+      "revId": "e00c546825532a0477388dc20bf2a494a6ef6da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e117be81_b8212eb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-31T06:41:50Z",
+      "side": 1,
+      "message": "This code structure looks to have a several issues;\n- |f| is not closed.\n- ctx timeout is not awere during flock waiting.\n- Looks to have timing issue as follows;\nIn case of timeout (i.e., some another service holds a lock), flock(fd, LOCK_UN) is called during flock(fd, LOCK_SH), then the other service unlocks and this holds the lock.\nIn this situation, because Tast does not fork/exec per test case, the lock is held until the all the running test cases are completed.\n\nConsidering them, I\u0027d recommend to do whole the locking in a goroutine, and exchange the messages between main thread and the goroutine. E.g.;\n\nlockchan :\u003d make(chan error)  // channel to notify lock completion (or error) from the goroutine to the main thread.\ndone :\u003d make(chan struct{})  // channel to notify test completion from the main thread to goroutine.\n\ndefer close(done)  // Close the done channel at the end of the function so reading |done| in the goroutine handles it well.\ngo func() {\n  f, err :\u003d os.Create(lockPath)\n  if err !\u003d nil {\n    lockchan \u003c- err\n    return\n  }\n  defer f.Close()\n  if err \u003d syscall.Flock(f.Fd(), syscall.LOCK_SH); err !\u003d nil {\n    // Failed to take the flock.\n    lockchan \u003c- err\n    return\n  }\n  defer syscall.Flock(f.FD(), syscall.LOCK_UN)  // Ignore error. Or maybe logging?\n  \u003c- done  // Wait for the completion of the test scenario. Signaled when close(done) (in the defer above) is called (i.e., at the end of main thread).\n}()\n\nlctx :\u003d context.WithTimeout(ctx, 20 * time.Second)\nselect {\n  case err :\u003d \u003c- lockchan:\n    if err !\u003d nil {\n      s.Fatalf(...)\n    }\n  case \u003c- lctx.Done():\n    s.Fatalf(\"Timed out ... lock %s: %v\", lockPath, lctx.Err())\n}\n\nIn this approach, the FD will \"eventually\" be closed with releasing the lock.\nNote that, in case of time out, goroutine will be paused at LOCKSH for a while, and will take the lock when the other service releases the lock.\nHowever, the lock will be soon released at the end of the goroutine.",
+      "revId": "e00c546825532a0477388dc20bf2a494a6ef6da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
