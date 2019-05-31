@@ -232,6 +232,30 @@
     },
     {
       "key": {
+        "uuid": "1fada48d_25d97cc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-31T06:54:17Z",
+      "side": 1,
+      "message": "Ugrr, sorry for my wrong recommendation, that I overlooked |s| was conflicting with testing.State.\nCould you give the priority to testing.State? I\u0027m ok with either sn or sensor.",
+      "parentUuid": "795f8ba1_e76c4d7a",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 9
+      },
+      "revId": "ec019ed403881b57dcde087f7dd7b9472b7aeb6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5af77cd_c384ec24",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
         "patchSetId": 6

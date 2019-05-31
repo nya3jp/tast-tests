@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc91579b_450ec788",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-31T06:54:17Z",
+      "side": 1,
+      "message": "huge nit: \"want\" for consistency.",
+      "range": {
+        "startLine": 56,
+        "startChar": 58,
+        "endLine": 56,
+        "endChar": 66
+      },
+      "revId": "6de61c04e282ad5984b666f0b308ded9d8988565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
