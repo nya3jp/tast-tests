@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d119452f_843d19ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-31T11:40:27Z",
+      "side": 1,
+      "message": "nit: we can make this more specific. i.e. intel_pstate/no_turbo",
+      "range": {
+        "startLine": 7,
+        "startChar": 46,
+        "endLine": 7,
+        "endChar": 68
+      },
+      "revId": "83e6f6ec5e37d9f8f331e86637f9858fded4d061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8c28345_c9f1f6e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-31T11:40:27Z",
+      "side": 1,
+      "message": "we might want to check the return value of restoreScaling().",
+      "revId": "83e6f6ec5e37d9f8f331e86637f9858fded4d061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e69fc86d_ad266cd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-05-31T11:40:27Z",
+      "side": 1,
+      "message": "How about this comment on L222?",
+      "range": {
+        "startLine": 201,
+        "startChar": 32,
+        "endLine": 202,
+        "endChar": 29
+      },
+      "revId": "83e6f6ec5e37d9f8f331e86637f9858fded4d061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
