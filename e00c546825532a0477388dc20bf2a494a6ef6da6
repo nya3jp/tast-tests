@@ -56,6 +56,30 @@
       "revId": "e00c546825532a0477388dc20bf2a494a6ef6da6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc12df33_4a43eb33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-05-31T16:25:20Z",
+      "side": 1,
+      "message": "syscall package says:\n\n\"Deprecated: this package is locked down. Callers should use the corresponding package in the golang.org/x/sys repository instead.\"",
+      "parentUuid": "50b7536f_42f9ba50",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 17
+      },
+      "revId": "e00c546825532a0477388dc20bf2a494a6ef6da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
