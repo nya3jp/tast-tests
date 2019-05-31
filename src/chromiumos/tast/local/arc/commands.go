@@ -31,6 +31,11 @@ func (a *ARC) Command(ctx context.Context, name string, arg ...string) *testexec
 // successfully. Please keep in mind that command execution environment of
 // android-sh is not exactly the same as the actual Android container.
 func BootstrapCommand(ctx context.Context, name string, arg ...string) *testexec.Cmd {
+	if arcvm {
+		shell := "exec " + shutil.EscapeSlice(append([]string{name}, arg...))
+		return adbCommand(ctx, "exec-out", shell)
+	}
+
 	// Refuse to find an executable with $PATH.
 	// android-sh inserts /vendor/bin before /system/bin in $PATH, and /vendor/bin
 	// contains very similar executables as /system/bin on some boards (e.g. nocturne).

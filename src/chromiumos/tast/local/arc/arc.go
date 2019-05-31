@@ -35,6 +35,9 @@ const (
 // locked is set to true while a precondition is active to prevent tests from calling New or Close.
 var locked = false
 
+// arcvm is set to true if Chrome OS is currently running arcvm as opposed to arc++
+var arcvm = false
+
 // Supported returns true if ARC is supported on the board.
 //
 // This function must not be used to skip tests entirely; declare the "android"
@@ -100,12 +103,21 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		return nil, err
 	}
 
-	testing.ContextLog(ctx, "Waiting for Android boot")
-
-	if err := WaitAndroidInit(ctx); err != nil {
-		return nil, errors.Wrap(err, "Android failed to boot in very early stage")
+	var err error
+	arcvm, err = isARCVM()
+	if err != nil {
+		return nil, err
 	}
 
+	if arcvm {
+		return setupARCVM(ctx, outDir)
+	}
+	return setupARC(ctx, outDir)
+}
+
+// setupARCVM sets up ARCVM related component, ADB and logcat,
+// and waits until ARCVM is booted.
+func setupARCVM(ctx context.Context, outDir string) (*ARC, error) {
 	arc := &ARC{}
 	toClose := arc
 	defer func() {
@@ -113,6 +125,68 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 			toClose.Close()
 		}
 	}()
+
+	testing.ContextLog(ctx, "Waiting for ADB to connect")
+
+	// Set up the ADB home directory in Chrome OS side.
+	if err := os.MkdirAll(adbHome, 0755); err != nil {
+		return nil, err
+	}
+
+	// Start up an ADB server.
+	if err := adbCommand(ctx, "start-server").Run(testexec.DumpLogOnError); err != nil {
+		return nil, errors.Wrap(err, "failed starting ADB local server")
+	}
+
+	if err := tryConnectADB(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to connect to ADB")
+	}
+
+	testing.ContextLog(ctx, "Waiting for Android boot")
+
+	// At this point we can start logcat.
+	logcatPath := filepath.Join(outDir, logcatName)
+	if err := arc.setLogcatFile(logcatPath); err != nil {
+		return nil, errors.Wrap(err, "failed to create logcat output file")
+	}
+	logcatCmd, err := startLogcat(ctx, &arc.logcatWriter)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start logcat")
+	}
+	arc.logcatCmd = logcatCmd
+
+	// This property is set by the Android system server just before LOCKED_BOOT_COMPLETED is broadcast.
+	const androidBootProp = "sys.boot_completed"
+	if err := waitProp(ctx, androidBootProp, "1", reportTiming); err != nil {
+		return nil, diagnose(logcatPath, errors.Wrapf(err, "%s not set", androidBootProp))
+	}
+
+	// This property is set by ArcAppLauncher when it receives BOOT_COMPLETED.
+	const arcBootProp = "ro.arc.boot_completed"
+	if err := waitProp(ctx, arcBootProp, "1", reportTiming); err != nil {
+		return nil, diagnose(logcatPath, errors.Wrapf(err, "%s not set", arcBootProp))
+	}
+
+	toClose = nil
+	return arc, nil
+}
+
+// setupARC sets up ARC related component, ADB and logcat,
+// and waits until ARC is booted.
+func setupARC(ctx context.Context, outDir string) (*ARC, error) {
+	arc := &ARC{}
+	toClose := arc
+	defer func() {
+		if toClose != nil {
+			toClose.Close()
+		}
+	}()
+
+	testing.ContextLog(ctx, "Waiting for Android boot")
+
+	if err := WaitAndroidInit(ctx); err != nil {
+		return nil, errors.Wrap(err, "Android failed to boot in very early stage")
+	}
 
 	// At this point we can start logcat.
 	logcatPath := filepath.Join(outDir, logcatName)
@@ -229,6 +303,21 @@ func (a *ARC) setLogcatFile(p string) error {
 	}
 
 	return createErr
+}
+
+// isARCVM checks if Chrome OS is currently running ARCVM.
+func isARCVM() (bool, error) {
+	args, err := getChromeArgs()
+	if err != nil {
+		return false, errors.Wrap(err, "failed getting Chrome args")
+	}
+
+	for _, a := range args {
+		if a == "--enable-arcvm" {
+			return true, nil
+		}
+	}
+	return false, nil
 }
 
 // ensureARCEnabled makes sure ARC is enabled by a command line flag to Chrome.

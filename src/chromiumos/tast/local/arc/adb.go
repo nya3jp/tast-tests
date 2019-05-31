@@ -18,7 +18,7 @@ import (
 )
 
 const (
-	adbAddr = "100.115.92.2:5555"
+	adbAddr = "127.0.0.1:5550"
 
 	adbHome               = "/tmp/adb_home"
 	testPrivateKeyPath    = "/tmp/adb_home/test_key"
@@ -104,6 +104,26 @@ func setUpADBAuth(ctx context.Context) error {
 // connectADB connects to the remote ADB daemon.
 // After this function returns successfully, we can assume that ADB connection is ready.
 func connectADB(ctx context.Context) error {
+	defer timing.Start(ctx, "connect_adb").End()
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		out, err := adbCommand(ctx, "connect", adbAddr).Output()
+		if err != nil {
+			return err
+		}
+		msg := strings.SplitN(string(out), "\n", 2)[0]
+		if !strings.HasPrefix(msg, "connected to ") {
+			return errors.Errorf("adb connect failed (adb output: %q)", msg)
+		}
+		return nil
+	}, nil); err != nil {
+		return err
+	}
+
+	return adbCommand(ctx, "wait-for-device").Run(testexec.DumpLogOnError)
+}
+
+// tryConnectADB continuously tries to connect to remote ADB daemon.
+func tryConnectADB(ctx context.Context) error {
 	defer timing.Start(ctx, "connect_adb").End()
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		out, err := adbCommand(ctx, "connect", adbAddr).Output()
