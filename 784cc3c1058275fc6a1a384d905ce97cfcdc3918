@@ -248,6 +248,24 @@
     },
     {
       "key": {
+        "uuid": "a534e3eb_fa3c0639",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-31T20:57:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2211afa1_01a39127",
+      "revId": "784cc3c1058275fc6a1a384d905ce97cfcdc3918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6dd1f335_02b6fb5d",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
         "patchSetId": 3
