@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "0140eec4_f0cb0be1",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-31T13:09:07Z",
+      "side": 1,
+      "message": "Missed this one, thanks for fixing. Done.",
+      "parentUuid": "2307b791_ba7a232e",
+      "revId": "aa657cbd5c596798ea246f56717dcaf903ed547d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5975701_35bbfb5a",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 1
@@ -59,6 +77,24 @@
     },
     {
       "key": {
+        "uuid": "0766dd85_7dd3a2df",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-31T13:09:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5975701_35bbfb5a",
+      "revId": "aa657cbd5c596798ea246f56717dcaf903ed547d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12809fa1_1f3fd909",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 1
@@ -70,6 +106,30 @@
       "writtenOn": "2019-05-31T11:31:45Z",
       "side": 1,
       "message": "nit: failed to start",
+      "range": {
+        "startLine": 130,
+        "startChar": 33,
+        "endLine": 130,
+        "endChar": 48
+      },
+      "revId": "aa657cbd5c596798ea246f56717dcaf903ed547d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b819d2db_cf95f646",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-31T13:09:07Z",
+      "side": 1,
+      "message": "This is the same error message as the one in adb.go.\nI am suggesting to fix these in another CL together, if it is necessary, to prevent the CL editing other unrelated part of the file.",
+      "parentUuid": "12809fa1_1f3fd909",
       "range": {
         "startLine": 130,
         "startChar": 33,
@@ -105,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "1fa1049b_08a3ed6f",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-31T13:09:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "252b1992_0b5515ef",
+      "range": {
+        "startLine": 134,
+        "startChar": 33,
+        "endLine": 134,
+        "endChar": 34
+      },
+      "revId": "aa657cbd5c596798ea246f56717dcaf903ed547d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b872e059_43f0a349",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 1
@@ -125,6 +209,30 @@
       "revId": "aa657cbd5c596798ea246f56717dcaf903ed547d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfb6eb17_8fd99e30",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-31T13:09:07Z",
+      "side": 1,
+      "message": "ditto as previous error message comment, it is following the other error message format.",
+      "parentUuid": "b872e059_43f0a349",
+      "range": {
+        "startLine": 153,
+        "startChar": 58,
+        "endLine": 153,
+        "endChar": 65
+      },
+      "revId": "aa657cbd5c596798ea246f56717dcaf903ed547d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "aa5559b4_4d8abb4c",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-31T13:09:07Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "27b552bd_5cd0386e",
+      "range": {
+        "startLine": 159,
+        "startChar": 58,
+        "endLine": 159,
+        "endChar": 65
+      },
+      "revId": "aa657cbd5c596798ea246f56717dcaf903ed547d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef9f2da6_7be158a2",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 1
@@ -174,6 +306,30 @@
     },
     {
       "key": {
+        "uuid": "da7b0d6e_aeb115df",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-31T13:09:07Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "ef9f2da6_7be158a2",
+      "range": {
+        "startLine": 290,
+        "startChar": 41,
+        "endLine": 290,
+        "endChar": 48
+      },
+      "revId": "aa657cbd5c596798ea246f56717dcaf903ed547d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce077bff_234f3040",
         "filename": "src/chromiumos/tast/local/arc/commands.go",
         "patchSetId": 1
@@ -188,6 +344,24 @@
       "revId": "aa657cbd5c596798ea246f56717dcaf903ed547d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1179a2c_ff3d67d2",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-31T13:09:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce077bff_234f3040",
+      "revId": "aa657cbd5c596798ea246f56717dcaf903ed547d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
