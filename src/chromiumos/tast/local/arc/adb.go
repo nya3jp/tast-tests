@@ -18,7 +18,7 @@ import (
 )
 
 const (
-	adbAddr = "100.115.92.2:5555"
+	adbAddr = "127.0.0.1:5550"
 
 	adbHome               = "/tmp/adb_home"
 	testPrivateKeyPath    = "/tmp/adb_home/test_key"
