@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d48bc53b_bdc38793",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-31T15:48:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ca81587_46a10704",
+      "range": {
+        "startLine": 9,
+        "startChar": 50,
+        "endLine": 9,
+        "endChar": 54
+      },
+      "revId": "aa657cbd5c596798ea246f56717dcaf903ed547d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2307b791_ba7a232e",
         "filename": "src/chromiumos/tast/local/arc/adb.go",
         "patchSetId": 1

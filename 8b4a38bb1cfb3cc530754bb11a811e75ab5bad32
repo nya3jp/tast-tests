@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7bfdc691_305b21b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-31T15:48:30Z",
+      "side": 1,
+      "message": "I tried it on eve-arcvm and atlas. Edited the commit message.",
+      "parentUuid": "438d986b_b5ff4180",
+      "revId": "8b4a38bb1cfb3cc530754bb11a811e75ab5bad32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16162866_e428998b",
         "filename": "src/chromiumos/tast/local/arc/adb.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "8b4a38bb1cfb3cc530754bb11a811e75ab5bad32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bcbb080_fb2dbe54",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-31T15:48:30Z",
+      "side": 1,
+      "message": "It should work once the CL it depends on get through (chromium:1611589).\nI think the plan is for networkd to be adb-proxy so we don\u0027t need to care about ARC / ARCVM adb address.",
+      "parentUuid": "16162866_e428998b",
+      "revId": "8b4a38bb1cfb3cc530754bb11a811e75ab5bad32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "19c4928f_bbd464de",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-31T15:48:30Z",
+      "side": 1,
+      "message": "That is true, sorry! Removed and used the other test.",
+      "parentUuid": "084f1403_72f806ee",
+      "revId": "8b4a38bb1cfb3cc530754bb11a811e75ab5bad32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c17aa94_85261d5e",
         "filename": "src/chromiumos/tast/local/arc/adb.go",
         "patchSetId": 2
@@ -67,6 +121,24 @@
       "revId": "8b4a38bb1cfb3cc530754bb11a811e75ab5bad32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8f55635_c9608bc7",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-31T15:48:30Z",
+      "side": 1,
+      "message": "Resolved the other comment.",
+      "parentUuid": "0c17aa94_85261d5e",
+      "revId": "8b4a38bb1cfb3cc530754bb11a811e75ab5bad32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "787ce434_c20eada6",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-31T15:48:30Z",
+      "side": 1,
+      "message": "Done (b/134144418).",
+      "parentUuid": "cfc8d5ba_14db70cc",
+      "revId": "8b4a38bb1cfb3cc530754bb11a811e75ab5bad32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e2679a6_3f2f08b3",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 2
@@ -98,6 +188,30 @@
       "writtenOn": "2019-05-31T14:29:39Z",
       "side": 1,
       "message": "Could you use :\u003d instead?\n\narcvm, err :\u003d ...",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 14
+      },
+      "revId": "8b4a38bb1cfb3cc530754bb11a811e75ab5bad32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d6ed9bc_0de44637",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-31T15:48:30Z",
+      "side": 1,
+      "message": "I would like the arcvm variable scope to be package block (e.g. for commands.go).\nDoing that would create another arcvm variable.\n\nI can do this instead:\n\nif a, err :\u003d ...; err !\u003d nil {\n  return nil, err\n} else if a {\n  arcvm \u003d a\n  return setupARCVM(...)\n}\n\nWould you prefer that?",
+      "parentUuid": "8e2679a6_3f2f08b3",
       "range": {
         "startLine": 106,
         "startChar": 1,
@@ -133,6 +247,30 @@
     },
     {
       "key": {
+        "uuid": "05f21626_4f0b3d44",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-31T15:48:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f018c7ab_ae78fb6a",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 2
+      },
+      "revId": "8b4a38bb1cfb3cc530754bb11a811e75ab5bad32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c05e7ae_6be58af9",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 2
@@ -156,6 +294,30 @@
     },
     {
       "key": {
+        "uuid": "821d2b6d_efdb68e2",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-31T15:48:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c05e7ae_6be58af9",
+      "range": {
+        "startLine": 309,
+        "startChar": 5,
+        "endLine": 309,
+        "endChar": 12
+      },
+      "revId": "8b4a38bb1cfb3cc530754bb11a811e75ab5bad32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30ca7e40_3b526522",
         "filename": "src/chromiumos/tast/local/arc/commands.go",
         "patchSetId": 2
@@ -170,6 +332,24 @@
       "revId": "8b4a38bb1cfb3cc530754bb11a811e75ab5bad32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7249207_1c985fcb",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-05-31T15:48:30Z",
+      "side": 1,
+      "message": "Done, it is made that way to minimize divergence, as it is temporary.",
+      "parentUuid": "30ca7e40_3b526522",
+      "revId": "8b4a38bb1cfb3cc530754bb11a811e75ab5bad32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
