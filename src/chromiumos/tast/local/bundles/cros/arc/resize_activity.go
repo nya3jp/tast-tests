@@ -17,6 +17,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/colorcmp"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -36,11 +38,36 @@ func init() {
 
 func ResizeActivity(ctx context.Context, s *testing.State) {
 	// Force Chrome to be in clamshell mode, where windows are resizable.
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=clamshell"))
+	// --use-test-config is needed to enable Shelf's Mojo testing interface.
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(),
+		chrome.ExtraArgs("--force-tablet-mode=clamshell"), chrome.ExtraArgs("--use-test-config"))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
 	defer cr.Close(ctx)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	dispInfo, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get internal display info: ", err)
+	}
+
+	origShelfBehavior, err := ash.GetShelfBehavior(ctx, tconn, dispInfo.ID)
+	if err != nil {
+		s.Fatal("Failed to get shelf behavior: ", err)
+	}
+
+	// Hide shelf. Maximum screen real-estate is needed, especially for devices where its height is as high
+	// as the default height of freeform applications.
+	if err := ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, ash.ShelfBehaviorAlwaysAutoHide); err != nil {
+		s.Fatal("Failed to set shelf behavior to Always Auto Hide: ", err)
+	}
+	// Be nice and restore shelf behavior to its original state on exit.
+	defer ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, origShelfBehavior)
 
 	a, err := arc.New(ctx, s.OutDir())
 	if err != nil {
@@ -81,9 +108,10 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get display bounds")
 	}
 
-	// Make it as small as possible before the resizing, and place it on the left-top corner
-	// in order to have maximum real-estate for the resizing.
-	if err := act.ResizeWindow(ctx, arc.BorderBottomRight, arc.NewPoint(bounds.Left, bounds.Top), 300*time.Millisecond); err != nil {
+	// Make it as small as possible before the resizing, since maximum screen real-estate is needed for the test.
+	// And then place it on the left-top corner.
+	// Resizing from TopLeft corner, since BottomRight corner might trigger the shelf, even if it is hidden.
+	if err := act.ResizeWindow(ctx, arc.BorderTopLeft, arc.NewPoint(bounds.Left+bounds.Width, bounds.Top+bounds.Height), 300*time.Millisecond); err != nil {
 		s.Fatal("Failed to resize window: ", err)
 	}
 
@@ -101,8 +129,6 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get window bounds: ", err)
 	}
 
-	centerHeight := bounds.Top + bounds.Height/2
-
 	// Perform 3 different subtests: resize from right border, from bottom border and from bottom-right border.
 	// If one of these subtests fail, the test fails and the remaining subtests are not executed.
 	// The bug is not 100% reproducible. It might happen that the test pass even if the bug is not fixed.
@@ -111,19 +137,17 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 	// But we should leave some margin to resize it back to its original size. That means the
 	// window should not overlap the shelf; and we should leave some extra room to place the touches.
 
-	// TODO(ricardoq): Find a robust way to get the marginForShelf value.
-	// Shelf height depends on the DPI. According to internal tests, 200 pixels is more than enough
-	// for high DPI devices like Nocturne which has a 128-pixel shelf. But this could break in the future.
-	const marginForShelf = 200 // shelf height + extra room for touch
+	// Leaving room for the touch + extra space to prevent any kind of "resize to fullscreen" gesture.
+	const marginForTouch = 100
 	for idx, entry := range []struct {
 		desc     string
 		border   arc.BorderType // resize origin (from which border)
 		dst      arc.Point
 		duration time.Duration
 	}{
-		{"right", arc.BorderRight, arc.NewPoint(dispSize.W-marginForShelf, centerHeight), 100 * time.Millisecond},
-		{"bottom", arc.BorderBottom, arc.NewPoint(bounds.Left, dispSize.H-marginForShelf), 300 * time.Millisecond},
-		{"bottom-right", arc.BorderBottomRight, arc.NewPoint(dispSize.W-marginForShelf, dispSize.H-marginForShelf), 100 * time.Millisecond},
+		{"right", arc.BorderRight, arc.NewPoint(dispSize.W-marginForTouch, restoreBounds.Top+restoreBounds.Height/2), 100 * time.Millisecond},
+		{"bottom", arc.BorderBottom, arc.NewPoint(restoreBounds.Left+restoreBounds.Width/2, dispSize.H-marginForTouch), 300 * time.Millisecond},
+		{"bottom-right", arc.BorderBottomRight, arc.NewPoint(dispSize.W-marginForTouch, dispSize.H-marginForTouch), 100 * time.Millisecond},
 	} {
 		s.Logf("Resizing window from %s border to %+v", entry.desc, entry.dst)
 		if err := act.ResizeWindow(ctx, entry.border, entry.dst, entry.duration); err != nil {
