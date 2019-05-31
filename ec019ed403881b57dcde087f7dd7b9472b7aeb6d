@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "8a6c5c68_81704752",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-31T19:27:50Z",
+      "side": 1,
+      "message": "i think it\u0027s a question of how caller-friendly you want the API to be. :-)\n\nat one extreme, you could have a Sensor type that returns a variable-length slice of data. callers will be responsible for knowing what to expect and how to interpret that data. they will have a bad time if different accelerometers return data differently, for instance. it may also be challenging to use if some sensors return integer or boolean data (i don\u0027t know if that\u0027s the case).\n\nat the other extreme, you could have VectorSensor, ScalarSensor, etc. types that return data in different formats. VectorSensor might return a struct like the one that\u0027s defined here, while ScalarSensor could return a single float. this is very caller-friendly, but it complicates the GetSensors function. now it might need return a slice of a new Sensor interface that can be cast to the appropriate concrete type (or that exposes the appropriate data in some other way).\n\nright now, it looks like SensorName is essentially used to describe the sensor type (and by extension, the data that will be returned by it). if you go the []float64 route, i\u0027d recommend at least documenting what to expect from each sensor.\n\nspeaking more generally, i\u0027d say that the choice depends on who will be using this. if you\u0027ll just have one or two tests in the hardware package calling it, you might be able to get away with just returning []float64. if there will be more callers, i\u0027d probably recommend trying to make the API safer and easier to use.",
+      "parentUuid": "377a9d33_91d0eb4b",
+      "revId": "ec019ed403881b57dcde087f7dd7b9472b7aeb6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5907bc21_72a69449",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
         "patchSetId": 6
