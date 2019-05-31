@@ -103,6 +103,30 @@
       "revId": "d63214b7b5cd6c62df92d8032b8708951019f8b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e483b7f_5184a1d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-31T15:58:45Z",
+      "side": 1,
+      "message": "Good catch.\n\nYusuke-san, what\u0027s the best way to wait for its boot for this test?\nI couldn\u0027t find any in the original test.",
+      "parentUuid": "969dcb11_c24c1c88",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 2
+      },
+      "revId": "d63214b7b5cd6c62df92d8032b8708951019f8b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
