@@ -1,0 +1,175 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "438d986b_b5ff4180",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-31T14:29:39Z",
+      "side": 1,
+      "message": "On which board did you test?\nCould you test on both ARCVM board and ARC++ board?",
+      "revId": "8b4a38bb1cfb3cc530754bb11a811e75ab5bad32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16162866_e428998b",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-31T14:29:39Z",
+      "side": 1,
+      "message": "Does this work with ARC++?\nI gave it a try locally, but it didn\u0027t for me.",
+      "revId": "8b4a38bb1cfb3cc530754bb11a811e75ab5bad32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "084f1403_72f806ee",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-31T14:29:39Z",
+      "side": 1,
+      "message": "Now this looks dup of connectADB?",
+      "revId": "8b4a38bb1cfb3cc530754bb11a811e75ab5bad32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c17aa94_85261d5e",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-31T14:29:39Z",
+      "side": 1,
+      "message": "Clar: do you want to retry in case of this?\nIf not (i.e., it should exit from polling loop), you can use testing.PollBreak.",
+      "revId": "8b4a38bb1cfb3cc530754bb11a811e75ab5bad32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfc8d5ba_14db70cc",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-31T14:29:39Z",
+      "side": 1,
+      "message": "nit: s/arc++/ARC/.\n\nBTW, IIUC, the diff between ARCVM and ARC++ is adb/android-sh communication, and it should be temporarily.\nCould you make a TODO to consolidate them (with filing a bug if there doesn\u0027t exist)?",
+      "revId": "8b4a38bb1cfb3cc530754bb11a811e75ab5bad32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e2679a6_3f2f08b3",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-31T14:29:39Z",
+      "side": 1,
+      "message": "Could you use :\u003d instead?\n\narcvm, err :\u003d ...",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 14
+      },
+      "revId": "8b4a38bb1cfb3cc530754bb11a811e75ab5bad32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f018c7ab_ae78fb6a",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-31T14:29:39Z",
+      "side": 1,
+      "message": "In this case, in Tast, we often combine if stmts, like;\n\nif arcvm, err :\u003d ...; err !\u003d nil {\n  return nil, err\n} else if arcvm {\n  return setupARCVM(...)\n}\n...",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 2
+      },
+      "revId": "8b4a38bb1cfb3cc530754bb11a811e75ab5bad32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c05e7ae_6be58af9",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-31T14:29:39Z",
+      "side": 1,
+      "message": "In go, prefixes like \"is\" or \"get\" are dropped. For consistency, could you do that, too?\nMaybe arcvmEnabled?",
+      "range": {
+        "startLine": 309,
+        "startChar": 5,
+        "endLine": 309,
+        "endChar": 12
+      },
+      "revId": "8b4a38bb1cfb3cc530754bb11a811e75ab5bad32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30ca7e40_3b526522",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-31T14:29:39Z",
+      "side": 1,
+      "message": "Looks dup of Command() defined above?\n\nCould you comment why it is necessary to fallback?",
+      "revId": "8b4a38bb1cfb3cc530754bb11a811e75ab5bad32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
