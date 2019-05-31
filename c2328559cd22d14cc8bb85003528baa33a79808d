@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a464ab1a_c2b55a96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-05-31T22:57:27Z",
+      "side": 1,
+      "message": "the shelf code is currently placed in arc.PIP test. Should I move it to shared place like:\n\"chromiumos/tast/local/chrome/shelf\", or \"chromiumos/tast/local/chrome/ash\"?\n\nAny suggestion? Thanks!",
+      "range": {
+        "startLine": 58,
+        "startChar": 27,
+        "endLine": 58,
+        "endChar": 68
+      },
+      "revId": "c2328559cd22d14cc8bb85003528baa33a79808d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
