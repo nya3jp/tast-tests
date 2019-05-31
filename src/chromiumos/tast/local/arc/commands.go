@@ -39,6 +39,10 @@ func BootstrapCommand(ctx context.Context, name string, arg ...string) *testexec
 	// without explicitly specifying absolute paths. To run shell commands,
 	// specify /system/bin/sh.
 	// See: http://crbug.com/949853
+	if arcvm {
+		shell := "exec " + shutil.EscapeSlice(append([]string{name}, arg...))
+		return adbCommand(ctx, "exec-out", shell)
+	}
 	if !strings.HasPrefix(name, "/") {
 		panic("Refusing to search $PATH; specify an absolute path instead")
 	}
