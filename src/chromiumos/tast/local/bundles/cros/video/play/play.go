@@ -76,10 +76,6 @@ func pollPlaybackCurrentTime(ctx context.Context, conn *chrome.Conn, threshold f
 func loadVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
 	defer timing.Start(ctx, "load_video").End()
 
-	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
-		return errors.Wrap(err, "timed out waiting for page load")
-	}
-
 	if err := conn.Exec(ctx, fmt.Sprintf("loadVideoSource(%q)", videoFile)); err != nil {
 		return errors.Wrap(err, "failed to load a video source")
 	}
@@ -136,10 +132,6 @@ func playVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL string
 // initShakaPlayer initializes Shaka player with video file.
 func initShakaPlayer(ctx context.Context, conn *chrome.Conn, mpdFile string) error {
 	defer timing.Start(ctx, "init_shaka_player").End()
-
-	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
-		return errors.Wrap(err, "timed out waiting for page load")
-	}
 
 	if err := conn.Exec(ctx, fmt.Sprintf("initPlayer(%q)", mpdFile)); err != nil {
 		return errors.Wrap(err, "failed to initialize shaka player")
