@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "598068bc_143239d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-05-31T01:59:59Z",
+      "side": 1,
+      "message": "So the timing name of the stage should be exactly the same as the function name, right?\nIf so, I\u0027ll rename function as I think the new one better describe what it does.",
+      "parentUuid": "34ed510a_a29f9610",
+      "range": {
+        "startLine": 59,
+        "startChar": 25,
+        "endLine": 59,
+        "endChar": 53
+      },
+      "revId": "eaa39827f71a3dd7aab383e960c0b7310b62838b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f9b2053_ba14dc56",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "eaa39827f71a3dd7aab383e960c0b7310b62838b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4fb1a0c_9fc8c931",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-05-31T01:59:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f9b2053_ba14dc56",
+      "range": {
+        "startLine": 77,
+        "startChar": 26,
+        "endLine": 77,
+        "endChar": 36
+      },
+      "revId": "eaa39827f71a3dd7aab383e960c0b7310b62838b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "339a3fb5_596b7e19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-05-31T01:59:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2add77f_53a6a987",
+      "range": {
+        "startLine": 96,
+        "startChar": 9,
+        "endLine": 96,
+        "endChar": 13
+      },
+      "revId": "eaa39827f71a3dd7aab383e960c0b7310b62838b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d7cf366_65a985c9",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "b0217439_5130a4ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-05-31T01:59:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d7cf366_65a985c9",
+      "range": {
+        "startLine": 183,
+        "startChar": 5,
+        "endLine": 183,
+        "endChar": 15
+      },
+      "revId": "eaa39827f71a3dd7aab383e960c0b7310b62838b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90335dce_d7297152",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 4
@@ -108,6 +204,24 @@
       "revId": "eaa39827f71a3dd7aab383e960c0b7310b62838b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44888902_1cbc9f5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-05-31T01:59:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90335dce_d7297152",
+      "revId": "eaa39827f71a3dd7aab383e960c0b7310b62838b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

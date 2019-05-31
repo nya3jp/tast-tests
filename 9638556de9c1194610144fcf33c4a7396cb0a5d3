@@ -87,6 +87,24 @@
       "revId": "9638556de9c1194610144fcf33c4a7396cb0a5d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51bc95e2_a8476d6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-05-31T01:59:59Z",
+      "side": 0,
+      "message": "Mmm... this is intentional, but it is orthogonal to the CL. I\u0027ll defer the change to the following CL.",
+      "parentUuid": "88be739d_364240f8",
+      "revId": "9638556de9c1194610144fcf33c4a7396cb0a5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
