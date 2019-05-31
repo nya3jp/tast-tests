@@ -80,6 +80,30 @@
       "revId": "e00c546825532a0477388dc20bf2a494a6ef6da6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c99e6af2_a86b00bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-05-31T18:51:55Z",
+      "side": 1,
+      "message": "i\u0027m not sure how much it matters in practice, but yeah, i think that unix is getting updated and syscall isn\u0027t. iirc this is reflected by e.g. network-related constants that are defined in each",
+      "parentUuid": "fc12df33_4a43eb33",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 17
+      },
+      "revId": "e00c546825532a0477388dc20bf2a494a6ef6da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
