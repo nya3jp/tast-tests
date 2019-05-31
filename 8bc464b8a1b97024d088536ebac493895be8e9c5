@@ -140,6 +140,30 @@
       "revId": "8bc464b8a1b97024d088536ebac493895be8e9c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b861fac_b9ad2adf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui_multi_camera.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-05-31T04:25:30Z",
+      "side": 1,
+      "message": "Oh yeah I missed this one...",
+      "parentUuid": "80ceb920_0f12e488",
+      "range": {
+        "startLine": 30,
+        "startChar": 6,
+        "endLine": 30,
+        "endChar": 27
+      },
+      "revId": "8bc464b8a1b97024d088536ebac493895be8e9c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
