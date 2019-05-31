@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9ef42cc1_a0e095da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-05-31T22:04:20Z",
+      "side": 1,
+      "message": "nit: Restarting",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "226c75807af539dbc769a145b32e42576766dc09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07511a0b_df2f0e7f",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
         "patchSetId": 4
@@ -41,6 +64,52 @@
         "startChar": 50,
         "endLine": 56,
         "endChar": 53
+      },
+      "revId": "226c75807af539dbc769a145b32e42576766dc09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1cd8f16_0fd414df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-05-31T22:04:20Z",
+      "side": 1,
+      "message": "nit: change all of these to use \"Process %v\" or \"%v process\", not a mix. I prefer the first.",
+      "range": {
+        "startLine": 60,
+        "startChar": 13,
+        "endLine": 60,
+        "endChar": 23
+      },
+      "revId": "226c75807af539dbc769a145b32e42576766dc09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1fcdcf4_5fb3acd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-05-31T22:04:20Z",
+      "side": 1,
+      "message": "nit: Maybe call this something else (VM? daemon?) to differentiate wilco_dtc from ddv and sa?",
+      "range": {
+        "startLine": 64,
+        "startChar": 27,
+        "endLine": 64,
+        "endChar": 34
       },
       "revId": "226c75807af539dbc769a145b32e42576766dc09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
