@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cedc26e4_c3a6f656",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-31T16:24:23Z",
+      "side": 1,
+      "message": "Thank you for filing a bug.\n\nnit: instead of your name, you can use TODO(b/134144418): ...\n\nIf you\u0027d keep your name, it\u0027s totally fine, but could you add the link to the bug, too, in the comment?",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 21
+      },
+      "revId": "9487e9aed59a9b3bdea07805be0528b1c3790abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4a8825e_65840e48",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-31T16:24:23Z",
+      "side": 1,
+      "message": "Thank you for explanation of the reason. In the case;\n\nvar err error\nif arcvm, err \u003d arcvmEnabled(); err !\u003d nil {\n  ...\n}\n\nis the style used in Tast. I\u0027m ok with your style in the reply to my previous comment, too.",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 0
+      },
+      "revId": "9487e9aed59a9b3bdea07805be0528b1c3790abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03d626c5_df6380e2",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-05-31T16:24:23Z",
+      "side": 1,
+      "message": "Thank you for adding the comment!\n\nAnd, sorry for my poor comment. I meant something like;\n\nif arcvm {\n  // ... (comment) ...\n  return Command(ctx, name, arg...)\n}\n\ndoes it work for you? If so, maybe the comment will be;\n\nIn ARCVM, adb should be used instead of android-sh. Because ARCVM divergence is temporary,\nforwarding here, instead of handling it in each caller.\n\nor something?",
+      "revId": "9487e9aed59a9b3bdea07805be0528b1c3790abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
