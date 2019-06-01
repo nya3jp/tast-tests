@@ -21,7 +21,8 @@ func init() {
 			"yichengli@chromium.org", // Test author
 			"norvez@chromium.org",
 		},
-		Attr: []string{"informational"},
+		Attr:         []string{"informational"},
+		SoftwareDeps: []string{"biometrics_daemon"},
 	})
 }
 
