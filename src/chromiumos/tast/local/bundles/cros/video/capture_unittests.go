@@ -65,7 +65,11 @@ func CaptureUnittests(ctx context.Context, s *testing.State) {
 	args := []string{
 		logging.ChromeVmoduleFlag(),
 		"--test-launcher-jobs=1",
+		"--enable-pixel-output-in-tests",
+		"--dbus-stub",
+		"--gtest_filter=ScreenRotation*",
 	}
+	env := []string{"CR_SOURCE_ROOT=/tmp", "LD_LIBRARY_PATH=/opt/google/chrome:/usr/local/lib64"}
 
 	if vm.IsRunningOnVM() {
 		// Since vivid doesn't support MJPEG,
@@ -73,8 +77,8 @@ func CaptureUnittests(ctx context.Context, s *testing.State) {
 		args = append(args, "--gtest_filter=-*UsingRealWebcam_CaptureMjpeg*")
 	}
 
-	const exec = "capture_unittests"
-	if ts, err := bintest.Run(shortCtx, exec, args, s.OutDir()); err != nil {
+	const exec = "interactive_ui_tests"
+	if ts, err := bintest.RunWithEnv(shortCtx, exec, args, s.OutDir(), env); err != nil {
 		s.Errorf("Failed to run %v: %v", exec, err)
 		for _, t := range ts {
 			s.Error(t, " failed")
