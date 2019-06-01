@@ -104,6 +104,24 @@
       "revId": "e00c546825532a0477388dc20bf2a494a6ef6da6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a4618ea_6e8f20f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-06-01T00:56:57Z",
+      "side": 1,
+      "message": "Thanks for all the advice here. With some small variations (need to \u0027lockchan \u003c- nil\u0027 on successful lock, for one), I have this working. But I\u0027m finding it a bit fragile for trying to factor out into a library function, which I\u0027d like to do, since I expect there will be other tests that want this.\n\nThis made me rethink...how important is it to put a timeout on the Flock() operation? Does Tast enforce some other reasonable timeout that would catch us if for some odd reason this lock is held \"too long\" by some other process? Note that I don\u0027t have any real expected case for seeing this held very long (perhaps if we add bugs to \u0027check_ethernet.hook\u0027 such that it takes a long time on trying to \"recover\"), so this attempt at adding a timeout was just an abundance of precaution. I\u0027d also note that there\u0027s no such timeout for the flock usage in Autotest.\n\nEither way, I guess I\u0027ll upload what I have for now, but I may reconsider this next week.",
+      "parentUuid": "e117be81_b8212eb6",
+      "revId": "e00c546825532a0477388dc20bf2a494a6ef6da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
