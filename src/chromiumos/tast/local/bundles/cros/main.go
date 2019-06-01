@@ -17,6 +17,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/camera"
 	_ "chromiumos/tast/local/bundles/cros/debugd"
 	_ "chromiumos/tast/local/bundles/cros/example"
+	_ "chromiumos/tast/local/bundles/cros/firmware"
 	_ "chromiumos/tast/local/bundles/cros/graphics"
 	_ "chromiumos/tast/local/bundles/cros/hardware"
 	_ "chromiumos/tast/local/bundles/cros/hwsec"
