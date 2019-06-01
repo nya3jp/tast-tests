@@ -6,7 +6,7 @@ package firmware
 
 import (
 	"context"
-	"strings"
+	"regexp"
 
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
@@ -21,17 +21,18 @@ func init() {
 			"yichengli@chromium.org", // Test author
 			"norvez@chromium.org",
 		},
-		Attr: []string{"informational"},
+		Attr:         []string{"informational"},
+		SoftwareDeps: []string{"biometrics_daemon"},
 	})
 }
 
 func FpSensor(ctx context.Context, s *testing.State) {
-	const exp = "FPTPM seed set:1"
+	exp, _ := regexp.Compile("FPMCU encryption status: 0x[a-f0-9]{7}1(.+)FPTPM_seed_set")
 	cmd := testexec.CommandContext(ctx, "ectool", "--name=cros_fp", "fpencstatus")
 	s.Logf("Running command: %q", shutil.EscapeSlice(cmd.Args))
 	if out, err := cmd.Output(testexec.DumpLogOnError); err != nil {
 		s.Errorf("%q failed: %v", shutil.EscapeSlice(cmd.Args), err)
-	} else if !strings.Contains(string(out), exp) {
+	} else if !exp.MatchString(string(out)) {
 		s.Errorf("FPTPM seed is not set; output %q doesn't contain %q", string(out), exp)
 	}
 }
