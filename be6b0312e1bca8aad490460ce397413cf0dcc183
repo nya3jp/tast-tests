@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "7ecce621_0ed5d588",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/file_system_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-02T15:50:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dddc41f_0f41687b",
+      "range": {
+        "startLine": 35,
+        "startChar": 20,
+        "endLine": 35,
+        "endChar": 29
+      },
+      "revId": "be6b0312e1bca8aad490460ce397413cf0dcc183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d941bf7_d342f53a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/file_system_permissions.go",
         "patchSetId": 2
@@ -95,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "7850336a_05c7871d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/file_system_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-02T15:50:21Z",
+      "side": 1,
+      "message": "Thank you for the info. Done.",
+      "parentUuid": "d10455f0_7bd741ba",
+      "revId": "be6b0312e1bca8aad490460ce397413cf0dcc183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1ed487a0_fb1a033d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/file_system_permissions.go",
         "patchSetId": 2
@@ -118,6 +160,30 @@
     },
     {
       "key": {
+        "uuid": "70c26df5_de6dcf95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/file_system_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-02T15:50:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1ed487a0_fb1a033d",
+      "range": {
+        "startLine": 90,
+        "startChar": 5,
+        "endLine": 90,
+        "endChar": 35
+      },
+      "revId": "be6b0312e1bca8aad490460ce397413cf0dcc183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f682617e_0408d3d5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/file_system_permissions.go",
         "patchSetId": 2
@@ -138,6 +204,30 @@
       "revId": "be6b0312e1bca8aad490460ce397413cf0dcc183",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a35ec78a_92c232d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/file_system_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-02T15:50:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f682617e_0408d3d5",
+      "range": {
+        "startLine": 96,
+        "startChar": 20,
+        "endLine": 96,
+        "endChar": 33
+      },
+      "revId": "be6b0312e1bca8aad490460ce397413cf0dcc183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -176,6 +266,30 @@
       "side": 1,
       "message": "Actually, N doesn\u0027t seem to have the double-mount issue either. Can we remove L90-101?",
       "parentUuid": "2645d018_a45b8c54",
+      "range": {
+        "startLine": 99,
+        "startChar": 38,
+        "endLine": 99,
+        "endChar": 61
+      },
+      "revId": "be6b0312e1bca8aad490460ce397413cf0dcc183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "025d38ae_f8f06baa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/file_system_permissions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-02T15:50:21Z",
+      "side": 1,
+      "message": "Thank you for update. Done. Tested locally both for P and N.",
+      "parentUuid": "494bba24_068e8eb6",
       "range": {
         "startLine": 99,
         "startChar": 38,

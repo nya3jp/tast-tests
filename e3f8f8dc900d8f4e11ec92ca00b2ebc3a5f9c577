@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4df0d732_41594de4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/file_system_permissions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-02T15:50:21Z",
+      "side": 1,
+      "message": "Note: during my long leave, the \"chrome_login\" was merged into \"chrome\".",
+      "range": {
+        "startLine": 28,
+        "startChar": 36,
+        "endLine": 28,
+        "endChar": 44
+      },
+      "revId": "e3f8f8dc900d8f4e11ec92ca00b2ebc3a5f9c577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
