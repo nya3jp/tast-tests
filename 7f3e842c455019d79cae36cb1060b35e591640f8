@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a2dd6de_43848add",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fp_sensor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-02T13:11:10Z",
+      "side": 1,
+      "message": "would it be more appropriate to put this test in the hardware category, or maybe a new firmware category? see https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/bundles/cros/platform/doc.go -- the platform package is mostly intended to exercise userspace code.",
+      "revId": "7f3e842c455019d79cae36cb1060b35e591640f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be88b3d9_5c9b54ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fp_sensor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-02T13:11:10Z",
+      "side": 1,
+      "message": "nit: FingerprintSensor, maybe?",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 16
+      },
+      "revId": "7f3e842c455019d79cae36cb1060b35e591640f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4e303dc_3e5e310b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fp_sensor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-02T13:11:10Z",
+      "side": 1,
+      "message": "can you add any other owners for this test?",
+      "revId": "7f3e842c455019d79cae36cb1060b35e591640f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29257c89_8f527bc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fp_sensor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-02T13:11:10Z",
+      "side": 1,
+      "message": "would it be helpful to include the actual output? e.g.\n\nconst exp \u003d \"FPTPM seed set:1\"\n...\n} else if !strings.Contains(string(out), exp) {\n    s.Errorf(\"FPTPM seed is not set; output %q doesn\u0027t contain %q\", out, exp)\n}",
+      "revId": "7f3e842c455019d79cae36cb1060b35e591640f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "370e3501_5626a0de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fp_sensor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-02T13:11:10Z",
+      "side": 1,
+      "message": "you don\u0027t need to log this; i\u0027d just delete the else clause",
+      "revId": "7f3e842c455019d79cae36cb1060b35e591640f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
