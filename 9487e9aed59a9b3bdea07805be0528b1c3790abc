@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "647d2c3e_bb7fe7cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-06-02T23:56:01Z",
+      "side": 1,
+      "message": "differentiates",
+      "range": {
+        "startLine": 9,
+        "startChar": 11,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "9487e9aed59a9b3bdea07805be0528b1c3790abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af11e01c_416394e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-06-02T23:56:01Z",
+      "side": 1,
+      "message": "which",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 4
+      },
+      "revId": "9487e9aed59a9b3bdea07805be0528b1c3790abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cedc26e4_c3a6f656",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 3
@@ -41,6 +87,46 @@
         "startChar": 1,
         "endLine": 112,
         "endChar": 0
+      },
+      "revId": "9487e9aed59a9b3bdea07805be0528b1c3790abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bec3c7f_507a681f",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-06-02T23:56:01Z",
+      "side": 1,
+      "message": "It seems like there is a good amount of code duplicated between these two setup calls - is it possible to consolidate?",
+      "revId": "9487e9aed59a9b3bdea07805be0528b1c3790abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40e70464_ba0975cb",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-06-02T23:56:01Z",
+      "side": 1,
+      "message": "Just curious, why not just add a second return param to ensureARCEnabled to indicate which type of ARC guest is running?",
+      "range": {
+        "startLine": 309,
+        "startChar": 3,
+        "endLine": 309,
+        "endChar": 15
       },
       "revId": "9487e9aed59a9b3bdea07805be0528b1c3790abc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
