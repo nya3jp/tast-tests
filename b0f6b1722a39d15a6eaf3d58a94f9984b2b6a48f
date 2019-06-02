@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "12ac592b_0a178ed8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2019-06-02T08:36:07Z",
+      "side": 1,
+      "message": "Agreed the comment should be updated, but I don\u0027t think this is a good idea to have a number hardcoded here: we are probably going to add more subprocesses in the coming quarters for various proxy features. This is going to be very brittle and annoying if we have to update that file every time.\n\nLooking at the test core, for now the assumptions that the PIDs of the arc-networkd subtree are stable is I think sound for a given $BOARD, but it might be different for different boards or builds.\n\nAt least in this patch we should \"if len(pids) !\u003d 3 {\" into \"if len(pids) \u003d\u003d 0\".",
+      "parentUuid": "1b85ed9d_8666ef83",
+      "revId": "b0f6b1722a39d15a6eaf3d58a94f9984b2b6a48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee5aed57_78304f1b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/networkd_stability.go",
         "patchSetId": 1
