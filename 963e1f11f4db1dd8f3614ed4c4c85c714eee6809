@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35284bd9_fef08bfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mini_container_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-03T08:05:44Z",
+      "side": 1,
+      "message": "Note: update the deps to catch up with ToT.",
+      "revId": "963e1f11f4db1dd8f3614ed4c4c85c714eee6809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4bb609e_c1f58364",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-03T08:05:44Z",
+      "side": 1,
+      "message": "Note: updated args to match with original autotest\u0027s behavior.",
+      "revId": "963e1f11f4db1dd8f3614ed4c4c85c714eee6809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
