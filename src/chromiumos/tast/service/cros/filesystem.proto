@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package cros;
+
+service FileSystem {
+  rpc ReadDir (ReadDirRequest) returns (ReadDirReply) {}
+}
+
+message ReadDirRequest {
+  string dir = 1;
+}
+
+message ReadDirReply {
+  repeated FileInfo files = 1;
+}
+
+message FileInfo {
+  string name = 1;
+  uint64 size = 2;
+  uint64 mode = 3;
+  google.protobuf.Timestamp modified = 4;
+}
