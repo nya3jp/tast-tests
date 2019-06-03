@@ -8,13 +8,13 @@ import (
 	"context"
 	"fmt"
 	"math"
-	"strconv"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
@@ -94,32 +94,32 @@ func PIP(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get internal display info: ", err)
 	}
 
-	origShelfAlignment, err := getShelfAlignment(ctx, tconn, dispInfo.ID)
+	origShelfAlignment, err := ash.GetShelfAlignment(ctx, tconn, dispInfo.ID)
 	if err != nil {
 		s.Fatal("Failed to get shelf alignment: ", err)
 	}
-	if err := setShelfAlignment(ctx, tconn, dispInfo.ID, shelfAlignmentBottom); err != nil {
+	if err := ash.SetShelfAlignment(ctx, tconn, dispInfo.ID, ash.ShelfAlignmentBottom); err != nil {
 		s.Fatal("Failed to set shelf alignment to Bottom: ", err)
 	}
 	// Be nice and restore shelf alignment to its original state on exit.
-	defer setShelfAlignment(ctx, tconn, dispInfo.ID, origShelfAlignment)
+	defer ash.SetShelfAlignment(ctx, tconn, dispInfo.ID, origShelfAlignment)
 
-	origShelfBehavior, err := getShelfBehavior(ctx, tconn, dispInfo.ID)
+	origShelfBehavior, err := ash.GetShelfBehavior(ctx, tconn, dispInfo.ID)
 	if err != nil {
 		s.Fatal("Failed to get shelf behavior: ", err)
 	}
-	if err := setShelfBehavior(ctx, tconn, dispInfo.ID, shelfBehaviorNeverAutoHide); err != nil {
+	if err := ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, ash.ShelfBehaviorNeverAutoHide); err != nil {
 		s.Fatal("Failed to set shelf behavior to Never Auto Hide: ", err)
 	}
 	// Be nice and restore shelf behavior to its original state on exit.
-	defer setShelfBehavior(ctx, tconn, dispInfo.ID, origShelfBehavior)
+	defer ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, origShelfBehavior)
 
-	tabletModeEnabled, err := isTabletModeEnabled(ctx, tconn)
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get tablet mode: ", err)
 	}
 	// Be nice and restore tablet mode to its original state on exit.
-	defer setTabletModeEnabled(ctx, tconn, tabletModeEnabled)
+	defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeEnabled)
 
 	dispMode, err := getInternalDisplayMode(ctx, tconn)
 	if err != nil {
@@ -129,7 +129,7 @@ func PIP(ctx context.Context, s *testing.State) {
 	// Run all subtests twice. First, with tablet mode disabled. And then, with it enabled.
 	for _, tabletMode := range []bool{false, true} {
 		s.Logf("Running tests with tablet mode enabled=%t", tabletMode)
-		if err := setTabletModeEnabled(ctx, tconn, tabletMode); err != nil {
+		if err := ash.SetTabletModeEnabled(ctx, tconn, tabletMode); err != nil {
 			s.Fatalf("Failed to set tablet mode enabled to %t: %v", tabletMode, err)
 		}
 
@@ -511,12 +511,12 @@ func testPIPGravityShelfAutoHide(ctx context.Context, tconn *chrome.Conn, act *a
 
 	// 2) PIP window should not fall down when the shelf disappears. Since by default it is "gravity-less".
 
-	testing.ContextLogf(ctx, "Setting shelf auto hide = %q", shelfBehaviorAlwaysAutoHide)
-	if err := setShelfBehavior(ctx, tconn, dispInfo.ID, shelfBehaviorAlwaysAutoHide); err != nil {
-		return errors.Wrapf(err, "failed to set shelf behavior to %q", shelfBehaviorAlwaysAutoHide)
+	testing.ContextLogf(ctx, "Setting shelf auto hide = %q", ash.ShelfBehaviorAlwaysAutoHide)
+	if err := ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, ash.ShelfBehaviorAlwaysAutoHide); err != nil {
+		return errors.Wrapf(err, "failed to set shelf behavior to %q", ash.ShelfBehaviorAlwaysAutoHide)
 	}
 	// On exit restore to NeverAutoHide no matter what.
-	defer setShelfBehavior(ctx, tconn, dispInfo.ID, shelfBehaviorNeverAutoHide)
+	defer ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, ash.ShelfBehaviorNeverAutoHide)
 
 	if err := act.WaitForIdle(ctx, time.Second); err != nil {
 		return err
@@ -537,8 +537,8 @@ func testPIPGravityShelfAutoHide(ctx context.Context, tconn *chrome.Conn, act *a
 	// 3) PIP should fall-down ('down' gravity) after being moved to the center of the screen.
 
 	// Set shelf to visible again.
-	if err := setShelfBehavior(ctx, tconn, dispInfo.ID, shelfBehaviorNeverAutoHide); err != nil {
-		return errors.Wrapf(err, "failed to set shelf behavior to %q", shelfBehaviorNeverAutoHide)
+	if err := ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, ash.ShelfBehaviorNeverAutoHide); err != nil {
+		return errors.Wrapf(err, "failed to set shelf behavior to %q", ash.ShelfBehaviorNeverAutoHide)
 	}
 	newX := dispMode.WidthInNativePixels / 2
 	testing.ContextLogf(ctx, "Moving PIP to (%d, %d)", newX, bounds.Top)
@@ -551,8 +551,8 @@ func testPIPGravityShelfAutoHide(ctx context.Context, tconn *chrome.Conn, act *a
 	}
 
 	// Set shelf to auto-hide again, causing the PIP window to fall down.
-	if err := setShelfBehavior(ctx, tconn, dispInfo.ID, shelfBehaviorAlwaysAutoHide); err != nil {
-		return errors.Wrapf(err, "failed to set shelf behavior to %q", shelfBehaviorNeverAutoHide)
+	if err := ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, ash.ShelfBehaviorAlwaysAutoHide); err != nil {
+		return errors.Wrapf(err, "failed to set shelf behavior to %q", ash.ShelfBehaviorNeverAutoHide)
 	}
 
 	bounds, err = act.WindowBounds(ctx)
@@ -568,9 +568,9 @@ func testPIPGravityShelfAutoHide(ctx context.Context, tconn *chrome.Conn, act *a
 
 	// 4) PIP window should go up when the shelf reappears.
 
-	testing.ContextLogf(ctx, "Setting shelf auto hide = %q", shelfBehaviorNeverAutoHide)
-	if err := setShelfBehavior(ctx, tconn, dispInfo.ID, shelfBehaviorNeverAutoHide); err != nil {
-		return errors.Wrapf(err, "failed to set shelf behavior to %q", shelfBehaviorNeverAutoHide)
+	testing.ContextLogf(ctx, "Setting shelf auto hide = %q", ash.ShelfBehaviorNeverAutoHide)
+	if err := ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, ash.ShelfBehaviorNeverAutoHide); err != nil {
+		return errors.Wrapf(err, "failed to set shelf behavior to %q", ash.ShelfBehaviorNeverAutoHide)
 	}
 
 	if err := act.WaitForIdle(ctx, time.Second); err != nil {
@@ -595,14 +595,14 @@ func testPIPToggleTabletMode(ctx context.Context, tconn *chrome.Conn, act *arc.A
 	}
 	testing.ContextLogf(ctx, "Initial bounds: %+v", origBounds)
 
-	tabletEnabled, err := isTabletModeEnabled(ctx, tconn)
+	tabletEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
 		return errors.New("failed to get whether tablet mode is enabled")
 	}
-	defer setTabletModeEnabled(ctx, tconn, tabletEnabled)
+	defer ash.SetTabletModeEnabled(ctx, tconn, tabletEnabled)
 
 	testing.ContextLogf(ctx, "Setting 'tablet mode enabled = %t'", !tabletEnabled)
-	if err := setTabletModeEnabled(ctx, tconn, !tabletEnabled); err != nil {
+	if err := ash.SetTabletModeEnabled(ctx, tconn, !tabletEnabled); err != nil {
 		return errors.New("failed to set tablet mode")
 	}
 
@@ -633,154 +633,6 @@ func getInternalDisplayMode(ctx context.Context, tconn *chrome.Conn) (*display.D
 		}
 	}
 	return nil, errors.New("failed to get selected mode")
-}
-
-// setTabletModeEnabled enables / disables tablet mode.
-// After calling this function, it won't be possible to physically switch to/from tablet mode since that functionality will be disabled.
-func setTabletModeEnabled(ctx context.Context, c *chrome.Conn, enabled bool) error {
-	e := strconv.FormatBool(enabled)
-	expr := fmt.Sprintf(
-		`new Promise(function(resolve, reject) {
-		  chrome.autotestPrivate.setTabletModeEnabled(%s, function(enabled) {
-		    if (chrome.runtime.lastError) {
-		      reject(new Error(chrome.runtime.lastError.message));
-		      return;
-		    }
-		    if (enabled != %s) {
-		      reject(new Error("unexpected tablet mode: " + enabled));
-		    } else {
-		      resolve();
-		    }
-		  })
-		})`, e, e)
-	return c.EvalPromise(ctx, expr, nil)
-}
-
-// isTabletModeEnabled gets the tablet mode enabled status.
-func isTabletModeEnabled(ctx context.Context, tconn *chrome.Conn) (bool, error) {
-	var enabled bool
-	err := tconn.EvalPromise(ctx,
-		`new Promise(function(resolve, reject) {
-		  chrome.autotestPrivate.isTabletModeEnabled(function(enabled) {
-		    if (chrome.runtime.lastError) {
-		      reject(new Error(chrome.runtime.lastError.message));
-		    } else {
-		      resolve(enabled);
-		    }
-		  })
-		})`, &enabled)
-	return enabled, err
-}
-
-// shelfBehavior represents the different Chrome OS shelf behaviors.
-type shelfBehavior string
-
-// As defined in ShelfAutoHideBehavior here:
-// https://cs.chromium.org/chromium/src/ash/public/cpp/shelf_types.h
-const (
-	// shelfBehaviorAlwaysAutoHide represents always auto-hide.
-	shelfBehaviorAlwaysAutoHide shelfBehavior = "always"
-	//shelfBehaviorNeverAutoHide represents never auto-hide, meaning that it is always visible.
-	shelfBehaviorNeverAutoHide = "never"
-	// shelfBehaviorHidden represents always hidden, used for debugging, since this state is not exposed to the user.
-	shelfBehaviorHidden = "hidden"
-	// shelfBehaviorInvalid represents an invalid state.
-	shelfBehaviorInvalid = "invalid"
-)
-
-// setShelfBehavior sets the shelf visibility behavior.
-// displayID is the display that contains the shelf.
-func setShelfBehavior(ctx context.Context, c *chrome.Conn, displayID string, b shelfBehavior) error {
-	expr := fmt.Sprintf(
-		`new Promise(function(resolve, reject) {
-		  chrome.autotestPrivate.setShelfAutoHideBehavior(%q, %q, function() {
-		    if (chrome.runtime.lastError) {
-		      reject(new Error(chrome.runtime.lastError.message));
-		    } else {
-		      resolve();
-		    }
-		  });
-		})`, displayID, b)
-	return c.EvalPromise(ctx, expr, nil)
-}
-
-// getShelfBehavior returns the shelf visibility behavior.
-// displayID is the display that contains the shelf.
-func getShelfBehavior(ctx context.Context, c *chrome.Conn, displayID string) (shelfBehavior, error) {
-	var b shelfBehavior
-	expr := fmt.Sprintf(
-		`new Promise(function(resolve, reject) {
-		  chrome.autotestPrivate.getShelfAutoHideBehavior(%q, function(behavior) {
-		    if (chrome.runtime.lastError) {
-		      reject(new Error(chrome.runtime.lastError.message));
-		    } else {
-		      resolve(behavior);
-		    }
-		  });
-		})`, displayID)
-	if err := c.EvalPromise(ctx, expr, &b); err != nil {
-		return shelfBehaviorInvalid, err
-	}
-	switch b {
-	case shelfBehaviorAlwaysAutoHide, shelfBehaviorNeverAutoHide, shelfBehaviorHidden:
-	default:
-		return shelfBehaviorInvalid, errors.Errorf("invalid shelf behavior %q", b)
-	}
-	return b, nil
-}
-
-// shelfAlignment represents the different Chrome OS shelf alignments.
-type shelfAlignment string
-
-// As defined in ShelfAlignment here:
-// https://cs.chromium.org/chromium/src/ash/public/cpp/shelf_types.h
-const (
-	shelfAlignmentBottom       shelfAlignment = "Bottom"
-	shelfAlignmentLeft                        = "Left"
-	shelfAlignmentRight                       = "Right"
-	shelfAlignmentBottomLocked                = "BottomLocked"
-	shelfAlignmentInvalid                     = "Invalid"
-)
-
-// setShelfAlignment sets the shelf alignment.
-// displayID is the display that contains the shelf.
-func setShelfAlignment(ctx context.Context, c *chrome.Conn, displayID string, a shelfAlignment) error {
-	expr := fmt.Sprintf(
-		`new Promise(function(resolve, reject) {
-		  chrome.autotestPrivate.setShelfAlignment(%q, %q, function() {
-		    if (chrome.runtime.lastError) {
-		      reject(new Error(chrome.runtime.lastError.message));
-		    } else {
-		      resolve();
-		    }
-		  });
-		})`, displayID, a)
-	return c.EvalPromise(ctx, expr, nil)
-}
-
-// getShelfAlignment returns the shelf alignment.
-// displayID is the display that contains the shelf.
-func getShelfAlignment(ctx context.Context, c *chrome.Conn, displayID string) (shelfAlignment, error) {
-	var a shelfAlignment
-	expr := fmt.Sprintf(
-		`new Promise(function(resolve, reject) {
-		  chrome.autotestPrivate.getShelfAlignment(%q, function(alignment) {
-		    if (chrome.runtime.lastError) {
-		      reject(new Error(chrome.runtime.lastError.message));
-		    } else {
-		      resolve(alignment);
-		    }
-		  });
-		})`, displayID)
-	if err := c.EvalPromise(ctx, expr, &a); err != nil {
-		return shelfAlignmentInvalid, err
-	}
-	switch a {
-	case shelfAlignmentBottom, shelfAlignmentLeft, shelfAlignmentRight, shelfAlignmentBottomLocked:
-	default:
-		return shelfAlignmentInvalid, errors.Errorf("invalid shelf alignment %q", a)
-	}
-	return a, nil
 }
 
 // getShelfRect returns Chrome OS's shelf rect, in DPs.
