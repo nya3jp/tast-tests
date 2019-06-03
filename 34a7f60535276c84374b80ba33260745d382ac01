@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "9a05a758_ebd87560",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-06-03T19:00:19Z",
+      "side": 1,
+      "message": "SGTM, done",
+      "parentUuid": "ea2deca0_5b9e79b1",
+      "range": {
+        "startLine": 139,
+        "startChar": 17,
+        "endLine": 139,
+        "endChar": 24
+      },
+      "revId": "34a7f60535276c84374b80ba33260745d382ac01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46071274_a57e461b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-06-03T19:00:19Z",
+      "side": 1,
+      "message": "I\u0027m going to leave it as is, I don\u0027t know enough about named returns to make that call.",
+      "parentUuid": "ec176189_818ff3f0",
+      "range": {
+        "startLine": 139,
+        "startChar": 28,
+        "endLine": 139,
+        "endChar": 41
+      },
+      "revId": "34a7f60535276c84374b80ba33260745d382ac01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36965184_749762f8",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
         "patchSetId": 10
@@ -68,6 +116,30 @@
       "revId": "34a7f60535276c84374b80ba33260745d382ac01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb4c2218_acd2b80e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-06-03T19:00:19Z",
+      "side": 1,
+      "message": "I do log the magnitude on line 59",
+      "parentUuid": "36965184_749762f8",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "34a7f60535276c84374b80ba33260745d382ac01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
