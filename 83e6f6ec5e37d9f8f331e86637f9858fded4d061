@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9b3cc01c_dba29868",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-03T00:46:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d119452f_843d19ec",
+      "range": {
+        "startLine": 7,
+        "startChar": 46,
+        "endLine": 7,
+        "endChar": 68
+      },
+      "revId": "83e6f6ec5e37d9f8f331e86637f9858fded4d061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8c28345_c9f1f6e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "83e6f6ec5e37d9f8f331e86637f9858fded4d061",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2e13315_59ca57e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-03T00:46:53Z",
+      "side": 1,
+      "message": "Alright! I added a warning when restoring failed. Probably doesn\u0027t make sense to fail the test if restoring failed. And at this time we already succeeded at writing to the paths once, so chances that this fails are pretty low.",
+      "parentUuid": "d8c28345_c9f1f6e9",
+      "revId": "83e6f6ec5e37d9f8f331e86637f9858fded4d061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "83e6f6ec5e37d9f8f331e86637f9858fded4d061",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84096406_35eed815",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-03T00:46:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e69fc86d_ad266cd7",
+      "range": {
+        "startLine": 201,
+        "startChar": 32,
+        "endLine": 202,
+        "endChar": 29
+      },
+      "revId": "83e6f6ec5e37d9f8f331e86637f9858fded4d061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
