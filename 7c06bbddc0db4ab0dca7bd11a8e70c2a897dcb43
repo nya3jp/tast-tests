@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "12bf7514_7744c661",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-06-03T22:16:15Z",
+      "side": 1,
+      "message": "I don\u0027t need it for the accel tests but I will be adding additional fields here for other tests that I am working on most notably a timestamp",
+      "parentUuid": "83b4dfe2_36db9f75",
+      "revId": "7c06bbddc0db4ab0dca7bd11a8e70c2a897dcb43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db68cefb_5579f739",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
         "patchSetId": 11
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "a549155f_8cde8853",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-06-03T22:16:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db68cefb_5579f739",
+      "revId": "7c06bbddc0db4ab0dca7bd11a8e70c2a897dcb43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ce05e08_e5f4581e",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
         "patchSetId": 11
@@ -50,6 +86,24 @@
       "revId": "7c06bbddc0db4ab0dca7bd11a8e70c2a897dcb43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47bb54c4_681e0f07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-06-03T22:16:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ce05e08_e5f4581e",
+      "revId": "7c06bbddc0db4ab0dca7bd11a8e70c2a897dcb43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
