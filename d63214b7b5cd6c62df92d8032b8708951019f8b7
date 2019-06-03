@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "d81808c8_7118f256",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-03T08:05:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dd8ba9d_bd8094c5",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 59
+      },
+      "revId": "d63214b7b5cd6c62df92d8032b8708951019f8b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "847c1b64_9c65c218",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
         "patchSetId": 2
@@ -80,6 +104,30 @@
       "revId": "d63214b7b5cd6c62df92d8032b8708951019f8b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "890a9fe3_c4c4f611",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-03T08:05:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "847c1b64_9c65c218",
+      "range": {
+        "startLine": 233,
+        "startChar": 2,
+        "endLine": 234,
+        "endChar": 8
+      },
+      "revId": "d63214b7b5cd6c62df92d8032b8708951019f8b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -142,6 +190,30 @@
       "side": 1,
       "message": "hmm.. I guess we abused the fact that the python auto test was always slow to start. In P, you can wait for the mini container by making sure 1) android-sh (or nsenter) works, and 2) /var/run/arc/dalvik-cache/.preload_done exists, but N doesn\u0027t have such a file or anything.\n\nHow about adding retry and timeout to testZygote() and making sure the test runs first? I know it\u0027s dirty but I didn\u0027t come up with a better way.",
       "parentUuid": "7e483b7f_5184a1d6",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 2
+      },
+      "revId": "d63214b7b5cd6c62df92d8032b8708951019f8b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bbbb554_478909e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-03T08:05:44Z",
+      "side": 1,
+      "message": "Thank you for advice.\n\nI\u0027ve converted testZygote to waitForZygote. It (implicitly) tests the zygote running, and fails if not.",
+      "parentUuid": "cda3eb55_12f18feb",
       "range": {
         "startLine": 235,
         "startChar": 0,
