@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3d9a982_63347b99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-03T20:38:18Z",
+      "side": 1,
+      "message": "nit: i\u0027d remove the \"warning: \" here since i don\u0027t think it adds much",
+      "range": {
+        "startLine": 94,
+        "startChar": 29,
+        "endLine": 94,
+        "endChar": 39
+      },
+      "revId": "3d2a9219a8c1183a722eb16b276766b30d045bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03aa8c38_f467f5e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-03T20:38:18Z",
+      "side": 1,
+      "message": "nit: please delete the \"warning: \" here too and get rid of the trailing newline to match the normal log message style:\n\n  testing.ContextLogf(ctx, \"Failed to read %v while disabling CPU frequency scaling: %v\", path, err)",
+      "revId": "3d2a9219a8c1183a722eb16b276766b30d045bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b05f72b2_6252f303",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-03T20:38:18Z",
+      "side": 1,
+      "message": "nit: if err :\u003d ioutil.WriteFile(...); err !\u003d nil {",
+      "revId": "3d2a9219a8c1183a722eb16b276766b30d045bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81bf262e_c7cf3189",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-03T20:38:18Z",
+      "side": 1,
+      "message": "please update this per L262",
+      "revId": "3d2a9219a8c1183a722eb16b276766b30d045bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
