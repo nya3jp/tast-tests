@@ -122,6 +122,48 @@
       "revId": "e00c546825532a0477388dc20bf2a494a6ef6da6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d20127b_759071be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-03T08:30:45Z",
+      "side": 1,
+      "message": "Thank you for the info. Filed a clean up issue: crbug.com/969615.",
+      "parentUuid": "c99e6af2_a86b00bc",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 17
+      },
+      "revId": "e00c546825532a0477388dc20bf2a494a6ef6da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca402717_9a1bd394",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-03T08:30:45Z",
+      "side": 1,
+      "message": "\u003e (need to \u0027lockchan \u003c- nil\u0027 on successful lock, for one)\n\noops, good catch :-)\n\nCould you elaborate what \"fragile\" do you mean here?\n\nAs for extracting as a function, it seems like one of the common patterns in golang, e.g.;\n\ntype EthernetLock struct {\n  done chan\u003c- struct{}\n}\n\nfunc Lock(ctx context.Context) (*EthernetLock, error) {\n\tlockchan :\u003d make(chan error) // To notify lock completion to main thread.\n\tdone :\u003d make(chan struct{})  // To notify main thread completion to the goroutine.\n        succeeded :\u003d false\n\tdefer func() {\n            if !succeeded {\n                close(done)            // Notify thread at end of test.\n            }\n        }()\n\n\tgo func() {\n\t\t... as you wrote ...\n\t}()\n\n\tlctx, cancel :\u003d context.WithTimeout(ctx, 20*time.Second)\n\tdefer cancel()\n\tselect {\n\tcase err :\u003d \u003c-lockchan:\n\t\tif err !\u003d nil {\n\t\t\treturn nil, errors.wrapf(err, \"...some details...\")\n\t\t}\n\tcase \u003c-lctx.Done():\n\t\treturn nil, errors.wrapf(lctx.Err(), \"...some details...\")\n\t}\n\n\tsucceeded \u003d true\n\treturn \u0026EthernetLock{ done }, nil\n}\n\nfunc (e *EthernetLock) Unlock() {\n\tclose(e.done)\n}\n\n\nin caller (test scenario);\n\n...\nlock, err :\u003d Lock(ctx)\nif err !\u003d nil {\n   ...\n}\ndefer lock.Unlock()\n\nWDYT?\n\n\n\n\u003e  Does Tast enforce some other reasonable timeout that would catch us if for some odd reason this lock is held \"too long\" by some other process? \n\nin general, \"interrupting\" the operation is very difficult in programming.\nIn Tast, we rely on context for timeout.\n\n\u003e Note that I don\u0027t have any real expected case for seeing this held very long (perhaps if we add bugs to \u0027check_ethernet.hook\u0027 such that it takes a long time on trying to \"recover\"),\n\nThat\u0027s actually what I\u0027m worrying about.\nIn case of the situation, it would affect to other tests without timeout, that\u0027d be avoided.\n\n\u003e I\u0027d also note that there\u0027s no such timeout for the flock usage in Autotest.\n\nIn autotest, we know that it sometimes behaves mysteriously, which Tast would not like to have.\n\nI hope the above extraction approach satisfies you,\nand thank you for your cooperation to keep the test running in a good state as much as possible in advance.",
+      "parentUuid": "0a4618ea_6e8f20f2",
+      "revId": "e00c546825532a0477388dc20bf2a494a6ef6da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
