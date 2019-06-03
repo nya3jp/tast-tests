@@ -13,6 +13,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/ad"
 	_ "chromiumos/tast/local/bundles/cros/arc"
 	_ "chromiumos/tast/local/bundles/cros/audio"
+	_ "chromiumos/tast/local/bundles/cros/base"
 	_ "chromiumos/tast/local/bundles/cros/camera"
 	_ "chromiumos/tast/local/bundles/cros/crostini"
 	_ "chromiumos/tast/local/bundles/cros/debugd"
