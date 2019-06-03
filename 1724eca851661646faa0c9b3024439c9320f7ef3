@@ -520,6 +520,30 @@
     },
     {
       "key": {
+        "uuid": "b024fcec_2f4b7012",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-03T01:56:32Z",
+      "side": 1,
+      "message": "As I mentioned in the overall comment, I recommend removing this check and seeing how it goes.",
+      "parentUuid": "bc390c3c_ca1ecdb4",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 3
+      },
+      "revId": "1724eca851661646faa0c9b3024439c9320f7ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78d7d826_2a8a3882",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
         "patchSetId": 3
