@@ -1,0 +1,57 @@
+package cros
+
+import (
+	"context"
+	"io"
+	"os"
+	"time"
+
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.RegisterServiceInterface((*FileSystem)(nil))
+}
+
+type FileSystem interface {
+	ReadDir(ctx context.Context, dir string) ([]*FileInfo, error)
+	RemoveAll(ctx context.Context, path string) error
+}
+
+type FileSystemReadDirRequest
+
+type FileInfo struct {
+	Name string
+	Size int64
+	Mode os.FileMode
+	ModTime time.Time
+}
+
+type fileSystemReadDirRequest struct {
+	Dir string
+}
+
+type fileSystem
+
+type FileSystemClient struct {
+	r io.Reader
+	w io.Writer
+}
+
+func (c *FileSystemClient) ReadDir(ctx context.Context, dir string) ([]*FileInfo, error) {
+	panic("implement me")
+}
+
+func (c *FileSystemClient) RemoveAll(ctx context.Context, path string) error {
+	panic("implement me")
+}
+
+var _ FileSystem = (*FileSystemClient)(nil)
+
+type FileSystemServer struct {
+	impl FileSystem
+}
+
+func (s *FileSystemServer) Call(ctx context.Context, in []byte) ([]byte, error) {
+
+}
