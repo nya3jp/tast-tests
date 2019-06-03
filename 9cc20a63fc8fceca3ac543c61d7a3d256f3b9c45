@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f60d9fe7_c5e689ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/PRESUBMIT.cfg",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-06-03T09:02:04Z",
+      "side": 1,
+      "message": "This file doesn\u0027t seem to work, presumably because this is not at the top-level of a project.",
+      "revId": "9cc20a63fc8fceca3ac543c61d7a3d256f3b9c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
