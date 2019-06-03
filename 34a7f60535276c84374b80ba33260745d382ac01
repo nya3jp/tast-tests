@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec176189_818ff3f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-03T17:37:15Z",
+      "side": 1,
+      "message": "go nit (question too) can you make this a named return\n(ret SensorReading, err error)\nsince the first thing you do it create the return value as a variable\n\n\nthen you could use naked returns\n\nerr \u003d errors.Errof(..)\nreturn\n\n(most subjective change, I am okay either way)",
+      "range": {
+        "startLine": 139,
+        "startChar": 28,
+        "endLine": 139,
+        "endChar": 41
+      },
+      "revId": "34a7f60535276c84374b80ba33260745d382ac01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea2deca0_5b9e79b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-03T17:37:15Z",
+      "side": 1,
+      "message": "nit: should we call this Read() instead of Reading()",
+      "range": {
+        "startLine": 139,
+        "startChar": 17,
+        "endLine": 139,
+        "endChar": 24
+      },
+      "revId": "34a7f60535276c84374b80ba33260745d382ac01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36965184_749762f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_accel.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-03T17:37:15Z",
+      "side": 1,
+      "message": "should we or can we log a informational message with the raw magnitude so we can just check logs to see (in the passing case)?",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "34a7f60535276c84374b80ba33260745d382ac01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
