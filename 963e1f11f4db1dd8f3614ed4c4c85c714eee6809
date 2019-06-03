@@ -19,6 +19,139 @@
     },
     {
       "key": {
+        "uuid": "99b2aaf4_02b81df7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mini_container_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-03T09:39:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "35284bd9_fef08bfc",
+      "revId": "963e1f11f4db1dd8f3614ed4c4c85c714eee6809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87747e5e_ee88b475",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-03T09:39:02Z",
+      "side": 1,
+      "message": "nit: could you wrap this error to indicate which command was run, e.g. errors.Wrap(err, \"getprop ro.zygote failed\")? IIUC the error message does not include the command name, but something like just \"exit status 1\".",
+      "range": {
+        "startLine": 33,
+        "startChar": 10,
+        "endLine": 33,
+        "endChar": 13
+      },
+      "revId": "963e1f11f4db1dd8f3614ed4c4c85c714eee6809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d203813c_12e6ef12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-03T09:39:02Z",
+      "side": 1,
+      "message": "nit: nil",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 26
+      },
+      "revId": "963e1f11f4db1dd8f3614ed4c4c85c714eee6809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a11c1e1_6ec2103b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-03T09:39:02Z",
+      "side": 1,
+      "message": "huge nit: \"mini container\" or \"zygote\"?",
+      "range": {
+        "startLine": 38,
+        "startChar": 27,
+        "endLine": 38,
+        "endChar": 40
+      },
+      "revId": "963e1f11f4db1dd8f3614ed4c4c85c714eee6809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5da1d2f3_3cdc141d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-03T09:39:02Z",
+      "side": 1,
+      "message": "nit: nil",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 26
+      },
+      "revId": "963e1f11f4db1dd8f3614ed4c4c85c714eee6809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cac89f1_9f66e88a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-03T09:39:02Z",
+      "side": 1,
+      "message": "huge nit: \u003e\u003d",
+      "range": {
+        "startLine": 123,
+        "startChar": 48,
+        "endLine": 123,
+        "endChar": 49
+      },
+      "revId": "963e1f11f4db1dd8f3614ed4c4c85c714eee6809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f4bb609e_c1f58364",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
         "patchSetId": 3
@@ -30,6 +163,47 @@
       "writtenOn": "2019-06-03T08:05:44Z",
       "side": 1,
       "message": "Note: updated args to match with original autotest\u0027s behavior.",
+      "revId": "963e1f11f4db1dd8f3614ed4c4c85c714eee6809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "703d13bc_156a914e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-03T09:39:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f4bb609e_c1f58364",
+      "revId": "963e1f11f4db1dd8f3614ed4c4c85c714eee6809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0abaec7a_31ad84a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-03T09:39:02Z",
+      "side": 1,
+      "message": "At this point the system state is unknown, so it might be a bit fragile to get the journal cursor.\n\nHow about: (1) stop ui, (2) get the journal cursor, and (3) start ui?",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 43
+      },
       "revId": "963e1f11f4db1dd8f3614ed4c4c85c714eee6809",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
