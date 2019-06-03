@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d1f1b76a_ff8c6cea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fp_sensor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-03T17:51:30Z",
+      "side": 1,
+      "message": "Done. Moved to a new firmware category.",
+      "parentUuid": "5a2dd6de_43848add",
+      "revId": "7f3e842c455019d79cae36cb1060b35e591640f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be88b3d9_5c9b54ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/fp_sensor.go",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "b7498e92_26cb0587",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fp_sensor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-03T17:51:30Z",
+      "side": 1,
+      "message": "I\u0027d be more inclined towards saying the full name in the description, because we use \"fpsensor\" in all our firmware code. Is that okay?\n\nThere are other examples for shorthand like hardware/memtester (memory tester).",
+      "parentUuid": "be88b3d9_5c9b54ab",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 16
+      },
+      "revId": "7f3e842c455019d79cae36cb1060b35e591640f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4e303dc_3e5e310b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/fp_sensor.go",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "7f3e842c455019d79cae36cb1060b35e591640f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1760c8d9_4b759270",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fp_sensor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-03T17:51:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4e303dc_3e5e310b",
+      "revId": "7f3e842c455019d79cae36cb1060b35e591640f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "0b487af2_0181f042",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fp_sensor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-03T17:51:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29257c89_8f527bc3",
+      "revId": "7f3e842c455019d79cae36cb1060b35e591640f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "370e3501_5626a0de",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/fp_sensor.go",
         "patchSetId": 1
@@ -90,6 +168,24 @@
       "revId": "7f3e842c455019d79cae36cb1060b35e591640f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaba289f_014758d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fp_sensor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-03T17:51:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "370e3501_5626a0de",
+      "revId": "7f3e842c455019d79cae36cb1060b35e591640f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
