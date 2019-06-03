@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "83b9fcfc_a8cceb9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-06-03T17:09:24Z",
+      "side": 1,
+      "message": "It seems like using a slice will be sufficient for our use case for the time being, done",
+      "parentUuid": "8a6c5c68_81704752",
+      "revId": "ec019ed403881b57dcde087f7dd7b9472b7aeb6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5907bc21_72a69449",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
         "patchSetId": 6
