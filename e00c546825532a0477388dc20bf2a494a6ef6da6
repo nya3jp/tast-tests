@@ -164,6 +164,24 @@
       "revId": "e00c546825532a0477388dc20bf2a494a6ef6da6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5314fb01_efb0eca7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-06-03T18:49:19Z",
+      "side": 1,
+      "message": "\u003e Could you elaborate what \"fragile\" do you mean here?\n\nI think I was stuck on this part of your explanation:\n\n\"Note that, in case of time out, goroutine will be paused at LOCKSH for a while, and will take the lock when the other service releases the lock.\nHowever, the lock will be soon released at the end of the goroutine.\"\n\nI think I got it in my head that our own attempts to LOCK_UN were supposed to be freeing the goroutine up to continue, and that sounded inherently racy. But that\u0027s not true (I think I was partially misunderstanding the semantics of flock(), as well as): the only way we end up unblocking ourselves is by closing the file descriptor, which *can* be done safely.\n\nI think I also was getting a little stuck on when to \u0027defer\u0027 stuff vs. direct error handling. Your example helped a bit.\n\n\u003e As for extracting as a function, it seems like one of the common patterns in golang, e.g.;\n\u003e \n\u003e type EthernetLock struct {\n\u003e   done chan\u003c- struct{}\n\u003e }\n...\n\u003e lock, err :\u003d Lock(ctx)\n\u003e if err !\u003d nil {\n\u003e    ...\n\u003e }\n\u003e defer lock.Unlock()\n\u003e \n\u003e WDYT?\n\nThanks for writing that out! I think I had something similar in mind (I actually don\u0027t think we really need to return the \u0027struct\u0027 at all -- can\u0027t I just return a Closure directly?). With my above (mis)understandings cleared up, I think this is doable.\n\n\u003e In autotest, we know that it sometimes behaves mysteriously, which Tast would not like to have.\n\nI can agree there ;)\n\n\u003e I hope the above extraction approach satisfies you,\n\u003e and thank you for your cooperation to keep the test running in a good state as much as possible in advance.\n\nYep, thanks for the help. I\u0027ll respin with the timeout intact.",
+      "parentUuid": "ca402717_9a1bd394",
+      "revId": "e00c546825532a0477388dc20bf2a494a6ef6da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
