@@ -27,6 +27,8 @@ import (
 const (
 	liveContainerImageServerFormat    = "https://storage.googleapis.com/cros-containers/%d"         // simplestreams image server being served live
 	stagingContainerImageServerFormat = "https://storage.googleapis.com/cros-containers-staging/%d" // simplestreams image server for staging
+	tarballRootfsPath                 = "/mnt/shared/MyFiles/Downloads/crostini/container_rootfs.tar.xz"
+	tarballMetadataPath               = "/mnt/shared/MyFiles/Downloads/crostini/container_metadata.tar.xz"
 
 	testContainerUsername = "testuser"            // default container username during testing
 	testImageAlias        = "debian/stretch/test" // default container alias
@@ -44,6 +46,8 @@ const (
 	LiveImageServer ContainerType = iota
 	// StagingImageServer indicates that the current staging container image should be downloaded.
 	StagingImageServer
+	// Tarball indicates that the container image is available as tarball shared over 9P.
+	Tarball
 )
 
 // Container encapsulates a container running in a VM.
@@ -77,26 +81,27 @@ func DefaultContainer(ctx context.Context, vmInstance *VM) (*Container, error) {
 
 // Create will create a Linux container in an existing VM. It returns without waiting for the creation to complete.
 // One must listen on cicerone D-Bus signals to know the creation is done.
-// TODO(851207): Make a minimal Linux container for testing so this completes
-// fast enough to use in bvt.
 func (c *Container) Create(ctx context.Context, t ContainerType) error {
-	var server string
+	req := &cpb.CreateLxdContainerRequest{
+		VmName:        c.VM.name,
+		ContainerName: DefaultContainerName,
+		OwnerId:       c.VM.Concierge.ownerID,
+	}
 	switch t {
 	case LiveImageServer:
-		server = liveContainerImageServerFormat
+		req.ImageServer = liveContainerImageServerFormat
+		req.ImageAlias = testImageAlias
 	case StagingImageServer:
-		server = stagingContainerImageServerFormat
+		req.ImageServer = stagingContainerImageServerFormat
+		req.ImageAlias = testImageAlias
+	case Tarball:
+		req.RootfsPath = tarballRootfsPath
+		req.MetadataPath = tarballMetadataPath
 	}
 
 	resp := &cpb.CreateLxdContainerResponse{}
 	if err := dbusutil.CallProtoMethod(ctx, c.ciceroneObj, ciceroneInterface+".CreateLxdContainer",
-		&cpb.CreateLxdContainerRequest{
-			VmName:        c.VM.name,
-			ContainerName: DefaultContainerName,
-			OwnerId:       c.VM.Concierge.ownerID,
-			ImageServer:   server,
-			ImageAlias:    testImageAlias,
-		}, resp); err != nil {
+		req, resp); err != nil {
 		return err
 	}
 
@@ -455,7 +460,29 @@ func (c *Container) DumpLog(ctx context.Context, dir string) error {
 // CreateDefaultContainer prepares a VM and container with default settings and
 // either the live or staging container versions. The directory dir may be used
 // to store logs on failure.
-func CreateDefaultContainer(ctx context.Context, dir, user string, t ContainerType) (*Container, error) {
+func CreateDefaultContainer(ctx context.Context, dir, user, artifactPath string, t ContainerType) (*Container, error) {
+	userPath, err := cryptohome.UserPath(user)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get user Downloads dir")
+	}
+
+	// Put the container rootfs and metadata tarballs in a subdirectory of Downloads
+	// for 9P sharing with the guest.
+	containerPath := filepath.Join(userPath, "Downloads/crostini")
+	if err := os.MkdirAll(containerPath, 0755); err != nil {
+		return nil, errors.Wrap(err, "failed to mkdir for container image")
+	}
+
+	if t == Tarball {
+		testing.ContextLog(ctx, "Extracting container tarballs")
+		cmd := testexec.CommandContext(ctx, "tar", "xvf", artifactPath,
+			"-C", containerPath,
+			"container_metadata.tar.xz", "container_rootfs.tar.xz")
+		if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+			return nil, errors.Wrap(err, "failed to untar container image")
+		}
+	}
+
 	concierge, err := NewConcierge(ctx, user)
 	if err != nil {
 		return nil, err
@@ -465,6 +492,9 @@ func CreateDefaultContainer(ctx context.Context, dir, user string, t ContainerTy
 
 	if err := vmInstance.Start(ctx); err != nil {
 		return nil, err
+	}
+	if err := vmInstance.ShareDownloadsPath(ctx, "crostini", false); err != nil {
+		return nil, errors.Wrap(err, "failed to share container image with VM")
 	}
 
 	created, err := dbusutil.NewSignalWatcherForSystemBus(ctx, ciceroneDBusMatchSpec("LxdContainerCreated"))
@@ -503,87 +533,6 @@ func CreateDefaultContainer(ctx context.Context, dir, user string, t ContainerTy
 	return c, nil
 }
 
-// CreateArtifactContainer prepares a VM and container with default settings from
-// the container and VM image included as a build artifact. The directory dir
-// may be used to store logs on failure.
-func CreateArtifactContainer(ctx context.Context, dir, user, artifactPath string) (*Container, error) {
-	userPath, err := cryptohome.UserPath(user)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get user Downloads dir")
-	}
-
-	// Put the container rootfs and metadata tarballs in a subdirectory of Downloads
-	// for 9P sharing with the guest..
-	containerPath := filepath.Join(userPath, "Downloads/crostini")
-	if err := os.MkdirAll(containerPath, 0755); err != nil {
-		return nil, errors.Wrap(err, "failed to mkdir for container image")
-	}
-
-	testing.ContextLog(ctx, "Extracting container tarballs")
-	cmd := testexec.CommandContext(ctx, "tar", "xvf", artifactPath,
-		"-C", containerPath,
-		"container_metadata.tar.xz", "container_rootfs.tar.xz")
-	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
-		return nil, errors.Wrap(err, "failed to untar container image")
-	}
-
-	concierge, err := NewConcierge(ctx, user)
-	if err != nil {
-		return nil, err
-	}
-
-	// Start the VM, then have seneschal share the Downloads/crostini path into
-	// the guest.
-	vmInstance := NewDefaultVM(concierge)
-	if err := vmInstance.Start(ctx); err != nil {
-		return nil, err
-	}
-	if err := vmInstance.ShareDownloadsPath(ctx, "crostini", false); err != nil {
-		return nil, errors.Wrap(err, "failed to share container image with VM")
-	}
-
-	// TODO(crbug.com/946143): Do this via the CreateContainer RPC.
-	testing.ContextLog(ctx, "Importing container tarball")
-	cmd = vmInstance.Command(ctx,
-		"LXD_DIR=/mnt/stateful/lxd", "LXD_CONF=/mnt/stateful/lxd_conf",
-		"lxc", "image", "import",
-		"/mnt/shared/MyFiles/Downloads/crostini/container_metadata.tar.xz",
-		"/mnt/shared/MyFiles/Downloads/crostini/container_rootfs.tar.xz",
-		"--alias", "artifact-import")
-	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
-		return nil, errors.Wrap(err, "failed to import container image")
-	}
-
-	// Delete the copy of the container image from Downloads, since it's already
-	// imported into the VM. This is necessary on devices with limited stateful
-	// storage.
-	if err := os.RemoveAll(containerPath); err != nil {
-		return nil, err
-	}
-
-	c, err := DefaultContainer(ctx, vmInstance)
-	if err != nil {
-		return nil, err
-	}
-	if _, c.ciceroneObj, err = dbusutil.Connect(ctx, ciceroneName, ciceronePath); err != nil {
-		return nil, errors.Wrap(err, "failed to connect to cicerone")
-	}
-
-	testing.ContextLog(ctx, "Creating LXD container from imported image")
-	cmd = vmInstance.Command(ctx,
-		"LXD_DIR=/mnt/stateful/lxd", "LXD_CONF=/mnt/stateful/lxd_conf",
-		"lxc", "init", "artifact-import", c.containerName)
-	if err := cmd.Run(); err != nil {
-		cmd.DumpLog(ctx)
-		return nil, errors.Wrap(err, "failed to create container")
-	}
-
-	if err := c.StartAndWait(ctx, dir); err != nil {
-		return nil, err
-	}
-
-	return c, nil
-}
 func ciceroneDBusMatchSpec(memberName string) dbusutil.MatchSpec {
 	return dbusutil.MatchSpec{
 		Type:      "signal",

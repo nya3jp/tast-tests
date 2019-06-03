@@ -19,7 +19,7 @@ func init() {
 		Desc:         "Tests basic Crostini startup only",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"informational"},
-		Timeout:      5 * time.Minute,
+		Timeout:      7 * time.Minute,
 		Data:         []string{"crostini_start_basic_guest_images.tar"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
@@ -48,7 +48,7 @@ func CrostiniStartBasic(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Creating default container")
-	cont, err := vm.CreateArtifactContainer(ctx, s.OutDir(), cr.User(), artifactPath)
+	cont, err := vm.CreateDefaultContainer(ctx, s.OutDir(), cr.User(), artifactPath, vm.Tarball)
 	if err != nil {
 		s.Fatal("Failed to set up default container: ", err)
 	}
