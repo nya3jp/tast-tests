@@ -31,7 +31,6 @@ func init() {
 			"arc-storage@google.com",
 			"hidehiko@chromium.org", // Tast port.
 		},
-		Attr: []string{"informational"},
 		// TODO(hidehiko,nya): registration_test.go is too strict.
 		// Actually, this does not actually need "chrome", and
 		// should be done very quickly so default Timeout should work.
