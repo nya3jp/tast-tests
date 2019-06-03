@@ -33,7 +33,7 @@ window.CCAUIMultiCamera = class {
     } catch (e) {
       isV1 = true;
     }
-    if (expected === actual || (isV1 && actual === 'unknown')) {
+    if (expected === actual || (isV1 && (!actual || actual === 'unknown'))) {
       return;
     }
     throw new Error('Expected facing: ' + expected + '; ' +
