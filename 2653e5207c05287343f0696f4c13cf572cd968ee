@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "311878b5_935cc348",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-06-04T07:24:59Z",
+      "side": 1,
+      "message": "You\u0027re right!\nI should\u0027n\u0027t have needed to WaitForExists multiple times.\nGetContentDescription should always succeed, but the description of it may not have been initialized (empty string).",
+      "parentUuid": "21570064_e9ca0372",
+      "revId": "2653e5207c05287343f0696f4c13cf572cd968ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05921853_b9b1e860",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "2653e5207c05287343f0696f4c13cf572cd968ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54dc79c6_0a2d9eef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-06-04T07:24:59Z",
+      "side": 1,
+      "message": "Oh... I forgot about the style from last time. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Test-structure\nI think the sample code needs to be updated.\nCreating another CL.",
+      "parentUuid": "05921853_b9b1e860",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "2653e5207c05287343f0696f4c13cf572cd968ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
