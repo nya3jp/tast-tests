@@ -97,18 +97,26 @@ func (facing Facing) String() string {
 func GetFacing(ctx context.Context, d *ui.Device) (Facing, error) {
 	const viewfinderID = idBase + "viewfinder_frame"
 	viewfinder := d.Object(ui.ID(viewfinderID))
-	if err := viewfinder.WaitForExists(ctx, shortTimeout); err != nil {
-		return External, errors.Wrap(err, "failed to find viewfinder frame (did GCA crash?)")
-	}
-	camInfo, err := viewfinder.GetContentDescription(ctx)
+	var facing string
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := viewfinder.WaitForExists(ctx, shortTimeout); err != nil {
+			return errors.Wrap(err, "failed to find viewfinder frame (did GCA crash?)")
+		}
+		camInfo, err := viewfinder.GetContentDescription(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get content description of viewfinder frame")
+		}
+		s := strings.Split(camInfo, "|")
+		if len(s) <= 1 {
+			return errors.Errorf("failed to read camera info from viewfinder frame (read info %q)", camInfo)
+		}
+		facing = s[1]
+		return nil
+	}, &testing.PollOptions{Timeout: shortTimeout})
 	if err != nil {
-		return External, errors.Wrap(err, "failed to get content description of viewfinder frame")
+		return External, errors.Wrap(err, "timed out reading camera info")
 	}
-	s := strings.Split(camInfo, "|")
-	if len(s) <= 1 {
-		return External, errors.Errorf("failed to read camera info from viewfinder frame (read info %q)", camInfo)
-	}
-	switch facing := s[1]; facing {
+	switch facing {
 	case "BACK":
 		return Back, nil
 	case "FRONT":
