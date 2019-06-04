@@ -45,6 +45,54 @@
       "revId": "83f4ace2e31b1be457a7e768354a94ed07b2408d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3e76945_17751e29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-04T23:13:06Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "db5947fa_67b1fef6",
+      "range": {
+        "startLine": 6,
+        "startChar": 50,
+        "endLine": 6,
+        "endChar": 54
+      },
+      "revId": "83f4ace2e31b1be457a7e768354a94ed07b2408d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cec0630e_2acec40f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-04T23:13:06Z",
+      "side": 1,
+      "message": "Done. I am adding a line of empty comment like platform/doc.go does.",
+      "parentUuid": "86ea45e5_a2c483fc",
+      "range": {
+        "startLine": 6,
+        "startChar": 15,
+        "endLine": 6,
+        "endChar": 32
+      },
+      "revId": "83f4ace2e31b1be457a7e768354a94ed07b2408d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
