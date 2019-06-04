@@ -182,6 +182,24 @@
       "revId": "e00c546825532a0477388dc20bf2a494a6ef6da6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ae366e5_49247f08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-04T01:10:18Z",
+      "side": 1,
+      "message": "\u003e I think I also was getting a little stuck on when to \u0027defer\u0027 stuff vs. direct error handling. Your example helped a bit.\n\nGlad to hear that mine helped you :-).\n\n\n\u003e (I actually don\u0027t think we really need to return the \u0027struct\u0027 at all -- can\u0027t I just return a Closure directly?)\n\nI\u0027m fine with closure. (Note: I\u0027d use struct specifically if it could be extended in future, but I\u0027m not very sure in this case).",
+      "parentUuid": "5314fb01_efb0eca7",
+      "revId": "e00c546825532a0477388dc20bf2a494a6ef6da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
