@@ -129,6 +129,29 @@
     },
     {
       "key": {
+        "uuid": "4f4dde5a_b0154de3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2019-06-04T00:42:56Z",
+      "side": 1,
+      "message": "Is this for getting logs of the latest boot? comment?",
+      "range": {
+        "startLine": 109,
+        "startChar": 81,
+        "endLine": 109,
+        "endChar": 105
+      },
+      "revId": "963e1f11f4db1dd8f3614ed4c4c85c714eee6809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7cac89f1_9f66e88a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
         "patchSetId": 3
