@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c04a7c9a_5d5726c1",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T01:22:10Z",
+      "side": 1,
+      "message": "Could you add a comment about how artifactPath is used? Especially, artifactsPath is ignored if t !\u003d Tarball.",
+      "range": {
+        "startLine": 462,
+        "startChar": 13,
+        "endLine": 462,
+        "endChar": 28
+      },
+      "revId": "79c5deacda2d77c02a4272924ddf69b137dafe8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3407975_51dc4981",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T01:22:10Z",
+      "side": 1,
+      "message": "huge nit: Considering artifactPath is ignored when t !\u003d Tarball, it might be more common to put artifactPath after t.",
+      "range": {
+        "startLine": 463,
+        "startChar": 60,
+        "endLine": 463,
+        "endChar": 72
+      },
+      "revId": "79c5deacda2d77c02a4272924ddf69b137dafe8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "468f2780_442b695d",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T01:22:10Z",
+      "side": 1,
+      "message": "Do we want to do this even if t !\u003d Tarball?",
+      "range": {
+        "startLine": 464,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 2
+      },
+      "revId": "79c5deacda2d77c02a4272924ddf69b137dafe8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
