@@ -89,7 +89,6 @@ func RunTest(ctx context.Context, s *testing.State, traces map[string]string) {
 	shortCtx, shortCancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer shortCancel()
 
-	// TODO(pwang): Install it in container image.
 	s.Log("Checking if apitrace installed")
 	cmd := cont.Command(shortCtx, "sudo", "dpkg", "-l", "apitrace")
 	if err := cmd.Run(); err != nil {
