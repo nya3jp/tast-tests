@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86ea45e5_a2c483fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-04T22:56:31Z",
+      "side": 1,
+      "message": "nit: to keep the first sentence (which i believe is used as a title) shorter, mind splitting this into two sentences earlier?\n\nPackage firmware ... of Chrome OS. This includes the main EC ... fingerprint MCU and corresponds to ...",
+      "range": {
+        "startLine": 6,
+        "startChar": 15,
+        "endLine": 6,
+        "endChar": 32
+      },
+      "revId": "83f4ace2e31b1be457a7e768354a94ed07b2408d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db5947fa_67b1fef6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-04T22:56:31Z",
+      "side": 1,
+      "message": "huge nit: \"ECs\" instead of \"EC\u0027s\"\n\nsee https://english.stackexchange.com/questions/503/what-is-the-correct-way-to-pluralize-an-acronym for more discussion",
+      "range": {
+        "startLine": 6,
+        "startChar": 50,
+        "endLine": 6,
+        "endChar": 54
+      },
+      "revId": "83f4ace2e31b1be457a7e768354a94ed07b2408d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
