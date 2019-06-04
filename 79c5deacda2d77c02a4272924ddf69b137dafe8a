@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f361e7ad_f891a4a6",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-06-04T21:40:27Z",
+      "side": 1,
+      "message": "Added a comment about this.",
+      "parentUuid": "c04a7c9a_5d5726c1",
+      "range": {
+        "startLine": 462,
+        "startChar": 13,
+        "endLine": 462,
+        "endChar": 28
+      },
+      "revId": "79c5deacda2d77c02a4272924ddf69b137dafe8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3407975_51dc4981",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1ea4c71f_a22d04f6",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-06-04T21:40:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3407975_51dc4981",
+      "range": {
+        "startLine": 463,
+        "startChar": 60,
+        "endLine": 463,
+        "endChar": 72
+      },
+      "revId": "79c5deacda2d77c02a4272924ddf69b137dafe8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "468f2780_442b695d",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "79c5deacda2d77c02a4272924ddf69b137dafe8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daa77b12_a828e62a",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-06-04T21:40:27Z",
+      "side": 1,
+      "message": "Nope, done!",
+      "parentUuid": "468f2780_442b695d",
+      "range": {
+        "startLine": 464,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 2
+      },
+      "revId": "79c5deacda2d77c02a4272924ddf69b137dafe8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
