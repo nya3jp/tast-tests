@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "977b78a2_a165d059",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-04T03:38:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87747e5e_ee88b475",
+      "range": {
+        "startLine": 33,
+        "startChar": 10,
+        "endLine": 33,
+        "endChar": 13
+      },
+      "revId": "963e1f11f4db1dd8f3614ed4c4c85c714eee6809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d203813c_12e6ef12",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
         "patchSetId": 3
@@ -83,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "4cff1d1e_fc333388",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-04T03:38:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d203813c_12e6ef12",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 26
+      },
+      "revId": "963e1f11f4db1dd8f3614ed4c4c85c714eee6809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a11c1e1_6ec2103b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
         "patchSetId": 3
@@ -94,6 +142,30 @@
       "writtenOn": "2019-06-03T09:39:02Z",
       "side": 1,
       "message": "huge nit: \"mini container\" or \"zygote\"?",
+      "range": {
+        "startLine": 38,
+        "startChar": 27,
+        "endLine": 38,
+        "endChar": 40
+      },
+      "revId": "963e1f11f4db1dd8f3614ed4c4c85c714eee6809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6ec9eab_d183ca46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-04T03:38:35Z",
+      "side": 1,
+      "message": "It\u0027s mini container not zygote (zygote at this timing may not start yet).\nI was thinking we use MiniContainer (in camel case) uses a proper term, but I don\u0027t have strong opinion. Yusuke-san, please let me know if you have some preference.",
+      "parentUuid": "2a11c1e1_6ec2103b",
       "range": {
         "startLine": 38,
         "startChar": 27,
@@ -129,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "3a5f69a2_e5de1829",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-04T03:38:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5da1d2f3_3cdc141d",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 26
+      },
+      "revId": "963e1f11f4db1dd8f3614ed4c4c85c714eee6809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f4dde5a_b0154de3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
         "patchSetId": 3
@@ -152,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "9ed506ef_8bc739c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-04T03:38:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f4dde5a_b0154de3",
+      "range": {
+        "startLine": 109,
+        "startChar": 81,
+        "endLine": 109,
+        "endChar": 105
+      },
+      "revId": "963e1f11f4db1dd8f3614ed4c4c85c714eee6809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7cac89f1_9f66e88a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
         "patchSetId": 3
@@ -172,6 +292,30 @@
       "revId": "963e1f11f4db1dd8f3614ed4c4c85c714eee6809",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98902644_30d2bda3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-04T03:38:35Z",
+      "side": 1,
+      "message": "Good catch o_o. Done.",
+      "parentUuid": "7cac89f1_9f66e88a",
+      "range": {
+        "startLine": 123,
+        "startChar": 48,
+        "endLine": 123,
+        "endChar": 49
+      },
+      "revId": "963e1f11f4db1dd8f3614ed4c4c85c714eee6809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -230,6 +374,30 @@
       "revId": "963e1f11f4db1dd8f3614ed4c4c85c714eee6809",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6c5fdb4_4efd5e2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-04T03:38:35Z",
+      "side": 1,
+      "message": "Good point. Reworked.",
+      "parentUuid": "0abaec7a_31ad84a2",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 43
+      },
+      "revId": "963e1f11f4db1dd8f3614ed4c4c85c714eee6809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
