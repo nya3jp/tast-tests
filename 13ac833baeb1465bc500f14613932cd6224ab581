@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3530501c_f08aca2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-04T21:59:38Z",
+      "side": 1,
+      "message": "would you mind adding a doc.go file in this directory with a brief description of what the firmware package is for? see the other doc.go files in sibling directories for examples, but basically, it should offer brief guidance about which tests should go here vs. in other packages.",
+      "revId": "13ac833baeb1465bc500f14613932cd6224ab581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
