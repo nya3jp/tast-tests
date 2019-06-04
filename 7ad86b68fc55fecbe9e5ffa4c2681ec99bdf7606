@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "666ee115_38012595",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-06-04T07:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9f95e94_c482a277",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 47
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37c3b2f2_70239d7c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6702ce8_0f6c27ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-06-04T07:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37c3b2f2_70239d7c",
+      "range": {
+        "startLine": 58,
+        "startChar": 28,
+        "endLine": 58,
+        "endChar": 41
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0c39675d_6c61c855",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-06-04T07:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd119eef_685bbb3f",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 17
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2922fad2_94929fb8",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "202bba48_25f54617",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-06-04T07:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2922fad2_94929fb8",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "66ee4fa6_1ccc04de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-06-04T07:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9eb68529_eafa09bb",
+      "range": {
+        "startLine": 105,
+        "startChar": 38,
+        "endLine": 105,
+        "endChar": 53
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea3722ad_e1a7afef",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
         "patchSetId": 4
@@ -137,6 +257,30 @@
       "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a19c4c21_9faa4afd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-06-04T07:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea3722ad_e1a7afef",
+      "range": {
+        "startLine": 108,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 9
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "7cc6480c_6b324487",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-06-04T07:39:15Z",
+      "side": 1,
+      "message": "Changed to simply forward the err, as Open and NewReader returns error message containing enough context for this case.",
+      "parentUuid": "1d61e7f8_5fec611e",
+      "range": {
+        "startLine": 110,
+        "startChar": 17,
+        "endLine": 110,
+        "endChar": 61
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce41d8c9_17399fd0",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
         "patchSetId": 4
@@ -183,6 +351,30 @@
       "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a27dcb0d_df1f8f1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-06-04T07:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce41d8c9_17399fd0",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 3
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "fc31942a_a6b58efc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-06-04T07:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fe5e0e1_c38401d5",
+      "range": {
+        "startLine": 124,
+        "startChar": 31,
+        "endLine": 124,
+        "endChar": 36
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fe5b450_676c3e61",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
         "patchSetId": 4
@@ -229,6 +445,30 @@
       "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da6810f2_fa6bad3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-06-04T07:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fe5b450_676c3e61",
+      "range": {
+        "startLine": 140,
+        "startChar": 71,
+        "endLine": 140,
+        "endChar": 72
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "411aa675_4d2f22b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-06-04T07:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dfb0aa5_7b381832",
+      "range": {
+        "startLine": 169,
+        "startChar": 5,
+        "endLine": 169,
+        "endChar": 22
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0d5027d_2b38748b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
         "patchSetId": 4
@@ -275,6 +539,30 @@
       "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa74e5d9_9f49f9f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-06-04T07:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0d5027d_2b38748b",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 41
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "5f0db672_4d9ca488",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-06-04T07:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c20ca1c3_7caf30df",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 2
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fa64c15_274f5f81",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
         "patchSetId": 4
@@ -321,6 +633,30 @@
       "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "613b8839_74b914f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-06-04T07:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fa64c15_274f5f81",
+      "range": {
+        "startLine": 198,
+        "startChar": 5,
+        "endLine": 198,
+        "endChar": 9
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -347,6 +683,30 @@
     },
     {
       "key": {
+        "uuid": "ec304df7_dde59623",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-06-04T07:39:15Z",
+      "side": 1,
+      "message": "Now I think this log is not so much needed because it\u0027s logged upon error.",
+      "parentUuid": "da7278bf_6f3518cf",
+      "range": {
+        "startLine": 220,
+        "startChar": 2,
+        "endLine": 220,
+        "endChar": 20
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e51ecb8d_628ff48c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
         "patchSetId": 4
@@ -370,6 +730,30 @@
     },
     {
       "key": {
+        "uuid": "aa3b7473_96f71c59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-06-04T07:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e51ecb8d_628ff48c",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 227,
+        "endChar": 45
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ab22924_52d65582",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
         "patchSetId": 4
@@ -390,6 +774,30 @@
       "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd7b7d3a_b8654fca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-06-04T07:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ab22924_52d65582",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 228,
+        "endChar": 11
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
