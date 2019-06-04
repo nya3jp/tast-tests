@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9687dabc_c6e5af6f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-04T01:25:05Z",
+      "side": 1,
+      "message": "optional: for consistency, can \"Get\" or \"Is\" prefixes be dropped?\nIn Tast/Go we do so.",
+      "range": {
+        "startLine": 48,
+        "startChar": 3,
+        "endLine": 48,
+        "endChar": 6
+      },
+      "revId": "6f6c81b4a81bec22d8be075a82fd62388bb521ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
