@@ -179,6 +179,9 @@ func testAssistantVolumeQueries(ctx context.Context, tconn *chrome.Conn, s *test
 
 // getActiveNodeVolume returns the current active node volume, ranging from 0 to 100.
 func getActiveNodeVolume(ctx context.Context) (uint64, error) {
+	if err := audio.WaitForDevice(ctx, audio.OutputStream); err != nil {
+		return 0, err
+	}
 	cras, err := audio.NewCras(ctx)
 	if err != nil {
 		return 0, err
