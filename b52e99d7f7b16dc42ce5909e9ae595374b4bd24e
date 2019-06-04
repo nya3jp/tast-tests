@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c161b02_4d5a632f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-04T10:03:43Z",
+      "side": 1,
+      "message": "Note/WIP: apk is not yet included in this CL.",
+      "revId": "b52e99d7f7b16dc42ce5909e9ae595374b4bd24e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
