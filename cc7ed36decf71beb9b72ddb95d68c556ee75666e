@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50dbaf8b_ae7f8e13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-04T01:19:22Z",
+      "side": 1,
+      "message": "err\n\nyour check at L60 is to look at err assigned at L50...",
+      "range": {
+        "startLine": 59,
+        "startChar": 10,
+        "endLine": 59,
+        "endChar": 11
+      },
+      "revId": "cc7ed36decf71beb9b72ddb95d68c556ee75666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
