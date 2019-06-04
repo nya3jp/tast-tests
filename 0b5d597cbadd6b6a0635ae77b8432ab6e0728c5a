@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46522971_1b10371d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-04T22:05:15Z",
+      "side": 1,
+      "message": "mind moving this to its own line and adding a godoc comment describing it? e.g.\n\n    // Data contains all values read from the sensor.\n    // Its length depends on the type of sensor being used.\n    Data []float64",
+      "range": {
+        "startLine": 35,
+        "startChar": 27,
+        "endLine": 35,
+        "endChar": 41
+      },
+      "revId": "0b5d597cbadd6b6a0635ae77b8432ab6e0728c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb7ae564_28b93817",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-04T22:05:15Z",
+      "side": 1,
+      "message": "mind adding a comment here describing how these values are used?",
+      "revId": "0b5d597cbadd6b6a0635ae77b8432ab6e0728c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
