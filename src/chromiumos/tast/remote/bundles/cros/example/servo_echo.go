@@ -33,7 +33,7 @@ func ServoEcho(ctx context.Context, s *testing.State) {
 	// be supplied. https://crbug.com/967901 tracks finding a way to skip tests when needed.
 	pxy, err := servo.NewProxy(ctx, s.RequiredVar("servo"), dut.KeyFile(), dut.KeyDir())
 	if err != nil {
-		s.Log("Failed to connect to servo: ", err)
+		s.Fatal("Failed to connect to servo: ", err)
 	}
 	defer pxy.Close(ctx)
 
