@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21570064_e9ca0372",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-04T03:46:33Z",
+      "side": 1,
+      "message": "Can the polling part be minimized?\n\nIf I read the commit comment correctly, the problematic point was slowness.\nSo...\n\n- I think once viewfinder.WaitForExists(...) returns the success result,\n it won\u0027t need to run again.\n- GetContentDescription() could return an error due to slowness.\n- When GetContentDescription() returns the success result, string splitting should succeeded.\n\nAm I true? If so, does it make sense to you to poll only GetContentDescription() part?\nOr, if GetContentDescription() returns some unexpected value (rather than reporting an error),\nthen how about polling only GetContentDescription() and string split parts?",
+      "revId": "2653e5207c05287343f0696f4c13cf572cd968ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05921853_b9b1e860",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-04T03:46:33Z",
+      "side": 1,
+      "message": "style: we often run Poll in the if condition.\n\nif err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n  ...  // polling body.\n}, \u0026testing.PollOptions{...}); err !\u003d nil {\n  ...  // error handling.\n}\n\ncould you follow the style for consistency?",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "2653e5207c05287343f0696f4c13cf572cd968ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
