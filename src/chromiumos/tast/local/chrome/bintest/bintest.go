@@ -56,9 +56,13 @@ const (
 	username = "chronos" // user used to run test process
 )
 
+func Run(ctx context.Context, exec string, args []string, outDir string) ([]string, error) {
+	return RunWithEnv(ctx, exec, args, outDir, []string{})
+}
+
 // Run executes a Chrome binary test at exec with args.
 // If the binary test fails, it returns names of failed test cases and an error.
-func Run(ctx context.Context, exec string, args []string, outDir string) ([]string, error) {
+func RunWithEnv(ctx context.Context, exec string, args []string, outDir string, envx []string) ([]string, error) {
 	// gtestDir is the directory where Google Test stores JSON results.
 	gtestDir := filepath.Join(outDir, "gtest")
 
@@ -69,10 +73,11 @@ func Run(ctx context.Context, exec string, args []string, outDir string) ([]stri
 	if err := os.Chown(gtestDir, int(sysutil.ChronosUID), 0); err != nil {
 		return nil, err
 	}
-
 	// We don't use os.Environ() here. Otherwise, binary executed by "chronos" will fail because
 	// they cannot access $TMPDIR which is owned by "root".
-	env := []string{fmt.Sprintf("GTEST_OUTPUT=json:%s/", gtestDir)}
+	//env = append(env, fmt.Sprintf("GTEST_OUTPUT=json:%s/", gtestDir))
+	//env := []string{"CR_SOURCE_ROOT=/tmp", "LD_LIBRARY_PATH=/opt/google/chrome:/usr/local/lib64", fmt.Sprintf("GTEST_OUTPUT=json:%s/", gtestDir)}
+	env := []string{"CR_SOURCE_ROOT=/tmp", "PWD=/opt/google/chrome", fmt.Sprintf("GTEST_OUTPUT=json:%s/", gtestDir)}
 	cmd, err := RunAsync(ctx, exec, args, env, outDir)
 	if err != nil {
 		return nil, err
