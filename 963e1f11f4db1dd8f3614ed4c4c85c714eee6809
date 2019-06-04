@@ -178,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "4f13c6fd_ec9fe32b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T04:19:15Z",
+      "side": 1,
+      "message": "With my limited knowledge of English :), I would call it just \"mini container\", not capitalizing like \"Mini container\" or \"MiniContainer\" since it does not sound like a proper noun. Just my two cents.",
+      "parentUuid": "c6ec9eab_d183ca46",
+      "range": {
+        "startLine": 38,
+        "startChar": 27,
+        "endLine": 38,
+        "endChar": 40
+      },
+      "revId": "963e1f11f4db1dd8f3614ed4c4c85c714eee6809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5da1d2f3_3cdc141d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
         "patchSetId": 3

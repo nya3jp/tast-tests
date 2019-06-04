@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0872bd8c_9b388424",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T04:19:15Z",
+      "side": 1,
+      "message": "optional: Rewriting returned value in deferred closures is sometimes useful but always tricky. In this case I think it can be simpler:\n\n ...\n cursor, retErr :\u003d logs.GetJournaldCursor(ctx)\n if err :\u003d upstart.StartJob(ctx, \"ui\"); err !\u003d nil {\n   if retErr \u003d\u003d nil {\n     retErr \u003d err\n   } else {\n     testing.ContextLog(...)\n   }\n }\n return cursor, retErr\n\nThat said, it might be strictly necessary to start the ui job on journald failures. Subsequent tests are supposed to handle stopped ui by themselves.",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 35
+      },
+      "revId": "f47cbf1a2aacebc99ca677b0956b67f9470e3706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
