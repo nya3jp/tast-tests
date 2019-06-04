@@ -448,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "b23ae1ad_e33846c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/logging_udev_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:01:58Z",
+      "side": 1,
+      "message": "Could you pass the returned values of s.DataPath(mockMetricsOnPolicyFile) and s.DataPath(mockMetricsOwnerKeyFile) instead? That is:\n\n func setConsent(hasConsent bool, policyPath, keyPath string) error\n\nNote that it\u0027s not allowed (even if possible) to get the root directory path.",
+      "parentUuid": "9c9aced8_58e7c82f",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 58
+      },
+      "revId": "a5709284283ce85a7c1e2c8d78b751a7fc6070df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "457e0d25_763b8ecb",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/logging_udev_crash.go",
         "patchSetId": 2

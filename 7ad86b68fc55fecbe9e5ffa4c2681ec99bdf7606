@@ -1,0 +1,395 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9f95e94_c482a277",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:01:58Z",
+      "side": 1,
+      "message": "While you\u0027re finding owners, could you add a TODO that proper owners should be added here? I guess you don\u0027t want to be contacted forever for failures of this test :)",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 47
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37c3b2f2_70239d7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:01:58Z",
+      "side": 1,
+      "message": "filepath.Join is not needed (only one argument is given here)",
+      "range": {
+        "startLine": 58,
+        "startChar": 28,
+        "endLine": 58,
+        "endChar": 41
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd119eef_685bbb3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:01:58Z",
+      "side": 1,
+      "message": "Please check the returned error.",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 17
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2922fad2_94929fb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:01:58Z",
+      "side": 1,
+      "message": "You can use sysutil.Chronos{UID,GID}.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9eb68529_eafa09bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:01:58Z",
+      "side": 1,
+      "message": "Optional: When returning a value whose meaning is not obvious from types, it\u0027s common to name them. In this case:\n\n func checkLogContent(filename string) (complete bool, err error)\n\nOf course it\u0027s good to mention it in the doc comments, but giving names in the signature is often more convenient, e.g. it appears in godoc index.",
+      "range": {
+        "startLine": 105,
+        "startChar": 38,
+        "endLine": 105,
+        "endChar": 53
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea3722ad_e1a7afef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:01:58Z",
+      "side": 1,
+      "message": "huge nit: Generally shorter variable names are preferred for short-lived variables in Go:\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#variable-names\n\nIn this case, just \"f\" should be fine.\n\nI know it\u0027s controversial and not popular in other languages, but it\u0027s more like Go.",
+      "range": {
+        "startLine": 108,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 9
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d61e7f8_5fec611e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:01:58Z",
+      "side": 1,
+      "message": "Please use errors.Wrap/Wrapf to propagate err. Same comment goes to other places.",
+      "range": {
+        "startLine": 110,
+        "startChar": 17,
+        "endLine": 110,
+        "endChar": 61
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce41d8c9_17399fd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:01:58Z",
+      "side": 1,
+      "message": "Need to close the file.\n\n f, err :\u003d os.Open(filename)\n if err !\u003d nil { ... }\n defer f.Close()\n r \u003d f",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 3
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fe5e0e1_c38401d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:01:58Z",
+      "side": 1,
+      "message": "Please start error messages in error values with lower letters:\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 124,
+        "startChar": 31,
+        "endLine": 124,
+        "endChar": 36
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fe5b450_676c3e61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:01:58Z",
+      "side": 1,
+      "message": "nit: could you use %q instead, since it can contain arbitrary strings, like white spaces?",
+      "range": {
+        "startLine": 140,
+        "startChar": 71,
+        "endLine": 140,
+        "endChar": 72
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dfb0aa5_7b381832",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:01:58Z",
+      "side": 1,
+      "message": "huge nit: !result",
+      "range": {
+        "startLine": 169,
+        "startChar": 5,
+        "endLine": 169,
+        "endChar": 22
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0d5027d_2b38748b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:01:58Z",
+      "side": 1,
+      "message": "How about the same way above, that is to check os.IsNotExist?",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 41
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c20ca1c3_7caf30df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:01:58Z",
+      "side": 1,
+      "message": "optional: How about isolating this to a utility function?",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 2
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fa64c15_274f5f81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:01:58Z",
+      "side": 1,
+      "message": "nit: please remove extra spaces here. also, supporeted -\u003e supported.",
+      "range": {
+        "startLine": 198,
+        "startChar": 5,
+        "endLine": 198,
+        "endChar": 9
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da7278bf_6f3518cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:01:58Z",
+      "side": 1,
+      "message": "could you clarify what this log means, e.g.\n\n s.Logf(\"Running: %s\", shutil.EscapeSlice(args))",
+      "range": {
+        "startLine": 220,
+        "startChar": 2,
+        "endLine": 220,
+        "endChar": 20
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e51ecb8d_628ff48c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:01:58Z",
+      "side": 1,
+      "message": "I believe this snapshot should be taken before running udevadm.",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 227,
+        "endChar": 45
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ab22924_52d65582",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:01:58Z",
+      "side": 1,
+      "message": "How about pastFiles or pastCrashes? \"errors\" sounds a bit different.",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 228,
+        "endChar": 11
+      },
+      "revId": "7ad86b68fc55fecbe9e5ffa4c2681ec99bdf7606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
