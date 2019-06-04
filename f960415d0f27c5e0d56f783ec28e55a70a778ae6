@@ -1,0 +1,349 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "515bc6dc_d4821f6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:38:12Z",
+      "side": 1,
+      "message": "style: Please format comments as sentences, i.e. end with a period.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 31,
+        "startChar": 48,
+        "endLine": 31,
+        "endChar": 65
+      },
+      "revId": "f960415d0f27c5e0d56f783ec28e55a70a778ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43e04511_162672bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:38:12Z",
+      "side": 1,
+      "message": "I believe you don\u0027t need to accumulate failures here; see my comment at the bottom of this file.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 19
+      },
+      "revId": "f960415d0f27c5e0d56f783ec28e55a70a778ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3f5a8bb_c5ffabb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:38:12Z",
+      "side": 1,
+      "message": "style: Please use consistent case for acronyms. i.e. newELFCondition\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 95,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 20
+      },
+      "revId": "f960415d0f27c5e0d56f783ec28e55a70a778ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "407432ae_d556c6a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:38:12Z",
+      "side": 1,
+      "message": "style: nil is prefered as an empty slice.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 13
+      },
+      "revId": "f960415d0f27c5e0d56f783ec28e55a70a778ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bee01df0_454839b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:38:12Z",
+      "side": 1,
+      "message": "style: Please avoid passing testing.State:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\nIn this case, you can pass ctx and call testing.ContextLog(ctx, ...) instead.",
+      "range": {
+        "startLine": 106,
+        "startChar": 39,
+        "endLine": 106,
+        "endChar": 55
+      },
+      "revId": "f960415d0f27c5e0d56f783ec28e55a70a778ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50dd1041_69eef821",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:38:12Z",
+      "side": 1,
+      "message": "style: Please do early return to reduce nests, that is:\n\n if ec.verify(fh) {\n   return nil\n }\n ...\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 12
+      },
+      "revId": "f960415d0f27c5e0d56f783ec28e55a70a778ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe596d84_a9ee4da3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:38:12Z",
+      "side": 1,
+      "message": "Should we compare with the whitelist before calling ec.verify? ec.verify can be heavy weight and/or it can return errors for whitelisted binaries?",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 3
+      },
+      "revId": "f960415d0f27c5e0d56f783ec28e55a70a778ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e72ee64_c706bb76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:38:12Z",
+      "side": 1,
+      "message": "Rather than discarding err, could you return (uint64, error) from this function? That\u0027s often better for debugging.",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 16
+      },
+      "revId": "f960415d0f27c5e0d56f783ec28e55a70a778ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84100195_4244bec7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:38:12Z",
+      "side": 1,
+      "message": "style: var conds []*elfCondition\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 27
+      },
+      "revId": "f960415d0f27c5e0d56f783ec28e55a70a778ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6022f9f_75e9e60f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:38:12Z",
+      "side": 1,
+      "message": "If we change findDynTagValue to return error, we\u0027ll also want to change this to return error.",
+      "range": {
+        "startLine": 163,
+        "startChar": 33,
+        "endLine": 163,
+        "endChar": 37
+      },
+      "revId": "f960415d0f27c5e0d56f783ec28e55a70a778ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a39613e_31249d5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:38:12Z",
+      "side": 1,
+      "message": "I don\u0027t come up with any use case for setting root directory of searching...",
+      "range": {
+        "startLine": 182,
+        "startChar": 23,
+        "endLine": 182,
+        "endChar": 42
+      },
+      "revId": "f960415d0f27c5e0d56f783ec28e55a70a778ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23c117f9_27179507",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:38:12Z",
+      "side": 1,
+      "message": "style: const rootDir \u003d \"/\"",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 8
+      },
+      "revId": "f960415d0f27c5e0d56f783ec28e55a70a778ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a499535_7c518cbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:38:12Z",
+      "side": 1,
+      "message": "style: Please start error values with lower letters.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 191,
+        "startChar": 31,
+        "endLine": 191,
+        "endChar": 36
+      },
+      "revId": "f960415d0f27c5e0d56f783ec28e55a70a778ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9311e2d7_ccf7385f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:38:12Z",
+      "side": 1,
+      "message": "This would abort filepath.Walk on encountering the first condition failure. Instead you can report it by s.Error:\n\n if err :\u003d c.checkAndFile(s, path, fh); err !\u003d nil {\n   s.Error(\"%s check failed for %s: %v\", c.anme, path, err)\n }",
+      "range": {
+        "startLine": 221,
+        "startChar": 4,
+        "endLine": 223,
+        "endChar": 5
+      },
+      "revId": "f960415d0f27c5e0d56f783ec28e55a70a778ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6497ebe2_41306589",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-04T02:38:12Z",
+      "side": 1,
+      "message": "You don\u0027t need to aggregate errors, just call s.Error multiple times as you see condition failures. The test will fail is there is one or more s.Error calls.",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 2
+      },
+      "revId": "f960415d0f27c5e0d56f783ec28e55a70a778ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
