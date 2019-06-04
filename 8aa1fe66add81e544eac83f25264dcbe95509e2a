@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "977597f0_ee221266",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-04T15:56:11Z",
+      "side": 1,
+      "message": "With careful reading, I found this could cause a flakiness, because the process PID can be terminated between processList() invocation and mountedDevices().\n\nCould you change this to s.Logf(...) and continue?\n\nif err !\u003d nil {\n  s.Logf(\"Failed to get mounted devices for PID %d. The process looks terminated: %v\", ...)\n  continue\n}\n\nWDYT?",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 11
+      },
+      "revId": "8aa1fe66add81e544eac83f25264dcbe95509e2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e646d393_529e4a6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-04T15:56:11Z",
+      "side": 1,
+      "message": "Conceptually, you\u0027re trying to make a set, right?\n\nIn the case, could you use map[string]struct{}?\nEmpty struct is optimized into zero byte.\nNOte: This is common practice in go, AFAIK.",
+      "range": {
+        "startLine": 83,
+        "startChar": 41,
+        "endLine": 83,
+        "endChar": 44
+      },
+      "revId": "8aa1fe66add81e544eac83f25264dcbe95509e2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
