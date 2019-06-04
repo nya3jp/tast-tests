@@ -22,6 +22,30 @@
       "revId": "f47cbf1a2aacebc99ca677b0956b67f9470e3706",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59ad53b2_2fe5c225",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/minicontainer/minicontainer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-04T05:26:59Z",
+      "side": 1,
+      "message": "Per offline discussion, changed to leave \"ui\" stopped for code simplicity. Thank you for suggestion and discussion.",
+      "parentUuid": "0872bd8c_9b388424",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 35
+      },
+      "revId": "f47cbf1a2aacebc99ca677b0956b67f9470e3706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
