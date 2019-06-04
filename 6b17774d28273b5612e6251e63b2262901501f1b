@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a96cd8dc_e0377a31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-04T10:10:21Z",
+      "side": 1,
+      "message": "So, in this case, Poll()ing should be terminated, if I understand your comment correctly.\nCould you wrap the error by testing.PollBreak() for that?\n\ncf) https://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/src/chromiumos/tast/testing/poll.go#38",
+      "range": {
+        "startLine": 107,
+        "startChar": 10,
+        "endLine": 107,
+        "endChar": 83
+      },
+      "revId": "6b17774d28273b5612e6251e63b2262901501f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
