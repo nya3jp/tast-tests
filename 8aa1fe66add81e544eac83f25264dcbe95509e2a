@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "3cdfe252_a172fb4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-05T16:28:00Z",
+      "side": 1,
+      "message": "Off topic: My understanding is;\nI agreed with you that it\u0027s not perfect. But, I think this is a kind of best-effort.\nIIUC, what we\u0027d like to check with this test is \"any process does not have root partitions mounted\". IMHO, it\u0027s impossible to check it *perfectly*, because Chrome OS runs various processes at any time, and there\u0027s no guarantee that the process can keep running during this test. Instead, this test assumes \"in most cases\" processes keep running during the test.\n\nOn the other hand, in edge cases, some process could be terminated even in the \"correct\" situation, and my recommendation is to avoid false negative, because when promoted to CQ it prohibits sane CLs to be landed.\n\n+1 to re-check with the original authors, but to move forward, I\u0027d also +1 to submit and watch its result trajectory, in parallel. WDYT?",
+      "parentUuid": "1f5032d8_d7e3440a",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 11
+      },
+      "revId": "8aa1fe66add81e544eac83f25264dcbe95509e2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e646d393_529e4a6f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
         "patchSetId": 6
