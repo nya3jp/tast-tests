@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1f5032d8_d7e3440a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-06-05T15:53:04Z",
+      "side": 1,
+      "message": "while this resolves the flakiness, it brings to question what we are really testing here. Since we do not control what processes are running while running the test, are we just trying out how lucky we are to find a process that maybe using a root partition?\nIt looks more and more like we should simply remove this test or get a list of processes that must be running during the test.\n\nI will fix the error, but I think we should refrain from checking in the test until we get some clarity on what it is doing. I will check with the original authors.\n.",
+      "parentUuid": "977597f0_ee221266",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 11
+      },
+      "revId": "8aa1fe66add81e544eac83f25264dcbe95509e2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e646d393_529e4a6f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2019-06-04T15:56:11Z",
       "side": 1,
       "message": "Conceptually, you\u0027re trying to make a set, right?\n\nIn the case, could you use map[string]struct{}?\nEmpty struct is optimized into zero byte.\nNOte: This is common practice in go, AFAIK.",
+      "range": {
+        "startLine": 83,
+        "startChar": 41,
+        "endLine": 83,
+        "endChar": 44
+      },
+      "revId": "8aa1fe66add81e544eac83f25264dcbe95509e2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aa323a1_7ec77220",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-06-05T15:53:04Z",
+      "side": 1,
+      "message": "thanks, I was wondering how to do that,",
+      "parentUuid": "e646d393_529e4a6f",
       "range": {
         "startLine": 83,
         "startChar": 41,
