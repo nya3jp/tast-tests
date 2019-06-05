@@ -116,13 +116,15 @@ func (b *Buffer) SetLength(len int) error {
 // Open enables a sensor's buffer for reading and returns a channel to read
 // data from the buffer.
 func (b *Buffer) Open() (<-chan BufferData, error) {
-	err := b.enableAllChannels()
-	if err != nil {
+	if err := b.sensor.WriteAttr("buffer/enable", "0"); err != nil {
+		return nil, errors.Wrap(err, "error disabling buffer")
+	}
+
+	if err := b.enableAllChannels(); err != nil {
 		return nil, errors.Wrap(err, "error enabling channels")
 	}
 
-	err = b.sensor.WriteAttr("buffer/enable", "1")
-	if err != nil {
+	if err := b.sensor.WriteAttr("buffer/enable", "1"); err != nil {
 		return nil, errors.Wrap(err, "error enabling buffer")
 	}
 
