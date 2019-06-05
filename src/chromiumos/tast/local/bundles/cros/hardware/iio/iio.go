@@ -7,7 +7,8 @@ package iio
 import (
 	"fmt"
 	"io/ioutil"
-	"path"
+	"os"
+	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
@@ -26,16 +27,23 @@ type SensorLocation string
 
 // Sensor represents one sensor on the DUT.
 type Sensor struct {
-	Name     SensorName
-	Location SensorLocation
-	Path     string
+	Name         SensorName
+	Location     SensorLocation
+	Path         string
+	ID           uint
+	Scale        float64
+	MinFrequency int
+	MaxFrequency int
 }
 
 // SensorReading is one reading from a sensor.
 type SensorReading struct {
 	// Data contains all values read from the sensor.
 	// Its length depends on the type of sensor being used.
-	Data []float64
+	Data      []float64
+	ID        uint
+	Flags     uint8
+	Timestamp int64
 }
 
 const (
@@ -80,23 +88,21 @@ var readingNames = map[SensorName]string{
 	Mag:   "magn",
 }
 
-const iioBasePath = "/sys/bus/iio/devices"
+const iioBasePath = "sys/bus/iio/devices"
 
-var basePath = ""
+var basePath = "/"
 
 // GetSensors enumerates sensors that are exposed by Cros EC as iio devices.
-func GetSensors() ([]Sensor, error) {
-	var ret []Sensor
+func GetSensors() ([]*Sensor, error) {
+	var ret []*Sensor
 
-	iioPath := path.Join(basePath, iioBasePath)
-
-	files, err := ioutil.ReadDir(iioPath)
+	files, err := ioutil.ReadDir(filepath.Join(basePath, iioBasePath))
 	if err != nil {
 		return nil, err
 	}
 
 	for _, file := range files {
-		sensor, err := parseSensor(file.Name(), iioPath)
+		sensor, err := parseSensor(file.Name())
 		if err == nil {
 			ret = append(ret, sensor)
 		}
@@ -105,65 +111,99 @@ func GetSensors() ([]Sensor, error) {
 	return ret, nil
 }
 
-// parseSensor reads the sysfs directory at iioPath/devName and returns a
+// parseSensor reads the sysfs directory at iioBasePath/devName and returns a
 // Sensor if it is a valid EC sensor.
-func parseSensor(devName, iioPath string) (Sensor, error) {
+func parseSensor(devName string) (*Sensor, error) {
 	var sensor Sensor
 	var location SensorLocation
 	var name SensorName
+	var id, minFreq, maxFreq int
+	var scale float64
 
 	re := regexp.MustCompile(`^iio:device[0-9]+$`)
 	if !re.MatchString(devName) {
-		return sensor, errors.New("not a sensor")
+		return nil, errors.New("not a sensor")
 	}
 
-	devPath := path.Join(iioPath, devName)
-	rawName, err := ioutil.ReadFile(path.Join(devPath, "name"))
+	sensor.Path = devName
+
+	rawName, err := sensor.ReadAttr("name")
 	if err != nil {
-		return sensor, errors.Wrap(err, "sensor has no name")
+		return nil, errors.Wrap(err, "sensor has no name")
 	}
 
-	name = SensorName(strings.TrimSpace(string(rawName)))
+	name = SensorName(rawName)
 	if _, ok := sensorNames[name]; !ok {
-		return sensor, errors.Errorf("unknown sensor type %q", name)
+		return nil, errors.Errorf("unknown sensor type %q", name)
 	}
 
-	loc, err := ioutil.ReadFile(path.Join(devPath, "location"))
+	loc, err := sensor.ReadAttr("location")
 	if err == nil {
-		location = SensorLocation(strings.TrimSpace(string(loc)))
+		location = SensorLocation(loc)
 
 		if _, ok := sensorLocations[location]; !ok {
-			return sensor, errors.Errorf("unknown sensor loc %q", loc)
+			return nil, errors.Errorf("unknown sensor loc %q", loc)
 		}
 	} else {
 		location = None
 	}
 
-	return Sensor{name, location, devName}, nil
+	s, err := sensor.ReadAttr("scale")
+	if err == nil {
+		scale, err = strconv.ParseFloat(s, 64)
+		if err != nil {
+			return nil, errors.Wrapf(err, "invalid scale %q", s)
+		}
+	}
+
+	i, err := sensor.ReadAttr("id")
+	if err == nil {
+		id, err = strconv.Atoi(i)
+		if err != nil {
+			return nil, errors.Wrapf(err, "bad sensor id %q", i)
+		}
+
+		if id < 0 {
+			return nil, errors.Errorf("invalid sensor id %v", id)
+		}
+	}
+
+	f, err := sensor.ReadAttr("min_frequency")
+	if err == nil {
+		minFreq, err = strconv.Atoi(f)
+		if err != nil {
+			return nil, errors.Wrapf(err, "invalid min frequency %q", f)
+		}
+	}
+
+	f, err = sensor.ReadAttr("max_frequency")
+	if err == nil {
+		maxFreq, err = strconv.Atoi(f)
+		if err != nil {
+			return nil, errors.Wrapf(err, "invalid max frequency %q", f)
+		}
+	}
+
+	sensor.Name = name
+	sensor.Location = location
+	sensor.ID = uint(id)
+	sensor.Scale = scale
+	sensor.MinFrequency = minFreq
+	sensor.MaxFrequency = maxFreq
+
+	return &sensor, nil
 }
 
 // Read returns the current readings of the sensor.
-func (s *Sensor) Read() (SensorReading, error) {
+func (s *Sensor) Read() (*SensorReading, error) {
 	var ret SensorReading
-	sensorPath := path.Join(basePath, iioBasePath, s.Path)
 	rName, ok := readingNames[s.Name]
 	if !ok {
-		return ret, errors.Errorf("cannot read data from %v", s.Name)
-	}
-
-	sc, err := ioutil.ReadFile(path.Join(sensorPath, "scale"))
-	if err != nil {
-		return ret, errors.Wrapf(err, "cannot read %v scale", s.Name)
-	}
-
-	scale, err := strconv.ParseFloat(strings.TrimSpace(string(sc)), 64)
-	if err != nil {
-		return ret, errors.Wrapf(err, "invalid scale %q", sc)
+		return nil, errors.Errorf("cannot read data from %v", s.Name)
 	}
 
 	rawReading := func(axis string) (float64, error) {
-		r, err := ioutil.ReadFile(path.Join(sensorPath,
-			fmt.Sprintf("in_%s_%s_raw", rName, axis)))
+		r, err := s.ReadAttr(fmt.Sprintf("in_%s_%s_raw", rName, axis))
 		if err != nil {
 			return 0, err
 		}
@@ -179,11 +219,32 @@ func (s *Sensor) Read() (SensorReading, error) {
 	} {
 		reading, err := rawReading(axis)
 		if err != nil {
-			return ret, errors.Wrapf(err, "error reading from sensor %v", s.Name)
+			return nil, errors.Wrapf(err, "error reading from sensor %v", s.Name)
 		}
 
-		*prop = reading * scale
+		*prop = reading * s.Scale
 	}
 
-	return ret, nil
+	return &ret, nil
+}
+
+// WriteAttr writes value to the sensor's attr file.
+func (s *Sensor) WriteAttr(attr, value string) error {
+	err := ioutil.WriteFile(filepath.Join(basePath, iioBasePath, s.Path, attr),
+		[]byte(value), os.ModePerm)
+
+	if err != nil {
+		return errors.Wrapf(err, "error writing attribute %q of %v", attr, s.Path)
+	}
+
+	return nil
+}
+
+// ReadAttr reads the sensor's attr file and returns the value.
+func (s *Sensor) ReadAttr(attr string) (string, error) {
+	a, err := ioutil.ReadFile(filepath.Join(basePath, iioBasePath, s.Path, attr))
+	if err != nil {
+		return "", errors.Wrapf(err, "error reading attribute %q of %v", attr, s.Path)
+	}
+	return strings.TrimSpace(string(a)), nil
 }
