@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea6be257_f64ecdad",
+        "filename": "src/chromiumos/tast/local/network/check_network_hook.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-05T01:31:14Z",
+      "side": 1,
+      "message": "nit: Maybe \"goroutine\" ?",
+      "range": {
+        "startLine": 38,
+        "startChar": 25,
+        "endLine": 38,
+        "endChar": 31
+      },
+      "revId": "f1e3e23ec0528f2bd94d70f401999c301aa36ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "befc85cb_c5154072",
+        "filename": "src/chromiumos/tast/local/network/check_network_hook.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-05T01:31:14Z",
+      "side": 1,
+      "message": "Clar: is it ok for you to ignore errors of LOCK_UN, or do you want to have logging?",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 54,
+        "endChar": 45
+      },
+      "revId": "f1e3e23ec0528f2bd94d70f401999c301aa36ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
