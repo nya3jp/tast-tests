@@ -16,8 +16,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     Boot,
-		Desc:     "Checks that Android boots",
+		Func: Boot,
+		Desc: "Checks that Android boots",
+		// TODO(nya): Add a proper contact of ARC boot tests.
 		Contacts: []string{"nya@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{
 			"android_all", // Run on master-arc-dev, too.
