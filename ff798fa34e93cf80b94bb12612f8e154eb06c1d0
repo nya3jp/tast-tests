@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a23ed6f_b0b82ff0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2019-06-05T03:40:03Z",
+      "side": 1,
+      "message": "\"Chrome\" do the selection.",
+      "range": {
+        "startLine": 12,
+        "startChar": 30,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "ff798fa34e93cf80b94bb12612f8e154eb06c1d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
