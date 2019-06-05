@@ -3,11 +3,12 @@ package iio
 import (
 	"encoding/binary"
 	"os"
-	"os/exec"
 	"path"
 	"reflect"
 	"testing"
 	"time"
+
+	"golang.org/x/sys/unix"
 )
 
 func TestNewBuffer(t *testing.T) {
@@ -42,10 +43,10 @@ func TestNewBuffer(t *testing.T) {
 
 	expected := &Buffer{
 		sensors[0], []*ChannelSpec{
-			&ChannelSpec{0, "el_a", true, 8, 8, 0, LE, binary.LittleEndian, 1},
-			&ChannelSpec{1, "el_b", false, 14, 16, 2, BE, binary.BigEndian, 2},
-			&ChannelSpec{2, "el_d", false, 64, 64, 0, LE, binary.LittleEndian, 8},
-			&ChannelSpec{3, "el_c", true, 29, 32, 3, LE, binary.LittleEndian, 4},
+			{0, "el_a", true, 8, 8, 0, LE, binary.LittleEndian, 1},
+			{1, "el_b", false, 14, 16, 2, BE, binary.BigEndian, 2},
+			{2, "el_d", false, 64, 64, 0, LE, binary.LittleEndian, 8},
+			{3, "el_c", true, 29, 32, 3, LE, binary.LittleEndian, 4},
 		}, nil, nil,
 	}
 
@@ -85,8 +86,7 @@ func TestOpenBuffer(t *testing.T) {
 	fifoFile := path.Join(basePath, "dev/iio:device0")
 
 	// Use mkfifo to simulate an iio buffer
-	cmd := exec.Command("mkfifo", fifoFile)
-	if err := cmd.Run(); err != nil {
+	if err := unix.Mkfifo(fifoFile, 0600); err != nil {
 		t.Fatal("Error making buffer fifo: ", err)
 	}
 

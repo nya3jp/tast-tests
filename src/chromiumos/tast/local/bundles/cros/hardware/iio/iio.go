@@ -12,6 +12,7 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/errors"
 )
@@ -40,10 +41,12 @@ type Sensor struct {
 type SensorReading struct {
 	// Data contains all values read from the sensor.
 	// Its length depends on the type of sensor being used.
-	Data      []float64
-	ID        uint
-	Flags     uint8
-	Timestamp int64
+	Data  []float64
+	ID    uint
+	Flags uint8
+	// Timestamp is the duration from the boot time of the DUT to the time the
+	// reading was taken
+	Timestamp time.Duration
 }
 
 const (
@@ -65,6 +68,15 @@ const (
 	Lid SensorLocation = "lid"
 	// None means that the sensor location is not known or not applicable.
 	None SensorLocation = "none"
+)
+
+// cros ec data flags from ec_commands.h
+const (
+	flushFlag      = 0x01
+	timestampFlag  = 0x02
+	wakeupFlag     = 0x04
+	tabletModeFlag = 0x08
+	odrFlag        = 0x10
 )
 
 var sensorNames = map[SensorName]struct{}{
