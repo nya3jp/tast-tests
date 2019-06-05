@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98fef970_ab91fcda",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-05T09:08:37Z",
+      "side": 1,
+      "message": "If you have a good idea please let me know. I\u0027m thinking about submitting this as-is for now, and see if this fails on non-VM boards too.",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 75
+      },
+      "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
