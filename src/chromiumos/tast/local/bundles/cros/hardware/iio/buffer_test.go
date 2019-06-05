@@ -3,9 +3,9 @@ package iio
 import (
 	"encoding/binary"
 	"os"
-	"os/exec"
 	"path"
 	"reflect"
+	"syscall"
 	"testing"
 	"time"
 )
@@ -85,8 +85,7 @@ func TestOpenBuffer(t *testing.T) {
 	fifoFile := path.Join(basePath, "dev/iio:device0")
 
 	// Use mkfifo to simulate an iio buffer
-	cmd := exec.Command("mkfifo", fifoFile)
-	if err := cmd.Run(); err != nil {
+	if err := syscall.Mkfifo(fifoFile, 0600); err != nil {
 		t.Fatal("Error making buffer fifo: ", err)
 	}
 
