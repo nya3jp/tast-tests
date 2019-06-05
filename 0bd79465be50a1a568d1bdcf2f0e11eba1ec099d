@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "529f5ca8_5a298c43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-05T16:54:11Z",
+      "side": 1,
+      "message": "Should we add the chromeos-fingerprint@google.com group? derat@ is that something other tast tests do? I feel like that\u0027s less likely to go out of date as the team changes over time and lets anyone on the team respond to queries about the test.",
+      "revId": "0bd79465be50a1a568d1bdcf2f0e11eba1ec099d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
