@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "be8e95a0_d05591cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-05T07:35:18Z",
+      "side": 1,
+      "message": "Done.\n\nPer offline chat with yoshiki@, that\u0027s ok from Notification\u0027s perspective.",
+      "parentUuid": "cd265be6_879246c4",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 23
+      },
+      "revId": "4eb23ed0ce703990bda586e24d623838d9cbad94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a4756e4_a9c2517b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "4eb23ed0ce703990bda586e24d623838d9cbad94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52745837_7277f3ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-05T07:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a4756e4_a9c2517b",
+      "range": {
+        "startLine": 116,
+        "startChar": 26,
+        "endLine": 116,
+        "endChar": 38
+      },
+      "revId": "4eb23ed0ce703990bda586e24d623838d9cbad94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "68536279_04895e29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-05T07:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05b8ace7_fb515c39",
+      "range": {
+        "startLine": 153,
+        "startChar": 25,
+        "endLine": 153,
+        "endChar": 35
+      },
+      "revId": "4eb23ed0ce703990bda586e24d623838d9cbad94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c282f11a_e2144c57",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "8dabb3f0_e847118a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-05T07:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c282f11a_e2144c57",
+      "range": {
+        "startLine": 168,
+        "startChar": 22,
+        "endLine": 168,
+        "endChar": 34
+      },
+      "revId": "4eb23ed0ce703990bda586e24d623838d9cbad94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f99b2ce1_53198593",
         "filename": "src/chromiumos/tast/local/chrome/notification.go",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2019-06-05T06:44:44Z",
       "side": 1,
       "message": "I\u0027d like to keep the chrome package for generic Chrome-related components.\n\nHow about .../local/chrome/notification? Alternatively, the ash package being introduced in crrev.com/c/1639370 can be also okay (disclaimer: I\u0027m not very sure notification is owned by ash).",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "4eb23ed0ce703990bda586e24d623838d9cbad94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ae8e9ca_2a3f6bf5",
+        "filename": "src/chromiumos/tast/local/chrome/notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-05T07:35:18Z",
+      "side": 1,
+      "message": "Per offline chat with yoshiki@, moved to ash package.\n\ncrrev.com/c/1639370 is not yet landed, but it shouldn\u0027t conflict with this.\n\nPackage comment is deferred to\nsrc/chromiumos/tast/local/chrome/ash/shelf.go",
+      "parentUuid": "f99b2ce1_53198593",
       "range": {
         "startLine": 5,
         "startChar": 0,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "afd084a5_498d1ce7",
+        "filename": "src/chromiumos/tast/local/chrome/notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-05T07:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "870806b9_4d355c42",
+      "range": {
+        "startLine": 26,
+        "startChar": 63,
+        "endLine": 26,
+        "endChar": 75
+      },
+      "revId": "4eb23ed0ce703990bda586e24d623838d9cbad94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc302dbf_0fbf42e1",
         "filename": "src/chromiumos/tast/local/chrome/notification.go",
         "patchSetId": 2
@@ -160,6 +304,30 @@
       "revId": "4eb23ed0ce703990bda586e24d623838d9cbad94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b33bc09_db9e1e12",
+        "filename": "src/chromiumos/tast/local/chrome/notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-05T07:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc302dbf_0fbf42e1",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 6
+      },
+      "revId": "4eb23ed0ce703990bda586e24d623838d9cbad94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
