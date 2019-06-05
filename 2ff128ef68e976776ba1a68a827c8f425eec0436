@@ -2,6 +2,63 @@
   "comments": [
     {
       "key": {
+        "uuid": "ad5bcbd9_f8e3902b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-05T14:57:37Z",
+      "side": 1,
+      "message": "Nice to assign a dedicated owner in ARC++ core team, IMHO.\nWDYT?",
+      "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee0e4225_1aed2035",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-05T14:57:37Z",
+      "side": 1,
+      "message": "Missing SoftwareDeps?",
+      "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6df3e13_59f45b21",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-05T14:57:37Z",
+      "side": 1,
+      "message": "How about make a sanity check that stateful partiion is cleared after reboot?",
+      "range": {
+        "startLine": 39,
+        "startChar": 23,
+        "endLine": 39,
+        "endChar": 56
+      },
+      "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "98fef970_ab91fcda",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
         "patchSetId": 1
@@ -18,6 +75,115 @@
         "startChar": 4,
         "endLine": 42,
         "endChar": 75
+      },
+      "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eee38079_bd044d8e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-05T14:57:37Z",
+      "side": 1,
+      "message": "How about working on the first step of crbug.com/971024?\nE.g., creating a wrapper to take string array as command line instead of a string passed to shell/SSH?",
+      "range": {
+        "startLine": 43,
+        "startChar": 14,
+        "endLine": 43,
+        "endChar": 19
+      },
+      "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e804c834_8aeeaeb1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-05T14:57:37Z",
+      "side": 1,
+      "message": "Great to know the interesting technique.",
+      "range": {
+        "startLine": 50,
+        "startChar": 39,
+        "endLine": 50,
+        "endChar": 93
+      },
+      "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d809a6bb_c45d602e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-05T14:57:37Z",
+      "side": 1,
+      "message": "Do you need \"sleep 2\" here? If so, could you comment?\nAlso, if needed, does it work to sleep at around L50 in host machine, instead?",
+      "range": {
+        "startLine": 52,
+        "startChar": 39,
+        "endLine": 52,
+        "endChar": 47
+      },
+      "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edea27da_dbd3c03f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-05T14:57:37Z",
+      "side": 1,
+      "message": "Looks race?\nE.g. DUT becomes unreachable then reachable, before calling this.\n\n(Though, practically, it should have enough time that the device is unreachable.)",
+      "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82a7ee7e_83282858",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-05T14:57:37Z",
+      "side": 1,
+      "message": "out contains whole the output of the local test runner.\nCan these commands be connected via pipe for memory efficiency?\nOr, can we assume the log is small enough?",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 2
       },
       "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
