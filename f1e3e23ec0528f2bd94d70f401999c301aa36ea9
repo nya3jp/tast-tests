@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "8f9c18ed_09b33f5f",
+        "filename": "src/chromiumos/tast/local/network/check_network_hook.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-06-05T23:50:58Z",
+      "side": 1,
+      "message": "Hmm, so I\u0027m back to my earlier concerns, and I\u0027ve now understood the flock() syscall a little better I think: flock() will *not* be unblocked by either closing the fd *or* calling LOCK_UN from another context (we can\u0027t forcibly unlock on behalf of another process that\u0027s holding the lock). I believe the *only* way to properly unblock this line (and have correct timeout cleanup) is to interrupt the syscall.\n\nIs that what you intended when you said:\n\n\"Note that, in case of time out, goroutine will be paused at LOCKSH for a while, and will take the lock when the other service releases the lock.\nHowever, the lock will be soon released at the end of the goroutine.\"\n\n? We really want to leave a goroutine sitting around indefinitely (or until Tast exit), waiting on this lock? I find it quite confusing that this goroutine (and particularly, its cleanup and any associated error logging -- which may not actually make it out to the ) may be running well past the end of this test. I\u0027ve uploaded that version, with some extra comments, now that I understand what\u0027s going on better (but still think it\u0027s confusing).\n\nAlternatives:\n\n * I could try to add some signaling behavior, to interrupt the Flock()\n * I could just fork out a subprocess to run coreutils+util-linux \"timeout 20 flock ${fd}\"",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 62
+      },
+      "revId": "f1e3e23ec0528f2bd94d70f401999c301aa36ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "befc85cb_c5154072",
         "filename": "src/chromiumos/tast/local/network/check_network_hook.go",
         "patchSetId": 6
@@ -89,6 +112,53 @@
         "startChar": 8,
         "endLine": 54,
         "endChar": 45
+      },
+      "revId": "f1e3e23ec0528f2bd94d70f401999c301aa36ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e838bafc_486e86c6",
+        "filename": "src/chromiumos/tast/local/network/check_network_hook.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-06-05T23:50:58Z",
+      "side": 1,
+      "message": "\u003e Or, is there some other way to synchronize a goroutine with test completion? My Google-fu tells me \"no.\"\n\nCorrection to this: with the current design, we really *don\u0027t* want to synchronize with the goroutine, as it may be running indefinitely, still waiting on someone else\u0027s lock.",
+      "parentUuid": "46ece0ea_c2ab8a36",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 54,
+        "endChar": 45
+      },
+      "revId": "f1e3e23ec0528f2bd94d70f401999c301aa36ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77c8b3d9_e70a5ae1",
+        "filename": "src/chromiumos/tast/local/network/check_network_hook.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-06-05T23:50:58Z",
+      "side": 1,
+      "message": "Another bug: lockchan is unbuffered, so this is blocking. In the timeout case, the main thread \u0027select\u0027 doesn\u0027t consume lockchan, so this just deadlocks. If I add a buffer of 1 to the channel, this gets unblocked at least (if line 50 gets unblocked somehow).",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 17
       },
       "revId": "f1e3e23ec0528f2bd94d70f401999c301aa36ea9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
