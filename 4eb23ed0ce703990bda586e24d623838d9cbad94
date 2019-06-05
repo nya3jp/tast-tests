@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd265be6_879246c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-05T06:44:44Z",
+      "side": 1,
+      "message": "Is this longer interval necessary? Unless we have explicit needs, I recommend using the default value (100ms) for faster test execution.",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 23
+      },
+      "revId": "4eb23ed0ce703990bda586e24d623838d9cbad94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a4756e4_a9c2517b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-05T06:44:44Z",
+      "side": 1,
+      "message": "style: notification",
+      "range": {
+        "startLine": 116,
+        "startChar": 26,
+        "endLine": 116,
+        "endChar": 38
+      },
+      "revId": "4eb23ed0ce703990bda586e24d623838d9cbad94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05b8ace7_fb515c39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-05T06:44:44Z",
+      "side": 1,
+      "message": "style: unexpected",
+      "range": {
+        "startLine": 153,
+        "startChar": 25,
+        "endLine": 153,
+        "endChar": 35
+      },
+      "revId": "4eb23ed0ce703990bda586e24d623838d9cbad94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c282f11a_e2144c57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-05T06:44:44Z",
+      "side": 1,
+      "message": "style: notification",
+      "range": {
+        "startLine": 168,
+        "startChar": 22,
+        "endLine": 168,
+        "endChar": 34
+      },
+      "revId": "4eb23ed0ce703990bda586e24d623838d9cbad94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f99b2ce1_53198593",
+        "filename": "src/chromiumos/tast/local/chrome/notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-05T06:44:44Z",
+      "side": 1,
+      "message": "I\u0027d like to keep the chrome package for generic Chrome-related components.\n\nHow about .../local/chrome/notification? Alternatively, the ash package being introduced in crrev.com/c/1639370 can be also okay (disclaimer: I\u0027m not very sure notification is owned by ash).",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "4eb23ed0ce703990bda586e24d623838d9cbad94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "870806b9_4d355c42",
+        "filename": "src/chromiumos/tast/local/chrome/notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-05T06:44:44Z",
+      "side": 1,
+      "message": "Would you mind using []*Notification instead to avoid excessive copying? I believe it should work just fine with JSON decoders.",
+      "range": {
+        "startLine": 26,
+        "startChar": 63,
+        "endLine": 26,
+        "endChar": 75
+      },
+      "revId": "4eb23ed0ce703990bda586e24d623838d9cbad94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc302dbf_0fbf42e1",
+        "filename": "src/chromiumos/tast/local/chrome/notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-05T06:44:44Z",
+      "side": 1,
+      "message": "style: Please don\u0027t omit semicolons.\n\nhttps://google.github.io/styleguide/jsguide.html#formatting-semicolons-are-required",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 6
+      },
+      "revId": "4eb23ed0ce703990bda586e24d623838d9cbad94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
