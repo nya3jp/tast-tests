@@ -67,6 +67,15 @@ const (
 	None SensorLocation = "none"
 )
 
+// cros ec data flags from ec_commands.h
+const (
+	flushFlag      = 0x01
+	timestampFlag  = 0x02
+	wakeupFlag     = 0x04
+	tabletModeFlag = 0x08
+	odrFlag        = 0x10
+)
+
 var sensorNames = map[SensorName]struct{}{
 	Accel: {},
 	Gyro:  {},
