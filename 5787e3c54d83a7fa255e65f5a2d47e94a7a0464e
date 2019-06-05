@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea234967_ba7267b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-05T06:04:31Z",
+      "side": 1,
+      "message": "nit: These names are too long like Java... how about mockPolicyFile and mockKeyFile?",
+      "range": {
+        "startLine": 49,
+        "startChar": 37,
+        "endLine": 49,
+        "endChar": 64
+      },
+      "revId": "5787e3c54d83a7fa255e65f5a2d47e94a7a0464e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a02874b4_581316f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-05T06:04:31Z",
+      "side": 1,
+      "message": "typo: owner",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 14
+      },
+      "revId": "5787e3c54d83a7fa255e65f5a2d47e94a7a0464e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "179f7655_c6d7071a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-05T06:04:31Z",
+      "side": 1,
+      "message": "style: Please avoid naked returns in longer functions, and use usual returns.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#naked-returns",
+      "range": {
+        "startLine": 102,
+        "startChar": 3,
+        "endLine": 102,
+        "endChar": 9
+      },
+      "revId": "5787e3c54d83a7fa255e65f5a2d47e94a7a0464e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5af6cc41_67dbe8db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-05T06:04:31Z",
+      "side": 1,
+      "message": "style: Please prefer guard style to reduce nest.\n\n if r, err :\u003d ...; err !\u003d nil || !r.IsDir() {\n   return nil\n }\n ...\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 59
+      },
+      "revId": "5787e3c54d83a7fa255e65f5a2d47e94a7a0464e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6edf7bef_f9c1d6d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-05T06:04:31Z",
+      "side": 1,
+      "message": "style: \"failed\"",
+      "range": {
+        "startLine": 176,
+        "startChar": 33,
+        "endLine": 176,
+        "endChar": 39
+      },
+      "revId": "5787e3c54d83a7fa255e65f5a2d47e94a7a0464e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14f42da7_9a9f43e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-05T06:04:31Z",
+      "side": 1,
+      "message": "Sorry for not catching this earlier, but please check errors. In particular, accessing nil os.FileInfo would cause panic.",
+      "range": {
+        "startLine": 180,
+        "startChar": 5,
+        "endLine": 181,
+        "endChar": 32
+      },
+      "revId": "5787e3c54d83a7fa255e65f5a2d47e94a7a0464e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
