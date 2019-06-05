@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3320960a_02f45df0",
+        "filename": "src/chromiumos/tast/local/network/check_network_hook.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-06-05T18:15:47Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "ea6be257_f64ecdad",
+      "range": {
+        "startLine": 38,
+        "startChar": 25,
+        "endLine": 38,
+        "endChar": 31
+      },
+      "revId": "f1e3e23ec0528f2bd94d70f401999c301aa36ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "befc85cb_c5154072",
         "filename": "src/chromiumos/tast/local/network/check_network_hook.go",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "f1e3e23ec0528f2bd94d70f401999c301aa36ea9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46ece0ea_c2ab8a36",
+        "filename": "src/chromiumos/tast/local/network/check_network_hook.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-06-05T18:15:47Z",
+      "side": 1,
+      "message": "Actually, this LOCK_UN isn\u0027t really that important at all. The f.Close() from line 48 is sufficient.\n\nBut this highlights a problem with the logging: my understanding and testing tell me that this \u0027defer\u0027 calls (and really, anything run after line 56) in this goroutine are racing with the completion of the test -- if the deferred cleanup happens while the test is finishing, any logging may or may not actually make it to the Tast logs. I guess Tast must stop listening for new Log() messages once the test returns from its main function?\n\nI suppose I could add yet another channel, to notify the main thread when the goroutine is done with its cleanup functions.\n\nOr, is there some other way to synchronize a goroutine with test completion? My Google-fu tells me \"no.\"\n\n---\n\nBack to the logging question: I guess it would be nice to have a log message in the rare case that the LOCK_UN or the Close() fails. I\u0027ll see if yet-another-channel will help get the races resolved.",
+      "parentUuid": "befc85cb_c5154072",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 54,
+        "endChar": 45
+      },
+      "revId": "f1e3e23ec0528f2bd94d70f401999c301aa36ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
