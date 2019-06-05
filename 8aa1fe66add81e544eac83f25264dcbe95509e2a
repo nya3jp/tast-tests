@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "656fd341_e2608f7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-06-05T16:38:32Z",
+      "side": 1,
+      "message": "sgtm.",
+      "parentUuid": "3cdfe252_a172fb4a",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 11
+      },
+      "revId": "8aa1fe66add81e544eac83f25264dcbe95509e2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e646d393_529e4a6f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
         "patchSetId": 6
