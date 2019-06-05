@@ -22,6 +22,30 @@
       "revId": "6b17774d28273b5612e6251e63b2262901501f1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43af0dd3_c41e78dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/gca/gca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1285903
+      },
+      "writtenOn": "2019-06-05T10:19:23Z",
+      "side": 1,
+      "message": "Oh! Thanks for mentioning the function! Yeah I think it makes to just break here.",
+      "parentUuid": "a96cd8dc_e0377a31",
+      "range": {
+        "startLine": 107,
+        "startChar": 10,
+        "endLine": 107,
+        "endChar": 83
+      },
+      "revId": "6b17774d28273b5612e6251e63b2262901501f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
