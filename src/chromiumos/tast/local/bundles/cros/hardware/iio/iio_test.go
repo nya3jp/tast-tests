@@ -14,25 +14,20 @@ import (
 )
 
 func TestGetSensors(t *testing.T) {
-	td := testutil.TempDir(t)
-	defer os.RemoveAll(td)
-
-	if err := testutil.WriteFiles(path.Join(td, "sys/bus/iio/devices"),
-		map[string]string{
-			"bad:device/name":      "bad",
-			"iio:device0/name":     "cros-ec-accel",
-			"iio:device0/location": "lid",
-			"iio:device1/name":     "cros-ec-gyro",
-			"iio:device1/location": "base",
-			"iio:device2/name":     "cros-ec-unknown",
-			"iio:device3/name":     "cros-ec-ring",
-		}); err != nil {
-		t.Fatal(err)
-	}
-
-	oldBasePath := basePath
-	basePath = td
-	defer func() { basePath = oldBasePath }()
+	defer setupTestFiles(t, map[string]string{
+		"bad:device/name":           "bad",
+		"iio:device0/name":          "cros-ec-accel",
+		"iio:device0/location":      "lid",
+		"iio:device0/id":            "0",
+		"iio:device0/scale":         "0.25",
+		"iio:device0/min_frequency": "100",
+		"iio:device0/max_frequency": "1000",
+		"iio:device1/name":          "cros-ec-gyro",
+		"iio:device1/location":      "base",
+		"iio:device1/id":            "1",
+		"iio:device2/name":          "cros-ec-unknown",
+		"iio:device3/name":          "cros-ec-ring",
+	})()
 
 	sensors, err := GetSensors()
 	if err != nil {
@@ -40,9 +35,9 @@ func TestGetSensors(t *testing.T) {
 	}
 
 	expected := []Sensor{
-		{Accel, Lid, "iio:device0"},
-		{Gyro, Base, "iio:device1"},
-		{Ring, None, "iio:device3"},
+		{Accel, Lid, "iio:device0", 0, .25, 100, 1000},
+		{Gyro, Base, "iio:device1", 1, 0, 0, 0},
+		{Ring, None, "iio:device3", 0, 0, 0, 0},
 	}
 
 	if !reflect.DeepEqual(expected, sensors) {
@@ -51,24 +46,14 @@ func TestGetSensors(t *testing.T) {
 }
 
 func TestSensorRead(t *testing.T) {
-	td := testutil.TempDir(t)
-	defer os.RemoveAll(td)
-
-	if err := testutil.WriteFiles(path.Join(td, "sys/bus/iio/devices"),
-		map[string]string{
-			"iio:device0/name":           "cros-ec-accel",
-			"iio:device0/location":       "lid",
-			"iio:device0/scale":          "0.5",
-			"iio:device0/in_accel_x_raw": "10",
-			"iio:device0/in_accel_y_raw": "12",
-			"iio:device0/in_accel_z_raw": "14",
-		}); err != nil {
-		t.Fatal(err)
-	}
-
-	oldBasePath := basePath
-	basePath = td
-	defer func() { basePath = oldBasePath }()
+	defer setupTestFiles(t, map[string]string{
+		"iio:device0/name":           "cros-ec-accel",
+		"iio:device0/location":       "lid",
+		"iio:device0/scale":          "0.5",
+		"iio:device0/in_accel_x_raw": "10",
+		"iio:device0/in_accel_y_raw": "12",
+		"iio:device0/in_accel_z_raw": "14",
+	})()
 
 	sensors, err := GetSensors()
 	if err != nil {
@@ -80,8 +65,23 @@ func TestSensorRead(t *testing.T) {
 		t.Fatal("Error getting sensor reading: ", err)
 	}
 
-	expected := SensorReading{[]float64{5, 6, 7}}
+	expected := SensorReading{[]float64{5, 6, 7}, 0, 0, 0}
 	if !reflect.DeepEqual(expected, reading) {
 		t.Errorf("Unexpected reading: got %v; want %v", reading, expected)
+	}
+}
+
+func setupTestFiles(t *testing.T, files map[string]string) func() {
+	td := testutil.TempDir(t)
+
+	if err := testutil.WriteFiles(path.Join(td, "sys/bus/iio/devices"), files); err != nil {
+		t.Fatal(err)
+	}
+
+	oldBasePath := basePath
+	basePath = td
+	return func() {
+		basePath = oldBasePath
+		os.RemoveAll(td)
 	}
 }
