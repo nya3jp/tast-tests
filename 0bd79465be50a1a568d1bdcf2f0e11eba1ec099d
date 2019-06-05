@@ -16,6 +16,24 @@
       "revId": "0bd79465be50a1a568d1bdcf2f0e11eba1ec099d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04e7771c_22b1dd4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-05T17:57:08Z",
+      "side": 1,
+      "message": "yes, i think that adding a team mailing list as a fallback after the individuals is actually encouraged. :-)",
+      "parentUuid": "529f5ca8_5a298c43",
+      "revId": "0bd79465be50a1a568d1bdcf2f0e11eba1ec099d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
