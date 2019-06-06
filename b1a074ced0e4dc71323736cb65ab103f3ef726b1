@@ -34,6 +34,24 @@
       "revId": "b1a074ced0e4dc71323736cb65ab103f3ef726b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f0bc203_ad75e275",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-06-06T18:33:44Z",
+      "side": 1,
+      "message": "I\u0027m also planning on abandoning this cl as I\u0027ll probably clobber my WIP cls as 1 feature once I port over the full wrapper so I\u0027ll make the changes as I move forward.",
+      "parentUuid": "c64645f8_734d5439",
+      "revId": "b1a074ced0e4dc71323736cb65ab103f3ef726b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
