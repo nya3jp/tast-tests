@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/hello-world-20190604.apk",
+  "size": 1650614,
+  "sha256sum": "4759d0eea452db53a23c89f0d6ecefa3e6d5472038f89f4a77e6d2922664e90f"
+}
