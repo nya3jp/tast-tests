@@ -1,0 +1,353 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5554f203_ec1f9281",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T03:11:39Z",
+      "side": 1,
+      "message": "nit: slightly shorter: stabilizeDuration",
+      "range": {
+        "startLine": 351,
+        "startChar": 2,
+        "endLine": 351,
+        "endChar": 23
+      },
+      "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cff56374_27fd15fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T03:11:39Z",
+      "side": 1,
+      "message": "nit: measureDuration?",
+      "range": {
+        "startLine": 353,
+        "startChar": 2,
+        "endLine": 353,
+        "endChar": 21
+      },
+      "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33d05245_1397f2dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T03:11:39Z",
+      "side": 1,
+      "message": "please use filepath.Join to join path componenents",
+      "range": {
+        "startLine": 386,
+        "startChar": 43,
+        "endLine": 386,
+        "endChar": 57
+      },
+      "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "751e5846_75cfae31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T03:11:39Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8cee662_ce8c9a1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T03:11:39Z",
+      "side": 1,
+      "message": "nit: \"Test 2\"",
+      "range": {
+        "startLine": 393,
+        "startChar": 4,
+        "endLine": 393,
+        "endChar": 9
+      },
+      "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "799223ba_241dfcd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T03:11:39Z",
+      "side": 1,
+      "message": "shortCtx?",
+      "range": {
+        "startLine": 396,
+        "startChar": 30,
+        "endLine": 396,
+        "endChar": 33
+      },
+      "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b50d43c_5243ca36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T03:11:39Z",
+      "side": 1,
+      "message": "shortCtx?",
+      "range": {
+        "startLine": 402,
+        "startChar": 25,
+        "endLine": 402,
+        "endChar": 28
+      },
+      "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b8d6ff4_defa8df2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T03:11:39Z",
+      "side": 1,
+      "message": "you need to check this \u0027ok\u0027 value. if it\u0027s false, then ws shouldn\u0027t be used.\n\nthis is an idiom in go (see e.g. multi-return-value map lookups), but the testexec package should probably document it clearly",
+      "range": {
+        "startLine": 418,
+        "startChar": 6,
+        "endLine": 418,
+        "endChar": 7
+      },
+      "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b24ec496_a09d32d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T03:11:39Z",
+      "side": 1,
+      "message": "please check that an error isn\u0027t returned",
+      "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7fc70c5_17d824a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T03:11:39Z",
+      "side": 1,
+      "message": "nit: JSON",
+      "range": {
+        "startLine": 18,
+        "startChar": 46,
+        "endLine": 18,
+        "endChar": 50
+      },
+      "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2791f059_f3c064c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T03:11:39Z",
+      "side": 1,
+      "message": "nit: just call this metricsPath? (i find \"filename\" sometimes ambiguous as to whether it\u0027s just a base filename or a full path)",
+      "range": {
+        "startLine": 20,
+        "startChar": 37,
+        "endLine": 20,
+        "endChar": 52
+      },
+      "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9030d8ae_7c4f2fad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T03:11:39Z",
+      "side": 1,
+      "message": "nit: maybe parseUncappedPerfMetrics",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 36
+      },
+      "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "046fec7f_ee560f93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T03:11:39Z",
+      "side": 1,
+      "message": "you can return err directly here; os generally prefixes errors with the syscall and path",
+      "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44d7d372_142b7b3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T03:11:39Z",
+      "side": 1,
+      "message": "i think you may be able to omit all of these `json` tags if the json name matches the field name",
+      "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39de30db_cebaa648",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T03:11:39Z",
+      "side": 1,
+      "message": "nit: similar naming suggestions here as above",
+      "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d2a7f7d_390f7433",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T03:11:39Z",
+      "side": 1,
+      "message": "same re omitting tags if possible",
+      "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "155417ff_de461d83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_perf_h264_1080p_60fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T03:11:39Z",
+      "side": 1,
+      "message": "i think you need to include \"chrome\" here. video_decode_accelerator_perf_tests looks like it\u0027s installed by the chromeos-chrome package, and the test is also stopping the ui job (which implies that chrome must be present).",
+      "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
