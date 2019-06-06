@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 // Package network contains local Tast tests that exercise the Chrome OS network stack.
-package network
+package iw
 
 /*
 This file serves as a wrapper to allow tast tests to query 'iw' for network device characteristics.
@@ -11,9 +11,9 @@ iw_runner.go is the analog of {@link iw_runner.py} in the autotest suite.
 */
 
 import (
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 	"fmt"
-	"os/exec"
 	"regexp"
 	"strings"
 )
