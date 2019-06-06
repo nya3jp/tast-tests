@@ -11,7 +11,9 @@ iw_runner.go is the analog of {@link iw_runner.py} in the autotest suite.
 */
 
 import (
+	"chromiumos/tast/testing"
 	"fmt"
+	"os/exec"
 	"regexp"
 	"strings"
 )
@@ -93,4 +95,47 @@ func extractBssid(link_information string, interface_name string, station_dump b
 		return ""
 	}
 	return match_group[1]
+}
+
+/*
+IwRunner stores metadata to allow its methods to invoke commands on `iw` in a concise manner.
+
+Test code should only have to interface with `iw` through the methods exposed by IwRunner
+*/
+type IwRunner struct {
+	Run func(string) // Function alias that will determine how commands are executed whether the test
+	// 	is a client test or a remote test (TODO).
+	Host_addr  string         // Host address for remote tests (TODO).
+	Iw_command string         // Path to invoke `iw`. By default, we expect iw to be in $PATH, so this value should be `iw`.
+	Log_id     int            // Id for logging.
+	s          *testing.State // Test State
+}
+
+/*
+IwRunner factory.
+*/
+func NewIwRunner(state *testing.State) *IwRunner {
+	return &IwRunner{
+		Run:        clientCommandExec,
+		Host_addr:  "",
+		Iw_command: "iw",
+		s:          state,
+	}
+}
+
+/*
+Runs a shell command over ssh and reports the binary output.
+
+clientCommandExec runs in a blocking fashion and will not return until the shell command
+	itself terminates.
+@param shellCommand: string containing the shell command to be sent to the DUT. An example of
+	a valid string is "ls -lat"
+@return bytestream output of stdout from the DUT.
+*/
+func (iwr IwRunner) clientCommandExec(shellCommand string) []byte {
+	out, err := exec.Command(shellCommand).Output()
+	if err != nil {
+		iwr.s.Fatal(fmt.Sprintf("Command \" %s \" failed with non-zero error code", shellCommand), err)
+	}
+	return out
 }
