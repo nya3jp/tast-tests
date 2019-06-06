@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7ce0a76_8d4e8699",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-06T12:41:20Z",
+      "side": 1,
+      "message": "Clar: Why English is just for special? Can it be handled uniformly with other languages?",
+      "range": {
+        "startLine": 21,
+        "startChar": 16,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "d93d38a61f13a69cf72c4a3f64a1e621b8df3d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df96266e_ca0fb1a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-06T12:41:20Z",
+      "side": 1,
+      "message": "Could you add personal contact, too?\n\ncf) https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/testing#Test\n\nquote:\n// Contacts is a list of email addresses of persons and groups who are familiar with the test.\n// At least one personal email address of an active committer should be specified so that we can\n// file bugs or ask for code reviews.",
+      "revId": "d93d38a61f13a69cf72c4a3f64a1e621b8df3d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39778135_91053c58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-06T12:41:20Z",
+      "side": 1,
+      "message": "chrome_login was now merged into chrome and deleted.\nCould you delete this one?",
+      "range": {
+        "startLine": 25,
+        "startChar": 35,
+        "endLine": 25,
+        "endChar": 49
+      },
+      "revId": "d93d38a61f13a69cf72c4a3f64a1e621b8df3d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0c473be_b803370e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-06T12:41:20Z",
+      "side": 1,
+      "message": "nit/optional: for consistency\n\n\"Failed to create connection ...\" ?",
+      "range": {
+        "startLine": 78,
+        "startChar": 11,
+        "endLine": 78,
+        "endChar": 60
+      },
+      "revId": "d93d38a61f13a69cf72c4a3f64a1e621b8df3d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d901e9db_68ee8a7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-06T12:41:20Z",
+      "side": 1,
+      "message": "How about adding test name? In some languages, there\u0027re several variations to generate same suggestion. E.g., in Japanese, both \"nihon\" and \"nippon\" generate \"日本\" (Japan), so the method name and expectation looks not unique enough.",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 87
+      },
+      "revId": "d93d38a61f13a69cf72c4a3f64a1e621b8df3d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef2b34f4_aac04fa9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-06T12:41:20Z",
+      "side": 1,
+      "message": "Fatal immediately terminates the test, without running the following scenario.\nE.g., in this case, if nacl_mozc_jp fails, nacl_mozc_us won\u0027t run.\nHow about\n\ns.Error(...)\ncontinue\n\ninstead?\n\nDitto for below s.Fatal in this loop.",
+      "revId": "d93d38a61f13a69cf72c4a3f64a1e621b8df3d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3af35cf3_968e0751",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-06T12:41:20Z",
+      "side": 1,
+      "message": "style: could you run this in the if condition?\n\nif err :\u003d testing.Poll(ctx, func(...) error {\n  ... // poll body.\n}, nil); err !\u003d nil {\n  ... // error handling.\n}\n\nthe document is also being updated.\ncrrev.com/c/1642591",
+      "revId": "d93d38a61f13a69cf72c4a3f64a1e621b8df3d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcfb1633_055b4dc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-06T12:41:20Z",
+      "side": 1,
+      "message": "s.Fatal().\nerr won\u0027t be printed now.\n\nFYI/offtopic: crrev.com/c/1640860 will help you to find this pattern during the preupload.",
+      "revId": "d93d38a61f13a69cf72c4a3f64a1e621b8df3d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
