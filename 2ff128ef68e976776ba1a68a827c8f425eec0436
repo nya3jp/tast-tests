@@ -142,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "83040223_4ad6e0eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T02:53:30Z",
+      "side": 1,
+      "message": "rebooting also doesn\u0027t really work on VMs, so i think you can/should just add a \"reboot\" software dep to make it get skipped there. not a satisfying answer, i know...",
+      "parentUuid": "98fef970_ab91fcda",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 75
+      },
+      "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eee38079_bd044d8e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
         "patchSetId": 1
@@ -291,6 +315,23 @@
       "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b60b5c48_29e1e6bc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T02:53:30Z",
+      "side": 1,
+      "message": "just to mention it, one possibly-surprising aspect of this is that local_test_runner (by default) will run the tests from the installed tast-local-tests-cros package rather than ones from an earlier \"tast run -build\u003dtrue ...\" run. might be worth mentioning this in a comment",
+      "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
