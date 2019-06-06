@@ -1,0 +1,510 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb92d13d_eeba97c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:06:33Z",
+      "side": 1,
+      "message": "Could you consider unexporting fields as many as possible? In particular, I guess we don\u0027t need to export Sensor.\n\nBy unexporting Sensor, we can give some guarantee in type level. For example, we can make sure the following function does not manipulate non-buffer-related stuff in the sensor, even without reading the content of the function:\n\n func doSomething(b *Buffer) error { ... }",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 7
+      },
+      "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a801c41_304b1b6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:06:33Z",
+      "side": 1,
+      "message": "I recommend []*ChannelSpec since it\u0027s not a small struct.",
+      "range": {
+        "startLine": 19,
+        "startChar": 14,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5da1fad_fcb600ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:06:33Z",
+      "side": 1,
+      "message": "style: Please add a period. Same for other comments.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 43,
+        "startChar": 40,
+        "endLine": 43,
+        "endChar": 48
+      },
+      "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8b9bab9_c0a3d35d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:06:33Z",
+      "side": 1,
+      "message": "Please define a type for BE/LE.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 1
+      },
+      "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f17e3f5_a2b8f5d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:06:33Z",
+      "side": 1,
+      "message": "I recommend returning *Buffer for the same reason.",
+      "range": {
+        "startLine": 51,
+        "startChar": 30,
+        "endLine": 51,
+        "endChar": 36
+      },
+      "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aabbc2a7_55648973",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:06:33Z",
+      "side": 1,
+      "message": "We can assign Sensor at initialization since we\u0027ll assign it anyway.\n\n ret :\u003d \u0026Buffer{sensor: s}",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 15
+      },
+      "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d0d94c4_c8e78d7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:06:33Z",
+      "side": 1,
+      "message": "Please return nil on errors.",
+      "range": {
+        "startLine": 57,
+        "startChar": 9,
+        "endLine": 57,
+        "endChar": 12
+      },
+      "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f92bf40d_229560af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:06:33Z",
+      "side": 1,
+      "message": "Should this be -1 so that no entry will be added to ret.Channels if files is empty?",
+      "range": {
+        "startLine": 68,
+        "startChar": 8,
+        "endLine": 68,
+        "endChar": 9
+      },
+      "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21d1f108_1fc6bdc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:06:33Z",
+      "side": 1,
+      "message": "This is not needed; nil is a valid empty slice.",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 31
+      },
+      "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55fb808f_6cc5cb90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:06:33Z",
+      "side": 1,
+      "message": "This leading slash should be removed after modifying basePath to \"/\":\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1645000/1/src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go#93",
+      "range": {
+        "startLine": 122,
+        "startChar": 40,
+        "endLine": 122,
+        "endChar": 41
+      },
+      "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b43654c_0181672e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:06:33Z",
+      "side": 1,
+      "message": "nit: Please minimize the scope of this variable. It can be inside go func().",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 28
+      },
+      "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e58316f4_9f66c90a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:06:33Z",
+      "side": 1,
+      "message": "It is guaranteed that \"n \u003d\u003d len(buf) if and only if err \u003d\u003d nil\".\n\nhttps://godoc.org/io#ReadFull\n\nSo this can be simplified to:\n\n if _, err :\u003d io.ReadFull(f, buf); err !\u003d nil {\n   close(events)\n   return\n }\n events \u003c- b.bufferData(buf)",
+      "range": {
+        "startLine": 137,
+        "startChar": 3,
+        "endLine": 137,
+        "endChar": 21
+      },
+      "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a973965b_fe9857fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:06:33Z",
+      "side": 1,
+      "message": "This method never fails, so please just return BufferData.",
+      "range": {
+        "startLine": 167,
+        "startChar": 40,
+        "endLine": 167,
+        "endChar": 61
+      },
+      "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "243e832d_296e96df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:06:33Z",
+      "side": 1,
+      "message": "Please try to assign these at the initialization of ret.",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 43
+      },
+      "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06c41553_227041e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:06:33Z",
+      "side": 1,
+      "message": "for i, ch :\u003d range b.Channels",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 39
+      },
+      "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc685a4e_dcf7a599",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:06:33Z",
+      "side": 1,
+      "message": "In general, it is critically invalid to close a file while another thread is reading from it (it may cause file descriptor races).\n\nhttps://github.com/golang/go/issues/7970\n\nI\u0027m not sure what\u0027s the best way for this, but if os.File.SetDeadline works for this file, it should be okay to just close the file as per documentation:\n\nhttps://godoc.org/os#File.Close\n\nCould you try if SetDeadline works?\n\n\nIn any case, please make sure all messages are read from the channel and the background goroutine exits. Otherwise the goroutine may leak forever blocking on sending messages over the channel.",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 17
+      },
+      "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "461c4a63_40f9f641",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:06:33Z",
+      "side": 1,
+      "message": "Consider using backquoted-string to avoid many escapes.",
+      "range": {
+        "startLine": 221,
+        "startChar": 25,
+        "endLine": 221,
+        "endChar": 65
+      },
+      "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16aadeab_ab05f05f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:06:33Z",
+      "side": 1,
+      "message": "optional: do you want to also check ix \u003c 0?",
+      "range": {
+        "startLine": 276,
+        "startChar": 32,
+        "endLine": 276,
+        "endChar": 34
+      },
+      "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5a7c205_a912e3c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:06:33Z",
+      "side": 1,
+      "message": "I recommend naming this method Uint8 as per Go\u0027s naming convention of getters.\n\nhttps://golang.org/doc/effective_go.html#Getters",
+      "range": {
+        "startLine": 295,
+        "startChar": 21,
+        "endLine": 295,
+        "endChar": 29
+      },
+      "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43c60d43_3347d34a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:06:33Z",
+      "side": 1,
+      "message": "same here: ix \u003c 0 check?",
+      "range": {
+        "startLine": 376,
+        "startChar": 32,
+        "endLine": 376,
+        "endChar": 34
+      },
+      "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f52c1e2c_548814c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:06:33Z",
+      "side": 1,
+      "message": "I believe we don\u0027t need to start a goroutine here and read in the current goroutine. That\u0027s the whole point of Open() API returning a channel with a background gorountine, right?",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 2
+      },
+      "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a521171c_7e40196c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:06:33Z",
+      "side": 1,
+      "message": "Please call Close with defer soon after Open returns. Otherwise the file will be leaked when t.Fatal is hit.",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 15
+      },
+      "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
