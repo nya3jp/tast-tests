@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d829abac_a7f04660",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T18:28:00Z",
+      "side": 1,
+      "message": "i know this is still a work-in-progress, but as an early comment, please review effective go[1] for e.g. naming guidelines. go uses camel case; this looks like python naming.\n\n1. https://golang.org/doc/effective_go.html",
+      "revId": "b1a074ced0e4dc71323736cb65ab103f3ef726b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
