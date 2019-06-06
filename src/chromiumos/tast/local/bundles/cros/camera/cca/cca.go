@@ -182,10 +182,26 @@ func (a *App) GetNumOfCameras(ctx context.Context) (int, error) {
 	return numCameras, err
 }
 
+// GetFacing returns the active camera facing.
+func (a *App) GetFacing(ctx context.Context) (Facing, error) {
+	var facing Facing
+	if err := a.conn.EvalPromise(ctx, "CCAUIPreviewOptions.getFacing()", &facing); err != nil {
+		return "", err
+	}
+	return facing, nil
+}
+
 // CheckFacing returns an error if the active camera facing is not expected.
 func (a *App) CheckFacing(ctx context.Context, expected Facing) error {
 	checkFacing := fmt.Sprintf("CCAUIMultiCamera.checkFacing(%q)", expected)
 	return a.conn.EvalPromise(ctx, checkFacing, nil)
+}
+
+// Mirrored returns whether mirroring is on.
+func (a *App) Mirrored(ctx context.Context) (bool, error) {
+	var actual bool
+	err := a.conn.Eval(ctx, "cca.state.get('mirror')", &actual)
+	return actual, err
 }
 
 // CheckSwitchDeviceButtonExist returns an error if whether switch button exists is not expected.
@@ -200,11 +216,38 @@ func (a *App) CheckSwitchDeviceButtonExist(ctx context.Context, expected bool) e
 	return nil
 }
 
+// MirrorButtonExists returns whether mirror button exists.
+func (a *App) MirrorButtonExists(ctx context.Context) (bool, error) {
+	var actual bool
+	err := a.conn.Eval(ctx, "CCAUIPreviewOptions.mirrorButtonExist()", &actual)
+	return actual, err
+}
+
 // ToggleGridOption toggles the grid option and returns whether it's enabled after toggling.
 func (a *App) ToggleGridOption(ctx context.Context) (bool, error) {
 	var grid bool
 	err := a.conn.EvalPromise(ctx, "CCAUIMultiCamera.toggleGrid()", &grid)
 	return grid, err
+}
+
+// ToggleMirroringOption toggles the mirroring option.
+func (a *App) ToggleMirroringOption(ctx context.Context) error {
+	mirror, err := a.Mirrored(ctx)
+	if err != nil {
+		return err
+	}
+	if err = a.conn.Eval(ctx, "document.querySelector('#toggle-mirror').click()", nil); err != nil {
+		return err
+	}
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if actual, err := a.Mirrored(ctx); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get mirroring state"))
+		} else if actual == mirror {
+			return errors.Errorf("mirroring state does not change: got %v, want %v", actual, !mirror)
+		}
+		return nil
+	}, &testing.PollOptions{Interval: time.Second, Timeout: 5 * time.Second})
 }
 
 // SwitchCamera switches to next camera device.
