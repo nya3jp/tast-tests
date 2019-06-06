@@ -7,11 +7,13 @@ package network
 
 import (
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/network/ping"
+	"chromiumos/tast/local/bundles/cros/network/iw"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 	"context"
 	"fmt"
+	"strings"
+	"time"
 )
 
 func init() {
@@ -22,20 +24,40 @@ func init() {
 	})
 }
 func WifiReset(ctx context.Context, s *testing.State) {
-	_, err := ping.SimplePing(ctx, s, "8.8.8.8")
+	_, err := iw.TimedScan(ctx, "wlan0", nil, nil)
 	if err != nil {
-		s.Fatal(errors.Wrap(err, "First SimplePing failed.").Error())
+		s.Fatal(errors.Wrap(err, "First Scan failed.").Error())
 	}
-	s.Log("First Ping succeeded")
+	s.Log("First Scan succeeded")
 	_, err = testexec.CommandContext(ctx, "suspend_stress_test", "-c", "1").Output()
 	if err != nil {
 		s.Fatal(errors.Wrap(err, "Reset failed.").Error())
 	}
 	s.Log("Suspend resume succeeded.")
-	res, err := ping.SimplePing(ctx, s, "8.8.8.8")
-	if err != nil {
-		s.Fatal(errors.Wrap(err, "Second SimplePing failed.").Error())
+	for flag := false; flag == false; {
+		o, err := testexec.CommandContext(ctx, "ip", "link", "show").Output()
+		if err != nil {
+			s.Fatal(errors.Wrap(err, "ip link failed").Error())
+		}
+		if strings.Contains(string(o), "wlan") {
+			flag = true
+		}
+		s.Log(string(o))
+		time.Sleep(1000 * time.Millisecond)
 	}
-	s.Log(fmt.Sprintf("Second Simple ping succeeded, res: %v", res))
-
+	testexec.CommandContext(ctx, "sh", "-c", "stop shill").Output()
+	s.Log("stopping shill")
+	testexec.CommandContext(ctx, "sh", "-c", "stop wpasupplicant").Output()
+	s.Log("stopping wpa_supplicant")
+	defer func() {
+		testexec.CommandContext(ctx, "sh", "-c", "start shill").Output()
+		s.Log("starting shill")
+		testexec.CommandContext(ctx, "sh", "-c", "start wpasupplicant").Output()
+		s.Log("starting wpa_supplicant")
+	}()
+	_, err = iw.TimedScan(ctx, "wlan0", nil, nil)
+	if err != nil {
+		s.Fatal(errors.Wrap(err, "Second Scan failed.").Error())
+	}
+	s.Log(fmt.Sprintf("Second Scan succeeded"))
 }
