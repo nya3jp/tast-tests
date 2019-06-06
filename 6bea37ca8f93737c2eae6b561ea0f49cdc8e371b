@@ -1,0 +1,348 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7136c73_e46f8f9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T19:09:00Z",
+      "side": 1,
+      "message": "while it makes the calls a bit longer, i\u0027d recommend instead using APIs that return data so the assertion can live in the test. this lets the caller distinguish between not being able to get the data at all and getting bad data, which is frequently a useful property.\n\n  func (a *App) Mirrored(ctx context.Context) (bool, error)\n\n  if mirrored, err :\u003d app.Mirrored(ctx); err !\u003d nil {\n      s.Error(\"Failed to get mirrored state: \", err)\n  } else if mirrored {\n      s.Error(\"Mirroring unexpectedly enabled\")\n  }\n\n(\"Get\" is also frequently omitted in go)",
+      "revId": "6bea37ca8f93737c2eae6b561ea0f49cdc8e371b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74e4a37c_678aa299",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T19:09:00Z",
+      "side": 1,
+      "message": "as above, MirrorButtonExists?",
+      "range": {
+        "startLine": 224,
+        "startChar": 14,
+        "endLine": 224,
+        "endChar": 36
+      },
+      "revId": "6bea37ca8f93737c2eae6b561ea0f49cdc8e371b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34a423c8_6d6d6740",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T19:09:00Z",
+      "side": 1,
+      "message": "ToggleMirrored or ToggleMirroring?",
+      "range": {
+        "startLine": 243,
+        "startChar": 14,
+        "endLine": 243,
+        "endChar": 32
+      },
+      "revId": "6bea37ca8f93737c2eae6b561ea0f49cdc8e371b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aec80ebd_c496ff29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T19:09:00Z",
+      "side": 1,
+      "message": "if you apply the earlier suggestion, then this can just call Mirrored instead of duplicating the JS code",
+      "revId": "6bea37ca8f93737c2eae6b561ea0f49cdc8e371b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b03bb62_4e0cf669",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T19:09:00Z",
+      "side": 1,
+      "message": "same here: you can probably use testing.Poll to call Mirrored",
+      "revId": "6bea37ca8f93737c2eae6b561ea0f49cdc8e371b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e9241c6_f35de381",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T19:09:00Z",
+      "side": 1,
+      "message": "optional nit: to make this a bit easier to read, i\u0027d consider putting each path on its own line:\n\n  app, err :\u003d ... []string{\n      s.DataPath(...),\n      s.DataPath(...),\n      s.DataPath(...),\n  })",
+      "revId": "6bea37ca8f93737c2eae6b561ea0f49cdc8e371b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fc4f813_c4c28b7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T19:09:00Z",
+      "side": 1,
+      "message": "nit: either \"app\" or \"CCA\"?",
+      "range": {
+        "startLine": 40,
+        "startChar": 47,
+        "endLine": 40,
+        "endChar": 50
+      },
+      "revId": "6bea37ca8f93737c2eae6b561ea0f49cdc8e371b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2af6c40d_9954006c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T19:09:00Z",
+      "side": 1,
+      "message": "nit: Checking",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 45,
+        "endChar": 16
+      },
+      "revId": "6bea37ca8f93737c2eae6b561ea0f49cdc8e371b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42bd2b8b_f019557f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T19:09:00Z",
+      "side": 1,
+      "message": "nit: mirroring",
+      "range": {
+        "startLine": 48,
+        "startChar": 51,
+        "endLine": 48,
+        "endChar": 57
+      },
+      "revId": "6bea37ca8f93737c2eae6b561ea0f49cdc8e371b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba4e7382_70f39744",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T19:09:00Z",
+      "side": 1,
+      "message": "nit: Checking",
+      "range": {
+        "startLine": 50,
+        "startChar": 11,
+        "endLine": 50,
+        "endChar": 16
+      },
+      "revId": "6bea37ca8f93737c2eae6b561ea0f49cdc8e371b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48b3099f_8be80f3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T19:09:00Z",
+      "side": 1,
+      "message": "nit: Toggling",
+      "range": {
+        "startLine": 55,
+        "startChar": 11,
+        "endLine": 55,
+        "endChar": 17
+      },
+      "revId": "6bea37ca8f93737c2eae6b561ea0f49cdc8e371b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fda96505_57561cad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T19:09:00Z",
+      "side": 1,
+      "message": "nit: Checking",
+      "range": {
+        "startLine": 59,
+        "startChar": 11,
+        "endLine": 59,
+        "endChar": 16
+      },
+      "revId": "6bea37ca8f93737c2eae6b561ea0f49cdc8e371b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc2baf8f_76b4b320",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T19:09:00Z",
+      "side": 1,
+      "message": "nit: Testing",
+      "range": {
+        "startLine": 68,
+        "startChar": 9,
+        "endLine": 68,
+        "endChar": 13
+      },
+      "revId": "6bea37ca8f93737c2eae6b561ea0f49cdc8e371b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25cc4c2a_20d0e1e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T19:09:00Z",
+      "side": 1,
+      "message": "nit: Switching",
+      "range": {
+        "startLine": 71,
+        "startChar": 12,
+        "endLine": 71,
+        "endChar": 18
+      },
+      "revId": "6bea37ca8f93737c2eae6b561ea0f49cdc8e371b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f820c8d4_0fb54a53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T19:09:00Z",
+      "side": 1,
+      "message": "nit: Getting",
+      "range": {
+        "startLine": 76,
+        "startChar": 12,
+        "endLine": 76,
+        "endChar": 15
+      },
+      "revId": "6bea37ca8f93737c2eae6b561ea0f49cdc8e371b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47f74c7b_d047b496",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T19:09:00Z",
+      "side": 1,
+      "message": "nit: Checking",
+      "range": {
+        "startLine": 82,
+        "startChar": 12,
+        "endLine": 82,
+        "endChar": 17
+      },
+      "revId": "6bea37ca8f93737c2eae6b561ea0f49cdc8e371b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
