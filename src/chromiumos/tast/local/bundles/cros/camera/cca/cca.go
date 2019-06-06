@@ -182,10 +182,30 @@ func (a *App) GetNumOfCameras(ctx context.Context) (int, error) {
 	return numCameras, err
 }
 
+// GetFacing returns the active camera facing.
+func (a *App) GetFacing(ctx context.Context) (Facing, error) {
+	var facing Facing
+	if err := a.conn.EvalPromise(ctx, "CCAUIPreviewOptions.getFacing()", &facing); err != nil {
+		return "", err
+	}
+	return facing, nil
+}
+
 // CheckFacing returns an error if the active camera facing is not expected.
 func (a *App) CheckFacing(ctx context.Context, expected Facing) error {
 	checkFacing := fmt.Sprintf("CCAUIMultiCamera.checkFacing(%q)", expected)
 	return a.conn.EvalPromise(ctx, checkFacing, nil)
+}
+
+// CheckMirror returns an error if the state of mirroring is not expected.
+func (a *App) CheckMirror(ctx context.Context, expected bool) error {
+	var actual bool
+	if err := a.conn.Eval(ctx, "cca.state.get('mirror')", &actual); err != nil {
+		return err
+	} else if actual != expected {
+		return errors.Errorf("unexpected mirroring state: got %v, want %v", actual, expected)
+	}
+	return nil
 }
 
 // CheckSwitchDeviceButtonExist returns an error if whether switch button exists is not expected.
@@ -200,11 +220,39 @@ func (a *App) CheckSwitchDeviceButtonExist(ctx context.Context, expected bool) e
 	return nil
 }
 
+// CheckMirrorButtonExist returns an error if whether mirror button exists is not expected.
+func (a *App) CheckMirrorButtonExist(ctx context.Context, expected bool) error {
+	var actual bool
+	err := a.conn.Eval(ctx, "CCAUIPreviewOptions.mirrorButtonExist()", &actual)
+	if err != nil {
+		return err
+	} else if actual != expected {
+		return errors.Errorf("unexpected mirror button existence: got %v, want %v", actual, expected)
+	}
+	return nil
+}
+
 // ToggleGridOption toggles the grid option and returns whether it's enabled after toggling.
 func (a *App) ToggleGridOption(ctx context.Context) (bool, error) {
 	var grid bool
 	err := a.conn.EvalPromise(ctx, "CCAUIMultiCamera.toggleGrid()", &grid)
 	return grid, err
+}
+
+// ToggleMirrorOption toggles the mirror option.
+func (a *App) ToggleMirrorOption(ctx context.Context) error {
+	var mirror bool
+	if err := a.conn.Eval(ctx, "cca.state.get('mirror')", &mirror); err != nil {
+		return err
+	}
+	if err := a.conn.Eval(ctx, "document.querySelector('#toggle-mirror').click()", nil); err != nil {
+		return err
+	}
+	js := "cca.state.get('mirror')"
+	if mirror {
+		js = "!" + js
+	}
+	return a.conn.WaitForExpr(ctx, js)
 }
 
 // SwitchCamera switches to next camera device.
