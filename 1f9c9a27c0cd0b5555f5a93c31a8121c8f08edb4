@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4df6277c_c35e2ad8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T01:08:06Z",
+      "side": 1,
+      "message": "An empty path usually means the current directory. For example, filepath.Join(\"\", \"foo\") \u003d \"foo\".\n\nI believe these should be:\n\n const iioBasePath \u003d \"sys/bus/iio/devices\"\n var basePath \u003d \"/\"",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 17
+      },
+      "revId": "1f9c9a27c0cd0b5555f5a93c31a8121c8f08edb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "38019ccf_9add2787",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
         "patchSetId": 1
