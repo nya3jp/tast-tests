@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "70e97edc_0463edca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T00:04:41Z",
+      "side": 1,
+      "message": "SGTM too. It\u0027s almost impossible to write perfect (that is, no false positive *and* no false negative) integration tests. IMO, if we have to choose either one, we should choose no false positives (\u003d avoid blaming innocent CLs) over no false negatives (\u003d overlooking bad CLs), so ignoring this error sounds fine.",
+      "parentUuid": "656fd341_e2608f7c",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 11
+      },
+      "revId": "8aa1fe66add81e544eac83f25264dcbe95509e2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e646d393_529e4a6f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/root_partitions_not_mounted.go",
         "patchSetId": 6
