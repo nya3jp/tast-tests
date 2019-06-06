@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6540929f_7f7e217f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T19:14:01Z",
+      "side": 1,
+      "message": "nit: maybe AppSanity or SimpleApp? i\u0027ll defer to people who work on ARC, though :-)",
+      "range": {
+        "startLine": 16,
+        "startChar": 16,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "b135eb80a8143bdd9d53ef1b19fc78121bc75d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb71d938_6fb43812",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T19:14:01Z",
+      "side": 1,
+      "message": "note mostly to self: i think that the arc.Booted precondition will uninstall the app when the test is done, right? if so, this seems fine",
+      "revId": "b135eb80a8143bdd9d53ef1b19fc78121bc75d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5fe1c6e_8b3fb28a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T19:14:01Z",
+      "side": 1,
+      "message": "unrelated to this change, i wonder if NewActivity should instead be a method on arc.ARC",
+      "range": {
+        "startLine": 40,
+        "startChar": 13,
+        "endLine": 40,
+        "endChar": 28
+      },
+      "revId": "b135eb80a8143bdd9d53ef1b19fc78121bc75d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2046335_380b0b3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-06T19:14:01Z",
+      "side": 1,
+      "message": "nit: were",
+      "range": {
+        "startLine": 56,
+        "startChar": 42,
+        "endLine": 56,
+        "endChar": 45
+      },
+      "revId": "b135eb80a8143bdd9d53ef1b19fc78121bc75d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
