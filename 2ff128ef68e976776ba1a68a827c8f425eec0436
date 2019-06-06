@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "4a7a052f_da9b2d94",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T03:04:45Z",
+      "side": 1,
+      "message": "Ah, adding \"reboot\" dependency seems necessary anyway, thanks for catching!",
+      "parentUuid": "83040223_4ad6e0eb",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 75
+      },
+      "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eee38079_bd044d8e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
         "patchSetId": 1
@@ -332,6 +356,24 @@
       "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "551447f8_5a5d4481",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T03:04:45Z",
+      "side": 1,
+      "message": "Yes, I should have mentioned it here. Added a comment.",
+      "parentUuid": "b60b5c48_29e1e6bc",
+      "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
