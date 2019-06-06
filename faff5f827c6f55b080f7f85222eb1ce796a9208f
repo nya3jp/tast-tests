@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fde9cf87_c87292a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cups_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-06-06T10:50:02Z",
+      "side": 1,
+      "message": "huge nit: Could we have a consistent order of these parameters as the argument order of createRequest()/checkResponse()? The most natural order to me is [host, headers, body].",
+      "revId": "faff5f827c6f55b080f7f85222eb1ce796a9208f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42b2559d_bed11633",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cups_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-06-06T10:50:02Z",
+      "side": 1,
+      "message": "It looks like all body/host are the same, should we move it up as a file local constant?",
+      "revId": "faff5f827c6f55b080f7f85222eb1ce796a9208f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
