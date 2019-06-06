@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a4f22b9_30840155",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-06T08:11:05Z",
+      "side": 1,
+      "message": "nit: what does cls start for? I copied it from ui_automator.go",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 5
+      },
+      "revId": "be48b61ef3bd536026075a05255e9d93255a8a9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a659e2a5_8ba3031c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-06T08:11:05Z",
+      "side": 1,
+      "message": "betty version 12211.0.0 fails here.",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 9
+      },
+      "revId": "be48b61ef3bd536026075a05255e9d93255a8a9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
