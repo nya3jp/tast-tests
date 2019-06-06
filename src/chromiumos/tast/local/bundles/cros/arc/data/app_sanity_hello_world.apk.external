@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/ArcAppSanityTastTest_20190614.apk",
+  "size": 2312251,
+  "sha256sum": "6d8c6cb84c5676d81b72dfe60b291435a9ed60258a81747cd904054f6d6d768d"
+}
