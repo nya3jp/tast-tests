@@ -8,9 +8,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/shirou/gopsutil/process"
-
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -34,38 +33,13 @@ func ShillStability(ctx context.Context, s *testing.State) {
 	// Returns PID of main shill process. Calls s.Fatal if we can't find
 	// shill.
 	getPID := func() int {
-		const shillExecPath = "/usr/bin/shill"
-		// Only look for shill as child of one of these.
-		var shillParents = []string{"/sbin/minijail0", "/sbin/init"}
-
-		all, err := process.Processes()
+		_, _, pid, err := upstart.JobStatus(ctx, "shill")
 		if err != nil {
-			s.Fatal("Failed to get process list: ", err)
+			s.Fatal("Failed to find shill job: ", err)
+		} else if pid == 0 {
+			s.Fatal("Shill is not running")
 		}
-
-		for _, proc := range all {
-			if exe, err := proc.Exe(); err != nil || exe != shillExecPath {
-				continue
-			}
-			ppid, err := proc.Ppid()
-			if err != nil {
-				continue
-			}
-			parent, err := process.NewProcess(ppid)
-			if err != nil {
-				continue
-			}
-			if exe, err := parent.Exe(); err == nil {
-				for _, p := range shillParents {
-					if exe == p {
-						return int(proc.Pid)
-					}
-				}
-				continue
-			}
-		}
-		s.Fatal("Could not find shill")
-		panic("unreachable")
+		return pid
 	}
 
 	pid := getPID()
