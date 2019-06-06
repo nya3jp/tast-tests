@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "08c9fa06_47113125",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:38:01Z",
+      "side": 1,
+      "message": "Sounds good to me. I sent a mail.",
+      "parentUuid": "ad5bcbd9_f8e3902b",
+      "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee0e4225_1aed2035",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baeb8a3e_39ffe194",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:38:01Z",
+      "side": 1,
+      "message": "Oops, good catch!",
+      "parentUuid": "ee0e4225_1aed2035",
+      "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13caa356_ec1bdb0b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:38:01Z",
+      "side": 1,
+      "message": "stat /home/chronos/.oobe_completed below is the sanity check. I believe it makes sense as a sanity check because going through OOBE is the whole point of clearing the stateful partition (clearing the stateful partition is a means, not a purpose).",
+      "parentUuid": "e6df3e13_59f45b21",
+      "range": {
+        "startLine": 39,
+        "startChar": 23,
+        "endLine": 39,
+        "endChar": 56
+      },
+      "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "c9e45572_9ca27d0c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:38:01Z",
+      "side": 1,
+      "message": "Since changing the API of dut.DUT involves a change to the tast repository, I\u0027d want to make this change first and change API later; I expect the API change to be non-trivial.",
+      "parentUuid": "eee38079_bd044d8e",
+      "range": {
+        "startLine": 43,
+        "startChar": 14,
+        "endLine": 43,
+        "endChar": 19
+      },
+      "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e804c834_8aeeaeb1",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
         "patchSetId": 1
@@ -151,6 +235,30 @@
     },
     {
       "key": {
+        "uuid": "5da1bd30_ddbdc3ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:38:01Z",
+      "side": 1,
+      "message": "FWIW I copied this code from power.Reboot test :)\n\nThat said, sleep 2 is definitely required here because Run call should return before the reboot command is invoked. I believe the comment above (by Dan) clarifies this: \"Run the reboot command in the background to avoid the DUT potentially going down before success is reported over the SSH connection\". What confused you?",
+      "parentUuid": "d809a6bb_c45d602e",
+      "range": {
+        "startLine": 52,
+        "startChar": 39,
+        "endLine": 52,
+        "endChar": 47
+      },
+      "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "edea27da_dbd3c03f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
         "patchSetId": 1
@@ -165,6 +273,24 @@
       "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29efb459_38d92b15",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:38:01Z",
+      "side": 1,
+      "message": "I thought I can just do the same thing as power.Reboot now and revisit it when introducing dut.DUT.Reboot, but yes, we can do it now. I changed the method to use boot_id.",
+      "parentUuid": "edea27da_dbd3c03f",
+      "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -188,6 +314,30 @@
       "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e2c9547_08950ad7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-06T02:38:01Z",
+      "side": 1,
+      "message": "Unfortunately, dut.DUT does not have API to run a process with pipe. I will revisit this with crbug.com/971024. Added a TODO comment meanwhile.",
+      "parentUuid": "82a7ee7e_83282858",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 2
+      },
+      "revId": "2ff128ef68e976776ba1a68a827c8f425eec0436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
