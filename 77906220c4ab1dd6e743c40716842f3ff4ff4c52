@@ -2,6 +2,69 @@
   "comments": [
     {
       "key": {
+        "uuid": "d2776e85_b386e00c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-06T08:27:04Z",
+      "side": 1,
+      "message": "nit: DecodeAccelPerfH2641080P60FPS?",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 24
+      },
+      "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dbb1763_f645c150",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-06T08:27:04Z",
+      "side": 1,
+      "message": "This function runs the binary test with different settings multiple times. (i.e. Test 1 and Test 2 below) How about explaining these setting briefly here?",
+      "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15f09dd7_371be68e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-06T08:27:04Z",
+      "side": 1,
+      "message": "Question: What are \"capped\" and \"uncapped\"? How about describing them somewhere? (Perhaps, function comment of  RunAccelVideoPerfTest)",
+      "range": {
+        "startLine": 346,
+        "startChar": 17,
+        "endLine": 346,
+        "endChar": 23
+      },
+      "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5554f203_ec1f9281",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 4
@@ -111,6 +174,52 @@
     },
     {
       "key": {
+        "uuid": "6296ecd8_4f838bab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-06T08:27:04Z",
+      "side": 1,
+      "message": "huge nit: \u0027:\u0027 is missing?",
+      "range": {
+        "startLine": 394,
+        "startChar": 21,
+        "endLine": 394,
+        "endChar": 22
+      },
+      "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b817802_1b67cbec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-06T08:27:04Z",
+      "side": 1,
+      "message": "I have two questions here: \n1. When we have --gtest_repeast\u003d-1, how many JSON files will be generated? \n\n2. While I think this test is somehow similar to EncodeAccelPerf tests, EncodeAccelPerf tests aren\u0027t using this option. Do you know why? What\u0027s the difference?",
+      "range": {
+        "startLine": 395,
+        "startChar": 78,
+        "endLine": 395,
+        "endChar": 80
+      },
+      "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "799223ba_241dfcd7",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 4
@@ -174,6 +283,23 @@
         "endLine": 418,
         "endChar": 7
       },
+      "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b510d27_0f4635f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-06T08:27:04Z",
+      "side": 1,
+      "message": "// TODO(dstaessens@): Remove \"tast_\" prefix after removing video_VDAPerf in autotest. ?",
       "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -334,6 +460,29 @@
     },
     {
       "key": {
+        "uuid": "2ce0b025_f7e200ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_perf_h264_1080p_60fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-06T08:27:04Z",
+      "side": 1,
+      "message": "\"group:crosbolt\" and \"crosbolt_perbuild\" instead?",
+      "range": {
+        "startLine": 20,
+        "startChar": 25,
+        "endLine": 20,
+        "endChar": 40
+      },
+      "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "155417ff_de461d83",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_perf_h264_1080p_60fps.go",
         "patchSetId": 4
@@ -345,6 +494,24 @@
       "writtenOn": "2019-06-06T03:11:39Z",
       "side": 1,
       "message": "i think you need to include \"chrome\" here. video_decode_accelerator_perf_tests looks like it\u0027s installed by the chromeos-chrome package, and the test is also stopping the ui job (which implies that chrome must be present).",
+      "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fabe48d3_de3c8756",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_perf_h264_1080p_60fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-06T08:27:04Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "155417ff_de461d83",
       "revId": "77906220c4ab1dd6e743c40716842f3ff4ff4c52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
