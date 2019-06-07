@@ -18,6 +18,11 @@ import (
 	"strings"
 )
 
+const (
+	IW_TIME_COMMAND_FORMAT       = "(time -p %s) 2>&1"
+	IW_TIME_COMMAND_OUTPUT_START = "real"
+)
+
 /*
 Parses link or station dump output for link key value pairs.
 
@@ -106,7 +111,7 @@ type IwRunner struct {
 	Run func(string) // Function alias that will determine how commands are executed whether the test
 	// 	is a client test or a remote test (TODO).
 	Host_addr  string         // Host address for remote tests (TODO).
-	Iw_command string         // Path to invoke `iw`. By default, we expect iw to be in $PATH, so this value should be `iw`.
+	iw_command string         // Path to invoke `iw`. By default, we expect iw to be in $PATH, so this value should be `iw`.
 	Log_id     int            // Id for logging.
 	s          *testing.State // Test State
 }
@@ -118,7 +123,7 @@ func NewIwRunner(state *testing.State) *IwRunner {
 	return &IwRunner{
 		Run:        clientCommandExec,
 		Host_addr:  "",
-		Iw_command: "iw",
+		iw_command: "iw",
 		s:          state,
 	}
 }
@@ -132,10 +137,56 @@ clientCommandExec runs in a blocking fashion and will not return until the shell
 	a valid string is "ls -lat"
 @return bytestream output of stdout from the DUT.
 */
-func (iwr IwRunner) clientCommandExec(shellCommand string) []byte {
-	out, err := exec.Command(shellCommand).Output()
-	if err != nil {
-		iwr.s.Fatal(fmt.Sprintf("Command \" %s \" failed with non-zero error code", shellCommand), err)
+func (iwr IwRunner) clientCommandExec(shellCommand string) ([]byte, error) {
+	out, err := testexec.Command(shellCommand).Output()
+	return out, err
+}
+
+/*
+Runs a scan on a specified interface and frequencies (if applicable). Returns scan time and BSS list from SSIDs.
+
+@param iface: the interface to run the iw command against
+@param frequencies: list of int frequencies in Mhz to scan.
+@param ssids: list of string SSIDs to send probe requests for.
+
+@returns total scan time and bss list from SSIDs.
+*/
+func (iwr IwRunner) TimedScan(iface string, frequencies []int, ssids []string) (string, []string) {
+	buffer := bytes.Buffer
+	freq_param := ""
+	ssid_param := ""
+
+	var bss_list []string
+	if len(frequencies) > 0 {
+		for _, freq := range frequencies {
+			buffer.WriteString(fmt.Sprintf(" freq %s", string(freq)))
+		}
+		freq_param = buffer.String()
+		buffer.Reset()
 	}
-	return out
+	if len(ssids) > 0 {
+		for _, ssid := range ssids {
+			buffer.WriteString(fmt.Sprintf(" ssid %s", string(ssid)))
+		}
+		ssid_param = buffer.String()
+		buffer.Reset()
+	}
+	iw_command := fmt.Sprintf("%s dev %s scan%s%s", iwr.iw_command, iface, freq_param, ssid_param)
+	command := fmt.Sprintf(IW_TIME_COMMAND_FORMAT, iw_command)
+	scanOut, err = clientCommandExec(command)
+	if status, _ := int(test.GetWaitStatus(err)); status != 0 {
+		iwr.s.Log(fmt.Sprintf("scan exit_status: %d", status))
+		return nil
+	}
+	if len(scanOut) < 0 {
+		iwr.s.Fatal("Missing scan parse time")
+	}
+	if strings.HasPrefix(string(scanOut), IW_TIME_COMMAND_OUTPUT_START) {
+		iwr.s.Log("Empty scan result")
+		bss_list = nil
+	} else {
+		bss_list = parseScanResults(string(scanOut)) //TODO
+	}
+	scan_time = parseScanTime(scanOut) //TODO
+	return &IwTimedScan{scan_time, bss_list}
 }
