@@ -13,20 +13,34 @@ import (
 
 // InitPID returns the PID (outside the container) of the ARC init process.
 func InitPID() (int32, error) {
-	uid, err := sysutil.GetUID("android-root")
-	if err != nil {
-		return -1, err
-	}
+	if guest == container {
+		uid, err := sysutil.GetUID("android-root")
+		if err != nil {
+			return -1, err
+		}
 
-	procs, err := process.Processes()
-	if err != nil {
-		return -1, errors.Wrap(err, "failed to list processes")
-	}
+		procs, err := process.Processes()
+		if err != nil {
+			return -1, errors.Wrap(err, "failed to list processes")
+		}
 
-	const initPath = "/init"
-	for _, p := range procs {
-		if uids, err := p.Uids(); err == nil && uint32(uids[0]) == uid {
-			if exe, err := p.Exe(); err == nil && exe == initPath {
+		const initPath = "/init"
+		for _, p := range procs {
+			if uids, err := p.Uids(); err == nil && uint32(uids[0]) == uid {
+				if exe, err := p.Exe(); err == nil && exe == initPath {
+					return p.Pid, nil
+				}
+			}
+		}
+	} else {
+		procs, err := process.Processes()
+		if err != nil {
+			return -1, errors.Wrap(err, "failed to list processes")
+		}
+
+		const crosvmPath = "/usr/bin/crosvm"
+		for _, p := range procs {
+			if exe, err := p.Exe(); err == nil && exe == crosvmPath {
 				return p.Pid, nil
 			}
 		}
