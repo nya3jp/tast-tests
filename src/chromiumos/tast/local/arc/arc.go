@@ -9,6 +9,7 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"time"
@@ -34,6 +35,8 @@ const (
 
 // locked is set to true while a precondition is active to prevent tests from calling New or Close.
 var locked = false
+
+// TODO(b/134144418): Consolidate ARC and ARCVM diverged code once ADB issues are resolved.
 
 // Supported returns true if ARC is supported on the board.
 //
@@ -101,12 +104,6 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		return nil, err
 	}
 
-	testing.ContextLog(ctx, "Waiting for Android boot")
-
-	if err := WaitAndroidInit(ctx); err != nil {
-		return nil, errors.Wrap(err, "Android failed to boot in very early stage")
-	}
-
 	arc := &ARC{}
 	toClose := arc
 	defer func() {
@@ -114,6 +111,34 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 			toClose.Close()
 		}
 	}()
+
+	vm, err := vmEnabled()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to determine if ARCVM is enabled")
+	}
+
+	testing.ContextLog(ctx, "Waiting for Android boot")
+
+	if vm {
+		// When running ARCVM, 'android-sh' runs via ADB. So, the first thing to do is set up ADB.
+		// Android should be initialized once a working connection to ADB is made.
+		testing.ContextLog(ctx, "Setting up ADB")
+		if err := setUpADB(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed setting up ADB")
+		}
+
+		// Connect to ADB.
+		// TODO(jasongustaman): Use adbConnect instead when adb-proxy change (b/135150238) landed.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			return BootstrapCommand(ctx, "/system/bin/true").Run()
+		}, &testing.PollOptions{Interval: time.Second}); err != nil {
+			return nil, errors.Wrap(err, "Android VM did not come up: can't connect to ADB")
+		}
+	} else {
+		if err := WaitAndroidInit(ctx); err != nil {
+			return nil, errors.Wrap(err, "Android failed to boot in very early stage")
+		}
+	}
 
 	// At this point we can start logcat.
 	logcatPath := filepath.Join(outDir, logcatName)
@@ -126,10 +151,12 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	}
 	arc.logcatCmd = logcatCmd
 
-	// Wait for internal networking to get ready. This gives better error messages
-	// when networking is broken, rather than obscure "failed connecting to ADB" error.
-	if err := waitNetworking(ctx); err != nil {
-		return nil, diagnose(logcatPath, errors.Wrap(err, "Android network unreachable"))
+	if !vm {
+		// Wait for internal networking to get ready. This gives better error messages
+		// when networking is broken, rather than obscure "failed connecting to ADB" error.
+		if err := waitNetworking(ctx); err != nil {
+			return nil, diagnose(logcatPath, errors.Wrap(err, "Android network unreachable"))
+		}
 	}
 
 	// This property is set by the Android system server just before LOCKED_BOOT_COMPLETED is broadcast.
@@ -138,12 +165,17 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		return nil, diagnose(logcatPath, errors.Wrapf(err, "%s not set", androidBootProp))
 	}
 
-	// Android container is up. Set up ADB auth in parallel to Android boot since
-	// ADB local server takes a few seconds to start up.
-	ch := make(chan error, 1)
-	go func() {
-		ch <- setUpADBAuth(ctx)
-	}()
+	var ch chan error
+	if !vm {
+		// TODO(jasongustaman): use errgroup here.
+		// Android container is up. Set up ADB auth in parallel to Android boot since
+		// ADB local server takes a few seconds to start up.
+		testing.ContextLog(ctx, "Setting up ADB auth")
+		ch = make(chan error, 1)
+		go func() {
+			ch <- setUpADBAuth(ctx)
+		}()
+	}
 
 	// This property is set by ArcAppLauncher when it receives BOOT_COMPLETED.
 	const arcBootProp = "ro.arc.boot_completed"
@@ -151,12 +183,16 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		return nil, diagnose(logcatPath, errors.Wrapf(err, "%s not set", arcBootProp))
 	}
 
-	// Android has booted. Connect to ADB.
-	if err := <-ch; err != nil {
-		return nil, diagnose(logcatPath, errors.Wrap(err, "failed setting up ADB auth"))
-	}
-	if err := connectADB(ctx); err != nil {
-		return nil, diagnose(logcatPath, errors.Wrap(err, "failed connecting to ADB"))
+	if !vm {
+		// Android has booted.
+		if err := <-ch; err != nil {
+			return nil, diagnose(logcatPath, errors.Wrap(err, "failed setting up ADB auth"))
+		}
+
+		// Connect to ADB.
+		if err := connectADB(ctx); err != nil {
+			return nil, diagnose(logcatPath, errors.Wrap(err, "failed connecting to ADB"))
+		}
 	}
 
 	toClose = nil
@@ -236,6 +272,17 @@ func (a *ARC) setLogcatFile(p string) error {
 	}
 
 	return createErr
+}
+
+// vmEnabled returns true if Chrome OS is running ARCVM.
+// This is done by checking "/run/chrome/is_arcvm" content equal to "1".
+// Reference: chrome/browser/chromeos/arc/arc_service_launcher.cc
+func vmEnabled() (bool, error) {
+	b, err := ioutil.ReadFile("/run/chrome/is_arcvm")
+	if err != nil {
+		return false, err
+	}
+	return string(b) == "1", nil
 }
 
 // ensureARCEnabled makes sure ARC is enabled by a command line flag to Chrome.
