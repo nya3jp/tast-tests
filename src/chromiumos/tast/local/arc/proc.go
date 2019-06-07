@@ -11,9 +11,17 @@ import (
 	"chromiumos/tast/local/sysutil"
 )
 
-// InitPID returns the PID (outside the container) of the ARC init process.
+// InitPID returns the PID (outside the guest) of the ARC init process.
 func InitPID() (int32, error) {
-	uid, err := sysutil.GetUID("android-root")
+	u := "android-root"
+	initPath := "/init"
+
+	if guest == vm {
+		u = "root"
+		initPath = "/usr/bin/crosvm"
+	}
+
+	uid, err := sysutil.GetUID(u)
 	if err != nil {
 		return -1, err
 	}
@@ -23,7 +31,6 @@ func InitPID() (int32, error) {
 		return -1, errors.Wrap(err, "failed to list processes")
 	}
 
-	const initPath = "/init"
 	for _, p := range procs {
 		if uids, err := p.Uids(); err == nil && uint32(uids[0]) == uid {
 			if exe, err := p.Exe(); err == nil && exe == initPath {
