@@ -22,6 +22,30 @@
       "revId": "10766695f58ca1d8cb81acffcc7b78877830ef91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "206cc0ce_a88e271e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-07T16:52:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07dba898_3573ca78",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 90
+      },
+      "revId": "10766695f58ca1d8cb81acffcc7b78877830ef91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
