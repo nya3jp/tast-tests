@@ -171,7 +171,7 @@ func (p *preImpl) checkUsable(ctx context.Context, pkgs map[string]struct{}) err
 		return errors.Errorf("pm didn't list %q among %d package(s)", pkg, len(pkgs))
 	}
 
-	// TODO(derat): Should we also check that p.cr is still usable?
+	// TODO(nya): Should we also check that p.cr is still usable?
 	return nil
 }
 

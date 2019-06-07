@@ -82,8 +82,8 @@ func VirtualKeyboard(ctx context.Context) (*KeyboardEventWriter, error) {
 	}
 
 	// Sleep briefly to give Chrome and other processes time to see the new device.
-	// TODO(derat): Add some way to skip this delay; it's probably unnecessary if
-	// the device is created before calling chrome.New.
+	// This delay is probably unnecessary if the device is created before calling chrome.New,
+	// but that's not guaranteed to happen.
 	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
 		return nil, err
 	}
@@ -202,8 +202,8 @@ func (kw *KeyboardEventWriter) Accel(ctx context.Context, s string) error {
 }
 
 // sleepAfterType sleeps for short time. It is supposed to be called after key strokes.
-// TODO(derat): Without sleeping between keystrokes, the omnibox seems to produce scrambled text.
-// Figure out why. Presumably there's a bug in Chrome's input stack or the omnibox code.
+// Without sleeping between keystrokes, the omnibox seems to produce scrambled text.
+// Presumably there's a bug in Chrome's input stack or the omnibox code.
 func (kw *KeyboardEventWriter) sleepAfterType(ctx context.Context, firstErr *error) {
 	if kw.fast {
 		return

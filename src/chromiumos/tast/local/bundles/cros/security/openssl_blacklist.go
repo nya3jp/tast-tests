@@ -20,8 +20,8 @@ func init() {
 		Func: OpenSSLBlacklist,
 		Desc: "Verifies that OpenSSL certificate blacklisting works",
 		Contacts: []string{
-			"ellyjones@chromium.org", // original Autotest author
-			"derat@chromium.org",     // Tast port author
+			"jorgelo@chromium.org", // Security team
+			"chromeos-security@google.com",
 		},
 		Data: []string{
 			"openssl_blacklist_ca.pem",

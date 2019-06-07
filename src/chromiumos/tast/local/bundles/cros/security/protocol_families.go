@@ -19,7 +19,6 @@ func init() {
 		Desc: "Compares available network protocol (address) families against a baseline",
 		Contacts: []string{
 			"jorgelo@chromium.org", // Security team
-			"derat@chromium.org",   // Tast port author
 			"chromeos-security@google.com",
 		},
 	})
@@ -43,8 +42,6 @@ func ProtocolFamilies(ctx context.Context, s *testing.State) {
 		unix.AF_BLUETOOTH,
 		unix.AF_ALG,
 		unix.AF_VSOCK, // may be present after vm tests load the vhost-vsock module
-		// TODO(derat): The security_ProtocolFamilies Autotest test also permits AF_QIPCRTR (42) for the cheza
-		// board. No cheza devices exist in the lab, but consider adding it to this list in the future if needed.
 	} {
 		allowedFamilies[f] = struct{}{}
 	}

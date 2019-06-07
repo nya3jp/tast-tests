@@ -158,8 +158,7 @@ func WaitForUserMount(ctx context.Context, user string) error {
 		return err
 	}
 
-	// Reserve a bit of time to log the status before ctx's deadline.
-	// TODO(derat): Delete this after https://crbug.com/864282 is resolved.
+	// Reserve a bit of time to log the status before ctx's deadline: https://crbug.com/864282
 	var timeout time.Duration
 	if dl, ok := ctx.Deadline(); ok {
 		timeout = dl.Sub(time.Now()) - (3 * time.Second) // testing.Poll ignores negative timeouts

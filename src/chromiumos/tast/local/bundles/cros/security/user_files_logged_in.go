@@ -18,7 +18,6 @@ func init() {
 		Desc: "Checks ownership and permissions of user files for logged-in users",
 		Contacts: []string{
 			"jorgelo@chromium.org", // Security team
-			"derat@chromium.org",   // Tast port author
 			"chromeos-security@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},

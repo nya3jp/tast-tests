@@ -22,7 +22,6 @@ func init() {
 		Desc: "Verifies that storing and retrieving user policy works with multiple profiles signed-in",
 		Contacts: []string{
 			"mnissler@chromium.org", // session_manager owner
-			"derat@chromium.org",    // session_manager owner
 			"hidehiko@chromium.org", // Tast port author
 		},
 		Data: []string{"testcert.p12"},

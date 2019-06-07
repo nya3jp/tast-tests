@@ -211,7 +211,6 @@ func GetCaps(path string) (Caps, error) {
 	// Version 2, permitting 64-bit capability sets, was introduced in Linux 2.6.25.
 	// Version 3, additionally encoding the root user ID of the namespace, was introduced in 4.14.
 	// See capabilities(7) for more details.
-	// TODO(derat): Add support for version 3 if we start using it.
 	if version := capsStruct.magicEtc >> 24; version != 2 {
 		return Caps{}, errors.Errorf("got version %v; want 2", version)
 	}

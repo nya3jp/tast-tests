@@ -29,7 +29,6 @@ func init() {
 		Desc: "Verifies that, after policy is pushed, the user policy key winds up stored in the right place",
 		Contacts: []string{
 			"mnissler@chromium.org", // session_manager owner
-			"derat@chromium.org",    // session_manager owner
 			"hidehiko@chromium.org", // Tast port author
 		},
 		SoftwareDeps: []string{"chrome"},
