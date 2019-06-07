@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86a1b9be_4378670a",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-07T01:02:26Z",
+      "side": 0,
+      "message": "Could you leave this comment since it seems still applicable? Please feel free to assign it to me (or just TODO: ?)",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 174,
+        "endChar": 64
+      },
+      "revId": "3662e38e3bdf05de6e815577b1ef756bef95c2e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99a0f27b_298e4100",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/userfiles/userfiles.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-07T01:02:26Z",
+      "side": 0,
+      "message": "Is this TODO still applicable?",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 78
+      },
+      "revId": "3662e38e3bdf05de6e815577b1ef756bef95c2e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
