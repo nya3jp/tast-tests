@@ -65,23 +65,34 @@ func RunPrintTest(ctx context.Context, s *testing.State, descriptors,
 		}
 	}()
 
-	if err := cupsAddPrinter(ctx, devInfo, ppd); err != nil {
-		s.Fatal("Failed to add printer: ", err)
+	s.Log("Waiting for printer to be configured")
+	var foundPrinterName string
+	if err = testing.Poll(ctx, func(ctx context.Context) error {
+		name, err := printerName(ctx, devInfo)
+		if err != nil {
+			return err
+		}
+		foundPrinterName = name
+		return nil
+	}, nil); err != nil {
+		s.Fatal("Failed to find printer name: ", err)
 	}
+	s.Log("Printer configured with name: ", foundPrinterName)
+
 	defer func() {
-		if err := cupsRemovePrinter(oldContext); err != nil {
+		if err := cupsRemovePrinter(oldContext, foundPrinterName); err != nil {
 			s.Error("Failed to remove printer: ", err)
 		}
 	}()
 
-	job, err := cupsStartPrintJob(ctx, toPrint)
+	job, err := cupsStartPrintJob(ctx, foundPrinterName, toPrint)
 	if err != nil {
 		s.Fatal("Failed to start printer: ", err)
 	}
 
 	s.Log(ctx, " Waiting for ", job, " to complete")
 	if err = testing.Poll(ctx, func(ctx context.Context) error {
-		if done, err := jobCompleted(ctx, job); err != nil {
+		if done, err := jobCompleted(ctx, foundPrinterName, job); err != nil {
 			return err
 		} else if !done {
 			return errors.Errorf("job %s is not done yet", job)
