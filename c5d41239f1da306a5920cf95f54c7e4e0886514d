@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4d03c0b_bef97ab9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-07T15:58:50Z",
+      "side": 1,
+      "message": "ditto:\ns.Error(...)\ncontinue",
+      "revId": "c5d41239f1da306a5920cf95f54c7e4e0886514d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3cf4855_1624a164",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-07T15:58:50Z",
+      "side": 1,
+      "message": "Ditto:\ns.Error(...)\ncontinue",
+      "revId": "c5d41239f1da306a5920cf95f54c7e4e0886514d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

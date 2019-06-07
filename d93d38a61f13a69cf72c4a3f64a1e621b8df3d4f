@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9d178c4b_9be45c8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-07T15:58:50Z",
+      "side": 1,
+      "message": "I\u0027d recommend, either;\n1) Merge those. The most of the code look to be able to be shared. Or,\n2) Extract common part into a subpackage to share. Then, introduce a test case for each language, like VirtualKeyboardSuggestionEnglish, VirtualKeyboardSuggestionJapanese, ...\n\n1) looks simpler to me. Though, as you commented there\u0027s a risk of the flakiness affected by other languages.\n2) is less risk. E.g., even if Mozc test fails, English VK test should still work. (Then, we probably want PreCondition for VK enabled Chrome for performance).\nAlso, I\u0027d recommend to avoid the name \"OtherLanguages\" without context to respect each language. \n\nWDYT?",
+      "parentUuid": "d635ecff_c169744f",
+      "range": {
+        "startLine": 21,
+        "startChar": 16,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "d93d38a61f13a69cf72c4a3f64a1e621b8df3d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df96266e_ca0fb1a7",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
         "patchSetId": 2
@@ -213,6 +237,30 @@
       "side": 1,
       "message": "Hmm yeah I didn\u0027t think about that. TBH, my plan for this test was to just sanity check each input method (check if our UI integrates correctly with backend language model), so an input method should only appear once in the list. Exhaustive testing of the suggestions would be done at a unit test level of the language models.\n\nI don\u0027t feel too strongly about this though.",
       "parentUuid": "d901e9db_68ee8a7a",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 87
+      },
+      "revId": "d93d38a61f13a69cf72c4a3f64a1e621b8df3d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f75f8a9c_25fd7351",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-07T15:58:50Z",
+      "side": 1,
+      "message": "Then, could you comment that your intention that each InputMethod would have one test entry?\noptional: then probably it\u0027s ok to drop \"expecting: ...\" part.",
+      "parentUuid": "1e0ca8d5_6b043446",
       "range": {
         "startLine": 96,
         "startChar": 2,
