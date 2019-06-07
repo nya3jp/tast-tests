@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "762c8e54_d7bf27d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-07T04:45:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12e80b7d_def5e79e",
+      "range": {
+        "startLine": 16,
+        "startChar": 16,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "b135eb80a8143bdd9d53ef1b19fc78121bc75d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64a03cda_53f774f4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app.go",
         "patchSetId": 9
@@ -60,6 +84,30 @@
       "writtenOn": "2019-06-07T02:08:54Z",
       "side": 1,
       "message": "Is there a repository for the source code? We want to be able to rebuild the package when necessary.",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 81
+      },
+      "revId": "b135eb80a8143bdd9d53ef1b19fc78121bc75d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "accd1ae7_a79fe63b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-07T04:45:19Z",
+      "side": 1,
+      "message": "I see. I will commit the code to https://googleplex-android.git.corp.google.com/platform/vendor/google_arc/+/pi-arc/packages/development?pli\u003d1 .",
+      "parentUuid": "64a03cda_53f774f4",
       "range": {
         "startLine": 29,
         "startChar": 5,
@@ -107,6 +155,24 @@
     },
     {
       "key": {
+        "uuid": "d5240c00_7c09e1e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-07T04:45:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "73f4280a_16d22a79",
+      "revId": "b135eb80a8143bdd9d53ef1b19fc78121bc75d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5fe1c6e_8b3fb28a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app.go",
         "patchSetId": 9
@@ -127,6 +193,30 @@
       "revId": "b135eb80a8143bdd9d53ef1b19fc78121bc75d81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e86e791c_5ab70e2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-07T04:45:19Z",
+      "side": 1,
+      "message": "SGTM, though I\u0027d keep it as is in this CL, nya@ WDYT?",
+      "parentUuid": "d5fe1c6e_8b3fb28a",
+      "range": {
+        "startLine": 40,
+        "startChar": 13,
+        "endLine": 40,
+        "endChar": 28
+      },
+      "revId": "b135eb80a8143bdd9d53ef1b19fc78121bc75d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -153,6 +243,30 @@
     },
     {
       "key": {
+        "uuid": "acd6a486_921fdc9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-07T04:45:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee1b44e4_e44f3de7",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 38
+      },
+      "revId": "b135eb80a8143bdd9d53ef1b19fc78121bc75d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2046335_380b0b3d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app.go",
         "patchSetId": 9
@@ -173,6 +287,30 @@
       "revId": "b135eb80a8143bdd9d53ef1b19fc78121bc75d81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d12af6e_4790b08d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-07T04:45:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2046335_380b0b3d",
+      "range": {
+        "startLine": 56,
+        "startChar": 42,
+        "endLine": 56,
+        "endChar": 45
+      },
+      "revId": "b135eb80a8143bdd9d53ef1b19fc78121bc75d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
