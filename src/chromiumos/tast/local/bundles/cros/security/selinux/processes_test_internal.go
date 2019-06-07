@@ -45,7 +45,6 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State) {
 		// Other tests that run before this one may restart non-critical daemons, so this test can't assume that
 		// the processes will be there. The platform.CheckProcesses test is responsible for checking that processes
 		// are actually running.
-		// TODO(derat): Consider using oneProc again after updating this test to wait for services: https://crbug.com/897521
 		minProcessCount int
 	}{
 		{cmdline, "/usr/bin/periodic_scheduler", "cros_periodic_scheduler", twoProcs},

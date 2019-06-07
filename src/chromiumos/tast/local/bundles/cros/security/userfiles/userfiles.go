@@ -70,5 +70,5 @@ func Check(ctx context.Context, s *testing.State, user string) {
 		chk.NewPattern(chk.Root(), isChronosUID, isChronosAccessGID, chk.Mode(0710)),
 	})
 
-	// TODO(derat): Add additional vault checks from security_ProfilePermissions.
+	// TODO(crbug.com/971919): Add additional vault checks from security_ProfilePermissions?
 }

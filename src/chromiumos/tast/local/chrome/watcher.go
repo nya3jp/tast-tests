@@ -66,8 +66,6 @@ func (bw *browserWatcher) check() bool {
 	bw.mutex.Lock()
 	defer bw.mutex.Unlock()
 
-	// TODO(derat): Consider also checking for crash reports or log messages.
-
 	// If Chrome hadn't previously started (and possibly still hasn't started), keep checking.
 	if bw.initialPID == -1 {
 		bw.initialPID = pid

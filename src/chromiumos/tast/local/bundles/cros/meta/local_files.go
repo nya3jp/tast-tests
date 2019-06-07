@@ -16,7 +16,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     LocalFiles,
 		Desc:     "Helper test that uses data and output files",
-		Contacts: []string{"derat@chromium.org"},
+		Contacts: []string{"tast-owners@google.com"},
 		// This test is executed by remote tests in the meta package.
 		Attr: []string{"disabled"},
 		Data: []string{

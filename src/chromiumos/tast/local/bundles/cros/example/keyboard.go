@@ -21,7 +21,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Keyboard,
 		Desc:         "Demonstrates injecting keyboard events",
-		Contacts:     []string{"derat@chromium.org", "tast-users@chromium.org"},
+		Contacts:     []string{"tast-owners@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
@@ -80,9 +80,6 @@ func Keyboard(ctx context.Context, s *testing.State) {
 	if err = ew.Type(ctx, inputText); err != nil {
 		s.Fatal("Failed to write events: ", err)
 	}
-	// TODO(derat): The text typed above seems to sometimes not show up; try to figure out why.
-	// Maybe there's a small delay within Blink between document.activeElement being updated and keyboard
-	// events actually being directed to the element.
 	if err := waitForStringExpr(valueExpr, inputText); err != nil {
 		// Stop test here for getting screenshot of this wrong state.
 		// TODO(yamaguchi): Change back to Error() once the flakiness is fixed.

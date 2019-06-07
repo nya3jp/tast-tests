@@ -21,7 +21,6 @@ func init() {
 		Desc: "Ensures that the session_manager won't start the same session twice",
 		Contacts: []string{
 			"mnissler@chromium.org", // session_manager owner
-			"derat@chromium.org",    // session_manager owner
 			"hidehiko@chromium.org", // Tast port author
 		},
 		SoftwareDeps: []string{"chrome"},

@@ -20,7 +20,6 @@ func init() {
 		Desc: "Checks iptables and ip6tables firewall rules",
 		Contacts: []string{
 			"jorgelo@chromium.org", // Security team
-			"derat@chromium.org",   // Tast port author
 			"chromeos-security@google.com",
 		},
 		SoftwareDeps: []string{"firewall"},

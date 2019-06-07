@@ -21,7 +21,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     PerfCallgraph,
 		Desc:     "Checks that callchains can be profiled using perf",
-		Contacts: []string{"derat@chromium.org", "tast-users@chromium.org"},
+		Contacts: []string{"chromeos-kernel@google.com"},
 		// Call stacks can't currently be unwound on ARM due to the
 		// Thumb and ARM ISAs using different registers for the frame pointer.
 		SoftwareDeps: []string{"amd64"},

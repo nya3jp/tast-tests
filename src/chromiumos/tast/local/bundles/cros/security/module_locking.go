@@ -23,7 +23,6 @@ func init() {
 		Desc: "Checks that kernel modules can't be loaded from outside the root filesystem",
 		Contacts: []string{
 			"jorgelo@chromium.org", // Security team
-			"derat@chromium.org",   // Tast port author
 			"chromeos-security@google.com",
 		},
 	})
@@ -34,7 +33,7 @@ func ModuleLocking(ctx context.Context, s *testing.State) {
 		sysctl        = "/proc/sys/kernel/chromiumos/module_locking"
 		module        = "test_module"                  // installed in test images
 		moduleFile    = "kernel/lib/test_module.ko"    // standard upstream location
-		altModuleFile = "kernel/kernel/test_module.ko" // TODO(derat): remove: https://crbug.com/908226
+		altModuleFile = "kernel/kernel/test_module.ko" // TODO(crbug.com/908226): remove
 	)
 
 	s.Log("Checking ", sysctl)

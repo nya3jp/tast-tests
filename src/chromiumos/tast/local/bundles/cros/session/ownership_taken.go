@@ -22,7 +22,6 @@ func init() {
 		Desc: "Sign in and ensure that ownership of the device is taken",
 		Contacts: []string{
 			"mnissler@chromium.org", // session_manager owner
-			"derat@chromium.org",    // session_manager owner
 			"hidehiko@chromium.org", // Tast port author
 		},
 		SoftwareDeps: []string{"chrome"},

@@ -16,7 +16,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     LocalVars,
 		Desc:     "Helper test that inspects a runtime variable",
-		Contacts: []string{"derat@chromium.org", "tast-users@chromium.org"},
+		Contacts: []string{"tast-owners@google.com"},
 		// This test is called by remote tests in the meta package.
 		Attr: []string{"disabled"},
 		Vars: []string{"meta.LocalVars.var"},
