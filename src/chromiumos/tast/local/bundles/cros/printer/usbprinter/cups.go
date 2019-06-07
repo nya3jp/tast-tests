@@ -15,37 +15,48 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// Name of the printer to use for configuration with CUPS.
-const printerName = "virtual-test"
+const lpstatMatcherFormat = `device for (?P<name>usb-[a-f0-9]+): ippusb://(?P<vid>%s)_(?P<pid>%s)/ipp/print`
 
-// cupsAddPrinter adds a new virtual USB printer using CUPS. If ppd is non-empty
-// it is used to configure a generic USB printer. Otherwise, the printer is
-// configured using IPPUSB.
-func cupsAddPrinter(ctx context.Context, devInfo DevInfo, ppd string) error {
-	var uri string
-	var lpadmin *testexec.Cmd
-	if ppd == "" {
-		uri = fmt.Sprintf("ippusb://%s_%s/ipp/print", devInfo.VID, devInfo.PID)
-		lpadmin = testexec.CommandContext(ctx, "lpadmin", "-p", printerName,
-			"-v", uri, "-m", "everywhere", "-E")
-	} else {
-		uri = fmt.Sprintf("usb://%s/%s", devInfo.VID, devInfo.PID)
-		lpadmin = testexec.CommandContext(ctx, "lpadmin", "-p", printerName,
-			"-v", uri, "-P", ppd, "-E")
+func getPrinterName(ctx context.Context, devInfo DevInfo) (name string, err error) {
+	lpstat := testexec.CommandContext(ctx, "lpstat", "-v")
+	testing.ContextLog(ctx, "Searching for printer name")
+	output, err := lpstat.Output()
+	if err != nil {
+		lpstat.DumpLog(ctx)
+		return "", err
 	}
 
-	testing.ContextLog(ctx, "Adding printer to CUPS using ", uri)
-	return lpadmin.Run()
+	lines := strings.Split(string(output), "\n")
+	lpstatMatcher := fmt.Sprintf(lpstatMatcherFormat, devInfo.VID, devInfo.PID)
+	r := regexp.MustCompile(lpstatMatcher)
+
+	for _, line := range lines {
+		testing.ContextLog(ctx, line)
+		matches := r.FindStringSubmatch(line)
+		subnames := r.SubexpNames()
+
+		if len(matches) != len(subnames) {
+			continue
+		}
+
+		for i := range matches {
+			if subnames[i] == "name" {
+				return matches[i], nil
+			}
+		}
+	}
+
+	return "", nil
 }
 
 // cupsRemovePrinter removes the printer that was configured for testing.
-func cupsRemovePrinter(ctx context.Context) error {
+func cupsRemovePrinter(ctx context.Context, printerName string) error {
 	return testexec.CommandContext(ctx, "lpadmin", "-x", printerName).Run()
 }
 
 // cupsStartPrintJob starts a new print job for the file toPrint. Returns the ID
 // of the newly created job if successful.
-func cupsStartPrintJob(ctx context.Context, toPrint string) (job string, err error) {
+func cupsStartPrintJob(ctx context.Context, printerName string, toPrint string) (job string, err error) {
 	lp := testexec.CommandContext(ctx, "lp", "-d", printerName, "--", toPrint)
 	testing.ContextLog(ctx, "Starting print job")
 	output, err := lp.Output()
@@ -66,7 +77,7 @@ func cupsStartPrintJob(ctx context.Context, toPrint string) (job string, err err
 
 // jobCompleted checks whether or not the given print job has been marked as
 // completed.
-func jobCompleted(ctx context.Context, job string) (bool, error) {
+func jobCompleted(ctx context.Context, printerName string, job string) (bool, error) {
 	lpstat := testexec.CommandContext(ctx, "lpstat", "-W", "completed", "-o",
 		printerName)
 
