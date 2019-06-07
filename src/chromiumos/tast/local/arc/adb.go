@@ -18,7 +18,7 @@ import (
 )
 
 const (
-	adbAddr = "100.115.92.2:5555"
+	adbAddr = "127.0.0.1:5550"
 
 	adbHome               = "/tmp/adb_home"
 	testPrivateKeyPath    = "/tmp/adb_home/test_key"
@@ -101,6 +101,24 @@ func setUpADBAuth(ctx context.Context) error {
 	return nil
 }
 
+// setUpADB sets up ADB without adding authentication method.
+func setUpADB(ctx context.Context) error {
+	// Set up the ADB home directory in Chrome OS side.
+	if err := os.MkdirAll(adbHome, 0755); err != nil {
+		return err
+	}
+
+	// We do not use adb kill-server since it is unreliable (crbug.com/855325).
+	testing.ContextLog(ctx, "Stopping existing adb server")
+	testexec.CommandContext(ctx, "killall", "--quiet", "--wait", "-KILL", "adb").Run()
+	testing.ContextLog(ctx, "Starting adb server")
+	if err := adbCommand(ctx, "start-server").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed starting ADB local server")
+	}
+
+	return nil
+}
+
 // connectADB connects to the remote ADB daemon.
 // After this function returns successfully, we can assume that ADB connection is ready.
 func connectADB(ctx context.Context) error {
@@ -110,8 +128,13 @@ func connectADB(ctx context.Context) error {
 		if err != nil {
 			return err
 		}
+
+		// Using 'already connected to ' instead of 'connected to ' because
+		// it is connecting to a proxy which might not have the connection to
+		// the guest. This means, as long as the proxy is online, we will always
+		// get 'connected to '. Therefore, we retry until the connection persists.
 		msg := strings.SplitN(string(out), "\n", 2)[0]
-		if !strings.HasPrefix(msg, "connected to ") {
+		if !strings.HasPrefix(msg, "already connected to ") {
 			return errors.Errorf("adb connect failed (adb output: %q)", msg)
 		}
 		return nil
