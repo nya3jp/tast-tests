@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c78cf93a_bf6f37a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/high_res_timers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-07T00:22:34Z",
+      "side": 1,
+      "message": "Yes, could you add both an eng name who owns this, and (probably) team owning this feature?\n\ncf)\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/testing#Test\n\n// Contacts is a list of email addresses of persons and groups who are familiar with the test.\n// At least one personal email address of an active committer should be specified so that we can\n// file bugs or ask for code reviews.",
+      "revId": "ad9c8cf2465b4c3a296fb96c2a3500b755102821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2442ce83_8799e414",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/high_res_timers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-07T00:22:34Z",
+      "side": 1,
+      "message": "nit/style: \"Failed\"\n\ncf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting\n\n\u003d\u003d\u003dquote\u003d\u003d\u003d:\nLog and error messages printed by tests via testing.State\u0027s Log, Logf, Error, Errorf, Fatal, or Fatalf methods, or via testing.ContextLog or testing.ContextLogf, should be capitalized phrases without any trailing punctuation that clearly describe what is about to be done or what happened:",
+      "range": {
+        "startLine": 36,
+        "startChar": 11,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "ad9c8cf2465b4c3a296fb96c2a3500b755102821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ccaed67_00f7e48e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/high_res_timers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-07T00:22:34Z",
+      "side": 1,
+      "message": "Ditto: Error",
+      "range": {
+        "startLine": 45,
+        "startChar": 13,
+        "endLine": 45,
+        "endChar": 18
+      },
+      "revId": "ad9c8cf2465b4c3a296fb96c2a3500b755102821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da468f3e_80f6f82f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/high_res_timers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-07T00:22:34Z",
+      "side": 1,
+      "message": "Ditto. Also, we often use \"got ...; want ...\" to print actual and expected value. How about following it for the consistency? E.g.;\n\n\"Unexpected timer resolution: got %d; want 1\"",
+      "range": {
+        "startLine": 48,
+        "startChar": 14,
+        "endLine": 48,
+        "endChar": 41
+      },
+      "revId": "ad9c8cf2465b4c3a296fb96c2a3500b755102821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
