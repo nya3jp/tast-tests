@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "dd4d5385_f982ca01",
+        "filename": "src/chromiumos/tast/local/network/check_network_hook.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-06-07T16:44:51Z",
+      "side": 1,
+      "message": "\u003e I didn\u0027t recommend to use coreutils approach,\n\u003e because in general we prefer writing go code, rather than shell code, in Tast for maintainability.\n\nAck.\n\n[ Although, shell code is basically the status code for remote tests... but that\u0027s another conversation ;) ]\n\n\u003e # BTW, -w option of flock is what you want, I think?\n\nIndeed, didn\u0027t pay attention to that one.\n\n\u003e There\u0027s no perfect solution IMHO, unfortunately.\n\u003e I wouldn\u0027t choose interruption by a signal, because it looks too complex.\n\nYeah, I didn\u0027t get into the details of how I would even signal a goroutine (thanks for the notes!), but that was my impression too.\n\n\u003e Remaining two options look reasonable to me.\n\u003e Personally, I\u0027d choose the current approach (and it\u0027s what other code likely do),\n\u003e but in this specific case coreutils approach looks also fine to me.\n\nAlright. I\u0027ll go with this for now, and if it turns out to be disastrous for some reason, we can always switch over.",
+      "parentUuid": "72d3d0c3_1bad4829",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 62
+      },
+      "revId": "f1e3e23ec0528f2bd94d70f401999c301aa36ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "befc85cb_c5154072",
         "filename": "src/chromiumos/tast/local/network/check_network_hook.go",
         "patchSetId": 6
