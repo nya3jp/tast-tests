@@ -32,8 +32,21 @@ const (
 	logcatName = "logcat.txt"
 )
 
+// guestMode describes the mode that ARC guest is running.
+type guestMode int
+
+const (
+	none guestMode = iota
+	container
+	vm
+)
+
 // locked is set to true while a precondition is active to prevent tests from calling New or Close.
 var locked = false
+
+// TODO(b/134144418): Consolidate ARC and ARCVM diverged code once adb issues are resolved.
+// guest is the ARC guest Chrome OS currently running.
+var guest = none
 
 // Supported returns true if ARC is supported on the board.
 //
@@ -96,7 +109,8 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		return nil, err
 	}
 
-	if err := ensureARCEnabled(); err != nil {
+	var err error
+	if guest, err = arcGuest(); err != nil {
 		return nil, err
 	}
 
@@ -125,10 +139,12 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	}
 	arc.logcatCmd = logcatCmd
 
-	// Wait for internal networking to get ready. This gives better error messages
-	// when networking is broken, rather than obscure "failed connecting to ADB" error.
-	if err := waitNetworking(ctx); err != nil {
-		return nil, diagnose(logcatPath, errors.Wrap(err, "Android network unreachable"))
+	if guest == container {
+		// Wait for internal networking to get ready. This gives better error messages
+		// when networking is broken, rather than obscure "failed connecting to ADB" error.
+		if err := waitNetworking(ctx); err != nil {
+			return nil, diagnose(logcatPath, errors.Wrap(err, "Android network unreachable"))
+		}
 	}
 
 	// This property is set by the Android system server just before LOCKED_BOOT_COMPLETED is broadcast.
@@ -137,12 +153,17 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		return nil, diagnose(logcatPath, errors.Wrapf(err, "%s not set", androidBootProp))
 	}
 
-	// Android container is up. Set up ADB auth in parallel to Android boot since
-	// ADB local server takes a few seconds to start up.
-	ch := make(chan error, 1)
-	go func() {
-		ch <- setUpADBAuth(ctx)
-	}()
+	var ch chan error
+	if guest == container {
+		// TODO(jasongustaman): use errgroup here.
+		// Android container is up. Set up ADB auth in parallel to Android boot since
+		// ADB local server takes a few seconds to start up.
+		testing.ContextLog(ctx, "Setting up ADB auth")
+		ch = make(chan error, 1)
+		go func() {
+			ch <- setUpADBAuth(ctx)
+		}()
+	}
 
 	// This property is set by ArcAppLauncher when it receives BOOT_COMPLETED.
 	const arcBootProp = "ro.arc.boot_completed"
@@ -150,12 +171,16 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		return nil, diagnose(logcatPath, errors.Wrapf(err, "%s not set", arcBootProp))
 	}
 
-	// Android has booted. Connect to ADB.
-	if err := <-ch; err != nil {
-		return nil, diagnose(logcatPath, errors.Wrap(err, "failed setting up ADB auth"))
-	}
-	if err := connectADB(ctx); err != nil {
-		return nil, diagnose(logcatPath, errors.Wrap(err, "failed connecting to ADB"))
+	if guest == container {
+		// Android has booted.
+		if err := <-ch; err != nil {
+			return nil, diagnose(logcatPath, errors.Wrap(err, "failed setting up ADB auth"))
+		}
+
+		// Connect to ADB.
+		if err := connectADB(ctx); err != nil {
+			return nil, diagnose(logcatPath, errors.Wrap(err, "failed connecting to ADB"))
+		}
 	}
 
 	toClose = nil
@@ -231,19 +256,28 @@ func (a *ARC) setLogcatFile(p string) error {
 	return createErr
 }
 
-// ensureARCEnabled makes sure ARC is enabled by a command line flag to Chrome.
-func ensureARCEnabled() error {
+// arcGuest retrieves the current ARC guest Chrome OS is running (container / vm).
+// It returns an error if nothing is running.
+func arcGuest() (guestMode, error) {
 	args, err := getChromeArgs()
 	if err != nil {
-		return errors.Wrap(err, "failed getting Chrome args")
+		return none, errors.Wrap(err, "failed getting Chrome args")
 	}
 
+	// Currently, flags that check for ARC is also available on ARCVM.
+	// Therefore, ARCVM check must be done first.
 	for _, a := range args {
-		if a == "--arc-start-mode=always-start" || a == "--arc-start-mode=always-start-with-no-play-store" {
-			return nil
+		if a == "--enable-arcvm" {
+			return vm, nil
 		}
 	}
-	return errors.New("ARC is not enabled; pass chrome.ARCEnabled to chrome.New")
+	// Check if ARC is running.
+	for _, a := range args {
+		if a == "--arc-start-mode=always-start" || a == "--arc-start-mode=always-start-with-no-play-store" {
+			return container, nil
+		}
+	}
+	return none, errors.New("ARC is not enabled; pass chrome.ARCEnabled to chrome.New")
 }
 
 // getChromeArgs returns command line arguments of the Chrome browser process.
@@ -270,13 +304,26 @@ func WaitAndroidInit(ctx context.Context) error {
 	ctx, cancel := context.WithTimeout(ctx, BootTimeout)
 	defer cancel()
 
-	// service.adb.tcp.port is an arbitrary property set by Android init very
-	// early in boot process. Wait for it to ensure Android init process started.
-	// Note that existence of this property has nothing to do with the status of
-	// Android adb daemon.
-	const prop = "service.adb.tcp.port"
-	if err := waitProp(ctx, prop, "5555", reportTiming); err != nil {
-		return errors.Wrapf(err, "Android container did not come up: %s not set", prop)
+	if guest == container {
+		// service.adb.tcp.port is an arbitrary property set by Android init very
+		// early in boot process. Wait for it to ensure Android init process started.
+		// Note that existence of this property has nothing to do with the status of
+		// Android adb daemon.
+		const prop = "service.adb.tcp.port"
+		if err := waitProp(ctx, prop, "5555", reportTiming); err != nil {
+			return errors.Wrapf(err, "Android container did not come up: %s not set", prop)
+		}
+	} else {
+		// When running ARCVM, 'android-sh' runs via ADB. So, the first thing to do is set up ADB.
+		// Android should be initialized once a working connection to ADB is made.
+		testing.ContextLog(ctx, "Setting up ADB")
+		if err := setUpADB(ctx); err != nil {
+			return errors.Wrap(err, "failed setting up ADB")
+		}
+		// Connect to ADB.
+		if err := connectADB(ctx); err != nil {
+			return errors.Wrap(err, "failed connecting to ADB")
+		}
 	}
 	return nil
 }
