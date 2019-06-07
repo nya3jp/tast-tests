@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "91b23c2c_59beff8c",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-07T01:18:02Z",
+      "side": 0,
+      "message": "thanks, done! i was trying to avoid unowned TODOs since the platform2 pre-upload hooks yelled at me about them. :-)",
+      "parentUuid": "86a1b9be_4378670a",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 174,
+        "endChar": 64
+      },
+      "revId": "3662e38e3bdf05de6e815577b1ef756bef95c2e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99a0f27b_298e4100",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/userfiles/userfiles.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "3662e38e3bdf05de6e815577b1ef756bef95c2e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02b83c8e_3ac3d59c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/userfiles/userfiles.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-07T01:18:02Z",
+      "side": 0,
+      "message": "it may be. and hmm, i apparently deleted the autotest test in https://chromium-review.googlesource.com/1362612 without completing this. :-(\n\ni\u0027ve filed https://crbug.com/971919.",
+      "parentUuid": "99a0f27b_298e4100",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 78
+      },
+      "revId": "3662e38e3bdf05de6e815577b1ef756bef95c2e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
