@@ -24,12 +24,30 @@ func init() {
 }
 
 func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
-	systemCPUFilter := func(p string, fi os.FileInfo) (skipFile, skipSubdir selinux.FilterResult) {
-		mode := fi.Mode()
-		if mode.IsRegular() && ((mode.Perm() & (syscall.S_IWUSR | syscall.S_IWGRP | syscall.S_IWOTH)) > 0) {
-			return selinux.Skip, selinux.Check
+	systemCPUFilter := func(writableFilter bool) selinux.FileLabelCheckFilter {
+		filter := func(p string, fi os.FileInfo) (skipFile, skipSubdir selinux.FilterResult) {
+			mode := fi.Mode()
+			// Domain has search to both sysfs and sysfs_devices_system_cpu.
+			if mode.IsDir() {
+				return selinux.Skip, selinux.Check
+			}
+
+			// Writable files
+			if mode.IsRegular() && ((mode.Perm() & (syscall.S_IWUSR | syscall.S_IWGRP | syscall.S_IWOTH)) > 0) {
+				if writableFilter {
+					return selinux.Check, selinux.Check
+				}
+				return selinux.Skip, selinux.Check
+			}
+
+			// Readonly files
+			if writableFilter {
+				return selinux.Skip, selinux.Check
+			}
+			return selinux.Check, selinux.Check
+
 		}
-		return selinux.Check, selinux.Check
+		return filter
 	}
 
 	// Files to be tested.
@@ -87,8 +105,8 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{"/sbin/setfiles", "cros_restorecon_exec", false, nil},
 		{"/sbin/udevd", "cros_udevd_exec", false, nil},
 		{"/sbin/upstart-socket-bridge", "upstart_socket_bridge_exec", false, nil},
-		{"/sys/devices/system/cpu", "sysfs", true, selinux.InvertFilterSkipFile(systemCPUFilter)},
-		{"/sys/devices/system/cpu", "sysfs_devices_system_cpu", true, systemCPUFilter},
+		{"/sys/devices/system/cpu", "sysfs", true, systemCPUFilter(true)},
+		{"/sys/devices/system/cpu", "sysfs_devices_system_cpu", true, systemCPUFilter(false)},
 		{"/sys/fs/cgroup", "cgroup", true, selinux.IgnorePathButNotContents("/sys/fs/cgroup")},
 		{"/sys/fs/cgroup", "tmpfs", false, nil},
 		{"/sys/fs/pstore", "pstorefs", false, nil},
