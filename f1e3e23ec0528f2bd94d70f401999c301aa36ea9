@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "72d3d0c3_1bad4829",
+        "filename": "src/chromiumos/tast/local/network/check_network_hook.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-07T15:32:36Z",
+      "side": 1,
+      "message": "\u003e Hmm, so I\u0027m back to my earlier concerns, and I\u0027ve now understood the flock() syscall a little better I think: flock() will *not* be unblocked by either closing the fd *or* calling LOCK_UN from another context (we can\u0027t forcibly unlock on behalf of another process that\u0027s holding the lock). I believe the *only* way to properly unblock this line (and have correct timeout cleanup) is to interrupt the syscall.\n\nIn the extreme end, it is necessary to use signal to interrupt the Flock, and that\u0027s probably *the* reliable way.\nThe implementation would be more complex, though, because goroutine and thread is different concept,\n- so it needs to bind the goroutine to a thread\n- the bound goroutine needs to tell the main thread its TID.\n- At the end of the main, it needs to kill() the goroutine thread without race condition,\n  but it may be a bit more complicated because it may be during the Flock call or maybe it\u0027s\n  completed.\n- When Flock is completed, it is expected to be unbound from the native thread.\n  So, the timing of kill() invocation is again more complicated, because without its care\n  the sent signal may be deliver to another goroutine.\netc.\n\nMy assumption was, Flock will be unblocked at some time.\nThen all teardown would work properly with the current approach.\nIt may not, e.g., if the system keeps the lock infinitely unexpectedly.\nThen, as you said, it\u0027d keep running until the test ended...\n\nI didn\u0027t recommend to use coreutils approach,\nbecause in general we prefer writing go code, rather than shell code, in Tast for maintainability.\n# BTW, -w option of flock is what you want, I think?\n\nThere\u0027s no perfect solution IMHO, unfortunately.\nI wouldn\u0027t choose interruption by a signal, because it looks too complex.\nRemaining two options look reasonable to me.\nPersonally, I\u0027d choose the current approach (and it\u0027s what other code likely do),\nbut in this specific case coreutils approach looks also fine to me.",
+      "parentUuid": "8f9c18ed_09b33f5f",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 62
+      },
+      "revId": "f1e3e23ec0528f2bd94d70f401999c301aa36ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "befc85cb_c5154072",
         "filename": "src/chromiumos/tast/local/network/check_network_hook.go",
         "patchSetId": 6
