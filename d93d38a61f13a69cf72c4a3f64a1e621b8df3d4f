@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d635ecff_c169744f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-06-07T04:51:46Z",
+      "side": 1,
+      "message": "A couple of reasons:\n1. I didn\u0027t want to affect an existing test if this was flaky.\n2. Vast majority of our usage is on US English, so we wanted dedicated tests for it.\n\nI don\u0027t feel strongly about this; I wouldn\u0027t mind merging VirtualKeyboardSuggestions and VirtualKeyboardOtherLanguages in the future.",
+      "parentUuid": "d7ce0a76_8d4e8699",
+      "range": {
+        "startLine": 21,
+        "startChar": 16,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "d93d38a61f13a69cf72c4a3f64a1e621b8df3d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df96266e_ca0fb1a7",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "d93d38a61f13a69cf72c4a3f64a1e621b8df3d4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb973d46_a3ce0d5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-06-07T04:51:46Z",
+      "side": 1,
+      "message": "Sure, sounds good.",
+      "parentUuid": "df96266e_ca0fb1a7",
+      "revId": "d93d38a61f13a69cf72c4a3f64a1e621b8df3d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "a7a3ee0c_1bd00ba3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-06-07T04:51:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39778135_91053c58",
+      "range": {
+        "startLine": 25,
+        "startChar": 35,
+        "endLine": 25,
+        "endChar": 49
+      },
+      "revId": "d93d38a61f13a69cf72c4a3f64a1e621b8df3d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0c473be_b803370e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
         "patchSetId": 2
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "5c6443fc_9431388d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-06-07T04:51:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0c473be_b803370e",
+      "range": {
+        "startLine": 78,
+        "startChar": 11,
+        "endLine": 78,
+        "endChar": 60
+      },
+      "revId": "d93d38a61f13a69cf72c4a3f64a1e621b8df3d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d901e9db_68ee8a7a",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
         "patchSetId": 2
@@ -99,6 +189,30 @@
       "writtenOn": "2019-06-06T12:41:20Z",
       "side": 1,
       "message": "How about adding test name? In some languages, there\u0027re several variations to generate same suggestion. E.g., in Japanese, both \"nihon\" and \"nippon\" generate \"日本\" (Japan), so the method name and expectation looks not unique enough.",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 87
+      },
+      "revId": "d93d38a61f13a69cf72c4a3f64a1e621b8df3d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e0ca8d5_6b043446",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-06-07T04:51:46Z",
+      "side": 1,
+      "message": "Hmm yeah I didn\u0027t think about that. TBH, my plan for this test was to just sanity check each input method (check if our UI integrates correctly with backend language model), so an input method should only appear once in the list. Exhaustive testing of the suggestions would be done at a unit test level of the language models.\n\nI don\u0027t feel too strongly about this though.",
+      "parentUuid": "d901e9db_68ee8a7a",
       "range": {
         "startLine": 96,
         "startChar": 2,
@@ -128,6 +242,24 @@
     },
     {
       "key": {
+        "uuid": "3c004bf8_bfb5568b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-06-07T04:51:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef2b34f4_aac04fa9",
+      "revId": "d93d38a61f13a69cf72c4a3f64a1e621b8df3d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3af35cf3_968e0751",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
         "patchSetId": 2
@@ -145,6 +277,24 @@
     },
     {
       "key": {
+        "uuid": "ae7760d0_54a3bd54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-06-07T04:51:46Z",
+      "side": 1,
+      "message": "Ooh, thanks, that looks better.",
+      "parentUuid": "3af35cf3_968e0751",
+      "revId": "d93d38a61f13a69cf72c4a3f64a1e621b8df3d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcfb1633_055b4dc7",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
         "patchSetId": 2
@@ -159,6 +309,24 @@
       "revId": "d93d38a61f13a69cf72c4a3f64a1e621b8df3d4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53cc6837_bed42d19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-06-07T04:51:46Z",
+      "side": 1,
+      "message": "Ah okay, great to hear that this is being automated :)",
+      "parentUuid": "bcfb1633_055b4dc7",
+      "revId": "d93d38a61f13a69cf72c4a3f64a1e621b8df3d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
