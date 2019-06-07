@@ -18,7 +18,6 @@ func init() {
 		Desc: "Checks TCP listeners on ARC systems",
 		Contacts: []string{
 			"jorgelo@chromium.org", // Security team
-			"derat@chromium.org",   // Tast port author
 			"chromeos-security@google.com",
 		},
 		SoftwareDeps: []string{"chrome", "android"},

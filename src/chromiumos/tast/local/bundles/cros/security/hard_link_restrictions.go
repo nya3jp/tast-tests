@@ -23,7 +23,6 @@ func init() {
 		Desc: "Verifies enforcement of hard link permissions",
 		Contacts: []string{
 			"jorgelo@chromium.org", // Security team
-			"derat@chromium.org",   // Tast port author
 			"chromeos-security@google.com",
 		},
 	})

@@ -23,7 +23,6 @@ func init() {
 		Desc: "Checks permissions of logging-related files",
 		Contacts: []string{
 			"jorgelo@chromium.org", // Security team
-			"derat@chromium.org",   // Tast port author
 			"chromeos-security@google.com",
 		},
 	})

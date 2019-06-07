@@ -19,7 +19,6 @@ func init() {
 		Desc: "Checks TCP listeners on non-ARC systems",
 		Contacts: []string{
 			"jorgelo@chromium.org", // Security team
-			"derat@chromium.org",   // Tast port author
 			"chromeos-security@google.com",
 		},
 		SoftwareDeps: []string{"chrome", "no_android"},

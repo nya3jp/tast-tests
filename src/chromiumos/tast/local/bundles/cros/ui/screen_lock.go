@@ -19,7 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ScreenLock,
 		Desc:         "Checks that screen-locking works in Chrome",
-		Contacts:     []string{"derat@chromium.org"},
+		Contacts:     []string{"chromeos-ui@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
 	})

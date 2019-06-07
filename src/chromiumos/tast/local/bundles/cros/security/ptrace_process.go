@@ -31,7 +31,6 @@ func init() {
 		Desc: "Checks that the kernel restricts ptrace between processes",
 		Contacts: []string{
 			"jorgelo@chromium.org", // Security team
-			"derat@chromium.org",   // Tast port author
 			"chromeos-security@google.com",
 		},
 	})
@@ -39,7 +38,6 @@ func init() {
 
 func PtraceProcess(ctx context.Context, s *testing.State) {
 	const (
-		// TODO(derat): Consider moving the base helper path to a shared constant somewhere.
 		sleeperPath = "/usr/local/libexec/tast/helpers/local/cros/security.PtraceProcess.sleeper"
 		sleepTime   = 120 * time.Second
 

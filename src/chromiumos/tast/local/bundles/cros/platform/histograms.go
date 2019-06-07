@@ -19,7 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Histograms,
 		Desc:         "Checks that libmetrics reports histograms to Chrome",
-		Contacts:     []string{"derat@chromium.org"},
+		Contacts:     []string{"chromeos-systems@google.com"},
 		SoftwareDeps: []string{"chrome"},
 	})
 }

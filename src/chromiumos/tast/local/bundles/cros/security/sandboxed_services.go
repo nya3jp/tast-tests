@@ -31,7 +31,6 @@ func init() {
 		Desc: "Verify running processes' sandboxing status against a baseline",
 		Contacts: []string{
 			"jorgelo@chromium.org", // Security team
-			"derat@chromium.org",   // Tast port author
 			"chromeos-security@google.com",
 		},
 	})
@@ -203,9 +202,10 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 	// Per TASK_COMM_LEN, the kernel only uses 16 null-terminated bytes to hold process names
 	// (which we later read from /proc/<pid>/status), so we shorten names in the baseline and exclusion list.
 	// See https://stackoverflow.com/questions/23534263 for more discussion.
-	// TODO(derat): Find a better way of uniquely identifying processes. Using "Name:" from /status
-	// matches what the Autotest test was doing, but it can lead to unexpected collisions. /exe is undesirable
-	// since executables like /usr/bin/coreutils implement many commands. /cmdline may be modified by the process.
+	//
+	// Using "Name:" from /status matches what the Autotest test was doing, but it can lead to unexpected collisions.
+	// /exe is undesirable since executables like /usr/bin/coreutils implement many commands.
+	// /cmdline may be modified by the process.
 	const maxProcNameLen = 15
 	truncateProcName := func(s string) string {
 		if len(s) <= maxProcNameLen {

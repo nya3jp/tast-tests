@@ -20,7 +20,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeExtension,
 		Desc:         "Demonstrates loading a custom Chrome extension",
-		Contacts:     []string{"derat@chromium.org", "tast-users@chromium.org"},
+		Contacts:     []string{"chromeos-ui@google.com"},
 		Data:         []string{"chrome_extension_manifest.json"},
 		SoftwareDeps: []string{"chrome"},
 	})
