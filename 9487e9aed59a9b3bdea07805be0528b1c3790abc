@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "9cbc0a11_09e9dc58",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-06-07T20:07:39Z",
+      "side": 1,
+      "message": "Sounds good! Done.",
+      "parentUuid": "cedc26e4_c3a6f656",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 21
+      },
+      "revId": "9487e9aed59a9b3bdea07805be0528b1c3790abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4a8825e_65840e48",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 3
@@ -94,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "a47157f5_a0b68a26",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-06-07T20:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4a8825e_65840e48",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 0
+      },
+      "revId": "9487e9aed59a9b3bdea07805be0528b1c3790abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bec3c7f_507a681f",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 3
@@ -108,6 +156,24 @@
       "revId": "9487e9aed59a9b3bdea07805be0528b1c3790abc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8de821d9_8bce0e49",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-06-07T20:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bec3c7f_507a681f",
+      "revId": "9487e9aed59a9b3bdea07805be0528b1c3790abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "63bd2e2b_56e170aa",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-06-07T20:07:39Z",
+      "side": 1,
+      "message": "I didn\u0027t want to edit the old code. But now I think about it, it\u0027s better to change the function. Edited.",
+      "parentUuid": "40e70464_ba0975cb",
+      "range": {
+        "startLine": 309,
+        "startChar": 3,
+        "endLine": 309,
+        "endChar": 15
+      },
+      "revId": "9487e9aed59a9b3bdea07805be0528b1c3790abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03d626c5_df6380e2",
         "filename": "src/chromiumos/tast/local/arc/commands.go",
         "patchSetId": 3
@@ -148,6 +238,24 @@
       "revId": "9487e9aed59a9b3bdea07805be0528b1c3790abc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b038042_593cfe78",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-06-07T20:07:39Z",
+      "side": 1,
+      "message": "Changed the code, also added a comment! Done.",
+      "parentUuid": "03d626c5_df6380e2",
+      "revId": "9487e9aed59a9b3bdea07805be0528b1c3790abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
