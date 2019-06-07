@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "949446c0_1786effe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/memtester_slow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-07T04:25:15Z",
+      "side": 1,
+      "message": "optional: maybe TODO(tast-owners):",
+      "revId": "aaccc9510cbe2f880deb3514f10fa2d0b9f0ff87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
