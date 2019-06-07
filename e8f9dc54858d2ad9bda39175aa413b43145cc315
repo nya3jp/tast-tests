@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3a5c279f_3fb41613",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-07T16:42:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5890734c_88374a79",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 23
+      },
+      "revId": "e8f9dc54858d2ad9bda39175aa413b43145cc315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db679f00_6ff17278",
         "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "e8f9dc54858d2ad9bda39175aa413b43145cc315",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddd25741_330c560d",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-07T16:42:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db679f00_6ff17278",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 6
+      },
+      "revId": "e8f9dc54858d2ad9bda39175aa413b43145cc315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
