@@ -20,14 +20,12 @@ func init() {
 		Desc: "Checks that the kernel restricts ptrace between threads",
 		Contacts: []string{
 			"jorgelo@chromium.org", // Security team
-			"derat@chromium.org",   // Tast port author
 			"chromeos-security@google.com",
 		},
 	})
 }
 
 func PtraceThread(ctx context.Context, s *testing.State) {
-	// TODO(derat): Consider moving the base helper path to a shared constant somewhere.
 	const threadPrctlPath = "/usr/local/libexec/tast/helpers/local/cros/security.PtraceThread.thread-prctl"
 
 	// See the thread-prctl executable installed by the security_tests package for details.

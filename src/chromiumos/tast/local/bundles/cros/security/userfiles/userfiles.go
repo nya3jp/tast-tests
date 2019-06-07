@@ -69,6 +69,4 @@ func Check(ctx context.Context, s *testing.State, user string) {
 		chk.NewPattern(chk.Path("Downloads"), isChronosUID, isChronosAccessGID, chk.Mode(0710), chk.SkipChildren()),
 		chk.NewPattern(chk.Root(), isChronosUID, isChronosAccessGID, chk.Mode(0710)),
 	})
-
-	// TODO(derat): Add additional vault checks from security_ProfilePermissions.
 }

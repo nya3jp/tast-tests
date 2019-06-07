@@ -209,8 +209,6 @@ func ensureTPMInitialized(ctx context.Context, log func(string)) error {
 	ctx, cancel := context.WithTimeout(ctx, 2*time.Minute)
 	defer cancel()
 
-	// TODO(derat): Consider making D-Bus calls to cryptohomed after protobufs are generated
-	// for Go: https://crbug.com/908239
 	tpmStatus := func(ctx context.Context) (enabled, initialized bool, err error) {
 		out, err := testexec.CommandContext(ctx, "cryptohome", "--action=tpm_more_status").Output()
 		if err != nil {

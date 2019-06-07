@@ -15,7 +15,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Reboot,
 		Desc:         "Verifies that system comes back after rebooting",
-		Contacts:     []string{"derat@chromium.org", "tast-users@chromium.org"},
+		Contacts:     []string{"tast-owners@google.com"},
 		SoftwareDeps: []string{"reboot"},
 	})
 }

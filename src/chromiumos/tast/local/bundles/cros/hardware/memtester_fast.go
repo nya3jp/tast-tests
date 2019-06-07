@@ -17,7 +17,6 @@ func init() {
 		Desc: "Runs one iteration of memtester using 10 MiB of memory to find memory subsystem faults",
 		Contacts: []string{
 			"puthik@chromium.org", // Original Autotest author
-			"derat@chromium.org",  // Tast port author
 			"cros-partner-avl@google.com",
 		},
 	})

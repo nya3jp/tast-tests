@@ -24,7 +24,6 @@ func init() {
 		Desc: "Checks ownership and permissions of files on the stateful partition",
 		Contacts: []string{
 			"jorgelo@chromium.org", // Security team
-			"derat@chromium.org",   // Tast port author
 			"chromeos-security@google.com",
 		},
 	})
@@ -177,7 +176,7 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 
 	if _, err := user.Lookup("android-root"); err == nil {
 		prependPatterns(
-			// TODO(derat): Check for a specific user:group and mode after https://crbug.com/905719 is resolved.
+			// TODO(crbug.com/905719): Check for a specific user:group and mode.
 			chk.NewPattern(chk.Path("encrypted/var/lib/oemcrypto"), users("arc-oemcrypto"), groups("arc-oemcrypto"), chk.Mode(0700), chk.SkipChildren()),
 			chk.NewPattern(chk.Path("unencrypted/apkcache"), chk.Mode(0700), chk.SkipChildren()),
 			chk.NewPattern(chk.Tree("unencrypted/art-data"), users("android-root", "root"), chk.NotMode(022)))

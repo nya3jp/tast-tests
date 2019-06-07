@@ -18,7 +18,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     ListTests,
 		Desc:     "Verifies that the tast command can list tests",
-		Contacts: []string{"derat@chromium.org", "tast-users@chromium.org"},
+		Contacts: []string{"tast-owners@google.com"},
 	})
 }
 

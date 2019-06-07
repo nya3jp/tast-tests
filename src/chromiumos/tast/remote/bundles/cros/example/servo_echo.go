@@ -16,7 +16,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     ServoEcho,
 		Desc:     "Demonstrates running a test using Servo",
-		Contacts: []string{"jeffcarp@chromium.org", "derat@chromium.org", "tast-users@chromium.org"},
+		Contacts: []string{"tast-owners@google.com"},
 		Attr:     []string{"informational"},
 		Vars:     []string{"servo"},
 	})

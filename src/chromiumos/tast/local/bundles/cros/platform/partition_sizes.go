@@ -22,7 +22,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     PartitionSizes,
 		Desc:     "Checks rootfs partition sizes",
-		Contacts: []string{"derat@chromium.org", "tast-users@chromium.org"},
+		Contacts: []string{"chromeos-systems@google.com"},
 	})
 }
 

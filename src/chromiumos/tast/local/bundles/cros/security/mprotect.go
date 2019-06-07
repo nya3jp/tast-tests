@@ -21,7 +21,6 @@ func init() {
 		Desc: "Verifies that mprotect with PROT_EXEC works on noexec mounts",
 		Contacts: []string{
 			"jorgelo@chromium.org", // Security team
-			"derat@chromium.org",   // Tast port author
 			"chromeos-security@google.com",
 		},
 	})

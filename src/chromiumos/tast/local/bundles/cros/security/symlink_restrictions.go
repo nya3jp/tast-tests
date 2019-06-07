@@ -25,7 +25,6 @@ func init() {
 		Desc: "Verifies that unsafe symlinks are blocked",
 		Contacts: []string{
 			"jorgelo@chromium.org", // Security team
-			"derat@chromium.org",   // Tast port author
 			"chromeos-security@google.com",
 		},
 	})

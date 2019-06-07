@@ -36,7 +36,6 @@ import (
 const (
 	// LoginTimeout is the maximum amount of time that Chrome is expected to take to perform login.
 	// Tests that call New with the default fake login mode should declare a timeout that's at least this long.
-	// TODO(derat): Add a unit test that enforces this, maybe.
 	LoginTimeout = 60 * time.Second
 
 	chromeUser        = "chronos"                          // Chrome Unix username
@@ -251,7 +250,7 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		return nil, err
 	}
 
-	// TODO(derat): Remove this if/when https://crbug.com/358427 is fixed.
+	// This works around https://crbug.com/358427.
 	if c.loginMode == gaiaLogin {
 		var err error
 		if c.normalizedUser, err = session.NormalizeEmail(c.user); err != nil {
@@ -840,13 +839,11 @@ func (c *Chrome) logIn(ctx context.Context) error {
 // This function is heavily based on NavigateGaiaLogin() in Catapult's
 // telemetry/telemetry/internal/backends/chrome/oobe.py.
 func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
-	// TODO(derat): Remove this? https://crbug.com/804216
 	if err := oobeConn.Exec(ctx, "Oobe.skipToLoginForTesting()"); err != nil {
 		return err
 	}
 
 	isGAIAWebview := func(t *target.Info) bool {
-		// TODO(derat): Consider performing more extensive checks of the page content.
 		return t.Type == "webview" && strings.HasPrefix(t.URL, "https://accounts.google.com/")
 	}
 
