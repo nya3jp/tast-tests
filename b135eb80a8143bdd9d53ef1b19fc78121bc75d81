@@ -25,6 +25,53 @@
     },
     {
       "key": {
+        "uuid": "12e80b7d_def5e79e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-07T02:08:54Z",
+      "side": 1,
+      "message": "Both AppSanity and SimpleApp sounds good. \"arc.App\" might be a bit too simple and people might not be able to know what it is for.",
+      "parentUuid": "6540929f_7f7e217f",
+      "range": {
+        "startLine": 16,
+        "startChar": 16,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "b135eb80a8143bdd9d53ef1b19fc78121bc75d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64a03cda_53f774f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-07T02:08:54Z",
+      "side": 1,
+      "message": "Is there a repository for the source code? We want to be able to rebuild the package when necessary.",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 81
+      },
+      "revId": "b135eb80a8143bdd9d53ef1b19fc78121bc75d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb71d938_6fb43812",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app.go",
         "patchSetId": 9
@@ -36,6 +83,24 @@
       "writtenOn": "2019-06-06T19:14:01Z",
       "side": 1,
       "message": "note mostly to self: i think that the arc.Booted precondition will uninstall the app when the test is done, right? if so, this seems fine",
+      "revId": "b135eb80a8143bdd9d53ef1b19fc78121bc75d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73f4280a_16d22a79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-07T02:08:54Z",
+      "side": 1,
+      "message": "Yes, I remember you wrote arc.Booted in such way :)",
+      "parentUuid": "bb71d938_6fb43812",
       "revId": "b135eb80a8143bdd9d53ef1b19fc78121bc75d81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -58,6 +123,29 @@
         "startChar": 13,
         "endLine": 40,
         "endChar": 28
+      },
+      "revId": "b135eb80a8143bdd9d53ef1b19fc78121bc75d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee1b44e4_e44f3de7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-07T02:08:54Z",
+      "side": 1,
+      "message": "I guess we need to poll this until the window appears. am start -W (invoked by act.Start) should wait for the app to launch, but it\u0027s not clear from the doc what \"launch\" means, and I doubt it considers app windows.",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 38
       },
       "revId": "b135eb80a8143bdd9d53ef1b19fc78121bc75d81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
