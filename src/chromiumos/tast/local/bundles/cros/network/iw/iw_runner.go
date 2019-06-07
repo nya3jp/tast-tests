@@ -22,6 +22,35 @@ const (
 	IW_TIME_COMMAND_FORMAT       = "(time -p %s) 2>&1"
 	IW_TIME_COMMAND_OUTPUT_START = "real"
 )
+const (
+	HT20 = "HT20"
+	HT40_ABOVE = "HT40+"
+	HT40_BELOW = "HT40-"
+)
+const (
+	SECURITY_OPEN = "open"
+	SECURITY_WEP = "wep"
+	SECURITY_WPA = "wpa"
+	SECURITY_WPA2 = "wpa2"
+)
+
+//Lookups
+const (
+	HT_TABLE = map[string]string {
+		"no secondary": HT20,
+		"above": HT40_ABOVE,
+		"below": HT40_BELOW
+	}
+)
+
+type IwBss struct {
+	Bss       string
+	Frequency int
+	Ssid      string
+	Security  string
+	Ht        bool
+	Signal    float
+}
 
 /*
 Parses link or station dump output for link key value pairs.
@@ -142,6 +171,59 @@ func (iwr IwRunner) clientCommandExec(shellCommand string) ([]byte, error) {
 	return out, err
 }
 
+func (iwr IwRunner) parseScanResults(output []byte) []IwBss {
+	var bssList = []IwBss{}
+	mainBss := IwBss{}
+	supportedSecurities := []string{}
+	for _, line := range strings.Split(string(output), "\n") {
+		line = line.Trim()
+		r :=  regexp.MustCompile(`BSS ([0-9a-f:]+)`)
+		if r.MatchString(line) {
+			if mainBss.Bss != "" {
+				mainBss.Security = determineSecurity(supportedSecurities)
+				append(bssList, IwBss{mainBss.Bss, mainBss.Frequency, mainBss.Security, mainBss.Ht, mainBss.Signal})
+				mainBss = IsBss{}
+				supportedSecurities = nil
+			}
+		}
+		if strings.HasPrefix(line, "freq:") {
+			mainBss.Frequency = int(strings.Split(line, " ")[1])
+		}
+		if strings.HasPrefix(line, "signal:") {
+			mainBss.Signal = float(strings.Split(line, " ")[1])
+		}
+		if strings.HasPrefix(line, "SSID:") {
+			mainBss.SSID = int(strings.SplitN(line, ": ", 1)[1])
+		}
+		if strings.HasPrefix(line, "* secondary channel offset") {
+			mainBss.Ht = HT_TABLE[strings.Split(line, ":")[1].Trim()]
+		}
+		if strings.HasPrefix(line, "WPA") {
+			append(supportedSecurities, "WPA")
+		}
+		if strings.HasPrefix(line, "RSN") {
+			append(supportedSecurities, "WPA2")
+		}	
+	}
+	mainBss.Security = determineSecurity(supportedSecurities) //TODO
+	append(bssList, mainBss)
+	return bssList
+}
+
+func (iwr IwRunner) parseScanTime(output []byte) float {
+	outputLines := strings.Split(string(output), "\n")
+	for lineNum, line := range output_lines {
+		line = line.Trim()
+		if strings.HasPrefix(IW_TIME_COMMAND_OUTPUT_START) && 
+							strings.HasPrefix(outputLines[lineNum + 1], "user") &&
+							strings.HasPrefix(outputLines[line_num + 2], "sys") {
+			return float(strings.Split(line, " ")[1])
+		}
+	}
+	iwr.s.Fatal("Could not parse scan time")
+}
+
+
 /*
 Runs a scan on a specified interface and frequencies (if applicable). Returns scan time and BSS list from SSIDs.
 
@@ -185,8 +267,8 @@ func (iwr IwRunner) TimedScan(iface string, frequencies []int, ssids []string) (
 		iwr.s.Log("Empty scan result")
 		bss_list = nil
 	} else {
-		bss_list = parseScanResults(string(scanOut)) //TODO
+		bss_list = parseScanResults(string(scanOut))
 	}
-	scan_time = parseScanTime(scanOut) //TODO
+	scan_time = parseScanTime(scanOut)
 	return &IwTimedScan{scan_time, bss_list}
 }
