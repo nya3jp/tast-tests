@@ -402,6 +402,30 @@
     },
     {
       "key": {
+        "uuid": "3cc2747b_83410bc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-06-07T12:45:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9df467d_1294057a",
+      "range": {
+        "startLine": 68,
+        "startChar": 8,
+        "endLine": 68,
+        "endChar": 9
+      },
+      "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21d1f108_1fc6bdc6",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
         "patchSetId": 1
@@ -799,6 +823,30 @@
       "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36cb9a72_7273f40e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-06-07T12:45:08Z",
+      "side": 1,
+      "message": "Passing a zero value Time to SetDeadline will verify that it works and io operations will not time out http://go/godoc/os/#File.SetDeadline\n\nI see now with the channel, thank you!",
+      "parentUuid": "b8de9546_d238a685",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 17
+      },
+      "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
