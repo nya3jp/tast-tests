@@ -18,7 +18,7 @@ import (
 )
 
 const (
-	adbAddr = "100.115.92.2:5555"
+	adbAddr = "127.0.0.1:5550"
 
 	adbHome               = "/tmp/adb_home"
 	testPrivateKeyPath    = "/tmp/adb_home/test_key"
@@ -110,8 +110,13 @@ func connectADB(ctx context.Context) error {
 		if err != nil {
 			return err
 		}
+
+		// Using 'already connected to ' instead of 'connected to ' because
+		// it is connecting to a proxy which might not have the connection to
+		// the guest. This means, as long as the proxy is online, we will always
+		// get 'connected to '. Therefore, we retry until the connection persists.
 		msg := strings.SplitN(string(out), "\n", 2)[0]
-		if !strings.HasPrefix(msg, "connected to ") {
+		if !strings.HasPrefix(msg, "already connected to ") {
 			return errors.Errorf("adb connect failed (adb output: %q)", msg)
 		}
 		return nil

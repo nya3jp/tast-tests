@@ -30,10 +30,26 @@ const (
 	intentHelperTimeout = 20 * time.Second
 
 	logcatName = "logcat.txt"
+
+	containerIP = "100.115.92.2"
+	vmIP        = "100.115.92.6"
+)
+
+// guestMode describes the mode that ARC guest is running.
+type guestMode int
+
+const (
+	none guestMode = iota
+	container
+	vm
 )
 
 // locked is set to true while a precondition is active to prevent tests from calling New or Close.
 var locked = false
+
+// TODO(b/134144418): Consolidate ARC and ARCVM diverged code once adb issues are resolved.
+// guest is the ARC guest Chrome OS currently running.
+var guest = none
 
 // Supported returns true if ARC is supported on the board.
 //
@@ -96,7 +112,8 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		return nil, err
 	}
 
-	if err := ensureARCEnabled(); err != nil {
+	var err error
+	if guest, err = arcGuest(); err != nil {
 		return nil, err
 	}
 
@@ -137,12 +154,16 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		return nil, diagnose(logcatPath, errors.Wrapf(err, "%s not set", androidBootProp))
 	}
 
-	// Android container is up. Set up ADB auth in parallel to Android boot since
-	// ADB local server takes a few seconds to start up.
-	ch := make(chan error, 1)
-	go func() {
-		ch <- setUpADBAuth(ctx)
-	}()
+	var ch chan error
+	if guest == container {
+		// TODO(jasongustaman): use errgroup here.
+		// Android container is up. Set up ADB auth in parallel to Android boot since
+		// ADB local server takes a few seconds to start up.
+		ch = make(chan error, 1)
+		go func() {
+			ch <- setUpADBAuth(ctx)
+		}()
+	}
 
 	// This property is set by ArcAppLauncher when it receives BOOT_COMPLETED.
 	const arcBootProp = "ro.arc.boot_completed"
@@ -150,10 +171,26 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		return nil, diagnose(logcatPath, errors.Wrapf(err, "%s not set", arcBootProp))
 	}
 
-	// Android has booted. Connect to ADB.
-	if err := <-ch; err != nil {
-		return nil, diagnose(logcatPath, errors.Wrap(err, "failed setting up ADB auth"))
+	if guest == vm {
+		// Set up the ADB home directory in Chrome OS side.
+		if err := os.MkdirAll(adbHome, 0755); err != nil {
+			return nil, err
+		}
+
+		// Restart local ADB server.
+		// We do not use adb kill-server since it is unreliable (crbug.com/855325).
+		testexec.CommandContext(ctx, "killall", "--quiet", "--wait", "-KILL", "adb").Run()
+		if err := adbCommand(ctx, "start-server").Run(testexec.DumpLogOnError); err != nil {
+			return nil, errors.Wrap(err, "failed starting ADB local server")
+		}
+	} else {
+		// Android has booted.
+		if err := <-ch; err != nil {
+			return nil, diagnose(logcatPath, errors.Wrap(err, "failed setting up ADB auth"))
+		}
 	}
+
+	// Connect to ADB.
 	if err := connectADB(ctx); err != nil {
 		return nil, diagnose(logcatPath, errors.Wrap(err, "failed connecting to ADB"))
 	}
@@ -231,19 +268,27 @@ func (a *ARC) setLogcatFile(p string) error {
 	return createErr
 }
 
-// ensureARCEnabled makes sure ARC is enabled by a command line flag to Chrome.
-func ensureARCEnabled() error {
+// arcGuest retrieves the current ARC guest Chrome OS is running (container / vm).
+// It returns an error if nothing is running.
+func arcGuest() (guestMode, error) {
 	args, err := getChromeArgs()
 	if err != nil {
-		return errors.Wrap(err, "failed getting Chrome args")
+		return none, errors.Wrap(err, "failed getting Chrome args")
+	}
+	s := make(map[string]bool)
+	for _, a := range args {
+		s[a] = true
 	}
 
-	for _, a := range args {
-		if a == "--arc-start-mode=always-start" || a == "--arc-start-mode=always-start-with-no-play-store" {
-			return nil
-		}
+	// Currently, flags that check for ARC is also available on ARCVM.
+	// Therefore, ARCVM check must be done first.
+	if s["--enable-arcvm"] {
+		return vm, nil
 	}
-	return errors.New("ARC is not enabled; pass chrome.ARCEnabled to chrome.New")
+	if s["--arc-start-mode=always-start"] || s["--arc-start-mode=always-start-with-no-play-store"] {
+		return container, nil
+	}
+	return none, errors.New("ARC is not enabled; pass chrome.ARCEnabled to chrome.New")
 }
 
 // getChromeArgs returns command line arguments of the Chrome browser process.
@@ -270,13 +315,22 @@ func WaitAndroidInit(ctx context.Context) error {
 	ctx, cancel := context.WithTimeout(ctx, BootTimeout)
 	defer cancel()
 
-	// service.adb.tcp.port is an arbitrary property set by Android init very
-	// early in boot process. Wait for it to ensure Android init process started.
-	// Note that existence of this property has nothing to do with the status of
-	// Android adb daemon.
-	const prop = "service.adb.tcp.port"
-	if err := waitProp(ctx, prop, "5555", reportTiming); err != nil {
-		return errors.Wrapf(err, "Android container did not come up: %s not set", prop)
+	if guest == container {
+		// service.adb.tcp.port is an arbitrary property set by Android init very
+		// early in boot process. Wait for it to ensure Android init process started.
+		// Note that existence of this property has nothing to do with the status of
+		// Android adb daemon.
+		const prop = "service.adb.tcp.port"
+		if err := waitProp(ctx, prop, "5555", reportTiming); err != nil {
+			return errors.Wrapf(err, "Android container did not come up: %s not set", prop)
+		}
+	} else {
+		// It waits until adb is successfully connected.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			return BootstrapCommand(ctx, "/system/bin/true").Run()
+		}, &testing.PollOptions{Interval: time.Second}); err != nil {
+			return errors.Wrap(err, "Android vm did not come up: can't connect to adb")
+		}
 	}
 	return nil
 }
@@ -304,8 +358,14 @@ func waitNetworking(ctx context.Context) error {
 	defer timing.Start(ctx, "wait_networking").End()
 
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		if err := testexec.CommandContext(ctx, "ping", "-c1", "-w1", "-n", "100.115.92.2").Run(); err != nil {
-			return errors.Wrap(err, "ping 100.115.92.2 failed")
+		var ip string
+		if guest == vm {
+			ip = vmIP
+		} else {
+			ip = containerIP
+		}
+		if err := testexec.CommandContext(ctx, "ping", "-c1", "-w1", "-n", ip).Run(); err != nil {
+			return errors.Wrap(err, "ping "+ip+" failed")
 		}
 		return nil
 	}, nil)
