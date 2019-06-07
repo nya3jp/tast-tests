@@ -378,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "b9df467d_1294057a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-07T02:29:14Z",
+      "side": 1,
+      "message": "Optional: I see, but when it ever happens the current code gives \"missing channel index 0\" error which is confusing. How about:\n\n max :\u003d -1\n for _, file :\u003d range files { ... }\n\n if max \u003c 0 {\n   return nil, errors.New(\"no valid channel\")\n }\n for i :\u003d 0; i \u003c\u003d max; i++ { ... }\n\nThat said, this might not be a big deal though.",
+      "parentUuid": "7dac74dc_ea8cea8e",
+      "range": {
+        "startLine": 68,
+        "startChar": 8,
+        "endLine": 68,
+        "endChar": 9
+      },
+      "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21d1f108_1fc6bdc6",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
         "patchSetId": 1
@@ -742,6 +766,30 @@
       "side": 1,
       "message": "I verified that SetDeadline does work for both my test cases and on the dut with a real sensor. I\u0027m not quite sure how to ensure that all messages are read, close will cause ReadFull to fail in the go routine and then the channel will be closed.",
       "parentUuid": "cc685a4e_dcf7a599",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 17
+      },
+      "revId": "6a6ef780008f2ff2215c7f2697d4f78c1c2257eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8de9546_d238a685",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/buffer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-07T02:29:14Z",
+      "side": 1,
+      "message": "It\u0027s nice that SetDeadline works for your case! Could you make sure it\u0027s always the case by calling SetDeadline in Open() with a distant time and checking its error?\n\nAbout making sure the goroutine exits, in this case we can save the channel to Buffer\u0027s member and read all remaining messages.",
+      "parentUuid": "24919874_c5450046",
       "range": {
         "startLine": 193,
         "startChar": 1,
