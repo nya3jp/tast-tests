@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2166fa88_cf7d0ff0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-07T04:51:32Z",
+      "side": 1,
+      "message": "This is great :)",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 67
+      },
+      "revId": "747a6905d99d53bf41de010515a63d446adcc316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8783c874_303f3f7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-07T04:51:32Z",
+      "side": 1,
+      "message": "remove or comment?",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "747a6905d99d53bf41de010515a63d446adcc316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4ef2228_a94b150a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-07T04:51:32Z",
+      "side": 1,
+      "message": "Basically we should avoid doing dependency checks at runtime:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#device-dependencies\n\nIn this case, could you introduce a software dependency for \"no ASAN\" and declare it in testing.AddTest? See the following doc for how to add one:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 80
+      },
+      "revId": "747a6905d99d53bf41de010515a63d446adcc316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "167ac87a_bc0c85ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-07T04:51:32Z",
+      "side": 1,
+      "message": "When reporting errors with s.Fatal/s.Error, please prefix some messages before err. \n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#log_error_fatal-vs_logf_errorf_fatalf\n\nIn this case:\n\n s.Fatal(\"Could not determine if Address Sanitizer was used: \", err)",
+      "range": {
+        "startLine": 244,
+        "startChar": 2,
+        "endLine": 244,
+        "endChar": 80
+      },
+      "revId": "747a6905d99d53bf41de010515a63d446adcc316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43b77201_c17d2879",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-07T04:51:32Z",
+      "side": 1,
+      "message": "nit: We might want to print str instead of pattern to clarify the offending file.",
+      "range": {
+        "startLine": 351,
+        "startChar": 49,
+        "endLine": 351,
+        "endChar": 56
+      },
+      "revId": "747a6905d99d53bf41de010515a63d446adcc316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c1599f0_87ad1a20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-07T04:51:32Z",
+      "side": 1,
+      "message": "Please use s.Fatal instead of panic.",
+      "range": {
+        "startLine": 375,
+        "startChar": 5,
+        "endLine": 375,
+        "endChar": 10
+      },
+      "revId": "747a6905d99d53bf41de010515a63d446adcc316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dcdbdfc_712a4584",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-07T04:51:32Z",
+      "side": 1,
+      "message": "huge nit: We usually put err assignment and err check in adjacent lines, i.e.\n\n // Skip files ...\n ef, err :\u003d elf.Open(path)\n if err !\u003d nil {\n     return nil\n }\n defer ef.Close()",
+      "range": {
+        "startLine": 397,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 45
+      },
+      "revId": "747a6905d99d53bf41de010515a63d446adcc316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ada5cc9_9dc3d37e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-07T04:51:32Z",
+      "side": 1,
+      "message": "style: Please start test failure messages with capital letters (note that we still want to start messages in `error` type with lower case letters).",
+      "range": {
+        "startLine": 408,
+        "startChar": 13,
+        "endLine": 408,
+        "endChar": 30
+      },
+      "revId": "747a6905d99d53bf41de010515a63d446adcc316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bba40e9_6e6daedf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-07T04:51:32Z",
+      "side": 1,
+      "message": "Same here: \"Error walking path: \"",
+      "range": {
+        "startLine": 414,
+        "startChar": 11,
+        "endLine": 414,
+        "endChar": 16
+      },
+      "revId": "747a6905d99d53bf41de010515a63d446adcc316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
