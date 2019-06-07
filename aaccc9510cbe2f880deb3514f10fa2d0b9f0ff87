@@ -16,6 +16,24 @@
       "revId": "aaccc9510cbe2f880deb3514f10fa2d0b9f0ff87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86d31cc2_ad19b47e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/memtester_slow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2019-06-07T18:47:09Z",
+      "side": 1,
+      "message": "sure. this still hasn\u0027t made it through the pre-CQ, so i\u0027ll upload a new revision :-/",
+      "parentUuid": "949446c0_1786effe",
+      "revId": "aaccc9510cbe2f880deb3514f10fa2d0b9f0ff87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
