@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "ba9dee82_438f2c56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-06-08T00:57:02Z",
+      "side": 1,
+      "message": "Ah, I apologise for the choice of wording here, I can see how it may be insensitive. Thank you for bring it up.\n\nGiven that VirtualKeyboardSuggestions got disabled anyway, maybe I\u0027ll go with option 1) then. When I add a new test case, would I need to disable the test first to prove that the new test case is not flaky?\n\nI think option 2) might not be scalable in the long run.",
+      "parentUuid": "9d178c4b_9be45c8a",
+      "range": {
+        "startLine": 21,
+        "startChar": 16,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "d93d38a61f13a69cf72c4a3f64a1e621b8df3d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df96266e_ca0fb1a7",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
         "patchSetId": 2
