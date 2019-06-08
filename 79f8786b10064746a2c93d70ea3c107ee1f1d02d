@@ -1,0 +1,273 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2120e610_5563ac91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-08T18:25:43Z",
+      "side": 1,
+      "message": "nit/optional: Probably this is a \"pattern\" rather than \"matcher\"?",
+      "range": {
+        "startLine": 21,
+        "startChar": 12,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "79f8786b10064746a2c93d70ea3c107ee1f1d02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eefc7e2_60797a87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-08T18:25:43Z",
+      "side": 1,
+      "message": "style: printerName.\n\nIn tast/go, we do not use prefixes like \"get\" or \"is\" (for boolean getter).\nUnless there is the special reasons, like name conflicting etc.\n\nCould you drop it for consistency?",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 17
+      },
+      "revId": "79f8786b10064746a2c93d70ea3c107ee1f1d02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d54deddc_9b5be6ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-08T18:25:43Z",
+      "side": 1,
+      "message": "style: could you create the testexec.Cmd instance at latest timing it\u0027s needed.\nAlso, could you use testexec.DumpLogOnError? So,\n\ntesting.ContextLog(ctx, \"Searching ...\")\nout, err :\u003d testexec.CommandContext(ctx, \"lpstat\", \"-v\").Output(testexec.DumpLogOnError)\nif err !\u003d nil {\n    return \"\", errors.Wrap(err, \"... some more context to describe the error sitation ...\")\n}",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 2
+      },
+      "revId": "79f8786b10064746a2c93d70ea3c107ee1f1d02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84eeddab_6799ba64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-08T18:25:43Z",
+      "side": 1,
+      "message": "Ditto. This is more closer to the for loop below.\n\nfor _, line :\u003d range strings.Split(string(out), \"\\n\") {\n  ...\n}",
+      "revId": "79f8786b10064746a2c93d70ea3c107ee1f1d02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "770f22b0_cb340e99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-08T18:25:43Z",
+      "side": 1,
+      "message": "For safeness, could you wrap those args by QuoteMeta?\nhttps://golang.org/pkg/regexp/#QuoteMeta",
+      "range": {
+        "startLine": 36,
+        "startChar": 51,
+        "endLine": 36,
+        "endChar": 75
+      },
+      "revId": "79f8786b10064746a2c93d70ea3c107ee1f1d02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38edf03f_4aba905d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-08T18:25:43Z",
+      "side": 1,
+      "message": "Specifically, this method is called in Poll(), so the line looks too verbose. Could you avoid printing the log here?\nIf you need the dump, you may want to return the content on error, so that you can handle it at the caller side.",
+      "revId": "79f8786b10064746a2c93d70ea3c107ee1f1d02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d9aca51_fc087c50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-08T18:25:43Z",
+      "side": 1,
+      "message": "How about \"submatches\"?\nCould you check if it is nil or not here? (i.e. if the pattern is not found or not).",
+      "revId": "79f8786b10064746a2c93d70ea3c107ee1f1d02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afce87e3_3b3b7f66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-08T18:25:43Z",
+      "side": 1,
+      "message": "If you check the nil-ness as I commented above, I think this is check is not necessary.",
+      "revId": "79f8786b10064746a2c93d70ea3c107ee1f1d02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "000b6848_1fbceb38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-08T18:25:43Z",
+      "side": 1,
+      "message": "Because you just need \"name\", could you drop parens for VID and PID?\nYou can just return submatches[0] directly.",
+      "revId": "79f8786b10064746a2c93d70ea3c107ee1f1d02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec437cc8_5170987d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-08T18:25:43Z",
+      "side": 1,
+      "message": "Is nil here intentional? Is it necessary to return an error instance representing \"not found\"?\nIn either case, could you explicitly document it in the comment?",
+      "range": {
+        "startLine": 56,
+        "startChar": 12,
+        "endLine": 56,
+        "endChar": 15
+      },
+      "revId": "79f8786b10064746a2c93d70ea3c107ee1f1d02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64507e94_2593bc5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-08T18:25:43Z",
+      "side": 1,
+      "message": "I think you don\u0027t need \"ctx\" here.",
+      "range": {
+        "startLine": 68,
+        "startChar": 7,
+        "endLine": 68,
+        "endChar": 12
+      },
+      "revId": "79f8786b10064746a2c93d70ea3c107ee1f1d02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c14fd5a_df921a08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-08T18:25:43Z",
+      "side": 1,
+      "message": "nit: New\n\n(actually build fails).",
+      "range": {
+        "startLine": 75,
+        "startChar": 17,
+        "endLine": 75,
+        "endChar": 22
+      },
+      "revId": "79f8786b10064746a2c93d70ea3c107ee1f1d02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7f8d559_0f0b5549",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-08T18:25:43Z",
+      "side": 1,
+      "message": "nit: could you use s.Log() instead?\n\nCould you use s.Log() here, too, for consistency across tests?",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 19
+      },
+      "revId": "79f8786b10064746a2c93d70ea3c107ee1f1d02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
