@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b660b77_fed732fd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-08T17:56:47Z",
+      "side": 1,
+      "message": "optional: I think, at the moment, \"android\" is sufficient, because upstream team is not yet ready to care about enough coverage of tests.",
+      "range": {
+        "startLine": 30,
+        "startChar": 25,
+        "endLine": 30,
+        "endChar": 38
+      },
+      "revId": "c4f97ccfc1ec45edf66b93e02a7fd7cb7356b9dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e27b1896_51220e8e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-08T17:56:47Z",
+      "side": 1,
+      "message": "Clar: could SSH command (not the command being executed on DUT) output logs? If so, it may be useful to print the output in case of failure.",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 5
+      },
+      "revId": "c4f97ccfc1ec45edf66b93e02a7fd7cb7356b9dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
