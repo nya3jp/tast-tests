@@ -11,10 +11,13 @@ iw_runner.go is the analog of {@link iw_runner.py} in the autotest suite.
 */
 
 import (
+	"bytes"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
+	"context"
 	"fmt"
 	"regexp"
+	"strconv"
 	"strings"
 )
 
@@ -23,33 +26,36 @@ const (
 	IW_TIME_COMMAND_OUTPUT_START = "real"
 )
 const (
-	HT20 = "HT20"
+	HT20       = "HT20"
 	HT40_ABOVE = "HT40+"
 	HT40_BELOW = "HT40-"
 )
 const (
-	SECURITY_OPEN = "open"
-	SECURITY_WEP = "wep"
-	SECURITY_WPA = "wpa"
-	SECURITY_WPA2 = "wpa2"
+	SECURITY_OPEN  = "open"
+	SECURITY_WEP   = "wep"
+	SECURITY_WPA   = "wpa"
+	SECURITY_WPA2  = "wpa2"
+	SECURITY_MIXED = "mixed"
 )
 
 //Lookups
-const (
-	HT_TABLE = map[string]string {
-		"no secondary": HT20,
-		"above": HT40_ABOVE,
-		"below": HT40_BELOW
-	}
-)
+var HT_TABLE = map[string]string{
+	"no secondary": HT20,
+	"above":        HT40_ABOVE,
+	"below":        HT40_BELOW,
+}
 
 type IwBss struct {
 	Bss       string
 	Frequency int
 	Ssid      string
 	Security  string
-	Ht        bool
-	Signal    float
+	Ht        string
+	Signal    float64
+}
+type IwTimedScan struct {
+	Time    float64
+	BssList []*IwBss
 }
 
 /*
@@ -132,32 +138,6 @@ func extractBssid(link_information string, interface_name string, station_dump b
 }
 
 /*
-IwRunner stores metadata to allow its methods to invoke commands on `iw` in a concise manner.
-
-Test code should only have to interface with `iw` through the methods exposed by IwRunner
-*/
-type IwRunner struct {
-	Run func(string) // Function alias that will determine how commands are executed whether the test
-	// 	is a client test or a remote test (TODO).
-	Host_addr  string         // Host address for remote tests (TODO).
-	iw_command string         // Path to invoke `iw`. By default, we expect iw to be in $PATH, so this value should be `iw`.
-	Log_id     int            // Id for logging.
-	s          *testing.State // Test State
-}
-
-/*
-IwRunner factory.
-*/
-func NewIwRunner(state *testing.State) *IwRunner {
-	return &IwRunner{
-		Run:        clientCommandExec,
-		Host_addr:  "",
-		iw_command: "iw",
-		s:          state,
-	}
-}
-
-/*
 Runs a shell command over ssh and reports the binary output.
 
 clientCommandExec runs in a blocking fashion and will not return until the shell command
@@ -166,79 +146,118 @@ clientCommandExec runs in a blocking fashion and will not return until the shell
 	a valid string is "ls -lat"
 @return bytestream output of stdout from the DUT.
 */
-func (iwr IwRunner) clientCommandExec(shellCommand string) ([]byte, error) {
-	out, err := testexec.Command(shellCommand).Output()
+func clientCommandExec(ctx context.Context, shellCommand string) ([]byte, error) {
+	out, err := testexec.CommandContext(ctx, shellCommand).Output()
 	return out, err
 }
 
-func (iwr IwRunner) parseScanResults(output []byte) []IwBss {
-	var bssList = []IwBss{}
+/*
+IwRunner stores metadata to allow its methods to invoke commands on `iw` in a concise manner.
+
+Test code should only have to interface with `iw` through the methods exposed by IwRunner
+*/
+type IwRunner struct {
+	Run func(context.Context, string) ([]byte, error) // Function alias that will determine how commands are executed whether the test
+	// 	is a client test or a remote test (TODO).
+	Host_addr  string          // Host address for remote tests (TODO).
+	iw_command string          // Path to invoke `iw`. By default, we expect iw to be in $PATH, so this value should be `iw`.
+	Log_id     int             // Id for logging.
+	s          *testing.State  // Test State
+	ctx        context.Context // Test Context
+}
+
+/*
+IwRunner factory.
+*/
+func NewIwRunner(state *testing.State, contxt context.Context) *IwRunner {
+	return &IwRunner{
+		Run:        clientCommandExec,
+		Host_addr:  "",
+		iw_command: "iw",
+		s:          state,
+		ctx:        contxt,
+	}
+}
+
+func (iwr IwRunner) parseScanResults(output []byte) []*IwBss {
+	var bssList = []*IwBss{}
 	mainBss := IwBss{}
 	supportedSecurities := []string{}
 	for _, line := range strings.Split(string(output), "\n") {
-		line = line.Trim()
-		r :=  regexp.MustCompile(`BSS ([0-9a-f:]+)`)
+		line = strings.TrimSpace(line)
+		r := regexp.MustCompile(`BSS ([0-9a-f:]+)`)
 		if r.MatchString(line) {
 			if mainBss.Bss != "" {
 				mainBss.Security = determineSecurity(supportedSecurities)
-				append(bssList, IwBss{mainBss.Bss, mainBss.Frequency, mainBss.Security, mainBss.Ht, mainBss.Signal})
-				mainBss = IsBss{}
+				bssList = append(bssList, &IwBss{mainBss.Bss, mainBss.Frequency, mainBss.Ssid, mainBss.Security, mainBss.Ht, mainBss.Signal})
+				mainBss = IwBss{}
 				supportedSecurities = nil
 			}
 		}
 		if strings.HasPrefix(line, "freq:") {
-			mainBss.Frequency = int(strings.Split(line, " ")[1])
+			mainBss.Frequency, _ = strconv.Atoi(strings.Split(line, " ")[1])
 		}
 		if strings.HasPrefix(line, "signal:") {
-			mainBss.Signal = float(strings.Split(line, " ")[1])
+			mainBss.Signal, _ = strconv.ParseFloat(strings.Split(line, " ")[1], 64)
 		}
 		if strings.HasPrefix(line, "SSID:") {
-			mainBss.SSID = int(strings.SplitN(line, ": ", 1)[1])
+			mainBss.Ssid = strings.SplitN(line, ": ", 1)[1]
 		}
 		if strings.HasPrefix(line, "* secondary channel offset") {
-			mainBss.Ht = HT_TABLE[strings.Split(line, ":")[1].Trim()]
+			mainBss.Ht = HT_TABLE[strings.TrimSpace(strings.Split(line, ":")[1])]
 		}
 		if strings.HasPrefix(line, "WPA") {
-			append(supportedSecurities, "WPA")
+			supportedSecurities = append(supportedSecurities, "WPA")
 		}
 		if strings.HasPrefix(line, "RSN") {
-			append(supportedSecurities, "WPA2")
-		}	
+			supportedSecurities = append(supportedSecurities, "WPA2")
+		}
 	}
-	mainBss.Security = determineSecurity(supportedSecurities) //TODO
-	append(bssList, mainBss)
+	mainBss.Security = determineSecurity(supportedSecurities)
+	bssList = append(bssList, &mainBss)
 	return bssList
 }
 
-func (iwr IwRunner) parseScanTime(output []byte) float {
+func (iwr IwRunner) parseScanTime(output []byte) float64 {
 	outputLines := strings.Split(string(output), "\n")
-	for lineNum, line := range output_lines {
-		line = line.Trim()
-		if strings.HasPrefix(IW_TIME_COMMAND_OUTPUT_START) && 
-							strings.HasPrefix(outputLines[lineNum + 1], "user") &&
-							strings.HasPrefix(outputLines[line_num + 2], "sys") {
-			return float(strings.Split(line, " ")[1])
+	for lineNum, line := range outputLines {
+		line = strings.TrimSpace(line)
+		if strings.HasPrefix(line, IW_TIME_COMMAND_OUTPUT_START) &&
+			strings.HasPrefix(outputLines[lineNum+1], "user") &&
+			strings.HasPrefix(outputLines[lineNum+2], "sys") {
+			toRet, _ := strconv.ParseFloat(strings.Split(line, " ")[1], 64)
+			return toRet
 		}
 	}
 	iwr.s.Fatal("Could not parse scan time")
+	return 0
 }
 
+func determineSecurity(supportedSecurities []string) string {
+	if len(supportedSecurities) == 0 {
+		return SECURITY_OPEN
+	} else if len(supportedSecurities) == 1 {
+		return supportedSecurities[0]
+	} else {
+		return SECURITY_MIXED
+	}
+}
 
 /*
 Runs a scan on a specified interface and frequencies (if applicable). Returns scan time and BSS list from SSIDs.
 
-@param iface: the interface to run the iw command against
+@param iface: the interface to run the iw c)ommand against
 @param frequencies: list of int frequencies in Mhz to scan.
 @param ssids: list of string SSIDs to send probe requests for.
 
 @returns total scan time and bss list from SSIDs.
 */
-func (iwr IwRunner) TimedScan(iface string, frequencies []int, ssids []string) (string, []string) {
-	buffer := bytes.Buffer
+func (iwr IwRunner) TimedScan(iface string, frequencies []int, ssids []string) *IwTimedScan {
+	var buffer bytes.Buffer
 	freq_param := ""
 	ssid_param := ""
 
-	var bss_list []string
+	var bssList []*IwBss
 	if len(frequencies) > 0 {
 		for _, freq := range frequencies {
 			buffer.WriteString(fmt.Sprintf(" freq %s", string(freq)))
@@ -255,20 +274,20 @@ func (iwr IwRunner) TimedScan(iface string, frequencies []int, ssids []string) (
 	}
 	iw_command := fmt.Sprintf("%s dev %s scan%s%s", iwr.iw_command, iface, freq_param, ssid_param)
 	command := fmt.Sprintf(IW_TIME_COMMAND_FORMAT, iw_command)
-	scanOut, err = clientCommandExec(command)
-	if status, _ := int(test.GetWaitStatus(err)); status != 0 {
+	scanOut, err := clientCommandExec(iwr.ctx, command)
+	if status, _ := testexec.GetWaitStatus(err); int(status) != 0 {
 		iwr.s.Log(fmt.Sprintf("scan exit_status: %d", status))
-		return nil
+		return &IwTimedScan{0, nil}
 	}
 	if len(scanOut) < 0 {
 		iwr.s.Fatal("Missing scan parse time")
 	}
 	if strings.HasPrefix(string(scanOut), IW_TIME_COMMAND_OUTPUT_START) {
 		iwr.s.Log("Empty scan result")
-		bss_list = nil
+		bssList = []*IwBss{nil}
 	} else {
-		bss_list = parseScanResults(string(scanOut))
+		bssList = iwr.parseScanResults(scanOut)
 	}
-	scan_time = parseScanTime(scanOut)
-	return &IwTimedScan{scan_time, bss_list}
+	scan_time := iwr.parseScanTime(scanOut)
+	return &IwTimedScan{scan_time, bssList}
 }
