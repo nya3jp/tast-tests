@@ -35,7 +35,7 @@ func CCAUIPreview(ctx context.Context, s *testing.State) {
 	}
 	defer app.Close(ctx)
 
-	if err := app.CheckVideoActive(ctx); err != nil {
+	if err := app.WaitForVideoActive(ctx); err != nil {
 		s.Fatal("Preview is inactive after launching App: ", err)
 	}
 	s.Log("Preview started")
@@ -63,7 +63,7 @@ func testResize(ctx context.Context, app *cca.App) error {
 		if err := app.RestoreWindow(ctx); err != nil {
 			return errors.Wrap(err, "failed to restore window")
 		}
-		if err := app.CheckVideoActive(ctx); err != nil {
+		if err := app.WaitForVideoActive(ctx); err != nil {
 			return errors.Wrap(err, "preview is inactive after restoring window")
 		}
 		return nil
@@ -76,7 +76,7 @@ func testResize(ctx context.Context, app *cca.App) error {
 	if err := app.MaximizeWindow(ctx); err != nil {
 		return errors.Wrap(err, "failed to maximize window")
 	}
-	if err := app.CheckVideoActive(ctx); err != nil {
+	if err := app.WaitForVideoActive(ctx); err != nil {
 		return errors.Wrap(err, "preview is inactive after maximizing window")
 	}
 	if err := restore(); err != nil {
@@ -87,7 +87,7 @@ func testResize(ctx context.Context, app *cca.App) error {
 	if err := app.FullscreenWindow(ctx); err != nil {
 		return errors.Wrap(err, "failed to fullscreen window")
 	}
-	if err := app.CheckVideoActive(ctx); err != nil {
+	if err := app.WaitForVideoActive(ctx); err != nil {
 		return errors.Wrap(err, "preview is inactive after fullscreening window")
 	}
 	if err := restore(); err != nil {
