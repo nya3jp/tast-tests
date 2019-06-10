@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1c67383b_e4db1af8",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-06-10T18:03:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7341f460_a114691a",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 9
+      },
+      "revId": "fd334af2b3a05b97f9e5818c58ab868e37f56ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "059faa70_a276a3dc",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "fd334af2b3a05b97f9e5818c58ab868e37f56ddb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "499df405_0c8209dc",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-06-10T18:03:13Z",
+      "side": 1,
+      "message": "Added TODO with my handle. Would I need to file a bug for these kinds of TODOs?",
+      "parentUuid": "059faa70_a276a3dc",
+      "range": {
+        "startLine": 161,
+        "startChar": 2,
+        "endLine": 164,
+        "endChar": 5
+      },
+      "revId": "fd334af2b3a05b97f9e5818c58ab868e37f56ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -142,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "7e40d790_1770bd49",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-06-10T18:03:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "979c9c58_e28ce183",
+      "range": {
+        "startLine": 270,
+        "startChar": 12,
+        "endLine": 270,
+        "endChar": 20
+      },
+      "revId": "fd334af2b3a05b97f9e5818c58ab868e37f56ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "798cdd4d_8a0f9076",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 4
@@ -165,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "635310f9_b2fd1a3f",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-06-10T18:03:13Z",
+      "side": 1,
+      "message": "I currently don\u0027t think the comment is necessary, already stated in func desc.\nRemoved the line instead.",
+      "parentUuid": "798cdd4d_8a0f9076",
+      "range": {
+        "startLine": 282,
+        "startChar": 45,
+        "endLine": 282,
+        "endChar": 54
+      },
+      "revId": "fd334af2b3a05b97f9e5818c58ab868e37f56ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3209250_1f8bf7c8",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 4
@@ -176,6 +272,24 @@
       "writtenOn": "2019-06-09T23:50:44Z",
       "side": 1,
       "message": "seems like these if checks are simple enough to do in the loop without using the map?",
+      "revId": "fd334af2b3a05b97f9e5818c58ab868e37f56ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e72997f_cc95ac61",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-06-10T18:03:13Z",
+      "side": 1,
+      "message": "Currently, ARC flags is also in ARCVM. Therefore ARCVM check need to be done first.\nAlternatively, it is possible to do this:\n\ng :\u003d none\nfor _, a :\u003d range args {\n\tif s[a] \u003d\u003d \"arcvm...\" {\n\t\treturn vm, nil\n\t}\n\tif s[a] \u003d\u003d \"arc...\" {\n\t\tg \u003d container\n\t}\n}\nif g !\u003d none {\n\treturn g, nil\n}\nreturn none, err(...)\n\nwhich I think is less readable (due to the return flow) and not worth the little mem improvement.\nHowever, I\u0027m down to change to \u0027if checks\u0027 if you think it\u0027s better.\n\nAdded comment explaining why ARCVM check needs to run first.",
+      "parentUuid": "a3209250_1f8bf7c8",
       "revId": "fd334af2b3a05b97f9e5818c58ab868e37f56ddb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -205,6 +319,30 @@
     },
     {
       "key": {
+        "uuid": "ec349d86_6ba69fdf",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-06-10T18:03:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98f6e683_be0b6070",
+      "range": {
+        "startLine": 285,
+        "startChar": 3,
+        "endLine": 285,
+        "endChar": 7
+      },
+      "revId": "fd334af2b3a05b97f9e5818c58ab868e37f56ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8a339bb_41b5df88",
         "filename": "src/chromiumos/tast/local/arc/commands.go",
         "patchSetId": 4
@@ -216,6 +354,30 @@
       "writtenOn": "2019-06-10T02:01:42Z",
       "side": 1,
       "message": "Question: Is there any plan to change this? If so, it might be better to have a buganizer\u0027s number here.",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 15
+      },
+      "revId": "fd334af2b3a05b97f9e5818c58ab868e37f56ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b15bd9f_c36875e5",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-06-10T18:03:13Z",
+      "side": 1,
+      "message": "I\u0027ll double check on this. From what I know, b/131121671#comment2 is a discussion for the alternatives, but none in the buganizer.",
+      "parentUuid": "b8a339bb_41b5df88",
       "range": {
         "startLine": 35,
         "startChar": 5,
