@@ -18,7 +18,6 @@ func init() {
 		Func:         CrostiniStartBasic,
 		Desc:         "Tests basic Crostini startup only",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"informational"},
 		Timeout:      7 * time.Minute,
 		Data:         []string{"crostini_start_basic_guest_images.tar"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
