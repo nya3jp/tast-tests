@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "a1c989ee_aad16b52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-10T04:32:14Z",
+      "side": 1,
+      "message": "+1 for the current plan.\n\n\u003e When I add a new test case, would I need to disable the test first to prove that the new test case is not flaky?\n\nUnfortunately, there\u0027s no good support of such a case now, so filed a bug crbug.com/972472.\nProbably, the better approach I could come up with is;\n- Introduce two tests, e.g., VirtualKeyboardSuggestions and VirtualKeyboardSuggestionsInformational.\n- Share most part between those, except test data, by using subpackage.\n- Start adding a new test data into VirtualKeyboardSuggestionsInformational, and when it is stabilized, switch to VirtualKeyboardSuggestions.\n\nOr, 2) may give you to fully control of \"informational/non-informatinal\" per language, (though, I agreed with you that it may be a bit verbose).\nBTW, IMHO, scalability wouldn\u0027t be so different from the test data approach? I guess, you\u0027d need just almost copy of init() and oneline func body for each language.\nIt\u0027d be something like;\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/16a9c06b7d864f0c3a6c3dcd4e806fdcbd029546/src/chromiumos/tast/local/bundles/cros/platform/dm_verity.go",
+      "parentUuid": "ba9dee82_438f2c56",
+      "range": {
+        "startLine": 21,
+        "startChar": 16,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "d93d38a61f13a69cf72c4a3f64a1e621b8df3d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df96266e_ca0fb1a7",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
         "patchSetId": 2
