@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "560fde5c_720f2e0f",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-06-10T02:05:12Z",
+      "side": 1,
+      "message": "I think Jason just rearranged this code, no?\nAlso, I believe the use of killall was a fix for the bug not a workaround?",
+      "parentUuid": "83b8f255_b8bb1e38",
+      "range": {
+        "startLine": 180,
+        "startChar": 59,
+        "endLine": 180,
+        "endChar": 75
+      },
+      "revId": "fd334af2b3a05b97f9e5818c58ab868e37f56ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "979c9c58_e28ce183",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 4
