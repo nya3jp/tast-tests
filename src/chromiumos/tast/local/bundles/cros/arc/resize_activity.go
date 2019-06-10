@@ -32,19 +32,13 @@ func init() {
 		Attr:     []string{"informational"},
 		// Adding 'tablet_mode' since moving/resizing the window requires screen touch support.
 		SoftwareDeps: []string{"android_p", "chrome", "tablet_mode"},
+		Pre:          arc.Booted(),
 		Timeout:      4 * time.Minute,
 	})
 }
 
 func ResizeActivity(ctx context.Context, s *testing.State) {
-	// Force Chrome to be in clamshell mode, where windows are resizable.
-	// --use-test-config is needed to enable Shelf's Mojo testing interface.
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(),
-		chrome.ExtraArgs("--force-tablet-mode=clamshell", "--use-test-config"))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	cr := s.PreValue().(arc.PreData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -69,11 +63,19 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 	// Be nice and restore shelf behavior to its original state on exit.
 	defer ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, origShelfBehavior)
 
-	a, err := arc.New(ctx, s.OutDir())
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
+		s.Fatal("Failed to get tablet mode: ", err)
 	}
-	defer a.Close()
+	// Be nice and restore tablet mode to its original state on exit.
+	defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeEnabled)
+
+	// Force Chrome to be in clamshell mode, where windows are resizable.
+	if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
+		s.Fatal("Failed to disable tablet mode: ", err)
+	}
+
+	a := s.PreValue().(arc.PreData).ARC
 
 	act, err := arc.NewActivity(a, "com.android.settings", ".Settings")
 	if err != nil {

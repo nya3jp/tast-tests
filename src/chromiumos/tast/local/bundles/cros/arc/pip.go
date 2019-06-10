@@ -39,8 +39,9 @@ func init() {
 		Contacts:     []string{"ricardoq@chromium.org", "edcourtney@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"tablet_mode", "android_p", "chrome"},
-		Timeout:      5 * time.Minute,
 		Data:         []string{"ArcPipTastTest.apk"},
+		Pre:          arc.Booted(),
+		Timeout:      5 * time.Minute,
 	})
 }
 
@@ -51,24 +52,15 @@ func PIP(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// For debugging, add chrome.ExtraArgs("--show-taps")
-	// --use-test-config is needed to enable Shelf's Mojo testing interface.
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--use-test-config"))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	// For debugging, create a Chrome session with chrome.ExtraArgs("--show-taps")
+	cr := s.PreValue().(arc.PreData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
-	}
-	defer a.Close()
+	a := s.PreValue().(arc.PreData).ARC
 
 	const apkName = "ArcPipTastTest.apk"
 	s.Log("Installing ", apkName)
