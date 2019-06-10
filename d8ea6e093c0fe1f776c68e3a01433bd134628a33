@@ -22,6 +22,30 @@
       "revId": "d8ea6e093c0fe1f776c68e3a01433bd134628a33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "818d1bb2_5491829d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_sanity.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-10T03:49:43Z",
+      "side": 1,
+      "message": "Yes, I think it makes sense since this is very basic test.",
+      "parentUuid": "88ab3c25_a18af734",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 33
+      },
+      "revId": "d8ea6e093c0fe1f776c68e3a01433bd134628a33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
