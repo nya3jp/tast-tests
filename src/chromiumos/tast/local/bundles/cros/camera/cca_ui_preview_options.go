@@ -38,7 +38,7 @@ func CCAUIPreviewOptions(ctx context.Context, s *testing.State) {
 	}
 	defer app.Close(ctx)
 
-	if err := app.CheckVideoActive(ctx); err != nil {
+	if err := app.WaitForVideoActive(ctx); err != nil {
 		s.Fatal("Preview is inactive after launching app: ", err)
 	}
 	s.Log("Preview started")
@@ -56,7 +56,7 @@ func CCAUIPreviewOptions(ctx context.Context, s *testing.State) {
 		s.Error("Mirroring unexpectedly disabled")
 	}
 
-	err = app.ToggleMirroringOption(ctx)
+	_, err = app.ToggleMirroringOption(ctx)
 	if err != nil {
 		s.Fatal("Toggling mirror option failed: ", err)
 	}
