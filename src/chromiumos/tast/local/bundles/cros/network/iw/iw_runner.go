@@ -75,7 +75,7 @@ Connected to 74:e5:43:10:4f:c0 (on wlan0)
       dtim period:    5
       beacon int:     100
 
-@param link_information: string containing the raw link or station dump
+@param linkInformation: string containing the raw link or station dump
     information as reported by iw. Note that this parsing assumes a single
     entry, in the case of multiple entries (e.g. listing stations from an
     AP, or listing mesh peers), the entries must be split on a per
@@ -83,38 +83,38 @@ Connected to 74:e5:43:10:4f:c0 (on wlan0)
 @return a map containing all the link key/value pairs.
 
 */
-func getAllLinkKeys(link_information string) map[string]string {
-	link_key_value_pairs := make(map[string]string)
+func getAllLinkKeys(linkInformation string) map[string]string {
+	linkKeyValuePairs := make(map[string]string)
 	r := regexp.MustCompile("^[[:space:]]+(.*):[[:space:]]+(.*)$")
-	for _, link_key := range strings.Split(link_information, "\n") {
-		if r.MatchString(link_key) {
-			match_group := r.FindStringSubmatch(link_key)
-			link_key_value_pairs[match_group[1]] = match_group[2]
+	for _, linkKey := range strings.Split(linkInformation, "\n") {
+		if r.MatchString(linkKey) {
+			matchGroup := r.FindStringSubmatch(linkKey)
+			linkKeyValuePairs[matchGroup[1]] = matchGroup[2]
 		}
 	}
-	return link_key_value_pairs
+	return linkKeyValuePairs
 }
 
 /*
-Get the BSSID that |interface_name| is associated with.
+Get the BSSID that |interfaceName| is associated with.
 
-See doc for _get_all_link_keys() for expected format of the station or link
+See doc for getAllLinkKeys() for expected format of the station or link
 information entry.
 
-@param link_information: string containing the raw link or station dump
+@param linkInformation: string containing the raw link or station dump
     information as reported by iw. Note that this parsing assumes a single
     entry, in the case of multiple entries (e.g. listing stations from an AP
     or listing mesh peers), the entries must be split on a per peer/client
     basis before this parsing operation.
-@param interface_name: string name of interface (e.g. 'wlan0').
-@param station_dump: boolean indicator of whether the link information is
+@param interfaceName: string name of interface (e.g. 'wlan0').
+@param stationDump: boolean indicator of whether the link information is
     from a 'station dump' query. If False, it is assumed the string is from
     a 'link' query.
 @return string bssid of the current association, or None if no matching
     association information is found.
 
 */
-func extractBssid(link_information string, interface_name string, station_dump bool) string {
+func extractBssid(linkInformation string, interfaceName string, stationDump bool) string {
 
 	// We're looking for a line like this when parsing the output of a 'link'
 	// query:
@@ -123,18 +123,19 @@ func extractBssid(link_information string, interface_name string, station_dump b
 	// 'station dump' query:
 	// Station 04:f0:21:03:7d:bb (on mesh-5000mhz)
 	identifier := func() string {
-		if station_dump {
+		if stationDump {
 			return "Station"
 		} else {
 			return "Connected to"
 		}
 	}()
-	search_re := regexp.MustCompile(fmt.Sprintf(`%s ([0-9a-fA-F:]{17}) \(on %s\)`, identifier, interface_name))
-	match_group := search_re.FindStringSubmatch(link_information)
-	if len(match_group) == 0 {
+	searchRe := regexp.MustCompile(fmt.Sprintf(`%s ([0-9a-fA-F:]{17}) \(on %s\)`,
+		identifier, interfaceName))
+	matchGroup := searchRe.FindStringSubmatch(linkInformation)
+	if len(matchGroup) == 0 {
 		return ""
 	}
-	return match_group[1]
+	return matchGroup[1]
 }
 
 /*
@@ -158,12 +159,12 @@ Test code should only have to interface with `iw` through the methods exposed by
 */
 type IwRunner struct {
 	Run func(context.Context, string) ([]byte, error) // Function alias that will determine how commands are executed whether the test
-	// 	is a client test or a remote test (TODO).
-	Host_addr  string          // Host address for remote tests (TODO).
-	iw_command string          // Path to invoke `iw`. By default, we expect iw to be in $PATH, so this value should be `iw`.
-	Log_id     int             // Id for logging.
-	s          *testing.State  // Test State
-	ctx        context.Context // Test Context
+	// 	is a client test or a remote test (TODO b/972833).
+	HostAddr  string          // Host address for remote tests (TODO b/972833).
+	iwCommand string          // Path to invoke `iw`. By default, we expect iw to be in $PATH, so this value should be `iw`.
+	LogId     int             // Id for logging.
+	s         *testing.State  // Test State
+	ctx       context.Context // Test Context
 }
 
 /*
@@ -171,28 +172,61 @@ IwRunner factory.
 */
 func NewIwRunner(state *testing.State, contxt context.Context) *IwRunner {
 	return &IwRunner{
-		Run:        clientCommandExec,
-		Host_addr:  "",
-		iw_command: "iw",
-		s:          state,
-		ctx:        contxt,
+		Run:       clientCommandExec,
+		HostAddr:  "",
+		iwCommand: "iw",
+		s:         state,
+		ctx:       contxt,
 	}
 }
 
+/*
+Parse the output of the 'scan' and 'scan dump' commands.
+
+Here is an example of what a single network would look like for
+the input parameter.  Some fields have been removed in this example:
+  BSS 00:11:22:33:44:55(on wlan0)
+  freq: 2447
+  beacon interval: 100 TUs
+  signal: -46.00 dBm
+  Information elements from Probe Response frame:
+  SSID: my_open_network
+  Extended supported rates: 24.0 36.0 48.0 54.0
+  HT capabilities:
+  Capabilities: 0x0c
+  HT20
+  HT operation:
+  * primary channel: 8
+  * secondary channel offset: no secondary
+  * STA channel width: 20 MHz
+  RSN: * Version: 1
+  * Group cipher: CCMP
+  * Pairwise ciphers: CCMP
+  * Authentication suites: PSK
+  * Capabilities: 1-PTKSA-RC 1-GTKSA-RC (0x0000)
+
+@param output: bytestream command output.
+
+@returns a slice of IwBss struct pointers.
+
+*/
 func (iwr IwRunner) parseScanResults(output []byte) []*IwBss {
 	var bssList = []*IwBss{}
 	mainBss := IwBss{}
 	supportedSecurities := []string{}
 	for _, line := range strings.Split(string(output), "\n") {
 		line = strings.TrimSpace(line)
-		r := regexp.MustCompile(`BSS ([0-9a-f:]+)`)
+		r := regexp.MustCompile("BSS ([0-9a-f:]+)")
 		if r.MatchString(line) {
 			if mainBss.Bss != "" {
 				mainBss.Security = determineSecurity(supportedSecurities)
-				bssList = append(bssList, &IwBss{mainBss.Bss, mainBss.Frequency, mainBss.Ssid, mainBss.Security, mainBss.Ht, mainBss.Signal})
+				bssList = append(bssList, &IwBss{mainBss.Bss, mainBss.Frequency, mainBss.Ssid,
+					mainBss.Security, mainBss.Ht, mainBss.Signal})
 				mainBss = IwBss{}
 				supportedSecurities = nil
 			}
+			matchGroup := r.FindStringSubmatch(line)
+			mainBss.Bss = matchGroup[1]
 		}
 		if strings.HasPrefix(line, "freq:") {
 			mainBss.Frequency, _ = strconv.Atoi(strings.Split(line, " ")[1])
@@ -201,7 +235,7 @@ func (iwr IwRunner) parseScanResults(output []byte) []*IwBss {
 			mainBss.Signal, _ = strconv.ParseFloat(strings.Split(line, " ")[1], 64)
 		}
 		if strings.HasPrefix(line, "SSID:") {
-			mainBss.Ssid = strings.SplitN(line, ": ", 1)[1]
+			mainBss.Ssid = strings.SplitN(line, ": ", 2)[1]
 		}
 		if strings.HasPrefix(line, "* secondary channel offset") {
 			mainBss.Ht = HT_TABLE[strings.TrimSpace(strings.Split(line, ":")[1])]
@@ -218,6 +252,18 @@ func (iwr IwRunner) parseScanResults(output []byte) []*IwBss {
 	return bssList
 }
 
+/*
+Parse the scan time in seconds from the output of the 'time -p "scan"' command.
+
+ 'time -p' Command output format is below:
+ real     0.01
+ user     0.01
+ sys      0.00
+
+@param output: bytestream command output
+@returns float64 time in seconds
+
+*/
 func (iwr IwRunner) parseScanTime(output []byte) float64 {
 	outputLines := strings.Split(string(output), "\n")
 	for lineNum, line := range outputLines {
@@ -225,14 +271,25 @@ func (iwr IwRunner) parseScanTime(output []byte) float64 {
 		if strings.HasPrefix(line, IW_TIME_COMMAND_OUTPUT_START) &&
 			strings.HasPrefix(outputLines[lineNum+1], "user") &&
 			strings.HasPrefix(outputLines[lineNum+2], "sys") {
-			toRet, _ := strconv.ParseFloat(strings.Split(line, " ")[1], 64)
+			delimiter := func(c rune) bool {
+				return c == ' '
+			}
+			toRet, _ := strconv.ParseFloat(strings.FieldsFunc(line, delimiter)[1], 64)
 			return toRet
 		}
 	}
+	iwr.s.Log(fmt.Sprintf("outputlines: %s", string(output)))
 	iwr.s.Fatal("Could not parse scan time")
 	return 0
 }
 
+/*
+Determines security from the given list of supported securities.
+
+@param supportedSecurities: slice of supported securitices from scan.
+
+@return SECURITY profile string
+*/
 func determineSecurity(supportedSecurities []string) string {
 	if len(supportedSecurities) == 0 {
 		return SECURITY_OPEN
@@ -246,37 +303,39 @@ func determineSecurity(supportedSecurities []string) string {
 /*
 Runs a scan on a specified interface and frequencies (if applicable). Returns scan time and BSS list from SSIDs.
 
-@param iface: the interface to run the iw c)ommand against
+@param iface: the interface to run the iw command against
 @param frequencies: list of int frequencies in Mhz to scan.
 @param ssids: list of string SSIDs to send probe requests for.
 
-@returns total scan time and bss list from SSIDs.
+@returns IwTimedScan struct containing the total scan time and the recovered BssList
 */
 func (iwr IwRunner) TimedScan(iface string, frequencies []int, ssids []string) *IwTimedScan {
 	var buffer bytes.Buffer
-	freq_param := ""
-	ssid_param := ""
+	freqParam := ""
+	ssidParam := ""
 
 	var bssList []*IwBss
 	if len(frequencies) > 0 {
 		for _, freq := range frequencies {
-			buffer.WriteString(fmt.Sprintf(" freq %s", string(freq)))
+			buffer.WriteString(fmt.Sprintf(" freq %d", freq))
 		}
-		freq_param = buffer.String()
+		freqParam = buffer.String()
 		buffer.Reset()
 	}
 	if len(ssids) > 0 {
 		for _, ssid := range ssids {
 			buffer.WriteString(fmt.Sprintf(" ssid %s", string(ssid)))
 		}
-		ssid_param = buffer.String()
+		ssidParam = buffer.String()
 		buffer.Reset()
 	}
-	iw_command := fmt.Sprintf("%s dev %s scan%s%s", iwr.iw_command, iface, freq_param, ssid_param)
-	command := fmt.Sprintf(IW_TIME_COMMAND_FORMAT, iw_command)
-	scanOut, err := clientCommandExec(iwr.ctx, command)
+	iwCommand := fmt.Sprintf("%s dev %s scan%s%s", iwr.iwCommand, iface,
+		freqParam, ssidParam)
+	command := fmt.Sprintf(IW_TIME_COMMAND_FORMAT, iwCommand)
+	scanOut, err := iwr.Run(iwr.ctx, command)
+	iwr.s.Log(fmt.Sprintf("shellCommand %s", command))
 	if status, _ := testexec.GetWaitStatus(err); int(status) != 0 {
-		iwr.s.Log(fmt.Sprintf("scan exit_status: %d", status))
+		iwr.s.Log(fmt.Sprintf("scan exit status: %d", status))
 		return &IwTimedScan{0, nil}
 	}
 	if len(scanOut) < 0 {
@@ -288,6 +347,6 @@ func (iwr IwRunner) TimedScan(iface string, frequencies []int, ssids []string) *
 	} else {
 		bssList = iwr.parseScanResults(scanOut)
 	}
-	scan_time := iwr.parseScanTime(scanOut)
-	return &IwTimedScan{scan_time, bssList}
+	scanTime := iwr.parseScanTime(scanOut)
+	return &IwTimedScan{scanTime, bssList}
 }
