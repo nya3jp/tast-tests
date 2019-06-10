@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "fe273f71_6f6e3e4b",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-10T02:11:33Z",
+      "side": 1,
+      "message": "Thanks, Garrick. I didn\u0027t read the bug thoroughly.\nkillall was actually a fix added by CL:1111737. So, let\u0027s keep this as is.",
+      "parentUuid": "560fde5c_720f2e0f",
+      "range": {
+        "startLine": 180,
+        "startChar": 59,
+        "endLine": 180,
+        "endChar": 75
+      },
+      "revId": "fd334af2b3a05b97f9e5818c58ab868e37f56ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "979c9c58_e28ce183",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 4
