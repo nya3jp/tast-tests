@@ -68,23 +68,5 @@ window.CCAUIMultiCamera = class {
     });
   }
 
-  /**
-   * Toggles the grid option button.
-   * @return {Promise<boolean>} Whether grid is enabled after toggling
-   */
-  static toggleGrid() {
-    const prev = cca.state.get('grid');
-    const gridOption = document.querySelector('#toggle-grid');
-    gridOption.click();
-    return new Promise((resolve, reject) => {
-      const interval = setInterval(() => {
-        if (cca.state.get('grid') !== prev) {
-          clearInterval(interval);
-          resolve(cca.state.get('grid'));
-        }
-      }, 1000);
-    });
-  }
-
 };
 })();

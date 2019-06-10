@@ -35,7 +35,7 @@ func CCAUIMultiCamera(ctx context.Context, s *testing.State) {
 	}
 	defer app.Close(ctx)
 
-	if err := app.CheckVideoActive(ctx); err != nil {
+	if err := app.WaitForVideoActive(ctx); err != nil {
 		s.Fatal("Preview is inactive after launching App: ", err)
 	}
 	s.Log("Preview started")
@@ -78,7 +78,7 @@ func CCAUIMultiCamera(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to restart CCA: ", err)
 	}
 
-	if err := app.CheckVideoActive(ctx); err != nil {
+	if err := app.WaitForVideoActive(ctx); err != nil {
 		s.Fatal("Preview is inactive after launching App: ", err)
 	}
 
