@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "83b8f255_b8bb1e38",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-10T02:01:42Z",
+      "side": 1,
+      "message": "Hmm, this bug is already fixed. Is kill-server still unreliable?",
+      "range": {
+        "startLine": 180,
+        "startChar": 59,
+        "endLine": 180,
+        "endChar": 75
+      },
+      "revId": "fd334af2b3a05b97f9e5818c58ab868e37f56ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "979c9c58_e28ce183",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 4
@@ -64,6 +87,29 @@
         "startChar": 12,
         "endLine": 270,
         "endChar": 20
+      },
+      "revId": "fd334af2b3a05b97f9e5818c58ab868e37f56ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "798cdd4d_8a0f9076",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-10T02:01:42Z",
+      "side": 1,
+      "message": "nit: Any error isn\u0027t returned when guest type is found.",
+      "range": {
+        "startLine": 282,
+        "startChar": 45,
+        "endLine": 282,
+        "endChar": 54
       },
       "revId": "fd334af2b3a05b97f9e5818c58ab868e37f56ddb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -104,6 +150,29 @@
         "startChar": 3,
         "endLine": 285,
         "endChar": 7
+      },
+      "revId": "fd334af2b3a05b97f9e5818c58ab868e37f56ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8a339bb_41b5df88",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-10T02:01:42Z",
+      "side": 1,
+      "message": "Question: Is there any plan to change this? If so, it might be better to have a buganizer\u0027s number here.",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 15
       },
       "revId": "fd334af2b3a05b97f9e5818c58ab868e37f56ddb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
