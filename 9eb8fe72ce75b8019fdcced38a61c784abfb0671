@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab65d16d_3b586bad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-10T06:54:01Z",
+      "side": 1,
+      "message": "Could you use arc.Booted precondition, for better performance?",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 48
+      },
+      "revId": "9eb8fe72ce75b8019fdcced38a61c784abfb0671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58ccee30_713bbb0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-10T06:54:01Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "9eb8fe72ce75b8019fdcced38a61c784abfb0671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56f75b47_76012ba5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-10T06:54:01Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "9eb8fe72ce75b8019fdcced38a61c784abfb0671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
