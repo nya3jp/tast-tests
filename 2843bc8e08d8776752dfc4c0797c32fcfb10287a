@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e13501e_47405b72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-10T17:34:05Z",
+      "side": 1,
+      "message": "Could you use MustCompile?\n\nhttps://golang.org/pkg/regexp/#MustCompile",
+      "revId": "2843bc8e08d8776752dfc4c0797c32fcfb10287a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eecc3822_f5137bf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fp_sensor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-10T17:34:05Z",
+      "side": 1,
+      "message": "Could you update the error message?",
+      "range": {
+        "startLine": 37,
+        "startChar": 34,
+        "endLine": 37,
+        "endChar": 63
+      },
+      "revId": "2843bc8e08d8776752dfc4c0797c32fcfb10287a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
