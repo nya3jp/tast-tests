@@ -31,7 +31,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeJPEG},
 		Data:         []string{"lake_4160x3120_P420.yuv"},
-		Timeout:      6 * time.Minute,
+		Timeout:      10 * time.Minute,
 	})
 }
 
