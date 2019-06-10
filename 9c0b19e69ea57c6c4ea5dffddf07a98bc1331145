@@ -22,6 +22,30 @@
       "revId": "9c0b19e69ea57c6c4ea5dffddf07a98bc1331145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db8ed542_99ad9b52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-06-10T22:11:14Z",
+      "side": 1,
+      "message": "Sure thing.  I\u0027ve put up a separate CL for this change and blocked this one on it.",
+      "parentUuid": "4e4694c1_0ff68922",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 33
+      },
+      "revId": "9c0b19e69ea57c6c4ea5dffddf07a98bc1331145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
