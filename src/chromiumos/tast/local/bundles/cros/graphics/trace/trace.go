@@ -57,15 +57,15 @@ func RunTest(ctx context.Context, s *testing.State, traces map[string]string) {
 		s.Fatal("Failed to enable Crostini preference setting: ", err)
 	}
 
-	s.Log("Setting up component ", vm.LiveComponent)
-	err = vm.SetUpComponent(ctx, vm.LiveComponent)
+	s.Log("Setting up component ", vm.StagingComponent)
+	err = vm.SetUpComponent(ctx, vm.StagingComponent)
 	if err != nil {
 		s.Fatal("Failed to set up component: ", err)
 	}
 	defer vm.UnmountComponent(ctx)
 
 	s.Log("Creating default container")
-	cont, err := vm.CreateDefaultContainer(ctx, s.OutDir(), cr.User(), vm.LiveImageServer, "")
+	cont, err := vm.CreateDefaultContainer(ctx, s.OutDir(), cr.User(), vm.StagingImageServer, "")
 	if err != nil {
 		s.Fatal("Failed to set up default container: ", err)
 	}
