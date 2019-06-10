@@ -70,6 +70,28 @@ const (
 	WindowStatePIP = 6
 )
 
+// GoString returns a string representation of WindowState.
+func (s WindowState) GoString() string {
+	switch s {
+	case WindowStateNormal:
+		return "WindowStateNormal"
+	case WindowStateMaximized:
+		return "WindowStateMaximized"
+	case WindowStateFullscreen:
+		return "WindowStateFullscreen"
+	case WindowStateMinimized:
+		return "WindowStateMinimized"
+	case WindowStatePrimarySnapped:
+		return "WindowStatePrimarySnapped"
+	case WindowStateSecondarySnapped:
+		return "WindowStateSecondarySnapped"
+	case WindowStatePIP:
+		return "WindowStatePIP"
+	default:
+		return fmt.Sprintf("Uknown window state: %d", s)
+	}
+}
+
 // taskInfo contains the information found in TaskRecord. See:
 // https://android.googlesource.com/platform/frameworks/base/+/refs/heads/pie-release/services/core/java/com/android/server/am/TaskRecord.java
 type taskInfo struct {
@@ -350,7 +372,7 @@ func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to Poin
 func (ac *Activity) SetWindowState(ctx context.Context, state WindowState) error {
 	t, err := ac.getTaskInfo(ctx)
 	if err != nil {
-		errors.Wrap(err, "could not get task info")
+		return errors.Wrap(err, "could not get task info")
 	}
 
 	switch state {
@@ -363,6 +385,15 @@ func (ac *Activity) SetWindowState(ctx context.Context, state WindowState) error
 		return errors.Wrap(err, "could not execute 'am task set-winstate'")
 	}
 	return nil
+}
+
+// GetWindowState returns the window state.
+func (ac *Activity) GetWindowState(ctx context.Context) (WindowState, error) {
+	task, err := ac.getTaskInfo(ctx)
+	if err != nil {
+		return WindowStateNormal, errors.Wrap(err, "could not get task info")
+	}
+	return task.windowState, nil
 }
 
 // WaitForIdle returns whether the activity is idle.
