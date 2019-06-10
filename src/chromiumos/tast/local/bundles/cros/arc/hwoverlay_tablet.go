@@ -14,7 +14,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/testing"
 )
@@ -27,28 +27,33 @@ func init() {
 		// TODO(ricardoq): enable test once the bug that fixes hardware overlay gets fixed. See: http://b/120557146
 		Attr:         []string{"disabled", "informational"},
 		SoftwareDeps: []string{"drm_atomic", "tablet_mode", "android_p", "chrome"},
+		Pre:          arc.Booted(),
 		Timeout:      4 * time.Minute,
 	})
 }
 
 func HWOverlayTablet(ctx context.Context, s *testing.State) {
-	// TODO(ricardoq): Add clamshell mode tests.
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	cr := s.PreValue().(arc.PreData).Chrome
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to get a Test API connection: ", err)
 	}
 
-	a, err := arc.New(ctx, s.OutDir())
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
+		s.Fatal("Failed to get tablet mode: ", err)
 	}
-	defer a.Close()
+	// Be nice and restore tablet mode to its original state on exit.
+	defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeEnabled)
+
+	// TODO(ricardoq): Add clamshell mode tests.
+	// Force Chrome to be in tablet mode.
+	if err := ash.SetTabletModeEnabled(ctx, tconn, true); err != nil {
+		s.Fatal("Failed to disable tablet mode: ", err)
+	}
+
+	a := s.PreValue().(arc.PreData).ARC
 
 	// Any ARC++ activity could be used for this test. Using one that is already installed.
 	act, err := arc.NewActivity(a, "com.android.settings", ".Settings")
