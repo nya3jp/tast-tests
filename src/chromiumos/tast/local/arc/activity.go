@@ -350,7 +350,7 @@ func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to Poin
 func (ac *Activity) SetWindowState(ctx context.Context, state WindowState) error {
 	t, err := ac.getTaskInfo(ctx)
 	if err != nil {
-		errors.Wrap(err, "could not get task info")
+		return errors.Wrap(err, "could not get task info")
 	}
 
 	switch state {
@@ -363,6 +363,22 @@ func (ac *Activity) SetWindowState(ctx context.Context, state WindowState) error
 		return errors.Wrap(err, "could not execute 'am task set-winstate'")
 	}
 	return nil
+}
+
+// GetWindowState returns the window state as a string
+func (ac *Activity) GetWindowState(ctx context.Context) (response string, err error) {
+	t, err := ac.getTaskInfo(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "could not get task info")
+	}
+
+	cmd := ac.a.Command(ctx, "am", "task", "get-winstate", strconv.Itoa(t.id))
+	windowState, err := cmd.Output()
+
+	if err != nil {
+		return "", errors.Wrap(err, "could not execute 'am task get-winstate'")
+	}
+	return string(windowState), nil
 }
 
 // WaitForIdle returns whether the activity is idle.
