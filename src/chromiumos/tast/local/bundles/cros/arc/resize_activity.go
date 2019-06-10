@@ -91,10 +91,6 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set window state to Normal: ", err)
 	}
 
-	if err := act.WaitForIdle(ctx, 4*time.Second); err != nil {
-		s.Fatal("Failed to wait for idle activity: ", err)
-	}
-
 	bounds, err := act.WindowBounds(ctx)
 	if err != nil {
 		s.Fatal("Failed to get activity bounds: ", err)
