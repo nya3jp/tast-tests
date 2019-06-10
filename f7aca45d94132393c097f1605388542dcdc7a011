@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f63eb667_97079572",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-10T00:42:01Z",
+      "side": 1,
+      "message": "Sorry I failed to catch this in earlier iteration, but could you modify this to\n\n filepath.Base(outputFilePath)\n\nsince outputFilePath is an absolute path which is long but not very useful after uploading output files to cloud storage?",
+      "range": {
+        "startLine": 70,
+        "startChar": 88,
+        "endLine": 70,
+        "endChar": 102
+      },
+      "revId": "f7aca45d94132393c097f1605388542dcdc7a011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6706648_1f4aa988",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-10T00:42:01Z",
+      "side": 1,
+      "message": "This makes multiline string (wantTree) to single line string, and makes it a harder to see the output.\n\nCould you just pass wantTree instead? Please see also the comment to cleanTree.",
+      "range": {
+        "startLine": 84,
+        "startChar": 24,
+        "endLine": 84,
+        "endChar": 52
+      },
+      "revId": "f7aca45d94132393c097f1605388542dcdc7a011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de32e8ca_75c0ff66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-10T00:42:01Z",
+      "side": 1,
+      "message": "This logic looks nice :)",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 2
+      },
+      "revId": "f7aca45d94132393c097f1605388542dcdc7a011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb12f377_2f3dc09b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-10T00:42:01Z",
+      "side": 1,
+      "message": "We would need to strip the leading whitespace. Also we don\u0027t need parentheses. In the simplest way:\n\n `\\s*location\u003d.*`",
+      "range": {
+        "startLine": 116,
+        "startChar": 30,
+        "endLine": 116,
+        "endChar": 49
+      },
+      "revId": "f7aca45d94132393c097f1605388542dcdc7a011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79160f71_92b5f25e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-10T00:42:01Z",
+      "side": 1,
+      "message": "Let\u0027s join with newline so the final string is still multiline string.\n\n strings.Join(cleanedTree, \"\\n\")",
+      "range": {
+        "startLine": 121,
+        "startChar": 8,
+        "endLine": 121,
+        "endChar": 37
+      },
+      "revId": "f7aca45d94132393c097f1605388542dcdc7a011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
