@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "38069843_f7a16991",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/hwoverlay_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-10T07:28:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab65d16d_3b586bad",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 48
+      },
+      "revId": "9eb8fe72ce75b8019fdcced38a61c784abfb0671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58ccee30_713bbb0b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "f7e1d4b7_9bc54996",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-10T07:28:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58ccee30_713bbb0b",
+      "revId": "9eb8fe72ce75b8019fdcced38a61c784abfb0671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56f75b47_76012ba5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "9eb8fe72ce75b8019fdcced38a61c784abfb0671",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cae0a22_1c915ea2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-10T07:28:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56f75b47_76012ba5",
+      "revId": "9eb8fe72ce75b8019fdcced38a61c784abfb0671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
