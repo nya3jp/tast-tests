@@ -37,10 +37,7 @@ func init() {
 }
 
 func ResizeActivity(ctx context.Context, s *testing.State) {
-	// Force Chrome to be in clamshell mode, where windows are resizable.
-	// --use-test-config is needed to enable Shelf's Mojo testing interface.
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(),
-		chrome.ExtraArgs("--force-tablet-mode=clamshell", "--use-test-config"))
+	cr, err := chrome.New(ctx, chrome.ARCEnabled())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
@@ -68,6 +65,18 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 	}
 	// Be nice and restore shelf behavior to its original state on exit.
 	defer ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, origShelfBehavior)
+
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get tablet mode: ", err)
+	}
+	// Be nice and restore tablet mode to its original state on exit.
+	defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeEnabled)
+
+	// Force Chrome to be in clamshell mode, where windows are resizable.
+	if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
+		s.Fatal("Failed to disable tablet mode: ", err)
+	}
 
 	a, err := arc.New(ctx, s.OutDir())
 	if err != nil {

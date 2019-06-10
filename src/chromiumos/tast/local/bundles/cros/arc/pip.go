@@ -52,8 +52,7 @@ func PIP(ctx context.Context, s *testing.State) {
 	}
 
 	// For debugging, add chrome.ExtraArgs("--show-taps")
-	// --use-test-config is needed to enable Shelf's Mojo testing interface.
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--use-test-config"))
+	cr, err := chrome.New(ctx, chrome.ARCEnabled())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}

@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/testing"
 )
@@ -32,8 +33,7 @@ func init() {
 }
 
 func HWOverlayTablet(ctx context.Context, s *testing.State) {
-	// TODO(ricardoq): Add clamshell mode tests.
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view"))
+	cr, err := chrome.New(ctx, chrome.ARCEnabled())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
@@ -42,6 +42,19 @@ func HWOverlayTablet(ctx context.Context, s *testing.State) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to get a Test API connection: ", err)
+	}
+
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get tablet mode: ", err)
+	}
+	// Be nice and restore tablet mode to its original state on exit.
+	defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeEnabled)
+
+	// TODO(ricardoq): Add clamshell mode tests.
+	// Force Chrome to be in tablet mode.
+	if err := ash.SetTabletModeEnabled(ctx, tconn, true); err != nil {
+		s.Fatal("Failed to disable tablet mode: ", err)
 	}
 
 	a, err := arc.New(ctx, s.OutDir())
