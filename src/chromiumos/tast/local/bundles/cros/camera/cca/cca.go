@@ -9,10 +9,14 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"os"
+	"path/filepath"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -24,6 +28,27 @@ const (
 	FacingBack Facing = "environment"
 	// FacingFront is the constant string from JavaScript VideoFacingModeEnum.
 	FacingFront = "user"
+)
+
+// Mode is capture mode in CCA.
+type Mode string
+
+const (
+	// Video is the mode used to record video.
+	Video Mode = "video-mode"
+	// Photo is the mode used to take photo.
+	Photo Mode = "photo-mode"
+	// Square is the mode used to take square photo.
+	Square Mode = "square-mode"
+	// Portrait is the mode used to take portrait photo.
+	Portrait Mode = "portrait-mode"
+)
+
+var (
+	// PhotoPattern is the filename format of photoes taken by CCA.
+	PhotoPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\.jpg$`)
+	// VideoPattern is the filename format of videos recorded by CCA.
+	VideoPattern = regexp.MustCompile(`^VID_\d{8}_\d{6}[^.]*\.mkv$`)
 )
 
 // App represents a CCA (Chrome Camera App) instance.
@@ -145,9 +170,45 @@ func (a *App) checkVideoState(ctx context.Context, active bool, duration time.Du
 	return nil
 }
 
-// CheckVideoActive checks the video is active for 1 second.
-func (a *App) CheckVideoActive(ctx context.Context) error {
+// WaitForVideoActive waits for the video to become active for 1 second.
+func (a *App) WaitForVideoActive(ctx context.Context) error {
 	return a.checkVideoState(ctx, true, time.Second)
+}
+
+// WaitForSavedFile waits for captured file to be saved.
+func (a *App) WaitForSavedFile(ctx context.Context, pat *regexp.Regexp, ts time.Time) (os.FileInfo, error) {
+	path, err := a.GetSavedDir(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	const timeout = 5 * time.Second
+	var result os.FileInfo
+	if err = testing.Poll(ctx, func(ctx context.Context) error {
+		files, err := ioutil.ReadDir(path)
+		if err != nil {
+			return errors.Wrap(err, "failed to read the directory for saving media files")
+		}
+		curTs := ts
+		for _, file := range files {
+			if file.ModTime().Before(curTs) {
+				continue
+			}
+			if file.ModTime().After(ts) {
+				ts = file.ModTime()
+			}
+			testing.ContextLog(ctx, "New file found: ", file.Name())
+			if pat.MatchString(file.Name()) {
+				testing.ContextLog(ctx, "Found a match: ", file.Name())
+				result = file
+				return nil
+			}
+		}
+		return errors.New("no matching output file found")
+	}, &testing.PollOptions{Timeout: timeout}); err != nil {
+		err = errors.Wrapf(err, "no matching output file found after %v", timeout)
+	}
+	return result, err
 }
 
 // CheckVideoInactive checks the video is inactive for 1 second.
@@ -182,6 +243,35 @@ func (a *App) GetNumOfCameras(ctx context.Context) (int, error) {
 	return numCameras, err
 }
 
+// GetState gets value of option from its classname.
+func (a *App) GetState(ctx context.Context, state string) (bool, error) {
+	var result bool
+	err := a.conn.Eval(ctx, fmt.Sprintf("cca.state.get('%s')", state), &result)
+	if err != nil {
+		err = errors.Wrapf(err, "failed to get state: %v", state)
+	}
+	return result, err
+}
+
+// GetTimerDelay gets duration of timer delay.
+func (a *App) GetTimerDelay(ctx context.Context) (time.Duration, error) {
+	if delay10, err := a.GetState(ctx, "_10sec"); err != nil {
+		return 0, errors.Wrap(err, "failed to get 10 second timer state")
+	} else if delay10 {
+		return 10 * time.Second, nil
+	}
+	return 3 * time.Second, nil
+}
+
+// GetSavedDir gets path where captured files are saved.
+func (a *App) GetSavedDir(ctx context.Context) (string, error) {
+	path, err := cryptohome.UserPath(ctx, a.cr.User())
+	if err == nil {
+		path = filepath.Join(path, "Downloads")
+	}
+	return path, err
+}
+
 // CheckFacing returns an error if the active camera facing is not expected.
 func (a *App) CheckFacing(ctx context.Context, expected Facing) error {
 	checkFacing := fmt.Sprintf("CCAUIMultiCamera.checkFacing(%q)", expected)
@@ -200,16 +290,70 @@ func (a *App) CheckSwitchDeviceButtonExist(ctx context.Context, expected bool) e
 	return nil
 }
 
+func (a *App) toggleOption(ctx context.Context, option string, toggleSelector string) (bool, error) {
+	prev, err := a.GetState(ctx, option)
+	if err != nil {
+		return false, err
+	}
+	code := fmt.Sprintf("document.querySelector('%s').click()", toggleSelector)
+	if err := a.conn.Eval(ctx, code, nil); err != nil {
+		return false, errors.Wrapf(err, "failed to click on toggle button of selector: %v", toggleSelector)
+	}
+	code = fmt.Sprintf("cca.state.get('%s') !== %t", option, prev)
+	if err := a.conn.WaitForExpr(ctx, code); err != nil {
+		return false, errors.Wrapf(err, "failed to wait for toggling option: %v", toggleSelector)
+	}
+	return a.GetState(ctx, option)
+}
+
 // ToggleGridOption toggles the grid option and returns whether it's enabled after toggling.
 func (a *App) ToggleGridOption(ctx context.Context) (bool, error) {
-	var grid bool
-	err := a.conn.EvalPromise(ctx, "CCAUIMultiCamera.toggleGrid()", &grid)
-	return grid, err
+	return a.toggleOption(ctx, "grid", "#toggle-grid")
+}
+
+// ToggleTimerOption toggles the timer option and returns whether it's enabled after toggling.
+func (a *App) ToggleTimerOption(ctx context.Context) (bool, error) {
+	return a.toggleOption(ctx, "timer", "#toggle-timer")
+}
+
+// ClickShutter clicks the shutter button.
+func (a *App) ClickShutter(ctx context.Context) error {
+	err := a.conn.Eval(ctx, "CCAUICapture.clickShutter()", nil)
+	if err != nil {
+		err = errors.Wrap(err, "failed to click shutter button")
+	}
+	return err
 }
 
 // SwitchCamera switches to next camera device.
 func (a *App) SwitchCamera(ctx context.Context) error {
 	return a.conn.EvalPromise(ctx, "CCAUIMultiCamera.switchCamera()", nil)
+}
+
+// SwitchMode switches to specified capture mode.
+func (a *App) SwitchMode(ctx context.Context, mode Mode) error {
+	if active, err := a.GetState(ctx, string(mode)); err != nil {
+		return err
+	} else if active {
+		return nil
+	}
+	code := fmt.Sprintf("CCAUICapture.switchMode('%s')", mode)
+	if err := a.conn.Eval(ctx, code, nil); err != nil {
+		return errors.Wrapf(err, "failed to switch to mode: %v", mode)
+	}
+	if err := a.WaitForVideoActive(ctx); err != nil {
+		return errors.Wrapf(err, "video inactived after switch to mode: %v", mode)
+	}
+	return nil
+}
+
+// WaitForState waits until state become active/inactive.
+func (a *App) WaitForState(ctx context.Context, state string, active bool) error {
+	code := fmt.Sprintf("cca.state.get('%s') === %t", state, active)
+	if err := a.conn.WaitForExpr(ctx, code); err != nil {
+		return errors.Wrapf(err, "failed to wait for activation of state: %v, %v", state, active)
+	}
+	return nil
 }
 
 // CheckGridOption checks whether grid option enable state is as expected.
