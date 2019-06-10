@@ -144,6 +144,15 @@ func (m *Manager) GetProfiles(ctx context.Context) ([]dbus.ObjectPath, error) {
 	return props["Profiles"].([]dbus.ObjectPath), nil
 }
 
+// FIXME: GetProfiles returns a list of profiles.
+func (m *Manager) GetHoge(ctx context.Context) (string, error) {
+	props, err := getProperties(ctx, m.obj, dbusManagerInterface)
+	if err != nil {
+		return nil, err
+	}
+	return props["UninitializedTechnologies"].(string), nil
+}
+
 // ConfigureServiceForProfile configures a service at the given profile path.
 func (m *Manager) ConfigureServiceForProfile(ctx context.Context, path dbus.ObjectPath, props map[string]interface{}) (dbus.ObjectPath, error) {
 	var service dbus.ObjectPath
