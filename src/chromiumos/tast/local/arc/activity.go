@@ -57,18 +57,40 @@ const (
 	// WindowStateNormal represents the "not maximized" state, but users can maximize it if they want.
 	WindowStateNormal WindowState = 0
 	// WindowStateMaximized is the maximized window state.
-	WindowStateMaximized = 1
+	WindowStateMaximized WindowState = 1
 	// WindowStateFullscreen is the fullscreen window state.
-	WindowStateFullscreen = 2
+	WindowStateFullscreen WindowState = 2
 	// WindowStateMinimized is the minimized window state.
-	WindowStateMinimized = 3
+	WindowStateMinimized WindowState = 3
 	// WindowStatePrimarySnapped is the primary snapped state.
-	WindowStatePrimarySnapped = 4
+	WindowStatePrimarySnapped WindowState = 4
 	// WindowStateSecondarySnapped is the secondary snapped state.
-	WindowStateSecondarySnapped = 5
+	WindowStateSecondarySnapped WindowState = 5
 	// WindowStatePIP is the Picture-in-Picture state.
-	WindowStatePIP = 6
+	WindowStatePIP WindowState = 6
 )
+
+// String returns a human-readable string representation for type WindowState.
+func (s WindowState) String() string {
+	switch s {
+	case WindowStateNormal:
+		return "WindowStateNormal"
+	case WindowStateMaximized:
+		return "WindowStateMaximized"
+	case WindowStateFullscreen:
+		return "WindowStateFullscreen"
+	case WindowStateMinimized:
+		return "WindowStateMinimized"
+	case WindowStatePrimarySnapped:
+		return "WindowStatePrimarySnapped"
+	case WindowStateSecondarySnapped:
+		return "WindowStateSecondarySnapped"
+	case WindowStatePIP:
+		return "WindowStatePIP"
+	default:
+		return fmt.Sprintf("Uknown window state: %d", s)
+	}
+}
 
 // taskInfo contains the information found in TaskRecord. See:
 // https://android.googlesource.com/platform/frameworks/base/+/refs/heads/pie-release/services/core/java/com/android/server/am/TaskRecord.java
@@ -349,12 +371,12 @@ func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to Poin
 	return ac.swipe(ctx, src, to, t)
 }
 
-// SetWindowState sets the window state.
+// SetWindowState sets the window state, and waits upto 10 seconds for the activity to become idle.
 // Supported states: WindowStateNormal, WindowStateMaximized, WindowStateFullscreen, WindowStateMinimized
 func (ac *Activity) SetWindowState(ctx context.Context, state WindowState) error {
 	t, err := ac.getTaskInfo(ctx)
 	if err != nil {
-		errors.Wrap(err, "could not get task info")
+		return errors.Wrap(err, "could not get task info")
 	}
 
 	switch state {
@@ -366,7 +388,21 @@ func (ac *Activity) SetWindowState(ctx context.Context, state WindowState) error
 	if err = ac.a.Command(ctx, "am", "task", "set-winstate", strconv.Itoa(t.id), strconv.Itoa(int(state))).Run(); err != nil {
 		return errors.Wrap(err, "could not execute 'am task set-winstate'")
 	}
+
+	testing.ContextLog(ctx, "Waiting for activity to become idle")
+	if err := ac.WaitForIdle(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed waiting for activity to become idle")
+	}
 	return nil
+}
+
+// GetWindowState returns the window state.
+func (ac *Activity) GetWindowState(ctx context.Context) (WindowState, error) {
+	task, err := ac.getTaskInfo(ctx)
+	if err != nil {
+		return WindowStateNormal, errors.Wrap(err, "could not get task info")
+	}
+	return task.windowState, nil
 }
 
 // WaitForIdle returns whether the activity is idle.
