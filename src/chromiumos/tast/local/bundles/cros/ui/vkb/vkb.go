@@ -92,7 +92,10 @@ new Promise((resolve, reject) => {
 			try {
 				const keyboard = root.find({ attributes: { role: 'keyboard' }});
 				// English keyboard should have at least 26 keys.
-				if (keyboard && keyboard.findAll({ attributes: { role: 'button' }}).length >= 26) {
+				if (keyboard &&
+					  keyboard.findAll({ attributes: { role: 'button' }}).filter(
+						  button => button.location.width > 0 && button.location.height > 0
+					  ).length >= 26) {
 					resolve();
 					return;
 				}
