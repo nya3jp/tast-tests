@@ -181,6 +181,9 @@ var androidDeps = []string{
 	"android",
 	"android_all",
 	"android_p",
+	"android_vm",
+	"android_all_vm",
+	"android_p_vm",
 }
 
 // checkSoftwareDeps ensures the current test declares Android software dependencies.
