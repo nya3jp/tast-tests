@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f4dd6282_f91c9ea4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-10T01:16:25Z",
+      "side": 1,
+      "message": "Makes sense, let\u0027s run on stable Android for now.",
+      "parentUuid": "9b660b77_fed732fd",
+      "range": {
+        "startLine": 30,
+        "startChar": 25,
+        "endLine": 30,
+        "endChar": 38
+      },
+      "revId": "c4f97ccfc1ec45edf66b93e02a7fd7cb7356b9dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e27b1896_51220e8e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "c4f97ccfc1ec45edf66b93e02a7fd7cb7356b9dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfe3fbb7_82ea6070",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-10T01:16:25Z",
+      "side": 1,
+      "message": "No, d.Run does not use ssh(1) but uses SSH protocol implementation in Go. Any error occurred outside of command execution should be reported in err.",
+      "parentUuid": "e27b1896_51220e8e",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 5
+      },
+      "revId": "c4f97ccfc1ec45edf66b93e02a7fd7cb7356b9dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
