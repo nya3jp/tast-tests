@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22862f1f_61fa1d0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_sanity.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-10T00:17:39Z",
+      "side": 1,
+      "message": "huge nit: start",
+      "range": {
+        "startLine": 19,
+        "startChar": 33,
+        "endLine": 19,
+        "endChar": 39
+      },
+      "revId": "e08688a05068b580b37157c591514ce20593351b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70c91a08_f18a3d4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_sanity.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-10T00:17:39Z",
+      "side": 1,
+      "message": "Could you submit the Android code before landing this CL for reproducibity?",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 52
+      },
+      "revId": "e08688a05068b580b37157c591514ce20593351b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4a1bd9c_e068fa77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_sanity.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-10T00:17:39Z",
+      "side": 1,
+      "message": "Sorry I forgot to point this out in earlier iteration, but could you set the timeout to no less than 4 minutes? I believe unit test will fail if it\u0027s not set.\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/registration_test.go",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 29
+      },
+      "revId": "e08688a05068b580b37157c591514ce20593351b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6a8b203_0c7e8dc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_sanity.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-10T00:17:39Z",
+      "side": 1,
+      "message": "5 seconds sounds a bit short considering we have several slow devices (e.g. ARC boot takes ~3 minutes on those devices). We may just want to omit the timeout and use the default context timeout.\n\nAlso, please consider using the default interval unless there\u0027s strong reason; it\u0027s usually good to finish the test faster.\n\nSo my overall recommendation here is to replace \u0026testing.PollOptions{...} with nil.",
+      "range": {
+        "startLine": 62,
+        "startChar": 25,
+        "endLine": 62,
+        "endChar": 49
+      },
+      "revId": "e08688a05068b580b37157c591514ce20593351b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ff3cefa_094b0672",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_sanity.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-10T00:17:39Z",
+      "side": 1,
+      "message": "Please try to include more descriptive message about the condition we waited for, rather than just \"Error: \". In this case, err will be something like:\n\n context deadline exceeded; last error follows: bounds should be positive but were 0x0\n\nSo I recommend for example:\n\n s.Error(\"Failed waiting for app window: \", err)",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 25
+      },
+      "revId": "e08688a05068b580b37157c591514ce20593351b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
