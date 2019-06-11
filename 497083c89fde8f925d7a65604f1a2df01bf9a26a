@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5dc60af_e0fbbaa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-06-11T19:00:11Z",
+      "side": 1,
+      "message": "Looks like the newline disappeared :P",
+      "range": {
+        "startLine": 33,
+        "startChar": 27,
+        "endLine": 33,
+        "endChar": 28
+      },
+      "revId": "497083c89fde8f925d7a65604f1a2df01bf9a26a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15aac7af_4e86eeba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-06-11T19:00:11Z",
+      "side": 1,
+      "message": "Do we want clients to be able to access these?",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 7
+      },
+      "revId": "497083c89fde8f925d7a65604f1a2df01bf9a26a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a53c2da8_98875282",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-06-11T19:00:11Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 19
+      },
+      "revId": "497083c89fde8f925d7a65604f1a2df01bf9a26a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "384a042a_54738584",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-06-11T19:00:11Z",
+      "side": 1,
+      "message": "add space",
+      "range": {
+        "startLine": 92,
+        "startChar": 28,
+        "endLine": 92,
+        "endChar": 29
+      },
+      "revId": "497083c89fde8f925d7a65604f1a2df01bf9a26a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e109f13d_37722d5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-06-11T19:00:11Z",
+      "side": 1,
+      "message": "It seems like this would be best logged only if there was an error.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "range": {
+        "startLine": 224,
+        "startChar": 1,
+        "endLine": 224,
+        "endChar": 51
+      },
+      "revId": "497083c89fde8f925d7a65604f1a2df01bf9a26a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "145a6401_1aae4861",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-06-11T19:00:11Z",
+      "side": 1,
+      "message": "It\u0027s preferable to avoid in-band errors and instead just have this method return an error if it needs to.\nhttps://github.com/golang/go/wiki/CodeReviewComments#in-band-errors",
+      "range": {
+        "startLine": 227,
+        "startChar": 10,
+        "endLine": 227,
+        "endChar": 31
+      },
+      "revId": "497083c89fde8f925d7a65604f1a2df01bf9a26a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

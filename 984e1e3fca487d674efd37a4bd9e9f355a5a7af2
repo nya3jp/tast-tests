@@ -648,6 +648,30 @@
     },
     {
       "key": {
+        "uuid": "a51b3134_ce462091",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-06-11T19:00:11Z",
+      "side": 1,
+      "message": "Builder pattern is more for constructing a complex object, or for constructing an object in pieces that don\u0027t correspond directly to the object\u0027s fields itself. Here, we construct an object in pieces that correspond exactly to the object\u0027s fields, although we are not guaranteed the existence of these pieces (and hence the validity of the resulting object).\n\nWe can sanity-check bssData either way, but placing that logic in a separate method provides callers with a guarantee that they will either receive an error or a valid bssData (and also seems like a more logical place for such checks, as opposed to a method named parseScanResults).",
+      "parentUuid": "6cc34048_97dde296",
+      "range": {
+        "startLine": 221,
+        "startChar": 18,
+        "endLine": 221,
+        "endChar": 34
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eca534ea_07e68630",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 1
