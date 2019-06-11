@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a17225ef_36ad2bed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/high_res_timers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-11T01:31:21Z",
+      "side": 1,
+      "message": "Clarification: Do you mean you will be the test owner of this?\nI.e., in any failure of this test in future, do you want to investigate the issue?\nIf so, could you remove \"// Test port author\"?\nIf not, could you assign an appropriate engineer?\n\nBTW, s/Test/Tast/.",
+      "revId": "00eb31b5894812fe481e902dcf659101e34db768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9589efb_ca8b7aa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/high_res_timers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-11T01:31:21Z",
+      "side": 1,
+      "message": "Oops, sorry overlooked. s.Fatal() here, because we do not want to continue the test in case of this failure.",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 9
+      },
+      "revId": "00eb31b5894812fe481e902dcf659101e34db768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b94378f0_1dfb48dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/high_res_timers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-11T01:31:21Z",
+      "side": 1,
+      "message": "nit/optional: how about \"Unexpected timer resolution: %d; want 1 ns\"",
+      "range": {
+        "startLine": 48,
+        "startChar": 14,
+        "endLine": 48,
+        "endChar": 30
+      },
+      "revId": "00eb31b5894812fe481e902dcf659101e34db768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
