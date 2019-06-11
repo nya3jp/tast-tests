@@ -56,7 +56,9 @@ func MSEDataFiles() []string {
 // pollPlaybackCurrentTime polls JavaScript "currentTime() > threshold" with optioanl PollOptions.
 // If it fails to poll for condition, it emits error with currentTime() value attached.
 func pollPlaybackCurrentTime(ctx context.Context, conn *chrome.Conn, threshold float64, opts *testing.PollOptions) error {
-	defer timing.Start(ctx, "poll_playback_current_time").End()
+	ctx, st := timing.Start(ctx, "poll_playback_current_time")
+	defer st.End()
+
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		var t float64
 		if err := conn.Eval(ctx, "currentTime()", &t); err != nil {
@@ -74,7 +76,8 @@ func pollPlaybackCurrentTime(ctx context.Context, conn *chrome.Conn, threshold f
 // until it is ready to play. "play()" can then be called in order to start
 // video playback.
 func loadVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
-	defer timing.Start(ctx, "load_video").End()
+	ctx, st := timing.Start(ctx, "load_video")
+	defer st.End()
 
 	if err := conn.Exec(ctx, fmt.Sprintf("loadVideoSource(%q)", videoFile)); err != nil {
 		return errors.Wrap(err, "failed to load a video source")
@@ -90,7 +93,9 @@ func loadVideo(ctx context.Context, conn *chrome.Conn, videoFile string) error {
 // loadPage opens a new tab to load the specified webpage.
 // Note that if err != nil, conn is nil.
 func loadPage(ctx context.Context, cr *chrome.Chrome, url string) (*chrome.Conn, error) {
-	defer timing.Start(ctx, "load_page").End()
+	ctx, st := timing.Start(ctx, "load_page")
+	defer st.End()
+
 	conn, err := cr.NewConn(ctx, url)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to open %v", url)
@@ -102,7 +107,8 @@ func loadPage(ctx context.Context, cr *chrome.Chrome, url string) (*chrome.Conn,
 // videoFile is the file name which is played there.
 // baseURL is the base URL which serves video playback testing webpage.
 func playVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL string) error {
-	defer timing.Start(ctx, "play_video").End()
+	ctx, st := timing.Start(ctx, "play_video")
+	defer st.End()
 
 	conn, err := loadPage(ctx, cr, baseURL+"/video.html")
 	if err != nil {
@@ -131,19 +137,19 @@ func playVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL string
 
 // initShakaPlayer initializes Shaka player with video file.
 func initShakaPlayer(ctx context.Context, conn *chrome.Conn, mpdFile string) error {
-	defer timing.Start(ctx, "init_shaka_player").End()
+	ctx, st := timing.Start(ctx, "init_shaka_player")
+	defer st.End()
 
 	if err := conn.Exec(ctx, fmt.Sprintf("initPlayer(%q)", mpdFile)); err != nil {
 		return errors.Wrap(err, "failed to initialize shaka player")
-
 	}
-
 	return nil
 }
 
 // waitForShakaPlayerTestDone waits for Shaka player's isTestDone() JS method returns true.
 func waitForShakaPlayerTestDone(ctx context.Context, conn *chrome.Conn) error {
-	defer timing.Start(ctx, "wait_for_shaka_player_test_done").End()
+	ctx, st := timing.Start(ctx, "wait_for_shaka_player_test_done")
+	defer st.End()
 
 	// rctx is a shorten ctx to reserve 3 second in case to extract errors in JavaScript.
 	rctx, rcancel := ctxutil.Shorten(ctx, 3*time.Second)
@@ -162,7 +168,8 @@ func waitForShakaPlayerTestDone(ctx context.Context, conn *chrome.Conn) error {
 // mpdFile is the name of MPD file for the video stream.
 // baseURL is the base URL which serves shaka player webpage.
 func playMSEVideo(ctx context.Context, cr *chrome.Chrome, mpdFile, baseURL string) error {
-	defer timing.Start(ctx, "play_mse_video").End()
+	ctx, st := timing.Start(ctx, "play_mse_video")
+	defer st.End()
 
 	conn, err := loadPage(ctx, cr, baseURL+"/shaka.html")
 	if err != nil {
@@ -183,7 +190,9 @@ func playMSEVideo(ctx context.Context, cr *chrome.Chrome, mpdFile, baseURL strin
 
 // seekVideoRepeatedly seeks video numSeeks * numFastSeeks times.
 func seekVideoRepeatedly(ctx context.Context, conn *chrome.Conn, numSeeks, numFastSeeks int) error {
-	defer timing.Start(ctx, "seek_video_repeatly").End()
+	ctx, st := timing.Start(ctx, "seek_video_repeatly")
+	defer st.End()
+
 	for i := 0; i < numSeeks; i++ {
 		if err := conn.Exec(ctx, fmt.Sprintf("doFastSeeks(%d)", numFastSeeks)); err != nil {
 			return errors.Wrap(err, "failed to fast-seek")
@@ -203,7 +212,8 @@ func seekVideoRepeatedly(ctx context.Context, conn *chrome.Conn, numSeeks, numFa
 // videoFile is the file name which is played and seeked there.
 // baseURL is the base URL which serves video playback testing webpage.
 func playSeekVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL string) error {
-	defer timing.Start(ctx, "play_seek_video").End()
+	ctx, st := timing.Start(ctx, "play_seek_video")
+	defer st.End()
 
 	const (
 		numSeeks     = 100

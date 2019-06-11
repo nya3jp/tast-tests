@@ -69,7 +69,8 @@ func (p *preImpl) Timeout() time.Duration { return p.timeout }
 // Prepare is called by the test framework at the beginning of every test using this precondition.
 // It returns a PreData containing objects that can be used by the test.
 func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
-	defer timing.Start(ctx, "prepare_"+p.name).End()
+	ctx, st := timing.Start(ctx, "prepare_"+p.name)
+	defer st.End()
 
 	if p.arc != nil {
 		if pkgs, err := p.installedPackages(ctx); err != nil {
@@ -129,7 +130,9 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 
 // Close is called by the test framework after the last test that uses this precondition.
 func (p *preImpl) Close(ctx context.Context, s *testing.State) {
-	defer timing.Start(ctx, "close_"+p.name).End()
+	ctx, st := timing.Start(ctx, "close_"+p.name)
+	defer st.End()
+
 	locked = false
 	chrome.Unlock()
 	p.closeInternal(ctx, s)
@@ -138,7 +141,9 @@ func (p *preImpl) Close(ctx context.Context, s *testing.State) {
 // installedPackages returns a set of currently-installed packages, e.g. "package:android".
 // This operation is slow (700+ ms), so unnecessary calls should be avoided.
 func (p *preImpl) installedPackages(ctx context.Context) (map[string]struct{}, error) {
-	defer timing.Start(ctx, "installed_packages").End()
+	ctx, st := timing.Start(ctx, "installed_packages")
+	defer st.End()
+
 	out, err := p.arc.Command(ctx, "pm", "list", "packages").Output(testexec.DumpLogOnError)
 	if err != nil {
 		return nil, errors.Wrap(err, "listing packages failed")
@@ -154,7 +159,9 @@ func (p *preImpl) installedPackages(ctx context.Context) (map[string]struct{}, e
 // checkUsable verifies that p.cr and p.arc are still usable. Both must be non-nil.
 // pkgs should come from installedPackages.
 func (p *preImpl) checkUsable(ctx context.Context, pkgs map[string]struct{}) error {
-	defer timing.Start(ctx, "check_arc").End()
+	ctx, st := timing.Start(ctx, "check_arc")
+	defer st.End()
+
 	ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
 
