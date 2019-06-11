@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc26c3d0_54c08b6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-11T08:02:26Z",
+      "side": 1,
+      "message": "Thank you for the detailed explanation!\nJust curious, do we have a documentation about your tests\u0027 behavior?\nMaybe in Chrome repo or internal google docs?",
+      "revId": "a75886145355349ea0d80d7c6c81730dc44b35b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
