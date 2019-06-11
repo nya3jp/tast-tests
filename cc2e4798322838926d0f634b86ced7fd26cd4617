@@ -133,6 +133,24 @@
     },
     {
       "key": {
+        "uuid": "1c8fd579_c6ada102",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-06-11T20:21:55Z",
+      "side": 1,
+      "message": "ARCVM also have the ARC flags and the map approach was made for readability purpose. Here is the previous discussion: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1637171/4/src/chromiumos/tast/local/arc/arc.go#283?\n\nIf it\u0027s better to do \u0027if check\u0027 I\u0027m down to change it.",
+      "parentUuid": "786f5db4_5c4fd1bd",
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "795c86f2_ececd20c",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 5
@@ -144,6 +162,24 @@
       "writtenOn": "2019-06-11T09:08:45Z",
       "side": 1,
       "message": "Clar: does \"adb wait-for-device\" work for your purpose?",
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5035720a_5b39806a",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-06-11T20:21:55Z",
+      "side": 1,
+      "message": "\u003e Clar: does \"adb wait-for-device\" work for your purpose?\n\n\"wait-for-device\" doesn\u0027t work because the connection to vsock is not yet there.\nHowever, \"adb connect\" may be an alternative to this.\n\nThe difference would be \u0027android-sh\u0027 directly connect to vsock while \u0027adb\u0027 (in my patch) connect to a proxy. What I am doing is running \u0027android-sh\u0027 for Bootstrap and eventually moving it to \u0027adb\u0027 for further connections. \n\nAn alternative would be to revert using \u0027android-sh\u0027 and fallback \u0027Command\u0027 on \u0027BootstrapCommand\u0027 like my past patchset.\n\nWhat do you think about this?",
+      "parentUuid": "795c86f2_ececd20c",
       "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -173,6 +209,30 @@
     },
     {
       "key": {
+        "uuid": "67966334_71386c95",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-06-11T20:21:55Z",
+      "side": 1,
+      "message": "Command() work, but this is done to run \u0027android-sh\u0027 instead of \u0027adb\u0027. See previous comment.",
+      "parentUuid": "9fcd8395_6da9af2c",
+      "range": {
+        "startLine": 330,
+        "startChar": 10,
+        "endLine": 330,
+        "endChar": 57
+      },
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cfaedc92_49dafe1d",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 5
@@ -184,6 +244,30 @@
       "writtenOn": "2019-06-11T09:08:45Z",
       "side": 1,
       "message": "Clar: ARCVM boot sometimes takes more time than one second? Is it enough...?",
+      "range": {
+        "startLine": 331,
+        "startChar": 26,
+        "endLine": 331,
+        "endChar": 48
+      },
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da23d2d3_d3dc279d",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-06-11T20:21:55Z",
+      "side": 1,
+      "message": "I believe retrying every one second is reasonable. \u0027android-sh\u0027 have it\u0027s own retry-if-fail system and the BootstrapCommand above on my machine usually only need to run twice.\n\nI think even a lower interval can work just fine.",
+      "parentUuid": "cfaedc92_49dafe1d",
       "range": {
         "startLine": 331,
         "startChar": 26,
@@ -230,6 +314,30 @@
       "writtenOn": "2019-06-11T09:08:45Z",
       "side": 1,
       "message": "Could you keep android-sh interface consistent between container and VM?\nIf it is not now, could you fix that first?",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5196994_7796773d",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-06-11T20:21:55Z",
+      "side": 1,
+      "message": "There are some discussions / bugs that talk about this: b/123308422, b/123306389#comment9, go/arcvm-sh.\nHowever, it might be possible for them not be implemented. One possible scenario is if \u0027adb\u0027 is supported on -user build.\n\n\u003e Could you keep android-sh interface consistent between container and VM?\n\nSupporting Tast for ARCVM might have a higher priority now. Would it be okay to land ARCVM Tast first?\nAlso, are there any concerns, other than the divergence for the code, that I can take for consideration (to have consistent interface)?",
+      "parentUuid": "a4abacf8_6666cfa8",
       "range": {
         "startLine": 34,
         "startChar": 1,
