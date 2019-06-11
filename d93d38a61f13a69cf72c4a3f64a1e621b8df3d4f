@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "19ab531f_51816ae4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-06-11T07:51:39Z",
+      "side": 1,
+      "message": "Thanks for the info.\n\nI just realised there\u0027s a small problem with merging the two tests: currently the FST decoder for US English drops messages when it is still initializing the language model. So the test currently just spams \u0027a\u0027 until suggestions show up. I\u0027ll need to talk to the decoder team to see if we can queue up the messages. It seems to work fine for Mozc.",
+      "parentUuid": "a1c989ee_aad16b52",
+      "range": {
+        "startLine": 21,
+        "startChar": 16,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "d93d38a61f13a69cf72c4a3f64a1e621b8df3d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df96266e_ca0fb1a7",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_other_languages.go",
         "patchSetId": 2
