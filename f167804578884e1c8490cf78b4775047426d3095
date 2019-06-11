@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8099353_c0e8289b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screen_lock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-11T16:54:05Z",
+      "side": 1,
+      "message": "Could you comment you\u0027re intentionally do not assign ctx here, and its reason?",
+      "revId": "f167804578884e1c8490cf78b4775047426d3095",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
