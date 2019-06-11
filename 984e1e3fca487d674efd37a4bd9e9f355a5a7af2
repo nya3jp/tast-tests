@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1a200360_23c3283a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-06-11T01:43:01Z",
+      "side": 1,
+      "message": "9 (also see other file)",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "437f9d2a_59f63d54",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 1
@@ -111,6 +134,29 @@
     },
     {
       "key": {
+        "uuid": "7d534f56_fe92cf64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-06-11T01:43:01Z",
+      "side": 1,
+      "message": "identifier :\u003d \"Connected to\"\nif stationDump {\n  identifier \u003d \"Station\"\n}",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 4
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0db52089_17f86097",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 1
@@ -127,6 +173,75 @@
         "startChar": 0,
         "endLine": 163,
         "endChar": 2
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe193736_43095652",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-06-11T01:43:01Z",
+      "side": 1,
+      "message": "Could we just return a string here if we\u0027re going to convert this to a string wherever we use it anyways?",
+      "range": {
+        "startLine": 169,
+        "startChar": 36,
+        "endLine": 169,
+        "endChar": 42
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57a15261_b33d609f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-06-11T01:43:01Z",
+      "side": 1,
+      "message": "How about splitting the string based on the starting BSS line, and then passing each split string to a BssData factory method?\n\nThis lets the factory method return an error when a valid BssData cannot be created from the output, whereas this implementation will potentially add an invalid BssData to the list (see line 259)",
+      "range": {
+        "startLine": 221,
+        "startChar": 18,
+        "endLine": 221,
+        "endChar": 34
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aec18a7b_b6461066",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-06-11T01:43:01Z",
+      "side": 1,
+      "message": "nit: add space",
+      "range": {
+        "startLine": 14,
+        "startChar": 2,
+        "endLine": 14,
+        "endChar": 3
       },
       "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
