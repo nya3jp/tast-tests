@@ -222,7 +222,8 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		panic("Cannot create Chrome instance while precondition is being used")
 	}
 
-	defer timing.Start(ctx, "chrome_new").End()
+	ctx, st := timing.Start(ctx, "chrome_new")
+	defer st.End()
 
 	c := &Chrome{
 		user:           DefaultUser,
@@ -361,7 +362,8 @@ func (c *Chrome) Close(ctx context.Context) error {
 // Tests typically do not need to call this; it is exposed primarily for other packages.
 func (c *Chrome) ResetState(ctx context.Context) error {
 	testing.ContextLog(ctx, "Resetting Chrome's state")
-	defer timing.Start(ctx, "reset_chrome").End()
+	ctx, st := timing.Start(ctx, "reset_chrome")
+	defer st.End()
 
 	// Try to close all "normal" pages and apps.
 	targets, err := c.getDevtoolTargets(ctx, func(t *target.Info) bool {
@@ -400,7 +402,8 @@ func (c *Chrome) chromeErr(orig error) error {
 
 // prepareExtensions prepares extensions to be loaded by Chrome.
 func (c *Chrome) prepareExtensions(ctx context.Context) error {
-	defer timing.Start(ctx, "prepare_extensions").End()
+	ctx, st := timing.Start(ctx, "prepare_extensions")
+	defer st.End()
 
 	// Write the built-in test extension.
 	var err error
@@ -444,7 +447,8 @@ func readDebuggingPort(p string) (int, error) {
 // Returns the port number.
 func (c *Chrome) waitForDebuggingPort(ctx context.Context, p string) (int, error) {
 	testing.ContextLog(ctx, "Waiting for Chrome to write its debugging port to ", p)
-	defer timing.Start(ctx, "wait_for_debugging_port").End()
+	ctx, st := timing.Start(ctx, "wait_for_debugging_port")
+	defer st.End()
 
 	var port int
 	if err := testing.Poll(ctx, func(context.Context) error {
@@ -461,7 +465,8 @@ func (c *Chrome) waitForDebuggingPort(ctx context.Context, p string) (int, error
 // restartChromeForTesting restarts the ui job, asks session_manager to enable Chrome testing,
 // and waits for Chrome to listen on its debugging port.
 func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err error) {
-	defer timing.Start(ctx, "restart").End()
+	ctx, st := timing.Start(ctx, "restart")
+	defer st.End()
 
 	if err := c.restartSession(ctx); err != nil {
 		// Timeout is often caused by TPM slowness. Save minidumps of related processes.
@@ -538,7 +543,8 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 // and restarts the job.
 func (c *Chrome) restartSession(ctx context.Context) error {
 	testing.ContextLog(ctx, "Restarting ui job")
-	defer timing.Start(ctx, "restart_ui").End()
+	ctx, st := timing.Start(ctx, "restart_ui")
+	defer st.End()
 
 	ctx, cancel := context.WithTimeout(ctx, uiRestartTimeout)
 	defer cancel()
@@ -755,7 +761,8 @@ func (c *Chrome) getFirstOOBETarget(ctx context.Context) (*target.Info, error) {
 // a connection to the page. The caller must close the returned connection.
 func (c *Chrome) waitForOOBEConnection(ctx context.Context) (*Conn, error) {
 	testing.ContextLog(ctx, "Finding OOBE DevTools target")
-	defer timing.Start(ctx, "wait_for_oobe").End()
+	ctx, st := timing.Start(ctx, "wait_for_oobe")
+	defer st.End()
 
 	var target *target.Info
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -801,7 +808,8 @@ func (c *Chrome) logIn(ctx context.Context) error {
 	defer conn.Close()
 
 	testing.ContextLogf(ctx, "Logging in as user %q", c.user)
-	defer timing.Start(ctx, "login").End()
+	ctx, st := timing.Start(ctx, "login")
+	defer st.End()
 
 	switch c.loginMode {
 	case fakeLogin:
@@ -911,7 +919,8 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 	}()
 
 	testing.ContextLog(ctx, "Logging in as a guest user")
-	defer timing.Start(ctx, "login_guest").End()
+	ctx, st := timing.Start(ctx, "login_guest")
+	defer st.End()
 
 	// guestLoginForTesting() relaunches the browser. In advance,
 	// remove the file at debuggingPortPath, which should be
