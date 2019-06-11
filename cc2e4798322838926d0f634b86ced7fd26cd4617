@@ -1,0 +1,244 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "579610a5_bdc5b0f2",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-11T09:08:45Z",
+      "side": 1,
+      "message": "Could you comment the reference to each IP.",
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4f91ecf_3055eadf",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-11T09:08:45Z",
+      "side": 1,
+      "message": "killall --wait would take longer time, so it\u0027s nice to add a logging line before hand.\n\ntesting.ContextLogf(ctx, \"Stopping existing adb server\")",
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bba95340_596ace66",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-11T09:08:45Z",
+      "side": 1,
+      "message": "Could you handle the error properly. And DumpLog on error?\n\nif err :\u003d testexec.CommandContext(ctx, \"killall\", ...).Run(testexec.DumpLogOnError); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 182,
+        "startChar": 2,
+        "endLine": 182,
+        "endChar": 84
+      },
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d5726e6_1fb5fa9d",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-11T09:08:45Z",
+      "side": 1,
+      "message": "Similary, nice to have a logging.\n\ntesting.ContextLogf(ctx, \"Starting adb server\")",
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe987c1d_e3c8b798",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-11T09:08:45Z",
+      "side": 1,
+      "message": "This is not the regression, but could you also add a log line here?\n\ntesting.ContextLogf(ctx, \"Waiting for the ADB auth is set up\")",
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a569579e_6f8dc824",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-11T09:08:45Z",
+      "side": 1,
+      "message": "optional: Maybe guestMode() (with avoiding the naming conflict)? First of all, I was thinking \"guest\" is some guest user or something, but it\u0027s not actually.",
+      "range": {
+        "startLine": 273,
+        "startChar": 5,
+        "endLine": 273,
+        "endChar": 13
+      },
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "786f5db4_5c4fd1bd",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-11T09:08:45Z",
+      "side": 1,
+      "message": "In this case, creating the set looks redundant.\n\nfor _, a :\u003d range args {\n  if a \u003d\u003d \"--enable-arcvm\" {\n    return vm, nil\n  }\n  if ... {\n    return container, nil\n  }\n  return none, errors.New(...)\n}\n\n\n(offtopic): to use map as a set, it\u0027s nice to have struct{} as a value type, because that will be optimized to 0-byte.",
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "795c86f2_ececd20c",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-11T09:08:45Z",
+      "side": 1,
+      "message": "Clar: does \"adb wait-for-device\" work for your purpose?",
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fcd8395_6da9af2c",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-11T09:08:45Z",
+      "side": 1,
+      "message": "In this case, you\u0027re explicitly calling \"adb\", so Command() instead?",
+      "range": {
+        "startLine": 330,
+        "startChar": 10,
+        "endLine": 330,
+        "endChar": 57
+      },
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfaedc92_49dafe1d",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-11T09:08:45Z",
+      "side": 1,
+      "message": "Clar: ARCVM boot sometimes takes more time than one second? Is it enough...?",
+      "range": {
+        "startLine": 331,
+        "startChar": 26,
+        "endLine": 331,
+        "endChar": 48
+      },
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97de9fe4_a2ee8f4e",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-11T09:08:45Z",
+      "side": 1,
+      "message": "Could you use Wrapf, instead?\nerrors.Wrapf(err, \"ping %s failed\", ip)",
+      "range": {
+        "startLine": 368,
+        "startChar": 10,
+        "endLine": 368,
+        "endChar": 48
+      },
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4abacf8_6666cfa8",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-11T09:08:45Z",
+      "side": 1,
+      "message": "Could you keep android-sh interface consistent between container and VM?\nIf it is not now, could you fix that first?",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
