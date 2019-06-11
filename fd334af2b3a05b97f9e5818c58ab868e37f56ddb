@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "a934b2fa_944a1998",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-06-11T00:05:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a377a518_568f6d95",
+      "range": {
+        "startLine": 161,
+        "startChar": 2,
+        "endLine": 164,
+        "endChar": 5
+      },
+      "revId": "fd334af2b3a05b97f9e5818c58ab868e37f56ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b8f255_b8bb1e38",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 4
@@ -332,6 +356,24 @@
       "side": 1,
       "message": "ok I guess it\u0027s fine for the test. I would do it the leaner way for prod code though.",
       "parentUuid": "3e72997f_cc95ac61",
+      "revId": "fd334af2b3a05b97f9e5818c58ab868e37f56ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e555f72_14cc466f",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-06-11T00:05:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7639d397_a481f259",
       "revId": "fd334af2b3a05b97f9e5818c58ab868e37f56ddb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
