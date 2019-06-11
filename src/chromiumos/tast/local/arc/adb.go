@@ -104,7 +104,9 @@ func setUpADBAuth(ctx context.Context) error {
 // connectADB connects to the remote ADB daemon.
 // After this function returns successfully, we can assume that ADB connection is ready.
 func connectADB(ctx context.Context) error {
-	defer timing.Start(ctx, "connect_adb").End()
+	ctx, st := timing.Start(ctx, "connect_adb")
+	defer st.End()
+
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		out, err := adbCommand(ctx, "connect", adbAddr).Output()
 		if err != nil {

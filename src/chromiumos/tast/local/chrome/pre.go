@@ -56,7 +56,8 @@ func (p *preImpl) Timeout() time.Duration { return p.timeout }
 // Prepare is called by the test framework at the beginning of every test using this precondition.
 // It returns a *chrome.Chrome that can be used by tests.
 func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
-	defer timing.Start(ctx, "prepare_"+p.name).End()
+	ctx, st := timing.Start(ctx, "prepare_"+p.name)
+	defer st.End()
 
 	if p.cr != nil {
 		if err := p.checkChrome(ctx); err != nil {
@@ -82,7 +83,9 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 
 // Close is called by the test framework after the last test that uses this precondition.
 func (p *preImpl) Close(ctx context.Context, s *testing.State) {
-	defer timing.Start(ctx, "close_"+p.name).End()
+	ctx, st := timing.Start(ctx, "close_"+p.name)
+	defer st.End()
+
 	Unlock()
 	p.closeInternal(ctx, s)
 }
@@ -100,7 +103,9 @@ func (p *preImpl) closeInternal(ctx context.Context, s *testing.State) {
 
 // checkChrome performs basic checks to verify that cr is responsive.
 func (p *preImpl) checkChrome(ctx context.Context) error {
-	defer timing.Start(ctx, "check_chrome").End()
+	ctx, st := timing.Start(ctx, "check_chrome")
+	defer st.End()
+
 	ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
 

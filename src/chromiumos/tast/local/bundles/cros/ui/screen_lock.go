@@ -89,7 +89,7 @@ func ScreenLock(ctx context.Context, s *testing.State) {
 		s.Fatalf("Typing %v failed: %v", accel, err)
 	}
 	s.Log("Waiting for Chrome to report that screen is locked")
-	lockStage := timing.Start(ctx, "lock_screen")
+	_, lockStage := timing.Start(ctx, "lock_screen") // don't assign to ctx; there's no child stage
 	if st, err := waitStatus(func(st lockState) bool { return st.Locked && st.Ready }, lockTimeout); err != nil {
 		s.Fatalf("Waiting for screen to be locked failed: %v (last status %+v)", err, st)
 	}
@@ -111,7 +111,7 @@ func ScreenLock(ctx context.Context, s *testing.State) {
 		s.Fatal("Typing correct password failed: ", err)
 	}
 	s.Log("Waiting for Chrome to report that screen is unlocked")
-	unlockStage := timing.Start(ctx, "unlock_screen")
+	_, unlockStage := timing.Start(ctx, "unlock_screen") // don't assign to ctx; there's no child stage
 	if st, err := waitStatus(func(st lockState) bool { return !st.Locked }, goodAuthTimeout); err != nil {
 		s.Fatalf("Waiting for screen to be unlocked failed: %v (last status %+v)", err, st)
 	}
