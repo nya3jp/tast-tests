@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "4548fc69_768bdaf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/1080p_60fps_600frames.h264.json.external",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-11T17:10:19Z",
+      "side": 1,
+      "message": "optional: you may want to use internal data?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#internal-vs_external",
+      "revId": "a75886145355349ea0d80d7c6c81730dc44b35b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc26c3d0_54c08b6d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 5
@@ -13,6 +30,74 @@
       "writtenOn": "2019-06-11T08:02:26Z",
       "side": 1,
       "message": "Thank you for the detailed explanation!\nJust curious, do we have a documentation about your tests\u0027 behavior?\nMaybe in Chrome repo or internal google docs?",
+      "revId": "a75886145355349ea0d80d7c6c81730dc44b35b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d08941a_2a639ca6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-11T17:10:19Z",
+      "side": 1,
+      "message": "Test1 and Test2 looks independent. How about extracting them into separate functions?",
+      "revId": "a75886145355349ea0d80d7c6c81730dc44b35b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48b887fb_26f9a813",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-11T17:10:19Z",
+      "side": 1,
+      "message": "optional: Nice to have --gtest_filter, in case the test starts to have another TEST_F?",
+      "revId": "a75886145355349ea0d80d7c6c81730dc44b35b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "694c438e_fcd6bd2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-11T17:10:19Z",
+      "side": 1,
+      "message": "Could you terminate the process in case of failure? (at L412, L418 cases).",
+      "revId": "a75886145355349ea0d80d7c6c81730dc44b35b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f16033a0_616a402c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-11T17:10:19Z",
+      "side": 1,
+      "message": "err expected to be non-nil in this case?",
       "revId": "a75886145355349ea0d80d7c6c81730dc44b35b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
