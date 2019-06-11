@@ -30,7 +30,7 @@ func init() {
 		Contacts:     []string{"shenghao@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeJPEG},
-		Data:         []string{"lake_4160x3120_P420.yuv"},
+		Data:         []string{"coast_3840x2160_P420.yuv"},
 		Timeout:      10 * time.Minute,
 	})
 }
@@ -44,9 +44,9 @@ func EncodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 		// Number of JPEG encodes.
 		perfJPEGEncodeTimes = 100
 		// Name of the test file used.
-		testFilename = "lake_4160x3120_P420.yuv"
+		testFilename = "coast_3840x2160_P420.yuv"
 		// Suffix added to the test filename when running JPEG encode tests.
-		testFileSuffix = ":4160x3120"
+		testFileSuffix = ":3840x2160"
 	)
 
 	shortCtx, cleanupBenchmark, err := cpu.SetUpBenchmark(ctx)
