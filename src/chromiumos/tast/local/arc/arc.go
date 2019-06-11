@@ -83,7 +83,8 @@ func (a *ARC) Close() error {
 //
 // The returned ARC instance must be closed when the test is finished.
 func New(ctx context.Context, outDir string) (*ARC, error) {
-	defer timing.Start(ctx, "arc_new").End()
+	ctx, st := timing.Start(ctx, "arc_new")
+	defer st.End()
 
 	if locked {
 		panic("Cannot create ARC instance while precondition is being used")
@@ -301,7 +302,8 @@ func startLogcat(ctx context.Context, w io.Writer) (*testexec.Cmd, error) {
 
 // waitNetworking waits for the internal networking to get ready.
 func waitNetworking(ctx context.Context) error {
-	defer timing.Start(ctx, "wait_networking").End()
+	ctx, st := timing.Start(ctx, "wait_networking")
+	defer st.End()
 
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		if err := testexec.CommandContext(ctx, "ping", "-c1", "-w1", "-n", "100.115.92.2").Run(); err != nil {
@@ -322,7 +324,9 @@ const (
 // waitProp waits for Android prop name is set to value.
 func waitProp(ctx context.Context, name, value string, tm timingMode) error {
 	if tm == reportTiming {
-		defer timing.Start(ctx, fmt.Sprintf("wait_prop_%s=%s", name, value)).End()
+		var st *timing.Stage
+		ctx, st = timing.Start(ctx, fmt.Sprintf("wait_prop_%s=%s", name, value))
+		defer st.End()
 	}
 
 	const loop = `while [ "$(/system/bin/getprop "$1")" != "$2" ]; do sleep 0.1; done`
