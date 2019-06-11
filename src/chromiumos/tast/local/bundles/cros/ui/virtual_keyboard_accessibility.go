@@ -17,6 +17,7 @@ func init() {
 		Func:         VirtualKeyboardAccessibility,
 		Desc:         "Checks that the accessibility keyboard displays correctly",
 		Contacts:     []string{"essential-inputs-team@google.com"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 	})
 }

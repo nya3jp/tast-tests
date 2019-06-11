@@ -20,6 +20,7 @@ func init() {
 		Func:         VirtualKeyboardTyping,
 		Desc:         "Checks that the virtual keyboard can type into a text field",
 		Contacts:     []string{"essential-inputs-team@google.com"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 	})
 }
