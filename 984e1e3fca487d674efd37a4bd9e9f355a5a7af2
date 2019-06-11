@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "437f9d2a_59f63d54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-06-11T00:55:33Z",
+      "side": 1,
+      "message": "It seems like iw should be a package that simply abstracts the \u0027iw\u0027 command. Tests should still be in package network.\n\nThen we can merge the package and file documentation into just package documentation.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 2
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ac14eba_6a681a77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-06-11T00:55:33Z",
+      "side": 1,
+      "message": "These should all be sentences (Shuhei provides a relevant link)",
+      "range": {
+        "startLine": 25,
+        "startChar": 33,
+        "endLine": 25,
+        "endChar": 34
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac5aaa00_df1fdf8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-06-11T00:55:33Z",
+      "side": 1,
+      "message": "IIUC javadoc style is not used in Go.\n\nGenerally, go docs will simply describe the method and *not* describe parameter by parameter (which was particularly important in autotest because python 2 lacks type annotations).",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 54
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e9a9a75_572e1134",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-06-11T00:55:33Z",
+      "side": 1,
+      "message": "Go does not follow the convention of having a short one-line description followed by an empty line, followed by a detailed description.\n\nI would recommend looking at some other files in this repo and see how documentation is formatted.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 0
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67da597e_ae7b63c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-06-11T00:55:33Z",
+      "side": 1,
+      "message": "Remove blank line",
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0db52089_17f86097",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-06-11T00:55:33Z",
+      "side": 1,
+      "message": "It looks like there is a strong preference for using \u0027//\u0027 to \u0027/*\u0027 and \u0027*/\u0027",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 2
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
