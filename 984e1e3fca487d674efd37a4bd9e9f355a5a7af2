@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a744ee60_5e6a6ea1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-06-11T18:00:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a200360_23c3283a",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "437f9d2a_59f63d54",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e5a967e5_2b58271c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-06-11T18:00:32Z",
+      "side": 1,
+      "message": "Ack. From what I can see, the network package should only contain tast tests and not utilities or unit tests. I am not able to submit due to my exported structs/functions.\n\nSee: tast/local/bundles/cros/network/security\nlog:\n              src/chromiumos/tast/local/bundles/cros/network/iw_runner.go:45:6: Tast forbids exporting anything but one test function here; unexport type BssData                                                                                                                        \n              src/chromiumos/tast/local/bundles/cros/network/iw_runner.go:55:6: Tast forbids exporting anything but one test function here; unexport type TimedScanData                                                                                                                  \n              src/chromiumos/tast/local/bundles/cros/network/iw_runner.go:100:6: Tast forbids exporting anything but one test function here; unexport type IwRunner",
+      "parentUuid": "437f9d2a_59f63d54",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 2
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ac14eba_6a681a77",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e669c9e6_8d2028e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-06-11T18:00:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ac14eba_6a681a77",
+      "range": {
+        "startLine": 25,
+        "startChar": 33,
+        "endLine": 25,
+        "endChar": 34
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "06299016_79a2d6d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-06-11T18:00:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac5aaa00_df1fdf8c",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 54
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0110d41_34b2d2e1",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 1
@@ -186,6 +282,30 @@
     },
     {
       "key": {
+        "uuid": "933bee9b_6025bc8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-06-11T18:00:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e9a9a75_572e1134",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 0
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "762632a3_be2b9df3",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 1
@@ -226,6 +346,24 @@
     },
     {
       "key": {
+        "uuid": "7a408d13_eae9b442",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-06-11T18:00:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67da597e_ae7b63c9",
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d534f56_fe92cf64",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 1
@@ -246,6 +384,30 @@
       "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce989b75_8a59e5cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-06-11T18:00:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d534f56_fe92cf64",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 4
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -272,6 +434,30 @@
     },
     {
       "key": {
+        "uuid": "43a96c6d_bd35689d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-06-11T18:00:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0db52089_17f86097",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 2
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe193736_43095652",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 1
@@ -295,6 +481,30 @@
     },
     {
       "key": {
+        "uuid": "884f4762_18482017",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-06-11T18:00:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe193736_43095652",
+      "range": {
+        "startLine": 169,
+        "startChar": 36,
+        "endLine": 169,
+        "endChar": 42
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57a15261_b33d609f",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 1
@@ -306,6 +516,30 @@
       "writtenOn": "2019-06-11T01:43:01Z",
       "side": 1,
       "message": "How about splitting the string based on the starting BSS line, and then passing each split string to a BssData factory method?\n\nThis lets the factory method return an error when a valid BssData cannot be created from the output, whereas this implementation will potentially add an invalid BssData to the list (see line 259)",
+      "range": {
+        "startLine": 221,
+        "startChar": 18,
+        "endLine": 221,
+        "endChar": 34
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cc34048_97dde296",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-06-11T18:00:32Z",
+      "side": 1,
+      "message": "Not trying to be pedantic, but just want to make sure I understand you correctly; because I parse the results line by line, wouldn\u0027t this structure better lend itself to a builder paradigm rather than a factory one? Also, wouldn\u0027t I still need to run sanity checks on the BssData either way?",
+      "parentUuid": "57a15261_b33d609f",
       "range": {
         "startLine": 221,
         "startChar": 18,
