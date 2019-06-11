@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d58b1fa_6e12ce97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-11T00:39:12Z",
+      "side": 1,
+      "message": "FYI, max runtime between 20190601 and 20190607 was 252 seconds. I think it\u0027s acceptable, but let\u0027s see.\n\n min\u003d40\n max\u003d252\n avg\u003d123.588551\n cnt\u003d559",
+      "range": {
+        "startLine": 21,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 32
+      },
+      "revId": "aa23cc4dc41e0a7ebe48f4912fd365fcb2ceae72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
