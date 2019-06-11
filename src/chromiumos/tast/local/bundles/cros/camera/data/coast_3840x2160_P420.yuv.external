@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/coast_3840x2160_P420_20190611.yuv",
+  "size": 12441600,
+  "sha256sum": "37c18ed4f66ca8c9443180d3397ae6b3d91b8ddcef6df1d8e629f8f8c92dc2fb"
+}
