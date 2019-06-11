@@ -8,8 +8,8 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/ui/vkb"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )
