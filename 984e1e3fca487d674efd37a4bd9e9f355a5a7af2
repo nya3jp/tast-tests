@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "e9ac1111_7906cab5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-06-11T18:19:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e019f98_32f74ec6",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 12
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09f778ae_9d0d8561",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 1
@@ -186,6 +210,30 @@
       "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c85f1e7_c290f00b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-06-11T18:19:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09f778ae_9d0d8561",
+      "range": {
+        "startLine": 65,
+        "startChar": 5,
+        "endLine": 65,
+        "endChar": 6
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -259,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "3b928dd7_e2baa216",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-06-11T18:19:44Z",
+      "side": 1,
+      "message": "Done. I did this originally since \\s wasn\u0027t a valid escape character in go when using double quotes. I later realized that using backticks allowed me to input raw strings without worrying about this issue!",
+      "parentUuid": "b0110d41_34b2d2e1",
+      "range": {
+        "startLine": 97,
+        "startChar": 27,
+        "endLine": 97,
+        "endChar": 38
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e9a9a75_572e1134",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 1
@@ -317,6 +389,30 @@
       "writtenOn": "2019-06-11T17:50:42Z",
       "side": 1,
       "message": "Is this going to be used in a future patchset of this change?\nDitto for getAllLinkKeys",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 17
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51a83a8a_5f0d883f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-06-11T18:19:44Z",
+      "side": 1,
+      "message": "yes. In analog, these are used to get station_dump, link_values, current_bssid",
+      "parentUuid": "762632a3_be2b9df3",
       "range": {
         "startLine": 126,
         "startChar": 5,
@@ -595,6 +691,54 @@
       "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9505503_5354e03b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-06-11T18:19:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eca534ea_07e68630",
+      "range": {
+        "startLine": 285,
+        "startChar": 42,
+        "endLine": 285,
+        "endChar": 52
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b9ccf81_caf6e8d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-06-11T18:19:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfe0dceb_cf0154b4",
+      "range": {
+        "startLine": 285,
+        "startChar": 69,
+        "endLine": 285,
+        "endChar": 72
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
