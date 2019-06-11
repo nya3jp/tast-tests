@@ -71,6 +71,52 @@
     },
     {
       "key": {
+        "uuid": "5e019f98_32f74ec6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-06-11T17:50:42Z",
+      "side": 1,
+      "message": "This should either be BSSData or bssData. Golang\u0027s opinion is that acronyms should not mix cases\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms\n\nSince clients in other packages should not be constructing this, bssData seems more appropriate.\n\nDitto for some of the fields below",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 12
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09f778ae_9d0d8561",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-06-11T17:50:42Z",
+      "side": 1,
+      "message": "lowercase",
+      "range": {
+        "startLine": 65,
+        "startChar": 5,
+        "endLine": 65,
+        "endChar": 6
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac5aaa00_df1fdf8c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 1
@@ -94,6 +140,29 @@
     },
     {
       "key": {
+        "uuid": "b0110d41_34b2d2e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-06-11T17:50:42Z",
+      "side": 1,
+      "message": "Could we use \\s here?",
+      "range": {
+        "startLine": 97,
+        "startChar": 27,
+        "endLine": 97,
+        "endChar": 38
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2e9a9a75_572e1134",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 1
@@ -110,6 +179,29 @@
         "startChar": 0,
         "endLine": 112,
         "endChar": 0
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "762632a3_be2b9df3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-06-11T17:50:42Z",
+      "side": 1,
+      "message": "Is this going to be used in a future patchset of this change?\nDitto for getAllLinkKeys",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 17
       },
       "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -219,6 +311,52 @@
         "startChar": 18,
         "endLine": 221,
         "endChar": 34
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eca534ea_07e68630",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-06-11T17:50:42Z",
+      "side": 1,
+      "message": "Just use strings.Fields. It doesn\u0027t seem too likely that iw will change from spaces to some other whitespace character, but using the default Fields behavior of unicode.IsSpace makes the implementation more robust and clearer.",
+      "range": {
+        "startLine": 285,
+        "startChar": 42,
+        "endLine": 285,
+        "endChar": 52
+      },
+      "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfe0dceb_cf0154b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-06-11T17:50:42Z",
+      "side": 1,
+      "message": "Would be nice to verify that the size of the result of Fields[Func] is as expected before accessing an element, especially since this is just parsing text straight out of a command",
+      "range": {
+        "startLine": 285,
+        "startChar": 69,
+        "endLine": 285,
+        "endChar": 72
       },
       "revId": "984e1e3fca487d674efd37a4bd9e9f355a5a7af2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
