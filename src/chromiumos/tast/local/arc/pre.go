@@ -135,7 +135,7 @@ func (p *preImpl) Close(ctx context.Context, s *testing.State) {
 	p.closeInternal(ctx, s)
 }
 
-// installedPackages returns a set of currently-installed packages, e.g. "package:android".
+// installedPackages returns a set of currently-installed packages, e.g. "android".
 // This operation is slow (700+ ms), so unnecessary calls should be avoided.
 func (p *preImpl) installedPackages(ctx context.Context) (map[string]struct{}, error) {
 	defer timing.Start(ctx, "installed_packages").End()
@@ -146,7 +146,9 @@ func (p *preImpl) installedPackages(ctx context.Context) (map[string]struct{}, e
 
 	pkgs := make(map[string]struct{})
 	for _, pkg := range strings.Split(strings.TrimSpace(string(out)), "\n") {
-		pkgs[pkg] = struct{}{}
+		// |pm list packages| prepends "package:" to installed packages. Not needed.
+		n := strings.TrimPrefix(pkg, "package:")
+		pkgs[n] = struct{}{}
 	}
 	return pkgs, nil
 }
@@ -166,7 +168,7 @@ func (p *preImpl) checkUsable(ctx context.Context, pkgs map[string]struct{}) err
 	}
 
 	// Check that the package manager service is running.
-	const pkg = "package:android"
+	const pkg = "android"
 	if _, ok := pkgs[pkg]; !ok {
 		return errors.Errorf("pm didn't list %q among %d package(s)", pkg, len(pkgs))
 	}
