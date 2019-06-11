@@ -7,8 +7,8 @@ package ui
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/ui/vkb"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/testing"
 )
 
