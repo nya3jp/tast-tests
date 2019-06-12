@@ -50,6 +50,10 @@ const (
 
 	// CUPSAutoconfFailure indicates the operation failed due to autoconf failures.
 	CUPSAutoconfFailure CUPSResult = 4
+
+	// CUPSBadURI indicates that the operation failed because debugd
+	// rejected the printer URI.
+	CUPSBadURI CUPSResult = 5
 )
 
 func (r CUPSResult) String() string {
@@ -64,6 +68,8 @@ func (r CUPSResult) String() string {
 		return fmt.Sprintf("CUPSLPAdminFailure(%d)", r)
 	case CUPSAutoconfFailure:
 		return fmt.Sprintf("CUPSAutoconfFailure(%d)", r)
+	case CUPSBadURI:
+		return fmt.Sprintf("CUPSBadURI(%d)", r)
 	default:
 		return fmt.Sprintf("Unknown(%d)", r)
 	}
