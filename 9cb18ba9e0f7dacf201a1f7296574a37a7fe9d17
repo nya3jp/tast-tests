@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65f2bbac_35564dce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-12T08:45:31Z",
+      "side": 1,
+      "message": "I think 3 minutes is still too short because autotest\u0027s VEA_Perf spent more than 5 minutes.\nhttps://stainless.corp.google.com/search?view\u003dlist\u0026first_date\u003d2019-06-06\u0026last_date\u003d2019-06-12\u0026test\u003dvideo_VEAPerf\u0026status\u003dGOOD\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\n\nHow about making timeout 10 minutes first and decreasing if we realize it\u0027s too long afterward?\n\nI think 10 minutes is acceptable.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/camera/encode_accel_jpeg_perf.go?rcl\u003d3108a1ae179a2545d41664eb46539b828e766d04\u0026l\u003d34",
+      "range": {
+        "startLine": 12,
+        "startChar": 50,
+        "endLine": 12,
+        "endChar": 60
+      },
+      "revId": "9cb18ba9e0f7dacf201a1f7296574a37a7fe9d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
