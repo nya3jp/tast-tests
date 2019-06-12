@@ -128,7 +128,7 @@ func getWindowSize(ctx context.Context, tconn *chrome.Conn, name string) (sz siz
 				if (!appWindow) {
 					reject("Failed to locate the app window");
 				}
-				const view = appWindow.find({ attributes: { className: 'ui/views/window/ClientView'}});
+				const view = appWindow.find({ attributes: { className: 'ClientView'}});
 				if (!view) {
 					reject("Failed to find client view");
 				}
