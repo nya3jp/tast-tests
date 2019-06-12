@@ -6,6 +6,7 @@ package video
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/video/encode"
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
@@ -21,6 +22,8 @@ func init() {
 		Contacts:     []string{"johnylin@chromium.org", "chromeos-video-eng@google.com"},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeH264},
 		Data:         []string{encode.Vidyo720P.Name},
+		// Default timeout (i.e. 2 minutes) is not enough.
+		Timeout: 3 * time.Minute,
 	})
 }
 
