@@ -16,6 +16,24 @@
       "revId": "f167804578884e1c8490cf78b4775047426d3095",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ae50c78_f46a03f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screen_lock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-12T02:30:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8099353_c0e8289b",
+      "revId": "f167804578884e1c8490cf78b4775047426d3095",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
