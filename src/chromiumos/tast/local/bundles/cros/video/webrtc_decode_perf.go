@@ -22,7 +22,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Data:         append(webrtc.LoopbackDataFiles(), "crowd720_25frames.y4m", webrtc.AddStatsJSFile),
 		// Default timeout (i.e. 2 minutes) is not enough.
-		Timeout: 3 * time.Minute,
+		Timeout: 4 * time.Minute,
 	})
 }
 
