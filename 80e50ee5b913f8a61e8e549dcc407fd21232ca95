@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89b60d94_e7427a1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_decode_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-12T07:52:11Z",
+      "side": 1,
+      "message": "I guess 4 minutes is still too short for low-end devices.\n\nAutotest version (video_WebRtcPerf) spend more than 10 minutes on some boards (e.g. veyron_jerry, veyron_mickey).\n\nhttps://stainless.corp.google.com/search?exclude_retried\u003dfalse\u0026master_builder_name\u003d\u0026shard\u003d\u0026exclude_acts\u003dtrue\u0026builder_name\u003d\u0026owner\u003d\u0026task_reference_type\u003d\u0026retry\u003d\u0026exclude_cts\u003dfalse\u0026exclude_non_production\u003dfalse\u0026hostname\u003d\u0026board\u003d\u0026branch\u003d\u0026test\u003d%5Evideo_WebRtcPerf%24\u0026exclude_not_run\u003dfalse\u0026build\u003d%5ER77%5C-12266%5C.0%5C.0%24\u0026status\u003dGOOD\u0026declared_name\u003d\u0026reason\u003d\u0026suite\u003d\u0026first_date\u003d2019-06-06\u0026last_date\u003d2019-06-12\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026model\u003d\u0026view\u003dlist",
+      "revId": "80e50ee5b913f8a61e8e549dcc407fd21232ca95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
