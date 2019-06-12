@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2512b85_4f96b6bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-06-12T08:25:59Z",
+      "side": 1,
+      "message": "It\u0027s worth commenting what ts is used for.",
+      "range": {
+        "startLine": 178,
+        "startChar": 55,
+        "endLine": 178,
+        "endChar": 56
+      },
+      "revId": "9bd277b9c476a97ac6cce32ebfd0e90f0fdd6697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "922188b7_83dab5d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-06-12T08:25:59Z",
+      "side": 1,
+      "message": "I think it\u0027s better to extract the logic of testing.Poll(...) to a function named \"SavedFileExist() (bool)\" so that it can also be used in testCancelTimer()",
+      "range": {
+        "startLine": 187,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 61
+      },
+      "revId": "9bd277b9c476a97ac6cce32ebfd0e90f0fdd6697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf861797_2e3289f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-06-12T08:25:59Z",
+      "side": 1,
+      "message": "\"failed to read the directory where media files are saved\"",
+      "range": {
+        "startLine": 190,
+        "startChar": 28,
+        "endLine": 190,
+        "endChar": 79
+      },
+      "revId": "9bd277b9c476a97ac6cce32ebfd0e90f0fdd6697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e3ae0a0_bc3346d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-06-12T08:25:59Z",
+      "side": 1,
+      "message": "\"returns whether a state is active in CCA\"",
+      "range": {
+        "startLine": 255,
+        "startChar": 12,
+        "endLine": 255,
+        "endChar": 51
+      },
+      "revId": "9bd277b9c476a97ac6cce32ebfd0e90f0fdd6697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61ed08c7_bbdb6e6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-06-12T08:25:59Z",
+      "side": 1,
+      "message": "We can use %q to get rid of the single quote",
+      "range": {
+        "startLine": 321,
+        "startChar": 45,
+        "endLine": 321,
+        "endChar": 49
+      },
+      "revId": "9bd277b9c476a97ac6cce32ebfd0e90f0fdd6697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "786e6795_0787f211",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-06-12T08:25:59Z",
+      "side": 1,
+      "message": "It seems that we should also use a.toggleOption() here?",
+      "range": {
+        "startLine": 352,
+        "startChar": 13,
+        "endLine": 352,
+        "endChar": 35
+      },
+      "revId": "9bd277b9c476a97ac6cce32ebfd0e90f0fdd6697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27f0eaa6_b50d6909",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-06-12T08:25:59Z",
+      "side": 1,
+      "message": "%q",
+      "range": {
+        "startLine": 383,
+        "startChar": 46,
+        "endLine": 383,
+        "endChar": 50
+      },
+      "revId": "9bd277b9c476a97ac6cce32ebfd0e90f0fdd6697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed7f7ba7_f06fc2ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-06-12T08:25:59Z",
+      "side": 1,
+      "message": "check a.GetState() again here? CCA could fall back to some other modes if failing to create stream in the requested mode.",
+      "range": {
+        "startLine": 389,
+        "startChar": 1,
+        "endLine": 389,
+        "endChar": 2
+      },
+      "revId": "9bd277b9c476a97ac6cce32ebfd0e90f0fdd6697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0be5e09_d258da7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-06-12T08:25:59Z",
+      "side": 1,
+      "message": "%q",
+      "range": {
+        "startLine": 395,
+        "startChar": 36,
+        "endLine": 395,
+        "endChar": 40
+      },
+      "revId": "9bd277b9c476a97ac6cce32ebfd0e90f0fdd6697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b27a9d8_1cecbb9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-06-12T08:25:59Z",
+      "side": 1,
+      "message": "Since we already wait for the expression in ToggleTimerOption(), this part seems unnecessary.",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 3
+      },
+      "revId": "9bd277b9c476a97ac6cce32ebfd0e90f0fdd6697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8149527b_efbc8308",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-06-12T08:25:59Z",
+      "side": 1,
+      "message": "Since all the files with modified time before ts will be ignored in WaitForSavedFile(), shouldn\u0027t we call time.Now() before clickShutter() to be safe?",
+      "range": {
+        "startLine": 110,
+        "startChar": 58,
+        "endLine": 110,
+        "endChar": 68
+      },
+      "revId": "9bd277b9c476a97ac6cce32ebfd0e90f0fdd6697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20846a6c_6ad11b2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-06-12T08:25:59Z",
+      "side": 1,
+      "message": "\"Capturing hasn\u0027t ended\"",
+      "range": {
+        "startLine": 114,
+        "startChar": 27,
+        "endLine": 114,
+        "endChar": 47
+      },
+      "revId": "9bd277b9c476a97ac6cce32ebfd0e90f0fdd6697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8eb66529_5dc47591",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-06-12T08:25:59Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we wait for the end of taking before checking saved file?",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 2
+      },
+      "revId": "9bd277b9c476a97ac6cce32ebfd0e90f0fdd6697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7b9aa4f_af696930",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-06-12T08:25:59Z",
+      "side": 1,
+      "message": "\"nm\" should be \"ns\" (nanosecond)?",
+      "range": {
+        "startLine": 129,
+        "startChar": 68,
+        "endLine": 129,
+        "endChar": 70
+      },
+      "revId": "9bd277b9c476a97ac6cce32ebfd0e90f0fdd6697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
