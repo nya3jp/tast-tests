@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "377efa5d_8a80d100",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-06-13T06:31:03Z",
+      "side": 1,
+      "message": "\"WaitForFileSaved waits for the presence of the captured file with file name matching the specified pattern and modified time after the specified timestamp.\"",
+      "range": {
+        "startLine": 178,
+        "startChar": 89,
+        "endLine": 178,
+        "endChar": 107
+      },
+      "revId": "1dbcc77d333f0ac7b194be5aacb06889b7d68068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

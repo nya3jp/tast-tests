@@ -402,6 +402,30 @@
     },
     {
       "key": {
+        "uuid": "fc59513e_5d5ef613",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-06-13T06:31:03Z",
+      "side": 1,
+      "message": "Waiting for the end of \"mode-switching\" does not guarantee that the destination mode is what the caller requests for. If you think this design is better, please add some comments in the method doc to warn the caller that destination mode might not be requested mode and it won\u0027t return errors.",
+      "parentUuid": "8d794164_f6de5c27",
+      "range": {
+        "startLine": 389,
+        "startChar": 1,
+        "endLine": 389,
+        "endChar": 2
+      },
+      "revId": "9bd277b9c476a97ac6cce32ebfd0e90f0fdd6697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e0be5e09_d258da7e",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 6
