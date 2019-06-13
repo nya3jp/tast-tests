@@ -186,6 +186,24 @@
     },
     {
       "key": {
+        "uuid": "01bf44e4_292c1048",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-06-13T02:03:06Z",
+      "side": 1,
+      "message": "Are you seeing the the timeout happen in waitProp without this change? I was hoping the 10+ seconds of waiting/retrying done in android-sh would be enough :(\n\nInstead of this change, maybe it makes sense to go a step further and check the login state and wait for a longer duration in android-sh for login.",
+      "parentUuid": "5035720a_5b39806a",
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9fcd8395_6da9af2c",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 5
@@ -338,6 +356,30 @@
       "side": 1,
       "message": "There are some discussions / bugs that talk about this: b/123308422, b/123306389#comment9, go/arcvm-sh.\nHowever, it might be possible for them not be implemented. One possible scenario is if \u0027adb\u0027 is supported on -user build.\n\n\u003e Could you keep android-sh interface consistent between container and VM?\n\nSupporting Tast for ARCVM might have a higher priority now. Would it be okay to land ARCVM Tast first?\nAlso, are there any concerns, other than the divergence for the code, that I can take for consideration (to have consistent interface)?",
       "parentUuid": "a4abacf8_6666cfa8",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1901e4b5_95faf7ff",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-06-13T02:03:06Z",
+      "side": 1,
+      "message": "+1 on keeping it consistent. Is it possible to change the android-sh-vm script so that escaping is not necessary? This would be a better fix imo as there could be other usages of android-sh that might not know escaping is now necessary.",
+      "parentUuid": "c5196994_7796773d",
       "range": {
         "startLine": 34,
         "startChar": 1,
