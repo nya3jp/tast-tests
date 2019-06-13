@@ -22,6 +22,30 @@
       "revId": "9cb18ba9e0f7dacf201a1f7296574a37a7fe9d17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "115daecc_c34e5334",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-13T00:23:46Z",
+      "side": 1,
+      "message": "makes sense! I\u0027ll start with 10 minutes, and we can reduce it when we get the runtimes.",
+      "parentUuid": "65f2bbac_35564dce",
+      "range": {
+        "startLine": 12,
+        "startChar": 50,
+        "endLine": 12,
+        "endChar": 60
+      },
+      "revId": "9cb18ba9e0f7dacf201a1f7296574a37a7fe9d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
