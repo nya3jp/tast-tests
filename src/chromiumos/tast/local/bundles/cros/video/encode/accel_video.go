@@ -288,7 +288,14 @@ func RunAllAccelVideoTests(ctx context.Context, s *testing.State, opts TestOptio
 	}
 	defer vl.Close()
 
-	runAccelVideoTest(ctx, s, opts, binArgs{})
+	// crbug.com/970089: Currently the intel driver cannot set the bitrate at VP9 correctly. Disable these test cases first.
+	// TODO(akahuang): Remove after the driver is fixed.
+	ba := binArgs{}
+	if opts.Profile == videotype.VP9Prof {
+		ba.testFilter = "-MidStreamParamSwitchBitrate/*:-ForceBitrate/*"
+	}
+
+	runAccelVideoTest(ctx, s, opts, ba)
 }
 
 // RunAccelVideoPerfTest runs video_encode_accelerator_unittest multiple times with different arguments to gather perf metrics.
