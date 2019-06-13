@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5de47dca_92be284d",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-13T23:19:14Z",
+      "side": 1,
+      "message": "I think it is not returning a string here",
+      "range": {
+        "startLine": 390,
+        "startChar": 43,
+        "endLine": 390,
+        "endChar": 54
+      },
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35f29bb7_1055c0cd",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-13T23:19:14Z",
+      "side": 1,
+      "message": "use a default value like WindowStateNormal",
+      "range": {
+        "startLine": 394,
+        "startChar": 9,
+        "endLine": 394,
+        "endChar": 12
+      },
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd59c24a_4333ff29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-13T23:19:14Z",
+      "side": 1,
+      "message": "I think this is not needed",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 89
+      },
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a80e2e3a_cf3548e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-13T23:19:14Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 25,
+        "startChar": 49,
+        "endLine": 25,
+        "endChar": 60
+      },
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9fff3f9_fd0c6348",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-13T23:19:14Z",
+      "side": 1,
+      "message": "Not need to use this Chrome Switch since you are changing from TAblet to Clamshell below.\nAnd since you wouldn\u0027t need any extra ChromeArgs, could your use the arc.Booted precondition instead ? Info here:\nhttp://go/arc++tast-tests#your-first-arc-test",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 70
+      },
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bb58f7a_6b80a6c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-13T23:19:14Z",
+      "side": 1,
+      "message": "nit: I think it is safe to remove the comparison.\nThere is no performance gain it comparing it, since \"as.TAbletModeEnabled\" in the end calls Ash via autotestPrivate. So calling directly \"ash.SetTAbletModeEnabled()\" should have the same performance penalty with the benefit of writing less code.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 43
+      },
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fa7c6a0_f1e1c53e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-13T23:19:14Z",
+      "side": 1,
+      "message": "nit: error messages in Go are sentences. So perhaps the iteration should be placed somehwere else, or rephrase the error message.\ne.g:\n\"Failed to set tablet mode enabled to %d in iter %d: %v\"",
+      "range": {
+        "startLine": 100,
+        "startChar": 14,
+        "endLine": 100,
+        "endChar": 17
+      },
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cf99d38_6b0cc84d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-13T23:19:14Z",
+      "side": 1,
+      "message": "ditto: please add an \"sentence\" as error message.",
+      "range": {
+        "startLine": 106,
+        "startChar": 12,
+        "endLine": 106,
+        "endChar": 20
+      },
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be21b8c8_1c4f7f5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-13T23:19:14Z",
+      "side": 1,
+      "message": "what does \u002725\u0027 mean? could you put it in a constant?",
+      "range": {
+        "startLine": 108,
+        "startChar": 18,
+        "endLine": 108,
+        "endChar": 20
+      },
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "464d30aa_cca7b9b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-13T23:19:14Z",
+      "side": 1,
+      "message": "nit: (here and below). I believe all comments in Golang end with a \u0027.\u0027",
+      "range": {
+        "startLine": 109,
+        "startChar": 32,
+        "endLine": 109,
+        "endChar": 33
+      },
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fc4d235_dad1f1b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-13T23:19:14Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 111,
+        "startChar": 14,
+        "endLine": 111,
+        "endChar": 20
+      },
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44c5612e_782ee639",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-13T23:19:14Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 115,
+        "startChar": 15,
+        "endLine": 115,
+        "endChar": 20
+      },
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a3cb34e_a24ca452",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-13T23:19:14Z",
+      "side": 1,
+      "message": "please add doc for this function.",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 30
+      },
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
