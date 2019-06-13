@@ -16,6 +16,24 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// Waits for a printer which has the same VID/PID as devInfo to be configured on
+// the system. If a match is found then the name of the configured device will
+// be returned.
+func waitPrinterConfigured(ctx context.Context, devInfo DevInfo) (name string, err error) {
+	var foundName string
+	if err = testing.Poll(ctx, func(ctx context.Context) error {
+		name, err := printerName(ctx, devInfo)
+		if err != nil {
+			return err
+		}
+		foundName = name
+		return nil
+	}, nil); err != nil {
+		return "", err
+	}
+	return foundName, nil
+}
+
 // RunPrintTest executes a test for the virtual USB printer defined by the
 // given arguments. This tests that the printer is able to be configured, and
 // produces the expected output when a print job is issued. The given
@@ -65,17 +83,22 @@ func RunPrintTest(ctx context.Context, s *testing.State, descriptors,
 		}
 	}()
 
-	s.Log("Waiting for printer to be configured")
 	var foundPrinterName string
-	if err = testing.Poll(ctx, func(ctx context.Context) error {
-		name, err := printerName(ctx, devInfo)
-		if err != nil {
-			return err
+	if ppd != "" {
+		// If a PPD is provided then we configure the printer ourselves.
+		foundPrinterName = "virtual-test"
+		if err := cupsAddPrinter(ctx, foundPrinterName, devInfo, ppd); err != nil {
+			s.Fatal("Failed to configure printer: ", err)
 		}
-		foundPrinterName = name
-		return nil
-	}, nil); err != nil {
-		s.Fatal("Failed to find printer name: ", err)
+	} else {
+		// If no PPD is provided then the printer is an ipp-over-usb device and will
+		// be configured automatically by Chrome. We wait until it is configured in
+		// order to extract the name of the device.
+		s.Log("Waiting for printer to be configured")
+		foundPrinterName, err = waitPrinterConfigured(ctx, devInfo)
+		if err != nil {
+			s.Fatal("Failed to find printer name: ", err)
+		}
 	}
 	s.Log("Printer configured with name: ", foundPrinterName)
 
