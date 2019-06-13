@@ -42,6 +42,17 @@ func printerName(ctx context.Context, devInfo DevInfo) (name string, err error) 
 	return "", errors.Errorf("failed to find printer with vid %s pid %s", devInfo.VID, devInfo.PID)
 }
 
+// cupsAddPrinter adds a new virtual USB printer using CUPS. Returns an error if
+// the provided ppd path is empty or if the command to add the printer failed.
+func cupsAddPrinter(ctx context.Context, printerName string, devInfo DevInfo, ppd string) error {
+	if ppd == "" {
+		return errors.New("must provide PPD to cupsAddPrinter")
+	}
+	uri := fmt.Sprintf("usb://%s/%s", devInfo.VID, devInfo.PID)
+	testing.ContextLog(ctx, "Adding printer to CUPS using ", uri)
+	return testexec.CommandContext(ctx, "lpadmin", "-p", printerName, "-v", uri, "-P", ppd, "-E").Run(testexec.DumpLogOnError)
+}
+
 // cupsRemovePrinter removes the printer that was configured for testing.
 func cupsRemovePrinter(ctx context.Context, printerName string) error {
 	return testexec.CommandContext(ctx, "lpadmin", "-x", printerName).Run()
