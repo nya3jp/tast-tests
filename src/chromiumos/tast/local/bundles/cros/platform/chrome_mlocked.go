@@ -9,7 +9,6 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
-	"os"
 	"regexp"
 	"strings"
 	"time"
@@ -45,7 +44,7 @@ func ChromeMlocked(ctx context.Context, s *testing.State) {
 	// Generally, this entire process should be fast, so poll at a somewhat
 	// short interval.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		hasMlocked, checkedPIDs, err := chromeHasMlockedPages()
+		hasMlocked, checkedPIDs, err := chromeHasMlockedPages(s)
 		if err != nil {
 			s.Fatal("Error checking for mlocked pages: ", err)
 		}
@@ -62,7 +61,7 @@ func ChromeMlocked(ctx context.Context, s *testing.State) {
 	}
 }
 
-func chromeHasMlockedPages() (hasMlocked bool, checkedPIDs []int32, err error) {
+func chromeHasMlockedPages(s *testing.State) (hasMlocked bool, checkedPIDs []int32, err error) {
 	procs, err := process.Processes()
 	if err != nil {
 		return false, nil, errors.Wrap(err, "failed getting processes")
@@ -72,10 +71,8 @@ func chromeHasMlockedPages() (hasMlocked bool, checkedPIDs []int32, err error) {
 	for _, proc := range procs {
 		cmdline, err := proc.CmdlineSlice()
 		if err != nil {
-			if os.IsNotExist(err) {
-				continue
-			}
-			return false, nil, errors.Wrapf(err, "failed to get cmdline for %d", proc.Pid)
+			s.Log("Failed to read cmdline for %d: %v", proc.Pid, err)
+			continue
 		}
 
 		// Until https://crbug.com/887875 is fixed, we need to double-split. CmdlineSlice
@@ -94,10 +91,8 @@ func chromeHasMlockedPages() (hasMlocked bool, checkedPIDs []int32, err error) {
 		// info... Just parse it out ourselves.
 		status, err := ioutil.ReadFile(fmt.Sprintf("/proc/%d/status", proc.Pid))
 		if err != nil {
-			if os.IsNotExist(err) {
-				continue
-			}
-			return false, nil, errors.Wrapf(err, "failed to get status for %d", proc.Pid)
+			s.Log("Failed to read cmdline for %d: %v", proc.Pid, err)
+			continue
 		}
 
 		checkedPIDs = append(checkedPIDs, proc.Pid)
