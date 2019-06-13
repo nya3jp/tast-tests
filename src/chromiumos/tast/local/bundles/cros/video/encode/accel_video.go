@@ -282,13 +282,18 @@ func createStreamDataArg(params StreamParams, profile videotype.CodecProfile, pi
 
 // RunAllAccelVideoTests runs all tests in video_encode_accelerator_unittest.
 func RunAllAccelVideoTests(ctx context.Context, s *testing.State, opts TestOptions) {
+	RunAllAccelVideoTestsWithFilter(ctx, s, opts, "")
+}
+
+// RunAllAccelVideoTestsWithFilter runs all tests in video_encode_accelerator_unittest with the test pattern in googletest style.
+func RunAllAccelVideoTestsWithFilter(ctx context.Context, s *testing.State, opts TestOptions, testFilter string) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
 	}
 	defer vl.Close()
 
-	runAccelVideoTest(ctx, s, opts, binArgs{})
+	runAccelVideoTest(ctx, s, opts, binArgs{testFilter: testFilter})
 }
 
 // RunAccelVideoPerfTest runs video_encode_accelerator_unittest multiple times with different arguments to gather perf metrics.
