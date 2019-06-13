@@ -22,6 +22,30 @@
       "revId": "a9d0eee5183474cd2b963b60085c69b249f04a87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1131e0b_c2006332",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-06-13T20:59:41Z",
+      "side": 1,
+      "message": "My bad forgot to update the comment. Thanks!",
+      "parentUuid": "24e79b4b_2f8f0cd5",
+      "range": {
+        "startLine": 46,
+        "startChar": 50,
+        "endLine": 47,
+        "endChar": 27
+      },
+      "revId": "a9d0eee5183474cd2b963b60085c69b249f04a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
