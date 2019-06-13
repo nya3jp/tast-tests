@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "194b16e6_c8c5c9be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-06-13T20:43:10Z",
+      "side": 1,
+      "message": "Can you move this into the if statement in unzipTrace?",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 60
+      },
+      "revId": "7aa14a5170bc293dd72d26aeeff5f12dec790bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
