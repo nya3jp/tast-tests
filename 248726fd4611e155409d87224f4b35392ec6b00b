@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a42a7506_0da22b47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/parse_printer_uris.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-13T08:12:12Z",
+      "side": 1,
+      "message": "Do you have team alias for contact?",
+      "revId": "248726fd4611e155409d87224f4b35392ec6b00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5a56bcb_aa24f455",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/parse_printer_uris.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-13T08:12:12Z",
+      "side": 1,
+      "message": "All the test cases contain ppdContents, so could you drop if here?",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 28
+      },
+      "revId": "248726fd4611e155409d87224f4b35392ec6b00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13a74fe8_8b99e7be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/parse_printer_uris.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-13T08:12:12Z",
+      "side": 1,
+      "message": "How about simplify the error messages?\n\ns.Errorf(\"%s failed: got %d; want %d\", spec.name, result, spec.expectedStatus)\n\nNote that, \"got ...; want ...\" is one of the common patterns to output the message.\n\nYou can drop onFailureMessage, then.",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 40
+      },
+      "revId": "248726fd4611e155409d87224f4b35392ec6b00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c9979fe_2fff9bd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/parse_printer_uris.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-13T08:12:12Z",
+      "side": 1,
+      "message": "to make the test name unique, how about TrailingPercent?",
+      "revId": "248726fd4611e155409d87224f4b35392ec6b00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
