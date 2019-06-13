@@ -12,6 +12,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -45,7 +46,7 @@ func RunTest(ctx context.Context, s *testing.State, traces map[string]string) {
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
-	defer cr.Close(ctx)
+	//defer cr.Close(ctx)
 
 	// TODO(pwang): use crostini setup library once crbug.com/965398 is done.
 	s.Log("Enabling Crostini preference setting")
@@ -62,7 +63,7 @@ func RunTest(ctx context.Context, s *testing.State, traces map[string]string) {
 	if err != nil {
 		s.Fatal("Failed to set up component: ", err)
 	}
-	defer vm.UnmountComponent(ctx)
+	//defer vm.UnmountComponent(ctx)
 
 	s.Log("Creating default container")
 	cont, err := vm.CreateDefaultContainer(ctx, s.OutDir(), cr.User(), vm.LiveImageServer, "")
@@ -73,7 +74,7 @@ func RunTest(ctx context.Context, s *testing.State, traces map[string]string) {
 		if err := cont.DumpLog(ctx, s.OutDir()); err != nil {
 			s.Error("Failed to dump container log: ", err)
 		}
-		vm.StopConcierge(ctx)
+		//vm.StopConcierge(ctx)
 	}()
 
 	outDir := filepath.Join(s.OutDir(), logDir)
@@ -113,7 +114,12 @@ func runTrace(ctx context.Context, cont *vm.Container, traceFile, traceName stri
 		return nil, errors.Wrap(err, "failed copying trace file to container")
 	}
 
-	testing.ContextLog(ctx, "Replaying trace file ", filepath.Base(traceFile))
+	containerPath, err := decompressTrace(ctx, cont, containerPath)
+	if err != nil {
+		return nil, err
+	}
+
+	testing.ContextLog(ctx, "Replaying trace file ", filepath.Base(containerPath))
 	cmd := cont.Command(ctx, "apitrace", "replay", containerPath)
 	traceOut, err := cmd.CombinedOutput()
 	if err != nil {
@@ -132,6 +138,22 @@ func runTrace(ctx context.Context, cont *vm.Container, traceFile, traceName stri
 		return nil, errors.Wrap(err, "error writing tracing output")
 	}
 	return parseResult(traceName, string(traceOut))
+}
+
+// decompressTrace trys to decompress the trace into trace format if possible. If the input is uncompressed, this function will do nothing.
+// Returns the uncompressed file absolute path.
+func decompressTrace(ctx context.Context, cont *vm.Container, traceFile string) (string, error) {
+	if filepath.Ext(traceFile) != ".bz2" {
+		return traceFile, nil
+	}
+	testing.ContextLog(ctx, "Decompressing trace file ", traceFile)
+	cmd := cont.Command(ctx, "bunzip2", traceFile)
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		testing.ContextLog(ctx, string(output))
+		return "", errors.Wrap(err, "failed to decompress bz2")
+	}
+	return strings.TrimSuffix(traceFile, filepath.Ext(traceFile)), nil
 }
 
 // parseResult parses the output of apitrace and return the perfs.
