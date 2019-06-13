@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "bae03c8a_d686bb69",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-06-13T05:17:36Z",
+      "side": 1,
+      "message": "Is this necessary because of b/134962894, or why do we have to create the home directory? If it\u0027s for that bug, I thought this would affect adb usage in general, is there a reason this is only for VM and not for ARC++?",
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b4f91ecf_3055eadf",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 5
@@ -292,6 +309,23 @@
         "endLine": 331,
         "endChar": 48
       },
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a63de3f6_39adfb0a",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-06-13T05:17:36Z",
+      "side": 1,
+      "message": "Since adb is done over vsock, is it necessary for VM to wait for networking?",
       "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
