@@ -12,6 +12,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -113,7 +114,12 @@ func runTrace(ctx context.Context, cont *vm.Container, traceFile, traceName stri
 		return nil, errors.Wrap(err, "failed copying trace file to container")
 	}
 
-	testing.ContextLog(ctx, "Replaying trace file ", filepath.Base(traceFile))
+	containerPath, err := decompressTrace(ctx, cont, containerPath)
+	if err != nil {
+		return nil, err
+	}
+
+	testing.ContextLog(ctx, "Replaying trace file ", filepath.Base(containerPath))
 	cmd := cont.Command(ctx, "apitrace", "replay", containerPath)
 	traceOut, err := cmd.CombinedOutput()
 	if err != nil {
@@ -132,6 +138,22 @@ func runTrace(ctx context.Context, cont *vm.Container, traceFile, traceName stri
 		return nil, errors.Wrap(err, "error writing tracing output")
 	}
 	return parseResult(traceName, string(traceOut))
+}
+
+// decompressTrace trys to decompress the trace into trace format if possible. If the input is uncompressed, this function will do nothing.
+// Returns the uncompressed file absolute path.
+func decompressTrace(ctx context.Context, cont *vm.Container, traceFile string) (string, error) {
+	if filepath.Ext(traceFile) != ".bz2" {
+		return traceFile, nil
+	}
+	testing.ContextLog(ctx, "Decompressing trace file ", traceFile)
+	cmd := cont.Command(ctx, "bunzip2", traceFile)
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		testing.ContextLog(ctx, string(output))
+		return "", errors.Wrap(err, "failed to decompress bz2")
+	}
+	return strings.TrimSuffix(traceFile, filepath.Ext(traceFile)), nil
 }
 
 // parseResult parses the output of apitrace and return the perfs.
