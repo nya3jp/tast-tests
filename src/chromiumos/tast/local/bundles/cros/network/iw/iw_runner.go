@@ -104,7 +104,7 @@ func extractBSSID(linkInformation string, interfaceName string, stationDump bool
 // clientCommandExec runs in a blocking fashion and will not return until the
 // command terminates.
 func clientCommandExec(ctx context.Context, shellCommand string) (string, error) {
-	out, err := testexec.CommandContext(ctx, shellCommand).Output()
+	out, err := testexec.CommandContext(ctx, "sh", "-c", shellCommand).Output()
 	return string(out), err
 }
 
@@ -254,7 +254,7 @@ func (iwr Runner) TimedScan(iface string, frequencies []int, ssids []string) *ti
 	if status, _ := testexec.GetWaitStatus(err); int(status) != 0 {
 		iwr.s.Fatal(fmt.Sprintf("Error in scan. scan exit status: %d", status))
 	}
-	if len(scanOut) < 0 {
+	if len(scanOut) <= 0 {
 		iwr.s.Fatal("Missing scan parse time")
 	}
 	if strings.HasPrefix(scanOut, iwTimeCommandOutputStart) {
