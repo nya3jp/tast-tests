@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b109d3a_37edf2a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-06-13T02:35:37Z",
+      "side": 1,
+      "message": "would be helpful to have comments mentioning what these fields are for anyone who will add more lookup entries in the future",
+      "revId": "57bd0a517f63fbbc2ca2f647ee848cad2340399c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43c05edf_629feff0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-06-13T02:35:37Z",
+      "side": 1,
+      "message": "this name seems like it should be for a WlanDriver struct or something.  What about renaming the test?",
+      "revId": "57bd0a517f63fbbc2ca2f647ee848cad2340399c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6596a996_003124ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-06-13T02:35:37Z",
+      "side": 1,
+      "message": "getting the kernel verison seems like something that should be a common utility, like Autotest\u0027s utils.get_kernel_version() ... or host.get_kernel_version(), which is basically identical :)",
+      "revId": "57bd0a517f63fbbc2ca2f647ee848cad2340399c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f05f504_23f29eb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-06-13T02:35:37Z",
+      "side": 1,
+      "message": "would be helpful to have a doc comment here",
+      "revId": "57bd0a517f63fbbc2ca2f647ee848cad2340399c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fed49540_e339cc37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-06-13T02:35:37Z",
+      "side": 1,
+      "message": "It\u0027s not obvious from the names what this function and getDeviceName are returning.  The names also seem quite generic, which could cause problems if some future test in this package tries to create similar functions.",
+      "revId": "57bd0a517f63fbbc2ca2f647ee848cad2340399c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97bdddac_fc4a12df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-06-13T02:35:37Z",
+      "side": 1,
+      "message": "start with lowercase",
+      "revId": "57bd0a517f63fbbc2ca2f647ee848cad2340399c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1efbbaa5_b57a948f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-06-13T02:35:37Z",
+      "side": 1,
+      "message": "the second assignment of err isn\u0027t used here.  Why not use _, ok instead?",
+      "revId": "57bd0a517f63fbbc2ca2f647ee848cad2340399c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c936ff8_059b3d6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-06-13T02:35:37Z",
+      "side": 1,
+      "message": "would be helpful to have a doc comment here",
+      "revId": "57bd0a517f63fbbc2ca2f647ee848cad2340399c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
