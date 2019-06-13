@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d68857cf_612cb923",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-13T23:46:06Z",
+      "side": 1,
+      "message": "Thanks for the tip! I prefer names that are not too generic, so I changed it to \u0027idleIncrease\u0027.",
+      "parentUuid": "086070af_bb75b56f",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 28
+      },
+      "revId": "d3a3ffc60764df945b44d60f3f62ef5eef24311e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f628aa4_22312a5d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "fb779ce7_fc7df275",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-13T23:46:06Z",
+      "side": 1,
+      "message": "Changed it to \u0027idlePercent\u0027.",
+      "parentUuid": "7f628aa4_22312a5d",
+      "range": {
+        "startLine": 132,
+        "startChar": 2,
+        "endLine": 132,
+        "endChar": 20
+      },
+      "revId": "d3a3ffc60764df945b44d60f3f62ef5eef24311e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ded43709_0cfd7de6",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "d3a3ffc60764df945b44d60f3f62ef5eef24311e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "877b95f5_c2e5fbe5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-13T23:46:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ded43709_0cfd7de6",
+      "range": {
+        "startLine": 133,
+        "startChar": 2,
+        "endLine": 143,
+        "endChar": 27
+      },
+      "revId": "d3a3ffc60764df945b44d60f3f62ef5eef24311e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
