@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7d6a8e6c_572025ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/1080p_60fps_600frames.h264.json.external",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-13T08:18:16Z",
+      "side": 1,
+      "message": "We discussed this earlier, and decided it was easier to keep the json files together with the test video files in gs://chromiumos-test-assets-public:\n- Some of these json files are already in media/test/data so they would be in the source tree twice, possible in different versions.\n- The test video files won\u0027t work without the accompanying json files, so it makes sense to keep them together.\n- I will often just download both video + json metadata files when trying to run a test locally, so it\u0027s pretty convenient they are always stored together.",
+      "parentUuid": "4548fc69_768bdaf5",
+      "revId": "a75886145355349ea0d80d7c6c81730dc44b35b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc26c3d0_54c08b6d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 5
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "2edb7f76_5884b754",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-13T08:18:16Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromium/src/+/lkgr/docs/media/gpu/video_decoder_perf_test_usage.md\nWorking on improving the doc in crrev.com/c/1638307",
+      "parentUuid": "bc26c3d0_54c08b6d",
+      "revId": "a75886145355349ea0d80d7c6c81730dc44b35b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d08941a_2a639ca6",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 5
@@ -47,6 +83,24 @@
       "writtenOn": "2019-06-11T17:10:19Z",
       "side": 1,
       "message": "Test1 and Test2 looks independent. How about extracting them into separate functions?",
+      "revId": "a75886145355349ea0d80d7c6c81730dc44b35b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2bf62c1_79cb4d25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-13T08:18:16Z",
+      "side": 1,
+      "message": "It\u0027s a bit unfortunate I have to measure CPU usage in a separate run, but I\u0027m planning to merge them together in the future. So if it\u0027s OK I would like to keep it like this for now. (There is a TODO about merging the tests below).",
+      "parentUuid": "8d08941a_2a639ca6",
       "revId": "a75886145355349ea0d80d7c6c81730dc44b35b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "ddaf136e_fc3d7854",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-13T08:18:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48b887fb_26f9a813",
+      "revId": "a75886145355349ea0d80d7c6c81730dc44b35b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "694c438e_fcd6bd2d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 5
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "a763c0a1_08afeb0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-13T08:18:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "694c438e_fcd6bd2d",
+      "revId": "a75886145355349ea0d80d7c6c81730dc44b35b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f16033a0_616a402c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 5
@@ -98,6 +188,24 @@
       "writtenOn": "2019-06-11T17:10:19Z",
       "side": 1,
       "message": "err expected to be non-nil in this case?",
+      "revId": "a75886145355349ea0d80d7c6c81730dc44b35b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eedfc6a_1914d975",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-13T08:18:16Z",
+      "side": 1,
+      "message": "If killing is successful, err should be nil",
+      "parentUuid": "f16033a0_616a402c",
       "revId": "a75886145355349ea0d80d7c6c81730dc44b35b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
