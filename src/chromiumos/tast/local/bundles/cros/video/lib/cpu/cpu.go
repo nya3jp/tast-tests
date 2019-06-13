@@ -79,9 +79,12 @@ func MeasureProcessCPU(ctx context.Context, runCmdAsync StartProcFunc, cpuLogPat
 // undo function should be scheduled by the caller if err is non-nil.
 func SetUpBenchmark(ctx context.Context) (shortCtx context.Context, undo func(), err error) {
 	const (
-		waitIdleCPUTimeout  = 30 * time.Second // time to wait for CPU to be idle.
-		idleCPUUsagePercent = 10.0             // percent below which CPU is idle.
-		cleanupTime         = 10 * time.Second // time reserved for cleanup after running test.
+		waitIdleCPUTimeout      = 60 * time.Second // time to wait for CPU to be idle.
+		idleCPUUsagePercentBase = 5.0              // percent below which CPU is ideally considered idle,
+		// will be gradually increased up to idleCPUUsagePercentMax.
+		idleCPUUsagePercentMax = 20.0             // maximum percent below which CPU is idle.
+		idleCPUSteps           = 5                // times we wait for CPU to become idle.
+		cleanupTime            = 10 * time.Second // time reserved for cleanup after running test.
 	)
 
 	var restoreScaling func() error
@@ -120,8 +123,19 @@ func SetUpBenchmark(ctx context.Context) (shortCtx context.Context, undo func(),
 		return shortCtx, nil, errors.Wrap(err, "failed to disable thermal throttling")
 	}
 
-	if err = WaitForIdle(shortCtx, waitIdleCPUTimeout, idleCPUUsagePercent); err != nil {
-		return shortCtx, nil, errors.Wrap(err, "failed waiting for CPU to become idle")
+	// Wait for the CPU to become idle. It's e.g. possible the board just booted
+	// and is running various startup programs. Some slower platforms have a
+	// hard time getting below 10% CPU usage, so we'll gradually increase the
+	// CPU idle threshold.
+	idleCPUUsagePercentIncrease := (idleCPUUsagePercentMax - idleCPUUsagePercentBase) / (idleCPUSteps - 1)
+	for i := 0; i < idleCPUSteps; i++ {
+		currentIdlePercent := idleCPUUsagePercentBase + (idleCPUUsagePercentIncrease * float64(i))
+		if err = WaitForIdle(shortCtx, waitIdleCPUTimeout/idleCPUSteps, currentIdlePercent); err == nil {
+			break
+		}
+		if i == idleCPUSteps-1 {
+			return shortCtx, nil, errors.Wrap(err, "failed waiting for CPU to become idle")
+		}
 	}
 
 	// Disarm running the undo function now that we expect the caller to do it.
