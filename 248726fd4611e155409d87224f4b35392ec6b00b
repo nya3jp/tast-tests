@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d1e9347d_fd1c26a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/parse_printer_uris.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2019-06-13T20:38:44Z",
+      "side": 1,
+      "message": "nit: 2019",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "248726fd4611e155409d87224f4b35392ec6b00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a42a7506_0da22b47",
         "filename": "src/chromiumos/tast/local/bundles/cros/debugd/parse_printer_uris.go",
         "patchSetId": 1
