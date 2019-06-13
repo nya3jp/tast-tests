@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1da3990_36741c16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-13T07:58:17Z",
+      "side": 1,
+      "message": "style/optional: we often inline the Split in range. E.g.\n\nfor _, line :\u003d range strings.Split(string(out), \"\\n\") {\n  ...\n}",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 29
+      },
+      "revId": "966b33c15797d78063e039611da5c0dcb9fbda7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "238ca932_aef29cc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-13T07:58:17Z",
+      "side": 1,
+      "message": "style: to make the flow a bit simpler, could you inverse the condition?\n\nif submatches !\u003d nil {\n  return submatches[1], nil\n}",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 27
+      },
+      "revId": "966b33c15797d78063e039611da5c0dcb9fbda7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
