@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "82ed1e2a_ad2c6a73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/parse_printer_uris.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2019-06-13T17:08:43Z",
+      "side": 1,
+      "message": "Thanks, fixed.",
+      "parentUuid": "a42a7506_0da22b47",
+      "revId": "248726fd4611e155409d87224f4b35392ec6b00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5a56bcb_aa24f455",
         "filename": "src/chromiumos/tast/local/bundles/cros/debugd/parse_printer_uris.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "248726fd4611e155409d87224f4b35392ec6b00b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a57ec3d0_9f8ad8cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/parse_printer_uris.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2019-06-13T17:08:43Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "a5a56bcb_aa24f455",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 28
+      },
+      "revId": "248726fd4611e155409d87224f4b35392ec6b00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "41d26210_0074d90c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/parse_printer_uris.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2019-06-13T17:08:43Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "13a74fe8_8b99e7be",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 40
+      },
+      "revId": "248726fd4611e155409d87224f4b35392ec6b00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c9979fe_2fff9bd1",
         "filename": "src/chromiumos/tast/local/bundles/cros/debugd/parse_printer_uris.go",
         "patchSetId": 1
@@ -79,6 +145,24 @@
       "revId": "248726fd4611e155409d87224f4b35392ec6b00b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df3914ae_bbc14186",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/parse_printer_uris.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2019-06-13T17:08:43Z",
+      "side": 1,
+      "message": "Thanks for catching that - done.",
+      "parentUuid": "1c9979fe_2fff9bd1",
+      "revId": "248726fd4611e155409d87224f4b35392ec6b00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
