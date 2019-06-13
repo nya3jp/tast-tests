@@ -27,10 +27,13 @@ func init() {
 }
 
 func EncodeAccelVP92160PI420(ctx context.Context, s *testing.State) {
-	encode.RunAllAccelVideoTests(ctx, s, encode.TestOptions{
+	// Currently the intel driver cannot set the bitrate at VP9 correctly. Disable these test cases first.
+	// TODO(b/134538840): Remove after the driver is fixed.
+	testFilter := "-MidStreamParamSwitchBitrate/*:ForceBitrate/*"
+
+	encode.RunAllAccelVideoTestsWithFilter(ctx, s, encode.TestOptions{
 		Profile:     videotype.VP9Prof,
 		Params:      encode.Crowd2160P,
 		PixelFormat: videotype.I420,
-		InputMode:   encode.SharedMemory,
-	})
+		InputMode:   encode.SharedMemory}, testFilter)
 }
