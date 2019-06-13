@@ -26,6 +26,16 @@ import (
 // pass.
 var idInPDFRegex = regexp.MustCompile("(?m)^.*\\/ID \\[<[a-f0-9]+><[a-f0-9]+>\\] >>[\r\n]")
 
+// usernameInPDFRegex matches the line with "For" field embedded in the PDF.
+// CUPS is somewhat flaky on whether or not this field is populated with the
+// name of the user that started the job, so we remove it.
+var usernameInPDFRegex = regexp.MustCompile("(?m)^%%For: \\(\\w+\\)$")
+
+// documentTitleInPDFRegex matches the line with the "Title" field embedded in
+// the PDF. CUPS is somewhat flaky on whether or not this field is populated
+// with the name of the document that was printed, so we remove it.
+var documentTitleInPDFRegex = regexp.MustCompile("(?m)^%%Title: \\([\\w\\.]+\\)$")
+
 // DevInfo contains information used to identify a USB device.
 type DevInfo struct {
 	// VID contains the device's vendor ID.
@@ -155,27 +165,29 @@ func Start(ctx context.Context, devInfo DevInfo, descriptors, attributes, record
 	return launch, nil
 }
 
-// eraseIDsInPDF loads the contents of the given file f and removes lines which
-// would cause a file comparison to fail. Returns a string which contains the
-// modified file contents.
-func eraseIDsInPDF(f string) (string, error) {
+func cleanPDFContents(f string) (string, error) {
 	bytes, err := ioutil.ReadFile(f)
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to read file %s", f)
 	}
-	return idInPDFRegex.ReplaceAllLiteralString(string(bytes), ""), nil
+
+	removedIds := idInPDFRegex.ReplaceAllLiteralString(string(bytes), "")
+	removedUser := usernameInPDFRegex.ReplaceAllLiteralString(removedIds, "")
+	removedTitle := documentTitleInPDFRegex.ReplaceAllLiteralString(removedUser, "")
+
+	return removedTitle, nil
 }
 
 // compareFiles performs a diff between the given files output and golden. If
 // the contents of the files are not the same then the result from the diff
 // command will be written to diffPath.
 func compareFiles(ctx context.Context, output, golden, diffPath string) error {
-	result, err := eraseIDsInPDF(output)
+	result, err := cleanPDFContents(output)
 	if err != nil {
 		return err
 	}
 
-	expected, err := eraseIDsInPDF(golden)
+	expected, err := cleanPDFContents(golden)
 	if err != nil {
 		return err
 	}
