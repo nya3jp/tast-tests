@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "ac71fb5e_36bd2c59",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-06-13T21:15:31Z",
+      "side": 1,
+      "message": "This is actually copied from the ARC++ code (adb.go), so not only for VM. I\u0027m planning to move this to adb.go to have better clarity.",
+      "parentUuid": "bae03c8a_d686bb69",
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4f91ecf_3055eadf",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 5
@@ -239,6 +257,24 @@
     },
     {
       "key": {
+        "uuid": "204a65c8_e7cb5142",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-06-13T21:15:31Z",
+      "side": 1,
+      "message": "\u003e Are you seeing the the timeout happen in waitProp without this change? I was hoping the 10+ seconds of waiting/retrying done in android-sh would be enough :(\n\nYeah, I guess arcvm boots even longer than that :(\n\n\u003e Instead of this change, maybe it makes sense to go a step further and check the login state and wait for a longer duration in android-sh for login.\n\nSounds great, will try to update the \u0027android-sh\u0027 script.",
+      "parentUuid": "01bf44e4_292c1048",
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9fcd8395_6da9af2c",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 5
@@ -344,6 +380,24 @@
       "writtenOn": "2019-06-13T05:17:36Z",
       "side": 1,
       "message": "Since adb is done over vsock, is it necessary for VM to wait for networking?",
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f9a7e48_af1ad433",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-06-13T21:15:31Z",
+      "side": 1,
+      "message": "I guess it won\u0027t be necessary. Will remove it.\n\nI thought it will be nice to get some error if networking is not working. But, now that I think about it, it should be not in scope for this.",
+      "parentUuid": "a63de3f6_39adfb0a",
       "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -456,6 +510,30 @@
       "side": 1,
       "message": "Yes, regardless of the plan, you can now move the shell escape to android-sh.",
       "parentUuid": "1901e4b5_95faf7ff",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "113822df_e623daaa",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-06-13T21:15:31Z",
+      "side": 1,
+      "message": "That\u0027s a good idea, thanks! Will work on it.\n\nI was thinking of updating \u0027adb over vsock\u0027 to \u0027vsh\u0027 or something else. That\u0027s why I thought it will take a good amount of effort, sorry!",
+      "parentUuid": "d05c254b_75f20b5f",
       "range": {
         "startLine": 34,
         "startChar": 1,
