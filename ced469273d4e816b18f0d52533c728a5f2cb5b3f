@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c29d7db_d5677994",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-13T04:52:39Z",
+      "side": 1,
+      "message": "How about renaming this to \"idleCPUUsagePercentBase\" or \"idleCPUUsagePercentIdeal\" or something? So the difference between this and idleCPUUsagePercentMax will be clearer.\n\nAlso, we might want to change the comment.\ne.g. \n// percent below which CPU is idle in ideally",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 21
+      },
+      "revId": "ced469273d4e816b18f0d52533c728a5f2cb5b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbeb411d_57eb15bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-13T04:52:39Z",
+      "side": 1,
+      "message": "remove \"else\"",
+      "range": {
+        "startLine": 134,
+        "startChar": 4,
+        "endLine": 134,
+        "endChar": 8
+      },
+      "revId": "ced469273d4e816b18f0d52533c728a5f2cb5b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
