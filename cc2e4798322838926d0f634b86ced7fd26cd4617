@@ -168,6 +168,24 @@
     },
     {
       "key": {
+        "uuid": "bf1abc5e_85e47af4",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-13T07:48:44Z",
+      "side": 1,
+      "message": "Thank you for explanation. (And, I now understand your comment at L283).\nOk, then I\u0027m fine with the set or two for-stmt.\nThough, could you take my \"offtopic\" part above if you choose set?",
+      "parentUuid": "1c8fd579_c6ada102",
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "795c86f2_ececd20c",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 5
@@ -414,6 +432,30 @@
       "side": 1,
       "message": "+1 on keeping it consistent. Is it possible to change the android-sh-vm script so that escaping is not necessary? This would be a better fix imo as there could be other usages of android-sh that might not know escaping is now necessary.",
       "parentUuid": "c5196994_7796773d",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d05c254b_75f20b5f",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-13T07:48:44Z",
+      "side": 1,
+      "message": "Yes, regardless of the plan, you can now move the shell escape to android-sh.",
+      "parentUuid": "1901e4b5_95faf7ff",
       "range": {
         "startLine": 34,
         "startChar": 1,
