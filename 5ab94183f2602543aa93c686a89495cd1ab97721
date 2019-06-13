@@ -1,0 +1,648 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd41e197_17ad5514",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "nit: Type is not needed from second items, e.g.\n\n const (\n   A SomeType \u003d \"a\"\n   B          \u003d \"b\"\n   C          \u003d \"f\"\n )",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 11
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e226554_76c0daee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "IIUC curTs is for printing \"New file found\" message without duplicates, am I right? This is tricky, and I\u0027m not very sure if this really works correctly when the modified timestamp of a file is changed during polling.\n\nAs a more straightforward way, how about keeping a set of file names we\u0027ve already seen?\n\n seen :\u003d make(map[string]struct{})\n if err \u003d testing.Poll(... {\n   files, err :\u003d ioutil.ReadDir(path)\n   if err !\u003d nil {\n     ...\n   }\n   for _, file :\u003d range files {\n     if file.ModTime().Before(ts) {\n       continue\n     }\n     if _, ok :\u003d seen[file.Name()]; ok {\n       continue\n     }\n     seen[file.Name()] \u003d struct{}{}\n     testing.ContextLog(ctx, \"New file found: \", file.Name())\n     ...\n   }\n })",
+      "range": {
+        "startLine": 193,
+        "startChar": 2,
+        "endLine": 193,
+        "endChar": 13
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "732cc326_fe6904ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "nit: It is more common to do early-return rather than overwriting err. As a bonus, we can make sure nil is returned as os.FileInfo in error cases.\n\n return errors.Wrapf(err, \"no matching output file found after %v\", timeout)",
+      "range": {
+        "startLine": 210,
+        "startChar": 2,
+        "endLine": 210,
+        "endChar": 8
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8748b49f_7e5c8fc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "huge nit: \"expected no captured file but found %q\"",
+      "range": {
+        "startLine": 228,
+        "startChar": 54,
+        "endLine": 228,
+        "endChar": 65
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be172b9b_62d80c4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "style: return errors.Wrapf(...)\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 280,
+        "startChar": 2,
+        "endLine": 280,
+        "endChar": 59
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9c198ec_719bb019",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "style: Please indent error flow.\n\n if err !\u003d nil {\n   return \"\", err\n }\n return filepath.Join(path, \"Downloads\"), nil\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 297,
+        "startChar": 1,
+        "endLine": 297,
+        "endChar": 16
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be0b1339_eacf0501",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "nit: This error message is formatted like:\n\n Error: failed to click on toggle button of selector: #toggle-grid: failed to evaluate...\n\nTo make the message better, I suggest:\n\n errors.Wrapf(err, \"failed to click toggle button matching selector %s\", toggleSelector)\n\nThen the message would be:\n\n Error: failed to click toggle button matching selector #toggle-grid: failed to evaluate...",
+      "range": {
+        "startLine": 342,
+        "startChar": 76,
+        "endLine": 342,
+        "endChar": 83
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf13003c_a4d4a039",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "nit: \u0027%s\u0027 \u003d\u003e %q",
+      "range": {
+        "startLine": 344,
+        "startChar": 35,
+        "endLine": 344,
+        "endChar": 39
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebaada0e_b3fc39ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "nit: \"failed to wait for toggling option %s\"",
+      "range": {
+        "startLine": 346,
+        "startChar": 35,
+        "endLine": 346,
+        "endChar": 83
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6074b8f_0bd56e49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "ditto: return errors.Wrap(...)",
+      "range": {
+        "startLine": 370,
+        "startChar": 2,
+        "endLine": 370,
+        "endChar": 58
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b29365d_e90721f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "nit: \"failed to switch to mode %s\"\n\nSame below.",
+      "range": {
+        "startLine": 389,
+        "startChar": 52,
+        "endLine": 389,
+        "endChar": 56
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3a2773c_06c44483",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "huge nit: switching",
+      "range": {
+        "startLine": 395,
+        "startChar": 54,
+        "endLine": 395,
+        "endChar": 60
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ac8ded3_128c553e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "nit: switching",
+      "range": {
+        "startLine": 400,
+        "startChar": 59,
+        "endLine": 400,
+        "endChar": 65
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72817424_9f957403",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "huge nit: switch",
+      "range": {
+        "startLine": 402,
+        "startChar": 38,
+        "endLine": 402,
+        "endChar": 47
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91b63fec_500f5a50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "When active \u003d false, this waits for deactivation, right? How about:\n\n \"failed to wait for state %s to set to %v\"",
+      "range": {
+        "startLine": 411,
+        "startChar": 28,
+        "endLine": 411,
+        "endChar": 91
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75d6f3ad_794050bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "launchApp is costly because it performs logout/login (in chrome.New). Can we avoid them? Do we have any perticular reason we can\u0027t use the login session for all subtests?\n\nIf we can avoid logout, we can use preconditions to speed up this test. See:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#preconditions\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/example/keyboard.go?type\u003dcs\u0026q\u003dtast-tests+chrome.logged\u0026g\u003d0\u0026l\u003d27",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 71,
+        "endChar": 24
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "861b83be_1bd6ca55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "It is generally discouraged to pass around *testing.State because it contains many information and thus passing it to a function makes it harder to reason about what are inputs/outputs of the function.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\nI believe we can remove *testing.State from all non-exported functions defined in this file.\n\nAs for this function, please try changing its signature to:\n\n func setTimerOption(ctx context.Context, app *cca.App, active bool) error",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 90
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f3e9084_1a476740",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "This function can be simply removed, and callers should call app.ClickShutter directly.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 72
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6deb183e_c205da70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "ditto: remove",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 87
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28a1e0db_cc01224a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "Please remove *testing.State from args. Same for other test* functions below.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 85
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5807233d_d90cf8e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "nit: How about s/now/start/ since the timestamp won\u0027t be current when it is used? Same for other instances below.",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 4
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34daaef5_b6696b72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "style: messages in error type should begin with lower case letters.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings\n\nSame for all other errors.* calls.",
+      "range": {
+        "startLine": 108,
+        "startChar": 26,
+        "endLine": 108,
+        "endChar": 51
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a255020_f1a10a73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "Can we also set the timer delay to 3 second explicitly? I\u0027m not sure which is the default (3s/10s), but even if the default is 3s today, it is not guaranteed forever, and when the change happens the runtime of this test increases by 7 seconds, which sounds unfortunate.",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 37
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad8138a6_19ee21aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "IIUC elapsed is nearly equal to delay in ideal case, am I right? If so we might want to compare with some buffer, e.g. elapsed.Sub(delay) \u003c -time.Second.",
+      "range": {
+        "startLine": 128,
+        "startChar": 48,
+        "endLine": 128,
+        "endChar": 63
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "befa7490_59a0d80a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "The default (%v) formatting of time.Duration has units, so \"ns\" is not needed here.\n\nhttps://play.golang.org/p/iS7DkRjiK1Y",
+      "range": {
+        "startLine": 129,
+        "startChar": 65,
+        "endLine": 129,
+        "endChar": 70
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "603b773d_ea09fbb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "Let\u0027s set the delay here too, but in this case I think we want to set the timer to 10 seconds to reduce possible flakiness; in successful case the shutter should be canceled.",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 37
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01b56247_9d906ba1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "If the delay is 10 seconds, this test sleep for 9 seconds for nothing. Please try to make good use of DUT time.\n\nCan we wait just one second, or even better, not waiting at all?",
+      "range": {
+        "startLine": 140,
+        "startChar": 12,
+        "endLine": 140,
+        "endChar": 31
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eccd64e_dc6c26ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-13T08:34:58Z",
+      "side": 1,
+      "message": "Waiting for a fixed amount of time to check some condition is a typical source of test flakiness. Do you have any idea to avoid it?",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 2
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
