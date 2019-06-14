@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "13b3efc9_ccf38e1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera_orientation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T15:12:51Z",
+      "side": 1,
+      "message": "Done.\n\nMaybe it\u0027s better to move the package out of bundles. I\u0027ll make a change, after this lands.",
+      "parentUuid": "4209c9ff_decf2ed8",
+      "range": {
+        "startLine": 28,
+        "startChar": 47,
+        "endLine": 28,
+        "endChar": 85
+      },
+      "revId": "e06bd674f49b30be3a68a79e8cfcab3af028887e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2de4630e_aa1d6cb6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera_orientation.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "e06bd674f49b30be3a68a79e8cfcab3af028887e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db6ad037_1d181c57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/camera_orientation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T15:12:51Z",
+      "side": 1,
+      "message": "Good point. Done.",
+      "parentUuid": "2de4630e_aa1d6cb6",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 10
+      },
+      "revId": "e06bd674f49b30be3a68a79e8cfcab3af028887e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
