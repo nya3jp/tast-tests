@@ -172,8 +172,8 @@ func (ac *Activity) Start(ctx context.Context) error {
 }
 
 // Stop stops the activity by invoking "am force-stop" with the package name.
-// If there are multiple activities that belong to the same package name, all of
-// them will be stopped.
+// If there are multiple activities that belong to the same package name, all of them will be stopped.
+// Calling Stop(), even if the activity is already stopped, does not cause an error.
 func (ac *Activity) Stop(ctx context.Context) error {
 	// "adb shell am force-stop" has no output. So the error from Run() is returned.
 	return ac.a.Command(ctx, "am", "force-stop", ac.pkgName).Run()
@@ -217,7 +217,7 @@ func (ac *Activity) SurfaceBounds(ctx context.Context) (Rect, error) {
 	}
 
 	// Looking for:
-	//   Window #0 Window{a486f07 u0 com.android.settings/com.android.settings.Settings}:
+	//   Window #0 Window{a486f07 u0 com.android.settings/com.android.settings.Settings
 	//     mDisplayId=0 stackId=2 mSession=Session{dd34b88 2586:1000} mClient=android.os.BinderProxy@705e146
 	//     mHasSurface=true isReadyForDisplay()=true mWindowRemovalAllowed=false
 	//     [...many other properties...]
@@ -241,8 +241,11 @@ func (ac *Activity) SurfaceBounds(ctx context.Context) (Rect, error) {
 }
 
 // Close closes the resources associated with the Activity instance.
-// Calling Close() does not stop the activity.
-func (ac *Activity) Close() {
+// Close also stops the activity in case it is running.
+func (ac *Activity) Close(ctx context.Context) {
+	if err := ac.Stop(ctx); err != nil {
+		testing.ContextLogf(ctx, "Failed to stop activity %v: %v", ac.activityName, err)
+	}
 	ac.disp.Close()
 	if ac.tew != nil {
 		ac.tew.Close()

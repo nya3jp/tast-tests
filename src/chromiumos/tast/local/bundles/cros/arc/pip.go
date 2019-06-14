@@ -73,7 +73,7 @@ func PIP(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
 	}
-	defer act.Close()
+	defer act.Close(ctx)
 
 	dev, err := ui.NewDevice(ctx, a)
 	if err != nil {
