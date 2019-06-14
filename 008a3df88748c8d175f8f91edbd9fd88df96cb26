@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "62ced4fc_b455ff83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-06-14T04:06:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5220c18d_9deb05f8",
+      "range": {
+        "startLine": 145,
+        "startChar": 5,
+        "endLine": 145,
+        "endChar": 10
+      },
+      "revId": "008a3df88748c8d175f8f91edbd9fd88df96cb26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a490d47_397498c2",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "008a3df88748c8d175f8f91edbd9fd88df96cb26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2cdb37c_fcb2bd6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-06-14T04:06:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a490d47_397498c2",
+      "range": {
+        "startLine": 147,
+        "startChar": 27,
+        "endLine": 147,
+        "endChar": 36
+      },
+      "revId": "008a3df88748c8d175f8f91edbd9fd88df96cb26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "315a7f10_65bb8122",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-06-14T04:06:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19c98621_b567c7bd",
+      "range": {
+        "startLine": 151,
+        "startChar": 43,
+        "endLine": 151,
+        "endChar": 48
+      },
+      "revId": "008a3df88748c8d175f8f91edbd9fd88df96cb26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d63a5595_150d2e8e",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2019-06-14T03:22:48Z",
       "side": 1,
       "message": "Assign this to a local variable and check that the file exists.\nAlso remember, when you run the test twice you may get a file collision - or is something cleaning existing decompressed files up?\nNotice doing the bunzip2 lazily can get messy, but it works as we did that with the CTS files.",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 28
+      },
+      "revId": "008a3df88748c8d175f8f91edbd9fd88df96cb26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6628ac3b_acb6c214",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-06-14T04:06:11Z",
+      "side": 1,
+      "message": "You are right but we may be not want it as this moment. This decompress stage is happen inside the container and the file is unlinked during creation/destruction. \nI haven\u0027t seen collision happening when I playback the trace several times locally.",
+      "parentUuid": "d63a5595_150d2e8e",
       "range": {
         "startLine": 153,
         "startChar": 2,
