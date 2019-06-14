@@ -113,7 +113,7 @@ func LowMemoryKiller(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatalf("Could not launch %v: %v", exampleApp, err)
 	}
-	defer act.Close()
+	defer act.Close(ctx)
 	if err := act.Start(ctx); err != nil {
 		s.Fatalf("Could not start %v: %v", exampleApp, err)
 	}
