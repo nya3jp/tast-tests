@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a2b0bd3_1296854a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/chrome_mlocked.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2019-06-14T23:00:16Z",
+      "side": 1,
+      "message": "Done; I assume it\u0027s considered better to pass context objects around, then",
+      "parentUuid": "7513f319_aafab3ea",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 8
+      },
+      "revId": "c8c3e5f631921b4f464f4314689a12e95f9c1747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "869e8afe_cd2e84b8",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/chrome_mlocked.go",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "c8c3e5f631921b4f464f4314689a12e95f9c1747",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf4a3764_d418a6a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/chrome_mlocked.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2019-06-14T23:00:16Z",
+      "side": 1,
+      "message": "I have no preference; if this ends up flaking somehow, then we can convert it at that point.",
+      "parentUuid": "869e8afe_cd2e84b8",
+      "revId": "c8c3e5f631921b4f464f4314689a12e95f9c1747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
