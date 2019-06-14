@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "ec799d5e_1677a445",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_sanity.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-14T09:43:15Z",
+      "side": 1,
+      "message": "Ah, sorry I forgot to reply to this thread. Yes, let\u0027s see how it looks like in failure cases.",
+      "parentUuid": "dd2702d8_b66e09a6",
+      "range": {
+        "startLine": 62,
+        "startChar": 25,
+        "endLine": 62,
+        "endChar": 49
+      },
+      "revId": "e08688a05068b580b37157c591514ce20593351b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ff3cefa_094b0672",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_sanity.go",
         "patchSetId": 12
