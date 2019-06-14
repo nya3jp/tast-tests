@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8862206a_ffa012e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T00:48:27Z",
+      "side": 1,
+      "message": "And Wait(), too? Otherwise, zombie process will be left.\n\n(optional): How about extracting the command execution into a local func(), and using defer?\n\nif err :\u003d func() (retErr error) {\n  cappedArgs :\u003d append(...)\n  cmd, err :\u003d bintest.RunAsync(...)\n  if err !\u003d nil {\n    return errors.Wrapf(err, \"failed to run %v\", exec)\n  }\n  defer func() {\n    if err :\u003d cmd.Kill(); err !\u003d nil {\n      if retErr !\u003d nil {\n        retErr \u003d errors.Wrap(err, ...)\n      } else {\n        s.Logf(\"Failed to kill %s: %v\", exec, err)\n      }\n    }\n    if err :\u003d cmd.Wait(); err !\u003d nil {\n      ws, ok :\u003d testexec.GetWaitStatus(err)\n      if ... {\n        if retErr !\u003d nil {\n          ...\n        } else {\n          ...\n        }\n      }\n    }\n  }()\n\n  s.Logf(...)\n  if err :\u003d testing.Sleep(...); err !\u003d nil {\n     return errors.Wrap(err, ...)\n  }\n  s.Log(...)\n  cpuUsage, err :\u003d cpu.MeasureUsage(...)\n  if err !\u003d nil {\n    return errors.Wrap(err, ...)\n  }\n\n  return nil\n}(); err !\u003d nil {\n  s.Fatal(\"Failed to measure: \", err)\n}\n\np.Set(perf.Metric{ ... })\n...\n\n\nWDYT?",
+      "revId": "da9066da08d5b653faf274867619fcb5c0ddd30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
