@@ -177,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "546a949f_5995fc55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-14T03:57:31Z",
+      "side": 1,
+      "message": "I renamed Wifi to Wlan throughout, because wifi and wlan are used almost interchangeably in this test.",
+      "parentUuid": "dfa60864_087f94df",
+      "revId": "57bd0a517f63fbbc2ca2f647ee848cad2340399c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97bdddac_fc4a12df",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
         "patchSetId": 2
