@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7513f319_aafab3ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/chrome_mlocked.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T02:20:27Z",
+      "side": 1,
+      "message": "Could you use testing.ContextLog/ContextLogf instead?\n\ncf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\n\u003d\u003d\u003dquote\u003d\u003d\u003d\nNote that it‘s still best to practice information hiding and pass only as much data is needed. Avoid passing testing.State when it’s not actually necessary:",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 8
+      },
+      "revId": "c8c3e5f631921b4f464f4314689a12e95f9c1747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "869e8afe_cd2e84b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/chrome_mlocked.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T02:20:27Z",
+      "side": 1,
+      "message": "I don\u0027t think it is expected that the \"Chrome\" process is gone?",
+      "revId": "c8c3e5f631921b4f464f4314689a12e95f9c1747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
