@@ -22,6 +22,30 @@
       "revId": "eef0a7ae4de28b6805f523e4369986550bb16517",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26947609_840385b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-06-14T02:36:18Z",
+      "side": 1,
+      "message": "It\u0027s just a temporary workaround that should be removed in a near future.\nAnd I feel we may have this kind of wrokaround in the future.\nAdding a new function for a workaround seems overkill?\nCurrent way would be easier to revert.",
+      "parentUuid": "549e60a7_dfbef1f2",
+      "range": {
+        "startLine": 284,
+        "startChar": 5,
+        "endLine": 284,
+        "endChar": 26
+      },
+      "revId": "eef0a7ae4de28b6805f523e4369986550bb16517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
