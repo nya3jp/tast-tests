@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b3eb9467_8a7d97b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-14T03:52:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b109d3a_37edf2a9",
+      "revId": "57bd0a517f63fbbc2ca2f647ee848cad2340399c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43c05edf_629feff0",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "57bd0a517f63fbbc2ca2f647ee848cad2340399c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e346150_73ca0df1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-14T03:52:43Z",
+      "side": 1,
+      "message": "It\u0027s testing if the DUT has the expected driver for the wlan interface + kernel version. So I think WlanDriver is fine. Could you suggest naming?",
+      "parentUuid": "43c05edf_629feff0",
+      "revId": "57bd0a517f63fbbc2ca2f647ee848cad2340399c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "532ea64f_cb7580b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-14T03:52:43Z",
+      "side": 1,
+      "message": "Maybe. But the command is very simple, and what\u0027s done is more obvious than when it\u0027s a library. I\u0027d keep it as is.\nI generally prefer the phrase \"A little copying is better than a little dependency.\" https://go-proverbs.github.io/",
+      "parentUuid": "6596a996_003124ab",
+      "revId": "57bd0a517f63fbbc2ca2f647ee848cad2340399c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f05f504_23f29eb6",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
         "patchSetId": 2
@@ -67,6 +121,24 @@
       "revId": "57bd0a517f63fbbc2ca2f647ee848cad2340399c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c49605d_4d729efe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-14T03:52:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f05f504_23f29eb6",
+      "revId": "57bd0a517f63fbbc2ca2f647ee848cad2340399c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "dfa60864_087f94df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-14T03:52:43Z",
+      "side": 1,
+      "message": "I added an example in the comment.\nI think \"Interface\" is a term rather than a general noun here. I\u0027m not sure how to rename. https://en.wikipedia.org/wiki/Network_interface",
+      "parentUuid": "fed49540_e339cc37",
+      "revId": "57bd0a517f63fbbc2ca2f647ee848cad2340399c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97bdddac_fc4a12df",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
         "patchSetId": 2
@@ -101,6 +191,24 @@
       "revId": "57bd0a517f63fbbc2ca2f647ee848cad2340399c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0ee9156_c4d7352c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-14T03:52:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97bdddac_fc4a12df",
+      "revId": "57bd0a517f63fbbc2ca2f647ee848cad2340399c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "bd82b5cc_e796caef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-14T03:52:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1efbbaa5_b57a948f",
+      "revId": "57bd0a517f63fbbc2ca2f647ee848cad2340399c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c936ff8_059b3d6e",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
         "patchSetId": 2
@@ -135,6 +261,24 @@
       "revId": "57bd0a517f63fbbc2ca2f647ee848cad2340399c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c045a65_15e60a97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-14T03:52:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c936ff8_059b3d6e",
+      "revId": "57bd0a517f63fbbc2ca2f647ee848cad2340399c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
