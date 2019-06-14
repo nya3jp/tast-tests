@@ -46,6 +46,30 @@
       "revId": "eef0a7ae4de28b6805f523e4369986550bb16517",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "987309d3_71ad81a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2019-06-14T02:57:47Z",
+      "side": 1,
+      "message": "I see. I am not sure how fast intel will fix this, but hope near future (in a couple of months).\nkeiichiw@, do you have any better idea?",
+      "parentUuid": "26947609_840385b4",
+      "range": {
+        "startLine": 284,
+        "startChar": 5,
+        "endLine": 284,
+        "endChar": 26
+      },
+      "revId": "eef0a7ae4de28b6805f523e4369986550bb16517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
