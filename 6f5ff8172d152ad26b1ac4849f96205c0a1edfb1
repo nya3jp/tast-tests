@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "273a466f_a56b4411",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mem_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T15:56:24Z",
+      "side": 1,
+      "message": "Clar: is platform the package this test should be in? Or hardware is what we want?",
+      "revId": "6f5ff8172d152ad26b1ac4849f96205c0a1edfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
