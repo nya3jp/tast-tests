@@ -1083,6 +1083,30 @@
     },
     {
       "key": {
+        "uuid": "b4b0306a_e3f86077",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-14T09:51:59Z",
+      "side": 1,
+      "message": "Sure, it sounds good to me.",
+      "parentUuid": "5ecd57fb_62e1c56a",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 37
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad8138a6_19ee21aa",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
         "patchSetId": 9
@@ -1127,6 +1151,30 @@
       "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "713422cf_cfbff26f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-14T09:51:59Z",
+      "side": 1,
+      "message": "I see. Let\u0027s stick with the simple comparison for now and see how it goes.",
+      "parentUuid": "a8c0b1bb_d0d89180",
+      "range": {
+        "startLine": 128,
+        "startChar": 48,
+        "endLine": 128,
+        "endChar": 63
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -1212,6 +1260,30 @@
       "side": 1,
       "message": "Simply make assumption of 3 seconds delay inside app.SetTimerOption.",
       "parentUuid": "603b773d_ea09fbb4",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 37
+      },
+      "revId": "5ab94183f2602543aa93c686a89495cd1ab97721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b8ab2f4_7e7e7d60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-14T09:51:59Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "b40ceed4_9313e58f",
       "range": {
         "startLine": 135,
         "startChar": 1,
