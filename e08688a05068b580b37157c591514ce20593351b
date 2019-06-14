@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "78a87006_a4be281c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_sanity.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-14T06:51:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "489acd84_86d28ddc",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 98
+      },
+      "revId": "e08688a05068b580b37157c591514ce20593351b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6a8b203_0c7e8dc4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_sanity.go",
         "patchSetId": 12
@@ -210,6 +234,30 @@
       "revId": "e08688a05068b580b37157c591514ce20593351b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd2702d8_b66e09a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_sanity.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-14T06:51:16Z",
+      "side": 1,
+      "message": "nya@ what do you think about it? Maybe we keep it and revisit if log being too much causes problem in case of failure?",
+      "parentUuid": "1a343729_45763012",
+      "range": {
+        "startLine": 62,
+        "startChar": 25,
+        "endLine": 62,
+        "endChar": 49
+      },
+      "revId": "e08688a05068b580b37157c591514ce20593351b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
