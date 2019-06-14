@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "37959965_4021675d",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T03:56:37Z",
+      "side": 1,
+      "message": "Maybe:\nfunc (s WindowState) String() string {\n  ...\n}\n\nto be a part of fmt Stringer?\nhttps://golang.org/pkg/fmt/#Stringer",
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e60a601_2499f743",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T03:56:37Z",
+      "side": 1,
+      "message": "Good catch!",
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5de47dca_92be284d",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 2
@@ -25,6 +59,29 @@
     },
     {
       "key": {
+        "uuid": "65f3583e_1da9a861",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T03:56:37Z",
+      "side": 1,
+      "message": "I think you can just drop names, because those are trivial from types.",
+      "range": {
+        "startLine": 391,
+        "startChar": 57,
+        "endLine": 391,
+        "endChar": 91
+      },
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35f29bb7_1055c0cd",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 2
@@ -41,6 +98,52 @@
         "startChar": 9,
         "endLine": 394,
         "endChar": 12
+      },
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dc0b0b6_62a42955",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T03:56:37Z",
+      "side": 1,
+      "message": "huge nit: we use \"ARC\" instead of \"ARC++\" in code.",
+      "range": {
+        "startLine": 21,
+        "startChar": 25,
+        "endLine": 21,
+        "endChar": 30
+      },
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6601096d_2cb3a4ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T03:56:37Z",
+      "side": 1,
+      "message": "maybe arc-framework team?",
+      "range": {
+        "startLine": 22,
+        "startChar": 45,
+        "endLine": 22,
+        "endChar": 52
       },
       "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -111,6 +214,46 @@
         "endLine": 31,
         "endChar": 70
       },
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf312098_f4edcbb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T03:56:37Z",
+      "side": 1,
+      "message": "Looks trivial. Could you remove the comment?\n(Note: In go/tast, we request to drop comments, if it is very trivial).",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 15
+      },
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c549cb7_4891b820",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T03:56:37Z",
+      "side": 1,
+      "message": "nit: Failed to start...",
       "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -295,6 +438,86 @@
         "endLine": 121,
         "endChar": 30
       },
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75b9fbc5_00ff1590",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T03:56:37Z",
+      "side": 1,
+      "message": "The check of this looks conceptually weird, because it is expected that setting the windowstate turns into the mode.\nCould you split the verification from this function?",
+      "range": {
+        "startLine": 121,
+        "startChar": 106,
+        "endLine": 121,
+        "endChar": 141
+      },
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27a8f3da_ccda8e1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T03:56:37Z",
+      "side": 1,
+      "message": "\"failed to set window state to %s\"\n\n- no capitalization.\n- no traling \u0027;\u0027 followed by \u0027 \u0027.\n  cf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting\n\n  \u003d\u003d\u003d quote \u003d\u003d\u003d\n  Error strings should not be capitalized (unless beginning with proper nouns or acronyms) or end with punctuation, since they are usually printed following other context.",
+      "range": {
+        "startLine": 124,
+        "startChar": 28,
+        "endLine": 124,
+        "endChar": 62
+      },
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "178fd83c_d8fe39ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T03:56:37Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "722480f7_8a44cfb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T03:56:37Z",
+      "side": 1,
+      "message": "ditto. Maybe\n\nerrors.Errorf(\"unexpected window state: got %s; want %s\", actual, expected).\n\n\nNote that \"...: got ...; want ...\" is one of the common pattern used in go and tast.\nI\u0027d appreciate your cooperation for the consistency in advance.",
       "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
