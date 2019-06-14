@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eef11252_9b301994",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/parse_printer_uris.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T00:55:03Z",
+      "side": 1,
+      "message": "optional: I think you also can keep skau@chromium.org as original author? skau@, WDYT?\nFYI: The contact will be used to be point of contact when the test needs to be fixed.",
+      "revId": "3b63c1572b3f1def79d9beebf119f3ec72998291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b25ce743_f82d0a59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/parse_printer_uris.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T00:55:03Z",
+      "side": 1,
+      "message": "Huge nit/style: could you remove the empty line? err handling at the line below is very tied to the execution above.",
+      "revId": "3b63c1572b3f1def79d9beebf119f3ec72998291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71135870_721d777d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/parse_printer_uris.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T00:55:03Z",
+      "side": 1,
+      "message": "style/optional: could you use \"... failed: got %s; want %s\", as long as it is possible?\nIt\u0027s one of the common pattern used in go, and Tast.",
+      "range": {
+        "startLine": 58,
+        "startChar": 27,
+        "endLine": 58,
+        "endChar": 32
+      },
+      "revId": "3b63c1572b3f1def79d9beebf119f3ec72998291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
