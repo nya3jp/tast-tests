@@ -5,12 +5,16 @@
 package vm
 
 import (
+	"bufio"
 	"context"
 	"io"
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"regexp"
+	"strings"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -23,10 +27,18 @@ type Crosvm struct {
 	stdout     io.Reader     // stdout for cmd
 }
 
+// CrosvmParams - Parameters for starting a crosvm instance.
+type CrosvmParams struct {
+	VMPath      string   // file path where VM rootfs and kernel are stored
+	DiskPaths   []string // paths that will be mounted read only
+	RWDiskPaths []string // paths that will be mounted read/write
+	KernelArgs  []string // string arguments to be passed to the VM kernel
+}
+
 // NewCrosvm starts a crosvm instance with the optional disk path as an additional disk.
-func NewCrosvm(ctx context.Context, diskPath string, kernelArgs []string) (*Crosvm, error) {
-	componentPath, err := LoadTerminaComponent(ctx)
-	if err != nil {
+func NewCrosvm(ctx context.Context, params *CrosvmParams) (*Crosvm, error) {
+	var err error
+	if _, err = os.Stat(params.VMPath); os.IsNotExist(err) {
 		return nil, err
 	}
 
@@ -36,12 +48,21 @@ func NewCrosvm(ctx context.Context, diskPath string, kernelArgs []string) (*Cros
 		return nil, err
 	}
 	args := []string{"run", "--socket", vm.socketPath, "--root",
-		filepath.Join(componentPath, "vm_rootfs.img")}
-	if diskPath != "" {
-		args = append(args, "--rwdisk", diskPath)
+		filepath.Join(params.VMPath, "vm_rootfs.img")}
+
+	for _, path := range params.RWDiskPaths {
+		args = append(args, "--rwdisk", path)
 	}
-	args = append(args, kernelArgs...)
-	args = append(args, filepath.Join(componentPath, "vm_kernel"))
+
+	for _, path := range params.DiskPaths {
+		args = append(args, "-d", path)
+	}
+
+	for _, arg := range params.KernelArgs {
+		args = append(args, "-p", arg)
+	}
+
+	args = append(args, filepath.Join(params.VMPath, "vm_kernel"))
 
 	vm.cmd = testexec.CommandContext(ctx, "crosvm", args...)
 
@@ -94,4 +115,49 @@ func genSocketPath() (string, error) {
 		return "", err
 	}
 	return file.Name(), nil
+}
+
+// WaitForOutput waits until a line matched by re has been written to ch,
+// crosvm's stdout is closed, or the deadline is reached. It returns the full
+// line that was matched.
+func (vm *Crosvm) WaitForOutput(re *regexp.Regexp) (string, error) {
+
+	// Start a goroutine that reads bytes from crosvm and writes them to a channel.
+	// We can't do this with lines because then we will miss the initial prompt
+	// that comes up that doesn't have a line terminator.
+	ch := make(chan byte)
+	errch := make(chan error)
+	go func() {
+		defer close(ch)
+		r := bufio.NewReader(vm.stdout)
+		for {
+			b, err := r.ReadByte()
+			if err == io.EOF {
+				break
+			} else if err != nil {
+				errch <- err
+			}
+			ch <- b
+		}
+	}()
+
+	var line strings.Builder
+	for {
+		select {
+		case c, more := <-ch:
+			if !more {
+				return "", errors.New("eof")
+			}
+			if c == '\n' {
+				line.Reset()
+			} else {
+				line.WriteByte(c)
+			}
+			if re.MatchString(line.String()) {
+				return line.String(), nil
+			}
+		case err := <-errch:
+			return "", err
+		}
+	}
 }
