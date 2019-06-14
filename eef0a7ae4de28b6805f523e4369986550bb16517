@@ -70,6 +70,76 @@
       "revId": "eef0a7ae4de28b6805f523e4369986550bb16517",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfca5420_76117b5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-14T03:57:51Z",
+      "side": 1,
+      "message": "I agree with Hiro\u0027s thought to create another function.\n\nI think the current way will make it difficult to know which test cases are running in each Tast test. IMHO, test-specific parameters (e.g. data filename, test filters) should be contained in each test file, not in library like here.\n\nSo, It\u0027d be good idea to have a function like RunAcccelVideoTestsWithFilter and use it in each VP9 test with a comment for the reason of the filter.",
+      "parentUuid": "987309d3_71ad81a4",
+      "range": {
+        "startLine": 284,
+        "startChar": 5,
+        "endLine": 284,
+        "endChar": 26
+      },
+      "revId": "eef0a7ae4de28b6805f523e4369986550bb16517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e582d2df_bc0acd00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-14T03:57:51Z",
+      "side": 1,
+      "message": "Do we need to mention this issue here?\nI guess this issue will be closed if this CL fix the failure, won\u0027t it?",
+      "range": {
+        "startLine": 291,
+        "startChar": 4,
+        "endLine": 291,
+        "endChar": 20
+      },
+      "revId": "eef0a7ae4de28b6805f523e4369986550bb16517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a642264_d3200869",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-14T03:57:51Z",
+      "side": 1,
+      "message": "Maybe, b/134538840?",
+      "range": {
+        "startLine": 292,
+        "startChar": 9,
+        "endLine": 292,
+        "endChar": 17
+      },
+      "revId": "eef0a7ae4de28b6805f523e4369986550bb16517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
