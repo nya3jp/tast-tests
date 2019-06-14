@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be95a7ea_05ef30ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T05:00:11Z",
+      "side": 1,
+      "message": "nit: maybe \"... or failed to run command.\"",
+      "range": {
+        "startLine": 45,
+        "startChar": 61,
+        "endLine": 46,
+        "endChar": 34
+      },
+      "revId": "b0dc5a652f38dd9b07b3b7dc203f6a0d6e90d86e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22245253_717e63e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T05:00:11Z",
+      "side": 1,
+      "message": "- Could you use :\u003d to define a new var with initialization?\n- Could you declare the variable at latest it is needed?\n- How about dump logs on failure?\n\nif ppd \u003d\u003d \"\" {\n  ...\n}\n\nuri :\u003d fmt.Sprintf(...)\ntesting.ContextLog(ctx, ..., uri)\nreturn testexec.CommandContext(...).Run(testexec.DumpLogOnError)",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 26
+      },
+      "revId": "b0dc5a652f38dd9b07b3b7dc203f6a0d6e90d86e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "337e4200_5a4e30cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T05:00:11Z",
+      "side": 1,
+      "message": "Could you follow the godoc style comment?\n\n// waitPrinterConfigured waits for a printer which has ...",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 15
+      },
+      "revId": "b0dc5a652f38dd9b07b3b7dc203f6a0d6e90d86e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e77f6f61_0fd3c363",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T05:00:11Z",
+      "side": 1,
+      "message": "I think you can drop names from the return args in this simpler case.",
+      "range": {
+        "startLine": 22,
+        "startChar": 65,
+        "endLine": 22,
+        "endChar": 89
+      },
+      "revId": "b0dc5a652f38dd9b07b3b7dc203f6a0d6e90d86e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1753d1de_0f831188",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T05:00:11Z",
+      "side": 1,
+      "message": "Clar: Could you investigate the reason? Dropping the field looks fine, but without the reason we may hit something similar error in future. WDYT?",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "b0dc5a652f38dd9b07b3b7dc203f6a0d6e90d86e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "604599bf_34ed7f20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T05:00:11Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 35,
+        "startChar": 12,
+        "endLine": 35,
+        "endChar": 34
+      },
+      "revId": "b0dc5a652f38dd9b07b3b7dc203f6a0d6e90d86e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9eee1e5f_e8b99fa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-14T05:00:11Z",
+      "side": 1,
+      "message": "optional/style: How about;\n\ncontent :\u003d string(bytes)\nfor _, r :\u003d range []regexp.Regexp{idInPDFRegex, usernameInPDFregex, documentTitleInPDFRegex} {\n  content \u003d r.ReplaceAllLiteralString(content, \"\")\n}\n\nreturn content, nil",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 81
+      },
+      "revId": "b0dc5a652f38dd9b07b3b7dc203f6a0d6e90d86e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
