@@ -17,15 +17,13 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         StartSludge,
-		Desc:         "Checks that sludge VM can start correctly on wilco devices",
+		Desc:         "Starts a new instance of sludge VM and tests that the DTC binaries are running",
 		Contacts:     []string{"tbegin@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"vm_host", "wilco"},
 	})
 }
 
-// StartSludge starts a new instance of sludge VM and tests that the DTC binaries
-// are running. If everything is running correctly, it then shuts down the VM.
 func StartSludge(ctx context.Context, s *testing.State) {
 	const (
 		wilcoVMJob = "wilco_dtc"
