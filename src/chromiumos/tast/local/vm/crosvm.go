@@ -10,7 +10,11 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"regexp"
+	"strings"
+	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -20,13 +24,21 @@ type Crosvm struct {
 	cmd        *testexec.Cmd // crosvm process
 	socketPath string        // crosvm control socket
 	stdin      io.Writer     // stdin for cmd
-	stdout     io.Reader     // stdout for cmd
+	stdout     *os.File      // stdout for cmd; uses os.File to set a read dealine
+}
+
+// CrosvmParams - Parameters for starting a crosvm instance.
+type CrosvmParams struct {
+	VMPath      string   // file path where VM rootfs and kernel are stored
+	DiskPaths   []string // paths that will be mounted read only
+	RWDiskPaths []string // paths that will be mounted read/write
+	KernelArgs  []string // string arguments to be passed to the VM kernel
 }
 
 // NewCrosvm starts a crosvm instance with the optional disk path as an additional disk.
-func NewCrosvm(ctx context.Context, diskPath string, kernelArgs []string) (*Crosvm, error) {
-	componentPath, err := LoadTerminaComponent(ctx)
-	if err != nil {
+func NewCrosvm(ctx context.Context, params *CrosvmParams) (*Crosvm, error) {
+	var err error
+	if _, err = os.Stat(params.VMPath); os.IsNotExist(err) {
 		return nil, err
 	}
 
@@ -36,21 +48,35 @@ func NewCrosvm(ctx context.Context, diskPath string, kernelArgs []string) (*Cros
 		return nil, err
 	}
 	args := []string{"run", "--socket", vm.socketPath, "--root",
-		filepath.Join(componentPath, "vm_rootfs.img")}
-	if diskPath != "" {
-		args = append(args, "--rwdisk", diskPath)
+		filepath.Join(params.VMPath, "vm_rootfs.img")}
+
+	for _, path := range params.RWDiskPaths {
+		args = append(args, "--rwdisk", path)
 	}
-	args = append(args, kernelArgs...)
-	args = append(args, filepath.Join(componentPath, "vm_kernel"))
+
+	for _, path := range params.DiskPaths {
+		args = append(args, "-d", path)
+	}
+
+	for _, arg := range params.KernelArgs {
+		args = append(args, "-p", arg)
+	}
+
+	args = append(args, filepath.Join(params.VMPath, "vm_kernel"))
 
 	vm.cmd = testexec.CommandContext(ctx, "crosvm", args...)
 
 	if vm.stdin, err = vm.cmd.StdinPipe(); err != nil {
 		return nil, err
 	}
-	if vm.stdout, err = vm.cmd.StdoutPipe(); err != nil {
+
+	pr, pw, err := os.Pipe()
+	if err != nil {
 		return nil, err
 	}
+	vm.cmd.Stdout = pw
+	vm.stdout = pr
+
 	if err = vm.cmd.Start(); err != nil {
 		return nil, err
 	}
@@ -70,6 +96,8 @@ func (vm *Crosvm) Close(ctx context.Context) error {
 		vm.cmd.DumpLog(ctx)
 		return err
 	}
+
+	vm.stdout.Close()
 	return nil
 }
 
@@ -94,4 +122,62 @@ func genSocketPath() (string, error) {
 		return "", err
 	}
 	return file.Name(), nil
+}
+
+// WaitForOutput waits until a line matched by re has been written to stdout,
+// crosvm's stdout is closed, or the deadline is reached. It returns the full
+// line that was matched. This function will consume output from stdout until it
+// returns.
+func (vm *Crosvm) WaitForOutput(ctx context.Context, re *regexp.Regexp) (string, error) {
+	// Start a goroutine that reads bytes from crosvm and buffers them in a
+	// string builder. We can't do this with lines because then we will miss the
+	// initial prompt that comes up that doesn't have a line terminator. If a
+	// matching line is found, send it through the channel.
+	ch := make(chan string, 1)
+	errch := make(chan error, 1)
+
+	// Allow the blocking read call to stop when the deadline has been exceeded.
+	// Defer removing the deadline until this function has exited.
+	deadline, _ := ctx.Deadline()
+	vm.stdout.SetReadDeadline(deadline)
+	defer vm.stdout.SetReadDeadline(time.Time{})
+	go func() {
+		defer close(ch)
+		defer close(errch)
+		var line strings.Builder
+		for {
+			select {
+			case <-ctx.Done():
+				errch <- ctx.Err()
+				return
+			default:
+				b := make([]byte, 1)
+				n, err := vm.stdout.Read(b)
+				if err != nil {
+					errch <- err
+					return
+				} else if n != 1 {
+					errch <- errors.New("Unable to read byte from stdout")
+					return
+				} else if b[0] == '\n' {
+					line.Reset()
+				} else {
+					line.WriteByte(b[0])
+				}
+				if re.MatchString(line.String()) {
+					ch <- line.String()
+					return
+				}
+			}
+		}
+	}()
+
+	for {
+		select {
+		case s := <-ch:
+			return s, nil
+		case err := <-errch:
+			return "", err
+		}
+	}
 }
