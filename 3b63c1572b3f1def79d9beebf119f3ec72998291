@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "12148a7a_8a3e5de4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/parse_printer_uris.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2019-06-14T18:17:44Z",
+      "side": 1,
+      "message": "I checked with Sean; I\u0027ll put my name down to take ownership of this test. This is a new test and it was misleading of me to use \"port\" below. Will fix.",
+      "parentUuid": "eef11252_9b301994",
+      "revId": "3b63c1572b3f1def79d9beebf119f3ec72998291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b25ce743_f82d0a59",
         "filename": "src/chromiumos/tast/local/bundles/cros/debugd/parse_printer_uris.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "3b63c1572b3f1def79d9beebf119f3ec72998291",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a01284f_6114cad2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/parse_printer_uris.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2019-06-14T18:17:44Z",
+      "side": 1,
+      "message": "Makes sense; thanks - fixed.",
+      "parentUuid": "b25ce743_f82d0a59",
+      "revId": "3b63c1572b3f1def79d9beebf119f3ec72998291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "3b63c1572b3f1def79d9beebf119f3ec72998291",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c31525c_4e666515",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/parse_printer_uris.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2019-06-14T18:17:44Z",
+      "side": 1,
+      "message": "Thanks for the correction - fixed.",
+      "parentUuid": "71135870_721d777d",
+      "range": {
+        "startLine": 58,
+        "startChar": 27,
+        "endLine": 58,
+        "endChar": 32
+      },
+      "revId": "3b63c1572b3f1def79d9beebf119f3ec72998291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
