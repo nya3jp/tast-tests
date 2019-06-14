@@ -25,7 +25,6 @@ func init() {
 			"puthik@chromium.org",  // Autotest author
 			"chavey@chromium.org",  // Migrated autotest to tast
 		},
-		Attr: []string{"informational"},
 	})
 }
 
