@@ -113,6 +113,8 @@ type Utility interface {
 
 	GetEnrollmentId() (string, error)
 
+	GetOwnerPassword() (string, error)
+
 	DeleteKeys(username string, prefix string) error
 
 	sleep(milli int) error

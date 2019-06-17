@@ -144,6 +144,10 @@ func (utility utilityCryptohomeLegacy) GetEnrollmentId() (string, error) {
 	return "", errors.New("Not implemented")
 }
 
+func (utility utilityCryptohomeLegacy) GetOwnerPassword() (string, error) {
+	return "", errors.New("Not implemented")
+}
+
 func (utility utilityCryptohomeLegacy) DeleteKeys(username string, prefix string) error {
 	return errors.New("Not implemented")
 }

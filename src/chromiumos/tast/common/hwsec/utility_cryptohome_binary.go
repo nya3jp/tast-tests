@@ -235,6 +235,25 @@ func (utility utilityCryptohomeBinary) GetEnrollmentId() (string, error) {
 	return strings.TrimSpace(string(out)), nil
 }
 
+func (utility utilityCryptohomeBinary) GetOwnerPassword() (string, error) {
+	out, err := utility.proxy.TpmStatus()
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get tpm status")
+	}
+	lastLine := func() string {
+		lines := strings.Split(strings.TrimSpace(string(out)), "\n")
+		return lines[len(lines)-1]
+	}()
+	fields := strings.Fields(lastLine)
+	if len(fields) < 2 || len(fields) > 3 || fields[0] != "TPM" || fields[1] != "Password:" {
+		return "", errors.New("bad form of owner password: " + lastLine)
+	}
+	if len(fields) == 2 {
+		return "", nil
+	}
+	return fields[2], nil
+}
+
 func (utility utilityCryptohomeBinary) GetKeyPayload(
 	username string,
 	label string) (string, error) {
