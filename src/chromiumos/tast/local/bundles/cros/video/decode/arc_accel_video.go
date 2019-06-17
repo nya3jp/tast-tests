@@ -13,6 +13,8 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
@@ -20,7 +22,9 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/video/lib/arctest"
+	"chromiumos/tast/local/bundles/cros/video/lib/cpu"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
+	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )
 
@@ -96,7 +100,8 @@ var videoCodecEnumValues = map[string]int{
 
 // runARCVideoTest runs arcvideodecoder_test in ARC.
 // It fails if arcvideodecoder_test fails.
-func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) {
+// It returns logs where key is the exec name and value is the corresponding log path.
+func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) (logs map[string]string) {
 	shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
@@ -155,6 +160,8 @@ func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) {
 	}
 	defer a.Command(ctx, "rm", execs...).Run()
 
+	logs = make(map[string]string)
+
 	// Execute binary in ARC.
 	for _, exec := range execs {
 		outputLogFile := filepath.Join(s.OutDir(), fmt.Sprintf("output_%s_%s.log", filepath.Base(exec), time.Now().Format("20060102-150405")))
@@ -166,8 +173,11 @@ func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) {
 
 		if err := arctest.RunARCBinary(shortCtx, a, exec, args, s.OutDir(), outFile); err != nil {
 			s.Errorf("Failed to run %v: %v", exec, err)
+		} else {
+			logs[filepath.Base(exec)] = outputLogFile
 		}
 	}
+	return logs
 }
 
 // RunAllARCVideoTests runs all tests in arcvideodecoder_test.
@@ -182,4 +192,56 @@ func RunAllARCVideoTests(ctx context.Context, s *testing.State, testVideo string
 		testVideo:      testVideo,
 		requireMD5File: true,
 	})
+}
+
+// reportFPS reports FPS info from log file and sets as the perf metric.
+func reportFPS(p *perf.Values, name, logPath string) error {
+	b, err := ioutil.ReadFile(logPath)
+	if err != nil {
+		return errors.Wrap(err, "failed to read file")
+	}
+
+	regExpFPS := regexp.MustCompile(`(?m)^\[LOG\] Measured decoder FPS: ([+\-]?[0-9.]+)$`)
+	matches := regExpFPS.FindAllStringSubmatch(string(b), -1)
+	if len(matches) != 1 {
+		return errors.Errorf("found %d FPS matches in %v; want 1", len(matches), filepath.Base(logPath))
+	}
+
+	fps, err := strconv.ParseFloat(matches[0][1], 64)
+	if err != nil {
+		return errors.Wrapf(err, "failed to parse FPS value %q", matches[0][1])
+	}
+
+	p.Set(perf.Metric{
+		Name:      fmt.Sprintf("tast_%s.fps", name),
+		Unit:      "fps",
+		Direction: perf.BiggerIsBetter,
+	}, fps)
+	return nil
+}
+
+// RunARCVideoPerfTest runs testFPS in arcvideodecoder_test and sets as perf metric.
+func RunARCVideoPerfTest(ctx context.Context, s *testing.State, testVideo string) {
+	// TODO(johnylin): revise this after crrev.com/c/1662965 is merged.
+	shortCtx, cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+	if err != nil {
+		s.Fatal("Failed to set up benchmark mode: ", err)
+	}
+	defer cleanUpBenchmark()
+
+	logs := runARCVideoTest(shortCtx, s, arcTestConfig{
+		testVideo:      testVideo,
+		requireMD5File: false,
+		testFilter:     "ArcVideoDecoderE2ETest.TestFPS",
+	})
+
+	// Report FPS as perf metric for each exec.
+	pv := perf.NewValues()
+	for exec, logPath := range logs {
+		s.Logf("Reporting FPS value parsed from %v for %v", logPath, exec)
+		if err := reportFPS(pv, exec, logPath); err != nil {
+			s.Errorf("Failed to report FPS for %v: %v", exec, err)
+		}
+	}
+	pv.Save(s.OutDir())
 }
