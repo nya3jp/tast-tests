@@ -5,6 +5,7 @@
 package selinux
 
 import (
+	"context"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -15,7 +16,7 @@ import (
 // CheckHomeDirectory checks files contexts under /home.
 // This contains functionality shared between security.SELinuxFilesARC and
 // security.SELinuxFilesNonARC tests.
-func CheckHomeDirectory(s *testing.State) {
+func CheckHomeDirectory(ctx context.Context, s *testing.State) {
 	const skipTest = "^.*"
 	testCases := []struct {
 		// path regexp; encapsulated in '^' and '$'.
@@ -97,7 +98,7 @@ func CheckHomeDirectory(s *testing.State) {
 					break
 				}
 			}
-			if err := checkFileContext(path, contextRegexp); err != nil {
+			if err := checkFileContext(ctx, path, contextRegexp, false); err != nil {
 				s.Errorf("Failed file context check for %v: %v", path, err)
 			}
 			break

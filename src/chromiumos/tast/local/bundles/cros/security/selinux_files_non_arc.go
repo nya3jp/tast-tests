@@ -48,7 +48,7 @@ func SELinuxFilesNonARC(ctx context.Context, s *testing.State) {
 			s.Errorf("Failed to compile expected context %q: %v", testArg.context, err)
 			continue
 		}
-		selinux.CheckContext(s, testArg.path, expected, testArg.recursive, filter)
+		selinux.CheckContext(ctx, s, testArg.path, expected, testArg.recursive, filter, false)
 	}
-	selinux.CheckHomeDirectory(s)
+	selinux.CheckHomeDirectory(ctx, s)
 }
