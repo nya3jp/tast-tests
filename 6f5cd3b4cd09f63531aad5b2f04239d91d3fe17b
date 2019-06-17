@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e24f0c27_ab6b6fce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mem_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-17T04:23:12Z",
+      "side": 1,
+      "message": "I tried this on betty but it did not run. \n\n localhost ~ # mosys memory spd print timings -s speeds\n Platform not supported\n Application error: Platform not supported\n\nDo we want to skip on VM?",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "6f5cd3b4cd09f63531aad5b2f04239d91d3fe17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e840f68_10e08632",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memcheck/memcheck.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-17T04:23:12Z",
+      "side": 1,
+      "message": "style: failed",
+      "range": {
+        "startLine": 33,
+        "startChar": 32,
+        "endLine": 33,
+        "endChar": 38
+      },
+      "revId": "6f5cd3b4cd09f63531aad5b2f04239d91d3fe17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bb004b8_30f1b0e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memcheck/memcheck.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-17T04:23:12Z",
+      "side": 1,
+      "message": "v * 1024 * 1024? (I assume the output is in MB)",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 10
+      },
+      "revId": "6f5cd3b4cd09f63531aad5b2f04239d91d3fe17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eba5d5ad_d3e9d1a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memcheck/memcheck.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-17T04:23:12Z",
+      "side": 1,
+      "message": "I guess it\u0027s helpful to keep the comments around these values:\n\n        # The total memory will shrink if the system bios grabs more of the\n        # reserved memory. We derived the value below by giving a small\n        # cushion to allow for more system BIOS usage of ram. The memref value\n        # is driven by the supported netbook model with the least amount of\n        # total memory.  ARM and x86 values differ considerably.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 66
+      },
+      "revId": "6f5cd3b4cd09f63531aad5b2f04239d91d3fe17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bef4d1e_f977195a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memcheck/memcheck.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-17T04:23:12Z",
+      "side": 1,
+      "message": "How about arm64? It seems the original test regarded arm and arm64 in the same way:\n\nhttps://cs.corp.google.com/chromeos_public/src/third_party/autotest/files/client/bin/utils.py?type\u003dcs\u0026q\u003dutils+get_cpu_arch\u0026g\u003d0\u0026l\u003d256",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "6f5cd3b4cd09f63531aad5b2f04239d91d3fe17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebee7d91_294a752e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memcheck/memcheck.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-17T04:23:12Z",
+      "side": 1,
+      "message": "off-topic: This calculation seems strange to me... phySize should be as large as 15GB to make osReserve larger than osReserveMin.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 2
+      },
+      "revId": "6f5cd3b4cd09f63531aad5b2f04239d91d3fe17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9bee45a0_738c1881",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memcheck/memcheck.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-17T04:23:12Z",
+      "side": 1,
+      "message": "Note to self: This can match to something like \"LPDDR\" (on nocturne).",
+      "range": {
+        "startLine": 124,
+        "startChar": 33,
+        "endLine": 124,
+        "endChar": 42
+      },
+      "revId": "6f5cd3b4cd09f63531aad5b2f04239d91d3fe17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "afa76d76_4bab7b61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memcheck/memcheck.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-17T04:23:12Z",
+      "side": 1,
+      "message": "Optional: I guess it\u0027s safe to simplify this part (?:[3-9]|[1-9]\\d+) to just \\d+. But it\u0027s your call whether to change it now since this is actually what the original test had.",
+      "range": {
+        "startLine": 124,
+        "startChar": 42,
+        "endLine": 124,
+        "endChar": 60
+      },
+      "revId": "6f5cd3b4cd09f63531aad5b2f04239d91d3fe17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8f5f4a6_1d1f22e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memcheck/memcheck.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-17T04:23:12Z",
+      "side": 1,
+      "message": "nit\u0026optional: I usually print a string with %q if it comes outside of the code, e.g. one read from a file, since it can contain some misleading characters like white spaces, or it can be an empty string which is often confusing.",
+      "range": {
+        "startLine": 130,
+        "startChar": 55,
+        "endLine": 130,
+        "endChar": 57
+      },
+      "revId": "6f5cd3b4cd09f63531aad5b2f04239d91d3fe17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
