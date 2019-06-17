@@ -1,0 +1,57 @@
+// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package sysutil
+
+import (
+	"syscall"
+	"testing"
+)
+
+func TestUname(t *testing.T) {
+	origUnameFunc := unameFunc
+	unameFunc = func(u *syscall.Utsname) error {
+		// Linux
+		u.Sysname = [65]int8{76, 105, 110, 117, 120, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+		// localhost
+		u.Nodename = [65]int8{108, 111, 99, 97, 108, 104, 111, 115, 116, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+		// 4.14.118-12008-gee216661cc77
+		u.Release = [65]int8{52, 46, 49, 52, 46, 49, 49, 56, 45, 49, 50, 48, 48, 56, 45, 103, 101, 101, 50, 49, 54, 54, 54, 49, 99, 99, 55, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+		// #1 SMP PREEMPT Sat May 18 02:25:51 PDT 2019
+		u.Version = [65]int8{35, 49, 32, 83, 77, 80, 32, 80, 82, 69, 69, 77, 80, 84, 32, 83, 97, 116, 32, 77, 97, 121, 32, 49, 56, 32, 48, 50, 58, 50, 53, 58, 53, 49, 32, 80, 68, 84, 32, 50, 48, 49, 57, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+		// x86_64
+		u.Machine = [65]int8{120, 56, 54, 95, 54, 52, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+		// (none)
+		u.Domainname = [65]int8{40, 110, 111, 110, 101, 41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+		return nil
+	}
+	defer func() { unameFunc = origUnameFunc }()
+
+	wants := []string{
+		"Linux",
+		"localhost",
+		"4.14.118-12008-gee216661cc77",
+		"#1 SMP PREEMPT Sat May 18 02:25:51 PDT 2019",
+		"x86_64",
+		"(none)",
+	}
+	res, err := Uname()
+	if err != nil {
+		t.Error("Uname returned error: ", err)
+	}
+	gots := []string{
+		res.Sysname,
+		res.Nodename,
+		res.Release,
+		res.Version,
+		res.Machine,
+		res.Domainname,
+	}
+
+	for i, got := range gots {
+		if want := wants[i]; want != got {
+			t.Errorf("%d-th entry  want %s, got %s", i, want, got)
+		}
+	}
+}
