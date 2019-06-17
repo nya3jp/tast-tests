@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "573b2caa_872ca264",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-17T14:58:34Z",
+      "side": 1,
+      "message": "Could you use golang.org/x/unix package instead?\n\nhttps://golang.org/pkg/syscall/#pkg-overview\n\n\u003d\u003d quote \u003d\u003d\nDeprecated: this package is locked down. Callers should use the corresponding package in the golang.org/x/sys repository instead. ...\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\nAlso, unlike syscall package, unix.Utsname has fields typed byte array. WDYT about whether it is enough for your refactoring?",
+      "range": {
+        "startLine": 73,
+        "startChar": 45,
+        "endLine": 73,
+        "endChar": 58
+      },
+      "revId": "bca0f18532a977fa2d5ffed445057b3313cdef17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
