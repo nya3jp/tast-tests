@@ -34,6 +34,12 @@ func NewDaemonController(r CmdRunner) *DaemonController {
 	return &DaemonController{r}
 }
 
+// WaitForAllDBusServices waits for all dbus services of our interest to be running.
+func (dc *DaemonController) WaitForAllDBusServices(ctx context.Context) error {
+	// Just waits for cryptohomd because it's at the tail of dependency chain. We might have to change it if any dependency is decoupled.
+	return dc.waitForDBusService(ctx, "org.chromium.Cryptohome")
+}
+
 func (dc *DaemonController) waitForDBusService(ctx context.Context, name string) error {
 	// Without quote, we might find something prefixed by |name|.
 	name = "\"" + name + "\""
