@@ -87,5 +87,12 @@ func (h *HelperRemote) EnsureTPMIsReset(ctx context.Context) error {
 
 // Reboot reboots the DUT
 func (h *HelperRemote) Reboot(ctx context.Context) error {
-	return h.d.Reboot(ctx)
+	if err := h.d.Reboot(ctx); err != nil {
+		return err
+	}
+	dctrl := hwsec.NewDaemonController(h.r)
+	if err := dctrl.WaitForAllDBusServices(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for hesec dbus services to be ready")
+	}
+	return nil
 }
