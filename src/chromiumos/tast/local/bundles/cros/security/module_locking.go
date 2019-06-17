@@ -13,6 +13,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -43,13 +44,11 @@ func ModuleLocking(ctx context.Context, s *testing.State) {
 		s.Fatalf("%v contains %q; want 1", sysctl, string(b))
 	}
 
-	cmd := testexec.CommandContext(ctx, "uname", "-r")
-	out, err := cmd.Output()
+	u, err := sysutil.Uname()
 	if err != nil {
-		defer cmd.DumpLog(ctx)
 		s.Fatal("Failed to get kernel release: ", err)
 	}
-	moduleDir := filepath.Join("/lib/modules", strings.TrimSpace(string(out)))
+	moduleDir := filepath.Join("/lib/modules", u.Release)
 	var modulePath string
 	for _, fn := range []string{moduleFile, altModuleFile} {
 		p := filepath.Join(moduleDir, fn)
