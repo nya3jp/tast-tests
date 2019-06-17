@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba4f02bd_15d22178",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-17T21:53:41Z",
+      "side": 1,
+      "message": "We discussed this off-line, bug now I have second thoughts\u003e\n\nwould it be possible that the activity doesn\u0027t become idle in 5 seconds?\ne.g: if the activity is animating itself, would it be possible that it is not idle?\nor if it is a game, would it ever be idle?",
+      "range": {
+        "startLine": 388,
+        "startChar": 1,
+        "endLine": 390,
+        "endChar": 2
+      },
+      "revId": "d338b91f2b1824c7f49d327c5df2e3765dfb05d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b052d94_3e8cb9dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-17T21:53:41Z",
+      "side": 1,
+      "message": "nit: I\u0027d move this above the \"arc.newActivity\".\nBy doing so, the \"arc.newActivity + arc.Start()\" are together.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 62
+      },
+      "revId": "d338b91f2b1824c7f49d327c5df2e3765dfb05d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
