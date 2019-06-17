@@ -9,15 +9,11 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"os"
-	"path/filepath"
-	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/video/lib/arctest"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
 	"chromiumos/tast/local/chrome/bintest"
@@ -67,79 +63,39 @@ const (
 	ImportBuffer
 )
 
-// binaryType represents the type of test binary.
-type binaryType int
-
-const (
-	// vdaUnittest represents video_decode_accelerator_unittest.
-	vdaUnittest binaryType = iota
-	// arcVideoDecoderTest represents arcvideodecoder_test.
-	arcVideoDecoderTest
-)
-
-// testConfig stores test configuration to run video_decode_accelerator_unittest and arcvideodecoder_test.
+// testConfig stores test configuration to run video_decode_accelerator_unittest.
 type testConfig struct {
-	// binType indicates the test binary type of this configuration.
-	binType binaryType
 	// testData stores the test video's name and metadata.
-	// Used by all binaries.
 	testData TestVideoData
 	// dataPath stores the absolute path of the video file.
-	// Used by all binaries.
 	dataPath string
 	// bufferMode indicates which buffer mode the unittest runs with.
-	// Only used by video_decode_accelerator_unittest.
 	bufferMode VDABufferMode
 	// requireMD5Files indicates whether to prepare MD5 files for test.
-	// Used by all binaries.
 	// TODO(crbug.com/953118) Move metadata parsing code into the ARC Tast test once video_decode_accelerator_unittest
 	//                        is deprecated. The new video_decode_accelerator_tests use the metadata file directly.
 	requireMD5Files bool
 	// thumbnailOutputDir is a directory for the unittest to output thumbnail.
 	// If unspecified, the unittest outputs no thumbnail.
-	// Only used by video_decode_accelerator_unittest.
 	thumbnailOutputDir string
 	// testFilter specifies test pattern the test can run.
 	// If unspecified, the unittest runs all tests.
-	// Used by all binaries.
 	testFilter string
 }
 
-// toArgsList converts testConfig to a list of argument strings according to binType.
+// toArgsList converts testConfig to a list of argument strings.
 func (t *testConfig) toArgsList() (args []string) {
-	if t.binType == vdaUnittest {
-		// video_decode_accelerator_unittest only.
-		args = append(args, logging.ChromeVmoduleFlag(), "--ozone-platform=gbm", t.testData.toVDAArg(t.dataPath))
-		if t.bufferMode == ImportBuffer {
-			args = append(args, "--test_import", "--frame_validator=check")
-		}
-		if t.thumbnailOutputDir != "" {
-			args = append(args, fmt.Sprintf("--thumbnail_output_dir=%s", t.thumbnailOutputDir))
-		}
-	} else {
-		// arcvideodecoder_test only.
-		dataPath := filepath.Join(arc.ARCTmpDirPath, filepath.Base(t.dataPath))
-		args = append(args, t.testData.toVDAArg(dataPath))
+	args = append(args, logging.ChromeVmoduleFlag(), "--ozone-platform=gbm", t.testData.toVDAArg(t.dataPath))
+	if t.bufferMode == ImportBuffer {
+		args = append(args, "--test_import", "--frame_validator=check")
 	}
-
-	// Common arguments.
+	if t.thumbnailOutputDir != "" {
+		args = append(args, fmt.Sprintf("--thumbnail_output_dir=%s", t.thumbnailOutputDir))
+	}
 	if t.testFilter != "" {
 		args = append(args, fmt.Sprintf("--gtest_filter=%s", t.testFilter))
 	}
 	return args
-}
-
-// decodeMetadata stores parsed metadata from test video JSON files, which are external files located in
-// gs://chromiumos-test-assets-public/tast/cros/video/, e.g. test-25fps.h264.json.
-type decodeMetadata struct {
-	Profile            string   `json:"profile"`
-	Width              int      `json:"width"`
-	Height             int      `json:"height"`
-	FrameRate          int      `json:"frame_rate"`
-	NumFrames          int      `json:"num_frames"`
-	NumFragments       int      `json:"num_fragments"`
-	MD5Checksums       []string `json:"md5_checksums"`
-	ThumbnailChecksums []string `json:"thumbnail_checksums"`
 }
 
 // DataFiles returns a list of required files that tests that use this package
@@ -159,11 +115,6 @@ func DataFiles(profile videotype.CodecProfile) []string {
 
 	fname := "test-25fps." + codec
 	return []string{fname, fname + ".json"}
-}
-
-// writeLinesToFile writes lines to filepath line by line.
-func writeLinesToFile(lines []string, filepath string) error {
-	return ioutil.WriteFile(filepath, []byte(strings.Join(lines, "\n")+"\n"), 0644)
 }
 
 // runAccelVideoTest runs video_decode_accelerator_unittest with given testConfig.
@@ -228,76 +179,6 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, cfg testConfig) {
 	}
 }
 
-// runARCVideoTest runs arcvideodecoder_test in ARC.
-// It fails if arcvideodecoder_test fails.
-func runARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, cfg testConfig) {
-	shortCtx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-
-	pushFiles := []string{cfg.dataPath}
-
-	if cfg.requireMD5Files {
-		// Parse JSON metadata.
-		// TODO(johnylin) Adapt ARC decoder test to use the json file directly.
-		jf, err := os.Open(cfg.dataPath + ".json")
-		if err != nil {
-			s.Fatal("Failed to open JSON file: ", err)
-		}
-		defer jf.Close()
-
-		var md decodeMetadata
-		if err := json.NewDecoder(jf).Decode(&md); err != nil {
-			s.Fatal("Failed to parse metadata from JSON file: ", err)
-		}
-
-		// Prepare frames MD5 file.
-		frameMD5Path := cfg.dataPath + ".frames.md5"
-		s.Logf("Preparing frames MD5 file %v from JSON metadata", frameMD5Path)
-		if err := writeLinesToFile(md.MD5Checksums, frameMD5Path); err != nil {
-			s.Fatalf("Failed to prepare frames MD5 file %s: %v", frameMD5Path, err)
-		}
-		defer os.Remove(frameMD5Path)
-
-		pushFiles = append(pushFiles, frameMD5Path)
-	}
-
-	// Push files to ARC container.
-	for _, pushFile := range pushFiles {
-		arcPath, err := a.PushFileToTmpDir(shortCtx, pushFile)
-		if err != nil {
-			s.Fatal("Failed to push video stream to ARC: ", err)
-		}
-		defer a.Command(ctx, "rm", arcPath).Run()
-	}
-
-	args := cfg.toArgsList()
-
-	// Push test binary files to ARC container. For x86_64 device we might install both amd64 and x86 binaries.
-	const testexec = "arcvideodecoder_test"
-	execs, err := a.PushTestBinaryToTmpDir(shortCtx, testexec)
-	if err != nil {
-		s.Fatal("Failed to push test binary to ARC: ", err)
-	}
-	if len(execs) == 0 {
-		s.Fatal("Test binary is not found in ", arc.TestBinaryDirPath)
-	}
-	defer a.Command(ctx, "rm", execs...).Run()
-
-	// Execute binary in ARC.
-	for _, exec := range execs {
-		outputLogFile := filepath.Join(s.OutDir(), fmt.Sprintf("output_%s_%s.log", filepath.Base(exec), time.Now().Format("20060102-150405")))
-		outFile, err := os.Create(outputLogFile)
-		if err != nil {
-			s.Fatal("failed to create output log file: ", err)
-		}
-		defer outFile.Close()
-
-		if err := arctest.RunARCBinary(shortCtx, a, exec, args, s.OutDir(), outFile); err != nil {
-			s.Errorf("Failed to run %v: %v", exec, err)
-		}
-	}
-}
-
 // RunAccelVideoTestNew runs video_decode_accelerator_tests with the specified video file.
 // TODO(crbug.com/933034) Rename this function once the video_decode_accelerator_unittest
 // have been completely replaced.
@@ -345,7 +226,6 @@ func RunAllAccelVideoTest(ctx context.Context, s *testing.State, testData TestVi
 	defer vl.Close()
 
 	runAccelVideoTest(ctx, s, testConfig{
-		binType:            vdaUnittest,
 		testData:           testData,
 		dataPath:           s.DataPath(testData.Name),
 		bufferMode:         bufferMode,
@@ -364,26 +244,9 @@ func RunAccelVideoSanityTest(ctx context.Context, s *testing.State, testData Tes
 	defer vl.Close()
 
 	runAccelVideoTest(ctx, s, testConfig{
-		binType:    vdaUnittest,
 		testData:   testData,
 		dataPath:   s.DataPath(testData.Name),
 		bufferMode: AllocateBuffer,
 		testFilter: "VideoDecodeAcceleratorTest.NoCrash",
-	})
-}
-
-// RunAllARCVideoTests runs all tests in arcvideodecoder_test.
-func RunAllARCVideoTests(ctx context.Context, s *testing.State, a *arc.ARC, testData TestVideoData) {
-	vl, err := logging.NewVideoLogger()
-	if err != nil {
-		s.Fatal("Failed to set values for verbose logging")
-	}
-	defer vl.Close()
-
-	runARCVideoTest(ctx, s, a, testConfig{
-		binType:         arcVideoDecoderTest,
-		testData:        testData,
-		dataPath:        s.DataPath(testData.Name),
-		requireMD5Files: true,
 	})
 }
