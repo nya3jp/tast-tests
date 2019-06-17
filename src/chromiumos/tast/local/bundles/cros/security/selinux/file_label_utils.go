@@ -90,7 +90,7 @@ func InvertFilterSkipFile(filter FileLabelCheckFilter) FileLabelCheckFilter {
 
 // checkFileContext takes a path and a expected, and return an error
 // if the context mismatch or unable to check context.
-func checkFileContext(path string, expected *regexp.Regexp) error {
+func checkFileContext(path string, expected *regexp.Regexp, s *testing.State) error {
 	actual, err := selinux.FileLabel(path)
 	if err != nil {
 		// TODO(fqj): log disappeared file.
@@ -101,6 +101,9 @@ func checkFileContext(path string, expected *regexp.Regexp) error {
 	}
 	if !expected.MatchString(actual) {
 		return errors.Errorf("got %q; want %q", actual, expected)
+	}
+	if s != nil {
+		s.Logf("File %q has correct label %q", path, actual)
 	}
 	return nil
 }
@@ -121,7 +124,7 @@ func CheckContext(s *testing.State, path string, expected *regexp.Regexp, recurs
 	skipFile, skipSubdir := filter(path, fi)
 
 	if skipFile == Check {
-		if err = checkFileContext(path, expected); err != nil {
+		if err = checkFileContext(path, expected, s); err != nil {
 			s.Errorf("Failed file context check for %v: %v", path, err)
 		}
 	}
