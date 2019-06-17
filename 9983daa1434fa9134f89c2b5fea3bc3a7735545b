@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c913e80_7a3562a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-17T04:14:25Z",
+      "side": 1,
+      "message": "I think you don\u0027t need this. Or, instead, could you improve documentation in Desc at L19?",
+      "revId": "9983daa1434fa9134f89c2b5fea3bc3a7735545b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79cd40f0_cc1f21f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-17T04:14:25Z",
+      "side": 1,
+      "message": "Could you use \u0026type{} syntax instead?\n\ncomponentPath, err :\u003d vm.LoadTerminaComponent(ctx)\nif err !\u003d nil {\n  ...\n}\n\nparams :\u003d \u0026vm.CrosvmParams{\n  VMPath: componentPath,\n  KernelArgs: []string{...},\n}\n...\n\nnit/optional: as for name of the variable, \"params\" looks sufficient. In Tast/Go, if the meaning of the name is clear enough under the current context, shorter name is preferred.",
+      "revId": "9983daa1434fa9134f89c2b5fea3bc3a7735545b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8436be36_5ff80e25",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-17T04:14:25Z",
+      "side": 1,
+      "message": "These aren\u0027t used. Any concrete plans to use in a immediate following change?\nif not, could you remove now? You can add them back whenever you need.\n\nAlso, if these two are just what are needed for NewCrosvm, using arguments looks simpler than indirection by param struct.",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 62
+      },
+      "revId": "9983daa1434fa9134f89c2b5fea3bc3a7735545b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "174bb2f6_bc1478ce",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-17T04:14:25Z",
+      "side": 1,
+      "message": "style: could you use :\u003d instead?\n\nif _, err :\u003d os.Stat(...); ... {\n  ...\n}",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "9983daa1434fa9134f89c2b5fea3bc3a7735545b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9276786d_ad290b5d",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-17T04:14:25Z",
+      "side": 1,
+      "message": "This is blocking operation, which could take longer time technically.\nCould you make this context aware?",
+      "revId": "9983daa1434fa9134f89c2b5fea3bc3a7735545b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "042eda81_41375513",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-17T04:14:25Z",
+      "side": 1,
+      "message": "nit/style: could you remove empty line here?",
+      "revId": "9983daa1434fa9134f89c2b5fea3bc3a7735545b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f771ebbe_c2a8ff9d",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-17T04:14:25Z",
+      "side": 1,
+      "message": "You also need to break in case of failure case, I think?",
+      "revId": "9983daa1434fa9134f89c2b5fea3bc3a7735545b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2eee5d71_97c6d3ee",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-17T04:14:25Z",
+      "side": 1,
+      "message": "how about checking the condition in the goroutine above?\ngoroutine can be written in a synchronous manner, and notify the main thread by either line or error.",
+      "range": {
+        "startLine": 146,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 3
+      },
+      "revId": "9983daa1434fa9134f89c2b5fea3bc3a7735545b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
