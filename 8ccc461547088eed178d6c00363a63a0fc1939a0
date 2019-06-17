@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "14f1dfe4_c10ab09d",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1192540
+      },
+      "writtenOn": "2019-06-17T21:38:44Z",
+      "side": 1,
+      "message": "Done.\n\nI wasn\u0027t sure if you really meant GoStringer or String, since I saw instances of GoStringer in the code base.\nhttps://golang.org/pkg/fmt/#example_GoStringer\n\nBTW, in order to use this formatter, I have to specify each constant\u0027s type explicitly.",
+      "parentUuid": "ece29ad7_bffac353",
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e60a601_2499f743",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 2
@@ -469,6 +487,30 @@
       "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71c71bc2_eb97f31c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1192540
+      },
+      "writtenOn": "2019-06-17T21:38:44Z",
+      "side": 1,
+      "message": "Thanks. I somehow missed the definition in pre.go. Thanks to Ricarod, he pointed this out today. I updated the documentation as well in http://go/arc++tast-tests.\n\nDone.",
+      "parentUuid": "281d8b12_fecbd458",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 70
+      },
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
