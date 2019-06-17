@@ -17,11 +17,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: RetakeOwnership,
-		Desc: "Verifies that the TPM ownership can be cleared and taken",
-		Contacts: []string{
-			"cylai@chromium.org", // Nobody
-		},
+		Func:         RetakeOwnership,
+		Desc:         "Verifies that the TPM ownership can be cleared and taken",
+		Contacts:     []string{"cylai@chromium.org", "cros-hwsec@google.com"},
 		SoftwareDeps: []string{"reboot", "tpm"},
 		Attr:         []string{"disabled"},
 	})
@@ -47,7 +45,7 @@ func RetakeOwnership(ctx context.Context, s *testing.State) {
 	s.Log("TPM is confirmed to be reset")
 
 	if result, err := utility.IsPreparedForEnrollment(ctx); err != nil {
-		s.Fatal("Cannot check if enrollment preparation is reset")
+		s.Fatal("Cannot check if enrollment preparation is reset: ", err)
 	} else if result {
 		s.Fatal("Enrollment preparation is not reset after clearing ownership")
 	}
@@ -69,7 +67,7 @@ func RetakeOwnership(ctx context.Context, s *testing.State) {
 	s.Log("Attestation prepared")
 	passwd, err := utility.GetOwnerPassword(ctx)
 	if err != nil {
-		s.Fatal("Failed to get owner password")
+		s.Fatal("Failed to get owner password: ", err)
 	} else if len(passwd) != 20 {
 		s.Fatal("Ill-formed owner password")
 	}
@@ -88,7 +86,7 @@ func RetakeOwnership(ctx context.Context, s *testing.State) {
 		s.Fatal("Inconsistent checksum after reboot")
 	}
 	if passwd2, err := utility.GetOwnerPassword(ctx); err != nil {
-		s.Fatal("Failed to get owner password")
+		s.Fatal("Failed to get owner password: ", err)
 	} else if passwd != passwd2 {
 		s.Fatal("Inconsistent owner password after reboot")
 	}
