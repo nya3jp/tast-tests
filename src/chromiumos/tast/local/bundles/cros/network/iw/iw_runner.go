@@ -42,6 +42,19 @@ const (
 	securityMixed = "mixed"
 )
 
+type devMode string
+
+const (
+	devModeAP        devMode = "AP"
+	devModeIBSS      devMode = "IBSS"
+	devModeMonitor   devMode = "monitor"
+	devModeMeshPoint devMode = "mesh point"
+	devModeStation   devMode = "managed"
+)
+
+var supportedDevModes []devMode = []devMode{devModeAP, devModeIBSS,
+	devModeMonitor, devModeMeshPoint, devModeStation}
+
 // bssData contains contents pertaining to a BSS response.
 type bssData struct {
 	BSS       string
@@ -50,6 +63,10 @@ type bssData struct {
 	Security  string
 	HT        string
 	Signal    float64
+}
+
+type channelConfig struct {
+	number, freq, width, center1Freq int
 }
 
 // timedScanData contains the BSS responses from an `iw scan` and its execution time.
@@ -266,3 +283,196 @@ func (iwr Runner) TimedScan(iface string, frequencies []int, ssids []string) *ti
 	scanTime := iwr.parseScanTime(scanOut)
 	return &timedScanData{scanTime, bssList}
 }
+
+func (iwr Runner) Scan(iface string, frequencies []int, ssids []string) []*bssData {
+	return iwr.TimedScan(iface, frequencies, ssids).BSSList
+}
+
+func (iwr Runner) addInterface(phy string, iface, string, ifaceType string) {
+	_, err := iwr.Run(iwr.ctx, fmt.Sprintf("%s phy %s interface add %s type %s", iwr.iwCommand, phy, iface, ifaceType))
+	if err != nil {
+		iwr.s.Fatal("addInterface did not terminate properly.")
+	}
+}
+
+func (iwr Runner) disconnectStation(iface string) {
+	_, err := iwr.Run(iwr.ctx, fmt.Sprintf("%s dev %s disconnect", iwr.iwCommand, iface))
+	if err != nil {
+		iwr.s.Fatal("disconnectStation did not terminate properly.")
+	}
+}
+
+//func (iwr Runner) getInterface(iface string) Interfaces {
+//	matchingInterfaces := []Interfaces{}        // TODO
+//	for _, val := range iwr.listInterfaces() { //TODO
+//		if val.irName == iface {
+//			matchingInterfaces = append(matchingInterfaces, val)
+//		}
+//	}
+//	if len(matchingInterfaces) != 1 {
+//		iwr.s.Fatal(fmt.Sprintf("Could not find interface named %s", iface))
+//	}
+//	return matchingInterfaces[0]
+//}
+
+func (iwr Runner) getLinkValue(iface string, iwLinkKey string) string {
+	out, err := iwr.Run(iwr.ctx, fmt.Sprintf("%s dev %s link", iwr.iwCommand, iface))
+	if status, _ := testexec.GetWaitStatus(err); int(status) != 0 {
+		// There exists a race condition where a mac80211 based driver is
+		// 'associated' with an SSID but not the BSS. This causes the iw to
+		// return an error code (-2) when attempting to retrieve information
+		// specific to the BSS. This does not happe nin the mwifiex drivers.
+		return ""
+	}
+	actualValue := getAllLinkKeys(out)[iwLinkKey]
+	return actualValue
+}
+
+func (iwr Runner) getOperatingMode(iface string) string {
+	out, err := iwr.Run(iwr.ctx, fmt.Sprintf("%s dev %s info", iwr.iwCommand, iface))
+	if err != nil {
+		iwr.s.Fatal("Could not get Operating Mode.")
+	}
+	r := regexp.MustCompile(`^\s*type (.*)$`)
+	for _, line := range strings.Split(out, "\n") {
+		if r.MatchString(line) {
+			matchGroup := r.FindStringSubmatch(line)
+			operatingMode := matchGroup[1]
+			for _, v := range supportedDevModes {
+				if v == devMode(operatingMode) {
+					return operatingMode
+				}
+			}
+			iwr.s.Fatal(fmt.Sprintf("Unsupported operating mode %s found for"+
+				" interface: %s.", operatingMode, iface))
+		}
+	}
+	return ""
+}
+
+func (iwr Runner) getRadioConfig(iface string) channelConfig {
+	out, err := iwr.Run(iwr.ctx, fmt.Sprintf("%s dev %s info", iwr.iwCommand, iface))
+	if err != nil {
+		iwr.s.Fatal("Could not get Radio Config.")
+	}
+	r := regexp.MustCompile(`^\s*channel ([0-9]+) \(([0-9]+) MHz\), width: ([2,4,8]0) MHz, center1: ([0-9]+) MHz`)
+	for _, line := range strings.Split(out, "\n") {
+		if r.MatchString(line) {
+			matchGroup := r.FindStringSubmatch(line)
+			var number, freq, width, center1Freq int
+			if val, err := strconv.Atoi(matchGroup[1]); err != nil {
+				number = val
+				iwr.s.Fatal("Could not parse number.")
+			}
+			if val, err := strconv.Atoi(matchGroup[2]); err != nil {
+				freq = val
+				iwr.s.Fatal("Could not parse freq.")
+			}
+			if val, err := strconv.Atoi(matchGroup[3]); err != nil {
+				width = val
+				iwr.s.Fatal("Could not parse width.")
+			}
+			if val, err := strconv.Atoi(matchGroup[4]); err != nil {
+				center1Freq = val
+				iwr.s.Fatal("Could not parse center1Freq.")
+			}
+			return channelConfig{number, freq, width, center1Freq}
+		}
+	}
+	iwr.s.Fatal("Could not find radio config.")
+	return channelConfig{}
+}
+
+func (iwr Runner) ibssJoin(iface string, ssid string, frequency int) {
+	iwr.Run(iwr.ctx, fmt.Sprintf("%s dev %s ibss join %s %d", iwr.iwCommand, iface, ssid, frequency))
+}
+
+func (iwr Runner) ibssLeave(iface string) {
+	iwr.Run(iwr.ctx, fmt.Sprintf("%s dev %s ibss leave", iwr.iwCommand, iface))
+}
+
+func (iwr Runner) removeInterface(iface string) {
+	iwr.Run(iwr.ctx, fmt.Sprintf("%s dev %s del", iwr.iwCommand, iface))
+}
+
+func (iwr Runner) scanDump(iface string) []*bssData {
+	out, err := iwr.Run(iwr.ctx, fmt.Sprintf("%s dev %s scan dump", iwr.iwCommand, iface))
+	if err != nil {
+		status, _ := testexec.GetWaitStatus(err)
+		iwr.s.Fatal(fmt.Sprintf("Scan dump failed with error code %d.", int(status)))
+	}
+	return iwr.parseScanResults(out)
+}
+
+func (iwr Runner) setTxPower(iface string, power string) {
+	iwr.Run(iwr.ctx, fmt.Sprintf("%s dev %s set txpower %s", iwr.iwCommand, iface, power))
+}
+
+func (iwr Runner) setFreq(iface string, freq int) {
+	iwr.Run(iwr.ctx, fmt.Sprintf("%s dev %s set f req %d", iwr.iwCommand, iface, freq))
+}
+
+func (iwr Runner) setRegulatoryDomain(domainString string) {
+	iwr.Run(iwr.ctx, fmt.Sprintf("%s reg set %s", iwr.iwCommand, domainString))
+}
+
+func (iwr Runner) getRegulatoryDomain() string {
+	out, err := iwr.Run(iwr.ctx, fmt.Sprintf("%s reg get", iwr.iwCommand))
+	if err != nil {
+		status, _ := testexec.GetWaitStatus(err)
+		iwr.s.Fatal(fmt.Sprintf("getRegulatoryDomain failed with error code %d.", int(status)))
+	}
+	r := regexp.MustCompile(`^country (..):`)
+	for _, line := range strings.Split(out, "\n") {
+		if r.MatchString(line) {
+			matchGroup := r.FindStringSubmatch(line)
+			return matchGroup[1]
+		}
+	}
+	iwr.s.Fatal("Could not find Regulatory Domain.")
+	return ""
+}
+
+func (iwr Runner) setAntennaBitmap(phy string, txBitmap int, rxBitmap int) {
+	iwr.Run(iwr.ctx, fmt.Sprintf("%s phy %s set antenna %d %d", iwr.iwCommand, phy, txBitmap, rxBitmap))
+}
+
+func (iwr Runner) vhtSupported() bool {
+	out, err := iwr.Run(iwr.ctx, fmt.Sprintf("%s list", iwr.iwCommand))
+	if err != nil {
+		iwr.s.Fatal("Could not successfully check if VHT supported.")
+	}
+	return strings.Contains(out, "VHT Capabilities")
+}
+
+func (iwr Runner) getFragmentationThreshold(phy string) int {
+	out, err := iwr.Run(iwr.ctx, fmt.Sprintf("%s phy %s info", iwr.iwCommand, phy))
+	if err != nil {
+		status, _ := testexec.GetWaitStatus(err)
+		iwr.s.Fatal(fmt.Sprintf("getFragmentationThreshold failed with error code %d.", int(status)))
+	}
+	r := regexp.MustCompile(`^\s+Fragmentation threshold:\s+([0-9]+)$`)
+	for _, line := range strings.Split(out, "\n") {
+		if r.MatchString(line) {
+			matchGroup := r.FindStringSubmatch(line)
+			thresh, err := strconv.Atoi(matchGroup[1])
+			if err != nil {
+				iwr.s.Fatal("Could not parse threshold.")
+			}
+			return thresh
+		}
+	}
+	iwr.s.Fatal("Could not find threshold.")
+	return 0
+}
+
+//func listInterfaces//TODO
+//func listPhys//TODO
+//func (iwr Runner) waitForScanResults
+//func (iwr Runner) waitForLink
+//func getStationDump(iface string) ??{
+//TODO
+//}
+//func (iwr Runner) frequencySupported(frequency int) {
+//	phys := iwr.listPhys()
+//}
