@@ -10,7 +10,6 @@ import (
 
 	apb "chromiumos/system_api/attestation_proto"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/testing"
 )
 
 // ClientType is an alias of string which is used as an enum to specify a
@@ -19,7 +18,8 @@ type ClientType string
 
 // The collection of all valid |ClientType|s.
 const (
-	// CryptohomeProxyLegacyType refers to |hwsecUtilityCryptohomeProxyLegacy|
+	// CryptohomeProxyLegacyType refers to the implementation that talks to
+	// cryptohomed via legacy cryptohome dbus interface.
 	CryptohomeProxyLegacyType ClientType = "CryptohomeProxyLegacy"
 	CryptohomeProxyNewType    ClientType = "CryptohomeProxyNew"
 	DistributedModeProxyType  ClientType = "DistributedModeProxy"
@@ -74,7 +74,8 @@ type Utility interface {
 		deviceID string,
 		includeSignedPublicKey bool,
 		challenge []byte) (string, error)
-	Sleep(milli int) error
+
+	sleep(milli int) error
 }
 
 // EnsureTpmIsReady ensures the TPM is ready when the function returns |nil|.
@@ -101,7 +102,7 @@ func EnsureTpmIsReady(utility Utility, timeoutInMillis int) error {
 		// Ignores |err| here in case the error messages repeat undesirably.
 		isReady, _ := utility.IsTpmReady()
 		if isReady == false {
-			err := utility.Sleep(pollingIntervalMillis)
+			err := utility.sleep(pollingIntervalMillis)
 			if err != nil {
 				return errors.Wrap(err, "timeout")
 			}
@@ -112,14 +113,16 @@ func EnsureTpmIsReady(utility Utility, timeoutInMillis int) error {
 	return errors.New("timeout")
 }
 
-// EnsureIsPreparedForEnrollment ensures the DUT is prepareed for enrollment when the function returns |nil|. Otherwise, returns any encountered error, including timeout after |timeoutInMillis|.
+// EnsureIsPreparedForEnrollment ensures the DUT is prepareed for enrollment
+// when the function returns |nil|. Otherwise, returns any encountered error,
+// including timeout after |timeoutInMillis|.
 func EnsureIsPreparedForEnrollment(utility Utility, timeoutInMillis int) error {
 	expiredTimeInMillis := time.Now().UnixNano()/int64(time.Millisecond) + int64(timeoutInMillis)
 	for expiredTimeInMillis > time.Now().UnixNano()/int64(time.Millisecond) {
 		// Ignores |err| here in case the error messages repeat undesirably.
 		isPrepared, _ := utility.IsPreparedForEnrollment()
 		if isPrepared == false {
-			err := utility.Sleep(pollingIntervalMillis)
+			err := utility.sleep(pollingIntervalMillis)
 			if err != nil {
 				return errors.Wrap(err, "timeout")
 			}
@@ -137,22 +140,12 @@ func NewUtility(ctx context.Context, clientType ClientType) (Utility, error) {
 	case CryptohomeProxyLegacyType:
 		proxy, err := NewCryptohomeProxyLegacy(ctx)
 		if err != nil {
-			return hwsecUtilityCryptohomeLegacy{}, err
+			return utilityCryptohomeLegacy{}, err
 		}
-		return hwsecUtilityCryptohomeLegacy{utilityCommon{ctx}, proxy}, nil
+		return utilityCryptohomeLegacy{utilityCommon{ctx}, proxy}, nil
 	case CryptohomeProxyNewType, DistributedModeProxyType:
 		return nil, errors.New("not implemented")
 	default:
 		return nil, errors.New("unrezognized client type")
 	}
-}
-
-// utilityCommon implements the common function shared across all
-// implementations of |Utility|.
-type utilityCommon struct {
-	ctx context.Context
-}
-
-func (utility utilityCommon) Sleep(millis int) error {
-	return testing.Sleep(utility.ctx, time.Duration(millis)*time.Millisecond)
 }
