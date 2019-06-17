@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "70308187_97e46f3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-17T01:28:21Z",
+      "side": 1,
+      "message": "Sorry for not being clear! Right, this case is not about errors, but I think the point of the recommendation is that it\u0027s easier to follow the logic if the \"primary\" flow is at the minimal indent level by returning early in case of irrelevant cases. A corollary of this is that, if a function is in the following form:\n\n func f() {\n   if condition {\n     ... some long processing ...\n     return ...\n   }\n   return ...\n }\n\nthen it might be clearer to transform it to:\n\n func f() {\n   if !condition {\n     return ...\n   }\n   ... some long processing ...\n   return ...\n }\n\nNote that in this particular case we might want to add support of other file types in the future, and then preferred code would be:\n\n func decompressTrace() {\n   switch filepath.Ext(traceFile) {\n   case \".bz2\":\n     ... run bunzip2 ...\n   case \".gz\":\n     ... run gzip ...\n   defalt:\n     return\n   }\n }\n\nand we can no longer apply the \"primary flow at the minimal indentation\" rule. But for this time only \".bz2\" is the supported format, so I think it still makes sense.\n\n\nThat said, I also agree this rule is not strictly contained in the CodeReviewComments recommendation, and is not a big deal anyway, so I\u0027m okay with the current way. Thanks!",
+      "parentUuid": "709c3b9a_26626fd9",
+      "range": {
+        "startLine": 146,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 39
+      },
+      "revId": "875d0533dca6377532eb6657d12fe45180d756eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07def8e0_6d275390",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
         "patchSetId": 4
