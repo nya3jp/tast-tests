@@ -8,6 +8,7 @@ package sysutil
 import (
 	"os/user"
 	"strconv"
+	"syscall"
 
 	"golang.org/x/sys/unix"
 
@@ -71,11 +72,19 @@ type Utsname struct {
 	Domainname string
 }
 
+<<<<<<< Updated upstream
+var unameFunc func(*syscall.Utsname) error = syscall.Uname
+
+// Uname is a wrapper of uname syscall. See man 2 uname.
+func Uname() (*Utsname, error) {
+	u := syscall.Utsname{}
+=======
 var unameFunc func(*unix.Utsname) error = unix.Uname
 
 // Uname is a wrapper of uname unix. See man 2 uname.
 func Uname() (*Utsname, error) {
 	u := unix.Utsname{}
+>>>>>>> Stashed changes
 	if err := unameFunc(&u); err != nil {
 		return nil, err
 	}
