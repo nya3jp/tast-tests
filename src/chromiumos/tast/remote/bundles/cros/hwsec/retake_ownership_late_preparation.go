@@ -1,0 +1,95 @@
+// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package hwsec
+
+import (
+	"bytes"
+	"context"
+	"time"
+
+	libhwsec "chromiumos/tast/common/hwsec"
+	"chromiumos/tast/errors"
+	libhwsecremote "chromiumos/tast/remote/hwsec"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func: RetakeOwnershipLatePreparation,
+		Desc: "Verifies that the TPM ownership can be cleared and taken",
+		Contacts: []string{
+			"cylai@chromium.org", // Nobody
+		},
+		SoftwareDeps: []string{"reboot", "tpm"},
+		Attr:         []string{"informational"},
+	})
+}
+
+func RetakeOwnershipLatePreparation(ctx context.Context, s *testing.State) {
+	s.Log("Start test with creating a helper and a utility")
+	helper, err := libhwsecremote.NewHelperRemote(s.DUT())
+	if err != nil {
+		s.Fatal("Helper creation error: ", err)
+	}
+	utility, err := libhwsec.NewUtility(ctx, &helper.Helper, libhwsec.CryptohomeBinaryType)
+	if err != nil {
+		s.Fatal("Utilty creation error: ", err)
+	}
+	s.Log("Start resetting TPM if needed")
+	if err := helper.EnsureTpmIsReset(ctx, utility); err != nil {
+		s.Fatal("Failed to ensure resetting TPM: ", err)
+	}
+	s.Log("TPM is confirmed to be reset")
+
+	if result, err := utility.IsPreparedForEnrollment(); err != nil {
+		s.Fatal("Cannot check if enrollment preparation is reset")
+	} else if result {
+		s.Fatal("Enrollment preparation is not reset after clearing ownership")
+	}
+	libhwsec.StopAttestation(ctx, &helper.Helper)
+
+	s.Log("Start taking ownership")
+	if err := libhwsec.EnsureTpmIsReady(ctx, utility, libhwsec.DefaultTakingOwnershipTimeout); err != nil {
+		s.Fatal("Failed to ensure ownership: ", err)
+	}
+	s.Log("Onwership is taken")
+
+	if passwd, err := utility.GetOwnerPassword(); err != nil {
+		s.Fatal("Failed to get owner password")
+	} else if len(passwd) != 20 {
+		s.Fatal("Ill-formed owner password")
+	}
+
+	s.Log("Start attestation service")
+	libhwsec.StartAttestation(ctx, &helper.Helper)
+
+	s.Log("Clearing owner password")
+	lastTime, _ := helper.RunShell(ctx, "stat -c %y /var/lib/tpm_manager/local_tpm_data")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// This hacky logic watches the file modification of the persistent tpm status for both
+		// monolithic and distributed models.
+		// Ignores error here; if it's because file doesn't exist we assume the local data has changed.
+		if err := utility.ClearOwnerPassword(); err != nil {
+			return err
+		}
+		newTime, _ := helper.RunShell(ctx, "stat -c %y /var/lib/tpm_manager/local_tpm_data")
+		if len(lastTime) > 0 && bytes.Equal(lastTime, newTime) {
+			return errors.New("no local data change")
+		}
+		lastTime = newTime
+		// For now, restarting cryptohome is necessary because we still use cryptohome binary.
+		if err := libhwsec.RestartCryptohome(ctx, &helper.Helper); err != nil {
+			return err
+		}
+		if passwd, err := utility.GetOwnerPassword(); err != nil {
+			return err
+		} else if len(passwd) != 0 {
+			return errors.New("Still have password")
+		}
+		return nil
+	}, &testing.PollOptions{Interval: 1000 * time.Millisecond, Timeout: time.Minute}); err != nil {
+		s.Fatal("Failed to wait for owner password to be cleared: ", err)
+	}
+}
