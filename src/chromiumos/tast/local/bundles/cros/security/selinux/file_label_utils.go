@@ -5,6 +5,7 @@
 package selinux
 
 import (
+	"context"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -90,7 +91,7 @@ func InvertFilterSkipFile(filter FileLabelCheckFilter) FileLabelCheckFilter {
 
 // checkFileContext takes a path and a expected, and return an error
 // if the context mismatch or unable to check context.
-func checkFileContext(path string, expected *regexp.Regexp) error {
+func checkFileContext(ctx context.Context, path string, expected *regexp.Regexp, log bool) error {
 	actual, err := selinux.FileLabel(path)
 	if err != nil {
 		// TODO(fqj): log disappeared file.
@@ -102,6 +103,9 @@ func checkFileContext(path string, expected *regexp.Regexp) error {
 	if !expected.MatchString(actual) {
 		return errors.Errorf("got %q; want %q", actual, expected)
 	}
+	if log {
+		testing.ContextLogf(ctx, "File %q has correct label %q", path, actual)
+	}
 	return nil
 }
 
@@ -111,7 +115,8 @@ func checkFileContext(path string, expected *regexp.Regexp) error {
 // If recursive is true, this function will be called recursively for every
 // subdirectory within path, unless the filter indicates the subdir should
 // be skipped.
-func CheckContext(s *testing.State, path string, expected *regexp.Regexp, recursive bool, filter FileLabelCheckFilter) {
+// If log is true, any check will be logged even it succeeds.
+func CheckContext(ctx context.Context, s *testing.State, path string, expected *regexp.Regexp, recursive bool, filter FileLabelCheckFilter, log bool) {
 	fi, err := os.Lstat(path)
 	if err != nil && !os.IsNotExist(err) {
 		s.Errorf("Failed to stat %v: %v", path, err)
@@ -121,7 +126,7 @@ func CheckContext(s *testing.State, path string, expected *regexp.Regexp, recurs
 	skipFile, skipSubdir := filter(path, fi)
 
 	if skipFile == Check {
-		if err = checkFileContext(path, expected); err != nil {
+		if err = checkFileContext(ctx, path, expected, log); err != nil {
 			s.Errorf("Failed file context check for %v: %v", path, err)
 		}
 	}
@@ -142,7 +147,7 @@ func CheckContext(s *testing.State, path string, expected *regexp.Regexp, recurs
 		}
 		for _, fi := range fis {
 			subpath := filepath.Join(path, fi.Name())
-			CheckContext(s, subpath, expected, recursive, filter)
+			CheckContext(ctx, s, subpath, expected, recursive, filter, log)
 		}
 	}
 }
