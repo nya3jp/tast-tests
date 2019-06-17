@@ -10,7 +10,6 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
-	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
 	"chromiumos/tast/testing"
 )
 
@@ -21,11 +20,11 @@ func init() {
 		Contacts:     []string{"johnylin@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome", caps.HWDecodeH264},
-		Data:         decode.DataFiles(videotype.H264Prof),
+		Data:         []string{decode.Test25FPSH264.Name, decode.Test25FPSH264.Name + ".json"},
 		Pre:          arc.Booted(),
 	})
 }
 
 func ARCDecodeAccelH264240P(ctx context.Context, s *testing.State) {
-	decode.RunAllARCVideoTests(ctx, s, s.PreValue().(arc.PreData).ARC, decode.Test25FPSH264)
+	decode.RunAllARCVideoTests(ctx, s, decode.Test25FPSH264.Name)
 }
