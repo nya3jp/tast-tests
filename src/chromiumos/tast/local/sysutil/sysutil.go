@@ -6,8 +6,11 @@
 package sysutil
 
 import (
+	"bytes"
 	"os/user"
 	"strconv"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/errors"
 )
@@ -46,4 +49,48 @@ func GetGID(group string) (uint32, error) {
 		return 0, errors.Wrapf(err, "failed to parse GID %q for group %q", g.Gid, group)
 	}
 	return uint32(gid), nil
+}
+
+// Utsname contains system information.
+type Utsname struct {
+	// Sysname is the operating system name (e.g., "Linux").
+	// Corresponds to `uname -s`.
+	Sysname string
+	// Nodename is the name within "some implementation-defined network".
+	// Corresponds to `uname -n`.
+	Nodename string
+	// Release is the operating system release (e.g., "2.6.28").
+	// Corresponds to `uname -r`.
+	Release string
+	// Version is the operating system version.
+	// Corresponds to `uname -v`.
+	Version string
+	// Machine is the hardware identifier (e.g., "x86_64").
+	// Corresponds to `uname -m`.
+	Machine string
+	// Domainname is the NIS or YP domain name. This is nonstandard GNU/Linux extension.
+	Domainname string
+}
+
+var unameFunc func(*unix.Utsname) error = unix.Uname
+
+// Uname is a wrapper of uname system call. See man 2 uname.
+func Uname() (*Utsname, error) {
+	u := unix.Utsname{}
+	if err := unameFunc(&u); err != nil {
+		return nil, err
+	}
+
+	convert := func(b []byte) string {
+		return string(bytes.TrimRight(b, "\x00"))
+	}
+
+	return &Utsname{
+		Sysname:    convert(u.Sysname[:]),
+		Nodename:   convert(u.Nodename[:]),
+		Release:    convert(u.Release[:]),
+		Version:    convert(u.Version[:]),
+		Machine:    convert(u.Machine[:]),
+		Domainname: convert(u.Domainname[:]),
+	}, nil
 }
