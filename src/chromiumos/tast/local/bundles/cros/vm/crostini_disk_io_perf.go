@@ -240,6 +240,7 @@ func CrostiniDiskIOPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to set up component: ", err)
 	}
+	defer vm.UnmountComponent(ctx)
 
 	s.Log("Creating default container")
 	cont, err := vm.CreateDefaultContainer(ctx, s.OutDir(), cr.User(), vm.StagingImageServer, "")

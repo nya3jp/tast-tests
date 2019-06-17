@@ -45,6 +45,7 @@ func CrostiniStartBasic(ctx context.Context, s *testing.State) {
 	if err := vm.MountArtifactComponent(ctx, artifactPath); err != nil {
 		s.Fatal("Failed to set up component: ", err)
 	}
+	defer vm.UnmountComponent(ctx)
 
 	s.Log("Creating default container")
 	cont, err := vm.CreateDefaultContainer(ctx, s.OutDir(), cr.User(), vm.Tarball, artifactPath)
