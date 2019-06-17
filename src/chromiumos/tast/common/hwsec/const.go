@@ -6,6 +6,8 @@ package hwsec
 
 import (
 	"time"
+
+	apb "chromiumos/system_api/attestation_proto"
 )
 
 // VAType indicates the type VA server, of which the possible value are default and test; see the const definition below.
@@ -51,4 +53,15 @@ const (
 	DefaultVA VAType = iota
 	// TestVA indicates the test VA server.
 	TestVA
+)
+
+const (
+	// DefaultCertProfile is the default cert profile we use when tesing.
+	DefaultCertProfile apb.CertificateProfile = apb.CertificateProfile_ENTERPRISE_USER_CERTIFICATE
+	// DefaultCertOrigin is the default value of the certificate origin.
+	DefaultCertOrigin string = ""
+	// DefaultCertLabel is the default label to identify the cert.
+	DefaultCertLabel string = "aaa"
+	// DefaultKeyPayload is the default key playload used for testing.
+	DefaultKeyPayload string = "payload"
 )
