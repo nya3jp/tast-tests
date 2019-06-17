@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4252627a_6afc3803",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_audio_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-06-17T17:23:32Z",
+      "side": 1,
+      "message": "FYI, we\u0027ll be refactoring this soon to get rid of this boilerplate and share a single VM/container for multiple tests.\n\nI think we can land this before that refactoring though as long as this remains informational. But we shouldn\u0027t promote to the CQ until we can reuse an existing container for multiple tests.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 4
+      },
+      "revId": "16bdb3f23b1de34b41209c0bc5369e2f60b52e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9bf4025d_4fe518ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_audio_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-06-17T17:23:32Z",
+      "side": 1,
+      "message": "Can you add this to the container image we use for testing? Then we won\u0027t have to install this when running the test, which could introduce flakiness.\n\nExample: https://crrev.com/c/1643837",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "16bdb3f23b1de34b41209c0bc5369e2f60b52e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
