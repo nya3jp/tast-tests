@@ -20,10 +20,10 @@ func init() {
 		Func: RetakeOwnership,
 		Desc: "Verifies that the TPM ownership can be cleared and taken",
 		Contacts: []string{
-			"cylai@chromium.org", // Nobody
+			"cylai@chromium.org", "cros-hwsec@google.com",
 		},
 		SoftwareDeps: []string{"reboot", "tpm"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 	})
 }
 
