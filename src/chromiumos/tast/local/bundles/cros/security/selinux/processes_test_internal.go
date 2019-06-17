@@ -50,6 +50,7 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State) {
 		{cmdline, "/usr/bin/periodic_scheduler", "cros_periodic_scheduler", twoProcs},
 		{cmdline, "/usr/share/cros/init/activate_date.sh", "cros_activate_date", zeroProcs},
 		{exe, "/opt/google/chrome/chrome", "cros_browser", zeroProcs}, // Only when browser exists
+		{exe, "/sbin/auditd", "cros_auditd", oneProc},                 // auditd must be running on SELinux boards
 		{exe, "/sbin/debugd", "cros_debugd", zeroProcs},
 		{exe, "/sbin/init", "cros_init", oneProc},
 		{exe, "/sbin/session_manager", "cros_session_manager", zeroProcs},
