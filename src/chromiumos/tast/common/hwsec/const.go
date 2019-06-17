@@ -28,6 +28,8 @@ const (
 	AttestationDBPath = "/mnt/stateful_partition/unencrypted/preserve/attestation.epb"
 	// TpmManagerLocalDataPath is the path of tpm_manager local data (only applicable for distributed model).
 	TpmManagerLocalDataPath = "/var/lib/tpm_manager/local_tpm_data"
+	// OwnerPasswordLength is the owner password length we set by our implementation.
+	OwnerPasswordLength = 20
 )
 
 const (
