@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e69c5a7e_7db0f93a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/ArcCameraOrientationTest.apk.external",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-17T02:16:58Z",
+      "side": 1,
+      "message": "I\u0027m wondering why it\u0027s so small. My simple app has 2312251 bytes. https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1646679",
+      "range": {
+        "startLine": 3,
+        "startChar": 10,
+        "endLine": 3,
+        "endChar": 15
+      },
+      "revId": "e5ec7e5d1c6429990a571499891c468b41266ac4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
