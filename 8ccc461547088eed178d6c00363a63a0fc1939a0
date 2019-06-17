@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ece29ad7_bffac353",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-17T00:57:25Z",
+      "side": 1,
+      "message": "not done? \"Go\" prefix wouldn\u0027t work, IIUC?",
+      "parentUuid": "714cdea7_5e59935a",
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e60a601_2499f743",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 2
@@ -418,6 +436,30 @@
       "side": 1,
       "message": "I looked at the link, but I think there\u0027s some information missing. If you use arc.Booted precondition, the example doesn\u0027t show how to get the Chrome object to create a TestAPIConn. I couldn\u0027t find an example in tast-tests that uses arc.Booted and TestAPIConn. Suggestions?",
       "parentUuid": "f9fff3f9_fd0c6348",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 70
+      },
+      "revId": "8ccc461547088eed178d6c00363a63a0fc1939a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "281d8b12_fecbd458",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-17T00:57:25Z",
+      "side": 1,
+      "message": "You can call TestAPIConn for Chrome instance.\nExample:\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/ef2adf1050e887a5c5fe5ce40d0f5533c3922769/src/chromiumos/tast/local/bundles/cros/arc/pip.go#56",
+      "parentUuid": "1a04e5de_5268fcec",
       "range": {
         "startLine": 31,
         "startChar": 0,
