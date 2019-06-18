@@ -1,0 +1,272 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "140a31e4_7a30f1e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/encode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-18T14:31:24Z",
+      "side": 1,
+      "message": "huge nit/optional: I\u0027d recommend \"tearDownBenchmark\" (SetUp and TearDown are often used as pair specifically in testing context, AFAIK).\n\nOr, \"cleanUpBenchmark\" (Uppercase U), as it\u0027s function name, so expected to start with verb. (cleanup is noun clean up is verb, IIUC)",
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfba5029_63ff8477",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/encode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-18T14:31:24Z",
+      "side": 1,
+      "message": "You can just overwrite ctx here.\nIt will help you to avoid accidental original ctx use in the following code. Ditto for below.",
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c14d2e8_9e738dca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-18T14:31:24Z",
+      "side": 1,
+      "message": "optional: IIUC, you can migrate this option to measureDuration. (i.e. if measureDuration !\u003d 0, measure the CPU).\n\nAt the moment, it is mandatory to set the duration on CPU measurement, right?",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 16
+      },
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "106544b0_78e2a4df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-18T14:31:24Z",
+      "side": 1,
+      "message": "huge nit: \"Don\u0027\" -\u003e \"Don\u0027t\" or \"Do not\" Ditto for below.",
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a889c27_626ec9ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-18T14:31:24Z",
+      "side": 1,
+      "message": "cpuLogPath is fixed, so second (or later) measurement overwrites the previous result.\nIt is not the regression of this CL, but nice to be fixed as you\u0027re actually editing this part.\nIt\u0027s ok if you\u0027d like to fix in another CL I think, though.",
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f53670b_2083ad4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-18T14:31:24Z",
+      "side": 1,
+      "message": "nit/style: \"failed to ...\"\n\ncould you start with small letter for formatting error.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting",
+      "range": {
+        "startLine": 249,
+        "startChar": 28,
+        "endLine": 249,
+        "endChar": 29
+      },
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7847c459_7ff5607e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-18T14:31:24Z",
+      "side": 1,
+      "message": "You\u0027d need to shorten ctx to secure clean up?",
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aff6cc9b_a937e69a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-18T14:31:24Z",
+      "side": 1,
+      "message": "Do you need shorten ctx to secure tearing down time?",
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b0443e2_bb94af84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-18T14:31:24Z",
+      "side": 1,
+      "message": "style: you can use anonymous function here.\n\ndefer func() {\n  ...\n}()",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 27
+      },
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0497c098_0988a4e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-18T14:31:24Z",
+      "side": 1,
+      "message": "nit/style: \"Failed to wait ...\"",
+      "range": {
+        "startLine": 52,
+        "startChar": 29,
+        "endLine": 52,
+        "endChar": 35
+      },
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77c86229_09961427",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-18T14:31:24Z",
+      "side": 1,
+      "message": "Ditto for overwriting ctx here, too.",
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2894ea81_22bf88ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-18T14:31:24Z",
+      "side": 1,
+      "message": "ditto: I\u0027d recommend tearDown",
+      "range": {
+        "startLine": 79,
+        "startChar": 42,
+        "endLine": 79,
+        "endChar": 46
+      },
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abe32089_9f460f8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-18T14:31:24Z",
+      "side": 1,
+      "message": "This looks unusual, since callers have to run the clean up method even if this method returns error.\nDo you think the original code didn\u0027t work? If so, could you describe the comment in details explicitly?",
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4eaab0a_8bd84486",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-18T14:31:24Z",
+      "side": 1,
+      "message": "Do you need to secure clean up time here, too?",
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
