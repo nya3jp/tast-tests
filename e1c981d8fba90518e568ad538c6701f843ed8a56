@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f1ac42ef_3491d0e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/module_locking.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-18T02:24:43Z",
+      "side": 1,
+      "message": "Removed TrimSpace. I guess values returned from uname don\u0027t have surrounding spaces, but anyways to be on the safe side I added TrimSpace in Uname.",
+      "parentUuid": "81f0f44a_96a70359",
+      "revId": "e1c981d8fba90518e568ad538c6701f843ed8a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "463e46f3_8a8aa6a1",
         "filename": "src/chromiumos/tast/local/sysutil/sysutil_test.go",
         "patchSetId": 6
@@ -33,6 +51,24 @@
       "revId": "e1c981d8fba90518e568ad538c6701f843ed8a56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60ffe305_38e4fca2",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-18T02:24:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "463e46f3_8a8aa6a1",
+      "revId": "e1c981d8fba90518e568ad538c6701f843ed8a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
