@@ -7,7 +7,6 @@ package cpu
 
 import (
 	"context"
-	"fmt"
 	"io/ioutil"
 	"path/filepath"
 	"syscall"
@@ -26,71 +25,68 @@ import (
 // The caller is responsible for calling Wait.
 type StartProcFunc func() (*testexec.Cmd, error)
 
-// MeasureProcessCPU calls runCmdAsync and measures CPU usage before killing the process.
-func MeasureProcessCPU(ctx context.Context, runCmdAsync StartProcFunc, cpuLogPath string) error {
+// MeasureProcessCPU calls runCmdAsync and measures CPU usage before killing the
+// process. The average CPU usage over all cores during the measurement duration
+// is returned as a percentage.
+func MeasureProcessCPU(ctx context.Context, runCmdAsync StartProcFunc, duration time.Duration) (float64, error) {
 	const (
-		stabilize = 1 * time.Second  // time to wait for CPU to stabilize after launching proc.
-		measure   = 10 * time.Second // duration for measuring CPU usage.
+		stabilize   = 1 * time.Second  // time to wait for CPU to stabilize after launching proc.
+		cleanupTime = 10 * time.Second // time reserved for cleanup after measuring.
 	)
 
-	shortCtx, cleanupBenchmark, err := SetUpBenchmark(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to set up CPU benchmark mode")
-	}
-	defer cleanupBenchmark()
-
+	// Start the process asynchronous by calling the provided startup function.
 	cmd, err := runCmdAsync()
 	if err != nil {
-		return errors.Wrap(err, "failed to run binary")
+		return 0.0, errors.Wrap(err, "failed to run binary")
 	}
 
-	testing.ContextLogf(shortCtx, "Sleeping %v to wait for CPU usage to stabilize", stabilize.Round(time.Second))
-	if err := testing.Sleep(shortCtx, stabilize); err != nil {
-		return errors.Wrap(err, "failed waiting for CPU usage to stabilize")
-	}
-
-	cpuUsage, err := MeasureUsage(shortCtx, measure)
-	if err != nil {
-		return errors.Wrap(err, "failed to measure CPU usage on running command")
-	}
-	str := fmt.Sprintf("%f", cpuUsage)
-	if err := ioutil.WriteFile(cpuLogPath, []byte(str), 0644); err != nil {
-		return err
-	}
-
-	// We got our measurements, now kill the process. After killing a process we
-	// still need to wait for all resources to get released.
-	if err := cmd.Kill(); err != nil {
-		return errors.Wrap(err, "failed to kill the command")
-	}
-	if err := cmd.Wait(); err != nil {
-		ws, _ := testexec.GetWaitStatus(err)
-		if !ws.Signaled() || ws.Signal() != syscall.SIGKILL {
-			return errors.Wrap(err, "failed waiting the command to exit")
+	// Kill and clean up the process upon exiting the function.
+	defer func() {
+		if err := cmd.Kill(); err != nil {
+			testing.ContextLog(ctx, "Failed to kill process: ", err)
 		}
+		// After killing the process we still need to wait for all resources to get released.
+		if err := cmd.Wait(); err != nil {
+			ws, ok := testexec.GetWaitStatus(err)
+			if !ok || !ws.Signaled() || ws.Signal() != syscall.SIGKILL {
+				testing.ContextLog(ctx, "Failed waiting for the command to exit: ", err)
+			}
+		}
+	}()
+
+	// Use a shorter context to leave time for cleanup upon failure.
+	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
+	defer cancel()
+
+	testing.ContextLogf(ctx, "Sleeping %v to wait for CPU usage to stabilize", stabilize.Round(time.Second))
+	if err := testing.Sleep(ctx, stabilize); err != nil {
+		return 0.0, errors.Wrap(err, "failed waiting for CPU usage to stabilize")
 	}
 
-	return nil
+	testing.ContextLogf(ctx, "Sleeping %v to measure CPU usage", duration.Round(time.Second))
+	cpuUsage, err := MeasureUsage(ctx, duration)
+	if err != nil {
+		return 0.0, errors.Wrap(err, "failed to measure CPU usage on running command")
+	}
+
+	return cpuUsage, nil
 }
 
 // SetUpBenchmark performs setup needed for running benchmarks. It disables CPU frequency scaling
-// and thermal throttling, and waits for the CPU to become idle. The returned shortCtx should be
-// used to perform testing, to leave time for cleanup operations. A deferred call to the returned
-// undo function should be scheduled by the caller if err is non-nil.
-func SetUpBenchmark(ctx context.Context) (shortCtx context.Context, undo func(), err error) {
+// and thermal throttling, and waits for the CPU to become idle. A deferred call to the returned
+// cleanUp function should be scheduled by the caller if err is non-nil.
+func SetUpBenchmark(ctx context.Context) (cleanUp func(ctx context.Context), err error) {
 	const (
 		waitIdleCPUTimeout  = 30 * time.Second // time to wait for CPU to be idle.
 		idleCPUUsagePercent = 10.0             // percent below which CPU is idle.
-		cleanupTime         = 10 * time.Second // time reserved for cleanup after running test.
+		cleanupTime         = 10 * time.Second // time reserved for cleanup on failure.
 	)
 
-	var restoreScaling func() error
-	var cancel func()
+	var restoreScaling func(ctx context.Context) error
 	var restoreThrottling func(ctx context.Context) error
-	undo = func() {
-		cancel()
+	cleanUp = func(ctx context.Context) {
 		if restoreScaling != nil {
-			if err := restoreScaling(); err != nil {
+			if err := restoreScaling(ctx); err != nil {
 				testing.ContextLog(ctx, "Failed to restore CPU frequency scaling to original values: ", err)
 			}
 		}
@@ -99,34 +95,35 @@ func SetUpBenchmark(ctx context.Context) (shortCtx context.Context, undo func(),
 		}
 	}
 
-	// Run the undo function automatically if we encounter an error.
-	cleanup := undo
+	// Run the cleanUp function automatically if we encounter an error.
+	doCleanup := cleanUp
 	defer func() {
-		if cleanup != nil {
-			cleanup()
+		if doCleanup != nil {
+			doCleanup(ctx)
 		}
 	}()
 
 	// Run all non-cleanup operations with a shorter context. This ensures
 	// thermal throttling and CPU frequency scaling get re-enabled, even when
 	// test execution exceeds the maximum time allowed.
-	shortCtx, cancel = ctxutil.Shorten(ctx, cleanupTime)
+	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
+	defer cancel()
 
 	// CPU frequency scaling and thermal throttling might influence our test results.
-	if restoreScaling, err = DisableCPUFrequencyScaling(ctx); err != nil {
-		return shortCtx, nil, errors.Wrap(err, "failed to disable CPU frequency scaling")
+	if restoreScaling, err = disableCPUFrequencyScaling(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to disable CPU frequency scaling")
 	}
-	if restoreThrottling, err = DisableThermalThrottling(shortCtx); err != nil {
-		return shortCtx, nil, errors.Wrap(err, "failed to disable thermal throttling")
-	}
-
-	if err = WaitForIdle(shortCtx, waitIdleCPUTimeout, idleCPUUsagePercent); err != nil {
-		return shortCtx, nil, errors.Wrap(err, "failed waiting for CPU to become idle")
+	if restoreThrottling, err = DisableThermalThrottling(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to disable thermal throttling")
 	}
 
-	// Disarm running the undo function now that we expect the caller to do it.
-	cleanup = nil
-	return shortCtx, undo, nil
+	if err = WaitForIdle(ctx, waitIdleCPUTimeout, idleCPUUsagePercent); err != nil {
+		return nil, errors.Wrap(err, "failed waiting for CPU to become idle")
+	}
+
+	// Disarm running the cleanUp function now that we expect the caller to do it.
+	doCleanup = nil
+	return cleanUp, nil
 }
 
 // WaitForIdle waits until CPU is idle, or timeout is elapsed.
@@ -215,15 +212,15 @@ type cpuConfigEntry struct {
 //  - Some Intel-based platforms (e.g. Eve and Nocturne) ignore the values set
 //    in the scaling_governor, and instead use the intel_pstate application to
 //    control CPU frequency scaling.
-func DisableCPUFrequencyScaling(ctx context.Context) (func() error, error) {
+func disableCPUFrequencyScaling(ctx context.Context) (func(ctx context.Context) error, error) {
 	optimizedConfig := make(map[string]cpuConfigEntry)
 	for glob, config := range map[string]cpuConfigEntry{
-		"/sys/devices/system/cpu/cpu[0-9]*/cpufreq/scaling_governor": {"performance", false},
-		"/sys/class/devfreq/devfreq[0-9]*/governor":                  {"performance", false},
+		"/sys/devices/system/cpu/cpu[0-9]*/cpufreq/scaling_governor": {"performance", true},
+		"/sys/class/devfreq/devfreq[0-9]*/governor":                  {"performance", true},
 		// crbug.com/938729: BIOS settings might prevent us from overwriting intel_pstate/no_turbo.
 		"/sys/devices/system/cpu/intel_pstate/no_turbo":     {"1", true},
-		"/sys/devices/system/cpu/intel_pstate/min_perf_pct": {"100", false},
-		"/sys/devices/system/cpu/intel_pstate/max_perf_pct": {"100", false},
+		"/sys/devices/system/cpu/intel_pstate/min_perf_pct": {"100", true},
+		"/sys/devices/system/cpu/intel_pstate/max_perf_pct": {"100", true},
 	} {
 		paths, err := filepath.Glob(glob)
 		if err != nil {
@@ -235,12 +232,12 @@ func DisableCPUFrequencyScaling(ctx context.Context) (func() error, error) {
 	}
 
 	origConfig, err := applyConfig(ctx, optimizedConfig)
-	undo := func() error {
+	undo := func(ctx context.Context) error {
 		_, err := applyConfig(ctx, origConfig)
 		return err
 	}
 	if err != nil {
-		undo()
+		undo(ctx)
 		return nil, err
 	}
 	return undo, nil
@@ -250,7 +247,8 @@ func DisableCPUFrequencyScaling(ctx context.Context) (func() error, error) {
 // path-value pairs needs to be provided. A map of the original path-value pairs
 // is returned to allow restoring the original config. If ignoreErrors is true
 // for a config entry we won't return an error upon failure, but will only show
-// a warning.
+// a warning. The provided context will only be used for logging, so the config
+// will even be applied upon timeout.
 func applyConfig(ctx context.Context, cpuConfig map[string]cpuConfigEntry) (map[string]cpuConfigEntry, error) {
 	origConfig := make(map[string]cpuConfigEntry)
 	for path, config := range cpuConfig {
