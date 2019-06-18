@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81f0f44a_96a70359",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/module_locking.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-06-18T02:02:11Z",
+      "side": 1,
+      "message": "sysutil.Uname() should go ahead and trim spaces on all the fields as needed?  I think most use cases would require that (e.g. u.Release \u003d\u003d x)",
+      "revId": "e1c981d8fba90518e568ad538c6701f843ed8a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "463e46f3_8a8aa6a1",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-06-18T02:02:11Z",
+      "side": 1,
+      "message": "nit: %d-th entry: want",
+      "revId": "e1c981d8fba90518e568ad538c6701f843ed8a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
