@@ -14,6 +14,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	// TODO(crbug.com/963772) Move libraries in video to camera or media folder.
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
@@ -47,13 +48,19 @@ func EncodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 		testFilename = "coast_3840x2160_P420.yuv"
 		// Suffix added to the test filename when running JPEG encode tests.
 		testFileSuffix = ":3840x2160"
+		// time reserved for cleanup.
+		cleanupTime = 10 * time.Second
 	)
 
-	shortCtx, cleanupBenchmark, err := cpu.SetUpBenchmark(ctx)
+	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
 	if err != nil {
 		s.Fatal("Failed to set up benchmark mode: ", err)
 	}
-	defer cleanupBenchmark()
+	defer cleanUpBenchmark(ctx)
+
+	// Reserve time to perform cleanup at the end of the test.
+	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
+	defer cancel()
 
 	// Execute the test binary.
 	s.Log("Measuring JPEG encode performance")
@@ -65,7 +72,7 @@ func EncodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 		"--yuv_filenames=" + s.DataPath(testFilename) + testFileSuffix,
 	}
 	const exec = "jpeg_encode_accelerator_unittest"
-	if ts, err := bintest.Run(shortCtx, exec, args, s.OutDir()); err != nil {
+	if ts, err := bintest.Run(ctx, exec, args, s.OutDir()); err != nil {
 		s.Errorf("Failed to run %v: %v", exec, err)
 		for _, t := range ts {
 			s.Error(t, " failed")
