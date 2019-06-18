@@ -54,6 +54,12 @@ const (
 
 var supportedDevModes []devMode = []devMode{devModeAP, devModeIBSS,
 	devModeMonitor, devModeMeshPoint, devModeStation}
+type Band struct {
+	Num int
+	Frequencies []int
+	FrequencyFlags map[int]string
+	McsIndicies []int
+}
 
 // bssData contains contents pertaining to a BSS response.
 type bssData struct {
@@ -69,6 +75,13 @@ type channelConfig struct {
 	number, freq, width, center1Freq int
 }
 
+type NetDev struct {
+	phy, ifName, ifType string
+}
+
+type Phy struct {
+	Name, Bands, Modes,Commands,Features,MaxScanSSIDs, AvailTXAntennas, AvailRXAntennas, SupportsSettingAntennaMask, SupportVHT
+}
 // timedScanData contains the BSS responses from an `iw scan` and its execution time.
 type timedScanData struct {
 	Time    float64
@@ -302,19 +315,6 @@ func (iwr Runner) disconnectStation(iface string) {
 	}
 }
 
-//func (iwr Runner) getInterface(iface string) Interfaces {
-//	matchingInterfaces := []Interfaces{}        // TODO
-//	for _, val := range iwr.listInterfaces() { //TODO
-//		if val.irName == iface {
-//			matchingInterfaces = append(matchingInterfaces, val)
-//		}
-//	}
-//	if len(matchingInterfaces) != 1 {
-//		iwr.s.Fatal(fmt.Sprintf("Could not find interface named %s", iface))
-//	}
-//	return matchingInterfaces[0]
-//}
-
 func (iwr Runner) getLinkValue(iface string, iwLinkKey string) string {
 	out, err := iwr.Run(iwr.ctx, fmt.Sprintf("%s dev %s link", iwr.iwCommand, iface))
 	if status, _ := testexec.GetWaitStatus(err); int(status) != 0 {
@@ -455,6 +455,9 @@ func (iwr Runner) getFragmentationThreshold(phy string) int {
 	for _, line := range strings.Split(out, "\n") {
 		if r.MatchString(line) {
 			matchGroup := r.FindStringSubmatch(line)
+			if len(matchGroup) != 2 {
+				iwr.s.Fatal("Unexpected input when parsing thresh.")
+			}
 			thresh, err := strconv.Atoi(matchGroup[1])
 			if err != nil {
 				iwr.s.Fatal("Could not parse threshold.")
@@ -466,13 +469,234 @@ func (iwr Runner) getFragmentationThreshold(phy string) int {
 	return 0
 }
 
-//func listInterfaces//TODO
-//func listPhys//TODO
-//func (iwr Runner) waitForScanResults
-//func (iwr Runner) waitForLink
+func (iwr Runner) NewNetDev(phyMatch string, dataMatch string) *NetDev {
+	var phy, ifName, ifType string
+	// PHY handling
+	phyMatch := regexp.MustCompile(`phy#([0-9]+)`)
+	matchGroup := phyMatch.FindStringSubmatch(phyMatch)
+	if len(matchGroup) != 2 {
+		iwr.s.Fatal("Unexpected input when parsing phy.")
+	}
+	phy := matchGroup[1]
+
+	// ifName handling
+	ifNameMatch := regexp.MustCompile(`[\s]*Interface (.*)`)
+	matchGroup = ifNameMatch.FindStringSubmatch(dataMatch)
+	if len(matchGroup) != 2 {
+		iwr.s.Fatal("Unexpected input when parsing ifName.")
+	}
+	ifName = matchGroup[1]
+
+	// ifType handling
+	ifTypeMatch := regexp.MustCompile(`[\s]*type ([a-zA-Z]+)`)
+	matchGroup = ifTypeMatch.FindStringSubmatch(dataMatch)
+	if len(matchGroup) != 2 {
+		iwr.s.Fatal("Unexpected input when parsing ifType.")
+	}
+	ifType = matchGroup[1]
+	return &NetDev{phy, ifName, ifType}
+}
+
+func (iwr Runner) listInterfaces() []*NetDev {
+	out, err := iwr.Run(iwr.ctx, fmt.Sprintf("%s dev", iwr.iwCommand))
+	if err != nil {
+		status, _ := testexec.GetWaitStatus(err)
+		iwr.s.Fatal(fmt.Sprintf("listInterfaces failed with error code %d.", int(status)))
+	}
+	interfaces := []*NetDev{}
+	r := regexp.MustCompile(`phy#([0-9]+)`)
+	matches := r.FindAllString(out, -1)
+	splits := r.Split(out, -1)
+	if len(splits) != len(matches)+1 {
+		iwr.s.Fatal("Unexpected number of matches")
+	}
+	for i, m := range matches {
+		interfaces = append(interfaces, iwr.NewNetDev(m, splits[i+1]))
+	}
+	return interfaces
+}
+
+func (iwr Runner) getInterface(iface string) *NetDev {
+	matchingInterfaces := []*NetDev
+	for _, val := range iwr.listInterfaces() {
+		if val.ifName == iface {
+			matchingInterfaces = append(matchingInterfaces, val)
+		}
+	}
+	if len(matchingInterfaces) != 1 {
+		iwr.s.Fatal(fmt.Sprintf("Could not find interface named %s", iface))
+	}
+	return matchingInterfaces[0]
+}
+
+func (iwr Runner) frequencySupported(frequency int) {
+	phys := iwr.listPhys()
+	for _, phy := range phys {
+		for _, band := range bands {
+			for _, bandFreq := range band.frequencies {
+				if frequency == bandFreq {
+					return true
+				}
+			}
+		}
+	}
+	return false
+}
+func (iwr Runner) NewPhy(phyMatch string, dataMatch string) *Phy {
+	var  name string, bands, modes, commands, features, maxScanSSIDs, availTXAntennas, availRXAntennas, supportsSettingAntennaMask, supportVHT
+	currentSection := ""
+	currentBand :=  Band{}
+	phyModes := []string
+	phyCommands := []string
+	phyFeatures := []string
+	rxAntennas := []int
+	txAntennas := []int
+	mcsIndices := []int
+	// PHY handling
+	nameMatch := regexp.MustCompile(`Wiphy (.*)`)
+	matchGroup := phyMatch.FindStringSubmatch(phyMatch)
+	if len(matchGroup) != 2 {
+		iwr.s.Fatal("Unexpected input when parsing name.")
+	}
+	name := matchGroup[1]
+
+	// Current Section handling
+	sectionMatch := regexp.MustCompile(`\s*(\w.*):\s*$`)
+	matchGroup = sectionMatch.FindStringSubmatch(dataMatch)
+	if len(matchGroup) != 2 {
+		iwr.s.Fatal("Could not find section when parsing data")
+	}
+	currentSection = matchGroup[1]
+		
+	// Band handling
+	bandMatch := regexp.MustCompile(`Band (\d+)`)
+	matchGroup = bandMatch.FindStringSubmatch(currentSection)
+	if len(matchGroup) != 2 {
+		iwr.s.Fatal("Unexpected input when parsing band.")
+	}
+	num, err := strconv.Atoi(matchGroup[1])
+	if err != nil {
+		iwr.s.Fatal("Could not convert num to string")
+	currentBand = Band{num, []int{}, make(map[int]string), []int{}}
+	
+	// Max Scan SSIDs handling
+	maxScanSSIDsMatch :=  regexp.MustCompile(`\s*max # scan SSIDs: (\d+)`)
+	matchGroup = maxScanSSIDsMatch.FindStringSubmatch(dataMatch)
+	if len(matchGroup) != 2 {
+		iwr.s.Fatal("Could not find SSID when parsing data.")
+	}
+	maxScanSSIDs = matchGroup[1]
+
+	// Phy modes handling
+	if currentSection == "Supported interface modes" && name != "" {
+		modeMatch := regexp.MustCompile(`\* (\w+)`)
+		matchGroups = modeMatch.FindAllStringSubmatch(dataMatch, -1)
+		for _, matchGroup : range matchGroups {
+			if len(matchGroup) != 2 {
+				iwr.s.Fatal("Unexpected input when parsing phy modes.")
+			}
+			phyModes = append(phyModes, matchGroup[1])
+		}
+	}
+	// Phy commands handling
+	if currentSection == "Supported commands" && name != "" {
+		commandsMatch := regexp.MustCompile(`\* (\w+)`)
+		matchGroups = commandsMatch.FindAllStringSubmatch(dataMatch, -1)
+		for _, matchGroup : range matchGroups {
+			if len(matchGroup) != 2 {
+				iwr.s.Fatal("Unexpected input when parsing phy commands.")
+			}
+			phyCommands = append(phyCommands, matchGroup[1])
+		}
+
+	}
+
+	// VHT Support handling
+	if currentSection != "" && strings.HasPrefix(currentSection, "VHT Capabilities") {
+		supportVHT = true
+	}
+
+	// Antennae handling	
+	availAntennaMatch := regexp.MustCompile(`\s*Available Antennas: TX (\S+) RX (\S+)`)
+	matchGroups = availAntennaMatch.FindAllStringSubmatch(dataMatch, -1)
+	for _, matchGroup : range matchGroups {
+		if len(matchGroup) != 3 {
+			iwr.s.Fatal("Unexpected input when parsing antennas.")
+		}
+		txAntenna, err := strconv.Atoi(matchGroup[1])
+		if err != nil {
+			iwr.s.Fatal("Could not convert txAntenna to int.")
+		}
+		rxAntenna, err := strconv.Atoi(matchGroup[2])
+		if err != nil {
+			iwr.s.Fatal("Could not convert rxAntenna to int.")
+		}
+		txAntennas = append(txAntennas, txAntenna)
+		rxAntennas = append(rxAntennas, rxAntenna)
+	}
+
+	// Device Support handling
+	deviceSupportMatch := regexp.MustCompile(`\s*Device supports (.*)\.`)
+	matchGroups = deviceSupportMatch.FindAllStringSubmatch(dataMatch, -1)
+	for _, matchGroup : range matchGroups {
+		if len(matchGroup) != 2 {
+			iwr.s.Fatal("Unexpected input when parsing device support.")
+		}
+		deviceSupport = append(deviceSupport, matchGroup[1])
+	}
+
+	// Channel Info handling
+	chanInfoMatch := regexp.MustCompile(`?P<frequency>\d+) MHz (?P<chan_num>\[\d+\])(?: \((?P<tx_power_limit>[0-9.]+ dBm)\))?(?: \((?P<flags>[a-zA-Z, ]+)\))?`)
+	matchGroup = chanInfoMatch. //TODO
+
+
+	// Rate handling
+	rateMatch := regexp.MustCompile(`HT TX/RX MCS rate indexes supported: .*`)
+	matchGroups = rateMatch.FindAllStringSubmatch(dataMatch, -1)
+	for _, matchGroup : range matchGroups {
+		if len(matchGroup) != 2 {
+			iwr.s.Fatal("Unexpected input when parsing rate.")
+		}
+		rateStr := strings.TrimSpace(strings.Split(matchGroup[1],":")[1])
+		for _, piece := strings.Split(rateStr,",") {
+			if strings.Contains(piece,"-") {
+				res := strings.split("-")	
+				if len(res) != 2 {
+					iwr.s.Fatal("Unexpected number of dashes in token.")
+				}
+				begin, _:= strconv.Atoi(res[0])
+				end, _:= strconv.Atoi(res[1])
+				for i:= begin; i < end +1; i++ {
+					mcsIndices = append(mcsIndices, i)
+				}
+
+			} else {
+				val, _ = strconv.Atoi(piece)
+				mcsIndices = append(mcsIndices,val)
+			}
+		}
+	}
+}
+
+func (iwr Runner) listPhys() []*Phy {
+	out, err := iwr.Run(iwr.ctx, fmt.Sprintf("%s list", iwr.iwCommand))
+	if err != nil {
+		status, _ := testexec.GetWaitStatus(err)
+		iwr.s.Fatal(fmt.Sprintf("listPhys failed with error code %d.", int(status)))
+	}
+	phys := []*Phy{}
+	r := regexp.MustCompile(`Wiphy (.*)`)
+	matches := r.FindAllString(out, -1)
+	splits := r.Split(out, -1)
+	if len(splits) != len(matches)+1 {
+		iwr.s.Fatal("Unexpected number of matches")
+	}
+	for i, m := range matches {
+		phys = append(phys, iwr.NewNetDev(m, splits[i+1]))
+	}
+	return phys
+}
 //func getStationDump(iface string) ??{
 //TODO
 //}
-//func (iwr Runner) frequencySupported(frequency int) {
-//	phys := iwr.listPhys()
-//}
+
