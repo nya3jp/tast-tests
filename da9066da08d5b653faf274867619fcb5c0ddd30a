@@ -16,6 +16,24 @@
       "revId": "da9066da08d5b653faf274867619fcb5c0ddd30a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4593f08_f4869115",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-18T08:15:52Z",
+      "side": 1,
+      "message": "Thanks for the excellent suggestion. There is some code in the cpu.go package to measure CPU usage of a process, but unfortunately it\u0027s a bit messy and hard to use (e.g. writes cpu usage to a file instead of returning it). I was planning on doing a cleanup pass after submitting this CL, but decided to do it first. I applied your suggestion to the MeasureProcessCPU function in another CL.",
+      "parentUuid": "8862206a_ffa012e5",
+      "revId": "da9066da08d5b653faf274867619fcb5c0ddd30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
