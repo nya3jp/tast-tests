@@ -94,6 +94,29 @@
     },
     {
       "key": {
+        "uuid": "360c8438_cbb6f423",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-18T15:22:56Z",
+      "side": 1,
+      "message": "style: as you\u0027re here and editing this line, could you inline the cmd creation?\n\nif err :\u003d testexec.CommandContext(...).Run(testexec.DumpLogOnError); err !\u003d nil {\n  return \"\", errors.Wrap(err, ...)\n}",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 18
+      },
+      "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d8280b7_a40f46a3",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
         "patchSetId": 1
@@ -111,6 +134,23 @@
         "endLine": 200,
         "endChar": 16
       },
+      "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffbf80a7_2b80f0c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-18T15:22:56Z",
+      "side": 1,
+      "message": "style: Ditto.\n\nif err :\u003d testexec.CommandContext(ctx, ...).Run(testexec.DumpLogOnError); err !\u003d nil {\n  ...\n}",
       "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -156,6 +196,75 @@
         "startChar": 31,
         "endLine": 218,
         "endChar": 36
+      },
+      "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a01b915_12b1b36f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-18T15:22:56Z",
+      "side": 1,
+      "message": "Huge nit: \"image.\" (trailing period to complete the sentence).",
+      "range": {
+        "startLine": 298,
+        "startChar": 75,
+        "endLine": 298,
+        "endChar": 80
+      },
+      "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f116f2e_cbbd765f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-18T15:22:56Z",
+      "side": 1,
+      "message": "Clar: so you made two changes;\n- using --force --retry options.\n- Using randomized file name for the image.\n\nWhich contributed the stability? Or, do we actually need both?",
+      "range": {
+        "startLine": 299,
+        "startChar": 75,
+        "endLine": 300,
+        "endChar": 65
+      },
+      "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb1c0c57_6ffda606",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-18T15:22:56Z",
+      "side": 1,
+      "message": "nit: to concat three ore more tokens, fmt.Sprintf(\"%s_%s\", filepath.Base(dir), name)",
+      "range": {
+        "startLine": 301,
+        "startChar": 37,
+        "endLine": 301,
+        "endChar": 64
       },
       "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
