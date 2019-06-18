@@ -11,6 +11,7 @@ import (
 	"syscall"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/video/lib/binsetup"
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
 	"chromiumos/tast/local/bundles/cros/video/lib/cpu"
@@ -60,6 +61,8 @@ func DecodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 		hwFilter = "JpegDecodeAcceleratorTest.PerfJDA"
 		// Number of JPEG decodes, needs to be high enough to run for measurement duration.
 		perfJPEGDecodeTimes = 10000
+		// time reserved for cleanup.
+		cleanupTime = 10 * time.Second
 	)
 
 	// Move all files required by the JPEG decode test to a temp dir, as
@@ -67,11 +70,15 @@ func DecodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 	tempDir := binsetup.CreateTempDataDir(s, "DecodeAccelJPEGPerf.tast.", jpegPerfTestFiles)
 	defer os.RemoveAll(tempDir)
 
-	shortCtx, cleanupBenchmark, err := cpu.SetUpBenchmark(ctx)
+	cleanupBenchmark, err := cpu.SetUpBenchmark(ctx)
 	if err != nil {
 		s.Fatal("Failed to set up benchmark mode: ", err)
 	}
-	defer cleanupBenchmark()
+	defer cleanupBenchmark(ctx)
+
+	// Reserve time to perform cleanup at the end of the test.
+	shortCtx, cancel := ctxutil.Shorten(ctx, cleanupTime)
+	defer cancel()
 
 	s.Log("Measuring SW JPEG decode performance")
 	cpuUsageSW := runJPEGPerfBenchmark(shortCtx, s, tempDir, stabilizationDuration,
