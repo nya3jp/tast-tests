@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c956bcf0_523842d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-18T14:00:22Z",
+      "side": 1,
+      "message": "huge nit: volumes",
+      "range": {
+        "startLine": 9,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19f9aa1d_c5d8b383",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-18T14:00:22Z",
+      "side": 1,
+      "message": "huge nit: shows",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c20eedb1_5684b1c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-18T14:00:22Z",
+      "side": 1,
+      "message": "How about\nif cmd.Run() \u003d\u003d nil {",
+      "range": {
+        "startLine": 188,
+        "startChar": 11,
+        "endLine": 188,
+        "endChar": 14
+      },
+      "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01be8200_efc332a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-18T14:00:22Z",
+      "side": 1,
+      "message": "errors.New instead because err is nil?\nAlso, s/Failed/failed/",
+      "range": {
+        "startLine": 190,
+        "startChar": 25,
+        "endLine": 190,
+        "endChar": 28
+      },
+      "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d8280b7_a40f46a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-18T14:00:22Z",
+      "side": 1,
+      "message": "How about add wrapping, while we are here? Like\nerrors.Wrap(err, \"failed to create volume\")",
+      "range": {
+        "startLine": 200,
+        "startChar": 13,
+        "endLine": 200,
+        "endChar": 16
+      },
+      "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "221b5cd1_80d54d45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-18T14:00:22Z",
+      "side": 1,
+      "message": "failed\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting",
+      "range": {
+        "startLine": 206,
+        "startChar": 31,
+        "endLine": 206,
+        "endChar": 37
+      },
+      "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f6c4273_16405d19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-18T14:00:22Z",
+      "side": 1,
+      "message": "nit: over\nJust noticed.",
+      "range": {
+        "startLine": 218,
+        "startChar": 31,
+        "endLine": 218,
+        "endChar": 36
+      },
+      "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
