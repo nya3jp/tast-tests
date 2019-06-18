@@ -271,6 +271,9 @@ func webRTCDecodePerf(ctx context.Context, s *testing.State, streamFile, loopbac
 // opens an WebRTC loopback page that repeatedly plays a loopback video stream
 // to measure CPU usage and frame decode time and stores them to perf.
 func RunWebRTCDecodePerf(ctx context.Context, s *testing.State, streamName string, config MeasureConfig) {
+	// time reserved for cleanup.
+	const cleanupTime = 5 * time.Second
+
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 	loopbackURL := server.URL + "/" + LoopbackPage
@@ -282,19 +285,23 @@ func RunWebRTCDecodePerf(ctx context.Context, s *testing.State, streamName strin
 	}
 
 	s.Log("Setting up for CPU benchmarking")
-	shortCtx, cleanupBenchmark, err := cpu.SetUpBenchmark(ctx)
+	tearDownBenchmark, err := cpu.SetUpBenchmark(ctx)
 	if err != nil {
 		s.Fatal("Failed to set up CPU benchmark mode: ", err)
 	}
-	defer cleanupBenchmark()
+	defer tearDownBenchmark(ctx)
+
+	// Leave a bit of time to tear down benchmark mode.
+	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
+	defer cancel()
 
 	p := perf.NewValues()
 	// Try hardware accelerated WebRTC first.
 	// If it is hardware accelerated, run without hardware acceleration again.
 	streamFilePath := s.DataPath(streamName)
-	hwAccelUsed := webRTCDecodePerf(shortCtx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, false, p, config)
+	hwAccelUsed := webRTCDecodePerf(ctx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, false, p, config)
 	if hwAccelUsed {
-		webRTCDecodePerf(shortCtx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, true, p, config)
+		webRTCDecodePerf(ctx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, true, p, config)
 	}
 	p.Save(s.OutDir())
 }
