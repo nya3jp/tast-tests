@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b42d7f5f_494552be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002960
+      },
+      "writtenOn": "2019-06-18T02:26:31Z",
+      "side": 1,
+      "message": "I assume this means log fatal.. seems strange to have success be a fatal log message.",
+      "range": {
+        "startLine": 106,
+        "startChar": 4,
+        "endLine": 106,
+        "endChar": 8
+      },
+      "revId": "92755148e1443508e6330aa3dab1b4bd67a1bd29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
