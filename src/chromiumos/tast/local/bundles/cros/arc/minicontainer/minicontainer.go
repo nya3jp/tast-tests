@@ -23,8 +23,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
-func waitForZygote(ctx context.Context, s *testing.State) error {
-	s.Log("Waiting for zygote process")
+func testZygote(ctx context.Context, s *testing.State) {
+	s.Log("Running testZygote")
 
 	var roZygote string
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -33,9 +33,14 @@ func waitForZygote(ctx context.Context, s *testing.State) error {
 			return errors.Wrap(err, "getprop ro.zygote failed")
 		}
 		roZygote = strings.TrimSpace(string(out))
+		if roZygote == "" {
+			// Note: Even if Android boots, getprop may return
+			// empty string till it is initialized.
+			return errors.New("ro.zygote is empty")
+		}
 		return nil
 	}, nil); err != nil {
-		return errors.Wrap(err, "mini container didn't start")
+		s.Fatal("Mini container didn't start: ", err)
 	}
 
 	// Depends on the configuration, there may be 32 or 64 bit zygote with
@@ -50,15 +55,18 @@ func waitForZygote(ctx context.Context, s *testing.State) error {
 		"zygote64_32": "(app_process64|main)",
 	}[roZygote]
 	if !ok {
-		return errors.Errorf("unrecognized ro.zygote: %s", roZygote)
+		s.Errorf("Unrecognized ro.zygote: %q", roZygote)
+		return
 	}
 
-	return testing.Poll(ctx, func(ctx context.Context) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := testexec.CommandContext(ctx, "pgrep", zygoteName).Run(); err != nil {
 			return errors.Wrap(err, "zygote is not yet running")
 		}
 		return nil
-	}, nil)
+	}, nil); err != nil {
+		s.Fatal("Zygote did't start: ", err)
+	}
 }
 
 func testCoreServices(ctx context.Context, s *testing.State) {
@@ -97,7 +105,12 @@ func testCoreServices(ctx context.Context, s *testing.State) {
 	}
 
 	for _, target := range targets {
-		if err := testexec.CommandContext(ctx, "pidof", "-s", target).Run(testexec.DumpLogOnError); err != nil {
+		// Although testZygote waits for the mini container boot,
+		// some service may not yet started at this moment.
+		// So, poll that the processes start.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			return testexec.CommandContext(ctx, "pidof", "-s", target).Run()
+		}, nil); err != nil {
 			s.Errorf("Could not find %s: %v", target, err)
 		}
 	}
@@ -251,11 +264,13 @@ func RunTest(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set up test: ", err)
 	}
 
-	// Wait for zygote runs. This also a part of verification that
-	// zygote starts properly.
-	if err := waitForZygote(ctx, s); err != nil {
-		s.Fatal("Zygote didn't start: ", err)
-	}
+	testZygote(ctx, s)
+	// Note: testZygote will wait for the mini container boot, or fail
+	// with s.Fatal() family.
+	// So, the following subtests can assume that the mini container is
+	// running somehow.
+	// In case of boot failure, the following subtests won't run
+	// intentionally.
 	testCoreServices(ctx, s)
 	testAndroidLogs(ctx, s, cursor)
 	testSELinuxLabels(ctx, s)
