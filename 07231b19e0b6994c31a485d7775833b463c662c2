@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a170f50_008533ee",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-18T01:10:45Z",
+      "side": 1,
+      "message": "Recommendation: As SetWindowState could take relatively longer time, how about output logging message, so that, in case of failure, you can find where the test is stuck easily.\n\nMaybe just above of L388? or at the beginning of this function?",
+      "revId": "07231b19e0b6994c31a485d7775833b463c662c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19df7a4f_0e567d2a",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-18T01:10:45Z",
+      "side": 1,
+      "message": "missing \"return\"",
+      "revId": "07231b19e0b6994c31a485d7775833b463c662c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
