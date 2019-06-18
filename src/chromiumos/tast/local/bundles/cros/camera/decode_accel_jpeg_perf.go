@@ -8,7 +8,6 @@ import (
 	"context"
 	"os"
 	"strconv"
-	"syscall"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -51,10 +50,8 @@ var jpegPerfTestFiles = []string{
 // CPU usage, as the CPU becomes the bottleneck.
 func DecodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 	const (
-		// Time to wait for CPU to stabilize after launching test binary.
-		stabilizationDuration = 1 * time.Second
 		// Duration of the interval during which CPU usage will be measured.
-		measurementDuration = 10 * time.Second
+		measureDuration = 10 * time.Second
 		// GTest filter used to run SW JPEG decode tests.
 		swFilter = "JpegDecodeAcceleratorTest.PerfSW"
 		// GTest filter used to run HW JPEG decode tests.
@@ -62,7 +59,7 @@ func DecodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 		// Number of JPEG decodes, needs to be high enough to run for measurement duration.
 		perfJPEGDecodeTimes = 10000
 		// time reserved for cleanup.
-		cleanupTime = 10 * time.Second
+		cleanupTime = 5 * time.Second
 	)
 
 	// Move all files required by the JPEG decode test to a temp dir, as
@@ -77,15 +74,15 @@ func DecodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 	defer cleanUpBenchmark(ctx)
 
 	// Reserve time to perform cleanup at the end of the test.
-	shortCtx, cancel := ctxutil.Shorten(ctx, cleanupTime)
+	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
 	defer cancel()
 
 	s.Log("Measuring SW JPEG decode performance")
-	cpuUsageSW := runJPEGPerfBenchmark(shortCtx, s, tempDir, stabilizationDuration,
-		measurementDuration, perfJPEGDecodeTimes, swFilter)
+	cpuUsageSW := runJPEGPerfBenchmark(ctx, s, tempDir,
+		measureDuration, perfJPEGDecodeTimes, swFilter)
 	s.Log("Measuring HW JPEG decode performance")
-	cpuUsageHW := runJPEGPerfBenchmark(shortCtx, s, tempDir, stabilizationDuration,
-		measurementDuration, perfJPEGDecodeTimes, hwFilter)
+	cpuUsageHW := runJPEGPerfBenchmark(ctx, s, tempDir,
+		measureDuration, perfJPEGDecodeTimes, hwFilter)
 
 	// TODO(dstaessens@): Remove "tast_" prefix after removing video_JDAPerf in autotest.
 	p := perf.NewValues()
@@ -105,8 +102,7 @@ func DecodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 // runBenchmark measures CPU usage while running the the JPEG decode accelerator
 // unittest binary.
 func runJPEGPerfBenchmark(ctx context.Context, s *testing.State, tempDir string,
-	stabilizationDuration time.Duration, measurementDuration time.Duration,
-	perfJPEGDecodeTimes int, filter string) float64 {
+	measureDuration time.Duration, perfJPEGDecodeTimes int, filter string) float64 {
 	args := []string{
 		"--perf_decode_times=" + strconv.Itoa(perfJPEGDecodeTimes),
 		"--test_data_path=" + tempDir + "/",
@@ -114,32 +110,13 @@ func runJPEGPerfBenchmark(ctx context.Context, s *testing.State, tempDir string,
 	}
 
 	const testExec = "jpeg_decode_accelerator_unittest"
-	cmd, err := bintest.RunAsync(ctx, testExec, args, nil, s.OutDir())
+	runCmdAsync := func() (*testexec.Cmd, error) {
+		return bintest.RunAsync(ctx, testExec, args, nil, s.OutDir())
+	}
+
+	cpuUsage, err := cpu.MeasureProcessCPU(ctx, runCmdAsync, measureDuration)
 	if err != nil {
-		s.Fatalf("Failed to run %v: %v", testExec, err)
-	}
-
-	s.Logf("Sleeping %v to wait for CPU usage to stabilize", stabilizationDuration.Round(time.Second))
-	if err := testing.Sleep(ctx, stabilizationDuration); err != nil {
-		s.Fatal("Failed waiting for CPU usage to stabilize: ", err)
-	}
-
-	s.Logf("Sleeping %v to measure CPU usage", measurementDuration.Round(time.Second))
-	cpuUsage, err := cpu.MeasureUsage(ctx, measurementDuration)
-	if err != nil {
-		s.Fatal("Failed to measure CPU usage: ", err)
-	}
-
-	// We got our measurements, now kill the process. After killing a process we
-	// still need to wait for all resources to get released.
-	if err := cmd.Kill(); err != nil {
-		s.Fatalf("Failed to kill %v: %v", testExec, err)
-	}
-	if err := cmd.Wait(); err != nil {
-		ws, _ := testexec.GetWaitStatus(err)
-		if !ws.Signaled() || ws.Signal() != syscall.SIGKILL {
-			s.Fatalf("Failed to run %v: %v", testExec, err)
-		}
+		s.Fatalf("Failed to measure CPU usage %v: %v", testExec, err)
 	}
 
 	return cpuUsage
