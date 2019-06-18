@@ -18,9 +18,12 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/video/lib/arctest"
+	"chromiumos/tast/local/bundles/cros/video/lib/cpu"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
 	"chromiumos/tast/local/chrome/bintest"
+	"chromiumos/tast/local/perf"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -332,6 +335,96 @@ func RunAccelVideoTestNew(ctx context.Context, s *testing.State, filename string
 		for _, t := range ts {
 			s.Error(t, " failed")
 		}
+	}
+}
+
+// RunAccelVideoPerfTest runs video_decode_accelerator_perf_tests with the
+// specified video file. Both capped and uncapped performance is measured.
+// - Uncapped performance: the specified test video is decoded from start to
+// finish as fast as possible. This provides an estimate of the decoder's max
+// performance (e.g. the maximum FPS).
+// - Capped decoder performance: uses a more realistic environment by decoding
+// the test video from start to finish at its actual frame rate. Rendering is
+// simulated and late frames are dropped.
+// The test binary is run twice. Once to measure both capped and uncapped
+// performance, once to measure CPU usage while running the capped performance
+// test.
+func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, filename string) {
+	const (
+		// Name of the capped performance test.
+		cappedTestname = "MeasureCappedPerformance"
+		// Name of the uncapped performance test.
+		uncappedTestname = "MeasureUncappedPerformance"
+		// Duration of the interval during which CPU usage will be measured.
+		measureDuration = 20 * time.Second
+		// Time reserved for cleanup.
+		cleanupTime = 10 * time.Second
+	)
+
+	// Reserve time to restart the ui job and perform cleanup at the end of the test.
+	shortCtx, cancel := ctxutil.Shorten(ctx, cleanupTime)
+	defer cancel()
+
+	// Only a single process can have access to the GPU, so we are required to
+	// call "stop ui" at the start of the test. This will shut down the chrome
+	// process and allow us to claim ownership of the GPU.
+	if err := upstart.StopJob(shortCtx, "ui"); err != nil {
+		s.Error("Failed to stop ui: ", err)
+	}
+	defer upstart.EnsureJobRunning(ctx, "ui")
+
+	// Setup benchmark mode.
+	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+	if err != nil {
+		s.Fatal("Failed to set up benchmark mode: ", err)
+	}
+	defer cleanUpBenchmark(ctx)
+
+	// Test 1: Measure capped and uncapped performance.
+	args := []string{
+		"--output_folder=" + s.OutDir(),
+		"--gtest_filter=*" + cappedTestname + ":*" + uncappedTestname,
+		s.DataPath(filename),
+		s.DataPath(filename + ".json"),
+	}
+
+	const exec = "video_decode_accelerator_perf_tests"
+	if ts, err := bintest.Run(shortCtx, exec, args, s.OutDir()); err != nil {
+		s.Errorf("Failed to run %v with video %s: %v", exec, filename, err)
+		for _, t := range ts {
+			s.Error(t, " failed")
+		}
+	}
+
+	p := perf.NewValues()
+	if err := parseUncappedPerfMetrics(filepath.Join(s.OutDir(), uncappedTestname+".json"), p); err != nil {
+		s.Fatal("Failed to parse uncapped performance metrics: ", err)
+	}
+	if err := parseCappedPerfMetrics(filepath.Join(s.OutDir(), cappedTestname+".json"), p); err != nil {
+		s.Fatal("Failed to parse capped performance metrics: ", err)
+	}
+
+	// Test 2: Measure CPU usage while running capped performance test only.
+	// TODO(dstaessens) Investigate collecting CPU usage during previous test.
+	cappedArgs := append(args, "--gtest_filter="+cappedTestname, "--gtest_repeat=-1")
+	runCmdAsync := func() (*testexec.Cmd, error) {
+		return bintest.RunAsync(shortCtx, exec, cappedArgs, nil, s.OutDir())
+	}
+
+	cpuUsage, err := cpu.MeasureProcessCPU(shortCtx, runCmdAsync, measureDuration)
+	if err != nil {
+		s.Fatalf("Failed to measure CPU usage %v: %v", exec, err)
+	}
+
+	// TODO(dstaessens@): Remove "tast_" prefix after removing video_VDAPerf in autotest.
+	p.Set(perf.Metric{
+		Name:      "tast_cpu_usage",
+		Unit:      "ratio",
+		Direction: perf.SmallerIsBetter,
+	}, cpuUsage)
+
+	if err := p.Save(s.OutDir()); err != nil {
+		s.Fatal("Failed to save performance metrics: ", err)
 	}
 }
 
