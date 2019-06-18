@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "9a4e4f78_39da0e5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-18T02:43:44Z",
+      "side": 1,
+      "message": "I refactored it using Uname wrapper",
+      "parentUuid": "532ea64f_cb7580b7",
+      "revId": "57bd0a517f63fbbc2ca2f647ee848cad2340399c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f05f504_23f29eb6",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
         "patchSetId": 2
