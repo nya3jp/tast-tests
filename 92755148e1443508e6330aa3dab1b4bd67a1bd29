@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "113e943d_f253ee27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-18T06:25:48Z",
+      "side": 1,
+      "message": "Could you use testing.ContextLogf() instead?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#support-packages\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages",
+      "range": {
+        "startLine": 93,
+        "startChar": 60,
+        "endLine": 93,
+        "endChar": 76
+      },
+      "revId": "92755148e1443508e6330aa3dab1b4bd67a1bd29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b42d7f5f_494552be",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
         "patchSetId": 1
@@ -46,6 +69,23 @@
       "revId": "92755148e1443508e6330aa3dab1b4bd67a1bd29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7b21077_b0ff8b16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-18T06:25:48Z",
+      "side": 1,
+      "message": "clar: How many log lines are expected?\nIf it\u0027s too many, it may be better to consider alternative, like logging on failure, logging on skipped files, etc. WDYT?",
+      "revId": "92755148e1443508e6330aa3dab1b4bd67a1bd29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
