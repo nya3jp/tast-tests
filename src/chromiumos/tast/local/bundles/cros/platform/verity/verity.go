@@ -12,6 +12,7 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
@@ -178,24 +179,40 @@ func createVerityDevice(ctx context.Context, name, loop, table string) (string, 
 
 	// Clean up stale device file, if exists.
 	// Ignore errors, which could be reported in clean state.
-	testexec.CommandContext(ctx, "dmsetup", "remove", devPath).Run()
+	// Force and retry the command to give process that maybe using
+	// the device time to close.
+	testexec.CommandContext(ctx, "dmsetup", "remove", "--force", "--retry", devPath).Run()
+	// Using status to check that the volume is removed. If the volume
+	// is found, the following tests will fail.
+	cmd := testexec.CommandContext(ctx, "dmsetup", "status", devName)
+	if err := cmd.Run(); err == nil {
+		cmd.DumpLog(ctx)
+		return "", errors.Wrap(err, "Failed to remove volume")
+	}
 
 	table = strings.Replace(table, "HASH_DEV", loop, 1)
 	table = strings.Replace(table, "ROOT_DEV", loop, 1)
 	table = table + " error_behavior=eio"
 
-	cmd := testexec.CommandContext(ctx, "dmsetup", "-r", "create", devName, "--table", table)
+	cmd = testexec.CommandContext(ctx, "dmsetup", "-r", "create", devName, "--table", table)
 	if err := cmd.Run(); err != nil {
 		cmd.DumpLog(ctx)
 		return "", err
 	}
+
+	cmd = testexec.CommandContext(ctx, "dmsetup", "status", devName)
+	if err := cmd.Run(); err != nil {
+		cmd.DumpLog(ctx)
+		return "", errors.Wrap(err, "Failed to find volume")
+	}
+
 	return devPath, nil
 }
 
 // removeVerityDevice tears down the verity device created by the
 // createVerityDevice.
 func removeVerityDevice(ctx context.Context, device string) error {
-	return releaseDevice(ctx, []string{"dmsetup", "remove", device}, device)
+	return releaseDevice(ctx, []string{"dmsetup", "remove", "--force", "--retry", device}, device)
 }
 
 // verifiable walks completely onver the device, and returns any error if
@@ -278,7 +295,10 @@ func runCheck(ctx context.Context, name string, expect bool, modify func(string)
 		return err
 	}
 
-	dev, err := createVerityDevice(ctx, name, loop, table)
+	// Create a random device name using the temporary file generated for the image
+	// We see delays in volume cleanup that cause some flakyness in VM tests. Using
+	// random unique name removes the problems with delayed cleanup.
+	dev, err := createVerityDevice(ctx, filepath.Base(dir)+"_"+name, loop, table)
 	if err != nil {
 		return err
 	}
