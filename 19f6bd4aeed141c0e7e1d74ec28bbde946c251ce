@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a3bc514_dc5607b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_vp9_1080p_i420.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-18T13:57:57Z",
+      "side": 1,
+      "message": "style: const testFilter \u003d \"-MidStream.../*\" ditto for below.",
+      "revId": "19f6bd4aeed141c0e7e1d74ec28bbde946c251ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
