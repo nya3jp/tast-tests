@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "c51143cc_4fc0bc4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-06-18T08:55:18Z",
+      "side": 1,
+      "message": "I see. Let\u0027s add another function for this.",
+      "parentUuid": "cfca5420_76117b5c",
+      "range": {
+        "startLine": 284,
+        "startChar": 5,
+        "endLine": 284,
+        "endChar": 26
+      },
+      "revId": "eef0a7ae4de28b6805f523e4369986550bb16517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e582d2df_bc0acd00",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -108,6 +132,30 @@
       "writtenOn": "2019-06-14T03:57:51Z",
       "side": 1,
       "message": "Do we need to mention this issue here?\nI guess this issue will be closed if this CL fix the failure, won\u0027t it?",
+      "range": {
+        "startLine": 291,
+        "startChar": 4,
+        "endLine": 291,
+        "endChar": 20
+      },
+      "revId": "eef0a7ae4de28b6805f523e4369986550bb16517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5eaa5cfe_fde9efad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-06-18T08:55:18Z",
+      "side": 1,
+      "message": "You\u0027re right. Let\u0027s leave b/134538840 here.",
+      "parentUuid": "e582d2df_bc0acd00",
       "range": {
         "startLine": 291,
         "startChar": 4,
@@ -140,6 +188,30 @@
       "revId": "eef0a7ae4de28b6805f523e4369986550bb16517",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d868d825_e0248dbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-06-18T08:55:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a642264_d3200869",
+      "range": {
+        "startLine": 292,
+        "startChar": 9,
+        "endLine": 292,
+        "endChar": 17
+      },
+      "revId": "eef0a7ae4de28b6805f523e4369986550bb16517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
