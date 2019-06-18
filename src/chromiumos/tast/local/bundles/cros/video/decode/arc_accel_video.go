@@ -222,14 +222,19 @@ func reportFPS(p *perf.Values, name, logPath string) error {
 
 // RunARCVideoPerfTest runs testFPS in arcvideodecoder_test and sets as perf metric.
 func RunARCVideoPerfTest(ctx context.Context, s *testing.State, testVideo string) {
-	// TODO(johnylin): revise this after crrev.com/c/1662965 is merged.
-	shortCtx, cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+	const cleanupTime = 5 * time.Second // time reserved for cleanup.
+
+	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
 	if err != nil {
 		s.Fatal("Failed to set up benchmark mode: ", err)
 	}
-	defer cleanUpBenchmark()
+	defer cleanUpBenchmark(ctx)
 
-	logs := runARCVideoTest(shortCtx, s, arcTestConfig{
+	// Leave a bit of time to tear down benchmark mode.
+	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
+	defer cancel()
+
+	logs := runARCVideoTest(ctx, s, arcTestConfig{
 		testVideo:      testVideo,
 		requireMD5File: false,
 		testFilter:     "ArcVideoDecoderE2ETest.TestFPS",

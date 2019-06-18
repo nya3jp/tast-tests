@@ -17,6 +17,7 @@ import (
 
 	"github.com/pixelbender/go-matroska/matroska"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/video/lib/audio"
 	"chromiumos/tast/local/bundles/cros/video/lib/constants"
@@ -129,6 +130,9 @@ func reportPerf(processingTime time.Duration, cpuUsage float64, hwAccelUsed bool
 // doMeasurePerf measures the frame processing time and CPU usage while recording.
 func doMeasurePerf(ctx context.Context, fileSystem http.FileSystem, outDir string, codec videotype.Codec, disableHWAccel bool,
 	streamFile string, fps int) (processingTime time.Duration, cpuUsage float64, hwAccelUsed bool, err error) {
+	// time reserved for cleanup.
+	const cleanupTime = 10 * time.Second
+
 	cr, err := chrome.New(ctx, chrome.ExtraArgs(getChromeArgs(fps, streamFile, disableHWAccel, codec)...))
 	if err != nil {
 		return 0, 0, false, errors.Wrap(err, "failed to connect to Chrome")
@@ -136,14 +140,18 @@ func doMeasurePerf(ctx context.Context, fileSystem http.FileSystem, outDir strin
 	defer cr.Close(ctx)
 
 	// Wait until CPU is idle enough. CPU usage can be high immediately after login for various reasons (e.g. animated images on the lock screen).
-	shortCtx, cleanupBenchmark, err := cpu.SetUpBenchmark(ctx)
+	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
 	if err != nil {
 		return 0, 0, false, errors.Wrap(err, "failed to set up benchmark")
 	}
-	defer cleanupBenchmark()
+	defer cleanUpBenchmark(ctx)
 
 	server := httptest.NewServer(http.FileServer(fileSystem))
 	defer server.Close()
+
+	// Reserve time for cleanup at the end of the test.
+	shortCtx, cancel := ctxutil.Shorten(ctx, cleanupTime)
+	defer cancel()
 
 	initHistogram, err := metrics.GetHistogram(shortCtx, cr, constants.MediaRecorderVEAUsed)
 	if err != nil {
