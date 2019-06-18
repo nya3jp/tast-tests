@@ -28,8 +28,10 @@ func init() {
 		// TODO(nya): Add a proper contact of ARC boot tests.
 		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"android", "chrome", "reboot"},
-		Attr:         []string{"informational"},
-		Timeout:      7 * time.Minute, // 3 min. for DUT reboot + 4 min. for ARC boot
+		// TODO(crbug.com/974837): Enable this test after addressing the issue that
+		// we lose the logs for local tests after clearing the stateful partition.
+		Attr:    []string{"disabled"},
+		Timeout: 7 * time.Minute, // 3 min. for DUT reboot + 4 min. for ARC boot
 	})
 }
 
