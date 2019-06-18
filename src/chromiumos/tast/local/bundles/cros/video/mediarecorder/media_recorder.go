@@ -17,6 +17,7 @@ import (
 
 	"github.com/pixelbender/go-matroska/matroska"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/video/lib/audio"
 	"chromiumos/tast/local/bundles/cros/video/lib/constants"
@@ -136,14 +137,18 @@ func doMeasurePerf(ctx context.Context, fileSystem http.FileSystem, outDir strin
 	defer cr.Close(ctx)
 
 	// Wait until CPU is idle enough. CPU usage can be high immediately after login for various reasons (e.g. animated images on the lock screen).
-	shortCtx, cleanupBenchmark, err := cpu.SetUpBenchmark(ctx)
+	cleanupBenchmark, err := cpu.SetUpBenchmark(ctx)
 	if err != nil {
 		return 0, 0, false, errors.Wrap(err, "failed to set up benchmark")
 	}
-	defer cleanupBenchmark()
+	defer cleanupBenchmark(ctx)
 
 	server := httptest.NewServer(http.FileServer(fileSystem))
 	defer server.Close()
+
+	// Reserve time for cleanup at the end of the test.
+	shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	initHistogram, err := metrics.GetHistogram(shortCtx, cr, constants.MediaRecorderVEAUsed)
 	if err != nil {

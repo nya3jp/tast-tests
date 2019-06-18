@@ -8,6 +8,7 @@ package encode
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -85,6 +86,8 @@ type binArgs struct {
 	extraArgs []string
 	// measureCPU indicates whether to measure CPU usage while running binary and save as a perf metric.
 	measureCPU bool
+	// measureDuration specifies how long to measure CPU usage when measureCPU is set.
+	measureDuration time.Duration
 }
 
 // runAccelVideoTest runs video_encode_accelerator_unittest for each binArgs.
@@ -134,9 +137,16 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, opts TestOptions, 
 			runCmdAsync := func() (*testexec.Cmd, error) {
 				return bintest.RunAsync(shortCtx, exec, args, nil, s.OutDir())
 			}
-			cpuLogPath := filepath.Join(s.OutDir(), cpuLog)
-			if err := cpu.MeasureProcessCPU(shortCtx, runCmdAsync, cpuLogPath); err != nil {
+
+			cpuUsage, err := cpu.MeasureProcessCPU(shortCtx, runCmdAsync, ba.measureDuration)
+			if err != nil {
 				s.Fatalf("Failed to run (measure CPU) %v: %v", exec, err)
+			}
+			// TODO(akahuang): Don' write CPU usage to disk, as this can increase test flakiness.
+			cpuLogPath := filepath.Join(s.OutDir(), cpuLog)
+			str := fmt.Sprintf("%f", cpuUsage)
+			if err := ioutil.WriteFile(cpuLogPath, []byte(str), 0644); err != nil {
+				s.Fatal("Failed to write CPU usage to file: ", err)
 			}
 		} else {
 			if ts, err := bintest.Run(shortCtx, exec, args, s.OutDir()); err != nil {
@@ -227,9 +237,16 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, exe
 		runCmdAsync := func() (*testexec.Cmd, error) {
 			return arctest.StartARCBinary(ctx, a, exec, args, outFile)
 		}
-		cpuLogPath := filepath.Join(s.OutDir(), cpuLog)
-		if err := cpu.MeasureProcessCPU(ctx, runCmdAsync, cpuLogPath); err != nil {
+
+		cpuUsage, err := cpu.MeasureProcessCPU(ctx, runCmdAsync, ba.measureDuration)
+		if err != nil {
 			return errors.Wrapf(err, "failed to run (measure CPU) %v: %v", exec, err)
+		}
+		// TODO(akahuang): Don' write CPU usage to disk, as this can increase test flakiness.
+		cpuLogPath := filepath.Join(s.OutDir(), cpuLog)
+		str := fmt.Sprintf("%f", cpuUsage)
+		if err := ioutil.WriteFile(cpuLogPath, []byte(str), 0644); err != nil {
+			return errors.Wrap(err, "Failed to write CPU usage to file")
 		}
 
 		if err := reportCPUUsage(pv, schemaName, cpuLogPath); err != nil {
@@ -302,11 +319,11 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts TestOptio
 		cpuEncodeFrames = 10000
 	)
 
-	ctx, cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+	cleanupBenchmark, err := cpu.SetUpBenchmark(ctx)
 	if err != nil {
 		s.Fatal("Failed to set up benchmark mode: ", err)
 	}
-	defer cleanUpBenchmark()
+	defer cleanupBenchmark(ctx)
 
 	schemaName := strings.TrimSuffix(opts.Params.Name, ".vp9.webm")
 	if opts.Profile == videotype.H264Prof {
@@ -344,7 +361,8 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts TestOptio
 			testFilter: "SimpleEncode/*/0",
 			extraArgs: []string{fmt.Sprintf("--num_frames_to_encode=%d", cpuEncodeFrames),
 				"--run_at_fps"},
-			measureCPU: true,
+			measureCPU:      true,
+			measureDuration: 10 * time.Second,
 		},
 	)
 
@@ -381,6 +399,12 @@ func RunARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts Tes
 
 // RunARCPerfVideoTest runs all perf tests of arcvideoencoder_test in ARC.
 func RunARCPerfVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts TestOptions) {
+	cleanupBenchmark, err := cpu.SetUpBenchmark(ctx)
+	if err != nil {
+		s.Fatal("Failed to set up benchmark mode: ", err)
+	}
+	defer cleanupBenchmark(ctx)
+
 	pv := perf.NewValues()
 	runARCVideoTest(ctx, s, a, opts, pv,
 		// Measure FPS and latency.
@@ -389,9 +413,10 @@ func RunARCPerfVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts
 		},
 		// Measure CPU usage.
 		binArgs{
-			testFilter: "ArcVideoEncoderE2ETest.TestSimpleEncode",
-			extraArgs:  []string{"--run_at_fps", "--num_encoded_frames=10000"},
-			measureCPU: true,
+			testFilter:      "ArcVideoEncoderE2ETest.TestSimpleEncode",
+			extraArgs:       []string{"--run_at_fps", "--num_encoded_frames=10000"},
+			measureCPU:      true,
+			measureDuration: 10 * time.Second,
 		})
 	pv.Save(s.OutDir())
 }

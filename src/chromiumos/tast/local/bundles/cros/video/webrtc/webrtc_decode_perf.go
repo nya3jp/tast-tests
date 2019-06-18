@@ -282,19 +282,19 @@ func RunWebRTCDecodePerf(ctx context.Context, s *testing.State, streamName strin
 	}
 
 	s.Log("Setting up for CPU benchmarking")
-	shortCtx, cleanupBenchmark, err := cpu.SetUpBenchmark(ctx)
+	cleanupBenchmark, err := cpu.SetUpBenchmark(ctx)
 	if err != nil {
 		s.Fatal("Failed to set up CPU benchmark mode: ", err)
 	}
-	defer cleanupBenchmark()
+	defer cleanupBenchmark(ctx)
 
 	p := perf.NewValues()
 	// Try hardware accelerated WebRTC first.
 	// If it is hardware accelerated, run without hardware acceleration again.
 	streamFilePath := s.DataPath(streamName)
-	hwAccelUsed := webRTCDecodePerf(shortCtx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, false, p, config)
+	hwAccelUsed := webRTCDecodePerf(ctx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, false, p, config)
 	if hwAccelUsed {
-		webRTCDecodePerf(shortCtx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, true, p, config)
+		webRTCDecodePerf(ctx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, true, p, config)
 	}
 	p.Save(s.OutDir())
 }
