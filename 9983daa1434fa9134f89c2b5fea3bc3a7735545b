@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ff10658f_378f513e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-06-18T20:51:55Z",
+      "side": 1,
+      "message": "According to golint, all exported functions should have a comment above them. It does seem redundant to have both the desc on L19 and this comment. Looking around the code base, it looks like some tests have this comment and some do not. Should we ignore golint in this case?",
+      "parentUuid": "9c913e80_7a3562a9",
+      "revId": "9983daa1434fa9134f89c2b5fea3bc3a7735545b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79cd40f0_cc1f21f2",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "79ae90cf_2aafa664",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-06-18T20:51:55Z",
+      "side": 1,
+      "message": "Sounds good. Done.",
+      "parentUuid": "79cd40f0_cc1f21f2",
+      "revId": "9983daa1434fa9134f89c2b5fea3bc3a7735545b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8436be36_5ff80e25",
         "filename": "src/chromiumos/tast/local/vm/crosvm.go",
         "patchSetId": 2
@@ -47,6 +83,30 @@
       "writtenOn": "2019-06-17T04:14:25Z",
       "side": 1,
       "message": "These aren\u0027t used. Any concrete plans to use in a immediate following change?\nif not, could you remove now? You can add them back whenever you need.\n\nAlso, if these two are just what are needed for NewCrosvm, using arguments looks simpler than indirection by param struct.",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 62
+      },
+      "revId": "9983daa1434fa9134f89c2b5fea3bc3a7735545b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a681d02a_6dc99281",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-06-18T20:51:55Z",
+      "side": 1,
+      "message": "I think I will probably use them in a few coming CLs, but if you would prefer, I can remove them. Crosvm takes many different parameters and only a few are included in this list, so I think it makes sense to leave it as a struct.",
+      "parentUuid": "8436be36_5ff80e25",
       "range": {
         "startLine": 33,
         "startChar": 1,
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "ad36d82d_7d79dae5",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-06-18T20:51:55Z",
+      "side": 1,
+      "message": "Other uses of error below on lines 47, 69, and 72 all cannot use the :\u003d operator because vm.socketPath etc are already defined. I figured they could all share a single error variable. Would it be preferable to use the :\u003d on this line and declare the err variable later?",
+      "parentUuid": "174bb2f6_bc1478ce",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "9983daa1434fa9134f89c2b5fea3bc3a7735545b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9276786d_ad290b5d",
         "filename": "src/chromiumos/tast/local/vm/crosvm.go",
         "patchSetId": 2
@@ -96,6 +180,24 @@
       "revId": "9983daa1434fa9134f89c2b5fea3bc3a7735545b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a271d01_477995fa",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-06-18T20:51:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9276786d_ad290b5d",
+      "revId": "9983daa1434fa9134f89c2b5fea3bc3a7735545b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "14f26862_530c802d",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-06-18T20:51:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "042eda81_41375513",
+      "revId": "9983daa1434fa9134f89c2b5fea3bc3a7735545b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f771ebbe_c2a8ff9d",
         "filename": "src/chromiumos/tast/local/vm/crosvm.go",
         "patchSetId": 2
@@ -130,6 +250,24 @@
       "revId": "9983daa1434fa9134f89c2b5fea3bc3a7735545b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b35bb42a_806e4265",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-06-18T20:51:55Z",
+      "side": 1,
+      "message": "That makes sense to me. Done.",
+      "parentUuid": "f771ebbe_c2a8ff9d",
+      "revId": "9983daa1434fa9134f89c2b5fea3bc3a7735545b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -153,6 +291,30 @@
       "revId": "9983daa1434fa9134f89c2b5fea3bc3a7735545b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c2aeba0_25fea94d",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-06-18T20:51:55Z",
+      "side": 1,
+      "message": "Sounds good to me. Done.",
+      "parentUuid": "2eee5d71_97c6d3ee",
+      "range": {
+        "startLine": 146,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 3
+      },
+      "revId": "9983daa1434fa9134f89c2b5fea3bc3a7735545b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
