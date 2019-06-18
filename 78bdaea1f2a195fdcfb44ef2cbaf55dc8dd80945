@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95d95910_357f17fc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/oobe_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-18T01:00:48Z",
+      "side": 1,
+      "message": "optional: how about adding a TODO to reenable with referring to crbug.com/974837?",
+      "revId": "78bdaea1f2a195fdcfb44ef2cbaf55dc8dd80945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
