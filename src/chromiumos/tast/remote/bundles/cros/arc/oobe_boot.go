@@ -28,7 +28,7 @@ func init() {
 		// TODO(nya): Add a proper contact of ARC boot tests.
 		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"android", "chrome", "reboot"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"disabled"},
 		Timeout:      7 * time.Minute, // 3 min. for DUT reboot + 4 min. for ARC boot
 	})
 }
