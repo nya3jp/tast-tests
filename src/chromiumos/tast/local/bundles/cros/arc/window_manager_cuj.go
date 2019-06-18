@@ -21,9 +21,9 @@ import (
 )
 
 const (
-	// Apk compiled against target Sdk = 23 (Pre N)
+	// Apk compiled against target SDK 23 (Pre N)
 	wmPkg23 = "org.chromium.arc.testapp.windowmanager23"
-	// Apk compiled against target Sdk = 24 (N)
+	// Apk compiled against target SDK 24 (N)
 	wmPkg24 = "org.chromium.arc.testapp.windowmanager24"
 
 	wmResizeableLandscapeActivity      = "org.chromium.arc.testapp.windowmanager.ResizeableLandscapeActivity"
@@ -78,13 +78,17 @@ func WindowManagerCUJ(ctx context.Context, s *testing.State) {
 	if err := a.Install(ctx, s.DataPath(apk24)); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
+	if err := a.Install(ctx, s.DataPath(apk23)); err != nil {
+		s.Fatal("Failed installing app: ", err)
+	}
 
 	type testFunc func(context.Context, *chrome.Conn, *arc.ARC, *ui.Device) error
 	for idx, test := range []struct {
 		name string
 		fn   testFunc
 	}{
-		{"Default Launch SDK24", wmCUJDefault24},
+		{"Default Launch Clamshell SDK24", wmDefaultLaunchClamshell24},
+		{"Default Launch Clamshell SDK23", wmDefaultLaunchClamshell23},
 	} {
 		s.Logf("Running test %q", test.name)
 		if err := test.fn(ctx, tconn, a, d); err != nil {
@@ -97,10 +101,10 @@ func WindowManagerCUJ(ctx context.Context, s *testing.State) {
 	}
 }
 
-// wmCUJDefault24 launches six SDK-N activities with different orientations and resize conditions.
+// wmDefaultLaunchClamshell24 launches six SDK-N activities with different orientations and resize conditions.
 // And it verifies that their default launch state is the expected one, as defined in:
 // go/arc-wm-p "Clamshell: default launch behavior - Android NYC or above" (slide #6).
-func wmCUJDefault24(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
+func wmDefaultLaunchClamshell24(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
 	// Expected caption buttons.
 	wmCaptionBMRC := []string{wmBack, wmMinimize, wmRestore, wmClose}
 	wmCaptionBMMC := []string{wmBack, wmMinimize, wmMaximize, wmClose}
@@ -178,9 +182,92 @@ func wmCUJDefault24(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.D
 	return nil
 }
 
+// wmDefaultLaunchClamshell23 launches in clamshell mode six SDK-pre-N activities with different orientations
+// and resize conditions. And it verifies that their default launch state is the expected one, as defined in:
+// go/arc-wm-p "Clamshell: default launch behavior - Android MNC and below" (slide #7).
+func wmDefaultLaunchClamshell23(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
+	// Expected caption buttons.
+	wmCaptionBMMC := []string{wmBack, wmMinimize, wmMaximize, wmClose}
+	wmCaptionBMC := []string{wmBack, wmMinimize, wmClose}
+
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "could not get tablet mode")
+	}
+	// Be nice and restore tablet mode to its original state on exit.
+	defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeEnabled)
+	if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
+		return errors.Wrap(err, "could not set tablet mode disabled")
+	}
+
+	// Reset WM state to default values.
+	if err := a.Command(ctx, "am", "broadcast", "-a", "android.intent.action.arc.cleartaskstate").Run(); err != nil {
+		return errors.Wrap(err, "could not clear task states")
+	}
+	for _, test := range []struct {
+		name          string
+		act           string
+		wantedState   arc.WindowState
+		wantedCaption []string
+	}{
+		// The are four possible default states (windows #A to #D) from six possible different activities.
+		// Window #A.
+		{"Unspecified + Resize enabled", wmResizeableUnspecifiedActivity, arc.WindowStateNormal, wmCaptionBMMC},
+		// Window #A.
+		{"Portrait + Resize enabled", wmResizeablePortraitActivity, arc.WindowStateNormal, wmCaptionBMMC},
+		// Window #B.
+		{"Landscape + Resized enabled", wmResizeableLandscapeActivity, arc.WindowStateNormal, wmCaptionBMMC},
+		// Window #C.
+		{"Unspecified + Resize disabled", wmNonResizeableUnspecifiedActivity, arc.WindowStateMaximized, wmCaptionBMC},
+		// Window #C.
+		{"Landscape + Resized disabled", wmNonResizeableLandscapeActivity, arc.WindowStateMaximized, wmCaptionBMC},
+		// Window #D.
+		// TODO(ricardoq): detect pillarbox mode.
+		{"Portrait + Resize disabled", wmNonResizeablePortraitActivity, arc.WindowStateMaximized, wmCaptionBMC},
+	} {
+		testing.ContextLogf(ctx, "Running subtest %q", test.name)
+		act, err := arc.NewActivity(a, wmPkg23, test.act)
+		if err != nil {
+			return err
+		}
+		defer act.Close()
+
+		if err := act.Start(ctx); err != nil {
+			return err
+		}
+		// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
+		defer act.Stop(ctx)
+
+		if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+			return err
+		}
+
+		state, err := act.GetWindowState(ctx)
+		if err != nil {
+			return err
+		}
+		if state != test.wantedState {
+			return errors.Errorf("invalid window state %v, want %v", state, test.wantedState)
+		}
+
+		bn, err := wmCaptionButtons(ctx, d)
+		if err != nil {
+			return errors.Wrap(err, "could not get caption buttons state")
+		}
+		if !reflect.DeepEqual(bn, test.wantedCaption) {
+			return errors.Errorf("invalid caption buttons %+v, want %+v", bn, test.wantedCaption)
+		}
+		// Stopping current activity in order to make it possible to launch a different from the same package.
+		if err := act.Stop(ctx); err != nil {
+			return errors.Wrapf(err, "could not stop activity %v", test.act)
+		}
+	}
+	return nil
+}
+
 // wmCaptionButtons returns the caption buttons that are present in the ArcWMTestApp window.
 func wmCaptionButtons(ctx context.Context, d *ui.Device) (buttons []string, err error) {
-	s, err := getWmState(ctx, d)
+	s, err := getWMState(ctx, d)
 	if err != nil {
 		return nil, err
 	}
@@ -200,9 +287,9 @@ type wmState struct {
 	Accel             interface{} `json:"accel"`
 }
 
-// getWmState returns the state from the ArcWMTest activity.
+// getWMState returns the state from the ArcWMTest activity.
 // The state is taken by parsing the activity's TextView which contains the state in JSON format.
-func getWmState(ctx context.Context, d *ui.Device) (*wmState, error) {
+func getWMState(ctx context.Context, d *ui.Device) (*wmState, error) {
 	obj := d.Object(ui.ClassName("android.widget.TextView"), ui.ResourceIDMatches(".+?(/caption_text_view)$"))
 	if err := obj.WaitForExists(ctx, 10*time.Second); err != nil {
 		return nil, err
