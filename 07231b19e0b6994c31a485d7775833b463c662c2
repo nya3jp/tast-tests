@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0ab59478_68d33445",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1192540
+      },
+      "writtenOn": "2019-06-18T18:58:14Z",
+      "side": 1,
+      "message": "I tried it out locally, and noticed a lot of log spam when I ran the arc.WindowState test.\nHere is a snippet of the logs: http://go/bit/phshah/5901586412863488",
+      "parentUuid": "6a170f50_008533ee",
+      "revId": "07231b19e0b6994c31a485d7775833b463c662c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19df7a4f_0e567d2a",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 10
@@ -33,6 +51,24 @@
       "revId": "07231b19e0b6994c31a485d7775833b463c662c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ee1cea9_7329e008",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1192540
+      },
+      "writtenOn": "2019-06-18T18:58:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19df7a4f_0e567d2a",
+      "revId": "07231b19e0b6994c31a485d7775833b463c662c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

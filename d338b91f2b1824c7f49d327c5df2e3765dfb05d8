@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ead6e470_c2aa7602",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1192540
+      },
+      "writtenOn": "2019-06-18T18:58:14Z",
+      "side": 1,
+      "message": "As we discussed off-line, idle means the activity is in transition until it reaches it\u0027s final state. So having it here is fine.  Also, I updated resize_activity.go by removing the wait for idle statement after the SetWindowState function call.",
+      "parentUuid": "ba4f02bd_15d22178",
+      "range": {
+        "startLine": 388,
+        "startChar": 1,
+        "endLine": 390,
+        "endChar": 2
+      },
+      "revId": "d338b91f2b1824c7f49d327c5df2e3765dfb05d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b052d94_3e8cb9dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "d338b91f2b1824c7f49d327c5df2e3765dfb05d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53686359_41da9c33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_state.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1192540
+      },
+      "writtenOn": "2019-06-18T18:58:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b052d94_3e8cb9dd",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 62
+      },
+      "revId": "d338b91f2b1824c7f49d327c5df2e3765dfb05d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
