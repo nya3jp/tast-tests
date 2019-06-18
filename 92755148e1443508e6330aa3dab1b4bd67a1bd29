@@ -22,6 +22,30 @@
       "revId": "92755148e1443508e6330aa3dab1b4bd67a1bd29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae89215f_15fae993",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-06-18T03:04:28Z",
+      "side": 1,
+      "message": "// Logf is similar to Log but formats its arguments using fmt.Sprintf.",
+      "parentUuid": "b42d7f5f_494552be",
+      "range": {
+        "startLine": 106,
+        "startChar": 4,
+        "endLine": 106,
+        "endChar": 8
+      },
+      "revId": "92755148e1443508e6330aa3dab1b4bd67a1bd29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
