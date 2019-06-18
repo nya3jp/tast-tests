@@ -23,7 +23,6 @@ func init() {
 		Func:         DLCService,
 		Desc:         "Verifies that DLC D-Bus API (install, uninstall, etc.) works",
 		Contacts:     []string{"xiaochu@chromium.org"},
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"dlc"},
 	})
 }
