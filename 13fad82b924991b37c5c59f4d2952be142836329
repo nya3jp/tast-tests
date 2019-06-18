@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4609bb4_4faa28ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_decode_accel_perf_h264_240p.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-06-18T09:58:09Z",
+      "side": 1,
+      "message": "Looks like we could get the instance from |s|, how about getting this inside the function?",
+      "range": {
+        "startLine": 29,
+        "startChar": 36,
+        "endLine": 29,
+        "endChar": 66
+      },
+      "revId": "13fad82b924991b37c5c59f4d2952be142836329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a12a5e4e_c2cc79b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-06-18T09:58:09Z",
+      "side": 1,
+      "message": "nit: I prefer to put it inside the function to prevent global variable.\nThe overhead of compiling regex everytime should be affordable.",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 89
+      },
+      "revId": "13fad82b924991b37c5c59f4d2952be142836329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
