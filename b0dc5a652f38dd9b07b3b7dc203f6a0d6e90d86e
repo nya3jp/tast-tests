@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1927981e_789c5e32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-06-18T17:14:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be95a7ea_05ef30ae",
+      "range": {
+        "startLine": 45,
+        "startChar": 61,
+        "endLine": 46,
+        "endChar": 34
+      },
+      "revId": "b0dc5a652f38dd9b07b3b7dc203f6a0d6e90d86e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22245253_717e63e1",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "b0dc5a652f38dd9b07b3b7dc203f6a0d6e90d86e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02eb0d66_a8733358",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-06-18T17:14:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22245253_717e63e1",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 26
+      },
+      "revId": "b0dc5a652f38dd9b07b3b7dc203f6a0d6e90d86e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "542c5b2a_b26531e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-06-18T17:14:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "337e4200_5a4e30cb",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 15
+      },
+      "revId": "b0dc5a652f38dd9b07b3b7dc203f6a0d6e90d86e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e77f6f61_0fd3c363",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
         "patchSetId": 3
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "b1d99b0e_f881d577",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-06-18T17:14:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e77f6f61_0fd3c363",
+      "range": {
+        "startLine": 22,
+        "startChar": 65,
+        "endLine": 22,
+        "endChar": 89
+      },
+      "revId": "b0dc5a652f38dd9b07b3b7dc203f6a0d6e90d86e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1753d1de_0f831188",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
         "patchSetId": 3
@@ -105,6 +201,30 @@
       "writtenOn": "2019-06-14T05:00:11Z",
       "side": 1,
       "message": "Clar: Could you investigate the reason? Dropping the field looks fine, but without the reason we may hit something similar error in future. WDYT?",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "b0dc5a652f38dd9b07b3b7dc203f6a0d6e90d86e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5886f62_537ead84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-06-18T17:14:09Z",
+      "side": 1,
+      "message": "It\u0027s currently unclear as to why these values are inconsistent. AFAIK they were originally populated one way due to a bug in CUPS, we fixed it, but at some point it seems that the behavior has crept back in.\n\nI\u0027ve added a TODO linking to the bug, and a brief explanation of the plan to remove the need for these regexes.\n\nI\u0027ll look into fixing the root of this issue, but for the time being I\u0027d prefer to just strip the values for the sake of getting the test running.",
+      "parentUuid": "1753d1de_0f831188",
       "range": {
         "startLine": 30,
         "startChar": 3,
@@ -160,6 +280,30 @@
       "revId": "b0dc5a652f38dd9b07b3b7dc203f6a0d6e90d86e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bc784ba_42436f78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-06-18T17:14:09Z",
+      "side": 1,
+      "message": "Yeah I felt this was somewhat ugly but didn\u0027t think of anything better at the time. Thanks for the suggestion!",
+      "parentUuid": "9eee1e5f_e8b99fa1",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 81
+      },
+      "revId": "b0dc5a652f38dd9b07b3b7dc203f6a0d6e90d86e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
