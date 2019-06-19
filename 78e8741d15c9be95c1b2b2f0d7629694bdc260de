@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d923bb9_41830ace",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-19T15:05:19Z",
+      "side": 1,
+      "message": "nit: Critical.",
+      "range": {
+        "startLine": 7,
+        "startChar": 46,
+        "endLine": 7,
+        "endChar": 54
+      },
+      "revId": "78e8741d15c9be95c1b2b2f0d7629694bdc260de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ddc6fb5_d8280e28",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-19T15:05:19Z",
+      "side": 1,
+      "message": "I\u0027m not sure why, but the tests are not running in recent build for many boards. Do you know the reason?\nExcluding them, roughly 10 ish success can be observed. Practically, it is requested to see a bit more trajectory, like 20+ ish consecutive success. Can we wait for a bit more to see better trajectory? WDYT?",
+      "revId": "78e8741d15c9be95c1b2b2f0d7629694bdc260de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cba55b9_57f95cbf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-19T15:05:19Z",
+      "side": 1,
+      "message": "Maybe another kind of flakiness which is not explained in the commit message. Could you take a look?\n\nhttp://stainless/browse/chromeos-autotest-results/314171338-chromeos-test/chromeos6-row4-rack6-host4/tast/results/tests/video.PlayDecodeAccelUsedH264/",
+      "revId": "78e8741d15c9be95c1b2b2f0d7629694bdc260de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
