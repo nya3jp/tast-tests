@@ -310,3 +310,20 @@ func findIPv4(ips string) (string, error) {
 	}
 	return "", errors.Errorf("could not find IPv4 address in %q", ips)
 }
+
+// CreateDefaultVMContainer prepares a VM and container with default settings and
+// either the live or staging container versions. The directory dir may be used
+// to store logs on failure. If the container type is Tarball, then artifactPath
+// must be specified with the path to the tarball containing the termina VM
+// and container. Otherwise, artifactPath is ignored.
+func CreateDefaultVMContainer(ctx context.Context, dir, user string, t ContainerType, artifactPath string) (*Container, error) {
+	vmInstance, err := CreateDefaultVM(ctx, dir, user, t, artifactPath)
+	if err != nil {
+		stoperr := vmInstance.Stop(ctx)
+		if stoperr != nil {
+			return nil, errors.Wrap(err, stoperr.Error())
+		}
+		return nil, err
+	}
+	return CreateDefaultContainer(ctx, vmInstance, t, dir)
+}
