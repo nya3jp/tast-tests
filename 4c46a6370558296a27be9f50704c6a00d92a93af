@@ -16,6 +16,24 @@
       "revId": "4c46a6370558296a27be9f50704c6a00d92a93af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91c295bb_361ef8c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-19T04:01:46Z",
+      "side": 0,
+      "message": "\u0027decodeMetadata\u0027 is just moved to arc_accel_video.go, which is also in the same package. So, nothing shouldn\u0027t be broken.\nBut, this means that functions in accel_video.go are using struct in arc_accel_video.go. This looks somehow strange.\nHow about keeping this struct here and adding a comment like this?\n// TODO(crbug.com/933034): Move this struct to arc_accel_video.go when we deprecate video_decode_accelerator_unittest.",
+      "parentUuid": "373ea5c3_1f1e9bdc",
+      "revId": "4c46a6370558296a27be9f50704c6a00d92a93af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
