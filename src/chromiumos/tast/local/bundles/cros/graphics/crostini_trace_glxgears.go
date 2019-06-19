@@ -20,7 +20,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Data:         []string{"crostini_trace_glxgears.trace"},
 		Timeout:      3 * time.Minute,
-		SoftwareDeps: []string{"chrome", "vm_host"},
+		SoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},
 	})
 }
 
