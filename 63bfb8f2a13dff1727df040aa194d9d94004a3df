@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "534ad35f_606d7b0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-06-19T01:55:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c956bcf0_523842d0",
+      "range": {
+        "startLine": 9,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19f9aa1d_c5d8b383",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "094f0d34_a7ff1c12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-06-19T01:55:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19f9aa1d_c5d8b383",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a9babb54_d8c5314a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-06-19T01:55:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c20eedb1_5684b1c9",
+      "range": {
+        "startLine": 188,
+        "startChar": 11,
+        "endLine": 188,
+        "endChar": 14
+      },
+      "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01be8200_efc332a6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75cd7b2c_6100f429",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-06-19T01:55:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01be8200_efc332a6",
+      "range": {
+        "startLine": 190,
+        "startChar": 25,
+        "endLine": 190,
+        "endChar": 28
+      },
+      "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "5276f392_ee70e25b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-06-19T01:55:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "360c8438_cbb6f423",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 18
+      },
+      "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d8280b7_a40f46a3",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
         "patchSetId": 1
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "46c4e9d3_6df7fe3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-06-19T01:55:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d8280b7_a40f46a3",
+      "range": {
+        "startLine": 200,
+        "startChar": 13,
+        "endLine": 200,
+        "endChar": 16
+      },
+      "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffbf80a7_2b80f0c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
         "patchSetId": 1
@@ -154,6 +298,24 @@
       "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59e4381f_5c6ec90d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-06-19T01:55:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffbf80a7_2b80f0c8",
+      "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "b09e1ade_c2436281",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-06-19T01:55:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "221b5cd1_80d54d45",
+      "range": {
+        "startLine": 206,
+        "startChar": 31,
+        "endLine": 206,
+        "endChar": 37
+      },
+      "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f6c4273_16405d19",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
         "patchSetId": 1
@@ -200,6 +386,30 @@
       "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bb73f41_2660a637",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-06-19T01:55:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f6c4273_16405d19",
+      "range": {
+        "startLine": 218,
+        "startChar": 31,
+        "endLine": 218,
+        "endChar": 36
+      },
+      "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -226,6 +436,30 @@
     },
     {
       "key": {
+        "uuid": "4fbddd9a_cc70420d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-06-19T01:55:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a01b915_12b1b36f",
+      "range": {
+        "startLine": 298,
+        "startChar": 75,
+        "endLine": 298,
+        "endChar": 80
+      },
+      "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f116f2e_cbbd765f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
         "patchSetId": 1
@@ -237,6 +471,30 @@
       "writtenOn": "2019-06-18T15:22:56Z",
       "side": 1,
       "message": "Clar: so you made two changes;\n- using --force --retry options.\n- Using randomized file name for the image.\n\nWhich contributed the stability? Or, do we actually need both?",
+      "range": {
+        "startLine": 299,
+        "startChar": 75,
+        "endLine": 300,
+        "endChar": 65
+      },
+      "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c16a6579_2526e300",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-06-19T01:55:49Z",
+      "side": 1,
+      "message": "being over protective here. using --force --retry gives extra time for the command to complete. Since we are using randomized file name, it may not be as useful, I need to run the test in CQ again to see if we see some flakiness during cleanup (status of volume post removal).\n\nlooking at test runtime, \nwith --force --retry test takes about 41s\nwithout --force --retry test takes about 60s\n\nthe time gain is in removeVerityDevice(), I could look at the profile in greater details to understand where the 20s diff comes from.",
+      "parentUuid": "5f116f2e_cbbd765f",
       "range": {
         "startLine": 299,
         "startChar": 75,
@@ -269,6 +527,30 @@
       "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7a04552_be4ae2d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-06-19T01:55:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb1c0c57_6ffda606",
+      "range": {
+        "startLine": 301,
+        "startChar": 37,
+        "endLine": 301,
+        "endChar": 64
+      },
+      "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
