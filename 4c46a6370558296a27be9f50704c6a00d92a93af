@@ -34,6 +34,24 @@
       "revId": "4c46a6370558296a27be9f50704c6a00d92a93af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1183be87_110723cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-06-19T13:43:06Z",
+      "side": 0,
+      "message": "Keiichi is right, nothing is broken however the code dependency looks strange. This is the intermediate state after video_decode_accelerator_unittest is deprecated accel_video.go won\u0027t need decodeMetadata at all. Only arc_accel_video.go needs that.\n\nSo my idea will be still moving decodeMetadata to arc_accel_video.go, and adding comment in accel_video.go to inform user decodeMetadata is declared in arc_accel_video.go. WDYT?",
+      "parentUuid": "91c295bb_361ef8c5",
+      "revId": "4c46a6370558296a27be9f50704c6a00d92a93af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
