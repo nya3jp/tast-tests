@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "19ac70cd_8a800bf2",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-19T01:32:07Z",
+      "side": 1,
+      "message": "Oh, I see. Thank you for taking a look.",
+      "parentUuid": "0ab59478_68d33445",
+      "revId": "07231b19e0b6994c31a485d7775833b463c662c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19df7a4f_0e567d2a",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 10
