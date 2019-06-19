@@ -131,6 +131,24 @@
       "revId": "40d67fdfbe3e9358ab3e2857e0fad71a1d054c0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f29059c3_9edfe3bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-06-19T17:10:02Z",
+      "side": 1,
+      "message": "You are right, this test currently don\u0027t check anything. I forgot to to check if an error was returned (I just changed the code to not s.Fatal/Error, but return a new Error) after some changes.\n\nHowever, I realized that since this is a client test, it\u0027s hard to establish any invariants regarding the wireless environment of the DUT. What this means is that I don\u0027t have guarantees of the existence of APs, which makes it hard to really verify/test parsing behavior other than making sure a wideband scan terminates without error.",
+      "parentUuid": "c8be848d_5e1c75eb",
+      "revId": "40d67fdfbe3e9358ab3e2857e0fad71a1d054c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
