@@ -62,6 +62,29 @@
       "revId": "13fad82b924991b37c5c59f4d2952be142836329",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f5cd2c0_9739fbf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-19T04:43:03Z",
+      "side": 1,
+      "message": "Could you remove this line? We don\u0027t want to enable verbose log in performance tests. \ncf. crbug.com/955079",
+      "range": {
+        "startLine": 229,
+        "startChar": 12,
+        "endLine": 229,
+        "endChar": 36
+      },
+      "revId": "13fad82b924991b37c5c59f4d2952be142836329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
