@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "84ede997_ab0c52aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/encode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-19T02:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "140a31e4_7a30f1e3",
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfba5029_63ff8477",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/encode_accel_jpeg_perf.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "10f13ffe_df773764",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/encode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-19T02:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfba5029_63ff8477",
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c14d2e8_9e738dca",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -47,6 +83,30 @@
       "writtenOn": "2019-06-18T14:31:24Z",
       "side": 1,
       "message": "optional: IIUC, you can migrate this option to measureDuration. (i.e. if measureDuration !\u003d 0, measure the CPU).\n\nAt the moment, it is mandatory to set the duration on CPU measurement, right?",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 16
+      },
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3b8aefc_1753562b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-19T02:57:23Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. I see the value in combining, but I\u0027m not a fan of constructions like \"Benchmark mode is set, if measureDuration !\u003d 0\". I would rather keep a separate measureCPU bool to make this more explicit. And more config could potentially be added later.",
+      "parentUuid": "3c14d2e8_9e738dca",
       "range": {
         "startLine": 87,
         "startChar": 1,
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "b47b2d7a_1b916fea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-19T02:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "106544b0_78e2a4df",
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a889c27_626ec9ef",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -87,6 +165,24 @@
       "writtenOn": "2019-06-18T14:31:24Z",
       "side": 1,
       "message": "cpuLogPath is fixed, so second (or later) measurement overwrites the previous result.\nIt is not the regression of this CL, but nice to be fixed as you\u0027re actually editing this part.\nIt\u0027s ok if you\u0027d like to fix in another CL I think, though.",
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77b603af_8a97b061",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-19T02:57:23Z",
+      "side": 1,
+      "message": "Ideally I would just want to get rid of \u0027cpuLogPath\u0027. The biggest reason for this refactor is that writing the CPU usage to file in cpu.MeasureProcessCPU() made reuse very difficult.\nI would like to keep this change our of this CL, as it\u0027s already getting big.",
+      "parentUuid": "5a889c27_626ec9ef",
       "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -116,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "e65f0da9_e3e64e33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-19T02:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f53670b_2083ad4b",
+      "range": {
+        "startLine": 249,
+        "startChar": 28,
+        "endLine": 249,
+        "endChar": 29
+      },
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7847c459_7ff5607e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 1
@@ -130,6 +250,24 @@
       "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f83d8c3c_db7b6a2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-19T02:57:23Z",
+      "side": 1,
+      "message": "runAccelVideoTest() already creates a shorter context, but I guess it can\u0027t hurt to leave a bit of extra time here, just in case.",
+      "parentUuid": "7847c459_7ff5607e",
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -150,6 +288,24 @@
     },
     {
       "key": {
+        "uuid": "bda351b6_d92136f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-19T02:57:23Z",
+      "side": 1,
+      "message": "runARCVideoTest() already shortens the context. I want to avoid shortening the context too much, but I guess leaving a bit more time for cleanup here is safer and shouldn\u0027t hurt.",
+      "parentUuid": "aff6cc9b_a937e69a",
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b0443e2_bb94af84",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 1
@@ -161,6 +317,30 @@
       "writtenOn": "2019-06-18T14:31:24Z",
       "side": 1,
       "message": "style: you can use anonymous function here.\n\ndefer func() {\n  ...\n}()",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 27
+      },
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6a34900_a8ebccdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-19T02:57:23Z",
+      "side": 1,
+      "message": "I first used an anonymous function here, but I named it to better clarify it\u0027s purpose. I prefer readability over brevity in this case.",
+      "parentUuid": "0b0443e2_bb94af84",
       "range": {
         "startLine": 44,
         "startChar": 1,
@@ -196,6 +376,30 @@
     },
     {
       "key": {
+        "uuid": "da57b110_05934628",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-19T02:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0497c098_0988a4e5",
+      "range": {
+        "startLine": 52,
+        "startChar": 29,
+        "endLine": 52,
+        "endChar": 35
+      },
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77c86229_09961427",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 1
@@ -210,6 +414,24 @@
       "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5294e701_cab8f2b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-19T02:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77c86229_09961427",
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -236,6 +458,30 @@
     },
     {
       "key": {
+        "uuid": "aaee1be6_06b2819c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-19T02:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2894ea81_22bf88ae",
+      "range": {
+        "startLine": 79,
+        "startChar": 42,
+        "endLine": 79,
+        "endChar": 46
+      },
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abe32089_9f460f8c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 1
@@ -247,6 +493,24 @@
       "writtenOn": "2019-06-18T14:31:24Z",
       "side": 1,
       "message": "This looks unusual, since callers have to run the clean up method even if this method returns error.\nDo you think the original code didn\u0027t work? If so, could you describe the comment in details explicitly?",
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ca62e65_2a44e1e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-19T02:57:23Z",
+      "side": 1,
+      "message": "If an error occurs due to a timeout, cleanup won\u0027t be done as it will use the same context. Returning the function here even on failure allows us to run it with a larger context in SetUpBenchmark. This seems acceptable as we\u0027re dealing with a private function. I want to avoid getting into a chain of reducing context time, as we might end up with 2min+ just reserved for cleanup, causing functions with a standard timeout to just fail immediately.\n\nAlternatives are: creating an even shorter context here, passing in both a long and short context.",
+      "parentUuid": "abe32089_9f460f8c",
       "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -267,6 +531,24 @@
       "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1caa1e80_987c2ba8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-19T02:57:23Z",
+      "side": 1,
+      "message": "The \u0027webRTCDecodePerf\u0027 already reduces the timeout, but the first few statements in that function might still cause a timeout. I want to avoid reducing the timeout multiple times, but I guess leaving 5 seconds for timeout here shouldn\u0027t make much of a difference, and will be safer.",
+      "parentUuid": "f4eaab0a_8bd84486",
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
