@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c11f5091_5cb03344",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-19T05:00:11Z",
+      "side": 1,
+      "message": "While it\u0027s great to reuse some code in remote tests in the future, could you concentrate on the immediate usage in local tests for now? Without actual usage, it\u0027s difficult to tell if abstraction is really needed or not, and abstraction always makes it harder to follow the code.\n\nIn this case, I think runner type is not really needed for now. Having a plain function in the following signature should be sufficient:\n\n func TimedScan(ctx context.Context, iface string, freqs []int, ssids []string) (*TimedScanData, error)",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 76
+      },
+      "revId": "40d67fdfbe3e9358ab3e2857e0fad71a1d054c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0f80cd3_5db4e29d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-19T05:00:11Z",
+      "side": 1,
+      "message": "Generally speaking, testing.State and context.Context should not be stored in a struct:\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#contexts\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\nTo leave logs, please pass context.Context as a function argument and use testing.ContextLog/ContextLogf.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 42
+      },
+      "revId": "40d67fdfbe3e9358ab3e2857e0fad71a1d054c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf8f6347_939edf31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-19T05:00:11Z",
+      "side": 1,
+      "message": "How long does \"timed scan\" take? Can we explicitly set the duration for scanning?",
+      "range": {
+        "startLine": 242,
+        "startChar": 18,
+        "endLine": 242,
+        "endChar": 27
+      },
+      "revId": "40d67fdfbe3e9358ab3e2857e0fad71a1d054c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6ff7078_ae5099f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-19T05:00:11Z",
+      "side": 1,
+      "message": "Please avoid shells when posible to avoid complexity about string escapes.\n\nIIUC in this case we use shell only to use \"time -p\", but the run time can be measured in Go code. This would also make it easier to parse the output.\n\n var args []string\n ...\n for _, freq :\u003d range frequencies {\n   args \u003d append(args, \"freq\", strconv.Itoa(freq))\n }\n ...\n start :\u003d time.Now()\n if err :\u003d testexec.CommandContext(ctx, iwCommand, args...); err !\u003d nil {\n   ...\n }\n duration :\u003d time.Since(start) // this is duration of the command",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 23
+      },
+      "revId": "40d67fdfbe3e9358ab3e2857e0fad71a1d054c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51e54d29_5efbcc58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-19T05:00:11Z",
+      "side": 1,
+      "message": "Why don\u0027t we just name those subtest functions as Test*?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 1
+      },
+      "revId": "40d67fdfbe3e9358ab3e2857e0fad71a1d054c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
