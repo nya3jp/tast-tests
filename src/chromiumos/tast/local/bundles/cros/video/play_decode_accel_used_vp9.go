@@ -19,7 +19,6 @@ func init() {
 		Func:         PlayDecodeAccelUsedVP9,
 		Desc:         "Verifies that VP9 video decode acceleration works in Chrome",
 		Contacts:     []string{"deanliao@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWDecodeVP9, "chrome"},
 		Pre:          pre.ChromeVideo(),
 		Data:         []string{"720_vp9.webm", "video.html"},
