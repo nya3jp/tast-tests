@@ -353,6 +353,30 @@
     },
     {
       "key": {
+        "uuid": "3c67d8f1_428eada8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-19T14:38:27Z",
+      "side": 1,
+      "message": "defer is to declare the function to be called at the end of function, i.e. clean up.\nYou already mentioned in the comment the main content of the function is shut down the process.\nSo, both \"cleanup\" and \"process\" sounds duplicate to me.\nAFAIK, anonymous function approach is common in Tast, and so I prefer consistency. WDYT?",
+      "parentUuid": "a6a34900_a8ebccdb",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 27
+      },
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0497c098_0988a4e5",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 1
@@ -511,6 +535,24 @@
       "side": 1,
       "message": "If an error occurs due to a timeout, cleanup won\u0027t be done as it will use the same context. Returning the function here even on failure allows us to run it with a larger context in SetUpBenchmark. This seems acceptable as we\u0027re dealing with a private function. I want to avoid getting into a chain of reducing context time, as we might end up with 2min+ just reserved for cleanup, causing functions with a standard timeout to just fail immediately.\n\nAlternatives are: creating an even shorter context here, passing in both a long and short context.",
       "parentUuid": "abe32089_9f460f8c",
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7848efd8_4fd33731",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-19T14:38:27Z",
+      "side": 1,
+      "message": "appyConfig wouldn\u0027t be timed out. The context is used only for logging.\nI\u0027m not very sure in future whether it is necessary to be timed out.\nHowever, at the moment it is not necessary. So, I\u0027d still think the original approach looks simpler and common pattern.\nFor future caution, it\u0027s nice to be commented in applyConfig. We should be able to control it, because these are private method, I think.",
+      "parentUuid": "1ca62e65_2a44e1e0",
       "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
