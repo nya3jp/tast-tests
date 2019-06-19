@@ -81,6 +81,7 @@ func runTest(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 		s.Fatal("Creating renderer failed: ", err)
 	}
 	defer conn.Close()
+	defer conn.CloseTarget(ctx)
 
 	if err := conn.WaitForExpr(ctx, "scriptReady"); err != nil {
 		s.Fatal("Timed out waiting for scripts ready: ", err)

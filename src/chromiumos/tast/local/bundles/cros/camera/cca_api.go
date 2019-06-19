@@ -44,6 +44,7 @@ func CCAAPI(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to CCA: ", err)
 	}
 	defer ccaConn.Close()
+	defer ccaConn.CloseTarget(ctx)
 
 	rctx, rcancel := ctxutil.Shorten(ctx, 3*time.Second)
 	defer rcancel()
