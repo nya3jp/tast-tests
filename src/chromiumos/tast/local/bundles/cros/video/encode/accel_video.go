@@ -87,9 +87,19 @@ type binArgs struct {
 	measureCPU bool
 }
 
+// TestMode represents the test's running mode.
+type TestMode int
+
+const (
+	// FunctionalTest indicates a functional test.
+	FunctionalTest TestMode = iota
+	// PerformanceTest indicates a performance test. CPU scaling should be adujst to performance.
+	PerformanceTest
+)
+
 // runAccelVideoTest runs video_encode_accelerator_unittest for each binArgs.
 // It fails if video_encode_accelerator_unittest fails.
-func runAccelVideoTest(ctx context.Context, s *testing.State, opts TestOptions, bas ...binArgs) {
+func runAccelVideoTest(ctx context.Context, s *testing.State, mode TestMode, opts TestOptions, bas ...binArgs) {
 	// Reserve time to restart the ui job at the end of the test.
 	// Only a single process can have access to the GPU, so we are required
 	// to call "stop ui" at the start of the test. This will shut down the
@@ -122,6 +132,18 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, opts TestOptions, 
 	}
 	if opts.InputMode == DMABuf {
 		commonArgs = append(commonArgs, "--native_input")
+	}
+
+	if mode == PerformanceTest {
+		// Set up CPU in performance mode and wait until CPU is idle enough after stop ui.
+		// Note that shortCtx is shorten by 10 seconds for cleanUpBenchmark().
+		shorterCtx, cleanUpBenchmark, err := cpu.SetUpBenchmark(shortCtx)
+		if err != nil {
+			s.Fatal("Failed to set up benchmark mode: ", err)
+		} else {
+			shortCtx = shorterCtx
+		}
+		defer cleanUpBenchmark()
 	}
 
 	const exec = "video_encode_accelerator_unittest"
@@ -288,7 +310,7 @@ func RunAllAccelVideoTests(ctx context.Context, s *testing.State, opts TestOptio
 	}
 	defer vl.Close()
 
-	runAccelVideoTest(ctx, s, opts, binArgs{})
+	runAccelVideoTest(ctx, s, FunctionalTest, opts, binArgs{})
 }
 
 // RunAccelVideoPerfTest runs video_encode_accelerator_unittest multiple times with different arguments to gather perf metrics.
@@ -301,12 +323,6 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts TestOptio
 		// cpuEncodeFrames is the number of encoded frames for CPU usage test. It should be high enouch to run for measurement duration.
 		cpuEncodeFrames = 10000
 	)
-
-	ctx, cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
-	if err != nil {
-		s.Fatal("Failed to set up benchmark mode: ", err)
-	}
-	defer cleanUpBenchmark()
 
 	schemaName := strings.TrimSuffix(opts.Params.Name, ".vp9.webm")
 	if opts.Profile == videotype.H264Prof {
@@ -322,7 +338,7 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts TestOptio
 
 	frameStatsPath := getResultFilePath(s.OutDir(), schemaName, "quality", frameStatsSuffix)
 
-	runAccelVideoTest(ctx, s, opts,
+	runAccelVideoTest(ctx, s, PerformanceTest, opts,
 		// Run video_encode_accelerator_unittest to get FPS.
 		binArgs{
 			testFilter: "EncoderPerf/*/0",
