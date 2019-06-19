@@ -507,6 +507,30 @@
     },
     {
       "key": {
+        "uuid": "9413278a_99c3c30e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-19T02:52:07Z",
+      "side": 1,
+      "message": "Thanks for explanation.\n\noptional: I think it\u0027s nice to be tracked in somewhere. Maybe filing a issue, or reusing the bug linked from this CL?",
+      "parentUuid": "c16a6579_2526e300",
+      "range": {
+        "startLine": 299,
+        "startChar": 75,
+        "endLine": 300,
+        "endChar": 65
+      },
+      "revId": "63bfb8f2a13dff1727df040aa194d9d94004a3df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cb1c0c57_6ffda606",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/verity/verity.go",
         "patchSetId": 1
