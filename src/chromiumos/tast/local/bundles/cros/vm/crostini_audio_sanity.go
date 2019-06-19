@@ -47,7 +47,7 @@ func CrostiniAudioSanity(ctx context.Context, s *testing.State) {
 	defer vm.UnmountComponent(ctx)
 
 	s.Log("Creating default container")
-	cont, err := vm.CreateDefaultContainer(ctx, s.OutDir(), cr.User(), vm.Tarball, artifactPath)
+	cont, err := vm.CreateDefaultVMContainer(ctx, s.OutDir(), cr.User(), vm.Tarball, artifactPath)
 	if err != nil {
 		s.Fatal("Failed to set up default container: ", err)
 	}
