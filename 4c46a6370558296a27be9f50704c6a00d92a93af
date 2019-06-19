@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "373ea5c3_1f1e9bdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-19T01:31:03Z",
+      "side": 0,
+      "message": "You remove \u0027decodeMetadata\u0027, but this is still used in the runAccelVideoTest? We should move this to arc++ indeed, but the video_decode_accelerator_unittest hasn\u0027t been deprecated yet!",
+      "revId": "4c46a6370558296a27be9f50704c6a00d92a93af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
