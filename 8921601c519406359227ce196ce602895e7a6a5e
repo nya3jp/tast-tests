@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "76766997_0fd31174",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-19T07:48:01Z",
+      "side": 1,
+      "message": "IMHO it might not make sense for SetUpBenchmark to return a context. We might already need to create a shorter context earlier for other purposes such as restarting the UI job.\n\nSetUpBenchmark will make sure to leave enough time internally to clean up if it fails. But in general, clean up and leaving enough time for clean up, should be managed by the testcase that calls this function.",
+      "parentUuid": "69d3afd3_a060d4dd",
+      "range": {
+        "startLine": 19,
+        "startChar": 45,
+        "endLine": 20,
+        "endChar": 54
+      },
+      "revId": "8921601c519406359227ce196ce602895e7a6a5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7cd178ee_1ea3068d",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/encode_accel_jpeg_perf.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-06-19T04:31:14Z",
       "side": 1,
       "message": "nit: this undo function is called \"cleanupBenchmark\" in some test cases. Why not use same name across test cases?\nsame for others.",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 18
+      },
+      "revId": "8921601c519406359227ce196ce602895e7a6a5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b4c539b_6cef0b1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/encode_accel_jpeg_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-19T07:48:01Z",
+      "side": 1,
+      "message": "I was suggested to name this function \u0027tearDownBenchmark\u0027, which is fine by me. I missed one occurrence, but they should all have been adapted now.",
+      "parentUuid": "7cd178ee_1ea3068d",
       "range": {
         "startLine": 55,
         "startChar": 1,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "46e898e0_3d50f275",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-19T07:48:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ee3d323_db6f0dc5",
+      "range": {
+        "startLine": 329,
+        "startChar": 37,
+        "endLine": 329,
+        "endChar": 50
+      },
+      "revId": "8921601c519406359227ce196ce602895e7a6a5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6a978cc_9978d5f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 2
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "b0ebe6b6_86d78077",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-19T07:48:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6a978cc_9978d5f0",
+      "range": {
+        "startLine": 369,
+        "startChar": 20,
+        "endLine": 369,
+        "endChar": 36
+      },
+      "revId": "8921601c519406359227ce196ce602895e7a6a5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba0cfc18_bdffb847",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
         "patchSetId": 2
@@ -137,6 +233,30 @@
       "revId": "8921601c519406359227ce196ce602895e7a6a5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62b22bba_f95456a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/mediarecorder/media_recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-19T07:48:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba0cfc18_bdffb847",
+      "range": {
+        "startLine": 150,
+        "startChar": 41,
+        "endLine": 150,
+        "endChar": 56
+      },
+      "revId": "8921601c519406359227ce196ce602895e7a6a5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
