@@ -33,6 +33,7 @@ type VM struct {
 	name            string // name of the VM
 	ContextID       int64  // cid for the crosvm process
 	seneschalHandle uint32 // seneschal handle for the VM
+	EnableGPU       bool   // Hardware GPU support
 }
 
 // NewDefaultVM gets a default VM instance.
@@ -40,8 +41,9 @@ func NewDefaultVM(c *Concierge) *VM {
 	return &VM{
 		Concierge:       c,
 		name:            DefaultVMName,
-		ContextID:       -1, // not populated until VM is started.
-		seneschalHandle: 0,  // not populated until VM is started.
+		ContextID:       -1,    // not populated until VM is started.
+		seneschalHandle: 0,     // not populated until VM is started.
+		EnableGPU:       false, // disable GPU by default.
 	}
 }
 
