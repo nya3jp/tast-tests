@@ -155,13 +155,14 @@ func (c *Concierge) startTerminaVM(ctx context.Context, vm *VM) error {
 			StartTermina: true,
 			OwnerId:      c.ownerID,
 			Disks: []*vmpb.DiskImage{
-				&vmpb.DiskImage{
+				{
 					Path:      diskPath,
 					ImageType: vmpb.DiskImageType_DISK_IMAGE_AUTO,
 					Writable:  true,
 					DoMount:   false,
 				},
 			},
+			EnableGpu: vm.EnableGPU,
 		}, resp); err != nil {
 		return err
 	}
