@@ -154,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "ca5920b4_252020fe",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-06-19T03:20:26Z",
+      "side": 1,
+      "message": "random drive-by request - I recently tried to make autotest more stable by porting some of this logic over there - if you change/improve anything here can you give a look and see if it\u0027s worth adding to autotest? thanks.",
+      "parentUuid": "610f8e4b_02a8e23d",
+      "range": {
+        "startLine": 182,
+        "startChar": 2,
+        "endLine": 182,
+        "endChar": 84
+      },
+      "revId": "cc2e4798322838926d0f634b86ced7fd26cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d5726e6_1fb5fa9d",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 5
