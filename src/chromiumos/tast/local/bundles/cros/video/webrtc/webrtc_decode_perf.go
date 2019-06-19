@@ -21,7 +21,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/perf"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -223,14 +222,18 @@ func webRTCDecodePerf(ctx context.Context, s *testing.State, streamFile, loopbac
 	}
 	defer cr.Close(ctx)
 
-	// Leave 10 seconds for closing tab and chrome.
-	shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		s.Fatal("Failed waiting for CPU to become idle: ", err)
+	}
 
-	rtcInitHistogram, err := metrics.GetHistogram(shortCtx, cr, constants.RTCVDInitStatus)
+	rtcInitHistogram, err := metrics.GetHistogram(ctx, cr, constants.RTCVDInitStatus)
 	if err != nil {
 		s.Fatalf("Failed to get histogram %s: %v", constants.RTCVDInitStatus, err)
 	}
+
+	// Reserve one second for closing tab.
+	shortCtx, cancel := ctxutil.Shorten(ctx, time.Second)
+	defer cancel()
 
 	// The page repeatedly plays a loopback video stream.
 	// To stop it, we defer conn.CloseTarget() to close the tab.
@@ -271,18 +274,12 @@ func webRTCDecodePerf(ctx context.Context, s *testing.State, streamFile, loopbac
 // opens an WebRTC loopback page that repeatedly plays a loopback video stream
 // to measure CPU usage and frame decode time and stores them to perf.
 func RunWebRTCDecodePerf(ctx context.Context, s *testing.State, streamName string, config MeasureConfig) {
-	// time reserved for cleanup.
+	// Time reserved for cleanup.
 	const cleanupTime = 5 * time.Second
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 	loopbackURL := server.URL + "/" + LoopbackPage
-
-	// Emulate logout to make sure we can expect a CPU cool down in cpu.SetUpBenchmark() later.
-	s.Log("Logging out")
-	if err := upstart.RestartJob(ctx, "ui"); err != nil {
-		s.Fatal("Chrome logout failed: ", err)
-	}
 
 	s.Log("Setting up for CPU benchmarking")
 	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
@@ -294,10 +291,6 @@ func RunWebRTCDecodePerf(ctx context.Context, s *testing.State, streamName strin
 	// Leave a bit of time to tear down benchmark mode.
 	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
 	defer cancel()
-
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		s.Fatal("Failed waiting for CPU to become idle: ", err)
-	}
 
 	p := perf.NewValues()
 	// Try hardware accelerated WebRTC first.
