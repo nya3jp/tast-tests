@@ -115,6 +115,7 @@ func playVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL string
 		return err
 	}
 	defer conn.Close()
+	defer conn.CloseTarget(ctx)
 
 	if err := loadVideo(ctx, conn, videoFile); err != nil {
 		return err
@@ -176,6 +177,7 @@ func playMSEVideo(ctx context.Context, cr *chrome.Chrome, mpdFile, baseURL strin
 		return err
 	}
 	defer conn.Close()
+	defer conn.CloseTarget(ctx)
 
 	if err := initShakaPlayer(ctx, conn, mpdFile); err != nil {
 		return err
@@ -226,6 +228,7 @@ func playSeekVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL st
 		return err
 	}
 	defer conn.Close()
+	defer conn.CloseTarget(ctx)
 
 	if err := loadVideo(ctx, conn, videoFile); err != nil {
 		return err
