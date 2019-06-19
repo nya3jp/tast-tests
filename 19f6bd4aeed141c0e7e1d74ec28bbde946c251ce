@@ -34,6 +34,24 @@
       "revId": "19f6bd4aeed141c0e7e1d74ec28bbde946c251ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b96554f7_784352c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_vp9_1080p_i420.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-06-19T03:53:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f879b06_86345a8c",
+      "revId": "19f6bd4aeed141c0e7e1d74ec28bbde946c251ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
