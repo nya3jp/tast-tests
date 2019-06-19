@@ -114,6 +114,23 @@
       "revId": "40d67fdfbe3e9358ab3e2857e0fad71a1d054c0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8be848d_5e1c75eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-19T17:04:40Z",
+      "side": 1,
+      "message": "Could you make the test \"actually test something\"?\nE.g. currently, there\u0027s no exercises of the behavior, which lead to s.Error() or s.Fatal() family invocation.\nIt is conflicting with what \"Desc:\" explains (i.e. no verification now).",
+      "revId": "40d67fdfbe3e9358ab3e2857e0fad71a1d054c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
