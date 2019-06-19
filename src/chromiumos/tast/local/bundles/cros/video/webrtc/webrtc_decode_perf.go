@@ -21,7 +21,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/perf"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -223,8 +222,16 @@ func webRTCDecodePerf(ctx context.Context, s *testing.State, streamFile, loopbac
 	}
 	defer cr.Close(ctx)
 
+	// Set up CPU in performance mode and wait until CPU is idle enough.
+	// Note that shortCtx is shorten by 10 seconds for cleanUpBenchmark().
+	shortCtx, cleanupBenchmark, err := cpu.SetUpBenchmark(ctx)
+	if err != nil {
+		s.Fatal("Failed to set up CPU benchmark mode: ", err)
+	}
+	defer cleanupBenchmark()
+
 	// Leave 10 seconds for closing tab and chrome.
-	shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	shortCtx, cancel := ctxutil.Shorten(shortCtx, 10*time.Second)
 	defer cancel()
 
 	rtcInitHistogram, err := metrics.GetHistogram(shortCtx, cr, constants.RTCVDInitStatus)
@@ -275,26 +282,13 @@ func RunWebRTCDecodePerf(ctx context.Context, s *testing.State, streamName strin
 	defer server.Close()
 	loopbackURL := server.URL + "/" + LoopbackPage
 
-	// Emulate logout to make sure we can expect a CPU cool down in cpu.SetUpBenchmark() later.
-	s.Log("Logging out")
-	if err := upstart.RestartJob(ctx, "ui"); err != nil {
-		s.Fatal("Chrome logout failed: ", err)
-	}
-
-	s.Log("Setting up for CPU benchmarking")
-	shortCtx, cleanupBenchmark, err := cpu.SetUpBenchmark(ctx)
-	if err != nil {
-		s.Fatal("Failed to set up CPU benchmark mode: ", err)
-	}
-	defer cleanupBenchmark()
-
 	p := perf.NewValues()
 	// Try hardware accelerated WebRTC first.
 	// If it is hardware accelerated, run without hardware acceleration again.
 	streamFilePath := s.DataPath(streamName)
-	hwAccelUsed := webRTCDecodePerf(shortCtx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, false, p, config)
+	hwAccelUsed := webRTCDecodePerf(ctx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, false, p, config)
 	if hwAccelUsed {
-		webRTCDecodePerf(shortCtx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, true, p, config)
+		webRTCDecodePerf(ctx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, true, p, config)
 	}
 	p.Save(s.OutDir())
 }
