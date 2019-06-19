@@ -18,7 +18,6 @@ func init() {
 		Func:     PlayH264,
 		Desc:     "Checks H264 video playback is working",
 		Contacts: []string{"deanliao@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:     []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Pre:          pre.ChromeVideo(),
