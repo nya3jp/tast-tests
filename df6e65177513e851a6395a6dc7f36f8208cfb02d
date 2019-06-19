@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fce2a189_60743701",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-19T14:52:34Z",
+      "side": 1,
+      "message": "0.1% flakiness sounds a bit high, because we run the tests in CQ so many times.\n\nBy looking at the case, I found;\n- test_api extension error, which looks independent from this test.\n- SSH connection lost, which also looks independent, too. But,\n- test timed out on some board. E.g. http://stainless/browse/chromeos-autotest-results/314171338-chromeos-test/chromeos6-row4-rack6-host4/tast/results/tests/video.PlayVP8/\n\nIs the last one actual failure/flakiness of the test?\nIf so, could you take a look and fix it?\nOr, is the problem already fixed?",
+      "revId": "df6e65177513e851a6395a6dc7f36f8208cfb02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
