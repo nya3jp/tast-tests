@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4afdd9d_00049fba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-19T13:51:16Z",
+      "side": 1,
+      "message": "Clar: is it ok to run for the printer which Chrome configured?\nI.e., I can easily understand the if ppd !\u003d \"\" case at L87, but I\u0027m just wondering if we should do this for L94 block case.\nIf so, nice to have a brief comment.",
+      "revId": "99252d02830a16be41dbb29212fcc32d58615511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

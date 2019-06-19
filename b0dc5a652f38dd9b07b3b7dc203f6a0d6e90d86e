@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "56f8e65d_8dee4b42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-19T13:51:16Z",
+      "side": 1,
+      "message": "I\u0027m ok to move forward.\nPlease note that this will be the blocker to promote printer related tests to Critical (i.e. CQ), because we couldn\u0027t guarantee that this temporary fix works properly without the investigation, I think.\nActually, according to your explanation, it was the regression at some point, IIUC.",
+      "parentUuid": "a5886f62_537ead84",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "b0dc5a652f38dd9b07b3b7dc203f6a0d6e90d86e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "604599bf_34ed7f20",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/setup.go",
         "patchSetId": 3
