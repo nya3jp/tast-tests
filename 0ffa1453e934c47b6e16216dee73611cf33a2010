@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d70e4969_ea906d8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_audio_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2019-06-19T02:30:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7357fd2_7485d31b",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 32
+      },
+      "revId": "0ffa1453e934c47b6e16216dee73611cf33a2010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8082159_9cc9420d",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_audio_sanity.go",
         "patchSetId": 5
@@ -39,6 +63,24 @@
       "revId": "0ffa1453e934c47b6e16216dee73611cf33a2010",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b9768ae_b5d2869a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_audio_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2019-06-19T02:30:25Z",
+      "side": 1,
+      "message": "No we don\u0027t need that. The software is installed in guests image in CL:1659878",
+      "parentUuid": "f8082159_9cc9420d",
+      "revId": "0ffa1453e934c47b6e16216dee73611cf33a2010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "2ad343ce_254e82a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_audio_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2019-06-19T02:30:25Z",
+      "side": 1,
+      "message": "line 29-61 will be refactored since lots of Crostini tests have this part.\nBut still clean up this part.",
+      "parentUuid": "36c26f7f_e1c7efbb",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "0ffa1453e934c47b6e16216dee73611cf33a2010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c4197c0_bf1271ad",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_audio_sanity.go",
         "patchSetId": 5
@@ -79,6 +145,24 @@
       "revId": "0ffa1453e934c47b6e16216dee73611cf33a2010",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8130b750_ebde359d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_audio_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2019-06-19T02:30:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c4197c0_bf1271ad",
+      "revId": "0ffa1453e934c47b6e16216dee73611cf33a2010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "0893dd7d_7bcdf37e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_audio_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2019-06-19T02:30:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e4752ee_f25a9d13",
+      "range": {
+        "startLine": 59,
+        "startChar": 12,
+        "endLine": 59,
+        "endChar": 41
+      },
+      "revId": "0ffa1453e934c47b6e16216dee73611cf33a2010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f2fab95_9e4426f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_audio_sanity.go",
         "patchSetId": 5
@@ -122,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "842a7a0c_f47f1c6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_audio_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2019-06-19T02:30:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f2fab95_9e4426f9",
+      "revId": "0ffa1453e934c47b6e16216dee73611cf33a2010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a965300_7f8ad74e",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_audio_sanity.go",
         "patchSetId": 5
@@ -136,6 +262,24 @@
       "revId": "0ffa1453e934c47b6e16216dee73611cf33a2010",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf1253ac_95371e6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_audio_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2019-06-19T02:30:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a965300_7f8ad74e",
+      "revId": "0ffa1453e934c47b6e16216dee73611cf33a2010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
