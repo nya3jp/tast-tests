@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c1e71a31_b87bd97c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-19T04:30:58Z",
+      "side": 1,
+      "message": "Yes, we do not have the godoc for the test-main method. Could you follow it for consistency?",
+      "parentUuid": "ff10658f_378f513e",
+      "revId": "9983daa1434fa9134f89c2b5fea3bc3a7735545b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79cd40f0_cc1f21f2",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
         "patchSetId": 2

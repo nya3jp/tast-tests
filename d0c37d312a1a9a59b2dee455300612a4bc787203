@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "316830a2_307f27c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-19T04:30:58Z",
+      "side": 1,
+      "message": "style/optional: I think you can inline the params.\n\ncvm, err :\u003d vm.NewCrosvm(ctx, \u0026vm.CrosvmParams{\n   KernelArgs: ...\n   VMPath: ...\n})",
+      "revId": "d0c37d312a1a9a59b2dee455300612a4bc787203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b9b27db_9261fbeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-19T04:30:58Z",
+      "side": 1,
+      "message": "Clar: This ctx has the timeout of 5 Second set at L44.\nI guess your intention is to set 5 second and 1 second timeout for each?",
+      "range": {
+        "startLine": 57,
+        "startChar": 35,
+        "endLine": 57,
+        "endChar": 38
+      },
+      "revId": "d0c37d312a1a9a59b2dee455300612a4bc787203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5e0292e_c3f6c54e",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-19T04:30:58Z",
+      "side": 1,
+      "message": "In case of timeout, the goroutine would be blocked infinitely.\nCould you buffer data?\n\nch :\u003d make(chan string, 1)\n\nDitto for errch.",
+      "revId": "d0c37d312a1a9a59b2dee455300612a4bc787203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "720156e2_54f5a3df",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-19T04:30:58Z",
+      "side": 1,
+      "message": "Could you terminate the goroutine in case of time out?",
+      "revId": "d0c37d312a1a9a59b2dee455300612a4bc787203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
