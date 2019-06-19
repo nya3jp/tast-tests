@@ -17,7 +17,6 @@ import (
 
 	cpb "chromiumos/system_api/vm_cicerone_proto" // protobufs for container management
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
@@ -457,50 +456,12 @@ func (c *Container) DumpLog(ctx context.Context, dir string) error {
 	return cmd.Run()
 }
 
-// CreateDefaultContainer prepares a VM and container with default settings and
-// either the live or staging container versions. The directory dir may be used
-// to store logs on failure. If the container type is Tarball, then artifactPath
-// must be specified with the path to the tarball containing the termina VM
-// and container. Otherwise, artifactPath is ignored.
-func CreateDefaultContainer(ctx context.Context, dir, user string, t ContainerType, artifactPath string) (*Container, error) {
-	userPath, err := cryptohome.UserPath(ctx, user)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get user Downloads dir")
-	}
-
-	if t == Tarball {
-		// Put the container rootfs and metadata tarballs in a subdirectory of
-		// Downloads for 9P sharing with the guest.
-		containerPath := filepath.Join(userPath, "Downloads/crostini")
-		if err := os.MkdirAll(containerPath, 0755); err != nil {
-			return nil, errors.Wrap(err, "failed to mkdir for container image")
-		}
-
-		testing.ContextLog(ctx, "Extracting container tarballs")
-		cmd := testexec.CommandContext(ctx, "tar", "xvf", artifactPath,
-			"-C", containerPath,
-			"container_metadata.tar.xz", "container_rootfs.tar.xz")
-		if err := cmd.Run(testexec.DumpLogOnError); err != nil {
-			return nil, errors.Wrap(err, "failed to untar container image")
-		}
-	}
-
-	concierge, err := NewConcierge(ctx, user)
-	if err != nil {
-		return nil, err
-	}
-
-	vmInstance := NewDefaultVM(concierge)
-
-	if err := vmInstance.Start(ctx); err != nil {
-		return nil, err
-	}
-	if t == Tarball {
-		if err := vmInstance.ShareDownloadsPath(ctx, "crostini", false); err != nil {
-			return nil, errors.Wrap(err, "failed to share container image with VM")
-		}
-	}
-
+// CreateDefaultContainer prepares a container in VM with default settings.
+// The directory dir may be used to store logs on failure. If the container
+// type is Tarball, then artifactPath must be specified with the path to the
+// tarball containing the termina VM and container. Otherwise, artifactPath
+// is ignored.
+func CreateDefaultContainer(ctx context.Context, vmInstance *VM, t ContainerType, dir string) (*Container, error) {
 	created, err := dbusutil.NewSignalWatcherForSystemBus(ctx, ciceroneDBusMatchSpec("LxdContainerCreated"))
 	if err != nil {
 		return nil, err
@@ -533,8 +494,7 @@ func CreateDefaultContainer(ctx context.Context, dir, user string, t ContainerTy
 	if err := c.StartAndWait(ctx, dir); err != nil {
 		return nil, err
 	}
-
-	return c, nil
+	return c, err
 }
 
 func ciceroneDBusMatchSpec(memberName string) dbusutil.MatchSpec {
