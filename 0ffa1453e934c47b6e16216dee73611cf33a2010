@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7357fd2_7485d31b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_audio_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-19T01:27:34Z",
+      "side": 1,
+      "message": "Could you describe in the comment about what part this test takes longer?",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 32
+      },
+      "revId": "0ffa1453e934c47b6e16216dee73611cf33a2010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8082159_9cc9420d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_audio_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-19T01:27:34Z",
+      "side": 1,
+      "message": "Clar: do you need \"audio_play\" and/or \"audio_record\" dependency, too?",
+      "revId": "0ffa1453e934c47b6e16216dee73611cf33a2010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36c26f7f_e1c7efbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_audio_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-19T01:27:34Z",
+      "side": 1,
+      "message": "Could you use chrome.LoggedIn precondition? Or do you meant to include it as a part of your refactoring mentioned in TODO?",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "0ffa1453e934c47b6e16216dee73611cf33a2010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c4197c0_bf1271ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_audio_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-19T01:27:34Z",
+      "side": 1,
+      "message": "I think you need to UnmountComponent() at the end of test. Could you defer it?\ncf) crbug.com/974813",
+      "revId": "0ffa1453e934c47b6e16216dee73611cf33a2010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e4752ee_f25a9d13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_audio_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-19T01:27:34Z",
+      "side": 1,
+      "message": "nit/optional: maybe \"Failed to dump container log: \" for consistency?",
+      "range": {
+        "startLine": 59,
+        "startChar": 12,
+        "endLine": 59,
+        "endChar": 41
+      },
+      "revId": "0ffa1453e934c47b6e16216dee73611cf33a2010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f2fab95_9e4426f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_audio_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-19T01:27:34Z",
+      "side": 1,
+      "message": "style: for shorter code, how about inlining the args in Command?\n\nif err :\u003d cont.Command(ctx, \"aplay\", \"-l\").Run(); err !\u003d nil {\n  ...\n}\n\nor if you keep this approach, could you rename the var to shorter one?\nIn go, practically the shorter name is preferred using the surrounding context.\nIn this specific case, I think \"args\" is enough. (and reuse it in below).",
+      "revId": "0ffa1453e934c47b6e16216dee73611cf33a2010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a965300_7f8ad74e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_audio_sanity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-19T01:27:34Z",
+      "side": 1,
+      "message": "optional: How about testexec.DumpLogOnError to make investigation easier in case of failure?\n\nif err :\u003d cont.Command(...).Run(testexec.DumpLogOnError); err !\u003d nil {\n  ...\n}",
+      "revId": "0ffa1453e934c47b6e16216dee73611cf33a2010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
