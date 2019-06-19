@@ -166,6 +166,7 @@ func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, videoNam
 		return errors.Wrap(err, "failed to open video page")
 	}
 	defer conn.Close()
+	defer conn.CloseTarget(ctx)
 
 	// Wait until video element is loaded.
 	if err := conn.WaitForExpr(ctx, "document.getElementsByTagName('video').length > 0"); err != nil {

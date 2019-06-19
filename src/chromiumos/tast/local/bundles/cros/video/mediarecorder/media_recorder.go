@@ -155,6 +155,7 @@ func doMeasurePerf(ctx context.Context, fileSystem http.FileSystem, outDir strin
 		return 0, 0, false, errors.Wrap(err, "failed to open recorder page")
 	}
 	defer conn.Close()
+	defer conn.CloseTarget(ctx)
 
 	if err := conn.WaitForExpr(shortCtx, "pageLoaded"); err != nil {
 		return 0, 0, false, errors.Wrap(err, "Timed out waiting for page loading")
@@ -309,6 +310,7 @@ func VerifyEncodeAccelUsed(ctx context.Context, s *testing.State, codec videotyp
 		s.Fatal("Failed to open recorder page: ", err)
 	}
 	defer conn.Close()
+	defer conn.CloseTarget(ctx)
 
 	if err := conn.WaitForExpr(ctx, "pageLoaded"); err != nil {
 		s.Fatal("Timed out waiting for page loading: ", err)
