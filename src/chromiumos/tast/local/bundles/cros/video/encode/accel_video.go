@@ -90,9 +90,19 @@ type binArgs struct {
 	measureDuration time.Duration
 }
 
+// testMode represents the test's running mode.
+type testMode int
+
+const (
+	// functionalTest indicates a functional test.
+	functionalTest testMode = iota
+	// performanceTest indicates a performance test. CPU scaling should be adujst to performance.
+	performanceTest
+)
+
 // runAccelVideoTest runs video_encode_accelerator_unittest for each binArgs.
 // It fails if video_encode_accelerator_unittest fails.
-func runAccelVideoTest(ctx context.Context, s *testing.State, opts TestOptions, bas ...binArgs) {
+func runAccelVideoTest(ctx context.Context, s *testing.State, mode testMode, opts TestOptions, bas ...binArgs) {
 	// Reserve time to restart the ui job at the end of the test.
 	// Only a single process can have access to the GPU, so we are required
 	// to call "stop ui" at the start of the test. This will shut down the
@@ -125,6 +135,12 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, opts TestOptions, 
 	}
 	if opts.InputMode == DMABuf {
 		commonArgs = append(commonArgs, "--native_input")
+	}
+
+	if mode == performanceTest {
+		if err := cpu.WaitUntilIdle(shortCtx); err != nil {
+			s.Fatal("Failed waiting for CPU to become idle: ", err)
+		}
 	}
 
 	const exec = "video_encode_accelerator_unittest"
@@ -310,7 +326,7 @@ func RunAllAccelVideoTestsWithFilter(ctx context.Context, s *testing.State, opts
 	}
 	defer vl.Close()
 
-	runAccelVideoTest(ctx, s, opts, binArgs{testFilter: testFilter})
+	runAccelVideoTest(ctx, s, functionalTest, opts, binArgs{testFilter: testFilter})
 }
 
 // RunAccelVideoPerfTest runs video_encode_accelerator_unittest multiple times with different arguments to gather perf metrics.
@@ -333,14 +349,9 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts TestOptio
 		s.Fatal("Failed to set up benchmark mode: ", err)
 	}
 	defer cleanUpBenchmark(ctx)
-
 	// Leave a bit of time to clean up benchmark mode.
 	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
 	defer cancel()
-
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		s.Fatal("Failed waiting for CPU to become idle: ", err)
-	}
 
 	schemaName := strings.TrimSuffix(opts.Params.Name, ".vp9.webm")
 	if opts.Profile == videotype.H264Prof {
@@ -356,7 +367,7 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts TestOptio
 
 	frameStatsPath := getResultFilePath(s.OutDir(), schemaName, "quality", frameStatsSuffix)
 
-	runAccelVideoTest(ctx, s, opts,
+	runAccelVideoTest(ctx, s, performanceTest, opts,
 		// Run video_encode_accelerator_unittest to get FPS.
 		binArgs{
 			testFilter: "EncoderPerf/*/0",
