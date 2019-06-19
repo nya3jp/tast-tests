@@ -65,7 +65,7 @@ func RunTest(ctx context.Context, s *testing.State, traces map[string]string) {
 	defer vm.UnmountComponent(ctx)
 
 	s.Log("Creating default container")
-	cont, err := vm.CreateDefaultContainer(ctx, s.OutDir(), cr.User(), vm.LiveImageServer, "")
+	cont, err := vm.CreateDefaultVMContainer(ctx, s.OutDir(), cr.User(), vm.LiveImageServer, "")
 	if err != nil {
 		s.Fatal("Failed to set up default container: ", err)
 	}
