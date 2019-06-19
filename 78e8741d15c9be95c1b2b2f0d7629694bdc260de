@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "34e4c9f6_82925080",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-19T17:20:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d923bb9_41830ace",
+      "range": {
+        "startLine": 7,
+        "startChar": 46,
+        "endLine": 7,
+        "endChar": 54
+      },
+      "revId": "78e8741d15c9be95c1b2b2f0d7629694bdc260de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ddc6fb5_d8280e28",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "24a1a97a_83f8d61c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-19T17:20:49Z",
+      "side": 1,
+      "message": "I\u0027ll investigate why tests are not running for multiple boards.\nCrOS-video team depends on the tests to make sure hardware accelerated video playback works as expected. What\u0027s the threshold (x failures out of y runs) is acceptable to be in CQ?",
+      "parentUuid": "1ddc6fb5_d8280e28",
+      "revId": "78e8741d15c9be95c1b2b2f0d7629694bdc260de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2cba55b9_57f95cbf",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2019-06-19T15:05:19Z",
       "side": 1,
       "message": "Maybe another kind of flakiness which is not explained in the commit message. Could you take a look?\n\nhttp://stainless/browse/chromeos-autotest-results/314171338-chromeos-test/chromeos6-row4-rack6-host4/tast/results/tests/video.PlayDecodeAccelUsedH264/",
+      "revId": "78e8741d15c9be95c1b2b2f0d7629694bdc260de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af53e4fd_1236d3b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-19T17:20:49Z",
+      "side": 1,
+      "message": "Thanks. I definitely would take a look.",
+      "parentUuid": "2cba55b9_57f95cbf",
       "revId": "78e8741d15c9be95c1b2b2f0d7629694bdc260de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
