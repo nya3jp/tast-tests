@@ -64,16 +64,29 @@ func RunTest(ctx context.Context, s *testing.State, traces map[string]string) {
 	}
 	defer vm.UnmountComponent(ctx)
 
-	s.Log("Creating default container")
-	cont, err := vm.CreateDefaultVMContainer(ctx, s.OutDir(), cr.User(), vm.LiveImageServer, "")
+	s.Log("Restarting Concierge")
+	concierge, err := vm.NewConcierge(ctx, cr.User())
 	if err != nil {
-		s.Fatal("Failed to set up default container: ", err)
+		s.Fatal("Failed to start Concierge: ", err)
+	}
+	defer vm.StopConcierge(ctx)
+
+	vmInstance := vm.NewDefaultVM(concierge)
+	vmInstance.EnableGPU = true
+	if err = vmInstance.Start(ctx); err != nil {
+		s.Fatal("Failed to start VM: ", err)
+	}
+	cont, err := vm.CreateDefaultContainer(ctx, vmInstance, vm.LiveImageServer, s.OutDir())
+	if err != nil {
+		if vmErr := vmInstance.Stop(ctx); vmErr != nil {
+			s.Fatal("Failed to start Container and stop VM: ", vmErr)
+		}
+		s.Fatal("Failed to start Container: ", err)
 	}
 	defer func() {
 		if err := cont.DumpLog(ctx, s.OutDir()); err != nil {
 			s.Error("Failed to dump container log: ", err)
 		}
-		vm.StopConcierge(ctx)
 	}()
 
 	outDir := filepath.Join(s.OutDir(), logDir)
