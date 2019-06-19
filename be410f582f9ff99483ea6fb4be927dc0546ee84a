@@ -16,6 +16,24 @@
       "revId": "be410f582f9ff99483ea6fb4be927dc0546ee84a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0b90381_bc15530b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_audio_sanity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2019-06-19T03:02:41Z",
+      "side": 1,
+      "message": "Like this?",
+      "parentUuid": "cc5860ee_f668d148",
+      "revId": "be410f582f9ff99483ea6fb4be927dc0546ee84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
