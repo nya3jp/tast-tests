@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9246923f_1f3f77f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-19T14:55:39Z",
+      "side": 1,
+      "message": "nit: critical.\n\nMainline means either critical or informational.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_attributes.md#manually_added-attributes",
+      "range": {
+        "startLine": 7,
+        "startChar": 43,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "df6e65177513e851a6395a6dc7f36f8208cfb02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fce2a189_60743701",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
