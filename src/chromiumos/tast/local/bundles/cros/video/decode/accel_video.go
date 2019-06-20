@@ -265,6 +265,10 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, filename strin
 	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
 	defer cancel()
 
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		s.Fatal("Failed waiting for CPU to become idle: ", err)
+	}
+
 	// Test 1: Measure capped and uncapped performance.
 	args := []string{
 		"--output_folder=" + s.OutDir(),

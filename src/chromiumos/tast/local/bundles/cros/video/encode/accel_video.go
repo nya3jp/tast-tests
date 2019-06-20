@@ -334,9 +334,13 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts TestOptio
 	}
 	defer cleanUpBenchmark(ctx)
 
-	// Leave a bit of time to tear down benchmark mode.
+	// Leave a bit of time to clean up benchmark mode.
 	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
 	defer cancel()
+
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		s.Fatal("Failed waiting for CPU to become idle: ", err)
+	}
 
 	schemaName := strings.TrimSuffix(opts.Params.Name, ".vp9.webm")
 	if opts.Profile == videotype.H264Prof {
@@ -425,9 +429,13 @@ func RunARCPerfVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts
 	}
 	defer cleanUpBenchmark(ctx)
 
-	// Leave a bit of time to tear down benchmark mode.
+	// Leave a bit of time to clean up benchmark mode.
 	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
 	defer cancel()
+
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		s.Fatal("Failed waiting for CPU to become idle: ", err)
+	}
 
 	pv := perf.NewValues()
 	runARCVideoTest(ctx, s, a, opts, pv,
