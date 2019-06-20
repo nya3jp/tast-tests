@@ -120,6 +120,24 @@
     },
     {
       "key": {
+        "uuid": "68800201_5f030961",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-20T14:19:34Z",
+      "side": 1,
+      "message": "IIRC, if you\u0027d like to run this test for non-ARCVM test,\ncould you get rid of \"--enable-arcvm\" flag, because it is for ARCVM as named, and it is not expected that the flag is set for non-ARCVM boards.\n\nAlso,\nhttps://cs.chromium.org/chromium/src/chrome/browser/chromeos/dbus/libvda_service_provider.cc?q\u003dLibvdaServiceProvider\u0026sq\u003dpackage:chromium\u0026dr\u003dCSs\u0026l\u003d51\nthis looks TODO if you\u0027d use it for non-ARCVM cases.",
+      "parentUuid": "346f2c6e_fe94c10d",
+      "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2fbbff94_7fccae03",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
         "patchSetId": 7
