@@ -1031,6 +1031,17 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	// -----------------
 	// Phase 2: measure tab switch times to cold tabs.
 	// -----------------
+	cmd := testexec.CommandContext(ctx, "perf",
+		"record",
+		"-a",
+		"-F",
+		"1000",
+		"-o",
+		"/mnt/stateful_partition/unencrypted/my.perf.data")
+	if errPerfStart := cmd.Start(); errPerfStart != nil {
+		s.Fatal("Cannot execute perf: ", errPerfStart)
+	}
+
 	coldTabLower := initialTabSetSize
 	coldTabUpper := coldTabLower + coldTabSetSize
 	if coldTabUpper > len(rset.tabIDs) {
@@ -1042,6 +1053,11 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		s.Fatal("Cannot switch to cold tabs: ", err)
 	}
 	logTabSwitchTimes(ctx, times, len(coldTabIDs), "coldswitch")
+
+	defer cmd.Wait()
+	if errPerfStop := cmd.Process.Signal(os.Interrupt); errPerfStop != nil {
+		s.Fatal("Failed to signal perf: ", errPerfStop)
+	}
 
 	// -----------------
 	// Phase 3: quiesce.
