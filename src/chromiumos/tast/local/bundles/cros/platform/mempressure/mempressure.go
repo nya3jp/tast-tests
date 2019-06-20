@@ -18,6 +18,7 @@ import (
 	"github.com/shirou/gopsutil/mem"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
@@ -594,7 +595,11 @@ func initBrowser(ctx context.Context, p *RunParameters) (*chrome.Chrome, *testex
 		// default.
 		args = append(args, "--ash-host-window-bounds=3840x2048", "--screen-config=3840x2048/i")
 	}
-	tentativeCr, err = chrome.New(ctx, chrome.ExtraArgs(args...))
+	if p.UseARC {
+		tentativeCr, err = chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs(args...))
+	} else {
+		tentativeCr, err = chrome.New(ctx, chrome.ExtraArgs(args...))
+	}
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "cannot start Chrome")
 	}
@@ -797,6 +802,7 @@ type RunParameters struct {
 	// chromeboxes (otherwise Chrome will configure a default 1366x768
 	// screen).
 	FakeLargeScreen bool
+	UseARC          bool
 }
 
 // Run creates a memory pressure situation by loading multiple tabs into Chrome
@@ -875,6 +881,14 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		if err := googleLogIn(ctx, cr); err != nil {
 			s.Fatal("Cannot login to google: ", err)
 		}
+	}
+
+	if p.UseARC {
+		a, err := arc.New(ctx, s.OutDir())
+		if err != nil {
+			s.Fatal("Failed to start ARC: ", err)
+		}
+		defer a.Close()
 	}
 
 	if err := logScreenDimensions(ctx, cr); err != nil {
