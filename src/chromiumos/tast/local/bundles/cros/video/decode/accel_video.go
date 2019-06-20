@@ -374,11 +374,15 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, filename strin
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
 	// Setup benchmark mode.
-	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+	cleanUpBenchmark, err := cpu.SetUpBenchmark(shortCtx)
 	if err != nil {
 		s.Fatal("Failed to set up benchmark mode: ", err)
 	}
 	defer cleanUpBenchmark(ctx)
+
+	if err := cpu.WaitUntilIdle(shortCtx); err != nil {
+		s.Fatal("Failed waiting for CPU to become idle: ", err)
+	}
 
 	// Test 1: Measure capped and uncapped performance.
 	args := []string{
