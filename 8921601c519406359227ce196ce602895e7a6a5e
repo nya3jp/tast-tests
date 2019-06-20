@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1e4d5516_f3e4305f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-20T02:31:04Z",
+      "side": 1,
+      "message": "\u003e But in general, clean up and leaving enough time for clean up, should be managed by the testcase that calls this function.\n\nHmm, the SetUpBenchmark only knows how long cleanup time is needed, doesn\u0027t it? So, I think |cleanupTime| should be defined inside of SetupBenchmark. If so, it\u0027d make sense to return a context.\n\nWDYT?",
+      "parentUuid": "76766997_0fd31174",
+      "range": {
+        "startLine": 19,
+        "startChar": 45,
+        "endLine": 20,
+        "endChar": 54
+      },
+      "revId": "8921601c519406359227ce196ce602895e7a6a5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7cd178ee_1ea3068d",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/encode_accel_jpeg_perf.go",
         "patchSetId": 2
@@ -93,6 +117,30 @@
       "revId": "8921601c519406359227ce196ce602895e7a6a5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0d65af5_62a28663",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/encode_accel_jpeg_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-20T02:31:04Z",
+      "side": 1,
+      "message": "Thanks. Both \u0027cleanupBenchmark\u0027 and \u0027tearDownBenchmark\u0027 are fine as long as every test uses the same name.",
+      "parentUuid": "5b4c539b_6cef0b1b",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 18
+      },
+      "revId": "8921601c519406359227ce196ce602895e7a6a5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
