@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
 )
@@ -674,6 +675,20 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 
 // runPhase2 runs the second phase of the test, measuring tab switch times to cold tabs.
 func runPhase2(ctx context.Context, s *testing.State, workTabs []*tab, coldTabSetSize int, fullMeter *kernelmeter.Meter, perfValues *perf.Values) {
+	cmd := testexec.CommandContext(ctx, "perf",
+		"record",
+		"-a",
+		"-g",
+		"-e",
+		"cycles",
+		"-o",
+		"/mnt/stateful_partition/unencrypted/my.perf.data")
+	if errPerfStart := cmd.Start(); errPerfStart != nil {
+		s.Fatal("Cannot execute perf: ", errPerfStart)
+	}
+	// give perf 1 second to start up
+	testing.Sleep(ctx, 1*time.Second)
+
 	if coldTabSetSize > len(workTabs) {
 		coldTabSetSize = len(workTabs)
 	}
@@ -685,6 +700,10 @@ func runPhase2(ctx context.Context, s *testing.State, workTabs []*tab, coldTabSe
 	logTabSwitchTimes(ctx, times, len(coldTabs), s.OutDir(), "coldswitch")
 
 	recordAndResetStats(s, fullMeter, perfValues, "coldswitch")
+	defer cmd.Wait()
+	if errPerfStop := cmd.Process.Signal(os.Interrupt); errPerfStop != nil {
+		s.Fatal("Failed to signal perf: ", errPerfStop)
+	}
 
 }
 
