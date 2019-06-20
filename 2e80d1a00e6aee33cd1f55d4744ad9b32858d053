@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "366d3c78_dd4081a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-20T12:07:56Z",
+      "side": 1,
+      "message": "I think we can consolidate errors:\nLine 151:\nreturn err\n\nLine 164:\nreturn errors.Wrap(err, \"Failed measuring CPU usage\")\n\nLine 167:\nreturn errors.Errorf(\"CPU usage: %.1f%% is higher than idle: %.1f%%\", usage, maxUsage)\n\nLine 172:\nreturn err",
+      "revId": "2e80d1a00e6aee33cd1f55d4744ad9b32858d053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
