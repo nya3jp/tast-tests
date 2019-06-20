@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "71afc55a_83b0feb1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-20T02:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9246923f_1f3f77f4",
+      "range": {
+        "startLine": 7,
+        "startChar": 43,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "df6e65177513e851a6395a6dc7f36f8208cfb02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fce2a189_60743701",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2019-06-19T14:52:34Z",
       "side": 1,
       "message": "0.1% flakiness sounds a bit high, because we run the tests in CQ so many times.\n\nBy looking at the case, I found;\n- test_api extension error, which looks independent from this test.\n- SSH connection lost, which also looks independent, too. But,\n- test timed out on some board. E.g. http://stainless/browse/chromeos-autotest-results/314171338-chromeos-test/chromeos6-row4-rack6-host4/tast/results/tests/video.PlayVP8/\n\nIs the last one actual failure/flakiness of the test?\nIf so, could you take a look and fix it?\nOr, is the problem already fixed?",
+      "revId": "df6e65177513e851a6395a6dc7f36f8208cfb02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c27c147_42a8e974",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-20T02:12:24Z",
+      "side": 1,
+      "message": "There was something wrong playing back video (getting stuck at the beginning; total time showed NaN). However, we didn\u0027t see any failure of the reason after June 4. \n\nI created an issue https://crbug.com/977038 for this. I\u0027ll check again on 6/26. If there\u0027s no new failures. I\u0027ll marked this kind of failures as WontFix.",
+      "parentUuid": "fce2a189_60743701",
       "revId": "df6e65177513e851a6395a6dc7f36f8208cfb02d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
