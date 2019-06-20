@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "36275b9f_42a07dc1",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-20T14:19:34Z",
+      "side": 1,
+      "message": "I think you need string array, instead of concatenating everything, which will become just one argument.",
+      "revId": "a394e26a60071653f606d3bdd8ae22c0902b53d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8067f0b5_cc91dbe0",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 9
