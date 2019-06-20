@@ -34,6 +34,24 @@
       "revId": "eb1ff42fedd3485ab06500854f943a1d0ab2a28f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a9f6432_b64478aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-20T04:53:03Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#startup-and-shutdown\n\nSo, we expect that the test which needs tabs closed will close tabs as a part of its setup.\n\nThis is also useful for diagnosing the failure in some cases.\nE.g., screenshot of the display will be taken in case of failure, after the test is completed.\nIf the tab is closed, it\u0027s more difficult to see what was going on.\n\nCould you share which tests are actually affected by opened tabs, and how?",
+      "parentUuid": "b122b377_b0aaca8d",
+      "revId": "eb1ff42fedd3485ab06500854f943a1d0ab2a28f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
