@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0560cd87_8cd36b4c",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-06-20T01:34:59Z",
+      "side": 1,
+      "message": "TODO(pwang): enable GPU by default when stable?",
+      "range": {
+        "startLine": 46,
+        "startChar": 29,
+        "endLine": 46,
+        "endChar": 52
+      },
+      "revId": "e9f4ab4a20d954d935074d0b1f978be1209587ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
