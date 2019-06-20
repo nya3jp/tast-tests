@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "169ad4f0_856b9aad",
+        "filename": "src/chromiumos/tast/local/vm/concierge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-06-20T22:48:21Z",
+      "side": 1,
+      "message": "I looked a little bit about this. This should be exact the same behavior as what the test is doing right now. \nIn golang, omitted fields will be zero-valued.",
+      "revId": "e9f4ab4a20d954d935074d0b1f978be1209587ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0560cd87_8cd36b4c",
         "filename": "src/chromiumos/tast/local/vm/vm.go",
         "patchSetId": 1
