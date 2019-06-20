@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7612e84_e69ca615",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-20T00:34:11Z",
+      "side": 0,
+      "message": "I would keep setting up benchmark mode here, and just use \u0027WaitForIdle\u0027. I think the code will be more readable if we keep \u0027SetUpBenchmark\u0027 here, and otherwise it will be called multiple times. Also check my comments on crrev.com/c/1666582.",
+      "revId": "ef2adf1050e887a5c5fe5ce40d0f5533c3922769",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
