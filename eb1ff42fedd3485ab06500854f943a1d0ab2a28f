@@ -52,6 +52,24 @@
       "revId": "eb1ff42fedd3485ab06500854f943a1d0ab2a28f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bd694b7_1ac39e55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-20T05:39:23Z",
+      "side": 1,
+      "message": "Thanks for pointing out. Screenshot is useful for investigating test failure, especially video playback.\n\nClosing all tabs at start-up time sounds reasonable. Shall we have a method, CloseAllTabs() in chrome/chrome.go?\n\nAlso, for reducing unnecessary CPU run, I suggest we can stop video playback after each video play test, especially for those which plays video repeatedly.",
+      "parentUuid": "9a9f6432_b64478aa",
+      "revId": "eb1ff42fedd3485ab06500854f943a1d0ab2a28f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
