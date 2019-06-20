@@ -1,0 +1,215 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04895a87_c4456ded",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-20T06:31:44Z",
+      "side": 1,
+      "message": "starts a process in runCmdAsync",
+      "range": {
+        "startLine": 28,
+        "startChar": 21,
+        "endLine": 28,
+        "endChar": 38
+      },
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40620ba5_96f5ecd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-20T06:31:44Z",
+      "side": 1,
+      "message": "for the given duration, and then kills the process",
+      "range": {
+        "startLine": 28,
+        "startChar": 62,
+        "endLine": 28,
+        "endChar": 79
+      },
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f745001_9f7e1f8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-20T06:31:44Z",
+      "side": 1,
+      "message": "It returns average CPU usage (all cores) percentage.",
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a732c6c_acda4239",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-20T06:31:44Z",
+      "side": 1,
+      "message": "Just curious, do we really need to reserve 10 seconds to kill a process?",
+      "range": {
+        "startLine": 34,
+        "startChar": 48,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff1c90ec_2dd6025b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-20T06:31:44Z",
+      "side": 1,
+      "message": "Shall we reduce logging according to https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log ?",
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bad2a1f_2ca4f123",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-20T06:31:44Z",
+      "side": 1,
+      "message": "Do we need this log?",
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2d45be3_e446262c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-20T06:31:44Z",
+      "side": 1,
+      "message": "If you choose to use named return, you shall just set the variables and \"return\".",
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e256c48e_0ee57d81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-20T06:31:44Z",
+      "side": 1,
+      "message": "Why restoreThrottling does not return err while restoreScaling does?",
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "032ea3ee_83ee48f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-20T06:31:44Z",
+      "side": 1,
+      "message": "Curious why you just hide disableCPUFrequencyScaling() but not DisableThermalThrottling()?",
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "189d1ce4_504740cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-20T06:31:44Z",
+      "side": 1,
+      "message": "Please add a todo that we are going to split this WaitForIdle logic with soft threshold.",
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2850a16f_241da0bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-20T06:31:44Z",
+      "side": 1,
+      "message": "disableCPUFrequencyScaling",
+      "range": {
+        "startLine": 216,
+        "startChar": 3,
+        "endLine": 216,
+        "endChar": 29
+      },
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

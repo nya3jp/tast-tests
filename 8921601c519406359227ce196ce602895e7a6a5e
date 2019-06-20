@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "6f996507_4be18c48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-20T06:31:44Z",
+      "side": 1,
+      "message": "There are pros and cons returning shortCtx for SetUpBenchmark().\n\nPros is that test code don\u0027t need to aware how long a clean-up takes.\nCons is that test should run other long running tasks (like command execution) with shortCtx.\n\nAs long as we are going to split SetUpBenchmark() from MeasureProcessCPU(), we assume each test runs SetUpBenchmark() only once. I would prefer SetUpBenchmark() returns shortCtx.",
+      "parentUuid": "562d982d_df911e34",
+      "range": {
+        "startLine": 19,
+        "startChar": 45,
+        "endLine": 20,
+        "endChar": 54
+      },
+      "revId": "8921601c519406359227ce196ce602895e7a6a5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7cd178ee_1ea3068d",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/encode_accel_jpeg_perf.go",
         "patchSetId": 2
