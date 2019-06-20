@@ -490,6 +490,30 @@
       "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49488729_951002a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-20T12:08:03Z",
+      "side": 1,
+      "message": "\u003e This would work on any Chrome instance that specifies the --enable-arcvm flag.\n\nThough it\u0027d work on other boards, but we don\u0027t have to care about results of this test on such boards. So, we shouldn\u0027t run these tests on non-\"android\" boards, I think.\n\n\u003e In addition, \"android\" seems to specify !arcvm which seems strange for this test?\n\njasongustaman@ is adding new dependencies in CL:1651235. Perhaps, this CL should depends on his CL?\n\nJason, what\u0027s the plan for CL:1651235? I think you can submit this CL before CL:1637171.",
+      "parentUuid": "c22fb29b_00eaf1ea",
+      "range": {
+        "startLine": 22,
+        "startChar": 25,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
