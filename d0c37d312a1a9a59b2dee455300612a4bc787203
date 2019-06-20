@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "11b0d9cc_feef9caa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-06-20T22:24:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "316830a2_307f27c3",
+      "revId": "d0c37d312a1a9a59b2dee455300612a4bc787203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b9b27db_9261fbeb",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "c1455b17_f0f2f0bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_crosvm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-06-20T22:24:14Z",
+      "side": 1,
+      "message": "Yes good catch! I made separate contexts.",
+      "parentUuid": "4b9b27db_9261fbeb",
+      "range": {
+        "startLine": 57,
+        "startChar": 35,
+        "endLine": 57,
+        "endChar": 38
+      },
+      "revId": "d0c37d312a1a9a59b2dee455300612a4bc787203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5e0292e_c3f6c54e",
         "filename": "src/chromiumos/tast/local/vm/crosvm.go",
         "patchSetId": 3
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "1c35dbe7_93472b42",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-06-20T22:24:14Z",
+      "side": 1,
+      "message": "Done. Is making the channel\u0027s buffered related to the goroutine timeout? Or is that a separate optimization? I\u0027m just curious",
+      "parentUuid": "a5e0292e_c3f6c54e",
+      "revId": "d0c37d312a1a9a59b2dee455300612a4bc787203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "720156e2_54f5a3df",
         "filename": "src/chromiumos/tast/local/vm/crosvm.go",
         "patchSetId": 3
@@ -73,6 +133,24 @@
       "revId": "d0c37d312a1a9a59b2dee455300612a4bc787203",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45050ca7_1436fee2",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-06-20T22:24:14Z",
+      "side": 1,
+      "message": "I changed the goroutine to read from this channel as well and return if the context times out. Let me know if this is not the right way to do it.",
+      "parentUuid": "720156e2_54f5a3df",
+      "revId": "d0c37d312a1a9a59b2dee455300612a4bc787203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
