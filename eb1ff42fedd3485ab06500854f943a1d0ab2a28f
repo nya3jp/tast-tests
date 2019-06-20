@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d402bb4b_f27469f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-20T03:06:19Z",
+      "side": 1,
+      "message": "I wonder why \u0027conn.Close()\u0027 doesn\u0027t clean up tabs. \nnya@ and hidehiko@, what\u0027s the reason? I think it\u0027s somehow confusing.\n\nIf conn.Close() shouldn\u0027t close tabs actually, how about a separate function like creating conn.CloseAll()?",
+      "revId": "eb1ff42fedd3485ab06500854f943a1d0ab2a28f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
