@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa0526d4_8222d250",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-20T09:20:17Z",
+      "side": 1,
+      "message": "nit: This comment is needed only in a single .go file.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 85
+      },
+      "revId": "625bc5f14256e8c79e2ad1985fc4f69ffb58d791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0dff6d4_15be0e28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-20T09:20:17Z",
+      "side": 1,
+      "message": "nit: It would be more common to put this after the copyright header.\n\n // Copyright 2019 The Chromium OS Authors. All rights reserved.\n // Use of this source code is governed by a BSD-style license that can be\n // found in the LICENSE file.\n //\n // This file provides code for video.ARCDecodeAccel* tests.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 59
+      },
+      "revId": "625bc5f14256e8c79e2ad1985fc4f69ffb58d791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a440ed91_190078aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-20T09:20:17Z",
+      "side": 1,
+      "message": "typoe: converts",
+      "range": {
+        "startLine": 90,
+        "startChar": 20,
+        "endLine": 90,
+        "endChar": 27
+      },
+      "revId": "625bc5f14256e8c79e2ad1985fc4f69ffb58d791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1af5584a_4b7679da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-20T09:20:17Z",
+      "side": 1,
+      "message": "This function seems to be easily replaced by a map:\n\n var videoCodecEnumValues \u003d map[string]int{\n   \"H264PROFILE_MAIN\": 1,\n   ...\n }",
+      "range": {
+        "startLine": 92,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 21
+      },
+      "revId": "625bc5f14256e8c79e2ad1985fc4f69ffb58d791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
