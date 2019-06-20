@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "47df132b_086c7ba5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-20T16:04:25Z",
+      "side": 1,
+      "message": "Strictly speaking, I don\u0027t think neither testside nor SetUp function knows precisely how much time is needed for tearing down, because both setup and test main scenario could do arbitrary things so that teardown task would depend on the situation.\n\nIn the sense, I don\u0027t have very strong opinion from that perspective. I think securing some time in test code (i.e. David\u0027s approach) is relatively often seen approach in Tast, though.\n\nBTW, stepping back, we do not much take care of de-initialization.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#startup-and-shutdown\nInstead, setup needs to take care about the situation more often than usual testing framework, IMHO.\nThe core concept here is;\n- Any previous test could fail, and there is no guarantee that all the setup is properly cleaned (e.g., timed out).\n- In some cases, a test can reuse some environment set up by another test ran previously. It\u0027s better for whole test run performance. E.g., we share the logged-in Chrome across tests by precondition.\n- In some cases, leaving the test set up sometimes help to diagnose failures. E.g., we take screenshot in case of failure after test completion.",
+      "parentUuid": "baf0574b_d7c5951e",
+      "range": {
+        "startLine": 19,
+        "startChar": 45,
+        "endLine": 20,
+        "endChar": 54
+      },
+      "revId": "8921601c519406359227ce196ce602895e7a6a5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a055852d_80bca874",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
