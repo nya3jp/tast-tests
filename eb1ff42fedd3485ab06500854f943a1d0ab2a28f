@@ -70,6 +70,24 @@
       "revId": "eb1ff42fedd3485ab06500854f943a1d0ab2a28f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3377c51_0d787db1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-20T09:28:46Z",
+      "side": 1,
+      "message": "Hmm, it\u0027s not clear to me what this CL tries to solve. All tabs are supposed to be closed on starting a test even if a test uses chrome.LoggedIn precondition. This is a logic in precondition:\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go?l\u003d363\n\nRe: stopping video playback, it makes sense, but I recommend adding the deferred logic to stop the video (or close the tab if it\u0027s difficult to stop the video) case-by-case basis.",
+      "parentUuid": "3bd694b7_1ac39e55",
+      "revId": "eb1ff42fedd3485ab06500854f943a1d0ab2a28f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
