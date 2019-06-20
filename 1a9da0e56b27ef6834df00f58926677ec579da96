@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "f7487658_8a4af828",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-20T23:43:41Z",
+      "side": 1,
+      "message": "Done.\nI personally felt slightly more confident about the correctness of Uname by calling it directly from the test, but I think it\u0027s the matter of taste. Logically we are passing the same way, so the updated version would be better because injecting method from the unit test is unneeded.\nThanks for the great suggestion!",
+      "parentUuid": "397728cd_1ffcbc28",
+      "revId": "1a9da0e56b27ef6834df00f58926677ec579da96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "448af2d8_054fbfc4",
         "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
         "patchSetId": 13
