@@ -16,6 +16,24 @@
       "revId": "eb1ff42fedd3485ab06500854f943a1d0ab2a28f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b122b377_b0aaca8d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-20T03:11:22Z",
+      "side": 1,
+      "message": "Sorry, the last sentence is broken. I\u0027d suggest to create a function that closes tabs and a connection altogether in chrome package.",
+      "parentUuid": "d402bb4b_f27469f8",
+      "revId": "eb1ff42fedd3485ab06500854f943a1d0ab2a28f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
