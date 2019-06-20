@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c23d6c8b_3da883f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-20T02:05:25Z",
+      "side": 1,
+      "message": "huge nit: SDK?",
+      "range": {
+        "startLine": 24,
+        "startChar": 32,
+        "endLine": 24,
+        "endChar": 35
+      },
+      "revId": "5f8993f8a47aec80718f2de4873feee3c78dd0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b178a2c9_f0a90a46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-20T02:05:25Z",
+      "side": 1,
+      "message": "v23-related data files and constants look unused. If you\u0027re planning to add v23 subtest in a later change, would you mind deferring these files/constants to a later change too?",
+      "range": {
+        "startLine": 53,
+        "startChar": 25,
+        "endLine": 53,
+        "endChar": 46
+      },
+      "revId": "5f8993f8a47aec80718f2de4873feee3c78dd0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a443b55_71e1a96a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-20T02:05:25Z",
+      "side": 1,
+      "message": "style: getWMState",
+      "range": {
+        "startLine": 209,
+        "startChar": 5,
+        "endLine": 209,
+        "endChar": 15
+      },
+      "revId": "5f8993f8a47aec80718f2de4873feee3c78dd0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
