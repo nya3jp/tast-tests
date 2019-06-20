@@ -16,6 +16,24 @@
       "revId": "f721aa650b6012bbc7015a784cf9a1deaa17cd54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb9f7689_dbf3bbeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-06-20T16:47:31Z",
+      "side": 1,
+      "message": "Done by using const instead.\n\nThe line is too long to me if I inline the js code here without wrapping, and imo declare the code in its own line is prettier than wrap it (totally personal style preferences).",
+      "parentUuid": "fefc2537_ad997052",
+      "revId": "f721aa650b6012bbc7015a784cf9a1deaa17cd54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
