@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "ba6db61e_2d5e8e78",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-20T02:28:24Z",
+      "side": 1,
+      "message": "\u003e  What\u0027s the threshold (x failures out of y runs) is acceptable to be in CQ?\n\nStrictly speaking, 0 failures :-).\nActually, it is important be cause any of flakiness of someone\u0027s test will cause to block submitting a CL from any other developers. That\u0027s what we\u0027re hitting, and would like to solve.\n\nThough, surely technically it\u0027s impossible to guarantee,\nso practically, no known flakiness/failures at least, I think.\n20 I mentioned above is a guide we are using now, which is derived from our experiences.",
+      "parentUuid": "3c30efe4_0b5ee733",
+      "revId": "78e8741d15c9be95c1b2b2f0d7629694bdc260de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2cba55b9_57f95cbf",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -149,6 +167,24 @@
       "side": 1,
       "message": "There was something wrong playing back video (getting stuck at the beginning; total time showed NaN). However, we didn\u0027t see any failure of the reason after June 4. \n\nI created an issue https://crbug.com/977038 for this. I\u0027ll check again on 6/26. If there\u0027s no new failures. I\u0027ll marked this kind of failures as WontFix.\n\nhttps://stainless.corp.google.com/search?view\u003dlist\u0026first_date\u003d2019-05-24\u0026last_date\u003d2019-06-20\u0026test\u003dvideo.Play*\u0026reason\u003dtimed+out+waiting+for+playback\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse",
       "parentUuid": "af53e4fd_1236d3b7",
+      "revId": "78e8741d15c9be95c1b2b2f0d7629694bdc260de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5a8d64c_f0ec82c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-20T02:28:24Z",
+      "side": 1,
+      "message": "Thank you for investigation!\nLet\u0027s revisit here, then.",
+      "parentUuid": "44921df3_09dc949f",
       "revId": "78e8741d15c9be95c1b2b2f0d7629694bdc260de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
