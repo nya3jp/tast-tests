@@ -75,6 +75,12 @@ func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, er
 		return nil, err
 	}
 
+	// Let CCA perform some one-time initialization after launched.  Otherwise
+	// the first CheckVideoActive() might timed out because it's still
+	// initializing, especially on low-end devices and when the system is busy.
+	waitIdle := "new Promise(resolve => requestIdleCallback(resolve, {timeout: 30000}))"
+	conn.EvalPromise(ctx, waitIdle, nil)
+
 	for _, scriptPath := range scriptPaths {
 		script, err := ioutil.ReadFile(scriptPath)
 		if err != nil {
