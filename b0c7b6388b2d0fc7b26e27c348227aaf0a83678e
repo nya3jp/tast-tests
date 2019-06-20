@@ -248,6 +248,24 @@
     },
     {
       "key": {
+        "uuid": "d5459ebe_9970108e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-20T09:37:51Z",
+      "side": 1,
+      "message": "Good point. Hanging for 10 seconds is worth having a log. However, as it measures CPU usage while the process is running, saying \"sleeping\" is somewhat misleading. How about:\n\"Measuring CPU usage for %v while running the specified command\"",
+      "parentUuid": "eef5e4dc_8cf930e1",
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2d45be3_e446262c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 6
@@ -277,6 +295,24 @@
       "side": 1,
       "message": "What do you mean by this?",
       "parentUuid": "c2d45be3_e446262c",
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cf89e0b_8e133d6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-20T09:37:51Z",
+      "side": 1,
+      "message": "https://tour.golang.org/basics/7\n\nmmm... but it says \"Naked return statements should be used only in short functions\".\nFor long function like this, shall we still use named return value?",
+      "parentUuid": "79670204_21a13565",
       "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

@@ -145,6 +145,53 @@
     },
     {
       "key": {
+        "uuid": "baf0574b_d7c5951e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-20T09:37:51Z",
+      "side": 1,
+      "message": "In practice, we can ask test (user) to reserve some time for clean-ups.\nHowever, I still think it should be function\u0027s responsibility to reserve a certain period of time for its cleanup action. For SetUpBenchmark, we may just leave a short time, say one second, for clean-up.\n\ncleanUpA, shortCtxA :\u003d SetUpA(ctx, ...)\ndefer cleanUpA()\ncleanUpB, shortCtxB :\u003d SetUpB(shortCtxA, ...)\ndefer cleanUpB()\n// do something with shortCtxB.\n\nHidehiko, what do you think?",
+      "parentUuid": "676db128_d0947c3d",
+      "range": {
+        "startLine": 19,
+        "startChar": 45,
+        "endLine": 20,
+        "endChar": 54
+      },
+      "revId": "8921601c519406359227ce196ce602895e7a6a5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a055852d_80bca874",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-20T09:37:51Z",
+      "side": 1,
+      "message": "DisableCPUFrequencyScaling and DisableThermalThrottling are made private,",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 28
+      },
+      "revId": "8921601c519406359227ce196ce602895e7a6a5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7cd178ee_1ea3068d",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/encode_accel_jpeg_perf.go",
         "patchSetId": 2
