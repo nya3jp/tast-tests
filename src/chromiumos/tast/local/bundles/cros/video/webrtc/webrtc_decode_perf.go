@@ -295,6 +295,10 @@ func RunWebRTCDecodePerf(ctx context.Context, s *testing.State, streamName strin
 	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
 	defer cancel()
 
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		s.Fatal("Failed waiting for CPU to become idle: ", err)
+	}
+
 	p := perf.NewValues()
 	// Try hardware accelerated WebRTC first.
 	// If it is hardware accelerated, run without hardware acceleration again.
