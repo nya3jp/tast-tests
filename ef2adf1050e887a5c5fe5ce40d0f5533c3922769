@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65bdc06b_fc8d5f8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-20T00:21:03Z",
+      "side": 0,
+      "message": "I would keep benchmark mode setup here, otherwise it will be ran multiple times.\n\nI\u0027m currently working on CL ccrev.com/c/1662965 that reworks benchmark mode a bit. I also identified multiple causes of the high CPU usage, some of which are tackled in crrev.com/c/1666577.\n\nIt\u0027s definitely a good idea to wait for idle CPU after logging in, in \u0027webRTCDecodePerf\u0027. You can call \u0027WaitForIdle\u0027 manually.\n\nMaybe we could completely split off \u0027WaitForIdle\u0027 from SetupBenchmark. WDYT?",
+      "revId": "ef2adf1050e887a5c5fe5ce40d0f5533c3922769",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
