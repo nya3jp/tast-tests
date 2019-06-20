@@ -75,14 +75,7 @@ func MeasureProcessCPU(ctx context.Context, runCmdAsync StartProcFunc, duration 
 // and thermal throttling, and waits for the CPU to become idle. A deferred call to the returned
 // cleanUp function should be scheduled by the caller if err is non-nil.
 func SetUpBenchmark(ctx context.Context) (cleanUp func(ctx context.Context), err error) {
-	const (
-		waitIdleCPUTimeout      = 60 * time.Second // time to wait for CPU to be idle.
-		idleCPUUsagePercentBase = 5.0              // percent below which CPU is ideally considered idle,
-		// will be gradually increased up to idleCPUUsagePercentMax.
-		idleCPUUsagePercentMax = 20.0             // maximum percent below which CPU is idle.
-		idleCPUSteps           = 5                // times we wait for CPU to become idle.
-		cleanupTime            = 10 * time.Second // time reserved for cleanup after running test.
-	)
+	const cleanupTime = 10 * time.Second // time reserved for cleanup on error.
 
 	var restoreScaling func(ctx context.Context) error
 	var restoreThrottling func(ctx context.Context) error
@@ -121,26 +114,47 @@ func SetUpBenchmark(ctx context.Context) (cleanUp func(ctx context.Context), err
 		return nil, errors.Wrap(err, "failed to disable thermal throttling")
 	}
 
+	// Disarm running the cleanUp function now that we expect the caller to do it.
+	doCleanup = nil
+	return cleanUp, nil
+}
+
+// WaitUntilIdle waits until the CPU is idle, for a maximum of 60s. The CPU is
+// considered idle if the average usage over all CPU cores is less than 5%.
+// This percentage will be gradually increased, as older boards might have a
+// hard time getting below 5%.
+func WaitUntilIdle(ctx context.Context) error {
+	const (
+		// time to wait for CPU to become idle.
+		waitIdleCPUTimeout = 60 * time.Second
+		// percentage below which CPU is ideally considered idle, gradually
+		// increased up to idleCPUUsagePercentMax.
+		idleCPUUsagePercentBase = 5.0
+		// maximum percentage below which CPU is considered idle.
+		idleCPUUsagePercentMax = 20.0
+		// times we wait for CPU to become idle, idle percentage is increased each time.
+		idleCPUSteps = 5
+	)
+
 	// Wait for the CPU to become idle. It's e.g. possible the board just booted
 	// and is running various startup programs. Some slower platforms have a
 	// hard time getting below 10% CPU usage, so we'll gradually increase the
 	// CPU idle threshold.
-	// TODO(dstaessens): Move waiting for CPU to become idle out of SetUpBenchmark()
+	var err error
 	idleIncrease := (idleCPUUsagePercentMax - idleCPUUsagePercentBase) / (idleCPUSteps - 1)
 	for i := 0; i < idleCPUSteps; i++ {
 		idlePercent := idleCPUUsagePercentBase + (idleIncrease * float64(i))
-		if err = WaitForIdle(ctx, waitIdleCPUTimeout/idleCPUSteps, idlePercent); err == nil {
-			// Disarm running the cleanUp function now that we expect the caller to do it.
-			doCleanup = nil
-			return cleanUp, nil
+		if err = waitUntilIdle(ctx, waitIdleCPUTimeout/idleCPUSteps, idlePercent); err == nil {
+			return nil
 		}
 	}
-	return nil, errors.Wrap(err, "failed waiting for CPU to become idle")
+	return errors.Wrap(err, "failed waiting for CPU to become idle")
 }
 
-// WaitForIdle waits until CPU is idle, or timeout is elapsed.
-// CPU is evaluated as idle if the CPU usage is less than maxUsage, a percentage in the range [0.0, 100.0].
-func WaitForIdle(ctx context.Context, timeout time.Duration, maxUsage float64) error {
+// waitUntilIdle waits until the CPU is idle or the specified timeout has
+// elapsed. The CPU is considered idle if the average CPU usage over all cores
+// is less than maxUsage, which is a percentage in the range [0.0, 100.0].
+func waitUntilIdle(ctx context.Context, timeout time.Duration, maxUsage float64) error {
 	const sleepTime = time.Second
 	startTime := time.Now()
 	testing.ContextLogf(ctx, "Waiting up to %v for CPU usage to drop below %.1f%%", timeout.Round(time.Second), maxUsage)
