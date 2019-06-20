@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fefc2537_ad997052",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-20T15:43:58Z",
+      "side": 1,
+      "message": "style: could you inline the constant?\nOr, if you really need to keep the name, could you use const, instead?",
+      "revId": "f721aa650b6012bbc7015a784cf9a1deaa17cd54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
