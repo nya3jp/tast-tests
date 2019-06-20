@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "3c30efe4_0b5ee733",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-20T02:09:45Z",
+      "side": 1,
+      "message": "There were many test results missing on coral, grunt, octopus. From Goldeneye, they failed on HW-test due to various reasons (take 12283.0.0 for example [1]) so BVT-TAST-CQ were not running.\n\n[1] https://cros-goldeneye.corp.google.com/chromeos/console/viewBuild?version\u003d12283.0.0\u0026channel\u003dcanary\u0026type\u003drelease#showColumns\u003dpaygen-au%2Cau",
+      "parentUuid": "24a1a97a_83f8d61c",
+      "revId": "78e8741d15c9be95c1b2b2f0d7629694bdc260de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2cba55b9_57f95cbf",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
