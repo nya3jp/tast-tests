@@ -70,6 +70,24 @@
       "revId": "4c46a6370558296a27be9f50704c6a00d92a93af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15b2057a_1dd30fae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-20T02:13:56Z",
+      "side": 0,
+      "message": "\u003e I would even consider just duplicating it for now,\n\nHmm, David, are you suggesting to have \"decodeMetadata\" in accel_video.go and arc_accel_video.go? It\u0027s impossible because accel_video.go and arc_accel_video.go implement same package.\n\nJohny\u0027s idea sounds fine for me.",
+      "parentUuid": "62232617_fd6d488f",
+      "revId": "4c46a6370558296a27be9f50704c6a00d92a93af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
