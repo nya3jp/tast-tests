@@ -68,29 +68,33 @@ func DecodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 	tempDir := binsetup.CreateTempDataDir(s, "DecodeAccelJPEGPerf.tast.", jpegPerfTestFiles)
 	defer os.RemoveAll(tempDir)
 
-	// Reserve time for cleanup and restarting the ui job at the end of the test.
-	shortCtx, cancel := ctxutil.Shorten(ctx, cleanupTime)
-	defer cancel()
-
 	// Stop the UI job. While this isn't required to run the test binary, it's
 	// possible a previous tests left tabs open or an animation is playing,
 	// influencing our performance results.
-	if err := upstart.StopJob(shortCtx, "ui"); err != nil {
+	if err := upstart.StopJob(ctx, "ui"); err != nil {
 		s.Fatal("Failed to stop ui: ", err)
 	}
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
-	cleanUpBenchmark, err := cpu.SetUpBenchmark(shortCtx)
+	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
 	if err != nil {
 		s.Fatal("Failed to set up benchmark mode: ", err)
 	}
 	defer cleanUpBenchmark(ctx)
 
+	// Reserve time for cleanup and restarting the ui job at the end of the test.
+	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
+	defer cancel()
+
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		s.Fatal("Failed waiting for CPU to become idle: ", err)
+	}
+
 	s.Log("Measuring SW JPEG decode performance")
-	cpuUsageSW := runJPEGPerfBenchmark(shortCtx, s, tempDir,
+	cpuUsageSW := runJPEGPerfBenchmark(ctx, s, tempDir,
 		measureDuration, perfJPEGDecodeTimes, swFilter)
 	s.Log("Measuring HW JPEG decode performance")
-	cpuUsageHW := runJPEGPerfBenchmark(shortCtx, s, tempDir,
+	cpuUsageHW := runJPEGPerfBenchmark(ctx, s, tempDir,
 		measureDuration, perfJPEGDecodeTimes, hwFilter)
 
 	// TODO(dstaessens@): Remove "tast_" prefix after removing video_JDAPerf in autotest.

@@ -230,9 +230,13 @@ func RunARCVideoPerfTest(ctx context.Context, s *testing.State, testVideo string
 	}
 	defer cleanUpBenchmark(ctx)
 
-	// Leave a bit of time to tear down benchmark mode.
+	// Leave a bit of time to clean up benchmark mode.
 	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
 	defer cancel()
+
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		s.Fatal("Failed waiting for CPU to become idle: ", err)
+	}
 
 	logs := runARCVideoTest(ctx, s, arcTestConfig{
 		testVideo:      testVideo,
