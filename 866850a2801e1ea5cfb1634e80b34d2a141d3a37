@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7128b117_7f1f489a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-06-20T01:33:36Z",
+      "side": 1,
+      "message": "How about \"Graphics tests need GPU acceleration in the container. Create a VM with GPU support for the graphics test.\"?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "866850a2801e1ea5cfb1634e80b34d2a141d3a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10a6b0a1_9d97e956",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-06-20T01:33:36Z",
+      "side": 1,
+      "message": "Why no more cont.DumpLog()?",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "866850a2801e1ea5cfb1634e80b34d2a141d3a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
