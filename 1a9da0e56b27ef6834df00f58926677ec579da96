@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "397728cd_1ffcbc28",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-20T15:39:53Z",
+      "side": 1,
+      "message": "Probably, I\u0027d declare as\n\nfunc convertUtsname(u *syscall.Utsname) *Utsname {\n  convert :\u003d func(...) ...\n  return \u0026Utsname {\n    ...\n  }\n}\n\nfunc Uname() ... {\n  u :\u003d unix.Utsname{}\n  ...\n  return convertUtsname(\u0026u), nil\n}\n\n...",
+      "parentUuid": "881c2887_b95cb203",
+      "revId": "1a9da0e56b27ef6834df00f58926677ec579da96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "448af2d8_054fbfc4",
         "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
         "patchSetId": 13
