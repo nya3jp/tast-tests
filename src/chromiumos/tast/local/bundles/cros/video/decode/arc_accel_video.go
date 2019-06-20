@@ -224,17 +224,21 @@ func reportFPS(p *perf.Values, name, logPath string) error {
 func RunARCVideoPerfTest(ctx context.Context, s *testing.State, testVideo string) {
 	const cleanupTime = 5 * time.Second // time reserved for cleanup.
 
-	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+	// Leave a bit of time to clean up benchmark mode.
+	shortCtx, cancel := ctxutil.Shorten(ctx, cleanupTime)
+	defer cancel()
+
+	cleanUpBenchmark, err := cpu.SetUpBenchmark(shortCtx)
 	if err != nil {
 		s.Fatal("Failed to set up benchmark mode: ", err)
 	}
 	defer cleanUpBenchmark(ctx)
 
-	// Leave a bit of time to tear down benchmark mode.
-	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
-	defer cancel()
+	if err := cpu.WaitUntilIdle(shortCtx); err != nil {
+		s.Fatal("Failed waiting for CPU to become idle: ", err)
+	}
 
-	logs := runARCVideoTest(ctx, s, arcTestConfig{
+	logs := runARCVideoTest(shortCtx, s, arcTestConfig{
 		testVideo:      testVideo,
 		requireMD5File: false,
 		testFilter:     "ArcVideoDecoderE2ETest.TestFPS",

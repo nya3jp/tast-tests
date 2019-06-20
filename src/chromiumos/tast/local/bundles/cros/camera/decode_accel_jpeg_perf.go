@@ -86,6 +86,10 @@ func DecodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 	}
 	defer cleanUpBenchmark(ctx)
 
+	if err := cpu.WaitUntilIdle(shortCtx); err != nil {
+		s.Fatal("Failed waiting for CPU to become idle: ", err)
+	}
+
 	s.Log("Measuring SW JPEG decode performance")
 	cpuUsageSW := runJPEGPerfBenchmark(shortCtx, s, tempDir,
 		measureDuration, perfJPEGDecodeTimes, swFilter)
