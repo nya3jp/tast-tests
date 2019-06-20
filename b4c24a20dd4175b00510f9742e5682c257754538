@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "33090af1_13e3e04d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-06-20T12:42:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "daf1781f_d04d200a",
+      "range": {
+        "startLine": 209,
+        "startChar": 48,
+        "endLine": 209,
+        "endChar": 61
+      },
+      "revId": "b4c24a20dd4175b00510f9742e5682c257754538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b3d535b_d217a7cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0a865544_feced2e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-06-20T12:42:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b3d535b_d217a7cc",
+      "range": {
+        "startLine": 215,
+        "startChar": 48,
+        "endLine": 215,
+        "endChar": 50
+      },
+      "revId": "b4c24a20dd4175b00510f9742e5682c257754538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d295ef14_74e4a07e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "b4c24a20dd4175b00510f9742e5682c257754538",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcf0d6aa_dbb824e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-06-20T12:42:47Z",
+      "side": 1,
+      "message": "Both are fine for me. Reporting partial metrics may be useful on debugging. However actually for crosbolt frontend (the perf dashboard), metrics are not regarded if the test result is failed even if there are partially saved.",
+      "parentUuid": "d295ef14_74e4a07e",
+      "range": {
+        "startLine": 251,
+        "startChar": 5,
+        "endLine": 251,
+        "endChar": 11
+      },
+      "revId": "b4c24a20dd4175b00510f9742e5682c257754538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
