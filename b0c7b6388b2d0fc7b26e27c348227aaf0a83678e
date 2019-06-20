@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "13bdaeff_6b2d4c1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-20T07:53:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40620ba5_96f5ecd3",
+      "range": {
+        "startLine": 28,
+        "startChar": 62,
+        "endLine": 28,
+        "endChar": 79
+      },
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a92fe2f_160ce6be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-20T07:53:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04895a87_c4456ded",
+      "range": {
+        "startLine": 28,
+        "startChar": 21,
+        "endLine": 28,
+        "endChar": 38
+      },
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f745001_9f7e1f8c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 6
@@ -62,6 +110,24 @@
       "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1e1d9df_a84b61e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-20T07:53:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f745001_9f7e1f8c",
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "fe22d898_51ded834",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-20T07:53:34Z",
+      "side": 1,
+      "message": "Should be less then a second. Changed it to 5s to be on the safe side. But even then, I think the context is only used to print output and won\u0027t affect the actual cleanup.",
+      "parentUuid": "8a732c6c_acda4239",
+      "range": {
+        "startLine": 34,
+        "startChar": 48,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff1c90ec_2dd6025b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 6
@@ -105,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "0a9efff3_9ecc0749",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-20T07:53:34Z",
+      "side": 1,
+      "message": "I guess this statement is not very useful, removed.",
+      "parentUuid": "ff1c90ec_2dd6025b",
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bad2a1f_2ca4f123",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 6
@@ -116,6 +224,24 @@
       "writtenOn": "2019-06-20T06:31:44Z",
       "side": 1,
       "message": "Do we need this log?",
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eef5e4dc_8cf930e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-20T07:53:34Z",
+      "side": 1,
+      "message": "I think this log is definitely useful. I would want to know what is happening if a test suddenly hangs for 10+ seconds.",
+      "parentUuid": "3bad2a1f_2ca4f123",
       "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -139,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "79670204_21a13565",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-20T07:53:34Z",
+      "side": 1,
+      "message": "What do you mean by this?",
+      "parentUuid": "c2d45be3_e446262c",
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e256c48e_0ee57d81",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 6
@@ -153,6 +297,24 @@
       "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1186c378_76392dbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-20T07:53:34Z",
+      "side": 1,
+      "message": "Adapted",
+      "parentUuid": "e256c48e_0ee57d81",
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -173,6 +335,24 @@
     },
     {
       "key": {
+        "uuid": "645d5db2_e1d15afb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-20T07:53:34Z",
+      "side": 1,
+      "message": "Good point, thanks!",
+      "parentUuid": "032ea3ee_83ee48f5",
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "189d1ce4_504740cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 6
@@ -187,6 +367,24 @@
       "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5da37b43_45720638",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-20T07:53:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "189d1ce4_504740cd",
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -210,6 +408,30 @@
       "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97ca27e6_5ee9bf47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-20T07:53:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2850a16f_241da0bd",
+      "range": {
+        "startLine": 216,
+        "startChar": 3,
+        "endLine": 216,
+        "endChar": 29
+      },
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

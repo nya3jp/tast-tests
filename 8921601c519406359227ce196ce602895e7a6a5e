@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "676db128_d0947c3d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-20T07:53:34Z",
+      "side": 1,
+      "message": "Personally I prefer the test creating a single shorter context for all non-cleanup operations.\n\nE.g. looking at: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1668868/2/src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go\n\nWe first create a shorter context, and use that for shutting down the UI, setting up benchmark mode and waiting for the CPU to become idle. The alternative is having each function that needs cleanup return a shorter context? In general cleanup should be really fast (\u003c second). If we really have cleanup operations that are so heavy they take more than 5-10s, we can always revisit this.\n\nIMHO this is not the responsibility of the setup function, but of the testcase.",
+      "parentUuid": "6f996507_4be18c48",
+      "range": {
+        "startLine": 19,
+        "startChar": 45,
+        "endLine": 20,
+        "endChar": 54
+      },
+      "revId": "8921601c519406359227ce196ce602895e7a6a5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7cd178ee_1ea3068d",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/encode_accel_jpeg_perf.go",
         "patchSetId": 2
