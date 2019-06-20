@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11bd6d65_0f8908e0",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-20T09:42:30Z",
+      "side": 1,
+      "message": "style: Please always doc comments of an exported symbol with its name.\n\n // Sysname is the operating system name...\n Sysname string\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#doc-comments",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 42
+      },
+      "revId": "e08d0288f2449b7b50c66793bfc2b2084ddc23ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e97ef76_1210d431",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-20T09:42:30Z",
+      "side": 1,
+      "message": "I recommend comparing the whole struct with \u003d\u003d since it\u0027s more readable in code and in error messages.\n\n want :\u003d UtsName{\n   Sysname: \"...\",\n   ...\n }\n ...\n if got !\u003d want {\n   t.Errorf(\"Uname() \u003d %+v; want %+v\", got, want)\n }\n\nSee also go/go-test-comments#compare-full-structures (I wonder if there\u0027s an external version of this doc)",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "e08d0288f2449b7b50c66793bfc2b2084ddc23ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
