@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/video/lib/cpu"
 	"chromiumos/tast/local/chrome/bintest"
 	"chromiumos/tast/local/perf"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -52,13 +53,21 @@ func EncodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 		cleanupTime = 10 * time.Second
 	)
 
+	// Stop the UI job. While this isn't required to run the test binary, it's
+	// possible a previous tests left tabs open or an animation is playing,
+	// influencing our performance results.
+	if err := upstart.StopJob(ctx, "ui"); err != nil {
+		s.Fatal("Failed to stop ui: ", err)
+	}
+	defer upstart.EnsureJobRunning(ctx, "ui")
+
 	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
 	if err != nil {
 		s.Fatal("Failed to set up benchmark mode: ", err)
 	}
 	defer cleanUpBenchmark(ctx)
 
-	// Reserve time to perform cleanup at the end of the test.
+	// Reserve time for cleanup and restarting the ui job at the end of the test.
 	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
 	defer cancel()
 
