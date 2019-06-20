@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/bundle"
 
 	// These packages register their tests via init functions.
-	_ "chromiumos/tast/remote/bundles/cros/arc"
 	_ "chromiumos/tast/remote/bundles/cros/example"
 	_ "chromiumos/tast/remote/bundles/cros/meta"
 	_ "chromiumos/tast/remote/bundles/cros/power"
