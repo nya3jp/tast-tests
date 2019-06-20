@@ -58,13 +58,6 @@ const (
 	// The time to wait after CPU is stable so as to measure solid metric values.
 	measurementDuration = 25 * time.Second
 
-	// The maximum time we will wait for the CPU to become idle.
-	waitIdleCPUTimeout = 30 * time.Second
-
-	// The CPU is considered idle when average usage is below this threshold.
-	// TODO(hiroh): Decrease this threshold if it is hard to get CPU usage below 30% on some devices.
-	idleCPUUsagePercent = 30.0
-
 	// Description for measured values shown in dashboard.
 	// A video description (e.g. h264_1080p) is appended to them.
 	cpuUsageDesc            metricDesc = "video_cpu_usage_"
@@ -148,7 +141,7 @@ func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, videoNam
 	defer cr.Close(ctx)
 
 	// Wait until CPU is idle enough. CPU usage can be high immediately after login for various reasons (e.g. animated images on the lock screen).
-	if err := cpu.WaitForIdle(ctx, waitIdleCPUTimeout, idleCPUUsagePercent); err != nil {
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		return err
 	}
 
