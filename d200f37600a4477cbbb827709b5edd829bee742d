@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ede81250_b1bcdf37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-20T01:38:47Z",
+      "side": 1,
+      "message": "Thanks for the comment! I prefer cleanupTime, instead of \"teardown\", as the cleanupTime might often be used for other purposes too.\nFor consistency I decided to use cleanUpBenchmark rather than tearDownBenchmark, as this function is responsible for cleaning up the config, so it feels more appropriate.\nPlease note that in cleanupTime, \u0027cleanup\u0027 is a noun. In cleanUpBenchmark \u0027clean up\u0027 is a verb, so the capitalization is correct.",
+      "parentUuid": "c1b99fe8_00a3a07f",
+      "revId": "d200f37600a4477cbbb827709b5edd829bee742d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8bace8f_0d190a81",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "d200f37600a4477cbbb827709b5edd829bee742d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27a0f3b6_4d3d3d94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-20T01:38:47Z",
+      "side": 1,
+      "message": "Well spotted, thanks!",
+      "parentUuid": "f8bace8f_0d190a81",
+      "range": {
+        "startLine": 373,
+        "startChar": 20,
+        "endLine": 373,
+        "endChar": 40
+      },
+      "revId": "d200f37600a4477cbbb827709b5edd829bee742d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

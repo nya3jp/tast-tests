@@ -377,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "c4a296cd_ac2afc58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-20T01:38:47Z",
+      "side": 1,
+      "message": "Fair enough, adapted!",
+      "parentUuid": "3c67d8f1_428eada8",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 27
+      },
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0497c098_0988a4e5",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 1
@@ -556,6 +580,24 @@
       "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5d18006_c774a3d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-20T01:38:47Z",
+      "side": 1,
+      "message": "Alright! Changed it back to the original approach, but left the \u0027ctx\u0027 parameter, so the caller can run cleanup with a longer context. Then at least we will get output when restoring the config fails after timeout.",
+      "parentUuid": "7848efd8_4fd33731",
+      "revId": "32688ff3f6fbe25e66338e228efb8ec5549b51df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
