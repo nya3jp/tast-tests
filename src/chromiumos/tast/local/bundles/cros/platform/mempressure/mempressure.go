@@ -14,8 +14,10 @@ import (
 	"net"
 	"os"
 	"time"
-
-	"github.com/shirou/gopsutil/mem"
+    "runtime/pprof"
+    "os/exec"
+    
+    "github.com/shirou/gopsutil/mem"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
@@ -890,7 +892,7 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 
 	// Open enough tabs for a "working set", i.e. the number of tabs that an
 	// imaginary user will cycle through in their imaginary workflow.
-	s.Logf("Opening %d initial tabs", initialTabSetSize)
+    
 	tabLoadTimeout := 20 * time.Second
 	if p.RecordPageSet {
 		tabLoadTimeout = 50 * time.Second
@@ -907,7 +909,10 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 			s.Error("Cannot wiggle initial tab: ", err)
 		}
 	}
-	initialTabSetIDs := rset.tabIDs[:initialTabSetSize]
+	
+    s.Logf("Opening %d initial tabs", initialTabSetSize)
+    
+    initialTabSetIDs := rset.tabIDs[:initialTabSetSize]
 	pinTabs(ctx, cr, initialTabSetIDs)
 	// Collect and log tab-switching times in the absence of memory pressure.
 	if err := runTabSwitches(ctx, cr, rset, initialTabSetIDs, "light", tabSwitchRepeatCount); err != nil {
@@ -918,6 +923,7 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	var allTabSwitchTimes []time.Duration
 	// Allocate memory by opening more tabs and cycling through recently
 	// opened tabs until a tab discard occurs.
+    
 	for {
 		// When recording load each page only once.
 		if p.RecordPageSet && len(rset.tabIDs) > len(tabURLs) {
@@ -982,6 +988,7 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		s.Fatal("Timed out: ", err)
 	}
 
+
 	// Output metrics.
 	openedTabsMetric := perf.Metric{
 		Name:      "tast_opened_tab_count_1",
@@ -1031,6 +1038,21 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	// -----------------
 	// Phase 2: measure tab switch times to cold tabs.
 	// -----------------
+    
+    s.Log("----------- Starting cold swith phase in ----------- ")
+    
+    cmd := exec.Command("perf","record","-a","-F","1000","-g","-o","/mnt/stateful_partition/unencrypted/my.perf.data",)
+	err_perf_start := cmd.Start()
+	if err_perf_start != nil {
+		s.Fatal("Cannot execute perf: ", err_perf_start)
+	}
+	
+    f, err_pprof := os.Create("/mnt/stateful_partition/unencrypted/pperf.data")
+    if err_pprof != nil {
+		panic("fail to record CPU profile: " + err.Error())
+	}
+    pprof.StartCPUProfile(f)
+    
 	coldTabLower := initialTabSetSize
 	coldTabUpper := coldTabLower + coldTabSetSize
 	if coldTabUpper > len(rset.tabIDs) {
@@ -1043,7 +1065,16 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	}
 	logTabSwitchTimes(ctx, times, len(coldTabIDs), "coldswitch")
 
-	// -----------------
+	err_perf_stop := cmd.Process.Kill()
+	if err_perf_stop != nil {
+        s.Fatal("Failed to stop perf: ", err_perf_stop)
+    }
+    
+    defer pprof.StopCPUProfile()
+    
+    s.Log("-----------  End of cold swith phase ----------- ")
+	
+    // -----------------
 	// Phase 3: quiesce.
 	// -----------------
 	// Wait a bit to help the system stabilize.
@@ -1085,4 +1116,7 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	if err = perfValues.Save(s.OutDir()); err != nil {
 		s.Error("Cannot save perf data: ", err)
 	}
+	
+	
+
 }
