@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9b5d433d_a406e897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-20T09:34:26Z",
+      "side": 1,
+      "message": "Actually no.\n\nhttps://golang.org/doc/effective_go.html#formatting\n\n Go has no line length limit. Don\u0027t worry about overflowing a punched card. If a line feels too long, wrap it and indent with an extra tab.",
+      "parentUuid": "0fa700db_b2b8eb20",
+      "range": {
+        "startLine": 71,
+        "startChar": 3,
+        "endLine": 71,
+        "endChar": 78
+      },
+      "revId": "b4145649fed8e8a82ffc66054c0e336ecd4f9d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49f95aa5_cc131027",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
         "patchSetId": 1
