@@ -88,6 +88,24 @@
       "revId": "4c46a6370558296a27be9f50704c6a00d92a93af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb62b798_67b682f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-06-20T03:33:40Z",
+      "side": 0,
+      "message": "Yeah, it cannot be duplicated unless 1) changing another name, or 2) putting into another common file. But since it\u0027s the intermediate state, I would consider not to do these redundant works.",
+      "parentUuid": "15b2057a_1dd30fae",
+      "revId": "4c46a6370558296a27be9f50704c6a00d92a93af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
