@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "daf1781f_d04d200a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-20T09:10:20Z",
+      "side": 1,
+      "message": "nit: we don\u0027t need to include the path here, it\u0027s already included in err returned from ioutil.ReadFile.",
+      "range": {
+        "startLine": 209,
+        "startChar": 48,
+        "endLine": 209,
+        "endChar": 61
+      },
+      "revId": "b4c24a20dd4175b00510f9742e5682c257754538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b3d535b_d217a7cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-20T09:10:20Z",
+      "side": 1,
+      "message": "Please avoid including the whole log content in the error message. Instead it might be helpful to include the log filename (i.e. filepath.Base(logPath)).",
+      "range": {
+        "startLine": 215,
+        "startChar": 48,
+        "endLine": 215,
+        "endChar": 50
+      },
+      "revId": "b4c24a20dd4175b00510f9742e5682c257754538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d295ef14_74e4a07e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-20T09:10:20Z",
+      "side": 1,
+      "message": "I\u0027m not very sure, but how about Errorf if it\u0027s worth reporting some metrics partially?",
+      "range": {
+        "startLine": 251,
+        "startChar": 5,
+        "endLine": 251,
+        "endChar": 11
+      },
+      "revId": "b4c24a20dd4175b00510f9742e5682c257754538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
