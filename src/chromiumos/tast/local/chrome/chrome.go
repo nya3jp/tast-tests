@@ -151,6 +151,15 @@ func GuestLogin() option {
 	}
 }
 
+// Region returns an option that can be passed to New to set the region deciding
+// the locale used in the OOBE screen and the user sessions. region is a
+// two-letter code such as "us", "fr", or "ja".
+func Region(region string) option {
+	return func(c *Chrome) {
+		c.region = region
+	}
+}
+
 // FetchPolicy returns an option that can be passed to New to let the device do a policy fetch
 // upon login. By default, policies are not fetched.
 func FetchPolicy() option {
@@ -194,6 +203,7 @@ type Chrome struct {
 	normalizedUser     string // user with domain added, periods removed, etc.
 	keepState          bool
 	loginMode          loginMode
+	region             string
 	policyMode         policyMode
 	arcMode            arcMode
 	restrictARCCPU     bool // a flag to control cpu restrictions on ARC
@@ -232,6 +242,7 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		gaiaID:     defaultGaiaID,
 		keepState:  false,
 		loginMode:  fakeLogin,
+		region:     "us",
 		policyMode: noPolicy,
 		watcher:    newBrowserWatcher(),
 		logMaster:  jslog.NewMaster(),
@@ -496,6 +507,8 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 		"--enable-experimental-extension-apis",       // Allow Chrome to use the Chrome Automation API.
 		"--whitelisted-extension-id=" + c.testExtID,  // Whitelists the test extension to access all Chrome APIs.
 		"--redirect-libassistant-logging",            // Redirect libassistant logging to /var/log/chrome/.
+		"--cros-region=" + c.region,                  // Force the region.
+		"--cros-regions-mode=hide",                   // Ignore default values in VPD.
 	}
 	if c.loginMode != gaiaLogin {
 		args = append(args, "--disable-gaia-services")
