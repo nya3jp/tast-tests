@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b47e73d4_4573a106",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-06-20T03:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6c3e15b_7385746b",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 11
+      },
+      "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b81da808_a760079c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
         "patchSetId": 7
@@ -72,6 +96,24 @@
       "side": 1,
       "message": "It depends on just the current implementation details, and I\u0027d strongly recommend to avoid such dependency.\nSpecifically, IIUC, your design assumes that the ARCVM is running when libvda is used.\nIf you\u0027d get rid of the assumption, some parts should be revisited, IMHO.\nSpecifically, e.g., Profile handling in Chrome.\n\nAlso, --enable-arcvm is not expected usage on non-ARCVM supported boards.\nRather it is a flag to tell whether the board is supporting ARCVM.\nIt controls not only D-Bus service, but also ArcSession related code.\nAbusing the flag would increase the maintenance cost, which should be avoided,\nbecause it would create unrealistic situations.",
       "parentUuid": "54cde16c_a771d33e",
+      "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "346f2c6e_fe94c10d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-06-20T03:43:25Z",
+      "side": 1,
+      "message": "Hidehiko, can you comment on this again? I vaguely remember discussing this with you offline regarding how it would still be valuable to test this for ARC++ as well, but not sure if we reached a consensus.",
+      "parentUuid": "57b22a07_289d0821",
       "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -131,6 +173,24 @@
     },
     {
       "key": {
+        "uuid": "7e3500ae_147568da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-06-20T03:43:25Z",
+      "side": 1,
+      "message": "Added some comments.",
+      "parentUuid": "e8b53ddc_0b6a79c0",
+      "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d647de07_cf550da4",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
         "patchSetId": 7
@@ -145,6 +205,24 @@
       "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5442bf71_585e866a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-06-20T03:43:25Z",
+      "side": 1,
+      "message": "I had to modify gtest.go in order to provide additional command line parameters. please take a look.",
+      "parentUuid": "d647de07_cf550da4",
+      "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +333,24 @@
     },
     {
       "key": {
+        "uuid": "b2839971_555a10b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-06-20T03:43:25Z",
+      "side": 1,
+      "message": "This ended up being split into two unit test binaries for fake and GPU implementations.",
+      "parentUuid": "8eb774e1_8c8b3a08",
+      "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a8c07ce_1d4145a0",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
         "patchSetId": 7
@@ -342,6 +438,54 @@
         "startChar": 56,
         "endLine": 22,
         "endChar": 68
+      },
+      "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d7999be_5f78cafe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-06-20T03:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc555727_cb9ba17a",
+      "range": {
+        "startLine": 22,
+        "startChar": 56,
+        "endLine": 22,
+        "endChar": 68
+      },
+      "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c22fb29b_00eaf1ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-06-20T03:43:25Z",
+      "side": 1,
+      "message": "I\u0027m actually thinking if \"android\" should be here. This would work on any Chrome instance that specifies the --enable-arcvm flag.\n\nIn addition, \"android\" seems to specify !arcvm which seems strange for this test?\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/cmd/local_test_runner/main.go?rcl\u003db43b959317d636648a653eace5b7f0a8323b770e\u0026l\u003d60",
+      "parentUuid": "c01bdeac_4c115b4c",
+      "range": {
+        "startLine": 22,
+        "startChar": 25,
+        "endLine": 22,
+        "endChar": 34
       },
       "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
