@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "562d982d_df911e34",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-20T03:01:54Z",
+      "side": 1,
+      "message": "Cleaning up the benchmark doesn\u0027t need that much time. And I think the context will only be used for logging anyway. The problem is that I want to avoid each function shorting the context even more. I\u0027ve seen cases where the context is shortened multiple times, so the test would timeout almost immediately without having done anything yet.\n\nI think it makes more sense for \u0027setup\u0027 functions to return a cleanup function that takes a context. So the test can create a shorter context once, and use the longer one for all cleanup operations.",
+      "parentUuid": "1e4d5516_f3e4305f",
+      "range": {
+        "startLine": 19,
+        "startChar": 45,
+        "endLine": 20,
+        "endChar": 54
+      },
+      "revId": "8921601c519406359227ce196ce602895e7a6a5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7cd178ee_1ea3068d",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/encode_accel_jpeg_perf.go",
         "patchSetId": 2
