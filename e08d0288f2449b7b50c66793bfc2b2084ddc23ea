@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6efdddfc_24da7370",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-20T11:50:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11bd6d65_0f8908e0",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 42
+      },
+      "revId": "e08d0288f2449b7b50c66793bfc2b2084ddc23ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e97ef76_1210d431",
         "filename": "src/chromiumos/tast/local/sysutil/sysutil_test.go",
         "patchSetId": 12
@@ -45,6 +69,30 @@
       "revId": "e08d0288f2449b7b50c66793bfc2b2084ddc23ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4a86027_bc175bf1",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-20T11:50:56Z",
+      "side": 1,
+      "message": "Thanks! Done.",
+      "parentUuid": "7e97ef76_1210d431",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "e08d0288f2449b7b50c66793bfc2b2084ddc23ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
