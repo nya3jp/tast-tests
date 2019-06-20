@@ -123,10 +123,11 @@ func Auth(user, pass, gaiaID string) option {
 	}
 }
 
-// KeepCryptohome returns an option that can be passed to New to preserve the user's existing
-// cryptohome (if any) instead of wiping it before logging in.
-func KeepCryptohome() option {
-	return func(c *Chrome) { c.keepCryptohome = true }
+// KeepState returns an option that can be passed to New to preserve the state such as
+// files under /home/chronos and the user's existing cryptohome (if any) instead of
+// wiping them before logging in.
+func KeepState() option {
+	return func(c *Chrome) { c.keepState = true }
 }
 
 // GAIALogin returns an option that can be passed to New to perform a real GAIA-based login rather
@@ -191,7 +192,7 @@ type Chrome struct {
 
 	user, pass, gaiaID string // login credentials
 	normalizedUser     string // user with domain added, periods removed, etc.
-	keepCryptohome     bool
+	keepState          bool
 	loginMode          loginMode
 	policyMode         policyMode
 	arcMode            arcMode
@@ -226,14 +227,14 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 	defer st.End()
 
 	c := &Chrome{
-		user:           DefaultUser,
-		pass:           defaultPass,
-		gaiaID:         defaultGaiaID,
-		keepCryptohome: false,
-		loginMode:      fakeLogin,
-		policyMode:     noPolicy,
-		watcher:        newBrowserWatcher(),
-		logMaster:      jslog.NewMaster(),
+		user:       DefaultUser,
+		pass:       defaultPass,
+		gaiaID:     defaultGaiaID,
+		keepState:  false,
+		loginMode:  fakeLogin,
+		policyMode: noPolicy,
+		watcher:    newBrowserWatcher(),
+		logMaster:  jslog.NewMaster(),
 	}
 	for _, opt := range opts {
 		opt(c)
@@ -285,7 +286,7 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		return nil, err
 	}
 
-	if c.loginMode != noLogin && !c.keepCryptohome {
+	if c.loginMode != noLogin && !c.keepState {
 		if err := cryptohome.RemoveUserDir(ctx, c.normalizedUser); err != nil {
 			return nil, err
 		}
@@ -552,7 +553,18 @@ func (c *Chrome) restartSession(ctx context.Context) error {
 	if err := upstart.StopJob(ctx, "ui"); err != nil {
 		return err
 	}
-	if !c.keepCryptohome {
+
+	if !c.keepState {
+		const chronosDir = "/home/chronos"
+		// This always fails because /home/chronos is a mount point, but all files
+		// under the directory should be removed.
+		os.RemoveAll(chronosDir)
+		if fis, err := ioutil.ReadDir(chronosDir); err != nil {
+			return err
+		} else if len(fis) > 0 {
+			return errors.Errorf("failed to clear %s: failed to remove %q", chronosDir, fis[0].Name())
+		}
+
 		// Delete policy files to clear the device's ownership state since the account
 		// whose cryptohome we'll delete may be the owner: http://cbug.com/897278
 		if err := session.ClearDeviceOwnership(ctx); err != nil {
