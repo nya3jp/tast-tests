@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9d0f92d_06205263",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-06-20T05:24:54Z",
+      "side": 1,
+      "message": "consider using string(bytes.TrimRight(b[:], \"\\x00\")) to save converting the nulls into string",
+      "revId": "0034718a8211da6277d07abd2cb093b5b22e9f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c078190d_0c5e600c",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-06-20T05:24:54Z",
+      "side": 1,
+      "message": "I think at least one example with the null bytes in is a good idea",
+      "revId": "0034718a8211da6277d07abd2cb093b5b22e9f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
