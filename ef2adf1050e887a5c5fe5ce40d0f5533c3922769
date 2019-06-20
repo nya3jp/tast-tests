@@ -34,6 +34,24 @@
       "revId": "ef2adf1050e887a5c5fe5ce40d0f5533c3922769",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d90972e7_a7b0c10a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-20T02:28:05Z",
+      "side": 0,
+      "message": "100% agree splitting off \u0027WaitForIdle\u0027 from SetupBenchmark",
+      "parentUuid": "65bdc06b_fc8d5f8b",
+      "revId": "ef2adf1050e887a5c5fe5ce40d0f5533c3922769",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
