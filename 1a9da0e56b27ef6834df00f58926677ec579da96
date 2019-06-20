@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73dd4110_1eaf803b",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-20T12:23:08Z",
+      "side": 1,
+      "message": "optional: Instead of injecting the method, how about introducing a method converting from *syscall.Utsname to *sysutil.Utsname, and then test the converter method?",
+      "revId": "1a9da0e56b27ef6834df00f58926677ec579da96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "448af2d8_054fbfc4",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-20T12:23:08Z",
+      "side": 1,
+      "message": "Could you avoid copying by passing slice instead?",
+      "revId": "1a9da0e56b27ef6834df00f58926677ec579da96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "173d0e8f_b44c0ab4",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-20T12:23:08Z",
+      "side": 1,
+      "message": "clar: do you need to TrimSpace? You already trimmed trailing nulls?",
+      "range": {
+        "startLine": 86,
+        "startChar": 9,
+        "endLine": 86,
+        "endChar": 26
+      },
+      "revId": "1a9da0e56b27ef6834df00f58926677ec579da96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a25c5b42_3f585acd",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-20T12:23:08Z",
+      "side": 1,
+      "message": "style: How about simply return the value?\n\nreturn \u0026Utsname{\n  Sysname: convert(u.Sysname),\n  Nodename: convert(u.Nodename),\n   ...\n}, nil",
+      "revId": "1a9da0e56b27ef6834df00f58926677ec579da96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c89f468e_9973d519",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil_test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-20T12:23:08Z",
+      "side": 1,
+      "message": "I think \"Fatal\" instead of Error, because the following change does not make sense in case of error?",
+      "revId": "1a9da0e56b27ef6834df00f58926677ec579da96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
