@@ -81,6 +81,24 @@
       "revId": "df6e65177513e851a6395a6dc7f36f8208cfb02d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b216008_0bd996c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-20T13:40:26Z",
+      "side": 1,
+      "message": "Thank you. Let\u0027s revisit then.",
+      "parentUuid": "0c27c147_42a8e974",
+      "revId": "df6e65177513e851a6395a6dc7f36f8208cfb02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
