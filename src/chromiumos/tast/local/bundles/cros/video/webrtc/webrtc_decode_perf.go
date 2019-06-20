@@ -284,24 +284,28 @@ func RunWebRTCDecodePerf(ctx context.Context, s *testing.State, streamName strin
 		s.Fatal("Chrome logout failed: ", err)
 	}
 
+	// Leave a bit of time to tear down benchmark mode.
+	shortCtx, cancel := ctxutil.Shorten(ctx, cleanupTime)
+	defer cancel()
+
 	s.Log("Setting up for CPU benchmarking")
-	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+	cleanUpBenchmark, err := cpu.SetUpBenchmark(shortCtx)
 	if err != nil {
 		s.Fatal("Failed to set up CPU benchmark mode: ", err)
 	}
 	defer cleanUpBenchmark(ctx)
 
-	// Leave a bit of time to tear down benchmark mode.
-	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
-	defer cancel()
+	if err := cpu.WaitUntilIdle(shortCtx); err != nil {
+		s.Fatal("Failed waiting for CPU to become idle: ", err)
+	}
 
 	p := perf.NewValues()
 	// Try hardware accelerated WebRTC first.
 	// If it is hardware accelerated, run without hardware acceleration again.
 	streamFilePath := s.DataPath(streamName)
-	hwAccelUsed := webRTCDecodePerf(ctx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, false, p, config)
+	hwAccelUsed := webRTCDecodePerf(shortCtx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, false, p, config)
 	if hwAccelUsed {
-		webRTCDecodePerf(ctx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, true, p, config)
+		webRTCDecodePerf(shortCtx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, true, p, config)
 	}
 	p.Save(s.OutDir())
 }

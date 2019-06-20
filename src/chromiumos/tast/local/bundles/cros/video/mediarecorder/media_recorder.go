@@ -139,19 +139,23 @@ func doMeasurePerf(ctx context.Context, fileSystem http.FileSystem, outDir strin
 	}
 	defer cr.Close(ctx)
 
+	// Reserve time for cleanup at the end of the test.
+	shortCtx, cancel := ctxutil.Shorten(ctx, cleanupTime)
+	defer cancel()
+
 	// Wait until CPU is idle enough. CPU usage can be high immediately after login for various reasons (e.g. animated images on the lock screen).
-	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+	cleanUpBenchmark, err := cpu.SetUpBenchmark(shortCtx)
 	if err != nil {
 		return 0, 0, false, errors.Wrap(err, "failed to set up benchmark")
 	}
 	defer cleanUpBenchmark(ctx)
 
+	if err := cpu.WaitUntilIdle(shortCtx); err != nil {
+		return 0, 0, false, errors.Wrap(err, "failed waiting for CPU to become idle")
+	}
+
 	server := httptest.NewServer(http.FileServer(fileSystem))
 	defer server.Close()
-
-	// Reserve time for cleanup at the end of the test.
-	shortCtx, cancel := ctxutil.Shorten(ctx, cleanupTime)
-	defer cancel()
 
 	initHistogram, err := metrics.GetHistogram(shortCtx, cr, constants.MediaRecorderVEAUsed)
 	if err != nil {
