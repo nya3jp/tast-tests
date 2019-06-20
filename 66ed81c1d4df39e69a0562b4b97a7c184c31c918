@@ -353,6 +353,24 @@
     },
     {
       "key": {
+        "uuid": "b4af2589_5e522f25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-20T16:44:44Z",
+      "side": 1,
+      "message": "Yes, it is.",
+      "parentUuid": "a33bf727_295230a7",
+      "revId": "66ed81c1d4df39e69a0562b4b97a7c184c31c918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d8c4b5f_7d710ce7",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring.go",
         "patchSetId": 6
@@ -669,6 +687,30 @@
       "writtenOn": "2019-06-07T16:09:40Z",
       "side": 1,
       "message": "Could you file a bug to identify the Ring sensor existence outside of the test,\nto avoid unexpected pass.",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 2
+      },
+      "revId": "66ed81c1d4df39e69a0562b4b97a7c184c31c918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9d168be_05c04f4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_ring.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-20T16:44:44Z",
+      "side": 1,
+      "message": "ping?",
+      "parentUuid": "a726f39f_daf1e81d",
       "range": {
         "startLine": 49,
         "startChar": 1,

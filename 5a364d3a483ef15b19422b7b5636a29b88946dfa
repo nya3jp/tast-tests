@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43667284_9688ecfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-20T16:44:44Z",
+      "side": 1,
+      "message": "What happens if;\n\nAt some point, e.g., second sensor, for some reason operation fails, so returns.\nThen, this is rerun.\n\nI guess, the first sensor keeps \"flush 1\", so it will be found in the for loop at L126?\nAlso, in the next run, another \"flush 1\" will be written to first sensor, again, IIUC.\nThen, the latter event will be kept... ?",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 0
+      },
+      "revId": "5a364d3a483ef15b19422b7b5636a29b88946dfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8dcfe5a_4efafce8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-20T16:44:44Z",
+      "side": 1,
+      "message": "To avoid forgetting Close() invocation in future when edited around this code,\ncould you move this to defer at L116?\n\ndata, err :\u003d cr.ring.Open()\nif err !\u003d nil {\n   ...\n}\nsuccess :\u003d false\ndefer func() {\n  if (!success) {\n    cr.ring.Close()\n  }\n}\n\n...\n\nsuccess \u003d true\nreturn events, nil",
+      "revId": "5a364d3a483ef15b19422b7b5636a29b88946dfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0feb98db_c7abd960",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-20T16:44:44Z",
+      "side": 1,
+      "message": "syscall package is deprecated.\nhttps://golang.org/pkg/syscall/\n\u003d\u003d quote \u003d\u003d\nDeprecated: this package is locked down. Callers should use the corresponding package in the golang.org/x/sys repository instead.  ...\n\u003d\u003d\u003d\u003d\n\nCould you use unix pacakge?\nhttps://godoc.org/golang.org/x/sys/unix#Mkfifo",
+      "revId": "5a364d3a483ef15b19422b7b5636a29b88946dfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0edb531e_28e81208",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-20T16:44:44Z",
+      "side": 1,
+      "message": "nit/style: (sorry overlooked in the last iteration)\n\nCould you combine these lines?\n\nif _, err :\u003d f.Write(...); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 18
+      },
+      "revId": "5a364d3a483ef15b19422b7b5636a29b88946dfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f869f2cb_5c1d719e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_ring.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-20T16:44:44Z",
+      "side": 1,
+      "message": "nit: could you use const ?",
+      "revId": "5a364d3a483ef15b19422b7b5636a29b88946dfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d892babc_60ff201e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_ring.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-20T16:44:44Z",
+      "side": 1,
+      "message": "Could you dump ctx.Err()?",
+      "revId": "5a364d3a483ef15b19422b7b5636a29b88946dfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c0a64fc_60de8188",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_ring.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-20T16:44:44Z",
+      "side": 1,
+      "message": "Because this represents the time, could you return time.Time?",
+      "range": {
+        "startLine": 123,
+        "startChar": 16,
+        "endLine": 123,
+        "endChar": 21
+      },
+      "revId": "5a364d3a483ef15b19422b7b5636a29b88946dfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "339b03f7_f5646338",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_ring.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-20T16:44:44Z",
+      "side": 1,
+      "message": "Could you handle error properly?",
+      "revId": "5a364d3a483ef15b19422b7b5636a29b88946dfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
