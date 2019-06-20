@@ -532,6 +532,30 @@
       "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "661c8220_c1008dd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-06-20T23:14:57Z",
+      "side": 1,
+      "message": "\u003e jasongustaman@ is adding new dependencies in CL:1651235. Perhaps, this CL should depends on his CL?\n\nYes, please do.\n\n\u003e Jason, what\u0027s the plan for CL:1651235? I think you can submit this CL before CL:1637171.\n\nI was waiting for the ARCVM in one board decision. Now that it\u0027s done, I most likely will add another dependency for both container and VM and move forward.",
+      "parentUuid": "49488729_951002a2",
+      "range": {
+        "startLine": 22,
+        "startChar": 25,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "0dbc52a123f3df0034c7a04ec23cda9727fb398c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
