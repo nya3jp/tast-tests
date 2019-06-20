@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/bintest"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -67,21 +68,29 @@ func DecodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 	tempDir := binsetup.CreateTempDataDir(s, "DecodeAccelJPEGPerf.tast.", jpegPerfTestFiles)
 	defer os.RemoveAll(tempDir)
 
-	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+	// Reserve time for cleanup and restarting the ui job at the end of the test.
+	shortCtx, cancel := ctxutil.Shorten(ctx, cleanupTime)
+	defer cancel()
+
+	// Stop the UI job. While this isn't required to run the test binary, it's
+	// possible a previous tests left tabs open or an animation is playing,
+	// influencing our performance results.
+	if err := upstart.StopJob(shortCtx, "ui"); err != nil {
+		s.Error("Failed to stop ui: ", err)
+	}
+	defer upstart.EnsureJobRunning(ctx, "ui")
+
+	cleanUpBenchmark, err := cpu.SetUpBenchmark(shortCtx)
 	if err != nil {
 		s.Fatal("Failed to set up benchmark mode: ", err)
 	}
 	defer cleanUpBenchmark(ctx)
 
-	// Reserve time to perform cleanup at the end of the test.
-	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
-	defer cancel()
-
 	s.Log("Measuring SW JPEG decode performance")
-	cpuUsageSW := runJPEGPerfBenchmark(ctx, s, tempDir,
+	cpuUsageSW := runJPEGPerfBenchmark(shortCtx, s, tempDir,
 		measureDuration, perfJPEGDecodeTimes, swFilter)
 	s.Log("Measuring HW JPEG decode performance")
-	cpuUsageHW := runJPEGPerfBenchmark(ctx, s, tempDir,
+	cpuUsageHW := runJPEGPerfBenchmark(shortCtx, s, tempDir,
 		measureDuration, perfJPEGDecodeTimes, hwFilter)
 
 	// TODO(dstaessens@): Remove "tast_" prefix after removing video_JDAPerf in autotest.
