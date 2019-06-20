@@ -83,6 +83,7 @@ func writeTestExtension(dir string) (id string, err error) {
     "audio",
     "autotestPrivate",
     "fontSettings",
+    "i18n",
     "inputMethodPrivate",
     "languageSettingsPrivate",
     "management",
