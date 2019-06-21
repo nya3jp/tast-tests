@@ -31,6 +31,11 @@ func init() {
 }
 
 func ALSAConformance(ctx context.Context, s *testing.State) {
+	const (
+		rateCriteria    = 0.1
+		rateErrCriteria = 100.0
+	)
+
 	if err := audio.WaitForDevice(ctx, audio.InputStream|audio.OutputStream); err != nil {
 		s.Fatal("Failed to wait for input and output streams: ", err)
 	}
@@ -119,7 +124,11 @@ func ALSAConformance(ctx context.Context, s *testing.State) {
 		} else {
 			arg = "PLAYBACK"
 		}
-		cmd := testexec.CommandContext(ctx, "alsa_conformance_test.py", alsaDev, arg, "--json")
+		cmd := testexec.CommandContext(
+			ctx, "alsa_conformance_test.py", alsaDev, arg,
+			"--rate_criteria", fmt.Sprintf("%f", rateCriteria),
+			"--rate_err_criteria", fmt.Sprintf("%f", rateErrCriteria),
+			"--json")
 		out, err := cmd.Output()
 		if err != nil {
 			cmd.DumpLog(ctx)
