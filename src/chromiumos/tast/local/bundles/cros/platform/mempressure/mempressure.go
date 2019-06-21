@@ -13,6 +13,7 @@ import (
 	"math"
 	"net"
 	"os"
+	"path/filepath"
 	"time"
 
 	"github.com/shirou/gopsutil/mem"
@@ -697,7 +698,8 @@ func cycleTabs(ctx context.Context, cr *chrome.Chrome, tabIDs []int, rset *rende
 // logTabSwitchTimes takes a slice of tab switch times produced by switching
 // through tabCount tabs multiple times, and outputs per-tab stats of those
 // times.
-func logTabSwitchTimes(ctx context.Context, switchTimes []time.Duration, tabCount int, label string) {
+func logTabSwitchTimes(ctx context.Context, switchTimes []time.Duration, tabCount int, outDir, label string) {
+	logTabSwitchTimesToFile(ctx, switchTimes, outDir, label)
 	if len(switchTimes) == tabCount {
 		// One switch per tab
 		for i, t := range switchTimes {
@@ -718,10 +720,36 @@ func logTabSwitchTimes(ctx context.Context, switchTimes []time.Duration, tabCoun
 	}
 }
 
+// logTabSwitchTimesToFile takes a slice of tab switch times and writes them to a file in the provided
+// outDir output directory, using the label string in the file name to give context.
+func logTabSwitchTimesToFile(ctx context.Context, switchTimes []time.Duration, outDir, label string) error {
+	filename := fmt.Sprintf("%s_times.txt", label)
+	f, err := os.OpenFile(filepath.Join(outDir, filename), os.O_CREATE|os.O_RDWR|os.O_APPEND, 0666)
+	if err != nil {
+		return errors.Wrap(err, "Failed to open switch times file")
+	}
+	defer f.Close()
+	allFile, err := os.OpenFile(filepath.Join(outDir, "all_times.txt"), os.O_CREATE|os.O_RDWR|os.O_APPEND, 0666)
+	if err != nil {
+		return errors.Wrap(err, "Failed to open switch times file")
+	}
+	defer allFile.Close()
+	for _, t := range switchTimes {
+		str := fmt.Sprintf("%7.2f\n", t.Seconds()*1000)
+		if _, err = fmt.Fprintf(f, str); err != nil {
+			return errors.Wrap(err, "failed to write switch times to file")
+		}
+		if _, err = fmt.Fprintf(allFile, str); err != nil {
+			return errors.Wrap(err, "failed to write switch times to file")
+		}
+	}
+	return nil
+}
+
 // runTabSwitches performs multiple set of tab switches through the tabs in
 // tabIDs, and logs switch times and their stats.
 func runTabSwitches(ctx context.Context, cr *chrome.Chrome, rset *rendererSet,
-	tabIDs []int, label string, repeatCount int) error {
+	tabIDs []int, outDir, label string, repeatCount int) error {
 	// Cycle through the tabs once to warm them up (no wiggling).
 	if _, err := cycleTabs(ctx, cr, tabIDs, rset, time.Second, false); err != nil {
 		return errors.Wrap(err, "cannot warm-up initial set of tabs")
@@ -742,7 +770,7 @@ func runTabSwitches(ctx context.Context, cr *chrome.Chrome, rset *rendererSet,
 		label, mean(switchTimes).Seconds()*1000, stdDev(switchTimes).Seconds()*1000)
 
 	// Log tab switch stats on a per-tab basis.
-	logTabSwitchTimes(ctx, switchTimes, len(tabIDs), label)
+	logTabSwitchTimes(ctx, switchTimes, len(tabIDs), outDir, label)
 	return nil
 }
 
@@ -910,7 +938,7 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	initialTabSetIDs := rset.tabIDs[:initialTabSetSize]
 	pinTabs(ctx, cr, initialTabSetIDs)
 	// Collect and log tab-switching times in the absence of memory pressure.
-	if err := runTabSwitches(ctx, cr, rset, initialTabSetIDs, "light", tabSwitchRepeatCount); err != nil {
+	if err := runTabSwitches(ctx, cr, rset, initialTabSetIDs, s.OutDir(), "light", tabSwitchRepeatCount); err != nil {
 		s.Error("Cannot run tab switches with light load: ", err)
 	}
 	logAndResetStats(s, partialMeter, "initial")
@@ -1025,6 +1053,7 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	s.Logf("Metrics: Phase 1: average page fault rate %v pf/second", stats.PageFault.AverageRate)
 	s.Logf("Metrics: Phase 1: max page fault rate %v pf/second", stats.PageFault.MaxRate)
 	times := allTabSwitchTimes
+	logTabSwitchTimesToFile(ctx, times, s.OutDir(), "phase1")
 	s.Logf("Metrics: Phase 1: mean tab switch time %7.2f ms", mean(times).Seconds()*1000)
 	s.Logf("Metrics: Phase 1: stddev of tab switch times %7.2f ms", stdDev(times).Seconds()*1000)
 
@@ -1041,7 +1070,7 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	if err != nil {
 		s.Fatal("Cannot switch to cold tabs: ", err)
 	}
-	logTabSwitchTimes(ctx, times, len(coldTabIDs), "coldswitch")
+	logTabSwitchTimes(ctx, times, len(coldTabIDs), s.OutDir(), "coldswitch")
 
 	// -----------------
 	// Phase 3: quiesce.
@@ -1052,7 +1081,7 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	}
 	fullMeter.Reset()
 	// Measure tab switching under pressure.
-	if err := runTabSwitches(ctx, cr, rset, initialTabSetIDs, "heavy", tabSwitchRepeatCount); err != nil {
+	if err := runTabSwitches(ctx, cr, rset, initialTabSetIDs, s.OutDir(), "heavy", tabSwitchRepeatCount); err != nil {
 		s.Error("Cannot run tab switches with heavy load: ", err)
 	}
 	stats, err = fullMeter.VMStats()
