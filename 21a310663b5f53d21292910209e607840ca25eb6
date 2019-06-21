@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e45f0440_55d53573",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T04:51:21Z",
+      "side": 1,
+      "message": "I thought it\u0027s okay to clear /home/chronos as long as ui job is not running, but please let me know if you have any particular concern.\n\nBTW my motivation is to remove \"Local State\" and .oobe_completed in the directory. I can just remove just the two files instead of the whole directory.",
+      "parentUuid": "51024f60_7b216c9e",
+      "revId": "21a310663b5f53d21292910209e607840ca25eb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0ad22b20_30aa1dcc",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "21a310663b5f53d21292910209e607840ca25eb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25338dc5_81504168",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T04:51:21Z",
+      "side": 1,
+      "message": "I think one file should be enough to debug what happened. And I\u0027m afraid printing all entries can be spammy.",
+      "parentUuid": "0ad22b20_30aa1dcc",
+      "range": {
+        "startLine": 565,
+        "startChar": 79,
+        "endLine": 565,
+        "endChar": 92
+      },
+      "revId": "21a310663b5f53d21292910209e607840ca25eb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
