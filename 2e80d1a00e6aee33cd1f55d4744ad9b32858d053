@@ -16,6 +16,24 @@
       "revId": "2e80d1a00e6aee33cd1f55d4744ad9b32858d053",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "def07a7c_744c6088",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-21T01:47:55Z",
+      "side": 1,
+      "message": "Good idea, thanks!",
+      "parentUuid": "366d3c78_dd4081a5",
+      "revId": "2e80d1a00e6aee33cd1f55d4744ad9b32858d053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
