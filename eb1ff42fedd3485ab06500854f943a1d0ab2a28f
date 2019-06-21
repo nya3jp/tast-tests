@@ -88,6 +88,24 @@
       "revId": "eb1ff42fedd3485ab06500854f943a1d0ab2a28f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14f136eb_f7df67b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-21T01:22:06Z",
+      "side": 1,
+      "message": "Thanks for all the feedback!\n\nTo be honest I very strongly disagree with leaving cleanup responsibility for the next testcase. I\u0027ve worked on multiple test frameworks in the past, and every time I encountered various hard-to-debug issues due to tests not properly cleaning up.\n\nWhile I agree that in some cases it\u0027s not always possible for tests to do cleanup on failure, in most cases the framework should make cleanup on failure possible. That\u0027s exactly why we do cleanup with a longer context. And tests should to some extend perform cleanup at the start, but it\u0027s impossible for a test to do all possible cleanup:\n- Some process might be left running, it\u0027s impossible for the next testcase to kill this.\n- Some files might pollute the file system and affect future tests.\n- Some configuration might be written by the previous test (e.g. CPU frequency scaling), it\u0027s impossible for the next test to fix all this.\n- Some process might have been killed (e.g. the thermal throttling process) that might affect next test runs.\n- Even on a UI restart most of these things will persist.\n- Even on a reboot some of the above things will persist.\n\nI can\u0027t stress strongly enough how important I think it is for tests to do proper cleanup at the end of the test run. If it were up to me I would rewrite the tast documentation to much better reflect this. There are some exceptions to this, but they should be properly listed as being exceptions:\n- The device can be left in the logged in state.\n- The Chrome browser can be left open.\nBut this is what the preconditions are for!\n\nIMHO the only thing a test should do at the start (asides from any pre-conditions) is making sure the UI is stopped or started. \n\nAnother reason for cleaning up at the end of the test:\n- After running a test I manually need to close tabs and clean up things, before I can use my board for other purposes. I find this very annoying.\n- The board might be left e.g. playing a movie, increasing CPU and power usage and potentially reducing the boards lifetime for no reason at all. This might not be a huge issue, but let\u0027s avoid the board playing movies non-stop whenever it\u0027s left idle.\n\nI understand that we might need to take screenshots on failure, but this doesn\u0027t weight up to the above points I listed. There are alternative ways to deal with this:\n- Explicitly ask to take a screenshot on failure.\n- Postpone cleanup until after taking a screenshot, e.g. testingstate.AttachCleanup(cleanupBenchmark).\n\nSome examples of tests issues:\n- The camera.Decode/EncodeAccelJPEGPerf tests will report 10% higher CPU if ran after the \u0027MediaRecorder*\u0027 tests. This issue is very hard to track down. It will also be fixed by closing the UI at the start of the tests, but that doesn\u0027t mean we shouldn\u0027t enforce tests to do cleanup at the end.\n- The video.EncodeAccelPerf* and many other performance tests fail waiting for the CPU to become idle, if ran after the \u0027MediaRecorder*\u0027 tests.\n\nAt the moment I\u0027m taking steps to both improve cleanup at the end of a test, and improve setup at the start of a test. I would really like this CL to be checked in soon, as we already spent a lot of time investigating why things go wrong, and want to get our tests stable as soon as possible. We can always continue our conversation afterwards, and discuss alternatives!",
+      "parentUuid": "a3377c51_0d787db1",
+      "revId": "eb1ff42fedd3485ab06500854f943a1d0ab2a28f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
