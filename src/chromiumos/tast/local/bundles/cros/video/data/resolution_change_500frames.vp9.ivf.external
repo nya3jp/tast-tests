@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/resolution_change_500frames_20190621.vp9.ivf",
+  "size": 790703,
+  "sha256sum": "fe13886826318a0924167ff6b6a89fade263953d89100c66791be0a9497d307c"
+}
