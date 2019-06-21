@@ -64,7 +64,7 @@ func CrostiniAudioSanity(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Play zeros with alsa device")
-	if err = cont.Command(ctx, "aplay", "-D", "hw:0,0", "-r", "48000", "-c", "2", "-d", "3", "-f", "dat", "/dev/zero").Run(testexec.DumpLogOnError); err != nil {
+	if err = cont.Command(ctx, "aplay", "-r", "48000", "-c", "2", "-d", "3", "-f", "dat", "/dev/zero").Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to playback with alsa devices: ", err)
 	}
 
@@ -74,7 +74,7 @@ func CrostiniAudioSanity(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Capture with alsa device")
-	if err = cont.Command(ctx, "arecord", "-D", "hw:0,0", "-r", "48000", "-c", "2", "-d", "3", "-f", "dat", "/dev/null").Run(testexec.DumpLogOnError); err != nil {
+	if err = cont.Command(ctx, "arecord", "-r", "48000", "-c", "2", "-d", "3", "-f", "dat", "/dev/null").Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to capture with alsa devices: ", err)
 	}
 }
