@@ -71,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "cd880ba6_c0a6f473",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-06-21T19:49:37Z",
+      "side": 1,
+      "message": "Are there any other restrictions to the output of the command besides length?",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "0504ca813877a221e899d025ffca2462478e08c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f6622e3b_5c2c4994",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
         "patchSetId": 4
