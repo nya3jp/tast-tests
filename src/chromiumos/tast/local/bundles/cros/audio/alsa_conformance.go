@@ -31,6 +31,12 @@ func init() {
 }
 
 func ALSAConformance(ctx context.Context, s *testing.State) {
+	// TODO(yuhsuan): Tighten the ratio if the current version is stable. (b/136614687)
+	const (
+		rateCriteria    = 0.1
+		rateErrCriteria = 100.0
+	)
+
 	if err := audio.WaitForDevice(ctx, audio.InputStream|audio.OutputStream); err != nil {
 		s.Fatal("Failed to wait for input and output streams: ", err)
 	}
@@ -119,11 +125,13 @@ func ALSAConformance(ctx context.Context, s *testing.State) {
 		} else {
 			arg = "PLAYBACK"
 		}
-		cmd := testexec.CommandContext(ctx, "alsa_conformance_test.py", alsaDev, arg, "--json")
-		out, err := cmd.Output()
+		out, err := testexec.CommandContext(
+			ctx, "alsa_conformance_test.py", alsaDev, arg,
+			"--rate-criteria-diff-pct", fmt.Sprintf("%f", rateCriteria),
+			"--rate-err-criteria", fmt.Sprintf("%f", rateErrCriteria),
+			"--json").Output(testexec.DumpLogOnError)
 		if err != nil {
-			cmd.DumpLog(ctx)
-			s.Fatal("Failed: ", err)
+			s.Fatal("Failed to run alsa_conformance_test: ", err)
 		}
 
 		filename := fmt.Sprintf("%s.json", stream)
