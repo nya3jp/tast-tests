@@ -15,17 +15,17 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DecodeAccelH264New,
-		Desc:         "Run Chrome video_decode_accelerator_tests with an H.264 video",
+		Func:         DecodeAccelVP92New,
+		Desc:         "Run Chrome video_decode_accelerator_tests with an VP9.2 video",
 		Contacts:     []string{"acourbot@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome", caps.HWDecodeH264},
-		Data:         decode.DataFiles(videotype.H264Prof),
+		SoftwareDeps: []string{"chrome", caps.HWDecodeVP9_2},
+		Data:         decode.DataFiles(videotype.VP9_2Prof),
 	})
 }
 
-// DecodeAccelH264New runs the video_decode_accelerator_tests with test-25fps.h264.
+// DecodeAccelVP92New runs the video_decode_accelerator_tests with test-25fps.vp9_2.
 // TODO(dstaessens): Drop the 'New' suffix when the old VDA tests have been deprecated.
-func DecodeAccelH264New(ctx context.Context, s *testing.State) {
-	decode.RunAccelVideoTestNew(ctx, s, decode.Test25FPSH264.Name)
+func DecodeAccelVP92New(ctx context.Context, s *testing.State) {
+	decode.RunAccelVideoTestNew(ctx, s, decode.Test25FPSVP92.Name)
 }

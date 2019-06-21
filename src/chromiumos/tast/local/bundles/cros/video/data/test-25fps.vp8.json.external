@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test-25fps_20190418.vp8.json",
-  "size": 10589,
-  "sha256sum": "9b5fafc8cd6ebd48d3019dda0a89916f6d5d68af2161152146d3d79d3f5f27e0"
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test-25fps_20190621.vp8.json",
+  "size": 10609,
+  "sha256sum": "5306c4732cc4e97dd261b60defad8d6637b1b35ba3a64240350fd15e017173c1"
 }
