@@ -96,7 +96,14 @@ var basePath = "/"
 func GetSensors() ([]*Sensor, error) {
 	var ret []*Sensor
 
-	files, err := ioutil.ReadDir(filepath.Join(basePath, iioBasePath))
+	fullpath := filepath.Join(basePath, iioBasePath)
+
+	// Some systems will not have any iio devices; this case should not be an error.
+	if _, err := os.Stat(fullpath); os.IsNotExist(err) {
+		return ret, nil
+	}
+
+	files, err := ioutil.ReadDir(fullpath)
 	if err != nil {
 		return nil, err
 	}
