@@ -91,6 +91,46 @@
       "revId": "922fc95b5d84363f00c57802cc0ed996cf35e448",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9322d75b_a2b9fefa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2019-06-21T01:17:55Z",
+      "side": 1,
+      "message": "IIRC, the latest Chrome unthrottle the container once the user clicks an ARC app icon right? Can we check the CPU share before the window is shown to verify the \u0027unthrottle-on-click\u0027 feature is working as intended?",
+      "range": {
+        "startLine": 105,
+        "startChar": 17,
+        "endLine": 105,
+        "endChar": 39
+      },
+      "revId": "922fc95b5d84363f00c57802cc0ed996cf35e448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44b42277_d4c7e8b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2019-06-21T01:17:55Z",
+      "side": 1,
+      "message": "I don\u0027t know much about Tast framwork, but is it possible to show/hide the app shelf? The recent throttling bug was introduced by the app shelf show/hide actions IIRC, and it would be nice if we can test the case here.",
+      "revId": "922fc95b5d84363f00c57802cc0ed996cf35e448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
