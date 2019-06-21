@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "292b581e_116f23c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-06-21T19:48:01Z",
+      "side": 1,
+      "message": "nit: This should go on the next line I believe.",
+      "range": {
+        "startLine": 22,
+        "startChar": 22,
+        "endLine": 22,
+        "endChar": 24
+      },
+      "revId": "0504ca813877a221e899d025ffca2462478e08c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bafacb1c_f42e151f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-06-21T19:48:01Z",
+      "side": 1,
+      "message": "Print the err here as well",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 61
+      },
+      "revId": "0504ca813877a221e899d025ffca2462478e08c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ef0da53_1bbc45ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-06-21T19:48:01Z",
+      "side": 1,
+      "message": "Just use s.Fatal and don\u0027t return.",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 9
+      },
+      "revId": "0504ca813877a221e899d025ffca2462478e08c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6622e3b_5c2c4994",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-06-21T19:48:01Z",
+      "side": 1,
+      "message": "Maybe change this to something like s.Errorf(\"Could not find non-removable block storage device by running \u0027cros_healthd --probe_block_devices\u0027; output was %q\", output)",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 97
+      },
+      "revId": "0504ca813877a221e899d025ffca2462478e08c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc04541b_74df3dd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-06-21T19:48:01Z",
+      "side": 1,
+      "message": "I think you should use Logf(\"%q\", output) when printing strings from \"unknown\" sources.\n\nAlso should you log output on failure too either in the Error message or unconditionally before the check.",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 15
+      },
+      "revId": "0504ca813877a221e899d025ffca2462478e08c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
