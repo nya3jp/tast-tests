@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "df3c857a_16092223",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1327553
+      },
+      "writtenOn": "2019-06-21T20:28:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "292b581e_116f23c2",
+      "range": {
+        "startLine": 22,
+        "startChar": 22,
+        "endLine": 22,
+        "endChar": 24
+      },
+      "revId": "0504ca813877a221e899d025ffca2462478e08c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bafacb1c_f42e151f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
         "patchSetId": 4
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "19573e48_cf0829fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1327553
+      },
+      "writtenOn": "2019-06-21T20:28:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ef0da53_1bbc45ec",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 9
+      },
+      "revId": "0504ca813877a221e899d025ffca2462478e08c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0de50b5f_a1d8327d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1327553
+      },
+      "writtenOn": "2019-06-21T20:28:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bafacb1c_f42e151f",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 61
+      },
+      "revId": "0504ca813877a221e899d025ffca2462478e08c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd880ba6_c0a6f473",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "0504ca813877a221e899d025ffca2462478e08c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4eb8d58e_b4b233e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1327553
+      },
+      "writtenOn": "2019-06-21T20:28:22Z",
+      "side": 1,
+      "message": "For the purpose of getting this integration test up and running, no. The output of this command is just a CSV with a line of headers. So, the theory here is that every board should have at least one non-removable block device which should show up in this list, so the number of lines should be at least 2.",
+      "parentUuid": "cd880ba6_c0a6f473",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "0504ca813877a221e899d025ffca2462478e08c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "2db3dece_38120f2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1327553
+      },
+      "writtenOn": "2019-06-21T20:28:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6622e3b_5c2c4994",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 97
+      },
+      "revId": "0504ca813877a221e899d025ffca2462478e08c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc04541b_74df3dd2",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
         "patchSetId": 4
@@ -137,6 +257,30 @@
       "revId": "0504ca813877a221e899d025ffca2462478e08c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc6bf89f_c67471e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1327553
+      },
+      "writtenOn": "2019-06-21T20:28:22Z",
+      "side": 1,
+      "message": "But, doesn\u0027t Log avoid trying to interpolate/parse/format the output? I thought that was the point of there being Log and Logf... https://golang.org/pkg/testing/#B.Log",
+      "parentUuid": "cc04541b_74df3dd2",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 15
+      },
+      "revId": "0504ca813877a221e899d025ffca2462478e08c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
