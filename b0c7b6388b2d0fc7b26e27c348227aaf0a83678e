@@ -355,6 +355,24 @@
     },
     {
       "key": {
+        "uuid": "b60ee6c1_624a1199",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-21T16:17:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "14bedaa6_36877e5e",
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e256c48e_0ee57d81",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 6

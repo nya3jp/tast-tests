@@ -217,6 +217,30 @@
     },
     {
       "key": {
+        "uuid": "3014354e_4733540c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-21T16:17:39Z",
+      "side": 1,
+      "message": "Thanks Hidehiko and David\u0027s feedback. I\u0027m convinced now.",
+      "parentUuid": "f56a35a1_ff909f65",
+      "range": {
+        "startLine": 19,
+        "startChar": 45,
+        "endLine": 20,
+        "endChar": 54
+      },
+      "revId": "8921601c519406359227ce196ce602895e7a6a5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a055852d_80bca874",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
