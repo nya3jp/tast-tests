@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "094f2801_de3ce695",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "Ack, less than a second sounds good to me!",
+      "parentUuid": "7f4bdafc_d267558d",
+      "range": {
+        "startLine": 242,
+        "startChar": 18,
+        "endLine": 242,
+        "endChar": 27
+      },
+      "revId": "40d67fdfbe3e9358ab3e2857e0fad71a1d054c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6ff7078_ae5099f1",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 9
@@ -187,6 +211,30 @@
       "revId": "40d67fdfbe3e9358ab3e2857e0fad71a1d054c0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70cb5a9f_27677cfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "Thanks for using time.Since! But it seems we still use shells (i.e. sh -c) in PS10.",
+      "parentUuid": "08bcde7c_8362bfb8",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 23
+      },
+      "revId": "40d67fdfbe3e9358ab3e2857e0fad71a1d054c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {

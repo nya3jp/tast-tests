@@ -1,0 +1,855 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b3bd831_36e8bd1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "Looks unused.",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 25
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be6270f3_58219c6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "Looks used only in one place, it should be fine to inline there.",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 10
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aada2e98_a7ece98f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "Also inline?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "263fec5d_33203e94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "style: securityWEP\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms\n\nSame for other constants too.",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 12
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e76387b_3e3a9520",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "Please export these types since they are returned from exported function (TimedScan). Otherwise callers will have hard time accessing on those values (essentially they need to always use :\u003d to avoid mentioning their types).",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 1
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93c47b72_a104e988",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "Could you document what frequencies/ssids are for, and how empty slices for these arguments are handled?",
+      "range": {
+        "startLine": 63,
+        "startChar": 57,
+        "endLine": 63,
+        "endChar": 82
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97a54239_3deec8be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "Please use ctx for logging and avoid passing testing.State.",
+      "range": {
+        "startLine": 64,
+        "startChar": 36,
+        "endLine": 64,
+        "endChar": 54
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff94b9d2_fa359cae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "As per my comment to PS9, please build the command as []string and avoid going through \"sh -c\".",
+      "range": {
+        "startLine": 65,
+        "startChar": 61,
+        "endLine": 83,
+        "endChar": 34
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7d34865_2ab63d12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "err contains the exit code, so you don\u0027t need to use GetWaitStatus here. Also please use errors.Wrap to chain errors:\n\n if err !\u003d nil {\n   return nil, errors.Wrap(err, \"iw scan failed\")\n }\n\nThis will build a message like: \"iw scan failed: exit status 3\"",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1effabbd_d708757e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "This looks irrelevant now that we don\u0027t use \"time -p\".",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77fc757b_e63fcc57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "This is a list containing one nil, not an empty list. I think you meant bssList \u003d nil.",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 27
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8716ba6e_e4515e33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "Do we need to handle the empty output specially? I guess parseScanResults can handle it gracefully.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bab57632_17fa005b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "Overall, variable names are currently longer than average Go code. Go has aggressive preference on shorter names for short-scoped local variables.\n\nFor example, I recommend:\n\n linkInformation   -\u003e out\n linkKeyValuePairs -\u003e kv\n linkKey           -\u003e line\n matchGroup        -\u003e m\n\nPlease try the same for local variables in other functions too.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#variable-names",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 45
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e5fd198_6c57a1f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "We can run match only once:\n\n m :\u003d r.FindStringSubmatch(line)\n if m !\u003d nil {\n   kv[m[1]] \u003d m[2]\n }",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 46
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecf60fff_8af2a415",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "Please prefer :\u003d than var when it\u0027s trivially possible. When you use var, declare it just before it is used.\n\nIn this case, I think we can all var decls here, and move supportedSecurities to just after // Handle Security.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 34
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06092807_f7ca9714",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "style: Please start messages for `error` type with lower case letters.\n\n errors.New(\"unexpected pattern for BSS match\")\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 160,
+        "startChar": 14,
+        "endLine": 160,
+        "endChar": 60
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74b93714_5e9a96f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "strings.Fields(freqMatch)[1] can cause panic if freqMatch doesn\u0027t contain any space, e.g.\n\n freq:1\n\nI recommend enforcing the format in regexp in this case. For example:\n\n m :\u003d regexp.MustCompile(`freq: (\\d+)`).FindStringSubmatch(dataMatch)\n if m \u003d\u003d nil {\n   return nil, errors.New(\"freq field not found\")\n }\n freq, err :\u003d strconv.Atoi(m[1])\n if err !\u003d nil {\n   return nil, errors.Wrap(err, \"failed to parse freq field\")\n }\n\nNote that the latter error can still happen if the number is crazily long, e.g. freq: 99999999999999999999999999999999999999999.",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 56
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "257be068_a675337b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "You can use errors.Errorf instead.",
+      "range": {
+        "startLine": 194,
+        "startChar": 14,
+        "endLine": 194,
+        "endChar": 36
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adcf5179_ec29eddc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "var supportedSecurities []string\n\nI also recommend shorter names like secs.",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 198,
+        "endChar": 20
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cacdeac_575ed957",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "strings.Contains(dataMatch, \"WPA\")",
+      "range": {
+        "startLine": 199,
+        "startChar": 3,
+        "endLine": 199,
+        "endChar": 69
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3c45dbb_4d3d6fe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "This function is so small, please inline it to the caller.",
+      "range": {
+        "startLine": 212,
+        "startChar": 5,
+        "endLine": 212,
+        "endChar": 8
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85881aab_7ab81fb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "style: var bssList []*bssData\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices",
+      "range": {
+        "startLine": 220,
+        "startChar": 1,
+        "endLine": 220,
+        "endChar": 27
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f82b82f_0ba7f607",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "IIUC BSS is hexadecimal? \\d only matches 0-9.",
+      "range": {
+        "startLine": 221,
+        "startChar": 31,
+        "endLine": 221,
+        "endChar": 45
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d2e7044_559ffe5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "nit: const testStr \u003d ...\n\nSame for other constants below.",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 12
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4fb5b87_704c3081",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "I recommend using github.com/google/go-cmp/cmp to output diff since the map is a bit large.\n\n if diff :\u003d cmp.Diff(linkMap, cmpMap); diff !\u003d \"\" {\n   t.Error(\"getAllLinkKeys returned unexpected map; diff:\\n\", diff)\n }",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 41
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a655c832_16935ef8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "t.Errorf",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 21
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0270ab1e_96d94e17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "Please refer the following doc for typical test failure messages:\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures\n\nFor example, in this case:\n\n t.Errorf(\"extractBSSID(%q) \u003d %q; want %q\", testStr1, res, cmpStr)",
+      "range": {
+        "startLine": 49,
+        "startChar": 23,
+        "endLine": 49,
+        "endChar": 70
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a08780d1_811817b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "I recommend t.Fatal since we should not access l if err !\u003d nil. Also please add some context rather than passing err directly.\n\n t.Fatal(\"parseScanResults failed: \", err)",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 22
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9e0d051_83a9b207",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "Would you mind putting these members on their own lines since this is a bit long?\n\n cmpBSS :\u003d bssData{\n   BSS: ...,\n   Frequency: ...,\n   ...\n }",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 128
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22c59504_6658b5a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "Let\u0027s directly compare the whole slice.\n\n cmpBSS :\u003d []bssData{\n   {\n     BSS: ...,\n     Frequncy: ...,\n     ...\n   },\n }\n if diff :\u003d cmp.Diff(l, cmpBSS); diff !\u003d \"\" {\n   t.Error(\"parseScanResults returned unexpected result; diff:\\n\", diff)\n }",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f8428a7_308b235c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "nit: 2019",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bec96a76_852b90fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "This comment is already in doc.go, so it\u0027s not necessary.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 87
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d24291d_d9426109",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "google :)",
+      "range": {
+        "startLine": 19,
+        "startChar": 32,
+        "endLine": 19,
+        "endChar": 37
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfd1226a_32f9175e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "I\u0027m not sure what \"iw\" stands for, but I guess it\u0027s some acronym. If so please name it IWScan?\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "540ec768_01e3ef4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "Please use nil for empty slices. Also it seems we can just inline these variables:\n\n _, err :\u003d iw.TimedScan(ctx, s, \"wlan0\", nil, nil)\n\nIf you still want to define a constant for iface, please use const instead:\n\n const iface \u003d \"wlan0\"",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 58
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecc1f32d_5d4395e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "Please avoid passing err directly to s.Fatal/s.Error; it\u0027s usually helpful to add some context, e.g.\n\n s.Fatal(\"TimedScan failed: \", err)",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 22
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "435b627a_7746676a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T02:39:36Z",
+      "side": 1,
+      "message": "Please remove this return.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 7
+      },
+      "revId": "d0874252648d754aae78db5373e2d85b379a67a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
