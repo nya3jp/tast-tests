@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac8eba3a_6764eeca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T07:04:53Z",
+      "side": 1,
+      "message": "Copyright header needed.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 14
+      },
+      "revId": "dcaadec12a1955ea65baa3d1f0f7de7a3da3f709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37ea1f4d_1a3437a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T07:04:53Z",
+      "side": 1,
+      "message": "Hmm, I feel like to avoid passing a closure as a function argument in general. It\u0027s because it might get difficult to tell the content of the closure when looking at the callee code.\n\nIn this case, how about introducing a utility type like this:\n\n type kernelVersion struct {\n   major, minor int\n }\n\n func newKernelVersion(s string) (kernelVersion, error)\n\n func (v kernelVersion) isOrLater(major, minor int) bool\n\nThen generateKernelConfigCheck would be like:\n\n func newKernelConfigCheck(ver kernelVersion, arch string) *kernelConfigCheck {\n   ...\n   if ver.isOrLater(3, 18) { ... }\n   ...\n }",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "dcaadec12a1955ea65baa3d1f0f7de7a3da3f709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce2e0f18_ed4fc5b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T07:04:53Z",
+      "side": 1,
+      "message": "len(kv) might be 1 if line does not contain an equal sign. Please check len(kv) \u003d\u003d 2.",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 18
+      },
+      "revId": "dcaadec12a1955ea65baa3d1f0f7de7a3da3f709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bff07457_078a9edf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T07:04:53Z",
+      "side": 1,
+      "message": "nit: It is more typical in Go to name constructors as new*. How about newKernelConfigReader?",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 94,
+        "endChar": 29
+      },
+      "revId": "dcaadec12a1955ea65baa3d1f0f7de7a3da3f709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3c30ed3_12eb224d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T07:04:53Z",
+      "side": 1,
+      "message": "nit: const filename \u003d ...",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 13
+      },
+      "revId": "dcaadec12a1955ea65baa3d1f0f7de7a3da3f709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "062ef2b5_281e27f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T07:04:53Z",
+      "side": 1,
+      "message": "I believe running modprobe for an already-loaded module is noop. How about running modprobe regardless of existence of /proc/config.gz? It will simplify the flow a bit.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 3
+      },
+      "revId": "dcaadec12a1955ea65baa3d1f0f7de7a3da3f709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6538e368_36e6dcbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T07:04:53Z",
+      "side": 1,
+      "message": "f must be closed in any case. But returning only io.Reader won\u0027t allow callers to close the file...\n\nI can think of several workarounds:\n\n1. return (io.Reader, io.Closer, error)\n2. return (io.ReadCloser, error) where the ReadCloser combines r and f (I guess you need to define a new type, I\u0027m not aware of a geenric utility to combine Reader and Closer)\n3. return ([]byte, error)\n4. inline createKernelConfigReader to readKernelConfig\n\nMy recommendation is 3 or 4.",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 2
+      },
+      "revId": "dcaadec12a1955ea65baa3d1f0f7de7a3da3f709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47349332_4d3df8c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T07:04:53Z",
+      "side": 1,
+      "message": "nit: contains",
+      "range": {
+        "startLine": 120,
+        "startChar": 14,
+        "endLine": 120,
+        "endChar": 24
+      },
+      "revId": "dcaadec12a1955ea65baa3d1f0f7de7a3da3f709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d89ed5f_7f34fb55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T07:04:53Z",
+      "side": 1,
+      "message": "The meaning of \"exclusively listed\" was not clear to me. How about just removing \"exclusive\"? The sentence still makes sense to me without it.",
+      "range": {
+        "startLine": 120,
+        "startChar": 34,
+        "endLine": 120,
+        "endChar": 149
+      },
+      "revId": "dcaadec12a1955ea65baa3d1f0f7de7a3da3f709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c51924b_98f02061",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T07:04:53Z",
+      "side": 1,
+      "message": "nit: builtin contains config keys that should be set to y.",
+      "range": {
+        "startLine": 122,
+        "startChar": 4,
+        "endLine": 122,
+        "endChar": 59
+      },
+      "revId": "dcaadec12a1955ea65baa3d1f0f7de7a3da3f709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c1aa52a_bb243bef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T07:04:53Z",
+      "side": 1,
+      "message": "ditto: newKernelConfigCheck",
+      "range": {
+        "startLine": 137,
+        "startChar": 5,
+        "endLine": 137,
+        "endChar": 30
+      },
+      "revId": "dcaadec12a1955ea65baa3d1f0f7de7a3da3f709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57cbab6d_02d6a7c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T07:04:53Z",
+      "side": 1,
+      "message": "I recommend explicitly mentioning field names (e.g. builtin: builtin) especially when a struct has several fields with the same type.",
+      "range": {
+        "startLine": 322,
+        "startChar": 2,
+        "endLine": 328,
+        "endChar": 10
+      },
+      "revId": "dcaadec12a1955ea65baa3d1f0f7de7a3da3f709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54422bea_97a28886",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T07:04:53Z",
+      "side": 1,
+      "message": "nit: I prefer a bit more descriptive name when the content is not obvious from its type. How about conf for example?",
+      "range": {
+        "startLine": 332,
+        "startChar": 33,
+        "endLine": 332,
+        "endChar": 35
+      },
+      "revId": "dcaadec12a1955ea65baa3d1f0f7de7a3da3f709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "626d3fa8_2fb92732",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-21T07:04:53Z",
+      "side": 1,
+      "message": "nit: r.matchString(k) \u0026\u0026 !declared[k]",
+      "range": {
+        "startLine": 382,
+        "startChar": 3,
+        "endLine": 383,
+        "endChar": 21
+      },
+      "revId": "dcaadec12a1955ea65baa3d1f0f7de7a3da3f709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
