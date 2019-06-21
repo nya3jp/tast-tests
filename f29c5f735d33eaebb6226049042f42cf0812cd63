@@ -16,6 +16,24 @@
       "revId": "f29c5f735d33eaebb6226049042f42cf0812cd63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94ba4623_4c4e23c4",
+        "filename": "src/chromiumos/tast/local/sysutil/sysutil_test.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-21T09:29:56Z",
+      "side": 1,
+      "message": "It have trailing nulls.\n[4]byte{42} means [4]byte{42,0,0,0} for example.",
+      "parentUuid": "d3eebe6e_88a8a6f2",
+      "revId": "f29c5f735d33eaebb6226049042f42cf0812cd63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
