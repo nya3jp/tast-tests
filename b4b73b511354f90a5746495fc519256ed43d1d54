@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52b3fa41_14291d8a",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-21T08:02:45Z",
+      "side": 1,
+      "message": "DOes vmInstance have ownership? I.e., is it necessary to stop in case of failure in this function or in the caller?",
+      "revId": "b4b73b511354f90a5746495fc519256ed43d1d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f5e1f30_87c883e6",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-21T08:02:45Z",
+      "side": 1,
+      "message": "style/nit: Could you keep nil?",
+      "range": {
+        "startLine": 497,
+        "startChar": 11,
+        "endLine": 497,
+        "endChar": 14
+      },
+      "revId": "b4b73b511354f90a5746495fc519256ed43d1d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4be1107a_b92061dc",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-21T08:02:45Z",
+      "side": 1,
+      "message": "style/nit: we often write this in inline.\n\nif err :\u003d testexec.CommandContext(ctx, \"tar\", \"xvf\", ...).Run(testexec.DumpLogOnError); err !\u003d nil {\n  ...\n}\n\nNote that go does not have linewise num char limit.",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 78,
+        "endChar": 58
+      },
+      "revId": "b4b73b511354f90a5746495fc519256ed43d1d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "908271ec_611ca656",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-21T08:02:45Z",
+      "side": 1,
+      "message": "Needs to stop concierge in case of failure?",
+      "revId": "b4b73b511354f90a5746495fc519256ed43d1d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a275f4b_5f8c1455",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-21T08:02:45Z",
+      "side": 1,
+      "message": "Need to vmInstance Stop in case of error?",
+      "revId": "b4b73b511354f90a5746495fc519256ed43d1d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
