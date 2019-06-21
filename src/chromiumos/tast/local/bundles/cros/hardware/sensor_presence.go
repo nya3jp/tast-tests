@@ -9,7 +9,6 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/hardware/crosconfig"
 	"chromiumos/tast/local/bundles/cros/hardware/iio"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -31,11 +30,6 @@ func init() {
 // SensorPresence verifies that sensors defined in a board's model.yaml file are
 // defined as iio devices on the DUT.
 func SensorPresence(ctx context.Context, s *testing.State) {
-	s.Log("Restarting ui job to so sensors are not claimed by ARC")
-	if err := upstart.RestartJob(ctx, "ui"); err != nil {
-		s.Fatal("Failed to restart ui job: ", err)
-	}
-
 	dutSensors, err := iio.GetSensors()
 	if err != nil {
 		s.Fatal("Error reading sensors on DUT: ", err)

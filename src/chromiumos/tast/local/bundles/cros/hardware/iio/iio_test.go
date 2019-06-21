@@ -35,13 +35,26 @@ func TestGetSensors(t *testing.T) {
 	}
 
 	expected := []*Sensor{
-		&Sensor{Accel, Lid, "iio:device0", 0, .25, 100, 1000},
-		&Sensor{Gyro, Base, "iio:device1", 1, 0, 0, 0},
-		&Sensor{Ring, None, "iio:device3", 0, 0, 0, 0},
+		{Accel, Lid, "iio:device0", 0, .25, 100, 1000},
+		{Gyro, Base, "iio:device1", 1, 0, 0, 0},
+		{Ring, None, "iio:device3", 0, 0, 0, 0},
 	}
 
 	if !reflect.DeepEqual(expected, sensors) {
 		t.Errorf("Expected sensors %v but got %v", expected, sensors)
+	}
+}
+
+func TestNoDeviceDir(t *testing.T) {
+	defer setupTestFiles(t, map[string]string{})()
+
+	sensors, err := GetSensors()
+	if err != nil {
+		t.Fatal("Error getting sensors: ", err)
+	}
+
+	if len(sensors) != 0 {
+		t.Errorf("Expected no sensors but got %v", sensors)
 	}
 }
 
