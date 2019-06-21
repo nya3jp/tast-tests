@@ -193,6 +193,30 @@
     },
     {
       "key": {
+        "uuid": "f56a35a1_ff909f65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-21T00:42:04Z",
+      "side": 1,
+      "message": "Thanks for all the helpful feedback! I\u0027ve thought about it a lot, and still prefer the responsibility to lie with the testcase, rather than the setup method:\n- I find the example code with shortCtxA and shortCtxB not very readable. You could give them names like shortCtx and shorterCtx, but let\u0027s not do that as it makes the code hard to read, and it\u0027s not clear anymore which context should be used. Even if they have names such as teardownBenchmarkCtx and cleanupUICtx it\u0027s not clear what to use anymore.\n- The flow of the code is much easier to follow if we create a shorter context once for all setup.\n- Cleanup time is pretty neglectable anyway. At least now it\u0027s immediately clear from the test case how much time their will be reserved for cleanup, and how much time there will be left for running the test.",
+      "parentUuid": "47df132b_086c7ba5",
+      "range": {
+        "startLine": 19,
+        "startChar": 45,
+        "endLine": 20,
+        "endChar": 54
+      },
+      "revId": "8921601c519406359227ce196ce602895e7a6a5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a055852d_80bca874",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -213,6 +237,30 @@
       "revId": "8921601c519406359227ce196ce602895e7a6a5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffea8d79_367179db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-21T00:42:04Z",
+      "side": 1,
+      "message": "Adapted, also removed the part about improving the logic, as it\u0027s no longer true.",
+      "parentUuid": "a055852d_80bca874",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 28
+      },
+      "revId": "8921601c519406359227ce196ce602895e7a6a5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

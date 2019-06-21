@@ -266,6 +266,24 @@
     },
     {
       "key": {
+        "uuid": "fb2d5077_394c8254",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-21T00:42:04Z",
+      "side": 1,
+      "message": "Good idea. Changed to \u0027Measuring CPU usage for %v\u0027, as it\u0027s clear we\u0027re running a command from the previous log statements.",
+      "parentUuid": "d5459ebe_9970108e",
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2d45be3_e446262c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 6
@@ -313,6 +331,24 @@
       "side": 1,
       "message": "https://tour.golang.org/basics/7\n\nmmm... but it says \"Naked return statements should be used only in short functions\".\nFor long function like this, shall we still use named return value?",
       "parentUuid": "79670204_21a13565",
+      "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14bedaa6_36877e5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-21T00:42:04Z",
+      "side": 1,
+      "message": "Thanks for the info, interesting! I investigated removing the name, but then I need to remove all names \"syntax error: mixed named and unnamed function parameters\". This means I also need to remove and explicitly define the \u0027err\u0027 variable.\n\nI actually prefer the function to be named in this case, as the function signature makes it immediately clear what the purpose of the returned function is.\n\nPart of the function will be removed later anyway, so I don\u0027t think it\u0027s that long.\n\nAnd I think \"naked returns\" are talking about the return statement itself (e.g. doing return without variables), not about naming the return values. So I think this is fine.",
+      "parentUuid": "0cf89e0b_8e133d6b",
       "revId": "b0c7b6388b2d0fc7b26e27c348227aaf0a83678e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
