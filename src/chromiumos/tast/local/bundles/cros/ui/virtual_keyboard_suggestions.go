@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/vkb"
+	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/testing"
 )
 
@@ -42,7 +43,7 @@ func VirtualKeyboardSuggestions(ctx context.Context, s *testing.State) {
 	// Chrome OS by iterating through them and testing each decoder one by one.
 	const xkbExtensionID = "_comp_ime_jkghodnilhceideoidjikpgommlajknk"
 	const inputMethodIDEnUS = xkbExtensionID + "xkb:us::eng"
-	if err := vkb.SetCurrentInputMethod(ctx, tconn, inputMethodIDEnUS); err != nil {
+	if err := ime.SetCurrentInputMethod(ctx, tconn, inputMethodIDEnUS); err != nil {
 		s.Fatal("Failed to set the input method: ", err)
 	}
 
