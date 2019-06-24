@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -66,8 +67,42 @@ type App struct {
 func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, error) {
 	const ccaID = "hfhhnacclhffhdffklopdkcgdhifgngh"
 
+	// First, ensure that cros-camera service is running if it exists. The
+	// service might stopped due to the errors from some previous tests, and
+	// failed to restart for some reason.
+	if upstart.JobExists(ctx, "cros-camera") {
+		if err := upstart.EnsureJobRunning(ctx, "cros-camera"); err != nil {
+			return nil, err
+		}
+	}
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
+		return nil, err
+	}
+
+	bgURL := chrome.ExtensionBackgroundPageURL(ccaID)
+	bconn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
+	if err != nil {
+		return nil, err
+	}
+	defer bconn.Close()
+
+	// TODO(shik): Remove the else branch after CCA get updated.
+	const prepareForTesting = `
+		window.readyForTesting = new Promise((resolve) => {
+		  if (typeof cca.bg.onAppWindowCreatedForTesting !== 'undefined') {
+		    cca.bg.onAppWindowCreatedForTesting = resolve;
+		  } else {
+		    const interval = setInterval(() => {
+		      if (cca.bg.appWindowCreated) {
+		        clearInterval(interval);
+		        resolve();
+		      }
+		    }, 100);
+		  }
+		});`
+	if err := bconn.Exec(ctx, prepareForTesting); err != nil {
 		return nil, err
 	}
 
@@ -79,7 +114,7 @@ func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, er
 		    } else {
 		      resolve();
 		    }
-		  })
+		  });
 		})`, ccaID)
 	if err := tconn.EvalPromise(ctx, launchApp, nil); err != nil {
 		return nil, err
@@ -87,13 +122,7 @@ func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, er
 
 	// Wait until the window is created before connecting to it, otherwise there
 	// is a race that may make the window disappear.
-	bgURL := chrome.ExtensionBackgroundPageURL(ccaID)
-	bconn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
-	if err != nil {
-		return nil, err
-	}
-	defer bconn.Close()
-	if err := bconn.WaitForExpr(ctx, "cca.bg.appWindowCreated"); err != nil {
+	if err := bconn.EvalPromise(ctx, "readyForTesting", nil); err != nil {
 		return nil, err
 	}
 
@@ -106,7 +135,19 @@ func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, er
 	// Let CCA perform some one-time initialization after launched.  Otherwise
 	// the first CheckVideoActive() might timed out because it's still
 	// initializing, especially on low-end devices and when the system is busy.
-	const waitIdle = "new Promise(resolve => requestIdleCallback(resolve, {timeout: 30000}))"
+	// Fail the test early if it's timed out to make it easier to figure out
+	// the real reason of a test failure.
+	const waitIdle = `
+		new Promise((resolve, reject) => {
+		  const idleCallback = ({didTimeout}) => {
+		    if (didTimeout) {
+		      reject(new Error('Timed out initializing CCA'));
+		    } else {
+		      resolve();
+		    }
+		  };
+		  requestIdleCallback(idleCallback, {timeout: 30000});
+		});`
 	if err := conn.EvalPromise(ctx, waitIdle, nil); err != nil {
 		return nil, err
 	}
@@ -139,6 +180,7 @@ func (a *App) Close(ctx context.Context) error {
 		firstErr = errors.Wrap(err, "failed to Conn.Close()")
 	}
 	a.conn = nil
+	testing.ContextLog(ctx, "CCA closed")
 	return firstErr
 }
 
