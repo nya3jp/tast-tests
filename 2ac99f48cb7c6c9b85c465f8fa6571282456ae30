@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a22f7506_6759aed6",
+        "filename": "src/chromiumos/tast/local/hwsec/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-06-24T07:19:26Z",
+      "side": 1,
+      "message": "I think we need a top-level doc. I had a hard time studying other packages because of no top-level docs.\n\nNo, that doesn\u0027t make sense to keep |cryptohome|. And I believe hwsec is a more sensible name because of the coverage; It is a TODO to merge those 2 packages.",
+      "parentUuid": "2e3c5106_45618c08",
+      "revId": "2ac99f48cb7c6c9b85c465f8fa6571282456ae30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18f070b4_a203bde8",
         "filename": "src/chromiumos/tast/local/hwsec/doc.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "2ac99f48cb7c6c9b85c465f8fa6571282456ae30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49adb603_397b3735",
+        "filename": "src/chromiumos/tast/local/hwsec/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-06-24T07:19:26Z",
+      "side": 1,
+      "message": "I also thought of the same issue but I found it could be all in the same package. Some other packages could use this package but they might have their own wrappers.\n\nI prefer to extend the documented scope once that happens.",
+      "parentUuid": "18f070b4_a203bde8",
+      "range": {
+        "startLine": 8,
+        "startChar": 59,
+        "endLine": 9,
+        "endChar": 44
+      },
+      "revId": "2ac99f48cb7c6c9b85c465f8fa6571282456ae30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
