@@ -45,6 +45,30 @@
       "revId": "6cb82fc03be63d1d7ffb232b188edeede9962153",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5693616_e18c9075",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-24T07:49:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5629269c_96252618",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 9
+      },
+      "revId": "6cb82fc03be63d1d7ffb232b188edeede9962153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
