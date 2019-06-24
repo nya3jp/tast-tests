@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f8a69ec_fd20cb7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rulebased_ime_typing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-06-24T06:02:50Z",
+      "side": 1,
+      "message": "What does putting \"IME\" here do?",
+      "revId": "abb91fae89e864b7aafcccee9df5e0d8d680b986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f27eee53_bac7b707",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rulebased_ime_typing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-06-24T06:02:50Z",
+      "side": 1,
+      "message": "Yeah I don\u0027t think tast-owners will approve this. We need to have a way to wait for the input methods to change, without using hacky timeouts.",
+      "revId": "abb91fae89e864b7aafcccee9df5e0d8d680b986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d52509aa_9dd9821d",
+        "filename": "src/chromiumos/tast/local/chrome/ime/ime.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-06-24T06:02:50Z",
+      "side": 1,
+      "message": "nit: remove blank spaces.",
+      "revId": "abb91fae89e864b7aafcccee9df5e0d8d680b986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
