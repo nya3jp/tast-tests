@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24a272cb_da3708e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rulebased_ime_typing.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1234349
+      },
+      "writtenOn": "2019-06-24T06:38:20Z",
+      "side": 1,
+      "message": "Why this is needed?",
+      "range": {
+        "startLine": 51,
+        "startChar": 46,
+        "endLine": 51,
+        "endChar": 71
+      },
+      "revId": "dd174c56dfec33bc8a9e8b742eb751c2f5500055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc91f667_f05ebab1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rulebased_ime_typing.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1234349
+      },
+      "writtenOn": "2019-06-24T06:38:20Z",
+      "side": 1,
+      "message": "Can we put this in a separate func?",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "dd174c56dfec33bc8a9e8b742eb751c2f5500055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
