@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e3c5106_45618c08",
+        "filename": "src/chromiumos/tast/local/hwsec/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-06-24T06:59:46Z",
+      "side": 1,
+      "message": "Do we need a doc file in library? I only found one in the package metrics (tast/local/chrome/metrics). Looks like other library packages have no doc.go.\n\nAlso, if we add hwsec, we will have both tast/local/cryptohome and tast/local/hwsec. Is there any reason to keep our library in 2 places? Should we merge them (probably rename cryptohome to hwsec)?\n\nSince there might be conventions that Tast owners want people to follow. I\u0027d defer the decision to them. As long as they are okay, I am okay.",
+      "revId": "2ac99f48cb7c6c9b85c465f8fa6571282456ae30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18f070b4_a203bde8",
+        "filename": "src/chromiumos/tast/local/hwsec/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-06-24T06:59:46Z",
+      "side": 1,
+      "message": "I think this will be true for most tests in the future, but not limited to hwsec tests. Maybe rephrase it to something like \"hwsec-related Tast tests\"?",
+      "range": {
+        "startLine": 8,
+        "startChar": 59,
+        "endLine": 9,
+        "endChar": 44
+      },
+      "revId": "2ac99f48cb7c6c9b85c465f8fa6571282456ae30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
