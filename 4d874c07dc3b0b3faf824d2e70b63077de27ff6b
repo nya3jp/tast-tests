@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81f115f0_80acd51d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-06-24T01:13:13Z",
+      "side": 1,
+      "message": "Did we want to validate the contents of the output?",
+      "revId": "4d874c07dc3b0b3faf824d2e70b63077de27ff6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d5bc431_933bcfbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-06-24T01:13:13Z",
+      "side": 1,
+      "message": "I think it may be helpful to add a brief comment explaining why checking lineCount \u003e 2 is sufficient. \n\nI found this response to be helpful: \"The output of this command is just a CSV with a line of headers. So, the theory here is that every board should have at least one non-removable block device which should show up in this list, so the number of lines should be at least 2.\"",
+      "revId": "4d874c07dc3b0b3faf824d2e70b63077de27ff6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
