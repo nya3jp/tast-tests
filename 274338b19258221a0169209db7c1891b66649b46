@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4a8270c_3e162c4e",
+        "filename": "src/chromiumos/tast/local/hwsec/utility_common.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-24T14:44:21Z",
+      "side": 1,
+      "message": "wouldn\u0027t \u0027ms\u0027 be a more conventional name for the milliseconds parameter?",
+      "range": {
+        "startLine": 20,
+        "startChar": 35,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "274338b19258221a0169209db7c1891b66649b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bda3b60a_0e7d3988",
+        "filename": "src/chromiumos/tast/local/hwsec/utility_common.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-24T14:44:21Z",
+      "side": 1,
+      "message": "does go coding style limit number of columns in the source code?",
+      "revId": "274338b19258221a0169209db7c1891b66649b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
