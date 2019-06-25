@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "12ad7641_b26fad0c",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-06-25T22:51:38Z",
+      "side": 1,
+      "message": "Yes good catch. I will add that to the function documentation.",
+      "parentUuid": "25871477_e36b0071",
+      "revId": "55b2b704029217dcebc84d5ac25ee2d540f523e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a54080_70290781",
         "filename": "src/chromiumos/tast/local/vm/crosvm.go",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2019-06-21T09:54:27Z",
       "side": 1,
       "message": "Is this be blocking operation? If so, ctx timeout wouldn\u0027t work.",
+      "revId": "55b2b704029217dcebc84d5ac25ee2d540f523e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "325c5fc6_4c973e99",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-06-25T22:51:38Z",
+      "side": 1,
+      "message": "It is a blocking operation. After some testing it looks like the blocking ReadByte call returns only when the crosvm object is closed. It looks like the bufio.Reader does not have a way to interrupt the reading. Do you have any ideas how we could rework this so the timeout is respected?",
+      "parentUuid": "97a54080_70290781",
       "revId": "55b2b704029217dcebc84d5ac25ee2d540f523e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
