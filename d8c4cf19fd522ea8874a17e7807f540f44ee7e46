@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0705c86f_9f3e03c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test-25fps.h264.json.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-25T16:40:00Z",
+      "side": 1,
+      "message": "Didn\u0027t you change the file? How about avoid duplication?",
+      "revId": "d8c4cf19fd522ea8874a17e7807f540f44ee7e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6edd11ce_3d0c8867",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_new.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-25T16:40:00Z",
+      "side": 1,
+      "message": "Renaming the tests is fine, but reusing the name confuses the system. Could you avoid it?",
+      "revId": "d8c4cf19fd522ea8874a17e7807f540f44ee7e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
