@@ -22,5 +22,5 @@ func init() {
 }
 
 func SELinuxProcessesExperimental(ctx context.Context, s *testing.State) {
-	selinux.ProcessesTestInternal(ctx, s)
+	selinux.ProcessesTestInternal(ctx, s, []selinux.SELinuxProcessTestCaseSelector{selinux.StableTestCase})
 }

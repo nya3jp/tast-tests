@@ -13,13 +13,14 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SELinuxProcesses,
-		Desc:         "Checks that processes are running in correct SELinux domain",
+		Func:         SELinuxProcessesInformational,
+		Desc:         "Checks that processes are running in correct SELinux domain (new and flaky tests)",
 		Contacts:     []string{"fqj@chromium.org", "kroot@chromium.org", "chromeos-security@google.com"},
-		SoftwareDeps: []string{"selinux_current"},
+		Attr:         []string{"informational"},
+		SoftwareDeps: []string{"selinux"},
 	})
 }
 
-func SELinuxProcesses(ctx context.Context, s *testing.State) {
-	selinux.ProcessesTestInternal(ctx, s, []selinux.ProcessTestCaseSelector{selinux.StableTestCase})
+func SELinuxProcessesInformational(ctx context.Context, s *testing.State) {
+	selinux.ProcessesTestInternal(ctx, s, []selinux.ProcessTestCaseSelector{selinux.NewOrFlakyTest})
 }
