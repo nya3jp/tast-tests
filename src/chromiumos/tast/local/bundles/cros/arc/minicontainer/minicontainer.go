@@ -17,6 +17,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/cpuset"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/logs"
@@ -222,17 +223,22 @@ func testCPUSet(ctx context.Context, s *testing.State) {
 		types = append(types, "restricted")
 	}
 
-	allCPUs := fmt.Sprintf("0-%d", runtime.NumCPU()-1)
 	for _, t := range types {
 		path := fmt.Sprintf("/dev/cpuset/%s/cpus", t)
 		out, err := arc.BootstrapCommand(ctx, "/system/bin/cat", path).Output(testexec.DumpLogOnError)
 		if err != nil {
-			s.Errorf("Failed to read %s: %v", path, err)
+			s.Errorf("failed to read %s: %v", path, err)
 			continue
 		}
 		val := strings.TrimSpace(string(out))
-		if val != allCPUs {
-			s.Errorf("Unexpected CPU setting for %s: got %s; want %s", path, val, allCPUs)
+		cpusInUse, err := cpuset.Parse(ctx, val)
+		if err != nil {
+			s.Errorf("failed to parse %s: %v", path, err)
+			continue
+		}
+		if len(cpusInUse) != runtime.NumCPU() {
+			s.Errorf("unexpected CPU setting %q for %s: got %d CPUs, want %d CPUs", val, path,
+				len(cpusInUse), runtime.NumCPU())
 		}
 	}
 }
