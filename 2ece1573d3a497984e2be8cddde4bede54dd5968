@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d3722db_5549b11b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-25T16:52:42Z",
+      "side": 1,
+      "message": "Could you move this to under L236?\n\nAlso, it\u0027s better to overwrite ctx at the line to avoid accidentally use (original) ctx.\nDitto for below.",
+      "revId": "2ece1573d3a497984e2be8cddde4bede54dd5968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb0bb569_54dcbc26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-25T16:52:42Z",
+      "side": 1,
+      "message": "I think this condition should not be fixed.",
+      "range": {
+        "startLine": 166,
+        "startChar": 11,
+        "endLine": 166,
+        "endChar": 13
+      },
+      "revId": "2ece1573d3a497984e2be8cddde4bede54dd5968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
