@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2c56541b_4a60397f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1327553
+      },
+      "writtenOn": "2019-06-25T19:36:13Z",
+      "side": 1,
+      "message": "Below this line I\u0027m validating the content. I\u0027m making sure that it contains at least 2 lines of output.",
+      "parentUuid": "81f115f0_80acd51d",
+      "revId": "4d874c07dc3b0b3faf824d2e70b63077de27ff6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d5bc431_933bcfbb",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
         "patchSetId": 6
@@ -33,6 +51,24 @@
       "revId": "4d874c07dc3b0b3faf824d2e70b63077de27ff6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f10ab9b_77dfbc33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1327553
+      },
+      "writtenOn": "2019-06-25T19:36:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d5bc431_933bcfbb",
+      "revId": "4d874c07dc3b0b3faf824d2e70b63077de27ff6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
