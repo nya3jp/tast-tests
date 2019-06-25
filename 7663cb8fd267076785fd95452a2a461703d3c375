@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80f4aeb1_891c1efa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_resolution_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-25T16:42:56Z",
+      "side": 0,
+      "message": "Could you mention about the TODO removal in the commit message, too?",
+      "revId": "7663cb8fd267076785fd95452a2a461703d3c375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
