@@ -339,7 +339,6 @@ func testCPUSet(ctx context.Context, s *testing.State, a *arc.ARC) {
 		types = append(types, "restricted")
 	}
 
-	allCPUs := fmt.Sprintf("0-%d", runtime.NumCPU()-1)
 	for _, t := range types {
 		// cgroup pseudo file cannot be "adb pull"ed. Additionally, it is not
 		// accessible via adb shell user in P. Access by procfs instead.
@@ -350,16 +349,24 @@ func testCPUSet(ctx context.Context, s *testing.State, a *arc.ARC) {
 			continue
 		}
 		val := strings.TrimSpace(string(out))
+		cpusInUse, parseErr := arc.ParseCPUs(ctx, val)
+		if parseErr != nil {
+			s.Errorf("Failed to parse %s: %v", path, parseErr)
+			continue
+		}
+
 		if t == "foreground" || t == "top-app" {
 			// Even after full boot, these processes should be able
 			// to use all CPU cores.
-			if val != allCPUs {
-				s.Errorf("Unexpected CPU setting for %s: got %q; want %q", path, val, allCPUs)
+			if len(cpusInUse) != runtime.NumCPU() {
+				s.Errorf("Unexpected CPU setting for %s: got %s; expected %d CPUs, found %d",
+					path, val, runtime.NumCPU(), len(cpusInUse))
 			}
 		} else {
 			// Other processes should not.
-			if val == allCPUs {
-				s.Errorf("Unexpected CPU setting for %s: got %q", path, val)
+			if len(cpusInUse) == runtime.NumCPU() {
+				s.Errorf("Unexpected CPU setting for %s: got %s; not expected %d CPUs, found %d",
+					path, val, runtime.NumCPU(), len(cpusInUse))
 			}
 		}
 	}

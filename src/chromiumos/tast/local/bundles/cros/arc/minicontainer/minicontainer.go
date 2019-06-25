@@ -222,7 +222,6 @@ func testCPUSet(ctx context.Context, s *testing.State) {
 		types = append(types, "restricted")
 	}
 
-	allCPUs := fmt.Sprintf("0-%d", runtime.NumCPU()-1)
 	for _, t := range types {
 		path := fmt.Sprintf("/dev/cpuset/%s/cpus", t)
 		out, err := arc.BootstrapCommand(ctx, "/system/bin/cat", path).Output(testexec.DumpLogOnError)
@@ -231,8 +230,14 @@ func testCPUSet(ctx context.Context, s *testing.State) {
 			continue
 		}
 		val := strings.TrimSpace(string(out))
-		if val != allCPUs {
-			s.Errorf("Unexpected CPU setting for %s: got %s; want %s", path, val, allCPUs)
+		cpusInUse, parseErr := arc.ParseCPUs(ctx, val)
+		if parseErr != nil {
+			s.Errorf("Failed to parse %s: %v", path, parseErr)
+			continue
+		}
+		if len(cpusInUse) != runtime.NumCPU() {
+			s.Errorf("Unexpected CPU setting for %s: got %s; expected %d CPUs, found %d",
+				path, val, runtime.NumCPU(), len(cpusInUse))
 		}
 	}
 }
