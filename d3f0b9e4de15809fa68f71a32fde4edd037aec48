@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adc44df0_ed45d196",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_test_internal.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-25T16:18:04Z",
+      "side": 1,
+      "message": "For consistency, StableTest/NewOrFlakyTest or StableTestCase/NewOrFlakyTestCase?",
+      "range": {
+        "startLine": 21,
+        "startChar": 11,
+        "endLine": 21,
+        "endChar": 15
+      },
+      "revId": "d3f0b9e4de15809fa68f71a32fde4edd037aec48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a678484_ddcbdd77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_test_internal.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-25T16:18:04Z",
+      "side": 1,
+      "message": "and Informational, now? Could you update the document?",
+      "revId": "d3f0b9e4de15809fa68f71a32fde4edd037aec48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b67acf65_33802d3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_test_internal.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-25T16:18:04Z",
+      "side": 1,
+      "message": "Could you add comment what this does?",
+      "revId": "d3f0b9e4de15809fa68f71a32fde4edd037aec48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c88560f9_3e6f87bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_test_internal.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-25T16:18:04Z",
+      "side": 1,
+      "message": "Because you only use one selector for all use cases, could you drop the for loop, and just check the selector?",
+      "revId": "d3f0b9e4de15809fa68f71a32fde4edd037aec48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0cf9b81_2ffdf52c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_test_internal.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-25T16:18:04Z",
+      "side": 1,
+      "message": "style/optional: for better symmetry, how about using switch instead?",
+      "revId": "d3f0b9e4de15809fa68f71a32fde4edd037aec48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ea9c21f_04054fbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system_informational.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-25T16:18:04Z",
+      "side": 1,
+      "message": "To avoid copy-and-paste, could you extract the main logic into a subpackage?",
+      "revId": "d3f0b9e4de15809fa68f71a32fde4edd037aec48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d60ec0f_6b10f83c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_processes_informational.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-25T16:18:04Z",
+      "side": 1,
+      "message": "nit: 2019.",
+      "revId": "d3f0b9e4de15809fa68f71a32fde4edd037aec48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
