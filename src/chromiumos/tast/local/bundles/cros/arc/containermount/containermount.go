@@ -21,6 +21,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/bundles/cros/arc/cpuset"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -339,27 +340,34 @@ func testCPUSet(ctx context.Context, s *testing.State, a *arc.ARC) {
 		types = append(types, "restricted")
 	}
 
-	allCPUs := fmt.Sprintf("0-%d", runtime.NumCPU()-1)
 	for _, t := range types {
 		// cgroup pseudo file cannot be "adb pull"ed. Additionally, it is not
 		// accessible via adb shell user in P. Access by procfs instead.
 		path := fmt.Sprintf("/proc/%d/root/dev/cpuset/%s/cpus", initPID, t)
 		out, err := ioutil.ReadFile(path)
 		if err != nil {
-			s.Errorf("Failed to read %s: %v", path, err)
+			s.Errorf("failed to read %s: %v", path, err)
 			continue
 		}
 		val := strings.TrimSpace(string(out))
+		cpusInUse, parseErr := cpuset.Parse(ctx, val)
+		if parseErr != nil {
+			s.Errorf("failed to parse %s: %v", path, parseErr)
+			continue
+		}
+
 		if t == "foreground" || t == "top-app" {
 			// Even after full boot, these processes should be able
 			// to use all CPU cores.
-			if val != allCPUs {
-				s.Errorf("Unexpected CPU setting for %s: got %q; want %q", path, val, allCPUs)
+			if len(cpusInUse) != runtime.NumCPU() {
+				s.Errorf("unexpected CPU setting %q for %s: got %d CPUs, want %d CPUs", val, path,
+					len(cpusInUse), runtime.NumCPU())
 			}
 		} else {
 			// Other processes should not.
-			if val == allCPUs {
-				s.Errorf("Unexpected CPU setting for %s: got %q", path, val)
+			if len(cpusInUse) == runtime.NumCPU() {
+				s.Errorf("unexpected CPU setting %q for %s: should not be %d CPUs", val, path,
+					runtime.NumCPU())
 			}
 		}
 	}
