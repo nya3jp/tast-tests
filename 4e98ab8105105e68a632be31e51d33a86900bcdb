@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96740c4b_80f23743",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-25T16:05:04Z",
+      "side": 1,
+      "message": "As you said, if the caller should have the responsibility to stop vmInstance in failure cases, could you do so?",
+      "revId": "4e98ab8105105e68a632be31e51d33a86900bcdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "02530889_87f2396e",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-25T16:05:04Z",
+      "side": 1,
+      "message": "Could you explicitly document how to handle the error, then?",
+      "parentUuid": "1082f925_52148a9a",
+      "revId": "b4b73b511354f90a5746495fc519256ed43d1d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f5e1f30_87c883e6",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 1
@@ -166,6 +184,24 @@
     },
     {
       "key": {
+        "uuid": "51176f0c_8af07a5c",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-25T16:05:04Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s possible, because caller does not know about concierge at all at this moment.",
+      "parentUuid": "8e0ebb60_d9b17764",
+      "revId": "b4b73b511354f90a5746495fc519256ed43d1d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a275f4b_5f8c1455",
         "filename": "src/chromiumos/tast/local/vm/vm.go",
         "patchSetId": 1
@@ -195,6 +231,24 @@
       "side": 1,
       "message": "Actually, to be honest, I think we do need to stop. But this change is simply refactor of the original createDefaultContainer in container.go and don\u0027t have much knowledge about how the VM is created.",
       "parentUuid": "0a275f4b_5f8c1455",
+      "revId": "b4b73b511354f90a5746495fc519256ed43d1d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e11d4290_c72b7785",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-25T16:05:04Z",
+      "side": 1,
+      "message": "Ok, then, could you file a bug and add TODO here?",
+      "parentUuid": "6f879f96_cbbd9c20",
       "revId": "b4b73b511354f90a5746495fc519256ed43d1d54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
