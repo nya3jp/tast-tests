@@ -61,12 +61,14 @@ func AssistantTextQueries(ctx context.Context, s *testing.State) {
 // testAssistantTimeQuery verifies the correctness of the Assistant time response by parsing
 // the fallback string to a time.Time object and comparing it with the current UTC time.
 func testAssistantTimeQuery(ctx context.Context, tconn *chrome.Conn, s *testing.State) {
+	s.Log("Sending time query to the Assistant")
 	response, err := assistant.SendTextQuery(ctx, tconn, "what time is it in UTC?")
 	if err != nil {
 		s.Error("Failed to get Assistant time response: ", err)
 		return
 	}
 
+	s.Log("Verifying the time query response")
 	if len(response.Fallback) == 0 {
 		s.Error("No htmlFallback field found in the response")
 		return
@@ -141,47 +143,62 @@ func parseTimeNearNow(fallback string, now time.Time) (time.Time, error) {
 
 // testAssistantVolumeQueries tests setting and increasing volume actions via Assistant.
 func testAssistantVolumeQueries(ctx context.Context, tconn *chrome.Conn, s *testing.State) {
+	// Verifies the output stream nodes exist and are active before testing the volume queries.
+	if err := audio.WaitForDevice(ctx, audio.OutputStream); err != nil {
+		s.Error("No output stream nodes available: ", err)
+		return
+	}
+
 	const testVolume = 25
 	// Sends set volume query and verifies the result.
+	s.Log("Sending set volume query to the Assistant")
 	_, err := assistant.SendTextQuery(ctx, tconn, fmt.Sprintf("set volume to %d percent.", testVolume))
 	if err != nil {
 		s.Errorf("Failed to set volume to %d via Assistant: %v", testVolume, err)
 		return
 	}
 
-	v, err := getActiveNodeVolume(ctx)
-	if err != nil {
-		s.Error("Failed to get volume: ", err)
-		return
-	}
-	if v != testVolume {
-		s.Errorf("System volume %d doesn't match the requested volume %d", v, testVolume)
+	s.Log("Verifying set volume query result")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		v, err := getActiveNodeVolume(ctx)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get system volume"))
+		}
+		if v != testVolume {
+			return errors.Errorf("system volume %d doesn't match the requested volume %d", v, testVolume)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		s.Error("Timed out waiting for volume set: ", err)
 		return
 	}
 
 	// Sends increase volume query and verifies the result.
+	s.Log("Sending increase volume query to the Assistant")
 	_, err = assistant.SendTextQuery(ctx, tconn, "turn up volume.")
 	if err != nil {
 		s.Error("Failed to increase volume via Assistant: ", err)
 		return
 	}
 
-	v, err = getActiveNodeVolume(ctx)
-	if err != nil {
-		s.Error("Failed to get volume: ", err)
-		return
-	}
-	if v <= testVolume {
-		s.Errorf("System volume doesn't increase: current - %d, base - %d", v, testVolume)
+	s.Log("Verifying increase volume query result")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		v, err := getActiveNodeVolume(ctx)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get system volume"))
+		}
+		if v <= testVolume {
+			return errors.Errorf("system volume doesn't increase: current - %d, base - %d", v, testVolume)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		s.Error("Timed out waiting for volume increase: ", err)
 		return
 	}
 }
 
 // getActiveNodeVolume returns the current active node volume, ranging from 0 to 100.
 func getActiveNodeVolume(ctx context.Context) (uint64, error) {
-	if err := audio.WaitForDevice(ctx, audio.OutputStream); err != nil {
-		return 0, err
-	}
 	cras, err := audio.NewCras(ctx)
 	if err != nil {
 		return 0, err
