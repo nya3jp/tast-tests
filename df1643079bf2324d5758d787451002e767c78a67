@@ -22,6 +22,30 @@
       "revId": "df1643079bf2324d5758d787451002e767c78a67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec7c42d7_6a6fb6e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/gsctool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2019-06-25T23:35:04Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "4e1078d5_2a9a8953",
+      "range": {
+        "startLine": 22,
+        "startChar": 7,
+        "endLine": 22,
+        "endChar": 10
+      },
+      "revId": "df1643079bf2324d5758d787451002e767c78a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
