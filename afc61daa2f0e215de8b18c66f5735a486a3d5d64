@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c3b7783_77256bc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-25T17:16:14Z",
+      "side": 1,
+      "message": "\"output\" is not the output of this function. How about content etc.?",
+      "range": {
+        "startLine": 29,
+        "startChar": 21,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "afc61daa2f0e215de8b18c66f5735a486a3d5d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9722ea88_d3736640",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-25T17:16:14Z",
+      "side": 1,
+      "message": "This function name looks ambiguous. How about \"countDevices\" and subtract 1 in this function?\nNice to move the comment in else block at L58 to here, too.",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 20
+      },
+      "revId": "afc61daa2f0e215de8b18c66f5735a486a3d5d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66ae8421_db9a8705",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-25T17:16:14Z",
+      "side": 1,
+      "message": "style: we often inline the split into the range below for shorter code.\n\nfor _, line :\u003d range strings.Split(content, \"\\n\") {\n  ...\n}",
+      "revId": "afc61daa2f0e215de8b18c66f5735a486a3d5d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7ed2800_c89c229a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-25T17:16:14Z",
+      "side": 1,
+      "message": "style: could you inline the cmd to be simpler?\n\noutput, err :\u003d testexec.CommandContext(ctx, ...).Output(testexec.DumpLogOnError)\nif err !\u003d nil {\n  s.Fatal(...)\n}\n...",
+      "revId": "afc61daa2f0e215de8b18c66f5735a486a3d5d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dbb9fe5_622fb8bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-25T17:16:14Z",
+      "side": 1,
+      "message": "output is expected to be multi-line, and written in case of failure. Could you remove this log line?\n\ncf)\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting\n\n\u003d\u003d\u003d Quote \u003d\u003d\u003d \nIn all cases, please avoid multiline strings since they make logs difficult to read. To preserve multiline output from an external program, please write it to an output file instead of logging it.\n\u003d\u003d\u003d Quote end \u003d\u003d\u003d",
+      "revId": "afc61daa2f0e215de8b18c66f5735a486a3d5d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c806b01a_aea34151",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-25T17:16:14Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "afc61daa2f0e215de8b18c66f5735a486a3d5d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfbfb1a6_1d672bde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-25T17:16:14Z",
+      "side": 1,
+      "message": "Style: s.Fatalf(...) exits from the function. could you remove the else to unindent?\ncf) https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\n\nAlso, output the log here is not very useful, because the test pass tells you. How about simply removing the log line?",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 63,
+        "endChar": 2
+      },
+      "revId": "afc61daa2f0e215de8b18c66f5735a486a3d5d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
