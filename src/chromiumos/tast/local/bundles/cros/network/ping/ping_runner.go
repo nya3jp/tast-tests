@@ -67,7 +67,7 @@ func SimplePing(ctx context.Context, s *testing.State,
 	hostName string) (bool, error) {
 	cfg := NewPingConfig(hostName)
 	cfg.Count = 3
-	cfg.Interval = 10
+	cfg.Interval = 1
 	res, err := Ping(ctx, s, cfg)
 	return res != pingResult{} && res.Received != 0, err
 }
@@ -162,10 +162,10 @@ func parseOutput(out string) (pingResult, error) {
 	}
 	sent, _ := strconv.Atoi(matchGroup[1])
 
-	rcvMatch := regexp.MustCompile(`([0-9]+) packets received`)
+	rcvMatch := regexp.MustCompile(`([0-9]+) received`)
 	matchGroup = rcvMatch.FindStringSubmatch(out)
 	if len(matchGroup) != 2 {
-		return pingResult{}, errors.New("Parse error on received packets")
+		return pingResult{}, errors.Errorf("Parse error on received packets.\n%s", out)
 	}
 	rcv, _ := strconv.Atoi(matchGroup[1])
 

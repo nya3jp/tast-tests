@@ -27,12 +27,13 @@ func TestCfgToArgs(t *testing.T) {
 
 func TestParseOutput(t *testing.T) {
 	strCmp := `PING 8.8.8.8 (8.8.8.8): 56 data bytes
-        64 bytes from 8.8.8.8: icmp_seq=0 ttl=57 time=3.770 ms
-        64 bytes from 8.8.8.8: icmp_seq=1 ttl=57 time=4.165 ms
+	 64 bytes from 8.8.8.8: icmp_seq=0 ttl=57 time=3.770 ms
+	 64 bytes from 8.8.8.8: icmp_seq=1 ttl=57 time=4.165 ms
 
-        --- 8.8.8.8 ping statistics ---
-        3 packets transmitted, 2 packets received, 33.33% packet loss
-        round-trip min/avg/max/stddev = 3.770/4.279/4.901/0.469 ms`
+	 --- 8.8.8.8 ping statistics ---
+	 3 packets transmitted, 2 received, 33.33% packet loss
+	 round-trip min/avg/max/stddev = 3.770/4.279/4.901/0.469 ms`
+
 	prCmp := NewFullPingResult(3, 2, 33.33, 3.770, 4.279, 4.901, .469)
 	out, err := parseOutput(strCmp)
 	if err != nil {
