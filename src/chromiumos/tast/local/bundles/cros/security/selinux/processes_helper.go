@@ -75,10 +75,10 @@ func GetProcesses() ([]Process, error) {
 }
 
 // FindProcessesByExe returns processes from ps with Exe fields matching exe.
-func FindProcessesByExe(ps []Process, exe string) []Process {
+func FindProcessesByExe(ps []Process, exe string, revese bool) []Process {
 	var found []Process
 	for _, proc := range ps {
-		if proc.Exe == exe {
+		if (proc.Exe == exe) != revese {
 			found = append(found, proc)
 		}
 	}
