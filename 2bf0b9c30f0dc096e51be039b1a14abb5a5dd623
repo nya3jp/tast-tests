@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d81cd950_ce190208",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-25T17:20:45Z",
+      "side": 1,
+      "message": "Could you stop the VM in case of CreateDefaultContainer failure?\n\ncf) https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1668150/1/src/chromiumos/tast/local/vm/container.go#464",
+      "revId": "2bf0b9c30f0dc096e51be039b1a14abb5a5dd623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
