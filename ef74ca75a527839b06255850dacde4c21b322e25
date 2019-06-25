@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3df30233_1a5474c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/gsctool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-06-25T23:45:16Z",
+      "side": 1,
+      "message": "use Fatalf here and below.  s.Error is useful if you want to eventually raise an error but not stop the test",
+      "revId": "ef74ca75a527839b06255850dacde4c21b322e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3db8d27_b037caa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/gsctool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-06-25T23:45:16Z",
+      "side": 1,
+      "message": "style nit: say the thing you wanted first, e.g. \"%q: want %q, got %q",
+      "revId": "ef74ca75a527839b06255850dacde4c21b322e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
