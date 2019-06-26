@@ -66,6 +66,7 @@ var locked = false
 var prePackages = []string{
 	"chromiumos/tast/local/arc",
 	"chromiumos/tast/local/chrome",
+	"chromiumos/tast/local/vm",
 }
 
 // Lock prevents from New or Chrome.Close from being called until Unlock is called.

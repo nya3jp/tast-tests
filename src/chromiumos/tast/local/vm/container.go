@@ -59,6 +59,9 @@ type Container struct {
 	ciceroneObj   dbus.BusObject
 }
 
+// The |locked| global is used to prevent creation of a container while the precondition is being used.
+var locked = false
+
 // newContainer returns a Container instance with a cicerone connection.
 // Note that it assumes cicerone is up and running.
 func newContainer(ctx context.Context, vmInstance *VM, containerName, userName string) (*Container, error) {
@@ -66,6 +69,9 @@ func newContainer(ctx context.Context, vmInstance *VM, containerName, userName s
 		VM:            vmInstance,
 		containerName: containerName,
 		username:      userName,
+	}
+	if locked {
+		panic("Do not create a new Container while the crostini precondition is active")
 	}
 	var err error
 	if _, c.ciceroneObj, err = dbusutil.Connect(ctx, ciceroneName, ciceronePath); err != nil {
