@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/720_vp8_20190626.webm",
+  "size": 2108575,
+  "sha256sum": "1e541b9ed7d9d466fc7a5abd638708303452603886b6ca3bc198f0cc715fcf76"
+}
