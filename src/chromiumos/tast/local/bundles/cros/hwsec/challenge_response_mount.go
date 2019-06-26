@@ -240,6 +240,12 @@ func ChallengeResponseMount(ctx context.Context, s *testing.State) {
 		s.Fatal("No key challenges made during mount")
 	}
 
+	// Authenticate while the cryptohome is still mounted (modeling the case of
+	// the user unlocking the device from the Lock Screen).
+	if err := cryptohomeClient.CheckKey(ctx, testUser, authReq); err != nil {
+		s.Fatal("Failed to check the key for the mounted cryptohome: ", err)
+	}
+
 	if err := cryptohome.UnmountVault(ctx, testUser); err != nil {
 		s.Fatal("Failed to unmount cryptohome: ", err)
 	}
