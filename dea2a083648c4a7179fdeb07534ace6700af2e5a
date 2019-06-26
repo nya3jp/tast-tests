@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1e34343_a9a78374",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-26T18:06:51Z",
+      "side": 1,
+      "message": "style: could you move the var declaration into the if condition?\nI think you don\u0027t need errors.Wrap. Instead, you can just report an error.\n\nif vmErr :\u003d vmInstance.Stop(ctx); vmErr !\u003d nil {\n  s.Error(...)\n}",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 3
+      },
+      "revId": "dea2a083648c4a7179fdeb07534ace6700af2e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
