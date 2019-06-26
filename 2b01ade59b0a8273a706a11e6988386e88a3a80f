@@ -34,6 +34,24 @@
       "revId": "2b01ade59b0a8273a706a11e6988386e88a3a80f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b775d313_98addacf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/resolution_change_500frames.vp8.ivf.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-26T01:55:02Z",
+      "side": 1,
+      "message": "Thanks for the info.\nThen, how about using same video among VP8, VP9 and H264? \n\nAccording to README [1], resolutions in resolution_change_500frames-vp*.ivf are changed randomly. This may make debugging hard.\nSo, I\u0027d suggest to create VP8/VP9 version of switch_1080p_720p_240frames instead. It should be easily created by using ffmpeg, I guess.\nWDYT?\n\n[1] https://chromium.googlesource.com/chromium/src/+/HEAD/media/test/data/README.md#misc-test-files",
+      "parentUuid": "27518e65_79229756",
+      "revId": "2b01ade59b0a8273a706a11e6988386e88a3a80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
