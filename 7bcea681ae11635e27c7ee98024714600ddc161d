@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aed47356_84c61bfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-26T19:09:33Z",
+      "side": 1,
+      "message": "Could you add comment? E.g. \"The duration from the DUT boot time.\"",
+      "revId": "7bcea681ae11635e27c7ee98024714600ddc161d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e2a8ecc_9adf779c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_ring.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-26T19:09:33Z",
+      "side": 1,
+      "message": "Could you comment here, too? E.g. \"boottime returns the duration from DUT boot time.\"",
+      "revId": "7bcea681ae11635e27c7ee98024714600ddc161d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
