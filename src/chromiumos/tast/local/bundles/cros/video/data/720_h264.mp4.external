@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/720_h264_20190626.mp4",
+  "size": 3248975,
+  "sha256sum": "594f610eab090e99fef3acaa63c9adf9d553ff0ec336f0f439596c965b9337f7"
+}
