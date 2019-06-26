@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "725ab65e_7112fa68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-06-26T07:11:37Z",
+      "side": 1,
+      "message": "can we switch to OWNERS instead ?",
+      "revId": "2e48bd72fe026331f18df646d562fb33731d0dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e94ab45a_6cac39c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-06-26T07:11:37Z",
+      "side": 1,
+      "message": "seems like this should be factored into a dedicated local function",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 50
+      },
+      "revId": "2e48bd72fe026331f18df646d562fb33731d0dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a481f78_b6616776",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-06-26T07:11:37Z",
+      "side": 1,
+      "message": "s/also checks/fallsback to/ ?\n\ni\u0027m not sure all partners build the configs module ... so this might have to be resolved sooner rather than later.  doesn\u0027t seem that hard to implement ?",
+      "revId": "2e48bd72fe026331f18df646d562fb33731d0dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc037939_fa0d08af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-06-26T07:11:37Z",
+      "side": 1,
+      "message": "above this point we\u0027re reading the kernel config.  after this point we\u0027re parsing the kernel config.  sep the funcs ?",
+      "revId": "2e48bd72fe026331f18df646d562fb33731d0dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fdcb020_fcdc6b66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-06-26T07:11:37Z",
+      "side": 1,
+      "message": "does TrimPrefix fail if the value doesn\u0027t start with CONFIG_ ?  i think we\u0027re enforcing that now in autotest ?",
+      "revId": "2e48bd72fe026331f18df646d562fb33731d0dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b436926_e7d7ee9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-06-26T07:11:37Z",
+      "side": 1,
+      "message": "period at the end of sentences",
+      "revId": "2e48bd72fe026331f18df646d562fb33731d0dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
