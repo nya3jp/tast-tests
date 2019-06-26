@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c38a4669_158002b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test-25fps.h264.json.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-26T02:20:39Z",
+      "side": 1,
+      "message": "\u003e since I\u0027ll remove the old files soon.\n\nYou cannot remove the old file because it\u0027ll be kept using on some old branch (e.g. R75).\nIn general, it\u0027d be hard to decide when we can remove old files. So, I think we should k eep all files for a while. As we don\u0027t need to care how clean the cloud storage\u0027s directory is, it\u0027s okay to keep using *_2019418*.json.",
+      "parentUuid": "a5395ace_7d129e13",
+      "revId": "d8c4cf19fd522ea8874a17e7807f540f44ee7e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6edd11ce_3d0c8867",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_new.go",
         "patchSetId": 1
