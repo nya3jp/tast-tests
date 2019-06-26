@@ -22,13 +22,13 @@ func init() {
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWDecodeVP8, "chrome"},
 		Pre:          pre.ChromeVideo(),
-		Data:         []string{"bear-320x240.vp8.webm", "video.html"},
+		Data:         []string{"720_vp8.webm", "video.html"},
 	})
 }
 
-// PlayDecodeAccelUsedVP8 plays bear-320x240.vp8.webm with Chrome and
+// PlayDecodeAccelUsedVP8 plays 720_vp8.webm with Chrome and
 // checks if video decode accelerator was used.
 func PlayDecodeAccelUsedVP8(ctx context.Context, s *testing.State) {
 	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"bear-320x240.vp8.webm", play.NormalVideo, play.CheckHistogram)
+		"720_vp8.webm", play.NormalVideo, play.CheckHistogram)
 }

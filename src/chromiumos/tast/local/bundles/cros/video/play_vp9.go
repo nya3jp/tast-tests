@@ -21,12 +21,12 @@ func init() {
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          pre.ChromeVideo(),
-		Data:         []string{"bear-320x240.vp9.webm", "video.html"},
+		Data:         []string{"720_vp9.webm", "video.html"},
 	})
 }
 
-// PlayVP9 plays bear-320x240.h264.mp4 with Chrome.
+// PlayVP9 plays 720_vp9.webm with Chrome.
 func PlayVP9(ctx context.Context, s *testing.State) {
 	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"bear-320x240.vp9.webm", play.NormalVideo, play.NoCheckHistogram)
+		"720_vp9.webm", play.NormalVideo, play.NoCheckHistogram)
 }
