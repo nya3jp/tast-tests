@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "bb56da24_15afc367",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-26T17:25:59Z",
+      "side": 1,
+      "message": "After reading the use cases carefully, I found that it is necessary not to discard stdout data in the buffer. Could you fix the implementation instead of the documentation. (Also, nice to document that stdout can be reusable after returning from this method.\n\nProbably, you cannot use buffering, IIUC.",
+      "parentUuid": "12ad7641_b26fad0c",
+      "revId": "55b2b704029217dcebc84d5ac25ee2d540f523e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "97a54080_70290781",
         "filename": "src/chromiumos/tast/local/vm/crosvm.go",
         "patchSetId": 4
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "It is a blocking operation. After some testing it looks like the blocking ReadByte call returns only when the crosvm object is closed. It looks like the bufio.Reader does not have a way to interrupt the reading. Do you have any ideas how we could rework this so the timeout is respected?",
       "parentUuid": "97a54080_70290781",
+      "revId": "55b2b704029217dcebc84d5ac25ee2d540f523e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c8263d1_83d48688",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-26T17:25:59Z",
+      "side": 1,
+      "message": "There looks no way to set timeout to io.Reader interface.\nSo, my recommendation is;\n- to handle timeout outside of go.\n- In case of failure, it is expected that Crosvm is closed.\n- The close event should be propagated to read, which unblocks Read invocation, so that goroutine can be terminated.\n\nWDYT?",
+      "parentUuid": "325c5fc6_4c973e99",
       "revId": "55b2b704029217dcebc84d5ac25ee2d540f523e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
