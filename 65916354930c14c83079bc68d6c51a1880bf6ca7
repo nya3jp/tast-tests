@@ -16,6 +16,24 @@
       "revId": "65916354930c14c83079bc68d6c51a1880bf6ca7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1366158_5aaca1c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-06-26T01:55:24Z",
+      "side": 1,
+      "message": "I use JobExists() to check whether the cros-camera job exists, not whether it\u0027s running. On old devices there is no cros-camera service and iiuc EnsureJobRunning() with a nonexistent job name would return an error, so I need to check it first.",
+      "parentUuid": "d3b5de09_1b6edf38",
+      "revId": "65916354930c14c83079bc68d6c51a1880bf6ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
