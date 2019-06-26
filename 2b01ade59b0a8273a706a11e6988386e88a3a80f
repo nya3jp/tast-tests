@@ -16,6 +16,24 @@
       "revId": "2b01ade59b0a8273a706a11e6988386e88a3a80f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27518e65_79229756",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/resolution_change_500frames.vp8.ivf.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-26T01:20:18Z",
+      "side": 1,
+      "message": "These files are present in the media/test/data/ folder. The h264 resolution switching video is different from the ones used for VP8/9. I considered renaming them for consistency, but decided not to do so: the videos are different, renaming them might break other tests depending on these files.",
+      "parentUuid": "9431cc65_9fa49ff7",
+      "revId": "2b01ade59b0a8273a706a11e6988386e88a3a80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
