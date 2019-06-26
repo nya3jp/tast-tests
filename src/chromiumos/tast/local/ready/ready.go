@@ -100,9 +100,31 @@ func Wait(ctx context.Context, log func(string)) error {
 	return nil
 }
 
+// isAutotestd returns whether p is an autotestd process.
+func isAutotestd(p *process.Process) bool {
+	cmd, err := p.CmdlineSlice()
+	// Process is killed or arguments are unavailable (e.g. system processes).
+	if err != nil || len(cmd) == 0 {
+		return false
+	}
+	if filepath.Base(cmd[0]) == "autotestd" {
+		return true
+	}
+	if filepath.Base(cmd[0]) == "python2.7" {
+		for _, s := range cmd[1:] {
+			if strings.HasPrefix(s, "-") {
+				// Skip flags (if any).
+				continue
+			}
+			return filepath.Base(s) == "autotestd"
+		}
+	}
+	return false
+}
+
 // killOrphanAutotestd sends SIGKILL to running autotestd processes and their
 // subprocesses. This works around the known issue that autotestd from timed out
-// jobs interferes with Tast tests (crbug.com/874333).
+// jobs interferes with Tast tests (crbug.com/874333, crbug.com/977035).
 func killOrphanAutotestd(log func(string)) {
 	ps, err := process.Processes()
 	if err != nil {
@@ -111,8 +133,7 @@ func killOrphanAutotestd(log func(string)) {
 	}
 
 	for _, p := range ps {
-		name, err := p.Name()
-		if err != nil || name != "autotestd" {
+		if !isAutotestd(p) {
 			continue
 		}
 
