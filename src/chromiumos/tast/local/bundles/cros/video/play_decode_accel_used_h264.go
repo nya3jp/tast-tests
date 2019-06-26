@@ -22,14 +22,14 @@ func init() {
 		Attr:     []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{caps.HWDecodeH264, "chrome", "chrome_internal"},
-		Data:         []string{"bear-320x240.h264.mp4", "video.html"},
+		Data:         []string{"720_h264.mp4", "video.html"},
 		Pre:          pre.ChromeVideo(),
 	})
 }
 
-// PlayDecodeAccelUsedH264 plays bear-320x240.h264.mp4 with Chrome and
+// PlayDecodeAccelUsedH264 plays 720_h264.mp4 with Chrome and
 // checks if video decode accelerator was used.
 func PlayDecodeAccelUsedH264(ctx context.Context, s *testing.State) {
 	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"bear-320x240.h264.mp4", play.NormalVideo, play.CheckHistogram)
+		"720_h264.mp4", play.NormalVideo, play.CheckHistogram)
 }
