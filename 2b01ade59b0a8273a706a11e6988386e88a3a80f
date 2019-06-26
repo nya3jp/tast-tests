@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9431cc65_9fa49ff7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/resolution_change_500frames.vp8.ivf.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-26T01:09:59Z",
+      "side": 1,
+      "message": "nit:\nWhy isn\u0027t this file name similar to H264\u0027s file? i.e. switch_1080p_720p_240frames.h264\n\nAlso, where did you get this test file?",
+      "revId": "2b01ade59b0a8273a706a11e6988386e88a3a80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
