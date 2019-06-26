@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "e89618f5_7049191a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test-25fps.h264.json.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-26T02:49:19Z",
+      "side": 1,
+      "message": "Fair enough, thanks for the info! Adapted to use the old file again.\n\nI guess at some time in the future we will need to do at least a bit of cleanup :-)",
+      "parentUuid": "c38a4669_158002b2",
+      "revId": "d8c4cf19fd522ea8874a17e7807f540f44ee7e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6edd11ce_3d0c8867",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_new.go",
         "patchSetId": 1
