@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eed096e6_c05c8ac6",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-06-26T18:58:14Z",
+      "side": 1,
+      "message": "Changed a bit of this. CreateDefaultVM stop concierge if error in its own.",
+      "parentUuid": "bd3711d9_55da4f2c",
+      "range": {
+        "startLine": 324,
+        "startChar": 32,
+        "endLine": 324,
+        "endChar": 47
+      },
+      "revId": "8cb44f7099c884adf5bc36fa3ef440ce16b4d0d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c25138e9_99366001",
         "filename": "src/chromiumos/tast/local/vm/util.go",
         "patchSetId": 4
@@ -36,6 +60,24 @@
       "writtenOn": "2019-06-26T17:52:47Z",
       "side": 1,
       "message": "vmInstance needs to be stopped in case of error.\n\noptional: BTW, in this CL and in the next CL, vmInstance is mistakenly not stopped.\nHow about just giving up to let caller handle the error, instead, handle stopping the VM in CreateDefaultContainer? I.e., passing the ownership of vmInstance always to CreateDefaultContainer. WDYT?",
+      "revId": "8cb44f7099c884adf5bc36fa3ef440ce16b4d0d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f79f414f_93a66679",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-06-26T18:58:14Z",
+      "side": 1,
+      "message": "Thanks for review. \n\nIMHO, let the caller to decide when to stop VM maybe better in case caller would try default container and customized container in the future. btw, it is the original behavior and I\u0027m not feeling well to change it. \n\nI changed the code for stop concierge if error is returned in CreateDefaultContainer.",
+      "parentUuid": "c25138e9_99366001",
       "revId": "8cb44f7099c884adf5bc36fa3ef440ce16b4d0d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
