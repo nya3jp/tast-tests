@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0131665a_d1706190",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/files_test_internal.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-26T17:41:49Z",
+      "side": 1,
+      "message": "optional: To be more readable, could you introduce named enum for Recursive and Log?",
+      "revId": "6cf7be8a0182a643beef63afae8b1a7c1a192223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a788981_bfc6849e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/files_test_internal.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-26T17:41:49Z",
+      "side": 1,
+      "message": "nit: could you remove this empty line?",
+      "revId": "6cf7be8a0182a643beef63afae8b1a7c1a192223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "096f62c8_615503b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-26T17:41:49Z",
+      "side": 1,
+      "message": "nit: unused, could you remove?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "6cf7be8a0182a643beef63afae8b1a7c1a192223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
