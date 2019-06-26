@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "22b2f0f0_6064b8cf",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-06-26T03:02:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02530889_87f2396e",
+      "revId": "b4b73b511354f90a5746495fc519256ed43d1d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f5e1f30_87c883e6",
         "filename": "src/chromiumos/tast/local/vm/container.go",
         "patchSetId": 1
@@ -202,6 +220,24 @@
     },
     {
       "key": {
+        "uuid": "338f5570_6f477061",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-06-26T03:02:08Z",
+      "side": 1,
+      "message": "Ok. I added StopConcierge to where I think reasonable. I don\u0027t know how to test the error path reliably so anyone\u0027s help would be thankful.",
+      "parentUuid": "51176f0c_8af07a5c",
+      "revId": "b4b73b511354f90a5746495fc519256ed43d1d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a275f4b_5f8c1455",
         "filename": "src/chromiumos/tast/local/vm/vm.go",
         "patchSetId": 1
@@ -249,6 +285,24 @@
       "side": 1,
       "message": "Ok, then, could you file a bug and add TODO here?",
       "parentUuid": "6f879f96_cbbd9c20",
+      "revId": "b4b73b511354f90a5746495fc519256ed43d1d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e87ca6a5_ac66b11f",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-06-26T03:02:08Z",
+      "side": 1,
+      "message": "I added StopConcierge here since StopConcierge should implies stop VM IIUC.",
+      "parentUuid": "e11d4290_c72b7785",
       "revId": "b4b73b511354f90a5746495fc519256ed43d1d54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
