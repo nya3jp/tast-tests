@@ -25,58 +25,20 @@ func init() {
 		Contacts:     []string{"jkardatzke@chromium.org", "smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"informational"},
 		Data:         []string{"crostini_start_everything_cros-tast-tests-deb.deb"},
+		Pre:          vm.CrostiniStarted(),
 		Timeout:      10 * time.Minute,
 		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
 }
 
 func CrostiniStartEverything(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
-	// Close the initial new tab to set up a clean initial state for later tests
-	// that want to take screenshots.
-	s.Log("Trying to close initial new tab")
-	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://newtab/"))
-	if err == nil {
-		conn.CloseTarget(ctx)
-		conn.Close()
-	}
-
-	s.Log("Enabling Crostini preference setting")
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create test API connection: ", err)
-	}
-	if err = vm.EnableCrostini(ctx, tconn); err != nil {
-		s.Fatal("Failed to enable Crostini preference setting: ", err)
-	}
-
-	s.Log("Setting up component ", vm.StagingComponent)
-	err = vm.SetUpComponent(ctx, vm.StagingComponent)
-	if err != nil {
-		s.Fatal("Failed to set up component: ", err)
-	}
-	defer vm.UnmountComponent(ctx)
-
-	s.Log("Creating default container")
-	cont, err := vm.CreateDefaultContainer(ctx, s.OutDir(), cr.User(), vm.StagingImageServer, "")
-	if err != nil {
-		s.Fatal("Failed to set up default container: ", err)
-	}
-	defer vm.StopConcierge(ctx)
-	defer func() {
-		if err := cont.DumpLog(ctx, s.OutDir()); err != nil {
-			s.Error("Failure dumping container log: ", err)
-		}
-	}()
+	cr := s.PreValue().(vm.CrostiniPre).Chrome
+	tconn := s.PreValue().(vm.CrostiniPre).TestAPIConn
+	cont := s.PreValue().(vm.CrostiniPre).Container
 
 	s.Log("Verifying pwd command works")
 	cmd := cont.Command(ctx, "pwd")
-	if err = cmd.Run(); err != nil {
+	if err := cmd.Run(); err != nil {
 		cmd.DumpLog(ctx)
 		s.Fatal("Failed to run pwd: ", err)
 	}
@@ -85,7 +47,7 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 	// are executing the tests and cause failures due to resource contention.
 	for _, t := range []string{"apt-daily", "apt-daily-upgrade"} {
 		cmd := cont.Command(ctx, "sudo", "systemctl", "stop", t+".timer")
-		if err = cmd.Run(); err != nil {
+		if err := cmd.Run(); err != nil {
 			cmd.DumpLog(ctx)
 			s.Fatalf("Failed to stop %s timer: %v", t, err)
 		}
@@ -121,7 +83,7 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 	s.Log("Trying to close Chromebook landing page tab")
 	findTabCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
-	conn, err = cr.NewConnForTarget(findTabCtx, chrome.MatchTargetURL("https://www.google.com/chromebook/"))
+	conn, err := cr.NewConnForTarget(findTabCtx, chrome.MatchTargetURL("https://www.google.com/chromebook/"))
 	if err == nil {
 		conn.CloseTarget(ctx)
 		conn.Close()
