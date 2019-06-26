@@ -180,6 +180,7 @@ func (ac *Activity) Stop(ctx context.Context) error {
 }
 
 // WindowBounds returns the window bounding box of the activity in pixels.
+// The caption bounds, in case it is present, is included as part of the window bounds.
 // This is the size that the activity thinks it has, although the surface size could be smaller.
 // See: SurfaceBounds
 func (ac *Activity) WindowBounds(ctx context.Context) (Rect, error) {
@@ -188,8 +189,10 @@ func (ac *Activity) WindowBounds(ctx context.Context) (Rect, error) {
 		return Rect{}, errors.Wrap(err, "failed to get task info")
 	}
 
-	// Fullscreen windows already include the caption height. PiP windows don't have caption.
-	if t.windowState == WindowStateFullscreen || t.windowState == WindowStatePIP {
+	// Fullscreen and maximized windows already include the caption height. PiP windows don't have caption.
+	if t.windowState == WindowStateFullscreen ||
+		t.windowState == WindowStateMaximized ||
+		t.windowState == WindowStatePIP {
 		return t.bounds, nil
 	}
 
