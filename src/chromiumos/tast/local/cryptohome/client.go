@@ -76,3 +76,41 @@ func (c *Client) Mount(
 	}
 	return nil
 }
+
+// CheckKey calls the CheckKeyEx cryptohomed D-Bus method.
+func (c *Client) CheckKey(
+	ctx context.Context, accountID string, authReq cpb.AuthorizationRequest) error {
+	marshAccountID, err := proto.Marshal(
+		&cpb.AccountIdentifier{
+			AccountId: &accountID,
+		})
+	if err != nil {
+		return errors.Wrap(err, "failed marshaling AccountIdentifier")
+	}
+	marshAuthReq, err := proto.Marshal(&authReq)
+	if err != nil {
+		return errors.Wrap(err, "failed marshaling AuthorizationRequest")
+	}
+	marshCheckKeyReq, err := proto.Marshal(&cpb.CheckKeyRequest{})
+	if err != nil {
+		return errors.Wrap(err, "failed marshaling CheckKeyRequest")
+	}
+	call := c.obj.CallWithContext(
+		ctx, "org.chromium.CryptohomeInterface.CheckKeyEx", 0, marshAccountID,
+		marshAuthReq, marshCheckKeyReq)
+	if call.Err != nil {
+		return errors.Wrap(call.Err, "failed calling cryptohomed CheckKeyEx")
+	}
+	var marshCheckKeyReply []byte
+	if err := call.Store(&marshCheckKeyReply); err != nil {
+		return errors.Wrap(err, "failed reading BaseReply")
+	}
+	var checkKeyReply cpb.BaseReply
+	if err := proto.Unmarshal(marshCheckKeyReply, &checkKeyReply); err != nil {
+		return errors.Wrap(err, "failed unmarshaling BaseReply")
+	}
+	if checkKeyReply.Error != nil {
+		return errors.Errorf("CheckKeyEx call failed with %s", checkKeyReply.Error)
+	}
+	return nil
+}
