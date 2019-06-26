@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78989ae7_61aba432",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-26T17:33:05Z",
+      "side": 1,
+      "message": "Clar: even in this case, \"audio_play\" is marked true?\nIs it possible to change the condition in precise to exclude such boards?",
+      "range": {
+        "startLine": 11,
+        "startChar": 57,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "1fdc03fb76a35bb3300b51b0b138e6797b88eef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42b38b76_8f7b91a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-26T17:33:05Z",
+      "side": 1,
+      "message": "Nice to fail in this case.\nInstead, could you control the test by dependency?",
+      "range": {
+        "startLine": 146,
+        "startChar": 2,
+        "endLine": 148,
+        "endChar": 38
+      },
+      "revId": "1fdc03fb76a35bb3300b51b0b138e6797b88eef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d922335b_89313361",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-26T17:33:05Z",
+      "side": 1,
+      "message": "If this could take longer time, it\u0027s nice to add logging message just before this.",
+      "revId": "1fdc03fb76a35bb3300b51b0b138e6797b88eef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "925fa4b4_f6d3837d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-26T17:33:05Z",
+      "side": 1,
+      "message": "Is it expected that getActiveNodeVolume() returns error, even after the waiting output stream?\nIf not, could you break the loop by testing.PollBreak()?",
+      "revId": "1fdc03fb76a35bb3300b51b0b138e6797b88eef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77393efd_ef29df40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-26T17:33:05Z",
+      "side": 1,
+      "message": "nit: could you start from lower letter?\n\ncf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 166,
+        "startChar": 25,
+        "endLine": 166,
+        "endChar": 26
+      },
+      "revId": "1fdc03fb76a35bb3300b51b0b138e6797b88eef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eea3a6a7_51b7aaac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-26T17:33:05Z",
+      "side": 1,
+      "message": "Could you handle errors?\n\nif err :\u003d testing.Poll(...\n  ...\n}, ...); err !\u003d nil {\n    s.Error(...)\n    return\n}",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 52
+      },
+      "revId": "1fdc03fb76a35bb3300b51b0b138e6797b88eef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f2cc438_c7b13739",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-26T17:33:05Z",
+      "side": 1,
+      "message": "Same.",
+      "revId": "1fdc03fb76a35bb3300b51b0b138e6797b88eef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
