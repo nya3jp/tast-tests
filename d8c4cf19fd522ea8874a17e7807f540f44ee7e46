@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a5395ace_7d129e13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test-25fps.h264.json.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-26T01:00:59Z",
+      "side": 1,
+      "message": "This is the only file of the \"test-25fps_20190418.*.json\" files that wasn\u0027t updated. But I uploaded it with a new date anyway so it\u0027s much easier to clean up the old files. Otherwise, for each file we need to find the latest date, which might be different. And the order of the files while listing will also be messed up.\n\nIMHO duplication doesn\u0027t matter a lot, since I\u0027ll remove the old files soon.",
+      "parentUuid": "0705c86f_9f3e03c6",
+      "revId": "d8c4cf19fd522ea8874a17e7807f540f44ee7e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6edd11ce_3d0c8867",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_new.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-06-25T16:40:00Z",
       "side": 1,
       "message": "Renaming the tests is fine, but reusing the name confuses the system. Could you avoid it?",
+      "revId": "d8c4cf19fd522ea8874a17e7807f540f44ee7e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46ce0a45_6c07fb7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_new.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-26T01:00:59Z",
+      "side": 1,
+      "message": "What do you mean? This test is set to replace to \u0027DecodeAccelH264\u0027 test in the future. The test just runs the new test binary, and produces very similar results.\n\nHow will it confuse the system?",
+      "parentUuid": "6edd11ce_3d0c8867",
       "revId": "d8c4cf19fd522ea8874a17e7807f540f44ee7e46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
