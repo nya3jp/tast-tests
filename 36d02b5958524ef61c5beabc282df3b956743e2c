@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "0e68dc6c_2e0331bc",
+        "filename": "src/chromiumos/tast/local/arc/cpuset.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2019-06-26T16:56:03Z",
+      "side": 1,
+      "message": "Sorry, I misread this. Done",
+      "parentUuid": "2b992a10_98b060c5",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 11
+      },
+      "revId": "36d02b5958524ef61c5beabc282df3b956743e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8615a0cb_dc724e6d",
         "filename": "src/chromiumos/tast/local/arc/cpuset.go",
         "patchSetId": 3
