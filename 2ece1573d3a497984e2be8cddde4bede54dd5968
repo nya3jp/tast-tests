@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "505088bb_5ed78ab1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-26T00:29:15Z",
+      "side": 1,
+      "message": "In a lot of cases it is not possible to move creating a shorter context down and to overwrite the original context, so I would rather keep it here for consistency. e.g. when we want to make sure the UI is restarted we need both the longer and shorter context. I also use the shorter context when calling \u0027SetUpBenchmark\u0027 below. It\u0027s not strictly necessary, but I like the idea of doing all non-cleanup tasks with a shorter context.\n\nSo for consistency I always want to do the following:\n- First create a shorter context, so we have 1 context for cleanup, and 1 context for all non-cleanup.\n- Perform setup using the shorter context (disabling UI, setting up benchmark mode)\n- Defer cleanup of the above setup using the longer context\n- Perform all test-related tasks using the shorter context",
+      "parentUuid": "7d3722db_5549b11b",
+      "revId": "2ece1573d3a497984e2be8cddde4bede54dd5968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fb0bb569_54dcbc26",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 6
@@ -39,6 +57,30 @@
       "revId": "2ece1573d3a497984e2be8cddde4bede54dd5968",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "622958b8_156a23be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-06-26T00:29:15Z",
+      "side": 1,
+      "message": "Oh woops, well spotted thanks! I changed this locally to test the code, forgot to change it back.",
+      "parentUuid": "fb0bb569_54dcbc26",
+      "range": {
+        "startLine": 166,
+        "startChar": 11,
+        "endLine": 166,
+        "endChar": 13
+      },
+      "revId": "2ece1573d3a497984e2be8cddde4bede54dd5968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
