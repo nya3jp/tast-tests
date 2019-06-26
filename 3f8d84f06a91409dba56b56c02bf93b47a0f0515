@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2c362c9f_9d7c0545",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-06-26T02:42:24Z",
+      "side": 1,
+      "message": "This function is specifically for running a test to decode a provided test file. I\u0027d rather create a separate test that runs all non-file decoding methods that don\u0027t require a test_video_file parameter rather than always running everything.",
+      "parentUuid": "2c44c2ed_f27f0b85",
+      "range": {
+        "startLine": 36,
+        "startChar": 45,
+        "endLine": 36,
+        "endChar": 60
+      },
+      "revId": "3f8d84f06a91409dba56b56c02bf93b47a0f0515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b07fdb80_a4bf0133",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 10
@@ -36,6 +60,24 @@
       "writtenOn": "2019-06-26T01:02:22Z",
       "side": 1,
       "message": "Hmm, why do we need to add \"--gtest_filter\" twice here?",
+      "revId": "3f8d84f06a91409dba56b56c02bf93b47a0f0515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d55f55f_7f6dd5db",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-06-26T02:42:24Z",
+      "side": 1,
+      "message": "Oops, good catch, let me fix this in the next patch.",
+      "parentUuid": "b07fdb80_a4bf0133",
       "revId": "3f8d84f06a91409dba56b56c02bf93b47a0f0515",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

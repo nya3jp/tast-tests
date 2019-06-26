@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "7b4f5cc0_78b6f2a5",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-06-26T02:42:24Z",
+      "side": 1,
+      "message": "I think the reason to treat gtest_filter in a different way is because gtest_filter is available in every gtest binary. This is a gtest package so I think it makes sense to abstract out details that are common to all gtests, specifying test cases being one of them.\n\nFrom this search, it looks like there are exists tests that are manually specifying gtest_filter: https://cs.corp.google.com/search/?q\u003dfile:go%24+gtest_filter\n\nSome in this search I believe also specify custom unit-test specific flags, which could make use of a function like RunCaseWithFlags.\n\nI think it\u0027s reasonable to provide a testcase parameter so that not every test needs to manually append a \"--gtest_filter\u003d\" string. Also, since RunCase supports it, I don\u0027t see a good reason to remove this functionality for RunCaseWithFlags, while adding another different functionality (ie. specifying flags).",
+      "parentUuid": "81112667_791735e1",
+      "range": {
+        "startLine": 63,
+        "startChar": 49,
+        "endLine": 63,
+        "endChar": 59
+      },
+      "revId": "a394e26a60071653f606d3bdd8ae22c0902b53d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36275b9f_42a07dc1",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 9
