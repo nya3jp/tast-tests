@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fb8e3984_427f699d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-06-26T19:21:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aed47356_84c61bfc",
+      "revId": "7bcea681ae11635e27c7ee98024714600ddc161d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e2a8ecc_9adf779c",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_ring.go",
         "patchSetId": 9
@@ -33,6 +51,24 @@
       "revId": "7bcea681ae11635e27c7ee98024714600ddc161d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d19bf02_9d45050d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_ring.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-06-26T19:21:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e2a8ecc_9adf779c",
+      "revId": "7bcea681ae11635e27c7ee98024714600ddc161d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
