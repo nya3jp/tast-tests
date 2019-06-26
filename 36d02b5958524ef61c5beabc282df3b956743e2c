@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33cdcdf6_3c349003",
+        "filename": "src/chromiumos/tast/local/arc/cpuset.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-26T01:47:13Z",
+      "side": 1,
+      "message": "Could you put this file to src/chromiumos/tast/local/bundles/cros/arc/cpuset/cpuset.go since it\u0027s only used from tests in \"arc\" package at this moment?\n\nAnd after moving the package, please rename the function to Parse so that it is called as cpuset.Parse. In Go, exported functions are named to avoid duplication between package name and exported name. See:\n\nhttps://golang.org/doc/effective_go.html#package-names",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 11
+      },
+      "revId": "36d02b5958524ef61c5beabc282df3b956743e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8615a0cb_dc724e6d",
+        "filename": "src/chromiumos/tast/local/arc/cpuset.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-26T01:47:13Z",
+      "side": 1,
+      "message": "I think it\u0027s good to clarify what is \"cpus\" here, e.g. /dev/cpuset/*/cpus.",
+      "range": {
+        "startLine": 15,
+        "startChar": 20,
+        "endLine": 15,
+        "endChar": 24
+      },
+      "revId": "36d02b5958524ef61c5beabc282df3b956743e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "951a44be_8a802909",
+        "filename": "src/chromiumos/tast/local/arc/cpuset.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-26T01:47:13Z",
+      "side": 1,
+      "message": "If n !\u003d 2, err is always non-nil, so we can skip checking n.\n\n if _, err :\u003d fmt.Sscanf(...); err !\u003d nil {",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "36d02b5958524ef61c5beabc282df3b956743e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1220a3c_4c7ed2cd",
+        "filename": "src/chromiumos/tast/local/arc/cpuset.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-26T01:47:13Z",
+      "side": 1,
+      "message": "FYI \u0026 optional: For non-formatted values, strconv.Atoi is more common than fmt.Sscanf. But it\u0027s not a big deal...",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 27
+      },
+      "revId": "36d02b5958524ef61c5beabc282df3b956743e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5cc2ce8_830ff359",
+        "filename": "src/chromiumos/tast/local/arc/cpuset.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-26T01:47:13Z",
+      "side": 1,
+      "message": "style: Please start messages in error values with lower case letters.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 34,
+        "startChar": 38,
+        "endLine": 34,
+        "endChar": 53
+      },
+      "revId": "36d02b5958524ef61c5beabc282df3b956743e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ad8321d_406082d0",
+        "filename": "src/chromiumos/tast/local/arc/cpuset.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-26T01:47:13Z",
+      "side": 1,
+      "message": "errors.Errorf",
+      "range": {
+        "startLine": 34,
+        "startChar": 14,
+        "endLine": 34,
+        "endChar": 36
+      },
+      "revId": "36d02b5958524ef61c5beabc282df3b956743e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78120426_a2467ff0",
+        "filename": "src/chromiumos/tast/local/arc/cpuset.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-26T01:47:13Z",
+      "side": 1,
+      "message": "I recommend using %q for strings read from files. In particular, if the string was empty, the message is confusing to interpret. Also it might be a bit redundant to include \"content\" here since subset is included there.\n\nAfter all, I recommend:\n\n errors.Errorf(\"failed to parse cpus value %q\", subset)",
+      "range": {
+        "startLine": 34,
+        "startChar": 60,
+        "endLine": 34,
+        "endChar": 62
+      },
+      "revId": "36d02b5958524ef61c5beabc282df3b956743e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a5b7d6e_8e0595fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-26T01:47:13Z",
+      "side": 1,
+      "message": "nit: s/parseErr/err/\n\nIn Go, \"err\" is aggressively reused unless we need to retain the value for long time.",
+      "range": {
+        "startLine": 352,
+        "startChar": 13,
+        "endLine": 352,
+        "endChar": 21
+      },
+      "revId": "36d02b5958524ef61c5beabc282df3b956743e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3cd4b6b_17da24a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-26T01:47:13Z",
+      "side": 1,
+      "message": "I recommend:\n\n s.Errorf(\"Unexpected CPU setting %q for %s: got %d CPUs, want %d CPUs\", val, path, len(cpusInUse), runtime.NumCPU())\n\nIn particular, we want to put the expected value in the end of the message.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 362,
+        "startChar": 12,
+        "endLine": 363,
+        "endChar": 49
+      },
+      "revId": "36d02b5958524ef61c5beabc282df3b956743e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
