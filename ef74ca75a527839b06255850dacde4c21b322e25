@@ -69,6 +69,24 @@
       "revId": "ef74ca75a527839b06255850dacde4c21b322e25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6df65e7c_7f02cd15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/gsctool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-26T08:22:39Z",
+      "side": 1,
+      "message": "Actually this is reverse :(\n\n\u003e Note that the order here is actual !\u003d expected, and the message uses that order too. Some test frameworks encourage writing these backwards: 0 !\u003d x, \"expected 0, got x\", and so on. Go does not.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "parentUuid": "e5c37f50_dbbdab2c",
+      "revId": "ef74ca75a527839b06255850dacde4c21b322e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

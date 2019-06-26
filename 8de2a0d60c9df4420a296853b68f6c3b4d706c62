@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03d71279_5feee987",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/gsctool.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-26T08:22:39Z",
+      "side": 1,
+      "message": "style: GSCTool\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "8de2a0d60c9df4420a296853b68f6c3b4d706c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32de7ef1_47ab2d5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/gsctool.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-26T08:22:39Z",
+      "side": 1,
+      "message": "I recommend backtick-quoted strings for regexps to avoid double escapes.",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 35,
+        "endChar": 34
+      },
+      "revId": "8de2a0d60c9df4420a296853b68f6c3b4d706c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86f72bee_19de54b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/gsctool.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-26T08:22:39Z",
+      "side": 1,
+      "message": "nit: const exp \u003d",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 7
+      },
+      "revId": "8de2a0d60c9df4420a296853b68f6c3b4d706c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fcb49b2_d207f2c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/gsctool.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-26T08:22:39Z",
+      "side": 1,
+      "message": "style: Please always put the actual value before the expected value.\n\n \"%q: got %q, want %q\"\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 40,
+        "startChar": 15,
+        "endLine": 40,
+        "endChar": 31
+      },
+      "revId": "8de2a0d60c9df4420a296853b68f6c3b4d706c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbe44fb5_db7bd796",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/gsctool.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-26T08:22:39Z",
+      "side": 1,
+      "message": "Does gsctool leave multiline output? Then it is not suitable to include in test failure messages. I recommend writing out to a file or use s.Log (if we\u0027re sure the output is a few lines).\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting",
+      "range": {
+        "startLine": 40,
+        "startChar": 69,
+        "endLine": 40,
+        "endChar": 73
+      },
+      "revId": "8de2a0d60c9df4420a296853b68f6c3b4d706c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
