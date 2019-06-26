@@ -307,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "8ee134f2_24075af2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_ring.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-06-26T18:50:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3a34baa_29ddf99e",
+      "range": {
+        "startLine": 123,
+        "startChar": 16,
+        "endLine": 123,
+        "endChar": 21
+      },
+      "revId": "5a364d3a483ef15b19422b7b5636a29b88946dfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "339b03f7_f5646338",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_ring.go",
         "patchSetId": 7
