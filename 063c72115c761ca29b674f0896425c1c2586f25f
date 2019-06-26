@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a73889e_8cfbc5b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_block_devices.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-26T17:04:09Z",
+      "side": 1,
+      "message": "Could you add document (following godoc style) that explicitly mentions 0 will be returned also for error case.\nOr, maybe return -1 to indicate an error, or (int, error) for more explicit error.",
+      "revId": "063c72115c761ca29b674f0896425c1c2586f25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92734c31_2cab83df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_block_devices.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-26T17:04:09Z",
+      "side": 1,
+      "message": "Probably, countDeviceLines? In programming context, \"calc\" implies calculator (i.e., the evaluation system of +,-,*,/ etc.) relatively strongly IMO, so nice to be avoided here.",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 9
+      },
+      "revId": "063c72115c761ca29b674f0896425c1c2586f25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "645c7b7e_1cf8cb14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_block_devices.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-26T17:04:09Z",
+      "side": 1,
+      "message": "optional/offtopic: WDYT to make a change to cros_healthd to add an option to drop head line?\nThen, this calculation is more straight forward.\nIf you agree, could you add TODO?",
+      "revId": "063c72115c761ca29b674f0896425c1c2586f25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a867a4ca_7945e3f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_block_devices.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-26T17:04:09Z",
+      "side": 1,
+      "message": "style/nit: Starting from -1 looks trickier to me.\nCould you subtract at the end of the function instead?\n\nvar lineCount int\nfor _, line :\u003d ... {\n  ...\n}\n// ... comment about CSV header ...\nif lineCount \u003d\u003d 0 {\n  return 0\n}\nreturn lineCount - 1;\n\nWDYT?",
+      "revId": "063c72115c761ca29b674f0896425c1c2586f25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4b2166c_4a1abf55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_block_devices.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-26T17:04:09Z",
+      "side": 1,
+      "message": "style/nit: could you remove this empty line because the error handling at L49 is tightly coupled with the execution at L47.",
+      "revId": "063c72115c761ca29b674f0896425c1c2586f25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb30cfbf_ddcbf09c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_block_devices.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-26T17:04:09Z",
+      "side": 1,
+      "message": "Clar: without the output (b, here), it looks more difficult to investigate in case of failures. Is there easier way to do so...?\nPractically, you can reimage DUT and run the command, but if it is the race problem, it may output different result.",
+      "revId": "063c72115c761ca29b674f0896425c1c2586f25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
