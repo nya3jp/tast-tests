@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3e9cd8e7_31f28111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-26T08:46:41Z",
+      "side": 1,
+      "message": "SGTM, when we introduced Contacts field OWNERS were not maintained. Filed crbug.com/978778 to add support.",
+      "parentUuid": "725ab65e_7112fa68",
+      "revId": "2e48bd72fe026331f18df646d562fb33731d0dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e94ab45a_6cac39c0",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
         "patchSetId": 12
@@ -35,6 +53,29 @@
         "startChar": 0,
         "endLine": 49,
         "endChar": 50
+      },
+      "revId": "2e48bd72fe026331f18df646d562fb33731d0dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5e5be3b_7ed4a391",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-26T08:46:41Z",
+      "side": 1,
+      "message": "nit: s/Add/Load/",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 7
       },
       "revId": "2e48bd72fe026331f18df646d562fb33731d0dfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
