@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2b992a10_98b060c5",
+        "filename": "src/chromiumos/tast/local/arc/cpuset.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-26T16:47:08Z",
+      "side": 1,
+      "message": "I think nya@ recommended to pu this under chromiumos/tast/local/bundels/cros/arc/cpuset/cpuset.go, rather than chromiumos/tast/local/arc/cpuset/cpuset.go.\n\nI agreed with nya@ for packaging structure. Yury, could you fix?",
+      "parentUuid": "17e711f7_20674f1a",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 11
+      },
+      "revId": "36d02b5958524ef61c5beabc282df3b956743e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8615a0cb_dc724e6d",
         "filename": "src/chromiumos/tast/local/arc/cpuset.go",
         "patchSetId": 3
