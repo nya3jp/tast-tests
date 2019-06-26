@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "402849aa_9ee1da41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-06-26T00:13:01Z",
+      "side": 1,
+      "message": "we should use testexec instead of exec directly",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 13
+      },
+      "revId": "abcb4e33f99508fc75d0c061c6b1ef9d2c62e460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eb43a36_d0d7bc7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-06-26T00:13:01Z",
+      "side": 1,
+      "message": "whitespace issues -- you should run gofmt on the file to get it formatted properly.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 4
+      },
+      "revId": "abcb4e33f99508fc75d0c061c6b1ef9d2c62e460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "532d3c49_24fc57fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 915,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-06-26T00:13:01Z",
+      "side": 1,
+      "message": "same here, no need to move these statements.",
+      "range": {
+        "startLine": 912,
+        "startChar": 0,
+        "endLine": 915,
+        "endChar": 55
+      },
+      "revId": "abcb4e33f99508fc75d0c061c6b1ef9d2c62e460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f950ab87_141dde42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-06-26T00:13:01Z",
+      "side": 1,
+      "message": "extra whitespace",
+      "range": {
+        "startLine": 926,
+        "startChar": 0,
+        "endLine": 926,
+        "endChar": 4
+      },
+      "revId": "abcb4e33f99508fc75d0c061c6b1ef9d2c62e460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db018f48_dac68daa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-06-26T00:13:01Z",
+      "side": 1,
+      "message": "we should use testexec here",
+      "range": {
+        "startLine": 1044,
+        "startChar": 11,
+        "endLine": 1044,
+        "endChar": 23
+      },
+      "revId": "abcb4e33f99508fc75d0c061c6b1ef9d2c62e460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9384a24_917f40ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-06-26T00:13:01Z",
+      "side": 1,
+      "message": "this is why perf isn\u0027t working -- we need to properly shut down perf, otherwise the perf output file is getting truncated.\n\nInstead we should do cmd.Process.Signal(os.Interrupt)\n\nI\u0027ll upload something that does this for Intel.",
+      "range": {
+        "startLine": 1068,
+        "startChar": 1,
+        "endLine": 1068,
+        "endChar": 36
+      },
+      "revId": "abcb4e33f99508fc75d0c061c6b1ef9d2c62e460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

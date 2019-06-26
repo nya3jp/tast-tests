@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4224aae_5982ae29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-06-26T00:13:01Z",
+      "side": 0,
+      "message": "shouldn\u0027t move this",
+      "range": {
+        "startLine": 893,
+        "startChar": 1,
+        "endLine": 893,
+        "endChar": 53
+      },
+      "revId": "ef2adf1050e887a5c5fe5ce40d0f5533c3922769",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
