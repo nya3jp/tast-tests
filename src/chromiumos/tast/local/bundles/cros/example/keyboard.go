@@ -92,9 +92,23 @@ func Keyboard(ctx context.Context, s *testing.State) {
 		bodyExpr = "document.body.innerText"
 	)
 	s.Logf("Navigating to %q via omnibox", dataURL)
-	ew.Accel(ctx, "Ctrl+L")
-	ew.Type(ctx, dataURL+"\n")
+	if err := ew.Accel(ctx, "Ctrl+L"); err != nil {
+		s.Fatal("Failed to write event: ", err)
+	}
+	if err := ew.Type(ctx, dataURL+"\n"); err != nil {
+		s.Fatal("Failed to write events: ", err)
+	}
 	if err := waitForStringExpr(bodyExpr, pageText); err != nil {
 		s.Error("Failed to get page text: ", err)
+	}
+
+	// Not all Chromebooks have the same layout for the function keys.
+	mapping, err := input.KeyboardTopRowLayout(ctx, ew)
+	if err != nil {
+		s.Fatal("Failed to get keyboard mapping: ", err)
+	}
+	key := mapping["ZOOM_TOGGLE"]
+	if err := ew.Accel(ctx, key); err != nil {
+		s.Fatal("Failed to write events: ", err)
 	}
 }
