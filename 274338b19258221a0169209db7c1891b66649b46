@@ -39,6 +39,24 @@
       "revId": "274338b19258221a0169209db7c1891b66649b46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1991ab2e_6b4d68f6",
+        "filename": "src/chromiumos/tast/local/hwsec/utility_common.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-06-26T02:31:52Z",
+      "side": 1,
+      "message": "No, there is no limit per style golang guide and confirmed by tast team.",
+      "parentUuid": "bda3b60a_0e7d3988",
+      "revId": "274338b19258221a0169209db7c1891b66649b46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
