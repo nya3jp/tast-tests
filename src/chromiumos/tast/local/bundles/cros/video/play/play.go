@@ -15,11 +15,13 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/video/lib/audio"
+	"chromiumos/tast/local/bundles/cros/video/lib/chromeargs"
 	"chromiumos/tast/local/bundles/cros/video/lib/constants"
 	"chromiumos/tast/local/bundles/cros/video/lib/histogram"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -246,12 +248,45 @@ func playSeekVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL st
 	return nil
 }
 
-// TestPlay checks that the video file named filename can be played back.
+// TestPlay checks that the video file named filename can be played.
 // videotype represents a type of a given video. If it is MSEVideo, filename is a name
 // of MPD file.
 // If mode is CheckHistogram, this function also checks if hardware accelerator
 // was used properly.
-func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
+// Noted that if a test's PreValue() is specified, it reuses Chrome session that satisfies precondition;
+// otherwise, it starts a new Chrome session for the test and logs out after the test.
+func TestPlay(ctx context.Context, s *testing.State,
+	filename string, videotype VideoType, mode HistogramMode) {
+	if s.PreValue() == nil {
+		s.Log("restart chrome")
+		// Run the test on a new Chrome and log out after test to obtain an isolated Chrome log.
+		cr, err := chrome.New(ctx, chromeargs.DefaultArgs)
+		if err != nil {
+			s.Fatal("Failed to restart Chrome: ", err)
+		}
+		defer cr.Close(ctx)
+		defer func() {
+			ctx, st := timing.Start(ctx, "stop ui")
+			defer st.End()
+			if err := upstart.StopJob(ctx, "ui"); err != nil {
+				s.Error("Failed to stop ui: ", err)
+			}
+		}()
+
+		// Reserve 3 seconds for stopping ui.
+		shortCtx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+		defer cancel()
+		testPlay(shortCtx, s, cr, filename, videotype, mode)
+	} else {
+		s.Log("reusing pre")
+		cr := s.PreValue().(*chrome.Chrome)
+		testPlay(ctx, s, cr, filename, videotype, mode)
+	}
+
+}
+
+// testPlay is the implementation of TestPlay().
+func testPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	filename string, videotype VideoType, mode HistogramMode) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
