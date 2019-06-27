@@ -50,3 +50,8 @@ func (ct *ChromeTask) Close(ctx context.Context, testEnv *TestEnv) {
 func (ct *ChromeTask) String() string {
 	return fmt.Sprintf("ChromeTask with URLs: %s, NumTabs: %d", ct.URLs, ct.NumTabs)
 }
+
+// NeedVM returns false to indicate that no VM is required for a ChromeTask.
+func (ct *ChromeTask) NeedVM() bool {
+	return false
+}
