@@ -16,7 +16,7 @@ func InitPID() (int32, error) {
 	u := "android-root"
 	initPath := "/init"
 
-	if vm, err := vmEnabled(); err != nil {
+	if vm, err := VMEnabled(); err != nil {
 		return -1, errors.Wrap(err, "failed to determine if ARCVM is enabled")
 	} else if vm {
 		u = "crosvm"

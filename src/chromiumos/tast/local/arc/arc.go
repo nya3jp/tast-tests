@@ -112,7 +112,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		}
 	}()
 
-	vm, err := vmEnabled()
+	vm, err := VMEnabled()
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to determine if ARCVM is enabled")
 	}
@@ -274,10 +274,10 @@ func (a *ARC) setLogcatFile(p string) error {
 	return createErr
 }
 
-// vmEnabled returns true if Chrome OS is running ARCVM.
+// VMEnabled returns true if Chrome OS is running ARCVM.
 // This is done by checking "/run/chrome/is_arcvm" content equal to "1".
 // Reference: chrome/browser/chromeos/arc/arc_service_launcher.cc
-func vmEnabled() (bool, error) {
+func VMEnabled() (bool, error) {
 	b, err := ioutil.ReadFile("/run/chrome/is_arcvm")
 	if err != nil {
 		return false, err
