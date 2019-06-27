@@ -50,7 +50,7 @@ type TimedScanData struct {
 // A channel map for valid frequencies can be found in
 // third_party/autotest/files/server/cros/network/hostap_config.py
 // The frequency slice is used to whitelist which frequencies/bands to scan on.
-// The SSIDs slice will filter the results of the scan to those that pertain
+// The SSIDs slice filters the results of the scan to those that pertain
 // to the whitelisted SSIDs (although this doesn't seem to work on some devices).
 func TimedScan(ctx context.Context, iface string,
 	frequencies []int, ssids []string) (*TimedScanData, error) {
@@ -62,7 +62,7 @@ func TimedScan(ctx context.Context, iface string,
 		args = append(args, "ssid", ssid)
 	}
 	startTime := time.Now()
-	out, err := testexec.CommandContext(ctx, "iw", args...).Output()
+	out, err := testexec.CommandContext(ctx, "iw", args...).Output(testexec.DumpLogOnError)
 	scanTime := time.Since(startTime)
 	if err != nil {
 		return nil, errors.Wrap(err, "iw scan failed")
@@ -73,6 +73,32 @@ func TimedScan(ctx context.Context, iface string,
 		return nil, err
 	}
 	return &TimedScanData{scanTime, bssList}, nil
+}
+
+// AddInterface adds an interface to a WiFi PHY.
+func AddInterface(ctx context.Context, phy string, iface string, ifaceType string) error {
+	if err := testexec.CommandContext(ctx, "iw", "phy", phy, "interface", "add",
+		iface, "type", ifaceType).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "failed to add interface %s to %s of type %s",
+			phy, iface, ifaceType)
+	}
+	return nil
+}
+
+// RemoveInterface removes an interface from WiFi.
+func RemoveInterface(ctx context.Context, iface string) error {
+	if err := testexec.CommandContext(ctx, "iw", "dev", iface, "del").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "failed to remove interface %s", iface)
+	}
+	return nil
+}
+
+// DisconnectStation disconnects station from  specified interface.
+func DisconnectStation(ctx context.Context, iface string) error {
+	if err := testexec.CommandContext(ctx, "iw", "dev", iface, "disconnect").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "failed to disconnect from station %s", iface)
+	}
+	return nil
 }
 
 // getAllLinkKeys parses `link` or `station dump` output into key value pairs.
