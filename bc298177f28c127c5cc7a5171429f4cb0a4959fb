@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c7201c4_5f53d110",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-27T15:31:55Z",
+      "side": 1,
+      "message": "Same for error formatting as\ncf) https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1668150/6/src/chromiumos/tast/local/vm/util.go#327\n\nSpecifically, in this case;\n\nif vmErr :\u003d vmInstance.Stop(ctx); vmErr !\u003d nil {\n  s.Error(\"...message ...: \", vmErr)\n}\ns.Fatal(\"Failed to start Container: \", err)\n\nis a way to report two failures.",
+      "range": {
+        "startLine": 82,
+        "startChar": 54,
+        "endLine": 82,
+        "endChar": 84
+      },
+      "revId": "bc298177f28c127c5cc7a5171429f4cb0a4959fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
