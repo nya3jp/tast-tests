@@ -18,8 +18,10 @@ import (
 	"chromiumos/tast/local/bundles/cros/video/lib/constants"
 	"chromiumos/tast/local/bundles/cros/video/lib/histogram"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
+	"chromiumos/tast/local/bundles/cros/video/lib/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -244,6 +246,31 @@ func playSeekVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL st
 	}
 
 	return nil
+}
+
+// TestPlayIsolate calls TestPlay with new Chrome instance.
+// It is used if the test needs an isolated Chrome log to faciliate debugging.
+func TestPlayIsolate(ctx context.Context, s *testing.State,
+	filename string, videotype VideoType, mode HistogramMode) {
+	// Run the test on a new Chrome and log out after test to obtain an isolated Chrome log.
+	cr, err := chrome.New(ctx, pre.ChromeVideoExtraArgs)
+	if err != nil {
+		s.Fatal("Failed to restart Chrome: ", err)
+	}
+	defer cr.Close(ctx)
+	defer func() {
+		ctx, st := timing.Start(ctx, "stop ui")
+		defer st.End()
+		if err := upstart.StopJob(ctx, "ui"); err != nil {
+			s.Error("Failed to stop ui: ", err)
+		}
+	}()
+
+	// Reserve 3 seconds for stopping ui.
+	shortCtx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+	defer cancel()
+
+	TestPlay(shortCtx, s, cr, filename, videotype, mode)
 }
 
 // TestPlay checks that the video file named filename can be played back.

@@ -7,9 +7,7 @@ package video
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/video/lib/pre"
 	"chromiumos/tast/local/bundles/cros/video/play"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -21,13 +19,11 @@ func init() {
 		Attr:     []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Pre:          pre.ChromeVideo(),
 		Data:         []string{"bear-320x240.h264.mp4", "video.html"},
 	})
 }
 
 // PlayH264 plays bear-320x240.h264.mp4 with Chrome.
 func PlayH264(ctx context.Context, s *testing.State) {
-	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"bear-320x240.h264.mp4", play.NormalVideo, play.NoCheckHistogram)
+	play.TestPlayIsolate(ctx, s, "bear-320x240.h264.mp4", play.NormalVideo, play.NoCheckHistogram)
 }
