@@ -7,9 +7,7 @@ package video
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/video/lib/pre"
 	"chromiumos/tast/local/bundles/cros/video/play"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -20,7 +18,6 @@ func init() {
 		Contacts:     []string{"acourbot@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          pre.ChromeVideo(),
 		Data:         []string{"shaka_720.webm", "video.html"},
 	})
 }
@@ -30,5 +27,5 @@ func init() {
 // SeekVP9 plays a non-resolution-changing VP9 file with
 // Chrome and checks that it can safely be seeked into.
 func SeekVP9(ctx context.Context, s *testing.State) {
-	play.TestSeek(ctx, s, s.PreValue().(*chrome.Chrome), "shaka_720.webm")
+	play.TestSeek(ctx, s, "shaka_720.webm")
 }

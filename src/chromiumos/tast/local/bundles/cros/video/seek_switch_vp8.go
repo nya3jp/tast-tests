@@ -7,9 +7,7 @@ package video
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/video/lib/pre"
 	"chromiumos/tast/local/bundles/cros/video/play"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -20,7 +18,6 @@ func init() {
 		Contacts:     []string{"acourbot@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          pre.ChromeVideo(),
 		Data:         []string{"frame_size_change.webm", "video.html"},
 	})
 }
@@ -30,5 +27,5 @@ func init() {
 // SeekSwitchVP8 plays a resolution-changing VP8 file with
 // Chrome and checks that it can safely be seeked into.
 func SeekSwitchVP8(ctx context.Context, s *testing.State) {
-	play.TestSeek(ctx, s, s.PreValue().(*chrome.Chrome), "frame_size_change.webm")
+	play.TestSeek(ctx, s, "frame_size_change.webm")
 }
