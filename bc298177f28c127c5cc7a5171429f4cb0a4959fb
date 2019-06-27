@@ -22,6 +22,30 @@
       "revId": "bc298177f28c127c5cc7a5171429f4cb0a4959fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b187f3c_dfbca746",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/trace/trace.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-06-27T18:47:35Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "2c7201c4_5f53d110",
+      "range": {
+        "startLine": 82,
+        "startChar": 54,
+        "endLine": 82,
+        "endChar": 84
+      },
+      "revId": "bc298177f28c127c5cc7a5171429f4cb0a4959fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
