@@ -7,8 +7,12 @@ package memoryuser
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
+	"path/filepath"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
@@ -18,14 +22,33 @@ type VMCmd []string
 // VMTask implements MemoryTask to run commands in a VM.
 type VMTask struct {
 	// VMCommands is a list of VMCmds.
-	Cmds []VMCmd
+	Cmds  []VMCmd
+	Files []string
 }
 
 // Run executes the list of VMCommands defined in VMTask in the existing VM from the TestEnvironment.
 func (vt *VMTask) Run(ctx context.Context, testEnv *TestEnv) error {
+	ownerID, err := cryptohome.UserHash(ctx, testEnv.chrome.User())
+	if err != nil {
+		return errors.Wrap(err, "failed to get user hash")
+	}
+	vmMountDir := fmt.Sprintf("/media/fuse/crostini_%s_%s_%s", ownerID, vm.DefaultVMName, vm.DefaultContainerName)
+	for _, f := range vt.Files {
+		testing.ContextLogf(ctx, "File is: %s", f)
+		_, name := filepath.Split(f)
+		testing.ContextLogf(ctx, "File name is: %s", name)
+		testing.ContextLogf(ctx, "Mount dir is: %s", vmMountDir)
+		input, err := ioutil.ReadFile(f)
+		if err != nil {
+			return errors.Wrap(err, "cannot read data file")
+		}
+		if err = ioutil.WriteFile(filepath.Join(vmMountDir, name), input, 0644); err != nil {
+			return errors.Wrap(err, "cannot copy data file into VM directory")
+		}
+	}
 	testing.ContextLog(ctx, "Running vm commands")
 	for i := 0; i < len(vt.Cmds); i++ {
-		cmd := testEnv.vm.Command(ctx, vt.Cmds[i]...)
+		cmd := vm.DefaultContainerCommand(ctx, ownerID, vt.Cmds[i]...)
 		if err := cmd.Run(); err != nil {
 			cmd.DumpLog(ctx)
 			return errors.Wrap(err, "failed to run vm command")
@@ -40,4 +63,9 @@ func (vt *VMTask) Close(ctx context.Context, testEnv *TestEnv) {}
 // String returns a string describing the VMTask.
 func (vt *VMTask) String() string {
 	return fmt.Sprintf("VMTask with commands: %s", vt.Cmds)
+}
+
+// Type returns the string "VMTask".
+func (vt *VMTask) Type() string {
+	return "VMTask"
 }

@@ -44,7 +44,7 @@ func HeavyMemoryUser(ctx context.Context, s *testing.State) {
 	}
 	cTask := memoryuser.ChromeTask{URLs: urls, NumTabs: 50}
 
-	vmCmd := memoryuser.VMCmd{"dd", "if=/dev/urandom", "of=/mnt/stateful/lxd_conf/foo", "bs=3M", "count=1K"}
+	vmCmd := memoryuser.VMCmd{"dd", "if=/dev/urandom", "of=foo", "bs=3M", "count=1K"}
 	vmCommands := []memoryuser.VMCmd{vmCmd, vmCmd}
 	vmTask := memoryuser.VMTask{Cmds: vmCommands}
 

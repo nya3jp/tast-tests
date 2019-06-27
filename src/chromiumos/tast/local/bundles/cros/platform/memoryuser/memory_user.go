@@ -22,7 +22,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
-	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
@@ -32,7 +31,8 @@ type TestEnv struct {
 	chrome    *chrome.Chrome
 	arc       *arc.ARC
 	arcDevice *ui.Device
-	vm        *vm.VM
+	tconn     *chrome.Conn
+	vm        bool
 }
 
 // MemoryTask describes a memory-consuming task to perform.
@@ -45,6 +45,8 @@ type MemoryTask interface {
 	Close(ctx context.Context, testEnv *TestEnv)
 	// String returns a string describing the memory-related task.
 	String() string
+	// Type returns a string describing the task type.
+	Type() string
 }
 
 // logCmd logs the output of the provided command into a file every 5 seconds.
@@ -134,36 +136,52 @@ func newTestEnv(ctx context.Context, outDir string) (*TestEnv, error) {
 		return nil, errors.Wrap(err, "failed initializing UI Automator")
 	}
 
-	var tconn *chrome.Conn
-	if tconn, err = te.chrome.TestAPIConn(ctx); err != nil {
+	if te.tconn, err = te.chrome.TestAPIConn(ctx); err != nil {
 		return nil, errors.Wrap(err, "creating test API connection failed")
 	}
-	if err = vm.EnableCrostini(ctx, tconn); err != nil {
-		return nil, errors.Wrap(err, "failed to enable Crostini preference setting")
-	}
-	if err = vm.SetUpComponent(ctx, vm.StagingComponent); err != nil {
-		return nil, errors.Wrap(err, "failed to set up component")
-	}
 
-	var conc *vm.Concierge
-	if conc, err = vm.NewConcierge(ctx, te.chrome.User()); err != nil {
-		return nil, errors.Wrap(err, "failed to start concierge")
-	}
-
-	te.vm = vm.NewDefaultVM(conc)
-	if err = te.vm.Start(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to start VM")
-	}
+	te.vm = false
 
 	toClose = nil
 	return te, nil
 
 }
 
+func startVM(ctx context.Context, te *TestEnv) error {
+	if te.vm == true {
+		return nil
+	}
+	testing.ContextLog(ctx, "Waiting for crostini to install (typically ~ 3 mins) and mount sshfs")
+	if err := te.tconn.EvalPromise(ctx,
+		`new Promise((resolve, reject) => {
+		   chrome.autotestPrivate.runCrostiniInstaller(() => {
+   	       	     if (chrome.runtime.lastError === undefined) {
+		       resolve();
+		     } else {
+		       reject(new Error(chrome.runtime.lastError.message));
+		     }
+		   });
+		})`, nil); err != nil {
+		return errors.Wrap(err, "Running autotestPrivate.runCrostiniInstaller failed")
+	}
+	return nil
+}
+
 // Close closes the Chrome, ARC, ARC UI Automator device, and VM instances used in the TestEnv.
 func (te *TestEnv) Close(ctx context.Context) {
-	if te.vm != nil {
-		te.vm.Stop(ctx)
+	if te.vm == true {
+		if err := te.tconn.EvalPromise(ctx,
+			`new Promise((resolve, reject) => {
+		chrome.autotestPrivate.runCrostiniUninstaller(() => {
+    	       	  if (chrome.runtime.lastError === undefined) {
+		    resolve();
+		  } else {
+		    reject(new Error(chrome.runtime.lastError.message));
+		  }
+		});
+	      })`, nil); err != nil {
+			testing.ContextLog(ctx, "Running autotestPrivate.runCrostiniInstaller failed: ", err)
+		}
 	}
 	if te.arcDevice != nil {
 		te.arcDevice.Close()
@@ -199,6 +217,11 @@ func RunTest(ctx context.Context, s *testing.State, tasks []MemoryTask) {
 	ch := make(chan struct{}, len(tasks))
 	for _, task := range tasks {
 		go func(task MemoryTask) {
+			if task.Type() == "VMTask" {
+				if err := startVM(ctx, testEnv); err != nil {
+					s.Error("Failed to start VM: ", err)
+				}
+			}
 			if err := task.Run(taskCtx, testEnv); err != nil {
 				s.Errorf("Failed to run memory task %s: %v", task.String(), err)
 			}

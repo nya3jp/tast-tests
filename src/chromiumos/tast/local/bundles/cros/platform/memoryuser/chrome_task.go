@@ -50,3 +50,8 @@ func (ct *ChromeTask) Close(ctx context.Context, testEnv *TestEnv) {
 func (ct *ChromeTask) String() string {
 	return fmt.Sprintf("ChromeTask with URLs: %s, NumTabs: %d", ct.URLs, ct.NumTabs)
 }
+
+// Type returns the string "ChromeTask".
+func (ct *ChromeTask) Type() string {
+	return "ChromeTask"
+}
