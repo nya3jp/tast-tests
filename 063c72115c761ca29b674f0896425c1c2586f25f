@@ -42,6 +42,48 @@
     },
     {
       "key": {
+        "uuid": "04c73462_c42cbe94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_block_devices.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1327553
+      },
+      "writtenOn": "2019-06-27T15:18:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92734c31_2cab83df",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 9
+      },
+      "revId": "063c72115c761ca29b674f0896425c1c2586f25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb758c21_5b07a6f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_block_devices.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1327553
+      },
+      "writtenOn": "2019-06-27T15:18:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a73889e_8cfbc5b9",
+      "revId": "063c72115c761ca29b674f0896425c1c2586f25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "645c7b7e_1cf8cb14",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_block_devices.go",
         "patchSetId": 8
@@ -56,6 +98,24 @@
       "revId": "063c72115c761ca29b674f0896425c1c2586f25f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "222bbaac_8c623ce6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_block_devices.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1327553
+      },
+      "writtenOn": "2019-06-27T15:18:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "645c7b7e_1cf8cb14",
+      "revId": "063c72115c761ca29b674f0896425c1c2586f25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "86c3e099_c173b4ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_block_devices.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1327553
+      },
+      "writtenOn": "2019-06-27T15:18:34Z",
+      "side": 1,
+      "message": "I think there is no getting around the basic arithmetic that is going on here, whether it\u0027s in a later inequality doesn\u0027t make it any less tricky. I\u0027ve short-circuited the problem in the latest patch.",
+      "parentUuid": "a867a4ca_7945e3f7",
+      "revId": "063c72115c761ca29b674f0896425c1c2586f25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4b2166c_4a1abf55",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_block_devices.go",
         "patchSetId": 8
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "b6752b0d_c6adb60e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_block_devices.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1327553
+      },
+      "writtenOn": "2019-06-27T15:18:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4b2166c_4a1abf55",
+      "revId": "063c72115c761ca29b674f0896425c1c2586f25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb30cfbf_ddcbf09c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_block_devices.go",
         "patchSetId": 8
@@ -107,6 +203,24 @@
       "revId": "063c72115c761ca29b674f0896425c1c2586f25f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f13f8d39_7291878c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_block_devices.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1327553
+      },
+      "writtenOn": "2019-06-27T15:18:34Z",
+      "side": 1,
+      "message": "It\u0027s not more difficult to investigate because the output would have been empty in the case of failure anyway.",
+      "parentUuid": "eb30cfbf_ddcbf09c",
+      "revId": "063c72115c761ca29b674f0896425c1c2586f25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
