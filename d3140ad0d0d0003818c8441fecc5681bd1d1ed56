@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4c619b3_22cd1f3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cpuset/cpuset.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2019-06-27T06:24:05Z",
+      "side": 1,
+      "message": "nit: extra space?",
+      "range": {
+        "startLine": 15,
+        "startChar": 38,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "d3140ad0d0d0003818c8441fecc5681bd1d1ed56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
