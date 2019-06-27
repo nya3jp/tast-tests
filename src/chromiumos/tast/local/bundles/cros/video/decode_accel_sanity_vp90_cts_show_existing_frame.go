@@ -17,7 +17,6 @@ func init() {
 		Func:         DecodeAccelSanityVP90CtsShowExistingFrame,
 		Desc:         "Run Chrome video_decode_accelerator_unittest's NoCrash test on a VP9 video from Android CTS video repository which fails elm",
 		Contacts:     []string{"deanliao@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", caps.HWDecodeVP9},
 		Data:         []string{decode.DecodeAccelSanityVP90CtsShowExistingFrame.Name},
 	})
