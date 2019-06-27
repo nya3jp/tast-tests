@@ -22,6 +22,30 @@
       "revId": "a4d41c9bf904932913591393ba401ba9dd8972bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e7fc848_3cb94bc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-27T08:42:37Z",
+      "side": 1,
+      "message": "Done\nNo worries. Yeah of course we can :)",
+      "parentUuid": "5ecd8881_746f8c52",
+      "range": {
+        "startLine": 103,
+        "startChar": 2,
+        "endLine": 103,
+        "endChar": 37
+      },
+      "revId": "a4d41c9bf904932913591393ba401ba9dd8972bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
