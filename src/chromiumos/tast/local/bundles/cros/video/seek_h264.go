@@ -7,9 +7,7 @@ package video
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/video/lib/pre"
 	"chromiumos/tast/local/bundles/cros/video/play"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -21,7 +19,6 @@ func init() {
 		Attr:     []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Pre:          pre.ChromeVideo(),
 		Data:         []string{"video_seek.mp4", "video.html"},
 	})
 }
@@ -29,5 +26,5 @@ func init() {
 // SeekH264 plays a non-resolution-changing H264 file with
 // Chrome and checks that it can safely be seeked into.
 func SeekH264(ctx context.Context, s *testing.State) {
-	play.TestSeek(ctx, s, s.PreValue().(*chrome.Chrome), "video_seek.mp4")
+	play.TestSeek(ctx, s, "video_seek.mp4")
 }
