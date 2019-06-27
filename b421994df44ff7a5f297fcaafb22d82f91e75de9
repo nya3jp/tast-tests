@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adc5c4b9_c0a27740",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-27T15:25:06Z",
+      "side": 1,
+      "message": "Could you wrap |err| instead, because the err is the main reason why this function failed.\nIndeed there\u0027s a case that tearing down could fail, but it is less important than the main failure reason practically.\nAs you may already find, there\u0027s no way to report multiple errors from function,\ncould you just log if tearing down is failed?\nAlso, vmInstance teardown and StopConcierge() looks not clearly tied on the code, so could you add comment? So, maybe;\n\ncontainer, err :\u003d CreateDefaultContainer(...)\nif err !\u003d nil {\n  // Stopping Concierge should also dispose vmInstance.\n  if stopErr :\u003d StopConcierge(ctx); stopErr !\u003d nil {\n    testing.ContextLog(ctx, \"... message about concierge stop error ...: \", stopErr)\n  }\n  return nil, errors.Wrap(err, \"... message about err ...\");\n}\n\nSame for vm.go.\n\n\u003e btw, it is the original behavior and I\u0027m not feeling well to change it. \n\nIIUC, actually this is what this CL tries to introduce. Before this CL, vmInstance is created in CreateDefaultContainer and not returned, so the clean up responsibility should be clearly owned within the function.\nYour CL splits the function, and start passing vmInstance via an argument.\nIt introduces ownership issue, i.e. \"who should own the clean up when failed\", and it needs to be well designed in this CL.",
+      "range": {
+        "startLine": 327,
+        "startChar": 14,
+        "endLine": 327,
+        "endChar": 58
+      },
+      "revId": "b421994df44ff7a5f297fcaafb22d82f91e75de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
