@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9082d94_d81c85f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-27T00:28:45Z",
+      "side": 1,
+      "message": "This should be just:\n\n scanTime :\u003d time.Since(startTime).\n\nNote that the current formula is wrong; time.Duration is internally represented in nanoseconds.\n\nhttps://godoc.org/time#Duration",
+      "range": {
+        "startLine": 66,
+        "startChar": 13,
+        "endLine": 66,
+        "endChar": 59
+      },
+      "revId": "20121a5f4fdac8d1e2142205eba2584fba8c55c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

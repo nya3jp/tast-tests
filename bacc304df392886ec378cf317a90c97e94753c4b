@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "ff69ec26_f13e3d42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-27T00:28:45Z",
+      "side": 1,
+      "message": "Yeah, the new regexp looks good to me. Thanks!",
+      "parentUuid": "a7907c92_e39735ba",
+      "range": {
+        "startLine": 170,
+        "startChar": 46,
+        "endLine": 170,
+        "endChar": 52
+      },
+      "revId": "bacc304df392886ec378cf317a90c97e94753c4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84b80e75_cea44dbf",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner_test.go",
         "patchSetId": 15
