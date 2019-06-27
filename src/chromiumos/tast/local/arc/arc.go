@@ -180,8 +180,14 @@ func (a *ARC) WaitIntentHelper(ctx context.Context) error {
 // At least one of them must be declared to call New.
 var androidDeps = []string{
 	"android",
+	"android_vm",
+	"android_both",
 	"android_all",
+	"android_all_vm",
+	"android_all_both",
 	"android_p",
+	"android_p_vm",
+	"android_p_both",
 }
 
 // checkSoftwareDeps ensures the current test declares Android software dependencies.
