@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31ba9fb1_c03fd74d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/android_task.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-27T09:08:50Z",
+      "side": 1,
+      "message": "nit: I recommend using formatting time.Duration with %v. It has nice formatting.\n\nhttps://play.golang.org/p/re5zlHYm9ET",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 83
+      },
+      "revId": "838f6680c49b77d08130752ec58199c2a6656038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1604cfb9_7bd9fbd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-27T09:08:50Z",
+      "side": 1,
+      "message": "It is surprising to readers that test behavior is very different (i.e. whether to call startVM is decided) by its return value.\n\nHow about introducing\n\n NeedVM() bool\n\ninstead to indicate VM is needed or not? Then we can resolve such surprises.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 14
+      },
+      "revId": "838f6680c49b77d08130752ec58199c2a6656038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b74931c6_62e83a57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-27T09:08:50Z",
+      "side": 1,
+      "message": "nit: Could you assign this on the initialization, i.e.\n\n te :\u003d \u0026TestEnv{\n   vm: false,\n }\n\nNote that struct fields are initialized by zero values, so it\u0027s not strictly necessary.",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 14
+      },
+      "revId": "838f6680c49b77d08130752ec58199c2a6656038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31f8bb4e_bb5147fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-27T09:08:50Z",
+      "side": 1,
+      "message": "nit: if te.vm { ... }",
+      "range": {
+        "startLine": 151,
+        "startChar": 4,
+        "endLine": 151,
+        "endChar": 19
+      },
+      "revId": "838f6680c49b77d08130752ec58199c2a6656038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fec499f7_c554e311",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-27T09:08:50Z",
+      "side": 1,
+      "message": "indentation here looks weird. (I know it\u0027s difficult to mix tabs and spaces correctly, sorry)",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 16
+      },
+      "revId": "838f6680c49b77d08130752ec58199c2a6656038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f4cb737_a503dbdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-27T09:08:50Z",
+      "side": 1,
+      "message": "I guess we must assign te.vm here.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 11
+      },
+      "revId": "838f6680c49b77d08130752ec58199c2a6656038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be0365cb_2ff0cde3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-27T09:08:50Z",
+      "side": 1,
+      "message": "ditto: te.vm",
+      "range": {
+        "startLine": 172,
+        "startChar": 4,
+        "endLine": 172,
+        "endChar": 19
+      },
+      "revId": "838f6680c49b77d08130752ec58199c2a6656038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ba42eff_2bd538fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-27T09:08:50Z",
+      "side": 1,
+      "message": "ditto: whitespace",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 15
+      },
+      "revId": "838f6680c49b77d08130752ec58199c2a6656038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e4e0ce4_a3320268",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-27T09:08:50Z",
+      "side": 1,
+      "message": "ditto: whitespace",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 10
+      },
+      "revId": "838f6680c49b77d08130752ec58199c2a6656038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "526f67a3_581d9e45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-27T09:08:50Z",
+      "side": 1,
+      "message": "Should we skip calling task.Run when startVM fails? I guess it makes little sense to continue in that case.",
+      "range": {
+        "startLine": 222,
+        "startChar": 5,
+        "endLine": 222,
+        "endChar": 41
+      },
+      "revId": "838f6680c49b77d08130752ec58199c2a6656038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b98f6ba_a66073e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-27T09:08:50Z",
+      "side": 1,
+      "message": "I recommend deferring these statements at the top of the go function so that they are called even if s.Fatal is called. That is:\n\n go func(...) {\n   defer func() {\n     task.Close(ctx, testEnv)\n     ch \u003c- struct{}{}\n   }()\n   ...\n }(...)",
+      "range": {
+        "startLine": 228,
+        "startChar": 3,
+        "endLine": 229,
+        "endChar": 19
+      },
+      "revId": "838f6680c49b77d08130752ec58199c2a6656038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5534ee96_0cc76ef1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/vm_task.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-27T09:08:50Z",
+      "side": 1,
+      "message": "filepath.Base is for the base name.",
+      "range": {
+        "startLine": 37,
+        "startChar": 13,
+        "endLine": 37,
+        "endChar": 27
+      },
+      "revId": "838f6680c49b77d08130752ec58199c2a6656038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
