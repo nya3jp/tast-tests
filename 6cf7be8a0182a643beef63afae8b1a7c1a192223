@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6733de30_9724f816",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/files_test_internal.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-06-27T01:58:59Z",
+      "side": 1,
+      "message": "will do in the next a few changes.",
+      "parentUuid": "0131665a_d1706190",
+      "revId": "6cf7be8a0182a643beef63afae8b1a7c1a192223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a788981_bfc6849e",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/files_test_internal.go",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "6cf7be8a0182a643beef63afae8b1a7c1a192223",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcc947de_2d67c0df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/files_test_internal.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-06-27T01:58:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a788981_bfc6849e",
+      "revId": "6cf7be8a0182a643beef63afae8b1a7c1a192223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "6cf7be8a0182a643beef63afae8b1a7c1a192223",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5a21018_3ac467a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-06-27T01:58:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "096f62c8_615503b9",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "6cf7be8a0182a643beef63afae8b1a7c1a192223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
