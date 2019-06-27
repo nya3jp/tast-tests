@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a747466_77868e0a",
+        "filename": "src/chromiumos/tast/local/hwsec/cryptohome_proxy_legacy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-06-27T09:10:23Z",
+      "side": 1,
+      "message": "Can this be just \"if !resultSuccessful\", or is that not preferred? I am just curious since I\u0027m not familiar with golang.",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 174,
+        "endChar": 29
+      },
+      "revId": "e1f2b29e44f9f939f2b0d7bad3a7eb1431850310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f471225_af6e43e1",
+        "filename": "src/chromiumos/tast/local/hwsec/cryptohome_proxy_legacy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-06-27T09:10:23Z",
+      "side": 1,
+      "message": "Should this be []uint8, or should it be converted to []uint8 when passed to the dbus call? I am curious since other methods with input param type ay have uint8 there.",
+      "range": {
+        "startLine": 190,
+        "startChar": 11,
+        "endLine": 190,
+        "endChar": 17
+      },
+      "revId": "e1f2b29e44f9f939f2b0d7bad3a7eb1431850310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bd57f45_d44190e1",
+        "filename": "src/chromiumos/tast/local/hwsec/cryptohome_proxy_legacy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-06-27T09:10:23Z",
+      "side": 1,
+      "message": "Optional: looks like it\u0027s a boolean. Maybe isStatusGood or something like that will be a better name?",
+      "range": {
+        "startLine": 266,
+        "startChar": 11,
+        "endLine": 266,
+        "endChar": 25
+      },
+      "revId": "e1f2b29e44f9f939f2b0d7bad3a7eb1431850310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c34e465_17c392c0",
+        "filename": "src/chromiumos/tast/local/hwsec/cryptohome_proxy_legacy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-06-27T09:10:23Z",
+      "side": 1,
+      "message": "same here: can this be !returnedStatus?",
+      "range": {
+        "startLine": 268,
+        "startChar": 11,
+        "endLine": 268,
+        "endChar": 34
+      },
+      "revId": "e1f2b29e44f9f939f2b0d7bad3a7eb1431850310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
