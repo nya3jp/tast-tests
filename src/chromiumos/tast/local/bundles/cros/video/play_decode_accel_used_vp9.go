@@ -8,9 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
-	"chromiumos/tast/local/bundles/cros/video/lib/pre"
 	"chromiumos/tast/local/bundles/cros/video/play"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -21,7 +19,6 @@ func init() {
 		Contacts:     []string{"deanliao@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWDecodeVP9, "chrome"},
-		Pre:          pre.ChromeVideo(),
 		Data:         []string{"720_vp9.webm", "video.html"},
 	})
 }
@@ -29,6 +26,5 @@ func init() {
 // PlayDecodeAccelUsedVP9 plays 720_vp9.webm with Chrome and
 // checks if video decode accelerator was used.
 func PlayDecodeAccelUsedVP9(ctx context.Context, s *testing.State) {
-	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"720_vp9.webm", play.NormalVideo, play.CheckHistogram)
+	play.TestPlay(ctx, s, "720_vp9.webm", play.NormalVideo, play.CheckHistogram)
 }
