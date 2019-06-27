@@ -15,11 +15,13 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/video/lib/audio"
+	"chromiumos/tast/local/bundles/cros/video/lib/chromeargs"
 	"chromiumos/tast/local/bundles/cros/video/lib/constants"
 	"chromiumos/tast/local/bundles/cros/video/lib/histogram"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -246,12 +248,46 @@ func playSeekVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL st
 	return nil
 }
 
-// TestPlay checks that the video file named filename can be played back.
-// videotype represents a type of a given video. If it is MSEVideo, filename is a name
-// of MPD file.
-// If mode is CheckHistogram, this function also checks if hardware accelerator
-// was used properly.
-func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
+// DeferLogout returns a function that calls "restart ui" command to perform Chrome logout.
+// In case "stop ui" fails, it calls s.Error().
+// It returns a shorter context and a function. The returned context leaves time for "stop ui".
+// Caller should defer the returned function so that "stop ui" is called when it leaves function scope.
+func DeferLogout(ctx context.Context, s *testing.State) (context.Context, func()) {
+	// Reserve 3 seconds for stopping ui.
+	shortCtx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+
+	return shortCtx, func() {
+		defer cancel()
+		ctx, st := timing.Start(ctx, "logout")
+		defer st.End()
+
+		if err := upstart.RestartJob(ctx, "ui"); err != nil {
+			s.Error("Failed to log out: ", err)
+		}
+	}
+}
+
+// TestPlay checks if a video in a Chrome video element can be played.
+// filename is the name of the video file being played.
+// videotype represents a type of a given video. If it is MSEVideo, filename is a name of MPD file.
+// mode represents its test mode. For CheckHistogram, it also checks if a hardware accelerator was used properly.
+// Noted that it starts a new Chrome session for a test and logs out after the test.
+func TestPlay(ctx context.Context, s *testing.State,
+	filename string, videotype VideoType, mode HistogramMode) {
+	// Run the test on a new Chrome and log out after test to obtain an isolated Chrome log.
+	cr, err := chrome.New(ctx, chromeargs.DefaultArgs)
+	if err != nil {
+		s.Fatal("Failed to restart Chrome: ", err)
+	}
+	defer cr.Close(ctx)
+
+	shortCtx, logout := DeferLogout(ctx, s)
+	defer logout()
+	testPlay(shortCtx, s, cr, filename, videotype, mode)
+}
+
+// testPlay is the implementation of TestPlay().
+func testPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	filename string, videotype VideoType, mode HistogramMode) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
@@ -312,9 +348,25 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	}
 }
 
-// TestSeek checks that the video file named filename can be seeked around.
-// It will play the video and seek randomly into it 100 times.
-func TestSeek(ctx context.Context, s *testing.State, cr *chrome.Chrome, filename string) {
+// TestSeek checks if a video in a Chrome video element can be seeked around.
+// It plays the video and seeks randomly into it 100 times.
+// filename is the name of the video file being played.
+// Noted that it starts a new Chrome session for a test and logs out after the test.
+func TestSeek(ctx context.Context, s *testing.State, filename string) {
+	// Run the test on a new Chrome and log out after test to obtain an isolated Chrome log.
+	cr, err := chrome.New(ctx, chromeargs.DefaultArgs)
+	if err != nil {
+		s.Fatal("Failed to restart Chrome: ", err)
+	}
+	defer cr.Close(ctx)
+
+	shortCtx, logout := DeferLogout(ctx, s)
+	defer logout()
+	testSeek(shortCtx, s, cr, filename)
+}
+
+// testSeek is the implementation of TestSeek().
+func testSeek(ctx context.Context, s *testing.State, cr *chrome.Chrome, filename string) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
