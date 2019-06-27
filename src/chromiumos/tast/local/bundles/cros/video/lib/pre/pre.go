@@ -3,11 +3,14 @@
 // found in the LICENSE file.
 
 // Package pre provides Chrome Preconditions shared among video tests.
+// Although right now no test depends on pre package, it is going to be used
+// when we want to promote browser dependent tests to CQ as we need to
+// eliminate unnecessary Chrome restart.
+// TODO(crbug.com/976592): Use ChromeVideo() when promoting tests to CQ.
 package pre
 
 import (
-	"strings"
-
+	"chromiumos/tast/local/bundles/cros/video/lib/chromeargs"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -18,18 +21,4 @@ import (
 // the performance.
 func ChromeVideo() testing.Precondition { return chromeVideoPre }
 
-var chromeVideoPre = chrome.NewPrecondition("video",
-	chrome.ExtraArgs(
-		// Enable verbose log messages for video components.
-		"--vmodule="+strings.Join([]string{
-			"*/media/gpu/*video_decode_accelerator.cc=2",
-			"*/media/gpu/*video_encode_accelerator.cc=2",
-			"*/media/gpu/*jpeg_decode_accelerator.cc=2",
-			"*/media/gpu/*jpeg_encode_accelerator.cc=2",
-			"*/media/gpu/*image_processor.cc=2",
-			"*/media/gpu/*v4l2_device.cc=2"}, ","),
-		// Disable the autoplay policy not to be affected by actions from outside of tests.
-		// cf. https://developers.google.com/web/updates/2017/09/autoplay-policy-changes
-		"--autoplay-policy=no-user-gesture-required",
-		// Avoid the need to grant camera/microphone permissions.
-		"--use-fake-ui-for-media-stream"))
+var chromeVideoPre = chrome.NewPrecondition("video", chromeargs.DefaultArgs)
