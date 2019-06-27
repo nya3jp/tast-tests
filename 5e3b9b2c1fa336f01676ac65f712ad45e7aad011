@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bed4d7fa_9e5e17ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-27T18:47:28Z",
+      "side": 1,
+      "message": "Sorry. Reworded.",
+      "parentUuid": "a58f513c_12e595d5",
+      "revId": "5e3b9b2c1fa336f01676ac65f712ad45e7aad011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4a32476_ef081978",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "6c25633a_38d50568",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-27T18:47:28Z",
+      "side": 1,
+      "message": "Oh, I didn\u0027t know that video.Seek is also flaky. I can add them.",
+      "parentUuid": "c4a32476_ef081978",
+      "revId": "5e3b9b2c1fa336f01676ac65f712ad45e7aad011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a9a1c83_63e214ec",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/pre/pre.go",
         "patchSetId": 1
@@ -47,6 +83,30 @@
       "writtenOn": "2019-06-27T17:45:49Z",
       "side": 1,
       "message": "Instead of exporting this, please use ChromeVmoduleFlag() in log_helper.go.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go?l\u003d18.\n\nAll contents in this file should be related to precondition.",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 24
+      },
+      "revId": "5e3b9b2c1fa336f01676ac65f712ad45e7aad011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3101989c_0a4b8a21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-27T18:47:28Z",
+      "side": 1,
+      "message": "I have to make sure the args I used to restart Chrome instance are exactly the same as the Chrome instance in ChromeVideo() precondition.",
+      "parentUuid": "0a9a1c83_63e214ec",
       "range": {
         "startLine": 24,
         "startChar": 4,
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "38af31ad_5b4cc67c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-27T18:47:28Z",
+      "side": 1,
+      "message": "Because when the flaky reason is found, we can switch back to use TestPlay() to save about 10 seconds for restarting Chrome before test and exiting Chrome after test.",
+      "parentUuid": "9dad460d_c0446b4c",
+      "revId": "5e3b9b2c1fa336f01676ac65f712ad45e7aad011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4fe975b1_80cc7b2c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -90,6 +168,24 @@
       "revId": "5e3b9b2c1fa336f01676ac65f712ad45e7aad011",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "728de7d9_3f32ce2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-27T18:47:28Z",
+      "side": 1,
+      "message": "You are right. It is unrelated to the topic of this CL: getting isolated Chrome log. I\u0027ll separate the timing change to another CL.\n\nI want to collect timing info for histogram snapshotting and verification. By extracting them as separate function make it easier to use the timing pattern:\n  ctx, st :\u003d timing.Start(ctx, \"snapshot_histogram\")\n  defer st.End()\n\nSee https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reporting-timing",
+      "parentUuid": "4fe975b1_80cc7b2c",
+      "revId": "5e3b9b2c1fa336f01676ac65f712ad45e7aad011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "2923f039_d9c7760a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-27T18:47:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6a592c3_23506064",
+      "revId": "5e3b9b2c1fa336f01676ac65f712ad45e7aad011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00575f8c_16872a0e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -124,6 +238,24 @@
       "revId": "5e3b9b2c1fa336f01676ac65f712ad45e7aad011",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd9eb055_c6f3039d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-06-27T18:47:28Z",
+      "side": 1,
+      "message": "Ok, I\u0027ll move timing change to another CL.",
+      "parentUuid": "00575f8c_16872a0e",
+      "revId": "5e3b9b2c1fa336f01676ac65f712ad45e7aad011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
