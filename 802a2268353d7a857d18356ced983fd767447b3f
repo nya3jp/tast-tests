@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9f5b289_2df5be37",
+        "filename": "src/chromiumos/tast/local/cryptohome/client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-27T01:18:32Z",
+      "side": 1,
+      "message": "Optional: IIUC usually protobuf messages are passed around as a pointer, not a struct, to avoid unnecessary shallow copies. It\u0027s okay since authReq is immutable, but you may want to revisit it.",
+      "range": {
+        "startLine": 82,
+        "startChar": 40,
+        "endLine": 82,
+        "endChar": 72
+      },
+      "revId": "802a2268353d7a857d18356ced983fd767447b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
