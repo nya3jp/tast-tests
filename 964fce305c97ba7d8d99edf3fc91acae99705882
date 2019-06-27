@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d255185d_0c70e0c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-27T07:15:59Z",
+      "side": 1,
+      "message": "Please use testing.ContextLog instead. It can be used everywhere to leave logs.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 35
+      },
+      "revId": "964fce305c97ba7d8d99edf3fc91acae99705882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c7e1abe_028f86b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-27T07:15:59Z",
+      "side": 1,
+      "message": "nit: Sorry to be late to point this out, but I generally recommend using %q for strings read from system, especially when it may happen to be an empty string or a string containing white spaces. Otherwise error messages can be tricky to read.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 73
+      },
+      "revId": "964fce305c97ba7d8d99edf3fc91acae99705882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ccf39d3_c638bb57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-27T07:15:59Z",
+      "side": 1,
+      "message": "same here: I recommend %q",
+      "range": {
+        "startLine": 88,
+        "startChar": 37,
+        "endLine": 88,
+        "endChar": 39
+      },
+      "revId": "964fce305c97ba7d8d99edf3fc91acae99705882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
