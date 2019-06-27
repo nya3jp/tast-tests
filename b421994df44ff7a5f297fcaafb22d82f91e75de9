@@ -22,6 +22,30 @@
       "revId": "b421994df44ff7a5f297fcaafb22d82f91e75de9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af04ccc1_1cd7bb6b",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-06-27T18:50:47Z",
+      "side": 1,
+      "message": "Changed to what you wrote. \n\n| IIUC, actually this is what this CL tries to introduce. Before this CL, vmInstance ...\n\nAck. Thanks for taking care of this.",
+      "parentUuid": "adc5c4b9_c0a27740",
+      "range": {
+        "startLine": 327,
+        "startChar": 14,
+        "endLine": 327,
+        "endChar": 58
+      },
+      "revId": "b421994df44ff7a5f297fcaafb22d82f91e75de9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
