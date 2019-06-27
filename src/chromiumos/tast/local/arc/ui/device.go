@@ -25,9 +25,10 @@ const (
 	// StartTimeout is the timeout of NewDevice.
 	StartTimeout = 60 * time.Second
 
-	// host is the hard-coded IP address of Android container and fixed port of
+	// host is the hard-coded IP address of Android and fixed port of
 	// the UI automator server.
-	host = "100.115.92.2:9008"
+	containerHost = "100.115.92.2:9008"
+	vmHost        = "100.115.92.6:9008"
 
 	serverPackage  = "com.github.uiautomator.test"
 	serverActivity = "androidx.test.runner.AndroidJUnitRunner"
@@ -156,6 +157,12 @@ func (d *Device) Close() error {
 // params is a list of parameters to the remote method.
 func (d *Device) call(ctx context.Context, method string, out interface{}, params ...interface{}) error {
 	// Prepare the request.
+	var host string
+	if d.a.Container() {
+		host = containerHost
+	} else {
+		host = vmHost
+	}
 	req, err := http.NewRequest("POST", "http://"+host+"/jsonrpc/0", nil)
 	if err != nil {
 		return errors.Wrapf(err, "%s: failed initializing request", method)

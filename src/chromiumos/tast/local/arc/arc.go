@@ -85,6 +85,16 @@ func (a *ARC) Close() error {
 	return err
 }
 
+// Container returns true if ARC is currently running a container.
+func (a *ARC) Container() bool {
+	return guest == container
+}
+
+// VM returns true if ARC is currently running a VM.
+func (a *ARC) VM() bool {
+	return guest == vm
+}
+
 // New waits for Android to finish booting.
 //
 // ARC must be enabled in advance by passing chrome.ARCEnabled to chrome.New.
