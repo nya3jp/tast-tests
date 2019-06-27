@@ -62,7 +62,7 @@ func TimedScan(ctx context.Context, iface string,
 		args = append(args, "ssid", ssid)
 	}
 	startTime := time.Now()
-	out, err := testexec.CommandContext(ctx, "iw", args...).Output()
+	out, err := iwRun(ctx, args...)
 	scanTime := time.Since(startTime)
 	if err != nil {
 		return nil, errors.Wrap(err, "iw scan failed")
@@ -73,6 +73,58 @@ func TimedScan(ctx context.Context, iface string,
 		return nil, err
 	}
 	return &TimedScanData{scanTime, bssList}, nil
+}
+
+// AddInterface will add an interface to a WiFi PHY.
+func AddInterface(ctx context.Context, phy string, iface string, ifaceType string) error {
+	args := []string{"phy", phy, "interface", "add", iface, "type", ifaceType}
+	_, err := iwRun(ctx, args...)
+	if err != nil {
+		err = errors.Wrapf(err, "failed to add interface %s to %s of type %s",
+			phy, iface, ifaceType)
+	}
+	return err
+}
+
+// RemoveInterface will remove an interface from WiFi.
+func RemoveInterface(ctx context.Context, iface string) error {
+	args := []string{"dev", iface, "del"}
+	_, err := iwRun(ctx, args...)
+	if err != nil {
+		err = errors.Wrapf(err, "failed to remove interface %s", iface)
+	}
+	return err
+}
+
+// DisconnectStation will disconnect station from  specified interface.
+func DisconnectStation(ctx context.Context, iface string) error {
+	args := []string{"dev", iface, "disconnect"}
+	_, err := iwRun(ctx, args...)
+	if err != nil {
+		err = errors.Wrapf(err, "failed to disconnect station %s", iface)
+	}
+	return err
+}
+
+// IBSSJoin will join a WiFi interface to an IBSS.
+func IBSSJoin(ctx context.Context, iface string, ssid string, frequency int) error {
+	args := []string{"dev", iface, "ibss", "join", ssid, strconv.Itoa(frequency)}
+	_, err := iwRun(ctx, args...)
+	if err != nil {
+		err = errors.Wrapf(err, "failed to join %s on interface %s on freq %d",
+			iface, ssid, frequency)
+	}
+	return err
+}
+
+// IBSSLeave will leave an IBSS.
+func IBSSLeave(ctx context.Context, iface string) error {
+	args := []string{"dev", iface, "ibss", "leave"}
+	_, err := iwRun(ctx, args...)
+	if err != nil {
+		err = errors.Wrapf(err, "failed to leave interface %s", iface)
+	}
+	return err
 }
 
 // getAllLinkKeys parses `link` or `station dump` output into key value pairs.
@@ -98,6 +150,17 @@ func determineSecurity(secs []string) string {
 	} else {
 		return securityMixed
 	}
+}
+
+// iwRun runs an iw command and returns a string representation of the output.
+func iwRun(ctx context.Context, arg ...string) (string, error) {
+	res, err := testexec.CommandContext(ctx, "iw", arg...).Output()
+	out := string(res)
+	if err != nil {
+		str := strings.Join(arg, " ")
+		err = errors.Wrap(err, str)
+	}
+	return out, err
 }
 
 // newBSSData is a factory method which constructs a BSSData from individual
