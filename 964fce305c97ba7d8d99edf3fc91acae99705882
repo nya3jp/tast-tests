@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0fc349ed_fdc1d70e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-27T08:24:52Z",
+      "side": 1,
+      "message": "Done.\nCool. No more passing around log func :)",
+      "parentUuid": "d255185d_0c70e0c3",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 35
+      },
+      "revId": "964fce305c97ba7d8d99edf3fc91acae99705882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c7e1abe_028f86b5",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
         "patchSetId": 15
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1967ff92_23648c13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-27T08:24:52Z",
+      "side": 1,
+      "message": "Done\nMakes sense. Thanks.",
+      "parentUuid": "5c7e1abe_028f86b5",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 73
+      },
+      "revId": "964fce305c97ba7d8d99edf3fc91acae99705882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ccf39d3_c638bb57",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
         "patchSetId": 15
@@ -68,6 +116,30 @@
       "revId": "964fce305c97ba7d8d99edf3fc91acae99705882",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfc9e0ec_23b73f51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-06-27T08:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ccf39d3_c638bb57",
+      "range": {
+        "startLine": 88,
+        "startChar": 37,
+        "endLine": 88,
+        "endChar": 39
+      },
+      "revId": "964fce305c97ba7d8d99edf3fc91acae99705882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
