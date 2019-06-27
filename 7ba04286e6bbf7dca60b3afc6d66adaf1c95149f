@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5a14b6f_e73ce8ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-27T01:11:27Z",
+      "side": 1,
+      "message": "Thanks for fixing this :)",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "7ba04286e6bbf7dca60b3afc6d66adaf1c95149f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "00910671_5add6a0b",
+        "filename": "src/chromiumos/tast/local/input/keyboard_top_row_layout.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-27T01:11:27Z",
+      "side": 1,
+      "message": "In this case we have a fixed set of fields, so I recommend defining a struct type for safety:\n\n type TopRowLayout struct {\n   BrowserBack string\n   BrowserForward string\n   ...\n }",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 2
+      },
+      "revId": "7ba04286e6bbf7dca60b3afc6d66adaf1c95149f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80826a1c_a9254177",
+        "filename": "src/chromiumos/tast/local/input/keyboard_top_row_layout.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-27T01:11:27Z",
+      "side": 1,
+      "message": "huge nit: bytes.NewReader(r) is shorter.",
+      "range": {
+        "startLine": 82,
+        "startChar": 24,
+        "endLine": 82,
+        "endChar": 52
+      },
+      "revId": "7ba04286e6bbf7dca60b3afc6d66adaf1c95149f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
