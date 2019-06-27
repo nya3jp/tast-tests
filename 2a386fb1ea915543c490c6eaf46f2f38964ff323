@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3beb887f_7b546d18",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-06-27T00:25:13Z",
+      "side": 1,
+      "message": "Should have the license blurb at the top of this file.",
+      "revId": "2a386fb1ea915543c490c6eaf46f2f38964ff323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2edd0a94_768f8f51",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-06-27T00:25:13Z",
+      "side": 1,
+      "message": "For go, any exported (capitalized) types or functions should get comments since those are used to generate docs.\n\nIt\u0027s optional but still good practice to document private types/functions as well.\n\nhttps://blog.golang.org/godoc-documenting-go-code",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 16
+      },
+      "revId": "2a386fb1ea915543c490c6eaf46f2f38964ff323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e31f842a_63852855",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-06-27T00:25:13Z",
+      "side": 1,
+      "message": "We should add a TODO with a bug number here for having the data file tarball ingested by the precondition.",
+      "range": {
+        "startLine": 63,
+        "startChar": 71,
+        "endLine": 63,
+        "endChar": 89
+      },
+      "revId": "2a386fb1ea915543c490c6eaf46f2f38964ff323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
