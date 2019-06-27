@@ -7,9 +7,7 @@ package video
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/video/lib/pre"
 	"chromiumos/tast/local/bundles/cros/video/play"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -20,13 +18,11 @@ func init() {
 		Contacts:     []string{"deanliao@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          pre.ChromeVideo(),
 		Data:         []string{"720_vp9.webm", "video.html"},
 	})
 }
 
 // PlayVP9 plays 720_vp9.webm with Chrome.
 func PlayVP9(ctx context.Context, s *testing.State) {
-	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"720_vp9.webm", play.NormalVideo, play.NoCheckHistogram)
+	play.TestPlay(ctx, s, "720_vp9.webm", play.NormalVideo, play.NoCheckHistogram)
 }
