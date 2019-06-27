@@ -15,11 +15,13 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/video/lib/audio"
+	"chromiumos/tast/local/bundles/cros/video/lib/chromeargs"
 	"chromiumos/tast/local/bundles/cros/video/lib/constants"
 	"chromiumos/tast/local/bundles/cros/video/lib/histogram"
 	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -246,12 +248,35 @@ func playSeekVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL st
 	return nil
 }
 
-// TestPlay checks that the video file named filename can be played back.
-// videotype represents a type of a given video. If it is MSEVideo, filename is a name
-// of MPD file.
-// If mode is CheckHistogram, this function also checks if hardware accelerator
-// was used properly.
-func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
+// TestPlay checks if a video file can be played using Chrome video tag.
+// filename is the name of the video file being played.
+// videotype represents a type of a given video. If it is MSEVideo, filename is a name of MPD file.
+// mode represents its test mode. For CheckHistogram, it also checks if a hardware accelerator was used properly.
+// Noted that it starts a new Chrome session for a test and logs out after the test.
+func TestPlay(ctx context.Context, s *testing.State,
+	filename string, videotype VideoType, mode HistogramMode) {
+	// Run the test on a new Chrome and log out after test to obtain an isolated Chrome log.
+	cr, err := chrome.New(ctx, chromeargs.DefaultArgs)
+	if err != nil {
+		s.Fatal("Failed to restart Chrome: ", err)
+	}
+	defer cr.Close(ctx)
+	defer func() {
+		ctx, st := timing.Start(ctx, "stop ui")
+		defer st.End()
+		if err := upstart.StopJob(ctx, "ui"); err != nil {
+			s.Error("Failed to stop ui: ", err)
+		}
+	}()
+
+	// Reserve 3 seconds for stopping ui.
+	shortCtx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+	defer cancel()
+	testPlay(shortCtx, s, cr, filename, videotype, mode)
+}
+
+// testPlay is the implementation of TestPlay().
+func testPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	filename string, videotype VideoType, mode HistogramMode) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
