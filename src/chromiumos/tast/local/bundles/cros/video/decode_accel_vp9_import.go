@@ -19,7 +19,6 @@ func init() {
 		Func:     DecodeAccelVP9Import,
 		Desc:     "Run Chrome video_decode_accelerator_unittest with a VP9 video",
 		Contacts: []string{"acourbot@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:     []string{"informational"},
 		// VDA unittest cannot run with IMPORT mode on devices where ARC++ is disabled. (cf. crbug.com/881729)
 		SoftwareDeps: []string{"chrome", "android", caps.HWDecodeVP9},
 		Data:         decode.DataFiles(videotype.VP9Prof),
