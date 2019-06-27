@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6c954d0_0a4b17f2",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-27T15:41:07Z",
+      "side": 1,
+      "message": "To be honest, I\u0027m a bit worried about this may kill unexpected process.\nHow about slightly conservative approach? E.g.;\n\nif filepath.Base(cmd[0]) \u003d\u003d \"autotestd\" {\n  return true\n}\n\nif filepath.Base(cmd[0]) \u003d\u003d \"python2.7\" {\n  for _, s :\u003d range cmd[1:] {\n    if strings.HasPrefix(s, \"-\") {\n      // Skip flags.\n      continue\n    }\n    return filepath.Base(s) \u003d\u003d \"autotestd\"\n  }\n}\n\nreturn false\n\nYou may be able to drop \"skip flags\" part depending on the situation.",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 2
+      },
+      "revId": "90de9702cdbd186ba54a950a9947461c1de422fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
