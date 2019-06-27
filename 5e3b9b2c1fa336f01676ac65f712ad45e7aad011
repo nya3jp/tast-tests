@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a58f513c_12e595d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-27T17:45:49Z",
+      "side": 1,
+      "message": "It\u0027s not easy for me to understand the purpose of this CL from this commit message without reading the code.\n\nHow about changing this to \"Don\u0027t use precondition in video.Play* tests\" or something like this?",
+      "revId": "5e3b9b2c1fa336f01676ac65f712ad45e7aad011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4a32476_ef081978",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-27T17:45:49Z",
+      "side": 1,
+      "message": "Why don\u0027t we do same change for video.Seek?",
+      "revId": "5e3b9b2c1fa336f01676ac65f712ad45e7aad011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a9a1c83_63e214ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-27T17:45:49Z",
+      "side": 1,
+      "message": "Instead of exporting this, please use ChromeVmoduleFlag() in log_helper.go.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/lib/logging/log_helper.go?l\u003d18.\n\nAll contents in this file should be related to precondition.",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 24
+      },
+      "revId": "5e3b9b2c1fa336f01676ac65f712ad45e7aad011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dad460d_c0446b4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-27T17:45:49Z",
+      "side": 1,
+      "message": "Why don\u0027t you modify TestPlay() itself?\nThough TestPlay() is still used by video.Play(VP8|VP9|H264), I couldn\u0027t find a reason why this CL doesn\u0027t change these tests.",
+      "revId": "5e3b9b2c1fa336f01676ac65f712ad45e7aad011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fe975b1_80cc7b2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-27T17:45:49Z",
+      "side": 1,
+      "message": "Why should we extract this part as a separate function? Since this function is used only once, I think it\u0027s okay to inline this.\n\nIf it\u0027s still good to have this function, how about splitting to another CL for refactoring?",
+      "revId": "5e3b9b2c1fa336f01676ac65f712ad45e7aad011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6a592c3_23506064",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-27T17:45:49Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "5e3b9b2c1fa336f01676ac65f712ad45e7aad011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00575f8c_16872a0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-06-27T17:45:49Z",
+      "side": 1,
+      "message": "Is this related to the main purpose of this CL? How about creating a separated CL if this is actually needed?",
+      "revId": "5e3b9b2c1fa336f01676ac65f712ad45e7aad011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
