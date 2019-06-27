@@ -285,9 +285,45 @@ func TestPlay(ctx context.Context, s *testing.State,
 
 }
 
+func snapshotHistogram(ctx context.Context, cr *chrome.Chrome) (initHistogram, errorHistogram *metrics.Histogram, err error) {
+	ctx, st := timing.Start(ctx, "snapshot_histogram")
+	defer st.End()
+	initHistogram, err = metrics.GetHistogram(ctx, cr, constants.MediaGVDInitStatus)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to get MediaGVDInitStatus")
+	}
+	errorHistogram, err = metrics.GetHistogram(ctx, cr, constants.MediaGVDError)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to get MediaGVDError")
+
+	}
+	return
+}
+
+func expectHistogram(ctx context.Context, cr *chrome.Chrome, initHistogram, errorHistogram *metrics.Histogram) error {
+	ctx, st := timing.Start(ctx, "expect_histogram")
+	defer st.End()
+	// Check for MediaGVDInitStatus
+	wasUsed, err := histogram.WasHWAccelUsed(ctx, cr, initHistogram, constants.MediaGVDInitStatus, int64(constants.MediaGVDInitSuccess))
+	if err != nil {
+		return errors.Wrap(err, "failed to get MediaGVDInitStatus")
+	} else if !wasUsed {
+		return errors.New("hardware acceleration was not used for playing a video")
+	}
+
+	// Check for MediaGVDError
+	if histogramDiff, err := metrics.WaitForHistogramUpdate(ctx, cr, constants.MediaGVDError, errorHistogram, time.Second); err == nil {
+		return errors.Errorf("GPU video decode error occurred while playing a video: %v", histogramDiff)
+	}
+	return nil
+}
+
 // testPlay is the implementation of TestPlay().
 func testPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	filename string, videotype VideoType, mode HistogramMode) {
+	ctx, st := timing.Start(ctx, "test_play")
+	defer st.End()
+
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -306,15 +342,9 @@ func testPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	defer server.Close()
 
 	if mode == CheckHistogram {
-		var err error
-		initHistogram, err = metrics.GetHistogram(ctx, cr, constants.MediaGVDInitStatus)
+		initHistogram, errorHistogram, err = snapshotHistogram(ctx, cr)
 		if err != nil {
-			s.Fatal("Failed to get MediaGVDInitStatus histogram: ", err)
-		}
-
-		errorHistogram, err = metrics.GetHistogram(ctx, cr, constants.MediaGVDError)
-		if err != nil {
-			s.Fatal("Failed to get MediaGVDError histogram: ", err)
+			s.Fatal("Failed to snapshot histogram: ", err)
 		}
 	}
 
@@ -331,18 +361,8 @@ func testPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	}
 
 	if mode == CheckHistogram {
-		// Check for MediaGVDInitStatus
-		wasUsed, err := histogram.WasHWAccelUsed(ctx, cr, initHistogram, constants.MediaGVDInitStatus, int64(constants.MediaGVDInitSuccess))
-		if err != nil {
-			s.Fatal("Failed to check for hardware acceleration: ", err)
-		} else if !wasUsed {
-			s.Fatal("Hardware acceleration was not used for playing a video")
-		}
-
-		// Check for MediaGVDError
-		if histogramDiff, err := metrics.WaitForHistogramUpdate(ctx, cr, constants.MediaGVDError,
-			errorHistogram, 5*time.Second); err == nil {
-			s.Fatal("GPU video decode error occurred while playing a video: ", histogramDiff)
+		if err := expectHistogram(ctx, cr, initHistogram, errorHistogram); err != nil {
+			s.Fatal("Failed to check histogram: ", err)
 		}
 	}
 }
