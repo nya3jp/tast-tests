@@ -19,7 +19,6 @@ func init() {
 		Func:         DecodeAccelVP9,
 		Desc:         "Run Chrome video_decode_accelerator_unittest with a VP9 video",
 		Contacts:     []string{"acourbot@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", caps.HWDecodeVP9},
 		Data:         decode.DataFiles(videotype.VP9Prof),
 		Timeout:      4 * time.Minute,
