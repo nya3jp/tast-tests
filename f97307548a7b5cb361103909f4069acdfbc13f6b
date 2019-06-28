@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "53659c30_c06094e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-06-28T08:19:27Z",
+      "side": 1,
+      "message": "Yes, I\u0027ve confirmed.",
+      "parentUuid": "c0aa3e7c_e73188a3",
+      "revId": "f97307548a7b5cb361103909f4069acdfbc13f6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "122e0980_6f702234",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "f97307548a7b5cb361103909f4069acdfbc13f6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0840f112_15ff5298",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-06-28T08:19:27Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "122e0980_6f702234",
+      "range": {
+        "startLine": 109,
+        "startChar": 31,
+        "endLine": 109,
+        "endChar": 39
+      },
+      "revId": "f97307548a7b5cb361103909f4069acdfbc13f6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
