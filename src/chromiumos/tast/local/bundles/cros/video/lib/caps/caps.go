@@ -47,6 +47,8 @@ const (
 	HWEncodeVP9    = Prefix + "hw_enc_vp9_1080_30"
 	HWEncodeVP9_4K = Prefix + "hw_enc_vp9_2160_30"
 
+	HWEncodeNV12 = Prefix + "hw_enc_nv12"
+
 	// JPEG Encoding
 	HWEncodeJPEG = Prefix + "hw_enc_jpeg"
 

@@ -22,7 +22,7 @@ func init() {
 		Attr:     []string{"informational"},
 		// Although the ability to android is unrelated to this test ability, we would like to run this test on ARC++ enabled boards.
 		// TODO(hiroh): Remove "android" deps once Chrome VEAs and Chrome OS supports DMABUF-backed video frame on all boards.
-		SoftwareDeps: []string{"chrome", "android", caps.HWEncodeVP8},
+		SoftwareDeps: []string{"chrome", "android", caps.HWEncodeVP8, caps.HWEncodeNV12},
 		Data:         []string{encode.Bear192P.Name},
 		Timeout:      4 * time.Minute,
 	})
