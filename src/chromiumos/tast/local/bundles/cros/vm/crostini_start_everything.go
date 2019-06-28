@@ -25,7 +25,7 @@ func init() {
 		Contacts:     []string{"jkardatzke@chromium.org", "smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"informational"},
 		Data:         []string{"crostini_start_everything_cros-tast-tests-deb.deb"},
-		Pre:          vm.CrostiniStarted(),
+		Pre:          vm.CrostiniStartedByDownload(),
 		Timeout:      10 * time.Minute,
 		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
