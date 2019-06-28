@@ -27,10 +27,12 @@ func init() {
 }
 
 func EncodeAccelVP82160PI420(ctx context.Context, s *testing.State) {
-	encode.RunAllAccelVideoTests(ctx, s, encode.TestOptions{
+	encode.RunAllAccelVideoTestsWithArgs(ctx, s, encode.TestOptions{
 		Profile:     videotype.VP8Prof,
 		Params:      encode.Crowd2160P,
 		PixelFormat: videotype.I420,
-		InputMode:   encode.SharedMemory,
-	})
+		InputMode:   encode.SharedMemory},
+		"",
+		// MultipleEncoders needs about 90000 milliseconds. Set the timeout to 2x.
+		[]string{"--test-launcher-timeout=180000"})
 }
