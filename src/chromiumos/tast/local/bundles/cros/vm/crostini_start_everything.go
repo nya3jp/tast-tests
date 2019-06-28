@@ -25,14 +25,14 @@ func init() {
 		Contacts:     []string{"jkardatzke@chromium.org", "smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"informational"},
 		Data:         []string{"crostini_start_everything_cros-tast-tests-deb.deb"},
-		Pre:          vm.CrostiniStarted(),
+		Pre:          vm.CrostiniStartedByDownload(),
 		Timeout:      10 * time.Minute,
 		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
 }
 
 func CrostiniStartEverything(ctx context.Context, s *testing.State) {
-	pre := s.PreValue().(vm.CrostiniPre)
+	pre := s.PreValue().(vm.ContainerPre)
 	cr := pre.Chrome
 	tconn := pre.TestAPIConn
 	cont := pre.Container
