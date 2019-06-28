@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "597b700d_eb35b29a",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-06-28T22:11:36Z",
+      "side": 1,
+      "message": "Sounds good, I changed the implementation to read directly from stdout one byte at a time.",
+      "parentUuid": "bb56da24_15afc367",
+      "revId": "55b2b704029217dcebc84d5ac25ee2d540f523e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a54080_70290781",
         "filename": "src/chromiumos/tast/local/vm/crosvm.go",
         "patchSetId": 4
@@ -120,6 +138,24 @@
       "side": 1,
       "message": "Could we use a goroutine here?  Something like:\n\n    bch :\u003d make(chan byte)\n    go func() {\n        b, err :\u003d r.ReadByte()\n        if err !\u003d nil {\n            errch \u003c- err\n        } else {\n            bch \u003c- b\n        }\n    }()\n\n    select {\n    case \u003c-ctx.Done(): \n        return\n    case b :\u003d \u003c-bch: \n        if b \u003d\u003d \u0027\\n\u0027 {\n        ...\n\n\nIt seems like any problem in go can be solved by adding an extra layer of indirection through goroutines ;-p",
       "parentUuid": "0c8263d1_83d48688",
+      "revId": "55b2b704029217dcebc84d5ac25ee2d540f523e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba5a708f_6bc43240",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-06-28T22:11:36Z",
+      "side": 1,
+      "message": "@Chirantan, I think unfortunately that would just cause the nested goroutine to leak instead. The ReadByte call will block until the underlying reader (vm.stdout) is destroyed.",
+      "parentUuid": "57c6cf0a_9fe79679",
       "revId": "55b2b704029217dcebc84d5ac25ee2d540f523e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

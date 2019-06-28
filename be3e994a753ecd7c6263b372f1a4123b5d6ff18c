@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b59d778d_abbd0b02",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-06-28T22:11:36Z",
+      "side": 1,
+      "message": "After tons of digging, I found that we can set a read deadline, if the underlying structure is a *os.File from a pipe. This is what is is created internally from the vm.cmd.StdoutPipe() call, but that only gives us an interface to a io.ReadCloser. Doing this manually gives us access to the lower level structure to set the deadline.",
+      "revId": "be3e994a753ecd7c6263b372f1a4123b5d6ff18c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
