@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31291ee4_c84936ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-06-28T00:29:27Z",
+      "side": 1,
+      "message": "nit: Maybe save the vm.CrostiniPre variable somewhere so you only need one type assertion.",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 48
+      },
+      "revId": "c1cad8353ca1a5a42ce324d92c8be30386d89e97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
