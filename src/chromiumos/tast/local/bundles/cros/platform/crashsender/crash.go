@@ -1,0 +1,364 @@
+// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package crashsender
+
+import (
+	"context"
+	"fmt"
+	"io/ioutil"
+	"os"
+	"path/filepath"
+	"regexp"
+	"strings"
+	"time"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/fsutil"
+	"chromiumos/tast/local/sysutil"
+	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/testing"
+)
+
+// TODO(chavey): there are some dup with udev_crash.go, can extract and combine.
+// TODO(chavey): it would be best to have a crashtest package that can be
+// used as a lib for all the crash tests. see what makes more sense.
+// TODO(chavey): If using a different package, some of those maybe needed by
+// crash tests outside of this package.
+const (
+	consentFile             = "/home/chronos/Consent To Send Stats"
+	corePattern             = "/proc/sys/kernel/core_pattern"
+	crashReporterPath       = "/sbin/crash_reporter"
+	crashRunStateDir        = "/run/crash_reporter"
+	crashSenderPath         = "/sbin/crash_sender"
+	crashSenderRateDir      = "/var/lib/crash_sender"
+	crashTestInProgressFile = crashRunStateDir + "/crash-test-in-progress"
+	fakeTestBasename        = "fake.1.2.3"
+	fallbackUserCrashDir    = "/home/chronos/crash"
+	mockCrashSending        = crashRunStateDir + "/mock-crash-sending"
+	ownerKeyFile            = whiteListDir + "/owner.key"
+	pauseFile               = "/var/lib/crash_sender_paused"
+	signedPolicyFile        = whiteListDir + "/policy"
+	systemCrashDir          = "/var/spool/crash"
+	userCrashDirs           = "/home/chronos/u-*/crash"
+	whiteListDir            = "/var/lib/whitelist"
+)
+
+type crashRequest struct {
+	// Mock a successful send if true.
+	sendSuccess bool
+	// Has the user consented to sending create reports.
+	reportsEnabled bool
+	// Report to use for crash, if nil create one.
+	report string
+	// expect the crash_sender program to fail.
+	shouldFail bool
+	// crash_sender should ignore the pause file existence.
+	ignorePause bool
+	// mock files
+	mockOffPolicyFile string
+	mockOnPolicyFile  string
+	mockKeyFile       string
+}
+
+func removeIfExist(name string, all bool) error {
+	if all {
+		if err := os.RemoveAll(name); err != nil {
+			return err
+		}
+		return nil
+	}
+	if err := os.Remove(name); err != nil && !os.IsNotExist(err) {
+		return err
+	}
+	return nil
+}
+
+// consentEnable sets consent to send crash reports.
+// This creates the _CONSENT_FILE to control whether
+// crash_sender will consider that it has consent to send crash reports.
+// It also copies a policy blob with the proper policy setting.
+func consentEnable(ctx context.Context, mockPolicyFile string, mockKeyFile string) error {
+	// create policy and own key files to enable metric/consent
+	if info, err := os.Stat(whiteListDir); err == nil && info.IsDir() {
+		src := mockPolicyFile
+		if err := fsutil.CopyFile(src, signedPolicyFile); err != nil {
+			return errors.Wrapf(err, "failed copying %s to %s", src, signedPolicyFile)
+		}
+		src = mockKeyFile
+		if err := fsutil.CopyFile(src, ownerKeyFile); err != nil {
+			return errors.Wrapf(err, "failed to copying %s to %s", src, ownerKeyFile)
+		}
+	}
+	// Create deprecated consent file.  This is created *after* the
+	// policy file in order to avoid a race condition where chrome
+	// might remove the consent file if the policy's not set yet.
+	// We create it as a temp file first in order to make the creation
+	// of the consent file, owned by chronos, atomic.
+	// See crosbug.com/18413.
+	tempFile := fmt.Sprintf("%s.tmp", consentFile)
+	if err := ioutil.WriteFile(tempFile, []byte("test-consent"), 0644); err != nil {
+		return errors.Wrap(err, "failed setting test-content")
+	}
+
+	if err := os.Chown(tempFile, int(sysutil.ChronosUID), int(sysutil.ChronosGID)); err != nil {
+		return errors.Wrapf(err, "failed changing %s ownership", tempFile)
+	}
+	if err := fsutil.MoveFile(tempFile, consentFile); err != nil {
+		return errors.Wrapf(err, "failed moving %s", tempFile)
+	}
+	return nil
+}
+
+// consentDisable unsets consent to send crash reports.
+// Deletes the _CONSENT_FILE to control whether
+// It also copies a policy blob with the proper policy setting.
+func consentDisable(ctx context.Context, mockPolicyFile string, mockKeyFile string) error {
+	if info, err := os.Stat(whiteListDir); err == nil && info.IsDir() {
+		src := mockPolicyFile
+		if err := fsutil.CopyFile(src, signedPolicyFile); err != nil {
+			return errors.Wrapf(err, "failed to create %s", signedPolicyFile)
+		}
+		src = mockKeyFile
+		if err := fsutil.CopyFile(src, ownerKeyFile); err != nil {
+			return errors.Wrapf(err, "failed to create %s", ownerKeyFile)
+		}
+	}
+	if err := os.Remove(consentFile); err != nil {
+		return errors.Wrapf(err, "failed removing %s", consentFile)
+	}
+
+	return nil
+}
+
+// callSenderOneCrash calls the crash sender script to mock upload one crash.
+func callSenderOneCrash(ctx context.Context, req *crashRequest) error {
+	var err error
+	if req.report, err = prepareSenderOneCrash(ctx, req); err != nil {
+		return errors.Wrap(err, "failed to prepare sender one crash")
+	}
+
+	var args []string
+	if req.ignorePause {
+		args = append(args, "--ignore_pause_file")
+	}
+	if err = testexec.CommandContext(ctx, crashSenderPath, args...).Run(); err != nil {
+		return errors.Wrap(err, "failed calling crash_sender")
+	}
+
+	if err = waitForSenderCompletion(ctx); err != nil {
+		return errors.Wrap(err, "failed to get sender crash completion")
+	}
+
+	return nil
+}
+
+// prepareSenderOneCrash creates metadata for a fake crash report.
+// Enables mocking of the crash sender, then creates a fake crash report for testing purposes.
+func prepareSenderOneCrash(ctx context.Context, req *crashRequest) (string, error) {
+	if err := enableCrashSenderMock(req.sendSuccess); err != nil {
+		return "", errors.Wrap(err, "failed enabling crash_sender mock")
+	}
+
+	if req.reportsEnabled {
+		if err := consentEnable(ctx, req.mockKeyFile, req.mockOnPolicyFile); err != nil {
+			return "", errors.Wrap(err, "failed enabling consent")
+		}
+	} else {
+		if err := consentDisable(ctx, req.mockKeyFile, req.mockOffPolicyFile); err != nil {
+			return "", errors.Wrap(err, "failed disabling consent")
+		}
+	}
+
+	if len(req.report) == 0 {
+		// Use the same file format as crash does normally:
+		// <basename>.#.#.#.meta
+		payload, err := writeCrashDirEntry(fmt.Sprintf("%s.dmp", fakeTestBasename), "")
+		if err != nil {
+			return "", errors.Wrapf(err, "failed writing fake test crash dmp file %s", fakeTestBasename)
+		}
+		if req.report, err = writeFakeMeta(fmt.Sprintf("%s.meta", fakeTestBasename), "fake", payload, true); err != nil {
+			return "", errors.Wrapf(err, "failed writing fake test crash meta file %", fakeTestBasename)
+		}
+	}
+	return req.report, nil
+}
+
+// logReaderFind looks at the system logs to deternine if crash_sender has ran.
+func logReaderFind(ctx context.Context) error {
+	return nil
+}
+
+// waitForSenderCompletion waits for crash_sender to complete.
+// Wait for no crash_sender's last message to be placed in the
+// system log before continuing and for the process to finish.
+// Otherwise we might get only part of the output.
+func waitForSenderCompletion(ctx context.Context) error {
+	if err := testing.Poll(ctx, logReaderFind, &testing.PollOptions{Timeout: 60 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed polling for crash sender completion")
+	}
+	return nil
+}
+
+func writeCrashDirEntry(filename string, content string) (string, error) {
+	if err := os.MkdirAll(systemCrashDir, 0644); err != nil {
+		return "", errors.Wrapf(err, "failed to create %s", systemCrashDir)
+	}
+	entry := filepath.Join(systemCrashDir, filename)
+	if err := ioutil.WriteFile(entry, []byte(content), 0644); err != nil {
+		return "", errors.Wrap(err, "failed writing crash directory entry")
+	}
+	return entry, nil
+}
+
+// writeFakeMeta creates a fake crash report.
+func writeFakeMeta(filename string, execName string, payload string, complete bool) (string, error) {
+	lines := []string{
+		"exec_name=" + execName,
+		"ver=my_ver",
+		"payload=" + payload,
+	}
+	if complete {
+		lines = append(lines, "done=1")
+	}
+	content := strings.Join(lines, "\n") + "\n"
+	return writeCrashDirEntry(filename, content)
+}
+
+// initializeCrashReporter starts up the crash reporter.
+// If call while test are in progress, set updateProgress to true.
+// While test are running, set disableCrashDump = true to ensure that crashy
+// systems do not make the test flaky.
+func initializeCrashReporter(ctx context.Context, disableCrashDump bool) error {
+	if disableCrashDump {
+		if err := crashTestInProgress(false); err != nil {
+			return err
+		}
+	}
+	if _, err := testexec.CommandContext(ctx, crashReporterPath, "--init").Output(testexec.DumpLogOnError); err == nil && disableCrashDump {
+		if err := crashTestInProgress(true); err != nil {
+			return err
+		}
+		// set filtering to disable crash reporting
+		if err := crashFiltering("none"); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+// killCrashSender kills the the crash_sender process if running.
+func killCrashSender(ctx context.Context) error {
+	if err := testexec.CommandContext(ctx, "pgrep", "-f", "crash_sender").Run(); err != nil {
+		return nil
+	}
+	return testexec.CommandContext(ctx, "pkill", "-9", "-f", "crash_sender").Run()
+}
+
+// readCrashFilter read the current content of the core_pattern file.
+func readCrashFilter() (string, error) {
+	out, err := ioutil.ReadFile(corePattern)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed reading core pattern file %s", corePattern)
+	}
+	return string(out), nil
+}
+
+// writeCrashFilter writes the pattern to the core_pattern file.
+func writeCrashFilter(pattern string) error {
+	if err := ioutil.WriteFile(corePattern, []byte(pattern), 0644); err != nil {
+		return errors.Wrapf(err, "failed writing core pattern file %s", corePattern)
+	}
+	return nil
+}
+
+// crashFiltering adds a --filter_in argument to the kernel core dump cmdline.
+func crashFiltering(name string) error {
+	if len(name) == 0 {
+		return nil
+	}
+
+	filterIn := fmt.Sprintf("--filter_in=%s", name)
+
+	out, err := readCrashFilter()
+	if err != nil {
+		return err
+	}
+	pattern := string(out)
+	if !strings.HasPrefix(pattern, "|/sbin/crash_reporter") {
+		return errors.Errorf("%s has invalid content %s", corePattern, pattern)
+	}
+	re := regexp.MustCompile(`--filter_in=\S*\s*`)
+	pattern = fmt.Sprintf(string(re.ReplaceAll([]byte(pattern), []byte("$1"))), filterIn)
+
+	return writeCrashFilter(pattern)
+}
+
+func crashTestInProgress(enable bool) error {
+	if enable {
+		if err := ioutil.WriteFile(crashTestInProgressFile, []byte("in-progress"), 0644); err != nil {
+			return errors.Wrapf(err, "failed creating crash test in progress file %s", crashTestInProgressFile)
+		}
+	} else {
+		return removeIfExist(crashTestInProgressFile, false)
+	}
+	return nil
+}
+
+func resetRateLimiting() error {
+	return removeIfExist(crashSenderRateDir, true)
+}
+
+// clearSpooledCrashes clears system and user crash directories.
+// This removes all crash reports which are waiting to be sent.
+func clearSpooledCrashes() error {
+	matches, err := filepath.Glob(userCrashDirs)
+	if err != nil {
+		return errors.Wrapf(err, "failed globing user crash dirs %s", userCrashDirs)
+	}
+	for _, match := range matches {
+		if err = removeIfExist(match, true); err != nil {
+			continue
+		}
+	}
+	if err := removeIfExist(fallbackUserCrashDir, true); err != nil {
+		return errors.Wrapf(err, "failed cleaning fallback user crash dir %s", fallbackUserCrashDir)
+	}
+	return nil
+}
+
+// enableCrashSender enables the system crash_sender.
+// This is done by creating _PAUSE_FILE.
+func enableCrashSender() error {
+	if err := removeIfExist(pauseFile, false); err != nil {
+		return errors.Wrapf(err, "failed removing pause file %s", pauseFile)
+	}
+	return nil
+}
+
+// disableCrashSender disables the system crash_sender.
+// This is done by removing _PAUSE_FILE.
+func disableCrashSender() error {
+	if err := ioutil.WriteFile(pauseFile, []byte(""), 0644); err != nil {
+		return errors.Wrapf(err, "failed touching pause file %s", pauseFile)
+	}
+	return nil
+}
+
+// enableCrashSenderMock enables mocking of crash_sender.
+// Add the _MOCK_CRASH_SENDING file to enable mocking.
+func enableCrashSenderMock(success bool) error {
+	var data = []byte("")
+	if !success {
+		data = []byte("1")
+	}
+	return ioutil.WriteFile(mockCrashSending, data, 0644)
+}
+
+// disableCrashSenderMock disables mocking of crash_sender.
+// Remove the _MOCK_CRASH_SENDING file to disable mocking.
+func disableCrashSenderMock() error {
+	return removeIfExist(mockCrashSending, false)
+}
