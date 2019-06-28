@@ -13,11 +13,17 @@ import (
 	"math"
 	"net"
 	"os"
+	"sort"
+	"strconv"
+	"strings"
+
+	"path/filepath"
 	"time"
 
 	"github.com/shirou/gopsutil/mem"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
@@ -162,6 +168,7 @@ func getActiveTabID(ctx context.Context, cr *chrome.Chrome) (int, error) {
 	if err := evalPromiseBodyInBrowser(ctx, cr, promiseBody, &tabID); err != nil {
 		return 0, errors.Wrap(err, "cannot get tabID")
 	}
+
 	return tabID, nil
 }
 
@@ -520,7 +527,7 @@ func availableTCPPorts(count int) ([]int, error) {
 //
 // If recordPageSet is true, the test records a page set instead of replaying
 // the pre-recorded set.
-func initBrowser(ctx context.Context, p *RunParameters) (*chrome.Chrome, *testexec.Cmd, error) {
+func initBrowser(ctx context.Context, p *RunParameters, extDir string) (*chrome.Chrome, *testexec.Cmd, error) {
 	if p.UseLiveSites {
 		testing.ContextLog(ctx, "Starting Chrome with live sites")
 		cr, err := chrome.New(ctx)
@@ -594,7 +601,9 @@ func initBrowser(ctx context.Context, p *RunParameters) (*chrome.Chrome, *testex
 		// default.
 		args = append(args, "--ash-host-window-bounds=3840x2048", "--screen-config=3840x2048/i")
 	}
-	tentativeCr, err = chrome.New(ctx, chrome.ExtraArgs(args...))
+
+	args = append(args, "--vmodule=memory_kills_monitor=2")
+	tentativeCr, err = chrome.New(ctx, chrome.ExtraArgs(args...), chrome.UnpackedExtension(extDir), chrome.ARCEnabled())
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "cannot start Chrome")
 	}
@@ -726,6 +735,7 @@ func runTabSwitches(ctx context.Context, cr *chrome.Chrome, rset *rendererSet,
 	if _, err := cycleTabs(ctx, cr, tabIDs, rset, time.Second, false); err != nil {
 		return errors.Wrap(err, "cannot warm-up initial set of tabs")
 	}
+
 	// Cycle through tabs a few times, still without wiggling, and collect
 	// the switch times.
 	var switchTimes []time.Duration
@@ -803,6 +813,23 @@ type RunParameters struct {
 // until the first tab discard occurs.  It takes various measurements as the
 // pressure increases (phase 1) and afterwards (phase 2).
 func Run(ctx context.Context, s *testing.State, p *RunParameters) {
+	s.Log("Copying extension to temp directory")
+	extDir, err := ioutil.TempDir("", "tast.arc.LowMemoryKillerExtension")
+	if err != nil {
+		s.Fatal("Failed to create temp dir: ", err)
+	}
+	defer os.RemoveAll(extDir)
+	if err := fsutil.CopyFile(s.DataPath("low_memory_killer_manifest.json"), filepath.Join(extDir, "manifest.json")); err != nil {
+		s.Fatal("Failed to copy extension manifest: ", err)
+	}
+	if err := fsutil.CopyFile(s.DataPath("low_memory_killer_background.js"), filepath.Join(extDir, "background.js")); err != nil {
+		s.Fatal("Failed to copy extension background.js: ", err)
+	}
+	extID, err := chrome.ComputeExtensionID(extDir)
+	if err != nil {
+		s.Fatalf("Failed to compute extension ID for %v: %v", extDir, err)
+	}
+
 	const (
 		initialTabSetSize    = 5
 		recentTabSetSize     = 5
@@ -845,12 +872,40 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	isDormantExpr := string(bytes)
 
 	perfValues := perf.NewValues()
-
-	cr, wpr, err := initBrowser(ctx, p)
+	cr, wpr, err := initBrowser(ctx, p, extDir)
 	if err != nil {
 		s.Fatal("Cannot start browser: ", err)
 	}
 	defer cr.Close(ctx)
+
+	/*s.Log("Opening tabs")
+	tabsConn := make([]*chrome.Conn, 3)
+	for i := range tabsConn {
+		tabsConn[i], err = cr.NewConn(ctx, "")
+		if err != nil {
+			s.Fatal("Opening tab failed: ", err)
+		}
+		defer tabsConn[i].Close()
+	}*/
+
+	bgURL := chrome.ExtensionBackgroundPageURL(extID)
+	conn_api, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
+	if err != nil {
+		s.Fatal("Could not connect to extension at %v: %v", bgURL, err)
+	}
+	defer conn_api.Close()
+
+	s.Log("Waiting for chrome.processes and chrome.tabs API to become available")
+	if err := conn_api.WaitForExpr(ctx, "chrome.processes"); err != nil {
+		s.Fatal("chrome.processes API unavailable: ", err)
+	}
+	if err := conn_api.WaitForExpr(ctx, "chrome.tabs"); err != nil {
+		s.Fatal("chrome.tabs API unavailable: ", err)
+	}
+	if err := conn_api.WaitForExpr(ctx, "TabPids"); err != nil {
+		s.Fatal("TabPids object unavailable in extension background page: ", err)
+	}
+
 	defer func() {
 		if wpr == nil {
 			return
@@ -907,12 +962,43 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 			s.Error("Cannot wiggle initial tab: ", err)
 		}
 	}
+
+	var pids []int
+	if err := conn_api.EvalPromise(ctx, "TabPids()", &pids); err != nil {
+		s.Fatal("Retrieving tab pids failed: ", err)
+	}
+
+	var tabs []int
+	if err := conn_api.EvalPromise(ctx, "TabIDs()", &tabs); err != nil {
+		s.Fatal("Retrieving tab ids failed: ", err)
+	}
+
+	if len(pids) == len(tabs) {
+		s.Logf("---------------- Retrieving PIDs of open tabs ----------------")
+		sort.Ints(pids)
+		sort.Ints(tabs)
+		var str strings.Builder
+		str.WriteString("[")
+		for i := 0; i < len(pids); i++ {
+			str.WriteString(strconv.Itoa(tabs[i]))
+			str.WriteString(":")
+			str.WriteString(strconv.Itoa(pids[i]))
+			if (i + 1) != len(pids) {
+				str.WriteString(", ")
+			}
+		}
+		str.WriteString("]")
+		s.Logf(str.String())
+		s.Logf("-----------------------------------------------------------")
+	}
+
 	initialTabSetIDs := rset.tabIDs[:initialTabSetSize]
 	pinTabs(ctx, cr, initialTabSetIDs)
 	// Collect and log tab-switching times in the absence of memory pressure.
 	if err := runTabSwitches(ctx, cr, rset, initialTabSetIDs, "light", tabSwitchRepeatCount); err != nil {
 		s.Error("Cannot run tab switches with light load: ", err)
 	}
+
 	logAndResetStats(s, partialMeter, "initial")
 	loggedMissingZramStats := false
 	var allTabSwitchTimes []time.Duration
@@ -933,6 +1019,7 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 			s.Log("Ending allocation because one or more targets (tabs) have gone")
 			break
 		}
+
 		// Switch among recently loaded tabs to encourage loading.
 		// Errors are usually from a renderer crash or, less likely, a tab discard.
 		// We fail in those cases because they are not expected.
@@ -942,6 +1029,7 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 			s.Fatal("Tab cycling error: ", err)
 		}
 		allTabSwitchTimes = append(allTabSwitchTimes, times...)
+
 		// Quickly switch among initial set of tabs to collect
 		// measurements and position the tabs high in the LRU list.
 		s.Log("Refreshing LRU order of initial tab set")
@@ -976,7 +1064,37 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 				s.Fatal("Timed out: ", err)
 			}
 		}
+
+		pids = nil
+		tabs = nil
+		if err := conn_api.EvalPromise(ctx, "TabPids()", &pids); err != nil {
+			s.Fatal("Retrieving tab pids failed: ", err)
+		}
+		if err := conn_api.EvalPromise(ctx, "TabIDs()", &tabs); err != nil {
+			s.Fatal("Retrieving tab ids failed: ", err)
+		}
+
+		if len(pids) == len(tabs) {
+			s.Logf("---------------- Retrieving PIDs of open tabs ----------------")
+			sort.Ints(pids)
+			sort.Ints(tabs)
+			var str strings.Builder
+			str.WriteString("[")
+			for i := 0; i < len(pids); i++ {
+				str.WriteString(strconv.Itoa(tabs[i]))
+				str.WriteString(":")
+				str.WriteString(strconv.Itoa(pids[i]))
+				if (i + 1) != len(pids) {
+					str.WriteString(", ")
+				}
+			}
+			str.WriteString("]")
+			s.Logf(str.String())
+			s.Logf("-----------------------------------------------------------")
+		}
+
 	}
+
 	// Wait a bit so we will notice any additional tab discards.
 	if err := testing.Sleep(ctx, 10*time.Second); err != nil {
 		s.Fatal("Timed out: ", err)
@@ -1036,25 +1154,22 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	if coldTabUpper > len(rset.tabIDs) {
 		coldTabUpper = len(rset.tabIDs)
 	}
+
 	coldTabIDs := rset.tabIDs[coldTabLower:coldTabUpper]
 	times, err = cycleTabs(ctx, cr, coldTabIDs, rset, 0, false)
 	if err != nil {
 		s.Fatal("Cannot switch to cold tabs: ", err)
 	}
 	logTabSwitchTimes(ctx, times, len(coldTabIDs), "coldswitch")
-
-	// -----------------
-	// Phase 3: quiesce.
-	// -----------------
+	defer cmd.Wait()
+	if errPerfStop := cmd.Process.Signal(os.Interrupt); errPerfStop != nil {
+		s.Fatal("Failed to signal perf: ", errPerfStop)
+	}
 	// Wait a bit to help the system stabilize.
 	if err := testing.Sleep(ctx, 10*time.Second); err != nil {
 		s.Fatal("Timed out: ", err)
 	}
 	fullMeter.Reset()
-	// Measure tab switching under pressure.
-	if err := runTabSwitches(ctx, cr, rset, initialTabSetIDs, "heavy", tabSwitchRepeatCount); err != nil {
-		s.Error("Cannot run tab switches with heavy load: ", err)
-	}
 	stats, err = fullMeter.VMStats()
 	if err != nil {
 		s.Error("Cannot compute page fault stats (phase 2): ", err)
@@ -1077,6 +1192,45 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	perfValues.Set(totalPageFaultCount2Metric, float64(stats.PageFault.Count))
 	perfValues.Set(averagePageFaultRate2Metric, stats.PageFault.AverageRate)
 	perfValues.Set(maxPageFaultRate2Metric, stats.PageFault.MaxRate)
+	s.Log("Metrics: Phase 2: total page fault count ", stats.PageFault.Count)
+	s.Log("Metrics: Phase 2: oom count ", stats.OOM.Count)
+	s.Logf("Metrics: Phase 2: average page fault rate %v pf/second", stats.PageFault.AverageRate)
+	s.Logf("Metrics: Phase 2: max page fault rate %v pf/second", stats.PageFault.MaxRate)
+
+	// -----------------
+	// Phase 3: quiesce.
+	// -----------------
+	// Wait a bit to help the system stabilize.
+	if err := testing.Sleep(ctx, 10*time.Second); err != nil {
+		s.Fatal("Timed out: ", err)
+	}
+	fullMeter.Reset()
+	// Measure tab switching under pressure.
+	if err := runTabSwitches(ctx, cr, rset, initialTabSetIDs, "heavy", tabSwitchRepeatCount); err != nil {
+		s.Error("Cannot run tab switches with heavy load: ", err)
+	}
+	stats, err = fullMeter.VMStats()
+	if err != nil {
+		s.Error("Cannot compute page fault stats (phase 3): ", err)
+	}
+	totalPageFaultCount3Metric := perf.Metric{
+		Name:      "tast_total_pagefault_count_3",
+		Unit:      "count",
+		Direction: perf.SmallerIsBetter,
+	}
+	averagePageFaultRate3Metric := perf.Metric{
+		Name:      "tast_average_pageFault_rate_3",
+		Unit:      "faults_per_second",
+		Direction: perf.SmallerIsBetter,
+	}
+	maxPageFaultRate3Metric := perf.Metric{
+		Name:      "tast_max_pageFault_rate_3",
+		Unit:      "faults_per_second",
+		Direction: perf.SmallerIsBetter,
+	}
+	perfValues.Set(totalPageFaultCount3Metric, float64(stats.PageFault.Count))
+	perfValues.Set(averagePageFaultRate3Metric, stats.PageFault.AverageRate)
+	perfValues.Set(maxPageFaultRate3Metric, stats.PageFault.MaxRate)
 	s.Log("Metrics: Phase 3: total page fault count ", stats.PageFault.Count)
 	s.Log("Metrics: Phase 3: oom count ", stats.OOM.Count)
 	s.Logf("Metrics: Phase 3: average page fault rate %v pf/second", stats.PageFault.AverageRate)

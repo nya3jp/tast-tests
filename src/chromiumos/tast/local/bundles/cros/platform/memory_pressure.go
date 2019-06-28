@@ -23,6 +23,8 @@ func init() {
 			mempressure.CompressibleData,
 			mempressure.DormantCode,
 			mempressure.WPRArchiveName,
+			"low_memory_killer_manifest.json",
+			"low_memory_killer_background.js",
 		},
 		SoftwareDeps: []string{"chrome"},
 	})
