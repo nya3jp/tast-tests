@@ -16,9 +16,7 @@ import (
 // CrostiniImageArtifact holds the name of the artifact which will be used to
 // boot crostini. When using the CrostiniStartedByArtifact precondition, you
 // must list this as one of the data dependencies of your test.
-//
-// TODO(crbug/981426) change this artifact's name.
-const CrostiniImageArtifact string = "crostini_start_basic_guest_images.tar"
+const CrostiniImageArtifact string = "crostini_guest_images.tar"
 
 // The ContainerPre object is made available to users of this precondition via:
 //
