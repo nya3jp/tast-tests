@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "dacae426_8ed7ec64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-28T15:41:30Z",
+      "side": 1,
+      "message": "RE: We have included \"audio_play\" in the deps, but seemed like it can\u0027t exclude devices without active output nodes. Is this a known bug of Tast?\n\nIt\u0027s defined in\nhttps://chromium.git.corp.google.com/chromiumos/platform/tast/+/f9f83820c649503801bdd6922827493cab8bbc66/src/chromiumos/cmd/local_test_runner/main.go#66\n\nCould you update the condition if needed, regardless of below?\n\nRe: Also we observed that even for the same model, it\u0027s not always the case that cras can find an active output node, possibly due to different device setup.\n\nIf that\u0027s the case, could you file a tracking bug, and marking crbug.com/936807 as its blocking issue?\nIt\u0027s nice to share the detailed concrete examples, e.g., on what board, and what DUT makes unexpected behavior.",
+      "parentUuid": "64b872bc_9804cd0e",
+      "range": {
+        "startLine": 11,
+        "startChar": 57,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "1fdc03fb76a35bb3300b51b0b138e6797b88eef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "42b38b76_8f7b91a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
         "patchSetId": 1
