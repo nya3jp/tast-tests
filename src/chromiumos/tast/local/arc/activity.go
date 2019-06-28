@@ -423,7 +423,7 @@ func (ac *Activity) WaitForIdle(ctx context.Context, timeout time.Duration) erro
 	}, &testing.PollOptions{Timeout: timeout})
 }
 
-// PackageName returns the activity package name.
+// PackageName returns the Activity package name.
 func (ac *Activity) PackageName() string {
 	return ac.pkgName
 }
