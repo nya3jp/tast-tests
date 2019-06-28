@@ -14,8 +14,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CrostiniStartBasic,
-		Desc:         "Tests basic Crostini startup only",
+		Func:         BasicWithArtifact,
+		Desc:         "Tests basic Crostini startup only (where crostini was shipped with the build)",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"informational"},
 		Timeout:      7 * time.Minute,
@@ -25,7 +25,9 @@ func init() {
 	})
 }
 
-func CrostiniStartBasic(ctx context.Context, s *testing.State) {
+// BasicWithArtifact runs a simple crostini test (ensuring the pwd command runs
+// in the container) and uses a pre-built image artifact to initialize the VM.
+func BasicWithArtifact(ctx context.Context, s *testing.State) {
 	cont := s.PreValue().(vm.CrostiniPre).Container
 
 	s.Log("Verifying pwd command works")
