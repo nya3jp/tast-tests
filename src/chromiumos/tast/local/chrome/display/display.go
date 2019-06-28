@@ -42,30 +42,33 @@ type DisplayMode struct { // NOLINT
 	Height               int     `json:"height"`
 	WidthInNativePixels  int     `json:"widthInNativePixels"`
 	HeightInNativePixels int     `json:"heightInNativePixels"`
-	UIScale              float64 `json:"uiScale"`
+	UIScale              float64 `json:"uiScale,omitempty"`
 	DeviceScaleFactor    float64 `json:"deviceScaleFactor"`
 	IsNative             bool    `json:"isNative"`
 	IsSelected           bool    `json:"isSelected"`
+	IsInterlaced         bool    `json:"isInterlaced,omitempty"`
 }
 
 // Info holds information about a display and is returned by GetInfo.
 // See https://developer.chrome.com/apps/system_display#method-getInfo.
 type Info struct {
-	ID                string         `json:"id"`
-	Name              string         `json:"name"`
-	MirroringSourceID string         `json:"mirroringSourceId"`
-	IsPrimary         bool           `json:"isPrimary"`
-	IsInternal        bool           `json:"isInternal"`
-	IsEnabled         bool           `json:"isEnabled"`
-	IsUnified         bool           `json:"isUnified"`
-	DPIX              float64        `json:"dpiX"`
-	DPIY              float64        `json:"dpiY"`
-	Rotation          int            `json:"rotation"`
-	Bounds            *Bounds        `json:"bounds"`
-	Overscan          *Insets        `json:"overscan"`
-	WorkArea          *Bounds        `json:"workArea"`
-	Modes             []*DisplayMode `json:"modes"`
-	HasTouchSupport   bool           `json:"hasTouchSupport"`
+	ID                          string         `json:"id"`
+	Name                        string         `json:"name"`
+	MirroringSourceID           string         `json:"mirroringSourceId"`
+	IsPrimary                   bool           `json:"isPrimary"`
+	IsInternal                  bool           `json:"isInternal"`
+	IsEnabled                   bool           `json:"isEnabled"`
+	IsUnified                   bool           `json:"isUnified"`
+	DPIX                        float64        `json:"dpiX"`
+	DPIY                        float64        `json:"dpiY"`
+	Rotation                    int            `json:"rotation"`
+	Bounds                      *Bounds        `json:"bounds"`
+	Overscan                    *Insets        `json:"overscan"`
+	WorkArea                    *Bounds        `json:"workArea"`
+	Modes                       []*DisplayMode `json:"modes"`
+	HasTouchSupport             bool           `json:"hasTouchSupport"`
+	AvailableDisplayZoomFactors []float64      `json:"availableDisplayZoomFactors"`
+	DisplayZoomFactor           float64        `json:"displayZoomFactor"`
 }
 
 // GetInfo calls chrome.system.display.getInfo to get information about connected displays.
@@ -108,6 +111,7 @@ type DisplayProperties struct { // NOLINT
 	BoundsOriginX     *int         `json:"boundsOriginX,omitempty"`
 	BoundsOriginY     *int         `json:"boundsOriginY,omitempty"`
 	DisplayMode       *DisplayMode `json:"displayMode,omitempty"`
+	DisplayZoomFactor *float64     `json:"displayZoomFactor,omitempty"`
 }
 
 // SetDisplayProperties updates the properties for the display specified by id.
