@@ -2,20 +2,21 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package vm
+package crostini
 
 import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/vm/crostini/basic"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CrostiniStartBasic,
-		Desc:         "Tests basic Crostini startup only",
+		Func:         BasicArtifact,
+		Desc:         "Tests basic Crostini startup only (where crostini was shipped with the build)",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"informational"},
 		Timeout:      7 * time.Minute,
@@ -25,13 +26,8 @@ func init() {
 	})
 }
 
-func CrostiniStartBasic(ctx context.Context, s *testing.State) {
-	cont := s.PreValue().(vm.CrostiniPre).Container
-
-	s.Log("Verifying pwd command works")
-	cmd := cont.Command(ctx, "pwd")
-	if err := cmd.Run(); err != nil {
-		cmd.DumpLog(ctx)
-		s.Fatal("Failed to run pwd: ", err)
-	}
+// BasicArtifact runs the basic crostini test and uses a pre-built image
+// artifact to initialize the VM.
+func BasicArtifact(ctx context.Context, s *testing.State) {
+	basic.Basic(ctx, s)
 }
