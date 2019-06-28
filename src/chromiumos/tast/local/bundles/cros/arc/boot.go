@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -29,6 +30,7 @@ func init() {
 }
 
 func Boot(ctx context.Context, s *testing.State) {
+	logging.ChromeVmoduleFlag()
 	cr, err := chrome.New(ctx, chrome.ARCEnabled())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
