@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "31964405_993f462b",
+        "filename": "src/chromiumos/tast/local/hwsec/utility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2019-06-28T04:17:38Z",
+      "side": 1,
+      "message": "Should we do less-aggressive pollings here, e.g., 100 ms or larger? Just checked my soraka, TakeOwnership takes 2009 ms, and PrepareForEnrollment takes ~28 s. Calling IsTpmReady() and IsPreparedForEnrollment() over dbus has overheads though.",
+      "range": {
+        "startLine": 29,
+        "startChar": 29,
+        "endLine": 29,
+        "endChar": 31
+      },
+      "revId": "d4a0fa28d2e7d3719f7f25ed924a61b3ccc1a599",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5fe7ef42_f425af05",
         "filename": "src/chromiumos/tast/local/hwsec/utility.go",
         "patchSetId": 5
