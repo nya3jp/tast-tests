@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92f8740c_b0c926fd",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-28T03:17:54Z",
+      "side": 1,
+      "message": "Could you print stopErr here, too?\n\ntesting.ContextLog(ctx, \"Failed to stop concierge: \", stopErr)\n\nDitto for L91, and L98.",
+      "revId": "98876bee3ad61df185dffdeb296e5852755bfb02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
