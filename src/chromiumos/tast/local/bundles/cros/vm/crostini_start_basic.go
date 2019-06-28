@@ -8,7 +8,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -20,49 +19,18 @@ func init() {
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"informational"},
 		Timeout:      7 * time.Minute,
-		Data:         []string{"crostini_start_basic_guest_images.tar"},
+		Data:         []string{vm.ContainerImageArtifact},
+		Pre:          vm.CrostiniStartedByArtifact(),
 		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
 }
 
 func CrostiniStartBasic(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
-	s.Log("Enabling Crostini preference setting")
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create test API connection: ", err)
-	}
-	if err = vm.EnableCrostini(ctx, tconn); err != nil {
-		s.Fatal("Failed to enable Crostini preference setting: ", err)
-	}
-
-	s.Log("Setting up component")
-	artifactPath := s.DataPath("crostini_start_basic_guest_images.tar")
-	if err := vm.MountArtifactComponent(ctx, artifactPath); err != nil {
-		s.Fatal("Failed to set up component: ", err)
-	}
-	defer vm.UnmountComponent(ctx)
-
-	s.Log("Creating default container")
-	cont, err := vm.CreateDefaultVMContainer(ctx, s.OutDir(), cr.User(), vm.Tarball, artifactPath)
-	if err != nil {
-		s.Fatal("Failed to set up default container: ", err)
-	}
-	defer vm.StopConcierge(ctx)
-	defer func() {
-		if err := cont.DumpLog(ctx, s.OutDir()); err != nil {
-			s.Error("Failure dumping container log: ", err)
-		}
-	}()
+	cont := s.PreValue().(vm.CrostiniPre).Container
 
 	s.Log("Verifying pwd command works")
 	cmd := cont.Command(ctx, "pwd")
-	if err = cmd.Run(); err != nil {
+	if err := cmd.Run(); err != nil {
 		cmd.DumpLog(ctx)
 		s.Fatal("Failed to run pwd: ", err)
 	}
