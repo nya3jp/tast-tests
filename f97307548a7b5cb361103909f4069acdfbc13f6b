@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0aa3e7c_e73188a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-06-28T08:11:04Z",
+      "side": 1,
+      "message": "Have you confirmed that this test fails without your patch?",
+      "revId": "f97307548a7b5cb361103909f4069acdfbc13f6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "122e0980_6f702234",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-06-28T08:11:04Z",
+      "side": 1,
+      "message": "nit: hard code",
+      "range": {
+        "startLine": 109,
+        "startChar": 31,
+        "endLine": 109,
+        "endChar": 39
+      },
+      "revId": "f97307548a7b5cb361103909f4069acdfbc13f6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
