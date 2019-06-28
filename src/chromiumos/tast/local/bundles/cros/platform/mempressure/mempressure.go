@@ -162,6 +162,22 @@ func getActiveTabID(ctx context.Context, cr *chrome.Chrome) (int, error) {
 	if err := evalPromiseBodyInBrowser(ctx, cr, promiseBody, &tabID); err != nil {
 		return 0, errors.Wrap(err, "cannot get tabID")
 	}
+	testing.ContextLogf(ctx, "Trying to get PID of tab ")
+	var PID int
+	/*const promiseBodyPID = `chrome.tabs.query({active: true}, function(tabs) {
+	  var current = currentWindow.tabs.filter(function(tab) {
+	    return tab.active;
+	  })[0];
+	  chrome.processes.getProcessIdForTab(current.id,function(pid) {
+	     resolve(pid);
+	    }
+	  );
+	});`*/
+	var promiseBodyPID = fmt.Sprint("chrome.processes.getProcessIdForTab((pid) => { resolve(pid) } )")
+	if err := evalPromiseBodyInBrowser(ctx, cr, promiseBodyPID, &PID); err != nil {
+		errors.Wrap(err, "cannot get PID")
+	}
+	testing.ContextLogf(ctx, "PID of tab %d is %d", tabID, PID)
 	return tabID, nil
 }
 
