@@ -2,49 +2,64 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package vm
+package crostini
 
 import (
 	"context"
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
 
-// The CrostiniPre object is made available to users of this precondition via:
+// ImageArtifact holds the name of the artifact which will be used to
+// boot crostini. When using the StartedByArtifact precondition, you
+// must list this as one of the data dependencies of your test.
+const ImageArtifact string = "crostini_guest_images.tar"
+
+// The PreData object is made available to users of this precondition via:
 //
 //	func DoSomething(ctx context.Context, s *testing.State) {
-//		d := s.PreValue().(vm.CrostiniPre)
+//		d := s.PreValue().(crostini.PreData)
 //		...
 //	}
-type CrostiniPre struct {
+type PreData struct {
 	Chrome      *chrome.Chrome
 	TestAPIConn *chrome.Conn
-	Container   *Container
+	Container   *vm.Container
 }
 
-// CrostiniStarted returns a precondition which is used in tests to ensure that
-// the crostini instance has been started, and makes several useful object
-// available for running your tests.
-func CrostiniStarted() testing.Precondition { return crostiniStartedPre }
+// StartedByDownload is a precondition that ensures a tast test will
+// begin after crostini has been started by downloading an image.
+func StartedByDownload() testing.Precondition { return startedByDownloadPre }
 
-// The precondition used for crostini. The 10 minute timeout is based
-// on what the tests themselves define, and is generous to allow for
-// downloading the container image.
-var crostiniStartedPre = &preImpl{
-	name:    "crostini_started",
+// StartedByArtifact is similar to StartedByDownload, but will
+// use a pre-built image as a data-dependency rather than downloading one. To
+// use this precondition you must have crostini.ImageArtifact as a data dependency.
+func StartedByArtifact() testing.Precondition { return startedByArtifactPre }
+
+var startedByArtifactPre = &preImpl{
+	name:    "crostini_started_by_artifact",
+	timeout: chrome.LoginTimeout + 7*time.Minute,
+	dlImage: false,
+}
+
+var startedByDownloadPre = &preImpl{
+	name:    "crostini_started_by_download",
 	timeout: chrome.LoginTimeout + 10*time.Minute,
+	dlImage: true,
 }
 
 // Implementation of crostini's precondition.
 type preImpl struct {
 	name    string
 	timeout time.Duration
+	dlImage bool
 	cr      *chrome.Chrome
 	tconn   *chrome.Conn
-	cont    *Container
+	cont    *vm.Container
 }
 
 // Interface methods for a testing.Precondition.
@@ -60,7 +75,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 
 	if p.cont != nil {
 		// TODO(hollingum): sanity checks on the incoming state, see local/arc/pre.go.
-		return p.buildCrostiniPre(ctx, s)
+		return p.buildPreData(ctx, s)
 	}
 
 	// If initialization fails, this defer is used to clean-up the partially-initialized pre.
@@ -80,26 +95,38 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	if p.tconn, err = p.cr.TestAPIConn(ctx); err != nil {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
-	if err = EnableCrostini(ctx, p.tconn); err != nil {
+	if err = vm.EnableCrostini(ctx, p.tconn); err != nil {
 		s.Fatal("Failed to enable Crostini preference setting: ", err)
 	}
-	s.Log("Setting up component ", StagingComponent)
-	if err = SetUpComponent(ctx, StagingComponent); err != nil {
-		s.Fatal("Failed to set up component: ", err)
+
+	if p.dlImage {
+		s.Log("Setting up component ", vm.StagingComponent)
+		if err = vm.SetUpComponent(ctx, vm.StagingComponent); err != nil {
+			s.Fatal("Failed to set up component: ", err)
+		}
+		s.Log("Creating default container (from download)")
+		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.StagingImageServer, ""); err != nil {
+			s.Fatal("Failed to set up default container (from download): ", err)
+		}
+	} else {
+		s.Log("Setting up component (from artifact)")
+		artifactPath := s.DataPath(ImageArtifact)
+		if err = vm.MountArtifactComponent(ctx, artifactPath); err != nil {
+			s.Fatal("Failed to set up component: ", err)
+		}
+
+		s.Log("Creating default container (from artifact)")
+		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.Tarball, artifactPath); err != nil {
+			s.Fatal("Failed to set up default container (from artifact): ", err)
+		}
 	}
 
-	s.Log("Creating default container")
-	// TODO(crbug/979074): Use a pre-build image rather than downloading one, to prevent
-	// network-based flakiness.
-	if p.cont, err = CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), StagingImageServer, ""); err != nil {
-		s.Fatal("Failed to set up default container: ", err)
-	}
-
-	locked = true
 	chrome.Lock()
+	vm.Lock()
 
+	ret := p.buildPreData(ctx, s)
 	shouldClose = false
-	return p.buildCrostiniPre(ctx, s)
+	return ret
 }
 
 // Close is called after all tests involving this precondition have been run,
@@ -109,7 +136,7 @@ func (p *preImpl) Close(ctx context.Context, s *testing.State) {
 	ctx, st := timing.Start(ctx, "close_"+p.name)
 	defer st.End()
 
-	locked = false
+	vm.Unlock()
 	chrome.Unlock()
 	p.cleanUp(ctx, s)
 }
@@ -121,14 +148,14 @@ func (p *preImpl) cleanUp(ctx context.Context, s *testing.State) {
 		if err := p.cont.DumpLog(ctx, s.OutDir()); err != nil {
 			s.Error("Failure dumping container log: ", err)
 		}
-		if err := StopConcierge(ctx); err != nil {
+		if err := vm.StopConcierge(ctx); err != nil {
 			s.Error("Failure stopping concierge: ", err)
 		}
 		p.cont = nil
 	}
 	// It is always safe to unmount the component, which just posts some
 	// logs if it was never mounted.
-	UnmountComponent(ctx)
+	vm.UnmountComponent(ctx)
 
 	// Nothing special needs to be done to close the test API connection.
 	p.tconn = nil
@@ -141,11 +168,11 @@ func (p *preImpl) cleanUp(ctx context.Context, s *testing.State) {
 	}
 }
 
-// Helper method that builds the CrostiniPre and resets the machine state in
+// Helper method that builds the PreData and resets the machine state in
 // advance of running the actual tests.
-func (p *preImpl) buildCrostiniPre(ctx context.Context, s *testing.State) CrostiniPre {
+func (p *preImpl) buildPreData(ctx context.Context, s *testing.State) PreData {
 	if err := p.cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
-	return CrostiniPre{p.cr, p.tconn, p.cont}
+	return PreData{p.cr, p.tconn, p.cont}
 }

@@ -16,6 +16,7 @@ import (
 	"github.com/godbus/dbus"
 
 	cpb "chromiumos/system_api/vm_cicerone_proto" // protobufs for container management
+	"chromiumos/tast/caller"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/testexec"
@@ -61,6 +62,25 @@ type Container struct {
 // locked is used to prevent creation of a container while the precondition is being used.
 var locked = false
 
+// prePackages lists packages containing preconditions that are allowed to call Lock and Unlock.
+var prePackages = []string{
+	"chromiumos/tast/local/crostini",
+}
+
+// Lock prevents container creation/destruction until Unlock is called.
+// It can only be called by preconditions and is idempotent.
+func Lock() {
+	caller.Check(2, prePackages)
+	locked = true
+}
+
+// Unlock allows container creation after an earlier call to Lock.
+// It can only be called by preconditions and is idempotent.
+func Unlock() {
+	caller.Check(2, prePackages)
+	locked = false
+}
+
 // newContainer returns a Container instance with a cicerone connection.
 // Note that it assumes cicerone is up and running.
 func newContainer(ctx context.Context, vmInstance *VM, containerName, userName string) (*Container, error) {
@@ -70,7 +90,7 @@ func newContainer(ctx context.Context, vmInstance *VM, containerName, userName s
 		username:      userName,
 	}
 	if locked {
-		panic("Do not create a new Container while the crostini precondition is active")
+		panic("Do not create a new Container while a container precondition is active")
 	}
 	var err error
 	if _, c.ciceroneObj, err = dbusutil.Connect(ctx, ciceroneName, ciceronePath); err != nil {
