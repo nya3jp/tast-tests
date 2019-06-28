@@ -71,6 +71,75 @@
     },
     {
       "key": {
+        "uuid": "af4a3eaa_235e30cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-28T15:26:25Z",
+      "side": 1,
+      "message": "nit: perhaps arcCaptionHeight.  \"size\" might imply  width and height.",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 15
+      },
+      "revId": "a471aa81deb8d57497f0f3b9dd30252d1c1ee3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56a877e4_2fb2c727",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-28T15:26:25Z",
+      "side": 1,
+      "message": "perhaps this could be replaced with something like:\n\nfor _, str :\u003d []string{\"maximize\", \"restore\", \"maximize\", \"restore\"} {\n    s.Log(\"Pressing %q\", str)\n\n    ... \n\n}",
+      "range": {
+        "startLine": 97,
+        "startChar": 16,
+        "endLine": 97,
+        "endChar": 18
+      },
+      "revId": "a471aa81deb8d57497f0f3b9dd30252d1c1ee3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68938762_9cd3d67b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-28T15:26:25Z",
+      "side": 1,
+      "message": "nit: could specify which caption button you are trying to click on?. e.g:\n\n// Touch lower edge of Restore button...",
+      "range": {
+        "startLine": 108,
+        "startChar": 5,
+        "endLine": 108,
+        "endChar": 43
+      },
+      "revId": "a471aa81deb8d57497f0f3b9dd30252d1c1ee3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "deb16264_cc68ad52",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
         "patchSetId": 3
