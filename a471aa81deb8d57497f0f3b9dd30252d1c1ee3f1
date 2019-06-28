@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00607ed6_34446332",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-28T15:14:36Z",
+      "side": 1,
+      "message": "nit: you can reduce the scope with (something that we started implementing a few days ago)\n     arc-framework+tast@google.com",
+      "range": {
+        "startLine": 20,
+        "startChar": 51,
+        "endLine": 20,
+        "endChar": 58
+      },
+      "revId": "a471aa81deb8d57497f0f3b9dd30252d1c1ee3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0420de62_2d6b93ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-28T15:14:36Z",
+      "side": 1,
+      "message": "nit: I think it is safe to remove this comment.",
+      "range": {
+        "startLine": 38,
+        "startChar": 25,
+        "endLine": 38,
+        "endChar": 50
+      },
+      "revId": "a471aa81deb8d57497f0f3b9dd30252d1c1ee3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee230942_82466daf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-28T15:14:36Z",
+      "side": 1,
+      "message": "nit: not needed. A CL that landed yesterday includes a \"WaitForIdle()\" when you call `act.SetWindowState()`",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "a471aa81deb8d57497f0f3b9dd30252d1c1ee3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "deb16264_cc68ad52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-28T15:14:36Z",
+      "side": 1,
+      "message": "Could this be replaced by `act.WaitForIdle()` ?\nJust asking, don\u0027t know the answer.\n\nIn any case, it is better to do `testing.Poll`. See:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 121,
+        "endChar": 0
+      },
+      "revId": "a471aa81deb8d57497f0f3b9dd30252d1c1ee3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "183e9e7e_512e8bd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-06-28T15:14:36Z",
+      "side": 1,
+      "message": "nit: Tried",
+      "range": {
+        "startLine": 128,
+        "startChar": 47,
+        "endLine": 128,
+        "endChar": 52
+      },
+      "revId": "a471aa81deb8d57497f0f3b9dd30252d1c1ee3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
