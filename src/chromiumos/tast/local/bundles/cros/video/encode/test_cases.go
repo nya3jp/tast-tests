@@ -57,4 +57,4 @@ var Crowd2160P = StreamParams{
 }
 
 // BitrateTestFilter is the test pattern in googletest style for disabling bitrate control related tests.
-const BitrateTestFilter = "-MidStreamParamSwitchBitrate/*:ForceBitrate/*"
+const BitrateTestFilter = "-MidStreamParamSwitchBitrate/*:ForceBitrate/*:MultipleEncoders/VideoEncodeAcceleratorTest.TestSimpleEncode/1"
