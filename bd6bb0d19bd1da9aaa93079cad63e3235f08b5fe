@@ -16,6 +16,24 @@
       "revId": "bd6bb0d19bd1da9aaa93079cad63e3235f08b5fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3374ba21_53b4fbc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/force_region.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-06-28T01:22:15Z",
+      "side": 1,
+      "message": "Yes, added myself.",
+      "parentUuid": "aa48a489_90b9e2fe",
+      "revId": "bd6bb0d19bd1da9aaa93079cad63e3235f08b5fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
