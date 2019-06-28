@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "4f2087ec_af994f41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-06-28T02:45:46Z",
+      "side": 1,
+      "message": "Yeah it might be if that\u0027s true.  This gets set by the ui-pre-start script before chrome starts.\nI\u0027m not sure where might be the right place to check, or should we just leave this check out?",
+      "parentUuid": "180b5b59_b40fa102",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 34
+      },
+      "revId": "922fc95b5d84363f00c57802cc0ed996cf35e448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d787ebf_ba18dea1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
         "patchSetId": 1
@@ -117,6 +141,30 @@
     },
     {
       "key": {
+        "uuid": "8fb88c25_b33876bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-06-28T02:45:46Z",
+      "side": 1,
+      "message": "I think the way the test is currently written, it is going to open the app without using the launcher.  I have to investigate how to activate the launcher.",
+      "parentUuid": "9322d75b_a2b9fefa",
+      "range": {
+        "startLine": 105,
+        "startChar": 17,
+        "endLine": 105,
+        "endChar": 39
+      },
+      "revId": "922fc95b5d84363f00c57802cc0ed996cf35e448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "44b42277_d4c7e8b6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
         "patchSetId": 1
@@ -128,6 +176,24 @@
       "writtenOn": "2019-06-21T01:17:55Z",
       "side": 1,
       "message": "I don\u0027t know much about Tast framwork, but is it possible to show/hide the app shelf? The recent throttling bug was introduced by the app shelf show/hide actions IIRC, and it would be nice if we can test the case here.",
+      "revId": "922fc95b5d84363f00c57802cc0ed996cf35e448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6182cce5_259f4fc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-06-28T02:45:46Z",
+      "side": 1,
+      "message": "yeah see above -- I suspect it\u0027s possible, but will need to maybe simulate some input events in the right areas.",
+      "parentUuid": "44b42277_d4c7e8b6",
       "revId": "922fc95b5d84363f00c57802cc0ed996cf35e448",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
