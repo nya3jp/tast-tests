@@ -189,7 +189,7 @@ func (ac *Activity) WindowBounds(ctx context.Context) (Rect, error) {
 	}
 
 	// Fullscreen windows already include the caption height. PiP windows don't have caption.
-	if t.windowState == WindowStateFullscreen || t.windowState == WindowStatePIP {
+	if t.windowState == WindowStateFullscreen || t.windowState == WindowStatePIP || t.windowState == WindowStateMaximized {
 		return t.bounds, nil
 	}
 
@@ -367,6 +367,17 @@ func (ac *Activity) SetWindowState(ctx context.Context, state WindowState) error
 		return errors.Wrap(err, "could not execute 'am task set-winstate'")
 	}
 	return nil
+}
+
+// WindowState returns the window state.
+// When it failed to get the task information, it returns WindowStateNormal with the error.
+func (ac *Activity) WindowState(ctx context.Context) (WindowState, error) {
+	t, err := ac.getTaskInfo(ctx)
+	if err != nil {
+		return WindowStateNormal, errors.Wrap(err, "failed to get task info")
+	}
+
+	return t.windowState, nil
 }
 
 // WaitForIdle returns whether the activity is idle.
