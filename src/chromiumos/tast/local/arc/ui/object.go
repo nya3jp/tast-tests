@@ -30,11 +30,21 @@ type Object struct {
 	s *selector
 }
 
+// Rect represents a rectangle, as defined here:
+// https://developers.chrome.com/extensions/automation#type-rect
+type Rect struct {
+	Top    int `json:"top"`
+	Left   int `json:"left"`
+	Bottom int `json:"bottom"`
+	Right  int `json:"right"`
+}
+
 type objectInfo struct {
 	Text               string `json:"text"`
 	ContentDescription string `json:"contentDescription"`
 	PackageName        string `json:"packageName"`
 	ClassName          string `json:"className"`
+	Bounds             Rect   `json:"bounds"`
 	Checkable          bool   `json:"checkable"`
 	Checked            bool   `json:"checked"`
 	Clickable          bool   `json:"clickable"`
@@ -132,6 +142,18 @@ func (o *Object) GetClassName(ctx context.Context) (string, error) {
 		return "", errors.Wrap(err, "GetClassName failed")
 	}
 	return info.ClassName, nil
+}
+
+// GetBounds returns the bounds of a view.
+//
+// This method corresponds to UiObject.getBounds().
+// https://developer.android.com/reference/android/support/test/uiautomator/UiObject.html#getbounds
+func (o *Object) GetBounds(ctx context.Context) (Rect, error) {
+	info, err := o.info(ctx)
+	if err != nil {
+		return Rect{}, errors.Wrap(err, "GetBounds failed")
+	}
+	return info.Bounds, nil
 }
 
 // IsCheckable returns if a view is checkable.

@@ -87,6 +87,7 @@ func writeTestExtension(dir string) (id string, err error) {
     "languageSettingsPrivate",
     "management",
     "proxy",
+    "settingsPrivate",
     "system.display"
   ],
   "automation": {
