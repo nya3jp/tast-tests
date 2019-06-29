@@ -1,0 +1,278 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f8b9b05_117afe92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-29T15:20:15Z",
+      "side": 1,
+      "message": "nit: \"adds\"? ditto for below.",
+      "range": {
+        "startLine": 78,
+        "startChar": 16,
+        "endLine": 78,
+        "endChar": 24
+      },
+      "revId": "3a75f2dea68893d40a44ae1515dae8539d5ccbee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e0732b9_1cc87ee2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-29T15:20:15Z",
+      "side": 1,
+      "message": "style: for simplicity and consistency, could you inline args...?\nAlso could you return err if failed, and return nil if success?\nSo,\n\nif err :\u003d testexec.CommandContext(ctx, \"iw\", \"phy\", phy, ...).Run(testexec.DumpLogOnError); err !\u003d nil {\n  return errors.Wrapf(err, ...)\n}\n\nreturn nil\n\n(As for iwRun, please find my comment below.)\nSame for the following methods.",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 11
+      },
+      "revId": "3a75f2dea68893d40a44ae1515dae8539d5ccbee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b39bbb2a_4547682d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-29T15:20:15Z",
+      "side": 1,
+      "message": "What this does is;\n- Construct error message in case of failure.\n- conversion from []byte to string.\n- prepend \"iw\" to the command line.\n\nHowever,\n- error command can be output by testexec.DumpLogOnError\n- output is used only once.\n- prepending \"iw\" does not seem a big win of introducing the wrapper, IMO.\n\nSo,\n\noptional: how about dropping this, and simply use testexec.CommandContext(...).Run(testexec.DumpLogOnError) or .Output(testexec.DumpLogOnError) for now?",
+      "revId": "3a75f2dea68893d40a44ae1515dae8539d5ccbee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f6aa30c_f60db5d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-29T15:20:15Z",
+      "side": 1,
+      "message": "How about using testexec.DumpLogOnError?",
+      "revId": "3a75f2dea68893d40a44ae1515dae8539d5ccbee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b4a7311_8ffb70db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-29T15:20:15Z",
+      "side": 1,
+      "message": "If err is not nil, res is meaningless. Could you convert after err check?",
+      "revId": "3a75f2dea68893d40a44ae1515dae8539d5ccbee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "808dddf8_286738e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-29T15:20:15Z",
+      "side": 1,
+      "message": "If DumpLogOnError is used, the command line is output already.",
+      "revId": "3a75f2dea68893d40a44ae1515dae8539d5ccbee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f394722_0b46ef7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-29T15:20:15Z",
+      "side": 1,
+      "message": "Instead of using commandline as message, could you output \"error message\", e.g., what this tries and failed, etc.? You can embed commandline in the message.",
+      "revId": "3a75f2dea68893d40a44ae1515dae8539d5ccbee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4a22f12_2e6258a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-29T15:20:15Z",
+      "side": 1,
+      "message": "string conversion can be inlined.\n\nreturn string(res), nil",
+      "revId": "3a75f2dea68893d40a44ae1515dae8539d5ccbee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97c88ca2_0f5fcc35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_interface_connection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-29T15:20:15Z",
+      "side": 1,
+      "message": "style: Could you use const?\n\nconst (\n  phy \u003d \"phy0\"\n  iface \u003d ...\n)",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 16
+      },
+      "revId": "3a75f2dea68893d40a44ae1515dae8539d5ccbee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfca0c40_f2f104a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_interface_connection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-29T15:20:15Z",
+      "side": 1,
+      "message": "style: the name \"flag\" makes the responsibility of this variable ambiguous.\nHow about \"success\"?",
+      "revId": "3a75f2dea68893d40a44ae1515dae8539d5ccbee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08208105_d623d77a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_interface_connection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-29T15:20:15Z",
+      "side": 1,
+      "message": "defer stmt should be put after AddInterface.",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 4
+      },
+      "revId": "3a75f2dea68893d40a44ae1515dae8539d5ccbee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab10c4b1_8fc8e29a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_interface_connection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-29T15:20:15Z",
+      "side": 1,
+      "message": "style: for simplicity and consistency, could you inline the function invocation in this pattern?\n\nif err :\u003d iw.AddInterface(...); err !\u003d nil {\n  ...\n}\n\nsame for all this pattern in this CL.",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 2
+      },
+      "revId": "3a75f2dea68893d40a44ae1515dae8539d5ccbee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f25ccb5_7bafa38b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_interface_connection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-29T15:20:15Z",
+      "side": 1,
+      "message": "If you\u0027re not interested in stdout of the command, could you use Run() instead?\n\noptional: you may want to dump the output log on error? So...\n\nif err :\u003d testexec.CommandContext(...).Run(testexec.DumpLogOnError); err !\u003d nil {\n  ...\n}",
+      "revId": "3a75f2dea68893d40a44ae1515dae8539d5ccbee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3bdf293_157c9efc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_interface_connection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-06-29T15:20:15Z",
+      "side": 1,
+      "message": "This can be simplified, because you\u0027re already duing this in defer.\n\nif err :\u003d iw.AddInterface(...); err !\u003d nil {\n  s.Fatal(...)\n}\ndefer func() {\n  if err :\u003d iw.RemoveInterface(...); err !\u003d nil {\n    s.Error(...)\n  }\n}()\n\nif err :\u003d testexec.CommandContext(...)...; err !\u003d nil {\n   s.Fatal(...)\n}\n\n\nRegardless of ifconfig result, defer calls RemoveInterface() calls and records its error if failed.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 12
+      },
+      "revId": "3a75f2dea68893d40a44ae1515dae8539d5ccbee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
