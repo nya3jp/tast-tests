@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b6420c7_a14cae97",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-01T00:58:10Z",
+      "side": 1,
+      "message": "pstyle: In Go, |foo| notation is not used in comments, but identifiers are mentioned verbatimly. And it is recommended to start a comment with a name. In this case:\n\n // locked is used to ...\n var locked \u003d false",
+      "range": {
+        "startLine": 62,
+        "startChar": 3,
+        "endLine": 62,
+        "endChar": 30
+      },
+      "revId": "89dc25d1c710183249db9ffca852145588de8f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0156685e_32b8c8e4",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-01T00:58:10Z",
+      "side": 1,
+      "message": "Even if p.cont is nil, p.cr can be non-nil in some cases (e.g. when EnableCrostini below fails). Please handle partially-initialized case. As an example, please refer shouldClose in arc/pre.go.\n\n\t// Prepare is called immediately before starting each test that depends on the precondition.\n\t// The returned value will be made available to the test via State.PreValue.\n\t// To report an error, Prepare can call either s.Error/Errorf or s.Fatal/Fatalf.\n\t// If an error is reported, the test will not run, but the preconditionImpl must be left\n\t// in a state where future calls to Prepare (and Close) can still succeed.",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 45
+      },
+      "revId": "89dc25d1c710183249db9ffca852145588de8f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc7b6b61_197e2439",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-01T00:58:10Z",
+      "side": 1,
+      "message": "Close can be called even if no Prepare call succeeded (e.g. there is only one test using this precondition, and precondition initialization failed).\n\n\t// Close is called immediately after completing the final test that depends on the precondition.\n\t// This method may be called without an earlier call to Prepare in rare cases (e.g. if\n\t// TestConfig.PreTestFunc fails); preconditions must be able to handle this.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 16
+      },
+      "revId": "89dc25d1c710183249db9ffca852145588de8f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
