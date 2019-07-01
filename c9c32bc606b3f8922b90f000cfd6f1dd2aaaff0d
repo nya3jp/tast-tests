@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2007e38_a5ee85a5",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-07-01T00:28:45Z",
+      "side": 1,
+      "message": "nit: setup vs setUp (unless it\u0027s like this elsewhere)",
+      "range": {
+        "startLine": 105,
+        "startChar": 5,
+        "endLine": 105,
+        "endChar": 13
+      },
+      "revId": "c9c32bc606b3f8922b90f000cfd6f1dd2aaaff0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "610e322c_b51c3b4f",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-07-01T00:28:45Z",
+      "side": 1,
+      "message": "nit: \"Killing existing adb server process(es)\" ?",
+      "range": {
+        "startLine": 112,
+        "startChar": 26,
+        "endLine": 112,
+        "endChar": 34
+      },
+      "revId": "c9c32bc606b3f8922b90f000cfd6f1dd2aaaff0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7aa4a3f_ba5fafeb",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-07-01T00:28:45Z",
+      "side": 1,
+      "message": "nit: sometimes you write \u0027adb\u0027 and others \u0027ADB\u0027 - pick one and make it consistent across all logs, pls, thanks",
+      "range": {
+        "startLine": 116,
+        "startChar": 43,
+        "endLine": 116,
+        "endChar": 46
+      },
+      "revId": "c9c32bc606b3f8922b90f000cfd6f1dd2aaaff0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca4c9c52_7ca2f159",
+        "filename": "src/chromiumos/tast/local/arc/proc.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-07-01T00:28:45Z",
+      "side": 1,
+      "message": "move this up out of the if and move the dup code below.. actually maybe consolidate a bit more?\n\nprocs, err :\u003d...\n...\n\npath :\u003d \"/usr/bin/crosvm\"\nprocFilter :\u003d func(proc) bool { return true; }\n\nif container {\n  path \u003d \"/init\"\n  procFilter :\u003d func(proc) bool {\n     // use this condition if uids, err :\u003d p.Uids(); err \u003d\u003d nil \u0026\u0026 uint32(uids[0]) \u003d\u003d uid\n}\n\nfor _,p : range procs\n  if !procFilter(p) \n    continue\n  if exe, err :\u003d p.Exe(); err \u003d\u003d nil \u0026\u0026 exe \u003d\u003d path {\n    return p.Pid, nil\n  }\n}\nreturn error...",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 3
+      },
+      "revId": "c9c32bc606b3f8922b90f000cfd6f1dd2aaaff0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
