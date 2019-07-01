@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "410a9d1f_67646997",
+        "filename": "src/chromiumos/tast/local/arc/proc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-07-01T01:51:32Z",
+      "side": 1,
+      "message": "I should have mentioned an alternative which is just to close over |guest| and not worry about redefining the filter:\n\nfilter :\u003d func(proc*) bool {\n  if guest !\u003d container\n    return true\n  other stuff...\n}\n\neither way",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 11
+      },
+      "revId": "bd34bdddd84bdd9f494229888fa910dcce1c1bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
