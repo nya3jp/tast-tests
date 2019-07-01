@@ -214,6 +214,24 @@
     },
     {
       "key": {
+        "uuid": "46e022f6_8b6d1d2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-01T09:30:43Z",
+      "side": 1,
+      "message": "\u003e The debug log is still available, though it could be trimmed if there\u0027re too many logs for a Chrome session.\n\nIf the debug log is trimmed, we can say that it\u0027s almost unavailable;)\n\n\u003e We can definitely remove some verbose logs (see https://crrev.com/c/1679969).\n\nI agree that we should reduce the amount of log. But, if so, why do we still need this change? Why can\u0027t we keep using precondition?\nI thought the benefit of creating new Chrome session is to split Chrome logs to multiple files so that file sizes of each test will be small. Isn\u0027t it correct?",
+      "parentUuid": "b846cd9d_c8b7a471",
+      "revId": "5e3b9b2c1fa336f01676ac65f712ad45e7aad011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4fe975b1_80cc7b2c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
