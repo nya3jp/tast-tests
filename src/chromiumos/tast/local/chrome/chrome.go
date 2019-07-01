@@ -88,6 +88,7 @@ type arcMode int
 const (
 	arcDisabled arcMode = iota
 	arcEnabled
+	arcEnabledWithPlayStore
 )
 
 // loginMode describes the user mode for the login.
@@ -161,6 +162,12 @@ func FetchPolicy() option {
 // for the user session.
 func ARCEnabled() option {
 	return func(c *Chrome) { c.arcMode = arcEnabled }
+}
+
+// ARCEnabledWithPlayStore returns an option that can be passed to New to enable ARC
+// (with Play Store) for the user session.
+func ARCEnabledWithPlayStore() option {
+	return func(c *Chrome) { c.arcMode = arcEnabledWithPlayStore }
 }
 
 // RestrictARCCPU returns an option that can be passed to New which controls whether
@@ -517,13 +524,17 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 		args = append(args,
 			// Disable ARC opt-in verification to test ARC with mock GAIA accounts.
 			"--disable-arc-opt-in-verification",
-			// Always start ARC to avoid unnecessarily stopping mini containers.
+			// Always start ARC (without Play Store) to avoid unnecessarily stopping mini containers.
 			"--arc-start-mode=always-start-with-no-play-store")
-		if !c.restrictARCCPU {
-			args = append(args,
-				// Disable CPU restrictions to let tests run faster
-				"--disable-arc-cpu-restriction")
-		}
+	case arcEnabledWithPlayStore:
+		args = append(args,
+			// Always start ARC (with Play Store) to avoid unnecessarily stopping mini containers.
+			"--arc-start-mode=always-start")
+	}
+	if c.arcMode != arcDisabled && !c.restrictARCCPU {
+		args = append(args,
+			// Disable CPU restrictions to let tests run faster
+			"--disable-arc-cpu-restriction")
 	}
 	args = append(args, c.extraArgs...)
 	envVars := []string{
