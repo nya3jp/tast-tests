@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "f7359ce3_928b2729",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-01T00:36:31Z",
+      "side": 1,
+      "message": "We can safely assume ui-pre-start script has finished when chrome.New returns (because the function restarts the ui service). But the problem here is that share can be already set to cpuSharedArcBackground if the device is fast.\n\nIf there seems no way to avoid this race, you might want to consider removing this check (share \u003d\u003d cpuSharesArcPreBoot).",
+      "parentUuid": "4f2087ec_af994f41",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 34
+      },
+      "revId": "922fc95b5d84363f00c57802cc0ed996cf35e448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d787ebf_ba18dea1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
         "patchSetId": 1
@@ -111,6 +135,29 @@
         "startChar": 52,
         "endLine": 69,
         "endChar": 54
+      },
+      "revId": "922fc95b5d84363f00c57802cc0ed996cf35e448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "396db9a8_673e0cef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-01T00:36:31Z",
+      "side": 1,
+      "message": "arc.New guarantees the following:\n\n // After this function returns successfully, you can assume BOOT_COMPLETED\n // intent has been broadcast from Android system, and ADB connection is ready.\n // Note that this does not necessarily mean all ARC mojo services are up; call\n // WaitIntentHelper() to wait for ArcIntentHelper to be ready, for example.\n\nIs this timing enough to assume the CPU share is already set to cpuSharedArcBackground?",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 37
       },
       "revId": "922fc95b5d84363f00c57802cc0ed996cf35e448",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
