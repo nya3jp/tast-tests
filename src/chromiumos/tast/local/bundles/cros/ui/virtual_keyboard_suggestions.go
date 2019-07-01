@@ -93,7 +93,7 @@ func VirtualKeyboardSuggestions(ctx context.Context, s *testing.State) {
 	// key presses, then combine with VirtualKeyboardSuggestionsInformational.
 	s.Log("Waiting for the decoder to provide suggestions")
 	err = testing.Poll(ctx, func(ctx context.Context) error {
-		if err := vkb.TapKey(ctx, kconn, "a"); err != nil {
+		if err := vkb.TapKey(ctx, kconn, "softkey_latin_a"); err != nil {
 			return err
 		}
 		suggestions, err := vkb.GetSuggestions(ctx, kconn)
