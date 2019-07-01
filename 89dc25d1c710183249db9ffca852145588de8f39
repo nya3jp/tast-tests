@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "64e7733c_db01d313",
+        "filename": "src/chromiumos/tast/local/vm/container.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-01T01:51:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b6420c7_a14cae97",
+      "range": {
+        "startLine": 62,
+        "startChar": 3,
+        "endLine": 62,
+        "endChar": 30
+      },
+      "revId": "89dc25d1c710183249db9ffca852145588de8f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0156685e_32b8c8e4",
         "filename": "src/chromiumos/tast/local/vm/pre.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "99158acc_37360108",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-01T01:51:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0156685e_32b8c8e4",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 45
+      },
+      "revId": "89dc25d1c710183249db9ffca852145588de8f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc7b6b61_197e2439",
         "filename": "src/chromiumos/tast/local/vm/pre.go",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "89dc25d1c710183249db9ffca852145588de8f39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0dfd911_54675eff",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-01T01:51:35Z",
+      "side": 1,
+      "message": "afaict this should now be able to handle the case where the precondition\u0027s Prepare failed.\nAlso i modelled it on arc/pre.go\u0027s, which (i hope) works.\n\nAmended the comment slightly to reflect the semantics",
+      "parentUuid": "cc7b6b61_197e2439",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 16
+      },
+      "revId": "89dc25d1c710183249db9ffca852145588de8f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
