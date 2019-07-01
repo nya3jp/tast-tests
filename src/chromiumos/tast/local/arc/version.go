@@ -36,3 +36,16 @@ func SDKVersion() (int, error) {
 	}
 	return ret, nil
 }
+
+// ChromeOSVersion returns the Chrome OS version string. (e.g. "12345.0.0")
+func ChromeOSVersion() (string, error) {
+	m, err := lsbrelease.Load()
+	if err != nil {
+		return "", err
+	}
+	val, ok := m[lsbrelease.Version]
+	if !ok {
+		return "", errors.Errorf("failed to find %s in /etc/lsb-release", lsbrelease.Version)
+	}
+	return val, nil
+}
