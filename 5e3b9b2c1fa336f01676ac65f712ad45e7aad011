@@ -196,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "b846cd9d_c8b7a471",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-07-01T08:08:00Z",
+      "side": 1,
+      "message": "The debug log is still available, though it could be trimmed if there\u0027re too many logs for a Chrome session.\n\nWe can definitely remove some verbose logs (see https://crrev.com/c/1679969). In the meantime, we can still force running those flaky tests on new Chrome session till the root cause is identified.\n\nI have another approach to have only one main entrance TestPlay():\nFor original TestPlay(), rename it as testPlay(), which holds real implementation.\nAnd rename TestPlayIsolate() as TestPlay() with an additional arg: usePrecondition bool\nIf it is set, then TestPlay() assumes precondition Chrome is available. Otherwise, restarts a new Chrome session (and logs out after test).",
+      "parentUuid": "2727c31f_3beb77c6",
+      "revId": "5e3b9b2c1fa336f01676ac65f712ad45e7aad011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4fe975b1_80cc7b2c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
