@@ -118,16 +118,19 @@ func UIConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, error) {
 	return c.NewConnForTarget(ctx, f)
 }
 
-// TapKey simulates a tap event on the middle of the specified key. The key can
-// be any letter of the alphabet, "space" or "backspace".
+// TapKey simulates a tap event on the middle of the specified key. Keys are
+// identified by their `data-key` attribute, and may vary depending on the
+// keyboard layout. It is best to look at existing tests to see what keys are
+// valid, or inspect the DOM of the virtual keyboard to see what the right
+// data-key is.
 func TapKey(ctx context.Context, kconn *chrome.Conn, key string) error {
 	tapKey := func(key string) error {
 		return kconn.Eval(ctx, fmt.Sprintf(`
 		(() => {
-			// Multiple keys can have the same aria label but only one is visible.
-			const keys = document.querySelectorAll('[aria-label=%[1]q]')
-			if (!keys) {
-				throw new Error('Key %[1]q not found. No element with aria-label %[1]q.');
+			// Multiple keys can have the same key attribute but only one is visible.
+			const keys = document.querySelectorAll('[data-key=%[1]q]')
+			if (!keys || keys.length == 0) {
+				throw new Error('No key with data-key %[1]q found.');
 			}
 			for (const key of keys) {
 				const rect = key.getBoundingClientRect();
@@ -141,16 +144,19 @@ func TapKey(ctx context.Context, kconn *chrome.Conn, key string) error {
 				key.dispatchEvent(new Event('pointerup'));
 				return;
 			}
-			throw new Error('Key %[1]q not clickable. Found elements with aria-label %[1]q, but they were not visible.');
+			throw new Error('No element with data-key %[1]q is visible.');
 		})()
 		`, key), nil)
 	}
 
-	if err := tapKey(key); err == nil {
+	err := tapKey(key)
+	if err == nil {
 		return nil
 	}
 	// The key couldn't be found probably because shift had to be toggled.
-	if err := tapKey("shift"); err != nil {
+	// TODO(122456478): Ensure that text fields have auto-capitalization turned
+	// off and remove this code.
+	if errShift := tapKey("ShiftLeft-shift"); errShift != nil {
 		return err
 	}
 	return tapKey(key)
@@ -178,4 +184,23 @@ func GetSuggestions(ctx context.Context, kconn *chrome.Conn) ([]string, error) {
 	})()
 `, &suggestions)
 	return suggestions, err
+}
+
+// WaitForLayout waits for a keyboard layout to finish loading.
+func WaitForLayout(ctx context.Context, kconn *chrome.Conn, layout string) error {
+	return kconn.EvalPromise(ctx, fmt.Sprintf(`
+new Promise((resolve, reject) => {
+	const check = () => {
+		try {
+			if (document.getElementById('%[1]s')) {
+				resolve();
+			}
+		} catch (e) {
+			console.log(e);
+		}
+		setTimeout(check, 10);
+	}
+	check();
+})
+`, layout), nil)
 }

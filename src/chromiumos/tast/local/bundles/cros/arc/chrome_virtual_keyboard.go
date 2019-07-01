@@ -101,30 +101,37 @@ func ChromeVirtualKeyboard(ctx context.Context, s *testing.State) {
 
 	// Press a sequence of keys. Avoid using Space since it triggers autocomplete, which can
 	// cause flaky failures: http://b/122456478#comment4
-	keys := []string{
-		"h", "e", "l", "l", "o", "w", "o",
-		"backspace", "backspace", "t", "a", "s", "t"}
+	inputSequence := []*struct {
+		key      string
+		expected string
+	}{
+		{"softkey_latin_h", "h"},
+		{"softkey_latin_e", "he"},
+		{"softkey_latin_l", "hel"},
+		{"softkey_latin_l", "hell"},
+		{"softkey_latin_o", "hello"},
+		{"softkey_latin_w", "hellow"},
+		{"softkey_latin_o", "hellowo"},
+		{"Backspace", "hellow"},
+		{"Backspace", "hello"},
+		{"softkey_latin_t", "hellot"},
+		{"softkey_latin_a", "hellota"},
+		{"softkey_latin_s", "hellotas"},
+		{"softkey_latin_t", "hellotast"},
+	}
 
-	expected := ""
-
-	for _, key := range keys {
-		if err := vkb.TapKey(ctx, kconn, key); err != nil {
-			s.Fatalf("Failed to tap %q: %v", key, err)
-		}
-
-		if key == "backspace" {
-			expected = expected[:len(expected)-1]
-		} else {
-			expected += key
+	for i, input := range inputSequence {
+		if err := vkb.TapKey(ctx, kconn, input.key); err != nil {
+			s.Fatalf("Failed to tap %s: %v", input.key, err)
 		}
 
 		// Check the input field after each keystroke to avoid flakiness. https://crbug.com/945729
 		// In order to use GetText() after timeout, we should have shorter timeout than ctx.
-		if err := d.Object(ui.ID(fieldID), ui.Text(expected)).WaitForExists(ctx, 30*time.Second); err != nil {
+		if err := d.Object(ui.ID(fieldID), ui.Text(input.expected)).WaitForExists(ctx, 30*time.Second); err != nil {
 			if actual, err := field.GetText(ctx); err != nil {
 				s.Fatal("Failed to get text: ", err)
 			} else {
-				s.Fatalf("Got input %q from field after typing %q", actual, expected)
+				s.Fatalf("Unexpected text at %d: got %q; want %q", i, actual, input.expected)
 			}
 		}
 	}

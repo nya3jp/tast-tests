@@ -84,11 +84,12 @@ func VirtualKeyboardSuggestionsInformational(ctx context.Context, s *testing.Sta
 	// Each input method should only have one test case.
 	testCases := []struct {
 		InputMethod        string
+		Layout             string
 		Keys               []string
 		ExpectedSuggestion string
 	}{
-		{"nacl_mozc_jp", []string{"n", "i", "h", "o", "n", "g", "o"}, "日本語"},
-		{"nacl_mozc_us", []string{"n", "i", "h", "o", "n", "g", "o"}, "日本語"},
+		{"nacl_mozc_jp", "jp.compact.qwerty", []string{"softkey_jp_n", "softkey_jp_i", "softkey_jp_h", "softkey_jp_o", "softkey_jp_n", "softkey_jp_g", "softkey_jp_o"}, "日本語"},
+		{"nacl_mozc_us", "jp_us.compact.qwerty", []string{"softkey_jpus_n", "softkey_jpus_i", "softkey_jpus_h", "softkey_jpus_o", "softkey_jpus_n", "softkey_jpus_g", "softkey_jpus_o"}, "日本語"},
 	}
 
 	const xkbExtensionID = "_comp_ime_jkghodnilhceideoidjikpgommlajknk"
@@ -98,6 +99,12 @@ func VirtualKeyboardSuggestionsInformational(ctx context.Context, s *testing.Sta
 
 		if err := vkb.SetCurrentInputMethod(ctx, tconn, xkbExtensionID+testCase.InputMethod); err != nil {
 			s.Error("Failed to set input method: ", err)
+			continue
+		}
+
+		s.Log("Waiting for layout to change to ", testCase.Layout)
+		if err := vkb.WaitForLayout(ctx, kconn, testCase.Layout); err != nil {
+			s.Error("Failed to wait for layout to change: ", err)
 			continue
 		}
 
