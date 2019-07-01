@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b4f8885a_f088363c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-01T07:32:59Z",
+      "side": 1,
+      "message": "If so, we should define flags outside of pre.go and use it here. I think pre.go should only provide testing.Precondition values.\nIt\u0027s confusing to use pre package in places to which precondition is unrelated.",
+      "parentUuid": "3101989c_0a4b8a21",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 24
+      },
+      "revId": "5e3b9b2c1fa336f01676ac65f712ad45e7aad011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9dad460d_c0446b4c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
@@ -148,6 +172,24 @@
       "side": 1,
       "message": "Because when the flaky reason is found, we can switch back to use TestPlay() to save about 10 seconds for restarting Chrome before test and exiting Chrome after test.",
       "parentUuid": "9dad460d_c0446b4c",
+      "revId": "5e3b9b2c1fa336f01676ac65f712ad45e7aad011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2727c31f_3beb77c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-01T07:32:59Z",
+      "side": 1,
+      "message": "I think we should keep showing debug logs after the tests are stabilized. Otherwise, it\u0027ll be hard to debug tests if a test becomes flaky again.\nSo, it wouldn\u0027t be a good idea to switch back to TestPlay() without any change. If we choose this way, the tests will be emitting a lot of logs that no one can see. This won\u0027t solve the root problem.\n\nI think possible changes are:\n(a) Give up using Precondition for video tests.\n(b) Reduce the amounts of log messages not to be trimmed.\n(c) Stop trimming by changing autotest (or Tast framework)\nI think (a) is the easiest way and I thought you had chosen this. But, perhaps, we can choose another solution to save 10 seconds.\nWDYT?",
+      "parentUuid": "38af31ad_5b4cc67c",
       "revId": "5e3b9b2c1fa336f01676ac65f712ad45e7aad011",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
