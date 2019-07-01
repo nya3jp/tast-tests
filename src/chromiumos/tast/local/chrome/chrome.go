@@ -515,10 +515,9 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 		args = append(args, "--arc-availability=none")
 	case arcEnabled:
 		args = append(args,
-			// Disable ARC opt-in verification to test ARC with mock GAIA accounts.
-			"--disable-arc-opt-in-verification",
-			// Always start ARC to avoid unnecessarily stopping mini containers.
-			"--arc-start-mode=always-start-with-no-play-store")
+			"--arc-start-mode=always-start",
+			"--arc-play-store-auto-update=off",
+			"--arc-disable-locale-sync")  // Modified by niwa
 		if !c.restrictARCCPU {
 			args = append(args,
 				// Disable CPU restrictions to let tests run faster
