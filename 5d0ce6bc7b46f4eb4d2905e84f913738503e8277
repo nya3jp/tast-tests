@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd4ae025_27869cf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-07-01T06:33:35Z",
+      "side": 1,
+      "message": "Please add a TODO: skip setting scaling_governor on disabled CPU.",
+      "revId": "5d0ce6bc7b46f4eb4d2905e84f913738503e8277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9400992f_ca1c8de2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-07-01T06:33:35Z",
+      "side": 1,
+      "message": "BTW, the error message is misleading: applyConfig() executes on both disabling CPU scaling and re-enabling it. So a neutral term should be better: \"Failed to read %v\"\n\nThis shall be fixed in a separate CL.",
+      "revId": "5d0ce6bc7b46f4eb4d2905e84f913738503e8277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27b171c1_c7bb4b54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-07-01T06:33:35Z",
+      "side": 1,
+      "message": "Same here: \"Failed to write %v to %v\", config.value, path\n\nThis shall be fixed in a separate CL.",
+      "revId": "5d0ce6bc7b46f4eb4d2905e84f913738503e8277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
