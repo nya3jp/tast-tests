@@ -22,6 +22,30 @@
       "revId": "bd34bdddd84bdd9f494229888fa910dcce1c1bfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc7e13f8_1e7cdaa3",
+        "filename": "src/chromiumos/tast/local/arc/proc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-01T15:43:59Z",
+      "side": 1,
+      "message": "How about just setting root uid for VM, too, instead?\nThen check can be identical.",
+      "parentUuid": "410a9d1f_67646997",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 11
+      },
+      "revId": "bd34bdddd84bdd9f494229888fa910dcce1c1bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
