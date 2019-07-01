@@ -114,6 +114,7 @@ var expectedFirstAPILevelMap = map[string]string{
 	"gandof":           apiLevelN,
 	"hana":             apiLevelN,
 	"kefka":            apiLevelN,
+	"kefka-kernelnext": apiLevelN,
 	"kevin":            apiLevelN,
 	"kevin-arcnext":    apiLevelN,
 	"lars":             apiLevelN,
