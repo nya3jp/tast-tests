@@ -159,6 +159,24 @@
       "revId": "55b2b704029217dcebc84d5ac25ee2d540f523e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ee5884f_9fbe5082",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2019-07-01T05:29:40Z",
+      "side": 1,
+      "message": "I\u0027m not sure I follow.  Won\u0027t the goroutine get cleaned up when vm.stdout is destroyed?  In that case it\u0027s not really a leak.  Or is the issue that the extra goroutine will prevent vm.stdout from being destroyed?  Could we add an explicit close on bch and on vm.stdout?",
+      "parentUuid": "ba5a708f_6bc43240",
+      "revId": "55b2b704029217dcebc84d5ac25ee2d540f523e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
