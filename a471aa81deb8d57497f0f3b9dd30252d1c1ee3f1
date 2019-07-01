@@ -25,6 +25,52 @@
     },
     {
       "key": {
+        "uuid": "160ebc5e_6704ae67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-01T01:26:33Z",
+      "side": 1,
+      "message": "Seems like its code has been not submitted yet (go/ag/8232503). Please wait it and make sure to update the APK after it is submitted.",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 37
+      },
+      "revId": "a471aa81deb8d57497f0f3b9dd30252d1c1ee3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f12a948_e10ef3e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-01T01:26:33Z",
+      "side": 1,
+      "message": "style: Please add a trailing period to make it a sentence.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences\n\nDitto for other other comments.",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 23
+      },
+      "revId": "a471aa81deb8d57497f0f3b9dd30252d1c1ee3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0420de62_2d6b93ae",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
         "patchSetId": 3
@@ -179,6 +225,29 @@
         "startChar": 47,
         "endLine": 128,
         "endChar": 52
+      },
+      "revId": "a471aa81deb8d57497f0f3b9dd30252d1c1ee3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc12568d_0614445e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-01T01:26:33Z",
+      "side": 1,
+      "message": "It would be also helpful for debugging to include newState in the error message.",
+      "range": {
+        "startLine": 128,
+        "startChar": 41,
+        "endLine": 128,
+        "endChar": 48
       },
       "revId": "a471aa81deb8d57497f0f3b9dd30252d1c1ee3f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
