@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bbe2f80_b2abbec4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T15:00:23Z",
+      "side": 1,
+      "message": "Could you move this down around L269?",
+      "revId": "840d5dfa17079eae51fea50d1f11bf1cbe2d9ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c8c9baf_4543da20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T15:00:23Z",
+      "side": 1,
+      "message": "nit: \"ctx\" as we agreed?",
+      "range": {
+        "startLine": 256,
+        "startChar": 27,
+        "endLine": 256,
+        "endChar": 35
+      },
+      "revId": "840d5dfa17079eae51fea50d1f11bf1cbe2d9ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31910c6e_b40d8dd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T15:00:23Z",
+      "side": 1,
+      "message": "I think this should be s.Fatal(), because if stopping ui fails, the benchmark results would be non-comparable with other runs, IIUC?",
+      "revId": "840d5dfa17079eae51fea50d1f11bf1cbe2d9ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93e57b03_87c9614f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T15:00:23Z",
+      "side": 1,
+      "message": "missing return?",
+      "revId": "840d5dfa17079eae51fea50d1f11bf1cbe2d9ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29bd8955_76975482",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/perf.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T15:00:23Z",
+      "side": 1,
+      "message": "style: IIUC, you can inline:\n\nvar metrics struct {\n  ...\n}\n\nditto for below.",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 24
+      },
+      "revId": "840d5dfa17079eae51fea50d1f11bf1cbe2d9ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a32e5971_50023ef2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_perf_h264_1080p_60fps.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T15:00:23Z",
+      "side": 1,
+      "message": "Any plans to add more variation?\nIf not, inlining the test here would be simpler.",
+      "revId": "840d5dfa17079eae51fea50d1f11bf1cbe2d9ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
