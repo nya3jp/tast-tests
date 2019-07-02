@@ -423,6 +423,11 @@ func (ac *Activity) WaitForIdle(ctx context.Context, timeout time.Duration) erro
 	}, &testing.PollOptions{Timeout: timeout})
 }
 
+// PackageName returns the activity package name.
+func (ac *Activity) PackageName() string {
+	return ac.pkgName
+}
+
 // swipe injects touch events in a straight line. The line is defined by from and to, in pixels.
 // t represents the duration of the swipe.
 // The last touch event will be held in its position for a few ms to prevent triggering "minimize" or similar gestures.
