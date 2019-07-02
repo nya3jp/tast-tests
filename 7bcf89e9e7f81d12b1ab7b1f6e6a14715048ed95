@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9959c2f8_b74264ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T15:30:58Z",
+      "side": 1,
+      "message": "Could you use []*struct{...} in order to avoid copying string in iteration?",
+      "revId": "7bcf89e9e7f81d12b1ab7b1f6e6a14715048ed95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e465d4e5_6ded7da5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T15:30:58Z",
+      "side": 1,
+      "message": "optional: since .key is known and does not contain white spaces, you can just use %s for simplicity.",
+      "range": {
+        "startLine": 125,
+        "startChar": 27,
+        "endLine": 125,
+        "endChar": 29
+      },
+      "revId": "7bcf89e9e7f81d12b1ab7b1f6e6a14715048ed95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c599717f_f3a70141",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T15:30:58Z",
+      "side": 1,
+      "message": "How about updating the message. E.g.;\n\nfor i, input :\u003d range inputSequence {\n  ...\n  s.Fatalf(\"Unexpected text at %d: got %q; want %q\", i, actual, input.expected)\n\nNote that \"got ...; want ...\" is a typical message format in tast/go.",
+      "range": {
+        "startLine": 134,
+        "startChar": 14,
+        "endLine": 134,
+        "endChar": 53
+      },
+      "revId": "7bcf89e9e7f81d12b1ab7b1f6e6a14715048ed95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b84ed582_69981cbe",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T15:30:58Z",
+      "side": 1,
+      "message": "optional: how about simplifying the message by deduplicating %[1]q? E.g.;\n\n\"No key with data-key %[1]q found.\"",
+      "range": {
+        "startLine": 133,
+        "startChar": 21,
+        "endLine": 133,
+        "endChar": 83
+      },
+      "revId": "7bcf89e9e7f81d12b1ab7b1f6e6a14715048ed95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f7e9c7d_7953811e",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T15:30:58Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 147,
+        "startChar": 19,
+        "endLine": 147,
+        "endChar": 118
+      },
+      "revId": "7bcf89e9e7f81d12b1ab7b1f6e6a14715048ed95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
