@@ -27,7 +27,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Memd,
 		Desc:         "Checks that memd works",
-		Contacts:     []string{"semenzato@chromium.org"},
+		Contacts:     []string{"sonnyrao@chromium.org"},
 		SoftwareDeps: []string{"memd"},
 	})
 }
@@ -134,7 +134,7 @@ func Memd(ctx context.Context, s *testing.State) {
 		s.Fatal("memd is not running")
 	}
 
-	originalMargin, err := readAsInt(marginPath)
+	originalMargin, err := ioutil.ReadFile(marginPath)
 	if err != nil {
 		s.Fatalf("Cannot read %v: %v", marginPath, err)
 	}
@@ -146,8 +146,7 @@ func Memd(ctx context.Context, s *testing.State) {
 	defer func() {
 		// Restore the original margin.  (We don't know if it has been
 		// changed yet, but it doesn't matter.)
-		if err := ioutil.WriteFile(marginPath,
-			[]byte(strconv.Itoa(originalMargin)), 0644); err != nil {
+		if err := ioutil.WriteFile(marginPath, originalMargin, 0644); err != nil {
 			s.Errorf("Cannot write %v: %v", marginPath, err)
 		}
 		// Restart memd to pick up the original margin.  Note that
