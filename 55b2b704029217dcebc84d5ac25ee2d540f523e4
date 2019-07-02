@@ -195,6 +195,24 @@
       "revId": "55b2b704029217dcebc84d5ac25ee2d540f523e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "386a0b5c_51274cc8",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2019-07-02T04:41:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3471ac1f_fb988354",
+      "revId": "55b2b704029217dcebc84d5ac25ee2d540f523e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
