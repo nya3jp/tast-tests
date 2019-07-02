@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d71c4736_9df275f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T14:23:37Z",
+      "side": 1,
+      "message": "return errors.Wrapf(...)\nCurrently, even if command fails, this would not return an error.",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 8
+      },
+      "revId": "bcc49f172ca236d15efc2508d0de8f3832341f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f9fb41d_e948032b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T14:23:37Z",
+      "side": 1,
+      "message": "same.",
+      "revId": "bcc49f172ca236d15efc2508d0de8f3832341f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce19c868_edd6c7b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_interface_connection.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T14:23:37Z",
+      "side": 1,
+      "message": "nit: could you move these into the IWInterfaceConnection function body to narrowing the scope?\nCurrently these are in the package scope, so any tests in bundles/cros/network can access them.",
+      "revId": "bcc49f172ca236d15efc2508d0de8f3832341f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca32fcb8_68dd7a55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_interface_connection.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T14:23:37Z",
+      "side": 1,
+      "message": "Could you use Fatalf?\n\ns.Fatalf(\"Could not bring up interface %s: %v\", iface, err)",
+      "revId": "bcc49f172ca236d15efc2508d0de8f3832341f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
