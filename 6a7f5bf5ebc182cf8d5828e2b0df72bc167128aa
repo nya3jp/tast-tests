@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb3c2efa_44d3adac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_switch_shortcut.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T16:36:12Z",
+      "side": 1,
+      "message": "Looks a bit lengthy. Can this be reduced to, like 4-5 mins even including arc.Booted() time?\n(If this is not special case, maybe we\u0027d set this to default timeout after crbug.com/952125).\n\nOr, if there\u0027s special reason, could you comment?",
+      "revId": "6a7f5bf5ebc182cf8d5828e2b0df72bc167128aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34653715_51577bd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_switch_shortcut.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T16:36:12Z",
+      "side": 1,
+      "message": "Could you use const?",
+      "revId": "6a7f5bf5ebc182cf8d5828e2b0df72bc167128aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ba51d96_d8f464f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_switch_shortcut.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T16:36:12Z",
+      "side": 1,
+      "message": "Ditto for const.",
+      "revId": "6a7f5bf5ebc182cf8d5828e2b0df72bc167128aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f968445d_7512bb51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_switch_shortcut.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T16:36:12Z",
+      "side": 1,
+      "message": "nit/stle: beforeIMEID. In go acronym should be all capital letters.",
+      "revId": "6a7f5bf5ebc182cf8d5828e2b0df72bc167128aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e304c36_8edf9892",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_switch_shortcut.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T16:36:12Z",
+      "side": 1,
+      "message": "Looks copy of beforeImeID part. How about extracting this into a function?\n\ngetCurrentInputMethod :\u003d func() (string, error) {\n  var ret string\n  if err :\u003d tconn.EvalPromise(ctx, ..., \u0026ret); err !\u003d nil {\n    return \"\", errors.Wrap(err, \"failed to get current ime\")\n  }\n  return ret, nil\n}\n\nif beforeIME, err :\u003d getCurrentInputMethod(); err !\u003d nil {\n  ...\n} else if beforeIME !\u003d defaultID {\n  ...\n}\n\n... same for afterIME ...",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 2
+      },
+      "revId": "6a7f5bf5ebc182cf8d5828e2b0df72bc167128aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
