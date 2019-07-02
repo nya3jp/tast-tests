@@ -311,11 +311,10 @@ func (a *App) toggleOption(ctx context.Context, option string, toggleSelector st
 	if err != nil {
 		return false, err
 	}
-	code := fmt.Sprintf("document.querySelector(%q).click()", toggleSelector)
-	if err := a.conn.Eval(ctx, code, nil); err != nil {
+	if err := a.ClickWithSelector(ctx, toggleSelector); err != nil {
 		return false, errors.Wrapf(err, "failed to click on toggle button of selector %s", toggleSelector)
 	}
-	code = fmt.Sprintf("cca.state.get(%q) !== %t", option, prev)
+	code := fmt.Sprintf("cca.state.get(%q) !== %t", option, prev)
 	if err := a.conn.WaitForExpr(ctx, code); err != nil {
 		return false, errors.Wrapf(err, "failed to wait for toggling option %s", option)
 	}
@@ -411,4 +410,10 @@ func (a *App) CheckGridOption(ctx context.Context, expected bool) error {
 		return errors.Errorf("unexpected grid option enablement: got %v, want %v", actual, expected)
 	}
 	return nil
+}
+
+// ClickWithSelector clicks an element with given selector.
+func (a *App) ClickWithSelector(ctx context.Context, selector string) error {
+	code := fmt.Sprintf("document.querySelector(%q).click()", selector)
+	return a.conn.Eval(ctx, code, nil)
 }

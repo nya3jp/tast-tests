@@ -643,9 +643,36 @@ func newTarget(t *target.Info) *Target {
 // TargetMatcher is a caller-provided function that matches targets with specific characteristics.
 type TargetMatcher func(t *Target) bool
 
+// TargetInfoMatcher is a caller-provided function that matches targets info with specific characteristics.
+type TargetInfoMatcher func(t *target.Info) bool
+
 // MatchTargetURL returns a TargetMatcher that matches targets with the supplied URL.
 func MatchTargetURL(url string) TargetMatcher {
 	return func(t *Target) bool { return t.URL == url }
+}
+
+// WaitForTarget waits until the appearance of targets matching given conditions in chrome dev tools.
+func (c *Chrome) WaitForTarget(ctx context.Context, matcher TargetInfoMatcher, timeout time.Duration) error {
+	var errNoMatch = errors.New("no targets matched")
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if exist, err := c.targetExists(ctx, matcher); err != nil {
+			return err
+		} else if !exist {
+			return errNoMatch
+		}
+		return nil
+	}, &testing.PollOptions{Interval: time.Second, Timeout: timeout}); err != nil && err != errNoMatch {
+		return err
+	}
+	return nil
+}
+
+func (c *Chrome) targetExists(ctx context.Context, matcher TargetInfoMatcher) (bool, error) {
+	if all, err := c.getDevtoolTargets(ctx, matcher); err != nil {
+		return false, err
+	}
+	return len(all) > 0, nil
 }
 
 // NewConnForTarget iterates through all available targets and returns a connection to the
