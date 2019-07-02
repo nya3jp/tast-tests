@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c7f14db_50488925",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-07-02T18:45:38Z",
+      "side": 1,
+      "message": "Any reason why you chose graphics instead of the video package? There are some webrtc tests there.",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 16
+      },
+      "revId": "8df3479ddf97cbf938addd36a6b874df96632a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "076ec1b4_1d1051c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-07-02T18:45:38Z",
+      "side": 1,
+      "message": "nit: Indented incorrectly. Same on lns. 89 and 103.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 4
+      },
+      "revId": "8df3479ddf97cbf938addd36a6b874df96632a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "713ce24d_5b5cf871",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-07-02T18:45:38Z",
+      "side": 1,
+      "message": "Unless you have a specific reason to set this, I would omit it [1].\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/src/chromiumos/tast/testing/test.go#101",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "8df3479ddf97cbf938addd36a6b874df96632a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "825e48ad_aadb7d27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-07-02T18:45:38Z",
+      "side": 1,
+      "message": "Just a bit of brainstorming because I\u0027ve never done Chrome tast tests:\n\n1) According to [1], New() restarts the ui job, so I don\u0027t think you have to do it in ln. 39.\n\n2) However, unless you absolutely need a new Chrome, you may want to express this in terms of a precondition: in testing.AddTest(), add something like (or define the precondition in a pre.go file, see [2] and [3]):\n\nPre: chrome.NewPrecondition(\"webrtc\", chrome.ExtraArgs(chromeArgs...))\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/chrome/chrome.go#221\n[2] https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/chrome/pre.go#32\n[3] https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/bundles/cros/video/lib/pre/pre.go",
+      "range": {
+        "startLine": 56,
+        "startChar": 12,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "8df3479ddf97cbf938addd36a6b874df96632a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a194b8cb_8957263c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-07-02T18:45:38Z",
+      "side": 1,
+      "message": "All the log messages here should start with capital letter. Also, consider using\n\ns.Fatal(\"...: \", err) instead of s.Fatalf() (I see you\u0027re using a mix throughout the test).",
+      "range": {
+        "startLine": 72,
+        "startChar": 12,
+        "endLine": 72,
+        "endChar": 13
+      },
+      "revId": "8df3479ddf97cbf938addd36a6b874df96632a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e2304c5_6414b498",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-07-02T18:45:38Z",
+      "side": 1,
+      "message": "You may want to use the Sleep() in [1] instead because it detects interruption.\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/src/chromiumos/tast/testing/util.go#19",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 30
+      },
+      "revId": "8df3479ddf97cbf938addd36a6b874df96632a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
