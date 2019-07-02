@@ -76,6 +76,29 @@
     },
     {
       "key": {
+        "uuid": "96d8b1e3_53c888c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-02T15:32:35Z",
+      "side": 1,
+      "message": "percent?",
+      "range": {
+        "startLine": 307,
+        "startChar": 14,
+        "endLine": 307,
+        "endChar": 19
+      },
+      "revId": "840d5dfa17079eae51fea50d1f11bf1cbe2d9ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "29bd8955_76975482",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/perf.go",
         "patchSetId": 18
@@ -92,6 +115,75 @@
         "startChar": 1,
         "endLine": 34,
         "endChar": 24
+      },
+      "revId": "840d5dfa17079eae51fea50d1f11bf1cbe2d9ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f977b24_ecaf8a38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/perf.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-02T15:32:35Z",
+      "side": 1,
+      "message": "nit: JSON",
+      "range": {
+        "startLine": 64,
+        "startChar": 37,
+        "endLine": 64,
+        "endChar": 41
+      },
+      "revId": "840d5dfa17079eae51fea50d1f11bf1cbe2d9ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a32ecdb0_914a2bca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/perf.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-02T15:32:35Z",
+      "side": 1,
+      "message": "percent?",
+      "range": {
+        "startLine": 86,
+        "startChar": 14,
+        "endLine": 86,
+        "endChar": 19
+      },
+      "revId": "840d5dfa17079eae51fea50d1f11bf1cbe2d9ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86e2c82f_d1c4bae9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_perf_h264_1080p_60fps.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-02T15:32:35Z",
+      "side": 1,
+      "message": "nit: How about creating a function like a general version of decode.DataFiles()?",
+      "range": {
+        "startLine": 22,
+        "startChar": 25,
+        "endLine": 22,
+        "endChar": 88
       },
       "revId": "840d5dfa17079eae51fea50d1f11bf1cbe2d9ee9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
