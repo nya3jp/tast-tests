@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6c5bf078_718724c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_shortcut.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2019-07-02T07:43:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1898236b_3d4b972c",
+      "range": {
+        "startLine": 20,
+        "startChar": 16,
+        "endLine": 20,
+        "endChar": 32
+      },
+      "revId": "c3aa6e37d78bbd4b2965c68ba3ca300035d830dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45fb24af_d4e10739",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_shortcut.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "c3aa6e37d78bbd4b2965c68ba3ca300035d830dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa6dcb5b_bf27c3ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_shortcut.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2019-07-02T07:43:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45fb24af_d4e10739",
+      "range": {
+        "startLine": 21,
+        "startChar": 17,
+        "endLine": 21,
+        "endChar": 61
+      },
+      "revId": "c3aa6e37d78bbd4b2965c68ba3ca300035d830dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c40dde4a_e8c92005",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_shortcut.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2019-07-02T07:43:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f26f6e7a_1b9d8994",
+      "range": {
+        "startLine": 110,
+        "startChar": 33,
+        "endLine": 110,
+        "endChar": 41
+      },
+      "revId": "c3aa6e37d78bbd4b2965c68ba3ca300035d830dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d00d722_fcdbeda0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_shortcut.go",
         "patchSetId": 1
@@ -85,6 +157,24 @@
       "revId": "c3aa6e37d78bbd4b2965c68ba3ca300035d830dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2b18d47_a1d6634d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keyboard_shortcut.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2019-07-02T07:43:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d00d722_fcdbeda0",
+      "revId": "c3aa6e37d78bbd4b2965c68ba3ca300035d830dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
