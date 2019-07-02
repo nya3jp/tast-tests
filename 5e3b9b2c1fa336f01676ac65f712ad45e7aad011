@@ -232,6 +232,24 @@
     },
     {
       "key": {
+        "uuid": "91e989e4_a44525dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-07-02T03:07:44Z",
+      "side": 1,
+      "message": "I finally got what you mean: the log should not be trimmed even if the tests are stable. \n\nUsing precondition (shared Chrome instance) can lead to Chrome log being trimmed. So before Tast infrastructure provides a snapshot of logs per test, we shall run TestPlay-based tests in a standalone Chrome session.",
+      "parentUuid": "46e022f6_8b6d1d2e",
+      "revId": "5e3b9b2c1fa336f01676ac65f712ad45e7aad011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4fe975b1_80cc7b2c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 1
