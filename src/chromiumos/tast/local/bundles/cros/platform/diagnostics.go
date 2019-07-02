@@ -21,10 +21,11 @@ func init() {
 		Func: Diagnostics,
 		Desc: "Tests 'diag' command line utility",
 		Contacts: []string{
-			"mathewk@chromium.org", // Test author
-			"pmoy@chromium.org",    // diag tool author
+			"mathewk@chromium.org",   // Test author
+			"pmoy@chromium.org",      // diag tool author
+			"wbbradley@chromium.org", // diag maintainer
 		},
-		SoftwareDeps: []string{"diagnostics"},
+		SoftwareDeps: []string{"diagnostics", "wilco"},
 	})
 }
 
