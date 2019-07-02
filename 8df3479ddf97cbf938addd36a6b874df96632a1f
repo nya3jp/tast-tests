@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "bf3f64d8_babf696b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-07-02T19:39:12Z",
+      "side": 1,
+      "message": "Are you intend to put this into CQ? IIUC, informational tag is used for mainline tests to put into CQ later on. Consider to put group:crosbolt if you just want to get the metrics.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_attributes.md",
+      "range": {
+        "startLine": 26,
+        "startChar": 26,
+        "endLine": 26,
+        "endChar": 39
+      },
+      "revId": "8df3479ddf97cbf938addd36a6b874df96632a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "076ec1b4_1d1051c2",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
         "patchSetId": 6
@@ -59,6 +82,30 @@
       "writtenOn": "2019-07-02T18:45:38Z",
       "side": 1,
       "message": "Unless you have a specific reason to set this, I would omit it [1].\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/src/chromiumos/tast/testing/test.go#101",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "8df3479ddf97cbf938addd36a6b874df96632a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cda03bec_38331d8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-07-02T19:39:12Z",
+      "side": 1,
+      "message": "I\u0027m more interested in what is the default timeout. IIUC, tast in general is designed for CQ so the default timeout might be limited.",
+      "parentUuid": "713ce24d_5b5cf871",
       "range": {
         "startLine": 29,
         "startChar": 2,
@@ -133,6 +180,29 @@
         "startChar": 2,
         "endLine": 89,
         "endChar": 30
+      },
+      "revId": "8df3479ddf97cbf938addd36a6b874df96632a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0f6c5a2_699ea80c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-07-02T19:39:12Z",
+      "side": 1,
+      "message": "If you want to upload this to chromeperf, you should whitelist \nyour test in perf_dashboard_config.\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/perf/perf.go?l\u003d12\u0026rcl\u003d983a05313d7cdf7c6b85283a1e89ed1b658d6481",
+      "range": {
+        "startLine": 118,
+        "startChar": 14,
+        "endLine": 118,
+        "endChar": 55
       },
       "revId": "8df3479ddf97cbf938addd36a6b874df96632a1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
