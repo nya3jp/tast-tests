@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6cf60dfc_b160701c",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-07-02T23:03:38Z",
+      "side": 1,
+      "message": "Is it possible to have custom arg pass to the VM/Container creation similar to how chrome.NewPrecondition did? It would be nice for those tests with different VM/Container args with mainline crostini tests.",
+      "revId": "6d2ab37ff0aaf25c466e48976a1fcc68c6c82eb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd16dea7_436e824b",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-07-02T23:03:38Z",
+      "side": 1,
+      "message": "FYI, CL:1668150 landed. Can you change this to CreateDefaultVMContainer?",
+      "range": {
+        "startLine": 94,
+        "startChar": 18,
+        "endLine": 94,
+        "endChar": 40
+      },
+      "revId": "6d2ab37ff0aaf25c466e48976a1fcc68c6c82eb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

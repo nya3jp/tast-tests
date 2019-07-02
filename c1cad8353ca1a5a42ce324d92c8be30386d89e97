@@ -46,6 +46,29 @@
       "revId": "c1cad8353ca1a5a42ce324d92c8be30386d89e97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc453678_f5cdd21f",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-07-02T23:03:38Z",
+      "side": 1,
+      "message": "Not sure about it. Is it possible to pass a arg to query different kind of VM/container?",
+      "range": {
+        "startLine": 31,
+        "startChar": 21,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "c1cad8353ca1a5a42ce324d92c8be30386d89e97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
