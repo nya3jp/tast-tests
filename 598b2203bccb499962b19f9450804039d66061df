@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d37d044_3414087f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T15:19:28Z",
+      "side": 1,
+      "message": "As we agreed, could you move this to around L236, and simply overwrite ctx?\nDitto for below.",
+      "revId": "598b2203bccb499962b19f9450804039d66061df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a88c4474_02416f58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T15:19:28Z",
+      "side": 1,
+      "message": "optional: Could you rename somehow to avoid name conflicting (you already have public WaitUntilIdle() and \nnice to avoid same name but private one, since we sometimes change the visibility and the first letter is its controller, though technically it is allowed).\n\nOr, maybe just inline this into WaitUntilIdle, since it is the only caller.",
+      "range": {
+        "startLine": 157,
+        "startChar": 5,
+        "endLine": 157,
+        "endChar": 18
+      },
+      "revId": "598b2203bccb499962b19f9450804039d66061df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ccb5410_07d8ab7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T15:19:28Z",
+      "side": 1,
+      "message": "Clar: I guess, this is unexpected for each iteration, so the polling should be stopped?\nIf so, could you wrap this by testing.PollBreak()?",
+      "range": {
+        "startLine": 164,
+        "startChar": 10,
+        "endLine": 164,
+        "endChar": 56
+      },
+      "revId": "598b2203bccb499962b19f9450804039d66061df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3008eab_9bf95b86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T15:19:28Z",
+      "side": 1,
+      "message": "style: In tast/go, we use \"got ...; want ...\" to contrast the actual value and expected value. For consistency, how about following it? E.g.\n\nerrors.Errorf(\"unexpected CPU usage: got %.1f%%; want \u003c %.1f%%\", usage, maxUsage)",
+      "range": {
+        "startLine": 167,
+        "startChar": 25,
+        "endLine": 167,
+        "endChar": 83
+      },
+      "revId": "598b2203bccb499962b19f9450804039d66061df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
