@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a4a8b59_11183995",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T14:34:11Z",
+      "side": 1,
+      "message": "Clar/offtopic: Do you want to performance record if SW/HW is succeeded but the other is failed?\nIf so, it\u0027s nice to think about;\n- Returning error by runJPEGPerfBenchmark(), instead of s.Fatal() at L119.\n- Handle the error as s.Error(), so that the latter test (i.e. HW decode test) can run even if SW decode test fails.\n\nSo it\u0027d be something like;\n\np :\u003d perf.NewValues()\ndefer p.Save(s.OutDir())\nif cpuUsage, err :\u003d runJPEGPerfBenchmark(..., swFilter); err !\u003d nil {\n  s.Error(...)\n} else {\n  p.Set(perf.Metric{\n    Name: \"tast_sw_jpeg_decode_cpu\",\n    ...\n  }, cpuUsage)\n}\n... same for HW ...\n\nIt\u0027s totally up to you and your team. If you agreed, I\u0027d recommend to make another CL for that.",
+      "revId": "649d67e2c634d6e879d59871eac2be1da7af126c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
