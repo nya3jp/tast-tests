@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a7f0403_4caa2d5c",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-02T01:42:21Z",
+      "side": 1,
+      "message": "huge nit: mind removing this extra blank line?",
+      "revId": "60a81e022c03ad34a4536967e2083cb44b3fe136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "851963bb_0fcf6278",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-02T01:42:21Z",
+      "side": 1,
+      "message": "do you mean \"de-initializes\"?",
+      "range": {
+        "startLine": 118,
+        "startChar": 11,
+        "endLine": 118,
+        "endChar": 25
+      },
+      "revId": "60a81e022c03ad34a4536967e2083cb44b3fe136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc1b8777_bd8d159f",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-02T01:42:21Z",
+      "side": 1,
+      "message": "How about also logging the error returned from StopConcierge?\n\nI know we often ignore clean-up errors by just doing\n\n defer StopConcierge(ctx)\n\nBut precondition is a good start to change the trend. :)",
+      "range": {
+        "startLine": 125,
+        "startChar": 2,
+        "endLine": 125,
+        "endChar": 20
+      },
+      "revId": "60a81e022c03ad34a4536967e2083cb44b3fe136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e84945d3_108cf6b1",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-02T01:42:21Z",
+      "side": 1,
+      "message": "Same here: mind reporting errors?",
+      "range": {
+        "startLine": 136,
+        "startChar": 2,
+        "endLine": 136,
+        "endChar": 17
+      },
+      "revId": "60a81e022c03ad34a4536967e2083cb44b3fe136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10933f2c_552f5d66",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-02T01:42:21Z",
+      "side": 1,
+      "message": "ResetState can return error, please handle it.",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 21
+      },
+      "revId": "60a81e022c03ad34a4536967e2083cb44b3fe136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
