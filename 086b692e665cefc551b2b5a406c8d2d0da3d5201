@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb9d904e_986e1ffc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T16:05:57Z",
+      "side": 1,
+      "message": "According to the commit message, you\u0027re planning to tighten the ratio to make the test more accurate, right?\nCould you file a bug and add TODO?",
+      "revId": "086b692e665cefc551b2b5a406c8d2d0da3d5201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f424a1c_0b8136cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-02T16:05:57Z",
+      "side": 1,
+      "message": "style: (I know it is for existing code, but as you are touching this), how about using testexec.DumpLogOnError?\n\nstyle/optional: Also, in tast/go this is often written as inline.\n\nSo, e.g.;\n\nout, err :\u003d testexec.CommandContext(ctx, ...).Output(testexec.DumpLogOnError)\nif err !\u003d nil {\n  s.Fatal(\"Failed to run alsa_conformance_test: \", err)\n}",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 136,
+        "endChar": 3
+      },
+      "revId": "086b692e665cefc551b2b5a406c8d2d0da3d5201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
