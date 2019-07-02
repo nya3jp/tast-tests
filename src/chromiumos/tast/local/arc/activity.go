@@ -88,7 +88,7 @@ func (s WindowState) String() string {
 	case WindowStatePIP:
 		return "WindowStatePIP"
 	default:
-		return fmt.Sprintf("Uknown window state: %d", s)
+		return fmt.Sprintf("Unknown window state: %d", s)
 	}
 }
 
@@ -421,6 +421,11 @@ func (ac *Activity) WaitForIdle(ctx context.Context, timeout time.Duration) erro
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: timeout})
+}
+
+// PackageName returns the activity package name.
+func (ac *Activity) PackageName() string {
+	return ac.pkgName
 }
 
 // swipe injects touch events in a straight line. The line is defined by from and to, in pixels.
