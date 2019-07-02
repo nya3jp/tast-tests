@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8605726f_5c2b3114",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-07-02T23:37:24Z",
+      "side": 1,
+      "message": "Done. I\u0027m not familiar with Go, but what exactly is []*struct?",
+      "parentUuid": "9959c2f8_b74264ca",
+      "revId": "7bcf89e9e7f81d12b1ab7b1f6e6a14715048ed95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e465d4e5_6ded7da5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "7bcf89e9e7f81d12b1ab7b1f6e6a14715048ed95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc879d07_c0a3463d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-07-02T23:37:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e465d4e5_6ded7da5",
+      "range": {
+        "startLine": 125,
+        "startChar": 27,
+        "endLine": 125,
+        "endChar": 29
+      },
+      "revId": "7bcf89e9e7f81d12b1ab7b1f6e6a14715048ed95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "51a29eef_68132640",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-07-02T23:37:24Z",
+      "side": 1,
+      "message": "that\u0027s much better, thanks.",
+      "parentUuid": "c599717f_f3a70141",
+      "range": {
+        "startLine": 134,
+        "startChar": 14,
+        "endLine": 134,
+        "endChar": 53
+      },
+      "revId": "7bcf89e9e7f81d12b1ab7b1f6e6a14715048ed95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b84ed582_69981cbe",
         "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
         "patchSetId": 2
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "57ef7af0_db3e5c68",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-07-02T23:37:24Z",
+      "side": 1,
+      "message": "good idea :)",
+      "parentUuid": "b84ed582_69981cbe",
+      "range": {
+        "startLine": 133,
+        "startChar": 21,
+        "endLine": 133,
+        "endChar": 83
+      },
+      "revId": "7bcf89e9e7f81d12b1ab7b1f6e6a14715048ed95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f7e9c7d_7953811e",
         "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
         "patchSetId": 2
@@ -108,6 +198,30 @@
       "revId": "7bcf89e9e7f81d12b1ab7b1f6e6a14715048ed95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9e9a5b5_913c7d79",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-07-02T23:37:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f7e9c7d_7953811e",
+      "range": {
+        "startLine": 147,
+        "startChar": 19,
+        "endLine": 147,
+        "endChar": 118
+      },
+      "revId": "7bcf89e9e7f81d12b1ab7b1f6e6a14715048ed95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
