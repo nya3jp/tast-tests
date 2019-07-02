@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2e72e66_5c0f0b9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-02T02:42:10Z",
+      "side": 1,
+      "message": "nit: It\u0027s more common to inline errors.Wrap call when it\u0027s not too long:\n\n return nil, errors.Wrap(err, \"failed to ...\")\n\nSame for other places.",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 44
+      },
+      "revId": "1c3dcf7580b18ad2a453cc4514c3a926e98b2e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba401852_0aaa98c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-02T02:42:10Z",
+      "side": 1,
+      "message": "Please use errors.Wrapf instead.",
+      "range": {
+        "startLine": 131,
+        "startChar": 8,
+        "endLine": 131,
+        "endChar": 36
+      },
+      "revId": "1c3dcf7580b18ad2a453cc4514c3a926e98b2e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8cac1b1_4de5895f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-02T02:42:10Z",
+      "side": 1,
+      "message": "style: s/Unsupported/unsupported/",
+      "range": {
+        "startLine": 131,
+        "startChar": 38,
+        "endLine": 131,
+        "endChar": 49
+      },
+      "revId": "1c3dcf7580b18ad2a453cc4514c3a926e98b2e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acfff34b_6886a8d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-02T02:42:10Z",
+      "side": 1,
+      "message": "In this case I recommend having the whole string constant in a line, i.e.\n\n errors.Wrapf(err, \"unsupported operating mode %s found for interface %s\", opMode, iface)\n\nNote that we don\u0027t have hard column limit in Go code.",
+      "range": {
+        "startLine": 131,
+        "startChar": 76,
+        "endLine": 131,
+        "endChar": 79
+      },
+      "revId": "1c3dcf7580b18ad2a453cc4514c3a926e98b2e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ae6778c_22633f2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-02T02:42:10Z",
+      "side": 1,
+      "message": "I recommend returning *ChannelConfig instead to avoid excessive copying. Also you can return nil when err !\u003d nil.",
+      "range": {
+        "startLine": 141,
+        "startChar": 56,
+        "endLine": 141,
+        "endChar": 69
+      },
+      "revId": "1c3dcf7580b18ad2a453cc4514c3a926e98b2e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "680fb700_ae33ed92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-02T02:42:10Z",
+      "side": 1,
+      "message": "nit: It\u0027s more common to inline errors.Wrap call when it\u0027s not too long:\n\n return nil, errors.Wrap(err, \"failed to ...\")",
+      "range": {
+        "startLine": 144,
+        "startChar": 2,
+        "endLine": 145,
+        "endChar": 29
+      },
+      "revId": "1c3dcf7580b18ad2a453cc4514c3a926e98b2e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "724a8332_5fca7f79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-02T02:42:10Z",
+      "side": 1,
+      "message": "I\u0027m not an expert here, but does it necessary to restrict the width to 20/40/80 MHz and reject other values as parse errors?",
+      "range": {
+        "startLine": 148,
+        "startChar": 50,
+        "endLine": 148,
+        "endChar": 57
+      },
+      "revId": "1c3dcf7580b18ad2a453cc4514c3a926e98b2e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a249cfa_3146e894",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-02T02:42:10Z",
+      "side": 1,
+      "message": "huge nit: \\d is more common than [0-9].",
+      "range": {
+        "startLine": 148,
+        "startChar": 16,
+        "endLine": 148,
+        "endChar": 21
+      },
+      "revId": "1c3dcf7580b18ad2a453cc4514c3a926e98b2e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06c6894e_2ed39b06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-02T02:42:10Z",
+      "side": 1,
+      "message": "We don\u0027t need to loop the lines here but instead you can match the whole out.\n\n r :\u003d regexp.MustCompile(`(?m)^\\s*channel ...`) // (?m) to match line start with ^ https://github.com/google/re2/wiki/Syntax\n m :\u003d r.FindStringSubmatch(string(out))\n\nSame comment goes for the other loops iterating lines.",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 56
+      },
+      "revId": "1c3dcf7580b18ad2a453cc4514c3a926e98b2e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "781a2950_d8331b21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-02T02:42:10Z",
+      "side": 1,
+      "message": "if m :\u003d r.FindStringSubmatch(line); m !\u003d nil {\n  return m[1], nil\n}",
+      "range": {
+        "startLine": 193,
+        "startChar": 2,
+        "endLine": 194,
+        "endChar": 34
+      },
+      "revId": "1c3dcf7580b18ad2a453cc4514c3a926e98b2e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24dcdeda_1fb07ea5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_get_set.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-02T02:42:10Z",
+      "side": 1,
+      "message": "Would you mind moving these constants inside IWGetSet since they\u0027re used only within the function?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 1
+      },
+      "revId": "1c3dcf7580b18ad2a453cc4514c3a926e98b2e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12374ddf_b17b096c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_get_set.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-02T02:42:10Z",
+      "side": 1,
+      "message": "Does it make sense to continue the test when SetTxPower failed? (I\u0027m just not sure)",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 37
+      },
+      "revId": "1c3dcf7580b18ad2a453cc4514c3a926e98b2e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7608492_d02f362d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_get_set.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-02T02:42:10Z",
+      "side": 1,
+      "message": "Would you mind adding a brief commend why we load/unload those modules as cleanup? In particular I\u0027m wondering because I don\u0027t see any corresponding setup code.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 3
+      },
+      "revId": "1c3dcf7580b18ad2a453cc4514c3a926e98b2e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "934ceeb7_68a2cb4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_get_set.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-02T02:42:10Z",
+      "side": 1,
+      "message": "Please add a description to the logged value so that we can understand the log without reading the code, e.g.\n\n s.Log(\"Frequency: \", lv)\n\nAlso, when err !\u003d nil, I don\u0027t think we want to print the value.\n\n if err !\u003d nil {\n   s.Error(...)\n } else {\n   s.Log(...)\n }",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 10
+      },
+      "revId": "1c3dcf7580b18ad2a453cc4514c3a926e98b2e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
