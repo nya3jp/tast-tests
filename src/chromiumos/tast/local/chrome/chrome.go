@@ -647,10 +647,12 @@ func (c *Chrome) newConnInternal(ctx context.Context, id target.ID, url string) 
 type Target struct {
 	// URL contains the URL of the resource currently loaded by the target.
 	URL string
+	// The type of the target. It's obtained from target.Info.Type.
+	Type string
 }
 
 func newTarget(t *target.Info) *Target {
-	return &Target{URL: t.URL}
+	return &Target{URL: t.URL, Type: t.Type}
 }
 
 // TargetMatcher is a caller-provided function that matches targets with specific characteristics.
