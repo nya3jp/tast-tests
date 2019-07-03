@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "904c187e_447c625a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-03T08:14:16Z",
+      "side": 1,
+      "message": "With the asterisk, now inputSequence is an array of pointers, so that at L123 |input| will be a pointer to an element, rather than just struct value, so it skips copying contents of each element.",
+      "parentUuid": "8605726f_5c2b3114",
+      "revId": "7bcf89e9e7f81d12b1ab7b1f6e6a14715048ed95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e465d4e5_6ded7da5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
         "patchSetId": 2
