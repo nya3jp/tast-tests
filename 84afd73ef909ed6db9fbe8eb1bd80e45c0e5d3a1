@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0dc2e17_3088aeb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_switch_shortcut.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-03T08:20:55Z",
+      "side": 1,
+      "message": "nit/optional: imeID looks enough, since go prefers shorter name.",
+      "range": {
+        "startLine": 114,
+        "startChar": 4,
+        "endLine": 114,
+        "endChar": 16
+      },
+      "revId": "84afd73ef909ed6db9fbe8eb1bd80e45c0e5d3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90a30a8c_c3b0d9fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_switch_shortcut.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-03T08:20:55Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 131,
+        "startChar": 4,
+        "endLine": 131,
+        "endChar": 16
+      },
+      "revId": "84afd73ef909ed6db9fbe8eb1bd80e45c0e5d3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
