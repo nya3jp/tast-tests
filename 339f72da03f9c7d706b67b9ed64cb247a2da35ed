@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a017a536_293c9dbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-03T04:53:41Z",
+      "side": 1,
+      "message": "nit: \"Failed to wait\"?\nI\u0027m not confident but http://www.uazone.org/friends/esl4rus/ingform.html says \"fail\" should be used with \"to V\" instead of \"V-ing\"",
+      "range": {
+        "startLine": 90,
+        "startChar": 11,
+        "endLine": 90,
+        "endChar": 25
+      },
+      "revId": "339f72da03f9c7d706b67b9ed64cb247a2da35ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4857ec45_c44ac584",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-03T04:53:41Z",
+      "side": 1,
+      "message": "Hmm, why do we need to move ctxutil.Shorten() before SeuUpBenchmark?",
+      "revId": "339f72da03f9c7d706b67b9ed64cb247a2da35ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "910f0b47_59c3779e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-03T04:53:41Z",
+      "side": 1,
+      "message": "nit: be gradually increased to 20%?",
+      "range": {
+        "startLine": 124,
+        "startChar": 24,
+        "endLine": 124,
+        "endChar": 46
+      },
+      "revId": "339f72da03f9c7d706b67b9ed64cb247a2da35ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
