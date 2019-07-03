@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c55684f_62184719",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/webrtc_video_display_perf_test.html",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-07-03T21:09:40Z",
+      "side": 1,
+      "message": "Just out of curious. how would alert behave in the test environment? Would it pop up and block chrome process? Would go test recieve this error msg?",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 33,
+        "endChar": 13
+      },
+      "revId": "ecd1d51d122323ab0636bd7e9951e6fb02bc95f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e05efd8f_8b536e67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-07-03T21:09:40Z",
+      "side": 1,
+      "message": "you also need to add one of crosbolt_perbuild, crosbolt_nightly or crosbolt_weekly",
+      "revId": "ecd1d51d122323ab0636bd7e9951e6fb02bc95f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
