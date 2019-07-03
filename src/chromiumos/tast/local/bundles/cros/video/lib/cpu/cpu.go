@@ -241,8 +241,11 @@ type cpuConfigEntry struct {
 func disableCPUFrequencyScaling(ctx context.Context) (func(ctx context.Context) error, error) {
 	optimizedConfig := make(map[string]cpuConfigEntry)
 	for glob, config := range map[string]cpuConfigEntry{
-		"/sys/devices/system/cpu/cpu[0-9]*/cpufreq/scaling_governor": {"performance", false},
-		"/sys/class/devfreq/devfreq[0-9]*/governor":                  {"performance", false},
+		// crbug.com/977925: Disabled hyperthreading cores are listed but
+		// writing config for these disabled cores results in 'invalid argument'.
+		// TODO(dstaessens): Skip disabled CPU cores when setting scaling_governor.
+		"/sys/devices/system/cpu/cpu[0-9]*/cpufreq/scaling_governor": {"performance", true},
+		"/sys/class/devfreq/devfreq[0-9]*/governor":                  {"performance", true},
 		// crbug.com/938729: BIOS settings might prevent us from overwriting intel_pstate/no_turbo.
 		"/sys/devices/system/cpu/intel_pstate/no_turbo":     {"1", true},
 		"/sys/devices/system/cpu/intel_pstate/min_perf_pct": {"100", false},
