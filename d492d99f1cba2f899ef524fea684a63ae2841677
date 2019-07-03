@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f91538a_c1e0c003",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-07-03T00:54:02Z",
+      "side": 1,
+      "message": "how about crostini_guest_images.tar? or let the test owner pass the path? eg.\n\nfunc CrostiniStartedByDownload(path string) testing.Precondition { \n\treturn \u0026preImpl{\n\t\tname:    \"crostini_started_by_download\",\n\t\ttimeout: chrome.LoginTimeout + 10*time.Minute,\n\t\timgPath: path,\n\t}\n}\n...\ntype preImpl struct {\n\tname    string\n\ttimeout time.Duration\n\tcr      *chrome.Chrome\n\ttconn   *chrome.Conn\n\tcont    *Container\n        imgPath string\n}\n...\nif (p.imgPath \u003d\u003d \"\") { ...\n}",
+      "range": {
+        "startLine": 19,
+        "startChar": 39,
+        "endLine": 19,
+        "endChar": 72
+      },
+      "revId": "d492d99f1cba2f899ef524fea684a63ae2841677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a1f7c4d_ce555117",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-07-03T00:54:02Z",
+      "side": 1,
+      "message": "one quick question. I\u0027m not super familiar with the difference between staging/live here. Correct me if I\u0027m wrong. \nIIUC, staging is mostly used for testing experimental configuration in container/vm. Live, is the one actual used in release build.",
+      "range": {
+        "startLine": 108,
+        "startChar": 33,
+        "endLine": 108,
+        "endChar": 49
+      },
+      "revId": "d492d99f1cba2f899ef524fea684a63ae2841677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
