@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ecd13d99_54cc8099",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/pre/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-03T10:16:22Z",
+      "side": 1,
+      "message": "Should we add a TODO comment about when we should re-start using pre.go?\nOtherwise, it looks strange for other ones that an unused file exists.",
+      "revId": "070ac31a40cd1f7c98fdf596a851c89876ec09ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
