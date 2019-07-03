@@ -69,6 +69,30 @@
       "revId": "c1cad8353ca1a5a42ce324d92c8be30386d89e97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7edf4886_a52091b4",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-03T00:30:52Z",
+      "side": 1,
+      "message": "In the future it will be.\n\nI\u0027m planning to deal with this in crrev.com/c/1679771\n\nmy aim is to keep this cl simple and just make the precondition work for CrostiniStartEverything",
+      "parentUuid": "dc453678_f5cdd21f",
+      "range": {
+        "startLine": 31,
+        "startChar": 21,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "c1cad8353ca1a5a42ce324d92c8be30386d89e97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
