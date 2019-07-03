@@ -286,14 +286,14 @@ func applyConfig(ctx context.Context, cpuConfig map[string]cpuConfigEntry) (map[
 			if !config.ignoreErrors {
 				return origConfig, err
 			}
-			testing.ContextLogf(ctx, "Failed to read %v while disabling CPU frequency scaling: %v", path, err)
+			testing.ContextLogf(ctx, "Failed to read %v: %v", path, err)
 			continue
 		}
 		if err = ioutil.WriteFile(path, []byte(config.value), 0644); err != nil {
 			if !config.ignoreErrors {
 				return origConfig, err
 			}
-			testing.ContextLogf(ctx, "Failed to write to %v while disabling CPU frequency scaling: %v", path, err)
+			testing.ContextLogf(ctx, "Failed to write to %v: %v", path, err)
 			continue
 		}
 		origConfig[path] = cpuConfigEntry{string(origValue), false}
