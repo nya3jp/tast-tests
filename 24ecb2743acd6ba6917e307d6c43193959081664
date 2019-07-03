@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9bed3be_82756271",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-03T07:46:37Z",
+      "side": 1,
+      "message": "Thank you for the detailed explanation, but I guess this observation details are not so important for this change itself?\nCan we make this commit message simpler? So it\u0027d be easier to understand what are changed in this CL. It seems that this change only adds timing package and reduces the timeout for histogram.",
+      "revId": "24ecb2743acd6ba6917e307d6c43193959081664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b0677d7_c396ec7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-03T07:46:37Z",
+      "side": 1,
+      "message": "time.Second is used for polling timeout. So, \"at most one second\" would be better.",
+      "range": {
+        "startLine": 269,
+        "startChar": 22,
+        "endLine": 269,
+        "endChar": 32
+      },
+      "revId": "24ecb2743acd6ba6917e307d6c43193959081664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b4d6fa8_2e24224b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-03T07:46:37Z",
+      "side": 1,
+      "message": "no need because of early-return",
+      "range": {
+        "startLine": 277,
+        "startChar": 3,
+        "endLine": 277,
+        "endChar": 7
+      },
+      "revId": "24ecb2743acd6ba6917e307d6c43193959081664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
