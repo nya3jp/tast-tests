@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c27fe85a_68ec5844",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_get_set.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-07-03T18:07:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "488a21dc_bef686e8",
+      "range": {
+        "startLine": 29,
+        "startChar": 35,
+        "endLine": 29,
+        "endChar": 56
+      },
+      "revId": "608a949721a15572587614240ef7d1dd5ce318ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fde5b1b_624f2ae7",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_get_set.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c0ff2c7b_612fedb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_get_set.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-07-03T18:07:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fde5b1b_624f2ae7",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 36
+      },
+      "revId": "608a949721a15572587614240ef7d1dd5ce318ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfaa722a_253ee659",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_get_set.go",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "608a949721a15572587614240ef7d1dd5ce318ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02d9e817_806c3f13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_get_set.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-07-03T18:07:03Z",
+      "side": 1,
+      "message": "Ack. I have used a different wait condition.",
+      "parentUuid": "dfaa722a_253ee659",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 49,
+        "endChar": 54
+      },
+      "revId": "608a949721a15572587614240ef7d1dd5ce318ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -114,6 +186,54 @@
       "revId": "608a949721a15572587614240ef7d1dd5ce318ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db21fd12_0d9c1e4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_get_set.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-07-03T18:07:03Z",
+      "side": 1,
+      "message": "Done. Fixed with poll options",
+      "parentUuid": "dae1af6b_03e1b477",
+      "range": {
+        "startLine": 54,
+        "startChar": 21,
+        "endLine": 54,
+        "endChar": 42
+      },
+      "revId": "608a949721a15572587614240ef7d1dd5ce318ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41ea0962_6c482bc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_get_set.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-07-03T18:07:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd53e6ff_3d957e52",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 15
+      },
+      "revId": "608a949721a15572587614240ef7d1dd5ce318ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
