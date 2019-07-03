@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+  <title>WebRTC Automated Test</title>
+
+  <script>
+
+    let localStream;
+    let remoteVideo = document.getElementById('remoteVideo');
+    let pc1;
+    let pc2;
+
+    let isGetUserMediaFinished = false;
+    async function start(width, height) {
+      console.log('Requesting local stream');
+      const constraints = {
+          audio: false,
+          video: {
+              mandatory: {
+                  minWidth : width,
+                  maxWidth : width,
+                  minHeight : height,
+                  maxHeight : height
+              }
+          }
+      };
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia(constraints);
+        console.log('Received local stream');
+        localStream = stream;
+        isGetUserMediaFinished = true;
+      } catch (e) {
+        alert(`getUserMedia() error: ${e.name}`);
+      }
+    }
+
+    async function call() {
+      console.log('Starting call');
+      remoteVideo = document.getElementById('remoteVideo');
+
+      pc1 = new RTCPeerConnection();
+      pc1.addEventListener('icecandidate', e => onIceCandidate(pc1, e));
+      pc2 = new RTCPeerConnection();
+      console.log('Created remote peer connection object pc2');
+      pc2.addEventListener('icecandidate', e => onIceCandidate(pc2, e));
+      pc2.addEventListener('track', gotRemoteStream);
+
+      localStream.getTracks().forEach(track => pc1.addTrack(track, localStream));
+      console.log('Added local stream to pc1');
+
+      const offerOptions = {
+        offerToReceiveAudio: 1,
+        offerToReceiveVideo: 1
+      };
+
+      try {
+        console.log('pc1 createOffer start');
+        const offer = await pc1.createOffer(offerOptions);
+        await onCreateOfferSuccess(offer);
+      } catch (e) {
+        onCreateSessionDescriptionError(e);
+      }
+    }
+
+    async function onCreateOfferSuccess(desc) {
+      console.log(`Offer from pc1\n${desc.sdp}`);
+      console.log('pc1 setLocalDescription start');
+      try {
+        await pc1.setLocalDescription(desc);
+      } catch (e) {
+        onSetSessionDescriptionError();
+      }
+
+      console.log('pc2 setRemoteDescription start');
+      try {
+        await pc2.setRemoteDescription(desc);
+      } catch (e) {
+        onSetSessionDescriptionError();
+      }
+
+      console.log('pc2 createAnswer start');
+      // Since the 'remote' side has no media stream we need to pass in the 
+      // right constraints in order for it to accept the incoming offer.
+      try {
+        const answer = await pc2.createAnswer();
+        await onCreateAnswerSuccess(answer);
+      } catch (e) {
+        onCreateSessionDescriptionError(e);
+      }
+    }
+
+    function getOtherPc(pc) {
+      return (pc === pc1) ? pc2 : pc1;
+    }
+
+    function onCreateSessionDescriptionError(error) {
+      console.error(`Failed to create session description: ${error.toString()}`);
+    }
+
+    function onSetSessionDescriptionError(error) {
+      console.error(`Failed to set session description: ${error.toString()}`);
+    }
+
+    function gotRemoteStream(e) {
+      if (remoteVideo.srcObject !== e.streams[0]) {
+        remoteVideo.srcObject = e.streams[0];
+        console.log('pc2 received remote stream');
+      }
+    }
+
+    async function onCreateAnswerSuccess(desc) {
+      console.log(`Answer from pc2:\n${desc.sdp}`);
+      console.log('pc2 setLocalDescription start');
+      try {
+        await pc2.setLocalDescription(desc);
+      } catch (e) {
+        onSetSessionDescriptionError(e);
+      }
+      console.log('pc1 setRemoteDescription start');
+      try {
+        await pc1.setRemoteDescription(desc);
+      } catch (e) {
+        onSetSessionDescriptionError(e);
+      }
+    }
+
+    async function onIceCandidate(pc, event) {
+      try {
+        await (getOtherPc(pc).addIceCandidate(event.candidate));
+      } catch (e) {
+        onAddIceCandidateError(pc, e);
+      }
+    }
+
+    function onAddIceCandidateError(pc, error) {
+      console.log(`${getName(pc)} failed to add ICE Candidate: ${error.toString()}`);
+    }
+
+  </script>
+</head>
+<body>
+  <video id="remoteVideo" playsinline autoplay max-width=100% max-height=100%/>
+</body>
+</html>
