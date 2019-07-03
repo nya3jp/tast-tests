@@ -39,7 +39,7 @@ func init() {
 //
 // Example usage:
 // "telem --item=memfree" will return "memfree: some_value"
-// "telem --group=disk"   will return "memtotal: 3814\nmemfree: 2423\n"
+// "telem --group=memory"   will return "memtotal: 3814\nmemfree: 2423\n"
 //
 // This series of tests calls telem with all of the currently implemented items
 // and groups, and verifies the results are in a reasonable range.
@@ -159,12 +159,12 @@ func Telemetry(ctx context.Context, s *testing.State) {
 		testNumericalItem(name, val, vr)
 	}
 
-	// Collect all items in the "disk" group, ensure they're all in range.
-	items := getGroup("disk")
+	// Collect all items in the "memory" group, ensure they're all in range.
+	items := getGroup("memory")
 	for name, val := range items {
 		r, ok := validRanges[name]
 		if !ok {
-			s.Errorf("Unexpected name %q in disk group", name)
+			s.Errorf("Unexpected name %q in memory group", name)
 		}
 		n := attemptAtoi(name, val)
 		testNumericalItem(name, n, r)
