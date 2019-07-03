@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04b0e862_7dd7c3b3",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-07-03T04:42:07Z",
+      "side": 1,
+      "message": "Move this to ARC struct named vmEnabled.",
+      "revId": "26be9873aa3d79c1a68a7250514a81fc8e366a5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71193522_58a4353d",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-07-03T04:42:07Z",
+      "side": 1,
+      "message": "Check ARCVM using file instead of Chrome args.",
+      "revId": "26be9873aa3d79c1a68a7250514a81fc8e366a5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff041b49_ced5c273",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-07-03T04:42:07Z",
+      "side": 1,
+      "message": "hidehiko@ do we still need ensureARCEnabled()?\nI\u0027m defaulting to have it (as some users might build Chrome without the args). Let me know if you think otherwise.",
+      "revId": "26be9873aa3d79c1a68a7250514a81fc8e366a5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a89f819_1cd5b804",
+        "filename": "src/chromiumos/tast/local/arc/proc.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-07-03T04:42:07Z",
+      "side": 1,
+      "message": "Move this to follow-up patch as it is used by other files. Make this an ARC function.",
+      "revId": "26be9873aa3d79c1a68a7250514a81fc8e366a5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
