@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dac2a79f_dc1aaf55",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-03T00:30:52Z",
+      "side": 1,
+      "message": "I think the support youre asking about is better shown in crrev.com/c/1679771.\n\nIn that CL we make two (different) preconditions relating to the different ways of initializing the VM.  I chose having two fixed versions, rather than an approach like the NewPrecondition() method in chrome\u0027s pre, essentially as a way to coalesce tests (which i understand will be bucketed by precondition, so less generality means bigger buckets)\n\nI\u0027m adding you as a reviewer for that CL, would it be ok to discuss this feature on that cl?",
+      "parentUuid": "6cf60dfc_b160701c",
+      "revId": "6d2ab37ff0aaf25c466e48976a1fcc68c6c82eb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd16dea7_436e824b",
         "filename": "src/chromiumos/tast/local/vm/pre.go",
         "patchSetId": 5
@@ -39,6 +57,30 @@
       "revId": "6d2ab37ff0aaf25c466e48976a1fcc68c6c82eb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22916e5c_cb87bc95",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-03T00:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd16dea7_436e824b",
+      "range": {
+        "startLine": 94,
+        "startChar": 18,
+        "endLine": 94,
+        "endChar": 40
+      },
+      "revId": "6d2ab37ff0aaf25c466e48976a1fcc68c6c82eb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
