@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1d6f2fa8_dcb1b54a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_switch_shortcut.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2019-07-03T04:47:42Z",
+      "side": 1,
+      "message": "Oops, I forgot to revert this value.\nI changed this value while debugging this test because some machine (e.g. minnie) took too long to boot Android container and the test timed out.",
+      "parentUuid": "eb3c2efa_44d3adac",
+      "revId": "6a7f5bf5ebc182cf8d5828e2b0df72bc167128aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34653715_51577bd8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_switch_shortcut.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "6a7f5bf5ebc182cf8d5828e2b0df72bc167128aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "951f1de2_6b298ccc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_switch_shortcut.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2019-07-03T04:47:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34653715_51577bd8",
+      "revId": "6a7f5bf5ebc182cf8d5828e2b0df72bc167128aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "00478ddc_159e6216",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_switch_shortcut.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2019-07-03T04:47:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ba51d96_d8f464f0",
+      "revId": "6a7f5bf5ebc182cf8d5828e2b0df72bc167128aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f968445d_7512bb51",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_switch_shortcut.go",
         "patchSetId": 3
@@ -67,6 +121,24 @@
       "revId": "6a7f5bf5ebc182cf8d5828e2b0df72bc167128aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd68fc24_6e9797cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_switch_shortcut.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2019-07-03T04:47:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f968445d_7512bb51",
+      "revId": "6a7f5bf5ebc182cf8d5828e2b0df72bc167128aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -90,6 +162,30 @@
       "revId": "6a7f5bf5ebc182cf8d5828e2b0df72bc167128aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "240785f7_af987714",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_switch_shortcut.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2019-07-03T04:47:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e304c36_8edf9892",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 2
+      },
+      "revId": "6a7f5bf5ebc182cf8d5828e2b0df72bc167128aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
