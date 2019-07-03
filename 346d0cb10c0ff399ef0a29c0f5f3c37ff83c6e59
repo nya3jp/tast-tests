@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc6ef943_8a6b0432",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-03T02:51:24Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 253,
+        "startChar": 80,
+        "endLine": 253,
+        "endChar": 81
+      },
+      "revId": "346d0cb10c0ff399ef0a29c0f5f3c37ff83c6e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ab6bcc0_6023072d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-03T02:51:24Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 253,
+        "startChar": 24,
+        "endLine": 253,
+        "endChar": 25
+      },
+      "revId": "346d0cb10c0ff399ef0a29c0f5f3c37ff83c6e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85a29228_0ad03502",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-03T02:51:24Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 253,
+        "startChar": 34,
+        "endLine": 253,
+        "endChar": 35
+      },
+      "revId": "346d0cb10c0ff399ef0a29c0f5f3c37ff83c6e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8cff3df_2e4f5ee6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-03T02:51:24Z",
+      "side": 1,
+      "message": "of an",
+      "range": {
+        "startLine": 253,
+        "startChar": 87,
+        "endLine": 253,
+        "endChar": 89
+      },
+      "revId": "346d0cb10c0ff399ef0a29c0f5f3c37ff83c6e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec51e321_459fe23d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-03T02:51:24Z",
+      "side": 1,
+      "message": "if the original ctx is not going to be used afterwards, just overwrite the ctx.",
+      "revId": "346d0cb10c0ff399ef0a29c0f5f3c37ff83c6e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cd52a6d_ecae1cfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-03T02:51:24Z",
+      "side": 1,
+      "message": "This comment tells me absolutely nothing. Could you please update?",
+      "revId": "346d0cb10c0ff399ef0a29c0f5f3c37ff83c6e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
