@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fa0df95a_47333a88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chromeargs/chromeargs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-07-03T05:00:29Z",
+      "side": 1,
+      "message": "As long as pre.go is still needed, let\u0027s extract common args here.",
+      "parentUuid": "1ab3f19d_1a47fc11",
+      "revId": "df5cbaef70b06c765b0000087dddb11ed1d944ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76d76936_8f3390fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/pre/pre.go",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "df5cbaef70b06c765b0000087dddb11ed1d944ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b13ffa7_8c26c273",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/pre/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-07-03T05:00:29Z",
+      "side": 1,
+      "message": "pre.go is needed by camera/webrtc.go",
+      "parentUuid": "76d76936_8f3390fd",
+      "revId": "df5cbaef70b06c765b0000087dddb11ed1d944ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
