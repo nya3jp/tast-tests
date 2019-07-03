@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b32139c9_f7815f36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-03T05:49:44Z",
+      "side": 1,
+      "message": "\"Failed to wait\" is indeed correct here, thanks! \"Failed waiting...\" doesn\u0027t sound that strange to me, but then it should be \"Failed at waiting...\" I think. Changed it to your suggestion!",
+      "parentUuid": "a017a536_293c9dbb",
+      "range": {
+        "startLine": 90,
+        "startChar": 11,
+        "endLine": 90,
+        "endChar": 25
+      },
+      "revId": "339f72da03f9c7d706b67b9ed64cb247a2da35ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4857ec45_c44ac584",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 12
@@ -39,6 +63,24 @@
       "revId": "339f72da03f9c7d706b67b9ed64cb247a2da35ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "385077a6_57d78993",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-03T05:49:44Z",
+      "side": 1,
+      "message": "We shouldn\u0027t. Thanks for noticing! I\u0027ve been switching between different approaches and rebasing so much that this slipped through. Fixed!",
+      "parentUuid": "4857ec45_c44ac584",
+      "revId": "339f72da03f9c7d706b67b9ed64cb247a2da35ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "339f72da03f9c7d706b67b9ed64cb247a2da35ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d793778e_5bd1aa15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-03T05:49:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "910f0b47_59c3779e",
+      "range": {
+        "startLine": 124,
+        "startChar": 24,
+        "endLine": 124,
+        "endChar": 46
+      },
+      "revId": "339f72da03f9c7d706b67b9ed64cb247a2da35ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
