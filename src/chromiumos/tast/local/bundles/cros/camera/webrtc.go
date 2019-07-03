@@ -10,7 +10,7 @@ import (
 
 	// TODO(crbug.com/963772) Move libraries in video to camera or media folder.
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
-	"chromiumos/tast/local/bundles/cros/video/lib/pre"
+	"chromiumos/tast/local/bundles/cros/video/lib/chromeargs"
 	"chromiumos/tast/local/bundles/cros/video/lib/vm"
 	"chromiumos/tast/local/bundles/cros/video/webrtc"
 	"chromiumos/tast/local/chrome"
@@ -28,7 +28,6 @@ func init() {
 		},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome", "camera_720p"},
-		Pre:          pre.ChromeVideo(),
 		Data:         append(webrtc.DataFiles(), "getusermedia.html"),
 	})
 }
@@ -51,7 +50,12 @@ func WebRTC(ctx context.Context, s *testing.State) {
 		duration = 10 * time.Second
 	}
 
+	cr, err := chrome.New(ctx, chromeargs.DefaultArgs)
+	if err != nil {
+		s.Fatal("Failed to restart Chrome: ", err)
+	}
+	defer cr.Close(ctx)
+
 	// Run tests for 480p and 720p.
-	webrtc.RunWebRTC(ctx, s, s.PreValue().(*chrome.Chrome), duration,
-		webrtc.VerboseLogging)
+	webrtc.RunWebRTC(ctx, s, cr, duration, webrtc.VerboseLogging)
 }

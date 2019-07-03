@@ -10,7 +10,7 @@ import (
 
 	// TODO(crbug.com/963772) Move libraries in video to camera or media folder.
 	"chromiumos/tast/local/bundles/cros/video/lib/caps"
-	"chromiumos/tast/local/bundles/cros/video/lib/pre"
+	"chromiumos/tast/local/bundles/cros/video/lib/chromeargs"
 	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
 	"chromiumos/tast/local/bundles/cros/video/lib/vm"
 	"chromiumos/tast/local/bundles/cros/video/webrtc"
@@ -30,7 +30,6 @@ func init() {
 		Attr: []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome", "chrome_internal"},
-		Pre:          pre.ChromeVideo(),
 		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback_camera.html"),
 	})
 }
@@ -55,6 +54,11 @@ func WebRTCPeerConnH264(ctx context.Context, s *testing.State) {
 		duration = 10 * time.Second
 	}
 
-	webrtc.RunWebRTCPeerConn(ctx, s, s.PreValue().(*chrome.Chrome), videotype.H264,
-		duration, webrtc.VerboseLogging)
+	cr, err := chrome.New(ctx, chromeargs.DefaultArgs)
+	if err != nil {
+		s.Fatal("Failed to restart Chrome: ", err)
+	}
+	defer cr.Close(ctx)
+
+	webrtc.RunWebRTCPeerConn(ctx, s, cr, videotype.H264, duration, webrtc.VerboseLogging)
 }
