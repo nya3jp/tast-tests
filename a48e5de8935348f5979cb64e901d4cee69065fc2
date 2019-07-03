@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a7b66db4_2b285e3f",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-07-03T08:53:33Z",
+      "side": 1,
+      "message": "Ahh, thanks for noticing. I was only changing my changes.\nI noticed that \u0027adb connect\u0027 itself is a command. So, does \"adb connect failed (ADB output: %q)\" work? or is it worse?",
+      "parentUuid": "53e68683_fc4dd647",
+      "range": {
+        "startLine": 138,
+        "startChar": 25,
+        "endLine": 138,
+        "endChar": 28
+      },
+      "revId": "a48e5de8935348f5979cb64e901d4cee69065fc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b0aed235_153b9dd9",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 15
@@ -45,6 +69,30 @@
       "revId": "a48e5de8935348f5979cb64e901d4cee69065fc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "797b5e45_51e06508",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-07-03T08:53:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0aed235_153b9dd9",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 281,
+        "endChar": 28
+      },
+      "revId": "a48e5de8935348f5979cb64e901d4cee69065fc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
