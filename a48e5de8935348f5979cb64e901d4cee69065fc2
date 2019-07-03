@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a85329e6_a7c8295f",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-03T13:39:00Z",
+      "side": 1,
+      "message": "My two cents;\n\nThis case is ambiguous, IMHO. I would interpret both \"adb connect\" and \"adb\" at this specific line are command. Or, for better consistency how about;\n\"failed to connect ADB (output; %q)\"",
+      "parentUuid": "a7b66db4_2b285e3f",
+      "range": {
+        "startLine": 138,
+        "startChar": 25,
+        "endLine": 138,
+        "endChar": 28
+      },
+      "revId": "a48e5de8935348f5979cb64e901d4cee69065fc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b0aed235_153b9dd9",
         "filename": "src/chromiumos/tast/local/arc/arc.go",
         "patchSetId": 15

@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6415b3ad_d730364c",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-03T13:39:00Z",
+      "side": 1,
+      "message": "By the agreement between us for arc.InitPID, vmEnabled is no longer needed to be a member of ARC, because this is referred only in New().\n\nCould you remove this now, and introduce a local var in New()?",
+      "revId": "87f709c5d91a28986e0dc3b56f1384401226c097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b5d94c5_97c98d18",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-03T13:39:00Z",
+      "side": 1,
+      "message": "nit/style:\n\nIn general,\n\nif cond { .../* a */...} else { .../* b */...}\n\nis preferred to\n\nif !cond { .../* b */... } else { .../* a */...}\n\nfor simplicity of the condition. How about swapping the condition?",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 20
+      },
+      "revId": "87f709c5d91a28986e0dc3b56f1384401226c097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec74e0ec_cbb28590",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-03T13:39:00Z",
+      "side": 1,
+      "message": "huge nit: VM.",
+      "range": {
+        "startLine": 139,
+        "startChar": 41,
+        "endLine": 139,
+        "endChar": 43
+      },
+      "revId": "87f709c5d91a28986e0dc3b56f1384401226c097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
