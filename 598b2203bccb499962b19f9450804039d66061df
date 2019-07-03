@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "57525a69_ab67360d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/arc_accel_video.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-03T04:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d37d044_3414087f",
+      "revId": "598b2203bccb499962b19f9450804039d66061df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a88c4474_02416f58",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 9
@@ -39,6 +57,30 @@
       "revId": "598b2203bccb499962b19f9450804039d66061df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce1c2996_1a52a685",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-03T04:19:25Z",
+      "side": 1,
+      "message": "Inlining would decrease readability IMHO, I\u0027ll rename it!",
+      "parentUuid": "a88c4474_02416f58",
+      "range": {
+        "startLine": 157,
+        "startChar": 5,
+        "endLine": 157,
+        "endChar": 18
+      },
+      "revId": "598b2203bccb499962b19f9450804039d66061df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "09246c1a_1cb31a7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-03T04:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ccb5410_07d8ab7f",
+      "range": {
+        "startLine": 164,
+        "startChar": 10,
+        "endLine": 164,
+        "endChar": 56
+      },
+      "revId": "598b2203bccb499962b19f9450804039d66061df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3008eab_9bf95b86",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
         "patchSetId": 9
@@ -85,6 +151,30 @@
       "revId": "598b2203bccb499962b19f9450804039d66061df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de00ceb9_0daeeb7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/cpu/cpu.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-03T04:19:25Z",
+      "side": 1,
+      "message": "Changed it because I got a comment suggesting to Change it. Modified it again!",
+      "parentUuid": "a3008eab_9bf95b86",
+      "range": {
+        "startLine": 167,
+        "startChar": 25,
+        "endLine": 167,
+        "endChar": 83
+      },
+      "revId": "598b2203bccb499962b19f9450804039d66061df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
