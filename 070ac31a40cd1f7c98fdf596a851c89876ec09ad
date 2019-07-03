@@ -16,6 +16,24 @@
       "revId": "070ac31a40cd1f7c98fdf596a851c89876ec09ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "616d9b0f_d7f89072",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/pre/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-07-03T13:16:51Z",
+      "side": 1,
+      "message": "Sure. Added.",
+      "parentUuid": "ecd13d99_54cc8099",
+      "revId": "070ac31a40cd1f7c98fdf596a851c89876ec09ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
