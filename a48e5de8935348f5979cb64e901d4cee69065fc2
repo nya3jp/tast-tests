@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53e68683_fc4dd647",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-07-03T07:37:24Z",
+      "side": 1,
+      "message": "nit: \u0027adb\u0027 vs \u0027ADB\u0027 (please ensure consistency across the file, thanks!)",
+      "range": {
+        "startLine": 138,
+        "startChar": 25,
+        "endLine": 138,
+        "endChar": 28
+      },
+      "revId": "a48e5de8935348f5979cb64e901d4cee69065fc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0aed235_153b9dd9",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-07-03T07:37:24Z",
+      "side": 1,
+      "message": "This can be simplified to just\n\nb, err :\u003d ioutil.ReadFile(\"/run/chrome/is_arcvm\")\nif err !\u003d nil {\n  ..\n}\nreturn string(b) \u003d\u003d \"1\"",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 281,
+        "endChar": 28
+      },
+      "revId": "a48e5de8935348f5979cb64e901d4cee69065fc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
