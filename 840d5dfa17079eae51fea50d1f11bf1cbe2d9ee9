@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fb494dfa_ce9daf4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-03T04:06:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bbe2f80_b2abbec4",
+      "revId": "840d5dfa17079eae51fea50d1f11bf1cbe2d9ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c8c9baf_4543da20",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 18
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "16db396d_fa59ea7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-03T04:06:41Z",
+      "side": 1,
+      "message": "Done, apologies for the delay!",
+      "parentUuid": "7c8c9baf_4543da20",
+      "range": {
+        "startLine": 256,
+        "startChar": 27,
+        "endLine": 256,
+        "endChar": 35
+      },
+      "revId": "840d5dfa17079eae51fea50d1f11bf1cbe2d9ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31910c6e_b40d8dd2",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 18
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "b95ef984_9c3b4cc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-03T04:06:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31910c6e_b40d8dd2",
+      "revId": "840d5dfa17079eae51fea50d1f11bf1cbe2d9ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93e57b03_87c9614f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 18
@@ -73,6 +133,24 @@
       "revId": "840d5dfa17079eae51fea50d1f11bf1cbe2d9ee9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d758a06_49185df7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-03T04:06:41Z",
+      "side": 1,
+      "message": "well spotted, thanks!",
+      "parentUuid": "93e57b03_87c9614f",
+      "revId": "840d5dfa17079eae51fea50d1f11bf1cbe2d9ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "d21fa5ba_a06bcb85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-03T04:06:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96d8b1e3_53c888c8",
+      "range": {
+        "startLine": 307,
+        "startChar": 14,
+        "endLine": 307,
+        "endChar": 19
+      },
+      "revId": "840d5dfa17079eae51fea50d1f11bf1cbe2d9ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29bd8955_76975482",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/perf.go",
         "patchSetId": 18
@@ -119,6 +221,30 @@
       "revId": "840d5dfa17079eae51fea50d1f11bf1cbe2d9ee9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5464f9b_25ae867d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/perf.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-03T04:06:41Z",
+      "side": 1,
+      "message": "Good suggestion, thanks!",
+      "parentUuid": "29bd8955_76975482",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 24
+      },
+      "revId": "840d5dfa17079eae51fea50d1f11bf1cbe2d9ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -145,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "d71bb2ad_1fd0cd78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/perf.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-03T04:06:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f977b24_ecaf8a38",
+      "range": {
+        "startLine": 64,
+        "startChar": 37,
+        "endLine": 64,
+        "endChar": 41
+      },
+      "revId": "840d5dfa17079eae51fea50d1f11bf1cbe2d9ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a32ecdb0_914a2bca",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/perf.go",
         "patchSetId": 18
@@ -165,6 +315,30 @@
       "revId": "840d5dfa17079eae51fea50d1f11bf1cbe2d9ee9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c44bfa85_d07aea0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/perf.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-03T04:06:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a32ecdb0_914a2bca",
+      "range": {
+        "startLine": 86,
+        "startChar": 14,
+        "endLine": 86,
+        "endChar": 19
+      },
+      "revId": "840d5dfa17079eae51fea50d1f11bf1cbe2d9ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -191,6 +365,30 @@
     },
     {
       "key": {
+        "uuid": "d81b44cb_34a8755a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_perf_h264_1080p_60fps.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-03T04:06:41Z",
+      "side": 1,
+      "message": "This was useful when the metadata was spread out over multiple files. Now there are only two files, I think this just reduces readability.",
+      "parentUuid": "86e2c82f_d1c4bae9",
+      "range": {
+        "startLine": 22,
+        "startChar": 25,
+        "endLine": 22,
+        "endChar": 88
+      },
+      "revId": "840d5dfa17079eae51fea50d1f11bf1cbe2d9ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a32e5971_50023ef2",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_perf_h264_1080p_60fps.go",
         "patchSetId": 18
@@ -205,6 +403,24 @@
       "revId": "840d5dfa17079eae51fea50d1f11bf1cbe2d9ee9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4518e435_6a2d4583",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_perf_h264_1080p_60fps.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-03T04:06:41Z",
+      "side": 1,
+      "message": "There will be more various added later. For now I just added a h.264 file, so we can monitor the test for a while and fix potential issues before adding more.",
+      "parentUuid": "a32e5971_50023ef2",
+      "revId": "840d5dfa17079eae51fea50d1f11bf1cbe2d9ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
