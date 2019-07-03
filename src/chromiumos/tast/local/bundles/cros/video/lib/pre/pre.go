@@ -22,12 +22,12 @@ var chromeVideoPre = chrome.NewPrecondition("video",
 	chrome.ExtraArgs(
 		// Enable verbose log messages for video components.
 		"--vmodule="+strings.Join([]string{
-			"*/media/gpu/*video_decode_accelerator.cc=2",
-			"*/media/gpu/*video_encode_accelerator.cc=2",
-			"*/media/gpu/*jpeg_decode_accelerator.cc=2",
-			"*/media/gpu/*jpeg_encode_accelerator.cc=2",
-			"*/media/gpu/*image_processor.cc=2",
-			"*/media/gpu/*v4l2_device.cc=2"}, ","),
+			"*/media/gpu/*video_decode_accelerator.cc=4",
+			"*/media/gpu/*video_encode_accelerator.cc=4",
+			"*/media/gpu/*jpeg_decode_accelerator.cc=4",
+			"*/media/gpu/*jpeg_encode_accelerator.cc=4",
+			"*/media/gpu/*image_processor.cc=4",
+			"*/media/gpu/*v4l2_device.cc=4"}, ","),
 		// Disable the autoplay policy not to be affected by actions from outside of tests.
 		// cf. https://developers.google.com/web/updates/2017/09/autoplay-policy-changes
 		"--autoplay-policy=no-user-gesture-required",
