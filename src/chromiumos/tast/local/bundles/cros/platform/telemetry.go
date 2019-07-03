@@ -11,7 +11,6 @@ import (
 	"strings"
 
 	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -28,9 +27,9 @@ func init() {
 }
 
 // Telemetry performs integration tests for the "telem" command line tool.
-// telem receives its information from libtelem, procfs, and
-// wilco_dtc_supportd. Each of these systems has its own unit tests,
-// so this test ensures all the plumbing is working throughout the stack.
+// telem receives its information from libtelem and procfs. Each of these
+// systems has its own unit tests, so this test ensures all the plumbing is
+// working throughout the stack.
 //
 // telem supports two command-line arguments, --group and --item.
 //  --item retrieves a single telemetry item and displays its value.
@@ -39,7 +38,7 @@ func init() {
 //
 // Example usage:
 // "telem --item=memfree" will return "memfree: some_value"
-// "telem --group=disk"   will return "memtotal: 3814\nmemfree: 2423\n"
+// "telem --group=memory"   will return "memtotal: 3814\nmemfree: 2423\n"
 //
 // This series of tests calls telem with all of the currently implemented items
 // and groups, and verifies the results are in a reasonable range.
@@ -148,23 +147,18 @@ func Telemetry(ctx context.Context, s *testing.State) {
 		"idle_time_total":   numRange{1, 1000000000},
 	}
 
-	// Ensure that the daemon is available.
-	if err := upstart.EnsureJobRunning(ctx, "wilco_dtc_supportd"); err != nil {
-		s.Fatal("Failed to start wilco_dtc_supportd: ", err)
-	}
-
 	// Ensure each individual item is in range.
 	for name, vr := range validRanges {
 		val := attemptAtoi(name, getItem(name))
 		testNumericalItem(name, val, vr)
 	}
 
-	// Collect all items in the "disk" group, ensure they're all in range.
-	items := getGroup("disk")
+	// Collect all items in the "memory" group, ensure they're all in range.
+	items := getGroup("memory")
 	for name, val := range items {
 		r, ok := validRanges[name]
 		if !ok {
-			s.Errorf("Unexpected name %q in disk group", name)
+			s.Errorf("Unexpected name %q in memory group", name)
 		}
 		n := attemptAtoi(name, val)
 		testNumericalItem(name, n, r)
