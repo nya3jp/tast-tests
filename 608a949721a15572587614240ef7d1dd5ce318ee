@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "488a21dc_bef686e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_get_set.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-03T02:39:34Z",
+      "side": 1,
+      "message": "Please avoid passing *testing.State and instead return error:\n\n func resetState(ctx context.Context) error\n\nIn general it is recommended to avoid passing around *testing.State.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages",
+      "range": {
+        "startLine": 29,
+        "startChar": 35,
+        "endLine": 29,
+        "endChar": 56
+      },
+      "revId": "608a949721a15572587614240ef7d1dd5ce318ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fde5b1b_624f2ae7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_get_set.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-03T02:39:34Z",
+      "side": 1,
+      "message": "I recommend testing.Poll to wait for some condition to met.\n\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/testing#Poll",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 36
+      },
+      "revId": "608a949721a15572587614240ef7d1dd5ce318ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfaa722a_253ee659",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_get_set.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-03T02:39:34Z",
+      "side": 1,
+      "message": "s.Fatal(\"ip link failed: \", err)",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 49,
+        "endChar": 54
+      },
+      "revId": "608a949721a15572587614240ef7d1dd5ce318ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dae1af6b_03e1b477",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_get_set.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-03T02:39:34Z",
+      "side": 1,
+      "message": "huge nit: 5 * time.Second\n\nAlso, unless there is strong reason, please prefer shorter interval (testing.Poll\u0027s default is 100ms, which is recommended) to reduce the run time of this test as much as possible.",
+      "range": {
+        "startLine": 54,
+        "startChar": 21,
+        "endLine": 54,
+        "endChar": 42
+      },
+      "revId": "608a949721a15572587614240ef7d1dd5ce318ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd53e6ff_3d957e52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_get_set.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-03T02:39:34Z",
+      "side": 1,
+      "message": "Please check error returned from testing.Sleep. It can return an error if the test timeout is hit during sleep.\n\n(Note: this will be handled if you use testing.Poll)",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 15
+      },
+      "revId": "608a949721a15572587614240ef7d1dd5ce318ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
