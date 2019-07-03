@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ee812e29_7d9a9544",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-07-03T09:57:48Z",
+      "side": 1,
+      "message": "Ah, I remember it was because you asked me why I extract out histogram snapshot logic, I added explanation in commit message. Reworded.",
+      "parentUuid": "f9bed3be_82756271",
+      "revId": "24ecb2743acd6ba6917e307d6c43193959081664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7b0677d7_c396ec7a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 5
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "515d3260_75f639bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-07-03T09:57:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b0677d7_c396ec7a",
+      "range": {
+        "startLine": 269,
+        "startChar": 22,
+        "endLine": 269,
+        "endChar": 32
+      },
+      "revId": "24ecb2743acd6ba6917e307d6c43193959081664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b4d6fa8_2e24224b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 5
@@ -62,6 +104,30 @@
       "revId": "24ecb2743acd6ba6917e307d6c43193959081664",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1811858e_abd46cf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-07-03T09:57:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b4d6fa8_2e24224b",
+      "range": {
+        "startLine": 277,
+        "startChar": 3,
+        "endLine": 277,
+        "endChar": 7
+      },
+      "revId": "24ecb2743acd6ba6917e307d6c43193959081664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
