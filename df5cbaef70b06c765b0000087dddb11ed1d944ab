@@ -69,6 +69,24 @@
       "revId": "df5cbaef70b06c765b0000087dddb11ed1d944ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbdca914_cb7bb039",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/pre/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-03T05:31:40Z",
+      "side": 1,
+      "message": "Ah, I overlooked these tests...\nBut, why not stop using precondition in camera.WebRTC*?\nSince these tests are still informational too, I don\u0027t come up with a special reason to keep using precondition in webrtc tests and not in play tests.",
+      "parentUuid": "9b13ffa7_8c26c273",
+      "revId": "df5cbaef70b06c765b0000087dddb11ed1d944ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
