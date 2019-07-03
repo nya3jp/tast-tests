@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0f68ff5f_a75e5033",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-07-03T04:58:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb9d904e_986e1ffc",
+      "revId": "086b692e665cefc551b2b5a406c8d2d0da3d5201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f424a1c_0b8136cb",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "086b692e665cefc551b2b5a406c8d2d0da3d5201",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29d8b678_4f61eee2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/alsa_conformance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-07-03T04:58:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f424a1c_0b8136cb",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 136,
+        "endChar": 3
+      },
+      "revId": "086b692e665cefc551b2b5a406c8d2d0da3d5201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
