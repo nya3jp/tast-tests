@@ -16,6 +16,24 @@
       "revId": "649d67e2c634d6e879d59871eac2be1da7af126c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dee86a8_389d00f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-03T03:09:55Z",
+      "side": 1,
+      "message": "Thanks a lot for the suggestion! I\u0027ll keep it in mind for a future CL!",
+      "parentUuid": "6a4a8b59_11183995",
+      "revId": "649d67e2c634d6e879d59871eac2be1da7af126c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
