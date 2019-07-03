@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4785b7dc_b8ec37dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_switch_shortcut.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2019-07-03T11:32:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0dc2e17_3088aeb1",
+      "range": {
+        "startLine": 114,
+        "startChar": 4,
+        "endLine": 114,
+        "endChar": 16
+      },
+      "revId": "84afd73ef909ed6db9fbe8eb1bd80e45c0e5d3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90a30a8c_c3b0d9fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_switch_shortcut.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "84afd73ef909ed6db9fbe8eb1bd80e45c0e5d3a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c301a638_721c2107",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_switch_shortcut.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2019-07-03T11:32:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90a30a8c_c3b0d9fe",
+      "range": {
+        "startLine": 131,
+        "startChar": 4,
+        "endLine": 131,
+        "endChar": 16
+      },
+      "revId": "84afd73ef909ed6db9fbe8eb1bd80e45c0e5d3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
