@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5e597d92_20c4cb51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-03T17:26:29Z",
+      "side": 1,
+      "message": "Yes, a couple: first, this test is only concerned with measuring VideoFrame\ndelay to presentation, not with video per se, and then again it should be in\na webrtc category and not under video. Finally, this test should not need to\nhave a PeerConnectino (i.e. a remote webrtc object producing VideoFrames), but\ncould be implemented via a \"fake\" remote video stream object as discussed \noffline.",
+      "parentUuid": "2c7f14db_50488925",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 16
+      },
+      "revId": "8df3479ddf97cbf938addd36a6b874df96632a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf3f64d8_babf696b",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8dd5d1bd_671706e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-03T17:26:29Z",
+      "side": 1,
+      "message": "\u003e Are you intend to put this into CQ? \nNot really, just want to collect perf metrics.\n\n\u003e IIUC, informational tag is used for mainline tests to put into CQ later on. Consider to put group:crosbolt if you just want to get the metrics.\n\u003e \n\u003e https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_attributes.md\n\nDone, thanks!",
+      "parentUuid": "bf3f64d8_babf696b",
+      "range": {
+        "startLine": 26,
+        "startChar": 26,
+        "endLine": 26,
+        "endChar": 39
+      },
+      "revId": "8df3479ddf97cbf938addd36a6b874df96632a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "076ec1b4_1d1051c2",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
         "patchSetId": 6
@@ -68,6 +116,30 @@
       "revId": "8df3479ddf97cbf938addd36a6b874df96632a1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6cc2694_9e67fae8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-03T17:26:29Z",
+      "side": 1,
+      "message": "Fixed on the next PS.",
+      "parentUuid": "076ec1b4_1d1051c2",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 4
+      },
+      "revId": "8df3479ddf97cbf938addd36a6b874df96632a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "af58a4dd_59c6efdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-03T17:26:29Z",
+      "side": 1,
+      "message": "It was a copy-paste. The whole test should take ~1minute including waiting for CPU \nstabilization and logging in.",
+      "parentUuid": "cda03bec_38331d8b",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "8df3479ddf97cbf938addd36a6b874df96632a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "825e48ad_aadb7d27",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
         "patchSetId": 6
@@ -129,6 +225,30 @@
       "writtenOn": "2019-07-02T18:45:38Z",
       "side": 1,
       "message": "Just a bit of brainstorming because I\u0027ve never done Chrome tast tests:\n\n1) According to [1], New() restarts the ui job, so I don\u0027t think you have to do it in ln. 39.\n\n2) However, unless you absolutely need a new Chrome, you may want to express this in terms of a precondition: in testing.AddTest(), add something like (or define the precondition in a pre.go file, see [2] and [3]):\n\nPre: chrome.NewPrecondition(\"webrtc\", chrome.ExtraArgs(chromeArgs...))\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/chrome/chrome.go#221\n[2] https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/chrome/pre.go#32\n[3] https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/bundles/cros/video/lib/pre/pre.go",
+      "range": {
+        "startLine": 56,
+        "startChar": 12,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "8df3479ddf97cbf938addd36a6b874df96632a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "545582ac_57214fba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-03T17:26:29Z",
+      "side": 1,
+      "message": "1) Removed the upstart thing, seems to work still :-)\n2) I have no idea, maybe it\u0027s better so we can avoid relaunching Chrome\n if the conditions are met? We can delay until Tast owners take a look.",
+      "parentUuid": "825e48ad_aadb7d27",
       "range": {
         "startLine": 56,
         "startChar": 12,
@@ -164,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "21aee605_9a3f9f47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-03T17:26:29Z",
+      "side": 1,
+      "message": "Corrected capitalizing; Also, I saw in other tests\n  s.Fatal(\"Bla\", err);\nbut \n  s.Fatalf(\"Bla %v %v\", importantInfoString, err);\n\nThis might be wrong :-)",
+      "parentUuid": "a194b8cb_8957263c",
+      "range": {
+        "startLine": 72,
+        "startChar": 12,
+        "endLine": 72,
+        "endChar": 13
+      },
+      "revId": "8df3479ddf97cbf938addd36a6b874df96632a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e2304c5_6414b498",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
         "patchSetId": 6
@@ -187,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "ef9caa85_f01b27c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-03T17:26:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e2304c5_6414b498",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 30
+      },
+      "revId": "8df3479ddf97cbf938addd36a6b874df96632a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0f6c5a2_699ea80c",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
         "patchSetId": 6
@@ -198,6 +366,30 @@
       "writtenOn": "2019-07-02T19:39:12Z",
       "side": 1,
       "message": "If you want to upload this to chromeperf, you should whitelist \nyour test in perf_dashboard_config.\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/perf/perf.go?l\u003d12\u0026rcl\u003d983a05313d7cdf7c6b85283a1e89ed1b658d6481",
+      "range": {
+        "startLine": 118,
+        "startChar": 14,
+        "endLine": 118,
+        "endChar": 55
+      },
+      "revId": "8df3479ddf97cbf938addd36a6b874df96632a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74aa4f47_97f73855",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-03T17:26:29Z",
+      "side": 1,
+      "message": "thanks! crrev.com/c/1687115",
+      "parentUuid": "e0f6c5a2_699ea80c",
       "range": {
         "startLine": 118,
         "startChar": 14,
