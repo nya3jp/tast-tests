@@ -87,6 +87,24 @@
       "revId": "df5cbaef70b06c765b0000087dddb11ed1d944ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cf517e8_2dca227d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/pre/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-07-03T06:34:33Z",
+      "side": 1,
+      "message": "I guess Tast Owners will ask us to apply it to save running time. And we might want a variant that runs test in new Chrome session to facilitate debugging.\n\nHence I prefer the approach: in test main function, check if s.PreValue() exists; if so, use precondition\u0027s Chrome instance; otherwise, use chrome.New().\n\nWith that, we can have two test version: one is for CQ and the other is for informational.\n\nBy the way, https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Preconditions also refers to this file.",
+      "parentUuid": "fbdca914_cb7bb039",
+      "revId": "df5cbaef70b06c765b0000087dddb11ed1d944ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
