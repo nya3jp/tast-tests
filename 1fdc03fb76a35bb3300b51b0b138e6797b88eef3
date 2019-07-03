@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "14741640_d9e504ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-07-03T23:46:05Z",
+      "side": 1,
+      "message": "Thanks for the details and advice :) ! \n\nFor the Re#2, I have filed a bug b/135298456 for the audio team, since I was guessing there could be another issue about cras APIs (for some models equipped with internal speaker themselves, we still observed cras failure. See my last comment of b/135298456). \nI can file a separate bug for this, and maybe link them together later after getting more information from the audio team. Does this SGTY?\n\nFor Re#1, considering of the fact I mentioned above, I think it could bring side effect if we exclude all boards that caused our tests flaky. Let me confirm with the audio team to see if there is a compromise solution.",
+      "parentUuid": "dacae426_8ed7ec64",
+      "range": {
+        "startLine": 11,
+        "startChar": 57,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "1fdc03fb76a35bb3300b51b0b138e6797b88eef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "42b38b76_8f7b91a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
         "patchSetId": 1
