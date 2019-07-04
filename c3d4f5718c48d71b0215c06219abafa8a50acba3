@@ -93,6 +93,30 @@
       "revId": "c3d4f5718c48d71b0215c06219abafa8a50acba3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0675b8d_6dbf35a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-04T02:09:20Z",
+      "side": 1,
+      "message": "+1 to wait for other usage. I guess usage is limited to video tests at this moment since most tests can leave Chrome open.",
+      "parentUuid": "25161b6c_58a53d03",
+      "range": {
+        "startLine": 295,
+        "startChar": 5,
+        "endLine": 295,
+        "endChar": 16
+      },
+      "revId": "c3d4f5718c48d71b0215c06219abafa8a50acba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
