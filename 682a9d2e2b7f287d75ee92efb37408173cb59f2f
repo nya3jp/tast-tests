@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b814d99_5a182682",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_sanity_vp91.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-04T07:05:38Z",
+      "side": 1,
+      "message": "This test is already healthy even on RK3399 boards.\nhttps://tastboard.corp.google.com/test/video.DecodeAccelSanityVP91\n\nDo you know the reason? Do we really need to modify this test?",
+      "revId": "682a9d2e2b7f287d75ee92efb37408173cb59f2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
