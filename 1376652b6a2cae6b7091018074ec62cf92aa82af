@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8004940f_aac49e52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-04T07:37:26Z",
+      "side": 1,
+      "message": "How about define a new type to specify VDA or VD? \nIt\u0027d be similar with VDABufferMode.",
+      "range": {
+        "startLine": 189,
+        "startChar": 82,
+        "endLine": 189,
+        "endChar": 92
+      },
+      "revId": "1376652b6a2cae6b7091018074ec62cf92aa82af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bac23c97_de87766c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_vd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-04T07:37:26Z",
+      "side": 1,
+      "message": "How about renaming this test to \"DecodeAccelVDH264\"? (swap VD and H264)\n\nIn general, we have types of video data at the end of test name. So, I think it\u0027d be better to follow this convention, I think.\n\nThe only exception is DecodeAccelH264New, but that \"New\" suffix was permitted because it\u0027s a temporal one:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1471978/1/src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_new.go#18\nSo, this is not the case.",
+      "revId": "1376652b6a2cae6b7091018074ec62cf92aa82af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "468df1cb_2173ec66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_vd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-04T07:37:26Z",
+      "side": 1,
+      "message": "Could you add more info about \"VD\" here (or in the comment below)? \nPeople outside of our team shouldn\u0027t know what VD is.",
+      "range": {
+        "startLine": 19,
+        "startChar": 84,
+        "endLine": 19,
+        "endChar": 86
+      },
+      "revId": "1376652b6a2cae6b7091018074ec62cf92aa82af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "026ef48d_42e2bbb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_vd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-04T07:37:26Z",
+      "side": 1,
+      "message": "nit: Runs",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 20
+      },
+      "revId": "1376652b6a2cae6b7091018074ec62cf92aa82af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
