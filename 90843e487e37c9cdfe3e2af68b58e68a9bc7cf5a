@@ -1,0 +1,297 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92e3c009_216fe980",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_sender.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-04T05:04:39Z",
+      "side": 1,
+      "message": "Could you use public URL, given tast repository is public?\nhttps://chromium.googlesource.com/chromiumos/platform2/+/master/crash-reporter/\n\nOr I think you can remove it, because not all the tests for crash-reporter is here. Desc section explains the test well.",
+      "range": {
+        "startLine": 5,
+        "startChar": 13,
+        "endLine": 5,
+        "endChar": 85
+      },
+      "revId": "90843e487e37c9cdfe3e2af68b58e68a9bc7cf5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "776b6869_a8620adf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_sender.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-04T05:04:39Z",
+      "side": 1,
+      "message": "Remove blank line.",
+      "revId": "90843e487e37c9cdfe3e2af68b58e68a9bc7cf5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff05984b_8147a3c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_sender.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-04T05:04:39Z",
+      "side": 1,
+      "message": "Please avoid putting binary data in the repository.\nYou should use external data file. See https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#external-data-files",
+      "range": {
+        "startLine": 29,
+        "startChar": 15,
+        "endLine": 29,
+        "endChar": 39
+      },
+      "revId": "90843e487e37c9cdfe3e2af68b58e68a9bc7cf5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f36c0830_b3b86d59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-04T05:04:39Z",
+      "side": 1,
+      "message": "Func comments should start with the func name. Same for other places.\n// callSenderOneCrash calls ...\n\nSee https://golang.org/doc/effective_go.html#commentary",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 57
+      },
+      "revId": "90843e487e37c9cdfe3e2af68b58e68a9bc7cf5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6b84b37_12e21ef4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-04T05:04:39Z",
+      "side": 1,
+      "message": "Local var shouldn\u0027t start with capital letter.",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 24
+      },
+      "revId": "90843e487e37c9cdfe3e2af68b58e68a9bc7cf5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "988ddf29_c771b90a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-04T05:04:39Z",
+      "side": 1,
+      "message": "Remove ?",
+      "range": {
+        "startLine": 105,
+        "startChar": 35,
+        "endLine": 105,
+        "endChar": 40
+      },
+      "revId": "90843e487e37c9cdfe3e2af68b58e68a9bc7cf5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43ad4c6c_cf7b1789",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-04T05:04:39Z",
+      "side": 1,
+      "message": "If this is constant, why do we define variable?",
+      "range": {
+        "startLine": 105,
+        "startChar": 28,
+        "endLine": 105,
+        "endChar": 32
+      },
+      "revId": "90843e487e37c9cdfe3e2af68b58e68a9bc7cf5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "229d39c6_69422d00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-04T05:04:39Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 16
+      },
+      "revId": "90843e487e37c9cdfe3e2af68b58e68a9bc7cf5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "059df28b_043713d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-04T05:04:39Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 16
+      },
+      "revId": "90843e487e37c9cdfe3e2af68b58e68a9bc7cf5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dcb00ea_b2174e6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-04T05:04:39Z",
+      "side": 1,
+      "message": "err :\u003d\nremove the above var err error.",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 4
+      },
+      "revId": "90843e487e37c9cdfe3e2af68b58e68a9bc7cf5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b4734af_215af5f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-04T05:04:39Z",
+      "side": 1,
+      "message": "You can combine declaration with if.\nif err :\u003d ...; err !\u003d nil {\n}",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 16
+      },
+      "revId": "90843e487e37c9cdfe3e2af68b58e68a9bc7cf5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e789312_7af941d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-04T05:04:39Z",
+      "side": 1,
+      "message": "For common cleanup, you can use defer. Read http://go/tast-codelab-2 for example.",
+      "range": {
+        "startLine": 115,
+        "startChar": 7,
+        "endLine": 115,
+        "endChar": 14
+      },
+      "revId": "90843e487e37c9cdfe3e2af68b58e68a9bc7cf5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "899ace42_a133dbb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-04T05:04:39Z",
+      "side": 1,
+      "message": "Remove?",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 209,
+        "endChar": 2
+      },
+      "revId": "90843e487e37c9cdfe3e2af68b58e68a9bc7cf5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
