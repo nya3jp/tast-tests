@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ec42ad0_2a879169",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-04T05:17:07Z",
+      "side": 1,
+      "message": "This commit message is misleading.\nThough this CL only stop using ChromeVideo precondition in our camera tests, this message sounds that we stopped using all other preconditions. \n\nTast has another precondition other than our pre.ChromeVideo().\ne.g. https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/ui_automator.go?rcl\u003dbf64cf2de14ce1a44a684a8c39ba6ab5cb849a4c\u0026l\u003d24\n\nPlease change the CL description below, too.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "d7dad29a997a8bd293c164eae0f738c970611706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
