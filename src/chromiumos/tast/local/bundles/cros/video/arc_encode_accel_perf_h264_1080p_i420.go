@@ -9,8 +9,8 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/video/encode"
-	"chromiumos/tast/local/bundles/cros/video/lib/caps"
-	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
+	"chromiumos/tast/local/media/lib/caps"
+	"chromiumos/tast/local/media/lib/videotype"
 	"chromiumos/tast/testing"
 )
 
