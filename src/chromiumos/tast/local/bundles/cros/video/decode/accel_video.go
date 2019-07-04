@@ -184,8 +184,9 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, cfg testConfig) {
 
 // RunAccelVideoTestNew runs video_decode_accelerator_tests with the specified video file.
 // TODO(crbug.com/933034) Rename this function once the video_decode_accelerator_unittest
-// have been completely replaced.
-func RunAccelVideoTestNew(ctx context.Context, s *testing.State, filename string) {
+// have been completely replaced. If useVD is specified, the tests will be run against the
+// new VD implementations.
+func RunAccelVideoTestNew(ctx context.Context, s *testing.State, filename string, useVD bool) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging: ", err)
@@ -207,6 +208,9 @@ func RunAccelVideoTestNew(ctx context.Context, s *testing.State, filename string
 	// devices. (cf. crbug.com/881729)
 	if !arc.Supported() {
 		args = append(args, "--disable_validator")
+	}
+	if useVD {
+		args = append(args, "--use_vd")
 	}
 	args = append(args, s.DataPath(filename), s.DataPath(filename+".json"))
 

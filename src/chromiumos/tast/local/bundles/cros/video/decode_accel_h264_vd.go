@@ -15,8 +15,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DecodeAccelH264New,
-		Desc:         "Run Chrome video_decode_accelerator_tests with an H.264 video",
+		Func:         DecodeAccelH264VD,
+		Desc:         "Run Chrome video_decode_accelerator_tests with an H.264 video on a VD",
 		Contacts:     []string{"acourbot@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", caps.HWDecodeH264},
@@ -24,7 +24,7 @@ func init() {
 	})
 }
 
-// DecodeAccelH264New runs the video_decode_accelerator_tests with test-25fps.h264.
-func DecodeAccelH264New(ctx context.Context, s *testing.State) {
-	decode.RunAccelVideoTestNew(ctx, s, decode.Test25FPSH264.Name, false)
+// DecodeAccelH264VD runs the video_decode_accelerator_tests with test-25fps.h264 on a VD.
+func DecodeAccelH264VD(ctx context.Context, s *testing.State) {
+	decode.RunAccelVideoTestNew(ctx, s, decode.Test25FPSH264.Name, true)
 }
