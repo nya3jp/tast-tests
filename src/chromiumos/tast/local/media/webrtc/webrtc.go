@@ -14,10 +14,10 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/video/lib/logging"
-	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
-	"chromiumos/tast/local/bundles/cros/video/lib/vm"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/media/lib/logging"
+	"chromiumos/tast/local/media/lib/videotype"
+	"chromiumos/tast/local/media/lib/vm"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )

@@ -14,12 +14,12 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/video/lib/audio"
-	"chromiumos/tast/local/bundles/cros/video/lib/constants"
-	"chromiumos/tast/local/bundles/cros/video/lib/histogram"
-	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/media/lib/audio"
+	"chromiumos/tast/local/media/lib/constants"
+	"chromiumos/tast/local/media/lib/histogram"
+	"chromiumos/tast/local/media/lib/logging"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )

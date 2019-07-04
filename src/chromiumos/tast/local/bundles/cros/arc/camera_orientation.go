@@ -10,7 +10,7 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
-	"chromiumos/tast/local/bundles/cros/video/lib/caps"
+	"chromiumos/tast/local/media/lib/caps"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )

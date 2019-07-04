@@ -15,7 +15,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
+	"chromiumos/tast/local/media/lib/videotype"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )

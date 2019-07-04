@@ -11,8 +11,8 @@ import (
 	"strings"
 
 	"chromiumos/tast/autocaps"
-	"chromiumos/tast/local/bundles/cros/video/lib/caps"
-	"chromiumos/tast/local/bundles/cros/video/lib/logging"
+	"chromiumos/tast/local/media/lib/caps"
+	"chromiumos/tast/local/media/lib/logging"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
