@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "af0d46d6_5ac02ec4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-04T05:10:31Z",
+      "side": 1,
+      "message": "Thanks. The new version is much easier to understand for me.",
+      "parentUuid": "ee812e29_7d9a9544",
+      "revId": "24ecb2743acd6ba6917e307d6c43193959081664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b0677d7_c396ec7a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 5
