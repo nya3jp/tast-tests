@@ -16,10 +16,9 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	// TODO(crbug.com/963772) Move libraries in video to camera or media folder.
-	"chromiumos/tast/local/bundles/cros/video/lib/caps"
-	"chromiumos/tast/local/bundles/cros/video/lib/cpu"
 	"chromiumos/tast/local/chrome/bintest"
+	"chromiumos/tast/local/media/lib/caps"
+	"chromiumos/tast/local/media/lib/cpu"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"

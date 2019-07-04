@@ -8,8 +8,8 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
-	"chromiumos/tast/local/bundles/cros/video/mediarecorder"
+	"chromiumos/tast/local/media/lib/videotype"
+	"chromiumos/tast/local/media/mediarecorder"
 	"chromiumos/tast/testing"
 )
 

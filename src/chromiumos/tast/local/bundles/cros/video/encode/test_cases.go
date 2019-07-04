@@ -4,7 +4,7 @@
 
 package encode
 
-import "chromiumos/tast/local/bundles/cros/video/lib/videotype"
+import "chromiumos/tast/local/media/lib/videotype"
 
 // Bear192P is the test parameters of video_encode_accelerator_unittest for "bear_320x192_40frames.yuv".
 var Bear192P = StreamParams{

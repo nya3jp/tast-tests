@@ -11,10 +11,10 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/video/lib/binsetup"
-	"chromiumos/tast/local/bundles/cros/video/lib/caps"
-	"chromiumos/tast/local/bundles/cros/video/lib/cpu"
 	"chromiumos/tast/local/chrome/bintest"
+	"chromiumos/tast/local/media/lib/binsetup"
+	"chromiumos/tast/local/media/lib/caps"
+	"chromiumos/tast/local/media/lib/cpu"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"

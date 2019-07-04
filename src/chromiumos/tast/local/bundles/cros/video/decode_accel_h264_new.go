@@ -8,8 +8,8 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/video/decode"
-	"chromiumos/tast/local/bundles/cros/video/lib/caps"
-	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
+	"chromiumos/tast/local/media/lib/caps"
+	"chromiumos/tast/local/media/lib/videotype"
 	"chromiumos/tast/testing"
 )
 
