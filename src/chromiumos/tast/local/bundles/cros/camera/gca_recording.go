@@ -11,7 +11,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/bundles/cros/camera/gca"
-	"chromiumos/tast/local/bundles/cros/video/lib/caps"
+	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
 

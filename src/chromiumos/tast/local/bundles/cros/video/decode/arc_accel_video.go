@@ -22,8 +22,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/video/lib/arctest"
-	"chromiumos/tast/local/bundles/cros/video/lib/cpu"
-	"chromiumos/tast/local/bundles/cros/video/lib/logging"
+	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )

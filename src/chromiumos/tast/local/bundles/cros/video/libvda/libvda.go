@@ -11,9 +11,9 @@ import (
 	"context"
 	"path/filepath"
 
-	"chromiumos/tast/local/bundles/cros/video/lib/logging"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/gtest"
+	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/testing"
 )
 
