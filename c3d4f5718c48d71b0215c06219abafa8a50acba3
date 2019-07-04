@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e60bdee5_2222200a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/chromeargs/chromeargs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-07-04T01:58:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82cade9a_d6dc5a2b",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "c3d4f5718c48d71b0215c06219abafa8a50acba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "760f2733_d410d53e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 9
@@ -36,6 +60,30 @@
       "writtenOn": "2019-07-04T01:09:34Z",
       "side": 1,
       "message": "This is nice!",
+      "range": {
+        "startLine": 295,
+        "startChar": 5,
+        "endLine": 295,
+        "endChar": 16
+      },
+      "revId": "c3d4f5718c48d71b0215c06219abafa8a50acba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25161b6c_58a53d03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-07-04T01:58:08Z",
+      "side": 1,
+      "message": "My pleasure. Do you think it can move to tast/local/chrome? Or let\u0027s wait for other usage comes?",
+      "parentUuid": "760f2733_d410d53e",
       "range": {
         "startLine": 295,
         "startChar": 5,
