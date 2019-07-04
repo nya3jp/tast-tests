@@ -15,11 +15,11 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/video/lib/constants"
-	"chromiumos/tast/local/bundles/cros/video/lib/cpu"
-	"chromiumos/tast/local/bundles/cros/video/lib/histogram"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/media/constants"
+	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/media/histogram"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )

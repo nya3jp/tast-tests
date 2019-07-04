@@ -15,10 +15,10 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/video/lib/cpu"
-	"chromiumos/tast/local/bundles/cros/video/lib/logging"
-	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
 	"chromiumos/tast/local/chrome/bintest"
+	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/media/logging"
+	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"

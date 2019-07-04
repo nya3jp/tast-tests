@@ -7,8 +7,8 @@ package video
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/video/lib/caps"
 	"chromiumos/tast/local/bundles/cros/video/libvda"
+	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
 
