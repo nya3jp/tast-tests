@@ -27,5 +27,5 @@ func init() {
 // DecodeAccelVP9New runs the video_decode_accelerator_tests with test-25fps.vp9.
 // TODO(dstaessens): Drop the 'New' suffix when the old VDA tests have been deprecated.
 func DecodeAccelVP9New(ctx context.Context, s *testing.State) {
-	decode.RunAccelVideoTestNew(ctx, s, decode.Test25FPSVP9.Name)
+	decode.RunAccelVideoTestNew(ctx, s, decode.Test25FPSVP9.Name, decode.VDA)
 }
