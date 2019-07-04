@@ -4,7 +4,7 @@
 
 package decode
 
-import "chromiumos/tast/local/bundles/cros/video/lib/videotype"
+import "chromiumos/tast/local/media/lib/videotype"
 
 // Test25FPSH264 is the test parameters of video_decode_accelerator_unittest for "test-25fps.h264".
 var Test25FPSH264 = TestVideoData{

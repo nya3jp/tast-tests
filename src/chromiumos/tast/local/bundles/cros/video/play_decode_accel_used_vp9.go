@@ -7,10 +7,10 @@ package video
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/video/lib/caps"
-	"chromiumos/tast/local/bundles/cros/video/lib/pre"
 	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/media/lib/caps"
+	"chromiumos/tast/local/media/lib/pre"
 	"chromiumos/tast/testing"
 )
 

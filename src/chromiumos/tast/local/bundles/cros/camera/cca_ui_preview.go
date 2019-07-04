@@ -9,8 +9,8 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/camera/cca"
-	"chromiumos/tast/local/bundles/cros/video/lib/caps"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/media/lib/caps"
 	"chromiumos/tast/testing"
 )
 

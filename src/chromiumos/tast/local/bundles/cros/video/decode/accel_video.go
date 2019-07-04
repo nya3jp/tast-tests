@@ -15,10 +15,10 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/video/lib/cpu"
-	"chromiumos/tast/local/bundles/cros/video/lib/logging"
-	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
 	"chromiumos/tast/local/chrome/bintest"
+	"chromiumos/tast/local/media/lib/cpu"
+	"chromiumos/tast/local/media/lib/logging"
+	"chromiumos/tast/local/media/lib/videotype"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -65,6 +65,18 @@ const (
 	// ImportBuffer is a mode where video decode accelerator uses provided buffers.
 	// In this mode, we run tests using frame validator.
 	ImportBuffer
+)
+
+// DecoderType represents the different video decoder types.
+type DecoderType int
+
+const (
+	// VDA is the video decoder type based on the VideoDecodeAccelerator
+	// interface. These are set to be deprecrated.
+	VDA DecoderType = iota
+	// VD is the video decoder type based on the VideoDecoder interface. These
+	// will replace the current VDAs.
+	VD
 )
 
 // testConfig stores test configuration to run video_decode_accelerator_unittest.
@@ -188,8 +200,9 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, cfg testConfig) {
 
 // RunAccelVideoTestNew runs video_decode_accelerator_tests with the specified video file.
 // TODO(crbug.com/933034) Rename this function once the video_decode_accelerator_unittest
-// have been completely replaced.
-func RunAccelVideoTestNew(ctx context.Context, s *testing.State, filename string) {
+// have been completely replaced. decoderType specifies whether to run the tests against
+// the VDA or VD based video decoder implementations.
+func RunAccelVideoTestNew(ctx context.Context, s *testing.State, filename string, decoderType DecoderType) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging: ", err)
@@ -211,6 +224,9 @@ func RunAccelVideoTestNew(ctx context.Context, s *testing.State, filename string
 	// devices. (cf. crbug.com/881729)
 	if !arc.Supported() {
 		args = append(args, "--disable_validator")
+	}
+	if decoderType == VD {
+		args = append(args, "--use_vd")
 	}
 	args = append(args, s.DataPath(filename), s.DataPath(filename+".json"))
 

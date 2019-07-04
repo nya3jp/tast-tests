@@ -8,7 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/video/decode"
-	"chromiumos/tast/local/bundles/cros/video/lib/caps"
+	"chromiumos/tast/local/media/lib/caps"
 	"chromiumos/tast/testing"
 )
 
@@ -26,5 +26,5 @@ func init() {
 
 // DecodeAccelH264ResolutionSwitch runs the video_decode_accelerator_tests with switch_1080p_720p_240frames.h264.
 func DecodeAccelH264ResolutionSwitch(ctx context.Context, s *testing.State) {
-	decode.RunAccelVideoTestNew(ctx, s, "switch_1080p_720p_240frames.h264")
+	decode.RunAccelVideoTestNew(ctx, s, "switch_1080p_720p_240frames.h264", decode.VDA)
 }

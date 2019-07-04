@@ -9,7 +9,7 @@ import (
 	"io/ioutil"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/video/webrtc"
+	"chromiumos/tast/local/media/webrtc"
 	"chromiumos/tast/testing"
 )
 
