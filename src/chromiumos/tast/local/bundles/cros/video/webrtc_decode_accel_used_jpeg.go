@@ -7,9 +7,9 @@ package video
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/video/lib/caps"
-	"chromiumos/tast/local/bundles/cros/video/lib/constants"
-	"chromiumos/tast/local/bundles/cros/video/webrtc"
+	"chromiumos/tast/local/media/caps"
+	"chromiumos/tast/local/media/constants"
+	"chromiumos/tast/local/media/webrtc"
 	"chromiumos/tast/testing"
 )
 
