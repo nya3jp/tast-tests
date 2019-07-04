@@ -27,5 +27,5 @@ func init() {
 // DecodeAccelH264New runs the video_decode_accelerator_tests with test-25fps.h264.
 // TODO(dstaessens): Drop the 'New' suffix when the old VDA tests have been deprecated.
 func DecodeAccelH264New(ctx context.Context, s *testing.State) {
-	decode.RunAccelVideoTestNew(ctx, s, decode.Test25FPSH264.Name)
+	decode.RunAccelVideoTestNew(ctx, s, decode.Test25FPSH264.Name, decode.VDA)
 }
