@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37a8e46e_12439b35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-04T06:19:20Z",
+      "side": 1,
+      "message": "style/optional: We often combine if stmt not to keep the scope of vars small.\n\nif wasUsed, err :\u003d ...; err !\u003d nil {\n  return errors.Wrap(...)\n} else if !wasUsed {\n  return errors.Wrap(...)\n}",
+      "range": {
+        "startLine": 274,
+        "startChar": 1,
+        "endLine": 280,
+        "endChar": 2
+      },
+      "revId": "b442caaee8ef1f60d01de83ed09883d2735ed481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
