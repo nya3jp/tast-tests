@@ -8,13 +8,12 @@ import (
 	"context"
 	"time"
 
-	// TODO(crbug.com/963772) Move libraries in video to camera or media folder.
-	"chromiumos/tast/local/bundles/cros/video/lib/caps"
-	"chromiumos/tast/local/bundles/cros/video/lib/pre"
-	"chromiumos/tast/local/bundles/cros/video/lib/videotype"
-	"chromiumos/tast/local/bundles/cros/video/lib/vm"
-	"chromiumos/tast/local/bundles/cros/video/webrtc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/media/caps"
+	"chromiumos/tast/local/media/pre"
+	"chromiumos/tast/local/media/videotype"
+	"chromiumos/tast/local/media/vm"
+	"chromiumos/tast/local/media/webrtc"
 	"chromiumos/tast/testing"
 )
 
