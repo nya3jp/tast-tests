@@ -1,0 +1,233 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "513a21ed_a51085ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/webrtc_video_display_perf_test.html",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-04T14:44:00Z",
+      "side": 1,
+      "message": "Instead of alert(), could you handle the error properly?\n(could you find my comment below?)",
+      "revId": "e3e84b26fc5941d58bd694948c70e8da16f31bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "042dd408_6ff6ec7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/webrtc_video_display_perf_test.html",
+        "patchSetId": 9
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-04T14:44:00Z",
+      "side": 1,
+      "message": "Same. Could you handle error properly?",
+      "revId": "e3e84b26fc5941d58bd694948c70e8da16f31bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48c20add_1c41d8f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/webrtc_video_display_perf_test.html",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-04T14:44:00Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "e3e84b26fc5941d58bd694948c70e8da16f31bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14db6ffc_1de910b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-04T14:44:00Z",
+      "side": 1,
+      "message": "style/nit: you can just inline the flags into ExtraArgs.",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 35
+      },
+      "revId": "e3e84b26fc5941d58bd694948c70e8da16f31bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c89e3cf_f381a3d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-04T14:44:00Z",
+      "side": 1,
+      "message": "Could you wait for the procedure by EvalPromise, instead?\n\ns.Log(\"Requesting local strem\")\nif err :\u003d conn.EvalPromise(`\n    new Promise((resolve, reject) \u003d\u003e {\n      const constraints \u003d {\n        ...\n      }\n      navigator.mediaDevices.getUserMedia(constraints).then((stream) \u003d\u003e {\n        ...\n        resolve();\n      }).catch(reject);\n    });`, nil); err !\u003d nil {\n  s.Fatal(...)\n}\n\nis what you\u0027d like to do?\nSame for all the invocation below.",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "e3e84b26fc5941d58bd694948c70e8da16f31bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f06e3aec_9dca47d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-04T14:44:00Z",
+      "side": 1,
+      "message": "Any signals that this should wait for instead of timeout?\nalso where 20 seconds come from? could you add comments?",
+      "range": {
+        "startLine": 75,
+        "startChar": 30,
+        "endLine": 75,
+        "endChar": 46
+      },
+      "revId": "e3e84b26fc5941d58bd694948c70e8da16f31bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16877cc6_e15a9501",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-04T14:44:00Z",
+      "side": 1,
+      "message": "style: numBuckets is unused other than the if condition. Could you inline?\n\nif len(histgramDiff.Buckets) \u003d\u003d 0 {\n  s.Fatal(...)\n}",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 0
+      },
+      "revId": "e3e84b26fc5941d58bd694948c70e8da16f31bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc96f71d_561e2724",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-04T14:44:00Z",
+      "side": 1,
+      "message": "style: could you use default initialization for 0 value init?\n\nvar averageSum float64\nvar numSamples int64",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 25
+      },
+      "revId": "e3e84b26fc5941d58bd694948c70e8da16f31bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "456b7f18_b1d43ba0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-04T14:44:00Z",
+      "side": 1,
+      "message": "You\u0027re calculating the average twice, here and below.\nAlso, this is only for logging at L100.\n\nHow about merging those two loops to avoid duplicated calculation?\n\nfor _, bucket :\u003d range ... {\n  average :\u003d float(...) / 2.0\n  for ... {\n    prefValues.Append(...)\n  }\n  numSumples +\u003d bucket.Count\n  averageSum +\u003d average * bucket.Count\n}\n\ns.Logf(...)",
+      "revId": "e3e84b26fc5941d58bd694948c70e8da16f31bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e27006f_a9e4c984",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-04T14:44:00Z",
+      "side": 1,
+      "message": "could you use s.Logf() in the test main body?",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 20
+      },
+      "revId": "e3e84b26fc5941d58bd694948c70e8da16f31bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d55c293d_8f7e6c44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-04T14:44:00Z",
+      "side": 1,
+      "message": "local var should start with lower letter. Also, in go, by using surrounding context, shorter name is preferred. How about just \"metric\"",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 4
+      },
+      "revId": "e3e84b26fc5941d58bd694948c70e8da16f31bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
