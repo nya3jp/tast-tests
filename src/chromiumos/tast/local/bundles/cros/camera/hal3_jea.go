@@ -8,7 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/camera/hal3"
-	"chromiumos/tast/local/bundles/cros/video/lib/caps"
+	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/testing"
 )
 
