@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f977da44_b37bb4de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-04T01:21:06Z",
+      "side": 1,
+      "message": "qq: it is more common to defer a cleanup call after a setup call, do we need to do this first?",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 63
+      },
+      "revId": "6099a4afddaf7b68950077139b92a89b228f1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92c1cc49_7c1073bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-04T01:21:06Z",
+      "side": 1,
+      "message": "huge nit: s/  / /",
+      "range": {
+        "startLine": 90,
+        "startChar": 21,
+        "endLine": 90,
+        "endChar": 23
+      },
+      "revId": "6099a4afddaf7b68950077139b92a89b228f1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
