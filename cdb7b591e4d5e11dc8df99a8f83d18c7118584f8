@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e088065c_6abdcb92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_get_set.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-04T01:16:26Z",
+      "side": 1,
+      "message": "Hmm, sorry for back and forth, but if you want to report multiple errors it is okay to pass testing.State. Actually []error is rarely seen this repository.",
+      "range": {
+        "startLine": 27,
+        "startChar": 37,
+        "endLine": 27,
+        "endChar": 46
+      },
+      "revId": "cdb7b591e4d5e11dc8df99a8f83d18c7118584f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecc0d608_f8ab1b4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_get_set.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-04T01:16:26Z",
+      "side": 1,
+      "message": "Please check errors from testing.Poll. Also, it is common to inline the polled function. For example:\n\n if err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n   return testexec.CommandContext(ctx, \"ip\", \"add\", \"sh\", \"dev\", iface).Run()\n }, \u0026testing.PollOptions{Timeout: 5 * time.Second}); err !\u003d nil {\n   s.Fatal(\"Failed to wait for device: \", err)\n }",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 28
+      },
+      "revId": "cdb7b591e4d5e11dc8df99a8f83d18c7118584f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c5d8520_9fdf963f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_get_set.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-04T01:16:26Z",
+      "side": 1,
+      "message": "style: Please add a trailing period.",
+      "range": {
+        "startLine": 52,
+        "startChar": 6,
+        "endLine": 52,
+        "endChar": 13
+      },
+      "revId": "cdb7b591e4d5e11dc8df99a8f83d18c7118584f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
