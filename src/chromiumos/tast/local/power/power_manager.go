@@ -27,6 +27,19 @@ type PowerManager struct { // NOLINT
 	obj  dbus.BusObject
 }
 
+// UserActivityType is a status code for the PowerManager related D-Bus methods.
+type UserActivityType int32
+
+// Values are from src/platform2/system_api/dbus/power_manager/dbus-constants.h
+const (
+	UserActivityOther                  UserActivityType = 0
+	UserActivityBrightnessUpKeyPress   UserActivityType = 1
+	UserActivityBrightnessDownKeyPress UserActivityType = 2
+	UserActivityVolumeUpKeyPress       UserActivityType = 3
+	UserActivityVolumeDownKeyPress     UserActivityType = 4
+	UserActivityVolumeMuteKeyPress     UserActivityType = 5
+)
+
 // NewPowerManager connects to power_manager via D-Bus and returns a PowerManager object.
 func NewPowerManager(ctx context.Context) (*PowerManager, error) {
 	conn, obj, err := dbusutil.Connect(ctx, dbusName, dbusPath)
@@ -41,4 +54,23 @@ func (m *PowerManager) GetSwitchStates(ctx context.Context) (*pmpb.SwitchStates,
 	ret := &pmpb.SwitchStates{}
 	err := dbusutil.CallProtoMethod(ctx, m.obj, dbusInterface+".GetSwitchStates", nil, ret)
 	return ret, err
+}
+
+// HandleUserActivity calls PowerManager.HandleUserActivity D-Bus method.
+func (m *PowerManager) HandleUserActivity(ctx context.Context, ActivityType UserActivityType) error {
+	return m.obj.CallWithContext(ctx, dbusInterface+".HandleUserActivity", 0, ActivityType).Err
+}
+
+// TurnOnDisplay turns on a display by sending a user activity ping to Power
+// Manager to light up the display.
+func TurnOnDisplay(ctx context.Context) error {
+	powerd, err := NewPowerManager(ctx)
+	if err != nil {
+		return err
+	}
+	err = powerd.HandleUserActivity(ctx, UserActivityOther)
+	if err != nil {
+		return err
+	}
+	return nil
 }
