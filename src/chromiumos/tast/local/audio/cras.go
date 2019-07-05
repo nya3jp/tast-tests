@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/local/display"
 	"chromiumos/tast/testing"
 )
 
@@ -163,6 +164,20 @@ func SetActiveNodeByType(ctx context.Context, nodeType string) error {
 // It should be used to verify the target types of nodes exist and are
 // active before the real test starts.
 func WaitForDevice(ctx context.Context, streamType StreamType) error {
+
+	// Turn on a display before waiting for devices. Some devices use their
+	// displays as an internal speaker (e.g. monroe). When a display is closed,
+	// the internal speaker is removed, too. For this case, we should turn on a
+	// display to re-enable a speaker.
+	displayService, err := display.NewDisplayService(ctx)
+	if err != nil {
+		return err
+	}
+	call := displayService.TurnOnDisplay(ctx)
+	if call.Err != nil {
+		return call.Err
+	}
+
 	checkActiveNodes := func(ctx context.Context) error {
 		cras, err := NewCras(ctx)
 		if err != nil {
