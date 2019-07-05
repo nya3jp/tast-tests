@@ -12,13 +12,8 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/crosdisks"
 	"chromiumos/tast/testing"
-)
-
-// See MountErrorType defined in system_api/dbus/cros-disks/dbus-constants.h
-const (
-	mountErrorPathNotMounted    = 6
-	mountErrorInvalidDevicePath = 100
 )
 
 // verifyProp checks if the passed prop satisfies the device property
@@ -86,9 +81,9 @@ func verifyProp(prop map[string]dbus.Variant) []error {
 	return nil
 }
 
-func testEnumerateDevices(ctx context.Context, s *testing.State, cd *crosDisks) {
+func testEnumerateDevices(ctx context.Context, s *testing.State, cd *crosdisks.CrosDisks) {
 	s.Log("Running testEnumerateDevices")
-	ds, err := cd.enumerateDevices(ctx)
+	ds, err := cd.EnumerateDevices(ctx)
 	if err != nil {
 		s.Error("Failed to enumerate devices: ", err)
 		return
@@ -100,7 +95,7 @@ func testEnumerateDevices(ctx context.Context, s *testing.State, cd *crosDisks) 
 			continue
 		}
 
-		prop, err := cd.getDeviceProperties(ctx, d)
+		prop, err := cd.GetDeviceProperties(ctx, d)
 		if err != nil {
 			s.Errorf("Failed to fetch device property for %s: %v", d, err)
 			continue
@@ -112,48 +107,48 @@ func testEnumerateDevices(ctx context.Context, s *testing.State, cd *crosDisks) 
 	}
 }
 
-func testNonExistentDeviceProp(ctx context.Context, s *testing.State, cd *crosDisks) {
+func testNonExistentDeviceProp(ctx context.Context, s *testing.State, cd *crosdisks.CrosDisks) {
 	s.Log("Running testNonExistentDeviceProp")
 	const path = "/dev/nonexistent"
-	if _, err := cd.getDeviceProperties(ctx, path); err == nil {
+	if _, err := cd.GetDeviceProperties(ctx, path); err == nil {
 		s.Errorf("GetDeviceProperties for %s unexpectedly succeeds", path)
 	}
 }
 
-func testMountNonExistentDevice(ctx context.Context, s *testing.State, cd *crosDisks) {
+func testMountNonExistentDevice(ctx context.Context, s *testing.State, cd *crosdisks.CrosDisks) {
 	s.Log("Running testMountNonExistentDevice")
 	const path = "/dev/nonexistent"
-	w, err := cd.watchMountCompleted(ctx)
+	w, err := cd.WatchMountCompleted(ctx)
 	if err != nil {
 		s.Error("Failed to start watching MountCompleted: ", err)
 		return
 	}
 	defer w.Close(ctx)
 
-	if err := cd.mount(ctx, path, "" /* filesystem type */, nil /* options */); err != nil {
+	if err := cd.Mount(ctx, path, "" /* filesystem type */, nil /* options */); err != nil {
 		s.Error("Failed to call Mount: ", err)
 		return
 	}
 
 	s.Log("Waiting for MountCompleted D-Bus signal")
-	m, err := w.wait(ctx)
+	m, err := w.Wait(ctx)
 	if err != nil {
 		s.Error("Failed to see MountCompleted D-Bus signal: ", err)
 		return
 	}
 
-	if m.sourcePath != path {
-		s.Errorf("Unexpected source_path: got %q; want %q", m.sourcePath, path)
+	if m.SourcePath != path {
+		s.Errorf("Unexpected source_path: got %q; want %q", m.SourcePath, path)
 	}
-	if m.mountPath != "" {
-		s.Errorf("Unexpected mount_path: got %q; want %q", m.mountPath, "")
+	if m.MountPath != "" {
+		s.Errorf("Unexpected mount_path: got %q; want %q", m.MountPath, "")
 	}
 }
 
-func testMountBootDeviceRejected(ctx context.Context, s *testing.State, cd *crosDisks) {
+func testMountBootDeviceRejected(ctx context.Context, s *testing.State, cd *crosdisks.CrosDisks) {
 	s.Log("Running testMountBootDeviceRejected")
 
-	ds, err := cd.enumerateDevices(ctx)
+	ds, err := cd.EnumerateDevices(ctx)
 	if err != nil {
 		s.Error("Failed to enumerate devices: ", err)
 		return
@@ -164,7 +159,7 @@ func testMountBootDeviceRejected(ctx context.Context, s *testing.State, cd *cros
 	for _, d := range ds {
 		// Note: Verification is done in testEnumerateDevices, so
 		// just skip invalid property.
-		prop, err := cd.getDeviceProperties(ctx, d)
+		prop, err := cd.GetDeviceProperties(ctx, d)
 		if err != nil {
 			continue
 		}
@@ -179,54 +174,54 @@ func testMountBootDeviceRejected(ctx context.Context, s *testing.State, cd *cros
 	}
 
 	// Try to mount it, and verify it fails.
-	w, err := cd.watchMountCompleted(ctx)
+	w, err := cd.WatchMountCompleted(ctx)
 	if err != nil {
 		s.Error("Failed to start watching MountCompleted: ", err)
 		return
 	}
 	defer w.Close(ctx)
 
-	if err := cd.mount(ctx, dev, "" /* filesystem type */, nil /* options */); err != nil {
+	if err := cd.Mount(ctx, dev, "" /* filesystem type */, nil /* options */); err != nil {
 		s.Error("Failed to call Mount: ", err)
 		return
 	}
 
 	s.Log("Waiting for MountCompleted D-Bus signal")
-	m, err := w.wait(ctx)
+	m, err := w.Wait(ctx)
 	if err != nil {
 		s.Error("Failed to see MountCompleted D-Bus signal: ", err)
 		return
 	}
 
-	if m.status != mountErrorInvalidDevicePath {
-		s.Errorf("Unexpected MountCompleted status code: got %d; want %d", m.status, mountErrorInvalidDevicePath)
+	if m.Status != crosdisks.MountErrorInvalidDevicePath {
+		s.Errorf("Unexpected MountCompleted status code: got %d; want %d", m.Status, crosdisks.MountErrorInvalidDevicePath)
 	}
-	if m.sourcePath != dev {
-		s.Errorf("Unexpected source_path: got %q; want %q", m.sourcePath, dev)
+	if m.SourcePath != dev {
+		s.Errorf("Unexpected source_path: got %q; want %q", m.SourcePath, dev)
 	}
-	if m.mountPath != "" {
-		s.Errorf("Unexpected mount_path: got %q; want %q", m.mountPath, "")
+	if m.MountPath != "" {
+		s.Errorf("Unexpected mount_path: got %q; want %q", m.MountPath, "")
 	}
 }
 
-func testUnmountNonExistentDevice(ctx context.Context, s *testing.State, cd *crosDisks) {
+func testUnmountNonExistentDevice(ctx context.Context, s *testing.State, cd *crosdisks.CrosDisks) {
 	s.Log("Running testUnmountNonExistentDevice")
 
 	const path = "/dev/nonexistent"
-	status, err := cd.unmount(ctx, path, nil /* options */)
+	status, err := cd.Unmount(ctx, path, nil /* options */)
 	if err != nil {
 		s.Errorf("Failed to call Unmount for %s: %v", path, err)
 		return
 	}
 
-	if status != mountErrorPathNotMounted {
-		s.Errorf("Unexpected Unmount status code: got %d; want %d", status, mountErrorPathNotMounted)
+	if status != crosdisks.MountErrorPathNotMounted {
+		s.Errorf("Unexpected Unmount status code: got %d; want %d", status, crosdisks.MountErrorPathNotMounted)
 	}
 }
 
 // RunTests runs a series of tests.
 func RunTests(ctx context.Context, s *testing.State) {
-	cd, err := newCrosDisks(ctx)
+	cd, err := crosdisks.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect CrosDisks D-Bus service: ", err)
 	}
