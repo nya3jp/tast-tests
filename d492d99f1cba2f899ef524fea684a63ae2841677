@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b4e579ff_3a9d8deb",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-05T05:02:29Z",
+      "side": 1,
+      "message": "\u003e crostini_guest_images.tar\n\ntried but there are a few dependencies, tracking in crbug.com/981426\n\n\u003e let the test owner pass the path?\n\ndone",
+      "parentUuid": "2f91538a_c1e0c003",
+      "range": {
+        "startLine": 19,
+        "startChar": 39,
+        "endLine": 19,
+        "endChar": 72
+      },
+      "revId": "d492d99f1cba2f899ef524fea684a63ae2841677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a1f7c4d_ce555117",
         "filename": "src/chromiumos/tast/local/vm/pre.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "d492d99f1cba2f899ef524fea684a63ae2841677",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37fb8f97_4b642afe",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-05T05:02:29Z",
+      "side": 1,
+      "message": "this is correct, though smbarber@ knows a bit more about this process than me.\n\nAt present we test with the staging bucket so we can check that the build is stable before deploying it:\n- When deploying images we first deploy to the staging bucket, then watch the crostini tast tests.\n- If they do not start turning red within 1-2 days we consider the build safe to deploy to live.\n\nIn the future (once we have DRM) we\u0027ll have assurances at build time that the image works with the chromeos it was built with, so using staging like this is a bit temporary.\n\nThere\u0027s also the option to have tast tests that use the live image, so you can tell easily if tast went red because of the staging image or because of some other problem. Which we might do in the future.",
+      "parentUuid": "2a1f7c4d_ce555117",
+      "range": {
+        "startLine": 108,
+        "startChar": 33,
+        "endLine": 108,
+        "endChar": 49
+      },
+      "revId": "d492d99f1cba2f899ef524fea684a63ae2841677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
