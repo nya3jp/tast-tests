@@ -83,6 +83,7 @@ type MountCompletedWatcher struct {
 
 // See MountErrorType defined in system_api/dbus/cros-disks/dbus-constants.h
 const (
+	MountErrorNone              uint32 = 0
 	MountErrorPathNotMounted    uint32 = 6
 	MountErrorInvalidDevicePath uint32 = 100
 )
