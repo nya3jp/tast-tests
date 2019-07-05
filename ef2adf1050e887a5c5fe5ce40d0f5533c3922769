@@ -34,6 +34,24 @@
       "revId": "ef2adf1050e887a5c5fe5ce40d0f5533c3922769",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a142c743_8c6c9b1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-07-05T09:59:44Z",
+      "side": 0,
+      "message": "Upreved. PTAL",
+      "parentUuid": "81710cd6_96af06e9",
+      "revId": "ef2adf1050e887a5c5fe5ce40d0f5533c3922769",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
