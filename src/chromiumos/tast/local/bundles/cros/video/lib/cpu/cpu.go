@@ -141,10 +141,18 @@ func WaitUntilIdle(ctx context.Context) error {
 	// hard time getting below 10% CPU usage, so we'll gradually increase the
 	// CPU idle threshold.
 	var err error
+	startTime := time.Now()
 	idleIncrease := (idleCPUUsagePercentMax - idleCPUUsagePercentBase) / (idleCPUSteps - 1)
+	testing.ContextLogf(ctx, "Waiting for idle CPU at most %v, threshold will be gradually relaxed (from %.1f%% to %.1f%%)",
+		waitIdleCPUTimeout, idleCPUUsagePercentBase, idleCPUUsagePercentMax)
 	for i := 0; i < idleCPUSteps; i++ {
 		idlePercent := idleCPUUsagePercentBase + (idleIncrease * float64(i))
-		if err = waitUntilIdleStep(ctx, waitIdleCPUTimeout/idleCPUSteps, idlePercent); err == nil {
+		timeout := waitIdleCPUTimeout / idleCPUSteps
+		testing.ContextLogf(ctx, "Waiting up to %v for CPU usage to drop below %.1f%% (%d/%d)",
+			timeout.Round(time.Second), idlePercent, i+1, idleCPUSteps)
+		if usage, err := waitUntilIdleStep(ctx, timeout, idlePercent); err == nil {
+			testing.ContextLogf(ctx, "Waiting for idle CPU took %v (usage: %.1f%%, threshold: %.1f%%)",
+				time.Now().Sub(startTime).Round(time.Second), usage, idlePercent)
 			return nil
 		}
 	}
@@ -152,16 +160,16 @@ func WaitUntilIdle(ctx context.Context) error {
 }
 
 // waitUntilIdleStep waits until the CPU is idle or the specified timeout has
-// elapsed. The CPU is considered idle if the average CPU usage over all cores
-// is less than maxUsage, which is a percentage in the range [0.0, 100.0].
-func waitUntilIdleStep(ctx context.Context, timeout time.Duration, maxUsage float64) error {
-	const sleepTime = time.Second
-	startTime := time.Now()
-	testing.ContextLogf(ctx, "Waiting up to %v for CPU usage to drop below %.1f%%", timeout.Round(time.Second), maxUsage)
-	err := testing.Poll(ctx, func(ctx context.Context) error {
-		usage, err := MeasureUsage(ctx, sleepTime)
-		if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed measuring CPU usage"))
+// elapsed and returns CPU usage. The CPU is considered idle if the average CPU
+// usage over all cores is less than maxUsage, which is a percentage in the
+// range [0.0, 100.0].
+func waitUntilIdleStep(ctx context.Context, timeout time.Duration, maxUsage float64) (usage float64, err error) {
+	const measureDuration = time.Second
+	err = testing.Poll(ctx, func(ctx context.Context) error {
+		var e error
+		usage, e = MeasureUsage(ctx, measureDuration)
+		if e != nil {
+			return testing.PollBreak(errors.Wrap(e, "failed measuring CPU usage"))
 		}
 		if usage >= maxUsage {
 			return errors.Errorf("CPU not idle: got %.1f%%; want < %.1f%%", usage, maxUsage)
@@ -169,10 +177,9 @@ func waitUntilIdleStep(ctx context.Context, timeout time.Duration, maxUsage floa
 		return nil
 	}, &testing.PollOptions{Timeout: timeout})
 	if err != nil {
-		return err
+		return usage, err
 	}
-	testing.ContextLog(ctx, "Wait for idle CPU took ", time.Now().Sub(startTime).Round(time.Second))
-	return nil
+	return usage, nil
 }
 
 // MeasureUsage measures utilization across all CPUs during duration.
