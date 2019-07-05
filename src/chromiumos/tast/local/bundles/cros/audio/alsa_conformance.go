@@ -15,6 +15,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/audio"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -36,6 +37,11 @@ func ALSAConformance(ctx context.Context, s *testing.State) {
 		rateCriteria    = 0.1
 		rateErrCriteria = 100.0
 	)
+
+	// Turn on a display to re-enable an internal speaker on monroe.
+	if err := power.TurnOnDisplay(ctx); err != nil {
+		s.Error("Failed to turn on display: ", err)
+	}
 
 	if err := audio.WaitForDevice(ctx, audio.InputStream|audio.OutputStream); err != nil {
 		s.Fatal("Failed to wait for input and output streams: ", err)
