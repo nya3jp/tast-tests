@@ -141,10 +141,15 @@ func WaitUntilIdle(ctx context.Context) error {
 	// hard time getting below 10% CPU usage, so we'll gradually increase the
 	// CPU idle threshold.
 	var err error
+	startTime := time.Now()
 	idleIncrease := (idleCPUUsagePercentMax - idleCPUUsagePercentBase) / (idleCPUSteps - 1)
+	testing.ContextLogf(ctx, "Wait for CPU idle with step loosen threshold (from %.1f%% to %.1f%%) for at most %v",
+		idleCPUUsagePercentBase, idleCPUUsagePercentMax, waitIdleCPUTimeout)
 	for i := 0; i < idleCPUSteps; i++ {
 		idlePercent := idleCPUUsagePercentBase + (idleIncrease * float64(i))
 		if err = waitUntilIdleStep(ctx, waitIdleCPUTimeout/idleCPUSteps, idlePercent); err == nil {
+			testing.ContextLogf(ctx, "Took %v to wait for CPU idle (below %.1f%%)",
+				time.Now().Sub(startTime).Round(time.Second), idlePercent)
 			return nil
 		}
 	}
@@ -156,7 +161,6 @@ func WaitUntilIdle(ctx context.Context) error {
 // is less than maxUsage, which is a percentage in the range [0.0, 100.0].
 func waitUntilIdleStep(ctx context.Context, timeout time.Duration, maxUsage float64) error {
 	const sleepTime = time.Second
-	startTime := time.Now()
 	testing.ContextLogf(ctx, "Waiting up to %v for CPU usage to drop below %.1f%%", timeout.Round(time.Second), maxUsage)
 	err := testing.Poll(ctx, func(ctx context.Context) error {
 		usage, err := MeasureUsage(ctx, sleepTime)
@@ -171,7 +175,6 @@ func waitUntilIdleStep(ctx context.Context, timeout time.Duration, maxUsage floa
 	if err != nil {
 		return err
 	}
-	testing.ContextLog(ctx, "Wait for idle CPU took ", time.Now().Sub(startTime).Round(time.Second))
 	return nil
 }
 
