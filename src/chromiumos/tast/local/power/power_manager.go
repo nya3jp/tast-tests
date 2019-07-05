@@ -42,3 +42,8 @@ func (m *PowerManager) GetSwitchStates(ctx context.Context) (*pmpb.SwitchStates,
 	err := dbusutil.CallProtoMethod(ctx, m.obj, dbusInterface+".GetSwitchStates", nil, ret)
 	return ret, err
 }
+
+// HandleUserActivity calls PowerManager.HandleUserActivity D-Bus method.
+func (m *PowerManager) HandleUserActivity(ctx context.Context, ActivityType int32) *dbus.Call {
+	return m.obj.CallWithContext(ctx, dbusInterface+".HandleUserActivity", 0, ActivityType)
+}
