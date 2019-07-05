@@ -34,6 +34,24 @@
       "revId": "682a9d2e2b7f287d75ee92efb37408173cb59f2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f51b941_bc3aa973",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_sanity_vp91.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-07-05T02:46:22Z",
+      "side": 1,
+      "message": "Per offline discussion with Keiichi, as long as RK3399 devices pass the sanity test now, we shall keep it running. Removed \"vp9_sanity\" deps.",
+      "parentUuid": "16e0375c_4d113ac7",
+      "revId": "682a9d2e2b7f287d75ee92efb37408173cb59f2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
