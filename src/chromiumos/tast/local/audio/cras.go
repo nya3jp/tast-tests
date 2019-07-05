@@ -162,6 +162,10 @@ func SetActiveNodeByType(ctx context.Context, nodeType string) error {
 // nodes to be active. Ex: WaitForDevice(ctx, InputStream|OutputStream)
 // It should be used to verify the target types of nodes exist and are
 // active before the real test starts.
+// Notice that some devices use their displays as an internal speaker
+// (e.g. monroe). When a display is closed, the internal speaker is removed,
+// too. For this case, we should call power.TurnOnDisplay to turn on a display
+// to re-enable an internal speaker.
 func WaitForDevice(ctx context.Context, streamType StreamType) error {
 	checkActiveNodes := func(ctx context.Context) error {
 		cras, err := NewCras(ctx)

@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/assistant"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
 
@@ -179,6 +180,10 @@ func testAssistantVolumeQueries(ctx context.Context, tconn *chrome.Conn, s *test
 
 // getActiveNodeVolume returns the current active node volume, ranging from 0 to 100.
 func getActiveNodeVolume(ctx context.Context) (uint64, error) {
+	// Turn on a display to re-enable an internal speaker on monroe.
+	if err := power.TurnOnDisplay(ctx); err != nil {
+		return 0, err
+	}
 	if err := audio.WaitForDevice(ctx, audio.OutputStream); err != nil {
 		return 0, err
 	}
