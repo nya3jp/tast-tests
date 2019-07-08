@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8f5b85f_ab13ab05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_sanity_vp92.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-08T06:32:18Z",
+      "side": 1,
+      "message": "Could you add a comment to explain why \"vp9_sanity\" is needed briefly with a link to crbug.com/971032?\n\nSame for VP9.3.",
+      "revId": "13cb525b52d0aa3ed331172f137a24740eae4f58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
