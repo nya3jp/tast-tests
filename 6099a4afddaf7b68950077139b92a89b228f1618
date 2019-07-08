@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ac5a08c4_3e97b179",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-08T16:57:06Z",
+      "side": 1,
+      "message": "sorry, I didn\u0027t understand the question. Are you suggesting to create a setup() / cleanup() functions? If so, sure, I can do that.",
+      "parentUuid": "f977da44_b37bb4de",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 63
+      },
+      "revId": "6099a4afddaf7b68950077139b92a89b228f1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "92c1cc49_7c1073bb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "6099a4afddaf7b68950077139b92a89b228f1618",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08d7b2b9_46789044",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-08T16:57:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92c1cc49_7c1073bb",
+      "range": {
+        "startLine": 90,
+        "startChar": 21,
+        "endLine": 90,
+        "endChar": 23
+      },
+      "revId": "6099a4afddaf7b68950077139b92a89b228f1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
