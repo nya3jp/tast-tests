@@ -28,7 +28,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     ResizeActivity,
 		Desc:     "Checks that resizing ARC applications works without generating black background",
-		Contacts: []string{"ricardoq@chromium.org", "arc-eng@google.com"},
+		Contacts: []string{"ruanc@chromium.org", "arc-framework+tast@google.com"},
 		Attr:     []string{"informational"},
 		// Adding 'tablet_mode' since moving/resizing the window requires screen touch support.
 		SoftwareDeps: []string{"android_p", "chrome", "tablet_mode"},

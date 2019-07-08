@@ -36,7 +36,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PIP,
 		Desc:         "Checks that ARC++ Picture-in-Picture works as expected",
-		Contacts:     []string{"ricardoq@chromium.org", "edcourtney@chromium.org", "arc-eng@google.com"},
+		Contacts:     []string{"edcourtney@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"tablet_mode", "android_p", "chrome"},
 		Data:         []string{"ArcPipTastTest.apk"},
