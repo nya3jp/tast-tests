@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f08e219_9ac2e4bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-08T21:51:13Z",
+      "side": 1,
+      "message": "not really true. The comment says:\n\n            # Exhibits very similar symptoms to http://crbug.com/693724,\n            # b/65858242, b/36264732.\n\nThere is no open bug particularly for Nyan, because there\u0027s no chance we will *actually* fix it.\n\nThat doesn\u0027t mean we have to carry this board-exception list forward -- in fact, there are probably better ways to do this, and I thought I heard some efforts on improving this sort of thing in the test planning stage -- but this comment is still wrong.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "d5e057143703c12a4e47a42bafa1c16d69332b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4f94a9e_2b1d74ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-08T21:51:13Z",
+      "side": 1,
+      "message": "I don\u0027t know what this means",
+      "range": {
+        "startLine": 13,
+        "startChar": 52,
+        "endLine": 14,
+        "endChar": 44
+      },
+      "revId": "d5e057143703c12a4e47a42bafa1c16d69332b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe48e39a_7ac6b4b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-08T21:51:13Z",
+      "side": 1,
+      "message": "Try this search:\n\nhttps://cs.corp.google.com/search/?q\u003dfile:package.use+wifi+file:overlays\u0026m\u003d100\u0026sq\u003dpackage:%5Echromeos_public$+OR+package:%5Echromeos_internal$\u0026type\u003dcs\n\nIf we can restrict running this test on such overlays, then we\u0027re probably OK.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "d5e057143703c12a4e47a42bafa1c16d69332b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb3d801e_d6fd00ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-08T21:51:13Z",
+      "side": 1,
+      "message": "can we stop putting single developers as the exclusive contacts? The comment clearly says \"team\", so why not put the actual group list (chromeos-kernel-wifi@google.com)? This stuff gets stale very easily.\n\nI see a few notes here:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#code-location\n\n\"At least one personal email address of an active committer should be specified so that we can file bugs or ask for code reviews.\"\n\nI don\u0027t see why individual names is really better than group lists for that, but I suppose we can do both.\n\n(Alternatively, and more targeted to \"bugs\": cros-wifi-bugs@google.com)",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 47
+      },
+      "revId": "d5e057143703c12a4e47a42bafa1c16d69332b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c06a798_dada91cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-08T21:51:13Z",
+      "side": 1,
+      "message": "I believe this is wrong. Not all devices have vendor/device ID files, and this will fail if they don\u0027t exist.",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 2
+      },
+      "revId": "d5e057143703c12a4e47a42bafa1c16d69332b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0c85179_f1ecd954",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-08T21:51:13Z",
+      "side": 1,
+      "message": "uevent must exist, so this one isn\u0027t as much of a problem",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 34
+      },
+      "revId": "d5e057143703c12a4e47a42bafa1c16d69332b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
