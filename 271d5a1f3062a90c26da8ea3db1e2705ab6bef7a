@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29a18c7c_150ad96f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-08T07:20:56Z",
+      "side": 1,
+      "message": "I\u0027m not sure if it\u0027s really needed to make this message more verbose, but go ahead if you prefer this.\n\nWhat about rewriting the messages a little bit for clarity:\n  Waiting for idle CPU for at most 1m0s, threshold will be gradually relaxed (from 5.0% to 20.0%)\n  Waiting up to 12s for CPU usage to drop below 5.0% (1/5)\n  Waiting up to 12s for CPU usage to drop below 8.8% (2/5)\n  Waiting for idle CPU took 13s (usage: 1%, threshold: 8.8%)",
+      "revId": "271d5a1f3062a90c26da8ea3db1e2705ab6bef7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
