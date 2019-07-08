@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "df6bfbd3_09cb27cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-08T07:20:32Z",
+      "side": 1,
+      "message": "I think we can still check failed test cases in a same file even when using gtest_filter.\ne.g. camera.HAL3Device, which uses google test as well\nhttps://storage.cloud.google.com/chromeos-autotest-results/322164526-chromeos-test/chromeos6-row10-rack6-host8/tast/results/tests/camera.HAL3Device/cros_camera_test.log\n\nThe known issue of this \u0027gtest_filter\u0027 approach is that we cannot see failed test cases in error messages. So, it might make more sense to choose your for-loop approach.\n\nBut, it should be a temporal solution anyway. The ideal solution here is to use \u0027--gtest_output\u0027 option so that  we can get failed test cases after running tests with \u0027gtest_filter\u0027.\nThough we have a plan to add this feature in gtest.go at crbug.com/946390, it\u0027s not implemented yet.\n\nI\u0027m okay to use for-loop here if crbug.com/946390 takes a long time to be fixed, but I\u0027d like to hear hidehiko@\u0027s opinion because he is the owner of the issue.",
+      "parentUuid": "0f1de5c4_de13043c",
+      "revId": "8f289f58fae771a8c870c5461a58e36cf01542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb9ab333_c066204f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
         "patchSetId": 13
