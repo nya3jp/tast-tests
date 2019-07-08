@@ -19,7 +19,7 @@ func init() {
 		Desc:         "Sanity check to start a simple app",
 		Contacts:     []string{"oka@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"android_all", "chrome"},
+		SoftwareDeps: []string{"android", "chrome"},
 		Data:         []string{"app_sanity_hello_world.apk"},
 		Pre:          arc.Booted(),
 		Timeout:      4 * time.Minute,
