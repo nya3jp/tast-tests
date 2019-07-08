@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48e5db54_344590d6",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T07:02:57Z",
+      "side": 1,
+      "message": "Could you introduce a named constant?",
+      "range": {
+        "startLine": 176,
+        "startChar": 40,
+        "endLine": 176,
+        "endChar": 41
+      },
+      "revId": "ca158256a0069fce732615d04179bd6b98b7661c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4d6b64c_1b177923",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T07:02:57Z",
+      "side": 1,
+      "message": "This new part is actually more than what people expect for \"WaitForDevice\".\nCould you split this into another method, and let callers of WaitForDevice invoke it?",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 2
+      },
+      "revId": "ca158256a0069fce732615d04179bd6b98b7661c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b189e35e_386aef48",
+        "filename": "src/chromiumos/tast/local/power/power_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T07:02:57Z",
+      "side": 1,
+      "message": "For better encapsulation, could you just return an error?",
+      "range": {
+        "startLine": 47,
+        "startChar": 83,
+        "endLine": 47,
+        "endChar": 93
+      },
+      "revId": "ca158256a0069fce732615d04179bd6b98b7661c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
