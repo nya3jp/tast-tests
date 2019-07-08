@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94440414_ef97cc7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-08T06:00:53Z",
+      "side": 1,
+      "message": "Is there an easy way to get ChromeOS release version string in tast?",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 73
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dec3360_0669ef45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-08T06:00:53Z",
+      "side": 1,
+      "message": "Currently this test assumes that tos_needed is always true.\nI wonder if we need to care about the case where tos_needed is false.\n\nhttps://cs.corp.google.com/chromeos_public/src/third_party/autotest/files/client/common_lib/cros/arc_util.py?type\u003dcs\u0026q\u003dtos_needed\u0026sq\u003dpackage:chromeos\u0026g\u003d0\u0026l\u003d372",
+      "range": {
+        "startLine": 271,
+        "startChar": 4,
+        "endLine": 271,
+        "endChar": 69
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
