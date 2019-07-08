@@ -374,7 +374,7 @@ func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to Poin
 	return ac.swipe(ctx, src, to, t)
 }
 
-// SetWindowState sets the window state, and waits upto 10 seconds for the activity to become idle.
+// SetWindowState sets the window state. Note this method is async, so ensure to call WaitForIdle after this.
 // Supported states: WindowStateNormal, WindowStateMaximized, WindowStateFullscreen, WindowStateMinimized
 func (ac *Activity) SetWindowState(ctx context.Context, state WindowState) error {
 	t, err := ac.getTaskInfo(ctx)
@@ -390,10 +390,6 @@ func (ac *Activity) SetWindowState(ctx context.Context, state WindowState) error
 
 	if err = ac.a.Command(ctx, "am", "task", "set-winstate", strconv.Itoa(t.id), strconv.Itoa(int(state))).Run(); err != nil {
 		return errors.Wrap(err, "could not execute 'am task set-winstate'")
-	}
-
-	if err := ac.WaitForIdle(ctx, 10*time.Second); err != nil {
-		return errors.Wrap(err, "failed waiting for activity to become idle")
 	}
 	return nil
 }
