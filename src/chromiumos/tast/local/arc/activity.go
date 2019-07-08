@@ -352,6 +352,21 @@ func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to Poin
 // SetWindowState sets the window state.
 // Supported states: WindowStateNormal, WindowStateMaximized, WindowStateFullscreen, WindowStateMinimized
 func (ac *Activity) SetWindowState(ctx context.Context, state WindowState) error {
+	err := ac.SetWindowStateAsync(ctx, state)
+	if err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "Waiting for activity to become idle")
+	if err := ac.WaitForIdle(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "failed waiting for activity to become idle")
+	}
+	return nil
+}
+
+// SetWindowStateAsync sets the window state, but doesn't wait for the acitivty to become idle.
+// Supported states: WindowStateNormal, WindowStateMaximized, WindowStateFullscreen, WindowStateMinimized
+func (ac *Activity) SetWindowStateAsync(ctx context.Context, state WindowState) error {
 	t, err := ac.getTaskInfo(ctx)
 	if err != nil {
 		errors.Wrap(err, "could not get task info")
