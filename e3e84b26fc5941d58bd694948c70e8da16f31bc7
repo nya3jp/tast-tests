@@ -76,6 +76,30 @@
     },
     {
       "key": {
+        "uuid": "af132102_2825e928",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-08T16:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14db6ffc_1de910b0",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 35
+      },
+      "revId": "e3e84b26fc5941d58bd694948c70e8da16f31bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c89e3cf_f381a3d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
         "patchSetId": 9
@@ -87,6 +111,30 @@
       "writtenOn": "2019-07-04T14:44:00Z",
       "side": 1,
       "message": "Could you wait for the procedure by EvalPromise, instead?\n\ns.Log(\"Requesting local strem\")\nif err :\u003d conn.EvalPromise(`\n    new Promise((resolve, reject) \u003d\u003e {\n      const constraints \u003d {\n        ...\n      }\n      navigator.mediaDevices.getUserMedia(constraints).then((stream) \u003d\u003e {\n        ...\n        resolve();\n      }).catch(reject);\n    });`, nil); err !\u003d nil {\n  s.Fatal(...)\n}\n\nis what you\u0027d like to do?\nSame for all the invocation below.",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "e3e84b26fc5941d58bd694948c70e8da16f31bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffe63163_59d4b673",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-08T16:22:47Z",
+      "side": 1,
+      "message": "I guess I could do it, but then I\u0027d basically be moving the whole\njs code into this go file. I\u0027m not against it, but before doing it\nI wanted to double check that this is what you want and that I wouldn\u0027t\nbe messing with the go/tast style.",
+      "parentUuid": "9c89e3cf_f381a3d0",
       "range": {
         "startLine": 64,
         "startChar": 1,
@@ -122,6 +170,30 @@
     },
     {
       "key": {
+        "uuid": "b8c9d5eb_76bca2e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-08T16:22:47Z",
+      "side": 1,
+      "message": "\u003e Any signals that this should wait for instead of timeout?\n\nNot really, the idea here is to let a few frames to be transmitted\nbut since we don\u0027t really have an (easy) way to count displayed \nframes, it\u0027s just easier to let it play.\n\n\u003e also where 20 seconds come from? could you add comments?\n\nDone.",
+      "parentUuid": "f06e3aec_9dca47d0",
+      "range": {
+        "startLine": 75,
+        "startChar": 30,
+        "endLine": 75,
+        "endChar": 46
+      },
+      "revId": "e3e84b26fc5941d58bd694948c70e8da16f31bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16877cc6_e15a9501",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
         "patchSetId": 9
@@ -142,6 +214,30 @@
       "revId": "e3e84b26fc5941d58bd694948c70e8da16f31bc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f08ace5e_23414060",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-08T16:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16877cc6_e15a9501",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 0
+      },
+      "revId": "e3e84b26fc5941d58bd694948c70e8da16f31bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -168,6 +264,30 @@
     },
     {
       "key": {
+        "uuid": "457451f4_fd93e581",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-08T16:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc96f71d_561e2724",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 25
+      },
+      "revId": "e3e84b26fc5941d58bd694948c70e8da16f31bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "456b7f18_b1d43ba0",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
         "patchSetId": 9
@@ -182,6 +302,24 @@
       "revId": "e3e84b26fc5941d58bd694948c70e8da16f31bc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44eae338_4fd71854",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-08T16:22:47Z",
+      "side": 1,
+      "message": "Done, thanks!",
+      "parentUuid": "456b7f18_b1d43ba0",
+      "revId": "e3e84b26fc5941d58bd694948c70e8da16f31bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -208,6 +346,30 @@
     },
     {
       "key": {
+        "uuid": "e0807952_426e091d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-08T16:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e27006f_a9e4c984",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 20
+      },
+      "revId": "e3e84b26fc5941d58bd694948c70e8da16f31bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d55c293d_8f7e6c44",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
         "patchSetId": 9
@@ -228,6 +390,30 @@
       "revId": "e3e84b26fc5941d58bd694948c70e8da16f31bc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06d04471_19eb4f46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-08T16:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d55c293d_8f7e6c44",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 4
+      },
+      "revId": "e3e84b26fc5941d58bd694948c70e8da16f31bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
