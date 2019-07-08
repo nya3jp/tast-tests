@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8560f105_9b5059a0",
+        "filename": "src/chromiumos/tast/local/power/power_manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-07-08T16:36:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff033a3e_8e4c763a",
+      "range": {
+        "startLine": 64,
+        "startChar": 71,
+        "endLine": 65,
+        "endChar": 10
+      },
+      "revId": "123907a408975a5caee392975e2d23792bd13a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84a0dd4b_98495c5a",
         "filename": "src/chromiumos/tast/local/power/power_manager.go",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "123907a408975a5caee392975e2d23792bd13a1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4fb47d6_55ec1547",
+        "filename": "src/chromiumos/tast/local/power/power_manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-07-08T16:36:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84a0dd4b_98495c5a",
+      "revId": "123907a408975a5caee392975e2d23792bd13a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
