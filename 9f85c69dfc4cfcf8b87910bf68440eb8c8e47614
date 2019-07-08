@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50c45b17_45db723e",
+        "filename": "src/chromiumos/tast/local/crosdisks/dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-08T07:03:49Z",
+      "side": 1,
+      "message": "Optional: Maybe \"Client\" or \"Service\" would be better to avoid duplication (i.e. crosdisks.CrosDisks).\n\nThis is optional because I know our repository is not consistent about naming of D-bus wrapper types:\n\n- compupdater.ComponentUpdater\n- cryptohome.Client\n- powermanager.PowerManager\n- session.SessionManager",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 14
+      },
+      "revId": "9f85c69dfc4cfcf8b87910bf68440eb8c8e47614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
