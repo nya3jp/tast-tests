@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "863269e7_1cfd1982",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-07-08T06:50:03Z",
+      "side": 1,
+      "message": "Done. Thanks for the info :)",
+      "parentUuid": "0871188e_7f4d7120",
+      "revId": "8f289f58fae771a8c870c5461a58e36cf01542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b5183e1_6558260a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
         "patchSetId": 13
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "cbb13d50_40b06081",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-07-08T06:50:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b5183e1_6558260a",
+      "range": {
+        "startLine": 5,
+        "startChar": 39,
+        "endLine": 5,
+        "endChar": 58
+      },
+      "revId": "8f289f58fae771a8c870c5461a58e36cf01542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fd46758_cf74e763",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
         "patchSetId": 13
@@ -53,6 +95,24 @@
       "writtenOn": "2019-07-08T06:27:41Z",
       "side": 1,
       "message": "You can use a \"negative pattern\" in gtest_filter to skip test cases that match a given pattern.\nhttps://github.com/google/googletest/blob/master/googletest/docs/advanced.md#running-a-subset-of-the-tests\n\nHere, \u0027--gtest_filter\u003d-LibvdaGpuTest.DecodeFileGpu\u0027 should work. (The point is \u0027-\u0027 placed after \u0027\u003d\u0027).\nThen, we don\u0027t need this for-loop.",
+      "revId": "8f289f58fae771a8c870c5461a58e36cf01542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f1de5c4_de13043c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-07-08T06:50:03Z",
+      "side": 1,
+      "message": "Thanks for the info! I\u0027m fine with doing that. However at the moment, with the for loop, each test case is able to put its output into a separate log file (perhaps this is helpful for debugging when tast tests fail?) wdyt?",
+      "parentUuid": "9fd46758_cf74e763",
       "revId": "8f289f58fae771a8c870c5461a58e36cf01542d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "417cc099_c7cf93d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-07-08T06:50:03Z",
+      "side": 1,
+      "message": "Oops, thanks.",
+      "parentUuid": "bb9ab333_c066204f",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 33
+      },
+      "revId": "8f289f58fae771a8c870c5461a58e36cf01542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8daedc25_e673594a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_gpu_tests.go",
         "patchSetId": 13
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "c98e50e6_d026b63c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_gpu_tests.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-07-08T06:50:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8daedc25_e673594a",
+      "range": {
+        "startLine": 17,
+        "startChar": 17,
+        "endLine": 17,
+        "endChar": 93
+      },
+      "revId": "8f289f58fae771a8c870c5461a58e36cf01542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c57f21e3_9a8dc404",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_gpu_tests.go",
         "patchSetId": 13
@@ -125,6 +233,30 @@
       "revId": "8f289f58fae771a8c870c5461a58e36cf01542d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa339c3a_3e622b20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_gpu_tests.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1299948
+      },
+      "writtenOn": "2019-07-08T06:50:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c57f21e3_9a8dc404",
+      "range": {
+        "startLine": 20,
+        "startChar": 26,
+        "endLine": 20,
+        "endChar": 33
+      },
+      "revId": "8f289f58fae771a8c870c5461a58e36cf01542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
