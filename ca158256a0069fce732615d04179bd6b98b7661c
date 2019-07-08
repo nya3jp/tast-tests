@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a70a319e_c463d56b",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-07-08T09:42:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48e5db54_344590d6",
+      "range": {
+        "startLine": 176,
+        "startChar": 40,
+        "endLine": 176,
+        "endChar": 41
+      },
+      "revId": "ca158256a0069fce732615d04179bd6b98b7661c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4d6b64c_1b177923",
         "filename": "src/chromiumos/tast/local/audio/cras.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d9a556de_818fd783",
+        "filename": "src/chromiumos/tast/local/audio/cras.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-07-08T09:42:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4d6b64c_1b177923",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 2
+      },
+      "revId": "ca158256a0069fce732615d04179bd6b98b7661c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b189e35e_386aef48",
         "filename": "src/chromiumos/tast/local/power/power_manager.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "ca158256a0069fce732615d04179bd6b98b7661c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af00925f_accc97fb",
+        "filename": "src/chromiumos/tast/local/power/power_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-07-08T09:42:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b189e35e_386aef48",
+      "range": {
+        "startLine": 47,
+        "startChar": 83,
+        "endLine": 47,
+        "endChar": 93
+      },
+      "revId": "ca158256a0069fce732615d04179bd6b98b7661c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
