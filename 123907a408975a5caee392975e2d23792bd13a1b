@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff033a3e_8e4c763a",
+        "filename": "src/chromiumos/tast/local/power/power_manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:52:18Z",
+      "side": 1,
+      "message": "huge nit: PowerManager (one term IIUC?)",
+      "range": {
+        "startLine": 64,
+        "startChar": 71,
+        "endLine": 65,
+        "endChar": 10
+      },
+      "revId": "123907a408975a5caee392975e2d23792bd13a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84a0dd4b_98495c5a",
+        "filename": "src/chromiumos/tast/local/power/power_manager.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:52:18Z",
+      "side": 1,
+      "message": "Could you wrap the error to annotate a bit more context of this?\n\nstyle: you can inline to be shorter.\nif err :\u003d powerd.HandleUserActivity(ctx, UserActivityOther); err !\u003d nil {\n  return errors.Wrap(err, .../* message */...)\n}",
+      "revId": "123907a408975a5caee392975e2d23792bd13a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
