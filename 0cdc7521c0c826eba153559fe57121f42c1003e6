@@ -2,6 +2,240 @@
   "comments": [
     {
       "key": {
+        "uuid": "33cda8b2_75d66bd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf_managed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "huge nit: in code, we use ARC (without ++ suffix).",
+      "range": {
+        "startLine": 18,
+        "startChar": 39,
+        "endLine": 18,
+        "endChar": 44
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e99344d_2a789e3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf_managed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "Nice to comment the original author and tast port author.\n\nContacts: [] string{\n  \"khmel@chromium.org\",  // Original author.\n  \"niwa@chromium.org\",  // Tast port author.\n  ...\n},",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f8c0ee2_ee4ff9ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf_managed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "arc-eng is getting bigger. Nice to have subteam alias?",
+      "range": {
+        "startLine": 19,
+        "startChar": 69,
+        "endLine": 19,
+        "endChar": 76
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d0c7f79_d7e2e08d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf_managed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "Looks very longer than others. Could you comment the reason?",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03895e5f_9cbc6534",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf_managed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "Should we hide the password?",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "999cb9dc_2afc2fc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "Could you add the package comment?",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6419ab3_d9e96fd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "Could you follow the go doc style? Ditto for all comments below.\n\ncf) https://golang.org/doc/effective_go.html#commentary\n\u003d\u003d\u003d quote \u003d\u003d\u003d\nDoc comments work best as complete sentences, which allow a wide variety of automated presentations. The first sentence should be a one-sentence summary that starts with the name being declared.\n\u003d\u003d\u003d quote end \u003d\u003d\u003d",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b815195_70182e35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "[]measuredValues is usable here?",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfe82171_5d91ce24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "In go, shorter name is preferred. Also, acronyms should be all upper case letters.\nHow about bootARC()?",
+      "range": {
+        "startLine": 73,
+        "startChar": 12,
+        "endLine": 73,
+        "endChar": 26
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75804bd4_e514ddea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "err handling is missing.\n\nyou can inline\n\nif err :\u003d dumpLogcat(...); err !\u003d nil {\n  ...\n}\n\nBTW, you dumps logcat twice. How about dump the log in performArcBoot() instead?",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0397b0ae_54f4ac34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "How about report an error in case of Save() failure?",
+      "range": {
+        "startLine": 99,
+        "startChar": 7,
+        "endLine": 99,
+        "endChar": 34
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70cc3d2d_e731fee4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "In precise, the comment does not explain the var. (The array it self does not contain the comma formatting).",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 26
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "94440414_ef97cc7f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
         "patchSetId": 3
@@ -25,6 +259,356 @@
     },
     {
       "key": {
+        "uuid": "7be0983d_e9828794",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "You can find it at\nsrc/platform/tast/src/chromiumos/tast/lsbrelease/lsbrelease.go",
+      "parentUuid": "94440414_ef97cc7f",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 73
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92477792_872b9108",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "Clar: Is this actually used nowadays?\nCould you comment/refer to how this is used?",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "083ee2e4_df5e7868",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "for better encapsulation, could you avoid passing testing.State? Instead, you can return an appropriate error and caller can report to testing.State.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\n\u003d\u003d\u003d quote \u003d\u003d\u003d\nAvoid passing testing.State when it’s not actually necessary:\n\u003d\u003d\u003d quote end \u003d\u003d\u003d\n\nSame for below.",
+      "range": {
+        "startLine": 147,
+        "startChar": 41,
+        "endLine": 147,
+        "endChar": 57
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4063f830_d1140587",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "style: you can inline.\n\nif err :\u003d setPlayStoreEnabled(...); err !\u003d nil {\n  ...\n}\n\nthis helps you to avoid leaking err from the if scope, which helps to find some mistake. Same for below.",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 2
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f709ad4a_91df4a85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "nit: This is used only inside the for loop below. Could you move this down to after command execution?",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7b2e7b7_341b51da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "how about using regex to extract the string?\nhttps://golang.org/pkg/regexp/",
+      "range": {
+        "startLine": 179,
+        "startChar": 2,
+        "endLine": 188,
+        "endChar": 3
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fe00555_f1be0178",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "style: we often inline this.",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31c3bb87_b18a7eb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "How about testexec.DumpLogOnError?\n\nIt outputs command line so you wouldn\u0027t need cmd, then.",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99fc82a6_ace5456e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "you can simply return the value.\n\nfor _, line :\u003d range ... {\n  if strings.HasPrefix(...) {\n    ...\n    return v, nil\n  }\n}\n\nreturn ..., errors.New()",
+      "range": {
+        "startLine": 200,
+        "startChar": 1,
+        "endLine": 210,
+        "endChar": 2
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7015c85a_257b9607",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "%t so you don\u0027t need strconv.FormatBool()\n\nhttps://golang.org/pkg/fmt/#hdr-Printing",
+      "range": {
+        "startLine": 224,
+        "startChar": 46,
+        "endLine": 224,
+        "endChar": 48
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e5ab5bd_5c7b8c88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "style: in embedded JS code, we follow the JS style guide.",
+      "range": {
+        "startLine": 224,
+        "startChar": 2,
+        "endLine": 224,
+        "endChar": 3
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b363363b_abcdb940",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "How about using the guard pattern?\n\nif (chrome.runtime.lastError) {\n  reject(new Error(chrome.runtime.lastError.message));\n  return;\n}\nresolve();",
+      "range": {
+        "startLine": 225,
+        "startChar": 4,
+        "endLine": 229,
+        "endChar": 5
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08d4223d_038ab64e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "How about using the guard pattern?\n\nif (chrome.runtime.lastError) {\n  reject(new Error(chrome.runtime.lastError.message));\n  return;\n}\nresolve();",
+      "range": {
+        "startLine": 225,
+        "startChar": 4,
+        "endLine": 229,
+        "endChar": 5
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8214feb2_e6433c9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "This is short enough. How about just inline?\n\nconn, err :\u003d cr.NewConnForTarget(ctx, func(...) bool { ... })",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbfbbfe7_836540e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting\n\n\u003d\u003d\u003d quote \u003d\u003d\u003d\nError strings should not be capitalized \n\u003d\u003d\u003d quote end \u003d\u003d\u003d\n\nHow about;\n\n\"failed to waiting for %s\".",
+      "range": {
+        "startLine": 257,
+        "startChar": 29,
+        "endLine": 257,
+        "endChar": 49
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5aa5a67e_fc6d43c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "you can inline.",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fce1d3f2_0f37c4fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "same.",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0dec3360_0669ef45",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
         "patchSetId": 3
@@ -41,6 +625,86 @@
         "startChar": 4,
         "endLine": 271,
         "endChar": 69
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43606370_8a6d74f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "nit: completed or completes?",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12fbc47b_bcb124ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "nit: \"%s\"",
+      "range": {
+        "startLine": 299,
+        "startChar": 38,
+        "endLine": 299,
+        "endChar": 42
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90fefcae_aa15881c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "In this case, it is no longer needed to continue the polling, right?\nIf so, could you use testing.PollBreak()?\n\nIt is intended to be used only the function passed to testing.Poll(). In order to ensure it, could you inline the func?",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "408d4852_ca1e164c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T09:38:42Z",
+      "side": 1,
+      "message": "style: Nice to use guard pattern.",
+      "range": {
+        "startLine": 315,
+        "startChar": 2,
+        "endLine": 318,
+        "endChar": 50
       },
       "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
