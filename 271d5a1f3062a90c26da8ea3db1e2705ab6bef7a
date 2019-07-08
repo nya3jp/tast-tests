@@ -16,6 +16,24 @@
       "revId": "271d5a1f3062a90c26da8ea3db1e2705ab6bef7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa85b88c_35d6bd63",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-07-08T08:30:17Z",
+      "side": 1,
+      "message": "The motivation of this change is that the ending message \"Wait for idle CPU took 1s\" looks misleading. We actually spend 12+1s waiting for idle CPU. So I moved the ending message a level up (to cpu.WaintUntilIdle()).\nThe starting message provides the reason why \"Waiting up to 12s...\" runs and why it may run multiple times.",
+      "parentUuid": "29a18c7c_150ad96f",
+      "revId": "271d5a1f3062a90c26da8ea3db1e2705ab6bef7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
