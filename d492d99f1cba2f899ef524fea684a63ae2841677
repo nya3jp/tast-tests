@@ -93,6 +93,30 @@
       "revId": "d492d99f1cba2f899ef524fea684a63ae2841677",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2487892e_4fba4274",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-07-08T22:30:55Z",
+      "side": 1,
+      "message": "Nic\u0027s description is accurate (although s/DRM/DLC).\n\nIt\u0027s better for us though to use the build artifacts when possible. Using devservers to get the images downloaded to DUTs improves test flakiness significantly.",
+      "parentUuid": "37fb8f97_4b642afe",
+      "range": {
+        "startLine": 108,
+        "startChar": 33,
+        "endLine": 108,
+        "endChar": 49
+      },
+      "revId": "d492d99f1cba2f899ef524fea684a63ae2841677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
