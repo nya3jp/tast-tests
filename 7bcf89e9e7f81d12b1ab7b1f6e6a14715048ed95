@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "8155cc7d_98103893",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-07-08T01:13:44Z",
+      "side": 1,
+      "message": "Ah, thanks for the explanation!",
+      "parentUuid": "904c187e_447c625a",
+      "revId": "7bcf89e9e7f81d12b1ab7b1f6e6a14715048ed95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e465d4e5_6ded7da5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
         "patchSetId": 2
