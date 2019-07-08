@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2233c76d_27ef0f50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_keyboard_suggestions_informational.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-07-08T01:13:44Z",
+      "side": 1,
+      "message": "Not sure why, but after switching to \"data-key\", the test became flaky. This seems to fix it.\n\nIdeally, TapKeys can just keep retrying if the key is not found. Right now it\u0027s hard to do because we need to also try pressing Shift. I want to remove that bit of code.",
+      "revId": "7b79ca7488169f0631e6a2cf1b6bdc70b280b264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1108c12a_b2df834d",
+        "filename": "src/chromiumos/tast/local/chrome/vkb/vkb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2019-07-08T01:13:44Z",
+      "side": 1,
+      "message": "made this return the other error. Otherwise, all errors to do with tapping a key just gets subsumed by this one.\n\nIdeally we don\u0027t need this code. I\u0027ve reached out to tetsui@ to fix this on the APK side.",
+      "revId": "7b79ca7488169f0631e6a2cf1b6bdc70b280b264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
