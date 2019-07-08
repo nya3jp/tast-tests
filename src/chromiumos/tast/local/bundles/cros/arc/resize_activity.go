@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"fmt"
 	"image"
 	"image/color"
 	"image/png"
@@ -14,13 +13,10 @@ import (
 	"path/filepath"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/bundles/cros/arc/screenshot"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/colorcmp"
-	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
@@ -91,6 +87,10 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set window state to Normal: ", err)
 	}
 
+	if err := act.WaitForIdle(ctx, 4*time.Second); err != nil {
+		s.Fatal("Failed to wait for idle activity: ", err)
+	}
+
 	bounds, err := act.WindowBounds(ctx)
 	if err != nil {
 		s.Fatal("Failed to get activity bounds: ", err)
@@ -137,7 +137,7 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 
 	// Leaving room for the touch + extra space to prevent any kind of "resize to fullscreen" gesture.
 	const marginForTouch = 100
-	for idx, entry := range []struct {
+	for _, entry := range []struct {
 		desc     string
 		border   arc.BorderType // resize origin (from which border)
 		dst      arc.Point
@@ -154,7 +154,7 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 
 		// Not calling WaitForIdle() on purpose. We have to grab the screenshot as soon as ResizeWindow() returns.
 
-		img, err := grabScreenshot(ctx, cr, fmt.Sprintf("%s/screenshot-%d.png", s.OutDir(), idx))
+		img, err := screenshot.GrabScreenshot(ctx, cr)
 		if err != nil {
 			s.Fatal("Failed to grab screenshot: ", err)
 		}
@@ -168,7 +168,7 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 			SubImage(r image.Rectangle) image.Image
 		}).SubImage(image.Rect(bounds.Left, bounds.Top, bounds.Width, bounds.Height))
 
-		blackPixels := countBlackPixels(subImage)
+		blackPixels := screenshot.CountPixels(subImage, color.RGBA{0, 0, 0, 255})
 		rect := subImage.Bounds()
 		totalPixels := (rect.Max.Y - rect.Min.Y) * (rect.Max.X - rect.Min.X)
 		percent := blackPixels * 100 / totalPixels
@@ -199,43 +199,4 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to wait for idle activity: ", err)
 		}
 	}
-}
-
-// countBlackPixels returns how many black pixels are contained in image.
-func countBlackPixels(image image.Image) int {
-	// TODO(ricardoq): At least on Eve, Nocturne, Caroline, Kevin and Dru the color
-	// that we are looking for is RGBA(0,0,0,255). But it might be possible that
-	// on certain devices the color is slightly different. In that case we should
-	// adjust the colorMaxDiff.
-	const colorMaxDiff = 0
-	black := color.RGBA{0, 0, 0, 255}
-	rect := image.Bounds()
-	blackPixels := 0
-	for y := rect.Min.Y; y < rect.Max.Y; y++ {
-		for x := rect.Min.X; x < rect.Max.X; x++ {
-			if colorcmp.ColorsMatch(image.At(x, y), black, colorMaxDiff) {
-				blackPixels++
-			}
-		}
-	}
-	return blackPixels
-}
-
-// grabScreenshot creates a screenshot in path, and returns an image.Image.
-func grabScreenshot(ctx context.Context, cr *chrome.Chrome, path string) (image.Image, error) {
-	if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
-		return nil, errors.Wrap(err, "failed to capture screenshot")
-	}
-
-	fd, err := os.Open(path)
-	if err != nil {
-		return nil, errors.Wrap(err, "error opening screenshot file")
-	}
-	defer fd.Close()
-
-	img, _, err := image.Decode(fd)
-	if err != nil {
-		return nil, errors.Wrap(err, "error decoding image file")
-	}
-	return img, nil
 }

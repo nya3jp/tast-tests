@@ -91,6 +91,9 @@ func WindowState(ctx context.Context, s *testing.State) {
 		if err := act.SetWindowState(ctx, test.initialWindowState); err != nil {
 			s.Fatalf("Failed to set the activity to the initial window state (%v): %v", test.initialWindowState, err)
 		}
+		if err := act.WaitForIdle(ctx, 4*time.Second); err != nil {
+			s.Fatal("Failed to wait for idle activity: ", err)
+		}
 		if err := verifyActivityWindowState(ctx, act, test.expectedInitialWindowState); err != nil {
 			s.Fatal("Failed to verify the initial window state: ", err)
 		}
@@ -100,6 +103,9 @@ func WindowState(ctx context.Context, s *testing.State) {
 			if err := act.SetWindowState(ctx, test.initialWindowState); err != nil {
 				s.Fatalf("Failed to set the activity to the first window state (%v) in iter %d: %v", test.initialWindowState, i, err)
 			}
+			if err := act.WaitForIdle(ctx, 4*time.Second); err != nil {
+				s.Fatal("Failed to wait for idle activity: ", err)
+			}
 			if err := verifyActivityWindowState(ctx, act, test.expectedInitialWindowState); err != nil {
 				s.Fatalf("Failed to verify the first window state in iter %d: %v", i, err)
 			}
@@ -107,6 +113,9 @@ func WindowState(ctx context.Context, s *testing.State) {
 			// Second WindowState transition.
 			if err := act.SetWindowState(ctx, test.finalWindowState); err != nil {
 				s.Fatalf("Failed to set the activity to the second window state (%v) in iter %d: %v", test.finalWindowState, i, err)
+			}
+			if err := act.WaitForIdle(ctx, 4*time.Second); err != nil {
+				s.Fatal("Failed to wait for idle activity: ", err)
 			}
 			if err := verifyActivityWindowState(ctx, act, test.expectedFinalWindowState); err != nil {
 				s.Fatalf("Failed to verify the second window state in iter %d: %v", i, err)
