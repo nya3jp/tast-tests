@@ -16,6 +16,24 @@
       "revId": "13cb525b52d0aa3ed331172f137a24740eae4f58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ea35b53_e693ef45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_sanity_vp92.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-07-08T06:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8f5b85f_ab13ab05",
+      "revId": "13cb525b52d0aa3ed331172f137a24740eae4f58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
