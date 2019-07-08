@@ -22,6 +22,30 @@
       "revId": "9f85c69dfc4cfcf8b87910bf68440eb8c8e47614",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e17df7f6_af14fa4a",
+        "filename": "src/chromiumos/tast/local/crosdisks/dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-08T07:37:30Z",
+      "side": 1,
+      "message": "Thank you for suggestion.\nHmm, there could be several options. I filed a bug to discuss. crbug.com/981756, so please let me keep this as is for now.",
+      "parentUuid": "50c45b17_45db723e",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 14
+      },
+      "revId": "9f85c69dfc4cfcf8b87910bf68440eb8c8e47614",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
