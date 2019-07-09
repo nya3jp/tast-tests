@@ -8,13 +8,12 @@ package arctest
 import (
 	"context"
 	"io"
-	"io/ioutil"
 	"path/filepath"
 	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/camera/hal3"
+	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
@@ -47,20 +46,13 @@ func RunARCBinary(ctx context.Context, a *arc.ARC, exec string, args []string, o
 	if err := a.PullFile(ctx, xmlPath, outDir); err != nil {
 		return errors.Wrapf(err, "failed to pull file %v from ARC", xmlPath)
 	}
-	xmlOutPath := filepath.Join(outDir, filepath.Base(xmlPath))
-	xml, err := ioutil.ReadFile(xmlOutPath)
+
+	report, err := gtest.ParseReport(filepath.Join(outDir, filepath.Base(xmlPath)))
 	if err != nil {
-		return errors.Wrapf(err, "failed to read file %v", xmlOutPath)
+		return errors.Wrap(err, "failed to parse gtest report")
 	}
 
-	// extractFailedTests in tast/local/chrome/bintest cannot be used here because gtest has different
-	// versions on Chrome and Chrome OS.
-	// TODO(johnylin): use common gtest parse function instead once the gtest package is merged.
-	//                 crbug.com/946390
-	failures, err := hal3.GetFailedTestNames(strings.NewReader(string(xml)))
-	if err != nil {
-		return errors.Wrapf(err, "failed to get failed tests from %v", xmlOutPath)
-	}
+	failures := report.Failures()
 	if len(failures) > 0 {
 		return errors.Errorf("failed to run %v with %d test failure(s): %v",
 			exec, len(failures), strings.Join(failures, ", "))
