@@ -171,6 +171,30 @@
     },
     {
       "key": {
+        "uuid": "170ec488_1ef9a8b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-09T16:06:36Z",
+      "side": 1,
+      "message": "Done, and took the chance to simplify the whole thing, should be\nmore readable now.",
+      "parentUuid": "185303a7_20673703",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "e3e84b26fc5941d58bd694948c70e8da16f31bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f06e3aec_9dca47d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
         "patchSetId": 9

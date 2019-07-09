@@ -39,6 +39,24 @@
       "revId": "ecd1d51d122323ab0636bd7e9951e6fb02bc95f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b217b71a_593aa8f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-09T16:06:36Z",
+      "side": 1,
+      "message": "Oh, I had forgotten this. Done.",
+      "parentUuid": "e05efd8f_8b536e67",
+      "revId": "ecd1d51d122323ab0636bd7e9951e6fb02bc95f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

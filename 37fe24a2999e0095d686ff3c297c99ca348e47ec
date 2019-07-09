@@ -22,6 +22,30 @@
       "revId": "37fe24a2999e0095d686ff3c297c99ca348e47ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a00a4d30_33426e46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-09T16:06:36Z",
+      "side": 1,
+      "message": "Added a comment explaining the number: Since we get aggregated histograms,\nI expect we need a couple hundred video frames displayed to make them \nsignificant, and since the video capture device produces either 30 or 60\nfps, 20 seconds would give us 600 - 1200 video frames, which are not too\nmany but would fill up the buckets nicely. I could reduce it to 10, but I\nthink 1 second would be too short and not give time to the WebRTC internals \nto settle down after the connection is open.",
+      "parentUuid": "f136bc74_d85b32a0",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "37fe24a2999e0095d686ff3c297c99ca348e47ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
