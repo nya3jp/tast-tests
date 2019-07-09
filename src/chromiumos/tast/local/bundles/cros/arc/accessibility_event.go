@@ -196,7 +196,7 @@ func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, eleme
 		return errors.Wrap(err, "Accel(Tab) returned error")
 	}
 
-	if accessibility.WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
+	if err := accessibility.WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
 		return errors.Wrap(err, "could not check if ChromeVox is speaking")
 	}
 
@@ -210,7 +210,7 @@ func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, eleme
 		return errors.Wrap(err, "Accel(Search + Space) returned error")
 	}
 
-	if accessibility.WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
+	if err := accessibility.WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
 		return errors.Wrap(err, "could not check if ChromeVox is speaking")
 	}
 
