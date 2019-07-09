@@ -142,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "95ee5a83_71a8c2dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-09T16:34:06Z",
+      "side": 1,
+      "message": "If the policy really does suggest individuals, so you can point at Gerrit reviewers more easily, including both is OK with me too. But Autotest is littered with individual contributors that have long left the team, while the group alias is still valid.",
+      "parentUuid": "a4e806c2_86e6e4d7",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 47
+      },
+      "revId": "d5e057143703c12a4e47a42bafa1c16d69332b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c06a798_dada91cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
         "patchSetId": 12
@@ -177,6 +201,30 @@
       "side": 1,
       "message": "It corresponds to http://cs/chromeos_public/src/third_party/autotest/files/client/common_lib/cros/network/interface.py?l\u003d235\nAm I missing something?",
       "parentUuid": "7c06a798_dada91cc",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 2
+      },
+      "revId": "d5e057143703c12a4e47a42bafa1c16d69332b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ef41953_f6db1431",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-09T16:34:06Z",
+      "side": 1,
+      "message": "See line 221/222 in the Autotest: read_file() doesn\u0027t fail if the path doesn\u0027t exist. We just construct a DeviceInfo object with \u0027None\u0027 fields in the non-existent case, which won\u0027t match anything. In this Tast version, you fail if the path doesn\u0027t exist.",
+      "parentUuid": "23dbe576_c0529f21",
       "range": {
         "startLine": 284,
         "startChar": 0,
