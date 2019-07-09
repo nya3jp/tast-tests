@@ -50,6 +50,10 @@ var (
 	PhotoPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\.jpg$`)
 	// VideoPattern is the filename format of videos recorded by CCA.
 	VideoPattern = regexp.MustCompile(`^VID_\d{8}_\d{6}[^.]*\.mkv$`)
+	// PortraitPattern is the filename format of portrait-mode photoes taken by CCA.
+	PortraitPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}_COVER.jpg$`)
+	// PortraitRefPattern is the filename format of the reference photo captured in portrait-mode.
+	PortraitRefPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}.jpg$`)
 )
 
 // TimerDelay is default timer delay of CCA.
@@ -315,6 +319,49 @@ func (a *App) GetState(ctx context.Context, state string) (bool, error) {
 		return false, errors.Wrapf(err, "failed to get state: %v", state)
 	}
 	return result, nil
+}
+
+// PortraitModeSupported returns whether portrait mode is supported by the current active video device.
+func (a *App) PortraitModeSupported(ctx context.Context) (bool, error) {
+	var result bool
+	if err := a.conn.EvalPromise(ctx, "CCAUICapture.portraitModeSupported()", &result); err != nil {
+		return false, err
+	}
+	return result, nil
+}
+
+// TakeSinglePhoto takes a photo and save to default location.
+func (a *App) TakeSinglePhoto(ctx context.Context, isPortrait bool) ([]os.FileInfo, error) {
+        if err := a.SetTimerOption(ctx, false); err != nil {
+                return nil, err
+        }
+        start := time.Now()
+
+        testing.ContextLog(ctx, "Click on start shutter")
+        if err := a.ClickShutter(ctx); err != nil {
+                return nil, err
+        }
+        if err := a.WaitForState(ctx, "taking", false); err != nil {
+                return nil, errors.Wrap(err, "capturing hasn't ended")
+        }
+	var info os.FileInfo
+	var err error
+	photoPattern := PhotoPattern
+	if isPortrait {
+		photoPattern = PortraitRefPattern
+	}
+        if info, err = a.WaitForFileSaved(ctx, photoPattern, start); err != nil {
+		return nil, errors.Wrapf(err, "cannot find result picture with regexp: %v", photoPattern)
+        }
+	fileInfos := []os.FileInfo{info}
+
+	if isPortrait {
+		if info, err = a.WaitForFileSaved(ctx, PortraitPattern, start); err != nil {
+			return nil, errors.Wrapf(err, "cannot find portrait picture with regexp: %v", PortraitPattern)
+		}
+		fileInfos = append(fileInfos, info)
+	}
+        return fileInfos, nil
 }
 
 func (a *App) getSavedDir(ctx context.Context) (string, error) {
