@@ -1,0 +1,1022 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e84bb49_1d841cec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "huge nit/style: \"TODO(chavey):\" (\u0027:\u0027 should follow the closed paren.) ditto for below.",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 15
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4109ccbf_52cb2a9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "nit: s/can be be/can be/",
+      "range": {
+        "startLine": 25,
+        "startChar": 69,
+        "endLine": 25,
+        "endChar": 72
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b232015_47e0c104",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "unused.",
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a721db6_5b95fd30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "I don\u0027t think you need, this. Could you find my comments below?",
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a505bf2c_980a7b06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "You can remove the file and ignore the error if ENOENT.\n\nif err :\u003d os.Remove(name); err !\u003d nil \u0026\u0026 !os.IsNotExist(err) {\n  ... handle an error ...\n}\n\nSo you don\u0027t need this function.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 1
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b586c56d_5a704ef8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "This looks over abstracted, IMHO.\nYou can just pass a pair of the file path and key in {push,pop}Consent().\n\nif err :\u003d pushFile(consentFile, \"pushed_consent\"); err !\u003d nil {\n  ...\n}\n...\n\nIf you\u0027d strongly like to share the file-path map, you can introduce a global map.\n\n// Map from file path to map.\nconcentMap :\u003d map[string]string {\n  consentFile: \"pushed_consent\",\n  ...\n}\n\nthen you can look up the map.",
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10190663_3eeabb37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "errors.Errorf(\"no file found for %d\", key)\n\nNote: Now it should be warned by lint. crbug.com/979455\n\nSame for below.",
+      "range": {
+        "startLine": 116,
+        "startChar": 17,
+        "endLine": 116,
+        "endChar": 40
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79da87b0_303b5926",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "Could you avoid searching twice for efficiency?\nYou can use the first value of the returned value.",
+      "range": {
+        "startLine": 128,
+        "startChar": 8,
+        "endLine": 128,
+        "endChar": 22
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae92fac6_65c9a020",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "fsutil.MoveFile reports an error if src file does not exist.",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 34
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dba2d17_ea552397",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "So this is pushed_{consent,policy,owner_key}. Where\u0027s the current directory...?",
+      "range": {
+        "startLine": 137,
+        "startChar": 31,
+        "endLine": 137,
+        "endChar": 35
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7e021df_5db10a8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "Looks conflicting with your code?\nMoving the file overwrites a file at |path| if exists.",
+      "range": {
+        "startLine": 156,
+        "startChar": 3,
+        "endLine": 157,
+        "endChar": 46
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "accd3fc6_16b3c162",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "For better encapsulation, could you pass the file paths instead of testing.State?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\n\u003d\u003d\u003d quote \u003d\u003d\u003d\nAvoid passing testing.State when it’s not actually necessary:\n\nIf a function just needs the output directory, pass a path.\nIf a function just needs to log its progress, pass a context.Context so it can call testing.ContextLog.\n\u003d\u003d\u003d quote end \u003d\u003d\u003d",
+      "range": {
+        "startLine": 201,
+        "startChar": 33,
+        "endLine": 201,
+        "endChar": 50
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8a046eb_1220e931",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "This function has two totally independent mechanism depending on the flag.\nHow\u0027s split into two functions instead?",
+      "range": {
+        "startLine": 201,
+        "startChar": 52,
+        "endLine": 201,
+        "endChar": 71
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40e67835_b30415b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "Is it necessary to create the directory if not exists?\nAt least, switching the behavior depending on whether the /var/lib/whitelist could make the test flaky.\nCould you avoid such?",
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13b8a66d_427c6924",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "This looks a dup of L204?\nNice to be extracted into a function.",
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab2dd5dc_ed146a67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "nit: param?\n\nBTW, this passes empty string to crash_sender if ignorePause is false.\n\nvar args []string\nif req.ignorePause {\n  args \u003d append(args, \"--ignore_pause_file\")\n}\nif err :\u003d testexec.CommandContext(ctx, crashSenderPath, args...)...\n\nis probably what you want I think.",
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58443b8b_e094d77d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "If output is unused, could you use Run() instead?",
+      "range": {
+        "startLine": 261,
+        "startChar": 65,
+        "endLine": 261,
+        "endChar": 71
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1598ec9_d2b43998",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "Could you avoid ignoring any errors?",
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f41cf23_fd21b447",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "Nice to be commented why it is set to empty string, which is assigned at L253.",
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5fecbe8_fb9b16f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "style:\npayload, err :\u003d writeCrashDirEntry(...)\nif err !\u003d nil {\n  ...\n}",
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "672e0412_2535ee5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "Could you follow the godoc style?\n\"logReaderFind does something...\"",
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66adcaa5_137f179f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "Not implemented?",
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3270b353_d302480a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "Ditto. Could you avoid ignoring the error?",
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da290582_ceb3a013",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "nit: could you use filepath for filepath concat? path is for, e.g., URL, IIUC.",
+      "range": {
+        "startLine": 313,
+        "startChar": 10,
+        "endLine": 313,
+        "endChar": 19
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59b97f83_7f5f6433",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "You can simplify the code;\n\nif err :\u003d os.MkdirAll(systemCrashDir, 0644); err !\u003d nil {\n  return \"\", errors.Wrapf(err, ...)\n}\nentry :\u003d filepath.Join(systemCrashDir, filename)\nif err :\u003d ioutil.WriteFile(entry, ...); err !\u003d nil {\n  return \"\", errors.Wrapf(err, ...)\n}\nreturn entry, nil\n\nNote: os.MkdirAll() does nothing if there already exists a directory at the given path, and returns nil.",
+      "range": {
+        "startLine": 313,
+        "startChar": 1,
+        "endLine": 322,
+        "endChar": 18
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e66e4c96_4bf0286a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "optional:\n\nHow about:\nlines :\u003d []string{\n  \"exec_name\u003d\" + execName,\n  \"ver\u003dmy_ver\",\n  \"payload\u003d\" + payload,\n}\nif complete {\n  lines \u003d append(lines, \"done\u003d1\")\n}\n\ncontent :\u003d strings.Join(lines, \"\\n\") + \"\\n\"",
+      "range": {
+        "startLine": 327,
+        "startChar": 1,
+        "endLine": 331,
+        "endChar": 96
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b37ee456_e7693750",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "Not implemented yet?",
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8eced5c0_0a27a392",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "nit: param? Or probably filterIn.\nCould you add comment what param should be in the godoc?\n\nThe function is named to replace \"--filter_in\", but the behavior is \"removing the --filter_in and then add something passed to param\", that\u0027s slightly different from the name.\n\nConsidering the use of this is actually replacing --filter_in, could you implement so?",
+      "range": {
+        "startLine": 348,
+        "startChar": 26,
+        "endLine": 348,
+        "endChar": 30
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80b87b01_04d8f65b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "style: Could you avoid declaring vars at the beginning?",
+      "range": {
+        "startLine": 349,
+        "startChar": 1,
+        "endLine": 354,
+        "endChar": 2
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1369af3_25b25f7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "IIUC, if some other process tries to overwrite the core_pattern, we could do less things.\nSo, instead, I\u0027d recommend to simplify this function by dropping this, and use 0644 for WriteFile\u0027s perm.\n\nNote that, if the file exists already, the perm is simply ignored.",
+      "range": {
+        "startLine": 356,
+        "startChar": 1,
+        "endLine": 358,
+        "endChar": 2
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "026fe6ed_acfd2b9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "nit: the returned value is not a stream but a content.\nMaybe |out| or |b| (meaning bytes) we use often in Tast.",
+      "range": {
+        "startLine": 359,
+        "startChar": 4,
+        "endLine": 359,
+        "endChar": 10
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06eb2745_ca2e4128",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "Nice to check if pattern starts with \u0027|\u0027, or \"|/sbin/crash_repoter\" just in case.",
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6474f969_9731d1d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "ReplaceAll() will simplify the code.\n\nhttps://golang.org/pkg/regexp/#Regexp.ReplaceAll",
+      "range": {
+        "startLine": 363,
+        "startChar": 1,
+        "endLine": 367,
+        "endChar": 2
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8843124_11abe2bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "is line feed correct option?\nAccording to man, this assumes the command line, so a white space?\nAlso, escaping could be needed.",
+      "range": {
+        "startLine": 369,
+        "startChar": 27,
+        "endLine": 369,
+        "endChar": 29
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "290c543f_63859767",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "Could you avoid declaring the var at the beginning?",
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29f11df3_87bbc022",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "This looks not trivial. Could you describe the behavior and the reason in the doc?",
+      "range": {
+        "startLine": 381,
+        "startChar": 1,
+        "endLine": 385,
+        "endChar": 2
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8d744c6_0418a160",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "note: enable looks redundant. You can just use empty string for name for the purpose.",
+      "range": {
+        "startLine": 406,
+        "startChar": 20,
+        "endLine": 406,
+        "endChar": 44
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a8e0567_9639b0eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "Appending the --filter_in prefix should be a part of replaceCrashFilterIn.\nThen, you can drop this function.",
+      "range": {
+        "startLine": 409,
+        "startChar": 23,
+        "endLine": 409,
+        "endChar": 36
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "239bf239_2c8cdfe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "maybe split into two methods.\n\nenableSystemSending() / disableSystemSending().",
+      "range": {
+        "startLine": 454,
+        "startChar": 5,
+        "endLine": 454,
+        "endChar": 32
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82ef03a7_11c8017c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "Similary, {enable,disable}MockCrashSending",
+      "range": {
+        "startLine": 472,
+        "startChar": 5,
+        "endLine": 472,
+        "endChar": 16
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "befce103_2f2f2dae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "Could you avoid using global var? Instead, you can pass the paths between funcs by return value and arguments.",
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d9d4f7a_7e4aa69d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "Could you drop the constants, which makes the code complicated?",
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4eef885_ef8166a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "optional: how about using the name setUp() and tearDown() which are often used more in testing context?",
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b393d4c2_f4f1eb8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "Could you avoid passing testing.State just for logging? Instead, you can use testing.ContextLog() family.",
+      "range": {
+        "startLine": 39,
+        "startChar": 37,
+        "endLine": 39,
+        "endChar": 53
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38ea6446_a3731a83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "For better manner, could you return tmpDir iff the whole setup succeeds?\nAnd, if failed, could you restore whole the things to be no-op?\n\nTo be more go-lang friendly, I\u0027d recommend to inline these set up, and add defer() for each step after their success.\nThen, even if some part of setup fails, defer would properly tear down the intermediate state.",
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccd46848_520a5ec4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "Rather, I think you can just report an error via s.Error() family.",
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "628aebff_c6ea1490",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "same.",
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aa278a9_a44f8ca0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "Running clean up for not-setup-completed situation.\nCould you declare this after the succeeded initialize()? (Could you find my recommendation above, too?).",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 4
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b0d44e2_c748c777",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "All setup failure should be handled as actual failure of the test.",
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6fb6fa6_fe6abbb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T08:09:23Z",
+      "side": 1,
+      "message": "optional: I\u0027d recommend to use \"test\" prefix to indicate this is the main test logic.",
+      "range": {
+        "startLine": 151,
+        "startChar": 11,
+        "endLine": 151,
+        "endChar": 34
+      },
+      "revId": "e1e39a579c417e0a36be9dc0ca6d2dca14832461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
