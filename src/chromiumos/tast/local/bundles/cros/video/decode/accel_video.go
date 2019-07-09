@@ -218,7 +218,11 @@ func RunAccelVideoTestNew(ctx context.Context, s *testing.State, filename string
 	upstart.StopJob(shortCtx, "ui")
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
-	var args []string
+	args := []string{
+		s.DataPath(filename),
+		s.DataPath(filename + ".json"),
+		"--output_folder=" + s.OutDir(),
+	}
 	// ARC++ is disabled on devices that don't support IMPORT mode. As frame
 	// validation also requires IMPORT mode we need to disable it on these
 	// devices. (cf. crbug.com/881729)
@@ -228,7 +232,6 @@ func RunAccelVideoTestNew(ctx context.Context, s *testing.State, filename string
 	if decoderType == VD {
 		args = append(args, "--use_vd")
 	}
-	args = append(args, s.DataPath(filename), s.DataPath(filename+".json"))
 
 	const exec = "video_decode_accelerator_tests"
 	if ts, err := bintest.Run(shortCtx, exec, args, s.OutDir()); err != nil {
