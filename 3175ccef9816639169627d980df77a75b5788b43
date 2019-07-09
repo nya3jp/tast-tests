@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40fde29b_34c04c4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_basic.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T10:28:37Z",
+      "side": 1,
+      "message": "crostini_audio_sanity.go should do the same?",
+      "revId": "3175ccef9816639169627d980df77a75b5788b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7f02e11_f25dc6f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_basic.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T10:28:37Z",
+      "side": 1,
+      "message": "(off topic, though): As you touch this line, could you simplify:\n\nif err :\u003d cont.Command(ctx, \"pwd\").Run(testexec.DumpLogOnError); err !\u003d nil {\n  s.Fatal(...)\n}",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "3175ccef9816639169627d980df77a75b5788b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ce7ca8b_01c814d5",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T10:28:37Z",
+      "side": 1,
+      "message": "(off topic): There are many \"crostini\" prefixed variables.\nIt\u0027s nice to be considered to introduce a new \"crostini\" package dedicated for crostini utility/test scenarios, later.",
+      "range": {
+        "startLine": 21,
+        "startChar": 6,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "3175ccef9816639169627d980df77a75b5788b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2906565_586e9a96",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T10:28:37Z",
+      "side": 1,
+      "message": "I don\u0027t think precondition creation should be exported.\nThen, the only caller will be just L60, L61. Could you inline then?\n\nvar crostiniStartedByArtifactPre \u003d \u0026preImpl{\n  name: \"crostini_started_by_artifact\",\n  timeout: ...,\n  imgPath: CrostiniImageArtifact,\n}\nvar crostiniStartedByDownloadPre \u003d \u0026preImpl{\n  name: ...,\n  timeout: ...,\n}",
+      "revId": "3175ccef9816639169627d980df77a75b5788b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2dfefbe_d0907ec5",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T10:28:37Z",
+      "side": 1,
+      "message": "imgPath looks enough. If empty, it\u0027s Download.\nAlong with NewContainerPrecondition removal, could you migrate the comment about image downloading to here?",
+      "revId": "3175ccef9816639169627d980df77a75b5788b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc9af2b4_19c1f8f6",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T10:28:37Z",
+      "side": 1,
+      "message": "Clar: why this method is renamed? Looks like this is still only for Crostini precondition.",
+      "revId": "3175ccef9816639169627d980df77a75b5788b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
