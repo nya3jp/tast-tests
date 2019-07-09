@@ -65,6 +65,29 @@
     },
     {
       "key": {
+        "uuid": "edd37093_93412a71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/black_flash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-09T16:50:28Z",
+      "side": 1,
+      "message": "if you think the screenshot should be preserved, then consider doing something like: \n  \"%s/screenshot_%d.png\", s.OutDir(), numScreenshot)\n\nIf it doesn\u0027t matter whether the screenshot gets preserved, see my comment below regarding removing the \"path\" parameter.",
+      "range": {
+        "startLine": 136,
+        "startChar": 61,
+        "endLine": 136,
+        "endChar": 81
+      },
+      "revId": "283e05b2c94d4b5c52f7a58bb6b4ae67260f312d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d1bf175_e64fdcb4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/black_flash.go",
         "patchSetId": 2
@@ -190,6 +213,29 @@
       "writtenOn": "2019-07-09T10:49:21Z",
       "side": 1,
       "message": "Could you add package document?",
+      "revId": "283e05b2c94d4b5c52f7a58bb6b4ae67260f312d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7479cf7_89d71743",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screenshot/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-09T16:50:28Z",
+      "side": 1,
+      "message": "maybe the |path| parameter can be avoided.\nI noticed that both on your test and in ResizeActivity the created file is not that important. \nPerhaps the screenshot can be created in `/tmp` with a random name, or perhaps you can pass |testing.State| and get the OutDir() from it.",
+      "range": {
+        "startLine": 38,
+        "startChar": 60,
+        "endLine": 38,
+        "endChar": 71
+      },
       "revId": "283e05b2c94d4b5c52f7a58bb6b4ae67260f312d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
