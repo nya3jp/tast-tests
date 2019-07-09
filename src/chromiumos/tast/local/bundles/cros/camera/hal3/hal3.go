@@ -10,7 +10,6 @@ import (
 	"encoding/json"
 	"encoding/xml"
 	"fmt"
-	"io"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -19,6 +18,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
@@ -113,46 +113,6 @@ func (t *crosCameraTestConfig) toArgs() []string {
 	return args
 }
 
-// gtestResult is used to unmarshal GoogleTest XML output files.
-type gtestResult struct {
-	XMLName xml.Name `xml:"testsuites"`
-	Suites  []struct {
-		Cases []struct {
-			Name      string        `xml:"name,attr"`
-			ClassName string        `xml:"classname,attr"`
-			Failures  []interface{} `xml:"failure"`
-		} `xml:"testcase"`
-	} `xml:"testsuite"`
-}
-
-// GetFailedTestNames returns failed test names from the gtest xml output file.
-// TODO(shik): Consolidate gtest related helpers in one place.  There is another
-// similar one that uses json output in chromiumos/tast/local/chrome/bintest.
-// crbug.com/946390
-func GetFailedTestNames(r io.Reader) ([]string, error) {
-	out, err := ioutil.ReadAll(r)
-	if err != nil {
-		return nil, err
-	}
-
-	var res gtestResult
-	if err := xml.Unmarshal(out, &res); err != nil {
-		return nil, err
-	}
-
-	var names []string
-	for _, suite := range res.Suites {
-		for _, cas := range suite.Cases {
-			if len(cas.Failures) == 0 {
-				continue
-			}
-			name := fmt.Sprintf("%s.%s", cas.ClassName, cas.Name)
-			names = append(names, name)
-		}
-	}
-	return names, nil
-}
-
 // runCrosCameraTest runs cros_camera_test with the arguments generated from the
 // config.  The cros-camera service must be stopped before calling this function.
 func runCrosCameraTest(ctx context.Context, s *testing.State, cfg crosCameraTestConfig) {
@@ -166,11 +126,9 @@ func runCrosCameraTest(ctx context.Context, s *testing.State, cfg crosCameraTest
 	if err != nil {
 		s.Fatal("Failed to open gtest output file: ", err)
 	}
-	defer func() {
-		if err := gtestFile.Close(); err != nil {
-			s.Error("Failed to close gtest output file: ", err)
-		}
-	}()
+	if err := gtestFile.Close(); err != nil {
+		s.Fatal("Failed to close gtest output file: ", err)
+	}
 	uid, err := sysutil.GetUID("arc-camera")
 	if err != nil {
 		s.Fatal("Failed to get uid of arc-camera: ", err)
@@ -206,10 +164,10 @@ func runCrosCameraTest(ctx context.Context, s *testing.State, cfg crosCameraTest
 	}
 
 	if err := cmd.Run(); err != nil {
-		if names, err := GetFailedTestNames(gtestFile); err != nil {
+		if report, err := gtest.ParseReport(gtestFile.Name()); err != nil {
 			s.Error("Failed to extract failed test names: ", err)
 		} else {
-			for _, name := range names {
+			for _, name := range report.FailedTestNames() {
 				s.Error(name, " failed")
 			}
 		}
