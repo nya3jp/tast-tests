@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/human_face_20190719.y4m",
+  "size": 103680501,
+  "sha256sum": "4592740284ae615749a6c60a361a5fe2cfbc45281da55c59efe9154d605f0c95"
+}

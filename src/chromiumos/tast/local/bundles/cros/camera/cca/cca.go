@@ -45,11 +45,25 @@ const (
 	Portrait = "portrait-mode"
 )
 
+// TimerState is the information of whether shutter timer is on.
+type TimerState bool
+
+const (
+	// TimerOn means shutter timer is on.
+	TimerOn TimerState = true
+	// TimerOff means shutter timer is off.
+	TimerOff = false
+)
+
 var (
-	// PhotoPattern is the filename format of photoes taken by CCA.
+	// PhotoPattern is the filename format of photos taken by CCA.
 	PhotoPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\.jpg$`)
 	// VideoPattern is the filename format of videos recorded by CCA.
 	VideoPattern = regexp.MustCompile(`^VID_\d{8}_\d{6}[^.]*\.mkv$`)
+	// PortraitPattern is the filename format of portrait-mode photos taken by CCA.
+	PortraitPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}_COVER.jpg$`)
+	// PortraitRefPattern is the filename format of the reference photo captured in portrait-mode.
+	PortraitRefPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}.jpg$`)
 )
 
 // TimerDelay is default timer delay of CCA.
@@ -232,7 +246,7 @@ func (a *App) WaitForVideoActive(ctx context.Context) error {
 // WaitForFileSaved waits for the presence of the captured file with file name matching the specified
 // pattern and modified time after the specified timestamp.
 func (a *App) WaitForFileSaved(ctx context.Context, pat *regexp.Regexp, ts time.Time) (os.FileInfo, error) {
-	path, err := a.getSavedDir(ctx)
+	path, err := a.GetSavedDir(ctx)
 	if err != nil {
 		return nil, err
 	}
@@ -317,7 +331,63 @@ func (a *App) GetState(ctx context.Context, state string) (bool, error) {
 	return result, nil
 }
 
-func (a *App) getSavedDir(ctx context.Context) (string, error) {
+// PortraitModeSupported returns whether portrait mode is supported by the current active video device.
+func (a *App) PortraitModeSupported(ctx context.Context) (bool, error) {
+	var result bool
+	if err := a.conn.EvalPromise(ctx, "CCAUICapture.isPortraitModeSupported()", &result); err != nil {
+		return false, err
+	}
+	return result, nil
+}
+
+// TakeSinglePhoto takes a photo and save to default location.
+func (a *App) TakeSinglePhoto(ctx context.Context, timerState TimerState) ([]os.FileInfo, error) {
+	isPortrait, err := a.GetState(ctx, string(Portrait))
+	if err != nil {
+		return nil, err
+	}
+
+	if err = a.SetTimerOption(ctx, timerState == TimerOn); err != nil {
+		return nil, err
+	}
+	start := time.Now()
+
+	testing.ContextLog(ctx, "Click on start shutter")
+	if err = a.ClickShutter(ctx); err != nil {
+		return nil, err
+	}
+	if err = a.WaitForState(ctx, "taking", false); err != nil {
+		return nil, errors.Wrap(err, "capturing hasn't ended")
+	}
+	photoPattern := PhotoPattern
+	if isPortrait {
+		photoPattern = PortraitRefPattern
+	}
+	info, err := a.WaitForFileSaved(ctx, photoPattern, start)
+	if err != nil {
+		return nil, errors.Wrapf(err, "cannot find result picture with regexp: %v", photoPattern)
+	}
+	if elapsed := info.ModTime().Sub(start); timerState == TimerOn && elapsed < TimerDelay {
+		return nil, errors.Errorf("the capture should happen after timer of %v, actual elapsed time %v", TimerDelay, elapsed)
+	}
+	fileInfos := []os.FileInfo{info}
+
+	// For portrait mode, check the extra reprocessed photo.
+	if !isPortrait {
+		return fileInfos, nil
+	}
+	if info, err = a.WaitForFileSaved(ctx, PortraitPattern, start); err != nil {
+		return nil, errors.Wrapf(err, "cannot find portrait picture with regexp: %v", PortraitPattern)
+	}
+	if elapsed := info.ModTime().Sub(start); timerState == TimerOn && elapsed < TimerDelay {
+		return nil, errors.Errorf("the capture should happen after timer of %v, actual elapsed time %v", TimerDelay, elapsed)
+	}
+	fileInfos = append(fileInfos, info)
+	return fileInfos, nil
+}
+
+// GetSavedDir returns the path to the folder where captured files are saved.
+func (a *App) GetSavedDir(ctx context.Context) (string, error) {
 	path, err := cryptohome.UserPath(ctx, a.cr.User())
 	if err != nil {
 		return "", err
