@@ -306,6 +306,24 @@
     },
     {
       "key": {
+        "uuid": "b745763b_e58bade6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T09:56:59Z",
+      "side": 1,
+      "message": "There\u0027s a few alternatives I think, but it depends on if csv lines are used.\nI\u0027ll reply after khmel@\u0027s clarification.",
+      "parentUuid": "e5fcf808_3def833a",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cfe82171_5d91ce24",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
         "patchSetId": 3
@@ -1276,6 +1294,23 @@
       "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8393a2e_3b935201",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T09:56:59Z",
+      "side": 1,
+      "message": "I\u0027d recommend to keep those logging. (maybe in caller).\nSo, if stuck, we can relatively easily identify what happens.",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {

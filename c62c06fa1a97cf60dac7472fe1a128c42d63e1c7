@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f72124b_c17ca54d",
+        "filename": "src/chromiumos/tast/local/arc/version.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T09:56:59Z",
+      "side": 1,
+      "message": "I don\u0027t think we\u0027d like to have this accessible from all the tests.\nCould you move this into your subpackage under bundles, and keep it in your private?\n\nYou can update the restriction of the callers.\nNote: if csv is unused, this is no longer needed. So, could you send the CL to update it after making sure if this is actually needed?",
+      "revId": "c62c06fa1a97cf60dac7472fe1a128c42d63e1c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67c0ff9a_88b2b2db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T09:56:59Z",
+      "side": 1,
+      "message": "Should be error?",
+      "revId": "c62c06fa1a97cf60dac7472fe1a128c42d63e1c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b350995_811cce56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T09:56:59Z",
+      "side": 1,
+      "message": "huge nit: maybe \u0027a\u0027? (Sorry overlooked in the last iteration).",
+      "range": {
+        "startLine": 147,
+        "startChar": 17,
+        "endLine": 147,
+        "endChar": 18
+      },
+      "revId": "c62c06fa1a97cf60dac7472fe1a128c42d63e1c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb6b8ee2_ff9f0426",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T09:56:59Z",
+      "side": 1,
+      "message": "huge nit: \":\u003d\"",
+      "range": {
+        "startLine": 272,
+        "startChar": 8,
+        "endLine": 272,
+        "endChar": 9
+      },
+      "revId": "c62c06fa1a97cf60dac7472fe1a128c42d63e1c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
