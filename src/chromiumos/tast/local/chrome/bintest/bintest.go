@@ -13,6 +13,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
@@ -30,23 +31,12 @@ func getFailedTests(ctx context.Context, gtestDir string) []string {
 
 	var res []string
 	for _, fi := range files {
-		jsonPath := filepath.Join(gtestDir, fi.Name())
-		f, err := os.Open(jsonPath)
-		if err != nil {
-			testing.ContextLog(ctx, "Ignoring error on opening gtest log: ", err)
-			continue
-		}
-		defer f.Close()
-
-		ts, err := extractFailedTests(f)
+		report, err := gtest.ParseReport(filepath.Join(gtestDir, fi.Name()))
 		if err != nil {
 			testing.ContextLog(ctx, "Ignoring error on parsing gtest log: ", err)
 			continue
 		}
-
-		for _, t := range ts {
-			res = append(res, fmt.Sprintf("%s/%s", t.SuiteName, t.CaseName))
-		}
+		res = append(res, report.FailedTestNames()...)
 	}
 
 	return res
@@ -59,10 +49,10 @@ const (
 // Run executes a Chrome binary test at exec with args.
 // If the binary test fails, it returns names of failed test cases and an error.
 func Run(ctx context.Context, exec string, args []string, outDir string) ([]string, error) {
-	// gtestDir is the directory where Google Test stores JSON results.
+	// gtestDir is the directory where Google Test stores XML results.
 	gtestDir := filepath.Join(outDir, "gtest")
 
-	// Create a directory where JSON files reporting test results will be stored.
+	// Create a directory where XML files reporting test results will be stored.
 	if err := os.MkdirAll(gtestDir, 0755); err != nil {
 		return nil, err
 	}
@@ -72,7 +62,7 @@ func Run(ctx context.Context, exec string, args []string, outDir string) ([]stri
 
 	// We don't use os.Environ() here. Otherwise, binary executed by "chronos" will fail because
 	// they cannot access $TMPDIR which is owned by "root".
-	env := []string{fmt.Sprintf("GTEST_OUTPUT=json:%s/", gtestDir)}
+	env := []string{fmt.Sprintf("GTEST_OUTPUT=xml:%s/", gtestDir)}
 	cmd, err := RunAsync(ctx, exec, args, env, outDir)
 	if err != nil {
 		return nil, err
