@@ -118,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "a4e806c2_86e6e4d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-09T07:46:11Z",
+      "side": 1,
+      "message": "Done.\nAdded chromeos-kernel-wifi@google.com instead of the individual developer.\nThank you.",
+      "parentUuid": "9826258c_4ad093ab",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 47
+      },
+      "revId": "d5e057143703c12a4e47a42bafa1c16d69332b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c06a798_dada91cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
         "patchSetId": 12
@@ -129,6 +153,30 @@
       "writtenOn": "2019-07-08T21:51:13Z",
       "side": 1,
       "message": "I believe this is wrong. Not all devices have vendor/device ID files, and this will fail if they don\u0027t exist.",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 2
+      },
+      "revId": "d5e057143703c12a4e47a42bafa1c16d69332b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23dbe576_c0529f21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-09T07:46:11Z",
+      "side": 1,
+      "message": "It corresponds to http://cs/chromeos_public/src/third_party/autotest/files/client/common_lib/cros/network/interface.py?l\u003d235\nAm I missing something?",
+      "parentUuid": "7c06a798_dada91cc",
       "range": {
         "startLine": 284,
         "startChar": 0,
