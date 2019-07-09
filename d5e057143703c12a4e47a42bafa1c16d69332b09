@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "9826258c_4ad093ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-09T05:31:57Z",
+      "side": 1,
+      "message": "Yes, having a group alias is really helpful. Thanks for the pointers.",
+      "parentUuid": "eb3d801e_d6fd00ab",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 47
+      },
+      "revId": "d5e057143703c12a4e47a42bafa1c16d69332b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c06a798_dada91cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
         "patchSetId": 12
