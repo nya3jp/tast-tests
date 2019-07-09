@@ -16,6 +16,24 @@
       "revId": "38941c883a0352c39218dcf37be9db781445dc9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4b8c932_7a8cf543",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_h264_2160p_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-09T11:21:43Z",
+      "side": 1,
+      "message": "Does the VEA binary test manage timeout by itself? If so, it makes sense to add \"--test-launcher-timeout\" option here.\nEven in that case, it\u0027d be nice to avoid duplicating this flag among tests. How about adding \"Timeout\" field whose type is time.Duration in encode.TestOptions?",
+      "parentUuid": "122b1625_e1d04797",
+      "revId": "38941c883a0352c39218dcf37be9db781445dc9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
