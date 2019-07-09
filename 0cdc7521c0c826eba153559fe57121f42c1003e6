@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a6b91c9d_2cb4a3a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf_managed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33cda8b2_75d66bd5",
+      "range": {
+        "startLine": 18,
+        "startChar": 39,
+        "endLine": 18,
+        "endChar": 44
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e99344d_2a789e3a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf_managed.go",
         "patchSetId": 3
@@ -65,6 +89,48 @@
     },
     {
       "key": {
+        "uuid": "f4de68dd_f2dc7506",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf_managed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Not sure what would be an appropriate subteam for this test..",
+      "parentUuid": "7f8c0ee2_ee4ff9ad",
+      "range": {
+        "startLine": 19,
+        "startChar": 69,
+        "endLine": 19,
+        "endChar": 76
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "767692e7_db7ceb18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf_managed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e99344d_2a789e3a",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d0c7f79_d7e2e08d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf_managed.go",
         "patchSetId": 3
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "5b402753_f04f9617",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf_managed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Added a comment.\nauth_perf_managed.go takes 400 sec on my end currently, so I think 10 min is not long enough.",
+      "parentUuid": "6d0c7f79_d7e2e08d",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03895e5f_9cbc6534",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf_managed.go",
         "patchSetId": 3
@@ -93,6 +177,24 @@
       "writtenOn": "2019-07-08T09:38:42Z",
       "side": 1,
       "message": "Should we hide the password?",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "123eaa1f_7b0ffc97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf_managed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Maybe we should. (cheets_AuthPerf was in internal repo).\nIs there a good way for hiding this?",
+      "parentUuid": "03895e5f_9cbc6534",
       "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -116,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "e0c98dd9_25ee511c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "999cb9dc_2afc2fc7",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6419ab3_d9e96fd0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
         "patchSetId": 3
@@ -133,6 +253,24 @@
     },
     {
       "key": {
+        "uuid": "be4340de_05ff1669",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6419ab3_d9e96fd0",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b815195_70182e35",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
         "patchSetId": 3
@@ -144,6 +282,24 @@
       "writtenOn": "2019-07-08T09:38:42Z",
       "side": 1,
       "message": "[]measuredValues is usable here?",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5fcf808_3def833a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "If there were a python-like map function, I think we wouldn\u0027t need to use playStoreShownTimes. (but there isn\u0027t in go?)\n\nreportResult(\"play_store_shown_time\", map(lambda v: v.playStoreShownTime, measuredValues))",
+      "parentUuid": "8b815195_70182e35",
       "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -173,6 +329,30 @@
     },
     {
       "key": {
+        "uuid": "0e573df8_72ebae62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfe82171_5d91ce24",
+      "range": {
+        "startLine": 73,
+        "startChar": 12,
+        "endLine": 73,
+        "endChar": 26
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75804bd4_e514ddea",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
         "patchSetId": 3
@@ -187,6 +367,24 @@
       "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c1f8649_d5745693",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Added err handing.\n\n\u003e BTW, you dumps logcat twice. How about dump the log in performArcBoot() instead?\n\nThe logcat command in performArcBoot (logcat -v tag -d ArcProvisioning:I *:S)\nonly outputs 10 lines or so.\n\nI think saving logcat only when performArcBoot returns failure is better than saving logcat for all (10) iterations.",
+      "parentUuid": "75804bd4_e514ddea",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -213,6 +411,30 @@
     },
     {
       "key": {
+        "uuid": "ec459d13_e2fcc772",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Done. (Moved this to the end of the func)",
+      "parentUuid": "0397b0ae_54f4ac34",
+      "range": {
+        "startLine": 99,
+        "startChar": 7,
+        "endLine": 99,
+        "endChar": 34
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70cc3d2d_e731fee4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
         "patchSetId": 3
@@ -233,6 +455,30 @@
       "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e921dee_71eeb4c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70cc3d2d_e731fee4",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 26
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -283,6 +529,30 @@
     },
     {
       "key": {
+        "uuid": "cdacd592_51f2db71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Done. Thanks!",
+      "parentUuid": "7be0983d_e9828794",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 73
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92477792_872b9108",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
         "patchSetId": 3
@@ -294,6 +564,24 @@
       "writtenOn": "2019-07-08T09:38:42Z",
       "side": 1,
       "message": "Clar: Is this actually used nowadays?\nCould you comment/refer to how this is used?",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b425b1fa_9b2b6ed7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Will check with @khmel",
+      "parentUuid": "92477792_872b9108",
       "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -323,6 +611,30 @@
     },
     {
       "key": {
+        "uuid": "fe14e855_7b238528",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Done. Avoided passing testing.State to any functions except for RunTest()",
+      "parentUuid": "083ee2e4_df5e7868",
+      "range": {
+        "startLine": 147,
+        "startChar": 41,
+        "endLine": 147,
+        "endChar": 57
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4063f830_d1140587",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
         "patchSetId": 3
@@ -346,6 +658,30 @@
     },
     {
       "key": {
+        "uuid": "843819f0_70825dc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4063f830_d1140587",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 2
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f709ad4a_91df4a85",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
         "patchSetId": 3
@@ -360,6 +696,24 @@
       "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "682ee70c_a2024129",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f709ad4a_91df4a85",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -386,6 +740,30 @@
     },
     {
       "key": {
+        "uuid": "2f385ad7_0cfded77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7b2e7b7_341b51da",
+      "range": {
+        "startLine": 179,
+        "startChar": 2,
+        "endLine": 188,
+        "endChar": 3
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8fe00555_f1be0178",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
         "patchSetId": 3
@@ -403,6 +781,24 @@
     },
     {
       "key": {
+        "uuid": "fa650f7f_bab7f51f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fe00555_f1be0178",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31c3bb87_b18a7eb8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
         "patchSetId": 3
@@ -417,6 +813,24 @@
       "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe6f795e_613e90b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31c3bb87_b18a7eb8",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -440,6 +854,30 @@
       "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af95b482_14cf91f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "That\u0027s true. Done.",
+      "parentUuid": "99fc82a6_ace5456e",
+      "range": {
+        "startLine": 200,
+        "startChar": 1,
+        "endLine": 210,
+        "endChar": 2
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -489,6 +927,54 @@
     },
     {
       "key": {
+        "uuid": "06e3aa87_53c6b9c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7015c85a_257b9607",
+      "range": {
+        "startLine": 224,
+        "startChar": 46,
+        "endLine": 224,
+        "endChar": 48
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99da2407_f837e5ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Done. (Fixed indentation)",
+      "parentUuid": "0e5ab5bd_5c7b8c88",
+      "range": {
+        "startLine": 224,
+        "startChar": 2,
+        "endLine": 224,
+        "endChar": 3
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b363363b_abcdb940",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
         "patchSetId": 3
@@ -535,6 +1021,54 @@
     },
     {
       "key": {
+        "uuid": "bf809dcf_86dd74ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08d4223d_038ab64e",
+      "range": {
+        "startLine": 225,
+        "startChar": 4,
+        "endLine": 229,
+        "endChar": 5
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "515abd64_5c3275b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b363363b_abcdb940",
+      "range": {
+        "startLine": 225,
+        "startChar": 4,
+        "endLine": 229,
+        "endChar": 5
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8214feb2_e6433c9f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
         "patchSetId": 3
@@ -549,6 +1083,24 @@
       "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9c83c6e_75d9e542",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8214feb2_e6433c9f",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -575,6 +1127,30 @@
     },
     {
       "key": {
+        "uuid": "8ddb3128_edd50f83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbfbbfe7_836540e2",
+      "range": {
+        "startLine": 257,
+        "startChar": 29,
+        "endLine": 257,
+        "endChar": 49
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aa5a67e_fc6d43c3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
         "patchSetId": 3
@@ -592,6 +1168,24 @@
     },
     {
       "key": {
+        "uuid": "f4a1d44e_7625f68c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5aa5a67e_fc6d43c3",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fce1d3f2_0f37c4fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
         "patchSetId": 3
@@ -606,6 +1200,24 @@
       "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99d5ada6_9f99a9a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fce1d3f2_0f37c4fd",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -649,6 +1261,24 @@
     },
     {
       "key": {
+        "uuid": "860da279_f76b9eb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43606370_8a6d74f4",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12fbc47b_bcb124ff",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
         "patchSetId": 3
@@ -672,6 +1302,30 @@
     },
     {
       "key": {
+        "uuid": "d3b70ed0_f696cd0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12fbc47b_bcb124ff",
+      "range": {
+        "startLine": 299,
+        "startChar": 38,
+        "endLine": 299,
+        "endChar": 42
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90fefcae_aa15881c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
         "patchSetId": 3
@@ -686,6 +1340,24 @@
       "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96e9816a_6d78910f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90fefcae_aa15881c",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -709,6 +1381,30 @@
       "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ee38a4d_521a2b0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-09T05:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "408d4852_ca1e164c",
+      "range": {
+        "startLine": 315,
+        "startChar": 2,
+        "endLine": 318,
+        "endChar": 50
+      },
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
