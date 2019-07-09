@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "122b1625_e1d04797",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_h264_2160p_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-09T07:00:03Z",
+      "side": 1,
+      "message": "Maybe we shouldn\u0027t expose arguments like directly in our testcases. I would also prefer not duplicating \"--test-launcher-timeout\u003d180000\" in every test that requires it. And why is the launcher timeout set to 3min while the test itself has a timeout of 4 minutes.\n\nMy suggestion is to keep things a lot simpler. I would just always increase the timeout. Managing test timeout here is the responsibility of Tast, not the launcher. Just set it to a value higher than Tast (5min? 10min?) that will cover our usecases in the future.",
+      "revId": "38941c883a0352c39218dcf37be9db781445dc9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
