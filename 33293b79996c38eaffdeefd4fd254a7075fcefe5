@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6462b73e_0d376c54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T04:48:33Z",
+      "side": 1,
+      "message": "huge nit: ARC",
+      "range": {
+        "startLine": 21,
+        "startChar": 43,
+        "endLine": 21,
+        "endChar": 46
+      },
+      "revId": "33293b79996c38eaffdeefd4fd254a7075fcefe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "201a9598_4eeb7bab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T04:48:33Z",
+      "side": 1,
+      "message": "arc-eng@ nowadays is very large group. Could you find an appropriate subteam?",
+      "range": {
+        "startLine": 22,
+        "startChar": 49,
+        "endLine": 22,
+        "endChar": 69
+      },
+      "revId": "33293b79996c38eaffdeefd4fd254a7075fcefe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c89046e7_c4a4249b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T04:48:33Z",
+      "side": 1,
+      "message": "Could you follow the godoc style?\n\nhttps://blog.golang.org/godoc-documenting-go-code\n\n\u003d\u003d\u003d quote \u003d\u003d\u003d\nNotice this comment is a complete sentence that begins with the name of the element it describes. ...\n\u003d\u003d\u003d quote end \u003d\u003d\u003d",
+      "revId": "33293b79996c38eaffdeefd4fd254a7075fcefe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be0c177b_724d6a90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T04:48:33Z",
+      "side": 1,
+      "message": "s/var/let/\n\nWhat is this trying to do? Here, deskContainer is null or undefined so calling toString() does not make sense to me...?",
+      "range": {
+        "startLine": 39,
+        "startChar": 21,
+        "endLine": 39,
+        "endChar": 50
+      },
+      "revId": "33293b79996c38eaffdeefd4fd254a7075fcefe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d9889c4_17565b74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T04:48:33Z",
+      "side": 1,
+      "message": "Could you report an error, instead of taking testing.State?\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 2
+      },
+      "revId": "33293b79996c38eaffdeefd4fd254a7075fcefe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5e39462_0b859771",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T04:48:33Z",
+      "side": 1,
+      "message": "Could you handle an error?",
+      "revId": "33293b79996c38eaffdeefd4fd254a7075fcefe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d601530_8d182f26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T04:48:33Z",
+      "side": 1,
+      "message": "Could you get rid of introducing assertion wrapper?\n\nhttps://golang.org/doc/faq#testing_framework",
+      "revId": "33293b79996c38eaffdeefd4fd254a7075fcefe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8111f3a8_f9ec8c98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T04:48:33Z",
+      "side": 1,
+      "message": "optional: nice to output a log to indicate the set up is properly done?",
+      "revId": "33293b79996c38eaffdeefd4fd254a7075fcefe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
