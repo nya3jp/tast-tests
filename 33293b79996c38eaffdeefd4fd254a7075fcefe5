@@ -65,6 +65,98 @@
     },
     {
       "key": {
+        "uuid": "717cc15d_479aa8fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-09T04:55:09Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 29,
+        "startChar": 112,
+        "endLine": 29,
+        "endChar": 131
+      },
+      "revId": "33293b79996c38eaffdeefd4fd254a7075fcefe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a111c23e_6ec24658",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-09T04:55:09Z",
+      "side": 1,
+      "message": "Remove surrounding ` .\nComments do not need extra formatting according to https://golang.org/doc/effective_go.html#commentary .",
+      "range": {
+        "startLine": 29,
+        "startChar": 42,
+        "endLine": 29,
+        "endChar": 54
+      },
+      "revId": "33293b79996c38eaffdeefd4fd254a7075fcefe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c7b2baa_d8845893",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-09T04:55:09Z",
+      "side": 1,
+      "message": "Function comments should start with the function name.\n// deskContainsWindow returns ...\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 10
+      },
+      "revId": "33293b79996c38eaffdeefd4fd254a7075fcefe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be730647_a1ca7370",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-09T04:55:09Z",
+      "side": 1,
+      "message": "You can remove the first string.\ndeskContainerName, windowName string)",
+      "range": {
+        "startLine": 30,
+        "startChar": 83,
+        "endLine": 30,
+        "endChar": 126
+      },
+      "revId": "33293b79996c38eaffdeefd4fd254a7075fcefe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be0c177b_724d6a90",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
         "patchSetId": 3
@@ -81,6 +173,29 @@
         "startChar": 21,
         "endLine": 39,
         "endChar": 50
+      },
+      "revId": "33293b79996c38eaffdeefd4fd254a7075fcefe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27a4523e_e4a6f104",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-09T04:55:09Z",
+      "side": 1,
+      "message": "I think this loses the context when failure occurred.\nCould you add deskContainerName and windowName to the failure message?\ns.Fatalf(\"deskContainsWindow(%s, %s) failed: %v\", deskContainerName, windowName, err)\n\nAlso, is it ok to stop test here? It looks like we can still continue on the next test.\nIf that\u0027s the case, how about returning err here, and report s.Error on the caller side?\nReturn arguments would become (bool, error) then.",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 4
       },
       "revId": "33293b79996c38eaffdeefd4fd254a7075fcefe5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -156,6 +271,75 @@
       "writtenOn": "2019-07-09T04:48:33Z",
       "side": 1,
       "message": "optional: nice to output a log to indicate the set up is properly done?",
+      "revId": "33293b79996c38eaffdeefd4fd254a7075fcefe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0f358ef_5f960b90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-09T04:55:09Z",
+      "side": 1,
+      "message": "Could you inline this?\nif !deskContains(...) {\n  s.Error(\"...\")\n}\ns.Error reports the line number it\u0027s called. Having a method to invoke it removes one way to find where the error happens.\nhttps://golang.org/doc/faq#testing_framework",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 11
+      },
+      "revId": "33293b79996c38eaffdeefd4fd254a7075fcefe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "772193e8_b6bb837c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-09T04:55:09Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 11
+      },
+      "revId": "33293b79996c38eaffdeefd4fd254a7075fcefe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a5316dc_7f4ac3b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-09T04:55:09Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 12
+      },
       "revId": "33293b79996c38eaffdeefd4fd254a7075fcefe5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
