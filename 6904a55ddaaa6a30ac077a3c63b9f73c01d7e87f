@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "16475d52_dc61e3a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/gsctool.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2019-07-09T22:20:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9404f4d_725cab1f",
+      "range": {
+        "startLine": 42,
+        "startChar": 37,
+        "endLine": 42,
+        "endChar": 44
+      },
+      "revId": "6904a55ddaaa6a30ac077a3c63b9f73c01d7e87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "310fc8ca_3f2dbd29",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/gsctool.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "6904a55ddaaa6a30ac077a3c63b9f73c01d7e87f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71ce3791_29e83992",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/gsctool.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2019-07-09T22:20:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "310fc8ca_3f2dbd29",
+      "range": {
+        "startLine": 46,
+        "startChar": 12,
+        "endLine": 46,
+        "endChar": 46
+      },
+      "revId": "6904a55ddaaa6a30ac077a3c63b9f73c01d7e87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
