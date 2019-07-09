@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a393c99d_cfe8666b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-09T00:24:43Z",
+      "side": 1,
+      "message": "update description",
+      "range": {
+        "startLine": 21,
+        "startChar": 17,
+        "endLine": 21,
+        "endChar": 67
+      },
+      "revId": "8b3a940048af3a525f59831817c007f5c71fea45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4909ac37_742636d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-09T00:24:43Z",
+      "side": 1,
+      "message": "nit:\nJavaScript code should be indented with 2-spaces instead of tabs.\nShould honor the JavaScript guidelines, even when embedded inside Go code.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 4
+      },
+      "revId": "8b3a940048af3a525f59831817c007f5c71fea45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baf9b0fd_88145609",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-09T00:24:43Z",
+      "side": 1,
+      "message": "optional: if you want to test all the asserts, you can replace s.Fatal() with s.Error().",
+      "range": {
+        "startLine": 95,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 10
+      },
+      "revId": "8b3a940048af3a525f59831817c007f5c71fea45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4669230_cfaec66e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-09T00:24:43Z",
+      "side": 1,
+      "message": "Could you try removing the `// NOLINT` and see if it compiles Ok? I guess it is safe to remove it.",
+      "range": {
+        "startLine": 95,
+        "startChar": 16,
+        "endLine": 95,
+        "endChar": 57
+      },
+      "revId": "8b3a940048af3a525f59831817c007f5c71fea45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1819940_c7ec85d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-09T00:24:43Z",
+      "side": 1,
+      "message": "ditto above.",
+      "range": {
+        "startLine": 101,
+        "startChar": 16,
+        "endLine": 101,
+        "endChar": 57
+      },
+      "revId": "8b3a940048af3a525f59831817c007f5c71fea45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "773fd52d_bae22d57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-09T00:24:43Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 101,
+        "startChar": 5,
+        "endLine": 101,
+        "endChar": 10
+      },
+      "revId": "8b3a940048af3a525f59831817c007f5c71fea45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
