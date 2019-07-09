@@ -7,6 +7,7 @@ package security
 import (
 	"bufio"
 	"context"
+	"fmt"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -138,13 +139,16 @@ func Mtab(ctx context.Context, s *testing.State) {
 	daemonStoreSpec := mountSpec{nil, "tmpfs", defaultRW + ",mode=755"}
 
 	// Mounts that are modified for dev/test images and thus ignored when checking /etc/mtab.
-	ignoredLiveMounts := []string{
+	ignoredLiveMountPatterns := []string{
 		"/home",
 		"/tmp",
 		"/usr/local",
 		"/var/db/pkg",
 		"/var/lib/portage",
+		// imageloader creates mount point at /run/imageloader/{id}/{package}.
+		"/run/imageloader/[^/]+/[^/]+",
 	}
+	ignoredLiveMountsRegexp := regexp.MustCompile(fmt.Sprintf("^(%s)$", strings.Join(ignoredLiveMountPatterns, "|")))
 
 	// Filesystem types that are skipped.
 	ignoredTypes := []string{
@@ -177,7 +181,7 @@ func Mtab(ctx context.Context, s *testing.State) {
 			return
 		}
 		// When looking at /etc/mtab, skip mounts that are modified for dev/test images.
-		if mtab == liveMtab && inSlice(info.mount, ignoredLiveMounts) {
+		if mtab == liveMtab && ignoredLiveMountsRegexp.MatchString(info.mount) {
 			return
 		}
 
