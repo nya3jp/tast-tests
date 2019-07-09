@@ -14,7 +14,6 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/bintest"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/logging"
@@ -222,12 +221,6 @@ func RunAccelVideoTestNew(ctx context.Context, s *testing.State, filename string
 		s.DataPath(filename),
 		s.DataPath(filename + ".json"),
 		"--output_folder=" + s.OutDir(),
-	}
-	// ARC++ is disabled on devices that don't support IMPORT mode. As frame
-	// validation also requires IMPORT mode we need to disable it on these
-	// devices. (cf. crbug.com/881729)
-	if !arc.Supported() {
-		args = append(args, "--disable_validator")
 	}
 	if decoderType == VD {
 		args = append(args, "--use_vd")
