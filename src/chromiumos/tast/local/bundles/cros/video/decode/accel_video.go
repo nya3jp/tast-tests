@@ -205,7 +205,9 @@ func RunAccelVideoTestNew(ctx context.Context, s *testing.State, filename string
 	upstart.StopJob(shortCtx, "ui")
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
-	var args []string
+	args := []string{
+		"--output_folder=" + s.OutDir(),
+	}
 	// ARC++ is disabled on devices that don't support IMPORT mode. As frame
 	// validation also requires IMPORT mode we need to disable it on these
 	// devices. (cf. crbug.com/881729)
