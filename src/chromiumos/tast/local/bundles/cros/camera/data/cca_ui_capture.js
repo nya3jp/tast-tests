@@ -23,5 +23,18 @@ window.CCAUICapture = class {
     }
     btn.click();
   }
+
+  /**
+   * Gets whether portrait mode is supported by current active video stream.
+   * @return {Promise<boolean>}
+   */
+  static async portraitModeSupported() {
+    const video = document.querySelector("#preview-video");
+    const imageCapture = new cca.mojo.ImageCapture(
+        video.srcObject.getVideoTracks()[0]);
+    const capabilities = await imageCapture.getPhotoCapabilities();
+    return capabilities.supportedEffects &&
+        capabilities.supportedEffects.includes(cros.mojom.Effect.PORTRAIT_MODE);
+  }
 };
 })();
