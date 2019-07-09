@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d7cb23c_4dbab777",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T17:22:19Z",
+      "side": 1,
+      "message": "note: The file should be closed at this timing. gtest.ParseReport() takes a path to the report xml.",
+      "revId": "d1c8d0fa34430344248cf4fa1f7e72ad35b6c2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae4e75b9_900ed86d",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T17:22:19Z",
+      "side": 1,
+      "message": "keiichiw@, this is the visible diff. (Changed TestSuite/TestCase to TestSuite.TestCase).\nCould you double check if this does not have side effect in video testing infra?",
+      "revId": "d1c8d0fa34430344248cf4fa1f7e72ad35b6c2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
