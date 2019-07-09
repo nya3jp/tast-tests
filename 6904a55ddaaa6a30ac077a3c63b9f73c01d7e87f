@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9404f4d_725cab1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/gsctool.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-09T07:10:43Z",
+      "side": 1,
+      "message": "huge nit: I recommend gsctool.txt since it\u0027s a text.",
+      "range": {
+        "startLine": 42,
+        "startChar": 37,
+        "endLine": 42,
+        "endChar": 44
+      },
+      "revId": "6904a55ddaaa6a30ac077a3c63b9f73c01d7e87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "310fc8ca_3f2dbd29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/gsctool.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-09T07:10:43Z",
+      "side": 1,
+      "message": "Sorry for not catching this earlier, but this error message is going to be\n\n \"gsctool --any --fwver\": output saved to \"/path/to/gsctool\", wanted \"[0-9]+\\\\.[0-9]+\\\\.[0-9]+\"\n\n... which is a bit difficult to understand for random people taking a look at test failures.\n\nHow about something like:\n\n s.Fatal(\"Failed to query GSC version: output of %q did not contain version number (saved output to %s)\", shutil.EscapeSlice(cmd.Args), filepath.Base(path))",
+      "range": {
+        "startLine": 46,
+        "startChar": 12,
+        "endLine": 46,
+        "endChar": 46
+      },
+      "revId": "6904a55ddaaa6a30ac077a3c63b9f73c01d7e87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
