@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "fcba919b_052bd74e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2019-07-09T19:49:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b0e5ce5_12762e54",
+      "range": {
+        "startLine": 22,
+        "startChar": 49,
+        "endLine": 22,
+        "endChar": 69
+      },
+      "revId": "33293b79996c38eaffdeefd4fd254a7075fcefe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c89046e7_c4a4249b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
         "patchSetId": 3
