@@ -66,44 +66,13 @@ func CCAUITakePicture(ctx context.Context, s *testing.State) {
 }
 
 func testTakeSinglePhoto(ctx context.Context, app *cca.App) error {
-	if err := app.SetTimerOption(ctx, false); err != nil {
-		return err
-	}
-	start := time.Now()
-
-	testing.ContextLog(ctx, "Click on start shutter")
-	if err := app.ClickShutter(ctx); err != nil {
-		return err
-	}
-	if err := app.WaitForState(ctx, "taking", false); err != nil {
-		return errors.Wrap(err, "capturing hasn't ended")
-	}
-	if _, err := app.WaitForFileSaved(ctx, cca.PhotoPattern, start); err != nil {
-		return errors.Wrap(err, "cannot find result picture")
-	}
-	return nil
+	_, err := app.TakeSinglePhoto(ctx, cca.TimerOff)
+	return err
 }
 
 func testTakeSinglePhotoWithTimer(ctx context.Context, app *cca.App) error {
-	if err := app.SetTimerOption(ctx, true); err != nil {
-		return err
-	}
-	start := time.Now()
-
-	testing.ContextLog(ctx, "Click on start shutter")
-	if err := app.ClickShutter(ctx); err != nil {
-		return err
-	}
-	if err := app.WaitForState(ctx, "taking", false); err != nil {
-		return errors.Wrap(err, "shutter is not ended")
-	}
-	if image, err := app.WaitForFileSaved(ctx, cca.PhotoPattern, start); err != nil {
-		return errors.Wrap(err, "cannot find result picture")
-	} else if elapsed := image.ModTime().Sub(start); elapsed < cca.TimerDelay {
-		return errors.Errorf("the capture should happen after timer of %v, actual elapsed time %v", cca.TimerDelay, elapsed)
-	}
-
-	return nil
+	_, err := app.TakeSinglePhoto(ctx, cca.TimerOn)
+	return err
 }
 
 func testCancelTimer(ctx context.Context, app *cca.App) error {
