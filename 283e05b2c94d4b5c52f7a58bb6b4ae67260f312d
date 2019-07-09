@@ -1,0 +1,198 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ab4ec69_5e7f1bee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/black_flash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T10:49:21Z",
+      "side": 1,
+      "message": "I think you can just force to set it.",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 2
+      },
+      "revId": "283e05b2c94d4b5c52f7a58bb6b4ae67260f312d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de62bb20_20fab14f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/black_flash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T10:49:21Z",
+      "side": 1,
+      "message": "nit: activity (starting from a lower case letter)\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#error-construction",
+      "range": {
+        "startLine": 133,
+        "startChar": 22,
+        "endLine": 133,
+        "endChar": 31
+      },
+      "revId": "283e05b2c94d4b5c52f7a58bb6b4ae67260f312d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7619517b_02cc13a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/black_flash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T10:49:21Z",
+      "side": 1,
+      "message": "Could you use filepath.JOin() ?",
+      "revId": "283e05b2c94d4b5c52f7a58bb6b4ae67260f312d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d1bf175_e64fdcb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/black_flash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T10:49:21Z",
+      "side": 1,
+      "message": "clar: The line will be output for every 0.1 seconds. Maybe too busy...?\nIf the trajectory is needed, how about collecting in an array, and output in case of failure?",
+      "revId": "283e05b2c94d4b5c52f7a58bb6b4ae67260f312d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b511bc9d_f416deaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/black_flash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T10:49:21Z",
+      "side": 1,
+      "message": "s.Error().\n\ns.Fatal() returns from the function immediately, which hides the main test failure reason reported at L165.",
+      "range": {
+        "startLine": 159,
+        "startChar": 6,
+        "endLine": 159,
+        "endChar": 11
+      },
+      "revId": "283e05b2c94d4b5c52f7a58bb6b4ae67260f312d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11a3234d_2bf9d317",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/black_flash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T10:49:21Z",
+      "side": 1,
+      "message": "Could you handle error?",
+      "revId": "283e05b2c94d4b5c52f7a58bb6b4ae67260f312d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d0272a4_f5794543",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/black_flash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T10:49:21Z",
+      "side": 1,
+      "message": "Clar: what\u0027s the expected behavior here?\nIf it is expected that the screen is blue, 10% looks too small to me. Any comments?\n\nstyle:\ncould you negate the condition to return error earlier?\n\nif percent \u003c\u003d 10 {\n  return errors.New(...)\n}\n\nreturn nil",
+      "revId": "283e05b2c94d4b5c52f7a58bb6b4ae67260f312d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5db70d09_452f0a23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/black_flash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T10:49:21Z",
+      "side": 1,
+      "message": "Nice to output bluePixels, percent totalPixels, etc, too. (similar to black ones).\n\nstyle: \"new\" (starting from a lower case letter)",
+      "revId": "283e05b2c94d4b5c52f7a58bb6b4ae67260f312d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "863d5390_877835bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/black_flash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T10:49:21Z",
+      "side": 1,
+      "message": "style: \"Failed\" (starting from an upper case letter)",
+      "range": {
+        "startLine": 177,
+        "startChar": 11,
+        "endLine": 177,
+        "endChar": 17
+      },
+      "revId": "283e05b2c94d4b5c52f7a58bb6b4ae67260f312d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29aee43a_2a7544e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screenshot/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-09T10:49:21Z",
+      "side": 1,
+      "message": "Could you add package document?",
+      "revId": "283e05b2c94d4b5c52f7a58bb6b4ae67260f312d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
