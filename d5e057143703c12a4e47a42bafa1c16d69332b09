@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "16f13489_38849180",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-10T09:36:43Z",
+      "side": 1,
+      "message": "What property of nyan_kitty makes test fail?\nI\u0027d like to know it so that I can property update the description.\n\nAs you noticed, in tast, we don\u0027t skip tests specifying board.\nCurrently the only way to skip tests is to use features computed from USE flags (see go/tast-deps).\nOther way currently being worked on, which may be what you are talking about, is Test specificity (go/test-spec).\n\nDo you know if USE flag based solution would work? IIRU, I heard it is possible that lab duts have different hardware configurations even if those are the same board.",
+      "parentUuid": "8f08e219_9ac2e4bd",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "d5e057143703c12a4e47a42bafa1c16d69332b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f4f94a9e_2b1d74ea",
         "filename": "/COMMIT_MSG",
         "patchSetId": 12
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8d6dd8fe_79b8f210",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-10T09:36:43Z",
+      "side": 1,
+      "message": "It is discussed in go/test-spec, or the following document linked from it. https://docs.google.com/document/d/1iYbKgW2syEguKfV6bCWFtmpWncpJsFZIGRm7vDICyQY/edit#heading\u003dh.mpu95sagfob5",
+      "parentUuid": "f4f94a9e_2b1d74ea",
+      "range": {
+        "startLine": 13,
+        "startChar": 52,
+        "endLine": 14,
+        "endChar": 44
+      },
+      "revId": "d5e057143703c12a4e47a42bafa1c16d69332b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe48e39a_7ac6b4b3",
         "filename": "/COMMIT_MSG",
         "patchSetId": 12
@@ -68,6 +116,30 @@
       "revId": "d5e057143703c12a4e47a42bafa1c16d69332b09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e15101ac_991482e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-10T09:36:43Z",
+      "side": 1,
+      "message": "Thank you for the link, but I think there are other cases. For example the test fails on betty.\n\nBTW, tast tests start with informational, and it doesn\u0027t impact the actual CQ. So starting the test from simple form and check the results afterward and fix it would be fine.",
+      "parentUuid": "fe48e39a_7ac6b4b3",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "d5e057143703c12a4e47a42bafa1c16d69332b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -166,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "1c4dddcb_7414fe72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-10T09:36:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95ee5a83_71a8c2dc",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 47
+      },
+      "revId": "d5e057143703c12a4e47a42bafa1c16d69332b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c06a798_dada91cc",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
         "patchSetId": 12
@@ -225,6 +321,30 @@
       "side": 1,
       "message": "See line 221/222 in the Autotest: read_file() doesn\u0027t fail if the path doesn\u0027t exist. We just construct a DeviceInfo object with \u0027None\u0027 fields in the non-existent case, which won\u0027t match anything. In this Tast version, you fail if the path doesn\u0027t exist.",
       "parentUuid": "23dbe576_c0529f21",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 2
+      },
+      "revId": "d5e057143703c12a4e47a42bafa1c16d69332b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00326e62_aa160298",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-10T09:36:43Z",
+      "side": 1,
+      "message": "Done. Thank you.\nIIUC, it is possible for the test to pass even if device or vendor files are missing, if the latter OF_COMPATIBLE_ matches, right?\nDo you know which board matches this case? I\u0027d like to run the test on the device.",
+      "parentUuid": "4ef41953_f6db1431",
       "range": {
         "startLine": 284,
         "startChar": 0,
