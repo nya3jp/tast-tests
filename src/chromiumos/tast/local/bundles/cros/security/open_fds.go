@@ -8,6 +8,7 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"time"
 
 	"chromiumos/tast/local/asan"
 	"chromiumos/tast/local/bundles/cros/security/openfds"
@@ -42,6 +43,9 @@ func OpenFDs(ctx context.Context, s *testing.State) {
 	// things that the previous test did: https://crbug.com/924893
 	upstart.RestartJob(ctx, "ui")
 
+	// Wait for the renderer and plugin processes to fire up.
+	testing.Sleep(ctx, 2000*time.Millisecond)
+
 	// Dump a systemwide snapshot of open-fd and process table information
 	// into the results directory, to assist with any triage/debug later.
 	if err := openfds.DumpFDs(ctx, filepath.Join(s.OutDir(), "proc-fd.txt")); err != nil {
@@ -69,9 +73,12 @@ func OpenFDs(ctx context.Context, s *testing.State) {
 	}
 
 	pprocs, err := chrome.GetPluginProcesses()
+	// TODO: Why aren't any plugin processes showing up?
+	//if err != nil || len(pprocs) == 0 {
 	if err != nil {
 		s.Fatal("Failed to obtain Chrome Plugin processes: ", err)
 	}
+
 	for _, p := range pprocs {
 		openfds.Expect(ctx, s, onASan, &p, ePlugin)
 	}
@@ -96,6 +103,9 @@ func OpenFDs(ctx context.Context, s *testing.State) {
 
 		// Ad blocking ruleset mmapped in for performance.
 		mkExp(`/home/chronos/Subresource Filter/Indexed Rules/[0-9]*/[0-9\.]*/Ruleset Data`, 0500),
+
+		// Dictionaries
+		mkExp(`/home/chronos/Dictionaries/.*\.bdic`, 0500),
 	}
 	eRenderer = append(ePlugin, eRenderer...)
 
@@ -107,7 +117,7 @@ func OpenFDs(ctx context.Context, s *testing.State) {
 	}
 
 	rprocs, err := chrome.GetRendererProcesses()
-	if err != nil {
+	if err != nil || len(rprocs) == 0 {
 		s.Fatal("Failed to obtain Chrome renderer processes: ", err)
 	}
 	for _, p := range rprocs {
