@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "06b87ab1_cec0ed9b",
+        "filename": "src/chromiumos/tast/local/arc/version.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-10T04:56:03Z",
+      "side": 1,
+      "message": "Done. Moved this func into authperf.go\n\n(khmel@ confirmed we still need csv in the same format.)",
+      "parentUuid": "5f72124b_c17ca54d",
+      "revId": "c62c06fa1a97cf60dac7472fe1a128c42d63e1c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "639c7cee_ec0195d7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf_unmanaged.go",
         "patchSetId": 6
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "067e01b1_21423b8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf_unmanaged.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-10T04:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "639c7cee_ec0195d7",
+      "range": {
+        "startLine": 33,
+        "startChar": 14,
+        "endLine": 33,
+        "endChar": 26
+      },
+      "revId": "c62c06fa1a97cf60dac7472fe1a128c42d63e1c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67c0ff9a_88b2b2db",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
         "patchSetId": 6
@@ -56,6 +98,24 @@
       "revId": "c62c06fa1a97cf60dac7472fe1a128c42d63e1c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b612880_bafcacb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-10T04:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67c0ff9a_88b2b2db",
+      "revId": "c62c06fa1a97cf60dac7472fe1a128c42d63e1c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "804279eb_7a5debe9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-10T04:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b350995_811cce56",
+      "range": {
+        "startLine": 147,
+        "startChar": 17,
+        "endLine": 147,
+        "endChar": 18
+      },
+      "revId": "c62c06fa1a97cf60dac7472fe1a128c42d63e1c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb6b8ee2_ff9f0426",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
         "patchSetId": 6
@@ -102,6 +186,30 @@
       "revId": "c62c06fa1a97cf60dac7472fe1a128c42d63e1c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ed2b4ff_bc8fc9a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-10T04:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb6b8ee2_ff9f0426",
+      "range": {
+        "startLine": 272,
+        "startChar": 8,
+        "endLine": 272,
+        "endChar": 9
+      },
+      "revId": "c62c06fa1a97cf60dac7472fe1a128c42d63e1c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

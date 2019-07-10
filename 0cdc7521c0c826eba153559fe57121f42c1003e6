@@ -606,6 +606,24 @@
     },
     {
       "key": {
+        "uuid": "46c82393_57198f10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-10T04:56:03Z",
+      "side": 1,
+      "message": "@khmel confirmed that it is still used by many Google sheets.\nAdded a comment.",
+      "parentUuid": "b425b1fa_9b2b6ed7",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "083ee2e4_df5e7868",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
         "patchSetId": 3
@@ -1311,6 +1329,24 @@
       "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c86819ed_45e0499d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-10T04:56:03Z",
+      "side": 1,
+      "message": "Done. Added back these logging to the caller (bootArc())",
+      "parentUuid": "b8393a2e_3b935201",
+      "revId": "0cdc7521c0c826eba153559fe57121f42c1003e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
