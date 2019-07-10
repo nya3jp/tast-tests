@@ -137,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "fe657e03_76909301",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-10T04:48:17Z",
+      "side": 1,
+      "message": "I talked with hidehiko@ offline.\nHe\u0027s improving gtest package by CL:1693261 and we will be able to use a new function there. But, it\u0027s not necessary for this CL. So, let\u0027s go ahead as is.\nhidehiko@ will be able to modify this part once CL:1693261 is merged.",
+      "parentUuid": "df6bfbd3_09cb27cd",
+      "revId": "8f289f58fae771a8c870c5461a58e36cf01542d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb9ab333_c066204f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda_decode_h264.go",
         "patchSetId": 13
