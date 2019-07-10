@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/perf/vp9/1080p_60fps_600frames_20190614.vp9.ivf.json",
+  "size": 22356,
+  "sha256sum": "67fb2260c4b5c7fd0d6780a72cebc2ff45989fd24a075a14c44ceb2226799b91"
+}
