@@ -22,6 +22,30 @@
       "revId": "fbdaafd6b40e514d0cab90a7eb79768385c13f4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a22ba5d9_6891ad60",
+        "filename": "src/chromiumos/tast/local/arc/ui/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-07-10T05:19:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dcaeb90_6144620b",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 37
+      },
+      "revId": "fbdaafd6b40e514d0cab90a7eb79768385c13f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
