@@ -6,9 +6,8 @@
 package iw
 
 import (
+	"reflect"
 	"testing"
-
-	"github.com/google/go-cmp/cmp"
 )
 
 func TestGetAllLinkKeys(t *testing.T) {
@@ -34,9 +33,10 @@ func TestGetAllLinkKeys(t *testing.T) {
 		"RX":          "5370 bytes (37 packets)",
 		"tx bitrate":  "13.0 MBit/s MCS 1",
 	}
-	linkMap := getAllLinkKeys(testStr)
-	if diff := cmp.Diff(linkMap, cmpMap); diff != "" {
-		t.Error("getAllLinkKeys returned unexpected map: diff:\n", diff)
+	l := getAllLinkKeys(testStr)
+
+	if !reflect.DeepEqual(l, cmpMap) {
+		t.Errorf("unexpected result in getAllLinkKeys: got %v, want %v", l, cmpMap)
 	}
 }
 
@@ -74,7 +74,93 @@ func TestParseScanResults(t *testing.T) {
 			Signal:    -46,
 		},
 	}
-	if diff := cmp.Diff(l, cmpBSS); diff != "" {
-		t.Error("parseScanResults returned unexpected result; diff:\n", diff)
+	if !reflect.DeepEqual(l, cmpBSS) {
+		t.Errorf("unexpected result in parseScanResults: got %v, want %v", l, cmpBSS)
+	}
+}
+
+func TestNewPhy(t *testing.T) {
+	const phyString = `Wiphy 3`
+	const testStr = `	max # scan SSIDs: 20
+	max scan IEs length: 425 bytes
+	max # sched scan SSIDs: 20
+	max # match sets: 11
+	Retry short limit: 7
+	Retry long limit: 4
+	Coverage class: 0 (up to 0m)
+	Device supports RSN-IBSS.
+	Device supports AP-side u-APSD.
+	Device supports T-DLS.
+	Supported Ciphers:
+		* WEP40 (00-0f-ac:1)
+		* WEP104 (00-0f-ac:5)
+		* TKIP (00-0f-ac:2)
+		* CCMP-128 (00-0f-ac:4)
+		* CMAC (00-0f-ac:6)
+	Available Antennas: TX 0 RX 0
+	Supported interface modes:
+		 * IBSS
+		 * managed
+		 * monitor
+	Band 1:
+		Capabilities: 0x11ef
+			RX LDPC
+			HT20/HT40
+			SM Power Save disabled
+			RX HT20 SGI
+			RX HT40 SGI
+			TX STBC
+			RX STBC 1-stream
+			Max AMSDU length: 3839 bytes
+			DSSS/CCK HT40
+		Maximum RX AMPDU length 65535 bytes (exponent: 0x003)
+		Minimum RX AMPDU time spacing: 4 usec (0x05)
+		HT Max RX data rate: 300 Mbps
+		HT TX/RX MCS rate indexes supported: 0-15
+		Bitrates (non-HT):
+			* 1.0 Mbps
+		Frequencies:
+			* 2412 MHz [1] (22.0 dBm)
+	Supported commands:
+		 * connect
+		 * disconnect`
+	l, err := newPhy(phyString, testStr)
+	if err != nil {
+		t.Fatal("newPhy failed: ", err)
+	}
+	cmpPhy := &Phy{
+		Name: "3",
+		Bands: []Band{
+			{
+				Num:            1,
+				FrequencyFlags: map[int][]string{},
+				McsIndicies: []int{
+					0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+				},
+			},
+		},
+		Modes: []string{
+			"IBSS",
+			"managed",
+			"monitor",
+		},
+		Commands: []string{
+			"connect",
+			"disconnect",
+		},
+		Features: []string{
+			"RSN-IBSS",
+			"AP-side u-APSD",
+			"T-DLS",
+		},
+		RxAntenna:      0,
+		TxAntenna:      0,
+		MaxScanSSIDs:   20,
+		SupportVHT:     false,
+		SupportHT2040:  true,
+		SupportHT40SGI: true,
+	}
+	if !reflect.DeepEqual(l, cmpPhy) {
+		t.Errorf("unexpected result in newPhy: got %v, want %v", l, cmpPhy)
 	}
 }
