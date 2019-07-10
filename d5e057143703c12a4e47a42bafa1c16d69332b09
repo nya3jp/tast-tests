@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "163d425d_966b42c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-10T23:13:38Z",
+      "side": 1,
+      "message": "BTW, I don\u0027t think this is required either: what Autotest had was a true SoftwareDep -- it was essentially based only on the USE flag. So why can\u0027t we have a \u0027wifi\u0027 SoftwareDep that\u0027s based on USE\u003dwifi?",
+      "parentUuid": "8d6dd8fe_79b8f210",
+      "range": {
+        "startLine": 13,
+        "startChar": 52,
+        "endLine": 14,
+        "endChar": 44
+      },
+      "revId": "d5e057143703c12a4e47a42bafa1c16d69332b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe48e39a_7ac6b4b3",
         "filename": "/COMMIT_MSG",
         "patchSetId": 12
