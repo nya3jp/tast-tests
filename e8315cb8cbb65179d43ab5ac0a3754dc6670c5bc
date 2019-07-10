@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "17c3780e_2d274cfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf_unmanaged.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-07-10T21:50:38Z",
+      "side": 1,
+      "message": "I tested this code locally and found strange result.\nExisting cheets_AuthPerf reports me performance for 12333 version like\n12333.0.0,10,13980,15510,17248,0,1,11,1464,2026,2936,0,0,0,2750,3600,4274\nI ran this code several times and got\nVERSION.0.0,10,16756,18309,19453,0,0,2,1431,1828,1980,0,0,0,1941,3517,4497\n\nI see comparable results for everything except Play Store shown time. This is explainable because it is taken from logcat.\n\nHowever for Play Store shown time, there is a big diff. 2-3 seconds is a huge diff. I would expect comparable numbers here.\n\nCould you please verify what is wrong? We should have the same results, regardless go, or py impl.\nThanks\n\nFYI, bot results for 12333\n12333.0.0,10,13988.9190197,15567.2266722,18506.4880848,0,0,1,1576,2154,3671,0,0,0,2059,3160,6205\nThat is the same as I see on my device locally with py version.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 49
+      },
+      "revId": "e8315cb8cbb65179d43ab5ac0a3754dc6670c5bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e100e0a_cd793b71",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
         "patchSetId": 10
