@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58f8b3ad_1d311769",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-07-10T21:58:24Z",
+      "side": 1,
+      "message": "this should be in RunParameters now, so remove this?",
+      "range": {
+        "startLine": 529,
+        "startChar": 54,
+        "endLine": 529,
+        "endChar": 70
+      },
+      "revId": "6b3097d9a4298cdaef9053fccb627d87e70fa048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14cc7784_09e45968",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-07-10T21:58:24Z",
+      "side": 1,
+      "message": "I\u0027d just put all of this into the function you created, since it all looks identical for this part and the next one.",
+      "range": {
+        "startLine": 986,
+        "startChar": 0,
+        "endLine": 991,
+        "endChar": 2
+      },
+      "revId": "6b3097d9a4298cdaef9053fccb627d87e70fa048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
