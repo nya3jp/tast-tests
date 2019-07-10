@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94c37636_577ebdd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-07-10T10:11:21Z",
+      "side": 1,
+      "message": "I am not sure if it\u0027s suitable to be put in example/. Should I create a separate category such as dev/ for this kind of usage?",
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "643b9c80_bfa56d48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-07-10T10:11:21Z",
+      "side": 1,
+      "message": "tools/check_informational.py complained about this line with\n\u003e Tests in following new files should have \"informational\" attribute\n\nIIUC \"disabled\" is even more \"informational\", so I just ignore that error. Should we allow \"disabled\" in the presubmit check as well?",
+      "range": {
+        "startLine": 25,
+        "startChar": 26,
+        "endLine": 25,
+        "endChar": 34
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
