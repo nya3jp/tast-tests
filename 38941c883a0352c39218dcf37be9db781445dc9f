@@ -34,6 +34,24 @@
       "revId": "38941c883a0352c39218dcf37be9db781445dc9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cf7bbd4_bf52850f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_h264_2160p_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-07-10T02:12:56Z",
+      "side": 1,
+      "message": "Not only for VEA test binary, every test binary built from chromium library has a default timeout 45 secs for every test case.\nhttps://cs.chromium.org/chromium/src/base/test/test_timeouts.cc?sq\u003dpackage:chromium\u0026g\u003d0\u0026l\u003d81\n\nI actually agree David\u0027s suggestion that set a super long timeout at the binary side, and manage the real timeout by Tast.",
+      "parentUuid": "a4b8c932_7a8cf543",
+      "revId": "38941c883a0352c39218dcf37be9db781445dc9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
