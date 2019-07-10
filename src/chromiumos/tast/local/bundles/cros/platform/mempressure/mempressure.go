@@ -536,7 +536,7 @@ func initBrowser(ctx context.Context, p *RunParameters) (*chrome.Chrome, *testex
 		}
 		if tentativeWPR != nil {
 			if err := tentativeWPR.Kill(); err != nil {
-				testing.ContextLog(ctx, "cannot kill WPR: ", err)
+				testing.ContextLog(ctx, "Cannot kill WPR: ", err)
 			}
 		}
 	}()
@@ -783,6 +783,8 @@ type RunParameters struct {
 	PageFileCompressionRatio float64
 	// WPRArchivePath is the path name of a WPR archive.
 	WPRArchivePath string
+	// MaxTabCount is the maximal tab count to open
+	MaxTabCount int
 	// UseLogIn controls whether Run should use GAIA login.
 	// (This is not yet functional.)
 	UseLogIn bool
@@ -931,6 +933,10 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 			len(rset.tabIDs), len(validTabIDs), initialTabCount)
 		if len(rset.tabIDs)+initialTabCount > len(validTabIDs) {
 			s.Log("Ending allocation because one or more targets (tabs) have gone")
+			break
+		}
+		if len(rset.tabIDs) >= p.MaxTabCount {
+			s.Log("MaxTabCount reached. Tab count: ", len(rset.tabIDs))
 			break
 		}
 		// Switch among recently loaded tabs to encourage loading.
