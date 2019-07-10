@@ -30,6 +30,14 @@ const (
 	securityMixed = "mixed"
 )
 
+// Band contains supported wireless band attributes
+type Band struct {
+	Num            int
+	Frequencies    []int
+	FrequencyFlags map[int][]string
+	McsIndicies    []int
+}
+
 // BSSData contains contents pertaining to a BSS response.
 type BSSData struct {
 	BSS       string
@@ -40,10 +48,25 @@ type BSSData struct {
 	Signal    float64
 }
 
-// NetDev contains interface attributes from `iw dev`
+// NetDev contains interface attributes from `iw dev`.
 type NetDev struct {
 	Phy            int
 	IfName, IfType string
+}
+
+// Phy contains phy# attributes.
+type Phy struct {
+	Name           string
+	Bands          []Band
+	Modes          []string
+	Commands       []string
+	Features       []string
+	RxAntennas     []int
+	TxAntennas     []int
+	MaxScanSSIDs   int
+	SupportVHT     bool
+	SupportHT2040  bool
+	SupportHT40SGI bool
 }
 
 // TimedScanData contains the BSS responses from an `iw scan` and its execution time.
@@ -79,6 +102,216 @@ func TimedScan(ctx context.Context, iface string,
 		return nil, err
 	}
 	return &TimedScanData{scanTime, bssList}, nil
+}
+
+func newPhy(phyMatch string, dataMatch string) (*Phy, error) {
+	currentSection := ""
+	currentBand := Band{}
+	phyModes := []string{}
+	phyCommands := []string{}
+	phyFeatures := []string{}
+	rxAntennas := []int{}
+	txAntennas := []int{}
+	supportVHT := false
+	supportHT2040 := false
+	supportHT40SGI := false
+	bands := []Band{}
+
+	// PHY handling
+	nameMatch := regexp.MustCompile(`Wiphy (.*)`)
+	m := nameMatch.FindStringSubmatch(phyMatch)
+	if len(m) != 2 {
+		return nil, errors.New("unexpected input when parsing name")
+	}
+	name := m[1]
+
+	// Antennae handling
+	availAntennaMatch := regexp.MustCompile(`\s*Available Antennas: TX (\S+) RX (\S+)`)
+	ms := availAntennaMatch.FindAllStringSubmatch(dataMatch, -1)
+	for _, m := range ms {
+		if len(m) != 3 {
+			return nil, errors.New("unexpected input when parsing antennas")
+		}
+		txAntenna, err := strconv.Atoi(m[1])
+		if err != nil {
+			return nil, errors.New("could not convert txAntennas to int")
+		}
+		rxAntenna, err := strconv.Atoi(m[2])
+		if err != nil {
+			return nil, errors.New("could not convert rxAntenna to int")
+		}
+		txAntennas = append(txAntennas, txAntenna)
+		rxAntennas = append(rxAntennas, rxAntenna)
+	}
+
+	// Device Support handling
+	deviceSupportMatch := regexp.MustCompile(`\s*Device supports (.*)\.`)
+	ms = deviceSupportMatch.FindAllStringSubmatch(dataMatch, -1)
+	for _, m := range ms {
+		if len(m) != 2 {
+			return nil, errors.New("unexpected input when parsing device support")
+		}
+		phyFeatures = append(phyFeatures, m[1])
+	}
+
+	// Max Scan SSIDs handling
+	maxScanSSIDsMatch := regexp.MustCompile(`\s*max # scan SSIDs: (\d+)`)
+	m = maxScanSSIDsMatch.FindStringSubmatch(dataMatch)
+	if len(m) != 2 {
+		return nil, errors.New("could not find max scan SSIDs when parsing data")
+	}
+	maxScanSSIDs, err := strconv.Atoi(m[1])
+	if err != nil {
+		return nil, errors.Wrapf(err, "could not convert maxScanSSIDs %s to string", m[1])
+	}
+	// VHT support handling
+	if strings.Contains(dataMatch, "VHT Capabilities") {
+		supportVHT = true
+	}
+
+	// HT20 and HT40 support handling
+	if strings.Contains(dataMatch, "HT20/HT40") {
+		supportHT2040 = true
+	}
+
+	// HT40 SGI support handloing
+	if strings.Contains(dataMatch, "RX HT40 SGI") {
+		supportHT40SGI = true
+	}
+
+	// Current Section handling
+	sectionMatch := regexp.MustCompile(`(?m)^\t(\w.*):\s*$`)
+	matches := sectionMatch.FindAllString(dataMatch, -1)
+	splits := sectionMatch.Split(dataMatch, -1)
+	if len(splits) != len(matches)+1 {
+		return nil, errors.New("unexpected number of matches")
+	}
+	for i, match := range matches {
+		currentSection = splits[i+1]
+		// Band handling
+		if strings.Contains(match, "Band") {
+			bandMatch := regexp.MustCompile(`Band (\d+)`)
+			m = bandMatch.FindStringSubmatch(match)
+			if len(m) != 2 {
+				return nil, errors.New("unexpected input when parsing band")
+			}
+			num, err := strconv.Atoi(m[1])
+			if err != nil {
+				return nil, errors.New("could not convert num to string")
+			}
+			currentBand = Band{num, []int{}, make(map[int][]string), []int{}}
+			// Rate handling
+			rateMatch := regexp.MustCompile(`HT TX/RX MCS rate indexes supported: .*\n`)
+			ms = rateMatch.FindAllStringSubmatch(currentSection, -1)
+			for _, m := range ms {
+				if len(m) != 1 {
+					return nil, errors.Errorf("unexpected input when parsing rates %d", len(m))
+				}
+				rateStr := strings.TrimSpace(strings.Split(m[0], ":")[1])
+				for _, piece := range strings.Split(rateStr, ",") {
+					if strings.Contains(piece, "-") {
+						res := strings.Split(piece, "-")
+						if len(res) != 2 {
+							return nil, errors.New("unexpected number of dashes in input")
+						}
+						begin, _ := strconv.Atoi(res[0])
+						end, _ := strconv.Atoi(res[1])
+						for i := begin; i < end+1; i++ {
+							currentBand.McsIndicies = append(currentBand.McsIndicies, i)
+						}
+
+					} else {
+						val, _ := strconv.Atoi(piece)
+						currentBand.McsIndicies = append(currentBand.McsIndicies, val)
+					}
+				}
+			}
+
+			// Channel Info handling
+			chanInfoMatch := regexp.MustCompile(`(?P<frequency>\d+) MHz (?P<chan_num>\[\d+\])(?: \((?P<tx_power_limit>[0-9.]+ dBm)\))?(?: \((?P<flags>[a-zA-Z, ]+)\))?`)
+			ms = chanInfoMatch.FindAllStringSubmatch(currentSection, -1)
+			frequency := -1
+			for _, m := range ms {
+				for i, name := range chanInfoMatch.SubexpNames() {
+					if i != 0 {
+						if string(name) == "frequency" {
+							frequency, err = strconv.Atoi(m[i])
+							if err != nil {
+								return nil, errors.Wrapf(err, "could not convert frequency %s to string", m[i])
+							}
+							currentBand.Frequencies = append(currentBand.Frequencies, frequency)
+						}
+						if string(name) == "flags" {
+							flags := strings.Split(string(m[i]), ",")
+							if len(flags) > 0 && flags[0] != "" {
+								currentBand.FrequencyFlags[frequency] = flags
+							}
+						}
+					}
+				}
+			}
+			bands = append(bands, currentBand)
+		}
+		// Phy modes handling
+		if strings.Contains(match, "Supported interface modes") {
+			modeMatch := regexp.MustCompile(`\* (\w+)`)
+			ms = modeMatch.FindAllStringSubmatch(currentSection, -1)
+			for _, m := range ms {
+				if len(m) != 2 {
+					return nil, errors.New("unexpected input when parsing phy modes")
+				}
+				phyModes = append(phyModes, m[1])
+			}
+		}
+		// Phy commands handling
+		if strings.Contains(match, "Supported commands") {
+			commandsMatch := regexp.MustCompile(`\* (\w+)`)
+			ms = commandsMatch.FindAllStringSubmatch(currentSection, -1)
+			for _, m := range ms {
+				if len(m) != 2 {
+					return nil, errors.New("unexpected input when parsing supported phy commands")
+				}
+				phyCommands = append(phyCommands, m[1])
+			}
+		}
+
+	}
+
+	return &Phy{
+		Name:           name,
+		Bands:          bands,
+		Modes:          phyModes,
+		Commands:       phyCommands,
+		Features:       phyFeatures,
+		RxAntennas:     rxAntennas,
+		TxAntennas:     txAntennas,
+		MaxScanSSIDs:   maxScanSSIDs,
+		SupportVHT:     supportVHT,
+		SupportHT2040:  supportHT2040,
+		SupportHT40SGI: supportHT40SGI,
+	}, nil
+}
+
+func ListPhys(ctx context.Context) ([]*Phy, error) {
+	out, err := testexec.CommandContext(ctx, "iw", "list").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "iw list failed")
+	}
+	phys := []*Phy{}
+	r := regexp.MustCompile(`Wiphy (.*)`)
+	matches := r.FindAllString(string(out), -1)
+	splits := r.Split(string(out), -1)
+	if len(splits) != len(matches)+1 {
+		return nil, errors.New("unexpected number of matches")
+	}
+	for i, m := range matches {
+		phy, err := newPhy(m, splits[i+1])
+		if err != nil {
+			return nil, errors.Wrap(err, "could not extract phy attributes")
+		}
+		phys = append(phys, phy)
+	}
+	return phys, nil
 }
 
 // GetInterfaceAttributes gets a single interface's attributes.
