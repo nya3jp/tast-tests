@@ -22,6 +22,30 @@
       "revId": "a5d513ba308b89486686b8539f20cbc460faab94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d165ab17_c66462e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-10T09:36:43Z",
+      "side": 1,
+      "message": "Sorry about missing the comments. I replied to the old comments.",
+      "parentUuid": "961cc37c_14097204",
+      "range": {
+        "startLine": 11,
+        "startChar": 55,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "a5d513ba308b89486686b8539f20cbc460faab94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
