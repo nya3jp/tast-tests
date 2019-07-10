@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47aefde4_26232a9c",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-10T02:11:31Z",
+      "side": 1,
+      "message": "Good catch!",
+      "range": {
+        "startLine": 249,
+        "startChar": 100,
+        "endLine": 249,
+        "endChar": 152
+      },
+      "revId": "5320a2df4b3a1fc2b29e1d843561e1eb778f13e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13745b42_b0717939",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-10T02:11:31Z",
+      "side": 1,
+      "message": "Could you inline 4*time.Minute here? See also my comment at the end of the file.",
+      "range": {
+        "startLine": 35,
+        "startChar": 16,
+        "endLine": 35,
+        "endChar": 23
+      },
+      "revId": "5320a2df4b3a1fc2b29e1d843561e1eb778f13e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd5fa079_4cae3eb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-10T02:11:31Z",
+      "side": 1,
+      "message": "\" is missing here",
+      "range": {
+        "startLine": 44,
+        "startChar": 38,
+        "endLine": 44,
+        "endChar": 40
+      },
+      "revId": "5320a2df4b3a1fc2b29e1d843561e1eb778f13e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "985d9d24_b4a882b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-10T02:11:31Z",
+      "side": 1,
+      "message": "style: ARCProvisioning\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 20
+      },
+      "revId": "5320a2df4b3a1fc2b29e1d843561e1eb778f13e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3311aeb_d76e0f84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-10T02:11:31Z",
+      "side": 1,
+      "message": "for _, pkg :\u003d range ...\n\nThen you can iterate values, not indices.",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 12
+      },
+      "revId": "5320a2df4b3a1fc2b29e1d843561e1eb778f13e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac716831_983b843f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-10T02:11:31Z",
+      "side": 1,
+      "message": "nit: I guess f is already []byte.",
+      "range": {
+        "startLine": 92,
+        "startChar": 26,
+        "endLine": 92,
+        "endChar": 35
+      },
+      "revId": "5320a2df4b3a1fc2b29e1d843561e1eb778f13e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7aab628_66402cc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-10T02:11:31Z",
+      "side": 1,
+      "message": "nit: Would you mind removing the mention of 4 minutes here? Such mention always gets out of sync.",
+      "range": {
+        "startLine": 98,
+        "startChar": 60,
+        "endLine": 98,
+        "endChar": 75
+      },
+      "revId": "5320a2df4b3a1fc2b29e1d843561e1eb778f13e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f70fe607_9ea6164b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-10T02:11:31Z",
+      "side": 1,
+      "message": "Since we get a list of all installed packages anyway, how about changing this function to wait for multiple packages for efficiency?",
+      "range": {
+        "startLine": 99,
+        "startChar": 5,
+        "endLine": 99,
+        "endChar": 19
+      },
+      "revId": "5320a2df4b3a1fc2b29e1d843561e1eb778f13e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61946c49_b243cac2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-10T02:11:31Z",
+      "side": 1,
+      "message": "by default, testing.Poll waits until the test timeout is hit, so we can replace this with nil.",
+      "range": {
+        "startLine": 125,
+        "startChar": 4,
+        "endLine": 125,
+        "endChar": 43
+      },
+      "revId": "5320a2df4b3a1fc2b29e1d843561e1eb778f13e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6abb5217_11dbb571",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/data/credentials.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-10T02:11:31Z",
+      "side": 1,
+      "message": "I guess this can cause public builders to fail due to missing files.\n\nCould you place enterprise.ARCProvisioning test to tast-tests-private repository for now? It is unfortunate to hide a test just because it needs credentials, but we don\u0027t have a good way now.",
+      "revId": "5320a2df4b3a1fc2b29e1d843561e1eb778f13e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
