@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4f244caa_80f0565e",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-10T15:31:05Z",
+      "side": 1,
+      "message": "either here, or outside is good for me as long as it gets documented.",
+      "parentUuid": "74bee71c_e27503db",
+      "revId": "283e05b2c94d4b5c52f7a58bb6b4ae67260f312d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ab4ec69_5e7f1bee",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/black_flash.go",
         "patchSetId": 2
