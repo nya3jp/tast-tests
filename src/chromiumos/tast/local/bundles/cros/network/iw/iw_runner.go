@@ -30,6 +30,13 @@ const (
 	securityMixed = "mixed"
 )
 
+// Band contains supported wireless band attributes.
+type Band struct {
+	Num            int
+	FrequencyFlags map[int][]string
+	McsIndicies    []int
+}
+
 // BSSData contains contents pertaining to a BSS response.
 type BSSData struct {
 	BSS       string
@@ -40,15 +47,105 @@ type BSSData struct {
 	Signal    float64
 }
 
+// NetDev contains interface attributes from `iw dev`.
+type NetDev struct {
+	Phy            int
+	IfName, IfType string
+}
+
+// Phy contains phy# attributes.
+type Phy struct {
+	Name                                      string
+	Bands                                     []Band
+	Modes, Commands, Features                 []string
+	RxAntenna, TxAntenna                      int
+	MaxScanSSIDs                              int
+	SupportVHT, SupportHT2040, SupportHT40SGI bool
+}
+
+// ChannelConfig contains the configuration data for a radio config.
+type ChannelConfig struct {
+	Number, Freq, Width, Center1Freq int
+}
+
+type sectionAttributes struct {
+	bands                                     []Band
+	phyModes, phyCommands                     []string
+	supportVHT, supportHT2040, supportHT40SGI bool
+}
+
 // TimedScanData contains the BSS responses from an `iw scan` and its execution time.
 type TimedScanData struct {
 	Time    time.Duration
 	BSSList []*BSSData
 }
 
-// ChannelConfig contains the configuration data for a radio config.
-type ChannelConfig struct {
-	Number, Freq, Width, Center1Freq int
+// GetInterfaceAttributes gets a single interface's attributes.
+func GetInterfaceAttributes(ctx context.Context, iface string) (*NetDev, error) {
+	matchIfs := []*NetDev{}
+	ifs, err := ListInterfaces(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "ListInterfaces failed")
+	}
+	for _, val := range ifs {
+		if val.IfName == iface {
+			matchIfs = append(matchIfs, val)
+		}
+	}
+	if len(matchIfs) != 1 {
+		return nil, errors.Errorf("could not find interface named %s", iface)
+	}
+	return matchIfs[0], nil
+}
+
+// ListInterfaces yields all the attributes (NetDev) for each interface.
+func ListInterfaces(ctx context.Context) ([]*NetDev, error) {
+	out, err := testexec.CommandContext(ctx, "iw", "dev").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "ListInterfaces failed")
+	}
+	interfaces := []*NetDev{}
+
+	ms, s, err := splitTextOnRegexMatches(`phy#([0-9]+)`, string(out))
+	if err != nil {
+		return nil, errors.Wrap(err, "could not parse netDev")
+	}
+	for i, phy := range ms {
+		ifaces, sections, err := splitTextOnRegexMatches(`[\s]*Interface (.*)`, s[i])
+		if err != nil {
+			return nil, errors.Wrap(err, "could not parse interface")
+		}
+		for i, iface := range ifaces {
+			netdev, err := newNetDev(phy, iface, sections[i])
+			if err != nil {
+				return nil, errors.Wrap(err, "could not extract interface attributes")
+			}
+			interfaces = append(interfaces, netdev)
+		}
+	}
+	return interfaces, nil
+}
+
+// ListPhys will return a Phy struct for each phy on the DUT.
+func ListPhys(ctx context.Context) ([]*Phy, error) {
+	out, err := testexec.CommandContext(ctx, "iw", "list").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "iw list failed")
+	}
+
+	ms, s, err := splitTextOnRegexMatches(`Wiphy (.*)`, string(out))
+	if err != nil {
+		return nil, errors.Wrap(err, "could not parse phys")
+	}
+	var phys []*Phy
+	for i, m := range ms {
+		phy, err := newPhy(m, s[i])
+		if err != nil {
+			return nil, errors.Wrap(err, "could not extract phy attributes")
+		}
+		phys = append(phys, phy)
+	}
+	return phys, nil
 }
 
 // TimedScan runs a scan on a specified interface and frequencies (if applicable).
@@ -203,6 +300,18 @@ func SetAntennaBitmap(ctx context.Context, phy string, txBitmap int, rxBitmap in
 	return nil
 }
 
+// determineSecurity determines the security level of a connection based on the
+// number of supported securities.
+func determineSecurity(secs []string) string {
+	if len(secs) == 0 {
+		return securityOpen
+	} else if len(secs) == 1 {
+		return secs[0]
+	} else {
+		return securityMixed
+	}
+}
+
 // getAllLinkKeys parses `link` or `station dump` output into key value pairs.
 func getAllLinkKeys(out string) map[string]string {
 	kv := make(map[string]string)
@@ -214,18 +323,6 @@ func getAllLinkKeys(out string) map[string]string {
 		}
 	}
 	return kv
-}
-
-// determineSecurity determines the security level of a connection based on the
-// number of supported securities.
-func determineSecurity(secs []string) string {
-	if len(secs) == 0 {
-		return securityOpen
-	} else if len(secs) == 1 {
-		return secs[0]
-	} else {
-		return securityMixed
-	}
 }
 
 // newBSSData is a factory method which constructs a BSSData from individual
@@ -300,22 +397,244 @@ func newBSSData(bssMatch string, dataMatch string) (*BSSData, error) {
 		Signal:    sig}, nil
 }
 
+// newNetDev is an internal factory method that constructs a NetDev struct
+// from each phy listed in `iw dev`.
+func newNetDev(phystr, ifName, dataMatch string) (*NetDev, error) {
+	// Parse phy number.
+	m := regexp.MustCompile(`phy#([0-9]+)`).FindStringSubmatch(phystr)
+	if len(m) != 2 {
+		return nil, errors.New("unexpected input when parsing phy number")
+	}
+	phy, err := strconv.Atoi(m[1])
+	if err != nil {
+		return nil, errors.Wrapf(err, "could not convert str %s to int", m[1])
+	}
+
+	// Parse ifType
+	m = regexp.MustCompile(`[\s]*type ([a-zA-Z]+)`).FindStringSubmatch(dataMatch)
+	if len(m) != 2 {
+		return nil, errors.New("unexpected input when parsing ifType")
+	}
+	ifType := m[1]
+	return &NetDev{Phy: phy, IfName: ifName, IfType: ifType}, nil
+}
+
+// newPhy is a factory method that constructs a Phy struct from `iw list` output.
+func newPhy(phyMatch string, dataMatch string) (*Phy, error) {
+	// Phy name handling.
+	m := regexp.MustCompile(`Wiphy (.*)`).FindStringSubmatch(phyMatch)
+	if len(m) != 2 {
+		return nil, errors.New("unexpected input when parsing name")
+	}
+	name := m[1]
+
+	// Antennae handling.
+	hexToInt := func(str string) (int, error) {
+		res, err := strconv.ParseInt(strings.Replace(str, "0x", "", -1), 16, 64)
+		if err != nil {
+			return 0, errors.Wrap(err, "could not parse hex string")
+		}
+		return int(res), nil
+	}
+	m = regexp.MustCompile(`\s*Available Antennas: TX (\S+) RX (\S+)`).FindStringSubmatch(dataMatch)
+	if len(m) != 3 {
+		return nil, errors.New("unexpected input when parsing antennas")
+	}
+	txAntenna, err := hexToInt(m[1])
+	if err != nil {
+		return nil, err
+	}
+	rxAntenna, err := hexToInt(m[2])
+	if err != nil {
+		return nil, err
+	}
+
+	// Device Support handling.
+	var phyFeatures []string
+	ms := regexp.MustCompile(`\s*Device supports (.*)\.`).FindAllStringSubmatch(dataMatch, -1)
+	for _, m := range ms {
+		phyFeatures = append(phyFeatures, m[1])
+	}
+
+	// Max Scan SSIDs handling.
+	m = regexp.MustCompile(`\s*max # scan SSIDs: (\d+)`).FindStringSubmatch(dataMatch)
+	if len(m) != 2 {
+		return nil, errors.New("could not find max scan SSIDs when parsing data")
+	}
+	maxScanSSIDs, err := strconv.Atoi(m[1])
+	if err != nil {
+		return nil, errors.Wrapf(err, "could not convert maxScanSSIDs %s to string", m[1])
+	}
+
+	// Handle parsing attributes that need to be handled on a section by section level.
+	// Sections are defined as blocks of text that are delimited by level 1 indent lines.
+	attrs, err := parseSectionSpecificAttributes(dataMatch)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not parse all sections in parseSectionSpecificAttributes")
+	}
+
+	return &Phy{
+		Name:           name,
+		Bands:          attrs.bands,
+		Modes:          attrs.phyModes,
+		Commands:       attrs.phyCommands,
+		Features:       phyFeatures,
+		RxAntenna:      rxAntenna,
+		TxAntenna:      txAntenna,
+		MaxScanSSIDs:   maxScanSSIDs,
+		SupportVHT:     attrs.supportVHT,
+		SupportHT2040:  attrs.supportHT2040,
+		SupportHT40SGI: attrs.supportHT40SGI,
+	}, nil
+}
+
 // parseScanResults parses the output of `scan` and `scan dump` commands into
 // a slice of BSSData structs.
 func parseScanResults(output string) ([]*BSSData, error) {
-	re := regexp.MustCompile(`BSS ([0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2}`)
-	matches := re.FindAllString(output, -1)
-	splits := re.Split(output, -1)
-	if len(splits) != len(matches)+1 {
-		return nil, errors.New("unexpected number of matches")
+	ms, s, err := splitTextOnRegexMatches(`BSS ([0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2}`, output)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not parse scan results")
 	}
 	var bssList []*BSSData
-	for i, m := range matches {
-		data, err := newBSSData(m, splits[i+1])
+	for i, m := range ms {
+		data, err := newBSSData(m, s[i])
 		if err != nil {
 			return nil, err
 		}
 		bssList = append(bssList, data)
 	}
 	return bssList, nil
+}
+
+func parseSectionSpecificAttributes(output string) (*sectionAttributes, error) {
+	attrs := sectionAttributes{}
+	parsers := []struct {
+		prefix string
+		parse  func(sectionName string, contents string) error
+	}{
+		{
+			prefix: "Band",
+			parse: func(sectionName string, contents string) error {
+				// This parser constructs a Band datastructure for the phy.
+				m := regexp.MustCompile(`^Band (\d+):$`).FindStringSubmatch(sectionName)
+				if len(m) != 2 {
+					return errors.New("unexpected input when parsing band")
+				}
+				num, err := strconv.Atoi(m[1])
+				if err != nil {
+					return errors.New("could not convert num to string")
+				}
+				currentBand := Band{num, make(map[int][]string), []int{}}
+				// Band rate handling.
+				ms := regexp.MustCompile(`HT TX/RX MCS rate indexes supported: .*\n`).FindAllStringSubmatch(contents, -1)
+				for _, m := range ms {
+					rateStr := strings.TrimSpace(strings.Split(m[0], ":")[1])
+					for _, piece := range strings.Split(rateStr, ",") {
+						if strings.Contains(piece, "-") {
+							res := strings.SplitN(piece, "-", 2)
+							begin, _ := strconv.Atoi(res[0])
+							end, _ := strconv.Atoi(res[1])
+							for i := begin; i < end+1; i++ {
+								currentBand.McsIndicies = append(currentBand.McsIndicies, i)
+							}
+
+						} else {
+							val, _ := strconv.Atoi(piece)
+							currentBand.McsIndicies = append(currentBand.McsIndicies, val)
+						}
+					}
+				}
+
+				// Band channel info handling.
+				r := regexp.MustCompile(`(?P<frequency>\d+) MHz (\[\d+\])(?: \(([0-9.]+ dBm)\))?(?: \((?P<flags>[a-zA-Z, ]+)\))?`)
+				ms = r.FindAllStringSubmatch(contents, -1)
+				var frequency int
+				for _, m := range ms {
+					for i, tag := range r.SubexpNames() {
+						if string(tag) == "frequency" {
+							frequency, err = strconv.Atoi(m[i])
+							if err != nil {
+								return errors.Wrapf(err, "could not convert frequency %s to string", m[i])
+							}
+						} else if string(tag) == "flags" {
+							flags := strings.Split(string(m[i]), ",")
+							if len(flags) > 0 && flags[0] != "" {
+								currentBand.FrequencyFlags[frequency] = flags
+							}
+
+						}
+					}
+				}
+				attrs.bands = append(attrs.bands, currentBand)
+				return nil
+			},
+		},
+		{
+			prefix: "Band",
+			parse: func(sectionName string, contents string) error {
+				// This parser evaluates the throughput capabilities of the phy.
+				if !attrs.supportVHT && strings.Contains(contents, "VHT Capabilities") {
+					attrs.supportVHT = true
+				}
+				if !attrs.supportHT2040 && strings.Contains(contents, "HT20/HT40") {
+					attrs.supportHT2040 = true
+				}
+				if !attrs.supportHT40SGI && strings.Contains(contents, "RX HT40 SGI") {
+					attrs.supportHT40SGI = true
+				}
+				return nil
+			},
+		},
+		{
+			prefix: "Supported interface modes",
+			parse: func(sectionName string, contents string) error {
+				// This parser checks the supported interface modes for the phy.
+				ms := regexp.MustCompile(`\* (\w+)`).FindAllStringSubmatch(contents, -1)
+				for _, m := range ms {
+					attrs.phyModes = append(attrs.phyModes, m[1])
+				}
+				return nil
+			},
+		},
+		{
+			prefix: "Supported commands",
+			parse: func(sectionName string, contents string) error {
+				// This parser checks the Phy's supported commands.
+				ms := regexp.MustCompile(`\* (\w+)`).FindAllStringSubmatch(contents, -1)
+				for _, m := range ms {
+					attrs.phyCommands = append(attrs.phyCommands, m[1])
+				}
+				return nil
+			},
+		},
+	}
+	ms, s, err := splitTextOnRegexMatches(`(?m)^\t(\w.*):\s*$`, output)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not parse sections")
+	}
+	// The following for loop will loop through sections with each parser,
+	// check if the parser is usable, and then parse the section.
+	// Results are stored in the struct.
+	for i, m := range ms {
+		m = strings.TrimSpace(m)
+		for _, parser := range parsers {
+			if strings.HasPrefix(m, parser.prefix) {
+				if err := parser.parse(m, s[i]); err != nil {
+					return nil, err
+				}
+			}
+		}
+	}
+	return &attrs, nil
+}
+
+func splitTextOnRegexMatches(regex, text string) (matches []string, sections []string, err error) {
+	r := regexp.MustCompile(regex)
+	matches = r.FindAllString(text, -1)
+	sections = r.Split(text, -1)
+	if len(sections) != len(matches)+1 {
+		return nil, nil, errors.New("unexpected number of matches")
+	}
+	sections = sections[1:]
+	return
 }
