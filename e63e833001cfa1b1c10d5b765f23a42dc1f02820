@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab57490a_53570e98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-10T08:30:32Z",
+      "side": 1,
+      "message": "Could you run a lint with CL:1679781?",
+      "revId": "e63e833001cfa1b1c10d5b765f23a42dc1f02820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
