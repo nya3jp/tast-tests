@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3136aea_ed37a20c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-07-10T17:02:17Z",
+      "side": 1,
+      "message": "s.Fatalf(\"Incorrect number of output lines: got %v; want 2; output is %q\", len(lines), string(b))",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 88
+      },
+      "revId": "b4bf4c2ccdaf483119a171c17d2c170b30cb1010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5d4f909_bb72c240",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-07-10T17:02:17Z",
+      "side": 1,
+      "message": "Does order of the header matter, if not use a set \u0027map[string]struct{}\u0027\n\nYou could even remove items from the set as you find them and report which items are missing.",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 158
+      },
+      "revId": "b4bf4c2ccdaf483119a171c17d2c170b30cb1010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5be0318_ca4da630",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-07-10T17:02:17Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to specify the length.",
+      "range": {
+        "startLine": 40,
+        "startChar": 20,
+        "endLine": 40,
+        "endChar": 21
+      },
+      "revId": "b4bf4c2ccdaf483119a171c17d2c170b30cb1010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a61f7d12_d9ec0dc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-07-10T17:02:17Z",
+      "side": 1,
+      "message": "Same here s.Fatalf and include got and want.",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 97
+      },
+      "revId": "b4bf4c2ccdaf483119a171c17d2c170b30cb1010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "130fd84e_2ddd0bbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-07-10T17:02:17Z",
+      "side": 1,
+      "message": "should you TrimSpace on ha?",
+      "range": {
+        "startLine": 48,
+        "startChar": 21,
+        "endLine": 48,
+        "endChar": 23
+      },
+      "revId": "b4bf4c2ccdaf483119a171c17d2c170b30cb1010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcea2f27_0b019f4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-07-10T17:02:17Z",
+      "side": 1,
+      "message": "s.Fatalf",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "b4bf4c2ccdaf483119a171c17d2c170b30cb1010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fdd6b4f_0623bbb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-07-10T17:02:17Z",
+      "side": 1,
+      "message": "here too",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 115
+      },
+      "revId": "b4bf4c2ccdaf483119a171c17d2c170b30cb1010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
