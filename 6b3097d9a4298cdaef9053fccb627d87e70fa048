@@ -45,6 +45,30 @@
       "revId": "6b3097d9a4298cdaef9053fccb627d87e70fa048",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b668cdbb_451d7743",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-07-10T22:50:15Z",
+      "side": 1,
+      "message": "actually it looks like we print all the IDs after each new tab is opened -- how about we just wait until all of them are open and then print it all once?  I don\u0027t see the advantage in printing multiple times.",
+      "parentUuid": "14cc7784_09e45968",
+      "range": {
+        "startLine": 986,
+        "startChar": 0,
+        "endLine": 991,
+        "endChar": 2
+      },
+      "revId": "6b3097d9a4298cdaef9053fccb627d87e70fa048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
