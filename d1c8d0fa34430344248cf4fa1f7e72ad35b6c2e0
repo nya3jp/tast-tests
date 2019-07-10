@@ -54,6 +54,75 @@
     },
     {
       "key": {
+        "uuid": "80822dea_d8319142",
+        "filename": "src/chromiumos/tast/local/gtest/report.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-10T02:27:24Z",
+      "side": 1,
+      "message": "nit: This is rather TODO?\n\nTODO: Consider supporting JSON output whose support was added in gtest 1.8.1. Note that XML output support was added in gtest 1.8.0.",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 18,
+        "endChar": 59
+      },
+      "revId": "d1c8d0fa34430344248cf4fa1f7e72ad35b6c2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f7ae0b1_0047209e",
+        "filename": "src/chromiumos/tast/local/gtest/report.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-10T02:27:24Z",
+      "side": 1,
+      "message": "nit: is found",
+      "range": {
+        "startLine": 43,
+        "startChar": 23,
+        "endLine": 43,
+        "endChar": 29
+      },
+      "revId": "d1c8d0fa34430344248cf4fa1f7e72ad35b6c2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42c75ea3_d380b30d",
+        "filename": "src/chromiumos/tast/local/gtest/report.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-10T02:27:24Z",
+      "side": 1,
+      "message": "nit: \"if returned value is used\" is technically correct statement but I\u0027m not sure worth mentioning (why callers don\u0027t use returned values at all?)\n\nI guess we can remove the whole sentence, \"This walks through ...\"",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 41
+      },
+      "revId": "d1c8d0fa34430344248cf4fa1f7e72ad35b6c2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d29b3a0b_72e08257",
         "filename": "src/chromiumos/tast/local/gtest/report.go",
         "patchSetId": 1
@@ -70,6 +139,75 @@
         "startChar": 17,
         "endLine": 46,
         "endChar": 25
+      },
+      "revId": "d1c8d0fa34430344248cf4fa1f7e72ad35b6c2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "165898c5_465dbf72",
+        "filename": "src/chromiumos/tast/local/gtest/report.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-10T02:27:24Z",
+      "side": 1,
+      "message": "nit: err contains path. maybe don\u0027t need to append path further.",
+      "range": {
+        "startLine": 62,
+        "startChar": 27,
+        "endLine": 63,
+        "endChar": 2
+      },
+      "revId": "d1c8d0fa34430344248cf4fa1f7e72ad35b6c2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cb04332_78ece5a7",
+        "filename": "src/chromiumos/tast/local/gtest/report_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-10T02:27:24Z",
+      "side": 1,
+      "message": "Please remove the directory on cleanup.",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 27
+      },
+      "revId": "d1c8d0fa34430344248cf4fa1f7e72ad35b6c2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9119301b_45f7d03c",
+        "filename": "src/chromiumos/tast/local/gtest/report_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-10T02:27:24Z",
+      "side": 1,
+      "message": "This is a large struct so please consider using cmp.Diff.",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 73
       },
       "revId": "d1c8d0fa34430344248cf4fa1f7e72ad35b6c2e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
