@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3952f68_a262309a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-07-10T02:27:13Z",
+      "side": 1,
+      "message": "nit: stray whitespace",
+      "revId": "0099f5659269d4f39574e801401a0c80c3e75d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84c7038b_b4ce848c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-07-10T02:27:13Z",
+      "side": 1,
+      "message": "this seems like it should just go into runparameters?",
+      "range": {
+        "startLine": 530,
+        "startChar": 56,
+        "endLine": 530,
+        "endChar": 69
+      },
+      "revId": "0099f5659269d4f39574e801401a0c80c3e75d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caab8a6f_56efee21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-07-10T02:27:13Z",
+      "side": 1,
+      "message": "doesn\u0027t seem necessary for the extension to work?",
+      "range": {
+        "startLine": 605,
+        "startChar": 1,
+        "endLine": 605,
+        "endChar": 56
+      },
+      "revId": "0099f5659269d4f39574e801401a0c80c3e75d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b14b2f21_21f30d51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-07-10T02:27:13Z",
+      "side": 1,
+      "message": "nit: stray whitespace here and below",
+      "range": {
+        "startLine": 738,
+        "startChar": 0,
+        "endLine": 738,
+        "endChar": 0
+      },
+      "revId": "0099f5659269d4f39574e801401a0c80c3e75d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1073a223_edeb2257",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-07-10T02:27:13Z",
+      "side": 1,
+      "message": "delete the commented out code",
+      "range": {
+        "startLine": 880,
+        "startChar": 0,
+        "endLine": 889,
+        "endChar": 4
+      },
+      "revId": "0099f5659269d4f39574e801401a0c80c3e75d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7d7e47d_0c7d8647",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 993,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-07-10T02:27:13Z",
+      "side": 1,
+      "message": "this seems repeated, should make it a separate function.",
+      "range": {
+        "startLine": 965,
+        "startChar": 0,
+        "endLine": 993,
+        "endChar": 2
+      },
+      "revId": "0099f5659269d4f39574e801401a0c80c3e75d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1370ec0_5360cdaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1167,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-07-10T02:27:13Z",
+      "side": 1,
+      "message": "looks unrelated?",
+      "range": {
+        "startLine": 1164,
+        "startChar": 0,
+        "endLine": 1167,
+        "endChar": 2
+      },
+      "revId": "0099f5659269d4f39574e801401a0c80c3e75d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
