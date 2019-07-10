@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "1ca0fc88_035d637d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-10T23:08:04Z",
+      "side": 1,
+      "message": "\u003e For example the test fails on betty.\n\nWell, betty obviously doesn\u0027t have WiFi. But we also never ran this test on Betty in Autotest. It\u0027s your fault that it\u0027s running on Betty in Tast :)\n\nThat suggests you should probably wire up SoftwareDeps for this, no? This can\u0027t possibly be the only test that\u0027s definitely not useful on VMs.",
+      "parentUuid": "e15101ac_991482e3",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "d5e057143703c12a4e47a42bafa1c16d69332b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb3d801e_d6fd00ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
         "patchSetId": 12
@@ -345,6 +369,30 @@
       "side": 1,
       "message": "Done. Thank you.\nIIUC, it is possible for the test to pass even if device or vendor files are missing, if the latter OF_COMPATIBLE_ matches, right?\nDo you know which board matches this case? I\u0027d like to run the test on the device.",
       "parentUuid": "4ef41953_f6db1431",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 2
+      },
+      "revId": "d5e057143703c12a4e47a42bafa1c16d69332b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40c15fc3_c43812cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-10T23:08:04Z",
+      "side": 1,
+      "message": "\u003e Do you know which board matches this case? I\u0027d like to run the test on the device.\n\nUnfortunately, that\u0027s only Cheza so far, and Cheza doesn\u0027t have working WiFi merged yet. So it\u0027s not easy for you to do.",
+      "parentUuid": "00326e62_aa160298",
       "range": {
         "startLine": 284,
         "startChar": 0,

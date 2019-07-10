@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "720d0ee9_292ca492",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-10T23:08:04Z",
+      "side": 1,
+      "message": "you\u0027re missing a verb in this clause. Maybe: \"; don\u0027t do this\"?",
+      "range": {
+        "startLine": 11,
+        "startChar": 32,
+        "endLine": 11,
+        "endChar": 46
+      },
+      "revId": "16cf85c80f1b660365cb3d863eeaae74536190c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a1f7628_05efa4cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-10T23:08:04Z",
+      "side": 1,
+      "message": "Missing features in Tast isn\u0027t exactly a good reason for this. I would not be surprised if we get additional test flake because you\u0027re skipping this. But I guess this test can just stay \"informational\" forever then...",
+      "range": {
+        "startLine": 11,
+        "startChar": 55,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "16cf85c80f1b660365cb3d863eeaae74536190c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "705fad59_4a8d7961",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-10T23:08:04Z",
+      "side": 1,
+      "message": "based",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 5
+      },
+      "revId": "16cf85c80f1b660365cb3d863eeaae74536190c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e49fd6c5_1dfa5ae6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-10T23:08:04Z",
+      "side": 1,
+      "message": "speak for yourself :) I believe I understand this -- I\u0027m not sure why you don\u0027t.",
+      "range": {
+        "startLine": 14,
+        "startChar": 55,
+        "endLine": 14,
+        "endChar": 68
+      },
+      "revId": "16cf85c80f1b660365cb3d863eeaae74536190c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fe98808_92f9a7ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-10T23:08:04Z",
+      "side": 1,
+      "message": "specificity",
+      "range": {
+        "startLine": 14,
+        "startChar": 34,
+        "endLine": 14,
+        "endChar": 44
+      },
+      "revId": "16cf85c80f1b660365cb3d863eeaae74536190c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e6cfe74_c6393685",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-10T23:08:04Z",
+      "side": 1,
+      "message": "do we actually need to log this? This is an expected case for a certain class of devices (integrated WiFi on some systems), and I thought it was expected that we generally avoid logging expected conditions.\n\nThat\u0027s not to say you *have* to remove this. I\u0027m just curious if we are supposed to have an opinionated stance on this.\n\nSame at line 300.",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 61
+      },
+      "revId": "16cf85c80f1b660365cb3d863eeaae74536190c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
