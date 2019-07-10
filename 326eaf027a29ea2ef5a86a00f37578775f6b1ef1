@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e03e4565_5651d89b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-10T13:00:21Z",
+      "side": 1,
+      "message": "nit/style: Could you fix indent?",
+      "revId": "326eaf027a29ea2ef5a86a00f37578775f6b1ef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19f5a367_9d591ea6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-10T13:00:21Z",
+      "side": 1,
+      "message": "Can be simplified by async/await?",
+      "range": {
+        "startLine": 95,
+        "startChar": 3,
+        "endLine": 103,
+        "endChar": 18
+      },
+      "revId": "326eaf027a29ea2ef5a86a00f37578775f6b1ef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "227b918d_d776f6df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-10T13:00:21Z",
+      "side": 1,
+      "message": "You can embed the value in the js code now.",
+      "range": {
+        "startLine": 105,
+        "startChar": 9,
+        "endLine": 106,
+        "endChar": 24
+      },
+      "revId": "326eaf027a29ea2ef5a86a00f37578775f6b1ef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c17806a_c4bd6b90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-10T13:00:21Z",
+      "side": 1,
+      "message": "The fatal log should be one line.\nBecause peerConnectionCode is now constant, could you just avoid printing it?",
+      "range": {
+        "startLine": 108,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 23
+      },
+      "revId": "326eaf027a29ea2ef5a86a00f37578775f6b1ef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06b89a3c_d8cde307",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-10T13:00:21Z",
+      "side": 1,
+      "message": "nit: could you use const?",
+      "revId": "326eaf027a29ea2ef5a86a00f37578775f6b1ef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f90fe9b7_1e5e7f44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-10T13:00:21Z",
+      "side": 1,
+      "message": "Clar: looks not average...?",
+      "revId": "326eaf027a29ea2ef5a86a00f37578775f6b1ef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2231312e_18f4022c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-10T13:00:21Z",
+      "side": 1,
+      "message": "optional: averageSum sounds weird...? Maybe just sum?",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 12
+      },
+      "revId": "326eaf027a29ea2ef5a86a00f37578775f6b1ef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abd84693_8681f54a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-10T13:00:21Z",
+      "side": 1,
+      "message": "style: in Tast, we wouldn\u0027t add line break.\nNote that there\u0027s no explicit line char limit.",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 76
+      },
+      "revId": "326eaf027a29ea2ef5a86a00f37578775f6b1ef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
