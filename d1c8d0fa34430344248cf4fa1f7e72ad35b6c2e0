@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "5ddcc069_719b664e",
+        "filename": "src/chromiumos/tast/local/chrome/bintest/bintest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-10T05:20:31Z",
+      "side": 1,
+      "message": "It\u0027s okay because we only use these messages for human checking.\n\nActually, \u0027.\u0027 looks better than \u0027/\u0027 because GoogleTest seems to format names like \"TestSuitesName/TestSuiteName.TestCaseName\".\nI think I misunderstood a name of list of test suites and a name of a test suite:P",
+      "parentUuid": "ae4e75b9_900ed86d",
+      "revId": "d1c8d0fa34430344248cf4fa1f7e72ad35b6c2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80822dea_d8319142",
         "filename": "src/chromiumos/tast/local/gtest/report.go",
         "patchSetId": 1
@@ -65,6 +83,30 @@
       "writtenOn": "2019-07-10T02:27:24Z",
       "side": 1,
       "message": "nit: This is rather TODO?\n\nTODO: Consider supporting JSON output whose support was added in gtest 1.8.1. Note that XML output support was added in gtest 1.8.0.",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 18,
+        "endChar": 59
+      },
+      "revId": "d1c8d0fa34430344248cf4fa1f7e72ad35b6c2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db715bba_3bb854ec",
+        "filename": "src/chromiumos/tast/local/gtest/report.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-10T05:20:31Z",
+      "side": 1,
+      "message": "Perhaps, TODO(crbug.com/940320)?",
+      "parentUuid": "80822dea_d8319142",
       "range": {
         "startLine": 17,
         "startChar": 9,
@@ -163,6 +205,63 @@
         "endLine": 63,
         "endChar": 2
       },
+      "revId": "d1c8d0fa34430344248cf4fa1f7e72ad35b6c2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adf0bffd_57e50913",
+        "filename": "src/chromiumos/tast/local/gtest/report.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-10T05:20:31Z",
+      "side": 1,
+      "message": "nit: XML",
+      "range": {
+        "startLine": 66,
+        "startChar": 54,
+        "endLine": 66,
+        "endChar": 57
+      },
+      "revId": "d1c8d0fa34430344248cf4fa1f7e72ad35b6c2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ef09fb8_868c0446",
+        "filename": "src/chromiumos/tast/local/gtest/report.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-10T05:20:31Z",
+      "side": 1,
+      "message": "we might want to contain \u0027path\u0027 in this error.",
+      "revId": "d1c8d0fa34430344248cf4fa1f7e72ad35b6c2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89a0d846_ed32cbfa",
+        "filename": "src/chromiumos/tast/local/gtest/report_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-10T05:20:31Z",
+      "side": 1,
+      "message": "optional: we might want to a commit hash in URL for future reference.",
       "revId": "d1c8d0fa34430344248cf4fa1f7e72ad35b6c2e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
