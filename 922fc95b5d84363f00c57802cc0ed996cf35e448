@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "385ed133_4da6b88f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-07-10T01:58:21Z",
+      "side": 1,
+      "message": "Ok added periods to all the comments.",
+      "parentUuid": "521f30ba_98edb9ea",
+      "range": {
+        "startLine": 33,
+        "startChar": 92,
+        "endLine": 33,
+        "endChar": 106
+      },
+      "revId": "922fc95b5d84363f00c57802cc0ed996cf35e448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f5a4dee6_a9c39e12",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "922fc95b5d84363f00c57802cc0ed996cf35e448",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e41b0656_2c561e14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-07-10T01:58:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5a4dee6_a9c39e12",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 20
+      },
+      "revId": "922fc95b5d84363f00c57802cc0ed996cf35e448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -119,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "dd339546_f339cbd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-07-10T01:58:21Z",
+      "side": 1,
+      "message": "Ok, I removed it.",
+      "parentUuid": "f7359ce3_928b2729",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 34
+      },
+      "revId": "922fc95b5d84363f00c57802cc0ed996cf35e448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d787ebf_ba18dea1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
         "patchSetId": 1
@@ -142,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "55f8502c_4e896d9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-07-10T01:58:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d787ebf_ba18dea1",
+      "range": {
+        "startLine": 69,
+        "startChar": 52,
+        "endLine": 69,
+        "endChar": 54
+      },
+      "revId": "922fc95b5d84363f00c57802cc0ed996cf35e448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "396db9a8_673e0cef",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
         "patchSetId": 1
@@ -153,6 +249,30 @@
       "writtenOn": "2019-07-01T00:36:31Z",
       "side": 1,
       "message": "arc.New guarantees the following:\n\n // After this function returns successfully, you can assume BOOT_COMPLETED\n // intent has been broadcast from Android system, and ADB connection is ready.\n // Note that this does not necessarily mean all ARC mojo services are up; call\n // WaitIntentHelper() to wait for ArcIntentHelper to be ready, for example.\n\nIs this timing enough to assume the CPU share is already set to cpuSharedArcBackground?",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 37
+      },
+      "revId": "922fc95b5d84363f00c57802cc0ed996cf35e448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "addec304_54d07c52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-07-10T01:58:21Z",
+      "side": 1,
+      "message": "I\u0027m not sure but at least it looks that way from my testing.  In Chrome I believe it happens when ArcInstanceThrottle gets created for the first time which happens in ArcBootPhaseMonitorBridge::OnArcInitialStart, but I\u0027m not sure when that happens relative to BOOT_COMPLETED.",
+      "parentUuid": "396db9a8_673e0cef",
       "range": {
         "startLine": 83,
         "startChar": 1,
@@ -236,6 +356,30 @@
     },
     {
       "key": {
+        "uuid": "c0638f80_608d79f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-07-10T01:58:21Z",
+      "side": 1,
+      "message": "Ok added a TODO above",
+      "parentUuid": "e54795da_2b956ab7",
+      "range": {
+        "startLine": 105,
+        "startChar": 17,
+        "endLine": 105,
+        "endChar": 39
+      },
+      "revId": "922fc95b5d84363f00c57802cc0ed996cf35e448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "44b42277_d4c7e8b6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
         "patchSetId": 1
@@ -286,6 +430,24 @@
       "revId": "922fc95b5d84363f00c57802cc0ed996cf35e448",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f757e2e_dc6ce03d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-07-10T01:58:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23547093_205d7631",
+      "revId": "922fc95b5d84363f00c57802cc0ed996cf35e448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
