@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "74bee71c_e27503db",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-10T02:14:28Z",
+      "side": 1,
+      "message": "Considering the usage and concept of the methods, how\u0027s just calling this in the caller?",
+      "revId": "283e05b2c94d4b5c52f7a58bb6b4ae67260f312d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ab4ec69_5e7f1bee",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/black_flash.go",
         "patchSetId": 2
