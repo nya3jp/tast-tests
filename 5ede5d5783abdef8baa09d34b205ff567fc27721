@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4571c25_085a296c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-10T11:44:25Z",
+      "side": 1,
+      "message": "DecodeAccelVDH264",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "5ede5d5783abdef8baa09d34b205ff567fc27721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd672cc8_6ed0c935",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-10T11:44:25Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 12,
+        "startChar": 11,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "5ede5d5783abdef8baa09d34b205ff567fc27721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7089c65f_1be4c2f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_h264.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-10T11:44:25Z",
+      "side": 1,
+      "message": "nit: \"VideoDecoder\" or \"VD interface\"? \nWe should emphasize that \"video decoder\" is not a common noun but proper noun here. It\u0027s not clear for persons in other teams.\n\nIt might be good to have a link to a document that explains what VD if exist.",
+      "range": {
+        "startLine": 19,
+        "startChar": 79,
+        "endLine": 19,
+        "endChar": 94
+      },
+      "revId": "5ede5d5783abdef8baa09d34b205ff567fc27721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
