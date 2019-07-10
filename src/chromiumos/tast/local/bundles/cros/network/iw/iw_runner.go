@@ -40,6 +40,12 @@ type BSSData struct {
 	Signal    float64
 }
 
+// NetDev contains interface attributes from `iw dev`
+type NetDev struct {
+	Phy            int
+	IfName, IfType string
+}
+
 // TimedScanData contains the BSS responses from an `iw scan` and its execution time.
 type TimedScanData struct {
 	Time    time.Duration
@@ -73,6 +79,78 @@ func TimedScan(ctx context.Context, iface string,
 		return nil, err
 	}
 	return &TimedScanData{scanTime, bssList}, nil
+}
+
+// GetInterfaceAttributes gets a single interface's attributes.
+func GetInterfaceAttributes(ctx context.Context, iface string) (*NetDev, error) {
+	matchIfs := []*NetDev{}
+	ifs, err := listInterfaces(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "listInterfaces failed")
+	}
+	for _, val := range ifs {
+		if val.IfName == iface {
+			matchIfs = append(matchIfs, val)
+		}
+	}
+	if len(matchIfs) != 1 {
+		return nil, errors.Errorf("Could not find interface named %s", iface)
+	}
+	return matchIfs[0], nil
+}
+
+// newNetDev is an internal factory method that constructs a NetDev struct
+// from each phy listed in `iw dev`.
+func newNetDev(phystr string, dataMatch string) (*NetDev, error) {
+	// Parse phy number.
+	phyMatch := regexp.MustCompile(`phy#([0-9]+)`)
+	m := phyMatch.FindStringSubmatch(phystr)
+	if len(m) != 2 {
+		return nil, errors.New("unexpected input when parsing phy number")
+	}
+	phy, err := strconv.Atoi(m[1])
+	if err != nil {
+		return nil, errors.Wrapf(err, "could not convert str %s to int", m[1])
+	}
+	// Parse ifName
+	ifNameMatch := regexp.MustCompile(`[\s]*Interface (.*)`)
+	m = ifNameMatch.FindStringSubmatch(dataMatch)
+	if len(m) != 2 {
+		return nil, errors.New("unexpected input when parsing ifName")
+	}
+	ifName := m[1]
+
+	// Parse ifType
+	ifTypeMatch := regexp.MustCompile(`[\s]*type ([a-zA-Z]+)`)
+	m = ifTypeMatch.FindStringSubmatch(dataMatch)
+	if len(m) != 2 {
+		return nil, errors.New("unexpected input when parsing ifType")
+	}
+	ifType := m[1]
+	return &NetDev{Phy: phy, IfName: ifName, IfType: ifType}, nil
+}
+
+// listInterfaces yields all the attributes (NetDev) for each interface.
+func listInterfaces(ctx context.Context) ([]*NetDev, error) {
+	out, err := testexec.CommandContext(ctx, "iw", "dev").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "listInterfaces failed")
+	}
+	interfaces := []*NetDev{}
+	r := regexp.MustCompile(`phy#([0-9]+)`)
+	matches := r.FindAllString(string(out), -1)
+	splits := r.Split(string(out), -1)
+	if len(splits) != len(matches)+1 {
+		return nil, errors.Wrap(err, "unexpected number of matches")
+	}
+	for i, m := range matches {
+		netdev, err := newNetDev(m, splits[i+1])
+		if err != nil {
+			return nil, errors.Wrap(err, "could not extract interface attributes")
+		}
+		interfaces = append(interfaces, netdev)
+	}
+	return interfaces, nil
 }
 
 // getAllLinkKeys parses `link` or `station dump` output into key value pairs.
