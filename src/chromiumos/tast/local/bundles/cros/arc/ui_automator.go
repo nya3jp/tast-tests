@@ -18,7 +18,7 @@ func init() {
 		Func:         UIAutomator,
 		Desc:         "Sample test to manipulate an app with UI automator",
 		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
-		SoftwareDeps: []string{"android", "chrome"},
+		SoftwareDeps: []string{"android_both", "chrome"},
 		Data:         []string{"todo-mvp.apk"},
 		Pre:          arc.Booted(),
 		Timeout:      4 * time.Minute,
