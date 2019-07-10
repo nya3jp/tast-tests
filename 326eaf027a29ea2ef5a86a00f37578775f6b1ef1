@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ae71c69c_618530bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-10T18:29:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e03e4565_5651d89b",
+      "revId": "326eaf027a29ea2ef5a86a00f37578775f6b1ef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19f5a367_9d591ea6",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
         "patchSetId": 13
@@ -30,6 +48,30 @@
       "writtenOn": "2019-07-10T13:00:21Z",
       "side": 1,
       "message": "Can be simplified by async/await?",
+      "range": {
+        "startLine": 95,
+        "startChar": 3,
+        "endLine": 103,
+        "endChar": 18
+      },
+      "revId": "326eaf027a29ea2ef5a86a00f37578775f6b1ef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2b1deff_5f89aacd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-10T18:29:39Z",
+      "side": 1,
+      "message": "I tried and it looks very similar bc most of these functions/methods return\nPromises anyway:\n\n\ttry {\n\t\tconst stream \u003d await navigator.mediaDevices.getUserMedia(constraints);\n\t\tpc1.addStream(stream);\n\t\tconst offer \u003d await pc1.createOffer(offerOptions);\n\t\tawait pc1.setLocalDescription(offer);\n\t\tawait pc2.setRemoteDescription(pc1.localDescription);\n\t\tawait pc2.createAnswer();\n\t\tawait pc2.setLocalDescription(offer);\n\t\tawait pc1.setRemoteDescription(pc2.localDescription);\n\t} catch (reject);\n\nand it forces me to add an async intermediate function since await cannot\nbe used inside a Promise. I think it\u0027s not clearer. \nAlso re-reading the documentation of addStream(), it seems to be deprecated,\nso corrected with the more modern addTracks().",
+      "parentUuid": "19f5a367_9d591ea6",
       "range": {
         "startLine": 95,
         "startChar": 3,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "f9a1aea2_680b8154",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-10T18:29:39Z",
+      "side": 1,
+      "message": "Done. I was somehow thinking about parameterising this but we can do\nthat when the need arises.",
+      "parentUuid": "227b918d_d776f6df",
+      "range": {
+        "startLine": 105,
+        "startChar": 9,
+        "endLine": 106,
+        "endChar": 24
+      },
+      "revId": "326eaf027a29ea2ef5a86a00f37578775f6b1ef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c17806a_c4bd6b90",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
         "patchSetId": 13
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "9f3248a7_22ae0ada",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-10T18:29:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c17806a_c4bd6b90",
+      "range": {
+        "startLine": 108,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 23
+      },
+      "revId": "326eaf027a29ea2ef5a86a00f37578775f6b1ef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06b89a3c_d8cde307",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
         "patchSetId": 13
@@ -105,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "7dd45e8b_8cef28c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-10T18:29:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06b89a3c_d8cde307",
+      "revId": "326eaf027a29ea2ef5a86a00f37578775f6b1ef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f90fe9b7_1e5e7f44",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
         "patchSetId": 13
@@ -119,6 +227,24 @@
       "revId": "326eaf027a29ea2ef5a86a00f37578775f6b1ef1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7f0dfd2_bc44f9d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-10T18:29:39Z",
+      "side": 1,
+      "message": "Oops this was a bug. I wanted to calculate |bucketAverage| here to \nappend it |bucket.Count| times to the perfValues in l.149. Corrected.",
+      "parentUuid": "f90fe9b7_1e5e7f44",
+      "revId": "326eaf027a29ea2ef5a86a00f37578775f6b1ef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -145,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "cdd38bac_d52a136a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-10T18:29:39Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "2231312e_18f4022c",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 12
+      },
+      "revId": "326eaf027a29ea2ef5a86a00f37578775f6b1ef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abd84693_8681f54a",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
         "patchSetId": 13
@@ -165,6 +315,30 @@
       "revId": "326eaf027a29ea2ef5a86a00f37578775f6b1ef1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc2fdc49_b8d361f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-10T18:29:39Z",
+      "side": 1,
+      "message": "Gotcha, thanks!",
+      "parentUuid": "abd84693_8681f54a",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 76
+      },
+      "revId": "326eaf027a29ea2ef5a86a00f37578775f6b1ef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
