@@ -16,6 +16,7 @@ import (
 	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/local/bundles/cros/platform/crash"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -86,6 +87,29 @@ func testReporterStartup(ctx context.Context, s *testing.State) {
 	}
 }
 
+// testReporterShutdown tests the crash_reporter shutdown code work.
+func testReporterShutdown(ctx context.Context, s *testing.State) {
+	if err := testexec.CommandContext(ctx, crash.CrashReporterPath, "--clean_shutdown").Run(); err != nil {
+		s.Error("Failed to shut down crash reporter: ", err)
+		return
+	}
+	out, err := ioutil.ReadFile(crash.CorePattern)
+	if err != nil {
+		s.Error("Failed to read core pattern file: ", err)
+		return
+	}
+
+	// For older kernels (<= 3.18), a sysctl exists to lock the core
+	// pattern from further modifications.
+	f, err := os.Stat(crash.CorePattern)
+	if err == nil && f.Mode().IsRegular() {
+		if trimmed := strings.TrimSpace(string(out)); trimmed != "core" {
+			s.Errorf("Unexpected core pattern: got %q, want \"core\"", trimmed)
+			return
+		}
+	}
+}
+
 func UserCrash(ctx context.Context, s *testing.State) {
 	if err := upstart.RestartJob(ctx, "ui"); err != nil {
 		s.Fatal("Failed to restart UI job")
@@ -96,5 +120,8 @@ func UserCrash(ctx context.Context, s *testing.State) {
 	// crash.RunCrashTests(ctx, s, []func(context.Context, *testing.State){testReporterStartup}, false)
 
 	// Run all tests.
-	crash.RunCrashTests(ctx, s, []func(context.Context, *testing.State){testReporterStartup}, true)
+	crash.RunCrashTests(ctx, s, []func(context.Context, *testing.State){
+		testReporterStartup,
+		testReporterShutdown,
+	}, true)
 }
