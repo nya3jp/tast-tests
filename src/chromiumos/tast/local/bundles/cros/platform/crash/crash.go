@@ -808,3 +808,17 @@ func RunCrashTests(ctx context.Context, s *testing.State, testFuncList []func(co
 		runCrashTest(ctx, s, f, initialize)
 	}
 }
+
+// InitializeCrashReporter starts up the crash reporter.
+func InitializeCrashReporter(ctx context.Context) error {
+	cmd := testexec.CommandContext(ctx, CrashReporterPath, "--init")
+	if err := cmd.Run(); err != nil {
+		cmd.DumpLog(ctx)
+		return err
+	}
+	// Completely disable crash_reporter from generating crash dumps
+	// while any tests are running, otherwise a crashy system can make
+	// these tests flaky.
+	replaceCrashFilterIn("none")
+	return nil
+}
