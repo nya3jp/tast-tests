@@ -89,6 +89,7 @@ type arcMode int
 const (
 	arcDisabled arcMode = iota
 	arcEnabled
+	arcSupported // ARC is supported and can be launched by user policy
 )
 
 // loginMode describes the user mode for the login.
@@ -159,9 +160,16 @@ func FetchPolicy() option {
 }
 
 // ARCEnabled returns an option that can be passed to New to enable ARC (without Play Store)
-// for the user session.
+// for the user session with mock GAIA account.
 func ARCEnabled() option {
 	return func(c *Chrome) { c.arcMode = arcEnabled }
+}
+
+// ARCSupported returns an option that can be passed to New to allow to enable ARC with Play Store gaia opt-in for the user
+// session with real GAIA account.
+// In this case ARC is not launched by default and is required to be launched by user policy or from UI.
+func ARCSupported() option {
+	return func(c *Chrome) { c.arcMode = arcSupported }
 }
 
 // RestrictARCCPU returns an option that can be passed to New which controls whether
@@ -525,6 +533,9 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 				// Disable CPU restrictions to let tests run faster
 				"--disable-arc-cpu-restriction")
 		}
+	case arcSupported:
+		// Allow ARC being enabled on the device to test ARC with real gaia accounts.
+		args = append(args, "--arc-availability=officially-supported")
 	}
 	args = append(args, c.extraArgs...)
 	envVars := []string{
