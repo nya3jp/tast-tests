@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "85eed656_a29ddca3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-11T04:54:46Z",
+      "side": 1,
+      "message": "style: to be more compatible with the existing test;\n\n\"Incorrect number of output lines: got %d; want 2\", len(lines)\n\nSpecifically, it is encouraged not to output (possibly) multi-line fatal error logs.\nIf needed, could you dump the content into a file, and log the file name?",
+      "parentUuid": "e3136aea_ed37a20c",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 88
+      },
+      "revId": "b4bf4c2ccdaf483119a171c17d2c170b30cb1010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c5d4f909_bb72c240",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
         "patchSetId": 2
@@ -64,6 +88,29 @@
         "startChar": 20,
         "endLine": 40,
         "endChar": 21
+      },
+      "revId": "b4bf4c2ccdaf483119a171c17d2c170b30cb1010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d38ee1db_875d38e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-11T04:54:46Z",
+      "side": 1,
+      "message": "What\u0027s the purpose of TrimSpace? Does lines have leading or trailing white spaces?\nNice to be comment the format a bit more details.",
+      "range": {
+        "startLine": 41,
+        "startChar": 31,
+        "endLine": 41,
+        "endChar": 58
       },
       "revId": "b4bf4c2ccdaf483119a171c17d2c170b30cb1010",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
