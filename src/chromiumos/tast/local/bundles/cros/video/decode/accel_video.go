@@ -337,7 +337,11 @@ func RunAllAccelVideoTest(ctx context.Context, s *testing.State, testData TestVi
 }
 
 // RunAccelVideoSanityTest runs NoCrash test in video_decode_accelerator_unittest.
-// NoCrash test only fails if video decoder accelerator crashes.
+// NoCrash test fails if video decoder's kernel driver crashes.
+// The motivation of the sanity test: on certain devices, when playing VP9
+// profile 1 or 3, the kernel crashed. Though the profile was not supported
+// by the decoder, kernel driver should not crash in any circumstances.
+// Refer to https://crbug.com/951189 for more detail.
 func RunAccelVideoSanityTest(ctx context.Context, s *testing.State, testData TestVideoData) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
