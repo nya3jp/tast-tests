@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "27c01d15_1d76545f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-07-11T12:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "401cdbcc_2b992feb",
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3363ad40_ff7f4954",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
         "patchSetId": 4
@@ -57,6 +75,30 @@
       "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9af0117f_ee8448dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-07-11T12:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3363ad40_ff7f4954",
+      "range": {
+        "startLine": 23,
+        "startChar": 15,
+        "endLine": 23,
+        "endChar": 72
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -130,6 +172,30 @@
     },
     {
       "key": {
+        "uuid": "61e31e0b_e64de477",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-07-11T12:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4e321e0_646f7a3c",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 0
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bdcd414_8310c677",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
         "patchSetId": 4
@@ -150,6 +216,30 @@
       "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59364aff_3d21d98f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-07-11T12:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bdcd414_8310c677",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 7
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -176,6 +266,30 @@
     },
     {
       "key": {
+        "uuid": "88f55db0_e7d965b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-07-11T12:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1b1f6b3_1cb8aee7",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 10
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "993a296a_5437cc2b",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
         "patchSetId": 4
@@ -196,6 +310,30 @@
       "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bd74ed5_0784bcd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-07-11T12:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "993a296a_5437cc2b",
+      "range": {
+        "startLine": 51,
+        "startChar": 18,
+        "endLine": 51,
+        "endChar": 21
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -222,6 +360,30 @@
     },
     {
       "key": {
+        "uuid": "dec6ed71_d6954aea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-07-11T12:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d40858df_620e86ae",
+      "range": {
+        "startLine": 55,
+        "startChar": 40,
+        "endLine": 55,
+        "endChar": 42
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64699a04_71a67ca4",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
         "patchSetId": 4
@@ -242,6 +404,30 @@
       "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1293fe99_9cc1f33c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-07-11T12:17:03Z",
+      "side": 1,
+      "message": "I rewrite the logic to install the app automatically. Thanks to chrome.automation.* API, now I can click the \"Add extension\" native button.",
+      "parentUuid": "64699a04_71a67ca4",
+      "range": {
+        "startLine": 56,
+        "startChar": 36,
+        "endLine": 56,
+        "endChar": 40
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -268,6 +454,30 @@
     },
     {
       "key": {
+        "uuid": "e0ad032e_56ba424d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-07-11T12:17:03Z",
+      "side": 1,
+      "message": "Thanks for catching this. It\u0027s always hard to write JS in go lol.",
+      "parentUuid": "551ef438_7d3e99f6",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 12
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eac048fa_f6ff8f70",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
         "patchSetId": 4
@@ -288,6 +498,30 @@
       "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "946b0b59_adee105d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-07-11T12:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eac048fa_f6ff8f70",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 9
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -314,6 +548,30 @@
     },
     {
       "key": {
+        "uuid": "85910ab6_a5b4f700",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-07-11T12:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5246d3eb_f92aa1f4",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 11
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfb3ba17_b37739ae",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
         "patchSetId": 4
@@ -334,6 +592,30 @@
       "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b788d98_25d6e048",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-07-11T12:17:03Z",
+      "side": 1,
+      "message": "It works!",
+      "parentUuid": "bfb3ba17_b37739ae",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 83
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -360,6 +642,30 @@
     },
     {
       "key": {
+        "uuid": "a0d4ff12_333d54b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-07-11T12:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ecf7b0a_5ac2ce09",
+      "range": {
+        "startLine": 141,
+        "startChar": 2,
+        "endLine": 141,
+        "endChar": 20
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1407f98_a46701f3",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
         "patchSetId": 4
@@ -383,6 +689,30 @@
     },
     {
       "key": {
+        "uuid": "eedfdd8b_9f1ea017",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-07-11T12:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1407f98_a46701f3",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 20
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bf7ef5b_619994e4",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
         "patchSetId": 4
@@ -403,6 +733,30 @@
       "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27e748c7_4ca326a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-07-11T12:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bf7ef5b_619994e4",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 18
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
