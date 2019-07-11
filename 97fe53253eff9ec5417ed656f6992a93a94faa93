@@ -19,6 +19,47 @@
     },
     {
       "key": {
+        "uuid": "401cdbcc_2b992feb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-11T03:10:50Z",
+      "side": 1,
+      "message": "Yes, creating a new category package sounds good to me. \"dev\" sounds fine!",
+      "parentUuid": "94c37636_577ebdd3",
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3363ad40_ff7f4954",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-11T03:10:50Z",
+      "side": 1,
+      "message": "This is interesting approach!\n\nIIUC to use this test we need a test GAIA account with CRD installed, right? How about writing a brief doc as a comment about how to use this test?",
+      "range": {
+        "startLine": 23,
+        "startChar": 15,
+        "endLine": 23,
+        "endChar": 72
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "643b9c80_bfa56d48",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
         "patchSetId": 4
@@ -35,6 +76,329 @@
         "startChar": 26,
         "endLine": 25,
         "endChar": 34
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8d57dbf_d2c23ac7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-11T03:10:50Z",
+      "side": 1,
+      "message": "Sorry about the false negative! Yes, we should allow disabled tests too. Filed a bug to track this issue: https://bugs.chromium.org/p/chromium/issues/detail?id\u003d983002",
+      "parentUuid": "643b9c80_bfa56d48",
+      "range": {
+        "startLine": 25,
+        "startChar": 26,
+        "endLine": 25,
+        "endChar": 34
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4e321e0_646f7a3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-11T03:10:50Z",
+      "side": 1,
+      "message": "Could you add a brief comment about what they are?\n\nAnd nit:\n\n const (\n   appID \u003d \"...\"\n   appCWSURL \u003d \"...\"\n )",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 0
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bdcd414_8310c677",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-11T03:10:50Z",
+      "side": 1,
+      "message": "huge nit: const",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 7
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1b1f6b3_1cb8aee7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-11T03:10:50Z",
+      "side": 1,
+      "message": "reject is not defined.",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 10
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "993a296a_5437cc2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-11T03:10:50Z",
+      "side": 1,
+      "message": "nit: \u003d\u003d\u003d and !\u003d\u003d are always recommended in JS for better semantics.",
+      "range": {
+        "startLine": 51,
+        "startChar": 18,
+        "endLine": 51,
+        "endChar": 21
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d40858df_620e86ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-11T03:10:50Z",
+      "side": 1,
+      "message": "ditto: \u003d\u003d\u003d",
+      "range": {
+        "startLine": 55,
+        "startChar": 40,
+        "endLine": 55,
+        "endChar": 42
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64699a04_71a67ca4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-11T03:10:50Z",
+      "side": 1,
+      "message": "5 seconds sounds a bit short to me. Is it okay realistically?",
+      "range": {
+        "startLine": 56,
+        "startChar": 36,
+        "endLine": 56,
+        "endChar": 40
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "551ef438_7d3e99f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-11T03:10:50Z",
+      "side": 1,
+      "message": "Indentation here looks strange (I guess 4 tab is assumed?)",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 12
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eac048fa_f6ff8f70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-11T03:10:50Z",
+      "side": 1,
+      "message": "nit: const waitIdle \u003d ...\n\nSame for others.",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 9
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5246d3eb_f92aa1f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-11T03:10:50Z",
+      "side": 1,
+      "message": "nit: When the initial value is not meaningful, I recommend declaring a variable with var to clarify it. That is:\n\n var code string",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 11
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfb3ba17_b37739ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-11T03:10:50Z",
+      "side": 1,
+      "message": "Does the input package work? (See example.Keyboard test)\n\nIf it does not work, would you mind leaving a comment?",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 83
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ecf7b0a_5ac2ce09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-11T03:10:50Z",
+      "side": 1,
+      "message": "Same here: var connected bool",
+      "range": {
+        "startLine": 141,
+        "startChar": 2,
+        "endLine": 141,
+        "endChar": 20
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1407f98_a46701f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-11T03:10:50Z",
+      "side": 1,
+      "message": "TestAPIConn should not be closed.\n\n// TestAPIConn returns a shared connection to the test API extension\u0027s\n// background page (which can be used to access various APIs). The connection is\n// lazily created, and this function will block until the extension is loaded or\n// ctx\u0027s deadline is reached. The caller should not close the returned\n// connection; it will be closed automatically by Close.",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 20
+      },
+      "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bf7ef5b_619994e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/remote_desktop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-11T03:10:50Z",
+      "side": 1,
+      "message": "This should be done just after launch().",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 18
       },
       "revId": "97fe53253eff9ec5417ed656f6992a93a94faa93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
