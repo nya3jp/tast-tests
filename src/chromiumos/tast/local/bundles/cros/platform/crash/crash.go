@@ -10,15 +10,26 @@ package crash
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"os"
+	"regexp"
+	"strconv"
+	"strings"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/sysutil"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
 const (
+	// CorePattern is the full path of the core pattern file.
+	CorePattern = "/proc/sys/kernel/core_pattern"
+
+	// CrashReporterPath is the full path of the crash reporter binary.
+	CrashReporterPath = "/sbin/crash_reporter"
 	// MockMetricsOnPolicyFile is the name of the mock data file to indicate
 	// having consent to send crash reports.
 	// A test which calls SetConsent should load this file.
@@ -29,6 +40,45 @@ const (
 	// A test which calls SetConsent should load this file.
 	MockMetricsOwnerKeyFile = "crash_tests_mock_metrics_owner.key"
 )
+
+// replaceCrashFilterIn replaces --filter_in= flag value of the crash reporter.
+// When param is an empty string, the flag will be removed.
+// The kernel is set up to call the crash reporter with the core dump as stdin
+// when a process dies. This function adds a filter to the command line used to
+// call the crash reporter. This is used to ignore crashes in which we have no
+// interest. The order of the commandline arguments will not be preserved.
+func replaceCrashFilterIn(param string) error {
+	var fileInfo os.FileInfo
+	var err error
+	if fileInfo, err = os.Stat(CorePattern); err != nil {
+		return errors.Wrapf(err, "failed getting core patern file info %s", CorePattern)
+	}
+	var b []byte
+	if b, err = ioutil.ReadFile(CorePattern); err != nil {
+		return errors.Wrapf(err, "failed reading core pattern file %s", CorePattern)
+	}
+	pattern := string(b)
+	if !strings.HasPrefix(pattern, "|") {
+		return errors.Wrapf(err, "pattern should start with '|', but was: %s", pattern)
+	}
+	re := regexp.MustCompile(`--filter_in=\S*\s*`)
+	pattern = strings.TrimSpace(re.ReplaceAllString(pattern, ""))
+	if len(param) != 0 {
+		pattern = fmt.Sprintf("%s --filter_in=%s", pattern, strconv.Quote(param))
+	}
+
+	if err := ioutil.WriteFile(CorePattern, []byte(pattern), fileInfo.Mode().Perm()); err != nil {
+		return errors.Wrapf(err, "failed writing core pattern file %s", CorePattern)
+	}
+	return nil
+}
+
+// DisableCrashFiltering removes the --filter_in argument from the kernel core dump cmdline.
+// Next time the crash reporter is invoked (due to a crash) it will not receive a
+// --filter_in paramter.
+func DisableCrashFiltering() error {
+	return replaceCrashFilterIn("")
+}
 
 // SetConsent emulates the state where we have consent to send crash reports.
 // This creates the file to control whether crash_sender will consider that it
@@ -68,5 +118,19 @@ func SetConsent(ctx context.Context, mockPolicyFilePath string, mockKeyFilePath 
 		return err
 	}
 	testing.ContextLog(ctx, "Created ", consentFile)
+	return nil
+}
+
+// InitializeCrashReporter starts up the crash reporter.
+func InitializeCrashReporter(ctx context.Context) error {
+	cmd := testexec.CommandContext(ctx, CrashReporterPath, "--init")
+	if err := cmd.Run(); err != nil {
+		cmd.DumpLog(ctx)
+		return err
+	}
+	// Completely disable crash_reporter from generating crash dumps
+	// while any tests are running, otherwise a crashy system can make
+	// these tests flaky.
+	replaceCrashFilterIn("none")
 	return nil
 }
