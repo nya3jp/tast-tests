@@ -49,6 +49,46 @@
     },
     {
       "key": {
+        "uuid": "38d83993_64be6cc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-11T05:14:42Z",
+      "side": 1,
+      "message": "I\u0027d recommend using table driven test to avoid repetitive code.\nhttps://github.com/golang/go/wiki/TableDrivenTests#introduction\n\nThis would look something like:\n\nfor _, tc :\u003d []struct {\n  desk string\n  window string\n  want bool\n} {\n {\n    desk: \"Desk_Container_B\",\n    window: \"ExoShellSurface\",\n    want: true\n },\n ...\n} {\n  if got, err :\u003d deskContainsWindow(ctx, tconn, tc.desk, tc.window); err !\u003d nil {\n    s.Fatal(\"deskContainsWindow Failed: \", err)\n  } else if got !\u003d tc.want {\n    if tc.want {\n      s.Errorf(\"...\", tc.desk, tc.window)\n    } else {\n      s.Errorf(...)\n    }\n  }\n}",
+      "revId": "be948b8ff87eaefed455f2ad4327ca18ae8698e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0b77ec1_a348f382",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-11T05:14:42Z",
+      "side": 1,
+      "message": "Could you change this to s.Error?\nFatal immediately stops the test when called. It looks continuing to the next case makes sense here.",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 45
+      },
+      "revId": "be948b8ff87eaefed455f2ad4327ca18ae8698e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e4c7d06_ae7ae902",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
         "patchSetId": 5
