@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
@@ -41,6 +42,12 @@ func init() {
 	})
 }
 
+func umountRoot(ctx context.Context, s *testing.State) {
+	if err := testexec.CommandContext(ctx, "umount", "/root").Run(testexec.DumpLogOnError); err != nil {
+		s.Error("Failed to unmount: ", err)
+	}
+}
+
 // testReporterStartup tests that the core_pattern is set up by crash reporter.
 func testReporterStartup(ctx context.Context, s *testing.State) {
 	// Turn off crash filtering so we see the original setting.
@@ -56,7 +63,7 @@ func testReporterStartup(ctx context.Context, s *testing.State) {
 	trimmed := strings.TrimSuffix(string(out), "\n")
 	expectedCorePattern := fmt.Sprintf("|%s --user=%%P:%%s:%%u:%%g:%%e", crash.CrashReporterPath)
 	if trimmed != expectedCorePattern {
-		s.Errorf("Unexpected core_pattern: got %s, want %s", trimmed, expectedCorePattern)
+		s.Errorf("core pattern should have been %s, not %s", expectedCorePattern, trimmed)
 	}
 
 	// Check that we wrote out the file indicating that crash_reporter is
@@ -81,6 +88,42 @@ func testReporterStartup(ctx context.Context, s *testing.State) {
 	}
 	if flagTime > time.Duration(uptimeSeconds)*time.Second {
 		s.Error("User space crash handling was not started during last boot")
+	}
+
+	// Find log line of crash_reporter during the last boot.
+	cmd := testexec.CommandContext(ctx, "journalctl", "-b", "0", "-q",
+		"-t", "crash_reporter", "-g", "Enabling user crash handling")
+	out, err = cmd.Output()
+	if err != nil {
+		s.Fatal("Failed to execute and get output result of journalctl: ", err)
+	}
+	if len(out) == 0 {
+		s.Error("user space crash handling was not started during last boot")
+	}
+}
+
+// testCoreFileRemovedInProduction tests core files do not stick around for production builds.
+func testCoreFileRemovedInProduction(ctx context.Context, s *testing.State) {
+	// Avoid remounting / rw by instead creating a tmpfs in /root and
+	// populating it with everything but the
+	for _, args := range [][]string{
+		{"tar", "-cvz", "-C", "/root", "-f", "/tmp/root.tgz", "."},
+		{"mount", "-t", "tmpfs", "tmpfs", "/root"},
+	} {
+		if err := testexec.CommandContext(ctx, args[0], args[1:]...).Run(); err != nil {
+			s.Fatalf("%s failed: %v", shutil.EscapeSlice(args), err)
+		}
+	}
+	defer umountRoot(ctx, s)
+	args := []string{"tar", "-xvz", "-C", "/root", "-f", "/tmp/root.tgz", "."}
+	if err := testexec.CommandContext(ctx, args[0], args[1:]...).Run(); err != nil {
+		s.Fatalf("%s failed: %v", shutil.EscapeSlice(args), err)
+	}
+	if err := os.Remove(leaveCorePath); err != nil {
+		s.Fatal("Failed to remove .leave_core: ", err)
+	}
+	if _, err := os.Stat(leaveCorePath); err == nil {
+		s.Fatal(".leave_core file did not disappear")
 	}
 }
 
@@ -209,6 +252,7 @@ func UserCrash(ctx context.Context, s *testing.State) {
 	// Run all tests.
 	crash.RunCrashTests(ctx, s, []func(context.Context, *testing.State){
 		testReporterStartup,
+		testCoreFileRemovedInProduction,
 		testReporterShutdown,
 		testNoCrash,
 		testChronosCrasher,
