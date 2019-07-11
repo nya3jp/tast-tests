@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eedc75e6_8e579a14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-11T02:32:52Z",
+      "side": 1,
+      "message": "drop \u0027in\u0027",
+      "range": {
+        "startLine": 10,
+        "startChar": 33,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "5d0a0b083e792a837999c165142eb7cd84183a06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afaa2d97_e03fd4cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-11T02:32:52Z",
+      "side": 1,
+      "message": "kernel",
+      "range": {
+        "startLine": 340,
+        "startChar": 41,
+        "endLine": 340,
+        "endChar": 47
+      },
+      "revId": "5d0a0b083e792a837999c165142eb7cd84183a06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aba3e34f_ea2a042c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-11T02:32:52Z",
+      "side": 1,
+      "message": "devices",
+      "range": {
+        "startLine": 341,
+        "startChar": 49,
+        "endLine": 341,
+        "endChar": 55
+      },
+      "revId": "5d0a0b083e792a837999c165142eb7cd84183a06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "069b98df_9b34bf10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-11T02:32:52Z",
+      "side": 1,
+      "message": "the kernel crashed.",
+      "range": {
+        "startLine": 342,
+        "startChar": 19,
+        "endLine": 342,
+        "endChar": 41
+      },
+      "revId": "5d0a0b083e792a837999c165142eb7cd84183a06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
