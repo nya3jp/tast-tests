@@ -22,13 +22,13 @@ import (
 const (
 	// This is a build of an application containing a single activity and basic UI elements.
 	// The source code is in vendor/google_arc.
-	packageName  = "org.chromium.arc.testapp.accessibility_sample"
-	activityName = "org.chromium.arc.testapp.accessibility_sample.AccessibilityActivity"
+	packageName  = "org.chromium.arc.testapp.accessibilitytest"
+	activityName = "org.chromium.arc.testapp.accessibilitytest.AccessibilityActivity"
 
-	toggleButtonID    = "org.chromium.arc.testapp.accessibility_sample:id/toggleButton"
-	checkBoxID        = "org.chromium.arc.testapp.accessibility_sample:id/checkBox"
-	seekBarID         = "org.chromium.arc.testapp.accessibility_sample:id/seekBar"
-	seekBarDiscreteID = "org.chromium.arc.testapp.accessibility_sample:id/seekBarDiscrete"
+	toggleButtonID    = "org.chromium.arc.testapp.accessibilitytest:id/toggleButton"
+	checkBoxID        = "org.chromium.arc.testapp.accessibilitytest:id/checkBox"
+	seekBarID         = "org.chromium.arc.testapp.accessibilitytest:id/seekBar"
+	seekBarDiscreteID = "org.chromium.arc.testapp.accessibilitytest:id/seekBarDiscrete"
 
 	extURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/cvox2/background/background.html"
 )
@@ -122,13 +122,13 @@ func NewARC(ctx context.Context, outDir string) (*arc.ARC, error) {
 // InstallAndStartSampleApp starts the test application, and checks that UI components exist.
 func InstallAndStartSampleApp(ctx context.Context, a *arc.ARC, apkPath string) error {
 	testing.ContextLog(ctx, "Installing app")
-	// Install accessibility_sample.apk
+	// Install ArcAccessibilityTest.apk
 	if err := a.Install(ctx, apkPath); err != nil {
 		return errors.Wrap(err, "failed installing app: ")
 	}
 
 	testing.ContextLog(ctx, "Starting app")
-	// Run accessibility_sample.apk.
+	// Run ArcAccessibilityTest.apk.
 	if err := a.Command(ctx, "am", "start", "-W", packageName+"/"+activityName).Run(); err != nil {
 		return errors.Wrap(err, "failed starting app")
 	}
