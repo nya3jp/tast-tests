@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
@@ -85,6 +86,105 @@ func testReporterStartup(ctx context.Context, cr *chrome.Chrome, s *testing.Stat
 	}
 	if flagTime > time.Duration(uptimeSeconds)*time.Second {
 		s.Error("User space crash handling was not started during last boot")
+	}
+}
+
+func unstashLeaveCore(ctx context.Context) {
+	if err := testexec.CommandContext(ctx, "umount", "/root").Run(testexec.DumpLogOnError); err != nil {
+		testing.ContextLog(ctx, "Failed to unmount: ", err)
+	}
+}
+
+func stashLeaveCore(ctx context.Context, cr *chrome.Chrome, s *testing.State) (e error) {
+	// Avoid remounting / rw by instead creating a tmpfs in /root and
+	// populating it with everything but the .leave_core file.
+	for _, args := range [][]string{
+		{"tar", "-cz", "-C", "/root", "-f", "/tmp/root.tgz", "."},
+		{"mount", "-t", "tmpfs", "tmpfs", "/root"},
+	} {
+		if err := testexec.CommandContext(ctx, args[0], args[1:]...).Run(); err != nil {
+			return errors.Wrapf(err, "%s failed", shutil.EscapeSlice(args))
+		}
+	}
+	defer func() {
+		if e != nil {
+			unstashLeaveCore(ctx)
+		}
+	}()
+
+	args := []string{"tar", "-xz", "-C", "/root", "-f", "/tmp/root.tgz", "."}
+	if err := testexec.CommandContext(ctx, args[0], args[1:]...).Run(); err != nil {
+		return errors.Wrapf(err, "%s failed", shutil.EscapeSlice(args))
+	}
+	if err := os.Remove(leaveCorePath); err != nil {
+		return err
+	}
+	if _, err := os.Stat(leaveCorePath); err == nil {
+		// /root/.leave_core always exists in a test image.
+		return errors.Wrap(err, ".leave_core file did not disappear")
+	}
+	return nil
+}
+
+// testCoreFileRemovedInProduction tests core files do not stick around for production builds.
+func testCoreFileRemovedInProduction(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
+	if err := stashLeaveCore(ctx, cr, s); err != nil {
+		s.Fatal("Failed to stash .leave_core: ", err)
+	}
+	defer unstashLeaveCore(ctx)
+
+	reader, err := syslog.NewReader(syslog.Program("crash_reporter"))
+	if err != nil {
+		s.Fatal("Failed to create log reader: ", err)
+	}
+	defer reader.Close()
+
+	opts := crash.DefaultCrasherOptions()
+	opts.Username = "root"
+	if result, err := crash.RunCrasherProcess(ctx, cr, opts); err != nil {
+		s.Fatal("Failed to run crasher process: ", err)
+	} else if !result.Crashed {
+		s.Fatal("Crasher did not crash")
+	}
+	crashDir, err := crash.GetCrashDir("root")
+	if err != nil {
+		s.Fatal("Failed opening root crash dir: ", err)
+	}
+	files, err := ioutil.ReadDir(crashDir)
+	if err != nil {
+		s.Fatal("Failed to read crash dir: ", err)
+	}
+	var crashContents []string
+	for _, f := range files {
+		crashContents = append(crashContents, f.Name())
+	}
+	testing.ContextLog(ctx, "Contents of crash directory: ", crashContents)
+	const leavingCore = "Leaving core file at"
+	for {
+		e, err := reader.Read()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			s.Fatal("Failed to read syslog: ", err)
+		}
+		if strings.Contains(e.Content, leavingCore) {
+			s.Errorf("Unexpected log message %q", leavingCore)
+		}
+	}
+
+	// testing.ContextLog(ctx, "Log messages: ", *msg)
+	dmpFiles := 0
+	for _, n := range crashContents {
+		if strings.HasSuffix(n, ".dmp") {
+			dmpFiles++
+		} else if strings.HasSuffix(n, ".core") {
+			s.Error("Unexpected core file found: ", n)
+		}
+	}
+
+	if dmpFiles != 1 {
+		s.Errorf("Got %d dmp files, want 1", dmpFiles)
 	}
 }
 
@@ -383,6 +483,7 @@ func UserCrash(ctx context.Context, s *testing.State) {
 	// Run all tests.
 	crash.RunCrashTests(ctx, cr, s, []func(context.Context, *chrome.Chrome, *testing.State){
 		testReporterStartup,
+		testCoreFileRemovedInProduction,
 		testReporterShutdown,
 		testNoCrash,
 		testChronosCrasher,
