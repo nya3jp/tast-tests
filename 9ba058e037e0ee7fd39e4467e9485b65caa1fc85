@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "411256e6_f52aeb6a",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-11T08:50:01Z",
+      "side": 1,
+      "message": "Could you describe the difference of ARCSupported and ARCEnabled more in detail? I guess many people will be confused by these two options.",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 11
+      },
+      "revId": "9ba058e037e0ee7fd39e4467e9485b65caa1fc85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
