@@ -74,7 +74,8 @@ func (a *ARC) Close() error {
 
 // New waits for Android to finish booting.
 //
-// ARC must be enabled in advance by passing chrome.ARCEnabled to chrome.New.
+// ARC must be enabled in advance by passing chrome.ARCEnabled or chrome.ARCSupported with
+// real user gaia login to chrome.New.
 //
 // After this function returns successfully, you can assume BOOT_COMPLETED
 // intent has been broadcast from Android system, and ADB connection is ready.
@@ -250,7 +251,7 @@ func ensureARCEnabled() error {
 			return nil
 		}
 	}
-	return errors.New("ARC is not enabled; pass chrome.ARCEnabled to chrome.New")
+	return errors.New("ARC is not enabled; pass chrome.ARCEnabled or chrome.ARCSupported to chrome.New")
 }
 
 // getChromeArgs returns command line arguments of the Chrome browser process.
