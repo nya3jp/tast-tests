@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
@@ -86,6 +87,113 @@ func testReporterStartup(ctx context.Context, cr *chrome.Chrome, s *testing.Stat
 	}
 	if flagTime > time.Duration(uptimeSeconds)*time.Second {
 		s.Error("User space crash handling was not started during last boot")
+	}
+}
+
+func readAll(r *syslog.Reader) (*string, error) {
+	var s string
+	for {
+		entry, err := r.Read()
+		if err == io.EOF {
+			return &s, nil
+		} else if err != nil {
+			return nil, err
+		}
+		s += entry.Content + "\n"
+	}
+}
+
+func checkCoreFilePersisting(ctx context.Context, cr *chrome.Chrome, expectPersist bool) error {
+	reader, err := syslog.NewReader()
+	if err != nil {
+		return err
+	}
+	defer reader.Close()
+
+	opts := crash.DefaultCrasherOptions()
+	opts.Username = "root"
+	if result, err := crash.RunCrasherProcess(ctx, cr, opts); err != nil {
+		return err
+	} else if !result.Crashed {
+		return errors.New("crasher did not crash")
+	}
+	crashDir, err := crash.GetCrashDir("root")
+	if err != nil {
+		return errors.Wrap(err, "failed opening root crash dir")
+	}
+	files, err := ioutil.ReadDir(crashDir)
+	if err != nil {
+		return errors.Wrapf(err, "failed to read crash dir: %s", crashDir)
+	}
+	var crashContents []string
+	for _, f := range files {
+		crashContents = append(crashContents, f.Name())
+	}
+	testing.ContextLog(ctx, "Contents of crash directory: ", crashContents)
+	msg, err := readAll(reader)
+	if err != nil {
+		return errors.Wrap(err, "failed to read the entire syslog")
+	}
+	testing.ContextLog(ctx, "Log messages: ", *msg)
+
+	const leavingCore = "Leaving core file at"
+	expectedCoreFiles := 0
+	if expectPersist {
+		if !strings.Contains(*msg, leavingCore) {
+			return errors.Newf("missing log message %q", leavingCore)
+		}
+		expectedCoreFiles = 1
+	} else if strings.Contains(*msg, leavingCore) {
+		return errors.Newf("unexpected log message %q", leavingCore)
+	}
+	dmpFiles := 0
+	coreFiles := 0
+	for _, n := range crashContents {
+		if strings.HasSuffix(n, ".dmp") {
+			dmpFiles++
+		} else if strings.HasSuffix(n, ".core") {
+			dmpFiles++
+		}
+	}
+
+	if dmpFiles != 1 {
+		return errors.Errorf("got %d dmp files, want 1", dmpFiles)
+	}
+	if coreFiles != expectedCoreFiles {
+		return errors.Errorf("got %d core files, want %d", coreFiles, expectedCoreFiles)
+	}
+	return nil
+}
+
+// testCoreFileRemovedInProduction tests core files do not stick around for production builds.
+func testCoreFileRemovedInProduction(ctx context.Context, cr *chrome.Chrome, s *testing.State) {
+	// Avoid remounting / rw by instead creating a tmpfs in /root and
+	// populating it with everything but the
+	for _, args := range [][]string{
+		{"tar", "-cvz", "-C", "/root", "-f", "/tmp/root.tgz", "."},
+		{"mount", "-t", "tmpfs", "tmpfs", "/root"},
+	} {
+		if err := testexec.CommandContext(ctx, args[0], args[1:]...).Run(); err != nil {
+			s.Fatalf("%s failed: %v", shutil.EscapeSlice(args), err)
+		}
+	}
+	defer func() {
+		if err := testexec.CommandContext(ctx, "umount", "/root").Run(testexec.DumpLogOnError); err != nil {
+			s.Fatal("Failed to unmount: ", err)
+		}
+	}()
+	args := []string{"tar", "-xvz", "-C", "/root", "-f", "/tmp/root.tgz", "."}
+	if err := testexec.CommandContext(ctx, args[0], args[1:]...).Run(); err != nil {
+		s.Fatalf("%s failed: %v", shutil.EscapeSlice(args), err)
+	}
+	if err := os.Remove(leaveCorePath); err != nil {
+		s.Fatal("Failed to remove .leave_core: ", err)
+	}
+	if _, err := os.Stat(leaveCorePath); err == nil {
+		s.Error(".leave_core file did not disappear")
+	}
+	if err := checkCoreFilePersisting(ctx, cr, false); err != nil {
+		s.Error("core file persisting: ", err)
 	}
 }
 
@@ -358,6 +466,7 @@ func UserCrash(ctx context.Context, s *testing.State) {
 	// Run all tests.
 	crash.RunCrashTests(ctx, cr, s, []func(context.Context, *chrome.Chrome, *testing.State){
 		testReporterStartup,
+		testCoreFileRemovedInProduction,
 		testReporterShutdown,
 		testNoCrash,
 		testChronosCrasher,
