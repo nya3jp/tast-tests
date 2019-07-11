@@ -224,7 +224,7 @@ func MountOBB(ctx context.Context, s *testing.State) {
 				return testing.PollBreak(err)
 			}
 			for _, m := range ms {
-				if strings.HasPrefix(m.MountPath, tempdir) {
+				if m.Fstype == "fuse.mount-obb" && strings.HasPrefix(m.MountPath, tempdir) {
 					return nil
 				}
 			}
