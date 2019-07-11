@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "e934609f_547d0b98",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-07-11T22:52:27Z",
+      "side": 1,
+      "message": "Sounds good, done.",
+      "parentUuid": "c681d162_221922da",
+      "revId": "be3e994a753ecd7c6263b372f1a4123b5d6ff18c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de1591e2_8b47aa95",
         "filename": "src/chromiumos/tast/local/vm/crosvm.go",
         "patchSetId": 6
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "0ba21304_7998d494",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-07-11T22:52:27Z",
+      "side": 1,
+      "message": "Yes after further investigation, that value is import. Good catch.",
+      "parentUuid": "de1591e2_8b47aa95",
+      "revId": "be3e994a753ecd7c6263b372f1a4123b5d6ff18c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b51cc3cf_bce0deb5",
         "filename": "src/chromiumos/tast/local/vm/crosvm.go",
         "patchSetId": 6
@@ -64,6 +100,24 @@
       "writtenOn": "2019-07-02T15:59:15Z",
       "side": 1,
       "message": "Do make an returned error more predictable by caller, I\u0027d recommend to return ctx.Err() for timeout case.\nThough, it\u0027d slightly tricky.\n\ntype result struct {\n  line string\n  err error\n}\n\nch :\u003d make(chan result, 1)\n\n...set deadline as you did...\ngo func() {\n  defer close(ch)\n  var line strings.Builder\n  var b [1]byte\n  for {\n    n, err :\u003d vm.stdout.Read(b[:])\n    if err !\u003d nil {\n      ch \u003c- result { \"\", err }\n      return\n    }\n    if b[0] \u003d\u003d \u0027\\n\u0027 {\n      line.Reset()\n    } else {\n      line.WriteByte(b[0])\n      s :\u003d line.String()\n      if re.MatchString(s) {\n        ch \u003c- result { s, nil }\n        return\n      }\n    }\n  }\n}()\n\nselect {\ncase r :\u003d \u003c- ch:\n  if os.IsTimeout(r.err) {\n    select {\n    case \u003c-ctx.Done()\n      return \"\", errors.Wrap(ctx.Err(), \"... good message ...\")\n    }\n  }\n  return r.line, r.err\ncase \u003c- ctx.Done()\n  return \"\", errors.Wrap(ctx.Err(), \"... good message ...\")\n}\n\nWDYT?",
+      "revId": "be3e994a753ecd7c6263b372f1a4123b5d6ff18c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6436805_ee99029a",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-07-11T22:52:27Z",
+      "side": 1,
+      "message": "Yeah I think that makes sense. The generic error for a timeout is not very good. If we do this, I also don\u0027t think we need the \u003c-ctx.Done() call at the end, because the Read call is the only blocking call in the goroutine. Any timeout will be manifested through the channel as an error. Does that make sense to you?",
+      "parentUuid": "b51cc3cf_bce0deb5",
       "revId": "be3e994a753ecd7c6263b372f1a4123b5d6ff18c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -93,6 +147,30 @@
     },
     {
       "key": {
+        "uuid": "7bf47b05_4e5ffe00",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-07-11T22:52:27Z",
+      "side": 1,
+      "message": "That makes sense to me. Done.",
+      "parentUuid": "a13dc687_b651b872",
+      "range": {
+        "startLine": 149,
+        "startChar": 3,
+        "endLine": 153,
+        "endChar": 11
+      },
+      "revId": "be3e994a753ecd7c6263b372f1a4123b5d6ff18c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e13fd61_78332b4d",
         "filename": "src/chromiumos/tast/local/vm/crosvm.go",
         "patchSetId": 6
@@ -110,6 +188,24 @@
     },
     {
       "key": {
+        "uuid": "c261c406_97ca77e3",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-07-11T22:52:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e13fd61_78332b4d",
+      "revId": "be3e994a753ecd7c6263b372f1a4123b5d6ff18c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "245d4ce6_ca30e49f",
         "filename": "src/chromiumos/tast/local/vm/crosvm.go",
         "patchSetId": 6
@@ -124,6 +220,24 @@
       "revId": "be3e994a753ecd7c6263b372f1a4123b5d6ff18c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7239cd84_1638097a",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-07-11T22:52:27Z",
+      "side": 1,
+      "message": "I modified the logic to read 100 bytes at a time if they are available. Testing on my local machine shows that about 13 - 20 were ever read at one time so this should be enough. This should help speed up the checking process.",
+      "parentUuid": "245d4ce6_ca30e49f",
+      "revId": "be3e994a753ecd7c6263b372f1a4123b5d6ff18c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -150,6 +264,30 @@
     },
     {
       "key": {
+        "uuid": "e406a582_962471a8",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-07-11T22:52:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10fe9db5_06b3daba",
+      "range": {
+        "startLine": 159,
+        "startChar": 14,
+        "endLine": 159,
+        "endChar": 21
+      },
+      "revId": "be3e994a753ecd7c6263b372f1a4123b5d6ff18c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2dee490_d2cebe20",
         "filename": "src/chromiumos/tast/local/vm/crosvm.go",
         "patchSetId": 6
@@ -173,6 +311,30 @@
     },
     {
       "key": {
+        "uuid": "ff938a53_f5939200",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-07-11T22:52:27Z",
+      "side": 1,
+      "message": "I changed the logic, so that we only create the copy when a newline is reached, or the read is completed.",
+      "parentUuid": "b2dee490_d2cebe20",
+      "range": {
+        "startLine": 167,
+        "startChar": 22,
+        "endLine": 167,
+        "endChar": 35
+      },
+      "revId": "be3e994a753ecd7c6263b372f1a4123b5d6ff18c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "241b7d53_18104ed0",
         "filename": "src/chromiumos/tast/local/vm/crosvm.go",
         "patchSetId": 6
@@ -187,6 +349,24 @@
       "revId": "be3e994a753ecd7c6263b372f1a4123b5d6ff18c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9deaaec9_47bdfb38",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-07-11T22:52:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "241b7d53_18104ed0",
+      "revId": "be3e994a753ecd7c6263b372f1a4123b5d6ff18c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
