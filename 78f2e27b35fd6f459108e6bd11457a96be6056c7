@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79707af2_a836cb24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-11T03:06:31Z",
+      "side": 1,
+      "message": "instead of waiting certain amount of time, could you wait for the renderer/plugin processes are up by teseting.Poll()?",
+      "revId": "78f2e27b35fd6f459108e6bd11457a96be6056c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
