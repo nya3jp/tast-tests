@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
@@ -81,6 +82,35 @@ func testReporterStartup(ctx context.Context, s *testing.State) {
 	}
 	if flagTime > time.Duration(uptimeSeconds)*time.Second {
 		s.Error("User space crash handling was not started during last boot")
+	}
+}
+
+// testCoreFileRemovedInProduction tests core files do not stick around for production builds.
+func testCoreFileRemovedInProduction(ctx context.Context, s *testing.State) {
+	// Avoid remounting / rw by instead creating a tmpfs in /root and
+	// populating it with everything but the
+	for _, args := range [][]string{
+		{"tar", "-cvz", "-C", "/root", "-f", "/tmp/root.tgz", "."},
+		{"mount", "-t", "tmpfs", "tmpfs", "/root"},
+	} {
+		if err := testexec.CommandContext(ctx, args[0], args[1:]...).Run(); err != nil {
+			s.Fatalf("%s failed: %v", shutil.EscapeSlice(args), err)
+		}
+	}
+	defer func() {
+		if err := testexec.CommandContext(ctx, "umount", "/root").Run(testexec.DumpLogOnError); err != nil {
+			s.Fatal("Failed to unmount: ", err)
+		}
+	}()
+	args := []string{"tar", "-xvz", "-C", "/root", "-f", "/tmp/root.tgz", "."}
+	if err := testexec.CommandContext(ctx, args[0], args[1:]...).Run(); err != nil {
+		s.Fatalf("%s failed: %v", shutil.EscapeSlice(args), err)
+	}
+	if err := os.Remove(leaveCorePath); err != nil {
+		s.Fatal("Failed to remove .leave_core: ", err)
+	}
+	if _, err := os.Stat(leaveCorePath); err == nil {
+		s.Error(".leave_core file did not disappear")
 	}
 }
 
@@ -209,6 +239,7 @@ func UserCrash(ctx context.Context, s *testing.State) {
 	// Run all tests.
 	crash.RunCrashTests(ctx, s, []func(context.Context, *testing.State){
 		testReporterStartup,
+		testCoreFileRemovedInProduction,
 		testReporterShutdown,
 		testNoCrash,
 		testChronosCrasher,
