@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fa91176_22805664",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-11T05:19:59Z",
+      "side": 1,
+      "message": "style: could you use \"const\"? You don\u0027t need Sprintf because you are no-longer formatting.",
+      "revId": "a898cc6e3c072bc74b0e786bd712954c17dfa2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57325fec_0e771318",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-11T05:19:59Z",
+      "side": 1,
+      "message": "Clar: this is not an *average* of the values in this bucket, but you chose the mid of the range as its representative value, right?\nCould you make sure if you can call this \"average\" in this context in your team?\n\nAlso, could you add comment to be clearer?",
+      "revId": "a898cc6e3c072bc74b0e786bd712954c17dfa2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93c2387b_596c1934",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-11T05:19:59Z",
+      "side": 1,
+      "message": "Same: \"sum\" is the approximation of the sum, and sum/numSamples is not true \"average\".\nCould you make sure if you can call this value as \"average\" in this context in your team?",
+      "range": {
+        "startLine": 151,
+        "startChar": 27,
+        "endLine": 151,
+        "endChar": 38
+      },
+      "revId": "a898cc6e3c072bc74b0e786bd712954c17dfa2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
