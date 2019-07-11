@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb38e46f_36151fdf",
+        "filename": "src/chromiumos/tast/local/media/audio/audio.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-11T04:00:44Z",
+      "side": 1,
+      "message": "optional: We have /audio/ directory next to /media/; /src/platform/tast-tests/src/chromiumos/tast/local/audio/\n\nSo, it might be confusing to have /audio/ under /media too.\nOne idea is to rename this file to \u0027mute.go\u0027 and put it under /tast/local/audio/.\nWDYT?",
+      "revId": "a780022a5d67a01e08f8c50e3a8a1406e19b59f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
