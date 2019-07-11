@@ -1,6 +1,6 @@
-name=Accessibility Sample role=application
+name=Accessibility Test App role=application
 ++role=genericContainer
-++++name=Accessibility Sample role=staticText
+++++name=Accessibility Test App role=staticText
 ++++name=OFF role=toggleButton
 ++++name=CheckBox role=checkBox
 ++++name=seekBar role=slider
