@@ -105,6 +105,24 @@
       "revId": "d8c4cf19fd522ea8874a17e7807f540f44ee7e46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bce62db_c270af26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_new.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-11T08:18:15Z",
+      "side": 1,
+      "message": "Though I thought it\u0027d be okay to drop \u0027New\u0027 simply when we added this test before, I think it\u0027ll be confusing as hidehiko@ said now.\n\nI\u0027m not sure if it confuses the system, but it\u0027s confusing for us:\ne.g.\n* Release branch for old versions of Chrome OS will keep using old Tast tests. So, it\u0027ll be hard to know which binary is used in each branch.\n* When we check long-term test results for video.DecodeAccelH264 in stainless, the list of test results will contain outputs from both old and new binaries.\n\nI don\u0027t know what\u0027s the best name for this test. (DecodeAccelBinaryH264, for example?)\nBut, it shouldn\u0027t a good idea to rename to DecodeAccelH264 at least. \nHow about just saying that we need to rename this like this?\n\n// TODO(crbug.com/933034): Rename this function when the old VDA tests have been deprecated.",
+      "parentUuid": "46ce0a45_6c07fb7f",
+      "revId": "d8c4cf19fd522ea8874a17e7807f540f44ee7e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
