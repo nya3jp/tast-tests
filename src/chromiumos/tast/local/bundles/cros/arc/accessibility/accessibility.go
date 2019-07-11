@@ -19,16 +19,6 @@ import (
 )
 
 const (
-	// This is a build of an application containing a single activity and basic UI elements.
-	// The source code is in vendor/google_arc.
-	packageName  = "org.chromium.arc.testapp.accessibilitytest"
-	activityName = "org.chromium.arc.testapp.accessibilitytest.AccessibilityActivity"
-
-	toggleButtonID    = "org.chromium.arc.testapp.accessibilitytest:id/toggleButton"
-	checkBoxID        = "org.chromium.arc.testapp.accessibilitytest:id/checkBox"
-	seekBarID         = "org.chromium.arc.testapp.accessibilitytest:id/seekBar"
-	seekBarDiscreteID = "org.chromium.arc.testapp.accessibilitytest:id/seekBarDiscrete"
-
 	extURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/cvox2/background/background.html"
 )
 
@@ -120,16 +110,16 @@ func NewARC(ctx context.Context, outDir string) (*arc.ARC, error) {
 	return a, err
 }
 
-// InstallAndStartSampleApp starts the test application, and checks that UI components exist.
-func InstallAndStartSampleApp(ctx context.Context, a *arc.ARC, apkPath string) error {
+// InstallAndStartApp install and starts the specified application, it also checks that specified UI components exist.
+func InstallAndStartApp(ctx context.Context, a *arc.ARC, apkPath, packageName, activityName string, ids []string) error {
 	testing.ContextLog(ctx, "Installing app")
-	// Install ArcAccessibilityTest.apk
+	// Install accessibility_sample.apk
 	if err := a.Install(ctx, apkPath); err != nil {
 		return errors.Wrap(err, "failed installing app: ")
 	}
 
 	testing.ContextLog(ctx, "Starting app")
-	// Run ArcAccessibilityTest.apk.
+	// Run accessibility_sample.apk.
 	if err := a.Command(ctx, "am", "start", "-W", packageName+"/"+activityName).Run(); err != nil {
 		return errors.Wrap(err, "failed starting app")
 	}
@@ -140,20 +130,11 @@ func InstallAndStartSampleApp(ctx context.Context, a *arc.ARC, apkPath string) e
 		return errors.Wrap(err, "failed initializing UI Automator")
 	}
 	defer d.Close()
-
-	// Check UI components exist as expected.
 	const timeout = 30 * time.Second
-	if err := d.Object(ui.ID(toggleButtonID)).WaitForExists(ctx, timeout); err != nil {
-		return err
-	}
-	if err := d.Object(ui.ID(checkBoxID)).WaitForExists(ctx, timeout); err != nil {
-		return err
-	}
-	if err := d.Object(ui.ID(seekBarID)).WaitForExists(ctx, timeout); err != nil {
-		return err
-	}
-	if err := d.Object(ui.ID(seekBarDiscreteID)).WaitForExists(ctx, timeout); err != nil {
-		return err
+	for _, id := range ids {
+		if err := d.Object(ui.ID(id)).WaitForExists(ctx, timeout); err != nil {
+			return err
+		}
 	}
 	return nil
 }

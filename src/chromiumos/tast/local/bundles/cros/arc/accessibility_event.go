@@ -230,6 +230,16 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	const (
 		apkName = "ArcAccessibilityTest.apk"
 
+		// This is a build of an application containing a single activity and basic UI elements.
+		// The source code is in vendor/google_arc.
+		packageName  = "org.chromium.arc.testapp.accessibilitytest"
+		activityName = "org.chromium.arc.testapp.accessibilitytest.AccessibilityActivity"
+
+		toggleButtonID    = "org.chromium.arc.testapp.accessibilitytest:id/toggleButton"
+		checkBoxID        = "org.chromium.arc.testapp.accessibilitytest:id/checkBox"
+		seekBarID         = "org.chromium.arc.testapp.accessibilitytest:id/seekBar"
+		seekBarDiscreteID = "org.chromium.arc.testapp.accessibilitytest:id/seekBarDiscrete"
+
 		checkBox     = "android.widget.CheckBox"
 		toggleButton = "android.widget.ToggleButton"
 		seekBar      = "android.widget.SeekBar"
@@ -257,7 +267,7 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	}
 	defer a.Close()
 
-	if err := accessibility.InstallAndStartSampleApp(ctx, a, s.DataPath(apkName)); err != nil {
+	if err := accessibility.InstallAndStartApp(ctx, a, s.DataPath(apkName), packageName, activityName, []string{toggleButtonID, checkBoxID, seekbarID, seekBarDiscreteID}); err != nil {
 		s.Fatal("Setting up ARC environment with accessibility failed: ", err)
 	}
 
