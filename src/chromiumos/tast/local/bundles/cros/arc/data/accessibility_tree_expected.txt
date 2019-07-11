@@ -1,11 +1,11 @@
-name=Accessibility Sample role=application
+name=Accessibility Test App role=application
 ++role=rootWebArea
 ++++role=ignored
 ++++++role=ignored
 ++++++++role=ignored
 ++++++++++role=ignored
 ++++++++++++role=ignored
-++++++++++++++name=Accessibility Sample role=staticText
+++++++++++++++name=Accessibility Test App role=staticText
 ++++++++++++++role=ignored
 ++++++++++role=ignored
 ++++++++++++role=ignored
