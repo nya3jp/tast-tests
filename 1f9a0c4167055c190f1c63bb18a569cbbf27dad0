@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "696826a9_32d44323",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-07-11T08:10:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5d59a76_a2dc9333",
+      "range": {
+        "startLine": 9,
+        "startChar": 24,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "1f9a0c4167055c190f1c63bb18a569cbbf27dad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5fccafb_2a823519",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/ArcAccessibilityTest.apk.external",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "1f9a0c4167055c190f1c63bb18a569cbbf27dad0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86b10499_7fba4d87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/ArcAccessibilityTest.apk.external",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-07-11T08:10:57Z",
+      "side": 1,
+      "message": "sure, removed accessibility_sample.apk.external",
+      "parentUuid": "d5fccafb_2a823519",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "1f9a0c4167055c190f1c63bb18a569cbbf27dad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
