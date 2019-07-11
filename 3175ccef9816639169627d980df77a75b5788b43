@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d50bb43d_06962fa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_basic.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-11T23:52:44Z",
+      "side": 1,
+      "message": "This is done in: crrev.com/c/1683692\n\nDid you want me to bring that change forward to this cl?",
+      "parentUuid": "40fde29b_34c04c4c",
+      "revId": "3175ccef9816639169627d980df77a75b5788b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7f02e11_f25dc6f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_basic.go",
         "patchSetId": 8
@@ -65,6 +83,30 @@
     },
     {
       "key": {
+        "uuid": "6172812f_9e05f446",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-11T23:52:44Z",
+      "side": 1,
+      "message": "yes, this i\u0027m planning to do this as part of the refactorings, see crrev.com/c/1683692\n\nDid you also want to put a pre.go in the crostini package?",
+      "parentUuid": "7ce7ca8b_01c814d5",
+      "range": {
+        "startLine": 21,
+        "startChar": 6,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "3175ccef9816639169627d980df77a75b5788b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2906565_586e9a96",
         "filename": "src/chromiumos/tast/local/vm/pre.go",
         "patchSetId": 8
@@ -76,6 +118,24 @@
       "writtenOn": "2019-07-09T10:28:37Z",
       "side": 1,
       "message": "I don\u0027t think precondition creation should be exported.\nThen, the only caller will be just L60, L61. Could you inline then?\n\nvar crostiniStartedByArtifactPre \u003d \u0026preImpl{\n  name: \"crostini_started_by_artifact\",\n  timeout: ...,\n  imgPath: CrostiniImageArtifact,\n}\nvar crostiniStartedByDownloadPre \u003d \u0026preImpl{\n  name: ...,\n  timeout: ...,\n}",
+      "revId": "3175ccef9816639169627d980df77a75b5788b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4aca6a8a_118845e7",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-11T23:52:44Z",
+      "side": 1,
+      "message": "So actually this is what i originally had in patchset #5.\nFrom feedback on that CL i made this modification in-line with the chrome precondition (which exports precondition creation).\n\nWould you prefer if we reverted those changes?",
+      "parentUuid": "a2906565_586e9a96",
       "revId": "3175ccef9816639169627d980df77a75b5788b43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -99,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "781dc996_1525a62d",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-11T23:52:44Z",
+      "side": 1,
+      "message": "(leaving open as this seems related to the above comment)",
+      "parentUuid": "d2dfefbe_d0907ec5",
+      "revId": "3175ccef9816639169627d980df77a75b5788b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc9af2b4_19c1f8f6",
         "filename": "src/chromiumos/tast/local/vm/pre.go",
         "patchSetId": 8
@@ -110,6 +188,24 @@
       "writtenOn": "2019-07-09T10:28:37Z",
       "side": 1,
       "message": "Clar: why this method is renamed? Looks like this is still only for Crostini precondition.",
+      "revId": "3175ccef9816639169627d980df77a75b5788b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adc7d022_90d7e386",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-11T23:52:44Z",
+      "side": 1,
+      "message": "(leaving open as this seems related to the above comment)",
+      "parentUuid": "dc9af2b4_19c1f8f6",
       "revId": "3175ccef9816639169627d980df77a75b5788b43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
