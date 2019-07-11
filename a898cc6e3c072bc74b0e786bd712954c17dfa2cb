@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "447a97e2_a5a269b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-11T16:34:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fa91176_22805664",
+      "revId": "a898cc6e3c072bc74b0e786bd712954c17dfa2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57325fec_0e771318",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
         "patchSetId": 14
@@ -33,6 +51,24 @@
       "revId": "a898cc6e3c072bc74b0e786bd712954c17dfa2cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0366c82_b4bbfcfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-11T16:34:13Z",
+      "side": 1,
+      "message": "I think |bucketAverage| is OK, but I renamed it to |bucketMidpoint| that is\npossibly more generic and self explanatory.",
+      "parentUuid": "57325fec_0e771318",
+      "revId": "a898cc6e3c072bc74b0e786bd712954c17dfa2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "a898cc6e3c072bc74b0e786bd712954c17dfa2cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "751984c5_b16945f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-11T16:34:13Z",
+      "side": 1,
+      "message": "Well, this would not be the average of the original timing samples anymore,\nbut now we only have the histogram with values in buckets, so this value \nis the histogram average, and an estimate of the original samples average.\nSome literature calls it mean and others average, I just choose average like\nin e.g. http://www.analytictech.com/mb313/avghist.htm.\n\nThat said, |sum| is not a good name but it doesn\u0027t have a name in any formula\ne.g. http://www.cs.uni.edu/~campbell/stat/histrev2.html\nwhere average \u003d (1/N) sum(n_i x_i)  where N is the total number of samples,\nn_i is the number of samples in interval {i} and x_i is the midpoint calculated\nabove. \n\nI was surprised this was not implemented in Go already, but searching\naround I found that Histogram has a TotalCount() method: \nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/metrics/histogram.go?type\u003dcs\u0026q\u003d%22GetHistogram%22+package:%5Echromeos_public$\u0026g\u003d0\u0026l\u003d43\n\nSo I used it and instead of accumulating this strange |sum| I can calculate\nthe (rolling, or moving) average in each loop iteration, hopefully it becomes\nclearer. Otherwise, since this is just for debugging, I\u0027m OK removing it\nentirely and just leave the |perfValues| insertion.",
+      "parentUuid": "93c2387b_596c1934",
+      "range": {
+        "startLine": 151,
+        "startChar": 27,
+        "endLine": 151,
+        "endChar": 38
+      },
+      "revId": "a898cc6e3c072bc74b0e786bd712954c17dfa2cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
