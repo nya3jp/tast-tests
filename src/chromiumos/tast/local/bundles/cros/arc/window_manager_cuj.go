@@ -21,6 +21,8 @@ import (
 )
 
 const (
+	// Apk compiled against target SDK 23 (Pre-N)
+	wmPkg23 = "org.chromium.arc.testapp.windowmanager23"
 	// Apk compiled against target SDK 24 (N)
 	wmPkg24 = "org.chromium.arc.testapp.windowmanager24"
 
@@ -31,6 +33,9 @@ const (
 	wmNonResizeableUnspecifiedActivity = "org.chromium.arc.testapp.windowmanager.NonResizeableUnspecifiedActivity"
 	wmResizeablePortraitActivity       = "org.chromium.arc.testapp.windowmanager.ResizeablePortraitActivity"
 	wmNonResizeablePortraitActivity    = "org.chromium.arc.testapp.windowmanager.NonResizeablePortraitActivity"
+	wmLandscapeActivity                = "org.chromium.arc.testapp.windowmanager.LandscapeActivity"
+	wmUnspecifiedActivity              = "org.chromium.arc.testapp.windowmanager.UnspecifiedActivity"
+	wmPortraitActivity                 = "org.chromium.arc.testapp.windowmanager.PortraitActivity"
 
 	// These values must match the strings from ArcWMTestApp defined in BaseActivity#parseCaptionButtons:
 	// http://cs/android/vendor/google_arc/packages/development/ArcWMTestApp/src/org/chromium/arc/testapp/windowmanager/BaseActivity.java?l=448
@@ -49,18 +54,16 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WindowManagerCUJ,
 		Desc:         "Verifies that Window Manager Critical User Journey behaves as described in go/arc-wm-p",
-		Contacts:     []string{"ricardoq@chromium.org", "arc-framework@google.com"},
+		Contacts:     []string{"ricardoq@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
-		Data:         []string{"ArcWMTestApp_24.apk"},
+		Data:         []string{"ArcWMTestApp_23.apk", "ArcWMTestApp_24.apk"},
 		Pre:          arc.Booted(),
 		Timeout:      5 * time.Minute,
 	})
 }
 
 func WindowManagerCUJ(ctx context.Context, s *testing.State) {
-	const apk24 = "ArcWMTestApp_24.apk"
-
 	cr := s.PreValue().(arc.PreData).Chrome
 	a := s.PreValue().(arc.PreData).ARC
 
@@ -75,8 +78,10 @@ func WindowManagerCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer d.Close()
 
-	if err := a.Install(ctx, s.DataPath(apk24)); err != nil {
-		s.Fatal("Failed installing app: ", err)
+	for _, apk := range []string{"ArcWMTestApp_23.apk", "ArcWMTestApp_24.apk"} {
+		if err := a.Install(ctx, s.DataPath(apk)); err != nil {
+			s.Fatal("Failed installing app: ", err)
+		}
 	}
 
 	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
@@ -103,6 +108,7 @@ func WindowManagerCUJ(ctx context.Context, s *testing.State) {
 		fn   testFunc
 	}{
 		{"Default Launch Clamshell N", wmDefaultLaunchClamshell24},
+		{"Default Launch Clamshell Pre-N", wmDefaultLaunchClamshell23},
 	} {
 		s.Logf("Running test %q", test.name)
 
@@ -146,6 +152,52 @@ func wmDefaultLaunchClamshell24(ctx context.Context, tconn *chrome.Conn, a *arc.
 	} {
 		testing.ContextLogf(ctx, "Running subtest %q", test.name)
 		act, err := arc.NewActivity(a, wmPkg24, test.act)
+		if err != nil {
+			return err
+		}
+		defer act.Close()
+
+		if err := act.Start(ctx); err != nil {
+			return err
+		}
+		// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
+		defer act.Stop(ctx)
+
+		if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+			return err
+		}
+
+		if err := test.wantedState(ctx, act, d); err != nil {
+			return err
+		}
+
+		// Stopping current activity in order to make it possible to launch a different from the same package.
+		if err := act.Stop(ctx); err != nil {
+			return errors.Wrapf(err, "could not stop activity %v", test.act)
+		}
+	}
+	return nil
+}
+
+// wmDefaultLaunchClamshell23 launches in clamshell mode three SDK-pre-N activities with different orientations.
+// And it verifies that their default launch state is the expected one, as defined in:
+// go/arc-wm-p "Clamshell: default launch behavior - Android MNC and below" (slide #7).
+func wmDefaultLaunchClamshell23(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
+	for _, test := range []struct {
+		name        string
+		act         string
+		wantedState wmTestStateFunc
+	}{
+		// The are two possible default states (windows #A to #B) from three possible different activities.
+		// Window #A.
+		{"Unspecified", wmUnspecifiedActivity, checkRestoreResizeable},
+		// Window #A.
+		{"Portrait", wmPortraitActivity, checkRestoreResizeable},
+		// Window #B.
+		{"Landscape", wmLandscapeActivity, checkRestoreResizeable},
+	} {
+		testing.ContextLogf(ctx, "Running subtest %q", test.name)
+		act, err := arc.NewActivity(a, wmPkg23, test.act)
 		if err != nil {
 			return err
 		}
