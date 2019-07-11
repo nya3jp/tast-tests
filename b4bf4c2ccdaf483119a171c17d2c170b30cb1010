@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "25de4ad5_819babda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-07-11T22:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85eed656_a29ddca3",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 88
+      },
+      "revId": "b4bf4c2ccdaf483119a171c17d2c170b30cb1010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5d4f909_bb72c240",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
         "patchSetId": 2
@@ -95,6 +119,54 @@
     },
     {
       "key": {
+        "uuid": "bd6a709f_ba9974e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-07-11T22:48:47Z",
+      "side": 1,
+      "message": "Done. I made the headerActual a Map that I remove items from.",
+      "parentUuid": "c5d4f909_bb72c240",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 158
+      },
+      "revId": "b4bf4c2ccdaf483119a171c17d2c170b30cb1010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5caa13ff_fb360c3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-07-11T22:48:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a5be0318_ca4da630",
+      "range": {
+        "startLine": 40,
+        "startChar": 20,
+        "endLine": 40,
+        "endChar": 21
+      },
+      "revId": "b4bf4c2ccdaf483119a171c17d2c170b30cb1010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d38ee1db_875d38e8",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
         "patchSetId": 2
@@ -115,6 +187,30 @@
       "revId": "b4bf4c2ccdaf483119a171c17d2c170b30cb1010",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2d383a3_0f979b4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-07-11T22:48:47Z",
+      "side": 1,
+      "message": "Removed all instances of TrimSpace since they were unneeded. I\u0027ve also added a few more comments; but, let me know if there are any other lines of code where I should add comments.",
+      "parentUuid": "d38ee1db_875d38e8",
+      "range": {
+        "startLine": 41,
+        "startChar": 31,
+        "endLine": 41,
+        "endChar": 58
+      },
+      "revId": "b4bf4c2ccdaf483119a171c17d2c170b30cb1010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "b3482122_aadcfec6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-07-11T22:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a61f7d12_d9ec0dc3",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 97
+      },
+      "revId": "b4bf4c2ccdaf483119a171c17d2c170b30cb1010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "130fd84e_2ddd0bbe",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
         "patchSetId": 2
@@ -161,6 +281,30 @@
       "revId": "b4bf4c2ccdaf483119a171c17d2c170b30cb1010",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4695bd6e_688d5e66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-07-11T22:48:47Z",
+      "side": 1,
+      "message": "Removed this portion of the code.",
+      "parentUuid": "130fd84e_2ddd0bbe",
+      "range": {
+        "startLine": 48,
+        "startChar": 21,
+        "endLine": 48,
+        "endChar": 23
+      },
+      "revId": "b4bf4c2ccdaf483119a171c17d2c170b30cb1010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -187,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "e70922da_c4408a10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-07-11T22:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcea2f27_0b019f4a",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "b4bf4c2ccdaf483119a171c17d2c170b30cb1010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fdd6b4f_0623bbb7",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
         "patchSetId": 2
@@ -207,6 +375,30 @@
       "revId": "b4bf4c2ccdaf483119a171c17d2c170b30cb1010",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7b22594_2eab5eee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-07-11T22:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fdd6b4f_0623bbb7",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 115
+      },
+      "revId": "b4bf4c2ccdaf483119a171c17d2c170b30cb1010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

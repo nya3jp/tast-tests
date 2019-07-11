@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9397d09c_8791b445",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-07-11T22:48:47Z",
+      "side": 1,
+      "message": "There would be an exit failure from running \"cros_healthd --probe_battery_metrics\" if the system didn\u0027t have a battery. This isn\u0027t expected to happen on anything but Chromeboxes. This would make the test fail though. Is there a way to run this test on non-Chromebox devices only or is there a way to check the device type within the test itself?",
+      "parentUuid": "8d3a78d7_8e1c4b72",
+      "revId": "d62a76322ce737dbe77824cd220efe7962b846fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb8316d7_2c6dae61",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "d62a76322ce737dbe77824cd220efe7962b846fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1e744df_7b1c57b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-07-11T22:48:47Z",
+      "side": 1,
+      "message": "I suppose that since the number of metrics are limited now and I don\u0027t anticipate adding a rapid succession of battery metrics anytime soon, it shouldn\u0027t be too hard to keep the battery probe and this test in sync. In the future; however, if many metrics are to be quickly added, this test can be refactored.",
+      "parentUuid": "cb8316d7_2c6dae61",
+      "revId": "d62a76322ce737dbe77824cd220efe7962b846fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
