@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3ece644e_e12c2a94",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-07-11T22:58:08Z",
+      "side": 1,
+      "message": "Please update this after resolving issue with diff time reporting in legacy code and here.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 64
+      },
+      "revId": "e8315cb8cbb65179d43ab5ac0a3754dc6670c5bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "17c3780e_2d274cfa",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf_unmanaged.go",
         "patchSetId": 10
