@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "04bd42d7_96fde2d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-11T02:11:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "385ed133_4da6b88f",
+      "range": {
+        "startLine": 33,
+        "startChar": 92,
+        "endLine": 33,
+        "endChar": 106
+      },
+      "revId": "922fc95b5d84363f00c57802cc0ed996cf35e448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5a4dee6_a9c39e12",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
         "patchSetId": 1
@@ -191,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "8544024b_255aa7d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-11T02:11:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dd339546_f339cbd8",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 34
+      },
+      "revId": "922fc95b5d84363f00c57802cc0ed996cf35e448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d787ebf_ba18dea1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
         "patchSetId": 1
@@ -273,6 +321,30 @@
       "side": 1,
       "message": "I\u0027m not sure but at least it looks that way from my testing.  In Chrome I believe it happens when ArcInstanceThrottle gets created for the first time which happens in ArcBootPhaseMonitorBridge::OnArcInitialStart, but I\u0027m not sure when that happens relative to BOOT_COMPLETED.",
       "parentUuid": "396db9a8_673e0cef",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 37
+      },
+      "revId": "922fc95b5d84363f00c57802cc0ed996cf35e448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80f18a6b_03e771c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-11T02:11:43Z",
+      "side": 1,
+      "message": "Hmm. I took a brief look at code, but I\u0027m afraid there\u0027s no explicit ordering between BOOT_COMPLETED and ARC provisioning, and rather I guess BOOT_COMPLETED usually happens before ARC provisioning finish on production environment (in Tast tests we use fake accounts so I guess provisioning is skipped and finishes instantly).\n\nTo be safer, I recommend waiting for the CPU share with testing.Poll, rather than checking it just once.",
+      "parentUuid": "addec304_54d07c52",
       "range": {
         "startLine": 83,
         "startChar": 1,
@@ -377,6 +449,30 @@
       "revId": "922fc95b5d84363f00c57802cc0ed996cf35e448",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c792e47b_c231fe64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-11T02:11:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c0638f80_608d79f7",
+      "range": {
+        "startLine": 105,
+        "startChar": 17,
+        "endLine": 105,
+        "endChar": 39
+      },
+      "revId": "922fc95b5d84363f00c57802cc0ed996cf35e448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
