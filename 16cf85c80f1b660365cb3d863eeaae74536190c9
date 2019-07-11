@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7ed3abb6_f92949fd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-11T02:36:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "720d0ee9_292ca492",
+      "range": {
+        "startLine": 11,
+        "startChar": 32,
+        "endLine": 11,
+        "endChar": 46
+      },
+      "revId": "16cf85c80f1b660365cb3d863eeaae74536190c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a1f7628_05efa4cc",
         "filename": "/COMMIT_MSG",
         "patchSetId": 14
@@ -68,6 +92,54 @@
       "revId": "16cf85c80f1b660365cb3d863eeaae74536190c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9f49c79_cc0d36c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-11T02:36:48Z",
+      "side": 1,
+      "message": "Ack. Removed",
+      "parentUuid": "705fad59_4a8d7961",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 5
+      },
+      "revId": "16cf85c80f1b660365cb3d863eeaae74536190c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65d5c6c0_a758fe47",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-11T02:36:48Z",
+      "side": 1,
+      "message": "Updated the comment.\nThank you for your suggestion. That\u0027s right that this wouldn\u0027t be the actual reason. Actual reason would be to hopefully stabilize the test for the board.\nI understand the argument that the device is actually unresolvably  flaky, but it\u0027s still nice if the test can be stabilized somehow.",
+      "parentUuid": "8a1f7628_05efa4cc",
+      "range": {
+        "startLine": 11,
+        "startChar": 55,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "16cf85c80f1b660365cb3d863eeaae74536190c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +189,54 @@
     },
     {
       "key": {
+        "uuid": "3e5489ff_f16c9848",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-11T02:36:48Z",
+      "side": 1,
+      "message": "Ok :)\nI understand by your explanation that USE flag besed solution would work. Let me submit this CL first and then implement feature flag for wifi and check that works as expected to cover the failing tests.",
+      "parentUuid": "e49fd6c5_1dfa5ae6",
+      "range": {
+        "startLine": 14,
+        "startChar": 55,
+        "endLine": 14,
+        "endChar": 68
+      },
+      "revId": "16cf85c80f1b660365cb3d863eeaae74536190c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dfca8d8_96d7d833",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-11T02:36:48Z",
+      "side": 1,
+      "message": "Ack.\nFrom your explanation, specificity is not needed. Removed it.",
+      "parentUuid": "1fe98808_92f9a7ea",
+      "range": {
+        "startLine": 14,
+        "startChar": 34,
+        "endLine": 14,
+        "endChar": 44
+      },
+      "revId": "16cf85c80f1b660365cb3d863eeaae74536190c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e6cfe74_c6393685",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
         "patchSetId": 14
@@ -137,6 +257,30 @@
       "revId": "16cf85c80f1b660365cb3d863eeaae74536190c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0ed5c95_745e4ed8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-11T02:36:48Z",
+      "side": 1,
+      "message": "That\u0027s right we generally avoid logging expected conditions.\nI refactored the code so that this path is reached only on error cases.\nIt changes there order of checking to compatible -\u003e vendor/device though. Does it make sense?",
+      "parentUuid": "5e6cfe74_c6393685",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 61
+      },
+      "revId": "16cf85c80f1b660365cb3d863eeaae74536190c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "7b6c003c_e1822d33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-11T02:36:48Z",
+      "side": 1,
+      "message": "Memo to self: nyan_kitty is skipped because its wifi is \"unresolvably flaky\"\nhttps://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/944502/",
+      "parentUuid": "16f13489_38849180",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "d5e057143703c12a4e47a42bafa1c16d69332b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4f94a9e_2b1d74ea",
         "filename": "/COMMIT_MSG",
         "patchSetId": 12
@@ -120,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "58c582d6_2ae93ed6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-11T02:36:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "163d425d_966b42c3",
+      "range": {
+        "startLine": 13,
+        "startChar": 52,
+        "endLine": 14,
+        "endChar": 44
+      },
+      "revId": "d5e057143703c12a4e47a42bafa1c16d69332b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe48e39a_7ac6b4b3",
         "filename": "/COMMIT_MSG",
         "patchSetId": 12
@@ -179,6 +227,30 @@
       "side": 1,
       "message": "\u003e For example the test fails on betty.\n\nWell, betty obviously doesn\u0027t have WiFi. But we also never ran this test on Betty in Autotest. It\u0027s your fault that it\u0027s running on Betty in Tast :)\n\nThat suggests you should probably wire up SoftwareDeps for this, no? This can\u0027t possibly be the only test that\u0027s definitely not useful on VMs.",
       "parentUuid": "e15101ac_991482e3",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "d5e057143703c12a4e47a42bafa1c16d69332b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06b5dca6_72fa2b1d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-11T02:36:48Z",
+      "side": 1,
+      "message": "I see. Thank you for your explanation.\nI filed https://crbug.com/982620 to have software deps for wifi.",
+      "parentUuid": "1ca0fc88_035d637d",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -426,6 +498,30 @@
       "revId": "d5e057143703c12a4e47a42bafa1c16d69332b09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ae0ec4d_59f681c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-11T02:36:48Z",
+      "side": 1,
+      "message": "Thank you.",
+      "parentUuid": "40c15fc3_c43812cf",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 2
+      },
+      "revId": "d5e057143703c12a4e47a42bafa1c16d69332b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
