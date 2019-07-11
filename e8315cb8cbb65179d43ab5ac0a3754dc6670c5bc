@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "95c6430d_7219ad68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf_unmanaged.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-11T07:21:31Z",
+      "side": 1,
+      "message": "Thanks for taking time to verify this change.\n\nI investigated what\u0027s wrong with it, and found a bug in func waitForAndroidDataRemoved. It turned out waitForAndroidDataRemoved immediately returned even when the data existed due to the bug, which resulted in a few seconds of delay in the next step (optInARC).\n\nplay_store_shown_time got shortened by about 3 seconds after the fix. (See Patchset 11 for the fix.)\n\nBefore the fix\n  play_store_shown_time - average: 19135, range 17653 - 25231 based on 10 samples\n\nAfter the fix \n  play_store_shown_time - average: 15730, range 13830 - 23597 based on 10 samples\n\nThanks!",
+      "parentUuid": "17c3780e_2d274cfa",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 49
+      },
+      "revId": "e8315cb8cbb65179d43ab5ac0a3754dc6670c5bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e100e0a_cd793b71",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
         "patchSetId": 10
@@ -39,6 +63,24 @@
       "revId": "e8315cb8cbb65179d43ab5ac0a3754dc6670c5bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26bd7426_1714a6c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/authperf/authperf.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-07-11T07:21:31Z",
+      "side": 1,
+      "message": "You also need to patch crrev.com/c/1694844 to make it work.",
+      "parentUuid": "3e100e0a_cd793b71",
+      "revId": "e8315cb8cbb65179d43ab5ac0a3754dc6670c5bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
