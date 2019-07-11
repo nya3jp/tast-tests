@@ -94,8 +94,29 @@ func testReporterStartup(ctx context.Context, s *testing.State) {
 	}
 }
 
+// testReporterShutdown tests the crash_reporter shutdown code work.
+func testReporterShutdown(ctx context.Context, s *testing.State) {
+	if err := testexec.CommandContext(ctx, crash.CrashReporterPath, "--clean_shutdown").Run(); err != nil {
+		s.Fatal("Failed to shut down crash reporter: ", err)
+	}
+	out, err := ioutil.ReadFile(crash.CorePattern)
+	if err != nil {
+		s.Fatal("Failed to read core pattern file: ", err)
+	}
+
+	// For older kernels (<= 3.18), a sysctl exists to lock the core
+	// pattern from further modifications.
+	f, err := os.Stat(crash.CorePattern)
+	if err == nil && f.Mode().IsRegular() {
+		if trimmed := strings.TrimSpace(string(out)); trimmed != "core" {
+			s.Fatalf("Unexpected core pattern: got %q, want \"core\"", trimmed)
+		}
+	}
+}
+
 func UserCrash(ctx context.Context, s *testing.State) {
 	// TODO(crrev.com/970930): Restart UI if exist, when adding tests that
 	// require it.
 	crash.RunCrashTest(ctx, s, testReporterStartup)
+	crash.RunCrashTest(ctx, s, testReporterShutdown)
 }
