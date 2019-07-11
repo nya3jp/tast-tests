@@ -539,6 +539,30 @@
       "revId": "d1c8d0fa34430344248cf4fa1f7e72ad35b6c2e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c3c4a6c_bafa31b9",
+        "filename": "src/chromiumos/tast/local/gtest/report_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-11T03:14:39Z",
+      "side": 1,
+      "message": "I think multiline message is okay for unit tests. For Tast failure messages it\u0027s arguable...",
+      "parentUuid": "c0fb9c74_e8f91b24",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 73
+      },
+      "revId": "d1c8d0fa34430344248cf4fa1f7e72ad35b6c2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
