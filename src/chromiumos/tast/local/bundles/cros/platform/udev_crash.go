@@ -15,16 +15,13 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/fsutil"
-	"chromiumos/tast/local/sysutil"
+	"chromiumos/tast/local/bundles/cros/platform/crash"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
 const (
-	mockPolicyFile = "udev_crash_mock_metrics_on_policy.bin"
-	mockKeyFile    = "udev_crash_mock_metrics_owner.key"
 	systemCrashDir = "/var/spool/crash"
 )
 
@@ -36,52 +33,10 @@ func init() {
 		Contacts: []string{"yamaguchi@chromium.org"},
 		Attr:     []string{"informational"},
 		Data: []string{
-			mockPolicyFile,
-			mockKeyFile,
+			crash.MockMetricsOnPolicyFile,
+			crash.MockMetricsOwnerKeyFile,
 		},
 	})
-}
-
-// setConsent sets whether or not we have consent to send crash reports.
-// This creates or deletes the file to control whether
-// crash_sender will consider that it has consent to send crash reports.
-// It also copies a policy blob with the proper policy setting.
-func setConsent(ctx context.Context, mockPolicyFilePath string,
-	mockKeyFilePath string) error {
-	const (
-		whitelistDir     = "/var/lib/whitelist"
-		consentFile      = "/home/chronos/Consent To Send Stats"
-		ownerKeyFile     = whitelistDir + "/owner.key"
-		signedPolicyFile = whitelistDir + "/policy"
-	)
-	if e, err := os.Stat(whitelistDir); err == nil && e.IsDir() {
-		// Create policy file that enables metrics/consent.
-		if err := fsutil.CopyFile(mockPolicyFilePath, signedPolicyFile); err != nil {
-			return err
-		}
-		if err := fsutil.CopyFile(mockKeyFilePath, ownerKeyFile); err != nil {
-			return err
-		}
-	}
-	// Create deprecated consent file.  This is created *after* the
-	// policy file in order to avoid a race condition where chrome
-	// might remove the consent file if the policy's not set yet.
-	// We create it as a temp file first in order to make the creation
-	// of the consent file, owned by chronos, atomic.
-	// See crosbug.com/18413.
-	tempFile := consentFile + ".tmp"
-	if err := ioutil.WriteFile(tempFile, []byte("test-consent"), 0644); err != nil {
-		return err
-	}
-
-	if err := os.Chown(tempFile, int(sysutil.ChronosUID), int(sysutil.ChronosGID)); err != nil {
-		return err
-	}
-	if err := os.Rename(tempFile, consentFile); err != nil {
-		return err
-	}
-	testing.ContextLog(ctx, "Created ", consentFile)
-	return nil
 }
 
 // checkLogContent reads file given by filename. complete is true if it's a valid log
@@ -199,8 +154,7 @@ func UdevCrash(ctx context.Context, s *testing.State) {
 		s.Log("No Atmel device found; this test should not be run on this device")
 	}
 
-	if err := setConsent(ctx, s.DataPath(mockPolicyFile),
-		s.DataPath(mockKeyFile)); err != nil {
+	if err := crash.SetConsent(ctx, s.DataPath(crash.MockMetricsOnPolicyFile), s.DataPath(crash.MockMetricsOwnerKeyFile)); err != nil {
 		s.Fatal("Failed to set consent: ", err)
 	}
 
