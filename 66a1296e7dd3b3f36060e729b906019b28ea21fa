@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "8762b210_36f84c07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ash_window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-12T07:01:39Z",
+      "side": 1,
+      "message": "FYI:\n- nice to keep \"got ...; want ...\" style.\n- If the values are known, and does not contain white space nor is empty, %s is fine to use.",
+      "parentUuid": "c2aea2dc_3e10b61e",
+      "range": {
+        "startLine": 81,
+        "startChar": 12,
+        "endLine": 81,
+        "endChar": 52
+      },
+      "revId": "66a1296e7dd3b3f36060e729b906019b28ea21fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b16251be_e9a3d37b",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 2
@@ -87,6 +111,29 @@
         "startChar": 24,
         "endLine": 42,
         "endChar": 45
+      },
+      "revId": "66a1296e7dd3b3f36060e729b906019b28ea21fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa92229f_02121926",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-12T07:01:39Z",
+      "side": 1,
+      "message": "nit/style: ARC",
+      "range": {
+        "startLine": 42,
+        "startChar": 6,
+        "endLine": 42,
+        "endChar": 9
       },
       "revId": "66a1296e7dd3b3f36060e729b906019b28ea21fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
