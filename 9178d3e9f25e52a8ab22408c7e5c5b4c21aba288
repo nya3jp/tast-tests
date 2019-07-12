@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bb3d84f_df7487be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-12T05:44:52Z",
+      "side": 1,
+      "message": "style:\n\nargs :\u003d []string{s.DataPath(filename), s.DataPath(filename+\".json\")}",
+      "revId": "9178d3e9f25e52a8ab22408c7e5c5b4c21aba288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
