@@ -240,7 +240,9 @@ func RunAccelVideoTestNew(ctx context.Context, s *testing.State, filename string
 }
 
 // RunAccelVideoPerfTest runs video_decode_accelerator_perf_tests with the
-// specified video file. Both capped and uncapped performance is measured.
+// specified video file. decoderType specifies whether to run the tests against
+// the VDA or VD based video decoder implementations. Both capped and uncapped
+// performance is measured.
 // - Uncapped performance: the specified test video is decoded from start to
 // finish as fast as possible. This provides an estimate of the decoder's max
 // performance (e.g. the maximum FPS).
@@ -250,7 +252,7 @@ func RunAccelVideoTestNew(ctx context.Context, s *testing.State, filename string
 // The test binary is run twice. Once to measure both capped and uncapped
 // performance, once to measure CPU usage while running the capped performance
 // test.
-func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, filename string) {
+func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, filename string, decoderType DecoderType) {
 	const (
 		// Name of the capped performance test.
 		cappedTestname = "MeasureCappedPerformance"
@@ -287,10 +289,13 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, filename strin
 
 	// Test 1: Measure capped and uncapped performance.
 	args := []string{
-		"--output_folder=" + s.OutDir(),
-		"--gtest_filter=*" + cappedTestname + ":*" + uncappedTestname,
 		s.DataPath(filename),
 		s.DataPath(filename + ".json"),
+		"--output_folder=" + s.OutDir(),
+		"--gtest_filter=*" + cappedTestname + ":*" + uncappedTestname,
+	}
+	if decoderType == VD {
+		args = append(args, "--use_vd")
 	}
 
 	const exec = "video_decode_accelerator_perf_tests"
