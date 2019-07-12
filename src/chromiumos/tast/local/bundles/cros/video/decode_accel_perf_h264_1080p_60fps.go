@@ -25,5 +25,5 @@ func init() {
 
 // DecodeAccelPerfH2641080P60FPS runs the video_decode_accelerator_perf_tests with 1080p_60fps_600frames.h264.
 func DecodeAccelPerfH2641080P60FPS(ctx context.Context, s *testing.State) {
-	decode.RunAccelVideoPerfTest(ctx, s, "1080p_60fps_600frames.h264")
+	decode.RunAccelVideoPerfTest(ctx, s, "1080p_60fps_600frames.h264", decode.VDA)
 }
