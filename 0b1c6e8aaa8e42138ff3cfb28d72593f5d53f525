@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "035f3551_0f2d3dee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-12T05:51:14Z",
+      "side": 1,
+      "message": "You may want to dump the \u0027b\u0027 into a file in case of failure for diagnose.",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 3
+      },
+      "revId": "0b1c6e8aaa8e42138ff3cfb28d72593f5d53f525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e102b79_7921d607",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-12T05:51:14Z",
+      "side": 1,
+      "message": "This will be verified by the check below with more detailed info.",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "0b1c6e8aaa8e42138ff3cfb28d72593f5d53f525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "357fbc34_4517dedb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-12T05:51:14Z",
+      "side": 1,
+      "message": "style:\nfor _, h :\u003d range headerExpected {\n  if _, ok :\u003d headerActualMap[h]; !ok {\n    missing \u003d append(missing, h)\n    continue\n  } \n  delete(headerActualMap, h)\n}",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 3
+      },
+      "revId": "0b1c6e8aaa8e42138ff3cfb28d72593f5d53f525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35f0ba45_50ea7fd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-12T05:51:14Z",
+      "side": 1,
+      "message": "Probably, you need key.",
+      "revId": "0b1c6e8aaa8e42138ff3cfb28d72593f5d53f525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
