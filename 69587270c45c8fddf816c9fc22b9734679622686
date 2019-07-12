@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "784afe5a_6f2587db",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-07-12T15:22:52Z",
+      "side": 1,
+      "message": "I think this one was deprecated:\nhttps://cs.chromium.org/chromium/src/components/arc/arc_util.cc?type\u003dcs\u0026q\u003dkAlwaysStartWithNoPlayStore\u0026sq\u003dpackage:chromium\u0026g\u003d0\u0026l\u003d84\n\nProbably you want to use --arc-start-mode only\nCould you please check?\n\nThat also might turn to renaming arcEnabledWithPlayStore to something more appropriate.",
+      "range": {
+        "startLine": 532,
+        "startChar": 20,
+        "endLine": 532,
+        "endChar": 33
+      },
+      "revId": "69587270c45c8fddf816c9fc22b9734679622686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
