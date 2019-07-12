@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "e9929549_98f66cb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_basic.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-12T06:54:58Z",
+      "side": 1,
+      "message": "Yes, because the change is conceptually closer to this CL, rather than introducing crostini package.",
+      "parentUuid": "d50bb43d_06962fa4",
+      "revId": "3175ccef9816639169627d980df77a75b5788b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7f02e11_f25dc6f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_basic.go",
         "patchSetId": 8
@@ -107,6 +125,30 @@
     },
     {
       "key": {
+        "uuid": "1e507b6d_766793b1",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-12T06:54:58Z",
+      "side": 1,
+      "message": "Maybe, we should, if crostini package is being created.\n\nchromiumos/tast/local/crostini/pre.go",
+      "parentUuid": "6172812f_9e05f446",
+      "range": {
+        "startLine": 21,
+        "startChar": 6,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "3175ccef9816639169627d980df77a75b5788b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2906565_586e9a96",
         "filename": "src/chromiumos/tast/local/vm/pre.go",
         "patchSetId": 8
@@ -136,6 +178,24 @@
       "side": 1,
       "message": "So actually this is what i originally had in patchset #5.\nFrom feedback on that CL i made this modification in-line with the chrome precondition (which exports precondition creation).\n\nWould you prefer if we reverted those changes?",
       "parentUuid": "a2906565_586e9a96",
+      "revId": "3175ccef9816639169627d980df77a75b5788b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42767e54_fca84179",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-12T06:54:58Z",
+      "side": 1,
+      "message": "The Pre instances need to be global, effectively.\nOtherwise, precondition equality check wouldn\u0027t work.\nIn the sense, exposing the precondition create method does not work.",
+      "parentUuid": "4aca6a8a_118845e7",
       "revId": "3175ccef9816639169627d980df77a75b5788b43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
