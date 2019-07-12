@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b464591_827db54c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-07-12T07:20:27Z",
+      "side": 1,
+      "message": "Would it be better/allowed to pass testing.State to SetConsent function?",
+      "revId": "0ea87159289ef876a77dd71a0dbc67ce6ae4f144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
