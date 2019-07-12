@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e3be7802_7d933dd7",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-07-12T16:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a69ebd48_428dcd38",
+      "range": {
+        "startLine": 145,
+        "startChar": 4,
+        "endLine": 145,
+        "endChar": 15
+      },
+      "revId": "68c37f4ac84414bdb1c38fac1befc31f4bc4d22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "551f9a3b_793bbb46",
         "filename": "src/chromiumos/tast/local/vm/crosvm.go",
         "patchSetId": 7
@@ -39,6 +63,24 @@
       "revId": "68c37f4ac84414bdb1c38fac1befc31f4bc4d22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60cbafa9_ce6fcb9d",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-07-12T16:19:42Z",
+      "side": 1,
+      "message": "With the start crosvm test, there is negligible difference between reading more bytes and reading one at a time. I think we should go with reading one byte at a time and address the performance problem later if it surfaces.",
+      "parentUuid": "551f9a3b_793bbb46",
+      "revId": "68c37f4ac84414bdb1c38fac1befc31f4bc4d22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
