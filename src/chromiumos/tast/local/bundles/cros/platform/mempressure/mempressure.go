@@ -636,6 +636,39 @@ func logAndResetStats(s *testing.State, meter *kernelmeter.Meter, label string) 
 	logPSIStats(s)
 }
 
+// recordAndResetStats records the VM stats from meter, identifying them with
+// label.  Then it resets meter.
+func recordAndResetStats(s *testing.State, meter *kernelmeter.Meter, values *perf.Values, label string) {
+	defer meter.Reset()
+	stats, err := meter.VMStats()
+	if err != nil {
+		s.Errorf("Cannot compute page fault stats (%s): %v", label, err)
+		return
+	}
+	totalPageFaultCountMetric := perf.Metric{
+		Name:      "tast_total_page_fault_count_" + label,
+		Unit:      "count",
+		Direction: perf.SmallerIsBetter,
+	}
+	averagePageFaultRateMetric := perf.Metric{
+		Name:      "tast_average_page_fault_rate_" + label,
+		Unit:      "faults_per_second",
+		Direction: perf.SmallerIsBetter,
+	}
+	maxPageFaultRateMetric := perf.Metric{
+		Name:      "tast_max_page_fault_rate_" + label,
+		Unit:      "faults_per_second",
+		Direction: perf.SmallerIsBetter,
+	}
+	values.Set(totalPageFaultCountMetric, float64(stats.PageFault.Count))
+	values.Set(averagePageFaultRateMetric, stats.PageFault.AverageRate)
+	values.Set(maxPageFaultRateMetric, stats.PageFault.MaxRate)
+	s.Logf("Metrics: %s: total page fault count %v", label, stats.PageFault.Count)
+	s.Logf("Metrics: %s: oom count %v", label, stats.OOM.Count)
+	s.Logf("Metrics: %s: average page fault rate %v pf/second", label, stats.PageFault.AverageRate)
+	s.Logf("Metrics: %s: max page fault rate %v pf/second", label, stats.PageFault.MaxRate)
+}
+
 // logPSIStats logs the content of /proc/pressure/memory.  If that file is not
 // present, this function does nothing.  Other errors are logged.
 func logPSIStats(s *testing.State) {
@@ -713,7 +746,7 @@ func logTabSwitchTimes(ctx context.Context, switchTimes []time.Duration, tabCoun
 		t = (t + 1) % tabCount
 	}
 	for i, times := range tabTimes {
-		testing.ContextLogf(ctx, "Metrics: %s: mean/stdev switch time for tab index %d: %7.2f %7.2f (ms)",
+		testing.ContextLogf(ctx, "Metrics: %s: mean/stddev switch time for tab index %d: %7.2f %7.2f (ms)",
 			label, i, mean(times).Seconds()*1000, stdDev(times).Seconds()*1000)
 	}
 }
@@ -999,40 +1032,17 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		Unit:      "count",
 		Direction: perf.SmallerIsBetter,
 	}
-	totalPageFaultCount1Metric := perf.Metric{
-		Name:      "tast_total_page_fault_count_1",
-		Unit:      "count",
-		Direction: perf.SmallerIsBetter,
-	}
-	averagePageFaultRate1Metric := perf.Metric{
-		Name:      "tast_average_page_fault_rate_1",
-		Unit:      "faults_per_second",
-		Direction: perf.SmallerIsBetter,
-	}
-	maxPageFaultRate1Metric := perf.Metric{
-		Name:      "tast_max_page_fault_rate_1",
-		Unit:      "faults_per_second",
-		Direction: perf.SmallerIsBetter,
-	}
 	perfValues.Set(openedTabsMetric, float64(len(rset.tabIDs)))
 	lostTabs := len(rset.tabIDs) + initialTabCount - len(validTabIDs)
 	perfValues.Set(lostTabsMetric, float64(lostTabs))
-	stats, err := fullMeter.VMStats()
-	if err != nil {
-		s.Error("Cannot compute page fault stats: ", err)
-	}
-	perfValues.Set(totalPageFaultCount1Metric, float64(stats.PageFault.Count))
-	perfValues.Set(averagePageFaultRate1Metric, stats.PageFault.AverageRate)
-	perfValues.Set(maxPageFaultRate1Metric, stats.PageFault.MaxRate)
 	s.Log("Metrics: Phase 1: opened tab count ", len(rset.tabIDs))
 	s.Log("Metrics: Phase 1: lost tab count ", lostTabs)
-	s.Log("Metrics: Phase 1: oom count ", stats.OOM.Count)
-	s.Log("Metrics: Phase 1: total page fault count ", stats.PageFault.Count)
-	s.Logf("Metrics: Phase 1: average page fault rate %v pf/second", stats.PageFault.AverageRate)
-	s.Logf("Metrics: Phase 1: max page fault rate %v pf/second", stats.PageFault.MaxRate)
+
 	times := allTabSwitchTimes
 	s.Logf("Metrics: Phase 1: mean tab switch time %7.2f ms", mean(times).Seconds()*1000)
 	s.Logf("Metrics: Phase 1: stddev of tab switch times %7.2f ms", stdDev(times).Seconds()*1000)
+
+	recordAndResetStats(s, fullMeter, perfValues, "phase_1")
 
 	// -----------------
 	// Phase 2: measure tab switch times to cold tabs.
@@ -1049,6 +1059,8 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	}
 	logTabSwitchTimes(ctx, times, len(coldTabIDs), "coldswitch")
 
+	recordAndResetStats(s, fullMeter, perfValues, "coldswitch")
+
 	// -----------------
 	// Phase 3: quiesce.
 	// -----------------
@@ -1056,37 +1068,11 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	if err := testing.Sleep(ctx, 10*time.Second); err != nil {
 		s.Fatal("Timed out: ", err)
 	}
-	fullMeter.Reset()
 	// Measure tab switching under pressure.
 	if err := runTabSwitches(ctx, cr, rset, initialTabSetIDs, "heavy", tabSwitchRepeatCount); err != nil {
 		s.Error("Cannot run tab switches with heavy load: ", err)
 	}
-	stats, err = fullMeter.VMStats()
-	if err != nil {
-		s.Error("Cannot compute page fault stats (phase 2): ", err)
-	}
-	totalPageFaultCount2Metric := perf.Metric{
-		Name:      "tast_total_pagefault_count_2",
-		Unit:      "count",
-		Direction: perf.SmallerIsBetter,
-	}
-	averagePageFaultRate2Metric := perf.Metric{
-		Name:      "tast_average_pageFault_rate_2",
-		Unit:      "faults_per_second",
-		Direction: perf.SmallerIsBetter,
-	}
-	maxPageFaultRate2Metric := perf.Metric{
-		Name:      "tast_max_pageFault_rate_2",
-		Unit:      "faults_per_second",
-		Direction: perf.SmallerIsBetter,
-	}
-	perfValues.Set(totalPageFaultCount2Metric, float64(stats.PageFault.Count))
-	perfValues.Set(averagePageFaultRate2Metric, stats.PageFault.AverageRate)
-	perfValues.Set(maxPageFaultRate2Metric, stats.PageFault.MaxRate)
-	s.Log("Metrics: Phase 3: total page fault count ", stats.PageFault.Count)
-	s.Log("Metrics: Phase 3: oom count ", stats.OOM.Count)
-	s.Logf("Metrics: Phase 3: average page fault rate %v pf/second", stats.PageFault.AverageRate)
-	s.Logf("Metrics: Phase 3: max page fault rate %v pf/second", stats.PageFault.MaxRate)
+	recordAndResetStats(s, fullMeter, perfValues, "phase_3")
 
 	if err = perfValues.Save(s.OutDir()); err != nil {
 		s.Error("Cannot save perf data: ", err)
