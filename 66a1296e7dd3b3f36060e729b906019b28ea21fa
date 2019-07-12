@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e658e5c9_24a4b5d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ash_window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-12T00:20:20Z",
+      "side": 1,
+      "message": "huge nit: ash -\u003e Ash",
+      "range": {
+        "startLine": 19,
+        "startChar": 37,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "66a1296e7dd3b3f36060e729b906019b28ea21fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1d0e75b_65cf074a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ash_window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-12T00:20:20Z",
+      "side": 1,
+      "message": "nit, optional: a more compact way to do it is:\n\n```\nif state, err :\u003d ash.SetArcAppWindowState(ctx, tconn, pkg, test.wmEvent); err !\u003d nil {\n  s.Error(\"Failed to set window state to %s for Settings app. \", test.expectedWindowState)\n} else if state !\u003d test.expectedWindowState {\n\t\t\ts.Error(\"Unexpected window state: got %s, want %s\", state, test.expectedWindowState)\n}\n```",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 71
+      },
+      "revId": "66a1296e7dd3b3f36060e729b906019b28ea21fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2aea2dc_3e10b61e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ash_window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-12T00:20:20Z",
+      "side": 1,
+      "message": "nit: you can use %q, that will wrap the value between \u0027\ne.g,\n\"Invalid window state %q; want %q\"",
+      "range": {
+        "startLine": 81,
+        "startChar": 12,
+        "endLine": 81,
+        "endChar": 52
+      },
+      "revId": "66a1296e7dd3b3f36060e729b906019b28ea21fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b16251be_e9a3d37b",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-12T00:20:20Z",
+      "side": 1,
+      "message": "huge nit:\n\u0027Sends\u0027 with lowercase \u0027s\u0027\nArc -\u003e ARC",
+      "range": {
+        "startLine": 42,
+        "startChar": 24,
+        "endLine": 42,
+        "endChar": 45
+      },
+      "revId": "66a1296e7dd3b3f36060e729b906019b28ea21fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
