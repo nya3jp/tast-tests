@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8f662587_bed9cdda",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-07-12T11:50:00Z",
+      "side": 1,
+      "message": "The files are 664 bytes and 301 bytes respectively. Just confirmation, is it OK to put these to external?\n\nAdditionally,\n\u003d\u003d\u003d quote \u003d\u003d\u003d\nOnly store binaries as external data.\n\u003d\u003d\u003d quote end \u003d\u003d\u003d\nI might be interpreting it wrong, but this sentence looks ambiguous to me.\n- Store only binaries as external data.\n- Store binaries only as external data.\n\nIs it the latter?",
+      "parentUuid": "7e69e691_7c664da8",
+      "revId": "0ea87159289ef876a77dd71a0dbc67ce6ae4f144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07b3d5d9_6b6e6286",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "0ea87159289ef876a77dd71a0dbc67ce6ae4f144",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc2af683_5e118ecd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-07-12T11:50:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07b3d5d9_6b6e6286",
+      "revId": "0ea87159289ef876a77dd71a0dbc67ce6ae4f144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "ec033a17_3110ba86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-07-12T11:50:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7145e0c9_c722f89c",
+      "revId": "0ea87159289ef876a77dd71a0dbc67ce6ae4f144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d2d6615_7998a023",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
         "patchSetId": 1
@@ -67,6 +121,24 @@
       "revId": "0ea87159289ef876a77dd71a0dbc67ce6ae4f144",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb0ea1ee_257904d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-07-12T11:50:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d2d6615_7998a023",
+      "revId": "0ea87159289ef876a77dd71a0dbc67ce6ae4f144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
