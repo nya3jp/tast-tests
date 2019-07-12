@@ -109,6 +109,7 @@ func WindowManagerCUJ(ctx context.Context, s *testing.State) {
 	}{
 		{"Default Launch Clamshell N", wmDefaultLaunchClamshell24},
 		{"Default Launch Clamshell Pre-N", wmDefaultLaunchClamshell23},
+		{"Maximize / Restore Clamshell N", wmMaximizeRestoreClamshell24},
 	} {
 		s.Logf("Running test %q", test.name)
 
@@ -219,9 +220,65 @@ func wmDefaultLaunchClamshell23(ctx context.Context, tconn *chrome.Conn, a *arc.
 	return nil
 }
 
+// wmMaximizeRestoreClamshell24 verifies that switching to maximize state from restore state, and vice-versa, works as defined in:
+// go/arc-wm-p "Clamshell: maximize/restore" (slides #8 - #10).
+func wmMaximizeRestoreClamshell24(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
+	for _, test := range []struct {
+		name         string
+		act          string
+		stateA       arc.WindowState
+		wantedStateA wmTestStateFunc
+		stateB       arc.WindowState
+		wantedStateB wmTestStateFunc
+	}{
+		{"Unspecified", wmResizeableUnspecifiedActivity,
+			arc.WindowStateMaximized, checkMaximizeResizeable, arc.WindowStateNormal, checkRestoreResizeable},
+		{"Portrait", wmResizeablePortraitActivity,
+			arc.WindowStateNormal, checkRestoreResizeable, arc.WindowStateMaximized, checkPillarboxResizeable},
+		{"Landscape", wmResizeableLandscapeActivity,
+			arc.WindowStateMaximized, checkMaximizeResizeable, arc.WindowStateNormal, checkRestoreResizeable},
+	} {
+		if err := func() error {
+			testing.ContextLogf(ctx, "Running subtest %q", test.name)
+			act, err := arc.NewActivity(a, wmPkg24, test.act)
+			if err != nil {
+				return err
+			}
+			defer act.Close()
+
+			if err := act.Start(ctx); err != nil {
+				return err
+			}
+			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
+			defer act.Stop(ctx)
+
+			if err := test.wantedStateA(ctx, act, d); err != nil {
+				return err
+			}
+
+			if err := act.SetWindowState(ctx, test.stateB); err != nil {
+				return err
+			}
+
+			if err := test.wantedStateB(ctx, act, d); err != nil {
+				return err
+			}
+
+			if err := act.SetWindowState(ctx, test.stateA); err != nil {
+				return err
+			}
+
+			return test.wantedStateA(ctx, act, d)
+		}(); err != nil {
+			return errors.Wrapf(err, "%q subtest failed", test.name)
+		}
+	}
+	return nil
+}
+
 // Helper functions
 
-// checkMaximizeResizeable checks that the window is maximized and is resizeable.
+// checkMaximizeResizeable checks that the window is both maximized and resizeable.
 func checkMaximizeResizeable(ctx context.Context, act *arc.Activity, d *ui.Device) error {
 	if err := compareWMState(ctx, act, arc.WindowStateMaximized); err != nil {
 		return err
@@ -230,7 +287,7 @@ func checkMaximizeResizeable(ctx context.Context, act *arc.Activity, d *ui.Devic
 	return compareCaption(ctx, act, d, caption)
 }
 
-// checkMaximizeNonResizeable checks that the window is maximized and is not resizeable.
+// checkMaximizeNonResizeable checks that the window is both maximized and not resizeable.
 func checkMaximizeNonResizeable(ctx context.Context, act *arc.Activity, d *ui.Device) error {
 	if err := compareWMState(ctx, act, arc.WindowStateMaximized); err != nil {
 		return err
@@ -239,7 +296,7 @@ func checkMaximizeNonResizeable(ctx context.Context, act *arc.Activity, d *ui.De
 	return compareCaption(ctx, act, d, caption)
 }
 
-// checkRestoreResizeable checks that the window is in restore mode and is resizeable.
+// checkRestoreResizeable checks that the window is both in restore mode and is resizeable.
 func checkRestoreResizeable(ctx context.Context, act *arc.Activity, d *ui.Device) error {
 	if err := compareWMState(ctx, act, arc.WindowStateNormal); err != nil {
 		return err
@@ -248,7 +305,16 @@ func checkRestoreResizeable(ctx context.Context, act *arc.Activity, d *ui.Device
 	return compareCaption(ctx, act, d, caption)
 }
 
-// checkPillarboxNonResizeable checks that the window is in pillar-box mode and is resizeable.
+// checkPillarboxResizeable checks that the window is both in pillar-box mode and is resizeable.
+func checkPillarboxResizeable(ctx context.Context, act *arc.Activity, d *ui.Device) error {
+	if err := checkPillarbox(ctx, act, d); err != nil {
+		return err
+	}
+	caption := []string{wmBack, wmMinimize, wmRestore, wmClose}
+	return compareCaption(ctx, act, d, caption)
+}
+
+// checkPillarboxNonResizeable checks that the window is both in pillar-box mode and is not resizeable.
 func checkPillarboxNonResizeable(ctx context.Context, act *arc.Activity, d *ui.Device) error {
 	if err := checkPillarbox(ctx, act, d); err != nil {
 		return err
@@ -271,7 +337,7 @@ func checkPillarbox(ctx context.Context, act *arc.Activity, d *ui.Device) error 
 	return compareWMState(ctx, act, arc.WindowStateMaximized)
 }
 
-// compareWMState compares the activity window state  with the wanted one.
+// compareWMState compares the activity window state with the wanted one.
 // Returns nil only if they are equal.
 func compareWMState(ctx context.Context, act *arc.Activity, wanted arc.WindowState) error {
 	state, err := act.GetWindowState(ctx)
