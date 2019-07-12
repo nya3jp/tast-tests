@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "896e62a3_c5941878",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-07-12T08:17:28Z",
+      "side": 1,
+      "message": "I added the double-click guard for the add button because there is a bug of CWS page would keep toggle the text on the button between \"Add to Chrome\" and \"Checking...\". \n\nBut I agree that there is no harm to add the guard for the confirm button too, so I did that.",
+      "parentUuid": "88b308c2_82683d1e",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 9
+      },
+      "revId": "2e87fdf73ac4adbefc9f01e0e2fe5f41dae49bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6133bcd9_da8187bf",
         "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
         "patchSetId": 5
@@ -68,6 +92,30 @@
       "revId": "2e87fdf73ac4adbefc9f01e0e2fe5f41dae49bcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f1cf37e_b8f692f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-07-12T08:17:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e76325ed_3c83d406",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 2
+      },
+      "revId": "2e87fdf73ac4adbefc9f01e0e2fe5f41dae49bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
