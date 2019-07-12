@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "95344f00_db157cbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-07-12T21:31:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "035f3551_0f2d3dee",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 3
+      },
+      "revId": "0b1c6e8aaa8e42138ff3cfb28d72593f5d53f525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e102b79_7921d607",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "0b1c6e8aaa8e42138ff3cfb28d72593f5d53f525",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "322fcec9_dfe4648f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-07-12T21:31:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e102b79_7921d607",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "0b1c6e8aaa8e42138ff3cfb28d72593f5d53f525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2849f32b_76b205d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-07-12T21:31:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "357fbc34_4517dedb",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 3
+      },
+      "revId": "0b1c6e8aaa8e42138ff3cfb28d72593f5d53f525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35f0ba45_50ea7fd8",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
         "patchSetId": 3
@@ -85,6 +157,24 @@
       "revId": "0b1c6e8aaa8e42138ff3cfb28d72593f5d53f525",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59cf5725_3480d61d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-07-12T21:31:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35f0ba45_50ea7fd8",
+      "revId": "0b1c6e8aaa8e42138ff3cfb28d72593f5d53f525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
