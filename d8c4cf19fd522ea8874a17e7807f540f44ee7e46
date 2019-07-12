@@ -123,6 +123,24 @@
       "revId": "d8c4cf19fd522ea8874a17e7807f540f44ee7e46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "735a0c2f_d87dae39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_new.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-12T00:53:44Z",
+      "side": 1,
+      "message": "\u003e Release branch for old versions of Chrome OS will keep using old Tast tests. So, it\u0027ll be hard\n\u003e to know which binary is used in each branch.\n\nThis should be fine, as its easy to see the command used in the test log.\n\n\u003e When we check long-term test results for video.DecodeAccelH264 in stainless, the list of\n\u003e test results will contain outputs from both old and new binaries.\n\nI don\u0027t think we really ever need to go back that long when looking at test results. And while the binaries are different, the things being tested, the test methodology and results are very similar. I see this more like \"improving the current test\", then \"adding a new test\". The \"new\" suffix is just a temporary measure so we can test the improvements side-by-side for a few weeks before switching.\n\nI would rather deal with the limitations you listed above, for 4 testcases, than have 40 future testcases with an additional \u0027Binary\u0027 in the name. And I would prefer to keep naming similar between encode/decode testcases, so that would mean renaming 30+ encode testcases.",
+      "parentUuid": "1bce62db_c270af26",
+      "revId": "d8c4cf19fd522ea8874a17e7807f540f44ee7e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
