@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9e1a4b9_eb6e6001",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-12T03:56:38Z",
+      "side": 1,
+      "message": "Please explain\n* how large these artifacts are in total, and\n* how often these artifacts will be stored.\n\nThese data are important because there is a limitation of log file \nsize. The commit message should make it clear that this change won\u0027t increase total file size so much.",
+      "revId": "3ff4964bc10846964281caf8a293316ce8e93ccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
