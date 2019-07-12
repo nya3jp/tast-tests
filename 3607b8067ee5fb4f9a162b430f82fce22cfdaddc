@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25bb54c8_90df7638",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-12T02:13:16Z",
+      "side": 1,
+      "message": "style: could you avoid using |varname| style, for consistency? You can just say histogramDiff, perfValue, etc.",
+      "revId": "3607b8067ee5fb4f9a162b430f82fce22cfdaddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59d90b42_40c6c6f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-12T02:13:16Z",
+      "side": 1,
+      "message": "Could you comment that the average is not the real value intentionally?",
+      "revId": "3607b8067ee5fb4f9a162b430f82fce22cfdaddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
