@@ -2,6 +2,74 @@
   "comments": [
     {
       "key": {
+        "uuid": "7e69e691_7c664da8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-12T09:26:17Z",
+      "side": 1,
+      "message": "As for data files, could you use external data?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#internal-vs_external\n\n\u003d\u003d\u003d quote \u003d\u003d\u003d\nOnly store binaries as external data.\n\u003d\u003d\u003d quote end \u003d\u003d\u003d",
+      "revId": "0ea87159289ef876a77dd71a0dbc67ce6ae4f144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07b3d5d9_6b6e6286",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-12T09:26:17Z",
+      "side": 1,
+      "message": "Could you use the dirname for the package name?\n\n(optional): maybe shorter word is preferred, such as \"crash\".",
+      "revId": "0ea87159289ef876a77dd71a0dbc67ce6ae4f144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7145e0c9_c722f89c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-12T09:26:17Z",
+      "side": 1,
+      "message": "style/optional: we often do not add line break in this kind of case.",
+      "revId": "0ea87159289ef876a77dd71a0dbc67ce6ae4f144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d2d6615_7998a023",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-12T09:26:17Z",
+      "side": 1,
+      "message": "missing import chromiumos/tast/local/bundles/cros/platform/crashsender ?",
+      "revId": "0ea87159289ef876a77dd71a0dbc67ce6ae4f144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b464591_827db54c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
         "patchSetId": 1
@@ -16,6 +84,24 @@
       "revId": "0ea87159289ef876a77dd71a0dbc67ce6ae4f144",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4d1e790_c5bdc11e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-12T09:26:17Z",
+      "side": 1,
+      "message": "No, this is better.",
+      "parentUuid": "2b464591_827db54c",
+      "revId": "0ea87159289ef876a77dd71a0dbc67ce6ae4f144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
