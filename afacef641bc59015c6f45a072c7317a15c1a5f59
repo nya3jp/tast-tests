@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45bf0196_ceaf4491",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-12T08:05:51Z",
+      "side": 1,
+      "message": "Sorry for not catching this in previous review, but since deferred statements are excuted at the end of the function, not at the end of the scope, it usually does not work as we expect if we use defer in a loop.\n\nIn this case I recommend putting the whole loop content in an anonymous function, e.g.\n\n for _, test  :\u003d range []struct { ... } { ... } {\n   if err :\u003d func() error {\n     ...\n   }(); err !\u003d nil {\n     return errors.Wrapf(err, \"%q subtest failed\", test.name)\n   }\n }\n\nAs a bonus, it is easier to insert the failed subtest name for debuggability.",
+      "range": {
+        "startLine": 204,
+        "startChar": 2,
+        "endLine": 204,
+        "endChar": 19
+      },
+      "revId": "afacef641bc59015c6f45a072c7317a15c1a5f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
