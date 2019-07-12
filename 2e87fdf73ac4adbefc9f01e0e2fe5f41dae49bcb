@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88b308c2_82683d1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-12T07:55:40Z",
+      "side": 1,
+      "message": "Don\u0027t we need a double-click guard for the confirm button just like the add button?",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 9
+      },
+      "revId": "2e87fdf73ac4adbefc9f01e0e2fe5f41dae49bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6133bcd9_da8187bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-12T07:55:40Z",
+      "side": 1,
+      "message": "Hmm, this is strange...",
+      "range": {
+        "startLine": 132,
+        "startChar": 11,
+        "endLine": 132,
+        "endChar": 63
+      },
+      "revId": "2e87fdf73ac4adbefc9f01e0e2fe5f41dae49bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e76325ed_3c83d406",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-12T07:55:40Z",
+      "side": 1,
+      "message": "Please insert:\n\n defer kb.Close()",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 2
+      },
+      "revId": "2e87fdf73ac4adbefc9f01e0e2fe5f41dae49bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
