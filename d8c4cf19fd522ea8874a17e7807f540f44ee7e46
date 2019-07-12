@@ -141,6 +141,24 @@
       "revId": "d8c4cf19fd522ea8874a17e7807f540f44ee7e46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6bc44a1_98b9db82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264_new.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-12T02:46:52Z",
+      "side": 1,
+      "message": "\u003e  I see this more like \"improving the current test\", then \"adding a new test\". \n\nOkay. It\u0027d make sense. Then, dropping \u0027New\u0027 sounds acceptable for me.",
+      "parentUuid": "735a0c2f_d87dae39",
+      "revId": "d8c4cf19fd522ea8874a17e7807f540f44ee7e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
