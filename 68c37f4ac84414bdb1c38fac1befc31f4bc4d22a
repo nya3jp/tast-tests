@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a69ebd48_428dcd38",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-12T05:57:04Z",
+      "side": 1,
+      "message": "style: !ok",
+      "range": {
+        "startLine": 145,
+        "startChar": 4,
+        "endLine": 145,
+        "endChar": 15
+      },
+      "revId": "68c37f4ac84414bdb1c38fac1befc31f4bc4d22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "551f9a3b_793bbb46",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-12T05:57:04Z",
+      "side": 1,
+      "message": "This approach would through away the data after expected line if read.\nFollowing read of stdout will be unpredictable.\n\nIf performance is not a problem, you\u0027d need to Read() a byte one-by-one as you did.\nIf performance is a problem, you\u0027d need to implement a buffered reader, which should carries unconsumed but already read from FD data to the next read operation to Stdout.",
+      "revId": "68c37f4ac84414bdb1c38fac1befc31f4bc4d22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
