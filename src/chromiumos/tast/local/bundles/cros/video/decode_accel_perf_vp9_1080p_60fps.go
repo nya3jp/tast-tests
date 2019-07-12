@@ -25,5 +25,5 @@ func init() {
 
 // DecodeAccelPerfVP91080P60FPS runs the video_decode_accelerator_perf_tests with 1080p_60fps_600frames.vp9.ivf.
 func DecodeAccelPerfVP91080P60FPS(ctx context.Context, s *testing.State) {
-	decode.RunAccelVideoPerfTest(ctx, s, "1080p_60fps_600frames.vp9.ivf")
+	decode.RunAccelVideoPerfTest(ctx, s, "1080p_60fps_600frames.vp9.ivf", decode.VDA)
 }
