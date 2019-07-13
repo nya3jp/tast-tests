@@ -66,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "50776892_4af523b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2019-07-13T03:51:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38d83993_64be6cc1",
+      "revId": "be948b8ff87eaefed455f2ad4327ca18ae8698e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0b77ec1_a348f382",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
         "patchSetId": 5
@@ -86,6 +104,30 @@
       "revId": "be948b8ff87eaefed455f2ad4327ca18ae8698e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f36ebd20_8b1b368a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2019-07-13T03:51:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0b77ec1_a348f382",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 45
+      },
+      "revId": "be948b8ff87eaefed455f2ad4327ca18ae8698e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
