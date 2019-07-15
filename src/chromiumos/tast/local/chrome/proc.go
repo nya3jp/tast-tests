@@ -5,6 +5,7 @@
 package chrome
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/shirou/gopsutil/process"
@@ -42,6 +43,8 @@ func GetRootPID() (int, error) {
 		return -1, err
 	}
 
+	// DO NOT SUBMIT
+	problems := make([]string, 0)
 	pm := make(map[int]struct{}, len(pids))
 	for _, pid := range pids {
 		pm[pid] = struct{}{}
@@ -50,17 +53,23 @@ func GetRootPID() (int, error) {
 		// If we see errors, assume that the process exited.
 		proc, err := process.NewProcess(int32(pid))
 		if err != nil {
+			problems = append(problems, fmt.Sprintf("Could not create new process for pid %d: %v", pid, err))
 			continue
 		}
 		ppid, err := proc.Ppid()
 		if err != nil || ppid <= 0 {
+			if err != nil {
+				problems = append(problems, fmt.Sprintf("Could not get parent for pid %d: %v", pid, err))
+			} else {
+				problems = append(problems, fmt.Sprintf("Parent for pid %d was %d", pid, ppid))
+			}
 			continue
 		}
 		if _, ok := pm[int(ppid)]; !ok {
 			return pid, nil
 		}
 	}
-	return -1, errors.New("root not found")
+	return -1, errors.Errorf("root not found, issues: %v", problems)
 }
 
 // getProcesses returns Chrome processes with the --type=${t} flag.

@@ -12,12 +12,14 @@ import (
 	"path/filepath"
 	"strings"
 	"syscall"
+	"time"
 
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/crash"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/debugd"
 	"chromiumos/tast/testing"
 )
 
@@ -122,10 +124,39 @@ func KillAndGetCrashFiles(ctx context.Context) ([]string, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get original crashes")
 	}
+	testing.ContextLog(ctx, "Old files: ", oldFiles) // REMOVE ME DO NOT SUMBIT
 
-	pids, err := chrome.GetPIDs()
-	if err != nil {
+	var pids []int
+	// Wait for Chrome to be up.
+	if err = testing.Poll(ctx, func(ctx context.Context) error {
+		pids, err = chrome.GetPIDs()
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if len(pids) == 0 {
+			return errors.New("no Chrome processes found")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
 		return nil, errors.Wrap(err, "failed to get Chrome PIDs")
+	}
+
+	// Sleep briefly after Chrome starts so it has time to set up breakpad.
+	// (Also needed for https://crbug.com/906690)
+	const delay = 3 * time.Second
+	testing.ContextLogf(ctx, "Sleeping %v to wait for Chrome to stabilize", delay)
+	if err = testing.Sleep(ctx, delay); err != nil {
+		return nil, errors.Wrap(err, "timed out while waiting for Chrome startup")
+	}
+
+	// DO NOT SUBMIT -- find a better way to do this
+	d, err := debugd.New(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to debugd")
+	}
+	err = d.SetCrashSenderTestMode(ctx, true)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to set crash sender test mode")
 	}
 
 	// The root Chrome process (i.e. the one that doesn't have another Chrome process
