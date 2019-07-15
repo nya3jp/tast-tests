@@ -16,6 +16,24 @@
       "revId": "537d49291087305baf8ceaac897ced36c3ba6331",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc122e75_4b324662",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-07-15T20:20:31Z",
+      "side": 1,
+      "message": "Thanks for the clarification -- that makes sense. :)\n\nI have made the changes in the new PS.",
+      "parentUuid": "bbdf80e4_42ebcb41",
+      "revId": "537d49291087305baf8ceaac897ced36c3ba6331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
