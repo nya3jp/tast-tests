@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b09b3527_af742fb4",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-15T15:19:56Z",
+      "side": 1,
+      "message": "# Very sorry, overlooked here and below in the last iteration...\n\nyou need to close pw at the end of this function.\n(I found that os.exec does not close Stdout if it is *os.File).\nMy recommendation is,\n\ndefer pw.Close()\n\nat L77.",
+      "revId": "7e6d9230797a07f10074967cab72f545c6896976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fb29ecc_25a3c465",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-15T15:19:56Z",
+      "side": 1,
+      "message": "pr needs to be closed here. Otherwise leaked.",
+      "revId": "7e6d9230797a07f10074967cab72f545c6896976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f96bdb33_ea7bf9bc",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-15T15:19:56Z",
+      "side": 1,
+      "message": "IIUC, Close() needs to be called regardless of command execution status above.\nThus,\n\ndefer vm.stdout.Close()\n\nat the beginning of the Close() method.",
+      "revId": "7e6d9230797a07f10074967cab72f545c6896976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
