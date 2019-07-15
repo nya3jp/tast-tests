@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "83ec12cd_f603353a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ash_window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2019-07-15T22:19:45Z",
+      "side": 1,
+      "message": "Ahh... I see. that\u0027s why. I didn\u0027t try it with else if statement. But that\u0027s weird that I got \"undefined state\" error. I modified as you suggested.",
+      "parentUuid": "9402dd54_e786bb38",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 71
+      },
+      "revId": "66a1296e7dd3b3f36060e729b906019b28ea21fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2aea2dc_3e10b61e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ash_window_state.go",
         "patchSetId": 2
@@ -215,6 +239,30 @@
     },
     {
       "key": {
+        "uuid": "595c4a24_e0670049",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ash_window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2019-07-15T22:19:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b2a271ad_f0ea6977",
+      "range": {
+        "startLine": 81,
+        "startChar": 12,
+        "endLine": 81,
+        "endChar": 52
+      },
+      "revId": "66a1296e7dd3b3f36060e729b906019b28ea21fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b16251be_e9a3d37b",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 2
@@ -258,6 +306,54 @@
       "revId": "66a1296e7dd3b3f36060e729b906019b28ea21fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15dae431_91ff45cd",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2019-07-15T22:19:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b16251be_e9a3d37b",
+      "range": {
+        "startLine": 42,
+        "startChar": 24,
+        "endLine": 42,
+        "endChar": 45
+      },
+      "revId": "66a1296e7dd3b3f36060e729b906019b28ea21fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c546f0a7_439679bf",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2019-07-15T22:19:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa92229f_02121926",
+      "range": {
+        "startLine": 42,
+        "startChar": 6,
+        "endLine": 42,
+        "endChar": 9
+      },
+      "revId": "66a1296e7dd3b3f36060e729b906019b28ea21fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
