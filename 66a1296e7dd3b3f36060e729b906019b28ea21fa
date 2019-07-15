@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "9402dd54_e786bb38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ash_window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-15T18:55:24Z",
+      "side": 1,
+      "message": "I think it is possible. Have you tried with the \n\n```\n} else if state !\u003d test... {\n```\n\nit is also possible that I missed something. We can discuss it offline.",
+      "parentUuid": "00f2a911_7478349a",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 71
+      },
+      "revId": "66a1296e7dd3b3f36060e729b906019b28ea21fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2aea2dc_3e10b61e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ash_window_state.go",
         "patchSetId": 2
@@ -164,6 +188,30 @@
       "revId": "66a1296e7dd3b3f36060e729b906019b28ea21fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2a271ad_f0ea6977",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ash_window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-15T18:55:24Z",
+      "side": 1,
+      "message": "xdai: sorry, feel free to disregard my comment.\nJust in case, the info about %q is here:\nhttps://golang.org/pkg/fmt/",
+      "parentUuid": "8762b210_36f84c07",
+      "range": {
+        "startLine": 81,
+        "startChar": 12,
+        "endLine": 81,
+        "endChar": 52
+      },
+      "revId": "66a1296e7dd3b3f36060e729b906019b28ea21fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
