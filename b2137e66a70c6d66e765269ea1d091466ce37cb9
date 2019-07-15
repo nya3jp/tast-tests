@@ -45,6 +45,30 @@
       "revId": "b2137e66a70c6d66e765269ea1d091466ce37cb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "271119c6_7ef73b4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-15T22:27:22Z",
+      "side": 1,
+      "message": "That\u0027s fine with me :)\n\nI really don\u0027t think any individual belongs here, unless it really helps with the \"find someone to review\" task. It belongs to the team. But we had that discussion already, so I guess we\u0027re picking \"somebody\". I\u0027m fine being the somebody.",
+      "parentUuid": "b7af1910_8ead7306",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 31
+      },
+      "revId": "b2137e66a70c6d66e765269ea1d091466ce37cb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
