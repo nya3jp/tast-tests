@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a1e2a37_fd43344b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-15T22:23:36Z",
+      "side": 1,
+      "message": "You can say this if you want...but it ain\u0027t gonna happen. If it happens to pass because the RF environment around these DUTs changed, then great. But we\u0027re really not going to get an improvement from the vendor.\n\nI guess I can stop quibbling over the commit message, but I\u0027d like you to understand that we cannot reliably pass this on some older devices. We *will* need an exception mechanism if we want to \"stabilize\" this test. So I\u0027d rather have a proper TODO in the test, saying something along the lines \"flaky on nyan devices\", ideally pointing at a bug for when you\u0027ll bother to reimplement  this in Tast.\n\nAlso, while I\u0027m at it, I figured I\u0027d note that nyan still fails pretty often:\n\nhttps://stainless.corp.google.com/search?view\u003dlist\u0026first_date\u003d2019-07-02\u0026last_date\u003d2019-07-15\u0026test\u003d%5Enetwork%5C_WlanDriver%24\u0026status\u003dFAIL\u0026status\u003dERROR\u0026status\u003dABORT\u0026reason\u003dFound+no+recognized+wireless+device\u0026exclude_cts\u003dtrue\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse",
+      "range": {
+        "startLine": 11,
+        "startChar": 56,
+        "endLine": 12,
+        "endChar": 41
+      },
+      "revId": "b2137e66a70c6d66e765269ea1d091466ce37cb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
