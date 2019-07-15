@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57654691_e540e323",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ash_window_state.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-15T18:55:24Z",
+      "side": 1,
+      "message": "nit/style: sorry if I wasn\u0027t clear... I meant \"Ash\" and not ASH (only the first letter in capital). But ARC is spelled ARC (and not Arc).\n\nIIUC, it is spelled \"Ash\" and not ASH, at least according the the docs that I found online, including this one: https://cs.chromium.org/chromium/src/ash/README.md\n\nIf the right name is \"ASH\" disregard my message.\n\nSome context to these nits:\nTast documentation is generated automatically from these files, so it is good to have these spelling correct. The doc is here:\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos",
+      "range": {
+        "startLine": 19,
+        "startChar": 37,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "a40cdf95530f71d3fe9d34e169652969019cd53e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f33bd5df_e7c1fe4f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-15T18:55:24Z",
+      "side": 1,
+      "message": "I think it is safe to remove the \u0027*\u0027 from here. Possibly from WMEventType as well.\nIf you are passing a pointer only because they are optional, the the `json:...,omitempty` should be enough.",
+      "range": {
+        "startLine": 46,
+        "startChar": 16,
+        "endLine": 46,
+        "endChar": 21
+      },
+      "revId": "a40cdf95530f71d3fe9d34e169652969019cd53e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f981531_2e334986",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-15T18:55:24Z",
+      "side": 1,
+      "message": "nit: remove \"var\". You can just do:\nchange :\u003d WindowStateChange{...}",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 11
+      },
+      "revId": "a40cdf95530f71d3fe9d34e169652969019cd53e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79fdda78_c860ff3f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-15T18:55:24Z",
+      "side": 1,
+      "message": "huge nit: `ch` is normally used in Go to refer to channels types. to avoid confusion with a channel, might be better to rename it something else, like `c`.\n\noptional: you can inline the previous line with this one. e,g:\n\nchange, err :\u003d json.Marshal(\u0026WindowStateChange{EventType: et})",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 3
+      },
+      "revId": "a40cdf95530f71d3fe9d34e169652969019cd53e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
