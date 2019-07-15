@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbdf80e4_42ebcb41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-15T14:45:05Z",
+      "side": 1,
+      "message": "Sorry for miscommunication.\nI meant;\n\nIf this whole test fails, you\u0027d need contents of \"b\" for investigation.\nThus, you\u0027d need to dump \"b\" into a file, under outdir to be salvaged if the test failed.\nHere, \"test fails\" means L39 and later.\nActually, if cros_healthd command execution fails, \"b\" does not make sense to be used.",
+      "revId": "537d49291087305baf8ceaac897ced36c3ba6331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
