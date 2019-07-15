@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9cd3d321_dda2b9cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ash_window_state.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2019-07-15T22:19:45Z",
+      "side": 1,
+      "message": "Yes I think its correct name is Ash, sorry about the mistake.",
+      "parentUuid": "57654691_e540e323",
+      "range": {
+        "startLine": 19,
+        "startChar": 37,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "a40cdf95530f71d3fe9d34e169652969019cd53e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f33bd5df_e7c1fe4f",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2019-07-15T18:55:24Z",
       "side": 1,
       "message": "I think it is safe to remove the \u0027*\u0027 from here. Possibly from WMEventType as well.\nIf you are passing a pointer only because they are optional, the the `json:...,omitempty` should be enough.",
+      "range": {
+        "startLine": 46,
+        "startChar": 16,
+        "endLine": 46,
+        "endChar": 21
+      },
+      "revId": "a40cdf95530f71d3fe9d34e169652969019cd53e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7ad7b3b_65c56e6b",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2019-07-15T22:19:45Z",
+      "side": 1,
+      "message": "Oh, thanks! Yes I thought we need to make it a pointer for an optional parameter. good to know that it\u0027s not required!",
+      "parentUuid": "f33bd5df_e7c1fe4f",
       "range": {
         "startLine": 46,
         "startChar": 16,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e1bccca9_d08f38bc",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2019-07-15T22:19:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f981531_2e334986",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 11
+      },
+      "revId": "a40cdf95530f71d3fe9d34e169652969019cd53e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79fdda78_c860ff3f",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "a40cdf95530f71d3fe9d34e169652969019cd53e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4096b794_a2318ef8",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2019-07-15T22:19:45Z",
+      "side": 1,
+      "message": "\u0027c\u0027 has already been used by *chrome.Conn. I modified it according to your second suggestion",
+      "parentUuid": "79fdda78_c860ff3f",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 3
+      },
+      "revId": "a40cdf95530f71d3fe9d34e169652969019cd53e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
