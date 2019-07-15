@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c1ec1904_920337f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ash_window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2019-07-15T16:49:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e658e5c9_24a4b5d9",
+      "range": {
+        "startLine": 19,
+        "startChar": 37,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "66a1296e7dd3b3f36060e729b906019b28ea21fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1d0e75b_65cf074a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ash_window_state.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-07-12T00:20:20Z",
       "side": 1,
       "message": "nit, optional: a more compact way to do it is:\n\n```\nif state, err :\u003d ash.SetArcAppWindowState(ctx, tconn, pkg, test.wmEvent); err !\u003d nil {\n  s.Error(\"Failed to set window state to %s for Settings app. \", test.expectedWindowState)\n} else if state !\u003d test.expectedWindowState {\n\t\t\ts.Error(\"Unexpected window state: got %s, want %s\", state, test.expectedWindowState)\n}\n```",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 71
+      },
+      "revId": "66a1296e7dd3b3f36060e729b906019b28ea21fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00f2a911_7478349a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ash_window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2019-07-15T16:49:18Z",
+      "side": 1,
+      "message": "It seems that we can\u0027t use \nif state, err :\u003d .... because there are more than 1 return parameters. I\u0027ll get \"undefined state\" error if I do so.",
+      "parentUuid": "f1d0e75b_65cf074a",
       "range": {
         "startLine": 76,
         "startChar": 2,
@@ -83,6 +131,30 @@
       "side": 1,
       "message": "FYI:\n- nice to keep \"got ...; want ...\" style.\n- If the values are known, and does not contain white space nor is empty, %s is fine to use.",
       "parentUuid": "c2aea2dc_3e10b61e",
+      "range": {
+        "startLine": 81,
+        "startChar": 12,
+        "endLine": 81,
+        "endChar": 52
+      },
+      "revId": "66a1296e7dd3b3f36060e729b906019b28ea21fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "525a5e59_1fe79ff2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ash_window_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2019-07-15T16:49:18Z",
+      "side": 1,
+      "message": "Thanks! Since the values are known to be nonempty, I\u0027ll keep %s. \nRicardo: I don\u0027t quite understand your comment. what does \"%q can wrap the value between \u0027\" mean? and can you briefly explain when we should use %q? Thanks!",
+      "parentUuid": "8762b210_36f84c07",
       "range": {
         "startLine": 81,
         "startChar": 12,
