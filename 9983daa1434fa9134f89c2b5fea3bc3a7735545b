@@ -202,6 +202,30 @@
     },
     {
       "key": {
+        "uuid": "ba879b37_8474e8f4",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-15T15:19:56Z",
+      "side": 1,
+      "message": "# Sorry, I overlooked this reply. I was too focusing on WatiForOutput().\n\n\u003e Would it be preferable to use the :\u003d on this line and declare the err variable later?\n\nYes. Could you restyle?\n\n(optional) BTW; I guess\n\nif _, err :\u003d os.Stat(...); err !\u003d nil {\n  return nil, errors.Wrap(err, \"failed to find VM\")\n}\n\nis better?\n- If os.Stat returns an error, there happens something wrong. My understanding is that, here you\u0027re checking if a file at VMPath exists, here.\n- Nice to wrap an error by errors.Wrap(), because it generates stacktrace, so in case of failure it will help you to debug, I think.",
+      "parentUuid": "ad36d82d_7d79dae5",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "9983daa1434fa9134f89c2b5fea3bc3a7735545b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9276786d_ad290b5d",
         "filename": "src/chromiumos/tast/local/vm/crosvm.go",
         "patchSetId": 2
