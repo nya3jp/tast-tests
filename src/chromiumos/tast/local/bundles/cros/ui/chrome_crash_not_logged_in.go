@@ -6,12 +6,10 @@ package ui
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/crash"
 	"chromiumos/tast/local/bundles/cros/ui/chromecrash"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -34,19 +32,6 @@ func ChromeCrashNotLoggedIn(ctx context.Context, s *testing.State) {
 		s.Fatal("Chrome startup failed: ", err)
 	}
 	defer cr.Close(ctx)
-
-	s.Log("Running metric_client to set up consent")
-	if err = testexec.CommandContext(ctx, "/usr/bin/metrics_client", "-C").Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Error setting metrics consent: ", err)
-	}
-
-	// Sleep briefly as a speculative workaround for Chrome hangs that are occasionally seen
-	// when this test sends SIGSEGV to Chrome soon after it starts: https://crbug.com/906690
-	const delay = 3 * time.Second
-	s.Logf("Sleeping %v to wait for Chrome to stabilize", delay)
-	if err := testing.Sleep(ctx, delay); err != nil {
-		s.Fatal("Timed out while waiting for Chrome startup: ", err)
-	}
 
 	files, err := chromecrash.KillAndGetCrashFiles(ctx)
 	if err != nil {
