@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31dc4ded_fff7913a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2019-07-15T20:39:19Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to match the function name at line 18. Is that correct?\nYou can use a way shorter name than this one, as well.\nCros should be implied; at longest this could be HealthdBatteryMetricsTest. You could even drop Healthd from the name as well.",
+      "revId": "441d4af89c08e80a03b6ac7453da44c24728c2d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4844b871_b544528b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2019-07-15T20:39:19Z",
+      "side": 1,
+      "message": "I don\u0027t think you need a file name this long. The files will already be put under \"test-name\" in the output, so it\u0027s clear which test case this is for. Something like \"failure.txt\" would be fine. or command_output.txt\n\nYou can just use str as the name of the string here.\n\nWhy are you declaring a function like this inline? I\u0027d expect to just see a top level function like \nfunc LogFailure(s string) error {\n  ...write to the file, return error on failure.\n}",
+      "revId": "441d4af89c08e80a03b6ac7453da44c24728c2d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "680bccca_e0e4ec94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2019-07-15T20:39:19Z",
+      "side": 1,
+      "message": "This is strange; the error message isn\u0027t tightly bound to what command ran, so how do you ensure this stays consistent and correct?",
+      "revId": "441d4af89c08e80a03b6ac7453da44c24728c2d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dae9387_7d056337",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2019-07-15T20:39:19Z",
+      "side": 1,
+      "message": "This seems like too much code.\n\nIt looks like you\u0027re trying to force an exact match, so if you want that, just do\n\nwant :\u003d sort.Slice([]string{...})\ngot :\u003d sort.Slice(strings.Split(lines[0], \",\"))\nif got !\u003d want {\n  s.Fatalf(\"header keys \u003d %v, want %v\", got, want)\n}\n\nThen you don\u0027t need to mess around with maps or whether things are missing or unexpected.",
+      "revId": "441d4af89c08e80a03b6ac7453da44c24728c2d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
