@@ -16,9 +16,10 @@ import (
 )
 
 const (
-	dbusName      = "org.chromium.debugd"
-	dbusPath      = "/org/chromium/debugd"
-	dbusInterface = "org.chromium.debugd"
+	dbusName            = "org.chromium.debugd"
+	dbusPath            = "/org/chromium/debugd"
+	dbusInterface       = "org.chromium.debugd"
+	crashSenderTestMode = "CrashSenderTestMode"
 )
 
 // Scheduler describes a scheduler mode that can be applied via SetSchedulerConfiguration.
@@ -120,6 +121,13 @@ func (d *Debugd) SetSchedulerConfiguration(ctx context.Context, param Scheduler)
 		return errors.New("SetSchedulerConfiguration returned false")
 	}
 	return nil
+}
+
+// SetCrashSenderTestMode sets debugd's CrashSenderTestMode property. If this is
+// set to true, the crash_sender invoked from debugd will just touch the "test
+// successful" file instead of uploading crashes.
+func (d *Debugd) SetCrashSenderTestMode(ctx context.Context, testMode bool) (err error) {
+	return d.obj.CallWithContext(ctx, "org.freedesktop.DBus.Properties.Set", 0, dbusInterface, crashSenderTestMode, testMode).Err
 }
 
 // call is thin wrapper of CallWithContext for convenience.

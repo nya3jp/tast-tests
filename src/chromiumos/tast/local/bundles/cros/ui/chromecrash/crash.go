@@ -12,6 +12,7 @@ import (
 	"path/filepath"
 	"strings"
 	"syscall"
+	"time"
 
 	"github.com/shirou/gopsutil/process"
 
@@ -114,7 +115,31 @@ func FindCrashFilesIn(dirPattern string, files []string) error {
 	return errors.Errorf("did not find the dmp file %s corresponding to the crash meta file", dump)
 }
 
-// KillAndGetCrashFiles sends SIGSEGV to the root Chrome process, waits for them to
+// getChromePIDs gets the process IDs of all Chrome processes running in the
+// system. This will wait for Chrome to be up before returning.
+func getChromePIDs(ctx context.Context) ([]int, error) {
+	var pids []int
+	// Don't just return the list of Chrome PIDs at the moment this is called.
+	// Instead, wait for Chrome to be up and then return the pids once it is up
+	// and running.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		pids, err = chrome.GetPIDs()
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if len(pids) == 0 {
+			return errors.New("no Chrome processes found")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
+		return nil, errors.Wrap(err, "failed to get Chrome PIDs")
+	}
+
+	return pids, nil
+}
+
+// KillAndGetCrashFiles sends SIGSEGV to the root Chrome process, waits for it to
 // exit, finds all the new crash files, and then deletes them and returns their paths.
 func KillAndGetCrashFiles(ctx context.Context) ([]string, error) {
 	dirs, err := cryptohomeCrashDirs(ctx)
@@ -127,9 +152,17 @@ func KillAndGetCrashFiles(ctx context.Context) ([]string, error) {
 		return nil, errors.Wrap(err, "failed to get original crashes")
 	}
 
-	pids, err := chrome.GetPIDs()
+	pids, err := getChromePIDs(ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to get Chrome PIDs")
+		return nil, errors.Wrap(err, "failed to find Chrome process IDs")
+	}
+
+	// Sleep briefly after Chrome starts so it has time to set up breakpad.
+	// (Also needed for https://crbug.com/906690)
+	const delay = 3 * time.Second
+	testing.ContextLogf(ctx, "Sleeping %v to wait for Chrome to stabilize", delay)
+	if err := testing.Sleep(ctx, delay); err != nil {
+		return nil, errors.Wrap(err, "timed out while waiting for Chrome startup")
 	}
 
 	// The root Chrome process (i.e. the one that doesn't have another Chrome process
