@@ -22,6 +22,29 @@
       "revId": "b2137e66a70c6d66e765269ea1d091466ce37cb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7af1910_8ead7306",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-07-15T22:25:34Z",
+      "side": 1,
+      "message": "Can you please change this from me to Brian, he wrote and \"stabilized\" the original network_WlanDriver largely by himself, and is also doing the bulk of review here. Thanks.",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 31
+      },
+      "revId": "b2137e66a70c6d66e765269ea1d091466ce37cb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
