@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/vkb"
 	"chromiumos/tast/testing"
 )
@@ -96,7 +97,7 @@ func VirtualKeyboardSuggestionsInformational(ctx context.Context, s *testing.Sta
 	for _, testCase := range testCases {
 		s.Log("Testing ", testCase.InputMethod)
 
-		if err := vkb.SetCurrentInputMethod(ctx, tconn, xkbExtensionID+testCase.InputMethod); err != nil {
+		if err := ime.SetCurrentInputMethod(ctx, tconn, xkbExtensionID+testCase.InputMethod); err != nil {
 			s.Error("Failed to set input method: ", err)
 			continue
 		}
