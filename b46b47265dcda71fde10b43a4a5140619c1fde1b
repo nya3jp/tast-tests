@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0b9cf859_43b75af0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-07-16T17:42:03Z",
+      "side": 1,
+      "message": "I just followed the convention of another file using \"pow\". Using \"power\" makes more sense though.",
+      "parentUuid": "aaf0d18b_d502d817",
+      "revId": "b46b47265dcda71fde10b43a4a5140619c1fde1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30dde847_07cc004f",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
         "patchSetId": 6
@@ -33,6 +51,24 @@
       "revId": "b46b47265dcda71fde10b43a4a5140619c1fde1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67d55f33_1325ff0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-07-16T17:42:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30dde847_07cc004f",
+      "revId": "b46b47265dcda71fde10b43a4a5140619c1fde1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "de10f6d0_ca006720",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-07-16T17:42:03Z",
+      "side": 1,
+      "message": "If there is no battery present, the command fails. I have added some logic to handle this.",
+      "parentUuid": "a6799291_825e7f33",
+      "revId": "b46b47265dcda71fde10b43a4a5140619c1fde1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16a75520_c3a005fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
         "patchSetId": 6
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "540f30d6_8ecbb80e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-07-16T17:42:03Z",
+      "side": 1,
+      "message": "I looked through some other tast tests and have edited my code to follow that convention. It uses a space after the got/want and a \";\" to separate the got/want.",
+      "parentUuid": "16a75520_c3a005fe",
+      "revId": "b46b47265dcda71fde10b43a4a5140619c1fde1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9c16c72_2d847d1d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
         "patchSetId": 6
@@ -84,6 +156,24 @@
       "revId": "b46b47265dcda71fde10b43a4a5140619c1fde1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc959f39_e76f96c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-07-16T17:42:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9c16c72_2d847d1d",
+      "revId": "b46b47265dcda71fde10b43a4a5140619c1fde1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
