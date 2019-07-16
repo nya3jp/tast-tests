@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "b4707efb_f2785d48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-07-16T03:45:50Z",
+      "side": 1,
+      "message": "Got it. Changed the data files to external.",
+      "parentUuid": "7ede2982_57edeb68",
+      "revId": "0ea87159289ef876a77dd71a0dbc67ce6ae4f144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07b3d5d9_6b6e6286",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
         "patchSetId": 1
