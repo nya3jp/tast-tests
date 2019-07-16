@@ -118,7 +118,7 @@ func createHash(ctx context.Context, dir, name, image string, nBlocks uint) (has
 		return "", "", err
 	}
 	cmd := testexec.CommandContext(
-		ctx, "verity", "mode=create", "alg=sha1",
+		ctx, "verity", "mode=create", "alg=sha256",
 		"payload="+image, fmt.Sprintf("payload_blocks=%d", nBlocks),
 		"hashtree="+f.Name())
 	out, err := cmd.Output()
