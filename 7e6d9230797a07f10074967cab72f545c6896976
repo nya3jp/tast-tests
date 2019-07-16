@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c1369239_ad91c876",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-07-16T16:41:53Z",
+      "side": 1,
+      "message": "Testing this locally works, but I\u0027m a little confused why it works. The defer will close the writing fd when NewCrosvm exits. How is the command\u0027s output still able to write to the fd if it is closed?",
+      "parentUuid": "b09b3527_af742fb4",
+      "revId": "7e6d9230797a07f10074967cab72f545c6896976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5fb29ecc_25a3c465",
         "filename": "src/chromiumos/tast/local/vm/crosvm.go",
         "patchSetId": 8
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "ea5257e7_1d5ff704",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-07-16T16:41:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fb29ecc_25a3c465",
+      "revId": "7e6d9230797a07f10074967cab72f545c6896976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f96bdb33_ea7bf9bc",
         "filename": "src/chromiumos/tast/local/vm/crosvm.go",
         "patchSetId": 8
@@ -50,6 +86,24 @@
       "revId": "7e6d9230797a07f10074967cab72f545c6896976",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "688fc73a_55cbf561",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-07-16T16:41:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f96bdb33_ea7bf9bc",
+      "revId": "7e6d9230797a07f10074967cab72f545c6896976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
