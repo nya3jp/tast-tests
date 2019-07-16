@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7adcb036_aa5c683c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2019-07-16T21:32:09Z",
+      "side": 1,
+      "message": "You don\u0027t need the power string here on the left.",
+      "revId": "56a35ab266d7a90dfea398d3afa680a16a1240c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbde4ccb_86fd730b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2019-07-16T21:32:09Z",
+      "side": 1,
+      "message": "Why does the command fail if there are no batteries?",
+      "revId": "56a35ab266d7a90dfea398d3afa680a16a1240c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
