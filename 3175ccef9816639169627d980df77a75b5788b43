@@ -202,6 +202,24 @@
     },
     {
       "key": {
+        "uuid": "45513644_e7b210dc",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-07-16T23:54:24Z",
+      "side": 1,
+      "message": "I think it is useful to have exposed pre creation function as Chrome.NewPrecondition. \nCan you elaborate how\u0027s the precondition equality works and why it is working in Chrome but not here?",
+      "parentUuid": "42767e54_fca84179",
+      "revId": "3175ccef9816639169627d980df77a75b5788b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2dfefbe_d0907ec5",
         "filename": "src/chromiumos/tast/local/vm/pre.go",
         "patchSetId": 8
