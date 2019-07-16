@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fc30c1c_0049ebda",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-16T03:12:10Z",
+      "side": 1,
+      "message": "note: report is not used yet in the migrated tests.\nIt will be used in the following CLs. I added it here so that, in later CLs, it is not necessary to change the signature of Run() (i.e., no need to change the callers again).",
+      "range": {
+        "startLine": 85,
+        "startChar": 58,
+        "endLine": 85,
+        "endChar": 65
+      },
+      "revId": "56c5073c84f9dcbd1bd7cf467873db9b6097eb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
