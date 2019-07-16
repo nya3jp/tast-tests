@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ee6ab59_ff325f7a",
+        "filename": "src/chromiumos/tast/local/arc/ui/object.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-16T21:47:56Z",
+      "side": 1,
+      "message": "note:\nthis is only needed to import arc.Rect. Not sure whether it is Ok in Go to import the parent package.",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "2e9cc4e3b7fc5464e001a86cd3f4fa4ba70d53dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49c8e956_cc2640b7",
+        "filename": "src/chromiumos/tast/local/arc/ui/object.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-16T21:47:56Z",
+      "side": 1,
+      "message": "note:\nthis is our official fork of ui automator server",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 134
+      },
+      "revId": "2e9cc4e3b7fc5464e001a86cd3f4fa4ba70d53dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
