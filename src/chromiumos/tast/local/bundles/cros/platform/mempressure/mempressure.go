@@ -842,7 +842,6 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		initialTabSetSize    = 5
 		recentTabSetSize     = 5
 		coldTabSetSize       = 10
-		tabCycleDelay        = 300 * time.Millisecond
 		tabSwitchRepeatCount = 10
 	)
 
