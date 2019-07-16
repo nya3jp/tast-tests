@@ -968,7 +968,7 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 			s.Log("Ending allocation because one or more targets (tabs) have gone")
 			break
 		}
-		if len(rset.tabIDs) >= p.MaxTabCount {
+		if p.MaxTabCount != 0 && len(rset.tabIDs) >= p.MaxTabCount {
 			s.Log("MaxTabCount reached. Tab count: ", len(rset.tabIDs))
 			break
 		}
