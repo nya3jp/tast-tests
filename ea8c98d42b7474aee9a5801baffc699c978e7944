@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "173ee3af_c7bfecb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ash_window_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-16T15:28:18Z",
+      "side": 1,
+      "message": "nit: Errorf.\n\nBTW, could you build tast-local-tests-cros package?\nI guess then go vet warns this.",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 77,
+        "endChar": 10
+      },
+      "revId": "ea8c98d42b7474aee9a5801baffc699c978e7944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88abdcfb_278469cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ash_window_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-16T15:28:18Z",
+      "side": 1,
+      "message": "nit/style: s/. //\n\ncf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting\n\n\u003d\u003d\u003d quote \u003d\u003d\u003d\nLog and error messages ... should be capitalized phrases without any trailing punctuation ...\n\u003d\u003d\u003d quote end \u003d\u003d\u003d",
+      "range": {
+        "startLine": 77,
+        "startChar": 61,
+        "endLine": 77,
+        "endChar": 63
+      },
+      "revId": "ea8c98d42b7474aee9a5801baffc699c978e7944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4616add_a5de4432",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ash_window_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-16T15:28:18Z",
+      "side": 1,
+      "message": "Same.",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 79,
+        "endChar": 10
+      },
+      "revId": "ea8c98d42b7474aee9a5801baffc699c978e7944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "080709f8_afcac7b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ash_window_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-16T15:28:18Z",
+      "side": 1,
+      "message": "huge nit: \";\" for consistency.",
+      "range": {
+        "startLine": 79,
+        "startChar": 43,
+        "endLine": 79,
+        "endChar": 44
+      },
+      "revId": "ea8c98d42b7474aee9a5801baffc699c978e7944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d97d01d5_ba82704f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-16T15:28:18Z",
+      "side": 1,
+      "message": "This is not used outside of this file. Could you make this private?\nwindowStateChange (start from lower case letter).",
+      "revId": "ea8c98d42b7474aee9a5801baffc699c978e7944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c7236cf_598d44fe",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-16T15:28:18Z",
+      "side": 1,
+      "message": "Looks unused. Could you remove?",
+      "revId": "ea8c98d42b7474aee9a5801baffc699c978e7944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "539a23e6_e1104c21",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-16T15:28:18Z",
+      "side": 1,
+      "message": "Could you describe what\u0027s returned?\nThis is setter so it looks not trivial.",
+      "revId": "ea8c98d42b7474aee9a5801baffc699c978e7944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d28b29c_3191e4e8",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-16T15:28:18Z",
+      "side": 1,
+      "message": "Could you declare the var at the latest timing?\nIn this case, json.Marshal does not need this. So, please move this line to arount L67.",
+      "revId": "ea8c98d42b7474aee9a5801baffc699c978e7944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
