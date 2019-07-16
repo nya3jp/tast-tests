@@ -1020,6 +1020,10 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	if err := testing.Sleep(ctx, 10*time.Second); err != nil {
 		s.Fatal("Timed out: ", err)
 	}
+	validTabIDs, err = getValidTabIDs(ctx, cr)
+	if err != nil {
+		s.Fatal("Cannot get tab list: ", err)
+	}
 
 	// Output metrics.
 	openedTabsMetric := perf.Metric{
