@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dbd45b96_9cceae8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-07-16T08:19:07Z",
+      "side": 1,
+      "message": "Done. IIUC golang doesn\u0027t have rigid limitation?",
+      "parentUuid": "f1e113b3_dbe3f4db",
+      "range": {
+        "startLine": 158,
+        "startChar": 3,
+        "endLine": 158,
+        "endChar": 121
+      },
+      "revId": "098fc3203bde34d57983225421254745cc61a963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "783387b0_14de6efa",
         "filename": "src/chromiumos/tast/local/input/gamepad.go",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "098fc3203bde34d57983225421254745cc61a963",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcd79291_9b83f226",
+        "filename": "src/chromiumos/tast/local/input/gamepad.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-07-16T08:19:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "783387b0_14de6efa",
+      "range": {
+        "startLine": 68,
+        "startChar": 8,
+        "endLine": 68,
+        "endChar": 59
+      },
+      "revId": "098fc3203bde34d57983225421254745cc61a963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
