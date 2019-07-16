@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2020e1c_d0214dd7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-16T05:39:00Z",
+      "side": 1,
+      "message": "I think we can ignore guado-kernelnext board for now because it\u0027s an experimental board that is not tested on CQ.",
+      "revId": "9ebcf711c853b95b947d6a1fe908f38948d013a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
