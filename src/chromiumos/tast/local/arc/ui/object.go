@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 )
 
 // Available RPC methods are listed at:
@@ -30,11 +31,25 @@ type Object struct {
 	s *selector
 }
 
+// rect represents a rectangle, as defined here:
+// https://developer.android.com/reference/android/graphics/Rect
+// It differs from arc.Rect in that it uses bottom & right instead of width & height.
+type rect struct {
+	Top    int `json:"top"`
+	Left   int `json:"left"`
+	Bottom int `json:"bottom"`
+	Right  int `json:"right"`
+}
+
+// objectInfo represents a collection of attributes that belongs to the object as defined
+// by UI Automator server. See:
+// https://github.com/lnishan/android-uiautomator-server/blob/master/app/src/androidTest/java/com/github/uiautomator/stub/ObjInfo.java
 type objectInfo struct {
 	Text               string `json:"text"`
 	ContentDescription string `json:"contentDescription"`
 	PackageName        string `json:"packageName"`
 	ClassName          string `json:"className"`
+	Bounds             rect   `json:"bounds"`
 	Checkable          bool   `json:"checkable"`
 	Checked            bool   `json:"checked"`
 	Clickable          bool   `json:"clickable"`
@@ -132,6 +147,21 @@ func (o *Object) GetClassName(ctx context.Context) (string, error) {
 		return "", errors.Wrap(err, "GetClassName failed")
 	}
 	return info.ClassName, nil
+}
+
+// GetBounds returns the bounds of a view.
+//
+// This method corresponds to UiObject.getBounds().
+// https://developer.android.com/reference/android/support/test/uiautomator/UiObject.html#getbounds
+func (o *Object) GetBounds(ctx context.Context) (arc.Rect, error) {
+	info, err := o.info(ctx)
+	if err != nil {
+		return arc.Rect{}, errors.Wrap(err, "GetBounds failed")
+	}
+	// Bounds contains a "graphics rect". Needs to be converted to an arc.Rect.
+	gr := info.Bounds
+	r := arc.Rect{Top: gr.Top, Left: gr.Left, Width: gr.Right - gr.Left, Height: gr.Bottom - gr.Top}
+	return r, nil
 }
 
 // IsCheckable returns if a view is checkable.
