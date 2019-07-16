@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60952016_a1b7f668",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-16T17:28:09Z",
+      "side": 1,
+      "message": "note: uiClick() is its own function since it will be used by other functions (in a future CL)",
+      "range": {
+        "startLine": 486,
+        "startChar": 0,
+        "endLine": 486,
+        "endChar": 12
+      },
+      "revId": "6e200f514160da56adbc9b8ed86fe8db58c54001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
