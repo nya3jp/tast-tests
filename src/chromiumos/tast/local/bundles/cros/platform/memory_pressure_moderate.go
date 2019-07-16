@@ -6,6 +6,7 @@ package platform
 
 import (
 	"context"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
@@ -26,6 +27,7 @@ func init() {
 			mempressure.WPRArchiveName,
 		},
 		SoftwareDeps: []string{"chrome"},
+		Vars:         []string{"tabs"},
 	})
 }
 
@@ -48,6 +50,18 @@ func MemoryPressureModerate(ctx context.Context, s *testing.State) {
 	} else {
 		maxTab = 100
 	}
+
+	// Check runtime flag tabs to specify maximal tab count.
+	val, ok := s.Var("tabs")
+	if ok {
+		tabs, err := strconv.Atoi(val)
+		if err != nil {
+			s.Error("Cannot parse argument tabs: ", err)
+		} else {
+			maxTab = tabs
+		}
+	}
+	s.Log("Maximal tab count: ", maxTab)
 
 	p := &mempressure.RunParameters{
 		DormantCodePath:          s.DataPath(mempressure.DormantCode),
