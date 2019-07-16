@@ -69,6 +69,53 @@
       "revId": "b2137e66a70c6d66e765269ea1d091466ce37cb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "554b529e_677fc5ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-16T04:06:36Z",
+      "side": 1,
+      "message": "Thanks for signing up as a contact!\n\nWe found having an individual contact in addition to aliases is useful on filing bugs when tests start to fail. Of course individuals can move teams or leave the company and then the contact can be stale, but in that case we can contact the alias.",
+      "parentUuid": "271119c6_7ef73b4c",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 31
+      },
+      "revId": "b2137e66a70c6d66e765269ea1d091466ce37cb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "398fad3e_205397f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-16T04:06:36Z",
+      "side": 1,
+      "message": "Please define this as a global variable to avoid compiling the regular expression every line.",
+      "range": {
+        "startLine": 295,
+        "startChar": 5,
+        "endLine": 295,
+        "endChar": 50
+      },
+      "revId": "b2137e66a70c6d66e765269ea1d091466ce37cb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
