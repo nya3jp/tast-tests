@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99db161e_a8d61f79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-07-16T20:34:45Z",
+      "side": 1,
+      "message": "I think long lines are okay",
+      "range": {
+        "startLine": 642,
+        "startChar": 0,
+        "endLine": 642,
+        "endChar": 37
+      },
+      "revId": "ab63e6b12dfd099c8f93c3dabb10d35a89991a66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b9ae5d7_331bdca4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1046,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-07-16T20:34:45Z",
+      "side": 1,
+      "message": "should we call this \"Phase 1\" to match what was previously reported?",
+      "range": {
+        "startLine": 1046,
+        "startChar": 48,
+        "endLine": 1046,
+        "endChar": 55
+      },
+      "revId": "ab63e6b12dfd099c8f93c3dabb10d35a89991a66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f306847a_fda4f1b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1000153
+      },
+      "writtenOn": "2019-07-16T20:34:45Z",
+      "side": 1,
+      "message": "same here, \"Phase 3\" ?",
+      "range": {
+        "startLine": 1076,
+        "startChar": 48,
+        "endLine": 1076,
+        "endChar": 53
+      },
+      "revId": "ab63e6b12dfd099c8f93c3dabb10d35a89991a66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
