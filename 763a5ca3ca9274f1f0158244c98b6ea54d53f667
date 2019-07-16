@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93635bb3_255c7034",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-16T00:26:42Z",
+      "side": 1,
+      "message": "Please avoid declaring tests in category subpackages. How about c/t/l/b/cros/crostini?",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 50
+      },
+      "revId": "763a5ca3ca9274f1f0158244c98b6ea54d53f667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
