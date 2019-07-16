@@ -41,10 +41,11 @@ func RunGPUFileDecodeTest(ctx context.Context, s *testing.State, logFileName str
 	}
 	defer cr.Close(ctx)
 
-	if err := gtest.RunCaseWithFlags(ctx, gpuTestBinaryPath, fileDecodeTestCase,
-		filepath.Join(s.OutDir(), logFileName), []string{
-			"--test_video_file=" + s.DataPath(videoFile),
-		}); err != nil {
+	if _, err := gtest.Run(ctx, gpuTestBinaryPath, &gtest.Param{
+		Logfile:   filepath.Join(s.OutDir(), logFileName),
+		Filter:    fileDecodeTestCase,
+		ExtraArgs: []string{"--test_video_file=" + s.DataPath(videoFile)},
+	}); err != nil {
 		s.Error("GPU file decode test failed: ", err)
 	}
 }
@@ -66,8 +67,10 @@ func RunGPUNonDecodeTests(ctx context.Context, s *testing.State) {
 		if testcase == fileDecodeTestCase {
 			continue
 		}
-		if err := gtest.RunCase(ctx, gpuTestBinaryPath, testcase,
-			filepath.Join(s.OutDir(), testcase+".log")); err != nil {
+		if _, err := gtest.Run(ctx, gpuTestBinaryPath, &gtest.Param{
+			Logfile: filepath.Join(s.OutDir(), testcase+".log"),
+			Filter:  testcase,
+		}); err != nil {
 			s.Errorf("GPU test case %s failed: %v", testcase, err)
 		}
 	}
