@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e938fa89_91021195",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2019-07-16T18:01:06Z",
+      "side": 1,
+      "message": "I wonder if you should just always log the output of the command to a file at around line 46. Then it\u0027s easier to follow.",
+      "revId": "d5ddaa825b0a09a33b3a18fa485e06167ce6db4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a711eacf_6b3b7ab6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2019-07-16T18:01:06Z",
+      "side": 1,
+      "message": "logCommandOutput?",
+      "revId": "d5ddaa825b0a09a33b3a18fa485e06167ce6db4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
