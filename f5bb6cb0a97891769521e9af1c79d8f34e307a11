@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "142bc7fd_2ae91294",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removable_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-16T04:32:20Z",
+      "side": 1,
+      "message": "I assume you\u0027re introducing another test using this package soon. When do you expect it to come?",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 15
+      },
+      "revId": "f5bb6cb0a97891769521e9af1c79d8f34e307a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad6ab0ce_813bcf7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-16T04:32:20Z",
+      "side": 1,
+      "message": "nit: I guess \"VFAT\" is correct.",
+      "range": {
+        "startLine": 25,
+        "startChar": 34,
+        "endLine": 25,
+        "endChar": 38
+      },
+      "revId": "f5bb6cb0a97891769521e9af1c79d8f34e307a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ab6762a_af0f82bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-16T04:32:20Z",
+      "side": 1,
+      "message": "Maybe createZeroFile is easier to understand? The file is not an image at this point.",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 16
+      },
+      "revId": "f5bb6cb0a97891769521e9af1c79d8f34e307a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "019c4385_d3e35d3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-16T04:32:20Z",
+      "side": 1,
+      "message": "--show can be used to print the associated device name.",
+      "range": {
+        "startLine": 42,
+        "startChar": 40,
+        "endLine": 42,
+        "endChar": 57
+      },
+      "revId": "f5bb6cb0a97891769521e9af1c79d8f34e307a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "998635bb_db7f8096",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-16T04:32:20Z",
+      "side": 1,
+      "message": "losetup -f may fail for various reasons other than this reason. Maybe just \"failed to attach to loop device\"?",
+      "range": {
+        "startLine": 43,
+        "startChar": 30,
+        "endLine": 43,
+        "endChar": 66
+      },
+      "revId": "f5bb6cb0a97891769521e9af1c79d8f34e307a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08731157_07de1cfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-16T04:32:20Z",
+      "side": 1,
+      "message": "huge nit: 64 * 1024 * 1024 might be easier to read :)",
+      "range": {
+        "startLine": 109,
+        "startChar": 14,
+        "endLine": 109,
+        "endChar": 19
+      },
+      "revId": "f5bb6cb0a97891769521e9af1c79d8f34e307a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "046c7be5_a7537ce2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-16T04:32:20Z",
+      "side": 1,
+      "message": "huge nit: how about just \"Failed to read %s: %v\"",
+      "range": {
+        "startLine": 114,
+        "startChar": 27,
+        "endLine": 114,
+        "endChar": 38
+      },
+      "revId": "f5bb6cb0a97891769521e9af1c79d8f34e307a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c26e4e4_a9a21fa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-16T04:32:20Z",
+      "side": 1,
+      "message": "nit: It would be easier to understand the message if we include the subject, e.g. \"Failed to unmount VFAT image\".",
+      "range": {
+        "startLine": 148,
+        "startChar": 22,
+        "endLine": 148,
+        "endChar": 29
+      },
+      "revId": "f5bb6cb0a97891769521e9af1c79d8f34e307a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54bc2672_3cc7b040",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-16T04:32:20Z",
+      "side": 1,
+      "message": "optional: bytes.Equal would be more common for comparing []byte.\n\nhttps://godoc.org/bytes#Equal",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 39
+      },
+      "revId": "f5bb6cb0a97891769521e9af1c79d8f34e307a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba7bb1e9_e08deceb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-16T04:32:20Z",
+      "side": 1,
+      "message": "Let us keep error messages in one sentence. How about:\n\n Failed to share the file (see %s for the read file content)\n\nAlso it would be good to say the file was corrupted rather than just \"failed to share\".",
+      "range": {
+        "startLine": 169,
+        "startChar": 36,
+        "endLine": 169,
+        "endChar": 42
+      },
+      "revId": "f5bb6cb0a97891769521e9af1c79d8f34e307a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
