@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "28a44a25_d3497569",
+        "filename": "src/chromiumos/tast/local/vm/crosvm.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-16T17:26:32Z",
+      "side": 1,
+      "message": "defer pw.Close() is executed after vm.cmd.Start().\nIn vm.cmd.Start(), the process is cloned, so the fd exists in both this process and the child process.\nThen, pw.Close() happens, so the FD in the parent process is closed, while the one in child process is kept open (and connected to stdout).",
+      "parentUuid": "c1369239_ad91c876",
+      "revId": "7e6d9230797a07f10074967cab72f545c6896976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5fb29ecc_25a3c465",
         "filename": "src/chromiumos/tast/local/vm/crosvm.go",
         "patchSetId": 8
