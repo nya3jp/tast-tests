@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aaf0d18b_d502d817",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2019-07-16T14:31:00Z",
+      "side": 1,
+      "message": "Why shorten from power to pow? power would be more obvious, and you\u0027re only saving two characters.",
+      "revId": "b46b47265dcda71fde10b43a4a5140619c1fde1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30dde847_07cc004f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2019-07-16T14:31:00Z",
+      "side": 1,
+      "message": "This discards the error data; you should print that at well. That may have more details for what failed.",
+      "revId": "b46b47265dcda71fde10b43a4a5140619c1fde1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6799291_825e7f33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2019-07-16T14:31:00Z",
+      "side": 1,
+      "message": "You could choose to ensure that there is no battery listed in output if there\u0027s none present.",
+      "revId": "b46b47265dcda71fde10b43a4a5140619c1fde1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16a75520_c3a005fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2019-07-16T14:31:00Z",
+      "side": 1,
+      "message": "There are 3 different formats you have with got and want in this section.\nThe first has spaces, the second has \": \", and here is \"\u003d\". It\u0027d be good to be consistent, ideally to be consistent with other tast tests.",
+      "revId": "b46b47265dcda71fde10b43a4a5140619c1fde1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9c16c72_2d847d1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2019-07-16T14:31:00Z",
+      "side": 1,
+      "message": "instead of just logging failure.txt here you should give the entire path.\nso, something like\npath :\u003d filepath.Join(s.OutDir, \"failure.txt\")\nand then use path in ioutil.WriteFile() and the error message.\n\nStarting to think that command_output.txt may be more descriptive than failure.txt.",
+      "revId": "b46b47265dcda71fde10b43a4a5140619c1fde1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
