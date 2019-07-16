@@ -110,6 +110,7 @@ func WindowManagerCUJ(ctx context.Context, s *testing.State) {
 		{"Default Launch Clamshell N", wmDefaultLaunchClamshell24},
 		{"Default Launch Clamshell Pre-N", wmDefaultLaunchClamshell23},
 		{"Maximize / Restore Clamshell N", wmMaximizeRestoreClamshell24},
+		{"Maximize / Restore Clamshell Pre-N", wmMaximizeRestoreClamshell23},
 	} {
 		s.Logf("Running test %q", test.name)
 
@@ -276,6 +277,67 @@ func wmMaximizeRestoreClamshell24(ctx context.Context, tconn *chrome.Conn, a *ar
 	return nil
 }
 
+// wmMaximizeRestoreClamshell23 verifies that switching to maximize state from restore state, and vice-versa, works as defined in:
+// go/arc-wm-p "Clamshell: maximize/restore" (slides #11 - #13).
+func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
+	for _, test := range []struct {
+		name           string
+		act            string
+		maximizedState wmTestStateFunc
+	}{
+		{"Landscape", wmLandscapeActivity, checkMaximizeResizeable},
+		{"Unspecified", wmUnspecifiedActivity, checkMaximizeResizeable},
+		{"Portrait", wmPortraitActivity, checkPillarboxResizeable},
+	} {
+		if err := func() error {
+			testing.ContextLogf(ctx, "Running subtest %q", test.name)
+			act, err := arc.NewActivity(a, wmPkg23, test.act)
+			if err != nil {
+				return err
+			}
+			defer act.Close()
+
+			if err := act.Start(ctx); err != nil {
+				return err
+			}
+			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
+			defer act.Stop(ctx)
+
+			if err := checkRestoreResizeable(ctx, act, d); err != nil {
+				return err
+			}
+
+			if err := act.SetWindowState(ctx, arc.WindowStateMaximized); err != nil {
+				return err
+			}
+
+			// Wait for the "Application needs to restart to resize" dialog that appears on all Pre-N apks.
+			if err := uiWaitForRestartDialogAndRestart(ctx, act, d); err != nil {
+				return err
+			}
+
+			// Could be either maximized or pillarbox states.
+			if err := test.maximizedState(ctx, act, d); err != nil {
+				return err
+			}
+
+			if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
+				return err
+			}
+
+			// Wait for the "Application needs to restart to resize" dialog that appears on all Pre-N apks.
+			if err := uiWaitForRestartDialogAndRestart(ctx, act, d); err != nil {
+				return err
+			}
+
+			return checkRestoreResizeable(ctx, act, d)
+		}(); err != nil {
+			return errors.Wrapf(err, "%q subtest failed", test.name)
+		}
+	}
+	return nil
+}
+
 // Helper functions
 
 // checkMaximizeResizeable checks that the window is both maximized and resizeable.
@@ -417,4 +479,30 @@ func uiOrientation(ctx context.Context, act *arc.Activity, d *ui.Device) (string
 		return "", err
 	}
 	return s.Orientation, nil
+}
+
+// uiClicks sends a "Click" message to an UI Object.
+// The UI Object is selected from opts, which are the selectors.
+func uiClick(ctx context.Context, d *ui.Device, opts ...ui.SelectorOption) error {
+	obj := d.Object(opts...)
+	if err := obj.WaitForExists(ctx, 10*time.Second); err != nil {
+		return err
+	}
+	if err := obj.Click(ctx); err != nil {
+		return errors.Wrap(err, "could not click on widget")
+	}
+	return nil
+}
+
+// uiWaitForRestartDialogAndRestart waits for the "Application needs to restart to resize" dialog.
+// This dialog appears when a Pre-N application tries to switch between maximized / restored window states.
+// See: http://cs/pi-arc-dev/frameworks/base/core/java/com/android/internal/policy/DecorView.java
+func uiWaitForRestartDialogAndRestart(ctx context.Context, act *arc.Activity, d *ui.Device) error {
+	if err := uiClick(ctx, d,
+		ui.ClassName("android.widget.Button"),
+		ui.ID("android:id/button1"),
+		ui.TextMatches("(?i)Restart")); err != nil {
+		return errors.Wrap(err, "failed to click on Restart button")
+	}
+	return act.WaitForIdle(ctx, 10*time.Second)
 }
