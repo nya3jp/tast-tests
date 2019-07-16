@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "a0040bc9_a2534910",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ash_window_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2019-07-16T22:43:00Z",
+      "side": 1,
+      "message": "Done. Thanks for the tip.",
+      "parentUuid": "173ee3af_c7bfecb0",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 77,
+        "endChar": 10
+      },
+      "revId": "ea8c98d42b7474aee9a5801baffc699c978e7944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7a33437_b78d7034",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ash_window_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2019-07-16T22:43:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88abdcfb_278469cb",
+      "range": {
+        "startLine": 77,
+        "startChar": 61,
+        "endLine": 77,
+        "endChar": 63
+      },
+      "revId": "ea8c98d42b7474aee9a5801baffc699c978e7944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4616add_a5de4432",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ash_window_state.go",
         "patchSetId": 6
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "f59f2713_3f4d41da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ash_window_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2019-07-16T22:43:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "080709f8_afcac7b5",
+      "range": {
+        "startLine": 79,
+        "startChar": 43,
+        "endLine": 79,
+        "endChar": 44
+      },
+      "revId": "ea8c98d42b7474aee9a5801baffc699c978e7944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35ed9011_5965f10d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ash_window_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2019-07-16T22:43:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4616add_a5de4432",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 79,
+        "endChar": 10
+      },
+      "revId": "ea8c98d42b7474aee9a5801baffc699c978e7944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d97d01d5_ba82704f",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 6
@@ -111,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "a0013108_48a6bb9c",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2019-07-16T22:43:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d97d01d5_ba82704f",
+      "revId": "ea8c98d42b7474aee9a5801baffc699c978e7944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c7236cf_598d44fe",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 6
@@ -122,6 +236,24 @@
       "writtenOn": "2019-07-16T15:28:18Z",
       "side": 1,
       "message": "Looks unused. Could you remove?",
+      "revId": "ea8c98d42b7474aee9a5801baffc699c978e7944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72747e9d_c92e91a0",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2019-07-16T22:43:00Z",
+      "side": 1,
+      "message": "It\u0027s unused for now. But we may add tests to use it in the future. Besides, it\u0027s also to match chrome side api, see https://cs.chromium.org/chromium/src/chrome/common/extensions/api/autotest_private.idl?rcl\u003d8f84f5856d73f56454b3f6a103f38de553946e93\u0026l\u003d39",
+      "parentUuid": "1c7236cf_598d44fe",
       "revId": "ea8c98d42b7474aee9a5801baffc699c978e7944",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -145,6 +277,24 @@
     },
     {
       "key": {
+        "uuid": "0325d471_81f9fa40",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2019-07-16T22:43:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "539a23e6_e1104c21",
+      "revId": "ea8c98d42b7474aee9a5801baffc699c978e7944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d28b29c_3191e4e8",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 6
@@ -159,6 +309,24 @@
       "revId": "ea8c98d42b7474aee9a5801baffc699c978e7944",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "703bf201_9d491af7",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2019-07-16T22:43:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d28b29c_3191e4e8",
+      "revId": "ea8c98d42b7474aee9a5801baffc699c978e7944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
