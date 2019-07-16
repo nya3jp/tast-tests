@@ -34,7 +34,10 @@ func GBM(ctx context.Context, s *testing.State) {
 	logdir := filepath.Join(s.OutDir(), "gtest")
 	for _, testcase := range list {
 		s.Log("Running ", testcase)
-		if err := gtest.RunCase(ctx, exec, testcase, filepath.Join(logdir, testcase+".log")); err != nil {
+		if _, err := gtest.Run(ctx, exec, &gtest.Params{
+			Logfile: filepath.Join(logdir, testcase+".log"),
+			Filter:  testcase,
+		}); err != nil {
 			s.Errorf("%s failed: %v", testcase, err)
 		}
 	}

@@ -10,11 +10,14 @@ package gtest
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/testing"
 )
 
 // ListTests returns a list of tests in the gtest executable.
@@ -52,29 +55,114 @@ func parseTestList(content string) []string {
 	return result
 }
 
-// RunCase executes the specified testcase. Both stdout and stderr will be
-// redirected to logfile.
-func RunCase(ctx context.Context, exec, testcase, logfile string) error {
-	return RunCaseWithFlags(ctx, exec, testcase, logfile, []string{})
+// Params has configurations to execute gtest.
+type Params struct {
+	// Logfile is a path to the log file, which will contain stdout and
+	// stderr of the gtest execution.
+	// Note: Because the gtest log could be long, if this is not specified,
+	// the log wouldn't be recorded to the current test log.
+	Logfile string
+
+	// Filter specifies a subset of tests to run. If not empty, the value
+	// is passed to --gtest_filter=.
+	// Please see the gtest manual for the specification.
+	Filter string
+
+	// ExtraArgs will be passed to the test execution. Note that all
+	// --gtest* prefixed commandline flags should be constructed from
+	// Param struct internally, so it is an error to include --gtest* flags
+	// in this.
+	ExtraArgs []string
+
+	// TODO(hidehiko): To migrate from bintest, support UID.
+	// TODO(hidehiko): To migrate from arctest, support ARC gtest run.
 }
 
-// RunCaseWithFlags executes the specified testcase with additional command line flags.
-// Both stdout and stderr will be redirected to logfile.
-func RunCaseWithFlags(ctx context.Context, exec, testcase, logfile string, flags []string) error {
-	// Ensure the log directory exists.
-	if err := os.MkdirAll(filepath.Dir(logfile), 0755); err != nil {
-		return err
+// Run executes the gtest binary exec with the given param, and then returns
+// the parsed Report.
+// Note that the returned Report may not be nil even if test command execution
+// returns an error. E.g., if test case in the gtest fails, the command will
+// return an error, but the report file should be created. This function
+// also handles the case, and returns it.
+func Run(ctx context.Context, exec string, params *Params) (*Report, error) {
+	args := []string{exec}
+	if params != nil && params.Filter != "" {
+		args = append(args, "--gtest_filter="+params.Filter)
 	}
 
-	// Create the output file that the test log is dumped on failure.
-	f, err := os.Create(logfile)
+	// Create report file.
+	output, err := createOutput()
 	if err != nil {
-		return err
+		return nil, err
 	}
-	defer f.Close()
+	defer os.Remove(output)
+	args = append(args, "--gtest_output=xml:"+output)
 
-	cmd := testexec.CommandContext(ctx, exec, append(flags, "--gtest_filter="+testcase)...)
-	cmd.Stdout = f
-	cmd.Stderr = f
-	return cmd.Run()
+	if params != nil && params.ExtraArgs != nil {
+		for _, a := range params.ExtraArgs {
+			if strings.HasPrefix(a, "--gtest") {
+				return nil, errors.Errorf("gtest.Params.ExtraArgs should not contain --gtest prefixed flags: %s", a)
+			}
+		}
+		args = append(args, params.ExtraArgs...)
+	}
+
+	cmd := testexec.CommandContext(ctx, args[0], args[1:]...)
+
+	// Set up log file.
+	if params != nil && params.Logfile != "" {
+		if err := os.MkdirAll(filepath.Dir(params.Logfile), 0755); err != nil {
+			return nil, errors.Wrap(err, "failed to create log directory")
+		}
+		f, err := os.Create(params.Logfile)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to create a log file")
+		}
+		// f needs to be closed after cmd starts.
+		defer f.Close()
+		cmd.Stdout = f
+		cmd.Stderr = f
+	}
+
+	retErr := cmd.Run()
+
+	// Parse output file regardless of whether the command succeeded or
+	// not. Specifically, if a test case fail, the command reports an
+	// error, but the report file should be properly created.
+	report, err := ParseReport(output)
+	if err != nil {
+		if retErr == nil {
+			retErr = err
+		} else {
+			// Just log the parse error if the command execution
+			// already fails.
+			testing.ContextLog(ctx, "Failed to parse report: ", err)
+		}
+	}
+
+	return report, retErr
+}
+
+func createOutput() (string, error) {
+	f, err := ioutil.TempFile("", "gtest_output_*.xml")
+	if err != nil {
+		return "", errors.Wrap(err, "failed to create an output file")
+	}
+	defer func() {
+		if f != nil {
+			os.Remove(f.Name())
+		}
+	}()
+
+	if err := f.Close(); err != nil {
+		return "", errors.Wrap(err, "failed to close the output file")
+	}
+
+	abspath, err := filepath.Abs(f.Name())
+	if err != nil {
+		return "", errors.Wrap(err, "failed to resolve the path to abs")
+	}
+
+	f = nil
+	return abspath, nil
 }
