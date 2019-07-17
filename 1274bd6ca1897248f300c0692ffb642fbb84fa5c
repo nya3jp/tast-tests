@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34e040e1_396092a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-07-17T21:59:53Z",
+      "side": 1,
+      "message": "This isn\u0027t really adding metrics_daemon as it was already listed. It is changing the test to make sure metrics_daemon is running as its own user rather than root.",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "1274bd6ca1897248f300c0692ffb642fbb84fa5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
