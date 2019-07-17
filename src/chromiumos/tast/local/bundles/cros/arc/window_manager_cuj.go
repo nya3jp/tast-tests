@@ -50,6 +50,9 @@ const (
 // wmTestStateFunc represents a function that tests if the window is in a certain state.
 type wmTestStateFunc func(context.Context, *arc.Activity, *ui.Device) error
 
+// uiClickFunc represents a function that "clicks" on a certain widget using UI Automator.
+type uiClickFunc func(context.Context, *arc.Activity, *ui.Device) error
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WindowManagerCUJ,
@@ -111,6 +114,7 @@ func WindowManagerCUJ(ctx context.Context, s *testing.State) {
 		{"Default Launch Clamshell Pre-N", wmDefaultLaunchClamshell23},
 		{"Maximize / Restore Clamshell N", wmMaximizeRestoreClamshell24},
 		{"Maximize / Restore Clamshell Pre-N", wmMaximizeRestoreClamshell23},
+		{"Follow Root Activity N / Pre-N", wmFollowRoot},
 	} {
 		s.Logf("Running test %q", test.name)
 
@@ -338,6 +342,95 @@ func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.Conn, a *ar
 	return nil
 }
 
+// wmFollowRoot verifies that child activities follow the root activity state as defined in:
+// go/arc-wm-p "Clamshell: new activities follow root activity" (slides #15 - #17).
+func wmFollowRoot(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
+	for _, test := range []struct {
+		name    string
+		pkgName string
+		act     string
+	}{
+		// Root activities.
+		{"Unspecified (N)", wmPkg24, wmResizeableUnspecifiedActivity},
+		{"Portrait (N)", wmPkg24, wmResizeablePortraitActivity},
+		{"Landscape (N)", wmPkg24, wmResizeableLandscapeActivity},
+
+		{"Unspecified (Pre-N)", wmPkg23, wmUnspecifiedActivity},
+		{"Portrait (Pre-N)", wmPkg23, wmPortraitActivity},
+		{"Landscape (Pre-N)", wmPkg23, wmLandscapeActivity},
+	} {
+		for _, orientation := range []struct {
+			name string
+			fn   uiClickFunc
+		}{
+			// Orientations for the child activity.
+			{"Unspecified", uiClickUnspecified},
+			{"Landscape", uiClickLandscape},
+			{"Portrait", uiClickPortrait},
+		} {
+			if err := func() error {
+				testing.ContextLogf(ctx, "Running subtest: \"Root activity=%s -> child=%s\"", test.name, orientation.name)
+
+				if err := a.Command(ctx, "am", "broadcast", "-a", "android.intent.action.arc.cleartaskstate").Run(); err != nil {
+					return errors.Wrap(err, "failed to clear WM state")
+				}
+				act, err := arc.NewActivity(a, test.pkgName, test.act)
+				if err != nil {
+					return err
+				}
+				defer act.Close()
+
+				if err := act.Start(ctx); err != nil {
+					return err
+				}
+				// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
+				defer act.Stop(ctx)
+
+				if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
+					return err
+				}
+
+				origOrientation, err := uiOrientation(ctx, act, d)
+				if err != nil {
+					return err
+				}
+
+				if err := orientation.fn(ctx, act, d); err != nil {
+					return err
+				}
+				if err := uiClickLaunchActivity(ctx, act, d); err != nil {
+					return err
+				}
+
+				// Window state and orientation should not change, and there should be two activities in the stack.
+
+				if s, err := act.GetWindowState(ctx); err != nil {
+					return err
+				} else if s != arc.WindowStateNormal {
+					return errors.Errorf("invalid window state: got %q; want %q", s.String(), arc.WindowStateNormal.String())
+				}
+
+				if newOrientation, err := uiOrientation(ctx, act, d); err != nil {
+					return err
+				} else if newOrientation != origOrientation {
+					return errors.Errorf("invalid orientation: got %q; want %q", newOrientation, origOrientation)
+				}
+
+				if nrActivities, err := uiNumberActivities(ctx, act, d); err != nil {
+					return err
+				} else if nrActivities != 2 {
+					return errors.Errorf("invalid number of activities: got %d; want 2", nrActivities)
+				}
+
+				return nil
+			}(); err != nil {
+				return errors.Wrapf(err, "\"Root activity=%s -> child=%s\" subtest failed", test.name, orientation.name)
+			}
+		}
+	}
+	return nil
+}
+
 // Helper functions
 
 // checkMaximizeResizeable checks that the window is both maximized and resizeable.
@@ -481,6 +574,15 @@ func uiOrientation(ctx context.Context, act *arc.Activity, d *ui.Device) (string
 	return s.Orientation, nil
 }
 
+// uiNumberActivities returns the number of activities present in the ArcWMTestApp stack.
+func uiNumberActivities(ctx context.Context, act *arc.Activity, d *ui.Device) (int, error) {
+	s, err := getUIState(ctx, act, d)
+	if err != nil {
+		return 0, err
+	}
+	return s.ActivityNr, nil
+}
+
 // uiClicks sends a "Click" message to an UI Object.
 // The UI Object is selected from opts, which are the selectors.
 func uiClick(ctx context.Context, d *ui.Device, opts ...ui.SelectorOption) error {
@@ -492,6 +594,50 @@ func uiClick(ctx context.Context, d *ui.Device, opts ...ui.SelectorOption) error
 		return errors.Wrap(err, "could not click on widget")
 	}
 	return nil
+}
+
+// uiClickUnspecified clicks on the "Unspecified" radio button that is present in the ArcWMTest activity.
+func uiClickUnspecified(ctx context.Context, act *arc.Activity, d *ui.Device) error {
+	if err := uiClick(ctx, d,
+		ui.PackageName(act.PackageName()),
+		ui.ClassName("android.widget.RadioButton"),
+		ui.TextMatches("(?i)Unspecified")); err != nil {
+		return errors.Wrap(err, "failed to click on Unspecified radio button")
+	}
+	return nil
+}
+
+// uiClickLandscape clicks on the "Landscape" radio button that is present in the ArcWMTest activity.
+func uiClickLandscape(ctx context.Context, act *arc.Activity, d *ui.Device) error {
+	if err := uiClick(ctx, d,
+		ui.PackageName(act.PackageName()),
+		ui.ClassName("android.widget.RadioButton"),
+		ui.TextMatches("(?i)Landscape")); err != nil {
+		return errors.Wrap(err, "failed to click on Landscape radio button")
+	}
+	return nil
+}
+
+// uiClickPortrait clicks on the "Portrait" radio button that is present in the ArcWMTest activity.
+func uiClickPortrait(ctx context.Context, act *arc.Activity, d *ui.Device) error {
+	if err := uiClick(ctx, d,
+		ui.PackageName(act.PackageName()),
+		ui.ClassName("android.widget.RadioButton"),
+		ui.TextMatches("(?i)Portrait")); err != nil {
+		return errors.Wrap(err, "failed to click on Portrait radio button")
+	}
+	return nil
+}
+
+// uiClickLaunchActivity clicks on the "Launch Activity" button that is present in the ArcWMTest activity.
+func uiClickLaunchActivity(ctx context.Context, act *arc.Activity, d *ui.Device) error {
+	if err := uiClick(ctx, d,
+		ui.PackageName(act.PackageName()),
+		ui.ClassName("android.widget.Button"),
+		ui.TextMatches("(?i)Launch Activity")); err != nil {
+		return errors.Wrap(err, "failed to click on Launch Activity button")
+	}
+	return act.WaitForIdle(ctx, 10*time.Second)
 }
 
 // uiWaitForRestartDialogAndRestart waits for the "Application needs to restart to resize" dialog.
