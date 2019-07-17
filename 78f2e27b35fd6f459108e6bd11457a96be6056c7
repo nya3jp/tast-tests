@@ -34,6 +34,24 @@
       "revId": "78f2e27b35fd6f459108e6bd11457a96be6056c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d187fbf2_ef31338a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-07-17T20:51:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf8ba650_514bc2ee",
+      "revId": "78f2e27b35fd6f459108e6bd11457a96be6056c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
