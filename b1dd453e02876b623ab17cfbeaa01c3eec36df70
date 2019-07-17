@@ -22,6 +22,30 @@
       "revId": "b1dd453e02876b623ab17cfbeaa01c3eec36df70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1812119d_7902627c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-07-17T16:23:13Z",
+      "side": 1,
+      "message": "Since I am returning the header keys regardless of whether there is a battery or not, it may make sense to validate that output. I don\u0027t have a strong preference about this though. I am okay with not running the command if that seems more logical. \n\n@teravest, @wbbradley: Preferences/suggestions for this?",
+      "parentUuid": "ca0a2691_a682ecd4",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 2
+      },
+      "revId": "b1dd453e02876b623ab17cfbeaa01c3eec36df70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
