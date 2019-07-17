@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4fead46d_ea238d57",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-17T00:01:49Z",
+      "side": 1,
+      "message": "Thank you. I created a bug to consider it.\nhttps://crbug.com/984433\nAdded a TODO to the test.",
+      "parentUuid": "0a1e2a37_fd43344b",
+      "range": {
+        "startLine": 11,
+        "startChar": 56,
+        "endLine": 12,
+        "endChar": 41
+      },
+      "revId": "b2137e66a70c6d66e765269ea1d091466ce37cb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7af1910_8ead7306",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
         "patchSetId": 17
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "373d2b47_d3630237",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-17T00:01:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "554b529e_677fc5ca",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 31
+      },
+      "revId": "b2137e66a70c6d66e765269ea1d091466ce37cb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "398fad3e_205397f2",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
         "patchSetId": 17
@@ -116,6 +164,30 @@
       "revId": "b2137e66a70c6d66e765269ea1d091466ce37cb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18302740_a893dec2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-17T00:01:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "398fad3e_205397f2",
+      "range": {
+        "startLine": 295,
+        "startChar": 5,
+        "endLine": 295,
+        "endChar": 50
+      },
+      "revId": "b2137e66a70c6d66e765269ea1d091466ce37cb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
