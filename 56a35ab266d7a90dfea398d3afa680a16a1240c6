@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "016b394e_e99464e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-07-17T15:31:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7adcb036_aa5c683c",
+      "revId": "56a35ab266d7a90dfea398d3afa680a16a1240c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbde4ccb_86fd730b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
         "patchSetId": 8
@@ -33,6 +51,24 @@
       "revId": "56a35ab266d7a90dfea398d3afa680a16a1240c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "160e957c_afd1a148",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-07-17T15:31:38Z",
+      "side": 1,
+      "message": "I\u0027ve edited the code to no longer do this. (I initially assumed that all systems this would run on would have a battery, which now I know is not necessarily the case.)",
+      "parentUuid": "dbde4ccb_86fd730b",
+      "revId": "56a35ab266d7a90dfea398d3afa680a16a1240c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
