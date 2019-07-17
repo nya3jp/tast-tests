@@ -96,7 +96,9 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.Tree("encrypted/var/lib/dhcpcd"), users("dhcp"), groups("dhcp"), chk.NotMode(022)),
 		chk.NewPattern(chk.Path("encrypted/var/lib/gentoo"), users("root"), chk.NotMode(022), chk.SkipChildren()),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/imageloader"), users("imageloaderd"), groups("imageloaderd"), chk.NotMode(022)),
-		chk.NewPattern(chk.Path("encrypted/var/lib/metrics/uma-events"), users("chronos"), groups("chronos"), chk.Mode(0666)),
+		chk.NewPattern(chk.Path("encrypted/var/lib/metrics/uma-events"), users("metrics"), groups("metrics"), chk.Mode(0666)),
+		chk.NewPattern(chk.Path("encrypted/var/lib/metrics"), users("metrics"), groups("metrics"), chk.Mode(0755)),                     // directory itself
+		chk.NewPattern(chk.Tree("encrypted/var/lib/metrics"), users("metrics"), groups("metrics"), chk.Mode(0644), chk.SkipChildren()), // children
 		chk.NewPattern(chk.Tree("encrypted/var/lib/ml_service"), users("ml-service"), groups("ml-service"), chk.NotMode(02)),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/modemfwd"), users("modem"), groups("modem"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/oobe_config_restore"), users("oobe_config_restore"), groups("oobe_config_restore"), chk.NotMode(022)),
@@ -114,8 +116,10 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.Tree("encrypted/var/log/chrome/Crash Reports"), users("chronos"), groups("chronos"), chk.NotMode(077)),
 		chk.NewPattern(chk.Tree("encrypted/var/log/chrome"), users("chronos"), groups("chronos"), chk.NotMode(022)),
 		chk.NewPattern(chk.Path("encrypted/var/log/emerge.log"), users("portage"), groups("portage"), chk.Mode(0660)),
-		chk.NewPattern(chk.Tree("encrypted/var/log/metrics"), users("root", "chronos", "shill"), chk.NotMode(022)),
+		chk.NewPattern(chk.Tree("encrypted/var/log/metrics"), users("root", "chronos", "metrics", "shill"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/log/power_manager"), users("power"), groups("power"), chk.NotMode(022)),
+		chk.NewPattern(chk.Path("encrypted/var/log/vmlog"), users("metrics"), groups("metrics"), chk.Mode(0755)),           // directory itself
+		chk.NewPattern(chk.Tree("encrypted/var/log/vmlog"), users("metrics"), groups("metrics"), chk.Mode(0644)),           // children
 		chk.NewPattern(chk.Path("encrypted/var/log"), users("root"), groups("syslog"), chk.Mode(0775|os.ModeSticky)),       // directory itself
 		chk.NewPattern(chk.Tree("encrypted/var/log"), users("syslog", "root"), groups("syslog", "root"), chk.NotMode(022)), // children
 
