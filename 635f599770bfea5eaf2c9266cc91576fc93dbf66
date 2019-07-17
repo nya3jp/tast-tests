@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ab0eb98_41999908",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/black_flash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-17T10:38:54Z",
+      "side": 1,
+      "message": "fd is valid only if os.Create() didn\u0027t return an error.\nSo, with this update, because s.Error() does not exit (intentionally), L158 and later will be executed.\n\nThus, in this scope, the code should look like.\n\nif fd, err :\u003d os.Create(...); err !\u003d nil {\n  s.Error(...)\n} else {\n  defer fd.Close()\n  if err :\u003d png.Encode(...); err !\u003d nil {\n    s.Error(...)\n  }\n}\ns.Fatal(\"Test failed...\")\n\nOr, alternatively, you may want to introduce a function to dump the subImage into a file, then\n\nif err :\u003d writePng(path, subImage); err !\u003d nil {\n  s.Error(...)\n}\ns.Fatal(\"Test failed...\")",
+      "range": {
+        "startLine": 154,
+        "startChar": 3,
+        "endLine": 161,
+        "endChar": 4
+      },
+      "revId": "635f599770bfea5eaf2c9266cc91576fc93dbf66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a146b95_bbdd9f3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screenshot/screenshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-17T10:38:54Z",
+      "side": 1,
+      "message": "Should this be deleted at the end of this function? Otherwise /tmp could be overflown?\nAlso, if so, you may want to use ioutil.TempFile(), which will help to avoid name conflict.",
+      "revId": "635f599770bfea5eaf2c9266cc91576fc93dbf66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
