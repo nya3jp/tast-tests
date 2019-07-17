@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7063473_5fc9699f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-17T10:04:18Z",
+      "side": 1,
+      "message": "huge nit: s/://",
+      "range": {
+        "startLine": 128,
+        "startChar": 55,
+        "endLine": 128,
+        "endChar": 56
+      },
+      "revId": "12f2522c3f97230f72dfb888b2f2047f83e1ffc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8874cdc_a411c9bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-17T10:04:18Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 159,
+        "startChar": 74,
+        "endLine": 159,
+        "endChar": 75
+      },
+      "revId": "12f2522c3f97230f72dfb888b2f2047f83e1ffc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae4dfa99_827a3f27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-17T10:04:18Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 171,
+        "startChar": 51,
+        "endLine": 171,
+        "endChar": 52
+      },
+      "revId": "12f2522c3f97230f72dfb888b2f2047f83e1ffc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2eea582_5164789b",
+        "filename": "src/chromiumos/tast/local/input/gamepad.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-17T10:04:18Z",
+      "side": 1,
+      "message": "(optional): How about TapButton? (confirmed with native English speaker, and this is the recommendation).",
+      "revId": "12f2522c3f97230f72dfb888b2f2047f83e1ffc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
