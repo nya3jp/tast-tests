@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f082a6b3_8437c30c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2019-07-17T05:14:16Z",
+      "side": 1,
+      "message": "nit: arc-framework@ may be more appropriate?",
+      "range": {
+        "startLine": 21,
+        "startChar": 49,
+        "endLine": 21,
+        "endChar": 57
+      },
+      "revId": "288f29ea356032f2ee57773131bb4803f5fe3f4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
