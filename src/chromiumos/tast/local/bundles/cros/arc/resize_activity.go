@@ -31,7 +31,7 @@ func init() {
 		Contacts: []string{"ruanc@chromium.org", "arc-framework+tast@google.com"},
 		Attr:     []string{"informational"},
 		// Adding 'tablet_mode' since moving/resizing the window requires screen touch support.
-		SoftwareDeps: []string{"android_p", "chrome", "tablet_mode"},
+		SoftwareDeps: []string{"android_p_both", "chrome", "tablet_mode"},
 		Pre:          arc.Booted(),
 		Timeout:      4 * time.Minute,
 	})

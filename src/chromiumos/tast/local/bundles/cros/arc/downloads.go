@@ -20,7 +20,7 @@ func init() {
 		Func:         Downloads,
 		Desc:         "Checks Downloads integration is working",
 		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
-		SoftwareDeps: []string{"android", "chrome"},
+		SoftwareDeps: []string{"android_both", "chrome"},
 		Data:         []string{"capybara.jpg"},
 		Pre:          arc.Booted(),
 		Timeout:      4 * time.Minute,

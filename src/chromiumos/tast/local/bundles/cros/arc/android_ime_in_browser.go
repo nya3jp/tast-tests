@@ -26,7 +26,7 @@ func init() {
 		Desc:         "Checks Android IME in a browser window",
 		Contacts:     []string{"tetsui@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"android_p", "chrome"},
+		SoftwareDeps: []string{"android_p_both", "chrome"},
 		Data:         []string{"ArcInputMethodTest.apk"},
 		Timeout:      4 * time.Minute,
 	})
@@ -49,7 +49,7 @@ func getThirdPartyInputMethodID(ctx context.Context, tconn *chrome.Conn, pkg str
 			return im.ID, nil
 		}
 	}
-	return "", errors.New(fmt.Sprintf("%s not found in the list", pkg))
+	return "", errors.Errorf("%s not found in the list", pkg)
 }
 
 func isKeyboardShown(ctx context.Context, tconn *chrome.Conn) (bool, error) {
