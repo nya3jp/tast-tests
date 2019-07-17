@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "c09c2fc0_cabf261c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gbm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-17T04:13:16Z",
+      "side": 1,
+      "message": "Why do we still need to iterate over test cases? I think we can simply call gtest.Run() only once without Filter.\n\nI think the benefit of this iteration was that we can show failed test cases in s.Error. But, it should be done by gtest package.",
+      "revId": "56c5073c84f9dcbd1bd7cf467873db9b6097eb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89081131_94813983",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-17T04:13:16Z",
+      "side": 1,
+      "message": "ditto.\nWe should be able to remove for-loop by passing `\"-\" + fileDecodeTestCase` as filter.\n\ncf.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1523166/13/src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go#73",
+      "revId": "56c5073c84f9dcbd1bd7cf467873db9b6097eb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04461042_ba1108be",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 1
