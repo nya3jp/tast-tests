@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eccfbd47_f3440e71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-07-17T04:52:27Z",
+      "side": 1,
+      "message": "Hi, I think we have to update the content of this text file.",
+      "range": {
+        "startLine": 149,
+        "startChar": 33,
+        "endLine": 149,
+        "endChar": 65
+      },
+      "revId": "f00cf5c60feac48de04d2f68fe5c5a1c73873966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
