@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4845ea43_0ea0918a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure_moderate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-17T11:32:09Z",
+      "side": 1,
+      "message": "With hindsight we created a naming convention about Vars to avoid naming collision.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/1706271\n\nCould you rename this to platform.MemoryPressureModerate.tabs in accordance with it?",
+      "range": {
+        "startLine": 30,
+        "startChar": 26,
+        "endLine": 30,
+        "endChar": 30
+      },
+      "revId": "5a30cb96cd324b28237b866b386c30766d4780cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "138fdcb2_4da86179",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure_moderate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-17T11:32:09Z",
+      "side": 1,
+      "message": "You can make it one line.\n\nif val, ok :\u003d s.Var(\"...\"); ok {\n\n}",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 8
+      },
+      "revId": "5a30cb96cd324b28237b866b386c30766d4780cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7257318d_11d899d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure_moderate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-17T11:32:09Z",
+      "side": 1,
+      "message": "How about making it Fatal?\nThen you can remove the else clause for normal path, which is a good practice in Go. https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 10
+      },
+      "revId": "5a30cb96cd324b28237b866b386c30766d4780cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
