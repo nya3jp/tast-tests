@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62b50b7e_cb4703b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-17T09:48:09Z",
+      "side": 1,
+      "message": "On betty, there seems no trajectory after the fix.\nCan we wait for a few cycles to make sure it works on betty actually?",
+      "revId": "b72b9e03c5686d8d289c59421f4b0e55e1ad5015",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
