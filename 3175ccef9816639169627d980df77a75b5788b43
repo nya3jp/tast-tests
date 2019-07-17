@@ -220,6 +220,24 @@
     },
     {
       "key": {
+        "uuid": "84b8ad71_57c1f6d6",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-17T17:22:48Z",
+      "side": 1,
+      "message": "Precondition equality check is based on the instance (pointer).\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/662d9eb134c264e434a80249b9ffa2a4bdea9d35/src/chromiumos/tast/testing/test.go#215\n\nchrome.NewPrecondition is a very special case.\nFor performance, we encourage to share the precondition as much as possible.\nHowever, it turned out that, in video/camera tests, it is necessary to add more flags than usual for better logging and simplification.\nThe condition still is shared across a number of video/camera tests, so we decided to add such a precondition under video package. It requires to access chrome\u0027s precondition creation to share the implementation, so we made it a function and public.\nNote that the number of instances is still limited (i.e. 3), and in general we are recommending to avoid such a variation, though it is very case by case.\n\nIn this specific case, the precondition is designed for crostini, and I couldn\u0027t find needs to share the _creation_ of the precondition with other packages. It is highly recommended to avoid adding such an expose function, unless special needs.",
+      "parentUuid": "45513644_e7b210dc",
+      "revId": "3175ccef9816639169627d980df77a75b5788b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2dfefbe_d0907ec5",
         "filename": "src/chromiumos/tast/local/vm/pre.go",
         "patchSetId": 8
