@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "04461042_ba1108be",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-17T02:31:27Z",
+      "side": 1,
+      "message": "nit: I would name this Params since it contains several parameters.",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 10
+      },
+      "revId": "56c5073c84f9dcbd1bd7cf467873db9b6097eb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13026a08_0fc0f8e8",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-17T02:31:27Z",
+      "side": 1,
+      "message": "This sentence has no object... How about \"Filter specifies a subset of tests to run\"?",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 32
+      },
+      "revId": "56c5073c84f9dcbd1bd7cf467873db9b6097eb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07d7e1e2_25f1d096",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-17T02:31:27Z",
+      "side": 1,
+      "message": "This sentence has no subject. How about \"If not empty, the value is passed to --gtest_filter\u003d\".",
+      "range": {
+        "startLine": 66,
+        "startChar": 33,
+        "endLine": 66,
+        "endChar": 69
+      },
+      "revId": "56c5073c84f9dcbd1bd7cf467873db9b6097eb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42d6e7aa_23a3fdfb",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-17T02:31:27Z",
+      "side": 1,
+      "message": "Since we actually reject --gtest*, how about mentioning it explicitly, e.g. \"it is an error to include --gtest* flags in ExtraArgs\".",
+      "range": {
+        "startLine": 72,
+        "startChar": 29,
+        "endLine": 72,
+        "endChar": 61
+      },
+      "revId": "56c5073c84f9dcbd1bd7cf467873db9b6097eb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "972beaaa_7e91ee2b",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-17T02:31:27Z",
+      "side": 1,
+      "message": "be",
+      "range": {
+        "startLine": 81,
+        "startChar": 40,
+        "endLine": 81,
+        "endChar": 44
+      },
+      "revId": "56c5073c84f9dcbd1bd7cf467873db9b6097eb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8fc30c1c_0049ebda",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 1
