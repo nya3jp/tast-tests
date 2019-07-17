@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "620805b0_4c8fe6f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-17T11:51:40Z",
+      "side": 1,
+      "message": "Clar: is this for manual testing purpose only...?\nOr do you have a plan to use in some system? It is not clear enough for me from the bug.",
+      "revId": "5a30cb96cd324b28237b866b386c30766d4780cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4845ea43_0ea0918a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure_moderate.go",
         "patchSetId": 1
