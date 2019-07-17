@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "db19ccf5_2cfc06e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gbm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-17T06:33:54Z",
+      "side": 1,
+      "message": "Thank you for pointing it.\nFirst, it is out of scope of this CL to change the caller\u0027s behavior if not necessary.\nThis CL focuses on to migrate gtest.* functions into gtest.Run. And this and libvda does not\nneed to change its behavior, so let me keep this as is, now.\nI\u0027m open the discussion separately.\n\nFYI: The benefit I think is, if crashed, what test crashed is shown in the test log.\nI.e., IIUC, if it crashes, report file wouldn\u0027t be created?",
+      "parentUuid": "c09c2fc0_cabf261c",
+      "revId": "56c5073c84f9dcbd1bd7cf467873db9b6097eb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89081131_94813983",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "56c5073c84f9dcbd1bd7cf467873db9b6097eb95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bd6619d_b5539555",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/libvda/libvda.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-17T06:33:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "89081131_94813983",
+      "revId": "56c5073c84f9dcbd1bd7cf467873db9b6097eb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "56c5073c84f9dcbd1bd7cf467873db9b6097eb95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "898adfba_a5496b64",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-17T06:33:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04461042_ba1108be",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 10
+      },
+      "revId": "56c5073c84f9dcbd1bd7cf467873db9b6097eb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +165,54 @@
     },
     {
       "key": {
+        "uuid": "4ca4e4b7_5252e3c4",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-17T06:33:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07d7e1e2_25f1d096",
+      "range": {
+        "startLine": 66,
+        "startChar": 33,
+        "endLine": 66,
+        "endChar": 69
+      },
+      "revId": "56c5073c84f9dcbd1bd7cf467873db9b6097eb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11c1841f_a5115d39",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-17T06:33:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13026a08_0fc0f8e8",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 32
+      },
+      "revId": "56c5073c84f9dcbd1bd7cf467873db9b6097eb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42d6e7aa_23a3fdfb",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 1
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "c83ea717_e4646d08",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-17T06:33:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42d6e7aa_23a3fdfb",
+      "range": {
+        "startLine": 72,
+        "startChar": 29,
+        "endLine": 72,
+        "endChar": 61
+      },
+      "revId": "56c5073c84f9dcbd1bd7cf467873db9b6097eb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "972beaaa_7e91ee2b",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 1
@@ -148,6 +280,30 @@
       "revId": "56c5073c84f9dcbd1bd7cf467873db9b6097eb95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57683bb7_9ee51629",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-17T06:33:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "972beaaa_7e91ee2b",
+      "range": {
+        "startLine": 81,
+        "startChar": 40,
+        "endLine": 81,
+        "endChar": 44
+      },
+      "revId": "56c5073c84f9dcbd1bd7cf467873db9b6097eb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
