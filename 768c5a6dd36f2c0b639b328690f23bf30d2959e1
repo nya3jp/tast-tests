@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21e4ec19_5fbb6703",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-07-17T07:25:33Z",
+      "side": 1,
+      "message": "nit:installs",
+      "range": {
+        "startLine": 113,
+        "startChar": 22,
+        "endLine": 113,
+        "endChar": 29
+      },
+      "revId": "768c5a6dd36f2c0b639b328690f23bf30d2959e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "791362cf_94ddee0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_webview.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-07-17T07:25:33Z",
+      "side": 1,
+      "message": "How about passing webviewID here?",
+      "range": {
+        "startLine": 48,
+        "startChar": 100,
+        "endLine": 48,
+        "endChar": 110
+      },
+      "revId": "768c5a6dd36f2c0b639b328690f23bf30d2959e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
