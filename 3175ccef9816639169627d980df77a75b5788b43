@@ -238,6 +238,24 @@
     },
     {
       "key": {
+        "uuid": "937f818c_c2cb1e98",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-07-17T18:29:26Z",
+      "side": 1,
+      "message": "Ah. I see. Fair enough.\nIndeed, this change is designed for crostini. Could you modifies go/tast-writing to discourage dev to expose Pre creation unless special needs? :)",
+      "parentUuid": "84b8ad71_57c1f6d6",
+      "revId": "3175ccef9816639169627d980df77a75b5788b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2dfefbe_d0907ec5",
         "filename": "src/chromiumos/tast/local/vm/pre.go",
         "patchSetId": 8
