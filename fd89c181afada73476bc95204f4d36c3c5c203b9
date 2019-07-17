@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "578e6120_861c523b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-17T04:05:29Z",
+      "side": 1,
+      "message": "nit: Strictly speaking, this is not true.\nThe uprev changes in CL:1691101 was \"partially\" reverted by CL:1703116.",
+      "range": {
+        "startLine": 19,
+        "startChar": 50,
+        "endLine": 19,
+        "endChar": 70
+      },
+      "revId": "fd89c181afada73476bc95204f4d36c3c5c203b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
