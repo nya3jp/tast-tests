@@ -16,7 +16,6 @@ func init() {
 		Func:         SELinuxSanity,
 		Desc:         "Checks some SELinux status",
 		Contacts:     []string{"fqj@chromium.org", "kroot@chromium.org", "chromeos-security@google.com"},
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"selinux"},
 	})
 }
