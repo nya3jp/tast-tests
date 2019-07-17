@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e5a4436c_25a5fa6d",
+        "filename": "src/chromiumos/tast/local/arc/ui/object.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-17T03:16:36Z",
+      "side": 1,
+      "message": "It\u0027s fine!",
+      "parentUuid": "9ee6ab59_ff325f7a",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "2e9cc4e3b7fc5464e001a86cd3f4fa4ba70d53dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49c8e956_cc2640b7",
         "filename": "src/chromiumos/tast/local/arc/ui/object.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "2e9cc4e3b7fc5464e001a86cd3f4fa4ba70d53dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a47a592_769741da",
+        "filename": "src/chromiumos/tast/local/arc/ui/object.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-17T03:16:36Z",
+      "side": 1,
+      "message": "Ack. We might want to improve the situation in the future.",
+      "parentUuid": "49c8e956_cc2640b7",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 134
+      },
+      "revId": "2e9cc4e3b7fc5464e001a86cd3f4fa4ba70d53dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
