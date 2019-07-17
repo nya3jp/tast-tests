@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efb07efe_e61de66e",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-17T08:57:58Z",
+      "side": 1,
+      "message": "style: Could you follow the godoc style? I.e., I think you need the both comments (previous PS\u0027s and current PS\u0027s).\n\n// SetARCAppWIndowState sends WM event to ARC app window to change its window state,\n// and returns the expected new state type.\n\nNote: error is very common, that returns on error :-), so you can skip if there is no special things, I think.",
+      "revId": "aa227030de8be2bd33bcdb11c779e3f001a4f356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80058f77_b17134dc",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-17T08:57:58Z",
+      "side": 1,
+      "message": "nit: ARC\n\nacronym in go identifier needs to be all capital letters.",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 11
+      },
+      "revId": "aa227030de8be2bd33bcdb11c779e3f001a4f356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
