@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35120c96_51b6da81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-07-17T10:12:42Z",
+      "side": 1,
+      "message": "Copied from\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1687432/5/src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go#127\nand revised reflecting comments there.",
+      "revId": "76ce75527d51eb427d27136de51bd6c38dc2f069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
