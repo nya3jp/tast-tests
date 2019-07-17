@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fc0d80e3_454d186b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-07-17T10:13:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7063473_5fc9699f",
+      "range": {
+        "startLine": 128,
+        "startChar": 55,
+        "endLine": 128,
+        "endChar": 56
+      },
+      "revId": "12f2522c3f97230f72dfb888b2f2047f83e1ffc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8874cdc_a411c9bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "12f2522c3f97230f72dfb888b2f2047f83e1ffc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30d5129d_424ed844",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-07-17T10:13:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8874cdc_a411c9bc",
+      "range": {
+        "startLine": 159,
+        "startChar": 74,
+        "endLine": 159,
+        "endChar": 75
+      },
+      "revId": "12f2522c3f97230f72dfb888b2f2047f83e1ffc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "258b2d59_9e415c0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-07-17T10:13:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae4dfa99_827a3f27",
+      "range": {
+        "startLine": 171,
+        "startChar": 51,
+        "endLine": 171,
+        "endChar": 52
+      },
+      "revId": "12f2522c3f97230f72dfb888b2f2047f83e1ffc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2eea582_5164789b",
         "filename": "src/chromiumos/tast/local/input/gamepad.go",
         "patchSetId": 8
@@ -85,6 +157,24 @@
       "revId": "12f2522c3f97230f72dfb888b2f2047f83e1ffc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6a47708_59ff7903",
+        "filename": "src/chromiumos/tast/local/input/gamepad.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-07-17T10:13:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2eea582_5164789b",
+      "revId": "12f2522c3f97230f72dfb888b2f2047f83e1ffc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
