@@ -110,9 +110,9 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 			}...)
 		case Unstable:
 			testCases = append(testCases, []testCaseType{
-				{notExe, "/sbin/minijail0", notStr("minijail"), zeroProcs}, // These processes shouldn't exist.
-				{cmdline, ".*", notStr("chromeos"), zeroProcs},             // These processes shouldn't exist.
-				{cmdline, ".*", notStr("minijailed"), zeroProcs},           // These processes shouldn't exist.
+				{notExe, "/sbin/minijail0", "^u:r:" + notStr("minijail") + ":.*$", zeroProcs}, // These processes shouldn't exist.
+				{cmdline, ".*", "^u:r:" + notStr("chromeos") + ":.*$", zeroProcs},             // These processes shouldn't exist.
+				{cmdline, ".*", "^u:r:" + notStr("minijailed") + ":.*$", zeroProcs},           // These processes shouldn't exist.
 			}...)
 		}
 	}
