@@ -1,5 +1,5 @@
 name=Accessibility Sample role=application
-++role=rootWebArea
+++role=genericContainer
 ++++role=ignored
 ++++++role=ignored
 ++++++++role=ignored
