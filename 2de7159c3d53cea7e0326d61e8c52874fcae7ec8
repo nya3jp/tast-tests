@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d647d96_aa9964d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-18T12:54:56Z",
+      "side": 1,
+      "message": "print diff.Count?",
+      "revId": "2de7159c3d53cea7e0326d61e8c52874fcae7ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
