@@ -18,6 +18,12 @@ import (
 // WasHWAccelUsed returns whether HW acceleration is used for certain action.
 // initHistogram is the histogram obtained before the action.
 // successValue is the bucket value of HW acceleration success case.
+// Note that it returns true even if more than one successful count is observed.
+// It is because in some cases, we occassionally observed more than one
+// successful count (crbug.com/985068). To prevent it from reporting false
+// negative result, we relax the condition from successful count == 1 to >= 1,
+// regardless it may introuce some false positive result.
+// TODO(crbug.com/985068#c5): follow up the improvement plan.
 func WasHWAccelUsed(ctx context.Context, cr *chrome.Chrome, initHistogram *metrics.Histogram, histogramName string, successValue int64) (bool, error) {
 	// There are three valid cases.
 	// 1. No histogram is updated. This is the case if HW Acceleration is disabled due to Chrome flag, ex. --disable-accelerated-video-decode.
@@ -38,9 +44,12 @@ func WasHWAccelUsed(ctx context.Context, cr *chrome.Chrome, initHistogram *metri
 	}
 
 	diff := histogramDiff.Buckets[0]
-	hwAccelUsed := diff.Min == successValue && diff.Max == successValue+1 && diff.Count == 1
+	hwAccelUsed := diff.Min == successValue && diff.Max == successValue+1 && diff.Count >= 1
 	if !hwAccelUsed {
 		testing.ContextLogf(ctx, "Histogram update: %v, if HW accel were used, it should be [%d, %d 1]", diff, successValue, successValue+1)
+	} else if diff.Count > 1 {
+		testing.ContextLog(ctx, "Note that more than one successful count is observed: ", diff.Count)
 	}
+
 	return hwAccelUsed, nil
 }
