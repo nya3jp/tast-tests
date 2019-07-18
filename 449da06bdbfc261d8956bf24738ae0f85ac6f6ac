@@ -33,6 +33,24 @@
       "revId": "449da06bdbfc261d8956bf24738ae0f85ac6f6ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e12d6d83_64ab8598",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/loopback_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1000994
+      },
+      "writtenOn": "2019-07-18T17:34:30Z",
+      "side": 1,
+      "message": "Is the cras_test process getting real time priority?\nHave you tried running with bigger buffers?",
+      "parentUuid": "4354cb50_dfe137a2",
+      "revId": "449da06bdbfc261d8956bf24738ae0f85ac6f6ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
