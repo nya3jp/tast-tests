@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8901c0d8_f9e16353",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/ArcGamePerformanceTest.apk.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-07-18T19:05:03Z",
+      "side": 1,
+      "message": "I moved to app, but want to note:\n\ngsutil list gs://chromiumos-test-assets-public/tast/cros/arcapp/ | wc -l \u003d 36\ngsutil list gs://chromiumos-test-assets-public/tast/cros/arc/ | wc -l \u003d 13\n3 times more in arcapp.",
+      "parentUuid": "1e8f520c_a6d2a2fd",
+      "range": {
+        "startLine": 2,
+        "startChar": 55,
+        "endLine": 2,
+        "endChar": 61
+      },
+      "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "172006a4_7ae9a4a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9e3d38d_d47a48f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-07-18T19:05:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "172006a4_7ae9a4a1",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 42
+      },
+      "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d1263a27_05b68089",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-07-18T19:05:03Z",
+      "side": 1,
+      "message": "Based on stainless 32-38 mins.\nNote. it collects ~20 metrics and I already reduced the time required. Some iterations need to be long enough to provide stable results. Further reducing times would case flaky unstable results.",
+      "parentUuid": "88285882_32afdbed",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 30
+      },
+      "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "839c1c96_eed010f2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b435316_9999d4a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-07-18T19:05:03Z",
+      "side": 1,
+      "message": "Done\nI have personal pref not to use long strings, so 100 chars to me sounds good choice. That one is 101",
+      "parentUuid": "839c1c96_eed010f2",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 33
+      },
+      "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "60c99f22_1c641fc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-07-18T19:05:03Z",
+      "side": 1,
+      "message": "That is better",
+      "parentUuid": "1159839c_12d23639",
+      "range": {
+        "startLine": 53,
+        "startChar": 26,
+        "endLine": 53,
+        "endChar": 52
+      },
+      "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "029ec075_7bd6c570",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
         "patchSetId": 1
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "cd3f07c8_62a99d8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-07-18T19:05:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "029ec075_7bd6c570",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 42
+      },
+      "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ba4b474_3e490261",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
         "patchSetId": 1
@@ -154,6 +298,24 @@
       "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3786c64_c4298beb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-07-18T19:05:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ba4b474_3e490261",
+      "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -174,6 +336,24 @@
     },
     {
       "key": {
+        "uuid": "a4a9cc03_766fbf19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-07-18T19:05:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d35730d_cc0dd61c",
+      "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2671725f_632115d2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
         "patchSetId": 1
@@ -191,6 +371,24 @@
     },
     {
       "key": {
+        "uuid": "94c36864_51705c33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-07-18T19:05:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2671725f_632115d2",
+      "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c30c659_a6184dc7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
         "patchSetId": 1
@@ -205,6 +403,24 @@
       "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39a0a661_2247f45f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-07-18T19:05:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c30c659_a6184dc7",
+      "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -231,6 +447,30 @@
     },
     {
       "key": {
+        "uuid": "bb5aa74e_276ad112",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-07-18T19:05:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73b719f6_935486d5",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 20
+      },
+      "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ef18d92_3df0cc16",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
         "patchSetId": 1
@@ -245,6 +485,24 @@
       "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46b98425_fb72cf21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-07-18T19:05:03Z",
+      "side": 1,
+      "message": "We might have various ending, not only _XXX_YYY\n_fps\n_missed_frame_percents\n\nI refactored slightly different. PTAL",
+      "parentUuid": "1ef18d92_3df0cc16",
+      "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
