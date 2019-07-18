@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "7e1aa21b_af85adf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2019-07-18T15:22:49Z",
+      "side": 1,
+      "message": "Nit: end with period as the above comments.",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 17
+      },
+      "revId": "61a923d30d409cc9806c67275d3cc88e868f1d50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e333aeab_7ce66989",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
         "patchSetId": 3
