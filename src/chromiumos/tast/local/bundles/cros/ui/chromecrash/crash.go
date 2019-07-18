@@ -10,6 +10,7 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"strings"
 	"syscall"
 
 	"github.com/shirou/gopsutil/process"
@@ -20,15 +21,26 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// getChromeMinidumps returns all Chrome minidump files in paths.
-func getChromeMinidumps(paths []string) []string {
-	var dumps []string
-	for _, p := range paths {
-		if filepath.Dir(p) == crash.ChromeCrashDir && filepath.Ext(p) == crash.MinidumpExt {
-			dumps = append(dumps, p)
-		}
+const (
+	cryptohomePattern = "/home/chronos/u-*"
+	// CryptohomeCrashPattern is a glob pattern that matches any crash directory
+	// inside any user's cryptohome
+	CryptohomeCrashPattern = "/home/chronos/u-*/crash"
+)
+
+func getCryptohomeCrashDirectories(ctx context.Context) ([]string, error) {
+	// The crash subdirectory may not exist yet, so we can't just do
+	// filepath.Glob(CryptohomeCrashPattern) here. Instead, look for all cryptohomes
+	// and manually add a /crash on the end.
+	paths, err := filepath.Glob(cryptohomePattern)
+	if err != nil {
+		return nil, err
 	}
-	return dumps
+
+	for i := range paths {
+		paths[i] = filepath.Join(paths[i], "crash")
+	}
+	return paths, nil
 }
 
 // getNewFiles returns all paths present in cur but not in orig.
@@ -68,11 +80,49 @@ func anyPIDsExist(pids []int) (bool, error) {
 	return false, nil
 }
 
-// KillAndGetDumps sends SIGSEGV to the root Chrome process, waits for new minidump
-// files to be written, and then deletes them and returns their paths.
-// All new crash-related files are also deleted.
-func KillAndGetDumps(ctx context.Context) ([]string, error) {
-	oldFiles, err := crash.GetCrashes(crash.DefaultDirs()...)
+// FindCrashFilesIn looks through the list of files returned from KillAndGetCrashFiles,
+// expecting to find the crash output files written by crash_reporter after a Chrome crash.
+// In particular, it expects to find a .meta file and a matching .dmp file.
+// dirPattern is a glob-style pattern indicating where the crash files should be found.
+// FindCrashFilesIn returns an error if the files are not found in the expected
+// directory; otherwise, it returns nil.
+func FindCrashFilesIn(dirPattern string, files []string) error {
+	filePattern := filepath.Join(dirPattern, "chrome*.meta")
+	var meta string
+	for _, file := range files {
+		if match, _ := filepath.Match(filePattern, file); match {
+			meta = file
+		}
+	}
+
+	if meta == "" {
+		return errors.Errorf("could not find crash's meta file in %s. Possible files: %v", dirPattern, files)
+	}
+
+	dump := strings.TrimSuffix(meta, "meta") + "dmp"
+	foundDump := false
+	for _, file := range files {
+		if file == dump {
+			foundDump = true
+		}
+	}
+
+	if !foundDump {
+		errors.Errorf("did not find the dmp file %s corresponding to the crash meta file", dump)
+	}
+
+	return nil
+}
+
+// KillAndGetCrashFiles sends SIGSEGV to the root Chrome process, waits for them to
+// exit, finds all thew new crash files, and then deletes them and returns their paths.
+func KillAndGetCrashFiles(ctx context.Context) ([]string, error) {
+	dirs, err := getCryptohomeCrashDirectories(ctx)
+	if err != nil {
+		return nil, err
+	}
+	dirs = append(dirs, crash.DefaultDirs()...)
+	oldFiles, err := crash.GetCrashes(dirs...)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get original crashes")
 	}
@@ -108,17 +158,17 @@ func KillAndGetDumps(ctx context.Context) ([]string, error) {
 	}
 	testing.ContextLog(ctx, "All Chrome processes exited")
 
-	newFiles, err := crash.GetCrashes(crash.DefaultDirs()...)
+	newFiles, err := crash.GetCrashes(dirs...)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get new crashes")
 	}
-	newChromeDumps := getNewFiles(getChromeMinidumps(oldFiles), getChromeMinidumps(newFiles))
-	for _, p := range newChromeDumps {
-		testing.ContextLog(ctx, "Found expected Chrome minidump file ", p)
+	newCrashFiles := getNewFiles(oldFiles, newFiles)
+	for _, p := range newCrashFiles {
+		testing.ContextLog(ctx, "Found expected Chrome crash file ", p)
 	}
 
 	// Delete all crash files produced during this test: https://crbug.com/881638
-	deleteFiles(ctx, getNewFiles(oldFiles, newFiles))
+	deleteFiles(ctx, newCrashFiles)
 
-	return newChromeDumps, nil
+	return newCrashFiles, nil
 }

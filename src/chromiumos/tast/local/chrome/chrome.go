@@ -179,6 +179,14 @@ func RestrictARCCPU() option {
 	return func(c *Chrome) { c.restrictARCCPU = true }
 }
 
+// CrashNormalMode tells the crash handling system to act like it would on a
+// real device. Normally, the Chrome instances created by this package will skip
+// calling crash_reporter and write any dumps into /home/chronos/crash. This option
+// restores the normal behavior of calling crash_reporter.
+func CrashNormalMode() option {
+	return func(c *Chrome) { c.breakpadTestMode = false }
+}
+
 // ExtraArgs returns an option that can be passed to New to append additional arguments to Chrome's command line.
 func ExtraArgs(args ...string) option {
 	return func(c *Chrome) { c.extraArgs = append(c.extraArgs, args...) }
@@ -206,7 +214,10 @@ type Chrome struct {
 	policyMode         policyMode
 	arcMode            arcMode
 	restrictARCCPU     bool // a flag to control cpu restrictions on ARC
-	extraArgs          []string
+	// If breakpadTestMode is true, tell Chrome's breakpad to always write
+	// dumps directly to a hardcoded directory.
+	breakpadTestMode bool
+	extraArgs        []string
 
 	extDirs     []string // directories containing all unpacked extensions to load
 	testExtID   string   // ID for test extension exposing APIs
@@ -236,14 +247,15 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 	defer st.End()
 
 	c := &Chrome{
-		user:       DefaultUser,
-		pass:       defaultPass,
-		gaiaID:     defaultGaiaID,
-		keepState:  false,
-		loginMode:  fakeLogin,
-		policyMode: noPolicy,
-		watcher:    newBrowserWatcher(),
-		logMaster:  jslog.NewMaster(),
+		user:             DefaultUser,
+		pass:             defaultPass,
+		gaiaID:           defaultGaiaID,
+		keepState:        false,
+		loginMode:        fakeLogin,
+		policyMode:       noPolicy,
+		breakpadTestMode: true,
+		watcher:          newBrowserWatcher(),
+		logMaster:        jslog.NewMaster(),
 	}
 	for _, opt := range opts {
 		opt(c)
@@ -538,9 +550,11 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 		args = append(args, "--arc-availability=officially-supported")
 	}
 	args = append(args, c.extraArgs...)
-	envVars := []string{
-		"CHROME_HEADLESS=", // Force crash dumping.
-		"BREAKPAD_DUMP_LOCATION=" + crash.ChromeCrashDir, // Write crash dumps outside cryptohome.
+	envVars := make([]string, 0)
+	if c.breakpadTestMode {
+		envVars = append(envVars,
+			"CHROME_HEADLESS=",
+			"BREAKPAD_DUMP_LOCATION="+crash.ChromeCrashDir) // Write crash dumps outside cryptohome.
 	}
 	if _, err = sm.EnableChromeTesting(ctx, true, args, envVars); err != nil {
 		return -1, err
