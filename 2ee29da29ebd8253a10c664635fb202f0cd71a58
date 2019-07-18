@@ -68,6 +68,183 @@
       "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "839c1c96_eed010f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-18T07:29:58Z",
+      "side": 1,
+      "message": "You can inline.\n\nout, err :\u003d a.Command(...).CombinedOutput()\n\nNote: go does not have explicit num char limit in a line.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 33
+      },
+      "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1159839c_12d23639",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-18T07:29:58Z",
+      "side": 1,
+      "message": "- How about using `` to avoid backslash escape of backslash escape?\n- I assume you\u0027re trying to match with something like\n  \"OK (10 tests)\"\n  right? Then [\\\\d] and [s] looks a bit weird. \"OK \\(\\d+ tests?\\)\" is what you want?",
+      "range": {
+        "startLine": 53,
+        "startChar": 26,
+        "endLine": 53,
+        "endChar": 52
+      },
+      "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "029ec075_7bd6c570",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-18T07:29:58Z",
+      "side": 1,
+      "message": "- style: Could you avoid line breaking?\n- because you\u0027re not using the extracted subgroup, re.MatchString() is what you want.",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 42
+      },
+      "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ba4b474_3e490261",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-18T07:29:58Z",
+      "side": 1,
+      "message": "Could you avoid multiline fatal message?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting\n\n\u003d\u003d\u003d quote \u003d\u003d\u003d\nIn all cases, please avoid multiline strings since they make logs difficult to read. To preserve multiline output from an external program, please write it to an output file instead of logging it.\n\u003d\u003d\u003d quote end \u003d\u003d\u003d",
+      "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d35730d_cc0dd61c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-18T07:29:58Z",
+      "side": 1,
+      "message": "style: could you use const?",
+      "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2671725f_632115d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-18T07:29:58Z",
+      "side": 1,
+      "message": "To keep indent level lower, continue helps you.\n\nif index \u003c 0 {\n  continue\n}\n\n...",
+      "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c30c659_a6184dc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-18T07:29:58Z",
+      "side": 1,
+      "message": "How about using regexp.FindStringSubmatch()?\n\nre :\u003d regexp.MustCompile(`INSTRUMENTATION_STATUS: (.+?)\u003d(\\d+)`)\n\n...\n\nm :\u003d re.FindStringSubmatch(line)\nif m \u003d\u003d nil {\n  continue\n}\nkey :\u003d m[1]\nvalue, err :\u003d strconv.ParseFloat(m[2], 64)\n...",
+      "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73b719f6_935486d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-18T07:29:58Z",
+      "side": 1,
+      "message": "style: getKeyInformation to exactly match with the function name.",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 20
+      },
+      "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ef18d92_3df0cc16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-18T07:29:58Z",
+      "side": 1,
+      "message": "How about either...;\n\n- extract the suffix by regexp.\n  re :\u003d regexp.MustCompile(\"_[a-z]+_[a-z]+$\")  // at global to avoid recompile, with good name.\n  suffix :\u003d re.FindStringSubmatch(key)\n  ...\n  // Look up from a map.\n\n- Use expression switch\n  https://golang.org/ref/spec#ExprSwitchStmt\n\nto simplify the symmetric structure.",
+      "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
