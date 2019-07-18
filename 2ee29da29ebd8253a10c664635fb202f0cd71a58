@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e8f520c_a6d2a2fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/ArcGamePerformanceTest.apk.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-18T07:26:43Z",
+      "side": 1,
+      "message": "arcapp package does not exist today. could you use arc instead?",
+      "range": {
+        "startLine": 2,
+        "startChar": 55,
+        "endLine": 2,
+        "endChar": 61
+      },
+      "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "172006a4_7ae9a4a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-18T07:26:43Z",
+      "side": 1,
+      "message": "Please put performance tests in crosbolt pool. e.g.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/graphics/crostini_trace_glxgears.go?q\u003dtast-tests+group:crosbolt\u0026g\u003d0\u0026l\u003d20",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 42
+      },
+      "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88285882_32afdbed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-18T07:26:43Z",
+      "side": 1,
+      "message": "Even for performance tests, 1 hour timeout is too long. How long will the test typically take?",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 30
+      },
+      "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
