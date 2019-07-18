@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "35b44d43_bd50b626",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-07-18T22:29:21Z",
+      "side": 1,
+      "message": "I can just remove these comments.",
+      "parentUuid": "fdf9203e_78082251",
+      "revId": "61a923d30d409cc9806c67275d3cc88e868f1d50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e1aa21b_af85adf1",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "db902c76_29448f30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-07-18T22:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e1aa21b_af85adf1",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 17
+      },
+      "revId": "61a923d30d409cc9806c67275d3cc88e868f1d50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e333aeab_7ce66989",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
         "patchSetId": 3
@@ -62,6 +104,30 @@
       "revId": "61a923d30d409cc9806c67275d3cc88e868f1d50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc0dfb85_22eefe46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-07-18T22:29:21Z",
+      "side": 1,
+      "message": "Ok, I\u0027ll make a separate condition for len(rprocs) \u003d\u003d 0",
+      "parentUuid": "e333aeab_7ce66989",
+      "range": {
+        "startLine": 135,
+        "startChar": 58,
+        "endLine": 135,
+        "endChar": 61
+      },
+      "revId": "61a923d30d409cc9806c67275d3cc88e868f1d50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
