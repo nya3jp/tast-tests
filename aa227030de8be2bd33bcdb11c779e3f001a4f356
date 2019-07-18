@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "dae09759_b86be6ab",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-18T07:08:49Z",
+      "side": 1,
+      "message": "Sure. The one I referred was;\n\nhttps://blog.golang.org/godoc-documenting-go-code\n\n\u003d\u003d\u003d quote \u003d\u003d\u003d\nNotice this comment is a complete sentence that begins with the name of the element it describes. \n\u003d\u003d\u003d quote end \u003d\u003d\u003d",
+      "parentUuid": "fb9be9b5_e79865d2",
+      "revId": "aa227030de8be2bd33bcdb11c779e3f001a4f356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "80058f77_b17134dc",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 7
