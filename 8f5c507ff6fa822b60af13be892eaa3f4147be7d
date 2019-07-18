@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6da34be5_37f1489b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/device/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-18T17:04:34Z",
+      "side": 1,
+      "message": "Note: changed to Fatalf. It does not make sense to touch |out| in case of failing the command.",
+      "revId": "8f5c507ff6fa822b60af13be892eaa3f4147be7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
