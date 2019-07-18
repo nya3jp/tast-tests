@@ -67,13 +67,7 @@ func ScreenLock(ctx context.Context, s *testing.State) {
 	waitStatus := func(f func(st lockState) bool, timeout time.Duration) (lockState, error) {
 		var st lockState
 		err := testing.Poll(ctx, func(ctx context.Context) error {
-			const expr = `
-				new Promise((resolve) => {
-				  chrome.autotestPrivate.loginStatus((status) => {
-				    resolve(status);
-				  });
-				})`
-			if err := conn.EvalPromise(ctx, expr, &st); err != nil {
+			if err := conn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.loginStatus)()`, &st); err != nil {
 				return err
 			} else if !f(st) {
 				return errors.New("wrong status")
