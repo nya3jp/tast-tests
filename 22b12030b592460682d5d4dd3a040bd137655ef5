@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f60487ff_21440556",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/black_flash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-18T13:33:06Z",
+      "side": 1,
+      "message": "nit: could you move this to the if condition to minimize the scope?\n\nif fd, err :\u003d os.Create(...); err !\u003d nil {\n  ...",
+      "range": {
+        "startLine": 154,
+        "startChar": 3,
+        "endLine": 154,
+        "endChar": 29
+      },
+      "revId": "22b12030b592460682d5d4dd3a040bd137655ef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2cd1557_89c0f9a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/black_flash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-18T13:33:06Z",
+      "side": 1,
+      "message": "nit: \":\u003d\" to minimize the scope",
+      "range": {
+        "startLine": 159,
+        "startChar": 11,
+        "endLine": 159,
+        "endChar": 12
+      },
+      "revId": "22b12030b592460682d5d4dd3a040bd137655ef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
