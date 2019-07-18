@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f92aca32_7215a14d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_test_internal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-07-18T02:56:39Z",
+      "side": 1,
+      "message": "actually we don\u0027t care about level (class, severity) at this moment since all cros processes runs in s0. maybe we can change ProcessContextRegexp from s0 to :.*\n\nThis is just to prevent false failiure when seeing android processes like u:r:priv_app:c512",
+      "parentUuid": "13ef8249_5603d12b",
+      "range": {
+        "startLine": 113,
+        "startChar": 32,
+        "endLine": 113,
+        "endChar": 69
+      },
+      "revId": "27ab3f65025774cb53b508ab131baa4b03e1d9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "836f483a_23084200",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_processes_arc.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f149053c_ea310373",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_processes_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-07-18T02:56:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "836f483a_23084200",
+      "range": {
+        "startLine": 26,
+        "startChar": 21,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "27ab3f65025774cb53b508ab131baa4b03e1d9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca236e01_398041fc",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_processes_arc_informational.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "27ab3f65025774cb53b508ab131baa4b03e1d9c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "591cec68_80eb609c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_processes_arc_informational.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-07-18T02:56:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca236e01_398041fc",
+      "range": {
+        "startLine": 26,
+        "startChar": 21,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "27ab3f65025774cb53b508ab131baa4b03e1d9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
