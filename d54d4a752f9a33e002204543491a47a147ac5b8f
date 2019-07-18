@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1adbb689_7a412662",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-18T13:28:16Z",
+      "side": 1,
+      "message": "nit: pls update this, too, to be consistent with the implementation.",
+      "range": {
+        "startLine": 104,
+        "startChar": 85,
+        "endLine": 104,
+        "endChar": 87
+      },
+      "revId": "d54d4a752f9a33e002204543491a47a147ac5b8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
