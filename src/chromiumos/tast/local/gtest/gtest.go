@@ -74,7 +74,11 @@ type Params struct {
 	// in this.
 	ExtraArgs []string
 
-	// TODO(hidehiko): To migrate from bintest, support UID.
+	// UID will specify the user to run the test, if specified (i.e. not 0).
+	// Note that making no-op with 0 (root) is consistent behavior, because
+	// test runs as root user already.
+	UID uint32
+
 	// TODO(hidehiko): To migrate from arctest, support ARC gtest run.
 }
 
@@ -90,8 +94,13 @@ func Run(ctx context.Context, exec string, params *Params) (*Report, error) {
 		args = append(args, "--gtest_filter="+params.Filter)
 	}
 
+	var uid uint32
+	if params != nil {
+		uid = params.UID
+	}
+
 	// Create report file.
-	output, err := createOutput()
+	output, err := createOutput(uid)
 	if err != nil {
 		return nil, err
 	}
@@ -105,6 +114,10 @@ func Run(ctx context.Context, exec string, params *Params) (*Report, error) {
 			}
 		}
 		args = append(args, params.ExtraArgs...)
+	}
+
+	if params != nil && params.UID != 0 {
+		args = append([]string{"sudo", fmt.Sprintf("--user=#%d", uid)}, args...)
 	}
 
 	cmd := testexec.CommandContext(ctx, args[0], args[1:]...)
@@ -143,7 +156,7 @@ func Run(ctx context.Context, exec string, params *Params) (*Report, error) {
 	return report, retErr
 }
 
-func createOutput() (string, error) {
+func createOutput(uid uint32) (string, error) {
 	f, err := ioutil.TempFile("", "gtest_output_*.xml")
 	if err != nil {
 		return "", errors.Wrap(err, "failed to create an output file")
@@ -156,6 +169,12 @@ func createOutput() (string, error) {
 
 	if err := f.Close(); err != nil {
 		return "", errors.Wrap(err, "failed to close the output file")
+	}
+
+	if uid != 0 {
+		if err := os.Chown(f.Name(), int(uid), -1); err != nil {
+			return "", errors.Wrap(err, "failed to set user for the output file")
+		}
 	}
 
 	abspath, err := filepath.Abs(f.Name())
