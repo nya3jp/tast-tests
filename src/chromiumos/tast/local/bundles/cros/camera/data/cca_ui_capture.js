@@ -23,5 +23,21 @@ window.CCAUICapture = class {
     }
     btn.click();
   }
+
+  /**
+   * Removes the cached key value pair in chrome.storage.local.
+   * @param{Array<string>} keys
+   * @return Promise
+   */
+  static removeCacheData(keys) {
+    return new Promise((resolve, reject) => {
+      chrome.storage.local.remove(keys, () => {
+        if (chrome.runtime.lastError) {
+          reject(chrome.runtime.lastError);
+        }
+        resolve();
+      });
+    });
+  }
 };
 })();
