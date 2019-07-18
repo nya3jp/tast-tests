@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b05174a_8001b91b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/registration_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-18T12:58:21Z",
+      "side": 1,
+      "message": "We currently only have P for ARCVM, IIUC.\nWhat\u0027s the diff of android_vm, android_p_vm and android_all_vm?",
+      "range": {
+        "startLine": 25,
+        "startChar": 64,
+        "endLine": 25,
+        "endChar": 74
+      },
+      "revId": "9aaa3d11f4b08220260205a31ee4d9ba8d8e8f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
