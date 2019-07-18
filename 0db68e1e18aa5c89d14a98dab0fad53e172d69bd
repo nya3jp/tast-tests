@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc17c160_95f23e70",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-18T12:55:47Z",
+      "side": 1,
+      "message": "If the test is known to be fail, we wouldn\u0027t enable often, practically, because it consumes unnecessary resources. What is your goal to enable this?",
+      "revId": "0db68e1e18aa5c89d14a98dab0fad53e172d69bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f407e88a_461ca316",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-18T12:55:47Z",
+      "side": 1,
+      "message": "Could you run tests, at least, your local DUT?",
+      "revId": "0db68e1e18aa5c89d14a98dab0fad53e172d69bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
