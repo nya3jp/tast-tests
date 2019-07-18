@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6936d42_80f690ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-18T07:41:33Z",
+      "side": 1,
+      "message": "Other tests are fine, but this test is critical, so if ARCVM boot is flaky, CQ will be affected.\n\nI would recommend instead introducing arc.VMBoot informational test which is almost identical to this but runs only on VM and monitoring results for a while.",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 13
+      },
+      "revId": "7b9f54b5cb554576ab89cd614fb4cea6e7783c40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95c37a0f_7a07f730",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-18T07:41:33Z",
+      "side": 1,
+      "message": "would you mind removing this comment? it\u0027s a bit confusing now...",
+      "range": {
+        "startLine": 24,
+        "startChar": 22,
+        "endLine": 24,
+        "endChar": 53
+      },
+      "revId": "7b9f54b5cb554576ab89cd614fb4cea6e7783c40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
