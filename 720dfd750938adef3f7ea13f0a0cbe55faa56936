@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "969bb13a_17ad49ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-18T13:14:19Z",
+      "side": 1,
+      "message": "Could you keep some comments about this function? In partcular brief description of \"member\" would be useful.\n\nAlso, IMO it\u0027s more common to put member as the first argument since it specifies a sort of type.",
+      "revId": "720dfd750938adef3f7ea13f0a0cbe55faa56936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
