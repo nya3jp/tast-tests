@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "241634a9_ff794638",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-18T15:38:55Z",
+      "side": 1,
+      "message": "Currently, if there\u0027s a file at the Logfile, gtest reports an error.\nIt is to guard from accidental log lost.\nWith the current spec of gtest, TempFile won\u0027t work, so we have to change something.\n\n- Allow to truncate the log file if exists, instead of reporting an error. Possible log lost.\n- Append to the log file if exists, instead of reporting an error. Could be confusing, if unexpected.\n- Use TempFile always in gtest lib, instead of os.Create(). Then, the long file name may not be predictable, specifically if the test runs many times.\n- Use TempFile iff the Logfile\u0027s last component has \u0027*\u0027. Maybe acceptable, but we cannot then create a logfile with a name containing \u0027*\u0027.\n\nOr, alternatively cfg can have (sub)name. So that the name conflict can be resolved by adding the subname as suffix. WDYT?",
+      "parentUuid": "b6b12f33_f5142747",
+      "range": {
+        "startLine": 126,
+        "startChar": 45,
+        "endLine": 126,
+        "endChar": 48
+      },
+      "revId": "3f1ad7e3631673fb6cea0fa514631b637e6b23bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10227ed7_f7fa8e94",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2019-07-18T06:21:38Z",
       "side": 1,
       "message": "Could we make |UID| an |int| in |Params| directly to save a conversion here and to be consistent with the other golang builtin functions such as os.Chown() and os.Getuid()?",
+      "range": {
+        "startLine": 175,
+        "startChar": 31,
+        "endLine": 175,
+        "endChar": 34
+      },
+      "revId": "3f1ad7e3631673fb6cea0fa514631b637e6b23bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bbd1baf_a33e664c",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-18T15:38:55Z",
+      "side": 1,
+      "message": "It\u0027s to uint32 to be consistent with\nhttps://golang.org/pkg/syscall/#Stat_t\n\nSo, in go, there\u0027re two types used for UID...",
+      "parentUuid": "10227ed7_f7fa8e94",
       "range": {
         "startLine": 175,
         "startChar": 31,
