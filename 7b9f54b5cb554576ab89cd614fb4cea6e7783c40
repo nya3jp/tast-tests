@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ffec7365_118aa1a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-18T09:47:22Z",
+      "side": 1,
+      "message": "hidehiko@ pointed out arcvm is not part of CQ today, so this should be fine. Sorry!",
+      "parentUuid": "f6936d42_80f690ce",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 13
+      },
+      "revId": "7b9f54b5cb554576ab89cd614fb4cea6e7783c40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95c37a0f_7a07f730",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/boot.go",
         "patchSetId": 2
