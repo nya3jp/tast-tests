@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "63523a62_36242ebf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-18T13:04:11Z",
+      "side": 1,
+      "message": "This CL might be going to conflict with David\u0027s CL:1695101. It\u0027d be safer to rebase this on the David\u0027s CL.",
+      "revId": "2de7159c3d53cea7e0326d61e8c52874fcae7ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d647d96_aa9964d6",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
         "patchSetId": 1
