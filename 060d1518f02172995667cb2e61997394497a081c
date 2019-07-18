@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "27eac1d1_a3416c12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure_moderate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-18T04:17:17Z",
+      "side": 1,
+      "message": "nit/optional: to match with the var, maybe maxTab?",
+      "range": {
+        "startLine": 30,
+        "startChar": 58,
+        "endLine": 30,
+        "endChar": 62
+      },
+      "revId": "060d1518f02172995667cb2e61997394497a081c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "746bdbc6_55fb6e8d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure_moderate.go",
         "patchSetId": 2
@@ -19,6 +42,23 @@
         "endLine": 34,
         "endChar": 52
       },
+      "revId": "060d1518f02172995667cb2e61997394497a081c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0a62215_a87a673a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_pressure_moderate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-18T04:17:17Z",
+      "side": 1,
+      "message": "style/optional: L44-L61 is now the calculation of maxTab. If the number of tabs is specified via Variable, it is not necessary to have this calculation conceptually.\n\nThus, I\u0027d recommend to restructure;\n\nvar maxTab int\nif val, ok :\u003d s.Var(...); ok {\n  s.Log(\"The number of tabs is specified via Variable\")\n  // L56-L60.\n} else {\n  s.Log(\"Inferring the number of tabs from the memory size\")\n  // L44-L52.\n}\n...",
       "revId": "060d1518f02172995667cb2e61997394497a081c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
