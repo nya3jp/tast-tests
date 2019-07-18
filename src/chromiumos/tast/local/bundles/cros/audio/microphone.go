@@ -110,10 +110,8 @@ func Microphone(ctx context.Context, s *testing.State) {
 	// Look for the number of channels which ALSA supports.
 	var alsaChans []int
 	{
-		cmd := testexec.CommandContext(ctx, "alsa_helpers", "--device", alsaDev, "--get_capture_channels")
-		out, err := cmd.Output()
+		out, err := testexec.CommandContext(ctx, "alsa_helpers", "--device", alsaDev, "--get_capture_channels").Output(testexec.DumpLogOnError)
 		if err != nil {
-			cmd.DumpLog(ctx)
 			s.Fatal("Failed to get alsa recording channels: ", err)
 		}
 		cs := strings.Split(strings.TrimSpace(string(out)), "\n")
@@ -121,7 +119,6 @@ func Microphone(ctx context.Context, s *testing.State) {
 		for i, c := range cs {
 			numChans, err := strconv.Atoi(c)
 			if err != nil {
-				cmd.DumpLog(ctx)
 				s.Fatal("Failed to obtain recording channels: ", err)
 			}
 			alsaChans[i] = numChans
@@ -130,34 +127,24 @@ func Microphone(ctx context.Context, s *testing.State) {
 
 	// Recording function by ALSA.
 	recordAlsa := func(path string, numChans int, samplingRate int) error {
-		cmd := testexec.CommandContext(
+		return testexec.CommandContext(
 			ctx, "arecord",
 			"-d", strconv.Itoa(int(duration.Seconds())),
 			"-c", strconv.Itoa(numChans),
 			"-f", "S16_LE",
 			"-r", strconv.Itoa(samplingRate),
 			"-D", "plug"+alsaDev,
-			path)
-		if err := cmd.Run(); err != nil {
-			cmd.DumpLog(ctx)
-			return err
-		}
-		return nil
+			path).Run(testexec.DumpLogOnError)
 	}
 
 	// Recording function by CRAS.
 	recordCras := func(path string, numChans int, samplingRate int) error {
-		cmd := testexec.CommandContext(
+		return testexec.CommandContext(
 			ctx, "cras_test_client",
 			"--capture_file", path,
 			"--duration", strconv.Itoa(int(duration.Seconds())),
 			"--num_channels", strconv.Itoa(numChans),
-			"--rate", strconv.Itoa(samplingRate))
-		if err := cmd.Run(); err != nil {
-			cmd.DumpLog(ctx)
-			return err
-		}
-		return nil
+			"--rate", strconv.Itoa(samplingRate)).Run(testexec.DumpLogOnError)
 	}
 
 	// Test for each parameter.

@@ -29,11 +29,9 @@ func Enabled(ctx context.Context) (bool, error) {
 	// -F, --format <arg>  * Use specified format for output
 	// -g, --gmatch        * Use regex rather than string compare (with -s)
 	// -s, --symbol <arg>  * Find a specified symbol
-	cmd := testexec.CommandContext(
-		ctx, "scanelf", "-qF'%s#F'", "-gs", asanSymbol, debugd)
-	output, err := cmd.CombinedOutput()
+	output, err := testexec.CommandContext(
+		ctx, "scanelf", "-qF'%s#F'", "-gs", asanSymbol, debugd).CombinedOutput(testexec.DumpLogOnError)
 	if err != nil {
-		cmd.DumpLog(ctx) // Ignore DumpLog's error on error.
 		return false, err
 	}
 	return string(output) != "", nil

@@ -53,10 +53,8 @@ type mediaSettings struct {
 // ARC, which would be used as an argument of cros_camera_test.
 func getRecordingParams(ctx context.Context) (string, error) {
 	arcCmd := shutil.EscapeSlice([]string{"cat", mediaProfilePath})
-	cmd := testexec.CommandContext(ctx, "android-sh", "-c", arcCmd)
-	out, err := cmd.Output()
+	out, err := testexec.CommandContext(ctx, "android-sh", "-c", arcCmd).Output(testexec.DumpLogOnError)
 	if err != nil {
-		cmd.DumpLog(ctx)
 		return "", err
 	}
 	var settings mediaSettings

@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -58,9 +59,7 @@ func IntentForward(ctx context.Context, s *testing.State) {
 
 		testing.ContextLogf(ctx, "Testing: %s(%s) -> %s", action, data, url)
 
-		cmd := a.SendIntentCommand(ctx, action, data)
-		if err := cmd.Run(); err != nil {
-			cmd.DumpLog(ctx)
+		if err := a.SendIntentCommand(ctx, action, data).Run(testexec.DumpLogOnError); err != nil {
 			s.Errorf("Failed to send an intent %q: %v", action, err)
 			return
 		}
