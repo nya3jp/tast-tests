@@ -51,6 +51,24 @@
       "revId": "449da06bdbfc261d8956bf24738ae0f85ac6f6ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22235f01_a18eda16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/loopback_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2019-07-18T19:57:47Z",
+      "side": 1,
+      "message": "Updating cras_tests to run real time helped a bit, so I got the test to pass more often, but it\u0027s still fairly flaky. I didn\u0027t notice much effect from larger buffers. \n\nIn 10 runs, I had 4 failures due to data not being captured, 2 failures from zero samples at the end of capture, and 4 passes.",
+      "parentUuid": "e12d6d83_64ab8598",
+      "revId": "449da06bdbfc261d8956bf24738ae0f85ac6f6ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
