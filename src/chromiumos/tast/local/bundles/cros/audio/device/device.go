@@ -65,11 +65,9 @@ func TestDeviceFiles(ctx context.Context, s *testing.State, pattern string) {
 
 // TestALSACommand tests ALSA command recognizes devices.
 func TestALSACommand(ctx context.Context, s *testing.State, name string) {
-	cmd := testexec.CommandContext(ctx, name, "-l")
-	out, err := cmd.CombinedOutput()
+	out, err := testexec.CommandContext(ctx, name, "-l").CombinedOutput(testexec.DumpLogOnError)
 	if err != nil {
-		cmd.DumpLog(ctx)
-		s.Errorf("%s failed: %v", name, err)
+		s.Fatalf("%s failed: %v", name, err)
 	}
 	if strings.Contains(string(out), "no soundcards found") {
 		s.Errorf("%s recognized no sound cards", name)

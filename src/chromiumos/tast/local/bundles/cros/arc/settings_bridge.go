@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -35,16 +36,11 @@ func enableAccessibility(ctx context.Context, conn *chrome.Conn) error {
 
 // isAccessibilityEnabled checks whether accessibility is enabled on Android.
 func isAccessibilityEnabled(ctx context.Context, a *arc.ARC) (bool, error) {
-	cmd := a.Command(ctx, "settings", "--user", "0", "get", "secure", "accessibility_enabled")
-	res, err := cmd.Output()
+	res, err := a.Command(ctx, "settings", "--user", "0", "get", "secure", "accessibility_enabled").Output(testexec.DumpLogOnError)
 	if err != nil {
-		cmd.DumpLog(ctx)
 		return false, err
 	}
-	if strings.TrimSpace(string(res)) == "1" {
-		return true, nil
-	}
-	return false, nil
+	return strings.TrimSpace(string(res)) == "1", nil
 }
 
 // testSpokenFeedbackEnabled runs the test to ensure spoken feedback settings
@@ -86,10 +82,8 @@ func waitFontScale(ctx context.Context, a *arc.ARC, fontScale string) error {
 
 // getFontScale obtains current font scale from Android.
 func getFontScale(ctx context.Context, a *arc.ARC) (string, error) {
-	cmd := a.Command(ctx, "settings", "--user", "0", "get", "system", "font_scale")
-	res, err := cmd.Output()
+	res, err := a.Command(ctx, "settings", "--user", "0", "get", "system", "font_scale").Output(testexec.DumpLogOnError)
 	if err != nil {
-		cmd.DumpLog(ctx)
 		return "", err
 	}
 	return strings.TrimSpace(string(res)), nil
@@ -152,10 +146,8 @@ type proxySettingsTestCase struct {
 // proxy is one of:
 // global_http_proxy_host|global_http_proxy_port|global_proxy_pac_url|global_http_proxy_exclusion_list.
 func getAndroidProxy(ctx context.Context, a *arc.ARC, proxyString string) (string, error) {
-	cmd := a.Command(ctx, "settings", "get", "global", proxyString)
-	res, err := cmd.Output()
+	res, err := a.Command(ctx, "settings", "get", "global", proxyString).Output(testexec.DumpLogOnError)
 	if err != nil {
-		cmd.DumpLog(ctx)
 		return "", err
 	}
 	proxy := strings.TrimSpace(string(res))

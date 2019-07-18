@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -43,10 +44,8 @@ func Boot(ctx context.Context, s *testing.State) {
 
 	// Run "pm list packages" and ensure "android" package exists.
 	// This ensures package manager service is running at least.
-	cmd := a.Command(ctx, "pm", "list", "packages")
-	out, err := cmd.Output()
+	out, err := a.Command(ctx, "pm", "list", "packages").Output(testexec.DumpLogOnError)
 	if err != nil {
-		cmd.DumpLog(ctx)
 		s.Fatal("pm list failed: ", err)
 	}
 

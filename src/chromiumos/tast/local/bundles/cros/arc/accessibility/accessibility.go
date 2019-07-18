@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -34,10 +35,8 @@ const (
 
 // Enabled checks if accessibility is enabled in Android.
 func Enabled(ctx context.Context, a *arc.ARC) (bool, error) {
-	cmd := a.Command(ctx, "settings", "--user", "0", "get", "secure", "accessibility_enabled")
-	res, err := cmd.Output()
+	res, err := a.Command(ctx, "settings", "--user", "0", "get", "secure", "accessibility_enabled").Output(testexec.DumpLogOnError)
 	if err != nil {
-		cmd.DumpLog(ctx)
 		return false, err
 	}
 	return strings.TrimSpace(string(res)) == "1", nil
