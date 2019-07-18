@@ -468,3 +468,22 @@ func (a *App) ClickWithSelector(ctx context.Context, selector string) error {
 	code := fmt.Sprintf("document.querySelector(%q).click()", selector)
 	return a.conn.Eval(ctx, code, nil)
 }
+
+// RemoveCacheData removes the cached key value pair in local storage.
+func (a *App) RemoveCacheData(ctx context.Context, keys []string) error {
+	keyArray := "["
+	for i, key := range keys {
+		if i == 0 {
+			keyArray += fmt.Sprintf("%q", key)
+		} else {
+			keyArray += fmt.Sprintf(", %q", key)
+		}
+	}
+	keyArray += "]"
+	code := fmt.Sprintf("CCAUICapture.removeCacheData(%v)", keyArray)
+	if err := a.conn.EvalPromise(ctx, code, nil); err != nil {
+		testing.ContextLogf(ctx, "Failed to remove cache (%q): %v", code, err)
+		return err
+	}
+	return nil
+}

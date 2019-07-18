@@ -22,7 +22,7 @@ func init() {
 		Contacts:     []string{"shenghao@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinCamera},
-		Data:         []string{"cca_ui.js"},
+		Data:         []string{"cca_ui.js", "cca_ui_capture.js"},
 		Pre:          chrome.LoggedIn(),
 	})
 }
@@ -30,11 +30,17 @@ func init() {
 func CCAUISettings(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")})
+	clearCache := func(ctx context.Context, app *cca.App) {
+		app.RemoveCacheData(ctx,
+			[]string{"toggle3sec", "toggle10sec", "toggle3x3", "toggle4x4", "toggleGolden"})
+	}
+
+	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js"), s.DataPath("cca_ui_capture.js")})
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
 	defer app.Close(ctx)
+	defer clearCache(ctx, app)
 
 	if err := app.WaitForVideoActive(ctx); err != nil {
 		s.Fatal("Preview is inactive after launching app: ", err)
