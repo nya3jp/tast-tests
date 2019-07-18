@@ -18,7 +18,6 @@ import (
 
 	metrics_event "chromiumos/system_api/metrics_event_proto"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -41,39 +40,24 @@ func readAsInt(filename string) (int, error) {
 	return strconv.Atoi(str)
 }
 
-// Emits a D-Bus signal identical to the one sent by Chrome to notify memd that
-// a tab discard has occurred.
-func emitTabDiscardSignal() error {
+// Emits a D-Bus signal for comsumption by memd. The |name| parameter must be
+// formatted as "interface.member", e.g., "org.freedesktop.DBus.NameLost".
+func emitDBusSignal(name string, eventType metrics_event.Event_Type) error {
 	conn, err := dbus.SystemBus()
 	if err != nil {
 		return err
 	}
 	// Create metrics event instance.
 	event := &metrics_event.Event{
-		Type:      metrics_event.Event_TAB_DISCARD,
+		Type:      eventType,
 		Timestamp: 12345,
 	}
 	bytes, err := proto.Marshal(event)
 	if err != nil {
-		return errors.Wrap(err, "emit tab discard: marshal failed")
+		return errors.Wrap(err, "emit dbus signal: marshal failed")
 	}
 	// Emit signal with byte array as payload.
-	return conn.Emit("/",
-		"org.chromium.MetricsEventServiceInterface.ChromeEvent", bytes)
-}
-
-// Logs a syslog entry which makes the anomaly detector emit an OOM-kill D-Bus
-// signal.
-func logFakeOOMKill(ctx context.Context) error {
-	// Take advantage of the fact that the anomaly_detector scanner is not
-	// strict and will ignore the first part of the line.
-	fakeMessage := "kernel: [ 8996.861500] Out of memory: Kill process"
-	cmd := testexec.CommandContext(ctx, "logger", fakeMessage)
-	if err := cmd.Run(); err != nil {
-		cmd.DumpLog(ctx)
-		return errors.Wrap(err, "logger failed")
-	}
-	return nil
+	return conn.Emit("/", name, bytes)
 }
 
 func checkClipFiles(s *testing.State, pattern string) error {
@@ -213,13 +197,16 @@ func Memd(ctx context.Context, s *testing.State) {
 	}
 
 	// Send a fake tab-discard notification.
-	if err = emitTabDiscardSignal(); err != nil {
+	err = emitDBusSignal("org.chromium.MetricsEventServiceInterface.ChromeEvent",
+		metrics_event.Event_TAB_DISCARD)
+	if err != nil {
 		s.Fatal("Cannot send fake tab discard signal: ", err)
 	}
-	// Produce an OOM-kill notification by logging a line that tickles the
-	// anomaly detector.
-	if err = logFakeOOMKill(ctx); err != nil {
-		s.Fatal("Cannot log fake oom event: ", err)
+	// Send a fake OOM-kill notification.
+	err = emitDBusSignal("org.chromium.AnomalyEventServiceInterface.AnomalyEvent",
+		metrics_event.Event_OOM_KILL_KERNEL)
+	if err != nil {
+		s.Fatal("Cannot send fake OOM-kill signal: ", err)
 	}
 
 	// Check that one or more clip files have been generated with the
