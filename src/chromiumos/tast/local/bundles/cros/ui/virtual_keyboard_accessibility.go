@@ -45,12 +45,7 @@ func VirtualKeyboardAccessibility(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Enabling the accessibility keyboard")
-	if err := tconn.EvalPromise(ctx, `
-new Promise((resolve, reject) => {
-	chrome.autotestPrivate.setWhitelistedPref(
-		'settings.a11y.virtual_keyboard', true, resolve);
-})
-`, nil); err != nil {
+	if err := tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.setWhitelistedPref)('settings.a11y.virtual_keyboard', true)`, nil); err != nil {
 		s.Fatal("Failed to enable the accessibility keyboard: ", err)
 	}
 

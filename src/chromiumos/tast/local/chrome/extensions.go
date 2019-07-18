@@ -66,11 +66,12 @@ func writeTestExtension(dir string) (id string, err error) {
 		return "", err
 	}
 
-	// Based on Autotest's client/common_lib/cros/autotest_private_ext/manifest.json and
-	// client/cros/multimedia/multimedia_test_extension/manifest.json. It appears to be
-	// the case that this key must be present in the manifest in order for the extension's
-	// autotestPrivate permission request to be granted.
-	manifest := `{
+	const (
+		// Based on Autotest's client/common_lib/cros/autotest_private_ext/manifest.json and
+		// client/cros/multimedia/multimedia_test_extension/manifest.json. It appears to be
+		// the case that this key must be present in the manifest in order for the extension's
+		// autotestPrivate permission request to be granted.
+		manifest = `{
   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDuUZGKCDbff6IRaxa4Pue7PPkxwPaNhGT3JEqppEsNWFjM80imEdqMbf3lrWqEfaHgaNku7nlpwPO1mu3/4Hr+XdNa5MhfnOnuPee4hyTLwOs3Vzz81wpbdzUxZSi2OmqMyI5oTaBYICfNHLwcuc65N5dbt6WKGeKgTpp4v7j7zwIDAQAB",
   "description": "Permits access to various APIs by tests",
   "name": "Test API extension",
@@ -96,9 +97,32 @@ func writeTestExtension(dir string) (id string, err error) {
   }
 }`
 
+		// In background.js, tast library is defined.
+		// tast.promisify: it takes Chrome style async API, which satisfies:
+		// - The last param is a completion callback.
+		// - The completion callback may take an argument, which will be
+		//   the result value.
+		// - API error is reported via chrome.runtime.lastError.
+		// Returned value is an async function to call the API.
+		background = `
+tast = {};
+tast.promisify = function(f) {
+  return (...args) => new Promise((resolve, reject) => {
+    f(...args, (val) => {
+      if (chrome.runtime.lastError) {
+        reject(new Error(chrome.runtime.lastError.message));
+        return;
+      }
+      resolve(val);
+    });
+  });
+};
+`
+	)
+
 	for _, f := range []struct{ name, data string }{
 		{"manifest.json", manifest},
-		{"background.js", ""},
+		{"background.js", background},
 	} {
 		if err = ioutil.WriteFile(filepath.Join(dir, f.name), []byte(f.data), 0644); err != nil {
 			return "", err
