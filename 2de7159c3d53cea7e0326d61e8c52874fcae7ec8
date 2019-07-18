@@ -19,6 +19,41 @@
     },
     {
       "key": {
+        "uuid": "173a663c_b45209fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-18T23:38:09Z",
+      "side": 1,
+      "message": "Thanks for the note! CL:1695101 got submitted so you can rebase now!",
+      "parentUuid": "63523a62_36242ebf",
+      "revId": "2de7159c3d53cea7e0326d61e8c52874fcae7ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c038b4a7_fe0b3e54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-18T23:38:09Z",
+      "side": 1,
+      "message": "nit: Maybe add an extra note why this condition has been relaxed?",
+      "revId": "2de7159c3d53cea7e0326d61e8c52874fcae7ec8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d647d96_aa9964d6",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/lib/histogram/histogram.go",
         "patchSetId": 1
