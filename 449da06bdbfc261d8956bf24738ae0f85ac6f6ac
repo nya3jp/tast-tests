@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7fc479c_55f96d0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/loopback_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2019-07-18T17:07:44Z",
+      "side": 1,
+      "message": "The signal is pretty often not continuous because some samples were not captured, even though I\u0027m running \u0027cras_tests capture\u0027 with \u0027nice -20\u0027. How can I ensure that the capture process doesn\u0027t drop samples?",
+      "revId": "449da06bdbfc261d8956bf24738ae0f85ac6f6ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4354cb50_dfe137a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/loopback_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2019-07-18T17:07:44Z",
+      "side": 1,
+      "message": "Ideally, this error should always be 0, but almost always I get significant errors because the last samples that cras_tests captures are 0\u0027s because some of the played data is getting dropped. This means we can\u0027t find a perfect overlap for the whole input sine wave. What could be going wrong here? Once, I did get a perfect capture with 0 error, but I have been unable to repeat it.",
+      "revId": "449da06bdbfc261d8956bf24738ae0f85ac6f6ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
