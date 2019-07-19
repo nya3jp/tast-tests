@@ -87,6 +87,24 @@
       "revId": "449da06bdbfc261d8956bf24738ae0f85ac6f6ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "855e8f0d_116d29c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/loopback_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1000994
+      },
+      "writtenOn": "2019-07-19T20:23:03Z",
+      "side": 1,
+      "message": "That\u0027s not any good. Is it really scheduling causing you trouble? On your machine, I don\u0027t see why there would be a problem getting the threads scheduled. maybe get a trace to see what is going on. The combination of forking processes and these goroutine scheduling is confusing to me.",
+      "parentUuid": "22235f01_a18eda16",
+      "revId": "449da06bdbfc261d8956bf24738ae0f85ac6f6ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
