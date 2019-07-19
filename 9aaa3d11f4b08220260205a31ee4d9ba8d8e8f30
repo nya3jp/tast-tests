@@ -22,6 +22,30 @@
       "revId": "9aaa3d11f4b08220260205a31ee4d9ba8d8e8f30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65e29f12_79ac44d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/registration_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-07-19T01:15:20Z",
+      "side": 1,
+      "message": "\u003e We currently only have P for ARCVM, IIUC.\n\nYes, that is true.\n\n\u003e What\u0027s the diff of android_vm, android_p_vm and android_all_vm?\n\nCurrently, there is none, they run on all ARCVM. My rationale for doing each of them is to make ARC and ARCVM equal.\n\nWhat do you say, if we remove android_all_vm and keep android_vm for possible future cases? Or would you prefer if we only have android_p_vm for now?",
+      "parentUuid": "9b05174a_8001b91b",
+      "range": {
+        "startLine": 25,
+        "startChar": 64,
+        "endLine": 25,
+        "endChar": 74
+      },
+      "revId": "9aaa3d11f4b08220260205a31ee4d9ba8d8e8f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
