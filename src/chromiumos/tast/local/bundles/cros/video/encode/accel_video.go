@@ -132,6 +132,11 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, mode testMode, opt
 	commonArgs := []string{logging.ChromeVmoduleFlag(),
 		createStreamDataArg(params, opts.Profile, opts.PixelFormat, streamPath, outPath),
 		"--ozone-platform=gbm",
+
+		// The default timeout for test launcher is 45 seconds, which is not enough for some test cases.
+		// Considering we already manage timeout by Tast context.Context, we don't need another timeout at test launcher.
+		// Set a huge timeout (3600000 milliseconds, 1 hour) here.
+		"--test-launcher-timeout=3600000",
 	}
 	if opts.InputMode == DMABuf {
 		commonArgs = append(commonArgs, "--native_input")

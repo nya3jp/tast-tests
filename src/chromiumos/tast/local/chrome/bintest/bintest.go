@@ -80,11 +80,6 @@ func Run(ctx context.Context, exec string, args []string, outDir string) ([]stri
 func RunAsync(ctx context.Context, exec string, args, env []string, outDir string) (*testexec.Cmd, error) {
 	binaryTestPath := filepath.Join("/usr/local/libexec/chrome-binary-tests", exec)
 
-	// The default timeout for test launcher is 45 seconds, which is not enough for some test cases.
-	// Considering we already manage timeout by Tast context.Context, we don't need another timeout at test launcher.
-	// Set a huge timeout (3600000 milliseconds, 1 hour) here.
-	args = append(args, "--test-launcher-timeout=3600000")
-
 	// Create the output file that the test log is dumped on failure.
 	f, err := os.Create(filepath.Join(outDir, fmt.Sprintf("output_%s_%d.txt", exec, time.Now().Unix())))
 	if err != nil {
