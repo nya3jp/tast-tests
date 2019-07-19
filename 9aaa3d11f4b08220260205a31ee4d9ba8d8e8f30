@@ -46,6 +46,30 @@
       "revId": "9aaa3d11f4b08220260205a31ee4d9ba8d8e8f30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59754498_6e3a3ad0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/registration_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-19T08:45:31Z",
+      "side": 1,
+      "message": "Could you keep the condition as small as possible? Maintaining unnecessary deps looks cost.\nTo be clear; my recommendation here is, just adding \"android_both, android_p_both, android_all_both, android_vm\". If more variation is needed, let\u0027s revisit here then.",
+      "parentUuid": "65e29f12_79ac44d8",
+      "range": {
+        "startLine": 25,
+        "startChar": 64,
+        "endLine": 25,
+        "endChar": 74
+      },
+      "revId": "9aaa3d11f4b08220260205a31ee4d9ba8d8e8f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
