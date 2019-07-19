@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e83cbe3_c5cc4d50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-07-19T02:03:12Z",
+      "side": 1,
+      "message": "nit: I think it\u0027s still fine to put them in the constructor list.\n--use_vd should be ok to put after positional arguments.\nIf you don\u0027t want to interleave positional arguments and option arguments, then how about moving positional arguments to front?",
+      "range": {
+        "startLine": 298,
+        "startChar": 1,
+        "endLine": 298,
+        "endChar": 72
+      },
+      "revId": "018566bc27a8a559d4d6ff47d707d778320fb7d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
