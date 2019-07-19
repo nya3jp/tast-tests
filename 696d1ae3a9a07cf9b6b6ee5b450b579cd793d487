@@ -46,6 +46,30 @@
       "revId": "696d1ae3a9a07cf9b6b6ee5b450b579cd793d487",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b38f893c_8d1e5d44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_vp8.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-07-19T01:54:49Z",
+      "side": 1,
+      "message": "Alright, I prefer to add one more specific SoftwareDeps for supporting import mode, but we could use android first.\nLet\u0027s leave a TODO here for changing to specific SoftwareDeps.",
+      "parentUuid": "c3063462_5106027b",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 33
+      },
+      "revId": "696d1ae3a9a07cf9b6b6ee5b450b579cd793d487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
