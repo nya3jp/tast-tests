@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5cfa22c8_62ed9f02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-07-19T01:16:06Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "ffec7365_118aa1a1",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 13
+      },
+      "revId": "7b9f54b5cb554576ab89cd614fb4cea6e7783c40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95c37a0f_7a07f730",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/boot.go",
         "patchSetId": 2
@@ -69,6 +93,30 @@
       "revId": "7b9f54b5cb554576ab89cd614fb4cea6e7783c40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbba73e4_c795f6fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-07-19T01:16:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95c37a0f_7a07f730",
+      "range": {
+        "startLine": 24,
+        "startChar": 22,
+        "endLine": 24,
+        "endChar": 53
+      },
+      "revId": "7b9f54b5cb554576ab89cd614fb4cea6e7783c40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
