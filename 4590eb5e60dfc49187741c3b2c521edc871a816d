@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6be8398e_d3b34030",
+        "filename": "src/chromiumos/tast/local/media/histogram/histogram.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-19T05:02:01Z",
+      "side": 1,
+      "message": "hmm nvm. I think false negative here means not reporting HWAccel while there exists HWAccel. So it will be OK.",
+      "parentUuid": "8da6932b_9409164b",
+      "range": {
+        "startLine": 23,
+        "startChar": 69,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "4590eb5e60dfc49187741c3b2c521edc871a816d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2ad1cf5_57a5a5e8",
         "filename": "src/chromiumos/tast/local/media/histogram/histogram.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "4590eb5e60dfc49187741c3b2c521edc871a816d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8299e8fc_6360c393",
+        "filename": "src/chromiumos/tast/local/media/histogram/histogram.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-19T05:02:01Z",
+      "side": 1,
+      "message": "nvm.",
+      "parentUuid": "c2ad1cf5_57a5a5e8",
+      "range": {
+        "startLine": 25,
+        "startChar": 35,
+        "endLine": 25,
+        "endChar": 49
+      },
+      "revId": "4590eb5e60dfc49187741c3b2c521edc871a816d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
