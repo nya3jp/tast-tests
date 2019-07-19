@@ -29,7 +29,6 @@ func init() {
 			"chromeos-kernel@google.com",
 			"oka@chromium.org", // Tast port author
 		},
-		Attr: []string{"informational"},
 	})
 }
 
