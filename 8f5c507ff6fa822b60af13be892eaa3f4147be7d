@@ -16,6 +16,24 @@
       "revId": "8f5c507ff6fa822b60af13be892eaa3f4147be7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "453418c7_5b368f92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/device/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-19T04:49:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6da34be5_37f1489b",
+      "revId": "8f5c507ff6fa822b60af13be892eaa3f4147be7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
