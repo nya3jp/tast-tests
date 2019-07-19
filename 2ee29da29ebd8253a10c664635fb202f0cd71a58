@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "68dc259b_ef51923d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/ArcGamePerformanceTest.apk.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-19T08:28:38Z",
+      "side": 1,
+      "message": "FYI: it\u0027s historical reason. arcapp package was migrated into arc.",
+      "parentUuid": "8901c0d8_f9e16353",
+      "range": {
+        "startLine": 2,
+        "startChar": 55,
+        "endLine": 2,
+        "endChar": 61
+      },
+      "revId": "2ee29da29ebd8253a10c664635fb202f0cd71a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "172006a4_7ae9a4a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance.go",
         "patchSetId": 1
