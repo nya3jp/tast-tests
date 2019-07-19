@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "739d2367_403f09c8",
+        "filename": "src/chromiumos/tast/local/chrome/extensions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-19T00:20:08Z",
+      "side": 1,
+      "message": "s/;/:/",
+      "range": {
+        "startLine": 101,
+        "startChar": 69,
+        "endLine": 101,
+        "endChar": 70
+      },
+      "revId": "8412d3d875da7037d78cdfae94aadf41607bee2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e511b05_6f4e52a9",
+        "filename": "src/chromiumos/tast/local/chrome/extensions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-19T00:20:08Z",
+      "side": 1,
+      "message": "This sentence reads like only up to one argument is allowed, but we allow arbitrary number of arguments.\n\n The completion callback takes zero or more arguments as result values.",
+      "range": {
+        "startLine": 103,
+        "startChar": 7,
+        "endLine": 104,
+        "endChar": 24
+      },
+      "revId": "8412d3d875da7037d78cdfae94aadf41607bee2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfca9c0a_08adb895",
+        "filename": "src/chromiumos/tast/local/chrome/extensions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-19T00:20:08Z",
+      "side": 1,
+      "message": "Please start a new sentence here. For example: \"Returned value is an async function ...\"",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 9
+      },
+      "revId": "8412d3d875da7037d78cdfae94aadf41607bee2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e658b57_ece0e143",
+        "filename": "src/chromiumos/tast/local/chrome/extensions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-19T00:20:08Z",
+      "side": 1,
+      "message": "nit: Why don\u0027t we use an arrow function here? (it makes sense to define tast.promisity as a normal function to set this as tast, but I don\u0027t see obvious reason to use a normal function here, especially when you use an arrow function for the promise callback)",
+      "range": {
+        "startLine": 111,
+        "startChar": 15,
+        "endLine": 111,
+        "endChar": 23
+      },
+      "revId": "8412d3d875da7037d78cdfae94aadf41607bee2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
