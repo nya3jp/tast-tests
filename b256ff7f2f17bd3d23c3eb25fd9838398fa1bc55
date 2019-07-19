@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6e2c2039_8fb4a306",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-19T23:48:05Z",
+      "side": 1,
+      "message": "sure. I\u0027ll rename to uiClickFunc.\nATM it is being used by wmFollowRoot but will be used by other tests in a future CL.",
+      "parentUuid": "5ee58e9d_4ae260c7",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 53,
+        "endChar": 9
+      },
+      "revId": "b256ff7f2f17bd3d23c3eb25fd9838398fa1bc55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9e00e9e_40a6aa0d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-07-19T01:23:36Z",
       "side": 1,
       "message": "Question:\n1. How long does this test take to finish? (it looks a kind of slow as 6 x 3 \u003d 18 subtests are run)\n2. After the series of CLs complete, how long would the entire test take to finish?\nI don\u0027t say you should modify the test in this CL (starting from the simplest form is good), but do you have any idea for speeding the test up if it\u0027s eventually very time consuming?",
+      "range": {
+        "startLine": 347,
+        "startChar": 5,
+        "endLine": 347,
+        "endChar": 17
+      },
+      "revId": "b256ff7f2f17bd3d23c3eb25fd9838398fa1bc55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cab8715b_ddda331c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-19T23:48:05Z",
+      "side": 1,
+      "message": "1. The wmFollowRoot takes 1m 45s con Eve. Might take longer on Grunt and slower devices\n2. The entire suite of tests takes 2m 25 on Eve.\n\nGood point about this test... I\u0027ll see if I can make it faster. I want to make sure it is green in all boards, and then see how to improve it.\n\nI\u0027m also planning on adding more subtests to this file (complete set of tests is in this CL https://crrev.com/c/1688193 but I\u0027m splitting it in smaller CLs to make it easier for review). And running the entire suite, with all the planned subtests takes ~4m\n\nI\u0027ll pay attention to performance and see if I can improve the overall running time. Thanks.",
+      "parentUuid": "d9e00e9e_40a6aa0d",
       "range": {
         "startLine": 347,
         "startChar": 5,
