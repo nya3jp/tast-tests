@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "610f3d21_316af989",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-19T09:05:23Z",
+      "side": 1,
+      "message": "style: we use patterned message to show actual value vs expected value, in \"...: got ..; want ...\" at the end. So, how about;\n\n\"Unexpected window size: got (%d, %d); want (%d, %d)\", ...?",
+      "range": {
+        "startLine": 79,
+        "startChar": 11,
+        "endLine": 79,
+        "endChar": 94
+      },
+      "revId": "5ee2afd366ae2e8ec96000e1c6be64d5a2fbaf46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8810dcb1_56e74ab5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-19T09:05:23Z",
+      "side": 1,
+      "message": "style: in go, shorter name using surrounding context is preferred. How about just \"expected\"?",
+      "range": {
+        "startLine": 82,
+        "startChar": 55,
+        "endLine": 82,
+        "endChar": 67
+      },
+      "revId": "5ee2afd366ae2e8ec96000e1c6be64d5a2fbaf46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30040969_c6087164",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-19T09:05:23Z",
+      "side": 1,
+      "message": "style: ditto for shorter name. \"bounds\"",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 16
+      },
+      "revId": "5ee2afd366ae2e8ec96000e1c6be64d5a2fbaf46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4353d734_ff96bd31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-19T09:05:23Z",
+      "side": 1,
+      "message": "Same for message format.",
+      "revId": "5ee2afd366ae2e8ec96000e1c6be64d5a2fbaf46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fc6a0ab_728846b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-19T09:05:23Z",
+      "side": 1,
+      "message": "huge nit: could you remove unnecessary empty line?",
+      "revId": "5ee2afd366ae2e8ec96000e1c6be64d5a2fbaf46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
