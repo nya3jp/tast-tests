@@ -22,6 +22,30 @@
       "revId": "d54d4a752f9a33e002204543491a47a147ac5b8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "181cedf9_cce0f11b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-07-19T02:54:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1adbb689_7a412662",
+      "range": {
+        "startLine": 104,
+        "startChar": 85,
+        "endLine": 104,
+        "endChar": 87
+      },
+      "revId": "d54d4a752f9a33e002204543491a47a147ac5b8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
