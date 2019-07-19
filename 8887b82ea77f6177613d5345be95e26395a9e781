@@ -45,6 +45,54 @@
       "revId": "8887b82ea77f6177613d5345be95e26395a9e781",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c1a0975_554565a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-07-19T09:37:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1a7e92f_16bb0c26",
+      "range": {
+        "startLine": 50,
+        "startChar": 47,
+        "endLine": 50,
+        "endChar": 58
+      },
+      "revId": "8887b82ea77f6177613d5345be95e26395a9e781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5e311a9_e35d1cd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-07-19T09:37:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50defe31_bee1a10d",
+      "range": {
+        "startLine": 50,
+        "startChar": 60,
+        "endLine": 50,
+        "endChar": 65
+      },
+      "revId": "8887b82ea77f6177613d5345be95e26395a9e781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
