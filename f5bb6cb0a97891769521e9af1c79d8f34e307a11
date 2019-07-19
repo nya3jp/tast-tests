@@ -262,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "60094f65_7602a144",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-19T02:41:31Z",
+      "side": 1,
+      "message": "Ah, I see what you meant now. Thanks! Done.",
+      "parentUuid": "9c391744_ab996390",
+      "range": {
+        "startLine": 42,
+        "startChar": 40,
+        "endLine": 42,
+        "endChar": 57
+      },
+      "revId": "f5bb6cb0a97891769521e9af1c79d8f34e307a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "998635bb_db7f8096",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/removablemedia/removable_media.go",
         "patchSetId": 1
