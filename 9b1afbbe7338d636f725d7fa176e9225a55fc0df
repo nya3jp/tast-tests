@@ -22,6 +22,29 @@
       "revId": "9b1afbbe7338d636f725d7fa176e9225a55fc0df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5966a9c4_32e9bc95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_perf_vp8_1080p_60fps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-19T08:58:41Z",
+      "side": 1,
+      "message": "huge nit: \"a\" (VP8 is not starting with vowel, IIUC)",
+      "range": {
+        "startLine": 18,
+        "startChar": 63,
+        "endLine": 18,
+        "endChar": 65
+      },
+      "revId": "9b1afbbe7338d636f725d7fa176e9225a55fc0df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
