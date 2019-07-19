@@ -6,6 +6,7 @@ package video
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/video/encode"
@@ -23,6 +24,7 @@ func init() {
 		SoftwareDeps: []string{"android", "chrome", caps.HWEncodeH264},
 		Data:         []string{encode.Crowd1080P.Name},
 		Pre:          arc.Booted(), // TODO(akahuang): Implement new precondition to boot ARC and enable verbose at chromium.
+		Timeout:      4 * time.Minute,
 	})
 }
 
