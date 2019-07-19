@@ -156,6 +156,11 @@ type Rect struct {
 	Height int `json:"height"`
 }
 
+// String returns the string representation of Rect.
+func (r *Rect) String() string {
+	return fmt.Sprintf("(%d, %d) - (%d x %d)", r.Left, r.Top, r.Width, r.Height)
+}
+
 // NewActivity returns a new Activity instance.
 // The caller is responsible for closing a.
 // Returned Activity instance must be closed when the test is finished.
