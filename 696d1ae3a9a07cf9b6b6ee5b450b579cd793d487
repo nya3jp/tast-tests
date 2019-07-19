@@ -22,6 +22,30 @@
       "revId": "696d1ae3a9a07cf9b6b6ee5b450b579cd793d487",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3063462_5106027b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_vp8.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-19T01:31:23Z",
+      "side": 1,
+      "message": "Since android requires import mode, we\u0027re sure that all devices supporting android also support import mode.\n\nI recently uncovered however that some devices without android also support import mode. The only devices that don\u0027t seem to be nyan_*:\nhttps://cs.chromium.org/chromium/src/media/gpu/test/video_player/video_player_test_environment.cc?l\u003d61\u0026rcl\u003d0f25ee540d84634e83027556f770e2c00cf92d0e\n\nEven if import mode works on some devices without android, it might not be officially supported or tested. For now lets focus on activating VD tests on devices we trust to work. We can later look into introducing a more specific SoftwareDeps, or just removing \"android\" once nyan_* has been deprecated.",
+      "parentUuid": "2373acf5_d2dd7110",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 33
+      },
+      "revId": "696d1ae3a9a07cf9b6b6ee5b450b579cd793d487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
