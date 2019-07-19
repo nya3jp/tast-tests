@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0e5fca00_e6859f1c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2019-07-19T17:06:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "01796394_7304c480",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "2a00922df822642b387a0d800f12c908a2a24551",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e569c802_39e0edde",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-07-19T13:17:30Z",
       "side": 1,
       "message": "If you\u0027re modifying a test, the expectation is that here you ensure that the test is still passing.\n\nMetricsUploader is not really relevant for this CL.",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 47
+      },
+      "revId": "2a00922df822642b387a0d800f12c908a2a24551",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c502822e_149d77b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2019-07-19T17:06:26Z",
+      "side": 1,
+      "message": "That is fair, just removed it to say None",
+      "parentUuid": "e569c802_39e0edde",
       "range": {
         "startLine": 10,
         "startChar": 5,
