@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b21d067_7edc5d54",
+        "filename": "src/chromiumos/tast/local/media/histogram/histogram.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2019-07-19T02:57:49Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 9
+      },
+      "revId": "a301c39a5e48a069e843154e82d5a318734cab13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
