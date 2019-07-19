@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b773fb43_66ba9ce4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-19T08:42:48Z",
+      "side": 1,
+      "message": "nit/style:\n\nif err !\u003d nil {\n  s.Fatal(...)\n}\nif len(rprocs) \u003d\u003d 0 {\n  s.Fatal(...)\n}\n\nthe if condition didn\u0027t make a new variable in this case, and s.Fatal() returns from there immediately, so it is not necessary to chain.",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 136,
+        "endChar": 2
+      },
+      "revId": "6d3b29ce99540958b89dbd2d0135f10c431a0339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
