@@ -118,6 +118,9 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.Path("encrypted/var/log"), users("root"), groups("syslog"), chk.Mode(0775|os.ModeSticky)),       // directory itself
 		chk.NewPattern(chk.Tree("encrypted/var/log"), users("syslog", "root"), groups("syslog", "root"), chk.NotMode(022)), // children
 
+		chk.NewPattern(chk.Path("encrypted/var/spool/crash"), users("root"), groups("crash-access"), chk.Mode(0770|os.ModeSetgid)), // directory itself
+		chk.NewPattern(chk.Tree("encrypted/var/spool/crash"), users("root"), groups("crash-access"), chk.NotMode(002)),             // children
+
 		chk.NewPattern(chk.Path("encrypted/var/tmp"), users("root"), groups("root"), chk.Mode(0777|os.ModeSticky), chk.SkipChildren()),
 
 		chk.NewPattern(chk.Tree("encrypted"), users("root"), chk.NotMode(022)),
