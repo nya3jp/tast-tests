@@ -1,0 +1,204 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9db30d1c_56e7e4f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-19T07:54:24Z",
+      "side": 1,
+      "message": "nit/style: empty line to be consistent?",
+      "revId": "1f88027785b5da296d3ce1e4bb8d71eed58bf735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "639d33a0_8b36d879",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-19T07:54:24Z",
+      "side": 1,
+      "message": "This can be removed. fileInfo is only used by L70, which is just ignored if file already exists.\nI think you can just pass 0644 there as default value, just in case the file is removed between L57 and L70, which is practically unlikely happening.",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "1f88027785b5da296d3ce1e4bb8d71eed58bf735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dd1f413_49d377e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-19T07:54:24Z",
+      "side": 1,
+      "message": "style:\n\nb, err :\u003d ioutil.ReadFile(...)\nif err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "1f88027785b5da296d3ce1e4bb8d71eed58bf735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65c8d888_fd04f898",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-19T07:54:24Z",
+      "side": 1,
+      "message": "String manipulation looks a bit tricky.\nHow about parse the pattern (i.e. split by \u0027 \u0027 into array), then fix --filter_in arg, and re-concat?",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 2
+      },
+      "revId": "1f88027785b5da296d3ce1e4bb8d71eed58bf735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9948c77_cee32aa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-19T07:54:24Z",
+      "side": 1,
+      "message": "if err :\u003d testexec.CommandContext(...).Run(testexec.DumpLogOnError); err !\u003d nil {\n  return errors.Wrap(err, \"... message ...\")\n}",
+      "revId": "1f88027785b5da296d3ce1e4bb8d71eed58bf735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46a5ac30_0506d756",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-19T07:54:24Z",
+      "side": 1,
+      "message": "Could you avoid ingoring error?\n\nreturn replaceCrashFilterIn(\"none\")",
+      "revId": "1f88027785b5da296d3ce1e4bb8d71eed58bf735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cc07d60_b1c3eed8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-19T07:54:24Z",
+      "side": 1,
+      "message": "nit/style: could you use ctx for convention?",
+      "range": {
+        "startLine": 35,
+        "startChar": 16,
+        "endLine": 35,
+        "endChar": 33
+      },
+      "revId": "1f88027785b5da296d3ce1e4bb8d71eed58bf735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d4c46aa_4fbb3013",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-19T07:54:24Z",
+      "side": 1,
+      "message": "if err :\u003d testexec.CommandContext(ctx, \"umount\", \"/root\").Run(testexec.DumpLogOnError); err !\u003d nil {\n  s.Error(\"Failed to unmount: \", err)\n}\n\nyou don\u0027t need arg. It\u0027ll be output to log in case of failure by passing DumpLogOnError.",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "1f88027785b5da296d3ce1e4bb8d71eed58bf735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78270047_6dfc7f54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-19T07:54:24Z",
+      "side": 1,
+      "message": "out, err :\u003d testexec.CommandContext(...).Output(testexec.DumpLogOnError)",
+      "revId": "1f88027785b5da296d3ce1e4bb8d71eed58bf735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "168b32fd_27e9f432",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-19T07:54:24Z",
+      "side": 1,
+      "message": "Clar: is it ok to leave the crash reporter state?",
+      "revId": "1f88027785b5da296d3ce1e4bb8d71eed58bf735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
