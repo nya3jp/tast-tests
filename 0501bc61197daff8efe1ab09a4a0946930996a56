@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0604bfdc_8bdeb7ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-19T08:34:23Z",
+      "side": 1,
+      "message": "So, could you make this s.Error() ?",
+      "revId": "0501bc61197daff8efe1ab09a4a0946930996a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
