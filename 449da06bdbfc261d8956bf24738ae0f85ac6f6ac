@@ -69,6 +69,24 @@
       "revId": "449da06bdbfc261d8956bf24738ae0f85ac6f6ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5261df30_296c6fe9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/loopback_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2019-07-19T00:11:24Z",
+      "side": 1,
+      "message": "Further data: over 300 runs, I had 258 passing, and 42 failed runs from zero samples at the end of capture. It seems that running the test makes later runs more likely to not drop samples. What do you think about having the test run N iterations and then reporting a failure only if all of them fail?",
+      "parentUuid": "22235f01_a18eda16",
+      "revId": "449da06bdbfc261d8956bf24738ae0f85ac6f6ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
