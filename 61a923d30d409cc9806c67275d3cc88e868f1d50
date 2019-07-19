@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "28f7fbaa_2d8b1bac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-07-19T00:14:53Z",
+      "side": 1,
+      "message": "I filed this bug to figure out what to do about plugin processes:\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d985606",
+      "parentUuid": "35b44d43_bd50b626",
+      "revId": "61a923d30d409cc9806c67275d3cc88e868f1d50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e1aa21b_af85adf1",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/open_fds.go",
         "patchSetId": 3
