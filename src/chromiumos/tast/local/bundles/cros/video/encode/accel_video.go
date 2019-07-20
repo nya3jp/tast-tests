@@ -122,10 +122,15 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, mode testMode, opt
 	}
 	defer os.Remove(streamPath)
 	encodeOutFile := strings.TrimSuffix(params.Name, ".vp9.webm")
-	if opts.Profile == videotype.H264Prof {
+	switch opts.Profile {
+	case videotype.H264Prof:
 		encodeOutFile += ".h264"
-	} else {
+	case videotype.VP8Prof:
 		encodeOutFile += ".vp8.ivf"
+	case videotype.VP9Prof, videotype.VP9_2Prof:
+		encodeOutFile += ".vp9.ivf"
+	default:
+		s.Fatalf("Failed to setup encoded output path.")
 	}
 
 	outPath := filepath.Join(s.OutDir(), encodeOutFile)
