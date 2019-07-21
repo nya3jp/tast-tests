@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "313e3c0a_7f2cfbec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/crash_tests_mock_metrics_owner.key.external",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-21T12:51:06Z",
+      "side": 1,
+      "message": "Could you fix the path?",
+      "revId": "a9a2878fed6bdde3a40f8fe3bc157438d8615b5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
