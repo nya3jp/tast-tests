@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "078c0a3d_48f22e60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-21T02:07:50Z",
+      "side": 1,
+      "message": "FYI: following gofmt/goimport is a way to go, I think.",
+      "parentUuid": "b899cca0_d90d7911",
+      "range": {
+        "startLine": 78,
+        "startChar": 29,
+        "endLine": 78,
+        "endChar": 56
+      },
+      "revId": "e3d422c101da30c4ad107af2e86a118252ad87ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "074d6bcc_9de2dbab",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
         "patchSetId": 2
