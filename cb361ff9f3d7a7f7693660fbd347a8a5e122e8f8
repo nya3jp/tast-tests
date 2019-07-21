@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab5f1cf5_26029f79",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-21T12:24:08Z",
+      "side": 1,
+      "message": "Looks conflicting with the CL\u0027s content. Maybe\n\n\"Update metrics_daemon\u0027s effective user and group\"",
+      "revId": "cb361ff9f3d7a7f7693660fbd347a8a5e122e8f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
