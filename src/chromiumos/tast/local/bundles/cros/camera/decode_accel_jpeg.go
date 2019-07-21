@@ -27,7 +27,10 @@ func init() {
 }
 
 // jpegTestFiles lists the files required by the JPEG decode accelerator test.
+// TODO(crbug.com/986074): we should move the WebPs to a seperate tast test.
+// For now we make the WebP tests run with the jpeg_decode_accelerator_unittest binary.
 var jpegTestFiles = []string{
+	"BlackAndWhite_criss-cross_pattern_2015x2015.webp",
 	"peach_pi-1280x720.jpg",
 	"peach_pi-40x23.jpg",
 	"peach_pi-41x22.jpg",
@@ -36,6 +39,11 @@ var jpegTestFiles = []string{
 	"pixel-1280x720-grayscale.jpg",
 	"pixel-1280x720-yuv420.jpg",
 	"pixel-1280x720-yuv444.jpg",
+	"RGB_noise_2015x2015.webp",
+	"RGB_noise_large_pixels_115x115.webp",
+	"RGB_noise_large_pixels_2015x2015.webp",
+	"RGB_noise_large_pixels_4000x4000.webp",
+	"solid_green_2015x2015.webp",
 }
 
 // DecodeAccelJPEG runs a set of HW JPEG decode tests, defined in
