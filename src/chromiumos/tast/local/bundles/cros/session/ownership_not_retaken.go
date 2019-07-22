@@ -77,7 +77,7 @@ func OwnershipNotRetaken(ctx context.Context, s *testing.State) {
 		defer w.Close(ctx)
 
 		// Log in with Chrome, but do not clear the device ownership info.
-		c, err := chrome.New(ctx, chrome.KeepState())
+		c, err := chrome.New(ctx, chrome.KeepState(), chrome.FetchPolicy())
 		if err != nil {
 			s.Fatal("Failed to log in with Chrome: ", err)
 		}
@@ -103,7 +103,7 @@ func OwnershipNotRetaken(ctx context.Context, s *testing.State) {
 
 	// Second login.
 	s.Log("Logging in to Chrome, second time")
-	c, err := chrome.New(ctx, chrome.Auth(testUser, testPass, testGAIAID), chrome.KeepState())
+	c, err := chrome.New(ctx, chrome.Auth(testUser, testPass, testGAIAID), chrome.KeepState(), chrome.FetchPolicy())
 	if err != nil {
 		s.Fatalf("Failed to log in %s with Chrome: %v", testUser, err)
 	}

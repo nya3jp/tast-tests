@@ -14,6 +14,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 
 	"chromiumos/tast/local/bundles/cros/session/ownership"
+	"chromiumos/tast/local/bundles/cros/session/util"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
@@ -45,6 +46,9 @@ func RemoteOwnership(ctx context.Context, s *testing.State) {
 	sm, err := session.NewSessionManager(ctx)
 	if err != nil {
 		s.Fatal("Failed to create session_manager binding: ", err)
+	}
+	if err := util.PrepareChromeForTesting(ctx, sm); err != nil {
+		s.Fatal("Failed to prepare Chrome for testing: ", err)
 	}
 
 	// Initial policy set up.

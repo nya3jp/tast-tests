@@ -15,6 +15,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/session/ownership"
+	"chromiumos/tast/local/bundles/cros/session/util"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
@@ -54,6 +55,9 @@ func OwnershipRetaken(ctx context.Context, s *testing.State) {
 	sm, err := session.NewSessionManager(ctx)
 	if err != nil {
 		s.Fatal("Failed to create session_manager binding: ", err)
+	}
+	if err := util.PrepareChromeForTesting(ctx, sm); err != nil {
+		s.Fatal("Failed to prepare Chrome for testing: ", err)
 	}
 
 	// Pre-configure some owner settings, including initial key.

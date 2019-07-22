@@ -9,6 +9,7 @@ import (
 
 	"github.com/godbus/dbus"
 
+	"chromiumos/tast/local/bundles/cros/session/util"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/upstart"
@@ -47,6 +48,9 @@ func RejectDuplicate(ctx context.Context, s *testing.State) {
 	sm, err := session.NewSessionManager(ctx)
 	if err != nil {
 		s.Fatal("Failed to create session_manager binding: ", err)
+	}
+	if err := util.PrepareChromeForTesting(ctx, sm); err != nil {
+		s.Fatal("Failed to prepare Chrome for testing: ", err)
 	}
 	if err = sm.StartSession(ctx, user, ""); err != nil {
 		s.Fatalf("Failed to start new session for %s: %v", user, err)

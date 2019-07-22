@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/policy/enterprise_management"
 	"chromiumos/tast/local/bundles/cros/session/ownership"
+	"chromiumos/tast/local/bundles/cros/session/util"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
@@ -42,6 +43,10 @@ func OwnershipTaken(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create session_manager binding: ", err)
 	}
+	if err := util.PrepareChromeForTesting(ctx, sm); err != nil {
+		s.Fatal("Failed to prepare Chrome for testing: ", err)
+	}
+
 	wp, err := sm.WatchPropertyChangeComplete(ctx)
 	if err != nil {
 		s.Fatal("Failed to start watching PropertyChangeComplete signal: ", err)
