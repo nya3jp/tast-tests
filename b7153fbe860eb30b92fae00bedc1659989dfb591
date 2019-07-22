@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6e82ffd4_ae7b8d17",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-07-22T19:55:46Z",
+      "side": 1,
+      "message": "Not directly, it uses sm.EnableChromeTesting, which calls a D-Bus method on Session Manager. I guess that doesn\u0027t count as a dependency?",
+      "parentUuid": "2d24b67f_8c80b862",
+      "revId": "b7153fbe860eb30b92fae00bedc1659989dfb591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db24a687_b315d5b5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-07-22T17:18:34Z",
       "side": 1,
       "message": "We have more session manager related tests.\n\nsession.GuestAndActualSession\nsession.LogoutCleanup\nsession.OwnershipTaken\nsession.RetrieveActiveSessions\nsession.RejectDuplicate\nsession.UserPolicyKeys\n\nJust in case, could you double check if these are unrelated to this flakiness?",
+      "revId": "b7153fbe860eb30b92fae00bedc1659989dfb591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a05de1e0_c94f62e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-07-22T19:55:46Z",
+      "side": 1,
+      "message": "I can\u0027t tell for sure, but it might be related, e.g. \n\"Restarted Chrome is not found: context deadline exceeded; last error follows: Chrome PID is not yet changed: 19186, Test timed out\"\ncould be a flakiness related to unexpected restarts.\nI\u0027ve made another pass over all session manager tests.",
+      "parentUuid": "db24a687_b315d5b5",
       "revId": "b7153fbe860eb30b92fae00bedc1659989dfb591",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
