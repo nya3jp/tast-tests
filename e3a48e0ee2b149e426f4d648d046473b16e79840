@@ -93,6 +93,30 @@
       "revId": "e3a48e0ee2b149e426f4d648d046473b16e79840",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f442d17_2caf9683",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-07-22T18:47:56Z",
+      "side": 1,
+      "message": "I think imageFiles is a good compromise :)",
+      "parentUuid": "29eddec8_12432375",
+      "range": {
+        "startLine": 46,
+        "startChar": 29,
+        "endLine": 46,
+        "endChar": 30
+      },
+      "revId": "e3a48e0ee2b149e426f4d648d046473b16e79840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
