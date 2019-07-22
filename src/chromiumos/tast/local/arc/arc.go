@@ -220,10 +220,8 @@ var androidDeps = []string{
 	"android_vm",
 	"android_both",
 	"android_all",
-	"android_all_vm",
 	"android_all_both",
 	"android_p",
-	"android_p_vm",
 	"android_p_both",
 }
 
