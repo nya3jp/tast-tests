@@ -22,6 +22,29 @@
       "revId": "837732302693b81a4afee0cdc9ce36c12bfe508b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c995faf_2d17b1ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/probe_ac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2019-07-22T19:58:21Z",
+      "side": 1,
+      "message": "What happen if we run this on chromebox?\n\nYou have line power but not battery. Do we need to check if battery is present first?",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 41
+      },
+      "revId": "837732302693b81a4afee0cdc9ce36c12bfe508b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
