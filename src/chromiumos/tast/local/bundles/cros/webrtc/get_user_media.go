@@ -2,50 +2,48 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package camera
+package webrtc
 
 import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/webrtc/camera"
+	"chromiumos/tast/local/bundles/cros/webrtc/lib/utils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/pre"
-	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/media/vm"
-	"chromiumos/tast/local/media/webrtc"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WebRTCPeerConnVP8,
-		Desc: "Verifies that WebRTC loopback works (VP8)",
+		Func: GetUserMedia,
+		Desc: "Verifies that getUserMedia captures video",
 		Contacts: []string{
 			"keiichiw@chromium.org", // Video team
 			"shik@chromium.org",     // Camera team
 			"chromeos-camera-eng@google.com",
 		},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome"},
+		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome", "camera_720p"},
 		Pre:          pre.ChromeVideo(),
-		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback_camera.html"),
+		Data:         append(utils.DataFiles(), "getusermedia.html"),
 	})
 }
 
-// WebRTCPeerConnVP8 starts a loopback WebRTC call with two peer connections and
-// ensures it successfully establishes the call (otherwise the test will simply
-// fail). If successful, it looks at the video frames coming out on the
-// receiving side of the call and looks for freezes and black frames.
+// GetUserMedia makes WebRTC getUserMedia call and renders the camera's media stream
+// in a video tag. It will test VGA and 720p and check if the gUM call succeeds.
+// This test will fail when an error occurs or too many frames are broken.
 //
-// If this test shows black frames and video.WebRTCCamera does not, it could
-// mean VP8 video isn't encoded/decoded right on this device but that the
-// camera works.
+// WebRTC performs video capturing for 3 seconds with 480p and 720p. It is a
+// short version of webrtc.CameraPerf.
 //
 // This test uses the real webcam unless it is running under QEMU. Under QEMU,
 // it uses "vivid" instead, which is the virtual video test driver and can be
-// used as an external USB camera.
-func WebRTCPeerConnVP8(ctx context.Context, s *testing.State) {
+// used as an external USB camera. In this case, the time limit is 10 seconds.
+func GetUserMedia(ctx context.Context, s *testing.State) {
 	duration := 3 * time.Second
 	// Since we use vivid on VM and it's slower than real cameras,
 	// we use a longer time limit: https://crbug.com/929537
@@ -53,6 +51,7 @@ func WebRTCPeerConnVP8(ctx context.Context, s *testing.State) {
 		duration = 10 * time.Second
 	}
 
-	webrtc.RunWebRTCPeerConn(ctx, s, s.PreValue().(*chrome.Chrome), videotype.VP8,
-		duration, webrtc.VerboseLogging)
+	// Run tests for 480p and 720p.
+	camera.RunWebRTC(ctx, s, s.PreValue().(*chrome.Chrome), duration,
+		utils.VerboseLogging)
 }

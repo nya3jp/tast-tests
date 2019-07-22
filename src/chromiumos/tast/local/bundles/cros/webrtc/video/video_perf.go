@@ -2,9 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Provides code for video.WebRTCDecodePerf* tests.
+// Provides code for webrtc.DecodePerf* tests.
 
-package webrtc
+package video
 
 import (
 	"context"
@@ -15,6 +15,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/webrtc/lib/utils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/constants"
@@ -212,7 +213,7 @@ func measureCPUDecodeTime(ctx context.Context, cr *chrome.Chrome, p *perf.Values
 // as we will add power measure function later on.
 func webRTCDecodePerf(ctx context.Context, s *testing.State, streamFile, loopbackURL string, measure measureFunc,
 	disableHWAccel bool, p *perf.Values, config MeasureConfig) (hwAccelUsed bool) {
-	chromeArgs := chromeArgsWithCameraInput(streamFile, false)
+	chromeArgs := utils.ChromeArgsWithCameraInput(streamFile, false)
 	if disableHWAccel {
 		chromeArgs = append(chromeArgs, "--disable-accelerated-video-decode")
 	}
@@ -279,7 +280,7 @@ func RunWebRTCDecodePerf(ctx context.Context, s *testing.State, streamName strin
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
-	loopbackURL := server.URL + "/" + LoopbackPage
+	loopbackURL := server.URL + "/" + utils.LoopbackPage
 
 	s.Log("Setting up for CPU benchmarking")
 	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)

@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package webrtc provides common code for video.WebRTC* tests.
-package webrtc
+// Package camera provides common code for webrtc.* tests related to camera.
+package camera
 
 import (
 	"context"
@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/webrtc/lib/utils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/media/videotype"
@@ -21,51 +22,6 @@ import (
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )
-
-const (
-	// LoopbackPage is a webpage for WebRTC loopback test.
-	LoopbackPage = "loopback.html"
-	// AddStatsJSFile is a JavaScript file for replacing addLegacyStats() in chrome://webrtc-internals.
-	AddStatsJSFile = "add_stats.js"
-)
-
-// chromeArgsWithCameraInput returns Chrome extra args as string slice
-// for video test with Y4M stream file as live camera input.
-// If verbose is true, it appends extra args for verbose logging.
-// NOTE(crbug.com/955079): performance test should unset verbose.
-func chromeArgsWithCameraInput(stream string, verbose bool) []string {
-	args := []string{
-		// See https://webrtc.org/testing/
-		// Feed a test pattern to getUserMedia() instead of live camera input.
-		"--use-fake-device-for-media-stream",
-		// Avoid the need to grant camera/microphone permissions.
-		"--use-fake-ui-for-media-stream",
-		// Feed a Y4M test file to getUserMedia() instead of live camera input.
-		"--use-file-for-fake-video-capture=" + stream,
-		// Disable the autoplay policy not to be affected by actions from outside of tests.
-		// cf. https://developers.google.com/web/updates/2017/09/autoplay-policy-changes
-		"--autoplay-policy=no-user-gesture-required",
-	}
-	if verbose {
-		args = append(args, logging.ChromeVmoduleFlag())
-	}
-	return args
-}
-
-// DataFiles returns a list of required files that tests that use this package
-// should include in their Data fields.
-func DataFiles() []string {
-	return []string{
-		"third_party/blackframe.js",
-		"third_party/munge_sdp.js",
-		"third_party/ssim.js",
-	}
-}
-
-// LoopbackDataFiles returns a list of required files for opening WebRTC loopback test page.
-func LoopbackDataFiles() []string {
-	return append(DataFiles(), LoopbackPage)
-}
 
 // runTest checks if the given WebRTC tests work correctly.
 // htmlName is a filename of an HTML file in data directory.
@@ -186,7 +142,7 @@ func (s *frameStats) setPerf(p *perf.Values, suffix string) {
 	p.Set(frozenFrames, s.frozenFramesPercentage())
 }
 
-// CameraResults is a type for decoding JSON objects obtained from /camera/data/getusermedia.html.
+// CameraResults is a type for decoding JSON objects obtained from /webrtc/data/getusermedia.html.
 type CameraResults []struct {
 	Width      int        `json:"width"`
 	Height     int        `json:"height"`
@@ -202,23 +158,13 @@ func (r *CameraResults) SetPerf(p *perf.Values) {
 	}
 }
 
-// VerboseLoggingMode describes whether video driver's verbose debug log is enabled.
-type VerboseLoggingMode int
-
-const (
-	// VerboseLogging enables verbose logging.
-	VerboseLogging VerboseLoggingMode = iota
-	// NoVerboseLogging disables verbose logging.
-	NoVerboseLogging
-)
-
-// RunWebRTC run a test in /camera/data/getusermedia.html.
+// RunWebRTC run a test in /webrtc/data/getusermedia.html.
 // duration specifies how long video capturing will run for each resolution.
 // If verbose is true, video drivers' verbose messages will be enabled.
 // verbose must be false for performance tests.
 func RunWebRTC(ctx context.Context, s *testing.State, cr *chrome.Chrome,
-	duration time.Duration, verbose VerboseLoggingMode) CameraResults {
-	if verbose == VerboseLogging {
+	duration time.Duration, verbose utils.VerboseLoggingMode) CameraResults {
+	if verbose == utils.VerboseLogging {
 		vl, err := logging.NewVideoLogger()
 		if err != nil {
 			s.Fatal("Failed to set values for verbose logging")
@@ -274,7 +220,7 @@ func (s *peerConnectionStats) setPerf(p *perf.Values, suffix string) {
 	p.Set(maxOutFPS, s.MaxOutFPS)
 }
 
-// PeerConnCameraResult is a struct for decoding JSON objects obtained from /video/data/loopback_camera.html.
+// PeerConnCameraResult is a struct for decoding JSON objects obtained from /camera/data/loopback_camera.html.
 type PeerConnCameraResult struct {
 	CameraType          string              `json:"cameraType"`
 	PeerConnectionStats peerConnectionStats `json:"peerConnectionStats"`
@@ -295,8 +241,8 @@ func (r *PeerConnCameraResult) SetPerf(p *perf.Values, codec videotype.Codec) {
 // If verbose is true, video drivers' verbose messages will be enabled.
 // verbose must be false for performance tests.
 func RunWebRTCPeerConn(ctx context.Context, s *testing.State, cr *chrome.Chrome,
-	codec videotype.Codec, duration time.Duration, verbose VerboseLoggingMode) PeerConnCameraResult {
-	if verbose == VerboseLogging {
+	codec videotype.Codec, duration time.Duration, verbose utils.VerboseLoggingMode) PeerConnCameraResult {
+	if verbose == utils.VerboseLogging {
 		vl, err := logging.NewVideoLogger()
 		if err != nil {
 			s.Fatal("Failed to set values for verbose logging")

@@ -2,7 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package webrtc
+// Package video provides common code for webrtc.* tests related to video.
+package video
 
 import (
 	"context"
@@ -11,6 +12,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/webrtc/lib/utils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/logging"
@@ -32,10 +34,10 @@ func RunWebRTCVideo(ctx context.Context, s *testing.State, streamName, histogram
 	}
 }
 
-// openWebRTCPageAndCheckBucket opens video/data/loopback.html and communicates via WebRTC in a fake way. The stream on WebRTC is streamFile.
+// openWebRTCPageAndCheckBucket opens /webrtc/data/loopback.html and communicates via WebRTC in a fake way. The stream on WebRTC is streamFile.
 // It checks bucketValue on histogramName counts up in the end of the test.
 func openWebRTCPageAndCheckBucket(ctx context.Context, fileSystem http.FileSystem, streamFile, histogramName string, bucketValue int64) error {
-	chromeArgs := chromeArgsWithCameraInput(streamFile, true)
+	chromeArgs := utils.ChromeArgsWithCameraInput(streamFile, true)
 	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to Chrome")
@@ -51,7 +53,7 @@ func openWebRTCPageAndCheckBucket(ctx context.Context, fileSystem http.FileSyste
 	}
 	testing.ContextLogf(ctx, "Initial %s histogram: %v", histogramName, initHistogram.Buckets)
 
-	conn, err := cr.NewConn(ctx, server.URL+"/"+LoopbackPage)
+	conn, err := cr.NewConn(ctx, server.URL+"/"+utils.LoopbackPage)
 	if err != nil {
 		return errors.Wrap(err, "failed to open video page")
 	}
