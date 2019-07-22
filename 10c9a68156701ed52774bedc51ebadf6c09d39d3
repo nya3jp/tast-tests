@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b7be467_11e3aae6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-07-22T08:43:31Z",
+      "side": 1,
+      "message": "nit:\nadd this description above.\n\nThis line should be how to run the test, such as:\n\nTEST\u003dtast run DUT_IP wayland.DumpsysVisible",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 119
+      },
+      "revId": "10c9a68156701ed52774bedc51ebadf6c09d39d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d114768f_c7b07893",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wayland/dumpsys_visible.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-07-22T08:43:31Z",
+      "side": 1,
+      "message": "nit: as",
+      "range": {
+        "startLine": 16,
+        "startChar": 37,
+        "endLine": 16,
+        "endChar": 41
+      },
+      "revId": "10c9a68156701ed52774bedc51ebadf6c09d39d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a44a04df_b3c75029",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wayland/dumpsys_visible.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-07-22T08:43:31Z",
+      "side": 1,
+      "message": "we shouldn\u0027t have variables here.\nThis could be added in DumpsysVisible function leow.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 42
+      },
+      "revId": "10c9a68156701ed52774bedc51ebadf6c09d39d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3745d1ec_4e8e395e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wayland/dumpsys_visible.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-07-22T08:43:31Z",
+      "side": 1,
+      "message": "nit:\ndumpsys Wayland",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 31,
+        "endChar": 39
+      },
+      "revId": "10c9a68156701ed52774bedc51ebadf6c09d39d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b876da71_5100deff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wayland/dumpsys_visible.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-07-22T08:43:31Z",
+      "side": 1,
+      "message": "nit: add our emails as contacts:\nwalczakm@google.com, sarakato@google.com, tetsui@google.com",
+      "range": {
+        "startLine": 32,
+        "startChar": 44,
+        "endLine": 32,
+        "endChar": 45
+      },
+      "revId": "10c9a68156701ed52774bedc51ebadf6c09d39d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07d5ab58_35cb3156",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wayland/dumpsys_visible.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-07-22T08:43:31Z",
+      "side": 1,
+      "message": "I think most tests use 4 minutes \n\nsee\nhttps://cs.corp.google.com/search/?q\u003dTimeout:+file:%5Esrc/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/+package:%5Echromeos_public$\u0026p\u003d1\u0026type\u003dcs",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "10c9a68156701ed52774bedc51ebadf6c09d39d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "117c5e7c_7d07dcd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wayland/dumpsys_visible.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-07-22T08:43:31Z",
+      "side": 1,
+      "message": "nit: rephrase\n\nDumpsysVisible checks that output of `dumpsys Wayland --visible`\nonly shows visible layers.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 55
+      },
+      "revId": "10c9a68156701ed52774bedc51ebadf6c09d39d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b27cb05_dcfe2da9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wayland/dumpsys_visible.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-07-22T08:43:31Z",
+      "side": 1,
+      "message": ".",
+      "range": {
+        "startLine": 41,
+        "startChar": 54,
+        "endLine": 41,
+        "endChar": 55
+      },
+      "revId": "10c9a68156701ed52774bedc51ebadf6c09d39d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6088cbd9_cf2d590f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wayland/dumpsys_visible.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-07-22T08:43:31Z",
+      "side": 1,
+      "message": "nit: prefer style of \n\nif out, err :\u003d cmd.Output(); err !\u003d nil {\n   .....\n}",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 16
+      },
+      "revId": "10c9a68156701ed52774bedc51ebadf6c09d39d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34973c0e_d893ac99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wayland/dumpsys_visible.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-07-22T08:43:31Z",
+      "side": 1,
+      "message": ".",
+      "range": {
+        "startLine": 57,
+        "startChar": 51,
+        "endLine": 57,
+        "endChar": 52
+      },
+      "revId": "10c9a68156701ed52774bedc51ebadf6c09d39d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7f71a31_20698ff0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wayland/dumpsys_visible.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-07-22T08:43:31Z",
+      "side": 1,
+      "message": "I think it might also be useful to print the entire layer, as part of the error message.",
+      "range": {
+        "startLine": 60,
+        "startChar": 3,
+        "endLine": 60,
+        "endChar": 67
+      },
+      "revId": "10c9a68156701ed52774bedc51ebadf6c09d39d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3fb2a81_f14ed74c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wayland/dumpsys_visible.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-07-22T08:43:31Z",
+      "side": 1,
+      "message": "nit: s/Invalid/Unexpected\n\n(the layer is probably not invalid.) It\u0027s probably different from the value we expect.",
+      "range": {
+        "startLine": 60,
+        "startChar": 12,
+        "endLine": 60,
+        "endChar": 19
+      },
+      "revId": "10c9a68156701ed52774bedc51ebadf6c09d39d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
