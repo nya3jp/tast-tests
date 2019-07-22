@@ -26,8 +26,11 @@ const (
 
 	toggleButtonID    = "org.chromium.arc.testapp.accessibility_sample:id/toggleButton"
 	checkBoxID        = "org.chromium.arc.testapp.accessibility_sample:id/checkBox"
+	imageViewID = "org.chromium.arc.testapp.accessibility_sample:id/imageView"
 	seekBarID         = "org.chromium.arc.testapp.accessibility_sample:id/seekBar"
 	seekBarDiscreteID = "org.chromium.arc.testapp.accessibility_sample:id/seekBarDiscrete"
+	webViewID = "org.chromium.arc.testapp.accessibility_sample:id/webView"
+	tableLayoutID = "org.chromium.arc.testapp.accessibility_sample:id/tableLayout"
 
 	extURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/cvox2/background/background.html"
 )
@@ -149,10 +152,19 @@ func InstallAndStartSampleApp(ctx context.Context, a *arc.ARC, apkPath string) e
 	if err := d.Object(ui.ID(checkBoxID)).WaitForExists(ctx, timeout); err != nil {
 		return err
 	}
+	if err := d.Object(ui.ID(imageViewID)).WaitForExists(ctx, timeout); err != nil {
+		return err
+	}
 	if err := d.Object(ui.ID(seekBarID)).WaitForExists(ctx, timeout); err != nil {
 		return err
 	}
 	if err := d.Object(ui.ID(seekBarDiscreteID)).WaitForExists(ctx, timeout); err != nil {
+		return err
+	}
+	if err := d.Object(ui.ID(webViewID)).WaitForExists(ctx, timeout); err != nil {
+		return err
+	}
+	if err := d.Object(ui.ID(tableLayoutID)).WaitForExists(ctx, timeout); err != nil {
 		return err
 	}
 	return nil
