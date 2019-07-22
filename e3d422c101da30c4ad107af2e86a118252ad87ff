@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "47bb72ac_1436e1a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-07-22T00:55:50Z",
+      "side": 1,
+      "message": "The current code is the result of gofmt command, though I have no idea how the command resolves the spaces.",
+      "parentUuid": "078c0a3d_48f22e60",
+      "range": {
+        "startLine": 78,
+        "startChar": 29,
+        "endLine": 78,
+        "endChar": 56
+      },
+      "revId": "e3d422c101da30c4ad107af2e86a118252ad87ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "074d6bcc_9de2dbab",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
         "patchSetId": 2
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "1899bf5d_ecbabdec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-07-22T00:55:50Z",
+      "side": 1,
+      "message": "thanks!",
+      "parentUuid": "074d6bcc_9de2dbab",
+      "range": {
+        "startLine": 85,
+        "startChar": 33,
+        "endLine": 85,
+        "endChar": 43
+      },
+      "revId": "e3d422c101da30c4ad107af2e86a118252ad87ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f01a72c_c25ff83a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
         "patchSetId": 2
@@ -92,6 +140,30 @@
       "revId": "e3d422c101da30c4ad107af2e86a118252ad87ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a56ff7d_36fe69e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-07-22T00:55:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8f01a72c_c25ff83a",
+      "range": {
+        "startLine": 88,
+        "startChar": 31,
+        "endLine": 88,
+        "endChar": 45
+      },
+      "revId": "e3d422c101da30c4ad107af2e86a118252ad87ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
