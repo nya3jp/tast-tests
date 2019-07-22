@@ -47,6 +47,10 @@ func RemoteOwnership(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create session_manager binding: ", err)
 	}
 
+	if err := ownership.PrepareChromeForPolicyTesting(ctx, sm); err != nil {
+		s.Fatal("Failed to prepare Chrome for policy testing: ", err)
+	}
+
 	// Initial policy set up.
 	settings := ownership.BuildTestSettings("")
 	if err := ownership.StoreSettings(ctx, sm, "", privKey, nil, settings); err != nil {

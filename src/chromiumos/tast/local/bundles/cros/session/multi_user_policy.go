@@ -73,6 +73,10 @@ func MultiUserPolicy(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create session_manager binding: ", err)
 	}
 
+	if err := ownership.PrepareChromeForPolicyTesting(ctx, sm); err != nil {
+		s.Fatal("Failed to prepare Chrome for policy testing: ", err)
+	}
+
 	// Start a session for the first user, and verify that no policy
 	// exists for that user yet.
 	if err := sm.StartSession(ctx, user1, ""); err != nil {
