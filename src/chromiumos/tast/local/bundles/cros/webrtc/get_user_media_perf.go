@@ -2,23 +2,24 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package camera
+package webrtc
 
 import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/camera/lib/pre"
+	"chromiumos/tast/local/bundles/cros/webrtc/camera"
+	"chromiumos/tast/local/bundles/cros/webrtc/lib/pre"
+	"chromiumos/tast/local/bundles/cros/webrtc/lib/utils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
-	"chromiumos/tast/local/media/webrtc"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WebRTCPerf,
+		Func: GetUserMediaPerf,
 		Desc: "Captures performance data about getUserMedia video capture",
 		Contacts: []string{
 			"keiichiw@chromium.org", // Video team
@@ -28,11 +29,11 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome", "camera_720p"},
 		Pre:          pre.ChromeCameraPerf(),
-		Data:         append(webrtc.DataFiles(), "getusermedia.html"),
+		Data:         append(utils.DataFiles(), "getusermedia.html"),
 	})
 }
 
-// WebRTCPerf is the full version of WebRTC. It renders the camera's media
+// GetUserMediaPerf is the full version of GetUserMedia. It renders the camera's media
 // stream in VGA and 720p for 20 seconds. If there is no error while exercising
 // the camera, it uploads statistics of black/frozen frames. This test will fail
 // when an error occurs or too many frames are broken.
@@ -40,10 +41,10 @@ func init() {
 // This test uses the real webcam unless it is running under QEMU. Under QEMU,
 // it uses "vivid" instead, which is the virtual video test driver and can be
 // used as an external USB camera.
-func WebRTCPerf(ctx context.Context, s *testing.State) {
+func GetUserMediaPerf(ctx context.Context, s *testing.State) {
 	// Run tests for 20 seconds per resolution.
-	results := webrtc.RunWebRTC(ctx, s, s.PreValue().(*chrome.Chrome), 20*time.Second,
-		webrtc.NoVerboseLogging)
+	results := camera.RunGetUserMedia(ctx, s, s.PreValue().(*chrome.Chrome), 20*time.Second,
+		utils.NoVerboseLogging)
 
 	if !s.HasError() {
 		// Set and upload frame statistics below.

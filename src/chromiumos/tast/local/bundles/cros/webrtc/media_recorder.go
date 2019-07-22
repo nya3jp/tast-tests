@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package camera
+package webrtc
 
 import (
 	"context"
@@ -17,7 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     WebRTCMediaRecorder,
+		Func:     MediaRecorder,
 		Desc:     "Checks MediaRecorder on local and remote streams",
 		Contacts: []string{"shenghao@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:     []string{"informational"},
@@ -28,11 +28,11 @@ func init() {
 	})
 }
 
-// WebRTCMediaRecorder checks that MediaRecorder is able to record a local stream or a
+// MediaRecorder checks that MediaRecorder is able to record a local stream or a
 // peer connection remote stream. It also checks the basic Media Recorder
 // functions such as start, stop, pause, resume. The test fails if the media recorder
 // cannot exercise these basic functions.
-func WebRTCMediaRecorder(ctx context.Context, s *testing.State) {
+func MediaRecorder(ctx context.Context, s *testing.State) {
 	chromeArgs := []string{
 		"--use-fake-ui-for-media-stream",     // Avoids the need to grant camera/microphone permissions.
 		"--use-fake-device-for-media-stream", // Feeds fake stream with specified fps to getUserMedia() instead of live camera input.

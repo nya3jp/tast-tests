@@ -1,1 +1,0 @@
-../../../../../media/data/third_party/ssim.js
