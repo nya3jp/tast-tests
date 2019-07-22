@@ -34,21 +34,20 @@ func init() {
 // getEventDiff computes difference between two arrays of accessibility events.
 // Difference is obtained by taking the diff of these two arrays.
 // Returns an array containing event diffs.
-func getEventDiff(gotEvents, wantEvents []string) []string {
+func getEventDiff(gotEvents, wantEvents []string) (diffs []string) {
 	eventLength := len(gotEvents)
 	if len(gotEvents) < len(wantEvents) {
 		eventLength = len(wantEvents)
 	}
 
-	var diffs []string
 	for i := 0; i < eventLength; i++ {
 		// Check if the event is in range.
 		var wantEvent, gotEvent string
 		if i < len(gotEvents) {
-			gotEvent = gotEvents[i]
+			gotEvent = strings.TrimSpace(gotEvents[i])
 		}
 		if i < len(wantEvents) {
-			wantEvent = wantEvents[i]
+			wantEvent = strings.TrimSpace(wantEvents[i])
 		}
 		if gotEvent != wantEvent {
 			diffs = append(diffs, fmt.Sprintf("got %q, want %q", gotEvent, wantEvent))
@@ -132,6 +131,7 @@ func checkOutputLog(ctx context.Context, chromeVoxConn *chrome.Conn, expectedOut
 		if err := ioutil.WriteFile(outputFilePath, []byte(strings.Join(diff, "\n")), 0644); err != nil {
 			return errors.Wrapf(err, "failed to write to %q", outputFilePath)
 		}
+		return errors.Errorf("Event output is not as expected, wrote the diff to %q", filepath.Base(outputFilePath))
 	}
 	return nil
 }
@@ -295,11 +295,11 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	toggleButtonOutput := []string{
 		"EventType = focus",
 		"TargetName = OFF",
-		"RootName = undefined",
+		"RootName = Accessibility Test App",
 		"DocumentURL = undefined",
 		"EventType = checkedStateChanged",
 		"TargetName = ON",
-		"RootName = undefined",
+		"RootName = Accessibility Test App",
 		"DocumentURL = undefined",
 	}
 	// Focus to and toggle toggleButton element.
@@ -310,11 +310,11 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	checkBoxOutput := []string{
 		"EventType = focus",
 		"TargetName = CheckBox",
-		"RootName = undefined",
+		"RootName = Accessibility Test App",
 		"DocumentURL = undefined",
 		"EventType = checkedStateChanged",
 		"TargetName = CheckBox",
-		"RootName = undefined",
+		"RootName = Accessibility Test App",
 		"DocumentURL = undefined",
 	}
 	// Focus to and check checkBox element.
@@ -325,11 +325,11 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	seekBarOutput := []string{
 		"EventType = focus",
 		"TargetName = seekBar",
-		"RootName = AccessibilitySample",
+		"RootName = Accessibility Test App",
 		"DocumentURL = undefined",
 		"EventType = valueChanged",
 		"TargetName = seekBar",
-		"RootName = AccessibilitySample",
+		"RootName = Accessibility Test App",
 		"DocumentURL = undefined",
 	}
 	// Focus to and increment seekBar element.
@@ -340,11 +340,11 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	seekBarDiscreteOutput := []string{
 		"EventType = focus",
 		"TargetName = seekBarDiscrete",
-		"RootName = AccessibilitySample",
+		"RootName = Accessibility Test App",
 		"DocumentURL = undefined",
 		"EventType = valueChanged",
 		"TargetName = seekBarDiscrete",
-		"RootName = AccessibilitySample",
+		"RootName = Accessibility Test App",
 		"DocumentURL = undefined",
 	}
 	// Focus to and increment seekBarDiscrete element.
