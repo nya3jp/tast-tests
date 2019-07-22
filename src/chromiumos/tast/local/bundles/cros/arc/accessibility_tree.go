@@ -121,7 +121,7 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 	defer chromeVoxConn.Close()
 
 	// Wait for ChromeVox to stop speaking before interacting with it further.
-	if accessibility.WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
+	if err := accessibility.WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
 		s.Fatal("Could not wait for ChromeVox to stop speaking: ", err)
 	}
 
