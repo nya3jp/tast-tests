@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5cd2ed54_7680c95b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_h264.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-22T06:50:33Z",
+      "side": 1,
+      "message": "optional: I think we can have this link in the DecodeAccelVDH264\u0027s function comment instead of here to keep this description shorter.",
+      "range": {
+        "startLine": 19,
+        "startChar": 94,
+        "endLine": 19,
+        "endChar": 116
+      },
+      "revId": "2a1055e57b133a9a5e531a1a01bfb6776aeb16fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "567a1fdb_78cef386",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_h264.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-22T06:50:33Z",
+      "side": 1,
+      "message": "media::VideoDecoder?\ncf. go/vd-migration",
+      "range": {
+        "startLine": 19,
+        "startChar": 79,
+        "endLine": 19,
+        "endChar": 93
+      },
+      "revId": "2a1055e57b133a9a5e531a1a01bfb6776aeb16fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a29add2e_8e33d8c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_h264.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-22T06:50:33Z",
+      "side": 1,
+      "message": "It\u0027s not clear what we need to do here later only from this comment. Perhaps, remove \"android\" dependency after something happens?",
+      "revId": "2a1055e57b133a9a5e531a1a01bfb6776aeb16fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
