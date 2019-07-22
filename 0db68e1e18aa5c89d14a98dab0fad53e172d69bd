@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "a6292eff_2e53b1e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2019-07-22T02:11:05Z",
+      "side": 1,
+      "message": "Sounds good. Will abandon this for now.",
+      "parentUuid": "352f9bd0_c4d08a5d",
+      "revId": "0db68e1e18aa5c89d14a98dab0fad53e172d69bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f407e88a_461ca316",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
