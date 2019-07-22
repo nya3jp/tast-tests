@@ -8,13 +8,15 @@ package shill
 import (
 	"context"
 	"fmt"
-	"os"
-
 	"github.com/godbus/dbus"
+	"os"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/upstart"
+
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -151,4 +153,44 @@ func (m *Manager) ConfigureServiceForProfile(ctx context.Context, path dbus.Obje
 		return "", errors.Wrap(err, "failed to configure service")
 	}
 	return service, nil
+}
+
+func (m *Manager) RequestScan(ctx context.Context, props interface{}) error {
+	return call(ctx, m.obj, dbusManagerInterface, "RequestScan", props).Err
+}
+
+func (m *Manager) Connect(ctx context.Context, iface string) error {
+	return call(ctx, m.obj, iface, "Connect").Err
+}
+func (m *Manager) ConnectToWifiNetwork(ctx context.Context) (bool, error) {
+	var obj dbus.ObjectPath
+	props := map[string]interface{}{
+		"Type":          "wifi",
+		"Name":          "GoogleGuest",
+		"SecurityClass": "none",
+		"Mode":          "managed",
+	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+
+		serviceObj, err := m.FindMatchingService(ctx, props)
+		if err != nil {
+			return err
+		}
+		_, err = getPropsForService(ctx, serviceObj)
+		if err != nil {
+			return err
+		}
+		if err := m.RequestScan(ctx, "wifi"); err != nil {
+			return err
+		}
+		obj = serviceObj
+		return nil
+
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}); err != nil {
+		return false, errors.Wrap(err, "failed to identify AP")
+	}
+	if err := m.Connect(ctx, string(obj)); err != nil {
+		return false, errors.Wrap(err, "failed to connect to WiFi")
+	}
+	return true, nil
 }
