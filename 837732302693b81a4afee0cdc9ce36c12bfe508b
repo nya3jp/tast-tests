@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07bf0812_1beab0fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/probe_ac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2019-07-22T19:53:45Z",
+      "side": 1,
+      "message": "why do you need pow here? you only use this once.\n\nWhy not just use power at line 27?",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "837732302693b81a4afee0cdc9ce36c12bfe508b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
