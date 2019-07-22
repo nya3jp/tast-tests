@@ -16,6 +16,24 @@
       "revId": "2668ed66a9cc985f7ca71e33b48bb46a019332c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a95fb523_fea28bce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_vp8.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-22T08:13:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1447523f_9f415a55",
+      "revId": "2668ed66a9cc985f7ca71e33b48bb46a019332c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
