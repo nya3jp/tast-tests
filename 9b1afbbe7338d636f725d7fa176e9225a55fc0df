@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "25e93127_bd57240c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-22T00:51:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38a486b8_97bc1f77",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "9b1afbbe7338d636f725d7fa176e9225a55fc0df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5966a9c4_32e9bc95",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_perf_vp8_1080p_60fps.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "9b1afbbe7338d636f725d7fa176e9225a55fc0df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02c4179c_644b57cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_perf_vp8_1080p_60fps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-22T00:51:56Z",
+      "side": 1,
+      "message": "Thanks! (did replace-all on the h.264 testcase, and missed this)",
+      "parentUuid": "5966a9c4_32e9bc95",
+      "range": {
+        "startLine": 18,
+        "startChar": 63,
+        "endLine": 18,
+        "endChar": 65
+      },
+      "revId": "9b1afbbe7338d636f725d7fa176e9225a55fc0df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
