@@ -167,11 +167,12 @@ func LowMemoryKiller(ctx context.Context, s *testing.State) {
 
 	// Run memory-eater and monitor for low memory kills
 	const (
-		minMemoryMarginMB       = 100
-		deviceMinMemoryMarginMB = 200
-		deviceMarginSysFile     = "/sys/kernel/mm/chromeos-low_mem/margin"
-		chromeLogFile           = "/var/log/chrome/chrome"
-		kernelOOMKill           = "OOM_KILL"
+		minMemoryMarginMB            = 100
+		deviceCriticalMemoryMarginMB = 200
+		deviceModerateMemoryMarginMB = 1000
+		deviceMarginSysFile          = "/sys/kernel/mm/chromeos-low_mem/margin"
+		chromeLogFile                = "/var/log/chrome/chrome"
+		kernelOOMKill                = "OOM_KILL"
 	)
 	var bgJobs []*testexec.Cmd
 	defer func() {
@@ -183,9 +184,9 @@ func LowMemoryKiller(ctx context.Context, s *testing.State) {
 
 	// Set on-device minimum memory margin before eating memory. This way
 	// we are sure to consume below the margin and trigger low memory kills.
-	margin := strconv.Itoa(deviceMinMemoryMarginMB)
-	if err = ioutil.WriteFile(deviceMarginSysFile, []byte(margin), 0644); err != nil {
-		s.Fatalf("Unable to set low-memory margin to %s in file %s: %v", margin, deviceMarginSysFile, err)
+	marginContents := strconv.Itoa(deviceCriticalMemoryMarginMB) + " " + strconv.Itoa(deviceModerateMemoryMarginMB)
+	if err = ioutil.WriteFile(deviceMarginSysFile, []byte(marginContents), 0644); err != nil {
+		s.Fatalf("Unable to set low-memory margin to %q in file %s: %v", marginContents, deviceMarginSysFile, err)
 	}
 
 	s.Log("Monitoring for low memory kill logs in ", chromeLogFile)
