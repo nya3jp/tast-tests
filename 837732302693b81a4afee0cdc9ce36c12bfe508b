@@ -45,6 +45,53 @@
       "revId": "837732302693b81a4afee0cdc9ce36c12bfe508b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fbe3178_d0ff59ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/probe_ac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2019-07-22T21:28:01Z",
+      "side": 1,
+      "message": "Not sure if something similar already ported to tast but here\u0027s \u0027has_battery\u0027 method used in python\n\nhttps://chromium.git.corp.google.com/chromiumos/third_party/autotest/+/master/client/cros/power/power_utils.py#170",
+      "parentUuid": "1c995faf_2d17b1ed",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 41
+      },
+      "revId": "837732302693b81a4afee0cdc9ce36c12bfe508b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9689d04d_16a9e4fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/probe_ac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2019-07-22T21:28:01Z",
+      "side": 1,
+      "message": "You\u0027ll likely run into crbug.com/820588 for some devices.  Mitigation I implemented was here: crrev.comc/c/1050701",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 35
+      },
+      "revId": "837732302693b81a4afee0cdc9ce36c12bfe508b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
