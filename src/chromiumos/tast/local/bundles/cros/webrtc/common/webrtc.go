@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package webrtc provides common code for video.WebRTC* tests.
-package webrtc
+// Package common provides common code for webrtc.* tests.
+package common
 
 import (
 	"context"
