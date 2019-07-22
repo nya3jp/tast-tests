@@ -70,6 +70,30 @@
       "revId": "4b618d2d7e7eb4ed5592e71fedd798ff637ae3b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ad06ef5_b8494f32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-07-22T07:04:22Z",
+      "side": 1,
+      "message": "It seems not marked as resolved yet.\nI\u0027ve done it.",
+      "parentUuid": "0f73353d_beafbdaf",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 80
+      },
+      "revId": "4b618d2d7e7eb4ed5592e71fedd798ff637ae3b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
