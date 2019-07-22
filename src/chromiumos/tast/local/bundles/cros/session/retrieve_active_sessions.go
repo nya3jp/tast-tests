@@ -7,6 +7,7 @@ package session
 import (
 	"context"
 
+	"chromiumos/tast/local/bundles/cros/session/ownership"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/upstart"
@@ -68,6 +69,9 @@ func RetrieveActiveSessions(ctx context.Context, s *testing.State) {
 	sm, err := session.NewSessionManager(ctx)
 	if err != nil {
 		s.Fatal("Failed to create session_manager binding: ", err)
+	}
+	if err := ownership.PrepareChromeForTesting(ctx, sm); err != nil {
+		s.Fatal("Failed to prepare Chrome for testing: ", err)
 	}
 
 	// Start first session.
