@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "af3d36af_6aa3dc58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-07-22T17:47:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4aab3435_923ab594",
+      "range": {
+        "startLine": 33,
+        "startChar": 50,
+        "endLine": 33,
+        "endChar": 51
+      },
+      "revId": "4abbbe4690080fa0e8c7edc589d95d7d21c9e45f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cddcf0ad_769816ec",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e08ee082_364d1827",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-07-22T17:47:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cddcf0ad_769816ec",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 32
+      },
+      "revId": "4abbbe4690080fa0e8c7edc589d95d7d21c9e45f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f763fb9_5b793dbb",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 10
@@ -68,6 +116,30 @@
       "revId": "4abbbe4690080fa0e8c7edc589d95d7d21c9e45f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f420cf46_7a8f8d67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-07-22T17:47:00Z",
+      "side": 1,
+      "message": "Done. I just removed the loop filter entirely, it\u0027s not necessary. Also I think ranges are akin to generators/iterables, I don\u0027t think I can take a subset of it directly.",
+      "parentUuid": "5f763fb9_5b793dbb",
+      "range": {
+        "startLine": 403,
+        "startChar": 51,
+        "endLine": 403,
+        "endChar": 52
+      },
+      "revId": "4abbbe4690080fa0e8c7edc589d95d7d21c9e45f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
