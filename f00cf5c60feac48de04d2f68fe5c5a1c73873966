@@ -22,6 +22,30 @@
       "revId": "f00cf5c60feac48de04d2f68fe5c5a1c73873966",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "363f0632_6e888d4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-07-22T06:55:11Z",
+      "side": 1,
+      "message": "see https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1706990",
+      "parentUuid": "eccfbd47_f3440e71",
+      "range": {
+        "startLine": 149,
+        "startChar": 33,
+        "endLine": 149,
+        "endChar": 65
+      },
+      "revId": "f00cf5c60feac48de04d2f68fe5c5a1c73873966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
