@@ -46,6 +46,30 @@
       "revId": "4b618d2d7e7eb4ed5592e71fedd798ff637ae3b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f73353d_beafbdaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-07-22T06:53:48Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "922675ea_0c45f627",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 80
+      },
+      "revId": "4b618d2d7e7eb4ed5592e71fedd798ff637ae3b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
