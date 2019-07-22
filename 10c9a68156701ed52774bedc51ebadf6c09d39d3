@@ -209,6 +209,30 @@
     },
     {
       "key": {
+        "uuid": "b91b7911_01cc3d6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wayland/dumpsys_visible.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1358660
+      },
+      "writtenOn": "2019-07-22T08:53:19Z",
+      "side": 1,
+      "message": "this would cause out to only exist in the if statement context, so all the test would have to be inside the if.",
+      "parentUuid": "6088cbd9_cf2d590f",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 16
+      },
+      "revId": "10c9a68156701ed52774bedc51ebadf6c09d39d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "34973c0e_d893ac99",
         "filename": "src/chromiumos/tast/local/bundles/cros/wayland/dumpsys_visible.go",
         "patchSetId": 1
@@ -271,6 +295,30 @@
         "startChar": 12,
         "endLine": 60,
         "endChar": 19
+      },
+      "revId": "10c9a68156701ed52774bedc51ebadf6c09d39d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3adc39ba_95505842",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wayland/dumpsys_visible.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1358660
+      },
+      "writtenOn": "2019-07-22T08:53:19Z",
+      "side": 1,
+      "message": "The parsing is not exact because for some reason `cmd.Output` flattens the output removing newlines, so I only care about the beggining of the line description and ignore all the rest. This could include a layer id though.",
+      "parentUuid": "f7f71a31_20698ff0",
+      "range": {
+        "startLine": 60,
+        "startChar": 3,
+        "endLine": 60,
+        "endChar": 67
       },
       "revId": "10c9a68156701ed52774bedc51ebadf6c09d39d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
