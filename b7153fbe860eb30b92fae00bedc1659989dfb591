@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d24b67f_8c80b862",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-22T17:18:34Z",
+      "side": 1,
+      "message": "So, these tests actually depend on Chrome, right?\nIf so, could you add \"chrome\" SoftwareDeps for each test case?",
+      "revId": "b7153fbe860eb30b92fae00bedc1659989dfb591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db24a687_b315d5b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-22T17:18:34Z",
+      "side": 1,
+      "message": "We have more session manager related tests.\n\nsession.GuestAndActualSession\nsession.LogoutCleanup\nsession.OwnershipTaken\nsession.RetrieveActiveSessions\nsession.RejectDuplicate\nsession.UserPolicyKeys\n\nJust in case, could you double check if these are unrelated to this flakiness?",
+      "revId": "b7153fbe860eb30b92fae00bedc1659989dfb591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
