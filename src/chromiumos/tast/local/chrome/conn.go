@@ -204,18 +204,32 @@ func getExceptionText(d *runtime.ExceptionDetails) string {
 // WaitForExpr repeatedly evaluates the JavaScript expression expr until it evaluates to true.
 // Errors returned by Eval are treated the same as expr == false.
 func (c *Conn) WaitForExpr(ctx context.Context, expr string) error {
-	return c.waitForExprImpl(ctx, expr, false)
+	return c.waitForExprImpl(ctx, expr, false, 0)
 }
 
 // WaitForExprFailOnErr repeatedly evaluates the JavaScript expression expr until it evaluates to true.
 // It returns immediately if Eval returns an error.
 func (c *Conn) WaitForExprFailOnErr(ctx context.Context, expr string) error {
-	return c.waitForExprImpl(ctx, expr, true)
+	return c.waitForExprImpl(ctx, expr, true, 0)
+}
+
+// WaitForExprWithTimeout repeatedly evaluates the JavaScript expression expr until it evaluates to true.
+// After timeout, an error will be returned.
+// Errors returned by Eval are treated the same as expr == false.
+func (c *Conn) WaitForExprWithTimeout(ctx context.Context, expr string, timeout time.Duration) error {
+	return c.waitForExprImpl(ctx, expr, false, timeout)
+}
+
+// WaitForExprWithTimeoutFailOnErr repeatedly evaluates the JavaScript expression expr until it evaluates to true.
+// After timeout, an error will be returned.
+// It returns immediately if Eval returns an error.
+func (c *Conn) WaitForExprWithTimeoutFailOnErr(ctx context.Context, expr string, timeout time.Duration) error {
+	return c.waitForExprImpl(ctx, expr, true, timeout)
 }
 
 // waitForExprImpl repeatedly evaluates the JavaScript expression expr until it evaluates to true.
 // The behavior on evaluation errors depends on the value of exitOnError.
-func (c *Conn) waitForExprImpl(ctx context.Context, expr string, exitOnError bool) error {
+func (c *Conn) waitForExprImpl(ctx context.Context, expr string, exitOnError bool, timeout time.Duration) error {
 	boolExpr := "!!(" + expr + ")"
 	falseErr := errors.Errorf("%q is false", boolExpr)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -230,7 +244,7 @@ func (c *Conn) waitForExprImpl(ctx context.Context, expr string, exitOnError boo
 			return falseErr
 		}
 		return nil
-	}, &testing.PollOptions{Interval: 10 * time.Millisecond}); err != nil {
+	}, &testing.PollOptions{Interval: 10 * time.Millisecond, Timeout: timeout}); err != nil {
 		return c.chromeErr(err)
 	}
 	return nil
