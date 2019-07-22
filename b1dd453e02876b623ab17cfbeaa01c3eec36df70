@@ -46,6 +46,30 @@
       "revId": "b1dd453e02876b623ab17cfbeaa01c3eec36df70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6dd93414_f7022596",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2019-07-22T21:40:22Z",
+      "side": 1,
+      "message": "Given what this test is meant to cover, I think it\u0027s sane to check the number of lines if the battery is not present, to ensure that we\u0027re not returning for a battery entry that doesn\u0027t belong.",
+      "parentUuid": "1812119d_7902627c",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 2
+      },
+      "revId": "b1dd453e02876b623ab17cfbeaa01c3eec36df70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
