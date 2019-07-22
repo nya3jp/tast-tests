@@ -69,6 +69,30 @@
       "revId": "e3a48e0ee2b149e426f4d648d046473b16e79840",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29eddec8_12432375",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1340962
+      },
+      "writtenOn": "2019-07-22T18:03:54Z",
+      "side": 1,
+      "message": "I agree with hidehiko@. I was discussing this offline with andrescj@ but I am not fully sure how all of this work so I didn\u0027t try to insist.\n\nI think that for now, renaming it to something like testImages or imageFiles makes sense, and then in the future when we separate the tests, we can rename this back to jpegTestFiles.\n\nThoughts?",
+      "parentUuid": "3f3da28a_4b44b41b",
+      "range": {
+        "startLine": 46,
+        "startChar": 29,
+        "endLine": 46,
+        "endChar": 30
+      },
+      "revId": "e3a48e0ee2b149e426f4d648d046473b16e79840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
