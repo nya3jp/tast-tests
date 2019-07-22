@@ -42,6 +42,9 @@ func GuestAndActualSession(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create session_manager binding: ", err)
 	}
+	if err := sm.PrepareChromeForTesting(ctx); err != nil {
+		s.Fatal("Failed to prepare Chrome for testing: ", err)
+	}
 
 	if err := cryptohome.MountGuest(ctx); err != nil {
 		s.Fatal("Failed to mount guest: ", err)
@@ -49,6 +52,9 @@ func GuestAndActualSession(ctx context.Context, s *testing.State) {
 
 	if err := sm.StartSession(ctx, cryptohome.GuestUser, ""); err != nil {
 		s.Fatal("Failed to start guest session: ", err)
+	}
+	if err := sm.PrepareChromeForTesting(ctx); err != nil {
+		s.Fatal("Failed to prepare Chrome for testing: ", err)
 	}
 
 	// Note: presumably the guest session would actually stop and the

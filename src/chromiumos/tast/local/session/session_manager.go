@@ -108,6 +108,14 @@ func (m *SessionManager) EnableChromeTesting(ctx context.Context, forceRelaunch 
 	return filepath, nil
 }
 
+// PrepareChromeForTesting prepares Chrome for common tests.
+// This prevents a crash on startup due to synchronous profile creation and not
+// knowing whether to expect policy, see https://crbug.com/950812.
+func (m *SessionManager) PrepareChromeForTesting(ctx context.Context) error {
+	_, err := m.EnableChromeTesting(ctx, true, []string{"--profile-requires-policy=true"}, []string{})
+	return err
+}
+
 // HandleSupervisedUserCreationStarting calls
 // SessionManager.HandleSupervisedUserCreationStarting D-Bus method.
 func (m *SessionManager) HandleSupervisedUserCreationStarting(

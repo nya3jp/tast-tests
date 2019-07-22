@@ -48,6 +48,9 @@ func RejectDuplicate(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create session_manager binding: ", err)
 	}
+	if err := sm.PrepareChromeForTesting(ctx); err != nil {
+		s.Fatal("Failed to prepare Chrome for testing: ", err)
+	}
 	if err = sm.StartSession(ctx, user, ""); err != nil {
 		s.Fatalf("Failed to start new session for %s: %v", user, err)
 	}

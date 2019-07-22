@@ -42,6 +42,10 @@ func OwnershipTaken(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create session_manager binding: ", err)
 	}
+	if err := sm.PrepareChromeForTesting(ctx); err != nil {
+		s.Fatal("Failed to prepare Chrome for testing: ", err)
+	}
+
 	wp, err := sm.WatchPropertyChangeComplete(ctx)
 	if err != nil {
 		s.Fatal("Failed to start watching PropertyChangeComplete signal: ", err)

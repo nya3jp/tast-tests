@@ -55,6 +55,9 @@ func OwnershipRetaken(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create session_manager binding: ", err)
 	}
+	if err := sm.PrepareChromeForTesting(ctx); err != nil {
+		s.Fatal("Failed to prepare Chrome for testing: ", err)
+	}
 
 	// Pre-configure some owner settings, including initial key.
 	settings := ownership.BuildTestSettings(testUser)
