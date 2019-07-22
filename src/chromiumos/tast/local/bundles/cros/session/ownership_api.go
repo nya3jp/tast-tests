@@ -189,6 +189,10 @@ func OwnershipAPI(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create session_manager binding: ", err)
 	}
+	if err := ownership.PrepareChromeForTesting(ctx, sm); err != nil {
+		s.Fatal("Failed to prepare Chrome for testing: ", err)
+	}
+
 	if err = sm.StartSession(ctx, testUser, ""); err != nil {
 		s.Fatalf("Failed to start new session for %s: %v", testUser, err)
 	}

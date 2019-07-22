@@ -131,6 +131,9 @@ func UserPolicyKeys(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create session_manager binding: ", err)
 	}
+	if err := ownership.PrepareChromeForTesting(ctx, sm); err != nil {
+		s.Fatal("Failed to prepare Chrome for testing: ", err)
+	}
 
 	// Create clean vault for the test user, and start the session.
 	if err = cryptohome.RemoveVault(ctx, testUser); err != nil {
