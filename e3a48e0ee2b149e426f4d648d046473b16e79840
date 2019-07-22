@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "456e8b85_fbdeec56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1340962
+      },
+      "writtenOn": "2019-07-22T19:29:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43a527fe_3345de8f",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "e3a48e0ee2b149e426f4d648d046473b16e79840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a416c42f_c6827f83",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "e3a48e0ee2b149e426f4d648d046473b16e79840",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90542bf9_62ed71c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1340962
+      },
+      "writtenOn": "2019-07-22T19:29:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a416c42f_c6827f83",
+      "range": {
+        "startLine": 30,
+        "startChar": 57,
+        "endLine": 30,
+        "endChar": 65
+      },
+      "revId": "e3a48e0ee2b149e426f4d648d046473b16e79840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +188,30 @@
       "revId": "e3a48e0ee2b149e426f4d648d046473b16e79840",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d1c797f_c2bcc973",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1340962
+      },
+      "writtenOn": "2019-07-22T19:29:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f442d17_2caf9683",
+      "range": {
+        "startLine": 46,
+        "startChar": 29,
+        "endLine": 46,
+        "endChar": 30
+      },
+      "revId": "e3a48e0ee2b149e426f4d648d046473b16e79840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
