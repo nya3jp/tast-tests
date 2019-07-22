@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1447523f_9f415a55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_vp8.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-22T06:52:14Z",
+      "side": 1,
+      "message": "Same comments with ones I added to the previous patch:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1687434/7#message-bb9e31880f0cc5c2b3dbcbb7dacdf25293cd1cfe",
+      "revId": "2668ed66a9cc985f7ca71e33b48bb46a019332c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
