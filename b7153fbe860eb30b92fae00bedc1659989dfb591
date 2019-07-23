@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "280eff6e_91b3f4cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T09:52:16Z",
+      "side": 1,
+      "message": "My understanding is;\nIf this EnableChromeTesting flag is needed, it means the test depends on Chrome\u0027s behavior (directly or indirectly).\n\n\"chrome\" software deps should be added for the tests which uses Chrome. In other words, it can be dropped, if the tests can run without Chrome.\nIIUC, this is not the case, right...?",
+      "parentUuid": "6e82ffd4_ae7b8d17",
+      "revId": "b7153fbe860eb30b92fae00bedc1659989dfb591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db24a687_b315d5b5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
