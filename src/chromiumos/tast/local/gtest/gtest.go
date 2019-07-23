@@ -13,10 +13,12 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
@@ -66,6 +68,10 @@ type GTest struct {
 	// the log wouldn't be recorded to the current test log.
 	logfile string
 
+	// tempLogfile is true if the logfile should be created with
+	// ioutil.TestFile instead of os.Create().
+	tempLogfile bool
+
 	// filter specifies a subset of tests to run. If not empty, the value
 	// is passed to --gtest_filter=.
 	// Please see the gtest manual for the specification.
@@ -77,7 +83,10 @@ type GTest struct {
 	// in this.
 	extraArgs []string
 
-	// TODO(hidehiko): To migrate from bintest, support UID.
+	// uid specifies the user to run.
+	// -1 (by default) means unspecified, i.e., it runs as the current user.
+	uid int
+
 	// TODO(hidehiko): To migrate from arctest, support ARC gtest run.
 }
 
@@ -87,6 +96,16 @@ type option func(t *GTest)
 // Logfile returns an option to set logfile path of GTest.
 func Logfile(path string) option {
 	return func(t *GTest) { t.logfile = path }
+}
+
+// TempLogfile returns an option to set logfile path of GTest. The file is
+// created by using ioutil.TempFile to avoid conflict, so its special pattern
+// is usable here.
+func TempLogfile(path string) option {
+	return func(t *GTest) {
+		t.logfile = path
+		t.tempLogfile = true
+	}
 }
 
 // Filter returns an option to set gtest_filter.
@@ -100,13 +119,45 @@ func ExtraArgs(args ...string) option {
 	return func(t *GTest) { t.extraArgs = args }
 }
 
+// UID returns an option to specify the user to run the gtest.
+func UID(uid int) option {
+	return func(t *GTest) { t.uid = uid }
+}
+
 // New creates GTest instance with given options.
 func New(exec string, opts ...option) *GTest {
-	ret := &GTest{exec: exec}
+	ret := &GTest{exec: exec, uid: -1}
 	for _, opt := range opts {
 		opt(ret)
 	}
 	return ret
+}
+
+// ToArgs returns an array of string for execution.
+func (t *GTest) ToArgs() ([]string, error) {
+	args := []string{t.exec}
+	if t.filter != "" {
+		args = append(args, "--gtest_filter="+t.filter)
+	}
+
+	// Verify extraArgs and append them.
+	var gtestArgs []string
+	for _, a := range t.extraArgs {
+		if strings.HasPrefix(a, "--gtest") {
+			gtestArgs = append(gtestArgs, a)
+		}
+	}
+	if len(gtestArgs) > 0 {
+		return nil, errors.Errorf("gtest.ExtraArgs should not contain --gteset prefixed flags: %v", gtestArgs)
+	}
+	args = append(args, t.extraArgs...)
+
+	// If user to run the test is given, run under sudo.
+	if t.uid >= 0 {
+		args = append([]string{"sudo", "--user=#" + strconv.Itoa(t.uid)}, args...)
+	}
+
+	return args, nil
 }
 
 // Run executes the gtest, and returns the parsed Report.
@@ -115,43 +166,34 @@ func New(exec string, opts ...option) *GTest {
 // return an error, but the report file should be created. This function
 // also handles the case, and returns it.
 func (t *GTest) Run(ctx context.Context) (*Report, error) {
-	args := []string{t.exec}
-	if t.filter != "" {
-		args = append(args, "--gtest_filter="+t.filter)
+	args, err := t.ToArgs()
+	if err != nil {
+		return nil, err
 	}
 
-	// Create report file.
-	output, err := createOutput()
+	// Create a report file.
+	output, err := createOutput(t.uid)
 	if err != nil {
 		return nil, err
 	}
 	defer os.Remove(output)
 	args = append(args, "--gtest_output=xml:"+output)
 
-	if t.extraArgs != nil {
-		for _, a := range t.extraArgs {
-			if strings.HasPrefix(a, "--gtest") {
-				return nil, errors.Errorf("gtest.ExtraArgs should not contain --gtest prefixed flags: %s", a)
-			}
-		}
-		args = append(args, t.extraArgs...)
+	// Set up log output.
+	log, err := openLogfile(t.logfile, t.tempLogfile, args)
+	if err != nil {
+		return nil, err
+	}
+	if log != nil {
+		// log can be nil, if logfile is unspecified. log needs to be
+		// closed after cmd starts.
+		defer log.Close()
 	}
 
 	cmd := testexec.CommandContext(ctx, args[0], args[1:]...)
-
-	// Set up log file.
-	if t.logfile != "" {
-		if err := os.MkdirAll(filepath.Dir(t.logfile), 0755); err != nil {
-			return nil, errors.Wrap(err, "failed to create log directory")
-		}
-		f, err := os.Create(t.logfile)
-		if err != nil {
-			return nil, errors.Wrap(err, "failed to create a log file")
-		}
-		// f needs to be closed after cmd starts.
-		defer f.Close()
-		cmd.Stdout = f
-		cmd.Stderr = f
+	if log != nil {
+		cmd.Stdout = log
+		cmd.Stderr = log
 	}
 
 	retErr := cmd.Run()
@@ -173,7 +215,7 @@ func (t *GTest) Run(ctx context.Context) (*Report, error) {
 	return report, retErr
 }
 
-func createOutput() (string, error) {
+func createOutput(uid int) (string, error) {
 	f, err := ioutil.TempFile("", "gtest_output_*.xml")
 	if err != nil {
 		return "", errors.Wrap(err, "failed to create an output file")
@@ -188,6 +230,12 @@ func createOutput() (string, error) {
 		return "", errors.Wrap(err, "failed to close the output file")
 	}
 
+	if uid >= 0 {
+		if err := os.Chown(f.Name(), uid, -1); err != nil {
+			return "", errors.Wrap(err, "failed to set user for the output file")
+		}
+	}
+
 	abspath, err := filepath.Abs(f.Name())
 	if err != nil {
 		return "", errors.Wrap(err, "failed to resolve the path to abs")
@@ -195,4 +243,36 @@ func createOutput() (string, error) {
 
 	f = nil
 	return abspath, nil
+}
+
+func openLogfile(path string, tempfile bool, args []string) (*os.File, error) {
+	if path == "" {
+		return nil, nil
+	}
+
+	dir := filepath.Dir(path)
+	if err := os.MkdirAll(dir, 0755); err != nil {
+		return nil, errors.Wrap(err, "failed to create a log directory")
+	}
+
+	var f *os.File
+	var err error
+	if tempfile {
+		f, err = ioutil.TempFile(dir, filepath.Base(path))
+	} else {
+		f, err = os.Create(path)
+	}
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a log file")
+	}
+
+	// At the beginning of the log file, write the command line to make
+	// debugging easier.
+	f.WriteString(fmt.Sprintf("Running %s\n\n", shutil.EscapeSlice(args)))
+	if err := f.Sync(); err != nil {
+		f.Close() // Ignore error here intentionally.
+		return nil, errors.Wrap(err, "failed to flush log file")
+	}
+
+	return f, nil
 }
