@@ -1,4 +1,5 @@
 # Visual Studio Code
+/.vscode/
 /src/.vscode/
 
 # Go packages, e.g. when Visual Studio Code is run from the base folder, not src
