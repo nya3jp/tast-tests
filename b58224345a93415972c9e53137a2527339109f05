@@ -1,0 +1,245 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcd8522a_bb4f338e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-23T11:45:17Z",
+      "side": 1,
+      "message": "camera.WebRTC was a short version of camera.WebRTCPerf.\nSo, it\u0027d be better to have similar names.\n\ne.g. \nwebrtc.GetUserMedia/webrtc.GetUserMediaPerf\nwebrtc.Camera/webrtc.CameraPerf",
+      "revId": "b58224345a93415972c9e53137a2527339109f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecf0d915_cf87264d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/common/webrtc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-23T11:45:17Z",
+      "side": 1,
+      "message": "The package name \u0027common\u0027 sounds too general. Also, webrtc.go sounds redundant because this is placed under /webrtc/ directory.\n\nHow about renaming each library go files and making them different packages?\n\nFor example, most code in this file looks related to camera tests. So, we might be call this file camera.go?\n\nSame for other files under /common/.",
+      "revId": "b58224345a93415972c9e53137a2527339109f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d05ffd3_0139324b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/common/webrtc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-23T11:45:17Z",
+      "side": 1,
+      "message": "outdated",
+      "range": {
+        "startLine": 189,
+        "startChar": 67,
+        "endLine": 189,
+        "endChar": 97
+      },
+      "revId": "b58224345a93415972c9e53137a2527339109f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7918713f_547a9d65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/common/webrtc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-23T11:45:17Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 215,
+        "startChar": 27,
+        "endLine": 215,
+        "endChar": 57
+      },
+      "revId": "b58224345a93415972c9e53137a2527339109f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b541d9b_4681000b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/common/webrtc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-23T11:45:17Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 277,
+        "startChar": 76,
+        "endLine": 277,
+        "endChar": 109
+      },
+      "revId": "b58224345a93415972c9e53137a2527339109f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cb84a4f_398cc778",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/common/webrtc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-23T11:45:17Z",
+      "side": 1,
+      "message": "optional: We named this struct `PeerConnCameraResult` because it was used for results of `video.WebRTCPeerConnCamera*` and `camera.WebRTCPeerConn*`. But, the name is no longer used and new name is webrtc.PeerConn.\nHow about renaming this struct to `PeerConnResult`?\n\nBut, since we need similar renaming for many variable, it\u0027d be also okay to rename in separate CLs.",
+      "range": {
+        "startLine": 278,
+        "startChar": 5,
+        "endLine": 278,
+        "endChar": 25
+      },
+      "revId": "b58224345a93415972c9e53137a2527339109f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9c4872f_54a3acc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/common/webrtc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-23T11:45:17Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 292,
+        "startChar": 35,
+        "endLine": 292,
+        "endChar": 67
+      },
+      "revId": "b58224345a93415972c9e53137a2527339109f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c70dbd71_3d5f8249",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/common/webrtc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-23T11:45:17Z",
+      "side": 1,
+      "message": "Similar to above. This function name came from a test name \u0027camera.WebRTCPeerConn*\u0027. How about renaming this?\n\nSame for other exposed function names.",
+      "range": {
+        "startLine": 297,
+        "startChar": 5,
+        "endLine": 297,
+        "endChar": 22
+      },
+      "revId": "b58224345a93415972c9e53137a2527339109f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d906ec37_a7e5a508",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/common/webrtc_decode_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-23T11:45:17Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 5,
+        "startChar": 34,
+        "endLine": 5,
+        "endChar": 35
+      },
+      "revId": "b58224345a93415972c9e53137a2527339109f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fc5c01e_3038c5da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/common/webrtc_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-23T11:45:17Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 35,
+        "startChar": 38,
+        "endLine": 35,
+        "endChar": 63
+      },
+      "revId": "b58224345a93415972c9e53137a2527339109f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "431c08f9_e643d005",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peer_conn_h264_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-23T11:45:17Z",
+      "side": 1,
+      "message": "This should have been \"H.264\". (it\u0027s unrelated to this CL, though)",
+      "range": {
+        "startLine": 23,
+        "startChar": 58,
+        "endLine": 23,
+        "endChar": 62
+      },
+      "revId": "b58224345a93415972c9e53137a2527339109f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
