@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ae128799_c62f8819",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_perf_vp8_1080p_60fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-23T23:55:05Z",
+      "side": 1,
+      "message": "The function comment gives a bit more info (e.g. the name of the test video). In a later patchset this was expanded even more.\n\nWe could move all of this to \"Desc\", but it was getting quite long. Would you prefer to use multi-line strings when writing the Desc?\n\nSince this affects more tests I prefer to leave this for a follow-up CL.",
+      "parentUuid": "c54367d1_37feecef",
+      "revId": "7556c88dbea8efa397f622bfbfa5c71315e1ed70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "399fb202_06c17c11",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_perf_vp9_1080p_60fps.go",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "7556c88dbea8efa397f622bfbfa5c71315e1ed70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11a622e1_388bfe57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_perf_vp9_1080p_60fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-23T23:55:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "399fb202_06c17c11",
+      "revId": "7556c88dbea8efa397f622bfbfa5c71315e1ed70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
