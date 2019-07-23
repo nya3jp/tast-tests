@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "349f8e04_1ed3f431",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-07-23T09:35:00Z",
+      "side": 1,
+      "message": "This is a counterpart for\nrun_crash_tests() and cleanup() in src/third_party/autotest/files/client/cros/crash/crash_test.py",
+      "revId": "5ee0e3ae7ed7cc86d226e6ea1775b7bfbd76d3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
