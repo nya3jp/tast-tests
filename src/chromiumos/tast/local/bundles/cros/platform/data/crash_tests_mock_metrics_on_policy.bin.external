@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromeos-test-assets-private/tast/crosint/platform/crash_tests_mock_metrics_on_policy_20190717.bin",
+  "url": "gs://chromiumos-test-assets-public/tast/cros/platform/crash_tests_mock_metrics_on_policy_20190717.bin",
   "size": 664,
   "sha256sum": "c0499800b16918178de7b002b29a30c6483ef560e4bc78731c1b77d99f714105"
 }
