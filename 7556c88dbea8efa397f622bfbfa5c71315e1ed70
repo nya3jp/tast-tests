@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c54367d1_37feecef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_perf_vp8_1080p_60fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T03:22:42Z",
+      "side": 1,
+      "message": "nit: we don\u0027t have function comment for the test entry method, because it should be written in \"Desc:\" section. There seems no special things is mentioned, so could you just drop this for consistency?",
+      "revId": "7556c88dbea8efa397f622bfbfa5c71315e1ed70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "399fb202_06c17c11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_perf_vp9_1080p_60fps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T03:22:42Z",
+      "side": 1,
+      "message": "same.",
+      "revId": "7556c88dbea8efa397f622bfbfa5c71315e1ed70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
