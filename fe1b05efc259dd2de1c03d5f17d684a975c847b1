@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f52c948c_8c294687",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-07-23T04:42:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da4a392f_a452bc9d",
+      "range": {
+        "startLine": 9,
+        "startChar": 16,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "fe1b05efc259dd2de1c03d5f17d684a975c847b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88e090bb_7b962650",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "fe1b05efc259dd2de1c03d5f17d684a975c847b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "931d4d40_3e379cbd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-07-23T04:42:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "88e090bb_7b962650",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 38
+      },
+      "revId": "fe1b05efc259dd2de1c03d5f17d684a975c847b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c68705d0_a219212c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-07-23T04:42:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24c3d4aa_c12446cf",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "fe1b05efc259dd2de1c03d5f17d684a975c847b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60bb3055_f8a48790",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "c7c72685_a2785ee7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-07-23T04:42:14Z",
+      "side": 1,
+      "message": "Initially I thought using a named result parameter is simpler and clearer.\nBut the function name \"getEventDiff\" already tells what the return value is.\n\nThank you for pointing it out.",
+      "parentUuid": "60bb3055_f8a48790",
+      "range": {
+        "startLine": 37,
+        "startChar": 51,
+        "endLine": 37,
+        "endChar": 56
+      },
+      "revId": "fe1b05efc259dd2de1c03d5f17d684a975c847b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad1af247_28ec1acb",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "fe1b05efc259dd2de1c03d5f17d684a975c847b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ad26389_f723d79c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-07-23T04:42:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad1af247_28ec1acb",
+      "range": {
+        "startLine": 134,
+        "startChar": 24,
+        "endLine": 134,
+        "endChar": 25
+      },
+      "revId": "fe1b05efc259dd2de1c03d5f17d684a975c847b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
