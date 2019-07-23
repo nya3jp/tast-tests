@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a2e7bb7_1dbcb0b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_vd_used_h264.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-07-23T07:35:43Z",
+      "side": 1,
+      "message": "Maybe add me and you here? lol",
+      "range": {
+        "startLine": 21,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 10
+      },
+      "revId": "f4c6c926d05d2944560d74b0e5052f363c233aa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b5ca578_02f2706d",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-07-23T07:35:43Z",
+      "side": 1,
+      "message": "add vmodule for Vaapi/V4L2SVD, mailboxVFConverter, and platformVFPool?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 42
+      },
+      "revId": "f4c6c926d05d2944560d74b0e5052f363c233aa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
