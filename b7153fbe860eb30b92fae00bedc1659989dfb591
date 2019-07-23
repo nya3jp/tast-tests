@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "aba7e0b5_5508376a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-07-23T09:57:47Z",
+      "side": 1,
+      "message": "Hmmm, not sure if this counts as a \"dependency of behavior\". IIUC the tests only talk to session manager and cryptohome, they don\u0027t need Chrome at all. The problem is that Chrome listens to signals from session manager and may decide to shut down and take session manager down with it. Ideally, we would tell Chrome to just ignore any signals from session manager. Pretty sure the tests would still work without Chrome.\n\nIs there some board that we could run the test on to see if it still works?",
+      "parentUuid": "280eff6e_91b3f4cb",
+      "revId": "b7153fbe860eb30b92fae00bedc1659989dfb591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db24a687_b315d5b5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
