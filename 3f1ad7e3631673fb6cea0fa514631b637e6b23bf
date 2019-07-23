@@ -121,6 +121,54 @@
     },
     {
       "key": {
+        "uuid": "64efe9b9_01053fbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-07-23T07:14:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8c698930_50c90508",
+      "range": {
+        "startLine": 126,
+        "startChar": 45,
+        "endLine": 126,
+        "endChar": 48
+      },
+      "revId": "3f1ad7e3631673fb6cea0fa514631b637e6b23bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23589ae1_b952e2d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-07-23T07:14:58Z",
+      "side": 1,
+      "message": "functional option pattern is nice :D",
+      "parentUuid": "d1b30610_63c12819",
+      "range": {
+        "startLine": 126,
+        "startChar": 45,
+        "endLine": 126,
+        "endChar": 48
+      },
+      "revId": "3f1ad7e3631673fb6cea0fa514631b637e6b23bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10227ed7_f7fa8e94",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 1
@@ -213,6 +261,30 @@
       "revId": "3f1ad7e3631673fb6cea0fa514631b637e6b23bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f5ba07c_24c1b1f7",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-07-23T07:14:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e7f66f31_6de6cf69",
+      "range": {
+        "startLine": 175,
+        "startChar": 31,
+        "endLine": 175,
+        "endChar": 34
+      },
+      "revId": "3f1ad7e3631673fb6cea0fa514631b637e6b23bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

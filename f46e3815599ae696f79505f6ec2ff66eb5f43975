@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30c870c9_8cb529f9",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-07-23T07:14:58Z",
+      "side": 1,
+      "message": "gtest",
+      "range": {
+        "startLine": 151,
+        "startChar": 66,
+        "endLine": 151,
+        "endChar": 72
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
