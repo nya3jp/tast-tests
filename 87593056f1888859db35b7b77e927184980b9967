@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1c5eb774_d9deb0f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T08:13:09Z",
+      "side": 1,
+      "message": "Clar: What\u0027s the plan when this is promoted to CQ?\nWhen this is promoted to CQ, it would block Chrome PFQ, so renaming wouldn\u0027t be allowed in Chrome. How would you deal with the renaming in future?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "87593056f1888859db35b7b77e927184980b9967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "534bb3c7_ba5eaa39",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -13,6 +36,30 @@
       "writtenOn": "2019-07-18T06:38:27Z",
       "side": 1,
       "message": "nit: BUG\u003db:124012939",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "87593056f1888859db35b7b77e927184980b9967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4697140d_76ee4c71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T08:13:09Z",
+      "side": 1,
+      "message": "ping?",
+      "parentUuid": "534bb3c7_ba5eaa39",
       "range": {
         "startLine": 13,
         "startChar": 5,
