@@ -16,6 +16,24 @@
       "revId": "a9a2878fed6bdde3a40f8fe3bc157438d8615b5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf18d281_88a085c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/crash_tests_mock_metrics_owner.key.external",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-07-23T02:18:17Z",
+      "side": 1,
+      "message": "Yes.\ncrrev.com/c/1712806",
+      "parentUuid": "313e3c0a_7f2cfbec",
+      "revId": "a9a2878fed6bdde3a40f8fe3bc157438d8615b5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
