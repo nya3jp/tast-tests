@@ -155,6 +155,7 @@ func (m *Manager) ConfigureServiceForProfile(ctx context.Context, path dbus.Obje
 	return service, nil
 }
 
+<<<<<<< HEAD   (807b30 Merge commit 'refs/changes/93/1666293/5' of https://chromium)
 // RequestScan tells shill to request a network scan on a specified interface.
 func (m *Manager) RequestScan(ctx context.Context, props interface{}) error {
 	return call(ctx, m.obj, dbusManagerInterface, "RequestScan", props).Err
@@ -244,4 +245,14 @@ func (m *Manager) DisconnectFromWifiNetwork(ctx context.Context, props map[strin
 		return errors.Wrap(err, "couldn't connect to ap")
 	}
 	return nil
+=======
+// EnableTechnology enables a technology interface.
+func (m *Manager) EnableTechnology(ctx context.Context, props interface{}) error {
+	return call(ctx, m.obj, dbusManagerInterface, "EnableTechnology", props).Err
+}
+
+// DisableTechnology disables a technology interface.
+func (m *Manager) DisableTechnology(ctx context.Context, props interface{}) error {
+	return call(ctx, m.obj, dbusManagerInterface, "DisableTechnology", props).Err
+>>>>>>> BRANCH (3839e9 tast: Add local test that tests wifi functionality after sus)
 }

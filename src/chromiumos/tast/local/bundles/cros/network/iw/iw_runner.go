@@ -63,7 +63,11 @@ func TimedScan(ctx context.Context, iface string,
 	}
 	startTime := time.Now()
 	out, err := testexec.CommandContext(ctx, "iw", args...).Output()
+<<<<<<< HEAD   (807b30 Merge commit 'refs/changes/93/1666293/5' of https://chromium)
 	scanTime := time.Since(startTime)
+=======
+	scanTime := time.Duration(time.Since(startTime).Seconds())
+>>>>>>> BRANCH (3839e9 tast: Add local test that tests wifi functionality after sus)
 	if err != nil {
 		return nil, errors.Wrap(err, "iw scan failed")
 	}
