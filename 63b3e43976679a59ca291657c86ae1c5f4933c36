@@ -22,6 +22,30 @@
       "revId": "63b3e43976679a59ca291657c86ae1c5f4933c36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6f1b8e0_0270e419",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T06:21:53Z",
+      "side": 1,
+      "message": "Hmm... I\u0027d avoid Command/Cmd because the interface is actually different from them.\n(e.g., GTest.Run takes context.Context white Cmd does not, GTest.Run returns *Report, while Cmd does not return the result, etc.), so I thought it\u0027s nice to avoid.\n\nHow about different names, like Runner or Executor?\nAlso, do you think we should change the name of New() to, e.g., NewRunner() etc? Which may be redundant?",
+      "parentUuid": "897168e0_13c04990",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 10
+      },
+      "revId": "63b3e43976679a59ca291657c86ae1c5f4933c36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
