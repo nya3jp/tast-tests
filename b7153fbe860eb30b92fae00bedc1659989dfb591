@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "d3d32098_b10e790d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-07-23T13:03:27Z",
+      "side": 1,
+      "message": "I\u0027m having a hard time to figure out what board that is. [1] seems to point at lakitu, project-termina, project-mobbuild and ppc. I can\u0027t find any boards for those, only thing I can find is a lakitu build bot (lakitu-no-vmtest-pre-cq), but that doesn\u0027t run tests AFAIK. Any hints how I would proceed?\n\n[1] https://cs.corp.google.com/search/?q\u003dchromeless_tty+case:yes+file:%5Esrc/overlays/+package:%5Echromeos_public$\u0026m\u003d100\u0026type\u003dcs",
+      "parentUuid": "817a0a01_1337e74c",
+      "revId": "b7153fbe860eb30b92fae00bedc1659989dfb591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db24a687_b315d5b5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
