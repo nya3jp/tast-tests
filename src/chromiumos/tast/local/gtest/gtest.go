@@ -55,39 +55,69 @@ func parseTestList(content string) []string {
 	return result
 }
 
-// Params has configurations to execute gtest.
-type Params struct {
-	// Logfile is a path to the log file, which will contain stdout and
+// GTest is a struct to run gtest binary.
+type GTest struct {
+	// exec is a path to the gtest executable.
+	exec string
+
+	// logfile is a path to the log file, which will contain stdout and
 	// stderr of the gtest execution.
 	// Note: Because the gtest log could be long, if this is not specified,
 	// the log wouldn't be recorded to the current test log.
-	Logfile string
+	logfile string
 
-	// Filter specifies a subset of tests to run. If not empty, the value
+	// filter specifies a subset of tests to run. If not empty, the value
 	// is passed to --gtest_filter=.
 	// Please see the gtest manual for the specification.
-	Filter string
+	filter string
 
-	// ExtraArgs will be passed to the test execution. Note that all
+	// extraArgs will be passed to the test execution. Note that all
 	// --gtest* prefixed commandline flags should be constructed from
-	// Param struct internally, so it is an error to include --gtest* flags
+	// GTest struct internally, so it is an error to include --gtest* flags
 	// in this.
-	ExtraArgs []string
+	extraArgs []string
 
 	// TODO(hidehiko): To migrate from bintest, support UID.
 	// TODO(hidehiko): To migrate from arctest, support ARC gtest run.
 }
 
-// Run executes the gtest binary exec with the given param, and then returns
-// the parsed Report.
+// option is a self-referential function can be used to configure GTest.
+type option func(t *GTest)
+
+// Logfile returns an option to set logfile path of GTest.
+func Logfile(path string) option {
+	return func(t *GTest) { t.logfile = path }
+}
+
+// Filter returns an option to set gtest_filter.
+func Filter(pattern string) option {
+	return func(t *GTest) { t.filter = pattern }
+}
+
+// ExtraArgs returns an option to pass more arguments than gtest arguments
+// for execution.
+func ExtraArgs(args ...string) option {
+	return func(t *GTest) { t.extraArgs = args }
+}
+
+// New creates GTest instance with given options.
+func New(exec string, opts ...option) *GTest {
+	ret := &GTest{exec: exec}
+	for _, opt := range opts {
+		opt(ret)
+	}
+	return ret
+}
+
+// Run executes the gtest, and returns the parsed Report.
 // Note that the returned Report may not be nil even if test command execution
 // returns an error. E.g., if test case in the gtest fails, the command will
 // return an error, but the report file should be created. This function
 // also handles the case, and returns it.
-func Run(ctx context.Context, exec string, params *Params) (*Report, error) {
-	args := []string{exec}
-	if params != nil && params.Filter != "" {
-		args = append(args, "--gtest_filter="+params.Filter)
+func (t *GTest) Run(ctx context.Context) (*Report, error) {
+	args := []string{t.exec}
+	if t.filter != "" {
+		args = append(args, "--gtest_filter="+t.filter)
 	}
 
 	// Create report file.
@@ -98,23 +128,23 @@ func Run(ctx context.Context, exec string, params *Params) (*Report, error) {
 	defer os.Remove(output)
 	args = append(args, "--gtest_output=xml:"+output)
 
-	if params != nil && params.ExtraArgs != nil {
-		for _, a := range params.ExtraArgs {
+	if t.extraArgs != nil {
+		for _, a := range t.extraArgs {
 			if strings.HasPrefix(a, "--gtest") {
-				return nil, errors.Errorf("gtest.Params.ExtraArgs should not contain --gtest prefixed flags: %s", a)
+				return nil, errors.Errorf("gtest.ExtraArgs should not contain --gtest prefixed flags: %s", a)
 			}
 		}
-		args = append(args, params.ExtraArgs...)
+		args = append(args, t.extraArgs...)
 	}
 
 	cmd := testexec.CommandContext(ctx, args[0], args[1:]...)
 
 	// Set up log file.
-	if params != nil && params.Logfile != "" {
-		if err := os.MkdirAll(filepath.Dir(params.Logfile), 0755); err != nil {
+	if t.logfile != "" {
+		if err := os.MkdirAll(filepath.Dir(t.logfile), 0755); err != nil {
 			return nil, errors.Wrap(err, "failed to create log directory")
 		}
-		f, err := os.Create(params.Logfile)
+		f, err := os.Create(t.logfile)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to create a log file")
 		}
