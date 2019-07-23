@@ -98,9 +98,6 @@ func (t *crosCameraTestConfig) toArgs() []string {
 	if t.cameraFacing != "" {
 		args = append(args, "--camera_facing="+t.cameraFacing)
 	}
-	if t.gtestFilter != "" {
-		args = append(args, "--gtest_filter="+t.gtestFilter)
-	}
 	if t.recordingParams != "" {
 		args = append(args, "--recording_params="+t.recordingParams)
 	}
@@ -119,59 +116,29 @@ func runCrosCameraTest(ctx context.Context, s *testing.State, cfg crosCameraTest
 		s.Fatal("The cros-camera service must be stopped before calling runCrosCameraTest: ", err)
 	}
 
-	// Create a temporal XML for Google Test's output owned by arc-camera
-	gtestFile, err := ioutil.TempFile(s.OutDir(), "gtest.*.xml")
-	if err != nil {
-		s.Fatal("Failed to open gtest output file: ", err)
-	}
-	if err := gtestFile.Close(); err != nil {
-		s.Fatal("Failed to close gtest output file: ", err)
-	}
 	uid, err := sysutil.GetUID("arc-camera")
 	if err != nil {
 		s.Fatal("Failed to get uid of arc-camera: ", err)
 	}
-	if err := os.Chown(gtestFile.Name(), int(uid), 0); err != nil {
-		s.Fatal("Failed to chown the gtest output file: ", err)
-	}
 
-	logPath := filepath.Join(s.OutDir(), "cros_camera_test.log")
-	logFile, err := os.OpenFile(logPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	t := gtest.New("cros_camera_test",
+		gtest.TempLogfile(filepath.Join(s.OutDir(), "cros_camera_test_*.log")),
+		gtest.Filter(cfg.gtestFilter),
+		gtest.ExtraArgs(cfg.toArgs()...),
+		gtest.UID(int(uid)))
+
+	if args, err := t.ToArgs(); err == nil {
+		s.Log("Running " + shutil.EscapeSlice(args))
+	}
+	report, err := t.Run(ctx)
 	if err != nil {
-		s.Fatal("Failed to open log file: ", err)
-	}
-	defer func() {
-		if err := logFile.Close(); err != nil {
-			s.Error("Failed to close log file: ", err)
-		}
-	}()
-
-	sudoArgs := []string{"--preserve-env", "--user=arc-camera", "cros_camera_test"}
-	cmd := testexec.CommandContext(ctx, "sudo", append(sudoArgs, cfg.toArgs()...)...)
-	cmd.Env = []string{"GTEST_OUTPUT=xml:" + gtestFile.Name()}
-	cmd.Stdout = logFile
-	cmd.Stderr = logFile
-	msg := "Running " + shutil.EscapeSlice(cmd.Args)
-	s.Log(msg)
-
-	// Make it easier to read by writing the command to the log file as well,
-	// because we might run cros_camera_test multiple times in a Tast test.
-	logFile.WriteString(msg + "\n")
-	if err := logFile.Sync(); err != nil {
-		s.Error("Failed to flush log file: ", err)
-	}
-
-	if err := cmd.Run(); err != nil {
-		if report, err := gtest.ParseReport(gtestFile.Name()); err != nil {
-			s.Error("Failed to extract failed test names: ", err)
-		} else {
+		if report != nil {
 			for _, name := range report.FailedTestNames() {
 				s.Error(name, " failed")
 			}
 		}
 		s.Fatal("Failed to run cros_camera_test: ", err)
 	}
-
 }
 
 // TestConfig is the config for HAL3 tests.
