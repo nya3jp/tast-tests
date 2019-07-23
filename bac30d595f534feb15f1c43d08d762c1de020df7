@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87d446b3_b3a16b49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/daemon.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T12:41:00Z",
+      "side": 1,
+      "message": "Following the go\u0027s style, could you remove assert functions, and check the condition by if stmt for each?\n\nhttps://golang.org/doc/faq#testing_framework",
+      "revId": "bac30d595f534feb15f1c43d08d762c1de020df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c012054f_9325a14c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/daemon.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T12:41:00Z",
+      "side": 1,
+      "message": "nit: We often use \"...: got ...; want ...\" as a pattern to show actual/expected values in error messages.\nCould you follow the style?",
+      "range": {
+        "startLine": 33,
+        "startChar": 24,
+        "endLine": 33,
+        "endChar": 48
+      },
+      "revId": "bac30d595f534feb15f1c43d08d762c1de020df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6108393d_b84f8f53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T12:41:00Z",
+      "side": 1,
+      "message": "Clar: do you have a plan to add more tests to kerberos package?\nWe are adding new category lazily, so there\u0027s no plan, could you put your test in some existing category? (if there\u0027s a plan to add more tests and this is the first CL, then that\u0027s fine).",
+      "revId": "bac30d595f534feb15f1c43d08d762c1de020df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02ceb567_ed7ed785",
+        "filename": "src/chromiumos/tast/local/kerberos/kerberos.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T12:41:00Z",
+      "side": 1,
+      "message": "Any plans to share this with non kerberos.* tests?\nIf not, could you keep this under a subpackage of the test\u0027s package?",
+      "revId": "bac30d595f534feb15f1c43d08d762c1de020df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37a5e7fa_c53f4bcd",
+        "filename": "src/chromiumos/tast/local/kerberos/kerberos.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T12:41:00Z",
+      "side": 1,
+      "message": "Clar: can we assume passwd is small enough to put it into pipe buffer?",
+      "revId": "bac30d595f534feb15f1c43d08d762c1de020df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
