@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "817a0a01_1337e74c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T12:20:51Z",
+      "side": 1,
+      "message": "Thanks for explanation.\n\n\"chrome\" SoftwareDeps is derived from \"!chromeless_tty \u0026\u0026 !rialto\" USE flag.\nCould you check what happens on those devices?",
+      "parentUuid": "aba7e0b5_5508376a",
+      "revId": "b7153fbe860eb30b92fae00bedc1659989dfb591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db24a687_b315d5b5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1

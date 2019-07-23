@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "594fbd93_09331c79",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T12:20:51Z",
+      "side": 1,
+      "message": "nit: Could you update the list, too?",
+      "revId": "7591b6f07110eb6e9e3b8f27dc9eb4ff20faa5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4af579ba_4c2609fe",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T12:20:51Z",
+      "side": 1,
+      "message": "BTW, is there any plans to use this in tests other than session.* ?\nIf not, could you keep this in somewhere under bundles/cros/session/*/* library?\nWe already have an option for chrome.New(), and it should be encouraged to be used, IIUC.",
+      "revId": "7591b6f07110eb6e9e3b8f27dc9eb4ff20faa5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
