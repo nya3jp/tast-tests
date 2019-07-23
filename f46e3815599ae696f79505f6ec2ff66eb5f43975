@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "5b6be73b_35893917",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-23T07:43:23Z",
+      "side": 1,
+      "message": "QQ: Why should we support both pattern?",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 43
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e15bccb9_9489a643",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-23T07:43:23Z",
+      "side": 1,
+      "message": "QQ: current user means login user ?",
+      "range": {
+        "startLine": 87,
+        "startChar": 60,
+        "endLine": 87,
+        "endChar": 72
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40ab92a4_a3bd56e5",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-23T07:43:23Z",
+      "side": 1,
+      "message": "Could you add unit tests?\n\n- Call New -\u003e Run with several variants of options.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 46
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "30c870c9_8cb529f9",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 2
@@ -18,6 +87,259 @@
         "startChar": 66,
         "endLine": 151,
         "endChar": 72
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ece4f0e_11d86e61",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-23T07:43:23Z",
+      "side": 1,
+      "message": "nit: gtest",
+      "range": {
+        "startLine": 151,
+        "startChar": 66,
+        "endLine": 151,
+        "endChar": 72
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33936671_d969a860",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-23T07:43:23Z",
+      "side": 1,
+      "message": "Why don\u0027t you move it to ToArgs() ?\nI think ToArgs() can compute the args once and return computed args after that.",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 50
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e1774e3_a19f384f",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-23T07:43:23Z",
+      "side": 1,
+      "message": "Can you use t.logfile !\u003d \"\"\ninstead of log !\u003d nil ?",
+      "range": {
+        "startLine": 183,
+        "startChar": 27,
+        "endLine": 183,
+        "endChar": 34
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9662f95_904a5017",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-23T07:43:23Z",
+      "side": 1,
+      "message": "ends?",
+      "range": {
+        "startLine": 189,
+        "startChar": 22,
+        "endLine": 189,
+        "endChar": 28
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "639e5790_950e0f4f",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-23T07:43:23Z",
+      "side": 1,
+      "message": "Can you move this line to L181 ?\nI think the `if log !\u003d nil` lines can be combined then.",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 58
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad5cdf50_67566e2a",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-23T07:43:23Z",
+      "side": 1,
+      "message": "Could you add func comment?",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 44
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c72a84ef_79b84d53",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-23T07:43:23Z",
+      "side": 1,
+      "message": "Could you add function comment?",
+      "range": {
+        "startLine": 248,
+        "startChar": 5,
+        "endLine": 248,
+        "endChar": 16
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b00f6f6b_7ee47940",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-23T07:43:23Z",
+      "side": 1,
+      "message": "I think this should rather return an error.",
+      "range": {
+        "startLine": 250,
+        "startChar": 1,
+        "endLine": 250,
+        "endChar": 2
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b7f10e4_bf77f38b",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-23T07:43:23Z",
+      "side": 1,
+      "message": "It\u0027s only necessary when tempfile \u003d true ?",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 2
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d9940db_5298ef1b",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-23T07:43:23Z",
+      "side": 1,
+      "message": "fmt.Fprintf(f, ...)\nwork?",
+      "range": {
+        "startLine": 271,
+        "startChar": 3,
+        "endLine": 271,
+        "endChar": 14
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8095866_6221b1bd",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-23T07:43:23Z",
+      "side": 1,
+      "message": "I think this can be done in caller.\nIt looks not a responsibility of the func named openLogFile .",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 2
       },
       "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
