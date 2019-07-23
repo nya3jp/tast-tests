@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8da0544b_ccc8fc9d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-07-23T12:38:20Z",
+      "side": 1,
+      "message": "nit: \"the test passing\" reads better",
+      "range": {
+        "startLine": 10,
+        "startChar": 31,
+        "endLine": 10,
+        "endChar": 47
+      },
+      "revId": "d450f5ac544c67abc460439f2c928390b499ac97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
