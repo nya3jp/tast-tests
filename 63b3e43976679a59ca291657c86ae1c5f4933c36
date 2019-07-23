@@ -46,6 +46,30 @@
       "revId": "63b3e43976679a59ca291657c86ae1c5f4933c36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73a7f33c_f43bb9f4",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-23T06:34:41Z",
+      "side": 1,
+      "message": "Thank you. I think GTest is actually fine.\nThere\u0027s template.Template for example in text/template.\nThis stackoverflow answer was convincing to me.\nhttps://stackoverflow.com/questions/45885985/ways-to-avoid-stuttering-in-go-package-and-struct-names",
+      "parentUuid": "d6f1b8e0_0270e419",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 10
+      },
+      "revId": "63b3e43976679a59ca291657c86ae1c5f4933c36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
