@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "8cf8dcf9_55e4d57f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_vd_used_h264.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-23T12:03:27Z",
+      "side": 1,
+      "message": "I prefer video.PlayDecodeAccelUsedVDH264 over video.PlayDecodeAccelVDUsedH264.\nI think \"DecodeAccelUsed\" should be one phrase as we have histogram.WasHWAccelUsed().\n\nThe word order in video.PlayDecodeAccelUsedVDH264 should make sense because this test \"Play\"s a video and check if \"DecodeAccel\"ator is \"Used\" with \"VD\" interface by using a \"H.264\" video.",
+      "revId": "f4c6c926d05d2944560d74b0e5052f363c233aa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3a2e7bb7_1dbcb0b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_vd_used_h264.go",
         "patchSetId": 2
@@ -19,6 +36,47 @@
         "endLine": 21,
         "endChar": 10
       },
+      "revId": "f4c6c926d05d2944560d74b0e5052f363c233aa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0324228b_e82ec62b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_vd_used_h264.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-23T12:03:27Z",
+      "side": 1,
+      "message": "I\u0027m not sure whether Dean should own this test because this test is for VD.\n+deanliao@",
+      "parentUuid": "3a2e7bb7_1dbcb0b4",
+      "range": {
+        "startLine": 21,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 10
+      },
+      "revId": "f4c6c926d05d2944560d74b0e5052f363c233aa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7241a61_fd975686",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-23T12:03:27Z",
+      "side": 1,
+      "message": "Could you add a comment corresponding \"This precondition must not be used for performance tests...\" above?",
       "revId": "f4c6c926d05d2944560d74b0e5052f363c233aa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
