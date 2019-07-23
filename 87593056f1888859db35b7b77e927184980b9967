@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0ee72752_ae59da50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-07-23T12:51:15Z",
+      "side": 1,
+      "message": "There was discussion/ concerns about this in a previous CL (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1466423).\n\n \nThis was made in the top level comments from nya@ and dtseng@ on patch set 16. \nHowever I will summarize below. With how to proceed, I am open to hear your thoughts and discuss with you (if necessary). \n\nnya@ \u003e CL:1469064 changed the structure of a11y tree in Chrome side and it would have broken arc.AccessibilityTest. While it\u0027s not a big problem for now (since the test is still informational), we want all Tast tests to be promoted to important eventually, and then the story is different. Since we run important tests in Chrome PFQ, such Chrome change would break Chrome PFQ. Furthermore, we\u0027re planning to run more Tast tests in Chrome CQ, so this test may block the Chrome CL from landing from the first place. Note that, since we can\u0027t submit Chrome CL and Chrome OS CL atomically, this test may make it very difficult to make a11y Chrome changes.\n\nSo in short, we have to make sure the test is robust enough to:\n\n- allow cosmetic changes to a11y tree without changing test code, and\n- allow matching differently shaped trees even for non-cosmetic changes.\n\ndtseng@ \u003e In terms of relaxing the shape of the a11y tree, that would go against what we\u0027re trying to test and I don\u0027t think we should make any exceptions at least for the moment. We generate the entire tree Chrome side based upon information from inside Android.\n\nnya@ \u003e I see, thanks for clarification. Then let\u0027s do exact matching of subtree.\n\nI think nya@\u0027s solution might be good here: \"... when test breakage happens, we may need to revise this test to accept several patterns of trees\".",
+      "parentUuid": "1c5eb774_d9deb0f4",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "87593056f1888859db35b7b77e927184980b9967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "534bb3c7_ba5eaa39",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -69,6 +93,30 @@
       "revId": "87593056f1888859db35b7b77e927184980b9967",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f0ad5c8_244ec6a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-07-23T12:51:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4697140d_76ee4c71",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "87593056f1888859db35b7b77e927184980b9967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
