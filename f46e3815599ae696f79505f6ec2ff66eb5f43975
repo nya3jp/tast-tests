@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0b6356bd_8ed9200b",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T09:34:52Z",
+      "side": 1,
+      "message": "ioutil.TempFile appends some random string at the end of given path.\nIt would be noise, if the file path is fixed, or moreover, it makes difficult to read the log file from the caller.\nOn the other hand, hal3 migration requests me to use TempFile in order to avoid name collisions.\n\nThis flag is to support both use cases.",
+      "parentUuid": "5b6be73b_35893917",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 43
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e15bccb9_9489a643",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a3009c2a_273db8e1",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T09:34:52Z",
+      "side": 1,
+      "message": "It\u0027s a user running this Tast test. Clarified.",
+      "parentUuid": "e15bccb9_9489a643",
+      "range": {
+        "startLine": 87,
+        "startChar": 60,
+        "endLine": 87,
+        "endChar": 72
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40ab92a4_a3bd56e5",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b94c9e4_affc57db",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T09:34:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40ab92a4_a3bd56e5",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 46
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +189,54 @@
     },
     {
       "key": {
+        "uuid": "0f905984_38b4fa78",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T09:34:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ece4f0e_11d86e61",
+      "range": {
+        "startLine": 151,
+        "startChar": 66,
+        "endLine": 151,
+        "endChar": 72
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8cfb4504_71719d0a",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T09:34:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30c870c9_8cb529f9",
+      "range": {
+        "startLine": 151,
+        "startChar": 66,
+        "endLine": 151,
+        "endChar": 72
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33936671_d969a860",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ddc88e8_ebf60cb4",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T09:34:52Z",
+      "side": 1,
+      "message": "I don\u0027t think we should move it, because this depends on the temp file created by createOutput(), and ToArgs() shouldn\u0027t have such unexpected side effect.\n\nAlso, note that this wouldn\u0027t be included in the async version of gtest which will be introduced in later CL.",
+      "parentUuid": "33936671_d969a860",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 50
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "066b841c_9cbc69cc",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T09:34:52Z",
+      "side": 1,
+      "message": "Slightly modified the code. I hope it adapts your feeling better.",
+      "parentUuid": "8e1774e3_a19f384f",
+      "range": {
+        "startLine": 183,
+        "startChar": 27,
+        "endLine": 183,
+        "endChar": 34
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9662f95_904a5017",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 2
@@ -183,6 +351,30 @@
       "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac207a2d_02612345",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T09:34:52Z",
+      "side": 1,
+      "message": "Actually \"starts\". When a new process is started (i.e. forked), the file descriptor here should be injected into the subprocess, so we can close at that timing.",
+      "parentUuid": "a9662f95_904a5017",
+      "range": {
+        "startLine": 189,
+        "startChar": 22,
+        "endLine": 189,
+        "endChar": 28
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "bff96afd_e3f70747",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T09:34:52Z",
+      "side": 1,
+      "message": "Instead, removed log condition. Assigning to nil means redirect to /dev/null, which is expected behavior.",
+      "parentUuid": "639e5790_950e0f4f",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 58
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad5cdf50_67566e2a",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 2
@@ -229,6 +445,30 @@
       "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df970b56_2efa97d0",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T09:34:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad5cdf50_67566e2a",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 44
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "cd7f4acb_9310188f",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T09:34:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c72a84ef_79b84d53",
+      "range": {
+        "startLine": 248,
+        "startChar": 5,
+        "endLine": 248,
+        "endChar": 16
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b00f6f6b_7ee47940",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 2
@@ -278,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "893e5988_cc61cb78",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T09:34:52Z",
+      "side": 1,
+      "message": "Moved to caller, so simply removed this.",
+      "parentUuid": "b00f6f6b_7ee47940",
+      "range": {
+        "startLine": 250,
+        "startChar": 1,
+        "endLine": 250,
+        "endChar": 2
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b7f10e4_bf77f38b",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 2
@@ -289,6 +577,30 @@
       "writtenOn": "2019-07-23T07:43:23Z",
       "side": 1,
       "message": "It\u0027s only necessary when tempfile \u003d true ?",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 2
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df42761e_0d7b3b58",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T09:34:52Z",
+      "side": 1,
+      "message": "For both tempfile \u003d true and false.",
+      "parentUuid": "9b7f10e4_bf77f38b",
       "range": {
         "startLine": 252,
         "startChar": 0,
@@ -324,6 +636,30 @@
     },
     {
       "key": {
+        "uuid": "e078aefc_9278c9de",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T09:34:52Z",
+      "side": 1,
+      "message": "SGTM. Done.",
+      "parentUuid": "4d9940db_5298ef1b",
+      "range": {
+        "startLine": 271,
+        "startChar": 3,
+        "endLine": 271,
+        "endChar": 14
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b8095866_6221b1bd",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 2
@@ -335,6 +671,30 @@
       "writtenOn": "2019-07-23T07:43:23Z",
       "side": 1,
       "message": "I think this can be done in caller.\nIt looks not a responsibility of the func named openLogFile .",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 2
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eed47c3_ecec6d06",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-23T09:34:52Z",
+      "side": 1,
+      "message": "Instead, split the function.\n\nNote that, this will be reused in the async version, too.",
+      "parentUuid": "b8095866_6221b1bd",
       "range": {
         "startLine": 269,
         "startChar": 0,
