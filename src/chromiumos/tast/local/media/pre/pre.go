@@ -12,24 +12,34 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// ChromeVideo returns a precondition that Chrome is started with video tests-specific
-// flags and is already logged in when a test is run.
-// This precondition must not be used for performance tests, as verbose logging might might affect
-// the performance.
+// ChromeVideo returns a precondition that makes sure Chrome is started with video tests-specific
+// flags and is already logged in when a test is run. This precondition must not be used for
+// performance tests, as verbose logging might might affect the performance.
 func ChromeVideo() testing.Precondition { return chromeVideoPre }
 
-var chromeVideoPre = chrome.NewPrecondition("video",
-	chrome.ExtraArgs(
-		// Enable verbose log messages for video components.
-		"--vmodule="+strings.Join([]string{
-			"*/media/gpu/*video_decode_accelerator.cc=2",
-			"*/media/gpu/*video_encode_accelerator.cc=2",
-			"*/media/gpu/*jpeg_decode_accelerator.cc=2",
-			"*/media/gpu/*jpeg_encode_accelerator.cc=2",
-			"*/media/gpu/*image_processor.cc=2",
-			"*/media/gpu/*v4l2_device.cc=2"}, ","),
-		// Disable the autoplay policy not to be affected by actions from outside of tests.
-		// cf. https://developers.google.com/web/updates/2017/09/autoplay-policy-changes
-		"--autoplay-policy=no-user-gesture-required",
-		// Avoid the need to grant camera/microphone permissions.
-		"--use-fake-ui-for-media-stream"))
+var chromeVideoPre = chrome.NewPrecondition("video", chromeArgs)
+
+// ChromeVideoVD returns a precondition similar to ChromeVideo specified above. In addition this
+// precondition specifies that the new media::VideoDecoder-based video decoders need to used
+// (see go/vd-migration).
+func ChromeVideoVD() testing.Precondition { return chromeVideoVDPre }
+
+var chromeVideoVDPre = chrome.NewPrecondition("videoVD", chromeArgs, chromeVDArgs)
+
+var chromeArgs = chrome.ExtraArgs(
+	// Enable verbose log messages for video components.
+	"--vmodule="+strings.Join([]string{
+		"*/media/gpu/*video_decode_accelerator.cc=2",
+		"*/media/gpu/*video_encode_accelerator.cc=2",
+		"*/media/gpu/*jpeg_decode_accelerator.cc=2",
+		"*/media/gpu/*jpeg_encode_accelerator.cc=2",
+		"*/media/gpu/*image_processor.cc=2",
+		"*/media/gpu/*v4l2_device.cc=2"}, ","),
+	// Disable the autoplay policy not to be affected by actions from outside of tests.
+	// cf. https://developers.google.com/web/updates/2017/09/autoplay-policy-changes
+	"--autoplay-policy=no-user-gesture-required",
+	// Avoid the need to grant camera/microphone permissions.
+	"--use-fake-ui-for-media-stream")
+
+var chromeVDArgs = chrome.ExtraArgs(
+	"--enable-features=ChromeosVideoDecoder")
