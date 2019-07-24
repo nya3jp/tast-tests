@@ -19,7 +19,6 @@ func init() {
 			"briannorris@chromium.org",        // Author
 			"chromeos-kernel-wifi@google.com", // WiFi team
 		},
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"tablet_mode"},
 	})
 }
