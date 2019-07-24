@@ -143,7 +143,7 @@ func hasAtmelDeviceDir() (hasDevice bool, resultErr error) {
 	return false, nil
 }
 
-func UdevCrash(ctx context.Context, s *testing.State) {
+func testUdevCrash(ctx context.Context, s *testing.State) {
 	hasDevice, err := hasAtmelDeviceDir()
 	if err != nil {
 		s.Fatal("Error occured while searching Atmel devices: ", err)
@@ -152,10 +152,6 @@ func UdevCrash(ctx context.Context, s *testing.State) {
 		// TODO(yamaguchi): Change this to an error when hardware depenency is
 		// supported by the test framework.
 		s.Log("No Atmel device found; this test should not be run on this device")
-	}
-
-	if err := crash.SetConsent(ctx, s.DataPath(crash.MockMetricsOnPolicyFile), s.DataPath(crash.MockMetricsOwnerKeyFile)); err != nil {
-		s.Fatal("Failed to set consent: ", err)
 	}
 
 	// Memorize existing cresh report to distinguish new reports from them.
@@ -201,4 +197,8 @@ func UdevCrash(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Error("Failed to wait for Atmel crash reports: ", err)
 	}
+}
+
+func UdevCrash(ctx context.Context, s *testing.State) {
+	crash.RunCrashTest(ctx, s, testUdevCrash)
 }

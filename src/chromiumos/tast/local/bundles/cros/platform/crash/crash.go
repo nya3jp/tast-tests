@@ -13,6 +13,7 @@ import (
 	"io/ioutil"
 	"os"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
@@ -28,19 +29,21 @@ const (
 	// policy blob.
 	// A test which calls SetConsent should load this file.
 	MockMetricsOwnerKeyFile = "crash_tests_mock_metrics_owner.key"
+
+	whitelistDir      = "/var/lib/whitelist"
+	consentFile       = "/home/chronos/Consent To Send Stats"
+	ownerKeyFile      = whitelistDir + "/owner.key"
+	signedPolicyFile  = whitelistDir + "/policy"
+	pushedPolicyFile  = whitelistDir + "/pushed_policy"
+	pushedKeyFile     = whitelistDir + "/pushed_key"
+	pushedConsentFile = "/home/chronos/pushed_consent"
 )
 
-// SetConsent emulates the state where we have consent to send crash reports.
+// setConsent emulates the state where we have consent to send crash reports.
 // This creates the file to control whether crash_sender will consider that it
 // has consent to send crash reports.
 // It also copies a policy blob with the proper policy setting.
-func SetConsent(ctx context.Context, mockPolicyFilePath string, mockKeyFilePath string) error {
-	const (
-		whitelistDir     = "/var/lib/whitelist"
-		consentFile      = "/home/chronos/Consent To Send Stats"
-		ownerKeyFile     = whitelistDir + "/owner.key"
-		signedPolicyFile = whitelistDir + "/policy"
-	)
+func setConsent(ctx context.Context, mockPolicyFilePath string, mockKeyFilePath string) error {
 	if e, err := os.Stat(whitelistDir); err == nil && e.IsDir() {
 		// Create policy file that enables metrics/consent.
 		if err := fsutil.CopyFile(mockPolicyFilePath, signedPolicyFile); err != nil {
@@ -69,4 +72,82 @@ func SetConsent(ctx context.Context, mockPolicyFilePath string, mockKeyFilePath 
 	}
 	testing.ContextLog(ctx, "Created ", consentFile)
 	return nil
+}
+
+// pushConsent pushes the consent file, thus disabling consent.
+func pushConsent() error {
+	if err := pushFile(signedPolicyFile, pushedPolicyFile); err != nil {
+		return err
+	}
+	if err := pushFile(ownerKeyFile, pushedKeyFile); err != nil {
+		// TODO(yamaguchi): Handle partial teardown correctly. If the 1st file was moved successfully but the 2nd file failed, then the 1st file still needs to be restored.
+		return err
+	}
+	if err := pushFile(consentFile, pushedConsentFile); err != nil {
+		return err
+	}
+	return nil
+}
+
+// popConsent pops the consent files, enabling/disabling consent as it was before we pushed the consent.
+func popConsent() error {
+	if err := popFile(signedPolicyFile, pushedPolicyFile); err != nil {
+		return err
+	}
+	if err := popFile(ownerKeyFile, pushedKeyFile); err != nil {
+		return err
+	}
+	if err := popFile(consentFile, pushedConsentFile); err != nil {
+		return err
+	}
+	return nil
+}
+
+func pushFile(origPath string, backupPath string) error {
+	if _, err := os.Stat(backupPath); err == nil {
+		return errors.Wrapf(err, "backup destination file already exists: %s", backupPath)
+	} else if !os.IsNotExist(err) {
+		return errors.Wrap(err, "failed to stat backup path")
+	}
+	if _, err := os.Stat(origPath); err != nil {
+		if os.IsNotExist(err) {
+			return nil
+		}
+		return errors.Wrap(err, "failed to stat original file")
+	}
+	if err := fsutil.MoveFile(origPath, backupPath); err != nil {
+		return errors.Wrap(err, "failed to push file")
+	}
+	return nil
+}
+
+func popFile(origPath string, backupPath string) error {
+	if f, err := os.Stat(backupPath); err != nil {
+		if !os.IsNotExist(err) {
+			return errors.Wrap(err, "failed to open backup")
+		}
+		return os.Remove(origPath)
+	} else if !f.Mode().IsRegular() {
+		return errors.Wrap(err, "backup is not a regular file")
+	}
+	if err := fsutil.MoveFile(backupPath, origPath); err != nil {
+		return errors.Wrap(err, "failed to pop file")
+	}
+	return nil
+}
+
+// RunCrashTest runs a crash test case after setting up crash reporter.
+func RunCrashTest(ctx context.Context, s *testing.State, testFunc func(context.Context, *testing.State)) {
+	if err := pushConsent(); err != nil {
+		s.Fatal("Failed to push consent: ", err)
+	}
+	if err := setConsent(ctx, s.DataPath(MockMetricsOnPolicyFile), s.DataPath(MockMetricsOwnerKeyFile)); err != nil {
+		s.Fatal("Failed to set consent: ", err)
+	}
+	defer func() {
+		if err := popConsent(); err != nil {
+			s.Fatal("Failed to pop consent: ", err)
+		}
+	}()
+	testFunc(ctx, s)
 }
