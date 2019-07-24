@@ -8,13 +8,15 @@ package shill
 import (
 	"context"
 	"fmt"
-	"os"
-
 	"github.com/godbus/dbus"
+	"os"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/upstart"
+
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -152,3 +154,135 @@ func (m *Manager) ConfigureServiceForProfile(ctx context.Context, path dbus.Obje
 	}
 	return service, nil
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 202791226... wifi connect experiment
+
+// RequestScan tells shill to request a network scan on a specified interface.
+func (m *Manager) RequestScan(ctx context.Context, props interface{}) error {
+	return call(ctx, m.obj, dbusManagerInterface, "RequestScan", props).Err
+}
+
+// Connect will connect a manager to a service.
+func (m *Manager) Connect(ctx context.Context, path dbus.ObjectPath) error {
+	_, obj, err := dbusutil.Connect(ctx, dbusService, path)
+	if err != nil {
+		return err
+	}
+	if err := call(ctx, obj, dbusServiceInterface, "Connect").Err; err != nil {
+		return errors.Wrap(err, "failed to connect")
+	}
+	return nil
+}
+
+// Disconnect will disconnect a manager from a service.
+func (m *Manager) Disconnect(ctx context.Context, path dbus.ObjectPath) error {
+	_, obj, err := dbusutil.Connect(ctx, dbusService, path)
+	if err != nil {
+		return err
+	}
+	if err := call(ctx, obj, dbusServiceInterface, "Disconnect").Err; err != nil {
+		return errors.Wrap(err, "failed to disconnect")
+	}
+	return nil
+}
+
+// ConnectToWifiNetwork connects a flimflam manager to a wireless network
+// that adheres to the requested properties.
+func (m *Manager) ConnectToWifiNetwork(ctx context.Context, props map[string]interface{}) error {
+	var servicePath dbus.ObjectPath
+	var p map[string]interface{}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		path, err := m.FindMatchingService(ctx, props)
+		if err != nil {
+			return errors.Wrap(err, "could not find matching service")
+		}
+		p, err = getPropsForService(ctx, path)
+		if err != nil {
+			return errors.Wrap(err, "could not get properties for service")
+		}
+		if err := m.RequestScan(ctx, "wifi"); err != nil {
+			return errors.Wrap(err, "could not request scan on interface")
+		}
+		servicePath = path
+		return nil
+
+<<<<<<< HEAD
+	}, &testing.PollOptions{Timeout: 5 * time.Second, Interval: time.Second}); err != nil {
+=======
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}); err != nil {
+>>>>>>> 202791226... wifi connect experiment
+		return errors.Wrap(err, "failed to identify AP")
+	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return m.Connect(ctx, servicePath)
+<<<<<<< HEAD
+	}, &testing.PollOptions{Timeout: 5 * time.Second, Interval: time.Second}); err != nil {
+=======
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}); err != nil {
+>>>>>>> 202791226... wifi connect experiment
+		return errors.Wrap(err, "couldn't connect to ap")
+	}
+	return nil
+}
+
+// DisconnectFromWifiNetwork disconnects a flimflam manager from a wireless network
+// that adheres to the requested properties.
+func (m *Manager) DisconnectFromWifiNetwork(ctx context.Context, props map[string]interface{}) error {
+	var servicePath dbus.ObjectPath
+	var p map[string]interface{}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		path, err := m.FindMatchingService(ctx, props)
+		if err != nil {
+			return errors.Wrap(err, "could not find matching service")
+		}
+		p, err = getPropsForService(ctx, path)
+		if err != nil {
+			return errors.Wrap(err, "could not get properties for service")
+		}
+		if err := m.RequestScan(ctx, "wifi"); err != nil {
+			return errors.Wrap(err, "could not request scan on interface")
+		}
+		servicePath = path
+		return nil
+
+<<<<<<< HEAD
+	}, &testing.PollOptions{Timeout: 5 * time.Second, Interval: time.Second}); err != nil {
+=======
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}); err != nil {
+>>>>>>> 202791226... wifi connect experiment
+		return errors.Wrap(err, "failed to identify AP")
+	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return m.Disconnect(ctx, servicePath)
+<<<<<<< HEAD
+	}, &testing.PollOptions{Timeout: 5 * time.Second, Interval: time.Second}); err != nil {
+=======
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}); err != nil {
+>>>>>>> 202791226... wifi connect experiment
+		return errors.Wrap(err, "couldn't connect to ap")
+	}
+	return nil
+}
+<<<<<<< HEAD
+=======
+>>>>>>> 3839e9775... tast: Add local test that tests wifi functionality after suspend/resume.
+
+// EnableTechnology enables a technology interface.
+func (m *Manager) EnableTechnology(ctx context.Context, props interface{}) error {
+	return call(ctx, m.obj, dbusManagerInterface, "EnableTechnology", props).Err
+}
+
+// DisableTechnology disables a technology interface.
+func (m *Manager) DisableTechnology(ctx context.Context, props interface{}) error {
+	return call(ctx, m.obj, dbusManagerInterface, "DisableTechnology", props).Err
+}
+<<<<<<< HEAD
+>>>>>>> 533bfca02... network_WifiRest port
+=======
+>>>>>>> 202791226... wifi connect experiment
+=======
+>>>>>>> 3839e9775... tast: Add local test that tests wifi functionality after suspend/resume.
