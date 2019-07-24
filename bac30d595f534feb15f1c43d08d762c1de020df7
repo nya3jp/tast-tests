@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7c15ae46_d41d882c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/daemon.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-07-24T09:48:31Z",
+      "side": 1,
+      "message": "Done. Seems like the Go creators went a bit overboard with their philosophy at times. I hope I didn\u0027t introduce copy\u0026paste errors.",
+      "parentUuid": "87d446b3_b3a16b49",
+      "revId": "bac30d595f534feb15f1c43d08d762c1de020df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c012054f_9325a14c",
         "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/daemon.go",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "2ce97105_b984ad4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/daemon.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-07-24T09:48:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c012054f_9325a14c",
+      "range": {
+        "startLine": 33,
+        "startChar": 24,
+        "endLine": 33,
+        "endChar": 48
+      },
+      "revId": "bac30d595f534feb15f1c43d08d762c1de020df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6108393d_b84f8f53",
         "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
         "patchSetId": 1
@@ -53,6 +95,24 @@
       "writtenOn": "2019-07-23T12:41:00Z",
       "side": 1,
       "message": "Clar: do you have a plan to add more tests to kerberos package?\nWe are adding new category lazily, so there\u0027s no plan, could you put your test in some existing category? (if there\u0027s a plan to add more tests and this is the first CL, then that\u0027s fine).",
+      "revId": "bac30d595f534feb15f1c43d08d762c1de020df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1dbca02_94b91a13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-07-24T09:48:31Z",
+      "side": 1,
+      "message": "There are plans for an integration test that covers the D-Bus boundary between Chrome and the daemon. I\u0027d also like to do a separate test with credentials for a real internal Kerberos server. Any suggestions how to do that? I don\u0027t want to put the credentials into this public test. Maybe tast-tests-private?\n\nIf the authpolicy test gets moved over from autotest, maybe we should name it \u0027active_directory\u0027 and put kerberos + authpolicy tests there. \u0027enterprise\u0027 might be a good name as well.",
+      "parentUuid": "6108393d_b84f8f53",
       "revId": "bac30d595f534feb15f1c43d08d762c1de020df7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "322ead52_b87a325a",
+        "filename": "src/chromiumos/tast/local/kerberos/kerberos.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-07-24T09:48:31Z",
+      "side": 1,
+      "message": "No, this won\u0027t be shared. I\u0027ll move it.",
+      "parentUuid": "02ceb567_ed7ed785",
+      "revId": "bac30d595f534feb15f1c43d08d762c1de020df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37a5e7fa_c53f4bcd",
         "filename": "src/chromiumos/tast/local/kerberos/kerberos.go",
         "patchSetId": 1
@@ -90,6 +168,24 @@
       "revId": "bac30d595f534feb15f1c43d08d762c1de020df7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd1dc373_524e864a",
+        "filename": "src/chromiumos/tast/local/kerberos/kerberos.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-07-24T09:48:31Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "37a5e7fa_c53f4bcd",
+      "revId": "bac30d595f534feb15f1c43d08d762c1de020df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
