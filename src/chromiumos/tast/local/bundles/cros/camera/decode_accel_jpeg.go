@@ -27,6 +27,7 @@ func init() {
 }
 
 // jpegTestFiles lists the files required by the JPEG decode accelerator test.
+// TODO(crbug.com/987362): remove the peach_pi-4* files.
 var jpegTestFiles = []string{
 	"peach_pi-1280x720.jpg",
 	"peach_pi-40x23.jpg",
@@ -36,6 +37,9 @@ var jpegTestFiles = []string{
 	"pixel-1280x720-grayscale.jpg",
 	"pixel-1280x720-yuv420.jpg",
 	"pixel-1280x720-yuv444.jpg",
+	"pixel-40x23-yuv420.jpg",
+	"pixel-41x22-yuv420.jpg",
+	"pixel-41x23-yuv420.jpg",
 }
 
 // DecodeAccelJPEG runs a set of HW JPEG decode tests, defined in
