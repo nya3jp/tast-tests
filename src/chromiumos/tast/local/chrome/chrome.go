@@ -521,7 +521,10 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 		"--enable-experimental-extension-apis",       // Allow Chrome to use the Chrome Automation API.
 		"--whitelisted-extension-id=" + c.testExtID,  // Whitelists the test extension to access all Chrome APIs.
 		"--redirect-libassistant-logging",            // Redirect libassistant logging to /var/log/chrome/.
+		"--no-startup-window",                        // Do not start up chrome://newtab by default to avoid unexpected patterns(doodle etc.)
+		"--no-first-run",                             // Prevent showing up offer pages, e.g. google.com/chromebooks.
 	}
+
 	if c.loginMode != gaiaLogin {
 		args = append(args, "--disable-gaia-services")
 	}
