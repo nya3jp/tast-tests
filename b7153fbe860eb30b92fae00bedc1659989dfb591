@@ -127,6 +127,24 @@
     },
     {
       "key": {
+        "uuid": "1cb71204_4ecedf04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T08:57:28Z",
+      "side": 1,
+      "message": "I found a bug crbug.com/889686, so it should be fine with lakitu boards.",
+      "parentUuid": "02fbea43_fd478cf4",
+      "revId": "b7153fbe860eb30b92fae00bedc1659989dfb591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db24a687_b315d5b5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
