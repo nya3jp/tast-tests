@@ -62,22 +62,31 @@ func AssistantTextQueries(ctx context.Context, s *testing.State) {
 // testAssistantTimeQuery verifies the correctness of the Assistant time response by parsing
 // the fallback string to a time.Time object and comparing it with the current UTC time.
 func testAssistantTimeQuery(ctx context.Context, tconn *chrome.Conn, s *testing.State) {
-	response, err := assistant.SendTextQuery(ctx, tconn, "what time is it in UTC?")
+	queryStatus, err := assistant.SendTextQuery(ctx, tconn, "what time is it in UTC?")
 	if err != nil {
 		s.Error("Failed to get Assistant time response: ", err)
 		return
 	}
 
-	if len(response.Fallback) == 0 {
-		s.Error("No htmlFallback field found in the response")
-		return
+	// TODO(meilinw):
+	// Remove this logic once we check in the new API.
+	var fallback string
+	if len(queryStatus.Fallback) == 0 {
+		if len(queryStatus.QueryResponse.Fallback) != 0 {
+			fallback = queryStatus.QueryResponse.Fallback
+		} else {
+			s.Error("No response sent back from Assistant")
+			return
+		}
+	} else {
+		fallback = queryStatus.Fallback
 	}
 
 	now := time.Now().UTC()
 	// Truncates the sec and nsec to be consistent with the format of assistantTime and
 	// reduce the time error in interpretation.
 	now = time.Date(now.Year(), now.Month(), now.Day(), now.Hour(), now.Minute(), 0, 0, now.Location())
-	assistantTime, err := parseTimeNearNow(response.Fallback, now)
+	assistantTime, err := parseTimeNearNow(fallback, now)
 	if err != nil {
 		s.Error("Failed to parse Assistant time response: ", err)
 		return
