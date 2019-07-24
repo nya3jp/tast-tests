@@ -71,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "b368ae8a_6f63b9f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-07-24T22:17:54Z",
+      "side": 1,
+      "message": "Have you considered just running /usr/bin/metrics_client -C ? It sets up consent correctly, and \nexec.Command(\"/usr/bin/metrics_client\", \"-C\").Run()\nis much shorter.\n\nI\u0027ve been having much better luck with this; no corrupted owner.key warnings",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 106
+      },
+      "revId": "ada8ca0e408e5bc4071674ea956e2131f9c150b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c0f644a0_9cbc01bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 5
