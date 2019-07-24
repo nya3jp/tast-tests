@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c5815a0f_377f2bb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-07-24T07:22:18Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "303510b9_16a6b4ea",
+      "revId": "342abad6d6585d486622dd8f14266583491c2c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95446f20_1cf38537",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 4
