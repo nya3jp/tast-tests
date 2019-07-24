@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a05400ce_e798e709",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-24T05:30:16Z",
+      "side": 1,
+      "message": "* We don\u0027t need a period at the end of log messages\n* We might want to print opts.Profile here.\n\nSo, how about changing this line to this?\ns.Fatalf(\"Failed to setup encoded output path for profile %d\", opts.Profile)",
+      "range": {
+        "startLine": 133,
+        "startChar": 47,
+        "endLine": 133,
+        "endChar": 48
+      },
+      "revId": "fec58245b437770c9ff8b1dcc4480f8042d0ebff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
