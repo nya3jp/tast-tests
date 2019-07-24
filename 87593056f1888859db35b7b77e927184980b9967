@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d4755e81_6774f9ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T01:42:36Z",
+      "side": 1,
+      "message": "ok, it\u0027s long standing issue, and not the regression,\nso I don\u0027t think it\u0027s a blocker of this CL.\n+1 to nya@. Let\u0027s just postpone to address the issue.",
+      "parentUuid": "0ee72752_ae59da50",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "87593056f1888859db35b7b77e927184980b9967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "534bb3c7_ba5eaa39",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
