@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0e3b3ac_672bf741",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T07:47:50Z",
+      "side": 1,
+      "message": "this part can be dropped.",
+      "range": {
+        "startLine": 24,
+        "startChar": 125,
+        "endLine": 24,
+        "endChar": 167
+      },
+      "revId": "eb7264a7383b24cd69c6db1db0d6bdbde23928f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95c1b025_2490a577",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T07:47:50Z",
+      "side": 1,
+      "message": "Per offline chat, could you file a tracking issue to get rid of verification with stringified value, and add TODO?",
+      "range": {
+        "startLine": 26,
+        "startChar": 23,
+        "endLine": 26,
+        "endChar": 30
+      },
+      "revId": "eb7264a7383b24cd69c6db1db0d6bdbde23928f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a792517e_072456fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T07:47:50Z",
+      "side": 1,
+      "message": "Maybe: expectedLogs (plural form as its a collection)?",
+      "revId": "eb7264a7383b24cd69c6db1db0d6bdbde23928f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fc4cd48_1ee70ed9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T07:47:50Z",
+      "side": 1,
+      "message": "golang prefers shorter name by using surrounding context. How about just renaming to \"logs\"?",
+      "revId": "eb7264a7383b24cd69c6db1db0d6bdbde23928f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef184db4_212b0866",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T07:47:50Z",
+      "side": 1,
+      "message": "This is actually not diff :-).\nHow about content?\n\nAlso, in Tast, we much use \"got ...; want ...\" form.\nHow about just following it?\n\nE.g.; fmt.Sprintf(\"got %#v, want %#v\", ...) or something?",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 114,
+        "endChar": 74
+      },
+      "revId": "eb7264a7383b24cd69c6db1db0d6bdbde23928f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5f12ad2_a5caa8f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T07:47:50Z",
+      "side": 1,
+      "message": "Could you just logging rather than returning an error?\nIn this case, the verification at L113 already failed, and that should be the main error, IIUC.\nThis error report hides the main one.\n\n(optional) Or, if we could assume the logs is small, you can just dump in the error message.\nSpecifically, now, thanks to the textLog, the value is now structured, IMHO.",
+      "revId": "eb7264a7383b24cd69c6db1db0d6bdbde23928f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a10dc7b6_56e0066d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T07:47:50Z",
+      "side": 1,
+      "message": "this part can be dropped.",
+      "range": {
+        "startLine": 281,
+        "startChar": 125,
+        "endLine": 281,
+        "endChar": 152
+      },
+      "revId": "eb7264a7383b24cd69c6db1db0d6bdbde23928f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
