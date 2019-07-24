@@ -20,7 +20,7 @@ func init() {
 		Desc:         "Tests ARC e2e video encoding to measure the performance of H264 encoding for 1080p I420 video",
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Contacts:     []string{"akahuang@chromium.org", "chromeos-video-eng@google.com"},
-		SoftwareDeps: []string{"android", "chrome", caps.HWEncodeH264},
+		SoftwareDeps: []string{"android_p", "chrome", caps.HWEncodeH264},
 		Data:         []string{encode.Crowd1080P.Name},
 		Pre:          arc.Booted(), // TODO(akahuang): Implement new precondition to boot ARC and enable verbose at chromium.
 	})
