@@ -70,6 +70,30 @@
       "revId": "f00cf5c60feac48de04d2f68fe5c5a1c73873966",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "970017d6_7ddb3513",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-07-24T12:27:50Z",
+      "side": 1,
+      "message": "should be \"Accessibility Test App\" ?\n\nsee\nhttps://cs.corp.google.com/pi-arc-dev/vendor/google_arc/packages/development/ArcAccessibilityTest/res/values/strings.xml?sq\u0026q\u003dpackages/development/ArcAccessibilityTest/res/values/strings.xml+package:%5Epi-arc-dev$\u0026g\u003d0\u0026l\u003d1",
+      "parentUuid": "0de189b5_8ad1147c",
+      "range": {
+        "startLine": 149,
+        "startChar": 33,
+        "endLine": 149,
+        "endChar": 65
+      },
+      "revId": "f00cf5c60feac48de04d2f68fe5c5a1c73873966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
