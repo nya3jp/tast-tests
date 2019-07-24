@@ -16,6 +16,24 @@
       "revId": "ca2c814ce2fd8edde7745b7f2854f794fb40a770",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fb03bb7_22c7c745",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/util/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-07-24T11:32:42Z",
+      "side": 1,
+      "message": "Done. I\u0027m not the owner, so I don\u0027t have a strong opinion. FWIW, in my way of thinking, ownership and policy are two separate things, so I find putting policy code into ownership.go a bit unintuitive. E.g. Device/UserPolicyDescriptor really belongs to sm.StorePolicyEx. I would also expect ownership.go to be used by Ownership* tests only, but that\u0027s not the case.",
+      "parentUuid": "fe121346_e1f760d7",
+      "revId": "ca2c814ce2fd8edde7745b7f2854f794fb40a770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
