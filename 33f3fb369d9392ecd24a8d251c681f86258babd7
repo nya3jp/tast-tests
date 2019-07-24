@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b98ab96_55f33766",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-24T23:45:35Z",
+      "side": 1,
+      "message": "If you create a new context in the calling function of TakeSinglePhotoWithTimer using context.WithTimeout(ctx, time.Now().Add(TimerDelay)) then this check and the timerOn variable wouldn\u0027t be needed.  WaitForFileSaved() would return the last error from the polling function passed to testing.Poll() after the context timeout elapses.\n\nBut perhaps more importantly, I see that WaitForFileSaved() already has a built in 5 second timer - so the functions of TakeSinglePhoto and TakeSinglePhotoWithTimer both have timers, just of different lengths.  What about deleting TakeSinglePhotoWithTimer entirely?  Or modifying WaitForFileSaved to take a different value?",
+      "revId": "33f3fb369d9392ecd24a8d251c681f86258babd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
