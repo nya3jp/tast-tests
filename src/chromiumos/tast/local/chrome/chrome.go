@@ -312,6 +312,10 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		}
 	}
 
+	if err := c.ResetState(ctx); err != nil {
+		return nil, err
+	}
+
 	toClose = nil
 	return c, nil
 }
