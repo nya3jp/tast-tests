@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "8a5e0e5f_b7cc75ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_basic.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-24T02:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9929549_98f66cb3",
+      "revId": "3175ccef9816639169627d980df77a75b5788b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7f02e11_f25dc6f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_basic.go",
         "patchSetId": 8
@@ -75,6 +93,30 @@
       "revId": "3175ccef9816639169627d980df77a75b5788b43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e09dc56e_783e09c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_basic.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-24T02:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7f02e11_f25dc6f9",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "3175ccef9816639169627d980df77a75b5788b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -137,6 +179,30 @@
       "side": 1,
       "message": "Maybe, we should, if crostini package is being created.\n\nchromiumos/tast/local/crostini/pre.go",
       "parentUuid": "6172812f_9e05f446",
+      "range": {
+        "startLine": 21,
+        "startChar": 6,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "3175ccef9816639169627d980df77a75b5788b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30869261_67423a9e",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-24T02:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e507b6d_766793b1",
       "range": {
         "startLine": 21,
         "startChar": 6,
@@ -256,6 +322,24 @@
     },
     {
       "key": {
+        "uuid": "035dd640_c70f0732",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-24T02:13:17Z",
+      "side": 1,
+      "message": "resolving to revert s/t arbitrary creation of container-preconditions is disallowed",
+      "parentUuid": "937f818c_c2cb1e98",
+      "revId": "3175ccef9816639169627d980df77a75b5788b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2dfefbe_d0907ec5",
         "filename": "src/chromiumos/tast/local/vm/pre.go",
         "patchSetId": 8
@@ -291,6 +375,24 @@
     },
     {
       "key": {
+        "uuid": "b21f6af8_b7853764",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-24T02:13:17Z",
+      "side": 1,
+      "message": "Since we are only allowing crostini preconditions, we will revert to using the boolean (since the crostini artifact\u0027s imgPath is known + fixed)",
+      "parentUuid": "781dc996_1525a62d",
+      "revId": "3175ccef9816639169627d980df77a75b5788b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc9af2b4_19c1f8f6",
         "filename": "src/chromiumos/tast/local/vm/pre.go",
         "patchSetId": 8
@@ -323,6 +425,24 @@
       "revId": "3175ccef9816639169627d980df77a75b5788b43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2af3d873_333e0183",
+        "filename": "src/chromiumos/tast/local/vm/pre.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-24T02:13:17Z",
+      "side": 1,
+      "message": "ack, named PreData now in accordance with arc/pre.go",
+      "parentUuid": "adc7d022_90d7e386",
+      "revId": "3175ccef9816639169627d980df77a75b5788b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
