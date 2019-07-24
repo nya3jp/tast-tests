@@ -10,63 +10,39 @@ package crash
 
 import (
 	"context"
-	"io/ioutil"
-	"os"
 
-	"chromiumos/tast/fsutil"
-	"chromiumos/tast/local/sysutil"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
-const (
-	// MockMetricsOnPolicyFile is the name of the mock data file to indicate
-	// having consent to send crash reports.
-	// A test which calls SetConsent should load this file.
-	MockMetricsOnPolicyFile = "crash_tests_mock_metrics_on_policy.bin"
-
-	// MockMetricsOwnerKeyFile is the name of the mock data file used for a
-	// policy blob.
-	// A test which calls SetConsent should load this file.
-	MockMetricsOwnerKeyFile = "crash_tests_mock_metrics_owner.key"
-)
-
-// SetConsent emulates the state where we have consent to send crash reports.
-// This creates the file to control whether crash_sender will consider that it
-// has consent to send crash reports.
+// setConsent emulates the state where we have consent to send crash reports.
 // It also copies a policy blob with the proper policy setting.
-func SetConsent(ctx context.Context, mockPolicyFilePath string, mockKeyFilePath string) error {
-	const (
-		whitelistDir     = "/var/lib/whitelist"
-		consentFile      = "/home/chronos/Consent To Send Stats"
-		ownerKeyFile     = whitelistDir + "/owner.key"
-		signedPolicyFile = whitelistDir + "/policy"
-	)
-	if e, err := os.Stat(whitelistDir); err == nil && e.IsDir() {
-		// Create policy file that enables metrics/consent.
-		if err := fsutil.CopyFile(mockPolicyFilePath, signedPolicyFile); err != nil {
-			return err
-		}
-		if err := fsutil.CopyFile(mockKeyFilePath, ownerKeyFile); err != nil {
-			return err
-		}
+// The device ownership will be cleared and the UI job will be stopped.
+func setConsent(ctx context.Context) error {
+	if err := testexec.CommandContext(ctx, "/usr/bin/metrics_client", "-C").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to create consent file")
 	}
-	// Create deprecated consent file.  This is created *after* the
-	// policy file in order to avoid a race condition where Chrome
-	// might remove the consent file if the policy's not set yet.
-	// We create it as a temp file first in order to make the creation
-	// of the consent file, owned by chronos, atomic.
-	// See crosbug.com/18413.
-	tempFile := consentFile + ".tmp"
-	if err := ioutil.WriteFile(tempFile, []byte("test-consent"), 0644); err != nil {
-		return err
+	err := testexec.CommandContext(ctx, "/usr/bin/metrics_client", "-c").Run(testexec.DumpLogOnError)
+	if status, ok := testexec.GetWaitStatus(err); !ok {
+		return errors.Wrap(err, "failed to get state code from metrics_client")
+	} else if status != 0 {
+		return errors.Wrap(err, "consent still not enabled")
 	}
-
-	if err := os.Chown(tempFile, int(sysutil.ChronosUID), int(sysutil.ChronosGID)); err != nil {
-		return err
-	}
-	if err := os.Rename(tempFile, consentFile); err != nil {
-		return err
-	}
-	testing.ContextLog(ctx, "Created ", consentFile)
 	return nil
+}
+
+// RunCrashTest runs a crash test case after setting up crash reporter.
+func RunCrashTest(ctx context.Context, s *testing.State, testFunc func(context.Context, *testing.State)) {
+	// Restart session so that no policy prevents sending metrics
+	cr, err := chrome.New(ctx)
+	if err != nil {
+		s.Fatal("Chrome login failed: ", err)
+	}
+	defer cr.Close(ctx)
+	if err := setConsent(ctx); err != nil {
+		s.Fatal("Failed to set consent: ", err)
+	}
+	testFunc(ctx, s)
 }
