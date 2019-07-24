@@ -249,6 +249,9 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		opt(c)
 	}
 
+	// Does not automatically open a window on startup to avoid unexpected pattern(doodle etc.).
+	ExtraArgs("--no-startup-window")(c)
+
 	// Clean up the partially-initialized object on error.
 	toClose := c
 	defer func() {
