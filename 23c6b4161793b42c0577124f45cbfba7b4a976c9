@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "c714789d_e0ea6928",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T19:06:30Z",
+      "side": 1,
+      "message": "\u003e could you file a tracking issue to get rid of verification with stringified value,\n\nLooks not yet done.",
+      "revId": "23c6b4161793b42c0577124f45cbfba7b4a976c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c10b3c18_3a493188",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 9
@@ -13,6 +30,30 @@
       "writtenOn": "2019-07-24T10:40:05Z",
       "side": 1,
       "message": "nit: could be expectedLog\n (or change the function name)\nit seems inconsistent how we have logs and log in function name and parameters.",
+      "range": {
+        "startLine": 105,
+        "startChar": 69,
+        "endLine": 105,
+        "endChar": 81
+      },
+      "revId": "23c6b4161793b42c0577124f45cbfba7b4a976c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7ad3554_ddf008ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T19:06:30Z",
+      "side": 1,
+      "message": "I\u0027d recommend to change the func name then.\nActually, Chrome API says getLogsOfType().\n\nMaybe verifyLogs()",
+      "parentUuid": "c10b3c18_3a493188",
       "range": {
         "startLine": 105,
         "startChar": 69,
@@ -41,6 +82,52 @@
         "startChar": 5,
         "endLine": 106,
         "endChar": 9
+      },
+      "revId": "23c6b4161793b42c0577124f45cbfba7b4a976c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d0e4793_71faa35e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T19:06:30Z",
+      "side": 1,
+      "message": "nit/style:\n\n... as expected: got %q; want %q\", ...\n\n(a colon, followed by got ..., followed by a semicolon, followed by want ...),",
+      "range": {
+        "startLine": 112,
+        "startChar": 55,
+        "endLine": 112,
+        "endChar": 72
+      },
+      "revId": "23c6b4161793b42c0577124f45cbfba7b4a976c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "547e80be_0c4c8e09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T19:06:30Z",
+      "side": 1,
+      "message": "nit: maybe toggleButtonLogs to be consistent with other var name...?",
+      "range": {
+        "startLine": 279,
+        "startChar": 13,
+        "endLine": 279,
+        "endChar": 19
       },
       "revId": "23c6b4161793b42c0577124f45cbfba7b4a976c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
