@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ac6ee96_0031f1be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/audio_sanity_artifact.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T06:37:03Z",
+      "side": 1,
+      "message": "Could you convert the func doc to Desc above, and remove from here?\n\nDitto for below.",
+      "revId": "a211ac263ebb35745c06dc8474de896d27d9f336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "725d63d3_630d3be1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/audio_sanity_artifact.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T06:37:03Z",
+      "side": 1,
+      "message": "I assume you\u0027d introduce another variation of AudioSanity() test with different configuration.\nIf not, could you just inline the test?",
+      "revId": "a211ac263ebb35745c06dc8474de896d27d9f336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0296f605_9eee6432",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/audiosanity/audio_sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T06:37:03Z",
+      "side": 1,
+      "message": "Could you add a package doc in godoc style?",
+      "revId": "a211ac263ebb35745c06dc8474de896d27d9f336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46322c78_a06d18ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/audiosanity/audio_sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T06:37:03Z",
+      "side": 1,
+      "message": "To avoid repeating the same name (called sometimes stutter in golang, https://golang.org/doc/effective_go.html), how about RunTest() or Run() etc.?\nActually, this function is running the test, right?\n\nDitto for sanity package.",
+      "revId": "a211ac263ebb35745c06dc8474de896d27d9f336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d262942b_c0677a32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/audiosanity/audio_sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T06:37:03Z",
+      "side": 1,
+      "message": "For consistency and (very slight) type safeness in a subpackage,\ncould you take the PreValue() in the caller, and pass it via arguments?\n\nDitto for sanity package.",
+      "revId": "a211ac263ebb35745c06dc8474de896d27d9f336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2d7737e_ac656088",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T06:37:03Z",
+      "side": 1,
+      "message": "nit: could you reorder (chrome.Lock() then vm.Lock()) to be matched with the initialization order at above lines?\nNote that vm.Unlock(), chrome.Unlock() order is fine at Close(), because the teardown should be in the reverse order of the initialization in general.",
+      "revId": "a211ac263ebb35745c06dc8474de896d27d9f336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ed101a2_4e02b232",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T06:37:03Z",
+      "side": 1,
+      "message": "This should be done after p.buildPreData() success, IIUC.",
+      "revId": "a211ac263ebb35745c06dc8474de896d27d9f336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
