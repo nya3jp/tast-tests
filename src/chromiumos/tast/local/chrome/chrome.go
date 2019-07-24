@@ -249,6 +249,9 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		opt(c)
 	}
 
+	ExtraArgs("--no-startup-window")(c)
+	ExtraArgs("--enable-logging=stderr --v=1")(c)
+
 	// Clean up the partially-initialized object on error.
 	toClose := c
 	defer func() {
