@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c4346a6_b7881afd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-24T03:56:30Z",
+      "side": 1,
+      "message": "s/photoes/photos, here and in line 49",
+      "revId": "95fdc675bf47796f06c8009248eacda499aa5a6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d429fc6_1eb19669",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-24T03:56:30Z",
+      "side": 1,
+      "message": "doesn\u0027t seem obvious why portrait photos need an extra step - perhaps a comment here or up with the PortraitRefPattern description",
+      "revId": "95fdc675bf47796f06c8009248eacda499aa5a6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "994d50f1_255f169a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-24T03:56:30Z",
+      "side": 1,
+      "message": "seems odd to rewrite the above function but not this one since they were basically the same thing before.  Pass in a ctx with a timer to TakeSinglePhoto instead.",
+      "revId": "95fdc675bf47796f06c8009248eacda499aa5a6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
