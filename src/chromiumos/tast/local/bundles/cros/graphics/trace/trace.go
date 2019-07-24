@@ -48,6 +48,10 @@ func RunTest(ctx context.Context, s *testing.State, traces map[string]string) {
 	}
 	defer cr.Close(ctx)
 
+	if _, err := cr.NewConn(ctx, ""); err != nil {
+		s.Fatal("Failed to change to about:blank: ", err)
+	}
+
 	// TODO(pwang): use crostini setup library once crbug.com/965398 is done.
 	s.Log("Enabling Crostini preference setting")
 	tconn, err := cr.TestAPIConn(ctx)
