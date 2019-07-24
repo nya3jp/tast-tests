@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "4803d4e0_5b9b22c7",
+        "filename": "src/chromiumos/tast/local/gtest/gtest_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-24T06:49:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d1f6abf6_3a0f3b26",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 87
+      },
+      "revId": "c825c3acf9bf287824116dcbaa501b6197d95440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6453c8dc_eaefb0ca",
         "filename": "src/chromiumos/tast/local/gtest/gtest_test.go",
         "patchSetId": 3
@@ -222,6 +246,24 @@
       "revId": "c825c3acf9bf287824116dcbaa501b6197d95440",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a61612f5_d3747dda",
+        "filename": "src/chromiumos/tast/local/gtest/gtest_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-24T06:49:57Z",
+      "side": 1,
+      "message": "Thanks. (Hmm, I agree that matching it with regex could be redundant..., I\u0027d check only that the file is non-empty. But I guess it\u0027s the matter of taste. Keeping it as is is also fine.)",
+      "parentUuid": "6cf4b258_d81dd98c",
+      "revId": "c825c3acf9bf287824116dcbaa501b6197d95440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
