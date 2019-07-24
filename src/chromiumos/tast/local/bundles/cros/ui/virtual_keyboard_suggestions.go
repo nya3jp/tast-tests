@@ -22,6 +22,7 @@ func init() {
 		Desc:         "Checks that the virtual keyboard displays suggestions",
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
+		Attr:         []string{"informational"}, // Temporarily demoted: https://crbug.com/968589
 	})
 }
 
