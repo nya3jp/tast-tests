@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eba77f4b_3732a7b2",
+        "filename": "src/chromiumos/tast/local/gtest/gtest_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-24T02:55:46Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 60,
+        "startChar": 46,
+        "endLine": 60,
+        "endChar": 47
+      },
+      "revId": "c825c3acf9bf287824116dcbaa501b6197d95440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e881bc6_5457cf61",
+        "filename": "src/chromiumos/tast/local/gtest/gtest_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-24T02:55:46Z",
+      "side": 1,
+      "message": "nit: you mean %#v ?\nhttps://play.golang.org/p/yLpdJIERTsq",
+      "range": {
+        "startLine": 60,
+        "startChar": 36,
+        "endLine": 60,
+        "endChar": 37
+      },
+      "revId": "c825c3acf9bf287824116dcbaa501b6197d95440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87fd1c75_40c867e5",
+        "filename": "src/chromiumos/tast/local/gtest/gtest_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-24T02:55:46Z",
+      "side": 1,
+      "message": "I don\u0027t quite understand the result. \nWhy \u003ctestsuites\u003e\u003c/testsuites\u003e is not in the log?",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 87
+      },
+      "revId": "c825c3acf9bf287824116dcbaa501b6197d95440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6453c8dc_eaefb0ca",
+        "filename": "src/chromiumos/tast/local/gtest/gtest_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-24T02:55:46Z",
+      "side": 1,
+      "message": "nit: not needed.",
+      "range": {
+        "startLine": 103,
+        "startChar": 42,
+        "endLine": 103,
+        "endChar": 48
+      },
+      "revId": "c825c3acf9bf287824116dcbaa501b6197d95440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a690c3e_1ccf177f",
+        "filename": "src/chromiumos/tast/local/gtest/gtest_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-24T02:55:46Z",
+      "side": 1,
+      "message": "Can you check the content of the file matches[0] and check it contains test_log ?",
+      "revId": "c825c3acf9bf287824116dcbaa501b6197d95440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -425,6 +425,30 @@
     },
     {
       "key": {
+        "uuid": "30d0da26_96ebafc8",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-24T02:55:46Z",
+      "side": 1,
+      "message": "Could you comment about it. e.g.\n// Assigning nil means redirect to /dev/null",
+      "parentUuid": "bff96afd_e3f70747",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 58
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad5cdf50_67566e2a",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 2
@@ -613,6 +637,30 @@
     },
     {
       "key": {
+        "uuid": "f9770d48_5aea0d30",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-24T02:55:46Z",
+      "side": 1,
+      "message": "Ack.\nAh sorry.",
+      "parentUuid": "df42761e_0d7b3b58",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 2
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d9940db_5298ef1b",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 2
@@ -660,6 +708,30 @@
     },
     {
       "key": {
+        "uuid": "e2e7b373_4daaab56",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-24T02:55:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e078aefc_9278c9de",
+      "range": {
+        "startLine": 271,
+        "startChar": 3,
+        "endLine": 271,
+        "endChar": 14
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8095866_6221b1bd",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 2
@@ -704,6 +776,30 @@
       "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5215848d_e96ef442",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-24T02:55:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1eed47c3_ecec6d06",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 2
+      },
+      "revId": "f46e3815599ae696f79505f6ec2ff66eb5f43975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
