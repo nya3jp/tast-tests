@@ -61,7 +61,7 @@ func getDesktopTree(ctx context.Context, chromeVoxConn *chrome.Conn) (string, er
 	return gotTree, nil
 }
 
-// comparesSubtrees compares two subtrees, and if any, writes the diff to a file.
+// compareSubtrees compares two subtrees, and if any, writes the diff to a file.
 func compareSubtrees(wantSubtree, gotSubtree, outputFilePath string) error {
 	if diff := cmp.Diff(wantSubtree, gotSubtree); diff != "" {
 		if err := ioutil.WriteFile(outputFilePath, []byte(diff), 0644); err != nil {
