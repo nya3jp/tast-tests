@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "02fbea43_fd478cf4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-07-24T07:50:58Z",
+      "side": 1,
+      "message": "I ran\n  cros tryjob -g 1712744 --hwtest lakitu-release-tryjob\nand it succeeded, but I didn\u0027t see evidence that it actually ran tast tests, only seemed to run autotests. I\u0027ll also run\n  cros tryjob -g 1712744 --hwtest lakitu-full-tryjob\nto be sure.",
+      "parentUuid": "d3d32098_b10e790d",
+      "revId": "b7153fbe860eb30b92fae00bedc1659989dfb591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db24a687_b315d5b5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1

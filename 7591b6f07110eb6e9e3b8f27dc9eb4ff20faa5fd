@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a41d6ed0_5d169687",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-07-24T07:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "594fbd93_09331c79",
+      "revId": "7591b6f07110eb6e9e3b8f27dc9eb4ff20faa5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4af579ba_4c2609fe",
         "filename": "src/chromiumos/tast/local/session/session_manager.go",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2019-07-23T12:20:51Z",
       "side": 1,
       "message": "BTW, is there any plans to use this in tests other than session.* ?\nIf not, could you keep this in somewhere under bundles/cros/session/*/* library?\nWe already have an option for chrome.New(), and it should be encouraged to be used, IIUC.",
+      "revId": "7591b6f07110eb6e9e3b8f27dc9eb4ff20faa5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7e5f46e_7c9c4620",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-07-24T07:50:58Z",
+      "side": 1,
+      "message": "Yes, if chrome.New is run, it makes sense to pass the option there.\nThere is one more test that uses SM and is flaky, UsbGuard, but it broke when I added this code, so I moved it into bundles.",
+      "parentUuid": "4af579ba_4c2609fe",
       "revId": "7591b6f07110eb6e9e3b8f27dc9eb4ff20faa5fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
