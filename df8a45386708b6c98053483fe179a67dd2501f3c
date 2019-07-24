@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffeb8ecc_c3fc0438",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/camera/camera.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-24T12:33:57Z",
+      "side": 1,
+      "message": "camera",
+      "range": {
+        "startLine": 26,
+        "startChar": 31,
+        "endLine": 26,
+        "endChar": 37
+      },
+      "revId": "df8a45386708b6c98053483fe179a67dd2501f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "715da362_1a29c4a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/camera/camera.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-24T12:33:57Z",
+      "side": 1,
+      "message": "\"WebRTC\" here is redundant. \nRunCamera or RunGetUserMedia?",
+      "range": {
+        "startLine": 165,
+        "startChar": 8,
+        "endLine": 165,
+        "endChar": 14
+      },
+      "revId": "df8a45386708b6c98053483fe179a67dd2501f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77722448_2afea3f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/camera/camera.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-24T12:33:57Z",
+      "side": 1,
+      "message": "optional: remove?",
+      "range": {
+        "startLine": 224,
+        "startChar": 13,
+        "endLine": 224,
+        "endChar": 19
+      },
+      "revId": "df8a45386708b6c98053483fe179a67dd2501f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99295036_9e13059e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/camera/camera.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-24T12:33:57Z",
+      "side": 1,
+      "message": "ditto?",
+      "range": {
+        "startLine": 231,
+        "startChar": 46,
+        "endLine": 231,
+        "endChar": 52
+      },
+      "revId": "df8a45386708b6c98053483fe179a67dd2501f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bb03857_76870ca7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/camera/camera.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-24T12:33:57Z",
+      "side": 1,
+      "message": "webrtc?",
+      "range": {
+        "startLine": 238,
+        "startChar": 36,
+        "endLine": 238,
+        "endChar": 41
+      },
+      "revId": "df8a45386708b6c98053483fe179a67dd2501f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e0a0565_693375e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/camera/camera.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-24T12:33:57Z",
+      "side": 1,
+      "message": "no need?",
+      "range": {
+        "startLine": 243,
+        "startChar": 8,
+        "endLine": 243,
+        "endChar": 14
+      },
+      "revId": "df8a45386708b6c98053483fe179a67dd2501f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6facbf19_ec048536",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/camera_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-24T12:33:57Z",
+      "side": 1,
+      "message": "GetUserMedia",
+      "range": {
+        "startLine": 36,
+        "startChar": 37,
+        "endLine": 36,
+        "endChar": 43
+      },
+      "revId": "df8a45386708b6c98053483fe179a67dd2501f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7f84fc1_436f30c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/doc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-24T12:33:57Z",
+      "side": 1,
+      "message": "nit: WebRTC",
+      "range": {
+        "startLine": 5,
+        "startChar": 77,
+        "endLine": 5,
+        "endChar": 84
+      },
+      "revId": "df8a45386708b6c98053483fe179a67dd2501f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1cdf4ef_67e43823",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/get_user_media.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-24T12:33:57Z",
+      "side": 1,
+      "message": "GetUserMedia",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 9
+      },
+      "revId": "df8a45386708b6c98053483fe179a67dd2501f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58b524bb_1474124d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/lib/utils/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-24T12:33:57Z",
+      "side": 1,
+      "message": "outdated comment.\n\"required files that tests that exercises WebRTC stack\", for example?",
+      "range": {
+        "startLine": 52,
+        "startChar": 66,
+        "endLine": 52,
+        "endChar": 78
+      },
+      "revId": "df8a45386708b6c98053483fe179a67dd2501f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "019b8bb7_39b1a2cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/video_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-24T12:33:57Z",
+      "side": 1,
+      "message": "\"decodePerf\" simply?",
+      "range": {
+        "startLine": 214,
+        "startChar": 5,
+        "endLine": 214,
+        "endChar": 21
+      },
+      "revId": "df8a45386708b6c98053483fe179a67dd2501f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f13b00a7_cc3e8258",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/video_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-24T12:33:57Z",
+      "side": 1,
+      "message": "RunDecodePerf?",
+      "range": {
+        "startLine": 277,
+        "startChar": 5,
+        "endLine": 277,
+        "endChar": 24
+      },
+      "revId": "df8a45386708b6c98053483fe179a67dd2501f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
