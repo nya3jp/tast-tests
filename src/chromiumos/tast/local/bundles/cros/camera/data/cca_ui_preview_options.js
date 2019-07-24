@@ -7,7 +7,6 @@
 // This class can't be merged into cca_ui.js because it will make the file
 // exceed cdp max length and therefore can't be transmitted to dut.
 window.CCAUIPreviewOptions = class {
-
   /**
    * Returns whether mirror button exists.
    * @return {boolean}
@@ -58,6 +57,27 @@ window.CCAUIPreviewOptions = class {
       throw new Error('Failed to get facing info');
     }
     return facing;
+  }
+
+  /**
+   * Gets device id of current active camera device.
+   * @return {string} Device id of current active camera.
+   * @throws {Error} Failed to get device id from video stream.
+   */
+  static getDeviceId() {
+    const video = document.querySelector('video');
+    if (!video) {
+      throw new Error('Cannot find video element.');
+    }
+    const stream = video.srcObject;
+    if (!stream) {
+      throw new Error('No MediaStream associate to video.');
+    }
+    const track = stream.getVideoTracks()[0];
+    if (!track) {
+      throw new Error('No video track associate to MediaStream.');
+    }
+    return track.getSettings().deviceId;
   }
 };
 })();
