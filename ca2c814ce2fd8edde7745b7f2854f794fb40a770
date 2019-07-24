@@ -34,6 +34,24 @@
       "revId": "ca2c814ce2fd8edde7745b7f2854f794fb40a770",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de5e29bb_65222fde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/util/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T12:52:20Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "8fb03bb7_22c7c745",
+      "revId": "ca2c814ce2fd8edde7745b7f2854f794fb40a770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
