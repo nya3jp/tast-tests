@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e948ce36_a2603adb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-07-24T18:55:25Z",
+      "side": 1,
+      "message": "I prefer filing bugs for this and putting them here instead of just naming someone so this isn\u0027t forgotten.",
+      "range": {
+        "startLine": 83,
+        "startChar": 10,
+        "endLine": 83,
+        "endChar": 19
+      },
+      "revId": "ada8ca0e408e5bc4071674ea956e2131f9c150b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a7031a6_f7690362",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-07-24T18:55:25Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to do this. fsutil.MoveFile already stats the source file and returns an error if that fails.",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 2
+      },
+      "revId": "ada8ca0e408e5bc4071674ea956e2131f9c150b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f550174b_a0993000",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-07-24T18:55:25Z",
+      "side": 1,
+      "message": "this can probably be simplified since fsutil.MoveFile already checks that the source is a regular file",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 2
+      },
+      "revId": "ada8ca0e408e5bc4071674ea956e2131f9c150b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0f644a0_9cbc01bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-07-24T18:55:25Z",
+      "side": 1,
+      "message": "Maybe instead of doing this, and to fix the issue you made a TODO about on L83, we should do each pushFile/popFile separately here instead of packing them all into one function. Then we could\n\n if err :\u003d pushFile(signedPolicyFile, pushedPolicyFile); err !\u003d nil {\n   s.Fatal(\"Failed to push consent: \", err)\n }\n defer popFile(signedPolicyFile, pushedPolicyFile) // or the wrapper that Fatals on error, etc.\n\nfor each of the three sets of files and it won\u0027t matter if we only partially initialize since we\u0027ll always clean up what we changed.",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 4
+      },
+      "revId": "ada8ca0e408e5bc4071674ea956e2131f9c150b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
