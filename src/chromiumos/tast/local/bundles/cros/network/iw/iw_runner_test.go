@@ -78,3 +78,20 @@ func TestParseScanResults(t *testing.T) {
 		t.Error("parseScanResults returned unexpected result; diff:\n", diff)
 	}
 }
+
+func TestNewNetDev(t *testing.T) {
+	const testStr = `Interface wlan0
+                ifindex 3
+                wdev 0x1
+                addr 98:2c:bc:c0:ee:32
+                type managed
+                txpower 0.00 dBm`
+	cmpNetDev := &NetDev{Phy: 0, IfName: "wlan0", IfType: "managed"}
+	res, err := newNetDev("phy#0", testStr)
+	if err != nil {
+		t.Error("newNetDev returned error:", err)
+	}
+	if diff := cmp.Diff(res, cmpNetDev); diff != "" {
+		t.Error("newNetDev returned unexpected result; diff:\n", diff)
+	}
+}
