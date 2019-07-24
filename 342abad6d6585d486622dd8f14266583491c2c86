@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3c7977b_12349453",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T04:51:37Z",
+      "side": 1,
+      "message": "instead, could you fix the checkOutputLog implementation?\n\nIIUC, LogStore.getLogsOfType() returns an array of BaseLog objects (and its subclasses\u0027).\nIt can be serialized and received by a struct in go.\nThen, you can compare the diff by reflect.DeepEqual().\n\nIf the returned value is just simple \u0027,\u0027 connected value, the existing code is ok, IMHO, but it seems not so I think it\u0027s time to be fixed.\nWDYT?",
+      "revId": "342abad6d6585d486622dd8f14266583491c2c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95446f20_1cf38537",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T04:51:37Z",
+      "side": 1,
+      "message": "Good catch!",
+      "revId": "342abad6d6585d486622dd8f14266583491c2c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
