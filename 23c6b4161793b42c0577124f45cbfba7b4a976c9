@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c10b3c18_3a493188",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-07-24T10:40:05Z",
+      "side": 1,
+      "message": "nit: could be expectedLog\n (or change the function name)\nit seems inconsistent how we have logs and log in function name and parameters.",
+      "range": {
+        "startLine": 105,
+        "startChar": 69,
+        "endLine": 105,
+        "endChar": 81
+      },
+      "revId": "23c6b4161793b42c0577124f45cbfba7b4a976c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecb83ec2_6f67ed94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-07-24T10:40:05Z",
+      "side": 1,
+      "message": "nit: log",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 9
+      },
+      "revId": "23c6b4161793b42c0577124f45cbfba7b4a976c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
