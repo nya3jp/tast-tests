@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "314a9fbd_e7e3c965",
+        "filename": "src/chromiumos/tast/local/gtest/gtest_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T06:11:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eba77f4b_3732a7b2",
+      "range": {
+        "startLine": 60,
+        "startChar": 46,
+        "endLine": 60,
+        "endChar": 47
+      },
+      "revId": "c825c3acf9bf287824116dcbaa501b6197d95440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff02f802_ec5d99f3",
+        "filename": "src/chromiumos/tast/local/gtest/gtest_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T06:11:44Z",
+      "side": 1,
+      "message": "Ah, that looks better. Thank you for suggestion. Done.",
+      "parentUuid": "4e881bc6_5457cf61",
+      "range": {
+        "startLine": 60,
+        "startChar": 36,
+        "endLine": 60,
+        "endChar": 37
+      },
+      "revId": "c825c3acf9bf287824116dcbaa501b6197d95440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87fd1c75_40c867e5",
         "filename": "src/chromiumos/tast/local/gtest/gtest_test.go",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2019-07-24T02:55:46Z",
       "side": 1,
       "message": "I don\u0027t quite understand the result. \nWhy \u003ctestsuites\u003e\u003c/testsuites\u003e is not in the log?",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 87
+      },
+      "revId": "c825c3acf9bf287824116dcbaa501b6197d95440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1f6abf6_3a0f3b26",
+        "filename": "src/chromiumos/tast/local/gtest/gtest_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T06:11:44Z",
+      "side": 1,
+      "message": "The XML output is output to gtest_output file, not to stdout/stderr.\nNote that It is for the report and is checked by Run()\u0027s error at L93.\nThe precise check of XML parsing is done in report_test.go, so skipped here.",
+      "parentUuid": "87fd1c75_40c867e5",
       "range": {
         "startLine": 101,
         "startChar": 0,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "b64d8bd4_819bcc42",
+        "filename": "src/chromiumos/tast/local/gtest/gtest_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T06:11:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6453c8dc_eaefb0ca",
+      "range": {
+        "startLine": 103,
+        "startChar": 42,
+        "endLine": 103,
+        "endChar": 48
+      },
+      "revId": "c825c3acf9bf287824116dcbaa501b6197d95440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a690c3e_1ccf177f",
         "filename": "src/chromiumos/tast/local/gtest/gtest_test.go",
         "patchSetId": 3
@@ -105,6 +201,24 @@
       "writtenOn": "2019-07-24T02:55:46Z",
       "side": 1,
       "message": "Can you check the content of the file matches[0] and check it contains test_log ?",
+      "revId": "c825c3acf9bf287824116dcbaa501b6197d95440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cf4b258_d81dd98c",
+        "filename": "src/chromiumos/tast/local/gtest/gtest_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T06:11:44Z",
+      "side": 1,
+      "message": "Done (though, it should be covered by the TestLogfile already, I thought...?)\n\nAlso, updated the test a bit; Run() again should make a new logfile. I think the content check can be skipped.",
+      "parentUuid": "3a690c3e_1ccf177f",
       "revId": "c825c3acf9bf287824116dcbaa501b6197d95440",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
