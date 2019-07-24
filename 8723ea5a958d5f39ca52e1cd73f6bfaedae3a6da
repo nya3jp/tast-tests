@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b23249c5_e8201cc4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-24T12:43:23Z",
+      "side": 1,
+      "message": "Clar: I couldn\u0027t find errors on nocturne in bvt-perbuild.\nNo culprit CLs in CQ?",
+      "revId": "8723ea5a958d5f39ca52e1cd73f6bfaedae3a6da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
