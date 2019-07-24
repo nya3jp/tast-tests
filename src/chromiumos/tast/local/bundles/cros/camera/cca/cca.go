@@ -31,6 +31,9 @@ const (
 	FacingFront = "user"
 )
 
+// DeviceID is video device id from JavaScript navigator.mediaDevices.enumerateDevices.
+type DeviceID string
+
 // Mode is capture mode in CCA.
 type Mode string
 
@@ -322,6 +325,15 @@ func (a *App) GetFacing(ctx context.Context) (Facing, error) {
 	return facing, nil
 }
 
+// GetDeviceID returns the active camera device id.
+func (a *App) GetDeviceID(ctx context.Context) (DeviceID, error) {
+	var id DeviceID
+	if err := a.conn.EvalPromise(ctx, "CCAUIPreviewOptions.getDeviceId()", &id); err != nil {
+		return "", err
+	}
+	return id, nil
+}
+
 // GetState returns whether a state is active in CCA.
 func (a *App) GetState(ctx context.Context, state string) (bool, error) {
 	var result bool
@@ -554,6 +566,40 @@ func (a *App) RemoveCacheData(ctx context.Context, keys []string) error {
 	if err := a.conn.EvalPromise(ctx, code, nil); err != nil {
 		testing.ContextLogf(ctx, "Failed to remove cache (%q): %v", code, err)
 		return err
+	}
+	return nil
+}
+
+// RunThruCameras runs specified function after switching to each available camera.
+func RunThruCameras(ctx context.Context, app *App, f func()) error {
+	numCameras, err := app.GetNumOfCameras(ctx)
+	if err != nil {
+		return errors.Wrap(err, "can't get number of cameras")
+	}
+	devices := make(map[DeviceID]Facing)
+	for cam := 0; cam < numCameras; cam++ {
+		if cam != 0 {
+			if err := app.SwitchCamera(ctx); err != nil {
+				return errors.Wrap(err, "failed to switch camera")
+			}
+		}
+		id, err := app.GetDeviceID(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get device id")
+		}
+		facing, err := app.GetFacing(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get facing")
+		}
+		if _, ok := devices[id]; ok {
+			continue
+		}
+		devices[id] = facing
+		testing.ContextLogf(ctx, "Run f() on camera facing %q", facing)
+		f()
+	}
+	if len(devices) != numCameras {
+		return errors.Errorf("failed to switch to some camera (tested cameras: %v)", devices)
 	}
 	return nil
 }
