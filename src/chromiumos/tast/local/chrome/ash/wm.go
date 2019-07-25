@@ -19,11 +19,11 @@ type WindowStateType string
 // https://cs.chromium.org/chromium/src/ash/public/cpp/window_state_type.h
 const (
 	WindowStateNormal       WindowStateType = "Normal"
-	WindowStateMinimized                    = "Minimized"
-	WindowStateMaximized                    = "Maximized"
-	WindowStateFullscreen                   = "Fullscreen"
-	WindowStateLeftSnapped                  = "LeftSnapped"
-	WindowStateRightSnapped                 = "RightSnapped"
+	WindowStateMinimized    WindowStateType = "Minimized"
+	WindowStateMaximized    WindowStateType = "Maximized"
+	WindowStateFullscreen   WindowStateType = "Fullscreen"
+	WindowStateLeftSnapped  WindowStateType = "LeftSnapped"
+	WindowStateRightSnapped WindowStateType = "RightSnapped"
 )
 
 // WMEventType represents the different WM Event type in ash.
@@ -33,11 +33,21 @@ type WMEventType string
 // https://cs.chromium.org/chromium/src/ash/wm/wm_event.h
 const (
 	WMEventNormal     WMEventType = "WMEventNormal"
-	WMEventMaximize               = "WMEventMaxmize"
-	WMEventMinimize               = "WMEventMinimize"
-	WMEventFullscreen             = "WMEventFullscreen"
-	WMEventSnapLeft               = "WMEventSnapLeft"
-	WMEventSnapRight              = "WMEventSnapRight"
+	WMEventMaximize   WMEventType = "WMEventMaxmize"
+	WMEventMinimize   WMEventType = "WMEventMinimize"
+	WMEventFullscreen WMEventType = "WMEventFullscreen"
+	WMEventSnapLeft   WMEventType = "WMEventSnapLeft"
+	WMEventSnapRight  WMEventType = "WMEventSnapRight"
+)
+
+// SnapPosition represents the different snap posiiton in split view.
+type SnapPosition string
+
+// As defined in ash::SplitViewController here:
+// https://cs.chromium.org/chromium/src/ash/wm/splitview/split_view_controller.h
+const (
+	SnapPositionLeft  SnapPosition = "Left"
+	SnapPositionRight SnapPosition = "Right"
 )
 
 // WindowStateChange represents the change sent to chrome.autotestPrivate.setArcAppWindowState function.
@@ -69,4 +79,38 @@ func SetARCAppWindowState(ctx context.Context, c *chrome.Conn, pkgName string, e
 		return WindowStateNormal, err
 	}
 	return state, nil
+}
+
+// GetARCAppWindowState gets the Chrome side window state of the ARC app window with pkgName.
+func GetARCAppWindowState(ctx context.Context, c *chrome.Conn, pkgName string) (WindowStateType, error) {
+	expr := fmt.Sprintf(
+		`new Promise(function(resolve, reject) {
+		  chrome.autotestPrivate.getArcAppWindowState(%q, function(state) {
+		    if (chrome.runtime.lastError) {
+		      reject(new Error(chrome.runtime.lastError.message));
+		    } else {
+		      resolve(state);
+		    }
+		  });
+		})`, pkgName)
+
+	var state WindowStateType
+	if err := c.EvalPromise(ctx, expr, &state); err != nil {
+		return WindowStateNormal, err
+	}
+	return state, nil
+}
+
+// SwapWindowsInSplitView swaps the positions of snapped windows in split view.
+func SwapWindowsInSplitView(ctx context.Context, c *chrome.Conn) error {
+	expr := `new Promise(function(resolve, reject) {
+		  chrome.autotestPrivate.swapWindowsInSplitView(function() {
+		    if (chrome.runtime.lastError) {
+		      reject(new Error(chrome.runtime.lastError.message));
+		    } else {
+		      resolve();
+		    }
+		  });
+		})`
+	return c.EvalPromise(ctx, expr, nil)
 }
