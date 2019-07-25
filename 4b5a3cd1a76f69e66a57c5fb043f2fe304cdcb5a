@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "634c359a_c3894d0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vts_keymaster.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-25T08:55:48Z",
+      "side": 1,
+      "message": "optional: Run(testexec.DumpLogOnError) will help if something unexpected happens.",
+      "revId": "4b5a3cd1a76f69e66a57c5fb043f2fe304cdcb5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
