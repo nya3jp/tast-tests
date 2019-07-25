@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "2b72e459_0b21ec73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-07-25T06:04:54Z",
+      "side": 1,
+      "message": "Thanks, that sounds a much better solution.\nHowever I could only see that the command only manipulates the consent file.\nNow I am investigating why the existing autotest test case modifies the policy file and key file, in addition to the consent file. Do you know about this?",
+      "parentUuid": "b368ae8a_6f63b9f5",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 106
+      },
+      "revId": "ada8ca0e408e5bc4071674ea956e2131f9c150b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c0f644a0_9cbc01bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 5
