@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98d3998c_297bf34b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-07-25T16:17:09Z",
+      "side": 1,
+      "message": "72-character rows are pretty standard for git messages.\n\nDo the pre commit hooks not complain about this in the tast-tests repo?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 45
+      },
+      "revId": "3839e9775b37afaa30edd0a49e6e4e61137519ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "492ffe8c_5f54d36e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_resume.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-07-25T16:17:09Z",
+      "side": 1,
+      "message": "nit: 9",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "3839e9775b37afaa30edd0a49e6e4e61137519ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "569043fa_76ce5b2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_resume.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-07-25T16:17:09Z",
+      "side": 1,
+      "message": "It\u0027s generally best to get an interface\u0027s name from shill.\nKirtika, is it safe to always assume that the wifi interface will be named wlan0?\n\nAs a side note for fun, machines using systemd (like our workstations) have an interface naming scheme as described here:\nhttps://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames/",
+      "range": {
+        "startLine": 31,
+        "startChar": 11,
+        "endLine": 31,
+        "endChar": 16
+      },
+      "revId": "3839e9775b37afaa30edd0a49e6e4e61137519ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b1c90b3_db916f51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_resume.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-07-25T16:17:09Z",
+      "side": 1,
+      "message": "In any case, it would be best to not hardcode the interface\u0027s name here",
+      "range": {
+        "startLine": 57,
+        "startChar": 53,
+        "endLine": 57,
+        "endChar": 58
+      },
+      "revId": "3839e9775b37afaa30edd0a49e6e4e61137519ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12209058_214dd158",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_resume.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-07-25T16:17:09Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 58,
+        "startChar": 30,
+        "endLine": 58,
+        "endChar": 35
+      },
+      "revId": "3839e9775b37afaa30edd0a49e6e4e61137519ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5da59403_64b69ddd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_resume.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-07-25T16:17:09Z",
+      "side": 1,
+      "message": "Can we just check for the full interface name?",
+      "range": {
+        "startLine": 74,
+        "startChar": 43,
+        "endLine": 74,
+        "endChar": 47
+      },
+      "revId": "3839e9775b37afaa30edd0a49e6e4e61137519ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13fb3fa6_ccb810c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_resume.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-07-25T16:17:09Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 84,
+        "startChar": 34,
+        "endLine": 84,
+        "endChar": 39
+      },
+      "revId": "3839e9775b37afaa30edd0a49e6e4e61137519ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
