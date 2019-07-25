@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d85de14_1ed84d63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vts_keymaster.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-25T14:25:32Z",
+      "side": 1,
+      "message": "Could you add TODO to download only necessary files?",
+      "revId": "98cd6859abf89b1e4389df35690e4d126f401e6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
