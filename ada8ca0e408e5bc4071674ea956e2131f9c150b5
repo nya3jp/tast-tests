@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "669f7c3b_28f4889e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-07-25T18:58:27Z",
+      "side": 1,
+      "message": "Also, the solution in other tast tests have been: Blow away all the policy files. \nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/local/chrome/chrome.go#580\nI wouldn\u0027t worry too much about preserving state; just get the chromebook into the state you want.",
+      "parentUuid": "3559faf6_ef9cc688",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 106
+      },
+      "revId": "ada8ca0e408e5bc4071674ea956e2131f9c150b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c0f644a0_9cbc01bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 5
