@@ -52,6 +52,120 @@
       "revId": "33f3fb369d9392ecd24a8d251c681f86258babd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a188824_197c76c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-25T09:08:09Z",
+      "side": 1,
+      "message": "Clar: any chance that the file is half-baked? Can we assume the file is created atomically?",
+      "range": {
+        "startLine": 354,
+        "startChar": 22,
+        "endLine": 354,
+        "endChar": 47
+      },
+      "revId": "33f3fb369d9392ecd24a8d251c681f86258babd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffbb0cf6_853cfb9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-25T09:08:09Z",
+      "side": 1,
+      "message": "nit/style:\nif err !\u003d nil {\n  return ...\n}\nif elapsed ... {\n  ...\n}\n\nis a preferred style in this case, because the first if condition does not introduce a new variable used in the latter if stmt.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 354,
+        "startChar": 2,
+        "endLine": 354,
+        "endChar": 8
+      },
+      "revId": "33f3fb369d9392ecd24a8d251c681f86258babd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd9eda7c_e9c649a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-25T09:08:09Z",
+      "side": 1,
+      "message": "Considering the if block gets bigger, how about;\n\nif !isPortrait {\n  return fileInfos\n}\n\n// For portrait mode, ...\nif info, err :\u003d ... {\n  ...\n}\n\nto keep the indent level lower.",
+      "revId": "33f3fb369d9392ecd24a8d251c681f86258babd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cbe69c0_ec68e5b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-25T09:08:09Z",
+      "side": 1,
+      "message": "Same.",
+      "revId": "33f3fb369d9392ecd24a8d251c681f86258babd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e321a5ec_01724e1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_modes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-25T09:08:09Z",
+      "side": 1,
+      "message": "true/false like a bit difficult to see the meaning here.\nCould you introduce a enum type based on bool value?",
+      "revId": "33f3fb369d9392ecd24a8d251c681f86258babd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "195edb60_6330b43b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui_capture.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-25T09:08:09Z",
+      "side": 1,
+      "message": "According to your explanation, I think;\n\nconst video \u003d ...;\nconst videoTrack \u003d ...;\nif (!videoTrack) {\n  return false;\n}\ntry {\n  ...\n}\n\nshould work? If so, could you to minimize the try scope?",
+      "revId": "33f3fb369d9392ecd24a8d251c681f86258babd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
