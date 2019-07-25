@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "2b6079c8_4d0120cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/audio_sanity_artifact.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-25T01:54:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "725d63d3_630d3be1",
+      "revId": "a211ac263ebb35745c06dc8474de896d27d9f336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0296f605_9eee6432",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/audiosanity/audio_sanity.go",
         "patchSetId": 9
