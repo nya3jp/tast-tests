@@ -121,39 +121,28 @@ func UIConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, error) {
 // TapKey simulates a tap event on the middle of the specified key. The key can
 // be any letter of the alphabet, "space" or "backspace".
 func TapKey(ctx context.Context, kconn *chrome.Conn, key string) error {
-	tapKey := func(key string) error {
-		return kconn.Eval(ctx, fmt.Sprintf(`
-		(() => {
-			// Multiple keys can have the same aria label but only one is visible.
-			const keys = document.querySelectorAll('[aria-label=%[1]q]')
-			if (!keys) {
-				throw new Error('Key %[1]q not found. No element with aria-label %[1]q.');
+	return kconn.Eval(ctx, fmt.Sprintf(`
+	(() => {
+		// Multiple keys can have the same aria label but only one is visible.
+		const keys = document.querySelectorAll('[aria-label=%[1]q]')
+		if (!keys) {
+			throw new Error('Key %[1]q not found. No element with aria-label %[1]q.');
+		}
+		for (const key of keys) {
+			const rect = key.getBoundingClientRect();
+			if (rect.width <= 0 || rect.height <= 0) {
+				continue;
 			}
-			for (const key of keys) {
-				const rect = key.getBoundingClientRect();
-				if (rect.width <= 0 || rect.height <= 0) {
-					continue;
-				}
-				const e = new Event('pointerdown');
-				e.clientX = rect.x + rect.width / 2;
-				e.clientY = rect.y + rect.height / 2;
-				key.dispatchEvent(e);
-				key.dispatchEvent(new Event('pointerup'));
-				return;
-			}
-			throw new Error('Key %[1]q not clickable. Found elements with aria-label %[1]q, but they were not visible.');
-		})()
-		`, key), nil)
-	}
-
-	if err := tapKey(key); err == nil {
-		return nil
-	}
-	// The key couldn't be found probably because shift had to be toggled.
-	if err := tapKey("shift"); err != nil {
-		return err
-	}
-	return tapKey(key)
+			const e = new Event('pointerdown');
+			e.clientX = rect.x + rect.width / 2;
+			e.clientY = rect.y + rect.height / 2;
+			key.dispatchEvent(e);
+			key.dispatchEvent(new Event('pointerup'));
+			return;
+		}
+		throw new Error('Key %[1]q not clickable. Found elements with aria-label %[1]q, but they were not visible.');
+	})()
+`, key), nil)
 }
 
 // GetSuggestions returns suggestions that are currently displayed by the
