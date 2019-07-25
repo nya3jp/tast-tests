@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b0f004c_98f11403",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-07-25T14:51:05Z",
+      "side": 1,
+      "message": "Assuming that removing the device blacklist is verified as not having an effect, we should be able to remove this as well.",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 2
+      },
+      "revId": "0741806518e088c6180cc8edff5db32820685ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f668014_4c1e3803",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-07-25T14:51:05Z",
+      "side": 1,
+      "message": "I might just be misreading this code, but it seems like the error here is that the second shill successfully started but didn\u0027t exit before the timeout.",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 41
+      },
+      "revId": "0741806518e088c6180cc8edff5db32820685ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
