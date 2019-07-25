@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/video/lib/arctest"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/cpu"
@@ -250,18 +249,13 @@ func runARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts Tes
 // pv is optional value, passed when we run performance test and record measurement value.
 // Note: pv must be provided when measureCPU is set at binArgs.
 func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, exec string, commonArgs []string, ba binArgs, pv *perf.Values) error {
-	args := append([]string{}, commonArgs...)
-	args = append(args, ba.extraArgs...)
-	if ba.testFilter != "" {
-		args = append(args, "--gtest_filter="+ba.testFilter)
-	}
-
 	outputLogFile := filepath.Join(s.OutDir(), fmt.Sprintf("output_%s_%s.log", filepath.Base(exec), time.Now().Format("20060102-150405")))
-	outFile, err := os.Create(outputLogFile)
-	if err != nil {
-		return errors.Wrapf(err, "failed to create output log file: %v", outputLogFile)
-	}
-	defer outFile.Close()
+	t := gtest.New(
+		exec,
+		gtest.Logfile(outputLogFile),
+		gtest.Filter(ba.testFilter),
+		gtest.ExtraArgs(append(append([]string{}, commonArgs...), ba.extraArgs...)...),
+		gtest.ARC(a))
 
 	schemaName := filepath.Base(exec)
 	if ba.measureCPU {
@@ -270,9 +264,8 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, exe
 		}
 
 		runCmdAsync := func() (*testexec.Cmd, error) {
-			return arctest.StartARCBinary(ctx, a, exec, args, outFile)
+			return t.Start(ctx)
 		}
-
 		cpuUsage, err := cpu.MeasureProcessCPU(ctx, runCmdAsync, ba.measureDuration)
 		if err != nil {
 			return errors.Wrapf(err, "failed to run (measure CPU) %v: %v", exec, err)
@@ -288,7 +281,7 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, exe
 			return errors.Wrap(err, "failed to report CPU usage")
 		}
 	} else {
-		if err := arctest.RunARCBinary(ctx, a, exec, args, s.OutDir(), outFile); err != nil {
+		if _, err := t.Run(ctx); err != nil {
 			return errors.Wrapf(err, "failed to run %v", exec)
 		}
 
