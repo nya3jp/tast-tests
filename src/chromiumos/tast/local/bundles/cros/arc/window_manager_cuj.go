@@ -266,12 +266,18 @@ func wmMaximizeRestoreClamshell24(ctx context.Context, tconn *chrome.Conn, a *ar
 			if err := act.SetWindowState(ctx, test.stateB); err != nil {
 				return err
 			}
+			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+				return err
+			}
 
 			if err := test.wantedStateB(ctx, act, d); err != nil {
 				return err
 			}
 
 			if err := act.SetWindowState(ctx, test.stateA); err != nil {
+				return err
+			}
+			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
 				return err
 			}
 
@@ -316,6 +322,9 @@ func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.Conn, a *ar
 			if err := act.SetWindowState(ctx, arc.WindowStateMaximized); err != nil {
 				return err
 			}
+			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+				return err
+			}
 
 			// Wait for the "Application needs to restart to resize" dialog that appears on all Pre-N apks.
 			if err := uiWaitForRestartDialogAndRestart(ctx, act, d); err != nil {
@@ -328,6 +337,9 @@ func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.Conn, a *ar
 			}
 
 			if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
+				return err
+			}
+			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
 				return err
 			}
 
@@ -389,6 +401,9 @@ func wmFollowRoot(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Dev
 				defer act.Stop(ctx)
 
 				if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
+					return err
+				}
+				if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
 					return err
 				}
 
@@ -479,6 +494,9 @@ func wmSpringboard(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 					return err
 				} else if s != arc.WindowStateNormal {
 					if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
+						return err
+					}
+					if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
 						return err
 					}
 				}
