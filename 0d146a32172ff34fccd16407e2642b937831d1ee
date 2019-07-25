@@ -22,6 +22,86 @@
       "revId": "0d146a32172ff34fccd16407e2642b937831d1ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd687f01_b118ac56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/camera/camera.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-25T15:12:25Z",
+      "side": 1,
+      "message": "nit: runs",
+      "range": {
+        "startLine": 161,
+        "startChar": 19,
+        "endLine": 161,
+        "endChar": 22
+      },
+      "revId": "0d146a32172ff34fccd16407e2642b937831d1ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99dedabc_b8bacbb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/lib/utils/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-25T15:12:25Z",
+      "side": 1,
+      "message": "Could you find a better name?\n\"utils\" often means \"it\u0027s ok to make this a kitchen sink\" :-).\nThis looks like set of chrome set up...?",
+      "revId": "0d146a32172ff34fccd16407e2642b937831d1ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e9d0f5e_539148c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/lib/utils/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-25T15:12:25Z",
+      "side": 1,
+      "message": "You can declare these as var.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "0d146a32172ff34fccd16407e2642b937831d1ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "258afd7d_fc160aca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/video_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-25T15:12:25Z",
+      "side": 1,
+      "message": "Then, maybe decode_pref.go ?",
+      "revId": "0d146a32172ff34fccd16407e2642b937831d1ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
