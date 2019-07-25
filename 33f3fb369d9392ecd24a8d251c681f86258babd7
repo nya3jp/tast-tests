@@ -101,6 +101,54 @@
     },
     {
       "key": {
+        "uuid": "91d590ef_027e1647",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-07-25T23:47:46Z",
+      "side": 1,
+      "message": "Nope, the photo result won\u0027t be half-baked. The video result could, but it\u0027s not concerning here.",
+      "parentUuid": "6a188824_197c76c6",
+      "range": {
+        "startLine": 354,
+        "startChar": 22,
+        "endLine": 354,
+        "endChar": 47
+      },
+      "revId": "33f3fb369d9392ecd24a8d251c681f86258babd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06568c3c_42ea8fc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-07-25T23:47:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffbb0cf6_853cfb9b",
+      "range": {
+        "startLine": 354,
+        "startChar": 2,
+        "endLine": 354,
+        "endChar": 8
+      },
+      "revId": "33f3fb369d9392ecd24a8d251c681f86258babd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd9eda7c_e9c649a0",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 5
@@ -115,6 +163,24 @@
       "revId": "33f3fb369d9392ecd24a8d251c681f86258babd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "213a592e_060a5902",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-07-25T23:47:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd9eda7c_e9c649a0",
+      "revId": "33f3fb369d9392ecd24a8d251c681f86258babd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -135,6 +201,24 @@
     },
     {
       "key": {
+        "uuid": "28de2fb6_b5a171e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-07-25T23:47:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cbe69c0_ec68e5b8",
+      "revId": "33f3fb369d9392ecd24a8d251c681f86258babd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e321a5ec_01724e1c",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_modes.go",
         "patchSetId": 5
@@ -152,6 +236,24 @@
     },
     {
       "key": {
+        "uuid": "ec990377_4eb1cf1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_modes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-07-25T23:47:46Z",
+      "side": 1,
+      "message": "I deleted the isPortrait parameter since it can be obtained from current mode state.",
+      "parentUuid": "e321a5ec_01724e1c",
+      "revId": "33f3fb369d9392ecd24a8d251c681f86258babd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "195edb60_6330b43b",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui_capture.js",
         "patchSetId": 5
@@ -166,6 +268,24 @@
       "revId": "33f3fb369d9392ecd24a8d251c681f86258babd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e48ec56_35cc2a9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui_capture.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-07-25T23:47:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "195edb60_6330b43b",
+      "revId": "33f3fb369d9392ecd24a8d251c681f86258babd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
