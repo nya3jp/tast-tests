@@ -14,6 +14,7 @@ import (
 
 	"github.com/godbus/dbus"
 
+	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )
@@ -24,8 +25,10 @@ func init() {
 		Desc: "Checks shill's default network profile",
 		Contacts: []string{
 			"kirtika@chromium.org", // Connectivity team
-			"nya@chromium.org",     // Tast port author
+			"chromeos-kernel-wifi@google.com",
+			"nya@chromium.org", // Tast port author
 		},
+		Attr: []string{"informational"},
 	})
 }
 
@@ -40,6 +43,13 @@ func DefaultProfile(ctx context.Context, s *testing.State) {
 		"IgnoredDNSSearchPaths=gateway.2wire.net",
 		"LinkMonitorTechnologies=wifi",
 	}
+
+	// We lose connectivity briefly. Tell recover_duts not to worry.
+	unlock, err := network.LockCheckNetworkHook(ctx)
+	if err != nil {
+		s.Fatal("Failed to lock the check network hook: ", err)
+	}
+	defer unlock()
 
 	// Stop shill temporarily and remove the default profile.
 	if err := shill.SafeStop(ctx); err != nil {
