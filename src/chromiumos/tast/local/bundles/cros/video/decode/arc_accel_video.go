@@ -21,7 +21,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/video/lib/arctest"
+	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/perf"
@@ -76,13 +76,7 @@ func (t *arcTestConfig) toArgsList(md decodeMetadata) ([]string, error) {
 	if err != nil {
 		return nil, err
 	}
-	args := []string{sdArg}
-
-	// Common arguments.
-	if t.testFilter != "" {
-		args = append(args, fmt.Sprintf("--gtest_filter=%s", t.testFilter))
-	}
-	return args, nil
+	return []string{sdArg}, nil
 }
 
 // writeLinesToFile writes lines to filepath line by line.
@@ -165,17 +159,23 @@ func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) (
 	// Execute binary in ARC.
 	for _, exec := range execs {
 		outputLogFile := filepath.Join(s.OutDir(), fmt.Sprintf("output_%s_%s.log", filepath.Base(exec), time.Now().Format("20060102-150405")))
-		outFile, err := os.Create(outputLogFile)
-		if err != nil {
-			s.Fatal("Failed to create output log file: ", err)
-		}
-		defer outFile.Close()
-
-		if err := arctest.RunARCBinary(shortCtx, a, exec, args, s.OutDir(), outFile); err != nil {
+		if report, err := gtest.New(
+			exec,
+			gtest.Logfile(outputLogFile),
+			gtest.Filter(cfg.testFilter),
+			gtest.ExtraArgs(args...),
+			gtest.ARC(a),
+		).Run(ctx); err != nil {
 			s.Errorf("Failed to run %v: %v", exec, err)
-		} else {
-			logs[filepath.Base(exec)] = outputLogFile
+			if report != nil {
+				for _, name := range report.FailedTestNames() {
+					s.Error(name, " failed")
+				}
+			}
+			continue
 		}
+
+		logs[filepath.Base(exec)] = outputLogFile
 	}
 	return logs
 }

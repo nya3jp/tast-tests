@@ -60,9 +60,13 @@ func ParseReport(path string) (*Report, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to read")
 	}
+	return parseReportInternal(b)
+}
+
+func parseReportInternal(b []byte) (*Report, error) {
 	ret := &Report{}
 	if err := xml.Unmarshal(b, ret); err != nil {
-		return nil, errors.Wrapf(err, "failed to parse gtest XML report in %s", path)
+		return nil, errors.Wrap(err, "failed to parse gtest XML report")
 	}
 	return ret, nil
 }
