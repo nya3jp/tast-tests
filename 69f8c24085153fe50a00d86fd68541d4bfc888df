@@ -22,6 +22,30 @@
       "revId": "69f8c24085153fe50a00d86fd68541d4bfc888df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b36719d_7dc2d2d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-25T20:11:13Z",
+      "side": 1,
+      "message": "ok. will submit a new CL for the \"act.WaitForIdle\" fixes.",
+      "parentUuid": "04aa2e3d_67cabd52",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 23
+      },
+      "revId": "69f8c24085153fe50a00d86fd68541d4bfc888df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
