@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "748d4aa7_2c540748",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/audio_sanity_artifact.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-25T01:52:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ac6ee96_0031f1be",
+      "revId": "a211ac263ebb35745c06dc8474de896d27d9f336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "725d63d3_630d3be1",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/audio_sanity_artifact.go",
         "patchSetId": 9
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "aca32008_f6e766c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/audiosanity/audio_sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-25T01:52:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0296f605_9eee6432",
+      "revId": "a211ac263ebb35745c06dc8474de896d27d9f336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46322c78_a06d18ad",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/audiosanity/audio_sanity.go",
         "patchSetId": 9
@@ -67,6 +103,24 @@
       "revId": "a211ac263ebb35745c06dc8474de896d27d9f336",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "807d6806_79d97cc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/audiosanity/audio_sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-25T01:52:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46322c78_a06d18ad",
+      "revId": "a211ac263ebb35745c06dc8474de896d27d9f336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "ab528853_f3c6a363",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/audiosanity/audio_sanity.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-25T01:52:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d262942b_c0677a32",
+      "revId": "a211ac263ebb35745c06dc8474de896d27d9f336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2d7737e_ac656088",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 9
@@ -104,6 +176,24 @@
     },
     {
       "key": {
+        "uuid": "39a7b3c6_a64a7ebe",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-25T01:52:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2d7737e_ac656088",
+      "revId": "a211ac263ebb35745c06dc8474de896d27d9f336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ed101a2_4e02b232",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 9
@@ -118,6 +208,24 @@
       "revId": "a211ac263ebb35745c06dc8474de896d27d9f336",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe43b5d4_28070f15",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-25T01:52:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ed101a2_4e02b232",
+      "revId": "a211ac263ebb35745c06dc8474de896d27d9f336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
