@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1128bc2_b9c91d76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/crowd720_25frames.mjpeg.external",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-25T15:12:25Z",
+      "side": 0,
+      "message": "Could you follow the external data naming convention?\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#External-data-files",
+      "revId": "b07c36d8829bd46ab6f0cec36260ff01b6c1f0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e6d4aa9_f8f6c40c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/lib/pre/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-25T15:12:25Z",
+      "side": 0,
+      "message": "As you renamed this. Do you need \"lib\" package (also it sounds too generic name...)? Also, do you need \"pre\" package to contain only pre.go?\nMaybe webrtc or webrtclib package and put pre.go under the directory directly?",
+      "revId": "b07c36d8829bd46ab6f0cec36260ff01b6c1f0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
