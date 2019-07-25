@@ -16,6 +16,24 @@
       "revId": "a0e37dcea025daabe0a1a76443411be160ee1cfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05367a32_dc7ad0fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-07-25T10:02:20Z",
+      "side": 1,
+      "message": "I don\u0027t have any plan and changed them to \u0027logs\u0027.",
+      "parentUuid": "c08c0905_f5675c3a",
+      "revId": "a0e37dcea025daabe0a1a76443411be160ee1cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
