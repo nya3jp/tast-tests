@@ -6,8 +6,10 @@ package platform
 
 import (
 	"context"
+	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/godbus/dbus"
 
@@ -34,6 +36,11 @@ func DLCService(ctx context.Context, s *testing.State) {
 		updateEngineJob = "update-engine"
 	)
 
+	// Check dlcservice is up and running.
+	if err := upstart.EnsureJobRunning(ctx, dlcserviceJob); err != nil {
+		s.Fatalf("Failed to ensure %s running: %v", dlcserviceJob, err)
+	}
+
 	// Delete rollback-version and rollback-happened pref which are
 	// generated during Rollback and Enterprise Rollback.
 	// rollback-version is written when update_engine Rollback D-Bus API is
@@ -42,39 +49,80 @@ func DLCService(ctx context.Context, s *testing.State) {
 	// rollback-happened is written when update_engine finished Enterprise
 	// Rollback operation.
 	for _, p := range []string{"rollback-version", "rollback-happened"} {
-		if err := os.RemoveAll(filepath.Join("/mnt/stateful_partition/unencrypted/preserve/update_engine/prefs", p)); err != nil {
+		prefsPath := filepath.Join("/mnt/stateful_partition/unencrypted/preserve/update_engine/prefs", p)
+		if err := os.RemoveAll(prefsPath); err != nil {
 			s.Fatal("Failed to clean up pref: ", err)
 		}
 	}
+
 	// Restart update-engine to pick up the new prefs.
 	s.Logf("Restarting %s job", updateEngineJob)
 	if err := upstart.RestartJob(ctx, updateEngineJob); err != nil {
 		s.Fatalf("Failed to restart %s: %v", updateEngineJob, err)
 	}
+
 	// Wait for update-engine to be ready.
 	if bus, err := dbus.SystemBus(); err != nil {
 		s.Fatal("Failed to connect to the message bus: ", err)
 	} else if err := dbusutil.WaitForService(ctx, bus, "org.chromium.UpdateEngine"); err != nil {
 		s.Fatal("Failed to wait for D-Bus service: ", err)
 	}
-
-	// dumpInstalledDLCModules calls dlcservice's GetInstalled D-Bus method via dlcservice_util command and saves the returned results to filename within the output directory.
-	dumpInstalledDLCModules := func(filename string) {
+	// dumpInstalledDLCModules calls dlcservice's GetInstalled D-Bus method
+	// via dlcservice_util command and saves the returned results to filename
+	// within the output directory.
+	dumpInstalledDLCModules := func() {
 		s.Log("Asking dlcservice for installed DLC modules")
-		f, err := os.Create(filepath.Join(s.OutDir(), filename))
+		f, err := ioutil.TempFile(s.OutDir(), "dump")
 		if err != nil {
 			s.Fatal("Failed to create file: ", err)
 		}
-		defer f.Close()
+		defer os.Remove(f.Name())
 		cmd := testexec.CommandContext(ctx, "dlcservice_util", "--list")
 		cmd.Stdout = f
 		if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 			s.Fatal("Failed to get installed DLC modules: ", err)
 		}
+		if err := f.Close(); err != nil {
+			s.Fatal("Failed to close temp file: ", err)
+		}
+	}
+
+	Install := func(dlcs, omaha_url string) {
+		s.Log("Installing DLC(s): ", strings.Join(strings.Split(dlcs, ":"), ", "))
+		cmd := testexec.CommandContext(ctx, "sudo", "-u", "chronos", "dlcservice_util",
+			"--install", "--dlc_ids="+dlcs, "--omaha_url="+omaha_url)
+		if output, err := cmd.CombinedOutput(); err != nil {
+			defer cmd.DumpLog(ctx)
+			s.Fatal("Failed to install DLC modules: ", err)
+		} else {
+			s.Logf("Installation result: %+q", output)
+		}
+	}
+
+	InstallBad := func(dlcs, omaha_url string) {
+		s.Log("Installing Bad DLC(s): ", strings.Join(strings.Split(dlcs, ":"), ", "))
+		cmd := testexec.CommandContext(ctx, "sudo", "-u", "chronos", "dlcservice_util",
+			"--install", "--dlc_ids="+dlcs, "--omaha_url="+omaha_url)
+		defer cmd.DumpLog(ctx)
+		output, err := cmd.CombinedOutput()
+		s.Logf("Installation result: %+q error: %+q", output, err)
+	}
+
+	Uninstall := func(dlcs string) {
+		s.Log("Uninstalling DLC(s): ", strings.Join(strings.Split(dlcs, ":"), ", "))
+		cmd := testexec.CommandContext(ctx, "sudo", "-u", "chronos", "dlcservice_util",
+			"--uninstall", "--dlc_ids="+dlcModuleID)
+		if o, err := cmd.CombinedOutput(); err != nil {
+			defer cmd.DumpLog(ctx)
+			s.Fatal("Failed to uninstall DLC modules: ", err)
+		} else {
+			s.Logf("Uninstallation result: %+q", o)
+		}
 	}
 
 	defer func() {
-		// Removes the installed DLC module and unmounts all DLC images mounted under /run/imageloader.
+		// Removes the installed DLC module and unmounts all DLC images
+		// mounted under /run/imageloader.
 		if err := testexec.CommandContext(ctx, "imageloader", "--unmount_all").Run(testexec.DumpLogOnError); err != nil {
 			s.Error("Failed to unmount all: ", err)
 		}
@@ -89,27 +137,33 @@ func DLCService(ctx context.Context, s *testing.State) {
 	}
 	defer srv.Close()
 
-	if err := upstart.EnsureJobRunning(ctx, dlcserviceJob); err != nil {
-		s.Fatalf("Failed to ensure %s running: %v", dlcserviceJob, err)
-	}
+	// Before performing any Install/Uninstall.
+	dumpInstalledDLCModules()
 
-	dumpInstalledDLCModules("modules_before_install.txt")
+	// Install single DLC.
+	Install(dlcModuleID, srv.URL)
+	dumpInstalledDLCModules()
 
-	s.Log("Installing DLC ", dlcModuleID)
-	cmd := testexec.CommandContext(ctx, "sudo", "-u", "chronos", "dlcservice_util", "--install", "--dlc_ids="+dlcModuleID, "--omaha_url="+srv.URL)
-	if output, err := cmd.CombinedOutput(); err != nil {
-		defer cmd.DumpLog(ctx)
-		s.Fatal("Failed to install DLC modules: ", err)
-	} else {
-		s.Logf("Installation result: %q", output)
-	}
+	// Install already installed DLC.
+	Install(dlcModuleID, srv.URL)
+	dumpInstalledDLCModules()
 
-	dumpInstalledDLCModules("modules_after_install.txt")
+	// Install duplicates of already installed DLC.
+	Install(dlcModuleID+":"+dlcModuleID, srv.URL)
+	dumpInstalledDLCModules()
 
-	s.Log("Uninstalling DLC ", dlcModuleID)
-	if err := testexec.CommandContext(ctx, "sudo", "-u", "chronos", "dlcservice_util", "--uninstall", "--dlc_ids="+dlcModuleID).Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to uninstall DLC modules: ", err)
-	}
+	// Uninstall single DLC.
+	Uninstall(dlcModuleID)
+	dumpInstalledDLCModules()
 
-	dumpInstalledDLCModules("modules_after_uninstall.txt")
+	// Install duplicates of DLC atomically.
+	Install(dlcModuleID+":"+dlcModuleID, srv.URL)
+	dumpInstalledDLCModules()
+
+	// Uninstall single DLC.
+	Uninstall(dlcModuleID)
+	dumpInstalledDLCModules()
+
+	InstallBad("bad-dlc", "http://???")
+	dumpInstalledDLCModules()
 }
