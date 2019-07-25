@@ -40,6 +40,16 @@ const (
 	WMEventSnapRight              = "WMEventSnapRight"
 )
 
+// SnapPosition represents the different snap posiiton in split view.
+type SnapPosition string
+
+// As defined in ash::SplitViewController here:
+// https://cs.chromium.org/chromium/src/ash/wm/splitview/split_view_controller.h
+const (
+	SnapPositionLeft  SnapPosition = "Left"
+	SnapPositionRight              = "Right"
+)
+
 // WindowStateChange represents the change sent to chrome.autotestPrivate.setArcAppWindowState function.
 type windowStateChange struct {
 	EventType      WMEventType `json:"eventType"`
@@ -69,4 +79,53 @@ func SetARCAppWindowState(ctx context.Context, c *chrome.Conn, pkgName string, e
 		return WindowStateNormal, err
 	}
 	return state, nil
+}
+
+// GetARCAppWindowState gets the Chrome side window state of the ARC app window with pkgName.
+func GetARCAppWindowState(ctx context.Context, c *chrome.Conn, pkgName string) (WindowStateType, error) {
+	expr := fmt.Sprintf(
+		`new Promise(function(resolve, reject) {
+		  chrome.autotestPrivate.getArcAppWindowState(%q, function(state) {
+		    if (chrome.runtime.lastError) {
+		      reject(new Error(chrome.runtime.lastError.message));
+		    } else {
+		      resolve(state);
+		    }
+		  });
+		})`, pkgName)
+
+	var state WindowStateType
+	if err := c.EvalPromise(ctx, expr, &state); err != nil {
+		return WindowStateNormal, err
+	}
+	return state, nil
+}
+
+// SnapARCAppInSplitView snaps the ARC app window with pkgName to snapPosition.
+func SnapARCAppInSplitView(ctx context.Context, c *chrome.Conn, pkgName string, snapPosition SnapPosition) error {
+	expr := fmt.Sprintf(
+		`new Promise(function(resolve, reject) {
+		  chrome.autotestPrivate.snapArcAppInSplitView(%q, %q, function() {
+		    if (chrome.runtime.lastError) {
+		      reject(new Error(chrome.runtime.lastError.message));
+		    } else {
+		      resolve();
+		    }
+		  });
+		})`, pkgName, snapPosition)
+	return c.EvalPromise(ctx, expr, nil)
+}
+
+// SwapWindowsInSplitView swaps the positions of snapped windows in split view.
+func SwapWindowsInSplitView(ctx context.Context, c *chrome.Conn) error {
+	expr := `new Promise(function(resolve, reject) {
+		  chrome.autotestPrivate.swapWindowsInSplitView(function() {
+		    if (chrome.runtime.lastError) {
+		      reject(new Error(chrome.runtime.lastError.message));
+		    } else {
+		      resolve();
+		    }
+		  });
+		})`
+	return c.EvalPromise(ctx, expr, nil)
 }
