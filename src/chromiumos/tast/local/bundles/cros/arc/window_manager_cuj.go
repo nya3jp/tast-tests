@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
@@ -39,6 +40,7 @@ const (
 
 	// These values must match the strings from ArcWMTestApp defined in BaseActivity#parseCaptionButtons:
 	// http://cs/android/vendor/google_arc/packages/development/ArcWMTestApp/src/org/chromium/arc/testapp/windowmanager/BaseActivity.java?l=448
+	wmAutoHide  = "auto_hide"
 	wmBack      = "back"
 	wmClose     = "close"
 	wmLandscape = "landscape"
@@ -46,6 +48,7 @@ const (
 	wmMinimize  = "minimize"
 	wmPortrait  = "portrait"
 	wmRestore   = "restore"
+	wmVisible   = "visible"
 )
 
 // wmTestStateFunc represents a function that tests if the window is in a certain state.
@@ -117,6 +120,7 @@ func WindowManagerCUJ(ctx context.Context, s *testing.State) {
 		{"Maximize / Restore Clamshell Pre-N", wmMaximizeRestoreClamshell23},
 		{"Follow Root Activity N / Pre-N", wmFollowRoot},
 		{"Springboard N / Pre-N", wmSpringboard},
+		{"Lights out / Lights in N", wmLightsOutIn},
 	} {
 		s.Logf("Running test %q", test.name)
 
@@ -535,6 +539,97 @@ func wmSpringboard(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 	return nil
 }
 
+// wmLightsOutIn verifies that the activity can go from maximized to fullscreen mode, an vice-versa as defined in go/arc-wm-p:
+// "Clamshell: lights out or fullscreen" (slide #19) and "Clamshell: exit lights out or fullscreen" (slide #20).
+func wmLightsOutIn(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
+	act, err := arc.NewActivity(a, wmPkg24, wmResizeableLandscapeActivity)
+	if err != nil {
+		return err
+	}
+	defer act.Close()
+
+	for _, test := range []struct {
+		name        string
+		lightsOutFn func() error
+		lightsInFn  func() error
+	}{
+		{"Using Zoom Toggle key",
+			func() error { return toggleFullscreen(ctx, tconn) },
+			func() error { return toggleFullscreen(ctx, tconn) }},
+		{"Using Android API",
+			func() error { return uiClickImmersive(ctx, act, d) },
+			func() error { return uiClickNormal(ctx, act, d) }},
+	} {
+		if err := func() error {
+			testing.ContextLogf(ctx, "Running %q", test.name)
+			if err := act.Start(ctx); err != nil {
+				return err
+			}
+			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
+			defer act.Stop(ctx)
+
+			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+				return err
+			}
+
+			// Initial state: maximized with visible caption.
+			if ws, err := act.GetWindowState(ctx); err != nil {
+				return err
+			} else if ws != arc.WindowStateMaximized {
+				return errors.Errorf("invalid window state: got %q; want %q", ws.String(), arc.WindowStateMaximized.String())
+			}
+
+			if s, err := getUIState(ctx, act, d); err != nil {
+				return err
+			} else if s.CaptionVisibility != wmVisible {
+				return errors.Errorf("invalid caption visibility: got %q; want %q", s.CaptionVisibility, wmVisible)
+			}
+
+			// Invoke fullscreen method.
+			if err := test.lightsOutFn(); err != nil {
+				return err
+			}
+
+			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+				return err
+			}
+
+			// Wanted state: fullscreen with auto-hide caption.
+			if ws, err := act.GetWindowState(ctx); err != nil {
+				return err
+			} else if ws != arc.WindowStateFullscreen {
+				return errors.Errorf("invalid window state: got %q; want %q", ws.String(), arc.WindowStateFullscreen.String())
+			}
+
+			if s, err := getUIState(ctx, act, d); err != nil {
+				return err
+			} else if s.CaptionVisibility != wmAutoHide {
+				return errors.Errorf("invalid caption visibility: got %q; want %q", s.CaptionVisibility, wmAutoHide)
+			}
+
+			// Invoke maximized method.
+			if err := test.lightsInFn(); err != nil {
+				return err
+			}
+
+			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+				return err
+			}
+
+			// Wanted state: Maximized
+			if ws, err := act.GetWindowState(ctx); err != nil {
+				return err
+			} else if ws != arc.WindowStateMaximized {
+				return errors.Errorf("invalid window state: got %q; want %q", ws.String(), arc.WindowStateMaximized.String())
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "%q subtest failed", test.name)
+		}
+	}
+	return nil
+}
+
 // Helper functions
 
 // checkMaximizeResizeable checks that the window is both maximized and resizeable.
@@ -620,6 +715,20 @@ func compareCaption(ctx context.Context, act *arc.Activity, d *ui.Device, wanted
 		return errors.Errorf("invalid caption buttons %+v, want %+v", bn, wantedCaption)
 	}
 	return nil
+}
+
+// toggleFullscreen toggles fullscreen by injecting the Zoom Toggle keycode.
+func toggleFullscreen(ctx context.Context, tconn *chrome.Conn) error {
+	ew, err := input.Keyboard(ctx)
+	if err != nil {
+		return err
+	}
+	l, err := input.KeyboardTopRowLayout(ctx, ew)
+	if err != nil {
+		return err
+	}
+	k := l.ZoomToggle
+	return ew.Accel(ctx, k)
 }
 
 // Helper UI functions
@@ -740,6 +849,28 @@ func uiClickRootActivity(ctx context.Context, act *arc.Activity, d *ui.Device) e
 		ui.ClassName("android.widget.CheckBox"),
 		ui.TextMatches("(?i)Root Activity")); err != nil {
 		return errors.Wrap(err, "failed to click on Root Activity checkbox")
+	}
+	return nil
+}
+
+// uiClickImmersive clicks on the "Immersive" button that is present on the ArcWMTest activity.
+func uiClickImmersive(ctx context.Context, act *arc.Activity, d *ui.Device) error {
+	if err := uiClick(ctx, d,
+		ui.PackageName(act.PackageName()),
+		ui.ClassName("android.widget.Button"),
+		ui.TextMatches("(?i)Immersive")); err != nil {
+		return errors.Wrap(err, "failed to click on Immersive button")
+	}
+	return nil
+}
+
+// uiClickNormal clicks on the "Normal" button that is present on the ArcWMTest activity.
+func uiClickNormal(ctx context.Context, act *arc.Activity, d *ui.Device) error {
+	if err := uiClick(ctx, d,
+		ui.PackageName(act.PackageName()),
+		ui.ClassName("android.widget.Button"),
+		ui.TextMatches("(?i)Normal")); err != nil {
+		return errors.Wrap(err, "failed to click on Normal button")
 	}
 	return nil
 }
