@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "15ed9d40_d2efdf1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-07-25T20:34:52Z",
+      "side": 1,
+      "message": "I think it may have been added there to prevent spurious effects while the test is in progress\ne.g. the second shill (if it comes up) might try to claim the interface, and start dhcp on it? \n\nIs there a reason we don\u0027t like it there? If not, I suggest being careful and leaving it there with a note about why. \nBilly didn\u0027t run into this in his testing, but I suspect such a problem would be a rare (race?) anyways?",
+      "parentUuid": "9a783b2f_a4505000",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 2
+      },
+      "revId": "0741806518e088c6180cc8edff5db32820685ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f668014_4c1e3803",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
         "patchSetId": 2
