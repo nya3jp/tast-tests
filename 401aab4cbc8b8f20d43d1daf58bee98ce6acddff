@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1c8e71b_fd921bba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-07-25T18:30:29Z",
+      "side": 1,
+      "message": "Should this be ctx.Err()?",
+      "range": {
+        "startLine": 37,
+        "startChar": 68,
+        "endLine": 37,
+        "endChar": 71
+      },
+      "revId": "401aab4cbc8b8f20d43d1daf58bee98ce6acddff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e035151_1079b288",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-07-25T18:30:29Z",
+      "side": 1,
+      "message": "If we failed for a different reason, could be good to log it as well",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 3
+      },
+      "revId": "401aab4cbc8b8f20d43d1daf58bee98ce6acddff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
