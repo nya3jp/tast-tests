@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c08c0905_f5675c3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-25T08:58:03Z",
+      "side": 1,
+      "message": "Clar: do you plan to change the API name to getLogOfType() in future?\nIf not, could you keep log\"s\" for consistency?",
+      "revId": "a0e37dcea025daabe0a1a76443411be160ee1cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
