@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "1232d3f0_be6e51ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-07-25T20:46:31Z",
+      "side": 1,
+      "message": "From the comment in patchset 1, I\u0027m not sure if we would expect to see any weird effects since we use dbus::Bus::RequestOwnershipAndBlock.\n\nIf this code is unnecessary (and since this doesn\u0027t necessarily provide us with the default network device to begin with), it seems preferable to leave it out",
+      "parentUuid": "15ed9d40_d2efdf1d",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 2
+      },
+      "revId": "0741806518e088c6180cc8edff5db32820685ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f668014_4c1e3803",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
         "patchSetId": 2
