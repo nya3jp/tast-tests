@@ -17,6 +17,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
@@ -60,6 +61,7 @@ func parseTestList(content string) []string {
 // GTest is a struct to run gtest binary.
 type GTest struct {
 	// exec is a path to the gtest executable.
+	// If this is for ARC, the exec should be the path in guest.
 	exec string
 
 	// logfile is a path to the log file, which will contain stdout and
@@ -92,9 +94,12 @@ type GTest struct {
 	// uid specifies the user to run.
 	// -1 (by default) means unspecified, i.e., it runs as the current user
 	// running this Tast test (practically, root).
+	// If this is for ARC, uid should be the one in guest.
 	uid int
 
-	// TODO(hidehiko): To migrate from arctest, support ARC gtest run.
+	// a is ARC instance to run gtest executable in ARC.
+	// This is nil when gtest runs on Chrome OS host side.
+	a *arc.ARC
 }
 
 // option is a self-referential function can be used to configure GTest.
@@ -136,6 +141,11 @@ func UID(uid int) option {
 	return func(t *GTest) { t.uid = uid }
 }
 
+// ARC returns an option to run the test in ARC.
+func ARC(a *arc.ARC) option {
+	return func(t *GTest) { t.a = a }
+}
+
 // New creates GTest instance with given options.
 func New(exec string, opts ...option) *GTest {
 	ret := &GTest{exec: exec, uid: -1}
@@ -175,20 +185,109 @@ func (t *GTest) ToArgs() ([]string, error) {
 	return args, nil
 }
 
+// runner defines thin APIs to implement GTest.Run() and Start().
+type runner interface {
+	// mktemp creates a tempfile with the given name and some generated suffix.
+	mktemp(ctx context.Context, name string) (string, error)
+
+	// chown changes the owner of the file.
+	chown(ctx context.Context, path string, uid int) error
+
+	// remove removes the file at the path.
+	remove(ctx context.Context, path string) error
+
+	// command creates *testexec.Cmd instance to be executed.
+	command(ctx context.Context, args []string) *testexec.Cmd
+
+	// read reads the file at the path.
+	read(ctx context.Context, path string) ([]byte, error)
+}
+
+// crosRunner is the implementation of the runner for gtest execution on Chrome OS host environment.
+type crosRunner struct{}
+
+func (*crosRunner) mktemp(ctx context.Context, name string) (path string, retErr error) {
+	f, err := ioutil.TempFile("", name)
+	if err != nil {
+		return "", err
+	}
+	defer func() {
+		if retErr != nil {
+			os.Remove(f.Name())
+		}
+	}()
+
+	if err := f.Close(); err != nil {
+		return "", err
+	}
+	return filepath.Abs(f.Name())
+}
+
+func (*crosRunner) chown(ctx context.Context, path string, uid int) error {
+	return os.Chown(path, uid, -1)
+}
+
+func (*crosRunner) remove(ctx context.Context, path string) error {
+	return os.Remove(path)
+}
+
+func (*crosRunner) command(ctx context.Context, args []string) *testexec.Cmd {
+	return testexec.CommandContext(ctx, args[0], args[1:]...)
+}
+
+func (*crosRunner) read(ctx context.Context, path string) ([]byte, error) {
+	return ioutil.ReadFile(path)
+}
+
+// arcRunner is the implementation of the runner for gtest execution in ARC.
+type arcRunner struct {
+	a *arc.ARC
+}
+
+func (r *arcRunner) mktemp(ctx context.Context, name string) (string, error) {
+	out, err := r.a.Command(ctx, "mktemp", "-p", arc.ARCTmpDirPath, name+".XXXXXX").Output(testexec.DumpLogOnError)
+	return strings.TrimSpace(string(out)), err
+}
+
+func (r *arcRunner) chown(ctx context.Context, path string, uid int) error {
+	return r.a.Command(ctx, "chown", strconv.Itoa(uid), path).Run(testexec.DumpLogOnError)
+}
+
+func (r *arcRunner) remove(ctx context.Context, path string) error {
+	return r.a.Command(ctx, "rm", path).Run(testexec.DumpLogOnError)
+}
+
+func (r *arcRunner) command(ctx context.Context, args []string) *testexec.Cmd {
+	return r.a.Command(ctx, args[0], args[1:]...)
+}
+
+func (r *arcRunner) read(ctx context.Context, path string) ([]byte, error) {
+	return r.a.ReadFile(ctx, path)
+}
+
+func (t *GTest) newRunner() runner {
+	if t.a == nil {
+		return &crosRunner{}
+	}
+	return &arcRunner{a: t.a}
+}
+
 // Run executes the gtest, and returns the parsed Report.
 // Note that the returned Report may not be nil even if test command execution
 // returns an error. E.g., if test case in the gtest fails, the command will
 // return an error, but the report file should be created. This function
 // also handles the case, and returns it.
 func (t *GTest) Run(ctx context.Context) (*Report, error) {
+	r := t.newRunner()
+
 	// Create a report file.
-	output, err := createOutput(t.uid)
+	output, err := createOutput(ctx, r, t.uid)
 	if err != nil {
 		return nil, err
 	}
-	defer os.Remove(output)
+	defer r.remove(ctx, output)
 
-	cmd, err := t.startCommand(ctx, output)
+	cmd, err := t.startCommand(ctx, r, output)
 	if err != nil {
 		return nil, err
 	}
@@ -197,7 +296,15 @@ func (t *GTest) Run(ctx context.Context) (*Report, error) {
 	// Parse output file regardless of whether the command succeeded or
 	// not. Specifically, if a test case fail, the command reports an
 	// error, but the report file should be properly created.
-	report, err := ParseReport(output)
+	content, err := r.read(ctx, output)
+	if err != nil {
+		if retErr == nil {
+			return nil, err
+		}
+		testing.ContextLog(ctx, "Failed to read output log: ", err)
+		return nil, retErr
+	}
+	report, err := parseReportInternal(content)
 	if err != nil {
 		if retErr == nil {
 			retErr = err
@@ -214,43 +321,33 @@ func (t *GTest) Run(ctx context.Context) (*Report, error) {
 // createOutput creates the XML output file. If uid is given (i.e. not negative)
 // the file is owned by the user, because gtest process opens the file directly.
 // Returns the absolute path to the file.
-func createOutput(uid int) (string, error) {
-	f, err := ioutil.TempFile("", "gtest_output_*.xml")
+func createOutput(ctx context.Context, r runner, uid int) (path string, err error) {
+	p, err := r.mktemp(ctx, "gtest_output.xml")
 	if err != nil {
 		return "", errors.Wrap(err, "failed to create an output file")
 	}
 	defer func() {
-		if f != nil {
-			os.Remove(f.Name())
+		if err != nil {
+			r.remove(ctx, p)
 		}
 	}()
 
-	if err := f.Close(); err != nil {
-		return "", errors.Wrap(err, "failed to close the output file")
-	}
-
 	if uid >= 0 {
-		if err := os.Chown(f.Name(), uid, -1); err != nil {
+		if err := r.chown(ctx, p, uid); err != nil {
 			return "", errors.Wrap(err, "failed to set user for the output file")
 		}
 	}
 
-	abspath, err := filepath.Abs(f.Name())
-	if err != nil {
-		return "", errors.Wrap(err, "failed to resolve the path to abs")
-	}
-
-	f = nil
-	return abspath, nil
+	return p, nil
 }
 
 // Start executes the gtest asynchronously, and returns the testexec.Cmd
 // instance to talk to the process.
 func (t *GTest) Start(ctx context.Context) (*testexec.Cmd, error) {
-	return t.startCommand(ctx, "" /* output */)
+	return t.startCommand(ctx, t.newRunner(), "" /* output */)
 }
 
-func (t *GTest) startCommand(ctx context.Context, output string) (*testexec.Cmd, error) {
+func (t *GTest) startCommand(ctx context.Context, r runner, output string) (*testexec.Cmd, error) {
 	args, err := t.ToArgs()
 	if err != nil {
 		return nil, err
@@ -277,7 +374,7 @@ func (t *GTest) startCommand(ctx context.Context, output string) (*testexec.Cmd,
 		}
 	}
 
-	cmd := testexec.CommandContext(ctx, args[0], args[1:]...)
+	cmd := r.command(ctx, args)
 	// Redirect stdout and stderr. Note that if logfile is not specified,
 	// log is nil, which means redirecting to /dev/null.
 	cmd.Stdout = log
