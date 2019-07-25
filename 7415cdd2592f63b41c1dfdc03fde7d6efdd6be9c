@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc9e0afd_0dcf9129",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/client/client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-25T01:32:52Z",
+      "side": 1,
+      "message": "\"client\" here sounds a bit too generic.\nHow about;\n- name the package kerberos\n- name the struct Kerberos to be shorter?",
+      "revId": "7415cdd2592f63b41c1dfdc03fde7d6efdd6be9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67d490b2_e8fa32dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/client/client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-25T01:32:52Z",
+      "side": 1,
+      "message": "optional:\n\ncall.Store() returns an error if call.Err is not nil, so this can be shorten to;\n\nvar marshResponse []byte\nif err :\u003d k.obj.CallWithContext(...).Store(\u0026marshResponse); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 2
+      },
+      "revId": "7415cdd2592f63b41c1dfdc03fde7d6efdd6be9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b6fd876_5bb60289",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/client/client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-25T01:32:52Z",
+      "side": 1,
+      "message": "Could you handle error of WriteString() and Close() ?",
+      "revId": "7415cdd2592f63b41c1dfdc03fde7d6efdd6be9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cd05154_68cf2e3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/daemon.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-25T01:32:52Z",
+      "side": 1,
+      "message": "You can create a instance of the struct, and then compare by reflect.DeepEqual().\nDitto for below.",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 2
+      },
+      "revId": "7415cdd2592f63b41c1dfdc03fde7d6efdd6be9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "1b5b8a88_2b3079f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-25T01:32:52Z",
+      "side": 1,
+      "message": "If the credential is needed, it is necessary to put under crosint for now.\ncf) Here is a tracking issue to support crbug.com/982546 the case.\n\nBTW, package name is not allowed to have _ or CamelCase.\n\nhttps://golang.org/doc/effective_go.html#package-names\n\nIf \"active directory\" is the name, maybe \"actdir\" or something...? If \"enterprise\" works for you, that\u0027s fine in terms of naming, but conceptually, it could have \"everything\" so it\u0027s nice to be take care about, IMHO.",
+      "parentUuid": "e1dbca02_94b91a13",
+      "revId": "bac30d595f534feb15f1c43d08d762c1de020df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "02ceb567_ed7ed785",
         "filename": "src/chromiumos/tast/local/kerberos/kerberos.go",
         "patchSetId": 1
