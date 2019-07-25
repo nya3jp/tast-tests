@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f64706d9_74e04e04",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-25T01:44:26Z",
+      "side": 1,
+      "message": "Could you add a link to the reference of the definition of the struct?",
+      "revId": "785e02d23490cd04b69fb2eee6fb5c4e101833e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "275f2f27_5920fa93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-25T01:44:26Z",
+      "side": 1,
+      "message": "huge nit/style: could you merge these comments into one line?",
+      "revId": "785e02d23490cd04b69fb2eee6fb5c4e101833e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d19ccab8_6573a989",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-25T01:44:26Z",
+      "side": 1,
+      "message": "style: go prefers guard style error handling. So;\n\nfallback :\u003d queryStatus.Fallback\nif fallback \u003d\u003d \"\" {\n  if queryStatus.QueryResponse.Fallback \u003d\u003d \"\" {\n    s.Error(...)\n    return\n  }\n  fallback \u003d queryStatus.QueryResponse.Fallback\n}",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 2
+      },
+      "revId": "785e02d23490cd04b69fb2eee6fb5c4e101833e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
