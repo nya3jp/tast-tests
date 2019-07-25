@@ -118,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "b7c0548b_5a5e7c15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-07-25T07:41:19Z",
+      "side": 1,
+      "message": "\u003e why the existing autotest test case modifies the policy file \n\nplatform2/metrics/README.md says “Consent file exists or enabled by policy”, but actually src/platform2/metrics/metrics_library.cc does:\n1. use policy setting if exists\n2. (for enterprise, some special handling)\n3. enable if the consent file is valid\n\nSince the policy setting takes precedence over consent file, we need to manipulate the policy files.",
+      "parentUuid": "2b72e459_0b21ec73",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 106
+      },
+      "revId": "ada8ca0e408e5bc4071674ea956e2131f9c150b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c0f644a0_9cbc01bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 5
