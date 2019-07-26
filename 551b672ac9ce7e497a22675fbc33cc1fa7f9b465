@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c08a650a_0047d71d",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-26T19:00:24Z",
+      "side": 1,
+      "message": "Clar: Do you plan to add more ChromeVideoVD tests?\nI\u0027m ok if more will come very soon, but if not, using a precondition for only one test does not help any performance, and so is unexpected usage.",
+      "revId": "551b672ac9ce7e497a22675fbc33cc1fa7f9b465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
