@@ -46,6 +46,12 @@ func TestGTestToArgs(t *testing.T) {
 		expected: []string{"testexec", "--gtest_filter=pattern"},
 		opts:     []option{Filter("pattern")},
 	}, {
+		expected: []string{"testexec"},
+		opts:     []option{Filter("")},
+	}, {
+		expected: []string{"testexec", "--gtest_repeat=-1"},
+		opts:     []option{Repeat(-1)},
+	}, {
 		expected: []string{"testexec", "a", "b", "c"},
 		opts:     []option{ExtraArgs("a", "b", "c")},
 	}, {
