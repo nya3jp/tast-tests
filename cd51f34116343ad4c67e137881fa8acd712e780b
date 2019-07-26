@@ -22,6 +22,30 @@
       "revId": "cd51f34116343ad4c67e137881fa8acd712e780b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b18807a_935a2121",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-26T16:49:55Z",
+      "side": 1,
+      "message": "Huh, I didn\u0027t realize how awkward that looks. But I *think* that\u0027s actually OK grammar:\n\n\"for a little while\" (\"a little while\" being a vague unit of time)\n\"while we\u0027re at it\" (a dependent clause)",
+      "parentUuid": "0f085f5a_716122a8",
+      "range": {
+        "startLine": 16,
+        "startChar": 45,
+        "endLine": 16,
+        "endChar": 56
+      },
+      "revId": "cd51f34116343ad4c67e137881fa8acd712e780b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
