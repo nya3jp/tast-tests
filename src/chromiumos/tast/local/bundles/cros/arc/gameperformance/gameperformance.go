@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package arc
+package gameperformance
 
 import (
 	"context"
@@ -11,7 +11,6 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
-	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -49,7 +48,7 @@ var keyInformations = []struct {
 	direction: perf.BiggerIsBetter,
 }, {
 	suffixes:  []string{"_triangle_count"},
-	unitName:  "calls",
+	unitName:  "kilo-triangles",
 	direction: perf.BiggerIsBetter,
 }, {
 	suffixes:  []string{"_fps"},
@@ -58,20 +57,8 @@ var keyInformations = []struct {
 },
 }
 
-func init() {
-	testing.AddTest(&testing.Test{
-		Func:         GamePerformance,
-		Desc:         "Captures set of performance metrics and upload it to the server",
-		Contacts:     []string{"khmel@chromium.org", "skuhne@chromium.org", "arc-performance@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"android", "chrome"},
-		Data:         []string{"ArcGamePerformanceTest.apk"},
-		Pre:          arc.Booted(),
-		Timeout:      1 * time.Hour,
-	})
-}
-
-func GamePerformance(ctx context.Context, s *testing.State) {
+// RunTest executes subset of tests in ArcGamePerformanceTest.apk determined by the test class name.
+func RunTest(ctx context.Context, s *testing.State, className string) {
 	a := s.PreValue().(arc.PreData).ARC
 
 	const apkName = "ArcGamePerformanceTest.apk"
@@ -81,7 +68,7 @@ func GamePerformance(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Running test")
-	out, err := a.Command(ctx, "am", "instrument", "-w", "android.gameperformance").CombinedOutput()
+	out, err := a.Command(ctx, "am", "instrument", "-w", "-e", "class", "android.gameperformance."+className, "android.gameperformance").CombinedOutput()
 	if err != nil {
 		s.Fatal("Failed to execute test: ", err)
 	}
@@ -95,7 +82,7 @@ func GamePerformance(ctx context.Context, s *testing.State) {
 	s.Log("Analyzing results")
 
 	// Make sure test is completed successfully.
-	if !regexp.MustCompile(`\nOK \(\d+ tests?\)\n$`).Match(out) {
+	if !regexp.MustCompile(`\nOK \(\d+ tests?\)\n*$`).Match(out) {
 		s.Fatal("Test is not completed successfully, see: " + outputFile)
 	}
 
