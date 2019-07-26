@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "726f2be5_e89a10c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-07-26T18:52:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de39e17b_d5e0e08c",
+      "range": {
+        "startLine": 118,
+        "startChar": 19,
+        "endLine": 118,
+        "endChar": 23
+      },
+      "revId": "4550e0fb52e04bde1b93c55fdbbc340166a937a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aab09609_8e6ca3a9",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "4550e0fb52e04bde1b93c55fdbbc340166a937a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4066102_8cb6eff2",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-07-26T18:52:07Z",
+      "side": 1,
+      "message": "Done. I went back and forth on the name for this; let me know if you have a better one.",
+      "parentUuid": "aab09609_8e6ca3a9",
+      "range": {
+        "startLine": 183,
+        "startChar": 16,
+        "endLine": 183,
+        "endChar": 24
+      },
+      "revId": "4550e0fb52e04bde1b93c55fdbbc340166a937a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
