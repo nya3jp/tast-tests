@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "005f14bc_5491fc1a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-26T18:54:38Z",
+      "side": 1,
+      "message": "Commit message updated.",
+      "parentUuid": "272ee6d7_de26c2fa",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "027871ccb6df675cf9ba571c417478b6ce14a6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be36a4ce_08f18321",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/capture_unittests.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-07-26T13:12:01Z",
       "side": 1,
       "message": "Where is this .log file specified in RunAsync?\nAre you probably renaming fmt.Sprintf(\"output_%s_%d.txt\", exec, time.Now().Unix()) ?\nCould you keep this and change it later? Same for others.",
+      "range": {
+        "startLine": 84,
+        "startChar": 42,
+        "endLine": 84,
+        "endChar": 53
+      },
+      "revId": "027871ccb6df675cf9ba571c417478b6ce14a6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03cfc67c_6ed591de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/capture_unittests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-26T18:54:38Z",
+      "side": 1,
+      "message": "To keep the existing behavior as is needs more complicated code, but it should be temporarily as we\u0027re expecting to be migrated into a way.\nE.g., keeping the logfile name means to copy-and-paste the code to all the callers.\nI think it\u0027s up to camera/video team (and that\u0027s one of the reason I asked them to review).\n\nshik@, keiichiw@, could you check if behavior change along this migration is ok for you?",
+      "parentUuid": "be36a4ce_08f18321",
       "range": {
         "startLine": 84,
         "startChar": 42,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "15e19727_65da4b4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/capture_unittests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-26T18:54:38Z",
+      "side": 1,
+      "message": "This is common pattern, so I explicitly documented in gtest.GTest.filter.\nRather than copy-and-paste the comment to all callers.",
+      "parentUuid": "cf3023e5_bd065711",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 23
+      },
+      "revId": "027871ccb6df675cf9ba571c417478b6ce14a6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54a7fbde_31487c41",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "027871ccb6df675cf9ba571c417478b6ce14a6d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d390d06b_290446e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-26T18:54:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54a7fbde_31487c41",
+      "range": {
+        "startLine": 119,
+        "startChar": 57,
+        "endLine": 119,
+        "endChar": 64
+      },
+      "revId": "027871ccb6df675cf9ba571c417478b6ce14a6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "1613f829_80287cdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/encode_accel_jpeg.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-26T18:54:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "97e226f0_126c1db3",
+      "range": {
+        "startLine": 44,
+        "startChar": 42,
+        "endLine": 44,
+        "endChar": 53
+      },
+      "revId": "027871ccb6df675cf9ba571c417478b6ce14a6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "150f12a2_347248cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "027871ccb6df675cf9ba571c417478b6ce14a6d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a90770f_7ad55cf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-26T18:54:38Z",
+      "side": 1,
+      "message": "MeasureProcessCPU is called for bintest and arctest.\nWith this CL bintest is migrated into gtest. arctest will come later.\nThen, both will be gtest.GTest.Start() invocation, so we can just pass gtest instance instead, then.",
+      "parentUuid": "150f12a2_347248cd",
+      "range": {
+        "startLine": 165,
+        "startChar": 33,
+        "endLine": 165,
+        "endChar": 44
+      },
+      "revId": "027871ccb6df675cf9ba571c417478b6ce14a6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "c4ca518f_e74da007",
+        "filename": "src/chromiumos/tast/local/chrome/bintest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-26T18:54:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "701f7154_fd6a5684",
+      "range": {
+        "startLine": 7,
+        "startChar": 58,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "027871ccb6df675cf9ba571c417478b6ce14a6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e23846a5_4430e15e",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 2
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "3ce8d675_b45077b5",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-26T18:54:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e23846a5_4430e15e",
+      "range": {
+        "startLine": 123,
+        "startChar": 5,
+        "endLine": 123,
+        "endChar": 11
+      },
+      "revId": "027871ccb6df675cf9ba571c417478b6ce14a6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b98b6e4_5a490e15",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 2
@@ -197,6 +389,24 @@
       "writtenOn": "2019-07-26T13:12:01Z",
       "side": 1,
       "message": "Could you add a unittest?",
+      "revId": "027871ccb6df675cf9ba571c417478b6ce14a6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12283a18_2942bfbd",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-26T18:54:38Z",
+      "side": 1,
+      "message": "Technically, extracted code is covered by existing test for Run() already.\nCould you share what test are you expecting?",
+      "parentUuid": "1b98b6e4_5a490e15",
       "revId": "027871ccb6df675cf9ba571c417478b6ce14a6d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -226,6 +436,30 @@
     },
     {
       "key": {
+        "uuid": "fa2ddb17_95e132ec",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-26T18:54:38Z",
+      "side": 1,
+      "message": "It won\u0027t work.\nAs commented at L270 in PS4, log needs to be closed after Start().\nIf it makes the caller\u0027s responsibility to call Start/Run, log also needs to be returned, otherwise there\u0027s no chance to close it. It means it breaks the encapsulation.",
+      "parentUuid": "972aa391_51c38b87",
+      "range": {
+        "startLine": 252,
+        "startChar": 16,
+        "endLine": 252,
+        "endChar": 28
+      },
+      "revId": "027871ccb6df675cf9ba571c417478b6ce14a6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b2f6fc12_511b372f",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 2
@@ -237,6 +471,30 @@
       "writtenOn": "2019-07-26T13:12:01Z",
       "side": 1,
       "message": "Could you remove arg?\nSorry I missed it before.",
+      "range": {
+        "startLine": 296,
+        "startChar": 43,
+        "endLine": 296,
+        "endChar": 58
+      },
+      "revId": "027871ccb6df675cf9ba571c417478b6ce14a6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "004bae06_2b8826e4",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-26T18:54:38Z",
+      "side": 1,
+      "message": "Good catch. Done.",
+      "parentUuid": "b2f6fc12_511b372f",
       "range": {
         "startLine": 296,
         "startChar": 43,
