@@ -7,6 +7,7 @@ package arc
 import (
 	"context"
 	"encoding/json"
+	"math"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -30,16 +31,96 @@ func init() {
 }
 
 type inputDevice struct {
-	DeviceID  int    `json:"device_id"`
-	ProductID uint16 `json:"product_id"`
-	VendorID  uint16 `json:"vendor_id"`
-	Name      string `json:"name"`
+	DeviceID     int    `json:"device_id"`
+	ProductID    uint16 `json:"product_id"`
+	VendorID     uint16 `json:"vendor_id"`
+	Name         string `json:"name"`
+	MotionRanges map[string]struct {
+		Flat       float64 `json:"flat"`
+		Fuzz       float64 `json:"fuzz"`
+		Max        float64 `json:"max"`
+		Min        float64 `json:"min"`
+		Resolution float64 `json:"resolution"`
+		Source     int     `json:"source"`
+	} `json:"motion_ranges"`
+}
+
+// verifyGamepadDeviceInfo confirms the gamepad's InputDevice information is correct.
+func verifyGamepadDeviceInfo(gp *input.GamepadEventWriter, d *inputDevice) error {
+	// DeviceID may change at runtime.
+	if d.ProductID != gp.ProductID() {
+		return errors.Errorf("product ID doesn't match: got %v; want %v", d.ProductID, gp.ProductID())
+	}
+	if d.VendorID != gp.VendorID() {
+		return errors.Errorf("vendor ID doesn't match: got %v; want %v", d.VendorID, gp.VendorID())
+	}
+
+	isCenteredAxis := map[string]bool{
+		"AXIS_X":     true,
+		"AXIS_Y":     true,
+		"AXIS_Z":     true,
+		"AXIS_RZ":    true,
+		"AXIS_HAT_X": true,
+		"AXIS_HAT_Y": true}
+	gamepadMapping := map[input.EventCode]string{
+		input.ABS_X:     "AXIS_X",
+		input.ABS_Y:     "AXIS_Y",
+		input.ABS_RX:    "AXIS_Z",
+		input.ABS_RY:    "AXIS_RZ",
+		input.ABS_HAT0X: "AXIS_HAT_X",
+		input.ABS_HAT0Y: "AXIS_HAT_Y",
+		input.ABS_Z:     "AXIS_LTRIGGER",
+		input.ABS_RZ:    "AXIS_RTRIGGER"}
+
+	almostEqual := func(a, b float64) bool {
+		return math.Abs(a-b) <= 1e-5
+	}
+
+	for code, info := range gp.Axes() {
+		axisName, ok := gamepadMapping[code]
+		if !ok {
+			continue
+		}
+		expectedMin := 0.0
+		expectedMax := 1.0
+		scale := 1.0 / float64(info.Maximum-info.Minimum)
+		if isCenteredAxis[axisName] {
+			expectedMin = -1.0
+			expectedMax = 1.0
+			scale = 2.0 / float64(info.Maximum-info.Minimum)
+		}
+		expectedFuzz := float64(info.Fuzz) * scale
+		expectedFlat := float64(info.Flat) * scale
+
+		motionRange, ok := d.MotionRanges[axisName]
+		if !ok {
+			return errors.Errorf("gamepad axis %s not found", axisName)
+		}
+		if !almostEqual(expectedMin, motionRange.Min) {
+			return errors.Errorf("min does not match for %s: got %f; want %f", axisName, motionRange.Min, expectedMin)
+		}
+		if !almostEqual(expectedMax, motionRange.Max) {
+			return errors.Errorf("max does not match for %s: got %f; want %f", axisName, motionRange.Max, expectedMax)
+		}
+		if !almostEqual(expectedFuzz, motionRange.Fuzz) {
+			return errors.Errorf("fuzz does not match for %s: got %f; want %f", axisName, motionRange.Fuzz, expectedFuzz)
+		}
+		if !almostEqual(expectedFlat, motionRange.Flat) {
+			return errors.Errorf("flat does not match for %s: got %f; want %f", axisName, motionRange.Flat, expectedFlat)
+		}
+	}
+	return nil
 }
 
 type keyEvent struct {
-	Action   int `json:"action"`
-	KeyCode  int `json:"key_code"`
-	DeviceID int `json:"device_id"`
+	Action   string `json:"action"`
+	KeyCode  string `json:"key_code"`
+	DeviceID int    `json:"device_id"`
+}
+
+type motionEvent struct {
+	Action string             `json:"action"`
+	Axes   map[string]float64 `json:"axes"`
 }
 
 func getInputDevices(ctx context.Context, d *ui.Device) ([]inputDevice, error) {
@@ -68,6 +149,31 @@ func getKeyEvents(ctx context.Context, d *ui.Device) ([]keyEvent, error) {
 		return nil, err
 	}
 	return events, nil
+}
+
+func getMotionEvent(ctx context.Context, d *ui.Device) (*motionEvent, error) {
+	view := d.Object(ui.ID("org.chromium.arc.testapp.gamepad:id/motion_event"))
+	text, err := view.GetText(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	var event motionEvent
+	if err := json.Unmarshal([]byte(text), &event); err != nil {
+		return nil, err
+	}
+	return &event, nil
+}
+
+func waitForGamepadAxis(ctx context.Context, d *ui.Device, axis string, expected float64) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if event, err := getMotionEvent(ctx, d); err != nil {
+			return err
+		} else if val, ok := event.Axes[axis]; !ok || val != expected {
+			return errors.Errorf("unexpected %s value: got %f; want %f", axis, val, expected)
+		}
+		return nil
+	}, nil)
 }
 
 func Gamepad(ctx context.Context, s *testing.State) {
@@ -107,7 +213,7 @@ func Gamepad(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Checking the device connection")
-	var actualDevice inputDevice
+	var device inputDevice
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		devices, err := getInputDevices(ctx, d)
 		if err != nil {
@@ -116,16 +222,14 @@ func Gamepad(ctx context.Context, s *testing.State) {
 			return errors.Errorf("unexpected number of gamepad devices: got %v; want 1",
 				len(devices))
 		}
-		actualDevice = devices[0]
+		device = devices[0]
 		return nil
 	}, nil); err != nil {
 		s.Fatal("Cannot get the gamepad device: ", err)
 	}
 
-	// DeviceID may change at runtime.
-	expectedDevice := inputDevice{actualDevice.DeviceID, gp.ProductID(), gp.VendorID(), gp.DeviceName()}
-	if expectedDevice != actualDevice {
-		s.Fatalf("Unexpected device information: got %v; want %v", actualDevice, expectedDevice)
+	if err := verifyGamepadDeviceInfo(gp, &device); err != nil {
+		s.Fatal("Unexpected device information: ", err)
 	}
 
 	s.Log("Pressing buttons")
@@ -137,10 +241,11 @@ func Gamepad(ctx context.Context, s *testing.State) {
 	}
 
 	const (
-		ActionDown     = 0
-		ActionUp       = 1
-		KeycodeButtonA = 96
-		KeycodeButtonX = 99
+		ActionDown     = "ACTION_DOWN"
+		ActionUp       = "ACTION_UP"
+		KeycodeButtonA = "KEYCODE_BUTTON_A"
+		KeycodeButtonX = "KEYCODE_BUTTON_X"
+		AxisX          = "AXIS_X"
 	)
 
 	expectedEvents := []keyEvent{
@@ -166,10 +271,25 @@ func Gamepad(ctx context.Context, s *testing.State) {
 
 	for i, expected := range expectedEvents {
 		// DeviceID may change at runtime.
-		expected.DeviceID = actualDevice.DeviceID
+		expected.DeviceID = device.DeviceID
 		if expected != actualEvents[i] {
 			s.Fatalf("Unexpected gamepad event: got %v; want %v", actualEvents[i], expected)
 		}
+	}
+
+	s.Log("Moving the analog stick")
+	axis := gp.Axes()[input.ABS_X]
+	if err := gp.MoveAxis(ctx, input.ABS_X, axis.Maximum); err != nil {
+		s.Fatal("Failed to move axis: ", err)
+	}
+	if err := waitForGamepadAxis(ctx, d, AxisX, 1.0); err != nil {
+		s.Fatal("Failed to wait for axis change: ", err)
+	}
+	if err := gp.MoveAxis(ctx, input.ABS_X, axis.Minimum); err != nil {
+		s.Fatal("Failed to move axis: ", err)
+	}
+	if err := waitForGamepadAxis(ctx, d, AxisX, -1.0); err != nil {
+		s.Fatal("Failed to wait for axis change: ", err)
 	}
 
 	s.Log("Disconnecting the gamepad")
