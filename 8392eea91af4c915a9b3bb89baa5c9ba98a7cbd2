@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "77568888_9f6b75de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-26T02:23:52Z",
+      "side": 1,
+      "message": "style:\n\nif ... :\u003d upstart.JobStatus(...); err !\u003d nil {\n  ...\n} else if ... {\n  ...\n}\n\nto minimize the vars\u0027 scope.",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 50
+      },
+      "revId": "8392eea91af4c915a9b3bb89baa5c9ba98a7cbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "255481e4_e52302f8",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
         "patchSetId": 4
@@ -19,6 +42,23 @@
         "endLine": 36,
         "endChar": 32
       },
+      "revId": "8392eea91af4c915a9b3bb89baa5c9ba98a7cbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e8e7d72_d8627c04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-26T02:23:52Z",
+      "side": 1,
+      "message": "if err \u003d\u003d ctx.Err() {\n  ...\n}\n\nis more accurate? timeout may come between Run() and here.",
       "revId": "8392eea91af4c915a9b3bb89baa5c9ba98a7cbd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
