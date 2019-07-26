@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "272ee6d7_de26c2fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-26T13:33:53Z",
+      "side": 1,
+      "message": "I think this change shouldn\u0027t introduce any behavior changes. Otherwise could you document what changed in the commit message?",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "027871ccb6df675cf9ba571c417478b6ce14a6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be36a4ce_08f18321",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/capture_unittests.go",
         "patchSetId": 2
