@@ -15,11 +15,13 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/chrome/bintest"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/perf"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -100,16 +102,13 @@ type testConfig struct {
 }
 
 // toArgsList converts testConfig to a list of argument strings.
-func (t *testConfig) toArgsList() (args []string) {
-	args = append(args, logging.ChromeVmoduleFlag(), "--ozone-platform=gbm", t.testData.toVDAArg(t.dataPath))
+func (t *testConfig) toArgsList() []string {
+	args := []string{logging.ChromeVmoduleFlag(), "--ozone-platform=gbm", t.testData.toVDAArg(t.dataPath)}
 	if t.bufferMode == ImportBuffer {
 		args = append(args, "--test_import", "--frame_validator=check")
 	}
 	if t.thumbnailOutputDir != "" {
-		args = append(args, fmt.Sprintf("--thumbnail_output_dir=%s", t.thumbnailOutputDir))
-	}
-	if t.testFilter != "" {
-		args = append(args, fmt.Sprintf("--gtest_filter=%s", t.testFilter))
+		args = append(args, "--thumbnail_output_dir="+t.thumbnailOutputDir)
 	}
 	return args
 }
@@ -188,12 +187,19 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, cfg testConfig) {
 	}
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
-	args := cfg.toArgsList()
 	const exec = "video_decode_accelerator_unittest"
-	if ts, err := bintest.Run(shortCtx, exec, args, s.OutDir()); err != nil {
+	if report, err := gtest.New(
+		filepath.Join(chrome.BinTestDir, exec),
+		gtest.Logfile(filepath.Join(s.OutDir(), exec+".log")),
+		gtest.Filter(cfg.testFilter),
+		gtest.ExtraArgs(cfg.toArgsList()...),
+		gtest.UID(int(sysutil.ChronosUID)),
+	).Run(ctx); err != nil {
 		s.Errorf("Failed to run %v with video %s: %v", exec, cfg.dataPath, err)
-		for _, t := range ts {
-			s.Error(t, " failed")
+		if report != nil {
+			for _, name := range report.FailedTestNames() {
+				s.Error(name, " failed")
+			}
 		}
 	}
 }
@@ -231,10 +237,17 @@ func RunAccelVideoTestNew(ctx context.Context, s *testing.State, filename string
 	args = append(args, s.DataPath(filename), s.DataPath(filename+".json"))
 
 	const exec = "video_decode_accelerator_tests"
-	if ts, err := bintest.Run(shortCtx, exec, args, s.OutDir()); err != nil {
+	if report, err := gtest.New(
+		filepath.Join(chrome.BinTestDir, exec),
+		gtest.Logfile(filepath.Join(s.OutDir(), exec+".log")),
+		gtest.ExtraArgs(args...),
+		gtest.UID(int(sysutil.ChronosUID)),
+	).Run(shortCtx); err != nil {
 		s.Errorf("Failed to run %v with video %s: %v", exec, filename, err)
-		for _, t := range ts {
-			s.Error(t, " failed")
+		if report != nil {
+			for _, name := range report.FailedTestNames() {
+				s.Error(name, " failed")
+			}
 		}
 	}
 }
@@ -292,17 +305,24 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, filename strin
 		s.DataPath(filename),
 		s.DataPath(filename + ".json"),
 		"--output_folder=" + s.OutDir(),
-		"--gtest_filter=*" + cappedTestname + ":*" + uncappedTestname,
 	}
 	if decoderType == VD {
 		args = append(args, "--use_vd")
 	}
 
 	const exec = "video_decode_accelerator_perf_tests"
-	if ts, err := bintest.Run(ctx, exec, args, s.OutDir()); err != nil {
+	if report, err := gtest.New(
+		filepath.Join(chrome.BinTestDir, exec),
+		gtest.Logfile(filepath.Join(s.OutDir(), exec+".1.log")),
+		gtest.Filter(fmt.Sprintf("*%s:*%s", cappedTestname, uncappedTestname)),
+		gtest.ExtraArgs(args...),
+		gtest.UID(int(sysutil.ChronosUID)),
+	).Run(ctx); err != nil {
 		s.Errorf("Failed to run %v with video %s: %v", exec, filename, err)
-		for _, t := range ts {
-			s.Error(t, " failed")
+		if report != nil {
+			for _, name := range report.FailedTestNames() {
+				s.Error(name, " failed")
+			}
 		}
 		return
 	}
@@ -317,9 +337,15 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, filename strin
 
 	// Test 2: Measure CPU usage while running capped performance test only.
 	// TODO(dstaessens) Investigate collecting CPU usage during previous test.
-	cappedArgs := append(args, "--gtest_filter="+cappedTestname, "--gtest_repeat=-1")
 	runCmdAsync := func() (*testexec.Cmd, error) {
-		return bintest.RunAsync(ctx, exec, cappedArgs, nil, s.OutDir())
+		return gtest.New(
+			filepath.Join(chrome.BinTestDir, exec),
+			gtest.Logfile(filepath.Join(s.OutDir(), exec+".2.log")),
+			gtest.Filter(cappedTestname),
+			gtest.Repeat(-1),
+			gtest.ExtraArgs(args...),
+			gtest.UID(int(sysutil.ChronosUID)),
+		).Start(ctx)
 	}
 
 	cpuUsage, err := cpu.MeasureProcessCPU(ctx, runCmdAsync, measureDuration)

@@ -18,11 +18,13 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/video/lib/arctest"
-	"chromiumos/tast/local/chrome/bintest"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/perf"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -148,17 +150,22 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, mode testMode, opt
 		}
 	}
 
-	const exec = "video_encode_accelerator_unittest"
+	exec := filepath.Join(chrome.BinTestDir, "video_encode_accelerator_unittest")
 	for _, ba := range bas {
 		args := append(commonArgs, ba.extraArgs...)
-		if ba.testFilter != "" {
-			args = append(args, "--gtest_filter="+ba.testFilter)
-		}
-		if ba.measureCPU {
-			runCmdAsync := func() (*testexec.Cmd, error) {
-				return bintest.RunAsync(shortCtx, exec, args, nil, s.OutDir())
-			}
+		logfile := filepath.Join(s.OutDir(), fmt.Sprintf("output_%s_%d.txt", filepath.Base(exec), time.Now().Unix()))
 
+		t := gtest.New(
+			exec,
+			gtest.Logfile(logfile),
+			gtest.Filter(ba.testFilter),
+			gtest.ExtraArgs(args...),
+			gtest.UID(int(sysutil.ChronosUID)))
+		if ba.measureCPU {
+			// TODO(hidehiko): get rid of runCmdAsync after ARC gtest migration.
+			runCmdAsync := func() (*testexec.Cmd, error) {
+				return t.Start(ctx)
+			}
 			cpuUsage, err := cpu.MeasureProcessCPU(shortCtx, runCmdAsync, ba.measureDuration)
 			if err != nil {
 				s.Fatalf("Failed to run (measure CPU) %v: %v", exec, err)
@@ -170,9 +177,11 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, mode testMode, opt
 				s.Fatal("Failed to write CPU usage to file: ", err)
 			}
 		} else {
-			if ts, err := bintest.Run(shortCtx, exec, args, s.OutDir()); err != nil {
-				for _, t := range ts {
-					s.Error(t, " failed")
+			if report, err := t.Run(ctx); err != nil {
+				if report != nil {
+					for _, name := range report.FailedTestNames() {
+						s.Error(name, " failed")
+					}
 				}
 				s.Fatalf("Failed to run %v: %v", exec, err)
 			}

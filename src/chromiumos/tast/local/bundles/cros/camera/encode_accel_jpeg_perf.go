@@ -16,10 +16,12 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/bintest"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -76,23 +78,28 @@ func EncodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 
 	// Execute the test binary.
 	s.Log("Measuring JPEG encode performance")
-	testLogPath := filepath.Join(s.OutDir(), "test.log")
-	args := []string{
-		"--repeat=" + strconv.Itoa(perfJPEGEncodeTimes),
-		"--output_log=" + testLogPath,
-		"--gtest_filter=" + filter,
-		"--yuv_filenames=" + s.DataPath(testFilename) + testFileSuffix,
-	}
 	const exec = "jpeg_encode_accelerator_unittest"
-	if ts, err := bintest.Run(ctx, exec, args, s.OutDir()); err != nil {
+	logPath := filepath.Join(s.OutDir(), "test.log")
+	if report, err := gtest.New(
+		filepath.Join(chrome.BinTestDir, exec),
+		gtest.Logfile(filepath.Join(s.OutDir(), exec+".log")),
+		gtest.Filter(filter),
+		gtest.ExtraArgs(
+			"--repeat="+strconv.Itoa(perfJPEGEncodeTimes),
+			"--output_log="+logPath,
+			"--yuv_filenames="+s.DataPath(testFilename)+testFileSuffix),
+		gtest.UID(int(sysutil.ChronosUID)),
+	).Run(ctx); err != nil {
 		s.Errorf("Failed to run %v: %v", exec, err)
-		for _, t := range ts {
-			s.Error(t, " failed")
+		if report != nil {
+			for _, name := range report.FailedTestNames() {
+				s.Error(name, " failed")
+			}
 		}
 	}
 
 	// Parse and write performance data.
-	if err := parseJPEGEncodeLog(testLogPath, s.OutDir(), testFilename); err != nil {
+	if err := parseJPEGEncodeLog(logPath, s.OutDir(), testFilename); err != nil {
 		s.Fatal("Failed to parse test log: ", err)
 	}
 }
