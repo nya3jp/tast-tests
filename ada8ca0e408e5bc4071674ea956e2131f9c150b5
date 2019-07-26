@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "fb324d4a_2f9be904",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-07-26T03:35:55Z",
+      "side": 1,
+      "message": "Now I have revised the patch to do that way.\nHowever I am seeing that the crash report is not generated seemingly depending on device status.\nI am still investigating it.",
+      "parentUuid": "669f7c3b_28f4889e",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 106
+      },
+      "revId": "ada8ca0e408e5bc4071674ea956e2131f9c150b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c0f644a0_9cbc01bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 5
