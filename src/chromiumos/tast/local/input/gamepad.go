@@ -10,6 +10,15 @@ import (
 	"os"
 )
 
+// Axis contains information about a gamepad axis.
+type Axis struct {
+	Maximum    int32
+	Minimum    int32
+	Fuzz       int32
+	Flat       int32
+	Resolution int32
+}
+
 // GamepadEventWriter supports injecting events into a virtual gamepad device.
 type GamepadEventWriter struct {
 	rw   *RawEventWriter
@@ -28,7 +37,8 @@ func Gamepad(ctx context.Context) (*GamepadEventWriter, error) {
 		map[EventType]*big.Int{
 			EV_KEY: makeBigInt([]uint64{0x3fff000000000000, 0, 0, 0, 0}),
 			EV_ABS: big.NewInt(0x26081000003003f),
-			EV_MSC: big.NewInt(0x10)}); err != nil {
+			EV_MSC: big.NewInt(0x10)},
+		gw.Axes()); err != nil {
 		return nil, err
 	}
 
@@ -68,6 +78,25 @@ func (gw *GamepadEventWriter) DeviceName() string {
 	return "Wireless Controller"
 }
 
+// Axes returns the absolute axes of the virtual gamepad device.
+func (gw *GamepadEventWriter) Axes() map[EventCode]Axis {
+	// The values are taken from the actual device.
+	return map[EventCode]Axis{
+		ABS_X:              {255, 0, 0, 15, 0},
+		ABS_Y:              {255, 0, 0, 15, 0},
+		ABS_Z:              {255, 0, 0, 15, 0},
+		ABS_RX:             {255, 0, 0, 15, 0},
+		ABS_RY:             {255, 0, 0, 15, 0},
+		ABS_RZ:             {255, 0, 0, 15, 0},
+		ABS_HAT0X:          {1, -1, 0, 0, 0},
+		ABS_HAT0Y:          {1, -1, 0, 0, 0},
+		ABS_MISC:           {32512, -32768, 255, 4080, 0},
+		ABS_MT_SLOT:        {1, 0, 0, 0, 0},
+		ABS_MT_POSITION_X:  {1920, 0, 0, 0, 0},
+		ABS_MT_POSITION_Y:  {942, 0, 0, 0, 0},
+		ABS_MT_TRACKING_ID: {65535, 0, 0, 0, 0}}
+}
+
 // sendKey writes a EV_KEY event containing the specified code and value, followed by a EV_SYN event.
 func (gw *GamepadEventWriter) sendKey(ctx context.Context, ec EventCode, val int32) error {
 	if err := gw.rw.Event(EV_KEY, ec, val); err != nil {
@@ -82,4 +111,12 @@ func (gw *GamepadEventWriter) TapButton(ctx context.Context, ec EventCode) error
 		return err
 	}
 	return gw.sendKey(ctx, ec, 0)
+}
+
+// MoveAxis moves the gamepad axis specified by EventCode to the value.
+func (gw *GamepadEventWriter) MoveAxis(ctx context.Context, ec EventCode, val int32) error {
+	if err := gw.rw.Event(EV_ABS, ec, val); err != nil {
+		return err
+	}
+	return gw.rw.Sync()
 }
