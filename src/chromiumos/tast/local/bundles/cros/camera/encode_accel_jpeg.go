@@ -6,10 +6,14 @@ package camera
 
 import (
 	"context"
+	"fmt"
+	"path/filepath"
 
-	"chromiumos/tast/local/chrome/bintest"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/logging"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
 
@@ -34,13 +38,20 @@ func EncodeAccelJPEG(ctx context.Context, s *testing.State) {
 	defer vl.Close()
 
 	// Execute the test binary.
-	args := []string{logging.ChromeVmoduleFlag(),
-		"--yuv_filenames=" + s.DataPath("bali_640x360_P420.yuv") + ":640x360"}
 	const exec = "jpeg_encode_accelerator_unittest"
-	if ts, err := bintest.Run(ctx, exec, args, s.OutDir()); err != nil {
+	if report, err := gtest.New(
+		filepath.Join(chrome.BinTestDir, exec),
+		gtest.Logfile(filepath.Join(s.OutDir(), "gtest.log")),
+		gtest.ExtraArgs(
+			logging.ChromeVmoduleFlag(),
+			fmt.Sprintf("--yuv_filenames=%s:640x360", s.DataPath("bali_640x360_P420.yuv"))),
+		gtest.UID(int(sysutil.ChronosUID)),
+	).Run(ctx); err != nil {
 		s.Errorf("Failed to run %v: %v", exec, err)
-		for _, t := range ts {
-			s.Error(t, " failed")
+		if report != nil {
+			for _, name := range report.FailedTestNames() {
+				s.Error(name, " failed")
+			}
 		}
 	}
 }
