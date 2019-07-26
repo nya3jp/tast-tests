@@ -77,6 +77,11 @@ type GTest struct {
 	// Please see the gtest manual for the specification.
 	filter string
 
+	// repeat specifies a number of repeating times to run the test.
+	// The value is passed to --gtest_repeat=.
+	// Note that "-1" means infinite.
+	repeat int
+
 	// extraArgs will be passed to the test execution. Note that all
 	// --gtest* prefixed commandline flags should be constructed from
 	// GTest struct internally, so it is an error to include --gtest* flags
@@ -114,6 +119,11 @@ func Filter(pattern string) option {
 	return func(t *GTest) { t.filter = pattern }
 }
 
+// Repeat returns an option to set gtest_repeat
+func Repeat(repeat int) option {
+	return func(t *GTest) { t.repeat = repeat }
+}
+
 // ExtraArgs returns an option to pass more arguments than gtest arguments
 // for execution.
 func ExtraArgs(args ...string) option {
@@ -139,6 +149,9 @@ func (t *GTest) ToArgs() ([]string, error) {
 	args := []string{t.exec}
 	if t.filter != "" {
 		args = append(args, "--gtest_filter="+t.filter)
+	}
+	if t.repeat != 0 {
+		args = append(args, "--gtest_repeat="+strconv.Itoa(t.repeat))
 	}
 
 	// Verify extraArgs and append them.
@@ -167,44 +180,18 @@ func (t *GTest) ToArgs() ([]string, error) {
 // return an error, but the report file should be created. This function
 // also handles the case, and returns it.
 func (t *GTest) Run(ctx context.Context) (*Report, error) {
-	args, err := t.ToArgs()
-	if err != nil {
-		return nil, err
-	}
-
 	// Create a report file.
 	output, err := createOutput(t.uid)
 	if err != nil {
 		return nil, err
 	}
 	defer os.Remove(output)
-	args = append(args, "--gtest_output=xml:"+output)
 
-	// Set up log output.
-	var log *os.File
-	if t.logfile != "" {
-		var err error
-		log, err = openLogfile(t.logfile, t.tempLogfile, args)
-		if err != nil {
-			return nil, err
-		}
-		// log needs to be closed after cmd starts.
-		defer log.Close()
-
-		// At the beginning of the log file, write the command line
-		// to make debugging easier.
-		if err := writeArgs(log, args); err != nil {
-			return nil, err
-		}
+	cmd, err := t.startCommand(ctx, output)
+	if err != nil {
+		return nil, err
 	}
-
-	cmd := testexec.CommandContext(ctx, args[0], args[1:]...)
-	// Redirect stdout and stderr. Note that if logfile is not specified,
-	// log is nil, which means redirecting to /dev/null.
-	cmd.Stdout = log
-	cmd.Stderr = log
-
-	retErr := cmd.Run()
+	retErr := cmd.Wait()
 
 	// Parse output file regardless of whether the command succeeded or
 	// not. Specifically, if a test case fail, the command reports an
@@ -254,6 +241,52 @@ func createOutput(uid int) (string, error) {
 
 	f = nil
 	return abspath, nil
+}
+
+// Start executes the gtest asynchronously, and returns the testexec.Cmd
+// instance to talk to the process.
+func (t *GTest) Start(ctx context.Context) (*testexec.Cmd, error) {
+	return t.startCommand(ctx, "" /* output */)
+}
+
+func (t *GTest) startCommand(ctx context.Context, output string) (*testexec.Cmd, error) {
+	args, err := t.ToArgs()
+	if err != nil {
+		return nil, err
+	}
+	if output != "" {
+		args = append(args, "--gtest_output=xml:"+output)
+	}
+
+	// Set up log output.
+	var log *os.File
+	if t.logfile != "" {
+		var err error
+		log, err = openLogfile(t.logfile, t.tempLogfile, args)
+		if err != nil {
+			return nil, err
+		}
+		// log needs to be closed after cmd starts.
+		defer log.Close()
+
+		// At the beginning of the log file, write the command line
+		// to make debugging easier.
+		if err := writeArgs(log, args); err != nil {
+			return nil, err
+		}
+	}
+
+	cmd := testexec.CommandContext(ctx, args[0], args[1:]...)
+	// Redirect stdout and stderr. Note that if logfile is not specified,
+	// log is nil, which means redirecting to /dev/null.
+	cmd.Stdout = log
+	cmd.Stderr = log
+
+	if err := cmd.Start(); err != nil {
+		return nil, err
+	}
+
+	return cmd, nil
 }
 
 // openLogfile creates and opens the log file at path. If tempfile is set true,
