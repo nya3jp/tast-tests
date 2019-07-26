@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "e6df63ed_d4a683d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-07-26T19:03:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fbca8961_8b79d8d9",
+      "range": {
+        "startLine": 77,
+        "startChar": 3,
+        "endLine": 77,
+        "endChar": 13
+      },
+      "revId": "6f6ae18a38a897a010d2aa189194d4effc4e804a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82c68f9b_d162c922",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/lib/caps/caps.go",
         "patchSetId": 3

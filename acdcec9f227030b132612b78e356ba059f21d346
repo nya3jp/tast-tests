@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8cc59df1_e11ee3ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-07-26T19:03:19Z",
+      "side": 1,
+      "message": "\"runs\"",
+      "range": {
+        "startLine": 503,
+        "startChar": 18,
+        "endLine": 503,
+        "endChar": 21
+      },
+      "revId": "acdcec9f227030b132612b78e356ba059f21d346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1085d3d3_8e0dd06a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-07-26T19:03:19Z",
+      "side": 1,
+      "message": "\". Tested camera devices are:\"",
+      "range": {
+        "startLine": 532,
+        "startChar": 55,
+        "endLine": 532,
+        "endChar": 67
+      },
+      "revId": "acdcec9f227030b132612b78e356ba059f21d346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21dc51ee_1f469440",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-07-26T19:03:19Z",
+      "side": 1,
+      "message": "I thought this should be \"toggleTimer\"?\nhttps://cs.chromium.org/chromium/src/chrome/browser/resources/chromeos/camera/src/js/main.js?l\u003d139\nThe key used in localStorageSet() is \"data-key\" not \"data-state\", so it seems that we should clear \"toggleTimer\" instead.",
+      "range": {
+        "startLine": 42,
+        "startChar": 42,
+        "endLine": 42,
+        "endChar": 47
+      },
+      "revId": "acdcec9f227030b132612b78e356ba059f21d346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
