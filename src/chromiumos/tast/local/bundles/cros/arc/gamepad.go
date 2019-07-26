@@ -30,16 +30,42 @@ func init() {
 }
 
 type inputDevice struct {
-	DeviceID  int    `json:"device_id"`
-	ProductID uint16 `json:"product_id"`
-	VendorID  uint16 `json:"vendor_id"`
-	Name      string `json:"name"`
+	DeviceID     int    `json:"device_id"`
+	ProductID    uint16 `json:"product_id"`
+	VendorID     uint16 `json:"vendor_id"`
+	Name         string `json:"name"`
+	MotionRanges []struct {
+		Axis       int     `json:"axis"`
+		Flat       float64 `json:"flat"`
+		Fuzz       float64 `json:"fuzz"`
+		Max        float64 `json:"max"`
+		Min        float64 `json:"min"`
+		Resolution float64 `json:"resolution"`
+		Source     int     `json:"source"`
+	} `json:"motion_ranges"`
+}
+
+func (d *inputDevice) IsGamepad(gp *input.GamepadEventWriter) bool {
+	if d.ProductID != gp.ProductID() || d.VendorID != gp.VendorID() || d.Name != gp.DeviceName() {
+		return false
+	}
+	/*
+		if len(d.MotionRanges) != len(gp.Axes()) {
+			return false
+		}
+	*/
+	return true
 }
 
 type keyEvent struct {
-	Action   int `json:"action"`
-	KeyCode  int `json:"key_code"`
-	DeviceID int `json:"device_id"`
+	Action   string `json:"action"`
+	KeyCode  string `json:"key_code"`
+	DeviceID int    `json:"device_id"`
+}
+
+type motionEvent struct {
+	Action string             `json:"action"`
+	Axes   map[string]float64 `json:"axes"`
 }
 
 func getInputDevices(ctx context.Context, d *ui.Device) ([]inputDevice, error) {
@@ -68,6 +94,20 @@ func getKeyEvents(ctx context.Context, d *ui.Device) ([]keyEvent, error) {
 		return nil, err
 	}
 	return events, nil
+}
+
+func getMotionEvent(ctx context.Context, d *ui.Device) (*motionEvent, error) {
+	view := d.Object(ui.ID("org.chromium.arc.testapp.gamepad:id/motion_event"))
+	text, err := view.GetText(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	var event motionEvent
+	if err := json.Unmarshal([]byte(text), &event); err != nil {
+		return nil, err
+	}
+	return &event, nil
 }
 
 func Gamepad(ctx context.Context, s *testing.State) {
@@ -123,9 +163,8 @@ func Gamepad(ctx context.Context, s *testing.State) {
 	}
 
 	// DeviceID may change at runtime.
-	expectedDevice := inputDevice{actualDevice.DeviceID, gp.ProductID(), gp.VendorID(), gp.DeviceName()}
-	if expectedDevice != actualDevice {
-		s.Fatalf("Unexpected device information: got %v; want %v", actualDevice, expectedDevice)
+	if !actualDevice.IsGamepad(gp) {
+		s.Fatal("Unexpected device information: got ", actualDevice)
 	}
 
 	s.Log("Pressing buttons")
@@ -137,10 +176,10 @@ func Gamepad(ctx context.Context, s *testing.State) {
 	}
 
 	const (
-		ActionDown     = 0
-		ActionUp       = 1
-		KeycodeButtonA = 96
-		KeycodeButtonX = 99
+		ActionDown     = "ACTION_DOWN"
+		ActionUp       = "ACTION_UP"
+		KeycodeButtonA = "KEYCODE_BUTTON_A"
+		KeycodeButtonX = "KEYCODE_BUTTON_X"
 	)
 
 	expectedEvents := []keyEvent{
@@ -170,6 +209,35 @@ func Gamepad(ctx context.Context, s *testing.State) {
 		if expected != actualEvents[i] {
 			s.Fatalf("Unexpected gamepad event: got %v; want %v", actualEvents[i], expected)
 		}
+	}
+
+	s.Log("Moving the analog stick")
+	if err := gp.MoveAxis(ctx, input.ABS_X, gp.Axes()[input.AxisCode(input.ABS_X)].Maximum); err != nil {
+		s.Fatal("Failed to press button: ", err)
+	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if event, err := getMotionEvent(ctx, d); err != nil {
+			return err
+		} else if val, ok := event.Axes["AXIS_X"]; !ok || val != 1.0 {
+			return errors.Errorf("unexpected AXIS_X: got %f", val)
+		}
+		return nil
+	}, nil); err != nil {
+		s.Fatal("Failed to get gamepad events: ", err)
+	}
+
+	if err := gp.MoveAxis(ctx, input.ABS_X, gp.Axes()[input.AxisCode(input.ABS_X)].Minimum); err != nil {
+		s.Fatal("Failed to press button: ", err)
+	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if event, err := getMotionEvent(ctx, d); err != nil {
+			return err
+		} else if val, ok := event.Axes["AXIS_X"]; !ok || val != -1.0 {
+			return errors.Errorf("unexpected AXIS_X: got %f", val)
+		}
+		return nil
+	}, nil); err != nil {
+		s.Fatal("Failed to get gamepad events: ", err)
 	}
 
 	s.Log("Disconnecting the gamepad")
