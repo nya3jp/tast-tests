@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "808e81f8_39e40a7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2019-07-26T20:26:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7471b50_b31c1d5d",
+      "revId": "7a226010d99e0b0eddb4473b7d838ec9d13444f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f19ca039_3c19004d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "cb5e9577_5209525a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2019-07-26T20:26:03Z",
+      "side": 1,
+      "message": "Realized these files are probably useless. Removed, thank you for catching this~\n\nMaybe @xiaochu can confirm that it is safe to remove and it\u0027s not used anywhere.\n\nI think it would be more useful right now to print to screen.",
+      "parentUuid": "f19ca039_3c19004d",
+      "revId": "7a226010d99e0b0eddb4473b7d838ec9d13444f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "601ef419_65c72411",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2019-07-26T02:18:11Z",
       "side": 1,
       "message": "Could you keep closing by defer?\nIf s.Fatal() at L83 is called, f won\u0027t be closed now.",
+      "revId": "7a226010d99e0b0eddb4473b7d838ec9d13444f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3e75062_19a59858",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2019-07-26T20:26:03Z",
+      "side": 1,
+      "message": "If files aren\u0027t created to being can remove. Will wait for confirmation, but removed for now.",
+      "parentUuid": "601ef419_65c72411",
       "revId": "7a226010d99e0b0eddb4473b7d838ec9d13444f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -122,6 +176,78 @@
     },
     {
       "key": {
+        "uuid": "eba53e2c_100c06ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2019-07-26T20:26:03Z",
+      "side": 1,
+      "message": "I think it\u0027s better to stick with passing it as a string for dlcs. \n1) the actual call to dlcservice_util is purely forwarded as dlcs without modification.\n2) only split for logging purposes.\n\nWill use the recommended strings.ReplaceAll(dlcs, \":\", \", \") for logging.",
+      "parentUuid": "6e267e3f_1de9e5f6",
+      "range": {
+        "startLine": 90,
+        "startChar": 17,
+        "endLine": 90,
+        "endChar": 21
+      },
+      "revId": "7a226010d99e0b0eddb4473b7d838ec9d13444f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6896a061_59dcccbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2019-07-26T20:26:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61b14912_b30aa269",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 8
+      },
+      "revId": "7a226010d99e0b0eddb4473b7d838ec9d13444f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a17953a_dd0bd878",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2019-07-26T20:26:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a6a1e2b_bd05498b",
+      "range": {
+        "startLine": 90,
+        "startChar": 23,
+        "endLine": 90,
+        "endChar": 32
+      },
+      "revId": "7a226010d99e0b0eddb4473b7d838ec9d13444f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5f25a45_8bbf8c1d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 2
@@ -145,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "b3038317_4a62565f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2019-07-26T20:26:03Z",
+      "side": 1,
+      "message": "https://golang.org/pkg/strings/#ReplaceAll\nonly from 1.12 verison, we are on 1.11\nReplace(s, old, new, -1) is effectively the same",
+      "parentUuid": "f5f25a45_8bbf8c1d",
+      "range": {
+        "startLine": 91,
+        "startChar": 31,
+        "endLine": 91,
+        "endChar": 75
+      },
+      "revId": "7a226010d99e0b0eddb4473b7d838ec9d13444f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "439c057f_354bd0d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 2
@@ -156,6 +306,30 @@
       "writtenOn": "2019-07-26T02:18:11Z",
       "side": 1,
       "message": "I think CombinedOutput(testexec.DumpLogOnError) should work, then could you inline cmd ?",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 25
+      },
+      "revId": "7a226010d99e0b0eddb4473b7d838ec9d13444f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3917a1f_d5440dc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2019-07-26T20:26:03Z",
+      "side": 1,
+      "message": "https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/testexec/testexec.go?l\u003d27\n\nshould not inline?",
+      "parentUuid": "439c057f_354bd0d0",
       "range": {
         "startLine": 92,
         "startChar": 2,
@@ -191,6 +365,30 @@
     },
     {
       "key": {
+        "uuid": "d9503113_dd2cbd39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2019-07-26T20:26:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "981d0510_9a9c0411",
+      "range": {
+        "startLine": 98,
+        "startChar": 32,
+        "endLine": 98,
+        "endChar": 35
+      },
+      "revId": "7a226010d99e0b0eddb4473b7d838ec9d13444f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7a48049_c34058c5",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 2
@@ -205,6 +403,24 @@
       "revId": "7a226010d99e0b0eddb4473b7d838ec9d13444f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b161a59_461b58e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2019-07-26T20:26:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7a48049_c34058c5",
+      "revId": "7a226010d99e0b0eddb4473b7d838ec9d13444f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -225,6 +441,24 @@
     },
     {
       "key": {
+        "uuid": "b9867758_6676a446",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2019-07-26T20:26:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "662a5511_8ef28099",
+      "revId": "7a226010d99e0b0eddb4473b7d838ec9d13444f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1673003_8b614d7b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 2
@@ -239,6 +473,24 @@
       "revId": "7a226010d99e0b0eddb4473b7d838ec9d13444f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74a8abd8_8668f0da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2019-07-26T20:26:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1673003_8b614d7b",
+      "revId": "7a226010d99e0b0eddb4473b7d838ec9d13444f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
