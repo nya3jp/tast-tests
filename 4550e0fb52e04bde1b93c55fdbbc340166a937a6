@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de39e17b_d5e0e08c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-07-26T17:58:49Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 118,
+        "startChar": 19,
+        "endLine": 118,
+        "endChar": 23
+      },
+      "revId": "4550e0fb52e04bde1b93c55fdbbc340166a937a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aab09609_8e6ca3a9",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-07-26T17:58:49Z",
+      "side": 1,
+      "message": "This \"Normally\" is different from the Normal in \"CrashNormalMode().",
+      "range": {
+        "startLine": 183,
+        "startChar": 16,
+        "endLine": 183,
+        "endChar": 24
+      },
+      "revId": "4550e0fb52e04bde1b93c55fdbbc340166a937a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
