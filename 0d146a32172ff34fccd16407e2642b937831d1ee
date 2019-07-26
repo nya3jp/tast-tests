@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "6b83af8d_2c1055a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/camera/camera.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2019-07-26T01:08:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd687f01_b118ac56",
+      "range": {
+        "startLine": 161,
+        "startChar": 19,
+        "endLine": 161,
+        "endChar": 22
+      },
+      "revId": "0d146a32172ff34fccd16407e2642b937831d1ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99dedabc_b8bacbb1",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/lib/utils/utils.go",
         "patchSetId": 5
@@ -62,6 +86,24 @@
       "revId": "0d146a32172ff34fccd16407e2642b937831d1ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebc2c478_27441a15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/lib/utils/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2019-07-26T01:08:00Z",
+      "side": 1,
+      "message": "Renaming this to rtcchrome.\nFinding a better name for this is difficult because this package contains multiple things..\nMost of them are seems just file names.\nI perhaps should separate the code from ArgsWithCameraInput in another CL.",
+      "parentUuid": "99dedabc_b8bacbb1",
+      "revId": "0d146a32172ff34fccd16407e2642b937831d1ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "fdb60908_406643c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/lib/utils/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2019-07-26T01:08:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e9d0f5e_539148c1",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "0d146a32172ff34fccd16407e2642b937831d1ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "258afd7d_fc160aca",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/video_perf.go",
         "patchSetId": 5
@@ -102,6 +168,24 @@
       "revId": "0d146a32172ff34fccd16407e2642b937831d1ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "038725f1_9b8c2826",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/video_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2019-07-26T01:08:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "258afd7d_fc160aca",
+      "revId": "0d146a32172ff34fccd16407e2642b937831d1ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
