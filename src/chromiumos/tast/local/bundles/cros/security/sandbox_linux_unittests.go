@@ -11,7 +11,9 @@ import (
 	"strings"
 
 	"chromiumos/tast/crash"
-	"chromiumos/tast/local/chrome/bintest"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/gtest"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
 
@@ -48,10 +50,16 @@ func SandboxLinuxUnittests(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if ts, err := bintest.Run(ctx, exec, nil, s.OutDir()); err != nil {
+	if report, err := gtest.New(
+		filepath.Join(chrome.BinTestDir, exec),
+		gtest.Logfile(filepath.Join(s.OutDir(), "gtest.log")),
+		gtest.UID(int(sysutil.ChronosUID)),
+	).Run(ctx); err != nil {
 		s.Errorf("Failed to run %v: %v", exec, err)
-		for _, t := range ts {
-			s.Error(t, " failed")
+		if report != nil {
+			for _, name := range report.FailedTestNames() {
+				s.Error(name, " failed")
+			}
 		}
 	}
 }

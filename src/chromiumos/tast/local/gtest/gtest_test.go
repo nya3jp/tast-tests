@@ -12,6 +12,9 @@ import (
 	"reflect"
 	"regexp"
 	"testing"
+	"time"
+
+	"chromiumos/tast/errors"
 )
 
 func TestParseTestList(t *testing.T) {
@@ -46,6 +49,12 @@ func TestGTestToArgs(t *testing.T) {
 		expected: []string{"testexec", "--gtest_filter=pattern"},
 		opts:     []option{Filter("pattern")},
 	}, {
+		expected: []string{"testexec"},
+		opts:     []option{Filter("")},
+	}, {
+		expected: []string{"testexec", "--gtest_repeat=-1"},
+		opts:     []option{Repeat(-1)},
+	}, {
 		expected: []string{"testexec", "a", "b", "c"},
 		opts:     []option{ExtraArgs("a", "b", "c")},
 	}, {
@@ -68,25 +77,80 @@ func TestGTestToArgs(t *testing.T) {
 }
 
 const fakeGTest = `#!/bin/sh
-output="${1#--gtest_output=xml:}"
-echo "<testsuites></testsuites>" > "${output}"
+
+if [[ "$1" == --gtest_output=xml:* ]]; then
+  output="${1#--gtest_output=xml:}"
+  echo "<testsuites></testsuites>" > "${output}"
+fi
 echo "test log"
+exit 0
 `
 
-func TestLogfile(t *testing.T) {
-	ctx, cancel := context.WithCancel(context.Background())
-	defer cancel()
-
+func setUpTest() (td, gtest string, retErr error) {
 	td, err := ioutil.TempDir("", "gtest")
 	if err != nil {
-		t.Fatal("Failed to create temp dir: ", err)
+		return "", "", errors.Wrap(err, "failed to create temp dir")
+	}
+	defer func() {
+		if retErr != nil {
+			os.RemoveAll(td)
+		}
+	}()
+
+	gtest = filepath.Join(td, "gtest")
+	if err := ioutil.WriteFile(gtest, []byte(fakeGTest), 0755); err != nil {
+		return "", "", errors.Wrap(err, "failed to create an executable script")
+	}
+
+	return td, gtest, nil
+}
+
+func TestRun(t *testing.T) {
+	td, gtest, err := setUpTest()
+	if err != nil {
+		t.Fatal("Failed to set up test: ", err)
 	}
 	defer os.RemoveAll(td)
 
-	gtest := filepath.Join(td, "gtest")
-	if err := ioutil.WriteFile(gtest, []byte(fakeGTest), 0755); err != nil {
-		t.Fatal("Failed to create executable script: ", err)
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+
+	if report, err := New(gtest).Run(ctx); err != nil {
+		t.Fatal("Unexpected execution error: ", err)
+	} else if report == nil {
+		t.Fatal("Report is unexpectedly nil")
 	}
+}
+
+func TestStart(t *testing.T) {
+	td, gtest, err := setUpTest()
+	if err != nil {
+		t.Fatal("Failed to set up test: ", err)
+	}
+	defer os.RemoveAll(td)
+
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+
+	cmd, err := New(gtest).Start(ctx)
+	if err != nil {
+		t.Fatal("Unexpected execution error: ", err)
+	}
+	// The command is expected to be successfully terminated quickly.
+	if err := cmd.Wait(); err != nil {
+		t.Fatal("Unexpected wait error: ", err)
+	}
+}
+
+func TestLogfile(t *testing.T) {
+	td, gtest, err := setUpTest()
+	if err != nil {
+		t.Fatal("Failed to set up test: ", err)
+	}
+	defer os.RemoveAll(td)
+
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
 
 	logpath := filepath.Join(td, "log.txt")
 
@@ -105,19 +169,14 @@ func TestLogfile(t *testing.T) {
 }
 
 func TestTempLogfile(t *testing.T) {
-	ctx, cancel := context.WithCancel(context.Background())
-	defer cancel()
-
-	td, err := ioutil.TempDir("", "gtest")
+	td, gtest, err := setUpTest()
 	if err != nil {
-		t.Fatal("Failed to create temp dir: ", err)
+		t.Fatal("Failed to set up test: ", err)
 	}
 	defer os.RemoveAll(td)
 
-	gtest := filepath.Join(td, "gtest")
-	if err := ioutil.WriteFile(gtest, []byte(fakeGTest), 0755); err != nil {
-		t.Fatal("Failed to create executable script: ", err)
-	}
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
 
 	logpath := filepath.Join(td, "log_*.txt")
 

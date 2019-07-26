@@ -12,10 +12,12 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/fsutil"
-	"chromiumos/tast/local/chrome/bintest"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/media/vm"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -69,22 +71,26 @@ func CaptureUnittests(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to copy %s: %v", testFile, err)
 	}
 
-	args := []string{
-		logging.ChromeVmoduleFlag(),
-		"--test-launcher-jobs=1",
-	}
-
+	var filter string
 	if vm.IsRunningOnVM() {
 		// Since vivid doesn't support MJPEG,
 		// we cannot run CaptureMJpeg tests on ChromeOS VM.
-		args = append(args, "--gtest_filter=-*UsingRealWebcam_CaptureMjpeg*")
+		filter = "-*UsingRealWebcam_CaptureMjpeg*"
 	}
 
 	const exec = "capture_unittests"
-	if ts, err := bintest.Run(shortCtx, exec, args, s.OutDir()); err != nil {
+	if report, err := gtest.New(
+		filepath.Join(chrome.BinTestDir, exec),
+		gtest.Logfile(filepath.Join(s.OutDir(), exec+".log")),
+		gtest.Filter(filter),
+		gtest.ExtraArgs(logging.ChromeVmoduleFlag(), "--test-launcher-jobs=1"),
+		gtest.UID(int(sysutil.ChronosUID)),
+	).Run(shortCtx); err != nil {
 		s.Errorf("Failed to run %v: %v", exec, err)
-		for _, t := range ts {
-			s.Error(t, " failed")
+		if report != nil {
+			for _, name := range report.FailedTestNames() {
+				s.Error(name, " failed")
+			}
 		}
 	}
 }
