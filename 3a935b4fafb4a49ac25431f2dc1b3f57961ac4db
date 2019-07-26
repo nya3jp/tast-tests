@@ -16,6 +16,24 @@
       "revId": "3a935b4fafb4a49ac25431f2dc1b3f57961ac4db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58114a18_7082d9d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/capture_unittests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-07-26T16:15:12Z",
+      "side": 1,
+      "message": "I would like to see how effective is it before adding this logic to more camera tests. Note that things are a little bit tricky:\n\n- For camera.HAL3* tests, what we want is ensure the camera service is \"not\" running, so it\u0027s out of scope.\n\n- For camera.GCA* tests, we need to check the system prop ro.hardware.camera to know which camera service it would use (arc-camera/cros-camera)\n\n- For WebRTC tests I would like to wait until the renaming/moving settled. We might want to add this to webrtc.go as a utility function instead of putting this ~10 lines at the beginning of every camera related WebRTC test.",
+      "parentUuid": "e7c790a0_fc83b4b7",
+      "revId": "3a935b4fafb4a49ac25431f2dc1b3f57961ac4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
