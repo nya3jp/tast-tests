@@ -148,7 +148,7 @@ func VirtualTouchscreen(ctx context.Context) (*TouchscreenEventWriter, error) {
 			EV_KEY: makeBigInt([]uint64{0x400, 0, 0, 0, 0, 0}), // BTN_TOUCH
 			EV_ABS: big.NewInt(absSupportedAxes),
 			EV_MSC: big.NewInt(1 << MSC_TIMESTAMP),
-		})
+		}, nil)
 	if err != nil {
 		return nil, err
 	}

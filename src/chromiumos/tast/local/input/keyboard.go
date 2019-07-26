@@ -77,7 +77,7 @@ func VirtualKeyboard(ctx context.Context) (*KeyboardEventWriter, error) {
 			EV_KEY: makeBigInt([]uint64{0x402000000, 0x3803078f800d001, 0xfeffffdfffefffff, 0xfffffffffffffffe}),
 			EV_MSC: big.NewInt(1 << MSC_SCAN),
 			EV_LED: big.NewInt(1<<LED_NUML | 1<<LED_CAPSL | 1<<LED_SCROLLL),
-		}); err != nil {
+		}, nil); err != nil {
 		return nil, err
 	}
 
