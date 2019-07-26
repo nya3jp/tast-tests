@@ -163,6 +163,30 @@
       "revId": "7415cdd2592f63b41c1dfdc03fde7d6efdd6be9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "659003e6_d9df9130",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/daemon.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-26T19:20:38Z",
+      "side": 1,
+      "message": "Unfortunately, you\u0027re right. FYI: Or, alternatively you can define a thin function for each enum.",
+      "parentUuid": "6da83603_83143be7",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 2
+      },
+      "revId": "7415cdd2592f63b41c1dfdc03fde7d6efdd6be9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
