@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7c790a0_fc83b4b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/capture_unittests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-26T05:58:15Z",
+      "side": 1,
+      "message": "It seems that we have similar checks in other camera tests. (cca.go, hal.go)\nHow about adding this check in all camera tests? \ne.g. GCA tests, WebRTC tests",
+      "revId": "3a935b4fafb4a49ac25431f2dc1b3f57961ac4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
