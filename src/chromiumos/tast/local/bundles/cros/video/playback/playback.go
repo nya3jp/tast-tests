@@ -48,6 +48,18 @@ const (
 	DefaultPerfEnabled
 )
 
+// DecoderType represents the different video decoder types.
+type DecoderType int
+
+const (
+	// VDA is the video decoder type based on the VideoDecodeAccelerator
+	// interface. These are set to be deprecrated.
+	VDA DecoderType = iota
+	// VD is the video decoder type based on the VideoDecoder interface. These
+	// will eventually replace the current VDAs.
+	VD
+)
+
 type metricDesc string
 type metricValue float64
 
@@ -85,8 +97,9 @@ var metricDefs = []metricDef{
 // RunTest measures dropped frames, dropped frames percentage and CPU usage percentage in playing a video with/without HW Acceleration.
 // The measured values are reported to a dashboard. videoDesc is a video description shown on the dashboard.
 // If dps is DefaultPerfEnabled, an additional set of perf metrics will be recorded for default video playback. The default video playback
-// stands for HW-accelerated one if available, otherwise software playback.
-func RunTest(ctx context.Context, s *testing.State, videoName, videoDesc string, dps DefaultPerfState) {
+// stands for HW-accelerated one if available, otherwise software playback. decoderType specifies whether to run the tests against the VDA
+// or VD based video decoder implementations.
+func RunTest(ctx context.Context, s *testing.State, videoName, videoDesc string, dps DefaultPerfState, decoderType DecoderType) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -100,7 +113,7 @@ func RunTest(ctx context.Context, s *testing.State, videoName, videoDesc string,
 
 	perfData := collectedPerfData{}
 	s.Log("Measuring CPU usage, the number of dropped frames and percent")
-	if err := measurePerformance(ctx, s.DataFileSystem(), videoName, perfData); err != nil {
+	if err := measurePerformance(ctx, s.DataFileSystem(), videoName, perfData, decoderType); err != nil {
 		s.Fatal("Failed to collect CPU usage and dropped frames: ", err)
 	}
 	s.Log("Measured CPU usage, dropped frames and percent: ", perfData)
@@ -112,15 +125,16 @@ func RunTest(ctx context.Context, s *testing.State, videoName, videoDesc string,
 
 // measurePerformance collects video playback performance playing a video with SW decoder and
 // also with HW decoder if available.
-func measurePerformance(ctx context.Context, fileSystem http.FileSystem, videoName string, perfData collectedPerfData) error {
+func measurePerformance(ctx context.Context, fileSystem http.FileSystem, videoName string,
+	perfData collectedPerfData, decoderType DecoderType) error {
 	// Try Software playback.
-	if err := measureWithConfig(ctx, fileSystem, videoName, perfData, hwAccelDisabled); err != nil {
+	if err := measureWithConfig(ctx, fileSystem, videoName, perfData, hwAccelDisabled, decoderType); err != nil {
 		return err
 	}
 
 	// Try with Chrome's default settings. Even in this case, HW Acceleration may not be used, since a device doesn't
 	// have a capability to play the video with HW acceleration.
-	if err := measureWithConfig(ctx, fileSystem, videoName, perfData, hwAccelEnabled); err != nil {
+	if err := measureWithConfig(ctx, fileSystem, videoName, perfData, hwAccelEnabled, decoderType); err != nil {
 		return err
 	}
 	return nil
@@ -128,10 +142,15 @@ func measurePerformance(ctx context.Context, fileSystem http.FileSystem, videoNa
 
 // measureWithConfig plays video one time and measures performance values.
 // The measured values are recorded in perfData.
-func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, videoName string, perfData collectedPerfData, hwState hwAccelState) error {
+func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, videoName string,
+	perfData collectedPerfData, hwState hwAccelState, decoderType DecoderType) error {
 	var chromeArgs []string
 	if hwState == hwAccelDisabled {
 		chromeArgs = append(chromeArgs, "--disable-accelerated-video-decode")
+	}
+
+	if decoderType == VD {
+		chromeArgs = append(chromeArgs, "--enable-features=ChromeosVideoDecoder")
 	}
 
 	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))
