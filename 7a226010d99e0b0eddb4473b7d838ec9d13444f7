@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "a01f9b0b_b340630e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-07-26T23:19:35Z",
+      "side": 1,
+      "message": "These files should remain. We dump result to files so we can check them on failures (otherwise it\u0027s hard to diagnose).",
+      "parentUuid": "cb5e9577_5209525a",
+      "revId": "7a226010d99e0b0eddb4473b7d838ec9d13444f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "601ef419_65c72411",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 2

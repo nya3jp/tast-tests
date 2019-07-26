@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cab9902a_52801004",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-07-26T23:19:35Z",
+      "side": 1,
+      "message": "The result could make test logs less readable (https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting), let\u0027s keep dumping them to files instead (like what it was before).",
+      "range": {
+        "startLine": 78,
+        "startChar": 37,
+        "endLine": 78,
+        "endChar": 38
+      },
+      "revId": "b5b44f6395a52fdb5d85842b442e4bb59a74634a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "908da3c4_c83af6e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-07-26T23:19:35Z",
+      "side": 1,
+      "message": "why not combine this with install?",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 11
+      },
+      "revId": "b5b44f6395a52fdb5d85842b442e4bb59a74634a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e96d43b_4acda8ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-07-26T23:19:35Z",
+      "side": 1,
+      "message": "For each of these test section, i don\u0027t think we\u0027re validating the result (what images are present, or output from the operation, etc.)? Will be useful to validate them?",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 26
+      },
+      "revId": "b5b44f6395a52fdb5d85842b442e4bb59a74634a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52ea9c08_b8ebbb7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-07-26T23:19:35Z",
+      "side": 1,
+      "message": "what are the expected result of duplicated install?",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 26
+      },
+      "revId": "b5b44f6395a52fdb5d85842b442e4bb59a74634a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f76ec52_047558c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1178302
+      },
+      "writtenOn": "2019-07-26T23:19:35Z",
+      "side": 1,
+      "message": "why not call install?",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 11
+      },
+      "revId": "b5b44f6395a52fdb5d85842b442e4bb59a74634a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
