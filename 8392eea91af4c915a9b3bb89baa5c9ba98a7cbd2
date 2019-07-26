@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ed0f28d3_6896ccdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-07-26T17:04:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77568888_9f6b75de",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 50
+      },
+      "revId": "8392eea91af4c915a9b3bb89baa5c9ba98a7cbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "255481e4_e52302f8",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3e2806c0_6c67a4d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-07-26T17:04:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "255481e4_e52302f8",
+      "range": {
+        "startLine": 36,
+        "startChar": 28,
+        "endLine": 36,
+        "endChar": 32
+      },
+      "revId": "8392eea91af4c915a9b3bb89baa5c9ba98a7cbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e8e7d72_d8627c04",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
         "patchSetId": 4
@@ -62,6 +110,24 @@
       "revId": "8392eea91af4c915a9b3bb89baa5c9ba98a7cbd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "851251ee_e3911bef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/two_shills.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-07-26T17:04:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e8e7d72_d8627c04",
+      "revId": "8392eea91af4c915a9b3bb89baa5c9ba98a7cbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
