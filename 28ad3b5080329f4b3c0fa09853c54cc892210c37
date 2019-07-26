@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "51ad2500_cb73213d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-26T01:55:08Z",
+      "side": 1,
+      "message": "PlayDecodeAccelUsedVDH264",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "28ad3b5080329f4b3c0fa09853c54cc892210c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1145ab32_3379161b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-26T01:55:08Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 13,
+        "startChar": 11,
+        "endLine": 13,
+        "endChar": 36
+      },
+      "revId": "28ad3b5080329f4b3c0fa09853c54cc892210c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e4f1c760_26237752",
         "filename": "src/chromiumos/tast/local/media/pre/pre.go",
         "patchSetId": 3
