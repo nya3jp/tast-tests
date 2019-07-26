@@ -20,7 +20,6 @@ func init() {
 		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android_both", "chrome"},
-		Attr:         []string{"informational"},
 		Data:         []string{"todo-mvp.apk"},
 		Pre:          arc.Booted(),
 		Timeout:      4 * time.Minute,
