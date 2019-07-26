@@ -25,6 +25,7 @@ const (
 	uinputIoctlBase  = 'U' // UINPUT_IOCTL_BASE
 	devCreateIoctl   = 1   // UI_DEV_CREATE
 	devSetupIoctl    = 3   // UI_DEV_SETUP
+	absSetupIoctl    = 4   // UI_ABS_SETUP
 	getSysnameIoctl  = 44  // UI_GET_SYSNAME
 	setEvbitIoctl    = 100 // UI_SET_EVBIT
 	setPropbitIoctl  = 110 // UI_SET_PROPBIT
@@ -57,7 +58,7 @@ var eventTypeIoctls = map[EventType]uint{
 //
 // This function is similar to calling libevdev_uinput_create_from_device() with LIBEVDEV_UINPUT_OPEN_MANAGED.
 func createVirtual(name string, id devID, props, eventTypes uint32,
-	eventCodes map[EventType]*big.Int) (path string, f *os.File, err error) {
+	eventCodes map[EventType]*big.Int, axes map[AxisCode]AxisInfo) (path string, f *os.File, err error) {
 	if len(name) > uinputMaxNameLen {
 		return "", nil, errors.Errorf("name %q exceeds %d-byte limit", name, uinputMaxNameLen)
 	}
@@ -115,7 +116,7 @@ func createVirtual(name string, id devID, props, eventTypes uint32,
 	}
 
 	// Set the device's name and ID.
-	if err := performVirtDevSetup(f, name, id); err != nil {
+	if err := performVirtDevSetup(f, name, id, axes); err != nil {
 		return "", nil, errors.Wrap(err, "failed setting up device")
 	}
 
@@ -136,7 +137,7 @@ func createVirtual(name string, id devID, props, eventTypes uint32,
 }
 
 // performVirtDevSetup makes a UI_DEV_SETUP ioctl to a uinput FD to configure a virtual device.
-func performVirtDevSetup(f *os.File, name string, id devID) error {
+func performVirtDevSetup(f *os.File, name string, id devID, axes map[AxisCode]AxisInfo) error {
 	// Try writing a uinput_setup struct via the ioctl first.
 	uinputSetup := struct {
 		id           devID
@@ -147,6 +148,9 @@ func performVirtDevSetup(f *os.File, name string, id devID) error {
 
 	if err := ioctl(int(f.Fd()), iow(uinputIoctlBase, devSetupIoctl, unsafe.Sizeof(uinputSetup)),
 		uintptr(unsafe.Pointer(&uinputSetup))); err == nil {
+		if axes != nil {
+			return performVirtDevAxesSetup(f, axes)
+		}
 		return nil
 	}
 
@@ -161,8 +165,43 @@ func performVirtDevSetup(f *os.File, name string, id devID) error {
 	}{id: id}
 	copy(uinputUserDev.name[:], []byte(name))
 
+	if axes != nil {
+		for code, info := range axes {
+			uinputUserDev.absMax[code] = info.Maximum
+			uinputUserDev.absMin[code] = info.Minimum
+			uinputUserDev.absFuzz[code] = info.Fuzz
+			uinputUserDev.absFlat[code] = info.Flat
+		}
+	}
+
 	if err := binary.Write(f, binary.LittleEndian, &uinputUserDev); err != nil {
 		return errors.Wrap(err, "UI_DEV_SETUP ioctl and old-style write both failed")
+	}
+	return nil
+}
+
+func performVirtDevAxesSetup(f *os.File, axes map[AxisCode]AxisInfo) error {
+	for code, info := range axes {
+		uinputAbsSetup := struct {
+			code       uint16
+			value      int32
+			minimum    int32
+			maximum    int32
+			fuzz       int32
+			flat       int32
+			resolution int32
+		}{
+			code:       uint16(code),
+			value:      0,
+			minimum:    info.Minimum,
+			maximum:    info.Maximum,
+			fuzz:       info.Fuzz,
+			flat:       info.Flat,
+			resolution: info.Resolution}
+		if err := ioctl(int(f.Fd()), iow(uinputIoctlBase, absSetupIoctl, unsafe.Sizeof(uinputAbsSetup)),
+			uintptr(unsafe.Pointer(&uinputAbsSetup))); err != nil {
+			return err
+		}
 	}
 	return nil
 }

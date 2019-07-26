@@ -10,6 +10,18 @@ import (
 	"os"
 )
 
+// AxisCode represents
+type AxisCode uint16
+
+// AxisInfo represents
+type AxisInfo struct {
+	Maximum    int32
+	Minimum    int32
+	Fuzz       int32
+	Flat       int32
+	Resolution int32
+}
+
 // GamepadEventWriter supports injecting events into a virtual gamepad device.
 type GamepadEventWriter struct {
 	rw   *RawEventWriter
@@ -28,7 +40,8 @@ func Gamepad(ctx context.Context) (*GamepadEventWriter, error) {
 		map[EventType]*big.Int{
 			EV_KEY: makeBigInt([]uint64{0x3fff000000000000, 0, 0, 0, 0}),
 			EV_ABS: big.NewInt(0x26081000003003f),
-			EV_MSC: big.NewInt(0x10)}); err != nil {
+			EV_MSC: big.NewInt(0x10)},
+		gw.Axes()); err != nil {
 		return nil, err
 	}
 
@@ -66,6 +79,11 @@ func (gw *GamepadEventWriter) ProductID() uint16 { return 0x09cc }
 // DeviceName returns the device name of the virtual gamepad device.
 func (gw *GamepadEventWriter) DeviceName() string {
 	return "Wireless Controller"
+}
+
+// Axes returns the absolute axes of the virtual gamepad device.
+func (gw *GamepadEventWriter) Axes() map[AxisCode]AxisInfo {
+	return map[AxisCode]AxisInfo{}
 }
 
 // sendKey writes a EV_KEY event containing the specified code and value, followed by a EV_SYN event.
