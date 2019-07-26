@@ -137,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "57f4a224_4f502651",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-07-26T09:44:02Z",
+      "side": 1,
+      "message": "Thanks for the guidelines about tests with credentials.\n\n\"AD\" is the official abbreviation of Active Directory, so I\u0027ll use that.",
+      "parentUuid": "1b5b8a88_2b3079f7",
+      "revId": "bac30d595f534feb15f1c43d08d762c1de020df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02ceb567_ed7ed785",
         "filename": "src/chromiumos/tast/local/kerberos/kerberos.go",
         "patchSetId": 1

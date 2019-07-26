@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2d554247_e3998125",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/client/client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-07-26T09:44:02Z",
+      "side": 1,
+      "message": "Done. I did it this way since I found it confusing that the parent package is already called kerberos, but now it\u0027s called \u0027ad\u0027.",
+      "parentUuid": "cc9e0afd_0dcf9129",
+      "revId": "7415cdd2592f63b41c1dfdc03fde7d6efdd6be9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "67d490b2_e8fa32dc",
         "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/client/client.go",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "cea87895_7e06982e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/client/client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-07-26T09:44:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67d490b2_e8fa32dc",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 2
+      },
+      "revId": "7415cdd2592f63b41c1dfdc03fde7d6efdd6be9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b6fd876_5bb60289",
         "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/client/client.go",
         "patchSetId": 2
@@ -56,6 +98,24 @@
       "revId": "7415cdd2592f63b41c1dfdc03fde7d6efdd6be9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e516c0a_8d909070",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/client/client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-07-26T09:44:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b6fd876_5bb60289",
+      "revId": "7415cdd2592f63b41c1dfdc03fde7d6efdd6be9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -79,6 +139,30 @@
       "revId": "7415cdd2592f63b41c1dfdc03fde7d6efdd6be9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6da83603_83143be7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/daemon.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-07-26T09:44:02Z",
+      "side": 1,
+      "message": "Done. I wonder if enum values can be inlined, but I guess since go doesn\u0027t support generics, that\u0027s not possible without typecast.",
+      "parentUuid": "7cd05154_68cf2e3e",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 2
+      },
+      "revId": "7415cdd2592f63b41c1dfdc03fde7d6efdd6be9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
