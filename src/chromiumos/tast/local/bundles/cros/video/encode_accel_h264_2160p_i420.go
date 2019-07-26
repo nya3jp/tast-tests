@@ -22,7 +22,8 @@ func init() {
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeH264_4K},
 		Data:         []string{encode.Crowd2160P.Name},
-		Timeout:      4 * time.Minute,
+		// TODO(crbug.com/979497): Reduce to appropriate timeout after checking the exact execution time.
+		Timeout: 10 * time.Minute,
 	})
 }
 
