@@ -56,6 +56,16 @@ func CaptureUnittests(ctx context.Context, s *testing.State) {
 	}
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
+	// The cros-camera job exists only on boards that use the new camera stack.
+	if upstart.JobExists(shortCtx, "cros-camera") {
+		// Ensure that cros-camera service is running, because the service
+		// might stopped due to the errors from some previous tests, and failed
+		// to restart for some reasons.
+		if err := upstart.EnsureJobRunning(shortCtx, "cros-camera"); err != nil {
+			s.Fatal("Failed to start cros-camera: ", err)
+		}
+	}
+
 	// Copy bear.mjpeg to /usr/local/media/test/data/, where capture_unittests
 	// requires test data to exist in.
 	const (
