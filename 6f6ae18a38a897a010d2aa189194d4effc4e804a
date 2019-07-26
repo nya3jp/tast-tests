@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f052ee2b_cf51ade9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2019-07-26T07:49:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79d747bc_928aac09",
+      "range": {
+        "startLine": 37,
+        "startChar": 20,
+        "endLine": 37,
+        "endChar": 21
+      },
+      "revId": "6f6ae18a38a897a010d2aa189194d4effc4e804a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7471773e_8f589310",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-07-25T00:12:30Z",
       "side": 1,
       "message": "I guess we need to clear the timer state cache data here too",
+      "range": {
+        "startLine": 77,
+        "startChar": 3,
+        "endLine": 77,
+        "endChar": 13
+      },
+      "revId": "6f6ae18a38a897a010d2aa189194d4effc4e804a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbca8961_8b79d8d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2019-07-26T07:49:06Z",
+      "side": 1,
+      "message": "This test will only change timer state with SetTimerOption on line 60.\nAnd the state is changed by running with \"toggleTimer(true)\" on line 69 and cleared with \"toggleTimer(false)\" on line 72. We can\u0027t clean options here, because \"testRecordVideoWithTimer\" and \"testRecordCancelTimer\" still rely on timer state set by \"toggleTimer(true)\"",
+      "parentUuid": "7471773e_8f589310",
       "range": {
         "startLine": 77,
         "startChar": 3,
@@ -62,6 +110,24 @@
       "revId": "6f6ae18a38a897a010d2aa189194d4effc4e804a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0142d58d_45fb159f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/lib/caps/caps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2019-07-26T07:49:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82c68f9b_d162c922",
+      "revId": "6f6ae18a38a897a010d2aa189194d4effc4e804a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
