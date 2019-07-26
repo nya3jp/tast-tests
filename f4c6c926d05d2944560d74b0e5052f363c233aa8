@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "954c08b2_13ab86e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_vd_used_h264.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-26T01:17:22Z",
+      "side": 1,
+      "message": "Thanks for the suggestion! I originally used PlayDecodeAccelUsedVDH264 and changed it to PlayDecodeAccelVDUsedH264, but in retrospect the first one looks better.",
+      "parentUuid": "8cf8dcf9_55e4d57f",
+      "revId": "f4c6c926d05d2944560d74b0e5052f363c233aa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a2e7bb7_1dbcb0b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_vd_used_h264.go",
         "patchSetId": 2
@@ -66,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "de7fd427_a82737d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_vd_used_h264.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-26T01:17:22Z",
+      "side": 1,
+      "message": "Forgot to update this field :-) Added me and Aka.",
+      "parentUuid": "0324228b_e82ec62b",
+      "range": {
+        "startLine": 21,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 10
+      },
+      "revId": "f4c6c926d05d2944560d74b0e5052f363c233aa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7241a61_fd975686",
         "filename": "src/chromiumos/tast/local/media/pre/pre.go",
         "patchSetId": 2
@@ -80,6 +122,24 @@
       "revId": "f4c6c926d05d2944560d74b0e5052f363c233aa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4084f79c_b63862d5",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-26T01:17:22Z",
+      "side": 1,
+      "message": "I left it out, because it\u0027s already specified in ChromeVideo, but maybe it\u0027s a good idea to make it more explicit!",
+      "parentUuid": "f7241a61_fd975686",
+      "revId": "f4c6c926d05d2944560d74b0e5052f363c233aa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -103,6 +163,30 @@
       "revId": "f4c6c926d05d2944560d74b0e5052f363c233aa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05991284_92997e49",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-26T01:17:22Z",
+      "side": 1,
+      "message": "Good idea, thanks!",
+      "parentUuid": "1b5ca578_02f2706d",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 42
+      },
+      "revId": "f4c6c926d05d2944560d74b0e5052f363c233aa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
