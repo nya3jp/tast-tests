@@ -27,6 +27,14 @@ func ChromeVideoVD() testing.Precondition { return chromeVideoVDPre }
 
 var chromeVideoVDPre = chrome.NewPrecondition("videoVD", chromeArgs, chromeVDArgs)
 
+// ChromeVideoVDPerf returns a precondition that specifies that the new media::VideoDecoder-based
+// video decoders need to used (see go/vd-migration). This precondition doesn't enable verbose
+// logging which might affect performance, and should be used when running performance tests for
+// media::VideoDecoder-based video decoders.
+func ChromeVideoVDPerf() testing.Precondition { return chromeVideoVDPerfPre }
+
+var chromeVideoVDPerfPre = chrome.NewPrecondition("videoVDPerf", chromeVDPerfArgs)
+
 var chromeArgs = chrome.ExtraArgs(
 	// Enable verbose log messages for video components.
 	"--vmodule="+strings.Join([]string{
@@ -49,5 +57,9 @@ var chromeVDArgs = chrome.ExtraArgs(
 		"*/media/gpu/*mailbox_video_frame_converter.cc=2",
 		"*/media/gpu/*platform_video_frame_pool.cc=2",
 		"*/media/gpu/*video_decoder_pipeline.cc=2"}, ","),
+	// Enable media::VideoDecoder-based video decoders.
+	"--enable-features=ChromeosVideoDecoder")
+
+var chromeVDPerfArgs = chrome.ExtraArgs(
 	// Enable media::VideoDecoder-based video decoders.
 	"--enable-features=ChromeosVideoDecoder")
