@@ -229,14 +229,15 @@ func tabIsDiscarded(ctx context.Context, cr *chrome.Chrome, tabID int) (bool, er
 }
 
 // activateTab activates the tab for tabID, i.e. it selects the tab and brings
-// it to the foreground (equivalent to clicking on the tab).  Returns the time
-// it took to perform the switch.  Tolerates an activation failure if the tab
-// was discarded.
-func activateTab(ctx context.Context, cr *chrome.Chrome, tabID int, r *renderer) (time.Duration, error) {
+// it to the foreground (equivalent to clicking on the tab).  Returns whether
+// the activation succeeds and the time it took to perform the switch.
+// Tolerates an activation failure if the tab was discarded and returns false
+// but no error in this case.
+func activateTab(ctx context.Context, cr *chrome.Chrome, tabID int, r *renderer) (bool, time.Duration, error) {
 	code := fmt.Sprintf(`chrome.tabs.update(%d, {active: true}, () => { resolve() })`, tabID)
 	startTime := time.Now()
 	if err := execPromiseBodyInBrowser(ctx, cr, code); err != nil {
-		return 0, err
+		return false, 0, err
 	}
 	const promiseBody = `
 // Code which calls resolve() when a tab frame has been rendered.
@@ -267,15 +268,18 @@ func activateTab(ctx context.Context, cr *chrome.Chrome, tabID int, r *renderer)
 		// the discard and ignore it.
 		discarded, innerErr := tabIsDiscarded(ctx, cr, tabID)
 		if innerErr != nil {
-			return 0, errors.Wrap(innerErr, "failed to verify discard status")
+			return false, 0, errors.Wrap(innerErr, "failed to verify discard status")
 		}
-		if !discarded {
-			return 0, err
+		if discarded {
+			testing.ContextLogf(ctx, "Tab %d is discarded", tabID)
+			return false, 0, nil
 		}
+		// Some other type of error occurred.
+		return false, 0, err
 	}
 	switchTime := time.Now().Sub(startTime)
 	testing.ContextLogf(ctx, "Tab switch time for tab %3d: %7.2f ms", tabID, switchTime.Seconds()*1000)
-	return switchTime, nil
+	return true, switchTime, nil
 }
 
 // getValidTabIDs returns a list of non-discarded tab IDs.
@@ -352,7 +356,7 @@ func focusElement(ctx context.Context, r *renderer, selector string) error {
 	return r.conn.Exec(ctx, focusCode)
 }
 
-// googleLogin logs onto GAIA (NOT WORKING YET).
+// googleLogIn logs onto GAIA (NOT WORKING YET).
 func googleLogIn(ctx context.Context, cr *chrome.Chrome) error {
 	const loginURL = "https://accounts.google.com/ServiceLogin?continue=https%3A%2F%2Faccounts.google.com%2FManageAccount"
 	loginTab, err := addTab(ctx, cr, nil, loginURL, "", 0)
@@ -710,18 +714,20 @@ func cycleTabs(ctx context.Context, cr *chrome.Chrome, tabIDs []int, rset *rende
 	var times []time.Duration
 	for _, id := range tabIDs {
 		r := rset.renderersByTabID[id]
-		t, err := activateTab(ctx, cr, id, r)
+		success, t, err := activateTab(ctx, cr, id, r)
 		if err != nil {
 			return times, errors.Wrapf(err, "cannot activate tab %d", id)
 		}
-		times = append(times, t)
-		if wiggle {
-			if err := wiggleTab(ctx, r); err != nil {
-				return times, errors.Wrapf(err, "cannot wiggle tab %d", id)
-			}
-		} else {
-			if err := testing.Sleep(ctx, pause); err != nil {
-				return times, err
+		if success {
+			times = append(times, t)
+			if wiggle {
+				if err := wiggleTab(ctx, r); err != nil {
+					return times, errors.Wrapf(err, "cannot wiggle tab %d", id)
+				}
+			} else {
+				if err := testing.Sleep(ctx, pause); err != nil {
+					return times, err
+				}
 			}
 		}
 	}
