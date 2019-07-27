@@ -266,6 +266,54 @@
     },
     {
       "key": {
+        "uuid": "1d4efd06_784a3ad7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-27T01:52:51Z",
+      "side": 1,
+      "message": "for this specific case, this is not very strong so I wouldn\u0027t block this, but in general, structural data is much preferred than the string representation.\nIn this case, dlcs are conceptually an array (or more abstractly collection), so in the program it\u0027s better to be used in general. \u0027:\u0027 concat\u0027ed string is just a representation to pass to the command, right?",
+      "parentUuid": "eba53e2c_100c06ec",
+      "range": {
+        "startLine": 90,
+        "startChar": 17,
+        "endLine": 90,
+        "endChar": 21
+      },
+      "revId": "7a226010d99e0b0eddb4473b7d838ec9d13444f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6626cabb_dc4d54e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-27T01:52:51Z",
+      "side": 1,
+      "message": "Not done yet (Url needs to be URL).",
+      "parentUuid": "8a17953a_dd0bd878",
+      "range": {
+        "startLine": 90,
+        "startChar": 23,
+        "endLine": 90,
+        "endChar": 32
+      },
+      "revId": "7a226010d99e0b0eddb4473b7d838ec9d13444f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f5f25a45_8bbf8c1d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 2
@@ -348,6 +396,30 @@
       "side": 1,
       "message": "https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/testexec/testexec.go?l\u003d27\n\nshould not inline?",
       "parentUuid": "439c057f_354bd0d0",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 25
+      },
+      "revId": "7a226010d99e0b0eddb4473b7d838ec9d13444f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b0b4024_bb8e8ed2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-27T01:52:51Z",
+      "side": 1,
+      "message": "The example is using DumpLog() later, so needs to be an var.\nI\u0027ll update the example, later.",
+      "parentUuid": "f3917a1f_d5440dc0",
       "range": {
         "startLine": 92,
         "startChar": 2,

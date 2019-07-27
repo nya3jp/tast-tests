@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "cecb74dd_1f5f60e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-27T01:52:51Z",
+      "side": 1,
+      "message": "I think you\u0027d need to dump the log into file in case of failure, too?",
+      "revId": "b5b44f6395a52fdb5d85842b442e4bb59a74634a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cab9902a_52801004",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 3
