@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee56e215_b0d4d5b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-07-29T08:27:11Z",
+      "side": 1,
+      "message": "How about\n\n    for _, test :\u003d range []struct {\n        resizable bool\n        appControlled bool\n    }{{false, false}, {false, true}, {true, false}, {true, true}} {\n\nso that you can have fewer for-clauses?",
+      "revId": "3b36e8a77c6025a24f4b2adcc14ce2c44ec363a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b64f542_a3b3194e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-07-29T08:27:11Z",
+      "side": 1,
+      "message": "nit: making it a const and clarify the intention e.g. regularBounds?",
+      "range": {
+        "startLine": 115,
+        "startChar": 49,
+        "endLine": 117,
+        "endChar": 4
+      },
+      "revId": "3b36e8a77c6025a24f4b2adcc14ce2c44ec363a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e416066_3857dd12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-07-29T08:27:11Z",
+      "side": 1,
+      "message": "ditto, e.g. smallerBounds?",
+      "range": {
+        "startLine": 121,
+        "startChar": 49,
+        "endLine": 123,
+        "endChar": 4
+      },
+      "revId": "3b36e8a77c6025a24f4b2adcc14ce2c44ec363a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c14cad9_7d4fa246",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-07-29T08:27:11Z",
+      "side": 1,
+      "message": "nit: gotResizability is a bit awkward, how about actualResizability or actual, because it\u0027s clear from the context that it\u0027s about resizability",
+      "range": {
+        "startLine": 126,
+        "startChar": 3,
+        "endLine": 126,
+        "endChar": 18
+      },
+      "revId": "3b36e8a77c6025a24f4b2adcc14ce2c44ec363a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
