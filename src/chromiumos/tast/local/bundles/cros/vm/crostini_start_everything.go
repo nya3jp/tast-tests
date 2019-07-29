@@ -44,16 +44,6 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to run pwd: ", err)
 	}
 
-	// Stop the apt-daily systemd timers since they may end up running while we
-	// are executing the tests and cause failures due to resource contention.
-	for _, t := range []string{"apt-daily", "apt-daily-upgrade"} {
-		cmd := cont.Command(ctx, "sudo", "systemctl", "stop", t+".timer")
-		if err := cmd.Run(); err != nil {
-			cmd.DumpLog(ctx)
-			s.Fatalf("Failed to stop %s timer: %v", t, err)
-		}
-	}
-
 	// The VM and container have started up so we can now execute all of the other
 	// Crostini tests. We need to be careful about this because we are going to be
 	// testing multiple things in one test. This should be done so that no tests

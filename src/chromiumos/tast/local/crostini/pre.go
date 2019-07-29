@@ -121,6 +121,17 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 		}
 	}
 
+	// Stop the apt-daily systemd timers since they may end up running while we
+	// are executing the tests and cause failures due to resource contention.
+	for _, t := range []string{"apt-daily", "apt-daily-upgrade"} {
+		s.Log("Disabling service: ", t)
+		cmd := p.cont.Command(ctx, "sudo", "systemctl", "stop", t+".timer")
+		if err := cmd.Run(); err != nil {
+			cmd.DumpLog(ctx)
+			s.Fatalf("Failed to stop %s timer: %v", t, err)
+		}
+	}
+
 	chrome.Lock()
 	vm.Lock()
 
@@ -168,8 +179,8 @@ func (p *preImpl) cleanUp(ctx context.Context, s *testing.State) {
 	}
 }
 
-// Helper method that builds the PreData and resets the machine state in
-// advance of running the actual tests.
+// buildPreData is a helper method that resets the machine state in
+// advance of building the precondition data for the actual tests.
 func (p *preImpl) buildPreData(ctx context.Context, s *testing.State) PreData {
 	if err := p.cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed to reset chrome's state: ", err)
