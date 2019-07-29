@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package vm
+package crostini
 
 import (
 	"bytes"
@@ -18,21 +18,21 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     CrostiniNetworkPerf,
-		Desc:     "Tests Crostini network performance",
-		Contacts: []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
-		Attr:     []string{"group:crosbolt", "crosbolt_perbuild"},
-		// Data:         dataFiles,
+		Func:         NetworkPerf,
+		Desc:         "Tests Crostini network performance",
+		Contacts:     []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Timeout:      10 * time.Minute,
+		Data:         []string{crostini.ImageArtifact},
+		Pre:          crostini.StartedByArtifact(),
 		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
 }
@@ -133,41 +133,8 @@ func (dir connDirection) metricName(name string) string {
 	return fmt.Sprintf("%s_%s", prefix, name)
 }
 
-func CrostiniNetworkPerf(ctx context.Context, s *testing.State) {
-	// TODO(cylee): Consolidate container creation logic in a util function since it appears in multiple files.
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
-	s.Log("Enabling Crostini preference setting")
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create test API connection: ", err)
-	}
-	if err = vm.EnableCrostini(ctx, tconn); err != nil {
-		s.Fatal("Failed to enable Crostini preference setting: ", err)
-	}
-
-	s.Log("Setting up component ", vm.StagingComponent)
-	err = vm.SetUpComponent(ctx, vm.StagingComponent)
-	if err != nil {
-		s.Fatal("Failed to set up component: ", err)
-	}
-	defer vm.UnmountComponent(ctx)
-
-	s.Log("Creating default container")
-	cont, err := vm.CreateDefaultVMContainer(ctx, s.OutDir(), cr.User(), vm.StagingImageServer, "")
-	if err != nil {
-		s.Fatal("Failed to set up default container: ", err)
-	}
-	defer vm.StopConcierge(ctx)
-	defer func() {
-		if err := cont.DumpLog(ctx, s.OutDir()); err != nil {
-			s.Error("Failure dumping container log: ", err)
-		}
-	}()
+func NetworkPerf(ctx context.Context, s *testing.State) {
+	cont := s.PreValue().(crostini.PreData).Container
 
 	// TODO(cylee): Consolidate similar util function in other test files.
 	// Prepare error log file.
@@ -249,7 +216,7 @@ func CrostiniNetworkPerf(ctx context.Context, s *testing.State) {
 		if dir == hostToContainer {
 			pingCmd = testexec.CommandContext(ctx, pingArgs[0], append(pingArgs[1:], containerIP)...)
 		} else {
-			pingCmd = cont.Command(ctx, append(pingArgs, hostIP)...)
+			pingCmd = cont.Command(ctx, append(append([]string{"sudo"}, pingArgs...), hostIP)...)
 		}
 		out, err := runCmd(pingCmd)
 		if err != nil {
