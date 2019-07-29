@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0f7b1840_cb2b8e99",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-07-29T18:41:57Z",
+      "side": 1,
+      "message": "Thanks for the advice! This struct is unmarshalled from a newly defined map object here [1], I can add a reference after the new API change check in.\n\n[1] https://chromium-review.googlesource.com/c/chromium/src/+/1552293/7/chrome/common/extensions/api/autotest_private.idl#164",
+      "parentUuid": "f64706d9_74e04e04",
+      "revId": "785e02d23490cd04b69fb2eee6fb5c4e101833e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "275f2f27_5920fa93",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "785e02d23490cd04b69fb2eee6fb5c4e101833e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f90a524c_ba26fd86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-07-29T18:41:57Z",
+      "side": 1,
+      "message": "Sure, done.",
+      "parentUuid": "275f2f27_5920fa93",
+      "revId": "785e02d23490cd04b69fb2eee6fb5c4e101833e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "785e02d23490cd04b69fb2eee6fb5c4e101833e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9868f0f3_0df34431",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-07-29T18:41:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d19ccab8_6573a989",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 2
+      },
+      "revId": "785e02d23490cd04b69fb2eee6fb5c4e101833e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
