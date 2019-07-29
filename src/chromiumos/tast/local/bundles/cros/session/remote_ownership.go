@@ -33,11 +33,11 @@ func init() {
 }
 
 func RemoteOwnership(ctx context.Context, s *testing.State) {
-	if err := ownership.SetUpDevice(ctx); err != nil {
+	if err := session.SetUpDevice(ctx); err != nil {
 		s.Fatal("Failed to reset device ownership: ", err)
 	}
 
-	privKey, err := ownership.ExtractPrivKey(s.DataPath("testcert.p12"))
+	privKey, err := session.ExtractPrivKey(s.DataPath("testcert.p12"))
 	if err != nil {
 		s.Fatal("Failed to parse PKCS #12 file: ", err)
 	}
@@ -46,16 +46,16 @@ func RemoteOwnership(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create session_manager binding: ", err)
 	}
-	if err := ownership.PrepareChromeForTesting(ctx, sm); err != nil {
+	if err := session.PrepareChromeForTesting(ctx, sm); err != nil {
 		s.Fatal("Failed to prepare Chrome for testing: ", err)
 	}
 
 	// Initial policy set up.
 	settings := ownership.BuildTestSettings("")
-	if err := ownership.StoreSettings(ctx, sm, "", privKey, nil, settings); err != nil {
+	if err := session.StoreSettings(ctx, sm, "", privKey, nil, settings); err != nil {
 		s.Fatal("Failed to store settings: ", err)
 	}
-	if retrieved, err := ownership.RetrieveSettings(ctx, sm); err != nil {
+	if retrieved, err := session.RetrieveSettings(ctx, sm); err != nil {
 		s.Fatal("Failed to retrieve settings: ", err)
 	} else if diff := cmp.Diff(settings, retrieved); diff != "" {
 		const diffName = "diff.txt"
@@ -70,10 +70,10 @@ func RemoteOwnership(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to generate RSA key: ", err)
 	}
-	if err := ownership.StoreSettings(ctx, sm, "", privKey, nil, settings); err != nil {
+	if err := session.StoreSettings(ctx, sm, "", privKey, nil, settings); err != nil {
 		s.Fatal("Failed to store rekeyed settings: ", err)
 	}
-	if retrieved, err := ownership.RetrieveSettings(ctx, sm); err != nil {
+	if retrieved, err := session.RetrieveSettings(ctx, sm); err != nil {
 		s.Fatal("Failed to retrieve rekeyed settings: ", err)
 	} else if diff := cmp.Diff(settings, retrieved); diff != "" {
 		const diffName = "diff-rekeyed.txt"
@@ -103,10 +103,10 @@ func RemoteOwnership(ctx context.Context, s *testing.State) {
 	if err = sm.StartSession(ctx, testUser, ""); err != nil {
 		s.Fatal("Failed to start session: ", err)
 	}
-	if err := ownership.StoreSettings(ctx, sm, "", newPrivKey, privKey, settings); err != nil {
+	if err := session.StoreSettings(ctx, sm, "", newPrivKey, privKey, settings); err != nil {
 		s.Fatal("Failed to store user settings: ", err)
 	}
-	if retrieved, err := ownership.RetrieveSettings(ctx, sm); err != nil {
+	if retrieved, err := session.RetrieveSettings(ctx, sm); err != nil {
 		s.Fatal("Failed to retrieve user settings: ", err)
 	} else if diff := cmp.Diff(settings, retrieved); diff != "" {
 		const diffName = "diff-user.txt"

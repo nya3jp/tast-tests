@@ -177,7 +177,7 @@ func OwnershipAPI(ctx context.Context, s *testing.State) {
 	)
 
 	p12Path := s.DataPath("testcert.p12")
-	privKey, err := ownership.ExtractPrivKey(p12Path)
+	privKey, err := session.ExtractPrivKey(p12Path)
 	if err != nil {
 		s.Fatal("Failed to parse PKCS #12 file: ", err)
 	}
@@ -189,7 +189,7 @@ func OwnershipAPI(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create session_manager binding: ", err)
 	}
-	if err := ownership.PrepareChromeForTesting(ctx, sm); err != nil {
+	if err := session.PrepareChromeForTesting(ctx, sm); err != nil {
 		s.Fatal("Failed to prepare Chrome for testing: ", err)
 	}
 
@@ -198,12 +198,12 @@ func OwnershipAPI(ctx context.Context, s *testing.State) {
 	}
 
 	settings := ownership.BuildTestSettings(testUser)
-	if err := ownership.StoreSettings(ctx, sm, testUser, privKey, nil, settings); err != nil {
+	if err := session.StoreSettings(ctx, sm, testUser, privKey, nil, settings); err != nil {
 		s.Fatal("Failed to store settings data: ", err)
 	}
 
 	// Fetch the data from the session_manager.
-	ret, err := ownership.RetrieveSettings(ctx, sm)
+	ret, err := session.RetrieveSettings(ctx, sm)
 	if err != nil {
 		s.Fatal("Failed to retrieve settings: ", err)
 	}

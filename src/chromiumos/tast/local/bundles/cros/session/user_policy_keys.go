@@ -41,7 +41,7 @@ func UserPolicyKeys(ctx context.Context, s *testing.State) {
 		testUser = "test@foo.com"
 		testPass = "test_password"
 	)
-	privKey, err := ownership.ExtractPrivKey(s.DataPath("testcert.p12"))
+	privKey, err := session.ExtractPrivKey(s.DataPath("testcert.p12"))
 	if err != nil {
 		s.Fatal("Failed to parse PKCS #12 file: ", err)
 	}
@@ -118,12 +118,12 @@ func UserPolicyKeys(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
-	policy, err := ownership.BuildPolicy("", privKey, nil, &enterprise_management.ChromeDeviceSettingsProto{})
+	policy, err := session.BuildPolicy("", privKey, nil, &enterprise_management.ChromeDeviceSettingsProto{})
 	if err != nil {
 		s.Fatal("Failed to build test policy data: ", err)
 	}
 
-	if err := ownership.SetUpDevice(ctx); err != nil {
+	if err := session.SetUpDevice(ctx); err != nil {
 		s.Fatal("Failed to reset device ownership: ", err)
 	}
 
@@ -131,7 +131,7 @@ func UserPolicyKeys(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create session_manager binding: ", err)
 	}
-	if err := ownership.PrepareChromeForTesting(ctx, sm); err != nil {
+	if err := session.PrepareChromeForTesting(ctx, sm); err != nil {
 		s.Fatal("Failed to prepare Chrome for testing: ", err)
 	}
 

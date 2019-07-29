@@ -38,12 +38,12 @@ func OwnershipRetaken(ctx context.Context, s *testing.State) {
 		testPass = "testme"
 	)
 
-	privKey, err := ownership.ExtractPrivKey(s.DataPath("testcert.p12"))
+	privKey, err := session.ExtractPrivKey(s.DataPath("testcert.p12"))
 	if err != nil {
 		s.Fatal("Failed to parse PKCS #12 file: ", err)
 	}
 
-	if err := ownership.SetUpDevice(ctx); err != nil {
+	if err := session.SetUpDevice(ctx); err != nil {
 		s.Fatal("Failed to reset device ownership: ", err)
 	}
 
@@ -55,13 +55,13 @@ func OwnershipRetaken(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create session_manager binding: ", err)
 	}
-	if err := ownership.PrepareChromeForTesting(ctx, sm); err != nil {
+	if err := session.PrepareChromeForTesting(ctx, sm); err != nil {
 		s.Fatal("Failed to prepare Chrome for testing: ", err)
 	}
 
 	// Pre-configure some owner settings, including initial key.
 	settings := ownership.BuildTestSettings(testUser)
-	if err := ownership.StoreSettings(ctx, sm, testUser, privKey, nil, settings); err != nil {
+	if err := session.StoreSettings(ctx, sm, testUser, privKey, nil, settings); err != nil {
 		s.Fatal("Failed to store settings: ", err)
 	}
 
@@ -118,7 +118,7 @@ func OwnershipRetaken(ctx context.Context, s *testing.State) {
 	}
 
 	// Fetch the data from the session_manager.
-	ret, err := ownership.RetrieveSettings(ctx, sm)
+	ret, err := session.RetrieveSettings(ctx, sm)
 	if err != nil {
 		s.Fatal("Failed to retrieve settings: ", err)
 	}
