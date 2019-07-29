@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a9bd56e_d6e1f84e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2019-07-29T05:34:49Z",
+      "side": 1,
+      "message": "optional: Does it make sense to move this into vkb.go?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 1
+      },
+      "revId": "3e9e05daa94e98132be225225df9487f4b1b1d00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
