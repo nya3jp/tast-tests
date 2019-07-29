@@ -10,7 +10,6 @@ import (
 	"github.com/golang/protobuf/proto"
 
 	"chromiumos/policy/enterprise_management"
-	"chromiumos/tast/local/bundles/cros/session/ownership"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
@@ -30,7 +29,7 @@ func init() {
 func GuestAndActualSession(ctx context.Context, s *testing.State) {
 	const testUser = "first_user@nowhere.com"
 
-	if err := ownership.SetUpDevice(ctx); err != nil {
+	if err := session.SetUpDevice(ctx); err != nil {
 		s.Fatal("Failed to reset device ownership: ", err)
 	}
 
@@ -42,7 +41,7 @@ func GuestAndActualSession(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create session_manager binding: ", err)
 	}
-	if err := ownership.PrepareChromeForTesting(ctx, sm); err != nil {
+	if err := session.PrepareChromeForTesting(ctx, sm); err != nil {
 		s.Fatal("Failed to prepare Chrome for testing: ", err)
 	}
 
@@ -83,7 +82,7 @@ func GuestAndActualSession(ctx context.Context, s *testing.State) {
 		s.Fatal("Timed out waiting for PropertyChangeComplete or SetOwnerKeyComplete signal: ", ctx.Err())
 	}
 
-	ret, err := sm.RetrievePolicyEx(ctx, ownership.DevicePolicyDescriptor())
+	ret, err := sm.RetrievePolicyEx(ctx, session.DevicePolicyDescriptor())
 	if err != nil {
 		s.Fatal("Failed to retrieve policy: ", err)
 	}
