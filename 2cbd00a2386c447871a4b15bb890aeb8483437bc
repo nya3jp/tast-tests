@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6caafc54_76b458b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-29T23:32:15Z",
+      "side": 1,
+      "message": "I am only seeing permission issues after the switch, do you happen to know what else i\u0027d need to change to get the right caps/uid here?",
+      "parentUuid": "fceda1fa_da30dc0e",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "2cbd00a2386c447871a4b15bb890aeb8483437bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c740e24_300b7be8",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
