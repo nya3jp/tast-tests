@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "11955a86_de6cdb5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-07-29T21:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "125e7ba7_bc6b5db8",
+      "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c091153b_c09a9855",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65a6ed1c_89621a24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-07-29T21:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c091153b_c09a9855",
+      "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +112,48 @@
     },
     {
       "key": {
+        "uuid": "e365e03e_3c939783",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-07-29T21:49:33Z",
+      "side": 1,
+      "message": "Every test that calls chrome.New is blowing away the consent setting. See https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/local/chrome/chrome.go#569 which calls https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/master/src/chromiumos/tast/local/session/ownership.go#36. I don\u0027t think there\u0027s a point in trying to preserve the settings here when it\u0027s just whatever was left from that last test.",
+      "parentUuid": "b8e87d21_5f6af6ec",
+      "range": {
+        "startLine": 36,
+        "startChar": 30,
+        "endLine": 36,
+        "endChar": 44
+      },
+      "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "921400c7_8a02081c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-07-29T21:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18bfb498_776fb2ed",
+      "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c6a56ca_34b7efbe",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
         "patchSetId": 2
@@ -90,6 +168,24 @@
       "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bd2fb02_da2a1b79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-07-29T21:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c6a56ca_34b7efbe",
+      "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "3708b8d7_18f95dd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_not_logged_in.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-07-29T21:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dd62f58_14028029",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24529759_5a6d435c",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 2
@@ -139,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "5084d0eb_56e20899",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-07-29T21:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24529759_5a6d435c",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4cc4aed_74b55ac9",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 2
@@ -153,6 +297,24 @@
       "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9862d64_e95e4e80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-07-29T21:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4cc4aed_74b55ac9",
+      "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -179,6 +341,30 @@
     },
     {
       "key": {
+        "uuid": "43522f68_f3dee77c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-07-29T21:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e9fde95_ddf8f9e7",
+      "range": {
+        "startLine": 99,
+        "startChar": 24,
+        "endLine": 99,
+        "endChar": 82
+      },
+      "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb13cb0d_81d37bc4",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 2
@@ -202,6 +388,30 @@
     },
     {
       "key": {
+        "uuid": "1d96186d_c4a3df20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-07-29T21:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb13cb0d_81d37bc4",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 106,
+        "endChar": 19
+      },
+      "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4f82c85_87b4540c",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 2
@@ -216,6 +426,24 @@
       "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "158b3480_3dce3794",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-07-29T21:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4f82c85_87b4540c",
+      "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
