@@ -85,16 +85,17 @@ func FindProcessesByExe(ps []Process, exe string, revese bool) []Process {
 	return found
 }
 
-// FindProcessesByCmdline returns processes from ps with Cmdline fields matching
-// partial regular expression cmdlineRegex.
-func FindProcessesByCmdline(ps []Process, cmdlineRegex string) ([]Process, error) {
+// FindProcessesByCmdline returns processes from ps with Cmdline fields
+// matching(reverse=false) or not matching(reverse=true) partial regular
+// expression cmdlineRegex.
+func FindProcessesByCmdline(ps []Process, cmdlineRegex string, reverse bool) ([]Process, error) {
 	var found []Process
 	for _, proc := range ps {
 		matched, err := regexp.MatchString(cmdlineRegex, proc.Cmdline)
 		if err != nil {
 			return nil, err
 		}
-		if matched {
+		if matched != reverse {
 			found = append(found, proc)
 		}
 	}

@@ -52,9 +52,10 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 
 	type searchType int
 	const (
-		exe     searchType = iota // absolute executable path
-		notExe                    // not absolute executable path
-		cmdline                   // partial regular expression matched against command line
+		exe        searchType = iota // absolute executable path
+		notExe                       // not absolute executable path
+		cmdline                      // partial regular expression matched against command line
+		notCmdline                   // not matching the regular expression
 	)
 	const (
 		zeroProcs int = 0
@@ -110,9 +111,9 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 			}...)
 		case Unstable:
 			testCases = append(testCases, []testCaseType{
-				{notExe, "/sbin/minijail0", notStr("minijail"), zeroProcs}, // These processes shouldn't exist.
-				{cmdline, ".*", notStr("chromeos"), zeroProcs},             // These processes shouldn't exist.
-				{cmdline, ".*", notStr("minijailed"), zeroProcs},           // These processes shouldn't exist.
+				{notExe, "/sbin/minijail0", notStr("minijail"), zeroProcs},                             // These processes shouldn't exist.
+				{notCmdline, ".*(frecon|agetty|ping|recover_duts).*", notStr("chromeos"), zeroProcs},   // These processes shouldn't exist.
+				{notCmdline, ".*(frecon|agetty|ping|recover_duts).*", notStr("minijailed"), zeroProcs}, // These processes shouldn't exist.
 			}...)
 		}
 	}
@@ -126,7 +127,9 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 		case notExe:
 			p = FindProcessesByExe(ps, testCase.query, true)
 		case cmdline:
-			p, err = FindProcessesByCmdline(ps, testCase.query)
+			p, err = FindProcessesByCmdline(ps, testCase.query, false)
+		case notCmdline:
+			p, err = FindProcessesByCmdline(ps, testCase.query, true)
 		default:
 			err = errors.Errorf("%+v has invalid searchType %d", testCase, int(testCase.field))
 		}
