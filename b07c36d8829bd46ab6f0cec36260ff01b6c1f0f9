@@ -105,6 +105,24 @@
       "revId": "b07c36d8829bd46ab6f0cec36260ff01b6c1f0f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f985e5e_716a6ff7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/lib/pre/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2019-07-29T05:04:14Z",
+      "side": 0,
+      "message": "We don\u0027t want to put a file which is not a test in a top directory (bundles/cros/webrtc here). \nWe have put a code that is commonly used across test code to put lib directory.\nwebrtc/camera and webrtc/video are used from webrtc camera and webrtc video separately. But the code in lib would be used in both tests. I would like to have a common place I can put in such a code.",
+      "parentUuid": "d04d6e4a_df177a04",
+      "revId": "b07c36d8829bd46ab6f0cec36260ff01b6c1f0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
