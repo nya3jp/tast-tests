@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef5c9b92_44994bb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1002188
+      },
+      "writtenOn": "2019-07-29T18:50:32Z",
+      "side": 1,
+      "message": "This is a bit hard to read. How about\n\npingCommand :\u003d append([]string{\"sudo\"}, pingArgs...)\npingCommand \u003d append(pingCommand, hostIP)\n\nOr just at L210\npingArgs :\u003d []string {\n  \"sudo\", \"ping\",\n  \"...\"\n  \"...\n}\n?",
+      "range": {
+        "startLine": 219,
+        "startChar": 31,
+        "endLine": 219,
+        "endChar": 37
+      },
+      "revId": "2cbd00a2386c447871a4b15bb890aeb8483437bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
