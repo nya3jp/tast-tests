@@ -296,6 +296,24 @@
     },
     {
       "key": {
+        "uuid": "6fd08f55_97661df3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_modes.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1132275
+      },
+      "writtenOn": "2019-07-29T21:43:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a752a24a_de80830c",
+      "revId": "95fdc675bf47796f06c8009248eacda499aa5a6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "994d50f1_255f169a",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
         "patchSetId": 4
