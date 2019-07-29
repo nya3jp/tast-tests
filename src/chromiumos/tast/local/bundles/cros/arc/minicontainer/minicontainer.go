@@ -96,7 +96,6 @@ func testCoreServices(ctx context.Context, s *testing.State) {
 			"android.hardware.cas@1.0-service",
 			"android.hardware.configstore@1.1-service",
 			"android.hardware.graphics.allocator@2.0-service",
-			"android.hardware.keymaster@3.0-service",
 			"android.hidl.allocator@1.0-service",
 			"audioserver",
 			"hwservicemanager",
