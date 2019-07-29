@@ -413,6 +413,24 @@
     },
     {
       "key": {
+        "uuid": "b32fe36e_9f5d3be1",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-29T02:50:26Z",
+      "side": 1,
+      "message": "IMO unit tests are not just for checking existing code, but also for aiding future refactoring and documenting expectation. I general I\u0027d expect an exported function to have at least one unit test, though I\u0027m open for opinions if you think differently.\nIn this case I\u0027d test what the function comment says. i.e. executes an (fake) gtest and wait on the returned command, and check the result is as expected (I\u0027d use LogFile). Admittedly some portion would duplicate with existing tests I don\u0027t think it\u0027s intolerably lengthy, but I added  a proposal in the test file to potentially reduce some duplication.",
+      "parentUuid": "12283a18_2942bfbd",
+      "revId": "027871ccb6df675cf9ba571c417478b6ce14a6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "972aa391_51c38b87",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 2
@@ -460,6 +478,30 @@
     },
     {
       "key": {
+        "uuid": "3bdb5627_a5325b26",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-29T02:50:26Z",
+      "side": 1,
+      "message": "Ack.\nHmm I see. Thank you.",
+      "parentUuid": "fa2ddb17_95e132ec",
+      "range": {
+        "startLine": 252,
+        "startChar": 16,
+        "endLine": 252,
+        "endChar": 28
+      },
+      "revId": "027871ccb6df675cf9ba571c417478b6ce14a6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2f6fc12_511b372f",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 2
@@ -504,6 +546,30 @@
       "revId": "027871ccb6df675cf9ba571c417478b6ce14a6d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f96dbae3_824660a6",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-29T02:50:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "004bae06_2b8826e4",
+      "range": {
+        "startLine": 296,
+        "startChar": 43,
+        "endLine": 296,
+        "endChar": 58
+      },
+      "revId": "027871ccb6df675cf9ba571c417478b6ce14a6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

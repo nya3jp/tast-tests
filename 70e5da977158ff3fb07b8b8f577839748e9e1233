@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aa4bfd8_b40a587f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-29T02:50:26Z",
+      "side": 1,
+      "message": "Could you elaborate how the logging strategy changed?",
+      "range": {
+        "startLine": 9,
+        "startChar": 43,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "70e5da977158ff3fb07b8b8f577839748e9e1233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b22a025_4ccf8b4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-29T02:50:26Z",
+      "side": 1,
+      "message": "Could you describe the new logfile naming convention?",
+      "range": {
+        "startLine": 9,
+        "startChar": 26,
+        "endLine": 9,
+        "endChar": 38
+      },
+      "revId": "70e5da977158ff3fb07b8b8f577839748e9e1233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8263f03e_e83f1501",
+        "filename": "src/chromiumos/tast/local/gtest/gtest_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-29T02:50:26Z",
+      "side": 1,
+      "message": "Sorry I missed it before, but I realized you don\u0027t test Report returned by Run. \nCould you add a test for it possibly in a different CL?\nI\u0027d add a minimal check in this function.",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 6
+      },
+      "revId": "70e5da977158ff3fb07b8b8f577839748e9e1233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d37a95f_ebedb7d1",
+        "filename": "src/chromiumos/tast/local/gtest/gtest_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-29T02:50:26Z",
+      "side": 1,
+      "message": "optional: I think you could extract this as a common part if you would write a test for Start.\n\ngtest, logfile, cleanup :\u003d setUpGTest(t)\ndefer cleanup()\nif _, err :\u003d gtest.Run(ctx); err !\u003d nil {\n ...",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 42
+      },
+      "revId": "70e5da977158ff3fb07b8b8f577839748e9e1233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
