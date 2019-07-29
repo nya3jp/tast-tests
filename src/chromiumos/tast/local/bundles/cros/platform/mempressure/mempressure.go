@@ -352,7 +352,7 @@ func focusElement(ctx context.Context, r *renderer, selector string) error {
 	return r.conn.Exec(ctx, focusCode)
 }
 
-// googleLogin logs onto GAIA (NOT WORKING YET).
+// googleLogIn logs onto GAIA (NOT WORKING YET).
 func googleLogIn(ctx context.Context, cr *chrome.Chrome) error {
 	const loginURL = "https://accounts.google.com/ServiceLogin?continue=https%3A%2F%2Faccounts.google.com%2FManageAccount"
 	loginTab, err := addTab(ctx, cr, nil, loginURL, "", 0)
@@ -832,68 +832,12 @@ func runAndLogSwapStats(ctx context.Context, f func(), meter *kernelmeter.Meter)
 	}
 }
 
-// RunParameters contains the configurable parameters for Run.
-type RunParameters struct {
-	// DormantCodePath is the path name of a JS file with code that tests
-	// for completion of a page load.
-	DormantCodePath string
-	// PageFilePath is the path name of a file with one page (4096 bytes)
-	// of data.
-	PageFilePath string
-	// PageFileCompressionRatio is the approximate zram compression ratio of the content of PageFilePath.
-	PageFileCompressionRatio float64
-	// WPRArchivePath is the path name of a WPR archive.
-	WPRArchivePath string
-	// MaxTabCount is the maximal tab count to open
-	MaxTabCount int
-	// UseLogIn controls whether Run should use GAIA login.
-	// (This is not yet functional.)
-	UseLogIn bool
-	// UseLiveSites controls whether Run should skip WPR and
-	// load pages directly from the internet.
-	UseLiveSites bool
-	// RecordPageSet instructs Run to run in record mode
-	// vs. replay mode.
-	RecordPageSet bool
-	// FakeLargeScreen instructs Chrome to use a large screen when no
-	// displays are connected, which can happen, for instance, with
-	// chromeboxes (otherwise Chrome will configure a default 1366x768
-	// screen).
-	FakeLargeScreen bool
-}
-
-// Run creates a memory pressure situation by loading multiple tabs into Chrome
-// until the first tab discard occurs.  It takes various measurements as the
-// pressure increases (phase 1) and afterwards (phase 2).
-func Run(ctx context.Context, s *testing.State, p *RunParameters) {
-	const (
-		initialTabSetSize    = 5
-		recentTabSetSize     = 5
-		coldTabSetSize       = 10
-		tabSwitchRepeatCount = 10
-	)
-
-	memInfo, err := kernelmeter.MemInfo()
-	if err != nil {
-		s.Fatal("Cannot obtain memory info: ", err)
-	}
-
-	if p.RecordPageSet {
-		// Don't attempt to record the pageset on a 2GB device.
-		minimumRAM := kernelmeter.NewMemSizeMiB(3 * 1024)
-		if memInfo.Total < minimumRAM {
-			s.Fatalf("Not enough RAM to record page set: have %v, want %v or more",
-				memInfo.Total, minimumRAM)
-		}
-	}
-	rset := &rendererSet{renderersByTabID: make(map[int]*renderer)}
-
-	// Create and start the performance meters.  fullMeter takes
-	// measurements through each full phase of the test.  partialMeter
-	// takes a measurement after the addition of each tab.  switchMeter
+// runPhase1 runs the first phase of the test, creating a memory pressure situation by loading multiple tabs
+// into Chrome until the first tab discard occurs. Various measurements are taken as the pressure increases.
+func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunParameters, initialTabSetSize, recentTabSetSize, tabSwitchRepeatCount int, fullMeter *kernelmeter.Meter) ([]int, *rendererSet) {
+	// Create and start the performance meters.  partialMeter takes
+	// a measurement after the addition of each tab.  switchMeter
 	// takes measurements around tab switches.
-	fullMeter := kernelmeter.New(ctx)
-	defer fullMeter.Close(ctx)
 	partialMeter := kernelmeter.New(ctx)
 	defer partialMeter.Close(ctx)
 	switchMeter := kernelmeter.New(ctx)
@@ -908,40 +852,7 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 
 	perfValues := perf.NewValues()
 
-	cr, wpr, err := initBrowser(ctx, p)
-	if err != nil {
-		s.Fatal("Cannot start browser: ", err)
-	}
-	defer cr.Close(ctx)
-	defer func() {
-		if wpr == nil {
-			return
-		}
-		defer wpr.Wait()
-		// Send SIGINT to exit properly in recording mode.
-		if err := wpr.Process.Signal(os.Interrupt); err != nil {
-			s.Fatal("Cannot kill WPR")
-		}
-	}()
-
-	// Log various system measurements, to help understand the memory
-	// manager behavior.
-	if err := kernelmeter.LogMemoryParameters(ctx, p.PageFileCompressionRatio); err != nil {
-		s.Fatal("Cannot log memory parameters: ", err)
-	}
-
-	// Log in.  TODO(semenzato): this is not working (yet), we would like
-	// to have it for gmail and similar.
-	if p.UseLogIn {
-		s.Log("Logging in")
-		if err := googleLogIn(ctx, cr); err != nil {
-			s.Fatal("Cannot login to google: ", err)
-		}
-	}
-
-	if err := logScreenDimensions(ctx, cr); err != nil {
-		s.Fatal("Cannot get screen dimensions: ", err)
-	}
+	rset := &rendererSet{renderersByTabID: make(map[int]*renderer)}
 
 	// Figure out how many tabs already exist (typically 1).
 	validTabIDs, err := getValidTabIDs(ctx, cr)
@@ -964,7 +875,7 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		if err != nil {
 			s.Fatal("Cannot add initial tab from list: ", err)
 		}
-		defer renderer.conn.Close()
+
 		if err := wiggleTab(ctx, renderer); err != nil {
 			s.Error("Cannot wiggle initial tab: ", err)
 		}
@@ -1017,12 +928,11 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 			}
 		}, switchMeter)
 		logPSIStats(s)
-		renderer, err := addTab(ctx, cr, rset, tabURLs[urlIndex], isDormantExpr, tabLoadTimeout)
+		_, err = addTab(ctx, cr, rset, tabURLs[urlIndex], isDormantExpr, tabLoadTimeout)
 		urlIndex = (1 + urlIndex) % len(tabURLs)
 		if err != nil {
 			s.Fatal("Cannot add tab from list: ", err)
 		}
-		defer renderer.conn.Close()
 		logAndResetStats(s, partialMeter, fmt.Sprintf("tab %d", len(rset.tabIDs)))
 		if z, err := kernelmeter.ZramStats(ctx); err != nil {
 			if !loggedMissingZramStats {
@@ -1075,17 +985,19 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	s.Logf("Metrics: Phase 1: stddev of tab switch times %7.2f ms", stdDev(times).Seconds()*1000)
 
 	recordAndResetStats(s, fullMeter, perfValues, "phase_1")
+	return initialTabSetIDs, rset
+}
 
-	// -----------------
-	// Phase 2: measure tab switch times to cold tabs.
-	// -----------------
+// runPhase2 runs the second phase of the test, measuring tab switch times to cold tabs.
+func runPhase2(ctx context.Context, s *testing.State, cr *chrome.Chrome, rset *rendererSet, initialTabSetSize, coldTabSetSize int, fullMeter *kernelmeter.Meter) {
+	perfValues := perf.NewValues()
 	coldTabLower := initialTabSetSize
 	coldTabUpper := coldTabLower + coldTabSetSize
 	if coldTabUpper > len(rset.tabIDs) {
 		coldTabUpper = len(rset.tabIDs)
 	}
 	coldTabIDs := rset.tabIDs[coldTabLower:coldTabUpper]
-	times, err = cycleTabs(ctx, cr, coldTabIDs, rset, 0, false)
+	times, err := cycleTabs(ctx, cr, coldTabIDs, rset, 0, false)
 	if err != nil {
 		s.Fatal("Cannot switch to cold tabs: ", err)
 	}
@@ -1093,9 +1005,11 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 
 	recordAndResetStats(s, fullMeter, perfValues, "coldswitch")
 
-	// -----------------
-	// Phase 3: quiesce.
-	// -----------------
+}
+
+// runPhase3 runs the third phase of the test, quiesce.
+func runPhase3(ctx context.Context, s *testing.State, cr *chrome.Chrome, rset *rendererSet, initialTabSetIDs []int, tabSwitchRepeatCount int, fullMeter *kernelmeter.Meter) {
+	perfValues := perf.NewValues()
 	// Wait a bit to help the system stabilize.
 	if err := testing.Sleep(ctx, 10*time.Second); err != nil {
 		s.Fatal("Timed out: ", err)
@@ -1105,6 +1019,123 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		s.Error("Cannot run tab switches with heavy load: ", err)
 	}
 	recordAndResetStats(s, fullMeter, perfValues, "phase_3")
+}
+
+// RunParameters contains the configurable parameters for Run.
+type RunParameters struct {
+	// DormantCodePath is the path name of a JS file with code that tests
+	// for completion of a page load.
+	DormantCodePath string
+	// PageFilePath is the path name of a file with one page (4096 bytes)
+	// of data.
+	PageFilePath string
+	// PageFileCompressionRatio is the approximate zram compression ratio of the content of PageFilePath.
+	PageFileCompressionRatio float64
+	// WPRArchivePath is the path name of a WPR archive.
+	WPRArchivePath string
+	// MaxTabCount is the maximal tab count to open
+	MaxTabCount int
+	// UseLogIn controls whether Run should use GAIA login.
+	// (This is not yet functional.)
+	UseLogIn bool
+	// UseLiveSites controls whether Run should skip WPR and
+	// load pages directly from the internet.
+	UseLiveSites bool
+	// RecordPageSet instructs Run to run in record mode
+	// vs. replay mode.
+	RecordPageSet bool
+	// FakeLargeScreen instructs Chrome to use a large screen when no
+	// displays are connected, which can happen, for instance, with
+	// chromeboxes (otherwise Chrome will configure a default 1366x768
+	// screen).
+	FakeLargeScreen bool
+}
+
+// Run creates a memory pressure situation by loading multiple tabs into Chrome
+// until the first tab discard occurs.  It takes various measurements as the
+// pressure increases (phase 1) and afterwards (phase 2).
+func Run(ctx context.Context, s *testing.State, p *RunParameters) {
+	const (
+		initialTabSetSize    = 5
+		recentTabSetSize     = 5
+		coldTabSetSize       = 10
+		tabCycleDelay        = 300 * time.Millisecond
+		tabSwitchRepeatCount = 10
+	)
+
+	memInfo, err := kernelmeter.MemInfo()
+	if err != nil {
+		s.Fatal("Cannot obtain memory info: ", err)
+	}
+
+	if p.RecordPageSet {
+		// Don't attempt to record the pageset on a 2GB device.
+		minimumRAM := kernelmeter.NewMemSizeMiB(3 * 1024)
+		if memInfo.Total < minimumRAM {
+			s.Fatalf("Not enough RAM to record page set: have %v, want %v or more",
+				memInfo.Total, minimumRAM)
+		}
+	}
+
+	// Create and start the performance meter.  fullMeter takes
+	// measurements through each full phase of the test.
+	fullMeter := kernelmeter.New(ctx)
+	defer fullMeter.Close(ctx)
+
+	perfValues := perf.NewValues()
+
+	cr, wpr, err := initBrowser(ctx, p)
+	if err != nil {
+		s.Fatal("Cannot start browser: ", err)
+	}
+	defer cr.Close(ctx)
+	defer func() {
+		if wpr == nil {
+			return
+		}
+		defer wpr.Wait()
+		// Send SIGINT to exit properly in recording mode.
+		if err := wpr.Process.Signal(os.Interrupt); err != nil {
+			s.Fatal("Cannot kill WPR")
+		}
+	}()
+
+	// Log various system measurements, to help understand the memory
+	// manager behavior.
+	if err := kernelmeter.LogMemoryParameters(ctx, p.PageFileCompressionRatio); err != nil {
+		s.Fatal("Cannot log memory parameters: ", err)
+	}
+
+	// Log in.  TODO(semenzato): this is not working (yet), we would like
+	// to have it for gmail and similar.
+	if p.UseLogIn {
+		s.Log("Logging in")
+		if err := googleLogIn(ctx, cr); err != nil {
+			s.Fatal("Cannot login to google: ", err)
+		}
+	}
+
+	if err := logScreenDimensions(ctx, cr); err != nil {
+		s.Fatal("Cannot get screen dimensions: ", err)
+	}
+
+	initialTabSetIDs, rset := runPhase1(ctx, s, cr, p, initialTabSetSize, recentTabSetSize, tabSwitchRepeatCount, fullMeter)
+
+	tIDs := rset.tabIDs[:]
+	for _, id := range tIDs {
+		r := rset.renderersByTabID[id]
+		defer r.conn.Close()
+	}
+
+	// -----------------
+	// Phase 2: measure tab switch times to cold tabs.
+	// -----------------
+	runPhase2(ctx, s, cr, rset, initialTabSetSize, coldTabSetSize, fullMeter)
+
+	// -----------------
+	// Phase 3: quiesce.
+	// -----------------
+	runPhase3(ctx, s, cr, rset, initialTabSetIDs, tabSwitchRepeatCount, fullMeter)
 
 	if err = perfValues.Save(s.OutDir()); err != nil {
 		s.Error("Cannot save perf data: ", err)
