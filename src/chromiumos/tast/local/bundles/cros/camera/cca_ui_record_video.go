@@ -62,7 +62,8 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err := cca.RunThruCameras(ctx, app, func() {
+	if err := cca.RunThruCameras(ctx, app, func(facing cca.Facing) error {
+		testing.ContextLogf(ctx, "Switch to %v facing camera", facing)
 		for _, action := range []struct {
 			name string
 			run  func(context.Context, *cca.App) error
@@ -80,6 +81,7 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 			}
 			testing.ContextLog(ctx, "Finish ", action.name)
 		}
+		return nil
 	}); err != nil {
 		s.Fatal("Failed to run tests through all cameras: ", err)
 	}
@@ -122,28 +124,8 @@ func testRecordVideo(ctx context.Context, app *cca.App) error {
 }
 
 func testRecordVideoWithTimer(ctx context.Context, app *cca.App) error {
-	start := time.Now()
-	testing.ContextLog(ctx, "Click on start shutter")
-	if err := app.ClickShutter(ctx); err != nil {
-		return err
-	}
-	if err := testing.Sleep(ctx, cca.TimerDelay+time.Second); err != nil {
-		return err
-	}
-	testing.ContextLog(ctx, "Click on stop shutter")
-	if err := app.ClickShutter(ctx); err != nil {
-		return err
-	}
-	if err := app.WaitForState(ctx, "taking", false); err != nil {
-		return errors.Wrap(err, "shutter is not ended")
-	}
-	if result, err := app.WaitForFileSaved(ctx, cca.VideoPattern, start); err != nil {
-		return errors.Wrap(err, "cannot find result video")
-	} else if elapsed := result.ModTime().Sub(start); elapsed < cca.TimerDelay {
-		return errors.Errorf("the capture should happen after timer of %v, actual elapsed time %v", cca.TimerDelay, elapsed)
-	}
-
-	return nil
+	_, err := app.RecordVideo(ctx, cca.TimerOn, time.Second)
+	return err
 }
 
 func testRecordCancelTimer(ctx context.Context, app *cca.App) error {
