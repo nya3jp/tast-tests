@@ -31,10 +31,15 @@ func SetBounds(ctx context.Context, s *testing.State) {
 	const (
 		apk = "ArcSetBoundsTest.apk"
 		pkg = "org.chromium.arc.testapp.setbounds"
-		cls = ".MainActivity"
 
-		regularButtonID = pkg + ":id/regular_button"
-		smallerButtonID = pkg + ":id/smaller_button"
+		resizableActivity   = ".ResizableActivity"
+		unresizableActivity = ".UnresizableActivity"
+
+		regularButtonID       = pkg + ":id/regular_button"
+		smallerButtonID       = pkg + ":id/smaller_button"
+		appControlledButtonID = pkg + ":id/controlled_toggle_button"
+		unresizableButtonID   = pkg + ":id/go_unresizable_button"
+		resizableButtonID     = pkg + ":id/go_resizable_button"
 
 		initialHeight = 500
 		initialWidth  = 600
@@ -45,7 +50,7 @@ func SetBounds(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
-	act, err := arc.NewActivity(a, pkg, cls)
+	act, err := arc.NewActivity(a, pkg, resizableActivity)
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
 	}
@@ -103,15 +108,44 @@ func SetBounds(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// The bounds below bounds are specified in
-	// pi-arc/vendor/google_arc/packages/development/ArcSetBoundsTest/src/org/chromium/arc/testapp/setbounds/MainActivity.java
-	clickButtonAndValidateBounds(regularButtonID, arc.Rect{
-		Left: 100, Top: 100, Width: 800, Height: 800,
-	})
+	for _, resizable := range []bool{true, false} {
+		for _, appControlled := range []bool{false, true} {
+			// The bounds below bounds are specified in
+			// pi-arc/vendor/google_arc/packages/development/ArcSetBoundsTest/src/org/chromium/arc/testapp/setbounds/BaseActivity.java
+			clickButtonAndValidateBounds(regularButtonID, arc.Rect{
+				Left: 100, Top: 100, Width: 800, Height: 800,
+			})
 
-	// In the second action, the activity requests smaller bounds than its min-size.
-	// The framework expands the bounds to the its min-size (which is also specified in AndrodiManifest.xml).
-	clickButtonAndValidateBounds(smallerButtonID, arc.Rect{
-		Left: 200, Top: 200, Width: 300, Height: 400,
-	})
+			// In the second action, the activity requests smaller bounds than its min-size.
+			// The framework expands the bounds to the its min-size (which is also specified in AndrodiManifest.xml).
+			clickButtonAndValidateBounds(smallerButtonID, arc.Rect{
+				Left: 200, Top: 200, Width: 300, Height: 400,
+			})
+
+			// Even if app specified its bounds, the resizablity depends on its configuration.
+			gotResizability, err := act.IsResizable(ctx)
+			if err != nil {
+				s.Fatal("Failed to get isResizable state: ", err)
+			}
+			if resizable != gotResizability {
+				s.Fatalf("window resizability is not expected: got %b; want %b", gotResizability, resizable)
+			}
+
+			// Window resizability does not depends on appControlled conditions.
+			if err := d.Object(ui.ID(appControlledButtonID)).Click(ctx); err != nil {
+				s.Fatalf("Could not click the button with id %q to toggle AppControlled = %b: %v", appControlledButtonID, appControlled, err)
+			}
+		}
+
+		var nextButtonID string
+		if resizable {
+			nextButtonID = unresizableButtonID
+		} else {
+			nextButtonID = resizableButtonID
+		}
+
+		if err := d.Object(ui.ID(nextButtonID)).Click(ctx); err != nil {
+			s.Fatalf("Could not click the button with id %q", nextButtonID)
+		}
+	}
 }
