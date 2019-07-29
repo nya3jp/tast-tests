@@ -22,6 +22,30 @@
       "revId": "1e5984dfcaa8042b785cb32546f8bd8102712016",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "893108c7_9f1c7bc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-07-29T02:27:11Z",
+      "side": 1,
+      "message": "Yes. I forgot to remove these lines while revising.",
+      "parentUuid": "c5a47461_aff4eb58",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 62
+      },
+      "revId": "1e5984dfcaa8042b785cb32546f8bd8102712016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
