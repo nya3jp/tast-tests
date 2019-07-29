@@ -112,6 +112,8 @@ type taskInfo struct {
 	// idle represents the activity idle state.
 	// If the TaskRecord contains more than one activity, it refers to the most recent one.
 	idle bool
+	// resizable represents whether the activity is user-resizable or not.
+	resizable bool
 }
 
 const (
@@ -429,6 +431,15 @@ func (ac *Activity) PackageName() string {
 	return ac.pkgName
 }
 
+// Resizable returns the window resizability.
+func (ac *Activity) Resizable(ctx context.Context) (bool, error) {
+	task, err := ac.getTaskInfo(ctx)
+	if err != nil {
+		return false, errors.Wrap(err, "could not get task info")
+	}
+	return task.resizable, nil
+}
+
 // swipe injects touch events in a straight line. The line is defined by from and to, in pixels.
 // t represents the duration of the swipe.
 // The last touch event will be held in its position for a few ms to prevent triggering "minimize" or similar gestures.
@@ -533,11 +544,13 @@ func (ac *Activity) getTasksInfo(ctx context.Context) (tasks []taskInfo, err err
 		`(?:\n.*?)*` + // Non-greedy skip lines.
 		`\s+realActivity=(.*)\/(.*)` + // Grab package name (group 8) and activity name (group 9).
 		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`\s+mWindowMode=\d+.*taskWindowState=(\d+)` + // Grab window state (group 10).
+		`.*\s+isResizeable=(\S+).*$` + // Grab window resizeablitiy (group 10).
+		`(?:\n.*?)*` + // Non-greedy skip lines.
+		`\s+mWindowMode=\d+.*taskWindowState=(\d+).*$` + // Grab window state (group 11).
 		`(?:\n.*?)*` + // Non-greedy skip lines.
 		`\s+ActivityRecord{.*` + // At least one ActivityRecord must be present.
 		`(?:\n.*?)*` + // Non-greedy skip lines.
-		`.*\s+idle=(\S+)` // Idle state (group 11).
+		`.*\s+idle=(\S+)` // Idle state (group 12).
 	re := regexp.MustCompile(regStr)
 	matches := re.FindAllStringSubmatch(string(output), -1)
 	// At least it must match one activity. Home and/or Dummy activities must be present.
@@ -561,7 +574,7 @@ func (ac *Activity) getTasksInfo(ctx context.Context) (tasks []taskInfo, err err
 			{&t.id, 1},
 			{&t.stackID, 6},
 			{&t.stackSize, 7},
-			{&windowState, 10},
+			{&windowState, 11},
 		} {
 			*dst.v, err = strconv.Atoi(groups[dst.group])
 			if err != nil {
@@ -570,7 +583,11 @@ func (ac *Activity) getTasksInfo(ctx context.Context) (tasks []taskInfo, err err
 		}
 		t.pkgName = groups[8]
 		t.activityName = groups[9]
-		t.idle, err = strconv.ParseBool(groups[11])
+		t.resizable, err = strconv.ParseBool(groups[10])
+		if err != nil {
+			return nil, err
+		}
+		t.idle, err = strconv.ParseBool(groups[12])
 		if err != nil {
 			return nil, err
 		}

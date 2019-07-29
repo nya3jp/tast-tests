@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/ArcSetBoundsTest_20190719.apk",
-  "size": 12769,
-  "sha256sum": "69c238903ad74924549c82a725cf9ca26db1fc163cc60dd06daf3c5861eadab6"
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/ArcSetBoundsTest_20190729.apk",
+  "size": 17019,
+  "sha256sum": "e6e642c35a2f94620bfdf782d59b99328dbc2da4d5d442762fcdb084fbaba0e4"
 }
