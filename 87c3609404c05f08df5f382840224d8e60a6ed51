@@ -1,0 +1,221 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "125e7ba7_bc6b5db8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-29T16:02:06Z",
+      "side": 1,
+      "message": "Could you add test owner now? Maybe you?\n\nhttps://godoc.org/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/testing#Test\n\n\u003d\u003d quote \u003d\u003d\nAt least one personal email address of an active committer should be specified ...\n\u003d\u003d quote end \u003d\u003d\n\nditto for below.",
+      "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c091153b_c09a9855",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-29T16:02:06Z",
+      "side": 1,
+      "message": "Could you use s.Log() for simplicity and consistency?",
+      "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18bfb498_776fb2ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-29T16:02:06Z",
+      "side": 1,
+      "message": "Could you use testexec for timeout?\noptional: You may want to pass testexec.DumpLogOnError to Run() for diagnose in case of failure.",
+      "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c6a56ca_34b7efbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-29T16:02:06Z",
+      "side": 1,
+      "message": "style: could you combine this and the line above?\n\nif err :\u003d testexe.Command(ctx, ...).Run(...); err !\u003d nil {\n  s.Fatal(...)\n}",
+      "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dd62f58_14028029",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_not_logged_in.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-29T16:02:06Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24529759_5a6d435c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-29T16:02:06Z",
+      "side": 1,
+      "message": "Go prefers short name.\nHow about cryptohomeCrashDirs() ?",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4cc4aed_74b55ac9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-29T16:02:06Z",
+      "side": 1,
+      "message": "nit: break ?",
+      "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e9fde95_ddf8f9e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-29T16:02:06Z",
+      "side": 1,
+      "message": "one sentence error message is preferred. How about;\n\"could not ... in %s (possible files: %v)\"\n?",
+      "range": {
+        "startLine": 99,
+        "startChar": 24,
+        "endLine": 99,
+        "endChar": 82
+      },
+      "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb13cb0d_81d37bc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-29T16:02:06Z",
+      "side": 1,
+      "message": "you can \"return nil\" here.",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 106,
+        "endChar": 19
+      },
+      "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4f82c85_87b4540c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-29T16:02:06Z",
+      "side": 1,
+      "message": "you need to \"return\" an error.",
+      "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4df2a3f3_2ffac5e4",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-29T16:02:06Z",
+      "side": 1,
+      "message": "style:\n\nvar envVars []string",
+      "range": {
+        "startLine": 553,
+        "startChar": 1,
+        "endLine": 553,
+        "endChar": 29
+      },
+      "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
