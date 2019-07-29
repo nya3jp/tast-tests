@@ -154,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "cc47e197_8b8612e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2019-07-29T22:18:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e365e03e_3c939783",
+      "range": {
+        "startLine": 36,
+        "startChar": 30,
+        "endLine": 36,
+        "endChar": 44
+      },
+      "revId": "87c3609404c05f08df5f382840224d8e60a6ed51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c6a56ca_34b7efbe",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
         "patchSetId": 2
