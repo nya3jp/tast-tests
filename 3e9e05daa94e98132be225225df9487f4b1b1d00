@@ -22,6 +22,30 @@
       "revId": "3e9e05daa94e98132be225225df9487f4b1b1d00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a941a08_663283b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-07-29T06:44:45Z",
+      "side": 1,
+      "message": "I\u0027m a bit reluctant to merge waitUntilShownOrHidden into vkb.WaitUntilShown\n1. ultimately vkb.WaitUntilShown is for VK opened by vkb.ShowVirtualKeyboard\n2. vkb.WaitUntilShown is for test preparation while it is for testing VK visibility change itself\n\nHow about moving this to vkb when there\u0027s other usage?",
+      "parentUuid": "3a9bd56e_d6e1f84e",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 1
+      },
+      "revId": "3e9e05daa94e98132be225225df9487f4b1b1d00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
