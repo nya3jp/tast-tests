@@ -39,14 +39,6 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 	if err := app.WaitForVideoActive(ctx); err != nil {
 		s.Fatal("Preview is inactive after launching App: ", err)
 	}
-	restartApp := func() {
-		if err := app.Restart(ctx); err != nil {
-			s.Fatal("Failed to restart CCA: ", err)
-		}
-		if err := app.WaitForVideoActive(ctx); err != nil {
-			s.Fatal("Preview is inactive after restart App: ", err)
-		}
-	}
 
 	testing.ContextLog(ctx, "Switch to video mode")
 	if err := app.SwitchMode(ctx, cca.Video); err != nil {
@@ -56,30 +48,30 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 		s.Fatal("Preview is inactive after switch to video mode: ", err)
 	}
 
-	toggleTimer := func(active bool) func(context.Context, *cca.App) error {
+	toggleTimer := func(timerState cca.TimerState) func(context.Context, *cca.App) error {
 		return func(ctx context.Context, app *cca.App) error {
-			return app.SetTimerOption(ctx, active)
+			return app.SetTimerOption(ctx, timerState)
 		}
 	}
 
-	if err := cca.RunThruCameras(ctx, app, func() {
+	if err := cca.RunThroughCameras(ctx, app, func(facing cca.Facing) error {
 		for _, action := range []struct {
 			name string
 			run  func(context.Context, *cca.App) error
 		}{
 			{"testRecordVideo", testRecordVideo},
-			{"toggleTimer(true)", toggleTimer(true)},
+			{"toggleTimer(cca.TimerOn)", toggleTimer(cca.TimerOn)},
 			{"testRecordVideoWithTimer", testRecordVideoWithTimer},
 			{"testRecordCancelTimer", testRecordCancelTimer},
-			{"toggleTimer(false)", toggleTimer(false)},
+			{"toggleTimer(cca.TimerOff)", toggleTimer(cca.TimerOff)},
 		} {
 			testing.ContextLog(ctx, "Start ", action.name)
 			if err := action.run(ctx, app); err != nil {
-				s.Errorf("Failed in %v(): %v", action.name, err)
-				restartApp()
+				return errors.Wrapf(err, "failed in %v()", action.name)
 			}
 			testing.ContextLog(ctx, "Finish ", action.name)
 		}
+		return nil
 	}); err != nil {
 		s.Fatal("Failed to run tests through all cameras: ", err)
 	}
@@ -122,28 +114,8 @@ func testRecordVideo(ctx context.Context, app *cca.App) error {
 }
 
 func testRecordVideoWithTimer(ctx context.Context, app *cca.App) error {
-	start := time.Now()
-	testing.ContextLog(ctx, "Click on start shutter")
-	if err := app.ClickShutter(ctx); err != nil {
-		return err
-	}
-	if err := testing.Sleep(ctx, cca.TimerDelay+time.Second); err != nil {
-		return err
-	}
-	testing.ContextLog(ctx, "Click on stop shutter")
-	if err := app.ClickShutter(ctx); err != nil {
-		return err
-	}
-	if err := app.WaitForState(ctx, "taking", false); err != nil {
-		return errors.Wrap(err, "shutter is not ended")
-	}
-	if result, err := app.WaitForFileSaved(ctx, cca.VideoPattern, start); err != nil {
-		return errors.Wrap(err, "cannot find result video")
-	} else if elapsed := result.ModTime().Sub(start); elapsed < cca.TimerDelay {
-		return errors.Errorf("the capture should happen after timer of %v, actual elapsed time %v", cca.TimerDelay, elapsed)
-	}
-
-	return nil
+	_, err := app.RecordVideo(ctx, cca.TimerOn, time.Second)
+	return err
 }
 
 func testRecordCancelTimer(ctx context.Context, app *cca.App) error {
