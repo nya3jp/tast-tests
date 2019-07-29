@@ -79,6 +79,12 @@ type App struct {
 	scriptPaths []string
 }
 
+// Resolution represents dimension of video or photo.
+type Resolution struct {
+	Width  int `json:"width"`
+	Height int `json:"height"`
+}
+
 // New launches a CCA instance and evaluates the helper script within it. The
 // scriptPath should be the data path to the helper script cca_ui.js.
 func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, error) {
@@ -330,6 +336,33 @@ func (a *App) GetFacing(ctx context.Context) (Facing, error) {
 	return facing, nil
 }
 
+// GetPreviewResolution returns resolution of preview video.
+func (a *App) GetPreviewResolution(ctx context.Context) (Resolution, error) {
+	r := Resolution{-1, -1}
+	if err := a.conn.EvalPromise(ctx, "Tast.getPreviewResolution()", &r); err != nil {
+		return r, errors.Wrap(err, "failed to get preview resolution")
+	}
+	return r, nil
+}
+
+// GetPhotoResolutions returns available photo resolutions of active camera on HALv3 device.
+func (a *App) GetPhotoResolutions(ctx context.Context) ([]Resolution, error) {
+	var rs []Resolution
+	if err := a.conn.EvalPromise(ctx, "Tast.getPhotoResolutions()", &rs); err != nil {
+		return nil, errors.Wrap(err, "failed to get photo resolution")
+	}
+	return rs, nil
+}
+
+// GetVideoResolutions returns available video resolutions of active camera on HALv3 device.
+func (a *App) GetVideoResolutions(ctx context.Context) ([]Resolution, error) {
+	var rs []Resolution
+	if err := a.conn.EvalPromise(ctx, "Tast.getVideoResolutions()", &rs); err != nil {
+		return nil, errors.Wrap(err, "failed to get video resolution")
+	}
+	return rs, nil
+}
+
 // GetDeviceID returns the active camera device id.
 func (a *App) GetDeviceID(ctx context.Context) (DeviceID, error) {
 	var id DeviceID
@@ -401,6 +434,39 @@ func (a *App) TakeSinglePhoto(ctx context.Context, timerState TimerState) ([]os.
 	}
 	fileInfos = append(fileInfos, info)
 	return fileInfos, nil
+}
+
+// RecordVideo records a video and save to default location.
+func (a *App) RecordVideo(ctx context.Context, timerState TimerState, duration time.Duration) (os.FileInfo, error) {
+	if err := a.SetTimerOption(ctx, timerState == TimerOn); err != nil {
+		return nil, err
+	}
+	start := time.Now()
+	testing.ContextLog(ctx, "Click on start shutter")
+	if err := a.ClickShutter(ctx); err != nil {
+		return nil, err
+	}
+	sleepDelay := duration
+	if timerState == TimerOn {
+		sleepDelay += TimerDelay
+	}
+	if err := testing.Sleep(ctx, sleepDelay); err != nil {
+		return nil, err
+	}
+	testing.ContextLog(ctx, "Click on stop shutter")
+	if err := a.ClickShutter(ctx); err != nil {
+		return nil, err
+	}
+	if err := a.WaitForState(ctx, "taking", false); err != nil {
+		return nil, errors.Wrap(err, "shutter is not ended")
+	}
+	result, err := a.WaitForFileSaved(ctx, VideoPattern, start)
+	if err != nil {
+		return nil, errors.Wrap(err, "cannot find result video")
+	} else if elapsed := result.ModTime().Sub(start); timerState == TimerOn && elapsed < TimerDelay {
+		return nil, errors.Errorf("the capture should happen after timer of %v, actual elapsed time %v", TimerDelay, elapsed)
+	}
+	return result, nil
 }
 
 // GetSavedDir returns the path to the folder where captured files are saved.
@@ -550,6 +616,12 @@ func (a *App) CheckGridOption(ctx context.Context, expected bool) error {
 	return nil
 }
 
+// ClickWithSelectorIndex clicks nth element matching given selector.
+func (a *App) ClickWithSelectorIndex(ctx context.Context, selector string, index int) error {
+	code := fmt.Sprintf("document.querySelectorAll(%q)[%d].click()", selector, index)
+	return a.conn.Eval(ctx, code, nil)
+}
+
 // ClickWithSelector clicks an element with given selector.
 func (a *App) ClickWithSelector(ctx context.Context, selector string) error {
 	code := fmt.Sprintf("document.querySelector(%q).click()", selector)
@@ -576,7 +648,7 @@ func (a *App) RemoveCacheData(ctx context.Context, keys []string) error {
 }
 
 // RunThruCameras runs specified function after switching to each available camera.
-func RunThruCameras(ctx context.Context, app *App, f func()) error {
+func RunThruCameras(ctx context.Context, app *App, f func(Facing) error) error {
 	numCameras, err := app.GetNumOfCameras(ctx)
 	if err != nil {
 		return errors.Wrap(err, "can't get number of cameras")
@@ -601,7 +673,9 @@ func RunThruCameras(ctx context.Context, app *App, f func()) error {
 		}
 		devices[id] = facing
 		testing.ContextLogf(ctx, "Run f() on camera facing %q", facing)
-		f()
+		if err := f(facing); err != nil {
+			return err
+		}
 	}
 	if len(devices) != numCameras {
 		return errors.Errorf("failed to switch to some camera (tested cameras: %v)", devices)

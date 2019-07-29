@@ -35,6 +35,20 @@ function changeWindowState(predicate, getEventTarget, changeState) {
   });
 }
 
+class LegacyVCDError extends Error {
+  constructor() {
+    super('Call unsupported mojo method on legacy VCD.');
+  }
+};
+
+/**
+ * @typedef {{
+ *   width: number,
+ *   height: number,
+ * }}
+ */
+var Resolution;
+
 window.Tast = class {
   static isVideoActive() {
     const video = document.querySelector('video');
@@ -268,6 +282,58 @@ window.Tast = class {
       throw new Error('No video track associate to MediaStream.');
     }
     return track.getSettings().deviceId;
+  }
+
+  /**
+   * @return {Promise{!Object}} Returns cca.mojo for code before
+   *     crrev/c/1739035, return cca.mojo.DeviceOperator after that CL.
+   * @throws {LegacyVCDError}
+   */
+  static async getDeviceOperator() {
+    if (cca.mojo.MojoConnector === undefined) {
+      return cca.mojo;
+    }
+    const mojoConnector = new cca.mojo.MojoConnector();
+    const deviceOperator = await mojoConnector.getDeviceOperator();
+    if (!deviceOperator) {
+      throw new LegacyVCDError();
+    }
+    return deviceOperator;
+  }
+
+  /**
+   * Gets resolution of preview video.
+   * @throws {LegacyVCDError}
+   * @return {!Promise<!Array<Resolution>>}
+   */
+  static getPreviewResolution() {
+    const video = document.querySelector('video');
+    return {width: video.videoWidth, height: video.videoHeight};
+  }
+
+  /**
+   * Gets supported photo resolution of current active camera device.
+   * @throws {LegacyVCDError}
+   * @return {!Promise<!Array<Resolution>>}
+   */
+  static async getPhotoResolutions() {
+    const deviceOperator = await this.getDeviceOperator();
+    const deviceId = this.getDeviceId();
+    return (await deviceOperator.getPhotoResolutions(deviceId))
+        .map(([width, height]) => ({width, height}));
+  }
+
+  /**
+   * Gets supported video resolution of current active camera device.
+   * @throws {LegacyVCDError}
+   * @return {!Promise<!Array<Resolution>>}
+   */
+  static async getVideoResolutions() {
+    const deviceOperator = await this.getDeviceOperator();
+    const deviceId = this.getDeviceId();
+    return (await deviceOperator.getVideoConfigs(deviceId))
+        .filter(([, , maxFps]) => maxFps >= 24)
+        .map(([width, height, maxFps]) => ({width, height}));
   }
 };
 })();
