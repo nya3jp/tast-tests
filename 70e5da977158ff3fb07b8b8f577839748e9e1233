@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "4e1705db_8d05e58f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-29T15:29:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7aa4bfd8_b40a587f",
+      "range": {
+        "startLine": 9,
+        "startChar": 43,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "70e5da977158ff3fb07b8b8f577839748e9e1233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09649fb8_913cc397",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-29T15:29:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b22a025_4ccf8b4b",
+      "range": {
+        "startLine": 9,
+        "startChar": 26,
+        "endLine": 9,
+        "endChar": 38
+      },
+      "revId": "70e5da977158ff3fb07b8b8f577839748e9e1233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37240105_903e9ec8",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2019-07-29T05:33:04Z",
       "side": 1,
       "message": "nit: filepath.Join?",
+      "range": {
+        "startLine": 127,
+        "startChar": 17,
+        "endLine": 127,
+        "endChar": 28
+      },
+      "revId": "70e5da977158ff3fb07b8b8f577839748e9e1233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9c895a4_422606a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-29T15:29:28Z",
+      "side": 1,
+      "message": "I think it\u0027s common way to construct a file path just by fmt.Sprintf() in tast-tests, if it is complicated. git grep fmt.Sprintf shows examples.\nPlease let me know if you have strong opinion to use, e.g.; filepath.Join(s.OutDir(), fmt.Sprintf(\"%s.%s.log\", exec, filter)). I don\u0027t have strong opinion here.",
+      "parentUuid": "37240105_903e9ec8",
       "range": {
         "startLine": 127,
         "startChar": 17,
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "4b3a3161_4986302f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-29T15:29:28Z",
+      "side": 1,
+      "message": "--gtest_output is used in gtest.GTest.Run(), but other than that no addition flag is added.\nIt should be consistent with bintest.\nI locally ran video.DecodeAccelH264New on kevin again, and made sure it passed successfully.",
+      "parentUuid": "3c832bc5_46e59551",
+      "revId": "70e5da977158ff3fb07b8b8f577839748e9e1233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf81b493_accd45d1",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 4
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "47b409b0_b07d1fa1",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-29T15:29:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf81b493_accd45d1",
+      "range": {
+        "startLine": 78,
+        "startChar": 14,
+        "endLine": 78,
+        "endChar": 21
+      },
+      "revId": "70e5da977158ff3fb07b8b8f577839748e9e1233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ab4b639_35355cd1",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 4
@@ -131,6 +245,30 @@
       "revId": "70e5da977158ff3fb07b8b8f577839748e9e1233",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b061f367_18ba8b7a",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-29T15:29:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ab4b639_35355cd1",
+      "range": {
+        "startLine": 123,
+        "startChar": 35,
+        "endLine": 123,
+        "endChar": 47
+      },
+      "revId": "70e5da977158ff3fb07b8b8f577839748e9e1233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -177,6 +315,54 @@
       "revId": "70e5da977158ff3fb07b8b8f577839748e9e1233",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9dce739_8d048e2d",
+        "filename": "src/chromiumos/tast/local/gtest/gtest_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-29T15:29:28Z",
+      "side": 1,
+      "message": "Just added nil check in TestRun().\nThe detailed test should be covered by tests in report_test.go.",
+      "parentUuid": "8263f03e_e83f1501",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 6
+      },
+      "revId": "70e5da977158ff3fb07b8b8f577839748e9e1233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3335ae9c_7aa7e3ea",
+        "filename": "src/chromiumos/tast/local/gtest/gtest_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-29T15:29:28Z",
+      "side": 1,
+      "message": "Introduced setUpTest() to share the environment (just setting up tempdir and a test executable).\nNote that instantiation of the GTest instance is the responsibility of each test cases.",
+      "parentUuid": "4d37a95f_ebedb7d1",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 42
+      },
+      "revId": "70e5da977158ff3fb07b8b8f577839748e9e1233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
