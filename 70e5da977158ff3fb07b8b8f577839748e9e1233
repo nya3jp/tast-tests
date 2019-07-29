@@ -48,6 +48,52 @@
     },
     {
       "key": {
+        "uuid": "bf81b493_accd45d1",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-29T02:54:42Z",
+      "side": 1,
+      "message": "nit: setting",
+      "range": {
+        "startLine": 78,
+        "startChar": 14,
+        "endLine": 78,
+        "endChar": 21
+      },
+      "revId": "70e5da977158ff3fb07b8b8f577839748e9e1233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ab4b639_35355cd1",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-07-29T02:54:42Z",
+      "side": 1,
+      "message": "nit: gtest_repeat.\n(add the last period.)",
+      "range": {
+        "startLine": 123,
+        "startChar": 35,
+        "endLine": 123,
+        "endChar": 47
+      },
+      "revId": "70e5da977158ff3fb07b8b8f577839748e9e1233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8263f03e_e83f1501",
         "filename": "src/chromiumos/tast/local/gtest/gtest_test.go",
         "patchSetId": 4
