@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "226c53f5_e13a572a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-29T18:47:35Z",
+      "side": 1,
+      "message": "I would argue that this should still be camera., because from what I see \nin the code, it only uses the getUserMedia() which, although it belongs to\nthe set of APIs considere \"WebRTC\", does not exercise any of the code in \nChrome\u0027s //third_party/webrtc so, if this test was to be broken/regress for \nany reason, we should not look into the webrtc repo, but in Chrome/OS.\nSo from a triaging point of view I\u0027d say it belongs to camera.\n\nSame for GetUserMediaPerf in l.19.\n\nSide note: Ideally we would try to have test cases where RTCPeerConnection \n(the actual API name see [1]) is exercised with the Fake VideoCaptureDevice\nand test cases where we use real cameras. RTCPeerConnection and GetUserMedia\nuse different code stacks and break in different ways; in particular\nRTCPeerConnection is implemented mostly in //third_party/webrtc (uprevved\nin Chrome every now and then), using hardware encode and decode accelerators\nas it sees fit. (Exercising GetUserMedia() with the fake VCD is actually run\nin the capture_unittests, part of the CrOS VM in the Chrome CQ, so that\u0027s\na given).\n\nFollowing this idea we would need to have:\n { Fake camera, real camera }\n x { \u003cvideo\u003e, RTCPeerConnection, MediaRecorder } \n x (where applicable) { sw, hw } \n x (where applicable) { encoder, decoder } \nwhich is a ton of combinations, but not far from what I see we have...\n\n\n\n[1] https://cs.chromium.org/chromium/src/third_party/blink/renderer/modules/peerconnection/rtc_peer_connection.idl?sq\u003dpackage:chromium\u0026dr\u003dCSs\u0026g\u003d0\u0026l\u003d72",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 36
+      },
+      "revId": "ecb09dd377bf7c633adaada8143b9845f3620ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
