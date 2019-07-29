@@ -35,6 +35,20 @@ function changeWindowState(predicate, getEventTarget, changeState) {
   });
 }
 
+class LegacyVCDError extends Error {
+  constructor() {
+    super('Call unsupported mojo method on legacy VCD.');
+  }
+};
+
+/**
+ * @typedef {{
+ *   width: number,
+ *   height: number,
+ * }}
+ */
+var Resolution;
+
 window.Tast = class {
   static isVideoActive() {
     const video = document.querySelector('#preview-video');
@@ -287,6 +301,52 @@ window.Tast = class {
                           .filter(({kind}) => kind === 'videoinput');
       await deviceOperator.getCameraFacing(devices[0].deviceId);
     }
+  }
+
+  /**
+   * @return {Promise<!cca.mojo.DeviceOperator>}
+   * @throws {LegacyVCDError}
+   */
+  static async getDeviceOperator() {
+    if (!await cca.mojo.DeviceOperator.isSupported()) {
+      throw new LegacyVCDError();
+    }
+    return await cca.mojo.DeviceOperator.getInstance();
+  }
+
+  /**
+   * Gets resolution of preview video.
+   * @throws {LegacyVCDError}
+   * @return {!Promise<!Array<Resolution>>}
+   */
+  static getPreviewResolution() {
+    const video = document.querySelector('video');
+    return {width: video.videoWidth, height: video.videoHeight};
+  }
+
+  /**
+   * Gets supported photo resolution of current active camera device.
+   * @throws {LegacyVCDError}
+   * @return {!Promise<!Array<Resolution>>}
+   */
+  static async getPhotoResolutions() {
+    const deviceOperator = await this.getDeviceOperator();
+    const deviceId = this.getDeviceId();
+    return (await deviceOperator.getPhotoResolutions(deviceId))
+        .map(([width, height]) => ({width, height}));
+  }
+
+  /**
+   * Gets supported video resolution of current active camera device.
+   * @throws {LegacyVCDError}
+   * @return {!Promise<!Array<Resolution>>}
+   */
+  static async getVideoResolutions() {
+    const deviceOperator = await this.getDeviceOperator();
+    const deviceId = this.getDeviceId();
+    return (await deviceOperator.getVideoConfigs(deviceId))
+        .filter(([, , maxFps]) => maxFps >= 24)
+        .map(([width, height]) => ({width, height}));
   }
 
   /**
