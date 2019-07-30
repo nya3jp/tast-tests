@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package subtest
+package crostini
 
 import (
 	"context"
@@ -10,14 +10,27 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/vm"
+	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/testing"
 )
 
-// LaunchTerminal executes the x-terminal-emulator alternative in the container
-// which should then cause Chrome to open the Terminal extension.
-func LaunchTerminal(ctx context.Context, s *testing.State, cr *chrome.Chrome, cont *vm.Container) {
-	s.Log("Executing LaunchTerminal test")
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         LaunchTerminal,
+		Desc:         "Executes the x-terminal-emulator alternative in the container which should then cause Chrome to open the Terminal extension",
+		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
+		Attr:         []string{"informational"},
+		Timeout:      7 * time.Minute,
+		Data:         []string{crostini.ImageArtifact},
+		Pre:          crostini.StartedByArtifact(),
+		SoftwareDeps: []string{"chrome", "vm_host"},
+	})
+}
+
+func LaunchTerminal(ctx context.Context, s *testing.State) {
+	pre := s.PreValue().(crostini.PreData)
+	cr := pre.Chrome
+	cont := pre.Container
 
 	const terminalURLPrefix = "chrome-extension://nkoccljplnhpfnfiajclkommnmllphnl/html/crosh.html?command=vmshell"
 

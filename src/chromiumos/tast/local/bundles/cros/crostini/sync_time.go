@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package subtest
+package crostini
 
 import (
 	"context"
@@ -12,12 +12,26 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
-// Returns the current wall clock time as reported by `date` in the container.
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         SyncTime,
+		Desc:         "Manually sets the time in the guest to an incorrect value, uses 'SyncTimes' to correct it, and verifies that it is correct",
+		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
+		Attr:         []string{"informational"},
+		Timeout:      7 * time.Minute,
+		Data:         []string{crostini.ImageArtifact},
+		Pre:          crostini.StartedByArtifact(),
+		SoftwareDeps: []string{"chrome", "vm_host"},
+	})
+}
+
+// getTime returns the current wall clock time as reported by `date` in the container.
 func getTime(ctx context.Context, s *testing.State, cont *vm.Container) (time.Time, error) {
 	cmd := cont.Command(ctx, "date", "+%s")
 	out, err := cmd.CombinedOutput()
@@ -34,10 +48,8 @@ func getTime(ctx context.Context, s *testing.State, cont *vm.Container) (time.Ti
 	return dur, nil
 }
 
-// SyncTime manually sets the time in the guest to an incorrect value,
-// uses "SyncTimes" to correct it, and verifies that it is correct.
-func SyncTime(ctx context.Context, s *testing.State, cont *vm.Container) {
-	s.Log("Executing SyncTime test")
+func SyncTime(ctx context.Context, s *testing.State) {
+	cont := s.PreValue().(crostini.PreData).Container
 
 	// Set the time back 15 minutes, don't make a huge clock change as that can
 	// cause other odd behaviors with timers.
