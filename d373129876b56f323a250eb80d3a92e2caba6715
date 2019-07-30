@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3552f4b8_63226af3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-30T21:23:17Z",
+      "side": 1,
+      "message": "but now you\u0027re still not using the value of \u0027res\u0027 (you\u0027re only checking non-empty)\n\nI think this would be clearest if you make findInterface() only return the name of the device it finds (e.g., \u0027wlan0\u0027), and the only sanity checks it needs to do is \"does /sys/class/net/wlan0 exist\"?\n\nThen restartInterface() can do all the path/symlink walking itself, and findDriver() goes away entirely.\n\nIMO, the \u0027iface\u0027 struct just serves to complicate things.",
+      "range": {
+        "startLine": 56,
+        "startChar": 7,
+        "endLine": 56,
+        "endChar": 10
+      },
+      "revId": "d373129876b56f323a250eb80d3a92e2caba6715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7e84192_e70f61f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-30T21:23:17Z",
+      "side": 1,
+      "message": "it\u0027s a bit obfuscated to have the Base() stuff handled here. It would make more sense to put this right after the \u0027pl\u0027 assignment.",
+      "range": {
+        "startLine": 112,
+        "startChar": 17,
+        "endLine": 112,
+        "endChar": 34
+      },
+      "revId": "d373129876b56f323a250eb80d3a92e2caba6715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
