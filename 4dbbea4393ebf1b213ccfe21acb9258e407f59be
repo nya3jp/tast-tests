@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "355c244b_6871aa52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/smart_dim.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1182889
+      },
+      "writtenOn": "2019-07-30T01:58:35Z",
+      "side": 1,
+      "message": "and ml_service right?",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 14
+      },
+      "revId": "4dbbea4393ebf1b213ccfe21acb9258e407f59be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8843dabf_70bb44f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/smart_dim.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1182889
+      },
+      "writtenOn": "2019-07-30T01:58:35Z",
+      "side": 1,
+      "message": "MlDecisionService or /org/chromium/MlDecisionService",
+      "range": {
+        "startLine": 50,
+        "startChar": 16,
+        "endLine": 50,
+        "endChar": 35
+      },
+      "revId": "4dbbea4393ebf1b213ccfe21acb9258e407f59be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
