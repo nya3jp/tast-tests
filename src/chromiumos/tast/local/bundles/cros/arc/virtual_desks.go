@@ -17,11 +17,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VirtualDesks,
-		Desc:         "Tests the placement of an ARC app in a virtual desk",
-		Contacts:     []string{"afakhry@chromium.org", "arc-framework+tast@@google.com"},
-		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"android", "chrome"},
+		Func:     VirtualDesks,
+		Desc:     "Tests the placement of an ARC app in a virtual desk",
+		Contacts: []string{"afakhry@chromium.org", "arc-framework+tast@@google.com"},
+		Attr:     []string{"informational"},
+		// TODO(ricadoq): add support for Android NYC once https://crbug.com/989595 gets fixed.
+		SoftwareDeps: []string{"android_p", "chrome"},
 		Timeout:      4 * time.Minute,
 	})
 }
