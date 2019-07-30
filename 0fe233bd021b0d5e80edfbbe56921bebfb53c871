@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "2a5ce77e_c2100ed1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-30T23:13:47Z",
+      "side": 1,
+      "message": "Stopping shill for all our tests is really an anti-pattern, if we can avoid it. It can cause unreliability if we\u0027re excessively relying on re-configuring Ethernet for one.\n\nCan we do this in other ways? Like see how WiFiClient.claim_wifi_if() does this, by sending D-Bus Device.Disable() method to Shill, to remove the WiFi device from Shill\u0027s ownership.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 58
+      },
+      "revId": "0fe233bd021b0d5e80edfbbe56921bebfb53c871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2b2a9f7_732945e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-30T23:13:47Z",
+      "side": 1,
+      "message": "why resurrecting \u0027ifconfig\u0027? We made some small effort to start using \u0027ip link set $DEV up\u0027 in Autotest.",
+      "range": {
+        "startLine": 46,
+        "startChar": 41,
+        "endLine": 46,
+        "endChar": 49
+      },
+      "revId": "0fe233bd021b0d5e80edfbbe56921bebfb53c871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "60e9e340_05b75e04",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
         "patchSetId": 1
