@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "973a77f0_ad29b7d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-30T15:47:23Z",
+      "side": 1,
+      "message": "nit: crrev.com/c/1725457 fixes remaining lint warnings. To avoid conflict, I dropped them from this CL.",
+      "revId": "ce06ec6d9e28766c80d9dde425cc3a1ad9f30dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
