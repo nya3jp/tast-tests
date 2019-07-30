@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
 	"chromiumos/tast/local/input"
@@ -29,43 +30,17 @@ func init() {
 
 func PhysicalKeyboard(ctx context.Context, s *testing.State) {
 	a := s.PreValue().(arc.PreData).ARC
+
+	const (
+		apk = "ArcKeyboardTest.apk"
+		pkg = "org.chromium.arc.testapp.keyboard"
+	)
+
 	d, err := ui.NewDevice(ctx, a)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
 	defer d.Close()
-
-	const (
-		apk = "ArcKeyboardTest.apk"
-		pkg = "org.chromium.arc.testapp.keyboard"
-		cls = "org.chromium.arc.testapp.keyboard.MainActivity"
-	)
-
-	s.Log("Installing app")
-	if err := a.Install(ctx, s.DataPath(apk)); err != nil {
-		s.Fatal("Failed installing app: ", err)
-	}
-
-	s.Log("Starting app")
-	if err := a.Command(ctx, "am", "start", "-W", pkg+"/"+cls).Run(); err != nil {
-		s.Fatal("Failed starting app: ", err)
-	}
-
-	const fieldID = "org.chromium.arc.testapp.keyboard:id/text"
-	field := d.Object(ui.ID(fieldID))
-	if err := field.WaitForExists(ctx, 30*time.Second); err != nil {
-		s.Fatal("Failed to find field: ", err)
-	}
-	if err := field.Click(ctx); err != nil {
-		s.Fatal("Failed to click field: ", err)
-	}
-	if err := field.SetText(ctx, ""); err != nil {
-		s.Fatal("Failed to empty field: ", err)
-	}
-
-	if err := d.Object(ui.ID(fieldID), ui.Focused(true)).WaitForExists(ctx, 30*time.Second); err != nil {
-		s.Fatal("Failed to focus on field: ", err)
-	}
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
@@ -73,17 +48,64 @@ func PhysicalKeyboard(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	const keystrokes = "google"
-	if err := kb.Type(ctx, keystrokes); err != nil {
-		s.Fatalf("Failed to type %q: %v", keystrokes, err)
+	s.Log("Installing app")
+	if err := a.Install(ctx, s.DataPath(apk)); err != nil {
+		s.Fatal("Failed installing app: ", err)
 	}
 
-	// In order to use GetText() after timeout, we should have shorter timeout than ctx.
-	if err := d.Object(ui.ID(fieldID), ui.Text(keystrokes)).WaitForExists(ctx, 2*time.Minute); err != nil {
-		if actual, err := field.GetText(ctx); err != nil {
-			s.Fatal("Failed to get text: ", err)
-		} else {
-			s.Fatalf("Got input %q from field after typing %q", actual, keystrokes)
+	testTextField := func(activityName, keystrokes, expectedResult string) error {
+		act, err := arc.NewActivity(a, pkg, activityName)
+		if err != nil {
+			return errors.Wrapf(err, "failed to create a new activity %q", activityName)
 		}
+		defer act.Close()
+
+		if err := act.Start(ctx); err != nil {
+			return errors.Wrapf(err, "failed to start the activity %q", activityName)
+		}
+		defer act.Stop(ctx)
+
+		const (
+			fieldID  = "org.chromium.arc.testapp.keyboard:id/text"
+			initText = "hello"
+		)
+
+		if err := d.Object(ui.ID(fieldID), ui.Text(initText)).WaitForExists(ctx, 30*time.Second); err != nil {
+			return errors.Wrap(err, "failed to find field")
+		}
+
+		field := d.Object(ui.ID(fieldID))
+		if err := field.Click(ctx); err != nil {
+			return errors.Wrap(err, "failed to click field")
+		}
+		if err := field.SetText(ctx, ""); err != nil {
+			return errors.Wrap(err, "failed to empty field")
+		}
+
+		if err := d.Object(ui.ID(fieldID), ui.Focused(true)).WaitForExists(ctx, 30*time.Second); err != nil {
+			return errors.Wrap(err, "failed to focus on field")
+		}
+
+		if err := kb.Type(ctx, keystrokes); err != nil {
+			return errors.Wrapf(err, "failed to type %q", keystrokes)
+		}
+
+		if err := d.Object(ui.ID(fieldID), ui.Text(expectedResult)).WaitForExists(ctx, 30*time.Second); err != nil {
+			actual, terr := field.GetText(ctx)
+			if terr != nil {
+				return errors.Wrap(err, "failed to wait for input text to appear")
+			}
+			return errors.Errorf("got input %q from field after typing %q", actual, keystrokes)
+		}
+
+		return nil
+	}
+
+	if err := testTextField(".MainActivity", "google", "google"); err != nil {
+		s.Error("Failed to type in normal text field: ", err)
+	}
+
+	if err := testTextField(".NullEditTextActivity", "abcdef\b\b\bghi", "abcghi"); err != nil {
+		s.Error("Failed to type in TYPE_NULL text field: ", err)
 	}
 }
