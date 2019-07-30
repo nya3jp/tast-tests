@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "744b589d_591f0e1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-30T00:40:56Z",
+      "side": 1,
+      "message": "Sorry for not pointing this out in earlier reviews, but do we really need this long timeout? I don\u0027t expect that it takes more than a minute for keystrokes to take effect...\n\nAlso the comment above is a bit confusing since we don\u0027t guarantee ctx timeout is longer than 2 minutes. Maybe we can just use a shorter timeout (e.g. 30 seconds) and remove the comment.",
+      "range": {
+        "startLine": 93,
+        "startChar": 81,
+        "endLine": 93,
+        "endChar": 94
+      },
+      "revId": "1edb34356ccf63efc809458c28698e6eb953ee2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f1cce59_dda3b871",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-30T00:40:56Z",
+      "side": 1,
+      "message": "I think we want to return err from WaitForExists in this case. \"failed to get text: context timeout exceeded\" is confusing when the primary error is the timeout of WaitForExists.\n\nFor example:\n\n actual, terr :\u003d field.GetText(ctx)\n if terr !\u003d nil {\n   return errors.Wrap(err, \"failed to wait for input text to appear\")\n }",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 49
+      },
+      "revId": "1edb34356ccf63efc809458c28698e6eb953ee2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26bd1c2e_8049e4b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-30T00:40:56Z",
+      "side": 1,
+      "message": "I recommend calling act.Stop in a deferred statement to avoid interference between two subtests.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 3
+      },
+      "revId": "1edb34356ccf63efc809458c28698e6eb953ee2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4815851_7df1a386",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-30T00:40:56Z",
+      "side": 1,
+      "message": "Do we want to use s.Error instead of s.Fatal to continue testing even if earlier test fails?",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 58
+      },
+      "revId": "1edb34356ccf63efc809458c28698e6eb953ee2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
