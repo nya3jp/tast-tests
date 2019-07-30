@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0a6a171_b1c0ddec",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-30T12:58:51Z",
+      "side": 1,
+      "message": "nit/optional: How about;\n\nThis struct contains the only fields which are used in the tests.\n\nor something? Ditto for below.",
+      "range": {
+        "startLine": 16,
+        "startChar": 29,
+        "endLine": 16,
+        "endChar": 87
+      },
+      "revId": "a32ce9dbc987c12495f7a9d56250f49b731496b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a9e8700_e9f58728",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-30T12:58:51Z",
+      "side": 1,
+      "message": "Huge nit: Remove (I think this is a complete sentence in an imperative form.)",
+      "range": {
+        "startLine": 71,
+        "startChar": 19,
+        "endLine": 71,
+        "endChar": 20
+      },
+      "revId": "a32ce9dbc987c12495f7a9d56250f49b731496b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

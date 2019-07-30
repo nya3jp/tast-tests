@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "60c3e1b8_b56d3712",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-30T12:58:51Z",
+      "side": 1,
+      "message": "Thanks for the info. Could you add TODO at least to update the comment?\nOr, after the CL is landed, could you add the reference?",
+      "parentUuid": "0f7b1840_cb2b8e99",
+      "revId": "785e02d23490cd04b69fb2eee6fb5c4e101833e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "275f2f27_5920fa93",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_text_queries.go",
         "patchSetId": 2
