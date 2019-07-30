@@ -7,11 +7,12 @@ package arc
 import (
 	"bufio"
 	"context"
-	"golang.org/x/sync/errgroup"
 	"net"
 	"regexp"
 	"strings"
 	"time"
+
+	"golang.org/x/sync/errgroup"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"

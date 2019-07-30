@@ -61,7 +61,7 @@ func fakeRunCrosConfig(ctx context.Context, args ...string) ([]byte, error) {
 	return cmd.Output()
 }
 
-// Fake cros_config
+// crosConfig is a fake cros_config main function.
 func crosConfig(args []string) {
 	if len(args) < 2 {
 		panic("not enough args")

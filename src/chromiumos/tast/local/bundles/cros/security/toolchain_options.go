@@ -195,7 +195,7 @@ func (ec *elfCondition) checkAndFilter(path string, ef *elf.File) error {
 	return nil
 }
 
-// elfIstStatic returns whether the ELF file is statically linked.
+// elfIsStatic returns whether the ELF file is statically linked.
 func elfIsStatic(ef *elf.File) bool {
 	return ef.FileHeader.Type != elf.ET_DYN
 }

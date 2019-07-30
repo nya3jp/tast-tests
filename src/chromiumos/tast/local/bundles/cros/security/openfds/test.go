@@ -75,7 +75,7 @@ func expectType(mode uint32) bool {
 	return (mode & 0770000) == 0
 }
 
-// findExpecation returns a corresponding entry in the given
+// findExpectation returns a corresponding entry in the given
 // Expecatation array which matches to the given |path|.
 func findExpectation(path string, es []Expectation) (*Expectation, error) {
 	for _, e := range es {
@@ -140,7 +140,7 @@ func openFileModes(ctx context.Context, p *process.Process) ([]fileMode, error) 
 
 		st, ok := info.Sys().(*syscall.Stat_t)
 		if !ok {
-			return nil, errors.Errorf("Failed to obtain stat_t for %s", f.Path)
+			return nil, errors.Errorf("failed to obtain stat_t for %s", f.Path)
 		}
 		ret = append(ret, fileMode{f.Path, st.Mode, uint32(linfo.Mode())})
 	}

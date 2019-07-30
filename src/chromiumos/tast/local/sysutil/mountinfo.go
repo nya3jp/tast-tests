@@ -85,7 +85,7 @@ func unescape(s string) (string, error) {
 		return string(u)
 	})
 	if errs != nil {
-		return "", errors.Errorf("Failed to unescape %q: %v", s, errs)
+		return "", errors.Errorf("failed to unescape %q: %v", s, errs)
 	}
 	return val, nil
 }
