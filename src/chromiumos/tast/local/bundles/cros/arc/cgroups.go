@@ -38,7 +38,7 @@ const (
 	cpuSharesARCForeground = 1024
 )
 
-// Retrieve the current value for cpu.shares for the container.
+// getCPUCgroupShares retrieves the current value for cpu.shares for the container.
 func getCPUCgroupShares(ctx context.Context) (int, error) {
 	b, err := ioutil.ReadFile(cpuShares)
 	if err != nil {

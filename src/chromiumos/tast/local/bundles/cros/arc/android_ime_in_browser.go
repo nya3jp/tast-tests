@@ -49,7 +49,7 @@ func getThirdPartyInputMethodID(ctx context.Context, tconn *chrome.Conn, pkg str
 			return im.ID, nil
 		}
 	}
-	return "", errors.New(fmt.Sprintf("%s not found in the list", pkg))
+	return "", errors.Errorf("%s not found in the list", pkg)
 }
 
 func isKeyboardShown(ctx context.Context, tconn *chrome.Conn) (bool, error) {

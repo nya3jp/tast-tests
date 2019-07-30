@@ -43,7 +43,7 @@ func isAccessibilityEnabled(ctx context.Context, a *arc.ARC) (bool, error) {
 	return strings.TrimSpace(string(res)) == "1", nil
 }
 
-// testSpokenFeedbackEnabled runs the test to ensure spoken feedback settings
+// testSpokenFeedbackSync runs the test to ensure spoken feedback settings
 // are synchronized between Chrome and Android.
 func testSpokenFeedbackSync(ctx context.Context, tconn *chrome.Conn, a *arc.ARC) error {
 	if res, err := isAccessibilityEnabled(ctx, a); err != nil {

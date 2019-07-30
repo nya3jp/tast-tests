@@ -122,9 +122,8 @@ func MIDIClient(ctx context.Context, s *testing.State) {
 	}
 }
 
-// Helper function to get the port number of the "Midi Through" device.
-// It returns the string containing the port number on success. On failure,
-// an empty string is returned.
+// getMIDIPort returns the port number of the "Midi Through" device in string.
+// On failure, an empty string is returned.
 //
 // Ports returned are of the following format:
 // <client_number>:<port_number>

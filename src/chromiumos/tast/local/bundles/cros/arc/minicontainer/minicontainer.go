@@ -227,17 +227,17 @@ func testCPUSet(ctx context.Context, s *testing.State) {
 		path := fmt.Sprintf("/dev/cpuset/%s/cpus", t)
 		out, err := arc.BootstrapCommand(ctx, "/system/bin/cat", path).Output(testexec.DumpLogOnError)
 		if err != nil {
-			s.Errorf("failed to read %s: %v", path, err)
+			s.Errorf("Failed to read %s: %v", path, err)
 			continue
 		}
 		val := strings.TrimSpace(string(out))
 		cpusInUse, err := cpuset.Parse(ctx, val)
 		if err != nil {
-			s.Errorf("failed to parse %s: %v", path, err)
+			s.Errorf("Failed to parse %s: %v", path, err)
 			continue
 		}
 		if len(cpusInUse) != runtime.NumCPU() {
-			s.Errorf("unexpected CPU setting %q for %s: got %d CPUs, want %d CPUs", val, path,
+			s.Errorf("Unexpected CPU setting %q for %s: got %d CPUs, want %d CPUs", val, path,
 				len(cpusInUse), runtime.NumCPU())
 		}
 	}
