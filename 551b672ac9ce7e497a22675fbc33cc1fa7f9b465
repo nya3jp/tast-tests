@@ -34,6 +34,24 @@
       "revId": "551b672ac9ce7e497a22675fbc33cc1fa7f9b465",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f09c043_e09e9b93",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-30T05:41:34Z",
+      "side": 1,
+      "message": "There will be a lot more ChromeVideoVD tests, as we need to duplicate most of our tests to test the new video decoders.\n\nsee: go/videodecodermigrationtesting",
+      "parentUuid": "e523b647_9d272b9d",
+      "revId": "551b672ac9ce7e497a22675fbc33cc1fa7f9b465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
