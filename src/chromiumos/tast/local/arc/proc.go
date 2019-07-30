@@ -23,6 +23,12 @@ func InitPID() (int32, error) {
 		initPath = "/usr/bin/crosvm"
 	}
 
+	if ver, err := SDKVersion(); err != nil {
+		return -1, errors.Wrap(err, "failed to get SDK version")
+	} else if ver >= SDKQ {
+		initPath = "/system/bin/init"
+	}
+
 	uid, err := sysutil.GetUID(u)
 	if err != nil {
 		return -1, err
