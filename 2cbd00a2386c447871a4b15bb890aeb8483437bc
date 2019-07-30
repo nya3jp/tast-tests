@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "bd581cf0_eb9dcd5f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-07-30T01:11:20Z",
+      "side": 1,
+      "message": "I think I know what\u0027s wrong here. When we use the simplestreams remote (GS bucket), LXD prefers squashfs over tar.xz for the container. squashfs is properly transferring the file capabilities for /bin/ping, but tar (for the artifact-based tests) isn\u0027t. I\u0027ll verify that and see what needs to be done to fix it.",
+      "parentUuid": "6caafc54_76b458b2",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "2cbd00a2386c447871a4b15bb890aeb8483437bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c740e24_300b7be8",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
