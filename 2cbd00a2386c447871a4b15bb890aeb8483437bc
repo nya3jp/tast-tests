@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "8a141472_1faff698",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-30T05:15:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c740e24_300b7be8",
+      "range": {
+        "startLine": 14,
+        "startChar": 13,
+        "endLine": 14,
+        "endChar": 20
+      },
+      "revId": "2cbd00a2386c447871a4b15bb890aeb8483437bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef5c9b92_44994bb9",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/network_perf.go",
         "patchSetId": 1
@@ -164,6 +188,30 @@
       "revId": "2cbd00a2386c447871a4b15bb890aeb8483437bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e44aaf4_86adb32e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/network_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-30T05:15:43Z",
+      "side": 1,
+      "message": "done\n\nack, but prefer the stronger expectation that ping should work without sudo",
+      "parentUuid": "2732acb9_00c1d356",
+      "range": {
+        "startLine": 219,
+        "startChar": 31,
+        "endLine": 219,
+        "endChar": 37
+      },
+      "revId": "2cbd00a2386c447871a4b15bb890aeb8483437bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
