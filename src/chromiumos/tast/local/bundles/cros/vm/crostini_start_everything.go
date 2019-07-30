@@ -75,8 +75,6 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 	}
 	defer keyboard.Close()
 
-	subtest.Webserver(subtestCtx, s, cr, cont)
-
 	// Opening a new browser window seems to sometimes also launch the Chromebook
 	// landing page in a new tab.  Clean it up if it exists to prepare for
 	// the screenshot tests.
@@ -90,16 +88,12 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 		conn.Close()
 	}
 
-	subtest.LaunchTerminal(subtestCtx, s, cr, cont)
-	subtest.LaunchBrowser(subtestCtx, s, cr, cont)
 	subtest.VerifyAppFromTerminal(subtestCtx, s, cr, cont, keyboard, "x11", x11DemoAppPath,
 		colorcmp.RGB(0x99, 0xee, 0x44))
 	subtest.VerifyAppFromTerminal(subtestCtx, s, cr, cont, keyboard, "wayland", waylandDemoAppPath,
 		colorcmp.RGB(0x33, 0x88, 0xdd))
 	subtest.AppDisplayDensity(subtestCtx, s, tconn, cont, keyboard, "x11_demo", x11DemoAppPath)
 	subtest.AppDisplayDensity(subtestCtx, s, tconn, cont, keyboard, "wayland", waylandDemoAppPath)
-
-	subtest.SyncTime(subtestCtx, s, cont)
 
 	// Copy a test Debian package file to the container which will be used by
 	// subsequent tests.
@@ -139,6 +133,4 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 		subtest.UninstallApplication(subtestCtx, s, cont, cont.VM.Concierge.GetOwnerID(),
 			x11DemoName, x11DemoID)
 	}
-
-	subtest.UninstallInvalidApplication(subtestCtx, s, cont)
 }
