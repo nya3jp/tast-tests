@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "552e111e_fee0579b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launch_terminal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-07-30T22:55:53Z",
+      "side": 1,
+      "message": "nit: leftover comment?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 19
+      },
+      "revId": "aa492abeb03ed58cc1ca840897a8c698e1f5c5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
