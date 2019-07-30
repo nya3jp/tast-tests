@@ -46,6 +46,30 @@
       "revId": "87cf4f427a0544e241615407c2df6792bd48fa2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8215d08b_8fe83a2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-30T20:17:16Z",
+      "side": 1,
+      "message": "That\u0027s fair.\n\nSide note: see my other comments, but we often end up only testing the wlan device, which means we *don\u0027t* interrupt Ethernet connectivity. But since we *might*...I guess we have to play it safe.",
+      "parentUuid": "cc53dc8f_e84dc229",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 65
+      },
+      "revId": "87cf4f427a0544e241615407c2df6792bd48fa2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
