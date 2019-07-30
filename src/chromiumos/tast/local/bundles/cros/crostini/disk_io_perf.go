@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package vm
+package crostini
 
 import (
 	"bytes"
@@ -14,27 +14,28 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	var dataFiles []string
+	dataFiles = append(dataFiles, crostini.ImageArtifact)
 	for _, job := range fioJobs {
 		dataFiles = append(dataFiles, job.fileName)
 	}
 
 	testing.AddTest(&testing.Test{
-		Func:     CrostiniDiskIOPerf,
+		Func:     DiskIOPerf,
 		Desc:     "Tests Crostini Disk IO Performance",
 		Contacts: []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
 		// TODO(cylee): A presubmit check enforce "informational". Confirm if we should remove the checking.
 		Attr:         []string{"informational", "group:crosbolt", "crosbolt_nightly"},
-		Data:         dataFiles,
 		Timeout:      30 * time.Minute,
+		Data:         dataFiles,
+		Pre:          crostini.StartedByArtifact(),
 		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
 }
@@ -54,11 +55,11 @@ type fioJob struct {
 
 var (
 	fioJobs = []fioJob{
-		{"crostini_disk_io_perf_fio_seq_write.ini", "seq_write", reportWrite},
-		{"crostini_disk_io_perf_fio_seq_read.ini", "seq_read", reportRead},
-		{"crostini_disk_io_perf_fio_rand_write.ini", "rand_write", reportWrite},
-		{"crostini_disk_io_perf_fio_rand_read.ini", "rand_read", reportRead},
-		{"crostini_disk_io_perf_fio_stress_rw.ini", "stress_rw", reportWrite | reportRead},
+		{"disk_io_perf_fio_seq_write.ini", "seq_write", reportWrite},
+		{"disk_io_perf_fio_seq_read.ini", "seq_read", reportRead},
+		{"disk_io_perf_fio_rand_write.ini", "rand_write", reportWrite},
+		{"disk_io_perf_fio_rand_read.ini", "rand_read", reportRead},
+		{"disk_io_perf_fio_stress_rw.ini", "stress_rw", reportWrite | reportRead},
 	}
 )
 
@@ -217,41 +218,9 @@ func runFIOJob(ctx context.Context, s *testing.State, guestEnv, hostEnv runEnv, 
 	}
 }
 
-// CrostiniDiskIOPerf runs disk IO performance tests by running the tool "fio".
-func CrostiniDiskIOPerf(ctx context.Context, s *testing.State) {
-	// TODO(cylee): Consolidate container creation logic in a util function since it appears in multiple files.
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
-	s.Log("Enabling Crostini preference setting")
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create test API connection: ", err)
-	}
-	if err = vm.EnableCrostini(ctx, tconn); err != nil {
-		s.Fatal("Failed to enable Crostini preference setting: ", err)
-	}
-
-	s.Log("Setting up component ", vm.StagingComponent)
-	err = vm.SetUpComponent(ctx, vm.StagingComponent)
-	if err != nil {
-		s.Fatal("Failed to set up component: ", err)
-	}
-	defer vm.UnmountComponent(ctx)
-
-	s.Log("Creating default container")
-	cont, err := vm.CreateDefaultVMContainer(ctx, s.OutDir(), cr.User(), vm.StagingImageServer, "")
-	if err != nil {
-		s.Fatal("Failed to set up default container: ", err)
-	}
-	defer func() {
-		if err := cont.DumpLog(ctx, s.OutDir()); err != nil {
-			s.Error("Failure dumping container log: ", err)
-		}
-	}()
+// DiskIOPerf runs disk IO performance tests by running the tool "fio".
+func DiskIOPerf(ctx context.Context, s *testing.State) {
+	cont := s.PreValue().(crostini.PreData).Container
 
 	testing.ContextLog(ctx, "Installing fio")
 	if err := cont.Command(ctx, "sudo", "apt-get", "-y", "install", "fio").Run(); err != nil {
