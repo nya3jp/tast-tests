@@ -346,13 +346,13 @@ func testCPUSet(ctx context.Context, s *testing.State, a *arc.ARC) {
 		path := fmt.Sprintf("/proc/%d/root/dev/cpuset/%s/cpus", initPID, t)
 		out, err := ioutil.ReadFile(path)
 		if err != nil {
-			s.Errorf("failed to read %s: %v", path, err)
+			s.Errorf("Failed to read %s: %v", path, err)
 			continue
 		}
 		val := strings.TrimSpace(string(out))
 		cpusInUse, err := cpuset.Parse(ctx, val)
 		if err != nil {
-			s.Errorf("failed to parse %s: %v", path, err)
+			s.Errorf("Failed to parse %s: %v", path, err)
 			continue
 		}
 
@@ -360,13 +360,13 @@ func testCPUSet(ctx context.Context, s *testing.State, a *arc.ARC) {
 			// Even after full boot, these processes should be able
 			// to use all CPU cores.
 			if len(cpusInUse) != runtime.NumCPU() {
-				s.Errorf("unexpected CPU setting %q for %s: got %d CPUs, want %d CPUs", val, path,
+				s.Errorf("Unexpected CPU setting %q for %s: got %d CPUs, want %d CPUs", val, path,
 					len(cpusInUse), runtime.NumCPU())
 			}
 		} else {
 			// Other processes should not.
 			if len(cpusInUse) == runtime.NumCPU() {
-				s.Errorf("unexpected CPU setting %q for %s: should not be %d CPUs", val, path,
+				s.Errorf("Unexpected CPU setting %q for %s: should not be %d CPUs", val, path,
 					runtime.NumCPU())
 			}
 		}
@@ -406,9 +406,14 @@ func testSDCard(ctx context.Context, s *testing.State, sdcard []sysutil.MountInf
 	// In ARC P, the following points are also shared:
 	// - /run/arc/sdcard
 	// - /run/arc/sdcard/{default,read,write}/$label
+	// In ARC Q, the follow points are also shared:
+	// - /run/arc/sdcard/{full}/$label
 	pat := `^/mnt/runtime(/(default|read|write)/[^/]+)?$`
 	if ver >= arc.SDKP {
 		pat += `|^/run/arc/sdcard(/(default|read|write)/[^/]+)?$`
+	}
+	if ver >= arc.SDKQ {
+		pat += `|^/run/arc/sdcard(/full/[^/]+)?$`
 	}
 	re := regexp.MustCompile(pat)
 
