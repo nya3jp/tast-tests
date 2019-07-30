@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8e47ab5_25c932b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-30T22:38:27Z",
+      "side": 1,
+      "message": "no longer used?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 1
+      },
+      "revId": "9fd1a81eabcf526f8177cb9fcfd1992d573b124b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a079a3ea_4fa4a64d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-30T22:38:27Z",
+      "side": 1,
+      "message": "hehe...now that you\u0027ve dropped the \"eth\" prefix in findInterface(), this is no longer needed :D",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 15
+      },
+      "revId": "9fd1a81eabcf526f8177cb9fcfd1992d573b124b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc77f7bf_1718ac8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-30T22:38:27Z",
+      "side": 1,
+      "message": "it\u0027s not just PCIe. It\u0027s really just \"the device name\" (i.e., what the kernel knows this particular kernel device as). For PCIe, it\u0027s a bus+device number. For USB, it involves port+interface+function numbers (I think). For SDIO, it\u0027s...well, something else. And there are others :)\n\nJust \"device name\" is fine.",
+      "range": {
+        "startLine": 84,
+        "startChar": 49,
+        "endLine": 84,
+        "endChar": 61
+      },
+      "revId": "9fd1a81eabcf526f8177cb9fcfd1992d573b124b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63e27a64_4f1aca0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-30T22:38:27Z",
+      "side": 1,
+      "message": "no longer needed :)",
+      "range": {
+        "startLine": 103,
+        "startChar": 17,
+        "endLine": 103,
+        "endChar": 30
+      },
+      "revId": "9fd1a81eabcf526f8177cb9fcfd1992d573b124b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
