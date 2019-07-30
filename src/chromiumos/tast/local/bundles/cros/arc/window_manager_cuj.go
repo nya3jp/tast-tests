@@ -121,6 +121,7 @@ func WindowManagerCUJ(ctx context.Context, s *testing.State) {
 		{"Follow Root Activity N / Pre-N", wmFollowRoot},
 		{"Springboard N / Pre-N", wmSpringboard},
 		{"Lights out / Lights in N", wmLightsOutIn},
+		{"Lights out ignored", wmLightsOutIgnored},
 	} {
 		s.Logf("Running test %q", test.name)
 
@@ -561,7 +562,7 @@ func wmLightsOutIn(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 			func() error { return uiClickNormal(ctx, act, d) }},
 	} {
 		if err := func() error {
-			testing.ContextLogf(ctx, "Running %q", test.name)
+			testing.ContextLogf(ctx, "Running subtest %q", test.name)
 			if err := act.Start(ctx); err != nil {
 				return err
 			}
@@ -621,6 +622,74 @@ func wmLightsOutIn(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.De
 				return err
 			} else if ws != arc.WindowStateMaximized {
 				return errors.Errorf("invalid window state: got %q; want %q", ws.String(), arc.WindowStateMaximized.String())
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "%q subtest failed", test.name)
+		}
+	}
+	return nil
+}
+
+// wmLightsOutIgnored verifies that an N activity cannot go from restored to fullscreen mode as defined in:
+// go/arc-wm-p "Clamshell: lights out and fullscreen ignored" (slides #22-#23)
+func wmLightsOutIgnored(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
+	for _, test := range []struct {
+		name     string
+		pkg      string
+		activity string
+	}{
+		// Slide #22
+		{"Landscape + Resize enabled + N", wmPkg24, wmResizeableLandscapeActivity},
+		// Slide #23
+		{"Portrait + Resize enabled + N", wmPkg24, wmResizeablePortraitActivity},
+		// Slide #22
+		{"Landscape + PreN", wmPkg23, wmLandscapeActivity},
+		// Slide #23
+		{"Portrait + PreN", wmPkg23, wmPortraitActivity},
+	} {
+		if err := func() error {
+			testing.ContextLogf(ctx, "Running subtest %q", test.name)
+			act, err := arc.NewActivity(a, test.pkg, test.activity)
+			if err != nil {
+				return err
+			}
+			defer act.Close()
+
+			if err := act.Start(ctx); err != nil {
+				return err
+			}
+			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
+			defer act.Stop(ctx)
+
+			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+				return err
+			}
+
+			if ws, err := act.GetWindowState(ctx); err != nil {
+				return err
+			} else if ws != arc.WindowStateNormal {
+				if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
+					return err
+				}
+				if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+					return err
+				}
+			}
+
+			// Clicking on "Immersive" button should not change the state of the restored window.
+			if err := uiClickImmersive(ctx, act, d); err != nil {
+				return err
+			}
+
+			if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+				return err
+			}
+
+			if ws, err := act.GetWindowState(ctx); err != nil {
+				return err
+			} else if ws != arc.WindowStateNormal {
+				return errors.Errorf("invalid window state: got %q; want %q", ws.String(), arc.WindowStateNormal.String())
 			}
 			return nil
 		}(); err != nil {
