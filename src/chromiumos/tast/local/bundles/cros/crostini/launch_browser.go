@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package subtest
+package crostini
 
 import (
 	"context"
@@ -10,15 +10,27 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/vm"
+	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/testing"
 )
 
-// LaunchBrowser executes the x-www-browser alternative, uses the $BROWSER env
-// variable and also runs xdg-open in the container with test URLs which should
-// then cause Chrome to open a browser tab at the target address.
-func LaunchBrowser(ctx context.Context, s *testing.State, cr *chrome.Chrome, cont *vm.Container) {
-	s.Log("Executing LaunchBrowser test")
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         LaunchBrowser,
+		Desc:         "Opens a browser window on the host from the container, using several common approahces (/etc/alternatives, $BROWSER, and xdg-open)",
+		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
+		Attr:         []string{"informational"},
+		Timeout:      7 * time.Minute,
+		Data:         []string{crostini.ImageArtifact},
+		Pre:          crostini.StartedByArtifact(),
+		SoftwareDeps: []string{"chrome", "vm_host"},
+	})
+}
+
+func LaunchBrowser(ctx context.Context, s *testing.State) {
+	pre := s.PreValue().(crostini.PreData)
+	cr := pre.Chrome
+	cont := pre.Container
 
 	checkLaunch := func(urlTarget string, command ...string) {
 		ctx, cancel := context.WithTimeout(ctx, 10*time.Second)

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package subtest
+package crostini
 
 import (
 	"context"
@@ -11,15 +11,27 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/vm"
+	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/testing"
 )
 
-// Webserver starts an HTTP server in the container and verifies that
-// Chrome (outside of the container) is able to access it.
-func Webserver(ctx context.Context, s *testing.State, cr *chrome.Chrome, cont *vm.Container) {
-	s.Log("Executing Webserver test")
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         Webserver,
+		Desc:         "Runs a webserver in the container, and confirms that the host can connect to it",
+		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
+		Attr:         []string{"informational"},
+		Timeout:      7 * time.Minute,
+		Data:         []string{crostini.ImageArtifact},
+		Pre:          crostini.StartedByArtifact(),
+		SoftwareDeps: []string{"chrome", "vm_host"},
+	})
+}
+
+func Webserver(ctx context.Context, s *testing.State) {
+	pre := s.PreValue().(crostini.PreData)
+	cr := pre.Chrome
+	cont := pre.Container
 
 	const expectedWebContent = "nothing but the web"
 
