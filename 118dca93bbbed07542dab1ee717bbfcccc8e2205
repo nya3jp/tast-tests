@@ -45,6 +45,30 @@
       "revId": "118dca93bbbed07542dab1ee717bbfcccc8e2205",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6fb0864_70cb9f81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-07-30T18:55:54Z",
+      "side": 1,
+      "message": "I thought my `else if` clause would attempt a match on X,Y if X,Y,Z didn\u0027t have a hit. I was able to test a device where its particular subsystem entry was not added to the supported table and still grab the appropriate vendor/productid.",
+      "parentUuid": "a5632e1e_181e6f5c",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 112
+      },
+      "revId": "118dca93bbbed07542dab1ee717bbfcccc8e2205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
