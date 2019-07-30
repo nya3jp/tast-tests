@@ -22,6 +22,93 @@
       "revId": "cc750d345a5a630127c4ca93a94dd738f61d11bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "216d18d5_ceda082e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-30T14:52:08Z",
+      "side": 1,
+      "message": "In ChromeOS chroot, could you run,\n\ntast -verbose run ${DUTIP} -checktestdeps\u003dfalse arc.ContainerMount\n\nwhere DUTIP is for ARC Q?",
+      "parentUuid": "d6e4b13e_a5e59724",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "cc750d345a5a630127c4ca93a94dd738f61d11bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dce1f7c_0026234b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-30T14:52:08Z",
+      "side": 1,
+      "message": "Thank you for fixing!",
+      "revId": "cc750d345a5a630127c4ca93a94dd738f61d11bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f0dcf09_8081c313",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-30T14:52:08Z",
+      "side": 1,
+      "message": "\"full\" (no brace is needed, because it is one so does not need to be expand)",
+      "range": {
+        "startLine": 410,
+        "startChar": 22,
+        "endLine": 410,
+        "endChar": 28
+      },
+      "revId": "cc750d345a5a630127c4ca93a94dd738f61d11bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b827a44_f078e585",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-30T14:52:08Z",
+      "side": 1,
+      "message": "nit: To match with the comment above, |^/run/arc/sdcard/full/[^/]+$ ?",
+      "range": {
+        "startLine": 416,
+        "startChar": 27,
+        "endLine": 416,
+        "endChar": 41
+      },
+      "revId": "cc750d345a5a630127c4ca93a94dd738f61d11bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
