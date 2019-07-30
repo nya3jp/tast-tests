@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "ca1294fb_10f1e45c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-30T01:05:00Z",
+      "side": 1,
+      "message": "I recommend always using \u003d\u003d\u003d instead of \u003d\u003d in JS for better semantics. :)\n\nAlso I think it\u0027s easier to understand if we use parens in a different way:\n\n if (keyboard \u0026\u0026 (!keyboard.state.invisible \u003d\u003d\u003d %t))",
+      "range": {
+        "startLine": 39,
+        "startChar": 48,
+        "endLine": 39,
+        "endChar": 50
+      },
+      "revId": "3e9e05daa94e98132be225225df9487f4b1b1d00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3a9bd56e_d6e1f84e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
         "patchSetId": 3
