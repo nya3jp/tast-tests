@@ -152,3 +152,13 @@ func (m *Manager) ConfigureServiceForProfile(ctx context.Context, path dbus.Obje
 	}
 	return service, nil
 }
+
+// EnableTechnology enables a technology interface.
+func (m *Manager) EnableTechnology(ctx context.Context, props interface{}) error {
+	return call(ctx, m.obj, dbusManagerInterface, "EnableTechnology", props).Err
+}
+
+// DisableTechnology disables a technology interface.
+func (m *Manager) DisableTechnology(ctx context.Context, props interface{}) error {
+	return call(ctx, m.obj, dbusManagerInterface, "DisableTechnology", props).Err
+}
