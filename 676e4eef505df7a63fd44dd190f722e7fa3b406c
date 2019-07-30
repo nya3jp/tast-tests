@@ -22,6 +22,30 @@
       "revId": "676e4eef505df7a63fd44dd190f722e7fa3b406c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6468ca95_a0a11afb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-07-30T03:22:28Z",
+      "side": 1,
+      "message": "i guess it should be `from`.\nWe don\u0027t want these tests being tested in daemon-domain isolation-related tests.",
+      "parentUuid": "e63392bb_5e7d8498",
+      "range": {
+        "startLine": 9,
+        "startChar": 34,
+        "endLine": 9,
+        "endChar": 38
+      },
+      "revId": "676e4eef505df7a63fd44dd190f722e7fa3b406c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
