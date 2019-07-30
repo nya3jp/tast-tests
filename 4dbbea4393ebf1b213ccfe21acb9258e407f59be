@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bf5fdad4_9e489a9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/smart_dim.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2019-07-30T04:57:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "355c244b_6871aa52",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 14
+      },
+      "revId": "4dbbea4393ebf1b213ccfe21acb9258e407f59be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8843dabf_70bb44f4",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/smart_dim.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "4dbbea4393ebf1b213ccfe21acb9258e407f59be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "237c09cf_a583e5c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/smart_dim.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2019-07-30T04:57:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8843dabf_70bb44f4",
+      "range": {
+        "startLine": 50,
+        "startChar": 16,
+        "endLine": 50,
+        "endChar": 35
+      },
+      "revId": "4dbbea4393ebf1b213ccfe21acb9258e407f59be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
