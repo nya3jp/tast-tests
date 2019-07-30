@@ -22,6 +22,30 @@
       "revId": "28e267794a39e994cd97f764446bf59c79dce205",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88811171_387c6e2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gameperformance/gameperformance.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-07-30T16:53:19Z",
+      "side": 1,
+      "message": "np :), thanks for pointing this!",
+      "parentUuid": "9d64979d_0018d1e1",
+      "range": {
+        "startLine": 131,
+        "startChar": 35,
+        "endLine": 131,
+        "endChar": 38
+      },
+      "revId": "28e267794a39e994cd97f764446bf59c79dce205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
