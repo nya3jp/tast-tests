@@ -21,7 +21,7 @@ func init() {
 		Desc:         "Tests the placement of an ARC app in a virtual desk",
 		Contacts:     []string{"afakhry@chromium.org", "arc-framework+tast@@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"android", "chrome"},
+		SoftwareDeps: []string{"android_p", "chrome"},
 		Timeout:      4 * time.Minute,
 	})
 }
