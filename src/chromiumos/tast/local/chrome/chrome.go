@@ -44,7 +44,8 @@ const (
 	// DefaultUser contains the email address used to log into Chrome when authentication credentials are not supplied.
 	DefaultUser = "testuser@gmail.com"
 
-	defaultPass   = "testpass"
+	// DefaultPass contains the password we use to log into the DefaultUser account.
+	DefaultPass   = "testpass"
 	defaultGaiaID = "gaia-id"
 
 	oobePrefix = "chrome://oobe"
@@ -248,7 +249,7 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 
 	c := &Chrome{
 		user:             DefaultUser,
-		pass:             defaultPass,
+		pass:             DefaultPass,
 		gaiaID:           defaultGaiaID,
 		keepState:        false,
 		loginMode:        fakeLogin,
