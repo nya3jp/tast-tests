@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "467cc7f7_89bafa3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-30T18:16:57Z",
+      "side": 1,
+      "message": "readInfo() still dumps errors on missing files. \u0027subsystem_device\u0027 will be missing on, for instance, SDIO platforms I believe. Might want to test on one of those.",
+      "range": {
+        "startLine": 328,
+        "startChar": 21,
+        "endLine": 328,
+        "endChar": 29
+      },
+      "revId": "118dca93bbbed07542dab1ee717bbfcccc8e2205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5632e1e_181e6f5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-30T18:16:57Z",
+      "side": 1,
+      "message": "I believe you have the same problem as the accompanying Autotest change: devices may have a subsystem ID that we didn\u0027t list in the table. So (vendor, device, subsystem) tuples (X, Y, Z) should also match table entries for (X, Y, nil).\n\n(Or similar.)",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 112
+      },
+      "revId": "118dca93bbbed07542dab1ee717bbfcccc8e2205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
