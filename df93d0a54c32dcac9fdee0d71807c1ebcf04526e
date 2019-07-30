@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fbbc310_888f4eba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-30T20:17:16Z",
+      "side": 1,
+      "message": "drop this. we no longer care about the module path.",
+      "range": {
+        "startLine": 39,
+        "startChar": 55,
+        "endLine": 39,
+        "endChar": 62
+      },
+      "revId": "df93d0a54c32dcac9fdee0d71807c1ebcf04526e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "599f2c77_a7142d01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-30T20:17:16Z",
+      "side": 1,
+      "message": "this function feels odd. It just picks some arbitrary network device, depending on this ordering, and then only tests one of them. Is that what we want? I guess there\u0027s no real benefit in running this on multiple devices (wlan and ethernet)?\n\nI guess this is a faithful port, so maybe just leave this alone. But something to rethink eventually.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 44
+      },
+      "revId": "df93d0a54c32dcac9fdee0d71807c1ebcf04526e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d4a564b_70a44bb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-30T20:17:16Z",
+      "side": 1,
+      "message": "you\u0027re not using this in the caller. you\u0027re reconstructing something similar though, at line 93. just do one or the other, I think :)",
+      "range": {
+        "startLine": 59,
+        "startChar": 31,
+        "endLine": 59,
+        "endChar": 42
+      },
+      "revId": "df93d0a54c32dcac9fdee0d71807c1ebcf04526e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "831525a4_58fec296",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-30T20:17:16Z",
+      "side": 1,
+      "message": "the original polls every 10 seconds for a total of 30 seconds. Not sure that\u0027s a great option, but going for 1 second seems a bit extreme on the short side. I\u0027d look at the original bug links on the other test to see what seems reasonable, but my guess would be that 10 seconds with a 1-second (or smaller) interval is plenty. (It can take a few seconds for some WiFi firmware to reload.)",
+      "range": {
+        "startLine": 163,
+        "startChar": 25,
+        "endLine": 163,
+        "endChar": 79
+      },
+      "revId": "df93d0a54c32dcac9fdee0d71807c1ebcf04526e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
