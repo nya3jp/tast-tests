@@ -259,6 +259,7 @@ func newBSSData(bssMatch string, dataMatch string) (*BSSData, error) {
 
 	// Handle SSID.
 	ssidMatch := regexp.MustCompile(`SSID:.*`).FindString(dataMatch)
+	//TODO(crbug.com/992083): elegantly handle hidden SSIDs
 	if len(ssidMatch) == len("SSID:") || len(ssidMatch) == 0 {
 		return nil, errors.New("could not valid SSID")
 	}
@@ -268,13 +269,17 @@ func newBSSData(bssMatch string, dataMatch string) (*BSSData, error) {
 	htMatch := regexp.MustCompile(
 		`\* secondary channel offset.*`).FindString(dataMatch)
 	htSplits := strings.Split(htMatch, ":")
-	if len(htSplits) != 2 {
-		return nil, errors.New("unexpected pattern for high throughput setting")
-	}
-	ht, ok := htTable[strings.TrimSpace(htSplits[1])]
-	if !ok {
-		return nil, errors.Errorf("invalid HT entry parsed %s",
-			strings.TrimSpace(htSplits[1]))
+	var ht string
+	if len(htSplits) == 2 {
+		htTemp, ok := htTable[strings.TrimSpace(htSplits[1])]
+		if !ok {
+			return nil, errors.Errorf("invalid HT entry parsed %s",
+				strings.TrimSpace(htSplits[1]))
+		}
+		ht = htTemp
+	} else {
+		// Default high throughput value if the section is not advertised.
+		ht = htTable["no secondary"]
 	}
 
 	// Handle Security.
