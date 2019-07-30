@@ -6,6 +6,8 @@ package security
 
 import (
 	"context"
+	"os"
+	"syscall"
 
 	"chromiumos/tast/local/bundles/cros/security/selinux"
 	"chromiumos/tast/testing"
@@ -21,6 +23,29 @@ func init() {
 }
 
 func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
+	type rwFilter int
+	const (
+		readonly rwFilter = iota
+		writable
+	)
+	systemCPUFilter := func(writableFilter rwFilter) selinux.FileLabelCheckFilter {
+		return func(p string, fi os.FileInfo) (skipFile, skipSubdir selinux.FilterResult) {
+			mode := fi.Mode()
+			// Domain has search to both sysfs and sysfs_devices_system_cpu.
+			if mode.IsDir() {
+				return selinux.Skip, selinux.Check
+			}
+
+			isWritable := mode.IsRegular() && ((mode.Perm() & (syscall.S_IWUSR | syscall.S_IWGRP | syscall.S_IWOTH)) > 0)
+			// Writable files
+			if isWritable != (writableFilter == writable) {
+				return selinux.Skip, selinux.Check
+			}
+
+			return selinux.Check, selinux.Check
+		}
+	}
+
 	testArgs := []selinux.FileTestCase{
 		{Path: "/bin", Context: "cros_coreutils_exec", Recursive: true, Filter: selinux.InvertFilterSkipFile(selinux.SkipCoreutilsFile), Log: false},
 		{Path: "/bin/bash", Context: "sh_exec", Recursive: false, Filter: nil, Log: false},
@@ -63,6 +88,8 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/sbin/setfiles", Context: "cros_restorecon_exec", Recursive: false, Filter: nil, Log: false},
 		{Path: "/sbin/udevd", Context: "cros_udevd_exec", Recursive: false, Filter: nil, Log: false},
 		{Path: "/sbin/upstart-socket-bridge", Context: "upstart_socket_bridge_exec", Recursive: false, Filter: nil, Log: false},
+		{Path: "/sys/devices/system/cpu", Context: "sysfs", Recursive: true, Filter: systemCPUFilter(writable), Log: false},
+		{Path: "/sys/devices/system/cpu", Context: "sysfs_devices_system_cpu", Recursive: true, Filter: systemCPUFilter(readonly), Log: false},
 		{Path: "/sys/fs/cgroup", Context: "cgroup", Recursive: true, Filter: selinux.IgnorePathButNotContents("/sys/fs/cgroup"), Log: false},
 		{Path: "/sys/fs/cgroup", Context: "tmpfs", Recursive: false, Filter: nil, Log: false},
 		{Path: "/sys/fs/pstore", Context: "pstorefs", Recursive: false, Filter: nil, Log: false},
@@ -149,6 +176,11 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/var/lib/update_engine", Context: "cros_var_lib_update_engine", Recursive: true, Filter: nil, Log: false},
 		{Path: "/var/lib/whitelist", Context: "cros_var_lib_whitelist", Recursive: true, Filter: nil, Log: false},
 		{Path: "/var/log", Context: "cros_var_log", Recursive: false, Filter: nil, Log: true},
+		{Path: "/var/log/asan", Context: "cros_var_log_asan", Recursive: true, Filter: nil, Log: true},
+		{Path: "/var/log/authpolicy.log", Context: "cros_authpolicy_log", Recursive: false, Filter: nil, Log: true},
+		{Path: "/var/log/eventlog.txt", Context: "cros_var_log_eventlog", Recursive: false, Filter: nil, Log: true},
+		{Path: "/var/log/mount-encrypted.log", Context: "cros_var_log", Recursive: false, Filter: nil, Log: true},
+		{Path: "/var/log/tlsdate.log", Context: "cros_tlsdate_log", Recursive: false, Filter: nil, Log: true},
 		{Path: "/var/spool", Context: "cros_var_spool", Recursive: false, Filter: nil, Log: true},
 		{Path: "/var/spool/crash", Context: "cros_crash_spool", Recursive: true, Filter: selinux.SkipNotExist, Log: true},
 		{Path: "/var/spool/cron-lite", Context: "cros_periodic_scheduler_cache_t", Recursive: true, Filter: nil, Log: true},
