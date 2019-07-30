@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea02a7e5_35ac51c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-30T15:20:08Z",
+      "side": 1,
+      "message": "f isn\u0027t used till the end...?\n\nRecommendation; instead of switching log strategy by cases, how about simplify it to log everything into one file?\n\n\nf, err :\u003d os.Create(completeLog)\nif err !\u003d nil {\n  s.Fatal(...)\n}\ndefer f.Close()\n\ndumpInstalledDLCs :\u003d func(tag string) {\n  s.Log(...)\n  if err :\u003d fmt.Fprintf(f, \"[%s]:\\n\", tag); err !\u003d nil {\n    s.Fatal(...)\n  }\n  if err :\u003d f.Sync(); err !\u003d nil {\n    s.Fatal(...)\n  }\n  cmd :\u003d testexec.CommandContext(ctx, \"dlcservice_util\", ...)\n  cmd.Stdout \u003d f\n  cmd.Stderr \u003d f\n  if err :\u003d cmd.Run(); err !\u003d nil {  // note: No testexec.DumpLogOnError, because it is dumped to f already.\n    s.Fatal(...)\n  }\n}\n\ninstall :\u003d func(tag, ...) {\n  s.Log(...)\n  ... same for loggin ...\n  ... same for Stdout/Stderr redirect ...  \n}\n\n...",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 16
+      },
+      "revId": "8b5f63ab72bcd4e37efb489c5049e60ae9c91e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f780e388_f14aaaa0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-30T15:20:08Z",
+      "side": 1,
+      "message": "Now these looks mostly dup, could you unify?\n\ntype expect bool\nconst (\n  success expect \u003d true\n  fail expect \u003d false\n)\n\ninstall :\u003d func(..., e expect) {\n  ...\n  if err :\u003d cmd.Run(); err !\u003d nil \u0026\u0026 e {\n    s.Fatal(\"Unexpected fail to install DLC modules: \", err)\n  } else if err \u003d\u003d nil \u0026\u0026 !e {\n    s.Fatal(\"Unexpected success to install DLC modules\")\n  }\n}\n\n...\n\ninstall(dlcModuleID, src.URL, success)\n\n...\n\ninstall(\"bad-dlc\", \"http://???\", fail)\n\n\n# I guess this is what Xiaochu said at https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1718832/3/src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go#93 ?",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 2
+      },
+      "revId": "8b5f63ab72bcd4e37efb489c5049e60ae9c91e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

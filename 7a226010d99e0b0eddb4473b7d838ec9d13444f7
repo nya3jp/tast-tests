@@ -398,6 +398,30 @@
     },
     {
       "key": {
+        "uuid": "f4b3d2e8_6b54d367",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-30T15:20:08Z",
+      "side": 1,
+      "message": "\u003e Currently the executable dlcservice_util itself takes \u0027:\u0027 separated dlc modules, so it would be better for now to stick with just forwarding?\n\nIMO, no. In general structural data is better than string representation. I couldn\u0027t find any exceptional situation here.\n\n\u003e Instead of spliting, then joining again for now?\n\nActually, you don\u0027t need to split. Instead, you need to join with \u0027, \u0027 for logging and with \u0027:\u0027 to adapt dlcservice_util commandline. (or rather, then I\u0027d use s.Logf(\"...: %#v\", dlcs) for logging)\nWhat you passed here are just collections of constants.\nVirtually, \"ReplaceAll\" conceptually equals to \"splitting and joining\", I think.",
+      "parentUuid": "aac283fe_bac29097",
+      "range": {
+        "startLine": 90,
+        "startChar": 17,
+        "endLine": 90,
+        "endChar": 21
+      },
+      "revId": "7a226010d99e0b0eddb4473b7d838ec9d13444f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f5f25a45_8bbf8c1d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 2
