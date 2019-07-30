@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "fa9e1d51_c6d2bb32",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-30T03:34:28Z",
+      "side": 1,
+      "message": "cool, should we wait for crrev.com/c/1725456 or should we use sudo in the interim?",
+      "parentUuid": "bd581cf0_eb9dcd5f",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "2cbd00a2386c447871a4b15bb890aeb8483437bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c740e24_300b7be8",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
