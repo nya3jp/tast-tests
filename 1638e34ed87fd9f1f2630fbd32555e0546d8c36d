@@ -22,6 +22,29 @@
       "revId": "1638e34ed87fd9f1f2630fbd32555e0546d8c36d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "145b07e8_10b56395",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-30T01:58:04Z",
+      "side": 1,
+      "message": "Oh. I see you *are* technically taking https://crbug.com/988895 into account. But this is clearly horrible :)\n\nYou might just try my comment #2 suggestion instead.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 107
+      },
+      "revId": "1638e34ed87fd9f1f2630fbd32555e0546d8c36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
