@@ -11,34 +11,34 @@ import (
 	"chromiumos/tast/crash"
 	"chromiumos/tast/local/bundles/cros/ui/chromecrash"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ChromeCrashNotLoggedIn,
-		Desc:         "Checks that Chrome writes crash dumps while not logged in",
-		Contacts:     []string{"iby@chromium.org", "chromeos-ui@google.com"},
-		SoftwareDeps: []string{"chrome"},
+		Func:     ChromeCrashNotLoggedIn,
+		Desc:     "Checks that Chrome writes crash dumps while not logged in",
+		Contacts: []string{"iby@chromium.org", "chromeos-ui@google.com"},
+		// chrome_internal because only official builds are even considered to have
+		// metrics consent; see ChromeCrashReporterClient::GetCollectStatsConsent()
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Attr:         []string{"informational"},
+		Data:         []string{chromecrash.TestCert},
 	})
 }
 
 func ChromeCrashNotLoggedIn(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx,
-		chrome.NoLogin(),
-		chrome.CrashNormalMode(),
-		chrome.ExtraArgs("--enable-crash-reporter-for-testing"))
+	err := metrics.SetConsent(ctx, s.DataPath(chromecrash.TestCert))
+	if err != nil {
+		s.Fatal("SetConsent failed: ", err)
+	}
+
+	cr, err := chrome.New(ctx, chrome.NoLogin(), chrome.CrashNormalMode(), chrome.KeepState())
 	if err != nil {
 		s.Fatal("Chrome startup failed: ", err)
 	}
 	defer cr.Close(ctx)
-
-	s.Log("Running metric_client to set up consent")
-	if err = testexec.CommandContext(ctx, "/usr/bin/metrics_client", "-C").Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Error setting metrics consent: ", err)
-	}
 
 	// Sleep briefly as a speculative workaround for Chrome hangs that are occasionally seen
 	// when this test sends SIGSEGV to Chrome soon after it starts: https://crbug.com/906690

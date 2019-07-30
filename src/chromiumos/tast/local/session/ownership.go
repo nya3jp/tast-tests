@@ -41,7 +41,7 @@ func SetUpDevice(ctx context.Context) error {
 	defer cancel()
 
 	if err := upstart.StopJob(sctx, "ui"); err != nil {
-		return err
+		return errors.Wrap(err, "failed to stop ui job")
 	}
 	// In case of error, run EnsureJobRunning with the original
 	// context to recover the job for the following tests.
@@ -49,9 +49,12 @@ func SetUpDevice(ctx context.Context) error {
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
 	if err := ClearDeviceOwnership(sctx); err != nil {
-		return err
+		return errors.Wrap(err, "failed to clear device ownership")
 	}
-	return upstart.EnsureJobRunning(sctx, "ui")
+	if err := upstart.EnsureJobRunning(sctx, "ui"); err != nil {
+		return errors.Wrap(err, "failed to restart ui job")
+	}
+	return nil
 }
 
 // PrepareChromeForTesting prepares Chrome for ownership or policy tests.
