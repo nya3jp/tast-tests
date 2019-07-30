@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6e4b13e_a5e59724",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1194150
+      },
+      "writtenOn": "2019-07-30T10:25:57Z",
+      "side": 1,
+      "message": "I honestly have no idea how to run this - I am guessing using local_test_runner, but what do I pass to it?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "cc750d345a5a630127c4ca93a94dd738f61d11bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
