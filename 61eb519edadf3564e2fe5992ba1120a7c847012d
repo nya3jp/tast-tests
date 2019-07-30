@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4bb00999_a6de2450",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ad/kerberos_daemon.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-07-30T20:48:38Z",
+      "side": 1,
+      "message": "No, Kerberos !\u003d Chromad. Both Kerberos and Chromad belong to Active Directory. Kerberos auth is an auth scheme in AD. Chromad is the Chrome OS AD integration.\n\nBoth are complementary. A Chrome OS device can be either in the normal cloud management mode, i.e. you sign in with a Gaia account and get policy from Google servers. The Kerberos feature applies to this mode. A Chrome OS device can also be in AD management mode, where you sign in with an AD account (Windows account) and get policy from AD servers. This mode \u0027is\u0027 Chromad. The Kerberos feature does not apply to this mode.",
+      "parentUuid": "b4f980eb_3c45ea70",
+      "revId": "61eb519edadf3564e2fe5992ba1120a7c847012d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b5f6aab_9521abfe",
         "filename": "src/chromiumos/tast/local/bundles/cros/ad/kerberos_daemon.go",
         "patchSetId": 5
@@ -30,6 +48,30 @@
       "writtenOn": "2019-07-26T19:20:38Z",
       "side": 1,
       "message": "I think you can build expected listResp struct?\nDo you have any reason you didn\u0027t so?",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 2
+      },
+      "revId": "61eb519edadf3564e2fe5992ba1120a7c847012d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d808c8b3_311db3a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ad/kerberos_daemon.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-07-30T20:48:38Z",
+      "side": 1,
+      "message": "The error message is pretty illegible since the %v or %#v formatters don\u0027t print protos nicely, e.g. you\u0027d get something like this:\n\nUnexpected accounts: got []*kerberos.Account{(*kerberos.Account)(0xc0003367e0)}; want [1]kerberos.Account{kerberos.Account{PrincipalName:(*string)(0xc00032f570), Krb5Conf:[]uint8{0x5b, 0x6c, 0x69, 0x62, 0x64, 0x65, 0x66, 0x61, 0x75, 0x6c, 0x74, 0x73, 0x5d, 0xa, 0x66, 0x6f, 0x72, 0x77, 0x61, 0x72, 0x64, 0x61, 0x62, 0x6c, 0x65, 0x3d, 0x66, 0x61, 0x6c, 0x73, 0x65}, TgtValiditySeconds:(*int64)(nil), TgtRenewalSeconds:(*int64)(nil), IsManaged:(*bool)(0xc000333df0), PasswordWasRemembered:(*bool)(0xc000333df1), UseLoginPassword:(*bool)(0xc000333df2), XXX_unrecognized:[]uint8(nil)}}\n\nThat\u0027s pretty useless. The current code would print this (I made it fail artificially):\n\nUnexpected account: got \"principal_name:\\\"user@EXAMPLE.COM\\\" krb5conf:\\\"[libdefaults]\\\\nforwardable\u003dfalse\\\" is_managed:false password_was_remembered:true use_login_password:false \"; want \"principal_name:\\\"user@EXAMPLE.COM\\\" krb5conf:\\\"[libdefaults]\\\\nforwardable\u003dfalse\\\" is_managed:false password_was_remembered:true use_login_password:true \"\n\nSo I\u0027d rather keep the current code.",
+      "parentUuid": "0b5f6aab_9521abfe",
       "range": {
         "startLine": 114,
         "startChar": 1,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "955e30bb_23698755",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ad/kerberos_daemon.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-07-30T20:48:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08e63767_17002818",
+      "range": {
+        "startLine": 144,
+        "startChar": 48,
+        "endLine": 144,
+        "endChar": 56
+      },
+      "revId": "61eb519edadf3564e2fe5992ba1120a7c847012d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "712f24de_cb66d96d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ad/kerberos_daemon.go",
         "patchSetId": 5
@@ -85,6 +151,30 @@
       "revId": "61eb519edadf3564e2fe5992ba1120a7c847012d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14a40edb_c6423f62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ad/kerberos_daemon.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1161264
+      },
+      "writtenOn": "2019-07-30T20:48:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "712f24de_cb66d96d",
+      "range": {
+        "startLine": 147,
+        "startChar": 46,
+        "endLine": 147,
+        "endChar": 54
+      },
+      "revId": "61eb519edadf3564e2fe5992ba1120a7c847012d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
