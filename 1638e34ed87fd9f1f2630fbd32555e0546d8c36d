@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "24a19007_48599e8f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-07-30T18:44:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55fabfc3_fd98a7aa",
+      "range": {
+        "startLine": 16,
+        "startChar": 57,
+        "endLine": 16,
+        "endChar": 72
+      },
+      "revId": "1638e34ed87fd9f1f2630fbd32555e0546d8c36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "145b07e8_10b56395",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "1638e34ed87fd9f1f2630fbd32555e0546d8c36d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec36cd6f_2e3722e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-07-30T18:44:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "145b07e8_10b56395",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 107
+      },
+      "revId": "1638e34ed87fd9f1f2630fbd32555e0546d8c36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
