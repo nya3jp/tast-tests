@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5ac09c1_03e93e41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-30T19:38:39Z",
+      "side": 1,
+      "message": "Technically, we don\u0027t lose connectivity for this particular test. Only for the restartInterface() one.\n\nSo either drop this one, or just grab the lock for the entirety of the test.",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 65
+      },
+      "revId": "87cf4f427a0544e241615407c2df6792bd48fa2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
