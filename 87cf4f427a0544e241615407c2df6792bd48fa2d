@@ -22,6 +22,30 @@
       "revId": "87cf4f427a0544e241615407c2df6792bd48fa2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc53dc8f_e84dc229",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-07-30T19:58:09Z",
+      "side": 1,
+      "message": "Done. I kept it in the other function to narrow the scope of the lock for clarity reasons.",
+      "parentUuid": "d5ac09c1_03e93e41",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 65
+      },
+      "revId": "87cf4f427a0544e241615407c2df6792bd48fa2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
