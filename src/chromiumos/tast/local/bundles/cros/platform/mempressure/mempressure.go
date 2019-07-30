@@ -352,7 +352,7 @@ func focusElement(ctx context.Context, r *renderer, selector string) error {
 	return r.conn.Exec(ctx, focusCode)
 }
 
-// googleLogin logs onto GAIA (NOT WORKING YET).
+// googleLogIn logs onto GAIA (NOT WORKING YET).
 func googleLogIn(ctx context.Context, cr *chrome.Chrome) error {
 	const loginURL = "https://accounts.google.com/ServiceLogin?continue=https%3A%2F%2Faccounts.google.com%2FManageAccount"
 	loginTab, err := addTab(ctx, cr, nil, loginURL, "", 0)

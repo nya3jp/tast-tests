@@ -17,7 +17,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// Returns the current wall clock time as reported by `date` in the container.
+// getTime returns the current wall clock time as reported by `date` in the container.
 func getTime(ctx context.Context, s *testing.State, cont *vm.Container) (time.Time, error) {
 	cmd := cont.Command(ctx, "date", "+%s")
 	out, err := cmd.CombinedOutput()

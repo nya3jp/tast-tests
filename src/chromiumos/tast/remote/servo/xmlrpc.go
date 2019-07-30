@@ -68,7 +68,7 @@ func xmlBooleanToBool(xmlBool string) (bool, error) {
 	}
 }
 
-// booleanToXMLBoolean converts a Go boolean to an XML-RPC boolean string.
+// boolToXMLBoolean converts a Go boolean to an XML-RPC boolean string.
 func boolToXMLBoolean(v bool) string {
 	if v {
 		return "1"

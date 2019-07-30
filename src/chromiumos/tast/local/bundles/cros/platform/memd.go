@@ -40,8 +40,9 @@ func readAsInt(filename string) (int, error) {
 	return strconv.Atoi(str)
 }
 
-// Emits a D-Bus signal for comsumption by memd. The |name| parameter must be
-// formatted as "interface.member", e.g., "org.freedesktop.DBus.NameLost".
+// emitDBusSignal emits a D-Bus signal for comsumption by memd. The name
+// parameter must be formatted as "interface.member",
+// e.g., "org.freedesktop.DBus.NameLost".
 func emitDBusSignal(name string, eventType metrics_event.Event_Type) error {
 	conn, err := dbus.SystemBus()
 	if err != nil {

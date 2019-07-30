@@ -168,7 +168,7 @@ func (p *preImpl) cleanUp(ctx context.Context, s *testing.State) {
 	}
 }
 
-// Helper method that builds the PreData and resets the machine state in
+// buildPreData builds the PreData and resets the machine state in
 // advance of running the actual tests.
 func (p *preImpl) buildPreData(ctx context.Context, s *testing.State) PreData {
 	if err := p.cr.ResetState(ctx); err != nil {

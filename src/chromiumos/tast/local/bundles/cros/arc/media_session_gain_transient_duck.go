@@ -48,7 +48,7 @@ func MediaSessionGainTransientDuck(ctx context.Context, s *testing.State) {
 		s.Log("Launching media playback in Chrome")
 		conn, err := mediasession.LoadTestPageAndStartPlaying(ctx, cr, sr.URL+"/media_session_test.html")
 		if err != nil {
-			s.Fatal("failed to start playback: ", err)
+			s.Fatal("Failed to start playback: ", err)
 		}
 		defer conn.Close()
 
