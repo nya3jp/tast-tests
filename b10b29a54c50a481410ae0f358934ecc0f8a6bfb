@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3ef370b6_994605a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in_direct.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-07-30T20:41:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73e0abc6_f66f5941",
+      "revId": "b10b29a54c50a481410ae0f358934ecc0f8a6bfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2b6a923_064c960b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_not_logged_in_direct.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "b10b29a54c50a481410ae0f358934ecc0f8a6bfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e611bd0f_543c11de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_not_logged_in_direct.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-07-30T20:41:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2b6a923_064c960b",
+      "revId": "b10b29a54c50a481410ae0f358934ecc0f8a6bfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
