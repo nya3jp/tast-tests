@@ -53,6 +53,7 @@ const (
 	intel9000                  = "Intel 9000"
 	intel9260                  = "Intel 9260"
 	intel22260                 = "Intel 22260"
+	intel22560                 = "Intel 22560"
 	broadcomBCM4354SDIO        = "Broadcom BCM4354 SDIO"
 	broadcomBCM4356PCIE        = "Broadcom BCM4356 PCIE"
 	broadcomBCM4371PCIE        = "Broadcom BCM4371 PCIE"
@@ -66,6 +67,9 @@ type wlanDeviceInfo struct {
 	// compatible is the compatible property.
 	// See https://www.kernel.org/doc/Documentation/devicetree/usage-model.txt .
 	compatible string
+	// subsystem is the RF chip's ID. This addition of this property is necessary for
+	// device disambiguation (b/129489799).
+	subsystem string
 }
 
 var wlanDeviceLookup = map[wlanDeviceInfo]string{
@@ -84,14 +88,20 @@ var wlanDeviceLookup = map[wlanDeviceInfo]string{
 	{vendor: "0x8086", device: "0x08b2"}: intel7260,
 	{vendor: "0x8086", device: "0x095a"}: intel7265,
 	{vendor: "0x8086", device: "0x095b"}: intel7265,
+	// Note that Intel 9000 is also Intel 9560 aka Jefferson Peak 2
 	{vendor: "0x8086", device: "0x9df0"}: intel9000,
 	{vendor: "0x8086", device: "0x31dc"}: intel9000,
 	{vendor: "0x8086", device: "0x2526"}: intel9260,
 	{vendor: "0x8086", device: "0x2723"}: intel22260,
-	{vendor: "0x02d0", device: "0x4354"}: broadcomBCM4354SDIO,
-	{vendor: "0x14e4", device: "0x43ec"}: broadcomBCM4356PCIE,
-	{vendor: "0x14e4", device: "0x440d"}: broadcomBCM4371PCIE,
-	{compatible: "qcom,wcn3990-wifi"}:    qualcommWCN3990,
+	// For integrated wifi chips, use device_id and subsystem_id together
+	// as an identifier.
+	// 0x02f0 is for Quasar on CML, 0x0074 is for HrP2
+	{vendor: "0x8086", device: "0x02f0", subsystem: "0x0034"}: intel9000,
+	{vendor: "0x8086", device: "0x02f0", subsystem: "0x0074"}: intel22560,
+	{vendor: "0x02d0", device: "0x4354"}:                      broadcomBCM4354SDIO,
+	{vendor: "0x14e4", device: "0x43ec"}:                      broadcomBCM4356PCIE,
+	{vendor: "0x14e4", device: "0x440d"}:                      broadcomBCM4371PCIE,
+	{compatible: "qcom,wcn3990-wifi"}:                         qualcommWCN3990,
 }
 
 var expectedWLANDriver = map[string]map[string]string{
@@ -134,6 +144,9 @@ var expectedWLANDriver = map[string]map[string]string{
 	intel22260: {
 		"4.4":  "wireless/iwl7000/iwlwifi/iwlwifi.ko",
 		"4.14": "wireless/iwl7000/iwlwifi/iwlwifi.ko",
+		"4.19": "wireless/iwl7000/iwlwifi/iwlwifi.ko",
+	},
+	intel22560: {
 		"4.19": "wireless/iwl7000/iwlwifi/iwlwifi.ko",
 	},
 	atherosAR9462: {
@@ -312,8 +325,16 @@ func getWLANDeviceName(ctx context.Context, netIf string) (string, error) {
 	if err != nil {
 		return "", errors.Wrapf(err, "get device %s: failed to get product ID", netIf)
 	}
+	// DUTs that use SDIO as the bus technology may not have subsystem_device at all.
+	// If this is the case, just use an ID of empty string instead.
+	subsystemID, err := readInfo("subsystem_device")
+	if err != nil && !os.IsNotExist(err) {
+		return "", errors.Wrap(err, "error reading subsystem_device")
+	}
 
-	if d, ok := wlanDeviceLookup[wlanDeviceInfo{vendor: vendorID, device: productID}]; ok {
+	if d, ok := wlanDeviceLookup[wlanDeviceInfo{vendor: vendorID, device: productID, subsystem: subsystemID}]; ok {
+		return d, nil
+	} else if d, ok := wlanDeviceLookup[wlanDeviceInfo{vendor: vendorID, device: productID}]; ok {
 		return d, nil
 	}
 	return "", errors.Errorf("get device %s: device unknown", netIf)
