@@ -300,7 +300,7 @@ func waitForDBusSignal(ctx context.Context, watcher *dbusutil.SignalWatcher, opt
 	}
 }
 
-// parseIPv4 returns the first IPv4 address found in a space separated list of IPs.
+// findIPv4 returns the first IPv4 address found in a space separated list of IPs.
 func findIPv4(ips string) (string, error) {
 	for _, v := range strings.Fields(ips) {
 		ip := net.ParseIP(v)

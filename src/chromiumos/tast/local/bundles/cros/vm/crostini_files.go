@@ -189,7 +189,8 @@ func testShareFiles(ctx context.Context, s *testing.State, ownerID string, cr *c
 	verifyFileNotInContainer(ctx, s, ownerID, contWriteContFileName)
 }
 
-// Calls FilesApp chrome.fileManagerPrivate API to share the specified path within the given volume with the container.  Param volume must be a valid FilesApp VolumeManagerCommon.VolumeType.
+// sharePath calls FilesApp chrome.fileManagerPrivate API to share the specified path within the given volume with the container.
+// Param volume must be a valid FilesApp VolumeManagerCommon.VolumeType.
 func sharePath(ctx context.Context, s *testing.State, fconn *chrome.Conn, volume, path string) {
 	js := fmt.Sprintf(
 		`volumeManagerFactory.getInstance().then(vmgr => {
@@ -210,7 +211,8 @@ func sharePath(ctx context.Context, s *testing.State, fconn *chrome.Conn, volume
 	}
 }
 
-// Calls FilesApp chrome.fileManagerPrivate API to unshare the specified path within the given volume with the container.  Param volume must be a valid FilesApp VolumeManagerCommon.VolumeType.
+// unsharePath calls FilesApp chrome.fileManagerPrivate API to unshare the specified path within the given volume with the container.
+// Param volume must be a valid FilesApp VolumeManagerCommon.VolumeType.
 func unsharePath(ctx context.Context, s *testing.State, fconn *chrome.Conn, volume, path string) {
 	js := fmt.Sprintf(
 		`volumeManagerFactory.getInstance().then(vmgr => {
