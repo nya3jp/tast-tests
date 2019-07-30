@@ -178,6 +178,24 @@
     },
     {
       "key": {
+        "uuid": "75f96ef8_c90e3237",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-30T03:03:59Z",
+      "side": 1,
+      "message": "Perfect, thanks a lot for the info!",
+      "parentUuid": "4b3a3161_4986302f",
+      "revId": "70e5da977158ff3fb07b8b8f577839748e9e1233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf81b493_accd45d1",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 4
