@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "deb89fb8_2391b45c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-07-30T23:19:08Z",
+      "side": 1,
+      "message": "I have a CL (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1679373) being blocked on another CL that will allow me to have shill relinquish its control over wifi without killing all of shill (ethernet will still be up). I can bring it up with ip link set $DEV up.\n\nI can duplicate the changes from that CL over here if that\u0027s ok.",
+      "parentUuid": "2a5ce77e_c2100ed1",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 58
+      },
+      "revId": "0fe233bd021b0d5e80edfbbe56921bebfb53c871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2b2a9f7_732945e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
         "patchSetId": 1
