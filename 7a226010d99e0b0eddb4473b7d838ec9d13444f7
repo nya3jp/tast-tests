@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "ba34d011_afa6bab0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2019-07-30T17:05:07Z",
+      "side": 1,
+      "message": "N/A. Using completelog.txt now.",
+      "parentUuid": "bc44df73_c2243bc1",
+      "revId": "7a226010d99e0b0eddb4473b7d838ec9d13444f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "601ef419_65c72411",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 2
@@ -419,6 +437,30 @@
       "revId": "7a226010d99e0b0eddb4473b7d838ec9d13444f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41967cb7_a97b87fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2019-07-30T17:05:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4b3d2e8_6b54d367",
+      "range": {
+        "startLine": 90,
+        "startChar": 17,
+        "endLine": 90,
+        "endChar": 21
+      },
+      "revId": "7a226010d99e0b0eddb4473b7d838ec9d13444f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
