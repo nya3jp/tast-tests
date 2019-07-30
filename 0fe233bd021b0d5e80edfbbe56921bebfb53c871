@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c1c86fac_a8ab61c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-30T23:37:37Z",
+      "side": 1,
+      "message": "Basically: just calling manager.DisableTechnology? That\u0027s certainly better than this, and I wouldn\u0027t mind bringing that over here. But even better, add the Device API to the shill package, and use its Disable() method.",
+      "parentUuid": "deb89fb8_2391b45c",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 58
+      },
+      "revId": "0fe233bd021b0d5e80edfbbe56921bebfb53c871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2b2a9f7_732945e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
         "patchSetId": 1
