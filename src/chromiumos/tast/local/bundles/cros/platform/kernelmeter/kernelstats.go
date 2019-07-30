@@ -9,7 +9,6 @@ package kernelmeter
 
 import (
 	"context"
-	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -39,7 +38,7 @@ func PSIMemoryLines() ([]string, error) {
 	// some avg10=0.00 avg60=0.00 avg300=0.00 total=1468431930
 	// full avg10=0.00 avg60=0.00 avg300=0.00 total=658624525
 	if len(lines) != 3 {
-		return nil, errors.New(fmt.Sprintf("unexpected PSI file content: %q", bytes))
+		return nil, errors.Errorf("unexpected PSI file content: %q", bytes)
 	}
 	return lines[:2], nil
 }
@@ -59,7 +58,7 @@ func ZramStats(ctx context.Context) (*ZramStatsData, error) {
 		// first three such numbers.
 		fields = strings.Fields(string(bytes))
 		if len(fields) < 3 {
-			return nil, errors.New(fmt.Sprintf("unexpected mm_stat content: %q", bytes))
+			return nil, errors.Errorf("unexpected mm_stat content: %q", bytes)
 		}
 	} else {
 		testing.ContextLogf(ctx, "Cannot read %v, assuming legacy device", mmStats)
