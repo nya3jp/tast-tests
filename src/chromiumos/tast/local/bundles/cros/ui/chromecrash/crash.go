@@ -26,6 +26,10 @@ const (
 	// CryptohomeCrashPattern is a glob pattern that matches any crash directory
 	// inside any user's cryptohome
 	CryptohomeCrashPattern = "/home/chronos/u-*/crash"
+
+	// TestCert is the name of a PKCS #12 format cert file, suitable for passing
+	// into metrics.SetConsent().
+	TestCert = "testcert.p12"
 )
 
 func cryptohomeCrashDirs(ctx context.Context) ([]string, error) {
