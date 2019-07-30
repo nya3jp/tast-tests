@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56191f29_6117ce00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-30T23:36:53Z",
+      "side": 1,
+      "message": "nit: I\u0027m not sure this adds any useful info.",
+      "range": {
+        "startLine": 106,
+        "startChar": 55,
+        "endLine": 106,
+        "endChar": 68
+      },
+      "revId": "f3424d4050f0198a803db14270c54745b509fc42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdc7a9be_49f2262c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-30T23:36:53Z",
+      "side": 1,
+      "message": "nit: I have no idea what \u0027percent\u0027 means. Maybe we should clarify this a bit?",
+      "range": {
+        "startLine": 106,
+        "startChar": 47,
+        "endLine": 106,
+        "endChar": 54
+      },
+      "revId": "f3424d4050f0198a803db14270c54745b509fc42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
