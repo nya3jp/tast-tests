@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "dbff1936_5b8291de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/capture_unittests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-07-30T07:37:40Z",
+      "side": 1,
+      "message": "lgtm :D",
+      "parentUuid": "20840b7e_e6ad42a0",
+      "range": {
+        "startLine": 84,
+        "startChar": 42,
+        "endLine": 84,
+        "endChar": 53
+      },
+      "revId": "027871ccb6df675cf9ba571c417478b6ce14a6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf3023e5_bd065711",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/capture_unittests.go",
         "patchSetId": 2
