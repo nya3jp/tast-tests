@@ -69,6 +69,30 @@
       "revId": "118dca93bbbed07542dab1ee717bbfcccc8e2205",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87d99ba1_c4975a75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-30T19:30:29Z",
+      "side": 1,
+      "message": "Oops, I misread. You are correct. Sorry.\n\n(The comment at line 328 still applies.)",
+      "parentUuid": "d6fb0864_70cb9f81",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 112
+      },
+      "revId": "118dca93bbbed07542dab1ee717bbfcccc8e2205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
