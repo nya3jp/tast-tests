@@ -103,10 +103,10 @@ func RunTest(ctx context.Context, s *testing.State, videoName, videoDesc string,
 	if err := measurePerformance(ctx, s.DataFileSystem(), videoName, perfData); err != nil {
 		s.Fatal("Failed to collect CPU usage and dropped frames: ", err)
 	}
-	s.Log("Measured CPU usage, dropped frames and percent: ", perfData)
+	s.Log("Measured CPU usage, dropped frames and percent (perf data): ", perfData)
 
 	if err := savePerfResults(ctx, perfData, videoDesc, s.OutDir(), dps); err != nil {
-		s.Fatal("Failed to save perf data: ", perfData)
+		s.Fatal("Failed to save perf data: ", err)
 	}
 }
 
