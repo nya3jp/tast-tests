@@ -99,14 +99,14 @@ func RunTest(ctx context.Context, s *testing.State, videoName, videoDesc string,
 	defer audio.Unmute(ctx)
 
 	perfData := collectedPerfData{}
-	s.Log("Measuring CPU usage, the number of dropped frames and percent")
+	s.Log("Measuring performance")
 	if err := measurePerformance(ctx, s.DataFileSystem(), videoName, perfData); err != nil {
 		s.Fatal("Failed to collect CPU usage and dropped frames: ", err)
 	}
-	s.Log("Measured CPU usage, dropped frames and percent: ", perfData)
+	s.Log("Measured perf data (CPU usage, number of dropped frames and drop rate): ", perfData)
 
 	if err := savePerfResults(ctx, perfData, videoDesc, s.OutDir(), dps); err != nil {
-		s.Fatal("Failed to save perf data: ", perfData)
+		s.Fatal("Failed to save perf data: ", err)
 	}
 }
 
