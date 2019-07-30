@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60e9e340_05b75e04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-07-30T22:26:59Z",
+      "side": 1,
+      "message": "To confirm, the execution order is\n- function IWScan completes\n- then unlock() is run\n- shill is restarted at the very end?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "0fe233bd021b0d5e80edfbbe56921bebfb53c871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
