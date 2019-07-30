@@ -16,6 +16,24 @@
       "revId": "551b672ac9ce7e497a22675fbc33cc1fa7f9b465",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e523b647_9d272b9d",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-07-30T02:19:48Z",
+      "side": 1,
+      "message": "I think so. We plan to duplicate all the current tests for VDA to new VD.",
+      "parentUuid": "c08a650a_0047d71d",
+      "revId": "551b672ac9ce7e497a22675fbc33cc1fa7f9b465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
