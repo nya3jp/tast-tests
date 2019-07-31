@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d1f38965_703b4ccb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2019-07-31T17:27:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e11e0765_f6cc5c37",
+      "revId": "1899d44605e8f8e8fc445ad221a5e6229028dfdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c41727d_124f02af",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "1899d44605e8f8e8fc445ad221a5e6229028dfdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9325db6_0b68735a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2019-07-31T17:27:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c41727d_124f02af",
+      "revId": "1899d44605e8f8e8fc445ad221a5e6229028dfdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
