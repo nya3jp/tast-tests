@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "b4893f45_3e5e19ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/charge_scheduling.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-07-31T16:56:44Z",
+      "side": 1,
+      "message": "Comment removed by: Jeff Carpenter; Reason: Mentions internal info",
+      "parentUuid": "373ee93c_987cfd6f",
+      "range": {
+        "startLine": 26,
+        "startChar": 14,
+        "endLine": 26,
+        "endChar": 42
+      },
+      "revId": "3b66e722f16a736577f14560a4f70a838f7a3cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37c3c644_6dacc55d",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/charge_scheduling.go",
         "patchSetId": 1
