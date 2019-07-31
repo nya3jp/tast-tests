@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13fa1584_4d4d862b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-07-31T22:13:48Z",
+      "side": 1,
+      "message": "How about also add \"--no-first-run\", see\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1728070/1/src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+      "range": {
+        "startLine": 253,
+        "startChar": 1,
+        "endLine": 253,
+        "endChar": 19
+      },
+      "revId": "cd30ccff1f2790f323a0ea6673987a3ae8d1e026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
