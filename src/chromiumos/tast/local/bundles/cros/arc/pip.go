@@ -22,14 +22,32 @@ import (
 )
 
 const (
-	// kCollisionWindowWorkAreaInsetsDp is hardcoded to 8dp. Using a bigger value to safe.
+	pkgName = "org.chromium.arc.testapp.pictureinpicture"
+
+	// kCollisionWindowWorkAreaInsetsDp is hardcoded to 8dp.
 	// See: https://cs.chromium.org/chromium/src/ash/wm/collision_detection/collision_detection_utils.h
 	// TODO(crbug.com/949754): Get this value in runtime.
-	collisionWindowWorkAreaInsetsDP = 8 + 5
+	collisionWindowWorkAreaInsetsDP = 8
 
-	// pipPositionErrorMarginPX represents the error margin in pixels when comparing positions. See b/129976114 for more info.
+	// pipPositionErrorMarginPX represents the error margin in pixels when comparing positions.
+	// With some calculation, we expect the error could be a maximum of 2 pixels, but we use 1-pixel larger value just in case.
+	// See b/129976114 for more info.
 	// TODO(ricardoq): Remove this constant once the bug gets fixed.
-	pipPositionErrorMarginPX = 1
+	pipPositionErrorMarginPX = 3
+
+	// When the drag-move sequence is started, the gesture controller might miss a few pixels before it finally
+	// recognizes it as a drag-move gesture. This is specially true for PIP windows.
+	// The value varies depending on acceleration/speed of the gesture. 35 works for our purpose.
+	missedByGestureControllerDP = 35
+)
+
+type borderType int
+
+const (
+	left borderType = iota
+	right
+	top
+	bottom
 )
 
 func init() {
@@ -68,7 +86,6 @@ func PIP(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
-	const pkgName = "org.chromium.arc.testapp.pictureinpicture"
 	act, err := arc.NewActivity(a, pkgName, ".MainActivity")
 	if err != nil {
 		s.Fatal("Failed to create new activity: ", err)
@@ -168,12 +185,8 @@ func PIP(ctx context.Context, s *testing.State) {
 // It does that by drag-moving that PIP window horizontally 3 times and verifying that the position is correct.
 func testPIPMove(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
 	const (
-		// When the drag-move sequence is started, the gesture controller might miss a few pixels before it finally
-		// recognizes it as a drag-move gesture. This is specially true for PIP windows.
-		// The value varies depending on acceleration/speed of the gesture. 35 works for our purpose.
-		missedByGestureControllerDP = 35
-		movementDuration            = time.Second
-		totalMovements              = 3
+		movementDuration = time.Second
+		totalMovements   = 3
 	)
 
 	missedByGestureControllerPX := int(math.Round(missedByGestureControllerDP * dispMode.DeviceScaleFactor))
@@ -234,12 +247,6 @@ func testPIPResize(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d
 		return errors.Wrap(err, "could not resize PIP window")
 	}
 
-	bounds, err = act.WindowBounds(ctx)
-	if err != nil {
-		return errors.Wrap(err, "could not get PIP window bounds")
-	}
-	testing.ContextLogf(ctx, "Bounds after resize: %+v", bounds)
-
 	rectDP, err := getShelfRect(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get shelf rect")
@@ -253,33 +260,24 @@ func testPIPResize(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d
 	const pipMaxSizeFactor = 2
 	pipMaxSizeW := dispMode.WidthInNativePixels / pipMaxSizeFactor
 	pipMaxSizeH := (dispMode.HeightInNativePixels - shelfHeightPX) / pipMaxSizeFactor
+	right := bounds.Left + bounds.Width
+	bottom := bounds.Top + bounds.Height
 
-	// Aspect ratio gets honored after resize. Only test one dimension.
 	if pipMaxSizeH < pipMaxSizeW {
-		if err := checkRange("height", bounds.Height,
-			pipMaxSizeH-pipPositionErrorMarginPX, pipMaxSizeH+pipPositionErrorMarginPX); err != nil {
-			return err
+		if err = waitForNewBoundsWithMargin(ctx, tconn, bottom-pipMaxSizeH, top, dispMode.DeviceScaleFactor, pipPositionErrorMarginPX); err != nil {
+			return errors.Wrap(err, "the maximum size of the PIP window must be half of the display height")
 		}
 	} else {
-		if err := checkRange("width", bounds.Width,
-			pipMaxSizeW-pipPositionErrorMarginPX, pipMaxSizeW+pipPositionErrorMarginPX); err != nil {
-			return err
+		if err = waitForNewBoundsWithMargin(ctx, tconn, right-pipMaxSizeW, left, dispMode.DeviceScaleFactor, pipPositionErrorMarginPX); err != nil {
+			return errors.Wrap(err, "the maximum size of the PIP window must be half of the display width")
 		}
 	}
+
 	return nil
 }
 
 // testPIPFling tests that fling works as expected. It tests the fling gesture in four directions: left, up, right and down.
 func testPIPFling(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
-	type borderType int
-	const (
-		// Borders to check after swipe.
-		left borderType = iota
-		right
-		top
-		bottom
-	)
-
 	tsw, err := input.Touchscreen(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to open touchscreen device")
@@ -334,34 +332,17 @@ func testPIPFling(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, de
 			return errors.Wrap(err, "failed to finish the swipe gesture")
 		}
 
-		// TODO(b/131248000): WaitForIdle doesn't catch all PIP possible animations, like fling.
-		// Add temporary delay until it gets fixed.
-		if err := testing.Sleep(ctx, 500*time.Millisecond); err != nil {
-			return err
-		}
-		if err := act.WaitForIdle(ctx, time.Second); err != nil {
-			return err
-		}
-
-		// After swipe, check that the PIP window arrived to destination.
-		bounds, err = act.WindowBounds(ctx)
-		if err != nil {
-			return errors.Wrap(err, "could not get PIP window bounds after swipe")
-		}
 		switch dir.border {
 		case left:
-			if err := checkRange("left bounds", bounds.Left,
-				0, collisionWindowWorkAreaInsetsPX); err != nil {
+			if err = waitForNewBoundsWithMargin(ctx, tconn, collisionWindowWorkAreaInsetsPX, left, dispMode.DeviceScaleFactor, pipPositionErrorMarginPX); err != nil {
 				return errors.Wrap(err, "failed swipe to left")
 			}
 		case right:
-			if err := checkRange("right bounds", bounds.Left+bounds.Width,
-				dispW-collisionWindowWorkAreaInsetsPX, dispW-1); err != nil {
+			if err = waitForNewBoundsWithMargin(ctx, tconn, dispW-collisionWindowWorkAreaInsetsPX, right, dispMode.DeviceScaleFactor, pipPositionErrorMarginPX); err != nil {
 				return errors.Wrap(err, "failed swipe to right")
 			}
 		case top:
-			if err := checkRange("top bounds", bounds.Top,
-				0, collisionWindowWorkAreaInsetsPX); err != nil {
+			if err = waitForNewBoundsWithMargin(ctx, tconn, collisionWindowWorkAreaInsetsPX, top, dispMode.DeviceScaleFactor, pipPositionErrorMarginPX); err != nil {
 				return errors.Wrap(err, "failed swipe to top")
 			}
 		case bottom:
@@ -370,8 +351,7 @@ func testPIPFling(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, de
 				return errors.Wrap(err, "failed to get shelf rect")
 			}
 			shelfTopPX := int(math.Round(float64(rectDP.Top) * dispMode.DeviceScaleFactor))
-			if err := checkRange("bottom bounds", bounds.Top+bounds.Height,
-				shelfTopPX-collisionWindowWorkAreaInsetsPX, shelfTopPX-1); err != nil {
+			if err = waitForNewBoundsWithMargin(ctx, tconn, shelfTopPX-collisionWindowWorkAreaInsetsPX, bottom, dispMode.DeviceScaleFactor, pipPositionErrorMarginPX); err != nil {
 				return errors.Wrap(err, "failed swipe to bottom")
 			}
 		}
@@ -390,28 +370,18 @@ func testPIPGravityStatusArea(ctx context.Context, tconn *chrome.Conn, act *arc.
 
 	// 0) Sanity check. Verify that PIP window is in the expected initial position and that Status Area is hidden.
 
+	bounds, err := act.WindowBounds(ctx)
+	if err != nil {
+		return errors.Wrap(err, "could not get PIP window bounds")
+	}
+
 	testing.ContextLog(ctx, "Hiding system status area")
 	if err := hideSystemStatusArea(ctx, tconn); err != nil {
 		return err
 	}
 
-	bounds, err := act.WindowBounds(ctx)
-	if err != nil {
-		return errors.Wrap(err, "could not get PIP window bounds")
-	}
-	testing.ContextLogf(ctx, "Initial bounds: %+v", bounds)
-
-	if err := checkRange("right bounds", bounds.Left+bounds.Width,
-		dispMode.WidthInNativePixels-collisionWindowWorkAreaInsetsPX, dispMode.WidthInNativePixels-1); err != nil {
-		return err
-	}
-
-	// A newly launched ARC++ PIP window has "no gravity". We move it a few pixels to the top
-	// to activate "right" gravity.
-	const pixelsToMove = 100
-	dst := bounds.Top - pixelsToMove
-	if err := act.MoveWindow(ctx, arc.NewPoint(bounds.Left, dst), time.Second); err != nil {
-		return errors.Wrapf(err, "failed to move PIP window to (%d, %d)", bounds.Left, dst)
+	if err = waitForNewBoundsWithMargin(ctx, tconn, dispMode.WidthInNativePixels-collisionWindowWorkAreaInsetsPX, right, dispMode.DeviceScaleFactor, pipPositionErrorMarginPX); err != nil {
+		return errors.Wrap(err, "the PIP window must be along the right edge of the display")
 	}
 
 	// 1) The PIP window should move to the left of the status area.
@@ -423,24 +393,14 @@ func testPIPGravityStatusArea(ctx context.Context, tconn *chrome.Conn, act *arc.
 	// Be nice, and no matter what happens, hide the Status Area on exit.
 	defer hideSystemStatusArea(ctx, tconn)
 
-	if err := act.WaitForIdle(ctx, time.Second); err != nil {
-		return err
-	}
-
 	statusRectDP, err := getStatusAreaRect(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get system status area rect")
 	}
 	statusLeftPX := int(math.Round(float64(statusRectDP.Left) * dispMode.DeviceScaleFactor))
 
-	bounds, err = act.WindowBounds(ctx)
-	if err != nil {
-		return errors.Wrap(err, "could not get PIP window bounds")
-	}
-
-	if err := checkRange("right bounds", bounds.Left+bounds.Width,
-		statusLeftPX-collisionWindowWorkAreaInsetsPX, statusLeftPX-1); err != nil {
-		return err
+	if err = waitForNewBoundsWithMargin(ctx, tconn, statusLeftPX-collisionWindowWorkAreaInsetsPX, right, dispMode.DeviceScaleFactor, pipPositionErrorMarginPX); err != nil {
+		return errors.Wrap(err, "the PIP window must move to the left when system status area gets shown")
 	}
 
 	// 2) The PIP window should move close the right border when the status area is dismissed.
@@ -450,18 +410,11 @@ func testPIPGravityStatusArea(ctx context.Context, tconn *chrome.Conn, act *arc.
 		return err
 	}
 
-	if err := act.WaitForIdle(ctx, time.Second); err != nil {
-		return err
+	if err = waitForNewBoundsWithMargin(ctx, tconn, bounds.Left+bounds.Width, right, dispMode.DeviceScaleFactor, pipPositionErrorMarginPX); err != nil {
+		return errors.Wrap(err, "the PIP window must go back to the original position when system status area gets hidden")
 	}
 
-	bounds, err = act.WindowBounds(ctx)
-	if err != nil {
-		return errors.Wrap(err, "could not get PIP window bounds")
-	}
-	testing.ContextLogf(ctx, "Bounds after dismissing status area: %+v", bounds)
-
-	return checkRange("right bounds", bounds.Left+bounds.Width,
-		dispMode.WidthInNativePixels-collisionWindowWorkAreaInsetsPX, dispMode.WidthInNativePixels-1)
+	return nil
 }
 
 // testPIPGravityShelfAutoHide tests that PIP windows moves accordingly when the shelf is hidden / displayed.
@@ -485,7 +438,7 @@ func testPIPGravityShelfAutoHide(ctx context.Context, tconn *chrome.Conn, act *a
 	shelfTopPX := int(math.Round(float64(shelfRectDP.Top) * dispMode.DeviceScaleFactor))
 	testing.ContextLog(ctx, "Shelf Top = ", shelfTopPX)
 
-	// 1) PIP window should be above the shelf.
+	// 1) PIP window should be above the shelf on the Y-axis.
 
 	origBounds, err := act.WindowBounds(ctx)
 	if err != nil {
@@ -496,9 +449,8 @@ func testPIPGravityShelfAutoHide(ctx context.Context, tconn *chrome.Conn, act *a
 	collisionWindowWorkAreaInsetsPX := int(math.Round(collisionWindowWorkAreaInsetsDP * dispMode.DeviceScaleFactor))
 	testing.ContextLog(ctx, "Using: collisionWindowWorkAreaInsetsPX = ", collisionWindowWorkAreaInsetsPX)
 
-	if err := checkRange("bottom bounds", origBounds.Top+origBounds.Height,
-		shelfTopPX-collisionWindowWorkAreaInsetsPX, shelfTopPX-1); err != nil {
-		return err
+	if err = waitForNewBoundsWithMargin(ctx, tconn, shelfTopPX-collisionWindowWorkAreaInsetsPX, bottom, dispMode.DeviceScaleFactor, pipPositionErrorMarginPX); err != nil {
+		return errors.Wrap(err, "the PIP window must be above the always-show shelf on the Y-axis")
 	}
 
 	// 2) PIP window should not fall down when the shelf disappears. Since by default it is "gravity-less".
@@ -510,20 +462,9 @@ func testPIPGravityShelfAutoHide(ctx context.Context, tconn *chrome.Conn, act *a
 	// On exit restore to NeverAutoHide no matter what.
 	defer ash.SetShelfBehavior(ctx, tconn, dispInfo.ID, ash.ShelfBehaviorNeverAutoHide)
 
-	if err := act.WaitForIdle(ctx, time.Second); err != nil {
-		return err
-	}
-
-	bounds, err := act.WindowBounds(ctx)
-	if err != nil {
-		return errors.Wrap(err, "could not get PIP window bounds")
-	}
-	testing.ContextLogf(ctx, "Bounds after shelf disappeared: %+v", bounds)
-
-	origBoundsBottom := origBounds.Top + origBounds.Height
-	if err := checkRange("bottom bounds", bounds.Top+bounds.Height,
-		origBoundsBottom-pipPositionErrorMarginPX, origBoundsBottom+pipPositionErrorMarginPX); err != nil {
-		return err
+	// The PIP window shouldn't move as the initial gravity direction is "right".
+	if err = waitForNewBoundsWithMargin(ctx, tconn, origBounds.Top+origBounds.Height, bottom, dispMode.DeviceScaleFactor, pipPositionErrorMarginPX); err != nil {
+		return errors.Wrap(err, "the PIP window must not move when system status area gets hidden")
 	}
 
 	// 3) PIP should fall-down ('down' gravity) after being moved to the center of the screen.
@@ -533,13 +474,12 @@ func testPIPGravityShelfAutoHide(ctx context.Context, tconn *chrome.Conn, act *a
 		return errors.Wrapf(err, "failed to set shelf behavior to %q", ash.ShelfBehaviorNeverAutoHide)
 	}
 	newX := dispMode.WidthInNativePixels / 2
-	testing.ContextLogf(ctx, "Moving PIP to (%d, %d)", newX, bounds.Top)
-	if err := act.MoveWindow(ctx, arc.NewPoint(dispMode.WidthInNativePixels/2, bounds.Top), 2*time.Second); err != nil {
-		return errors.Wrapf(err, "failed to move PIP window to (%d, %d)", newX, bounds.Top)
+	if err := act.MoveWindow(ctx, arc.NewPoint(newX, origBounds.Top), 2*time.Second); err != nil {
+		return errors.Wrapf(err, "failed to move PIP window to (%d, %d)", newX, origBounds.Top)
 	}
 
-	if err := act.WaitForIdle(ctx, time.Second); err != nil {
-		return err
+	if err = waitForNewBoundsWithMargin(ctx, tconn, origBounds.Top+origBounds.Height, bottom, dispMode.DeviceScaleFactor, pipPositionErrorMarginPX); err != nil {
+		return errors.Wrap(err, "the PIP window must be above the always-show shelf on the Y-axis")
 	}
 
 	// Set shelf to auto-hide again, causing the PIP window to fall down.
@@ -547,15 +487,13 @@ func testPIPGravityShelfAutoHide(ctx context.Context, tconn *chrome.Conn, act *a
 		return errors.Wrapf(err, "failed to set shelf behavior to %q", ash.ShelfBehaviorNeverAutoHide)
 	}
 
-	bounds, err = act.WindowBounds(ctx)
-	if err != nil {
-		return errors.Wrap(err, "could not get PIP window bounds")
-	}
-	testing.ContextLogf(ctx, "Bounds after shelf disappeared: %+v", bounds)
-
-	if err := checkRange("bottom bounds", bounds.Top+bounds.Height,
-		dispMode.HeightInNativePixels-collisionWindowWorkAreaInsetsPX, dispMode.HeightInNativePixels-1); err != nil {
-		return err
+	// Shelf takes up a few pixels at the bottom of the display even when it's hidden, so we need to take this into account.
+	// TODO(takise): Remove this once the bug has been fixed.
+	const hiddenShelfHeightDP = 3
+	hiddenShelfHeightPX := int(math.Round(float64(hiddenShelfHeightDP) * dispMode.DeviceScaleFactor))
+	testing.ContextLogf(ctx, "Setting shelf auto hide = %q", ash.ShelfBehaviorNeverAutoHide)
+	if err = waitForNewBoundsWithMargin(ctx, tconn, dispMode.HeightInNativePixels-hiddenShelfHeightPX-collisionWindowWorkAreaInsetsPX, bottom, dispMode.DeviceScaleFactor, pipPositionErrorMarginPX); err != nil {
+		return errors.Wrap(err, "the PIP window must be above the auto-hide shelf on the Z-axis")
 	}
 
 	// 4) PIP window should go up when the shelf reappears.
@@ -565,18 +503,11 @@ func testPIPGravityShelfAutoHide(ctx context.Context, tconn *chrome.Conn, act *a
 		return errors.Wrapf(err, "failed to set shelf behavior to %q", ash.ShelfBehaviorNeverAutoHide)
 	}
 
-	if err := act.WaitForIdle(ctx, time.Second); err != nil {
-		return err
+	if err = waitForNewBoundsWithMargin(ctx, tconn, origBounds.Top+origBounds.Height, bottom, dispMode.DeviceScaleFactor, pipPositionErrorMarginPX); err != nil {
+		return errors.Wrap(err, "the PIP window must move upwords when shelf becomes always-shown")
 	}
 
-	bounds, err = act.WindowBounds(ctx)
-	if err != nil {
-		return errors.Wrap(err, "could not get PIP window bounds")
-	}
-	testing.ContextLogf(ctx, "Bounds after shelf appeared: %+v", bounds)
-
-	return checkRange("bottom bounds", bounds.Top+bounds.Height,
-		origBoundsBottom-pipPositionErrorMarginPX, origBoundsBottom+pipPositionErrorMarginPX)
+	return nil
 }
 
 // testPIPToggleTabletMode verifies that the window position is the same after toggling tablet mode.
@@ -763,10 +694,40 @@ func toggleSystemStatusArea(ctx context.Context, tconn *chrome.Conn) error {
 	return stw.End()
 }
 
-// checkRange checks whether value is in the range of [min, max]
-func checkRange(name string, value, min, max int) error {
-	if value < min || value > max {
-		return errors.Errorf("%s (%d) not in the expected range [%d, %d]", name, value, min, max)
-	}
-	return nil
+// waitForNewBoundsWithMargin waits until Chrome animation finishes completely and check the position of an edge of the PIP window.
+// More specifically, this checks the edge of the window bounds specified by the border parameter matches the expectedValue parameter,
+// allowing an error within the margin parameter.
+// The window bounds is returned in DP, so dsf is used to convert it to PX.
+func waitForNewBoundsWithMargin(ctx context.Context, tconn *chrome.Conn, expectedValue int, border borderType, dsf float64, margin int) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
+		if err != nil {
+			return errors.New("failed to Get Arc App Window Info")
+		}
+		bounds := info.Bounds
+		isAnimating := info.IsAnimating
+
+		if isAnimating {
+			return errors.New("the window is still animating")
+		}
+
+		var currentValue int
+		switch border {
+		case left:
+			currentValue = int(math.Round(float64(bounds.Left) * dsf))
+		case top:
+			currentValue = int(math.Round(float64(bounds.Top) * dsf))
+		case right:
+			currentValue = int(math.Round(float64(bounds.Left+bounds.Width) * dsf))
+		case bottom:
+			currentValue = int(math.Round(float64(bounds.Top+bounds.Height) * dsf))
+		default:
+			return testing.PollBreak(errors.Errorf("unknown border type %v", border))
+		}
+		if currentValue < expectedValue-margin || expectedValue+margin < currentValue {
+			errors.Errorf("the PIP window doesn't have the expected bounds yet; got %d, want %d", currentValue, expectedValue)
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
