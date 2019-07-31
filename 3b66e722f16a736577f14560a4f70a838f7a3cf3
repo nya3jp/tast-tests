@@ -188,6 +188,30 @@
       "revId": "3b66e722f16a736577f14560a4f70a838f7a3cf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dede3688_e8b4f669",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/charge_scheduling.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-07-31T20:38:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f651e98_b78f2c21",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 11
+      },
+      "revId": "3b66e722f16a736577f14560a4f70a838f7a3cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
