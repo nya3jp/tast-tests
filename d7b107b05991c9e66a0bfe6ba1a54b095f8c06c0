@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c885ae12_59b15ed1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-31T15:17:22Z",
+      "side": 1,
+      "message": "huge nit: I think all CL that belong to tast test should start with\n\ntast-test: Wait until Chrome...",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 1
+      },
+      "revId": "d7b107b05991c9e66a0bfe6ba1a54b095f8c06c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40861b7b_aa555553",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-31T15:17:22Z",
+      "side": 1,
+      "message": "const hiddenShelfHeightDP \u003d 3",
+      "range": {
+        "startLine": 492,
+        "startChar": 0,
+        "endLine": 492,
+        "endChar": 25
+      },
+      "revId": "d7b107b05991c9e66a0bfe6ba1a54b095f8c06c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9e84570_20039c19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-31T15:17:22Z",
+      "side": 1,
+      "message": "grammar: I guess you are referring to \"margin\" (not \"mergin\")",
+      "range": {
+        "startLine": 697,
+        "startChar": 23,
+        "endLine": 697,
+        "endChar": 29
+      },
+      "revId": "d7b107b05991c9e66a0bfe6ba1a54b095f8c06c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0743767_a5cd7222",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-31T15:17:22Z",
+      "side": 1,
+      "message": "Could you describe that the role of the parameters?\nE.g:\nexpectedValue is the expected bounds in pixels. ltrb is... , etc.",
+      "range": {
+        "startLine": 697,
+        "startChar": 130,
+        "endLine": 697,
+        "endChar": 131
+      },
+      "revId": "d7b107b05991c9e66a0bfe6ba1a54b095f8c06c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dae7816_f72a0a33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-31T15:17:22Z",
+      "side": 1,
+      "message": "nit: if \u0027ltrb\u0027 is the border type, I would rename it to \"b\" or \"border\"... I guess \u0027ltrb\u0027 means \"left top right bottom\", but my understanding is that this function is not receiving a rect, but just a type.",
+      "range": {
+        "startLine": 698,
+        "startChar": 92,
+        "endLine": 698,
+        "endChar": 96
+      },
+      "revId": "d7b107b05991c9e66a0bfe6ba1a54b095f8c06c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd043172_71eab715",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-31T15:17:22Z",
+      "side": 1,
+      "message": "(here and below):\ndepending how much precision you need, but you can improve the precision by adding a Math.round() before the int.\ne.g:  currentValue \u003d int(math.Round(float64(bounds.Left) * dsf))",
+      "range": {
+        "startLine": 713,
+        "startChar": 18,
+        "endLine": 713,
+        "endChar": 22
+      },
+      "revId": "d7b107b05991c9e66a0bfe6ba1a54b095f8c06c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "395422b8_b38bcb39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-31T15:17:22Z",
+      "side": 1,
+      "message": "add doc.\nOr perhaps since this is a simple function and only called once, you can inline it.",
+      "range": {
+        "startLine": 729,
+        "startChar": 5,
+        "endLine": 729,
+        "endChar": 25
+      },
+      "revId": "d7b107b05991c9e66a0bfe6ba1a54b095f8c06c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a941d8cc_852d6b9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-31T15:17:22Z",
+      "side": 1,
+      "message": "Margin.\nOptional: rename it \"ErrorMargin\"",
+      "range": {
+        "startLine": 729,
+        "startChar": 19,
+        "endLine": 729,
+        "endChar": 25
+      },
+      "revId": "d7b107b05991c9e66a0bfe6ba1a54b095f8c06c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2119da67_bb438a44",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-31T15:17:22Z",
+      "side": 1,
+      "message": "we have the same type defined in activity.go:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/activity.go?l\u003d151\n\ntast-owners@: should we merge them in place them in common package ?",
+      "range": {
+        "startLine": 43,
+        "startChar": 41,
+        "endLine": 44,
+        "endChar": 18
+      },
+      "revId": "d7b107b05991c9e66a0bfe6ba1a54b095f8c06c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
