@@ -93,6 +93,54 @@
       "revId": "f3424d4050f0198a803db14270c54745b509fc42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b4ad9ce_0025e130",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-31T05:15:02Z",
+      "side": 1,
+      "message": "Logging the performance data is useful, I just meant that adding \u0027(perf data)\u0027 to the message seems a bit unnecessary.",
+      "parentUuid": "59df5121_89cd881e",
+      "range": {
+        "startLine": 106,
+        "startChar": 55,
+        "endLine": 106,
+        "endChar": 68
+      },
+      "revId": "f3424d4050f0198a803db14270c54745b509fc42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49b045f4_bc2650ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-07-31T05:15:02Z",
+      "side": 1,
+      "message": "Thanks, that\u0027s not very clear from the message. What about something like:\nMeasured CPU usage, number of frames dropped and dropped frame percentage.",
+      "parentUuid": "88a686d5_2293310f",
+      "range": {
+        "startLine": 106,
+        "startChar": 47,
+        "endLine": 106,
+        "endChar": 54
+      },
+      "revId": "f3424d4050f0198a803db14270c54745b509fc42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
