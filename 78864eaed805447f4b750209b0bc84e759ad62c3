@@ -22,6 +22,30 @@
       "revId": "78864eaed805447f4b750209b0bc84e759ad62c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e658133_3cabf318",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-07-31T02:03:44Z",
+      "side": 1,
+      "message": "Thank you for information.\n\nThis test want to \u0027touch or click\u0027 the buttons on caption.\nIn b/80441010, we fixed a bug where some transparent surface (surfaceInsets) overlap the caption buttons and user could not click the button.\nThus, we do not want to invoke state change programmatically but want to check whether the button is clickable or not.",
+      "parentUuid": "c816fe3c_3316752f",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 114,
+        "endChar": 11
+      },
+      "revId": "78864eaed805447f4b750209b0bc84e759ad62c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
