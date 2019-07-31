@@ -52,8 +52,6 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 	// at this point and then stop the VM/container and restore that image so we
 	// can have a clean VM/container to start from again. Failures should not be
 	// fatal so that all tests can get executed.
-	const x11DemoAppPath = "/opt/google/cros-containers/bin/x11_demo"
-	const waylandDemoAppPath = "/opt/google/cros-containers/bin/wayland_demo"
 
 	subtestCtx, subtestCancel := ctxutil.Shorten(ctx, 15*time.Second)
 	defer subtestCancel()
@@ -77,13 +75,6 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 		conn.CloseTarget(ctx)
 		conn.Close()
 	}
-
-	subtest.VerifyAppFromTerminal(subtestCtx, s, cr, cont, keyboard, "x11", x11DemoAppPath,
-		colorcmp.RGB(0x99, 0xee, 0x44))
-	subtest.VerifyAppFromTerminal(subtestCtx, s, cr, cont, keyboard, "wayland", waylandDemoAppPath,
-		colorcmp.RGB(0x33, 0x88, 0xdd))
-	subtest.AppDisplayDensity(subtestCtx, s, tconn, cont, keyboard, "x11_demo", x11DemoAppPath)
-	subtest.AppDisplayDensity(subtestCtx, s, tconn, cont, keyboard, "wayland", waylandDemoAppPath)
 
 	// Copy a test Debian package file to the container which will be used by
 	// subsequent tests.
