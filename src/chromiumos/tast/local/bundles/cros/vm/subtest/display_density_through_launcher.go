@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -38,14 +39,14 @@ func AppDisplayDensityThroughLauncher(ctx context.Context, s *testing.State, tco
 		return
 	}
 
-	tabletMode, err := isTabletModeEnabled(ctx, tconn)
+	tabletMode, err := crostini.TabletModeEnabled(ctx, tconn)
 	if err != nil {
 		s.Error("Failed getting tablet mode: ", err)
 		return
 	}
 	s.Log("Tablet mode is ", tabletMode)
 
-	factor, err := getPrimaryDisplayScaleFactor(ctx, tconn)
+	factor, err := crostini.PrimaryDisplayScaleFactor(ctx, tconn)
 	if err != nil {
 		s.Error("Failed getting primary display scale factor: ", err)
 		return
@@ -60,7 +61,7 @@ func AppDisplayDensityThroughLauncher(ctx context.Context, s *testing.State, tco
 
 // launchAppAndMeasureWindowSize is a helper function that sets the app "scaled" property, launches the app and returns its window size.
 func launchAppAndMeasureWindowSize(ctx context.Context, s *testing.State, tconn *chrome.Conn,
-	ew *input.KeyboardEventWriter, ownerID, appName, appID string, scaled bool) (sz size, err error) {
+	ew *input.KeyboardEventWriter, ownerID, appName, appID string, scaled bool) (sz crostini.Size, err error) {
 	s.Log("Verifying launcher integration for ", appName)
 	// There's a delay with apps being installed in Crostini and them appearing
 	// in the launcher as well as having their icons loaded. The icons are only
@@ -80,7 +81,7 @@ func launchAppAndMeasureWindowSize(ctx context.Context, s *testing.State, tconn 
 	launchApplication(ctx, s, tconn, appName, appID)
 
 	s.Log("Getting app window size after launching ", appName)
-	sz, err = getWindowSizeWithPoll(ctx, tconn, appName)
+	sz, err = crostini.PollWindowSize(ctx, tconn, appName)
 	if err != nil {
 		s.Errorf("Failed getting window %q size: %v", appName, err)
 		return sz, err
