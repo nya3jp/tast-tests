@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40f66fe3_96ef2fae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T20:41:28Z",
+      "side": 1,
+      "message": "add a doc comment for this function",
+      "revId": "044ce578a6bad2c6a20183309eee764b10913adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "878c71dc_2246b46b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T20:41:28Z",
+      "side": 1,
+      "message": "waitUntilStateChange() and showActivity() are both very generic names and package arc has a shared namespace.  If someone else tries to write a function with the same name it will cause confusion.  Consider making the names more specific to this particular use case or moving these functions to a shared library.",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 25
+      },
+      "revId": "044ce578a6bad2c6a20183309eee764b10913adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a2c280f_f9126582",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T20:41:28Z",
+      "side": 1,
+      "message": "Should ash be capitalized?",
+      "range": {
+        "startLine": 39,
+        "startChar": 61,
+        "endLine": 39,
+        "endChar": 64
+      },
+      "revId": "044ce578a6bad2c6a20183309eee764b10913adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1464da0_e6454cc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T20:41:28Z",
+      "side": 1,
+      "message": "actual value should go first.  E.g. \"ash window state was %v but should be %v\"\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "revId": "044ce578a6bad2c6a20183309eee764b10913adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24c253aa_ebea3874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T20:41:28Z",
+      "side": 1,
+      "message": "actual value should go first",
+      "revId": "044ce578a6bad2c6a20183309eee764b10913adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82c0cc32_397dc053",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T20:41:28Z",
+      "side": 1,
+      "message": "add a doc comment for this function",
+      "revId": "044ce578a6bad2c6a20183309eee764b10913adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "089c2570_8fe3ee50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T20:41:28Z",
+      "side": 1,
+      "message": "add a doc comment for this function",
+      "revId": "044ce578a6bad2c6a20183309eee764b10913adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6eeab498_2608b496",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T20:41:28Z",
+      "side": 1,
+      "message": "split this into two lines",
+      "revId": "044ce578a6bad2c6a20183309eee764b10913adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
