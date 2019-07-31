@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "835f477b_17512381",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-31T23:58:41Z",
+      "side": 1,
+      "message": "gleaned?",
+      "range": {
+        "startLine": 72,
+        "startChar": 61,
+        "endLine": 72,
+        "endChar": 68
+      },
+      "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b623e6f9_dca3971e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-07-31T23:58:41Z",
+      "side": 1,
+      "message": "could just be RestartJob(ctx, service) ?",
+      "range": {
+        "startLine": 112,
+        "startChar": 19,
+        "endLine": 115,
+        "endChar": 41
+      },
+      "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
