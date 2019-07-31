@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5928007_ec3f789a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-31T09:57:26Z",
+      "side": 1,
+      "message": "Perhaps, we can also add \"shik@chromium.org\", who is the owner of tast.camera.CCAUIPreview.\nThis contact field will be used to assign bugs for regressions. So, it\u0027d be better to have a ChromeOS team member here.\n\nShik, is it okay to add you here?",
+      "range": {
+        "startLine": 24,
+        "startChar": 25,
+        "endLine": 24,
+        "endChar": 26
+      },
+      "revId": "d64283175f6bb9f9ffef11d3d6b009a054e8477d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0436a520_4e7e84ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-31T09:57:26Z",
+      "side": 1,
+      "message": "Could you change the attribute to this?\n[]string{\"group:crosbolt\", \"crosbolt_perbuild\"}\n\n\"crosbolt\" attribute is used for internal tool for performance measurement so that Google camera team can monitor performance regressions regularly.\n\ncf. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_attributes.md#manually_added-attributes",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 41
+      },
+      "revId": "d64283175f6bb9f9ffef11d3d6b009a054e8477d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffcdf6f5_f4dd2a4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-31T09:57:26Z",
+      "side": 1,
+      "message": "Question: How long does it take to run this test usually?\nIf it takes almost 2 minutes (which is the default timeout), it might be better to extend the timeout.\n \ne.g.\nhttps://chromium.git.corp.google.com/chromiumos/platform/tast-tests/+/355c06d2fed9cc8ffc57213d3b55ddf019168f3d/src/chromiumos/tast/local/bundles/cros/camera/media_recorder_perf_h264.go#29",
+      "revId": "d64283175f6bb9f9ffef11d3d6b009a054e8477d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f7e344d_11d9288a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-31T09:57:26Z",
+      "side": 1,
+      "message": "style: You can declare a constant in one line.\n\n// Duration of the interval during which CPU usage will be measured.\nconst measureDuration \u003d 20 * time.Second",
+      "revId": "d64283175f6bb9f9ffef11d3d6b009a054e8477d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f057d70_573a3c7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-31T09:57:26Z",
+      "side": 1,
+      "message": "It\u0027s safer to wait until CPU usage becomes stable before starting a test by using `cpu.WaitUntilIdle`.\n\ne.g.\nhttps://chromium.git.corp.google.com/chromiumos/platform/tast-tests/+/355c06d2fed9cc8ffc57213d3b55ddf019168f3d/src/chromiumos/tast/local/media/webrtc/webrtc_decode_perf.go#225",
+      "revId": "d64283175f6bb9f9ffef11d3d6b009a054e8477d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4718dc13_eafe9bef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-31T09:57:26Z",
+      "side": 1,
+      "message": "I guess we can inline this function here because |restartApp| is only used here.",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 14
+      },
+      "revId": "d64283175f6bb9f9ffef11d3d6b009a054e8477d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "692d86c9_412c7e54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-31T09:57:26Z",
+      "side": 1,
+      "message": "I think you can have this if-statement after pv.Set() is called instead of using defer.",
+      "revId": "d64283175f6bb9f9ffef11d3d6b009a054e8477d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b29c4b9f_d14aa844",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-07-31T09:57:26Z",
+      "side": 1,
+      "message": "we don\u0027t need \"tast_\" prefix here.\nWe\u0027re using this prefix for tests which we have a corresponding test in autotest.\nSince this is a totally new test, we omit \"tast_\" prefix.\n\ncf. https://bugs.chromium.org/p/chromium/issues/detail?id\u003d955957",
+      "range": {
+        "startLine": 81,
+        "startChar": 14,
+        "endLine": 81,
+        "endChar": 19
+      },
+      "revId": "d64283175f6bb9f9ffef11d3d6b009a054e8477d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
