@@ -182,6 +182,8 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, mode testMode, opt
 				s.Fatalf("Failed to run %v: %v", exec, err)
 			}
 		}
+		// Only keep the encoded result when there's something wrong.
+		os.Remove(outPath)
 	}
 }
 
