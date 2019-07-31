@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "048fc730_fa5f2339",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-07-31T02:04:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "160ebc5e_6704ae67",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 37
+      },
+      "revId": "a471aa81deb8d57497f0f3b9dd30252d1c1ee3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f12a948_e10ef3e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
         "patchSetId": 3
