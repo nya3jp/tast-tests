@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef9247f0_dba2af7e",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-07-31T10:26:35Z",
+      "side": 1,
+      "message": "I added this because when appControlled \u003d true, this line becomes like below:\nmWindowMode\u003d5 mRestoreBounds\u003dRect(100, 100 - 900, 900) taskWindowState\u003d0 app-controlled",
+      "range": {
+        "startLine": 549,
+        "startChar": 44,
+        "endLine": 549,
+        "endChar": 47
+      },
+      "revId": "d4d87f64b084b90accc859e10f781d1980a747fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
