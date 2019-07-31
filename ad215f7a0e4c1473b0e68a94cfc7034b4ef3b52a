@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49207845_1c2fe19a",
+        "filename": "src/chromiumos/tast/local/power/max_load.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-31T03:42:41Z",
+      "side": 1,
+      "message": "Until we find out this function is useful in multiple tests, would you mind keeping it in a test main file (e.g. charge_scheduling.go)?\n\nWe recommend promoting utility functions progressively as we find out they\u0027re useful in broader tests. Tiers are:\n\n1. chromiumos/local/foolib/foolib.go\n2. chromiumos/local/bundles/cros/category/foolib/foolib.go\n3. chromiumos/local/bundles/cros/category/footest.go\n\nLet us start from 3.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 13
+      },
+      "revId": "ad215f7a0e4c1473b0e68a94cfc7034b4ef3b52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18a4a263_5d6f0567",
+        "filename": "src/chromiumos/tast/local/power/max_load.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-31T03:42:41Z",
+      "side": 1,
+      "message": "style: FullyLoadCPUs\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 18
+      },
+      "revId": "ad215f7a0e4c1473b0e68a94cfc7034b4ef3b52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2578d10c_d14d6d56",
+        "filename": "src/chromiumos/tast/local/power/max_load.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-31T03:42:41Z",
+      "side": 1,
+      "message": "How long it takes to finish this loop depends on the device speed, and if the device is slow, ctx deadline is not really honored. This is really bad since it can affect later tests.\n\nMy personal recommendation is to start \"yes\" Linux command on every CPU. It uses up the whole CPU when stdout is connected to /dev/null. You can make sure they don\u0027t affect later tests by killing them before finishing the current test.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 5
+      },
+      "revId": "ad215f7a0e4c1473b0e68a94cfc7034b4ef3b52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
