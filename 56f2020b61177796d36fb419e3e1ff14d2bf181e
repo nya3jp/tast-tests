@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "da151aad_0986cc80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_preview_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-07-31T23:46:32Z",
+      "side": 1,
+      "message": "it can probably be done without the keyboard, but it will be much more painful. I was looking into it when I saw the original autotest test that was using the keyboard. I think in the long term, yes it is technically possible. Should we do it now, when there is no good way to do so, probably not.\n\nI can mess around and try write the other version, but I don\u0027t think that it is worth it until we have a proper ui framework. This is at least true to the old test.",
+      "parentUuid": "7c2853e6_bb44cfc4",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f8d5369_10c5c5c2",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_preview_image.go",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2019-07-31T21:34:55Z",
       "side": 1,
       "message": "a. not how you spell flakiness.  b. avoid sleeps whenever possible.  Find something to poll for instead",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efc3f2b2_ad5f2b56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_preview_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-07-31T23:46:32Z",
+      "side": 1,
+      "message": "a. fixed\n\nb. This falls into the category of technically doable, but not in a simple way. I am sure I can write it, but with the current api we have, it will be quite gross code.",
+      "parentUuid": "4f8d5369_10c5c5c2",
       "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "9fa8f4d0_0438e187",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-07-31T23:46:32Z",
+      "side": 1,
+      "message": "No",
+      "parentUuid": "2cd2b04d_82ca7e68",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "332254e7_329da4ea",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
         "patchSetId": 6
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "42ae631c_1475d647",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-07-31T23:46:32Z",
+      "side": 1,
+      "message": "based on https://chromium.googlesource.com/chromiumos/platform/tast/+/master/docs/test_dependencies.md\nnot listing files_app or something similar, I am gonna go with yes.",
+      "parentUuid": "332254e7_329da4ea",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46807d52_3b8c26ce",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
         "patchSetId": 6
@@ -81,6 +153,24 @@
       "writtenOn": "2019-07-31T21:34:55Z",
       "side": 1,
       "message": "you already have this path hardcoded with the FilesApp code.  Make that code handle the specifics?",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fb05ca0_0dbeab98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-07-31T23:46:32Z",
+      "side": 1,
+      "message": "This is for clicking the ui element on the screen. It is not related to the path. I think give we are clicking text on the screen, that is related to ui and not the files app and belongs here.",
+      "parentUuid": "46807d52_3b8c26ce",
       "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "08281d6d_a0529bba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-07-31T23:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "848ff27a_5942d273",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50f0cc9f_ca79256d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
         "patchSetId": 6
@@ -118,6 +226,24 @@
       "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8a6015e_a0ac249b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-07-31T23:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50f0cc9f_ca79256d",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -155,6 +281,24 @@
     },
     {
       "key": {
+        "uuid": "ce77c31c_f6fdb980",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-07-31T23:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b615d14_95c7f041",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d28dfe2_4445a4dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
         "patchSetId": 6
@@ -166,6 +310,24 @@
       "writtenOn": "2019-07-31T21:34:55Z",
       "side": 1,
       "message": "Revisit capitalization for \"Files App\" and \"Chrome\", here and throughout.  Whichever way you go they should all match (also, definitely use \"Chrome)",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e6b75cb_86ad205d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-07-31T23:46:32Z",
+      "side": 1,
+      "message": "For the chrome.automation api, do you think I should call it chrome.automation or Chrome automation, or something different?",
+      "parentUuid": "4d28dfe2_4445a4dd",
       "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -189,6 +351,24 @@
     },
     {
       "key": {
+        "uuid": "906f6bd8_0ce97343",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-07-31T23:46:32Z",
+      "side": 1,
+      "message": "If you defer closing the files app then the automatic screenshot that tast takes when a test fails will just see an empty screen. So you don\u0027t want to close files app when the test fails.\n\nTruthfully, I don\u0027t want to use a close method at all, but if you use the precondition chrome.LoggedIn, files app may not always launch. I believe the reason is because the old instance of the files app from the first test may still be closing when the second test starts. This leads to a chance that the new test won\u0027t launch the files app because it is always running.\n\nTo work around that problem, I can close the files app manually if a test is successful, or I could switch not not using a precondition and just create a new chrome instance for every test.",
+      "parentUuid": "16bd953a_62c325a2",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "047180f5_61bc4ed4",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
         "patchSetId": 6
@@ -206,6 +386,24 @@
     },
     {
       "key": {
+        "uuid": "74b6dad1_ca4fbf69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-07-31T23:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "047180f5_61bc4ed4",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02d9511c_e12c71ea",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
         "patchSetId": 6
@@ -217,6 +415,24 @@
       "writtenOn": "2019-07-31T21:34:55Z",
       "side": 1,
       "message": "Mention what happens if the app is not open",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14e05b49_c9f27b96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-07-31T23:46:32Z",
+      "side": 1,
+      "message": "I should explicitly mention that nothing happens?",
+      "parentUuid": "02d9511c_e12c71ea",
       "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -257,6 +473,24 @@
     },
     {
       "key": {
+        "uuid": "20191f8d_0310ca4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-07-31T23:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8033eeb9_24cbec11",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04365203_a510dd81",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
         "patchSetId": 6
@@ -268,6 +502,24 @@
       "writtenOn": "2019-07-31T21:34:55Z",
       "side": 1,
       "message": "seems safer not to save this and to call it in each subfunction.  Then callers of the library don\u0027t have to worry about having run this setup, and you don\u0027t have to worry about something overwriting \"root\".  Looks like that\u0027s what existing usages do",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3657ddfc_b4aed681",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-07-31T23:46:32Z",
+      "side": 1,
+      "message": "I\u0027ve changed it to be called before each method, now the only issue is that if callers name something else root, it will be overwritten. Not sure which is actually better.",
+      "parentUuid": "04365203_a510dd81",
       "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -291,6 +543,24 @@
     },
     {
       "key": {
+        "uuid": "0ec41896_1f8efc2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-07-31T23:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "806884a8_a3035924",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "907a9878_be75a1dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
         "patchSetId": 6
@@ -302,6 +572,24 @@
       "writtenOn": "2019-07-31T21:34:55Z",
       "side": 1,
       "message": "You don\u0027t have to put each sentence on a separate line, here and throughout.  Break things up logically, yes, but both of these lines can go together.",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84f65af0_b312b3b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-07-31T23:46:32Z",
+      "side": 1,
+      "message": "I did this because I am unsure what is too long of a line. I feel that in most cases having both on the same line makes it unnecessarily long. I feel like it is more readable on multiple line because of this.",
+      "parentUuid": "907a9878_be75a1dd",
       "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -325,6 +613,24 @@
     },
     {
       "key": {
+        "uuid": "9327d132_3e643084",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-07-31T23:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0404ca09_4fc14c5c",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f112e91b_0aa88310",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
         "patchSetId": 6
@@ -342,6 +648,24 @@
     },
     {
       "key": {
+        "uuid": "cc4cdfec_42ffedff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-07-31T23:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f112e91b_0aa88310",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7203fb2_ed004c38",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
         "patchSetId": 6
@@ -353,6 +677,24 @@
       "writtenOn": "2019-07-31T21:34:55Z",
       "side": 1,
       "message": "there has to be a better way to do this",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "450129ea_66bc521d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-07-31T23:46:32Z",
+      "side": 1,
+      "message": "This is the only way I have found to make go happily accept the root object in a printable format from javascript. I would love a better way, but I don\u0027t know one.",
+      "parentUuid": "b7203fb2_ed004c38",
       "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -376,6 +718,24 @@
     },
     {
       "key": {
+        "uuid": "ba057c13_6782f338",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-07-31T23:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3af029db_6b85d426",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03672451_e91a87de",
         "filename": "src/chromiumos/tast/local/chrome/conn.go",
         "patchSetId": 6
@@ -387,6 +747,24 @@
       "writtenOn": "2019-07-31T21:34:55Z",
       "side": 1,
       "message": "you can do this same thing with context.WithTimeout().  Not sure it\u0027s worth adding new functions for this - feel free to convince me",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "998cdbcf_dbe7053f",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-07-31T23:46:32Z",
+      "side": 1,
+      "message": "I didn\u0027t know about context.WithTimeout(), but i still think this valuable because it is much cleaner as an interface.\nIt is the difference between:\n\nconn.WaitForExprWithTimeout(ctx, \"expr\", 10*time.Second)\n\nand:\n\nctx, cancel :\u003d context.WithTimeout(ctx, 10*time.Second)\nconn.WaitForExpr(ctx, \"expr\")\ncancel()\n\nNeither is specifically more correct than the other, but I would lean towards the method. This is when I wish that golang had optional parameters that could be set to default values.",
+      "parentUuid": "03672451_e91a87de",
       "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
