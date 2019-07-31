@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c915c5ac_e8e70e98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-31T11:52:32Z",
+      "side": 1,
+      "message": "As you\u0027re here, could you add TODO to merge this and InitPID()?\nPlease feel free to assign it to me.",
+      "revId": "a397a119da1b31de9d29f05af838f1396c1c0034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
