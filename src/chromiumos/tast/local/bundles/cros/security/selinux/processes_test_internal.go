@@ -85,6 +85,8 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 		switch sel {
 		case Stable:
 			testCases = append(testCases, []testCaseType{
+				{cmdline, ".*/system/bin/sdcard.*", "cros_arc_sdcardd", zeroProcs, ""},
+				{cmdline, ".*logger.*-t arc-kmsg-logger.*", "cros_arc_kmsg_logger", zeroProcs, ""},
 				{cmdline, "/usr/bin/periodic_scheduler", "cros_periodic_scheduler", twoProcs, ""},
 				{cmdline, "/usr/share/cros/init/activate_date.sh", "cros_activate_date", zeroProcs, ""},
 				{exe, "/opt/google/chrome/chrome", "cros_browser", zeroProcs, ""}, // Only when browser exists
@@ -95,6 +97,7 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				{exe, "/sbin/udevd", "cros_udevd", oneProc, ""},
 				{exe, "/sbin/upstart-socket-bridge", "cros_upstart_socket_bridge", oneProc, ""},
 				{exe, "/usr/bin/anomaly_detector", "cros_anomaly_detector", zeroProcs, ""},
+				{exe, "/usr/bin/arc-appfuse-provider", "cros_arc_appfuse_provider", zeroProcs, ""},
 				{exe, "/usr/bin/arc-networkd", "cros_arc_networkd", zeroProcs, ""},
 				{exe, "/usr/bin/arc-obb-mounter", "cros_arc_obb_mounter", zeroProcs, ""},
 				{exe, "/usr/bin/arc_camera_service", "cros_arc_camera_service", zeroProcs, ""},
@@ -102,6 +105,8 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				{exe, "/usr/bin/btdispatch", "cros_btdispatch", zeroProcs, ""},
 				{exe, "/usr/bin/cras", "cros_cras", zeroProcs, ""},
 				{exe, "/usr/bin/cros-disks", "cros_disks", oneProc, ""},
+				{exe, "/usr/bin/cros_camera_algo", "cros_camera_algo", zeroProcs, ""},
+				{exe, "/usr/bin/cros_camera_service", "cros_camera_service", zeroProcs, ""},
 				{exe, "/usr/bin/dbus-daemon", "cros_dbus_daemon", oneProc, ""},
 				{exe, "/usr/bin/esif_ufd", "cros_esif_ufd", zeroProcs, ""},
 				{exe, "/usr/bin/memd", "cros_memd", zeroProcs, ""},
@@ -109,17 +114,23 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				{exe, "/usr/bin/midis", "cros_midis", zeroProcs, ""}, // Only after start-arc-instance
 				{exe, "/usr/bin/ml_service", "cros_ml_service", zeroProcs, ""},
 				{exe, "/usr/bin/modemfwd", "cros_modemfwd", zeroProcs, ""},
+				{exe, "/usr/bin/mount-passthrough", "cros_mount_passthrough", oneProc, ""},
 				{exe, "/usr/bin/newblued", "cros_newblued", zeroProcs, ""},
 				{exe, "/usr/bin/permission_broker", "cros_permission_broker", zeroProcs, ""},
 				{exe, "/usr/bin/powerd", "cros_powerd", zeroProcs, ""},
+				{exe, "/usr/bin/run_oci", "cros_arc_setup", zeroProcs, ""},
 				{exe, "/usr/bin/shill", "cros_shill", zeroProcs, ""},
 				{exe, "/usr/bin/sslh", "cros_sslh", zeroProcs, ""},
+				{exe, "/usr/bin/timberslide", "cros_timberslide", zeroProcs, ""},
 				{exe, "/usr/bin/tlsdated", "cros_tlsdated", zeroProcs, ""},
 				{exe, "/usr/bin/u2fd", "cros_u2fd", zeroProcs, ""},
+				{exe, "/usr/bin/vmlog_forwarder", "cros_vmlog_forwarder", zeroProcs, ""},
 				{exe, "/usr/lib/systemd/systemd-journald", "cros_journald", zeroProcs, ""},
 				{exe, "/usr/libexec/bluetooth/bluetoothd", "cros_bluetoothd", zeroProcs, ""},
 				{exe, "/usr/sbin/ModemManager", "cros_modem_manager", zeroProcs, ""},
-				{exe, "/usr/sbin/ModemManager", "cros_modem_manager", zeroProcs, ""},
+				{exe, "/usr/sbin/arc-keymasterd", "cros_arc_keymasterd", zeroProcs, ""},
+				{exe, "/usr/sbin/arc-oemcrypto", "cros_arc_oemcrypto", zeroProcs, ""},
+				{exe, "/usr/sbin/arc-setup", "cros_arc_setup", zeroProcs, ""},
 				{exe, "/usr/sbin/atrusd", "cros_atrusd", zeroProcs, ""},
 				{exe, "/usr/sbin/attestationd", "cros_attestationd", zeroProcs, ""},
 				{exe, "/usr/sbin/avahi-daemon", "cros_avahi_daemon", zeroProcs, ""},
@@ -128,8 +139,9 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				{exe, "/usr/sbin/chapsd", "cros_chapsd", zeroProcs, ""},
 				{exe, "/usr/sbin/conntrackd", "cros_conntrackd", zeroProcs, ""},
 				{exe, "/usr/sbin/cryptohomed", "cros_cryptohomed", zeroProcs, ""},
-				{exe, "/usr/sbin/cryptohomed", "cros_cryptohomed", zeroProcs, ""},
+				{exe, "/usr/sbin/daisydog", "cros_daisydog", zeroProcs, ""},
 				{exe, "/usr/sbin/dlcservice", "cros_dlcservice", zeroProcs, ""},
+				{exe, "/usr/sbin/huddly-monitor", "cros_huddly_monitor", zeroProcs, ""},
 				{exe, "/usr/sbin/mimo-minitor", "cros_mimo_monitor", zeroProcs, ""},
 				{exe, "/usr/sbin/mtpd", "cros_mtpd", zeroProcs, ""},
 				{exe, "/usr/sbin/oobe_config_restore", "cros_oobe_config_restore", zeroProcs, ""},
@@ -139,7 +151,6 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				{exe, "/usr/sbin/tpm_managerd", "cros_tpm_managerd", zeroProcs, ""},
 				{exe, "/usr/sbin/trunksd", "cros_trunksd", zeroProcs, ""},
 				{exe, "/usr/sbin/update_engine", "cros_update_engine", zeroProcs, ""},
-				{exe, "/usr/sbin/update_engine", "cros_update_engine", zeroProcs, ""},
 				{exe, "/usr/sbin/wpa_supplicant", "wpa_supplicant", zeroProcs, ""},
 			}...)
 		case Unstable:
@@ -147,7 +158,6 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				{notExe, "/sbin/minijail0", notStr("minijail"), zeroProcs, domainIsolationErrorMessage},                             // These processes shouldn't exist.
 				{notCmdline, ".*(frecon|agetty|ping|recover_duts).*", notStr("chromeos"), zeroProcs, domainIsolationErrorMessage},   // These processes shouldn't exist.
 				{notCmdline, ".*(frecon|agetty|ping|recover_duts).*", notStr("minijailed"), zeroProcs, domainIsolationErrorMessage}, // These processes shouldn't exist.
-				{cmdline, ".*/system/bin/sdcard.*", "cros_arc_sdcardd", zeroProcs, ""},
 			}...)
 		}
 	}
