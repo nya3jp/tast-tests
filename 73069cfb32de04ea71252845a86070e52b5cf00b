@@ -128,6 +128,24 @@
       "revId": "73069cfb32de04ea71252845a86070e52b5cf00b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5656bf5_a158de56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/smart_dim.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-31T11:37:51Z",
+      "side": 1,
+      "message": "Got it. Thanks!",
+      "parentUuid": "2e0150b8_15c6c25e",
+      "revId": "73069cfb32de04ea71252845a86070e52b5cf00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
