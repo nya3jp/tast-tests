@@ -54,8 +54,13 @@ func WebRTCVideoPlaybackDelay(ctx context.Context, s *testing.State) {
 	// to get more consistent results, but then we wouldn't be measuring on the
 	// same conditions as a user might encounter.
 
-	histogramName := "Media.VideoFrameSubmitter"
-	initHistogram, err := metrics.GetHistogram(ctx, cr, histogramName)
+	const presentationsHistogramName = "Media.VideoFrameSubmitter"
+	initPresentationHistogram, err := metrics.GetHistogram(ctx, cr, presentationsHistogramName)
+	if err != nil {
+		s.Fatal("Failed to get initial histogram: ", err)
+	}
+	const decodeHistogramName = "Media.MojoVideoDecoder.Decode"
+	initDecodeHistogram, err := metrics.GetHistogram(ctx, cr, decodeHistogramName)
 	if err != nil {
 		s.Fatal("Failed to get initial histogram: ", err)
 	}
@@ -112,33 +117,69 @@ func WebRTCVideoPlaybackDelay(ctx context.Context, s *testing.State) {
 		s.Fatal("Error while waiting for playback delay perf collection: ", err)
 	}
 
-	laterHistogram, err := metrics.GetHistogram(ctx, cr, histogramName)
+	laterPresentationHistogram, err := metrics.GetHistogram(ctx, cr, presentationsHistogramName)
 	if err != nil {
 		s.Fatal("Failed to get later histogram: ", err)
 	}
 
-	histogramDiff, err := laterHistogram.Diff(initHistogram)
+	presentationHistogramDiff, err := laterPresentationHistogram.Diff(initPresentationHistogram)
 	if err != nil {
 		s.Fatal("Failed diffing histograms: ", err)
 	}
-	if len(histogramDiff.Buckets) == 0 {
+	if len(presentationHistogramDiff.Buckets) == 0 {
 		s.Fatal("Empty histogram diff")
 	}
 
-	metric := perf.Metric{
+	perfValues := perf.NewValues()
+
+	presentationMetric := perf.Metric{
 		Name:      "tast_graphics_webrtc_video_playback_delay",
 		Unit:      "ms",
 		Direction: perf.SmallerIsBetter,
 		Multiple:  true,
 	}
-	perfValues := perf.NewValues()
+	updatePerfMetricFromHistogram(presentationsHistogramName,
+		presentationHistogramDiff, ctx, perfValues, presentationMetric)
+
+
+	laterDecodeHistogram, err := metrics.GetHistogram(ctx, cr, decodeHistogramName)
+	if err != nil {
+		s.Fatal("Failed to get later histogram: ", err)
+	}
+	decodeHistogramDiff, err := laterDecodeHistogram.Diff(initDecodeHistogram)
+	if err != nil {
+		s.Fatal("Failed diffing histograms: ", err)
+	}
+	if len(decodeHistogramDiff.Buckets) == 0 {
+		s.Fatal("Empty histogram diff")
+	}
+
+	decodeMetric := perf.Metric{
+		Name:      "tast_graphics_webrtc_video_decode_delay",
+		Unit:      "ms",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  true,
+	}
+	updatePerfMetricFromHistogram(decodeHistogramName, decodeHistogramDiff, ctx,
+		perfValues, decodeMetric)
+
+	if err = perfValues.Save(s.OutDir()); err != nil {
+		s.Error("Cannot save perf data: ", err)
+	}
+}
+
+func updatePerfMetricFromHistogram(histogramName string,
+                                   histogramDiff *metrics.Histogram,
+                                   ctx context.Context,
+                                   perfValues *perf.Values,
+                                   metric perf.Metric) {
+	numHistogramSamples := float64(histogramDiff.TotalCount())
 	var average float64
-	numHistogramSamples := float64(laterHistogram.TotalCount())
 	// Walk the buckets of histogramDiff, append the central value of the
 	// histogram bucket as many times as bucket entries to perfValues, and
 	// calculate the average on the fly for debug printout purposes. This average
 	// is a discrete approximation to the statistical average of the samples
-	// underlying laterHistogram.
+	// underlying the histogramDiff histograms.
 	for _, bucket := range histogramDiff.Buckets {
 		bucketMidpoint := float64(bucket.Max + bucket.Min) / 2.0
 		for i := 0; i < int(bucket.Count); i++ {
@@ -146,10 +187,5 @@ func WebRTCVideoPlaybackDelay(ctx context.Context, s *testing.State) {
 		}
 		average += bucketMidpoint * float64(bucket.Count) / numHistogramSamples;
 	}
-
-	s.Logf("%s histogram: %v; average: %f", histogramName, laterHistogram.String(), average)
-
-	if err = perfValues.Save(s.OutDir()); err != nil {
-		s.Error("Cannot save perf data: ", err)
-	}
+	testing.ContextLog(ctx, histogramName, ": histogram:",  histogramDiff.String(), "; average: ", average)
 }
