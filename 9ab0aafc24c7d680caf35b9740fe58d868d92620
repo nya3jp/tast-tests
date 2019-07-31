@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2335c2a3_c9ea5fb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2019-07-31T03:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffbe545a_39132490",
+      "range": {
+        "startLine": 532,
+        "startChar": 24,
+        "endLine": 532,
+        "endChar": 96
+      },
+      "revId": "9ab0aafc24c7d680caf35b9740fe58d868d92620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e192c83_2c92b9f4",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
         "patchSetId": 5
@@ -36,6 +60,24 @@
       "writtenOn": "2019-07-30T12:50:54Z",
       "side": 1,
       "message": "In general \"sleeping\" is a source of flakiness.\nWhat is this waiting for?\nCould you give it a try to watch the condition explicitly? testing.Poll() may help you in the case, I guess. Ditto for all Sleep call below.",
+      "revId": "9ab0aafc24c7d680caf35b9740fe58d868d92620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06949d3a_0fab0653",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2019-07-31T03:27:30Z",
+      "side": 1,
+      "message": "The logic here:\n1. Start recording.\n2. Wait for record 1 sec video.\n3. Try maximize window.\n4. Record 1 sec video\n5. Restore window size.\n6. Record 1 sec video\n7. Stop record.\nSo it result in a 3 sec video. This test is for testing resize window during the recording. So there\u0027s 1 second delay for video recording before changing the window size.",
+      "parentUuid": "1e192c83_2c92b9f4",
       "revId": "9ab0aafc24c7d680caf35b9740fe58d868d92620",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
