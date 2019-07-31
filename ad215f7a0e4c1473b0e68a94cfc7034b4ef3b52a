@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b653d3e4_1419def1",
+        "filename": "src/chromiumos/tast/local/power/max_load.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-07-31T20:36:33Z",
+      "side": 1,
+      "message": "Moved to https://crrev.com/c/1724807/2",
+      "parentUuid": "1f24139d_e2ebd607",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 13
+      },
+      "revId": "ad215f7a0e4c1473b0e68a94cfc7034b4ef3b52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "18a4a263_5d6f0567",
         "filename": "src/chromiumos/tast/local/power/max_load.go",
         "patchSetId": 1
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "a2ebc4ad_4fe25e8c",
+        "filename": "src/chromiumos/tast/local/power/max_load.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-07-31T20:36:33Z",
+      "side": 1,
+      "message": "Done and moved to https://crrev.com/c/1724807/2",
+      "parentUuid": "18a4a263_5d6f0567",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 18
+      },
+      "revId": "ad215f7a0e4c1473b0e68a94cfc7034b4ef3b52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2578d10c_d14d6d56",
         "filename": "src/chromiumos/tast/local/power/max_load.go",
         "patchSetId": 1
@@ -92,6 +140,30 @@
       "revId": "ad215f7a0e4c1473b0e68a94cfc7034b4ef3b52a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad25a548_6c5ffe7f",
+        "filename": "src/chromiumos/tast/local/power/max_load.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-07-31T20:36:33Z",
+      "side": 1,
+      "message": "Good idea, much cleaner too. Done and moved to https://crrev.com/c/1724807/2",
+      "parentUuid": "2578d10c_d14d6d56",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 5
+      },
+      "revId": "ad215f7a0e4c1473b0e68a94cfc7034b4ef3b52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
