@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e11cb4d_bbf4cebc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/disk_io_perf_fio_rand_read.ini",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-31T11:42:08Z",
+      "side": 0,
+      "message": "Could you rename to follow the naming convention?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#External-data-files\n\ngs://chromiumos-test-assets-public/tast/cros/crostini/...",
+      "revId": "0a83b20d5d332b10355c0050b55e4e014822d061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
