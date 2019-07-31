@@ -16,6 +16,24 @@
       "revId": "a397a119da1b31de9d29f05af838f1396c1c0034",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b040a150_9613b359",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1194150
+      },
+      "writtenOn": "2019-07-31T13:55:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c915c5ac_e8e70e98",
+      "revId": "a397a119da1b31de9d29f05af838f1396c1c0034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
