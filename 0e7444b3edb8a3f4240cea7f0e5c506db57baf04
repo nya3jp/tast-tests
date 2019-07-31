@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3dca1dd9_3746c01f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-07-31T16:56:06Z",
+      "side": 1,
+      "message": "We have used incognito/guest mode a lot in the past. I am not sure this is the right option here, as there might be differences in behavior. Need to check.",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 17
+      },
+      "revId": "0e7444b3edb8a3f4240cea7f0e5c506db57baf04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "571b9636_f199c9aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-07-31T16:56:06Z",
+      "side": 1,
+      "message": "That is an interesting command line option.",
+      "range": {
+        "startLine": 41,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 20
+      },
+      "revId": "0e7444b3edb8a3f4240cea7f0e5c506db57baf04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
