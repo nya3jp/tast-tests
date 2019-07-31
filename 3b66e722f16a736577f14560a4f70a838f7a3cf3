@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "373ee93c_987cfd6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/charge_scheduling.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2019-07-31T15:30:33Z",
+      "side": 1,
+      "message": "I think in general we should avoid waiting in tests. Instead we should add a feature to allow a test to change the battery %age, or whatever is needed, i.e.to fake the condition.",
+      "parentUuid": "5ce61252_fad0b624",
+      "range": {
+        "startLine": 26,
+        "startChar": 14,
+        "endLine": 26,
+        "endChar": 42
+      },
+      "revId": "3b66e722f16a736577f14560a4f70a838f7a3cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37c3c644_6dacc55d",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/charge_scheduling.go",
         "patchSetId": 1
