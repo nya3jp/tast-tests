@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a7ac0d47_86faa797",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-07-31T01:35:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e8de287_d95e5d13",
+      "revId": "eb288e7328feb9675b5c2bc8c54e52606db16716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee07e12b_cd5f3efc",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
         "patchSetId": 4
@@ -56,6 +74,48 @@
       "revId": "eb288e7328feb9675b5c2bc8c54e52606db16716",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fbfe7c4_ebe104d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-07-31T01:35:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee07e12b_cd5f3efc",
+      "revId": "eb288e7328feb9675b5c2bc8c54e52606db16716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "908fa64b_7555bec3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking_vk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-07-31T01:35:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e7641047_b8dc3ee9",
+      "range": {
+        "startLine": 31,
+        "startChar": 71,
+        "endLine": 31,
+        "endChar": 76
+      },
+      "revId": "eb288e7328feb9675b5c2bc8c54e52606db16716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
