@@ -16,6 +16,29 @@
       "revId": "ce06ec6d9e28766c80d9dde425cc3a1ad9f30dc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec156d64_624c023b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midi_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-31T03:26:21Z",
+      "side": 1,
+      "message": "nit: as a?",
+      "range": {
+        "startLine": 125,
+        "startChar": 68,
+        "endLine": 125,
+        "endChar": 70
+      },
+      "revId": "ce06ec6d9e28766c80d9dde425cc3a1ad9f30dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
