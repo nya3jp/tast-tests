@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "739fe5bc_68a44e52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-31T11:33:00Z",
+      "side": 1,
+      "message": "nit/style:\n\nif !success {\n  continue\n}\n\nto unident.\ncf) https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "revId": "c19fe4ce4d2b0e13656ba71846222b8a86908b97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
