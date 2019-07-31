@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package subtest
+package verifyapp
 
 import (
 	"context"
@@ -18,16 +18,22 @@ import (
 	"chromiumos/tast/local/colorcmp"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
-// VerifyAppFromTerminal executes a test application directly from the command
+// RunTest executes a test application directly from the command
 // line in the terminal and verifies that it renders the majority of pixels on
 // the screen in the specified color.
-func VerifyAppFromTerminal(ctx context.Context, s *testing.State, cr *chrome.Chrome,
-	cont *vm.Container, ew *input.KeyboardEventWriter, name, command string, expectedColor color.Color) {
-	s.Log("Executing test app from terminal launch for ", name)
+func RunTest(ctx context.Context, s *testing.State, cr *chrome.Chrome,
+	cont *vm.Container, name, command string, expectedColor color.Color) {
+	keyboard, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to find keyboard device: ", err)
+	}
+	defer keyboard.Close()
+
 	// Launch the test app which will maximize itself and then use the
 	// argument as a solid color to fill as its background.
 	nrgba := color.NRGBAModel.Convert(expectedColor).(color.NRGBA)
@@ -35,10 +41,10 @@ func VerifyAppFromTerminal(ctx context.Context, s *testing.State, cr *chrome.Chr
 	commandTitle := "--title=" + name + "_terminal"
 	cmd := cont.Command(ctx, command, commandColor, commandTitle)
 	if err := cmd.Start(); err != nil {
-		defer cmd.DumpLog(ctx)
-		s.Errorf("Failed launching %v: %v", command, err)
-		return
+		s.Fatalf("Failed launching %v: %v", command, err)
 	}
+	defer cmd.Wait(testexec.DumpLogOnError)
+	defer cmd.Kill()
 
 	screenshotName := "screenshot_terminal_" + name + ".png"
 	path := filepath.Join(s.OutDir(), screenshotName)
@@ -48,7 +54,7 @@ func VerifyAppFromTerminal(ctx context.Context, s *testing.State, cr *chrome.Chr
 	const maxKnownColorDiff = 0x1
 
 	// Allow up to 10 seconds for the target screen to render.
-	err := testing.Poll(ctx, func(ctx context.Context) error {
+	if err = testing.Poll(ctx, func(ctx context.Context) error {
 		if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
 			return err
 		}
@@ -67,9 +73,7 @@ func VerifyAppFromTerminal(ctx context.Context, s *testing.State, cr *chrome.Chr
 		}
 		return errors.Errorf("screenshot did not have matching dominant color, expected %v but got %v at ratio %0.2f",
 			colorcmp.ColorStr(expectedColor), colorcmp.ColorStr(color), ratio)
-	}, &testing.PollOptions{Timeout: 10 * time.Second})
-
-	if err != nil {
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		s.Errorf("Failure in screenshot comparison for %v from terminal: %v", name, err)
 	}
 
@@ -77,10 +81,7 @@ func VerifyAppFromTerminal(ctx context.Context, s *testing.State, cr *chrome.Chr
 	// screenshot then we can get its output which may give us useful information
 	// about display errors.
 	s.Logf("Closing %v with keypress", name)
-	if err := ew.Accel(ctx, "Enter"); err != nil {
+	if err := keyboard.Accel(ctx, "Enter"); err != nil {
 		s.Error("Failed to type Enter key: ", err)
 	}
-
-	cmd.Kill()
-	cmd.Wait()
 }
