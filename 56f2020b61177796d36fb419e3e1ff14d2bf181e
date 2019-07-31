@@ -1,0 +1,395 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c2853e6_bb44cfc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_preview_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T21:34:55Z",
+      "side": 1,
+      "message": "is there really no way to do this without a keyboard involved?",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f8d5369_10c5c5c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_preview_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T21:34:55Z",
+      "side": 1,
+      "message": "a. not how you spell flakiness.  b. avoid sleeps whenever possible.  Find something to poll for instead",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cd2b04d_82ca7e68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T21:34:55Z",
+      "side": 1,
+      "message": "is there a team alias too?",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "332254e7_329da4ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T21:34:55Z",
+      "side": 1,
+      "message": "I\u0027d believe you if you said yes, but will having Chrome guarantee the Files App is also present?",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46807d52_3b8c26ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T21:34:55Z",
+      "side": 1,
+      "message": "you already have this path hardcoded with the FilesApp code.  Make that code handle the specifics?",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "848ff27a_5942d273",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T21:34:55Z",
+      "side": 1,
+      "message": "as mentioned in the other file, don\u0027t pass around s",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50f0cc9f_ca79256d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T21:34:55Z",
+      "side": 1,
+      "message": "Downloads folder",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7607a326_9e8867d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T21:34:55Z",
+      "side": 1,
+      "message": "I think this belongs in src/chromiumos/tast/local/ui/filesapp, which is for more general use libraries not just for a specific test",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b615d14_95c7f041",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T21:34:55Z",
+      "side": 1,
+      "message": "Put . at the end of comments, here and throughout",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d28dfe2_4445a4dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T21:34:55Z",
+      "side": 1,
+      "message": "Revisit capitalization for \"Files App\" and \"Chrome\", here and throughout.  Whichever way you go they should all match (also, definitely use \"Chrome)",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16bd953a_62c325a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T21:34:55Z",
+      "side": 1,
+      "message": "defer CloseFilesApp()",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "047180f5_61bc4ed4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T21:34:55Z",
+      "side": 1,
+      "message": "personal preference, but I think it\u0027s more readable to define the JS in its own line (like you do below)",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02d9511c_e12c71ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T21:34:55Z",
+      "side": 1,
+      "message": "Mention what happens if the app is not open",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3449fdb9_ac345aa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T21:34:55Z",
+      "side": 1,
+      "message": "The stuff here and below doesn\u0027t look like it\u0027s FilesApp specific.  Consider moving this to a ui library instead.",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8033eeb9_24cbec11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T21:34:55Z",
+      "side": 1,
+      "message": "why is this exported?  initChromeAutomationRoot()",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04365203_a510dd81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T21:34:55Z",
+      "side": 1,
+      "message": "seems safer not to save this and to call it in each subfunction.  Then callers of the library don\u0027t have to worry about having run this setup, and you don\u0027t have to worry about something overwriting \"root\".  Looks like that\u0027s what existing usages do",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "806884a8_a3035924",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T21:34:55Z",
+      "side": 1,
+      "message": "JavaScript",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "907a9878_be75a1dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T21:34:55Z",
+      "side": 1,
+      "message": "You don\u0027t have to put each sentence on a separate line, here and throughout.  Break things up logically, yes, but both of these lines can go together.",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0404ca09_4fc14c5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T21:34:55Z",
+      "side": 1,
+      "message": "testing.State belongs only in the test itself - don\u0027t pass it around (here and throughout).  Instead, have this function return a new error and handle it when this is called.",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f112e91b_0aa88310",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T21:34:55Z",
+      "side": 1,
+      "message": "don\u0027t export this",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7203fb2_ed004c38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T21:34:55Z",
+      "side": 1,
+      "message": "there has to be a better way to do this",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3af029db_6b85d426",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T21:34:55Z",
+      "side": 1,
+      "message": "don\u0027t export this",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03672451_e91a87de",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-07-31T21:34:55Z",
+      "side": 1,
+      "message": "you can do this same thing with context.WithTimeout().  Not sure it\u0027s worth adding new functions for this - feel free to convince me",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
