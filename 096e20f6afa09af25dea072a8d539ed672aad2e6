@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2fc8b46b_6c8ac374",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-31T16:26:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d768a60_cd072de1",
+      "revId": "096e20f6afa09af25dea072a8d539ed672aad2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15ea9a31_ba7061ec",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "096e20f6afa09af25dea072a8d539ed672aad2e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bef93157_fdf4a17e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-31T16:26:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15ea9a31_ba7061ec",
+      "revId": "096e20f6afa09af25dea072a8d539ed672aad2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "d1fc27f4_9e9a4ca4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-31T16:26:01Z",
+      "side": 1,
+      "message": "Ouch yeah. Done.",
+      "parentUuid": "f4070dd4_314f35c2",
+      "revId": "096e20f6afa09af25dea072a8d539ed672aad2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15915ce6_c7525373",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
         "patchSetId": 4
@@ -67,6 +121,24 @@
       "revId": "096e20f6afa09af25dea072a8d539ed672aad2e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1882ce97_daff2085",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-31T16:26:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15915ce6_c7525373",
+      "revId": "096e20f6afa09af25dea072a8d539ed672aad2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "3dca4640_5c16ad6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-31T16:26:01Z",
+      "side": 1,
+      "message": "I\u0027d rather not log anything, which will point me, and other maintainers, to\ninvestigate what\u0027s the problem, vs logging incomplete results, which might\nmask that erroneous situation.",
+      "parentUuid": "5f4e8014_520d8694",
+      "revId": "096e20f6afa09af25dea072a8d539ed672aad2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2244ad5_5cd25762",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
         "patchSetId": 4
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "95a98b07_86b95dd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-31T16:26:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2244ad5_5cd25762",
+      "revId": "096e20f6afa09af25dea072a8d539ed672aad2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "171f7bea_c90703c6",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
         "patchSetId": 4
@@ -118,6 +226,24 @@
       "revId": "096e20f6afa09af25dea072a8d539ed672aad2e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a04dcb6a_30c4f74f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-07-31T16:26:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "171f7bea_c90703c6",
+      "revId": "096e20f6afa09af25dea072a8d539ed672aad2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
