@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "fdfdb571_de842762",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-31T11:56:28Z",
+      "side": 1,
+      "message": "nit/style: in go, we often drop get/is prefix for getters. Maybe Resizable()?",
+      "range": {
+        "startLine": 435,
+        "startChar": 20,
+        "endLine": 435,
+        "endChar": 22
+      },
+      "revId": "d4d87f64b084b90accc859e10f781d1980a747fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ef9247f0_dba2af7e",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 5
