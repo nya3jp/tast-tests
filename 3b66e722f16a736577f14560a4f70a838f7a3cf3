@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "81fedc2c_588bb671",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/charge_scheduling.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-07-31T15:10:08Z",
+      "side": 1,
+      "message": "Ah, I was going off of the example at http://chromium.googlesource.com/chromiumos/platform/tast-tests/+/355c06d2fed9cc8ffc57213d3b55ddf019168f3d/src/chromiumos/tast/local/bundles/cros/power/check_status.go#13, but it looks like that example is wrong...",
+      "parentUuid": "60028d54_07849fbe",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "3b66e722f16a736577f14560a4f70a838f7a3cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b64f8619_48114aa9",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/charge_scheduling.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5ce61252_fad0b624",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/charge_scheduling.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-07-31T15:10:08Z",
+      "side": 1,
+      "message": "I agree 10 minutes is too long. What is the maximum acceptable timeout? I think I can fix the slow EC issue (described on line 28), but draining the battery still may take 5 minutes. Is 5 minutes acceptable? Also, if the \"informational\" tag is included, does that mean a longer timeout is acceptable?\n\nWhat do you think about the approach of disconnecting AC and letting the battery drain? It\u0027s hacky, but so far the battery emulators seem infeasible.\n\nThere is no autotest equivalent, this is the first time this test is appearing.",
+      "parentUuid": "b64f8619_48114aa9",
+      "range": {
+        "startLine": 26,
+        "startChar": 14,
+        "endLine": 26,
+        "endChar": 42
+      },
+      "revId": "3b66e722f16a736577f14560a4f70a838f7a3cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37c3c644_6dacc55d",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/charge_scheduling.go",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-07-31T04:05:18Z",
       "side": 1,
       "message": "I assume setting HW clock does not affect OS clock, am I right?",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 11
+      },
+      "revId": "3b66e722f16a736577f14560a4f70a838f7a3cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f651e98_b78f2c21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/charge_scheduling.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-07-31T15:10:08Z",
+      "side": 1,
+      "message": "it will not affect the OS/system clock. I can better describe this in the comment",
+      "parentUuid": "37c3c644_6dacc55d",
       "range": {
         "startLine": 84,
         "startChar": 1,
