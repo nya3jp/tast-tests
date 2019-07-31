@@ -22,6 +22,30 @@
       "revId": "e6db6719a71278f12b36d5b49662f5d8591166c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06ce37d8_c9b15f47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-31T18:09:36Z",
+      "side": 1,
+      "message": "good catch!",
+      "parentUuid": "74399998_a4b1f40a",
+      "range": {
+        "startLine": 662,
+        "startChar": 0,
+        "endLine": 665,
+        "endChar": 4
+      },
+      "revId": "e6db6719a71278f12b36d5b49662f5d8591166c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
