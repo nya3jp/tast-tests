@@ -46,6 +46,30 @@
       "revId": "cd30ccff1f2790f323a0ea6673987a3ae8d1e026",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6828ad86_8977df93",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-07-31T22:29:14Z",
+      "side": 1,
+      "message": "Added. However, it seems no-startup-window itself fixed the store window pop up issue at lease in my fizz. \nThe no-fist-run option itself is less self explainable to what is done. CQ should be able to tell more.",
+      "parentUuid": "13fa1584_4d4d862b",
+      "range": {
+        "startLine": 253,
+        "startChar": 1,
+        "endLine": 253,
+        "endChar": 19
+      },
+      "revId": "cd30ccff1f2790f323a0ea6673987a3ae8d1e026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
