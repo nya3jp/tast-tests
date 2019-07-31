@@ -25,6 +25,76 @@
     },
     {
       "key": {
+        "uuid": "390cfa68_738acc08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-07-31T17:38:03Z",
+      "side": 1,
+      "message": "Is this CQ candidate test or just for regression? If this is regression catcher, you should change to group:crosbolt etc.",
+      "parentUuid": "5b029f8c_ba47e2f7",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 42
+      },
+      "revId": "81d784131c5d2e187e5a1fbc901848ea7a5b5927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aba1d1f_b37187c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-07-31T17:38:03Z",
+      "side": 1,
+      "message": "How long is the test in your environment?",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 32
+      },
+      "revId": "81d784131c5d2e187e5a1fbc901848ea7a5b5927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d390834_be0bb658",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-07-31T17:38:03Z",
+      "side": 1,
+      "message": "s.Log",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 19
+      },
+      "revId": "81d784131c5d2e187e5a1fbc901848ea7a5b5927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2860e8f1_e5978a96",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_tests.go",
         "patchSetId": 1
@@ -41,6 +111,29 @@
         "startChar": 0,
         "endLine": 41,
         "endChar": 0
+      },
+      "revId": "81d784131c5d2e187e5a1fbc901848ea7a5b5927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ac45ce6_0a7b4dcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-07-31T17:38:03Z",
+      "side": 1,
+      "message": "I don\u0027t see the need of this as you set the timeout the same as the test timeout.\nShorten might be the one you are looking for.\nctx, cancel :\u003d ctxutil.Shorten(ctx, x)",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 15
       },
       "revId": "81d784131c5d2e187e5a1fbc901848ea7a5b5927",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
