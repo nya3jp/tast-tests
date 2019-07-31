@@ -46,6 +46,11 @@ type TimedScanData struct {
 	BSSList []*BSSData
 }
 
+// ChannelConfig contains the configuration data for a radio config.
+type ChannelConfig struct {
+	Number, Freq, Width, Center1Freq int
+}
+
 // TimedScan runs a scan on a specified interface and frequencies (if applicable).
 // A channel map for valid frequencies can be found in
 // third_party/autotest/files/server/cros/network/hostap_config.py
@@ -62,7 +67,7 @@ func TimedScan(ctx context.Context, iface string,
 		args = append(args, "ssid", ssid)
 	}
 	startTime := time.Now()
-	out, err := testexec.CommandContext(ctx, "iw", args...).Output()
+	out, err := testexec.CommandContext(ctx, "iw", args...).Output(testexec.DumpLogOnError)
 	scanTime := time.Since(startTime)
 	if err != nil {
 		return nil, errors.Wrap(err, "iw scan failed")
@@ -73,6 +78,129 @@ func TimedScan(ctx context.Context, iface string,
 		return nil, err
 	}
 	return &TimedScanData{scanTime, bssList}, nil
+}
+
+// ScanDump returns a list of BSSData from a scan dump.
+func ScanDump(ctx context.Context, iface string) ([]*BSSData, error) {
+	out, err := testexec.CommandContext(ctx, "iw", "dev", iface, "scan",
+		"dump").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "scan dump failed")
+	}
+	return parseScanResults(string(out))
+}
+
+// GetLinkValue gets the specified link value from the iw link output.
+func GetLinkValue(ctx context.Context, iface string, iwLinkKey string) (string, error) {
+	res, err := testexec.CommandContext(ctx, "iw", "dev", iface, "link").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to get link information from interface %s", iface)
+	}
+	kvs := getAllLinkKeys(string(res))
+	out := kvs[iwLinkKey]
+	if out == "" {
+		return "", errors.Errorf("could not extract link value from link information with link key %s: %v", iwLinkKey, kvs)
+	}
+	return out, nil
+}
+
+// GetOperatingMode gets the interface's operating mode.
+func GetOperatingMode(ctx context.Context, iface string) (string, error) {
+	out, err := testexec.CommandContext(ctx, "iw", "dev", iface,
+		"info").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get interface information")
+	}
+	r := regexp.MustCompile(`(?m)^\s*type (.*)$`)
+	supportedDevModes := []string{"AP", "monitor", "managed"}
+	m := r.FindStringSubmatch(string(out))
+	if m == nil {
+		return "", errors.New("could not find operating mode")
+	}
+	opMode := m[1]
+	for _, v := range supportedDevModes {
+		if v == opMode {
+			return opMode, nil
+		}
+	}
+	return "", errors.Wrapf(err, "unsupported operating mode %s found for interface: %s", opMode, iface)
+}
+
+// GetRadioConfig gets the radio configuration from the interface's information.
+func GetRadioConfig(ctx context.Context, iface string) (*ChannelConfig, error) {
+	out, err := testexec.CommandContext(ctx, "iw", "dev", iface, "info").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get interface information")
+	}
+	r := regexp.MustCompile(
+		`(?m)^\s*channel (\d+) \((\d+) MHz\), width: (\d{2}) MHz, center1: (\d+) MHz`)
+	m := r.FindStringSubmatch(string(out))
+	if m == nil {
+		return nil, errors.New("could not find radio config")
+	}
+	number, err := strconv.Atoi(m[1])
+	if err != nil {
+		return nil, errors.New("could not parse number")
+	}
+	freq, err := strconv.Atoi(m[2])
+	if err != nil {
+		return nil, errors.New("could not parse freq")
+	}
+	width, err := strconv.Atoi(m[3])
+	if err != nil {
+		return nil, errors.New("could not parse width")
+	}
+	center1Freq, err := strconv.Atoi(m[4])
+	if err != nil {
+		return nil, errors.New("could not parse center1Freq")
+	}
+	return &ChannelConfig{
+		Number:      number,
+		Freq:        freq,
+		Width:       width,
+		Center1Freq: center1Freq,
+	}, nil
+}
+
+// GetRegulatoryDomain gets the regulatory domain code.
+func GetRegulatoryDomain(ctx context.Context) (string, error) {
+	out, err := testexec.CommandContext(ctx, "iw", "reg", "get").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get regulatory domain")
+	}
+	r := regexp.MustCompile(`(?m)^country (..):`)
+	if m := r.FindStringSubmatch(string(out)); m != nil {
+		return m[1], nil
+	}
+	return "", errors.New("could not find regulatory domain")
+}
+
+// SetTxPower sets the wireless interface's transmit power.
+func SetTxPower(ctx context.Context, iface string, mode string, power int) error {
+	if err := testexec.CommandContext(ctx, "iw", "dev", iface, "set",
+		"txpower", mode, strconv.Itoa(power)).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to set txpower")
+	}
+	return nil
+}
+
+// SetFreq sets the wireless interface's LO center freq.
+// Interface should be in monitor mode before scanning.
+func SetFreq(ctx context.Context, iface string, freq int) error {
+	if err := testexec.CommandContext(ctx, "iw", "dev", iface, "set",
+		"freq", strconv.Itoa(freq)).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to set freq")
+	}
+	return nil
+}
+
+// SetAntennaBitmap sets the antenna bitmap.
+func SetAntennaBitmap(ctx context.Context, phy string, txBitmap int, rxBitmap int) error {
+	if err := testexec.CommandContext(ctx, "iw", "phy", phy, "set",
+		"antenna", strconv.Itoa(txBitmap), strconv.Itoa(rxBitmap)).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to set Antenna bitmap")
+	}
+	return nil
 }
 
 // getAllLinkKeys parses `link` or `station dump` output into key value pairs.
