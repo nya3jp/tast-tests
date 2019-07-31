@@ -35,6 +35,10 @@ func WebRTCVideoPlaybackDelay(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx, chrome.ExtraArgs(
 			"--autoplay-policy=no-user-gesture-required",
 			"--disable-rtc-smoothness-algorithm",
+			// Avoid chrome://newtab since it has active elements e.g., the Doodle.
+			"--incognito",
+			// Prevent showing up of offer pages, e.g. google.com/chromebooks.
+			"--no-first-run",
 			"--use-fake-device-for-media-stream=fps=60",
 			"--use-fake-ui-for-media-stream",
 		))
