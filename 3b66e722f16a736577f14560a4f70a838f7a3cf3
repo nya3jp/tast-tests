@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60028d54_07849fbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/charge_scheduling.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-31T04:05:18Z",
+      "side": 1,
+      "message": "Can we just use the default name \"power\" for this package? It is discouraged to replace the name unless there\u0027s absolute need.\n\nhttps://golang.org/doc/effective_go.html#package-names",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "3b66e722f16a736577f14560a4f70a838f7a3cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b64f8619_48114aa9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/charge_scheduling.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-31T04:05:18Z",
+      "side": 1,
+      "message": "I don\u0027t think we can put this test in mainline (c.f. go/tast-attr) since mainline tests run on release builders and 10 minute timeout is too long for them.\n\nDo you have autotest equivalent of this test? If so which device pool do you use to run it?",
+      "range": {
+        "startLine": 26,
+        "startChar": 14,
+        "endLine": 26,
+        "endChar": 42
+      },
+      "revId": "3b66e722f16a736577f14560a4f70a838f7a3cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37c3c644_6dacc55d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/charge_scheduling.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-07-31T04:05:18Z",
+      "side": 1,
+      "message": "I assume setting HW clock does not affect OS clock, am I right?",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 11
+      },
+      "revId": "3b66e722f16a736577f14560a4f70a838f7a3cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
