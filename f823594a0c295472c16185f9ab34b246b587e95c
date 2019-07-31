@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5c237d7f_6c163efb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-31T17:18:02Z",
+      "side": 1,
+      "message": "Yes. The regexp is failing in NYC.\n\nInstead of fixing the regexp for NYC, I would prefer to put energy on the protobuf parsing (which is the right way to fix it). It should work on NYC, P and Q/R. I already did tests and the protobuf format is backward compatible.\n\nI already have some the bare-bones working locally (although I\u0027m fighting with .ebuild files).",
+      "parentUuid": "953cae3f_b32ad1de",
+      "range": {
+        "startLine": 10,
+        "startChar": 35,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "f823594a0c295472c16185f9ab34b246b587e95c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dca674da_b3e5aa65",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "f823594a0c295472c16185f9ab34b246b587e95c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7278cb9f_222835ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-07-31T17:18:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dca674da_b3e5aa65",
+      "revId": "f823594a0c295472c16185f9ab34b246b587e95c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
