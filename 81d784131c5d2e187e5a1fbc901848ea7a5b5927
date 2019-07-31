@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b029f8c_ba47e2f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-07-31T03:41:32Z",
+      "side": 1,
+      "message": "Attr:         []string{\"group:crosbolt\", \"crosbolt_perbuild\"},",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 42
+      },
+      "revId": "81d784131c5d2e187e5a1fbc901848ea7a5b5927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2860e8f1_e5978a96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-07-31T03:41:32Z",
+      "side": 1,
+      "message": "I think you should use bintest.Run()\nSay\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/camera/encode_accel_jpeg_perf.go?q\u003dtast+bintest+package:%5Echromeos_public$\u0026dr\u0026l\u003d86",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "81d784131c5d2e187e5a1fbc901848ea7a5b5927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
