@@ -81,6 +81,24 @@
       "revId": "9ab0aafc24c7d680caf35b9740fe58d868d92620",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb9fe9e3_ad77d1c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-31T11:35:46Z",
+      "side": 1,
+      "message": "Thank you for explanation!\nCould you add a short comment for each testing.Sleep() that this is recording?\nI think this is exceptional case, so it\u0027d be nice that others looking at this can see this is (probably) not what they should use.",
+      "parentUuid": "06949d3a_0fab0653",
+      "revId": "9ab0aafc24c7d680caf35b9740fe58d868d92620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
