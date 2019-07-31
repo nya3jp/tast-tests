@@ -18,6 +18,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
+ lorem ipsum
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CrostiniStartEverything,
