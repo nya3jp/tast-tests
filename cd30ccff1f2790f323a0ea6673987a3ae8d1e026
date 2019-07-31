@@ -22,6 +22,30 @@
       "revId": "cd30ccff1f2790f323a0ea6673987a3ae8d1e026",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6afc6f52_b435f889",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-07-31T22:25:12Z",
+      "side": 1,
+      "message": "+1, oobe is also unexpected here",
+      "parentUuid": "13fa1584_4d4d862b",
+      "range": {
+        "startLine": 253,
+        "startChar": 1,
+        "endLine": 253,
+        "endChar": 19
+      },
+      "revId": "cd30ccff1f2790f323a0ea6673987a3ae8d1e026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
