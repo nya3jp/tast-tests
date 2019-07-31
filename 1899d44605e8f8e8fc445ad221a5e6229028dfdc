@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e11e0765_f6cc5c37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-31T11:15:50Z",
+      "side": 1,
+      "message": "nit: could you move this to L79, just before using it?",
+      "revId": "1899d44605e8f8e8fc445ad221a5e6229028dfdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c41727d_124f02af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dlcservice.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-31T11:15:50Z",
+      "side": 1,
+      "message": "nit: Could you align the logging with install\u0027s L104?",
+      "revId": "1899d44605e8f8e8fc445ad221a5e6229028dfdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
