@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "140de6ed_0ee04060",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ad/kerberos_daemon.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-07-31T11:20:40Z",
+      "side": 1,
+      "message": "Thank you for explanation. It makes sense.",
+      "parentUuid": "4bb00999_a6de2450",
+      "revId": "61eb519edadf3564e2fe5992ba1120a7c847012d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b5f6aab_9521abfe",
         "filename": "src/chromiumos/tast/local/bundles/cros/ad/kerberos_daemon.go",
         "patchSetId": 5
