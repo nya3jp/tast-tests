@@ -16,6 +16,24 @@
       "revId": "0a83b20d5d332b10355c0050b55e4e014822d061",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "994475fc_ce588b17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/disk_io_perf_fio_rand_read.ini",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-07-31T23:25:22Z",
+      "side": 0,
+      "message": "Hi\n\nFirstly, my apologies, I had submitted this, as i was under the impression the +1 from ejcaruso@ was sufficient (is that the case?).\n\nBut also, IIUC these are following the naming convention:\n - They are internal files (since they are small text files, your link refers to external files)\n - they are in the data/ dir, and prefixed with the name of their test (disk_io_perf_*, the fio_* refers to the program which they are used with)\n\nIf i missed something please let me know and i\u0027ll get a CL out to fix it quickly.\n\nThank you",
+      "parentUuid": "9e11cb4d_bbf4cebc",
+      "revId": "0a83b20d5d332b10355c0050b55e4e014822d061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
