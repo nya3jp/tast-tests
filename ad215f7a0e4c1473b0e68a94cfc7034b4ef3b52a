@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1f24139d_e2ebd607",
+        "filename": "src/chromiumos/tast/local/power/max_load.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-07-31T15:17:08Z",
+      "side": 1,
+      "message": "I\u0027ll do this, and this isn\u0027t a critique, I\u0027m just curious what the process is to avoid duplicated utility functions. Say someone else wants to use this function in the future, they aren\u0027t going to know to look in charge_scheduling.go. Are we relying on them to grep the codebase for some relevant keywords? Or are reviewers supposed to be familiar enough that they can catch the duplicate?",
+      "parentUuid": "49207845_1c2fe19a",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 13
+      },
+      "revId": "ad215f7a0e4c1473b0e68a94cfc7034b4ef3b52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "18a4a263_5d6f0567",
         "filename": "src/chromiumos/tast/local/power/max_load.go",
         "patchSetId": 1
