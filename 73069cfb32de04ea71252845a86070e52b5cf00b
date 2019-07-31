@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "266f057c_573640ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/smart_dim.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2019-07-31T01:51:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3e507d1_1dce3d22",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 10
+      },
+      "revId": "73069cfb32de04ea71252845a86070e52b5cf00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7084874d_1a6180c7",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/smart_dim.go",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6f68d689_ff5f72c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/smart_dim.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2019-07-31T01:51:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7084874d_1a6180c7",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 16
+      },
+      "revId": "73069cfb32de04ea71252845a86070e52b5cf00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3803cb0_a24ee78b",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/smart_dim.go",
         "patchSetId": 5
@@ -62,6 +110,24 @@
       "revId": "73069cfb32de04ea71252845a86070e52b5cf00b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e0150b8_15c6c25e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/smart_dim.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2019-07-31T01:51:27Z",
+      "side": 1,
+      "message": "Actually not, the D-Bus method call can return true or false, so we have no specific expectation for state, just to make sure that the method call can return a bool.",
+      "parentUuid": "f3803cb0_a24ee78b",
+      "revId": "73069cfb32de04ea71252845a86070e52b5cf00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
