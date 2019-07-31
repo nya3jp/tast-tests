@@ -70,3 +70,37 @@ func SetARCAppWindowState(ctx context.Context, c *chrome.Conn, pkgName string, e
 	}
 	return state, nil
 }
+
+// Rect represents a rectangle
+type Rect struct {
+	Left   int `json:"left"`
+	Top    int `json:"top"`
+	Width  int `json:"width"`
+	Height int `json:"height"`
+}
+
+// ArcAppWindowInfo contains various information on ash window
+type ArcAppWindowInfo struct {
+	Bounds      Rect `json:"bounds"`
+	IsAnimating bool `json:"is_animating"`
+}
+
+// GetARCAppWindowInfo returns various information on ash window
+func GetARCAppWindowInfo(ctx context.Context, c *chrome.Conn, pkgName string) (ArcAppWindowInfo, error) {
+	expr := fmt.Sprintf(
+		`new Promise(function(resolve, reject) {
+		  chrome.autotestPrivate.getArcAppWindowInfo(%q, function(info) {
+		    if (chrome.runtime.lastError) {
+		      reject(new Error(chrome.runtime.lastError.message));
+		    } else {
+		      resolve(info);
+		    }
+		  });
+		})`, pkgName)
+
+	var info ArcAppWindowInfo
+	if err := c.EvalPromise(ctx, expr, &info); err != nil {
+		return ArcAppWindowInfo{Rect{0, 0, -1, -1}, false}, err
+	}
+	return ArcAppWindowInfo{info.Bounds, info.IsAnimating}, nil
+}
