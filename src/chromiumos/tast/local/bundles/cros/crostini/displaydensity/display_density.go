@@ -6,7 +6,6 @@ package displaydensity
 
 import (
 	"context"
-	"fmt"
 	"strings"
 
 	"chromiumos/tast/local/chrome"
@@ -23,67 +22,63 @@ const (
 	commandHeight = "--height=100"
 )
 
+type density int
+
+const (
+	lowDensity density = iota
+	highDensity
+)
+
 // RunTest executes a X11 or wayland test application directly from the command
 // line in the terminal twice with default and low display density respectively
 // and verifies that it renders the window bigger in low display density.
-func RunTest(ctx context.Context, s *testing.State, tconn *chrome.Conn, cont *vm.Container, name, command string) {
+func RunTest(ctx context.Context, s *testing.State, tconn *chrome.Conn, cont *vm.Container, conf *crostini.DemoConfig) {
 	keyboard, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to find keyboard device: ", err)
 	}
 	defer keyboard.Close()
 
-	// TODO(hollingum): Factor common code from the high/low dpi executions into a function.
-	commandWidth := fmt.Sprintf("--width=%d", 100)
-	commandHeight := fmt.Sprintf("--height=%d", 100)
-	commandTitle := "--title=" + name
-	highDensityCmd := cont.Command(ctx, command, commandWidth, commandHeight, commandTitle)
-	s.Logf("Running %q", shutil.EscapeSlice(highDensityCmd.Args))
-	if err := highDensityCmd.Start(); err != nil {
-		s.Fatalf("Failed launching %q: %v", shutil.EscapeSlice(highDensityCmd.Args), err)
+	demoWindowSize := func(densityConfiguration density) (sz crostini.Size, err error) {
+		windowName := conf.Name
+		subCommandArgs := []string{}
+		if densityConfiguration == lowDensity {
+			windowName = windowName + "_low_density"
+			subCommandArgs = append(subCommandArgs, "DISPLAY=${DISPLAY_LOW_DENSITY}", "WAYLAND_DISPLAY=${WAYLAND_DISPLAY_LOW_DENSITY}")
+		}
+		subCommandArgs = append(subCommandArgs, conf.AppPath, commandWidth, commandHeight, "--title="+windowName)
+
+		cmd := cont.Command(ctx, "sh", "-c", strings.Join(subCommandArgs, " "))
+		s.Logf("Running %q", shutil.EscapeSlice(cmd.Args))
+		if err = cmd.Start(); err != nil {
+			return sz, err
+		}
+		defer cmd.Wait(testexec.DumpLogOnError)
+		defer cmd.Kill()
+
+		if sz, err = crostini.PollWindowSize(ctx, tconn, windowName); err != nil {
+			return sz, err
+		}
+		s.Logf("Window %q size is %v", windowName, sz)
+
+		s.Logf("Closing %q with keypress", windowName)
+		err = keyboard.Accel(ctx, "Enter")
+
+		return sz, err
 	}
-	defer highDensityCmd.Wait(testexec.DumpLogOnError)
-	defer highDensityCmd.Kill()
 
-	sizeHighDensity, err := crostini.PollWindowSize(ctx, tconn, name)
-
+	sizeHighDensity, err := demoWindowSize(highDensity)
 	if err != nil {
-		s.Fatalf("Failed getting window %q size: %v", name, err)
-	}
-	s.Logf("Window %q size is %v", name, sizeHighDensity)
-
-	s.Logf("Closing %v with keypress", name)
-	if err := keyboard.Accel(ctx, "Enter"); err != nil {
-		s.Error("Failed to type Enter key: ", err)
+		s.Fatal("Failed getting high-density window size: ", err)
 	}
 
-	lowDensityName := name + "_low_density"
-	commandTitle = "--title=" + lowDensityName
-	// TODO(hollingum): Find a bettwe way to pass environment vars to a container command (rather than invoking sh).
-	subCommandArgs := []string{"DISPLAY=${DISPLAY_LOW_DENSITY}", "WAYLAND_DISPLAY=${WAYLAND_DISPLAY_LOW_DENSITY}", command, commandWidth, commandHeight, commandTitle}
-	subCommand := strings.Join(subCommandArgs, " ")
-	lowDensityCmd := cont.Command(ctx, "sh", "-c", subCommand)
-	s.Logf("Running %q", shutil.EscapeSlice(lowDensityCmd.Args))
-	if err := lowDensityCmd.Start(); err != nil {
-		s.Fatalf("Failed launching %q: %v", shutil.EscapeSlice(lowDensityCmd.Args), err)
-	}
-	defer lowDensityCmd.Wait(testexec.DumpLogOnError)
-	defer lowDensityCmd.Kill()
-
-	sizeLowDensity, err := crostini.PollWindowSize(ctx, tconn, lowDensityName)
-
+	sizeLowDensity, err := demoWindowSize(lowDensity)
 	if err != nil {
-		s.Fatalf("Failed getting window %q size: %v", lowDensityName, err)
-	}
-	s.Logf("Window %q size is %v", lowDensityName, sizeLowDensity)
-
-	s.Logf("Closing %v with keypress", lowDensityName)
-	if err := keyboard.Accel(ctx, "Enter"); err != nil {
-		s.Error("Failed to type Enter key: ", err)
+		s.Fatal("Failed getting low-density window size: ", err)
 	}
 
 	if sizeHighDensity.W > sizeLowDensity.W || sizeHighDensity.H > sizeLowDensity.H {
-		s.Fatalf("App %q has high density size %v greater than low density size %v", name, sizeHighDensity, sizeLowDensity)
+		s.Fatalf("App %q has high density size %v greater than low density size %v", conf.Name, sizeHighDensity, sizeLowDensity)
 	}
 
 	tabletMode, err := crostini.TabletModeEnabled(ctx, tconn)
@@ -99,6 +94,6 @@ func RunTest(ctx context.Context, s *testing.State, tconn *chrome.Conn, cont *vm
 	s.Log("Primary display scale factor is ", factor)
 
 	if factor != 1.0 && !tabletMode && (sizeHighDensity.W == sizeLowDensity.W || sizeHighDensity.H == sizeLowDensity.H) {
-		s.Fatalf("App %q has high density and low density windows with the same size of %v while the scale factor is %v", name, sizeHighDensity, factor)
+		s.Fatalf("App %q has high density and low density windows with the same size of %v while the scale factor is %v", conf.Name, sizeHighDensity, factor)
 	}
 }

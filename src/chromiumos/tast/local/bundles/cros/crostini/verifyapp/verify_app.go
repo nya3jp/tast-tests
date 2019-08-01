@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/colorcmp"
+	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/testexec"
@@ -26,8 +27,7 @@ import (
 // RunTest executes a test application directly from the command
 // line in the terminal and verifies that it renders the majority of pixels on
 // the screen in the specified color.
-func RunTest(ctx context.Context, s *testing.State, cr *chrome.Chrome,
-	cont *vm.Container, name, command string, expectedColor color.Color) {
+func RunTest(ctx context.Context, s *testing.State, cr *chrome.Chrome, cont *vm.Container, conf *crostini.DemoConfig) {
 	keyboard, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to find keyboard device: ", err)
@@ -36,17 +36,17 @@ func RunTest(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 
 	// Launch the test app which will maximize itself and then use the
 	// argument as a solid color to fill as its background.
-	nrgba := color.NRGBAModel.Convert(expectedColor).(color.NRGBA)
+	nrgba := color.NRGBAModel.Convert(conf.DominantColor).(color.NRGBA)
 	commandColor := fmt.Sprintf("--bgcolor=0x%02x%02x%02x", nrgba.R, nrgba.G, nrgba.B)
-	commandTitle := "--title=" + name + "_terminal"
-	cmd := cont.Command(ctx, command, commandColor, commandTitle)
+	commandTitle := "--title=" + conf.Name + "_terminal"
+	cmd := cont.Command(ctx, conf.AppPath, commandColor, commandTitle)
 	if err := cmd.Start(); err != nil {
-		s.Fatalf("Failed launching %v: %v", command, err)
+		s.Fatalf("Failed launching %v: %v", conf.AppPath, err)
 	}
 	defer cmd.Wait(testexec.DumpLogOnError)
 	defer cmd.Kill()
 
-	screenshotName := "screenshot_terminal_" + name + ".png"
+	screenshotName := "screenshot_terminal_" + conf.Name + ".png"
 	path := filepath.Join(s.OutDir(), screenshotName)
 
 	// Largest differing color known to date, we will be changing this over time
@@ -68,19 +68,19 @@ func RunTest(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 			s.Fatalf("Failed decoding the screenshot image %v: %v", path, err)
 		}
 		color, ratio := colorcmp.DominantColor(im)
-		if ratio >= 0.5 && colorcmp.ColorsMatch(color, expectedColor, maxKnownColorDiff) {
+		if ratio >= 0.5 && colorcmp.ColorsMatch(color, conf.DominantColor, maxKnownColorDiff) {
 			return nil
 		}
 		return errors.Errorf("screenshot did not have matching dominant color, expected %v but got %v at ratio %0.2f",
-			colorcmp.ColorStr(expectedColor), colorcmp.ColorStr(color), ratio)
+			colorcmp.ColorStr(conf.DominantColor), colorcmp.ColorStr(color), ratio)
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		s.Errorf("Failure in screenshot comparison for %v from terminal: %v", name, err)
+		s.Errorf("Failure in screenshot comparison for %v from terminal: %v", conf.Name, err)
 	}
 
 	// Terminate the app now so that if there's a failure in the
 	// screenshot then we can get its output which may give us useful information
 	// about display errors.
-	s.Logf("Closing %v with keypress", name)
+	s.Logf("Closing %v with keypress", conf.Name)
 	if err := keyboard.Accel(ctx, "Enter"); err != nil {
 		s.Error("Failed to type Enter key: ", err)
 	}

@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/crostini/verifyapp"
-	"chromiumos/tast/local/colorcmp"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/testing"
 )
@@ -29,5 +28,5 @@ func init() {
 
 func VerifyAppWayland(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
-	verifyapp.RunTest(ctx, s, pre.Chrome, pre.Container, "wayland", crostini.WaylandDemoAppPath, colorcmp.RGB(0x33, 0x88, 0xdd))
+	verifyapp.RunTest(ctx, s, pre.Chrome, pre.Container, crostini.WaylandDemoConfig)
 }
