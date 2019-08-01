@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e412e8b8_535d8bbe",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-01T01:29:35Z",
+      "side": 1,
+      "message": "(not related to this CL, feel free to skip in this CL)\n\nThis can be just Args. I guess ToFoo is not a popular naming in Go.",
+      "range": {
+        "startLine": 158,
+        "startChar": 16,
+        "endLine": 158,
+        "endChar": 22
+      },
+      "revId": "373e38efc8ba16322d8866c558c1bead9768ac74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ba4dfd8_1c4fa7b3",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-01T01:29:35Z",
+      "side": 1,
+      "message": "nit: When filepath.Abs fails, we need to remove f.Name() here.",
+      "range": {
+        "startLine": 217,
+        "startChar": 8,
+        "endLine": 217,
+        "endChar": 30
+      },
+      "revId": "373e38efc8ba16322d8866c558c1bead9768ac74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b1ef3cb_1c439732",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-01T01:29:35Z",
+      "side": 1,
+      "message": "Does out contain a trailing newline?",
+      "range": {
+        "startLine": 243,
+        "startChar": 8,
+        "endLine": 243,
+        "endChar": 19
+      },
+      "revId": "373e38efc8ba16322d8866c558c1bead9768ac74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6e97437_5a7e7bb8",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-01T01:29:35Z",
+      "side": 1,
+      "message": "nit: newFoo is typical naming for constructors.",
+      "range": {
+        "startLine": 262,
+        "startChar": 16,
+        "endLine": 262,
+        "endChar": 28
+      },
+      "revId": "373e38efc8ba16322d8866c558c1bead9768ac74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
