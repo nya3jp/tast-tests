@@ -16,6 +16,24 @@
       "revId": "d74db9e8b7ba7507ff755ae5aa516680369527ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "521397bc_2b9efde6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-08-01T12:56:56Z",
+      "side": 1,
+      "message": "Hidehiko@, in the future when having just a small nit, please consider \"LGTM \nwith nits\" as per the Chromium guide [1]\n\n\u003e - \"Please consider \"LGTM with nits.\", If a review from a committer has only minor issues. [...]\n\u003e - Don\u0027t require a second round for trivial changes.\n\n[1] https://www.chromium.org/developers/contributing-code/minimizing-review-lag-across-time-zones",
+      "parentUuid": "3f22497e_c3dedfa3",
+      "revId": "d74db9e8b7ba7507ff755ae5aa516680369527ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
