@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "cc90c4e3_69b00f8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-01T07:03:25Z",
+      "side": 1,
+      "message": "Sorry, but could you separate this change to another CL?\nI think a CL should focus on one idea, except small nitpicks on the way, but this change is not that small.\nYou can leave TODOs for other reviewers not to do the same comments as I did.",
+      "parentUuid": "32d8465f_b01659f8",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 8
+      },
+      "revId": "5ddb6b3b90f92cb1fd294b2cb6511d8db8af38bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a635d7c5_9b0e499d",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
         "patchSetId": 1
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "54427a2e_8fb6a4bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-01T07:03:25Z",
+      "side": 1,
+      "message": "Same.",
+      "parentUuid": "6065fb55_34897cc2",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 8
+      },
+      "revId": "5ddb6b3b90f92cb1fd294b2cb6511d8db8af38bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6107d62d_29c6a733",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/verifyapp/verify_app.go",
         "patchSetId": 1
@@ -140,6 +188,29 @@
       "revId": "5ddb6b3b90f92cb1fd294b2cb6511d8db8af38bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "280650a0_4cb34027",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-01T07:03:25Z",
+      "side": 1,
+      "message": "Is it intentional to remove it?",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 0
+      },
+      "revId": "5ddb6b3b90f92cb1fd294b2cb6511d8db8af38bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
