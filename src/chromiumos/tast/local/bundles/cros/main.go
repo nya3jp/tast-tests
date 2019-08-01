@@ -8,10 +8,8 @@
 package main
 
 import (
-	"os"
-
+	"chromiumos/tast/local/bundlemain"
 	// Underscore-imported packages register their tests via init functions.
-	"chromiumos/tast/bundle"
 	_ "chromiumos/tast/local/bundles/cros/ad"
 	_ "chromiumos/tast/local/bundles/cros/arc"
 	_ "chromiumos/tast/local/bundles/cros/audio"
@@ -34,9 +32,8 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/ui"
 	_ "chromiumos/tast/local/bundles/cros/video"
 	_ "chromiumos/tast/local/bundles/cros/vm"
-	"chromiumos/tast/local/ready"
 )
 
 func main() {
-	os.Exit(bundle.Local(os.Args[1:], os.Stdin, os.Stdout, os.Stderr, ready.Wait))
+	bundlemain.Main()
 }
