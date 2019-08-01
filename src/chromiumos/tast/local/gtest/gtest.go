@@ -134,8 +134,8 @@ func New(exec string, opts ...option) *GTest {
 	return ret
 }
 
-// ToArgs returns an array of string for execution.
-func (t *GTest) ToArgs() ([]string, error) {
+// Args returns an array of string for execution.
+func (t *GTest) Args() ([]string, error) {
 	args := []string{t.exec}
 	if t.filter != "" {
 		args = append(args, "--gtest_filter="+t.filter)
@@ -167,7 +167,7 @@ func (t *GTest) ToArgs() ([]string, error) {
 // return an error, but the report file should be created. This function
 // also handles the case, and returns it.
 func (t *GTest) Run(ctx context.Context) (*Report, error) {
-	args, err := t.ToArgs()
+	args, err := t.Args()
 	if err != nil {
 		return nil, err
 	}

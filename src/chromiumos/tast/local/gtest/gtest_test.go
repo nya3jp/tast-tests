@@ -38,7 +38,7 @@ TestSuite2.
 	}
 }
 
-func TestGTestToArgs(t *testing.T) {
+func TestGTestArgs(t *testing.T) {
 	for _, tc := range []struct {
 		expected []string
 		opts     []option
@@ -52,7 +52,7 @@ func TestGTestToArgs(t *testing.T) {
 		expected: []string{"sudo", "--user=#10", "testexec"},
 		opts:     []option{UID(10)},
 	}} {
-		args, err := New("testexec", tc.opts...).ToArgs()
+		args, err := New("testexec", tc.opts...).Args()
 		if err != nil {
 			t.Error("Unexpected fail: ", err)
 		}
@@ -62,7 +62,7 @@ func TestGTestToArgs(t *testing.T) {
 	}
 
 	// Test error case of ExtraArgs.
-	if _, err := New("testexec", ExtraArgs("--gtest_something")).ToArgs(); err == nil {
+	if _, err := New("testexec", ExtraArgs("--gtest_something")).Args(); err == nil {
 		t.Error("Unexpected success for ExtraArgs with --gtest prefix")
 	}
 }
