@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1b0713c4_e2da1670",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-01T17:47:35Z",
+      "side": 1,
+      "message": "I think I was thinking about this case when I was experimenting with a different test where I was loading/unloading the driver, bringing up the interface, and then scanning. In that case I had to poll.\n\nI removed the polling and it seems to be fine (n\u003d3)",
+      "parentUuid": "ec3b2039_88db987a",
+      "range": {
+        "startLine": 13,
+        "startChar": 60,
+        "endLine": 14,
+        "endChar": 48
+      },
+      "revId": "819571aaf8147b29a20c4b6c5379ab0886c9347d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aba20f37_ff7318d4",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "819571aaf8147b29a20c4b6c5379ab0886c9347d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0566b8e5_fa3a1fa9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-01T17:47:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aba20f37_ff7318d4",
+      "revId": "819571aaf8147b29a20c4b6c5379ab0886c9347d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
