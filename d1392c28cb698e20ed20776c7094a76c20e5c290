@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e302640a_c4a72b0e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-01T02:05:42Z",
+      "side": 1,
+      "message": "It would be great to file a bug if there\u0027s none yet for the context.",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 8
+      },
+      "revId": "d1392c28cb698e20ed20776c7094a76c20e5c290",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed033326_81f0ec47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-01T02:05:42Z",
+      "side": 1,
+      "message": "getAllLinkKeys can be called twice in this function, which is not very efficient. Would you mind caching it to a local variable, i.e.\n\n kvs :\u003d getAllLinkKeys(string(res))\n out :\u003d kvs[iwLinkKey]\n if out \u003d\u003d \"\" {\n   return \"\", errors.Errorf(..., kvs)\n }",
+      "range": {
+        "startLine": 101,
+        "startChar": 113,
+        "endLine": 101,
+        "endChar": 127
+      },
+      "revId": "d1392c28cb698e20ed20776c7094a76c20e5c290",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0870e599_9afd134a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-01T02:05:42Z",
+      "side": 1,
+      "message": "style: please insert a space between // and Get...",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 6
+      },
+      "revId": "d1392c28cb698e20ed20776c7094a76c20e5c290",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ebc4243_b5ff3d39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-01T02:05:42Z",
+      "side": 1,
+      "message": "I guess this should be (?m).\n\nIt would be great to write unit tests for these functions.",
+      "range": {
+        "startLine": 113,
+        "startChar": 26,
+        "endLine": 113,
+        "endChar": 29
+      },
+      "revId": "d1392c28cb698e20ed20776c7094a76c20e5c290",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bebec88_bda636e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_get_set.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-01T02:05:42Z",
+      "side": 1,
+      "message": "Currently there\u0027s only one getter call. Do you intend to add more later? How about adding them now? Otherwise please add TODO comments.",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "d1392c28cb698e20ed20776c7094a76c20e5c290",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
