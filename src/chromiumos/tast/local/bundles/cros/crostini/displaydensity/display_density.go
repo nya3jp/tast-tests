@@ -23,7 +23,7 @@ const (
 // RunTest executes a X11 or wayland test application directly from the command
 // line in the terminal twice with default and low display density respectively
 // and verifies that it renders the window bigger in low display density.
-func RunTest(ctx context.Context, s *testing.State, tconn *chrome.Conn, cont *vm.Container, name, command string) {
+func RunTest(ctx context.Context, s *testing.State, tconn *chrome.Conn, cont *vm.Container, conf *crostini.DemoConfig) {
 	keyboard, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to find keyboard device: ", err)
@@ -31,13 +31,13 @@ func RunTest(ctx context.Context, s *testing.State, tconn *chrome.Conn, cont *vm
 	defer keyboard.Close()
 
 	getSizeOfDemoWindow := func(isLowDensity bool) (sz crostini.Size, err error) {
-		windowName := name
+		windowName := conf.Name
 		subCommandArgs := []string{}
 		if isLowDensity {
 			windowName = windowName + "_low_density"
 			subCommandArgs = append(subCommandArgs, "DISPLAY=${DISPLAY_LOW_DENSITY}", "WAYLAND_DISPLAY=${WAYLAND_DISPLAY_LOW_DENSITY}")
 		}
-		subCommandArgs = append(subCommandArgs, command, commandWidth, commandHeight, "--title="+windowName)
+		subCommandArgs = append(subCommandArgs, conf.AppPath, commandWidth, commandHeight, "--title="+windowName)
 
 		cmd := cont.Command(ctx, "sh", "-c", strings.Join(subCommandArgs, " "))
 		s.Logf("Running %q", strings.Join(cmd.Args, " "))
@@ -74,7 +74,7 @@ func RunTest(ctx context.Context, s *testing.State, tconn *chrome.Conn, cont *vm
 	}
 
 	if sizeHighDensity.W > sizeLowDensity.W || sizeHighDensity.H > sizeLowDensity.H {
-		s.Errorf("App %q has high density size %v greater than low density size %v", name, sizeHighDensity, sizeLowDensity)
+		s.Errorf("App %q has high density size %v greater than low density size %v", conf.Name, sizeHighDensity, sizeLowDensity)
 		return
 	}
 
@@ -93,7 +93,7 @@ func RunTest(ctx context.Context, s *testing.State, tconn *chrome.Conn, cont *vm
 	s.Log("Primary display scale factor is ", factor)
 
 	if factor != 1.0 && !tabletMode && (sizeHighDensity.W == sizeLowDensity.W || sizeHighDensity.H == sizeLowDensity.H) {
-		s.Errorf("App %q has high density and low density windows with the same size of %v while the scale factor is %v", name, sizeHighDensity, factor)
+		s.Errorf("App %q has high density and low density windows with the same size of %v while the scale factor is %v", conf.Name, sizeHighDensity, factor)
 		return
 	}
 }
