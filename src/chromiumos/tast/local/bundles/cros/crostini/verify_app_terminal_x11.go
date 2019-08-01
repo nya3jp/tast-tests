@@ -15,7 +15,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VerifyAppX11,
+		Func:         VerifyAppTerminalX11,
 		Desc:         "Runs an X11 crostini application from the terminal and verifies that it renders",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"informational"},
@@ -26,7 +26,7 @@ func init() {
 	})
 }
 
-func VerifyAppX11(ctx context.Context, s *testing.State) {
+func VerifyAppTerminalX11(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
-	verifyapp.RunTest(ctx, s, pre.Chrome, pre.Container, crostini.X11DemoConfig())
+	verifyapp.RunTest(ctx, s, pre.Chrome, pre.Container, crostini.X11DemoConfig(), false)
 }
