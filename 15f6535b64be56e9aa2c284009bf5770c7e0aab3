@@ -22,6 +22,30 @@
       "revId": "15f6535b64be56e9aa2c284009bf5770c7e0aab3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ef9c1d7_2d186f9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-08-01T23:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50e7ac69_ebd47b58",
+      "range": {
+        "startLine": 67,
+        "startChar": 27,
+        "endLine": 67,
+        "endChar": 28
+      },
+      "revId": "15f6535b64be56e9aa2c284009bf5770c7e0aab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
