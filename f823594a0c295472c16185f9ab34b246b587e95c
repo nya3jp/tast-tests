@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "119fe7b2_9e058f2a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-01T00:34:19Z",
+      "side": 1,
+      "message": "the plan SGTM.",
+      "parentUuid": "5c237d7f_6c163efb",
+      "range": {
+        "startLine": 10,
+        "startChar": 35,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "f823594a0c295472c16185f9ab34b246b587e95c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dca674da_b3e5aa65",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
         "patchSetId": 1
