@@ -116,7 +116,7 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, mode testMode, opt
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
 	params := opts.Params
-	streamPath, err := prepareYUV(shortCtx, s.DataPath(params.Name), opts.PixelFormat, params.Size)
+	streamPath, err := PrepareYUV(shortCtx, s.DataPath(params.Name), opts.PixelFormat, params.Size)
 	if err != nil {
 		s.Fatal("Failed to prepare YUV file: ", err)
 	}
@@ -135,7 +135,7 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, mode testMode, opt
 
 	outPath := filepath.Join(s.OutDir(), encodeOutFile)
 	commonArgs := []string{logging.ChromeVmoduleFlag(),
-		createStreamDataArg(params, opts.Profile, opts.PixelFormat, streamPath, outPath),
+		CreateStreamDataArg(params, opts.Profile, opts.PixelFormat, streamPath, outPath),
 		"--ozone-platform=gbm",
 
 		// The default timeout for test launcher is 45 seconds, which is not enough for some test cases.
@@ -165,7 +165,7 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, mode testMode, opt
 			gtest.ExtraArgs(args...),
 			gtest.UID(int(sysutil.ChronosUID)))
 		if ba.measureCPU {
-			cpuUsage, err := cpu.MeasureProcessCPU(shortCtx, ba.measureDuration, t)
+			cpuUsage, err := cpu.MeasureProcessCPU(shortCtx, ba.measureDuration, []*gtest.GTest{t})
 			if err != nil {
 				s.Fatalf("Failed to run (measure CPU) %v: %v", exec, err)
 			}
@@ -199,7 +199,7 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, mode testMode, opt
 func runARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts TestOptions, pv *perf.Values, bas ...binArgs) {
 	// Prepare video stream.
 	params := opts.Params
-	streamPath, err := prepareYUV(ctx, s.DataPath(params.Name), opts.PixelFormat, params.Size)
+	streamPath, err := PrepareYUV(ctx, s.DataPath(params.Name), opts.PixelFormat, params.Size)
 	if err != nil {
 		s.Fatal("Failed to prepare YUV file: ", err)
 	}
@@ -233,7 +233,7 @@ func runARCVideoTest(ctx context.Context, s *testing.State, a *arc.ARC, opts Tes
 	defer a.Command(ctx, "rm", execs...).Run()
 
 	commonArgs := []string{
-		createStreamDataArg(params, opts.Profile, opts.PixelFormat, arcStreamPath, outPath),
+		CreateStreamDataArg(params, opts.Profile, opts.PixelFormat, arcStreamPath, outPath),
 	}
 	for _, exec := range execs {
 		for _, ba := range bas {
@@ -262,7 +262,7 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, exe
 			return errors.New("pv should not be nil when measuring CPU usage")
 		}
 
-		cpuUsage, err := cpu.MeasureProcessCPU(ctx, ba.measureDuration, t)
+		cpuUsage, err := cpu.MeasureProcessCPU(ctx, ba.measureDuration, []*gtest.GTest{t})
 		if err != nil {
 			return errors.Wrapf(err, "failed to run (measure CPU) %v: %v", exec, err)
 		}
@@ -294,8 +294,8 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, exe
 	return nil
 }
 
-// createStreamDataArg creates an argument of video_encode_accelerator_unittest from profile, dataPath and outFile.
-func createStreamDataArg(params StreamParams, profile videotype.CodecProfile, pixelFormat videotype.PixelFormat, dataPath, outFile string) string {
+// CreateStreamDataArg creates an argument of video_encode_accelerator_unittest from profile, dataPath and outFile.
+func CreateStreamDataArg(params StreamParams, profile videotype.CodecProfile, pixelFormat videotype.PixelFormat, dataPath, outFile string) string {
 	const (
 		defaultFrameRate          = 30
 		defaultSubseqBitrateRatio = 2
