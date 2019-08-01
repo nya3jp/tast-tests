@@ -416,6 +416,30 @@
     },
     {
       "key": {
+        "uuid": "2fb97046_45052427",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-01T03:23:12Z",
+      "side": 1,
+      "message": "deviceRestarter could be a better naming?",
+      "parentUuid": "56b68ace_df5e0a13",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 13
+      },
+      "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95bdfbbe_8a043cda",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 9
@@ -474,6 +498,30 @@
       "writtenOn": "2019-08-01T03:08:16Z",
       "side": 1,
       "message": "testing.Poll returns once nil is returned by the passed function. Is it really what you want?",
+      "range": {
+        "startLine": 134,
+        "startChar": 11,
+        "endLine": 134,
+        "endChar": 23
+      },
+      "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a91ce87_b4047f1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-01T03:23:12Z",
+      "side": 1,
+      "message": "Probably that\u0027s right. nvm.",
+      "parentUuid": "4fa370f8_82a3a5ec",
       "range": {
         "startLine": 134,
         "startChar": 11,
