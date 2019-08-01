@@ -22,6 +22,30 @@
       "revId": "358fb4451a8f0737a9876660c73892d84feff0f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23b6817b_0d581246",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-01T18:13:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f22aaf5_deec2cc9",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 16
+      },
+      "revId": "358fb4451a8f0737a9876660c73892d84feff0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
