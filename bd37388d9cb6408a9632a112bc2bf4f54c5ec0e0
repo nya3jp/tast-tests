@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "706a27af_078f82ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-01T14:55:30Z",
+      "side": 1,
+      "message": "I ran some real tests, too, but fast_build.sh -T should cover the case, actually :-).",
+      "parentUuid": "21d8a0eb_fcd1d0f6",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "bd37388d9cb6408a9632a112bc2bf4f54c5ec0e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6c568c33_fbeb46de",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-08-01T14:20:35Z",
       "side": 1,
       "message": "Can we simply write \"commonArgs\"?",
+      "range": {
+        "startLine": 257,
+        "startChar": 25,
+        "endLine": 257,
+        "endChar": 58
+      },
+      "revId": "bd37388d9cb6408a9632a112bc2bf4f54c5ec0e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "172066b7_f50779bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-01T14:55:30Z",
+      "side": 1,
+      "message": "I inherited from the original code.\nThis approach avoids to accidental overwrite of the caller\u0027s array, IIUC.\nBecause the only caller is runARCVideoTest, and considering its usage, in this specific case, we can do so, I think, though. WDYT?",
+      "parentUuid": "6c568c33_fbeb46de",
       "range": {
         "startLine": 257,
         "startChar": 25,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "9c8995d4_0dc5dcef",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-01T14:55:30Z",
+      "side": 1,
+      "message": "Updated with a bit change. Thank you for suggestion.",
+      "parentUuid": "ed33681e_2323fe54",
+      "revId": "bd37388d9cb6408a9632a112bc2bf4f54c5ec0e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27b92920_1950e50f",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 2
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "f2128493_f98aa650",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-01T14:55:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27b92920_1950e50f",
+      "range": {
+        "startLine": 187,
+        "startChar": 18,
+        "endLine": 187,
+        "endChar": 22
+      },
+      "revId": "bd37388d9cb6408a9632a112bc2bf4f54c5ec0e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af94d0d4_635d29f6",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 2
@@ -99,6 +189,24 @@
       "writtenOn": "2019-08-01T14:20:35Z",
       "side": 1,
       "message": "runner looks a great way of abstraction! Cool!",
+      "revId": "bd37388d9cb6408a9632a112bc2bf4f54c5ec0e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b58380c_6e220c59",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-01T14:55:30Z",
+      "side": 1,
+      "message": "Thanks :-)",
+      "parentUuid": "af94d0d4_635d29f6",
       "revId": "bd37388d9cb6408a9632a112bc2bf4f54c5ec0e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
