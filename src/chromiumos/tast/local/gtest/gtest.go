@@ -145,8 +145,8 @@ func New(exec string, opts ...option) *GTest {
 	return ret
 }
 
-// ToArgs returns an array of string for execution.
-func (t *GTest) ToArgs() ([]string, error) {
+// Args returns an array of string for execution.
+func (t *GTest) Args() ([]string, error) {
 	args := []string{t.exec}
 	if t.filter != "" {
 		args = append(args, "--gtest_filter="+t.filter)
@@ -251,7 +251,7 @@ func (t *GTest) Start(ctx context.Context) (*testexec.Cmd, error) {
 }
 
 func (t *GTest) startCommand(ctx context.Context, output string) (*testexec.Cmd, error) {
-	args, err := t.ToArgs()
+	args, err := t.Args()
 	if err != nil {
 		return nil, err
 	}

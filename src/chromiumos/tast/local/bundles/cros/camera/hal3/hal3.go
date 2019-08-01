@@ -127,7 +127,7 @@ func runCrosCameraTest(ctx context.Context, s *testing.State, cfg crosCameraTest
 		gtest.ExtraArgs(cfg.toArgs()...),
 		gtest.UID(int(uid)))
 
-	if args, err := t.ToArgs(); err == nil {
+	if args, err := t.Args(); err == nil {
 		s.Log("Running " + shutil.EscapeSlice(args))
 	}
 	report, err := t.Run(ctx)
