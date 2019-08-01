@@ -28,5 +28,5 @@ func init() {
 
 func DisplayDensityX11(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
-	displaydensity.RunTest(ctx, s, pre.TestAPIConn, pre.Container, "x11", crostini.X11DemoAppPath)
+	displaydensity.RunTest(ctx, s, pre.TestAPIConn, pre.Container, crostini.X11DemoConfig)
 }

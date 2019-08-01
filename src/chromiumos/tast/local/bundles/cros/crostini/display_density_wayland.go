@@ -28,5 +28,5 @@ func init() {
 
 func DisplayDensityWayland(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
-	displaydensity.RunTest(ctx, s, pre.TestAPIConn, pre.Container, "wayland", crostini.WaylandDemoAppPath)
+	displaydensity.RunTest(ctx, s, pre.TestAPIConn, pre.Container, crostini.WaylandDemoConfig)
 }
