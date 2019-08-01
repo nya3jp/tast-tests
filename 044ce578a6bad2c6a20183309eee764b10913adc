@@ -116,6 +116,52 @@
     },
     {
       "key": {
+        "uuid": "e301408f_32da61f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-01T01:48:10Z",
+      "side": 1,
+      "message": "act.Close should be called only once. It is called in any case by a deferred statement in SplitView, so we should not call it here.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 13
+      },
+      "revId": "044ce578a6bad2c6a20183309eee764b10913adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2815afaf_19c8a954",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-01T01:48:10Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 13
+      },
+      "revId": "044ce578a6bad2c6a20183309eee764b10913adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "089c2570_8fe3ee50",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
         "patchSetId": 4
@@ -133,6 +179,24 @@
     },
     {
       "key": {
+        "uuid": "61590eed_a7004d23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-01T01:48:10Z",
+      "side": 1,
+      "message": "FYI, godoc comments are not required for test main functions.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#documentation",
+      "parentUuid": "089c2570_8fe3ee50",
+      "revId": "044ce578a6bad2c6a20183309eee764b10913adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6eeab498_2608b496",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
         "patchSetId": 4
@@ -147,6 +211,29 @@
       "revId": "044ce578a6bad2c6a20183309eee764b10913adc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c747182_9c71133f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-01T01:48:10Z",
+      "side": 1,
+      "message": "Oops, I thought we don\u0027t need types here, but I was wrong. Thanks for catching it!",
+      "range": {
+        "startLine": 22,
+        "startChar": 25,
+        "endLine": 26,
+        "endChar": 43
+      },
+      "revId": "044ce578a6bad2c6a20183309eee764b10913adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
