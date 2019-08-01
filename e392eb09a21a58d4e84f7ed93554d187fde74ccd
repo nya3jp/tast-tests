@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf13d159_670091e6",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-01T01:50:10Z",
+      "side": 1,
+      "message": "Please add new default flags here, instead of calling ExtraFlags.",
+      "range": {
+        "startLine": 511,
+        "startChar": 2,
+        "endLine": 511,
+        "endChar": 101
+      },
+      "revId": "e392eb09a21a58d4e84f7ed93554d187fde74ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
