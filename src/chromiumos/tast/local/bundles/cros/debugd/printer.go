@@ -78,4 +78,12 @@ func Printer(ctx context.Context, s *testing.State) {
 	} else if result != debugd.CUPSAutoconfFailure {
 		s.Error("Incorrect error code received: ", result)
 	}
+
+	s.Log("Attempting to add a url that is not a printer")
+	if result, err := d.CupsAddAutoConfiguredPrinter(
+		ctx, "NotAPrinter", "ipps://gstatic.com"); err != nil {
+		s.Error("Calling printer setup crashed: ", err)
+	} else if result != debugd.CUPSAutoconfFailure {
+		s.Error("Incorrect error code received: ", result)
+	}
 }
