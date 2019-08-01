@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "347b8d6e_e0fbcb03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_preview_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-01T23:31:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f732cf01_267753ba",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 25
+      },
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d886737_863d7c47",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_preview_image.go",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb12c4f5_68e08bd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_preview_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-01T23:31:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d886737_863d7c47",
+      "range": {
+        "startLine": 60,
+        "startChar": 20,
+        "endLine": 60,
+        "endChar": 29
+      },
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -101,6 +149,24 @@
     },
     {
       "key": {
+        "uuid": "e4f38ad8_c69291aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_preview_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-01T23:31:35Z",
+      "side": 1,
+      "message": "Moved to later CL.",
+      "parentUuid": "587038c4_f0203a73",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6a768df_d70ea971",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_preview_image.go",
         "patchSetId": 6
@@ -121,6 +187,30 @@
       "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c9e1acb_203744a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_preview_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-01T23:31:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a6a768df_d70ea971",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 26
+      },
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -177,6 +267,24 @@
     },
     {
       "key": {
+        "uuid": "a6b250f9_af2b4c18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_preview_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-01T23:31:35Z",
+      "side": 1,
+      "message": "Moved to later CL.",
+      "parentUuid": "acb73fdf_d99fc1e8",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2cd2b04d_82ca7e68",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
         "patchSetId": 6
@@ -227,6 +335,24 @@
       "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da3f0015_42af3890",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-01T23:31:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8c6e85e_0e081ef6",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -288,6 +414,30 @@
     },
     {
       "key": {
+        "uuid": "f65509a7_ecc1a87b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-01T23:31:35Z",
+      "side": 1,
+      "message": "It shouldn\u0027t, but currently, the Files app could still be closing as the new test is starting. A bug is filed for this.",
+      "parentUuid": "fd4ee94f_095f3e16",
+      "range": {
+        "startLine": 26,
+        "startChar": 15,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46807d52_3b8c26ce",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
         "patchSetId": 6
@@ -338,6 +488,24 @@
       "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84eef185_0240585d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-01T23:31:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26abf41f_1c487087",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -399,6 +567,30 @@
     },
     {
       "key": {
+        "uuid": "6f08650d_c407d22f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-01T23:31:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1a4b1711_f3b5b34f",
+      "range": {
+        "startLine": 55,
+        "startChar": 11,
+        "endLine": 55,
+        "endChar": 23
+      },
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50f0cc9f_ca79256d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
         "patchSetId": 6
@@ -448,6 +640,24 @@
       "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32938f77_a9bcd002",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-01T23:31:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7607a326_9e8867d9",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -539,6 +749,24 @@
     },
     {
       "key": {
+        "uuid": "a70c84e4_44083237",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-01T23:31:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4ad5581_3fe1e871",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16bd953a_62c325a2",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
         "patchSetId": 6
@@ -571,6 +799,24 @@
       "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a39d7581_37d3fb39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-01T23:31:35Z",
+      "side": 1,
+      "message": "Method removed completely as it shouldn\u0027t be needed.",
+      "parentUuid": "906f6bd8_0ce97343",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -644,6 +890,24 @@
     },
     {
       "key": {
+        "uuid": "32e5b955_1a4e940a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-01T23:31:35Z",
+      "side": 1,
+      "message": "Method removed.",
+      "parentUuid": "14e05b49_c9f27b96",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3449fdb9_ac345aa1",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
         "patchSetId": 6
@@ -679,6 +943,24 @@
     },
     {
       "key": {
+        "uuid": "0c4d8fd1_77a553f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-01T23:31:35Z",
+      "side": 1,
+      "message": "Avoiding this for now.",
+      "parentUuid": "7c33cfd8_5a90c789",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60533fb3_9aa9b04b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
         "patchSetId": 6
@@ -699,6 +981,30 @@
       "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b8784a4_68ff5297",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-01T23:31:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60533fb3_9aa9b04b",
+      "range": {
+        "startLine": 53,
+        "startChar": 36,
+        "endLine": 53,
+        "endChar": 53
+      },
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -790,6 +1096,24 @@
     },
     {
       "key": {
+        "uuid": "16f3c238_1c7dcf53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-01T23:31:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5818f07c_82f468bc",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "806884a8_a3035924",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
         "patchSetId": 6
@@ -848,6 +1172,30 @@
     },
     {
       "key": {
+        "uuid": "38e524f2_9f9c4517",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-01T23:31:35Z",
+      "side": 1,
+      "message": "Tast ensures autotestPrivate is initialized before calling into it.",
+      "parentUuid": "3b513b77_45495e4e",
+      "range": {
+        "startLine": 69,
+        "startChar": 14,
+        "endLine": 69,
+        "endChar": 18
+      },
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "907a9878_be75a1dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
         "patchSetId": 6
@@ -880,6 +1228,24 @@
       "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "260dbac0_98a1ee6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-01T23:31:35Z",
+      "side": 1,
+      "message": "Keeping things on separate lines because that is how it is done in other parts of tast like conn.go and chrome.go",
+      "parentUuid": "84f65af0_b312b3b5",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -976,6 +1342,30 @@
     },
     {
       "key": {
+        "uuid": "1afb6e42_819e9b4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-01T23:31:35Z",
+      "side": 1,
+      "message": "Was using it for debugging while writing the test. Removed.",
+      "parentUuid": "c2042cbd_a8b5eb4a",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 94,
+        "endChar": 21
+      },
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7203fb2_ed004c38",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
         "patchSetId": 6
@@ -1008,6 +1398,24 @@
       "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1fc77c1_a0b575dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-01T23:31:35Z",
+      "side": 1,
+      "message": "There is a better way. I just somehow missed it because originally I was having other issues. Anyway, the method is removed so it is unimportant now.",
+      "parentUuid": "450129ea_66bc521d",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -1069,6 +1477,30 @@
     },
     {
       "key": {
+        "uuid": "2bedc3bc_469c7573",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-01T23:31:35Z",
+      "side": 1,
+      "message": "The main issue is that handling errors in errors is gross in go and when people will want debug info is during an error. I reorganized things so it is cleaner and automatic.",
+      "parentUuid": "6fcf1082_fc30d589",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 21
+      },
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03672451_e91a87de",
         "filename": "src/chromiumos/tast/local/chrome/conn.go",
         "patchSetId": 6
@@ -1101,6 +1533,24 @@
       "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3511609a_10d4b920",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-01T23:31:35Z",
+      "side": 1,
+      "message": "keeping new method because I believe it makes the code cleaner. If tast owners don\u0027t like it, I will change it.",
+      "parentUuid": "998cdbcf_dbe7053f",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
