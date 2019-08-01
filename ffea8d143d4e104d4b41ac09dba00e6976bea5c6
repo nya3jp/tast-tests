@@ -22,6 +22,30 @@
       "revId": "ffea8d143d4e104d4b41ac09dba00e6976bea5c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26a60ab4_c788e504",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-08-01T07:49:16Z",
+      "side": 1,
+      "message": "It is the last step for clean up. I thought the test itself should be treated as pass even if it fails to remove output file. And the behavior is consistent with runARCVideoTest() below: it defer removing resources without handling error.",
+      "parentUuid": "3332b2e8_38527dbd",
+      "range": {
+        "startLine": 187,
+        "startChar": 5,
+        "endLine": 187,
+        "endChar": 8
+      },
+      "revId": "ffea8d143d4e104d4b41ac09dba00e6976bea5c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
