@@ -17,7 +17,6 @@ func init() {
 		Func:     DMVerity,
 		Desc:     "Verify dm-verity reports IO errors on bad data",
 		Contacts: []string{"hidehiko@chromium.org"},
-		Attr:     []string{"informational"},
 		Timeout:  4 * time.Minute,
 	})
 }
