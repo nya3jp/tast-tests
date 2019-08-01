@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "f732cf01_267753ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_preview_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-01T02:30:21Z",
+      "side": 1,
+      "message": "As Katherine mentioned this should be a separate CL. \nIt was in autotest too :)",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 25
+      },
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d886737_863d7c47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_preview_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-01T02:30:21Z",
+      "side": 1,
+      "message": "Since you\u0027ve defined this twice in one CL i\u0027m even more convinced this should go in the util",
+      "range": {
+        "startLine": 60,
+        "startChar": 20,
+        "endLine": 60,
+        "endChar": 29
+      },
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c2853e6_bb44cfc4",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_preview_image.go",
         "patchSetId": 6
@@ -31,6 +77,47 @@
       "side": 1,
       "message": "it can probably be done without the keyboard, but it will be much more painful. I was looking into it when I saw the original autotest test that was using the keyboard. I think in the long term, yes it is technically possible. Should we do it now, when there is no good way to do so, probably not.\n\nI can mess around and try write the other version, but I don\u0027t think that it is worth it until we have a proper ui framework. This is at least true to the old test.",
       "parentUuid": "7c2853e6_bb44cfc4",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "587038c4_f0203a73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_preview_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-01T02:30:21Z",
+      "side": 1,
+      "message": "Why would it be much more painful? What would you need to do?",
+      "parentUuid": "da151aad_0986cc80",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6a768df_d70ea971",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_preview_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-01T02:30:21Z",
+      "side": 1,
+      "message": "Open image preview is another thing that I think can go in the files app util",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 26
+      },
       "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -72,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "acb73fdf_d99fc1e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_preview_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-01T02:30:21Z",
+      "side": 1,
+      "message": "The autotest polls for a string in the quick view details (on the right). Why can you not use that? What would make it gross?",
+      "parentUuid": "efc3f2b2_ad5f2b56",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2cd2b04d_82ca7e68",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
         "patchSetId": 6
@@ -104,6 +209,24 @@
       "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8c6e85e_0e081ef6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-01T02:30:21Z",
+      "side": 1,
+      "message": "Yes. chromeos-files-syd@ \nI think they will be happy to maintain this after it is in.\n\nAdd in me too.",
+      "parentUuid": "9fa8f4d0_0438e187",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -142,6 +265,29 @@
     },
     {
       "key": {
+        "uuid": "fd4ee94f_095f3e16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-01T02:30:21Z",
+      "side": 1,
+      "message": "If Chrome is already logged in, does that mean the Files app could already be open?",
+      "range": {
+        "startLine": 26,
+        "startChar": 15,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "46807d52_3b8c26ce",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
         "patchSetId": 6
@@ -171,6 +317,24 @@
       "side": 1,
       "message": "This is for clicking the ui element on the screen. It is not related to the path. I think give we are clicking text on the screen, that is related to ui and not the files app and belongs here.",
       "parentUuid": "46807d52_3b8c26ce",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26abf41f_1c487087",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-01T02:30:21Z",
+      "side": 1,
+      "message": "I think this should go in the Files app util. Eventually we want users to be able to write additional Files app tests with minimal effort. I don\u0027t think it would be a good experience if every new Files app test has to define the different UI pieces it wants to interact with. It should provide ways of interacting with the most common UI.",
+      "parentUuid": "1fb05ca0_0dbeab98",
       "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -209,6 +373,29 @@
       "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4b1711_f3b5b34f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-01T02:30:21Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to log everything on every step. If the test fails we should do one log of the visible UI tree as part of a cleanup. That along with a screenshot should be enough to debug what happened",
+      "range": {
+        "startLine": 55,
+        "startChar": 11,
+        "endLine": 55,
+        "endChar": 23
+      },
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -328,6 +515,24 @@
       "side": 1,
       "message": "For the chrome.automation api, do you think I should call it chrome.automation or Chrome automation, or something different?",
       "parentUuid": "4d28dfe2_4445a4dd",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4ad5581_3fe1e871",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-01T02:30:21Z",
+      "side": 1,
+      "message": "\"Chrome automation\" make it sound like a generic statement rather than referring to a specific api. I\u0027m not sure on the tast convention but it would be good to make it clear somewhere that this utility (and others you will write later) makes use of chrome.automation",
+      "parentUuid": "1e6b75cb_86ad205d",
       "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -456,6 +661,47 @@
     },
     {
       "key": {
+        "uuid": "7c33cfd8_5a90c789",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-01T02:30:21Z",
+      "side": 1,
+      "message": "I agree that this should be in its own library but can I ask that we avoid creating any ui library with this CL? Creating that ui util/library is something I want to come after a design doc has been created (with feedback from some of the UI dev team)",
+      "parentUuid": "3449fdb9_ac345aa1",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60533fb3_9aa9b04b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-01T02:30:21Z",
+      "side": 1,
+      "message": "chrome.automation",
+      "range": {
+        "startLine": 53,
+        "startChar": 36,
+        "endLine": 53,
+        "endChar": 53
+      },
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8033eeb9_24cbec11",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
         "patchSetId": 6
@@ -526,6 +772,24 @@
     },
     {
       "key": {
+        "uuid": "5818f07c_82f468bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-01T02:30:21Z",
+      "side": 1,
+      "message": "The root name here was copied from my test which was copied from Tony\u0027s suggested use of chrome.automation API. Ideally the UI framework which will be developed will have this initialization hidden from test writers somewhere so every test does not need to explicitly execute it",
+      "parentUuid": "3657ddfc_b4aed681",
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "806884a8_a3035924",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
         "patchSetId": 6
@@ -558,6 +822,29 @@
       "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b513b77_45495e4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-01T02:30:21Z",
+      "side": 1,
+      "message": "In autotest, calls to the autotestprivate extension can temporarily fail occassionally. The autotest was able to catch various exceptions and try again. Are we losing that functionality in this port or is that defined somewhere else?",
+      "range": {
+        "startLine": 69,
+        "startChar": 14,
+        "endLine": 69,
+        "endChar": 18
+      },
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -666,6 +953,29 @@
     },
     {
       "key": {
+        "uuid": "c2042cbd_a8b5eb4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-01T02:30:21Z",
+      "side": 1,
+      "message": "Why do we need this?",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 94,
+        "endChar": 21
+      },
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7203fb2_ed004c38",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
         "patchSetId": 6
@@ -733,6 +1043,29 @@
       "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6fcf1082_fc30d589",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-01T02:30:21Z",
+      "side": 1,
+      "message": "Can we change this to be just about getting the roles. The caller can choose to log it if they want. I don\u0027t think we need to provide a specific logging function",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 21
+      },
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
