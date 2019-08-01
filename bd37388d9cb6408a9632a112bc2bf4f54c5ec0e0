@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21d8a0eb_fcd1d0f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-08-01T14:20:35Z",
+      "side": 1,
+      "message": "huge nit: we should check if tests using crosRunner work as well.\n(I believe you tested them locally, though)",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "bd37388d9cb6408a9632a112bc2bf4f54c5ec0e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c568c33_fbeb46de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-08-01T14:20:35Z",
+      "side": 1,
+      "message": "Can we simply write \"commonArgs\"?",
+      "range": {
+        "startLine": 257,
+        "startChar": 25,
+        "endLine": 257,
+        "endChar": 58
+      },
+      "revId": "bd37388d9cb6408a9632a112bc2bf4f54c5ec0e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed33681e_2323fe54",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-08-01T14:20:35Z",
+      "side": 1,
+      "message": "add a comment like this?\na is nil when gtest doesn\u0027t run in ARC.",
+      "revId": "bd37388d9cb6408a9632a112bc2bf4f54c5ec0e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27b92920_1950e50f",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-08-01T14:20:35Z",
+      "side": 1,
+      "message": "nit: remove?",
+      "range": {
+        "startLine": 187,
+        "startChar": 18,
+        "endLine": 187,
+        "endChar": 22
+      },
+      "revId": "bd37388d9cb6408a9632a112bc2bf4f54c5ec0e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af94d0d4_635d29f6",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-08-01T14:20:35Z",
+      "side": 1,
+      "message": "runner looks a great way of abstraction! Cool!",
+      "revId": "bd37388d9cb6408a9632a112bc2bf4f54c5ec0e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
