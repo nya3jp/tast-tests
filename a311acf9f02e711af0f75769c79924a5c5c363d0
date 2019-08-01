@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffab345b_52b3efca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-01T00:36:16Z",
+      "side": 1,
+      "message": "I\u0027m not sure we want to discard all errors; just \"ENOENT\" errors.\n\nPersonally, I would just do what the Autotest was doing (and the original port-er failed to do): change readInfo() to check for file existence.\n\nhttps://godoc.org/os#IsExist\n\n  if _, err :\u003d os.Stat(file); os.IsNotExist(err) {\n    return nil, nil;\n  }\n\nBut there may be other ways to skin the cat.",
+      "range": {
+        "startLine": 330,
+        "startChar": 14,
+        "endLine": 330,
+        "endChar": 15
+      },
+      "revId": "a311acf9f02e711af0f75769c79924a5c5c363d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
