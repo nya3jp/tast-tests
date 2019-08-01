@@ -85,10 +85,10 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 		switch sel {
 		case Stable:
 			testCases = append(testCases, []testCaseType{
-				{cmdline, "^/system/bin/sdcard.*", "cros_arc_sdcardd", zeroProcs, ""},
 				{cmdline, ".*logger.*-t arc-kmsg-logger.*", "cros_arc_kmsg_logger", zeroProcs, ""},
 				{cmdline, "/usr/bin/periodic_scheduler", "cros_periodic_scheduler", twoProcs, ""},
 				{cmdline, "/usr/share/cros/init/activate_date.sh", "cros_activate_date", zeroProcs, ""},
+				{cmdline, "^/system/bin/sdcard.*", "cros_arc_sdcardd", zeroProcs, ""},
 				{exe, "/opt/google/chrome/chrome", "cros_browser", zeroProcs, ""}, // Only when browser exists
 				{exe, "/sbin/auditd", "cros_auditd", oneProc, ""},                 // auditd must be running on SELinux boards
 				{exe, "/sbin/debugd", "cros_debugd", zeroProcs, ""},
@@ -152,13 +152,16 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				{exe, "/usr/sbin/trunksd", "cros_trunksd", zeroProcs, ""},
 				{exe, "/usr/sbin/update_engine", "cros_update_engine", zeroProcs, ""},
 				{exe, "/usr/sbin/wpa_supplicant", "wpa_supplicant", zeroProcs, ""},
+				{notCmdline, ".*(frecon|agetty|ping|recover_duts).*", notStr("chromeos"), zeroProcs, domainIsolationErrorMessage},   // These processes shouldn't exist.
+				{notCmdline, ".*(frecon|agetty|ping|recover_duts).*", notStr("minijailed"), zeroProcs, domainIsolationErrorMessage}, // These processes shouldn't exist.
+				{notExe, "/sbin/minijail0", notStr("minijail"), zeroProcs, domainIsolationErrorMessage},                             // These processes shouldn't exist.
 			}...)
 		case Unstable:
 			testCases = append(testCases, []testCaseType{
 				{exe, "/sbin/minijail0", "(minijail|.*_minijail0)", zeroProcs, ""},
-				{notExe, "/sbin/minijail0", notStr("minijail"), zeroProcs, domainIsolationErrorMessage},                             // These processes shouldn't exist.
-				{notCmdline, ".*(frecon|agetty|ping|recover_duts).*", notStr("chromeos"), zeroProcs, domainIsolationErrorMessage},   // These processes shouldn't exist.
-				{notCmdline, ".*(frecon|agetty|ping|recover_duts).*", notStr("minijailed"), zeroProcs, domainIsolationErrorMessage}, // These processes shouldn't exist.
+				// Continue monitoring frecon/agetty/recover_duts[ping].
+				{notCmdline, ".*", notStr("chromeos"), zeroProcs, domainIsolationErrorMessage},
+				{notCmdline, ".*", notStr("minijailed"), zeroProcs, domainIsolationErrorMessage},
 			}...)
 		}
 	}
