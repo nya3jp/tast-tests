@@ -70,6 +70,24 @@
       "revId": "2b01ade59b0a8273a706a11e6988386e88a3a80f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cbcc69a_4d6f16cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/resolution_change_500frames.vp8.ivf.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-01T06:28:59Z",
+      "side": 1,
+      "message": "I just realized I swapped the width and height when printing the resolutions in the resolution_change_500frames-vp*.ivf videos. :-)",
+      "parentUuid": "33229a0e_aea299b7",
+      "revId": "2b01ade59b0a8273a706a11e6988386e88a3a80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
