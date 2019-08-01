@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0216ba51_e4ccb372",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-01T02:00:07Z",
+      "side": 1,
+      "message": "I know it\u0027s cut \u0026 pasted, but is it OK to return here without killing and waiting cmd?",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 8
+      },
+      "revId": "5ddb6b3b90f92cb1fd294b2cb6511d8db8af38bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a635d7c5_9b0e499d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-01T02:00:07Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 8
+      },
+      "revId": "5ddb6b3b90f92cb1fd294b2cb6511d8db8af38bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6107d62d_29c6a733",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/verifyapp/verify_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-01T02:00:07Z",
+      "side": 1,
+      "message": "qq: why it\u0027s not defer-ed after Start ?",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 11
+      },
+      "revId": "5ddb6b3b90f92cb1fd294b2cb6511d8db8af38bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "326651f1_852fa1f1",
+        "filename": "src/chromiumos/tast/local/crostini/demo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-01T02:00:07Z",
+      "side": 1,
+      "message": "nit: you can write\nconst (\n  // X11DemoAppPath ...\n  X11DemoAppPath \u003d \"/opt/google/cros-containers/bin/x11_demo\"\n\n  // WaylandDemoAppPath ...\n  WaylandDemoAppPath \u003d \"/opt/google/cros-containers/bin/wayland_demo\"\n)",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 73
+      },
+      "revId": "5ddb6b3b90f92cb1fd294b2cb6511d8db8af38bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c70ce88_50dfc443",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-01T02:00:07Z",
+      "side": 1,
+      "message": "Could you make it private if it\u0027s not used from other package?",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 18
+      },
+      "revId": "5ddb6b3b90f92cb1fd294b2cb6511d8db8af38bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1a054e6_f13725ca",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-01T02:00:07Z",
+      "side": 1,
+      "message": "I believe you can use tast.promisify here.\nexpr :\u003d `tast.promisify(chrome.autotestPrivate.getPrimaryDisplayScaleFactor)()`\n\ncf. https://crbug.com/985203\n\nYou can do it in another CL if you would not like to enlarge the diff in this CL.",
+      "range": {
+        "startLine": 56,
+        "startChar": 10,
+        "endLine": 64,
+        "endChar": 4
+      },
+      "revId": "5ddb6b3b90f92cb1fd294b2cb6511d8db8af38bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f3d303e_2530df8e",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-01T02:00:07Z",
+      "side": 1,
+      "message": "Same here.\nexpr :\u003d `tast.promisify(chrome.autotestPrivate.enlarge)()`",
+      "range": {
+        "startLine": 71,
+        "startChar": 10,
+        "endLine": 79,
+        "endChar": 4
+      },
+      "revId": "5ddb6b3b90f92cb1fd294b2cb6511d8db8af38bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
