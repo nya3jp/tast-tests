@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "373f993a_57dea06a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-01T18:01:50Z",
+      "side": 1,
+      "message": "Yeah, unload/reload is a very different case. In that case, the firmware is reloading asynchronously, and you have to wait until the network device even exists. But once the network device exists, the link-up / link-down operations should be synchronous I believe.",
+      "parentUuid": "1b0713c4_e2da1670",
+      "range": {
+        "startLine": 13,
+        "startChar": 60,
+        "endLine": 14,
+        "endChar": 48
+      },
+      "revId": "819571aaf8147b29a20c4b6c5379ab0886c9347d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aba20f37_ff7318d4",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
         "patchSetId": 3
