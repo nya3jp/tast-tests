@@ -15,8 +15,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VerifyAppWayland,
-		Desc:         "Runs a Wayland crostini application from the terminal and verifies that it renders",
+		Func:         VerifyAppLauncherWayland,
+		Desc:         "Runs a Wayland crostini application from the launcher and verifies that it renders",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"informational"},
 		Timeout:      7 * time.Minute,
@@ -26,7 +26,7 @@ func init() {
 	})
 }
 
-func VerifyAppWayland(ctx context.Context, s *testing.State) {
+func VerifyAppLauncherWayland(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
-	verifyapp.RunTest(ctx, s, pre.Chrome, pre.Container, crostini.WaylandDemoConfig)
+	verifyapp.RunTest(ctx, s, pre.Chrome, pre.Container, crostini.WaylandDemoConfig, true)
 }
