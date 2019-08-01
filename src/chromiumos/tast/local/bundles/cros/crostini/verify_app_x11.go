@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/crostini/verifyapp"
-	"chromiumos/tast/local/colorcmp"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/testing"
 )
@@ -29,5 +28,5 @@ func init() {
 
 func VerifyAppX11(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
-	verifyapp.RunTest(ctx, s, pre.Chrome, pre.Container, "x11", crostini.X11DemoAppPath, colorcmp.RGB(0x99, 0xee, 0x44))
+	verifyapp.RunTest(ctx, s, pre.Chrome, pre.Container, crostini.X11DemoConfig)
 }
