@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7e17ca7_76ad3351",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-01T07:19:05Z",
+      "side": 1,
+      "message": "style/optional: Sorry I overlooked this in the previous iteration. We often inline the struct in this kind of case.\n\nfor _, test :\u003d range []struct {\n  ...\n} {\n  {resizable: true, ...},\n  ... // more cases\n} {\n  ... // the body of for stmt.\n}",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 29
+      },
+      "revId": "85c65494c7724123988fbf8fb52b3eccdab763a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
