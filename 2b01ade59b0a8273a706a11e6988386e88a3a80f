@@ -52,6 +52,24 @@
       "revId": "2b01ade59b0a8273a706a11e6988386e88a3a80f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33229a0e_aea299b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/resolution_change_500frames.vp8.ivf.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-01T06:21:11Z",
+      "side": 1,
+      "message": "I spend a few hours trying to convert switch_1080p_720p_240frames.h264 to VP8 and VP9, but unfortunately ffmpeg and vpxenc don\u0027t support in-stream resolution switches.\n\nhiroh@ created the resolution_change_500frames-vp*.ivf videos manually using crrev.com/c/1619446. In theory we could do something similar using our video decoders/encoders to convert the video, but this seems like a lot of work for little benefit.\n\nThe resolution_change_500frames-vp*.ivf streams switch between:\n360x640\n240x426\n360x640\n480x854\n720x1280",
+      "parentUuid": "b775d313_98addacf",
+      "revId": "2b01ade59b0a8273a706a11e6988386e88a3a80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
