@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "37080e0d_966ab57f",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-01T03:45:00Z",
+      "side": 1,
+      "message": "Ack. I\u0027ll make another CL for the fix. Thank you for suggestion.",
+      "parentUuid": "e412e8b8_535d8bbe",
+      "range": {
+        "startLine": 158,
+        "startChar": 16,
+        "endLine": 158,
+        "endChar": 22
+      },
+      "revId": "373e38efc8ba16322d8866c558c1bead9768ac74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ba4dfd8_1c4fa7b3",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "373e38efc8ba16322d8866c558c1bead9768ac74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72b8dc84_6668f924",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-01T03:45:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ba4dfd8_1c4fa7b3",
+      "range": {
+        "startLine": 217,
+        "startChar": 8,
+        "endLine": 217,
+        "endChar": 30
+      },
+      "revId": "373e38efc8ba16322d8866c558c1bead9768ac74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f2ae9f05_427b3df8",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-01T03:45:00Z",
+      "side": 1,
+      "message": "Good catch. Done.",
+      "parentUuid": "7b1ef3cb_1c439732",
+      "range": {
+        "startLine": 243,
+        "startChar": 8,
+        "endLine": 243,
+        "endChar": 19
+      },
+      "revId": "373e38efc8ba16322d8866c558c1bead9768ac74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6e97437_5a7e7bb8",
         "filename": "src/chromiumos/tast/local/gtest/gtest.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "373e38efc8ba16322d8866c558c1bead9768ac74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4fd591a_97b3fdcb",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-01T03:45:00Z",
+      "side": 1,
+      "message": "Done, but is it ok even if;\n- it is a method rather than a global function? (or should I make \"func newRunner(a *arc.ARC)\" instead?\n- runner is an interface, rather than a concrete struct. Actually, the type of the instance returned by this is switched based on ARC.",
+      "parentUuid": "d6e97437_5a7e7bb8",
+      "range": {
+        "startLine": 262,
+        "startChar": 16,
+        "endLine": 262,
+        "endChar": 28
+      },
+      "revId": "373e38efc8ba16322d8866c558c1bead9768ac74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
