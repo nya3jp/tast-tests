@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ff341695_2e3a4053",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-08-01T15:25:01Z",
+      "side": 1,
+      "message": "\u003e fast_build.sh -T should cover the case\n\nreally? I don\u0027t think \u0027fast_build.sh -T\u0027 runs a gtest binary on ChromeOS environment.",
+      "parentUuid": "706a27af_078f82ee",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "bd37388d9cb6408a9632a112bc2bf4f54c5ec0e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6c568c33_fbeb46de",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 2
@@ -93,6 +117,30 @@
       "revId": "bd37388d9cb6408a9632a112bc2bf4f54c5ec0e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1636f72_9402ccb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-08-01T15:25:01Z",
+      "side": 1,
+      "message": "Ah, I didn\u0027t know this is exactly same with simple \"commonArgs\".\nThen, it makes sense to have this as is. Of course, it\u0027d be also okay to change to \"commonArgs\". I don\u0027t have any strong opinion now.",
+      "parentUuid": "172066b7_f50779bd",
+      "range": {
+        "startLine": 257,
+        "startChar": 25,
+        "endLine": 257,
+        "endChar": 58
+      },
+      "revId": "bd37388d9cb6408a9632a112bc2bf4f54c5ec0e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
