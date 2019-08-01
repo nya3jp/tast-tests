@@ -35,6 +35,10 @@ func WebRTCVideoPlaybackDelay(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx, chrome.ExtraArgs(
 			"--autoplay-policy=no-user-gesture-required",
 			"--disable-rtc-smoothness-algorithm",
+			// Avoid chrome://newtab since it has active elements e.g., the Doodle.
+			"--no-startup-window",
+			// Prevent showing up of offer pages, e.g. google.com/chromebooks.
+			"--no-first-run",
 			"--use-fake-device-for-media-stream=fps=60",
 			"--use-fake-ui-for-media-stream",
 		))
@@ -60,7 +64,7 @@ func WebRTCVideoPlaybackDelay(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get initial histogram: ", err)
 	}
 
-	const peerConnectionCode = 
+	const peerConnectionCode =
 		`new Promise((resolve, reject) => {
 			var pc1 = new RTCPeerConnection();
 			var pc2 = new RTCPeerConnection();
