@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/perf/vp8/2160p_60fps_600frames_20190801.vp8.ivf",
+  "size": 12509430,
+  "sha256sum": "1fb392b8b53c4125857057b4fac940e946088d8344b6be03b928a75d6a93e6d5"
+}
