@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ebd1c196_653f4426",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-01T23:50:00Z",
+      "side": 1,
+      "message": "I didn\u0027t create these, they are already in media/test/data:\nhttps://chromium.googlesource.com/chromium/src/+/HEAD/media/test/data/README.md#resolution_change_500frames\n\nI added a link to the CL description to give a bit more info about the videos.",
+      "parentUuid": "6f9d05fe_54033b70",
+      "revId": "3d9c6bec243b49d531a9439c0627f5e564ec2975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2af57d2b_c71bea68",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vp8_resolution_switch.go",
         "patchSetId": 4
