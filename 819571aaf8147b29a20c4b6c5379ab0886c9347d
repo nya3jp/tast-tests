@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec3b2039_88db987a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-01T17:30:50Z",
+      "side": 1,
+      "message": "is this from experience, or are you just guessing? IIRC, an \"up\" interface should be immediately ready for scanning.\n\nIf you\u0027re guessing: I\u0027d rather remove the scan polling for now.",
+      "range": {
+        "startLine": 13,
+        "startChar": 60,
+        "endLine": 14,
+        "endChar": 48
+      },
+      "revId": "819571aaf8147b29a20c4b6c5379ab0886c9347d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aba20f37_ff7318d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-01T17:30:50Z",
+      "side": 1,
+      "message": "spurious line?",
+      "revId": "819571aaf8147b29a20c4b6c5379ab0886c9347d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
