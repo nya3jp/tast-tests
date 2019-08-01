@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91ecabc9_da317cfc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-08-01T06:55:02Z",
+      "side": 1,
+      "message": "shorten to ag/8691806",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 114
+      },
+      "revId": "ebb3e45bd0ac8dfd42454ebec4e76c802653ac35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41bd6b3e_bd3cc65a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wayland/dumpsys_visible.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-08-01T06:55:02Z",
+      "side": 1,
+      "message": "nit: end in fullstop",
+      "range": {
+        "startLine": 16,
+        "startChar": 46,
+        "endLine": 16,
+        "endChar": 47
+      },
+      "revId": "ebb3e45bd0ac8dfd42454ebec4e76c802653ac35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

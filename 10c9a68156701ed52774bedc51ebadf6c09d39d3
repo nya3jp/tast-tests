@@ -401,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "c6a4d45f_6b8699bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wayland/dumpsys_visible.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-08-01T06:55:02Z",
+      "side": 1,
+      "message": "thanks, missed the out variable!",
+      "parentUuid": "b91b7911_01cc3d6a",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 16
+      },
+      "revId": "10c9a68156701ed52774bedc51ebadf6c09d39d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34973c0e_d893ac99",
         "filename": "src/chromiumos/tast/local/bundles/cros/wayland/dumpsys_visible.go",
         "patchSetId": 1
