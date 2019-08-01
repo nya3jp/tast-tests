@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c8172b1a_c795cf16",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-08-01T00:48:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdfdb571_de842762",
+      "range": {
+        "startLine": 435,
+        "startChar": 20,
+        "endLine": 435,
+        "endChar": 22
+      },
+      "revId": "d4d87f64b084b90accc859e10f781d1980a747fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef9247f0_dba2af7e",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 5
