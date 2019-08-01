@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c044782_295a2d51",
+        "filename": "src/chromiumos/tast/local/crostini/demo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-08-01T21:29:54Z",
+      "side": 1,
+      "message": "Maybe nya@, or someone who is better at go than me, has an opinion here, but since these won\u0027t be constant I think the preferred alternative is to have a function that returns these structs.\n\n    func X11DemoConfig() DemoConfig {\n        return DemoConfig{\n            ...\n        }\n    }",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 1
+      },
+      "revId": "9e7f570f111e8a5731879aa8bddbe0c192b688df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
