@@ -64,7 +64,7 @@ func init() {
 		Contacts:     []string{"ricardoq@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
-		Data:         []string{"ArcWMTestApp_23.apk", "ArcWMTestApp_24.apk"},
+		Data:         []string{"ArcWMTestApp_23.apk", "ArcWMTestApp_24.apk", "ArcPipTastTest.apk"},
 		Pre:          arc.Booted(),
 		Timeout:      5 * time.Minute,
 	})
@@ -85,7 +85,7 @@ func WindowManagerCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer d.Close()
 
-	for _, apk := range []string{"ArcWMTestApp_23.apk", "ArcWMTestApp_24.apk"} {
+	for _, apk := range []string{"ArcWMTestApp_23.apk", "ArcWMTestApp_24.apk", "ArcPipTastTest.apk"} {
 		if err := a.Install(ctx, s.DataPath(apk)); err != nil {
 			s.Fatal("Failed installing app: ", err)
 		}
@@ -122,6 +122,7 @@ func WindowManagerCUJ(ctx context.Context, s *testing.State) {
 		{"Springboard N / Pre-N", wmSpringboard},
 		{"Lights out / Lights in N", wmLightsOutIn},
 		{"Lights out ignored", wmLightsOutIgnored},
+		{"Picture in Picture", wmPIP},
 	} {
 		s.Logf("Running test %q", test.name)
 
@@ -697,6 +698,59 @@ func wmLightsOutIgnored(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *
 		}
 	}
 	return nil
+}
+
+// wmPIP verifies that the activity enters into Picture In Picture mode when occluded as defined in:
+// go/arc-wm-p "Clamshell: Picture in Picture" (slide #24)
+func wmPIP(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
+	// 1) Launch a PIP-ready activity in non-PIP mode.
+	testing.ContextLog(ctx, "Launching PIP activity")
+	const pkgName = "org.chromium.arc.testapp.pictureinpicture"
+	actPIP, err := arc.NewActivity(a, pkgName, ".MainActivity")
+	if err != nil {
+		return err
+	}
+	defer actPIP.Close()
+	if err := actPIP.Start(ctx); err != nil {
+		return err
+	}
+	defer actPIP.Stop(ctx)
+	if err := actPIP.WaitForIdle(ctx, 10*time.Second); err != nil {
+		return err
+	}
+
+	// PIP activity must not be in PIP mode yet.
+	const pip = arc.WindowStatePIP
+	if ws, err := actPIP.GetWindowState(ctx); err != nil {
+		return err
+	} else if ws == pip {
+		return errors.Errorf("invalid window state: got %q; want something different than %q", pip.String(), pip.String())
+	}
+
+	// 2) Launch a maximized application to make sure that it occludes the previous activity.
+	testing.ContextLog(ctx, "Launching maximized activity")
+	actOther, err := arc.NewActivity(a, wmPkg24, wmResizeableLandscapeActivity)
+	if err != nil {
+		return err
+	}
+	defer actOther.Close()
+	if err := actOther.Start(ctx); err != nil {
+		return err
+	}
+	defer actOther.Stop(ctx)
+	if err := actOther.WaitForIdle(ctx, 10*time.Second); err != nil {
+		return err
+	}
+
+	// 3) Verify that the occluded activity is in PIP mode.
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if ws, err := actPIP.GetWindowState(ctx); err != nil {
+			return err
+		} else if ws != pip {
+			return errors.Errorf("invalid window state: got %q; want %q", ws.String(), pip.String())
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 1 * time.Second})
 }
 
 // Helper functions
