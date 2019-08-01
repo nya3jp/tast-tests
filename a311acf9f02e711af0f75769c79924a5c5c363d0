@@ -22,6 +22,30 @@
       "revId": "a311acf9f02e711af0f75769c79924a5c5c363d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c82a8877_900e6be9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wlan_driver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-01T01:57:13Z",
+      "side": 1,
+      "message": "+1, it\u0027s not great to discard all errors. I recommend:\n\n subsystemID, err :\u003d readInfo(\"subsystem_device\")\n if err !\u003d nil \u0026\u0026 !os.IsNotExist(err) {\n   return \"\", errors.Wrapf(err, ...)\n }",
+      "parentUuid": "ffab345b_52b3efca",
+      "range": {
+        "startLine": 330,
+        "startChar": 14,
+        "endLine": 330,
+        "endChar": 15
+      },
+      "revId": "a311acf9f02e711af0f75769c79924a5c5c363d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
