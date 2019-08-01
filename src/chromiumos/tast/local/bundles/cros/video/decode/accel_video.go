@@ -344,7 +344,7 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, filename strin
 		).Start(ctx)
 	}
 
-	cpuUsage, err := cpu.MeasureProcessCPU(ctx, runCmdAsync, measureDuration)
+	cpuUsage, err := cpu.MeasureProcessCPU(ctx, []cpu.StartProcFunc{runCmdAsync}, measureDuration)
 	if err != nil {
 		s.Fatalf("Failed to measure CPU usage %v: %v", exec, err)
 	}
