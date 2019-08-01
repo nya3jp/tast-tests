@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7317613b_7ea8b404",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-01T21:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1be2517f_1238a50a",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 18
+      },
+      "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cec41d56_2f142528",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 9
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "4420e200_011cd873",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-01T21:48:15Z",
+      "side": 1,
+      "message": "I have a bug to unify this behavior filed here crbug.com/988894 .",
+      "parentUuid": "cec41d56_2f142528",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 44
+      },
+      "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3d51ffa_60f9f74e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-01T21:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1c0d527_6d287013",
+      "range": {
+        "startLine": 49,
+        "startChar": 25,
+        "endLine": 49,
+        "endChar": 34
+      },
+      "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9326e6a_9a5cfa76",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 9
@@ -91,6 +163,30 @@
       "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8504981_94c970f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-01T21:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9326e6a_9a5cfa76",
+      "range": {
+        "startLine": 52,
+        "startChar": 14,
+        "endLine": 52,
+        "endChar": 17
+      },
+      "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "a5692381_7870f087",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-01T21:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76b875f6_fd0edeb5",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 9
+      },
+      "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b603d7d9_eb8a4672",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 9
@@ -137,6 +257,30 @@
       "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2b1e701_09f53e2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-01T21:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b603d7d9_eb8a4672",
+      "range": {
+        "startLine": 61,
+        "startChar": 5,
+        "endLine": 61,
+        "endChar": 21
+      },
+      "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "7bc772ba_698112d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-01T21:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fba7eaf7_1fac8335",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 10
+      },
+      "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8677e2b_63f6a4ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 9
@@ -183,6 +351,30 @@
       "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efce0670_29838dab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-01T21:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8677e2b_63f6a4ba",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 9
+      },
+      "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "118e201d_15e247a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-01T21:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "835f477b_17512381",
+      "range": {
+        "startLine": 72,
+        "startChar": 61,
+        "endLine": 72,
+        "endChar": 68
+      },
+      "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a4f4c85_f500e35e",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 9
@@ -229,6 +445,30 @@
       "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c467980_953ee59e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-01T21:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a4f4c85_f500e35e",
+      "range": {
+        "startLine": 77,
+        "startChar": 15,
+        "endLine": 77,
+        "endChar": 36
+      },
+      "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "397ee5cf_5fce7958",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-01T21:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ca3fcad_19655fa5",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 5
+      },
+      "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f358c14_6a749cb7",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 9
@@ -275,6 +539,30 @@
       "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71ec0b1c_2303d915",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-01T21:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f358c14_6a749cb7",
+      "range": {
+        "startLine": 84,
+        "startChar": 24,
+        "endLine": 84,
+        "endChar": 33
+      },
+      "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "ec61c2b5_4ad41f48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-01T21:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "890bafc7_e292e700",
+      "range": {
+        "startLine": 96,
+        "startChar": 11,
+        "endLine": 96,
+        "endChar": 22
+      },
+      "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd1d784a_c35813c5",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 9
@@ -321,6 +633,30 @@
       "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15cdf316_482d9d11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-01T21:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd1d784a_c35813c5",
+      "range": {
+        "startLine": 107,
+        "startChar": 15,
+        "endLine": 107,
+        "endChar": 21
+      },
+      "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -347,6 +683,30 @@
     },
     {
       "key": {
+        "uuid": "347e6ac5_178037ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-01T21:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbbaa07f_6c62f530",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 109,
+        "endChar": 55
+      },
+      "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b623e6f9_dca3971e",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 9
@@ -370,6 +730,30 @@
     },
     {
       "key": {
+        "uuid": "8aa8d8d7_7c3be11f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-01T21:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b623e6f9_dca3971e",
+      "range": {
+        "startLine": 112,
+        "startChar": 19,
+        "endLine": 115,
+        "endChar": 41
+      },
+      "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "086467fa_1f744f94",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 9
@@ -390,6 +774,30 @@
       "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88770575_f2c3e8ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-01T21:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "086467fa_1f744f94",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 55
+      },
+      "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -437,6 +845,30 @@
       "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c910dc4d_174e6868",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-01T21:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fb97046_45052427",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 13
+      },
+      "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -534,6 +966,30 @@
     },
     {
       "key": {
+        "uuid": "23e0bd3c_bb93a5be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-01T21:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a91ce87_b4047f1c",
+      "range": {
+        "startLine": 134,
+        "startChar": 11,
+        "endLine": 134,
+        "endChar": 23
+      },
+      "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "935a615b_fa1462b0",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 9
@@ -554,6 +1010,30 @@
       "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "637bff2f_e92321ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-01T21:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "935a615b_fa1462b0",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 56
+      },
+      "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -580,6 +1060,30 @@
     },
     {
       "key": {
+        "uuid": "836b0f07_a8a1e841",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-01T21:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "972828f0_77927e1c",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 151,
+        "endChar": 22
+      },
+      "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d896dd77_0e7281eb",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 9
@@ -600,6 +1104,30 @@
       "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "064dd9ef_adcdf6b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-01T21:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d896dd77_0e7281eb",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 22
+      },
+      "revId": "059aa932b610f097515d0f810e49f7259d7d0539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
