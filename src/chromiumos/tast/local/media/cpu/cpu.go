@@ -25,34 +25,37 @@ import (
 // The caller is responsible for calling Wait.
 type StartProcFunc func() (*testexec.Cmd, error)
 
-// MeasureProcessCPU starts a process by calling the provided runCmdAsync and
-// measures CPU usage for the given duration. After measuring the process is
-// killed. The average usage over all CPU cores is returned as a percentage.
-func MeasureProcessCPU(ctx context.Context, runCmdAsync StartProcFunc, duration time.Duration) (float64, error) {
+// MeasureProcessCPU starts one or more processes by calling the provided
+// functions and measures CPU usage for the given duration. After measuring the
+// processes are killed. The average usage over all CPU cores is returned as a
+// percentage.
+func MeasureProcessCPU(ctx context.Context, runCmdsAsync []StartProcFunc, duration time.Duration) (float64, error) {
 	const (
 		stabilize   = 1 * time.Second // time to wait for CPU to stabilize after launching proc.
 		cleanupTime = 5 * time.Second // time reserved for cleanup after measuring.
 	)
 
 	// Start the process asynchronous by calling the provided startup function.
-	cmd, err := runCmdAsync()
-	if err != nil {
-		return 0.0, errors.Wrap(err, "failed to run binary")
-	}
+	for _, runCmdAsync := range runCmdsAsync {
+		cmd, err := runCmdAsync()
+		if err != nil {
+			return 0.0, errors.Wrap(err, "failed to run binary")
+		}
 
-	// Kill and clean up the process upon exiting the function.
-	defer func() {
-		if err := cmd.Kill(); err != nil {
-			testing.ContextLog(ctx, "Failed to kill process: ", err)
-		}
-		// After killing the process we still need to wait for all resources to get released.
-		if err := cmd.Wait(); err != nil {
-			ws, ok := testexec.GetWaitStatus(err)
-			if !ok || !ws.Signaled() || ws.Signal() != syscall.SIGKILL {
-				testing.ContextLog(ctx, "Failed waiting for the command to exit: ", err)
+		// Kill and clean up the process upon exiting the function.
+		defer func() {
+			if err := cmd.Kill(); err != nil {
+				testing.ContextLog(ctx, "Failed to kill process: ", err)
 			}
-		}
-	}()
+			// After killing the process we still need to wait for all resources to get released.
+			if err := cmd.Wait(); err != nil {
+				ws, ok := testexec.GetWaitStatus(err)
+				if !ok || !ws.Signaled() || ws.Signal() != syscall.SIGKILL {
+					testing.ContextLog(ctx, "Failed waiting for the command to exit: ", err)
+				}
+			}
+		}()
+	}
 
 	// Use a shorter context to leave time for cleanup upon failure.
 	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
