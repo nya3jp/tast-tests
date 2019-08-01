@@ -18,9 +18,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WebRTCVideoPlaybackDelay,
-		Desc: "Runs a webrtc playback-only connection to get performance numbers",
-		Contacts: []string{"mcasas@chromium.org", "chromeos-gfx@google.com"},
+		Func:         WebRTCVideoPlaybackDelay,
+		Desc:         "Runs a webrtc playback-only connection to get performance numbers",
+		Contacts:     []string{"mcasas@chromium.org", "chromeos-gfx@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"webrtc_video_display_perf_test.html"},
@@ -33,11 +33,11 @@ func WebRTCVideoPlaybackDelay(ctx context.Context, s *testing.State) {
 	testURL := server.URL + "/" + "webrtc_video_display_perf_test.html"
 
 	cr, err := chrome.New(ctx, chrome.ExtraArgs(
-			"--autoplay-policy=no-user-gesture-required",
-			"--disable-rtc-smoothness-algorithm",
-			"--use-fake-device-for-media-stream=fps=60",
-			"--use-fake-ui-for-media-stream",
-		))
+		"--autoplay-policy=no-user-gesture-required",
+		"--disable-rtc-smoothness-algorithm",
+		"--use-fake-device-for-media-stream=fps=60",
+		"--use-fake-ui-for-media-stream",
+	))
 	if err != nil {
 		s.Fatal("Failed to create Chrome: ", err)
 	}
@@ -54,14 +54,18 @@ func WebRTCVideoPlaybackDelay(ctx context.Context, s *testing.State) {
 	// to get more consistent results, but then we wouldn't be measuring on the
 	// same conditions as a user might encounter.
 
-	histogramName := "Media.VideoFrameSubmitter"
-	initHistogram, err := metrics.GetHistogram(ctx, cr, histogramName)
+	const presentationsHistogramName = "Media.VideoFrameSubmitter"
+	initPresentationHistogram, err := metrics.GetHistogram(ctx, cr, presentationsHistogramName)
+	if err != nil {
+		s.Fatal("Failed to get initial histogram: ", err)
+	}
+	const decodeHistogramName = "Media.MojoVideoDecoder.Decode"
+	initDecodeHistogram, err := metrics.GetHistogram(ctx, cr, decodeHistogramName)
 	if err != nil {
 		s.Fatal("Failed to get initial histogram: ", err)
 	}
 
-	const peerConnectionCode = 
-		`new Promise((resolve, reject) => {
+	const peerConnectionCode = `new Promise((resolve, reject) => {
 			var pc1 = new RTCPeerConnection();
 			var pc2 = new RTCPeerConnection();
 
@@ -98,7 +102,7 @@ func WebRTCVideoPlaybackDelay(ctx context.Context, s *testing.State) {
 			.then(offer => pc2.setLocalDescription(offer))
 			.then(() => pc1.setRemoteDescription(pc2.localDescription))
 			.catch(reject);
-		});`;
+		});`
 	if err := conn.EvalPromise(ctx, peerConnectionCode, nil); err != nil {
 		s.Fatal("RTCPeerConnection establishment failed: ", err)
 	}
@@ -112,44 +116,74 @@ func WebRTCVideoPlaybackDelay(ctx context.Context, s *testing.State) {
 		s.Fatal("Error while waiting for playback delay perf collection: ", err)
 	}
 
-	laterHistogram, err := metrics.GetHistogram(ctx, cr, histogramName)
+	laterPresentationHistogram, err := metrics.GetHistogram(ctx, cr, presentationsHistogramName)
 	if err != nil {
 		s.Fatal("Failed to get later histogram: ", err)
 	}
 
-	histogramDiff, err := laterHistogram.Diff(initHistogram)
+	presentationHistogramDiff, err := laterPresentationHistogram.Diff(initPresentationHistogram)
 	if err != nil {
 		s.Fatal("Failed diffing histograms: ", err)
 	}
-	if len(histogramDiff.Buckets) == 0 {
+	if len(presentationHistogramDiff.Buckets) == 0 {
 		s.Fatal("Empty histogram diff")
 	}
 
-	metric := perf.Metric{
+	perfValues := perf.NewValues()
+
+	presentationMetric := perf.Metric{
 		Name:      "tast_graphics_webrtc_video_playback_delay",
 		Unit:      "ms",
 		Direction: perf.SmallerIsBetter,
 		Multiple:  true,
 	}
-	perfValues := perf.NewValues()
-	var average float64
-	numHistogramSamples := float64(laterHistogram.TotalCount())
-	// Walk the buckets of histogramDiff, append the central value of the
-	// histogram bucket as many times as bucket entries to perfValues, and
-	// calculate the average on the fly for debug printout purposes. This average
-	// is a discrete approximation to the statistical average of the samples
-	// underlying laterHistogram.
-	for _, bucket := range histogramDiff.Buckets {
-		bucketMidpoint := float64(bucket.Max + bucket.Min) / 2.0
-		for i := 0; i < int(bucket.Count); i++ {
-			perfValues.Append(metric, bucketMidpoint)
-		}
-		average += bucketMidpoint * float64(bucket.Count) / numHistogramSamples;
+	updatePerfMetricFromHistogram(ctx, presentationsHistogramName,
+		presentationHistogramDiff, perfValues, presentationMetric)
+
+	laterDecodeHistogram, err := metrics.GetHistogram(ctx, cr, decodeHistogramName)
+	if err != nil {
+		s.Fatal("Failed to get later histogram: ", err)
+	}
+	decodeHistogramDiff, err := laterDecodeHistogram.Diff(initDecodeHistogram)
+	if err != nil {
+		s.Fatal("Failed diffing histograms: ", err)
+	}
+	if len(decodeHistogramDiff.Buckets) == 0 {
+		s.Fatal("Empty histogram diff")
 	}
 
-	s.Logf("%s histogram: %v; average: %f", histogramName, laterHistogram.String(), average)
+	decodeMetric := perf.Metric{
+		Name:      "tast_graphics_webrtc_video_decode_delay",
+		Unit:      "ms",
+		Direction: perf.SmallerIsBetter,
+		Multiple:  true,
+	}
+	updatePerfMetricFromHistogram(ctx, decodeHistogramName, decodeHistogramDiff,
+		perfValues, decodeMetric)
 
 	if err = perfValues.Save(s.OutDir()); err != nil {
 		s.Error("Cannot save perf data: ", err)
 	}
+}
+
+func updatePerfMetricFromHistogram(ctx context.Context,
+	histogramName string,
+	histogramDiff *metrics.Histogram,
+	perfValues *perf.Values,
+	metric perf.Metric) {
+	numHistogramSamples := float64(histogramDiff.TotalCount())
+	var average float64
+	// Walk the buckets of histogramDiff, append the central value of the
+	// histogram bucket as many times as bucket entries to perfValues, and
+	// calculate the average on the fly for debug printout purposes. This average
+	// is a discrete approximation to the statistical average of the samples
+	// underlying the histogramDiff histograms.
+	for _, bucket := range histogramDiff.Buckets {
+		bucketMidpoint := float64(bucket.Max+bucket.Min) / 2.0
+		for i := 0; i < int(bucket.Count); i++ {
+			perfValues.Append(metric, bucketMidpoint)
+		}
+		average += bucketMidpoint * float64(bucket.Count) / numHistogramSamples
+	}
+	testing.ContextLog(ctx, histogramName, ": histogram:", histogramDiff.String(), "; average: ", average)
 }
