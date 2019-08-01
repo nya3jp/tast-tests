@@ -22,6 +22,30 @@
       "revId": "ecb09dd377bf7c633adaada8143b9845f3620ae7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "007af834_f21b8857",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2019-08-01T11:35:34Z",
+      "side": 1,
+      "message": "I tried splitting them but it would make this CL complex. I would like to do that in the next CL. I will upload it tomorrow.",
+      "parentUuid": "226c53f5_e13a572a",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 36
+      },
+      "revId": "ecb09dd377bf7c633adaada8143b9845f3620ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
