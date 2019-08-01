@@ -16,6 +16,24 @@
       "revId": "72b72860e7f480f7a82f0aac10adb00fc1422846",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "100acc18_d3c7c218",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-08-01T03:14:25Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t get what you mean. The |err|s are scoped in the above if-else condition, and once err !\u003d nil, the test fails with s.Fatal(). So when the program reaches here, it should have no error, isn\u0027t it?",
+      "parentUuid": "dc6993f3_4b885e26",
+      "revId": "72b72860e7f480f7a82f0aac10adb00fc1422846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
