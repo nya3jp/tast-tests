@@ -4,10 +4,33 @@
 
 package crostini
 
-const (
-	// X11DemoAppPath is a path (in the container) to an application used for verifying simple X11 functionality.
-	X11DemoAppPath = "/opt/google/cros-containers/bin/x11_demo"
+import (
+	"image/color"
 
-	// WaylandDemoAppPath is a path (in the container) to an application used for verifying simple Wayland functionality.
-	WaylandDemoAppPath = "/opt/google/cros-containers/bin/wayland_demo"
+	"chromiumos/tast/local/colorcmp"
 )
+
+// The DemoConfig object holds a configuration for running a tast test that uses one of the demo applications.
+type DemoConfig struct {
+	Name          string
+	AppPath       string
+	DominantColor color.Color
+}
+
+// X11DemoConfig returns the configuration needed to run demo tests based on the x11_demo app.
+func X11DemoConfig() DemoConfig {
+	return DemoConfig{
+		Name:          "x11",
+		AppPath:       "/opt/google/cros-containers/bin/x11_demo",
+		DominantColor: colorcmp.RGB(0x99, 0xee, 0x44),
+	}
+}
+
+// WaylandDemoConfig returns the configuration needed to run demo tests based on the wayland_demo app.
+func WaylandDemoConfig() DemoConfig {
+	return DemoConfig{
+		Name:          "wayland",
+		AppPath:       "/opt/google/cros-containers/bin/wayland_demo",
+		DominantColor: colorcmp.RGB(0x33, 0x88, 0xdd),
+	}
+}
