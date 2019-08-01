@@ -34,12 +34,12 @@ var md5OfYUV = map[string]string{
 	// TODO(hiroh): Add md5sum for NV12.
 }
 
-// prepareYUV decodes webMFile and creates the associated YUV file for test whose pixel format is pixelFormat.
+// PrepareYUV decodes webMFile and creates the associated YUV file for test whose pixel format is pixelFormat.
 // The returned value is the path of the created YUV file. It must be removed in the end of test, because its size is expected to be large.
 // The input WebM files are vp9 codec. They are generated from raw YUV data by libvpx like "vpxenc foo.yuv -o foo.webm --codec=vp9 -w <width> -h <height> --lossless=1"
 // Please use "--lossless=1" option. Lossless compression is required to ensure we are testing streams at the same quality as original raw streams,
 // to test encoder capabilities (performance, bitrate convergence, etc.) correctly and with sufficient complexity/PSNR.
-func prepareYUV(ctx context.Context, webMFile string, pixelFormat videotype.PixelFormat, size videotype.Size) (string, error) {
+func PrepareYUV(ctx context.Context, webMFile string, pixelFormat videotype.PixelFormat, size videotype.Size) (string, error) {
 	const webMSuffix = ".vp9.webm"
 	if !strings.HasSuffix(webMFile, webMSuffix) {
 		return "", errors.Errorf("source video %v must be VP9 WebM", webMFile)
