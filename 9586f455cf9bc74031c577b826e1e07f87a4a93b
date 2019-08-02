@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "52a85a62_fc4bfd5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-02T03:13:19Z",
+      "side": 1,
+      "message": "Because after you unbind a device, the symlink path through which you derived its driver is no longer there. (e.g., /sys/class/net/eth0/device/driver is no longer there, but if it pointed at /sys/bus/usb/drivers/foo (the \"realPath\"), then that\u0027s still present.)",
+      "parentUuid": "f8884618_864045cb",
+      "range": {
+        "startLine": 80,
+        "startChar": 42,
+        "endLine": 80,
+        "endChar": 56
+      },
+      "revId": "9586f455cf9bc74031c577b826e1e07f87a4a93b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "481abf2d_92c761b7",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 10
