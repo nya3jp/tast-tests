@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "241dfe72_9632988e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1297374
+      },
+      "writtenOn": "2019-08-02T21:15:56Z",
+      "side": 1,
+      "message": "I assume python3 is installed out of the box in our container, so switching from python 2.7 seems fine.",
+      "revId": "733eb004f909f00189a1b3e2887dd9ba445f9e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
