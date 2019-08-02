@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/graphics/trace"
+	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/testing"
 )
 
@@ -18,12 +19,14 @@ func init() {
 		Desc:         "Replay graphics trace in Crostini VM",
 		Contacts:     []string{"chromeos-gfx@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		Data:         []string{"crostini_trace_glxgears.trace"},
+		Data:         []string{crostini.ImageArtifact, "crostini_trace_glxgears.trace"},
+		Pre:          crostini.StartedGPUEnabled(),
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},
 	})
 }
 
 func CrostiniTraceGlxgears(ctx context.Context, s *testing.State) {
-	trace.RunTest(ctx, s, map[string]string{"crostini_trace_glxgears.trace": "glxgears"})
+	pre := s.PreValue().(crostini.PreData)
+	trace.RunTest(ctx, s, pre.Container, map[string]string{"crostini_trace_glxgears.trace": "glxgears"})
 }
