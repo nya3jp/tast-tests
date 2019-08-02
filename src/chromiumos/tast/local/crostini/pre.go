@@ -40,26 +40,44 @@ func StartedByDownload() testing.Precondition { return startedByDownloadPre }
 // use this precondition you must have crostini.ImageArtifact as a data dependency.
 func StartedByArtifact() testing.Precondition { return startedByArtifactPre }
 
+// StartedGPUEnabled is similar to StartedByArtifact, but will
+// use pass enable-gpu to vm instance to allow gpu being used.
+func StartedGPUEnabled() testing.Precondition { return startedGPUEnabledPre }
+
+type setupMode int
+
+const (
+	artifact setupMode = iota
+	download
+	gpu
+)
+
 var startedByArtifactPre = &preImpl{
 	name:    "crostini_started_by_artifact",
 	timeout: chrome.LoginTimeout + 7*time.Minute,
-	dlImage: false,
+	mode:    artifact,
 }
 
 var startedByDownloadPre = &preImpl{
 	name:    "crostini_started_by_download",
 	timeout: chrome.LoginTimeout + 10*time.Minute,
-	dlImage: true,
+	mode:    download,
+}
+
+var startedGPUEnabledPre = &preImpl{
+	name:    "crostini_started_gpu_enabled",
+	timeout: chrome.LoginTimeout + 10*time.Minute,
+	mode:    gpu,
 }
 
 // Implementation of crostini's precondition.
 type preImpl struct {
 	name    string
 	timeout time.Duration
-	dlImage bool
 	cr      *chrome.Chrome
 	tconn   *chrome.Conn
 	cont    *vm.Container
+	mode    setupMode
 }
 
 // Interface methods for a testing.Precondition.
@@ -99,38 +117,43 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 		s.Fatal("Failed to enable Crostini preference setting: ", err)
 	}
 
-	if p.dlImage {
+	switch p.mode {
+	case download:
 		s.Log("Setting up component ", vm.StagingComponent)
 		if err = vm.SetUpComponent(ctx, vm.StagingComponent); err != nil {
 			s.Fatal("Failed to set up component: ", err)
 		}
 		s.Log("Creating default container (from download)")
-		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.StagingImageServer, ""); err != nil {
+		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.StagingImageServer, "", false); err != nil {
 			s.Fatal("Failed to set up default container (from download): ", err)
 		}
-	} else {
+	case artifact:
+		fallthrough
+	case gpu:
 		s.Log("Setting up component (from artifact)")
 		artifactPath := s.DataPath(ImageArtifact)
 		if err = vm.MountArtifactComponent(ctx, artifactPath); err != nil {
 			s.Fatal("Failed to set up component: ", err)
 		}
-
 		s.Log("Creating default container (from artifact)")
-		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.Tarball, artifactPath); err != nil {
+		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.Tarball, artifactPath, p.mode == gpu); err != nil {
 			s.Fatal("Failed to set up default container (from artifact): ", err)
 		}
+	default:
+		s.Fatal("Unrecognized mode: ", p.mode)
 	}
-
-	// Stop the apt-daily systemd timers since they may end up running while we
-	// are executing the tests and cause failures due to resource contention.
-	for _, t := range []string{"apt-daily", "apt-daily-upgrade"} {
-		s.Log("Disabling service: ", t)
-		cmd := p.cont.Command(ctx, "sudo", "systemctl", "stop", t+".timer")
-		if err := cmd.Run(); err != nil {
-			cmd.DumpLog(ctx)
-			s.Fatalf("Failed to stop %s timer: %v", t, err)
+	/*
+		// Stop the apt-daily systemd timers since they may end up running while we
+		// are executing the tests and cause failures due to resource contention.
+		for _, t := range []string{"apt-daily", "apt-daily-upgrade"} {
+			s.Log("Disabling service: ", t)
+			cmd := p.cont.Command(ctx, "sudo", "systemctl", "stop", t+".timer")
+			if err := cmd.Run(); err != nil {
+				cmd.DumpLog(ctx)
+				s.Fatalf("Failed to stop %s timer: %v", t, err)
+			}
 		}
-	}
+	*/
 
 	chrome.Lock()
 	vm.Lock()
