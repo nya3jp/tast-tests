@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 	"net"
+	"strconv"
 	"strings"
 	"time"
 
@@ -42,25 +43,42 @@ func Webserver(ctx context.Context, s *testing.State) {
 		s.Error("webserver: Failed to add test index.html: ", err)
 		return
 	}
-	cmd = cont.Command(ctx, "python2.7", "-m", "SimpleHTTPServer")
-	if err := cmd.Start(); err != nil {
-		s.Error("webserver: Failed to run python2: ", err)
-		cmd.DumpLog(ctx)
-		return
-	}
-	defer cmd.Wait()
-	defer cmd.Kill()
 
-	// Wait for the webserver to actually be up and running.
+	sockaddrs := []struct {
+		Addr net.IP
+		Port uint16
+	}{
+		{net.IPv4(127, 0, 0, 1), 6789}, // An unprivileged port listening on localhost should be tunneled.
+		{net.IPv4zero, 999},            // Privileged ports will be accessible via penguin.linux.test but not localhost.
+		{net.IPv4zero, 8000},           // Common dev webserver port.
+		{net.IPv4zero, 12345},          // Uncommon dev webserver port.
+	}
+
+	for _, sockaddr := range sockaddrs {
+		cmd = cont.Command(ctx, "sudo", "python3", "-m", "http.server",
+			strconv.FormatUint(uint64(sockaddr.Port), 10),
+			"--bind", sockaddr.Addr.String())
+		if err := cmd.Start(); err != nil {
+			s.Error("webserver: Failed to run python3: ", err)
+			cmd.DumpLog(ctx)
+			return
+		}
+		defer cmd.Wait()
+		defer cmd.Kill()
+	}
+
+	// Wait for the webserver to actually be up and running, and for chunnel
+	// to be ready to accept connections.
 	testing.ContextLog(ctx, "Waiting for python webserver to start up")
+	lastPort := sockaddrs[len(sockaddrs)-1].Port
 	err := testing.Poll(ctx, func(ctx context.Context) error {
-		conn, err := net.DialTimeout("tcp", "penguin.linux.test:8000", time.Second)
+		conn, err := net.DialTimeout("tcp", fmt.Sprintf("127.0.0.1:%d", lastPort), time.Second)
 		if err != nil {
 			return err
 		}
 		conn.Close()
 		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second})
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 	if err != nil {
 		s.Error("webserver: Error waiting for python webserver to start up: ", err)
 		return
@@ -91,8 +109,23 @@ func Webserver(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	containerUrls := []string{"http://penguin.linux.test:8000", "http://localhost:8000"}
-	for _, url := range containerUrls {
-		checkNavigation(url)
+	for _, sockaddr := range sockaddrs {
+		checkUrls := []string{}
+
+		if sockaddr.Addr.IsLoopback() || sockaddr.Addr.IsUnspecified() {
+			// Localhost tunneling only works on unprivileged ports.
+			if sockaddr.Port > 1023 {
+				checkUrls = append(checkUrls, fmt.Sprintf("http://127.0.0.1:%d", sockaddr.Port))
+				checkUrls = append(checkUrls, fmt.Sprintf("http://[::1]:%d", sockaddr.Port))
+			}
+		}
+
+		if sockaddr.Addr.IsUnspecified() {
+			checkUrls = append(checkUrls, fmt.Sprintf("http://penguin.linux.test:%d", sockaddr.Port))
+		}
+
+		for _, url := range checkUrls {
+			checkNavigation(url)
+		}
 	}
 }
