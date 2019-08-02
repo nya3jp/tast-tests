@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6acc050f_e7f88471",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/charge_scheduling.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-02T07:03:00Z",
+      "side": 1,
+      "message": "Idiomatic way is:\n\n switch cs {\n case usingBattery: return \"usingBattery\"\n ...\n default: return \"unknown\"\n }",
+      "parentUuid": "7a3c31ce_dc6d8438",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 80
+      },
+      "revId": "6e6249fae8cfeb6e9bbb199a1379d01d9eda2be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ae9e1ec7_52cc78a7",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/charge_scheduling.go",
         "patchSetId": 2
