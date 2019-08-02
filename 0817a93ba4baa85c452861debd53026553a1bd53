@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a698ea53_0899a2cf",
+        "filename": "src/chromiumos/tast/local/session/ownership.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-02T03:39:02Z",
+      "side": 1,
+      "message": "This function is now called as session.PrepareChromeForTesting, and it is not clear what is different between it and SessionManager.EnableChromeTesting.\n\nCould you rename it to make it clear it is for ownership/policy tests, e.g. PrepareChromeForPolicyTesting?",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 28
+      },
+      "revId": "0817a93ba4baa85c452861debd53026553a1bd53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
