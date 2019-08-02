@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9155b32_a6f116fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-02T03:05:47Z",
+      "side": 1,
+      "message": "nit: iface\nwould be consistent with other place?",
+      "range": {
+        "startLine": 37,
+        "startChar": 9,
+        "endLine": 37,
+        "endChar": 13
+      },
+      "revId": "9586f455cf9bc74031c577b826e1e07f87a4a93b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8884618_864045cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-02T03:05:47Z",
+      "side": 1,
+      "message": "I wonder if driverPath suffices here. If there a reason you should compute driverRealPath?",
+      "range": {
+        "startLine": 80,
+        "startChar": 42,
+        "endLine": 80,
+        "endChar": 56
+      },
+      "revId": "9586f455cf9bc74031c577b826e1e07f87a4a93b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "481abf2d_92c761b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-02T03:05:47Z",
+      "side": 1,
+      "message": "nit: In Go, indenting error flow is preferred. https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\nSo I\u0027d recommend\nif !reflect.DeepEqual(iflistPre, iflistPost) {\n  return errors. ...\n}\nreturn nil",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 3
+      },
+      "revId": "9586f455cf9bc74031c577b826e1e07f87a4a93b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "712ecc5b_c4f8d0d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-02T03:05:47Z",
+      "side": 1,
+      "message": "s.Error(\"restartUdev failed: \", err)\nWrap (or other functions in errors) is used to obtain StackTrace to the function. Since it\u0027s the test main function and the stack trace is trivial, you don\u0027t need wrapping.",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 49
+      },
+      "revId": "9586f455cf9bc74031c577b826e1e07f87a4a93b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7d5ba21_ba17e8ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-02T03:05:47Z",
+      "side": 1,
+      "message": "s.Error(\"restartWirelessInterface failed: \", err)",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 62
+      },
+      "revId": "9586f455cf9bc74031c577b826e1e07f87a4a93b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
