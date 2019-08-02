@@ -74,15 +74,19 @@ func GetProcesses() ([]Process, error) {
 	return processes, nil
 }
 
-// FindProcessesByExe returns processes from ps with Exe fields matching exe.
-func FindProcessesByExe(ps []Process, exe string, revese bool) []Process {
+// FindProcessesByExe returns processes from ps with Exe fields matching exeRegexp.
+func FindProcessesByExe(ps []Process, exeRegexp string, revese bool) ([]Process, error) {
 	var found []Process
 	for _, proc := range ps {
-		if (proc.Exe == exe) != revese {
+		matched, err := regexp.MatchString(exeRegexp, proc.Exe)
+		if err != nil {
+			return nil, err
+		}
+		if matched != revese {
 			found = append(found, proc)
 		}
 	}
-	return found
+	return found, nil
 }
 
 // FindProcessesByCmdline returns processes from ps with Cmdline fields
