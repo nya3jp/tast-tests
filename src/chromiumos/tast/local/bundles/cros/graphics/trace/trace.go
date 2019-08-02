@@ -17,7 +17,6 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -41,55 +40,7 @@ func logInfo(ctx context.Context, cont *vm.Container, file string) error {
 }
 
 // RunTest starts a VM and runs all traces in trace, which maps from filenames (passed to s.DataPath) to a human-readable name for the trace, that is used both for the output file's name and for the reported perf keyval.
-func RunTest(ctx context.Context, s *testing.State, traces map[string]string) {
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
-	// TODO(pwang): use crostini setup library once crbug.com/965398 is done.
-	s.Log("Enabling Crostini preference setting")
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Creating test API connection failed: ", err)
-	}
-	if err = vm.EnableCrostini(ctx, tconn); err != nil {
-		s.Fatal("Failed to enable Crostini preference setting: ", err)
-	}
-
-	s.Log("Setting up component ", vm.LiveComponent)
-	err = vm.SetUpComponent(ctx, vm.LiveComponent)
-	if err != nil {
-		s.Fatal("Failed to set up component: ", err)
-	}
-	defer vm.UnmountComponent(ctx)
-
-	s.Log("Restarting Concierge")
-	concierge, err := vm.NewConcierge(ctx, cr.User())
-	if err != nil {
-		s.Fatal("Failed to start Concierge: ", err)
-	}
-	defer vm.StopConcierge(ctx)
-
-	vmInstance := vm.NewDefaultVM(concierge)
-	vmInstance.EnableGPU = true
-	if err = vmInstance.Start(ctx); err != nil {
-		s.Fatal("Failed to start VM: ", err)
-	}
-	cont, err := vm.CreateDefaultContainer(ctx, vmInstance, vm.LiveImageServer, s.OutDir())
-	if err != nil {
-		if vmErr := vmInstance.Stop(ctx); vmErr != nil {
-			s.Error("Failed to stop VM: ", vmErr)
-		}
-		s.Fatal("Failed to start Container: ", err)
-	}
-	defer func() {
-		if err := cont.DumpLog(ctx, s.OutDir()); err != nil {
-			s.Error("Failed to dump container log: ", err)
-		}
-	}()
-
+func RunTest(ctx context.Context, s *testing.State, cont *vm.Container, traces map[string]string) {
 	outDir := filepath.Join(s.OutDir(), logDir)
 	if err := os.MkdirAll(outDir, 0755); err != nil {
 		s.Fatalf("Failed to create output dir %v: %v", outDir, err)
