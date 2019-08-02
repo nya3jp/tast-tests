@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "abaefee3_0e019672",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/charge_scheduling.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-02T07:03:00Z",
+      "side": 1,
+      "message": "Hmm, that example is not following the style guide. Thanks for pointing it out!",
+      "parentUuid": "81fedc2c_588bb671",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "3b66e722f16a736577f14560a4f70a838f7a3cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b64f8619_48114aa9",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/charge_scheduling.go",
         "patchSetId": 1
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "@Nick - Can you file a FR bug for this EC testing feature?  It is not unprecedented to add something like this.",
       "parentUuid": "b4893f45_3e5e19ec",
+      "range": {
+        "startLine": 26,
+        "startChar": 14,
+        "endLine": 26,
+        "endChar": 42
+      },
+      "revId": "3b66e722f16a736577f14560a4f70a838f7a3cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7d0f309_35b6b9f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/charge_scheduling.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-02T07:03:00Z",
+      "side": 1,
+      "message": "I think 5 minutes is still long if this test runs in release builders. At very least the test should run in a different pool. Do you know if we have a pool that can be used for this kind of testing?",
+      "parentUuid": "8822daa5_b5f7cefb",
       "range": {
         "startLine": 26,
         "startChar": 14,
