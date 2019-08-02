@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "6982603e_d50a7471",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-02T03:58:00Z",
+      "side": 1,
+      "message": "ack, see above",
+      "parentUuid": "4eeac7ea_98547e3d",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 20
+      },
+      "revId": "aa14fd3fc9ff980725a8cdbfd5f4484870741681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d394f455_95a57cb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-02T03:58:00Z",
+      "side": 1,
+      "message": "ack, this was reverted, leaving for a future cl",
+      "parentUuid": "c1347290_a89b8887",
+      "range": {
+        "startLine": 33,
+        "startChar": 29,
+        "endLine": 33,
+        "endChar": 46
+      },
+      "revId": "aa14fd3fc9ff980725a8cdbfd5f4484870741681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0898c77_12e9fd70",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
         "patchSetId": 2
@@ -62,6 +110,24 @@
       "revId": "aa14fd3fc9ff980725a8cdbfd5f4484870741681",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24474195_e334ad01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-02T03:58:00Z",
+      "side": 1,
+      "message": "Firstly, ack,\nthis change was reverted based on feedback by oka@\nLeft as TODO near the relevant lines\n\n--------------------------------\n\nFWIW, tried to do this, unfortunately it seems we can\u0027t:\n\nContainer.Command() internally prepends \"vsh --vm\u003d... --\", and the vsh command by design does not propagate environment vars (so setting the env of `cmd` has no effect).\n\nThe vsh command itself has this usage:\n\n  Usage: vsh [flags] -- ENV1\u003dVALUE1 ENV2\u003dVALUE2 command arg1 arg2...\n\nBut i also tried prepending the env to the container\u0027s command, and this did not work (i.e. the vsh documentation seems misleading).\n\nAFAIK using \"sh -c your_command your args...\"  is the only workaround",
+      "parentUuid": "c0898c77_12e9fd70",
+      "revId": "aa14fd3fc9ff980725a8cdbfd5f4484870741681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "56a7af62_1de3bb81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-02T03:58:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2750312_ce14c7d3",
+      "revId": "aa14fd3fc9ff980725a8cdbfd5f4484870741681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db1553fb_68ab13bd",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
         "patchSetId": 2
@@ -93,6 +177,24 @@
       "writtenOn": "2019-08-01T07:14:47Z",
       "side": 1,
       "message": "cmd.Start(testexec.DumpLogOnError) is your friend.",
+      "revId": "aa14fd3fc9ff980725a8cdbfd5f4484870741681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e39add38_cf20af8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-02T03:58:00Z",
+      "side": 1,
+      "message": "It doesnt look like there\u0027s a \"Start(...RunOpts)\" variant.\n\nIn this case we can\u0027t use \"Run()\" since we don\u0027t want to Wait() on the program (yet), however we DO want to dump the logs before exiting if there is an error at startup.\n\nIve added DumpLogOnError to the wait(), which will catch errors on exit IIUC.\n\nPlease advise me if you feel this is not an adequate solution",
+      "parentUuid": "db1553fb_68ab13bd",
       "revId": "aa14fd3fc9ff980725a8cdbfd5f4484870741681",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -116,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "2aa08b19_9ca46404",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-02T03:58:00Z",
+      "side": 1,
+      "message": "Ack, this refactoring was reverted",
+      "parentUuid": "76072e6c_c0fa6165",
+      "revId": "aa14fd3fc9ff980725a8cdbfd5f4484870741681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3dd5e98e_762d728a",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
         "patchSetId": 2
@@ -133,6 +253,24 @@
     },
     {
       "key": {
+        "uuid": "33b979c4_0a3cb51d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-02T03:58:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3dd5e98e_762d728a",
+      "revId": "aa14fd3fc9ff980725a8cdbfd5f4484870741681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6163e52_82e664f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/verifyapp/verify_app.go",
         "patchSetId": 2
@@ -147,6 +285,24 @@
       "revId": "aa14fd3fc9ff980725a8cdbfd5f4484870741681",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71cd6b7b_900b52a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/verifyapp/verify_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-02T03:58:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6163e52_82e664f0",
+      "revId": "aa14fd3fc9ff980725a8cdbfd5f4484870741681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -173,6 +329,30 @@
     },
     {
       "key": {
+        "uuid": "8e7a9e0a_21041440",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-02T03:58:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a009b3c4_03c03c60",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 26
+      },
+      "revId": "aa14fd3fc9ff980725a8cdbfd5f4484870741681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be28fabd_cb972c20",
         "filename": "src/chromiumos/tast/local/crostini/display.go",
         "patchSetId": 2
@@ -187,6 +367,24 @@
       "revId": "aa14fd3fc9ff980725a8cdbfd5f4484870741681",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57fe8a02_2ab19907",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-02T03:58:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be28fabd_cb972c20",
+      "revId": "aa14fd3fc9ff980725a8cdbfd5f4484870741681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -207,6 +405,24 @@
     },
     {
       "key": {
+        "uuid": "906cba1e_d91d8cbf",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-02T03:58:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b91f9463_90665f8a",
+      "revId": "aa14fd3fc9ff980725a8cdbfd5f4484870741681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8ab4f20_9234e40f",
         "filename": "src/chromiumos/tast/local/crostini/display.go",
         "patchSetId": 2
@@ -221,6 +437,24 @@
       "revId": "aa14fd3fc9ff980725a8cdbfd5f4484870741681",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f19ff52_74e0bb46",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-02T03:58:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8ab4f20_9234e40f",
+      "revId": "aa14fd3fc9ff980725a8cdbfd5f4484870741681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
