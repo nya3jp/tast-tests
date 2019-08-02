@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "879757d4_309de57b",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-02T23:03:41Z",
+      "side": 1,
+      "message": "I couldn\u0027t find any Rect in display.go. Perhaps you meant \"activity.go\" ?\n\nFor refernece, the one in arc/activity.go is identical:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/activity.go?l\u003d152\n\nand we have another one in arc/ui/object.go. But this one conforms with Android GFX Rect:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/ui/object.go?l\u003d37",
+      "range": {
+        "startLine": 44,
+        "startChar": 68,
+        "endLine": 44,
+        "endChar": 78
+      },
+      "revId": "7413979a5903f6ec7590f5d30ba489a35c7f0aaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
