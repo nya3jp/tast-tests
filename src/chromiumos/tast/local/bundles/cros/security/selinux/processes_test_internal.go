@@ -160,9 +160,11 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 		case Unstable:
 			testCases = append(testCases, []testCaseType{
 				{exe, "/sbin/minijail0", "(minijail|.*_minijail0)", zeroProcs, ""},
+				{notExe, "/bin/([db]a)?sh", notStr("cros_init_scripts"), zeroProcs, domainIsolationErrorMessage},
+				{notExe, "/sbin/init", notStr("cros_init"), zeroProcs, domainIsolationErrorMessage},
 				// Continue monitoring frecon/agetty/recover_duts[ping].
-				{notCmdline, ".*", notStr("chromeos"), zeroProcs, domainIsolationErrorMessage},
-				{notCmdline, ".*", notStr("minijailed"), zeroProcs, domainIsolationErrorMessage},
+				{cmdline, ".*", notStr("chromeos"), zeroProcs, domainIsolationErrorMessage},
+				{cmdline, ".*", notStr("minijailed"), zeroProcs, domainIsolationErrorMessage},
 			}...)
 		}
 	}
@@ -172,9 +174,9 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 		var err error
 		switch testCase.field {
 		case exe:
-			p = FindProcessesByExe(ps, testCase.query, false)
+			p, err = FindProcessesByExe(ps, testCase.query, false)
 		case notExe:
-			p = FindProcessesByExe(ps, testCase.query, true)
+			p, err = FindProcessesByExe(ps, testCase.query, true)
 		case cmdline:
 			p, err = FindProcessesByCmdline(ps, testCase.query, false)
 		case notCmdline:
