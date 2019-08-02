@@ -11,7 +11,9 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crostini"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -37,62 +39,77 @@ func Webserver(ctx context.Context, s *testing.State) {
 
 	cmd := cont.Command(ctx, "sh", "-c",
 		fmt.Sprintf("echo '%s' > ~/index.html", expectedWebContent))
-	if err := cmd.Run(); err != nil {
-		cmd.DumpLog(ctx)
-		s.Error("webserver: Failed to add test index.html: ", err)
-		return
+	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to add test index.html: ", err)
 	}
-	cmd = cont.Command(ctx, "python2.7", "-m", "SimpleHTTPServer")
-	if err := cmd.Start(); err != nil {
-		s.Error("webserver: Failed to run python2: ", err)
-		cmd.DumpLog(ctx)
-		return
-	}
-	defer cmd.Wait()
-	defer cmd.Kill()
-
-	// Wait for the webserver to actually be up and running.
-	testing.ContextLog(ctx, "Waiting for python webserver to start up")
-	err := testing.Poll(ctx, func(ctx context.Context) error {
-		conn, err := net.DialTimeout("tcp", "penguin.linux.test:8000", time.Second)
-		if err != nil {
-			return err
-		}
-		conn.Close()
-		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second})
-	if err != nil {
-		s.Error("webserver: Error waiting for python webserver to start up: ", err)
-		return
-	}
-	testing.ContextLog(ctx, "Python webserver startup completed")
 
 	conn, err := cr.NewConn(ctx, "")
 	if err != nil {
-		s.Error("webserver: Creating renderer failed: ", err)
-		return
+		s.Fatal("Failed to create renderer: ", err)
 	}
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
-	checkNavigation := func(url string) {
-		if err = conn.Navigate(ctx, url); err != nil {
-			s.Errorf("webserver: Navigating to %q failed: %v", url, err)
-			return
+	sockaddrs := []struct {
+		Addr net.IP
+		Port uint16
+	}{
+		{net.IPv4(127, 0, 0, 1), 6789}, // An unprivileged port listening on localhost should be tunneled.
+		{net.IPv4zero, 999},            // Privileged ports will be accessible via penguin.linux.test but not localhost.
+		{net.IPv4zero, 8000},           // Common dev webserver port.
+		{net.IPv4zero, 12345},          // Uncommon dev webserver port.
+	}
+
+	// Assemble the list of URLs to check. For localhost tunneling, check both
+	// IPv4 and IPv6 connectivity. If listening on the unspecified address, also
+	// check penguin.linux.test.
+	checkURLs := make(map[string]bool)
+	for _, sockaddr := range sockaddrs {
+		if sockaddr.Addr.IsLoopback() || sockaddr.Addr.IsUnspecified() {
+			// Localhost tunneling only works on unprivileged ports.
+			if sockaddr.Port > 1023 {
+				checkURLs[fmt.Sprintf("http://127.0.0.1:%d", sockaddr.Port)] = true
+				checkURLs[fmt.Sprintf("http://[::1]:%d", sockaddr.Port)] = true
+			}
 		}
-		var actual string
-		if err = conn.Eval(ctx, "document.documentElement.innerText", &actual); err != nil {
-			s.Error("webserver: Getting page content failed: ", err)
-			return
-		}
-		if !strings.HasPrefix(actual, expectedWebContent) {
-			s.Errorf("webserver: Expected page content %q, got %q", expectedWebContent, actual)
-			return
+
+		if sockaddr.Addr.IsUnspecified() {
+			checkURLs[fmt.Sprintf("http://penguin.linux.test:%d", sockaddr.Port)] = true
 		}
 	}
 
-	containerUrls := []string{"http://penguin.linux.test:8000", "http://localhost:8000"}
-	for _, url := range containerUrls {
-		checkNavigation(url)
+	testing.ContextLog(ctx, "Waiting for webservers to start up")
+	for _, sockaddr := range sockaddrs {
+		cmd = cont.Command(ctx, "sudo", "busybox", "httpd", "-f",
+			"-p", fmt.Sprintf("%s:%d", sockaddr.Addr.String(), sockaddr.Port))
+		if err := cmd.Start(); err != nil {
+			s.Fatalf("Failed to start webserver on %v:%d: %v", sockaddr.Addr, sockaddr.Port, err)
+		}
+		defer cmd.Wait()
+		defer cmd.Kill()
+	}
+
+	checkNavigation := func(url string) error {
+		if err = conn.Navigate(ctx, url); err != nil {
+			return errors.Wrapf(err, "navigating to %q failed", url)
+		}
+		var actual string
+		if err = conn.Eval(ctx, "document.documentElement.innerText", &actual); err != nil {
+			return errors.Wrapf(err, "failed to get page content for %s", url)
+		}
+		if !strings.HasPrefix(actual, expectedWebContent) {
+			return errors.Errorf("unexpected page content for %s; got %q, want %q", url, actual, expectedWebContent)
+		}
+
+		return nil
+	}
+
+	testing.ContextLog(ctx, "Checking URLs for webservers")
+	for url := range checkURLs {
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			return checkNavigation(url)
+		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+			s.Fatal("error polling for webserver: ", err)
+		}
 	}
 }
