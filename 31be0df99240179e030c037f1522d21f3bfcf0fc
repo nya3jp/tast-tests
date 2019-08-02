@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d4eeb6c_6e56460e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-08-02T02:46:07Z",
+      "side": 1,
+      "message": "we may want to filter unclean-shutdown-detected, and kernel-crash-detected.\nSince these two files are created in different type, and may cause flaky tests.",
+      "range": {
+        "startLine": 49,
+        "startChar": 97,
+        "endLine": 49,
+        "endChar": 100
+      },
+      "revId": "31be0df99240179e030c037f1522d21f3bfcf0fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
