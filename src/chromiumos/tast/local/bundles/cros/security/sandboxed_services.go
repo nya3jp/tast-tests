@@ -89,7 +89,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"daisydog", "watchdog", "watchdog", pidNS | mntNS | restrictCaps | noNewPrivs},
 		{"permission_broker", "devbroker", "root", restrictCaps | noNewPrivs},
 		{"netfilter-queue", "nfqueue", "nfqueue", restrictCaps | seccomp},
-		{"anomaly_detector", "root", "root", 0},
+		{"anomaly_detector", "root", "syslog", 0},
 		{"attestationd", "attestation", "attestation", restrictCaps | noNewPrivs | seccomp},
 		{"periodic_scheduler", "root", "root", 0},
 		{"metrics_client", "root", "root", 0},
