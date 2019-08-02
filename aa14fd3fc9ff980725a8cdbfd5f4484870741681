@@ -201,6 +201,24 @@
     },
     {
       "key": {
+        "uuid": "90cf861d_4a86e04a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-02T16:32:23Z",
+      "side": 1,
+      "message": "Oops, sorry for my wrong suggestion.\nAdding DumpLogOnError to Wait LGTMT.",
+      "parentUuid": "e39add38_cf20af8d",
+      "revId": "aa14fd3fc9ff980725a8cdbfd5f4484870741681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76072e6c_c0fa6165",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
         "patchSetId": 2
