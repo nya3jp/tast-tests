@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c6dd0ac_82fd3e32",
+        "filename": "src/chromiumos/tast/local/session/ownership.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-08-02T00:01:59Z",
+      "side": 1,
+      "message": "This change doesn\u0027t seem related; in cases where EnsureJobRunning gives back an error we are wrapping it in another error and otherwise acting the same way.",
+      "range": {
+        "startLine": 52,
+        "startChar": 12,
+        "endLine": 57,
+        "endChar": 11
+      },
+      "revId": "56112e0659502e340c9664ff49b9e9da2d1a6439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
