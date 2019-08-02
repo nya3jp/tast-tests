@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "aee3fd06_d921ac0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-02T03:27:58Z",
+      "side": 1,
+      "message": "typo: pixels",
+      "range": {
+        "startLine": 33,
+        "startChar": 71,
+        "endLine": 33,
+        "endChar": 77
+      },
+      "revId": "d7b107b05991c9e66a0bfe6ba1a54b095f8c06c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40861b7b_aa555553",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 2
@@ -117,6 +140,52 @@
     },
     {
       "key": {
+        "uuid": "8f6d3196_2efe4d66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-02T03:27:58Z",
+      "side": 1,
+      "message": "In general, when a function returns (T, error), please avoid accessing T if err is not nil.\n\n info, err :\u003d ...\n if err !\u003d nil {\n   return ...\n }\n bounds :\u003d info.Bounds\n ...\n\nThere are not many exceptions to this rule. One exception I know is io.Reader which can read data partially.\nhttps://godoc.org/io#Reader",
+      "range": {
+        "startLine": 701,
+        "startChar": 0,
+        "endLine": 703,
+        "endChar": 0
+      },
+      "revId": "d7b107b05991c9e66a0bfe6ba1a54b095f8c06c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47cb359e_2cee3db2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-02T03:27:58Z",
+      "side": 1,
+      "message": "IIUC -1 is not very meaningful value, right? Instead of assigning an arbitrary default value, how about aborting if ltrb is an unknown value?\n\n var currentValue int\n switch ltrb {\n   ...\n   default:\n     return testing.PollBreak(errors.Errorf(\"unknown border type %v\", ltrb))\n }",
+      "range": {
+        "startLine": 710,
+        "startChar": 2,
+        "endLine": 710,
+        "endChar": 20
+      },
+      "revId": "d7b107b05991c9e66a0bfe6ba1a54b095f8c06c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bd043172_71eab715",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 2
@@ -133,6 +202,29 @@
         "startChar": 18,
         "endLine": 713,
         "endChar": 22
+      },
+      "revId": "d7b107b05991c9e66a0bfe6ba1a54b095f8c06c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80799108_4da48bf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-02T03:27:58Z",
+      "side": 1,
+      "message": "- Please try to keep an error message in one sentence. If we have more than one, I recommend semicolons to separate them.\n- Please put the actual value before the expected value. https://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures\n\nFor example:\n\n errors.Errorf(\"the PIP window doesn\u0027t have the expected bounds yet; got %d, want %d\", currentValue, expectedValue)",
+      "range": {
+        "startLine": 722,
+        "startChar": 25,
+        "endLine": 722,
+        "endChar": 103
       },
       "revId": "d7b107b05991c9e66a0bfe6ba1a54b095f8c06c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -206,6 +298,76 @@
       "revId": "d7b107b05991c9e66a0bfe6ba1a54b095f8c06c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00e41eca_ac4a56b9",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-02T03:27:58Z",
+      "side": 1,
+      "message": "Hmm, I\u0027m not very sure if this is the same struct as automation.Rect (because I can\u0027t find the definition of the struct).\n\nIt seems there are several structs with the same members, e.g.\n\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/display/display.go?l\u003d22\n\nIf we\u0027re not sure, it\u0027s okay to leave a TODO comment about deduping them.",
+      "parentUuid": "2119da67_bb438a44",
+      "range": {
+        "startLine": 43,
+        "startChar": 41,
+        "endLine": 44,
+        "endChar": 18
+      },
+      "revId": "d7b107b05991c9e66a0bfe6ba1a54b095f8c06c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de761084_54bbdfd5",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-02T03:27:58Z",
+      "side": 1,
+      "message": "Hmm, is it available today? I don\u0027t see it in code search: https://cs.chromium.org/search/?q\u003dgetArcAppWindowInfo\u0026sq\u003dpackage:chromium\u0026type\u003dcs",
+      "range": {
+        "startLine": 93,
+        "startChar": 11,
+        "endLine": 93,
+        "endChar": 46
+      },
+      "revId": "d7b107b05991c9e66a0bfe6ba1a54b095f8c06c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e24954f0_de284a35",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-02T03:27:58Z",
+      "side": 1,
+      "message": "nit\u0026optional: Usually, when a function returning (T, error) returns non-nil error, the caller is not supposed to use the returned T value, so it is typical to return a zero value, i.e. ArcAppWindowInfo{}. But this is also okay.",
+      "range": {
+        "startLine": 104,
+        "startChar": 8,
+        "endLine": 104,
+        "endChar": 53
+      },
+      "revId": "d7b107b05991c9e66a0bfe6ba1a54b095f8c06c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
