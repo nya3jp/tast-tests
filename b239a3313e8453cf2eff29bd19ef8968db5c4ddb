@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e7c07201_18eedaf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/param.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-02T04:42:40Z",
+      "side": 1,
+      "message": "Could you name it clearly after Val, rather than 1, 2, 3...? As an example, I think it is important to demonstrate variants should be named in meaningful way.\n\nAlso, I think the most recommended way to use params is to put struct types in Val. Could you set a struct to Val in this example too? Otherwise I\u0027m afraid people may make use of it in type-unsafe way, just like:\n\n Params: []testing.Param{{\n   Name: \"H264\",\n   Val: \"H264\",\n }, {\n   Name: \"VP8\",\n   Val: \"VP8\",\n }}\n\n func TestMain(...) {\n   var t videoType\n   switch s.Param().(string) {\n   case \"H264\": t \u003d videoTypeH264\n   case \"VP8\":  t \u003d videoTypeVP8\n   }\n   RunTest(t)\n }",
+      "range": {
+        "startLine": 20,
+        "startChar": 10,
+        "endLine": 20,
+        "endChar": 16
+      },
+      "revId": "b239a3313e8453cf2eff29bd19ef8968db5c4ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9b355287_745fddbe",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/param.go",
         "patchSetId": 1
