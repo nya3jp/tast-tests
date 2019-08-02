@@ -374,23 +374,49 @@ func RunAllAccelVideoTest(ctx context.Context, s *testing.State, testData TestVi
 	})
 }
 
-// RunAccelVideoSanityTest runs NoCrash test in video_decode_accelerator_unittest.
-// NoCrash test fails if video decoder's kernel driver crashes.
+// RunAccelVideoSanityTest runs the FlushAtEndOfStream test in the
+// video_decode_accelerator_tests. The test only fails if the test binary
+// crashes or the video decoder's kernel driver crashes.
 // The motivation of the sanity test: on certain devices, when playing VP9
 // profile 1 or 3, the kernel crashed. Though the profile was not supported
 // by the decoder, kernel driver should not crash in any circumstances.
 // Refer to https://crbug.com/951189 for more detail.
-func RunAccelVideoSanityTest(ctx context.Context, s *testing.State, testData TestVideoData) {
+func RunAccelVideoSanityTest(ctx context.Context, s *testing.State, filename string) {
+	const cleanupTime = 10 * time.Second
+
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
-		s.Fatal("Failed to set values for verbose logging")
+		s.Fatal("Failed to set values for verbose logging: ", err)
 	}
 	defer vl.Close()
 
-	runAccelVideoTest(ctx, s, testConfig{
-		testData:   testData,
-		dataPath:   s.DataPath(testData.Name),
-		bufferMode: AllocateBuffer,
-		testFilter: "VideoDecodeAcceleratorTest.NoCrash",
-	})
+	// Only a single process can have access to the GPU, so we are required to
+	// call "stop ui" at the start of the test. This will shut down the chrome
+	// process and allow us to claim ownership of the GPU.
+	if err := upstart.StopJob(ctx, "ui"); err != nil {
+		s.Fatal("Failed to stop ui: ", err)
+	}
+	defer upstart.EnsureJobRunning(ctx, "ui")
+
+	// Reserve time to restart the ui job and perform cleanup at the end of the test.
+	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
+	defer cancel()
+
+	// Run the FlushAtEndOfStream test, but ignore errors. If no test report is
+	// produced we can assume the test binary crashed. We ignore the contents
+	// of the report as we're not interested in actual test failures.
+	const exec = "video_decode_accelerator_tests"
+	if report, err := gtest.New(
+		filepath.Join(chrome.BinTestDir, exec),
+		gtest.Logfile(filepath.Join(s.OutDir(), exec+".log")),
+		gtest.Filter("*FlushAtEndOfStream"),
+		gtest.ExtraArgs(
+			s.DataPath(filename),
+			s.DataPath(filename+".json"),
+			"--output_folder="+s.OutDir(),
+			"--disable_validator"),
+		gtest.UID(int(sysutil.ChronosUID)),
+	).Run(ctx); report == nil {
+		s.Fatalf("Failed to run %v: %v", exec, err)
+	}
 }
