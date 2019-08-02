@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afba11ff_3236bd81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_perf_h264_2160p_30fps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-02T02:23:07Z",
+      "side": 1,
+      "message": "nit: If you want you can omit this according to Tast\u0027s cording style.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#documentation\nSame for other comments for test functions.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 110
+      },
+      "revId": "40561eb7054f0927e009283c23497ef8e9fea4c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
