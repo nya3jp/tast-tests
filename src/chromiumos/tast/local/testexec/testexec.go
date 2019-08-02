@@ -242,6 +242,24 @@ func (c *Cmd) Kill() error {
 	return syscall.Kill(-c.Process.Pid, syscall.SIGKILL)
 }
 
+// Signal sends the input signal to the process tree.
+//
+// This is a new method that does not exist in os/exec.
+//
+// Even after successful completion of this function, you still need to call
+// Wait to release all associated resources.
+func (c *Cmd) Signal(signal syscall.Signal) error {
+	if c.Process == nil {
+		return errNotStarted
+	}
+	if c.ProcessState != nil {
+		return errAlreadyWaited
+	}
+
+	// Negative PID means the process group led by the process.
+	return syscall.Kill(-c.Process.Pid, signal)
+}
+
 // Cred is a helper function that sets SysProcAttr.Credential to control
 // the credentials (e.g. UID, GID, etc.) used to run the command.
 func (c *Cmd) Cred(cred syscall.Credential) {
