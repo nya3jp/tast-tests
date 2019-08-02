@@ -300,7 +300,7 @@ func waitForDBusSignal(ctx context.Context, watcher *dbusutil.SignalWatcher, opt
 	}
 }
 
-// parseIPv4 returns the first IPv4 address found in a space separated list of IPs.
+// findIPv4 returns the first IPv4 address found in a space separated list of IPs.
 func findIPv4(ips string) (string, error) {
 	for _, v := range strings.Fields(ips) {
 		ip := net.ParseIP(v)
@@ -315,9 +315,10 @@ func findIPv4(ips string) (string, error) {
 // either the live or staging container versions. The directory dir may be used
 // to store logs on failure. If the container type is Tarball, then artifactPath
 // must be specified with the path to the tarball containing the termina VM
-// and container. Otherwise, artifactPath is ignored.
-func CreateDefaultVMContainer(ctx context.Context, dir, user string, t ContainerType, artifactPath string) (*Container, error) {
-	vmInstance, err := CreateDefaultVM(ctx, dir, user, t, artifactPath)
+// and container. Otherwise, artifactPath is ignored. If enableGPU is set, it will
+// pass it to VM to force gpu enabled.
+func CreateDefaultVMContainer(ctx context.Context, dir, user string, t ContainerType, artifactPath string, enableGPU bool) (*Container, error) {
+	vmInstance, err := CreateDefaultVM(ctx, dir, user, t, artifactPath, enableGPU)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create default VM instance")
 	}
