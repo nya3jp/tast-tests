@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "07b25eb7_668aad57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-02T16:10:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14afb2d6_e289b8ad",
+      "revId": "d358b9ecba76b429fc34108e03e99eaae66fa8ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ba3f27f_45e3adf0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2019-08-02T04:32:01Z",
       "side": 1,
       "message": "Is it possible that the window state becomes PIP after this line?",
+      "revId": "d358b9ecba76b429fc34108e03e99eaae66fa8ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "985b18a4_448d4432",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-02T16:10:34Z",
+      "side": 1,
+      "message": "good catch. what do you recommend me to do?\nShould I use the new autotest_private function that you\u0027ve just added?",
+      "parentUuid": "2ba3f27f_45e3adf0",
       "revId": "d358b9ecba76b429fc34108e03e99eaae66fa8ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
