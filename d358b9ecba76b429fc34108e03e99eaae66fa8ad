@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14afb2d6_e289b8ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-08-02T04:32:01Z",
+      "side": 1,
+      "message": "nit: something like actOther may be clearer and consistent?",
+      "revId": "d358b9ecba76b429fc34108e03e99eaae66fa8ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ba3f27f_45e3adf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-08-02T04:32:01Z",
+      "side": 1,
+      "message": "Is it possible that the window state becomes PIP after this line?",
+      "revId": "d358b9ecba76b429fc34108e03e99eaae66fa8ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
