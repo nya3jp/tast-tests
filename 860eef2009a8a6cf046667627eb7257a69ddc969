@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "254a1bfb_f8e84909",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_paste_wayland_to_wayland_artifact.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-02T06:13:10Z",
+      "side": 1,
+      "message": "artifact timeout is typically shorter than download (7 vs 10)",
+      "range": {
+        "startLine": 24,
+        "startChar": 16,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "860eef2009a8a6cf046667627eb7257a69ddc969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dca515e0_86035692",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_paste_wayland_to_wayland_download.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-02T06:13:10Z",
+      "side": 1,
+      "message": "Distinguish this from the *_artifact description, (e.g. i put \" using a downloaded container image\" in the desc)",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 57
+      },
+      "revId": "860eef2009a8a6cf046667627eb7257a69ddc969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbe6fca8_74209fb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-02T06:13:10Z",
+      "side": 1,
+      "message": "are we pre-empting an X11 mode?\n\nsee crrev.com/c/1729653 for how the distinction will be made in the future",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 25
+      },
+      "revId": "860eef2009a8a6cf046667627eb7257a69ddc969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ac03b98_902c81e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-02T06:13:10Z",
+      "side": 1,
+      "message": "historically tast review has asked for this to be done by the actual test function, and handed to the RunTest as parameters. (in this case, the two parameters separately rather than the PreData as a parameter)",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 22
+      },
+      "revId": "860eef2009a8a6cf046667627eb7257a69ddc969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4231787b_0c661371",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-02T06:13:10Z",
+      "side": 1,
+      "message": "Tast-owners have usually advised me against cmd.DumpLog, preferring using testexec.DumpLogOnError as an argument to Run() Output() or Wait() (depending on which one you use)\n\nFor the two lower down the code, just use that as the arg\n\nFor this one specifically, it is safe to drop, as the errors that occur for starting the process (e.g. permission failure, cant find the executable, etc) will be returned in the error",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 18
+      },
+      "revId": "860eef2009a8a6cf046667627eb7257a69ddc969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f82a7fbc_df0c98ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-02T06:13:10Z",
+      "side": 1,
+      "message": "as discussed, prefer to use the display_density trick in crrev.com/c/1728492",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "860eef2009a8a6cf046667627eb7257a69ddc969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0659c21d_d89c4f75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-02T06:13:10Z",
+      "side": 1,
+      "message": "About the Wait()\n- usually we try to defer it closer to the Start(), it is problematic if either of the above s.Fatal() occurs, the application will never be killed.\n- You probably also want a kill() (before this) otherwise you\u0027ll just hang forever if sending the key event fails (not sure though, depends how the test app was written, but thats what would happen to the wayland_demo)\n\nSee crrev.com/c/1728492 bundles/cros/crostini/verifyapp/verify_app.go for (what i understand) the correct way",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 17
+      },
+      "revId": "860eef2009a8a6cf046667627eb7257a69ddc969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7be0cde4_acaa2250",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-02T06:13:10Z",
+      "side": 1,
+      "message": "as above, use testexec.DumpLogOnError",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 18
+      },
+      "revId": "860eef2009a8a6cf046667627eb7257a69ddc969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e7396ae_a13aa860",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-02T06:13:10Z",
+      "side": 1,
+      "message": "minor: fatal?",
+      "range": {
+        "startLine": 97,
+        "startChar": 4,
+        "endLine": 97,
+        "endChar": 9
+      },
+      "revId": "860eef2009a8a6cf046667627eb7257a69ddc969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
