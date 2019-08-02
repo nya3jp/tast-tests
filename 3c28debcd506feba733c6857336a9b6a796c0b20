@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99f08a01_55edf51b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-08-02T05:40:46Z",
+      "side": 1,
+      "message": "Based on the review in https://crrev.com/c/1717615 removed ash.SnapARCAppInSplitView and modified to use ash.SetARCAppWindowState.",
+      "revId": "3c28debcd506feba733c6857336a9b6a796c0b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
