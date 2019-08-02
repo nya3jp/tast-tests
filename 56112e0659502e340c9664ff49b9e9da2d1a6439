@@ -46,6 +46,30 @@
       "revId": "56112e0659502e340c9664ff49b9e9da2d1a6439",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8fbcec7c_d8d51b73",
+        "filename": "src/chromiumos/tast/local/session/ownership.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-08-02T22:49:05Z",
+      "side": 1,
+      "message": "Sure, I just felt like maybe this should end up in its own commit since this change is fairly large and we wouldn\u0027t want to e.g. lose this if it gets reverted for some reason.\n\nYMMV on splitting it up.",
+      "parentUuid": "751676c2_12c4fa8b",
+      "range": {
+        "startLine": 52,
+        "startChar": 12,
+        "endLine": 57,
+        "endChar": 11
+      },
+      "revId": "56112e0659502e340c9664ff49b9e9da2d1a6439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
