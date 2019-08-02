@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/vda_sanity-bear_profile1_20190802.vp9.json",
+  "size": 193,
+  "sha256sum": "cca9a8a16a8f714c66217ec0e4d62d2142fe0a37583ad875840e5b68ce1c8b6d"
+}
