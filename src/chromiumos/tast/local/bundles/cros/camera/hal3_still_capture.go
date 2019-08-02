@@ -6,6 +6,7 @@ package camera
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/camera/hal3"
 	"chromiumos/tast/local/media/caps"
@@ -19,6 +20,10 @@ func init() {
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "arc_camera3", caps.BuiltinCamera},
+		// Default timeout (i.e. 2 minutes) is not enough for some devices in
+		// the test lab, such as Nocturne. The lab might be much darker than
+		// the office, which makes 3A algorithm converge slower.
+		Timeout: 5 * time.Minute,
 	})
 }
 
