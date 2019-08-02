@@ -18,10 +18,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CCAUIModes,
-		Desc:         "Opens CCA and verifies the use cases of mode selector and portrait, square modes",
-		Contacts:     []string{"shenghao@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"informational"},
+		Func:     CCAUIModes,
+		Desc:     "Opens CCA and verifies the use cases of mode selector and portrait, square modes",
+		Contacts: []string{"shenghao@chromium.org", "chromeos-camera-eng@google.com"},
+		// TODO(shik): Re-enabled it after b/138828180 resolved.
+		Attr:         []string{"disabled"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinCamera},
 		Data:         []string{"cca_ui.js", "cca_ui_capture.js", "cca_ui_multi_camera.js", "human_face.y4m"},
 	})
