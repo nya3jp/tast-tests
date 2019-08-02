@@ -52,6 +52,24 @@
       "revId": "d74db9e8b7ba7507ff755ae5aa516680369527ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5261b065_d4253ebc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-02T00:54:29Z",
+      "side": 1,
+      "message": "This should be already covered by golint which runs on repo upload. I verified that repo refuses to upload this patchset, and I also saw another lint errors.\n\n $ git fetch \"https://chromium.googlesource.com/chromiumos/platform/tast-tests\" refs/changes/65/1724265/5 \u0026\u0026 git cherry-pick FETCH_HEAD\n $ repo upload . --cbr\n       Errors:\n            * Changelist description needs BUG field (after first line):\n            BUG\u003dchromium:9999 (for public tracker)\n            BUG\u003db:9999 (for buganizer)\n            BUG\u003dNone\n            * Changelist description needs TEST field (after first line)\n            * Only \"Signed-off-by:\" tag(s) may follow the Change-Id.\n            * Files not formatted with gofmt:\n                * src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go\n            * Hook script \"tools/run_lint.sh -commit\u003d${PRESUBMIT_COMMIT}\" failed with code 1:\n              src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go:171:1: context.Context should be the first parameter of a function\n              \n              Refer the following documents for details:\n                https://golang.org/pkg/context/\n\nMiguel, could you make sure repo preupload hooks are enabled? Failing to run them wastes your time.",
+      "parentUuid": "5e856c11_2067483e",
+      "revId": "d74db9e8b7ba7507ff755ae5aa516680369527ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
