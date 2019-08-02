@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72686c61_aad04464",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_encode_accel_perf_h264_1080p_i420.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-02T03:40:50Z",
+      "side": 1,
+      "message": "Could you comment the reason of longer timeout here, too?",
+      "revId": "5d36e1dc7efde4197621c0e453085788bffd7c41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
