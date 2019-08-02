@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "1bf9f8c2_a7f8df63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-02T03:58:00Z",
+      "side": 1,
+      "message": "1) reverted\n2) changed to use \"defer\" so that cmd is always killed\n3) added TODOs",
+      "parentUuid": "cc90c4e3_69b00f8b",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 8
+      },
+      "revId": "5ddb6b3b90f92cb1fd294b2cb6511d8db8af38bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a635d7c5_9b0e499d",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
         "patchSetId": 1
@@ -144,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "0fa20d54_cc03e06c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-02T03:58:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54427a2e_8fb6a4bf",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 8
+      },
+      "revId": "5ddb6b3b90f92cb1fd294b2cb6511d8db8af38bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6107d62d_29c6a733",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/verifyapp/verify_app.go",
         "patchSetId": 1
@@ -211,6 +259,30 @@
       "revId": "5ddb6b3b90f92cb1fd294b2cb6511d8db8af38bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bceeace7_53db7097",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_start_everything.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-02T03:58:00Z",
+      "side": 1,
+      "message": "yes, these were removed by the rebase on top of crrev.com/c/1725791",
+      "parentUuid": "280650a0_4cb34027",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 0
+      },
+      "revId": "5ddb6b3b90f92cb1fd294b2cb6511d8db8af38bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
