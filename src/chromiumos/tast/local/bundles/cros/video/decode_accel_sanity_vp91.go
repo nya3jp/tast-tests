@@ -15,15 +15,17 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DecodeAccelSanityVP91,
-		Desc:         "Run Chrome video_decode_accelerator_unittest's NoCrash test on a VP9.1 video",
+		Desc:         "Verify that the system doesn't crash when playing a VP9 video with unexpected VP9 profile1 features",
 		Contacts:     []string{"deanliao@chromium.org", "chromeos-video-eng@google.com"},
 		SoftwareDeps: []string{"chrome", caps.HWDecodeVP9},
-		Data:         []string{decode.DecodeAccelSanityVP91.Name},
+		Data:         []string{"vda_sanity-bear_profile1.vp9", "vda_sanity-bear_profile1.vp9.json"},
 	})
 }
 
-// DecodeAccelSanityVP91 runs NoCrash test in video_decode_accelerator_unittest with video defined
-// in decode.DecodeAccelSanityVP91.
+// DecodeAccelSanityVP91 runs the FlushAtEndOfStream test in the video_decode_accelerator_tests.
+// The vda_sanity-bear_profile1.vp9 video is used with metadata that incorrectly initializes the
+// video decoder for VP9 profile0. The test doesn't look at the decode result, but verifies system
+// robustness when encountering unexpected features.
 func DecodeAccelSanityVP91(ctx context.Context, s *testing.State) {
-	decode.RunAccelVideoSanityTest(ctx, s, decode.DecodeAccelSanityVP91)
+	decode.RunAccelVideoSanityTest(ctx, s, "vda_sanity-bear_profile1.vp9")
 }
