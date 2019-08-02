@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b355287_745fddbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/param.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-02T02:16:27Z",
+      "side": 1,
+      "message": "nit: s.Log can be used?",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 37
+      },
+      "revId": "b239a3313e8453cf2eff29bd19ef8968db5c4ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
