@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3030f9b9_14cd0884",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-02T03:39:52Z",
+      "side": 1,
+      "message": "huge nit: the function below uses cmdlineRegex. How about naming it exeRegex for consistency?",
+      "range": {
+        "startLine": 78,
+        "startChar": 38,
+        "endLine": 78,
+        "endChar": 47
+      },
+      "revId": "cd78ad400fb1467c98368e3979bdce4083536c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
