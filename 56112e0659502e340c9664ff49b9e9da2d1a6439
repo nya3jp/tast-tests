@@ -22,6 +22,30 @@
       "revId": "56112e0659502e340c9664ff49b9e9da2d1a6439",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "751676c2_12c4fa8b",
+        "filename": "src/chromiumos/tast/local/session/ownership.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-02T00:50:53Z",
+      "side": 1,
+      "message": "It\u0027s pretty hard to debug errors from this function without it, since you don\u0027t know which step failed. As I\u0027m using this function more, I needed the improved debugging -- I couldn\u0027t figure out some of the problems I was having without it.\n\nhttps://chromium.git.corp.google.com/chromiumos/platform/tast/+/b69f1f6b49ec6cbd4ac1eb367d48df3d9bbdd48c/docs/writing_tests.md#error-construction suggests wrapping errors like this.\n\nIf you really feel strongly, I can move this change into a different commit, but it seems pretty small.",
+      "parentUuid": "9c6dd0ac_82fd3e32",
+      "range": {
+        "startLine": 52,
+        "startChar": 12,
+        "endLine": 57,
+        "endChar": 11
+      },
+      "revId": "56112e0659502e340c9664ff49b9e9da2d1a6439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
