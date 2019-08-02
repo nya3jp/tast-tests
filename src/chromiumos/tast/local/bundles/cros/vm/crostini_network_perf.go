@@ -158,7 +158,7 @@ func CrostiniNetworkPerf(ctx context.Context, s *testing.State) {
 	defer vm.UnmountComponent(ctx)
 
 	s.Log("Creating default container")
-	cont, err := vm.CreateDefaultVMContainer(ctx, s.OutDir(), cr.User(), vm.StagingImageServer, "")
+	cont, err := vm.CreateDefaultVMContainer(ctx, s.OutDir(), cr.User(), vm.StagingImageServer, "", false)
 	if err != nil {
 		s.Fatal("Failed to set up default container: ", err)
 	}
