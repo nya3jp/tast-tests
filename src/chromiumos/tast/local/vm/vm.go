@@ -56,8 +56,9 @@ func NewDefaultVM(c *Concierge) *VM {
 // staging container versions. The directory dir may be used to store
 // logs on failure. If the container type is Tarball, then artifactPath
 // must be specified with the path to the tarball containing the termina VM.
-// Otherwise, artifactPath is ignored.
-func CreateDefaultVM(ctx context.Context, dir, user string, t ContainerType, artifactPath string) (*VM, error) {
+// Otherwise, artifactPath is ignored. If enableGpu is set, VM will try to use
+// hardware gpu if possible.
+func CreateDefaultVM(ctx context.Context, dir, user string, t ContainerType, artifactPath string, enableGpu bool) (*VM, error) {
 	userPath, err := cryptohome.UserPath(ctx, user)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get user Downloads dir")
@@ -86,6 +87,7 @@ func CreateDefaultVM(ctx context.Context, dir, user string, t ContainerType, art
 	}
 
 	vmInstance := NewDefaultVM(concierge)
+	vmInstance.EnableGPU = enableGpu
 	if err := vmInstance.Start(ctx); err != nil {
 		if stopErr := StopConcierge(ctx); stopErr != nil {
 			testing.ContextLog(ctx, "Failed to stop concierge: ", stopErr)

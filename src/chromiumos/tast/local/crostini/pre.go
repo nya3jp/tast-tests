@@ -40,26 +40,40 @@ func StartedByDownload() testing.Precondition { return startedByDownloadPre }
 // use this precondition you must have crostini.ImageArtifact as a data dependency.
 func StartedByArtifact() testing.Precondition { return startedByArtifactPre }
 
+// StartedGPUEnabled is similar to StartedByDownload, but will
+// use pass enable-gpu to vm instance to allow gpu being used.
+func StartedGPUEnabled() testing.Precondition { return startedGPUEnabledPre }
+
 var startedByArtifactPre = &preImpl{
-	name:    "crostini_started_by_artifact",
-	timeout: chrome.LoginTimeout + 7*time.Minute,
-	dlImage: false,
+	name:      "crostini_started_by_artifact",
+	timeout:   chrome.LoginTimeout + 7*time.Minute,
+	dlImage:   false,
+	enableGpu: false,
 }
 
 var startedByDownloadPre = &preImpl{
-	name:    "crostini_started_by_download",
-	timeout: chrome.LoginTimeout + 10*time.Minute,
-	dlImage: true,
+	name:      "crostini_started_by_download",
+	timeout:   chrome.LoginTimeout + 10*time.Minute,
+	dlImage:   true,
+	enableGpu: false,
+}
+
+var startedGPUEnabledPre = &preImpl{
+	name:      "crostini_started_gpu_enabled",
+	timeout:   chrome.LoginTimeout + 10*time.Minute,
+	dlImage:   true,
+	enableGpu: true,
 }
 
 // Implementation of crostini's precondition.
 type preImpl struct {
-	name    string
-	timeout time.Duration
-	dlImage bool
-	cr      *chrome.Chrome
-	tconn   *chrome.Conn
-	cont    *vm.Container
+	name      string
+	timeout   time.Duration
+	dlImage   bool
+	cr        *chrome.Chrome
+	tconn     *chrome.Conn
+	cont      *vm.Container
+	enableGpu bool
 }
 
 // Interface methods for a testing.Precondition.
@@ -105,7 +119,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 			s.Fatal("Failed to set up component: ", err)
 		}
 		s.Log("Creating default container (from download)")
-		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.StagingImageServer, ""); err != nil {
+		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.StagingImageServer, "", p.enableGpu); err != nil {
 			s.Fatal("Failed to set up default container (from download): ", err)
 		}
 	} else {
@@ -116,7 +130,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 		}
 
 		s.Log("Creating default container (from artifact)")
-		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.Tarball, artifactPath); err != nil {
+		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.Tarball, artifactPath, p.enableGpu); err != nil {
 			s.Fatal("Failed to set up default container (from artifact): ", err)
 		}
 	}
