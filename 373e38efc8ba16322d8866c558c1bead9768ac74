@@ -187,6 +187,30 @@
       "revId": "373e38efc8ba16322d8866c558c1bead9768ac74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f12ceadf_6e58cb46",
+        "filename": "src/chromiumos/tast/local/gtest/gtest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-02T04:27:21Z",
+      "side": 1,
+      "message": "Since I thought this is an interesting topic, I looked through standard library functions to see what\u0027s the idiom.\n\nActually I could find only a few examples of constructor methods, but I did see no NewFoo or CreateFoo. I think the most popular naming is just Foo. For example:\n\n- https://godoc.org/net/http#Request.MultipartReader\n- https://godoc.org/encoding/xml#Decoder.Token\n\nYou might want to name it runner to be idiomatic.",
+      "parentUuid": "d4fd591a_97b3fdcb",
+      "range": {
+        "startLine": 262,
+        "startChar": 16,
+        "endLine": 262,
+        "endChar": 28
+      },
+      "revId": "373e38efc8ba16322d8866c558c1bead9768ac74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
