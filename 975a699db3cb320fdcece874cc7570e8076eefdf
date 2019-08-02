@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f5ed59e_392b366b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-02T00:02:30Z",
+      "side": 1,
+      "message": "You should call out the changes you\u0027re making to conn.go too\n\nYou can add as much info as you want here. A summary of everything you are doing in the CL is good since it is quicker than reading a couple hundred lines of code",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 47
+      },
+      "revId": "975a699db3cb320fdcece874cc7570e8076eefdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
