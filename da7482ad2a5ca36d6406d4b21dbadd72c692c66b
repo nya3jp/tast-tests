@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8a0997f_2de24e18",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-08-03T03:02:24Z",
+      "side": 1,
+      "message": "Ideally if we run it twice we should report both sets of performance values. The dashboard hopefully will give us a low/high range bar for this and we can learn something about the behavior.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 3
+      },
+      "revId": "da7482ad2a5ca36d6406d4b21dbadd72c692c66b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
