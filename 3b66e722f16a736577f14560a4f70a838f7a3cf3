@@ -240,6 +240,30 @@
     },
     {
       "key": {
+        "uuid": "71196522_b24fa425",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/charge_scheduling.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2019-08-03T00:43:09Z",
+      "side": 1,
+      "message": "Sounds reasonable... except \"marking the test disabled\" doesn\u0027t jive with my (albeit aged) mental model of how are tests work.\n\nI would expect the \"slower, more detailed\" [auto]test to be enabled, but restricted to one of the FAFT test suites; either FAFT_ec, or maybe a (new?) dedicated FAFT_wilco_ec suite.  In any case, this suite would be used as part of a \"Wilco EC\" qualification test, similar to how we qualify any other EC firmware update.",
+      "parentUuid": "ad6694f5_3b01a55c",
+      "range": {
+        "startLine": 26,
+        "startChar": 14,
+        "endLine": 26,
+        "endChar": 42
+      },
+      "revId": "3b66e722f16a736577f14560a4f70a838f7a3cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37c3c644_6dacc55d",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/charge_scheduling.go",
         "patchSetId": 1
