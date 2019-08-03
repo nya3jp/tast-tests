@@ -17,6 +17,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -61,7 +62,25 @@ func RunTest(ctx context.Context, s *testing.State, cont *vm.Container, traces m
 		s.Fatal("Failed to get apitrace: ", err)
 	}
 	for traceFile, traceName := range traces {
-		perfValues, err := runTrace(shortCtx, cont, s.DataPath(traceFile), traceName)
+		// Between each trace file, we wait till the whole machine is idle.
+		if err := cpu.WaitUntilIdle(ctx); err != nil {
+			s.Fatal("Failed waiting for CPU to become idle: ", err)
+		}
+
+		// TODO(pwang): we should do our best to eliminate the moving/copying part here once the traces are huge(>1G)
+		// Moving the file inside container space.
+		containerPath := filepath.Join("/tmp", filepath.Base(s.DataPath(traceFile)))
+		if err := cont.PushFile(ctx, s.DataPath(traceFile), containerPath); err != nil {
+			s.Fatal("Failed copying trace file to container: ", err)
+		}
+		containerPath, err := decompressTrace(ctx, cont, containerPath)
+		if err != nil {
+			s.Fatal("Failed decompressing trace file: ", err)
+		}
+
+		// Run it twice to warm up the machine.
+		runTrace(shortCtx, cont, containerPath, traceName)
+		perfValues, err := runTrace(shortCtx, cont, containerPath, traceName)
 		if err != nil {
 			s.Fatal("Failed running trace: ", err)
 		}
@@ -71,20 +90,10 @@ func RunTest(ctx context.Context, s *testing.State, cont *vm.Container, traces m
 	}
 }
 
-// runTrace runs a trace and writes output to ${traceName}.txt. traceFile should be absolute path.
+// runTrace runs a trace and writes output to ${traceName}.txt. traceFile should be absolute path the container space.
 func runTrace(ctx context.Context, cont *vm.Container, traceFile, traceName string) (*perf.Values, error) {
-	containerPath := filepath.Join("/tmp", filepath.Base(traceFile))
-	if err := cont.PushFile(ctx, traceFile, containerPath); err != nil {
-		return nil, errors.Wrap(err, "failed copying trace file to container")
-	}
-
-	containerPath, err := decompressTrace(ctx, cont, containerPath)
-	if err != nil {
-		return nil, err
-	}
-
-	testing.ContextLog(ctx, "Replaying trace file ", filepath.Base(containerPath))
-	cmd := cont.Command(ctx, "apitrace", "replay", "--benchmark", containerPath)
+	testing.ContextLog(ctx, "Replaying trace file ", filepath.Base(traceFile))
+	cmd := cont.Command(ctx, "apitrace", "replay", "--benchmark", traceFile)
 	traceOut, err := cmd.CombinedOutput()
 	if err != nil {
 		cmd.DumpLog(ctx)
