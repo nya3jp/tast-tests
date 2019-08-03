@@ -84,7 +84,7 @@ func runTrace(ctx context.Context, cont *vm.Container, traceFile, traceName stri
 	}
 
 	testing.ContextLog(ctx, "Replaying trace file ", filepath.Base(containerPath))
-	cmd := cont.Command(ctx, "apitrace", "replay", containerPath)
+	cmd := cont.Command(ctx, "apitrace", "replay", "--benchmark", containerPath)
 	traceOut, err := cmd.CombinedOutput()
 	if err != nil {
 		cmd.DumpLog(ctx)
