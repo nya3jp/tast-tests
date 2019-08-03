@@ -8,8 +8,8 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/graphics/trace"
 	"chromiumos/tast/local/crostini"
+	"chromiumos/tast/local/graphics/trace"
 	"chromiumos/tast/testing"
 )
 
