@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5c9a087_5ce56e2b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-04T23:04:46Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure this will only tell you that the gpu precondition doesn\u0027t have compile errors (not that it works)\n\nI think it would be useful (not now, but in a future CL) to have a very minimal integration test which verifies that enabling the GPU does indeed work.\n\nDo you know what is a minimal command-line way to verify if the GPU is available in a running container? Then i\u0027ll be happy to write the test.",
+      "range": {
+        "startLine": 13,
+        "startChar": 18,
+        "endLine": 13,
+        "endChar": 34
+      },
+      "revId": "0987f1dc1d845d61fd2ae3aa72566d9a7fad0bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "117e1f7a_95768cf0",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-04T23:04:46Z",
+      "side": 1,
+      "message": "minor naming thing: Depending on the answer to the comment below this may becomes something like: StartedByDownloadWithGPUEnabled() (in case you need to distinguish it from a \"StartedByArtifactWith...\")",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 75
+      },
+      "revId": "0987f1dc1d845d61fd2ae3aa72566d9a7fad0bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f5ef033_c658766b",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-04T23:04:46Z",
+      "side": 1,
+      "message": "you should preference the artifact over the DL for flakiness reasons (unless you want both, see below comment)",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 17
+      },
+      "revId": "0987f1dc1d845d61fd2ae3aa72566d9a7fad0bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03d85129_35cb3383",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-04T23:04:46Z",
+      "side": 1,
+      "message": "I\u0027d like to know if we want/need to test on all 4 configurations of: [artifact,download]x[gpu,no-gpu]\n\nI\u0027d check with smbarber@, but iiuc the images in the artifact/dl are identical (they only vary in how you get them), in which case we don\u0027t gain much by having both (artifact,GPU) and (DL,GPU).\n\nIf that is true, i would preference replacing dlImage and enableGpu with an enum:\n\ntype Mode int\nconst (\n  Artifact Mode \u003d iota\n  Download\n  Gpu\n)\n\nIf that is not the case, the booleans are preferable (though minor comment: variable ordering, put enableGpu before the PreData items [cr, tcon, cont])",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 15
+      },
+      "revId": "0987f1dc1d845d61fd2ae3aa72566d9a7fad0bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
