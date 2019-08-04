@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "de74f548_22aebd10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-04T12:44:30Z",
+      "side": 1,
+      "message": "It runs a fake executable, instead.",
+      "parentUuid": "ff341695_2e3a4053",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "bd37388d9cb6408a9632a112bc2bf4f54c5ec0e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6c568c33_fbeb46de",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
         "patchSetId": 2
