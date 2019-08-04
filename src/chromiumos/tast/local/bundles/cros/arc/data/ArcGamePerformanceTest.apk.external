@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/ArcGamePerformanceTest_20190726a.apk",
-  "size": 316717,
-  "sha256sum": "b1773cb1007650f2dd4b0e8ab2ddf7e4710f0e2e6868003af365b06f76b60ac9"
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/ArcGamePerformanceTest_20190803.apk",
+  "size": 111972,
+  "sha256sum": "017aaef76244c00479f5d79eb3961292360c39f89ccedd9080c5b2acdfc64b91"
 }
