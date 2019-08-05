@@ -22,6 +22,30 @@
       "revId": "40561eb7054f0927e009283c23497ef8e9fea4c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3534b52b_f96f1e89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_perf_h264_2160p_30fps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-05T01:23:40Z",
+      "side": 1,
+      "message": "In some cases we use these comments to add additional info that doesn\u0027t fit in the \u0027Desc\u0027 field. But I agree that in this case it\u0027s not very useful. Removed!",
+      "parentUuid": "afba11ff_3236bd81",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 110
+      },
+      "revId": "40561eb7054f0927e009283c23497ef8e9fea4c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
