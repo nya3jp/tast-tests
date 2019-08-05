@@ -18,5 +18,7 @@ import (
 
 // Main is an entry point function for bundles.
 func Main() {
-	os.Exit(bundle.Local(os.Args[1:], os.Stdin, os.Stdout, os.Stderr, ready.Wait))
+	os.Exit(bundle.Local(os.Args[1:], os.Stdin, os.Stdout, os.Stderr, &bundle.LocalDelegate{
+		Ready: ready.Wait,
+	}))
 }
