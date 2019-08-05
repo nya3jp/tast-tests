@@ -26,7 +26,7 @@ func init() {
 		Contacts:     []string{"sarakato@chromium.org", "dtseng@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome"},
-		Data:         []string{"accessibility_sample.apk"},
+		Data:         []string{"ArcAccessibilityTest.apk"},
 		Timeout:      4 * time.Minute,
 	})
 }
@@ -228,7 +228,7 @@ func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, eleme
 
 func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	const (
-		apkName = "accessibility_sample.apk"
+		apkName = "ArcAccessibilityTest.apk"
 
 		checkBox     = "android.widget.CheckBox"
 		toggleButton = "android.widget.ToggleButton"
