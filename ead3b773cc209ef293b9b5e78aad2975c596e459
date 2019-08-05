@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1edfada5_243e4937",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-08-05T19:47:01Z",
+      "side": 1,
+      "message": "nit: prefix with \"tast-tests: crostini: \"",
+      "revId": "ead3b773cc209ef293b9b5e78aad2975c596e459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c61d38f_a153d293",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-08-05T19:47:01Z",
+      "side": 1,
+      "message": "nit: application",
+      "range": {
+        "startLine": 28,
+        "startChar": 13,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "ead3b773cc209ef293b9b5e78aad2975c596e459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88c078b4_a98cee45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-08-05T19:47:01Z",
+      "side": 1,
+      "message": "nit: application",
+      "range": {
+        "startLine": 46,
+        "startChar": 13,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "ead3b773cc209ef293b9b5e78aad2975c596e459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f6b327c_f8e0d2bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-08-05T19:47:01Z",
+      "side": 1,
+      "message": "These would be nice to factor out to string consts.",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 44
+      },
+      "revId": "ead3b773cc209ef293b9b5e78aad2975c596e459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9f7d8a9_80491ee3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-08-05T19:47:01Z",
+      "side": 1,
+      "message": "nit: end with a period",
+      "range": {
+        "startLine": 54,
+        "startChar": 60,
+        "endLine": 54,
+        "endChar": 61
+      },
+      "revId": "ead3b773cc209ef293b9b5e78aad2975c596e459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e98bb6c_ef619fe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-08-05T19:47:01Z",
+      "side": 1,
+      "message": "nit: runs",
+      "range": {
+        "startLine": 54,
+        "startChar": 11,
+        "endLine": 54,
+        "endChar": 14
+      },
+      "revId": "ead3b773cc209ef293b9b5e78aad2975c596e459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
