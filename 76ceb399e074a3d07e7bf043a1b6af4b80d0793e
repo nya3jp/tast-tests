@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0128437_fb597890",
+        "filename": "src/chromiumos/tast/local/profiler/controller/controller.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-05T09:29:17Z",
+      "side": 1,
+      "message": "It seems natural to me to use interface rather than struct since most of these members are functions.\n\ntype profiler interface {\n start(ctx context.Context, outDir string) error\n end() error\n}",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 1
+      },
+      "revId": "76ceb399e074a3d07e7bf043a1b6af4b80d0793e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1aec598c_cc113a84",
+        "filename": "src/chromiumos/tast/local/profiler/controller/controller.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-05T09:29:17Z",
+      "side": 1,
+      "message": "In general, I don\u0027t recommend introducing dynamic registration system since it introduces yet another indirection which makes code harder to follow. I believe in this case defining a simple map is sufficient:\n\n var profilers \u003d map[string]profiler{ ... }",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "76ceb399e074a3d07e7bf043a1b6af4b80d0793e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a3be446_1e2ff126",
+        "filename": "src/chromiumos/tast/local/profiler/controller/controller.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-05T09:29:17Z",
+      "side": 1,
+      "message": "Please avoid passing *testing.State to a support library if possible. testing.State contains everything, so it makes harder to tell what kind of I/O it has. At least at this moment, just passing s.OutDir() should be fine. We can revisit it in the future if we need to.",
+      "range": {
+        "startLine": 44,
+        "startChar": 32,
+        "endLine": 44,
+        "endChar": 48
+      },
+      "revId": "76ceb399e074a3d07e7bf043a1b6af4b80d0793e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa8a476e_e30caf36",
+        "filename": "src/chromiumos/tast/local/profiler/controller/controller.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-05T09:29:17Z",
+      "side": 1,
+      "message": "Please define a type for profiler names. Then we can avoid typo issues.",
+      "range": {
+        "startLine": 44,
+        "startChar": 50,
+        "endLine": 44,
+        "endChar": 65
+      },
+      "revId": "76ceb399e074a3d07e7bf043a1b6af4b80d0793e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dc1fd70_dd19c6a3",
+        "filename": "src/chromiumos/tast/local/profiler/crosperf/crosperf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-05T09:29:17Z",
+      "side": 1,
+      "message": "Please avoid using global variables. You can avoid it by using interface; see my another commetn.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 21
+      },
+      "revId": "76ceb399e074a3d07e7bf043a1b6af4b80d0793e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b21f0655_13543411",
+        "filename": "src/chromiumos/tast/local/profiler/crosperf/crosperf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-05T09:29:17Z",
+      "side": 1,
+      "message": "In any case, cmd.Wait must be called to release the resource.\n\nIdiomatic way is:\n\n func end() error {\n   if cmd \u003d\u003d nil {\n     return nil\n   }\n\n   cmd.Kill()\n   return cmd.Wait()\n }\n\nPlease also see https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow.",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "76ceb399e074a3d07e7bf043a1b6af4b80d0793e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e18eea78_7d7f5a2a",
+        "filename": "src/chromiumos/tast/local/profiler/profiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-05T09:29:17Z",
+      "side": 1,
+      "message": "The profiler package is fairly short. Would you mind merging subpackages (profiler/controller, profiler/crosperf) to this package? If those subpackages are private, we can just unexported them while keeping in this package.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 22
+      },
+      "revId": "76ceb399e074a3d07e7bf043a1b6af4b80d0793e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7af646a_ee572b69",
+        "filename": "src/chromiumos/tast/local/profiler/profiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-05T09:29:17Z",
+      "side": 1,
+      "message": "indentation here looks weird...",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 16
+      },
+      "revId": "76ceb399e074a3d07e7bf043a1b6af4b80d0793e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
