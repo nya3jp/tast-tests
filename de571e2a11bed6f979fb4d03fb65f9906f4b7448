@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b99a12f6_953f0ef9",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-05T09:11:19Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with this, so this may be a stupid question, but is the same context ID used for the tab even if navigations happen?",
+      "range": {
+        "startLine": 35,
+        "startChar": 14,
+        "endLine": 35,
+        "endChar": 32
+      },
+      "revId": "de571e2a11bed6f979fb4d03fb65f9906f4b7448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "869d2955_1c15dcc0",
+        "filename": "src/chromiumos/tast/local/chrome/conn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-05T09:11:19Z",
+      "side": 1,
+      "message": "It looks fragile to build the expected origin from the given URL, especially when pageURL can be anything like about:blank.\n\nHow about always opening about:blank in newConn, and after getting execution context ID performing navigation? Then the origin should be static.",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 51
+      },
+      "revId": "de571e2a11bed6f979fb4d03fb65f9906f4b7448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
