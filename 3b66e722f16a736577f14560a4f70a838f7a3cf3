@@ -288,6 +288,30 @@
     },
     {
       "key": {
+        "uuid": "88ae57be_1bdef8a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/charge_scheduling.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-05T18:54:12Z",
+      "side": 1,
+      "message": "The newer PS is the fast, always run, but incomplete version of the test.\n\nFor the slow, complete version of the test, I had some thoughts on http://issuetracker.google.com/138940522#comment2, how about we take up the discussion there?",
+      "parentUuid": "c840141b_8370cd10",
+      "range": {
+        "startLine": 26,
+        "startChar": 14,
+        "endLine": 26,
+        "endChar": 42
+      },
+      "revId": "3b66e722f16a736577f14560a4f70a838f7a3cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37c3c644_6dacc55d",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/charge_scheduling.go",
         "patchSetId": 1

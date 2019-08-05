@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "40cf7b6f_1803ff01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/wilco_charge_scheduling.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-05T18:54:12Z",
+      "side": 1,
+      "message": "Whoops, you\u0027re right, this is the fast, always ran version.",
+      "parentUuid": "43d3fc11_6dfe6c53",
+      "range": {
+        "startLine": 26,
+        "startChar": 26,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "fb5006ff45b030a0bb6084cda143cec35d950ce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb06d69d_a60c8cf5",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/wilco_charge_scheduling.go",
         "patchSetId": 3
@@ -68,6 +92,30 @@
       "revId": "fb5006ff45b030a0bb6084cda143cec35d950ce3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52392ece_78203a49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/wilco_charge_scheduling.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-05T18:54:12Z",
+      "side": 1,
+      "message": "Lovely! Done.",
+      "parentUuid": "cb06d69d_a60c8cf5",
+      "range": {
+        "startLine": 51,
+        "startChar": 15,
+        "endLine": 51,
+        "endChar": 76
+      },
+      "revId": "fb5006ff45b030a0bb6084cda143cec35d950ce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "4822f81e_25703bb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/wilco_charge_scheduling.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-05T18:54:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfe65a2b_8b457db9",
+      "range": {
+        "startLine": 58,
+        "startChar": 35,
+        "endLine": 58,
+        "endChar": 37
+      },
+      "revId": "fb5006ff45b030a0bb6084cda143cec35d950ce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ace5f4fd_0a9d620c",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/wilco_charge_scheduling.go",
         "patchSetId": 3
@@ -114,6 +186,30 @@
       "revId": "fb5006ff45b030a0bb6084cda143cec35d950ce3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "600cc814_da383f55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/wilco_charge_scheduling.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-05T18:54:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ace5f4fd_0a9d620c",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 11
+      },
+      "revId": "fb5006ff45b030a0bb6084cda143cec35d950ce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "452a1640_556286f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/wilco_charge_scheduling.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-05T18:54:12Z",
+      "side": 1,
+      "message": "I wanted to signify that the file should already exist, and that we should fail if it doesn\u0027t. Made this more clear.",
+      "parentUuid": "0bfdd2ba_45198640",
+      "range": {
+        "startLine": 92,
+        "startChar": 49,
+        "endLine": 92,
+        "endChar": 53
+      },
+      "revId": "fb5006ff45b030a0bb6084cda143cec35d950ce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "912954d6_fd839b48",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/wilco_charge_scheduling.go",
         "patchSetId": 3
@@ -160,6 +280,30 @@
       "revId": "fb5006ff45b030a0bb6084cda143cec35d950ce3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d9709ed_7f4f0bf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/wilco_charge_scheduling.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-05T18:54:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "912954d6_fd839b48",
+      "range": {
+        "startLine": 111,
+        "startChar": 60,
+        "endLine": 111,
+        "endChar": 81
+      },
+      "revId": "fb5006ff45b030a0bb6084cda143cec35d950ce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
