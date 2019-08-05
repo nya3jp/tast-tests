@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "68ac146c_4685baac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-08-05T16:12:24Z",
+      "side": 1,
+      "message": "Okay, let\u0027s use the default timeout for now.\nI guess the execution time won\u0027t be so different among boards because the most time-consuming part should be cpu.MeasureUsage.\n\nIt\u0027d be okay to increase timeout after it turns out that 2 minutes are too short.",
+      "parentUuid": "a96d74c7_7c445e94",
+      "revId": "0fc20af100696fecececd0ca73bc30b0760dfb5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e084dcf_5e9b9773",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2019-08-05T14:18:11Z",
       "side": 1,
       "message": "Is it necessary to wait idle here?\nYou\u0027re installing an app immediately later and then SetUpBenchmark, so waiting idle here sounds a bit redundant? If it is necessary, could you comment the reason?",
+      "revId": "0fc20af100696fecececd0ca73bc30b0760dfb5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a26208fa_cb20ec58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-08-05T16:12:24Z",
+      "side": 1,
+      "message": "Hmm, I suggested to call cpu.WaitUntilIdle here in order to prevent the CPU usages from being affected by the login procedures or the previous test (when precondition is used).\nIsn\u0027t it necessary to wait here?",
+      "parentUuid": "3e084dcf_5e9b9773",
       "revId": "0fc20af100696fecececd0ca73bc30b0760dfb5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -110,6 +146,30 @@
       "writtenOn": "2019-08-05T14:18:11Z",
       "side": 1,
       "message": "Could you add short doc for this function?\nSpecifically, it is not trivial that \"float64\" returned value means what from the name \"measureUtilization\".\n\noptional: Maybe rename to measureCPUUsage?",
+      "range": {
+        "startLine": 83,
+        "startChar": 5,
+        "endLine": 83,
+        "endChar": 23
+      },
+      "revId": "0fc20af100696fecececd0ca73bc30b0760dfb5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea49997d_384b1834",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-08-05T16:12:24Z",
+      "side": 1,
+      "message": "function comment should be helpful.\noptional: we might want to use \"named return value\" to make it clear what \"float64\" means.\nhttps://tour.golang.org/basics/7",
+      "parentUuid": "48fdfe6d_17897d9c",
       "range": {
         "startLine": 83,
         "startChar": 5,
