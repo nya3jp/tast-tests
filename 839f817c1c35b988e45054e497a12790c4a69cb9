@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93a0d463_1deccb1c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2019-08-05T11:37:32Z",
+      "side": 1,
+      "message": "are you running the Q case only or are you also running on P ?\n\nThis should pass on N/P/Q.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 77
+      },
+      "revId": "839f817c1c35b988e45054e497a12790c4a69cb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64b9c185_87799033",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/containermount/containermount.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2019-08-05T11:37:32Z",
+      "side": 1,
+      "message": "\"In ARC Q, the following mount point is also shared:\"",
+      "range": {
+        "startLine": 419,
+        "startChar": 18,
+        "endLine": 419,
+        "endChar": 24
+      },
+      "revId": "839f817c1c35b988e45054e497a12790c4a69cb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
