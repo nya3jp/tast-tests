@@ -237,6 +237,24 @@
     },
     {
       "key": {
+        "uuid": "ccc917fc_1c4149d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-05T06:57:18Z",
+      "side": 1,
+      "message": "Failing \"Start()\" means that the process does not start.\nThus, DumpLogOnError should be no-op in the case anyways.\n\nit\u0027s open for the redesign, but it\u0027s also offtopic from this CL. If you have more comments, please ping me offline.",
+      "parentUuid": "45060f33_81e431aa",
+      "revId": "aa14fd3fc9ff980725a8cdbfd5f4484870741681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76072e6c_c0fa6165",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
         "patchSetId": 2
