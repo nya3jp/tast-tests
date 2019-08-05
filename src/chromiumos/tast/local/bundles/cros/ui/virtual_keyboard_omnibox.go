@@ -30,6 +30,11 @@ func VirtualKeyboardOmnibox(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
+	// Start a empty window.
+	if _, err := cr.NewConn(ctx, "chrome://newtab"); err != nil {
+		s.Fatal("Failed to start a new tab: ", err)
+	}
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
