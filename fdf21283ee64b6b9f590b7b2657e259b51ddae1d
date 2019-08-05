@@ -332,6 +332,30 @@
     },
     {
       "key": {
+        "uuid": "5dc243d0_a6df002b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-05T21:40:21Z",
+      "side": 1,
+      "message": "Done. I think this is what I want, since I do want to make sure the service exists before and after the restart process.",
+      "parentUuid": "cddde8da_88bc6e65",
+      "range": {
+        "startLine": 92,
+        "startChar": 13,
+        "endLine": 92,
+        "endChar": 22
+      },
+      "revId": "fdf21283ee64b6b9f590b7b2657e259b51ddae1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8e0a11e_72e76905",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 11
@@ -447,6 +471,30 @@
       "revId": "fdf21283ee64b6b9f590b7b2657e259b51ddae1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d0d7000_9abab38d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-05T21:40:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ab043fe_501e4295",
+      "range": {
+        "startLine": 126,
+        "startChar": 52,
+        "endLine": 126,
+        "endChar": 73
+      },
+      "revId": "fdf21283ee64b6b9f590b7b2657e259b51ddae1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
