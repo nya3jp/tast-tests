@@ -91,6 +91,30 @@
       "revId": "0987f1dc1d845d61fd2ae3aa72566d9a7fad0bbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44afeec5_f4a53bcb",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-08-05T20:05:56Z",
+      "side": 1,
+      "message": "+1, I think the GPU tests should prefer to always use the artifact image. That\u0027ll still be the container image designated for tests, so you\u0027ll have mesa-utils and such preinstalled still. But the reliability will be noticeably better.",
+      "parentUuid": "03d85129_35cb3383",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 15
+      },
+      "revId": "0987f1dc1d845d61fd2ae3aa72566d9a7fad0bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
