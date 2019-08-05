@@ -22,6 +22,23 @@
       "revId": "d8367735db891f42bf6db9dbc999a2dd39f8cb3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22c8c903_7326f673",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/param.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-05T10:04:26Z",
+      "side": 1,
+      "message": "How about adding ExtraData here?\nI think being able to use Extra* is the important feature in parameterized test.\nIf we are not using Extra*, we should use table driven test instead of parameterized test in my understanding. Not using Extra* here can pose wrong impression about when to use parameterized test to readers of this example.\n\nWhat I imagine is something like:\n\nexample.Param.dog.txt: `4 legs bow-wow`\nexmaple.Param.duck.txt: `2 legs quack`\n\nfunc Param(ctx context.Context, s *testing.State) {\n  a :\u003d s.Param().(animal)\n  b, err :\u003d ioutil.ReadFile(s.DataPath(...)) // animal may needs to have the data path.\n  if string(b) !\u003d fmt.Sprintf(\"%d legs %s\", a.numLegs, a.crying) {\n    // error\n  }\n}",
+      "revId": "d8367735db891f42bf6db9dbc999a2dd39f8cb3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
