@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f870a21_35b37bfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-05T20:09:58Z",
+      "side": 1,
+      "message": "space in here?",
+      "range": {
+        "startLine": 116,
+        "startChar": 67,
+        "endLine": 116,
+        "endChar": 69
+      },
+      "revId": "6db727d63e67bc8a812e562b2f669ce090bad970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

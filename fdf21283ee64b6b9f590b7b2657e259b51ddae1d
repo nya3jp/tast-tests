@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "93487c6b_d2180c9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-05T20:09:58Z",
+      "side": 1,
+      "message": "I don\u0027t think we can create files in /sys from Tast anyway, so the \u0027perm\u0027 arg [1] is probably irrelevant anyway. But I agree with Billy anyway, 0200 does make sense.\n\n[1] https://godoc.org/io/ioutil#WriteFile\n\"If the file does not exist, WriteFile creates it with permissions perm\"",
+      "parentUuid": "3cc17fe3_d5f7b60f",
+      "range": {
+        "startLine": 80,
+        "startChar": 86,
+        "endLine": 80,
+        "endChar": 90
+      },
+      "revId": "fdf21283ee64b6b9f590b7b2657e259b51ddae1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93190dd4_d7ee314a",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 11
@@ -284,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "cddde8da_88bc6e65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-05T20:09:58Z",
+      "side": 1,
+      "message": "That sounds like you need to check upstart.JobStatus() instead.",
+      "parentUuid": "bfc178cc_20976dfe",
+      "range": {
+        "startLine": 92,
+        "startChar": 13,
+        "endLine": 92,
+        "endChar": 22
+      },
+      "revId": "fdf21283ee64b6b9f590b7b2657e259b51ddae1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c8e0a11e_72e76905",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 11
@@ -375,6 +423,30 @@
       "revId": "fdf21283ee64b6b9f590b7b2657e259b51ddae1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ab043fe_501e4295",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-05T20:09:58Z",
+      "side": 1,
+      "message": "I don\u0027t really object to the decreased poll time, but this test is a bit odd: it performs a \"restart\" action, and then it immediately polls for the device list. Depending on the \"restart\" action, this may or may not be sensible. For unbind/bind restart, that\u0027s probably reasonable - if any device was going to disappear, it should have disappeared already.\n\nBut for udev restart: I\u0027m not really sure when anybody thought it might disappear. I guess as soon as any udev rules get (re)processed, which might rename thing? But we haven\u0027t really synchronized with any udev rule processing, IIUC, so they might still be operating in the middle of this polling loop. And so, PASS/FAIL will really depend on how quickly you poll. If your first poll comes before rule processing, then you might not notice that some later udev rule is going to rename the device.\n\nAgain, that might not mean you want to change the polling loop. But maybe this suggests some additional waiting *before* we get to the polling loop.\n\nAnd actually: that\u0027s what this line is in the original test:\n\n    # We need to wait for udev to rename (or not) the interface!\n    time.sleep(10)\n\nIt\u0027s not beautiful, but it makes the test more effective.",
+      "parentUuid": "1775933b_2254dd93",
+      "range": {
+        "startLine": 126,
+        "startChar": 52,
+        "endLine": 126,
+        "endChar": 73
+      },
+      "revId": "fdf21283ee64b6b9f590b7b2657e259b51ddae1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
