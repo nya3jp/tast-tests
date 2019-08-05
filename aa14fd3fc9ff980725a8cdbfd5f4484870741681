@@ -219,6 +219,24 @@
     },
     {
       "key": {
+        "uuid": "45060f33_81e431aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-05T06:48:00Z",
+      "side": 1,
+      "message": "Question to hidehiko@: why Start doesn\u0027t take DumpLogOnError? Does it make sense to change the API?",
+      "parentUuid": "90cf861d_4a86e04a",
+      "revId": "aa14fd3fc9ff980725a8cdbfd5f4484870741681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76072e6c_c0fa6165",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
         "patchSetId": 2
