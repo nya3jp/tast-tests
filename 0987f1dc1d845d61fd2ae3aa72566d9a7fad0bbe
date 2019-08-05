@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a3727dea_75ef3425",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-05T22:49:19Z",
+      "side": 1,
+      "message": "tracking in crbug.com/990993",
+      "parentUuid": "82139db0_0312a9ba",
+      "range": {
+        "startLine": 13,
+        "startChar": 18,
+        "endLine": 13,
+        "endChar": 34
+      },
+      "revId": "0987f1dc1d845d61fd2ae3aa72566d9a7fad0bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "117e1f7a_95768cf0",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 3
@@ -140,6 +164,30 @@
       "revId": "0987f1dc1d845d61fd2ae3aa72566d9a7fad0bbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2243070_30b4824e",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-05T22:49:19Z",
+      "side": 1,
+      "message": "cheers",
+      "parentUuid": "c7cb9140_c073bfa7",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 17
+      },
+      "revId": "0987f1dc1d845d61fd2ae3aa72566d9a7fad0bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
