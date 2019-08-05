@@ -69,6 +69,24 @@
       "revId": "d358b9ecba76b429fc34108e03e99eaae66fa8ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47d48841_3ee2718a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2019-08-05T08:44:38Z",
+      "side": 1,
+      "message": "Can\u0027t we just poll window state with a timeout?",
+      "parentUuid": "985b18a4_448d4432",
+      "revId": "d358b9ecba76b429fc34108e03e99eaae66fa8ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
