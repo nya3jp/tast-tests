@@ -255,6 +255,24 @@
     },
     {
       "key": {
+        "uuid": "e0c2e4bd_8fc19f14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-05T07:44:09Z",
+      "side": 1,
+      "message": "Ah. I understand it. Thank you for the explanation.",
+      "parentUuid": "ccc917fc_1c4149d6",
+      "revId": "aa14fd3fc9ff980725a8cdbfd5f4484870741681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76072e6c_c0fa6165",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
         "patchSetId": 2
