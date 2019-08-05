@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56a6539d_401e0ec8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-05T09:05:29Z",
+      "side": 1,
+      "message": "nit: a wireless interface",
+      "range": {
+        "startLine": 43,
+        "startChar": 39,
+        "endLine": 43,
+        "endChar": 41
+      },
+      "revId": "fdf21283ee64b6b9f590b7b2657e259b51ddae1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a99069e8_59e25a57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-05T09:05:29Z",
+      "side": 1,
+      "message": "huge nit: This is the same as make([]string, len(files)). (capacity defaults to the size)",
+      "range": {
+        "startLine": 51,
+        "startChar": 10,
+        "endLine": 51,
+        "endChar": 48
+      },
+      "revId": "fdf21283ee64b6b9f590b7b2657e259b51ddae1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fe74dc8_2e317b7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-05T09:05:29Z",
+      "side": 1,
+      "message": "huge nit: trailing period please.",
+      "range": {
+        "startLine": 70,
+        "startChar": 38,
+        "endLine": 70,
+        "endChar": 42
+      },
+      "revId": "fdf21283ee64b6b9f590b7b2657e259b51ddae1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d608177a_72303d39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-05T09:05:29Z",
+      "side": 1,
+      "message": "0200 is a bit weird permission... do you really intend it? Typical values are 0777, 0755, 0700, 0666, 0644, 0600.",
+      "range": {
+        "startLine": 80,
+        "startChar": 86,
+        "endLine": 80,
+        "endChar": 90
+      },
+      "revId": "fdf21283ee64b6b9f590b7b2657e259b51ddae1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93190dd4_d7ee314a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-05T09:05:29Z",
+      "side": 1,
+      "message": "huge nit: I recommend avoid the comma to make the message more readable. For example: could not unbind %s driver",
+      "range": {
+        "startLine": 81,
+        "startChar": 51,
+        "endLine": 81,
+        "endChar": 52
+      },
+      "revId": "fdf21283ee64b6b9f590b7b2657e259b51ddae1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df2cd511_5566c788",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-05T09:05:29Z",
+      "side": 1,
+      "message": "JobExists checks if the job configuration exists or not. I\u0027m afraid this is not what you want.\n\nI think just calling upstart.RestartJob is sufficient.",
+      "range": {
+        "startLine": 92,
+        "startChar": 13,
+        "endLine": 92,
+        "endChar": 22
+      },
+      "revId": "fdf21283ee64b6b9f590b7b2657e259b51ddae1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8e0a11e_72e76905",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-05T09:05:29Z",
+      "side": 1,
+      "message": "style: interface\n\nAlso this message is a bit difficult to understand (e.g. which is the actual value?). How about:\n\n unexpected network interfaces: got %v, want %v",
+      "range": {
+        "startLine": 123,
+        "startChar": 25,
+        "endLine": 123,
+        "endChar": 34
+      },
+      "revId": "fdf21283ee64b6b9f590b7b2657e259b51ddae1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "874fd8fe_f0ac703b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-05T09:05:29Z",
+      "side": 1,
+      "message": "If you don\u0027t have concrete reason, would you mind using the default interval (100ms)? Shorter interval means shorter runtime.",
+      "range": {
+        "startLine": 126,
+        "startChar": 52,
+        "endLine": 126,
+        "endChar": 73
+      },
+      "revId": "fdf21283ee64b6b9f590b7b2657e259b51ddae1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "561a3a1e_5208c8fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-05T09:05:29Z",
+      "side": 1,
+      "message": "It would be easier to understand the error message if we describe the scenario rather than just mentioning the function name. For example:\n\n Restarting udev: ...\n\n Restarting wireless interface: ...",
+      "range": {
+        "startLine": 134,
+        "startChar": 10,
+        "endLine": 138,
+        "endChar": 51
+      },
+      "revId": "fdf21283ee64b6b9f590b7b2657e259b51ddae1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
