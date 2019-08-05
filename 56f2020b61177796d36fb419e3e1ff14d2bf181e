@@ -1196,6 +1196,30 @@
     },
     {
       "key": {
+        "uuid": "3d42aa30_f0406de8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-05T18:32:01Z",
+      "side": 1,
+      "message": "I am not just talking about initialization. autotest will randomly lose connection to the extension  or just fail to connect to it temporarily. When that happens the test will fail at a random part. But a retry would have succeeded. I never experienced this in my local testing but when you start running it on every device and build it may still happen in Tast.",
+      "parentUuid": "38e524f2_9f9c4517",
+      "range": {
+        "startLine": 69,
+        "startChar": 14,
+        "endLine": 69,
+        "endChar": 18
+      },
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "907a9878_be75a1dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
         "patchSetId": 6
