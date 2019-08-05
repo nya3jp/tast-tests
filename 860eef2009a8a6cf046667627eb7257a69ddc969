@@ -331,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "3615a9ae_2b06ae14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-05T22:37:13Z",
+      "side": 1,
+      "message": "In that case you have some options:\n - manually clean up cmd with kill+wait at every potential return (less ideal)\n - factor the execution into a function scope so that you can defer kill+wait. (this is what i did to solve the same problem in crrev.com/c/1729653)\n\nActually the latter of those two options is turning out to be fairly common. I think it would be useful to have some API where you launch a crostini GUI app with a nominated window name and a callback (lambda) and the api will invoke your callback with a handle to the window once it spawns (or errors/timeout/etc).\n\nAnyway that\u0027s a refactoring for another day...",
+      "parentUuid": "51e969bb_91a384b6",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 17
+      },
+      "revId": "860eef2009a8a6cf046667627eb7257a69ddc969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7be0cde4_acaa2250",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
         "patchSetId": 2
