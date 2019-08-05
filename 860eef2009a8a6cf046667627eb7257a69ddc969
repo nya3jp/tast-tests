@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7d26a42f_84077b61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_paste_wayland_to_wayland_artifact.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-05T03:50:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "254a1bfb_f8e84909",
+      "range": {
+        "startLine": 24,
+        "startChar": 16,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "860eef2009a8a6cf046667627eb7257a69ddc969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dca515e0_86035692",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_paste_wayland_to_wayland_download.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "860eef2009a8a6cf046667627eb7257a69ddc969",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee93c922_136f78c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_paste_wayland_to_wayland_download.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-05T03:50:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dca515e0_86035692",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 57
+      },
+      "revId": "860eef2009a8a6cf046667627eb7257a69ddc969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "98b939a8_cd0efa2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-05T03:50:30Z",
+      "side": 1,
+      "message": "My plan is to add X11 tests later.\n\nI\u0027ve redone this to use config structs as in that example CL.",
+      "parentUuid": "dbe6fca8_74209fb4",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 25
+      },
+      "revId": "860eef2009a8a6cf046667627eb7257a69ddc969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ac03b98_902c81e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "860eef2009a8a6cf046667627eb7257a69ddc969",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da00ecbc_4ad05f70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-05T03:50:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ac03b98_902c81e7",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 22
+      },
+      "revId": "860eef2009a8a6cf046667627eb7257a69ddc969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "0273ec04_7192f760",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-05T03:50:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4231787b_0c661371",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 18
+      },
+      "revId": "860eef2009a8a6cf046667627eb7257a69ddc969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f82a7fbc_df0c98ef",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
         "patchSetId": 2
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "abb63add_6378ec0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-05T03:50:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f82a7fbc_df0c98ef",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "860eef2009a8a6cf046667627eb7257a69ddc969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0659c21d_d89c4f75",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
         "patchSetId": 2
@@ -151,6 +295,30 @@
       "writtenOn": "2019-08-02T06:13:10Z",
       "side": 1,
       "message": "About the Wait()\n- usually we try to defer it closer to the Start(), it is problematic if either of the above s.Fatal() occurs, the application will never be killed.\n- You probably also want a kill() (before this) otherwise you\u0027ll just hang forever if sending the key event fails (not sure though, depends how the test app was written, but thats what would happen to the wayland_demo)\n\nSee crrev.com/c/1728492 bundles/cros/crostini/verifyapp/verify_app.go for (what i understand) the correct way",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 17
+      },
+      "revId": "860eef2009a8a6cf046667627eb7257a69ddc969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51e969bb_91a384b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-05T03:50:30Z",
+      "side": 1,
+      "message": "How does this work when we want the first command to have finished before starting the second?",
+      "parentUuid": "0659c21d_d89c4f75",
       "range": {
         "startLine": 83,
         "startChar": 1,
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "e177d4df_88dcf73f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-05T03:50:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7be0cde4_acaa2250",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 18
+      },
+      "revId": "860eef2009a8a6cf046667627eb7257a69ddc969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e7396ae_a13aa860",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
         "patchSetId": 2
@@ -206,6 +398,30 @@
       "revId": "860eef2009a8a6cf046667627eb7257a69ddc969",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b27f94a_d05d9fc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-05T03:50:30Z",
+      "side": 1,
+      "message": "I\u0027m not quite sure when to use one over the other, especially at the end of a test.",
+      "parentUuid": "0e7396ae_a13aa860",
+      "range": {
+        "startLine": 97,
+        "startChar": 4,
+        "endLine": 97,
+        "endChar": 9
+      },
+      "revId": "860eef2009a8a6cf046667627eb7257a69ddc969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
