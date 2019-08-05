@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbc14e23_d538dfe9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/param.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-05T09:35:27Z",
+      "side": 1,
+      "message": "nit: Parameterized ?\nI found other frameworks call this parameterized test.\ngtest: https://github.com/google/googletest/blob/master/googletest/docs/advanced.md#value-parameterized-tests\njunit: https://github.com/junit-team/junit4/wiki/parameterized-tests\n\nLooks like \"parametric test\" is a term used in statistics.\nhttps://www.google.com/search?q\u003d%22parametric+tests%22\u0026rlz\u003d1CAVNXA_enJP846JP846\u0026oq\u003d%22parametric+tests%22\u0026aqs\u003dchrome..69i57j69i59j0l4.3192j1j7\u0026sourceid\u003dchrome\u0026ie\u003dUTF-8",
+      "range": {
+        "startLine": 21,
+        "startChar": 13,
+        "endLine": 21,
+        "endChar": 23
+      },
+      "revId": "d8367735db891f42bf6db9dbc999a2dd39f8cb3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
