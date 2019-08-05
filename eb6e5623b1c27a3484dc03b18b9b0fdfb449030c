@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83256594_574bb46a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-08-05T21:43:48Z",
+      "side": 1,
+      "message": "This does not conform to golint (VmReady), but it seems like the project does not want to support linting on generated code: https://github.com/golang/protobuf/issues/53.",
+      "revId": "eb6e5623b1c27a3484dc03b18b9b0fdfb449030c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
