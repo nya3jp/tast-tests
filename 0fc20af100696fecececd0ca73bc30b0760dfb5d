@@ -36,6 +36,46 @@
     },
     {
       "key": {
+        "uuid": "d6c9a463_e3c5ea41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-05T15:17:24Z",
+      "side": 1,
+      "message": "After a second thought, I think we might not need the window restoring logic and the app.Restart() logic when failed. How about just calling FullscreenWindow(), WaitForVideoActive(), and MeasureUsage() here?",
+      "revId": "0fc20af100696fecececd0ca73bc30b0760dfb5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8a3bc89_692e8e62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-05T15:17:24Z",
+      "side": 1,
+      "message": "I guess measureUtilization() was called testScreen() and it\u0027s not updated?",
+      "range": {
+        "startLine": 65,
+        "startChar": 21,
+        "endLine": 65,
+        "endChar": 31
+      },
+      "revId": "0fc20af100696fecececd0ca73bc30b0760dfb5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8343ea25_d721cfda",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
         "patchSetId": 3
