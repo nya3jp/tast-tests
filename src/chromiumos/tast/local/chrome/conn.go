@@ -7,6 +7,8 @@ package chrome
 import (
 	"context"
 	"encoding/json"
+	"fmt"
+	"net/url"
 	"strings"
 	"time"
 
@@ -29,7 +31,8 @@ type Conn struct {
 	cl       *cdp.Client
 	targetID target.ID
 
-	lw *jslog.Worker
+	lw   *jslog.Worker
+	ecID runtime.ExecutionContextID
 
 	locked bool // if true, don't allow Close or CloseTarget to be called
 
@@ -37,7 +40,7 @@ type Conn struct {
 }
 
 // newConn starts a new session using sm for communicating with the supplied target.
-// pageURL is only used when logging JavaScript console messages via lm.
+// pageURL is used when logging JavaScript console messages via lm, and to identify execution context.
 func newConn(ctx context.Context, sm *session.Manager, id target.ID,
 	lm *jslog.Master, pageURL string, chromeErr func(error) error) (*Conn, error) {
 	testing.ContextLog(ctx, "Connecting to Chrome target ", string(id))
@@ -56,6 +59,12 @@ func newConn(ctx context.Context, sm *session.Manager, id target.ID,
 		return nil, err
 	}
 
+	created, err := cl.Runtime.ExecutionContextCreated(ctx)
+	if err != nil {
+		return nil, err
+	}
+	defer created.Close()
+
 	if err := cl.Runtime.Enable(ctx); err != nil {
 		return nil, err
 	}
@@ -69,15 +78,44 @@ func newConn(ctx context.Context, sm *session.Manager, id target.ID,
 		return nil, err
 	}
 
+	ecID, err := waitExecutionContextID(ctx, created, pageURL)
+	if err != nil {
+		return nil, err
+	}
+
 	c := &Conn{
 		co:        co,
 		cl:        cl,
 		targetID:  id,
 		lw:        lm.NewWorker(string(id), pageURL, ev),
+		ecID:      ecID,
 		chromeErr: chromeErr,
 	}
 	co = nil
 	return c, nil
+}
+
+// waitExecutionContextID waits for the execution context creation whose origin is for pageURL.
+func waitExecutionContextID(ctx context.Context, cl runtime.ExecutionContextCreatedClient, pageURL string) (runtime.ExecutionContextID, error) {
+	u, err := url.Parse(pageURL)
+	if err != nil {
+		return 0, err
+	}
+	origin := fmt.Sprintf("%s://%s", u.Scheme, u.Host)
+	for {
+		select {
+		case <-cl.Ready():
+		case <-ctx.Done():
+			return 0, errors.Wrap(ctx.Err(), "timed out to wait for execution context creation")
+		}
+		c, err := cl.Recv()
+		if err != nil {
+			return 0, err
+		}
+		if c.Context.Origin == origin {
+			return c.Context.ID, nil
+		}
+	}
 }
 
 // Close closes the connection to the target and frees related resources.
@@ -151,6 +189,7 @@ func (c *Conn) doEval(ctx context.Context, expr string, awaitPromise bool, out i
 	if out != nil {
 		args = args.SetReturnByValue(true)
 	}
+	args = args.SetContextID(c.ecID)
 
 	repl, err := c.cl.Runtime.Evaluate(ctx, args)
 	if err != nil {
