@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c0d116c2_916a40b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-08-06T19:14:30Z",
+      "side": 1,
+      "message": "Moved it to a separate subpackage host_rpc.go.",
+      "parentUuid": "d149eaf5_ed4ad676",
+      "revId": "eb6e5623b1c27a3484dc03b18b9b0fdfb449030c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91dd7d71_d1ef433b",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "eb6e5623b1c27a3484dc03b18b9b0fdfb449030c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc7514f4_80d0a98d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-08-06T19:14:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91dd7d71_d1ef433b",
+      "revId": "eb6e5623b1c27a3484dc03b18b9b0fdfb449030c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "98ff96fe_bb8f7320",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-08-06T19:14:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2dc06a2_2306a4aa",
+      "revId": "eb6e5623b1c27a3484dc03b18b9b0fdfb449030c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8cce4d32_c2c5f3f5",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
         "patchSetId": 1
@@ -85,6 +139,24 @@
       "revId": "eb6e5623b1c27a3484dc03b18b9b0fdfb449030c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0865e04_4f21c8ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-08-06T19:14:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cce4d32_c2c5f3f5",
+      "revId": "eb6e5623b1c27a3484dc03b18b9b0fdfb449030c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "0f4867dc_711027d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-08-06T19:14:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f95174ca_6f5b427f",
+      "revId": "eb6e5623b1c27a3484dc03b18b9b0fdfb449030c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a778389a_e50b5487",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
         "patchSetId": 1
@@ -119,6 +209,24 @@
       "revId": "eb6e5623b1c27a3484dc03b18b9b0fdfb449030c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "393a5d92_bd72d8dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-08-06T19:14:30Z",
+      "side": 1,
+      "message": "I added the DumpLogOnError, but I think it still makes sense to have the error handling on the outside as well. The output is more understandable.",
+      "parentUuid": "a778389a_e50b5487",
+      "revId": "eb6e5623b1c27a3484dc03b18b9b0fdfb449030c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
