@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "347e3010_9e87ecd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-06T02:20:18Z",
+      "side": 1,
+      "message": "that\u0027s not gonna work. You can have more than one interface per phy. See, for example:\n\n# iw phy phy0 interface add monitor0 type monitor\n# iw dev\nphy#0\n        Interface monitor0\n                ifindex 7\n                wdev 0x2\n                addr XX:XX:XX:XX:XX:XX\n                type monitor\n                txpower 0.00 dBm\n        Interface wlan0\n                ifindex 5\n                wdev 0x1\n                addr XX:XX:XX:XX:XX:XX\n                type managed\n                txpower 20.00 dBm",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 42
+      },
+      "revId": "cfff1cd75c82cc65384bdda16f3176b906891042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07a7cb82_cd9e0bfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-06T02:20:18Z",
+      "side": 1,
+      "message": "many of these regexes are used once. Probably could discard the intermediate variable and just do:\n  m :\u003d regex.MustCompile(`...`).FindStringSubmatch(...)\n\nComment applies to most of your regexes.",
+      "range": {
+        "startLine": 296,
+        "startChar": 1,
+        "endLine": 296,
+        "endChar": 10
+      },
+      "revId": "cfff1cd75c82cc65384bdda16f3176b906891042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2db36a85_825779e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-06T02:20:18Z",
+      "side": 1,
+      "message": "I don\u0027t think we expect a range of matches here. I think we only expect 1.",
+      "range": {
+        "startLine": 306,
+        "startChar": 25,
+        "endLine": 307,
+        "endChar": 23
+      },
+      "revId": "cfff1cd75c82cc65384bdda16f3176b906891042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8c509df_76ad9909",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-06T02:20:18Z",
+      "side": 1,
+      "message": "we want this as an int, not a string. Might use either fmt.Sscanf() or encoding/hex library.",
+      "range": {
+        "startLine": 311,
+        "startChar": 34,
+        "endLine": 311,
+        "endChar": 38
+      },
+      "revId": "cfff1cd75c82cc65384bdda16f3176b906891042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80cece4c_5f017999",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-06T02:20:18Z",
+      "side": 1,
+      "message": "These should all be Section-specific, I think, even if for some of them, we don\u0027t really care about the \"per-band\" aspect and will probably just say \"true\" if any band supports the feature. But the section parsing is the right place for this, not just matching the string anywhere in the output.",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 61
+      },
+      "revId": "cfff1cd75c82cc65384bdda16f3176b906891042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a27f8d1c_ad454701",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-06T02:20:18Z",
+      "side": 1,
+      "message": "would it help to pop off the beginning of \u0027splits\u0027 after this? So\n\n  splits \u003d splits[1:]\n\n?",
+      "range": {
+        "startLine": 398,
+        "startChar": 1,
+        "endLine": 398,
+        "endChar": 2
+      },
+      "revId": "cfff1cd75c82cc65384bdda16f3176b906891042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eeed4559_aaef5647",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-06T02:20:18Z",
+      "side": 1,
+      "message": "It still feels like there\u0027s too much nesting going on here. The structure is still very muddy because of that. The python version wasn\u0027t leaps and bounds better, but at least it was a bit lighter on the nesting, which made it more readable.\n\nIs it possible to factor out a function (maybe an inline / function literal) that will help you make the section / sub-section parsing more repeatable? You end up doing very similar parsing as sub-sections within some of these sections.\n\nOr maybe that isn\u0027t much better. I guess I\u0027d ask you: can you think of any better ways to split up some of the \"data structure\" vs. \"logic\"?\n\n---\n\nA bare prototype of something that could possibly help:\n\n        parsers :\u003d []struct {\n                section *regexp.Regexp\n                parse   func(section []string, contents string) error\n        }{\n                {\n                        regexp.MustCompile(`^Band (\\d+):$`),\n                        func(section []string, contents string) error { \n                                if num, err :\u003d strconv.Atoi(section[1]); err !\u003d nil {\n                                        return errors.Wrapf(err, \"could not parse band number: %s\", section[1])\n                                } else {\n                                        return errors.New(fmt.Sprintf(\"Just proving that I found band: %d\", num))\n                                }\n                        },\n                },\n        }\n        \n        for i, section :\u003d range matches {\n                contents :\u003d splits[i+1]\n                for _, s :\u003d range parsers {\n                        if m :\u003d s.section.FindStringSubmatch(strings.TrimSpace(section)); m !\u003d nil {\n                                if err :\u003d s.parse(m, contents); err !\u003d nil {\n                                        return nil, err\n                                }\n                        }\n                }\n        }",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 403,
+        "endChar": 32
+      },
+      "revId": "cfff1cd75c82cc65384bdda16f3176b906891042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49859311_0d76be10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-06T02:20:18Z",
+      "side": 1,
+      "message": "HasPrefix()? And elsewhere. Or just reuse the regex from the next line.",
+      "range": {
+        "startLine": 406,
+        "startChar": 13,
+        "endLine": 406,
+        "endChar": 21
+      },
+      "revId": "cfff1cd75c82cc65384bdda16f3176b906891042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06b94a92_3b74d383",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-06T02:20:18Z",
+      "side": 1,
+      "message": "If you strip the whitespace on these, can\u0027t these regexes be more like\n\n  `^Band (\\d+):$`\n\n?",
+      "range": {
+        "startLine": 407,
+        "startChar": 36,
+        "endLine": 407,
+        "endChar": 46
+      },
+      "revId": "cfff1cd75c82cc65384bdda16f3176b906891042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96aef087_8094287b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-06T02:20:18Z",
+      "side": 1,
+      "message": "strings.SplitN(piece, \"-\", 2)\n\nThen you can safely skip the len() check",
+      "range": {
+        "startLine": 428,
+        "startChar": 13,
+        "endLine": 428,
+        "endChar": 38
+      },
+      "revId": "cfff1cd75c82cc65384bdda16f3176b906891042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
