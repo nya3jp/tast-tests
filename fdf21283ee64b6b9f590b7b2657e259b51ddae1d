@@ -498,6 +498,30 @@
     },
     {
       "key": {
+        "uuid": "70856165_6262a3b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-06T03:19:13Z",
+      "side": 1,
+      "message": "Newbie question: is it not possible to wait udev restart to finish, to avoid false negative without sleep?\nUsing sleep in tests is essentially flaky and should be avoided if possible.",
+      "parentUuid": "0d0d7000_9abab38d",
+      "range": {
+        "startLine": 126,
+        "startChar": 52,
+        "endLine": 126,
+        "endChar": 73
+      },
+      "revId": "fdf21283ee64b6b9f590b7b2657e259b51ddae1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "561a3a1e_5208c8fb",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 11
