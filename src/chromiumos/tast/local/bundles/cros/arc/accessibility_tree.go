@@ -5,13 +5,11 @@
 package arc
 
 import (
-	"bufio"
-	"bytes"
 	"context"
+	"encoding/json"
 	"io/ioutil"
+	"os"
 	"path/filepath"
-	"regexp"
-	"strings"
 	"time"
 
 	"github.com/google/go-cmp/cmp"
@@ -23,131 +21,93 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// simpleAutomationNode represents the node of accessibilityTree we can obtain from ChromeVox LogStore.
+// Defined in https://cs.chromium.org/chromium/src/chrome/browser/resources/chromeos/chromevox/cvox2/background/tree_types.js
+type simpleAutomationNode struct {
+	Name     string                 `json:"name"`
+	Role     string                 `json:"role"`
+	Children []simpleAutomationNode `json:"children"`
+	// There are other variables (url, location, value and logStr).
+	// They will not be used in the test and thus not included here.
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AccessibilityTree,
 		Desc:         "Checks that Chrome accessibility tree for ARC application is correct",
-		Contacts:     []string{"sarakato@chromium.org", "dtseng@chromium.org", "arc-eng@google.com"},
+		Contacts:     []string{"sarakato@chromium.org", "dtseng@chromium.org", "hirokisato@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome"},
-		Data:         []string{"ArcAccessibilityTest.apk", "accessibility_tree_expected.txt"},
+		Data:         []string{"ArcAccessibilityTest.apk", "accessibility_tree_expected.json"},
 		Timeout:      4 * time.Minute,
 	})
 }
 
-// readTree reads the tree specified by treePath and returns it as a string.
-func readTree(treePath string) (string, error) {
-	wantTree, err := ioutil.ReadFile(treePath)
+// getExpectedTree returns the accessibility tree read from the specified file.
+func getExpectedTree(filepath string) (root simpleAutomationNode, err error) {
+	jsonStr, err := ioutil.ReadFile(filepath)
 	if err != nil {
-		return "", err
+		return
 	}
-	return strings.TrimSpace(string(wantTree)), nil
+	err = json.Unmarshal(jsonStr, &root)
+	return
 }
 
 // getDesktopTree returns the accessibility tree of the whole desktop.
-func getDesktopTree(ctx context.Context, chromeVoxConn *chrome.Conn) (string, error) {
-	var gotTree string
+func getDesktopTree(ctx context.Context, chromeVoxConn *chrome.Conn) (root simpleAutomationNode, err error) {
 	const script = `
 		new Promise((resolve, reject) => {
 			chrome.automation.getDesktop((root) => {
 				LogStore.getInstance().writeTreeLog(new TreeDumper(root));
-				const logTree = LogStore.instance.getLogsOfType(TreeLog.LogType.TREE);
-				resolve(logTree[0].logTree_.treeToString());
+				const logTree = LogStore.instance.getLogsOfType(LogStore.LogType.TREE);
+				resolve(logTree[0].logTree_.rootNode);
 			});
 		})`
-	if err := chromeVoxConn.EvalPromise(ctx, script, &gotTree); err != nil {
-		return "", errors.Wrap(err, "could not get accessibility tree for current desktop")
-	}
-	return gotTree, nil
+	err = chromeVoxConn.EvalPromise(ctx, script, &root)
+	return
 }
 
-// compareSubtrees compares two subtrees, and if any, writes the diff to a file.
-func compareSubtrees(wantSubtree, gotSubtree, outputFilePath string) error {
-	if diff := cmp.Diff(wantSubtree, gotSubtree); diff != "" {
-		if err := ioutil.WriteFile(outputFilePath, []byte(diff), 0644); err != nil {
-			return errors.Wrap(err, "accessibility tree was not as expected; failed to write diff")
+// findNode recursively finds the node with specified name and role.
+func findNode(node *simpleAutomationNode, name, role string) *simpleAutomationNode {
+	if node.Name == name && node.Role == role {
+		return node
+	}
+	for _, ch := range node.Children {
+		if ret := findNode(&ch, name, role); ret != nil {
+			return ret
 		}
-		return errors.Errorf("accessibility tree was not as expected, wrote tree diff to %q", filepath.Base(outputFilePath))
 	}
 	return nil
 }
 
-// containsSubtree checks if wantTree is contained in gotTree.
-func containsSubtree(wantTree, gotTree, outputFilePath string) error {
-	splitTree := strings.Split(wantTree, "\n")
-	top := splitTree[0]
-	gotSubtree, ok := extractSubtree(gotTree, top)
-	if !ok {
-		return errors.Errorf("subtree is not as expected: %s, subtree is: %s", wantTree, gotTree)
-	}
-
-	return compareSubtrees(wantTree, gotSubtree, outputFilePath)
-}
-
-// extractSubtree extracts a subtree from a tree whose top-level element matches treeHeader.
-func extractSubtree(gotTree, treeHeader string) (string, bool) {
-	var subTree []string
-	var treeDepth int
-	sc := bufio.NewScanner(bytes.NewBufferString(gotTree))
-	for sc.Scan() {
-		line := sc.Text()
-		if len(subTree) == 0 && strings.Contains(line, treeHeader) {
-			treeDepth = strings.Count(line, "+")
-			subTree = append(subTree, strings.Replace(line, "+", "", treeDepth))
-		} else if len(subTree) > 0 {
-			if strings.Count(line, "+") <= treeDepth {
-				break
-			}
-			subTree = append(subTree, strings.Replace(line, "+", "", treeDepth))
-		}
-	}
-	if err := sc.Err(); err != nil {
-		return "", false
-	}
-	return cleanTree(subTree), true
-}
-
-// cleanTree removes the unwanted component from each tree line
-func cleanTree(tree []string) string {
-	// A sample line in the obtained accessibility tree is structured as follows:
-	// ++++++++++++++++++++++++++++++++++++name=seekBar role=slider location=(6, 184) size=(1188, 24)
-	// In the test, we are only concerned with node depth (specified by number of leading +'s)
-	// and name/ role.
-	roleRe := regexp.MustCompile(`\s*location=.*`)
-	var cleanedTree []string
-	for _, line := range tree {
-		cleanedTree = append(cleanedTree, roleRe.ReplaceAllString(line, ""))
-	}
-	return strings.Join(cleanedTree, "\n")
-}
-
-// checkAccessibilityTree checks that accessibility tree for current application,
-// matches the expected tree, which is provided in the file specified by wantFilePath.
-func checkAccessibilityTree(ctx context.Context, chromeVoxConn *chrome.Conn, wantFilePath, outputFilePath string) error {
-	// Read expected tree from input file.
-	wantTree, err := readTree(wantFilePath)
-	if err != nil {
-		return errors.Wrap(err, "could not get tree from file")
-	}
-
-	// Obtain the tree of which ChromeVox has focus.
-	gotTree, err := getDesktopTree(ctx, chromeVoxConn)
+// dumpTree writes the given accessibility tree to the file specified by filepath.
+func dumpTree(tree *simpleAutomationNode, filepath string) error {
+	f, err := os.Create(filepath)
 	if err != nil {
 		return err
 	}
+	defer f.Close()
 
-	// Compare the current tree with expected tree, and write diff to outputFilePath.
-	if err := containsSubtree(wantTree, gotTree, outputFilePath); err != nil {
-		return errors.Wrap(err, "tree was not as expected")
+	bytes, err := json.MarshalIndent(tree, "", "  ")
+	if err != nil {
+		return err
 	}
+	n, err := f.Write(bytes)
+	if err != nil {
+		return err
+	}
+	if n != len(bytes) {
+		return errors.Errorf("could write only %d / %d bytes to file %q", n, len(bytes), filepath)
+	}
+
 	return nil
 }
 
 func AccessibilityTree(ctx context.Context, s *testing.State) {
 	const (
-		apkName                     = "ArcAccessibilityTest.apk"
-		accessibilityTreeExpected   = "accessibility_tree_expected.txt"
-		accessibilityTreeOutputFile = "accessibility_event_diff_tree_output.txt"
+		apkName                   = "ArcAccessibilityTest.apk"
+		accessibilityTreeExpected = "accessibility_tree_expected.json"
+		accessibilityTreeActual   = "accessibility_tree_actual.json"
 	)
 	cr, err := accessibility.NewChrome(ctx)
 	if err != nil {
@@ -196,9 +156,36 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 		s.Fatal("Timed out polling for element: ", err)
 	}
 
-	// Check accessibility tree is what we expect it to be.
-	// This needs to occur after tab event, as the focus from the tab event results in nodes of the accessibility tree to be computed.
-	if err := checkAccessibilityTree(ctx, chromeVoxConn, s.DataPath(accessibilityTreeExpected), filepath.Join(s.OutDir(), accessibilityTreeOutputFile)); err != nil {
-		s.Fatal("Failed getting accessibility tree, after focus and check: ", err)
+	outFilepath := filepath.Join(s.OutDir(), accessibilityTreeActual)
+
+	// Parse expected tree.
+	expected, err := getExpectedTree(s.DataPath(accessibilityTreeExpected))
+	if err != nil {
+		s.Fatal("Failed to get the expected accessibility tree from the file: ", err)
+	}
+
+	// Extract accessibility tree.
+	root, err := getDesktopTree(ctx, chromeVoxConn)
+	if err != nil {
+		s.Fatal("Failed to get the actual accessibility tree for current desktop: ", err)
+	}
+
+	// Find the root node of Android application.
+	appRoot := findNode(&root, expected.Name, expected.Role)
+	if appRoot == nil {
+		// When the root could not be found, dump the entire tree.
+		if err := dumpTree(&root, outFilepath); err != nil {
+			s.Fatal("Failed to get Android application root from accessibility tree, and dumpTree failed: ", err)
+		}
+		s.Fatalf("Failed to get Android application root from accessibility tree, wrote the entire tree to %q", outFilepath)
+	}
+
+	if diff := cmp.Diff(appRoot, &expected); diff != "" {
+		// When the accessibility tree is different, dump the obtained tree.
+		s.Logf("Accessibility trees are different: %s", diff)
+		if err := dumpTree(appRoot, outFilepath); err != nil {
+			s.Fatal("dumpTree failed: ", err)
+		}
+		s.Fatalf("Wrote the actual tree to %q", outFilepath)
 	}
 }
