@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "efc99a96_e59e7e13",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-08-06T20:58:46Z",
+      "side": 1,
+      "message": "There will be a lot of crostini tests running with the GPU enabled. As starting crostini can take O(1 minute) reusing this is very important to keep tast reasonably fast.",
+      "parentUuid": "ee0fc7dc_8cac051e",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 60
+      },
+      "revId": "3ffab0359a82702d76474448e63a6d46df7feb20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9873b37_e85fb647",
         "filename": "/COMMIT_MSG",
         "patchSetId": 8
