@@ -7,6 +7,7 @@ package session
 
 import (
 	"context"
+	"time"
 
 	"github.com/godbus/dbus"
 	"github.com/golang/protobuf/proto"
@@ -159,6 +160,17 @@ func (m *SessionManager) RetrieveActiveSessions(ctx context.Context) (map[string
 		return nil, err
 	}
 	return ret, nil
+}
+
+// GetArcStartTimeTicks calls SessionManager.GetArcStartTimeTicks D-Bus method.
+func (m *SessionManager) GetArcStartTimeTicks(ctx context.Context) (time.Time, error) {
+	c := m.call(ctx, "GetArcStartTimeTicks")
+	var ret int64
+	if err := c.Store(&ret); err != nil {
+		return time.Time{}, err
+	}
+	// The unit of ticks is microsecond.
+	return time.Unix(0, ret*1000), nil
 }
 
 // call is thin wrapper of CallWithContext for convenience.
