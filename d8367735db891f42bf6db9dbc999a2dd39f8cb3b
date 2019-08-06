@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a79d6bd6_6af5eda0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/param.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-06T03:31:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "96e24f70_5d501c9c",
+      "range": {
+        "startLine": 21,
+        "startChar": 13,
+        "endLine": 21,
+        "endChar": 23
+      },
+      "revId": "d8367735db891f42bf6db9dbc999a2dd39f8cb3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22c8c903_7326f673",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/param.go",
         "patchSetId": 2
@@ -78,6 +102,24 @@
       "side": 1,
       "message": "\u003e If we are not using Extra*, we should use table driven test instead of parameterized test in my understanding. \n\nThis is case by case. In practice, I\u0027d expected most of param tests use Extra*. Though, it is not mandatory at the moment. For example, if a test has handreds of cases, and the test author may group by dozens.\n\n\u003e Not using Extra* here can pose wrong impression about when to use parameterized test to readers of this example.\n\nThis is a good point, I think. Then, maybe adding ExtraAttr or ExtraSoftwareDeps?\nActually, Data can be used as alternated of ExtraData, although it\u0027d be inefficient.\n\n\u003e What I imagine is something like: ...\n\nI\u0027d have different perspective; example shouldn\u0027t be golden test.\nSo, I\u0027d avoid it.",
       "parentUuid": "22c8c903_7326f673",
+      "revId": "d8367735db891f42bf6db9dbc999a2dd39f8cb3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3a45622_994d2efb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/param.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-06T03:31:48Z",
+      "side": 1,
+      "message": "I see. Using ExtraAttr or ExtraSoftwareDeps sgtm. For example, we can keep informational only in one test, on promoting this.\nAlso, having link to the document about parameterized test in the comment of Param will be good, possibly saying this test itself doesn\u0027t necessarily represent the intended usage (if Extra* is not added now).",
+      "parentUuid": "6fefd3b2_0bb86f30",
       "revId": "d8367735db891f42bf6db9dbc999a2dd39f8cb3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
