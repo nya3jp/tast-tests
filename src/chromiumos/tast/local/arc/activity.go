@@ -543,7 +543,7 @@ func (ac *Activity) getTasksInfo(ctx context.Context) (tasks []taskInfo, err err
 	// At least it must match one activity. Home and/or Dummy activities must be present.
 	if len(matches) == 0 {
 		testing.ContextLog(ctx, "Using regexp: ", regStr)
-		testing.ContextLog(ctx, "Output for regexp: ", string(output))
+		testing.ContextLog(ctx, "Output for regexp: ", output)
 		return nil, errors.New("could not match any activity; regexp outdated perhaps?")
 	}
 	for _, groups := range matches {
