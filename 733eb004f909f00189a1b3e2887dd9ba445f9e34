@@ -39,6 +39,48 @@
       "revId": "733eb004f909f00189a1b3e2887dd9ba445f9e34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fef3cb23_c6cc7e26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-08-06T21:22:02Z",
+      "side": 1,
+      "message": "In this case it\u0027s needed since 999 is a privileged port. Just want to make sure that Chrome can access a webserver running on penguin.linux.test on a privileged port.",
+      "parentUuid": "c152b98c_a48dedcb",
+      "range": {
+        "startLine": 58,
+        "startChar": 27,
+        "endLine": 58,
+        "endChar": 31
+      },
+      "revId": "733eb004f909f00189a1b3e2887dd9ba445f9e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5672a1ad_77ee2f4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-08-06T21:22:02Z",
+      "side": 1,
+      "message": "Yes we include python3 in the default container. We need the http.server from python 3 to get the bind address argument.",
+      "parentUuid": "241dfe72_9632988e",
+      "revId": "733eb004f909f00189a1b3e2887dd9ba445f9e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
