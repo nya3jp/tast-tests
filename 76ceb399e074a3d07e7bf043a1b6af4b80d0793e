@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "396e2764_ff1b65ac",
+        "filename": "src/chromiumos/tast/local/profiler/controller/controller.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2019-08-06T13:19:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0128437_fb597890",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 1
+      },
+      "revId": "76ceb399e074a3d07e7bf043a1b6af4b80d0793e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1aec598c_cc113a84",
         "filename": "src/chromiumos/tast/local/profiler/controller/controller.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "76ceb399e074a3d07e7bf043a1b6af4b80d0793e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aef2d617_55629e33",
+        "filename": "src/chromiumos/tast/local/profiler/controller/controller.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2019-08-06T13:19:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aec598c_cc113a84",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "76ceb399e074a3d07e7bf043a1b6af4b80d0793e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "b60267b4_44bbc402",
+        "filename": "src/chromiumos/tast/local/profiler/controller/controller.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2019-08-06T13:19:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa8a476e_e30caf36",
+      "range": {
+        "startLine": 44,
+        "startChar": 50,
+        "endLine": 44,
+        "endChar": 65
+      },
+      "revId": "76ceb399e074a3d07e7bf043a1b6af4b80d0793e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "198aa897_cab2e7be",
+        "filename": "src/chromiumos/tast/local/profiler/controller/controller.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2019-08-06T13:19:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a3be446_1e2ff126",
+      "range": {
+        "startLine": 44,
+        "startChar": 32,
+        "endLine": 44,
+        "endChar": 48
+      },
+      "revId": "76ceb399e074a3d07e7bf043a1b6af4b80d0793e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5dc1fd70_dd19c6a3",
         "filename": "src/chromiumos/tast/local/profiler/crosperf/crosperf.go",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "76ceb399e074a3d07e7bf043a1b6af4b80d0793e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adb957fa_a59b2c4e",
+        "filename": "src/chromiumos/tast/local/profiler/crosperf/crosperf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2019-08-06T13:19:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dc1fd70_dd19c6a3",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 21
+      },
+      "revId": "76ceb399e074a3d07e7bf043a1b6af4b80d0793e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "180519f0_da627978",
+        "filename": "src/chromiumos/tast/local/profiler/crosperf/crosperf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2019-08-06T13:19:03Z",
+      "side": 1,
+      "message": "Done. One change I have made: I want to send SIGINT instead of SIGKILL to the process, so I have create a function Signal in testexec to achieve that. Let me know if it\u0027s good.",
+      "parentUuid": "b21f0655_13543411",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "76ceb399e074a3d07e7bf043a1b6af4b80d0793e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e18eea78_7d7f5a2a",
         "filename": "src/chromiumos/tast/local/profiler/profiler.go",
         "patchSetId": 1
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "437e646d_1d81e273",
+        "filename": "src/chromiumos/tast/local/profiler/profiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2019-08-06T13:19:03Z",
+      "side": 1,
+      "message": "If we use map instead of dynamic registration, then there is no need for the controller subpackage. We intend to expand profiler/crosperf with more options and also add more profiler subpackages to the library in the future, so it is better to have all of them in their own packages.",
+      "parentUuid": "e18eea78_7d7f5a2a",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 22
+      },
+      "revId": "76ceb399e074a3d07e7bf043a1b6af4b80d0793e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7af646a_ee572b69",
         "filename": "src/chromiumos/tast/local/profiler/profiler.go",
         "patchSetId": 1
@@ -183,6 +351,30 @@
       "revId": "76ceb399e074a3d07e7bf043a1b6af4b80d0793e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d67351fe_69e0eca3",
+        "filename": "src/chromiumos/tast/local/profiler/profiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2019-08-06T13:19:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7af646a_ee572b69",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 16
+      },
+      "revId": "76ceb399e074a3d07e7bf043a1b6af4b80d0793e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
