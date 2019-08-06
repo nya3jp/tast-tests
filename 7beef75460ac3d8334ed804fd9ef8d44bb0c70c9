@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dee48fc3_ec2e7810",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2019-08-06T20:12:18Z",
+      "side": 1,
+      "message": "return err?",
+      "range": {
+        "startLine": 771,
+        "startChar": 9,
+        "endLine": 771,
+        "endChar": 12
+      },
+      "revId": "7beef75460ac3d8334ed804fd9ef8d44bb0c70c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04da1665_34abb8b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2019-08-06T20:12:18Z",
+      "side": 1,
+      "message": "Not sure the location of normal state window would be. If it is on the edge of right side of display, it may not be able to resize? It may be better to move window to left side of display before resizing.",
+      "range": {
+        "startLine": 785,
+        "startChar": 37,
+        "endLine": 785,
+        "endChar": 48
+      },
+      "revId": "7beef75460ac3d8334ed804fd9ef8d44bb0c70c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ba1ca3c_80700d35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2019-08-06T20:12:18Z",
+      "side": 1,
+      "message": "It might be more clear to add \"resized bounds width %d \u003e original bounds width %d\".",
+      "range": {
+        "startLine": 797,
+        "startChar": 59,
+        "endLine": 797,
+        "endChar": 66
+      },
+      "revId": "7beef75460ac3d8334ed804fd9ef8d44bb0c70c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
