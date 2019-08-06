@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "d149eaf5_ed4ad676",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-06T05:27:14Z",
+      "side": 1,
+      "message": "How about moving the server implementation to a subpackage?\nOr, at least, could you encapsulate the implementation into a struct?\n\ntype FakeVMToolsServer struct {\n  ...\n}\n\nfunc newFakeVMToolsServer(...) (*FakeVMToolsServer, error)\n\nfunc (serv *FakeVMToolsServer) Start(...) error\n\nfunc (serv *FakeVMToolsServer) Stop(...) error\n\nfunc (serv *FakeVMToolsServer) WaitReady(...) error\n\nThen, the test main scenario will be simplified\n\nStartSludge(...) {\n  serv, err :\u003d newFakeVMToolsServer(...)\n  if err !\u003d nil { ... }\n  if err :\u003d serv.Start(...); err !\u003d nil {\n    ...\n  }\n  defer serv.Stop(...)\n\n  if err :\u003d upstart.RestartJob(...); err !\u003d nil {\n    ...\n  }\n  if err :\u003d serv.WaitReady(...); err !\u003d nil {\n    ...\n  }\n\n  ...",
+      "revId": "eb6e5623b1c27a3484dc03b18b9b0fdfb449030c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91dd7d71_d1ef433b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-06T05:27:14Z",
+      "side": 1,
+      "message": "We use \"chan struct{}\" in this case, and instead of writing a data, close the channel to notify the receiver.",
+      "revId": "eb6e5623b1c27a3484dc03b18b9b0fdfb449030c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83256594_574bb46a",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
         "patchSetId": 1
@@ -13,6 +47,75 @@
       "writtenOn": "2019-08-05T21:43:48Z",
       "side": 1,
       "message": "This does not conform to golint (VmReady), but it seems like the project does not want to support linting on generated code: https://github.com/golang/protobuf/issues/53.",
+      "revId": "eb6e5623b1c27a3484dc03b18b9b0fdfb449030c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2dc06a2_2306a4aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-06T05:27:14Z",
+      "side": 1,
+      "message": "nit: How about aliasing \"vmtools\" in import section?",
+      "parentUuid": "83256594_574bb46a",
+      "revId": "eb6e5623b1c27a3484dc03b18b9b0fdfb449030c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cce4d32_c2c5f3f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-06T05:27:14Z",
+      "side": 1,
+      "message": "Could you add reference of the value?",
+      "revId": "eb6e5623b1c27a3484dc03b18b9b0fdfb449030c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f95174ca_6f5b427f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-06T05:27:14Z",
+      "side": 1,
+      "message": "Could you include context\u0027s Err()?",
+      "revId": "eb6e5623b1c27a3484dc03b18b9b0fdfb449030c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a778389a_e50b5487",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-06T05:27:14Z",
+      "side": 1,
+      "message": "optional: Now, how about using testexec.DumpLogOnError?",
       "revId": "eb6e5623b1c27a3484dc03b18b9b0fdfb449030c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
