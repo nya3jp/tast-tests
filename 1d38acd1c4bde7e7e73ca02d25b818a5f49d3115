@@ -22,6 +22,30 @@
       "revId": "1d38acd1c4bde7e7e73ca02d25b818a5f49d3115",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0ba7caa_df0ab9e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-08-06T22:42:48Z",
+      "side": 1,
+      "message": "Oops. typo and fixed. Thanks for catching this.",
+      "parentUuid": "df636980_c0d8d007",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "1d38acd1c4bde7e7e73ca02d25b818a5f49d3115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
