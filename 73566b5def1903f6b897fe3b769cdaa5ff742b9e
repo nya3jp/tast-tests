@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6eb1614_a6e78aa9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/crostini_network_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-06T07:36:06Z",
+      "side": 1,
+      "message": "nit: Could you add comment that this is for enableGPU, like /* enableGPU */",
+      "range": {
+        "startLine": 161,
+        "startChar": 97,
+        "endLine": 161,
+        "endChar": 102
+      },
+      "revId": "73566b5def1903f6b897fe3b769cdaa5ff742b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
