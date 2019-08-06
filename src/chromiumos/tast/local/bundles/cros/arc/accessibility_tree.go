@@ -51,7 +51,7 @@ func getDesktopTree(ctx context.Context, chromeVoxConn *chrome.Conn) (string, er
 		new Promise((resolve, reject) => {
 			chrome.automation.getDesktop((root) => {
 				LogStore.getInstance().writeTreeLog(new TreeDumper(root));
-				const logTree = LogStore.instance.getLogsOfType(TreeLog.LogType.TREE);
+				const logTree = LogStore.instance.getLogsOfType(LogStore.LogType.TREE);
 				resolve(logTree[0].logTree_.treeToString());
 			});
 		})`

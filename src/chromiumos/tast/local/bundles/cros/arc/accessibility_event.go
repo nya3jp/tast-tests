@@ -123,7 +123,7 @@ func getValueForFocusedElement(ctx context.Context, chromeVoxConn *chrome.Conn, 
 // checkOutputLog gets the current ChromeVox log and checks that it matches with expected log.
 func checkOutputLog(ctx context.Context, chromeVoxConn *chrome.Conn, expectedOutput []string, outputFilePath string) error {
 	var gotOutput string
-	if err := chromeVoxConn.Eval(ctx, "LogStore.instance.getLogsOfType(TextLog.LogType.EVENT).toString()", &gotOutput); err != nil {
+	if err := chromeVoxConn.Eval(ctx, "LogStore.instance.getLogsOfType(LogStore.LogType.EVENT).toString()", &gotOutput); err != nil {
 		return errors.Wrap(err, "failed to get event log")
 	}
 
