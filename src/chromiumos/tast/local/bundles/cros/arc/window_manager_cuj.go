@@ -123,6 +123,7 @@ func WindowManagerCUJ(ctx context.Context, s *testing.State) {
 		{"Lights out / Lights in N", wmLightsOutIn},
 		{"Lights out ignored", wmLightsOutIgnored},
 		{"Picture in Picture", wmPIP},
+		{"Freeform Resize", wmFreeformResize},
 	} {
 		s.Logf("Running test %q", test.name)
 
@@ -751,6 +752,63 @@ func wmPIP(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) er
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 1 * time.Second})
+}
+
+// wmFreeformResize verifies that a window can be resized as defined in:
+// go/arc-wm-p "Clamshell: freeform resize" (slide #26)
+func wmFreeformResize(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, d *ui.Device) error {
+	act, err := arc.NewActivity(a, wmPkg24, wmResizeableLandscapeActivity)
+	if err != nil {
+		return err
+	}
+	defer act.Close()
+	if err := act.Start(ctx); err != nil {
+		return err
+	}
+	defer act.Stop(ctx)
+
+	// N app are launched as maximized. We grab the bounds from the maximized app, and we use those
+	// bounds to resize the app when it is in restored mode.
+	if err := compareWMState(ctx, act, arc.WindowStateMaximized); err != nil {
+		return err
+	}
+	maxBounds, err := act.WindowBounds(ctx)
+	if err != nil {
+		return err
+	}
+
+	if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
+		return err
+	}
+	if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+		return err
+	}
+
+	// Now we grab the bounds from the restored app, and we try to resize it to its previous right margin.
+	origBounds, err := act.WindowBounds(ctx)
+	if err != nil {
+		return err
+	}
+
+	// The -1 is needed to prevent injecting a touch event outside bounds.
+	right := maxBounds.Left + maxBounds.Width - 1
+	testing.ContextLog(ctx, "Resizing app to right margin = ", right)
+	to := arc.NewPoint(right, origBounds.Top+origBounds.Height/2)
+	if err := act.ResizeWindow(ctx, arc.BorderRight, to, 500*time.Millisecond); err != nil {
+		return err
+	}
+
+	bounds, err := act.WindowBounds(ctx)
+	if err != nil {
+		return err
+	}
+	// ResizeWindow() does not guarantee pixel-perfect resizing.
+	// For this particular test, we are good as long as the window has been resized at least one pixel.
+	if bounds.Width <= origBounds.Width {
+		testing.ContextLogf(ctx, "Original bounds: %+v; resized bounds: %+v", origBounds, bounds)
+		return errors.Errorf("invalid window width: got %d; want %d > %d", bounds.Width, bounds.Width, origBounds.Width)
+	}
+	return nil
 }
 
 // Helper functions
