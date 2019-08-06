@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cad6f710_e5e228ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2019-08-06T09:21:46Z",
+      "side": 1,
+      "message": "Just curious, but what is this notation?\n\nI usually see:\n{TextLog,TreeLog}.LogType\nwhich is a bash extended shell glob syntax.\n\nMaybe if it\u0027s a regexp:\n(TextLog|TreeLog).LogType",
+      "range": {
+        "startLine": 7,
+        "startChar": 43,
+        "endLine": 7,
+        "endChar": 68
+      },
+      "revId": "fb586850cd532a76f12f7f1bbb0c33cc376e9835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
