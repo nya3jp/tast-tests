@@ -22,6 +22,30 @@
       "revId": "fb586850cd532a76f12f7f1bbb0c33cc376e9835",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91d6fd2c_8d2968ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-08-06T09:28:55Z",
+      "side": 1,
+      "message": "I didn\u0027t intend any kind of notation, just wanted to make the title shorter.\nI changed it to regexp notation.",
+      "parentUuid": "cad6f710_e5e228ea",
+      "range": {
+        "startLine": 7,
+        "startChar": 43,
+        "endLine": 7,
+        "endChar": 68
+      },
+      "revId": "fb586850cd532a76f12f7f1bbb0c33cc376e9835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
