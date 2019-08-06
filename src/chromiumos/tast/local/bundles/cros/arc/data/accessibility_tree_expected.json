@@ -1,0 +1,84 @@
+{
+  "name": "Accessibility Test App",
+  "role": "application",
+  "children": [
+    {
+      "name": "",
+      "role": "genericContainer",
+      "children": [
+        {
+          "name": "",
+          "role": "ignored",
+          "children": [
+            {
+              "name": "",
+              "role": "ignored",
+              "children": [
+                {
+                  "name": "",
+                  "role": "ignored",
+                  "children": [
+                    {
+                      "name": "",
+                      "role": "ignored",
+                      "children": [
+                        {
+                          "name": "",
+                          "role": "ignored",
+                          "children": [
+                            {
+                              "name": "Accessibility Test App",
+                              "role": "staticText",
+                              "children": []
+                            },
+                            {
+                              "name": "",
+                              "role": "ignored",
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "",
+                      "role": "ignored",
+                      "children": [
+                        {
+                          "name": "",
+                          "role": "ignored",
+                          "children": [
+                            {
+                              "name": "OFF",
+                              "role": "toggleButton",
+                              "children": []
+                            },
+                            {
+                              "name": "CheckBox",
+                              "role": "checkBox",
+                              "children": []
+                            },
+                            {
+                              "name": "seekBar",
+                              "role": "slider",
+                              "children": []
+                            },
+                            {
+                              "name": "seekBarDiscrete",
+                              "role": "slider",
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
