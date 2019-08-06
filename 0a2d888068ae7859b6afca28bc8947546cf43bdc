@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59e7b8fa_f901848f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/wilco_peak_shift.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-06T09:05:14Z",
+      "side": 1,
+      "message": "This will be formatted in pretty way if we write this in the following way:\n\n // schedule 3 different modes:\n //\n //  - Use AC and charge the battery (max AC usage)\n //  - Use AC, but don\u0027t charge the battery (medium AC usage)\n //  - Don\u0027t use AC, and run off just the battery. (no AC usage)\n //\n // For more information, see\n\nSee: https://golang.org/pkg/go/doc/#ToHTML",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 28
+      },
+      "revId": "0a2d888068ae7859b6afca28bc8947546cf43bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
