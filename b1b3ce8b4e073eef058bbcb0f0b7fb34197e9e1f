@@ -16,6 +16,24 @@
       "revId": "b1b3ce8b4e073eef058bbcb0f0b7fb34197e9e1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3805077e_18c0d487",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_modes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-08-06T05:46:53Z",
+      "side": 0,
+      "message": "This alignment is done by gofmt.",
+      "parentUuid": "4cfdcf71_94df70cb",
+      "revId": "b1b3ce8b4e073eef058bbcb0f0b7fb34197e9e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
