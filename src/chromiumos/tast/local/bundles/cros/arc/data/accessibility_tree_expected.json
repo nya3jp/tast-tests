@@ -1,0 +1,31 @@
+{
+  "name": "Accessibility Test App",
+  "role": "application",
+  "children": [
+    {
+      "role": "genericContainer",
+      "children": [
+        {
+          "name": "Accessibility Test App",
+          "role": "staticText"
+        },
+        {
+          "name": "OFF",
+          "role": "toggleButton"
+        },
+        {
+          "name": "CheckBox",
+          "role": "checkBox"
+        },
+        {
+          "name": "seekBar",
+          "role": "slider"
+        },
+        {
+          "name": "seekBarDiscrete",
+          "role": "slider"
+        }
+      ]
+    }
+  ]
+}
