@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7586a269_dd515acc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-06T09:02:55Z",
+      "side": 1,
+      "message": "Actually, this CL itself does not reduce the overhead.\n\nClar: do you have a plan to add more tests using StartedGPUEnabled()? The precondition is designed to share the some environment across tests, so if not, alternatives should be considered.",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 60
+      },
+      "revId": "3ffab0359a82702d76474448e63a6d46df7feb20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9873b37_e85fb647",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-06T09:02:55Z",
+      "side": 1,
+      "message": "This is false (at least for now), because CrostiniTraceGlxgears is the only test case which uses StartedGPUEnabled(), IIUC.\n\nCould you fix?",
+      "range": {
+        "startLine": 10,
+        "startChar": 36,
+        "endLine": 10,
+        "endChar": 71
+      },
+      "revId": "3ffab0359a82702d76474448e63a6d46df7feb20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
