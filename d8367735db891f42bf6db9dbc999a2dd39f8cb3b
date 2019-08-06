@@ -123,6 +123,24 @@
       "revId": "d8367735db891f42bf6db9dbc999a2dd39f8cb3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffcad679_44c78eee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/param.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-06T14:17:34Z",
+      "side": 1,
+      "message": "Per offline chat, let\u0027s move forward now. On promotion to CQ, I\u0027ll mark one of the param cases as informational.",
+      "parentUuid": "a3a45622_994d2efb",
+      "revId": "d8367735db891f42bf6db9dbc999a2dd39f8cb3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
