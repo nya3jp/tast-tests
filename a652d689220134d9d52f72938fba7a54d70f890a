@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68cc2806_8bca34d3",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-06T09:20:20Z",
+      "side": 1,
+      "message": "optional: Instead, how about returning the value in time.Time?",
+      "range": {
+        "startLine": 165,
+        "startChar": 68,
+        "endLine": 165,
+        "endChar": 73
+      },
+      "revId": "a652d689220134d9d52f72938fba7a54d70f890a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
