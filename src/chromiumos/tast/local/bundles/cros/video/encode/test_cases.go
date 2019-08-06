@@ -56,5 +56,12 @@ var Crowd2160P = StreamParams{
 	Level:   51,
 }
 
+// Crowd361P is the test parameters of video_encode_accelerator_unittest for the raw data obtained by decoding "crowd-641x361.webm".
+var Crowd361P = StreamParams{
+	Name:    "crowd-641x361.vp9.webm",
+	Size:    videotype.NewSize(641, 361),
+	Bitrate: 500000,
+}
+
 // BitrateTestFilter is the test pattern in googletest style for disabling bitrate control related tests.
 const BitrateTestFilter = "-MidStreamParamSwitchBitrate/*:ForceBitrate/*:MultipleEncoders/VideoEncodeAcceleratorTest.TestSimpleEncode/1"
