@@ -24,7 +24,6 @@ func init() {
 			"kasaiah.bogineni@intel.com", // Port author
 			"tast-users@chromium.org",
 		},
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"crossystem"},
 	})
 }
