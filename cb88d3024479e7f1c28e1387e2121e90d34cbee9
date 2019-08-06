@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0c1a149_2b26f0b8",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-06T01:20:24Z",
+      "side": 1,
+      "message": "case artifact, gpu:\nwould work.",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 10
+      },
+      "revId": "cb88d3024479e7f1c28e1387e2121e90d34cbee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "309db662_7233737a",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-06T01:20:24Z",
+      "side": 1,
+      "message": "nit: enableGPU\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 59,
+        "startChar": 42,
+        "endLine": 59,
+        "endChar": 51
+      },
+      "revId": "cb88d3024479e7f1c28e1387e2121e90d34cbee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7546a378_2ab75a88",
+        "filename": "src/chromiumos/tast/local/vm/vm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-06T01:20:24Z",
+      "side": 1,
+      "message": "enableGPU",
+      "range": {
+        "startLine": 61,
+        "startChar": 98,
+        "endLine": 61,
+        "endChar": 107
+      },
+      "revId": "cb88d3024479e7f1c28e1387e2121e90d34cbee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
