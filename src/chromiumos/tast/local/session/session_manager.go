@@ -161,6 +161,16 @@ func (m *SessionManager) RetrieveActiveSessions(ctx context.Context) (map[string
 	return ret, nil
 }
 
+// GetArcStartTimeTicks calls SessionManager.GetArcStartTimeTicks D-Bus method.
+func (m *SessionManager) GetArcStartTimeTicks(ctx context.Context) (int64, error) {
+	c := m.call(ctx, "GetArcStartTimeTicks")
+	var ret int64
+	if err := c.Store(&ret); err != nil {
+		return 0, err
+	}
+	return ret, nil
+}
+
 // call is thin wrapper of CallWithContext for convenience.
 func (m *SessionManager) call(ctx context.Context, method string, args ...interface{}) *dbus.Call {
 	return m.obj.CallWithContext(ctx, dbusInterface+"."+method, 0, args...)
