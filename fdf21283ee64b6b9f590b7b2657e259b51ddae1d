@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "9c43cc4d_f69e9f14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-06T09:26:20Z",
+      "side": 1,
+      "message": "Ack, thanks for clarification!",
+      "parentUuid": "93487c6b_d2180c9d",
+      "range": {
+        "startLine": 80,
+        "startChar": 86,
+        "endLine": 80,
+        "endChar": 90
+      },
+      "revId": "fdf21283ee64b6b9f590b7b2657e259b51ddae1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93190dd4_d7ee314a",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 11
@@ -510,6 +534,30 @@
       "side": 1,
       "message": "Newbie question: is it not possible to wait udev restart to finish, to avoid false negative without sleep?\nUsing sleep in tests is essentially flaky and should be avoided if possible.",
       "parentUuid": "0d0d7000_9abab38d",
+      "range": {
+        "startLine": 126,
+        "startChar": 52,
+        "endLine": 126,
+        "endChar": 73
+      },
+      "revId": "fdf21283ee64b6b9f590b7b2657e259b51ddae1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3039e13_23c675df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-06T09:26:20Z",
+      "side": 1,
+      "message": "It\u0027s good point that performing the check without waiting for udev rule processing is racy.\n\nBut sorry, waiting for a fixed time hoping to avoid flakes is generally a bad practice and not allowed in Tast. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts\n\nAs Brian suggested, could you try \"udevadm settle\"?",
+      "parentUuid": "70856165_6262a3b4",
       "range": {
         "startLine": 126,
         "startChar": 52,

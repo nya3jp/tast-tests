@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "d1aa775c_8e77a8c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-06T09:26:20Z",
+      "side": 1,
+      "message": "Checking pid is an indirect way to check that the service is running. Please consider checking state \u003d\u003d RunningState.",
+      "range": {
+        "startLine": 93,
+        "startChar": 11,
+        "endLine": 93,
+        "endChar": 21
+      },
+      "revId": "e771b3645fbdea42545f0c5f8deb2013a7226c4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3e8ae65_71a09900",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-06T09:26:20Z",
+      "side": 1,
+      "message": "Optional: upstart.RestartJob returns an error if it fails to start the job, so this upstart.JobStatus call is not very necessary.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 2
+      },
+      "revId": "e771b3645fbdea42545f0c5f8deb2013a7226c4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78077ae2_22b29970",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 14
