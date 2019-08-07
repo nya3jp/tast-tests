@@ -608,3 +608,9 @@ func RunThruCameras(ctx context.Context, app *App, f func()) error {
 	}
 	return nil
 }
+
+// CheckMojoConnection checks if mojo connection works.
+func (a *App) CheckMojoConnection(ctx context.Context) error {
+	const code = "Tast.checkMojoConnection()"
+	return a.conn.EvalPromise(ctx, code, nil)
+}

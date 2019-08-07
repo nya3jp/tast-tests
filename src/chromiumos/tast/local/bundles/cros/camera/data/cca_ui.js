@@ -259,5 +259,22 @@ window.Tast = class {
     }
     return track.getSettings().deviceId;
   }
+
+  /*
+   * Checks if mojo connection could be constructed without error.
+   */
+  static async checkMojoConnection() {
+    // Checks if ChromeHelper works. It should work on all devices.
+    const chromeHelper = cca.mojo.ChromeHelper.getInstance();
+    await chromeHelper.isTabletMode();
+
+    // Checks if DeviceOperator works on v3 devices.
+    if (await cca.mojo.DeviceOperator.isSupported()) {
+      const deviceOperator = await cca.mojo.DeviceOperator.getInstance();
+      const devices = (await navigator.mediaDevices.enumerateDevices())
+                        .filter({kind} => kind === 'videoinput');
+      await deviceOperator.getCameraFacing(devices[0].deviceId);
+    }
+  }
 };
 })();
