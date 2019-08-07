@@ -594,6 +594,30 @@
     },
     {
       "key": {
+        "uuid": "ecdb4e16_36356c77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-07T23:35:53Z",
+      "side": 1,
+      "message": "Unfortunately, \u0027udevadm settle\u0027 alone isn\u0027t enough. I believe the problem is that once udev is \u0027started\u0027 (in the Upstart sense) it hasn\u0027t quite gotten into its event processing loop. So \u0027udevadm settle\u0027 may still return rather quickly while udev is still processing.\n\nTo prove this, I added a hacky udev rule that renames the device at udev startup (I actually couldn\u0027t figure out what the \"best\" way to do this was...so I just latched onto arbitrary device rules and added a few \u0027/bin/ip link ...\u0027 commands), and found that the test passes just fine.\n\nBut then I added a sleep just before \u0027udevadm settle\u0027, and it started failing.\n\nI\u0027m frankly not sure how to do this the \"right way\".",
+      "parentUuid": "98b0e7e1_9db29078",
+      "range": {
+        "startLine": 126,
+        "startChar": 52,
+        "endLine": 126,
+        "endChar": 73
+      },
+      "revId": "fdf21283ee64b6b9f590b7b2657e259b51ddae1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "561a3a1e_5208c8fb",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 11
