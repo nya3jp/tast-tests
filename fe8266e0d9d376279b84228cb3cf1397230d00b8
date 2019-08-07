@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f26244e_cb287d86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gstoraster/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2019-08-07T21:52:44Z",
+      "side": 1,
+      "message": "nit: declare cmd as close to its first use as possible.  i.e before cmd.StdinPipe()",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 4
+      },
+      "revId": "fe8266e0d9d376279b84228cb3cf1397230d00b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
