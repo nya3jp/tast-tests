@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cfcc4f3_c864796f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-08-07T01:41:32Z",
+      "side": 1,
+      "message": "I think this part of the description can be deleted or revised.\nI think it described the pending patch crrev.com/c/1715953, but now abandoned, as we can go directly to this fix.",
+      "range": {
+        "startLine": 9,
+        "startChar": 35,
+        "endLine": 10,
+        "endChar": 8
+      },
+      "revId": "0bea1a1c9092511f5a02b4459fc8f965d807713e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
