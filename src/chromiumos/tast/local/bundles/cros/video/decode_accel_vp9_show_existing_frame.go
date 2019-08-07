@@ -28,5 +28,5 @@ func init() {
 // show-existing-frame feature and is used in Android CTS:
 // https://android.googlesource.com/platform/cts/+/master/tests/tests/media/res/raw/vp90_2_17_show_existing_frame.vp9
 func DecodeAccelVP9ShowExistingFrame(ctx context.Context, s *testing.State) {
-	decode.RunAccelVideoTestNew(ctx, s, "vda_sanity-vp90_2_17_show_existing_frame.vp9", decode.VDA)
+	decode.RunAccelVideoTest(ctx, s, "vda_sanity-vp90_2_17_show_existing_frame.vp9", decode.VDA)
 }
