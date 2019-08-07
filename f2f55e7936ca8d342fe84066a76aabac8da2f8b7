@@ -45,6 +45,30 @@
       "revId": "f2f55e7936ca8d342fe84066a76aabac8da2f8b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42e35aff_8b708057",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_resume.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-07T20:33:21Z",
+      "side": 1,
+      "message": "Sorry, meant:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1726552",
+      "parentUuid": "0a04d325_535a7ff0",
+      "range": {
+        "startLine": 57,
+        "startChar": 41,
+        "endLine": 57,
+        "endChar": 49
+      },
+      "revId": "f2f55e7936ca8d342fe84066a76aabac8da2f8b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
