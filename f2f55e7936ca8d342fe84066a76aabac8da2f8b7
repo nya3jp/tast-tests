@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9191b624_fc7aa910",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-07T20:32:44Z",
+      "side": 1,
+      "message": "What do you mean by this? If the device fails to wake up, for instance, you\u0027re hosed. In some cases, we use Servo (external hardware) as a way to recover. But you can\u0027t do that in a \u0027local\u0027 test.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 45
+      },
+      "revId": "f2f55e7936ca8d342fe84066a76aabac8da2f8b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a04d325_535a7ff0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_resume.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-07T20:32:44Z",
+      "side": 1,
+      "message": "ip link set ... up\n\nOr factor out the code you already (almost!!! just one more try!!!) landed in\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1679373",
+      "range": {
+        "startLine": 57,
+        "startChar": 41,
+        "endLine": 57,
+        "endChar": 49
+      },
+      "revId": "f2f55e7936ca8d342fe84066a76aabac8da2f8b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
