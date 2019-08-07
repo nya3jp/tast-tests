@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "968009d3_281059e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-07T08:15:52Z",
+      "side": 1,
+      "message": "huge nit: Please always end comment sentences with periods.\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 706,
+        "startChar": 33,
+        "endLine": 706,
+        "endChar": 49
+      },
+      "revId": "6e480228a4870d0493bc8bbd44f670596729632a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
