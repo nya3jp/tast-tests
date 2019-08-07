@@ -20,7 +20,7 @@ func init() {
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.BuiltinCamera, "chrome"},
-		Data:         []string{"cca_mojo.js"},
+		Data:         []string{"cca_ui.js"},
 	})
 }
 
@@ -33,8 +33,7 @@ func CCAMOJO(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	app, err := cca.New(ctx, cr, []string{
-		s.DataPath("cca_mojo.js")})
+	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")})
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
