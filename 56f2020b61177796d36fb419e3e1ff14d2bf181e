@@ -1220,6 +1220,30 @@
     },
     {
       "key": {
+        "uuid": "1b57875f_dc33ae1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-07T17:25:40Z",
+      "side": 1,
+      "message": "I vote for checking this in without a retry but monitoring it while the test is informational",
+      "parentUuid": "3d42aa30_f0406de8",
+      "range": {
+        "startLine": 69,
+        "startChar": 14,
+        "endLine": 69,
+        "endChar": 18
+      },
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "907a9878_be75a1dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
         "patchSetId": 6

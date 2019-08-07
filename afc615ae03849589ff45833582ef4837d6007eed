@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7af4355_f2fd2219",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-07T17:25:40Z",
+      "side": 1,
+      "message": "Set up a test file.",
+      "revId": "afc615ae03849589ff45833582ef4837d6007eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa48f99f_7769c34c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-07T17:25:40Z",
+      "side": 1,
+      "message": "s/Get/Open the",
+      "revId": "afc615ae03849589ff45833582ef4837d6007eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80b34a46_97f6b1b1",
+        "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-07T17:25:40Z",
+      "side": 1,
+      "message": "Use the caller\u0027s context instead of storing the creation context.  The package says \"Do not store Contexts inside a struct type; instead, pass a Context explicitly to each function that needs it.\"  https://golang.org/pkg/context/",
+      "revId": "afc615ae03849589ff45833582ef4837d6007eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85e9ea41_a3111927",
+        "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-07T17:25:40Z",
+      "side": 1,
+      "message": "New(), not NewFilesApp(), since you\u0027ll call it as filesapp.New().  Or Launch()?",
+      "revId": "afc615ae03849589ff45833582ef4837d6007eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "657a6ff1_04d169a9",
+        "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-07T17:25:40Z",
+      "side": 1,
+      "message": "sometimes you use \"the Files App\" and sometimes just \"Files App\" - pick one",
+      "revId": "afc615ae03849589ff45833582ef4837d6007eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b627fda_c240befa",
+        "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-07T17:25:40Z",
+      "side": 1,
+      "message": "put \"Files - My files\" as a constant instead in case it changes in the future.  Call it something like expectedText (think of something better than that) and highlight that the entire package expects it to be there.\n\nIn that same vein, you could wrap the error message below in something to indicate that you couldn\u0027t find that string.  That could help future debuggers if someone decides to change it.",
+      "revId": "afc615ae03849589ff45833582ef4837d6007eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
