@@ -22,7 +22,7 @@ func init() {
 		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinCamera},
-		Data:         []string{"cca_ui.js", "cca_ui_capture.js"},
+		Data:         []string{"cca_ui.js"},
 		Pre:          chrome.LoggedIn(),
 	})
 }
@@ -30,7 +30,7 @@ func init() {
 func CCAUITakePicture(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 
-	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js"), s.DataPath("cca_ui_capture.js")})
+	app, err := cca.New(ctx, cr, []string{s.DataPath("cca_ui.js")})
 	if err != nil {
 		s.Fatal("Failed to open CCA: ", err)
 	}
