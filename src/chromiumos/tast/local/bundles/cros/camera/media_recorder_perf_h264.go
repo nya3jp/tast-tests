@@ -18,8 +18,8 @@ func init() {
 		Func: MediaRecorderPerfH264,
 		Desc: "Captures performance data about MediaRecorder for SW and HW with H.264",
 		Contacts: []string{
-			"hiroh@chromium.org",    // Video team
-			"shenghao@chromium.org", // Camera team
+			"hiroh@chromium.org", // Video team
+			"wtlee@chromium.org", // Camera team
 			"chromeos-camera-eng@google.com",
 		},
 		Attr: []string{"group:crosbolt", "crosbolt_perbuild"},

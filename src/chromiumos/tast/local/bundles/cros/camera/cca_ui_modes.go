@@ -20,7 +20,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     CCAUIModes,
 		Desc:     "Opens CCA and verifies the use cases of mode selector and portrait, square modes",
-		Contacts: []string{"shenghao@chromium.org", "chromeos-camera-eng@google.com"},
+		Contacts: []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		// TODO(shik): Re-enabled it after b/138828180 resolved.
 		Attr:         []string{"disabled"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinCamera},
@@ -84,7 +84,7 @@ func CCAUIModes(ctx context.Context, s *testing.State) {
 	}
 
 	// Switch to portrait mode and take photo.
-	// TODO(shenghao): Move portrait mode testing to isolated test so that it only
+	// TODO(shik): Move portrait mode testing to isolated test so that it only
 	// runs on devices with portrait mode support. crbug.com/988732
 	if supported, err := app.PortraitModeSupported(ctx); err != nil {
 		s.Error("Failed to determine whether portrait mode is supported: ", err)

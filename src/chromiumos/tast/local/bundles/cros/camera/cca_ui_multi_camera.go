@@ -17,7 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CCAUIMultiCamera,
 		Desc:         "Opens CCA and verifies the multi-camera related use cases",
-		Contacts:     []string{"shenghao@chromium.org", "chromeos-camera-eng@google.com"},
+		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinCamera},
 		Data:         []string{"cca_ui.js", "cca_ui_multi_camera.js"},

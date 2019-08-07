@@ -18,8 +18,8 @@ func init() {
 		Func: MediaRecorderEncodeAccelUsedVP8,
 		Desc: "Checks VP8 video encode acceleration is used in MediaRecorder",
 		Contacts: []string{
-			"hiroh@chromium.org",    // Video team
-			"shenghao@chromium.org", // Camera team
+			"hiroh@chromium.org", // Video team
+			"wtlee@chromium.org", // Camera team
 			"chromeos-camera-eng@google.com",
 		},
 		Attr:         []string{"informational"},
