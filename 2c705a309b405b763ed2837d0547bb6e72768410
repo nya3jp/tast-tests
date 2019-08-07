@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8cb92b85_6dc55390",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/profiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-07T08:11:45Z",
+      "side": 1,
+      "message": "Strictly speaking, testing.Sleep can return an error (when ctx deadline is hit). Would you mind checking the error, especially since this is an example everyone can look at?\n\n if err :\u003d testing.Sleep(...); err !\u003d nil {\n   s.Fatal(...)\n }",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 34
+      },
+      "revId": "2c705a309b405b763ed2837d0547bb6e72768410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4614bd72_93cebd4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/profiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-07T08:11:45Z",
+      "side": 1,
+      "message": "Mind inlining the p.End() call since it\u0027s more idiomatic in Go?\n\n if err :\u003d p.End(); err !\u003d nil {\n   ...\n }",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 16
+      },
+      "revId": "2c705a309b405b763ed2837d0547bb6e72768410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4223e3a_3f043a4b",
+        "filename": "src/chromiumos/tast/local/profiler/crosperf/crosperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-07T08:11:45Z",
+      "side": 1,
+      "message": "I recommend shutil.EscapeSlice for better formatting suitable for cut and paste:\n\n errors.Wrapf(err, failed running %s\", shutil.EscapeSlice(p.cmd.Args))",
+      "range": {
+        "startLine": 31,
+        "startChar": 27,
+        "endLine": 31,
+        "endChar": 78
+      },
+      "revId": "2c705a309b405b763ed2837d0547bb6e72768410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "125c656b_eee65361",
+        "filename": "src/chromiumos/tast/local/profiler/crosperf/crosperf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-07T08:11:45Z",
+      "side": 1,
+      "message": "Please avoid inspecting err.Error() since it is fragile. Can we detect this by checking the exit code instead? testexec.GetWaitStatus can be used to get the exit code.",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "2c705a309b405b763ed2837d0547bb6e72768410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40c07caa_ddcb0ca6",
+        "filename": "src/chromiumos/tast/local/profiler/profiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-07T08:11:45Z",
+      "side": 1,
+      "message": "I have several design recommendations:\n\n1. Profilers should be constructed for each profiler.Start call to avoid accidental interaction between multiple profiler instances. Currently the same CrosPerf object is shared between multiple profiler.Start calls and it\u0027s risky.\n2. I recommend removing Start method in the \"profiler\" interface and instead introducing a constructor function. This is because currently profiler has three states: \"uninitialized\" (before Start is called), \"started\" (after Started is called and before End is called) and \"ended\" (after End is called). By removing Start in the profiler interface, we can reduce the state to two (started and ended) and it gets easier to reason about the state of profilers. In general, we should try to avoid leaving objects in \"uninitialized\" state.\n3. We can introduce variables here rather than keeping them in a map. It is even safer than a map with custom type because lookup is guaranteed to succeed statically.\n\nFor example:\n\n // profiler.go\n\n type instance interface {\n   end() error\n }\n\n type Profiler func(ctx context.Context, outDir string) (instance, error)\n\n var (\n   CrosProf Profiler \u003d newCrosPerf\n   // Add more profilers here\n )\n\n func Start(ctx context.Context, outDir string, pnames ...Name) (*RunningProf, error) { ... }\n\n // crosperf.go\n\n func newCrosPerf(ctx context.Context, outDir string) (instance, error) {\n   ...\n }\n\n func (p *crosPerf) end() {\n   ...\n }\n\nThen the usage would be straightforward:\n\n p, err :\u003d profiler.Start(ctx, s.OutDir(), profiler.CrosProf)\n if err !\u003d nil { ... }\n defer p.End()",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 1
+      },
+      "revId": "2c705a309b405b763ed2837d0547bb6e72768410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80d5c34b_2c5de088",
+        "filename": "src/chromiumos/tast/local/profiler/profiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-07T08:11:45Z",
+      "side": 1,
+      "message": "nit: Mind inlining this? It\u0027s more idiomatic in Go.\n\n if err :\u003d prof.Start(...); err !\u003d nil {\n   ...\n }",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 17
+      },
+      "revId": "2c705a309b405b763ed2837d0547bb6e72768410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41d7039c_fa607ece",
+        "filename": "src/chromiumos/tast/local/profiler/profiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-07T08:11:45Z",
+      "side": 1,
+      "message": "In this case we should call p.End for already started profilers. For example, when we get 3 pnames and prof.Start fails on the second profiler, we need to call p.End for the first profiler.\n\nMost typical way in Go is to use a deferred statement. For example:\n\n var profs RunningProf\n\n success :\u003d false\n defer func() {\n   if !success {\n     profs.End()\n   }\n }()\n\n ...\n if err :\u003d ...; err !\u003d nil {\n   return nil, err\n }\n ...\n success \u003d true\n return \u0026profs, nil",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 69
+      },
+      "revId": "2c705a309b405b763ed2837d0547bb6e72768410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fdaea00_a796a6f7",
+        "filename": "src/chromiumos/tast/local/profiler/profiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-07T08:11:45Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 17
+      },
+      "revId": "2c705a309b405b763ed2837d0547bb6e72768410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a7fc300_be4a6ada",
+        "filename": "src/chromiumos/tast/local/profiler/profiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-07T08:11:45Z",
+      "side": 1,
+      "message": "We should call End for all profilers even if one of them fails. Typically we return the first error we encounter.\n\n var firstErr error\n for _, prof :\u003d range *p {\n   if err :\u003d prof.End(); err !\u003d nil \u0026\u0026 firstErr \u003d\u003d nil {\n     firstErr \u003d err\n   }\n }\n return firstErr",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 52
+      },
+      "revId": "2c705a309b405b763ed2837d0547bb6e72768410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6372738c_8679dc65",
+        "filename": "src/chromiumos/tast/local/testexec/testexec.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-07T08:11:45Z",
+      "side": 1,
+      "message": "Could you replace this function with c.Signal(syscall.SIGKILL) ?",
+      "range": {
+        "startLine": 234,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 53
+      },
+      "revId": "2c705a309b405b763ed2837d0547bb6e72768410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
