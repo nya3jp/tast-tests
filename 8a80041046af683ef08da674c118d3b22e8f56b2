@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50e01510_59b76024",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/hangouts_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-07T05:54:32Z",
+      "side": 1,
+      "message": "The original test would constantly switch between different resolutions, and measure the average CPU usage over the entire interval. I feel we will get more stable performance results if we just stick to a single resolution.",
+      "revId": "8a80041046af683ef08da674c118d3b22e8f56b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
