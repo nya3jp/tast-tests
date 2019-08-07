@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e167b799_fa391267",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-07T08:32:18Z",
+      "side": 1,
+      "message": "Immediately called anonymous function with arguments is not a popular pattern in Go. But I know you want to introduce scope for context timeout. How about just:\n\n func() {\n   const timeout \u003d 5 * time.Second\n   ctx, cancel :\u003d context.WithTimeout(ctx, timeout)\n   defer cancel()\n\n   args :\u003d []string{copy.AppPath, copy.MimeType, copy.Data}\n   ...\n\n }()",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 46
+      },
+      "revId": "793dc138b3d53aedecc4a72ee2e228c3203a6632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "885a1082_c5a2b5cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-07T08:32:18Z",
+      "side": 1,
+      "message": "huge nit: Mind inlining this? It\u0027s more idiomatic in Go.\n\n if err :\u003d cmd.Start(); err !\u003d nil { ... }",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 17
+      },
+      "revId": "793dc138b3d53aedecc4a72ee2e228c3203a6632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0f4ab56_d42fca14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-07T08:32:18Z",
+      "side": 1,
+      "message": "nit\u0026optional: I know this can be a bikeshedding, but I feel 5*time.Second is more readable because I can naturally read it as \"5 seconds\".",
+      "range": {
+        "startLine": 93,
+        "startChar": 41,
+        "endLine": 93,
+        "endChar": 54
+      },
+      "revId": "793dc138b3d53aedecc4a72ee2e228c3203a6632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
