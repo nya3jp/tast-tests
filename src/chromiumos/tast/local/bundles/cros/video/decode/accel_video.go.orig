@@ -187,9 +187,32 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, filename strin
 	}
 }
 
+<<<<<<< HEAD
+// RunAllAccelVideoTest runs all tests in video_decode_accelerator_unittest with thumbnail stored in
+// output directory.
+func RunAllAccelVideoTest(ctx context.Context, s *testing.State, testData TestVideoData, bufferMode VDABufferMode) {
+	vl, err := logging.NewVideoLogger()
+	if err != nil {
+		s.Fatal("Failed to set values for verbose logging")
+	}
+	defer vl.Close()
+
+	runAccelVideoTest(ctx, s, testConfig{
+		testData:           testData,
+		dataPath:           s.DataPath(testData.Name),
+		bufferMode:         bufferMode,
+		requireMD5Files:    true,
+		thumbnailOutputDir: s.OutDir(),
+	})
+}
+
 // RunAccelVideoSanityTest runs the FlushAtEndOfStream test in the
 // video_decode_accelerator_tests. The test only fails if the test binary
 // crashes or the video decoder's kernel driver crashes.
+=======
+// RunAccelVideoSanityTest runs the FlushAtEndOfStream test in the video_decode_accelerator_tests.
+// The test only fails if the video decoder's kernel driver crashes.
+>>>>>>> 14a48e20... video.DecodeAccel*: Deprecate tast tests using video_decode_accelerator_unittest
 // The motivation of the sanity test: on certain devices, when playing VP9
 // profile 1 or 3, the kernel crashed. Though the profile was not supported
 // by the decoder, kernel driver should not crash in any circumstances.
@@ -215,11 +238,9 @@ func RunAccelVideoSanityTest(ctx context.Context, s *testing.State, filename str
 	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
 	defer cancel()
 
-	// Run the FlushAtEndOfStream test, but ignore errors. If no test report is
-	// produced we can assume the test binary crashed. We ignore the contents
-	// of the report as we're not interested in actual test failures.
+	// Run the FlushAtEndOfStream test, but ignore errors.
 	const exec = "video_decode_accelerator_tests"
-	if report, err := gtest.New(
+	report, err := gtest.New(
 		filepath.Join(chrome.BinTestDir, exec),
 		gtest.Logfile(filepath.Join(s.OutDir(), exec+".log")),
 		gtest.Filter("*FlushAtEndOfStream"),
@@ -229,7 +250,12 @@ func RunAccelVideoSanityTest(ctx context.Context, s *testing.State, filename str
 			"--output_folder="+s.OutDir(),
 			"--disable_validator"),
 		gtest.UID(int(sysutil.ChronosUID)),
-	).Run(ctx); report == nil {
-		s.Fatalf("Failed to run %v: %v", exec, err)
+	).Run(ctx)
+
+	// If there is no test report we can assume the test binary crashed. We
+	// ignore the actual contents of the report as we're not interested in test
+	// failures.
+	if report == nil {
+		s.Fatal("Video decode accelerator test binary crashed: ", err)
 	}
 }
