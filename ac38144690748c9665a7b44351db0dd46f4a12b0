@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41ac829c_beadd82b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-07T12:03:03Z",
+      "side": 1,
+      "message": "optional: yo ucan move them to RunTest, because it\u0027s only the consumer of these values/type.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "ac38144690748c9665a7b44351db0dd46f4a12b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94260760_2d72cc11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-07T12:03:03Z",
+      "side": 1,
+      "message": "style: you can just use unnamed return type here.\n\n(crostini.Size, error)",
+      "range": {
+        "startLine": 42,
+        "startChar": 55,
+        "endLine": 42,
+        "endChar": 82
+      },
+      "revId": "ac38144690748c9665a7b44351db0dd46f4a12b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0383b80e_cf7101a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/displaydensity/display_density.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-07T12:03:03Z",
+      "side": 1,
+      "message": "instead, you can return an empty Size, and error.\nDitto for below.",
+      "range": {
+        "startLine": 54,
+        "startChar": 10,
+        "endLine": 54,
+        "endChar": 17
+      },
+      "revId": "ac38144690748c9665a7b44351db0dd46f4a12b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2183120a_ccad79a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/verifyapp/verify_app.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-07T12:03:03Z",
+      "side": 1,
+      "message": "nit: (it\u0027s not the regression, but) to concat three (or more) terms,\n\nfmt.Sprintf(\"--title\u003d%s_terminal\", conf.Name)",
+      "range": {
+        "startLine": 41,
+        "startChar": 17,
+        "endLine": 41,
+        "endChar": 53
+      },
+      "revId": "ac38144690748c9665a7b44351db0dd46f4a12b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51b794b8_26224d54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/verifyapp/verify_app.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-07T12:03:03Z",
+      "side": 1,
+      "message": "Ditto for fmt.Sprintf",
+      "revId": "ac38144690748c9665a7b44351db0dd46f4a12b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b321eb8_5702e5b6",
+        "filename": "src/chromiumos/tast/local/crostini/demo.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-07T12:03:03Z",
+      "side": 1,
+      "message": "Could you add comments for each field. Specifically, what is DominantColor?",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "ac38144690748c9665a7b44351db0dd46f4a12b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
