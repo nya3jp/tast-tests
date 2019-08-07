@@ -4,6 +4,7 @@
 package syslog
 
 import (
+	"context"
 	"os"
 	"strings"
 	"testing"
@@ -36,6 +37,7 @@ var tests = []testStruct{
 func TestHasMessageBasic(t *testing.T) {
 	// Create a file, look for the target message it in.
 	const filename = "/tmp/TestHasMessageBasic"
+	ctx := context.Background()
 	for _, tc := range tests {
 		// Go into a subfunction so that defers happen at the right time.
 		func() {
@@ -46,7 +48,7 @@ func TestHasMessageBasic(t *testing.T) {
 			}
 			defer file.Close()
 
-			w, err := NewWatcher(filename)
+			w, err := NewWatcher(ctx, filename)
 			if err != nil {
 				t.Fatalf("Could not create Watcher: %v", err)
 			}
@@ -59,7 +61,7 @@ func TestHasMessageBasic(t *testing.T) {
 				t.Fatalf("Sync failed: %v", err)
 			}
 
-			if hasMessage, err := w.HasMessage(target); err != nil {
+			if hasMessage, err := w.HasMessage(ctx, target); err != nil {
 				t.Errorf("Error searching for message: %v", err)
 			} else if !hasMessage && tc.expected {
 				t.Errorf("Did not find %s in '%s'", target, tc.contents)
@@ -73,19 +75,20 @@ func TestHasMessageBasic(t *testing.T) {
 func TestHasMessageAddToFile(t *testing.T) {
 	// Keep adding to a file, expect HasMessage to notice when the target appears.
 	const filename = "/tmp/TestHasMessageAddToFile"
+	ctx := context.Background()
 	file, err := os.Create(filename)
 	if err != nil {
 		t.Fatalf("os.Create(%s) failed: %v", filename, err)
 	}
 	defer file.Close()
 
-	w, err := NewWatcher(filename)
+	w, err := NewWatcher(ctx, filename)
 	if err != nil {
 		t.Fatalf("Could not create Watcher: %v", err)
 	}
 	defer w.Close()
 
-	if hasMessage, err := w.HasMessage(target); err != nil {
+	if hasMessage, err := w.HasMessage(ctx, target); err != nil {
 		t.Errorf("Error searching for message: %v", err)
 	} else if hasMessage {
 		t.Errorf("Found %s before writing anything to file", target)
@@ -99,7 +102,7 @@ func TestHasMessageAddToFile(t *testing.T) {
 			t.Fatalf("Sync failed: %v", err)
 		}
 
-		if hasMessage, err := w.HasMessage(target); err != nil {
+		if hasMessage, err := w.HasMessage(ctx, target); err != nil {
 			t.Errorf("Error searching for message: %v", err)
 		} else if !hasMessage && tc.expected {
 			t.Errorf("Did not find %s in '%s'", target, tc.contents)
@@ -108,7 +111,7 @@ func TestHasMessageAddToFile(t *testing.T) {
 		}
 	}
 
-	if hasMessage, err := w.HasMessage(target); err != nil {
+	if hasMessage, err := w.HasMessage(ctx, target); err != nil {
 		t.Errorf("Error searching for message: %v", err)
 	} else if hasMessage {
 		t.Errorf("Found %s after searching entire file", target)
@@ -120,6 +123,7 @@ func TestFileRotation(t *testing.T) {
 		filename        = "/tmp/TestFileRotation"
 		rotatedFilename = filename + ".1"
 	)
+	ctx := context.Background()
 
 	for _, tc := range []struct {
 		before, after string
@@ -153,7 +157,7 @@ func TestFileRotation(t *testing.T) {
 				}
 			}()
 
-			w, err := NewWatcher(filename)
+			w, err := NewWatcher(ctx, filename)
 			if err != nil {
 				t.Fatalf("Could not create Watcher: %v", err)
 			}
@@ -182,7 +186,7 @@ func TestFileRotation(t *testing.T) {
 			if err = file.Sync(); err != nil {
 				t.Fatalf("Sync failed: %v", err)
 			}
-			if hasMessage, err := w.HasMessage(target); err != nil {
+			if hasMessage, err := w.HasMessage(ctx, target); err != nil {
 				t.Errorf("Error searching for message: %v", err)
 			} else if !hasMessage && tc.expected {
 				t.Errorf("Did not find %s in '%s' and then '%s'", target, tc.before, tc.after)
@@ -200,6 +204,7 @@ func TestFileRaceCondition(t *testing.T) {
 		filename        = "/tmp/TestFileRaceCondition"
 		rotatedFilename = filename + ".1"
 	)
+	ctx := context.Background()
 
 	// Set up
 	file, err := os.Create(filename)
@@ -213,7 +218,7 @@ func TestFileRaceCondition(t *testing.T) {
 		}
 	}()
 
-	w, err := NewWatcher(filename)
+	w, err := NewWatcher(ctx, filename)
 	if err != nil {
 		t.Fatalf("Could not create Watcher: %v", err)
 	}
@@ -228,13 +233,13 @@ func TestFileRaceCondition(t *testing.T) {
 		t.Fatalf("First close failed: %v", err)
 	}
 
-	if hasMessage, err := w.HasMessage(target); err != nil {
+	if hasMessage, err := w.HasMessage(ctx, target); err != nil {
 		t.Errorf("Error searching for message: %v", err)
 	} else if !hasMessage {
 		t.Error("Did not find message at beginning of test")
 	}
 
-	if hasMessage, err := w.HasMessage(target); err != nil {
+	if hasMessage, err := w.HasMessage(ctx, target); err != nil {
 		t.Errorf("Error searching for message (2nd time): %v", err)
 	} else if hasMessage {
 		t.Error("Found message twice at beginning of test")
@@ -246,7 +251,7 @@ func TestFileRaceCondition(t *testing.T) {
 		t.Fatalf("Rename failed: %v", err)
 	}
 
-	if hasMessage, err := w.HasMessage(target); err != nil {
+	if hasMessage, err := w.HasMessage(ctx, target); err != nil {
 		t.Errorf("Error searching for message after rotation begun: %v", err)
 	} else if hasMessage {
 		t.Error("Found message after rotation begun")
@@ -264,7 +269,7 @@ func TestFileRaceCondition(t *testing.T) {
 	if err = file.Sync(); err != nil {
 		t.Fatalf("Sync failed: %v", err)
 	}
-	if hasMessage, err := w.HasMessage(target); err != nil {
+	if hasMessage, err := w.HasMessage(ctx, target); err != nil {
 		t.Errorf("Error searching for message after rotation finished: %v", err)
 	} else if !hasMessage {
 		t.Error("Did not find message after rotation finished")
