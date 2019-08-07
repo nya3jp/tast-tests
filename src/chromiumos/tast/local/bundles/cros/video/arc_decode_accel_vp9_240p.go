@@ -20,11 +20,11 @@ func init() {
 		Contacts:     []string{"johnylin@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome", caps.HWDecodeVP9},
-		Data:         []string{decode.Test25FPSVP9.Name, decode.Test25FPSVP9.Name + ".json"},
+		Data:         []string{"test-25fps.vp9", "test-25fps.vp9.json"},
 		Pre:          arc.Booted(),
 	})
 }
 
 func ARCDecodeAccelVP9240P(ctx context.Context, s *testing.State) {
-	decode.RunAllARCVideoTests(ctx, s, decode.Test25FPSVP9.Name)
+	decode.RunAllARCVideoTests(ctx, s, "test-25fps.vp9")
 }
