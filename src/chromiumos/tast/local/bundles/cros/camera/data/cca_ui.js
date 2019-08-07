@@ -129,19 +129,14 @@ window.Tast = class {
    * @return {Promise<boolean>}
    */
   static async isPortraitModeSupported() {
-    const video = document.querySelector('#preview-video');
-    const videoTrack = video.srcObject.getVideoTracks()[0];
-    if (!videoTrack) {
+    const mojoConnector = new cca.mojo.MojoConnector();
+    const isDeviceOperationSupported =
+        await mojoConnector.isDeviceOperationSupported();
+    if (!isDeviceOperationSupported) {
       return false;
     }
-    try {
-      const imageCapture = new cca.mojo.ImageCapture(videoTrack);
-      var capabilities = await imageCapture.getPhotoCapabilities();
-    } catch (e) {
-      return false;
-    }
-    return capabilities.supportedEffects &&
-        capabilities.supportedEffects.includes(cros.mojom.Effect.PORTRAIT_MODE);
+    const deviceOperator = await mojoConnector.getDeviceOperator();
+    return await deviceOperator.isPortraitModeSupported();
   }
 
   /**
@@ -190,11 +185,13 @@ window.Tast = class {
    * configurations.
    */
   static async getFacing() {
-    const track = document.querySelector('video').srcObject.getVideoTracks()[0];
-    try {
-      const imageCapture = new cca.mojo.ImageCapture(track);
+    let mojoConnector = new cca.mojo.MojoConnector();
+    const isDeviceOperationSupported =
+        await mojoConnector.isDeviceOperationSupported();
+    if (isDeviceOperatorSupported) {
+      let deviceOperator = await mojoConnector.getDeviceOperator();
       let facing =
-          await imageCapture.getCameraFacing(track.getSettings().deviceId);
+          await deviceOperator.getCameraFacing(track.getSettings().deviceId);
       switch (facing) {
         case cros.mojom.CameraFacing.CAMERA_FACING_FRONT:
           return 'user';
@@ -205,7 +202,7 @@ window.Tast = class {
         default:
           throw new Error('Unexpected CameraFacing value: ' + facing);
       }
-    } catch (e) {
+    } else {
       // This might be a HALv1 device.
       let facing = track.getSettings().facingMode;
       if (facing) {
@@ -234,6 +231,26 @@ window.Tast = class {
       throw new Error('No video track associate to MediaStream.');
     }
     return track.getSettings().deviceId;
+  }
+
+  /*
+   * Checks if mojo connection could be constructed successfully.
+   */
+  static async checkMojoConnection() {
+    let videoDevices = await navigator.mediaDevices.enumerateDevices().then(
+        (devices) => devices.filter((device) => device.kind == 'videoinput'));
+    if (videoDevices.length === 0) {
+      throw new Error('No video devices detected.');
+    }
+
+    // Expects that no error would be thrown even if it runs on camera hal v1
+    // stack.
+    let mojoConnector = new cca.mojo.MojoConnector();
+    let isSupported = await mojoConnector.isDeviceOperationSupported();
+    if (isSupported) {
+      let deviceOperator = await mojoConnector.getDeviceOperator();
+      await deviceOperator.getCameraFacing(videoDevices[0].deviceId);
+    }
   }
 };
 })();
