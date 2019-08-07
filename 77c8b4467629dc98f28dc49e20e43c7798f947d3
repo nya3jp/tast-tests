@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14aac9a5_6228b0d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-08-07T07:44:59Z",
+      "side": 1,
+      "message": "that",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd7f93a0_2b6a621e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-08-07T07:44:59Z",
+      "side": 1,
+      "message": "nit typo",
+      "range": {
+        "startLine": 13,
+        "startChar": 28,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8136d682_676d1cdf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-08-07T07:44:59Z",
+      "side": 1,
+      "message": "nit: I think it defaults to crbug, so it\u0027s probably fine to just have the bug number.",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fc88b7e_8df6b8d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-08-07T07:44:59Z",
+      "side": 1,
+      "message": "is this line number correct?",
+      "range": {
+        "startLine": 21,
+        "startChar": 127,
+        "endLine": 21,
+        "endChar": 130
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a82b63d1_cbe916a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-08-07T07:44:59Z",
+      "side": 1,
+      "message": "it will not be used in",
+      "range": {
+        "startLine": 26,
+        "startChar": 29,
+        "endLine": 26,
+        "endChar": 52
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6baf2e8c_14db0ae7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-08-07T07:44:59Z",
+      "side": 1,
+      "message": "nit: add fullstop",
+      "range": {
+        "startLine": 22,
+        "startChar": 101,
+        "endLine": 22,
+        "endChar": 102
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af45311d_a546defa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-08-07T07:44:59Z",
+      "side": 1,
+      "message": "should be :\u003d ?",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 6
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "900cddad_7b76bf56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-08-07T07:44:59Z",
+      "side": 1,
+      "message": "nit: you can make this into one statement? \n\nif ret :\u003d .., ret !\u003d nil {\n   ..... \n}",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 3
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28cf46c1_974b83b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-08-07T07:44:59Z",
+      "side": 1,
+      "message": "file.Write should return something ? indicating success of writing ?",
+      "range": {
+        "startLine": 84,
+        "startChar": 3,
+        "endLine": 84,
+        "endChar": 8
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4f1f5fa_0d1d6e21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-08-07T07:44:59Z",
+      "side": 1,
+      "message": "I think it will be useful to have the diff of the tree, ie expected vs actual/ obtained.\nwdyt ?",
+      "range": {
+        "startLine": 167,
+        "startChar": 2,
+        "endLine": 167,
+        "endChar": 70
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3bbc550_71fe9a65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-08-07T07:44:59Z",
+      "side": 1,
+      "message": "nit: this can be done on one line ?\n\nif err :\u003d ...; err !\u003d nil {\n    ....\n}",
+      "range": {
+        "startLine": 168,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 17
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
