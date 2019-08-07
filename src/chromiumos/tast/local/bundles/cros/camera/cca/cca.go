@@ -309,14 +309,14 @@ func (a *App) FullscreenWindow(ctx context.Context) error {
 // GetNumOfCameras returns number of camera devices.
 func (a *App) GetNumOfCameras(ctx context.Context) (int, error) {
 	var numCameras int
-	err := a.conn.EvalPromise(ctx, "CCAUIMultiCamera.getNumOfCameras()", &numCameras)
+	err := a.conn.EvalPromise(ctx, "Tast.getNumOfCameras()", &numCameras)
 	return numCameras, err
 }
 
 // GetFacing returns the active camera facing.
 func (a *App) GetFacing(ctx context.Context) (Facing, error) {
 	var facing Facing
-	if err := a.conn.EvalPromise(ctx, "CCAUIPreviewOptions.getFacing()", &facing); err != nil {
+	if err := a.conn.EvalPromise(ctx, "Tast.getFacing()", &facing); err != nil {
 		return "", err
 	}
 	return facing, nil
@@ -334,7 +334,7 @@ func (a *App) GetState(ctx context.Context, state string) (bool, error) {
 // PortraitModeSupported returns whether portrait mode is supported by the current active video device.
 func (a *App) PortraitModeSupported(ctx context.Context) (bool, error) {
 	var result bool
-	if err := a.conn.EvalPromise(ctx, "CCAUICapture.isPortraitModeSupported()", &result); err != nil {
+	if err := a.conn.EvalPromise(ctx, "Tast.isPortraitModeSupported()", &result); err != nil {
 		return false, err
 	}
 	return result, nil
@@ -397,7 +397,7 @@ func (a *App) GetSavedDir(ctx context.Context) (string, error) {
 
 // CheckFacing returns an error if the active camera facing is not expected.
 func (a *App) CheckFacing(ctx context.Context, expected Facing) error {
-	checkFacing := fmt.Sprintf("CCAUIMultiCamera.checkFacing(%q)", expected)
+	checkFacing := fmt.Sprintf("Tast.checkFacing(%q)", expected)
 	return a.conn.EvalPromise(ctx, checkFacing, nil)
 }
 
@@ -411,7 +411,7 @@ func (a *App) Mirrored(ctx context.Context) (bool, error) {
 // CheckSwitchDeviceButtonExist returns an error if whether switch button exists is not expected.
 func (a *App) CheckSwitchDeviceButtonExist(ctx context.Context, expected bool) error {
 	var actual bool
-	err := a.conn.Eval(ctx, "CCAUIMultiCamera.switchCameraButtonExist()", &actual)
+	err := a.conn.Eval(ctx, "Tast.isButtonVisible('#switch-device')", &actual)
 	if err != nil {
 		return err
 	} else if actual != expected {
@@ -423,7 +423,7 @@ func (a *App) CheckSwitchDeviceButtonExist(ctx context.Context, expected bool) e
 // MirrorButtonExists returns whether mirror button exists.
 func (a *App) MirrorButtonExists(ctx context.Context) (bool, error) {
 	var actual bool
-	err := a.conn.Eval(ctx, "CCAUIPreviewOptions.mirrorButtonExist()", &actual)
+	err := a.conn.Eval(ctx, "Tast.isButtonVisible('#toggle-mirror')", &actual)
 	return actual, err
 }
 
@@ -474,7 +474,7 @@ func (a *App) SetTimerOption(ctx context.Context, active bool) error {
 
 // ClickShutter clicks the shutter button.
 func (a *App) ClickShutter(ctx context.Context) error {
-	if err := a.conn.Eval(ctx, "CCAUICapture.clickShutter()", nil); err != nil {
+	if err := a.conn.Eval(ctx, "Tast.clickButton('.shutter')", nil); err != nil {
 		return errors.Wrap(err, "failed to click shutter button")
 	}
 	return nil
@@ -482,7 +482,7 @@ func (a *App) ClickShutter(ctx context.Context) error {
 
 // SwitchCamera switches to next camera device.
 func (a *App) SwitchCamera(ctx context.Context) error {
-	return a.conn.EvalPromise(ctx, "CCAUIMultiCamera.switchCamera()", nil)
+	return a.conn.EvalPromise(ctx, "Tast.switchCamera()", nil)
 }
 
 // SwitchMode switches to specified capture mode.
@@ -492,7 +492,7 @@ func (a *App) SwitchMode(ctx context.Context, mode Mode) error {
 	} else if active {
 		return nil
 	}
-	code := fmt.Sprintf("CCAUICapture.switchMode(%q)", mode)
+	code := fmt.Sprintf("Tast.switchMode(%q)", mode)
 	if err := a.conn.Eval(ctx, code, nil); err != nil {
 		return errors.Wrapf(err, "failed to switch to mode %s", mode)
 	}
@@ -550,7 +550,7 @@ func (a *App) RemoveCacheData(ctx context.Context, keys []string) error {
 		}
 	}
 	keyArray += "]"
-	code := fmt.Sprintf("CCAUICapture.removeCacheData(%v)", keyArray)
+	code := fmt.Sprintf("Tast.removeCacheData(%v)", keyArray)
 	if err := a.conn.EvalPromise(ctx, code, nil); err != nil {
 		testing.ContextLogf(ctx, "Failed to remove cache (%q): %v", code, err)
 		return err
