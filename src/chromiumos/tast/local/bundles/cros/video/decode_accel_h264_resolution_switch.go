@@ -25,5 +25,5 @@ func init() {
 
 // DecodeAccelH264ResolutionSwitch runs the video_decode_accelerator_tests with switch_1080p_720p_240frames.h264.
 func DecodeAccelH264ResolutionSwitch(ctx context.Context, s *testing.State) {
-	decode.RunAccelVideoTestNew(ctx, s, "switch_1080p_720p_240frames.h264", decode.VDA)
+	decode.RunAccelVideoTest(ctx, s, "switch_1080p_720p_240frames.h264", decode.VDA)
 }

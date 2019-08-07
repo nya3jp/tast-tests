@@ -24,5 +24,5 @@ func init() {
 }
 
 func DecodeAccelVDH264ResolutionSwitch(ctx context.Context, s *testing.State) {
-	decode.RunAccelVideoTestNew(ctx, s, "switch_1080p_720p_240frames.h264", decode.VD)
+	decode.RunAccelVideoTest(ctx, s, "switch_1080p_720p_240frames.h264", decode.VD)
 }
