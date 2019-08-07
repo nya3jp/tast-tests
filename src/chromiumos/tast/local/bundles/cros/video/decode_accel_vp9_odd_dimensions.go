@@ -25,5 +25,5 @@ func init() {
 }
 
 func DecodeAccelVP9OddDimensions(ctx context.Context, s *testing.State) {
-	decode.RunAccelVideoTestNew(ctx, s, "test-25fps-321x241.vp9", decode.VDA)
+	decode.RunAccelVideoTest(ctx, s, "test-25fps-321x241.vp9", decode.VDA)
 }

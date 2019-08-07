@@ -7,7 +7,6 @@ package decode
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -18,54 +17,11 @@ import (
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/logging"
-	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
-)
-
-// TestVideoData represents a test video data file for video_decode_accelerator_unittest with
-// metadata.
-type TestVideoData struct {
-	// Name is the file name of input video file.
-	Name string
-	// Size is the width and height of input stream data.
-	Size videotype.Size
-	// NumFrames is the number of picture frames in the file.
-	NumFrames int
-	// NumFragments is NALU (h264) or frame (VP8/9) count in the stream.
-	NumFragments int
-	// MinFPSWithRender is the minimum frames/second speeds expected to be
-	// achieved with rendering to the screen.
-	MinFPSWithRender int
-	// MinFPSNoRender is the minimum frames/second speeds expected to be
-	// achieved without rendering to the screen.
-	// In other words, this is the expected speed for decoding.
-	MinFPSNoRender int
-	// Profile is the VideoCodecProfile set during Initialization.
-	Profile videotype.CodecProfile
-}
-
-// toVDAArg returns a string that can be used for an argument of video_decode_accelerator_unittest.
-// dataPath is the absolute path of the video file.
-func (d *TestVideoData) toVDAArg(dataPath string) string {
-	streamDataArgs := fmt.Sprintf("--test_video_data=%s:%d:%d:%d:%d:%d:%d:%d",
-		dataPath, d.Size.W, d.Size.H, d.NumFrames, d.NumFragments,
-		d.MinFPSWithRender, d.MinFPSNoRender, int(d.Profile))
-	return streamDataArgs
-}
-
-// VDABufferMode represents a buffer mode of video_decode_accelerator_unittest.
-type VDABufferMode int
-
-const (
-	// AllocateBuffer is a mode where video decode accelerator allocates buffer by itself.
-	AllocateBuffer VDABufferMode = iota
-	// ImportBuffer is a mode where video decode accelerator uses provided buffers.
-	// In this mode, we run tests using frame validator.
-	ImportBuffer
 )
 
 // DecoderType represents the different video decoder types.
@@ -80,134 +36,10 @@ const (
 	VD
 )
 
-// testConfig stores test configuration to run video_decode_accelerator_unittest.
-type testConfig struct {
-	// testData stores the test video's name and metadata.
-	testData TestVideoData
-	// dataPath stores the absolute path of the video file.
-	dataPath string
-	// bufferMode indicates which buffer mode the unittest runs with.
-	bufferMode VDABufferMode
-	// requireMD5Files indicates whether to prepare MD5 files for test.
-	// TODO(crbug.com/953118) Move metadata parsing code into the ARC Tast test once video_decode_accelerator_unittest
-	//                        is deprecated. The new video_decode_accelerator_tests use the metadata file directly.
-	requireMD5Files bool
-	// thumbnailOutputDir is a directory for the unittest to output thumbnail.
-	// If unspecified, the unittest outputs no thumbnail.
-	thumbnailOutputDir string
-	// testFilter specifies test pattern the test can run.
-	// If unspecified, the unittest runs all tests.
-	testFilter string
-}
-
-// toArgsList converts testConfig to a list of argument strings.
-func (t *testConfig) toArgsList() []string {
-	args := []string{logging.ChromeVmoduleFlag(), "--ozone-platform=gbm", t.testData.toVDAArg(t.dataPath)}
-	if t.bufferMode == ImportBuffer {
-		args = append(args, "--test_import", "--frame_validator=check")
-	}
-	if t.thumbnailOutputDir != "" {
-		args = append(args, "--thumbnail_output_dir="+t.thumbnailOutputDir)
-	}
-	return args
-}
-
-// DataFiles returns a list of required files that tests that use this package
-// should include in their Data fields.
-func DataFiles(profile videotype.CodecProfile) []string {
-	var codec string
-	switch profile {
-	case videotype.H264Prof:
-		codec = "h264"
-	case videotype.VP8Prof:
-		codec = "vp8"
-	case videotype.VP9Prof:
-		codec = "vp9"
-	case videotype.VP9_2Prof:
-		codec = "vp9_2"
-	}
-
-	fname := "test-25fps." + codec
-	return []string{fname, fname + ".json"}
-}
-
-// runAccelVideoTest runs video_decode_accelerator_unittest with given testConfig.
-func runAccelVideoTest(ctx context.Context, s *testing.State, cfg testConfig) {
-	vl, err := logging.NewVideoLogger()
-	if err != nil {
-		s.Fatal("Failed to set values for verbose logging: ", err)
-	}
-	defer vl.Close()
-
-	if cfg.requireMD5Files {
-		// Parse JSON metadata.
-		jf, err := os.Open(cfg.dataPath + ".json")
-		if err != nil {
-			s.Fatal("Failed to open JSON file: ", err)
-		}
-		defer jf.Close()
-
-		// Note: decodeMetadata is declared in arc_accel_video.go under the same package.
-		//       This is the intermediate state that decodeMetadata will be useless after
-		//       video_decode_accelerator_unittest is deprecated.
-		var md decodeMetadata
-		if err := json.NewDecoder(jf).Decode(&md); err != nil {
-			s.Fatal("Failed to parse metadata from JSON file: ", err)
-		}
-
-		// Prepare thumbnail MD5 file.
-		md5Path := cfg.dataPath + ".md5"
-		s.Logf("Preparing thumbnail MD5 file %v from JSON metadata", md5Path)
-		if err := writeLinesToFile(md.ThumbnailChecksums, md5Path); err != nil {
-			s.Fatalf("Failed to prepare thumbnail MD5 file %s: %v", md5Path, err)
-		}
-		defer os.Remove(md5Path)
-
-		// Prepare frames MD5 file if config's bufferMode is ImportBuffer.
-		if cfg.bufferMode == ImportBuffer {
-			frameMD5Path := cfg.dataPath + ".frames.md5"
-			s.Logf("Preparing frames MD5 file %v from JSON metadata", frameMD5Path)
-			if err := writeLinesToFile(md.MD5Checksums, frameMD5Path); err != nil {
-				s.Fatalf("Failed to prepare frames MD5 file %s: %v", frameMD5Path, err)
-			}
-			defer os.Remove(frameMD5Path)
-		}
-	}
-
-	// Reserve time to restart the ui job at the end of the test.
-	// Only a single process can have access to the GPU, so we are required
-	// to call "stop ui" at the start of the test. This will shut down the
-	// chrome process and allow us to claim ownership of the GPU.
-	shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
-
-	if err := upstart.StopJob(shortCtx, "ui"); err != nil {
-		s.Error("Failed to stop ui: ", err)
-	}
-	defer upstart.EnsureJobRunning(ctx, "ui")
-
-	const exec = "video_decode_accelerator_unittest"
-	if report, err := gtest.New(
-		filepath.Join(chrome.BinTestDir, exec),
-		gtest.Logfile(filepath.Join(s.OutDir(), exec+".log")),
-		gtest.Filter(cfg.testFilter),
-		gtest.ExtraArgs(cfg.toArgsList()...),
-		gtest.UID(int(sysutil.ChronosUID)),
-	).Run(ctx); err != nil {
-		s.Errorf("Failed to run %v with video %s: %v", exec, cfg.dataPath, err)
-		if report != nil {
-			for _, name := range report.FailedTestNames() {
-				s.Error(name, " failed")
-			}
-		}
-	}
-}
-
-// RunAccelVideoTestNew runs video_decode_accelerator_tests with the specified video file.
-// TODO(crbug.com/933034) Rename this function once the video_decode_accelerator_unittest
-// have been completely replaced. decoderType specifies whether to run the tests against
-// the VDA or VD based video decoder implementations.
-func RunAccelVideoTestNew(ctx context.Context, s *testing.State, filename string, decoderType DecoderType) {
+// RunAccelVideoTest runs video_decode_accelerator_tests with the specified
+// video file. decoderType specifies whether to run the tests against the VDA
+// or VD based video decoder implementations.
+func RunAccelVideoTest(ctx context.Context, s *testing.State, filename string, decoderType DecoderType) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging: ", err)
@@ -377,24 +209,6 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, filename strin
 	if err := p.Save(s.OutDir()); err != nil {
 		s.Fatal("Failed to save performance metrics: ", err)
 	}
-}
-
-// RunAllAccelVideoTest runs all tests in video_decode_accelerator_unittest with thumbnail stored in
-// output directory.
-func RunAllAccelVideoTest(ctx context.Context, s *testing.State, testData TestVideoData, bufferMode VDABufferMode) {
-	vl, err := logging.NewVideoLogger()
-	if err != nil {
-		s.Fatal("Failed to set values for verbose logging")
-	}
-	defer vl.Close()
-
-	runAccelVideoTest(ctx, s, testConfig{
-		testData:           testData,
-		dataPath:           s.DataPath(testData.Name),
-		bufferMode:         bufferMode,
-		requireMD5Files:    true,
-		thumbnailOutputDir: s.OutDir(),
-	})
 }
 
 // RunAccelVideoSanityTest runs the FlushAtEndOfStream test in the
