@@ -19,7 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     WebRTCMediaRecorder,
 		Desc:     "Checks MediaRecorder on local and remote streams",
-		Contacts: []string{"shenghao@chromium.org", "chromeos-camera-eng@google.com"},
+		Contacts: []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:     []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
