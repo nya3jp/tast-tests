@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package vm
+package crostini
 
 import (
 	"context"
@@ -16,11 +16,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CrostiniStartTime,
+		Func:         StartupPerf,
 		Desc:         "Performance tests of Termina VM startup and container startup",
 		Contacts:     []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Timeout:      10 * time.Minute,
+		Pre:          chrome.LoggedIn(),
 		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
 }
@@ -47,6 +48,8 @@ func createNewContainer(ctx context.Context, vmInstance *vm.VM) (cont *vm.Contai
 		return nil, 0, err
 	}
 	// Pause timer when downloading begins.
+	//
+	// TODO(hollingum): Refactor to artifact-style setup and remove this.
 	elapsedTime = time.Since(startTime)
 	testing.ContextLog(ctx, "Container downloading")
 
@@ -65,13 +68,10 @@ func createNewContainer(ctx context.Context, vmInstance *vm.VM) (cont *vm.Contai
 	return cont, elapsedTime, nil
 }
 
-func CrostiniStartTime(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+func StartupPerf(ctx context.Context, s *testing.State) {
+	cr := s.PreValue().(*chrome.Chrome)
 
+	// TODO(hollingum): Refactor to allow better re-use of the crostini precondition.
 	s.Log("Enabling Crostini preference setting")
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
