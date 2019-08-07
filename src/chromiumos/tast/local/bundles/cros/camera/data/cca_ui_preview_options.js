@@ -28,15 +28,8 @@ window.CCAUIPreviewOptions = class {
     const track = document.querySelector('video').srcObject.getVideoTracks()[0];
     let facing = track.getSettings().facingMode;
     let mojoFacing = null;
-    let isV1 = false;
-    try {
-      const imageCapture = new cca.mojo.ImageCapture(track);
-      mojoFacing =
-          await imageCapture.getCameraFacing(track.getSettings().deviceId);
-    } catch (e) {
-      // This is HALv1 device.
-      isV1 = true;
-    }
+    const mojoConnector = new cca.mojo.MojoConnector();
+    const isV1 = !await mojoConnector.isDeviceOperationSupported();
     if (mojoFacing !== null) {
       switch (mojoFacing) {
         case cros.mojom.CameraFacing.CAMERA_FACING_FRONT:

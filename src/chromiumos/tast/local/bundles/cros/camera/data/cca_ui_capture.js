@@ -45,19 +45,14 @@ window.CCAUICapture = class {
    * @return {Promise<boolean>}
    */
   static async isPortraitModeSupported() {
-    const video = document.querySelector("#preview-video");
-    const videoTrack = video.srcObject.getVideoTracks()[0];
-    if (!videoTrack) {
+    const mojoConnector = new cca.mojo.MojoConnector();
+    const isDeviceOperationSupported =
+        await mojoConnector.isDeviceOperationSupported();
+    if (!isDeviceOperationSupported) {
       return false;
     }
-    try {
-      const imageCapture = new cca.mojo.ImageCapture(videoTrack);
-      var capabilities = await imageCapture.getPhotoCapabilities();
-    } catch (e) {
-      return false;
-    }
-    return capabilities.supportedEffects &&
-        capabilities.supportedEffects.includes(cros.mojom.Effect.PORTRAIT_MODE);
+    const deviceOperator = await mojoConnector.getDeviceOperator();
+    return await deviceOperator.isPortraitModeSupported();
   }
 };
 })();
