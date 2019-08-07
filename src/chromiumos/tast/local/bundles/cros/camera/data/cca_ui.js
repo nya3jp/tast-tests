@@ -115,19 +115,14 @@ window.Tast = class {
    * @return {Promise<boolean>}
    */
   static async isPortraitModeSupported() {
-    const video = document.querySelector("#preview-video");
-    const videoTrack = video.srcObject.getVideoTracks()[0];
-    if (!videoTrack) {
+    const mojoConnector = new cca.mojo.MojoConnector();
+    const isDeviceOperationSupported =
+        await mojoConnector.isDeviceOperationSupported();
+    if (!isDeviceOperationSupported) {
       return false;
     }
-    try {
-      const imageCapture = new cca.mojo.ImageCapture(videoTrack);
-      var capabilities = await imageCapture.getPhotoCapabilities();
-    } catch (e) {
-      return false;
-    }
-    return capabilities.supportedEffects &&
-        capabilities.supportedEffects.includes(cros.mojom.Effect.PORTRAIT_MODE);
+    const deviceOperator = await mojoConnector.getDeviceOperator();
+    return await deviceOperator.isPortraitModeSupported();
   }
 
   /**
@@ -180,15 +175,8 @@ window.Tast = class {
     const track = document.querySelector('video').srcObject.getVideoTracks()[0];
     let facing = track.getSettings().facingMode;
     let mojoFacing = null;
-    let isV1 = false;
-    try {
-      const imageCapture = new cca.mojo.ImageCapture(track);
-      mojoFacing =
-          await imageCapture.getCameraFacing(track.getSettings().deviceId);
-    } catch (e) {
-      // This is HALv1 device.
-      isV1 = true;
-    }
+    const mojoConnector = new cca.mojo.MojoConnector();
+    const isV1 = !await mojoConnector.isDeviceOperationSupported();
     if (mojoFacing !== null) {
       switch (mojoFacing) {
         case cros.mojom.CameraFacing.CAMERA_FACING_FRONT:
@@ -210,6 +198,26 @@ window.Tast = class {
       throw new Error('Failed to get facing info');
     }
     return facing;
+  }
+
+  /**
+   * Checks if mojo connection could be constructed successfully.
+   */
+  static async checkMojoConnection() {
+    let videoDevices = await navigator.mediaDevices.enumerateDevices().then(
+      (devices) => devices.filter((device) => device.kind == 'videoinput'));
+    if (videoDevices.length === 0) {
+      throw new Error("No video devices detected.");
+    }
+
+    // Expects that no error would be thrown even if it runs on camera hal v1
+    // stack.
+    this.mojoConnector_ = new cca.mojo.MojoConnector();
+    let isSupported = await this.mojoConnector_.isDeviceOperationSupported();
+    if (isSupported) {
+      let deviceOperator = await this.mojoConnector_.getDeviceOperator();
+      await deviceOperator.getCameraFacing(videoDevices[0].deviceId);
+    }
   }
 };
 

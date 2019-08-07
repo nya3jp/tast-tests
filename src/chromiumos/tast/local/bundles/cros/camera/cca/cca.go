@@ -557,3 +557,9 @@ func (a *App) RemoveCacheData(ctx context.Context, keys []string) error {
 	}
 	return nil
 }
+
+// CheckMojoConnection checks if mojo connection works.
+func (a *App) CheckMojoConnection(ctx context.Context) error {
+	code := fmt.Sprintf("Tast.checkMojoConnection()")
+	return a.conn.EvalPromise(ctx, code, nil)
+}
