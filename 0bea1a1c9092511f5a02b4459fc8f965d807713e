@@ -22,6 +22,30 @@
       "revId": "0bea1a1c9092511f5a02b4459fc8f965d807713e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00561081_91c3d394",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-07T02:01:03Z",
+      "side": 1,
+      "message": "No, the description is correct. See https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/0abbf27fe2222441906ba3e4ef8917ea7764f536/src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go#36. The Chrome tests are currently using metric_client -C for consent.",
+      "parentUuid": "3cfcc4f3_c864796f",
+      "range": {
+        "startLine": 9,
+        "startChar": 35,
+        "endLine": 10,
+        "endChar": 8
+      },
+      "revId": "0bea1a1c9092511f5a02b4459fc8f965d807713e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
