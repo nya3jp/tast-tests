@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1e6dd1c5_c9847bd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2019-08-07T06:43:13Z",
+      "side": 1,
+      "message": "what does it mean to depend on \"android\" and \"android_p\" ? \nIt seems to do an AND, so does this mean it doesn\u0027t run on N ?",
+      "range": {
+        "startLine": 26,
+        "startChar": 25,
+        "endLine": 26,
+        "endChar": 47
+      },
+      "revId": "922fc95b5d84363f00c57802cc0ed996cf35e448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "521f30ba_98edb9ea",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups.go",
         "patchSetId": 1
