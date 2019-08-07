@@ -26,5 +26,5 @@ func init() {
 }
 
 func DecodeAccelVDVP8ResolutionSwitch(ctx context.Context, s *testing.State) {
-	decode.RunAccelVideoTestNew(ctx, s, "resolution_change_500frames.vp8.ivf", decode.VD)
+	decode.RunAccelVideoTest(ctx, s, "resolution_change_500frames.vp8.ivf", decode.VD)
 }
