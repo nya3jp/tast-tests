@@ -22,7 +22,6 @@ func init() {
 		SoftwareDeps: []string{"chrome", caps.HWEncodeH264},
 		Data:         []string{encode.Tulip180P.Name},
 		Timeout:      4 * time.Minute,
-		Attr:         []string{"informational"},
 	})
 }
 
