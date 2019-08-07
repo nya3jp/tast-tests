@@ -25,5 +25,5 @@ func init() {
 
 // DecodeAccelVP9ResolutionSwitch runs the video_decode_accelerator_tests with resolution_change_500frames.vp9.ivf.
 func DecodeAccelVP9ResolutionSwitch(ctx context.Context, s *testing.State) {
-	decode.RunAccelVideoTestNew(ctx, s, "resolution_change_500frames.vp9.ivf", decode.VDA)
+	decode.RunAccelVideoTest(ctx, s, "resolution_change_500frames.vp9.ivf", decode.VDA)
 }
