@@ -1,0 +1,222 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34a47dfa_7eaab78e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_rtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-07T13:17:02Z",
+      "side": 1,
+      "message": "style: could you just name this \"ctx\" for consistency?\nbecause this value itself is unused, you can just overwrite the value at the next line.",
+      "range": {
+        "startLine": 32,
+        "startChar": 14,
+        "endLine": 32,
+        "endChar": 21
+      },
+      "revId": "0b1486c5c999dc691bfd1cb2e5b0d4e4395ca62b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9bcd30f_a26d0077",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_rtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-07T13:17:02Z",
+      "side": 1,
+      "message": "the original CTX is unused. If the shorter test period is expected, could you just set this at Timeout in init() ?",
+      "range": {
+        "startLine": 35,
+        "startChar": 41,
+        "endLine": 35,
+        "endChar": 55
+      },
+      "revId": "0b1486c5c999dc691bfd1cb2e5b0d4e4395ca62b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0ad5be8_b7d8b142",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_rtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-07T13:17:02Z",
+      "side": 1,
+      "message": "nit: const, too?",
+      "revId": "0b1486c5c999dc691bfd1cb2e5b0d4e4395ca62b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02e1a1c8_034849af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_rtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-07T13:17:02Z",
+      "side": 1,
+      "message": "optional: I think parsing here is unnecessary?",
+      "range": {
+        "startLine": 81,
+        "startChar": 84,
+        "endLine": 81,
+        "endChar": 128
+      },
+      "revId": "0b1486c5c999dc691bfd1cb2e5b0d4e4395ca62b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcf125d3_f0fd8b92",
+        "filename": "src/chromiumos/tast/local/rtc/rtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-07T13:17:02Z",
+      "side": 1,
+      "message": "Will this be reused widely (i.e. tests other than kernel category, too)?\nIf not, could you move this to chromiumos/tast/local/bundles/cros/kernel/rtc ?",
+      "revId": "0b1486c5c999dc691bfd1cb2e5b0d4e4395ca62b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3c1991e_c6527b8d",
+        "filename": "src/chromiumos/tast/local/rtc/rtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-07T13:17:02Z",
+      "side": 1,
+      "message": "style:\nconst (\n  hwclockDateFormat \u003d ...\n  hwclockOutputFormat \u003d ...\n  ...\n)",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 38
+      },
+      "revId": "0b1486c5c999dc691bfd1cb2e5b0d4e4395ca62b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "086be7e3_6bf2158e",
+        "filename": "src/chromiumos/tast/local/rtc/rtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-07T13:17:02Z",
+      "side": 1,
+      "message": "Could you follow the godoc style?\n\nWrite sets the RTC using ...\n\ncf)https://blog.golang.org/godoc-documenting-go-code\n\n\u003d\u003d quote \u003d\u003d\nNotice this comment is a complete sentence that begins with the name of the element it describes.\n\u003d\u003d quote end \u003d\u003d",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 66
+      },
+      "revId": "0b1486c5c999dc691bfd1cb2e5b0d4e4395ca62b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f2530ba_c9fb158e",
+        "filename": "src/chromiumos/tast/local/rtc/rtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-07T13:17:02Z",
+      "side": 1,
+      "message": "for simple concat, could you use \"+\"?\n\n\"--date\u003d\"+dateString",
+      "range": {
+        "startLine": 43,
+        "startChar": 21,
+        "endLine": 43,
+        "endChar": 57
+      },
+      "revId": "0b1486c5c999dc691bfd1cb2e5b0d4e4395ca62b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b26709f_21229eab",
+        "filename": "src/chromiumos/tast/local/rtc/rtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-07T13:17:02Z",
+      "side": 1,
+      "message": "Same.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 44
+      },
+      "revId": "0b1486c5c999dc691bfd1cb2e5b0d4e4395ca62b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30876652_ae676151",
+        "filename": "src/chromiumos/tast/local/rtc/rtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-07T13:17:02Z",
+      "side": 1,
+      "message": "style: you don\u0027t need append here. Also for simple concat, could you use \"+\"?\n\nargs :\u003d []string{\"--rtc\u003d/dev/\"+rtc.DevName}",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 63
+      },
+      "revId": "0b1486c5c999dc691bfd1cb2e5b0d4e4395ca62b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
