@@ -31,7 +31,7 @@ func Downloads(ctx context.Context, s *testing.State) {
 	const (
 		filename    = "capybara.jpg"
 		crosPath    = "/home/chronos/user/Downloads/" + filename
-		androidPath = "/storage/emulated/0/Download/" + filename
+		androidPath = "/var/run/arc/sdcard/full/emulated/0/Download/" + filename
 	)
 
 	a := s.PreValue().(arc.PreData).ARC
