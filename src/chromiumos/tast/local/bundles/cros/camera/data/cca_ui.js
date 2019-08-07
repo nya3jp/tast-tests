@@ -13,12 +13,12 @@
  *     whether the window is in the target state.
  * @param {function(!AppWindow): !chrome.events.Event} getEventTarget The
  *     function to get the target for adding the event listener.
- * @param {function(!AppWindow): undefined} changeState The function to trigger
- *     the state change of the window.
- * @return {!Promise<undefined>} A completion Promise that will be resolved when
- *     the window is in the target state.
+ * @param {function(!AppWindow): undefined} changeState The function to
+ *     trigger the state change of the window.
+ * @return {!Promise<undefined>} A completion Promise that will be resolved
+ *     when the window is in the target state.
  */
-function changeWindowState(predicate, getEventTarget, changeState) {
+  function changeWindowState(predicate, getEventTarget, changeState) {
   const win = chrome.app.window.current();
   const eventTarget = getEventTarget(win);
   return new Promise((resolve) => {
@@ -65,5 +65,152 @@ window.Tast = class {
         (w) => w.isFullscreen(), (w) => w.onFullscreened,
         (w) => w.fullscreen());
   }
+
+  /**
+   * Returns whether the target HTML element is visible.
+   * @param {string} selector Selector for the target element.
+   * @return {boolean}
+   */
+  static isVisible(selector) {
+    const htmlElement = document.querySelector(selector);
+    const style = htmlElement && window.getComputedStyle(htmlElement);
+    return style && style.display !== 'none' && style.visibility !== 'hidden';
+  }
+
+  /**
+   * Triggers click event on the target HTML element that specified by
+   * |selector|. If more than one element matched the selector, it will
+   * trigger the first one whose display property is non-null.
+   * @param {string} selector Selector for the target element.
+   */
+  static click(selector) {
+    const htmlElement = Array.from(document.querySelectorAll(selector))
+        .find((element) => element.offsetParent);
+    if (!htmlElement) {
+      throw new Error('No visible element: ', selector);
+    }
+    htmlElement.click();
+  }
+
+  /**
+   * Switches to specific camera mode.
+   * @param {string} mode The target mode which we expects to switch to.
+   * @throws {Error} Throws error if there is no button found for given |mode|.
+   */
+  static switchMode(mode) {
+    try {
+      this.click(`.mode-item>input[data-mode="${mode}"]`);
+    } catch (e) {
+      throw new Error(`Cannot find button for switching to mode ${mode}`);
+    }
+  }
+
+  /**
+   * Removes the cached key value pair in chrome.storage.local.
+   * @param{Array<string>} keys
+   * @return Promise
+   */
+  static removeCacheData(keys) {
+    return new Promise((resolve, reject) => {
+      chrome.storage.local.remove(keys, () => {
+        if (chrome.runtime.lastError) {
+          reject(chrome.runtime.lastError);
+        }
+        resolve();
+      });
+    });
+  }
+
+  /**
+   * Gets whether portrait mode is supported by current active video stream.
+   * @return {Promise<boolean>}
+   */
+  static async isPortraitModeSupported() {
+    const video = document.querySelector("#preview-video");
+    const videoTrack = video.srcObject.getVideoTracks()[0];
+    if (!videoTrack) {
+      return false;
+    }
+    try {
+      const imageCapture = new cca.mojo.ImageCapture(videoTrack);
+      var capabilities = await imageCapture.getPhotoCapabilities();
+    } catch (e) {
+      return false;
+    }
+    return capabilities.supportedEffects &&
+        capabilities.supportedEffects.includes(cros.mojom.Effect.PORTRAIT_MODE);
+  }
+
+  /**
+   * Gets number of cameras.
+   * @return {number}
+   */
+  static async getNumOfCameras() {
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    return devices.filter((d) => d.kind === 'videoinput').length;
+  }
+
+  /**
+   * Checks whether facing is as expected. If it's V1 device, accept unknown as
+   * correct answer.
+   * @param {string} expected Expected facing
+   * @return {Promise} The promise resolves successfully if the check passes.
+   */
+  static async checkFacing(expected) {
+    const actual = await this.getFacing();
+    if (actual === expected || actual === 'unknown') {
+      return;
+    }
+    throw new Error(`Expected facing: ${expected}; actual: ${actual};`);
+  }
+
+  /**
+   * Switcthes the camera device to next available camera.
+   * @return {Promise} resolves after preview is active again.
+   */
+  static switchCamera() {
+    this.click('#switch-device');
+    return new Promise((resolve, reject) => {
+      const interval = setInterval(() => {
+        if (cca.state.get('streaming')) {
+          clearInterval(interval);
+          resolve();
+        }
+      }, 1000);
+    });
+  }
+
+  /**
+   * Gets facing of current active camera device.
+   * @return {string} The facing string 'user', 'environment', 'external'.
+   * Returns 'unknown' if current device is HALv1 and does not have
+   * configurations.
+   */
+  static async getFacing() {
+    const track = document.querySelector('video').srcObject.getVideoTracks()[0];
+    try {
+      const imageCapture = new cca.mojo.ImageCapture(track);
+      let facing =
+          await imageCapture.getCameraFacing(track.getSettings().deviceId);
+      switch (facing) {
+        case cros.mojom.CameraFacing.CAMERA_FACING_FRONT:
+          return 'user';
+        case cros.mojom.CameraFacing.CAMERA_FACING_BACK:
+          return 'environment';
+        case cros.mojom.CameraFacing.CAMERA_FACING_EXTERNAL:
+          return 'external';
+        default:
+          throw new Error('Unexpected CameraFacing value: ' + facing);
+      }
+    } catch (e) {
+      // This might be a HALv1 device.
+      let facing = track.getSettings().facingMode;
+      if (facing) {
+        return facing;
+      }
+      return 'unknown';
+    }
+  }
 };
+
 })();
