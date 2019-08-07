@@ -26,13 +26,8 @@ window.CCAUIMultiCamera = class {
   static async checkFacing(expected) {
     const track = document.querySelector('video').srcObject.getVideoTracks()[0];
     const actual = track.getSettings().facingMode;
-    let isV1 = false;
-    try {
-      const imageCapture = new cca.mojo.ImageCapture(track);
-      await imageCapture.getPhotoCapabilities();
-    } catch (e) {
-      isV1 = true;
-    }
+    const mojoConnector = new cca.mojo.MojoConnector();
+    const isV1 = !await mojoConnector.isDeviceOperationSupported();
     if (expected === actual || (isV1 && (!actual || actual === 'unknown'))) {
       return;
     }
