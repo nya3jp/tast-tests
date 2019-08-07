@@ -38,6 +38,9 @@ const (
 	// Tests that call New with the default fake login mode should declare a timeout that's at least this long.
 	LoginTimeout = 60 * time.Second
 
+	// dialBufferSize is a larger default buffer size (1 MB) for loading JavaScript.
+	dialBufferSize = 1048576
+
 	chromeUser        = "chronos"                          // Chrome Unix username
 	debuggingPortPath = "/home/chronos/DevToolsActivePort" // file where Chrome writes debugging port
 
@@ -598,7 +601,8 @@ func (c *Chrome) connectToBrowser(ctx context.Context) error {
 	}
 
 	testing.ContextLog(ctx, "Connecting to browser at ", version.WebSocketDebuggerURL)
-	co, err := rpcc.DialContext(ctx, version.WebSocketDebuggerURL)
+	bufferSizeDialOption := rpcc.WithWriteBufferSize(dialBufferSize)
+	co, err := rpcc.DialContext(ctx, version.WebSocketDebuggerURL, bufferSizeDialOption)
 	if err != nil {
 		return errors.Wrap(err, "failed to establish WebSocket connection to browser")
 	}
