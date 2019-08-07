@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "87a892a8_4f36a2cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-08-07T09:13:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14aac9a5_6228b0d0",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd7f93a0_2b6a621e",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00cb513a_13d8c63d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-08-07T09:13:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd7f93a0_2b6a621e",
+      "range": {
+        "startLine": 13,
+        "startChar": 28,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a9ff8006_abb41d18",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-08-07T09:13:05Z",
+      "side": 1,
+      "message": "Without \u0027chromium:\u0027, I got preupload error.\nSee https://cs.corp.google.com/chromeos_public/src/repohooks/pre-upload.py?l\u003d631.",
+      "parentUuid": "8136d682_676d1cdf",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fc88b7e_8df6b8d5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 4
@@ -82,6 +154,30 @@
       "writtenOn": "2019-08-07T07:44:59Z",
       "side": 1,
       "message": "is this line number correct?",
+      "range": {
+        "startLine": 21,
+        "startChar": 127,
+        "endLine": 21,
+        "endChar": 130
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e637bf98_3f150a5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-08-07T09:13:05Z",
+      "side": 1,
+      "message": "Sorry for lacking the explanation.\nA CL that adds EventLog (https://chromium-review.googlesource.com/c/chromium/src/+/1734737) has not landed yet.\n\nCurrently it seems wrong, but it will be correct after the CL is merged.",
+      "parentUuid": "1fc88b7e_8df6b8d5",
       "range": {
         "startLine": 21,
         "startChar": 127,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "ec502553_d9966883",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-08-07T09:13:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a82b63d1_cbe916a1",
+      "range": {
+        "startLine": 26,
+        "startChar": 29,
+        "endLine": 26,
+        "endChar": 52
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6baf2e8c_14db0ae7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 4
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "dfb002fe_96c206c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-08-07T09:13:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6baf2e8c_14db0ae7",
+      "range": {
+        "startLine": 22,
+        "startChar": 101,
+        "endLine": 22,
+        "endChar": 102
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af45311d_a546defa",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 4
@@ -151,6 +295,30 @@
       "writtenOn": "2019-08-07T07:44:59Z",
       "side": 1,
       "message": "should be :\u003d ?",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 6
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe747b2d_6280186a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-08-07T09:13:05Z",
+      "side": 1,
+      "message": "In order to make clear what the first return value (simpleAutomationNode) represents, I used named return value.\nThus \u0027\u003d\u0027 should be fine here.",
+      "parentUuid": "af45311d_a546defa",
       "range": {
         "startLine": 54,
         "startChar": 5,
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "f6b8a740_2cd5f79f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-08-07T09:13:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "900cddad_7b76bf56",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 3
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28cf46c1_974b83b2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 4
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "981a7001_302db996",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-08-07T09:13:05Z",
+      "side": 1,
+      "message": "Thank you for catching this!",
+      "parentUuid": "28cf46c1_974b83b2",
+      "range": {
+        "startLine": 84,
+        "startChar": 3,
+        "endLine": 84,
+        "endChar": 8
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4f1f5fa_0d1d6e21",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 4
@@ -220,6 +436,30 @@
       "writtenOn": "2019-08-07T07:44:59Z",
       "side": 1,
       "message": "I think it will be useful to have the diff of the tree, ie expected vs actual/ obtained.\nwdyt ?",
+      "range": {
+        "startLine": 167,
+        "startChar": 2,
+        "endLine": 167,
+        "endChar": 70
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "598cfbab_4d74e6de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-08-07T09:13:05Z",
+      "side": 1,
+      "message": "Because we can expect that \u0027diff\u0027 can be small (e.g. only a few role or name), I\u0027ll dump the diff in the error message.",
+      "parentUuid": "d4f1f5fa_0d1d6e21",
       "range": {
         "startLine": 167,
         "startChar": 2,
@@ -252,6 +492,30 @@
       "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "825a3e23_ec48485c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-08-07T09:13:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3bbc550_71fe9a65",
+      "range": {
+        "startLine": 168,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 17
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
