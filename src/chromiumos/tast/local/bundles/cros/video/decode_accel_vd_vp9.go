@@ -9,7 +9,6 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/video/decode"
 	"chromiumos/tast/local/media/caps"
-	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/testing"
 )
 
@@ -22,12 +21,12 @@ func init() {
 		// TODO(b/137916185): Remove dependency on android capability. It's used here
 		// to guarantee import-mode support, which is required by the new VD's.
 		SoftwareDeps: []string{"android", "chrome", caps.HWDecodeVP9},
-		Data:         decode.DataFiles(videotype.VP9Prof),
+		Data:         []string{"test-25fps.vp9", "test-25fps.vp9.json"},
 	})
 }
 
 // DecodeAccelVDVP9 runs the video_decode_accelerator_tests with test-25fps.vp9 against
 // the new video decoders based on the media::VideoDecoder interface (see go/vd-migration).
 func DecodeAccelVDVP9(ctx context.Context, s *testing.State) {
-	decode.RunAccelVideoTestNew(ctx, s, decode.Test25FPSVP9.Name, decode.VD)
+	decode.RunAccelVideoTest(ctx, s, "test-25fps.vp9", decode.VD)
 }
