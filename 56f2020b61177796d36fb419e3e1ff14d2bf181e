@@ -1244,6 +1244,30 @@
     },
     {
       "key": {
+        "uuid": "680c10a4_80681ceb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-07T18:56:11Z",
+      "side": 1,
+      "message": "If that happens I would label it as a tast/autotestPrivate bug as opposed to dealing with it inside of every test that accesses autotestPrivate. Trying to deal with it within every test is just asking for someone to forget or for other issues.\n\nAlso, I have run this test several hundred times on my device and on a candy device in the lab without running into the issue.",
+      "parentUuid": "3d42aa30_f0406de8",
+      "range": {
+        "startLine": 69,
+        "startChar": 14,
+        "endLine": 69,
+        "endChar": 18
+      },
+      "revId": "56f2020b61177796d36fb419e3e1ff14d2bf181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "907a9878_be75a1dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/filesapp/filesapp.go",
         "patchSetId": 6
