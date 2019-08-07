@@ -18,8 +18,8 @@ func init() {
 		Func: MediaRecorderPerfVP8,
 		Desc: "Captures performance data about MediaRecorder for SW and HW with VP8",
 		Contacts: []string{
-			"hiroh@chromium.org",    // Video team
-			"shenghao@chromium.org", // Camera team
+			"hiroh@chromium.org", // Video team
+			"shik@chromium.org",  // Camera team
 			"chromeos-camera-eng@google.com",
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
