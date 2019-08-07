@@ -22,7 +22,6 @@ func init() {
 		SoftwareDeps: []string{"chrome", caps.HWEncodeVP8},
 		Data:         []string{encode.Bear192P.Name},
 		Timeout:      4 * time.Minute,
-		Attr:         []string{"informational"},
 	})
 }
 
