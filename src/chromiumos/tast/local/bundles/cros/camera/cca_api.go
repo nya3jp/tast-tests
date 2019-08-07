@@ -19,7 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CCAAPI,
 		Desc:         "Verifies that the private JavaScript APIs CCA relies on work as expected",
-		Contacts:     []string{"shenghao@chromium.org", "chromeos-camera-eng@google.com"},
+		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.BuiltinCamera, "chrome"},
 		Data:         []string{"cca_api_can_access_external_storage.js"},
@@ -54,7 +54,7 @@ func CCAAPI(ctx context.Context, s *testing.State) {
 	s.Log("Connected to CCA background")
 
 	testCanAccessExternalStorage(rctx, s, ccaConn)
-	// TODO(shenghao): Add tests for other private APIs.
+	// TODO(inker): Add tests for other private APIs.
 }
 
 func testCanAccessExternalStorage(ctx context.Context, s *testing.State, conn *chrome.Conn) {

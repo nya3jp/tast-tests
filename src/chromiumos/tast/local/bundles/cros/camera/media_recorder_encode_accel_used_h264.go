@@ -18,8 +18,8 @@ func init() {
 		Func: MediaRecorderEncodeAccelUsedH264,
 		Desc: "Checks H.264 video encode acceleration is used in MediaRecorder",
 		Contacts: []string{
-			"hiroh@chromium.org",    // Video team
-			"shenghao@chromium.org", // Camera team
+			"hiroh@chromium.org", // Video team
+			"wtlee@chromium.org", // Camera team
 			"chromeos-camera-eng@google.com",
 		},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.

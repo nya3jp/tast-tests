@@ -20,7 +20,7 @@ func init() {
 		Func: CameraOrientation,
 		Desc: "Verifies camera orientation compatibility solution works",
 		Contacts: []string{
-			"shenghao@chromium.org", // Original author.
+			"shik@chromium.org",
 			"chromeos-camera-eng@google.com",
 			"hidehiko@chromium.org", // Tast port author.
 		},
