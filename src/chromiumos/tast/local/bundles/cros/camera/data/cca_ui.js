@@ -269,5 +269,25 @@ window.Tast = class {
     }
     return track.getSettings().deviceId;
   }
+
+  /*
+   * Checks if mojo connection could be constructed successfully.
+   */
+  static async checkMojoConnection() {
+    let devices = await navigator.mediaDevices.enumerateDevices();
+    let videoDevices = devices.filter(({kind}) => kind === 'videoinput');
+    if (videoDevices.length === 0) {
+      throw new Error('No video devices detected.');
+    }
+
+    // Expects that no error would be thrown even if it runs on camera hal v1
+    // stack.
+    let mojoConnector = new cca.mojo.MojoConnector();
+    let isSupported = await mojoConnector.isDeviceOperationSupported();
+    if (isSupported) {
+      let deviceOperator = await mojoConnector.getDeviceOperator();
+      await deviceOperator.getCameraFacing(videoDevices[0].deviceId);
+    }
+  }
 };
 })();
