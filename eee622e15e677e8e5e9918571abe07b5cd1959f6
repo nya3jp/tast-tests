@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa26ed5b_6b78b45a",
+        "filename": "src/chromiumos/tast/local/syslog/watcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-08T05:47:08Z",
+      "side": 1,
+      "message": "Note that this can put the cursor in the middle of a line if syslogd is writing to the file at this moment. I\u0027m not sure if it causes a problem though. Maybe it\u0027s good to mention as a comment here anyway.",
+      "range": {
+        "startLine": 36,
+        "startChar": 10,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "eee622e15e677e8e5e9918571abe07b5cd1959f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db02414c_72407a56",
+        "filename": "src/chromiumos/tast/local/syslog/watcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-08T05:47:08Z",
+      "side": 1,
+      "message": "originalName can be obtained by file.Name(). Note that documentation makes it clear that file.Name() returns the file name given to os.Open.\n\nhttps://godoc.org/os#File.Name",
+      "range": {
+        "startLine": 42,
+        "startChar": 17,
+        "endLine": 42,
+        "endChar": 29
+      },
+      "revId": "eee622e15e677e8e5e9918571abe07b5cd1959f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "707a148f_0eff75d5",
+        "filename": "src/chromiumos/tast/local/syslog/watcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-08T05:47:08Z",
+      "side": 1,
+      "message": "I expect Watcher to provide API to wait for the searched string to appear. Otherwise almost every caller needs to wrap HasMessage call in testing.Poll.\n\nThere are several possible API, but one candidate is:\n\n func (w *Watcher) WaitMessage(ctx context.Context, text string) error\n\nwhich waits for the message to appear until ctx\u0027s deadline is reached.",
+      "range": {
+        "startLine": 94,
+        "startChar": 18,
+        "endLine": 94,
+        "endChar": 28
+      },
+      "revId": "eee622e15e677e8e5e9918571abe07b5cd1959f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12888b07_77371782",
+        "filename": "src/chromiumos/tast/local/syslog/watcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-08T05:47:08Z",
+      "side": 1,
+      "message": "line might not end with \u0027\\n\u0027 if w.reader is already positioned at the end of the file and a large line is being appended to the file. In this case we need to call ReadString again and concatenate line.\n\nDetailed scenario:\n- w.reader reaches the end position of the file (but io.EOF is not returned yet)\n- syslogd appends a long line to the file. Since the line is long, it is written to the file by multiple calls of write(2).\n- Before all write calls by syslogd are finished, this method calls w.reader. It returns io.EOF in the middle of the line.",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 6
+      },
+      "revId": "eee622e15e677e8e5e9918571abe07b5cd1959f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a12b416_5b8fc676",
+        "filename": "src/chromiumos/tast/local/syslog/watcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-08T05:47:08Z",
+      "side": 1,
+      "message": "Hmm, this behavior is surprising. I thought I can use Watcher to find two different lines in the following way:\n\n // Make sure foo daemon starts and stops.\n ok, err :\u003d w.HasMessage(\"foo daemon starting\")\n ...\n ok, err \u003d w.HasMessage(\"foo daemon stopped\")\n ...\n\nBut this does not work as intended because \"foo daemon stopped\" might be consumed in the first HasMessage call if the daemon starts and stops very fast. Do you really intend it? I\u0027d rather stop consuming the file once the text is found.",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 34
+      },
+      "revId": "eee622e15e677e8e5e9918571abe07b5cd1959f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
