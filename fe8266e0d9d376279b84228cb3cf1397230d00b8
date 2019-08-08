@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "b1c3bc9f_a62ba14a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gstoraster/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-08T08:05:43Z",
+      "side": 1,
+      "message": "I think you don\u0027t need this. inputContents can be just []byte.\nCould you inline the code?",
+      "revId": "fe8266e0d9d376279b84228cb3cf1397230d00b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f26244e_cb287d86",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/gstoraster/util.go",
         "patchSetId": 1
@@ -19,6 +36,40 @@
         "endLine": 33,
         "endChar": 4
       },
+      "revId": "fe8266e0d9d376279b84228cb3cf1397230d00b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5a526c2_bd171869",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gstoraster/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-08T08:05:43Z",
+      "side": 1,
+      "message": "You can just directly write the []byte to stdin.",
+      "revId": "fe8266e0d9d376279b84228cb3cf1397230d00b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d09f6395_5c9b546c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gstoraster/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-08T08:05:43Z",
+      "side": 1,
+      "message": "optional: I recommend to set testexec.DumpLogOnError.\n\ncmd.Output(testexec.DumpLogOnError)",
       "revId": "fe8266e0d9d376279b84228cb3cf1397230d00b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
