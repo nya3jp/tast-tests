@@ -666,6 +666,30 @@
     },
     {
       "key": {
+        "uuid": "94ac2b3f_b291ba90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-08T01:35:02Z",
+      "side": 1,
+      "message": "Thanks for experimenting it, Brian!\n\nHmm, my guess was that there should be race-free way to detect that udev rule processing has been done because it seems a common need in Linux boot process. But I also tried the same experiment and confirmed that \"udevadm settle\" can exit immediately before udev finishes rule processing. I also tried \"udevadm trigger -w -s fake\" and \"udevadm info /dev/null\" before settle, but no luck.\n\nOne possible way would be to introduce a udev rule that touches a file to make sure udev rule processing has been started. I tried the following and \"udevadm settle\" worked well:\n\n # cat /etc/udev/rules.d/99-nya.rules \n ACTION\u003d\u003d\"add\", SUBSYSTEM\u003d\u003d\"drm\", KERNEL\u003d\u003d\"card0\", RUN+\u003d\"/usr/bin/touch /run/udev-rules-processing\"\n ACTION\u003d\u003d\"add\", SUBSYSTEM\u003d\u003d\"drm\", KERNEL\u003d\u003d\"card0\", RUN+\u003d\"/usr/bin/sleep 3\"\n\n # stop udev; rm -f /run/udev-rules-processing; start udev; echo \"Waiting for udev-rules-processing\"; while ! stat /run/udev-rules-processing \u003e /dev/null 2\u003e\u00261; do :; done; echo \"Found udev-rules-processing\"; time udevadm settle\n udev stop/waiting\n udev start/running, process 5951\n Waiting for udev-rules-processing\n Found udev-rules-processing\n \n real    0m3.013s\n user    0m0.001s\n sys     0m0.002s\n\nI know it\u0027s ugly, I hope there\u0027s better way.",
+      "parentUuid": "ecdb4e16_36356c77",
+      "range": {
+        "startLine": 126,
+        "startChar": 52,
+        "endLine": 126,
+        "endChar": 73
+      },
+      "revId": "fdf21283ee64b6b9f590b7b2657e259b51ddae1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "561a3a1e_5208c8fb",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 11
