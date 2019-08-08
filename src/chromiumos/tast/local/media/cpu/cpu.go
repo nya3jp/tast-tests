@@ -32,44 +32,47 @@ const (
 	WaitProcess
 )
 
-// MeasureProcessCPU starts a gtest process and measures CPU usage for the given duration.
+// MeasureProcessCPU starts one or more gtest processes and measures CPU usage for the given duration.
 // The average usage over all CPU cores is returned as a percentage.
 func MeasureProcessCPU(ctx context.Context, duration time.Duration,
-	exitOption ExitOption, t *gtest.GTest) (float64, error) {
+	exitOption ExitOption, ts ...*gtest.GTest) (float64, error) {
 	const (
 		stabilize   = 1 * time.Second // time to wait for CPU to stabilize after launching proc.
 		cleanupTime = 5 * time.Second // time reserved for cleanup after measuring.
 	)
 
-	// Start the process asynchronous by calling the provided startup function.
-	cmd, err := t.Start(ctx)
-	if err != nil {
-		return 0.0, errors.Wrap(err, "failed to run binary")
-	}
-
-	// Clean up the process upon exiting the function.
-	defer func() {
-		if exitOption == KillProcess {
-			if err := cmd.Kill(); err != nil {
-				testing.ContextLog(ctx, "Failed to kill process: ", err)
-			}
+	for _, t := range ts {
+		// Start the process asynchronously by calling the provided startup function.
+		cmd, err := t.Start(ctx)
+		if err != nil {
+			return 0.0, errors.Wrap(err, "failed to run binary")
 		}
-		// Wait for the process to finish. After killing the process we still need
-		// to wait for all resources to get released.
-		if err := cmd.Wait(); err != nil {
+
+		// Clean up the process upon exiting the function.
+		defer func() {
 			if exitOption == KillProcess {
-				ws, ok := testexec.GetWaitStatus(err)
-				if ok && ws.Signaled() && ws.Signal() == syscall.SIGKILL {
-					// In KillProcess case, it is expected the process is terminated by SIGKILL, so ignore
-					// the error in the case.
-					err = nil
+				if err := cmd.Kill(); err != nil {
+					testing.ContextLog(ctx, "Failed to kill process: ", err)
 				}
 			}
-			if err != nil {
-				testing.ContextLog(ctx, "Failed waiting for the command to exit: ", err)
+			// Wait for the process to finish. After killing the process we still need
+			// to wait for all resources to get released.
+			if err := cmd.Wait(); err != nil {
+				if exitOption == KillProcess {
+					ws, ok := testexec.GetWaitStatus(err)
+					if ok && ws.Signaled() && ws.Signal() == syscall.SIGKILL {
+						// In KillProcess case, it is expected the process is terminated by SIGKILL,
+						// so ignore the error in this case.
+						err = nil
+					}
+				}
+				if err != nil {
+					testing.ContextLog(ctx, "Failed waiting for the command to exit: ", err)
+				}
 			}
-		}
-	}()
+		}()
+
+	}
 
 	// Use a shorter context to leave time for cleanup upon failure.
 	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
