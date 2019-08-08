@@ -19,6 +19,46 @@
     },
     {
       "key": {
+        "uuid": "ab41bdb3_f10b4c7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-08T09:13:16Z",
+      "side": 1,
+      "message": "What feature you\u0027d like to make sure by this test?\nE.g. provisioning flow? Authorization mechanism or some services?",
+      "revId": "5b7c107e7ba790cb2236c18586ea6df669a636da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fffa317c_c1b87d2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-08T09:13:16Z",
+      "side": 1,
+      "message": "Clar: what ARC is the target? N, P, Q, master and VM?",
+      "range": {
+        "startLine": 25,
+        "startChar": 25,
+        "endLine": 25,
+        "endChar": 43
+      },
+      "revId": "5b7c107e7ba790cb2236c18586ea6df669a636da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f6384c7_cf385f11",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
         "patchSetId": 1
@@ -30,6 +70,23 @@
       "writtenOn": "2019-08-07T18:09:00Z",
       "side": 1,
       "message": "How does this function differ from arc.getNewestPID() in low_memory_killer.go?  I am not super familiar with the ARC++ specifics but this seems like the kind of function that could be more broadly useful.",
+      "revId": "5b7c107e7ba790cb2236c18586ea6df669a636da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d709da66_f1fdb0e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-08T09:13:16Z",
+      "side": 1,
+      "message": "Could you avoid just waiting a fixed duration?\nWhat condition should this wait for?",
       "revId": "5b7c107e7ba790cb2236c18586ea6df669a636da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
