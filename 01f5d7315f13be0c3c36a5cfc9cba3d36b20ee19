@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "303f80b7_bd6d511f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1302247
+      },
+      "writtenOn": "2019-08-08T17:27:57Z",
+      "side": 1,
+      "message": "Isn\u0027t there a race here where the init phase of crash reporter needs to run first to create the kernel crash logs?",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 86
+      },
+      "revId": "01f5d7315f13be0c3c36a5cfc9cba3d36b20ee19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
