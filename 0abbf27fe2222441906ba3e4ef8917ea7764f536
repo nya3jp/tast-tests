@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99fdb529_966baac2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-08T09:10:23Z",
+      "side": 0,
+      "message": "Could you remove the data files, too? (only .external json files in the repository, I meant. Contents in google cloud storage need to be kept to run tests on branched images).",
+      "revId": "0abbf27fe2222441906ba3e4ef8917ea7764f536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
