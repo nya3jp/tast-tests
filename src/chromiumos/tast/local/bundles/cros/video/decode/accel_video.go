@@ -332,14 +332,15 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, filename strin
 
 	// Test 2: Measure CPU usage while running capped performance test only.
 	// TODO(dstaessens) Investigate collecting CPU usage during previous test.
-	cpuUsage, err := cpu.MeasureProcessCPU(ctx, measureDuration, cpu.KillProcess, gtest.New(
-		filepath.Join(chrome.BinTestDir, exec),
-		gtest.Logfile(filepath.Join(s.OutDir(), exec+".2.log")),
-		gtest.Filter("*"+cappedTestname),
-		gtest.Repeat(-1),
-		gtest.ExtraArgs(args...),
-		gtest.UID(int(sysutil.ChronosUID)),
-	))
+	cpuUsage, err := cpu.MeasureProcessCPU(ctx, measureDuration,
+		cpu.KillProcess, []*gtest.GTest{gtest.New(
+			filepath.Join(chrome.BinTestDir, exec),
+			gtest.Logfile(filepath.Join(s.OutDir(), exec+".2.log")),
+			gtest.Filter("*"+cappedTestname),
+			gtest.Repeat(-1),
+			gtest.ExtraArgs(args...),
+			gtest.UID(int(sysutil.ChronosUID)),
+		)})
 	if err != nil {
 		s.Fatalf("Failed to measure CPU usage %v: %v", exec, err)
 	}
