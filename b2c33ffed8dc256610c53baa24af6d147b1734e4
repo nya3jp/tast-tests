@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41edd7e5_4780b257",
+        "filename": "src/chromiumos/tast/local/metrics/metrics.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-08T09:10:23Z",
+      "side": 1,
+      "message": "huge nit: \":\u003d\" Ditto for below two, too.",
+      "range": {
+        "startLine": 52,
+        "startChar": 8,
+        "endLine": 52,
+        "endChar": 9
+      },
+      "revId": "b2c33ffed8dc256610c53baa24af6d147b1734e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
