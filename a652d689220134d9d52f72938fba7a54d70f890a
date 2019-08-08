@@ -22,6 +22,30 @@
       "revId": "a652d689220134d9d52f72938fba7a54d70f890a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0fb5fb5_7d1a4b61",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2019-08-08T02:10:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68cc2806_8bca34d3",
+      "range": {
+        "startLine": 165,
+        "startChar": 68,
+        "endLine": 165,
+        "endChar": 73
+      },
+      "revId": "a652d689220134d9d52f72938fba7a54d70f890a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
