@@ -9,6 +9,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"reflect"
 
 	"github.com/godbus/dbus"
 
@@ -101,7 +102,7 @@ func (m *Manager) FindMatchingService(ctx context.Context, props map[string]inte
 
 		match := true
 		for key, val1 := range props {
-			if val2, ok := serviceProps[key]; !ok || val1 != val2 {
+			if val2, ok := serviceProps[key]; !ok || !reflect.DeepEqual(val1, val2) {
 				match = false
 				break
 			}
