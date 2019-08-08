@@ -22,6 +22,30 @@
       "revId": "1aefc5af3fdb87f77878a45b377de887969ff6c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a2bac9b_651571ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-08T23:10:46Z",
+      "side": 1,
+      "message": "Done. I will add that clarification in the CL.",
+      "parentUuid": "d80ff6e8_63873d1b",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 77
+      },
+      "revId": "1aefc5af3fdb87f77878a45b377de887969ff6c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
