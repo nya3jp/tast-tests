@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b5218a8_b25913c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-08T23:55:13Z",
+      "side": 1,
+      "message": "Please try to use plain English sentence, e.g. \"failed to check if module is loaded\"",
+      "range": {
+        "startLine": 88,
+        "startChar": 34,
+        "endLine": 88,
+        "endChar": 48
+      },
+      "revId": "b3bdc56f69e0a78b8ee51e4ee5fd2bd1acf86829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d775240_964c9885",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-08T23:55:13Z",
+      "side": 1,
+      "message": "I would return a struct rather than a string here so that parsing of lsmod output is kept only within this function.\n\nIt would be even better to return map[string]struct. Then we don\u0027t need moduleNotFound error type, and unloadModule won\u0027t be O(n^2); see my comment below.",
+      "range": {
+        "startLine": 105,
+        "startChar": 56,
+        "endLine": 105,
+        "endChar": 62
+      },
+      "revId": "b3bdc56f69e0a78b8ee51e4ee5fd2bd1acf86829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06ddfebf_3047f7db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-08T23:55:13Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 108,
+        "startChar": 32,
+        "endLine": 108,
+        "endChar": 45
+      },
+      "revId": "b3bdc56f69e0a78b8ee51e4ee5fd2bd1acf86829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e215e84_ddc69ed2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-08T23:55:13Z",
+      "side": 1,
+      "message": "how about \u003e\u003d 4 for a bit more robustness?",
+      "range": {
+        "startLine": 132,
+        "startChar": 15,
+        "endLine": 132,
+        "endChar": 21
+      },
+      "revId": "b3bdc56f69e0a78b8ee51e4ee5fd2bd1acf86829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ee5eb07_52682c45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-08T23:55:13Z",
+      "side": 1,
+      "message": "Optional: Strictly speaking this can result in O(n^2) performance since every call of unloadModule runs lsmod. But it won\u0027t be a lot of problem realistically.",
+      "range": {
+        "startLine": 136,
+        "startChar": 12,
+        "endLine": 136,
+        "endChar": 24
+      },
+      "revId": "b3bdc56f69e0a78b8ee51e4ee5fd2bd1acf86829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81281dc6_9a95278b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-08T23:55:13Z",
+      "side": 1,
+      "message": "sbin?\n\nYou might want to avoid absolute paths on testexec.",
+      "range": {
+        "startLine": 142,
+        "startChar": 39,
+        "endLine": 142,
+        "endChar": 42
+      },
+      "revId": "b3bdc56f69e0a78b8ee51e4ee5fd2bd1acf86829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
