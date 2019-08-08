@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df3db97c_fd109172",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/profiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-08T06:01:54Z",
+      "side": 1,
+      "message": "Sorry for not catching this in the last iteration, but p.End() must be called even if testing.Sleep fails to kill the profiler. So:\n\n p, err :\u003d profiler.Start(...)\n if err !\u003d nil {\n   ...\n }\n defer func() {\n   if err :\u003d p.End(); err !\u003d nil {\n     ...\n   }\n }()\n\n // Wait for 2 seconds ...\n if err :\u003d testing.Sleep(...); err !\u003d nil {\n   ...\n }",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 2
+      },
+      "revId": "6d1dcfc5ac2b9cf21a6bbadb3b7e749ec94d2969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a3a536f_190b7c76",
+        "filename": "src/chromiumos/tast/local/profiler/crosperf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-08T06:01:54Z",
+      "side": 1,
+      "message": "This must not happen anymore :)",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "6d1dcfc5ac2b9cf21a6bbadb3b7e749ec94d2969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "932644c2_1383ce1e",
+        "filename": "src/chromiumos/tast/local/profiler/crosperf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-08T06:01:54Z",
+      "side": 1,
+      "message": "Need to return.",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 13
+      },
+      "revId": "6d1dcfc5ac2b9cf21a6bbadb3b7e749ec94d2969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efdaa519_84289b9f",
+        "filename": "src/chromiumos/tast/local/profiler/profiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-08T06:01:54Z",
+      "side": 1,
+      "message": "unused?",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 13
+      },
+      "revId": "6d1dcfc5ac2b9cf21a6bbadb3b7e749ec94d2969",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
