@@ -140,6 +140,30 @@
       "revId": "7beef75460ac3d8334ed804fd9ef8d44bb0c70c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68f49640_8f21b72c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2019-08-08T19:47:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4baa8e8a_9670defe",
+      "range": {
+        "startLine": 797,
+        "startChar": 59,
+        "endLine": 797,
+        "endChar": 66
+      },
+      "revId": "7beef75460ac3d8334ed804fd9ef8d44bb0c70c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
