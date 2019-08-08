@@ -22,6 +22,30 @@
       "revId": "0d383791f07a9e1591f4f6f9875c05b6ae10ed91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "017b1eca_5ff23fa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-08-08T23:06:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "324f3cf3_2206ae21",
+      "range": {
+        "startLine": 68,
+        "startChar": 20,
+        "endLine": 68,
+        "endChar": 32
+      },
+      "revId": "0d383791f07a9e1591f4f6f9875c05b6ae10ed91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
