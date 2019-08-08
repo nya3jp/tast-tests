@@ -35,7 +35,7 @@ func MemoryPressureModerate(ctx context.Context, s *testing.State) {
 	var maxTab int
 
 	// Check runtime flag maxTab to specify maximal tab count.
-	if val, ok := s.Var("platform.MemoryPressureModerate.maxTab"); ok {
+	if val := s.Var("platform.MemoryPressureModerate.maxTab"); val != "" {
 		s.Log("The number of maxTab is specified via runtime variable")
 
 		tabs, err := strconv.Atoi(val)
