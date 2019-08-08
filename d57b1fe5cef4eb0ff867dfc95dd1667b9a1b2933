@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f19fcef6_082638ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-08T01:36:14Z",
+      "side": 1,
+      "message": "Could you use s.Log if s (*testing.State) is available?",
+      "range": {
+        "startLine": 124,
+        "startChar": 9,
+        "endLine": 124,
+        "endChar": 19
+      },
+      "revId": "d57b1fe5cef4eb0ff867dfc95dd1667b9a1b2933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ba9f61b_2fef75e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-08T01:36:14Z",
+      "side": 1,
+      "message": "s.Log",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 19
+      },
+      "revId": "d57b1fe5cef4eb0ff867dfc95dd1667b9a1b2933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58f76320_fbb49ff2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-08T01:36:14Z",
+      "side": 1,
+      "message": "s is only used for OutDir. Could you pass outdir instead?",
+      "range": {
+        "startLine": 148,
+        "startChar": 36,
+        "endLine": 148,
+        "endChar": 52
+      },
+      "revId": "d57b1fe5cef4eb0ff867dfc95dd1667b9a1b2933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee0bb879_987441b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-08T01:36:14Z",
+      "side": 1,
+      "message": "nit: exec, filter string",
+      "range": {
+        "startLine": 148,
+        "startChar": 54,
+        "endLine": 149,
+        "endChar": 14
+      },
+      "revId": "d57b1fe5cef4eb0ff867dfc95dd1667b9a1b2933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
