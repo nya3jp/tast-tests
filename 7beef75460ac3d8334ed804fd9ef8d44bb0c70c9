@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "42f8ae27_90610458",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-08T19:36:48Z",
+      "side": 1,
+      "message": "good catch! fixed.",
+      "parentUuid": "dee48fc3_ec2e7810",
+      "range": {
+        "startLine": 771,
+        "startChar": 9,
+        "endLine": 771,
+        "endChar": 12
+      },
+      "revId": "7beef75460ac3d8334ed804fd9ef8d44bb0c70c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04da1665_34abb8b3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c973c81f_e4d96783",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-08T19:36:48Z",
+      "side": 1,
+      "message": "Good point.\nBefore each subtest, the \"am broadcast -a android.intent.action.arc.cleartaskstate\" event is broadcasted.\nThis guarantees that the default position is reset so the window will be launched in the center of the screen. Hence, there will be room to resize to the right.",
+      "parentUuid": "04da1665_34abb8b3",
+      "range": {
+        "startLine": 785,
+        "startChar": 37,
+        "endLine": 785,
+        "endChar": 48
+      },
+      "revId": "7beef75460ac3d8334ed804fd9ef8d44bb0c70c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ba1ca3c_80700d35",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2019-08-06T20:12:18Z",
       "side": 1,
       "message": "It might be more clear to add \"resized bounds width %d \u003e original bounds width %d\".",
+      "range": {
+        "startLine": 797,
+        "startChar": 59,
+        "endLine": 797,
+        "endChar": 66
+      },
+      "revId": "7beef75460ac3d8334ed804fd9ef8d44bb0c70c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4baa8e8a_9670defe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-08T19:36:48Z",
+      "side": 1,
+      "message": "I\u0027m using the Go convention here:\n\"describe the problem:  got ErrorValue; want WantedValue",
+      "parentUuid": "0ba1ca3c_80700d35",
       "range": {
         "startLine": 797,
         "startChar": 59,
