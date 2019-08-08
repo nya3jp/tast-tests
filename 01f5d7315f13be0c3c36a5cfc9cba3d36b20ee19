@@ -22,6 +22,30 @@
       "revId": "01f5d7315f13be0c3c36a5cfc9cba3d36b20ee19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee00739e_c939120d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-08-08T17:35:49Z",
+      "side": 1,
+      "message": "Yes. Good point.  One possible solution: wait for a crash-reporter process to be running, then give it 0.1 or so seconds after that.\n\nThat might work, but I\u0027m very averse to using sleep() to \"solve\" race conditions.  Is there some way we can determine for sure that crash reporter is past the point where it would have written these files?",
+      "parentUuid": "303f80b7_bd6d511f",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 86
+      },
+      "revId": "01f5d7315f13be0c3c36a5cfc9cba3d36b20ee19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
