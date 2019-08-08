@@ -46,6 +46,30 @@
       "revId": "01f5d7315f13be0c3c36a5cfc9cba3d36b20ee19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07e4b0a6_788b79b6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2019-08-08T17:42:43Z",
+      "side": 1,
+      "message": "I don\u0027t see anything we do in crash reporter that would indicate when this is done. You definitely don\u0027t just want to watch the process because it runs and exit and you may miss it...and it\u0027s also not on the first invocation. What I\u0027d do is poll this command repeatedly with a decent timeout (like 30 seconds) and if it doesn\u0027t become true during that time it fails.",
+      "parentUuid": "ee00739e_c939120d",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 86
+      },
+      "revId": "01f5d7315f13be0c3c36a5cfc9cba3d36b20ee19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
