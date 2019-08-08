@@ -6,23 +6,36 @@ package usbprinter
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"path/filepath"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/printer/lp"
 	"chromiumos/tast/local/printer"
 	"chromiumos/tast/testing"
 )
+
+func ippUsbPrinterURI(ctx context.Context, devInfo DevInfo) string {
+	const ippUsbPrinterURIFormat = "ippusb://%s_%s/ipp/print"
+	return fmt.Sprintf(ippUsbPrinterURIFormat, devInfo.VID, devInfo.PID)
+}
+
+func usbPrinterURI(ctx context.Context, devInfo DevInfo) string {
+	const usbPrinterURIFormat = "usb://%s/%s"
+	return fmt.Sprintf(usbPrinterURIFormat, devInfo.VID, devInfo.PID)
+}
 
 // waitPrinterConfigured waits for a printer which has the same VID/PID as
 // devInfo to be configured on the system. If a match is found then the name of
 // the configured device will be returned.
 func waitPrinterConfigured(ctx context.Context, devInfo DevInfo) (string, error) {
 	var foundName string
+	uri := ippUsbPrinterURI(ctx, devInfo)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		name, err := printerName(ctx, devInfo)
+		name, err := lp.PrinterNameByURI(ctx, uri)
 		if err != nil {
 			return err
 		}
@@ -87,7 +100,7 @@ func RunPrintTest(ctx context.Context, s *testing.State, descriptors,
 	if ppd != "" {
 		// If a PPD is provided then we configure the printer ourselves.
 		foundPrinterName = "virtual-test"
-		if err := cupsAddPrinter(ctx, foundPrinterName, devInfo, ppd); err != nil {
+		if err := lp.CupsAddPrinter(ctx, foundPrinterName, usbPrinterURI(ctx, devInfo), ppd); err != nil {
 			s.Fatal("Failed to configure printer: ", err)
 		}
 	} else {
@@ -105,19 +118,19 @@ func RunPrintTest(ctx context.Context, s *testing.State, descriptors,
 	defer func() {
 		// Regardless of whether the printer was added automatically by Chrome, or
 		// explicitly by the test, it is safe to remove the printer using CUPS.
-		if err := cupsRemovePrinter(oldContext, foundPrinterName); err != nil {
+		if err := lp.CupsRemovePrinter(oldContext, foundPrinterName); err != nil {
 			s.Error("Failed to remove printer: ", err)
 		}
 	}()
 
-	job, err := cupsStartPrintJob(ctx, foundPrinterName, toPrint)
+	job, err := lp.CupsStartPrintJob(ctx, foundPrinterName, toPrint)
 	if err != nil {
 		s.Fatal("Failed to start printer: ", err)
 	}
 
 	s.Log(ctx, " Waiting for ", job, " to complete")
 	if err = testing.Poll(ctx, func(ctx context.Context) error {
-		if done, err := jobCompleted(ctx, foundPrinterName, job); err != nil {
+		if done, err := lp.JobCompleted(ctx, foundPrinterName, job); err != nil {
 			return err
 		} else if !done {
 			return errors.Errorf("job %s is not done yet", job)
