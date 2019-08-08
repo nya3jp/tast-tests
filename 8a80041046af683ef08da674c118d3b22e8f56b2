@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "e7c01d71_dd4b3f42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/hangouts_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-08T00:39:35Z",
+      "side": 1,
+      "message": "Frame validation is disabled, so the frame checksums are not used. We do use a lot of other information though: the video\u0027s frame rate (important when decoding real-time), the resolution, the video profile,...\nAll this information used to be passed in a long unreadable parameter list (e.g.  --test_video_data\u003dtest-25fps.h264:320:240:250:258:35:150:1), but now it\u0027s located in a single readable json file.",
+      "parentUuid": "4a2d656e_e1063912",
+      "revId": "8a80041046af683ef08da674c118d3b22e8f56b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db283742_79b68594",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/hangouts_perf.go",
         "patchSetId": 3
@@ -56,6 +74,30 @@
       "revId": "8a80041046af683ef08da674c118d3b22e8f56b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c59eb39_40ea001b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/hangouts_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-08T00:39:35Z",
+      "side": 1,
+      "message": "You\u0027re right, well spotted thanks!",
+      "parentUuid": "db283742_79b68594",
+      "range": {
+        "startLine": 164,
+        "startChar": 13,
+        "endLine": 164,
+        "endChar": 30
+      },
+      "revId": "8a80041046af683ef08da674c118d3b22e8f56b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
