@@ -16,6 +16,75 @@
       "revId": "4c130dbec6fd77e420cb966579bee40a707e87ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1b77d33_fca3790d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-08T23:35:24Z",
+      "side": 1,
+      "message": "Yay! :)",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 5
+      },
+      "revId": "4c130dbec6fd77e420cb966579bee40a707e87ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5ed61d4_5ce17401",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-08T23:35:24Z",
+      "side": 1,
+      "message": "Optional: It would be good to log the trial number.\n\n if numTrials \u003e 1 {\n   s.Log(\"Trial %d/%d\", i + 1, numTrials)\n }",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 33
+      },
+      "revId": "4c130dbec6fd77e420cb966579bee40a707e87ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99f1a189_989daab5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-08T23:35:24Z",
+      "side": 1,
+      "message": "BTW, IIUC logcat.txt is overwritten in each iteration, am I right? I guess it is okay since we\u0027re interested in the last run which possibly fails, though.",
+      "range": {
+        "startLine": 52,
+        "startChar": 11,
+        "endLine": 52,
+        "endChar": 35
+      },
+      "revId": "4c130dbec6fd77e420cb966579bee40a707e87ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
