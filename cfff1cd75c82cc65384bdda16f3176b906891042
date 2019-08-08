@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "3316bae3_d52aeb18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-08-08T20:54:01Z",
+      "side": 1,
+      "message": "\u0027int\u0027 is not very future proof? \nWe have 2.4 and 5 GHz bands today, but soon in the future there will be a 5.x and 6.x (6 GHz band is approved, folks are bike-shedding over a \"gap\" space of a few hundred MHz b/w end of current 5 GHz and proposed 6GHz).",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 19
+      },
+      "revId": "cfff1cd75c82cc65384bdda16f3176b906891042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb113e55_42052f0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-08-08T20:54:01Z",
+      "side": 1,
+      "message": "typo?",
+      "range": {
+        "startLine": 37,
+        "startChar": 7,
+        "endLine": 37,
+        "endChar": 11
+      },
+      "revId": "cfff1cd75c82cc65384bdda16f3176b906891042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "347e3010_9e87ecd7",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 13
