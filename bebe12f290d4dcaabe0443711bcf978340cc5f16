@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38ecb86a_744c0dc6",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-08T23:34:50Z",
+      "side": 1,
+      "message": "feels like this could have a better name. \u0027ifaces\u0027?",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 6
+      },
+      "revId": "bebe12f290d4dcaabe0443711bcf978340cc5f16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
