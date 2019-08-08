@@ -63,8 +63,8 @@ func ConfigureServiceForProfile(ctx context.Context, s *testing.State) {
 	}()
 
 	props := map[string]interface{}{
-		"Type":                 "ethernet",
-		"StaticIP.NameServers": "8.8.8.8",
+		"Type":           "ethernet",
+		"StaticIPConfig": map[string]interface{}{"NameServers": []string{"8.8.8.8"}},
 	}
 	_, err = manager.ConfigureServiceForProfile(ctx, objectPath, props)
 	if err != nil {
