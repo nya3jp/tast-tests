@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e35dd54_f0478d71",
+        "filename": "src/chromiumos/tast/local/input/virtual.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-08T23:30:41Z",
+      "side": 1,
+      "message": "Thanks for the comment! I still think goto is something we should generally avoid, so would you mind restructuring the logic around here like:\n\n // UI_ABS_SETUP is ...\n if err :\u003d performVirtDevAxesSetup(...); err \u003d\u003d nil {\n   if err :\u003d ioctl(...); err \u003d\u003d nil {\n     return nil\n   }\n }",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 94
+      },
+      "revId": "49f47d4145b898914be70db5223cb039189dcabd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
