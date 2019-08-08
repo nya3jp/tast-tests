@@ -110,7 +110,7 @@ func RunPrintTest(ctx context.Context, s *testing.State, descriptors,
 		}
 	}()
 
-	job, err := cupsStartPrintJob(ctx, foundPrinterName, toPrint)
+	job, err := CupsStartPrintJob(ctx, foundPrinterName, toPrint)
 	if err != nil {
 		s.Fatal("Failed to start printer: ", err)
 	}
