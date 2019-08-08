@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d80ff6e8_63873d1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-08T23:07:13Z",
+      "side": 1,
+      "message": "*Intel Chromebooks\n\nOthers still work.\n\nSee also:\nhttps://chromium-review.googlesource.com/1544901\n\nand the \"self-managed\" notes here:\nhttps://docs.google.com/document/d/1CkbjNp3wOpFp0wYOJenAIXa7ILIb45WEmS5BF5cp7SU/edit#\n\nNot important to this CL right now though. We can add stuff when we need it.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 77
+      },
+      "revId": "1aefc5af3fdb87f77878a45b377de887969ff6c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
