@@ -25,7 +25,7 @@ func init() {
 
 func RemoteVars(ctx context.Context, s *testing.State) {
 	p := filepath.Join(s.OutDir(), "var.txt")
-	if err := ioutil.WriteFile(p, []byte(s.RequiredVar("meta.RemoteVars.var")), 0644); err != nil {
+	if err := ioutil.WriteFile(p, []byte(s.Var("meta.RemoteVars.var")), 0644); err != nil {
 		s.Error("Failed to write variable: ", err)
 	}
 }
