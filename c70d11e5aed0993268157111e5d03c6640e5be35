@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9cc1d856_fe2555c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-08T08:15:09Z",
+      "side": 1,
+      "message": "cpu.MeasureProcessCPU is almost what this does.\nCould you just extend the API to take two (or more) gtest?",
+      "revId": "c70d11e5aed0993268157111e5d03c6640e5be35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
