@@ -20,16 +20,29 @@ func init() {
 		Func: Boot,
 		Desc: "Checks that Android boots",
 		// TODO(nya): Add a proper contact of ARC boot tests.
-		Contacts: []string{"nya@chromium.org", "arc-eng@google.com"},
-		SoftwareDeps: []string{
-			"android_all_both",
-			"chrome",
-		},
-		Timeout: 4 * time.Minute,
+		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
+		SoftwareDeps: []string{"chrome"},
+		Timeout:      10 * time.Minute,
+		Params: []testing.Param{{
+			Val:               1,
+			ExtraSoftwareDeps: []string{"android_all_both"},
+		}, {
+			Name:              "stress",
+			Val:               10,
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"android"},
+		}},
 	})
 }
 
 func Boot(ctx context.Context, s *testing.State) {
+	numTrials := s.Param().(int)
+	for i := 0; i < numTrials; i++ {
+		runBoot(ctx, s)
+	}
+}
+
+func runBoot(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx, chrome.ARCEnabled())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
