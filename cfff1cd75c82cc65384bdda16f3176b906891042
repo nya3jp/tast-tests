@@ -331,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "2f720cc3_5113e27a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-08T01:29:14Z",
+      "side": 1,
+      "message": "I think the latest version is better. Thanks! But maybe I\u0027ve just stared at it all too long now and am acclimated. Or maybe because I finally widened my Gerrit window to fullscreen, to fit all the Go indentation :)\n\n(The dirty truth is that I don\u0027t think this reduced indentation/nesting -- it may have increased it -- but I think it still gets a bit of a logical/readability win, if you can grok the line width.)",
+      "parentUuid": "61d80ca1_ae6a9279",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 403,
+        "endChar": 32
+      },
+      "revId": "cfff1cd75c82cc65384bdda16f3176b906891042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49859311_0d76be10",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 13
