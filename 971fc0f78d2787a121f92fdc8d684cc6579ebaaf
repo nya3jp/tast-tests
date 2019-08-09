@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fae2f278_ea07b1c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_vd_h264.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-08-09T02:16:27Z",
+      "side": 1,
+      "message": "nit: Add description for this function.",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 15
+      },
+      "revId": "971fc0f78d2787a121f92fdc8d684cc6579ebaaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0690c1a_3ff4604a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_vd_vp8.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-08-09T02:16:27Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 14
+      },
+      "revId": "971fc0f78d2787a121f92fdc8d684cc6579ebaaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e1e6060_44022b09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_vd_vp9.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-08-09T02:16:27Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 14
+      },
+      "revId": "971fc0f78d2787a121f92fdc8d684cc6579ebaaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
