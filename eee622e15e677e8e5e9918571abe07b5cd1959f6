@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e2e157e2_a97e8e56",
+        "filename": "src/chromiumos/tast/local/syslog/watcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-09T23:45:26Z",
+      "side": 1,
+      "message": "It shouldn\u0027t be a problem since NewWatcher should be called long in advance of the target message being written. Added comment.",
+      "parentUuid": "aa26ed5b_6b78b45a",
+      "range": {
+        "startLine": 36,
+        "startChar": 10,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "eee622e15e677e8e5e9918571abe07b5cd1959f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db02414c_72407a56",
         "filename": "src/chromiumos/tast/local/syslog/watcher.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "eee622e15e677e8e5e9918571abe07b5cd1959f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e24fb7c1_e431ba3d",
+        "filename": "src/chromiumos/tast/local/syslog/watcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-09T23:45:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db02414c_72407a56",
+      "range": {
+        "startLine": 42,
+        "startChar": 17,
+        "endLine": 42,
+        "endChar": 29
+      },
+      "revId": "eee622e15e677e8e5e9918571abe07b5cd1959f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "38ece228_174e2efb",
+        "filename": "src/chromiumos/tast/local/syslog/watcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-09T23:45:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "707a148f_0eff75d5",
+      "range": {
+        "startLine": 94,
+        "startChar": 18,
+        "endLine": 94,
+        "endChar": 28
+      },
+      "revId": "eee622e15e677e8e5e9918571abe07b5cd1959f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12888b07_77371782",
         "filename": "src/chromiumos/tast/local/syslog/watcher.go",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "c54428dd_ae30c756",
+        "filename": "src/chromiumos/tast/local/syslog/watcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-09T23:45:26Z",
+      "side": 1,
+      "message": "I think this should handle that case. Take a look.",
+      "parentUuid": "12888b07_77371782",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 6
+      },
+      "revId": "eee622e15e677e8e5e9918571abe07b5cd1959f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a12b416_5b8fc676",
         "filename": "src/chromiumos/tast/local/syslog/watcher.go",
         "patchSetId": 4
@@ -114,6 +210,30 @@
       "revId": "eee622e15e677e8e5e9918571abe07b5cd1959f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c08e5fc8_1692d949",
+        "filename": "src/chromiumos/tast/local/syslog/watcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-09T23:45:26Z",
+      "side": 1,
+      "message": "I guess that makes more sense. Changed.",
+      "parentUuid": "6a12b416_5b8fc676",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 34
+      },
+      "revId": "eee622e15e677e8e5e9918571abe07b5cd1959f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
