@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "36febee6_f414f5bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-08-09T18:40:29Z",
+      "side": 1,
+      "message": "Good catch, thanks.",
+      "parentUuid": "918254ac_4dd82857",
+      "revId": "7c82245bcc4d15abfb80bf6ea66c63d20a48d3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6474fa8_2f0f07f8",
         "filename": "src/chromiumos/tast/local/vm/host_rpc.go",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2019-08-09T01:59:57Z",
       "side": 1,
       "message": "Sorry, one more.\n\nIs there a plan that this is used from tests in a package other than cros/vm?\nIf not, could you move this under it, i.e. chromiumos/tast/local/bundles/cros/vm/{somepackage}/host_rpc.go",
+      "revId": "7c82245bcc4d15abfb80bf6ea66c63d20a48d3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61425f58_1c841fe4",
+        "filename": "src/chromiumos/tast/local/vm/host_rpc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-08-09T18:40:29Z",
+      "side": 1,
+      "message": "I think it\u0027s possible that we will add tests that exercise the VM using this package, but they will be in other folders. I know of a plan to add one in the platform package as of now.",
+      "parentUuid": "c6474fa8_2f0f07f8",
       "revId": "7c82245bcc4d15abfb80bf6ea66c63d20a48d3c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "5290f7f3_9fb281fc",
+        "filename": "src/chromiumos/tast/local/vm/host_rpc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-08-09T18:40:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa0d9d3b_f6acf1b0",
+      "range": {
+        "startLine": 30,
+        "startChar": 18,
+        "endLine": 33,
+        "endChar": 31
+      },
+      "revId": "7c82245bcc4d15abfb80bf6ea66c63d20a48d3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f99e7e0d_69edc2f6",
         "filename": "src/chromiumos/tast/local/vm/host_rpc.go",
         "patchSetId": 2
@@ -79,6 +139,30 @@
       "revId": "7c82245bcc4d15abfb80bf6ea66c63d20a48d3c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8b60448_09d4d55e",
+        "filename": "src/chromiumos/tast/local/vm/host_rpc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-08-09T18:40:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f99e7e0d_69edc2f6",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 16
+      },
+      "revId": "7c82245bcc4d15abfb80bf6ea66c63d20a48d3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "b7ed19da_d8f44da3",
+        "filename": "src/chromiumos/tast/local/vm/host_rpc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-08-09T18:40:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb36bea0_b0db01d9",
+      "range": {
+        "startLine": 44,
+        "startChar": 9,
+        "endLine": 44,
+        "endChar": 12
+      },
+      "revId": "7c82245bcc4d15abfb80bf6ea66c63d20a48d3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bef3e41_906611b3",
         "filename": "src/chromiumos/tast/local/vm/host_rpc.go",
         "patchSetId": 2
@@ -119,6 +227,24 @@
       "revId": "7c82245bcc4d15abfb80bf6ea66c63d20a48d3c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea3d8e58_adb25fe1",
+        "filename": "src/chromiumos/tast/local/vm/host_rpc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-08-09T18:40:29Z",
+      "side": 1,
+      "message": "Yes confirmed on godoc. Done.",
+      "parentUuid": "7bef3e41_906611b3",
+      "revId": "7c82245bcc4d15abfb80bf6ea66c63d20a48d3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -145,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "791a324d_28b132d3",
+        "filename": "src/chromiumos/tast/local/vm/host_rpc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-08-09T18:40:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f33090bc_b6fba7e6",
+      "range": {
+        "startLine": 64,
+        "startChar": 9,
+        "endLine": 64,
+        "endChar": 18
+      },
+      "revId": "7c82245bcc4d15abfb80bf6ea66c63d20a48d3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0af4e8c4_c08d9388",
         "filename": "src/chromiumos/tast/local/vm/host_rpc.go",
         "patchSetId": 2
@@ -159,6 +309,24 @@
       "revId": "7c82245bcc4d15abfb80bf6ea66c63d20a48d3c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2680441_10bc5dca",
+        "filename": "src/chromiumos/tast/local/vm/host_rpc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-08-09T18:40:29Z",
+      "side": 1,
+      "message": "Done. I also updated the struct documentation to say that it is only used for a single VmReady call.",
+      "parentUuid": "0af4e8c4_c08d9388",
+      "revId": "7c82245bcc4d15abfb80bf6ea66c63d20a48d3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
