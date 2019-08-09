@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d70dc0e6_c5e0f9eb",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-08-09T05:50:25Z",
+      "side": 1,
+      "message": "huge nit: Why did you decide to have t as the 3rd parameter while runCmdAsyn was 2nd?\nI thought t is more general than duration.",
+      "range": {
+        "startLine": 27,
+        "startChar": 67,
+        "endLine": 27,
+        "endChar": 82
+      },
+      "revId": "572847757b8e2c56f7ab45b1a0e269d1367480ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
