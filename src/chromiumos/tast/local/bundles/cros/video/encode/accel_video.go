@@ -24,7 +24,6 @@ import (
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/sysutil"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -166,11 +165,7 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, mode testMode, opt
 			gtest.ExtraArgs(args...),
 			gtest.UID(int(sysutil.ChronosUID)))
 		if ba.measureCPU {
-			// TODO(hidehiko): get rid of runCmdAsync after ARC gtest migration.
-			runCmdAsync := func() (*testexec.Cmd, error) {
-				return t.Start(ctx)
-			}
-			cpuUsage, err := cpu.MeasureProcessCPU(shortCtx, runCmdAsync, ba.measureDuration)
+			cpuUsage, err := cpu.MeasureProcessCPU(shortCtx, ba.measureDuration, t)
 			if err != nil {
 				s.Fatalf("Failed to run (measure CPU) %v: %v", exec, err)
 			}
@@ -267,10 +262,7 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, exe
 			return errors.New("pv should not be nil when measuring CPU usage")
 		}
 
-		runCmdAsync := func() (*testexec.Cmd, error) {
-			return t.Start(ctx)
-		}
-		cpuUsage, err := cpu.MeasureProcessCPU(ctx, runCmdAsync, ba.measureDuration)
+		cpuUsage, err := cpu.MeasureProcessCPU(ctx, ba.measureDuration, t)
 		if err != nil {
 			return errors.Wrapf(err, "failed to run (measure CPU) %v: %v", exec, err)
 		}

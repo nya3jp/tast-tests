@@ -16,26 +16,22 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
-// StartProcFunc starts a process and returns corresponding testexec.Cmd.
-// The caller is responsible for calling Wait.
-type StartProcFunc func() (*testexec.Cmd, error)
-
-// MeasureProcessCPU starts a process by calling the provided runCmdAsync and
-// measures CPU usage for the given duration. After measuring the process is
-// killed. The average usage over all CPU cores is returned as a percentage.
-func MeasureProcessCPU(ctx context.Context, runCmdAsync StartProcFunc, duration time.Duration) (float64, error) {
+// MeasureProcessCPU starts a gtest process and measures CPU usage for the given duration.
+// After measuring the process is killed. The average usage over all CPU cores is returned as a percentage.
+func MeasureProcessCPU(ctx context.Context, duration time.Duration, t *gtest.GTest) (float64, error) {
 	const (
 		stabilize   = 1 * time.Second // time to wait for CPU to stabilize after launching proc.
 		cleanupTime = 5 * time.Second // time reserved for cleanup after measuring.
 	)
 
 	// Start the process asynchronous by calling the provided startup function.
-	cmd, err := runCmdAsync()
+	cmd, err := t.Start(ctx)
 	if err != nil {
 		return 0.0, errors.Wrap(err, "failed to run binary")
 	}
