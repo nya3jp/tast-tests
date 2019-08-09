@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e58dd212_d0c2fc26",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-08-09T02:02:44Z",
+      "side": 1,
+      "message": "Hmm, I wonder if it\u0027s too early to remove old VDA tests.\n\nFor example, video.DecodeAccelVP8New is failing on more boards than legacy one:\n* go/tastboard/test/video.DecodeAccelVP8 \n* go/tastboard/test/video.DecodeAccelVP8New\n\nAlso, while DecodeAccelH264 is in CQ, DecodeAccelH264New isn\u0027t.\n\nI\u0027d suggest to keep having old ones with \"Legacy\" suffix instead of removing them.\nWDYT?",
+      "revId": "4d2dfc36291dbd37590709a877efca54ca4800e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eae1ae9e_98ca3fc1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-08-09T02:02:44Z",
+      "side": 1,
+      "message": "Could you list tests whose behaviors will change?\nIIUC, only these three tests?\n* video.DecodeAccelVP8\n* video.DecodeAccelVP9\n* video.DecodeAccelH264",
+      "revId": "4d2dfc36291dbd37590709a877efca54ca4800e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
