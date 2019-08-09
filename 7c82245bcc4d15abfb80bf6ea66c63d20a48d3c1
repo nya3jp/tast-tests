@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "c6474fa8_2f0f07f8",
+        "filename": "src/chromiumos/tast/local/vm/host_rpc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-09T01:59:57Z",
+      "side": 1,
+      "message": "Sorry, one more.\n\nIs there a plan that this is used from tests in a package other than cros/vm?\nIf not, could you move this under it, i.e. chromiumos/tast/local/bundles/cros/vm/{somepackage}/host_rpc.go",
+      "revId": "7c82245bcc4d15abfb80bf6ea66c63d20a48d3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fa0d9d3b_f6acf1b0",
         "filename": "src/chromiumos/tast/local/vm/host_rpc.go",
         "patchSetId": 2
