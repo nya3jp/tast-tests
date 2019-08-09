@@ -22,6 +22,30 @@
       "revId": "8eaaf508c746c3fc67b38c64d11bda90cce508a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "726bb580_61073459",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-09T03:09:40Z",
+      "side": 1,
+      "message": "Done. Makes sense.",
+      "parentUuid": "25d7bc54_824a038e",
+      "range": {
+        "startLine": 526,
+        "startChar": 39,
+        "endLine": 526,
+        "endChar": 40
+      },
+      "revId": "8eaaf508c746c3fc67b38c64d11bda90cce508a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
