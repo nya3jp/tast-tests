@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "34106fef_6f1bdd4c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-09T01:32:26Z",
+      "side": 1,
+      "message": "Ah, I should read better. That makes sense.",
+      "revId": "b3bdc56f69e0a78b8ee51e4ee5fd2bd1acf86829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3bb3a214_08ca4b80",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
         "patchSetId": 2
@@ -37,6 +54,30 @@
       "side": 1,
       "message": "Oh, sorry, got my codepaths mixed up, since\n(a) the test does multiple things (it also checks that the API works *correctly*)\n(b) you left out half of what the test does (i.e., verifying a few real hashes)\n\nIt\u0027s fine to ignore the bind error for the \"try_load_mod\" case. But it\u0027s not fine to ignore it for the \"test_digests\" case, which you left out.\n\nIt might also be fine to proactively check that the \"try_load_mod\" case gives you ENOENT, and not some other failure.",
       "parentUuid": "3bb3a214_08ca4b80",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 88
+      },
+      "revId": "b3bdc56f69e0a78b8ee51e4ee5fd2bd1acf86829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee17dc90_d0de990e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-09T01:32:26Z",
+      "side": 1,
+      "message": "To add to this (in case you want to make a real explanation here): the kernel used to have a bug such that you could load arbitrary kernel modules via this interface, from unprivileged code. Now, the args to this AF_ALG socket are sanity checked, and it\u0027s expected that you get an error (I suppose ENOENT). The Autotest was just checking that it didn\u0027t have an effect (to load an arbitrary module), but it just ignored the return code.",
+      "parentUuid": "84d59c7e_dd20219f",
       "range": {
         "startLine": 73,
         "startChar": 0,
