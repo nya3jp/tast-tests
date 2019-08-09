@@ -338,7 +338,7 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, filename strin
 			filepath.Join(chrome.BinTestDir, exec),
 			gtest.Logfile(filepath.Join(s.OutDir(), exec+".2.log")),
 			gtest.Filter(cappedTestname),
-			gtest.Repeat(-1),
+			gtest.Repeat(1000), // Long enough to run for full measurement duration.
 			gtest.ExtraArgs(args...),
 			gtest.UID(int(sysutil.ChronosUID)),
 		).Start(ctx)

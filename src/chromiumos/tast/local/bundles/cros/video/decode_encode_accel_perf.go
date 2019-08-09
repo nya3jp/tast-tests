@@ -151,7 +151,7 @@ func startTest(ctx context.Context, exec, filter, outDir string,
 		filepath.Join(chrome.BinTestDir, exec),
 		gtest.Logfile(filepath.Join(outDir, exec+".log")),
 		gtest.Filter(filter),
-		gtest.Repeat(-1), // Repeat tests indefinitely.
+		gtest.Repeat(1000), // Long enough to run for full measurement duration.
 		gtest.ExtraArgs(args...),
 		gtest.UID(int(sysutil.ChronosUID)),
 	).Start(ctx)
