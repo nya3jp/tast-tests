@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "4ac2568b_3e4fe518",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_sanity_vp92.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-09T03:02:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "39db8680_64bf3d93",
+      "range": {
+        "startLine": 31,
+        "startChar": 25,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "f377da280adc834799da05966a87dd51b5cc7260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa4d36bd_49949566",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_sanity_vp93.go",
         "patchSetId": 4
@@ -211,6 +235,30 @@
       "revId": "f377da280adc834799da05966a87dd51b5cc7260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31575288_fe617648",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_sanity_vp93.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-09T03:02:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aa4d36bd_49949566",
+      "range": {
+        "startLine": 31,
+        "startChar": 25,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "f377da280adc834799da05966a87dd51b5cc7260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
