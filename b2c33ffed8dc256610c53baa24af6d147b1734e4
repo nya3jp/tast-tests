@@ -22,6 +22,30 @@
       "revId": "b2c33ffed8dc256610c53baa24af6d147b1734e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "641b2e15_d015e550",
+        "filename": "src/chromiumos/tast/local/metrics/metrics.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-09T01:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41edd7e5_4780b257",
+      "range": {
+        "startLine": 52,
+        "startChar": 8,
+        "endLine": 52,
+        "endChar": 9
+      },
+      "revId": "b2c33ffed8dc256610c53baa24af6d147b1734e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
