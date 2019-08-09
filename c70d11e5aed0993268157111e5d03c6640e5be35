@@ -16,6 +16,24 @@
       "revId": "c70d11e5aed0993268157111e5d03c6640e5be35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69c814c4_8b56d5f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-09T00:55:40Z",
+      "side": 1,
+      "message": "I initially wanted to do this. But I found that this complicates the \u0027MeasureProcessCPU\u0027 function. I can\u0027t think of any other places we would need to run multiple processes at the same time, so I would rather put a few more lines of code here and keep cpu.go clean. We still use all the other helper functions in cpu.go, just not the \u0027MeasureProcessCPU\u0027.\n\nIf in the future we need this functionality for other tests, we can always revisit this.",
+      "parentUuid": "9cc1d856_fe2555c8",
+      "revId": "c70d11e5aed0993268157111e5d03c6640e5be35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
