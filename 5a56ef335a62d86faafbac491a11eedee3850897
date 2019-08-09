@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80477631_6965a22f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/pci_rescan.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-09T00:07:32Z",
+      "side": 1,
+      "message": "This test doesn\u0027t really look to have a chance at being generic. Maybe \"IwlwifiPCIRescan\"?",
+      "range": {
+        "startLine": 24,
+        "startChar": 16,
+        "endLine": 24,
+        "endChar": 25
+      },
+      "revId": "5a56ef335a62d86faafbac491a11eedee3850897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b6784ba_f875aef3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/pci_rescan.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-09T00:07:32Z",
+      "side": 1,
+      "message": "I think you need to actually create this:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/src/chromiumos/cmd/local_test_runner/main.go#51\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/refs/heads/master/docs/test_dependencies.md\n\nAlso, this may not be a problem to fix right now, but this won\u0027t be enough if we ever get a 2nd source WiFi -- the rescan workaround would be enabled everywhere, but be non-functional on the non-Intel source.\n\nBut that (hardware dependencies that aren\u0027t reflected in the build/USE flags) is a problem for another day I guess.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "5a56ef335a62d86faafbac491a11eedee3850897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8504c729_8ec0706f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/pci_rescan.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-09T00:07:32Z",
+      "side": 1,
+      "message": "any reason this can\u0027t be ioutil.ReadFile()?",
+      "range": {
+        "startLine": 52,
+        "startChar": 13,
+        "endLine": 52,
+        "endChar": 60
+      },
+      "revId": "5a56ef335a62d86faafbac491a11eedee3850897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e51237ed_beaced0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/pci_rescan.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-09T00:07:32Z",
+      "side": 1,
+      "message": "can you just poll for the wireless device (and maybe ensure the name stays the same?)? i.e., network.FindWirelessInterface() gives you a non-nil result? you don\u0027t really need to look at lspci directly",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 83
+      },
+      "revId": "5a56ef335a62d86faafbac491a11eedee3850897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85a290f7_75cba7d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/pci_rescan.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-09T00:07:32Z",
+      "side": 1,
+      "message": "Is there anything we\u0027d want to do in this case? You\u0027ll probably hose some other WiFi tests, but I guess maybe that\u0027s not a big deal?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 42
+      },
+      "revId": "5a56ef335a62d86faafbac491a11eedee3850897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
