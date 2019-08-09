@@ -8,9 +8,7 @@ import (
 	"context"
 	"os"
 	"path/filepath"
-	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/asan"
 	"chromiumos/tast/local/bundles/cros/security/openfds"
 	"chromiumos/tast/local/chrome"
@@ -43,22 +41,6 @@ func OpenFDs(ctx context.Context, s *testing.State) {
 	// Log out to clean up any stale FDs that might have been left behind by
 	// things that the previous test did: https://crbug.com/924893
 	upstart.RestartJob(ctx, "ui")
-
-	// Wait for the renderer processes to fire up.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		rprocs, err := chrome.GetRendererProcesses()
-		if err != nil {
-			return errors.Wrap(err, "failed to obtain Chrome renderer processes")
-		}
-
-		if len(rprocs) == 0 {
-			return errors.Wrap(err, "no renderer processes found")
-		}
-
-		return nil
-	}, &testing.PollOptions{Timeout: 120 * time.Second}); err != nil {
-		s.Fatal("Error getting renderer processes: ", err)
-	}
 
 	// Dump a systemwide snapshot of open-fd and process table information
 	// into the results directory, to assist with any triage/debug later.
@@ -114,9 +96,6 @@ func OpenFDs(ctx context.Context, s *testing.State) {
 
 		// Ad blocking ruleset mmapped in for performance.
 		mkExp(`/home/chronos/Subresource Filter/Indexed Rules/[0-9]*/[0-9\.]*/Ruleset Data`, 0500),
-
-		// Dictionaries.
-		mkExp(`/home/chronos/Dictionaries/.*\.bdic`, 0500),
 	}
 	eRenderer = append(ePlugin, eRenderer...)
 
@@ -131,10 +110,6 @@ func OpenFDs(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to obtain Chrome renderer processes: ", err)
 	}
-	if len(rprocs) == 0 {
-		s.Fatal("No Chrome renderer processes found")
-	}
-
 	for _, p := range rprocs {
 		openfds.Expect(ctx, s, onASan, &p, eRenderer)
 	}
