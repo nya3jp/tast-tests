@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3bb3a214_08ca4b80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-09T01:19:11Z",
+      "side": 1,
+      "message": "No, that\u0027s not OK. This test will be testing nothing otherwise.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 88
+      },
+      "revId": "b3bdc56f69e0a78b8ee51e4ee5fd2bd1acf86829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b5218a8_b25913c7",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
         "patchSetId": 2
