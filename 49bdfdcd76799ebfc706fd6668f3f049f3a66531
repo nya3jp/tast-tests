@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d585f90_8c84b1dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_h264_resolution_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-08-09T07:45:32Z",
+      "side": 1,
+      "message": "adding chrome_internal for H264?",
+      "range": {
+        "startLine": 21,
+        "startChar": 26,
+        "endLine": 21,
+        "endChar": 32
+      },
+      "revId": "49bdfdcd76799ebfc706fd6668f3f049f3a66531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
