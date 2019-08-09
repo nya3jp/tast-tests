@@ -22,6 +22,46 @@
       "revId": "f45c4f1f3f305ed28f5182d86d1184ab7ba0e1b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c5fede6_8ab36698",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_accel_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-09T09:20:16Z",
+      "side": 1,
+      "message": "Per offline chat, we agreed.\n- This will _eventually_ use MeasureProcessCPU after crrev.com/c/1745929.\n- It wouldn\u0027t be a blocker of this CL, but if this CL is landed earlier, I expect a follow up CL will come soon.\n\nIf you move forward with this approach, rather than rebase on top of 1745929, could you add TODO?",
+      "revId": "f45c4f1f3f305ed28f5182d86d1184ab7ba0e1b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5826bac5_ee9b239a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_accel_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-09T09:20:16Z",
+      "side": 1,
+      "message": "For better encapsulation/information hiding, could you just return an error from the function?\nIn the caller, you can freely access to s, so can call s.Fatal() there.",
+      "range": {
+        "startLine": 164,
+        "startChar": 13,
+        "endLine": 164,
+        "endChar": 29
+      },
+      "revId": "f45c4f1f3f305ed28f5182d86d1184ab7ba0e1b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
