@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03a994d1_2c18f2fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_battery_metrics.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-09T16:35:54Z",
+      "side": 1,
+      "message": "This is called only once, and virtually what it does is just ioutil.WriteFile().\n[]byte -\u003e string -\u003e []byte conversion looks redundant.\nCould you inline?\n\nif err :\u003d ioutil.WriteFile(filepath.Join(s.OutDir(), \"command_output.txt\"), b, 0644); err !\u003d nil {\n  s.Errorf(\"...\")\n}",
+      "revId": "1c9e8123586656d93adfa08d19ecb4831d275120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
