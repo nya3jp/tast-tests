@@ -21,7 +21,6 @@ import (
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/sysutil"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -333,18 +332,14 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, filename strin
 
 	// Test 2: Measure CPU usage while running capped performance test only.
 	// TODO(dstaessens) Investigate collecting CPU usage during previous test.
-	runCmdAsync := func() (*testexec.Cmd, error) {
-		return gtest.New(
-			filepath.Join(chrome.BinTestDir, exec),
-			gtest.Logfile(filepath.Join(s.OutDir(), exec+".2.log")),
-			gtest.Filter("*"+cappedTestname),
-			gtest.Repeat(-1),
-			gtest.ExtraArgs(args...),
-			gtest.UID(int(sysutil.ChronosUID)),
-		).Start(ctx)
-	}
-
-	cpuUsage, err := cpu.MeasureProcessCPU(ctx, runCmdAsync, measureDuration)
+	cpuUsage, err := cpu.MeasureProcessCPU(ctx, measureDuration, gtest.New(
+		filepath.Join(chrome.BinTestDir, exec),
+		gtest.Logfile(filepath.Join(s.OutDir(), exec+".2.log")),
+		gtest.Filter("*"+cappedTestname),
+		gtest.Repeat(-1),
+		gtest.ExtraArgs(args...),
+		gtest.UID(int(sysutil.ChronosUID)),
+	))
 	if err != nil {
 		s.Fatalf("Failed to measure CPU usage %v: %v", exec, err)
 	}
