@@ -94,6 +94,30 @@
       "revId": "01f5d7315f13be0c3c36a5cfc9cba3d36b20ee19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7700368_65d4c15f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-08-09T17:43:30Z",
+      "side": 1,
+      "message": "After https://chromium-review.googlesource.com/c/chromiumos/platform2/+/1737202 is in, we could also wait for /run/crash_reporter/boot-collector-done to be created and then fail if it exists and the files we want don\u0027t.",
+      "parentUuid": "e9f21464_9d2d07ac",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 86
+      },
+      "revId": "01f5d7315f13be0c3c36a5cfc9cba3d36b20ee19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
