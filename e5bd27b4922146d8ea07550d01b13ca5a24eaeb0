@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5262d2b1_9a99c317",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-08-09T01:09:03Z",
+      "side": 1,
+      "message": "no longer need to exclude after the new policy :-) sorry",
+      "range": {
+        "startLine": 75,
+        "startChar": 119,
+        "endLine": 76,
+        "endChar": 130
+      },
+      "revId": "e5bd27b4922146d8ea07550d01b13ca5a24eaeb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
