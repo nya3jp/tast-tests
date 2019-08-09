@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90c13128_3dc54d21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_vd_perf_vp8_1080p_60fps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-09T15:34:13Z",
+      "side": 1,
+      "message": "optional: now parameterized test is introduced so these can be in one file. For example\n\ntype testParams struct {\n  videoName string\n  videoDesc string\n}\n\nfunc init() {\n  testing.AddTest(\u0026testing.Test{\n    Func: PlaybackVDPerf,\n    ...\n    SoftwareDeps: []string{\"chrome\"},   \n    Params: []testing.Param{{\n      Name: \"vp8_1080p_60fps\",\n      Val: {\n        videoName: \"1080p_60fps_600frames.vp8.webm\",\n        videoDesc: \"vp8_1080p_60fps\",\n      }\n      ExtraData: []string{\"1080p_60fps_600frames.vp8.webm\"},\n    }, {\n      Name: \"vp9_1080p_60fps\",\n      Val: {\n        videoName: \"1080p_60fps_600frames.vp9.webm\",\n        videoDesc: \"vp9_1080p_60fps\",\n      }\n      ExtraData: []string{\"1080p_60fps_600frames.vp9.webm\"},\n    }},\n  })\n}\n\nfunc PlaybackVDPerf(...) {\n  params :\u003d s.Param().(testParams)\n  playback.RunTest(ctx, s, params.videoName, params.videoDesc, playback.DefaultPerfDisabled, playback.VD)\n}",
+      "revId": "3756665e585183d29478a3139043bfb2c3b6e49a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
