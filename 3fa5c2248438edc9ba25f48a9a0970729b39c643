@@ -141,6 +141,30 @@
       "revId": "3fa5c2248438edc9ba25f48a9a0970729b39c643",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d39fadb_b5a04c0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-09T19:46:23Z",
+      "side": 1,
+      "message": "Hmm? If a regex fails, it gives no match. So in a matching case, \u0027ms\u0027 should be a slice of slices, and the inner slices should all be length 2. (Or if no matches, \u0027ms\u0027 is nil, and this \u0027range\u0027 doesn\u0027t produce any iterations.)\n\nhttps://godoc.org/regexp#Regexp.FindAllStringSubmatch\n\nOr what example does not fit that pattern?\n\n(I\u0027m curious what problem you\u0027re really hitting, but I won\u0027t insist on reverting the revert.)",
+      "parentUuid": "e90c5ae8_311d0359",
+      "range": {
+        "startLine": 609,
+        "startChar": 5,
+        "endLine": 611,
+        "endChar": 6
+      },
+      "revId": "3fa5c2248438edc9ba25f48a9a0970729b39c643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
