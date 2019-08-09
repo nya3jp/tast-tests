@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cb806a37_4c3e63e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-09T21:11:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6834580d_cbd65e8c",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 40
+      },
+      "revId": "fb5006ff45b030a0bb6084cda143cec35d950ce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43d3fc11_6dfe6c53",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/wilco_charge_scheduling.go",
         "patchSetId": 3

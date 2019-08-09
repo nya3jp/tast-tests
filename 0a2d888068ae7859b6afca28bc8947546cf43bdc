@@ -22,6 +22,30 @@
       "revId": "0a2d888068ae7859b6afca28bc8947546cf43bdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e544d667_6c03afc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/wilco_peak_shift.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-09T21:11:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59e7b8fa_f901848f",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 28
+      },
+      "revId": "0a2d888068ae7859b6afca28bc8947546cf43bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
