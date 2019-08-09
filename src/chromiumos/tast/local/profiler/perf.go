@@ -14,37 +14,35 @@ import (
 	"chromiumos/tast/shutil"
 )
 
-// crosPerf represents the crosperf profiler.
+// perf represents the perf profiler.
 //
-// crosperf supports capture system profiler data while running test
-// in ChromeOS. It offers the support of gathering profiler data using the
+// perf supports gathering profiler data using the
 // command "perf record".
-type crosPerf struct {
+type perf struct {
 	cmd *testexec.Cmd
 }
 
-// newCrosPerf runs perf command to start recording perf.data.
-func newCrosPerf(ctx context.Context, outDir string) (instance, error) {
+// newPerf runs perf command to start recording perf.data.
+func newPerf(ctx context.Context, outDir string) (instance, error) {
 	outputPath := filepath.Join(outDir, "perf.data")
 	cmd := testexec.CommandContext(ctx, "perf", "record", "-e", "cycles", "-g", "--output", outputPath)
 	if err := cmd.Start(); err != nil {
 		cmd.DumpLog(ctx)
 		return nil, errors.Wrapf(err, "failed running %s", shutil.EscapeSlice(cmd.Args))
 	}
-	return &crosPerf{
+	return &perf{
 		cmd: cmd,
 	}, nil
 }
 
 // end interrupts the perf command and ends the recording of perf.data.
-func (p *crosPerf) end() error {
+func (p *perf) end() error {
 	// Interrupt the cmd to stop recording perf.
 	p.cmd.Signal(syscall.SIGINT)
 	err := p.cmd.Wait()
 	// The signal is interrupt intentionally, so we check the wait status
 	// instead of refusing the error.
-	ws, ok := testexec.GetWaitStatus(err)
-	if !ok || !ws.Signaled() || ws.Signal() != syscall.SIGINT {
+	if ws, ok := testexec.GetWaitStatus(err); !ok || !ws.Signaled() || ws.Signal() != syscall.SIGINT {
 		return errors.Wrap(err, "failed waiting for the command to exit")
 	}
 	return nil

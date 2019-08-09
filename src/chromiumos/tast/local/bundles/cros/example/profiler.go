@@ -22,7 +22,7 @@ func init() {
 }
 
 func Profiler(ctx context.Context, s *testing.State) {
-	p, err := profiler.Start(ctx, s.OutDir(), profiler.CrosProf)
+	p, err := profiler.Start(ctx, s.OutDir(), profiler.Perf, profiler.Top, profiler.VMStat)
 	if err != nil {
 		s.Fatal("Failure in starting the profiler: ", err)
 	}
