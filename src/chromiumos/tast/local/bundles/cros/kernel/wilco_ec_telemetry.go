@@ -1,0 +1,151 @@
+// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package kernel
+
+import (
+	"bytes"
+	"context"
+	"os"
+	"time"
+
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         WilcoECTelemetry,
+		Desc:         "Checks that EC telemetry commands work on Wilco devices",
+		Contacts:     []string{"ncrews@chromium.org"}, // test author
+		Attr:         []string{"informational"},
+		SoftwareDeps: []string{"wilco"},
+		Timeout:      10 * time.Second,
+	})
+}
+
+// WilcoECTelemetry tests the Wilco EC's ability to respond to telemetry
+// commands. The Wilco EC is able to return telemetry information (such
+// as temperature and fan state) via sysfs: You write a binary command
+// to the sysfs file, the kernel driver performs some filtering on the
+// command to ensure it is sane, and the EC returns the binary result,
+// to be read from the same file. You must keep the file descriptor open
+// between the read and write for the response to be kept. This test
+// checks for end-to-end communication with the EC, and checks that the
+// driver performs some basic filtering and sanity checks. Since the
+// responses are variable and opaque binary data, it's impractical to
+// actually check the values of the responses.
+//
+// See https://chromium.git.corp.google.com/chromiumos/third_party/kernel/+/ea0f6a09a7a993fc7c781fd8ca675b29c42d4719/drivers/platform/chrome/wilco_ec/telemetry.c
+// for the kernel driver.
+func WilcoECTelemetry(ctx context.Context, s *testing.State) {
+
+	type errMsg string
+
+	type params struct {
+		// Telemetry command to run.
+		cmd []byte
+		// If the command fails, this should be the cause of the error.
+		expectedErr errMsg
+	}
+
+	const (
+		telemPath = "/dev/wilco_telem0"
+		// These are intended to be merely human-readable and may not necessarily
+		// match exactly any real error messages.
+		noErr      errMsg = "NONE"
+		invalidErr errMsg = "invalid argument"
+		tooLongErr errMsg = "message too long"
+	)
+
+	openTelemFile := func() *os.File {
+		if _, err := os.Stat(telemPath); os.IsNotExist(err) {
+			s.Fatal("File does not exist: ", err)
+		}
+		f, err := os.OpenFile(telemPath, os.O_RDWR, 0644)
+		if err != nil {
+			s.Fatalf("Failed to open %s: %v", telemPath, err)
+		}
+		return f
+	}
+
+	// Send the telemetry command to the EC. Return whether the write succeeded.
+	writeCommand := func(f *os.File, p params) (success bool) {
+		_, err := f.Write(p.cmd)
+		// It would be brittle to check for specific errors, so the best we can do
+		// is check for the existence of errors.
+		if err != nil {
+			if p.expectedErr == noErr {
+				s.Errorf("Sending command [% x](hex) failed, but was supposed to succeed: %v", p.cmd, err)
+			}
+			return false
+		}
+		if err == nil && p.expectedErr != noErr {
+			s.Errorf("Sending command [% x](hex) succeded, but was supposed to fail with a %q error", p.cmd, p.expectedErr)
+			return false
+		}
+		return true
+	}
+
+	readAndCheckResult := func(f *os.File, p params) {
+		// Telemetry response is always 32 bytes.
+		var bytes [32]byte
+		n, err := f.Read(bytes[:])
+		if err != nil {
+			s.Errorf("Failed to read %s after sending command [% x](hex): %v", telemPath, p.cmd, err)
+			return
+		}
+		if n != 32 {
+			s.Errorf("Read %v bytes from %v after sending command [% x](hex); needed to read %v", n, telemPath, p.cmd, 32)
+			return
+		}
+		// The result of telemetry commands is not deterministic, so the best we
+		// can do is check that there is at least something non-zero in there.
+		for _, b := range bytes {
+			if b != 0 {
+				return
+			}
+		}
+		s.Fatalf("Bytes returned from command [% x](hex) were all zero", p.cmd)
+	}
+
+	f := openTelemFile()
+	defer f.Close()
+
+	for _, p := range []params{
+		// A set of good commands.
+		{[]byte{0x38, 0x00, 0x00}, noErr},
+		{[]byte{0x38, 0x00, 0x01}, noErr},
+		{[]byte{0x38, 0x00, 0x02}, noErr},
+		{[]byte{0x38, 0x00, 0x03}, noErr},
+
+		// The 2nd byte must be 0.
+		{[]byte{0x38, 0x01, 0x00}, invalidErr},
+
+		// Bad sizes.
+		{[]byte{}, invalidErr},
+		{[]byte{0x38, 0x00, 0x03, 0x00}, tooLongErr},
+		{append([]byte{0x38}, bytes.Repeat([]byte{0}, 32)...), tooLongErr},
+
+		// Bad first byte, not one of the allowed commands.
+		{[]byte{0x39, 0x00, 0x03}, invalidErr},
+
+		// Another good command.
+		{[]byte{0x2c, 0x00, 0x00}, noErr},
+		{[]byte{0x2c, 0x00, 0x01}, noErr},
+		{[]byte{0x2c, 0x00, 0x02}, noErr},
+		{[]byte{0x2c, 0x00, 0x03}, noErr},
+		{[]byte{0x2c, 0x00, 0x03, 0x00}, tooLongErr},
+
+		// Another good command.
+		{[]byte{0x8a, 0x00, 0x01}, noErr},
+		// For the 0x8a command, only 0x01 is allowed for the 3rd byte.
+		{[]byte{0x8a, 0x00, 0x00}, invalidErr},
+		{[]byte{0x8a, 0x00, 0x02}, invalidErr},
+	} {
+		success := writeCommand(f, p)
+		if success {
+			readAndCheckResult(f, p)
+		}
+	}
+}
