@@ -95,7 +95,7 @@ func FindProcessesByExe(ps []Process, exeRegex string, revese bool) ([]Process, 
 func FindProcessesByCmdline(ps []Process, cmdlineRegex string, reverse bool) ([]Process, error) {
 	var found []Process
 	for _, proc := range ps {
-		matched, err := regexp.MatchString(cmdlineRegex, proc.Cmdline)
+		matched, err := regexp.MatchString("^"+cmdlineRegex+"$", proc.Cmdline)
 		if err != nil {
 			return nil, err
 		}

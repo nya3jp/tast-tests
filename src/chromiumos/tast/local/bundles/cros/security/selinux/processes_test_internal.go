@@ -86,9 +86,9 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 		case Stable:
 			testCases = append(testCases, []testCaseType{
 				{cmdline, ".*logger.*-t arc-kmsg-logger.*", "cros_arc_kmsg_logger", zeroProcs, ""},
-				{cmdline, "/usr/bin/periodic_scheduler", "cros_periodic_scheduler", twoProcs, ""},
-				{cmdline, "/usr/share/cros/init/activate_date.sh", "cros_activate_date", zeroProcs, ""},
-				{cmdline, "^/system/bin/sdcard.*", "cros_arc_sdcardd", zeroProcs, ""},
+				{cmdline, ".*/usr/bin/periodic_scheduler.*", "cros_periodic_scheduler", twoProcs, ""},
+				{cmdline, ".*/usr/share/cros/init/activate_date.sh.*", "cros_activate_date", zeroProcs, ""},
+				{cmdline, "/system/bin/sdcard.*", "cros_arc_sdcardd", zeroProcs, ""},
 				{exe, "/opt/google/chrome/chrome", "cros_browser", zeroProcs, ""}, // Only when browser exists
 				{exe, "/sbin/auditd", "cros_auditd", oneProc, ""},                 // auditd must be running on SELinux boards
 				{exe, "/sbin/debugd", "cros_debugd", zeroProcs, ""},
