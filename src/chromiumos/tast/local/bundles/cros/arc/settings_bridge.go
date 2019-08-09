@@ -97,6 +97,48 @@ func setChromeFontScale(ctx context.Context, conn *chrome.Conn, size string) err
 	return conn.Exec(ctx, script)
 }
 
+// setCaptionTextSize sets the caption text size on Chrome.
+func setCaptionTextSize(ctx context.Context, conn *chrome.Conn, size string) error {
+	script := fmt.Sprintf(`
+		chrome.fontSettings.setCaptionTextSize({captionTextSize: "%v"}, () => {});`, size)
+	return conn.Exec(ctx, script)
+}
+
+// setCaptionTextColor sets the caption text color on Chrome.
+func setCaptionTextColor(ctx context.Context, conn *chrome.Conn, color string) error {
+	script := fmt.Sprintf(`
+		chrome.fontSettings.setCaptionTextColor({captionTextColor: "%v"}, () => {});`, color)
+	return conn.Exec(ctx, script)
+}
+
+// setCaptionBackgroundColor sets the caption background color on Chrome.
+func setCaptionBackgroundColor(ctx context.Context, conn *chrome.Conn, color string) error {
+	script := fmt.Sprintf(`
+		chrome.fontSettings.setCaptionBackgroundColor({captionBackgroundColor: "%v"}, () => {});`, color)
+	return conn.Exec(ctx, script)
+}
+
+// setCaptionTextOpacity sets the caption text opacity on Chrome.
+func setCaptionTextOpacity(ctx context.Context, conn *chrome.Conn, opacity int) error {
+	script := fmt.Sprintf(`
+		chrome.fontSettings.setCaptionTextOpacity({captionTextOpacity: %v}, () => {});`, opacity)
+	return conn.Exec(ctx, script)
+}
+
+// setCaptionBackgroundOpacity sets the caption background opacity on Chrome.
+func setCaptionBackgroundOpacity(ctx context.Context, conn *chrome.Conn, opacity int) error {
+	script := fmt.Sprintf(`
+		chrome.fontSettings.setCaptionBackgroundOpacity({captionBackgroundOpacity: %v}, () => {});`, opacity)
+	return conn.Exec(ctx, script)
+}
+
+// setCaptionTextShadow sets the caption text shadow on Chrome.
+func setCaptionTextShadow(ctx context.Context, conn *chrome.Conn, color string) error {
+	script := fmt.Sprintf(`
+		chrome.fontSettings.setCaptionTextShadow({captionTextShadow: "%v"}, () => {});`, color)
+	return conn.Exec(ctx, script)
+}
+
 // testFontSizeSync runs the test to ensure that font size settings
 // are synchronized between Chrome and Android.
 func testFontSizeSync(ctx context.Context, tconn *chrome.Conn, a *arc.ARC) error {
@@ -119,6 +161,81 @@ func testFontSizeSync(ctx context.Context, tconn *chrome.Conn, a *arc.ARC) error
 	if err := waitFontScale(ctx, a, largestAndroidFontScale); err != nil {
 		return err
 	}
+	return nil
+}
+
+// testCaptionSettingsSync runs the test to ensure that caption settings
+// are synchronized between Chrome and Android.
+func testCaptionSettingsSync(ctx context.Context, tconn *chrome.Conn, a *arc.ARC) error {
+	// const values specifying font values for testing.
+	const (
+		captionTextSize           = "43%"
+		expectedFontScale         = "0.43"
+		captionTextColor          = "0,0,0"
+		captionTextOpacity        = 50
+		expectedForegroundColor   = "-2147483648"
+		captionBackgroundColor    = "255,0,0"
+		captionBackgroundOpacity  = 50
+		expectedBackgroundColor   = "-2130771968"
+		captionTextShadow         = "2px 2px 4px rgba(0, 0, 0, 0.5)"
+		expectedEdgeType          = "4"
+		expectedCaptioningEnabled = "1"
+	)
+	if err := setCaptionTextSize(ctx, tconn, captionTextSize); err != nil {
+		return err
+	}
+
+	if err := setCaptionTextColor(ctx, tconn, captionTextColor); err != nil {
+		return err
+	}
+
+	if err := setCaptionBackgroundColor(ctx, tconn, captionBackgroundColor); err != nil {
+		return err
+	}
+
+	if err := setCaptionTextShadow(ctx, tconn, captionTextShadow); err != nil {
+		return err
+	}
+
+	if err := setCaptionTextOpacity(ctx, tconn, captionTextOpacity); err != nil {
+		return err
+	}
+
+	if err := setCaptionBackgroundOpacity(ctx, tconn, captionBackgroundOpacity); err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "Evan123 log")
+	actualFontScale, err := a.Command(ctx, "settings", "--user", "0", "get", "secure", "accessibility_captioning_font_scale").Output(testexec.DumpLogOnError)
+	actualBackgroundColor, err := a.Command(ctx, "settings", "--user", "0", "get", "secure", "accessibility_captioning_background_color").Output(testexec.DumpLogOnError)
+	actualCaptioningEnabled, err := a.Command(ctx, "settings", "--user", "0", "get", "secure", "accessibility_captioning_enabled").Output(testexec.DumpLogOnError)
+	actualEdgeType, err := a.Command(ctx, "settings", "--user", "0", "get", "secure", "accessibility_captioning_edge_type").Output(testexec.DumpLogOnError)
+	actualForegroundColor, err := a.Command(ctx, "settings", "--user", "0", "get", "secure", "accessibility_captioning_foreground_color").Output(testexec.DumpLogOnError)
+
+	if err != nil {
+		return err
+	}
+
+	if strings.TrimSpace(string(actualFontScale)) != expectedFontScale {
+		return errors.Errorf("Actual font scale is %s, expected %s", actualFontScale, expectedFontScale)
+	}
+
+	if strings.TrimSpace(string(actualBackgroundColor)) != expectedBackgroundColor {
+		return errors.Errorf("Actual background color is %s, expected %s", actualBackgroundColor, expectedBackgroundColor)
+	}
+
+	if strings.TrimSpace(string(actualCaptioningEnabled)) != expectedCaptioningEnabled {
+		return errors.Errorf("Actual captioning enabled is %s, expected %s", actualCaptioningEnabled, expectedCaptioningEnabled)
+	}
+
+	if strings.TrimSpace(string(actualEdgeType)) != expectedEdgeType {
+		return errors.Errorf("Actual edge type is %s, expected %s", actualEdgeType, expectedEdgeType)
+	}
+
+	if strings.TrimSpace(string(actualForegroundColor)) != expectedForegroundColor {
+		return errors.Errorf("Actual foreground color is %s, expected %s", actualForegroundColor, expectedForegroundColor)
+	}
+
 	return nil
 }
 
@@ -339,6 +456,11 @@ func SettingsBridge(ctx context.Context, s *testing.State) {
 	// Run font size test.
 	if err := testFontSizeSync(ctx, tconn, a); err != nil {
 		s.Error("Failed to sync font size: ", err)
+	}
+
+	// Run caption settings test.
+	if err := testCaptionSettingsSync(ctx, tconn, a); err != nil {
+		s.Error("Failed to sync caption settings: ", err)
 	}
 
 	// Run proxy settings test.
