@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "203f07fa_f34de7ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-08-09T21:32:23Z",
+      "side": 1,
+      "message": "Please add a comment.",
+      "revId": "9e6c98c069cfe54f0d7ecd581c2cf427e890987b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee79e05f_5609e84f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-08-09T21:32:23Z",
+      "side": 1,
+      "message": "Does this \"login\" means a user session login? Can you add a comment to explain? Does the consent in the context make it a user session login?",
+      "range": {
+        "startLine": 61,
+        "startChar": 18,
+        "endLine": 61,
+        "endChar": 23
+      },
+      "revId": "9e6c98c069cfe54f0d7ecd581c2cf427e890987b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "136e5d12_ea0e438a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-08-09T21:32:23Z",
+      "side": 1,
+      "message": "Why should there be no dumps?",
+      "revId": "9e6c98c069cfe54f0d7ecd581c2cf427e890987b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c54b5fa_78653a0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-08-09T21:32:23Z",
+      "side": 1,
+      "message": "Is this your debug thingy?",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 76
+      },
+      "revId": "9e6c98c069cfe54f0d7ecd581c2cf427e890987b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a83c25a_447bced9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-08-09T21:32:23Z",
+      "side": 1,
+      "message": "Can you resolve this?",
+      "revId": "9e6c98c069cfe54f0d7ecd581c2cf427e890987b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f178dd3e_f351b64d",
+        "filename": "src/chromiumos/tast/local/chrome/proc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1212939
+      },
+      "writtenOn": "2019-08-09T21:32:23Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "9e6c98c069cfe54f0d7ecd581c2cf427e890987b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
