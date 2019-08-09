@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f335cd69_815316a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ipp_printer_connect_timeout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-09T22:44:56Z",
+      "side": 1,
+      "message": "how likely is this text to change over time?  Is it feasible to put the possible outputs in usbprinter and use a variable here instead?  That would make it easier to update later.",
+      "revId": "a5662aa25a6e9613839f2b78b177eebb4742e123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75c6640e_08e1be37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ipp_printer_connect_timeout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-09T22:44:56Z",
+      "side": 1,
+      "message": "why not export usbprinter.jobCompleted and use that instead?",
+      "revId": "a5662aa25a6e9613839f2b78b177eebb4742e123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2edfbda4_53d98852",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ipp_printer_connect_timeout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-09T22:44:56Z",
+      "side": 1,
+      "message": "these variables are visible from all the other tests in this package -put them at the top of the test function instead",
+      "revId": "a5662aa25a6e9613839f2b78b177eebb4742e123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1763faa_998c1b1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ipp_printer_connect_timeout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-09T22:44:56Z",
+      "side": 1,
+      "message": "is 20 seconds the minimum possible wait time, or something?  If so, call that out in a comment.  A straight sleep during a test is generally discouraged, so some justification would be clarifying",
+      "revId": "a5662aa25a6e9613839f2b78b177eebb4742e123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "758ff4b9_598c013f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/cups.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-09T22:44:56Z",
+      "side": 1,
+      "message": "not from this CL, but printerName is both the name of an input variable here/elsewhere and the name of a function in this package.  Seems like something worth fixing",
+      "revId": "a5662aa25a6e9613839f2b78b177eebb4742e123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
