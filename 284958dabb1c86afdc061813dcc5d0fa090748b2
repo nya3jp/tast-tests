@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53199f29_eb762a06",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-09T22:06:11Z",
+      "side": 1,
+      "message": "Something about conn.go",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 47
+      },
+      "revId": "284958dabb1c86afdc061813dcc5d0fa090748b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8d062f7_e685f63b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-09T22:06:11Z",
+      "side": 1,
+      "message": "I\u0027ve repinged crbug/990123 about this line",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 33
+      },
+      "revId": "284958dabb1c86afdc061813dcc5d0fa090748b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04821fad_a6c1ff0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-09T22:06:11Z",
+      "side": 1,
+      "message": "API",
+      "range": {
+        "startLine": 47,
+        "startChar": 18,
+        "endLine": 47,
+        "endChar": 21
+      },
+      "revId": "284958dabb1c86afdc061813dcc5d0fa090748b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cf15bab_f0318c6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-09T22:06:11Z",
+      "side": 1,
+      "message": "I\u0027d call this something else. More options menu OR Overflow menu OR hamburger menu",
+      "range": {
+        "startLine": 67,
+        "startChar": 13,
+        "endLine": 67,
+        "endChar": 23
+      },
+      "revId": "284958dabb1c86afdc061813dcc5d0fa090748b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1786d9fe_8a605501",
+        "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-09T22:06:11Z",
+      "side": 1,
+      "message": "This may need to poll for something better. Let\u0027s see what the results are like during informational",
+      "range": {
+        "startLine": 50,
+        "startChar": 13,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "284958dabb1c86afdc061813dcc5d0fa090748b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ab885d6_df266de7",
+        "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-09T22:06:11Z",
+      "side": 1,
+      "message": "short assignment here but in the other file you do \n\nerr \u003d\n\nLet\u0027s keep consistent",
+      "range": {
+        "startLine": 60,
+        "startChar": 8,
+        "endLine": 60,
+        "endChar": 11
+      },
+      "revId": "284958dabb1c86afdc061813dcc5d0fa090748b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5075e808_8385e87b",
+        "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-09T22:06:11Z",
+      "side": 1,
+      "message": "Can this just be a function to return the roles and have the caller do the logging? (I think I asked this already)",
+      "range": {
+        "startLine": 112,
+        "startChar": 19,
+        "endLine": 112,
+        "endChar": 35
+      },
+      "revId": "284958dabb1c86afdc061813dcc5d0fa090748b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
