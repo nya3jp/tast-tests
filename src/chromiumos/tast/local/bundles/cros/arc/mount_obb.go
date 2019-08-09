@@ -85,15 +85,20 @@ func MountOBB(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
-	verifyFiles := func(dir string) {
+	// verifyFiles returns true on success.
+	verifyFiles := func(dir string) bool {
+		success := true
+
 		// Verify existing files have expected content.
 		for i := 0; i < 100; i++ {
 			path := filepath.Join(dir, fmt.Sprintf("file%d.txt", i))
 			expect := []byte(strconv.Itoa(i))
 			if data, err := ioutil.ReadFile(path); err != nil {
 				s.Errorf("Failed to read %s: %v", path, err)
+				success = false
 			} else if !bytes.Equal(data, expect) {
 				s.Errorf("Unexpected contents in %s: got %q; want %q", path, data, expect)
+				success = false
 			}
 		}
 
@@ -102,8 +107,10 @@ func MountOBB(ctx context.Context, s *testing.State) {
 			path := filepath.Join(dir, fmt.Sprintf("removed%d.txt", i))
 			if _, err := os.Stat(path); err == nil {
 				s.Error("Unexpected file exists: ", path)
+				success = false
 			} else if !os.IsNotExist(err) {
 				s.Errorf("Stat(%q) failed: %v", path, err)
+				success = false
 			}
 		}
 
@@ -111,10 +118,14 @@ func MountOBB(ctx context.Context, s *testing.State) {
 		path := filepath.Join(dir, "large_file.data")
 		if data, err := ioutil.ReadFile(path); err != nil {
 			s.Errorf("Failed to read %s: %v", path, err)
+			success = false
 		} else if !bytes.Equal(data, largeData) {
 			// Because data and largeData is huge, do not print in error.
 			s.Errorf("Large data mismatch for %s", path)
+			success = false
 		}
+
+		return success
 	}
 
 	// unmountAllUnder unmounts all mount points under dir.
@@ -236,8 +247,19 @@ func MountOBB(ctx context.Context, s *testing.State) {
 			return
 		}
 
-		verifyFiles(mountPath)
-		verifyFiles(filepath.Join(mountPath, "foo", "bar"))
+		if !verifyFiles(mountPath) || !verifyFiles(filepath.Join(mountPath, "foo", "bar")) {
+			// To diagnosing, dump the file list under "mountPath" to a file.
+			if f, err := os.Create(filepath.Join(s.OutDir(), "filelist"+string(variant))); err != nil {
+				s.Error("Failed to create log file: ", err)
+			} else {
+				defer f.Close()
+				dumpCmd := testexec.CommandContext(ctx, "find", "-H", mountPath)
+				dumpCmd.Stdout = f
+				if err := dumpCmd.Run(testexec.DumpLogOnError); err != nil {
+					s.Error("Failed to list files: ", err)
+				}
+			}
+		}
 	}
 
 	runTest(FAT12)
