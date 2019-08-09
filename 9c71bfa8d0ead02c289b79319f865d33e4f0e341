@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9cc2444c_e25fc8f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gstoraster.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-09T02:03:10Z",
+      "side": 1,
+      "message": "Could you check error, here?\n\nif _, err :\u003d stdin.Write(inputContents); err !\u003d nil {\n  s.Error(...)\n}",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 28
+      },
+      "revId": "9c71bfa8d0ead02c289b79319f865d33e4f0e341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
