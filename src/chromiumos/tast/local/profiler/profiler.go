@@ -34,7 +34,9 @@ type Profiler func(ctx context.Context, outDir string) (instance, error)
 
 // Profiler's constructors available in the library.
 var (
-	CrosProf Profiler = newCrosPerf
+	CrosProf   Profiler = newCrosPerf
+	VmstatProf Profiler = newVmstat
+	TopProf    Profiler = newTop
 )
 
 // RunningProf is the list of all running profilers.

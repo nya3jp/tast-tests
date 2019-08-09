@@ -43,8 +43,7 @@ func (p *crosPerf) end() error {
 	err := p.cmd.Wait()
 	// The signal is interrupt intentionally, so we check the wait status
 	// instead of refusing the error.
-	ws, ok := testexec.GetWaitStatus(err)
-	if !ok || !ws.Signaled() || ws.Signal() != syscall.SIGINT {
+	if ws, ok := testexec.GetWaitStatus(err); !ok || !ws.Signaled() || ws.Signal() != syscall.SIGINT {
 		return errors.Wrap(err, "failed waiting for the command to exit")
 	}
 	return nil
