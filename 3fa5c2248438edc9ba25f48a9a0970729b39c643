@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bee435e5_c1a5c755",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-09T00:10:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d775dccc_a92fb39c",
+      "range": {
+        "startLine": 550,
+        "startChar": 53,
+        "endLine": 550,
+        "endChar": 65
+      },
+      "revId": "3fa5c2248438edc9ba25f48a9a0970729b39c643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32513e85_714a814a",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 18
@@ -45,6 +69,30 @@
       "revId": "3fa5c2248438edc9ba25f48a9a0970729b39c643",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab00e696_baf0311c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-09T00:10:22Z",
+      "side": 1,
+      "message": "Done. I just removed it. I was just writing my code very conservatively.",
+      "parentUuid": "32513e85_714a814a",
+      "range": {
+        "startLine": 609,
+        "startChar": 5,
+        "endLine": 611,
+        "endChar": 6
+      },
+      "revId": "3fa5c2248438edc9ba25f48a9a0970729b39c643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
