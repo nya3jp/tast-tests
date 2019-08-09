@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25d7bc54_824a038e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-09T00:36:17Z",
+      "side": 1,
+      "message": "you still have unnecessary capture groups? you\u0027re only utilizing groups 1 and 4.\n\nAlso, I didn\u0027t recommend totally removing the named groups -- in fact, by removing them, you made this more fragile. The point of the naming is that some of this is variable (may have 0 or more matching on one of the groups.)\n\nSo you still want the \u003cfrequency\u003e and \u003cflags\u003e named groups.",
+      "range": {
+        "startLine": 526,
+        "startChar": 39,
+        "endLine": 526,
+        "endChar": 40
+      },
+      "revId": "8eaaf508c746c3fc67b38c64d11bda90cce508a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

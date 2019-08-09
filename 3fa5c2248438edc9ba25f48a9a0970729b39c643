@@ -93,6 +93,30 @@
       "revId": "3fa5c2248438edc9ba25f48a9a0970729b39c643",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b208d4b_f0f3e2d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-09T00:36:17Z",
+      "side": 1,
+      "message": "(Be warned: I\u0027m not necessarily an authority on golang\u0027s regexp style.)",
+      "parentUuid": "ab00e696_baf0311c",
+      "range": {
+        "startLine": 609,
+        "startChar": 5,
+        "endLine": 611,
+        "endChar": 6
+      },
+      "revId": "3fa5c2248438edc9ba25f48a9a0970729b39c643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
