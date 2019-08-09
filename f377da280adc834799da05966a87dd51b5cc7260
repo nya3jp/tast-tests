@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "0884276e_ab54daa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-08-09T02:39:06Z",
+      "side": 1,
+      "message": "Issue: http://b/139162793",
+      "parentUuid": "d2eeec6d_77a70f11",
+      "revId": "f377da280adc834799da05966a87dd51b5cc7260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ae8827b_5daa9e08",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_sanity_vp91.go",
         "patchSetId": 4
@@ -81,6 +99,30 @@
       "revId": "f377da280adc834799da05966a87dd51b5cc7260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e6a66b9_f19a2cec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_sanity_vp91.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-08-09T02:39:06Z",
+      "side": 1,
+      "message": "Yes, you are right. Forgive me.",
+      "parentUuid": "9af3ba7c_0f3764c1",
+      "range": {
+        "startLine": 27,
+        "startChar": 25,
+        "endLine": 27,
+        "endChar": 33
+      },
+      "revId": "f377da280adc834799da05966a87dd51b5cc7260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
