@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "11b53b8c_d3051ac6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_vd_h264.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-09T02:21:26Z",
+      "side": 1,
+      "message": "This is not required for test functions, as the description is already in the \u0027Desc\u0027 field above:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#documentation",
+      "parentUuid": "fae2f278_ea07b1c2",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 15
+      },
+      "revId": "971fc0f78d2787a121f92fdc8d684cc6579ebaaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0690c1a_3ff4604a",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play_vd_vp8.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "133151d0_885be3b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_vd_vp8.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-09T02:21:26Z",
+      "side": 1,
+      "message": "Same",
+      "parentUuid": "b0690c1a_3ff4604a",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 14
+      },
+      "revId": "971fc0f78d2787a121f92fdc8d684cc6579ebaaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e1e6060_44022b09",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play_vd_vp9.go",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "971fc0f78d2787a121f92fdc8d684cc6579ebaaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dc903e3_24df4789",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_vd_vp9.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-09T02:21:26Z",
+      "side": 1,
+      "message": "Same",
+      "parentUuid": "0e1e6060_44022b09",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 14
+      },
+      "revId": "971fc0f78d2787a121f92fdc8d684cc6579ebaaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
