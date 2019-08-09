@@ -20,7 +20,6 @@ import (
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/sysutil"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -121,19 +120,15 @@ func DecodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 func runJPEGPerfBenchmark(ctx context.Context, s *testing.State, tempDir string,
 	measureDuration time.Duration, perfJPEGDecodeTimes int, filter string) float64 {
 	const exec = "jpeg_decode_accelerator_unittest"
-	runCmdAsync := func() (*testexec.Cmd, error) {
-		return gtest.New(
-			filepath.Join(chrome.BinTestDir, exec),
-			gtest.Logfile(fmt.Sprintf("%s/%s.%s.log", s.OutDir(), exec, filter)),
-			gtest.Filter(filter),
-			gtest.ExtraArgs(
-				"--perf_decode_times="+strconv.Itoa(perfJPEGDecodeTimes),
-				"--test_data_path="+tempDir+"/"),
-			gtest.UID(int(sysutil.ChronosUID)),
-		).Start(ctx)
-	}
-
-	cpuUsage, err := cpu.MeasureProcessCPU(ctx, runCmdAsync, measureDuration)
+	cpuUsage, err := cpu.MeasureProcessCPU(ctx, measureDuration, gtest.New(
+		filepath.Join(chrome.BinTestDir, exec),
+		gtest.Logfile(fmt.Sprintf("%s/%s.%s.log", s.OutDir(), exec, filter)),
+		gtest.Filter(filter),
+		gtest.ExtraArgs(
+			"--perf_decode_times="+strconv.Itoa(perfJPEGDecodeTimes),
+			"--test_data_path="+tempDir+"/"),
+		gtest.UID(int(sysutil.ChronosUID)),
+	))
 	if err != nil {
 		s.Fatalf("Failed to measure CPU usage %v: %v", exec, err)
 	}
