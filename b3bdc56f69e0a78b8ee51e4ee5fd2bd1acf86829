@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1befefc8_69f60e6c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-09T04:32:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "34106fef_6f1bdd4c",
+      "revId": "b3bdc56f69e0a78b8ee51e4ee5fd2bd1acf86829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bb3a214_08ca4b80",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
         "patchSetId": 2
@@ -90,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "d627b89c_32b5d2e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-09T04:32:14Z",
+      "side": 1,
+      "message": "Checked that the error is ENOENT.",
+      "parentUuid": "ee17dc90_d0de990e",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 88
+      },
+      "revId": "b3bdc56f69e0a78b8ee51e4ee5fd2bd1acf86829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b5218a8_b25913c7",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
         "patchSetId": 2
@@ -110,6 +152,30 @@
       "revId": "b3bdc56f69e0a78b8ee51e4ee5fd2bd1acf86829",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32e98ae2_b8aae305",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-09T04:32:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b5218a8_b25913c7",
+      "range": {
+        "startLine": 88,
+        "startChar": 34,
+        "endLine": 88,
+        "endChar": 48
+      },
+      "revId": "b3bdc56f69e0a78b8ee51e4ee5fd2bd1acf86829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -136,6 +202,30 @@
     },
     {
       "key": {
+        "uuid": "2d26579f_b0e88921",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-09T04:32:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d775240_964c9885",
+      "range": {
+        "startLine": 105,
+        "startChar": 56,
+        "endLine": 105,
+        "endChar": 62
+      },
+      "revId": "b3bdc56f69e0a78b8ee51e4ee5fd2bd1acf86829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06ddfebf_3047f7db",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
         "patchSetId": 2
@@ -156,6 +246,30 @@
       "revId": "b3bdc56f69e0a78b8ee51e4ee5fd2bd1acf86829",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06622a3e_2d8300dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-09T04:32:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06ddfebf_3047f7db",
+      "range": {
+        "startLine": 108,
+        "startChar": 32,
+        "endLine": 108,
+        "endChar": 45
+      },
+      "revId": "b3bdc56f69e0a78b8ee51e4ee5fd2bd1acf86829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -182,6 +296,30 @@
     },
     {
       "key": {
+        "uuid": "e3d4da39_4d12ecf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-09T04:32:14Z",
+      "side": 1,
+      "message": "Changed to return error if more than 4.",
+      "parentUuid": "5e215e84_ddc69ed2",
+      "range": {
+        "startLine": 132,
+        "startChar": 15,
+        "endLine": 132,
+        "endChar": 21
+      },
+      "revId": "b3bdc56f69e0a78b8ee51e4ee5fd2bd1acf86829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ee5eb07_52682c45",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
         "patchSetId": 2
@@ -205,6 +343,30 @@
     },
     {
       "key": {
+        "uuid": "d68fc445_f3aa50a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-09T04:32:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ee5eb07_52682c45",
+      "range": {
+        "startLine": 136,
+        "startChar": 12,
+        "endLine": 136,
+        "endChar": 24
+      },
+      "revId": "b3bdc56f69e0a78b8ee51e4ee5fd2bd1acf86829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81281dc6_9a95278b",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
         "patchSetId": 2
@@ -225,6 +387,30 @@
       "revId": "b3bdc56f69e0a78b8ee51e4ee5fd2bd1acf86829",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55e08589_8aab255e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-09T04:32:14Z",
+      "side": 1,
+      "message": "Oops.\nI updated the abs path to just \"modprobe\". Do I understand it right?",
+      "parentUuid": "81281dc6_9a95278b",
+      "range": {
+        "startLine": 142,
+        "startChar": 39,
+        "endLine": 142,
+        "endChar": 42
+      },
+      "revId": "b3bdc56f69e0a78b8ee51e4ee5fd2bd1acf86829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
