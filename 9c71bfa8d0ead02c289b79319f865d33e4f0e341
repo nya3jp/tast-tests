@@ -22,6 +22,30 @@
       "revId": "9c71bfa8d0ead02c289b79319f865d33e4f0e341",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4edadcd_135bc234",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gstoraster.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-08-09T15:38:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cc2444c_e25fc8f3",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 28
+      },
+      "revId": "9c71bfa8d0ead02c289b79319f865d33e4f0e341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
