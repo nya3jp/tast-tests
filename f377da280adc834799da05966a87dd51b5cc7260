@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d2eeec6d_77a70f11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-09T01:04:53Z",
+      "side": 1,
+      "message": "A precondition for our binary tests that disables the UI job is not a bad idea! Feel free to create a bug!",
+      "parentUuid": "36d7e635_6685be19",
+      "revId": "f377da280adc834799da05966a87dd51b5cc7260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ae8827b_5daa9e08",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_sanity_vp91.go",
         "patchSetId": 4
@@ -30,6 +48,30 @@
       "writtenOn": "2019-08-08T03:27:36Z",
       "side": 1,
       "message": "profile1",
+      "range": {
+        "startLine": 27,
+        "startChar": 25,
+        "endLine": 27,
+        "endChar": 33
+      },
+      "revId": "f377da280adc834799da05966a87dd51b5cc7260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9af3ba7c_0f3764c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_sanity_vp91.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-09T01:04:53Z",
+      "side": 1,
+      "message": "I based this on the way the sanity check currently works. If you check test_cases.go you can see that all the sanity check tests use \u0027VP9Prof\u0027.\n\nFrom video_type.go:\n// VP9Prof represents the value for VP9 profile 0 (\u003d VP9PROFILE_PROFILE0).\nVP9Prof CodecProfile \u003d 12\n\nI thought the purpose of this test was checking whether the kernel can handle unexpected features in the video stream? If we initialize using the correct profile the video decoder will just report failure on initialization if the codec it\u0027s not supported?",
+      "parentUuid": "9ae8827b_5daa9e08",
       "range": {
         "startLine": 27,
         "startChar": 25,
