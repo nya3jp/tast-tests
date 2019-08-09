@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c788abcd_1a1e8579",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-09T22:28:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53199f29_eb762a06",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 47
+      },
+      "revId": "284958dabb1c86afdc061813dcc5d0fa090748b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8d062f7_e685f63b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
         "patchSetId": 10
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "fcc85aaa_56d4f507",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-09T22:28:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04821fad_a6c1ff0a",
+      "range": {
+        "startLine": 47,
+        "startChar": 18,
+        "endLine": 47,
+        "endChar": 21
+      },
+      "revId": "284958dabb1c86afdc061813dcc5d0fa090748b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8cf15bab_f0318c6e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
         "patchSetId": 10
@@ -91,6 +139,30 @@
       "revId": "284958dabb1c86afdc061813dcc5d0fa090748b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d58fe37_73c706ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_smoke.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-09T22:28:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cf15bab_f0318c6e",
+      "range": {
+        "startLine": 67,
+        "startChar": 13,
+        "endLine": 67,
+        "endChar": 23
+      },
+      "revId": "284958dabb1c86afdc061813dcc5d0fa090748b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "0b014099_f876fa28",
+        "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-09T22:28:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1786d9fe_8a605501",
+      "range": {
+        "startLine": 50,
+        "startChar": 13,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "284958dabb1c86afdc061813dcc5d0fa090748b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ab885d6_df266de7",
         "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
         "patchSetId": 10
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "f2cdb242_425dd6d2",
+        "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-09T22:28:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ab885d6_df266de7",
+      "range": {
+        "startLine": 60,
+        "startChar": 8,
+        "endLine": 60,
+        "endChar": 11
+      },
+      "revId": "284958dabb1c86afdc061813dcc5d0fa090748b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5075e808_8385e87b",
         "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
         "patchSetId": 10
@@ -160,6 +280,30 @@
       "revId": "284958dabb1c86afdc061813dcc5d0fa090748b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92ca661f_fc40e68f",
+        "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-09T22:28:49Z",
+      "side": 1,
+      "message": "Handling errors within errors just leads to messy go code. This way is much cleaner.",
+      "parentUuid": "5075e808_8385e87b",
+      "range": {
+        "startLine": 112,
+        "startChar": 19,
+        "endLine": 112,
+        "endChar": 35
+      },
+      "revId": "284958dabb1c86afdc061813dcc5d0fa090748b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
