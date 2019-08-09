@@ -7,7 +7,7 @@
 //
 // Usage
 //
-//  p, err := profiler.Start(ctx, s, Profiler.CrosProf, ...)
+//  p, err := profiler.Start(ctx, s, Profiler.Perf, ...)
 //  if err != nil {
 //  	// Error handling...
 //  }
@@ -34,7 +34,9 @@ type Profiler func(ctx context.Context, outDir string) (instance, error)
 
 // Profiler's constructors available in the library.
 var (
-	CrosProf Profiler = newCrosPerf
+	Perf   Profiler = newPerf
+	VMStat Profiler = newVMStat
+	Top    Profiler = newTop
 )
 
 // RunningProf is the list of all running profilers.
