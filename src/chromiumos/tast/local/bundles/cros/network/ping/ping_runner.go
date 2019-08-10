@@ -65,6 +65,7 @@ func Ping(ctx context.Context, cfg Config) (*Result, error) {
 // SimplePing pings a destination address from the DUT with default parameters.
 // Ping timeouts can be set within ctx.
 func SimplePing(ctx context.Context, hostName string) (bool, error) {
+<<<<<<< HEAD   (7a0590 network_WifiReset port)
 	cfg := Config{TargetIP: hostName, Count: 1, Interval: 1, SourceIface: "wlan0"}
 	res, err := Ping(ctx, cfg)
 	return res != nil && res.Received != 0, err
@@ -73,6 +74,16 @@ func SimplePing(ctx context.Context, hostName string) (bool, error) {
 // cfgToArgs converts a Config into a string of arguments for the ping command.
 func cfgToArgs(cfg Config) ([]string, error) {
 	args := []string{"-B"}
+=======
+	cfg := Config{TargetIP: hostName, Count: 4, Interval: 4, SourceIface: "wlan0"}
+	res, err := Ping(ctx, cfg)
+	return res != nil && res.Received != 0, err
+}
+
+// cfgToArgs converts a Config into a string of arguments for the ping command.
+func cfgToArgs(cfg Config) ([]string, error) {
+	args := []string{}
+>>>>>>> BRANCH (cbf69c network_WifiReset port)
 	args = append(args, "-c", strconv.Itoa(cfg.Count))
 	if cfg.Size != 0 {
 		args = append(args, "-s", strconv.Itoa(cfg.Size))

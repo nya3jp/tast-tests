@@ -89,6 +89,7 @@ func WifiReset(ctx context.Context, s *testing.State) {
 	)
 	props := map[string]interface{}{
 		"Type":          "wifi",
+<<<<<<< HEAD   (7a0590 network_WifiReset port)
 		"Name":          "jellytime",
 		"SecurityClass": "none",
 		"Mode":          "managed",
@@ -145,6 +146,64 @@ func WifiReset(ctx context.Context, s *testing.State) {
 			err := manager.ConnectToWifiNetwork(ctx, props)
 			if err != nil {
 				s.Fatalf("Could not connect to wifi: ", err)
+=======
+		"Name":          "GoogleGuest",
+		"SecurityClass": "none",
+		"Mode":          "managed",
+	}
+
+	iface := getIface(ctx, s)
+	// Hook into shill service.
+	manager, err := shill.NewManager(ctx)
+	defer integrateShillWifi(ctx, s, manager)
+	if err != nil {
+		s.Fatal("Failed creating shill manager proxy: ", err)
+	}
+	for i := 0; i < numSuspends; i++ {
+		s.Logf("Running suspend # %d", i)
+
+		isolateShillWifi(ctx, s, manager)
+		if err := testexec.CommandContext(ctx, "suspend_stress_test", "-c", "1").Run(testexec.DumpLogOnError); err != nil {
+			s.Fatal(errors.Wrapf(err, "Suspend/resume %d failed", i))
+		}
+		s.Logf("Suspend/resume %d succeeded", i)
+
+		// Check wireless device still available
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			o, err := testexec.CommandContext(ctx, "ip", "add", "sh", "dev", iface).Output()
+			if err != nil {
+				return err
+			} else if !strings.Contains(string(o), "wlan") {
+				return errors.New("could not find wlan device")
+			} else {
+				return nil
+			}
+		}, &testing.PollOptions{Timeout: time.Second}); err != nil {
+			s.Fatal("Device failed to be brought up: ", err)
+		}
+
+		// Scan
+		if _, err := iw.TimedScan(ctx, "wlan0", nil, nil); err != nil {
+			s.Fatal(errors.Wrap(err, "scan failed").Error())
+		}
+		s.Log(fmt.Sprintf("Scan succeeded"))
+		integrateShillWifi(ctx, s, manager)
+		for j := 0; j < numResets; j++ {
+			s.Logf("Running Reset # %d", j)
+			manager.DisconnectFromWifiNetwork(ctx, props)
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				if res, err := ping.SimplePing(ctx, "8.8.8.8"); err != nil || !res {
+					return nil
+				}
+				return errors.New("ping should fail.")
+
+			}, &testing.PollOptions{Timeout: 5 * time.Second, Interval: time.Millisecond * 100}); err != nil {
+				s.Fatal("Could not disconnect from wifi")
+			}
+			err := manager.ConnectToWifiNetwork(ctx, props)
+			if err != nil {
+				s.Fatal("Could not connect to wifi")
+>>>>>>> BRANCH (cbf69c network_WifiReset port)
 			}
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
 				s.Log("Pinging")
