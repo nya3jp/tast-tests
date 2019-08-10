@@ -18,16 +18,12 @@ func init() {
 		Desc:         "Starts Google Assistant service and checks the running status",
 		Contacts:     []string{"meilinw@chromium.org", "xiaohuic@chromium.org"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
+		Pre:          chrome.LoggedIn(),
 	})
 }
 
 func AssistantStartup(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.ExtraArgs("--enable-features=ChromeOSAssistant"))
-	if err != nil {
-		s.Fatal("Failed to log in: ", err)
-	}
-	defer cr.Close(ctx)
-
+	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
