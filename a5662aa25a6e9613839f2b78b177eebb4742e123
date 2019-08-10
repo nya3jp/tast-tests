@@ -2,6 +2,92 @@
   "comments": [
     {
       "key": {
+        "uuid": "dc470489_ee918ad5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ipp_printer_connect_timeout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-10T15:45:47Z",
+      "side": 1,
+      "message": "nit/style: IPP (acronyms in go\u0027s identifier should be all capitalized).",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "a5662aa25a6e9613839f2b78b177eebb4742e123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91d5ce20_918e4949",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ipp_printer_connect_timeout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-10T15:45:47Z",
+      "side": 1,
+      "message": "style: could you use \"+\" operator for simple concat?",
+      "revId": "a5662aa25a6e9613839f2b78b177eebb4742e123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3329e97_bdd6980f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ipp_printer_connect_timeout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-10T15:45:47Z",
+      "side": 1,
+      "message": "style: In go, we often drop prefixes like \"get\", \"is\", \"has\" etc.\nIn this case, printJobTimedOut() looks enough.",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 22
+      },
+      "revId": "a5662aa25a6e9613839f2b78b177eebb4742e123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5ab945e_96df0181",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ipp_printer_connect_timeout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-10T15:45:47Z",
+      "side": 1,
+      "message": "nit/style: could you avoid repeating the same type for consecutive arguments?\n\n(ctx context.Context, printerName, job string)",
+      "range": {
+        "startLine": 42,
+        "startChar": 46,
+        "endLine": 42,
+        "endChar": 76
+      },
+      "revId": "a5662aa25a6e9613839f2b78b177eebb4742e123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f335cd69_815316a3",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/ipp_printer_connect_timeout.go",
         "patchSetId": 3
@@ -13,6 +99,52 @@
       "writtenOn": "2019-08-09T22:44:56Z",
       "side": 1,
       "message": "how likely is this text to change over time?  Is it feasible to put the possible outputs in usbprinter and use a variable here instead?  That would make it easier to update later.",
+      "revId": "a5662aa25a6e9613839f2b78b177eebb4742e123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faf1c9a2_870b5ca4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ipp_printer_connect_timeout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-10T15:45:47Z",
+      "side": 1,
+      "message": "style: this case is often inlined to the if condition with using testexec.DumpLogOnError.\n\nif out, err :\u003d testexec.CommandContext(ctx, \"lpstat\", ...).Output(testexec.DumpLogOnError); err !\u003d nil {\n  return errors.Wrap(err, ... nice error message ...)\n} else if !strings.Contains(string(out), ...) {\n  return errors.New(...)\n}\n\nDitto for below.",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 82
+      },
+      "revId": "a5662aa25a6e9613839f2b78b177eebb4742e123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5945359_f600a513",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ipp_printer_connect_timeout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-10T15:45:47Z",
+      "side": 1,
+      "message": "nit/style: \"printer\" (starting from a lower case letter).\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "range": {
+        "startLine": 51,
+        "startChar": 21,
+        "endLine": 51,
+        "endChar": 28
+      },
       "revId": "a5662aa25a6e9613839f2b78b177eebb4742e123",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -64,6 +196,47 @@
       "writtenOn": "2019-08-09T22:44:56Z",
       "side": 1,
       "message": "is 20 seconds the minimum possible wait time, or something?  If so, call that out in a comment.  A straight sleep during a test is generally discouraged, so some justification would be clarifying",
+      "revId": "a5662aa25a6e9613839f2b78b177eebb4742e123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9479624_3fd6a780",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ipp_printer_connect_timeout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-10T15:45:47Z",
+      "side": 1,
+      "message": "What is this waiting for? If this is just waiting for print job timeout, could you just poll it?\nAlso, in total, this takes 40 seconds, which looks too long.\nCould you inject the much shorter timeout to the cups for this test (maybe 1 sec or so)?",
+      "parentUuid": "a1763faa_998c1b1e",
+      "revId": "a5662aa25a6e9613839f2b78b177eebb4742e123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "041d6c28_23b9847c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ipp_printer_connect_timeout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-10T15:45:47Z",
+      "side": 1,
+      "message": "Could you merge \"* time.Second\" part into timeout constant, too?",
+      "range": {
+        "startLine": 97,
+        "startChar": 34,
+        "endLine": 97,
+        "endChar": 55
+      },
       "revId": "a5662aa25a6e9613839f2b78b177eebb4742e123",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
