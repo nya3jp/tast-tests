@@ -19,7 +19,6 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/arc/cpuset"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -329,29 +328,6 @@ func getRootPID() (int, error) {
 	return -1, errors.New("root not found")
 }
 
-func testCPUSet(ctx context.Context, s *testing.State, a *arc.ARC) {
-	s.Log("Running testCPUSet")
-
-	SDKVer, err := arc.SDKVersion()
-	if err != nil {
-		s.Error("Failed to find SDKVersion: ", err)
-		return
-	}
-
-	CPUSpec := map[string]func(cpuset.CPUSet) bool{
-		"foreground":        cpuset.Online().Equal,
-		"top-app":           cpuset.Online().Equal,
-		"background":        cpuset.Online().StrictSuperset,
-		"system-background": cpuset.Online().StrictSuperset,
-	}
-	if SDKVer >= arc.SDKP {
-		// In ARC P or later, restricted is added.
-		CPUSpec["restricted"] = cpuset.Online().StrictSuperset
-	}
-
-	cpuset.CheckCPUSpec(s, CPUSpec)
-}
-
 func testADBD(ctx context.Context, s *testing.State, adbd []sysutil.MountInfo) {
 	s.Log("Running testADBD")
 
@@ -518,8 +494,6 @@ func RunTest(ctx context.Context, s *testing.State, a *arc.ARC) {
 	testNoARCSharedLeak(ctx, s, arc, joinMounts(global, adbd, sdcard, obb))
 	testDebugfsTracefs(ctx, s, arc)
 	testCgroup(ctx, s, arc)
-	// TODO(hidehiko): This is not a part of "mount" tests. Find a good place to move.
-	testCPUSet(ctx, s, a)
 	testADBD(ctx, s, adbd)
 	testSDCard(ctx, s, sdcard)
 	testMountPassthrough(ctx, s, mountPassthrough)
