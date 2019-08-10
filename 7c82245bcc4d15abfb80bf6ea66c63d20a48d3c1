@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "1970677a_05ee8fba",
+        "filename": "src/chromiumos/tast/local/vm/host_rpc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-10T15:08:10Z",
+      "side": 1,
+      "message": "Got it. Thank you for sharing the plan!",
+      "parentUuid": "61425f58_1c841fe4",
+      "revId": "7c82245bcc4d15abfb80bf6ea66c63d20a48d3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fa0d9d3b_f6acf1b0",
         "filename": "src/chromiumos/tast/local/vm/host_rpc.go",
         "patchSetId": 2

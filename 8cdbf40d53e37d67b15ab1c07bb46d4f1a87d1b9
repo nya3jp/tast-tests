@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a97ccf5_ce3d480e",
+        "filename": "src/chromiumos/tast/local/vm/host_rpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-10T15:08:10Z",
+      "side": 1,
+      "message": "\u003e Could you use the compound literal for the initialization?\n\nping?",
+      "revId": "8cdbf40d53e37d67b15ab1c07bb46d4f1a87d1b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8ec3c5c_6dd6861d",
+        "filename": "src/chromiumos/tast/local/vm/host_rpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-10T15:08:10Z",
+      "side": 1,
+      "message": "nit: You do not need to specify buffer, now.",
+      "revId": "8cdbf40d53e37d67b15ab1c07bb46d4f1a87d1b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1699cf38_95997abd",
+        "filename": "src/chromiumos/tast/local/vm/host_rpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-10T15:08:10Z",
+      "side": 1,
+      "message": "style: Could you use Wrapf?\n\nerrors.Wrapf(err, \"unable to start listening on vsock port: %d\", s.port)",
+      "range": {
+        "startLine": 46,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 66
+      },
+      "revId": "8cdbf40d53e37d67b15ab1c07bb46d4f1a87d1b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d86cc93e_e6ed8862",
+        "filename": "src/chromiumos/tast/local/vm/host_rpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-10T15:08:10Z",
+      "side": 1,
+      "message": "(Sorry. maybe my comment was not clear in the previous iteration).\nYou do not need to write the value.\n\nfunc (s ...) VmReady(...) ... {\n  close(s.rec)\n  return ...\n}\n\nThen, WaitReady() is unblocked.",
+      "revId": "8cdbf40d53e37d67b15ab1c07bb46d4f1a87d1b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
