@@ -8,11 +8,9 @@ package minicontainer
 
 import (
 	"context"
-	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"runtime"
 	"strings"
 
 	"chromiumos/tast/errors"
@@ -208,38 +206,30 @@ func testDevFiles(ctx context.Context, s *testing.State) {
 	}
 }
 
+// testCPUSet verifies that /dev/cpuset is properly set up.
 func testCPUSet(ctx context.Context, s *testing.State) {
 	s.Log("Running testCPUSet")
 
-	// Verify that /dev/cpuset is properly set up.
-	types := []string{"foreground", "background", "system-background", "top-app"}
-	if ver, err := arc.SDKVersion(); err != nil {
+	SDKVer, err := arc.SDKVersion()
+	if err != nil {
 		s.Error("Failed to find SDKVersion: ", err)
 		return
-	} else if ver == arc.SDKN {
-		types = append(types, "foreground/boost")
-	} else if ver >= arc.SDKP {
-		types = append(types, "restricted")
 	}
 
-	for _, t := range types {
-		path := fmt.Sprintf("/dev/cpuset/%s/cpus", t)
-		out, err := arc.BootstrapCommand(ctx, "/system/bin/cat", path).Output(testexec.DumpLogOnError)
-		if err != nil {
-			s.Errorf("Failed to read %s: %v", path, err)
-			continue
-		}
-		val := strings.TrimSpace(string(out))
-		cpusInUse, err := cpuset.Parse(ctx, val)
-		if err != nil {
-			s.Errorf("Failed to parse %s: %v", path, err)
-			continue
-		}
-		if len(cpusInUse) != runtime.NumCPU() {
-			s.Errorf("Unexpected CPU setting %q for %s: got %d CPUs, want %d CPUs", val, path,
-				len(cpusInUse), runtime.NumCPU())
-		}
+	CPUSpec := map[string]func(cpuset.CPUSet) bool{
+		"foreground":        cpuset.Online().Equal,
+		"top-app":           cpuset.Online().Equal,
+		"background":        cpuset.Online().Equal,
+		"system-background": cpuset.Online().Equal,
 	}
+	if SDKVer == arc.SDKN {
+		CPUSpec["forground/boost"] = cpuset.Online().Equal
+	} else if SDKVer >= arc.SDKP {
+		// In ARC P or later, restricted is added.
+		CPUSpec["restricted"] = cpuset.Online().Equal
+	}
+
+	cpuset.CheckCPUSpec(s, CPUSpec)
 }
 
 // setUp restarts "ui" job to make sure login screen, where ARC Mini container

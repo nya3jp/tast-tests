@@ -7,12 +7,10 @@ package containermount
 
 import (
 	"context"
-	"fmt"
 	"io/ioutil"
 	"path/filepath"
 	"reflect"
 	"regexp"
-	"runtime"
 	"sort"
 	"strconv"
 	"strings"
@@ -334,53 +332,24 @@ func getRootPID() (int, error) {
 func testCPUSet(ctx context.Context, s *testing.State, a *arc.ARC) {
 	s.Log("Running testCPUSet")
 
-	initPID, err := getRootPID()
+	SDKVer, err := arc.SDKVersion()
 	if err != nil {
-		s.Error("Failed to get root init process")
-		return
-	}
-
-	// Verify that /dev/cpuset is properly set up.
-	types := []string{"foreground", "background", "system-background", "top-app"}
-	if ver, err := arc.SDKVersion(); err != nil {
 		s.Error("Failed to find SDKVersion: ", err)
 		return
-	} else if ver >= arc.SDKP {
+	}
+
+	CPUSpec := map[string]func(cpuset.CPUSet) bool{
+		"foreground":        cpuset.Online().Equal,
+		"top-app":           cpuset.Online().Equal,
+		"background":        cpuset.Online().StrictSuperset,
+		"system-background": cpuset.Online().StrictSuperset,
+	}
+	if SDKVer >= arc.SDKP {
 		// In ARC P or later, restricted is added.
-		types = append(types, "restricted")
+		CPUSpec["restricted"] = cpuset.Online().StrictSuperset
 	}
 
-	for _, t := range types {
-		// cgroup pseudo file cannot be "adb pull"ed. Additionally, it is not
-		// accessible via adb shell user in P. Access by procfs instead.
-		path := fmt.Sprintf("/proc/%d/root/dev/cpuset/%s/cpus", initPID, t)
-		out, err := ioutil.ReadFile(path)
-		if err != nil {
-			s.Errorf("Failed to read %s: %v", path, err)
-			continue
-		}
-		val := strings.TrimSpace(string(out))
-		cpusInUse, err := cpuset.Parse(ctx, val)
-		if err != nil {
-			s.Errorf("Failed to parse %s: %v", path, err)
-			continue
-		}
-
-		if t == "foreground" || t == "top-app" {
-			// Even after full boot, these processes should be able
-			// to use all CPU cores.
-			if len(cpusInUse) != runtime.NumCPU() {
-				s.Errorf("Unexpected CPU setting %q for %s: got %d CPUs, want %d CPUs", val, path,
-					len(cpusInUse), runtime.NumCPU())
-			}
-		} else {
-			// Other processes should not.
-			if len(cpusInUse) == runtime.NumCPU() {
-				s.Errorf("Unexpected CPU setting %q for %s: should not be %d CPUs", val, path,
-					runtime.NumCPU())
-			}
-		}
-	}
+	cpuset.CheckCPUSpec(s, CPUSpec)
 }
 
 func testADBD(ctx context.Context, s *testing.State, adbd []sysutil.MountInfo) {
