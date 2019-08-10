@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f7bc688_5a9b8c2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-10T16:02:13Z",
+      "side": 1,
+      "message": "negative number for the color is not trivial. Could you comment what does this mean? ditt fo rbelow.",
+      "range": {
+        "startLine": 176,
+        "startChar": 31,
+        "endLine": 176,
+        "endChar": 42
+      },
+      "revId": "4da71f61a989bbff48d195777e1800bd900af17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "856788c4_2d108e5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-10T16:02:13Z",
+      "side": 1,
+      "message": "Looks debug message?",
+      "revId": "4da71f61a989bbff48d195777e1800bd900af17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50c631b9_20cdf850",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-10T16:02:13Z",
+      "side": 1,
+      "message": "This won\u0027t work. Could you verify for each?",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 166
+      },
+      "revId": "4da71f61a989bbff48d195777e1800bd900af17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38defbe6_d568cc15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-10T16:02:13Z",
+      "side": 1,
+      "message": "style: error message should not be capitalized.\ncf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting\n\nstyle: could you use \"got %s; want %s\" style for consistency?\nE.g.; \"unexpected font scale: got %s; want %s\".",
+      "revId": "4da71f61a989bbff48d195777e1800bd900af17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
