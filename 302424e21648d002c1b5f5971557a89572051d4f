@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5dfd84c1_48d36982",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-08-10T00:50:31Z",
+      "side": 1,
+      "message": "nit: delete this blank line?",
+      "revId": "302424e21648d002c1b5f5971557a89572051d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caeba626_d3969bd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-08-10T00:50:31Z",
+      "side": 1,
+      "message": "Can also use \"[% #x]\" here and drop the \"(hex)\" here and below.",
+      "range": {
+        "startLine": 79,
+        "startChar": 30,
+        "endLine": 79,
+        "endChar": 40
+      },
+      "revId": "302424e21648d002c1b5f5971557a89572051d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9d4bff1_96d965e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-08-10T00:50:31Z",
+      "side": 1,
+      "message": "Define this as a const somewhere so we don\u0027t have to have magic numbers on L92/L98/L99 (and it can show the intent so we don\u0027t need this comment either).",
+      "revId": "302424e21648d002c1b5f5971557a89572051d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7a2c74a_b491b8df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-08-10T00:50:31Z",
+      "side": 1,
+      "message": "Are we guaranteed to have a non-zero byte on success? If not, we should comment that this technically might flake on the off chance it does.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 72
+      },
+      "revId": "302424e21648d002c1b5f5971557a89572051d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac3f7c64_1b7ea4da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-08-10T00:50:31Z",
+      "side": 1,
+      "message": "Lotta magic numbers in here... can we get some explanation/comment of at least what the opcode-looking byte is? Otherwise it might be a pain for people looking at test failures to figure out what\u0027s going on here.",
+      "revId": "302424e21648d002c1b5f5971557a89572051d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eac1c57c_83dc2ce8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-08-10T00:50:31Z",
+      "side": 1,
+      "message": "why not:\n\nif writeCommand(f, p) {\n    readAndCheckResult(f, p)\n}",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 3
+      },
+      "revId": "302424e21648d002c1b5f5971557a89572051d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
