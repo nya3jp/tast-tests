@@ -24,7 +24,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SELinuxAuditSanity,
 		Desc:         "Checks SELinux audit works as intended",
-		Contacts:     []string{"fqj@chromium.org", "kroot@chromium.org", "chromeos-security@google.com"},
+		Contacts:     []string{"fqj@chromium.org", "jorgelo@chromium.org", "chromeos-security@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"selinux"},
 	})
