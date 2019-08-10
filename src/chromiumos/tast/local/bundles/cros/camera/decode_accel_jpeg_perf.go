@@ -58,9 +58,9 @@ func DecodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 		// Duration of the interval during which CPU usage will be measured.
 		measureDuration = 10 * time.Second
 		// GTest filter used to run SW JPEG decode tests.
-		swFilter = "JpegDecodeAcceleratorTest.PerfSW"
+		swFilter = "MjpegDecodeAcceleratorTest.PerfSW"
 		// GTest filter used to run HW JPEG decode tests.
-		hwFilter = "JpegDecodeAcceleratorTest.PerfJDA"
+		hwFilter = "MjpegDecodeAcceleratorTest.PerfJDA/DMABUF"
 		// Number of JPEG decodes, needs to be high enough to run for measurement duration.
 		perfJPEGDecodeTimes = 10000
 		// time reserved for cleanup.
