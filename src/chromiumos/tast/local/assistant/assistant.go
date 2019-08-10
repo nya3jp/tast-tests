@@ -8,8 +8,10 @@ package assistant
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
 )
 
 // QueryResponse contains a subset of the results returned from the Assistant server
@@ -67,4 +69,14 @@ func SendTextQuery(ctx context.Context, tconn *chrome.Conn, query string) (Query
 	var status QueryStatus
 	err := tconn.EvalPromise(ctx, expr, &status)
 	return status, err
+}
+
+// WaitForServiceReady checks the Assistant service readiness after enabled by waiting
+// for a simple query interaction being completed successfully. Before b/129896357 gets
+// resolved, it should be used to verify the service status before the real test starts.
+func WaitForServiceReady(ctx context.Context, tconn *chrome.Conn) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		_, err := SendTextQuery(ctx, tconn, "What's the time?")
+		return err
+	}, &testing.PollOptions{Timeout: 20 * time.Second})
 }
