@@ -22,9 +22,20 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// ExitOption describes how to clean up the child process upon function exit.
+type ExitOption int
+
+const (
+	// KillProcess option kills the child process when the function is done.
+	KillProcess ExitOption = iota
+	// WaitProcess option waits for the child process to finish.
+	WaitProcess
+)
+
 // MeasureProcessCPU starts a gtest process and measures CPU usage for the given duration.
-// After measuring the process is killed. The average usage over all CPU cores is returned as a percentage.
-func MeasureProcessCPU(ctx context.Context, duration time.Duration, t *gtest.GTest) (float64, error) {
+// The average usage over all CPU cores is returned as a percentage.
+func MeasureProcessCPU(ctx context.Context, duration time.Duration,
+	exitOption ExitOption, t *gtest.GTest) (float64, error) {
 	const (
 		stabilize   = 1 * time.Second // time to wait for CPU to stabilize after launching proc.
 		cleanupTime = 5 * time.Second // time reserved for cleanup after measuring.
@@ -36,15 +47,25 @@ func MeasureProcessCPU(ctx context.Context, duration time.Duration, t *gtest.GTe
 		return 0.0, errors.Wrap(err, "failed to run binary")
 	}
 
-	// Kill and clean up the process upon exiting the function.
+	// Clean up the process upon exiting the function.
 	defer func() {
-		if err := cmd.Kill(); err != nil {
-			testing.ContextLog(ctx, "Failed to kill process: ", err)
+		if exitOption == KillProcess {
+			if err := cmd.Kill(); err != nil {
+				testing.ContextLog(ctx, "Failed to kill process: ", err)
+			}
 		}
-		// After killing the process we still need to wait for all resources to get released.
+		// Wait for the process to finish. After killing the process we still need
+		// to wait for all resources to get released.
 		if err := cmd.Wait(); err != nil {
-			ws, ok := testexec.GetWaitStatus(err)
-			if !ok || !ws.Signaled() || ws.Signal() != syscall.SIGKILL {
+			if exitOption == KillProcess {
+				ws, ok := testexec.GetWaitStatus(err)
+				if ok && ws.Signaled() && ws.Signal() == syscall.SIGKILL {
+					// In KillProcess case, it is expected the process is terminated by SIGKILL, so ignore
+					// the error in the case.
+					err = nil
+				}
+			}
+			if err != nil {
 				testing.ContextLog(ctx, "Failed waiting for the command to exit: ", err)
 			}
 		}
