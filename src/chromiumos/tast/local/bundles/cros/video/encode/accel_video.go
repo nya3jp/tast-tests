@@ -165,7 +165,7 @@ func runAccelVideoTest(ctx context.Context, s *testing.State, mode testMode, opt
 			gtest.ExtraArgs(args...),
 			gtest.UID(int(sysutil.ChronosUID)))
 		if ba.measureCPU {
-			cpuUsage, err := cpu.MeasureProcessCPU(shortCtx, ba.measureDuration, t)
+			cpuUsage, err := cpu.MeasureProcessCPU(shortCtx, ba.measureDuration, cpu.KillProcess, t)
 			if err != nil {
 				s.Fatalf("Failed to run (measure CPU) %v: %v", exec, err)
 			}
@@ -262,7 +262,7 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, exe
 			return errors.New("pv should not be nil when measuring CPU usage")
 		}
 
-		cpuUsage, err := cpu.MeasureProcessCPU(ctx, ba.measureDuration, t)
+		cpuUsage, err := cpu.MeasureProcessCPU(ctx, ba.measureDuration, cpu.KillProcess, t)
 		if err != nil {
 			return errors.Wrapf(err, "failed to run (measure CPU) %v: %v", exec, err)
 		}
