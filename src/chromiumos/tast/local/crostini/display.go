@@ -7,16 +7,63 @@ package crostini
 import (
 	"context"
 	"fmt"
+	"image/color"
+	"image/png"
+	"os"
+	"path/filepath"
+	"strings"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/colorcmp"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
-// The Size object records sizes of various display-related objects (e.g. the screen resolution, a window's size).
+// The Size object records sizes of various display-related objects (e.g. the
+// screen resolution, a window's size).
 type Size struct {
 	W int `json:"width"`
 	H int `json:"height"`
+}
+
+// PollScreenshotDominantColor takes a screenshot and attempts to verify if it
+// mostly (>= 1/2) contains the expected color. Will retry for up to 10 seconds
+// if it fails. For logging purposes, the screenshot will be saved as
+// "screenshot_your_custom_tags_here.png" for each of the provided tags.
+func PollScreenshotDominantColor(ctx context.Context, s *testing.State, cr *chrome.Chrome, expectedColor color.Color, tags ...string) error {
+	screenshotName := strings.Join(append([]string{"screenshot"}, tags...), "_") + ".png"
+	path := filepath.Join(s.OutDir(), screenshotName)
+
+	// Largest differing color known to date, we will be changing this over time
+	// based on testing results.
+	const maxKnownColorDiff = 0x1
+
+	// Allow up to 10 seconds for the target screen to render.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
+			return err
+		}
+		f, err := os.Open(path)
+		if err != nil {
+			s.Fatalf("Failed opening the screenshot image %v: %v", path, err)
+		}
+		defer f.Close()
+		im, err := png.Decode(f)
+		if err != nil {
+			s.Fatalf("Failed decoding the screenshot image %v: %v", path, err)
+		}
+		color, ratio := colorcmp.DominantColor(im)
+		if ratio >= 0.5 && colorcmp.ColorsMatch(color, expectedColor, maxKnownColorDiff) {
+			return nil
+		}
+		return errors.Errorf("screenshot did not have matching dominant color, expected %v but got %v at ratio %0.2f",
+			colorcmp.ColorStr(expectedColor), colorcmp.ColorStr(color), ratio)
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return err
+	}
+	return nil
 }
 
 // PollWindowSize returns the the width and the height of the window in pixels
