@@ -97,7 +97,7 @@ func (m *Manager) FindMatchingService(ctx context.Context, props map[string]inte
 	}
 
 	for _, path := range managerProps["Services"].([]dbus.ObjectPath) {
-		serviceProps, err := getPropsForService(ctx, path)
+		serviceProps, err := GetPropsForService(ctx, path)
 		if err != nil {
 			return "", err
 		}
@@ -116,7 +116,7 @@ func (m *Manager) FindMatchingService(ctx context.Context, props map[string]inte
 	return "", errors.New("unable to find matching service")
 }
 
-func getPropsForService(ctx context.Context, path dbus.ObjectPath) (map[string]interface{}, error) {
+func GetPropsForService(ctx context.Context, path dbus.ObjectPath) (map[string]interface{}, error) {
 	_, obj, err := dbusutil.Connect(ctx, dbusService, path)
 	if err != nil {
 		return nil, err
@@ -227,7 +227,7 @@ func (m *Manager) ConnectToWifiNetwork(ctx context.Context, props map[string]int
 		if err != nil {
 			return errors.Wrap(err, "could not find matching service")
 		}
-		p, err = getPropsForService(ctx, path)
+		p, err = GetPropsForService(ctx, path)
 		if err != nil {
 			return errors.Wrap(err, "could not get properties for service")
 		}
@@ -258,7 +258,7 @@ func (m *Manager) DisconnectFromWifiNetwork(ctx context.Context, props map[strin
 		if err != nil {
 			return errors.Wrap(err, "could not find matching service")
 		}
-		p, err = getPropsForService(ctx, path)
+		p, err = GetPropsForService(ctx, path)
 		if err != nil {
 			return errors.Wrap(err, "could not get properties for service")
 		}
