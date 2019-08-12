@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "96012635_6dbbe6af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-08-12T17:52:16Z",
+      "side": 1,
+      "message": "created new change to resolve this. ptal.",
+      "parentUuid": "deb5e5a9_59c24804",
+      "range": {
+        "startLine": 78,
+        "startChar": 38,
+        "endLine": 78,
+        "endChar": 47
+      },
+      "revId": "cd78ad400fb1467c98368e3979bdce4083536c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9cc1a9b7_9315a57c",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
         "patchSetId": 1
