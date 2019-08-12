@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9d2e629_2cdc3c70",
+        "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-12T15:26:19Z",
+      "side": 1,
+      "message": "nit: could you use \"resolve\" for consistency?\n\ntast.promisify can make this a bit simpler.\n\n\"tast.promisify(chrome.autotestPrivate.launchApp)(%q)\"",
+      "range": {
+        "startLine": 45,
+        "startChar": 42,
+        "endLine": 45,
+        "endChar": 53
+      },
+      "revId": "9a72481c917a9be844625e749bf46ed7c9429719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5351d6a_0b261f8b",
+        "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-12T15:26:19Z",
+      "side": 1,
+      "message": "nit/optional: Go prefers shorter name in general. How about \"OpenDownloads\"?",
+      "range": {
+        "startLine": 56,
+        "startChar": 3,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "9a72481c917a9be844625e749bf46ed7c9429719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e3546aa_440bf290",
+        "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-12T15:26:19Z",
+      "side": 1,
+      "message": "Declaring the variable in the context looks confusing.\nSpecifically, this method is called multiple times, in second or later call the variable won\u0027t be declared but just reused.\n\nCould you just inline the JavaScript code? E.g.\n\ntast.promisify(chrome.automation.getDesktop)().then((root) \u003d\u003e root.find({attributes: {role: %q, name: %q}}))\n\nfor WaitForElement. Same for others.",
+      "range": {
+        "startLine": 103,
+        "startChar": 15,
+        "endLine": 103,
+        "endChar": 23
+      },
+      "revId": "9a72481c917a9be844625e749bf46ed7c9429719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
