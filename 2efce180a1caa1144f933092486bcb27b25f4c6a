@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9295c694_70045da2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-12T22:33:50Z",
+      "side": 1,
+      "message": "I do need to do this, at least for this attribute. https://paste.googleplex.com/6251285164589056\n\nIf Band 1 and band 2 were switched, I\u0027d set the flag to true, and then I\u0027d change it back to false afterwards because Band 1 doesn\u0027t have that section attribute. \n\nI guess supportHT2040 and supportHT40SGI should be fine with what you suggested, but I think it\u0027s also fine to keep the code structure consistent as well?",
+      "parentUuid": "ac2d8f30_9c20f41d",
+      "range": {
+        "startLine": 566,
+        "startChar": 4,
+        "endLine": 566,
+        "endChar": 25
+      },
+      "revId": "2efce180a1caa1144f933092486bcb27b25f4c6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "babf68e7_1144f124",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_caps.go",
         "patchSetId": 26
