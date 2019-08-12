@@ -58,7 +58,7 @@ func SetUpDevice(ctx context.Context) error {
 // This prevents a crash on startup due to synchronous profile creation and not
 // knowing whether to expect policy, see https://crbug.com/950812.
 func PrepareChromeForPolicyTesting(ctx context.Context, m *SessionManager) error {
-	_, err := m.EnableChromeTesting(ctx, true, []string{"--profile-requires-policy=true"}, []string{})
+	_, err := m.EnableChromeTesting(ctx, true, []string{"--profile-requires-policy=false"}, []string{})
 	return err
 }
 
