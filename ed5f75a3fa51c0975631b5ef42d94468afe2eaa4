@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8b81a25_33b178f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-08-12T17:06:53Z",
+      "side": 1,
+      "message": "In testing, I found that creating the startup listener would fail if this module had not been previously loaded by the wilco_dtc init script.",
+      "revId": "ed5f75a3fa51c0975631b5ef42d94468afe2eaa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
