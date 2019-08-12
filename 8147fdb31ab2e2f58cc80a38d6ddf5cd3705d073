@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07a25362_c3ad98bc",
+        "filename": "src/chromiumos/tast/local/rtc/rtc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-12T15:29:32Z",
+      "side": 1,
+      "message": "style: could you inline the cmd?\n\nreturn testexec.CommandContext(...).Run(testexec.DumpLogOnError)\n\nfor simplicity?",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 40
+      },
+      "revId": "8147fdb31ab2e2f58cc80a38d6ddf5cd3705d073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e75ec72c_d9f1e291",
+        "filename": "src/chromiumos/tast/local/rtc/rtc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-12T15:29:32Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "8147fdb31ab2e2f58cc80a38d6ddf5cd3705d073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
