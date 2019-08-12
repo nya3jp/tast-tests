@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7743fa7d_c4e8ed20",
+        "filename": "src/chromiumos/tast/local/wilco/wilco.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-12T16:37:30Z",
+      "side": 1,
+      "message": "I was trying to avoid duplicating the error message in the users, but OK",
+      "parentUuid": "bff8b591_95fdc5d1",
+      "range": {
+        "startLine": 32,
+        "startChar": 37,
+        "endLine": 32,
+        "endChar": 55
+      },
+      "revId": "274c61b99f818984006c603ca90d561e16113251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84181af6_f97a86c0",
         "filename": "src/chromiumos/tast/local/wilco/wilco.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6a5290c4_3fce1e04",
+        "filename": "src/chromiumos/tast/local/wilco/wilco.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-12T16:37:30Z",
+      "side": 1,
+      "message": "I saw that power.GetStatus gave the caller the responsibility of setting a timeout, so that\u0027s what I did here. However, in both the RTC and the power.GetStatus cases I agree with you that the utilities should encapsulate the timeout. I just wanted to follow existing code, but I will change power.GetStatus too. See below.",
+      "parentUuid": "84181af6_f97a86c0",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 1
+      },
+      "revId": "274c61b99f818984006c603ca90d561e16113251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c407424_7d630f87",
         "filename": "src/chromiumos/tast/local/wilco/wilco.go",
         "patchSetId": 2
@@ -62,6 +110,24 @@
       "revId": "274c61b99f818984006c603ca90d561e16113251",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f834231_5a27d0cf",
+        "filename": "src/chromiumos/tast/local/wilco/wilco.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-12T16:37:30Z",
+      "side": 1,
+      "message": "I saw this and thought the same thing, I just figured that there was a reason it was that way. I can fix this. It looks like there is only one case of someone using power.GetStatus (http://cs/search/?q\u003df:go$+%22GetStatus(%22\u0026m\u003d100\u0026sq\u003dpackage:(%5Echromeos_internal$%7C%5Echromeos_public$)\u0026type\u003dcs) so that should be easy.",
+      "parentUuid": "8c407424_7d630f87",
+      "revId": "274c61b99f818984006c603ca90d561e16113251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "bb5d1f57_880091ed",
+        "filename": "src/chromiumos/tast/local/wilco/wilco.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-12T16:37:30Z",
+      "side": 1,
+      "message": "I don\u0027t think I see what you mean, what is the impact of this being a pair? See below, I was just trying to avoid duplication.",
+      "parentUuid": "4e2a67ea_6db61154",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 1
+      },
+      "revId": "274c61b99f818984006c603ca90d561e16113251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b620d79_8a6124b0",
         "filename": "src/chromiumos/tast/local/wilco/wilco.go",
         "patchSetId": 2
@@ -99,6 +189,30 @@
       "writtenOn": "2019-08-12T15:49:12Z",
       "side": 1,
       "message": "With testing.State removal, these are just unnecessary. Could you inline to the callers?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 1
+      },
+      "revId": "274c61b99f818984006c603ca90d561e16113251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d99eb9d0_fc24284e",
+        "filename": "src/chromiumos/tast/local/wilco/wilco.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-12T16:37:30Z",
+      "side": 1,
+      "message": "I was trying to avoid duplicating this code in the 3 (and maybe more in future) places where this is used in the following power.Wilco* test CLs. See my main comment",
+      "parentUuid": "5b620d79_8a6124b0",
       "range": {
         "startLine": 84,
         "startChar": 0,
