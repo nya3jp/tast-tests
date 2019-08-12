@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4d0030e_9afee81e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cached_vpd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2019-08-12T23:59:27Z",
+      "side": 1,
+      "message": "You\u0027re comparing too many things in this line, which makes the error message line a bit awkward.",
+      "revId": "f5d162a40014a5a22d418e41a5cb00ec93e0c01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
