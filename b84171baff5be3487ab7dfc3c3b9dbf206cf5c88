@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a0609f4_e585cf8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/toolkit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1003129
+      },
+      "writtenOn": "2019-08-12T17:52:03Z",
+      "side": 1,
+      "message": "We should preinstall all of these deps into container test images to avoid dependencies on the network. Debian mirrors are pretty reliable now, but they can still flake out from time to time.\n\nhttps://chromium.googlesource.com/chromiumos/containers/cros-container-guest-tools/+/refs/heads/master/lxd/lxd_test_setup.sh",
+      "range": {
+        "startLine": 97,
+        "startChar": 27,
+        "endLine": 97,
+        "endChar": 61
+      },
+      "revId": "b84171baff5be3487ab7dfc3c3b9dbf206cf5c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
