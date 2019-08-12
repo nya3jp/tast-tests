@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/printer/gstopdf_golden_20190812.pdf",
+  "size": 70956,
+  "sha256sum": "ba273047c78da8161a44c301013a26180dfbbb099ae4ee059c19df7e8e0a349f"
+}
