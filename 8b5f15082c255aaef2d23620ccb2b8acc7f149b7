@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e697db99_d860f443",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_simple_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-08-12T18:31:17Z",
+      "side": 1,
+      "message": "testAssistantSimpleMathQuery",
+      "revId": "8b5f15082c255aaef2d23620ccb2b8acc7f149b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbfaead9_78b6c23a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_simple_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-08-12T18:31:17Z",
+      "side": 1,
+      "message": "Update the error log to be something like: \"Fallback string %v doesn\u0027t contain any two-digit numbers\".",
+      "revId": "8b5f15082c255aaef2d23620ccb2b8acc7f149b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
