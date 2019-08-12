@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "24672d7e_da18968a",
+        "filename": "src/chromiumos/tast/local/wilco/wilco.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-12T17:10:20Z",
+      "side": 1,
+      "message": "Done in https://crrev.com/c/1747034/4..5",
+      "parentUuid": "6a5290c4_3fce1e04",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 1
+      },
+      "revId": "274c61b99f818984006c603ca90d561e16113251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c407424_7d630f87",
         "filename": "src/chromiumos/tast/local/wilco/wilco.go",
         "patchSetId": 2
@@ -125,6 +149,24 @@
       "side": 1,
       "message": "I saw this and thought the same thing, I just figured that there was a reason it was that way. I can fix this. It looks like there is only one case of someone using power.GetStatus (http://cs/search/?q\u003df:go$+%22GetStatus(%22\u0026m\u003d100\u0026sq\u003dpackage:(%5Echromeos_internal$%7C%5Echromeos_public$)\u0026type\u003dcs) so that should be easy.",
       "parentUuid": "8c407424_7d630f87",
+      "revId": "274c61b99f818984006c603ca90d561e16113251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9c9bd6c_9b22b628",
+        "filename": "src/chromiumos/tast/local/wilco/wilco.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-12T17:10:20Z",
+      "side": 1,
+      "message": "Done in https://crrev.com/c/1749453/1",
+      "parentUuid": "2f834231_5a27d0cf",
       "revId": "274c61b99f818984006c603ca90d561e16113251",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
