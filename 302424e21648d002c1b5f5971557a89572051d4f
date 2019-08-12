@@ -201,6 +201,24 @@
     },
     {
       "key": {
+        "uuid": "1275914b_2a6fe210",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_telemetry.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-08-12T18:02:01Z",
+      "side": 1,
+      "message": "I would have defined the values used for the first byte as consts but this seems fine too.",
+      "parentUuid": "e8e44afe_a6e38046",
+      "revId": "302424e21648d002c1b5f5971557a89572051d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eac1c57c_83dc2ce8",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_telemetry.go",
         "patchSetId": 2
