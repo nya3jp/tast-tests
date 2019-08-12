@@ -1,0 +1,238 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14f43d9c_eaa8db09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-12T10:50:15Z",
+      "side": 1,
+      "message": "I left this function outside of Tast class as intended. This is a local helper function that not expected to be used in the *.go code.",
+      "revId": "47b87feed2daba1d93093c07ba9e2a4bd486cf2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71a54ca5_b7cf0a4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-12T10:50:15Z",
+      "side": 1,
+      "message": "selector",
+      "range": {
+        "startLine": 71,
+        "startChar": 21,
+        "endLine": 71,
+        "endChar": 31
+      },
+      "revId": "47b87feed2daba1d93093c07ba9e2a4bd486cf2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef8b2c42_e8150496",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-12T10:50:15Z",
+      "side": 1,
+      "message": "I think this function is not limited to button. How about change it to isVisible()?",
+      "range": {
+        "startLine": 74,
+        "startChar": 9,
+        "endLine": 74,
+        "endChar": 24
+      },
+      "revId": "47b87feed2daba1d93093c07ba9e2a4bd486cf2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0286eca1_81b96ca2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-12T10:50:15Z",
+      "side": 1,
+      "message": "I think this function is not limited to button. How about change it to click()?",
+      "range": {
+        "startLine": 80,
+        "startChar": 9,
+        "endLine": 80,
+        "endChar": 20
+      },
+      "revId": "47b87feed2daba1d93093c07ba9e2a4bd486cf2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa24f8d5_0662aedc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-12T10:50:15Z",
+      "side": 1,
+      "message": "selector",
+      "range": {
+        "startLine": 80,
+        "startChar": 21,
+        "endLine": 80,
+        "endChar": 31
+      },
+      "revId": "47b87feed2daba1d93093c07ba9e2a4bd486cf2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a21b4f14_a42be3d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-12T10:50:15Z",
+      "side": 1,
+      "message": "Should we add jsdoc here?",
+      "revId": "47b87feed2daba1d93093c07ba9e2a4bd486cf2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87d9ac46_4a5a55b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-12T10:50:15Z",
+      "side": 1,
+      "message": "Hmm, why we need this?",
+      "range": {
+        "startLine": 82,
+        "startChar": 51,
+        "endLine": 82,
+        "endChar": 63
+      },
+      "revId": "47b87feed2daba1d93093c07ba9e2a4bd486cf2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13136d1a_f255298a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-12T10:50:15Z",
+      "side": 1,
+      "message": "Should we add jsdoc here?",
+      "revId": "47b87feed2daba1d93093c07ba9e2a4bd486cf2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b5202cc_45bf4026",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-12T10:50:15Z",
+      "side": 1,
+      "message": "nit: use template literals here.\n\nhttp://go/js-style#features-strings-template-strings",
+      "revId": "47b87feed2daba1d93093c07ba9e2a4bd486cf2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26dbc848_d773e8b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-12T10:50:15Z",
+      "side": 1,
+      "message": "move this down after checking mojoFacing",
+      "revId": "47b87feed2daba1d93093c07ba9e2a4bd486cf2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d17ae06_a9febb15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-12T10:50:15Z",
+      "side": 1,
+      "message": "return \u0027user\u0027, same for other cases",
+      "revId": "47b87feed2daba1d93093c07ba9e2a4bd486cf2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d77264b_40116ad9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-12T10:50:15Z",
+      "side": 1,
+      "message": "I think it\u0027s unexpected. Let\u0027s throw an error here.",
+      "revId": "47b87feed2daba1d93093c07ba9e2a4bd486cf2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
