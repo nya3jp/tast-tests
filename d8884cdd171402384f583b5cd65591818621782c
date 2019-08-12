@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91e7e288_90b777da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-08-12T22:54:33Z",
+      "side": 1,
+      "message": "Generall we are supposed to concatenate 3 or more strings via sprintf:\n\n fmt.Sprintf(\"^%s$\", cmdlineRegex)\n\nbut in this case since there\u0027s only one string being substituted and the start-of-line/end-of-line bits are each only 1 character I\u0027m not sure this makes it more clear... nya@, do you have an opinion here?",
+      "range": {
+        "startLine": 98,
+        "startChar": 37,
+        "endLine": 98,
+        "endChar": 57
+      },
+      "revId": "d8884cdd171402384f583b5cd65591818621782c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
