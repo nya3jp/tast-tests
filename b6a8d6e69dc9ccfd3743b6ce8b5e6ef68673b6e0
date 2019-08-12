@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1af79baf_06d2c807",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/lib_jea.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-12T07:50:45Z",
+      "side": 1,
+      "message": "JEA\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 23,
+        "startChar": 11,
+        "endLine": 23,
+        "endChar": 14
+      },
+      "revId": "b6a8d6e69dc9ccfd3743b6ce8b5e6ef68673b6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec94e76b_6482783d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/lib_jea.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-12T07:50:45Z",
+      "side": 1,
+      "message": "Hmm it looks like there is no teardown after running gtest? Could we just use ctx?",
+      "revId": "b6a8d6e69dc9ccfd3743b6ce8b5e6ef68673b6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
