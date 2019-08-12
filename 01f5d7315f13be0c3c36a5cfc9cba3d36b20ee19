@@ -118,6 +118,30 @@
       "revId": "01f5d7315f13be0c3c36a5cfc9cba3d36b20ee19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88775035_9499c876",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2019-08-12T18:56:27Z",
+      "side": 1,
+      "message": "I wouldn\u0027t worry about making it have tighter timing like that because it *should* always be passing so the timeout really won\u0027t come into play unless it got broken.",
+      "parentUuid": "a7700368_65d4c15f",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 86
+      },
+      "revId": "01f5d7315f13be0c3c36a5cfc9cba3d36b20ee19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
