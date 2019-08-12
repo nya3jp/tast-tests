@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "247fdb93_99052436",
+        "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-12T18:19:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9d2e629_2cdc3c70",
+      "range": {
+        "startLine": 45,
+        "startChar": 42,
+        "endLine": 45,
+        "endChar": 53
+      },
+      "revId": "9a72481c917a9be844625e749bf46ed7c9429719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5351d6a_0b261f8b",
         "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
         "patchSetId": 11
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a91362ac_f72d4759",
+        "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-12T18:19:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5351d6a_0b261f8b",
+      "range": {
+        "startLine": 56,
+        "startChar": 3,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "9a72481c917a9be844625e749bf46ed7c9429719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e3546aa_440bf290",
         "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
         "patchSetId": 11
@@ -59,6 +107,30 @@
       "writtenOn": "2019-08-12T15:26:19Z",
       "side": 1,
       "message": "Declaring the variable in the context looks confusing.\nSpecifically, this method is called multiple times, in second or later call the variable won\u0027t be declared but just reused.\n\nCould you just inline the JavaScript code? E.g.\n\ntast.promisify(chrome.automation.getDesktop)().then((root) \u003d\u003e root.find({attributes: {role: %q, name: %q}}))\n\nfor WaitForElement. Same for others.",
+      "range": {
+        "startLine": 103,
+        "startChar": 15,
+        "endLine": 103,
+        "endChar": 23
+      },
+      "revId": "9a72481c917a9be844625e749bf46ed7c9429719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af78d7ac_ed0af677",
+        "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-12T18:19:44Z",
+      "side": 1,
+      "message": "Your solution would work for ClickElement, but would not work for WaitForElement. It would only work for WaitForElement if Conn.go is modified to support waiting repeatedly on a promise until its result is true. If the elemens that is being waited for does not exist yet, a null will be returned. We want to keep polling until either the timeout is hit, or the value is not null.\n\nWould repeatedly re-executing a promise be the preferred method?\n\nAlso, I can change this to \"var root \u003d null;...\" to ensure it is recreating root each time.",
+      "parentUuid": "8e3546aa_440bf290",
       "range": {
         "startLine": 103,
         "startChar": 15,
