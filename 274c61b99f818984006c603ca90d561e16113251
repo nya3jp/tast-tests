@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bff8b591_95fdc5d1",
+        "filename": "src/chromiumos/tast/local/wilco/wilco.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-12T15:49:12Z",
+      "side": 1,
+      "message": "Please do not take the testing.State.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\nInstead, you can report an error by return value.",
+      "range": {
+        "startLine": 32,
+        "startChar": 37,
+        "endLine": 32,
+        "endChar": 55
+      },
+      "revId": "274c61b99f818984006c603ca90d561e16113251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84181af6_f97a86c0",
+        "filename": "src/chromiumos/tast/local/wilco/wilco.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-12T15:49:12Z",
+      "side": 1,
+      "message": "Does RTC need variation of timeout?\nIf not, could you set the timeout in rtc.Write() instead? Ditto for below.",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 1
+      },
+      "revId": "274c61b99f818984006c603ca90d561e16113251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c407424_7d630f87",
+        "filename": "src/chromiumos/tast/local/wilco/wilco.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-12T15:49:12Z",
+      "side": 1,
+      "message": "In the case, should the timeout be a part of power.GetStatus, I think?",
+      "revId": "274c61b99f818984006c603ca90d561e16113251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e2a67ea_6db61154",
+        "filename": "src/chromiumos/tast/local/wilco/wilco.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-12T15:49:12Z",
+      "side": 1,
+      "message": "Because these looks like a pair, and there seems no strong reason to set commandTimeout.\nSo, I guess these can be simply inlined in the caller.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 1
+      },
+      "revId": "274c61b99f818984006c603ca90d561e16113251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b620d79_8a6124b0",
+        "filename": "src/chromiumos/tast/local/wilco/wilco.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-12T15:49:12Z",
+      "side": 1,
+      "message": "With testing.State removal, these are just unnecessary. Could you inline to the callers?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 1
+      },
+      "revId": "274c61b99f818984006c603ca90d561e16113251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
