@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f6a804b_5ab8227f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-08-12T21:51:33Z",
+      "side": 1,
+      "message": "since ht is already local, instead of using a temp variable, wouldn\u0027t setting\n\n ht, ok :\u003d ...\n\nand returning nil, err on !ok be equivalent?",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 376,
+        "endChar": 13
+      },
+      "revId": "99e78cc2948c51dac4c267995214e4afd77bc4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
