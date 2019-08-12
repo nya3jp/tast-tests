@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "de6fdfe3_3250bf40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-12T23:02:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "203f07fa_f34de7ed",
+      "revId": "9e6c98c069cfe54f0d7ecd581c2cf427e890987b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee79e05f_5609e84f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop.go",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "ad355924_956b22e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-12T23:02:38Z",
+      "side": 1,
+      "message": "I\u0027ll just say it\u0027s chrome.New that failed; that\u0027s enough info to debug.",
+      "parentUuid": "ee79e05f_5609e84f",
+      "range": {
+        "startLine": 61,
+        "startChar": 18,
+        "endLine": 61,
+        "endChar": 23
+      },
+      "revId": "9e6c98c069cfe54f0d7ecd581c2cf427e890987b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "136e5d12_ea0e438a",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop.go",
         "patchSetId": 2
@@ -56,6 +98,24 @@
       "revId": "9e6c98c069cfe54f0d7ecd581c2cf427e890987b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a664d349_7fe4dcb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-12T23:02:38Z",
+      "side": 1,
+      "message": "Does the comment explain it?",
+      "parentUuid": "136e5d12_ea0e438a",
+      "revId": "9e6c98c069cfe54f0d7ecd581c2cf427e890987b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "43822430_1d945244",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-12T23:02:38Z",
+      "side": 1,
+      "message": "Oops, yes. Thought I got rid of all these.",
+      "parentUuid": "1c54b5fa_78653a0a",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 76
+      },
+      "revId": "9e6c98c069cfe54f0d7ecd581c2cf427e890987b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a83c25a_447bced9",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
         "patchSetId": 2
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "df395e69_aea76ee4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chromecrash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-12T23:02:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a83c25a_447bced9",
+      "revId": "9e6c98c069cfe54f0d7ecd581c2cf427e890987b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f178dd3e_f351b64d",
         "filename": "src/chromiumos/tast/local/chrome/proc.go",
         "patchSetId": 2
@@ -113,6 +215,24 @@
       "revId": "9e6c98c069cfe54f0d7ecd581c2cf427e890987b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb1e8e1d_a1e2eb77",
+        "filename": "src/chromiumos/tast/local/chrome/proc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-12T23:02:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f178dd3e_f351b64d",
+      "revId": "9e6c98c069cfe54f0d7ecd581c2cf427e890987b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
