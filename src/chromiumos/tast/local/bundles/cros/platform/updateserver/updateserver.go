@@ -8,11 +8,18 @@ package updateserver
 import (
 	"bytes"
 	"context"
+	"encoding/base64"
+	"encoding/hex"
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
+	"path/filepath"
+	"strconv"
 	"text/template"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/lsbrelease"
 )
 
@@ -24,7 +31,7 @@ const responseTmpl = `<?xml version='1.0' encoding='UTF-8'?>
 		<app appid="{{.AppID}}_{{.DLCModuleID}}" status="ok">
 			<updatecheck status="ok">
 			<urls>
-				<url codebase="file:///usr/local/dlc/" />
+				<url codebase="file:///usr/local/dlc/{{.DLCModuleID}}/test-package/" />
 			</urls>
 			<manifest version="{{.RelVersion}}">
 				<actions>
@@ -32,18 +39,50 @@ const responseTmpl = `<?xml version='1.0' encoding='UTF-8'?>
 					<action ChromeOSVersion="{{.RelVersion}}" ChromeVersion="1.0.0.0" IsDeltaPayload="false" event="postinstall" deadline="now" />
 				</actions>
 				<packages>
-					<package fp="1.ceceb8c41d2493060f145046060de38735bd6f2a70b507ab3c3557c3fe62c142" hash_sha256="ceceb8c41d2493060f145046060de38735bd6f2a70b507ab3c3557c3fe62c142" name="dlcservice_test-dlc.payload" required="true" size="792" />
+					<package fp="1.{{.PayloadHash}}" hash_sha256="{{.PayloadHash}}" name="dlcservice_test-dlc.payload" required="true" size="{{.PayloadSize}}" />
 				</packages>
 			</manifest>
 			</updatecheck>
 		</app>
 	</response>`
 
+func getPayloadData(dlcModuleID string) (payloadHash string, payloadSize string, err error) {
+	payloadJSONFilePath := filepath.Join("/usr/local/dlc/", dlcModuleID, "/test-package/dlcservice_test-dlc.payload.json")
+	payloadJSONFileBytes, err := ioutil.ReadFile(payloadJSONFilePath)
+	if err != nil {
+		return "", "", errors.Wrap(err, "failure reading payload file")
+	}
+
+	var payloadJSON struct {
+		Sha256 string `json:"sha256_hex"`
+		Size   int    `json:"size"`
+	}
+	if err := json.Unmarshal(payloadJSONFileBytes, &payloadJSON); err != nil {
+		return "", "", errors.Wrap(err, "failure Unmarshal'ing payload JSON")
+	}
+
+	sha256Decoded, err := base64.StdEncoding.DecodeString(payloadJSON.Sha256)
+	if err != nil {
+		return "", "", errors.Wrap(err, "failure decoding payload sha256")
+	}
+	payloadHash = hex.EncodeToString(sha256Decoded)
+	payloadSize = strconv.Itoa(payloadJSON.Size)
+
+	return payloadHash, payloadSize, nil
+}
+
 // New returns a new httptest.Server that acts like an update server.
 // The server is already started, but the caller must call its Close
 // method to shut it down.
-// |dlcModuleID| is used to construct appID of the DLC module.
+// dlcModuleID is used to construct appID of the DLC module and should only
+// be test{1..2}-dlc as can be referenced in test-dlc ebuild.
 func New(ctx context.Context, dlcModuleID string) (*httptest.Server, error) {
+	// Loads payload data: hash, size.
+	payloadHash, payloadSize, err := getPayloadData(dlcModuleID)
+	if err != nil {
+		return nil, err
+	}
+
 	// Loads response parameters.
 	lsb, err := lsbrelease.Load()
 	if err != nil {
@@ -53,10 +92,14 @@ func New(ctx context.Context, dlcModuleID string) (*httptest.Server, error) {
 		AppID       string
 		RelVersion  string
 		DLCModuleID string
+		PayloadHash string
+		PayloadSize string
 	}{
 		lsb[lsbrelease.ReleaseAppID],
 		lsb[lsbrelease.Version],
 		dlcModuleID,
+		payloadHash,
+		payloadSize,
 	}
 
 	// Constructs response.
