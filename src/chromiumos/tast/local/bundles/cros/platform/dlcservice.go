@@ -31,7 +31,7 @@ func init() {
 
 func DLCService(ctx context.Context, s *testing.State) {
 	const (
-		dlcModuleID     = "test-dlc"
+		dlcModuleID     = "test1-dlc"
 		dlcserviceJob   = "dlcservice"
 		updateEngineJob = "update-engine"
 	)
