@@ -22,6 +22,30 @@
       "revId": "99e78cc2948c51dac4c267995214e4afd77bc4f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97f94699_f9b6198a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-12T22:11:09Z",
+      "side": 1,
+      "message": "Ack. It\u0027s not the same because vars are only defined in the scope that they are declared in. If I create a new ht with a definition (:\u003d), then that ht is visible only to the scope of the if else (these are separately scoped in golang). If I don\u0027t use a declaration, I could leverage ht from the parent context, but I\u0027d also have to declare \"ok\" outside of that context as well. If I did ht, ok :\u003d ..., I would get a variable is not used error.",
+      "parentUuid": "5f6a804b_5ab8227f",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 376,
+        "endChar": 13
+      },
+      "revId": "99e78cc2948c51dac4c267995214e4afd77bc4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
