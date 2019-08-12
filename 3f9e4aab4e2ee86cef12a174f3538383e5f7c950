@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10e4be41_f5627b6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-08-12T03:30:14Z",
+      "side": 1,
+      "message": "use cmd.Output(testexec.DumpLogOnError) and remove cmd.DumpLog(ctx) from error block",
+      "range": {
+        "startLine": 56,
+        "startChar": 12,
+        "endLine": 56,
+        "endChar": 25
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8c6a5d4_39f23be0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-08-12T03:30:14Z",
+      "side": 1,
+      "message": "I think it is better to define these expressions into variable :)",
+      "range": {
+        "startLine": 106,
+        "startChar": 35,
+        "endLine": 106,
+        "endChar": 53
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2a76fa7_35e75321",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1336055
+      },
+      "writtenOn": "2019-08-12T03:30:14Z",
+      "side": 1,
+      "message": "Why cannot we check the eMMC failing exp in the above \u0027for loop\u0027? As I am not sure about the functionality, just seeking clarification :)",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 161,
+        "endChar": 2
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
