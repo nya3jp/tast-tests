@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fcd17d4_06221b5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/wilco_advanced_charging.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T03:35:37Z",
+      "side": 1,
+      "message": "IIUC this is coupled with wilco.WriteECRTC(ctx, s, testingTime), am I right? If so how about moving it downwards so that it\u0027s called before wilco.StartSyncRTCJob?\n\n // Set the RTC time to a consistent dummy time.\n wilco.WriteECRTC(ctx, s, testingTime)\n defer func() {\n   wilco.WriteECRTC(ctx, s, time.Now())\n }()",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 4
+      },
+      "revId": "b6f604c7c9bb39e126fd87de279cbe4c1928473c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
