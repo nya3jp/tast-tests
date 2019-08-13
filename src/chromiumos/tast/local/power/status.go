@@ -9,6 +9,7 @@ import (
 	"context"
 	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
@@ -37,6 +38,8 @@ type Status struct {
 
 // GetStatus returns current power supply information.
 func GetStatus(ctx context.Context) (*Status, error) {
+	ctx, cancel := context.WithTimeout(ctx, 3*time.Second)
+	defer cancel()
 	cmd := testexec.CommandContext(ctx, "dump_power_status")
 	b, err := cmd.Output()
 	if err != nil {
