@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "69f341c0_d6ff565e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-08-13T05:01:32Z",
+      "side": 1,
+      "message": "i see, thanks for comment!",
+      "parentUuid": "a9ff8006_abb41d18",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fc88b7e_8df6b8d5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 4
@@ -187,6 +211,30 @@
       "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66268b8a_dd94bc32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-08-13T05:01:32Z",
+      "side": 1,
+      "message": "thanks for explanation!",
+      "parentUuid": "e637bf98_3f150a5d",
+      "range": {
+        "startLine": 21,
+        "startChar": 127,
+        "endLine": 21,
+        "endChar": 130
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -331,6 +379,30 @@
     },
     {
       "key": {
+        "uuid": "47bb8487_12c56bf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-08-13T05:01:32Z",
+      "side": 1,
+      "message": "I see thanks, although I\u0027m not sure whether tast style uses named return value or not ... \n(it seems some code in codesearch does not use this) \nI\u0027ll defer to someone else.",
+      "parentUuid": "fe747b2d_6280186a",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 6
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "900cddad_7b76bf56",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 4
@@ -460,6 +532,30 @@
       "side": 1,
       "message": "Because we can expect that \u0027diff\u0027 can be small (e.g. only a few role or name), I\u0027ll dump the diff in the error message.",
       "parentUuid": "d4f1f5fa_0d1d6e21",
+      "range": {
+        "startLine": 167,
+        "startChar": 2,
+        "endLine": 167,
+        "endChar": 70
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db2d92e2_b142ab37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-08-13T05:01:32Z",
+      "side": 1,
+      "message": "thanks!",
+      "parentUuid": "598cfbab_4d74e6de",
       "range": {
         "startLine": 167,
         "startChar": 2,

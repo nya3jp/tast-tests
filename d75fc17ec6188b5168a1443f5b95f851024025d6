@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fcd25d5f_e344db75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-08-13T05:01:32Z",
+      "side": 1,
+      "message": "I think you need to add a comment:\n// getExpectedTree \u003cexplanation of function\u003e\n\nhm the linter should also catch this ...",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 20
+      },
+      "revId": "d75fc17ec6188b5168a1443f5b95f851024025d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11b2b993_9618ffb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-08-13T05:01:32Z",
+      "side": 1,
+      "message": "nit: probably this line should go above.",
+      "range": {
+        "startLine": 185,
+        "startChar": 55,
+        "endLine": 186,
+        "endChar": 70
+      },
+      "revId": "d75fc17ec6188b5168a1443f5b95f851024025d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
