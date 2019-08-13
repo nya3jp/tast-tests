@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1fd5ce8_a4e00124",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-13T16:14:18Z",
+      "side": 1,
+      "message": "Could you return time.Duration?",
+      "range": {
+        "startLine": 137,
+        "startChar": 51,
+        "endLine": 137,
+        "endChar": 58
+      },
+      "revId": "59244c1a3d73ddc62618a149f73acd58de636350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "968d66ea_209dfaa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-13T16:14:18Z",
+      "side": 1,
+      "message": "Is it guarantee that test runs longer than measureDuration?\nCould you comment \"how\" to avoid regression?",
+      "range": {
+        "startLine": 155,
+        "startChar": 58,
+        "endLine": 155,
+        "endChar": 73
+      },
+      "revId": "59244c1a3d73ddc62618a149f73acd58de636350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcd8f80c_db9da227",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-13T16:14:18Z",
+      "side": 1,
+      "message": "Instead of forking, could you migrated the feature to wait for the test completion in cpu.MeasureProcessCPU?",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 0
+      },
+      "revId": "59244c1a3d73ddc62618a149f73acd58de636350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69d20fa3_517993e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-13T16:14:18Z",
+      "side": 1,
+      "message": "to be type-safe, could you return time.Duration instead?",
+      "range": {
+        "startLine": 190,
+        "startChar": 52,
+        "endLine": 190,
+        "endChar": 59
+      },
+      "revId": "59244c1a3d73ddc62618a149f73acd58de636350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1be10413_4ec0adbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-13T16:14:18Z",
+      "side": 1,
+      "message": "optional: I\u0027d recommend \\d+\\.\\d+ if both integer part and fraction part appear.",
+      "range": {
+        "startLine": 199,
+        "startChar": 40,
+        "endLine": 199,
+        "endChar": 46
+      },
+      "revId": "59244c1a3d73ddc62618a149f73acd58de636350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fd02d8c_3518b415",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-13T16:14:18Z",
+      "side": 1,
+      "message": "nit: if match is nil, len(match) should be 0, so you can drop \"match \u003d\u003d nil\"",
+      "range": {
+        "startLine": 203,
+        "startChar": 5,
+        "endLine": 203,
+        "endChar": 36
+      },
+      "revId": "59244c1a3d73ddc62618a149f73acd58de636350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
