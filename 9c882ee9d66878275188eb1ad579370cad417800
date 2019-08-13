@@ -140,6 +140,29 @@
     },
     {
       "key": {
+        "uuid": "a8272fd5_fbaec9ed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T04:08:51Z",
+      "side": 1,
+      "message": "Actually doing this is problematic at this moment. Crash dumps are collected after all local/remote tests are done, so when some executables crash in local tests, this will delete those crash dumps and make it harder to debug.\n\nInstead, would you mind checking for \"new\" crash dumps after causing kernel crash?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "9c882ee9d66878275188eb1ad579370cad417800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "942091bb_9986f6d4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
         "patchSetId": 4
