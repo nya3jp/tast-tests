@@ -69,6 +69,30 @@
       "revId": "f2f55e7936ca8d342fe84066a76aabac8da2f8b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2acac51_3b8d2516",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_resume.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-13T20:24:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42e35aff_8b708057",
+      "range": {
+        "startLine": 57,
+        "startChar": 41,
+        "endLine": 57,
+        "endChar": 49
+      },
+      "revId": "f2f55e7936ca8d342fe84066a76aabac8da2f8b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
