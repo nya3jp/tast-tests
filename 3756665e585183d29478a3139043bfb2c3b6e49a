@@ -16,6 +16,24 @@
       "revId": "3756665e585183d29478a3139043bfb2c3b6e49a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86afc4c2_dd57d190",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_vd_perf_vp8_1080p_60fps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2019-08-13T05:01:28Z",
+      "side": 1,
+      "message": "Cool! Then we could reduce the file number a lot.",
+      "parentUuid": "90c13128_3dc54d21",
+      "revId": "3756665e585183d29478a3139043bfb2c3b6e49a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
