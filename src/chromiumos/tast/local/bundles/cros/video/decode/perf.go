@@ -70,7 +70,7 @@ func parseCappedPerfMetrics(metricsPath string, p *perf.Values) error {
 	defer f.Close()
 
 	var metrics struct {
-		DroppedFrameRate            float64
+		DroppedFramePercentage      float64
 		FrameDecodeTimePercentile50 float64
 	}
 
@@ -80,10 +80,10 @@ func parseCappedPerfMetrics(metricsPath string, p *perf.Values) error {
 
 	// TODO(dstaessens@): Remove "tast_" prefix after removing video_VDAPerf in autotest.
 	p.Set(perf.Metric{
-		Name:      "tast_frame_drop_rate",
+		Name:      "tast_frame_drop_percentage",
 		Unit:      "percent",
 		Direction: perf.SmallerIsBetter,
-	}, metrics.DroppedFrameRate)
+	}, metrics.DroppedFramePercentage)
 	p.Set(perf.Metric{
 		Name:      "tast_decode_time.percentile_0.50",
 		Unit:      "milliseconds",
