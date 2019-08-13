@@ -16,6 +16,24 @@
       "revId": "e23d61afabce0b786ac7e094dde1f8d8398fd1ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "141688a7_140d311b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/lib_jea.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2019-08-13T03:30:55Z",
+      "side": 1,
+      "message": "Hmm, I haven\u0027t tested on v1 device. Could you tell me why does this only work on v3? Is there any limitation on v1 to use JEA?",
+      "parentUuid": "949a7e52_dee6dc33",
+      "revId": "e23d61afabce0b786ac7e094dde1f8d8398fd1ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
