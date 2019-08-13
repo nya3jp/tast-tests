@@ -34,6 +34,24 @@
       "revId": "e23d61afabce0b786ac7e094dde1f8d8398fd1ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1a648d4_5e6174d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/lib_jea.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-13T03:40:39Z",
+      "side": 1,
+      "message": "The JEA mojo remote is obtained from dispatcher through CameraMojoChannelManager, and the dispatcher only runs in v3 stack iirc.",
+      "parentUuid": "141688a7_140d311b",
+      "revId": "e23d61afabce0b786ac7e094dde1f8d8398fd1ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
