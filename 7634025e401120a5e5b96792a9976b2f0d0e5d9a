@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7830addc_f52052fa",
+        "filename": "src/chromiumos/tast/local/power/status.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T00:55:35Z",
+      "side": 1,
+      "message": "I\u0027d put the constant inside the GetStatus function. You can define constant inside the function.\n(If you keep it here, since this is global inside the power package, please use more specific name.)",
+      "range": {
+        "startLine": 18,
+        "startChar": 6,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "7634025e401120a5e5b96792a9976b2f0d0e5d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
