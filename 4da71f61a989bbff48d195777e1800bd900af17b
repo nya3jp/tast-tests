@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "086c445d_aa092dc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-13T08:20:13Z",
+      "side": 1,
+      "message": "Sorry for my not-enough explanation.\nAll errors but last are ignored. All of them should be handled (as you did in the latest PS).",
+      "parentUuid": "6c1e9d06_fd62276f",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 166
+      },
+      "revId": "4da71f61a989bbff48d195777e1800bd900af17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38defbe6_d568cc15",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
         "patchSetId": 1
