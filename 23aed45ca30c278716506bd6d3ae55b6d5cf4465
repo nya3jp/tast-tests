@@ -22,6 +22,30 @@
       "revId": "23aed45ca30c278716506bd6d3ae55b6d5cf4465",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49e266a5_0f056906",
+        "filename": "src/chromiumos/tast/local/syslog/watcher.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-13T18:02:24Z",
+      "side": 1,
+      "message": "But that will also be inconsistent.\n\nConsider the case that a line contains \"Target something else Target\". The logging program writes \"Target something\" and then we come in and look for Target, and then the logging program finishes writing \" else Target\". Now we\u0027ve returned true twice for the same line. If I want to make that case consistent, I need a bunch of extra logic that says something like \"If my last read didn\u0027t end in a newline, and I found the target text, then discard everything until I get a newline.\" to make that consistent. \n\nI think this is consistent -- now, \"Target something else Target\" will always return true twice.\n\nThere\u0027s no way we can remove w.partialRead completely; we\u0027re always going to have the race condition where the logging program has written \"Tar\" but not \"get\" at the moment we read. \n\n(And side note, I never said that w.partialRead doesn\u0027t contain a newline. I just said that it has text when the previous read -- the previous scan for the target text -- didn\u0027t make it to the end of the current line. But if have an idea for a better doc comment, let me know.)",
+      "parentUuid": "0021576d_fec79676",
+      "range": {
+        "startLine": 99,
+        "startChar": 12,
+        "endLine": 99,
+        "endChar": 25
+      },
+      "revId": "23aed45ca30c278716506bd6d3ae55b6d5cf4465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
