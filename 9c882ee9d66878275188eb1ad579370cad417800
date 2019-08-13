@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f06a60d_40e86e2e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T04:05:29Z",
+      "side": 1,
+      "message": "This constant is used only within KernelCrash, mind moving inside it? Note that test main files can\u0027t refer symbols in other test main files.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#scoping-and-shared-code",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 1
+      },
+      "revId": "9c882ee9d66878275188eb1ad579370cad417800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d27ec6b3_1f75ea79",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T04:05:29Z",
+      "side": 1,
+      "message": "huge nit: Would you mind formatting this as:\n\n Contacts: []string{\"...\", \"...\"},\n\nor\n\n Contacts: []string{\n   \"...\",\n   \"...\",\n },\n\nThere\u0027s no official style guide of formatting literals, but the current formatting is something I rarely see...",
+      "range": {
+        "startLine": 24,
+        "startChar": 12,
+        "endLine": 25,
+        "endChar": 43
+      },
+      "revId": "9c882ee9d66878275188eb1ad579370cad417800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f7fbd6b_1f31128a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T04:05:29Z",
+      "side": 1,
+      "message": "nit: \"globs\" to make it clear they are globs, not exact file paths?",
+      "range": {
+        "startLine": 31,
+        "startChar": 70,
+        "endLine": 31,
+        "endChar": 75
+      },
+      "revId": "9c882ee9d66878275188eb1ad579370cad417800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39e801d3_8ae993cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T04:05:29Z",
+      "side": 1,
+      "message": "Rather than err2, I recommend naming the longer-scoped error variable differently, e.g.\n\n var retErr error\n for ... {\n   if out, err :\u003d ...",
+      "range": {
+        "startLine": 35,
+        "startChar": 11,
+        "endLine": 35,
+        "endChar": 15
+      },
+      "revId": "9c882ee9d66878275188eb1ad579370cad417800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4e0b4bb_3c405f95",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T04:05:29Z",
+      "side": 1,
+      "message": "Please avoid multiline error message for readability of test failure messages.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting\n\nIn this case I think we can just list up the globs which did not match, e.g.\n\n \"/foo/bar/baz.*, /foo/bar/hoge.* do not exist\"",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 38
+      },
+      "revId": "9c882ee9d66878275188eb1ad579370cad417800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46413a9a_8b38eaa6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T04:05:29Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 44,
+        "startChar": 24,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "9c882ee9d66878275188eb1ad579370cad417800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "942091bb_9986f6d4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T04:05:29Z",
+      "side": 1,
+      "message": "nit: const timeout \u003d ...",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 28
+      },
+      "revId": "9c882ee9d66878275188eb1ad579370cad417800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d07b653_0d0fd461",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T04:05:29Z",
+      "side": 1,
+      "message": "Please use filepath.Join instead to join paths.",
+      "range": {
+        "startLine": 90,
+        "startChar": 19,
+        "endLine": 90,
+        "endChar": 59
+      },
+      "revId": "9c882ee9d66878275188eb1ad579370cad417800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a574774_d2bbbd90",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T04:05:29Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 0
+      },
+      "revId": "9c882ee9d66878275188eb1ad579370cad417800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
