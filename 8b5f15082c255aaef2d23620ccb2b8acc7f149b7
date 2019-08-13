@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b60be1d4_48ee5eb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_simple_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2019-08-13T00:15:27Z",
+      "side": 1,
+      "message": "no need for this now, it\u0027s default on.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 84
+      },
+      "revId": "8b5f15082c255aaef2d23620ccb2b8acc7f149b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e697db99_d860f443",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_simple_queries.go",
         "patchSetId": 2
@@ -19,6 +42,29 @@
     },
     {
       "key": {
+        "uuid": "2b9edb80_be1704d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_simple_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2019-08-13T00:15:27Z",
+      "side": 1,
+      "message": "update",
+      "range": {
+        "startLine": 58,
+        "startChar": 35,
+        "endLine": 58,
+        "endChar": 41
+      },
+      "revId": "8b5f15082c255aaef2d23620ccb2b8acc7f149b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bbfaead9_78b6c23a",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_simple_queries.go",
         "patchSetId": 2
@@ -30,6 +76,52 @@
       "writtenOn": "2019-08-12T18:31:17Z",
       "side": 1,
       "message": "Update the error log to be something like: \"Fallback string %v doesn\u0027t contain any two-digit numbers\".",
+      "revId": "8b5f15082c255aaef2d23620ccb2b8acc7f149b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34631f81_93ad33ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_time_query.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2019-08-13T00:15:27Z",
+      "side": 1,
+      "message": "no need",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 84
+      },
+      "revId": "8b5f15082c255aaef2d23620ccb2b8acc7f149b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f94ed02c_196f3590",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_volume_queries.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2019-08-13T00:15:27Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 84
+      },
       "revId": "8b5f15082c255aaef2d23620ccb2b8acc7f149b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
