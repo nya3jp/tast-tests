@@ -34,6 +34,24 @@
       "revId": "3756665e585183d29478a3139043bfb2c3b6e49a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f7d0b56_74c0057c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_vd_perf_vp8_1080p_60fps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-13T05:37:31Z",
+      "side": 1,
+      "message": "That\u0027s great news! A lot of our tests are small variations of the same tests using different video files!\n\nI\u0027m almost done adding new tests so I suggest first finishing adding tests in separate files. Afterwards I\u0027ll look into combining tests. I created b/139327919 to track this effort.",
+      "parentUuid": "86afc4c2_dd57d190",
+      "revId": "3756665e585183d29478a3139043bfb2c3b6e49a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
