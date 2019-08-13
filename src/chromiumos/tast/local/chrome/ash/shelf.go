@@ -8,9 +8,11 @@ package ash
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
 )
 
 // ShelfBehavior represents the different Chrome OS shelf behaviors.
@@ -122,4 +124,49 @@ func GetShelfAlignment(ctx context.Context, c *chrome.Conn, displayID string) (S
 		return ShelfAlignmentInvalid, errors.Errorf("invalid shelf alignment %q", a)
 	}
 	return a, nil
+}
+
+// ShelfItem corresponds to the "ShelfItem" defined in autotest_private.idl.
+type ShelfItem struct {
+	AppID           string `json:"appId"`
+	LaunchID        string `json:"launchId"`
+	Title           string `json:"title"`
+	Type            string `json:"type"`
+	Status          string `json:"status"`
+	ShowsToolTip    bool   `json:"showsTooltip"`
+	PinnedByPolicy  bool   `json:"pinnedByPolicy"`
+	HasNotification bool   `json:"hasNotification"`
+}
+
+// ShelfItems returns the list of apps in the shelf.
+func ShelfItems(ctx context.Context, c *chrome.Conn) ([]*ShelfItem, error) {
+	var s []*ShelfItem
+	shelfQuery := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.getShelfItems)()")
+	if err := c.EvalPromise(ctx, shelfQuery, &s); err != nil {
+		return nil, errors.Wrap(err, "failed to call getShelfItems")
+	}
+	return s, nil
+}
+
+// AppShown checks if an app specified by appID is shown in the shelf.
+func AppShown(ctx context.Context, c *chrome.Conn, appID string) (bool, error) {
+	var appShown bool
+	shownQuery := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.isAppShown)(%q)", appID)
+	if err := c.EvalPromise(ctx, shownQuery, &appShown); err != nil {
+		errors.Errorf("Running autotestPrivate.isAppShown failed for %v", appID)
+		return false, err
+	}
+	return appShown, nil
+}
+
+// WaitForApp waits for the app specifed by appID to appear in the shelf.
+func WaitForApp(ctx context.Context, c *chrome.Conn, appID string) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if visible, err := AppShown(ctx, c, appID); err != nil {
+			return testing.PollBreak(err)
+		} else if !visible {
+			return errors.New("app is not shown yet")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: time.Minute})
 }
