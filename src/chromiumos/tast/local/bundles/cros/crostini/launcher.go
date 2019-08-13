@@ -14,8 +14,10 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/ui/apps"
 	"chromiumos/tast/testing"
 )
 
@@ -148,7 +150,7 @@ func launchAppAndMeasureWindowSize(ctx context.Context, s *testing.State, tconn 
 		return crostini.Size{}, err
 	}
 
-	if err := launchApp(ctx, tconn, appID); err != nil {
+	if err := apps.LaunchApp(ctx, tconn, appID); err != nil {
 		return crostini.Size{}, err
 	}
 
@@ -158,7 +160,7 @@ func launchAppAndMeasureWindowSize(ctx context.Context, s *testing.State, tconn 
 	}
 	s.Log("Window size is ", sz)
 
-	if visible, err := isAppShown(ctx, tconn, appID); err != nil {
+	if visible, err := ash.AppShown(ctx, tconn, appID); err != nil {
 		return crostini.Size{}, err
 	} else if !visible {
 		return crostini.Size{}, errors.New("App was not visible in shelf after opening")
@@ -171,7 +173,7 @@ func launchAppAndMeasureWindowSize(ctx context.Context, s *testing.State, tconn 
 
 	// This may not happen instantaneously, so poll for it.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if visible, err := isAppShown(ctx, tconn, appID); err != nil {
+		if visible, err := ash.AppShown(ctx, tconn, appID); err != nil {
 			return err
 		} else if visible {
 			return errors.New("app was visible in shelf after closing")
@@ -214,24 +216,7 @@ func waitForIcon(ctx context.Context, ownerID, appID string, expectation iconExp
 	}, &testing.PollOptions{Timeout: 20 * time.Second})
 }
 
-// launchApp launches the specified application via an autotest API call.
-func launchApp(ctx context.Context, tconn *chrome.Conn, appID string) error {
-	return tconn.EvalPromise(ctx, fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.launchApp)('%v')`, appID), nil)
-}
-
 // setAppScaled sets the specified application to be scaled or not via an autotest API call.
 func setAppScaled(ctx context.Context, tconn *chrome.Conn, appID string, scaled bool) error {
 	return tconn.EvalPromise(ctx, fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.setCrostiniAppScaled)('%v', %v)`, appID, scaled), nil)
-}
-
-// isAppShown makes an autotest API call to determine if the specified
-// application has a shelf icon that is in the running state and returns true
-// if so, false otherwise.
-func isAppShown(ctx context.Context, tconn *chrome.Conn, appID string) (bool, error) {
-	var appShown bool
-	expr := fmt.Sprintf(`tast.promisify(chrome.autotestPrivate.isAppShown)('%v')`, appID)
-	if err := tconn.EvalPromise(ctx, expr, &appShown); err != nil {
-		return false, err
-	}
-	return appShown, nil
 }
