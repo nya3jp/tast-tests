@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d88a1290_fe076636",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/pci_rescan.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-13T20:22:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80477631_6965a22f",
+      "range": {
+        "startLine": 24,
+        "startChar": 16,
+        "endLine": 24,
+        "endChar": 25
+      },
+      "revId": "5a56ef335a62d86faafbac491a11eedee3850897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b6784ba_f875aef3",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/pci_rescan.go",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "5a56ef335a62d86faafbac491a11eedee3850897",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22d40d46_c1d92c8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/pci_rescan.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-13T20:22:41Z",
+      "side": 1,
+      "message": "Uh I will defer adding this then since this dep seems pretty narrow right now.",
+      "parentUuid": "8b6784ba_f875aef3",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "5a56ef335a62d86faafbac491a11eedee3850897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "090f0a17_5eb38594",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/pci_rescan.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-13T20:22:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8504c729_8ec0706f",
+      "range": {
+        "startLine": 52,
+        "startChar": 13,
+        "endLine": 52,
+        "endChar": 60
+      },
+      "revId": "5a56ef335a62d86faafbac491a11eedee3850897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e51237ed_beaced0b",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/pci_rescan.go",
         "patchSetId": 8
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "47d1fff3_3485dc15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/pci_rescan.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-13T20:22:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e51237ed_beaced0b",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 83
+      },
+      "revId": "5a56ef335a62d86faafbac491a11eedee3850897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85a290f7_75cba7d9",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/pci_rescan.go",
         "patchSetId": 8
@@ -114,6 +210,30 @@
       "revId": "5a56ef335a62d86faafbac491a11eedee3850897",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06b640ec_56a5eba9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/pci_rescan.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-13T20:22:41Z",
+      "side": 1,
+      "message": "Done. There\u0027s definitely a better way to do this than the driver reset that I did. Would I be guaranteed to run the unbind/bind routine on the device if it doesn\u0027t show up in lspci?",
+      "parentUuid": "85a290f7_75cba7d9",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 42
+      },
+      "revId": "5a56ef335a62d86faafbac491a11eedee3850897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
