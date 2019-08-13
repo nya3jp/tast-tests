@@ -209,7 +209,9 @@ func MountOBB(ctx context.Context, s *testing.State) {
 			return
 		}
 
-		cmd := testexec.CommandContext(ctx, "mount-obb", fatFile, mountPath, "0" /* root UID */, "0" /* root GID */)
+		// TODO(crbug.com/980349): Remove verbose log when the root cause
+		// is identified.
+		cmd := testexec.CommandContext(ctx, "mount-obb", "--v=1", fatFile, mountPath, "0" /* root UID */, "0" /* root GID */)
 		if err := cmd.Start(); err != nil {
 			s.Error("Failed to start mount-obb: ", err)
 			return
