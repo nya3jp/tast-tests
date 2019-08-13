@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51598fdc_866d7fee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T03:00:31Z",
+      "side": 1,
+      "message": "Looks very useful, thanks for adding them! :)",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 70
+      },
+      "revId": "8426f991c04c5051c68f271ca839728340a02093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c123e4a9_38bc4c85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/profiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T03:00:31Z",
+      "side": 1,
+      "message": "Hmm, now I see \"Prof\" suffix is a bit redundant. How about removing those suffixes from the definitions, i.e. profiler.Cros, profiler.Top, profiler.Vmstat?\n\nc.f. https://golang.org/doc/effective_go.html#names",
+      "range": {
+        "startLine": 25,
+        "startChar": 43,
+        "endLine": 25,
+        "endChar": 100
+      },
+      "revId": "8426f991c04c5051c68f271ca839728340a02093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83107c96_9d3e1e59",
+        "filename": "src/chromiumos/tast/local/profiler/crosperf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T03:00:31Z",
+      "side": 1,
+      "message": "Sorry for not catching this in earlier review, but why do we call this profiler \"CrOS perf\"? IIUC \"perf\" command is Linux perf tools and has nothing in particular to do with Chrome OS.",
+      "range": {
+        "startLine": 17,
+        "startChar": 27,
+        "endLine": 17,
+        "endChar": 35
+      },
+      "revId": "8426f991c04c5051c68f271ca839728340a02093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "120a8d82_4504539b",
+        "filename": "src/chromiumos/tast/local/profiler/profiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T03:00:31Z",
+      "side": 1,
+      "message": "I think we want to name this VMStat.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 11
+      },
+      "revId": "8426f991c04c5051c68f271ca839728340a02093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34389bae_0891e7c2",
+        "filename": "src/chromiumos/tast/local/profiler/top.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T03:00:31Z",
+      "side": 1,
+      "message": "out must be closed on errors.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 2
+      },
+      "revId": "8426f991c04c5051c68f271ca839728340a02093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9c78948_e954cffb",
+        "filename": "src/chromiumos/tast/local/profiler/top.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T03:00:31Z",
+      "side": 1,
+      "message": "In this case we need to Kill and Wait cmdAwk.",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 21
+      },
+      "revId": "8426f991c04c5051c68f271ca839728340a02093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7af212b_72ea6b5c",
+        "filename": "src/chromiumos/tast/local/profiler/vmstat.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T03:00:31Z",
+      "side": 1,
+      "message": "ditto: Please close out on errors",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 18
+      },
+      "revId": "8426f991c04c5051c68f271ca839728340a02093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
