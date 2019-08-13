@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2a2946bd_24097fea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ghostscript/compare.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-08-13T16:18:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82ef945e_2cdf5866",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 93
+      },
+      "revId": "56af41c88c217f889187e6dc11ffd617e97e8ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29d8522e_722ee98e",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/gstopdf.go",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "56af41c88c217f889187e6dc11ffd617e97e8ca6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc65fcde_d85e1aeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gstopdf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-08-13T16:18:42Z",
+      "side": 1,
+      "message": "Thanks for the tip! I will implement this in a later CL.",
+      "parentUuid": "29d8522e_722ee98e",
+      "revId": "56af41c88c217f889187e6dc11ffd617e97e8ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
