@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "898e63b2_c9392308",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-13T20:54:27Z",
+      "side": 1,
+      "message": "You might not really need to do that. I think we enabled CRYPTO_USER_API and CRYPTO_USER_API_HASH for all Chrome OS kernels. And I think that\u0027s generally an enabled feature for common distros.\n\nMaybe instead we can just have a comment that describes what features this is relying on, in case that isn\u0027t 100% clear from the test code?\n\nAlso, this sort of comment (\"equivalent of \u003cfoo\u003e in the original test\") can be a bit confusing after we remove the original test. Even if the test is present in git history, it\u0027ll get harder and harder to find.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 110
+      },
+      "revId": "b06f60a62c9277d492aeeea4385c22409ab50ae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f073b52c_bb311b6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-13T20:54:27Z",
+      "side": 1,
+      "message": "\"to unload module\"?",
+      "range": {
+        "startLine": 58,
+        "startChar": 19,
+        "endLine": 58,
+        "endChar": 39
+      },
+      "revId": "b06f60a62c9277d492aeeea4385c22409ab50ae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
