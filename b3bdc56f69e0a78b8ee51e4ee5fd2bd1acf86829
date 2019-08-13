@@ -411,6 +411,30 @@
       "revId": "b3bdc56f69e0a78b8ee51e4ee5fd2bd1acf86829",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "514d8cac_acd2fb39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T02:47:16Z",
+      "side": 1,
+      "message": "Yes!",
+      "parentUuid": "55e08589_8aab255e",
+      "range": {
+        "startLine": 142,
+        "startChar": 39,
+        "endLine": 142,
+        "endChar": 42
+      },
+      "revId": "b3bdc56f69e0a78b8ee51e4ee5fd2bd1acf86829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
