@@ -16,6 +16,24 @@
       "revId": "f5d162a40014a5a22d418e41a5cb00ec93e0c01b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "867e7640_38230d99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cached_vpd.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-08-13T16:24:43Z",
+      "side": 1,
+      "message": "I have created a separate variable to handle the validation step (i.e. all these comparisons).",
+      "parentUuid": "a4d0030e_9afee81e",
+      "revId": "f5d162a40014a5a22d418e41a5cb00ec93e0c01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
