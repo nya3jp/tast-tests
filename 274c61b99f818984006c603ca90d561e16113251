@@ -220,6 +220,30 @@
     },
     {
       "key": {
+        "uuid": "92a939d7_6ffffea2",
+        "filename": "src/chromiumos/tast/local/wilco/wilco.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-13T15:52:15Z",
+      "side": 1,
+      "message": "I meant;\n\nyou just set 3 sec timeout for all the command line executions.\nThus, there seems no strict reason to set the timeout to me at least in the previous iterations.\n\nIf you prefer, I\u0027m ok, but StopJob/StartJob are used a pair, so I guess it should be fit in a context\u0027s timeout?\n\nif err :\u003d upstart.StopJob(ctx, ...); err !\u003d nil {\n  s.Fatal(\"...\", err)\n}\ndefer func() {\n  if err :\u003d upstart.EnsureJobRunning(ctx, ...); err !\u003d nil {\n    s.Error(\"...\", err)\n  }\n}()\n\nctx, cancel :\u003d ctxutil.Shorten(ctx, .../* some amount of time */)\n...\n\nlooks like more commonly used pattern.",
+      "parentUuid": "bb5d1f57_880091ed",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 1
+      },
+      "revId": "274c61b99f818984006c603ca90d561e16113251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b620d79_8a6124b0",
         "filename": "src/chromiumos/tast/local/wilco/wilco.go",
         "patchSetId": 2
