@@ -8,14 +8,16 @@ import (
 	"context"
 	"os/exec"
 	"strings"
-	"testing"
+	gotesting "testing"
+	"time"
 
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
-func TestKillAll(t *testing.T) {
+func TestKillAll(t *gotesting.T) {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer func() {
 		if cancel != nil {
@@ -49,12 +51,23 @@ func TestKillAll(t *testing.T) {
 
 	cmd.Wait()
 
-	if status, err := grandchild.Status(); err == nil && status != "Z" && status != "X" {
-		t.Errorf("Grandchild process still running: pid=%d, status=%s", grandchild.Pid, status)
+	// cancel() above should trigger sending SIGKILL to both the child and the grandchild processes.
+	// However, there's no guarantee of the order, so there is small chance that the grandchild
+	// is still alive at this moment.
+	// Thus, poll until the grandchild is gone for a short period. In most cases it should
+	// be done immediately, so wait for 3 secs (arbitrary time).
+	if err := testing.Poll(context.Background(), func(ctx context.Context) error {
+		if status, err := grandchild.Status(); err == nil {
+			return errors.Errorf("grandchild process still running: pid=%d, status=%s", grandchild.Pid, status)
+		}
+		// The grandchild process is terminated and collected.
+		return nil
+	}, &testing.PollOptions{Timeout: 3 * time.Second}); err != nil {
+		t.Error("Grandchild process was not killed on cancel: ", err)
 	}
 }
 
-func TestAutoCollect(t *testing.T) {
+func TestAutoCollect(t *gotesting.T) {
 	cmd := CommandContext(context.Background(), "sh", "-c", "echo foo; echo bar >&2")
 	if err := cmd.Run(); err != nil {
 		t.Fatal(err)
@@ -89,7 +102,7 @@ func TestAutoCollect(t *testing.T) {
 	}
 }
 
-func TestGetWaitStatus(t *testing.T) {
+func TestGetWaitStatus(t *gotesting.T) {
 	err28 := exec.Command("sh", "-c", "exit 28").Run()
 
 	for _, c := range []struct {
