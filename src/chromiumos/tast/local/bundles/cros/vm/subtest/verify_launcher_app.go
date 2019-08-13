@@ -6,7 +6,6 @@ package subtest
 
 import (
 	"context"
-	"fmt"
 	"image/color"
 	"image/png"
 	"io/ioutil"
@@ -16,9 +15,11 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/colorcmp"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
+	"chromiumos/tast/local/ui/apps"
 	"chromiumos/tast/testing"
 )
 
@@ -103,17 +104,7 @@ func checkIconExistence(ctx context.Context, s *testing.State, ownerID, appName,
 
 // launchApplication launches the specified application via an autotest API call.
 func launchApplication(ctx context.Context, s *testing.State, tconn *chrome.Conn, appName, appID string) {
-	expr := fmt.Sprintf(
-		`new Promise((resolve, reject) => {
-			chrome.autotestPrivate.launchApp('%v', () => {
-				if (chrome.runtime.lastError === undefined) {
-					resolve();
-				} else {
-					reject(chrome.runtime.lastError.message);
-				}
-			});
-		})`, appID)
-	if err := tconn.EvalPromise(ctx, expr, nil); err != nil {
+	if err := apps.LaunchApp(ctx, tconn, appID); err != nil {
 		s.Errorf("Running autotestPrivate.launchApp failed for %v: %v", appName, err)
 		return
 	}
@@ -161,20 +152,5 @@ func verifyScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 // application has a shelf icon that is in the running state and returns true
 // if so, false otherwise.
 func getShelfVisibility(ctx context.Context, s *testing.State, tconn *chrome.Conn, appName, appID string) bool {
-	var appShown bool
-	expr := fmt.Sprintf(
-		`new Promise(function(resolve, reject) {
-			chrome.autotestPrivate.isAppShown('%v', function(appShown) {
-				if (chrome.runtime.lastError === undefined) {
-					resolve(appShown);
-				} else {
-					reject(chrome.runtime.lastError.message);
-				}
-			});
-		})`, appID)
-	if err := tconn.EvalPromise(ctx, expr, &appShown); err != nil {
-		s.Errorf("Running autotestPrivate.isAppShown failed for %v: %v", appName, err)
-		return false
-	}
-	return appShown
+	return ash.IsAppShown(ctx, tconn, appName, appID)
 }
