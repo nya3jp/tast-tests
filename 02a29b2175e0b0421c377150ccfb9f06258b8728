@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d64877d7_f43306d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/toolkit.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1297374
+      },
+      "writtenOn": "2019-08-13T21:10:53Z",
+      "side": 1,
+      "message": "Nit: remove extra blank line here",
+      "revId": "02a29b2175e0b0421c377150ccfb9f06258b8728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43cee970_8415bc4c",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1297374
+      },
+      "writtenOn": "2019-08-13T21:10:53Z",
+      "side": 1,
+      "message": "Nit: custome -\u003e custom?",
+      "range": {
+        "startLine": 34,
+        "startChar": 20,
+        "endLine": 34,
+        "endChar": 27
+      },
+      "revId": "02a29b2175e0b0421c377150ccfb9f06258b8728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
