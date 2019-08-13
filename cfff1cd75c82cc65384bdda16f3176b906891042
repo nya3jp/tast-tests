@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3d132b10_3b26d66f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-13T17:40:18Z",
+      "side": 1,
+      "message": "Ack. Num in this case refers to the listing in iw. Band 1 could correspond to the 2.4ghz network, and Band 2 could be 5ghz or vice versa. If there are more bands, it would be Band 3, Band 4, etc...",
+      "parentUuid": "3316bae3_d52aeb18",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 19
+      },
+      "revId": "cfff1cd75c82cc65384bdda16f3176b906891042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb113e55_42052f0b",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
         "patchSetId": 13
@@ -45,6 +69,30 @@
       "revId": "cfff1cd75c82cc65384bdda16f3176b906891042",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4a9c109_17ea17d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw/iw_runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1349650
+      },
+      "writtenOn": "2019-08-13T17:40:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb113e55_42052f0b",
+      "range": {
+        "startLine": 37,
+        "startChar": 7,
+        "endLine": 37,
+        "endChar": 11
+      },
+      "revId": "cfff1cd75c82cc65384bdda16f3176b906891042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
