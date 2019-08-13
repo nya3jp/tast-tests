@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "c08efb92_4d84bd58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storage_wearout_detect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "Could you include err in the message? s.Fatal(\"Failed to get storage info: \", err)",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 39
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "645781dc_9af87df5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "I guess this should be exported. Could you name it EMMC ?",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 5
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57c5d370_a530de6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "Looks like StorageDeviceUnknown is always returned with an error and the error is checked, so it will never be actually used. Could you remove StorageDeviceUnknown? You can return 0, err where StorageDeviceUnknown, err is currently returned.",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 21
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "713af94f_962e25c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "In Tast, we don\u0027t skip tests in run time. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Device-dependencies\nCould you avoid using NotSupported, and instead use software deps to skip the test for the boards which don\u0027t support health information?\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md\nSee New features section for adding a new feature.",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 13
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10e4be41_f5627b6e",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
         "patchSetId": 4
@@ -18,6 +110,98 @@
         "startChar": 12,
         "endLine": 56,
         "endChar": 25
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95d66d95_940f8adf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "get",
+      "range": {
+        "startLine": 68,
+        "startChar": 26,
+        "endLine": 68,
+        "endChar": 29
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89d8b6ad_cd16b008",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "Could you wrap err?",
+      "range": {
+        "startLine": 75,
+        "startChar": 21,
+        "endLine": 75,
+        "endChar": 24
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "784026f5_78170fa6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "parsing\nError strings should not be capitalized \nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 93,
+        "startChar": 29,
+        "endLine": 93,
+        "endChar": 36
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62fbc153_008014af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "nit: could you inline it?",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 5
       },
       "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -48,6 +232,145 @@
     },
     {
       "key": {
+        "uuid": "3c20a3cc_2493712c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "I\u0027d define an outer var for this so that MustCompile runs before the test runs.\nvar (\n  // ...\n  nvmeDetectRE \u003d regexp.MustCompile(`\\s*SMART.*NVMe Log`)\n  // ...\n  ssdDetectRE \u003d ...\n  // ...\n  emmcDetectRE \u003d ...\n)\n\nfunc parseDeviceType(...) ...\n\n\nI\u0027m not sure further extracting the string literal for MustCompile improves readability.",
+      "parentUuid": "b8c6a5d4_39f23be0",
+      "range": {
+        "startLine": 106,
+        "startChar": 35,
+        "endLine": 106,
+        "endChar": 53
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd80a8be_d0632c7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "Same as the above. Could you move this as an outer var?",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 83
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efa47607_e5209d97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 84
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff2409bc_1306267d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "FindStringSubmatch\nif you only use the first match?",
+      "range": {
+        "startLine": 145,
+        "startChar": 23,
+        "endLine": 145,
+        "endChar": 44
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a37d9f8_f99b0270",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "Could you wrap err and include what\u0027s being parsed (match[0][1]) in the error message?",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 67
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b4dc566_81e80106",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "Are you supposed to use eMMCMinimumVersion here?\nAnyways, as I stated before, using NotSupported to skip the test mid-way is not allowed in Tast. Please (design and) use a software dependency.",
+      "range": {
+        "startLine": 151,
+        "startChar": 16,
+        "endLine": 151,
+        "endChar": 19
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2a76fa7_35e75321",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
         "patchSetId": 4
@@ -64,6 +387,328 @@
         "startChar": 1,
         "endLine": 161,
         "endChar": 2
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b686b485_38dbf8e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "Same as other comments for MustCompile. I\u0027d define an package-level var.",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 79
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e616c328_89db6a50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "FindStringSubmatch\nif you only use the first match?",
+      "range": {
+        "startLine": 174,
+        "startChar": 23,
+        "endLine": 174,
+        "endChar": 44
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e59cdfc1_8ad11c7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "Could you wrap err and include what\u0027s being parsed (match[0][1]) in the error message?",
+      "range": {
+        "startLine": 178,
+        "startChar": 25,
+        "endLine": 178,
+        "endChar": 75
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43c32bb0_dec15aa0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "Could you define an outer var for this to mae sure MustCompile runs before test runs?\nvar ssdFailingRE \u003d ...\nI think you can inline ssdFail.",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 42
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fcf9f98_8dcb1656",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo_eve_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "\u0026Info\n? DeepEqual can compare pointers.",
+      "range": {
+        "startLine": 89,
+        "startChar": 8,
+        "endLine": 89,
+        "endChar": 12
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "859e3736_8e4898ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo_eve_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "info, exp\nmaking exp a pointer, would be cleaner.",
+      "range": {
+        "startLine": 94,
+        "startChar": 23,
+        "endLine": 94,
+        "endChar": 33
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60a1fb5a_ca4e8132",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo_eve_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 95,
+        "startChar": 60,
+        "endLine": 95,
+        "endChar": 61
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac41f7d4_e5695f77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo_eve_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "remove one ()?",
+      "range": {
+        "startLine": 95,
+        "startChar": 37,
+        "endLine": 95,
+        "endChar": 41
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea97149d_6033b2c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo_lulu_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 2
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "256f4600_bb9776fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "typo?",
+      "range": {
+        "startLine": 12,
+        "startChar": 34,
+        "endLine": 12,
+        "endChar": 39
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63869e1b_fe3a75ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "EMMC",
+      "range": {
+        "startLine": 12,
+        "startChar": 46,
+        "endLine": 12,
+        "endChar": 50
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f211893f_1a376426",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "EMMC",
+      "range": {
+        "startLine": 34,
+        "startChar": 47,
+        "endLine": 34,
+        "endChar": 51
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34af3b96_00d35b15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "\u0026Info\nSame for others.",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24e91c50_3e5bacea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T02:26:17Z",
+      "side": 1,
+      "message": "remove?\nSame for others.",
+      "range": {
+        "startLine": 52,
+        "startChar": 39,
+        "endLine": 52,
+        "endChar": 41
       },
       "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
