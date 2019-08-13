@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd9df7de_c87cb999",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mount_obb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T03:06:49Z",
+      "side": 1,
+      "message": "Could you add a TODO comment to remove this diagnosis if you don\u0027t intend this to be permanent?",
+      "range": {
+        "startLine": 249,
+        "startChar": 3,
+        "endLine": 249,
+        "endChar": 68
+      },
+      "revId": "4987e47646d561674b46fac9c39f57c6b60934d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
