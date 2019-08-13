@@ -32,10 +32,9 @@ func MLServiceBootstrap(ctx context.Context, s *testing.State) {
 	}
 
 	const job = "ml-service"
-
-	s.Log("Stopping ML Service daemon if it is running")
-	if err = upstart.StopJob(ctx, job); err != nil {
-		s.Fatalf("Failed to stop %s: %v", job, err)
+	s.Log("Ensure ML Service is running")
+	if err = upstart.EnsureJobRunning(ctx, job); err != nil {
+		s.Fatalf("Failed to ensure job %s runing: %v", job, err)
 	}
 
 	s.Log("Waiting for Chrome to complete a basic call to ML Service")
