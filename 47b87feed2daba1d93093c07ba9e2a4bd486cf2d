@@ -331,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "ea936e5b_aefef0bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2019-08-13T08:55:33Z",
+      "side": 1,
+      "message": "Since isVisible() expects to have selector as input and will only return the result of the first match, I\u0027ll write a short condition for it instead of using isVisible() here.",
+      "parentUuid": "b7f81b17_2e4ebdfd",
+      "range": {
+        "startLine": 82,
+        "startChar": 51,
+        "endLine": 82,
+        "endChar": 63
+      },
+      "revId": "47b87feed2daba1d93093c07ba9e2a4bd486cf2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "13136d1a_f255298a",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
         "patchSetId": 4
