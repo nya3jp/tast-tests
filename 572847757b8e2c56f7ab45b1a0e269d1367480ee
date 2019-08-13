@@ -46,6 +46,23 @@
       "revId": "572847757b8e2c56f7ab45b1a0e269d1367480ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb570448_2b5facb5",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-13T02:57:17Z",
+      "side": 1,
+      "message": "Some thoughts: I\u0027m wondering if making this function more specific is a good idea. Currently all binaries benchmarked are gtest, but I\u0027m not sure this will always be the case. I can\u0027t think of any tests that require us to benchmark a non-gtest process at the moment. If that happens we can probably just specialize this function into a MeasureGtestProcessCPU() function that calls a MeasureProcessCPU() function. So IMHO this change makes sense.",
+      "revId": "572847757b8e2c56f7ab45b1a0e269d1367480ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
