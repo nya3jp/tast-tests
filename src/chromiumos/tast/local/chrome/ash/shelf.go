@@ -8,9 +8,11 @@ package ash
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
 )
 
 // ShelfBehavior represents the different Chrome OS shelf behaviors.
@@ -122,4 +124,55 @@ func GetShelfAlignment(ctx context.Context, c *chrome.Conn, displayID string) (S
 		return ShelfAlignmentInvalid, errors.Errorf("invalid shelf alignment %q", a)
 	}
 	return a, nil
+}
+
+// ShelfItem corresponds to the "ShelfItem" defined in
+// autotest_private.idl.
+type ShelfItem struct {
+	AppID           string `json:"appId"`
+	LaunchID        string `json:"launchId"`
+	Title           string `json:"title"`
+	Type            string `json:"type"`
+	Status          string `json:"status"`
+	ShowsToolTip    bool   `json:"showsTooltip"`
+	PinnedByPolicy  bool   `json:"pinnedByPolicy"`
+	HasNotification bool   `json:"hasNotification"`
+}
+
+// GetShelfItems returns the list of apps in the shelf.
+func GetShelfItems(ctx context.Context, c *chrome.Conn) ([]*ShelfItem, error) {
+	var s []*ShelfItem
+	expr := fmt.Sprintf(
+		`new Promise(function(resolve, reject) {
+		  chrome.autotestPrivate.getShelfItems(function(items) {
+		    if (chrome.runtime.lastError) {
+		      reject(new Error(chrome.runtime.lastError.message));
+		    } else {
+		      resolve(items);
+		    }
+		  });
+		})`)
+	if err := c.EvalPromise(ctx, expr, &s); err != nil {
+		return nil, errors.Wrap(err, "failed to call getShelfItems")
+	}
+	return s, nil
+}
+
+// WaitForAppToAppear waits for an app to appear in shelf.
+// appID is the ID of the app to wait for.
+func WaitForAppToAppear(ctx context.Context, c *chrome.Conn, appID string) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var appShown bool
+		shownQuery := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.isAppShown)(%q)", appID)
+		if err := c.EvalPromise(ctx, shownQuery, &appShown); err != nil {
+			return testing.PollBreak(err)
+		}
+		if !appShown {
+			return errors.New("App is not shown yet")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 60 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for app to be shown in shelf")
+	}
+	return nil
 }
