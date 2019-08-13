@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0021576d_fec79676",
+        "filename": "src/chromiumos/tast/local/syslog/watcher.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T03:28:02Z",
+      "side": 1,
+      "message": "I recommend starting search from the next line of the previous hit, rather than the next byte.\n\nCurrent HasMessage implementation is a bit hard to reason about correctness because it\u0027s half line-oriented. For example, w.partialRead can contain trailing newline in some cases, as opposed to its doc comment. This is not only an implementation-detail issue, but also its observable behavior is undeterministic and confusing in some cases, e.g. when the searched text (mistakenly) contains a newline character HasMessage can return true or false depending on its state.\n\nBut making the method completely line-oriented and removing w.partialRead, the logic would become clearer. And I don\u0027t think we have a particular use case where we want to match the same line multiple times.",
+      "range": {
+        "startLine": 99,
+        "startChar": 12,
+        "endLine": 99,
+        "endChar": 25
+      },
+      "revId": "23aed45ca30c278716506bd6d3ae55b6d5cf4465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
