@@ -140,6 +140,30 @@
       "revId": "9a72481c917a9be844625e749bf46ed7c9429719",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51112b70_991b9386",
+        "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-13T16:44:06Z",
+      "side": 1,
+      "message": "Oh I see. Does event listener work for your case to wait for the change?\n\nE.g. something like;\nEvalPromise(...,\n`async () \u003d\u003e {\n  let root \u003d await tast.promisify(chrome.automation.getDesktop)();\n  let node \u003d root.find({attributes: ...});\n  if (!!node) {\n    return;\n  }\n  var callback \u003d (treeChanged) \u003d\u003e {\n    var node \u003d treeChanged.target;\n    if (node.root \u003d\u003d root \u0026\u0026 node.role \u003d\u003d role \u0026\u0026 node.name \u003d\u003d name) {\n      chrome.automation.removeTreeChangeObserver(callback);\n      resolve();\n      return;\n    }\n  }\n  chrome.automation.addTreeChangeObserver(..., callback);\n}()`\n\nWDYT?\nI\u0027m still concerning to leak the variable from a method.",
+      "parentUuid": "af78d7ac_ed0af677",
+      "range": {
+        "startLine": 103,
+        "startChar": 15,
+        "endLine": 103,
+        "endChar": 23
+      },
+      "revId": "9a72481c917a9be844625e749bf46ed7c9429719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
