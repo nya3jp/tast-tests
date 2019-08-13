@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d69725d3_0025a81a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-13T08:53:06Z",
+      "side": 1,
+      "message": "Could you explicitly document that now dlcModuleID needs to be one of \"test{1,2,3}-dlc\"?\n\nStyle: (not the regression of this CL, though, since you\u0027ll touch this) the method comment is expected to follow the godoc style, and in it, |varname| style is unused. Could you just use \"dlcModuleID\"? E.g.;\n\ndlcModuleID is used to construct ...",
+      "revId": "2bcfc2c474a8d0e7b36ff4bc23d7b8b4d0675dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
