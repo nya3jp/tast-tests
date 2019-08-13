@@ -8,9 +8,11 @@ package ash
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
 )
 
 // ShelfBehavior represents the different Chrome OS shelf behaviors.
@@ -122,4 +124,55 @@ func GetShelfAlignment(ctx context.Context, c *chrome.Conn, displayID string) (S
 		return ShelfAlignmentInvalid, errors.Errorf("invalid shelf alignment %q", a)
 	}
 	return a, nil
+}
+
+// ShelfItem corresponds to the "ShelfItem" defined in autotest_private.idl.
+type ShelfItem struct {
+	AppID           string `json:"appId"`
+	LaunchID        string `json:"launchId"`
+	Title           string `json:"title"`
+	Type            string `json:"type"`
+	Status          string `json:"status"`
+	ShowsToolTip    bool   `json:"showsTooltip"`
+	PinnedByPolicy  bool   `json:"pinnedByPolicy"`
+	HasNotification bool   `json:"hasNotification"`
+}
+
+// GetShelfItems returns the list of apps in the shelf.
+func GetShelfItems(ctx context.Context, c *chrome.Conn) ([]*ShelfItem, error) {
+	var s []*ShelfItem
+	shelfQuery := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.getShelfItems)()")
+	if err := c.EvalPromise(ctx, shelfQuery, &s); err != nil {
+		return nil, errors.Wrap(err, "failed to call getShelfItems")
+	}
+	return s, nil
+}
+
+// IsAppShown checks if an app is in the shelf
+// appName is the name of the app to check for.
+// appID is the ID of the app to check for.
+func IsAppShown(ctx context.Context, c *chrome.Conn, appName, appID string) bool {
+	var appShown bool
+	shownQuery := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.isAppShown)(%q)", appID)
+	if err := c.EvalPromise(ctx, shownQuery, &appShown); err != nil {
+		errors.Errorf("Running autotestPrivate.isAppShown failed for %v", appName)
+		return false
+	}
+	return appShown
+}
+
+// WaitForAppToAppear waits for an app to appear in shelf.
+// appID is the ID of the app to wait for.
+func WaitForAppToAppear(ctx context.Context, c *chrome.Conn, appID string) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		var appShown bool
+		shownQuery := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.isAppShown)(%q)", appID)
+		if err := c.EvalPromise(ctx, shownQuery, &appShown); err != nil {
+			return testing.PollBreak(err)
+		}
+		if !appShown {
+			return errors.New("app is not shown yet")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: time.Minute})
 }
