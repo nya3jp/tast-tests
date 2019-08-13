@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a9232a8_7c561b48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T03:02:47Z",
+      "side": 1,
+      "message": "So does this CL contain only library portion and doesn\u0027t have runnable tests?\nI think I\u0027d like to see at least one test is ported using this library to make sure the test actually correctly runs. (Our objective is not faithfully porting the library but to port tests. Porting libraries is to be done as-needed basis.)\nCould you pile a such CL on it?\nNote you can have multiple commits in one branch and repo upload automatically creates multiple CLs correspondingly.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 75
+      },
+      "revId": "5df3c573f7ae8ca48c17fc5ce34959bc790b0a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aba6124a_eda50aea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T03:02:47Z",
+      "side": 1,
+      "message": "It\u0027s not implemented. Remove it if not needed.",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 11
+      },
+      "revId": "5df3c573f7ae8ca48c17fc5ce34959bc790b0a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f22ac4e_412ad152",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T03:02:47Z",
+      "side": 1,
+      "message": "What about using pgrep to detect the process to kill?",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 89
+      },
+      "revId": "5df3c573f7ae8ca48c17fc5ce34959bc790b0a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "521281e0_8439d255",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-13T03:02:47Z",
+      "side": 1,
+      "message": "Looks it does nothing. It shouldn\u0027t be what is intended.",
+      "range": {
+        "startLine": 59,
+        "startChar": 12,
+        "endLine": 59,
+        "endChar": 30
+      },
+      "revId": "5df3c573f7ae8ca48c17fc5ce34959bc790b0a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
