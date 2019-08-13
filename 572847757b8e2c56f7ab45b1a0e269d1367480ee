@@ -22,6 +22,30 @@
       "revId": "572847757b8e2c56f7ab45b1a0e269d1367480ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ed4d115_f331a5d9",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T02:49:03Z",
+      "side": 1,
+      "message": "I don\u0027t have very strong opinion but I basically agree with Keiichi :)",
+      "parentUuid": "d70dc0e6_c5e0f9eb",
+      "range": {
+        "startLine": 27,
+        "startChar": 67,
+        "endLine": 27,
+        "endChar": 82
+      },
+      "revId": "572847757b8e2c56f7ab45b1a0e269d1367480ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
