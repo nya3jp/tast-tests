@@ -11,13 +11,11 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/ui/apps"
 	"chromiumos/tast/testing"
 )
 
 const (
-	// ID is the Files App ID.
-	ID = "hhaomjibdihmijegdhdafkllkbggdgoj"
-
 	// DownloadPath is the location of Downloads for the test user.
 	DownloadPath = "/home/chronos/user/Downloads/"
 
@@ -42,8 +40,7 @@ type FilesApp struct {
 func Launch(ctx context.Context, tconn *chrome.Conn) (*FilesApp, error) {
 	f := &FilesApp{tconn: tconn}
 	// Launch the Files App.
-	launchQuery := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.launchApp)(%q)", ID)
-	if err := tconn.EvalPromise(ctx, launchQuery, nil); err != nil {
+	if err := apps.LaunchApp(ctx, tconn, apps.Files.ID); err != nil {
 		return nil, err
 	}
 	// Wait for the Files App to be open.
