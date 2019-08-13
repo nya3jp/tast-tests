@@ -568,6 +568,30 @@
     },
     {
       "key": {
+        "uuid": "beaaa3c1_277cce86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-08-13T07:16:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db2d92e2_b142ab37",
+      "range": {
+        "startLine": 167,
+        "startChar": 2,
+        "endLine": 167,
+        "endChar": 70
+      },
+      "revId": "77c8b4467629dc98f28dc49e20e43c7798f947d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3bbc550_71fe9a65",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
         "patchSetId": 4
