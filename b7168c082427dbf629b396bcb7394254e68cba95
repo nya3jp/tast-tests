@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4886decd_0b9526d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T03:50:11Z",
+      "side": 1,
+      "message": "Off-topic: Oh, so this is unrelated to https://chromium.googlesource.com/catapult/+/HEAD/telemetry/README.md ?",
+      "range": {
+        "startLine": 19,
+        "startChar": 32,
+        "endLine": 19,
+        "endChar": 41
+      },
+      "revId": "b7168c082427dbf629b396bcb7394254e68cba95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1218f7f5_804bc975",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T03:50:11Z",
+      "side": 1,
+      "message": "Mind adding a group contact?",
+      "range": {
+        "startLine": 20,
+        "startChar": 33,
+        "endLine": 20,
+        "endChar": 45
+      },
+      "revId": "b7168c082427dbf629b396bcb7394254e68cba95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e4d890e_5538d9e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T03:50:11Z",
+      "side": 1,
+      "message": "Could you use\n\nchromium.googlesource.com\n\ninstead? :)",
+      "range": {
+        "startLine": 39,
+        "startChar": 15,
+        "endLine": 39,
+        "endChar": 43
+      },
+      "revId": "b7168c082427dbf629b396bcb7394254e68cba95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a3f6a9f_5cc96fde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T03:50:11Z",
+      "side": 1,
+      "message": "nit: Could you move these errMsg constants as a dedicated group under errMsg definition? That way it is clarified that these values are only valid values for errMsg.\n\n type errMsg string\n\n // These are intended to be merely human-readable and may not necessarily\n // match exactly any real error messages.\n const (\n   noErr      errMsg \u003d \"NONE\"\n   invalidErr errMsg \u003d \"invalid argument\"\n   tooLongErr errMsg \u003d \"message too long\"\n )",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 40
+      },
+      "revId": "b7168c082427dbf629b396bcb7394254e68cba95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05c97ddd_7159c05d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-13T03:50:11Z",
+      "side": 1,
+      "message": "Since O_CREATE is not given to os.OpenFile, it will fail if the file does not exist. How about removing os.Stat check entirely?\n\nAlso, if it works, you may want to inline openTelemFile since it is a simple function calling os.OpenFile.",
+      "range": {
+        "startLine": 63,
+        "startChar": 35,
+        "endLine": 63,
+        "endChar": 55
+      },
+      "revId": "b7168c082427dbf629b396bcb7394254e68cba95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
