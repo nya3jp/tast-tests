@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82ef945e_2cdf5866",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ghostscript/compare.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-13T08:44:37Z",
+      "side": 1,
+      "message": "style: could you use `` to avoid \\ escape for \\?\n\n\noptional: for better performance, you may want to combine those regex.\n\nregexp.MustCompile(\"(?m)\" +\n  // ... comment\n  `(^\\/ID ...$)` +\n  // ... comment\n  `|(^\\/CreationDate ...$)` +\n  // ... comment\n  `|(^\\/ModDate\\( ...$)`)\n\nSo that you don\u0027t need to run ReplaceAllLiteralString repeatedly in a loop.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 93
+      },
+      "revId": "56af41c88c217f889187e6dc11ffd617e97e8ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29d8522e_722ee98e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gstopdf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-13T08:44:37Z",
+      "side": 1,
+      "message": "optional: we start to support parameterized test so if you\u0027d like you can use it to dedup some metadata for this case I think. E.g.;\n\n// ... comment ...\ntype testParams struct {\n  filter string  // ... comment for each field ...\n  input string\n  golden string\n  envVar string\n}\n\nfunc init() {\n    testing.AddTest(\u0026testing.Test{\n      Func: GhostScript,\n      Desc: ...\n      Contacts: ...\n      Attr: ...\n      SoftwareDeps: ...\n      Pre: ...\n      Params: []testing.Param{{\n          Name: \"gstopdf\"\n          Val: testParams{\n            filter: \"gstopdf\",\n            input: \"gstopdf_input.ps\",\n            golden: \"gstopdf_golden.pdf\",\n            envVar: \"CUPS_SERVERBIN\u003d/usr/libexec/cups\",\n          },\n          ExtraData: []string{...},\n      }, {\n          Name: \"gstoraster\",\n          Val: testParams{ ... },\n          ExtraData: []string{...},\n      }},\n    })\n}\n\nfunc GhostScript(ctx context.Context, s *testing.State) {\n  ... RunTest content ...\n}\n\ncf) http://go/tast-writing#Parameterized-tests",
+      "revId": "56af41c88c217f889187e6dc11ffd617e97e8ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
