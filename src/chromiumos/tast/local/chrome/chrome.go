@@ -739,6 +739,10 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
 		return nil, errors.Wrap(err, "test API extension is unavailable")
 	}
 
+	if err := c.testExtConn.WaitForExpr(ctx, "tast"); err != nil {
+		return nil, errors.Wrap(err, "tast unavailable")
+	}
+
 	testing.ContextLog(ctx, "Test API extension is ready")
 	return c.testExtConn, nil
 }
