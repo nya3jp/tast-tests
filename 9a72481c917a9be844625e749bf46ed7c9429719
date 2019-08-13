@@ -164,6 +164,30 @@
       "revId": "9a72481c917a9be844625e749bf46ed7c9429719",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f05a01a7_93ab0c9d",
+        "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-13T19:44:14Z",
+      "side": 1,
+      "message": "That type of solution almost works, but it introduces a race condition. After searching for the node and before adding the tree change observer the node may change.\n\nI upload what I think is an acceptable solution. It doesn\u0027t leak root and it is basically the same functionality of waiting that conn.waitforexpr has.",
+      "parentUuid": "51112b70_991b9386",
+      "range": {
+        "startLine": 103,
+        "startChar": 15,
+        "endLine": 103,
+        "endChar": 23
+      },
+      "revId": "9a72481c917a9be844625e749bf46ed7c9429719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
