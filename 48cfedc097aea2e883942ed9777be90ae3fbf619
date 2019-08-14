@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52aac2f4_7f50fd99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/toolkit_gtk3_demo.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-14T22:17:13Z",
+      "side": 1,
+      "message": "bug link?",
+      "revId": "48cfedc097aea2e883942ed9777be90ae3fbf619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "008a4e4f_08fe5742",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/toolkit_tkinter_demo.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-14T22:17:13Z",
+      "side": 1,
+      "message": "can you add something here in the file or comments in the tast test to high-level describe what these three python scripts are doing?",
+      "revId": "48cfedc097aea2e883942ed9777be90ae3fbf619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50e1d352_7409aed9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/toolkit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-14T22:17:13Z",
+      "side": 1,
+      "message": "something more specific?  this is visible from all crostini tests",
+      "revId": "48cfedc097aea2e883942ed9777be90ae3fbf619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a41bdb6_e753cea3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/toolkit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-14T22:17:13Z",
+      "side": 1,
+      "message": "don\u0027t put Slice in the name just because it\u0027s a slice - installArgs or just args instead?",
+      "revId": "48cfedc097aea2e883942ed9777be90ae3fbf619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0d60777_50092f22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/toolkit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-14T22:17:13Z",
+      "side": 1,
+      "message": "do you also want to defer a kill command just in case?",
+      "revId": "48cfedc097aea2e883942ed9777be90ae3fbf619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "773d49cf_0d8ae897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/toolkit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-14T22:17:13Z",
+      "side": 1,
+      "message": "pollscreenshot could fail if the colors fail to match, so \"failed to see screenshot\" isn\u0027t necessarily accurate.  The errors you\u0027re passing back are pretty specific - probably ok to just use them as-is.",
+      "revId": "48cfedc097aea2e883942ed9777be90ae3fbf619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a338768b_a30576a0",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-14T22:17:13Z",
+      "side": 1,
+      "message": "this function name implies that you\u0027re going to return the dominant color.  Pick something else, maybe matchScreenshotDominantColor?",
+      "revId": "48cfedc097aea2e883942ed9777be90ae3fbf619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87980c0b_c3ba3657",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-14T22:17:13Z",
+      "side": 1,
+      "message": "you shouldn\u0027t pass around testing.State.  Instead, return an error and have the parent test call s.Fatal/Error.  You can use a PollBreak to bail from the poll command early.  You\u0027ll also have to pass in s.OutDir() directly.",
+      "revId": "48cfedc097aea2e883942ed9777be90ae3fbf619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bd92b40_ea61c1a4",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-14T22:17:13Z",
+      "side": 1,
+      "message": "I realize this is moved code, but the error order should be got/expected, e.g. got %v but expected %v\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "revId": "48cfedc097aea2e883942ed9777be90ae3fbf619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
