@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
+	"chromiumos/tast/local/bundles/cros/platform/chromewpr"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -28,7 +29,7 @@ import (
 // TestEnv is a struct containing the Chrome Instance, ARC instance,
 // ARC UI Automator device, and VM to be used across the test.
 type TestEnv struct {
-	chrome    *chrome.Chrome
+	chromewpr *chromewpr.WPR
 	arc       *arc.ARC
 	arcDevice *ui.Device
 	tconn     *chrome.Conn
@@ -110,9 +111,23 @@ func prepareMemdLogging(ctx context.Context) error {
 	return nil
 }
 
+// initChrome starts the Chrome browser.
+func initChrome(ctx context.Context, p *RunParameters) (*chromewpr.WPR, error) {
+	if p.ChromeWPRParameters == nil {
+		p.ChromeWPRParameters = &chromewpr.Params{
+			UseLiveSites: true,
+		}
+	}
+	w, err := chromewpr.New(ctx, p.ChromeWPRParameters)
+	if err != nil {
+		return nil, errors.Wrap(err, "cannot start Chrome")
+	}
+	return w, err
+}
+
 // newTestEnv creates a new TestEnv, creating new Chrome, ARC, ARC UI Automator device,
 // and VM instances to use.
-func newTestEnv(ctx context.Context, outDir string) (*TestEnv, error) {
+func newTestEnv(ctx context.Context, outDir string, p *RunParameters) (*TestEnv, error) {
 	te := &TestEnv{
 		vm: false,
 	}
@@ -126,19 +141,21 @@ func newTestEnv(ctx context.Context, outDir string) (*TestEnv, error) {
 	}()
 
 	var err error
-	if te.chrome, err = chrome.New(ctx, chrome.ARCEnabled()); err != nil {
+	if te.chromewpr, err = initChrome(ctx, p); err != nil {
 		return nil, errors.Wrap(err, "failed to connect to Chrome")
 	}
 
-	if te.arc, err = arc.New(ctx, outDir); err != nil {
-		return nil, errors.Wrap(err, "failed to start ARC")
+	if p.ChromeWPRParameters.UseARC {
+		if te.arc, err = arc.New(ctx, outDir); err != nil {
+			return nil, errors.Wrap(err, "failed to start ARC")
+		}
+
+		if te.arcDevice, err = ui.NewDevice(ctx, te.arc); err != nil {
+			return nil, errors.Wrap(err, "failed initializing UI Automator")
+		}
 	}
 
-	if te.arcDevice, err = ui.NewDevice(ctx, te.arc); err != nil {
-		return nil, errors.Wrap(err, "failed initializing UI Automator")
-	}
-
-	if te.tconn, err = te.chrome.TestAPIConn(ctx); err != nil {
+	if te.tconn, err = te.chromewpr.Chrome.TestAPIConn(ctx); err != nil {
 		return nil, errors.Wrap(err, "creating test API connection failed")
 	}
 
@@ -190,17 +207,27 @@ func (te *TestEnv) Close(ctx context.Context) {
 	if te.arc != nil {
 		te.arc.Close()
 	}
-	if te.chrome != nil {
-		te.chrome.Close(ctx)
+	if te.chromewpr != nil {
+		te.chromewpr.Close(ctx)
 	}
+}
+
+// RunParameters contains the configurable parameters for RunTest
+type RunParameters struct {
+	// ChromeWPRParameters are the chromewpr parameters to include
+	// when starting Chrome and WPR
+	ChromeWPRParameters *chromewpr.Params
 }
 
 // RunTest creates a new TestEnv and then runs ARC, Chrome, and VM tasks in parallel.
 // It also logs memory and cpu usage throughout the test, and copies output from /var/log/memd and /var/log/vmlog
 // when finished.
 // All passed-in tasks will be closed automatically.
-func RunTest(ctx context.Context, s *testing.State, tasks []MemoryTask) {
-	testEnv, err := newTestEnv(ctx, s.OutDir())
+func RunTest(ctx context.Context, s *testing.State, tasks []MemoryTask, p *RunParameters) {
+	if p == nil {
+		p = &RunParameters{}
+	}
+	testEnv, err := newTestEnv(ctx, s.OutDir(), p)
 	if err != nil {
 		s.Fatal("Failed creating the test environment: ", err)
 	}
