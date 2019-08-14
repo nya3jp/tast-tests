@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0204ef6b_7c0c066e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-08-14T02:36:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f06a60d_40e86e2e",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 1
+      },
+      "revId": "9c882ee9d66878275188eb1ad579370cad417800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d27ec6b3_1f75ea79",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "9c882ee9d66878275188eb1ad579370cad417800",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c6c87c0_9f0f46d7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-08-14T02:36:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d27ec6b3_1f75ea79",
+      "range": {
+        "startLine": 24,
+        "startChar": 12,
+        "endLine": 25,
+        "endChar": 43
+      },
+      "revId": "9c882ee9d66878275188eb1ad579370cad417800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a70e2af6_03c30102",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-08-14T02:36:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f7fbd6b_1f31128a",
+      "range": {
+        "startLine": 31,
+        "startChar": 70,
+        "endLine": 31,
+        "endChar": 75
+      },
+      "revId": "9c882ee9d66878275188eb1ad579370cad417800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39e801d3_8ae993cf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "9c882ee9d66878275188eb1ad579370cad417800",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccea05a6_1a090198",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-08-14T02:36:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39e801d3_8ae993cf",
+      "range": {
+        "startLine": 35,
+        "startChar": 11,
+        "endLine": 35,
+        "endChar": 15
+      },
+      "revId": "9c882ee9d66878275188eb1ad579370cad417800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "833e8a5d_dabd8458",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-08-14T02:36:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4e0b4bb_3c405f95",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 38
+      },
+      "revId": "9c882ee9d66878275188eb1ad579370cad417800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46413a9a_8b38eaa6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
         "patchSetId": 4
@@ -137,6 +257,30 @@
       "revId": "9c882ee9d66878275188eb1ad579370cad417800",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c12e3966_0aa53cdb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-08-14T02:36:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46413a9a_8b38eaa6",
+      "range": {
+        "startLine": 44,
+        "startChar": 24,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "9c882ee9d66878275188eb1ad579370cad417800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "660c9f18_6abd178b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-08-14T02:36:03Z",
+      "side": 1,
+      "message": "Done, but refactored a bit to do it making some of the other comments moot.",
+      "parentUuid": "a8272fd5_fbaec9ed",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "9c882ee9d66878275188eb1ad579370cad417800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "942091bb_9986f6d4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
         "patchSetId": 4
@@ -183,6 +351,30 @@
       "revId": "9c882ee9d66878275188eb1ad579370cad417800",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da96b167_35311cfe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-08-14T02:36:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "942091bb_9986f6d4",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 28
+      },
+      "revId": "9c882ee9d66878275188eb1ad579370cad417800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "a1d42575_ae975429",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-08-14T02:36:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d07b653_0d0fd461",
+      "range": {
+        "startLine": 90,
+        "startChar": 19,
+        "endLine": 90,
+        "endChar": 59
+      },
+      "revId": "9c882ee9d66878275188eb1ad579370cad417800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a574774_d2bbbd90",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
         "patchSetId": 4
@@ -229,6 +445,30 @@
       "revId": "9c882ee9d66878275188eb1ad579370cad417800",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02e563a2_c34d5c1e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-08-14T02:36:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a574774_d2bbbd90",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 0
+      },
+      "revId": "9c882ee9d66878275188eb1ad579370cad417800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
