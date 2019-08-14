@@ -29,7 +29,7 @@ func init() {
 }
 
 func restartWirelessInterface(ctx context.Context) error {
-	iface, err := network.FindWirelessInterface()
+	iface, err := network.FindWirelessInterface(ctx)
 	if err != nil {
 		return errors.Wrap(err, "could not find interface")
 	}

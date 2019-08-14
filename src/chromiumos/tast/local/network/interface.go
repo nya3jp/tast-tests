@@ -5,10 +5,11 @@
 package network
 
 import (
+	"context"
 	"io/ioutil"
-	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/network/iw"
 )
 
 // GetInterfaceList returns the list of network interfaces.
@@ -27,17 +28,16 @@ func GetInterfaceList() ([]string, error) {
 // FindWirelessInterface filters interfaces from GetInterfaceList
 // by matching against known prefixes. The filtering method will change,
 // see crbug.com/988894.
-func FindWirelessInterface() (string, error) {
-	typeList := []string{"wlan", "mlan"}
-	ifaceList, err := GetInterfaceList()
+func FindWirelessInterface(ctx context.Context) (string, error) {
+	ifs, err := iw.ListInterfaces(ctx)
 	if err != nil {
-		return "", err
+		return "", errors.Wrap(err, "could not get interface list")
 	}
-	for _, pref := range typeList {
-		for _, iface := range ifaceList {
-			if strings.HasPrefix(iface, pref) {
-				return iface, nil
-			}
+	for _, iface := range ifs {
+		if mode, err := iw.GetOperatingMode(ctx, iface.IfName); err != nil {
+			return "", errors.Wrapf(err, "failed to parse interface mode for %s", iface.IfName)
+		} else if mode == "managed" {
+			return iface.IfName, nil
 		}
 	}
 	return "", errors.New("could not find a wireless interface")

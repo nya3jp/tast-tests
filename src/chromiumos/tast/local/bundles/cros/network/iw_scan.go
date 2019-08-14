@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/network/iw"
+	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -24,9 +25,12 @@ func init() {
 
 func IWScan(ctx context.Context, s *testing.State) {
 	const (
-		iface      = "wlan0"
 		technology = "wifi"
 	)
+	iface, err := network.FindWirelessInterface(ctx)
+	if err != nil {
+		s.Fatal("Could not find wireless interface: ", err)
+	}
 	// In order to guarantee reliable execution of IWScan, we need to make sure
 	// shill doesn't interfere with the scan. We will disable shill's control
 	// on the wireless device while still maintaining ethernet connectivity.
