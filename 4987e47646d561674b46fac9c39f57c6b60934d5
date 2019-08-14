@@ -22,6 +22,30 @@
       "revId": "4987e47646d561674b46fac9c39f57c6b60934d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b5b3988_e72463b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mount_obb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-14T13:21:46Z",
+      "side": 1,
+      "message": "I think this can be permanent, because it saves filelist only on failure case,\nso the additional cost (checking the condition) should be negligible.",
+      "parentUuid": "cd9df7de_c87cb999",
+      "range": {
+        "startLine": 249,
+        "startChar": 3,
+        "endLine": 249,
+        "endChar": 68
+      },
+      "revId": "4987e47646d561674b46fac9c39f57c6b60934d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
