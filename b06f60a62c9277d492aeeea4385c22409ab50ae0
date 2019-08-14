@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0c7a0d8b_af0486b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-14T05:39:20Z",
+      "side": 1,
+      "message": "Thank you. Removed this comment.\n(does it make sense to check CRYPTO_USER_API and CRYPTO_USER_API_HASH inside the test? filed https://crbug.com/993667)\nYou are right about referencing old code. I\u0027ll keep in mind that.",
+      "parentUuid": "898e63b2_c9392308",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 110
+      },
+      "revId": "b06f60a62c9277d492aeeea4385c22409ab50ae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f073b52c_bb311b6b",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "b06f60a62c9277d492aeeea4385c22409ab50ae0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80e76396_7025a41a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-14T05:39:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f073b52c_bb311b6b",
+      "range": {
+        "startLine": 58,
+        "startChar": 19,
+        "endLine": 58,
+        "endChar": 39
+      },
+      "revId": "b06f60a62c9277d492aeeea4385c22409ab50ae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
