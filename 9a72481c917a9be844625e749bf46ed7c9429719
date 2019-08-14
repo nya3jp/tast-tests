@@ -188,6 +188,30 @@
       "revId": "9a72481c917a9be844625e749bf46ed7c9429719",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ca4ebc9_81de6ac6",
+        "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-14T09:03:25Z",
+      "side": 1,
+      "message": "\u003e That type of solution almost works, but it introduces a race condition. After searching for the node and before adding the tree change observer the node may change.\n\nCould you share a reference about the timing? I couldn\u0027t find a detailed document.\nIIUC, JavaScript world runs as on a single-thread. So, I was thinking, if a node is being added between root.find() and chrome.automation.addTreeChangeObserver(), the registered callback will be called in the next cycle...?",
+      "parentUuid": "f05a01a7_93ab0c9d",
+      "range": {
+        "startLine": 103,
+        "startChar": 15,
+        "endLine": 103,
+        "endChar": 23
+      },
+      "revId": "9a72481c917a9be844625e749bf46ed7c9429719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
