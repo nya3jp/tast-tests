@@ -178,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "243336a7_63572d22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_rtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-14T16:11:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4504bc4f_fc0d76e6",
+      "range": {
+        "startLine": 81,
+        "startChar": 84,
+        "endLine": 81,
+        "endChar": 128
+      },
+      "revId": "0b1486c5c999dc691bfd1cb2e5b0d4e4395ca62b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fcf125d3_f0fd8b92",
         "filename": "src/chromiumos/tast/local/rtc/rtc.go",
         "patchSetId": 1

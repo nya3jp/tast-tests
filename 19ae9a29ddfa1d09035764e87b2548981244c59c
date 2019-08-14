@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fb69459b_dde40268",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_rtc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-14T16:11:00Z",
+      "side": 1,
+      "message": "For readECRTC I always use mainCtx, that\u0027s why it doesn\u0027t have a parameter. For writeRTC I use either mainCtx or cleanupCtx, that\u0027s why it has param. Did you notice that, or do you think I should add the param regardless? I would lean to keep it as is.",
+      "parentUuid": "f5c27e4a_d2999422",
+      "revId": "19ae9a29ddfa1d09035764e87b2548981244c59c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c40b02de_82d3b71a",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_rtc.go",
         "patchSetId": 7
@@ -39,6 +57,30 @@
       "revId": "19ae9a29ddfa1d09035764e87b2548981244c59c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "329b5174_891efd2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_rtc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-14T16:11:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c40b02de_82d3b71a",
+      "range": {
+        "startLine": 93,
+        "startChar": 41,
+        "endLine": 93,
+        "endChar": 92
+      },
+      "revId": "19ae9a29ddfa1d09035764e87b2548981244c59c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
