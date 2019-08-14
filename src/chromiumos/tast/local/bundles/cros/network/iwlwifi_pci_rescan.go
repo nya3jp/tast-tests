@@ -29,13 +29,18 @@ func init() {
 }
 
 // Reload Wifi Driver in the worst case.
-func restartInterface(ctx context.Context) error {
+func restartInterface(ctx context.Context, iface string) error {
 	err := testexec.CommandContext(ctx, "modprobe", "-r", "iwlmvm", "iwlwifi").Run(testexec.DumpLogOnError)
 	if err2 := testexec.CommandContext(ctx, "modprobe", "iwlwifi").Run(testexec.DumpLogOnError); err2 != nil {
 		if err != nil {
 			return errors.Wrap(err2, err.Error())
 		}
-		return err2
+	}
+	if err2 := testexec.CommandContext(ctx, "ip", "link", "set", iface, "up").Run(testexec.DumpLogOnError); err != nil {
+		if err != nil {
+			return errors.Wrapf(err2, "Could not bring up %s after disable: %s", iface, err.Error())
+
+		}
 	}
 	if err != nil {
 		return err
@@ -44,11 +49,10 @@ func restartInterface(ctx context.Context) error {
 }
 
 func IwlwifiPCIRescan(ctx context.Context, s *testing.State) {
-	iface, err := network.FindWirelessInterface()
+	iface, err := network.FindWifiInterface(ctx)
 	if err != nil {
-		s.Fatal("Could not find valid wireless interface")
+		s.Fatal("Could not find valid wireless interface: ", err)
 	}
-
 	rescanFile := fmt.Sprintf("/sys/class/net/%s/device/driver/module/parameters/remove_when_gone", iface)
 	out, err := ioutil.ReadFile(rescanFile)
 	if err != nil {
@@ -63,24 +67,23 @@ func IwlwifiPCIRescan(ctx context.Context, s *testing.State) {
 		s.Fatalf("Could not remove %s driver: %s", iface, err)
 	}
 
-	defer func() {
-		err := restartInterface(ctx)
-		if err != nil {
-			s.Error("Failed to restart interface: ", err)
-		}
-	}()
-
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		newIface, err := network.FindWirelessInterface()
+		newIface, err := network.FindWifiInterface(ctx)
 		if err != nil {
-			return errors.Wrap(err, "")
+			return errors.Wrap(err, "failed to find wireless interface")
 		}
 		if iface == newIface {
 			return nil
 		}
-		return errors.New("device not visible in lspci")
+		return errors.Errorf("looking for interface %s but got %s", iface, newIface)
 
 	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+		defer func() {
+			err := restartInterface(ctx, iface)
+			if err != nil {
+				s.Error("Failed to restart interface: ", err)
+			}
+		}()
 		s.Fatal("Device did not recover: ", err)
 	}
 }

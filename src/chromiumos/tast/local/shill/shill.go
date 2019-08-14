@@ -22,6 +22,7 @@ const (
 
 	dbusService          = "org.chromium.flimflam"
 	dbusManagerPath      = "/" // crosbug.com/20135
+	dbusDeviceInterface  = "org.chromium.flimflam.Device"
 	dbusManagerInterface = "org.chromium.flimflam.Manager"
 	dbusServiceInterface = "org.chromium.flimflam.Service"
 )
@@ -88,7 +89,7 @@ func NewManager(ctx context.Context) (*Manager, error) {
 
 // FindMatchingService returns a service with matching properties.
 func (m *Manager) FindMatchingService(ctx context.Context, props map[string]interface{}) (dbus.ObjectPath, error) {
-	managerProps, err := getProperties(ctx, m.obj, dbusManagerInterface)
+	managerProps, err := GetProperties(ctx, m.obj, dbusManagerInterface)
 	if err != nil {
 		return "", err
 	}
@@ -118,7 +119,7 @@ func getPropsForService(ctx context.Context, path dbus.ObjectPath) (map[string]i
 	if err != nil {
 		return nil, err
 	}
-	return getProperties(ctx, obj, dbusServiceInterface)
+	return GetProperties(ctx, obj, dbusServiceInterface)
 }
 
 // call is a wrapper of dbus.BusObject.CallWithContext.
@@ -126,8 +127,8 @@ func call(ctx context.Context, obj dbus.BusObject, dbusInterface, method string,
 	return obj.CallWithContext(ctx, dbusInterface+"."+method, 0, args...)
 }
 
-// getProperties returns a list of properties provided by the object.
-func getProperties(ctx context.Context, obj dbus.BusObject, dbusInterface string) (map[string]interface{}, error) {
+// GetProperties returns a list of properties provided by the object.
+func GetProperties(ctx context.Context, obj dbus.BusObject, dbusInterface string) (map[string]interface{}, error) {
 	props := make(map[string]interface{})
 	if err := call(ctx, obj, dbusInterface, "GetProperties").Store(&props); err != nil {
 		return nil, errors.Wrap(err, "failed getting properties")
@@ -137,7 +138,7 @@ func getProperties(ctx context.Context, obj dbus.BusObject, dbusInterface string
 
 // GetProfiles returns a list of profiles.
 func (m *Manager) GetProfiles(ctx context.Context) ([]dbus.ObjectPath, error) {
-	props, err := getProperties(ctx, m.obj, dbusManagerInterface)
+	props, err := GetProperties(ctx, m.obj, dbusManagerInterface)
 	if err != nil {
 		return nil, err
 	}
@@ -161,4 +162,26 @@ func (m *Manager) EnableTechnology(ctx context.Context, technology string) error
 // DisableTechnology disables a technology interface.
 func (m *Manager) DisableTechnology(ctx context.Context, technology string) error {
 	return call(ctx, m.obj, dbusManagerInterface, "DisableTechnology", technology).Err
+}
+
+// GetDevicesProperties gets the properties for each device listed on the manager.
+func (m *Manager) GetDevicesProperties(ctx context.Context) ([]map[string]interface{}, error) {
+	managerProps, err := GetProperties(ctx, m.obj, dbusManagerInterface)
+	if err != nil {
+		return nil, err
+	}
+	var toRet []map[string]interface{}
+	devPaths := managerProps["Devices"].([]dbus.ObjectPath)
+	for _, devPath := range devPaths {
+		_, obj, err := dbusutil.Connect(ctx, dbusService, devPath)
+		if err != nil {
+			return nil, err
+		}
+		prop, err := GetProperties(ctx, obj, dbusDeviceInterface)
+		if err != nil {
+			return nil, err
+		}
+		toRet = append(toRet, prop)
+	}
+	return toRet, nil
 }
