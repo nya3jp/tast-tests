@@ -49,6 +49,53 @@
     },
     {
       "key": {
+        "uuid": "8f64a04f_8b0a087c",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-14T10:33:22Z",
+      "side": 1,
+      "message": "+1 for Interfaces().",
+      "parentUuid": "86b7b074_79786d61",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 21
+      },
+      "revId": "63040131c46a08cc155440937594dfa8c148639b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b7f5e3d_91ea15e6",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-14T10:33:22Z",
+      "side": 1,
+      "message": "This is implementation details, and being changed.\nIt\u0027s better to mention the intent of this function at first, which wouldn\u0027t be affected by the change, I think. For example;\n\nWirelessInterface returns the interface name of wireless network.\nCurrently, it filters interfaces from Interface() by prefix match.\nThe implementation will be updated (crbug.com/...).",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 28,
+        "endChar": 38
+      },
+      "revId": "63040131c46a08cc155440937594dfa8c148639b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "98b28450_6ad3ac30",
         "filename": "src/chromiumos/tast/local/network/interface.go",
         "patchSetId": 5
@@ -65,6 +112,53 @@
         "startChar": 5,
         "endLine": 30,
         "endChar": 26
+      },
+      "revId": "63040131c46a08cc155440937594dfa8c148639b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7941d876_b3e7e798",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-14T10:33:22Z",
+      "side": 1,
+      "message": "+1 to WirelessInterface(), too.",
+      "parentUuid": "98b28450_6ad3ac30",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "63040131c46a08cc155440937594dfa8c148639b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73b77e14_ec1ed856",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-14T10:33:22Z",
+      "side": 1,
+      "message": "optional: you can inline the prefixes here for simplicity.\n\nfor _, pref :\u003d range []string{\"wlan\", \"mlan\"} {\n  ...\n}",
+      "range": {
+        "startLine": 36,
+        "startChar": 22,
+        "endLine": 36,
+        "endChar": 30
       },
       "revId": "63040131c46a08cc155440937594dfa8c148639b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
