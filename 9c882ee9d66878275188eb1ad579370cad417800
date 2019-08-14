@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "7963563e_b8b0d76e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-08-14T19:35:17Z",
+      "side": 1,
+      "message": "Oops, actually done now. I did it, refactored so that the constant was used in multiple functions, and then refactored *again* so that it was only used in one function and forgot to fix the const again.",
+      "parentUuid": "c3706b66_eaaf5a42",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 1
+      },
+      "revId": "9c882ee9d66878275188eb1ad579370cad417800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d27ec6b3_1f75ea79",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
         "patchSetId": 4
