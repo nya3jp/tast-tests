@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
+	"chromiumos/tast/local/bundles/cros/platform/mempressure"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -33,6 +34,7 @@ type TestEnv struct {
 	arcDevice *ui.Device
 	tconn     *chrome.Conn
 	vm        bool
+	crPorts   []int
 }
 
 // MemoryTask describes a memory-consuming task to perform.
@@ -110,9 +112,30 @@ func prepareMemdLogging(ctx context.Context) error {
 	return nil
 }
 
+// initChrome starts the Chrome browser
+func initChrome(ctx context.Context, p *RunParameters) (*chrome.Chrome, []int, error) {
+	if p.MemoryPressureWPR {
+		if p.MemoryPressureParameters != nil {
+			p.MemoryPressureParameters.UseARC = true
+		} else {
+			p.MemoryPressureParameters = &mempressure.RunParameters{
+				UseARC: true,
+			}
+		}
+		cr, ports, err := mempressure.InitChrome(ctx, p.MemoryPressureParameters)
+		if err != nil {
+			return nil, nil, errors.Wrap(err, "cannot start Chrome")
+		}
+		return cr, ports, err
+	}
+	cr, err := chrome.New(ctx, chrome.ARCEnabled())
+	return cr, nil, err
+
+}
+
 // newTestEnv creates a new TestEnv, creating new Chrome, ARC, ARC UI Automator device,
 // and VM instances to use.
-func newTestEnv(ctx context.Context, outDir string) (*TestEnv, error) {
+func newTestEnv(ctx context.Context, outDir string, p *RunParameters) (*TestEnv, error) {
 	te := &TestEnv{
 		vm: false,
 	}
@@ -126,7 +149,7 @@ func newTestEnv(ctx context.Context, outDir string) (*TestEnv, error) {
 	}()
 
 	var err error
-	if te.chrome, err = chrome.New(ctx, chrome.ARCEnabled()); err != nil {
+	if te.chrome, te.crPorts, err = initChrome(ctx, p); err != nil {
 		return nil, errors.Wrap(err, "failed to connect to Chrome")
 	}
 
@@ -195,12 +218,41 @@ func (te *TestEnv) Close(ctx context.Context) {
 	}
 }
 
+// runTask runs a MemoryTask
+func runTask(ctx, taskCtx context.Context, task MemoryTask, te *TestEnv) error {
+	if task.NeedVM() {
+		if err := startVM(ctx, te); err != nil {
+			return errors.Wrap(err, "failed to start VM")
+		}
+	}
+	if err := task.Run(taskCtx, te); err != nil {
+		return errors.Wrapf(err, "failed to run memory task %s", task.String())
+	}
+	return nil
+}
+
+// RunParameters contains the configurable parameters for RunTest
+type RunParameters struct {
+	// MemoryPressureWPR indicates whether the memory pressure test with
+	// WPR will be run, which will determine what arguments are needed
+	// when starting chrome
+	MemoryPressureWPR bool
+	// MemoryPressureParameters is the RunParameters for a Memory Pressure Task
+	// to include when starting Chrome
+	MemoryPressureParameters *mempressure.RunParameters
+	// ParallelTasks indicates whether the memory tasks should be run in parallel
+	ParallelTasks bool
+}
+
 // RunTest creates a new TestEnv and then runs ARC, Chrome, and VM tasks in parallel.
 // It also logs memory and cpu usage throughout the test, and copies output from /var/log/memd and /var/log/vmlog
 // when finished.
 // All passed-in tasks will be closed automatically.
-func RunTest(ctx context.Context, s *testing.State, tasks []MemoryTask) {
-	testEnv, err := newTestEnv(ctx, s.OutDir())
+func RunTest(ctx context.Context, s *testing.State, tasks []MemoryTask, p *RunParameters) {
+	if p == nil {
+		p = &RunParameters{}
+	}
+	testEnv, err := newTestEnv(ctx, s.OutDir(), p)
 	if err != nil {
 		s.Fatal("Failed creating the test environment: ", err)
 	}
@@ -215,29 +267,33 @@ func RunTest(ctx context.Context, s *testing.State, tasks []MemoryTask) {
 	taskCtx, taskCancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer taskCancel()
 
-	ch := make(chan struct{}, len(tasks))
-	for _, task := range tasks {
-		go func(task MemoryTask) {
-			defer func() {
-				task.Close(ctx, testEnv)
-				ch <- struct{}{}
-			}()
-			if task.NeedVM() {
-				if err := startVM(ctx, testEnv); err != nil {
-					s.Error("Failed to start VM: ", err)
-					return
+	if p.ParallelTasks {
+		ch := make(chan struct{}, len(tasks))
+		for _, task := range tasks {
+			go func(task MemoryTask) {
+				defer func() {
+					task.Close(ctx, testEnv)
+					ch <- struct{}{}
+				}()
+				err = runTask(ctx, taskCtx, task, testEnv)
+				if err != nil {
+					s.Error("Failed to run task: ", err)
 				}
+			}(task)
+		}
+		for i := 0; i < len(tasks); i++ {
+			select {
+			case <-ctx.Done():
+				s.Error("Tasks didn't complete: ", ctx.Err())
+			case <-ch:
 			}
-			if err := task.Run(taskCtx, testEnv); err != nil {
-				s.Errorf("Failed to run memory task %s: %v", task.String(), err)
+		}
+	} else {
+		for _, task := range tasks {
+			err = runTask(ctx, taskCtx, task, testEnv)
+			if err != nil {
+				s.Error("Failed to run task: ", err)
 			}
-		}(task)
-	}
-	for i := 0; i < len(tasks); i++ {
-		select {
-		case <-ctx.Done():
-			s.Error("Tasks didn't complete: ", ctx.Err())
-		case <-ch:
 		}
 	}
 
