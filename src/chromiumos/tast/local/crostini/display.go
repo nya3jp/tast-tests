@@ -108,3 +108,28 @@ func TabletModeEnabled(ctx context.Context, tconn *chrome.Conn) (tabletMode bool
 	err = tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.isTabletModeEnabled)()`, &tabletMode)
 	return tabletMode, err
 }
+
+// VerifyWindowDensities compares the sizes, which should be from
+// PollWindowSize() at low and high density. It returns an error if
+// something is wrong with the sizes (not just if the high-density
+// window is bigger).
+func VerifyWindowDensities(ctx context.Context, tconn *chrome.Conn, sizeHighDensity, sizeLowDensity Size) error {
+	if sizeHighDensity.W > sizeLowDensity.W || sizeHighDensity.H > sizeLowDensity.H {
+		return errors.Errorf("app high density size %v greater than low density size %v", sizeHighDensity, sizeLowDensity)
+	}
+
+	tabletMode, err := TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed getting tablet mode")
+	}
+
+	factor, err := PrimaryDisplayScaleFactor(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed getting primary display scale factor")
+	}
+
+	if factor != 1.0 && !tabletMode && (sizeHighDensity.W == sizeLowDensity.W || sizeHighDensity.H == sizeLowDensity.H) {
+		return errors.Errorf("app has high density and low density windows with the same size of %v while the scale factor is %v and tablet mode is %v", sizeHighDensity, factor, tabletMode)
+	}
+	return nil
+}
