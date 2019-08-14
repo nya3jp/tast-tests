@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "a646bb9a_634153fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-14T03:19:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbb3728d_443efd4b",
+      "revId": "f377da280adc834799da05966a87dd51b5cc7260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "093608b2_eeccff30",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 4
@@ -101,6 +119,30 @@
       "writtenOn": "2019-08-10T15:20:09Z",
       "side": 1,
       "message": "This passes always.\nCould you not avoid errors? For example;\n\nif report, err :\u003d gtest.New(\n    filepath.Join(...),\n    ...\n    gtest.ExtraArgs(\n        s.DataPath(filename),\n        s.DataPath(filename + \".json\"),\n        \"--output_folder\u003d\"+s.OutDir(),\n        \"--disable_validator\"),\n    gtest.UID(...)\n).Run(ctx); err !\u003d nil {\n  if report !\u003d nil {\n    for _, name :\u003d range report.FailedTestNames() {\n      s.Error(name, \" failed\")\n    }\n  }\n  s.Fatal(\"Failed to run %s: %v\", exec, err)\n}",
+      "range": {
+        "startLine": 414,
+        "startChar": 1,
+        "endLine": 414,
+        "endChar": 5
+      },
+      "revId": "f377da280adc834799da05966a87dd51b5cc7260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66097568_2f59389b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-14T03:19:30Z",
+      "side": 1,
+      "message": "The tests are supposed to fail, because they are run with invalid data. The decoder is configured for VP9 profile0, but we play a stream containing VP9 profile 1/2/3 features.\nThis test verifies whether the board doesn\u0027t crash if unsupported features are encountered in the stream.",
+      "parentUuid": "093608b2_eeccff30",
       "range": {
         "startLine": 414,
         "startChar": 1,
@@ -127,6 +169,24 @@
       "revId": "f377da280adc834799da05966a87dd51b5cc7260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaef783d_456e052a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_sanity_vp90_cts_show_existing_frame.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-14T03:19:30Z",
+      "side": 1,
+      "message": "Thanks for the info! I\u0027ll do that in a separate CL: b/139327919",
+      "parentUuid": "887c7382_d144929b",
+      "revId": "f377da280adc834799da05966a87dd51b5cc7260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
