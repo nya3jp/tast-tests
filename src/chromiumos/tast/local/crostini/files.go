@@ -43,3 +43,14 @@ func TransferToContainerAsRoot(ctx context.Context, cont *vm.Container, hostPath
 	}
 	return cont.Command(ctx, "sh", "-c", shutil.EscapeSlice([]string{"sudo", "mv", tempPath, containerPath})).Run(testexec.DumpLogOnError)
 }
+
+// VerifyFileInContainer checks for file existance in the container, returning
+// an error if it fails (or fails to find it).
+func VerifyFileInContainer(ctx context.Context, cont *vm.Container, containerPath string) error {
+	return cont.Command(ctx, "test", "-f", containerPath).Run()
+}
+
+// VerifyFileNotInContainer works much like the above, but for absent files.
+func VerifyFileNotInContainer(ctx context.Context, cont *vm.Container, containerPath string) error {
+	return cont.Command(ctx, "test", "!", "-f", containerPath).Run()
+}
