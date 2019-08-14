@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/bundles/cros/network/iw"
+	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
@@ -24,9 +25,15 @@ func init() {
 
 func IWScan(ctx context.Context, s *testing.State) {
 	const (
-		iface      = "wlan0"
 		technology = "wifi"
 	)
+	iface, err := network.WifiInterface(ctx)
+	if err != nil {
+		s.Fatal("Could not find wifi interface: ", err)
+	}
+	iface = "wlan0"
+	s.Log("WiFi interface: ", iface)
+
 	// In order to guarantee reliable execution of IWScan, we need to make sure
 	// shill doesn't interfere with the scan. We will disable shill's control
 	// on the wireless device while still maintaining ethernet connectivity.
@@ -39,7 +46,6 @@ func IWScan(ctx context.Context, s *testing.State) {
 	if err := manager.DisableTechnology(ctx, technology); err != nil {
 		s.Fatal("Could not disable wifi from shill: ", err)
 	}
-
 	defer func() {
 		// Allow shill to take control of wireless device.
 		if err := manager.EnableTechnology(ctx, technology); err != nil {
@@ -49,7 +55,7 @@ func IWScan(ctx context.Context, s *testing.State) {
 
 	// Bring up wireless device after it's released from shill.
 	if err := testexec.CommandContext(ctx, "ip", "link", "set", iface, "up").Run(testexec.DumpLogOnError); err != nil {
-		s.Fatalf("Could not bring up %s after disable", iface)
+		s.Fatalf("Could not bring up %s after shill released wifi management", iface)
 	}
 
 	// Conduct scan

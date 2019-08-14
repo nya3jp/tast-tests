@@ -5,10 +5,11 @@
 package network
 
 import (
+	"context"
 	"io/ioutil"
-	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/shill"
 )
 
 // Interfaces returns a list of network interfaces.
@@ -26,18 +27,23 @@ func Interfaces() ([]string, error) {
 
 // WifiInterface returns the first seen WiFi interface.
 // It returns "" with error if no Wifi interface is found.
-// Currently, it filters interfaces from Interfaces() by prefix match.
-// The implementation will be updated (crbug.com/988894).
-func WifiInterface() (string, error) {
-	ifaces, err := GetInterfaceList()
+// The WiFi interface is obtained by querying WiFi device from shill device manager.
+func WifiInterface(ctx context.Context) (string, error) {
+	m, err := shill.NewManager(ctx)
 	if err != nil {
-		return "", err
+		return "", errors.Wrap(err, "failed to create shill manager proxy")
 	}
-	for _, pref := range []string{"wlan", "mlan"} {
-		for _, iface := range ifaces {
-			if strings.HasPrefix(iface, pref) {
-				return iface, nil
-			}
+	devPaths, err := m.GetDevicePaths(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to obtain paths of shill's devices")
+	}
+	for _, path := range devPaths {
+		if dev, err := shill.NewDevice(ctx, path); err != nil {
+			return "", err
+		} else if devProps, err := dev.GetProperties(ctx); err != nil {
+			return "", err
+		} else if devProps[shill.DevicePropertyType].(string) == "wifi" {
+			return devProps[shill.DevicePropertyName].(string), nil
 		}
 	}
 	return "", errors.New("could not find a wireless interface")
