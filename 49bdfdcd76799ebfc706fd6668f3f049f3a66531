@@ -22,6 +22,30 @@
       "revId": "49bdfdcd76799ebfc706fd6668f3f049f3a66531",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b6da87f_34da8f32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_h264_resolution_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-14T02:42:15Z",
+      "side": 1,
+      "message": "None of the H264 binary video decoder tests have this SoftwareDeps, so I guess it\u0027s not needed? It\u0027s only present for Chrome tests. If it\u0027s really an issue I\u0027ll have to fix it in a separate CL for all tests.",
+      "parentUuid": "4d585f90_8c84b1dc",
+      "range": {
+        "startLine": 21,
+        "startChar": 26,
+        "endLine": 21,
+        "endChar": 32
+      },
+      "revId": "49bdfdcd76799ebfc706fd6668f3f049f3a66531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
