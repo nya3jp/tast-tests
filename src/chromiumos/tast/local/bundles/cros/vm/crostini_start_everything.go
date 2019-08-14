@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/vm/subtest"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/colorcmp"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -34,7 +33,6 @@ func init() {
 func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 	cr := pre.Chrome
-	tconn := pre.TestAPIConn
 	cont := pre.Container
 
 	s.Log("Verifying pwd command works")
@@ -95,23 +93,7 @@ func CrostiniStartEverything(ctx context.Context, s *testing.State) {
 		// It's a modified SHA256 hash output of a concatentation of a constant,
 		// the VM name, the container name and the identifier for the .desktop file
 		// the app is associated with.
-		const (
-			x11DemoName            = "x11_demo"
-			x11DemoID              = "glkpdbkfmomgogbfppaajjcgbcgaicmi"
-			x11DemoFixedSizeID     = "mddfmcdnhpnhoefmmiochnnjofmfhanb"
-			waylandDemoID          = "nodabfiipdopnjihbfpiengllkohmfkl"
-			waylandDemoFixedSizeID = "ddlengdehbebnlegdnllbdhpjofodekl"
-		)
-		subtest.VerifyLauncherApp(subtestCtx, s, cr, tconn, cont.VM.Concierge.GetOwnerID(),
-			x11DemoName, x11DemoID, colorcmp.RGB(0x99, 0xee, 0x44))
-		subtest.AppDisplayDensityThroughLauncher(subtestCtx, s, tconn, keyboard, cont.VM.Concierge.GetOwnerID(),
-			"x11_demo_fixed_size", x11DemoFixedSizeID)
-		subtest.VerifyLauncherApp(subtestCtx, s, cr, tconn, cont.VM.Concierge.GetOwnerID(),
-			"wayland_demo", waylandDemoID, colorcmp.RGB(0x33, 0x88, 0xdd))
-		subtest.AppDisplayDensityThroughLauncher(subtestCtx, s, tconn, keyboard, cont.VM.Concierge.GetOwnerID(),
-			"wayland_demo_fixed_size", waylandDemoFixedSizeID)
-
 		subtest.UninstallApplication(subtestCtx, s, cont, cont.VM.Concierge.GetOwnerID(),
-			x11DemoName, x11DemoID)
+			"x11_demo", "glkpdbkfmomgogbfppaajjcgbcgaicmi")
 	}
 }

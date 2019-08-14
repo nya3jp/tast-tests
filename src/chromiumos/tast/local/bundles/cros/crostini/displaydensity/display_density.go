@@ -75,23 +75,7 @@ func RunTest(ctx context.Context, s *testing.State, tconn *chrome.Conn, cont *vm
 		s.Fatal("Failed getting low-density window size: ", err)
 	}
 
-	if sizeHighDensity.W > sizeLowDensity.W || sizeHighDensity.H > sizeLowDensity.H {
-		s.Fatalf("App %q has high density size %v greater than low density size %v", conf.Name, sizeHighDensity, sizeLowDensity)
-	}
-
-	tabletMode, err := crostini.TabletModeEnabled(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed getting tablet mode: ", err)
-	}
-	s.Log("Tablet mode is ", tabletMode)
-
-	factor, err := crostini.PrimaryDisplayScaleFactor(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed getting primary display scale factor: ", err)
-	}
-	s.Log("Primary display scale factor is ", factor)
-
-	if factor != 1.0 && !tabletMode && (sizeHighDensity.W == sizeLowDensity.W || sizeHighDensity.H == sizeLowDensity.H) {
-		s.Fatalf("App %q has high density and low density windows with the same size of %v while the scale factor is %v", conf.Name, sizeHighDensity, factor)
+	if err := crostini.VerifyWindowDensities(ctx, tconn, sizeHighDensity, sizeLowDensity); err != nil {
+		s.Fatal("Failed during window density comparison: ", err)
 	}
 }
