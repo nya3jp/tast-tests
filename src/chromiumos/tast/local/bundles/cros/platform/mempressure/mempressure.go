@@ -489,11 +489,11 @@ func waitForServerSocket(ctx context.Context, socket string, server *testexec.Cm
 	return err
 }
 
-// availableTCPPorts returns a list of TCP ports on localhost that are not in
+// AvailableTCPPorts returns a list of TCP ports on localhost that are not in
 // use.  Returns an error if one or more ports cannot be allocated.  Note that
 // the ports are not reserved, but chances that they remain available for at
 // least a short time after this call are very high.
-func availableTCPPorts(count int) ([]int, error) {
+func AvailableTCPPorts(count int) ([]int, error) {
 	var ls []net.Listener
 	defer func() {
 		for _, l := range ls {
@@ -522,9 +522,21 @@ func availableTCPPorts(count int) ([]int, error) {
 // If recordPageSet is true, the test records a page set instead of replaying
 // the pre-recorded set.
 func initBrowser(ctx context.Context, p *RunParameters) (*chrome.Chrome, *testexec.Cmd, error) {
+	var (
+		err       error
+		cr        *chrome.Chrome
+		httpPort  int
+		httpsPort int
+	)
+	if p.ChromeInst != nil {
+		cr = p.ChromeInst
+		err = nil
+	}
 	if p.UseLiveSites {
 		testing.ContextLog(ctx, "Starting Chrome with live sites")
-		cr, err := chrome.New(ctx)
+		if p.ChromeInst == nil {
+			cr, err = chrome.New(ctx)
+		}
 		return cr, nil, err
 	}
 	var (
@@ -542,12 +554,17 @@ func initBrowser(ctx context.Context, p *RunParameters) (*chrome.Chrome, *testex
 		}
 	}()
 
-	ports, err := availableTCPPorts(2)
-	if err != nil {
-		return nil, nil, errors.Wrap(err, "cannot allocate WPR ports")
+	if len(p.ChromePorts) == 2 {
+		httpPort = p.ChromePorts[0]
+		httpsPort = p.ChromePorts[1]
+	} else {
+		ports, err := AvailableTCPPorts(2)
+		if err != nil {
+			return nil, nil, errors.Wrap(err, "cannot allocate WPR ports")
+		}
+		httpPort = ports[0]
+		httpsPort = ports[1]
 	}
-	httpPort := ports[0]
-	httpsPort := ports[1]
 	testing.ContextLogf(ctx, "Starting Chrome with WPR at ports %d and %d", httpPort, httpsPort)
 
 	// Start the Web Page Replay process.  Normally this replays a supplied
@@ -580,24 +597,28 @@ func initBrowser(ctx context.Context, p *RunParameters) (*chrome.Chrome, *testex
 		return nil, nil, errors.Wrap(err, "cannot start WPR")
 	}
 
-	// Restart chrome for use with WPR.  Chrome can start before WPR is
-	// ready because it will not need it until we start opening tabs.
-	resolverRules := fmt.Sprintf("MAP *:80 127.0.0.1:%d,MAP *:443 127.0.0.1:%d,EXCLUDE localhost",
-		httpPort, httpsPort)
-	resolverRulesFlag := fmt.Sprintf("--host-resolver-rules=%q", resolverRules)
-	spkiList := "PhrPvGIaAMmd29hj8BCZOq096yj7uMpRNHpn5PDxI6I="
-	spkiListFlag := fmt.Sprintf("--ignore-certificate-errors-spki-list=%s", spkiList)
-	args := []string{resolverRulesFlag, spkiListFlag}
-	if p.FakeLargeScreen {
-		// The first flag makes Chrome create a larger window.  The
-		// second flag is only effective if the device does not have a
-		// display (chromeboxes).  Without it, Chrome uses a 1366x768
-		// default.
-		args = append(args, "--ash-host-window-bounds=3840x2048", "--screen-config=3840x2048/i")
-	}
-	tentativeCr, err = chrome.New(ctx, chrome.ExtraArgs(args...))
-	if err != nil {
-		return nil, nil, errors.Wrap(err, "cannot start Chrome")
+	if cr == nil {
+		// Restart chrome for use with WPR.  Chrome can start before WPR is
+		// ready because it will not need it until we start opening tabs.
+		resolverRules := fmt.Sprintf("MAP *:80 127.0.0.1:%d,MAP *:443 127.0.0.1:%d,EXCLUDE localhost",
+			httpPort, httpsPort)
+		resolverRulesFlag := fmt.Sprintf("--host-resolver-rules=%q", resolverRules)
+		spkiList := "PhrPvGIaAMmd29hj8BCZOq096yj7uMpRNHpn5PDxI6I="
+		spkiListFlag := fmt.Sprintf("--ignore-certificate-errors-spki-list=%s", spkiList)
+		args := []string{resolverRulesFlag, spkiListFlag}
+		if p.FakeLargeScreen {
+			// The first flag makes Chrome create a larger window.  The
+			// second flag is only effective if the device does not have a
+			// display (chromeboxes).  Without it, Chrome uses a 1366x768
+			// default.
+			args = append(args, "--ash-host-window-bounds=3840x2048", "--screen-config=3840x2048/i")
+		}
+		tentativeCr, err = chrome.New(ctx, chrome.ExtraArgs(args...))
+		if err != nil {
+			return nil, nil, errors.Wrap(err, "cannot start Chrome")
+		}
+		cr = tentativeCr
+		tentativeCr = nil
 	}
 
 	// Wait for WPR to initialize.
@@ -611,8 +632,6 @@ func initBrowser(ctx context.Context, p *RunParameters) (*chrome.Chrome, *testex
 		return nil, nil, errors.Wrapf(err, "cannot connect to WPR at %s", httpsSocketName)
 	}
 	testing.ContextLog(ctx, "WPR HTTPS socket is up at ", httpsSocketName)
-	cr := tentativeCr
-	tentativeCr = nil
 	wpr := tentativeWPR
 	tentativeWPR = nil
 	return cr, wpr, nil
@@ -1023,6 +1042,12 @@ func runPhase3(ctx context.Context, s *testing.State, cr *chrome.Chrome, rset *r
 
 // RunParameters contains the configurable parameters for Run.
 type RunParameters struct {
+	// MemoryUser indicates if the test is being run as part of a memoryuser test
+	MemoryUser bool
+	// ChromeInst is the Chrome instance to use for the test
+	ChromeInst *chrome.Chrome
+	// ChromePorts is the http and https ports to be used when startng WPR
+	ChromePorts []int
 	// DormantCodePath is the path name of a JS file with code that tests
 	// for completion of a page load.
 	DormantCodePath string
@@ -1088,7 +1113,9 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	if err != nil {
 		s.Fatal("Cannot start browser: ", err)
 	}
-	defer cr.Close(ctx)
+	if !p.MemoryUser {
+		defer cr.Close(ctx)
+	}
 	defer func() {
 		if wpr == nil {
 			return
