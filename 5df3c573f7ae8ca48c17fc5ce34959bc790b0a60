@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "29dfbaf0_5916b062",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-08-14T04:53:27Z",
+      "side": 1,
+      "message": "Will update commit message when I add more tests.",
+      "parentUuid": "c6a79a4c_1cca45ca",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 75
+      },
+      "revId": "5df3c573f7ae8ca48c17fc5ce34959bc790b0a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aba6124a_eda50aea",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
         "patchSetId": 6
@@ -60,6 +84,30 @@
       "writtenOn": "2019-08-13T03:02:47Z",
       "side": 1,
       "message": "It\u0027s not implemented. Remove it if not needed.",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 11
+      },
+      "revId": "5df3c573f7ae8ca48c17fc5ce34959bc790b0a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed192c45_257ec902",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-08-14T04:53:27Z",
+      "side": 1,
+      "message": "it is coming in follow up addition to CL",
+      "parentUuid": "aba6124a_eda50aea",
       "range": {
         "startLine": 190,
         "startChar": 0,
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "017dc38c_08f7afbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-08-14T04:53:27Z",
+      "side": 1,
+      "message": "yes. Added functionality.",
+      "parentUuid": "3f22ac4e_412ad152",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 89
+      },
+      "revId": "5df3c573f7ae8ca48c17fc5ce34959bc790b0a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "521281e0_8439d255",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
         "patchSetId": 6
@@ -106,6 +178,30 @@
       "writtenOn": "2019-08-13T03:02:47Z",
       "side": 1,
       "message": "Looks it does nothing. It shouldn\u0027t be what is intended.",
+      "range": {
+        "startLine": 59,
+        "startChar": 12,
+        "endLine": 59,
+        "endChar": 30
+      },
+      "revId": "5df3c573f7ae8ca48c17fc5ce34959bc790b0a60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18a64391_f61608a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1337146
+      },
+      "writtenOn": "2019-08-14T04:53:27Z",
+      "side": 1,
+      "message": "Good point. We need to save the current filter before starting the test so it can be restored on exit.\nadded the support for it.",
+      "parentUuid": "521281e0_8439d255",
       "range": {
         "startLine": 59,
         "startChar": 12,
