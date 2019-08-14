@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c76b308e_a15fce0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/wilco_advanced_charging.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-14T00:30:31Z",
+      "side": 1,
+      "message": "Because here the EC responds much faster. I can add a comment, because I agree it is weirdly asymmetrical.",
+      "parentUuid": "7a0ffd36_6ede62f9",
+      "range": {
+        "startLine": 46,
+        "startChar": 24,
+        "endLine": 46,
+        "endChar": 39
+      },
+      "revId": "b6f604c7c9bb39e126fd87de279cbe4c1928473c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0fcd17d4_06221b5b",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/wilco_advanced_charging.go",
         "patchSetId": 5
