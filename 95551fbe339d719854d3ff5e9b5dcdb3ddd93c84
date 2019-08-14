@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3e614b8_e2a86e1d",
+        "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-14T09:03:25Z",
+      "side": 1,
+      "message": "IIUC, in case of timeout, the timer is kept running...?\nCould you double check, and if so, could you cancel it on timeout?",
+      "revId": "95551fbe339d719854d3ff5e9b5dcdb3ddd93c84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
