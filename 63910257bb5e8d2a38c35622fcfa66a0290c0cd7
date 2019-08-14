@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb3cd940_01ce7ee1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T10:34:12Z",
+      "side": 1,
+      "message": "Please avoid passing testing.State whenever possible. In this case it is used only for logging, but it can be replaced with testing.ContextLog/ContextLogf.",
+      "range": {
+        "startLine": 31,
+        "startChar": 138,
+        "endLine": 31,
+        "endChar": 154
+      },
+      "revId": "63910257bb5e8d2a38c35622fcfa66a0290c0cd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78f7c1b1_7b1b0925",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T10:34:12Z",
+      "side": 1,
+      "message": "I recommend missingGlobs if this contains globs only.",
+      "range": {
+        "startLine": 33,
+        "startChar": 6,
+        "endLine": 33,
+        "endChar": 18
+      },
+      "revId": "63910257bb5e8d2a38c35622fcfa66a0290c0cd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7599fb54_d6d04f72",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T10:34:12Z",
+      "side": 1,
+      "message": "style: too many matches\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings\n\nAlso please use errors.Errorf rather than concatenating strings with +.",
+      "range": {
+        "startLine": 50,
+        "startChar": 23,
+        "endLine": 50,
+        "endChar": 26
+      },
+      "revId": "63910257bb5e8d2a38c35622fcfa66a0290c0cd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cf59b35_5c7451e8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T10:34:12Z",
+      "side": 1,
+      "message": "Hmm, why do we run test(1) again?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 5
+      },
+      "revId": "63910257bb5e8d2a38c35622fcfa66a0290c0cd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dde07446_b5da2259",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T10:34:12Z",
+      "side": 1,
+      "message": "ditto: errors.Errorf",
+      "range": {
+        "startLine": 60,
+        "startChar": 10,
+        "endLine": 60,
+        "endChar": 20
+      },
+      "revId": "63910257bb5e8d2a38c35622fcfa66a0290c0cd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d8bf48b_fc62c576",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T10:34:12Z",
+      "side": 1,
+      "message": "Please use shutil to build a safe shell string. Note that we need to escape glob because it can be expanded before it is passed to find(1) if there are matching files in the current directory.\n\n cmd :\u003d fmt.Sprintf(\"find %s -maxdepth 1 -name %s -print0\", shutil.Escape(systemCrashDir), shutil.Escape(glob))\n\nPlease also set -mindepth 1 as well to avoid unexpected match to the directory itself.",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 76
+      },
+      "revId": "63910257bb5e8d2a38c35622fcfa66a0290c0cd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "509bbb6b_72d07909",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T10:34:12Z",
+      "side": 1,
+      "message": "Thanks for being friendly to other tests :)",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 66
+      },
+      "revId": "63910257bb5e8d2a38c35622fcfa66a0290c0cd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
