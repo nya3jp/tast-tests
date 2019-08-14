@@ -13,12 +13,14 @@ import (
 	"os"
 
 	"chromiumos/tast/bundle"
+	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/ready"
 )
 
 // Main is an entry point function for bundles.
 func Main() {
 	os.Exit(bundle.Local(os.Args[1:], os.Stdin, os.Stdout, os.Stderr, bundle.LocalDelegate{
-		Ready: ready.Wait,
+		Ready:   ready.Wait,
+		Faillog: faillog.Save,
 	}))
 }
