@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
+	"chromiumos/tast/local/bundles/cros/platform/mempressure"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
@@ -33,6 +34,7 @@ type TestEnv struct {
 	arcDevice *ui.Device
 	tconn     *chrome.Conn
 	vm        bool
+	wpr       *testexec.Cmd
 }
 
 // MemoryTask describes a memory-consuming task to perform.
@@ -110,9 +112,35 @@ func prepareMemdLogging(ctx context.Context) error {
 	return nil
 }
 
+// initChrome starts the Chrome browser.
+func initChrome(ctx context.Context, p *RunParameters) (*chrome.Chrome, *testexec.Cmd, error) {
+	if p.MemoryPressureWPR {
+		if p.MemoryPressureParameters == nil {
+			p.MemoryPressureParameters = &mempressure.RunParameters{}
+		}
+		if p.UseARC {
+			p.MemoryPressureParameters.UseARC = true
+		}
+		cr, wpr, err := mempressure.InitBrowser(ctx, p.MemoryPressureParameters)
+		if err != nil {
+			return nil, nil, errors.Wrap(err, "cannot start Chrome")
+		}
+		return cr, wpr, err
+	}
+	var cr *chrome.Chrome
+	var err error
+	if p.UseARC {
+		cr, err = chrome.New(ctx, chrome.ARCEnabled())
+	} else {
+		cr, err = chrome.New(ctx)
+	}
+	return cr, nil, err
+
+}
+
 // newTestEnv creates a new TestEnv, creating new Chrome, ARC, ARC UI Automator device,
 // and VM instances to use.
-func newTestEnv(ctx context.Context, outDir string) (*TestEnv, error) {
+func newTestEnv(ctx context.Context, outDir string, p *RunParameters) (*TestEnv, error) {
 	te := &TestEnv{
 		vm: false,
 	}
@@ -126,7 +154,7 @@ func newTestEnv(ctx context.Context, outDir string) (*TestEnv, error) {
 	}()
 
 	var err error
-	if te.chrome, err = chrome.New(ctx, chrome.ARCEnabled()); err != nil {
+	if te.chrome, te.wpr, err = initChrome(ctx, p); err != nil {
 		return nil, errors.Wrap(err, "failed to connect to Chrome")
 	}
 
@@ -190,17 +218,37 @@ func (te *TestEnv) Close(ctx context.Context) {
 	if te.arc != nil {
 		te.arc.Close()
 	}
+	if te.wpr != nil {
+		te.wpr.Process.Signal(os.Interrupt)
+	}
 	if te.chrome != nil {
 		te.chrome.Close(ctx)
 	}
+}
+
+// RunParameters contains the configurable parameters for RunTest
+type RunParameters struct {
+	// MemoryPressureWPR indicates whether the memory pressure test with
+	// WPR will be run, which will determine what arguments are needed
+	// when starting chrome
+	MemoryPressureWPR bool
+	// MemoryPressureParameters is the RunParameters for a Memory Pressure Task
+	// to include when starting Chrome
+	MemoryPressureParameters *mempressure.RunParameters
+	// UseARC indicates whether Chrome should be started with ARC enabled. This
+	// is needed for running AndroidTasks
+	UseARC bool
 }
 
 // RunTest creates a new TestEnv and then runs ARC, Chrome, and VM tasks in parallel.
 // It also logs memory and cpu usage throughout the test, and copies output from /var/log/memd and /var/log/vmlog
 // when finished.
 // All passed-in tasks will be closed automatically.
-func RunTest(ctx context.Context, s *testing.State, tasks []MemoryTask) {
-	testEnv, err := newTestEnv(ctx, s.OutDir())
+func RunTest(ctx context.Context, s *testing.State, tasks []MemoryTask, p *RunParameters) {
+	if p == nil {
+		p = &RunParameters{}
+	}
+	testEnv, err := newTestEnv(ctx, s.OutDir(), p)
 	if err != nil {
 		s.Fatal("Failed creating the test environment: ", err)
 	}
@@ -231,6 +279,7 @@ func RunTest(ctx context.Context, s *testing.State, tasks []MemoryTask) {
 			if err := task.Run(taskCtx, testEnv); err != nil {
 				s.Errorf("Failed to run memory task %s: %v", task.String(), err)
 			}
+
 		}(task)
 	}
 	for i := 0; i < len(tasks); i++ {
