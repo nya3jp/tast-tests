@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39775ad2_2185cded",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T10:15:56Z",
+      "side": 1,
+      "message": "Thank you!!! :)",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 48
+      },
+      "revId": "65f0c79c35c32c072b479d2183bf6bf7d61dc9ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e6530b6_ca2464be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_modes.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T10:15:56Z",
+      "side": 1,
+      "message": "nit: Mind folding into one line?",
+      "range": {
+        "startLine": 41,
+        "startChar": 28,
+        "endLine": 42,
+        "endChar": 27
+      },
+      "revId": "65f0c79c35c32c072b479d2183bf6bf7d61dc9ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6efb571e_94004b2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_options.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T10:15:56Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 31,
+        "startChar": 33,
+        "endLine": 32,
+        "endChar": 27
+      },
+      "revId": "65f0c79c35c32c072b479d2183bf6bf7d61dc9ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
