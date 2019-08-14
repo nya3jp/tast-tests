@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Wayland Demo Fixed Window Size Application
+Exec=/opt/google/cros-containers/bin/wayland_demo --bgcolor=0x3388dd --width=100 --height=100 --title=wayland_demo_fixed_size
+Type=Application
+StartupWMClass=wayland_demo_fixed_size
+Icon=wayland_demo
