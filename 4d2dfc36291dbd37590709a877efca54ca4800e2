@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b11b4e02_6d14e025",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-14T03:00:40Z",
+      "side": 1,
+      "message": "I would prefer to remove the old tests ASAP, so we can start looking into removing these tests and all their associated helpers from the repo. This will safe us a lot of maintenance work.\n\nI guess unfortunately we will have to temporary remove these tests from CQ when we do the switch. I\u0027ll try to free at least a few days to further stabilize the new tests. I\u0027ll hold off this CL for a few weeks.",
+      "parentUuid": "e58dd212_d0c2fc26",
+      "revId": "4d2dfc36291dbd37590709a877efca54ca4800e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eae1ae9e_98ca3fc1",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "4d2dfc36291dbd37590709a877efca54ca4800e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a76af1c_56679e53",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-14T03:00:40Z",
+      "side": 1,
+      "message": "Expanded the commit message with the list of affected tests.",
+      "parentUuid": "eae1ae9e_98ca3fc1",
+      "revId": "4d2dfc36291dbd37590709a877efca54ca4800e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
