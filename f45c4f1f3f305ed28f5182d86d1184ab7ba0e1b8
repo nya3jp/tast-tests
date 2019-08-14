@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "066f698e_976f94cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_accel_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-14T04:27:36Z",
+      "side": 1,
+      "message": "You\u0027re right, thanks for noticing!",
+      "parentUuid": "06c884a2_382c9c71",
+      "range": {
+        "startLine": 35,
+        "startChar": 35,
+        "endLine": 35,
+        "endChar": 51
+      },
+      "revId": "f45c4f1f3f305ed28f5182d86d1184ab7ba0e1b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c5fede6_8ab36698",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_accel_perf.go",
         "patchSetId": 6
@@ -39,6 +63,24 @@
       "revId": "f45c4f1f3f305ed28f5182d86d1184ab7ba0e1b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c929e0c_4f3a8d3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_accel_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-14T04:27:36Z",
+      "side": 1,
+      "message": "I changed this CL to use MeasureProcessCPU. After our discussion I realized it was easier to change than I initially expected. I will rebase it on top of 1745929 before submitting.",
+      "parentUuid": "2c5fede6_8ab36698",
+      "revId": "f45c4f1f3f305ed28f5182d86d1184ab7ba0e1b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "f45c4f1f3f305ed28f5182d86d1184ab7ba0e1b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb3d5f9d_7ba7b9fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_accel_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-14T04:27:36Z",
+      "side": 1,
+      "message": "I switched to use cpu.MeasureProcessCPU() so this is no longer needed.",
+      "parentUuid": "5826bac5_ee9b239a",
+      "range": {
+        "startLine": 164,
+        "startChar": 13,
+        "endLine": 164,
+        "endChar": 29
+      },
+      "revId": "f45c4f1f3f305ed28f5182d86d1184ab7ba0e1b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
