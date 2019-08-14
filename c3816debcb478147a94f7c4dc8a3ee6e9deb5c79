@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "378326b0_804921e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-14T02:39:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b967399b_1eaa60f1",
+      "revId": "c3816debcb478147a94f7c4dc8a3ee6e9deb5c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f70a4bf1_c656b1d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_accel_perf.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "c3816debcb478147a94f7c4dc8a3ee6e9deb5c79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d1a2940_c19a8197",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_accel_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-14T02:39:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f70a4bf1_c656b1d0",
+      "revId": "c3816debcb478147a94f7c4dc8a3ee6e9deb5c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
