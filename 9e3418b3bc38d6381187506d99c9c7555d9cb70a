@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed732af9_233cbf86",
+        "filename": "src/chromiumos/tast/local/testexec/testexec_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T09:37:00Z",
+      "side": 1,
+      "message": "trigger",
+      "range": {
+        "startLine": 54,
+        "startChar": 26,
+        "endLine": 54,
+        "endChar": 32
+      },
+      "revId": "9e3418b3bc38d6381187506d99c9c7555d9cb70a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af7674cd_feb1d30c",
+        "filename": "src/chromiumos/tast/local/testexec/testexec_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T09:37:00Z",
+      "side": 1,
+      "message": "collected",
+      "range": {
+        "startLine": 62,
+        "startChar": 47,
+        "endLine": 62,
+        "endChar": 56
+      },
+      "revId": "9e3418b3bc38d6381187506d99c9c7555d9cb70a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "082a9894_d9e7d317",
+        "filename": "src/chromiumos/tast/local/testexec/testexec_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T09:37:00Z",
+      "side": 1,
+      "message": "I guess we no longer need this. The process should be eventually collected.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 3
+      },
+      "revId": "9e3418b3bc38d6381187506d99c9c7555d9cb70a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c756667_04e6caba",
+        "filename": "src/chromiumos/tast/local/testexec/testexec_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T09:37:00Z",
+      "side": 1,
+      "message": "nit\u0026optional: This message is duplicated with the error above. In general, I think the error message structure should be:\n\n if err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n   if err :\u003d ...; err !\u003d nil {\n     return \u003cwhy we think the condition is not met\u003e\n   }\n   return nil\n }, ...); err !\u003d nil {\n   t.Error(\"\u003cwhat condition we polled and not satisfied\u003e\", err)\n }\n\nSo how about:\n\n t.Error(\"Grandchild process was not killed on cancel: \", err)",
+      "range": {
+        "startLine": 72,
+        "startChar": 11,
+        "endLine": 72,
+        "endChar": 43
+      },
+      "revId": "9e3418b3bc38d6381187506d99c9c7555d9cb70a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
