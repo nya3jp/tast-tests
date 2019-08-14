@@ -155,6 +155,30 @@
     },
     {
       "key": {
+        "uuid": "83f1792f_ef964aa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-14T10:42:10Z",
+      "side": 1,
+      "message": "IIUC, this would not work as intended.\nThe crash of gtest run is also reported via err (the second return value of Run()).\nThus, you are ignoring the case, too, now.\n\nI couldn\u0027t find any flags etc to control the behavior on RUN_ALL_TESTS(),\nso probably you\u0027d need;\n- to add a flag to the gtest binary, such as --ignore_test_failure\n- change the main function, like;\n\n  auto result \u003d RUN_ALL_TESETS();\n  return FLAGS_ignore_test_failure ? 0 : result;\nhttps://cs.chromium.org/chromium/src/media/gpu/video_decode_accelerator_tests.cc?sq\u003dpackage:chromium\u0026g\u003d0\u0026l\u003d434\n\n- add the flag to gtest.ExtraArgs here.\n- Then, you can just check err (the second return value of Run()) to capture the crash case.",
+      "parentUuid": "66097568_2f59389b",
+      "range": {
+        "startLine": 414,
+        "startChar": 1,
+        "endLine": 414,
+        "endChar": 5
+      },
+      "revId": "f377da280adc834799da05966a87dd51b5cc7260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "887c7382_d144929b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_sanity_vp90_cts_show_existing_frame.go",
         "patchSetId": 4
