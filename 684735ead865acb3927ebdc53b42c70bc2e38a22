@@ -22,6 +22,30 @@
       "revId": "684735ead865acb3927ebdc53b42c70bc2e38a22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34fb8b63_b0177208",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/wilco_charge_modes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-14T00:30:46Z",
+      "side": 1,
+      "message": "Nope, in this case the EC responds quickly. I\u0027ll make a note.",
+      "parentUuid": "78a9f1a6_b3397874",
+      "range": {
+        "startLine": 39,
+        "startChar": 24,
+        "endLine": 39,
+        "endChar": 25
+      },
+      "revId": "684735ead865acb3927ebdc53b42c70bc2e38a22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
