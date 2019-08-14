@@ -22,6 +22,53 @@
       "revId": "63040131c46a08cc155440937594dfa8c148639b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86b7b074_79786d61",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-14T01:45:21Z",
+      "side": 1,
+      "message": "Ah. Actually stop words like Get prefix in Go is discouraged. http://go/gocomments#TOC-Getters\nHow about naming it Interfaces() ? It\u0027s used as network.Interfaces(), and conveys the same meaning I guess.",
+      "parentUuid": "6ecdc6c4_646aa22f",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 21
+      },
+      "revId": "63040131c46a08cc155440937594dfa8c148639b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98b28450_6ad3ac30",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-14T01:45:21Z",
+      "side": 1,
+      "message": "Likewise, how about network.WirelessInterface() ?",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "63040131c46a08cc155440937594dfa8c148639b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
