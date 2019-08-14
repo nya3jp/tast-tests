@@ -16,6 +16,24 @@
       "revId": "2bcfc2c474a8d0e7b36ff4bc23d7b8b4d0675dbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99522c46_961d4fbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2019-08-14T02:22:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d69725d3_0025a81a",
+      "revId": "2bcfc2c474a8d0e7b36ff4bc23d7b8b4d0675dbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
