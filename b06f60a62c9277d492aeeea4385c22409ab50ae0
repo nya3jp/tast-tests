@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "21126e99_9f565a74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-14T16:45:12Z",
+      "side": 1,
+      "message": "Commented on the bug.",
+      "parentUuid": "0c7a0d8b_af0486b1",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 110
+      },
+      "revId": "b06f60a62c9277d492aeeea4385c22409ab50ae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f073b52c_bb311b6b",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/crypto_api.go",
         "patchSetId": 5
