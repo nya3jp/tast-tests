@@ -44,9 +44,9 @@ func restartInterface(ctx context.Context) error {
 }
 
 func IwlwifiPCIRescan(ctx context.Context, s *testing.State) {
-	iface, err := network.FindWirelessInterface()
+	iface, err := network.FindWirelessInterface(ctx)
 	if err != nil {
-		s.Fatal("Could not find valid wireless interface")
+		s.Fatal("Could not find valid wireless interface: ", err)
 	}
 
 	rescanFile := fmt.Sprintf("/sys/class/net/%s/device/driver/module/parameters/remove_when_gone", iface)
@@ -71,7 +71,7 @@ func IwlwifiPCIRescan(ctx context.Context, s *testing.State) {
 	}()
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		newIface, err := network.FindWirelessInterface()
+		newIface, err := network.FindWirelessInterface(ctx)
 		if err != nil {
 			return errors.Wrap(err, "")
 		}

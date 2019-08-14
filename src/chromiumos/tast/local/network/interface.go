@@ -5,10 +5,11 @@
 package network
 
 import (
+	"context"
 	"io/ioutil"
-	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/shill"
 )
 
 // GetInterfaceList returns the list of network interfaces.
@@ -27,17 +28,18 @@ func GetInterfaceList() ([]string, error) {
 // FindWirelessInterface filters interfaces from GetInterfaceList
 // by matching against known prefixes. The filtering method will change,
 // see crbug.com/988894.
-func FindWirelessInterface() (string, error) {
-	typeList := []string{"wlan", "mlan"}
-	ifaceList, err := GetInterfaceList()
+func FindWirelessInterface(ctx context.Context) (string, error) {
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "faild to create shill manager proxy")
+	}
+	devs, err := manager.GetDevicesProperties(ctx)
 	if err != nil {
 		return "", err
 	}
-	for _, pref := range typeList {
-		for _, iface := range ifaceList {
-			if strings.HasPrefix(iface, pref) {
-				return iface, nil
-			}
+	for _, dev := range devs {
+		if dev["Type"].(string) == "wifi" {
+			return dev["Name"].(string), nil
 		}
 	}
 	return "", errors.New("could not find a wireless interface")
