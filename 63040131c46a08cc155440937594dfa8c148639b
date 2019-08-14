@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ecdc6c4_646aa22f",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-14T01:35:12Z",
+      "side": 1,
+      "message": "nit: Technically speaking, the return value is a slice, not a list.\nI\u0027d name it GetInterfaces.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 21
+      },
+      "revId": "63040131c46a08cc155440937594dfa8c148639b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
