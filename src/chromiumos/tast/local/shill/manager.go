@@ -110,6 +110,15 @@ func (m *Manager) GetProfiles(ctx context.Context) ([]dbus.ObjectPath, error) {
 	return props["Profiles"].([]dbus.ObjectPath), nil
 }
 
+// GetDevices returns a list of devices' paths.
+func (m *Manager) GetDevicePaths(ctx context.Context) ([]dbus.ObjectPath, error) {
+	props, err := m.getProperties(ctx)
+	if err != nil {
+		return nil, err
+	}
+	return props["Devices"].([]dbus.ObjectPath), nil
+}
+
 // ConfigureService configures a service with the given properties.
 func (m *Manager) ConfigureService(ctx context.Context, props map[ServiceProperty]interface{}) error {
 	return call(ctx, m.obj, dbusManagerInterface, "ConfigureService", props).Err
