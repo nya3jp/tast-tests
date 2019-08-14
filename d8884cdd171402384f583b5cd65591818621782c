@@ -46,6 +46,30 @@
       "revId": "d8884cdd171402384f583b5cd65591818621782c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f1f7d40_59c9aa0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-08-14T05:35:08Z",
+      "side": 1,
+      "message": "i think \"^\"+xx+\"$\" is more readable than \"^%s$\" since editor gives colors to isolate the three part.",
+      "parentUuid": "3a3f8f58_32b99ad0",
+      "range": {
+        "startLine": 98,
+        "startChar": 37,
+        "endLine": 98,
+        "endChar": 57
+      },
+      "revId": "d8884cdd171402384f583b5cd65591818621782c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
