@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8eade2a7_d2b8b78d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/cgroups_cpucontroller_hyperthread.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2019-08-14T17:30:49Z",
+      "side": 1,
+      "message": "Since the flag may change or be removed, is there a way to check with Linux?",
+      "range": {
+        "startLine": 36,
+        "startChar": 66,
+        "endLine": 36,
+        "endChar": 103
+      },
+      "revId": "915dd7f14dd87d00d59e5d9e0e39cee90f27692f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
