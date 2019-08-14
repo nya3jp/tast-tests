@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f237bd4d_bd84f922",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-14T00:26:26Z",
+      "side": 1,
+      "message": "Uh oh, nope it\u0027s not related to that at all. I\u0027ll add some more details to make this even more clear.",
+      "parentUuid": "4886decd_0b9526d7",
+      "range": {
+        "startLine": 19,
+        "startChar": 32,
+        "endLine": 19,
+        "endChar": 41
+      },
+      "revId": "b7168c082427dbf629b396bcb7394254e68cba95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1218f7f5_804bc975",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_telemetry.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "b7168c082427dbf629b396bcb7394254e68cba95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59d7d15d_52a26136",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-14T00:26:26Z",
+      "side": 1,
+      "message": "Good idea.",
+      "parentUuid": "1218f7f5_804bc975",
+      "range": {
+        "startLine": 20,
+        "startChar": 33,
+        "endLine": 20,
+        "endChar": 45
+      },
+      "revId": "b7168c082427dbf629b396bcb7394254e68cba95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "af0aee10_81e37eed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-14T00:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e4d890e_5538d9e6",
+      "range": {
+        "startLine": 39,
+        "startChar": 15,
+        "endLine": 39,
+        "endChar": 43
+      },
+      "revId": "b7168c082427dbf629b396bcb7394254e68cba95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a3f6a9f_5cc96fde",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_telemetry.go",
         "patchSetId": 3
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "d67abfba_d05a4461",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-14T00:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a3f6a9f_5cc96fde",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 40
+      },
+      "revId": "b7168c082427dbf629b396bcb7394254e68cba95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05c97ddd_7159c05d",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_telemetry.go",
         "patchSetId": 3
@@ -114,6 +210,30 @@
       "revId": "b7168c082427dbf629b396bcb7394254e68cba95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "131bf702_519f6786",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_telemetry.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-14T00:26:26Z",
+      "side": 1,
+      "message": "Whoops, I kept this check as a leftover from when I used ioutil.FileWrite().",
+      "parentUuid": "05c97ddd_7159c05d",
+      "range": {
+        "startLine": 63,
+        "startChar": 35,
+        "endLine": 63,
+        "endChar": 55
+      },
+      "revId": "b7168c082427dbf629b396bcb7394254e68cba95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
