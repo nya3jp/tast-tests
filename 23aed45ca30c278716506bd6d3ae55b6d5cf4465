@@ -46,6 +46,47 @@
       "revId": "23aed45ca30c278716506bd6d3ae55b6d5cf4465",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b05336c_2881a7b5",
+        "filename": "src/chromiumos/tast/local/syslog/watcher.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T09:29:50Z",
+      "side": 1,
+      "message": "Thanks for detailed explanation!\n\nWhile I still think \"searching lines\" is more natural to users, especially when you forbid `text` to contain newlines, I think the current behavior is also okay.\n\n\n\u003e Consider the case that a line contains \"Target something else Target\". The logging program writes \"Target something\" and then we come in and look for Target, and then the logging program finishes writing \" else Target\". Now we\u0027ve returned true twice for the same line. If I want to make that case consistent, I need a bunch of extra logic that says something like \"If my last read didn\u0027t end in a newline, and I found the target text, then discard everything until I get a newline.\" to make that consistent. \n\nI think such inconsistency can be avoided by doing matches (i.e. strings.Index) only after a newline character is read.\n\n\u003e There\u0027s no way we can remove w.partialRead completely; we\u0027re always going to have the race condition where the logging program has written \"Tar\" but not \"get\" at the moment we read. \n\nYou\u0027re right. Possibly we can replace it with a boolean indicating the need to discard the current line if we remove HasMessage and provide WaitForMessage only, but having partialRead should be easier to understand.\n\n\u003e (And side note, I never said that w.partialRead doesn\u0027t contain a newline. I just said that it has text when the previous read -- the previous scan for the target text -- didn\u0027t make it to the end of the current line. But if have an idea for a better doc comment, let me know.)\n\nGood point, sorry for my misunderstanding.",
+      "parentUuid": "49e266a5_0f056906",
+      "range": {
+        "startLine": 99,
+        "startChar": 12,
+        "endLine": 99,
+        "endChar": 25
+      },
+      "revId": "23aed45ca30c278716506bd6d3ae55b6d5cf4465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adbfdd55_77d4c890",
+        "filename": "src/chromiumos/tast/local/syslog/watcher.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T09:29:50Z",
+      "side": 1,
+      "message": "How about clearing w.partialRead if it ends with a newline? That way we can make sure `line` contains at most one line, and strings.Index does not need to search the same line twice.\n\nFor example, in this scenario:\n\n- The log file is \"aaaaaaaaaaaaaaa\\naaaaaaaaaaaaaaaaaaaaaaa\\n\"\n- We call w.HasMessage(\"a\"). Then \"a\" is searched from \"aaaaaaaaaaaaaa\\n\".\n- We call w.HasMessage(\"b\"). Then \"b\" is searched from \"aaaaaaaaaaaaaa\\naaaaaaaaaaaaaaaaaaaaaaa\\n\".",
+      "revId": "23aed45ca30c278716506bd6d3ae55b6d5cf4465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
