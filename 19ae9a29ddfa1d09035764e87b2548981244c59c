@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5c27e4a_d2999422",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_rtc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-14T10:22:02Z",
+      "side": 1,
+      "message": "nit: To keep symmetric with writeECRTC, could you take context.Context as an argument?",
+      "revId": "19ae9a29ddfa1d09035764e87b2548981244c59c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c40b02de_82d3b71a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_rtc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-14T10:22:02Z",
+      "side": 1,
+      "message": "to displaying the actual vs expected value, in go, \"got ...; want ...\" is common pattern.\nHow about;\n\"RTC did not update properly: got %v; want in [%v, %v]\", ...\n\n?",
+      "range": {
+        "startLine": 93,
+        "startChar": 41,
+        "endLine": 93,
+        "endChar": 92
+      },
+      "revId": "19ae9a29ddfa1d09035764e87b2548981244c59c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
