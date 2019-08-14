@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ebb6e1ee_085b5ce8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2019-08-14T08:22:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1fd5ce8_a4e00124",
+      "range": {
+        "startLine": 137,
+        "startChar": 51,
+        "endLine": 137,
+        "endChar": 58
+      },
+      "revId": "59244c1a3d73ddc62618a149f73acd58de636350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "968d66ea_209dfaa7",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-08-13T16:14:18Z",
       "side": 1,
       "message": "Is it guarantee that test runs longer than measureDuration?\nCould you comment \"how\" to avoid regression?",
+      "range": {
+        "startLine": 155,
+        "startChar": 58,
+        "endLine": 155,
+        "endChar": 73
+      },
+      "revId": "59244c1a3d73ddc62618a149f73acd58de636350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "398c4383_828fb718",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2019-08-14T08:22:24Z",
+      "side": 1,
+      "message": "Hmm, currently there\u0027s no guarentee. Actually this has been regressed for some time due to wrong gtest filter used (that will be fixed by crrev.com/c/1745199).\n\nBut now that the decode latency is obtained in this CL, I think we can at least check the decodeLatency * perfJPEGDecodeTimes is larger than measureDuration. If not, the measured CPU usage would be wrong and we will fail this test.\n\nI added a check as above proposal in the latest PS. Please take a look.",
+      "parentUuid": "968d66ea_209dfaa7",
       "range": {
         "startLine": 155,
         "startChar": 58,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "daa81e50_e6607636",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2019-08-14T08:22:24Z",
+      "side": 1,
+      "message": "Done. I added an extra argument in cpu.MeasureProcessCPU() to specify how to clean up the child process, and updated all the call sites.",
+      "parentUuid": "bcd8f80c_db9da227",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 0
+      },
+      "revId": "59244c1a3d73ddc62618a149f73acd58de636350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69d20fa3_517993e4",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "59244c1a3d73ddc62618a149f73acd58de636350",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5446d122_cc19929d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2019-08-14T08:22:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69d20fa3_517993e4",
+      "range": {
+        "startLine": 190,
+        "startChar": 52,
+        "endLine": 190,
+        "endChar": 59
+      },
+      "revId": "59244c1a3d73ddc62618a149f73acd58de636350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "413b85f9_5c45d030",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2019-08-14T08:22:24Z",
+      "side": 1,
+      "message": "I\u0027m not sure if the fraction part will always appear. Modified it to (\\d+(\\.\\d*)?) to catch all possible numbers.",
+      "parentUuid": "1be10413_4ec0adbb",
+      "range": {
+        "startLine": 199,
+        "startChar": 40,
+        "endLine": 199,
+        "endChar": 46
+      },
+      "revId": "59244c1a3d73ddc62618a149f73acd58de636350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fd02d8c_3518b415",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "59244c1a3d73ddc62618a149f73acd58de636350",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a6de2bf_39dc9b31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2019-08-14T08:22:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fd02d8c_3518b415",
+      "range": {
+        "startLine": 203,
+        "startChar": 5,
+        "endLine": 203,
+        "endChar": 36
+      },
+      "revId": "59244c1a3d73ddc62618a149f73acd58de636350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
