@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7a30457a_4e23fcfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2019-08-14T14:07:27Z",
+      "side": 1,
+      "message": "No, it is the avg decode latency multiplies the number of times decoded, which is roughly how long the test has run.\n\nIt looks weird but Go only allows Duration*Duration. I\u0027m not sure if there\u0027s better way to write this.",
+      "parentUuid": "3693cc9e_29441b6f",
+      "range": {
+        "startLine": 161,
+        "startChar": 17,
+        "endLine": 161,
+        "endChar": 18
+      },
+      "revId": "1d6104c63b55031762c937c2d68db462d3811730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "32f6ccfd_c41df643",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "1d6104c63b55031762c937c2d68db462d3811730",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b0f5e0e_9af1a226",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2019-08-14T14:07:27Z",
+      "side": 1,
+      "message": "Done. Thanks for let me know this!",
+      "parentUuid": "32f6ccfd_c41df643",
+      "range": {
+        "startLine": 179,
+        "startChar": 43,
+        "endLine": 179,
+        "endChar": 50
+      },
+      "revId": "1d6104c63b55031762c937c2d68db462d3811730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
