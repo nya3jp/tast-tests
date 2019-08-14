@@ -49,7 +49,7 @@ func restartInterface(ctx context.Context, iface string) error {
 }
 
 func IwlwifiPCIRescan(ctx context.Context, s *testing.State) {
-	iface, err := network.FindWirelessInterface()
+	iface, err := network.FindWifiInterface(ctx)
 	if err != nil {
 		s.Fatal("Could not find valid wireless interface: ", err)
 	}
@@ -68,7 +68,7 @@ func IwlwifiPCIRescan(ctx context.Context, s *testing.State) {
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		newIface, err := network.FindWirelessInterface()
+		newIface, err := network.FindWifiInterface(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to find wireless interface")
 		}

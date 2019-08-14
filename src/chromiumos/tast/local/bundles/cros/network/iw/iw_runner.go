@@ -111,12 +111,12 @@ func ListInterfaces(ctx context.Context) ([]*NetDev, error) {
 		return nil, errors.Wrap(err, "could not parse netDev")
 	}
 	for i, phy := range matches {
-		ifaces, sections, err := splitTextOnRegexMatches(`\s*Interface (.*)`, splits[i])
+		ifaces, err := extractMatch(`\s*Interface (.*)`, splits[i])
 		if err != nil {
 			return nil, errors.Wrap(err, "could not parse interface")
 		}
 		for i, iface := range ifaces {
-			netdev, err := newNetDev(phy, iface, sections[i])
+			netdev, err := newNetDev(phy, iface, splits[i])
 			if err != nil {
 				return nil, errors.Wrap(err, "could not extract interface attributes")
 			}
