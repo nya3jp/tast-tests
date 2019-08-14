@@ -1,0 +1,320 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1b27efd_eedf4e51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T10:56:48Z",
+      "side": 1,
+      "message": "Welcome :)",
+      "range": {
+        "startLine": 33,
+        "startChar": 74,
+        "endLine": 33,
+        "endChar": 97
+      },
+      "revId": "fa907cc623b1d4c9b70e50be3d19899a29e9ba1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da96a801_9c7d5532",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T10:56:48Z",
+      "side": 1,
+      "message": "I recommend []*simpleAutomationNode instead since we usually pass around *simpleAutomationNode.",
+      "range": {
+        "startLine": 29,
+        "startChar": 12,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "fa907cc623b1d4c9b70e50be3d19899a29e9ba1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6360343_f92e8f90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T10:56:48Z",
+      "side": 1,
+      "message": "I recommend ,omitempty to all fields to skip marshaling empty values.\n\nhttps://godoc.org/encoding/json#Marshal",
+      "range": {
+        "startLine": 27,
+        "startChar": 27,
+        "endLine": 29,
+        "endChar": 50
+      },
+      "revId": "fa907cc623b1d4c9b70e50be3d19899a29e9ba1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd834c75_176ef9fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T10:56:48Z",
+      "side": 1,
+      "message": "style: Throughout the file, please avoid named returns.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#naked-returns",
+      "revId": "fa907cc623b1d4c9b70e50be3d19899a29e9ba1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc9997eb_f75c11d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T10:56:48Z",
+      "side": 1,
+      "message": "You may want to return *simpleAutomationNode instead because you\u0027ll pass it to other functions in pointers anyway.",
+      "range": {
+        "startLine": 47,
+        "startChar": 44,
+        "endLine": 47,
+        "endChar": 64
+      },
+      "revId": "fa907cc623b1d4c9b70e50be3d19899a29e9ba1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d30d8fa9_2569d2a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T10:56:48Z",
+      "side": 1,
+      "message": "You can use json.NewDecoder to read and unmarshal at once.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 7
+      },
+      "revId": "fa907cc623b1d4c9b70e50be3d19899a29e9ba1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be8de98a_9efeaec9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T10:56:48Z",
+      "side": 1,
+      "message": "style: Please return (*simpleAutomationNode, bool) and avoid in-band errors.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#in-band-errors",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 13
+      },
+      "revId": "fa907cc623b1d4c9b70e50be3d19899a29e9ba1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f16846c9_fc1f4c61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T10:56:48Z",
+      "side": 1,
+      "message": "You can use json.NewEncoder to marshal and save at once.",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 2
+      },
+      "revId": "fa907cc623b1d4c9b70e50be3d19899a29e9ba1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a8631ac_de6aea69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T10:56:48Z",
+      "side": 1,
+      "message": "FYI, n \u003d\u003d len(bytes) is guaranteed when err \u003d\u003d nil.\n\nhttps://godoc.org/io#Writer",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "fa907cc623b1d4c9b70e50be3d19899a29e9ba1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32295712_7700ef0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T10:56:48Z",
+      "side": 1,
+      "message": "nit: outFilePath",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 12
+      },
+      "revId": "fa907cc623b1d4c9b70e50be3d19899a29e9ba1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f26b9b42_d7c3ba3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T10:56:48Z",
+      "side": 1,
+      "message": "nit: would you mind taking filepath.Base? Actually its full path is not useful after test artifacts are copied to the cloud storage.",
+      "range": {
+        "startLine": 180,
+        "startChar": 106,
+        "endLine": 180,
+        "endChar": 117
+      },
+      "revId": "fa907cc623b1d4c9b70e50be3d19899a29e9ba1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf541e1d_d5473f8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T10:56:48Z",
+      "side": 1,
+      "message": "Please avoid leaving long multiline logs. Actually that is why we write the tree dump to a file.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting",
+      "range": {
+        "startLine": 185,
+        "startChar": 2,
+        "endLine": 185,
+        "endChar": 55
+      },
+      "revId": "fa907cc623b1d4c9b70e50be3d19899a29e9ba1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7725a2e_93613933",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_tree.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T10:56:48Z",
+      "side": 1,
+      "message": "In this case, the most important error to report is that the accessibility tree did not match. So I recommend something like:\n\n if diff :\u003d ...; diff !\u003d nil {\n   if err :\u003d dumpTree(...); err !\u003d nil {\n     s.Error(\"Failed to dump tree: \", err)\n   }\n   s.Fatalf(\"Accessibility tree did not match (see %s)\", filepath.Base(outFilepath))\n }",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 54
+      },
+      "revId": "fa907cc623b1d4c9b70e50be3d19899a29e9ba1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b488aa1_de3908de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected.json",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-14T10:56:48Z",
+      "side": 1,
+      "message": "By using ,omitempty this JSON will be simpler.",
+      "range": {
+        "startLine": 6,
+        "startChar": 4,
+        "endLine": 6,
+        "endChar": 17
+      },
+      "revId": "fa907cc623b1d4c9b70e50be3d19899a29e9ba1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
