@@ -212,6 +212,30 @@
       "revId": "9a72481c917a9be844625e749bf46ed7c9429719",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "392fc933_29557751",
+        "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-14T17:15:29Z",
+      "side": 1,
+      "message": "I initially implemented the it with the code below. It is quite similar to what you wrote above. This code sometimes passes and sometimes fails. That is why I assumed a timing issue and race condition. Maybe I am missing something, but that is what it seems like to me.\n\nfindQuery :\u003d fmt.Sprintf(\n`(async () \u003d\u003e {\n    let root \u003d await tast.promisify(chrome.automation.getDesktop)();\n    let node \u003d root.find({attributes: {role: %[1]q, name: %[2]q}});\n    if (!!node) {\n        return;\n    }\n    await new Promise((resolve) \u003d\u003e {\n        let callback \u003d (treeChanged) \u003d\u003e {\n            let node \u003d treeChanged.target;\n            if (node.role \u003d\u003d %[1]q \u0026\u0026 node.name \u003d\u003d %[2]q) {\n                chrome.automation.removeTreeChangeObserver(callback);\n                resolve();\n            }\n        };\n        chrome.automation.addTreeChangeObserver(\"allTreeChanges\", callback);\n    });\n})()`, role, name)",
+      "parentUuid": "3ca4ebc9_81de6ac6",
+      "range": {
+        "startLine": 103,
+        "startChar": 15,
+        "endLine": 103,
+        "endChar": 23
+      },
+      "revId": "9a72481c917a9be844625e749bf46ed7c9429719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
