@@ -16,6 +16,7 @@ import (
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/crash"
+	"chromiumos/tast/diff"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
@@ -45,21 +46,6 @@ func cryptohomeCrashDirs(ctx context.Context) ([]string, error) {
 		paths[i] = filepath.Join(paths[i], "crash")
 	}
 	return paths, nil
-}
-
-// getNewFiles returns all paths present in cur but not in orig.
-func getNewFiles(orig, cur []string) (added []string) {
-	om := make(map[string]struct{}, len(orig))
-	for _, p := range orig {
-		om[p] = struct{}{}
-	}
-
-	for _, p := range cur {
-		if _, ok := om[p]; !ok {
-			added = append(added, p)
-		}
-	}
-	return added
 }
 
 // deleteFiles deletes the supplied paths.
@@ -162,7 +148,7 @@ func KillAndGetCrashFiles(ctx context.Context) ([]string, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get new crashes")
 	}
-	newCrashFiles := getNewFiles(oldFiles, newFiles)
+	newCrashFiles := diff.GetNew(oldFiles, newFiles)
 	for _, p := range newCrashFiles {
 		testing.ContextLog(ctx, "Found expected Chrome crash file ", p)
 	}
