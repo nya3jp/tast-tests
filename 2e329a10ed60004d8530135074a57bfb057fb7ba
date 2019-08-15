@@ -1,0 +1,543 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a337713_23fb1b1b",
+        "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:39Z",
+      "side": 1,
+      "message": "Could you define the appropriate data structure, instead of interface?\n\nIIUC, each entry should have occurences, and an array of (index, possible values) pairs.",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3df07cd_81b33a75",
+        "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:39Z",
+      "side": 1,
+      "message": "style: m.frequencyData[s] \u003d 1",
+      "range": {
+        "startLine": 42,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 25
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fbc6c0e_90f69bf1",
+        "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:39Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 30
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bedaf68_220e280f",
+        "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:39Z",
+      "side": 1,
+      "message": "why ioctl is specialized? Any comments? Ditto for below.",
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e09dd8c_18d72cd8",
+        "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:39Z",
+      "side": 1,
+      "message": "Could you not ignore the error? Ditto for below.",
+      "range": {
+        "startLine": 61,
+        "startChar": 7,
+        "endLine": 61,
+        "endChar": 8
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "585a316d_b45a6556",
+        "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:39Z",
+      "side": 1,
+      "message": "Do you need this special handling? If performance is not really necessary, how about simpler approach?\n\nfor _, t :\u003d range tokens {\n  switch strings.TrimSpace(t) {\n    case \"PROT_WRITE\": hasWrite \u003d true\n    case \"PROT_EXEC\": hasExec \u003d true\n  }\n}\nif hasWrite \u0026\u0026 hasExec {\n  return true\n}\n\nif you need the optimization for the performance, could you comment it?",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 4
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af3236eb_144ff436",
+        "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:39Z",
+      "side": 1,
+      "message": "Can this be represented in the data structure?",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 3
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39cb96a8_cfcc0c8b",
+        "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:39Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be d.occurences?",
+      "range": {
+        "startLine": 126,
+        "startChar": 10,
+        "endLine": 126,
+        "endChar": 11
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dd938fe_650d6c41",
+        "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:39Z",
+      "side": 1,
+      "message": "You can format at L131, so that the loop can be just strings.Join()",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 146,
+        "endChar": 3
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7aeed8a2_010f201d",
+        "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:39Z",
+      "side": 1,
+      "message": "Could you merge them?\n\nsort.Slice(... {\n  if results[i].r !\u003d results[j].r {\n    return results[i] \u003c r results[j].r\n  }\n  // Descending order.\n  return results[i].f \u003e results[j].f\n}",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 3
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40586175_8b4d58ad",
+        "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:39Z",
+      "side": 1,
+      "message": "Could you add non ~PROT_EXEC || ~PROT_WRITE case?",
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a57482e_11c3bff7",
+        "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:39Z",
+      "side": 1,
+      "message": "Could you comment this intention?",
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "449e2207_d80ba851",
+        "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:39Z",
+      "side": 1,
+      "message": "Could you use \"got ...; want ...\" pattern to display the actual/expected value?\n\n\"LookupSyscall(%s) failed: got %d; want %d\"\n\nDitto for below.",
+      "range": {
+        "startLine": 103,
+        "startChar": 13,
+        "endLine": 103,
+        "endChar": 57
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "730fcd7c_4a38eec7",
+        "filename": "src/chromiumos/tast/local/strace/strace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:39Z",
+      "side": 1,
+      "message": "Could you provide package document?\n\nDo you have a plan to use this from tests other than security package?\nif not now, could you move this to bundles/cros/security/... subpackage?\n\nI\u0027d recommend cros/security/minijail package.\nAlso, rename the struct to PolicyGenerator for simplicity.",
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cb0a455_4e6da001",
+        "filename": "src/chromiumos/tast/local/strace/strace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:39Z",
+      "side": 1,
+      "message": "you can just return a pair of *testexec.Cmd and string (filepath).\n(Please find my comments below, too).",
+      "range": {
+        "startLine": 27,
+        "startChar": 69,
+        "endLine": 27,
+        "endChar": 73
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a744cc9_fadd40cb",
+        "filename": "src/chromiumos/tast/local/strace/strace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:39Z",
+      "side": 1,
+      "message": "style: could you inline the args for simplicity?",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49d3dc20_d9775e43",
+        "filename": "src/chromiumos/tast/local/strace/strace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:39Z",
+      "side": 1,
+      "message": "style: can be dropped.",
+      "range": {
+        "startLine": 50,
+        "startChar": 33,
+        "endLine": 50,
+        "endChar": 46
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c96a506_2fd150b3",
+        "filename": "src/chromiumos/tast/local/strace/strace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:39Z",
+      "side": 1,
+      "message": "Could you avoid compiling this regexp for each invocation?",
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e443205_684c6b9f",
+        "filename": "src/chromiumos/tast/local/strace/strace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:39Z",
+      "side": 1,
+      "message": "Because you call Run() in the caller, when this is called, the process is already terminated.\nThus, you don\u0027t need to keep the FD.\n\nInstead, you can just close the FD in ContextCommand immediately, and can return path.\nYou don\u0027t need Cmd. Instead, this can take additional string (filepath), and can read the file content in this method.",
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61bfca50_a1ce52c2",
+        "filename": "src/chromiumos/tast/local/strace/strace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:39Z",
+      "side": 1,
+      "message": "Maybe MinijailPolicyGenerator\u0027s method? like\nfunc (m *...) AddStraceResult(...) error {\n  ...\n}",
+      "range": {
+        "startLine": 65,
+        "startChar": 16,
+        "endLine": 65,
+        "endChar": 87
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11ea8bb5_8b7c5795",
+        "filename": "src/chromiumos/tast/local/strace/strace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:39Z",
+      "side": 1,
+      "message": "Could you introduce a new enum instead?",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 8
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "580b60a0_831e2348",
+        "filename": "src/chromiumos/tast/local/strace/strace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:39Z",
+      "side": 1,
+      "message": "Can be dropped.",
+      "range": {
+        "startLine": 73,
+        "startChar": 17,
+        "endLine": 73,
+        "endChar": 23
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5173535c_ae20462e",
+        "filename": "src/chromiumos/tast/local/strace/strace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:39Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 74,
+        "startChar": 17,
+        "endLine": 74,
+        "endChar": 23
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c316dfc5_be89a449",
+        "filename": "src/chromiumos/tast/local/strace/strace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:39Z",
+      "side": 1,
+      "message": "Could you handle errors properly? If it should be ignored, could you comment the reason?",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 3
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4662e3a0_dfcd9d68",
+        "filename": "src/chromiumos/tast/local/strace/strace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:39Z",
+      "side": 1,
+      "message": "Could you split the for loop into three blocks?\n- execve at first line check.\n- sandboxed check (if specified)\n- Run m.AddSyscall()s",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 0
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
