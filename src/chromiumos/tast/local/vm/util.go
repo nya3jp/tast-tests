@@ -30,15 +30,18 @@ import (
 )
 
 const (
-	terminaComponentName             = "cros-termina" // name of the Chrome component for the VM kernel and rootfs
+	// TerminaComponentName is the name of the Chrome component for the VM kernel and rootfs.
+	TerminaComponentName = "cros-termina"
+
+	// TerminaMountDir is a path to the location where we will mount the termina component.
+	TerminaMountDir = "/run/imageloader/cros-termina/99999.0.0"
+
 	terminaComponentDownloadPath     = "/usr/local/cros-termina"
 	terminaComponentLiveURLFormat    = "https://storage.googleapis.com/termina-component-testing/%d/live"
 	terminaComponentStagingURLFormat = "https://storage.googleapis.com/termina-component-testing/%d/staging"
 	terminaComponentURLFormat        = "https://storage.googleapis.com/termina-component-testing/%d/%s/chromeos_%s-archive/files.zip"
-	terminaMountDir                  = "/run/imageloader/cros-termina/99999.0.0"
-
-	lsbReleasePath = "/etc/lsb-release"
-	milestoneKey   = "CHROMEOS_RELEASE_CHROME_MILESTONE"
+	lsbReleasePath                   = "/etc/lsb-release"
+	milestoneKey                     = "CHROMEOS_RELEASE_CHROME_MILESTONE"
 )
 
 // ComponentType represents the VM component type.
@@ -145,15 +148,15 @@ func MountArtifactComponent(ctx context.Context, artifactPath string) error {
 
 // mountComponent mounts a component image from the provided image path.
 func mountComponent(ctx context.Context, image string) error {
-	if err := os.MkdirAll(terminaMountDir, 0755); err != nil {
+	if err := os.MkdirAll(TerminaMountDir, 0755); err != nil {
 		return err
 	}
 	// Unmount any existing component.
-	unix.Unmount(terminaMountDir, 0)
+	unix.Unmount(TerminaMountDir, 0)
 
 	// We could call losetup manually and use the mount syscall... or
 	// we could let mount(8) do the work.
-	mountCmd := testexec.CommandContext(ctx, "mount", image, "-o", "loop", terminaMountDir)
+	mountCmd := testexec.CommandContext(ctx, "mount", image, "-o", "loop", TerminaMountDir)
 	if err := mountCmd.Run(); err != nil {
 		mountCmd.DumpLog(ctx)
 		return errors.Wrap(err, "failed to mount component")
@@ -168,17 +171,17 @@ func mountComponentUpdater(ctx context.Context) error {
 		return err
 	}
 
-	testing.ContextLogf(ctx, "Mounting %q component", terminaComponentName)
-	resp, err := updater.LoadComponent(ctx, terminaComponentName, compupdater.Mount)
+	testing.ContextLogf(ctx, "Mounting %q component", TerminaComponentName)
+	resp, err := updater.LoadComponent(ctx, TerminaComponentName, compupdater.Mount)
 	if err != nil {
-		return errors.Wrapf(err, "mounting %q component failed", terminaComponentName)
+		return errors.Wrapf(err, "mounting %q component failed", TerminaComponentName)
 	}
 	testing.ContextLog(ctx, "Mounted component at path ", resp)
 
 	// Ensure that the 99999.0.0 component isn't used.
 	// Unmount any existing component and delete the 99999.0.0 directory.
-	unix.Unmount(terminaMountDir, 0)
-	return os.RemoveAll(terminaMountDir)
+	unix.Unmount(TerminaMountDir, 0)
+	return os.RemoveAll(TerminaMountDir)
 }
 
 // SetUpComponent sets up the VM component according to the specified ComponentType.
@@ -223,11 +226,11 @@ func SetUpComponent(ctx context.Context, c ComponentType) error {
 
 // UnmountComponent unmounts any active VM component.
 func UnmountComponent(ctx context.Context) {
-	if err := unix.Unmount(terminaMountDir, 0); err != nil {
+	if err := unix.Unmount(TerminaMountDir, 0); err != nil {
 		testing.ContextLog(ctx, "Failed to unmount component: ", err)
 	}
 
-	if err := os.Remove(terminaMountDir); err != nil {
+	if err := os.Remove(TerminaMountDir); err != nil {
 		testing.ContextLog(ctx, "Failed to remove component mount directory: ", err)
 	}
 }
