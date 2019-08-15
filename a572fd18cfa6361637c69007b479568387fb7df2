@@ -22,6 +22,30 @@
       "revId": "a572fd18cfa6361637c69007b479568387fb7df2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae54d1f5_c88bc087",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected.txt",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-08-15T07:18:34Z",
+      "side": 1,
+      "message": "let\u0027s wait for \nhttps://googleplex-android-review.googlesource.com/c/platform/vendor/google_arc/+/8691068\nto land",
+      "parentUuid": "28c9f8c3_3ad53d92",
+      "range": {
+        "startLine": 1,
+        "startChar": 19,
+        "endLine": 1,
+        "endChar": 25
+      },
+      "revId": "a572fd18cfa6361637c69007b479568387fb7df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
