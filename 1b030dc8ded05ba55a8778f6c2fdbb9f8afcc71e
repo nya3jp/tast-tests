@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa2e5e4b_78bd4a29",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T16:03:18Z",
+      "side": 1,
+      "message": "IIUC, this will always hit if exitOption is WaitProcess?",
+      "revId": "1b030dc8ded05ba55a8778f6c2fdbb9f8afcc71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
