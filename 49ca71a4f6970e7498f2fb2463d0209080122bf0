@@ -16,6 +16,24 @@
       "revId": "49ca71a4f6970e7498f2fb2463d0209080122bf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "124e4b31_d6126634",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-15T23:16:00Z",
+      "side": 1,
+      "message": "yes intentional, i\u0027m not sure what class of errors come from this particular check (race when writing to disk? corruption when writing? full disk?) but i thought about it and decided i\u0027d rather let the test take another screenshot and try again.\n\nreasoning: this test is not meant to check filesystem write/read is reliable...i hope that is being tested elsewhere :/\n\nsame with below",
+      "parentUuid": "89ee7efc_04ae604c",
+      "revId": "49ca71a4f6970e7498f2fb2463d0209080122bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
