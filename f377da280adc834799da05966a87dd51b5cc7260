@@ -179,6 +179,30 @@
     },
     {
       "key": {
+        "uuid": "b7c5966e_5c31bf9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-15T00:38:25Z",
+      "side": 1,
+      "message": "On the faulty devices the device\u0027s kernel crashes, which will definitely fail the test.\nBut I guess it makes sense to also check whether the executable does not crash.\nI would rather not pollute the test binary with a flag just to overwrite the return value. We should be able to look at the error returned by Run() and differentiate between a crash and the tests failing?",
+      "parentUuid": "83f1792f_ef964aa7",
+      "range": {
+        "startLine": 414,
+        "startChar": 1,
+        "endLine": 414,
+        "endChar": 5
+      },
+      "revId": "f377da280adc834799da05966a87dd51b5cc7260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "887c7382_d144929b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_sanity_vp90_cts_show_existing_frame.go",
         "patchSetId": 4
