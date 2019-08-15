@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89ee7efc_04ae604c",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-15T18:48:30Z",
+      "side": 1,
+      "message": "just double checking that you want the change in behavior here - before the test would have failed immediately if it couldn\u0027t open the file and now it won\u0027t fail until after the timeout elapses",
+      "revId": "49ca71a4f6970e7498f2fb2463d0209080122bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
