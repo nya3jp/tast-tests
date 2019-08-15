@@ -6,6 +6,7 @@ package crostini
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/local/chrome"
@@ -44,12 +45,21 @@ func StartedByArtifact() testing.Precondition { return startedByArtifactPre }
 // use pass enable-gpu to vm instance to allow gpu being used.
 func StartedGPUEnabled() testing.Precondition { return startedGPUEnabledPre }
 
+// StartedByInstaller works like StartedByArtifact (including the need to add
+// its data dependency) but additionally runs the installer in order to update
+// CrostiniManager within chrome.
+//
+// TODO(crbug.com/994040): This is a temporary precondition. Once we have
+// verified that it is stable, remove it and add its logic to all the others.
+func StartedByInstaller() testing.Precondition { return startedByInstallerPre }
+
 type setupMode int
 
 const (
 	artifact setupMode = iota
 	download
 	gpu
+	installer
 )
 
 var startedByArtifactPre = &preImpl{
@@ -68,6 +78,12 @@ var startedGPUEnabledPre = &preImpl{
 	name:    "crostini_started_gpu_enabled",
 	timeout: chrome.LoginTimeout + 10*time.Minute,
 	mode:    gpu,
+}
+
+var startedByInstallerPre = &preImpl{
+	name:    "crostini_started_by_installer",
+	timeout: chrome.LoginTimeout + 7*time.Minute,
+	mode:    installer,
 }
 
 // Implementation of crostini's precondition.
@@ -109,12 +125,22 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	if p.cr, err = chrome.New(ctx); err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
-	s.Log("Enabling Crostini preference setting")
 	if p.tconn, err = p.cr.TestAPIConn(ctx); err != nil {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
-	if err = vm.EnableCrostini(ctx, p.tconn); err != nil {
-		s.Fatal("Failed to enable Crostini preference setting: ", err)
+	if p.mode == installer {
+		s.Logf("Notifying chrome of a pre-existing component %q at %q", vm.TerminaComponentName, vm.TerminaMountDir)
+		if err := p.tconn.Eval(ctx, fmt.Sprintf(
+			`chrome.autotestPrivate.registerComponent("%s", "%s")`,
+			vm.TerminaComponentName, vm.TerminaMountDir), nil); err != nil {
+			s.Fatal("Failed to run autotestPrivate.registerComponent: ", err)
+		}
+
+	} else {
+		s.Log("Enabling Crostini preference setting")
+		if err = vm.EnableCrostini(ctx, p.tconn); err != nil {
+			s.Fatal("Failed to enable Crostini preference setting: ", err)
+		}
 	}
 
 	switch p.mode {
@@ -127,7 +153,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.StagingImageServer, "", false); err != nil {
 			s.Fatal("Failed to set up default container (from download): ", err)
 		}
-	case artifact, gpu:
+	case artifact, gpu, installer:
 		s.Log("Setting up component (from artifact)")
 		artifactPath := s.DataPath(ImageArtifact)
 		if err = vm.MountArtifactComponent(ctx, artifactPath); err != nil {
@@ -136,6 +162,22 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 		s.Log("Creating default container (from artifact)")
 		if p.cont, err = vm.CreateDefaultVMContainer(ctx, s.OutDir(), p.cr.User(), vm.Tarball, artifactPath, p.mode == gpu); err != nil {
 			s.Fatal("Failed to set up default container (from artifact): ", err)
+		}
+		if p.mode == installer {
+			s.Log("Installing crostini")
+			if err := p.tconn.EvalPromise(ctx,
+				`new Promise((resolve, reject) => {
+					chrome.autotestPrivate.runCrostiniInstaller(() => {
+						if (chrome.runtime.lastError === undefined) {
+							resolve();
+						} else {
+							reject(new Error(chrome.runtime.lastError.message));
+						}
+					});
+				})`, nil); err != nil {
+				s.Fatal("Running autotestPrivate.runCrostiniInstaller failed: ", err)
+			}
+
 		}
 	default:
 		s.Fatal("Unrecognized mode: ", p.mode)
