@@ -15,6 +15,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	platform_crash "chromiumos/tast/local/bundles/cros/platform/crash"
 	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
@@ -23,7 +24,6 @@ import (
 
 const (
 	systemCrashDir = "/var/spool/crash"
-	testCert       = "testcert.p12"
 )
 
 func init() {
@@ -32,7 +32,7 @@ func init() {
 		Desc:     "Verify udev triggered crash works as expected",
 		Contacts: []string{"yamaguchi@chromium.org", "iby@chromium.org", "cros-monitoring-forensics@google.com"},
 		Attr:     []string{"informational"},
-		Data:     []string{testCert},
+		Data:     []string{platform_crash.TestCert},
 	})
 }
 
@@ -151,7 +151,7 @@ func UdevCrash(ctx context.Context, s *testing.State) {
 		s.Log("No Atmel device found; this test should not be run on this device")
 	}
 
-	if err := metrics.SetConsent(ctx, s.DataPath(testCert)); err != nil {
+	if err := metrics.SetConsent(ctx, s.DataPath(platform_crash.TestCert)); err != nil {
 		s.Fatal("Failed to set consent: ", err)
 	}
 
