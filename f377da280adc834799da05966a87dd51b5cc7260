@@ -203,6 +203,30 @@
     },
     {
       "key": {
+        "uuid": "efc8070e_551ed15e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:14:20Z",
+      "side": 1,
+      "message": "\u003eOn the faulty devices the device\u0027s kernel crashes, which will definitely fail the test.\n\nHmm, that sounds risky to me, because in case of crash, the following test wouldn\u0027t run at the moment. Please let me see if there is a good way here from Tast framework\u0027s point of view.\n\n\u003e I would rather not pollute the test binary with a flag just to overwrite the return value. We should be able to look at the error returned by Run() and differentiate between a crash and the tests failing?\n\nUnfortunately, AFAIK, there\u0027s no clean way to figure out whether the test runs and failed, or test is crashed, or something unknown happens so test didn\u0027t run or ... whatever.\n\nThat\u0027s why I recommended you to make a small modification in the gtest binary.",
+      "parentUuid": "b7c5966e_5c31bf9d",
+      "range": {
+        "startLine": 414,
+        "startChar": 1,
+        "endLine": 414,
+        "endChar": 5
+      },
+      "revId": "f377da280adc834799da05966a87dd51b5cc7260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "887c7382_d144929b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_sanity_vp90_cts_show_existing_frame.go",
         "patchSetId": 4
