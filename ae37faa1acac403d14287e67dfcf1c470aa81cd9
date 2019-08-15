@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfa72a0d_d0a96c66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/wilco_advanced_charging.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-08-15T17:56:49Z",
+      "side": 1,
+      "message": "ditto, can it be const?",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 27
+      },
+      "revId": "ae37faa1acac403d14287e67dfcf1c470aa81cd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
