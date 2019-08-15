@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da766281_ce71342b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/gpu_enabled_artifact.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-08-15T23:14:50Z",
+      "side": 1,
+      "message": "IIRC, some boards already flipped the flag but maybe I\u0027m wrong about this. davidriley@ would know more.",
+      "range": {
+        "startLine": 31,
+        "startChar": 72,
+        "endLine": 31,
+        "endChar": 80
+      },
+      "revId": "b11bf12bc5cd4ef6f944b7d223539aa4fa3f785a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "693b3c09_09854a0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/gpu_enabled_gpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-08-15T23:14:50Z",
+      "side": 1,
+      "message": "crosvm_gpu is also needed.",
+      "revId": "b11bf12bc5cd4ef6f944b7d223539aa4fa3f785a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
