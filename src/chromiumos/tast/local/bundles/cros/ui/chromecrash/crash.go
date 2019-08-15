@@ -47,21 +47,6 @@ func cryptohomeCrashDirs(ctx context.Context) ([]string, error) {
 	return paths, nil
 }
 
-// getNewFiles returns all paths present in cur but not in orig.
-func getNewFiles(orig, cur []string) (added []string) {
-	om := make(map[string]struct{}, len(orig))
-	for _, p := range orig {
-		om[p] = struct{}{}
-	}
-
-	for _, p := range cur {
-		if _, ok := om[p]; !ok {
-			added = append(added, p)
-		}
-	}
-	return added
-}
-
 // deleteFiles deletes the supplied paths.
 func deleteFiles(ctx context.Context, paths []string) {
 	for _, p := range paths {
@@ -162,7 +147,7 @@ func KillAndGetCrashFiles(ctx context.Context) ([]string, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get new crashes")
 	}
-	newCrashFiles := getNewFiles(oldFiles, newFiles)
+	newCrashFiles := crash.GetNewFiles(oldFiles, newFiles)
 	for _, p := range newCrashFiles {
 		testing.ContextLog(ctx, "Found expected Chrome crash file ", p)
 	}
