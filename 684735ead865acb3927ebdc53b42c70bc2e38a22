@@ -70,6 +70,30 @@
       "revId": "684735ead865acb3927ebdc53b42c70bc2e38a22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6761ef32_53477c39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/wilco_charge_modes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-15T14:24:45Z",
+      "side": 1,
+      "message": "Whoops, I only did that on the other CL. In PS8 I added the note.",
+      "parentUuid": "9480c41f_7eca88c2",
+      "range": {
+        "startLine": 39,
+        "startChar": 24,
+        "endLine": 39,
+        "endChar": 25
+      },
+      "revId": "684735ead865acb3927ebdc53b42c70bc2e38a22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
