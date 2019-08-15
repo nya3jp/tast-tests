@@ -396,7 +396,14 @@ func (c *kernelConfigCheck) test(conf map[string]string, s *testing.State) {
 	for _, r := range c.exclusive {
 		for k := range conf {
 			if r.MatchString(k) && !declared[k] {
-				s.Errorf("%s should be declared but wasn't", k)
+				// Construct error message.
+				var allowed []string
+				for d := range declared {
+					if r.MatchString(d) {
+						allowed = append(allowed, d)
+					}
+				}
+				s.Errorf("Config %q found for %q when only %q are allowed", k, r, allowed)
 			}
 		}
 	}
