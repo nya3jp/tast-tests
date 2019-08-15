@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b61e1a1_6dd4ec7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/wilco_charge_modes.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-08-15T17:53:53Z",
+      "side": 1,
+      "message": "I guess it\u0027s also can be const",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 15
+      },
+      "revId": "ad4409d92f4b3468c09bed4d8f1469decb4a67b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
