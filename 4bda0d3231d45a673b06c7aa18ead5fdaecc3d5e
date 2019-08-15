@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bea3f88_6d1ca104",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T04:33:32Z",
+      "side": 1,
+      "message": "style: could you use filepath.Join()?\n\nfilepath.Join(\"/usr/local/dlc\", dlcModuleID, \"test-package/dlcservice_test-dlc.payload.json\")",
+      "range": {
+        "startLine": 48,
+        "startChar": 46,
+        "endLine": 48,
+        "endChar": 128
+      },
+      "revId": "4bda0d3231d45a673b06c7aa18ead5fdaecc3d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c53cfe88_91ec6557",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T04:33:32Z",
+      "side": 1,
+      "message": "Could you wrap this error by errors.Wrap(err, \"...good description...\") to show stacktrace and context in case of failure?\n\nDitto for below.",
+      "range": {
+        "startLine": 50,
+        "startChar": 17,
+        "endLine": 50,
+        "endChar": 20
+      },
+      "revId": "4bda0d3231d45a673b06c7aa18ead5fdaecc3d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74c6d0d0_a3266e45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T04:33:32Z",
+      "side": 1,
+      "message": "Could you declare a struct following the schema?\n\ncf) https://golang.org/pkg/encoding/json/#Marshal",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 44
+      },
+      "revId": "4bda0d3231d45a673b06c7aa18ead5fdaecc3d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc5a4bcf_ebb9a9b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/updateserver/updateserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T04:33:32Z",
+      "side": 1,
+      "message": "style: could you combine them into one inline?\n\nif err :\u003d json.Unmarshal(...); err !\u003d nil {\n  return \"\", \"\", errors.Wrap(err, \"...\")\n}",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 16
+      },
+      "revId": "4bda0d3231d45a673b06c7aa18ead5fdaecc3d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
