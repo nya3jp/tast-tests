@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5af13b9_67405b44",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-08-15T05:00:15Z",
+      "side": 1,
+      "message": "\"improve\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "dcc3c04d94ce1c5297a45a82c1e9af9646ac729b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d3a4a3f_d1a10bd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-08-15T05:00:15Z",
+      "side": 1,
+      "message": "how about: \"Setting %q found in config via %q when only %q are allowed\"",
+      "revId": "dcc3c04d94ce1c5297a45a82c1e9af9646ac729b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
