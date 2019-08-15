@@ -1,0 +1,203 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2ad65a2_20ba7671",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:59Z",
+      "side": 1,
+      "message": "could you document the behavior. Specifically, the behavior on failure?\n\nIn Go, prefixes like \"get\", \"is\", \"has\" etc. are often dropped. How about testDevicePath().",
+      "revId": "cc9f2683a9ed74fa6773cfbe79130a0b87e6990e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "862bf2e6_c67cb510",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:59Z",
+      "side": 1,
+      "message": "nit/style: could you use \"var devPath string\" for zero initialization var?",
+      "revId": "cc9f2683a9ed74fa6773cfbe79130a0b87e6990e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4d44692_79f34d64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:59Z",
+      "side": 1,
+      "message": "Could you handle error properly?",
+      "revId": "cc9f2683a9ed74fa6773cfbe79130a0b87e6990e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bf7e03a_599877e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:59Z",
+      "side": 1,
+      "message": "nit: testUSBBounce is probably common naming pattern.",
+      "revId": "cc9f2683a9ed74fa6773cfbe79130a0b87e6990e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71c0a5f8_f6e62f0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:59Z",
+      "side": 1,
+      "message": "Unused?",
+      "revId": "cc9f2683a9ed74fa6773cfbe79130a0b87e6990e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4696d247_cf6b098b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:59Z",
+      "side": 1,
+      "message": "Could you comment what is this for?",
+      "revId": "cc9f2683a9ed74fa6773cfbe79130a0b87e6990e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c83c8a39_7e521427",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:59Z",
+      "side": 1,
+      "message": "os.RemoveAll(\"/run/daemon-store/usb_bouncer\") is what you need?\n\nCould you handle errors properly for both L62 and L63?",
+      "revId": "cc9f2683a9ed74fa6773cfbe79130a0b87e6990e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39e15171_86b479a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:59Z",
+      "side": 1,
+      "message": "s.Fatal() exits from the function, so you don\u0027t need return.",
+      "revId": "cc9f2683a9ed74fa6773cfbe79130a0b87e6990e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "284aab90_2160f3ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:59Z",
+      "side": 1,
+      "message": "unused?",
+      "range": {
+        "startLine": 95,
+        "startChar": 27,
+        "endLine": 95,
+        "endChar": 47
+      },
+      "revId": "cc9f2683a9ed74fa6773cfbe79130a0b87e6990e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d71328e_ca577d74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:59Z",
+      "side": 1,
+      "message": "Is this intentional to re-use the same instance? Could you comment?",
+      "range": {
+        "startLine": 101,
+        "startChar": 25,
+        "endLine": 101,
+        "endChar": 26
+      },
+      "revId": "cc9f2683a9ed74fa6773cfbe79130a0b87e6990e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "387491ff_28ccb247",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-15T17:05:59Z",
+      "side": 1,
+      "message": "Could you avoid printing multiple lines log?\nInstead, could you dump the content into a file?\n\ncf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting\n\n\u003d\u003d quote \u003d\u003d\nplease avoid multiline strings since they make logs difficult to read.\n\u003d\u003d quote end \u003d\u003d",
+      "revId": "cc9f2683a9ed74fa6773cfbe79130a0b87e6990e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
