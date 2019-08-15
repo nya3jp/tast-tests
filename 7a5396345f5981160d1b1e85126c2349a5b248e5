@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fb822a9_5b309505",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/wilco_charge_modes.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-08-15T10:32:13Z",
+      "side": 1,
+      "message": "Why you do not want to put these functions in some library and reuse them in next CLs?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 2
+      },
+      "revId": "7a5396345f5981160d1b1e85126c2349a5b248e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
