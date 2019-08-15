@@ -177,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "064e85f7_042a5d6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/toolkit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-15T18:48:30Z",
+      "side": 1,
+      "message": "seems reasonable if that\u0027s the behavior you want - maybe add a comment to highlight that it\u0027s a choice not an accidental omission",
+      "parentUuid": "8f0332b9_9aa725cf",
+      "revId": "48cfedc097aea2e883942ed9777be90ae3fbf619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "773d49cf_0d8ae897",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/toolkit.go",
         "patchSetId": 4
