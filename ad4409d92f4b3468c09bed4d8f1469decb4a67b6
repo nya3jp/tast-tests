@@ -22,6 +22,30 @@
       "revId": "ad4409d92f4b3468c09bed4d8f1469decb4a67b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "549c7137_f2073d66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/wilco_charge_modes.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-08-15T21:03:03Z",
+      "side": 1,
+      "message": "Unfortunately it can\u0027t. As I understand it Go only supports basic types that can be known at compile time as const: https://gobyexample.com/constants",
+      "parentUuid": "8b61e1a1_6dd4ec7b",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 15
+      },
+      "revId": "ad4409d92f4b3468c09bed4d8f1469decb4a67b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
