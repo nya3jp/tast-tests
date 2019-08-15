@@ -16,6 +16,24 @@
       "revId": "1b030dc8ded05ba55a8778f6c2fdbb9f8afcc71e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6e98618_a36e6439",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2019-08-15T16:49:18Z",
+      "side": 1,
+      "message": "Yes. If exitOption is WaitProcess, err !\u003d nil means the process didn\u0027t exit with zero status, so I think the logic is correct.\n\nThis does look confusing and hard to read. I rewrited it a little to check wait status only when exitOption is KillProcess. Please take a look.",
+      "parentUuid": "fa2e5e4b_78bd4a29",
+      "revId": "1b030dc8ded05ba55a8778f6c2fdbb9f8afcc71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
