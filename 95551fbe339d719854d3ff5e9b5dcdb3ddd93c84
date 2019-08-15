@@ -16,6 +16,24 @@
       "revId": "95551fbe339d719854d3ff5e9b5dcdb3ddd93c84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a3348aa_f2f382c7",
+        "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-15T18:58:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3e614b8_e2a86e1d",
+      "revId": "95551fbe339d719854d3ff5e9b5dcdb3ddd93c84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
