@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bc66224a_9c9bd32d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/toolkit_gtk3_demo.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-15T00:33:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52aac2f4_7f50fd99",
+      "revId": "48cfedc097aea2e883942ed9777be90ae3fbf619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "008a4e4f_08fe5742",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/toolkit_tkinter_demo.py",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "48cfedc097aea2e883942ed9777be90ae3fbf619",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b4c8be4_2caa1e46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/toolkit_tkinter_demo.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-15T00:33:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "008a4e4f_08fe5742",
+      "revId": "48cfedc097aea2e883942ed9777be90ae3fbf619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "b61cbdf5_870bbace",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/toolkit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-15T00:33:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50e1d352_7409aed9",
+      "revId": "48cfedc097aea2e883942ed9777be90ae3fbf619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a41bdb6_e753cea3",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/toolkit.go",
         "patchSetId": 4
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "8257ce5d_5a4c636f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/toolkit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-15T00:33:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a41bdb6_e753cea3",
+      "revId": "48cfedc097aea2e883942ed9777be90ae3fbf619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0d60777_50092f22",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/toolkit.go",
         "patchSetId": 4
@@ -81,6 +153,24 @@
       "writtenOn": "2019-08-14T22:17:13Z",
       "side": 1,
       "message": "do you also want to defer a kill command just in case?",
+      "revId": "48cfedc097aea2e883942ed9777be90ae3fbf619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f0332b9_9aa725cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/toolkit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-15T00:33:35Z",
+      "side": 1,
+      "message": "i chose not to as i\u0027d rather timeout while waiting (which is an error), whereas the kill+wait (which we use in other tests) does not cause the test to error if we fail to close the window.\nDoes that seem reasonable?\n\nrelatedly: Moved the closeApplication to defer in order to avoid not killing it if the screenshot check fails",
+      "parentUuid": "d0d60777_50092f22",
       "revId": "48cfedc097aea2e883942ed9777be90ae3fbf619",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "5b860a9c_9251da96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/toolkit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-15T00:33:35Z",
+      "side": 1,
+      "message": "switched to a more generic message, but prefer having some message over just dumping the error (consistency w other \"Fatal\"s)",
+      "parentUuid": "773d49cf_0d8ae897",
+      "revId": "48cfedc097aea2e883942ed9777be90ae3fbf619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a338768b_a30576a0",
         "filename": "src/chromiumos/tast/local/crostini/display.go",
         "patchSetId": 4
@@ -118,6 +226,24 @@
       "revId": "48cfedc097aea2e883942ed9777be90ae3fbf619",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60c71e9e_ddb3f80e",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-15T00:33:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a338768b_a30576a0",
+      "revId": "48cfedc097aea2e883942ed9777be90ae3fbf619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -138,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "ea95e4e3_e8aec1d4",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-15T00:33:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87980c0b_c3ba3657",
+      "revId": "48cfedc097aea2e883942ed9777be90ae3fbf619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9bd92b40_ea61c1a4",
         "filename": "src/chromiumos/tast/local/crostini/display.go",
         "patchSetId": 4
@@ -152,6 +296,24 @@
       "revId": "48cfedc097aea2e883942ed9777be90ae3fbf619",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "914aa9f6_488d534f",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-15T00:33:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bd92b40_ea61c1a4",
+      "revId": "48cfedc097aea2e883942ed9777be90ae3fbf619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
