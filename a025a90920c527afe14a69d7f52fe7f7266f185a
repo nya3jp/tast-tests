@@ -22,6 +22,30 @@
       "revId": "a025a90920c527afe14a69d7f52fe7f7266f185a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19478d82_8b9b4c32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-08-16T18:05:24Z",
+      "side": 1,
+      "message": "Good call.. thanks, Jeff",
+      "parentUuid": "89bed3a9_d13911db",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 65
+      },
+      "revId": "a025a90920c527afe14a69d7f52fe7f7266f185a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
