@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a78de062_750436dc",
+        "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-16T17:47:59Z",
+      "side": 1,
+      "message": "I was using a variant, but now I will just use argIndex \u003d\u003d -1 to code for when the argIndex and argValues should be ignored.",
+      "parentUuid": "1a337713_23fb1b1b",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3df07cd_81b33a75",
         "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "524089cf_7a274deb",
+        "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-16T17:47:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e3df07cd_81b33a75",
+      "range": {
+        "startLine": 42,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 25
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "acea4d0c_355a322c",
+        "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-16T17:47:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5fbc6c0e_90f69bf1",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 30
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bedaf68_220e280f",
         "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator.go",
         "patchSetId": 1
@@ -85,6 +157,24 @@
       "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b04b4cce_ffba1ccd",
+        "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-16T17:47:59Z",
+      "side": 1,
+      "message": "This is debug code I now removed",
+      "parentUuid": "6bedaf68_220e280f",
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "dc715acf_2f122576",
+        "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-16T17:47:59Z",
+      "side": 1,
+      "message": "This was debug code.",
+      "parentUuid": "2e09dd8c_18d72cd8",
+      "range": {
+        "startLine": 61,
+        "startChar": 7,
+        "endLine": 61,
+        "endChar": 8
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "585a316d_b45a6556",
         "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator.go",
         "patchSetId": 1
@@ -131,6 +245,30 @@
       "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f1b6f2a_8aaf4f1f",
+        "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-16T17:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "585a316d_b45a6556",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 4
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "8c5eb6b6_b1437d7f",
+        "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-16T17:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af3236eb_144ff436",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 3
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39cb96a8_cfcc0c8b",
         "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator.go",
         "patchSetId": 1
@@ -177,6 +339,30 @@
       "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f43e2923_28095196",
+        "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-16T17:47:59Z",
+      "side": 1,
+      "message": "No. I refactored this so it is now -1, \"\" to indicate an error.",
+      "parentUuid": "39cb96a8_cfcc0c8b",
+      "range": {
+        "startLine": 126,
+        "startChar": 10,
+        "endLine": 126,
+        "endChar": 11
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "d8f12639_9ccd02c5",
+        "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-16T17:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dd938fe_650d6c41",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 146,
+        "endChar": 3
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7aeed8a2_010f201d",
         "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator.go",
         "patchSetId": 1
@@ -223,6 +433,30 @@
       "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89e37553_eebdb9a0",
+        "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-16T17:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7aeed8a2_010f201d",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 3
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -289,6 +523,24 @@
     },
     {
       "key": {
+        "uuid": "ac98f9ca_f7870084",
+        "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-16T17:47:59Z",
+      "side": 1,
+      "message": "I inlined the function this tests, so I have tried to make sure the interesting cases are covered in the remaining tests.",
+      "parentUuid": "40586175_8b4d58ad",
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2a57482e_11c3bff7",
         "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator_test.go",
         "patchSetId": 1
@@ -303,6 +555,24 @@
       "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86e3c0bc_4c8acdea",
+        "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-16T17:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a57482e_11c3bff7",
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -329,6 +599,30 @@
     },
     {
       "key": {
+        "uuid": "fac62e95_cdbef428",
+        "filename": "src/chromiumos/tast/local/strace/minijail_policy_generator_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-16T17:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "449e2207_d80ba851",
+      "range": {
+        "startLine": 103,
+        "startChar": 13,
+        "endLine": 103,
+        "endChar": 57
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "730fcd7c_4a38eec7",
         "filename": "src/chromiumos/tast/local/strace/strace.go",
         "patchSetId": 1
@@ -343,6 +637,24 @@
       "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5dbe5f1_7900325f",
+        "filename": "src/chromiumos/tast/local/strace/strace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-16T17:47:59Z",
+      "side": 1,
+      "message": "bundles/cros/security/minijail.go is an existing test that collides with that naming scheme. In addition, this is intended to be available for any integration test of binaries / daemons running inside minijail. Since, this is only used by one test in cros/security. I have moved it to seccomp/policy_generator.go in that for now.",
+      "parentUuid": "730fcd7c_4a38eec7",
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -369,6 +681,30 @@
     },
     {
       "key": {
+        "uuid": "f7e0a640_01a16702",
+        "filename": "src/chromiumos/tast/local/strace/strace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-16T17:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cb0a455_4e6da001",
+      "range": {
+        "startLine": 27,
+        "startChar": 69,
+        "endLine": 27,
+        "endChar": 73
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a744cc9_fadd40cb",
         "filename": "src/chromiumos/tast/local/strace/strace.go",
         "patchSetId": 1
@@ -389,6 +725,30 @@
       "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42a60ed0_c9abebc9",
+        "filename": "src/chromiumos/tast/local/strace/strace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-16T17:47:59Z",
+      "side": 1,
+      "message": "You cannot mix individual values with variatic ones, so it looks ugly IMO, but I changed it.\n\nI have to represent it as:\ntestexec.CommandContext(ctx, \"strace\", append([]string{\"-f\", \"-o\", f.Name(), \"--\", name}, arg...)...)\nbecause the following isn\u0027t valid:\ntestexec.CommandContext(ctx, \"strace\", \"-f\", \"-o\", f.Name(), \"--\", name, arg...)\nneither is the intermediate form:\ntestexec.CommandContext(ctx, \"strace\", []string{\"-f\", \"-o\", f.Name(), \"--\", name}..., arg...)",
+      "parentUuid": "3a744cc9_fadd40cb",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -415,6 +775,30 @@
     },
     {
       "key": {
+        "uuid": "6cf4c285_52e45911",
+        "filename": "src/chromiumos/tast/local/strace/strace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-16T17:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49d3dc20_d9775e43",
+      "range": {
+        "startLine": 50,
+        "startChar": 33,
+        "endLine": 50,
+        "endChar": 46
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c96a506_2fd150b3",
         "filename": "src/chromiumos/tast/local/strace/strace.go",
         "patchSetId": 1
@@ -429,6 +813,24 @@
       "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45f62dbf_bdc48d16",
+        "filename": "src/chromiumos/tast/local/strace/strace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-16T17:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c96a506_2fd150b3",
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -472,6 +874,48 @@
     },
     {
       "key": {
+        "uuid": "a747ff31_3825166f",
+        "filename": "src/chromiumos/tast/local/strace/strace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-16T17:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61bfca50_a1ce52c2",
+      "range": {
+        "startLine": 65,
+        "startChar": 16,
+        "endLine": 65,
+        "endChar": 87
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d23149b_a74dd5dc",
+        "filename": "src/chromiumos/tast/local/strace/strace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-16T17:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e443205_684c6b9f",
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11ea8bb5_8b7c5795",
         "filename": "src/chromiumos/tast/local/strace/strace.go",
         "patchSetId": 1
@@ -492,6 +936,30 @@
       "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c0a1eb3_32104c75",
+        "filename": "src/chromiumos/tast/local/strace/strace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-16T17:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11ea8bb5_8b7c5795",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 8
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -518,6 +986,30 @@
     },
     {
       "key": {
+        "uuid": "dd46cc78_dc49aae9",
+        "filename": "src/chromiumos/tast/local/strace/strace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-16T17:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "580b60a0_831e2348",
+      "range": {
+        "startLine": 73,
+        "startChar": 17,
+        "endLine": 73,
+        "endChar": 23
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5173535c_ae20462e",
         "filename": "src/chromiumos/tast/local/strace/strace.go",
         "patchSetId": 1
@@ -538,6 +1030,30 @@
       "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7270bed7_e19b57e0",
+        "filename": "src/chromiumos/tast/local/strace/strace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-16T17:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5173535c_ae20462e",
+      "range": {
+        "startLine": 74,
+        "startChar": 17,
+        "endLine": 74,
+        "endChar": 23
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -564,6 +1080,30 @@
     },
     {
       "key": {
+        "uuid": "007d7927_b0ae460a",
+        "filename": "src/chromiumos/tast/local/strace/strace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-16T17:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c316dfc5_be89a449",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 3
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4662e3a0_dfcd9d68",
         "filename": "src/chromiumos/tast/local/strace/strace.go",
         "patchSetId": 1
@@ -584,6 +1124,30 @@
       "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "523f058f_194ed8b3",
+        "filename": "src/chromiumos/tast/local/strace/strace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-16T17:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4662e3a0_dfcd9d68",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 0
+      },
+      "revId": "2e329a10ed60004d8530135074a57bfb057fb7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
