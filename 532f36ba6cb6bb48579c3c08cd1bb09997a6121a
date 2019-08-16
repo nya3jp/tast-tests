@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6792854e_50f02d62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/ApiDemos.apk.external",
+        "patchSetId": 6
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-08-16T04:49:32Z",
+      "side": 1,
+      "message": "nit: optional, would we have better name for this? ScreenRotationTest_xxxxxx.apk?",
+      "range": {
+        "startLine": 2,
+        "startChar": 62,
+        "endLine": 2,
+        "endChar": 79
+      },
+      "revId": "532f36ba6cb6bb48579c3c08cd1bb09997a6121a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85cbb863_c77946ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-08-16T04:49:32Z",
+      "side": 1,
+      "message": "would it better to install this before waiting for idle?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "532f36ba6cb6bb48579c3c08cd1bb09997a6121a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3627b70_69adc513",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-08-16T04:49:32Z",
+      "side": 1,
+      "message": "nit: what if we recompile it in N and avoid manual step?",
+      "range": {
+        "startLine": 81,
+        "startChar": 22,
+        "endLine": 81,
+        "endChar": 26
+      },
+      "revId": "532f36ba6cb6bb48579c3c08cd1bb09997a6121a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5b303b9_f2b2a004",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-08-16T04:49:32Z",
+      "side": 1,
+      "message": "nit: Is it needed if we have NYC+ boards only?",
+      "range": {
+        "startLine": 88,
+        "startChar": 84,
+        "endLine": 88,
+        "endChar": 90
+      },
+      "revId": "532f36ba6cb6bb48579c3c08cd1bb09997a6121a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97d2615b_1c244576",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-08-16T04:49:32Z",
+      "side": 1,
+      "message": "nit: add meaningful comment?",
+      "range": {
+        "startLine": 115,
+        "startChar": 19,
+        "endLine": 115,
+        "endChar": 26
+      },
+      "revId": "532f36ba6cb6bb48579c3c08cd1bb09997a6121a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac3a8015_b6e956ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-08-16T04:49:32Z",
+      "side": 1,
+      "message": "percentile -\u003e ms? to double check.",
+      "range": {
+        "startLine": 228,
+        "startChar": 10,
+        "endLine": 228,
+        "endChar": 12
+      },
+      "revId": "532f36ba6cb6bb48579c3c08cd1bb09997a6121a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fa72437_d01bc276",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-08-16T04:49:32Z",
+      "side": 1,
+      "message": "similar to other comments if we could simplify everything for NYC+ boards?",
+      "range": {
+        "startLine": 240,
+        "startChar": 30,
+        "endLine": 240,
+        "endChar": 35
+      },
+      "revId": "532f36ba6cb6bb48579c3c08cd1bb09997a6121a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
