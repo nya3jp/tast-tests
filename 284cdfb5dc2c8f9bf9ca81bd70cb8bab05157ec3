@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65fc7360_cdf7bef0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/toolkit.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-16T00:08:40Z",
+      "side": 1,
+      "message": "QQ: How about using the same expected color? I think that would be less misleading on debugging. Or is it intentional?",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 26
+      },
+      "revId": "284cdfb5dc2c8f9bf9ca81bd70cb8bab05157ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "570c9b75_0433f81d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/toolkit.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-16T00:08:40Z",
+      "side": 1,
+      "message": "nit: Please use filepath.Join.",
+      "range": {
+        "startLine": 89,
+        "startChar": 14,
+        "endLine": 89,
+        "endChar": 42
+      },
+      "revId": "284cdfb5dc2c8f9bf9ca81bd70cb8bab05157ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ddf16ed_bfadd14c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/toolkit.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-16T00:08:40Z",
+      "side": 1,
+      "message": "Optional: This is a bit confusing because conf.command looks like passed to exec(2) but it is actually parsed by the shell.\n\nI would instead recommend using conf.command directly:\n\n cmd :\u003d cont.Command(ctx, conf.command...)\n\nand setting the environment variable by using env(1):\n\n command:       []string{\"env\", \"GDK_BACKEND\u003dwayland\", \"python3\", \"toolkit_gtk3_demo.py\"},",
+      "range": {
+        "startLine": 104,
+        "startChar": 26,
+        "endLine": 104,
+        "endChar": 71
+      },
+      "revId": "284cdfb5dc2c8f9bf9ca81bd70cb8bab05157ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bdabb14_9472ea6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/toolkit.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-16T00:08:40Z",
+      "side": 1,
+      "message": "s is not used.",
+      "range": {
+        "startLine": 123,
+        "startChar": 43,
+        "endLine": 123,
+        "endChar": 59
+      },
+      "revId": "284cdfb5dc2c8f9bf9ca81bd70cb8bab05157ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
