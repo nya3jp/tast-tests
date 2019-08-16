@@ -28,10 +28,9 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: UdevCrash,
-		Desc: "Verify udev triggered crash works as expected",
-		// TODO(yamaguchi): Add proper owner addresses.
-		Contacts: []string{"yamaguchi@chromium.org"},
+		Func:     UdevCrash,
+		Desc:     "Verify udev triggered crash works as expected",
+		Contacts: []string{"yamaguchi@chromium.org", "iby@chromium.org", "cros-monitoring-forensics@google.com"},
 		Attr:     []string{"informational"},
 		Data:     []string{testCert},
 	})
@@ -156,7 +155,7 @@ func UdevCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set consent: ", err)
 	}
 
-	// Memorize existing cresh report to distinguish new reports from them.
+	// Memorize existing crash report to distinguish new reports from them.
 	files, err := ioutil.ReadDir(systemCrashDir)
 	pastCrashes := make(map[string]struct{})
 	if err != nil && !os.IsNotExist(err) {
