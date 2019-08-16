@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f8cca52_08598088",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-16T00:41:28Z",
+      "side": 1,
+      "message": "2 seconds seems a little short; a loaded system might not even schedule a job for 2 seconds",
+      "range": {
+        "startLine": 82,
+        "startChar": 34,
+        "endLine": 82,
+        "endChar": 49
+      },
+      "revId": "0219135855f7eac1593ad58e3a6b87e3032d4183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
