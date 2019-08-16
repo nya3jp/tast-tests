@@ -22,6 +22,30 @@
       "revId": "e739a3a46f4a0d1f587342e004c8983f5516cfd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "676c3237_ea8691d1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-08-16T01:02:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "52fab8c0_e0e31501",
+      "range": {
+        "startLine": 53,
+        "startChar": 39,
+        "endLine": 53,
+        "endChar": 55
+      },
+      "revId": "e739a3a46f4a0d1f587342e004c8983f5516cfd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
