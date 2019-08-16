@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a598e340_595cc8cf",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1297374
+      },
+      "writtenOn": "2019-08-16T00:02:23Z",
+      "side": 1,
+      "message": "nit: CrostiniManager",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 18
+      },
+      "revId": "5224f80c78a1d75fa7026982d41c4105710958e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e875c500_48704b16",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1297374
+      },
+      "writtenOn": "2019-08-16T00:02:23Z",
+      "side": 1,
+      "message": "Nit: Not sure if this all-spaces indentation style is conventional; looks like some other tests use tabs exclusively even in inline JavaScript and some use tabs up to the current indent level plus spaces to indent the JavaScript itself.",
+      "revId": "5224f80c78a1d75fa7026982d41c4105710958e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
