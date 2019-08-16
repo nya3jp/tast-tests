@@ -7,7 +7,7 @@
 //
 // Usage
 //
-//  p, err := profiler.Start(ctx, s, Profiler.Perf, ...)
+//  p, err := profiler.Start(ctx, s, Profiler.Perf(nil), ...)
 //  if err != nil {
 //  	// Error handling...
 //  }
@@ -31,13 +31,6 @@ type instance interface {
 // Profiler is a function construct a profiler instance
 // and start the profiler.
 type Profiler func(ctx context.Context, outDir string) (instance, error)
-
-// Profiler's constructors available in the library.
-var (
-	Perf   Profiler = newPerf
-	VMStat Profiler = newVMStat
-	Top    Profiler = newTop
-)
 
 // RunningProf is the list of all running profilers.
 type RunningProf []instance
