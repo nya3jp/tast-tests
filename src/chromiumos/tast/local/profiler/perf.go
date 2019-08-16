@@ -18,15 +18,53 @@ import (
 // perf represents the perf profiler.
 //
 // perf supports gathering profiler data using the
-// command "perf record".
+// command "perf" with the perfType ("stat" or "record") specified.
 type perf struct {
 	cmd *testexec.Cmd
 }
 
-// newPerf runs perf command to start recording perf.data.
-func newPerf(ctx context.Context, outDir string) (instance, error) {
-	outputPath := filepath.Join(outDir, "perf.data")
-	cmd := testexec.CommandContext(ctx, "perf", "record", "-e", "cycles", "-g", "--output", outputPath)
+// PerfType represents the type of perf that the users
+// want to use.
+type PerfType int
+
+// Type of perf
+const (
+	// PerfRecord runs "perf record -e cycles -g" on the DUT.
+	PerfRecord = iota
+	// PerfStat runs "perf stat record -a" on the DUT.
+	PerfStat
+)
+
+// PerfOpts represents options for running perf.
+type PerfOpts struct {
+	// Type indicates the type of profiler running ("record" or "stat").
+	Type PerfType
+}
+
+// Perf creates a Profiler instance that constructs the profiler.
+// For default options (Type = PerfRecord), input for opts can be nil or empty PerfOpts struct.
+func Perf(opts *PerfOpts) Profiler {
+	// Set default options if needed.
+	opts = getPerfOptsDefault(opts)
+	return func(ctx context.Context, outDir string) (instance, error) {
+		return newPerf(ctx, outDir, opts)
+	}
+}
+
+func getPerfOptsDefault(opts *PerfOpts) *PerfOpts {
+	if opts == nil {
+		opts = &PerfOpts{}
+	}
+	return opts
+}
+
+// newPerf creates and runs perf command to start recording perf.data with the options specified.
+func newPerf(ctx context.Context, outDir string, opts *PerfOpts) (instance, error) {
+	cmd, err := getCmd(ctx, outDir, opts.Type)
+	if err != nil {
+		return nil, err
+	}
+
 	if err := cmd.Start(); err != nil {
 		cmd.DumpLog(ctx)
 		return nil, errors.Wrapf(err, "failed running %s", shutil.EscapeSlice(cmd.Args))
@@ -51,6 +89,17 @@ func newPerf(ctx context.Context, outDir string) (instance, error) {
 	return &perf{
 		cmd: cmd,
 	}, nil
+}
+
+func getCmd(ctx context.Context, outDir string, perfType PerfType) (*testexec.Cmd, error) {
+	outputPath := filepath.Join(outDir, "perf.data")
+	if perfType == PerfRecord {
+		return testexec.CommandContext(ctx, "perf", "record", "-e", "cycles", "-g", "--output", outputPath), nil
+	} else if perfType == PerfStat {
+		return testexec.CommandContext(ctx, "perf", "stat", "record", "-a", "--output", outputPath), nil
+	} else {
+		return nil, errors.New("invalid perf type")
+	}
 }
 
 // end interrupts the perf command and ends the recording of perf.data.

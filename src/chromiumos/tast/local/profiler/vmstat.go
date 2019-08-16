@@ -8,7 +8,9 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"strconv"
 	"syscall"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
@@ -18,15 +20,46 @@ import (
 // vmstat represents the vmstat profiler.
 //
 // vmstat supports running 'vmstat' command in the DUT during testing.
-// The output of vmstat will be stored in vmstat.data in the specified
-// output directory.
+// vmstat will run every X seconds in interval (default is 1 seconds) and
+// stored the result in vmstat.data in the specified output directory.
 type vmstat struct {
 	cmd *testexec.Cmd
 	out *os.File
 }
 
-// newVMStat runs vmstat command to start recording vmstat.data.
-func newVMStat(ctx context.Context, outDir string) (instance, error) {
+// VMStatOpts represents options for running vmstat.
+type VMStatOpts struct {
+	// Interval indicates the duration between each vmstat run.
+	// Interval must be able to convert to a non-decimal in seconds.
+	// For example, vmstat can run 2 seconds but not 2.3 seconds.
+	// 2.3 will be rounded to 2 for vmstat interval.
+	Interval time.Duration
+}
+
+// VMStat creates a Profiler instance that constructs and runs the profiler.
+// For default options (Interval = 1 seconds), input for opts can be nil
+// or empty VMStatOpts struct.
+func VMStat(opts *VMStatOpts) Profiler {
+	// Set default options if needed.
+	opts = getVMStatOptsDefault(opts)
+	return func(ctx context.Context, outDir string) (instance, error) {
+		return newVMStat(ctx, outDir, opts)
+	}
+}
+
+func getVMStatOptsDefault(opts *VMStatOpts) *VMStatOpts {
+	if opts == nil {
+		opts = &VMStatOpts{}
+	}
+	// Default option for Interval is 1 seconds.
+	if opts.Interval == 0 {
+		opts.Interval = 1 * time.Second
+	}
+	return opts
+}
+
+// newVMStat runs vmstat command to start recording vmstat.data with the options specified.
+func newVMStat(ctx context.Context, outDir string, opts *VMStatOpts) (instance, error) {
 	outputPath := filepath.Join(outDir, "vmstat.data")
 	out, err := os.Create(outputPath)
 	if err != nil {
@@ -40,7 +73,9 @@ func newVMStat(ctx context.Context, outDir string) (instance, error) {
 		}
 	}()
 
-	cmd := testexec.CommandContext(ctx, "vmstat", "1")
+	// Get the int value of Interval in seconds.
+	interval := int(opts.Interval.Seconds())
+	cmd := testexec.CommandContext(ctx, "vmstat", strconv.Itoa(interval))
 	cmd.Stdout = out
 	if err := cmd.Start(); err != nil {
 		cmd.DumpLog(ctx)

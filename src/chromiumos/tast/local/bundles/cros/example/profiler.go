@@ -22,7 +22,12 @@ func init() {
 }
 
 func Profiler(ctx context.Context, s *testing.State) {
-	p, err := profiler.Start(ctx, s.OutDir(), profiler.Perf, profiler.Top, profiler.VMStat)
+	p, err := profiler.Start(ctx, s.OutDir(),
+		profiler.Perf(&profiler.PerfOpts{Type: profiler.PerfStat}),
+		profiler.Top(&profiler.TopOpts{
+			Interval: 2 * time.Second,
+		}),
+		profiler.VMStat(nil))
 	if err != nil {
 		s.Fatal("Failure in starting the profiler: ", err)
 	}
