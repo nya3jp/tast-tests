@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89bed3a9_d13911db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2019-08-16T16:19:58Z",
+      "side": 1,
+      "message": "Do we want a sleep call before this to ensure anomaly_detector has the journal open and is ready like you did in the kernel crash test? Or did you already put a delay in the service itself for when it fails?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 65
+      },
+      "revId": "a025a90920c527afe14a69d7f52fe7f7266f185a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
