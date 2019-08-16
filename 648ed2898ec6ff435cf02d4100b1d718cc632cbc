@@ -1,0 +1,1305 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef2f93de_1356857a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "Could you add a brief explanation. e.g.\n// corePattern is used to pipe core file into crash reporter. It will starts with \"|/sbin/crash_reporter\". See core(5) man page.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 58
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1edae2d1_2d7ef242",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "Could you move this to initializeCrashReporter?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 49
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "161720ea_d3725be8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "I\u0027d inline it. Having this constant for only two usage (mockCrashSending and crashTestInProgressFile) doesn\u0027t improve readability in my opinion.",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9a954ed_f0df8c70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "Could you move this to resetRateLimiting?",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ff8e321_4a1d558d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "Could you put the constant inside crashTestInProgress?\nAlso could you add a comment? e.g. crashTestInProgressFile indicates by its existence a crash test is currently running, and lets crash-reporter run as if it\u0027s non test image.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 71
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21024ba7_cf1eda77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "I\u0027d move this near enableCrashSenderMock",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 17
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38235efc_c299647a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "Could you add a comment? e.g.\n// pauseFile (if exists) causes crash sending to be paused. This behavior can be overwritten by --ignore_pause_file.\nnit: I\u0027d move the definition of pauseFile above enableCrashSender.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 50
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7aa10ffb_541afd24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "I think what this does is anyways remove all. all merely indicates if name is a dir or a file.\nWhy don\u0027t you call os.RemoveAll for both, removing the all parameter? It can remove both a dir and a file.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 49
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e140297_10c897a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "Is this sentence obsolete?",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 300,
+        "endChar": 66
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3273909_471f80cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "Currently it\u0027s always false.\nCould you remove disableCrashDump parameter? (the comment mentioning it as well)\nYou can revisit it when it\u0027s needed. In general, let\u0027s avoid dead code for possible future use.",
+      "range": {
+        "startLine": 303,
+        "startChar": 50,
+        "endLine": 303,
+        "endChar": 66
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f1da4c1_5e6f7d95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "Run\nif the output is not used.",
+      "range": {
+        "startLine": 309,
+        "startChar": 72,
+        "endLine": 309,
+        "endChar": 78
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6e69bf9_91e498f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "I realized there is a race condition. crash_sender might exit between pgrep and pkill.\nI think pgrep is actually not needed if you check the exit code of pkill.\npkill returns 0 or 1 on sucess / no match, and 2 or 3 on actual error (man pgrep).\nCould you check the error status and return error only when it\u0027s 2 or 3?\nUnfortunately getting exit code is a bit tedious in Go 1.11 though. https://golang.org/issue/26539\n\nif err !\u003d nil {\n    if exitErr, ok :\u003d err.(*exec.ExitError); ok {\n        if status, ok :\u003d exitErr.Sys().(syscall.WaitStatus); ok {\n            if status.ExitStatus() \u003d\u003d 1 {\n                // Ignore not found.\n                return nil\n            }\n        }\n    }\n    return err\n}\n\nIn Go 1.12, we can get exit with cmd.ProcessState.ExitStatus(). But unfortunately current Go version in Chrome OS is 1.11 .",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 79
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4b0a2dc_538c64ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "Why don\u0027t you name it readCorePattern() ?",
+      "range": {
+        "startLine": 331,
+        "startChar": 5,
+        "endLine": 331,
+        "endChar": 20
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5514341_86fd1729",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "samely writeCorePattern() ?",
+      "range": {
+        "startLine": 340,
+        "startChar": 5,
+        "endLine": 340,
+        "endChar": 21
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceee1095_47cc0804",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "Could you add intention of this? e.g.\nto filter crashes from all executables except one having this basename. Set \"none\" to filter everything.",
+      "range": {
+        "startLine": 347,
+        "startChar": 77,
+        "endLine": 347,
+        "endChar": 78
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee83e230_7aedaff7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "nit: adds or replaces\n?",
+      "range": {
+        "startLine": 347,
+        "startChar": 18,
+        "endLine": 347,
+        "endChar": 22
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6e95354_ebd00383",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "Probably you need to remove --filter_in here?\nI\u0027m not sure if it\u0027s intentionally no-op.",
+      "range": {
+        "startLine": 350,
+        "startChar": 0,
+        "endLine": 350,
+        "endChar": 12
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1fb23a5_867fe910",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "These things should be translated into Go. (e.g. $1 doesn\u0027t work in Go)\nAlso, it doesn\u0027t add --filter_in unless there\u0027s already --filter_in. I guess you want to add --filter_in if currently there\u0027s no filtering.\nCould you extract the method to update the core_pattern string into a pure function, and add a unit test for it?\ne.g. \npatternWithFiltering(origPattern, filter string) string {\n  ...\n}\n\ncrash_test.go\nTestPatternWithFiltering(t testing.T) {\n   ...\n}",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 0
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45553938_ec303dbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "Could you add a brief comment. e.g.\n// resetRateLimiting removes existing crash report timestamps so that crash report it not disabled by rate limit.",
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5f402e4_db1792b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "pauseFile",
+      "range": {
+        "startLine": 412,
+        "startChar": 28,
+        "endLine": 412,
+        "endChar": 39
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07574a8b_97579451",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "Looks like these files are removed from udev_crash.\nhttps://crrev.com/c/1730246/5\nCould you do the same, or add TODO to do that?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 48
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "590b04cb_a1c90c7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "I found autotest CrashTest has a document about the testing strategy.\nhttp://cs/chromeos_public/src/third_party/autotest/files/client/cros/crash/crash_test.py?l\u003d22\nCould you refer to that and add similar documentation here?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 36
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bbd7d4b_b2cf9a34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "I think you can remove this log given ioutil.TempDir is not time-consuming operation.\nSee https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#when-to-log for when to log.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 40
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a870c403_ee55a1ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "s.Fatal(\"Failed to create temporary directory: \", err)\nCould you run repo sync? I think this error is caught by the linter in ToT.",
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2294b91a_cefa11e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "You don\u0027t have to return after Fatal. The program terminates in the call of Fatal.",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 8
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb2793ce_865faa28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "s.Fatal(\"...\", err)",
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b841d695_33325e20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "Similarly you can remove the log.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 31
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3f55bc6_58651798",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "I\u0027d name it origCorePattern (assuming readCrashFilter is renamed to readCorePattern) .",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 12
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7042975_907f12d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "read core pattern\n?",
+      "range": {
+        "startLine": 56,
+        "startChar": 22,
+        "endLine": 56,
+        "endChar": 38
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "530f32d3_281812de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "s.Fatal(\"...\", err)",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 49
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef78887f_03a6f9e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 8
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea7f493a_c073e897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "restoring core pattern\n?",
+      "range": {
+        "startLine": 61,
+        "startChar": 20,
+        "endLine": 61,
+        "endChar": 44
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c49cf565_dbc5e8a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "s.Fatal(\"...\", err)",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 55
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a67bf28f_5a2f17d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "s.Fatal(\"...\", err)",
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ebf8d38_cb0155c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 8
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4039f9d_b70f1a69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "I think you can omit the log given it\u0027s not time-consuming operation.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 39
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9c180d7_f9bdcab5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "s.Fatal(\"...\", err)",
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baadf57d_d7fabba2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 8
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72b34af6_a3fe0f71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "s.Fatal(\"...\", err)",
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0efc550_216a4e1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "s.Fatal(\"...\", err)",
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c455bfc_4bde6808",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 8
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c6c05b3_fa068969",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "s.Fatal(\"...\", err)",
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00259d5b_551fc709",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 8
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ee41054_e4437c83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "Is it opposite?",
+      "range": {
+        "startLine": 91,
+        "startChar": 10,
+        "endLine": 91,
+        "endChar": 27
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30692778_289930b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "s.Fatal(\"...\", err)",
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c9b431c_cc289421",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 8
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df08f3a9_85bf8e8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "Is it opposite? Shuoldn\u0027t it be enableCrashSender to restore the system into the default status?",
+      "range": {
+        "startLine": 96,
+        "startChar": 12,
+        "endLine": 96,
+        "endChar": 30
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b4cd0c4_5e35f746",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "s.Fatal(\"...\", err)",
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "435b5c69_4cef860e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "Failed to kill crash sender\n?",
+      "range": {
+        "startLine": 102,
+        "startChar": 12,
+        "endLine": 102,
+        "endChar": 34
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7203454d_6687303e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "s.Fatal(\"...\", err)",
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c5cde11_c5c08fb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "s.Fatal(\"...\", err)",
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c53ad350_4cc0b04d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 107,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 8
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66c604c5_f4793844",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "s.Fatal(\"...\", err)",
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "699747b4_483cbda8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 8
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a8e1201_2161c5f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "s.Fatal(\"...\", err)",
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f430fb9d_b32ec958",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "s.Fatal(\"...\", err)",
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a99522e8_3a23d780",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "s.Fatal(\"...\", err)",
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dd557f4_73bbb387",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "disabling mock\n?",
+      "range": {
+        "startLine": 123,
+        "startChar": 20,
+        "endLine": 123,
+        "endChar": 41
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b638ac3_44b4661e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "Start test section.",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 22
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7218c063_c0f30799",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "s.Fatal(\"...\", err)",
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69d1a383_b536b11e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T06:31:22Z",
+      "side": 1,
+      "message": "If this test is incomplate, could you add TODO comment with what comes next? Without that it\u0027s hard to comprehend this CL.",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 11
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
