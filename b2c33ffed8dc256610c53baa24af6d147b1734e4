@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "13332af4_6c9b30b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-16T01:22:25Z",
+      "side": 1,
+      "message": "Sorry about the belated comment, but could you add yourself (iby@chromium.org) to the owner of this test?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 49
+      },
+      "revId": "b2c33ffed8dc256610c53baa24af6d147b1734e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41edd7e5_4780b257",
         "filename": "src/chromiumos/tast/local/metrics/metrics.go",
         "patchSetId": 5
