@@ -6,6 +6,8 @@ package profiler
 
 import (
 	"context"
+	"io"
+	"os"
 	"path/filepath"
 	"syscall"
 
@@ -30,9 +32,64 @@ func newPerf(ctx context.Context, outDir string) (instance, error) {
 		cmd.DumpLog(ctx)
 		return nil, errors.Wrapf(err, "failed running %s", shutil.EscapeSlice(cmd.Args))
 	}
+
+	success := false
+	defer func() {
+		if !success {
+			cmd.Kill()
+			cmd.Wait()
+		}
+	}()
+
+	// KASLR makes looking up the symbols from the binary impossible, save
+	// the running symbols from DUT to outDir.
+	if err := getKallsyms(outDir); err != nil {
+		return nil, errors.Wrap(err, "failed copying /proc/kallsyms to output directory")
+	}
+
+	success = true
 	return &perf{
 		cmd: cmd,
 	}, nil
+}
+
+func getKallsyms(outDir string) error {
+	kallsyms, err := os.Open("/proc/kallsyms")
+	if err != nil {
+		return errors.Wrap(err, "failed opening /proc/kallsyms")
+	}
+
+	success := false
+	defer func() {
+		if !success {
+			kallsyms.Close()
+		}
+	}()
+
+	kallsymsPath := filepath.Join(outDir, "kallsyms")
+	out, err := os.Create(kallsymsPath)
+	if err != nil {
+		return errors.Wrap(err, "failed creating kallsyms file")
+	}
+	defer func() {
+		if !success {
+			out.Close()
+		}
+	}()
+
+	if _, err = io.Copy(out, kallsyms); err != nil {
+		return errors.Wrap(err, "failed copying")
+	}
+	success = true
+	ksErr := kallsyms.Close()
+	outErr := out.Close()
+	if ksErr != nil {
+		return errors.Wrap(err, "failed closing /proc/kallsyms")
+	}
+	if outErr != nil {
+		return errors.Wrap(err, "failed closing output kallsyms file")
+	}
+	return nil
 }
 
 // end interrupts the perf command and ends the recording of perf.data.
