@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f91dbdb3_6a57e491",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-16T00:33:22Z",
+      "side": 1,
+      "message": "This code is almost duplicated with mempressure code. Please consolidate them.",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 23
+      },
+      "revId": "a630d427baae75089f42ddacdcdb6063cd220f84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77bef0bd_92037db6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-16T00:33:22Z",
+      "side": 1,
+      "message": "Code of non-parallel case and parallel case are almost duplicated. Please consolidate them for better maintainability.",
+      "range": {
+        "startLine": 261,
+        "startChar": 1,
+        "endLine": 261,
+        "endChar": 21
+      },
+      "revId": "a630d427baae75089f42ddacdcdb6063cd220f84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcd4e472_b5eeea2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-16T00:33:22Z",
+      "side": 1,
+      "message": "Please do not declare all variable at the top of the function; Go is not C90. Instead please always prefer :\u003d (or var if it is actually necessary).",
+      "range": {
+        "startLine": 525,
+        "startChar": 0,
+        "endLine": 530,
+        "endChar": 2
+      },
+      "revId": "a630d427baae75089f42ddacdcdb6063cd220f84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
