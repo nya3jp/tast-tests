@@ -10,6 +10,7 @@ import (
 	"syscall"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
 )
@@ -30,6 +31,23 @@ func newPerf(ctx context.Context, outDir string) (instance, error) {
 		cmd.DumpLog(ctx)
 		return nil, errors.Wrapf(err, "failed running %s", shutil.EscapeSlice(cmd.Args))
 	}
+
+	success := false
+	defer func() {
+		if !success {
+			cmd.Kill()
+			cmd.Wait()
+		}
+	}()
+
+	// KASLR makes looking up the symbols from the binary impossible, save
+	// the running symbols from DUT to outDir.
+	kallsymsPath := filepath.Join(outDir, "kallsyms")
+	if err := fsutil.CopyFile("/proc/kallsyms", kallsymsPath); err != nil {
+		return nil, errors.Wrap(err, "failed copying /proc/kallsyms to output directory")
+	}
+
+	success = true
 	return &perf{
 		cmd: cmd,
 	}, nil
