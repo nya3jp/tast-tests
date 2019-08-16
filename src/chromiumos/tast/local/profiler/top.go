@@ -8,7 +8,9 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"strconv"
 	"syscall"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
@@ -18,6 +20,8 @@ import (
 // top represents the top profiler.
 //
 // top supports running 'top' command in the DUT during testing.
+// top will run and poll every X seconds in interval (default is 5 seconds).
+// Any processes with a %cpu of zero will be stripped from the output.
 // The output of top will be stored in top.data in the specified
 // output directory.
 type top struct {
@@ -26,8 +30,34 @@ type top struct {
 	out    *os.File
 }
 
+// TopOpts represents options for running top.
+type TopOpts struct {
+	// Interval indicates the duration between each poll.
+	// The default value is 5 seconds.
+	// Interval must be able to convert to a non-decimal in seconds.
+	// For example, top can run 2 seconds but not 2.3 seconds.
+	// 2.3 will be rounded to 2 for top interval.
+	Interval time.Duration
+}
+
+// Top creates a Profiler instance that constructs and runs the profiler.
+// For opts parameter, nil is treated as the zero value of TopOpts.
+func Top(opts *TopOpts) Profiler {
+	// Set default options if needed.
+	if opts == nil {
+		opts = &TopOpts{}
+	}
+	// Default option for Interval is 5 seconds.
+	if opts.Interval == 0 {
+		opts.Interval = 5 * time.Second
+	}
+	return func(ctx context.Context, outDir string) (instance, error) {
+		return newTop(ctx, outDir, opts)
+	}
+}
+
 // newTop runs top command to start recording top.data.
-func newTop(ctx context.Context, outDir string) (instance, error) {
+func newTop(ctx context.Context, outDir string, opts *TopOpts) (instance, error) {
 	outputPath := filepath.Join(outDir, "top.data")
 	out, err := os.Create(outputPath)
 	if err != nil {
@@ -41,9 +71,10 @@ func newTop(ctx context.Context, outDir string) (instance, error) {
 		}
 	}()
 
-	// Starts top on the DUT and polls every 5 seconds. Any processes
-	// with a %cpu of zero will be stripped from the output.
-	cmdTop := testexec.CommandContext(ctx, "top", "-b", "-c", "-w", "200", "-d", "5", "-H")
+	// Get the int value of Interval in seconds.
+	interval := int(opts.Interval.Seconds())
+
+	cmdTop := testexec.CommandContext(ctx, "top", "-b", "-c", "-w", "200", "-d", strconv.Itoa(interval), "-H")
 	cmdAwk := testexec.CommandContext(ctx, "awk", "$1 ~ /[0-9]+/ && $9 == \"0.0\" {next} {print}")
 	cmdAwk.Stdin, err = cmdTop.StdoutPipe()
 	if err != nil {
