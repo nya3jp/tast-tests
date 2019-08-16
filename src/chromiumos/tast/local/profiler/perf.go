@@ -18,25 +18,59 @@ import (
 // perf represents the perf profiler.
 //
 // perf supports gathering profiler data using the
-// command "perf record".
+// command "perf" with the perfType ("stat" or "record") specified.
 type perf struct {
-	cmd *testexec.Cmd
+	cmd      *testexec.Cmd
+	perfType PerfType
 }
 
-// newPerf runs perf command to start recording perf.data.
-func newPerf(ctx context.Context, outDir string) (instance, error) {
-	outputPath := filepath.Join(outDir, "perf.data")
-	cmd := testexec.CommandContext(ctx, "perf", "record", "-e", "cycles", "-g", "--output", outputPath)
-	if err := cmd.Start(); err != nil {
-		cmd.DumpLog(ctx)
-		return nil, errors.Wrapf(err, "failed running %s", shutil.EscapeSlice(cmd.Args))
+// PerfType represents the type of perf that the users
+// want to use.
+type PerfType int
+
+// Type of perf
+const (
+	PerfRecord = 0 + iota
+	PerfStat
+)
+
+// PerfOpts represents options for running perf.
+type PerfOpts struct {
+	Type PerfType
+}
+
+// Perf creates a perf instance that manages running the profiler.
+// For default options (Type = PerfRecord), input for opts can be nil or empty PerfOpts struct.
+func Perf(opts *PerfOpts) *perf {
+	var perfType PerfType
+	if opts == nil {
+		perfType = PerfRecord
+	} else {
+		perfType = opts.Type
+	}
+	return &perf{
+		perfType: perfType,
+	}
+}
+
+// new creates and runs perf command to start recording perf.data with the options specified.
+func (p *perf) new(ctx context.Context, outDir string) error {
+	var err error
+	p.cmd, err = getCmd(ctx, outDir, p.perfType)
+	if err != nil {
+		return err
+	}
+
+	if err := p.cmd.Start(); err != nil {
+		p.cmd.DumpLog(ctx)
+		return errors.Wrapf(err, "failed running %s", shutil.EscapeSlice(p.cmd.Args))
 	}
 
 	success := false
 	defer func() {
 		if !success {
-			cmd.Kill()
-			cmd.Wait()
+			p.cmd.Kill()
+			p.cmd.Wait()
 		}
 	}()
 
@@ -44,13 +78,22 @@ func newPerf(ctx context.Context, outDir string) (instance, error) {
 	// the running symbols from DUT to outDir.
 	kallsymsPath := filepath.Join(outDir, "kallsyms")
 	if err := fsutil.CopyFile("/proc/kallsyms", kallsymsPath); err != nil {
-		return nil, errors.Wrap(err, "failed copying /proc/kallsyms to output directory")
+		return errors.Wrap(err, "failed copying /proc/kallsyms to output directory")
 	}
 
 	success = true
-	return &perf{
-		cmd: cmd,
-	}, nil
+	return nil
+}
+
+func getCmd(ctx context.Context, outDir string, perfType PerfType) (*testexec.Cmd, error) {
+	outputPath := filepath.Join(outDir, "perf.data")
+	if perfType == PerfRecord {
+		return testexec.CommandContext(ctx, "perf", "record", "-e", "cycles", "-g", "--output", outputPath), nil
+	} else if perfType == PerfStat {
+		return testexec.CommandContext(ctx, "perf", "stat", "record", "-a", "--output", outputPath), nil
+	} else {
+		return nil, errors.New("invalid perf type")
+	}
 }
 
 // end interrupts the perf command and ends the recording of perf.data.

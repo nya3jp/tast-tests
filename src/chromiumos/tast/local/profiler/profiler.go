@@ -7,7 +7,7 @@
 //
 // Usage
 //
-//  p, err := profiler.Start(ctx, s, Profiler.Perf, ...)
+//  p, err := profiler.Start(ctx, s, Profiler.Perf(nil), ...)
 //  if err != nil {
 //  	// Error handling...
 //  }
@@ -24,26 +24,17 @@ import (
 	"chromiumos/tast/errors"
 )
 
-type instance interface {
+// Profiler represents a profiler with new() to create and
+// run cmd(s), as well as end() to end the cmd(s).
+type Profiler interface {
+	new(context.Context, string) error
 	end() error
 }
 
-// Profiler is a function construct a profiler instance
-// and start the profiler.
-type Profiler func(ctx context.Context, outDir string) (instance, error)
-
-// Profiler's constructors available in the library.
-var (
-	Perf   Profiler = newPerf
-	VMStat Profiler = newVMStat
-	Top    Profiler = newTop
-)
-
 // RunningProf is the list of all running profilers.
-type RunningProf []instance
+type RunningProf []Profiler
 
-// Start uses the set of input profiler constructors to start
-// running each of it.
+// Start uses the set of input profilers to start running each of it.
 func Start(ctx context.Context, outDir string, profs ...Profiler) (*RunningProf, error) {
 	// Create list of profilers to run.
 	var rp RunningProf
@@ -58,12 +49,11 @@ func Start(ctx context.Context, outDir string, profs ...Profiler) (*RunningProf,
 
 	for _, prof := range profs {
 		// Find and start each profiler specified.
-		ins, err := prof(ctx, outDir)
-		if err != nil {
+		if err := prof.new(ctx, outDir); err != nil {
 			return nil, errors.Wrap(err, "failed to start profiler")
 		}
 		// Add running profiler to the controller.
-		rp = append(rp, ins)
+		rp = append(rp, prof)
 	}
 	success = true
 	return &rp, nil
