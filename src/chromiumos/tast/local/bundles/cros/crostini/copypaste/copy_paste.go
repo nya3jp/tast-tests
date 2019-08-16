@@ -10,98 +10,110 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
 const (
-	utf8PlainText = "text/plain;charset=utf-8"
-	utf8Data      = "Some data that gets copied"
+	utf8Data = "Some data that gets copied 🔥 ❄"
+
+	// CopyApplet is the data dependency needed to run a copy operation
+	CopyApplet      = "copy_applet.py"
+	copyAppletDest  = "/home/testuser/copy_applet.py"
+	copyAppletTitle = "gtk3_copy_demo"
+
+	// PasteApplet is the data dependency needed to run a paste operation
+	PasteApplet      = "paste_applet.py"
+	pasteAppletDest  = "/home/testuser/paste_applet.py"
+	pasteAppletTitle = "gtk3_paste_demo"
 )
 
 // CopyConfig holds the configuration for the copy half of the test.
 type CopyConfig struct {
-	Name        string
-	WindowTitle string
-	AppPath     string
-	MimeType    string
-	Data        string
+	gdkBackend string
+	cmdArgs    []string
+	data       string
 }
 
 // WaylandCopyConfig is the configuration needed to test copying from
 // a wayland application.
 var WaylandCopyConfig = &CopyConfig{
-	Name:        "wayland",
-	WindowTitle: "Wayland Copy Demo",
-	AppPath:     "/opt/google/cros-containers/bin/wayland_copy_demo",
-	MimeType:    utf8PlainText,
-	Data:        utf8Data,
+	gdkBackend: "wayland",
+	cmdArgs:    []string{"env", "GDK_BACKEND=wayland", "python3", copyAppletDest},
+	data:       utf8Data,
+}
+
+// X11CopyConfig is the configuration needed to test copying from
+// an X11 application.
+var X11CopyConfig = &CopyConfig{
+	gdkBackend: "x11",
+	cmdArgs:    []string{"env", "GDK_BACKEND=x11", "python3", copyAppletDest},
+	data:       utf8Data,
 }
 
 // PasteConfig holds the configuration for the paste half of the test.
 type PasteConfig struct {
-	Name         string
-	AppPath      string
-	MimeType     string
-	ExpectedData string
+	gdkBackend   string
+	cmdArgs      []string
+	expectedData string
 }
 
 // WaylandPasteConfig is the configuration needed to test pasting into
 // a wayland application.
 var WaylandPasteConfig = &PasteConfig{
-	Name:         "wayland",
-	AppPath:      "/opt/google/cros-containers/bin/wayland_paste_demo",
-	MimeType:     utf8PlainText,
-	ExpectedData: utf8Data,
+	gdkBackend:   "wayland",
+	cmdArgs:      []string{"env", "GDK_BACKEND=wayland", "python3", pasteAppletDest},
+	expectedData: utf8Data,
+}
+
+// X11PasteConfig is the configuration needed to test pasting into
+// a x11 application.
+var X11PasteConfig = &PasteConfig{
+	gdkBackend:   "x11",
+	cmdArgs:      []string{"env", "GDK_BACKEND=x11", "python3", pasteAppletDest},
+	expectedData: utf8Data,
+}
+
+// TestParameters contains all the data needed to run a single test iteration
+type TestParameters struct {
+	Copy  *CopyConfig
+	Paste *PasteConfig
 }
 
 // RunTest Runs a copy paste test with the supplied parameters.
 func RunTest(ctx context.Context, s *testing.State, tconn *chrome.Conn, cont *vm.Container, copy *CopyConfig, paste *PasteConfig) {
 
-	func() {
-		const timeout = 5 * time.Second
-		ctx, cancel := context.WithTimeout(ctx, timeout)
-		defer cancel()
+	s.Log("Installing GTK3 dependencies")
+	cmd := cont.Command(ctx, "sudo", "apt-get", "-y", "install", "python3-gi", "python3-gi-cairo", "gir1.2-gtk-3.0")
+	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to install required dependencies: ", err)
+	}
 
-		s.Logf("Starting %v copy application", copy.Name)
-		args := []string{copy.AppPath, copy.MimeType, copy.Data}
-		cmd := cont.Command(ctx, args...)
-		if err := cmd.Start(); err != nil {
-			s.Fatal("Failed to start copy application: ", err)
-		}
-		defer cmd.Wait(testexec.DumpLogOnError)
+	s.Log("Copying testing applets to container")
+	if err := cont.PushFile(ctx, s.DataPath(CopyApplet), copyAppletDest); err != nil {
+		s.Fatal("Failed to push copy applet to container: ", err)
+	}
+	if err := cont.PushFile(ctx, s.DataPath(PasteApplet), pasteAppletDest); err != nil {
+		s.Fatal("Failed to push paste applet to container: ", err)
+	}
 
-		size, err := crostini.PollWindowSize(ctx, tconn, copy.WindowTitle)
-		if err != nil {
-			s.Fatalf("Failed to get size of window %q: %v", copy.WindowTitle, err)
-		}
-		s.Logf("Window %q size is %v", copy.WindowTitle, size)
+	// Add the names of the backends used by each part of the test to differentiate the data used by each test run
+	copyData := copy.gdkBackend + " to " + paste.gdkBackend + ": " + copy.data
+	pasteData := copy.gdkBackend + " to " + paste.gdkBackend + ": " + paste.expectedData
 
-		keyboard, err := input.Keyboard(ctx)
-		if err != nil {
-			s.Fatal("Failed to get keyboard device: ", err)
-		}
-		defer keyboard.Close()
+	args := append(copy.cmdArgs, copyData)
+	output, err := crostini.RunWindowedApp(ctx, s, tconn, cont, 5*time.Second, copyAppletTitle, args)
+	if err != nil {
+		s.Fatal("Failed to run copy applet: ", err)
+	}
 
-		s.Logf("Closing %q with keypress", copy.WindowTitle)
-		keyboard.Type(ctx, " ")
-	}()
-
-	s.Logf("Window %q closed", copy.WindowTitle)
-
-	ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
-	defer cancel()
-
-	s.Logf("Starting %v paste application", paste.Name)
-	cmd := cont.Command(ctx, paste.AppPath, paste.MimeType)
-	output, err := cmd.Output(testexec.DumpLogOnError)
+	output, err = crostini.RunWindowedApp(ctx, s, tconn, cont, 5*time.Second, pasteAppletTitle, paste.cmdArgs)
 	if err != nil {
 		s.Fatal("Failed to run paste application: ", err)
 	}
 
-	if string(output) != paste.ExpectedData {
-		s.Fatalf("Paste output was %q, expected %q", string(output), paste.ExpectedData)
+	if output != pasteData {
+		s.Fatalf("Paste output was %q, expected %q", string(output), pasteData)
 	}
 }

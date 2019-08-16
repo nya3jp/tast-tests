@@ -5,6 +5,7 @@
 package crostini
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"image/color"
@@ -16,7 +17,10 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/colorcmp"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
+	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
@@ -107,4 +111,66 @@ func PrimaryDisplayScaleFactor(ctx context.Context, tconn *chrome.Conn) (factor 
 func TabletModeEnabled(ctx context.Context, tconn *chrome.Conn) (tabletMode bool, err error) {
 	err = tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.isTabletModeEnabled)()`, &tabletMode)
 	return tabletMode, err
+}
+
+// RunWindowedApp Runs the command |cmdline| in the container, waits
+// for the window |windowName| to open, sends it a key press event, and
+// then closes the window. The return value is a string containing the
+// what program wrote to stdout
+func RunWindowedApp(ctx context.Context, s *testing.State, tconn *chrome.Conn, cont *vm.Container, timeout time.Duration, windowName string, cmdline []string) (output string, err error) {
+	ctx, cancel := context.WithTimeout(ctx, timeout)
+	defer cancel()
+
+	s.Logf("Starting %v application", windowName)
+	cmd := cont.Command(ctx, cmdline...)
+	var buf bytes.Buffer
+	cmd.Stdout = &buf
+	if err := cmd.Start(); err != nil {
+		return "", err
+	}
+	defer func() {
+		err = cmd.Wait(testexec.DumpLogOnError)
+		output = string(buf.Bytes())
+	}()
+
+	size, err := PollWindowSize(ctx, tconn, windowName)
+	if err != nil {
+		return "", err
+	}
+	s.Logf("%v window size is %v", windowName, size)
+
+	keyboard, err := input.Keyboard(ctx)
+	if err != nil {
+		return "", err
+	}
+	defer keyboard.Close()
+
+	s.Log("Sending keypress to ", windowName)
+	keyboard.Type(ctx, " ")
+
+	s.Log("Closing all windows")
+	err = CloseAllWindows(ctx, tconn)
+	if err != nil {
+		return "", err
+	}
+
+	// Return values are changed by defered function calls
+	return "", nil
+}
+
+// CloseAllWindows closes all currently open windows by iterating over
+// the shelf icons and calling autotestPrivate.closeApp on each one.
+func CloseAllWindows(ctx context.Context, tconn *chrome.Conn) error {
+	expr := `new Promise((resolve, reject) => {
+chrome.autotestPrivate.getShelfItems(items => {
+	for (item of items) {
+		chrome.autotestPrivate.closeApp(item.appId.toString(), () => {
+			if (chrome.runtime.lastError !== undefined) {
+				reject(chrome.runtime.lastError.message);
+			}
+		})
+	}
+	resolve();
+})});`
+	return tconn.EvalPromise(ctx, expr, nil)
 }
