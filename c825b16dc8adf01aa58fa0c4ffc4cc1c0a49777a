@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93caef51_e97b6da9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-16T22:42:49Z",
+      "side": 1,
+      "message": "nit: Probably gonna have more than one shelf test eventually so give this a more detailed name if possible.",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 10
+      },
+      "revId": "c825b16dc8adf01aa58fa0c4ffc4cc1c0a49777a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "866f1648_5e635a77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-16T22:42:49Z",
+      "side": 1,
+      "message": "nit: given you use l so much, you may want to give it a more detailed name",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "c825b16dc8adf01aa58fa0c4ffc4cc1c0a49777a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ae4875d_a95bccaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-16T22:42:49Z",
+      "side": 1,
+      "message": "for _, app :\u003d range apps",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 33
+      },
+      "revId": "c825b16dc8adf01aa58fa0c4ffc4cc1c0a49777a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88ca646c_599a3dfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-16T22:42:49Z",
+      "side": 1,
+      "message": "why sprintf for without a variable or constant? \njust use:\n\n\"tast.promisify(chrome.automation.getDesktop)().then(root \u003d\u003e root.findAll({attributes: {role: \u0027button\u0027}}).map(node \u003d\u003e node.name))\"",
+      "range": {
+        "startLine": 86,
+        "startChar": 14,
+        "endLine": 86,
+        "endChar": 161
+      },
+      "revId": "c825b16dc8adf01aa58fa0c4ffc4cc1c0a49777a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6074f5fc_ef91376d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-16T22:42:49Z",
+      "side": 1,
+      "message": "for i :\u003d range l",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 30
+      },
+      "revId": "c825b16dc8adf01aa58fa0c4ffc4cc1c0a49777a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "524d7556_0febb70b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-16T22:42:49Z",
+      "side": 1,
+      "message": "for _, icon :\u003d range icons",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 35
+      },
+      "revId": "c825b16dc8adf01aa58fa0c4ffc4cc1c0a49777a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83452a21_a9064d8a",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-16T22:42:49Z",
+      "side": 1,
+      "message": "I believe you should be able to use:\n\ntast.promisify(chrome.autotestPrivate.getShelfItems)()",
+      "range": {
+        "startLine": 146,
+        "startChar": 3,
+        "endLine": 146,
+        "endChar": 14
+      },
+      "revId": "c825b16dc8adf01aa58fa0c4ffc4cc1c0a49777a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69ad9882_b1feec62",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-16T22:42:49Z",
+      "side": 1,
+      "message": "Maybe this isn\u0027t an issue for this CL, but I have seen a number of tests wait repeatedly on a promise, maybe this should be implemented in Conn.go like WaitForExpr is?",
+      "range": {
+        "startLine": 164,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 62
+      },
+      "revId": "c825b16dc8adf01aa58fa0c4ffc4cc1c0a49777a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdb223c1_9c142ec6",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-16T22:42:49Z",
+      "side": 1,
+      "message": "nit: make the first letter of errors lowercase",
+      "range": {
+        "startLine": 171,
+        "startChar": 22,
+        "endLine": 171,
+        "endChar": 23
+      },
+      "revId": "c825b16dc8adf01aa58fa0c4ffc4cc1c0a49777a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a5d23f4_7f6ab6d8",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-16T22:42:49Z",
+      "side": 1,
+      "message": "nit: time.Minute",
+      "range": {
+        "startLine": 174,
+        "startChar": 34,
+        "endLine": 174,
+        "endChar": 50
+      },
+      "revId": "c825b16dc8adf01aa58fa0c4ffc4cc1c0a49777a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
