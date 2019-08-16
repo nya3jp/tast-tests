@@ -621,6 +621,30 @@
       "revId": "fa907cc623b1d4c9b70e50be3d19899a29e9ba1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b2ad2b6_955b5363",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected.json",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-16T00:46:05Z",
+      "side": 1,
+      "message": "New tree looks very simpler!",
+      "parentUuid": "e22cecc0_fada5fdf",
+      "range": {
+        "startLine": 6,
+        "startChar": 4,
+        "endLine": 6,
+        "endChar": 17
+      },
+      "revId": "fa907cc623b1d4c9b70e50be3d19899a29e9ba1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
