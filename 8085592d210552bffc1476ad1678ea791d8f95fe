@@ -22,6 +22,30 @@
       "revId": "8085592d210552bffc1476ad1678ea791d8f95fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bc768ff_244232f0",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2019-08-16T11:07:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa25ba66_c0ecde7e",
+      "range": {
+        "startLine": 46,
+        "startChar": 11,
+        "endLine": 46,
+        "endChar": 22
+      },
+      "revId": "8085592d210552bffc1476ad1678ea791d8f95fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
