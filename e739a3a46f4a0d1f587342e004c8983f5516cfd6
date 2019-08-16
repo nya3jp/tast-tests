@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52fab8c0_e0e31501",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-16T00:41:07Z",
+      "side": 1,
+      "message": "shutil.Escape(fileterdFiles[0])\n\n(If we use test(1); please see my comment to PS5 as well)",
+      "range": {
+        "startLine": 53,
+        "startChar": 39,
+        "endLine": 53,
+        "endChar": 55
+      },
+      "revId": "e739a3a46f4a0d1f587342e004c8983f5516cfd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

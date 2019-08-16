@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "3fb2e919_2ae7c36d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-16T00:41:07Z",
+      "side": 1,
+      "message": "Then how about settings -size 0+ in the find commandline?",
+      "parentUuid": "5d411a60_0ea16499",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 5
+      },
+      "revId": "63910257bb5e8d2a38c35622fcfa66a0290c0cd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dde07446_b5da2259",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
         "patchSetId": 5
