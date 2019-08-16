@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d2fb06b_bf2eba85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-08-16T20:49:08Z",
+      "side": 1,
+      "message": "If we use OrDie here and fatal on failure, doesn\u0027t that mean we won\u0027t even attempt to clean up the file we created at iconPath?",
+      "range": {
+        "startLine": 107,
+        "startChar": 17,
+        "endLine": 107,
+        "endChar": 41
+      },
+      "revId": "239148588ce3f855ec9631f8269179294d5a1100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "327810b8_72d8e00e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-08-16T20:49:08Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 114,
+        "startChar": 17,
+        "endLine": 114,
+        "endChar": 41
+      },
+      "revId": "239148588ce3f855ec9631f8269179294d5a1100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df5725e8_1c5c0fe4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-08-16T20:49:08Z",
+      "side": 1,
+      "message": "feels kind of weird to pull this into the if-statement with the inlined function, why not just\n\nerr :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n  // ...\n}\nif err !\u003d nil {\n  // ...\n}\n\nor pull out the function you\u0027re passing to testing.Poll like on L212",
+      "range": {
+        "startLine": 172,
+        "startChar": 4,
+        "endLine": 179,
+        "endChar": 53
+      },
+      "revId": "239148588ce3f855ec9631f8269179294d5a1100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0b0b957_79e0fa60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-08-16T20:49:08Z",
+      "side": 1,
+      "message": "any reason you use \u0027%v\u0027 here and %q below?",
+      "range": {
+        "startLine": 223,
+        "startChar": 36,
+        "endLine": 223,
+        "endChar": 40
+      },
+      "revId": "239148588ce3f855ec9631f8269179294d5a1100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8135861_5375bac3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-08-16T20:49:08Z",
+      "side": 1,
+      "message": "ditto wrt \u0027%v\u0027 vs %q",
+      "range": {
+        "startLine": 256,
+        "startChar": 37,
+        "endLine": 256,
+        "endChar": 41
+      },
+      "revId": "239148588ce3f855ec9631f8269179294d5a1100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc4b8ea7_1e7518eb",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-08-16T20:49:08Z",
+      "side": 1,
+      "message": "nit: tablet",
+      "range": {
+        "startLine": 78,
+        "startChar": 42,
+        "endLine": 78,
+        "endChar": 48
+      },
+      "revId": "239148588ce3f855ec9631f8269179294d5a1100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
