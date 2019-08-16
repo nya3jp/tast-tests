@@ -27,9 +27,20 @@ func Profiler(ctx context.Context, s *testing.State) {
 		s.Fatal("Failure in starting the profiler: ", err)
 	}
 
+	vmstatOpts := profiler.VMStatOpts{
+		Interval: 3,
+	}
+	pOpts, err := profiler.StartWithOpts(ctx, s.OutDir(), profiler.VMStatWithOpts, vmstatOpts)
+	if err != nil {
+		s.Fatal("Failure in starting profiler with options: ", err)
+	}
+
 	defer func() {
 		if err := p.End(); err != nil {
 			s.Fatal("Failure in ending the profiler: ", err)
+		}
+		if err := pOpts.End(); err != nil {
+			s.Fatal("Failure in ending profiler with options: ", err)
 		}
 	}()
 

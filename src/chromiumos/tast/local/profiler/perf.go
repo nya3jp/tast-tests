@@ -23,10 +23,33 @@ type perf struct {
 	cmd *testexec.Cmd
 }
 
-// newPerf runs perf command to start recording perf.data.
-func newPerf(ctx context.Context, outDir string) (instance, error) {
-	outputPath := filepath.Join(outDir, "perf.data")
-	cmd := testexec.CommandContext(ctx, "perf", "record", "-e", "cycles", "-g", "--output", outputPath)
+// PerfType represents the type of perf that the users
+// want to use.
+type PerfType int
+
+// Type of perf
+const (
+	PerfRecord = 1 + iota
+	PerfStat
+)
+
+// PerfOpts represents options for perf
+type PerfOpts struct {
+	Type PerfType
+}
+
+// newPerfOpts runs perf command to start recording perf.data with the options specified.
+// options given must be type PerfOpts.
+func newPerfOpts(ctx context.Context, outDir string, opts interface{}) (instance, error) {
+	perfOpts, ok := opts.(PerfOpts)
+	if !ok {
+		return nil, errors.New("options for perf profiler must be type PerfOpts")
+	}
+	cmd, err := getCmd(ctx, outDir, perfOpts.Type)
+	if err != nil {
+		return nil, err
+	}
+
 	if err := cmd.Start(); err != nil {
 		cmd.DumpLog(ctx)
 		return nil, errors.Wrapf(err, "failed running %s", shutil.EscapeSlice(cmd.Args))
@@ -51,6 +74,26 @@ func newPerf(ctx context.Context, outDir string) (instance, error) {
 	return &perf{
 		cmd: cmd,
 	}, nil
+}
+
+func getCmd(ctx context.Context, outDir string, perfType PerfType) (*testexec.Cmd, error) {
+	outputPath := filepath.Join(outDir, "perf.data")
+	if perfType == PerfRecord {
+		return testexec.CommandContext(ctx, "perf", "record", "-e", "cycles", "-g", "--output", outputPath), nil
+	} else if perfType == PerfStat {
+		return testexec.CommandContext(ctx, "perf", "stat", "record", "-a", "--output", outputPath), nil
+	} else {
+		return nil, errors.New("invalid perf type")
+	}
+}
+
+// newPerf runs perf command to start recording perf.data with
+// default options: Type = PerfRecord.
+func newPerf(ctx context.Context, outDir string) (instance, error) {
+	opts := PerfOpts{
+		Type: PerfRecord,
+	}
+	return newPerfOpts(ctx, outDir, opts)
 }
 
 // end interrupts the perf command and ends the recording of perf.data.

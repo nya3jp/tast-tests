@@ -32,11 +32,17 @@ type instance interface {
 // and start the profiler.
 type Profiler func(ctx context.Context, outDir string) (instance, error)
 
+// ProfOpts is a function construct a profiler instance
+// with user's specify options for the profiler.
+type ProfOpts func(ctx context.Context, outDir string, opts interface{}) (instance, error)
+
 // Profiler's constructors available in the library.
 var (
-	Perf   Profiler = newPerf
-	VMStat Profiler = newVMStat
-	Top    Profiler = newTop
+	Perf           Profiler = newPerf
+	VMStat         Profiler = newVMStat
+	Top            Profiler = newTop
+	PerfWithOpts   ProfOpts = newPerfOpts
+	VMStatWithOpts ProfOpts = newVMStatOpts
 )
 
 // RunningProf is the list of all running profilers.
@@ -66,6 +72,22 @@ func Start(ctx context.Context, outDir string, profs ...Profiler) (*RunningProf,
 		rp = append(rp, ins)
 	}
 	success = true
+	return &rp, nil
+}
+
+// StartWithOpts will start a customized profiler with user's specified options.
+// This method only instantiates one profiler with the options given.
+//
+// The options specified varies depending on what profiler is using.
+// More detail about each profiler's option can be found on its file.
+func StartWithOpts(ctx context.Context, outDir string, prof ProfOpts, opts interface{}) (*RunningProf, error) {
+	// Create list of profilers to run.
+	var rp RunningProf
+	ins, err := prof(ctx, outDir, opts)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start profiler")
+	}
+	rp = append(rp, ins)
 	return &rp, nil
 }
 

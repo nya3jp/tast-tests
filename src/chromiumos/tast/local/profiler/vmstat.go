@@ -8,6 +8,7 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"strconv"
 	"syscall"
 
 	"chromiumos/tast/errors"
@@ -18,15 +19,26 @@ import (
 // vmstat represents the vmstat profiler.
 //
 // vmstat supports running 'vmstat' command in the DUT during testing.
-// The output of vmstat will be stored in vmstat.data in the specified
-// output directory.
+// vmstat will run every X seconds (default is 1 seconds) and stored the
+// result in vmstat.data in the specified output directory.
 type vmstat struct {
 	cmd *testexec.Cmd
 	out *os.File
 }
 
-// newVMStat runs vmstat command to start recording vmstat.data.
-func newVMStat(ctx context.Context, outDir string) (instance, error) {
+// VMStatOpts represents options for vmstat
+type VMStatOpts struct {
+	Interval int
+}
+
+// newVMStatOpts runs vmstat command to start recording vmstat.data with the options specified.
+// options given must be type VMStatOpts.
+func newVMStatOpts(ctx context.Context, outDir string, opts interface{}) (instance, error) {
+	vmstatOpts, ok := opts.(VMStatOpts)
+	if !ok {
+		return nil, errors.New("options for vmstat profiler must be type VMStatOpts")
+	}
+
 	outputPath := filepath.Join(outDir, "vmstat.data")
 	out, err := os.Create(outputPath)
 	if err != nil {
@@ -40,7 +52,7 @@ func newVMStat(ctx context.Context, outDir string) (instance, error) {
 		}
 	}()
 
-	cmd := testexec.CommandContext(ctx, "vmstat", "1")
+	cmd := testexec.CommandContext(ctx, "vmstat", strconv.Itoa(vmstatOpts.Interval))
 	cmd.Stdout = out
 	if err := cmd.Start(); err != nil {
 		cmd.DumpLog(ctx)
@@ -52,6 +64,15 @@ func newVMStat(ctx context.Context, outDir string) (instance, error) {
 		cmd: cmd,
 		out: out,
 	}, nil
+}
+
+// newVMStat runs vmstat command to start recording vmstat.data.
+// with default options: Interval = 1
+func newVMStat(ctx context.Context, outDir string) (instance, error) {
+	opts := VMStatOpts{
+		Interval: 1,
+	}
+	return newVMStatOpts(ctx, outDir, opts)
 }
 
 // end interrupts the vmstat command and ends the recording of vmstat.data.
