@@ -16,6 +16,24 @@
       "revId": "42f2230e7ba2362ed1f54ec4e021b948ac9665ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78a7919e_cfa3a64d",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2019-08-16T11:48:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29b5701c_2e5be476",
+      "revId": "42f2230e7ba2362ed1f54ec4e021b948ac9665ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
