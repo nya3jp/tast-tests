@@ -1,0 +1,21 @@
+package subprocess
+
+import (
+	
+)
+
+// Cr50Subprocess Some comment
+type Cr50Subprocess struct {
+	primitives map[string]primitive
+}
+
+// NewCr50Subprocess placeholder for comment
+func NewCr50Subprocess() (*Cr50Subprocess, error) {
+	m := &Cr50Subprocess{}
+	m.primitives = map[string]primitive{
+		"ACVP-AES-ECB": blockCipher{"AES", 16, false, m},
+		"ACVP-AES-CBC": blockCipher{"AES-CBC", 16, true, m},
+	}
+
+	return m, nil
+}
