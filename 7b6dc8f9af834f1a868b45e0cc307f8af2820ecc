@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d3f5637_0b7cf599",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/lp/cups.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-17T01:29:38Z",
+      "side": 1,
+      "message": "remove this",
+      "revId": "7b6dc8f9af834f1a868b45e0cc307f8af2820ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbbaa0d5_e3ebb6b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/lp/cups.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-17T01:29:38Z",
+      "side": 1,
+      "message": "nit \"reason\" instead of \"reasons\" - looks like there\u0027s only one",
+      "revId": "7b6dc8f9af834f1a868b45e0cc307f8af2820ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5445dce4_e7e19276",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/lp/cups.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-17T01:29:38Z",
+      "side": 1,
+      "message": "log the lpstat output for debugging this error",
+      "revId": "7b6dc8f9af834f1a868b45e0cc307f8af2820ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d909d994_ecc80477",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/lp/cups.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-17T01:29:38Z",
+      "side": 1,
+      "message": "presumably there are more ways the printer could be idle/unreachable?  Since you\u0027re not checking for any of those, call this PrinterNotResponding or something like that",
+      "revId": "7b6dc8f9af834f1a868b45e0cc307f8af2820ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
