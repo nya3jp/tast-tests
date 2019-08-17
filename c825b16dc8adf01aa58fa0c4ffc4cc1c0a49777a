@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "a4e704d5_394f4edb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-17T00:47:40Z",
+      "side": 1,
+      "message": "this struct is exposed to all of package ui, so put it in a library, make it specific to this test, or move it into the test code.\n\n\nWhat about putting both this struct and the default app ids in common code, maybe ui/apps.go?  Then you could use [apps.DefaultChrome, apps.DefaultFiles, apps.DefaultWallpaper] instead.  You could also put the launch code there too, and cannibalize some stuff from ui.filesapp.  There are several references to autotestPrivate.launchApp already that could be consolidated - look at verify_launcher_app.go in vm.subtest",
+      "revId": "c825b16dc8adf01aa58fa0c4ffc4cc1c0a49777a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28d48299_73fe26de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-17T00:47:40Z",
+      "side": 1,
+      "message": "is there a team alias here too?",
+      "revId": "c825b16dc8adf01aa58fa0c4ffc4cc1c0a49777a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "93caef51_e97b6da9",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf.go",
         "patchSetId": 3
@@ -48,6 +82,30 @@
     },
     {
       "key": {
+        "uuid": "b67eba52_12b4b168",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-17T00:47:40Z",
+      "side": 1,
+      "message": "+1 - short names are required in go for variables with limited scope, but this is used throughout and there\u0027s not a clear meaning to the letter.  Maybe involve \"actual\" and \"expected\" in your variable names?  Or shelfElts?",
+      "parentUuid": "866f1648_5e635a77",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "c825b16dc8adf01aa58fa0c4ffc4cc1c0a49777a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ae4875d_a95bccaf",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf.go",
         "patchSetId": 3
@@ -65,6 +123,23 @@
         "endLine": 69,
         "endChar": 33
       },
+      "revId": "c825b16dc8adf01aa58fa0c4ffc4cc1c0a49777a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3eb9c19_8c885c68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-17T00:47:40Z",
+      "side": 1,
+      "message": "use name in the error since it\u0027s human readable.  And order it as \"Failed to launch x\", since the failure to launch is the more important bit",
       "revId": "c825b16dc8adf01aa58fa0c4ffc4cc1c0a49777a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -94,6 +169,23 @@
     },
     {
       "key": {
+        "uuid": "f7209df7_38fb9ee7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-17T00:47:40Z",
+      "side": 1,
+      "message": "If you make these errors as s.Error instead of s.Fatal, then the test will continue to run and then fail with all of the accrued errors (vs. failing immediately)",
+      "revId": "c825b16dc8adf01aa58fa0c4ffc4cc1c0a49777a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6074f5fc_ef91376d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf.go",
         "patchSetId": 3
@@ -117,6 +209,40 @@
     },
     {
       "key": {
+        "uuid": "ae726b05_a8133d3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-17T00:47:40Z",
+      "side": 1,
+      "message": "errors should start with what you got then follow with what you expected, e.g. \"App IDs did not match. Got %v; expected %v\".  Also, use s.Fatalf() so you can have formatting args.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "revId": "c825b16dc8adf01aa58fa0c4ffc4cc1c0a49777a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fc4586f_317690bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-17T00:47:40Z",
+      "side": 1,
+      "message": "same for this one",
+      "revId": "c825b16dc8adf01aa58fa0c4ffc4cc1c0a49777a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "524d7556_0febb70b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf.go",
         "patchSetId": 3
@@ -134,6 +260,40 @@
         "endLine": 101,
         "endChar": 35
       },
+      "revId": "c825b16dc8adf01aa58fa0c4ffc4cc1c0a49777a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51058906_93cc9d98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-17T00:47:40Z",
+      "side": 1,
+      "message": "Fatalf",
+      "revId": "c825b16dc8adf01aa58fa0c4ffc4cc1c0a49777a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1b7bdc9_7ff9163d",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-17T00:47:40Z",
+      "side": 1,
+      "message": "all one line",
       "revId": "c825b16dc8adf01aa58fa0c4ffc4cc1c0a49777a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -209,6 +369,30 @@
     },
     {
       "key": {
+        "uuid": "b9f5031b_575a550e",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-17T00:47:40Z",
+      "side": 1,
+      "message": "and include the appID",
+      "parentUuid": "fdb223c1_9c142ec6",
+      "range": {
+        "startLine": 171,
+        "startChar": 22,
+        "endLine": 171,
+        "endChar": 23
+      },
+      "revId": "c825b16dc8adf01aa58fa0c4ffc4cc1c0a49777a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a5d23f4_7f6ab6d8",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 3
@@ -226,6 +410,23 @@
         "endLine": 174,
         "endChar": 50
       },
+      "revId": "c825b16dc8adf01aa58fa0c4ffc4cc1c0a49777a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cb18587_a58eb18a",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-17T00:47:40Z",
+      "side": 1,
+      "message": "You should just return the error you got, since you\u0027re not really adding new info and you\u0027re going to catch/wrap it when calling.  I.e. make this entire function one giant return statement.",
       "revId": "c825b16dc8adf01aa58fa0c4ffc4cc1c0a49777a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
