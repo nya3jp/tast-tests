@@ -49,7 +49,12 @@ func parseTestList(content string) []string {
 	for _, line := range strings.Split(content, "\n") {
 		if strings.HasPrefix(line, " ") {
 			// Test case name.
-			result = append(result, fmt.Sprintf("%s%s", suite, strings.TrimSpace(line)))
+			testCase := strings.TrimSpace(line)
+			paramDelimiterIndex := strings.Index(testCase, "  #")
+			if paramDelimiterIndex != -1 {
+				testCase = testCase[:paramDelimiterIndex]
+			}
+			result = append(result, fmt.Sprintf("%s%s", suite, testCase))
 		} else {
 			// Test suite name. Note: suite contains a trailing period.
 			suite = strings.TrimSpace(line)
