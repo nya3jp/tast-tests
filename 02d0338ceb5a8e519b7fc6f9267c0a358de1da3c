@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aec872ca_ffa62bb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-18T23:12:42Z",
+      "side": 1,
+      "message": "cmd.Run(dumplogonerror) ?",
+      "range": {
+        "startLine": 89,
+        "startChar": 15,
+        "endLine": 92,
+        "endChar": 41
+      },
+      "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6cede81_cbc72d1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-18T23:12:42Z",
+      "side": 1,
+      "message": "Here and elsewhere, it might be useful to factor common parts of this test case and the toolkits.go tests into common utilities",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2364e024_5bf82512",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-18T23:12:42Z",
+      "side": 1,
+      "message": "have you verified that this command actually produces the wayland/x11 variants?\n\nsee:\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/crostini/toolkit.go?rcl\u003ddc9e764962aff6f715a691b647004ae57d5b5d19\u0026l\u003d41",
+      "range": {
+        "startLine": 115,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 6
+      },
+      "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e1452e2_be0e1fda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-18T23:12:42Z",
+      "side": 1,
+      "message": "as above, i think you need \u0027env\u0027",
+      "range": {
+        "startLine": 145,
+        "startChar": 25,
+        "endLine": 145,
+        "endChar": 41
+      },
+      "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ffa3769_38d3c4aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/copy_applet.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-18T23:12:42Z",
+      "side": 1,
+      "message": "see below",
+      "range": {
+        "startLine": 5,
+        "startChar": 32,
+        "endLine": 5,
+        "endChar": 50
+      },
+      "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d6f18ff_3ca88485",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/copy_applet.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-18T23:12:42Z",
+      "side": 1,
+      "message": "Do you need these things?\n\nThey seem like holdovers from the toolkit tests, sort wheat from chaff and remove them?",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 56
+      },
+      "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "859a28f2_bde865da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/copy_applet.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-18T23:12:42Z",
+      "side": 1,
+      "message": "I wouldn\u0027t be doing this.\n\nYour tast code should close the application when it sees fit (like the other toolkit tests do)",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 44
+      },
+      "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c808edd9_323db019",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/paste_applet.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-18T23:12:42Z",
+      "side": 1,
+      "message": "as per other file",
+      "range": {
+        "startLine": 14,
+        "startChar": 45,
+        "endLine": 21,
+        "endChar": 56
+      },
+      "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59e5fff4_f4c54c74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/paste_applet.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-18T23:12:42Z",
+      "side": 1,
+      "message": "i don\u0027t know this event.  For consistency with the other app, poll for keypress? Otherwise (less preferred) comment on it\n\nthis also gives you the advantage that both apps behave the same way:\nlaunch -\u003e send key event -\u003e close -\u003e read output",
+      "range": {
+        "startLine": 24,
+        "startChar": 28,
+        "endLine": 24,
+        "endChar": 40
+      },
+      "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98175ddb_a6f32af0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/paste_applet.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-18T23:12:42Z",
+      "side": 1,
+      "message": "as per other file",
+      "range": {
+        "startLine": 31,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 17
+      },
+      "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
