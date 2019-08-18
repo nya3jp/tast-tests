@@ -26,6 +26,7 @@ TestSuite2.
   TestCase4
   TestCase5/0
   TestCase5/1
+  TestCase5/2  # GetParam() = foo
 `
 	expected := []string{
 		"TestSuite1.TestCase1",
@@ -34,6 +35,7 @@ TestSuite2.
 		"TestSuite2.TestCase4",
 		"TestSuite2.TestCase5/0",
 		"TestSuite2.TestCase5/1",
+		"TestSuite2.TestCase5/2",
 	}
 	result := parseTestList(content)
 	if !reflect.DeepEqual(result, expected) {
