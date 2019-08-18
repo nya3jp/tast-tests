@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c412008a_37968bb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/profiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2019-08-18T09:58:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f3f56f1_5d1eb7b4",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 91
+      },
+      "revId": "53373eb909621b666f1870169861ab3ec7aa80d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fe1af45_adc61bb8",
         "filename": "src/chromiumos/tast/local/profiler/vmstat.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "53373eb909621b666f1870169861ab3ec7aa80d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da63d973_ada09d9c",
+        "filename": "src/chromiumos/tast/local/profiler/vmstat.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2019-08-18T09:58:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fe1af45_adc61bb8",
+      "range": {
+        "startLine": 31,
+        "startChar": 10,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "53373eb909621b666f1870169861ab3ec7aa80d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
