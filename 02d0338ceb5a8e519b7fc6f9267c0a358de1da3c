@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9be9e496_2b357b52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-19T08:07:25Z",
+      "side": 1,
+      "message": "I\u0027ve factored out some common functionality into display.go, do you to do the refactoring of other tests here or in a follow up CL?",
+      "parentUuid": "b6cede81_cbc72d1e",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2364e024_5bf82512",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
         "patchSetId": 3
@@ -331,6 +355,30 @@
     },
     {
       "key": {
+        "uuid": "f0c5fc0d_0ad028d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/copy_applet.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-19T08:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c39e759_85bee929",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 44
+      },
+      "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c808edd9_323db019",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/paste_applet.py",
         "patchSetId": 3
@@ -449,6 +497,30 @@
     },
     {
       "key": {
+        "uuid": "03ce5c25_0f07d4d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/paste_applet.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-19T08:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d9edf32_adbad3de",
+      "range": {
+        "startLine": 24,
+        "startChar": 28,
+        "endLine": 24,
+        "endChar": 40
+      },
+      "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98175ddb_a6f32af0",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/paste_applet.py",
         "patchSetId": 3
@@ -517,6 +589,30 @@
       "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dda5545d_9fc68921",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/paste_applet.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-19T08:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e750f59b_7fa0064f",
+      "range": {
+        "startLine": 31,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 17
+      },
+      "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
