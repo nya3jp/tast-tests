@@ -67,7 +67,7 @@ func openWebRTCPageAndCheckBucket(ctx context.Context, fileSystem http.FileSyste
 		return err
 	}
 
-	histogramDiff, err := metrics.WaitForHistogramUpdate(ctx, cr, histogramName, initHistogram, 5*time.Second)
+	histogramDiff, err := metrics.WaitForHistogramUpdate(ctx, cr, histogramName, initHistogram, 15*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed getting histogram diff")
 	}
