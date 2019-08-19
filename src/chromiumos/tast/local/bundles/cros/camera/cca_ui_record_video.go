@@ -115,7 +115,11 @@ func testRecordVideo(ctx context.Context, app *cca.App) error {
 	if err := app.WaitForState(ctx, "taking", false); err != nil {
 		return errors.Wrap(err, "shutter is not ended")
 	}
-	if _, err := app.WaitForFileSaved(ctx, cca.VideoPattern, start); err != nil {
+	dir, err := app.GetSavedDir(ctx)
+	if err != nil {
+		return err
+	}
+	if _, err := app.WaitForFileSaved(ctx, dir, cca.VideoPattern, start); err != nil {
 		return errors.Wrap(err, "cannot find result video")
 	}
 	return nil
@@ -137,7 +141,11 @@ func testRecordVideoWithTimer(ctx context.Context, app *cca.App) error {
 	if err := app.WaitForState(ctx, "taking", false); err != nil {
 		return errors.Wrap(err, "shutter is not ended")
 	}
-	if result, err := app.WaitForFileSaved(ctx, cca.VideoPattern, start); err != nil {
+	dir, err := app.GetSavedDir(ctx)
+	if err != nil {
+		return err
+	}
+	if result, err := app.WaitForFileSaved(ctx, dir, cca.VideoPattern, start); err != nil {
 		return errors.Wrap(err, "cannot find result video")
 	} else if elapsed := result.ModTime().Sub(start); elapsed < cca.TimerDelay {
 		return errors.Errorf("the capture should happen after timer of %v, actual elapsed time %v", cca.TimerDelay, elapsed)
