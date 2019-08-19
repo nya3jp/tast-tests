@@ -56,8 +56,8 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 		s.Fatal("Preview is inactive after switch to video mode: ", err)
 	}
 
-	toggleTimer := func(active bool) func(context.Context, *cca.App) error {
-		return func(ctx context.Context, app *cca.App) error {
+	toggleTimer := func(active bool) func(context.Context, *cca.App, *chrome.Chrome) error {
+		return func(ctx context.Context, app *cca.App, cr *chrome.Chrome) error {
 			return app.SetTimerOption(ctx, active)
 		}
 	}
@@ -65,7 +65,7 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 	if err := cca.RunThruCameras(ctx, app, func() {
 		for _, action := range []struct {
 			name string
-			run  func(context.Context, *cca.App) error
+			run  func(context.Context, *cca.App, *chrome.Chrome) error
 		}{
 			{"testRecordVideo", testRecordVideo},
 			{"toggleTimer(true)", toggleTimer(true)},
@@ -74,7 +74,7 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 			{"toggleTimer(false)", toggleTimer(false)},
 		} {
 			testing.ContextLog(ctx, "Start ", action.name)
-			if err := action.run(ctx, app); err != nil {
+			if err := action.run(ctx, app, cr); err != nil {
 				s.Errorf("Failed in %v(): %v", action.name, err)
 				restartApp()
 			}
@@ -85,7 +85,7 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 	}
 }
 
-func testRecordVideo(ctx context.Context, app *cca.App) error {
+func testRecordVideo(ctx context.Context, app *cca.App, cr *chrome.Chrome) error {
 	testing.ContextLog(ctx, "Click on start shutter")
 	if err := app.ClickShutter(ctx); err != nil {
 		return err
@@ -115,13 +115,17 @@ func testRecordVideo(ctx context.Context, app *cca.App) error {
 	if err := app.WaitForState(ctx, "taking", false); err != nil {
 		return errors.Wrap(err, "shutter is not ended")
 	}
-	if _, err := app.WaitForFileSaved(ctx, cca.VideoPattern, start); err != nil {
+	dir, err := cca.GetSavedDir(ctx, cr)
+	if err != nil {
+		return err
+	}
+	if _, err := app.WaitForFileSaved(ctx, dir, cca.VideoPattern, start); err != nil {
 		return errors.Wrap(err, "cannot find result video")
 	}
 	return nil
 }
 
-func testRecordVideoWithTimer(ctx context.Context, app *cca.App) error {
+func testRecordVideoWithTimer(ctx context.Context, app *cca.App, cr *chrome.Chrome) error {
 	start := time.Now()
 	testing.ContextLog(ctx, "Click on start shutter")
 	if err := app.ClickShutter(ctx); err != nil {
@@ -137,7 +141,11 @@ func testRecordVideoWithTimer(ctx context.Context, app *cca.App) error {
 	if err := app.WaitForState(ctx, "taking", false); err != nil {
 		return errors.Wrap(err, "shutter is not ended")
 	}
-	if result, err := app.WaitForFileSaved(ctx, cca.VideoPattern, start); err != nil {
+	dir, err := cca.GetSavedDir(ctx, cr)
+	if err != nil {
+		return err
+	}
+	if result, err := app.WaitForFileSaved(ctx, dir, cca.VideoPattern, start); err != nil {
 		return errors.Wrap(err, "cannot find result video")
 	} else if elapsed := result.ModTime().Sub(start); elapsed < cca.TimerDelay {
 		return errors.Errorf("the capture should happen after timer of %v, actual elapsed time %v", cca.TimerDelay, elapsed)
@@ -146,7 +154,7 @@ func testRecordVideoWithTimer(ctx context.Context, app *cca.App) error {
 	return nil
 }
 
-func testRecordCancelTimer(ctx context.Context, app *cca.App) error {
+func testRecordCancelTimer(ctx context.Context, app *cca.App, cr *chrome.Chrome) error {
 	testing.ContextLog(ctx, "Click on start shutter")
 	if err := app.ClickShutter(ctx); err != nil {
 		return err

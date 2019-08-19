@@ -62,7 +62,8 @@ const (
 	// TimerOn means shutter timer is on.
 	TimerOn TimerState = true
 	// TimerOff means shutter timer is off.
-	TimerOff = false
+	TimerOff        = false
+	ccaID    string = "hfhhnacclhffhdffklopdkcgdhifgngh"
 )
 
 var (
@@ -74,6 +75,7 @@ var (
 	PortraitPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}_COVER.jpg$`)
 	// PortraitRefPattern is the filename format of the reference photo captured in portrait-mode.
 	PortraitRefPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}.jpg$`)
+	ccaURLPrefix       = fmt.Sprintf("chrome-extension://%s/views/main.html", ccaID)
 )
 
 // TimerDelay is default timer delay of CCA.
@@ -86,11 +88,18 @@ type App struct {
 	scriptPaths []string
 }
 
-// New launches a CCA instance and evaluates the helper script within it. The
-// scriptPath should be the data path to the helper script cca_ui.js.
-func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, error) {
-	const ccaID = "hfhhnacclhffhdffklopdkcgdhifgngh"
+// AppLauncher is used during the launch process of CCA. We could launch CCA
+// by launchApp event, camera intent or any other ways.
+type AppLauncher func(tconn *chrome.Conn) error
 
+func isMatchCCAPrefix(t *chrome.Target) bool {
+	return strings.HasPrefix(t.URL, ccaURLPrefix)
+}
+
+// Init launches a CCA instance by |appLauncher| and evaluates the helper script
+// within it. The scriptPath should be the data path to the helper script
+// cca_ui.js.
+func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, appLauncher AppLauncher) (*App, error) {
 	// The cros-camera job exists only on boards that use the new camera stack.
 	if upstart.JobExists(ctx, "cros-camera") {
 		// Ensure that cros-camera service is running, because the service
@@ -106,19 +115,23 @@ func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, er
 		return nil, err
 	}
 
-	launchApp := fmt.Sprintf(`
-		(async () => {
-		  const p = tast.promisify(chrome.runtime.sendMessage)(
-		      %[1]q, {action: 'SET_WINDOW_CREATED_CALLBACK'}, null);
-		  await tast.promisify(chrome.management.launchApp)(%[1]q);
-		  return p;
-		})()`, ccaID)
-	if err := tconn.EvalPromise(ctx, launchApp, nil); err != nil {
+	prepareCCA := fmt.Sprintf(`
+		CCAReady = tast.promisify(chrome.runtime.sendMessage)(
+			%q, {action: 'SET_WINDOW_CREATED_CALLBACK'}, null);`, ccaID)
+	if err := tconn.Exec(ctx, prepareCCA); err != nil {
 		return nil, err
 	}
 
-	ccaURL := fmt.Sprintf("chrome-extension://%s/views/main.html", ccaID)
-	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(ccaURL))
+	if err := appLauncher(tconn); err != nil {
+		return nil, err
+	}
+
+	if err := tconn.EvalPromise(ctx, `CCAReady`, nil); err != nil {
+		return nil, err
+	}
+
+	conn, err := cr.NewConnForTarget(ctx, isMatchCCAPrefix)
+
 	if err != nil {
 		return nil, err
 	}
@@ -155,6 +168,22 @@ func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, er
 
 	testing.ContextLog(ctx, "CCA launched")
 	return &App{conn, cr, scriptPaths}, nil
+}
+
+// New launches a CCA instance by launchApp event and initialize it.
+func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, error) {
+	return Init(ctx, cr, scriptPaths, func(tconn *chrome.Conn) error {
+		launchApp := fmt.Sprintf(`tast.promisify(chrome.management.launchApp)(%q);`, ccaID)
+		if err := tconn.EvalPromise(ctx, launchApp, nil); err != nil {
+			return err
+		}
+		return nil
+	})
+}
+
+// InstanceExists checks if there is any running CCA instance.
+func InstanceExists(ctx context.Context, cr *chrome.Chrome) (bool, error) {
+	return cr.IsTargetAvailable(ctx, isMatchCCAPrefix)
 }
 
 // Close closes the App and the associated connection.
@@ -221,17 +250,12 @@ func (a *App) WaitForVideoActive(ctx context.Context) error {
 
 // WaitForFileSaved waits for the presence of the captured file with file name matching the specified
 // pattern and modified time after the specified timestamp.
-func (a *App) WaitForFileSaved(ctx context.Context, pat *regexp.Regexp, ts time.Time) (os.FileInfo, error) {
-	path, err := a.GetSavedDir(ctx)
-	if err != nil {
-		return nil, err
-	}
-
+func (a *App) WaitForFileSaved(ctx context.Context, dir string, pat *regexp.Regexp, ts time.Time) (os.FileInfo, error) {
 	const timeout = 5 * time.Second
 	var result os.FileInfo
 	seen := make(map[string]struct{})
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		files, err := ioutil.ReadDir(path)
+		files, err := ioutil.ReadDir(dir)
 		if err != nil {
 			return errors.Wrap(err, "failed to read the directory where media files are saved")
 		}
@@ -352,9 +376,14 @@ func (a *App) TakeSinglePhoto(ctx context.Context, timerState TimerState) ([]os.
 		return nil, errors.Wrap(err, "capturing hasn't ended")
 	}
 
+	dir, err := GetSavedDir(ctx, a.cr)
+	if err != nil {
+		return nil, err
+	}
+
 	var fileInfos []os.FileInfo
 	for _, pattern := range patterns {
-		info, err := a.WaitForFileSaved(ctx, pattern, start)
+		info, err := a.WaitForFileSaved(ctx, dir, pattern, start)
 		if err != nil {
 			return nil, errors.Wrapf(err, "cannot find result picture with regexp: %v", pattern)
 		}
@@ -378,7 +407,7 @@ func (a *App) TakeSinglePhoto(ctx context.Context, timerState TimerState) ([]os.
 
 	metadataPatterns := getMetadataPatterns(fileInfos)
 	for _, pattern := range metadataPatterns {
-		info, err := a.WaitForFileSaved(ctx, pattern, start)
+		info, err := a.WaitForFileSaved(ctx, dir, pattern, start)
 		if err != nil {
 			return nil, errors.Wrapf(err, "cannot find result metadata with regexp: %v", pattern)
 		}
@@ -387,12 +416,11 @@ func (a *App) TakeSinglePhoto(ctx context.Context, timerState TimerState) ([]os.
 			return nil, errors.Errorf("saved file %v is empty", info.Name())
 		}
 
-		path, err := a.GetSavedDir(ctx)
 		if err != nil {
 			return nil, err
 		}
 		var jsonString map[string]interface{}
-		if content, err := ioutil.ReadFile(filepath.Join(path, info.Name())); err != nil {
+		if content, err := ioutil.ReadFile(filepath.Join(dir, info.Name())); err != nil {
 			return nil, errors.Wrapf(err, "failed to read metadata file %v", info.Name())
 		} else if err := json.Unmarshal(content, &jsonString); err != nil {
 			return nil, errors.Wrapf(err, "not a valid json file %v", info.Name())
@@ -414,8 +442,8 @@ func getMetadataPatterns(fileInfos []os.FileInfo) []*regexp.Regexp {
 }
 
 // GetSavedDir returns the path to the folder where captured files are saved.
-func (a *App) GetSavedDir(ctx context.Context) (string, error) {
-	path, err := cryptohome.UserPath(ctx, a.cr.User())
+func GetSavedDir(ctx context.Context, cr *chrome.Chrome) (string, error) {
+	path, err := cryptohome.UserPath(ctx, cr.User())
 	if err != nil {
 		return "", err
 	}
@@ -452,6 +480,58 @@ func (a *App) MirrorButtonExists(ctx context.Context) (bool, error) {
 	var actual bool
 	err := a.conn.Eval(ctx, "Tast.isVisible('#toggle-mirror')", &actual)
 	return actual, err
+}
+
+// CheckConfirmUIExists returns whether the confirm UI exists.
+func (a *App) CheckConfirmUIExists(ctx context.Context, mode Mode) error {
+	var reviewElementID string
+	if mode == Photo {
+		reviewElementID = "#review-photo-result"
+	} else if mode == Video {
+		reviewElementID = "#review-video-result"
+	} else {
+		return errors.Errorf("unrecognized mode: %s", mode)
+	}
+	var visible bool
+	if err := a.conn.Eval(ctx, fmt.Sprintf("Tast.isVisible(%q)", reviewElementID), &visible); err != nil {
+		return err
+	} else if !visible {
+		return errors.New("review result is not shown")
+	}
+
+	if err := a.conn.Eval(ctx, "Tast.isVisible('#confirm-result')", &visible); err != nil {
+		return err
+	} else if !visible {
+		return errors.New("confirm button is not shown")
+	}
+
+	if err := a.conn.Eval(ctx, "Tast.isVisible('#cancel-result')", &visible); err != nil {
+		return err
+	} else if !visible {
+		return errors.New("cancel button is not shown")
+	}
+	return nil
+}
+
+// ConfirmResult clicks the confirm button or the cancel button according to the given |isConfirmed|.
+func (a *App) ConfirmResult(ctx context.Context, isConfirmed bool, mode Mode) error {
+	if err := a.WaitForState(ctx, "review-result", true); err != nil {
+		return errors.Wrap(err, "does not enter review result state")
+	}
+	if err := a.CheckConfirmUIExists(ctx, mode); err != nil {
+		return errors.Wrap(err, "check confirm UI failed")
+	}
+
+	var buttonID string
+	if isConfirmed {
+		buttonID = "#confirm-result"
+	} else {
+		buttonID = "#cancel-result"
+	}
+	if err := a.conn.Eval(ctx, fmt.Sprintf("Tast.click(%q)", buttonID), nil); err != nil {
+		return errors.Wrap(err, "failed to click confirm/cancel button")
+	}
+	return nil
 }
 
 func (a *App) toggleOption(ctx context.Context, option string, toggleSelector string) (bool, error) {
