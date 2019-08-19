@@ -221,6 +221,49 @@ func (c *Concierge) stopVM(ctx context.Context, vm *VM) error {
 	return nil
 }
 
+func (c *Concierge) attachUsbDevice(ctx context.Context, vm *VM, fd uintptr) (int, error) {
+	resp := &vmpb.AttachUsbDeviceResponse{}
+	if err := dbusutil.CallProtoMethodFd(ctx, vm.Concierge.conciergeObj, conciergeInterface+".AttachUsbDevice",
+		[]uintptr{fd},
+		&vmpb.AttachUsbDeviceRequest{
+			VmName: vm.name,
+			OwnerId: vm.Concierge.ownerID,
+			// Arguments below are obsolete and will be removed.
+			BusNumber: 0,
+			PortNumber: 0,
+			VendorId: 0,
+			ProductId: 0,
+		}, resp); err != nil {
+		return -1, err
+	}
+
+	if !resp.GetSuccess() {
+		return -1, errors.Errorf("failed to attach USB device: %v", resp.GetReason())
+	}
+
+	testing.ContextLogf(ctx, "USB Device attached to VM %q port %d", vm.name, resp.GetGuestPort())
+	return int(resp.GetGuestPort()), nil
+}
+
+func (c *Concierge) detachUsbDevice(ctx context.Context, vm *VM, port int) error {
+	resp := &vmpb.DetachUsbDeviceResponse{}
+	if err := dbusutil.CallProtoMethod(ctx, vm.Concierge.conciergeObj, conciergeInterface+".DetachUsbDevice",
+		&vmpb.DetachUsbDeviceRequest{
+			VmName: vm.name,
+			OwnerId: vm.Concierge.ownerID,
+			GuestPort: uint32(port),
+		}, resp); err != nil {
+		return err
+	}
+
+	if !resp.GetSuccess() {
+		return errors.Errorf("failed to attach USB device: %v", resp.GetReason())
+	}
+
+	testing.ContextLogf(ctx, "USB Device detached from VM %q port %d", vm.name, port)
+	return nil
+}
+
 // GetOwnerID returns the cryptohome hash for the logged-in user.
 func (c *Concierge) GetOwnerID() string {
 	return c.ownerID
