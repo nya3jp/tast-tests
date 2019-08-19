@@ -58,7 +58,7 @@ func CCAUIModes(ctx context.Context, s *testing.State) {
 	}
 
 	isSquarePhoto := func(info os.FileInfo, ctx context.Context, app *cca.App) (bool, error) {
-		path, err := app.GetSavedDir(ctx)
+		path, err := cca.GetSavedDir(ctx, cr)
 		if err != nil {
 			return false, err
 		}

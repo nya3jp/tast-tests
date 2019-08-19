@@ -54,12 +54,23 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	dir, err := cca.GetSavedDir(ctx, cr)
+	if err != nil {
+		s.Fatal("Failed to get CCA default saved path: ", err)
+	}
+
+	testRecordVideo := func() func(context.Context, *cca.App) error {
+		return func(ctx context.Context, app *cca.App) error {
+			return testRecordVideoWithWindowChanged(ctx, app, dir)
+		}
+	}
+
 	if err := cca.RunThroughCameras(ctx, app, func(facing cca.Facing) error {
 		for _, action := range []struct {
 			name string
 			run  func(context.Context, *cca.App) error
 		}{
-			{"testRecordVideo", testRecordVideo},
+			{"testRecordVideo", testRecordVideo()},
 			{"toggleTimer(cca.TimerOn)", toggleTimer(cca.TimerOn)},
 			{"testRecordVideoWithTimer", testRecordVideoWithTimer},
 			{"testRecordCancelTimer", testRecordCancelTimer},
@@ -77,7 +88,7 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 	}
 }
 
-func testRecordVideo(ctx context.Context, app *cca.App) error {
+func testRecordVideoWithWindowChanged(ctx context.Context, app *cca.App, dir string) error {
 	testing.ContextLog(ctx, "Click on start shutter")
 	if err := app.ClickShutter(ctx); err != nil {
 		return err
@@ -107,7 +118,7 @@ func testRecordVideo(ctx context.Context, app *cca.App) error {
 	if err := app.WaitForState(ctx, "taking", false); err != nil {
 		return errors.Wrap(err, "shutter is not ended")
 	}
-	if _, err := app.WaitForFileSaved(ctx, cca.VideoPattern, start); err != nil {
+	if _, err := app.WaitForFileSaved(ctx, dir, cca.VideoPattern, start); err != nil {
 		return errors.Wrap(err, "cannot find result video")
 	}
 	return nil
