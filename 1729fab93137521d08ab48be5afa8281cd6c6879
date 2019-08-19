@@ -1,0 +1,268 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8be7f3d_6bf39967",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-19T06:12:18Z",
+      "side": 1,
+      "message": "nit/optional/style: I\u0027d recommend to put this part into the next line to make this more visible delimitor.\n\nParams: []testing.Param{{\n  ...\n}, {\n  ...\n}, {\n  ..\n}}",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 8
+      },
+      "revId": "1729fab93137521d08ab48be5afa8281cd6c6879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c1a46d9_f57f63f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-19T06:12:18Z",
+      "side": 1,
+      "message": "Could you use filepath.Join() to concat path components?\n\nHow about adding installRoot to the conf, and replace \"installType \u003d\u003d local\" with \"installRoot /home/testuser/.local\" and \"installType \u003d\u003d system\" with \"/usr\".\n\nThen this will be\n\niconPath \u003d filepath.Join(conf.installRoot, \"share/icons/hicolor/32x32/apps\", conf.iconFile)\ndesktopPath :\u003d filepath.Join(conf.installRoot, \"share/applications\", conf.desktopFile)\n...",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 2
+      },
+      "revId": "1729fab93137521d08ab48be5afa8281cd6c6879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae794ceb_2b5d1452",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-19T06:12:18Z",
+      "side": 1,
+      "message": "Probably, \"waitForIcon\" is common name pattern, I think.",
+      "range": {
+        "startLine": 186,
+        "startChar": 3,
+        "endLine": 186,
+        "endChar": 22
+      },
+      "revId": "1729fab93137521d08ab48be5afa8281cd6c6879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "110295ff_f6070755",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-19T06:12:18Z",
+      "side": 1,
+      "message": "This function looks utility to wait for icons exist/disapper. So, could you avoid handling s.Error() inside, instead return an error appropriately and handle it in the caller?\n\ncf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\n\u003d\u003d quote \u003d\u003d\n Avoid passing testing.State when it’s not actually necessary:\n\u003d\u003d quote end \u003d\u003d\n\nE.g., in the caller:\n\nif err :\u003d waitForIcon(ctx, ownerID, appID, exists); err !\u003d nil {\n  s.Fatal(...)\n}\n\netc.",
+      "range": {
+        "startLine": 188,
+        "startChar": 45,
+        "endLine": 188,
+        "endChar": 61
+      },
+      "revId": "1729fab93137521d08ab48be5afa8281cd6c6879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91770fc8_182ca20f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-19T06:12:18Z",
+      "side": 1,
+      "message": "nit/optional: it\u0027s nice to introduce the named enum for this.",
+      "range": {
+        "startLine": 188,
+        "startChar": 86,
+        "endLine": 188,
+        "endChar": 103
+      },
+      "revId": "1729fab93137521d08ab48be5afa8281cd6c6879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23cc1e74_fd81762b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-19T06:12:18Z",
+      "side": 1,
+      "message": "Checking all errorIfExpectIs looks a bit difficult for me. How about refactor this to;\n\n// iconExists returns true if at least one icon file is found.\niconExists :\u003d func() (bool, error) {\n  if fi, err :\u003d os.Stat(iconDir); err !\u003d nil {\n    return false, err\n  } else !fi.IsDir() {\n    return false, errors.Errorf(\"...\")\n  }\n\n  entries, err :\u003d ioutil.ReadDir(iconDir)\n  if err !\u003d nil {\n    return false, errors.Wrap(err, ...)\n  }\n  return len(entries) !\u003d 0, nil  \n}\n\nif err :\u003d testing.Poll(ctx, func(...) error {\n  ok, err :\u003d iconExists()\n  if ok !\u003d expectedExist {\n    ...\n  }\n  return nil\n}); err !\u003d nil {\n  return errors.Wrap(err, ...)\n}",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 212,
+        "endChar": 2
+      },
+      "revId": "1729fab93137521d08ab48be5afa8281cd6c6879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f022a9f_d1f9b5be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-19T06:12:18Z",
+      "side": 1,
+      "message": "unused. Ditto for below.",
+      "range": {
+        "startLine": 221,
+        "startChar": 44,
+        "endLine": 221,
+        "endChar": 60
+      },
+      "revId": "1729fab93137521d08ab48be5afa8281cd6c6879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d401c3c_48fedc5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-19T06:12:18Z",
+      "side": 1,
+      "message": "tast.promisify helps you to simplify this. Ditto for below.",
+      "range": {
+        "startLine": 223,
+        "startChar": 3,
+        "endLine": 231,
+        "endChar": 4
+      },
+      "revId": "1729fab93137521d08ab48be5afa8281cd6c6879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cee4024_fc815697",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-19T06:12:18Z",
+      "side": 1,
+      "message": "optional: how about isAppShown to match with the JS function name...?",
+      "range": {
+        "startLine": 253,
+        "startChar": 5,
+        "endLine": 253,
+        "endChar": 23
+      },
+      "revId": "1729fab93137521d08ab48be5afa8281cd6c6879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0443b305_1904741e",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-19T06:12:18Z",
+      "side": 1,
+      "message": "style: Could you simplify this to;\n\nif err :\u003d subtest.InstallPackage(...); err !\u003d nil {\n  s.Fatal(...)\n}\nsubtest.UninstallApplication(...)",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 2
+      },
+      "revId": "1729fab93137521d08ab48be5afa8281cd6c6879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab2eb8ec_1f1097f2",
+        "filename": "src/chromiumos/tast/local/crostini/files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-19T06:12:18Z",
+      "side": 1,
+      "message": "For utilities, could you avoid passing testing.State and calling Fatal for errors?\nInstead could you return error instance and handle it properly in the caller?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages",
+      "revId": "1729fab93137521d08ab48be5afa8281cd6c6879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df39f47e_52af31f0",
+        "filename": "src/chromiumos/tast/local/crostini/files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-19T06:12:18Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "1729fab93137521d08ab48be5afa8281cd6c6879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
