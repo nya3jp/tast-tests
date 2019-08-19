@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80259f8d_f2bab519",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-19T05:15:59Z",
+      "side": 1,
+      "message": "nit\u0026optional: Ideally we want to name this field \"type\" since \"perf\" is duplicated with the enclosing struct name, though it\u0027s conflicting with the Go keyword. How about typ?",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 9
+      },
+      "revId": "ca379b9a8c60576eeb0672ebb6ed37d3dc7e612a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8271b8b_be1c113e",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-19T05:15:59Z",
+      "side": 1,
+      "message": "This should be:\n\n const (\n   PerfRecord PerfType \u003d iota\n   PerfStat\n )\n\nAlso, could you add comments to these constants since they are part of public API?",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 9
+      },
+      "revId": "ca379b9a8c60576eeb0672ebb6ed37d3dc7e612a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de485740_dff31e77",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-19T05:15:59Z",
+      "side": 1,
+      "message": "Same here: Please add a doc comment.",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "ca379b9a8c60576eeb0672ebb6ed37d3dc7e612a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3caf603a_5d460986",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-19T05:15:59Z",
+      "side": 1,
+      "message": "Could you do instead:\n\n if opts \u003d\u003d nil {\n   opts \u003d \u0026PerfOpts{}\n }\n // Use opts below\n\nso that it is clearer that Perf(nil) has exactly the same meaning as Perf(\u0026PerfOpts{}). Please also see my another comment in vmstat.go.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "ca379b9a8c60576eeb0672ebb6ed37d3dc7e612a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8d0c7c6_bd3d39f1",
+        "filename": "src/chromiumos/tast/local/profiler/profiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-19T05:15:59Z",
+      "side": 1,
+      "message": "We want to avoid introducing the `new` method since it adds the \"uninitialized\" state to the perf objects, as we discussed in the earlier review:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1731417/3/src/chromiumos/tast/local/profiler/profiler.go#44\n\nActually we can avoid this easily. Firstly, the Profiler type is kept as is:\n\n type Profiler func(ctx context.Context, outDir string) (instance, error)\n\nAnd let us define the Profiler constructor functions to return a closure that binds FooOpts to the actual constructor functions, for example:\n\n func Perf(opts *PerfOpts) Profiler {\n   return func(ctx context.Context, outDir string) (instance, error) {\n     return newPerf(ctx, outDir, opts)\n   }\n }\n\n func newPerf(ctx context.Context, outDir string, opts *PerfOpts) (instance, error) {\n   ...\n }\n\nThis way, real profiler instances are not constructed on profiler.Perf(...) call, and we can avoid the uninitialized state.",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 35
+      },
+      "revId": "ca379b9a8c60576eeb0672ebb6ed37d3dc7e612a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e5ee901_d2f512fa",
+        "filename": "src/chromiumos/tast/local/profiler/vmstat.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-19T05:15:59Z",
+      "side": 1,
+      "message": "It is inconvenient to use the default interval only when opts \u003d\u003d nil because the default value can\u0027t be used if we want to specify other options. For example, let\u0027s say we got a new option in VMStatOpts like this:\n\n type VMStatOpts struct {\n   Interval time.Duration\n   FooBar string\n }\n\nWhen the user wants to set FooBar, they are also forced to set Interval as well.\n\nTo avoid that, I recommend to:\n- treat nil VMStatOpts equally as \u0026VMStatOpts{}, and\n- use the default value when VMStatOpts fields have zero value.\n\nTaking these into accounts, VMStat will be:\n\n func VMStat(opts *VMStatOpts) ... {\n   if opts \u003d\u003d nil {\n     opts \u003d \u0026VMStatOpts{}\n   }\n   if opts.Interval \u003d\u003d 0 {\n     opts.Interval \u003d 1 * time.Second\n   }\n   ...\n }",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "ca379b9a8c60576eeb0672ebb6ed37d3dc7e612a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
