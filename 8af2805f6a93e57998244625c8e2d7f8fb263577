@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffd0f5e7_01408897",
+        "filename": "src/chromiumos/tast/local/set/set.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-19T22:08:48Z",
+      "side": 1,
+      "message": "nit: Since the name of the func is \"DiffXXX\", perhaps it should return a \"diff\" instead of \"added\" ?\nThe alternative is to remove the \"added\" altogether since it kind of implied by the name of the function.",
+      "range": {
+        "startLine": 10,
+        "startChar": 37,
+        "endLine": 10,
+        "endChar": 42
+      },
+      "revId": "8af2805f6a93e57998244625c8e2d7f8fb263577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bc4640a_5a3f5f43",
+        "filename": "src/chromiumos/tast/local/set/set_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-19T22:08:48Z",
+      "side": 1,
+      "message": "nit: \"files\" sounds strange in this context.\nperhaps \"strings\", or \"values\" ?",
+      "range": {
+        "startLine": 19,
+        "startChar": 23,
+        "endLine": 19,
+        "endChar": 28
+      },
+      "revId": "8af2805f6a93e57998244625c8e2d7f8fb263577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
