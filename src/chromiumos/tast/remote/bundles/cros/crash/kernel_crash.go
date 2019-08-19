@@ -126,7 +126,7 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 	s.Log("Reconnected to DUT")
 
 	const timeout = time.Second * 30
-	globs := []string{"kernel.*.0.bios_log", "kernel.*.0.kcrash", "kernel.*.0.meta"}
+	globs := []string{"kernel.*.0.kcrash", "kernel.*.0.meta"}
 
 	s.Log("Waiting for files to become present")
 	if err := waitForNonEmptyGlobsWithTimeout(ctx, d, globs, timeout, prevCrashes); err != nil {
