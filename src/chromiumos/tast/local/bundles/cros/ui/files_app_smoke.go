@@ -32,8 +32,6 @@ func init() {
 }
 
 func FilesAppSmoke(ctx context.Context, s *testing.State) {
-	// TODO(crbug.com/987755): Port image preview part of the test from desktopui_FilesApp.
-
 	cr := s.PreValue().(*chrome.Chrome)
 
 	// Setup the test file.
