@@ -307,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "5c39e759_85bee929",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/copy_applet.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-19T05:24:48Z",
+      "side": 1,
+      "message": "discussed offline,\n- preferable to have the apps work like normal windows (i.e. close when we close them from within tast)\n- preferable to fail the test if we cant successfully copy within 1 second",
+      "parentUuid": "9d8d36bd_e2ab8f2d",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 44
+      },
+      "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c808edd9_323db019",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/paste_applet.py",
         "patchSetId": 3
@@ -401,6 +425,30 @@
     },
     {
       "key": {
+        "uuid": "4d9edf32_adbad3de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/paste_applet.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-19T05:24:48Z",
+      "side": 1,
+      "message": "discussed offline, preferable to simplify logic",
+      "parentUuid": "72e1ca4a_c491a46e",
+      "range": {
+        "startLine": 24,
+        "startChar": 28,
+        "endLine": 24,
+        "endChar": 40
+      },
+      "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "98175ddb_a6f32af0",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/paste_applet.py",
         "patchSetId": 3
@@ -436,6 +484,30 @@
       "side": 1,
       "message": "How is the test supposed to know that the paste has finished if the app doesn\u0027t close itself?",
       "parentUuid": "98175ddb_a6f32af0",
+      "range": {
+        "startLine": 31,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 17
+      },
+      "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e750f59b_7fa0064f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/paste_applet.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-19T05:24:48Z",
+      "side": 1,
+      "message": "discussed offline\n- We do need some way of delaying the paste til after the window is shown\n- preferable to use a keypress since thats consistent with copy",
+      "parentUuid": "b9a158ec_14a021a8",
       "range": {
         "startLine": 31,
         "startChar": 6,
