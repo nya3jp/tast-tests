@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13c4f925_27d58ade",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/dawn_unittests.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-08-19T19:59:34Z",
+      "side": 1,
+      "message": "nit. Omitting this should be fine. (\u003c\u003d1 Minutes)\n\n[1] http://cs/chromeos_public/src/platform/tast/src/chromiumos/tast/testing/test.go?l\u003d75\u0026rcl\u003d5a9f9a231235db8e9c186a9f592cbe26953c5862",
+      "revId": "6798a6e58d4ba137649e4b40e5fcf580c2223cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a97ca4a_7e0b23e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/dawn_unittests.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-08-19T19:59:34Z",
+      "side": 1,
+      "message": "You can utilize tast parameterized test[1] given the high similarity of both test.\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-tests",
+      "range": {
+        "startLine": 31,
+        "startChar": 48,
+        "endLine": 31,
+        "endChar": 62
+      },
+      "revId": "6798a6e58d4ba137649e4b40e5fcf580c2223cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
