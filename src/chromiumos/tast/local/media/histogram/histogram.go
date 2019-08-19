@@ -32,7 +32,7 @@ func WasHWAccelUsed(ctx context.Context, cr *chrome.Chrome, initHistogram *metri
 
 	// err is not nil here if HW Acceleration is disabled and then Chrome doesn't try HW Acceleration initialization at all.
 	// For the case 1, we pass a short time context to WaitForHistogramUpdate to avoid the whole test context (ctx) from reaching deadline.
-	histogramDiff, err := metrics.WaitForHistogramUpdate(ctx, cr, histogramName, initHistogram, 5*time.Second)
+	histogramDiff, err := metrics.WaitForHistogramUpdate(ctx, cr, histogramName, initHistogram, 15*time.Second)
 	if err != nil {
 		// This is the first case; no histogram is updated.
 		return false, nil
