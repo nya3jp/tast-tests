@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "314ddbac_30a2d978",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-19T02:36:00Z",
+      "side": 1,
+      "message": "filepath.SkipDir error won\u0027t be returned from Walk itself.\n\noptional/style: to be consistent with the case that a function returns interface type, could you return immediately at an error instead of assigning to err?\nAlso, to minimize the err scope, how about put filepath.Walk call in the if condition?\n\nif err :\u003d filepath.Walk(..., func(...) error {\n   ...\n}; err !\u003d nil {\n  return \"\", errors.Wrap(err, \"... details ...\")\n}\nreturn devPath, \"\"",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 2
+      },
+      "revId": "f3429a92075dc4650fc4db4141e042fdb17c221e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c6861ae_89eab70c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-19T02:36:00Z",
+      "side": 1,
+      "message": "style: could you run os.Rename in the if condition to minimize the scope?\n\nif err :\u003d os.Rename(...); err \u003d\u003d nil {\n  ...\n} else if !os.IsNotExist(err) {\n  ...\n}",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "f3429a92075dc4650fc4db4141e042fdb17c221e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5379a6ed_581c06bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-19T02:36:00Z",
+      "side": 1,
+      "message": "style: to minimize err scope, could you run filepath.Walk in if condition?\n\nif err :\u003d filepath.Walk(..., func(...) error {\n  ...\n}; err !\u003d nil {\n  s.Fatal(...)\n}",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 2
+      },
+      "revId": "f3429a92075dc4650fc4db4141e042fdb17c221e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a83be976_a792aa7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-19T02:36:00Z",
+      "side": 1,
+      "message": "could you use ioutil.WriteFile for simplicity?\n\nif err :\u003d ioutil.WriteFile(...); err !\u003d nil {\n  ...\n}\n\nhttps://golang.org/pkg/io/ioutil/#WriteFile",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 59
+      },
+      "revId": "f3429a92075dc4650fc4db4141e042fdb17c221e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "91bc7cab_3b64eb99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-19T02:36:00Z",
+      "side": 1,
+      "message": "\u003e Since test is also a verb \n\nOh, good point.\n(optional): Maybe targetDevicePath() or just devicePath() might be simpler?",
+      "parentUuid": "4e16e086_50852985",
+      "revId": "cc9f2683a9ed74fa6773cfbe79130a0b87e6990e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "862bf2e6_c67cb510",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
         "patchSetId": 1
