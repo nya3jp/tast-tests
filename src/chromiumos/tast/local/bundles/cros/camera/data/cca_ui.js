@@ -129,19 +129,32 @@ window.Tast = class {
    * @return {Promise<boolean>}
    */
   static async isPortraitModeSupported() {
-    const video = document.querySelector('#preview-video');
-    const videoTrack = video.srcObject.getVideoTracks()[0];
-    if (!videoTrack) {
-      return false;
+    if (cca.mojo.MojoConnector !== undefined) {
+      const mojoConnector = new cca.mojo.MojoConnector();
+      const isDeviceOperationSupported =
+          await mojoConnector.isDeviceOperationSupported();
+      if (!isDeviceOperationSupported) {
+        return false;
+      }
+      const deviceOperator = await mojoConnector.getDeviceOperator();
+      return await deviceOperator.isPortraitModeSupported();
+    } else {
+      // Fallback to old approaches. These should be deprecated soon.
+      const video = document.querySelector('#preview-video');
+      const videoTrack = video.srcObject.getVideoTracks()[0];
+      if (!videoTrack) {
+        return false;
+      }
+      try {
+        const imageCapture = new cca.mojo.ImageCapture(videoTrack);
+        var capabilities = await imageCapture.getPhotoCapabilities();
+      } catch (e) {
+        return false;
+      }
+      return capabilities.supportedEffects &&
+          capabilities.supportedEffects.includes(
+              cros.mojom.Effect.PORTRAIT_MODE);
     }
-    try {
-      const imageCapture = new cca.mojo.ImageCapture(videoTrack);
-      var capabilities = await imageCapture.getPhotoCapabilities();
-    } catch (e) {
-      return false;
-    }
-    return capabilities.supportedEffects &&
-        capabilities.supportedEffects.includes(cros.mojom.Effect.PORTRAIT_MODE);
   }
 
   /**
@@ -190,28 +203,60 @@ window.Tast = class {
    * configurations.
    */
   static async getFacing() {
-    const track = document.querySelector('video').srcObject.getVideoTracks()[0];
-    try {
-      const imageCapture = new cca.mojo.ImageCapture(track);
-      let facing =
-          await imageCapture.getCameraFacing(track.getSettings().deviceId);
-      switch (facing) {
-        case cros.mojom.CameraFacing.CAMERA_FACING_FRONT:
-          return 'user';
-        case cros.mojom.CameraFacing.CAMERA_FACING_BACK:
-          return 'environment';
-        case cros.mojom.CameraFacing.CAMERA_FACING_EXTERNAL:
-          return 'external';
-        default:
-          throw new Error('Unexpected CameraFacing value: ' + facing);
+    if (cca.mojo.MojoConnector !== undefined) {
+      const track =
+          document.querySelector('video').srcObject.getVideoTracks()[0];
+      let mojoConnector = new cca.mojo.MojoConnector();
+      const isDeviceOperationSupported =
+          await mojoConnector.isDeviceOperationSupported();
+      if (isDeviceOperationSupported) {
+        let deviceOperator = await mojoConnector.getDeviceOperator();
+        let facing =
+            await deviceOperator.getCameraFacing(track.getSettings().deviceId);
+        switch (facing) {
+          case cros.mojom.CameraFacing.CAMERA_FACING_FRONT:
+            return 'user';
+          case cros.mojom.CameraFacing.CAMERA_FACING_BACK:
+            return 'environment';
+          case cros.mojom.CameraFacing.CAMERA_FACING_EXTERNAL:
+            return 'external';
+          default:
+            throw new Error('Unexpected CameraFacing value: ' + facing);
+        }
+      } else {
+        // This might be a HALv1 device.
+        let facing = track.getSettings().facingMode;
+        if (facing) {
+          return facing;
+        }
+        return 'unknown';
       }
-    } catch (e) {
-      // This might be a HALv1 device.
-      let facing = track.getSettings().facingMode;
-      if (facing) {
-        return facing;
+    } else {
+      // Fallback to old approaches. These should be deprecated soon.
+      const track =
+          document.querySelector('video').srcObject.getVideoTracks()[0];
+      try {
+        const imageCapture = new cca.mojo.ImageCapture(track);
+        let facing =
+            await imageCapture.getCameraFacing(track.getSettings().deviceId);
+        switch (facing) {
+          case cros.mojom.CameraFacing.CAMERA_FACING_FRONT:
+            return 'user';
+          case cros.mojom.CameraFacing.CAMERA_FACING_BACK:
+            return 'environment';
+          case cros.mojom.CameraFacing.CAMERA_FACING_EXTERNAL:
+            return 'external';
+          default:
+            throw new Error('Unexpected CameraFacing value: ' + facing);
+        }
+      } catch (e) {
+        // This might be a HALv1 device.
+        let facing = track.getSettings().facingMode;
+        if (facing) {
+          return facing;
+        }
+        return 'unknown';
       }
-      return 'unknown';
     }
   }
 
