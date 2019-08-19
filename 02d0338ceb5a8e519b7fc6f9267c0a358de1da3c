@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e786fcd8_cb7a6bac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-19T05:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aec872ca_ffa62bb7",
+      "range": {
+        "startLine": 89,
+        "startChar": 15,
+        "endLine": 92,
+        "endChar": 41
+      },
+      "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6cede81_cbc72d1e",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
         "patchSetId": 3
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "106cf5cb_a9344247",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-19T05:02:01Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure it does, but I\u0027ve added \"env\" to the start just to be sure.",
+      "parentUuid": "2364e024_5bf82512",
+      "range": {
+        "startLine": 115,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 6
+      },
+      "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e1452e2_be0e1fda",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
         "patchSetId": 3
@@ -91,6 +139,30 @@
       "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c85a21c1_90b09389",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-19T05:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e1452e2_be0e1fda",
+      "range": {
+        "startLine": 145,
+        "startChar": 25,
+        "endLine": 145,
+        "endChar": 41
+      },
+      "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "389358d8_15997fa9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/copy_applet.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-19T05:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ffa3769_38d3c4aa",
+      "range": {
+        "startLine": 5,
+        "startChar": 32,
+        "endLine": 5,
+        "endChar": 50
+      },
+      "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d6f18ff_3ca88485",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/copy_applet.py",
         "patchSetId": 3
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "b93adc33_94b09c41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/copy_applet.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-19T05:02:01Z",
+      "side": 1,
+      "message": "They make it a little easier to see what\u0027s going on when watching the test run, but it doesn\u0027t need to be committed that way.",
+      "parentUuid": "0d6f18ff_3ca88485",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 56
+      },
+      "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "859a28f2_bde865da",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/copy_applet.py",
         "patchSetId": 3
@@ -151,6 +271,30 @@
       "writtenOn": "2019-08-18T23:12:42Z",
       "side": 1,
       "message": "I wouldn\u0027t be doing this.\n\nYour tast code should close the application when it sees fit (like the other toolkit tests do)",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 44
+      },
+      "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d8d36bd_e2ab8f2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/copy_applet.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-19T05:02:01Z",
+      "side": 1,
+      "message": "This could make sense, but do we have an API that lets us wait for the clipboard to be updated?",
+      "parentUuid": "859a28f2_bde865da",
       "range": {
         "startLine": 30,
         "startChar": 4,
@@ -186,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "2b189ef0_e517fda6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/paste_applet.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-19T05:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c808edd9_323db019",
+      "range": {
+        "startLine": 14,
+        "startChar": 45,
+        "endLine": 21,
+        "endChar": 56
+      },
+      "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59e5fff4_f4c54c74",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/paste_applet.py",
         "patchSetId": 3
@@ -209,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "72e1ca4a_c491a46e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/paste_applet.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-19T05:02:01Z",
+      "side": 1,
+      "message": "I\u0027m changing this to attempt to paste once per second.",
+      "parentUuid": "59e5fff4_f4c54c74",
+      "range": {
+        "startLine": 24,
+        "startChar": 28,
+        "endLine": 24,
+        "endChar": 40
+      },
+      "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "98175ddb_a6f32af0",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/paste_applet.py",
         "patchSetId": 3
@@ -220,6 +412,30 @@
       "writtenOn": "2019-08-18T23:12:42Z",
       "side": 1,
       "message": "as per other file",
+      "range": {
+        "startLine": 31,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 17
+      },
+      "revId": "02d0338ceb5a8e519b7fc6f9267c0a358de1da3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9a158ec_14a021a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/data/paste_applet.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-19T05:02:01Z",
+      "side": 1,
+      "message": "How is the test supposed to know that the paste has finished if the app doesn\u0027t close itself?",
+      "parentUuid": "98175ddb_a6f32af0",
       "range": {
         "startLine": 31,
         "startChar": 6,
