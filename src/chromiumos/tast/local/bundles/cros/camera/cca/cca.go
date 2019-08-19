@@ -12,6 +12,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -55,7 +56,8 @@ const (
 	// TimerOn means shutter timer is on.
 	TimerOn TimerState = true
 	// TimerOff means shutter timer is off.
-	TimerOff = false
+	TimerOff        = false
+	ccaID    string = "hfhhnacclhffhdffklopdkcgdhifgngh"
 )
 
 var (
@@ -79,11 +81,14 @@ type App struct {
 	scriptPaths []string
 }
 
-// New launches a CCA instance and evaluates the helper script within it. The
-// scriptPath should be the data path to the helper script cca_ui.js.
-func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, error) {
-	const ccaID = "hfhhnacclhffhdffklopdkcgdhifgngh"
+// AppLauncher is used during the launch process of CCA. We could launch CCA
+// by launchApp event, camera intent or any other ways.
+type AppLauncher func(tconn *chrome.Conn) error
 
+// Init launches a CCA instance by |appLauncher| and evaluates the helper script
+// within it. The scriptPath should be the data path to the helper script
+// cca_ui.js.
+func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, appLauncher AppLauncher) (*App, error) {
 	// The cros-camera job exists only on boards that use the new camera stack.
 	if upstart.JobExists(ctx, "cros-camera") {
 		// Ensure that cros-camera service is running, because the service
@@ -99,19 +104,27 @@ func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, er
 		return nil, err
 	}
 
-	launchApp := fmt.Sprintf(`
-		(async () => {
-		  const p = tast.promisify(chrome.runtime.sendMessage)(
-		      %[1]q, {action: 'SET_WINDOW_CREATED_CALLBACK'}, null);
-		  await tast.promisify(chrome.management.launchApp)(%[1]q);
-		  return p;
-		})()`, ccaID)
-	if err := tconn.EvalPromise(ctx, launchApp, nil); err != nil {
+	prepareCCA := fmt.Sprintf(`
+		delete CCAReady;
+	  CCAReady = tast.promisify(chrome.runtime.sendMessage)(
+				%[1]q, {action: 'SET_WINDOW_CREATED_CALLBACK'}, null);`, ccaID)
+	if err := tconn.Exec(ctx, prepareCCA); err != nil {
 		return nil, err
 	}
 
-	ccaURL := fmt.Sprintf("chrome-extension://%s/views/main.html", ccaID)
-	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(ccaURL))
+	if err := appLauncher(tconn); err != nil {
+		return nil, err
+	}
+
+	if err := tconn.EvalPromise(ctx, `CCAReady`, nil); err != nil {
+		return nil, err
+	}
+
+	ccaURLPrefix := fmt.Sprintf("chrome-extension://%s/views/main.html", ccaID)
+	conn, err := cr.NewConnForTarget(ctx, func(t *chrome.Target) bool {
+		return strings.HasPrefix(t.URL, ccaURLPrefix)
+	})
+
 	if err != nil {
 		return nil, err
 	}
@@ -148,6 +161,17 @@ func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, er
 
 	testing.ContextLog(ctx, "CCA launched")
 	return &App{conn, cr, scriptPaths}, nil
+}
+
+// New launches a CCA instance by launchApp event and initialize it.
+func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, error) {
+	return Init(ctx, cr, scriptPaths, func(tconn *chrome.Conn) error {
+		launchApp := fmt.Sprintf(`tast.promisify(chrome.management.launchApp)(%[1]q);`, ccaID)
+		if err := tconn.EvalPromise(ctx, launchApp, nil); err != nil {
+			return err
+		}
+		return nil
+	})
 }
 
 // Close closes the App and the associated connection.
@@ -403,6 +427,49 @@ func (a *App) MirrorButtonExists(ctx context.Context) (bool, error) {
 	var actual bool
 	err := a.conn.Eval(ctx, "Tast.isVisible('#toggle-mirror')", &actual)
 	return actual, err
+}
+
+// CheckConfirmUIExist returns whether confirm UI exists.
+func (a *App) CheckConfirmUIExist(ctx context.Context, isVideoMode bool) error {
+	var modeName string
+	if isVideoMode {
+		modeName = "video"
+	} else {
+		modeName = "photo"
+	}
+	var actual bool
+	if err := a.conn.Eval(ctx, fmt.Sprintf("Tast.isVisible('#review-%s-result')", modeName), &actual); err != nil {
+		return err
+	} else if !actual {
+		return errors.Errorf("Review %s result is not shown", modeName)
+	}
+
+	if err := a.conn.Eval(ctx, "Tast.isVisible('#confirm-result')", &actual); err != nil {
+		return err
+	} else if !actual {
+		return errors.New("Confirm button is not shown")
+	}
+
+	if err := a.conn.Eval(ctx, "Tast.isVisible('#cancel-result')", &actual); err != nil {
+		return err
+	} else if !actual {
+		return errors.New("Cancel button is not shown")
+	}
+	return nil
+}
+
+// ConfirmResult clicks the confirm button or the cancel button according to the given |isConfirmed|.
+func (a *App) ConfirmResult(ctx context.Context, isConfirmed bool) error {
+	var buttonID string
+	if isConfirmed {
+		buttonID = "#confirm-result"
+	} else {
+		buttonID = "#cancel-result"
+	}
+	if err := a.conn.Eval(ctx, fmt.Sprintf("Tast.click('%s')", buttonID), nil); err != nil {
+		return errors.Wrap(err, "failed to click confirm/cancel button")
+	}
+	return nil
 }
 
 func (a *App) toggleOption(ctx context.Context, option string, toggleSelector string) (bool, error) {
