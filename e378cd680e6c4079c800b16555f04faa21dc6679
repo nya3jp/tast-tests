@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71a6c940_aa0e1110",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-19T07:07:37Z",
+      "side": 1,
+      "message": "I believe PerfType is missing here:\n\nPerfRecord PerfType \u003d iota",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 33,
+        "endChar": 12
+      },
+      "revId": "e378cd680e6c4079c800b16555f04faa21dc6679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c78ecbf_d5b84da0",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-19T07:07:37Z",
+      "side": 1,
+      "message": "Please describe the default, e.g. \"The default is PerfRecord.\"",
+      "range": {
+        "startLine": 40,
+        "startChar": 55,
+        "endLine": 40,
+        "endChar": 69
+      },
+      "revId": "e378cd680e6c4079c800b16555f04faa21dc6679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3844ed54_a550c199",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-19T07:07:37Z",
+      "side": 1,
+      "message": "Please describe nil is treated as the zero value of PerfOpts.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 95
+      },
+      "revId": "e378cd680e6c4079c800b16555f04faa21dc6679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ed4205f_3c27ec46",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-19T07:07:37Z",
+      "side": 1,
+      "message": "nit: Would you mind inlining this function since it\u0027s a small function and called from one place?",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 23
+      },
+      "revId": "e378cd680e6c4079c800b16555f04faa21dc6679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2465391_1c04e28f",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-19T07:07:37Z",
+      "side": 1,
+      "message": "huge nit: switch-case would be more common in this case:\n\n switch perfType {\n case PerfRecord:\n   return ...\n case PerfStat:\n   return ...\n default:\n   return ...\n }",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 28
+      },
+      "revId": "e378cd680e6c4079c800b16555f04faa21dc6679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbd8ff5b_c83817ec",
+        "filename": "src/chromiumos/tast/local/profiler/top.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-19T07:07:37Z",
+      "side": 1,
+      "message": "Please describe the default interval in the comment of TopOpts#Interval, not here.\n\nBTW I think you meant s/VMStatOpts/TopOpts/.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 30
+      },
+      "revId": "e378cd680e6c4079c800b16555f04faa21dc6679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "878a23a6_ffdb47f5",
+        "filename": "src/chromiumos/tast/local/profiler/top.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-19T07:07:37Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 22
+      },
+      "revId": "e378cd680e6c4079c800b16555f04faa21dc6679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cef838d6_04e8683b",
+        "filename": "src/chromiumos/tast/local/profiler/vmstat.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-19T07:07:37Z",
+      "side": 1,
+      "message": "Same here: please describe the default value here.",
+      "range": {
+        "startLine": 35,
+        "startChar": 30,
+        "endLine": 35,
+        "endChar": 49
+      },
+      "revId": "e378cd680e6c4079c800b16555f04faa21dc6679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dec7f773_3ec167d1",
+        "filename": "src/chromiumos/tast/local/profiler/vmstat.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-19T07:07:37Z",
+      "side": 1,
+      "message": "ditto: mind inlining?",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 25
+      },
+      "revId": "e378cd680e6c4079c800b16555f04faa21dc6679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
