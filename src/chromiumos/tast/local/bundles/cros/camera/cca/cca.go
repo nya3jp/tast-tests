@@ -12,6 +12,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -55,7 +56,8 @@ const (
 	// TimerOn means shutter timer is on.
 	TimerOn TimerState = true
 	// TimerOff means shutter timer is off.
-	TimerOff = false
+	TimerOff        = false
+	ccaID    string = "hfhhnacclhffhdffklopdkcgdhifgngh"
 )
 
 var (
@@ -79,11 +81,10 @@ type App struct {
 	scriptPaths []string
 }
 
-// New launches a CCA instance and evaluates the helper script within it. The
-// scriptPath should be the data path to the helper script cca_ui.js.
-func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, error) {
-	const ccaID = "hfhhnacclhffhdffklopdkcgdhifgngh"
+type AppLauncher func() error
 
+// Init TODO(wtlee)
+func Init(ctx context.Context, cr *chrome.Chrome, scriptPaths []string, appLauncher AppLauncher) (*App, error) {
 	// The cros-camera job exists only on boards that use the new camera stack.
 	if upstart.JobExists(ctx, "cros-camera") {
 		// Ensure that cros-camera service is running, because the service
@@ -92,11 +93,6 @@ func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, er
 		if err := upstart.EnsureJobRunning(ctx, "cros-camera"); err != nil {
 			return nil, err
 		}
-	}
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		return nil, err
 	}
 
 	bgURL := chrome.ExtensionBackgroundPageURL(ccaID)
@@ -124,17 +120,7 @@ func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, er
 		return nil, err
 	}
 
-	launchApp := fmt.Sprintf(`
-		new Promise((resolve, reject) => {
-		  chrome.management.launchApp(%q, () => {
-		    if (chrome.runtime.lastError) {
-		      reject(new Error(chrome.runtime.lastError.message));
-		    } else {
-		      resolve();
-		    }
-		  });
-		})`, ccaID)
-	if err := tconn.EvalPromise(ctx, launchApp, nil); err != nil {
+	if err := appLauncher(); err != nil {
 		return nil, err
 	}
 
@@ -144,8 +130,10 @@ func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, er
 		return nil, err
 	}
 
-	ccaURL := fmt.Sprintf("chrome-extension://%s/views/main.html", ccaID)
-	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(ccaURL))
+	ccaURLPrefix := fmt.Sprintf("chrome-extension://%s/views/main.html", ccaID)
+	conn, err := cr.NewConnForTarget(ctx, func(t *chrome.Target) bool {
+		return strings.HasPrefix(t.URL, ccaURLPrefix)
+	})
 	if err != nil {
 		return nil, err
 	}
@@ -182,6 +170,32 @@ func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, er
 
 	testing.ContextLog(ctx, "CCA launched")
 	return &App{conn, cr, scriptPaths}, nil
+}
+
+// New launches a CCA instance and evaluates the helper script within it. The
+// scriptPath should be the data path to the helper script cca_ui.js.
+func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, error) {
+	return Init(ctx, cr, scriptPaths, func() error {
+		tconn, err := cr.TestAPIConn(ctx)
+		if err != nil {
+			return err
+		}
+
+		launchApp := fmt.Sprintf(`
+			new Promise((resolve, reject) => {
+				chrome.management.launchApp(%q, () => {
+					if (chrome.runtime.lastError) {
+						reject(new Error(chrome.runtime.lastError.message));
+					} else {
+						resolve();
+					}
+				});
+			})`, ccaID)
+		if err := tconn.EvalPromise(ctx, launchApp, nil); err != nil {
+			return err
+		}
+		return nil
+	})
 }
 
 // Close closes the App and the associated connection.
