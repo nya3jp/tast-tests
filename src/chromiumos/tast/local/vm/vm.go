@@ -152,3 +152,12 @@ func (vm *VM) ShareDownloadsPath(ctx context.Context, path string, writable bool
 
 	return nil
 }
+
+func (vm *VM) AttachUsbDevice(ctx context.Context, fd uintptr) (int, error) {
+	return vm.Concierge.attachUsbDevice(ctx, vm, fd)
+}
+
+func (vm *VM) DetachUsbDevice(ctx context.Context, port int) error {
+	return vm.Concierge.detachUsbDevice(ctx, vm, port)
+}
+
