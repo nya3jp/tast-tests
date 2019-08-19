@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4136062f_db8af4a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-19T23:32:20Z",
+      "side": 1,
+      "message": "Seems out of place, wouldn\u0027t this be part of the TestParameters? (that is, i don\u0027t think we\u0027re expecting the expectedData in the PasteConfig to be different from data in the copyConfig)",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 18
+      },
+      "revId": "f18eef0be3f5be08ed8f81acff987cdb50416962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79eb22b9_54850390",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-19T23:32:20Z",
+      "side": 1,
+      "message": "Related to the above, don\u0027t these strings have to be the same? i\u0027m not sure why there\u0027s two variables",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 85
+      },
+      "revId": "f18eef0be3f5be08ed8f81acff987cdb50416962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2bee44f_cf4207fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-19T23:32:20Z",
+      "side": 1,
+      "message": "unused elsewhere, inline?",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 39
+      },
+      "revId": "f18eef0be3f5be08ed8f81acff987cdb50416962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f7c2c4d_119f42a3",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-19T23:32:20Z",
+      "side": 1,
+      "message": "Historically tast review has been somewhat hesitant to pass around \"s\".\n\nHere youre only using it for logging but i think theres a testing.ContextLog() for that (or similar name)",
+      "range": {
+        "startLine": 120,
+        "startChar": 41,
+        "endLine": 120,
+        "endChar": 59
+      },
+      "revId": "f18eef0be3f5be08ed8f81acff987cdb50416962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7ac3486_26984e67",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-19T23:32:20Z",
+      "side": 1,
+      "message": "I think deferring the return-value-overwrite is odd behaviour\n\nUnless it is an error to wait twice, i would defer one wait() that does not overwrite err, then have a non-deferred wait() near the main-line exit (and just move the output :\u003d there).\n\nIf it is an error to wait twice...then we\u0027ll need a different workaround.",
+      "range": {
+        "startLine": 132,
+        "startChar": 8,
+        "endLine": 133,
+        "endChar": 30
+      },
+      "revId": "f18eef0be3f5be08ed8f81acff987cdb50416962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfbec1a7_55441f23",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-19T23:32:20Z",
+      "side": 1,
+      "message": "Minor: Somewhat confusing in the logs, maybe something which points out the purpose here is to block until visible, like \"Window %q is visible (with a size of %v)\"",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 49
+      },
+      "revId": "f18eef0be3f5be08ed8f81acff987cdb50416962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db7bd5a4_f5ec3a47",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-19T23:32:20Z",
+      "side": 1,
+      "message": "merge into if where possible",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 16
+      },
+      "revId": "f18eef0be3f5be08ed8f81acff987cdb50416962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feeaf1c6_2197972c",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-19T23:32:20Z",
+      "side": 1,
+      "message": "by the same token, aren\u0027t they always overwritten?\n(So if CloseAllWindows errors above, then the Wait() will run and overwrite the error returned by the CloseAllWindows failure)",
+      "range": {
+        "startLine": 157,
+        "startChar": 2,
+        "endLine": 157,
+        "endChar": 55
+      },
+      "revId": "f18eef0be3f5be08ed8f81acff987cdb50416962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb97022d_c2994382",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-19T23:32:20Z",
+      "side": 1,
+      "message": "indentation here seems incorrect",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 174,
+        "endChar": 6
+      },
+      "revId": "f18eef0be3f5be08ed8f81acff987cdb50416962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
