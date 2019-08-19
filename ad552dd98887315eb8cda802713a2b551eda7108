@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9edac284_81131290",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-19T03:21:47Z",
+      "side": 1,
+      "message": "nit: precondition",
+      "range": {
+        "startLine": 7,
+        "startChar": 30,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "ad552dd98887315eb8cda802713a2b551eda7108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "119029be_5622a1bf",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 2
