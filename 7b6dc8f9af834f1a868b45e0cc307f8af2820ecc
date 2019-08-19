@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "89022f7f_7d849943",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/lp/cups.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1241692
+      },
+      "writtenOn": "2019-08-19T18:26:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d3f5637_0b7cf599",
+      "revId": "7b6dc8f9af834f1a868b45e0cc307f8af2820ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbbaa0d5_e3ebb6b2",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/lp/cups.go",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "7b6dc8f9af834f1a868b45e0cc307f8af2820ecc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d61b97c3_cea87c65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/lp/cups.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1241692
+      },
+      "writtenOn": "2019-08-19T18:26:33Z",
+      "side": 1,
+      "message": "my mistake, this is actually referring to the printer-state-message, as defined by the IPP spec(RFC 8011: https://tools.ietf.org/html/rfc8011#section-5.4.13).",
+      "parentUuid": "dbbaa0d5_e3ebb6b2",
+      "revId": "7b6dc8f9af834f1a868b45e0cc307f8af2820ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "8a7753b1_fbbbd45e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/lp/cups.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1241692
+      },
+      "writtenOn": "2019-08-19T18:26:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5445dce4_e7e19276",
+      "revId": "7b6dc8f9af834f1a868b45e0cc307f8af2820ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d909d994_ecc80477",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/lp/cups.go",
         "patchSetId": 4
@@ -67,6 +121,24 @@
       "revId": "7b6dc8f9af834f1a868b45e0cc307f8af2820ecc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3776580b_7ade5768",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/lp/cups.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1241692
+      },
+      "writtenOn": "2019-08-19T18:26:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d909d994_ecc80477",
+      "revId": "7b6dc8f9af834f1a868b45e0cc307f8af2820ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
