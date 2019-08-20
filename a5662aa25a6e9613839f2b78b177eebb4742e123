@@ -430,6 +430,24 @@
     },
     {
       "key": {
+        "uuid": "e44fde2d_54966ccd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ipp_printer_connect_timeout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T07:00:54Z",
+      "side": 1,
+      "message": "There is some, but it is something like Chrome login / ARC boot, which actually takes a time, rather than just waiting the timeout.\n\nFrom whole test run perspective, 30+ seconds for timeout looks too long, unfortunately.\nConsidering we will run this a lot of times, and this will affect all Chrome OS engineers performance, could you give it a try to reduce the time? Thank you for your cooperation in advance.",
+      "parentUuid": "d7ad8ef2_3e9bc1d2",
+      "revId": "a5662aa25a6e9613839f2b78b177eebb4742e123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "041d6c28_23b9847c",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/ipp_printer_connect_timeout.go",
         "patchSetId": 3

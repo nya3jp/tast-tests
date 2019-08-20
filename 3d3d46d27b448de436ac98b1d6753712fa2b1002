@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "733801cc_601e510e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ipp_printer_connect_timeout.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T07:00:54Z",
+      "side": 1,
+      "message": "This is true when not-reachable? Looks confusing. (Could you find my comment below, too?)",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 20
+      },
+      "revId": "3d3d46d27b448de436ac98b1d6753712fa2b1002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d5e4950_bf5b888d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ipp_printer_connect_timeout.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T07:00:54Z",
+      "side": 1,
+      "message": "# Sorry I forgot to point it.\n\ncould you avoid double negation? How about \"printer is unexpectedly reachable\" or something?",
+      "range": {
+        "startLine": 38,
+        "startChar": 21,
+        "endLine": 38,
+        "endChar": 47
+      },
+      "revId": "3d3d46d27b448de436ac98b1d6753712fa2b1002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91e69277_a6c03d8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ipp_printer_connect_timeout.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T07:00:54Z",
+      "side": 1,
+      "message": "nit: const, too?",
+      "revId": "3d3d46d27b448de436ac98b1d6753712fa2b1002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5abd7f4_cb999f70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/lp/cups.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T07:00:54Z",
+      "side": 1,
+      "message": "optional: how about strings.TrimSpace(lines[i+1]) here?",
+      "range": {
+        "startLine": 107,
+        "startChar": 10,
+        "endLine": 107,
+        "endChar": 20
+      },
+      "revId": "3d3d46d27b448de436ac98b1d6753712fa2b1002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b19dd92e_4f187b40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/lp/cups.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T07:00:54Z",
+      "side": 1,
+      "message": "Could you avoid multi-line logs?\n\nInstead, you can dump it to the output log file.\n\ncf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting\n\n\u003d\u003d quote \u003d\u003d\nIn all cases, please avoid multiline strings since they make logs difficult to read.\n\u003d\u003d quote end \u003d\u003d",
+      "revId": "3d3d46d27b448de436ac98b1d6753712fa2b1002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fba403c5_681757af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/lp/cups.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T07:00:54Z",
+      "side": 1,
+      "message": "Could you avoid negative meaning with boolean flag, which makes it harder to understand the code.\n\nmaybe PrinterResponding() and swap the return value?",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 118,
+        "endChar": 25
+      },
+      "revId": "3d3d46d27b448de436ac98b1d6753712fa2b1002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8eb5601_2f1696f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/lp/cups.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T07:00:54Z",
+      "side": 1,
+      "message": "style:\nstateMessage, err :\u003d PrinterStateMessage(...)\nif err !\u003d nil {\n   return false, err\n}\n\nreturn !strings.Contains(...), nil",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 18
+      },
+      "revId": "3d3d46d27b448de436ac98b1d6753712fa2b1002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cbeb3ea_63ac61a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T07:00:54Z",
+      "side": 1,
+      "message": "I guess injecting the timeout to CUPS would take time.\nSo, how about split this refactoring (usbprinter-\u003elp rename part + alpha) into another CL and land it first?",
+      "revId": "3d3d46d27b448de436ac98b1d6753712fa2b1002",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
