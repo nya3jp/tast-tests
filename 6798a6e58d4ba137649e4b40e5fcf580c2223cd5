@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2a70b8eb_447315fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/dawn_unittests.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1358398
+      },
+      "writtenOn": "2019-08-20T13:59:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13c4f925_27d58ade",
+      "revId": "6798a6e58d4ba137649e4b40e5fcf580c2223cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a97ca4a_7e0b23e4",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/dawn_unittests.go",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "6798a6e58d4ba137649e4b40e5fcf580c2223cd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f33c3d9e_5866c682",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/dawn_unittests.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1358398
+      },
+      "writtenOn": "2019-08-20T13:59:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a97ca4a_7e0b23e4",
+      "range": {
+        "startLine": 31,
+        "startChar": 48,
+        "endLine": 31,
+        "endChar": 62
+      },
+      "revId": "6798a6e58d4ba137649e4b40e5fcf580c2223cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
