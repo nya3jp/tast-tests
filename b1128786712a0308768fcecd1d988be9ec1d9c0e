@@ -1,0 +1,605 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3357c3a_a1520c15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "Could you comment occurences and argValues, too?",
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "481d19f6_00f34d14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "IIUC, seccomp can filter the syscalls by the combination of arguments.\nI\u0027m ok to support the limited subset of it based on requirements, but then could you explicitly document your approach here?",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 75
+      },
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1534925f_f8b08ae8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "# Sorry I overlooked in the prev iteration.\n\nLooks unused in this and the next CL? Any plans to be used?",
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f3ba5d4_0d9778a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "huge nit: this is not a part of PolicyGenerator method, so could you move this to the beginning or the bottom of this file?",
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c232e6fb_040ab6af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "# Sorry, overlooked in the previous iteration.\nThis looks unused. Any plans to use, very soon? If not, could you add this when needed?",
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61bd584d_7b64b831",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "Could you add a comment about expected example line which will be matched with this pattern?",
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8caa01de_2836da60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need strings.Builder.\n\nreturn ..., fmt.Sprintf(\"%s: %s\", syscall, strings.Join(argValues, \" || \"))",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 23
+      },
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee7396f7_8c802b92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "style: Could you use\n\nvar argValues []string\n\nfor zero initialize values?",
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91a609c8_3f0e2a3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "Could you comment the intention of this special filtering approach?\nDo you relax the filtering for some reason?",
+      "range": {
+        "startLine": 208,
+        "startChar": 4,
+        "endLine": 208,
+        "endChar": 63
+      },
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e707fe81_2e6e9d0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "nit: sort.Strings(argValues) ?",
+      "range": {
+        "startLine": 215,
+        "startChar": 2,
+        "endLine": 217,
+        "endChar": 4
+      },
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4ad1518_6e2ee1aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "optional: Although, go prefers shorter name a lot, I often see one-word for field names rather than one letter. How about \"frequency\" and \"rule\"?",
+      "range": {
+        "startLine": 238,
+        "startChar": 2,
+        "endLine": 239,
+        "endChar": 10
+      },
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d76058a_e859169d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "ditto: \"syscall\", \"parameters\", \"args\"",
+      "range": {
+        "startLine": 15,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 30
+      },
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12cd4753_2d070bfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "this is a part of sub test scenario, so how about name this to \"testAddStraceLogNoexec\" ?",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 27
+      },
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36927a62_2871a1ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "style: no period should be appended.\n\ncf) https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting\n\n\u003d\u003d quote \u003d\u003d\nLog and error messages ... should be capitalized phrases without any trailing punctuation ...\n\u003d\u003d quote end \u003d\u003d\n\nditto for below.",
+      "range": {
+        "startLine": 63,
+        "startChar": 34,
+        "endLine": 63,
+        "endChar": 35
+      },
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b4fd7dc_1c3c063b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "Looks unnecessary? Or, maybe nice to split into another test case?",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b17223fc_80fb9158",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "Could you use ioutil.WriteFile()?",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 13
+      },
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a23132c_2535d366",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "nit/style:\n\nif err :\u003d gen.AddStraceLog(...); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 16
+      },
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c865c0d_b1cddbb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "Ditto. How about \"syscall\", \"frequency\", \"policy\" here?",
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2f454bc_c0438662",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "Could you use \"got ...; want ...\" style?",
+      "range": {
+        "startLine": 116,
+        "startChar": 49,
+        "endLine": 116,
+        "endChar": 65
+      },
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aab0854b_cbf47c7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "Ditto. Also \u0027%s\u0027 -\u003e %q",
+      "range": {
+        "startLine": 120,
+        "startChar": 46,
+        "endLine": 120,
+        "endChar": 66
+      },
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7f12892_c0014ab4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "Could you remove log file?\nDitto for below.\n\nMaybe at the logfile creation;\n\ndefer os.Remove(logFile)",
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f11846b_46e25e9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "Ditto: testAddStraceLogExec ?",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 25
+      },
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "841f8458_9ecdda14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "ditto:\n\nif err :\u003d gen.AddStraceLog(...); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 16
+      },
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dccefb10_c534f2de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "nit: \"const\" Ditto for below (so it\u0027d need to avoid reusing var).",
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d25a69d_b5ffa80a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "style: Could you use \"got ...; want ...\" style?",
+      "range": {
+        "startLine": 148,
+        "startChar": 52,
+        "endLine": 148,
+        "endChar": 72
+      },
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cdce6a4_15579aff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "Could you not use \u0027_\u0027 for delimiter? You can name TestPolicyGeneratorAddStraceLog. Ditto for below.",
+      "range": {
+        "startLine": 165,
+        "startChar": 24,
+        "endLine": 165,
+        "endChar": 25
+      },
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "866488a5_36169c08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "You can just \"defer cancel()\"",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 4
+      },
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9ca7e42_e7271972",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "huge nit: could you remove unnecessary empty line here?",
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c840c4fb_aeb9c5ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:02:23Z",
+      "side": 1,
+      "message": "Ditto: \"syscall\", \"parameters\", \"lookup\"",
+      "revId": "b1128786712a0308768fcecd1d988be9ec1d9c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
