@@ -472,6 +472,30 @@
     },
     {
       "key": {
+        "uuid": "d147c297_8db03599",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:28:38Z",
+      "side": 1,
+      "message": "Oops, sorry for misoperation. Yes I meant it\u0027s in crostini_start_everything.go.",
+      "parentUuid": "ccb65469_07b5a8ee",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 2
+      },
+      "revId": "1729fab93137521d08ab48be5afa8281cd6c6879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab2eb8ec_1f1097f2",
         "filename": "src/chromiumos/tast/local/crostini/files.go",
         "patchSetId": 3

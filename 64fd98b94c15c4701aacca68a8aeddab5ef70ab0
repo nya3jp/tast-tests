@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82388cf8_0beecb90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:28:38Z",
+      "side": 1,
+      "message": "Maybe \"Fatal\". I think in this error case, the following test scenario does not make sense?",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 9
+      },
+      "revId": "64fd98b94c15c4701aacca68a8aeddab5ef70ab0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc432d69_fc16cd83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:28:38Z",
+      "side": 1,
+      "message": "huge nit: could you remove unnecessary empty line here?",
+      "revId": "64fd98b94c15c4701aacca68a8aeddab5ef70ab0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ddd9e67_03531f61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:28:38Z",
+      "side": 1,
+      "message": "nit: mismatch",
+      "range": {
+        "startLine": 212,
+        "startChar": 44,
+        "endLine": 212,
+        "endChar": 53
+      },
+      "revId": "64fd98b94c15c4701aacca68a8aeddab5ef70ab0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce282a51_2b9cb7fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:28:38Z",
+      "side": 1,
+      "message": "\"got ...; want ...\" is common pattern. How about;\n\n\"icon existence mismatched: got %v; want %v\", existence, expectation",
+      "range": {
+        "startLine": 212,
+        "startChar": 55,
+        "endLine": 212,
+        "endChar": 73
+      },
+      "revId": "64fd98b94c15c4701aacca68a8aeddab5ef70ab0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
