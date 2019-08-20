@@ -5,8 +5,11 @@
 package security
 
 import (
+	"bytes"
 	"context"
+	"io/ioutil"
 	"os"
+	"path/filepath"
 	"strings"
 	"syscall"
 	"time"
@@ -14,6 +17,7 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/security/seccomp"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/input"
@@ -48,6 +52,14 @@ func USBGuard(ctx context.Context, s *testing.State) {
 		usbguardWrapperJob = "usbguard-wrapper"
 		usbguardProcess    = "usbguard-daemon"
 		usbguardPolicy     = "/run/usbguard/rules.conf"
+		usbguardUID        = 20123
+		usbguardGID        = 20123
+
+		seccompPolicyFilename = "usbguard.policy"
+
+		dbusName              = "org.usbguard1"
+		dbusInterfacePolicy   = "/org/usbguard1/Policy"
+		dbusMethodListDevices = "org.usbguard.Policy1.listRules"
 
 		jobTimeout = 10 * time.Second
 	)
@@ -240,6 +252,105 @@ func USBGuard(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	generateSeccompPolicy := func() {
+		// Run daemon with system call logging.
+		runDir := filepath.Dir(usbguardPolicy)
+		if err := os.Mkdir(runDir, 0700); err != nil && !os.IsExist(err) {
+			s.Errorf("Mkdir(%q) failed: %v", runDir, err)
+		}
+		if err := os.Chown(runDir, usbguardUID, usbguardGID); err != nil {
+			s.Errorf("Chown(%q) failed: %v", runDir, err)
+		}
+		if err := ioutil.WriteFile(usbguardPolicy, []byte("allow\n"), 0600); err != nil {
+			s.Fatalf("WriteFile(%q): %v", usbguardPolicy, err)
+		}
+		defer func() {
+			if err := os.Remove(usbguardPolicy); err != nil {
+				s.Errorf("Remove(%q) failed: %v", usbguardPolicy, err)
+			}
+		}()
+		daemonLog := filepath.Join(s.OutDir(), "daemon-strace.log")
+		cmd := seccomp.CommandContext(ctx, daemonLog, usbguardProcess, "-s")
+		// Create a sepearate process group for the child so they can be killed as a group.
+		cmd.SysProcAttr = &syscall.SysProcAttr{Setpgid: true}
+		stdout, err := cmd.StdoutPipe()
+		if err != nil {
+			s.Fatal("Stdout StdoutPipe() failed: ", err)
+		}
+		stderr, err := cmd.StderrPipe()
+		if err != nil {
+			s.Fatal("stderr StdoutPipe() failed: ", err)
+		}
+		logSubprocessOutput := func() {
+			buf := new(bytes.Buffer)
+			buf.ReadFrom(stdout)
+			if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "subcommand.stdout"), buf.Bytes(), 0644); err != nil {
+				s.Fatal("WriteFile(.../subcommand.stdout) failed: ", err)
+			}
+
+			buf = new(bytes.Buffer)
+			buf.ReadFrom(stderr)
+			err = ioutil.WriteFile(filepath.Join(s.OutDir(), "subcommand.stderr"), buf.Bytes(), 0644)
+			if err != nil {
+				s.Fatal("WriteFile(.../subcommand.stderr) failed: ", err)
+			}
+		}
+		killSubprocessGroup := func() {
+			s.Log("Killing subprocess")
+			if err := syscall.Kill(-cmd.Process.Pid, syscall.SIGTERM); err != nil {
+				s.Error("Kill(...) failed: ", err)
+			}
+		}
+		if err := cmd.Start(); err != nil {
+			s.Fatalf("%q failed with: %v", cmd.Args, err)
+		}
+
+		// Exercise the D-Bus interface
+		_, obj, err := dbusutil.Connect(ctx, dbusName, dbusInterfacePolicy)
+		if err != nil {
+			killSubprocessGroup()
+			logSubprocessOutput()
+			s.Fatal("D-Bus connection failed: ", err)
+		}
+		if call := obj.Call(dbusMethodListDevices, 0, ""); call.Err != nil {
+			killSubprocessGroup()
+			logSubprocessOutput()
+			s.Fatal("D-Bus method call failed: ", err)
+		}
+		s.Log("D-Bus method completed")
+
+		// Setup a timer to kill the daemon after one second.
+		timer := time.AfterFunc(1*time.Second, killSubprocessGroup)
+		logSubprocessOutput()
+		s.Log("Finished recording stdio")
+
+		// Wait for a timeout.
+		err = cmd.Wait()
+		if timer.Stop() {
+			s.Fatalf("%q exited early: %v", usbguardProcess, err)
+		}
+
+		// Include results in the policy.
+		m := seccomp.NewPolicyGenerator()
+		m.AddStraceLog(daemonLog, seccomp.IncludeAllSyscalls)
+
+		// Include "usbguard generate-policy" in the seccomp policy.
+		clientLog := filepath.Join(s.OutDir(), "client-strace.log")
+		cmd = seccomp.CommandContext(ctx, clientLog, "usbguard", "generate-policy")
+		if err := cmd.Run(); err != nil {
+			s.Fatalf("%q failed with: %v", cmd.Args, err)
+		}
+		m.AddStraceLog(clientLog, seccomp.IncludeAllSyscalls)
+
+		// Generate and persist seccomp policy.
+		policyFile := filepath.Join(s.OutDir(), seccompPolicyFilename)
+		if err := ioutil.WriteFile(policyFile, []byte(m.GeneratePolicy()), 0644); err != nil {
+			s.Fatal("Failed to record seccomp policy: ", err)
+		}
+		s.Logf("Wrote usbguard seccomp policy to %q", policyFile)
+	}
+
+	generateSeccompPolicy()
 	runTest(true /*usbguardEnabled*/, false /*usbbouncerEnabled*/)
 	runTest(false /*usbguardEnabled*/, false /*usbbouncerEnabled*/)
 	// Testing USB Bouncer requires the usb_bouncer ebuild which isn't installed by default yet.
