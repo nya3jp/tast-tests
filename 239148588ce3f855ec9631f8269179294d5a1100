@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "907e5f73_6361491b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-20T01:22:51Z",
+      "side": 1,
+      "message": "reverted",
+      "parentUuid": "5a02c68e_61f1c883",
+      "range": {
+        "startLine": 172,
+        "startChar": 4,
+        "endLine": 179,
+        "endChar": 53
+      },
+      "revId": "239148588ce3f855ec9631f8269179294d5a1100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0b0b957_79e0fa60",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/launcher.go",
         "patchSetId": 2
