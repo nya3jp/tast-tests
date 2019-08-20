@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/ui/chromecrash"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/debugd"
 	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/local/syslog"
@@ -39,6 +40,11 @@ func init() {
 // and immediately sent to crash_sender; check that crash_sender correctly receives
 // the crash report.
 func ChromeCrashLoop(ctx context.Context, s *testing.State) {
+	if err := crash.SetUpCrashTest(); err != nil {
+		s.Fatal("SetUpCrashTest failed: ", err)
+	}
+	defer crash.TearDownCrashTest()
+
 	err := metrics.SetConsent(ctx, s.DataPath(chromecrash.TestCert))
 	if err != nil {
 		s.Fatal("SetConsent failed: ", err)
