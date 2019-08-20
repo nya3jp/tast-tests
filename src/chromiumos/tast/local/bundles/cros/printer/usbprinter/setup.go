@@ -70,6 +70,27 @@ func LoadPrinterIDs(path string) (devInfo DevInfo, err error) {
 	return DevInfo{fmt.Sprintf("%04x", cfg.DevDesc.Vendor), fmt.Sprintf("%04x", cfg.DevDesc.Product)}, nil
 }
 
+// LoadPrinterName loads the JSON file located at path and attempts to extract
+// the "string_descriptors" from the USB device descriptor which should be defined
+// in path.
+func LoadPrinterName(path string) (printerName string, err error) {
+	f, err := os.Open(path)
+	if err != nil {
+		return printerName, errors.Wrapf(err, "failed to open %s", path)
+	}
+	defer f.Close()
+
+	var name struct {
+		parts []string `json:"string_descriptors"`
+	}
+
+	if err := json.NewDecoder(f).Decode(&name); err != nil {
+		return printerName, errors.Wrapf(err, "failed to decode JSON in %s", path)
+	}
+
+	return fmt.Sprintf("%q %q (USB)", name.parts[0], name.parts[1]), nil
+}
+
 // InstallModules installs the "usbip_core" and "vhci-hcd" kernel modules which
 // are required by usbip in order to bind the virtual printer to the system.
 func InstallModules(ctx context.Context) error {
