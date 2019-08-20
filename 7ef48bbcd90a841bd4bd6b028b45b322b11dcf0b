@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c2c39930_01de01fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-20T23:34:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b846df1a_f5f43f5d",
+      "revId": "7ef48bbcd90a841bd4bd6b028b45b322b11dcf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4aa5fb7b_ec390a4b",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "7ef48bbcd90a841bd4bd6b028b45b322b11dcf0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38f7c246_58359c35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-20T23:34:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4aa5fb7b_ec390a4b",
+      "range": {
+        "startLine": 51,
+        "startChar": 17,
+        "endLine": 51,
+        "endChar": 20
+      },
+      "revId": "7ef48bbcd90a841bd4bd6b028b45b322b11dcf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "a6bf5f52_7bc38cfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-20T23:34:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abfea017_74921f00",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 56
+      },
+      "revId": "7ef48bbcd90a841bd4bd6b028b45b322b11dcf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb1a7ef5_2cb9261f",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
         "patchSetId": 3
@@ -85,6 +151,30 @@
       "revId": "7ef48bbcd90a841bd4bd6b028b45b322b11dcf0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "782f3ad2_f688f8ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-08-20T23:34:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb1a7ef5_2cb9261f",
+      "range": {
+        "startLine": 105,
+        "startChar": 8,
+        "endLine": 105,
+        "endChar": 9
+      },
+      "revId": "7ef48bbcd90a841bd4bd6b028b45b322b11dcf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
