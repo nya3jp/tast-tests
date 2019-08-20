@@ -43,7 +43,7 @@ func CrosHealthdProbeBatteryMetrics(ctx context.Context, s *testing.State) {
 	if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "command_output.txt"), b, 0644); err != nil {
 		s.Errorf("Failed to write output to %s: %v", filepath.Join(s.OutDir(), "command_output.txt"), err)
 	}
-	lines := strings.Split(string(b), "\n")
+	lines := strings.Split(strings.TrimRight(string(b), "\n"), "\n")
 	if status.BatteryPresent && len(lines) != 2 {
 		s.Fatalf("Incorrect number of output lines: got %d; want 2", len(lines))
 	}
