@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8b756002_42ead2bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1356168
+      },
+      "writtenOn": "2019-08-20T21:01:17Z",
+      "side": 1,
+      "message": "Thank you for this suggestion. Changed to Fatal and removed restart logic.",
+      "parentUuid": "5bd7341a_0f051286",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 9
+      },
+      "revId": "855fed05a693901daf426467e783b0e958135356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04cb4465_15213ec2",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "855fed05a693901daf426467e783b0e958135356",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a27b569_43b495c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1356168
+      },
+      "writtenOn": "2019-08-20T21:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04cb4465_15213ec2",
+      "revId": "855fed05a693901daf426467e783b0e958135356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
