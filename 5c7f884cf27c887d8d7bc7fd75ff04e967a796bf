@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e927ad65_0a6fb350",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-20T20:55:45Z",
+      "side": 1,
+      "message": "nit: comments should end with .",
+      "revId": "5c7f884cf27c887d8d7bc7fd75ff04e967a796bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "122f7d12_943ac1e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-20T20:55:45Z",
+      "side": 1,
+      "message": "use a formatted string instead of multiple + operators",
+      "revId": "5c7f884cf27c887d8d7bc7fd75ff04e967a796bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da8e15d6_7518ebb3",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-20T20:55:45Z",
+      "side": 1,
+      "message": "nit: end with a .",
+      "revId": "5c7f884cf27c887d8d7bc7fd75ff04e967a796bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08e556a6_3f7e8457",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-20T20:55:45Z",
+      "side": 1,
+      "message": "you\u0027ll get an error back if this is called after the Wait below, but this approach seems fine to me since it shouldn\u0027t panic.",
+      "revId": "5c7f884cf27c887d8d7bc7fd75ff04e967a796bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fd1508c_4725f2ea",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-20T20:55:45Z",
+      "side": 1,
+      "message": "Why not close only the window you opened?  This might have unintended consequences if someone uses this function in a slightly different test.  At the very least, please document this behavior in the function description",
+      "revId": "5c7f884cf27c887d8d7bc7fd75ff04e967a796bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f538c3e_5737b845",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-20T20:55:45Z",
+      "side": 1,
+      "message": "if you\u0027re ignoring the go indention, please do so for the entire string so it is self consistent. e.g. https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/dc9e764962aff6f715a691b647004ae57d5b5d19/src/chromiumos/tast/local/chrome/vkb/vkb.go#29",
+      "revId": "5c7f884cf27c887d8d7bc7fd75ff04e967a796bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
