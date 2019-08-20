@@ -15,6 +15,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
@@ -141,6 +142,11 @@ func hasAtmelDeviceDir() (hasDevice bool, resultErr error) {
 }
 
 func UdevCrash(ctx context.Context, s *testing.State) {
+	if err := crash.SetUpCrashTest(); err != nil {
+		s.Fatal("SetUpCrashTest failed: ", err)
+	}
+	defer crash.TearDownCrashTest()
+
 	hasDevice, err := hasAtmelDeviceDir()
 	if err != nil {
 		s.Fatal("Error occured while searching Atmel devices: ", err)
