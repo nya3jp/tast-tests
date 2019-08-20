@@ -18,11 +18,11 @@ func init() {
 		Func:         GamePerformanceRenderUnderLoad,
 		Desc:         "Captures set of performance metrics for the render under the load and upload it to the server",
 		Contacts:     []string{"khmel@chromium.org", "skuhne@chromium.org", "arc-performance@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"disabled"},
 		SoftwareDeps: []string{"android_both", "chrome"},
 		Data:         []string{"ArcGamePerformanceTest.apk"},
 		Pre:          arc.Booted(),
-		Timeout:      30 * time.Minute,
+		Timeout:      1 * time.Hour,
 	})
 }
 
