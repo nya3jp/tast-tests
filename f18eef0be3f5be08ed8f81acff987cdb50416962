@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "414e1e07_3787cfaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-20T05:47:23Z",
+      "side": 1,
+      "message": "I originally had this specifying MIME types, so it would be possible for the paste data to be in a different encoding to the copy data. That\u0027s not something GTK allows though, so I\u0027ve moved it out of the configs.",
+      "parentUuid": "4136062f_db8af4a4",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 18
+      },
+      "revId": "f18eef0be3f5be08ed8f81acff987cdb50416962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79eb22b9_54850390",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "f18eef0be3f5be08ed8f81acff987cdb50416962",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "451562a6_d3a784b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-20T05:47:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79eb22b9_54850390",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 85
+      },
+      "revId": "f18eef0be3f5be08ed8f81acff987cdb50416962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "257de2b8_1ca78380",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-20T05:47:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2bee44f_cf4207fc",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 39
+      },
+      "revId": "f18eef0be3f5be08ed8f81acff987cdb50416962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f7c2c4d_119f42a3",
         "filename": "src/chromiumos/tast/local/crostini/display.go",
         "patchSetId": 5
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "8aa98322_4b91255a",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-20T05:47:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f7c2c4d_119f42a3",
+      "range": {
+        "startLine": 120,
+        "startChar": 41,
+        "endLine": 120,
+        "endChar": 59
+      },
+      "revId": "f18eef0be3f5be08ed8f81acff987cdb50416962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7ac3486_26984e67",
         "filename": "src/chromiumos/tast/local/crostini/display.go",
         "patchSetId": 5
@@ -105,6 +201,30 @@
       "writtenOn": "2019-08-19T23:32:20Z",
       "side": 1,
       "message": "I think deferring the return-value-overwrite is odd behaviour\n\nUnless it is an error to wait twice, i would defer one wait() that does not overwrite err, then have a non-deferred wait() near the main-line exit (and just move the output :\u003d there).\n\nIf it is an error to wait twice...then we\u0027ll need a different workaround.",
+      "range": {
+        "startLine": 132,
+        "startChar": 8,
+        "endLine": 133,
+        "endChar": 30
+      },
+      "revId": "f18eef0be3f5be08ed8f81acff987cdb50416962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9f5ee49_6d6b2bb5",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-20T05:47:23Z",
+      "side": 1,
+      "message": "AFAICT, this is the only way to respond to errors that occur during deferred cleanup calls. Properly I should be doing this for keyboard.Close as well, since that can return an error.\n\nCalling Wait twice doesn\u0027t seem to break anything, so I\u0027ve switched to that, but we should think about what to do with those errors if they occur.",
+      "parentUuid": "d7ac3486_26984e67",
       "range": {
         "startLine": 132,
         "startChar": 8,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "e18727a7_c3424246",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-20T05:47:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfbec1a7_55441f23",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 49
+      },
+      "revId": "f18eef0be3f5be08ed8f81acff987cdb50416962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db7bd5a4_f5ec3a47",
         "filename": "src/chromiumos/tast/local/crostini/display.go",
         "patchSetId": 5
@@ -160,6 +304,30 @@
       "revId": "f18eef0be3f5be08ed8f81acff987cdb50416962",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3c80716_fe2d1a98",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-20T05:47:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db7bd5a4_f5ec3a47",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 16
+      },
+      "revId": "f18eef0be3f5be08ed8f81acff987cdb50416962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "b5fb5064_2eb6266e",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-20T05:47:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "feeaf1c6_2197972c",
+      "range": {
+        "startLine": 157,
+        "startChar": 2,
+        "endLine": 157,
+        "endChar": 55
+      },
+      "revId": "f18eef0be3f5be08ed8f81acff987cdb50416962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb97022d_c2994382",
         "filename": "src/chromiumos/tast/local/crostini/display.go",
         "patchSetId": 5
@@ -197,6 +389,30 @@
       "writtenOn": "2019-08-19T23:32:20Z",
       "side": 1,
       "message": "indentation here seems incorrect",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 174,
+        "endChar": 6
+      },
+      "revId": "f18eef0be3f5be08ed8f81acff987cdb50416962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d1da498_7784261d",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-20T05:47:23Z",
+      "side": 1,
+      "message": "Technically yes, but I find it easier to read when it hasn\u0027t all drifted off to the right.",
+      "parentUuid": "bb97022d_c2994382",
       "range": {
         "startLine": 166,
         "startChar": 1,
