@@ -39,6 +39,12 @@ func AddUSBPrinter(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to load printer IDs from %v: %v", descriptors, err)
 	}
 
+	name, err := usbprinter.LoadPrinterName(descriptors)
+	if err != nil {
+		s.Fatalf("Failed to load name from %v: %v", descriptors, err)
+	}
+	s.Log(name)
+
 	if err := usbprinter.InstallModules(ctx); err != nil {
 		s.Fatal("Failed to install kernel modules: ", err)
 	}
