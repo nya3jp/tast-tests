@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1582cf41_b300ed2b",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-20T23:34:10Z",
+      "side": 1,
+      "message": "Since this is called directly after the test starts it occasionally fails with:\n\nReferenceError: tast is not defined\n\nMust be some race",
+      "range": {
+        "startLine": 144,
+        "startChar": 33,
+        "endLine": 144,
+        "endChar": 42
+      },
+      "revId": "ca901a3b047fd2a637560e4e0164997ac167efa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
