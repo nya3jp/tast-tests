@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "2269740f_06b97255",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-20T06:18:27Z",
+      "side": 1,
+      "message": "I think this is a reasonable approach (though double Wait() a little kludgey).\n\nGo limits us to returning one error and this approach preferences the one that occurs first (i.e. we\u0027re saying that if we get an error on the wait we deferred, we\u0027re not going to return it)\n\nPossibly tast reviews will have an idea if there\u0027s a better way.",
+      "parentUuid": "b9f5ee49_6d6b2bb5",
+      "range": {
+        "startLine": 132,
+        "startChar": 8,
+        "endLine": 133,
+        "endChar": 30
+      },
+      "revId": "f18eef0be3f5be08ed8f81acff987cdb50416962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfbec1a7_55441f23",
         "filename": "src/chromiumos/tast/local/crostini/display.go",
         "patchSetId": 5
@@ -422,6 +446,30 @@
       "revId": "f18eef0be3f5be08ed8f81acff987cdb50416962",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "291ee46c_fc5873a9",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-20T06:18:27Z",
+      "side": 1,
+      "message": "resolving, we\u0027ll leave to tast",
+      "parentUuid": "2d1da498_7784261d",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 174,
+        "endChar": 6
+      },
+      "revId": "f18eef0be3f5be08ed8f81acff987cdb50416962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
