@@ -16,6 +16,24 @@
       "revId": "0d865e6cf43f31431826e83fd0595560192aa5e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b06b915d_4833eb27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_performance_render_under_load.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-08-20T19:22:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25b21670_d2800203",
+      "revId": "0d865e6cf43f31431826e83fd0595560192aa5e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
