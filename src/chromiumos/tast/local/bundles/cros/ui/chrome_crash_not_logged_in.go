@@ -10,6 +10,7 @@ import (
 	"chromiumos/tast/crash"
 	"chromiumos/tast/local/bundles/cros/ui/chromecrash"
 	"chromiumos/tast/local/chrome"
+	local_crash "chromiumos/tast/local/crash"
 	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/testing"
 )
@@ -28,6 +29,11 @@ func init() {
 }
 
 func ChromeCrashNotLoggedIn(ctx context.Context, s *testing.State) {
+	if err := local_crash.StartCrashTest(); err != nil {
+		s.Fatal("StartCrashTest failed: ", err)
+	}
+	defer local_crash.FinishCrashTest()
+
 	err := metrics.SetConsent(ctx, s.DataPath(chromecrash.TestCert))
 	if err != nil {
 		s.Fatal("SetConsent failed: ", err)
