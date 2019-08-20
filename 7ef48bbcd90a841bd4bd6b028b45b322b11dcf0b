@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b846df1a_f5f43f5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:10:28Z",
+      "side": 1,
+      "message": "nit/style: for consistency,\n\nif err :\u003d filepath.Walk(... {\n  ...\n}); err !\u003d nil {\n  ...\n}",
+      "revId": "7ef48bbcd90a841bd4bd6b028b45b322b11dcf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4aa5fb7b_ec390a4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:10:28Z",
+      "side": 1,
+      "message": "nil (sorry, I should point it in the prev comment explicitly).\n\ncf) https://golang.org/doc/faq#nil_error",
+      "range": {
+        "startLine": 51,
+        "startChar": 17,
+        "endLine": 51,
+        "endChar": 20
+      },
+      "revId": "7ef48bbcd90a841bd4bd6b028b45b322b11dcf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abfea017_74921f00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:10:28Z",
+      "side": 1,
+      "message": "defer is a stack. I guess you\u0027d like to\n\ndefer func() {\n  if err :\u003d os.RemoveAll(globalStateDir); err !\u003d nil {\n    s.Error(...)\n  }\n  if err :\u003d os.Rename(...); err !\u003d nil {\n    s.Error(...)\n  }\n}()",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 56
+      },
+      "revId": "7ef48bbcd90a841bd4bd6b028b45b322b11dcf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb1a7ef5_2cb9261f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T06:10:28Z",
+      "side": 1,
+      "message": "nit: could you use \":\u003d\"?",
+      "range": {
+        "startLine": 105,
+        "startChar": 8,
+        "endLine": 105,
+        "endChar": 9
+      },
+      "revId": "7ef48bbcd90a841bd4bd6b028b45b322b11dcf0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
