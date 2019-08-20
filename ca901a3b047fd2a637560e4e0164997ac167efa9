@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d27ad493_17a8f94a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-20T23:47:27Z",
+      "side": 1,
+      "message": "nit: if err :\u003d ash.WaitForAppToAppear(ctx, tconn, app.ID); err !\u003d nil {",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 17
+      },
+      "revId": "ca901a3b047fd2a637560e4e0164997ac167efa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1582cf41_b300ed2b",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 5
@@ -13,6 +36,30 @@
       "writtenOn": "2019-08-20T23:34:10Z",
       "side": 1,
       "message": "Since this is called directly after the test starts it occasionally fails with:\n\nReferenceError: tast is not defined\n\nMust be some race",
+      "range": {
+        "startLine": 144,
+        "startChar": 33,
+        "endLine": 144,
+        "endChar": 42
+      },
+      "revId": "ca901a3b047fd2a637560e4e0164997ac167efa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07f2ec32_e20bbf11",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-20T23:47:27Z",
+      "side": 1,
+      "message": "In the TestAPIConn method of Chrome.go where it waits for chrome.autotestPrivate to be ready, it may also need to wait for tast to be ready.",
+      "parentUuid": "1582cf41_b300ed2b",
       "range": {
         "startLine": 144,
         "startChar": 33,
