@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f42588c_c37a2eae",
+        "filename": "src/chromiumos/tast/local/set/set_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T22:45:22Z",
+      "side": 1,
+      "message": "Could you swap here, too?",
+      "range": {
+        "startLine": 16,
+        "startChar": 27,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "31a5623923fafab919ae829f12ac2525ad7ac4f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
