@@ -7,6 +7,7 @@ package ui
 import (
 	"context"
 
+	common_crash "chromiumos/tast/common/crash"
 	"chromiumos/tast/crash"
 	"chromiumos/tast/local/bundles/cros/ui/chromecrash"
 	"chromiumos/tast/local/chrome"
@@ -28,6 +29,11 @@ func init() {
 }
 
 func ChromeCrashNotLoggedIn(ctx context.Context, s *testing.State) {
+	if err := common_crash.StartCrashTest(); err != nil {
+		s.Fatal("StartCrashTest failed: ", err)
+	}
+	defer common_crash.FinishCrashTest()
+
 	err := metrics.SetConsent(ctx, s.DataPath(chromecrash.TestCert))
 	if err != nil {
 		s.Fatal("SetConsent failed: ", err)
