@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b805535_e68651ed",
+        "filename": "src/chromiumos/tast/local/set/set.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T03:00:02Z",
+      "side": 1,
+      "message": "huge nit: why is this in reverse lexicographical order? If there\u0027s no special reason, could you use a, b in the order?",
+      "range": {
+        "startLine": 10,
+        "startChar": 21,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "fc60a87452e556de1da0e34475fb4cb730211010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbdfd9d9_5af2d1de",
+        "filename": "src/chromiumos/tast/local/set/set.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-20T03:00:02Z",
+      "side": 1,
+      "message": "optional: How about map[string]struct{} to make this slightly more efficient?\n\nom :\u003d make(map[string]struct{}, len(a))\n\nat L13: om[p] \u003d struct{}\n\nat L18: if _, ok :\u003d om[p]; !ok {\n\ncf) https://golang.org/ref/spec#Size_and_alignment_guarantees\n\n\u003d\u003d quote \u003d\u003d\nA struct or array type has size zero if it contains no fields (or elements, respectively) that have a size greater than zero.\n\u003d\u003d quote end \u003d\u003d",
+      "range": {
+        "startLine": 11,
+        "startChar": 12,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "fc60a87452e556de1da0e34475fb4cb730211010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
