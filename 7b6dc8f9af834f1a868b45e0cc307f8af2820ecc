@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "28be072c_a0f78cf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ipp_printer_connect_timeout.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2019-08-20T00:32:49Z",
+      "side": 1,
+      "message": "If go follows the C capitalization guidelines, this should be IppPrinterConnectTimeout",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 29
+      },
+      "revId": "7b6dc8f9af834f1a868b45e0cc307f8af2820ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d3f5637_0b7cf599",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/lp/cups.go",
         "patchSetId": 4
