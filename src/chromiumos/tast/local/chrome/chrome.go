@@ -995,3 +995,14 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 	}
 	return c.connectToBrowser(ctx)
 }
+
+// IsTargetAvailable checks if there is any matched target.
+func (c *Chrome) IsTargetAvailable(ctx context.Context, tm TargetMatcher) (bool, error) {
+	targets, err := c.getDevtoolTargets(ctx, func(t *target.Info) bool {
+		return tm(newTarget(t))
+	})
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get targets")
+	}
+	return len(targets) != 0, nil
+}
