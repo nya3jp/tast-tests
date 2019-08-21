@@ -37,53 +37,25 @@ func init() {
 	})
 }
 
-// checkLogContent reads file given by filename. complete is true if it's a valid log
-// expected for the test. resultErr is set to non-nil if any error or verification error
-// detected. Otherwise the log has not been written to the end.
-func checkLogContent(filename string) (complete bool, resultErr error) {
-	var r io.Reader
-	if strings.HasSuffix(filename, ".log.gz") {
-		f, err := os.Open(filename)
-		if err != nil {
-			return false, err
-		}
-		defer f.Close()
+// readLog reads file given by filename, possibly decoding gzip.
+func readLog(filename string) ([]byte, error) {
+	f, err := os.Open(filename)
+	if err != nil {
+		return nil, err
+	}
+	defer f.Close()
+
+	var r io.Reader = f
+	if strings.HasSuffix(filename, ".gz") {
 		r, err = gzip.NewReader(f)
 		if err != nil {
-			return false, err
-		}
-	} else if strings.HasSuffix(filename, ".log") {
-		f, err := os.Open(filename)
-		if err != nil {
-			return false, err
-		}
-		defer f.Close()
-		r = f
-	} else {
-		return false, errors.Errorf("crash report %s has wrong extension", filename)
-	}
-
-	lines, err := ioutil.ReadAll(r)
-	if err != nil {
-		return false, err
-	}
-	// Check that we have seen the end of the file. Otherwise we could
-	// end up racing bwtween writing to the log file and reading/checking
-	// the log file.
-	if !strings.Contains(string(lines), "END-OF-LOG") {
-		return false, nil
-	}
-
-	for _, line := range strings.Split(string(lines), "\n") {
-		if len(line) > 0 && !strings.Contains(line, "atmel_mxt_ts") && !strings.Contains(line, "END-OF-LOG") {
-			return false, errors.Errorf("crash report contains invalid content %q", line)
+			return nil, err
 		}
 	}
-	return true, nil
+	return ioutil.ReadAll(r)
 }
 
-func checkAtmelCrashes(pastCrashes map[string]struct{}) (bool, error) {
-	// Check proper Atmel trackpad crash reports are created.
+func checkFakeCrashes(pastCrashes map[string]struct{}) (bool, error) {
 	files, err := ioutil.ReadDir(systemCrashDir)
 	if err != nil {
 		if os.IsNotExist(err) {
@@ -96,16 +68,17 @@ func checkAtmelCrashes(pastCrashes map[string]struct{}) (bool, error) {
 		if _, found := pastCrashes[filename]; found {
 			continue
 		}
-		if !strings.HasPrefix(filename, "change__i2c_atmel_mxt_ts") ||
-			strings.HasSuffix(filename, ".meta") {
+		if !strings.HasPrefix(filename, "__tast_udev_crash_test.") {
 			continue
 		}
-		path := filepath.Join(systemCrashDir, filename)
-		result, err := checkLogContent(path)
+		if !strings.HasSuffix(filename, ".log") && !strings.HasSuffix(filename, ".log.gz") {
+			continue
+		}
+		b, err := readLog(filepath.Join(systemCrashDir, filename))
 		if err != nil {
 			return false, err
 		}
-		if !result {
+		if string(b) != "ok\n" {
 			continue
 		}
 		return true, nil
@@ -113,45 +86,7 @@ func checkAtmelCrashes(pastCrashes map[string]struct{}) (bool, error) {
 	return false, nil
 }
 
-func hasAtmelDeviceDir() (hasDevice bool, resultErr error) {
-	const driverDir = "/sys/bus/i2c/drivers/atmel_mxt_ts"
-
-	if r, err := os.Stat(driverDir); err != nil || !r.IsDir() {
-		return false, err
-	}
-	files, err := ioutil.ReadDir(driverDir)
-	if err != nil {
-		return false, errors.Wrap(err, "failed to read Atmel driver dir")
-	}
-	for _, file := range files {
-		if file.Mode()&os.ModeSymlink != 0 {
-			fullpath, err := filepath.EvalSymlinks(filepath.Join(driverDir, file.Name()))
-			if err != nil {
-				continue
-			}
-			file, err = os.Stat(fullpath)
-			if err != nil {
-				continue
-			}
-		}
-		if file.Mode().IsDir() {
-			return true, nil
-		}
-	}
-	return false, nil
-}
-
 func UdevCrash(ctx context.Context, s *testing.State) {
-	hasDevice, err := hasAtmelDeviceDir()
-	if err != nil {
-		s.Fatal("Error occured while searching Atmel devices: ", err)
-	}
-	if !hasDevice {
-		// TODO(yamaguchi): Change this to an error when hardware depenency is
-		// supported by the test framework.
-		s.Log("No Atmel device found; this test should not be run on this device")
-	}
-
 	if err := metrics.SetConsent(ctx, s.DataPath(testCert)); err != nil {
 		s.Fatal("Failed to set consent: ", err)
 	}
@@ -166,37 +101,35 @@ func UdevCrash(ctx context.Context, s *testing.State) {
 		pastCrashes[file.Name()] = struct{}{}
 	}
 
-	// Use udevadm to trigger a fake udev event representing atmel driver
-	// failure. The uevent match rule in 99-crash-reporter.rules is
-	// ACTION=="change", SUBSYSTEM=="i2c", DRIVER=="atmel_mxt_ts",
-	// ENV{ERROR}=="1" RUN+="/sbin/crash_reporter
-	// --udev=SUBSYSTEM=i2c-atmel_mxt_ts:ACTION=change"
+	// Use udevadm to trigger a test-only udev event representing driver failure.
+	// See 99-crash-reporter.rules for the matcing udev rule.
+
+	s.Log("Triggering a fake crash event via udev")
 
 	for _, args := range [][]string{
-		{"udevadm", "control", "--property=ERROR=1"},
-		{"udevadm", "trigger",
-			"--action=change",
-			"--subsystem-match=i2c",
-			"--attr-match=driver=atmel_mxt_ts"},
-		{"udevadm", "control", "--property=ERROR=0"},
+		{"udevadm", "control", "--property=TAST_UDEV_TEST=crash"},
+		{"udevadm", "trigger", "-p", "DEVNAME=/dev/mapper/control"},
+		{"udevadm", "control", "--property=TAST_UDEV_TEST="},
 	} {
 		if err := testexec.CommandContext(ctx, args[0], args[1:]...).Run(); err != nil {
 			s.Fatalf("%s failed: %v", shutil.EscapeSlice(args), err)
 		}
 	}
 
-	// Check proper Atmel trackpad crash reports are created.
+	s.Log("Waiting for the corresponding crash report")
+
+	// Check proper crash reports are created.
 	err = testing.Poll(ctx, func(c context.Context) error {
-		found, err := checkAtmelCrashes(pastCrashes)
+		found, err := checkFakeCrashes(pastCrashes)
 		if err != nil {
 			s.Fatal("Failed while polling crash log: ", err)
 		}
-		if found {
-			return nil
+		if !found {
+			return errors.New("no fake crash found")
 		}
-		return errors.New("no Atmel crash found")
+		return nil
 	}, &testing.PollOptions{Timeout: 60 * time.Second})
 	if err != nil {
-		s.Error("Failed to wait for Atmel crash reports: ", err)
+		s.Error("Failed to wait for crash reports: ", err)
 	}
 }
