@@ -7,9 +7,6 @@ package network
 import (
 	"context"
 	"os"
-	"time"
-
-	"github.com/godbus/dbus"
 
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
@@ -18,21 +15,22 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ConfigureServiceForProfile,
-		Desc: "Test ConfigureServiceForProfile D-Bus method",
+		Func: DefaultProfileServices,
+		Desc: "Wipe the default profile, start shill, configure a service, restart shill, and check that the service exists",
 		Contacts: []string{
-			"matthewmwang@chromium.org",
+			"briannorris@chromium.org",
+			"chromeos-kernel-wifi@google.com", // WiFi team
+			"oka@chromium.org",                // Tast port author
 		},
 		Attr: []string{"informational"},
 	})
 }
 
-// Ported from https://crrev.com/c/1470785
-
-func ConfigureServiceForProfile(ctx context.Context, s *testing.State) {
+func DefaultProfileServices(ctx context.Context, s *testing.State) {
 	const (
-		filePath   = "/var/cache/shill/default.profile"
-		objectPath = dbus.ObjectPath("/profile/default")
+		filePath = "/var/cache/shill/default.profile"
+		// ssid is a fake service name chosen unlikely to match any SSID present over-the-air.
+		ssid = "org.chromium.DfltPrflSrvcsTest"
 	)
 
 	// We lose connectivity along the way here, and if that races with the
@@ -57,20 +55,17 @@ func ConfigureServiceForProfile(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed creating shill manager proxy: ", err)
 	}
 
-	// Clean up custom services on exit.
-	defer func() {
-		shill.SafeStop(ctx)
-		os.Remove(filePath)
-		shill.SafeStart(ctx)
-	}()
-
-	props := map[string]interface{}{
-		"Type":           "ethernet",
-		"StaticIPConfig": map[string]interface{}{"NameServers": []string{"8.8.8.8"}},
+	if err := manager.PopAllUserProfiles(ctx); err != nil {
+		s.Fatal("Failed to pop user profiles: ", err)
 	}
-	_, err = manager.ConfigureServiceForProfile(ctx, objectPath, props)
-	if err != nil {
-		s.Fatal("Unable to configure service: ", err)
+	if err := manager.ConfigureService(ctx, map[string]interface{}{
+		"Type":            "wifi",
+		"Mode":            "managed",
+		"SSID":            ssid,
+		"WiFi.HiddenSSID": true,
+		"SecurityClass":   "none",
+	}); err != nil {
+		s.Fatal("Failed to configure service: ", err)
 	}
 
 	// Restart shill to ensure that configurations persist across reboot.
@@ -84,11 +79,17 @@ func ConfigureServiceForProfile(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed creating shill manager proxy: ", err)
 	}
+	if err := manager.PopAllUserProfiles(ctx); err != nil {
+		s.Fatal("Failed to pop user profiles: ", err)
+	}
 
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		_, err := manager.FindMatchingService(ctx, props)
-		return err
-	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-		s.Fatal("Service not found: ", err)
+	// FIXME(oka): confirm whether we should differentiate Service and AllService.
+	if o, err := manager.FindMatchingService(ctx, map[string]interface{}{
+		"Name": ssid,
+	}, true); err != nil {
+		s.Error("Network not found after restart: ", err)
+	} else {
+		// FIXME: remove?
+		s.Logf("Network found: %q", o)
 	}
 }

@@ -32,6 +32,8 @@ func init() {
 	})
 }
 
+// Ported from https://crrev.com/c/1493538
+
 func DefaultProfile(ctx context.Context, s *testing.State) {
 	const (
 		filePath   = "/var/cache/shill/default.profile"
