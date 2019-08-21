@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e221c592_a5641ce4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-21T08:12:20Z",
+      "side": 1,
+      "message": "nit: maybe MkdirAll()",
+      "range": {
+        "startLine": 258,
+        "startChar": 15,
+        "endLine": 258,
+        "endChar": 20
+      },
+      "revId": "601b427dd2c8f8359519c330ea5a6f3e99121abf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdac29e2_15fd2289",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-21T08:12:20Z",
+      "side": 1,
+      "message": "This should be set by default in testexec.",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 55
+      },
+      "revId": "601b427dd2c8f8359519c330ea5a6f3e99121abf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "687bec3b_4ff6b3fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-21T08:12:20Z",
+      "side": 1,
+      "message": "Instead of pipe, could you just pass the file to cmd.Stdout/Stderr ?",
+      "range": {
+        "startLine": 285,
+        "startChar": 3,
+        "endLine": 296,
+        "endChar": 4
+      },
+      "revId": "601b427dd2c8f8359519c330ea5a6f3e99121abf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de6cbe38_463990f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-21T08:12:20Z",
+      "side": 1,
+      "message": "textexec.Cmd.Kill() should does this.",
+      "revId": "601b427dd2c8f8359519c330ea5a6f3e99121abf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "029e0957_a6881174",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-21T08:12:20Z",
+      "side": 1,
+      "message": "For safeness, how about\n\ndefer func() {\n  cmd.Kill()\n  cmd.Wait()\n}()\n\n# with error handling\n?",
+      "revId": "601b427dd2c8f8359519c330ea5a6f3e99121abf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "856cd062_2624bf42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-21T08:12:20Z",
+      "side": 1,
+      "message": "call.Err?\n\nor\n\nif err :\u003d obj.Call(...).Err; err !\u003d nil {\n...\n}",
+      "range": {
+        "startLine": 318,
+        "startChar": 41,
+        "endLine": 318,
+        "endChar": 44
+      },
+      "revId": "601b427dd2c8f8359519c330ea5a6f3e99121abf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
