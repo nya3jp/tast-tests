@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95a0dceb_8c237ece",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-08-21T16:30:56Z",
+      "side": 1,
+      "message": "Since this is a UI test, you should probably also add the \"Logged In\" precondition:\n\nPre: chrome.LoggedIn(),",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 66
+      },
+      "revId": "223ad23f9908da7b69d0ef1aa1a902059f232a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1cac284_46819925",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-08-21T16:30:56Z",
+      "side": 1,
+      "message": "I think this is leftover from my testing CL.",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 19
+      },
+      "revId": "223ad23f9908da7b69d0ef1aa1a902059f232a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cbd5561_941cdfb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-08-21T16:30:56Z",
+      "side": 1,
+      "message": "This selector seems to be the same as the one in getSavedPrinter entries (with the exception of selecting \"settings-cups-saved-printers\" over \"settings-cups-nearby-printers\"). Could you define this as a constant format string? Then you could use fmt.Sprintf to fill in the needed selector value:\n\nfmt.Sprintf(printerSelector, \"nearby\")\nfmt.Sprintf(printerSelector, \"saved\")",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 5
+      },
+      "revId": "223ad23f9908da7b69d0ef1aa1a902059f232a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
