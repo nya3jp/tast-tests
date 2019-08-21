@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "16e16006_6452828d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-21T00:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d27ad493_17a8f94a",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 17
+      },
+      "revId": "ca901a3b047fd2a637560e4e0164997ac167efa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1582cf41_b300ed2b",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 5
