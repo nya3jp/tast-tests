@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fab19f5_f3b2ed41",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-08-21T19:02:35Z",
+      "side": 1,
+      "message": "Per https://bugs.chromium.org/p/chromium/issues/detail?id\u003d995143 we can now use tast-tests/src/chromiumos/tast/common for this.",
+      "revId": "adcc8e104b01aed0a0aac0f454d96e8d2630f94c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
