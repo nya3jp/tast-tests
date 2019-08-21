@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21d63e5d_27cc0f7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/lp/cups.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-21T07:33:32Z",
+      "side": 1,
+      "message": "Could you provide the package doc?",
+      "revId": "36ca27cf6b75464dc0bf1da30cff7c56d2850574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a1d62f1_38c35fb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/lp/cups.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-21T07:33:32Z",
+      "side": 1,
+      "message": "nit: could you add a new method when it is needed (i.e., in later CL),\nbecause to keep maintaining the unused code takes higher cost?",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 1
+      },
+      "revId": "36ca27cf6b75464dc0bf1da30cff7c56d2850574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b73bd1ab_670628cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/lp/cups.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-21T07:33:32Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 1
+      },
+      "revId": "36ca27cf6b75464dc0bf1da30cff7c56d2850574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3499247e_2294a5f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-21T07:33:32Z",
+      "side": 1,
+      "message": "nit: USB",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 11
+      },
+      "revId": "36ca27cf6b75464dc0bf1da30cff7c56d2850574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd3dc8ab_f8ad9913",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprinter/printtest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-21T07:33:32Z",
+      "side": 1,
+      "message": "optional: You can inline to Sprintf() argument. Ditto for below.",
+      "range": {
+        "startLine": 22,
+        "startChar": 32,
+        "endLine": 22,
+        "endChar": 58
+      },
+      "revId": "36ca27cf6b75464dc0bf1da30cff7c56d2850574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
