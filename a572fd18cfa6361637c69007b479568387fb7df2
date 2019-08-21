@@ -46,6 +46,30 @@
       "revId": "a572fd18cfa6361637c69007b479568387fb7df2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2db2961_af49f9f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/accessibility_tree_expected.txt",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-08-21T05:19:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae54d1f5_c88bc087",
+      "range": {
+        "startLine": 1,
+        "startChar": 19,
+        "endLine": 1,
+        "endChar": 25
+      },
+      "revId": "a572fd18cfa6361637c69007b479568387fb7df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
