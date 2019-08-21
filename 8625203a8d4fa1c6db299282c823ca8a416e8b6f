@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f9bcc26_e7f87d8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-21T19:15:24Z",
+      "side": 1,
+      "message": "Could you comment what this is for?\n\nKeiichi-san replied that this is to avoid from side-effect of prev test / chrome-login etc. However, TBH, I\u0027m not very sure if it works, because there\u0027s more work between here and CPU measurement.\nI\u0027m ok to move forward with this for now (with explicit comment), but in precise, I\u0027d recommend you to see if this actually contributes to the stabilization of the test result.",
+      "revId": "8625203a8d4fa1c6db299282c823ca8a416e8b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
