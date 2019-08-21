@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71a3a310_128a459e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mount_obb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-21T22:35:34Z",
+      "side": 1,
+      "message": "Could you use a different name since its scope is too wide?\n\nIn general, I\u0027m afraid of cases like this:\n\n func f() (err error) { // [1]\n   ...\n   if somecondition {\n     err :\u003d ... // [2]\n     ...\n     defer func() {\n       if err !\u003d nil { // this is [2], not [1]\n         cleanup()\n       }\n     }()\n   }\n   ...\n }",
+      "range": {
+        "startLine": 162,
+        "startChar": 60,
+        "endLine": 162,
+        "endChar": 63
+      },
+      "revId": "80d47bbdab1e373cd48be29cab5253f9fdee05aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c61d8df9_0dad2db4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mount_obb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-21T22:35:34Z",
+      "side": 1,
+      "message": "Optional: Alternatively,\n\n success :\u003d false\n defer func() {\n   if !success {\n     unix.Unmount(...)\n   }\n }()\n\n ...\n success \u003d true\n return nil",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 5
+      },
+      "revId": "80d47bbdab1e373cd48be29cab5253f9fdee05aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
