@@ -30,7 +30,7 @@ func init() {
 		Contacts:     []string{"sarakato@chromium.org", "dtseng@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome"},
-		Data:         []string{"accessibility_sample.apk", "accessibility_tree_expected.txt"},
+		Data:         []string{"ArcAccessibilityTest.apk", "accessibility_tree_expected.txt"},
 		Timeout:      4 * time.Minute,
 	})
 }
@@ -145,7 +145,7 @@ func checkAccessibilityTree(ctx context.Context, chromeVoxConn *chrome.Conn, wan
 
 func AccessibilityTree(ctx context.Context, s *testing.State) {
 	const (
-		apkName                     = "accessibility_sample.apk"
+		apkName                     = "ArcAccessibilityTest.apk"
 		accessibilityTreeExpected   = "accessibility_tree_expected.txt"
 		accessibilityTreeOutputFile = "accessibility_event_diff_tree_output.txt"
 	)
