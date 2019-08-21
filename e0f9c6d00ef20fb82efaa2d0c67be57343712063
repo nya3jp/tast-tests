@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5ab541b_b4108074",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-08-21T09:38:57Z",
+      "side": 1,
+      "message": "This was copied from the original autotest, but,\ncrash_reporter doesn\u0027t accept --init option now.",
+      "revId": "e0f9c6d00ef20fb82efaa2d0c67be57343712063",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
