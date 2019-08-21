@@ -5,6 +5,8 @@
 package arc
 
 import (
+	"strings"
+
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
@@ -47,4 +49,31 @@ func InitPID() (int32, error) {
 		}
 	}
 	return -1, errors.New("didn't find init process")
+}
+
+// GetNewestPID returns the newest PID with name.
+func GetNewestPID(name string) (int, error) {
+	procs, err := process.Processes()
+	if err != nil {
+		return 0, err
+	}
+	var mostRecentMatch *process.Process
+	var mostRecentCreateTime int64
+	for _, proc := range procs {
+		if cl, err := proc.Cmdline(); err != nil || !strings.Contains(cl, name) {
+			continue
+		}
+		createTime, err := proc.CreateTime()
+		if err != nil {
+			continue
+		}
+		if mostRecentMatch == nil || createTime > mostRecentCreateTime {
+			mostRecentMatch = proc
+			mostRecentCreateTime = createTime
+		}
+	}
+	if mostRecentMatch == nil {
+		return 0, errors.Errorf("unable to find process with name %v", name)
+	}
+	return int(mostRecentMatch.Pid), nil
 }

@@ -16,8 +16,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/shirou/gopsutil/process"
-
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/arc"
@@ -119,7 +117,7 @@ func LowMemoryKiller(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Retrieving PID of app ", exampleApp)
-	actPID, err := getNewestPID(exampleApp)
+	actPID, err := arc.GetNewestPID(exampleApp)
 	if err != nil {
 		s.Fatalf("Unable to get pid of %v: %v", exampleApp, err)
 	}
@@ -154,7 +152,7 @@ func LowMemoryKiller(ctx context.Context, s *testing.State) {
 		persistentArcAppOOMScore = -100
 	)
 	for _, name := range []string{examplePersistentApp, exampleSystemProcess, androidHomeApp} {
-		pid, err := getNewestPID(name)
+		pid, err := arc.GetNewestPID(name)
 		if err != nil {
 			s.Fatalf("Unable to get pid of %v: %v", name, err)
 		}
@@ -234,33 +232,6 @@ func LowMemoryKiller(ctx context.Context, s *testing.State) {
 			break
 		}
 	}
-}
-
-// getNewestPID returns the newest PID with name.
-func getNewestPID(name string) (int, error) {
-	procs, err := process.Processes()
-	if err != nil {
-		return 0, err
-	}
-	var mostRecentMatch *process.Process
-	var mostRecentCreateTime int64
-	for _, proc := range procs {
-		if cl, err := proc.Cmdline(); err != nil || !strings.Contains(cl, name) {
-			continue
-		}
-		createTime, err := proc.CreateTime()
-		if err != nil {
-			continue
-		}
-		if mostRecentMatch == nil || createTime > mostRecentCreateTime {
-			mostRecentMatch = proc
-			mostRecentCreateTime = createTime
-		}
-	}
-	if mostRecentMatch == nil {
-		return 0, errors.Errorf("unable to find process with name %v", name)
-	}
-	return int(mostRecentMatch.Pid), nil
 }
 
 // readOOMScoreAdj returns the oom_score_adj of pid.
