@@ -13,8 +13,9 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
-	"syscall"
 	"time"
+
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/sysutil"
@@ -139,7 +140,7 @@ func MountOBB(ctx context.Context, s *testing.State) {
 			if !strings.HasPrefix(m.MountPath, dir) {
 				continue
 			}
-			if err := syscall.Unmount(m.MountPath, syscall.MNT_DETACH); err != nil {
+			if err := unix.Unmount(m.MountPath, unix.MNT_DETACH); err != nil {
 				errs = append(errs, errors.Wrap(err, "failed to unmount: "+m.MountPath))
 			}
 		}
@@ -158,7 +159,7 @@ func MountOBB(ctx context.Context, s *testing.State) {
 		FAT32         = "32"
 	)
 
-	setUpImage := func(variant fatType, tempdir, path string) error {
+	setUpImage := func(variant fatType, tempdir, path string) (err error) {
 		if err := testexec.CommandContext(ctx, "truncate", "--size=64M", path).Run(testexec.DumpLogOnError); err != nil {
 			return err
 		}
@@ -172,9 +173,13 @@ func MountOBB(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to create a dir at "+mountPath)
 		}
 		if err := testexec.CommandContext(ctx, "mount", path, mountPath).Run(testexec.DumpLogOnError); err != nil {
-			return err
+			return errors.Wrap(err, "failed to mount vfat")
 		}
-		defer syscall.Unmount(mountPath, syscall.MNT_DETACH)
+		defer func() {
+			if err != nil {
+				unix.Unmount(mountPath, unix.MNT_DETACH)
+			}
+		}()
 
 		// Put files in the root directory.
 		if err := setUpFiles(mountPath); err != nil {
@@ -188,6 +193,11 @@ func MountOBB(ctx context.Context, s *testing.State) {
 		}
 		if err := setUpFiles(subdirPath); err != nil {
 			return err
+		}
+
+		// Call Unmount without MNT_DETACH, which should commit the content of file system cached in kernel.
+		if err := unix.Unmount(mountPath, 0); err != nil {
+			return errors.Wrap(err, "failed to unmount vfat")
 		}
 
 		return nil
