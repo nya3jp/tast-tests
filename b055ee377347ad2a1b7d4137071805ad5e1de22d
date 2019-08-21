@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "fa33b646_06d1d6da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-21T13:48:46Z",
+      "side": 1,
+      "message": "redundant await?",
+      "range": {
+        "startLine": 140,
+        "startChar": 13,
+        "endLine": 140,
+        "endChar": 18
+      },
+      "revId": "b055ee377347ad2a1b7d4137071805ad5e1de22d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "098c5400_3bdd13ac",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
         "patchSetId": 1
@@ -41,6 +64,29 @@
         "startChar": 6,
         "endLine": 209,
         "endChar": 9
+      },
+      "revId": "b055ee377347ad2a1b7d4137071805ad5e1de22d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a225edb_43a32e00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-21T13:48:46Z",
+      "side": 1,
+      "message": "This is removed in the new patchset, please help update this CL as well, thanks.",
+      "range": {
+        "startLine": 211,
+        "startChar": 30,
+        "endLine": 211,
+        "endChar": 56
       },
       "revId": "b055ee377347ad2a1b7d4137071805ad5e1de22d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
