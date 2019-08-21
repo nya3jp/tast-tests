@@ -398,16 +398,33 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to get targets")
 	}
+	failedCount := 0
 	if len(targets) > 0 {
 		testing.ContextLogf(ctx, "Closing %d target(s)", len(targets))
 		for _, t := range targets {
 			args := &target.CloseTargetArgs{TargetID: t.TargetID}
 			if reply, err := c.client.Target.CloseTarget(ctx, args); err != nil {
 				testing.ContextLogf(ctx, "Failed to close %v: %v", t.URL, err)
+				failedCount++
 			} else if !reply.Success {
 				testing.ContextLogf(ctx, "Failed to close %v: unknown failure", t.URL)
+				failedCount++
 			}
 		}
+	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		targets, err := c.getDevtoolTargets(ctx, func(t *target.Info) bool {
+			return t.Type == "page" || t.Type == "app"
+		})
+		if err != nil {
+			return errors.Wrap(err, "failed to get targets")
+		}
+		if len(targets) > failedCount {
+			return errors.Errorf("%d target(s) still open", len(targets))
+		}
+		return nil
+	}, &testing.PollOptions{Interval: 10 * time.Millisecond, Timeout: time.Minute}); err != nil {
+		testing.ContextLog(ctx, "Not all targets finished closing: ", err)
 	}
 	return nil
 }
