@@ -392,12 +392,14 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	defer st.End()
 
 	// Try to close all "normal" pages and apps.
-	targets, err := c.getDevtoolTargets(ctx, func(t *target.Info) bool {
+	targetFilter := func(t *target.Info) bool {
 		return t.Type == "page" || t.Type == "app"
-	})
+	}
+	targets, err := c.getDevtoolTargets(ctx, targetFilter)
 	if err != nil {
 		return errors.Wrap(err, "failed to get targets")
 	}
+	var closingTargets []*target.Info
 	if len(targets) > 0 {
 		testing.ContextLogf(ctx, "Closing %d target(s)", len(targets))
 		for _, t := range targets {
@@ -406,8 +408,33 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 				testing.ContextLogf(ctx, "Failed to close %v: %v", t.URL, err)
 			} else if !reply.Success {
 				testing.ContextLogf(ctx, "Failed to close %v: unknown failure", t.URL)
+			} else {
+				// Record all targets that have promised to close
+				closingTargets = append(closingTargets, t)
 			}
 		}
+	}
+	// Wait for the targets to finish closing
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		targets, err := c.getDevtoolTargets(ctx, targetFilter)
+		if err != nil {
+			return errors.Wrap(err, "failed to get targets")
+		}
+		var stillClosingCount int
+		for _, ct := range closingTargets {
+			for _, t := range targets {
+				if ct.TargetID == t.TargetID {
+					stillClosingCount++
+					break
+				}
+			}
+		}
+		if stillClosingCount > 0 {
+			return errors.Errorf("%d target(s) still open", stillClosingCount)
+		}
+		return nil
+	}, &testing.PollOptions{Interval: 10 * time.Millisecond, Timeout: time.Minute}); err != nil {
+		testing.ContextLog(ctx, "Not all targets finished closing: ", err)
 	}
 	return nil
 }
