@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5b834b8_22073df6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-21T08:04:46Z",
+      "side": 1,
+      "message": "For tempfile, it is caller\u0027s responsibility to remove the file. So\n\ndefer os.Remove(logFile.Name())\n\nlooks missing. (for error case at L77)",
+      "revId": "7734712b81eb56387c6c059e08c663b56a7e4193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86e842ee_a0d79c7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-21T08:04:46Z",
+      "side": 1,
+      "message": "In this case, FD will be leaked.",
+      "revId": "7734712b81eb56387c6c059e08c663b56a7e4193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05e07b09_4ec3ef16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-21T08:04:46Z",
+      "side": 1,
+      "message": "Could you handle error, too?",
+      "revId": "7734712b81eb56387c6c059e08c663b56a7e4193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e39dad67_64332d11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-21T08:04:46Z",
+      "side": 1,
+      "message": "Ditto for error handling.",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 17
+      },
+      "revId": "7734712b81eb56387c6c059e08c663b56a7e4193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8d7c9a3_609946d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-21T08:04:46Z",
+      "side": 1,
+      "message": "This should be before tempFile.Close() for handling error as much as possible?",
+      "revId": "7734712b81eb56387c6c059e08c663b56a7e4193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27d32d89_5ad4519d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-21T08:04:46Z",
+      "side": 1,
+      "message": "Not updated yet...?",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 2
+      },
+      "revId": "7734712b81eb56387c6c059e08c663b56a7e4193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd3efcbb_04df03ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-21T08:04:46Z",
+      "side": 1,
+      "message": "How about testexec.DumpLogOnError here?",
+      "range": {
+        "startLine": 141,
+        "startChar": 18,
+        "endLine": 141,
+        "endChar": 20
+      },
+      "revId": "7734712b81eb56387c6c059e08c663b56a7e4193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
