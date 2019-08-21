@@ -1,0 +1,418 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d390b58c_b2db1857",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-21T19:04:29Z",
+      "side": 1,
+      "message": "huge it: space between sizeMB and *",
+      "range": {
+        "startLine": 8,
+        "startChar": 28,
+        "endLine": 8,
+        "endChar": 29
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c359cab1_c64a9a96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-21T19:04:29Z",
+      "side": 1,
+      "message": "just to make sure this timeout is the expected one.",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 36,
+        "endChar": 14
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61496430_dd195a14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-21T19:04:29Z",
+      "side": 1,
+      "message": "add doc",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 16
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d38a87af_214c6774",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-21T19:04:29Z",
+      "side": 1,
+      "message": "huge nit (here and below) JavaScript",
+      "range": {
+        "startLine": 54,
+        "startChar": 42,
+        "endLine": 54,
+        "endChar": 52
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dfc5c62_75b2847f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-21T19:04:29Z",
+      "side": 1,
+      "message": "const timeout \u003d 60 * time.Second",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 8
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e793947_763aed89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-21T19:04:29Z",
+      "side": 1,
+      "message": "nit: rename to openTabCount  (here and the remaining tests)\nIn Go, unless it collides with something else, you usually don\u0027t prefix getters with \"get\"",
+      "range": {
+        "startLine": 101,
+        "startChar": 5,
+        "endLine": 101,
+        "endChar": 20
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d72faa70_9d018f3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-21T19:04:29Z",
+      "side": 1,
+      "message": "(here and in the other helper functions).\n\nIt is better to return error than just calling s.Fatal.\nAnd let the caller handle the error",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 45
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9eb30266_04bdff45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-21T19:04:29Z",
+      "side": 1,
+      "message": "if there is an error, you are leaking the |conn|.\nyou need to do something like:\n  defer conn.Close()\n\nalthough \"defer\" gets executed when it goes out of scope. So adding it here is not possible.\nOne possible solution is to inline openTabs in MemoryStressBasic func",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 17
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0e93afd_7dc8c97c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-21T19:04:29Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 31
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcf41286_0828713d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-21T19:04:29Z",
+      "side": 1,
+      "message": "you can merge these two lines. e.g:\nconst expr \u003d `new Promise((resolve, reject) \u003d\u003e {\n               chrome.tabs.query({active: true}, (tlist) \u003d\u003e {\n                 resolve(tlist[0].url)\n               })\n              })`",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 75
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da3bd40c_aa00302b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-21T19:04:29Z",
+      "side": 1,
+      "message": "ditto above regarding return error.",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 44
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32dbe082_198b6801",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-21T19:04:29Z",
+      "side": 1,
+      "message": "if what you need is to wait +/- 1000ms from the previous tab, then please add comment explaining why this is needed.\nOtherwise, this can be replaced by  `rand.Int(4000)+1000`",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 38
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a758adb_0885781c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-21T19:04:29Z",
+      "side": 1,
+      "message": "nit: else if",
+      "range": {
+        "startLine": 164,
+        "startChar": 2,
+        "endLine": 164,
+        "endChar": 4
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c712430_fb0ef089",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-21T19:04:29Z",
+      "side": 1,
+      "message": "for reference: messages from s.Error and s.Fatal start with capital letters.",
+      "range": {
+        "startLine": 168,
+        "startChar": 12,
+        "endLine": 168,
+        "endChar": 17
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f02ef2ce_16145b50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-21T19:04:29Z",
+      "side": 1,
+      "message": "optional: join these 2 lines.\n\nit Go, there is no hard-limit for line-lenght, assuming it makes sense.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#line-length",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 27
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d14bbf3_ce61d89e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-21T19:04:29Z",
+      "side": 1,
+      "message": "nit: move this function at the top.\nUsually the main function for Tast test is the first one to be implemented.",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 63
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d9daab6_c9330aa8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-21T19:04:29Z",
+      "side": 1,
+      "message": "insert:\ndefer cr.Close(ctx)",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 60
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd98b799_168f247f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-21T19:04:29Z",
+      "side": 1,
+      "message": "not needed if you use \"defer ...\" (see my comments above)",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 14
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
