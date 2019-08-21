@@ -88,13 +88,19 @@ func NewManager(ctx context.Context) (*Manager, error) {
 }
 
 // FindMatchingService returns a service with matching properties.
-func (m *Manager) FindMatchingService(ctx context.Context, props map[string]interface{}) (dbus.ObjectPath, error) {
+// If complete option is set, it searches in complete list.
+func (m *Manager) FindMatchingService(ctx context.Context, props map[string]interface{}, complete ...bool) (dbus.ObjectPath, error) {
 	managerProps, err := getProperties(ctx, m.obj, dbusManagerInterface)
 	if err != nil {
 		return "", err
 	}
 
-	for _, path := range managerProps["Services"].([]dbus.ObjectPath) {
+	key := "Services"
+	if len(complete) > 0 && complete[0] {
+		key = "ServiceCompleteList"
+	}
+
+	for _, path := range managerProps[key].([]dbus.ObjectPath) {
 		serviceProps, err := getPropsForService(ctx, path)
 		if err != nil {
 			return "", err
@@ -145,6 +151,11 @@ func (m *Manager) GetProfiles(ctx context.Context) ([]dbus.ObjectPath, error) {
 	return props["Profiles"].([]dbus.ObjectPath), nil
 }
 
+// ConfigureService configures a service with the given properties.
+func (m *Manager) ConfigureService(ctx context.Context, props map[string]interface{}) error {
+	return call(ctx, m.obj, dbusManagerInterface, "ConfigureService", props).Err
+}
+
 // ConfigureServiceForProfile configures a service at the given profile path.
 func (m *Manager) ConfigureServiceForProfile(ctx context.Context, path dbus.ObjectPath, props map[string]interface{}) (dbus.ObjectPath, error) {
 	var service dbus.ObjectPath
@@ -162,4 +173,9 @@ func (m *Manager) EnableTechnology(ctx context.Context, technology string) error
 // DisableTechnology disables a technology interface.
 func (m *Manager) DisableTechnology(ctx context.Context, technology string) error {
 	return call(ctx, m.obj, dbusManagerInterface, "DisableTechnology", technology).Err
+}
+
+// PopAllUserProfiles removes all user profiles from the stack of managed profiles leaving only default profiles.
+func (m *Manager) PopAllUserProfiles(ctx context.Context) error {
+	return call(ctx, m.obj, dbusManagerInterface, "PopAllUserProfiles").Err
 }
