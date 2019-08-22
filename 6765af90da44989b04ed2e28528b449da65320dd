@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "74a3eb11_cb4a8a6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernel_warning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-22T03:44:20Z",
+      "side": 1,
+      "message": "Generally, it is often the case that we can\u0027t test features properly without making changes to the production code.\n\nParticularly I\u0027m concerned about this sleep because I can imagine it might take more than 500ms when the system is under high load and the device is low-end.\n\nDoes anomaly_detector have write access to journal log? If so how about emitting a log when it\u0027s ready?",
+      "parentUuid": "8733f3d0_01f43a4c",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 41
+      },
+      "revId": "6765af90da44989b04ed2e28528b449da65320dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f817eb1f_c467223a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/kernel_warning.go",
         "patchSetId": 2
