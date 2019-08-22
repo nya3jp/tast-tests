@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf189051_bf71604a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-22T04:53:13Z",
+      "side": 1,
+      "message": "I\u0027m not very sure if we really need this length.\nPractically, it finished in about 10 mins (tested kevin and betty on my local workstation).\n\nAlso, this wouldn\u0027t affect to non-stress test case, because the timeout is limited to setup (\u003d30s) and per-run (1m), so in total 1m30s + small overhead.",
+      "revId": "02509fd01560d7abe6e8da89d35f04c2173f54ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
