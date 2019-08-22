@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/testing"
 )
 
@@ -34,7 +35,19 @@ func SmartDim(ctx context.Context, s *testing.State) {
 
 		histogramName = "MachineLearningService.SmartDimModel.ExecuteResult.Event"
 		timeout       = 10 * time.Second
+		deviceTypeKey = "DEVICETYPE"
+		deviceType    = "CHROMEBOOK"
+		deviceType2   = "REFERENCE"
 	)
+	if kvs, err := lsbrelease.Load(); err == nil {
+		if devicetype := kvs[deviceTypeKey]; devicetype != deviceType && devicetype != deviceType2 {
+			s.Log("Unexpected device type: ", devicetype)
+			return
+		}
+	} else {
+		s.Fatal("Failed to load lsbrelease: ", err)
+	}
+
 	cr, err := chrome.New(ctx, chrome.ExtraArgs("--external-metrics-collection-interval=1"))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
