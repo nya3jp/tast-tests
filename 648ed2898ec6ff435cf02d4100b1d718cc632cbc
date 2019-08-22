@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "c35c1270_731370ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_sender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-22T17:42:19Z",
+      "side": 1,
+      "message": "Is there a reason not to just have the contents of crashsender.RunTests in here?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 29
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a25289e_9b30d2ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-22T17:42:19Z",
+      "side": 1,
+      "message": "There\u0027s an existing function metrics.SetConsent() which will set up consent properly. Please use that; it\u0027s more reliable and standard.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 64
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ef2f93de_1356857a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
         "patchSetId": 9
@@ -589,6 +635,29 @@
     },
     {
       "key": {
+        "uuid": "5c6bd2ba_9d3bf323",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-22T17:42:19Z",
+      "side": 1,
+      "message": "This is needed by a number of crash tests. I\u0027m adding it to a more widely usable location src/chromiumos/tast/common/crash/crash.go in  https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1762454",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 45
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45553938_ec303dbd",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
         "patchSetId": 9
@@ -640,6 +709,30 @@
       "writtenOn": "2019-08-16T06:31:22Z",
       "side": 1,
       "message": "Looks like these files are removed from udev_crash.\nhttps://crrev.com/c/1730246/5\nCould you do the same, or add TODO to do that?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 48
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9a95708_dd0f8423",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-22T17:42:19Z",
+      "side": 1,
+      "message": "Just call metrics.SetConsent()",
+      "parentUuid": "07574a8b_97579451",
       "range": {
         "startLine": 17,
         "startChar": 0,
@@ -772,6 +865,24 @@
       "writtenOn": "2019-08-16T06:31:22Z",
       "side": 1,
       "message": "s.Fatal(\"...\", err)",
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be76f80d_5da8d746",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-22T17:42:19Z",
+      "side": 1,
+      "message": "Or just defer os.RemoveAll(tmpDir). Do you really need to fail the test if the directory isn\u0027t removed?",
+      "parentUuid": "fb2793ce_865faa28",
       "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -973,6 +1084,29 @@
       "writtenOn": "2019-08-16T06:31:22Z",
       "side": 1,
       "message": "s.Fatal(\"...\", err)",
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d51de50_bf334fb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-22T17:42:19Z",
+      "side": 1,
+      "message": "spelling nit: filtering",
+      "range": {
+        "startLine": 65,
+        "startChar": 33,
+        "endLine": 65,
+        "endChar": 42
+      },
       "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
