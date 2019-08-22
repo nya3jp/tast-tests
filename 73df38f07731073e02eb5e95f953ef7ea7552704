@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97af1433_3c01c415",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-08-22T22:08:22Z",
+      "side": 1,
+      "message": "This is returning a random number in the range [0, 1), wouldn\u0027t it make more sense to make this an Uint64Array and doing: randomArray[i] \u003d Math.random() * (1\u003c\u003c64)-1; or something like that?This will result in a better random memory layout then a Float64Array would with values between 0 and 1 I think",
+      "range": {
+        "startLine": 13,
+        "startChar": 26,
+        "endLine": 13,
+        "endChar": 32
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36e6aaf9_d06ceda6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-08-22T22:08:22Z",
+      "side": 1,
+      "message": "Why a Float64Array rather than a Uint8Array you\u0027re just populating with 1 I think Uint8Array will result in a more compressible layout in memory.",
+      "range": {
+        "startLine": 17,
+        "startChar": 25,
+        "endLine": 17,
+        "endChar": 37
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40a6de66_1aa96eff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-08-22T22:08:22Z",
+      "side": 1,
+      "message": "You never seeded your prng, is that intentional?\n\nrand.Seed(time.Now().UTC().UnixNano())",
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa3c36b3_41f1f914",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-08-22T22:08:22Z",
+      "side": 1,
+      "message": "This is optional and up to you but do you think it\u0027s easier to read with Sprintf?\n\nreturn fmt.Sprintf(\"%s?alloc\u003d%d\u0026ratio\u003d%f\u0026id\u003d%d\", baseURL, strconv.FormatInt(sizeMb, 10), strconv.FormatFloat(randomRatio, \u0027f\u0027, 3, 64), strconv.FormatInt(id, 10));",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 42
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "639f7c24_79b14386",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-08-22T22:08:22Z",
+      "side": 1,
+      "message": "This is assuming a compression ratio of 2:1 with zram? Is that right?",
+      "range": {
+        "startLine": 152,
+        "startChar": 11,
+        "endLine": 152,
+        "endChar": 36
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
