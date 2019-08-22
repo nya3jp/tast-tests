@@ -130,7 +130,9 @@ func newGTest(exec, filter, outDir string, args []string) *gtest.GTest {
 		filepath.Join(chrome.BinTestDir, exec),
 		gtest.Logfile(filepath.Join(outDir, exec+".log")),
 		gtest.Filter(filter),
-		gtest.Repeat(-1),
+		// Repeat enough times to run for full measurement duration. We don't
+		// use -1 here as this can result in huge log files (b/138822793).
+		gtest.Repeat(1000),
 		gtest.ExtraArgs(args...),
 		gtest.UID(int(sysutil.ChronosUID)),
 	)
