@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b6d891ef_37297457",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-22T00:47:02Z",
+      "side": 1,
+      "message": "Please avoid loading an external jquery to avoid network flakiness.",
+      "range": {
+        "startLine": 7,
+        "startChar": 2,
+        "endLine": 7,
+        "endChar": 90
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d390b58c_b2db1857",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.js",
         "patchSetId": 1
@@ -18,6 +41,213 @@
         "startChar": 28,
         "endLine": 8,
         "endChar": 29
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff92bf82_80c2c5aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-22T00:47:02Z",
+      "side": 1,
+      "message": "style: Google\u0027s JS naming convention is camelCase for variables.",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 8,
+        "endChar": 19
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cef283f5_0f3bb7f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-22T00:47:02Z",
+      "side": 1,
+      "message": "nit: can be const",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 5
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2ad6903_e16f4bb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-22T00:47:02Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 5
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44a577ab_8f087c0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-22T00:47:02Z",
+      "side": 1,
+      "message": "Please wait for DOMContentLoaded.\n\nAlternatively you don\u0027t need to wait for it if you move \u003cscript\u003e tag to the end of the HTML file.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 30
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11af6bcc_529d3a9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-22T00:47:02Z",
+      "side": 1,
+      "message": "Please use const/let instead of var.",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 5
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56acc2b4_a7a43cd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-22T00:47:02Z",
+      "side": 1,
+      "message": "style: allocMb",
+      "range": {
+        "startLine": 25,
+        "startChar": 6,
+        "endLine": 25,
+        "endChar": 13
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d348bfb2_bb24743b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-22T00:47:02Z",
+      "side": 1,
+      "message": "style: Please always use braces.",
+      "range": {
+        "startLine": 26,
+        "startChar": 19,
+        "endLine": 26,
+        "endChar": 21
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "810367ab_9c1a1de6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-22T00:47:02Z",
+      "side": 1,
+      "message": "Please always pass \u0026alloc\u003d and avoid placing a default value here. (I guess we already pass \u0026alloc\u003d always?)",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 18
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "960c4e7e_a84e32f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-22T00:47:02Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 23
       },
       "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
