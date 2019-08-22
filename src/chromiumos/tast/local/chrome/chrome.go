@@ -11,19 +11,15 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"strconv"
 	"strings"
 	"time"
 
-	"github.com/mafredri/cdp"
-	"github.com/mafredri/cdp/devtool"
 	"github.com/mafredri/cdp/protocol/target"
-	"github.com/mafredri/cdp/rpcc"
-	cdpsession "github.com/mafredri/cdp/session"
 
 	"chromiumos/tast/caller"
 	"chromiumos/tast/crash"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/jslog"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/minidump"
@@ -38,11 +34,7 @@ const (
 	// Tests that call New with the default fake login mode should declare a timeout that's at least this long.
 	LoginTimeout = 60 * time.Second
 
-	// writeBufferSize is a larger default buffer size (1 MB) for websocket connection.
-	writeBufferSize = 1048576
-
-	chromeUser        = "chronos"                          // Chrome Unix username
-	debuggingPortPath = "/home/chronos/DevToolsActivePort" // file where Chrome writes debugging port
+	chromeUser = "chronos" // Chrome Unix username
 
 	// DefaultUser contains the email address used to log into Chrome when authentication credentials are not supplied.
 	DefaultUser = "testuser@gmail.com"
@@ -215,10 +207,7 @@ func UnpackedExtension(dir string) option {
 // Chrome interacts with the currently-running Chrome instance via the
 // Chrome DevTools protocol (https://chromedevtools.github.io/devtools-protocol/).
 type Chrome struct {
-	debugPort int                 // DevTools port number
-	wsConn    *rpcc.Conn          // DevTools WebSocket connection to browser
-	client    *cdp.Client         // DevTools client using wsConn
-	sm        *cdpsession.Manager // manages connections to multiple targets over wsConn
+	devsess *cdputil.Session // DevTools session
 
 	user, pass, gaiaID string // login credentials
 	normalizedUser     string // user with domain added, periods removed, etc.
@@ -248,7 +237,9 @@ func (c *Chrome) User() string { return c.user }
 // DebugAddrPort returns the addr:port at which Chrome is listening for DevTools connections,
 // e.g. "127.0.0.1:38725". This port should not be accessed from outside of this package,
 // but it is exposed so that the port's owner can be easily identified.
-func (c *Chrome) DebugAddrPort() string { return fmt.Sprintf("127.0.0.1:%d", c.debugPort) }
+func (c *Chrome) DebugAddrPort() string {
+	return c.devsess.DebugAddrPort()
+}
 
 // New restarts the ui job, tells Chrome to enable testing, and (by default) logs in.
 // The NoLogin option can be passed to avoid logging in.
@@ -314,12 +305,12 @@ func New(ctx context.Context, opts ...option) (*Chrome, error) {
 		return nil, err
 	}
 
-	var err error
-	if c.debugPort, err = c.restartChromeForTesting(ctx); err != nil {
+	if err := c.restartChromeForTesting(ctx); err != nil {
 		return nil, err
 	}
-	if err := c.connectToBrowser(ctx); err != nil {
-		return nil, err
+	var err error
+	if c.devsess, err = cdputil.NewSession(ctx); err != nil {
+		return nil, c.chromeErr(err)
 	}
 
 	if c.loginMode != noLogin && !c.keepState {
@@ -376,11 +367,8 @@ func (c *Chrome) Close(ctx context.Context) error {
 		os.RemoveAll(c.testExtDir)
 	}
 
-	if c.sm != nil {
-		c.sm.Close()
-	}
-	if c.wsConn != nil {
-		c.wsConn.Close()
+	if c.devsess != nil {
+		c.devsess.Close(ctx)
 	}
 
 	if c.watcher != nil {
@@ -413,7 +401,7 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 		testing.ContextLogf(ctx, "Closing %d target(s)", len(targets))
 		for _, t := range targets {
 			args := &target.CloseTargetArgs{TargetID: t.TargetID}
-			if reply, err := c.client.Target.CloseTarget(ctx, args); err != nil {
+			if reply, err := c.devsess.Client.Target.CloseTarget(ctx, args); err != nil {
 				testing.ContextLogf(ctx, "Failed to close %v: %v", t.URL, err)
 			} else if !reply.Success {
 				testing.ContextLogf(ctx, "Failed to close %v: unknown failure", t.URL)
@@ -468,40 +456,9 @@ func (c *Chrome) prepareExtensions(ctx context.Context) error {
 
 }
 
-// readDebuggingPort returns the port number from the first line of p, a file
-// written by Chrome when --remote-debugging-port=0 is passed.
-func readDebuggingPort(p string) (int, error) {
-	b, err := ioutil.ReadFile(p)
-	if err != nil {
-		return -1, err
-	}
-	lines := strings.Split(string(b), "\n")
-	port, err := strconv.ParseInt(lines[0], 10, 32)
-	return int(port), err
-}
-
-// waitForDebuggingPort waits for Chrome's debugging port to become available.
-// Returns the port number.
-func (c *Chrome) waitForDebuggingPort(ctx context.Context, p string) (int, error) {
-	testing.ContextLog(ctx, "Waiting for Chrome to write its debugging port to ", p)
-	ctx, st := timing.Start(ctx, "wait_for_debugging_port")
-	defer st.End()
-
-	var port int
-	if err := testing.Poll(ctx, func(context.Context) error {
-		var err error
-		port, err = readDebuggingPort(p)
-		return err
-	}, loginPollOpts); err != nil {
-		return -1, errors.Wrap(c.chromeErr(err), "failed to read Chrome debugging port")
-	}
-
-	return port, nil
-}
-
 // restartChromeForTesting restarts the ui job, asks session_manager to enable Chrome testing,
 // and waits for Chrome to listen on its debugging port.
-func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err error) {
+func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "restart")
 	defer st.End()
 
@@ -511,16 +468,16 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 			minidump.SaveWithoutCrash(ctx, dir,
 				minidump.MatchByName("chapsd", "cryptohome", "cryptohomed", "session_manager", "tcsd"))
 		}
-		return -1, err
+		return err
 	}
 
 	sm, err := session.NewSessionManager(ctx)
 	if err != nil {
-		return -1, err
+		return err
 	}
 
 	// Remove the file where Chrome will write its debugging port after it's restarted.
-	os.Remove(debuggingPortPath)
+	os.Remove(cdputil.DebuggingPortPath)
 
 	testing.ContextLog(ctx, "Asking session_manager to enable Chrome testing")
 	args := []string{
@@ -577,13 +534,12 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 			"BREAKPAD_DUMP_LOCATION="+crash.ChromeCrashDir) // Write crash dumps outside cryptohome.
 	}
 	if _, err = sm.EnableChromeTesting(ctx, true, args, envVars); err != nil {
-		return -1, err
+		return err
 	}
 
 	// The original browser process should be gone now, so start watching for the new one.
 	c.watcher.start()
-
-	return c.waitForDebuggingPort(ctx, debuggingPortPath)
+	return nil
 }
 
 // restartSession stops the "ui" job, clears policy files and the user's cryptohome if requested,
@@ -620,39 +576,6 @@ func (c *Chrome) restartSession(ctx context.Context) error {
 	return upstart.EnsureJobRunning(ctx, "ui")
 }
 
-// connectToBrowser establishes a Chrome DevTools Protocol WebSocket connection to the browser.
-// The connection is saved to c.wsConn, and c.client and c.sm are also initialized.
-func (c *Chrome) connectToBrowser(ctx context.Context) error {
-	// The /json/version HTTP endpoint provides the browser's WebSocket URL.
-	// See https://chromedevtools.github.io/devtools-protocol/ for details.
-	// To avoid mixing HTTP and WS requests, we use only WS after this.
-	version, err := devtool.New("http://" + c.DebugAddrPort()).Version(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to query browser's HTTP endpoint")
-	}
-
-	testing.ContextLog(ctx, "Connecting to browser at ", version.WebSocketDebuggerURL)
-	bufferSizeDialOption := rpcc.WithWriteBufferSize(writeBufferSize)
-	co, err := rpcc.DialContext(ctx, version.WebSocketDebuggerURL, bufferSizeDialOption)
-	if err != nil {
-		return errors.Wrap(err, "failed to establish WebSocket connection to browser")
-	}
-
-	cl := cdp.NewClient(co)
-
-	// This lets us manage multiple targets using a single WebSocket connection.
-	sm, err := cdpsession.NewManager(cl)
-	if err != nil {
-		co.Close()
-		return err
-	}
-
-	c.wsConn = co
-	c.client = cl
-	c.sm = sm
-	return nil
-}
-
 // NewConn creates a new Chrome renderer and returns a connection to it.
 // If url is empty, an empty page (about:blank) is opened. Otherwise, the page
 // from the specified URL is opened. You can assume that the page loading has
@@ -663,7 +586,7 @@ func (c *Chrome) NewConn(ctx context.Context, url string) (*Conn, error) {
 	} else {
 		testing.ContextLog(ctx, "Creating new page with URL ", url)
 	}
-	reply, err := c.client.Target.CreateTarget(ctx, &target.CreateTargetArgs{URL: url})
+	reply, err := c.devsess.Client.Target.CreateTarget(ctx, &target.CreateTargetArgs{URL: url})
 	if err != nil {
 		return nil, err
 	}
@@ -686,7 +609,7 @@ func (c *Chrome) NewConn(ctx context.Context, url string) (*Conn, error) {
 // newConnInternal is a convenience function that creates a new Conn connected to the specified target.
 // url is only used for logging JavaScript console messages.
 func (c *Chrome) newConnInternal(ctx context.Context, id target.ID, url string) (*Conn, error) {
-	return newConn(ctx, c.sm, id, c.logMaster, url, c.chromeErr)
+	return newConn(ctx, c.devsess.Manager, id, c.logMaster, url, c.chromeErr)
 }
 
 // Target contains information about an available debugging target to which a connection can be established.
@@ -788,7 +711,7 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
 
 // getDevtoolTargets returns all DevTools targets matched by f.
 func (c *Chrome) getDevtoolTargets(ctx context.Context, f func(*target.Info) bool) ([]*target.Info, error) {
-	reply, err := c.client.Target.GetTargets(ctx)
+	reply, err := c.devsess.Client.Target.GetTargets(ctx)
 	if err != nil {
 		return nil, err
 	}
@@ -984,9 +907,9 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 	defer st.End()
 
 	// guestLoginForTesting() relaunches the browser. In advance,
-	// remove the file at debuggingPortPath, which should be
+	// remove the file at cdputil.DebuggingPortPath, which should be
 	// recreated after the port gets ready.
-	os.Remove(debuggingPortPath)
+	os.Remove(cdputil.DebuggingPortPath)
 	// And stop the browser crash watcher temporarily.
 	c.watcher.close()
 	c.watcher = nil
@@ -998,9 +921,8 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 	// We also close our WebSocket connection to the browser.
 	oobeConn.Close()
 	oobeConn = nil
-	c.client = nil
-	c.wsConn.Close()
-	c.wsConn = nil
+	c.devsess.Close(ctx)
+	c.devsess = nil
 
 	if err = cryptohome.WaitForUserMount(ctx, c.user); err != nil {
 		return err
@@ -1011,8 +933,9 @@ func (c *Chrome) logInAsGuest(ctx context.Context) error {
 	c.watcher.start()
 
 	// Then, get the possibly-changed debugging port and establish a new WebSocket connection.
-	if c.debugPort, err = c.waitForDebuggingPort(ctx, debuggingPortPath); err != nil {
-		return err
+	if c.devsess, err = cdputil.NewSession(ctx); err != nil {
+		return c.chromeErr(err)
 	}
-	return c.connectToBrowser(ctx)
+
+	return nil
 }
