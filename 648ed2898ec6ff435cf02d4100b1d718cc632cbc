@@ -186,6 +186,162 @@
     },
     {
       "key": {
+        "uuid": "b3a1ce0a_55aa6a8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-22T13:57:13Z",
+      "side": 1,
+      "message": "Rather, as I comment in the previous iteration, could you just inline the code?\nWhether the path is dir or file should be known by the caller, so you can choose what should be called in caller.",
+      "parentUuid": "7aa10ffb_541afd24",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 49
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcb067d4_6bac270f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-22T13:57:13Z",
+      "side": 1,
+      "message": "Could you follow the real consent system which is recently implemented?\ncrrev.com/c/1730246",
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d9933a6_3aa54f2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-22T13:57:13Z",
+      "side": 1,
+      "message": "nit: \":\u003d\"",
+      "range": {
+        "startLine": 157,
+        "startChar": 8,
+        "endLine": 157,
+        "endChar": 9
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bee051e_5c5ac108",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-22T13:57:13Z",
+      "side": 1,
+      "message": "nit: \":\u003d\"",
+      "range": {
+        "startLine": 161,
+        "startChar": 8,
+        "endLine": 161,
+        "endChar": 9
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7ba1912_9c7641af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-22T13:57:13Z",
+      "side": 1,
+      "message": "style: for simple concat, could you use + operator?\n\nfakeTestBasename+\".dmp\"",
+      "range": {
+        "startLine": 188,
+        "startChar": 37,
+        "endLine": 188,
+        "endChar": 76
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d92e04d5_35ec49d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-22T13:57:13Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 192,
+        "startChar": 37,
+        "endLine": 192,
+        "endChar": 78
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49174ad5_5adc92c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-22T13:57:13Z",
+      "side": 1,
+      "message": "style: \"--after-cursor\u003d\" + logsCursor",
+      "range": {
+        "startLine": 257,
+        "startChar": 2,
+        "endLine": 257,
+        "endChar": 46
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e140297_10c897a9",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
         "patchSetId": 9
@@ -272,6 +428,23 @@
         "endLine": 327,
         "endChar": 79
       },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "066db1c8_54b9e6bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-22T13:57:13Z",
+      "side": 1,
+      "message": "Could you copy-n-paste yamaguchi-san\u0027s implementation temporarily to move the code review forward with TODO to actually share the code?\n\nLet\u0027s decide when landing whether or not the actually code should share or allow temporal duplication.\n\ncf) https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1706229/21/src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go#65\n\n// replaceCrashFilterIn replaces --filter_in\u003d flag value of the crash reporter.\n// When param is an empty string, the flag will be removed.\n// The kernel is set up to call the crash reporter with the core dump as stdin\n// when a process dies. This function adds a filter to the command line used to\n// call the crash reporter. This is used to ignore crashes in which we have no\n// interest.\nfunc replaceCrashFilterIn(param string) error {\n\tb, err :\u003d ioutil.ReadFile(CorePattern)\n\tif err !\u003d nil {\n\t\treturn errors.Wrapf(err, \"failed reading core pattern file %s\", CorePattern)\n\t}\n\tpattern :\u003d string(b)\n\tif !strings.HasPrefix(pattern, \"|\") {\n\t\treturn errors.Wrapf(err, \"pattern should start with \u0027|\u0027, but was: %s\", pattern)\n\t}\n\te :\u003d strings.Split(strings.TrimSpace(pattern), \" \")\n\tvar newargs []string\n\treplaced :\u003d false\n\tfor _, s :\u003d range e {\n\t\tif !strings.HasPrefix(s, \"--filter_in\u003d\") {\n\t\t\tnewargs \u003d append(newargs, s)\n\t\t\tcontinue\n\t\t}\n\t\tif len(param) \u003d\u003d 0 {\n\t\t\t// remove from list\n\t\t\tcontinue\n\t\t}\n\t\tnewargs \u003d append(newargs, \"--filter_in\u003d\"+strconv.Quote(param))\n\t\treplaced \u003d true\n\t}\n\tif len(param) !\u003d 0 \u0026\u0026 !replaced {\n\t\tnewargs \u003d append(newargs, \"--filter_in\u003d\"+strconv.Quote(param))\n\t}\n\tpattern \u003d strings.Join(newargs, \" \")\n\n\tif err :\u003d ioutil.WriteFile(CorePattern, []byte(pattern), 0644); err !\u003d nil {\n\t\treturn errors.Wrapf(err, \"failed writing core pattern file %s\", CorePattern)\n\t}\n\treturn nil\n}",
       "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -472,6 +645,29 @@
         "startChar": 0,
         "endLine": 19,
         "endChar": 48
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69e84836_eb7318d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-22T13:57:13Z",
+      "side": 1,
+      "message": "Considering this is not fully needed, could you avoid using lsbrelease until it is actually needed?\nThe allowed callers of lsbrelease are hardcoded, and we do not want to call it until actually it is necessary.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 1
       },
       "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -736,6 +932,29 @@
         "startChar": 0,
         "endLine": 61,
         "endChar": 55
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22dd1b4f_fc56b376",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crashsender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-22T13:57:13Z",
+      "side": 1,
+      "message": "nit: \":\u003d\" ditto for below.",
+      "range": {
+        "startLine": 64,
+        "startChar": 8,
+        "endLine": 64,
+        "endChar": 9
       },
       "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
