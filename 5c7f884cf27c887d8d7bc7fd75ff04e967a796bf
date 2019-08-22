@@ -177,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "7d10cde4_e849a052",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-22T00:13:20Z",
+      "side": 1,
+      "message": "please also file a tracking bug and add a TODO since that seems like a useful thing to be able to do",
+      "parentUuid": "aaddb4a0_444f1898",
+      "revId": "5c7f884cf27c887d8d7bc7fd75ff04e967a796bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f538c3e_5737b845",
         "filename": "src/chromiumos/tast/local/crostini/display.go",
         "patchSetId": 6
