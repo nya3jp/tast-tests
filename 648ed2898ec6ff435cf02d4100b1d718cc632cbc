@@ -342,6 +342,29 @@
     },
     {
       "key": {
+        "uuid": "bc14be90_2e0d9655",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-22T18:34:01Z",
+      "side": 1,
+      "message": "Note that in https://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/1764547, I\u0027m changing this to have data in it. FYI",
+      "range": {
+        "startLine": 188,
+        "startChar": 78,
+        "endLine": 188,
+        "endChar": 80
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d92e04d5_35ec49d9",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
         "patchSetId": 9
@@ -381,6 +404,29 @@
         "startChar": 2,
         "endLine": 257,
         "endChar": 46
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "234b2c80_0e8ae4e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-22T18:34:01Z",
+      "side": 1,
+      "message": "Please use syslog.NewWatcher() instead of re-implementing log watching.\n\nIt currently watches /var/log/messages instead of journal, but that will work; the crash_sender writes to both. (And right now the journal is unusable anyways -- crbug.com/994822.) crbug.com/991416 covers extending it to watch the journal.",
+      "range": {
+        "startLine": 266,
+        "startChar": 5,
+        "endLine": 266,
+        "endChar": 15
       },
       "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
