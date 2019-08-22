@@ -28,7 +28,10 @@ func init() {
 
 func NetworkListenersNonARC(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
-	ls := netlisten.Common(cr)
+	ls, err := netlisten.Common(cr)
+	if err != nil {
+		s.Fatal("Failed to find common network listeners: ", err)
+	}
 	ls["*:22"] = "/usr/sbin/sshd"
 
 	if moblab.IsMoblab() {

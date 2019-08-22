@@ -27,7 +27,10 @@ func init() {
 }
 
 func NetworkListenersARC(ctx context.Context, s *testing.State) {
-	ls := netlisten.Common(s.PreValue().(arc.PreData).Chrome)
+	ls, err := netlisten.Common(s.PreValue().(arc.PreData).Chrome)
+	if err != nil {
+		s.Fatal("Failed to find common network listeners: ", err)
+	}
 	ls["127.0.0.1:5037"] = "/usr/bin/adb"
 	// arc-networkd runs an ADB proxy server on port 5550.
 	ls["127.0.0.1:5550"] = "/usr/bin/arc-networkd"
