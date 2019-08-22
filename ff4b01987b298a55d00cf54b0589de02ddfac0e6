@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8425161a_26db02d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-22T05:20:03Z",
+      "side": 1,
+      "message": "style: Could you keep \"return nil\" ?",
+      "revId": "ff4b01987b298a55d00cf54b0589de02ddfac0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fde8c33a_a5d67d8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-22T05:20:03Z",
+      "side": 1,
+      "message": "For utilities, could you return error, instead of taking *testing.T via argument?",
+      "range": {
+        "startLine": 71,
+        "startChar": 3,
+        "endLine": 71,
+        "endChar": 47
+      },
+      "revId": "ff4b01987b298a55d00cf54b0589de02ddfac0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51419204_fb18503a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-22T05:20:03Z",
+      "side": 1,
+      "message": "Ditto",
+      "revId": "ff4b01987b298a55d00cf54b0589de02ddfac0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
