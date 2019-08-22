@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "382149f6_61e3684e",
+        "filename": "src/chromiumos/tast/common/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-22T14:07:25Z",
+      "side": 1,
+      "message": "Could you move this to src/chromiumos/tast/local/crash/... package?\nThe code does not look to work on remote test.",
+      "revId": "325880d4664928c25b2873e1aab88b88e81a9545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c0840eb_47b36271",
+        "filename": "src/chromiumos/tast/common/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-22T14:07:25Z",
+      "side": 1,
+      "message": "Could you handle error?",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 10
+      },
+      "revId": "325880d4664928c25b2873e1aab88b88e81a9545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc2f9593_faacc4f0",
+        "filename": "src/chromiumos/tast/common/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-22T14:07:25Z",
+      "side": 1,
+      "message": "style: you can combine the condition.\nerr !\u003d nil \u0026\u0026 !os.IsNotExist(err)",
+      "range": {
+        "startLine": 63,
+        "startChar": 32,
+        "endLine": 63,
+        "endChar": 12
+      },
+      "revId": "325880d4664928c25b2873e1aab88b88e81a9545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78177440_e8d728eb",
+        "filename": "src/chromiumos/tast/common/crash/crash_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-22T14:07:25Z",
+      "side": 1,
+      "message": "Could you use the temporary directory by ioutil.TempDir() ?\n\ncf) https://golang.org/pkg/io/ioutil/#TempDir",
+      "revId": "325880d4664928c25b2873e1aab88b88e81a9545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "535c50b0_268fe1ee",
+        "filename": "src/chromiumos/tast/common/crash/crash_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-22T14:07:25Z",
+      "side": 1,
+      "message": "style: Could you merge these lines?\n\nif _, err :\u003d os.Stat(file); err \u003d\u003d nil {\n  ...\n} else if !os.IsNotExist(err) {\n  ...\n}",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 24
+      },
+      "revId": "325880d4664928c25b2873e1aab88b88e81a9545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
