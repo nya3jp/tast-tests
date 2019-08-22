@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f6930d2_873bf423",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-22T03:53:44Z",
+      "side": 1,
+      "message": "Off-topic: Since it\u0027s a bit cumbersome to declare data files in every test calling SetConsent, we might want to consider embedding this file in a Go file if the size is small.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 31
+      },
+      "revId": "cfd4ec1bf5e5b34ddbfc38486e2aa596f332969f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bded3bbb_88999cb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-22T03:53:44Z",
+      "side": 1,
+      "message": "platformCrash (just like crrev.com/c/1762956)",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "cfd4ec1bf5e5b34ddbfc38486e2aa596f332969f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f84c0aed_2c988fb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-22T03:53:44Z",
+      "side": 1,
+      "message": "Please add an individual contact (just like crrev.com/c/1762956)",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 26
+      },
+      "revId": "cfd4ec1bf5e5b34ddbfc38486e2aa596f332969f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1aa4d25_dc83bdc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-22T03:53:44Z",
+      "side": 1,
+      "message": "Please consider waiting for some signal (just like crrev.com/c/1762956)",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 15
+      },
+      "revId": "cfd4ec1bf5e5b34ddbfc38486e2aa596f332969f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "240c46ed_b1b7cfaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-22T03:53:44Z",
+      "side": 1,
+      "message": "style: missing",
+      "range": {
+        "startLine": 96,
+        "startChar": 26,
+        "endLine": 96,
+        "endChar": 33
+      },
+      "revId": "cfd4ec1bf5e5b34ddbfc38486e2aa596f332969f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32df2eba_725f3fa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-22T03:53:44Z",
+      "side": 1,
+      "message": "and continue?",
+      "range": {
+        "startLine": 103,
+        "startChar": 43,
+        "endLine": 103,
+        "endChar": 49
+      },
+      "revId": "cfd4ec1bf5e5b34ddbfc38486e2aa596f332969f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55a469ee_ad454ba2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-22T03:53:44Z",
+      "side": 1,
+      "message": "nit: Plase use %v for formatting error. Same comment goes to other places.",
+      "range": {
+        "startLine": 103,
+        "startChar": 41,
+        "endLine": 103,
+        "endChar": 42
+      },
+      "revId": "cfd4ec1bf5e5b34ddbfc38486e2aa596f332969f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb6d234c_cd370424",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-22T03:53:44Z",
+      "side": 1,
+      "message": "We have to include `env` (or its equivalent) in the error message so we can tell which case failed.",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 30
+      },
+      "revId": "cfd4ec1bf5e5b34ddbfc38486e2aa596f332969f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
