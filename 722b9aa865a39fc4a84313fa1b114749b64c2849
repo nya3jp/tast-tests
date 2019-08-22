@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "ebe8afbd_eb524eb3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-08-22T12:43:48Z",
+      "side": 1,
+      "message": "Then, it\u0027d makes sense to disable the VP9 test in this test with a comment.\nAlso, please add \"BUG\u003db:139846661\" in this commit message.",
+      "parentUuid": "655a103a_fc78b056",
+      "range": {
+        "startLine": 10,
+        "startChar": 52,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "722b9aa865a39fc4a84313fa1b114749b64c2849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "378284e9_ecfd1a9d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_vp8_odd_i420.go",
         "patchSetId": 3
