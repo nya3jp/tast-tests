@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fa9eabc_f375fc72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-22T05:10:58Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 285,
+        "startChar": 2,
+        "endLine": 286,
+        "endChar": 55
+      },
+      "revId": "27cc1ec5a89d672b7675e365ad01a9282ea4e90e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "357d74c1_d2011d47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-22T05:10:58Z",
+      "side": 1,
+      "message": "Could you close the file after command starts to run, or in case of failure before starting? Ditto for below.",
+      "range": {
+        "startLine": 288,
+        "startChar": 20,
+        "endLine": 288,
+        "endChar": 77
+      },
+      "revId": "27cc1ec5a89d672b7675e365ad01a9282ea4e90e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6670810_4bea5a81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-22T05:10:58Z",
+      "side": 1,
+      "message": "If Killed, cmd.Wait() will return error, IIUC.",
+      "revId": "27cc1ec5a89d672b7675e365ad01a9282ea4e90e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f43f8b88_1116bdd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-22T05:10:58Z",
+      "side": 1,
+      "message": "nit: \"Set up\" to make it verb.  (sorry I overlooked in the prev iteration).",
+      "range": {
+        "startLine": 322,
+        "startChar": 5,
+        "endLine": 322,
+        "endChar": 10
+      },
+      "revId": "27cc1ec5a89d672b7675e365ad01a9282ea4e90e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12c166dd_f6046775",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-22T05:10:58Z",
+      "side": 1,
+      "message": "style: You can inline to make cmd scope minimize. (sorry i overlooked this).\n\nif err :\u003d seccomp.CommandContext(...).Run(); err !\u003d nil {\n  ...\n}\n\nYou may want to set testexec.DumpLogOnError to Run() for better logging message.",
+      "range": {
+        "startLine": 345,
+        "startChar": 2,
+        "endLine": 346,
+        "endChar": 21
+      },
+      "revId": "27cc1ec5a89d672b7675e365ad01a9282ea4e90e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
