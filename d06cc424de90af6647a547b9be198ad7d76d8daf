@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81595e58_cb93c38f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/restart/restart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-22T04:05:44Z",
+      "side": 1,
+      "message": "nit: ensuring",
+      "range": {
+        "startLine": 17,
+        "startChar": 47,
+        "endLine": 17,
+        "endChar": 56
+      },
+      "revId": "d06cc424de90af6647a547b9be198ad7d76d8daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84cb72dc_a5f521ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/restart/restart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-08-22T04:05:44Z",
+      "side": 1,
+      "message": "Rename this getStartTime, I would expect uptime to be the duration since the container started, not the absolute time it started.",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 14
+      },
+      "revId": "d06cc424de90af6647a547b9be198ad7d76d8daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
