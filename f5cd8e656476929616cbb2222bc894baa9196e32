@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "87b200b5_1e99a7c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_preview_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-23T17:37:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "921a8006_7fd79ea6",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 28
+      },
+      "revId": "f5cd8e656476929616cbb2222bc894baa9196e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "907e0ae6_a6925623",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_preview_image.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b997563a_51ce2521",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_preview_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-23T17:37:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "907e0ae6_a6925623",
+      "range": {
+        "startLine": 69,
+        "startChar": 37,
+        "endLine": 69,
+        "endChar": 46
+      },
+      "revId": "f5cd8e656476929616cbb2222bc894baa9196e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02bbc036_7d021208",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_preview_image.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "f5cd8e656476929616cbb2222bc894baa9196e32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c137bc77_635ef231",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_preview_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-23T17:37:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02bbc036_7d021208",
+      "range": {
+        "startLine": 87,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 12
+      },
+      "revId": "f5cd8e656476929616cbb2222bc894baa9196e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
