@@ -33,13 +33,9 @@ func init() {
 // TODO(crbug.com/986074): we should move the WebPs to a separate tast test.
 // For now we make the WebP tests run with the jpeg_decode_accelerator_unittest binary.
 // Also rename imageFiles back to jpegTestFiles once the tests are separated.
-// TODO(crbug.com/987362): remove the peach_pi-4* files.
 var imageFiles = []string{
 	"BlackAndWhite_criss-cross_pattern_2015x2015.webp",
 	"peach_pi-1280x720.jpg",
-	"peach_pi-40x23.jpg",
-	"peach_pi-41x22.jpg",
-	"peach_pi-41x23.jpg",
 	"pixel-1280x720.jpg",
 	"pixel-1280x720-grayscale.jpg",
 	"pixel-1280x720-yuv420.jpg",
