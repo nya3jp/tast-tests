@@ -590,6 +590,30 @@
     },
     {
       "key": {
+        "uuid": "93bc9f35_878c9248",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-08-23T09:52:29Z",
+      "side": 1,
+      "message": "Shorten the timeout to 45 minutes.",
+      "parentUuid": "ca168cdb_c97c1949",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 36,
+        "endChar": 14
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61496430_dd195a14",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
         "patchSetId": 1
