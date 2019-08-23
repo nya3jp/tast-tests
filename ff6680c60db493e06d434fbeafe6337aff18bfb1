@@ -566,6 +566,30 @@
     },
     {
       "key": {
+        "uuid": "ca168cdb_c97c1949",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-23T04:41:30Z",
+      "side": 1,
+      "message": "+1, 90 mins sounds too long.",
+      "parentUuid": "c359cab1_c64a9a96",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 36,
+        "endChar": 14
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "61496430_dd195a14",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
         "patchSetId": 1
@@ -1315,6 +1339,29 @@
       "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2cef3506_e8ddda2c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1000,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-23T04:41:30Z",
+      "side": 1,
+      "message": "Please return (bool, error) to allow the caller to distinguish not-exist and protocol errors.",
+      "range": {
+        "startLine": 1000,
+        "startChar": 74,
+        "endLine": 1000,
+        "endChar": 78
+      },
+      "revId": "ff6680c60db493e06d434fbeafe6337aff18bfb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
