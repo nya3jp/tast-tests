@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "921a8006_7fd79ea6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_preview_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-23T17:09:14Z",
+      "side": 1,
+      "message": "This UI is called QuickView within the Files app team. We should probably keep that naming in Tast tests too",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 28
+      },
+      "revId": "f5cd8e656476929616cbb2222bc894baa9196e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "907e0ae6_a6925623",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_preview_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-23T17:09:14Z",
+      "side": 1,
+      "message": "what menu?",
+      "range": {
+        "startLine": 69,
+        "startChar": 37,
+        "endLine": 69,
+        "endChar": 46
+      },
+      "revId": "f5cd8e656476929616cbb2222bc894baa9196e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02bbc036_7d021208",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_preview_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-23T17:09:14Z",
+      "side": 1,
+      "message": "Mention that you are opening \"QuickView\" here",
+      "range": {
+        "startLine": 87,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 12
+      },
+      "revId": "f5cd8e656476929616cbb2222bc894baa9196e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
