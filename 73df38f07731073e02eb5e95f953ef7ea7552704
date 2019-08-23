@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "871858b4_2f5e09c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-08-23T07:29:37Z",
+      "side": 1,
+      "message": "JavaScript represents numbers using IEEE-754 double-precision (64 bit) format, and JavaScript doesn\u0027t have standard support for 64-bit integer. Float64Array is used because I have more confidence that each element of Float64Array would occupy 64 bits space in the v8 implementation. Each element of Uint32Array might occupy 64 bits on 64-bit architecture and is harder to predict it\u0027s memory consumption.",
+      "parentUuid": "97af1433_3c01c415",
+      "range": {
+        "startLine": 13,
+        "startChar": 26,
+        "endLine": 13,
+        "endChar": 32
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36e6aaf9_d06ceda6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.js",
         "patchSetId": 3
@@ -82,6 +106,30 @@
       "writtenOn": "2019-08-22T22:08:22Z",
       "side": 1,
       "message": "Why a Float64Array rather than a Uint8Array you\u0027re just populating with 1 I think Uint8Array will result in a more compressible layout in memory.",
+      "range": {
+        "startLine": 17,
+        "startChar": 25,
+        "endLine": 17,
+        "endChar": 37
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54e6a280_643c2691",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-08-23T07:29:37Z",
+      "side": 1,
+      "message": "As the previous comment, it\u0027s easier to predict the memory consumption of a Float64Array object. I added some comment to explain the usage of Float64Array.",
+      "parentUuid": "36e6aaf9_d06ceda6",
       "range": {
         "startLine": 17,
         "startChar": 25,
@@ -180,6 +228,24 @@
     },
     {
       "key": {
+        "uuid": "93e7b15a_dbd50d94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-08-23T07:29:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40a6de66_1aa96eff",
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ea36b88_5fcdfefe",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
         "patchSetId": 3
@@ -214,6 +280,30 @@
       "writtenOn": "2019-08-22T22:08:22Z",
       "side": 1,
       "message": "This is optional and up to you but do you think it\u0027s easier to read with Sprintf?\n\nreturn fmt.Sprintf(\"%s?alloc\u003d%d\u0026ratio\u003d%f\u0026id\u003d%d\", baseURL, strconv.FormatInt(sizeMb, 10), strconv.FormatFloat(randomRatio, \u0027f\u0027, 3, 64), strconv.FormatInt(id, 10));",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 42
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e81fb9e_6f6d317e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-08-23T07:29:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa3c36b3_41f1f914",
       "range": {
         "startLine": 93,
         "startChar": 1,
