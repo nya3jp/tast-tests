@@ -36,6 +36,42 @@
     },
     {
       "key": {
+        "uuid": "55f4f85e_d858b2ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-08-23T21:05:29Z",
+      "side": 1,
+      "message": "This verifies that environment for several tests (perf tests, CTS test, AppCompat tests) is good. Good means it is stable in terms of sudden restarts of various components. In most cases this happens when GMS Core/Play Store gets restarted.\nIn order to achieve this we pass in such tests combination of flags \n\"--arc-disable-app-sync\", \"--arc-disable-play-auto-install\", \"--arc-disable-locale-sync\", \"--arc-play-store-auto-update\u003doff\"\nSo this test assures that passing these flag provides the stable environment where Play Store does not restart.",
+      "parentUuid": "ab41bdb3_f10b4c7e",
+      "revId": "5b7c107e7ba790cb2236c18586ea6df669a636da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2332e78_5f275a5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-08-23T21:05:29Z",
+      "side": 1,
+      "message": "That better describes the test. Thanks.",
+      "parentUuid": "b528c7bd_d0ab3b5c",
+      "revId": "5b7c107e7ba790cb2236c18586ea6df669a636da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fffa317c_c1b87d2c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
         "patchSetId": 1
@@ -47,6 +83,30 @@
       "writtenOn": "2019-08-08T09:13:16Z",
       "side": 1,
       "message": "Clar: what ARC is the target? N, P, Q, master and VM?",
+      "range": {
+        "startLine": 25,
+        "startChar": 25,
+        "endLine": 25,
+        "endChar": 43
+      },
+      "revId": "5b7c107e7ba790cb2236c18586ea6df669a636da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef672d3f_ff778ab2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-08-23T21:05:29Z",
+      "side": 1,
+      "message": "This should be targeted for all",
+      "parentUuid": "fffa317c_c1b87d2c",
       "range": {
         "startLine": 25,
         "startChar": 25,
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "ca003b3a_2d982a47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-08-23T21:05:29Z",
+      "side": 1,
+      "message": "I was not aware about getNewestPID in context of lm_killer. I took a look into impl. And IIUC this would work only for ARC++ container, not for ARCVM (in ARCVM this would see only crosvm process id). That is why at this moment I would prefer not to refactor and extract that function to utility.",
+      "parentUuid": "0f6384c7_cf385f11",
+      "revId": "5b7c107e7ba790cb2236c18586ea6df669a636da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d709da66_f1fdb0e8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
         "patchSetId": 1
@@ -87,6 +165,24 @@
       "writtenOn": "2019-08-08T09:13:16Z",
       "side": 1,
       "message": "Could you avoid just waiting a fixed duration?\nWhat condition should this wait for?",
+      "revId": "5b7c107e7ba790cb2236c18586ea6df669a636da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b94e9da_7305ed5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-08-23T21:05:29Z",
+      "side": 1,
+      "message": "I understand your concern. However this looks not possible. \nPlay Store self-update is black box internal process. It happens asynchronously and without notifying us. In very ideal case waiting should be infinite. However this is not possible so I set limit here as 3 min. If self-update happens, it usually happens withing this range that causes Play Store app restart.",
+      "parentUuid": "d709da66_f1fdb0e8",
       "revId": "5b7c107e7ba790cb2236c18586ea6df669a636da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
