@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b71cd2ad_61cb4952",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-23T20:45:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "073bef8a_3f1df715",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "2758fb18138553dc71a2c157443daf2725b8ff53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a0c23ba_4211076e",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_image_quick_view.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "2758fb18138553dc71a2c157443daf2725b8ff53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c9256f3_55709935",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_image_quick_view.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-23T20:45:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a0c23ba_4211076e",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 7
+      },
+      "revId": "2758fb18138553dc71a2c157443daf2725b8ff53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ead98537_76d49114",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_image_quick_view.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-23T20:45:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b318833_87476696",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 9
+      },
+      "revId": "2758fb18138553dc71a2c157443daf2725b8ff53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2accd26e_7fc86a28",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_image_quick_view.go",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "203a8dab_187ace92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_image_quick_view.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-23T20:45:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2accd26e_7fc86a28",
+      "range": {
+        "startLine": 70,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 9
+      },
+      "revId": "2758fb18138553dc71a2c157443daf2725b8ff53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1eab3c3_715d1bf5",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_image_quick_view.go",
         "patchSetId": 2
@@ -114,6 +210,30 @@
       "revId": "2758fb18138553dc71a2c157443daf2725b8ff53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f0cfaf2_99604605",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/files_app_image_quick_view.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-23T20:45:52Z",
+      "side": 1,
+      "message": "Space is a shortcut to open the QuickView. I don\u0027t want to click on it.",
+      "parentUuid": "f1eab3c3_715d1bf5",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "2758fb18138553dc71a2c157443daf2725b8ff53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
