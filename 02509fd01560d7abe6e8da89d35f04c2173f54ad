@@ -16,6 +16,24 @@
       "revId": "02509fd01560d7abe6e8da89d35f04c2173f54ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dbe78cc_5db60cef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-23T04:46:29Z",
+      "side": 1,
+      "message": "Hmm, this is unfortunate, but let\u0027s see lab results and tune it later.",
+      "parentUuid": "bf189051_bf71604a",
+      "revId": "02509fd01560d7abe6e8da89d35f04c2173f54ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
