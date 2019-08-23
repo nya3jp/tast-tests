@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "31bf4e39_05057f44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-08-23T09:49:48Z",
+      "side": 1,
+      "message": "Removed as utf-8 is the HTML5 default value.",
+      "parentUuid": "fd177aef_e7ea1d4d",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 22
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bbb4a28_ca59ea92",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.html",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8043ca50_acea6743",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-08-23T09:49:48Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "7bbb4a28_ca59ea92",
+      "range": {
+        "startLine": 6,
+        "startChar": 20,
+        "endLine": 6,
+        "endChar": 33
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -165,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "48a971b3_138b084a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-08-23T09:49:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c39ab8d_872c8224",
+      "range": {
+        "startLine": 34,
+        "startChar": 67,
+        "endLine": 34,
+        "endChar": 69
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "478b74f5_1261f817",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.js",
         "patchSetId": 3
@@ -176,6 +248,30 @@
       "writtenOn": "2019-08-23T04:41:30Z",
       "side": 1,
       "message": "Hmm, I\u0027m not aware of a spec that guarantees setTimeout callback is called after document DOM is ready. Would you mind pointing me to some resource?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 17
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e54e6ff_66076e8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-08-23T09:49:48Z",
+      "side": 1,
+      "message": "The following page said that setTimeout function would be called after page rendering.\nhttps://eager.io/blog/how-to-decide-when-your-code-should-run/\nBut html spec doesn\u0027t quarentee that\nhttps://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#timers\nCalling setTimeout after receiving DOMContentLoaded. setTimeout is still required to execute the javascript allocations after the first frame is rendered, such that user could see the text \"Allocating memory...\" instead of blank page when it\u0027s allocating.",
+      "parentUuid": "478b74f5_1261f817",
       "range": {
         "startLine": 38,
         "startChar": 0,
@@ -208,6 +304,30 @@
       "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceefec89_e35af266",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-08-23T09:49:48Z",
+      "side": 1,
+      "message": "Shorten the timeout to 45 minutes.",
+      "parentUuid": "4cc8dad9_20f5349e",
+      "range": {
+        "startLine": 35,
+        "startChar": 12,
+        "endLine": 35,
+        "endChar": 29
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -266,6 +386,30 @@
       "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48c0e818_5ac9cc0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-08-23T09:49:48Z",
+      "side": 1,
+      "message": "Added \"android\" to SoftwareDeps. Added some comment to explain enabling ARC. The memory pressure is higher when ARC is enabled.",
+      "parentUuid": "6ea36b88_5fcdfefe",
+      "range": {
+        "startLine": 56,
+        "startChar": 35,
+        "endLine": 56,
+        "endChar": 45
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -339,6 +483,30 @@
     },
     {
       "key": {
+        "uuid": "7f0e09ae_2866dd0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-08-23T09:49:48Z",
+      "side": 1,
+      "message": "Added comments.",
+      "parentUuid": "75817e73_d2ee19da",
+      "range": {
+        "startLine": 107,
+        "startChar": 11,
+        "endLine": 107,
+        "endChar": 57
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03cbab1c_d54f9af6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
         "patchSetId": 3
@@ -359,6 +527,30 @@
       "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8030c860_08c35559",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-08-23T09:49:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03cbab1c_d54f9af6",
+      "range": {
+        "startLine": 146,
+        "startChar": 18,
+        "endLine": 146,
+        "endChar": 34
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -385,6 +577,30 @@
     },
     {
       "key": {
+        "uuid": "3cccdab2_fc342367",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-08-23T09:49:48Z",
+      "side": 1,
+      "message": "Updated the code and comments. It should be 2.5x.",
+      "parentUuid": "639f7c24_79b14386",
+      "range": {
+        "startLine": 152,
+        "startChar": 11,
+        "endLine": 152,
+        "endChar": 36
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abd90e9c_e4fae696",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
         "patchSetId": 3
@@ -405,6 +621,30 @@
       "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "612bf0dc_99a16823",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-08-23T09:49:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abd90e9c_e4fae696",
+      "range": {
+        "startLine": 156,
+        "startChar": 35,
+        "endLine": 156,
+        "endChar": 51
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -431,6 +671,30 @@
     },
     {
       "key": {
+        "uuid": "91fd9a99_83dac527",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-08-23T09:49:48Z",
+      "side": 1,
+      "message": "Calling cr.NewConn() would log the page url and the url includes the index of the tab, I think it\u0027s not necessary to add this log.\nexample log:\nCreating new page with URL http://127.0.0.1:33174/memory_stress.html?alloc\u003d800\u0026ratio\u003d0.670\u0026id\u003d2",
+      "parentUuid": "cbed8b27_849813c9",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 38
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a74a41c_bc69ba13",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
         "patchSetId": 3
@@ -451,6 +715,30 @@
       "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5bcb761_ae904f30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-08-23T09:49:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a74a41c_bc69ba13",
+      "range": {
+        "startLine": 158,
+        "startChar": 56,
+        "endLine": 158,
+        "endChar": 61
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -477,6 +765,30 @@
     },
     {
       "key": {
+        "uuid": "9ce19d07_1f51b79a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-08-23T09:49:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18a8a4fa_91280f96",
+      "range": {
+        "startLine": 165,
+        "startChar": 28,
+        "endLine": 165,
+        "endChar": 33
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47cdd5a3_95eedea9",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
         "patchSetId": 3
@@ -497,6 +809,30 @@
       "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e90fdf0_f46488cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-08-23T09:49:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47cdd5a3_95eedea9",
+      "range": {
+        "startLine": 233,
+        "startChar": 1,
+        "endLine": 233,
+        "endChar": 19
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -523,6 +859,30 @@
     },
     {
       "key": {
+        "uuid": "4cbd7762_0878bbb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-08-23T09:49:48Z",
+      "side": 1,
+      "message": "This is a stress test. The result tast_reload_tab_count should be 0. For non-zero result, I will check if something\u0027s wrong. It introduces some randomness as the switch wait time that can break the system might be different for each board.",
+      "parentUuid": "bf25a6d1_8afa3405",
+      "range": {
+        "startLine": 243,
+        "startChar": 16,
+        "endLine": 243,
+        "endChar": 31
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0cc712d_044c4087",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
         "patchSetId": 3
@@ -546,6 +906,30 @@
     },
     {
       "key": {
+        "uuid": "9f41ab02_cacfc3e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-08-23T09:49:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0cc712d_044c4087",
+      "range": {
+        "startLine": 250,
+        "startChar": 31,
+        "endLine": 250,
+        "endChar": 36
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f45f2c2d_4cb8f7d0",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 3
@@ -566,6 +950,30 @@
       "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cea55d0_3130b64d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-08-23T09:49:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f45f2c2d_4cb8f7d0",
+      "range": {
+        "startLine": 1005,
+        "startChar": 2,
+        "endLine": 1005,
+        "endChar": 57
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
