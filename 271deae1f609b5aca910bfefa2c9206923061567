@@ -16,6 +16,24 @@
       "revId": "271deae1f609b5aca910bfefa2c9206923061567",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd501888_12a305aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/gpu_enabled_download.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-23T01:46:12Z",
+      "side": 1,
+      "message": "these are not equivalent to use flags, they specify capabilities that a DUT must have in order to run this test, possibly they relate to use flags indirectly but thats build engineering black magic",
+      "parentUuid": "7d89b0a4_03da81a9",
+      "revId": "271deae1f609b5aca910bfefa2c9206923061567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "5a16e84e_84faf9b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/gpu_enabled_artifact.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-23T01:46:12Z",
+      "side": 1,
+      "message": "Ack\n\nEssentially this is a non-issue in tast because the \"on by default\" behaviour is not reflected in the way we bring up the VM in tast.\n\nSo on my eve (which has gpu by default) the tast tests have the GPU disabled (expect for with the GPU precondition).\n\nIMO this behaviour is acceptable given the current state of tast testing for VMs. We already have it on our radar (e.g. crbug.com/994040) to bring up vms/container in tast more like we do for a real user, but the GPU mismatch is not the first or only difference there.",
+      "parentUuid": "ea0eb29a_cd49a0ed",
+      "range": {
+        "startLine": 31,
+        "startChar": 72,
+        "endLine": 31,
+        "endChar": 80
+      },
+      "revId": "b11bf12bc5cd4ef6f944b7d223539aa4fa3f785a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "693b3c09_09854a0d",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/gpu_enabled_gpu.go",
         "patchSetId": 1
