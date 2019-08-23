@@ -223,7 +223,7 @@ func testCPUSet(ctx context.Context, s *testing.State) {
 	}
 
 	for _, t := range types {
-		path := fmt.Sprintf("/dev/cpuset/%s/cpus", t)
+		path := fmt.Sprintf("/dev/cpuset/%s/effective_cpus", t)
 		out, err := arc.BootstrapCommand(ctx, "/system/bin/cat", path).Output(testexec.DumpLogOnError)
 		if err != nil {
 			s.Errorf("Failed to read %s: %v", path, err)
