@@ -134,6 +134,29 @@
     },
     {
       "key": {
+        "uuid": "0018f787_82ffb641",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1334957
+      },
+      "writtenOn": "2019-08-23T16:07:52Z",
+      "side": 1,
+      "message": "Please pull out this magic constant and make it a const rather than a hard coded 5/2 below.",
+      "range": {
+        "startLine": 156,
+        "startChar": 52,
+        "endLine": 156,
+        "endChar": 56
+      },
+      "revId": "a0476bc64a312c287e5bd8ff0536ea66c0958496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6215de13_58214271",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
         "patchSetId": 7
