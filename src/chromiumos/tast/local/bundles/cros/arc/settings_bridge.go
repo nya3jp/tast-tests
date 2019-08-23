@@ -66,62 +66,6 @@ func testSpokenFeedbackSync(ctx context.Context, tconn *chrome.Conn, a *arc.ARC)
 	}, &testing.PollOptions{Timeout: 30 * time.Second})
 }
 
-// waitFontScale checks whether current font scale is set to expected value (fontScale).
-func waitFontScale(ctx context.Context, a *arc.ARC, fontScale string) error {
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		currentScale, err := getFontScale(ctx, a)
-		if err != nil {
-			return err
-		}
-		if currentScale != fontScale {
-			return errors.Errorf("current scale is: %s", currentScale)
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second})
-}
-
-// getFontScale obtains current font scale from Android.
-func getFontScale(ctx context.Context, a *arc.ARC) (string, error) {
-	res, err := a.Command(ctx, "settings", "--user", "0", "get", "system", "font_scale").Output(testexec.DumpLogOnError)
-	if err != nil {
-		return "", err
-	}
-	return strings.TrimSpace(string(res)), nil
-}
-
-// setChromeFontScale sets the font scale on Chrome.
-func setChromeFontScale(ctx context.Context, conn *chrome.Conn, size string) error {
-	script := fmt.Sprintf(`
-		chrome.fontSettings.setDefaultFontSize({pixelSize: %s}, () => {});
-		chrome.fontSettings.setDefaultFixedFontSize({pixelSize: %s}, () => {});`, size, size)
-	return conn.Exec(ctx, script)
-}
-
-// testFontSizeSync runs the test to ensure that font size settings
-// are synchronized between Chrome and Android.
-func testFontSizeSync(ctx context.Context, tconn *chrome.Conn, a *arc.ARC) error {
-	// const values specifying font values for testing.
-	const (
-		superSmallChromeFontSize = "4"
-		superLargeChromeFontSize = "100"
-		smallestAndroidFontScale = "0.85"
-		largestAndroidFontScale  = "1.3"
-	)
-	if err := setChromeFontScale(ctx, tconn, superSmallChromeFontSize); err != nil {
-		return err
-	}
-	if err := waitFontScale(ctx, a, smallestAndroidFontScale); err != nil {
-		return err
-	}
-	if err := setChromeFontScale(ctx, tconn, superLargeChromeFontSize); err != nil {
-		return err
-	}
-	if err := waitFontScale(ctx, a, largestAndroidFontScale); err != nil {
-		return err
-	}
-	return nil
-}
-
 // proxyMode represents values for mode property, which determines
 // behaviour of Chrome's proxy usage.
 type proxyMode string
@@ -334,11 +278,6 @@ func SettingsBridge(ctx context.Context, s *testing.State) {
 	// Run spoken feedback test.
 	if err := testSpokenFeedbackSync(ctx, tconn, a); err != nil {
 		s.Error("Failed to ensure spoken feedback sync: ", err)
-	}
-
-	// Run font size test.
-	if err := testFontSizeSync(ctx, tconn, a); err != nil {
-		s.Error("Failed to sync font size: ", err)
 	}
 
 	// Run proxy settings test.
