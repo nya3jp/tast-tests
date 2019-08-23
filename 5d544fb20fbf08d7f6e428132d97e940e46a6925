@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9617f4c2_458701a7",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-23T17:58:52Z",
+      "side": 1,
+      "message": "If they failed to close above why will just waiting longer work?",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 33
+      },
+      "revId": "5d544fb20fbf08d7f6e428132d97e940e46a6925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
