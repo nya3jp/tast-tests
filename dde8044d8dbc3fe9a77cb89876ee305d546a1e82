@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d89b106_b33d81f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-08-23T08:48:15Z",
+      "side": 1,
+      "message": "Sorry for simple mistake, seems I had uploaded older revision when I uploaded another branch after this.",
+      "parentUuid": "ff977dbd_75209c1b",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 1
+      },
+      "revId": "dde8044d8dbc3fe9a77cb89876ee305d546a1e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fe07dc4_a61b7aa5",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 22
@@ -36,6 +60,30 @@
       "writtenOn": "2019-08-23T04:49:08Z",
       "side": 1,
       "message": "unused. Could you remove?",
+      "range": {
+        "startLine": 193,
+        "startChar": 38,
+        "endLine": 193,
+        "endChar": 57
+      },
+      "revId": "dde8044d8dbc3fe9a77cb89876ee305d546a1e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecd857f2_522de0c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-08-23T08:48:15Z",
+      "side": 1,
+      "message": "It\u0027s passed to individual test functions for reporting errors from there.\n\u003e\ttestFunc(ctx, s)\nShould we make the test functions passed to here partially appleid functions(closures)?",
+      "parentUuid": "4fe07dc4_a61b7aa5",
       "range": {
         "startLine": 193,
         "startChar": 38,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "89bc0350_3d65c2b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-08-23T08:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cc33b75_0ae53ff1",
+      "revId": "dde8044d8dbc3fe9a77cb89876ee305d546a1e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33053ef6_aa49b677",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 22
@@ -79,6 +145,24 @@
       "revId": "dde8044d8dbc3fe9a77cb89876ee305d546a1e82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "174609ae_ed99e4bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-08-23T08:48:15Z",
+      "side": 1,
+      "message": "Done. It\u0027s been done both after finishing running all test functions and before running each test function.",
+      "parentUuid": "33053ef6_aa49b677",
+      "revId": "dde8044d8dbc3fe9a77cb89876ee305d546a1e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "7b270766_3f415f4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-08-23T08:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c60dea51_41c5d584",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "dde8044d8dbc3fe9a77cb89876ee305d546a1e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7292726_3533b390",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
         "patchSetId": 22
@@ -125,6 +233,30 @@
       "revId": "dde8044d8dbc3fe9a77cb89876ee305d546a1e82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17b520c1_b3f4539c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-08-23T08:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7292726_3533b390",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 14
+      },
+      "revId": "dde8044d8dbc3fe9a77cb89876ee305d546a1e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "4d904ba0_c206ace6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-08-23T08:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "597a31fb_4ef0ad81",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 9
+      },
+      "revId": "dde8044d8dbc3fe9a77cb89876ee305d546a1e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4347fce5_a8131d51",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
         "patchSetId": 22
@@ -171,6 +327,30 @@
       "revId": "dde8044d8dbc3fe9a77cb89876ee305d546a1e82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52bc8365_257016dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-08-23T08:48:15Z",
+      "side": 1,
+      "message": "Done.\nAs a side effect, IIUC it clears consent.\n\nExisting test push/poping consent files, meaning to void consent during the tests, but this change doesn\u0027t do it yet.\nSo I think the first part of the test (running without re-initialiing) should be done after implementing it.",
+      "parentUuid": "4347fce5_a8131d51",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 15
+      },
+      "revId": "dde8044d8dbc3fe9a77cb89876ee305d546a1e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
