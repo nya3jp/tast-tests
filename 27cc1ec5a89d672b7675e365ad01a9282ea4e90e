@@ -222,6 +222,30 @@
       "revId": "27cc1ec5a89d672b7675e365ad01a9282ea4e90e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90dae0c8_fa4b3532",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-23T04:59:09Z",
+      "side": 1,
+      "message": "Oh, I see. Sorry I overlooked.\nNote: Since you specified DumpLogOnError, it will include the cmd.Args in the printed log.",
+      "parentUuid": "00f2195f_b87c0929",
+      "range": {
+        "startLine": 345,
+        "startChar": 2,
+        "endLine": 346,
+        "endChar": 21
+      },
+      "revId": "27cc1ec5a89d672b7675e365ad01a9282ea4e90e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

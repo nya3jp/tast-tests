@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea2ce767_4c288106",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-23T04:59:09Z",
+      "side": 1,
+      "message": "nit/style: could you drop this part?",
+      "range": {
+        "startLine": 326,
+        "startChar": 3,
+        "endLine": 326,
+        "endChar": 7
+      },
+      "revId": "a1b1a8ac8a0b8547a0e5397ae2c26e21253737c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
