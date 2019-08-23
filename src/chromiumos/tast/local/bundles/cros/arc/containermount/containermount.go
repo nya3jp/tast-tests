@@ -353,7 +353,7 @@ func testCPUSet(ctx context.Context, s *testing.State, a *arc.ARC) {
 	for _, t := range types {
 		// cgroup pseudo file cannot be "adb pull"ed. Additionally, it is not
 		// accessible via adb shell user in P. Access by procfs instead.
-		path := fmt.Sprintf("/proc/%d/root/dev/cpuset/%s/cpus", initPID, t)
+		path := fmt.Sprintf("/proc/%d/root/dev/cpuset/%s/effective_cpus", initPID, t)
 		out, err := ioutil.ReadFile(path)
 		if err != nil {
 			s.Errorf("Failed to read %s: %v", path, err)
