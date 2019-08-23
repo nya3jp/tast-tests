@@ -34,6 +34,24 @@
       "revId": "271deae1f609b5aca910bfefa2c9206923061567",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1daded30_3cf68f46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/gpu_enabled_download.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1209654
+      },
+      "writtenOn": "2019-08-23T01:55:07Z",
+      "side": 1,
+      "message": "It\u0027s good to know the meaning of each USE flag. The USE flag to capabilities mapping can be found in platform/tast repo and crosvm_gpu is mapping to crosvm-gpu.",
+      "parentUuid": "cd501888_12a305aa",
+      "revId": "271deae1f609b5aca910bfefa2c9206923061567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
