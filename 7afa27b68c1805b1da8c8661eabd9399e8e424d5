@@ -22,6 +22,30 @@
       "revId": "7afa27b68c1805b1da8c8661eabd9399e8e424d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ce38fa0_d7f059bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/gpuenabled/gpu_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-08-23T06:45:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7d0e9a8_fd83d0cc",
+      "range": {
+        "startLine": 27,
+        "startChar": 40,
+        "endLine": 27,
+        "endChar": 41
+      },
+      "revId": "7afa27b68c1805b1da8c8661eabd9399e8e424d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
