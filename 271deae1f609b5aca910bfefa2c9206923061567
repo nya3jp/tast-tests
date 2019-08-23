@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d89b0a4_03da81a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/gpu_enabled_download.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2019-08-23T01:14:52Z",
+      "side": 1,
+      "message": "I don\u0027t know what these values are, but the USE flags are:\nkvm_host -\u003e enables crosvm/crostini\ncrosvm-gpu -\u003e enables virtio-gpu within crosvm when started with --gpu (either by vmc start --enable-gpu, or with #crostini-gpu-support)\nvirtio_gpu -\u003e sets default value of #crostini-gpu-support to enabled",
+      "revId": "271deae1f609b5aca910bfefa2c9206923061567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

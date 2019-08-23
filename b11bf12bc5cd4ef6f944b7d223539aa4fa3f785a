@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ea0eb29a_cd49a0ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/gpu_enabled_artifact.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2019-08-23T01:14:52Z",
+      "side": 1,
+      "message": "Half of the x86 board/board families are enabled by default.  The others I\u0027m fighting with the CQ.",
+      "parentUuid": "a34d9dc0_a6b90a9d",
+      "range": {
+        "startLine": 31,
+        "startChar": 72,
+        "endLine": 31,
+        "endChar": 80
+      },
+      "revId": "b11bf12bc5cd4ef6f944b7d223539aa4fa3f785a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "693b3c09_09854a0d",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/gpu_enabled_gpu.go",
         "patchSetId": 1
