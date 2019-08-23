@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f5b7db8_3d5decc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/package_install_uninstall.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-08-23T20:23:16Z",
+      "side": 1,
+      "message": "since this is the literal name of a package, I think it\u0027s fine to keep the first letter lowercase so they match?\n\nHidehiko, what are your thoughts here?",
+      "range": {
+        "startLine": 89,
+        "startChar": 11,
+        "endLine": 89,
+        "endChar": 26
+      },
+      "revId": "0897efc992c42b0c197131f6deebc56eba748961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61420b82_b5e25137",
+        "filename": "src/chromiumos/tast/local/crostini/files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-08-23T20:23:16Z",
+      "side": 1,
+      "message": "no shutil.EscapeSlice here?",
+      "range": {
+        "startLine": 50,
+        "startChar": 38,
+        "endLine": 50,
+        "endChar": 64
+      },
+      "revId": "0897efc992c42b0c197131f6deebc56eba748961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4e06fec_955ea7ea",
+        "filename": "src/chromiumos/tast/local/crostini/files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-08-23T20:23:16Z",
+      "side": 1,
+      "message": "ditto re: EscapeSlice",
+      "range": {
+        "startLine": 55,
+        "startChar": 38,
+        "endLine": 55,
+        "endChar": 66
+      },
+      "revId": "0897efc992c42b0c197131f6deebc56eba748961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
