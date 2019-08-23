@@ -14,6 +14,7 @@ import (
 
 	"github.com/mafredri/cdp"
 	"github.com/mafredri/cdp/devtool"
+	"github.com/mafredri/cdp/protocol/target"
 	"github.com/mafredri/cdp/rpcc"
 	"github.com/mafredri/cdp/session"
 
@@ -33,11 +34,11 @@ const (
 // Session maintains the connection to talk to the browser in Chrome DevTools Protocol
 // over WebSocket.
 type Session struct {
-	addr   string     // DevTools address, including port.
-	wsConn *rpcc.Conn // DevTools WebSocket connection to the browser.
+	addr   string      // DevTools address, including port.
+	wsConn *rpcc.Conn  // DevTools WebSocket connection to the browser.
+	client *cdp.Client // DevTools client using wsConn.
 
-	// TODO(hidehiko): Make these private for better encapsulation.
-	Client  *cdp.Client      // DevTools client using wsConn.
+	// TODO(hidehiko): Make this private for better encapsulation.
 	Manager *session.Manager // Manages connections to multiple targets over wsConn.
 }
 
@@ -80,7 +81,7 @@ func NewSession(ctx context.Context) (sess *Session, retErr error) {
 	return &Session{
 		addr:    addr,
 		wsConn:  co,
-		Client:  cl,
+		client:  cl,
 		Manager: m,
 	}, nil
 }
@@ -135,4 +136,40 @@ func (s *Session) Close() error {
 // e.g. "127.0.0.1:38725".
 func (s *Session) DebugAddrPort() string {
 	return s.addr
+}
+
+// CreateTarget opens a new tab displaying the given url.
+func (s *Session) CreateTarget(ctx context.Context, url string) (target.ID, error) {
+	reply, err := s.client.Target.CreateTarget(ctx, &target.CreateTargetArgs{URL: url})
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to create a target of %s", url)
+	}
+	return reply.TargetID, nil
+}
+
+// CloseTarget closes the target identified by the given id.
+func (s *Session) CloseTarget(ctx context.Context, id target.ID) error {
+	if reply, err := s.client.Target.CloseTarget(ctx, &target.CloseTargetArgs{TargetID: id}); err != nil {
+		return err
+	} else if !reply.Success {
+		return errors.New("unknown failure")
+	}
+	return nil
+}
+
+// FindTargets returns the info about Targets, which satisfies the given cond condition.
+func (s *Session) FindTargets(ctx context.Context, cond func(*target.Info) bool) ([]*target.Info, error) {
+	reply, err := s.client.Target.GetTargets(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	var matches []*target.Info
+	for _, t := range reply.TargetInfos {
+		if cond == nil || cond(&t) {
+			t := t
+			matches = append(matches, &t)
+		}
+	}
+	return matches, nil
 }
