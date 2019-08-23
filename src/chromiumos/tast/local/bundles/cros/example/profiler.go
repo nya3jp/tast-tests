@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/profiler"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
 
@@ -22,12 +23,18 @@ func init() {
 }
 
 func Profiler(ctx context.Context, s *testing.State) {
-	p, err := profiler.Start(ctx, s.OutDir(),
-		profiler.Perf(&profiler.PerfOpts{Type: profiler.PerfStat}),
+	profs := []profiler.Profiler{
 		profiler.Top(&profiler.TopOpts{
 			Interval: 2 * time.Second,
 		}),
-		profiler.VMStat(nil))
+		profiler.VMStat(nil)}
+
+	// Perf not supported on aarch64 systems.
+	if u, err := sysutil.Uname(); err == nil && u.Machine != "aarch64" {
+		profs = append(profs, profiler.Perf(&profiler.PerfOpts{Type: profiler.PerfStat}))
+	}
+
+	p, err := profiler.Start(ctx, s.OutDir(), profs...)
 	if err != nil {
 		s.Fatal("Failure in starting the profiler: ", err)
 	}
