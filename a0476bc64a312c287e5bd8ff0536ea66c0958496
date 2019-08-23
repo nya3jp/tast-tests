@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44a0e7ae_e865e517",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-23T15:57:51Z",
+      "side": 1,
+      "message": "Since this is a perf test, you might want to call the following before starting the test:\n\nif err :\u003d cpu.WaitUntilIdle(ctx); err !\u003d nil {\n\t\ts.Fatal(\"Failed to wait for idle CPU: \", err)\n\t}",
+      "revId": "a0476bc64a312c287e5bd8ff0536ea66c0958496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5125a206_f1801e4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-23T15:57:51Z",
+      "side": 1,
+      "message": "Q: do you need to create a new Chrome/ARC session? or can you reuse an existing one?\n\nsee: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Preconditions\n\nworking example:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/pip.go?l\u003d74",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 48
+      },
+      "revId": "a0476bc64a312c287e5bd8ff0536ea66c0958496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31138f64_bab85aa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-23T15:57:51Z",
+      "side": 1,
+      "message": "and in case it makes sense to reuse a Chrome session, you can remove these lines",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "a0476bc64a312c287e5bd8ff0536ea66c0958496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96d3242b_10d4d131",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-23T15:57:51Z",
+      "side": 1,
+      "message": "optional: since allocationURL became very small now, and it is only being called from one place, you can inline it.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 84
+      },
+      "revId": "a0476bc64a312c287e5bd8ff0536ea66c0958496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "994ec4eb_6f2fb2c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-23T15:57:51Z",
+      "side": 1,
+      "message": "since the error msg returned in this func, is similar to the err msg from waitAllocation, you can simplify it with:\n\nreturn waitAllocation(ctx, conn)",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 11
+      },
+      "revId": "a0476bc64a312c287e5bd8ff0536ea66c0958496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d396df6_d72ee8e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-23T15:57:51Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 11
+      },
+      "revId": "a0476bc64a312c287e5bd8ff0536ea66c0958496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6215de13_58214271",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-23T15:57:51Z",
+      "side": 1,
+      "message": "could you add a msg explaining why it is needed to wait 2 extra seconds?",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 27
+      },
+      "revId": "a0476bc64a312c287e5bd8ff0536ea66c0958496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e44b83fb_a1ea828c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-23T15:57:51Z",
+      "side": 1,
+      "message": "In this case I think it is also possible to replace it with a \"return tconn.Eval(....)",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 207,
+        "endChar": 11
+      },
+      "revId": "a0476bc64a312c287e5bd8ff0536ea66c0958496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
