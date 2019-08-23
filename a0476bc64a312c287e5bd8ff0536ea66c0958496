@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f082b3a7_bb22ef3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-23T16:48:48Z",
+      "side": 1,
+      "message": "45 minutes might still be on the high end.\nIf 45 minutes is a reasonable number you might need to talk to crosbolt team since they might need to increase their runtime limit.\n\n(see previous comment from nya@ regarding the line of code will need to be changed to increase the limit)",
+      "range": {
+        "startLine": 36,
+        "startChar": 11,
+        "endLine": 36,
+        "endChar": 27
+      },
+      "revId": "a0476bc64a312c287e5bd8ff0536ea66c0958496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "44a0e7ae_e865e517",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
         "patchSetId": 7
