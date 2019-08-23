@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42b2aad7_29e0a6c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-23T04:55:27Z",
+      "side": 1,
+      "message": "nit/optional: we often leave main return value as is in the case.",
+      "revId": "0091aa47d05835a3074d11eaa9dcf8b5b01d6bdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89638d56_3861074b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/seccomp/policy_generator_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-23T04:55:27Z",
+      "side": 1,
+      "message": "This wouldn\u0027t work, becasue rerr will be set to the one at L81.\nThere\u0027s a few options.\nYou may return an error with combined messages of this and L81. Or, alternatively you may just leave the log here, because anyways an error will be returned. Up to you.",
+      "revId": "0091aa47d05835a3074d11eaa9dcf8b5b01d6bdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
