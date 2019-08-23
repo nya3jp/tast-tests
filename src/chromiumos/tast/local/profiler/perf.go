@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
 )
@@ -25,6 +26,15 @@ type perf struct {
 
 // newPerf runs perf command to start recording perf.data.
 func newPerf(ctx context.Context, outDir string) (instance, error) {
+	// Run perf only on x86_64 devices.
+	u, err := sysutil.Uname()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed getting system architecture")
+	}
+	if u.Machine == "aarch64" {
+		return nil, errors.Wrapf(err, "unsupported architecture for running perf: %s", u.Machine)
+	}
+
 	outputPath := filepath.Join(outDir, "perf.data")
 	cmd := testexec.CommandContext(ctx, "perf", "record", "-e", "cycles", "-g", "--output", outputPath)
 	if err := cmd.Start(); err != nil {
