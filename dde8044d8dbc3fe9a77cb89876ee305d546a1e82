@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff977dbd_75209c1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-23T04:49:08Z",
+      "side": 1,
+      "message": "clar: Considering iby@ introduced the real consent, this is no longer needed?",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 1
+      },
+      "revId": "dde8044d8dbc3fe9a77cb89876ee305d546a1e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fe07dc4_a61b7aa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-23T04:49:08Z",
+      "side": 1,
+      "message": "unused. Could you remove?",
+      "range": {
+        "startLine": 193,
+        "startChar": 38,
+        "endLine": 193,
+        "endChar": 57
+      },
+      "revId": "dde8044d8dbc3fe9a77cb89876ee305d546a1e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cc33b75_0ae53ff1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-23T04:49:08Z",
+      "side": 1,
+      "message": "Do you need CrashTest.reset_rate_limit() code here?\n\ncf) https://chromium.googlesource.com/chromiumos/third_party/autotest/+/f31ecab2f61b77a999190324ff8a645321fd88cb/client/cros/crash/crash_test.py#703",
+      "revId": "dde8044d8dbc3fe9a77cb89876ee305d546a1e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33053ef6_aa49b677",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-23T04:49:08Z",
+      "side": 1,
+      "message": "This needs to be called before testFunc()?",
+      "revId": "dde8044d8dbc3fe9a77cb89876ee305d546a1e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c60dea51_41c5d584",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-23T04:49:08Z",
+      "side": 1,
+      "message": "unix.Unmount(\"/root\", 0) looks better. (Sorry, I overlooked in the last iteration)",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "dde8044d8dbc3fe9a77cb89876ee305d546a1e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7292726_3533b390",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-23T04:49:08Z",
+      "side": 1,
+      "message": "In go, \"get\", \"is\", \"has\" etc. prefixes are often dropped.\nHow about just uptime()?\n\nBTW, does gopsutil\u0027s host.Uptime() work for you?",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 14
+      },
+      "revId": "dde8044d8dbc3fe9a77cb89876ee305d546a1e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "597a31fb_4ef0ad81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-23T04:49:08Z",
+      "side": 1,
+      "message": "s.Fatal exits from whole this test.\nIf you\u0027re planning to add more sub test cases,\n\ns.Error(...)\nreturn\n\nmay be better.",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 9
+      },
+      "revId": "dde8044d8dbc3fe9a77cb89876ee305d546a1e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4347fce5_a8131d51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-23T04:49:08Z",
+      "side": 1,
+      "message": "cf) If necessary you can add now.\n\nif err :\u003d upstart.RestartJob(ctx, \"ui\"); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 15
+      },
+      "revId": "dde8044d8dbc3fe9a77cb89876ee305d546a1e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
