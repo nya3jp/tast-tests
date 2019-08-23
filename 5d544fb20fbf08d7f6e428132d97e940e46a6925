@@ -46,6 +46,30 @@
       "revId": "5d544fb20fbf08d7f6e428132d97e940e46a6925",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8101dd4_0dcf9c4c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-08-23T18:53:01Z",
+      "side": 1,
+      "message": "Chatted offline. We are waiting for the non-failed tests here, not the failed tests.",
+      "parentUuid": "d7bfec1c_4759128c",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 33
+      },
+      "revId": "5d544fb20fbf08d7f6e428132d97e940e46a6925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
