@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/shutil"
 )
@@ -56,6 +57,15 @@ func Perf(opts *PerfOpts) Profiler {
 
 // newPerf creates and runs perf command to start recording perf.data with the options specified.
 func newPerf(ctx context.Context, outDir string, opts *PerfOpts) (instance, error) {
+	// TODO(crbug.com/996728): aarch64 is disabled before the kernel crash is fixed.
+	u, err := sysutil.Uname()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed getting system architecture")
+	}
+	if u.Machine == "aarch64" {
+		return nil, errors.Errorf("running perf on %s is disabled (crbug.com/996728)", u.Machine)
+	}
+
 	cmd, err := getCmd(ctx, outDir, opts.Type)
 	if err != nil {
 		return nil, err
