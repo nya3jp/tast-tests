@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "655377bf_361799f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-08-24T01:00:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bded3bbb_88999cb5",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "cfd4ec1bf5e5b34ddbfc38486e2aa596f332969f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f84c0aed_2c988fb0",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
         "patchSetId": 13
@@ -68,6 +92,30 @@
       "revId": "cfd4ec1bf5e5b34ddbfc38486e2aa596f332969f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "437e8a12_d37e5fe9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-08-24T01:00:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f84c0aed_2c988fb0",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 26
+      },
+      "revId": "cfd4ec1bf5e5b34ddbfc38486e2aa596f332969f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "2b345ee9_98fd42fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-08-24T01:00:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1aa4d25_dc83bdc8",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 15
+      },
+      "revId": "cfd4ec1bf5e5b34ddbfc38486e2aa596f332969f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "240c46ed_b1b7cfaa",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
         "patchSetId": 13
@@ -114,6 +186,30 @@
       "revId": "cfd4ec1bf5e5b34ddbfc38486e2aa596f332969f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "138a187d_5ff7c076",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-08-24T01:00:46Z",
+      "side": 1,
+      "message": "Ack (irrelevant now, since it\u0027s moved into a library)",
+      "parentUuid": "240c46ed_b1b7cfaa",
+      "range": {
+        "startLine": 96,
+        "startChar": 26,
+        "endLine": 96,
+        "endChar": 33
+      },
+      "revId": "cfd4ec1bf5e5b34ddbfc38486e2aa596f332969f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +259,54 @@
     },
     {
       "key": {
+        "uuid": "876407f4_f2e3a85d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-08-24T01:00:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55a469ee_ad454ba2",
+      "range": {
+        "startLine": 103,
+        "startChar": 41,
+        "endLine": 103,
+        "endChar": 42
+      },
+      "revId": "cfd4ec1bf5e5b34ddbfc38486e2aa596f332969f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74a38af5_08533594",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-08-24T01:00:46Z",
+      "side": 1,
+      "message": "Good call. Thanks!",
+      "parentUuid": "32df2eba_725f3fa5",
+      "range": {
+        "startLine": 103,
+        "startChar": 43,
+        "endLine": 103,
+        "endChar": 49
+      },
+      "revId": "cfd4ec1bf5e5b34ddbfc38486e2aa596f332969f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb6d234c_cd370424",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
         "patchSetId": 13
@@ -174,6 +318,30 @@
       "writtenOn": "2019-08-22T03:53:44Z",
       "side": 1,
       "message": "We have to include `env` (or its equivalent) in the error message so we can tell which case failed.",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 30
+      },
+      "revId": "cfd4ec1bf5e5b34ddbfc38486e2aa596f332969f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4665f5f2_f20129e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-08-24T01:00:46Z",
+      "side": 1,
+      "message": "Not entirely sure what you mean here. can you go into some more detail if my refactor didn\u0027t make it moot?",
+      "parentUuid": "eb6d234c_cd370424",
       "range": {
         "startLine": 117,
         "startChar": 3,
