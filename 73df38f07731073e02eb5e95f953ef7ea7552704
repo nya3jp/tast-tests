@@ -308,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "29ad7b6f_495c2d48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-24T05:45:58Z",
+      "side": 1,
+      "message": "OK, I\u0027m not sure if setTimeout guarantees the rendering, but at least waiting DOMContentLoaded should avoid an error caused by missing #display.",
+      "parentUuid": "0e54e6ff_66076e8c",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 17
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4cc8dad9_20f5349e",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
         "patchSetId": 3
@@ -434,6 +458,30 @@
       "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0bff26e_f228b6aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-24T05:45:58Z",
+      "side": 1,
+      "message": "OK. Since we actually require Android, please wait for its boot by arc.New. Just calling chrome.New with chrome.ARCEnabled is not sufficient.",
+      "parentUuid": "48c0e818_5ac9cc0c",
+      "range": {
+        "startLine": 56,
+        "startChar": 35,
+        "endLine": 56,
+        "endChar": 45
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -895,6 +943,30 @@
       "side": 1,
       "message": "This is a stress test. The result tast_reload_tab_count should be 0. For non-zero result, I will check if something\u0027s wrong. It introduces some randomness as the switch wait time that can break the system might be different for each board.",
       "parentUuid": "bf25a6d1_8afa3405",
+      "range": {
+        "startLine": 243,
+        "startChar": 16,
+        "endLine": 243,
+        "endChar": 31
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "debb2d5a_355fb7ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-24T05:45:58Z",
+      "side": 1,
+      "message": "Ack, thanks for explanation!",
+      "parentUuid": "4cbd7762_0878bbb4",
       "range": {
         "startLine": 243,
         "startChar": 16,
