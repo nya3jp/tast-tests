@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f54c793_37cd973d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-24T08:02:14Z",
+      "side": 1,
+      "message": "Looks unnecessary?\n\ncf) https://golang.org/pkg/os/#RemoveAll\n\n\u003d\u003d quote \u003d\u003d\nIf the path does not exist, RemoveAll returns nil (no error)\n\u003d\u003d quote end \u003d\u003d",
+      "range": {
+        "startLine": 118,
+        "startChar": 56,
+        "endLine": 118,
+        "endChar": 79
+      },
+      "revId": "bb92190621234d09e231e024b46250070746dcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2756a556_b2e01cf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-24T08:02:14Z",
+      "side": 1,
+      "message": "To be safer, it\u0027s nice to be called this part in defer, declared at the beginning of this function, I think.\n\nIf one of testFuncList has s.Fatal() accidentally, then it exists from the function stack,\nand this will be skipped.",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 2
+      },
+      "revId": "bb92190621234d09e231e024b46250070746dcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
