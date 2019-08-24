@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "938df27d_e6f0f0e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-24T07:47:08Z",
+      "side": 1,
+      "message": "In some cases, this takes about 2mins.",
+      "revId": "96c76b2dd0f5bf23b1d3f3ea50ccaa590c489541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb8e3b4c_d4213993",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ime_blocking.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-24T07:47:08Z",
+      "side": 1,
+      "message": "In some cases, this takes about 2 mins.",
+      "revId": "96c76b2dd0f5bf23b1d3f3ea50ccaa590c489541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8891c477_b716e3e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vts_keymaster.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-24T07:47:08Z",
+      "side": 1,
+      "message": "Even with arc.Booted(), this takes about 4mins.",
+      "revId": "96c76b2dd0f5bf23b1d3f3ea50ccaa590c489541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
