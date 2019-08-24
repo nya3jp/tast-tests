@@ -28,7 +28,6 @@ func init() {
 		SoftwareDeps: []string{"android", "chrome"},
 		Data:         []string{"ArcMidiClientTest.apk"},
 		Pre:          arc.Booted(),
-		Timeout:      4 * time.Minute,
 	})
 }
 

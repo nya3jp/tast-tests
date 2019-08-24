@@ -25,7 +25,7 @@ func init() {
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Data:         []string{"ArcImeBlockingTest.apk"},
 		Pre:          arc.Booted(),
-		Timeout:      4 * time.Minute,
+		Timeout:      3 * time.Minute,
 	})
 }
 

@@ -22,7 +22,7 @@ func init() {
 		SoftwareDeps: []string{"android", "chrome"},
 		Data:         []string{"app_sanity_hello_world.apk"},
 		Pre:          arc.Booted(),
-		Timeout:      4 * time.Minute,
+		Timeout:      3 * time.Minute,
 	})
 }
 
