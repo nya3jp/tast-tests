@@ -42,8 +42,8 @@ var prunePaths = []string{
 	// like they have ELF headers) that cause false positives,
 	// and since that's noexec anyways, it should be skipped.
 	"/home",
-	"/opt/google/containers/android/rootfs/root/vendor",
-	"/run/containers/android_*/root/vendor",
+	"/opt/google/containers",
+	"/run/containers/android_*/root",
 }
 
 // File match strings which will be ignored when searching for ELF files.
@@ -143,6 +143,10 @@ var libgccWhitelist = []string{
 	// FIXME: Remove after mesa is fixed to not need libgcc_s. crbug.com/808264
 	"/usr/lib/dri/kms_swrast_dri.so",
 	"/usr/lib/dri/swrast_dri.so",
+	// Same for betty.
+	"/usr/lib64/dri/kms_swrast_dri.so",
+	"/usr/lib64/dri/swrast_dri.so",
+	"/usr/lib64/dri/virtio_gpu_dri.so",
 }
 
 var libstdcWhitelist = []string{
