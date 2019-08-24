@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94dab671_3d24af00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-08-24T07:47:57Z",
+      "side": 1,
+      "message": "You cannot delete these files even after this CL lands because Tast tests on old branches (e.g. R77) will keep using them.\nIt\u0027d be safer to keep them.",
+      "revId": "854af4643703cff0ade252899858501d0106ac9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
