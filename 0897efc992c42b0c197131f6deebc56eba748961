@@ -2,6 +2,63 @@
   "comments": [
     {
       "key": {
+        "uuid": "87c8247b_044e7a3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/package_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-24T08:24:35Z",
+      "side": 1,
+      "message": "nit: const filepath \u003d \"...\"",
+      "revId": "0897efc992c42b0c197131f6deebc56eba748961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3bf660e_1120fd3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/package_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-24T08:24:35Z",
+      "side": 1,
+      "message": "nit: maybe s.Fatal(\"... package: \", packageID)",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 81
+      },
+      "revId": "0897efc992c42b0c197131f6deebc56eba748961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f19175d_fc386d02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/package_install_uninstall.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-24T08:24:35Z",
+      "side": 1,
+      "message": "huge nit: could you add empty line as a delimiter?",
+      "revId": "0897efc992c42b0c197131f6deebc56eba748961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f5b7db8_3d5decc1",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/package_install_uninstall.go",
         "patchSetId": 6
@@ -25,6 +82,30 @@
     },
     {
       "key": {
+        "uuid": "a8252f93_242b60bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/package_install_uninstall.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-24T08:24:35Z",
+      "side": 1,
+      "message": "+1 to use lower case letter for proper-noun if it is.",
+      "parentUuid": "4f5b7db8_3d5decc1",
+      "range": {
+        "startLine": 89,
+        "startChar": 11,
+        "endLine": 89,
+        "endChar": 26
+      },
+      "revId": "0897efc992c42b0c197131f6deebc56eba748961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "61420b82_b5e25137",
         "filename": "src/chromiumos/tast/local/crostini/files.go",
         "patchSetId": 6
@@ -36,6 +117,30 @@
       "writtenOn": "2019-08-23T20:23:16Z",
       "side": 1,
       "message": "no shutil.EscapeSlice here?",
+      "range": {
+        "startLine": 50,
+        "startChar": 38,
+        "endLine": 50,
+        "endChar": 64
+      },
+      "revId": "0897efc992c42b0c197131f6deebc56eba748961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55927170_61f343c6",
+        "filename": "src/chromiumos/tast/local/crostini/files.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-24T08:24:35Z",
+      "side": 1,
+      "message": "Also, could you use fmt.Sprintf() for concat 3+ components? Ditto for below.\n\nBTW, instead of shell, can test command directly be used?",
+      "parentUuid": "61420b82_b5e25137",
       "range": {
         "startLine": 50,
         "startChar": 38,
