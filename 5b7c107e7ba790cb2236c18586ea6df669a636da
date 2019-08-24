@@ -186,6 +186,24 @@
       "revId": "5b7c107e7ba790cb2236c18586ea6df669a636da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33f3532d_d7c64c35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-24T08:36:26Z",
+      "side": 1,
+      "message": "If your concern is playstore upgrade, could you check the condition instead of sleep?\nIf it is completely blackbox, I don\u0027t think this is reasonable test IMHO, because anyway we couldn\u0027t guarantee with this test that playstore upgrade is not triggered on the main test you\u0027re interested in, right?\n\nI may not fully understand the situation, but if the upgrade is reproducible, I think there should be \"something\" in the image which triggers upgrade. Could you identify it and check it, instead of just waiting 3 mins?\nI guess you hit the issue in past, so maybe adding the check of that error instance should be the starting point, and then whenever you hit something similar, you can extend the check list.",
+      "parentUuid": "8b94e9da_7305ed5d",
+      "revId": "5b7c107e7ba790cb2236c18586ea6df669a636da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
