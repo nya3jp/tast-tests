@@ -32,7 +32,7 @@ func init() {
 			"VtsHalKeymasterV3_0TargetTest_x86_64",
 		},
 		Pre:     arc.Booted(),
-		Timeout: 4 * time.Minute,
+		Timeout: 5 * time.Minute,
 	})
 }
 

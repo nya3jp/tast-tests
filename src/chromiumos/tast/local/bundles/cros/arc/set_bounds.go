@@ -23,7 +23,6 @@ func init() {
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Data:         []string{"ArcSetBoundsTest.apk"},
 		Pre:          arc.Booted(),
-		Timeout:      4 * time.Minute,
 	})
 }
 

@@ -29,7 +29,6 @@ func init() {
 		// Adding 'tablet_mode' since moving/resizing the window requires screen touch support.
 		SoftwareDeps: []string{"android_p", "chrome", "tablet_mode"},
 		Pre:          arc.Booted(),
-		Timeout:      4 * time.Minute,
 	})
 }
 

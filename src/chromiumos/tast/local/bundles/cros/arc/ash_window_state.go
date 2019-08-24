@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/ash"
@@ -21,7 +20,6 @@ func init() {
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Pre:          arc.Booted(),
-		Timeout:      5 * time.Minute,
 	})
 }
 

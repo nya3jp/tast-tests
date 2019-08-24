@@ -28,7 +28,6 @@ func init() {
 		Attr:         []string{"disabled", "informational"},
 		SoftwareDeps: []string{"drm_atomic", "tablet_mode", "android_p", "chrome"},
 		Pre:          arc.Booted(),
-		Timeout:      4 * time.Minute,
 	})
 }
 
