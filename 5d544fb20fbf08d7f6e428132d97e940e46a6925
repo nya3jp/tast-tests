@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "96f73b7d_36beb1c7",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-24T08:14:03Z",
+      "side": 1,
+      "message": "could you use \"var\" for zero initialization?\n\nI think this looks not trivial. Could you;\n- rename the var to something like expectedTargets etc.?\n- add comments about the relation between CloseTarget failure and the value?",
+      "range": {
+        "startLine": 401,
+        "startChar": 1,
+        "endLine": 401,
+        "endChar": 17
+      },
+      "revId": "5d544fb20fbf08d7f6e428132d97e940e46a6925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5333c48b_70db81f4",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-24T08:14:03Z",
+      "side": 1,
+      "message": "This needs to be same with L395\u0027s.\nCould you use keep the value in a var, and share it?",
+      "range": {
+        "startLine": 416,
+        "startChar": 43,
+        "endLine": 418,
+        "endChar": 3
+      },
+      "revId": "5d544fb20fbf08d7f6e428132d97e940e46a6925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9617f4c2_458701a7",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -70,6 +116,29 @@
       "revId": "5d544fb20fbf08d7f6e428132d97e940e46a6925",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea924412_3b847537",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-24T08:14:03Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this return an error?\nI.e., is it ok to continue to use the precondition even in the unexpected state...?",
+      "range": {
+        "startLine": 427,
+        "startChar": 2,
+        "endLine": 427,
+        "endChar": 68
+      },
+      "revId": "5d544fb20fbf08d7f6e428132d97e940e46a6925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
