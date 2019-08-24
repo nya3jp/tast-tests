@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d67e08bb_b52e1e66",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-24T05:32:43Z",
+      "side": 1,
+      "message": "style: Usually inline comments are not complete sentences (starts with lower letters, ends without a period).\n\nSee code snippets in https://github.com/golang/go/wiki/CodeReviewComments\n\ne.g. // manages connections to multiple targets over wsConn",
+      "range": {
+        "startLine": 36,
+        "startChar": 44,
+        "endLine": 36,
+        "endChar": 55
+      },
+      "revId": "190a150f81b85eb2f77f1beb6eada94a14790a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "366fde05_c9b2e4a1",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-24T05:32:43Z",
+      "side": 1,
+      "message": "Could you give an example just like DebugAddrPort?",
+      "range": {
+        "startLine": 36,
+        "startChar": 22,
+        "endLine": 36,
+        "endChar": 55
+      },
+      "revId": "190a150f81b85eb2f77f1beb6eada94a14790a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6df1bae9_01d720b2",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-24T05:32:43Z",
+      "side": 1,
+      "message": "huge nit: these (variables|members|fields)",
+      "range": {
+        "startLine": 39,
+        "startChar": 25,
+        "endLine": 39,
+        "endChar": 30
+      },
+      "revId": "190a150f81b85eb2f77f1beb6eada94a14790a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dc4b93b_d20afb49",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-24T05:32:43Z",
+      "side": 1,
+      "message": "Please describe the precondition of this constructor. For example, Chrome should have been restarted for debug.",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 13
+      },
+      "revId": "190a150f81b85eb2f77f1beb6eada94a14790a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4066b63_df471dfa",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-24T05:32:43Z",
+      "side": 1,
+      "message": "I\u0027m hesitant to format multiple errors in this way because it\u0027s not very readable, e.g.\n\n failed to close Session: [failed to do foo, failed to do bar]\n\nIt would get worse if we do this formatting in the nested manner. While this usage does not involve nesting, I\u0027m worried that everyone may start mimicking this.\n\nI know there\u0027s no good way to handle this currently, but I believe the most popular way in the Tast repos is to wrap the first encountered error.",
+      "range": {
+        "startLine": 128,
+        "startChar": 9,
+        "endLine": 128,
+        "endChar": 59
+      },
+      "revId": "190a150f81b85eb2f77f1beb6eada94a14790a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bcd61c5_c79e46f5",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-24T05:32:43Z",
+      "side": 1,
+      "message": "When c.devsess can be nil?\n\nIt looks strange to handle c.devsess \u003d\u003d nil case specially. If we really want to do so, please document in the doccomment.",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 2
+      },
+      "revId": "190a150f81b85eb2f77f1beb6eada94a14790a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
