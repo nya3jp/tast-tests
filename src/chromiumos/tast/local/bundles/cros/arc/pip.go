@@ -59,7 +59,6 @@ func init() {
 		SoftwareDeps: []string{"tablet_mode", "android_p", "chrome"},
 		Data:         []string{"ArcPipTastTest.apk"},
 		Pre:          arc.Booted(),
-		Timeout:      5 * time.Minute,
 	})
 }
 

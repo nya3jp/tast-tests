@@ -9,7 +9,6 @@ import (
 	"context"
 	"io/ioutil"
 	"os"
-	"time"
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/testing"
@@ -23,7 +22,6 @@ func init() {
 		SoftwareDeps: []string{"android", "chrome"},
 		Data:         []string{"capybara.jpg"},
 		Pre:          arc.Booted(),
-		Timeout:      4 * time.Minute,
 	})
 }
 

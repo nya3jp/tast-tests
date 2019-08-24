@@ -8,7 +8,6 @@ import (
 	"context"
 	"encoding/json"
 	"math"
-	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -26,7 +25,6 @@ func init() {
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Data:         []string{"ArcGamepadTest.apk"},
 		Pre:          arc.Booted(),
-		Timeout:      4 * time.Minute,
 	})
 }
 

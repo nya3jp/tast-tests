@@ -7,7 +7,6 @@ package arc
 import (
 	"context"
 	"encoding/hex"
-	"time"
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/testexec"
@@ -25,7 +24,6 @@ func init() {
 		},
 		SoftwareDeps: []string{"android", "chrome"},
 		Pre:          arc.Booted(),
-		Timeout:      4 * time.Minute,
 	})
 }
 

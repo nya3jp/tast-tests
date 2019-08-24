@@ -29,7 +29,6 @@ func init() {
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Pre:          arc.Booted(),
-		Timeout:      5 * time.Minute,
 		Data:         []string{"ArcBlackFlashTest.apk"},
 	})
 }

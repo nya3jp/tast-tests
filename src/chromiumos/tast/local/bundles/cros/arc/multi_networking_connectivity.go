@@ -28,7 +28,6 @@ func init() {
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android", "chrome"},
 		Pre:          arc.Booted(),
-		Timeout:      4 * time.Minute,
 	})
 }
 
