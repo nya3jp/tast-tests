@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "46ab1d1f_fba0bc8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-24T05:45:58Z",
+      "side": 1,
+      "message": "Seems like recent tast.crosbolt-memory-nightly runs take about 1 hours.\nhttps://stainless.corp.google.com/search?view\u003dlist\u0026first_date\u003d2019-08-22\u0026last_date\u003d2019-08-24\u0026test\u003dtast.crosbolt-memory-nightly\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dtrue\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\n\nI think additional 45mins is okay since the time limit is 3 hours.",
+      "parentUuid": "f082b3a7_bb22ef3a",
+      "range": {
+        "startLine": 36,
+        "startChar": 11,
+        "endLine": 36,
+        "endChar": 27
+      },
+      "revId": "a0476bc64a312c287e5bd8ff0536ea66c0958496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "44a0e7ae_e865e517",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
         "patchSetId": 7
@@ -53,6 +77,30 @@
       "writtenOn": "2019-08-23T15:57:51Z",
       "side": 1,
       "message": "Q: do you need to create a new Chrome/ARC session? or can you reuse an existing one?\n\nsee: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Preconditions\n\nworking example:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/pip.go?l\u003d74",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 48
+      },
+      "revId": "a0476bc64a312c287e5bd8ff0536ea66c0958496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1337853_7dfec1e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-24T05:45:58Z",
+      "side": 1,
+      "message": "Yes, using a precondition would be another easy to to make sure ARC is booted before the test starts.",
+      "parentUuid": "5125a206_f1801e4c",
       "range": {
         "startLine": 61,
         "startChar": 0,
