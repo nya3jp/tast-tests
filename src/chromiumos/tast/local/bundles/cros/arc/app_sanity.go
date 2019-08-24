@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -22,7 +21,6 @@ func init() {
 		SoftwareDeps: []string{"android", "chrome"},
 		Data:         []string{"app_sanity_hello_world.apk"},
 		Pre:          arc.Booted(),
-		Timeout:      4 * time.Minute,
 	})
 }
 

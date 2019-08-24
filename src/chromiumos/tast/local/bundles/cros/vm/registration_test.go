@@ -10,8 +10,6 @@ import (
 	"chromiumos/tast/testing/testcheck"
 )
 
-const pattern = "vm.*"
-
 func TestSoftwareDeps(t *testing.T) {
-	testcheck.SoftwareDeps(t, pattern, []string{"vm_host"})
+	testcheck.SoftwareDeps(t, testcheck.Glob(t, "vm.*"), []string{"vm_host"})
 }

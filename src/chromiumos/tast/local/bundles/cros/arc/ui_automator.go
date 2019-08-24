@@ -21,7 +21,6 @@ func init() {
 		SoftwareDeps: []string{"android_both", "chrome"},
 		Data:         []string{"todo-mvp.apk"},
 		Pre:          arc.Booted(),
-		Timeout:      4 * time.Minute,
 	})
 }
 

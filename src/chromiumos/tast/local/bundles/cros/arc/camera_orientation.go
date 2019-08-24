@@ -28,7 +28,6 @@ func init() {
 		Data:         []string{"ArcCameraOrientationTest.apk"},
 		SoftwareDeps: []string{"android", "chrome", caps.BuiltinUSBCamera},
 		Pre:          arc.Booted(),
-		Timeout:      4 * time.Minute,
 	})
 }
 

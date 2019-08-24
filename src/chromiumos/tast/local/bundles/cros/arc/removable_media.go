@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/removablemedia"
@@ -26,7 +25,6 @@ func init() {
 		Attr:         []string{"informational"},
 		Data:         []string{"capybara.jpg"},
 		Pre:          arc.Booted(),
-		Timeout:      4 * time.Minute,
 	})
 }
 

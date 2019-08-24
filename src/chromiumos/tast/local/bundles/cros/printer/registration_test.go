@@ -10,8 +10,6 @@ import (
 	"chromiumos/tast/testing/testcheck"
 )
 
-const pattern = "printer.*"
-
 func TestSoftwareDeps(t *testing.T) {
-	testcheck.SoftwareDeps(t, pattern, []string{"cups"})
+	testcheck.SoftwareDeps(t, testcheck.Glob(t, "printer.*"), []string{"cups"})
 }

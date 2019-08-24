@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/containermount"
@@ -25,9 +24,8 @@ func init() {
 			"android",
 			"chrome",
 		},
-		Attr:    []string{"informational"},
-		Pre:     arc.Booted(),
-		Timeout: 4 * time.Minute,
+		Attr: []string{"informational"},
+		Pre:  arc.Booted(),
 	})
 }
 
