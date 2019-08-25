@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "6c2eba7f_ed2c4855",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-25T16:02:54Z",
+      "side": 1,
+      "message": "Done. Maybe we want to have lint here?",
+      "parentUuid": "d67e08bb_b52e1e66",
+      "range": {
+        "startLine": 36,
+        "startChar": 44,
+        "endLine": 36,
+        "endChar": 55
+      },
+      "revId": "190a150f81b85eb2f77f1beb6eada94a14790a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75c2c70a_e72b2562",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-25T16:02:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "366fde05_c9b2e4a1",
+      "range": {
+        "startLine": 36,
+        "startChar": 22,
+        "endLine": 36,
+        "endChar": 55
+      },
+      "revId": "190a150f81b85eb2f77f1beb6eada94a14790a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6df1bae9_01d720b2",
         "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "190a150f81b85eb2f77f1beb6eada94a14790a6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "338dd5db_3ee54dd4",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-25T16:02:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6df1bae9_01d720b2",
+      "range": {
+        "startLine": 39,
+        "startChar": 25,
+        "endLine": 39,
+        "endChar": 30
+      },
+      "revId": "190a150f81b85eb2f77f1beb6eada94a14790a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "ad861c0f_d291b0aa",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-25T16:02:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dc4b93b_d20afb49",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 13
+      },
+      "revId": "190a150f81b85eb2f77f1beb6eada94a14790a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4066b63_df471dfa",
         "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
         "patchSetId": 1
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "1c72cd5b_1bf1df80",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-25T16:02:54Z",
+      "side": 1,
+      "message": "Done.\n\n(off topic): I think this is common case, so we may consider to support it somehow. (Though we need to be careful considering the go2 compatibility).",
+      "parentUuid": "c4066b63_df471dfa",
+      "range": {
+        "startLine": 128,
+        "startChar": 9,
+        "endLine": 128,
+        "endChar": 59
+      },
+      "revId": "190a150f81b85eb2f77f1beb6eada94a14790a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2bcd61c5_c79e46f5",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "190a150f81b85eb2f77f1beb6eada94a14790a6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e786dc76_2bbb64b8",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-25T16:02:54Z",
+      "side": 1,
+      "message": "Good point. I was thinking this happens when logInAsGuest() fails at L905, but actually in the case New() returns an error, so it shouldn\u0027t happen.\n\nTBH, I personally prefer creating an instance after all the initialization is done to creating an instance and then run some method, so that whether or not this happens is clearer. Though it is out-of-scope in this CL.\n\nAnyway, fixed.",
+      "parentUuid": "2bcd61c5_c79e46f5",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 2
+      },
+      "revId": "190a150f81b85eb2f77f1beb6eada94a14790a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
