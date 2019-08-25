@@ -46,6 +46,30 @@
       "revId": "d11ffa4ab14432a484b5316c1739199e95c54060",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c080341_19922aad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-08-25T10:14:47Z",
+      "side": 1,
+      "message": "Ah, I haven\u0027t noticed this problem... I have no idea.\nLet\u0027s keep this \u0027disabled\u0027 till the issue is fixed.",
+      "parentUuid": "b383914b_ddda2b00",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 34
+      },
+      "revId": "d11ffa4ab14432a484b5316c1739199e95c54060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
