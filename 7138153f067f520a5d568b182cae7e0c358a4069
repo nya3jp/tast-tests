@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a21d4e87_74a8165d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-08-26T19:00:37Z",
+      "side": 1,
+      "message": "`test -e` would be sufficient ?",
+      "revId": "7138153f067f520a5d568b182cae7e0c358a4069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aff870dd_b8e8a9a2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-08-26T19:00:37Z",
+      "side": 1,
+      "message": "how does this work ?  should it have a ; in here ?  is this a shell buffer ?",
+      "revId": "7138153f067f520a5d568b182cae7e0c358a4069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
