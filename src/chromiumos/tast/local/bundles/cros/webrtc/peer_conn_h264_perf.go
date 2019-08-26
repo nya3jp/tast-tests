@@ -2,24 +2,24 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package camera
+package webrtc
 
 import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/camera/lib/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
+	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/local/media/videotype"
-	"chromiumos/tast/local/media/webrtc"
 	"chromiumos/tast/local/perf"
+	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WebRTCPeerConnH264Perf,
+		Func: PeerConnH264Perf,
 		Desc: "Captures performance data about WebRTC loopback (H264)",
 		Contacts: []string{
 			"keiichiw@chromium.org", // Video team
@@ -34,7 +34,7 @@ func init() {
 	})
 }
 
-// WebRTCPeerConnH264Perf is the full version of video.WebRTCPeerConnH264. This
+// PeerConnH264Perf is the full version of webrtc.PeerConnH264. This
 // test performs a WebRTC loopback call for 20 seconds. If there is no error
 // while exercising the camera, it uploads statistics of black/frozen frames and
 // input/output FPS will be logged.
@@ -42,9 +42,9 @@ func init() {
 // This test uses the real webcam unless it is running under QEMU. Under QEMU,
 // it uses "vivid" instead, which is the virtual video test driver and can be
 // used as an external USB camera.
-func WebRTCPeerConnH264Perf(ctx context.Context, s *testing.State) {
+func PeerConnH264Perf(ctx context.Context, s *testing.State) {
 	// Run loopback call for 20 seconds.
-	result := webrtc.RunWebRTCPeerConn(ctx, s,
+	result := webrtc.RunPeerConn(ctx, s,
 		s.PreValue().(*chrome.Chrome), videotype.H264, 20*time.Second,
 		webrtc.NoVerboseLogging)
 

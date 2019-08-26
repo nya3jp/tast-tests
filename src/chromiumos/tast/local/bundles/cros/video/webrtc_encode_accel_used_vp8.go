@@ -9,7 +9,9 @@ import (
 
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/constants"
-	"chromiumos/tast/local/media/webrtc"
+	// TODO(crbug.com/971922): Remove /media/webrtc package.
+	mediaWebRTC "chromiumos/tast/local/media/webrtc"
+	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
 
@@ -24,5 +26,5 @@ func init() {
 }
 
 func WebRTCEncodeAccelUsedVP8(ctx context.Context, s *testing.State) {
-	webrtc.RunWebRTCVideo(ctx, s, "crowd720_25frames.y4m", constants.RTCVEInitStatus, constants.RTCVEInitSuccess)
+	mediaWebRTC.RunWebRTCVideo(ctx, s, "crowd720_25frames.y4m", constants.RTCVEInitStatus, constants.RTCVEInitSuccess)
 }
