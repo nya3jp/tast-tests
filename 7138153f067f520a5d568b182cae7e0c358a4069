@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ec85e4b1_02ef701e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2019-08-26T21:58:03Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "a21d4e87_74a8165d",
+      "revId": "7138153f067f520a5d568b182cae7e0c358a4069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aff870dd_b8e8a9a2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "7138153f067f520a5d568b182cae7e0c358a4069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04451adf_f16f0ac7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2019-08-26T21:58:03Z",
+      "side": 1,
+      "message": "This is equivalent to a \"exec sh -c \u0027command1 \u003cnewline\u003e command2\u0027\". Adding a semicolon looks more readable to me, fixed in this patchset.",
+      "parentUuid": "aff870dd_b8e8a9a2",
+      "revId": "7138153f067f520a5d568b182cae7e0c358a4069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
