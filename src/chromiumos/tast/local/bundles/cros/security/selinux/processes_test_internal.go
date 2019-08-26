@@ -153,10 +153,12 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				{exe, "/usr/sbin/trunksd", "cros_trunksd", zeroProcs, ""},
 				{exe, "/usr/sbin/update_engine", "cros_update_engine", zeroProcs, ""},
 				{exe, "/usr/sbin/wpa_supplicant", "wpa_supplicant", zeroProcs, ""},
-				// TODO(fqj): p2p-server/p2p-http-server in minijailed for some legacy CQ boards.
-				{notCmdline, ".*(frecon|agetty|ping|recover_duts|p2p).*", notStr("chromeos"), zeroProcs, domainIsolationErrorMessage},   // These processes shouldn't exist.
-				{notCmdline, ".*(frecon|agetty|ping|recover_duts|p2p).*", notStr("minijailed"), zeroProcs, domainIsolationErrorMessage}, // These processes shouldn't exist.
-				{notExe, "/sbin/minijail0", notStr("minijail"), zeroProcs, domainIsolationErrorMessage},                                 // These processes shouldn't exist.
+				{notCmdline, ".*(frecon|agetty|ping|recover_duts).*", notStr("chromeos"), zeroProcs, domainIsolationErrorMessage},
+				{notCmdline, ".*(frecon|agetty|ping|recover_duts).*", notStr("minijailed"), zeroProcs, domainIsolationErrorMessage},
+				{notExe, "/sbin/init", notStr("cros_init"), zeroProcs, domainIsolationErrorMessage},
+				// coreutils and ping are excluded for recover_duts scripts.
+				{notExe, "(/bin/([db]a)?sh|/usr/bin/coreutils|/bin/ping)", notStr("cros_init_scripts"), zeroProcs, domainIsolationErrorMessage},
+				{notExe, "/sbin/minijail0", notStr("minijail"), zeroProcs, domainIsolationErrorMessage},
 			}...)
 		case Unstable:
 			testCases = append(testCases, []testCaseType{
