@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4b2c7cfe_84b8031b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-26T21:51:15Z",
+      "side": 1,
+      "message": "I slight leaning to create a helper function to make the logic in main more clear, but I think your points are valid. I reverted it to where it was before.",
+      "parentUuid": "c6dd0fef_9f83952f",
+      "range": {
+        "startLine": 147,
+        "startChar": 16,
+        "endLine": 147,
+        "endChar": 33
+      },
+      "revId": "17bdcc1fa3727df0e7a843c7c63813d43c822891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "124b00e9_94ce0218",
         "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "17bdcc1fa3727df0e7a843c7c63813d43c822891",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08be9776_8e8200f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-26T21:51:15Z",
+      "side": 1,
+      "message": "Chrome/ARC precondition does not work here as we need GAIA login.",
+      "parentUuid": "124b00e9_94ce0218",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 23
+      },
+      "revId": "17bdcc1fa3727df0e7a843c7c63813d43c822891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
