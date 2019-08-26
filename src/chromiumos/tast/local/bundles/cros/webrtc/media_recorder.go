@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package camera
+package webrtc
 
 import (
 	"context"
@@ -17,22 +17,22 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     WebRTCMediaRecorder,
+		Func:     MediaRecorder,
 		Desc:     "Checks MediaRecorder on local and remote streams",
 		Contacts: []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:     []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Data:         []string{"webrtc_media_recorder.html", "webrtc_media_recorder.js"},
+		Data:         []string{"media_recorder.html", "media_recorder.js"},
 		Timeout:      3 * time.Minute,
 	})
 }
 
-// WebRTCMediaRecorder checks that MediaRecorder is able to record a local stream or a
+// MediaRecorder checks that MediaRecorder is able to record a local stream or a
 // peer connection remote stream. It also checks the basic Media Recorder
 // functions such as start, stop, pause, resume. The test fails if the media recorder
 // cannot exercise these basic functions.
-func WebRTCMediaRecorder(ctx context.Context, s *testing.State) {
+func MediaRecorder(ctx context.Context, s *testing.State) {
 	chromeArgs := []string{
 		"--use-fake-ui-for-media-stream",     // Avoids the need to grant camera/microphone permissions.
 		"--use-fake-device-for-media-stream", // Feeds fake stream with specified fps to getUserMedia() instead of live camera input.
@@ -48,7 +48,7 @@ func WebRTCMediaRecorder(ctx context.Context, s *testing.State) {
 	defer server.Close()
 
 	runTest := func(js string) error {
-		conn, err := cr.NewConn(ctx, server.URL+"/webrtc_media_recorder.html")
+		conn, err := cr.NewConn(ctx, server.URL+"/media_recorder.html")
 		if err != nil {
 			return errors.Wrap(err, "failed to open recorder page")
 		}
