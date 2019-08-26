@@ -144,7 +144,6 @@ type kernelConfigCheck struct {
 	// value contains key and value pairs that should be set.
 	value map[string]string
 	// same contains pairs of keys that should be set to the same value.
-	// TODO(crbug/976562): In the original test, missing both keys were OK. Check the tastboard and see if we should mimic it. Otherwise remove this comment.
 	same [][2]string
 	// missing containing FOO indicates CONFIG_FOO shouldn't exist.
 	missing []string
@@ -297,7 +296,6 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		value["STATIC_USERMODEHELPER_PATH"] = `"/sbin/usermode-helper"`
 	} else {
 		// For kernels older than linux-4.4.
-		// TODO(crbug/976562): In the original test it was actually non-op (probably a bug). Check this doesn't cause error and remove this comment.
 		builtin = append(builtin, "EXT4_USE_FOR_EXT23")
 	}
 
