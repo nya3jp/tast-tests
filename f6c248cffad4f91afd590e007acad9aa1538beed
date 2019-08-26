@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7854f7f_d04a77bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-26T10:33:29Z",
+      "side": 1,
+      "message": "Maybe link to the test section of the dd?",
+      "revId": "f6c248cffad4f91afd590e007acad9aa1538beed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0903b6c3_b1b79cef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-26T10:33:29Z",
+      "side": 1,
+      "message": "Use the expert mode bug",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "f6c248cffad4f91afd590e007acad9aa1538beed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25c6fd7d_8c2d07c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-26T10:33:29Z",
+      "side": 1,
+      "message": "add arc_camera3. It\u0027s only supported in HALv3 stack.",
+      "revId": "f6c248cffad4f91afd590e007acad9aa1538beed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44579a46_15eee18e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-26T10:33:29Z",
+      "side": 1,
+      "message": "Please also verify other things listed in the design doc if possible.",
+      "revId": "f6c248cffad4f91afd590e007acad9aa1538beed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e20539ee_abad1e47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-26T10:33:29Z",
+      "side": 1,
+      "message": "Just use isVisible()?",
+      "revId": "f6c248cffad4f91afd590e007acad9aa1538beed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
