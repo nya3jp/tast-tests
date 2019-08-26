@@ -2,11 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package video
+package webrtc
 
 import (
 	"context"
 
+	"chromiumos/tast/local/bundles/cros/webrtc/video"
 	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/constants"
 	"chromiumos/tast/local/media/webrtc"
@@ -15,7 +16,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WebRTCDecodeAccelUsedJPEG,
+		Func:         DecodeAccelUsedJPEG,
 		Desc:         "Checks HW decoding used for MJPEG in WebRTC",
 		Contacts:     []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
 		SoftwareDeps: []string{"chrome", caps.HWDecodeJPEG},
@@ -23,6 +24,6 @@ func init() {
 	})
 }
 
-func WebRTCDecodeAccelUsedJPEG(ctx context.Context, s *testing.State) {
-	webrtc.RunWebRTCVideo(ctx, s, "crowd720_25frames.mjpeg", constants.RTCJPEGInitStatus, constants.RTCJPEGInitSuccess)
+func DecodeAccelUsedJPEG(ctx context.Context, s *testing.State) {
+	video.RunVideo(ctx, s, "crowd720_25frames.mjpeg", constants.RTCJPEGInitStatus, constants.RTCJPEGInitSuccess)
 }

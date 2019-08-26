@@ -2,9 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Provides code for video.WebRTCDecodePerf* tests.
+// Provides code for decode_perf.go.
 
-package webrtc
+package video
 
 import (
 	"context"
@@ -20,14 +20,15 @@ import (
 	"chromiumos/tast/local/media/constants"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/histogram"
+	"chromiumos/tast/local/media/webrtc"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )
 
-// openWebRTCInternalsPage opens WebRTC internals page and replaces JS
+// openInternalsPage opens WebRTC internals page and replaces JS
 // addLegacyStats() to intercept WebRTC performance metrics, "googMaxDecodeMs"
 // and "googDecodeMs".
-func openWebRTCInternalsPage(ctx context.Context, cr *chrome.Chrome, addStatsJS string) (*chrome.Conn, error) {
+func openInternalsPage(ctx context.Context, cr *chrome.Chrome, addStatsJS string) (*chrome.Conn, error) {
 	const url = "chrome://webrtc-internals"
 	conn, err := cr.NewConn(ctx, url)
 	if err != nil {
@@ -130,7 +131,7 @@ func measureCPU(ctx context.Context, cr *chrome.Chrome, p *perf.Values, config M
 // chrome://webrtc-internals dashboard. It writes largest max recent decode time and median
 // decode time to perf.Values.
 func measureDecodeTime(ctx context.Context, cr *chrome.Chrome, p *perf.Values, config MeasureConfig) error {
-	conn, err := openWebRTCInternalsPage(ctx, cr, config.AddStatsJS)
+	conn, err := openInternalsPage(ctx, cr, config.AddStatsJS)
 	if err != nil {
 		return errors.Wrap(err, "failed to open WebRTC-internals page")
 	}
@@ -204,15 +205,15 @@ func measureCPUDecodeTime(ctx context.Context, cr *chrome.Chrome, p *perf.Values
 	return measureDecodeTime(ctx, cr, p, config)
 }
 
-// webRTCDecodePerf starts a Chrome instance (with or without hardware video decoder),
+// decodePerf starts a Chrome instance (with or without hardware video decoder),
 // opens an WebRTC loopback page that repeatedly plays a loopback video stream. After setting up,
 // it calls measure() to measure performance metrics and stores to perf.Values.
-// webRTCDecodePerf returns true if video decode is hardware accelerated; otherwise, returns false.
+// decodePerf returns true if video decode is hardware accelerated; otherwise, returns false.
 // Note: though right now it has only one measure function, i.e. measureCPUDecodeTime, being used. It is kept
 // as we will add power measure function later on.
-func webRTCDecodePerf(ctx context.Context, s *testing.State, streamFile, loopbackURL string, measure measureFunc,
+func decodePerf(ctx context.Context, s *testing.State, streamFile, loopbackURL string, measure measureFunc,
 	disableHWAccel bool, p *perf.Values, config MeasureConfig) (hwAccelUsed bool) {
-	chromeArgs := chromeArgsWithCameraInput(streamFile, false)
+	chromeArgs := webrtc.ChromeArgsWithCameraInput(streamFile, false)
 	if disableHWAccel {
 		chromeArgs = append(chromeArgs, "--disable-accelerated-video-decode")
 	}
@@ -270,16 +271,16 @@ func webRTCDecodePerf(ctx context.Context, s *testing.State, streamFile, loopbac
 	return hwAccelUsed
 }
 
-// RunWebRTCDecodePerf starts a Chrome instance (with or without hardware video decoder),
+// RunDecodePerf starts a Chrome instance (with or without hardware video decoder),
 // opens an WebRTC loopback page that repeatedly plays a loopback video stream
 // to measure CPU usage and frame decode time and stores them to perf.
-func RunWebRTCDecodePerf(ctx context.Context, s *testing.State, streamName string, config MeasureConfig) {
+func RunDecodePerf(ctx context.Context, s *testing.State, streamName string, config MeasureConfig) {
 	// Time reserved for cleanup.
 	const cleanupTime = 5 * time.Second
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
-	loopbackURL := server.URL + "/" + LoopbackPage
+	loopbackURL := server.URL + "/" + webrtc.LoopbackPage
 
 	s.Log("Setting up for CPU benchmarking")
 	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
@@ -296,9 +297,9 @@ func RunWebRTCDecodePerf(ctx context.Context, s *testing.State, streamName strin
 	// Try hardware accelerated WebRTC first.
 	// If it is hardware accelerated, run without hardware acceleration again.
 	streamFilePath := s.DataPath(streamName)
-	hwAccelUsed := webRTCDecodePerf(ctx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, false, p, config)
+	hwAccelUsed := decodePerf(ctx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, false, p, config)
 	if hwAccelUsed {
-		webRTCDecodePerf(ctx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, true, p, config)
+		decodePerf(ctx, s, streamFilePath, loopbackURL, measureCPUDecodeTime, true, p, config)
 	}
 	p.Save(s.OutDir())
 }
