@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/video/crowd720_25frames_20190305.mjpeg",
+  "url": "gs://chromiumos-test-assets-public/tast/cros/webrtc/crowd720_25frames_20190305.mjpeg",
   "size": 1699707,
   "sha256sum": "75a777b5d29f952cb1936f9abaf674924fadf3f38093348b285ad18b127e0447"
 }
