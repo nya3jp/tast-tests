@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d73e60f4_0a2017cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/profiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2019-08-26T10:39:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f046d8ae_a57b4c7a",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 32,
+        "endChar": 42
+      },
+      "revId": "e7f0e327361627ee99e81fece52b6b59c0884546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b0468f_8c34f1ad",
         "filename": "src/chromiumos/tast/local/profiler/perf.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "e7f0e327361627ee99e81fece52b6b59c0884546",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c32f758d_6fd5a69b",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2019-08-26T10:39:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77b0468f_8c34f1ad",
+      "range": {
+        "startLine": 60,
+        "startChar": 28,
+        "endLine": 60,
+        "endChar": 36
+      },
+      "revId": "e7f0e327361627ee99e81fece52b6b59c0884546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -91,6 +139,54 @@
       "revId": "e7f0e327361627ee99e81fece52b6b59c0884546",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abd43f62_2223b44c",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2019-08-26T10:39:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "584385a4_f402fff7",
+      "range": {
+        "startLine": 66,
+        "startChar": 14,
+        "endLine": 66,
+        "endChar": 32
+      },
+      "revId": "e7f0e327361627ee99e81fece52b6b59c0884546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c56a7d9a_f82e4faf",
+        "filename": "src/chromiumos/tast/local/profiler/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2019-08-26T10:39:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d7321ca_dab3a458",
+      "range": {
+        "startLine": 66,
+        "startChar": 62,
+        "endLine": 66,
+        "endChar": 74
+      },
+      "revId": "e7f0e327361627ee99e81fece52b6b59c0884546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
