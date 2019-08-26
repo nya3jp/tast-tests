@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package camera
+package webrtc
 
 import (
 	"context"
 
+	"chromiumos/tast/local/bundles/cros/webrtc/mediarecorder"
 	"chromiumos/tast/local/media/caps"
-	"chromiumos/tast/local/media/mediarecorder"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/testing"
 )
