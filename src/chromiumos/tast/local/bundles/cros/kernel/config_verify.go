@@ -146,6 +146,8 @@ type kernelConfigCheck struct {
 	// same contains pairs of keys that should be set to the same value.
 	// TODO(crbug/976562): In the original test, missing both keys were OK. Check the tastboard and see if we should mimic it. Otherwise remove this comment.
 	same [][2]string
+	// optional are configs that may or may not exist.
+	optional []string
 	// missing containing FOO indicates CONFIG_FOO shouldn't exist.
 	missing []string
 }
@@ -229,6 +231,10 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		"MMAP_NOEXEC_TAINT": "0",
 	}
 	same := [][2]string{}
+	optional := []string{
+		// OVERLAY_FS is needed in moblab images, and allowed to exist in general. https://crbug.com/990741#c9
+		"OVERLAY_FS",
+	}
 	missing := []string{
 		// Never going to optimize to this CPU.
 		"M386",
@@ -341,6 +347,7 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		enabled:   enabled,
 		value:     value,
 		same:      same,
+		optional:  optional,
 		missing:   missing,
 	}
 }
@@ -381,7 +388,7 @@ func (c *kernelConfigCheck) test(conf map[string]string, s *testing.State) {
 
 	// Test exclusive.
 	declared := make(map[string]bool)
-	for _, l := range [][]string{c.builtin, c.module, c.enabled} {
+	for _, l := range [][]string{c.builtin, c.module, c.enabled, c.optional} {
 		for _, k := range l {
 			declared[k] = true
 		}
