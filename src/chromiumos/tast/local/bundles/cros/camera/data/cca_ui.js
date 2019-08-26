@@ -288,5 +288,12 @@ window.Tast = class {
       await deviceOperator.getCameraFacing(devices[0].deviceId);
     }
   }
+
+  /**
+   * Toggle expert mode by simulating the activation key press.
+   */
+  static toggleExpertMode() {
+    cca.App.instance_.onKeyPressed_({key: 'Ctrl-Shift-E'});
+  }
 };
 })();
