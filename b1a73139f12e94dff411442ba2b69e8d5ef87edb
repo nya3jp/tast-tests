@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "147334a1_92e89de3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-08-26T06:00:59Z",
+      "side": 1,
+      "message": "\"OVERLAY_FS\" (and below)",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "b1a73139f12e94dff411442ba2b69e8d5ef87edb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2608831e_650ec373",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-08-26T06:00:59Z",
+      "side": 1,
+      "message": "\"that may or\"",
+      "revId": "b1a73139f12e94dff411442ba2b69e8d5ef87edb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
