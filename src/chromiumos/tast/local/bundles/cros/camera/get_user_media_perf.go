@@ -8,17 +8,17 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/camera/lib/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
-	"chromiumos/tast/local/media/webrtc"
+	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/local/perf"
+	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WebRTCPerf,
+		Func: GetUserMediaPerf,
 		Desc: "Captures performance data about getUserMedia video capture",
 		Contacts: []string{
 			"keiichiw@chromium.org", // Video team
@@ -32,17 +32,17 @@ func init() {
 	})
 }
 
-// WebRTCPerf is the full version of WebRTC. It renders the camera's media
-// stream in VGA and 720p for 20 seconds. If there is no error while exercising
-// the camera, it uploads statistics of black/frozen frames. This test will fail
-// when an error occurs or too many frames are broken.
+// GetUserMediaPerf is the full version of GetUserMedia. It renders the camera's
+// media stream in VGA and 720p for 20 seconds. If there is no error while
+// exercising the camera, it uploads statistics of black/frozen frames. This
+// test will fail when an error occurs or too many frames are broken.
 //
 // This test uses the real webcam unless it is running under QEMU. Under QEMU,
 // it uses "vivid" instead, which is the virtual video test driver and can be
 // used as an external USB camera.
-func WebRTCPerf(ctx context.Context, s *testing.State) {
+func GetUserMediaPerf(ctx context.Context, s *testing.State) {
 	// Run tests for 20 seconds per resolution.
-	results := webrtc.RunWebRTC(ctx, s, s.PreValue().(*chrome.Chrome), 20*time.Second,
+	results := webrtc.RunGetUserMedia(ctx, s, s.PreValue().(*chrome.Chrome), 20*time.Second,
 		webrtc.NoVerboseLogging)
 
 	if !s.HasError() {

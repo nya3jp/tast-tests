@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/logging"
+	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
 
@@ -35,7 +36,7 @@ func RunWebRTCVideo(ctx context.Context, s *testing.State, streamName, histogram
 // openWebRTCPageAndCheckBucket opens video/data/loopback.html and communicates via WebRTC in a fake way. The stream on WebRTC is streamFile.
 // It checks bucketValue on histogramName counts up in the end of the test.
 func openWebRTCPageAndCheckBucket(ctx context.Context, fileSystem http.FileSystem, streamFile, histogramName string, bucketValue int64) error {
-	chromeArgs := chromeArgsWithCameraInput(streamFile, true)
+	chromeArgs := webrtc.ChromeArgsWithCameraInput(streamFile, true)
 	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to Chrome")
@@ -51,7 +52,7 @@ func openWebRTCPageAndCheckBucket(ctx context.Context, fileSystem http.FileSyste
 	}
 	testing.ContextLogf(ctx, "Initial %s histogram: %v", histogramName, initHistogram.Buckets)
 
-	conn, err := cr.NewConn(ctx, server.URL+"/"+LoopbackPage)
+	conn, err := cr.NewConn(ctx, server.URL+"/"+webrtc.LoopbackPage)
 	if err != nil {
 		return errors.Wrap(err, "failed to open video page")
 	}
