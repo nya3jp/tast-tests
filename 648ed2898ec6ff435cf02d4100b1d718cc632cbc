@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "58d475d6_18aa56fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_sender.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-26T21:30:20Z",
+      "side": 1,
+      "message": "It\u0027s not really adding anything to package platform; either way, platform has a test function, CrashSender. I\u0027m not suggesting moving the helper functions in here, just the main test logic.\n\nPersonally, I find this makes it harder to read the test because now I have to go down another level to find the main test body, and the test body is mixed in with a bunch of helper functions.",
+      "parentUuid": "aea61980_6bf00dbf",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 29
+      },
+      "revId": "648ed2898ec6ff435cf02d4100b1d718cc632cbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a25289e_9b30d2ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crashsender/crash.go",
         "patchSetId": 9
