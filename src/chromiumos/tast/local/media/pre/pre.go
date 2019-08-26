@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package pre provides Chrome Preconditions shared among video tests.
+// Package pre provides Chrome Preconditions shared among media tests.
 package pre
 
 import (
@@ -51,3 +51,13 @@ var chromeVDArgs = chrome.ExtraArgs(
 		"*/media/gpu/*video_decoder_pipeline.cc=2"}, ","),
 	// Enable media::VideoDecoder-based video decoders.
 	"--enable-features=ChromeosVideoDecoder")
+
+// ChromeCameraPerf returns a precondition that Chrome is started with camera tests-specific
+// setting and without verbose logging that can affect the performance.
+// This precondition should be used only used for performance tests.
+func ChromeCameraPerf() testing.Precondition { return chromeCameraPerfPre }
+
+var chromeCameraPerfPre = chrome.NewPrecondition("camera_perf",
+	chrome.ExtraArgs(
+		// Avoid the need to grant camera/microphone permissions.
+		"--use-fake-ui-for-media-stream"))

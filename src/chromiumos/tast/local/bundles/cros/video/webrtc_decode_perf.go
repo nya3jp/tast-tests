@@ -9,7 +9,9 @@ import (
 	"io/ioutil"
 	"time"
 
-	"chromiumos/tast/local/media/webrtc"
+	// TODO(crbug.com/971922): Remove /media/webrtc package.
+	mediaWebRTC "chromiumos/tast/local/media/webrtc"
+	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
 
@@ -32,7 +34,7 @@ func WebRTCDecodePerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to read JS for gathering decode time: ", err)
 	}
-	webrtc.RunWebRTCDecodePerf(ctx, s, "crowd720_25frames.y4m", webrtc.MeasureConfig{
+	mediaWebRTC.RunWebRTCDecodePerf(ctx, s, "crowd720_25frames.y4m", mediaWebRTC.MeasureConfig{
 		CPUStabilize:      10 * time.Second,
 		CPUMeasure:        30 * time.Second,
 		DecodeTimeTimeout: 30 * time.Second,
