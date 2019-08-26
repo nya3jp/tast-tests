@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fcf6990a_083ceea1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2019-08-26T23:37:07Z",
+      "side": 1,
+      "message": "Note to reviewers: this is copy-pasta from the power reboot test. I don\u0027t see an obvious pattern for tests that use a reboot, but I\u0027d be happy to make this a separate util function.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 64
+      },
+      "revId": "99788fc08d056dd29871e21e5d995a2e804ad991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -16,6 +16,24 @@
       "revId": "d4425980b556a4e6297a18a33b518326920e81bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b65abae4_230d0682",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2019-08-26T23:37:07Z",
+      "side": 1,
+      "message": "Added to comments, thanks!",
+      "parentUuid": "fabc322b_168c40c3",
+      "revId": "d4425980b556a4e6297a18a33b518326920e81bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
