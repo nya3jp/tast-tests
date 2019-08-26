@@ -48,6 +48,52 @@
     },
     {
       "key": {
+        "uuid": "b1d2607d_476bf4d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-26T03:54:43Z",
+      "side": 1,
+      "message": "I think you can omit this parameter.",
+      "range": {
+        "startLine": 67,
+        "startChar": 12,
+        "endLine": 67,
+        "endChar": 31
+      },
+      "revId": "223ad23f9908da7b69d0ef1aa1a902059f232a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83e1dbf3_24674d47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-26T03:54:43Z",
+      "side": 1,
+      "message": "Is it needed?",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 12
+      },
+      "revId": "223ad23f9908da7b69d0ef1aa1a902059f232a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d679eca8_f6cab5bd",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
         "patchSetId": 4
@@ -64,6 +110,236 @@
         "startChar": 30,
         "endLine": 79,
         "endChar": 43
+      },
+      "revId": "223ad23f9908da7b69d0ef1aa1a902059f232a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f578acb0_4a4393e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-26T03:54:43Z",
+      "side": 1,
+      "message": "In general please avoid sleeping, but use testing.Poll.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 58
+      },
+      "revId": "223ad23f9908da7b69d0ef1aa1a902059f232a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d383b36_10f3f21e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-26T03:54:43Z",
+      "side": 1,
+      "message": "printer (or the printer)\nIn Go, comments don\u0027t need extra formatting. https://golang.org/doc/effective_go.html#commentary",
+      "range": {
+        "startLine": 83,
+        "startChar": 16,
+        "endLine": 83,
+        "endChar": 25
+      },
+      "revId": "223ad23f9908da7b69d0ef1aa1a902059f232a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4accc550_978fb023",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-26T03:54:43Z",
+      "side": 1,
+      "message": "nit: button.\n(add the last period)",
+      "range": {
+        "startLine": 93,
+        "startChar": 27,
+        "endLine": 93,
+        "endChar": 33
+      },
+      "revId": "223ad23f9908da7b69d0ef1aa1a902059f232a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1aed81b5_639aa0ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-26T03:54:43Z",
+      "side": 1,
+      "message": "Why don\u0027t you check the error?",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 4
+      },
+      "revId": "223ad23f9908da7b69d0ef1aa1a902059f232a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2a1665a_9e9b8a7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-26T03:54:43Z",
+      "side": 1,
+      "message": "Same here. Please avoid sleeping but use testing.Poll.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 58
+      },
+      "revId": "223ad23f9908da7b69d0ef1aa1a902059f232a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56f6d4da_786da3c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-26T03:54:43Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 100,
+        "startChar": 16,
+        "endLine": 100,
+        "endChar": 26
+      },
+      "revId": "223ad23f9908da7b69d0ef1aa1a902059f232a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "334b2e36_e1a5ebef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-26T03:54:43Z",
+      "side": 1,
+      "message": "I think this is not needed if you use :\u003d in the next line.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 27
+      },
+      "revId": "223ad23f9908da7b69d0ef1aa1a902059f232a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf3c7bd2_f8856b3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-26T03:54:43Z",
+      "side": 1,
+      "message": "These should be deferred just after printer is created (L77).\n\ndefer printer.Wait()\ndefer printer.Kill()",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 15
+      },
+      "revId": "223ad23f9908da7b69d0ef1aa1a902059f232a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2584d0fa_1e31d6f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-26T03:54:43Z",
+      "side": 1,
+      "message": "Could you describe the meaning of the return value, instead of its name?",
+      "range": {
+        "startLine": 115,
+        "startChar": 27,
+        "endLine": 115,
+        "endChar": 59
+      },
+      "revId": "223ad23f9908da7b69d0ef1aa1a902059f232a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dc4d152_1d86d52d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-26T03:54:43Z",
+      "side": 1,
+      "message": "nit: add the last period.",
+      "range": {
+        "startLine": 115,
+        "startChar": 47,
+        "endLine": 115,
+        "endChar": 59
       },
       "revId": "223ad23f9908da7b69d0ef1aa1a902059f232a4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -94,6 +370,29 @@
     },
     {
       "key": {
+        "uuid": "66e94ab0_81614893",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-26T03:54:43Z",
+      "side": 1,
+      "message": "Could you remove it?",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 94
+      },
+      "revId": "223ad23f9908da7b69d0ef1aa1a902059f232a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6898c0da_c51bea80",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
         "patchSetId": 4
@@ -110,6 +409,29 @@
         "startChar": 0,
         "endLine": 164,
         "endChar": 64
+      },
+      "revId": "223ad23f9908da7b69d0ef1aa1a902059f232a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4987e987_a0372126",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-26T03:54:43Z",
+      "side": 1,
+      "message": "Could you remove it?",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 62
       },
       "revId": "223ad23f9908da7b69d0ef1aa1a902059f232a4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
