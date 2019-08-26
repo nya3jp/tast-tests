@@ -7,11 +7,13 @@ package cca
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"regexp"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -46,6 +48,11 @@ const (
 	Square = "square-mode"
 	// Portrait is the mode used to take portrait photo.
 	Portrait = "portrait-mode"
+
+	// Expert is the state used to indicate expert mode.
+	Expert string = "expert"
+	// SaveMetadata is the state used to indicate save metadata.
+	SaveMetadata = "save-metadata"
 )
 
 // TimerState is the information of whether shutter timer is on.
@@ -320,9 +327,16 @@ func (a *App) PortraitModeSupported(ctx context.Context) (bool, error) {
 
 // TakeSinglePhoto takes a photo and save to default location.
 func (a *App) TakeSinglePhoto(ctx context.Context, timerState TimerState) ([]os.FileInfo, error) {
+	var patterns []*regexp.Regexp
+
 	isPortrait, err := a.GetState(ctx, string(Portrait))
 	if err != nil {
 		return nil, err
+	}
+	if isPortrait {
+		patterns = append(patterns, PortraitRefPattern, PortraitPattern)
+	} else {
+		patterns = append(patterns, PhotoPattern)
 	}
 
 	if err = a.SetTimerOption(ctx, timerState == TimerOn); err != nil {
@@ -337,31 +351,66 @@ func (a *App) TakeSinglePhoto(ctx context.Context, timerState TimerState) ([]os.
 	if err = a.WaitForState(ctx, "taking", false); err != nil {
 		return nil, errors.Wrap(err, "capturing hasn't ended")
 	}
-	photoPattern := PhotoPattern
-	if isPortrait {
-		photoPattern = PortraitRefPattern
-	}
-	info, err := a.WaitForFileSaved(ctx, photoPattern, start)
-	if err != nil {
-		return nil, errors.Wrapf(err, "cannot find result picture with regexp: %v", photoPattern)
-	}
-	if elapsed := info.ModTime().Sub(start); timerState == TimerOn && elapsed < TimerDelay {
-		return nil, errors.Errorf("the capture should happen after timer of %v, actual elapsed time %v", TimerDelay, elapsed)
-	}
-	fileInfos := []os.FileInfo{info}
 
-	// For portrait mode, check the extra reprocessed photo.
-	if !isPortrait {
+	var fileInfos []os.FileInfo
+	for _, pattern := range patterns {
+		info, err := a.WaitForFileSaved(ctx, pattern, start)
+		if err != nil {
+			return nil, errors.Wrapf(err, "cannot find result picture with regexp: %v", pattern)
+		}
+		if elapsed := info.ModTime().Sub(start); timerState == TimerOn && elapsed < TimerDelay {
+			return nil, errors.Errorf("the capture should happen after timer of %v, actual elapsed time %v", TimerDelay, elapsed)
+		}
+		fileInfos = append(fileInfos, info)
+	}
+
+	isExpert, err := a.GetState(ctx, Expert)
+	if err != nil {
+		return nil, err
+	}
+	isSaveMetadata, err := a.GetState(ctx, SaveMetadata)
+	if err != nil {
+		return nil, err
+	}
+	if !isExpert || !isSaveMetadata {
 		return fileInfos, nil
 	}
-	if info, err = a.WaitForFileSaved(ctx, PortraitPattern, start); err != nil {
-		return nil, errors.Wrapf(err, "cannot find portrait picture with regexp: %v", PortraitPattern)
+
+	metadataPatterns := getMetadataPatterns(fileInfos)
+	for _, pattern := range metadataPatterns {
+		info, err := a.WaitForFileSaved(ctx, pattern, start)
+		if err != nil {
+			return nil, errors.Wrapf(err, "cannot find result metadata with regexp: %v", pattern)
+		}
+
+		if info.Size() == 0 {
+			return nil, errors.Errorf("saved file %v is empty", info.Name())
+		}
+
+		path, err := a.GetSavedDir(ctx)
+		if err != nil {
+			return nil, err
+		}
+		var jsonString map[string]interface{}
+		if content, err := ioutil.ReadFile(filepath.Join(path, info.Name())); err != nil {
+			return nil, errors.Wrapf(err, "failed to read metadata file %v", info.Name())
+		} else if err := json.Unmarshal(content, &jsonString); err != nil {
+			return nil, errors.Wrapf(err, "not a valid json file %v", info.Name())
+		}
+
+		fileInfos = append(fileInfos, info)
 	}
-	if elapsed := info.ModTime().Sub(start); timerState == TimerOn && elapsed < TimerDelay {
-		return nil, errors.Errorf("the capture should happen after timer of %v, actual elapsed time %v", TimerDelay, elapsed)
-	}
-	fileInfos = append(fileInfos, info)
+
 	return fileInfos, nil
+}
+
+func getMetadataPatterns(fileInfos []os.FileInfo) []*regexp.Regexp {
+	var patterns []*regexp.Regexp
+	for _, info := range fileInfos {
+		pattern := `^` + regexp.QuoteMeta(strings.Replace(info.Name(), ".jpg", ".json", 1)) + `$`
+		patterns = append(patterns, regexp.MustCompile(pattern))
+	}
+	return patterns
 }
 
 // GetSavedDir returns the path to the folder where captured files are saved.
@@ -448,6 +497,47 @@ func (a *App) SetTimerOption(ctx context.Context, active bool) error {
 		}
 	}
 	return nil
+}
+
+// ExpertModeButtonExists checks if the expert mode button exists or not.
+func (a *App) ExpertModeButtonExists(ctx context.Context) (bool, error) {
+	var result bool
+	err := a.conn.Eval(ctx, "Tast.isVisible('#settings-expert')", &result)
+	return result, err
+}
+
+// ToggleExpertMode toggles expert mode and returns whether it's enabled after toggling.
+func (a *App) ToggleExpertMode(ctx context.Context) (bool, error) {
+	prev, err := a.GetState(ctx, Expert)
+	if err != nil {
+		return false, err
+	}
+	if err := a.conn.Eval(ctx, "Tast.toggleExpertMode()", nil); err != nil {
+		return false, errors.Wrap(err, "failed to toggle expert mode")
+	}
+	if err := a.WaitForState(ctx, "expert", !prev); err != nil {
+		return false, errors.Wrap(err, "failed to wait for toggling expert mode")
+	}
+	return a.GetState(ctx, Expert)
+}
+
+// CheckMetadataVisibility checks if metadata is shown/hidden on screen given enabled.
+func (a *App) CheckMetadataVisibility(ctx context.Context, enabled bool) error {
+	code := fmt.Sprintf("Tast.isVisible('#preview-exposure-time') === %t", enabled)
+	if err := a.conn.WaitForExpr(ctx, code); err != nil {
+		return errors.Wrapf(err, "failed to wait for metadata visibility set to %v", enabled)
+	}
+	return nil
+}
+
+// ToggleShowMetadata toggles show metadata and returns whether it's enabled after toggling.
+func (a *App) ToggleShowMetadata(ctx context.Context) (bool, error) {
+	return a.toggleOption(ctx, "show-metadata", "#expert-show-metadata")
+}
+
+// ToggleSaveMetadata toggles save metadata and returns whether it's enabled after toggling.
+func (a *App) ToggleSaveMetadata(ctx context.Context) (bool, error) {
+	return a.toggleOption(ctx, "save-metadata", "#expert-save-metadata")
 }
 
 // ClickShutter clicks the shutter button.
