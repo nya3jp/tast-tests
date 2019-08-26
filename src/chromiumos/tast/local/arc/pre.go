@@ -17,6 +17,9 @@ import (
 	"chromiumos/tast/timing"
 )
 
+// resetTimeout is the timeout durection to trying reset of the current precondition.
+const resetTimeout = 30 * time.Second
+
 // PreData holds information made available to tests that specify preconditions.
 type PreData struct {
 	// Chrome is a connection to an already-started Chrome instance.
@@ -48,7 +51,7 @@ func Booted() testing.Precondition { return bootedPre }
 // bootedPre is returned by Booted.
 var bootedPre = &preImpl{
 	name:    "arc_booted",
-	timeout: chrome.LoginTimeout + BootTimeout,
+	timeout: resetTimeout + chrome.LoginTimeout + BootTimeout,
 }
 
 // preImpl implements both testing.Precondition and testing.preconditionImpl.
@@ -72,21 +75,37 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	ctx, st := timing.Start(ctx, "prepare_"+p.name)
 	defer st.End()
 
+	outDir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		s.Fatal("Failed to get output dir")
+	}
+
 	if p.arc != nil {
-		if pkgs, err := p.installedPackages(ctx); err != nil {
-			s.Log("Failed to get installed packages: ", err)
-		} else if err := p.checkUsable(ctx, pkgs); err != nil {
-			s.Log("Existing Chrome or ARC connection is unusable: ", err)
-		} else if err := p.resetState(ctx, pkgs); err != nil {
-			s.Log("Failed resetting existing Chrome or ARC session: ", err)
-		} else if outDir, ok := testing.ContextOutDir(ctx); !ok {
-			s.Log("Failed to get output dir from context")
-		} else if err := p.arc.setLogcatFile(filepath.Join(outDir, logcatName)); err != nil {
-			s.Log("Failed to update logcat output file: ", err)
-		} else {
+		pre, err := func() (interface{}, error) {
+			ctx, cancel := context.WithTimeout(ctx, resetTimeout)
+			defer cancel()
+			ctx, st := timing.Start(ctx, "reset_"+p.name)
+			defer st.End()
+			pkgs, err := p.installedPackages(ctx)
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to get installed packages")
+			}
+			if err := p.checkUsable(ctx, pkgs); err != nil {
+				return nil, errors.Wrap(err, "existing Chrome or ARC connection is unusable")
+			}
+			if err := p.resetState(ctx, pkgs); err != nil {
+				return nil, errors.Wrap(err, "failed resetting existing Chrome or ARC session")
+			}
+			if err := p.arc.setLogcatFile(filepath.Join(outDir, logcatName)); err != nil {
+				return nil, errors.Wrap(err, "failed to update logcat output file")
+			}
+			return PreData{p.cr, p.arc}, nil
+		}()
+		if err == nil {
 			s.Log("Reusing existing ARC session")
-			return PreData{p.cr, p.arc}
+			return pre
 		}
+		s.Log("Failed to reuse existing ARC session: ", err)
 		locked = false
 		chrome.Unlock()
 		p.closeInternal(ctx, s)
@@ -100,24 +119,29 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 		}
 	}()
 
-	var err error
-	if p.cr, err = chrome.New(ctx, chrome.ARCEnabled()); err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
+	func() {
+		ctx, cancel := context.WithTimeout(ctx, chrome.LoginTimeout)
+		defer cancel()
+		var err error
+		if p.cr, err = chrome.New(ctx, chrome.ARCEnabled()); err != nil {
+			s.Fatal("Failed to start Chrome: ", err)
+		}
+	}()
 
-	outDir, ok := testing.ContextOutDir(ctx)
-	if !ok {
-		s.Fatal("Failed to get output dir")
-	}
-	if p.arc, err = New(ctx, outDir); err != nil {
-		s.Fatal("Failed to start ARC: ", err)
-	}
-	if p.origInitPID, err = InitPID(); err != nil {
-		s.Fatal("Failed to get initial init PID: ", err)
-	}
-	if p.origPackages, err = p.installedPackages(ctx); err != nil {
-		s.Fatal("Failed to list initial packages: ", err)
-	}
+	func() {
+		ctx, cancel := context.WithTimeout(ctx, BootTimeout)
+		defer cancel()
+		var err error
+		if p.arc, err = New(ctx, outDir); err != nil {
+			s.Fatal("Failed to start ARC: ", err)
+		}
+		if p.origInitPID, err = InitPID(); err != nil {
+			s.Fatal("Failed to get initial init PID: ", err)
+		}
+		if p.origPackages, err = p.installedPackages(ctx); err != nil {
+			s.Fatal("Failed to list initial packages: ", err)
+		}
+	}()
 
 	// Prevent the arc and chrome package's New and Close functions from
 	// being called while this precondition is active.
