@@ -35,6 +35,10 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", caps.HWDecodeJPEG},
 		Data:         jpegPerfTestFiles,
+		// The default timeout is not long enough for the unittest to finish. Set the
+		// timeout to 8m so the decode latency could be up to 20ms:
+		//   20 ms * 10000 times * 2 runs (SW,HW) + 1 min (CPU idle time) < 8 min.
+		Timeout: 8 * time.Minute,
 	})
 }
 
