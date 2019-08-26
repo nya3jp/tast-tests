@@ -13,6 +13,9 @@ import (
 	"chromiumos/tast/timing"
 )
 
+// resetTimeout is the timeout durection to trying reset of the current precondition.
+const resetTimeout = 15 * time.Second
+
 // LoggedIn returns a precondition that Chrome is already logged in when a test is run.
 //
 // When adding a test, the testing.Test.Pre field may be set to the value returned by this function.
@@ -35,7 +38,7 @@ func LoggedIn() testing.Precondition { return loggedInPre }
 func NewPrecondition(suffix string, opts ...option) testing.Precondition {
 	return &preImpl{
 		name:    "chrome_" + suffix,
-		timeout: time.Minute,
+		timeout: resetTimeout + LoginTimeout,
 		opts:    opts,
 	}
 }
@@ -60,17 +63,30 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	defer st.End()
 
 	if p.cr != nil {
-		if err := p.checkChrome(ctx); err != nil {
-			s.Log("Existing Chrome connection is unusable: ", err)
-		} else if err = p.cr.ResetState(ctx); err != nil {
-			s.Log("Failed resetting existing Chrome session: ", err)
-		} else {
+		err := func() error {
+			ctx, cancel := context.WithTimeout(ctx, resetTimeout)
+			defer cancel()
+			ctx, st := timing.Start(ctx, "reset_"+p.name)
+			defer st.End()
+			if err := p.checkChrome(ctx); err != nil {
+				return errors.Wrap(err, "existing Chrome connection is unusable")
+			}
+			if err := p.cr.ResetState(ctx); err != nil {
+				return errors.Wrap(err, "failed resetting existing Chrome session")
+			}
+			return nil
+		}()
+		if err == nil {
 			s.Log("Reusing existing Chrome session")
 			return p.cr
 		}
+		s.Log("Failed to reuse existing Chrome session: ", err)
 		Unlock()
 		p.closeInternal(ctx, s)
 	}
+
+	ctx, cancel := context.WithTimeout(ctx, LoginTimeout)
+	defer cancel()
 
 	var err error
 	if p.cr, err = New(ctx, p.opts...); err != nil {
