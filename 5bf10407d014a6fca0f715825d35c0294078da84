@@ -16,6 +16,24 @@
       "revId": "5bf10407d014a6fca0f715825d35c0294078da84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58397ff4_ec238999",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-08-26T19:24:29Z",
+      "side": 1,
+      "message": "Hmm good suggestion. A local binary called avtest_label_detect will indeed\ncheck if e.g. hw video decoder is enabled, so it\u0027s a good idea to add it to\nthe SoftwareDeps (Done); but the webrtc implementation might decide to not \nuse hardware enco/decoding for other reasons, so regardless I\u0027d say is good\nto not crash the test anyway.",
+      "parentUuid": "b8a8ef32_8baec826",
+      "revId": "5bf10407d014a6fca0f715825d35c0294078da84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
