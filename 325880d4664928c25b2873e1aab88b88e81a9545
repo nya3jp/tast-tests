@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "09290ed5_013a248e",
+        "filename": "src/chromiumos/tast/common/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-26T22:31:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "382149f6_61e3684e",
+      "revId": "325880d4664928c25b2873e1aab88b88e81a9545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c0840eb_47b36271",
         "filename": "src/chromiumos/tast/common/crash/crash.go",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "325880d4664928c25b2873e1aab88b88e81a9545",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e1f9bf3_11c54cde",
+        "filename": "src/chromiumos/tast/common/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-26T22:31:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c0840eb_47b36271",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 10
+      },
+      "revId": "325880d4664928c25b2873e1aab88b88e81a9545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "a9d00886_f7cbc4f9",
+        "filename": "src/chromiumos/tast/common/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-26T22:31:11Z",
+      "side": 1,
+      "message": "But then I have nowhere to explain WHY I\u0027m ignoring the not-exist errors (because we\u0027re already in the state we want).\n\nI can explain above the \u0027if\u0027, but that\u0027s much less clear because now it\u0027s not clear which part of the \u0027if\u0027 statement the comment is referring to.",
+      "parentUuid": "dc2f9593_faacc4f0",
+      "range": {
+        "startLine": 63,
+        "startChar": 32,
+        "endLine": 63,
+        "endChar": 12
+      },
+      "revId": "325880d4664928c25b2873e1aab88b88e81a9545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78177440_e8d728eb",
         "filename": "src/chromiumos/tast/common/crash/crash_test.go",
         "patchSetId": 2
@@ -79,6 +145,24 @@
       "revId": "325880d4664928c25b2873e1aab88b88e81a9545",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaadf3f6_e430557c",
+        "filename": "src/chromiumos/tast/common/crash/crash_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-26T22:31:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78177440_e8d728eb",
+      "revId": "325880d4664928c25b2873e1aab88b88e81a9545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -102,6 +186,30 @@
       "revId": "325880d4664928c25b2873e1aab88b88e81a9545",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaf27f00_f1a9fa6f",
+        "filename": "src/chromiumos/tast/common/crash/crash_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-26T22:31:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "535c50b0_268fe1ee",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 24
+      },
+      "revId": "325880d4664928c25b2873e1aab88b88e81a9545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
