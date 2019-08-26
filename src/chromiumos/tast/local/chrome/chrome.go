@@ -163,6 +163,11 @@ func FetchPolicy() option {
 	return func(c *Chrome) { c.policyMode = fetchPolicy }
 }
 
+// ARCDisabled returns an option that can be passed to New to disable ARC.
+func ARCDisabled() option {
+	return func(c *Chrome) { c.arcMode = arcDisabled }
+}
+
 // ARCEnabled returns an option that can be passed to New to enable ARC (without Play Store)
 // for the user session with mock GAIA account.
 func ARCEnabled() option {
@@ -897,6 +902,13 @@ func (c *Chrome) logIn(ctx context.Context) error {
 func (c *Chrome) performGAIALogin(ctx context.Context, oobeConn *Conn) error {
 	if err := oobeConn.Exec(ctx, "Oobe.skipToLoginForTesting()"); err != nil {
 		return err
+	}
+
+	if c.keepState {
+		// Force show GAIA webview even if the cryptohome exists.
+		if err := oobeConn.Exec(ctx, "Oobe.showAddUserForTesting()"); err != nil {
+			return err
+		}
 	}
 
 	isGAIAWebview := func(t *target.Info) bool {

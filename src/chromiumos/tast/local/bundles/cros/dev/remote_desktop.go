@@ -8,6 +8,7 @@ import (
 	"context"
 	"strconv"
 
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -142,14 +143,32 @@ func waitConnection(ctx context.Context, tconn *chrome.Conn) error {
 	return nil
 }
 
+func getBoolVar(s *testing.State, name string, defaultValue bool) bool {
+	strVal, ok := s.Var(name)
+	if !ok {
+		return defaultValue
+	}
+	boolVal, err := strconv.ParseBool(strVal)
+	if err != nil {
+		s.Fatalf("Failed to parse the variable %q: %v", name, err)
+	}
+	return boolVal
+}
+
 func RemoteDesktop(ctx context.Context, s *testing.State) {
-	// TODO(shik): Fix GAIALogin() with KeepCryptohome() to make login faster.
 	// TODO(shik): The button names only work in English locale, and adding
 	// "lang=en-US" for Chrome does not work.
+
+	chromeARCOpt := chrome.ARCDisabled()
+	if arc.Supported() {
+		chromeARCOpt = chrome.ARCSupported()
+	}
 	cr, err := chrome.New(
 		ctx,
+		chromeARCOpt,
 		chrome.Auth(s.RequiredVar("user"), s.RequiredVar("pass"), ""),
 		chrome.GAIALogin(),
+		chrome.KeepState(),
 	)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
@@ -178,19 +197,7 @@ func RemoteDesktop(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Access code: ", accessCode)
 
-	wait := func() bool {
-		strVal, ok := s.Var("wait")
-		if !ok {
-			return true
-		}
-		boolVal, err := strconv.ParseBool(strVal)
-		if err != nil {
-			s.Fatal("Failed to parse the variable `wait`: ", err)
-		}
-		return boolVal
-	}()
-
-	if wait {
+	if getBoolVar(s, "wait", true) {
 		s.Log("Waiting connection")
 		if err := waitConnection(ctx, tconn); err != nil {
 			s.Fatal("No client connected: ", err)
