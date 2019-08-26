@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bb4a76c4_d1f2d005",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-26T19:00:03Z",
+      "side": 1,
+      "message": "I rewrote it in a hopefully easier to follow matter.",
+      "parentUuid": "96f73b7d_36beb1c7",
+      "range": {
+        "startLine": 401,
+        "startChar": 1,
+        "endLine": 401,
+        "endChar": 17
+      },
+      "revId": "5d544fb20fbf08d7f6e428132d97e940e46a6925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5333c48b_70db81f4",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "5d544fb20fbf08d7f6e428132d97e940e46a6925",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beedd7c7_23317938",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-26T19:00:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5333c48b_70db81f4",
+      "range": {
+        "startLine": 416,
+        "startChar": 43,
+        "endLine": 418,
+        "endChar": 3
+      },
+      "revId": "5d544fb20fbf08d7f6e428132d97e940e46a6925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -130,6 +178,30 @@
       "writtenOn": "2019-08-24T08:14:03Z",
       "side": 1,
       "message": "Shouldn\u0027t this return an error?\nI.e., is it ok to continue to use the precondition even in the unexpected state...?",
+      "range": {
+        "startLine": 427,
+        "startChar": 2,
+        "endLine": 427,
+        "endChar": 68
+      },
+      "revId": "5d544fb20fbf08d7f6e428132d97e940e46a6925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "111fbb80_e4307c01",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1358595
+      },
+      "writtenOn": "2019-08-26T19:00:03Z",
+      "side": 1,
+      "message": "I decided to follow the convention above. When an application fails to close, they just log it as opposed to returning an error. I assume there is a reason why they decided just to log the issue instead of returning an error. If this should return an error, I believe that an error should be returned above as well. Thoughts?",
+      "parentUuid": "ea924412_3b847537",
       "range": {
         "startLine": 427,
         "startChar": 2,
