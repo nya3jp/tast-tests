@@ -29,11 +29,11 @@ const (
 	AddStatsJSFile = "add_stats.js"
 )
 
-// chromeArgsWithCameraInput returns Chrome extra args as string slice
+// ChromeArgsWithCameraInput returns Chrome extra args as string slice
 // for video test with Y4M stream file as live camera input.
 // If verbose is true, it appends extra args for verbose logging.
 // NOTE(crbug.com/955079): performance test should unset verbose.
-func chromeArgsWithCameraInput(stream string, verbose bool) []string {
+func ChromeArgsWithCameraInput(stream string, verbose bool) []string {
 	args := []string{
 		// See https://webrtc.org/testing/
 		// Feed a test pattern to getUserMedia() instead of live camera input.
