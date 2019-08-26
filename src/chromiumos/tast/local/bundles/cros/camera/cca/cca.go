@@ -46,6 +46,11 @@ const (
 	Square = "square-mode"
 	// Portrait is the mode used to take portrait photo.
 	Portrait = "portrait-mode"
+
+	// Expert is the state used to indicate expert mode.
+	Expert = "expert"
+	// Metadata is the state used to indicate save metadata.
+	Metadata = "save-metadata"
 )
 
 // TimerState is the information of whether shutter timer is on.
@@ -67,6 +72,9 @@ var (
 	PortraitPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}_COVER.jpg$`)
 	// PortraitRefPattern is the filename format of the reference photo captured in portrait-mode.
 	PortraitRefPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}.jpg$`)
+
+	// MetadataPattern is the filename format of the metadata taken by CCA.
+	MetadataPattern = regexp.MustCompile(`^IMG.*.json$`)
 )
 
 // TimerDelay is default timer delay of CCA.
@@ -385,16 +393,32 @@ func (a *App) TakeSinglePhoto(ctx context.Context, timerState TimerState) ([]os.
 	fileInfos := []os.FileInfo{info}
 
 	// For portrait mode, check the extra reprocessed photo.
-	if !isPortrait {
-		return fileInfos, nil
+	if isPortrait {
+		if info, err = a.WaitForFileSaved(ctx, PortraitPattern, start); err != nil {
+			return nil, errors.Wrapf(err, "cannot find portrait picture with regexp: %v", PortraitPattern)
+		}
+		if elapsed := info.ModTime().Sub(start); timerState == TimerOn && elapsed < TimerDelay {
+			return nil, errors.Errorf("the capture should happen after timer of %v, actual elapsed time %v", TimerDelay, elapsed)
+		}
+		fileInfos = append(fileInfos, info)
 	}
-	if info, err = a.WaitForFileSaved(ctx, PortraitPattern, start); err != nil {
-		return nil, errors.Wrapf(err, "cannot find portrait picture with regexp: %v", PortraitPattern)
+
+	isExpert, err := a.GetState(ctx, string(Expert))
+	if err != nil {
+		return nil, err
 	}
-	if elapsed := info.ModTime().Sub(start); timerState == TimerOn && elapsed < TimerDelay {
-		return nil, errors.Errorf("the capture should happen after timer of %v, actual elapsed time %v", TimerDelay, elapsed)
+	isMetadata, err := a.GetState(ctx, string(Metadata))
+	if err != nil {
+		return nil, err
 	}
-	fileInfos = append(fileInfos, info)
+	// For metadata, check the extra metadata file.
+	if isMetadata && isExpert {
+		if info, err = a.WaitForFileSaved(ctx, MetadataPattern, start); err != nil {
+			return nil, errors.Wrapf(err, "cannot find metadata with regexp: %v", MetadataPattern)
+		}
+		fileInfos = append(fileInfos, info)
+	}
+
 	return fileInfos, nil
 }
 
@@ -482,6 +506,32 @@ func (a *App) SetTimerOption(ctx context.Context, active bool) error {
 		}
 	}
 	return nil
+}
+
+// ExpertModeButtonExists checks if the expert mode button exists or not.
+func (a *App) ExpertModeButtonExists(ctx context.Context) (bool, error) {
+	var actual bool
+	err := a.conn.Eval(ctx, "Tast.isVisible('#settings-expert')", &actual)
+	return actual, err
+}
+
+// ToggleExpertMode toggles expert mode and returns whether it's enabled after toggling.
+func (a *App) ToggleExpertMode(ctx context.Context) (bool, error) {
+	if err := a.conn.Eval(ctx, "Tast.toggleExpertMode()", nil); err != nil {
+		return false, err
+	}
+	return a.GetState(ctx, "expert")
+}
+
+// MetadataVisible checks if metadata is shown on screen.
+func (a *App) MetadataVisible(ctx context.Context) (bool, error) {
+	var visible bool
+	if err := a.conn.Eval(ctx, "Tast.isVisible('#preview-exposure-time')", &visible); err != nil {
+		return false, errors.Wrap(err, "failed to check if metadata is visible")
+	} else if !visible {
+		return false, nil
+	}
+	return true, nil
 }
 
 // ClickShutter clicks the shutter button.

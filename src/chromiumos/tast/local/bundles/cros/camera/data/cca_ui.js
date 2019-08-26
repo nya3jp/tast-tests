@@ -269,5 +269,12 @@ window.Tast = class {
     }
     return track.getSettings().deviceId;
   }
+
+  /**
+   * Toggle expert mode by simulating the activation key press.
+   */
+  static toggleExpertMode() {
+    cca.nav.onKeyPressed({key: 'Ctrl-Shift-E'}, cca.App.instance_);
+  }
 };
 })();

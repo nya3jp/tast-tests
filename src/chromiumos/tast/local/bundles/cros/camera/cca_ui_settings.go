@@ -101,4 +101,16 @@ func CCAUISettings(ctx context.Context, s *testing.State) {
 	if err := app.WaitForState(ctx, "_10sec", true); err != nil {
 		s.Error("10s-timer is not active: ", err)
 	}
+
+	// Check that changing expert mode activation in settings is effective.
+	if enabled, err := app.ToggleExpertMode(ctx); err != nil {
+		s.Error("Failed to enabled expert mode: ", err)
+	} else if !enabled {
+		s.Error("Expert mode is not enabled")
+	}
+	if exist, err := app.ExpertModeButtonExists(ctx); err != nil {
+		s.Error("Failed to get expert mode button state: ", err)
+	} else if !exist {
+		s.Error("Expert mode button is not visible")
+	}
 }
