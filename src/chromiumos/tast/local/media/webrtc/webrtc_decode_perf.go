@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/histogram"
 	"chromiumos/tast/local/perf"
+	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
 
@@ -212,7 +213,7 @@ func measureCPUDecodeTime(ctx context.Context, cr *chrome.Chrome, p *perf.Values
 // as we will add power measure function later on.
 func webRTCDecodePerf(ctx context.Context, s *testing.State, streamFile, loopbackURL string, measure measureFunc,
 	disableHWAccel bool, p *perf.Values, config MeasureConfig) (hwAccelUsed bool) {
-	chromeArgs := chromeArgsWithCameraInput(streamFile, false)
+	chromeArgs := webrtc.ChromeArgsWithCameraInput(streamFile, false)
 	if disableHWAccel {
 		chromeArgs = append(chromeArgs, "--disable-accelerated-video-decode")
 	}
@@ -279,7 +280,7 @@ func RunWebRTCDecodePerf(ctx context.Context, s *testing.State, streamName strin
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
-	loopbackURL := server.URL + "/" + LoopbackPage
+	loopbackURL := server.URL + "/" + webrtc.LoopbackPage
 
 	s.Log("Setting up for CPU benchmarking")
 	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
