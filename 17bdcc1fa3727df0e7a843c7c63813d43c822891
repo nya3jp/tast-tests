@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6dd0fef_9f83952f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-26T18:04:32Z",
+      "side": 1,
+      "message": "I\u0027m not sure whether we should create a function for the \"wait\" in this case.\nI understand that the code in the main function looks easier to read, but on the other hand:\n\n- we should try to avoid passing *testing.State when it makes sense. See:\n   https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\n- this func should not \"fatal\". In any case it should return an error and parent should handle it.\n\n- this function is only be used from one place.\n- nit: func should not, when applicable, start with the \"get\" prefix.\n\n\nFor this particular case, I would just leave it where it was before.",
+      "range": {
+        "startLine": 147,
+        "startChar": 16,
+        "endLine": 147,
+        "endChar": 33
+      },
+      "revId": "17bdcc1fa3727df0e7a843c7c63813d43c822891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "124b00e9_94ce0218",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-26T18:04:32Z",
+      "side": 1,
+      "message": "(sorry, I\u0027m not familiar with OOBE and Keep state)\n\nWould this change also benefit the lab? or only when you are testing it in the local machine?\n\nWhat about using the Chrome / ARC precondition? Would that also increase the booting time?\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Preconditions",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 23
+      },
+      "revId": "17bdcc1fa3727df0e7a843c7c63813d43c822891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c046d1d_e7d560b0",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-26T18:04:32Z",
+      "side": 1,
+      "message": "The Go aspect LGTM, but deferring to someone who understand how oobe works.",
+      "range": {
+        "startLine": 907,
+        "startChar": 1,
+        "endLine": 907,
+        "endChar": 17
+      },
+      "revId": "17bdcc1fa3727df0e7a843c7c63813d43c822891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
