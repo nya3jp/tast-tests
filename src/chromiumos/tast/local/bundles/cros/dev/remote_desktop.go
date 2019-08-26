@@ -8,6 +8,7 @@ import (
 	"context"
 	"strconv"
 
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -21,7 +22,7 @@ func init() {
 		Desc:         "Connect to Chrome Remote Desktop for working remotely",
 		Contacts:     []string{"shik@chromium.org", "tast-users@chromium.org"},
 		Attr:         []string{"disabled"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "android"},
 		Vars:         []string{"user", "pass", "wait"},
 	})
 }
@@ -150,11 +151,18 @@ func RemoteDesktop(ctx context.Context, s *testing.State) {
 		ctx,
 		chrome.Auth(s.RequiredVar("user"), s.RequiredVar("pass"), ""),
 		chrome.GAIALogin(),
+		chrome.ARCEnabled(),
 	)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 	defer cr.Close(ctx)
+
+	a, err := arc.New(ctx, s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to start ARC: ", err)
+	}
+	defer a.Close()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
