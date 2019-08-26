@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "dc46a83f_1ca80ada",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-26T04:57:07Z",
+      "side": 1,
+      "message": "nit: you can make it one line.\nif err \u003d ...; err !\u003d nil {",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 16
+      },
+      "revId": "223ad23f9908da7b69d0ef1aa1a902059f232a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1cac284_46819925",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
         "patchSetId": 4
@@ -156,6 +179,29 @@
         "startChar": 16,
         "endLine": 83,
         "endChar": 25
+      },
+      "revId": "223ad23f9908da7b69d0ef1aa1a902059f232a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10e7558e_09a044ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-26T04:57:07Z",
+      "side": 1,
+      "message": "I think it\u0027s not needed if you use :\u003d in the next line.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 28
       },
       "revId": "223ad23f9908da7b69d0ef1aa1a902059f232a4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -347,6 +393,29 @@
     },
     {
       "key": {
+        "uuid": "246349b5_c5e1e968",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-26T04:57:07Z",
+      "side": 1,
+      "message": "In Go, stop words are to be avoided. You can name it nearByPrinters().\nhttps://g3doc.corp.google.com/go/g3doc/readability/review-comments.md?cl\u003dhead#TOC-Getters",
+      "range": {
+        "startLine": 116,
+        "startChar": 5,
+        "endLine": 116,
+        "endChar": 28
+      },
+      "revId": "223ad23f9908da7b69d0ef1aa1a902059f232a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0cbd5561_941cdfb8",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
         "patchSetId": 4
@@ -370,6 +439,29 @@
     },
     {
       "key": {
+        "uuid": "8e09ac1f_fe942038",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-26T04:57:07Z",
+      "side": 1,
+      "message": "Similarly, you can name it savedPrinters .",
+      "range": {
+        "startLine": 135,
+        "startChar": 5,
+        "endLine": 135,
+        "endChar": 27
+      },
+      "revId": "223ad23f9908da7b69d0ef1aa1a902059f232a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66e94ab0_81614893",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
         "patchSetId": 4
@@ -386,6 +478,29 @@
         "startChar": 0,
         "endLine": 147,
         "endChar": 94
+      },
+      "revId": "223ad23f9908da7b69d0ef1aa1a902059f232a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff0ae3df_7311b57a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/save_ippusb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-26T04:57:07Z",
+      "side": 1,
+      "message": "nit: you don\u0027t have to assign it but can directly return it.",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 7
       },
       "revId": "223ad23f9908da7b69d0ef1aa1a902059f232a4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
