@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fabc322b_168c40c3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-08-26T22:05:15Z",
+      "side": 1,
+      "message": "crash-test-in-progress is created, but never cleaned up\n\ni get that normally the reboot should take care of it, but in the case of test failures, i think we need to clear it ourselves\n\neven if we\u0027re relying on the reboot case resetting things, i think it\u0027s worth making note of that in the comments",
+      "revId": "d4425980b556a4e6297a18a33b518326920e81bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
