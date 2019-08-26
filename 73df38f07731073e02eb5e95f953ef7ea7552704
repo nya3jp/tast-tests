@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "7ee09856_a6fc0e5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-08-26T09:45:27Z",
+      "side": 1,
+      "message": "Yes, I verified that the anonymous mappings size increasing is expected.",
+      "parentUuid": "ca498397_2debe9c3",
+      "range": {
+        "startLine": 13,
+        "startChar": 26,
+        "endLine": 13,
+        "endChar": 32
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36e6aaf9_d06ceda6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/memory_stress.js",
         "patchSetId": 3
@@ -482,6 +506,30 @@
       "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83b4cb23_4e8d8dc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memory_stress_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2019-08-26T09:45:27Z",
+      "side": 1,
+      "message": "Using \"Pre: arc.Boot()\"",
+      "parentUuid": "b0bff26e_f228b6aa",
+      "range": {
+        "startLine": 56,
+        "startChar": 35,
+        "endLine": 56,
+        "endChar": 45
+      },
+      "revId": "73df38f07731073e02eb5e95f953ef7ea7552704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
