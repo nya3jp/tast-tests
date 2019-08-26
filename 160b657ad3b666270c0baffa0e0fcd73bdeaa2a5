@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd17e336_2c7ffabb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crosvm/sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-26T17:14:17Z",
+      "side": 1,
+      "message": "huge nit:\n\"is\" sounds confusing, since it is a very common verb in English. My understanding is that \"is\" is the short of \"infos\". If that is the case I\u0027d use \"infos\" instead of \"is\".",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 3
+      },
+      "revId": "160b657ad3b666270c0baffa0e0fcd73bdeaa2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05703788_c03581e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crosvm/sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-26T17:14:17Z",
+      "side": 1,
+      "message": "I would remove this comment. In any case I\u0027d file a bug an put it there.",
+      "range": {
+        "startLine": 68,
+        "startChar": 6,
+        "endLine": 68,
+        "endChar": 95
+      },
+      "revId": "160b657ad3b666270c0baffa0e0fcd73bdeaa2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d062ed3_981ff994",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crosvm/sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-26T17:14:17Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 74,
+        "startChar": 85,
+        "endLine": 74,
+        "endChar": 148
+      },
+      "revId": "160b657ad3b666270c0baffa0e0fcd73bdeaa2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abf85c82_903c9efe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crosvm/sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-26T17:14:17Z",
+      "side": 1,
+      "message": "nit:\nhere and above:  perhaps using the \"got ; want\" format used in the other tests.\n\nE.g:\ns.Errorf(\"Unexpected RAM size: got %dKb; want \u003e\u003d %dKb\", got, min...)",
+      "range": {
+        "startLine": 83,
+        "startChar": 12,
+        "endLine": 83,
+        "endChar": 65
+      },
+      "revId": "160b657ad3b666270c0baffa0e0fcd73bdeaa2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
