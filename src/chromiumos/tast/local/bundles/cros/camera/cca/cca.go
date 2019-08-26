@@ -484,6 +484,13 @@ func (a *App) SetTimerOption(ctx context.Context, active bool) error {
 	return nil
 }
 
+// ActivateExpertMode activates CCA expert mode.
+func (a *App) ActivateExpertMode(ctx context.Context) (bool, error) {
+	var actual bool
+	err := a.conn.Eval(ctx, "Tast.activateExpertMode()", &actual)
+	return actual, err
+}
+
 // ClickShutter clicks the shutter button.
 func (a *App) ClickShutter(ctx context.Context) error {
 	if err := a.conn.Eval(ctx, "Tast.click('.shutter')", nil); err != nil {
