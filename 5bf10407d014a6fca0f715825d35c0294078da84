@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8a8ef32_8baec826",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-08-26T17:52:08Z",
+      "side": 1,
+      "message": "Is there an USE flag to control this? If so, we can add SoftwareDeps[1] to let the test only run on specific board.\n\n[1] src/platform/tast/src/chromiumos/cmd/local_test_runner/main.go",
+      "revId": "5bf10407d014a6fca0f715825d35c0294078da84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
