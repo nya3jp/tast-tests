@@ -2,22 +2,21 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package video
+package webrtc
 
 import (
 	"context"
 	"io/ioutil"
 	"time"
 
-	// TODO(crbug.com/971922): Remove /media/webrtc package.
-	media_webrtc "chromiumos/tast/local/media/webrtc"
+	"chromiumos/tast/local/bundles/cros/webrtc/video"
 	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WebRTCDecodePerf,
+		Func:         DecodePerf,
 		Desc:         "Measures WebRTC decode performance in terms of CPU usage and decode time with and without hardware acceleration",
 		Contacts:     []string{"deanliao@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
@@ -28,18 +27,17 @@ func init() {
 	})
 }
 
-// WebRTCDecodePerf opens a WebRTC loopback page that loops a given capture stream to measure decode time and CPU usage.
-func WebRTCDecodePerf(ctx context.Context, s *testing.State) {
+// DecodePerf opens a WebRTC loopback page that loops a given capture stream to measure decode time and CPU usage.
+func DecodePerf(ctx context.Context, s *testing.State) {
 	addStatsJS, err := ioutil.ReadFile(s.DataPath(webrtc.AddStatsJSFile))
 	if err != nil {
 		s.Fatal("Failed to read JS for gathering decode time: ", err)
 	}
-	media_webrtc.RunWebRTCDecodePerf(ctx, s, "crowd720_25frames.y4m", media_webrtc.MeasureConfig{
+	video.RunDecodePerf(ctx, s, "crowd720_25frames.y4m", video.MeasureConfig{
 		CPUStabilize:      10 * time.Second,
 		CPUMeasure:        30 * time.Second,
 		DecodeTimeTimeout: 30 * time.Second,
 		DecodeTimeSamples: 10,
 		AddStatsJS:        string(addStatsJS),
 	})
-
 }
