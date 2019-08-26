@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )
@@ -22,7 +23,7 @@ func init() {
 		Desc:         "Runs a webrtc playback-only connection to get performance numbers",
 		Contacts:     []string{"mcasas@chromium.org", "chromeos-gfx@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", caps.HWDecodeVP8},
 		Data:         []string{"webrtc_video_display_perf_test.html"},
 	})
 }
@@ -148,18 +149,18 @@ func WebRTCVideoPlaybackDelay(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed diffing histograms: ", err)
 	}
-	if len(decodeHistogramDiff.Buckets) == 0 {
-		s.Fatal("Empty histogram diff")
+	// Some devices don't have hardware decode acceleration, so the histogram diff
+	// will be empty, this is not an error condition.
+	if len(decodeHistogramDiff.Buckets) {
+		decodeMetric := perf.Metric{
+			Name:      "tast_graphics_webrtc_video_decode_delay",
+			Unit:      "ms",
+			Direction: perf.SmallerIsBetter,
+			Multiple:  true,
+		}
+		updatePerfMetricFromHistogram(ctx, decodeHistogramName, decodeHistogramDiff,
+			perfValues, decodeMetric)
 	}
-
-	decodeMetric := perf.Metric{
-		Name:      "tast_graphics_webrtc_video_decode_delay",
-		Unit:      "ms",
-		Direction: perf.SmallerIsBetter,
-		Multiple:  true,
-	}
-	updatePerfMetricFromHistogram(ctx, decodeHistogramName, decodeHistogramDiff,
-		perfValues, decodeMetric)
 
 	if err = perfValues.Save(s.OutDir()); err != nil {
 		s.Error("Cannot save perf data: ", err)
