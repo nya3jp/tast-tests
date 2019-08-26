@@ -8,6 +8,7 @@ import (
 	"context"
 	"strconv"
 
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -17,9 +18,10 @@ func init() {
 	// $ tast run -var=user=<username> -var=pass=<password> <dut ip> dev.RemoteDesktop
 	// <username> and <password> are the credentials of the test GAIA account.
 	testing.AddTest(&testing.Test{
-		Func:         RemoteDesktop,
-		Desc:         "Connect to Chrome Remote Desktop for working remotely",
-		Contacts:     []string{"shik@chromium.org", "tast-users@chromium.org"},
+		Func:     RemoteDesktop,
+		Desc:     "Connect to Chrome Remote Desktop for working remotely",
+		Contacts: []string{"shik@chromium.org", "tast-users@chromium.org"},
+		// TODO(shik): Consider enable it after https://crbug.com/982546 resolved.
 		Attr:         []string{"disabled"},
 		SoftwareDeps: []string{"chrome"},
 		Vars:         []string{"user", "pass", "wait"},
@@ -143,13 +145,19 @@ func waitConnection(ctx context.Context, tconn *chrome.Conn) error {
 }
 
 func RemoteDesktop(ctx context.Context, s *testing.State) {
-	// TODO(shik): Fix GAIALogin() with KeepCryptohome() to make login faster.
 	// TODO(shik): The button names only work in English locale, and adding
 	// "lang=en-US" for Chrome does not work.
+
+	chromeARCOpt := chrome.ARCDisabled()
+	if arc.Supported() {
+		chromeARCOpt = chrome.ARCSupported()
+	}
 	cr, err := chrome.New(
 		ctx,
+		chromeARCOpt,
 		chrome.Auth(s.RequiredVar("user"), s.RequiredVar("pass"), ""),
 		chrome.GAIALogin(),
+		chrome.KeepState(),
 	)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
@@ -189,7 +197,6 @@ func RemoteDesktop(ctx context.Context, s *testing.State) {
 		}
 		return boolVal
 	}()
-
 	if wait {
 		s.Log("Waiting connection")
 		if err := waitConnection(ctx, tconn); err != nil {
