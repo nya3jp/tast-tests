@@ -351,6 +351,30 @@
       "revId": "cfd4ec1bf5e5b34ddbfc38486e2aa596f332969f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "329fe7ef_0a7188cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-27T02:25:54Z",
+      "side": 1,
+      "message": "Sorry for being unclear! In this test we have three subtests:\n\n failureStages :\u003d []string{\"PRE_START_EXIT\", \"MAIN_EXIT\", \"POST_START_EXIT\"}\n\nWhen it fails in MAIN_EXIT, an error message would be like:\n\n Couldn\u0027t find expected files: brabra\n\nFrom this message, it is not clear which subtest failed. So I\u0027d recommend including `env` (the loop variable) in the message to clarify the failed subtest.",
+      "parentUuid": "4665f5f2_f20129e6",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 30
+      },
+      "revId": "cfd4ec1bf5e5b34ddbfc38486e2aa596f332969f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
