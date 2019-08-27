@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43ad7119_63d1a8a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/get_user_media_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-27T02:12:04Z",
+      "side": 1,
+      "message": "Although there is no line length limit in go, should we still re-indent the comments here to follow the surrounding style?",
+      "revId": "7a982e126032af1b4a5e986e772dde4236d56ef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
