@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f4f1b3d_a71f762f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-27T02:27:02Z",
+      "side": 1,
+      "message": "nit/style/optional: while you\u0027re here, could you swap the condition to make it guard style?\n\nif !found {\n  return errors.New(\"...\")\n}\nreturn nil",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 42
+      },
+      "revId": "467ba4d2f7519b95974f32702bfc256f0128b58b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
