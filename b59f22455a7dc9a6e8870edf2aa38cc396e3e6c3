@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f549107_42f1315d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-27T21:05:45Z",
+      "side": 1,
+      "message": "style nit:\n\n if err :\u003d manager.PopAllUserProfiles(ctx); err !\u003d nil {",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 16
+      },
+      "revId": "b59f22455a7dc9a6e8870edf2aa38cc396e3e6c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
