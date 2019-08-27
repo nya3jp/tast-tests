@@ -32,7 +32,6 @@ import (
 const (
 	terminaComponentName             = "cros-termina" // name of the Chrome component for the VM kernel and rootfs
 	terminaComponentDownloadPath     = "/usr/local/cros-termina"
-	terminaComponentLiveURLFormat    = "https://storage.googleapis.com/termina-component-testing/%d/live"
 	terminaComponentStagingURLFormat = "https://storage.googleapis.com/termina-component-testing/%d/staging"
 	terminaComponentURLFormat        = "https://storage.googleapis.com/termina-component-testing/%d/%s/chromeos_%s-archive/files.zip"
 	terminaMountDir                  = "/run/imageloader/cros-termina/99999.0.0"
@@ -47,8 +46,6 @@ type ComponentType int
 const (
 	// ComponentUpdater indicates that the live component should be fetched from the component updater service.
 	ComponentUpdater ComponentType = iota
-	// LiveComponent indicates that the current live component should be fetched from the GS component testing bucket.
-	LiveComponent
 	// StagingComponent indicates that the current staging component should be fetched from the GS component testing bucket.
 	StagingComponent
 )
@@ -194,8 +191,6 @@ func SetUpComponent(ctx context.Context, c ComponentType) error {
 
 	var url string
 	switch c {
-	case LiveComponent:
-		url = fmt.Sprintf(terminaComponentLiveURLFormat, milestone)
 	case StagingComponent:
 		url = fmt.Sprintf(terminaComponentStagingURLFormat, milestone)
 	}
