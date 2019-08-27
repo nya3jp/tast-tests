@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c050eefc_a70945d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-27T01:45:34Z",
+      "side": 1,
+      "message": "style: For every non-inline comments, please end sentences with a period.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 115,
+        "startChar": 29,
+        "endLine": 115,
+        "endChar": 39
+      },
+      "revId": "510e856811183712815e37c352efe176d681b63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5419f2d9_d28be0d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-27T01:45:34Z",
+      "side": 1,
+      "message": "Why do we force-enable UseARC in this case? Would you mind describing why in the comment of MemoryPressureWPR?",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 3
+      },
+      "revId": "510e856811183712815e37c352efe176d681b63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fab59dd5_ec77067b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-27T01:45:34Z",
+      "side": 1,
+      "message": "This change does several orthogonal things at once:\n\n1. Allow memoryures tasks to run sequentially by introducing ParallelTasks.\n2. Extend Mempressure test to setup Chrome and run tests in two different phases.\n3. Introduce MemPressureTask that runs Mempressure test.\n\nCould you split this change to at least three CLs?",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 27
+      },
+      "revId": "510e856811183712815e37c352efe176d681b63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ad360e4_8ce52e65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-27T01:45:34Z",
+      "side": 1,
+      "message": "In no code path, MemoryPressureWPR is set to true.\n\nPlease add at least one code path that enables the new behavior.",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 18
+      },
+      "revId": "510e856811183712815e37c352efe176d681b63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6c992d9_64ac4817",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-27T01:45:34Z",
+      "side": 1,
+      "message": "In no code path, ParallelTasks is set to false.\n\nPlease add at least one code path that enables the new behavior.",
+      "range": {
+        "startLine": 244,
+        "startChar": 1,
+        "endLine": 244,
+        "endChar": 14
+      },
+      "revId": "510e856811183712815e37c352efe176d681b63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e75df858_1a83d183",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/mempressure_task.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-27T01:45:34Z",
+      "side": 1,
+      "message": "In no code path, MemPressureTask is instanciated.\n\nPlease add at least one code path that enables the new behavior.",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 20
+      },
+      "revId": "510e856811183712815e37c352efe176d681b63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06343102_94ae209c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/mempressure_task.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-27T01:45:34Z",
+      "side": 1,
+      "message": "nit: fmt.Sprintf is not needed",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 19
+      },
+      "revId": "510e856811183712815e37c352efe176d681b63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d10e44a0_3afe7f8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-27T01:45:34Z",
+      "side": 1,
+      "message": "Initializing Chrome with not-yet-unavailable WPR is too tricky. It took for a while for me to understand what we\u0027re trying to do here.\n\nHow about reverting the change to split initBrowser into initBrowser and InitChrome, and instead introducing the following changes:\n\n- Export initBrowser, i.e. rename to InitBrowser.\n- Always pass Chrome instance returned from InitBrowser to Run.\n\nThen how to call Run from platform.Mempressure and platform.MemUser will be similar.",
+      "range": {
+        "startLine": 521,
+        "startChar": 5,
+        "endLine": 521,
+        "endChar": 15
+      },
+      "revId": "510e856811183712815e37c352efe176d681b63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b71af843_83791883",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1195,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-27T01:45:34Z",
+      "side": 1,
+      "message": "This perf recording is for platform.Mempressure, but I believe it\u0027s not intended for platform.MemoryUser.\n\nPlease refactor mempressure.Run.",
+      "range": {
+        "startLine": 1193,
+        "startChar": 0,
+        "endLine": 1195,
+        "endChar": 2
+      },
+      "revId": "510e856811183712815e37c352efe176d681b63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
