@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "f35ecbcb_1484eb6e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-27T15:36:53Z",
+      "side": 1,
+      "message": "dut.DUT.Run is deprecated. Could you use dut.DUT.Command, instead?\n\nDitto for below.",
+      "range": {
+        "startLine": 30,
+        "startChar": 11,
+        "endLine": 30,
+        "endChar": 16
+      },
+      "revId": "99788fc08d056dd29871e21e5d995a2e804ad991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e330694a_e1789183",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-27T15:36:53Z",
+      "side": 1,
+      "message": "Could you return an error instead?\nThen, you can logs the error in caller.",
+      "range": {
+        "startLine": 37,
+        "startChar": 56,
+        "endLine": 37,
+        "endChar": 61
+      },
+      "revId": "99788fc08d056dd29871e21e5d995a2e804ad991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fcf6990a_083ceea1",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
         "patchSetId": 4
@@ -19,6 +65,87 @@
         "endLine": 46,
         "endChar": 64
       },
+      "revId": "99788fc08d056dd29871e21e5d995a2e804ad991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce631f3e_1ee5d408",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-27T15:36:53Z",
+      "side": 1,
+      "message": "Refactoring SGTM.\n\nCould you extract the function into a library, maybe in platform/tast-tests/src/chromiumos/tast/remote/reboot/reboot.go ?",
+      "parentUuid": "fcf6990a_083ceea1",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 64
+      },
+      "revId": "99788fc08d056dd29871e21e5d995a2e804ad991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5adb51f8_44d4d976",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-27T15:36:53Z",
+      "side": 1,
+      "message": "huge nit: could you remove this empty line? The \"if !ok\" check should be a part of \"obtaining *dut.DUT instance\".",
+      "revId": "99788fc08d056dd29871e21e5d995a2e804ad991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c6c3a73_538948f8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-27T15:36:53Z",
+      "side": 1,
+      "message": "Instead, could you add a new softwareDeps for the older kernels?\nThen, could you report an error if this does not exist?",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 67
+      },
+      "revId": "99788fc08d056dd29871e21e5d995a2e804ad991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72bef956_279b582b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-27T15:36:53Z",
+      "side": 1,
+      "message": "This won\u0027t be reached if test failed. (specifically, at L81).\nCould you run this in defer stmt and move to almost beginning of this test?",
       "revId": "99788fc08d056dd29871e21e5d995a2e804ad991",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
