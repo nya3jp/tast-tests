@@ -62,6 +62,10 @@ func ConfigureServiceForProfile(ctx context.Context, s *testing.State) {
 		shill.SafeStart(ctx)
 	}()
 
+	if err = manager.PopAllUserProfiles(ctx); err != nil {
+		s.Fatal("Failed to pop user profiles: ", err)
+	}
+
 	props := map[shill.ServiceProperty]interface{}{
 		shill.ServicePropertyType: "ethernet",
 		shill.ServicePropertyStaticIPConfig: map[string]interface{}{
