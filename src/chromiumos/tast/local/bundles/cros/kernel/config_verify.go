@@ -191,6 +191,7 @@ func newKernelConfigCheck(ver *kernelVersion, arch string) *kernelConfigCheck {
 		"EXT4_FS",
 		"PROC_FS",
 		"SCSI_PROC_FS",
+		"OVERLAY_FS",
 
 		// Partition formats.
 		"EFI_PARTITION",
