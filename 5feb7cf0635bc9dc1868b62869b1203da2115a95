@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c75e277f_83a3ffa6",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-27T13:46:39Z",
+      "side": 1,
+      "message": "# Sorry, I should have comment this in the previous iteration.\n\nnit/optional: In testing context, SetUp/TearDown is the common terms for this purpose.\nHow about renaming them to\n- SetUpCrashTest()\n- TearDownCrashTest()\n?",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "5feb7cf0635bc9dc1868b62869b1203da2115a95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
