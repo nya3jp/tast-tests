@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbb87a64_0e5512e4",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-27T02:32:00Z",
+      "side": 1,
+      "message": "Cool, thanks for adding the functionality to the anomaly-detector!",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 79
+      },
+      "revId": "d2b02ffafb41ee17e4a77a9cd07962063b025e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb28a3f6_be2fa914",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-27T02:32:00Z",
+      "side": 1,
+      "message": "nit: In Go, mentioning symbols as |foo| is not a popular notation. Usually we mention them as is, i.e. \"regex in regexes to match a file in dir that is...\"",
+      "range": {
+        "startLine": 47,
+        "startChar": 45,
+        "endLine": 47,
+        "endChar": 54
+      },
+      "revId": "d2b02ffafb41ee17e4a77a9cd07962063b025e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aedbdd85_ee4fae38",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-27T02:32:00Z",
+      "side": 1,
+      "message": "Maybe it is more straightforward to use errors.Wrapf?\n\n errors.Wrapf(err, \"invalid regexp %s\", re)",
+      "range": {
+        "startLine": 69,
+        "startChar": 30,
+        "endLine": 69,
+        "endChar": 82
+      },
+      "revId": "d2b02ffafb41ee17e4a77a9cd07962063b025e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
