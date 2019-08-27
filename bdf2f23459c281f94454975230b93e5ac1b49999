@@ -22,6 +22,30 @@
       "revId": "bdf2f23459c281f94454975230b93e5ac1b49999",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90fca6f3_2a41d3cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2019-08-27T03:30:16Z",
+      "side": 1,
+      "message": "Thanks Ricardo. I increased the the timeout to include a larger upper bound for decode operation and the CPU idle time.",
+      "parentUuid": "f486118e_3c877ae3",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 27
+      },
+      "revId": "bdf2f23459c281f94454975230b93e5ac1b49999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
