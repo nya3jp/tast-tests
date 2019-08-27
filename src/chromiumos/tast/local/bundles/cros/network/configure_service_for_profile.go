@@ -62,6 +62,11 @@ func ConfigureServiceForProfile(ctx context.Context, s *testing.State) {
 		shill.SafeStart(ctx)
 	}()
 
+	err = manager.PopAllUserProfiles(ctx)
+	if err != nil {
+		s.Fatal("Failed to pop user profiles: ", err)
+	}
+
 	props := map[string]interface{}{
 		"Type":           "ethernet",
 		"StaticIPConfig": map[string]interface{}{"NameServers": []string{"8.8.8.8"}},

@@ -154,6 +154,11 @@ func (m *Manager) ConfigureServiceForProfile(ctx context.Context, path dbus.Obje
 	return service, nil
 }
 
+// PopAllUserProfiles pops all user profiles.
+func (m *Manager) PopAllUserProfiles(ctx context.Context) error {
+	return call(ctx, m.obj, dbusManagerInterface, "PopAllUserProfiles").Err
+}
+
 // EnableTechnology enables a technology interface.
 func (m *Manager) EnableTechnology(ctx context.Context, technology string) error {
 	return call(ctx, m.obj, dbusManagerInterface, "EnableTechnology", technology).Err
