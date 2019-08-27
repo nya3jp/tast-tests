@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "6a33223f_5b807e44",
+        "filename": "src/chromiumos/tast/common/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-27T13:46:39Z",
+      "side": 1,
+      "message": "optional: I think explanation at the if condition is probably common pattern.\nIMHO, it is case by case, and I\u0027m ok for this specific case now, though.",
+      "parentUuid": "a9d00886_f7cbc4f9",
+      "range": {
+        "startLine": 63,
+        "startChar": 32,
+        "endLine": 63,
+        "endChar": 12
+      },
+      "revId": "325880d4664928c25b2873e1aab88b88e81a9545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78177440_e8d728eb",
         "filename": "src/chromiumos/tast/common/crash/crash_test.go",
         "patchSetId": 2
