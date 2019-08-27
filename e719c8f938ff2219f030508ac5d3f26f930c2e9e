@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc766c82_881ea0a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_accel_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-27T02:19:49Z",
+      "side": 1,
+      "message": "style: you can inline the GTest instance creation. How about;\n\nencodeTest :\u003d newGTest(\"video_encode_accelerator_unittest\", \"SimpleEncode/*/0\", s.OutDir(), []string{\n  ...\n})",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 46
+      },
+      "revId": "e719c8f938ff2219f030508ac5d3f26f930c2e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b181e562_05b99ddc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_accel_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-27T02:19:49Z",
+      "side": 1,
+      "message": "SImilary;\n\ndecodeTest :\u003d newGTest(...)",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 55
+      },
+      "revId": "e719c8f938ff2219f030508ac5d3f26f930c2e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fa1abb9_8bf38eb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_accel_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-27T02:19:49Z",
+      "side": 1,
+      "message": "nit: unused",
+      "range": {
+        "startLine": 130,
+        "startChar": 15,
+        "endLine": 130,
+        "endChar": 26
+      },
+      "revId": "e719c8f938ff2219f030508ac5d3f26f930c2e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e59ccfd_8a3dca0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_accel_perf.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-27T02:19:49Z",
+      "side": 1,
+      "message": "This does not start test yet. Maybe newGTest?",
+      "range": {
+        "startLine": 130,
+        "startChar": 5,
+        "endLine": 130,
+        "endChar": 14
+      },
+      "revId": "e719c8f938ff2219f030508ac5d3f26f930c2e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52a2de45_c4cf374c",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-27T02:19:49Z",
+      "side": 1,
+      "message": "You can use var legnth args.\n\nts ...gtest.GTest\n\nso that you don\u0027t need to modify the callers.",
+      "range": {
+        "startLine": 38,
+        "startChar": 27,
+        "endLine": 38,
+        "endChar": 29
+      },
+      "revId": "e719c8f938ff2219f030508ac5d3f26f930c2e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
