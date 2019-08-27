@@ -375,6 +375,30 @@
       "revId": "cfd4ec1bf5e5b34ddbfc38486e2aa596f332969f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92822292_92c6ebef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-08-27T20:52:57Z",
+      "side": 1,
+      "message": "oh! Yes, of course. I forgot I used \"env\" as a variable name so I thought you were referring to a specific Go feature I didn\u0027t know about, haha.\n\nI moved this to a parameterized test instead, as it more clearly expresses the intent and should give all error messages appropriate context.",
+      "parentUuid": "329fe7ef_0a7188cf",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 117,
+        "endChar": 30
+      },
+      "revId": "cfd4ec1bf5e5b34ddbfc38486e2aa596f332969f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
