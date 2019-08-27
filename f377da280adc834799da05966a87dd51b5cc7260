@@ -227,6 +227,30 @@
     },
     {
       "key": {
+        "uuid": "fd4ab1f5_2edaf0ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-27T11:17:15Z",
+      "side": 1,
+      "message": "Kernel crashes should not happen under any circumstances. If a crash this serious happens I think it\u0027s OK that other tests won\u0027t be run. This is already the current behavior of the test, so if we really want to make changes here it should be done in a separate CL.\n\nWhen the test crashes no report is produced, so it\u0027s easy to differentiate between crash and test failure. I did have to create crrev.com/c/1772938 to prevent a crash on failure.",
+      "parentUuid": "efc8070e_551ed15e",
+      "range": {
+        "startLine": 414,
+        "startChar": 1,
+        "endLine": 414,
+        "endChar": 5
+      },
+      "revId": "f377da280adc834799da05966a87dd51b5cc7260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "887c7382_d144929b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_sanity_vp90_cts_show_existing_frame.go",
         "patchSetId": 4
