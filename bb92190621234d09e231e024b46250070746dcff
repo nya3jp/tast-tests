@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b0ef0435_3f03b928",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-08-27T02:42:50Z",
+      "side": 1,
+      "message": "Done\n\nIt also says:\n\u003e If there is an error, it will be of type *PathError.\nSo the only way to get error would be when crashSenderRateDir was wrong.\nSeems other usages in our repository omits error handling, but keeping error handling just in case for now.",
+      "parentUuid": "4f54c793_37cd973d",
+      "range": {
+        "startLine": 118,
+        "startChar": 56,
+        "endLine": 118,
+        "endChar": 79
+      },
+      "revId": "bb92190621234d09e231e024b46250070746dcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2756a556_b2e01cf8",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
         "patchSetId": 25
@@ -45,6 +69,30 @@
       "revId": "bb92190621234d09e231e024b46250070746dcff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "093ede0b_c55d21d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-08-27T02:42:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2756a556_b2e01cf8",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 2
+      },
+      "revId": "bb92190621234d09e231e024b46250070746dcff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
