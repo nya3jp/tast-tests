@@ -22,6 +22,30 @@
       "revId": "467ba4d2f7519b95974f32702bfc256f0128b58b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "749aabdc_b71d1695",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/udev_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-27T16:06:51Z",
+      "side": 1,
+      "message": "Sure, done.",
+      "parentUuid": "5f4f1b3d_a71f762f",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 42
+      },
+      "revId": "467ba4d2f7519b95974f32702bfc256f0128b58b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
