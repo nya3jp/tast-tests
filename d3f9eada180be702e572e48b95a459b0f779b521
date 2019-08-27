@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "60abeb3e_37adbb07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-08-27T00:38:37Z",
+      "side": 1,
+      "message": "That would be a nice feature.",
+      "parentUuid": "a24d7d89_2e326f73",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 42
+      },
+      "revId": "d3f9eada180be702e572e48b95a459b0f779b521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "790c4b5d_30a4011d",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 4
