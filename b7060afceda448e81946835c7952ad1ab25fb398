@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7d0088_4b3ddd97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-27T16:37:09Z",
+      "side": 1,
+      "message": "Did you really try this command? The code doesn\u0027t compile.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 92
+      },
+      "revId": "b7060afceda448e81946835c7952ad1ab25fb398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3a537dc_0c1dfed6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-27T16:37:09Z",
+      "side": 1,
+      "message": "This doesn\u0027t compile.\n\n# chromiumos/tast/local/bundles/cros/graphics\n../tast-tests/src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go:154:2: non-bool len(decodeHistogramDiff.Buckets) (type int) used as if condition",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 38
+      },
+      "revId": "b7060afceda448e81946835c7952ad1ab25fb398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
