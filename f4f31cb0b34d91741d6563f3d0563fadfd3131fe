@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bda3bf6e_b33e6f5c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-08-27T09:56:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91538f5e_c3a8f089",
+      "range": {
+        "startLine": 18,
+        "startChar": 19,
+        "endLine": 18,
+        "endChar": 40
+      },
+      "revId": "f4f31cb0b34d91741d6563f3d0563fadfd3131fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4fa6ac4_4442f15d",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/video_perf.go",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "f4f31cb0b34d91741d6563f3d0563fadfd3131fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eee834cc_97ca2fd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/video/video_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-08-27T09:56:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4fa6ac4_4442f15d",
+      "revId": "f4f31cb0b34d91741d6563f3d0563fadfd3131fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
