@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "a3e2f7a1_681ae7cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/registration_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-27T02:43:59Z",
+      "side": 1,
+      "message": "Because we have no guarantee about arc condition, I think we should keep this clearly.\nIf new precondition is added, this would fail, but that means the author is notified so that can revisit here in earlier stage.",
+      "parentUuid": "c6fc9d57_be0d29b1",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 28
+      },
+      "revId": "96c76b2dd0f5bf23b1d3f3ea50ccaa590c489541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8891c477_b716e3e6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/vts_keymaster.go",
         "patchSetId": 2
