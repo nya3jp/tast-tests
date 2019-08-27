@@ -22,6 +22,30 @@
       "revId": "0cf23108375d0b64e83ad2a2d9dd5d9c5f1b6479",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63e1ff3a_4ae2f234",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-08-27T23:59:19Z",
+      "side": 1,
+      "message": "Yeah, I\u0027m fine waiting. And besides, it makes this change nicer :P",
+      "parentUuid": "c5911f96_108d3adc",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "0cf23108375d0b64e83ad2a2d9dd5d9c5f1b6479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
