@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7622998b_12c93b90",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-27T22:49:41Z",
+      "side": 1,
+      "message": "public link?\n\nhttps://chromium.googlesource.com/chromiumos/third_party/autotest/+/1461a28598ccd88de9b1d9951b2a817e0c971ab0/client/site_tests/network_DefaultProfileServices/network_DefaultProfileServices.py#12",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 191
+      },
+      "revId": "d76161e2330cb38ddc4c84b6bf9328dc87452788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3510aaf5_de340a7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile_services.go",
         "patchSetId": 13
@@ -13,6 +36,29 @@
       "writtenOn": "2019-08-27T02:07:44Z",
       "side": 1,
       "message": "In this case, shll.SafeStart() needs to be called...?",
+      "revId": "d76161e2330cb38ddc4c84b6bf9328dc87452788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb7359fb_ae901e47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile_services.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-27T22:49:41Z",
+      "side": 1,
+      "message": "can these be constants in the Shill package? I don\u0027t want to see so many bits of the D-Bus API scattered across tests, as that makes it hard to track the API (and to make changes to it).",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 7
+      },
       "revId": "d76161e2330cb38ddc4c84b6bf9328dc87452788",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
