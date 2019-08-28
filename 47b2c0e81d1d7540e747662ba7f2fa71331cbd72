@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "17a91248_84a2ce09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-28T19:51:12Z",
+      "side": 1,
+      "message": "Yes, I meant \"capture\".",
+      "parentUuid": "e0c89678_749616ec",
+      "range": {
+        "startLine": 56,
+        "startChar": 72,
+        "endLine": 56,
+        "endChar": 77
+      },
+      "revId": "47b2c0e81d1d7540e747662ba7f2fa71331cbd72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "466c8f96_c2a25133",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
         "patchSetId": 4
