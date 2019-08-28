@@ -73,6 +73,29 @@
     },
     {
       "key": {
+        "uuid": "fe5ab9a4_bca98bae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-28T11:05:03Z",
+      "side": 1,
+      "message": "It\u0027s up to you and/or your team if the failure of gtest process crash (not kernel crash) should be handled here or not. (Though, I\u0027d recommend to handle it in a proper way as I commented below). To move forward, TODO also works for me.\n\nIf you decide to ignore it in this CL, could you update this part of the comment?\n\"The test\" looks ambiguous (whether it refers gtest or it refers Tast\u0027s test case).\nMaybe;\n\n// Run the FlushAtEndOfStream test, but ignore its failure including the process crash.\n// This Tast test case would fail if the gtest causes kernel crash.",
+      "range": {
+        "startLine": 409,
+        "startChar": 56,
+        "endLine": 410,
+        "endChar": 26
+      },
+      "revId": "f377da280adc834799da05966a87dd51b5cc7260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bbb3728d_443efd4b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 4
@@ -239,6 +262,30 @@
       "side": 1,
       "message": "Kernel crashes should not happen under any circumstances. If a crash this serious happens I think it\u0027s OK that other tests won\u0027t be run. This is already the current behavior of the test, so if we really want to make changes here it should be done in a separate CL.\n\nWhen the test crashes no report is produced, so it\u0027s easy to differentiate between crash and test failure. I did have to create crrev.com/c/1772938 to prevent a crash on failure.",
       "parentUuid": "efc8070e_551ed15e",
+      "range": {
+        "startLine": 414,
+        "startChar": 1,
+        "endLine": 414,
+        "endChar": 5
+      },
+      "revId": "f377da280adc834799da05966a87dd51b5cc7260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc0c2173_48b771b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-28T11:05:03Z",
+      "side": 1,
+      "message": "\u003e Kernel crashes should not happen under any circumstances. If a crash this serious happens I think it\u0027s OK that other tests won\u0027t be run. This is already the current behavior of the test, so if we really want to make changes here it should be done in a separate CL.\n\nGot it. Thank you for explanation.\nFor this case, could you add a reference to crbug.com/998464 for test isolation?\n\n\u003e When the test crashes no report is produced, so it\u0027s easy to differentiate between crash and test failure. I did have to create crrev.com/c/1772938 to prevent a crash on failure.\n\nThat is not guaranteed, IIUC. Indeed it could be the current behavior, but actually, we probably would like to have more precise report. cf) crbug.com/989887.\nCould you avoid depending on the behavior?",
+      "parentUuid": "fd4ab1f5_2edaf0ca",
       "range": {
         "startLine": 414,
         "startChar": 1,
