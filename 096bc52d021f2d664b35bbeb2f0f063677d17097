@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c46f9b1_3b19edc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webrtc_decode_accel_used_jpeg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-28T20:46:55Z",
+      "side": 1,
+      "message": "nit: Usually underscores are not used in identifiers in Go. How about mediawebrtc or mediaWebrtc?",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 13
+      },
+      "revId": "096bc52d021f2d664b35bbeb2f0f063677d17097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
