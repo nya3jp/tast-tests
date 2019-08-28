@@ -633,12 +633,10 @@ func hideSystemStatusArea(ctx context.Context, tconn *chrome.Conn) error {
 func toggleSystemStatusArea(ctx context.Context, tconn *chrome.Conn) error {
 	// A reliable way to toggle the status area is by injecting Alt+Shift+s. But on tablet mode
 	// it doesn't work since the keyboard is disabled.
-	// Instead, we inject a touch event in the StatusAreaWidget's button. The problem is that in tablet mode
+	// Instead, we click ("doDefault()") on the StatusAreaWidget's button. The problem is that in tablet mode
 	// there are two buttons and we cannot identify them in a reliable way. We assume that the first button
 	// in the StatusAreaWidget hierarchy is the one that toggles the status area.
 	// TODO(ricardoq): Find a reliable way to find "status tray" button.
-
-	var r arc.Rect
 	err := tconn.EvalPromise(ctx,
 		`new Promise((resolve, reject) => {
 		  chrome.automation.getDesktop(function(root) {
@@ -652,46 +650,14 @@ func toggleSystemStatusArea(ctx context.Context, tconn *chrome.Conn) error {
 		      reject("Failed to locate button in StatusAreaWidget");
 		      return;
 		    }
-		    resolve(button.location);
+		    button.doDefault();
+		    resolve();
 		  })
-		})`, &r)
+		})`, nil)
 	if err != nil {
 		return errors.Wrap(err, "failed to find StatusAreaWidget")
 	}
-
-	tsw, err := input.Touchscreen(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to open touchscreen device")
-	}
-	defer tsw.Close()
-
-	stw, err := tsw.NewSingleTouchWriter()
-	if err != nil {
-		return errors.Wrap(err, "could not create TouchEventWriter")
-	}
-	defer stw.Close()
-
-	dispMode, err := getInternalDisplayMode(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to get display mode")
-	}
-
-	// Inject touch at button's center. Coordinates coming from Chrome are in DPs.
-	x := float64(r.Left+r.Width/2) * dispMode.DeviceScaleFactor
-	y := float64(r.Top+r.Height/2) * dispMode.DeviceScaleFactor
-
-	// Calculate Pixel (screen display) / Tuxel (touch device) ratio.
-	pixelToTuxelX := float64(tsw.Width()) / float64(dispMode.WidthInNativePixels)
-	pixelToTuxelY := float64(tsw.Height()) / float64(dispMode.HeightInNativePixels)
-
-	if err := stw.Move(input.TouchCoord(x*pixelToTuxelX), input.TouchCoord(y*pixelToTuxelY)); err != nil {
-		return err
-	}
-	const touchDuration = 100 * time.Millisecond
-	if err := testing.Sleep(ctx, touchDuration); err != nil {
-		return err
-	}
-	return stw.End()
+	return nil
 }
 
 // waitForNewBoundsWithMargin waits until Chrome animation finishes completely and check the position of an edge of the PIP window.
