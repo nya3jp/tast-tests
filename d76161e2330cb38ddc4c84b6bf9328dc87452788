@@ -128,6 +128,30 @@
       "revId": "d76161e2330cb38ddc4c84b6bf9328dc87452788",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35bd4dbd_f0a500aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile_services.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-28T20:11:49Z",
+      "side": 1,
+      "message": "Normally I\u0027d like to see stuff addressed *before* submitting the CL. *shrug*",
+      "parentUuid": "89f7294f_c0555563",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 7
+      },
+      "revId": "d76161e2330cb38ddc4c84b6bf9328dc87452788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
