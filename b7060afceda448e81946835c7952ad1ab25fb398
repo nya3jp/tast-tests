@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d5923cf2_3c1270aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-08-28T00:34:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "da7d0088_4b3ddd97",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 92
+      },
+      "revId": "b7060afceda448e81946835c7952ad1ab25fb398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3a537dc_0c1dfed6",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2019-08-27T16:37:09Z",
       "side": 1,
       "message": "This doesn\u0027t compile.\n\n# chromiumos/tast/local/bundles/cros/graphics\n../tast-tests/src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go:154:2: non-bool len(decodeHistogramDiff.Buckets) (type int) used as if condition",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 38
+      },
+      "revId": "b7060afceda448e81946835c7952ad1ab25fb398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37ccbb8e_7c52f9a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webrtc_video_playback_delay.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-08-28T00:34:30Z",
+      "side": 1,
+      "message": "Thanks, I did try it but of course now it doesn\u0027t work, so I\u0027m not sure\nwhat I tried anymore.  I corrected the code and run it on kohaku (not on \nsamus anymore):\n\n$ tast -verbose run -build\u003dtrue 100.127.97.77 graphics.WebRTCVideoPlaybackDelay\n2019/08/27 20:22:00 Command line: tast -verbose run -build\u003dtrue 100.127.97.77 graphics.WebRTCVideoPlaybackDelay\n2019/08/27 20:22:00 Using SSH key /home/mcasas/trunk/chromite/ssh_keys/testing_rsa\n2019/08/27 20:22:00 Using SSH dir /home/mcasas/.ssh\n2019/08/27 20:22:00 Writing results to /tmp/tast/results/20190827-202200\n2019/08/27 20:22:00 Connecting to 100.127.97.77\n2019/08/27 20:22:00 Getting architecture from target\n2019/08/27 20:22:00 Building chromiumos/tast/local/bundles/cros from /home/mcasas/trunk/src/platform/tast-tests:/home/mcasas/trunk/src/platform/tast:/usr/lib/gopath\n2019/08/27 20:22:02 Built test bundle in 2.548s\n2019/08/27 20:22:02 Pushing test bundle /tmp/tast/build/x86_64/local_bundles/cros to /usr/local/libexec/tast/bundles/local_pushed on target\n2019/08/27 20:22:04 Pushed test bundle in 1.266s (sent 7.0 MB)\n2019/08/27 20:22:04 Getting data file list from target\n2019/08/27 20:22:04 Got data file list with 1 file(s)\n2019/08/27 20:22:04 Pushing data files to target\n2019/08/27 20:22:04 Pushed data files in 105ms (sent 328 B)\n2019/08/27 20:22:04 Getting software features supported by DUT\n2019/08/27 20:22:04 Software features supported by DUT: alt_syscall amd64 android android_all android_all_both android_both android_p android_p_both arc_camera3 aslr audio_play audio_record autotest-capability:builtin_camera autotest-capability:builtin_or_vivid_camera autotest-capability:builtin_usb_camera autotest-capability:hw_dec_h264_1080_30 autotest-capability:hw_dec_h264_1080_60 autotest-capability:hw_dec_h264_2160_30 autotest-capability:hw_dec_h264_2160_60 autotest-capability:hw_dec_jpeg autotest-capability:hw_dec_vp8_1080_30 autotest-capability:hw_dec_vp8_1080_60 autotest-capability:hw_dec_vp8_2160_30 autotest-capability:hw_dec_vp8_2160_60 autotest-capability:hw_dec_vp9-2_1080_30 autotest-capability:hw_dec_vp9_1080_30 autotest-capability:hw_dec_vp9_1080_60 autotest-capability:hw_dec_vp9_2160_30 autotest-capability:hw_dec_vp9_2160_60 autotest-capability:hw_enc_h264_1080_30 autotest-capability:hw_enc_h264_2160_30 autotest-capability:hw_enc_jpeg autotest-capability:hw_enc_vp8_1080_30 autotest-capability:hw_enc_vp8_2160_30 biometrics_daemon camera_720p chrome chrome_internal cros_config cros_internal crossystem crosvm_gpu cups display_backlight firewall google_virtual_keyboard gpu_sandboxing gsc memd ml_service mosys no_asan no_symlink_mount oci reboot screenshot selinux selinux_current tablet_mode tpm transparent_hugepage usbguard vm_host vp9_sanity wifi\n2019/08/27 20:22:04 Getting initial system state\n2019/08/27 20:22:04 [20:22:05.100] Devserver status: [[http://127.0.0.1:28082 UP]]\n2019/08/27 20:22:04 [20:22:05.100] Found 0 external linked data file(s), need to download 0\n2019/08/27 20:22:04 Started test graphics.WebRTCVideoPlaybackDelay\n2019/08/27 20:22:04 [20:22:05.112] Restarting ui job\n2019/08/27 20:22:05 [20:22:05.712] Clearing device owner info\n2019/08/27 20:22:05 [20:22:05.793] Waiting for org.chromium.SessionManager D-Bus service\n2019/08/27 20:22:05 [20:22:05.801] Asking session_manager to enable Chrome testing\n2019/08/27 20:22:05 [20:22:05.801] Waiting for Chrome to write its debugging port to /home/chronos/DevToolsActivePort\n2019/08/27 20:22:05 [20:22:06.299] Connecting to browser at ws://127.0.0.1:35821/devtools/browser/cbe03afd-7f47-4a63-8b40-85d21ba4ec8f\n2019/08/27 20:22:05 [20:22:06.307] Removing cryptohome for testuser@gmail.com\n2019/08/27 20:22:05 [20:22:06.324] Finding OOBE DevTools target\n2019/08/27 20:22:05 [20:22:06.338] Connecting to Chrome target 71A105FD7B9823D56CDF81CE3807D962\n2019/08/27 20:22:05 [20:22:06.431] Waiting for OOBE\n2019/08/27 20:22:06 [20:22:07.283] Logging in as user \"testuser@gmail.com\"\n2019/08/27 20:22:06 [20:22:07.392] Waiting for cryptohome for user \"testuser@gmail.com\"\n2019/08/27 20:22:13 [20:22:13.630] Waiting for OOBE to be dismissed\n2019/08/27 20:22:17 [20:22:18.238] Creating new page with URL http://127.0.0.1:32957/webrtc_video_display_perf_test.html\n2019/08/27 20:22:17 [20:22:18.274] Connecting to Chrome target 9B1CB030BB1EAD12C67D5358862ABF1A\n2019/08/27 20:22:17 [20:22:18.322] Waiting for test API extension at chrome-extension://behllobkkfkfnphdnhnkndlbkcpglgmj/_generated_background_page.html\n2019/08/27 20:22:17 [20:22:18.323] Connecting to Chrome target 5DDE26EFA52EFD78FF83E06060733F97\n2019/08/27 20:22:17 [20:22:18.331] Test API extension is ready\n2019/08/27 20:22:38 [20:22:38.488] Media.VideoFrameSubmitter: histogram:[[20,24):1 [24,29):1 [29,34):573 [34,40):296 [40,48):233 [48,57):57 [81,96):2]; average: 36.51891659501289\n2019/08/27 20:22:38 [20:22:38.504] Media.MojoVideoDecoder.Decode: histogram:[[0,1):177 [1,2):91 [2,3):50 [3,4):26 [4,5):15 [5,6):17 [6,7):36 [7,8):55 [8,10):124 [10,12):308 [12,14):227 [14,17):51 [17,20):3 [20,24):1 [24,29):5 [29,34):5 [40,48):2 [48,57):2]; average: 8.413807531380755\n2019/08/27 20:22:38 Completed test graphics.WebRTCVideoPlaybackDelay in 33.408s with 0 error(s)\n2019/08/27 20:22:38 Copying /tmp/tast_out.007162948 from host to /tmp/tast/results/20190827-202200/out.tmp\n2019/08/27 20:22:38 Cleaning /tmp/tast_out.007162948 on host\n2019/08/27 20:22:38 Ran 1 local test(s) in 33.628s\n2019/08/27 20:22:38 Collecting system information\n2019/08/27 20:22:38 Copying /tmp/tast_logs.269329894 from host to /tmp/tast/results/20190827-202200/system_logs\n2019/08/27 20:22:38 Cleaning /tmp/tast_logs.269329894 on host\n2019/08/27 20:22:38 Copying /tmp/tast_crashes.158398472 from host to /tmp/tast/results/20190827-202200/crashes\n2019/08/27 20:22:38 Cleaning /tmp/tast_crashes.158398472 on host\n2019/08/27 20:22:38 --------------------------------------------------------------------------------\n2019/08/27 20:22:38 graphics.WebRTCVideoPlaybackDelay  [ PASS ]\n2019/08/27 20:22:38 --------------------------------------------------------------------------------\n2019/08/27 20:22:38 Results saved to /tmp/tast/results/20190827-202200",
+      "parentUuid": "c3a537dc_0c1dfed6",
       "range": {
         "startLine": 154,
         "startChar": 1,
