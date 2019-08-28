@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "658e596a_3ea76805",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crosvm/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-28T02:35:29Z",
+      "side": 1,
+      "message": "Do you have naming suggestion? I have no idea about better naming.",
+      "parentUuid": "0a3d78b0_1ade087a",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 14
+      },
+      "revId": "160b657ad3b666270c0baffa0e0fcd73bdeaa2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2d429024_addadede",
         "filename": "src/chromiumos/tast/local/bundles/cros/crosvm/sanity.go",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "160b657ad3b666270c0baffa0e0fcd73bdeaa2a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0bee0ce_3e59acc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crosvm/sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-28T02:35:29Z",
+      "side": 1,
+      "message": "It\u0027s done by using software deps (http://go/tast-deps). That\u0027s what the TODO below says.\nI\u0027m going to resolve the TODO in separate CLs.",
+      "parentUuid": "2d429024_addadede",
+      "revId": "160b657ad3b666270c0baffa0e0fcd73bdeaa2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "160b657ad3b666270c0baffa0e0fcd73bdeaa2a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2abc4f1d_69534c62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crosvm/sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-28T02:35:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd17e336_2c7ffabb",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 3
+      },
+      "revId": "160b657ad3b666270c0baffa0e0fcd73bdeaa2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -112,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "714e4ecf_7e10491a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crosvm/sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-28T02:35:29Z",
+      "side": 1,
+      "message": "Thank you. I removed the check for now.",
+      "parentUuid": "71965c9a_52e01268",
+      "range": {
+        "startLine": 68,
+        "startChar": 6,
+        "endLine": 68,
+        "endChar": 95
+      },
+      "revId": "160b657ad3b666270c0baffa0e0fcd73bdeaa2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d062ed3_981ff994",
         "filename": "src/chromiumos/tast/local/bundles/cros/crosvm/sanity.go",
         "patchSetId": 3
@@ -159,6 +249,30 @@
     },
     {
       "key": {
+        "uuid": "77cdd278_39c59811",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crosvm/sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-28T02:35:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db3bfa55_28497a80",
+      "range": {
+        "startLine": 74,
+        "startChar": 85,
+        "endLine": 74,
+        "endChar": 148
+      },
+      "revId": "160b657ad3b666270c0baffa0e0fcd73bdeaa2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abf85c82_903c9efe",
         "filename": "src/chromiumos/tast/local/bundles/cros/crosvm/sanity.go",
         "patchSetId": 3
@@ -179,6 +293,30 @@
       "revId": "160b657ad3b666270c0baffa0e0fcd73bdeaa2a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07ea6367_3abc5dbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crosvm/sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-28T02:35:29Z",
+      "side": 1,
+      "message": "Done.\nThanks! It looks nicer now.",
+      "parentUuid": "abf85c82_903c9efe",
+      "range": {
+        "startLine": 83,
+        "startChar": 12,
+        "endLine": 83,
+        "endChar": 65
+      },
+      "revId": "160b657ad3b666270c0baffa0e0fcd73bdeaa2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
