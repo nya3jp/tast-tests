@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2f4221cc_9a54a47a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-28T06:45:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7622998b_12c93b90",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 191
+      },
+      "revId": "d76161e2330cb38ddc4c84b6bf9328dc87452788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3510aaf5_de340a7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile_services.go",
         "patchSetId": 13
@@ -39,6 +63,24 @@
       "revId": "d76161e2330cb38ddc4c84b6bf9328dc87452788",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1755297_7f1f0387",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile_services.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-28T06:45:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3510aaf5_de340a7d",
+      "revId": "d76161e2330cb38ddc4c84b6bf9328dc87452788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "d76161e2330cb38ddc4c84b6bf9328dc87452788",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89f7294f_c0555563",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile_services.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-28T06:45:21Z",
+      "side": 1,
+      "message": "OK. Let me do it in another CL, because it affects other tests.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1772825\nLet\u0027s continue discussion there if needed.",
+      "parentUuid": "bb7359fb_ae901e47",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 7
+      },
+      "revId": "d76161e2330cb38ddc4c84b6bf9328dc87452788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
