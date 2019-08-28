@@ -22,6 +22,30 @@
       "revId": "d25044acb4fd59d27300f00d7fef328b6afeccae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e696ea54_f53e72bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-08-28T03:15:37Z",
+      "side": 1,
+      "message": "Existing test does the same. Maybe we should change it for adapting it to TAST.\nhttps://osscs.corp.google.com/chromium/chromiumos/codesearch/+/master:src/third_party/autotest/files/client/cros/crash/crash_test.py;bpt\u003d0;l\u003d126\nI don\u0027t know the original intention, but guess that it is for preventing submission of artificial crashes in the test to the sender.\n\nOne of the ways would be to remove only the files genearated during this test\u0027s run, although it is not perfect (other background process may crash during it).\nnya@, do we have guideline for cases like this in tast?",
+      "parentUuid": "d676ec5b_87d51b52",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 24
+      },
+      "revId": "d25044acb4fd59d27300f00d7fef328b6afeccae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
