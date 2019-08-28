@@ -348,6 +348,10 @@ func ToolchainOptions(ctx context.Context, s *testing.State) {
 	conds = append(conds, newELFCondition(libstdcVerify, libstdcWhitelist))
 
 	err := filepath.Walk("/", func(path string, info os.FileInfo, err error) error {
+		if os.IsNotExist(err) {
+			// The file has been removed after listed in the parent directory.
+			return nil
+		}
 		if err != nil {
 			return err
 		}
