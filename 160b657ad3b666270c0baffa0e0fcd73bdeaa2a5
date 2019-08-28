@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "595c3275_6960ac31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crosvm/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-08-28T17:42:49Z",
+      "side": 1,
+      "message": "I don\u0027t have a good suggestion but I was aware of several confusion naming scheme in our repo.\ncros-vm, cros_vm - VM-like board, eg. betty.\ncrosvm  - We often refer to crostini, but few documents refer to VM-like board.\n\nCan the package name contain non-alphabetic character? (This is still confusing though)",
+      "parentUuid": "658e596a_3ea76805",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 14
+      },
+      "revId": "160b657ad3b666270c0baffa0e0fcd73bdeaa2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2d429024_addadede",
         "filename": "src/chromiumos/tast/local/bundles/cros/crosvm/sanity.go",
         "patchSetId": 3
