@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e0c89678_749616ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-08-28T17:50:14Z",
+      "side": 1,
+      "message": "Idea to make sure it has expected format. Is your Q about removing \"()\"?  I removed.",
+      "parentUuid": "4c14c6b2_41067d38",
+      "range": {
+        "startLine": 56,
+        "startChar": 72,
+        "endLine": 56,
+        "endChar": 77
+      },
+      "revId": "47b2c0e81d1d7540e747662ba7f2fa71331cbd72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "466c8f96_c2a25133",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b123bff9_a9ba9cc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-08-28T17:50:14Z",
+      "side": 1,
+      "message": "SG. Let have 3 min and see test results.",
+      "parentUuid": "466c8f96_c2a25133",
+      "range": {
+        "startLine": 69,
+        "startChar": 34,
+        "endLine": 69,
+        "endChar": 49
+      },
+      "revId": "47b2c0e81d1d7540e747662ba7f2fa71331cbd72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "956dcacb_b1725e98",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "47b2c0e81d1d7540e747662ba7f2fa71331cbd72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04c716dc_a9490b17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-08-28T17:50:14Z",
+      "side": 1,
+      "message": "We need this. Daily Higiene just starts the self-update flow and now system is busy, this waiting just wait everything is stabilized that mean new Play Store is installed. Without waiting for idle, Play Store self-update started but not finished.\nAdded comment.",
+      "parentUuid": "956dcacb_b1725e98",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "47b2c0e81d1d7540e747662ba7f2fa71331cbd72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
