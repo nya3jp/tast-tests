@@ -6,13 +6,11 @@ package crash
 
 import (
 	"context"
-	"fmt"
 	"strings"
 	"time"
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
 
@@ -56,7 +54,7 @@ func waitForNonEmptyGlobsWithTimeout(ctx context.Context, d *dut.DUT, globs []st
 			return errors.Errorf("%s not found", strings.Join(missingGlobs, ", "))
 		}
 		for _, f := range foundFiles {
-			if out, err := d.Run(ctx, "rm "+f); err != nil {
+			if out, err := d.Command("rm", f).CombinedOutput(ctx); err != nil {
 				testing.ContextLogf(ctx, "Couldn't rm %s: %s", f, string(out))
 			}
 		}
@@ -69,10 +67,9 @@ func waitForNonEmptyGlobsWithTimeout(ctx context.Context, d *dut.DUT, globs []st
 func getMatchingFiles(ctx context.Context, d *dut.DUT, glob string) (map[string]bool, error) {
 	const systemCrashDir = "/var/spool/crash"
 	// Use find -print0 instead of ls to handle files with \n in the name.
-	cmd := fmt.Sprintf("find %s -mindepth 1 -maxdepth 1 -size +0 -name %s -print0", shutil.Escape(systemCrashDir), shutil.Escape(glob))
-	out, err := d.Run(ctx, cmd)
+	out, err := d.Command("find", systemCrashDir, "-mindepth", "1", "-maxdepth", "1", "-size", "+0", "-name", glob, "-print0").CombinedOutput(ctx)
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrapf(err, "find failure: %s", out)
 	}
 	matches := make(map[string]bool)
 	for _, s := range strings.Split(string(out), "\x00") {
@@ -87,9 +84,13 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get DUT")
 	}
 
+	if out, err := d.Command("logger", "Running KernelCrash").CombinedOutput(ctx); err != nil {
+		s.Logf("WARNING: Failed to log info message: %s", out)
+	}
+
 	// Sync filesystem to minimize impact of the panic on other tests
-	if _, err := d.Run(ctx, "sync"); err != nil {
-		s.Fatal("Failed to sync filesystems")
+	if out, err := d.Command("sync").CombinedOutput(ctx); err != nil {
+		s.Fatalf("Failed to sync filesystems: %s", out)
 	}
 
 	// Find any existing kernel crashes so we can ignore them.
@@ -108,7 +109,7 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 	else
 		echo panic > /proc/breakme
 	fi' >/dev/null 2>&1 </dev/null &`
-	if _, err := d.Run(ctx, cmd); err != nil {
+	if err := d.Command("sh", "-c", cmd).Run(ctx); err != nil {
 		s.Fatal("Failed to panic DUT: ", err)
 	}
 
