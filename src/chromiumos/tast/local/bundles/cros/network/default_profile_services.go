@@ -65,11 +65,11 @@ func DefaultProfileServices(ctx context.Context, s *testing.State) {
 	}
 
 	if err := manager.ConfigureService(ctx, map[string]interface{}{
-		"Type":            "wifi",
-		"Mode":            "managed",
-		"SSID":            ssid,
-		"WiFi.HiddenSSID": true,
-		"SecurityClass":   "none",
+		shill.PropertyType:           "wifi",
+		shill.PropertyMode:           "managed",
+		shill.PropertySSID:           ssid,
+		shill.PropertyWiFiHiddenSSID: true,
+		shill.PropertySecurityClass:  "none",
 	}); err != nil {
 		s.Fatal("Failed to configure service: ", err)
 	}
@@ -91,7 +91,7 @@ func DefaultProfileServices(ctx context.Context, s *testing.State) {
 	}
 
 	if _, err := manager.FindMatchingAnyService(ctx, map[string]interface{}{
-		"Name": ssid,
+		shill.PropertyName: ssid,
 	}); err != nil {
 		s.Error("Network not found after restart: ", err)
 	}

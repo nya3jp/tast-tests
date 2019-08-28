@@ -87,6 +87,23 @@ func NewManager(ctx context.Context) (*Manager, error) {
 	return m, nil
 }
 
+// Property names defined in dbus-constants.h .
+const (
+	// Service property names.
+	PropertyName           = "Name"
+	PropertyType           = "Type"
+	PropertyMode           = "Mode"
+	PropertySSID           = "SSID"
+	PropertyStaticIPConfig = "StaticIPConfig"
+	PropertySecurityClass  = "SecurityClass"
+
+	// WiFi Service property names.
+	PropertyWiFiHiddenSSID = "WiFi.HiddenSSID"
+
+	// IPConfig property names.
+	PropertyNameServers = "NameServers"
+)
+
 // FindMatchingService returns a service with matching properties.
 func (m *Manager) FindMatchingService(ctx context.Context, props map[string]interface{}) (dbus.ObjectPath, error) {
 	return m.findMatchingServiceInner(ctx, props, false)
