@@ -212,11 +212,26 @@ func (te *TestEnv) Close(ctx context.Context) {
 	}
 }
 
+// runTask runs a MemoryTask
+func runTask(ctx, taskCtx context.Context, task MemoryTask, te *TestEnv) error {
+	if task.NeedVM() {
+		if err := startVM(ctx, te); err != nil {
+			return errors.Wrap(err, "failed to start VM")
+		}
+	}
+	if err := task.Run(taskCtx, te); err != nil {
+		return errors.Wrapf(err, "failed to run memory task %s", task.String())
+	}
+	return nil
+}
+
 // RunParameters contains the configurable parameters for RunTest
 type RunParameters struct {
 	// ChromeWPRParameters are the chromewpr parameters to include
 	// when starting Chrome and WPR
 	ChromeWPRParameters *chromewpr.Params
+	// ParallelTasks indicates whether the memory tasks should be run in parallel
+	ParallelTasks bool
 }
 
 // RunTest creates a new TestEnv and then runs ARC, Chrome, and VM tasks in parallel.
@@ -242,29 +257,33 @@ func RunTest(ctx context.Context, s *testing.State, tasks []MemoryTask, p *RunPa
 	taskCtx, taskCancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer taskCancel()
 
-	ch := make(chan struct{}, len(tasks))
-	for _, task := range tasks {
-		go func(task MemoryTask) {
-			defer func() {
-				task.Close(ctx, testEnv)
-				ch <- struct{}{}
-			}()
-			if task.NeedVM() {
-				if err := startVM(ctx, testEnv); err != nil {
-					s.Error("Failed to start VM: ", err)
-					return
+	if p.ParallelTasks {
+		ch := make(chan struct{}, len(tasks))
+		for _, task := range tasks {
+			go func(task MemoryTask) {
+				defer func() {
+					task.Close(ctx, testEnv)
+					ch <- struct{}{}
+				}()
+				err = runTask(ctx, taskCtx, task, testEnv)
+				if err != nil {
+					s.Error("Failed to run task: ", err)
 				}
+			}(task)
+		}
+		for i := 0; i < len(tasks); i++ {
+			select {
+			case <-ctx.Done():
+				s.Error("Tasks didn't complete: ", ctx.Err())
+			case <-ch:
 			}
-			if err := task.Run(taskCtx, testEnv); err != nil {
-				s.Errorf("Failed to run memory task %s: %v", task.String(), err)
+		}
+	} else {
+		for _, task := range tasks {
+			err = runTask(ctx, taskCtx, task, testEnv)
+			if err != nil {
+				s.Error("Failed to run task: ", err)
 			}
-		}(task)
-	}
-	for i := 0; i < len(tasks); i++ {
-		select {
-		case <-ctx.Done():
-			s.Error("Tasks didn't complete: ", ctx.Err())
-		case <-ch:
 		}
 	}
 
