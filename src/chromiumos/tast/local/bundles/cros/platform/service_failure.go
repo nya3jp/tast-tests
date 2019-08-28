@@ -59,7 +59,7 @@ func ServiceFailure(ctx context.Context, s *testing.State) {
 
 	params := s.Param().(failureParams)
 
-	if err := metrics.SetConsent(ctx, s.DataPath(platformCrash.TestCert)); err != nil {
+	if err := metrics.SetConsent(ctx, s.DataPath(platformCrash.TestCert), true); err != nil {
 		s.Fatal("Failed to set consent: ", err)
 	}
 
