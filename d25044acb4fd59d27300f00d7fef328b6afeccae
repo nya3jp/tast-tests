@@ -46,6 +46,30 @@
       "revId": "d25044acb4fd59d27300f00d7fef328b6afeccae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33725fd4_4f1071eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-28T03:41:37Z",
+      "side": 1,
+      "message": "Yes, but does autotest have the same behavior of only collecting the crash files at the end of the full suite run? I\u0027m worried that it\u0027s different, but I don\u0027t know autotest well enough to be sure.",
+      "parentUuid": "e696ea54_f53e72bc",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 24
+      },
+      "revId": "d25044acb4fd59d27300f00d7fef328b6afeccae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
