@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc69f65a_e58d3985",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-28T16:56:08Z",
+      "side": 1,
+      "message": "since the valid keys are known, perhaps defining a type for these keys. e.g:\n\n\ntype DBusType string    // example name... feel free to use the one that suits you better\nconst (\n   PropertyName  DBusType \u003d \"Name\"\n   ...\n)\n\nAnd the dictionary, instead of being  map[string]interface{}, it would become:\n   map[DBusType]interface{}",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 47
+      },
+      "revId": "217ddccc3fe3050f83e6819d5a4d3103600dbbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
