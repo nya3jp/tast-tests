@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "bc9a96e9_ad1c926c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cached_vpd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2019-08-28T11:29:25Z",
+      "side": 1,
+      "message": "What happens if you get more than one line of response?",
+      "revId": "15674f9a3bbb528d6d82ac886985ff68456b3be0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b63bf012_1380b794",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cached_vpd.go",
         "patchSetId": 2
@@ -13,6 +30,24 @@
       "writtenOn": "2019-08-13T23:32:34Z",
       "side": 1,
       "message": "The issue isn\u0027t that the if line was too long; the problem is that the test failure message isn\u0027t very descriptive.\n\nInstead, you can say that you expect two tokens, or the first to be sku_number, etc.\n\nThat said, I still am not sure this is the best test approach; this command was only added for testing, and all it\u0027s checking is the format of the response.",
+      "revId": "15674f9a3bbb528d6d82ac886985ff68456b3be0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d083c9b_6854e1c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cached_vpd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2019-08-28T11:29:25Z",
+      "side": 1,
+      "message": "The issue here is that $SKU_NUMBER is hard to interpret in the output here.\n\nFundamentally, this test is a bit problematic because it\u0027s not providing a real expected value; it\u0027s choosing to take anything.\n\nAnyway, you can have an error that there\u0027s no sku_number entry, and a separate one that you expect to see a non-empty string value for it.",
+      "parentUuid": "b63bf012_1380b794",
       "revId": "15674f9a3bbb528d6d82ac886985ff68456b3be0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
