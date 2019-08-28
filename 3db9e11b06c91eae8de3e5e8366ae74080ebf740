@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03323b03_4cb36617",
+        "filename": "src/chromiumos/tast/local/metrics/metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-28T19:21:11Z",
+      "side": 1,
+      "message": "Update comment",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "3db9e11b06c91eae8de3e5e8366ae74080ebf740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
