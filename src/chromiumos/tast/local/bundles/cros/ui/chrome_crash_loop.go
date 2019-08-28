@@ -39,7 +39,7 @@ func init() {
 // and immediately sent to crash_sender; check that crash_sender correctly receives
 // the crash report.
 func ChromeCrashLoop(ctx context.Context, s *testing.State) {
-	err := metrics.SetConsent(ctx, s.DataPath(chromecrash.TestCert))
+	err := metrics.SetConsent(ctx, s.DataPath(chromecrash.TestCert), true)
 	if err != nil {
 		s.Fatal("SetConsent failed: ", err)
 	}
