@@ -349,6 +349,12 @@ func ToolchainOptions(ctx context.Context, s *testing.State) {
 
 	err := filepath.Walk("/", func(path string, info os.FileInfo, err error) error {
 		if err != nil {
+			if os.IsNotExist(err) {
+				// There can be a chance that the file is removed after
+				// listed in the parent directory. We can just ignore the
+				// case.
+				return nil
+			}
 			return err
 		}
 		if info.IsDir() {
