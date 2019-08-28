@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60dfd1b9_5a257e71",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-28T21:17:11Z",
+      "side": 1,
+      "message": "dut.DUT.Run is deprecated. Could you use dut.DUT.Command?",
+      "revId": "82bfd1efeb091e565011e4fb52d12ecbd0bc9f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
