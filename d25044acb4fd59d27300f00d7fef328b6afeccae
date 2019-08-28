@@ -94,6 +94,30 @@
       "revId": "d25044acb4fd59d27300f00d7fef328b6afeccae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25fbbcbe_878a087d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-08-28T20:40:01Z",
+      "side": 1,
+      "message": "Ian is right, in Autotest crash dump collection was done after every test case (which is one of the overhead of Autotest), while Tast collects crash dumps at the end of all tests. So we should not clear crashes in Tast.",
+      "parentUuid": "1af4107f_d3e521b6",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 24
+      },
+      "revId": "d25044acb4fd59d27300f00d7fef328b6afeccae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
