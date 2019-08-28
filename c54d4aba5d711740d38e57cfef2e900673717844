@@ -22,6 +22,30 @@
       "revId": "c54d4aba5d711740d38e57cfef2e900673717844",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e635071d_3ec833f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-08-28T06:18:28Z",
+      "side": 1,
+      "message": "its copied from informational.  i think we may want to run on both places since some daemon starts under conditions (while the condition may not be true on cq)",
+      "parentUuid": "05807250_706232f6",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "c54d4aba5d711740d38e57cfef2e900673717844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
