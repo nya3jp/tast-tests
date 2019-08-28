@@ -103,17 +103,37 @@ func NewManager(ctx context.Context) (*Manager, error) {
 	return m, nil
 }
 
+// ServiceProperty is the type for service property names.
+type ServiceProperty string
+
+// Property names defined in dbus-constants.h .
+const (
+	// Service property names.
+	ServicePropertyName           ServiceProperty = "Name"
+	ServicePropertyType           ServiceProperty = "Type"
+	ServicePropertyMode           ServiceProperty = "Mode"
+	ServicePropertySSID           ServiceProperty = "SSID"
+	ServicePropertyStaticIPConfig ServiceProperty = "StaticIPConfig"
+	ServicePropertySecurityClass  ServiceProperty = "SecurityClass"
+
+	// WiFi service property names.
+	ServicePropertyWiFiHiddenSSID ServiceProperty = "WiFi.HiddenSSID"
+
+	// IPConfig property names.
+	IPConfigPropertyNameServers = "NameServers"
+)
+
 // FindMatchingService returns a service with matching properties.
-func (m *Manager) FindMatchingService(ctx context.Context, props map[string]interface{}) (dbus.ObjectPath, error) {
+func (m *Manager) FindMatchingService(ctx context.Context, props map[ServiceProperty]interface{}) (dbus.ObjectPath, error) {
 	return m.findMatchingServiceInner(ctx, props, false)
 }
 
 // FindMatchingAnyService returns any service including not visible with matching properties.
-func (m *Manager) FindMatchingAnyService(ctx context.Context, props map[string]interface{}) (dbus.ObjectPath, error) {
+func (m *Manager) FindMatchingAnyService(ctx context.Context, props map[ServiceProperty]interface{}) (dbus.ObjectPath, error) {
 	return m.findMatchingServiceInner(ctx, props, true)
 }
 
-func (m *Manager) findMatchingServiceInner(ctx context.Context, props map[string]interface{}, complete bool) (dbus.ObjectPath, error) {
+func (m *Manager) findMatchingServiceInner(ctx context.Context, props map[ServiceProperty]interface{}, complete bool) (dbus.ObjectPath, error) {
 	managerProps, err := getProperties(ctx, m.obj, dbusManagerInterface)
 	if err != nil {
 		return "", err
@@ -131,7 +151,7 @@ func (m *Manager) findMatchingServiceInner(ctx context.Context, props map[string
 
 		match := true
 		for key, val1 := range props {
-			if val2, ok := serviceProps[key]; !ok || !reflect.DeepEqual(val1, val2) {
+			if val2, ok := serviceProps[string(key)]; !ok || !reflect.DeepEqual(val1, val2) {
 				match = false
 				break
 			}
@@ -175,12 +195,12 @@ func (m *Manager) GetProfiles(ctx context.Context) ([]dbus.ObjectPath, error) {
 }
 
 // ConfigureService configures a service with the given properties.
-func (m *Manager) ConfigureService(ctx context.Context, props map[string]interface{}) error {
+func (m *Manager) ConfigureService(ctx context.Context, props map[ServiceProperty]interface{}) error {
 	return call(ctx, m.obj, dbusManagerInterface, "ConfigureService", props).Err
 }
 
 // ConfigureServiceForProfile configures a service at the given profile path.
-func (m *Manager) ConfigureServiceForProfile(ctx context.Context, path dbus.ObjectPath, props map[string]interface{}) (dbus.ObjectPath, error) {
+func (m *Manager) ConfigureServiceForProfile(ctx context.Context, path dbus.ObjectPath, props map[ServiceProperty]interface{}) (dbus.ObjectPath, error) {
 	var service dbus.ObjectPath
 	if err := call(ctx, m.obj, dbusManagerInterface, "ConfigureServiceForProfile", path, props).Store(&service); err != nil {
 		return "", errors.Wrap(err, "failed to configure service")

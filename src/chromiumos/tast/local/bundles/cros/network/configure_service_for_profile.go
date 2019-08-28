@@ -59,9 +59,11 @@ func ConfigureServiceForProfile(ctx context.Context, s *testing.State) {
 		shill.SafeStart(ctx)
 	}()
 
-	props := map[string]interface{}{
-		"Type":           "ethernet",
-		"StaticIPConfig": map[string]interface{}{"NameServers": []string{"8.8.8.8"}},
+	props := map[shill.ServiceProperty]interface{}{
+		shill.ServicePropertyType: "ethernet",
+		shill.ServicePropertyStaticIPConfig: map[string]interface{}{
+			shill.IPConfigPropertyNameServers: []string{"8.8.8.8"},
+		},
 	}
 	_, err = manager.ConfigureServiceForProfile(ctx, objectPath, props)
 	if err != nil {
