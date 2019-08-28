@@ -16,6 +16,24 @@
       "revId": "8625203a8d4fa1c6db299282c823ca8a416e8b6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff0f3bdb_a1e0d8a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_preview_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1356168
+      },
+      "writtenOn": "2019-08-28T17:20:39Z",
+      "side": 1,
+      "message": "Added an explicit comment as you suggested. This works as a precautionary step to ensure nothing is left over from a previous test.",
+      "parentUuid": "9f9bcc26_e7f87d8d",
+      "revId": "8625203a8d4fa1c6db299282c823ca8a416e8b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
