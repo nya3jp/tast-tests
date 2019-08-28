@@ -516,7 +516,7 @@ func availableTCPPorts(count int) ([]int, error) {
 	return ports, nil
 }
 
-// initBrowser restarts the browser on the DUT in preparation for testing.  It
+// InitBrowser restarts the browser on the DUT in preparation for testing.  It
 // returns a Chrome pointer, used for later communication with the browser, and
 // a Cmd pointer for an already-started WPR process, which needs to be killed
 // when the test ends (successfully or not).  If the returned error is not nil,
@@ -525,7 +525,7 @@ func availableTCPPorts(count int) ([]int, error) {
 //
 // If recordPageSet is true, the test records a page set instead of replaying
 // the pre-recorded set.
-func initBrowser(ctx context.Context, p *RunParameters) (*chrome.Chrome, *testexec.Cmd, error) {
+func InitBrowser(ctx context.Context, p *RunParameters) (*chrome.Chrome, *testexec.Cmd, error) {
 	if p.UseLiveSites {
 		testing.ContextLog(ctx, "Starting Chrome with live sites")
 		cr, err := chrome.New(ctx)
@@ -599,7 +599,11 @@ func initBrowser(ctx context.Context, p *RunParameters) (*chrome.Chrome, *testex
 		// default.
 		args = append(args, "--ash-host-window-bounds=3840x2048", "--screen-config=3840x2048/i")
 	}
-	tentativeCr, err = chrome.New(ctx, chrome.ExtraArgs(args...))
+	if p.UseARC {
+		tentativeCr, err = chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs(args...))
+	} else {
+		tentativeCr, err = chrome.New(ctx, chrome.ExtraArgs(args...))
+	}
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "cannot start Chrome")
 	}
@@ -1030,6 +1034,12 @@ func runPhase3(ctx context.Context, s *testing.State, cr *chrome.Chrome, rset *r
 
 // RunParameters contains the configurable parameters for Run.
 type RunParameters struct {
+	// MemoryUser indicates if the test is being run as part of a memoryuser test
+	MemoryUser bool
+	// ChromeInst is the Chrome instance to use for the test
+	ChromeInst *chrome.Chrome
+	// WPR is the Cmd pointer for an already-started WPR process
+	WPR *testexec.Cmd
 	// DormantCodePath is the path name of a JS file with code that tests
 	// for completion of a page load.
 	DormantCodePath string
@@ -1056,6 +1066,8 @@ type RunParameters struct {
 	// chromeboxes (otherwise Chrome will configure a default 1366x768
 	// screen).
 	FakeLargeScreen bool
+	// UseARC instructs Chrome to be started with ARC enabled
+	UseARC bool
 }
 
 // Run creates a memory pressure situation by loading multiple tabs into Chrome
@@ -1091,21 +1103,27 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 
 	perfValues := perf.NewValues()
 
-	cr, wpr, err := initBrowser(ctx, p)
-	if err != nil {
-		s.Fatal("Cannot start browser: ", err)
+	cr := p.ChromeInst
+	wpr := p.WPR
+	if cr == nil {
+		cr, wpr, err = InitBrowser(ctx, p)
+		if err != nil {
+			s.Fatal("Cannot start browser: ", err)
+		}
 	}
-	defer cr.Close(ctx)
-	defer func() {
-		if wpr == nil {
-			return
-		}
-		defer wpr.Wait()
-		// Send SIGINT to exit properly in recording mode.
-		if err := wpr.Process.Signal(os.Interrupt); err != nil {
-			s.Fatal("Cannot kill WPR")
-		}
-	}()
+	if !p.MemoryUser {
+		defer cr.Close(ctx)
+		defer func() {
+			if wpr == nil {
+				return
+			}
+			defer wpr.Wait()
+			// Send SIGINT to exit properly in recording mode.
+			if err := wpr.Process.Signal(os.Interrupt); err != nil {
+				s.Fatal("Cannot kill WPR")
+			}
+		}()
+	}
 
 	// Log various system measurements, to help understand the memory
 	// manager behavior.
