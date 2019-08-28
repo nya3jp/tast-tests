@@ -22,6 +22,30 @@
       "revId": "3bf6b81c4b402768712f395973fc8eb0b80a7012",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a9bbc77_9d85a51f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_accel_perf.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-08-28T08:42:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddae576e_3c4425ef",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 30
+      },
+      "revId": "3bf6b81c4b402768712f395973fc8eb0b80a7012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
