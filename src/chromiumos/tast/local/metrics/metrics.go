@@ -20,10 +20,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// SetConsent sets up the system to have metrics consent. Note that if you use
-// chrome.New() after this, you must use chrome.KeepState() as one of the parameters.
-// certFile should be the complete path to a PKCS #12 format file.
-func SetConsent(ctx context.Context, certFile string) error {
+// SetConsent sets up the system to have, or not to have metrics consent. Note
+// that if you use chrome.New() after this, you must use chrome.KeepState() as
+// one of the parameters. certFile should be the complete path to a PKCS #12
+// format file.
+func SetConsent(ctx context.Context, certFile string, consent bool) error {
 	const (
 		legacyConsent = "/home/chronos/Consent To Send Stats"
 	)
@@ -35,7 +36,7 @@ func SetConsent(ctx context.Context, certFile string) error {
 	}
 	settings := &enterprise_management.ChromeDeviceSettingsProto{
 		MetricsEnabled: &enterprise_management.MetricsEnabledProto{
-			MetricsEnabled: proto.Bool(true),
+			MetricsEnabled: proto.Bool(consent),
 		},
 	}
 	if err := session.SetUpDevice(ctx); err != nil {
@@ -58,22 +59,26 @@ func SetConsent(ctx context.Context, certFile string) error {
 	if err := session.StoreSettings(ctx, sm, chrome.DefaultUser, privKey, nil, settings); err != nil {
 		return errors.Wrap(err, "failed to store user policy")
 	}
-	// Create deprecated consent file.  This is created *after* the
-	// policy file in order to avoid a race condition where Chrome
-	// might remove the consent file if the policy's not set yet.
-	// We create it as a temp file first in order to make the creation
-	// of the consent file, owned by chronos, atomic.
-	// See crosbug.com/18413.
-	tempFile := legacyConsent + ".tmp"
-	if err := ioutil.WriteFile(tempFile, []byte("test-consent"), 0644); err != nil {
-		return errors.Wrapf(err, "failed to write to legacy consent file %s", tempFile)
-	}
+	if consent {
+		// Create deprecated consent file.  This is created *after* the
+		// policy file in order to avoid a race condition where Chrome
+		// might remove the consent file if the policy's not set yet.
+		// We create it as a temp file first in order to make the creation
+		// of the consent file, owned by chronos, atomic.
+		// See crosbug.com/18413.
+		tempFile := legacyConsent + ".tmp"
+		if err := ioutil.WriteFile(tempFile, []byte("test-consent"), 0644); err != nil {
+			return errors.Wrapf(err, "failed to write to legacy consent file %s", tempFile)
+		}
 
-	if err := os.Chown(tempFile, int(sysutil.ChronosUID), int(sysutil.ChronosGID)); err != nil {
-		return errors.Wrapf(err, "failed to chown legacy consent file %s", tempFile)
-	}
-	if err := os.Rename(tempFile, legacyConsent); err != nil {
-		return errors.Wrapf(err, "failed to rename legacy consent file %s to %s", tempFile, legacyConsent)
+		if err := os.Chown(tempFile, int(sysutil.ChronosUID), int(sysutil.ChronosGID)); err != nil {
+			return errors.Wrapf(err, "failed to chown legacy consent file %s", tempFile)
+		}
+		if err := os.Rename(tempFile, legacyConsent); err != nil {
+			return errors.Wrapf(err, "failed to rename legacy consent file %s to %s", tempFile, legacyConsent)
+		}
+	} else {
+		os.Remove(legacyConsent)
 	}
 
 	return nil

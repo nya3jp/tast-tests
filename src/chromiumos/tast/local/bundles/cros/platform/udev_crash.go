@@ -151,7 +151,7 @@ func UdevCrash(ctx context.Context, s *testing.State) {
 		s.Log("No Atmel device found; this test should not be run on this device")
 	}
 
-	if err := metrics.SetConsent(ctx, s.DataPath(platform_crash.TestCert)); err != nil {
+	if err := metrics.SetConsent(ctx, s.DataPath(platform_crash.TestCert), true); err != nil {
 		s.Fatal("Failed to set consent: ", err)
 	}
 
