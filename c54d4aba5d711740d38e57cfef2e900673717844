@@ -46,6 +46,30 @@
       "revId": "c54d4aba5d711740d38e57cfef2e900673717844",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f8794a6_2cedd973",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-28T15:39:51Z",
+      "side": 1,
+      "message": "No need to keep it in informational, IIUC.\nCritical tests also run on release builders.",
+      "parentUuid": "e635071d_3ec833f3",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "c54d4aba5d711740d38e57cfef2e900673717844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
