@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2e1f5ede_8c75d46a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-28T20:02:35Z",
+      "side": 1,
+      "message": "Except, the D-Bus API is actually a dictionary. And I believe there is a difference between \"property key is missing\" and \"property key is present, with a default value\". I\u0027m not sure a golang struct would map (pun!) very nicely to this. A map is still the appropriate construct, I believe.",
+      "parentUuid": "67fe4baf_34c39d2e",
+      "revId": "217ddccc3fe3050f83e6819d5a4d3103600dbbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc69f65a_e58d3985",
         "filename": "src/chromiumos/tast/local/shill/shill.go",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2019-08-28T16:56:08Z",
       "side": 1,
       "message": "since the valid keys are known, perhaps defining a type for these keys. e.g:\n\n\ntype DBusType string    // example name... feel free to use the one that suits you better\nconst (\n   PropertyName  DBusType \u003d \"Name\"\n   ...\n)\n\nAnd the dictionary, instead of being  map[string]interface{}, it would become:\n   map[DBusType]interface{}",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 47
+      },
+      "revId": "217ddccc3fe3050f83e6819d5a4d3103600dbbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9e5636b_4cd2c9db",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-28T20:02:35Z",
+      "side": 1,
+      "message": "\u003e since the valid keys are known, perhaps defining a type for these keys. e.g:\n\nThat sounds like a good idea to me.\n\n\u003e type DBusType string    // example name... feel free to use the one that suits you better\n\nThere are many namespaces for various D-Bus object types in Shill. e.g., Manager, Service, Device, etc. It would make sense to give a type name that includes some of that information. And the \"DBus\" part is pretty much implicit, since D-Bus is the only interface to Shill, so I don\u0027t think that deserves inclusion in the type name.\n\nMy suggestion: ServiceProperty.\n\n(This also mirrors the naming that is already used in Autotest: shill_proxy.SERVICE_PROPERTY_*.)",
+      "parentUuid": "bc69f65a_e58d3985",
       "range": {
         "startLine": 90,
         "startChar": 0,
