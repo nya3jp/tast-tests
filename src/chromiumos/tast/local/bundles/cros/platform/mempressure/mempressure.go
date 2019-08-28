@@ -11,7 +11,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"math"
-	"net"
 	"os"
 	"path/filepath"
 	"time"
@@ -19,11 +18,11 @@ import (
 	"github.com/shirou/gopsutil/mem"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/platform/chromewpr"
 	"chromiumos/tast/local/bundles/cros/platform/kernelmeter"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/perf"
-	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
 
@@ -466,162 +465,6 @@ func (rset *rendererSet) add(id int, r *renderer) {
 	rset.renderersByTabID[id] = r
 }
 
-// waitForServerSocket tries to connect to a TCP socket, which is a string in
-// the form "host:port", e.g. "localhost:8080", served by server, which is an
-// already-started server process. If connecting to the socket fails,
-// server.DumpLog is called to log more information.
-func waitForServerSocket(ctx context.Context, socket string, server *testexec.Cmd) error {
-	err := testing.Poll(ctx, func(ctx context.Context) error {
-		conn, err := net.Dial("tcp", socket)
-		if err != nil {
-			return err
-		}
-		conn.Close()
-		return nil
-	}, &testing.PollOptions{
-		Interval: 1 * time.Second,
-		Timeout:  60 * time.Second,
-	})
-	if err != nil {
-		// Try to collect the server log to understand why we could not connect.
-		if dumpErr := server.DumpLog(ctx); dumpErr != nil {
-			// Log error but do not return it since the earlier
-			// error is more informative.
-			testing.ContextLog(ctx, "Could not dump server log: ", dumpErr)
-		}
-	}
-	return err
-}
-
-// availableTCPPorts returns a list of TCP ports on localhost that are not in
-// use.  Returns an error if one or more ports cannot be allocated.  Note that
-// the ports are not reserved, but chances that they remain available for at
-// least a short time after this call are very high.
-func availableTCPPorts(count int) ([]int, error) {
-	var ls []net.Listener
-	defer func() {
-		for _, l := range ls {
-			l.Close()
-		}
-	}()
-	var ports []int
-	for i := 0; i < count; i++ {
-		l, err := net.Listen("tcp", ":0")
-		if err != nil {
-			return nil, err
-		}
-		ls = append(ls, l)
-		ports = append(ports, l.Addr().(*net.TCPAddr).Port)
-	}
-	return ports, nil
-}
-
-// initBrowser restarts the browser on the DUT in preparation for testing.  It
-// returns a Chrome pointer, used for later communication with the browser, and
-// a Cmd pointer for an already-started WPR process, which needs to be killed
-// when the test ends (successfully or not).  If the returned error is not nil,
-// the first two return values are nil.  The WPR process pointer is nil also
-// when useLiveSites is true, since WPR is not started in that case.
-//
-// If recordPageSet is true, the test records a page set instead of replaying
-// the pre-recorded set.
-func initBrowser(ctx context.Context, p *RunParameters) (*chrome.Chrome, *testexec.Cmd, error) {
-	if p.UseLiveSites {
-		testing.ContextLog(ctx, "Starting Chrome with live sites")
-		cr, err := chrome.New(ctx)
-		return cr, nil, err
-	}
-	var (
-		tentativeCr  *chrome.Chrome
-		tentativeWPR *testexec.Cmd
-	)
-	defer func() {
-		if tentativeCr != nil {
-			tentativeCr.Close(ctx)
-		}
-		if tentativeWPR != nil {
-			if err := tentativeWPR.Kill(); err != nil {
-				testing.ContextLog(ctx, "Cannot kill WPR: ", err)
-			}
-		}
-	}()
-
-	ports, err := availableTCPPorts(2)
-	if err != nil {
-		return nil, nil, errors.Wrap(err, "cannot allocate WPR ports")
-	}
-	httpPort := ports[0]
-	httpsPort := ports[1]
-	testing.ContextLogf(ctx, "Starting Chrome with WPR at ports %d and %d", httpPort, httpsPort)
-
-	// Start the Web Page Replay process.  Normally this replays a supplied
-	// WPR archive.  If recordPageSet is true, WPR records an archive
-	// instead.
-	//
-	// The supplied WPR archive is stored in a private Google cloud storage
-	// bucket and may not available in all setups.  In this case it must be
-	// installed manually the first time the test is run on a DUT.  The GS
-	// URL of the archive is contained in
-	// data/memory_pressure_mixed_sites.wprgo.external.  The archive should
-	// be copied to any location in the DUT (somewhere in /usr/local is
-	// recommended) and the call to initBrowser should be updated to
-	// reflect that location.
-	mode := "replay"
-	if p.RecordPageSet {
-		mode = "record"
-	}
-	testing.ContextLog(ctx, "Using WPR archive ", p.WPRArchivePath)
-	tentativeWPR = testexec.CommandContext(ctx, "wpr", mode,
-		fmt.Sprintf("--http_port=%d", httpPort),
-		fmt.Sprintf("--https_port=%d", httpsPort),
-		"--https_cert_file=/usr/local/share/wpr/wpr_cert.pem",
-		"--https_key_file=/usr/local/share/wpr/wpr_key.pem",
-		"--inject_scripts=/usr/local/share/wpr/deterministic.js",
-		p.WPRArchivePath)
-
-	if err := tentativeWPR.Start(); err != nil {
-		tentativeWPR.DumpLog(ctx)
-		return nil, nil, errors.Wrap(err, "cannot start WPR")
-	}
-
-	// Restart chrome for use with WPR.  Chrome can start before WPR is
-	// ready because it will not need it until we start opening tabs.
-	resolverRules := fmt.Sprintf("MAP *:80 127.0.0.1:%d,MAP *:443 127.0.0.1:%d,EXCLUDE localhost",
-		httpPort, httpsPort)
-	resolverRulesFlag := fmt.Sprintf("--host-resolver-rules=%q", resolverRules)
-	spkiList := "PhrPvGIaAMmd29hj8BCZOq096yj7uMpRNHpn5PDxI6I="
-	spkiListFlag := fmt.Sprintf("--ignore-certificate-errors-spki-list=%s", spkiList)
-	args := []string{resolverRulesFlag, spkiListFlag}
-	if p.FakeLargeScreen {
-		// The first flag makes Chrome create a larger window.  The
-		// second flag is only effective if the device does not have a
-		// display (chromeboxes).  Without it, Chrome uses a 1366x768
-		// default.
-		args = append(args, "--ash-host-window-bounds=3840x2048", "--screen-config=3840x2048/i")
-	}
-	tentativeCr, err = chrome.New(ctx, chrome.ExtraArgs(args...))
-	if err != nil {
-		return nil, nil, errors.Wrap(err, "cannot start Chrome")
-	}
-
-	// Wait for WPR to initialize.
-	httpSocketName := fmt.Sprintf("localhost:%d", httpPort)
-	httpsSocketName := fmt.Sprintf("localhost:%d", httpsPort)
-	if err := waitForServerSocket(ctx, httpSocketName, tentativeWPR); err != nil {
-		return nil, nil, errors.Wrapf(err, "cannot connect to WPR at %s", httpSocketName)
-	}
-	testing.ContextLog(ctx, "WPR HTTP socket is up at ", httpSocketName)
-	if err := waitForServerSocket(ctx, httpsSocketName, tentativeWPR); err != nil {
-		return nil, nil, errors.Wrapf(err, "cannot connect to WPR at %s", httpsSocketName)
-	}
-	testing.ContextLog(ctx, "WPR HTTPS socket is up at ", httpsSocketName)
-	cr := tentativeCr
-	tentativeCr = nil
-	wpr := tentativeWPR
-	tentativeWPR = nil
-	return cr, wpr, nil
-}
-
 // logAndResetStats logs the VM stats from meter, identifying them with
 // label.  Then it resets meter.
 func logAndResetStats(s *testing.State, meter *kernelmeter.Meter, label string) {
@@ -872,7 +715,7 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 	// imaginary user will cycle through in their imaginary workflow.
 	s.Logf("Opening %d initial tabs", initialTabSetSize)
 	tabLoadTimeout := 20 * time.Second
-	if p.RecordPageSet {
+	if p.Mode == chromewpr.Record {
 		tabLoadTimeout = 50 * time.Second
 	}
 	urlIndex := 0
@@ -900,7 +743,7 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 	// opened tabs until a tab discard occurs.
 	for {
 		// When recording load each page only once.
-		if p.RecordPageSet && len(rset.tabIDs) > len(tabURLs) {
+		if p.Mode == chromewpr.Record && len(rset.tabIDs) > len(tabURLs) {
 			break
 		}
 		validTabIDs, err = getValidTabIDs(ctx, cr)
@@ -952,7 +795,7 @@ func runPhase1(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunP
 				float64(z.Used)/float64(z.Original),
 				float64(z.Compressed)/float64(z.Used))
 		}
-		if p.RecordPageSet {
+		if p.Mode == chromewpr.Record {
 			// When recording, add extra time in case the quiesce
 			// test had a false positive.
 			if err := testing.Sleep(ctx, 10*time.Second); err != nil {
@@ -1038,30 +881,20 @@ type RunParameters struct {
 	PageFilePath string
 	// PageFileCompressionRatio is the approximate zram compression ratio of the content of PageFilePath.
 	PageFileCompressionRatio float64
-	// WPRArchivePath is the path name of a WPR archive.
-	WPRArchivePath string
 	// MaxTabCount is the maximal tab count to open
 	MaxTabCount int
 	// UseLogIn controls whether Run should use GAIA login.
 	// (This is not yet functional.)
 	UseLogIn bool
-	// UseLiveSites controls whether Run should skip WPR and
-	// load pages directly from the internet.
-	UseLiveSites bool
-	// RecordPageSet instructs Run to run in record mode
+	// Mode indicates whether to run in record mode
 	// vs. replay mode.
-	RecordPageSet bool
-	// FakeLargeScreen instructs Chrome to use a large screen when no
-	// displays are connected, which can happen, for instance, with
-	// chromeboxes (otherwise Chrome will configure a default 1366x768
-	// screen).
-	FakeLargeScreen bool
+	Mode chromewpr.Mode
 }
 
 // Run creates a memory pressure situation by loading multiple tabs into Chrome
 // until the first tab discard occurs.  It takes various measurements as the
 // pressure increases (phase 1) and afterwards (phase 2).
-func Run(ctx context.Context, s *testing.State, p *RunParameters) {
+func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, p *RunParameters) {
 	const (
 		initialTabSetSize    = 5
 		recentTabSetSize     = 5
@@ -1075,7 +908,7 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 		s.Fatal("Cannot obtain memory info: ", err)
 	}
 
-	if p.RecordPageSet {
+	if p.Mode == chromewpr.Record {
 		// Don't attempt to record the pageset on a 2GB device.
 		minimumRAM := kernelmeter.NewMemSizeMiB(3 * 1024)
 		if memInfo.Total < minimumRAM {
@@ -1090,22 +923,6 @@ func Run(ctx context.Context, s *testing.State, p *RunParameters) {
 	defer fullMeter.Close(ctx)
 
 	perfValues := perf.NewValues()
-
-	cr, wpr, err := initBrowser(ctx, p)
-	if err != nil {
-		s.Fatal("Cannot start browser: ", err)
-	}
-	defer cr.Close(ctx)
-	defer func() {
-		if wpr == nil {
-			return
-		}
-		defer wpr.Wait()
-		// Send SIGINT to exit properly in recording mode.
-		if err := wpr.Process.Signal(os.Interrupt); err != nil {
-			s.Fatal("Cannot kill WPR")
-		}
-	}()
 
 	// Log various system measurements, to help understand the memory
 	// manager behavior.
