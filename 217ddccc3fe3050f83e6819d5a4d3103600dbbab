@@ -81,6 +81,30 @@
       "revId": "217ddccc3fe3050f83e6819d5a4d3103600dbbab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2cfc66d_4998fd23",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-28T20:06:42Z",
+      "side": 1,
+      "message": "\u003e There are many namespaces for various D-Bus object types in Shill.\n...\n\u003e (This also mirrors the naming that is already used in Autotest: shill_proxy.SERVICE_PROPERTY_*.)\n\nI kinda wonder why there isn\u0027t any such naming distinction for platform2/system_api/dbus/shill/dbus-constants.h though. Maybe because they\u0027re all a mouthful? The best you get is comments like this.",
+      "parentUuid": "f9e5636b_4cd2c9db",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 47
+      },
+      "revId": "217ddccc3fe3050f83e6819d5a4d3103600dbbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
