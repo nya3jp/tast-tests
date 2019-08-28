@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/platform/chromewpr"
 	"chromiumos/tast/local/bundles/cros/platform/mempressure"
 	"chromiumos/tast/testing"
 )
@@ -30,8 +31,18 @@ func init() {
 func MemoryPressureRecorder(ctx context.Context, s *testing.State) {
 	p := &mempressure.RunParameters{
 		DormantCodePath: s.DataPath(mempressure.DormantCode),
-		WPRArchivePath:  "/tmp/archive.wprgo",
-		RecordPageSet:   true,
+		Mode:            chromewpr.Record,
 	}
-	mempressure.Run(ctx, s, p)
+
+	cp := &chromewpr.Params{
+		WPRArchivePath: "/tmp/archive.wprgo",
+		Mode:           chromewpr.Record,
+	}
+	w, err := chromewpr.New(ctx, cp)
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer w.Close(ctx)
+
+	mempressure.Run(ctx, s, w.Chrome, p)
 }
