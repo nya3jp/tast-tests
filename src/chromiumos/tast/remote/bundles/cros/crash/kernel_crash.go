@@ -87,6 +87,10 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get DUT")
 	}
 
+	if _, err := d.Run(ctx, "logger 'Running KernelCrash'"); err != nil {
+		s.Log("WARNING: Failed to log info message")
+	}
+
 	// Sync filesystem to minimize impact of the panic on other tests
 	if _, err := d.Run(ctx, "sync"); err != nil {
 		s.Fatal("Failed to sync filesystems")
