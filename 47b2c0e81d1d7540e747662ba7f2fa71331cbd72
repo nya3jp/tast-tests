@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c14c6b2_41067d38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-28T11:27:27Z",
+      "side": 1,
+      "message": "You don\u0027t need capturing?",
+      "range": {
+        "startLine": 56,
+        "startChar": 72,
+        "endLine": 56,
+        "endChar": 77
+      },
+      "revId": "47b2c0e81d1d7540e747662ba7f2fa71331cbd72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "466c8f96_c2a25133",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-28T11:27:27Z",
+      "side": 1,
+      "message": "Can this be shrink to 3min or so to see the trajectory?\nAccording to the comment, if this is done in 2mins in most cases, 5min sounds a bit too longer to me.",
+      "range": {
+        "startLine": 69,
+        "startChar": 34,
+        "endLine": 69,
+        "endChar": 49
+      },
+      "revId": "47b2c0e81d1d7540e747662ba7f2fa71331cbd72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "956dcacb_b1725e98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-28T11:27:27Z",
+      "side": 1,
+      "message": "What is this for? If the waitForDeailyHigieneDone() is completed, it looks like we don\u0027t need to wait...?",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "47b2c0e81d1d7540e747662ba7f2fa71331cbd72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
