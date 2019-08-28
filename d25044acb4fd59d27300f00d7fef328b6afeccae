@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d676ec5b_87d51b52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-28T02:35:24Z",
+      "side": 1,
+      "message": "I\u0027m worried about this clearing core files from previous failed tests, which we may need in order to debug those test failures. https://groups.google.com/a/chromium.org/d/topic/tast-users/IXxB7-xdwCk/discussion",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 24
+      },
+      "revId": "d25044acb4fd59d27300f00d7fef328b6afeccae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
