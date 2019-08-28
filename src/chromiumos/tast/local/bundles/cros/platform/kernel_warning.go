@@ -27,7 +27,7 @@ func init() {
 }
 
 func KernelWarning(ctx context.Context, s *testing.State) {
-	if err := metrics.SetConsent(ctx, s.DataPath(platformCrash.TestCert)); err != nil {
+	if err := metrics.SetConsent(ctx, s.DataPath(platformCrash.TestCert), true); err != nil {
 		s.Fatal("Failed to set consent: ", err)
 	}
 
