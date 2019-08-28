@@ -105,6 +105,30 @@
       "revId": "217ddccc3fe3050f83e6819d5a4d3103600dbbab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ed7be0c_292d140f",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-08-28T20:48:16Z",
+      "side": 1,
+      "message": "If we only put properties in this type, could we just drop the \u0027Property\u0027 as well? i.e. \u0027ServiceName\u0027 or \u0027IPConfigNameServers\u0027\n\n\u003e I kinda wonder why there isn\u0027t any such naming distinction for platform2/system_api/dbus/shill/dbus-constants.h though\n\nAgreed. kTypePPP is a latent name collision, as it was originally meant for IPConfig::Method::kMethodPPP, but we don\u0027t have any code that sets IPConfig::Properties::method to it, so we can rely on it only being used for Technology::kPPP. It just seems clearer to have at least some namespacing.",
+      "parentUuid": "d2cfc66d_4998fd23",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 47
+      },
+      "revId": "217ddccc3fe3050f83e6819d5a4d3103600dbbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
