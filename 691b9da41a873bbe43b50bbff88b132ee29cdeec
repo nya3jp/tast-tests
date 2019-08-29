@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2b0f05e2_837287cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/qemu/sanity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-29T22:48:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edb0db0b_2c00b05a",
+      "revId": "691b9da41a873bbe43b50bbff88b132ee29cdeec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91f79560_eb3592d7",
         "filename": "src/chromiumos/tast/local/bundles/cros/qemu/sanity.go",
         "patchSetId": 6
@@ -39,6 +57,30 @@
       "revId": "691b9da41a873bbe43b50bbff88b132ee29cdeec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2e90d99_3a6af8d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/qemu/sanity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-29T22:48:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91f79560_eb3592d7",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 46
+      },
+      "revId": "691b9da41a873bbe43b50bbff88b132ee29cdeec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
