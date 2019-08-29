@@ -33,6 +33,13 @@ const (
 	extURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/cvox2/background/background.html"
 )
 
+// Node represents an accessibility struct, which contains properties from chrome.automation.AutomationNode
+// which are used in tast tests.
+type Node struct {
+	Class   string
+	Tooltip string
+}
+
 // Enabled checks if accessibility is enabled in Android.
 func Enabled(ctx context.Context, a *arc.ARC) (bool, error) {
 	res, err := a.Command(ctx, "settings", "--user", "0", "get", "secure", "accessibility_enabled").Output(testexec.DumpLogOnError)
