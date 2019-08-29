@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "91b89037_41389da6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crosvm/doc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-29T07:30:07Z",
+      "side": 1,
+      "message": "Renamed to qemu.",
+      "parentUuid": "37f2c8f8_6b672b39",
+      "range": {
+        "startLine": 5,
+        "startChar": 11,
+        "endLine": 5,
+        "endChar": 17
+      },
+      "revId": "45d0cf067cc35afbbc8be21c1ca39cc41cef2820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2acea36_010de1fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crosvm/doc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-29T07:30:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7251cf4_5254ff69",
+      "range": {
+        "startLine": 5,
+        "startChar": 18,
+        "endLine": 5,
+        "endChar": 57
+      },
+      "revId": "45d0cf067cc35afbbc8be21c1ca39cc41cef2820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "609406b8_4c743ae6",
         "filename": "src/chromiumos/tast/local/bundles/cros/crosvm/sanity.go",
         "patchSetId": 4
@@ -85,6 +133,30 @@
       "revId": "45d0cf067cc35afbbc8be21c1ca39cc41cef2820",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bbb7fc5_0e4f8d4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crosvm/sanity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-29T07:30:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82b5a8ac_f0b5c34a",
+      "range": {
+        "startLine": 48,
+        "startChar": 29,
+        "endLine": 48,
+        "endChar": 57
+      },
+      "revId": "45d0cf067cc35afbbc8be21c1ca39cc41cef2820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

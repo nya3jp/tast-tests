@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "c4d315c2_33836bcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crosvm/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-29T07:30:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "595c3275_6960ac31",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 14
+      },
+      "revId": "160b657ad3b666270c0baffa0e0fcd73bdeaa2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d429024_addadede",
         "filename": "src/chromiumos/tast/local/bundles/cros/crosvm/sanity.go",
         "patchSetId": 3
