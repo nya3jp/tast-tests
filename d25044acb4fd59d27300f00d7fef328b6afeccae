@@ -118,6 +118,30 @@
       "revId": "d25044acb4fd59d27300f00d7fef328b6afeccae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fdc2b0a_84708d8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-08-29T02:23:01Z",
+      "side": 1,
+      "message": "Should we leave dumps by artificial crashes as well? (I think it\u0027d also help debugging the crash test itself except that it might be confusing/spamming for other people.)",
+      "parentUuid": "25fbbcbe_878a087d",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 24
+      },
+      "revId": "d25044acb4fd59d27300f00d7fef328b6afeccae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
