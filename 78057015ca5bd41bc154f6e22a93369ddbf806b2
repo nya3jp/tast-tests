@@ -286,6 +286,24 @@
       "revId": "78057015ca5bd41bc154f6e22a93369ddbf806b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "626252b7_32f583cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-29T23:05:18Z",
+      "side": 1,
+      "message": "Sorry, I may not fully understand your point.\n\nIf the key point here is to check the \"stop condition\", looking at the state on login screen seems the straightforward way to me. Because it actually exercises \"midis is stopped\".\n\n\u003e ensuring that midis stopped correctly doesn\u0027t guarantee that it will start again on relogin...\n\nI couldn\u0027t fully understand this situation. Could you elaborate a bit more?\nAt least, IIUC, the cheets_Midis checks whether or not the old/new PID is different.\nIf old/new PID is same, midis did not stopped on login screen. Thus, I thought this covers the case. What I\u0027m missing...?",
+      "parentUuid": "a9709c4f_af7402fb",
+      "revId": "78057015ca5bd41bc154f6e22a93369ddbf806b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

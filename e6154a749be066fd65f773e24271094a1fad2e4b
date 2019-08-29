@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "d82ecef0_c3df0f06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-29T23:05:18Z",
+      "side": 1,
+      "message": "For Tast porting, we takes care of performance/flakiness/maintainability.\nSome test porting is very straightforward, and some other is some rework.\nI think this test case is the latter. In order not to mimic the autotest situation, we are very careful about those points.\nThe word \"porting\" may be confusing... Hmm...\n\nMarked resolved, now.",
+      "parentUuid": "8ff41a1a_cd92d303",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 0
+      },
+      "revId": "e6154a749be066fd65f773e24271094a1fad2e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85eefe7b_97d2b9c0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
         "patchSetId": 4
