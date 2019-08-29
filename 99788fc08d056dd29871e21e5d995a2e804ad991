@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "009918c1_3026bc9e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2019-08-29T22:23:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f35ecbcb_1484eb6e",
+      "range": {
+        "startLine": 30,
+        "startChar": 11,
+        "endLine": 30,
+        "endChar": 16
+      },
+      "revId": "99788fc08d056dd29871e21e5d995a2e804ad991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e330694a_e1789183",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "99788fc08d056dd29871e21e5d995a2e804ad991",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7d5c59c_7209526c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2019-08-29T22:23:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e330694a_e1789183",
+      "range": {
+        "startLine": 37,
+        "startChar": 56,
+        "endLine": 37,
+        "endChar": 61
+      },
+      "revId": "99788fc08d056dd29871e21e5d995a2e804ad991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "ea814266_5196e8d3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2019-08-29T22:23:49Z",
+      "side": 1,
+      "message": "I thought about it, it looks like reboot might be a good candidate for keeping it within dut.go: it seems a bit more natural to write \"dut.Reboot(ctx)\". WDYT?",
+      "parentUuid": "ce631f3e_1ee5d408",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 64
+      },
+      "revId": "99788fc08d056dd29871e21e5d995a2e804ad991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5adb51f8_44d4d976",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
         "patchSetId": 4
@@ -109,6 +181,24 @@
       "revId": "99788fc08d056dd29871e21e5d995a2e804ad991",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7d6d73e_e2277d23",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2019-08-29T22:23:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5adb51f8_44d4d976",
+      "revId": "99788fc08d056dd29871e21e5d995a2e804ad991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -135,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "01ca5400_7f06526d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2019-08-29T22:23:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c6c3a73_538948f8",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 67
+      },
+      "revId": "99788fc08d056dd29871e21e5d995a2e804ad991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72bef956_279b582b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
         "patchSetId": 4
@@ -149,6 +263,24 @@
       "revId": "99788fc08d056dd29871e21e5d995a2e804ad991",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1796940f_fe6489e1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2019-08-29T22:23:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72bef956_279b582b",
+      "revId": "99788fc08d056dd29871e21e5d995a2e804ad991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
