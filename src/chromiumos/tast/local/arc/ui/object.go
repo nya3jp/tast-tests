@@ -93,6 +93,14 @@ func (o *Object) Click(ctx context.Context) error {
 	return o.callSimple(ctx, "click", o.s)
 }
 
+// Exists returns if an object exists.
+//
+// This method corresponds to UiObject.exists().
+// https://developer.android.com/reference/android/support/test/uiautomator/UiObject.html#exists
+func (o *Object) Exists(ctx context.Context) error {
+	return o.callSimple(ctx, "exist", o.s)
+}
+
 // SetText sets the text property of a view.
 //
 // This method corresponds to UiObject.setText().
