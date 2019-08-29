@@ -7,10 +7,14 @@ package arc
 import (
 	"context"
 	"fmt"
+	pb "frameworks/base/core/proto/android/server"
 	"math"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
+
+	"github.com/golang/protobuf/proto"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/input"
@@ -238,38 +242,49 @@ func (ac *Activity) WindowBounds(ctx context.Context) (Rect, error) {
 // SurfaceBounds returns the surface bounds in pixels. A surface represents the buffer used to store
 // the window content. This is the buffer used by SurfaceFlinger and Wayland.
 // The surface bounds might be smaller than the window bounds since the surface does not
-// include the caption.
-// And does not include the shelf size if the activity is fullscreen/maximized and the shelf is in "always show" mode.
+// include the caption and shelf sizes, even if they are visible.
 // See: WindowBounds
 func (ac *Activity) SurfaceBounds(ctx context.Context) (Rect, error) {
-	cmd := ac.a.Command(ctx, "dumpsys", "window", "windows")
+	cmd := ac.a.Command(ctx, "dumpsys", "window", "--proto")
 	output, err := cmd.Output()
 	if err != nil {
 		return Rect{}, errors.Wrap(err, "failed to launch dumpsys")
 	}
+	wms := &pb.WindowManagerServiceDumpProto{}
+	if err := proto.Unmarshal(output, wms); err != nil {
+		return Rect{}, errors.Wrap(err, "failed to unmarshal dumpsys output")
+	}
 
-	// Looking for:
-	//   Window #0 Window{a486f07 u0 com.android.settings/com.android.settings.Settings}:
-	//     mDisplayId=0 stackId=2 mSession=Session{dd34b88 2586:1000} mClient=android.os.BinderProxy@705e146
-	//     mHasSurface=true isReadyForDisplay()=true mWindowRemovalAllowed=false
-	//     [...many other properties...]
-	//     mFrame=[0,0][1536,1936] last=[0,0][1536,1936]
-	// We are interested in "mFrame="
-	regStr := `(?m)` + // Enable multiline.
-		`^\s*Window #\d+ Window{\S+ \S+ ` + regexp.QuoteMeta(ac.pkgName+"/"+ac.pkgName+ac.activityName) + `}:$` + // Match our activity
-		`(?:\n.*?)*` + // Skip entire lines with a non-greedy search...
-		`^\s*mFrame=\[(\d+),(\d+)\]\[(\d+),(\d+)\]` // ...until we match the first mFrame=
-	re := regexp.MustCompile(regStr)
-	groups := re.FindStringSubmatch(string(output))
-	if len(groups) != 5 {
-		testing.ContextLog(ctx, string(output))
-		return Rect{}, errors.New("failed to parse dumpsys output; activity not running perhaps?")
+	name := ac.pkgName + "/" + ac.activityName
+	root := wms.GetRootWindowContainer()
+	for _, d := range root.GetDisplays() {
+		for _, s := range d.GetStacks() {
+			for _, t := range s.GetTasks() {
+				for _, a := range t.GetAppWindowTokens() {
+					if a.GetName() == name {
+						for _, w := range a.GetWindowToken().GetWindows() {
+							// A "Splash Screen" window might be added to the AppWindow. Skip it.
+							// See: http://cs/pi-arc-dev/frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java?l=3080&rcl=453999da27de2a0792c2bfa332ab4aa437e3e1f6
+							if strings.HasPrefix(w.GetIdentifier().GetTitle(), "Splash Screen") {
+								continue
+							}
+							f := w.GetFrame()
+							if f == nil {
+								return Rect{}, errors.Errorf("invalid surface bounds for %q", name)
+							}
+							return Rect{
+								Left:   int(f.GetLeft()),
+								Top:    int(f.GetTop()),
+								Width:  int(f.GetRight() - f.GetLeft()),
+								Height: int(f.GetBottom() - f.GetTop()),
+							}, nil
+						}
+					}
+				}
+			}
+		}
 	}
-	bounds, err := parseBounds(groups[1:5])
-	if err != nil {
-		return Rect{}, err
-	}
-	return bounds, nil
+	return Rect{}, errors.Errorf("failed to get surface bounds for %q", name)
 }
 
 // Close closes the resources associated with the Activity instance.
