@@ -62,6 +62,14 @@ func VirtualDesks(ctx context.Context, s *testing.State) {
 	}
 	defer a.Close()
 
+	// Explicitly start a browser window to test that switching to a new desk
+	// doesn't cause it to change desks.
+	if conn, err := cr.NewConn(ctx, ""); err != nil {
+		s.Fatal("Failed to create a Chrome window: ", err)
+	} else {
+		defer conn.Close()
+	}
+
 	ki, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to get the keyboard: ", err)
