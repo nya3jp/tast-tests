@@ -22,6 +22,30 @@
       "revId": "5696b73d26b1a6f92875a800b37a6c1d6b9604d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa2da2d6_aee31ab6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/virtual_desks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2019-08-29T17:48:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0869a3fd_356d182e",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 14
+      },
+      "revId": "5696b73d26b1a6f92875a800b37a6c1d6b9604d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
