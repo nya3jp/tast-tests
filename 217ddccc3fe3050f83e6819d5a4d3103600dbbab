@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "fcb31263_030910a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-29T06:57:56Z",
+      "side": 1,
+      "message": "Thank you for the suggestion. Given Brian\u0027s comment, let me keep it as is.",
+      "parentUuid": "2e1f5ede_8c75d46a",
+      "revId": "217ddccc3fe3050f83e6819d5a4d3103600dbbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc69f65a_e58d3985",
         "filename": "src/chromiumos/tast/local/shill/shill.go",
         "patchSetId": 1
@@ -129,6 +147,30 @@
       "revId": "217ddccc3fe3050f83e6819d5a4d3103600dbbab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bed7ec70_94626d9e",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-29T06:57:56Z",
+      "side": 1,
+      "message": "Introduced ServiceProperty type. I updated the prefixes to distinguish service names and other property name (i.e. \"NameServers\").\n\nI\u0027m not sure removing common prefix is a good thing. In Go, prefixing something same to the same kind of constants is common. e.g. http.Method* and http.Status* https://golang.org/pkg/net/http/#pkg-constants . It in a sense serves the purpose of namespace in other language, where Go doesn\u0027t have namespace.",
+      "parentUuid": "3ed7be0c_292d140f",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 47
+      },
+      "revId": "217ddccc3fe3050f83e6819d5a4d3103600dbbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
