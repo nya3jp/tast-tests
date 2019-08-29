@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "3edefe76_cb883dc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/qemu/sanity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-29T22:53:30Z",
+      "side": 1,
+      "message": "Working on registration test...",
+      "parentUuid": "2b0f05e2_837287cd",
+      "revId": "691b9da41a873bbe43b50bbff88b132ee29cdeec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91f79560_eb3592d7",
         "filename": "src/chromiumos/tast/local/bundles/cros/qemu/sanity.go",
         "patchSetId": 6
