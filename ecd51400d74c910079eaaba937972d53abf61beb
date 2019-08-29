@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "23979766_d2adfd30",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-29T13:30:48Z",
+      "side": 1,
+      "message": "Hmm... good point. With rethinking, probably this is just redundant and so confusing.\nDropped the part.",
+      "parentUuid": "ab212b5b_9fc92c18",
+      "range": {
+        "startLine": 563,
+        "startChar": 68,
+        "endLine": 564,
+        "endChar": 30
+      },
+      "revId": "ecd51400d74c910079eaaba937972d53abf61beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab6cc136_079632a8",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "ecd51400d74c910079eaaba937972d53abf61beb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f4a4b09_456b937b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-29T13:30:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab6cc136_079632a8",
+      "range": {
+        "startLine": 566,
+        "startChar": 20,
+        "endLine": 566,
+        "endChar": 29
+      },
+      "revId": "ecd51400d74c910079eaaba937972d53abf61beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
