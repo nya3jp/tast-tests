@@ -6,9 +6,12 @@ package arc
 
 import (
 	"context"
+	pb "frameworks/base/core/proto/android/server"
 	"path/filepath"
 	"strings"
 	"time"
+
+	"github.com/golang/protobuf/proto"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -62,8 +65,9 @@ type preImpl struct {
 	cr  *chrome.Chrome
 	arc *ARC
 
-	origInitPID  int32               // initial PID (outside container) of ARC init process
-	origPackages map[string]struct{} // initially-installed packages
+	origInitPID    int32               // initial PID (outside container) of ARC init process
+	origPackages   map[string]struct{} // initially-installed packages
+	origActivities map[string]struct{} // initially-running activities
 }
 
 func (p *preImpl) String() string         { return p.name }
@@ -85,10 +89,14 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 			if err != nil {
 				return nil, errors.Wrap(err, "failed to get installed packages")
 			}
-			if err := p.checkUsable(ctx, pkgs); err != nil {
+			acts, err := p.runningActivities(ctx)
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to get running activities")
+			}
+			if err := p.checkUsable(ctx, pkgs, acts); err != nil {
 				return nil, errors.Wrap(err, "existing Chrome or ARC connection is unusable")
 			}
-			if err := p.resetState(ctx, pkgs); err != nil {
+			if err := p.resetState(ctx, pkgs, acts); err != nil {
 				return nil, errors.Wrap(err, "failed resetting existing Chrome or ARC session")
 			}
 			if err := p.arc.setLogcatFile(filepath.Join(s.OutDir(), logcatName)); err != nil {
@@ -136,6 +144,9 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 		if p.origPackages, err = p.installedPackages(ctx); err != nil {
 			s.Fatal("Failed to list initial packages: ", err)
 		}
+		if p.origActivities, err = p.runningActivities(ctx); err != nil {
+			s.Fatal("Failed to list running activities: ", err)
+		}
 	}()
 
 	// Prevent the arc and chrome package's New and Close functions from
@@ -177,9 +188,45 @@ func (p *preImpl) installedPackages(ctx context.Context) (map[string]struct{}, e
 	return pkgs, nil
 }
 
+// runningActivities returns a set of currently-running activities, e.g. "com.android.settings".
+func (p *preImpl) runningActivities(ctx context.Context) (map[string]struct{}, error) {
+	ctx, st := timing.Start(ctx, "running_activites")
+	defer st.End()
+
+	out, err := p.arc.Command(ctx, "dumpsys", "activity", "--proto", "activities").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "listing activities failed")
+	}
+
+	ams := &pb.ActivityManagerServiceDumpActivitiesProto{}
+	if err := proto.Unmarshal(out, ams); err != nil {
+		return nil, errors.Wrap(err, "failed unmarshalling ActivityManagerService protobuf")
+	}
+
+	acts := make(map[string]struct{})
+	super := ams.GetActivityStackSupervisor()
+	for _, d := range super.GetDisplays() {
+		for _, stack := range d.GetStacks() {
+			for _, t := range stack.GetTasks() {
+				// Activity name format is: "package_name/activity_name".
+				// For killing an activity, will only care about the package name.
+				n := t.GetRealActivity()
+				// Neither package name or activity name are allowed to use the "/" char. Testing for "len != 2" is safe.
+				s := strings.Split(n, "/")
+				if len(s) != 2 {
+					return nil, errors.Errorf("failed to parse activity name %q", n)
+				}
+				acts[s[0]] = struct{}{}
+			}
+		}
+	}
+	return acts, nil
+}
+
 // checkUsable verifies that p.cr and p.arc are still usable. Both must be non-nil.
 // pkgs should come from installedPackages.
-func (p *preImpl) checkUsable(ctx context.Context, pkgs map[string]struct{}) error {
+// acts should come from runningActivities.
+func (p *preImpl) checkUsable(ctx context.Context, pkgs, acts map[string]struct{}) error {
 	ctx, st := timing.Start(ctx, "check_arc")
 	defer st.End()
 
@@ -199,13 +246,20 @@ func (p *preImpl) checkUsable(ctx context.Context, pkgs map[string]struct{}) err
 		return errors.Errorf("pm didn't list %q among %d package(s)", pkg, len(pkgs))
 	}
 
+	// Check that home activity is running.
+	const act = "org.chromium.arc.home"
+	if _, ok := acts[act]; !ok {
+		return errors.Errorf("pm didn't list %q among %d package(s)", pkg, len(pkgs))
+	}
+
 	// TODO(nya): Should we also check that p.cr is still usable?
 	return nil
 }
 
 // resetState resets ARC's and Chrome's state between tests.
 // pkgs should come from installedPackages.
-func (p *preImpl) resetState(ctx context.Context, pkgs map[string]struct{}) error {
+// acts should come from runningActivities.
+func (p *preImpl) resetState(ctx context.Context, pkgs, acts map[string]struct{}) error {
 	// Uninstall any packages that weren't present when ARC booted.
 	for pkg := range pkgs {
 		if _, ok := p.origPackages[pkg]; ok {
@@ -214,6 +268,17 @@ func (p *preImpl) resetState(ctx context.Context, pkgs map[string]struct{}) erro
 		testing.ContextLog(ctx, "Uninstalling ", pkg)
 		if err := adbCommand(ctx, "uninstall", pkg).Run(testexec.DumpLogOnError); err != nil {
 			return errors.Wrapf(err, "failed to uninstall %v", pkg)
+		}
+	}
+
+	// Kill any activity that wasn't present when ARC booted.
+	for act := range acts {
+		if _, ok := p.origActivities[act]; ok {
+			continue
+		}
+		testing.ContextLogf(ctx, "Killing %q activity", act)
+		if err := p.arc.Command(ctx, "am", "force-stop", act).Run(testexec.DumpLogOnError); err != nil {
+			return errors.Wrapf(err, "failed to kill %v", act)
 		}
 	}
 
