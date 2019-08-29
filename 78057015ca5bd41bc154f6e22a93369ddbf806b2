@@ -19,6 +19,115 @@
     },
     {
       "key": {
+        "uuid": "e38d8041_f565b959",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-29T12:56:29Z",
+      "side": 1,
+      "message": "_\n?",
+      "range": {
+        "startLine": 45,
+        "startChar": 32,
+        "endLine": 45,
+        "endChar": 35
+      },
+      "revId": "78057015ca5bd41bc154f6e22a93369ddbf806b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e813d9b_b0ef3824",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-29T12:56:29Z",
+      "side": 1,
+      "message": "Nice idea!",
+      "range": {
+        "startLine": 48,
+        "startChar": 19,
+        "endLine": 48,
+        "endChar": 28
+      },
+      "revId": "78057015ca5bd41bc154f6e22a93369ddbf806b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ab3bfd4_f46c0a1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-29T12:56:29Z",
+      "side": 1,
+      "message": "I think it\u0027s obvious from the continue. Could you remove?",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 54,
+        "endChar": 18
+      },
+      "revId": "78057015ca5bd41bc154f6e22a93369ddbf806b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef58e55a_999703f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-29T12:56:29Z",
+      "side": 1,
+      "message": "Having multiple places to check e is a kind of confusing to me.\nHow about computing the value `found bool` in the loop, and check the expectation after the loop?\n\nfound :\u003d false\nfor ... {\n  // found midis process\n  found :\u003d true\n  break\n}\n\nif e \u003d\u003d running \u0026\u0026 !found {\n  return errros....\n}\nif e \u003d\u003d stopped \u0026\u0026 found {\n  return err...\n}\nreturn nil",
+      "revId": "78057015ca5bd41bc154f6e22a93369ddbf806b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f3fcfa6_b347d76d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-29T12:56:29Z",
+      "side": 1,
+      "message": "nit: be running",
+      "range": {
+        "startLine": 84,
+        "startChar": 28,
+        "endLine": 84,
+        "endChar": 35
+      },
+      "revId": "78057015ca5bd41bc154f6e22a93369ddbf806b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "996d4132_6693b07b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
         "patchSetId": 3
