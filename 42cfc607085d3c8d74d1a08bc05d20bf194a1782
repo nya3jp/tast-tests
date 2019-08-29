@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62234f68_58aec5c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-29T02:44:26Z",
+      "side": 1,
+      "message": "Duplicate message? I usually see the point of Wrap as \"let the person who has to debug the test failure know which step failed\"",
+      "range": {
+        "startLine": 154,
+        "startChar": 28,
+        "endLine": 154,
+        "endChar": 71
+      },
+      "revId": "42cfc607085d3c8d74d1a08bc05d20bf194a1782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28ccb531_bb6cfae0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-29T02:44:26Z",
+      "side": 1,
+      "message": "Is this used anywhere?",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 56
+      },
+      "revId": "42cfc607085d3c8d74d1a08bc05d20bf194a1782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d65b409_322d55aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-08-29T02:44:26Z",
+      "side": 1,
+      "message": "time.Second. The recommended way of converting from seconds -\u003e time.Duration is\ntime.Duration(seconds)*time.Second\nhttps://golang.org/pkg/time/#pkg-constants",
+      "range": {
+        "startLine": 84,
+        "startChar": 43,
+        "endLine": 84,
+        "endChar": 46
+      },
+      "revId": "42cfc607085d3c8d74d1a08bc05d20bf194a1782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
