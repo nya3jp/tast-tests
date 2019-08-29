@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d586fa4e_dc41bf7e",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-29T23:25:00Z",
+      "side": 1,
+      "message": "Oh, I have overlooked that the go\u0027s package is expected to start like a domain.\nSo maybe it should be \"android.com/frameworks/base/core/proto/android/server\" or something?\n\ncf) https://blog.golang.org/organizing-go-code\n\nI\u0027d expected this is listed closer to github.com/... section.\nWDYT?",
+      "parentUuid": "6c7f66d7_ed0bb453",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "f23fceabf03a62537c9566cb4d47bd5200f22fb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d85377ed_8806b206",
         "filename": "src/chromiumos/tast/local/arc/pre.go",
         "patchSetId": 2
