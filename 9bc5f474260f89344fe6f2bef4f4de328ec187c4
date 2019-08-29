@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "20535422_ef25cf56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2019-08-29T17:20:54Z",
+      "side": 1,
+      "message": "directory",
+      "range": {
+        "startLine": 10,
+        "startChar": 34,
+        "endLine": 10,
+        "endChar": 43
+      },
+      "revId": "9bc5f474260f89344fe6f2bef4f4de328ec187c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4169ebf_c396a67c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2019-08-29T17:20:54Z",
+      "side": 1,
+      "message": "parent",
+      "range": {
+        "startLine": 10,
+        "startChar": 26,
+        "endLine": 10,
+        "endChar": 33
+      },
+      "revId": "9bc5f474260f89344fe6f2bef4f4de328ec187c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2424920f_602bb54b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2019-08-29T17:20:54Z",
+      "side": 1,
+      "message": "Is this a binary? Who creates it?",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 11,
+        "endChar": 35
+      },
+      "revId": "9bc5f474260f89344fe6f2bef4f4de328ec187c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "694a2ede_e6310de2",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
         "patchSetId": 1
