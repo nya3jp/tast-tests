@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db21f18f_8df6230f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-29T12:05:56Z",
+      "side": 1,
+      "message": "Clar: arc-eng looks slightly too wider. pmalani@, do you have any recommendation?",
+      "revId": "78057015ca5bd41bc154f6e22a93369ddbf806b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "996d4132_6693b07b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-29T12:05:56Z",
+      "side": 1,
+      "message": "Note: the original test tried to log in Chrome twice, and compared the PIDs.\nUnfortunately, Chrome login takes time. This is alternative, which checks the service is properly terminated on login screen.\nThis should ensure the same condition.",
+      "revId": "78057015ca5bd41bc154f6e22a93369ddbf806b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
