@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "694a2ede_e6310de2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-29T00:17:51Z",
+      "side": 1,
+      "message": "I think simply\n// The file has been removed after listed in the parent directory.\ncan convey the meaning.",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 12
+      },
+      "revId": "9bc5f474260f89344fe6f2bef4f4de328ec187c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2d8d3c5_c9797eb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-29T00:17:51Z",
+      "side": 1,
+      "message": "nit: you can reduce the nest by moving this clause at the top of the function.",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 4
+      },
+      "revId": "9bc5f474260f89344fe6f2bef4f4de328ec187c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
