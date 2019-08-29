@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "802e9446_05cea2fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-29T21:11:26Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "f3272bf5_cb2d42b5",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "e6154a749be066fd65f773e24271094a1fad2e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cea28f30_3682a77d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3e0cfd55_062b2283",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-29T21:11:26Z",
+      "side": 1,
+      "message": "It stops on stop-arc-instance, which happens on logout.\nIIUC, D-Bus call is expected to be initiated a mojo call from Android, so I think it is guaranteed that midis should not start on login screen, right?",
+      "parentUuid": "cea28f30_3682a77d",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 0
+      },
+      "revId": "e6154a749be066fd65f773e24271094a1fad2e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85eefe7b_97d2b9c0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2019-08-29T20:46:04Z",
       "side": 1,
       "message": "cheets_Midis logs out, and then logs back in to see that \"midis\" has been restarted, i.e new PID than the earlier one (the one associated with L102), so I think we need another instance of block L89-L105 ; perhaps that can be broken out into a function.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 1
+      },
+      "revId": "e6154a749be066fd65f773e24271094a1fad2e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f22f6efc_2dccc1ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-29T21:11:26Z",
+      "side": 1,
+      "message": "Could you find my note in the PS3?\nBecause this ensures the midis terminated here, and it is guaranteed that midis is started with ARC start above, it is effectively ensured the new midis service is started.\n\nChrome-login is very heavy operation, so doing so twice consumes a lot of time, which is nice to avoid. WDYT?",
+      "parentUuid": "85eefe7b_97d2b9c0",
       "range": {
         "startLine": 107,
         "startChar": 0,
