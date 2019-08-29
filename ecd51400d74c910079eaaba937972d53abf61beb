@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab212b5b_9fc92c18",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-29T13:15:37Z",
+      "side": 1,
+      "message": "Not sure what does it mean. Expression like \"unless XXX is set\" can be easier to understand.\nAlso, I guess the end result of this is ARC also runs in us region, right? Could you mention it?\nTo be honest \"Tast runs in us region\" also doesn\u0027t make sense to me... isn\u0027t region the notion of Chrome? Maybe s/Tast/Chrome/ ?\nSorry if my understanding is incomplete.",
+      "range": {
+        "startLine": 563,
+        "startChar": 68,
+        "endLine": 564,
+        "endChar": 30
+      },
+      "revId": "ecd51400d74c910079eaaba937972d53abf61beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab6cc136_079632a8",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-29T13:15:37Z",
+      "side": 1,
+      "message": "huge nit: Play Store\n?",
+      "range": {
+        "startLine": 566,
+        "startChar": 20,
+        "endLine": 566,
+        "endChar": 29
+      },
+      "revId": "ecd51400d74c910079eaaba937972d53abf61beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
