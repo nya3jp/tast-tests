@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f48a4108_8f6fe892",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-08-29T17:01:15Z",
+      "side": 1,
+      "message": "className?\n(according to https://cs.chromium.org/chromium/src/third_party/closure_compiler/externs/automation.js?q\u003dautomation.js\u0026sq\u003dpackage:chromium\u0026dr\u0026l\u003d1224)",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 6
+      },
+      "revId": "1836d75ed6460084454dcb408eeec05a0fa3729f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f26917b_60c96f29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-08-29T17:01:15Z",
+      "side": 1,
+      "message": "How about creating a new function to get the focused node in accessibility.go (in this CL)?\nThis can eliminate duplicated code a lot.",
+      "range": {
+        "startLine": 213,
+        "startChar": 19,
+        "endLine": 214,
+        "endChar": 28
+      },
+      "revId": "1836d75ed6460084454dcb408eeec05a0fa3729f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
