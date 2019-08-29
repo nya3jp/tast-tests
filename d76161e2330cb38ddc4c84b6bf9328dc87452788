@@ -152,6 +152,30 @@
       "revId": "d76161e2330cb38ddc4c84b6bf9328dc87452788",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff4abe92_027d4273",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/default_profile_services.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-29T07:07:50Z",
+      "side": 1,
+      "message": "I will submit this CL after the next CL got LGTM.",
+      "parentUuid": "35bd4dbd_f0a500aa",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 7
+      },
+      "revId": "d76161e2330cb38ddc4c84b6bf9328dc87452788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
