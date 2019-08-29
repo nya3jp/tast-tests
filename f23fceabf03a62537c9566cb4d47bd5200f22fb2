@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c7f66d7_ed0bb453",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-29T20:11:34Z",
+      "side": 1,
+      "message": "should I move this to somewhere else?\nATM the linter complains and says that it should be here.",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "f23fceabf03a62537c9566cb4d47bd5200f22fb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d85377ed_8806b206",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-29T20:11:34Z",
+      "side": 1,
+      "message": "in my tests runningPackages() takes \u003c 0.1s.\nThat\u0027s why I haven\u0027t added a \"timing.Start()\" in runningPackages.\n\n(for the matter, installedPackages also takes \u003c 0.1s... in my tests).",
+      "range": {
+        "startLine": 172,
+        "startChar": 2,
+        "endLine": 172,
+        "endChar": 76
+      },
+      "revId": "f23fceabf03a62537c9566cb4d47bd5200f22fb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
