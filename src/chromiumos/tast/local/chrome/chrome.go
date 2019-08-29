@@ -559,7 +559,12 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) (port int, err err
 			// Disable ARC opt-in verification to test ARC with mock GAIA accounts.
 			"--disable-arc-opt-in-verification",
 			// Always start ARC to avoid unnecessarily stopping mini containers.
-			"--arc-start-mode=always-start-with-no-play-store")
+			"--arc-start-mode=always-start-with-no-play-store",
+			// Do not sync the locale with ARC. Now Tast runs in "us" region if
+			// there's no explicit set.
+			"--arc-disable-locale-sync",
+			// Do not update PlayStore automatically.
+			"--arc-play-store-auto-update=off")
 		if !c.restrictARCCPU {
 			args = append(args,
 				// Disable CPU restrictions to let tests run faster
