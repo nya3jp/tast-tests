@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85eefe7b_97d2b9c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-08-29T20:46:04Z",
+      "side": 1,
+      "message": "cheets_Midis logs out, and then logs back in to see that \"midis\" has been restarted, i.e new PID than the earlier one (the one associated with L102), so I think we need another instance of block L89-L105 ; perhaps that can be broken out into a function.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 1
+      },
+      "revId": "e6154a749be066fd65f773e24271094a1fad2e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
