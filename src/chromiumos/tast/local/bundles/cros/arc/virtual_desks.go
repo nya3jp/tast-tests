@@ -62,6 +62,12 @@ func VirtualDesks(ctx context.Context, s *testing.State) {
 	}
 	defer a.Close()
 
+	if conn, err := cr.NewConn(ctx, ""); err != nil {
+		s.Fatal("Failed to create a chrome window: ", err)
+	} else {
+		defer conn.Close()
+	}
+
 	ki, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to get the keyboard: ", err)
