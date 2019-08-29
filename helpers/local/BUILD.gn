@@ -21,9 +21,42 @@ executable("graphics.GBM.gbmtest") {
 }
 
 executable("kernel.PerfCallgraph.graph") {
-  cflags = [ "-O2", "-g", "-std=c99" ]
+  cflags = [
+    "-O2",
+    "-g",
+    "-std=c99",
+  ]
   sources = [
     "kernel.PerfCallgraph.graph.c",
+  ]
+}
+
+executable("platform.UserCrash.crasher") {
+  sources = [
+    "platform.UserCrash.crasher.bomb.cc",
+    "platform.UserCrash.crasher.crasher.cc",
+  ]
+}
+
+action("platform.UserCrash.crasher.sym") {
+  out_file = "${root_build_dir}/platform.UserCrash.crasher.sym"
+
+  # This is the output by the :platform.UserCrash.crasher executable rule.
+  # GN cannot calculate the output filename of an executable rule at configuration time.
+  in_file = "${root_build_dir}/platform.UserCrash.crasher"
+  inputs = [
+    in_file,
+  ]
+  outputs = [
+    out_file,
+  ]
+  script = "dump_syms.py"
+  args = [
+    in_file,
+    out_file,
+  ]
+  deps = [
+    ":platform.UserCrash.crasher",
   ]
 }
 
@@ -56,7 +89,6 @@ executable("security.AltSyscall.read") {
     "security.AltSyscall.read.c",
   ]
 }
-
 
 executable("security.Minijail.staticbashexec") {
   ldflags = [ "-static" ]
@@ -100,16 +132,19 @@ group("all") {
   deps = [
     ":graphics.GBM.gbmtest",
     ":kernel.PerfCallgraph.graph",
-    ":security.MinijailSeccomp.fail",
-    ":security.MinijailSeccomp.ok",
-    ":security.MinijailSeccomp.open",
-    ":security.PtraceProcess.sleeper",
-    ":security.PtraceThread.thread-prctl",
+    ":platform.UserCrash.crasher",
+    ":platform.UserCrash.crasher.sym",
     ":security.AltSyscall.adjtimex",
     ":security.AltSyscall.alt_syscall",
     ":security.AltSyscall.clock_adjtime",
     ":security.AltSyscall.mmap",
     ":security.AltSyscall.read",
+    ":security.Minijail.staticbashexec",
+    ":security.MinijailSeccomp.fail",
+    ":security.MinijailSeccomp.ok",
+    ":security.MinijailSeccomp.open",
+    ":security.PtraceProcess.sleeper",
+    ":security.PtraceThread.thread-prctl",
   ]
   # Sanitizer builds do not support static linking.
   if (!(use.asan || use.msan || use.ubsan)) {
