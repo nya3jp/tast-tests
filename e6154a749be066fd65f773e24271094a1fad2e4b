@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "8ff41a1a_cd92d303",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-08-29T21:23:41Z",
+      "side": 1,
+      "message": "Yeah it\u0027s correct. My point is that if this is a straight port of the cheets_Midis, the thing that is checking is that midis starts again correctly (that automatically checks whether it was previously closed corrrectly).",
+      "parentUuid": "3e0cfd55_062b2283",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 0
+      },
+      "revId": "e6154a749be066fd65f773e24271094a1fad2e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85eefe7b_97d2b9c0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
         "patchSetId": 4

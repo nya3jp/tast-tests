@@ -268,6 +268,24 @@
       "revId": "78057015ca5bd41bc154f6e22a93369ddbf806b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9709c4f_af7402fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-08-29T21:23:41Z",
+      "side": 1,
+      "message": "Yeah, I agree it is very expensive to log in to Chrome twice. Unfortunately, this test is meant to check any potential issues in the upstart conditions (stop conditions) which might sneak in due to a bad CL (that is what happened originally, and I\u0027ve seen the upstart signal definitions being changed sporadically in the past across daemons). Thus ensuring that midis stopped correctly doesn\u0027t guarantee that it will start again on relogin, that is why I am hesitant to agree with changing the test conditions.\n\nOf course, any number of tests can be added to bolster testing; just that it is not a \"port\" then :)",
+      "parentUuid": "996d4132_6693b07b",
+      "revId": "78057015ca5bd41bc154f6e22a93369ddbf806b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
