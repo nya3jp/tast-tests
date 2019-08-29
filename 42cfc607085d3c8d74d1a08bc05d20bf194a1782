@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2cd386ba_aaf006ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-08-29T03:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62234f68_58aec5c6",
+      "range": {
+        "startLine": 154,
+        "startChar": 28,
+        "endLine": 154,
+        "endChar": 71
+      },
+      "revId": "42cfc607085d3c8d74d1a08bc05d20bf194a1782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28ccb531_bb6cfae0",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
         "patchSetId": 28
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "294760f2_a5b79ce5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-08-29T03:08:03Z",
+      "side": 1,
+      "message": "Done\nNo, this will be used in another test but not in this change.",
+      "parentUuid": "28ccb531_bb6cfae0",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 56
+      },
+      "revId": "42cfc607085d3c8d74d1a08bc05d20bf194a1782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d65b409_322d55aa",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
         "patchSetId": 28
@@ -68,6 +116,30 @@
       "revId": "42cfc607085d3c8d74d1a08bc05d20bf194a1782",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16795cba_6f389d74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-08-29T03:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d65b409_322d55aa",
+      "range": {
+        "startLine": 84,
+        "startChar": 43,
+        "endLine": 84,
+        "endChar": 46
+      },
+      "revId": "42cfc607085d3c8d74d1a08bc05d20bf194a1782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
