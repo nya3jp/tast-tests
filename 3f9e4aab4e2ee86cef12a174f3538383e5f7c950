@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "18e53484_e8d9e7cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storage_wearout_detect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c08efb92_4d84bd58",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 39
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "645781dc_9af87df5",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ff76300_337b11fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Sorry, thanks for catching\nDone",
+      "parentUuid": "645781dc_9af87df5",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 5
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2cbc0b8e_57e9ce0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "See comments on NotSupported change\nDone",
+      "parentUuid": "57c5d370_a530de6d",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 21
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "713af94f_962e25c6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf492392_18253d7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Thanks for the links, we submitted changes against the ebuild and tast projects. Patch set 5 also includes the CQ-DEPEND to link these changes.\nDone",
+      "parentUuid": "713af94f_962e25c6",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 13
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "ed6edb38_1b82be59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10e4be41_f5627b6e",
+      "range": {
+        "startLine": 56,
+        "startChar": 12,
+        "endLine": 56,
+        "endChar": 25
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95d66d95_940f8adf",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
         "patchSetId": 4
@@ -137,6 +257,30 @@
       "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c36446d2_78f3f74b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95d66d95_940f8adf",
+      "range": {
+        "startLine": 68,
+        "startChar": 26,
+        "endLine": 68,
+        "endChar": 29
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "9d1f759e_af207eea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89d8b6ad_cd16b008",
+      "range": {
+        "startLine": 75,
+        "startChar": 21,
+        "endLine": 75,
+        "endChar": 24
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "784026f5_78170fa6",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
         "patchSetId": 4
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "57a9ba02_684d4027",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Thanks for the link\nDone",
+      "parentUuid": "784026f5_78170fa6",
+      "range": {
+        "startLine": 93,
+        "startChar": 29,
+        "endLine": 93,
+        "endChar": 36
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62fbc153_008014af",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
         "patchSetId": 4
@@ -206,6 +398,30 @@
       "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29595291_2b27f6c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62fbc153_008014af",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 5
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -256,6 +472,30 @@
     },
     {
       "key": {
+        "uuid": "85beed0a_994d36bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "We hoisted all of the regular expressions into the outer var. Thanks for the suggestion.\nDone",
+      "parentUuid": "3c20a3cc_2493712c",
+      "range": {
+        "startLine": 106,
+        "startChar": 35,
+        "endLine": 106,
+        "endChar": 53
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd80a8be_d0632c7c",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
         "patchSetId": 4
@@ -276,6 +516,30 @@
       "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ad6d7be_59631df0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd80a8be_d0632c7c",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 83
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -302,6 +566,30 @@
     },
     {
       "key": {
+        "uuid": "92c01ac7_0f86c069",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efa47607_e5209d97",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 84
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff2409bc_1306267d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
         "patchSetId": 4
@@ -322,6 +610,30 @@
       "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcd999b1_47bffa69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Correct, we only used the first one.\nDone",
+      "parentUuid": "ff2409bc_1306267d",
+      "range": {
+        "startLine": 145,
+        "startChar": 23,
+        "endLine": 145,
+        "endChar": 44
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -348,6 +660,30 @@
     },
     {
       "key": {
+        "uuid": "22062bda_375dae09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a37d9f8_f99b0270",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 67
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b4dc566_81e80106",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
         "patchSetId": 4
@@ -371,6 +707,30 @@
     },
     {
       "key": {
+        "uuid": "f69aa34a_2a25a095",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Yes, we accidentally left 5.0 when we had a const. Also, if the device is less than 5.0 it will now return an error.\nDone",
+      "parentUuid": "9b4dc566_81e80106",
+      "range": {
+        "startLine": 151,
+        "startChar": 16,
+        "endLine": 151,
+        "endChar": 19
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2a76fa7_35e75321",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
         "patchSetId": 4
@@ -382,6 +742,30 @@
       "writtenOn": "2019-08-12T03:30:14Z",
       "side": 1,
       "message": "Why cannot we check the eMMC failing exp in the above \u0027for loop\u0027? As I am not sure about the functionality, just seeking clarification :)",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 161,
+        "endChar": 2
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f40f10c_b5e34b42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "We split them into two loops for simplicity. First step was to check version, second step was to check for failing.",
+      "parentUuid": "e2a76fa7_35e75321",
       "range": {
         "startLine": 157,
         "startChar": 1,
@@ -417,6 +801,30 @@
     },
     {
       "key": {
+        "uuid": "6fbda45e_fae1c3f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b686b485_38dbf8e8",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 79
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e616c328_89db6a50",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
         "patchSetId": 4
@@ -437,6 +845,30 @@
       "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38a9dbc2_fcd5c73c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e616c328_89db6a50",
+      "range": {
+        "startLine": 174,
+        "startChar": 23,
+        "endLine": 174,
+        "endChar": 44
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -463,6 +895,30 @@
     },
     {
       "key": {
+        "uuid": "9db6a653_215a4a9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e59cdfc1_8ad11c7e",
+      "range": {
+        "startLine": 178,
+        "startChar": 25,
+        "endLine": 178,
+        "endChar": 75
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43c32bb0_dec15aa0",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
         "patchSetId": 4
@@ -483,6 +939,30 @@
       "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0f5531e_b359b7e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43c32bb0_dec15aa0",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 42
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -509,6 +989,30 @@
     },
     {
       "key": {
+        "uuid": "f96ba6f1_062069de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo_eve_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Thanks for catching this.\nDone",
+      "parentUuid": "4fcf9f98_8dcb1656",
+      "range": {
+        "startLine": 89,
+        "startChar": 8,
+        "endLine": 89,
+        "endChar": 12
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "859e3736_8e4898ef",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo_eve_test.go",
         "patchSetId": 4
@@ -529,6 +1033,30 @@
       "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba0793b9_ae4d466c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo_eve_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "859e3736_8e4898ef",
+      "range": {
+        "startLine": 94,
+        "startChar": 23,
+        "endLine": 94,
+        "endChar": 33
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -578,6 +1106,54 @@
     },
     {
       "key": {
+        "uuid": "b787f787_5b9339a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo_eve_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Sorry about the unnecessary copy and paste errors when creating these tests. \nDone",
+      "parentUuid": "ac41f7d4_e5695f77",
+      "range": {
+        "startLine": 95,
+        "startChar": 37,
+        "endLine": 95,
+        "endChar": 41
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22d28bca_526e7e79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo_eve_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60a1fb5a_ca4e8132",
+      "range": {
+        "startLine": 95,
+        "startChar": 60,
+        "endLine": 95,
+        "endChar": 61
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea97149d_6033b2c0",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo_lulu_test.go",
         "patchSetId": 4
@@ -598,6 +1174,30 @@
       "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd249ae4_769daa43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo_lulu_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea97149d_6033b2c0",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 2
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -647,6 +1247,54 @@
     },
     {
       "key": {
+        "uuid": "0d67127b_d79ae6b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63869e1b_fe3a75ea",
+      "range": {
+        "startLine": 12,
+        "startChar": 46,
+        "endLine": 12,
+        "endChar": 50
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81447ab2_3d97aeb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "256f4600_bb9776fa",
+      "range": {
+        "startLine": 12,
+        "startChar": 34,
+        "endLine": 12,
+        "endChar": 39
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f211893f_1a376426",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo_test.go",
         "patchSetId": 4
@@ -667,6 +1315,30 @@
       "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2954d6d5_b9a7ee30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f211893f_1a376426",
+      "range": {
+        "startLine": 34,
+        "startChar": 47,
+        "endLine": 34,
+        "endChar": 51
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -693,6 +1365,30 @@
     },
     {
       "key": {
+        "uuid": "368f23d3_83fbca63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34af3b96_00d35b15",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24e91c50_3e5bacea",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo_test.go",
         "patchSetId": 4
@@ -713,6 +1409,30 @@
       "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a30e5c39_cadf3334",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1356172
+      },
+      "writtenOn": "2019-08-29T18:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24e91c50_3e5bacea",
+      "range": {
+        "startLine": 52,
+        "startChar": 39,
+        "endLine": 52,
+        "endChar": 41
+      },
+      "revId": "3f9e4aab4e2ee86cef12a174f3538383e5f7c950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
