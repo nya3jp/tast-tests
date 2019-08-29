@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "468ea21a_f1f86fe1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cached_vpd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-08-29T20:34:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bc9a96e9_ad1c926c",
+      "revId": "15674f9a3bbb528d6d82ac886985ff68456b3be0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b63bf012_1380b794",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cached_vpd.go",
         "patchSetId": 2
@@ -51,6 +69,24 @@
       "revId": "15674f9a3bbb528d6d82ac886985ff68456b3be0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ba0a70f_9e9b072f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cached_vpd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2019-08-29T20:34:13Z",
+      "side": 1,
+      "message": "I do agree that this test is certainly not the very robust. Right now, it\u0027s primarily following the pattern other cros_healthd tast tests are using. I have addressed the error reporting concerns (both multiple lines and formatting issues). To make this test more useful, we could create a separate CL adding logic to determine whether the number reported here is consistent with what is reported by the device?",
+      "parentUuid": "9d083c9b_6854e1c6",
+      "revId": "15674f9a3bbb528d6d82ac886985ff68456b3be0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
