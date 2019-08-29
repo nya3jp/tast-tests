@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92aa303a_d946a3d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-29T19:57:42Z",
+      "side": 1,
+      "message": "despite Go\u0027s infinite line length, I think this is getting to where it\u0027s easier to read if you break the map key/value onto its own line? similar to how the parent map is multiline.",
+      "range": {
+        "startLine": 67,
+        "startChar": 61,
+        "endLine": 67,
+        "endChar": 63
+      },
+      "revId": "7b2cf0b4c8d40c89f0f4ac77839b0114226871f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b8e51cf_7619ec10",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-29T19:57:42Z",
+      "side": 1,
+      "message": "do we want a \u0027type\u0027 for IPConfigProperty too, or is that excessive?",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 44
+      },
+      "revId": "7b2cf0b4c8d40c89f0f4ac77839b0114226871f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e226350_e2e51c5d",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-29T19:57:42Z",
+      "side": 1,
+      "message": "can this be \u0027ServiceProperty\u0027? I\u0027m not super familiar with Golang\u0027s type rules.",
+      "range": {
+        "startLine": 150,
+        "startChar": 72,
+        "endLine": 150,
+        "endChar": 78
+      },
+      "revId": "7b2cf0b4c8d40c89f0f4ac77839b0114226871f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
