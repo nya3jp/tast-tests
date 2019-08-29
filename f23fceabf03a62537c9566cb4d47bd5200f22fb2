@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "75971980_291f483c",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-08-29T23:55:31Z",
+      "side": 1,
+      "message": "Indeed, adding the android.com looks much better.\nBut the issue is that the go protobuf bindings are generated with a harcoded import path.\n\nexample of generated file:\nhttp://go/bit/ricardoq/6346628004839424\n\nThe harcoded import path comes directly from the .proto file. E.g:\nhttp://cs/pi-arc-dev/frameworks/base/core/proto/android/server/windowmanagerservice.proto\n\n\nIs there a way in Go to redirect import files from \"android.com/frameworks\" to \"/frameworks\" ?\nShould we use a symlink?\n\nThe only solution that I found for this, is to do what I did in patchset #11 of this CL:\nhttps://crrev.com/c/1740236/11\n\nWhat I did in that patchset is \"compiling\" all the .proto files all at once so that they don\u0027t need to use the \"import\". The current .ebuild solution is cleaner (each folder in its own package, avoids collision). But I cannot (at least I don\u0027t know how) change the import paths.\n\n\nWhat do you recommend me to do?\n\nThanks!",
+      "parentUuid": "d586fa4e_dc41bf7e",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "f23fceabf03a62537c9566cb4d47bd5200f22fb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d85377ed_8806b206",
         "filename": "src/chromiumos/tast/local/arc/pre.go",
         "patchSetId": 2
