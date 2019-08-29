@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edb0db0b_2c00b05a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/qemu/sanity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-29T11:54:15Z",
+      "side": 1,
+      "message": "Could you address this in this CL?\nYou can introduce a new SoftwareDeps like,\n \"qemu\": \"betty || tast_vm\",\nIIUC.\n\nAlso, could you add registration test that all tests in qemu package should have the software deps? You can refer cros/bundles/arc/registration_tests.go how to do.",
+      "revId": "691b9da41a873bbe43b50bbff88b132ee29cdeec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91f79560_eb3592d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/qemu/sanity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-29T11:54:15Z",
+      "side": 1,
+      "message": "optional: Probably\n\nminMemory \u003d uint64(7.5 * 1024 * 1024 * 1024)  // 7.5 GB\nif m.Total \u003c minMemory {\n  ...\n}\n\nlooks slightly better because it avoids the fraction part truncation?",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 46
+      },
+      "revId": "691b9da41a873bbe43b50bbff88b132ee29cdeec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
