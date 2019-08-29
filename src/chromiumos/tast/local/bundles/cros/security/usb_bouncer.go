@@ -29,8 +29,22 @@ func init() {
 			"jorgelo@chromium.org",
 			"chromeos-security@google.com",
 		},
+		Params: []testing.Param{{
+			Name: "check_seccomp",
+			Val:  enforcing,
+		}, {
+			Name: "generate_seccomp",
+			Val:  permissive,
+		}},
 	})
 }
+
+type seccompEnforcement bool
+
+const (
+	enforcing  seccompEnforcement = true
+	permissive seccompEnforcement = false
+)
 
 // pathOfTestDevice finds a path to a USB device in /sys/devices. It returns an empty string on
 // failure.
@@ -53,7 +67,7 @@ func pathOfTestDevice() (string, error) {
 }
 
 func testUsbBouncer(ctx context.Context, s *testing.State, m *seccomp.PolicyGenerator,
-	devPath string, withChrome bool) {
+	devPath string, withChrome bool, sec seccompEnforcement) {
 	cases := [][]string{
 		{"udev", "add", devPath},
 		{"cleanup"},
@@ -76,6 +90,10 @@ func testUsbBouncer(ctx context.Context, s *testing.State, m *seccomp.PolicyGene
 			continue
 		}
 		logFile := f.Name()
+
+		if sec == permissive {
+			c = append(c, "--seccomp=false")
+		}
 
 		cmd := seccomp.CommandContext(ctx, logFile, "usb_bouncer", c...)
 		if err := cmd.Run(testexec.DumpLogOnError); err != nil {
@@ -131,8 +149,10 @@ func USBBouncer(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to cleanup %q: %v", userStateDir, err)
 	}
 
+	enforceSeccomp := s.Param().(seccompEnforcement)
+
 	m := seccomp.NewPolicyGenerator()
-	testUsbBouncer(ctx, s, m, d, false)
+	testUsbBouncer(ctx, s, m, d, false /*withChrome*/, enforceSeccomp /*withSeccomp*/)
 
 	cr, err := chrome.New(ctx, chrome.Auth(defaultUser, defaultPass, defaultGaiaID))
 	if err != nil {
@@ -145,7 +165,7 @@ func USBBouncer(ctx context.Context, s *testing.State) {
 	}()
 
 	// Reuse policy generator to accumulate syscalls across both test cases.
-	testUsbBouncer(ctx, s, m, d, true)
+	testUsbBouncer(ctx, s, m, d, true /*withChrome*/, enforceSeccomp /*withSeccomp*/)
 
 	policyFile := filepath.Join(s.OutDir(), "usb_bouncer.policy")
 	if err := ioutil.WriteFile(policyFile, []byte(m.GeneratePolicy()), 0644); err != nil {
