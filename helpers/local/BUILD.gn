@@ -27,6 +27,13 @@ executable("kernel.PerfCallgraph.graph") {
   ]
 }
 
+executable("platform.UserCrash.crasher") {
+  sources = [
+    "platform.UserCrash.crasher.bomb.cc",
+    "platform.UserCrash.crasher.crasher.cc",
+  ]
+}
+
 executable("security.AltSyscall.adjtimex") {
   sources = [
     "security.AltSyscall.adjtimex.c",
@@ -99,6 +106,7 @@ executable("security.PtraceThread.thread-prctl") {
 group("all") {
   deps = [
     ":graphics.GBM.gbmtest",
+    ":platform.UserCrash.crasher",
     ":kernel.PerfCallgraph.graph",
     ":security.Minijail.staticbashexec",
     ":security.MinijailSeccomp.fail",
