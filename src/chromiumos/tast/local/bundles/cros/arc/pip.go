@@ -159,14 +159,14 @@ func PIP(ctx context.Context, s *testing.State) {
 				s.Error("Failed to clear WM state: ", err)
 			}
 			must(act.Start(ctx))
-			must(act.WaitForIdle(ctx, time.Second))
+			must(act.WaitForIdle(ctx, 10*time.Second))
 			// Press button that triggers PIP mode in activity.
 			const pipButtonID = pkgName + ":id/enter_pip"
 			must(dev.Object(ui.ID(pipButtonID)).Click(ctx))
 			// TODO(b/131248000) WaitForIdle doesn't catch all PIP possible animations.
 			// Add temporary delay until it gets fixed.
 			must(testing.Sleep(ctx, 200*time.Millisecond))
-			must(act.WaitForIdle(ctx, time.Second))
+			must(act.WaitForIdle(ctx, 10*time.Second))
 
 			if err := test.fn(ctx, tconn, act, dev, dispMode); err != nil {
 				path := fmt.Sprintf("%s/screenshot-pip-failed-test-%d.png", s.OutDir(), idx)
@@ -203,7 +203,7 @@ func testPIPMove(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev
 		if err := act.MoveWindow(ctx, arc.NewPoint(bounds.Left-deltaX, bounds.Top), movementDuration); err != nil {
 			return errors.Wrap(err, "could not move PIP window")
 		}
-		if err := act.WaitForIdle(ctx, time.Second); err != nil {
+		if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
 			return err
 		}
 
@@ -230,7 +230,7 @@ func testPIPResize(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d
 	if err := dev.PressKeyCode(ctx, ui.KEYCODE_WINDOW, 0); err != nil {
 		return errors.Wrap(err, "could not activate PIP menu")
 	}
-	if err := act.WaitForIdle(ctx, time.Second); err != nil {
+	if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
 		return err
 	}
 
@@ -307,7 +307,7 @@ func testPIPFling(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, de
 		{1, 0, right},  // swipe to right
 		{0, 1, bottom}, // swipe to bottom
 	} {
-		if err := act.WaitForIdle(ctx, time.Second); err != nil {
+		if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
 			return err
 		}
 		bounds, err := act.WindowBounds(ctx)
@@ -528,7 +528,7 @@ func testPIPToggleTabletMode(ctx context.Context, tconn *chrome.Conn, act *arc.A
 		return errors.New("failed to set tablet mode")
 	}
 
-	if err := act.WaitForIdle(ctx, time.Second); err != nil {
+	if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
 		return err
 	}
 
