@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0cd8c6e_df28f463",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-29T21:25:15Z",
+      "side": 1,
+      "message": "nit: could you inline arguments here?\n\nd.Command(\"find\", systemCrashDir, \"-mindepth\", \"1\", ...)",
+      "range": {
+        "startLine": 71,
+        "startChar": 31,
+        "endLine": 71,
+        "endChar": 38
+      },
+      "revId": "ba0ec637b0d7fd430e2dc0a619653f17319d6bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77fa2065_60b776e0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-29T21:25:15Z",
+      "side": 1,
+      "message": "I don\u0027t think output is generated, because it is redirected to /dev/null?",
+      "revId": "ba0ec637b0d7fd430e2dc0a619653f17319d6bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
