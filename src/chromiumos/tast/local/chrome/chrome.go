@@ -514,14 +514,21 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 			"--disable-arc-opt-in-verification",
 			// Always start ARC to avoid unnecessarily stopping mini containers.
 			"--arc-start-mode=always-start-with-no-play-store")
+	case arcSupported:
+		// Allow ARC being enabled on the device to test ARC with real gaia accounts.
+		args = append(args, "--arc-availability=officially-supported")
+	}
+	if c.arcMode == arcEnabled || c.arcMode == arcSupported {
+		args = append(args,
+			// Do not sync the locale with ARC.
+			"--arc-disable-locale-sync",
+			// Do not update Play Store automatically.
+			"--arc-play-store-auto-update=off")
 		if !c.restrictARCCPU {
 			args = append(args,
 				// Disable CPU restrictions to let tests run faster
 				"--disable-arc-cpu-restriction")
 		}
-	case arcSupported:
-		// Allow ARC being enabled on the device to test ARC with real gaia accounts.
-		args = append(args, "--arc-availability=officially-supported")
 	}
 	args = append(args, c.extraArgs...)
 	var envVars []string
