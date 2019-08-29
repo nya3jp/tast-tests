@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "f3272bf5_cb2d42b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-08-29T20:58:12Z",
+      "side": 1,
+      "message": "Is it alright to use non-standard libraries? Not sure, so just curious...",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "e6154a749be066fd65f773e24271094a1fad2e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cea28f30_3682a77d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-08-29T20:58:12Z",
+      "side": 1,
+      "message": "The original cheets_Midis doesn\u0027t care about this part; it just wants to know that midis restarts every time we log in to Chrome ans restart ARC. The midis.conf is such that it can\u0027t start on the login screen (it starts on a D-BUS call).",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 0
+      },
+      "revId": "e6154a749be066fd65f773e24271094a1fad2e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85eefe7b_97d2b9c0",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
         "patchSetId": 4
