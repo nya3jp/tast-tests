@@ -7,7 +7,6 @@ package network
 import (
 	"context"
 	"os"
-	"time"
 
 	"github.com/godbus/dbus"
 
@@ -87,10 +86,7 @@ func ConfigureServiceForProfile(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed creating shill manager proxy: ", err)
 	}
 
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		_, err := manager.FindMatchingService(ctx, props)
-		return err
-	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+	if err = manager.WaitForServiceProperties(ctx, props, 5); err != nil {
 		s.Fatal("Service not found: ", err)
 	}
 }
