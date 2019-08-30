@@ -83,6 +83,7 @@ const (
 	ServicePropertyWiFiHiddenSSID ServiceProperty = "WiFi.HiddenSSID"
 
 	// IPConfig property names.
+	IPConfigPropertyAddress     = "Address"
 	IPConfigPropertyNameServers = "NameServers"
 )
 
