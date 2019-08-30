@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "789f9313_61472640",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-30T23:20:43Z",
+      "side": 1,
+      "message": "end comments with .",
+      "revId": "ff2b8ad39ede9c5bed03909b718c227a354a0972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca69cf31_b2daff75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-30T23:20:43Z",
+      "side": 1,
+      "message": "make this a slice, not an array:  defaultApps :\u003d []apps.App{...}",
+      "revId": "ff2b8ad39ede9c5bed03909b718c227a354a0972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8a21220_f2cc052a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-30T23:20:43Z",
+      "side": 1,
+      "message": "Format this as \"Failed to launch %s: %s\", since : is commonly used to separate more general errors from more specific ones (similarly for the Errorf below too)",
+      "revId": "ff2b8ad39ede9c5bed03909b718c227a354a0972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45e479bd_8ce1a093",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-30T23:20:43Z",
+      "side": 1,
+      "message": "technically these failures will cascade - if you get one here, that app won\u0027t show up and could shift the expected ordering.  You could only check icons for apps that were successfully added - or you could accept the failures as is",
+      "revId": "ff2b8ad39ede9c5bed03909b718c227a354a0972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3de6005a_bf0a5f42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-30T23:20:43Z",
+      "side": 1,
+      "message": "trailing space here",
+      "revId": "ff2b8ad39ede9c5bed03909b718c227a354a0972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
