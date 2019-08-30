@@ -158,7 +158,7 @@ func focusAndIncrementElement(ctx context.Context, chromeVoxConn *chrome.Conn, e
 // focusAndCheckElement uses ChromeVox navigation (using Tab), to navigate to the next
 // UI element (specified by elementClass), and activates it (using Search + Space).
 // Returns an error indicating the success of both actions.
-func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, elementClass string, expectedLogs []eventLog) error {
+func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, node accessibility.Node, expectedLogs []eventLog) error {
 	ew, err := input.Keyboard(ctx)
 	if err != nil {
 		return errors.Wrap(err, "error with creating EventWriter from keyboard")
@@ -179,8 +179,13 @@ func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, eleme
 	}
 
 	// Wait for element to receive focus.
-	if err := accessibility.WaitForElementFocused(ctx, chromeVoxConn, elementClass); err != nil {
+	if err := accessibility.WaitForElementFocused(ctx, chromeVoxConn, node.Class); err != nil {
 		return errors.Wrap(err, "timed out polling for element")
+	}
+
+	// Check tooltip value.
+	if err := checkTooltipProperty(ctx, chromeVoxConn, node.Tooltip); err != nil {
+		return errors.Wrap(err, "property was not correct")
 	}
 
 	// Activate (check) the currently focused UI element.
@@ -193,13 +198,33 @@ func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, eleme
 	}
 
 	// Poll until the element has been checked.
-	if err := waitForElementChecked(ctx, chromeVoxConn, elementClass); err != nil {
+	if err := waitForElementChecked(ctx, chromeVoxConn, node.Class); err != nil {
 		return errors.Wrap(err, "failed to check toggled state")
 	}
 
 	// Determine if output matches expected value, and write to file if it does not match.
 	if err := verifyLogs(ctx, chromeVoxConn, expectedLogs); err != nil {
 		return err
+	}
+	return nil
+}
+
+// checkTooltipProperty checks that the tooltip value on the focused node, matches the expected value.
+// TODO(sarakato): Once more properties are being checked in a test, make this function more generic to cater
+// for different properties.
+func checkTooltipProperty(ctx context.Context, chromeVoxConn *chrome.Conn, wantTooltip string) error {
+	const script = `new Promise((resolve, reject) => {
+			chrome.automation.getFocus((node) => {
+				resolve(node.tooltip);
+			});
+		})`
+	var gotTooltip string
+	if err := chromeVoxConn.EvalPromise(ctx, script, &gotTooltip); err != nil {
+		return err
+	}
+
+	if gotTooltip != wantTooltip {
+		return errors.Errorf("for tooltip, got: %q, want: %q", gotTooltip, wantTooltip)
 	}
 	return nil
 }
@@ -279,7 +304,12 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		expectedEventLog("focus", "OFF"),
 		expectedEventLog("checkedStateChanged", "ON"),
 	}
-	if err := focusAndCheckElement(ctx, chromeVoxConn, toggleButton, toggleButtonLogs); err != nil {
+
+	toggleButtonNode := accessibility.Node{
+		ClassName:   toggleButton,
+		Tooltip: "button tooltip",
+	}
+	if err := focusAndCheckElement(ctx, chromeVoxConn, toggleButtonNode, toggleButtonLogs); err != nil {
 		s.Fatal("Failed focusing toggle button: ", err)
 	}
 
@@ -288,7 +318,11 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		expectedEventLog("focus", "CheckBox"),
 		expectedEventLog("checkedStateChanged", "CheckBox"),
 	}
-	if err := focusAndCheckElement(ctx, chromeVoxConn, checkBox, checkBoxLogs); err != nil {
+	checkBoxNode := accessibility.Node{
+		ClassName:   checkBox,
+		Tooltip: "checkbox tooltip",
+	}
+	if err := focusAndCheckElement(ctx, chromeVoxConn, checkBoxNode, checkBoxLogs); err != nil {
 		s.Fatal("Failed focusing checkbox: ", err)
 	}
 
