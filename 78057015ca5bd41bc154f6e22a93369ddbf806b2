@@ -304,6 +304,24 @@
       "revId": "78057015ca5bd41bc154f6e22a93369ddbf806b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08483a2e_e3f9d760",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2019-08-30T06:39:16Z",
+      "side": 1,
+      "message": "Sure I can try to clarify:\n\nEarlier, the upstart start condition was \"on starting system-services\". So the first time we booted and logged in, midis started up fine, and it was killed when we logged out, but on logging back in again, since system-services was already started, midis didn\u0027t get restarted again (that bug I linked to in another comment has the context).\n\nNow, this is not to say this would happen again with the current start/stop conditions, but I\u0027m concerned about someone down the line changing some of the upstart conditions to cause similar-ish effects (or indeed, the definition of upstart signals changing).\n\nThat said, please feel free to move ahead with the CL (I believe there\u0027s already a +2 on it).",
+      "parentUuid": "626252b7_32f583cd",
+      "revId": "78057015ca5bd41bc154f6e22a93369ddbf806b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
