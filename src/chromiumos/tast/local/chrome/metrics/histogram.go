@@ -103,6 +103,19 @@ func (h *Histogram) String() string {
 	return "[" + strings.Join(strs, " ") + "]"
 }
 
+// Mean calculates the estimated mean of the histogram values. Returns 0 if
+// there are no data points.
+func (h *Histogram) Mean() float64 {
+	if h.TotalCount() == 0 {
+		return 0
+	}
+	var sum float64
+	for _, bucket := range h.Buckets {
+		sum += (float64(bucket.Max) + float64(bucket.Min)) * float64(bucket.Count)
+	}
+	return sum / (float64(h.TotalCount()) * 2)
+}
+
 // HistogramBucket contains a set of reported samples within a fixed range.
 type HistogramBucket struct {
 	// Min contains the minimum value that can be stored in this bucket.
