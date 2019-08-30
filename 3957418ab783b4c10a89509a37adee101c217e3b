@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6ec4c424_d7054810",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-30T23:50:57Z",
+      "side": 1,
+      "message": "It hurt me enough to add this code to this CL, I\u0027d like to discourage anyone from using this solution and hiding it here helps with that...",
+      "parentUuid": "fee59ad7_b40b758a",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 25
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d3e4deb_f917ba5b",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e46d7b6e_79990fef",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-30T23:50:57Z",
+      "side": 1,
+      "message": "whoever calls it will have to say fdms :\u003d fakedms.New(), so it will be clear",
+      "parentUuid": "0d3e4deb_f917ba5b",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 8
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ecb62bca_859ebb9c",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-30T23:50:57Z",
+      "side": 1,
+      "message": "Noted, though I don\u0027t want to add that in this CL.  I\u0027d like to have fake dms as a precondition eventually, so you\u0027re right that it may not be needed.  But I\u0027ve filed a bug regardless, to make sure the idea gets revisited: crbug.com/999751",
+      "parentUuid": "99266cac_350aa554",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 35
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e6ddda4_0aa86a7c",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2019-08-30T22:08:02Z",
       "side": 1,
       "message": "Suggestion:\nSince this is a health check, consider naming this \"checkPing\" or \"CheckServerStatus\" or something to show you aren\u0027t just pinging for fun, but to make sure \"all is well\"",
+      "range": {
+        "startLine": 99,
+        "startChar": 21,
+        "endLine": 99,
+        "endChar": 25
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44a58c19_898520f8",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-08-30T23:50:57Z",
+      "side": 1,
+      "message": "I do prefer ping here - it\u0027s short, at least somewhat conveys what the function is doing, and is in the url already.  Ideally a test should never want to call this.",
+      "parentUuid": "7e6ddda4_0aa86a7c",
       "range": {
         "startLine": 99,
         "startChar": 21,
