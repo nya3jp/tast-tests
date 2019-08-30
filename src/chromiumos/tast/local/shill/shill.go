@@ -24,6 +24,7 @@ const (
 // Property names defined in dbus-constants.h .
 const (
 	// IPConfig property names.
+	IPConfigPropertyAddress     = "Address"
 	IPConfigPropertyNameServers = "NameServers"
 )
 
