@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0cca2c29_4336960f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-08-30T05:28:28Z",
+      "side": 1,
+      "message": "I think it might be nicer to upload this change, and mark as \"DO NOT SUBMIT\".\n\nthen here, you can write `tast run DUT_ip arc.Simple`",
+      "parentUuid": "6879fbfc_fb65cd4c",
+      "revId": "9248bf6206133024562bde5149a93ffcde49c90e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e45d4b9f_579496f7",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
