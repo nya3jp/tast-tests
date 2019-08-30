@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "f19040ed_ed91f07a",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-08-30T16:02:04Z",
+      "side": 1,
+      "message": "Also these flags should apply for \"case arcSupported\" mode.\nPlease read my high-level comment from previous look.\nThanks",
+      "range": {
+        "startLine": 565,
+        "startChar": 3,
+        "endLine": 565,
+        "endChar": 31
+      },
+      "revId": "ecd51400d74c910079eaaba937972d53abf61beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab6cc136_079632a8",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 2
