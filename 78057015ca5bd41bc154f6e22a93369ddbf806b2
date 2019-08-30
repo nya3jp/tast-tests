@@ -322,6 +322,24 @@
       "revId": "78057015ca5bd41bc154f6e22a93369ddbf806b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "260ca2bb_e5a15d08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-08-30T11:31:00Z",
+      "side": 1,
+      "message": "Thanks for sharing!\n\nThe case is covered by this, actually.\nTast ensures system-services is running at the very beginning of the test.\nSo, if the starting stanza is system-service, the check at L83 should hit the problem at the first Chrome run, or L101 hits on second Chrome run or later.\nAlso practically (though it is not guaranteed), Chrome restarts several times here by previous test cases. So, in case of midis-not-started on relogin, this test could capture it in most cases.\n\nIn general, the test couldn\u0027t be perfect because arbitrary things could happen whenever randomly. So, testing is sampling, which is chosen by developers since it could likely happen by accident.\nThere could be multiple approaches to guarantee some conditions, and at the moment, what cheets_Midis wanted to check is checked in a different approach in Tast.\n\nI hope these address your concerns. I\u0027ll wait for another day to hear your feedback before moving forward.\nAlso, if you have more comments / suggestions etc., please let me know.",
+      "parentUuid": "08483a2e_e3f9d760",
+      "revId": "78057015ca5bd41bc154f6e22a93369ddbf806b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
