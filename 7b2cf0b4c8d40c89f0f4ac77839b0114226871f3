@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1558c6d9_531debb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-30T03:15:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92aa303a_d946a3d1",
+      "range": {
+        "startLine": 67,
+        "startChar": 61,
+        "endLine": 67,
+        "endChar": 63
+      },
+      "revId": "7b2cf0b4c8d40c89f0f4ac77839b0114226871f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b8e51cf_7619ec10",
         "filename": "src/chromiumos/tast/local/shill/shill.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4e9a92bb_86df9b33",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-30T03:15:54Z",
+      "side": 1,
+      "message": "I thought about it, but wasn\u0027t sure if it\u0027s worthwhile. The type will not be used in any declaration. May be thinking later if more fields are added is fine.",
+      "parentUuid": "0b8e51cf_7619ec10",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 44
+      },
+      "revId": "7b2cf0b4c8d40c89f0f4ac77839b0114226871f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e226350_e2e51c5d",
         "filename": "src/chromiumos/tast/local/shill/shill.go",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "7b2cf0b4c8d40c89f0f4ac77839b0114226871f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57596488_8ed56f36",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-30T03:15:54Z",
+      "side": 1,
+      "message": "map[string]interface{} is not convertible to map[ServiceProperty]interface{}, because the former is not assignable to the latter. (See https://golang.org/ref/spec#Conversions if you are curious.)\n\nTherefore if we use ServiceProperty here, we should create another map and create a copy. I\u0027m not sure if it\u0027s worthwhile.",
+      "parentUuid": "6e226350_e2e51c5d",
+      "range": {
+        "startLine": 150,
+        "startChar": 72,
+        "endLine": 150,
+        "endChar": 78
+      },
+      "revId": "7b2cf0b4c8d40c89f0f4ac77839b0114226871f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
