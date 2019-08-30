@@ -8,7 +8,9 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 )
 
@@ -39,6 +41,9 @@ const (
 	WMEventSnapLeft               = "WMEventSnapLeft"
 	WMEventSnapRight              = "WMEventSnapRight"
 )
+
+// The duration to wait for system UI stabilized.
+const timeUntilSystemUIStabilized time.Duration = 5 * time.Second
 
 // Rect represents the bounds of a window
 // TODO(takise): We may be able to consolidate this with the one in display.go
@@ -105,4 +110,17 @@ func GetARCAppWindowInfo(ctx context.Context, c *chrome.Conn, pkgName string) (A
 		return ArcAppWindowInfo{}, err
 	}
 	return ArcAppWindowInfo{info.Bounds, info.IsAnimating}, nil
+}
+
+// WaitForSystemUIStabilized waits a bit until the system UI state is stabilized
+// and ready for performance test. Some initialization might skew the performance
+// result.
+func WaitForSystemUIStabilized(ctx context.Context) error {
+	// Right now, it just wait a bit.
+	select {
+	case <-time.After(timeUntilSystemUIStabilized):
+		return nil
+	case <-ctx.Done():
+		return errors.Wrap(ctx.Err(), "failed to wait for the system UI being stabilized")
+	}
 }
