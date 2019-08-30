@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61e0fbe2_76b5238e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storage_wearout_detect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-30T01:24:32Z",
+      "side": 1,
+      "message": "good catch!",
+      "range": {
+        "startLine": 22,
+        "startChar": 18,
+        "endLine": 22,
+        "endChar": 31
+      },
+      "revId": "957b98fe6139a61f344f9dd941060dcaf797eb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b120867_cb9e5234",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-30T01:24:32Z",
+      "side": 1,
+      "message": "nit: please add a period. Same for others.",
+      "range": {
+        "startLine": 95,
+        "startChar": 72,
+        "endLine": 95,
+        "endChar": 73
+      },
+      "revId": "957b98fe6139a61f344f9dd941060dcaf797eb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d5b3786_c452dfc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-30T01:24:32Z",
+      "side": 1,
+      "message": "emmcVersion ?",
+      "range": {
+        "startLine": 105,
+        "startChar": 4,
+        "endLine": 105,
+        "endChar": 15
+      },
+      "revId": "957b98fe6139a61f344f9dd941060dcaf797eb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "113b05b8_05564d43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-30T01:24:32Z",
+      "side": 1,
+      "message": "emmc",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 5
+      },
+      "revId": "957b98fe6139a61f344f9dd941060dcaf797eb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37c30833_7ec53ec8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-30T01:24:32Z",
+      "side": 1,
+      "message": "emmcFailing ?",
+      "range": {
+        "startLine": 108,
+        "startChar": 4,
+        "endLine": 108,
+        "endChar": 17
+      },
+      "revId": "957b98fe6139a61f344f9dd941060dcaf797eb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "574b8687_2f49e48b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-30T01:24:32Z",
+      "side": 1,
+      "message": "emmc",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 5
+      },
+      "revId": "957b98fe6139a61f344f9dd941060dcaf797eb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77c466c9_604d4a01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-30T01:24:32Z",
+      "side": 1,
+      "message": "nit: emmc\nacronyms have a consistent case\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 149,
+        "startChar": 7,
+        "endLine": 149,
+        "endChar": 11
+      },
+      "revId": "957b98fe6139a61f344f9dd941060dcaf797eb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c007ccb_b8f3fb93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-30T01:24:32Z",
+      "side": 1,
+      "message": "Could you invert the condition to reduce the nest?\n\nif match \u003d\u003d nil {\n  continue\n}\n// use match",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 1
+      },
+      "revId": "957b98fe6139a61f344f9dd941060dcaf797eb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3cec469_86ec9fae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-08-30T01:24:32Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 19
+      },
+      "revId": "957b98fe6139a61f344f9dd941060dcaf797eb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
