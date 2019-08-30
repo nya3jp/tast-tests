@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fee59ad7_b40b758a",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-08-30T22:08:02Z",
+      "side": 1,
+      "message": "Is there any chance other areas of Tast will need to get a TCP port? IF so maybe move this to a utils file somewhere?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 25
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d3e4deb_f917ba5b",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-08-30T22:08:02Z",
+      "side": 1,
+      "message": "Maybe change the name to be a little more descriptive? \"NewDMsServer\" or something like that?",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 8
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99266cac_350aa554",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-08-30T22:08:02Z",
+      "side": 1,
+      "message": "A suggestion:\n\nConsider adding \"client-state\", and a proper way to handle this arg (you will need to create a directory to write/read this file from).\n\nClient-state (as you showed me) allows you to easily/stop/start the DM server. In autotest (tast might be different due to go-routines) a test will not end when there is a server running. therefor, for continuous logged in tests you will need to stop/start the DM server between each test and point to the client-state file for everyone after the first.\n\nHowever: If the DM server is being written with the same idea as chrome() in tast (Ie it lives at the test runner level, not the test level), this might not be an issue as you can simply pickup the currently existing DM server.",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 35
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e6ddda4_0aa86a7c",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-08-30T22:08:02Z",
+      "side": 1,
+      "message": "Suggestion:\nSince this is a health check, consider naming this \"checkPing\" or \"CheckServerStatus\" or something to show you aren\u0027t just pinging for fun, but to make sure \"all is well\"",
+      "range": {
+        "startLine": 99,
+        "startChar": 21,
+        "endLine": 99,
+        "endChar": 25
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
