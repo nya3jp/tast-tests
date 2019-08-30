@@ -25,6 +25,7 @@ func parseUncappedPerfMetrics(metricsPath string, p *perf.Values) error {
 	defer f.Close()
 
 	var metrics struct {
+		FrameDeliveryTimeAverage      float64
 		FrameDeliveryTimePercentile25 float64
 		FrameDeliveryTimePercentile50 float64
 		FrameDeliveryTimePercentile75 float64
@@ -36,6 +37,11 @@ func parseUncappedPerfMetrics(metricsPath string, p *perf.Values) error {
 	}
 
 	// TODO(dstaessens@): Remove "tast_" prefix after removing video_VDAPerf in autotest.
+	p.Set(perf.Metric{
+		Name:      "tast_delivery_time.average",
+		Unit:      "milliseconds",
+		Direction: perf.SmallerIsBetter,
+	}, metrics.FrameDeliveryTimeAverage)
 	p.Set(perf.Metric{
 		Name:      "tast_delivery_time.first",
 		Unit:      "milliseconds",
