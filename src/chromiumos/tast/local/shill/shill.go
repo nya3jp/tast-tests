@@ -10,12 +10,14 @@ import (
 	"fmt"
 	"os"
 	"reflect"
+	"time"
 
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/testing"
 )
 
 const (
@@ -25,6 +27,9 @@ const (
 	dbusManagerPath      = "/" // crosbug.com/20135
 	dbusManagerInterface = "org.chromium.flimflam.Manager"
 	dbusServiceInterface = "org.chromium.flimflam.Service"
+
+	// DefaultProfile is the path to the default profile shill creates.
+	DefaultProfile = "/var/cache/shill/default.profile"
 )
 
 // acquireStartLock acquires the start lock of shill. Holding the lock prevents recover_duts from
@@ -67,9 +72,20 @@ func SafeStop(ctx context.Context) error {
 }
 
 // SafeStart starts the shill service.
+// This function waits until the default profile is created by shill (if it has been removed).
 func SafeStart(ctx context.Context) error {
 	defer releaseStartLock()
-	return upstart.RestartJob(ctx, "shill")
+	if err := upstart.RestartJob(ctx, "shill"); err != nil {
+		return err
+	}
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if _, err := os.Stat(DefaultProfile); os.IsNotExist(err) {
+			return err
+		} else if err != nil {
+			return testing.PollBreak(err)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second})
 }
 
 // Manager wraps a Manager D-Bus object in shill.

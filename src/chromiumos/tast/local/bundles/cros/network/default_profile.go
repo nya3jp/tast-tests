@@ -33,10 +33,7 @@ func init() {
 }
 
 func DefaultProfile(ctx context.Context, s *testing.State) {
-	const (
-		filePath   = "/var/cache/shill/default.profile"
-		objectPath = dbus.ObjectPath("/profile/default")
-	)
+	const objectPath = dbus.ObjectPath("/profile/default")
 
 	expectedSettings := []string{
 		"CheckPortalList=ethernet,wifi,cellular",
@@ -55,7 +52,7 @@ func DefaultProfile(ctx context.Context, s *testing.State) {
 	if err := shill.SafeStop(ctx); err != nil {
 		s.Fatal("Failed stopping shill: ", err)
 	}
-	os.Remove(filePath)
+	os.Remove(shill.DefaultProfile)
 	if err := shill.SafeStart(ctx); err != nil {
 		s.Fatal("Failed starting shill: ", err)
 	}
@@ -71,7 +68,7 @@ func DefaultProfile(ctx context.Context, s *testing.State) {
 		defer cancel()
 
 		isDefaultProfileReady := func() bool {
-			if _, err := os.Stat(filePath); err != nil {
+			if _, err := os.Stat(shill.DefaultProfile); err != nil {
 				return false
 			}
 
@@ -96,7 +93,7 @@ func DefaultProfile(ctx context.Context, s *testing.State) {
 	}()
 
 	// Read the default profile and check expected settings.
-	b, err := ioutil.ReadFile(filePath)
+	b, err := ioutil.ReadFile(shill.DefaultProfile)
 	if err != nil {
 		s.Fatal("Failed reading the default profile: ", err)
 	}
