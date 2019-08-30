@@ -87,6 +87,24 @@
       "revId": "15674f9a3bbb528d6d82ac886985ff68456b3be0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8103adbc_7a2cf15a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/cros_healthd_probe_cached_vpd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2019-08-30T02:41:27Z",
+      "side": 1,
+      "message": "If we\u0027re in agreement that the test needs to be improved, we might as well do that in this CL instead of landing a bad test?",
+      "parentUuid": "6ba0a70f_9e9b072f",
+      "revId": "15674f9a3bbb528d6d82ac886985ff68456b3be0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
