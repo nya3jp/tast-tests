@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f1964b1_ebd07ea9",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-30T22:31:25Z",
+      "side": 1,
+      "message": "I don\u0027t think this is a very nice general property. Particularly the part about \"if it has been removed\", since...if we haven\u0027t removed it, then this function suddenly has a very different guarantee.\n\nIf you want to modify this at all, I think it should just wait until D-Bus is ready (e.g., wait for the Manager service). That would also implicitly get you the property of \"profile is initialized\", I believe, which is what you really wanted for CL:1763617 and similar.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 94
+      },
+      "revId": "b16fb38f5d39325542a8174e65ee7c94239b2bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
