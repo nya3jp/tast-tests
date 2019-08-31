@@ -22,6 +22,30 @@
       "revId": "b16fb38f5d39325542a8174e65ee7c94239b2bbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4537202_9f2e4ae9",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-08-31T00:00:19Z",
+      "side": 1,
+      "message": "+1 to waiting for the Manager object, but does this actually fix the problem in CL:1763617? Will waiting for the Manager to appear during cleanup actually cause the default profile file to be created? And stopping shill should save to the file anyway.",
+      "parentUuid": "8f1964b1_ebd07ea9",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 94
+      },
+      "revId": "b16fb38f5d39325542a8174e65ee7c94239b2bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
