@@ -21,3 +21,21 @@ func (s *Servo) PowerNormalPress(ctx context.Context) (bool, error) {
 	err := s.run(ctx, newCall("power_normal_press"), &val)
 	return val, err
 }
+
+// SetActChgPort enables a charge port on fluffy.
+func (s *Servo) SetActChgPort(ctx context.Context, port string) error {
+	// This is a little strange...  The run() method needs the arg(val) as the response contains whether the
+	// xml-rpc call succeeded or not.  Omitting this variable causes it to fail to unmarshall the xmlrpc
+	// response.  However it seems strange because if the call didn't succeed, I believe run() will return an
+	// error in err anyways so the variable seems useless.  This is why I'm ignoring val and only returning err.
+	var val bool
+	err := s.run(ctx, newCall("set", "active_chg_port", port), &val)
+	return err
+}
+
+// DutVoltageMV reads the voltage present on the DUT port on fluffy.
+func (s *Servo) DutVoltageMV(ctx context.Context) (string, error) {
+	var voltageMV string
+	err := s.run(ctx, newCall("get", "dut_voltage_mv"), &voltageMV)
+	return voltageMV, err
+}
