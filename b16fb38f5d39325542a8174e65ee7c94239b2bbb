@@ -46,6 +46,30 @@
       "revId": "b16fb38f5d39325542a8174e65ee7c94239b2bbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59d658a8_3beadc4a",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-08-31T00:04:17Z",
+      "side": 1,
+      "message": "Manager::Start() -\u003e InitializeProfiles()\n\nI\u0027d have to trace whether Manager::Start() comes before or after we start registering responses to Manager on D-Bus.\n\nRegarding \u0027stop shill\u0027: the problem is if you stop shill before shill has gotten far enough. \u0027SafeStart\u0027 from the previous test may have Shill *running* but not running \"far enough along\", so the StopShill in the next test will kill it off, with no profile written yet.",
+      "parentUuid": "b4537202_9f2e4ae9",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 94
+      },
+      "revId": "b16fb38f5d39325542a8174e65ee7c94239b2bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
