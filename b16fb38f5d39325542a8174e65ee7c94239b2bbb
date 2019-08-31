@@ -70,6 +70,30 @@
       "revId": "b16fb38f5d39325542a8174e65ee7c94239b2bbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf2ff023_5ca301a6",
+        "filename": "src/chromiumos/tast/local/shill/shill.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-08-31T00:15:18Z",
+      "side": 1,
+      "message": "Ah I see, when I call shill.SafeStop() right after shill.SafeStart() in the cleanup function, the file doesn\u0027t get written to.",
+      "parentUuid": "59d658a8_3beadc4a",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 94
+      },
+      "revId": "b16fb38f5d39325542a8174e65ee7c94239b2bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
