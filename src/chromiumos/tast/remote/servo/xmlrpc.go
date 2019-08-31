@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // call represents a Servo call request.
@@ -130,7 +131,8 @@ func getTimeout(ctx context.Context) time.Duration {
 }
 
 // unpack extracts a response's arguments into a list of given pointers.
-func (r *response) unpack(out []interface{}) error {
+func (r *response) unpack(ctx context.Context, out []interface{}) error {
+	testing.ContextLogf(ctx, "r.Params: %v", r.Params)
 	if len(r.Params) != len(out) {
 		return errors.Errorf("response contains %d arg(s); want %d", len(r.Params), len(out))
 	}
@@ -163,6 +165,7 @@ func (s *Servo) run(ctx context.Context, cl call, out ...interface{}) error {
 	servodURL := fmt.Sprintf("http://%s:%d", s.host, s.port)
 	httpClient := &http.Client{Timeout: timeout}
 
+	testing.ContextLogf(ctx, "body: %s", body)
 	resp, err := httpClient.Post(servodURL, "text/xml", bytes.NewBuffer(body))
 	if err != nil {
 		return err
@@ -177,5 +180,6 @@ func (s *Servo) run(ctx context.Context, cl call, out ...interface{}) error {
 		return err
 	}
 
-	return res.unpack(out)
+	testing.ContextLogf(ctx, "bodyBytes: %s", bodyBytes)
+	return res.unpack(ctx, out)
 }

@@ -1,0 +1,19 @@
+[
+    {
+      "port": 0,
+      "device": "Apple 61W",
+      "expected_voltage_mv": 20000
+    },
+
+    {
+      "port": 1,
+      "device": "Apple 87W",
+      "expected_voltage_mv": 20000
+    },
+
+    {
+      "port": 2,
+      "device": "Blackcat",
+      "expected_voltage_mv": 15000
+    }
+]
