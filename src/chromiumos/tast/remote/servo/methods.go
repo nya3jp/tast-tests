@@ -21,3 +21,17 @@ func (s *Servo) PowerNormalPress(ctx context.Context) (bool, error) {
 	err := s.run(ctx, newCall("power_normal_press"), &val)
 	return val, err
 }
+
+// SetActChgPort enables a charge port on fluffy.
+func (s *Servo) SetActChgPort(ctx context.Context, port string) error {
+	var val bool
+	err := s.run(ctx, newCall("set", "active_chg_port", port), &val)
+	return err
+}
+
+// DutVoltageMV reads the voltage present on the DUT port on fluffy.
+func (s *Servo) DutVoltageMV(ctx context.Context) (string, error) {
+	var voltageMV string
+	err := s.run(ctx, newCall("get", "dut_voltage_mv"), &voltageMV)
+	return voltageMV, err
+}
