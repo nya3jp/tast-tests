@@ -46,6 +46,13 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	gpuDevices, err := selinux.GpuDevices()
+	if err != nil {
+		// Error instead of Fatal to continue test other testcases .
+		// We don't want to "hide" other failures since SELinuxFiles tests are mostly independent test cases.
+		s.Error("Failed to enumerate gpu devices: ", err)
+	}
+
 	testArgs := []selinux.FileTestCase{
 		{Path: "/bin", Context: "cros_coreutils_exec", Recursive: true, Filter: selinux.InvertFilterSkipFile(selinux.SkipCoreutilsFile), Log: false},
 		{Path: "/bin/bash", Context: "sh_exec", Recursive: false, Filter: nil, Log: false},
@@ -91,6 +98,16 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/sbin/setfiles", Context: "cros_restorecon_exec", Recursive: false, Filter: nil, Log: false},
 		{Path: "/sbin/udevd", Context: "cros_udevd_exec", Recursive: false, Filter: nil, Log: false},
 		{Path: "/sbin/upstart-socket-bridge", Context: "upstart_socket_bridge_exec", Recursive: false, Filter: nil, Log: false},
+		{Path: "/sys", Context: "sysfs.*", Recursive: true, Filter: selinux.IgnorePaths(append([]string{
+			"/sys/bus/iio/devices",
+			"/sys/class/drm",
+			"/sys/devices/system/cpu",
+			"/sys/fs/cgroup",
+			"/sys/fs/pstore",
+			"/sys/fs/selinux",
+			"/sys/kernel/config",
+			"/sys/kernel/debug",
+		}, gpuDevices...)), Log: false},
 		{Path: "/sys/devices/system/cpu", Context: "sysfs", Recursive: true, Filter: systemCPUFilter(writable), Log: false},
 		{Path: "/sys/devices/system/cpu", Context: "sysfs_devices_system_cpu", Recursive: true, Filter: systemCPUFilter(readonly), Log: false},
 		{Path: "/sys/fs/cgroup", Context: "cgroup", Recursive: true, Filter: selinux.IgnorePathButNotContents("/sys/fs/cgroup"), Log: false},
@@ -103,6 +120,8 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/sys/kernel/debug/debugfs_tracing_on", Context: "debugfs_tracing", Recursive: false, Filter: selinux.SkipNotExist, Log: false},
 		{Path: "/sys/kernel/debug/tracing", Context: "debugfs_tracing", Recursive: false, Filter: nil, Log: false},
 		{Path: "/sys/kernel/debug/tracing/trace_marker", Context: "debugfs_trace_marker", Recursive: false, Filter: selinux.SkipNotExist, Log: false},
+		{Path: "/sys/kernel/debug/sync", Context: "debugfs_sync", Recursive: false, Filter: selinux.SkipNotExist, Log: false},
+		{Path: "/sys/kernel/debug/sync/info", Context: "debugfs_sync", Recursive: false, Filter: selinux.SkipNotExist, Log: false},
 		{Path: "/usr/bin", Context: "cros_coreutils_exec", Recursive: true, Filter: selinux.InvertFilterSkipFile(selinux.SkipCoreutilsFile), Log: false},
 		{Path: "/usr/bin/anomaly_detector", Context: "cros_anomaly_detector_exec", Recursive: false, Filter: nil, Log: false},
 		{Path: "/usr/bin/chrt", Context: "cros_chrt_exec", Recursive: false, Filter: nil, Log: false},
