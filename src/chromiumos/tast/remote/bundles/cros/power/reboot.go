@@ -31,7 +31,7 @@ func Reboot(ctx context.Context, s *testing.State) {
 	// success is reported over the SSH connection. Redirect all I/O streams to ensure that the
 	// SSH exec request doesn't hang (see https://en.wikipedia.org/wiki/Nohup#Overcoming_hanging).
 	cmd := "nohup sh -c 'sleep 2; reboot' >/dev/null 2>&1 </dev/null &"
-	if _, err := d.Run(ctx, cmd); err != nil {
+	if err := d.Command("sh", "-c", cmd).Run(ctx); err != nil {
 		s.Fatal("Failed to reboot DUT: ", err)
 	}
 
