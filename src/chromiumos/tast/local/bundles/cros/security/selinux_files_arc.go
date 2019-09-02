@@ -50,10 +50,7 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 		filter        selinux.FileLabelCheckFilter // nil is selinux.CheckAll
 	}{
 		// TODO(fqj): Missing file tests from cheets_SELinux*.py are:
-		// _check_drm_render_sys_devices_labels
 		// _check_iio_sys_devices_labels
-		// _check_misc_sys_labels
-		// _check_sys_kernel_debug_labels (debugfs/sync missing)
 		{"/mnt/stateful_partition/unencrypted/apkcache", false, "apkcache_file", false, nil},
 		{"/mnt/stateful_partition/unencrypted/art-data/dalvik-cache/", false, "dalvikcache_data_file", true, nil},
 		{"/opt/google/chrome/chrome", false, "chrome_browser_exec", false, nil},
@@ -85,6 +82,7 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 		{"dev/random", true, "random_device", false, nil},
 		{"dev/urandom", true, "u?random_device", false, nil},
 		{"oem", true, "oemfs", false, nil},
+		{"sys/kernel/debug/sync", true, "tmpfs|debugfs_sync", false, nil}, // pre-3.18 doesn't have debugfs/sync, thus ARC container has a tmpfs fake.
 	} {
 		filter := testArg.filter
 		if filter == nil {
