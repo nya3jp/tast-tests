@@ -10,6 +10,8 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"strings"
+	"syscall"
 
 	selinux "github.com/opencontainers/selinux/go-selinux"
 
@@ -109,6 +111,14 @@ func checkFileContext(ctx context.Context, path string, expected *regexp.Regexp,
 	return nil
 }
 
+// isENOTDIR return true if err means ENOTDIR.
+func isENOTDIR(err error) bool {
+	if pathError, ok := err.(*os.PathError); ok {
+		return pathError.Err == syscall.ENOTDIR
+	}
+	return false
+}
+
 // CheckContext checks path, optionally recursively, except files where
 // filter returns true, to have selinux label match expected.
 // Errors are passed through s.
@@ -118,7 +128,8 @@ func checkFileContext(ctx context.Context, path string, expected *regexp.Regexp,
 // If log is true, any check will be logged even it succeeds.
 func CheckContext(ctx context.Context, s *testing.State, path string, expected *regexp.Regexp, recursive bool, filter FileLabelCheckFilter, log bool) {
 	fi, err := os.Lstat(path)
-	if err != nil && !os.IsNotExist(err) {
+	// ENOTDIR is returned to stat /a/b where /a is a file.
+	if err != nil && !(os.IsNotExist(err) || isENOTDIR(err)) {
 		s.Errorf("Failed to stat %v: %v", path, err)
 		return
 	}
@@ -155,4 +166,30 @@ func CheckContext(ctx context.Context, s *testing.State, path string, expected *
 // FileContextRegexp returns a regex to wrap given context with "^u:object_r:xxx:s0$".
 func FileContextRegexp(context string) (*regexp.Regexp, error) {
 	return regexp.Compile("^u:object_r:" + context + ":s0$")
+}
+
+// GpuDevices returns the folder for gpuDevices, for testcases for non-sysfs
+// files.
+func GpuDevices() ([]string, error) {
+	var devices []string
+	renderDs, err := filepath.Glob("/sys/class/drm/renderD*")
+	if err != nil {
+		return devices, errors.Wrap(err, "unable to locate render devices")
+	}
+	var firstErr error
+	for _, entryTree := range renderDs {
+		deviceReal, err := filepath.EvalSymlinks(filepath.Join(entryTree, "device"))
+		if err != nil {
+			if firstErr == nil {
+				firstErr = errors.Wrap(err, "unable to resolve absolute deviceReal")
+			}
+			continue
+		}
+		// entryTree may link to something looks like
+		// ../../devices/pci0000:00/0000:00:02.0/virtio0/drm/renderD128
+		// We only want the real device path.
+		deviceReal = strings.SplitN(deviceReal, "/virtio", 2)[0]
+		devices = append(devices, deviceReal)
+	}
+	return devices, firstErr
 }
