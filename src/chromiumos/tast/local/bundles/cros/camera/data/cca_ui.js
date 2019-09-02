@@ -131,7 +131,8 @@ window.Tast = class {
   static async isPortraitModeSupported() {
     if (cca.mojo.MojoConnector !== undefined) {
       const mojoConnector = new cca.mojo.MojoConnector();
-      const deviceOperator = mojoConnector.getDeviceOperator();
+      const deviceOperator =
+          await Promise.resolve(mojoConnector.getDeviceOperator());
       if (!deviceOperator) {
         return false;
       }
@@ -205,7 +206,8 @@ window.Tast = class {
       const track =
           document.querySelector('video').srcObject.getVideoTracks()[0];
       const mojoConnector = new cca.mojo.MojoConnector();
-      const deviceOperator = mojoConnector.getDeviceOperator();
+      const deviceOperator =
+          await Promise.resolve(mojoConnector.getDeviceOperator());
       if (!deviceOperator) {
         // This might be a HALv1 device.
         const facing = track.getSettings().facingMode;
