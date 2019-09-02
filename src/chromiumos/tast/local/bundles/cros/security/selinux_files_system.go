@@ -7,6 +7,8 @@ package security
 import (
 	"context"
 	"os"
+	"path/filepath"
+	"strings"
 	"syscall"
 
 	"chromiumos/tast/local/bundles/cros/security/selinux"
@@ -46,7 +48,49 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	testArgs := []selinux.FileTestCase{
+	var testArgs []selinux.FileTestCase
+
+	var gpuDevices []string
+	if renderDs, err := filepath.Glob("/sys/class/drm/renderD*"); err != nil {
+		// Error instead of Fatal to continue test other testcases .
+		// We don't want to "hide" other failures since SELinuxFiles tests are mostly independent test cases.
+		s.Error("unable to locate render devices: ", err)
+	} else {
+		for _, entryTree := range renderDs {
+			deviceReal, err := filepath.EvalSymlinks(filepath.Join(entryTree, "device"))
+			if err != nil {
+				s.Fatal("unable to resolve absolute deviceReal: ", err)
+			}
+			// entryTree may link to something looks like
+			// ../../devices/pci0000:00/0000:00:02.0/virtio0/drm/renderD128
+			// We only want the real device path.
+			deviceReal = strings.SplitN(deviceReal, "/virtio", 2)[0]
+			gpuDevices = append(gpuDevices, deviceReal)
+			testArgs = append(
+				testArgs,
+				[]selinux.FileTestCase{
+					{Path: filepath.Join(deviceReal, "config"), Context: "gpu_device", Recursive: false, Filter: nil, Log: false},
+					{Path: filepath.Join(deviceReal, "device"), Context: "gpu_device", Recursive: false, Filter: nil, Log: false},
+					{Path: filepath.Join(deviceReal, "drm"), Context: "gpu_device", Recursive: false, Filter: nil, Log: false},
+					{Path: filepath.Join(deviceReal, "subsystem_device"), Context: "gpu_device", Recursive: false, Filter: nil, Log: false},
+					{Path: filepath.Join(deviceReal, "subsystem_vendor"), Context: "gpu_device", Recursive: false, Filter: nil, Log: false},
+					{Path: filepath.Join(deviceReal, "uevent"), Context: "gpu_device", Recursive: false, Filter: nil, Log: false},
+					{Path: filepath.Join(deviceReal, "vendor"), Context: "gpu_device", Recursive: false, Filter: nil, Log: false},
+					{Path: deviceReal, Context: "sysfs", Recursive: true, Filter: selinux.IgnorePaths([]string{
+						filepath.Join(deviceReal, "config"),
+						filepath.Join(deviceReal, "device"),
+						filepath.Join(deviceReal, "drm"),
+						filepath.Join(deviceReal, "subsystem_device"),
+						filepath.Join(deviceReal, "subsystem_vendor"),
+						filepath.Join(deviceReal, "uevent"),
+						filepath.Join(deviceReal, "vendor"),
+					}), Log: false},
+				}...,
+			)
+		}
+	}
+
+	testArgs = append(testArgs, []selinux.FileTestCase{
 		{Path: "/bin", Context: "cros_coreutils_exec", Recursive: true, Filter: selinux.InvertFilterSkipFile(selinux.SkipCoreutilsFile), Log: false},
 		{Path: "/bin/bash", Context: "sh_exec", Recursive: false, Filter: nil, Log: false},
 		{Path: "/bin/dash", Context: "sh_exec", Recursive: false, Filter: nil, Log: false},
@@ -91,6 +135,16 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/sbin/setfiles", Context: "cros_restorecon_exec", Recursive: false, Filter: nil, Log: false},
 		{Path: "/sbin/udevd", Context: "cros_udevd_exec", Recursive: false, Filter: nil, Log: false},
 		{Path: "/sbin/upstart-socket-bridge", Context: "upstart_socket_bridge_exec", Recursive: false, Filter: nil, Log: false},
+		{Path: "/sys", Context: "sysfs.*", Recursive: true, Filter: selinux.IgnorePaths(append([]string{
+			"/sys/bus/iio/devices",
+			"/sys/class/drm",
+			"/sys/devices/system/cpu",
+			"/sys/fs/cgroup",
+			"/sys/fs/pstore",
+			"/sys/fs/selinux",
+			"/sys/kernel/config",
+			"/sys/kernel/debug",
+		}, gpuDevices...)), Log: false},
 		{Path: "/sys/devices/system/cpu", Context: "sysfs", Recursive: true, Filter: systemCPUFilter(writable), Log: false},
 		{Path: "/sys/devices/system/cpu", Context: "sysfs_devices_system_cpu", Recursive: true, Filter: systemCPUFilter(readonly), Log: false},
 		{Path: "/sys/fs/cgroup", Context: "cgroup", Recursive: true, Filter: selinux.IgnorePathButNotContents("/sys/fs/cgroup"), Log: false},
@@ -103,6 +157,9 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/sys/kernel/debug/debugfs_tracing_on", Context: "debugfs_tracing", Recursive: false, Filter: selinux.SkipNotExist, Log: false},
 		{Path: "/sys/kernel/debug/tracing", Context: "debugfs_tracing", Recursive: false, Filter: nil, Log: false},
 		{Path: "/sys/kernel/debug/tracing/trace_marker", Context: "debugfs_trace_marker", Recursive: false, Filter: selinux.SkipNotExist, Log: false},
+		{Path: "/sys/kernel/debug/sync", Context: "debugfs_sync", Recursive: false, Filter: selinux.SkipNotExist, Log: false},
+		{Path: "/sys/kernel/debug/sync/info", Context: "debugfs_sync", Recursive: false, Filter: selinux.SkipNotExist, Log: false},
+		{Path: "/sys/kernel/debug/sync/sw_sync", Context: "debugfs_sw_sync", Recursive: false, Filter: selinux.SkipNotExist, Log: false},
 		{Path: "/usr/bin", Context: "cros_coreutils_exec", Recursive: true, Filter: selinux.InvertFilterSkipFile(selinux.SkipCoreutilsFile), Log: false},
 		{Path: "/usr/bin/anomaly_detector", Context: "cros_anomaly_detector_exec", Recursive: false, Filter: nil, Log: false},
 		{Path: "/usr/bin/chrt", Context: "cros_chrt_exec", Recursive: false, Filter: nil, Log: false},
@@ -187,7 +244,7 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/var/spool", Context: "cros_var_spool", Recursive: false, Filter: nil, Log: true},
 		{Path: "/var/spool/crash", Context: "cros_crash_spool", Recursive: true, Filter: selinux.SkipNotExist, Log: true},
 		{Path: "/var/spool/cron-lite", Context: "cros_periodic_scheduler_cache_t", Recursive: true, Filter: nil, Log: true},
-	}
+	}...)
 
 	selinux.FilesTestInternal(ctx, s, testArgs)
 }

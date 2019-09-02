@@ -10,6 +10,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"syscall"
 
 	selinux "github.com/opencontainers/selinux/go-selinux"
 
@@ -109,6 +110,14 @@ func checkFileContext(ctx context.Context, path string, expected *regexp.Regexp,
 	return nil
 }
 
+// isENOTDIR return true if err means ENOTDIR.
+func isENOTDIR(err error) bool {
+	if pathError, ok := err.(*os.PathError); ok {
+		return pathError.Err == syscall.ENOTDIR
+	}
+	return false
+}
+
 // CheckContext checks path, optionally recursively, except files where
 // filter returns true, to have selinux label match expected.
 // Errors are passed through s.
@@ -118,7 +127,8 @@ func checkFileContext(ctx context.Context, path string, expected *regexp.Regexp,
 // If log is true, any check will be logged even it succeeds.
 func CheckContext(ctx context.Context, s *testing.State, path string, expected *regexp.Regexp, recursive bool, filter FileLabelCheckFilter, log bool) {
 	fi, err := os.Lstat(path)
-	if err != nil && !os.IsNotExist(err) {
+	// ENOTDIR is returned to stat /a/b where /a is a file.
+	if err != nil && !(os.IsNotExist(err) || isENOTDIR(err)) {
 		s.Errorf("Failed to stat %v: %v", path, err)
 		return
 	}
