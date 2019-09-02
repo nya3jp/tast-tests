@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d09ad77_d704404d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-02T10:42:25Z",
+      "side": 1,
+      "message": "Could you briefly explain what\u0027s true and false here? Or, maybe introducing a named enum (with new type) is better?",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 14
+      },
+      "revId": "b2a6b80f0b732a3bdd6a46498b6fcefae20d7e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efe14d1a_1f2b34ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-02T10:42:25Z",
+      "side": 1,
+      "message": "style: Do you need to add the flag at the beginning?\nIf so, could you comment the reason?\nIf not;\n\nc \u003d append(c, \"--seccomp\u003dfalse\")\n\nis a way to go.",
+      "range": {
+        "startLine": 88,
+        "startChar": 7,
+        "endLine": 88,
+        "endChar": 48
+      },
+      "revId": "b2a6b80f0b732a3bdd6a46498b6fcefae20d7e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
