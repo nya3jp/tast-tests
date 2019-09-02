@@ -26,6 +26,14 @@ func init() {
 	})
 }
 
+type arcFileTestCase struct {
+	path          string
+	isAndroidPath bool
+	context       string
+	recursive     bool
+	filter        selinux.FileLabelCheckFilter // nil is selinux.CheckAll
+}
+
 func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 	containerPIDFiles, err := filepath.Glob("/run/containers/android*/container.pid")
 	if err != nil {
@@ -42,18 +50,21 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 	}
 	androidRoot := fmt.Sprintf("/proc/%s/root", strings.TrimSpace(string(b)))
 
-	for _, testArg := range []struct {
-		path          string
-		isAndroidPath bool
-		context       string
-		recursive     bool
-		filter        selinux.FileLabelCheckFilter // nil is selinux.CheckAll
-	}{
+	var testArgs []arcFileTestCase
+
+	_, gpuTestCases, err := selinux.GetGpuDevices()
+	if err != nil {
+		// Error instead of Fatal to continue test other testcases .
+		// We don't want to "hide" other failures since SELinuxFiles tests are mostly independent test cases.
+		s.Error("Failed to enumerate gpu devices: ", err)
+	}
+	for _, gpuTestCase := range gpuTestCases {
+		testArgs = append(testArgs, arcFileTestCase{gpuTestCase.Path, false, gpuTestCase.Context, gpuTestCase.Recursive, gpuTestCase.Filter})
+	}
+
+	testArgs = append(testArgs, []arcFileTestCase{
 		// TODO(fqj): Missing file tests from cheets_SELinux*.py are:
-		// _check_drm_render_sys_devices_labels
 		// _check_iio_sys_devices_labels
-		// _check_misc_sys_labels
-		// _check_sys_kernel_debug_labels (debugfs/sync missing)
 		{"/mnt/stateful_partition/unencrypted/apkcache", false, "apkcache_file", false, nil},
 		{"/mnt/stateful_partition/unencrypted/art-data/dalvik-cache/", false, "dalvikcache_data_file", true, nil},
 		{"/opt/google/chrome/chrome", false, "chrome_browser_exec", false, nil},
@@ -79,13 +90,17 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 		{"/run/chrome/wayland-0", false, "wayland_socket", false, nil},
 		{"/run/cras", false, "cras_socket", true, nil},
 		{"/run/session_manager", false, "cros_run_session_manager", true, nil},
+		{"/sys/kernel/debug/sync/sw_sync", false, "debugfs_sw_sync", false, selinux.SkipNotExist},
 		{"/usr/sbin/arc-setup", false, "cros_arc_setup_exec", false, nil},
 		{"/var/log/chrome", false, "cros_var_log_chrome", true, nil},
 		{"dev/ptmx", true, "ptmx_device", false, nil},
 		{"dev/random", true, "random_device", false, nil},
 		{"dev/urandom", true, "u?random_device", false, nil},
 		{"oem", true, "oemfs", false, nil},
-	} {
+		{"sys/kernel/debug/sync", true, "tmpfs|debugfs_sync", false, nil}, // pre-3.18 doesn't have debugfs/sync, thus ARC container has a tmpfs fake.
+	}...)
+
+	for _, testArg := range testArgs {
 		filter := testArg.filter
 		if filter == nil {
 			filter = selinux.CheckAll
