@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20100eb0_88940b68",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/reboot_new.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-02T10:54:23Z",
+      "side": 1,
+      "message": "Could you add TODO to migrate this into Reboot, when stabilized?",
+      "revId": "a28f2ac7418826c613cd7a822a05e0f5a316de2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
