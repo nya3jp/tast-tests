@@ -34,12 +34,10 @@ const (
 // Session maintains the connection to talk to the browser in Chrome DevTools Protocol
 // over WebSocket.
 type Session struct {
-	addr   string      // DevTools address, including port (e.g. 127.0.0.1:12345)
-	wsConn *rpcc.Conn  // DevTools WebSocket connection to the browser
-	client *cdp.Client // DevTools client using wsConn
-
-	// TODO(hidehiko): Make this field private for better encapsulation.
-	Manager *session.Manager // manages connections to multiple targets over wsConn
+	addr    string           // DevTools address, including port (e.g. 127.0.0.1:12345)
+	wsConn  *rpcc.Conn       // DevTools WebSocket connection to the browser
+	client  *cdp.Client      // DevTools client using wsConn
+	manager *session.Manager // manages connections to multiple targets over wsConn
 }
 
 // NewSession establishes a Chrome DevTools Protocol WebSocket connection to the browser.
@@ -84,7 +82,7 @@ func NewSession(ctx context.Context) (sess *Session, retErr error) {
 		addr:    addr,
 		wsConn:  co,
 		client:  cl,
-		Manager: m,
+		manager: m,
 	}, nil
 }
 
@@ -120,7 +118,7 @@ func readDebuggingPort(p string) (int, error) {
 
 // Close shuts down the connection to the browser.
 func (s *Session) Close(ctx context.Context) error {
-	err := s.Manager.Close()
+	err := s.manager.Close()
 	if werr := s.wsConn.Close(); werr != nil {
 		// Return the first error. If there already is, just log werr here.
 		if err == nil {

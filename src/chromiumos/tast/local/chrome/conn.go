@@ -6,28 +6,18 @@ package chrome
 
 import (
 	"context"
-	"encoding/json"
-	"strings"
 	"time"
 
-	"github.com/mafredri/cdp"
-	"github.com/mafredri/cdp/protocol/dom"
-	"github.com/mafredri/cdp/protocol/page"
-	"github.com/mafredri/cdp/protocol/runtime"
 	"github.com/mafredri/cdp/protocol/target"
-	"github.com/mafredri/cdp/rpcc"
-	"github.com/mafredri/cdp/session"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/jslog"
-	"chromiumos/tast/testing"
 )
 
 // Conn represents a connection to a web content view, e.g. a tab.
 type Conn struct {
-	co       *rpcc.Conn
-	cl       *cdp.Client
-	targetID target.ID
+	co *cdputil.Conn
 
 	lw *jslog.Worker
 
@@ -38,46 +28,28 @@ type Conn struct {
 
 // newConn starts a new session using sm for communicating with the supplied target.
 // pageURL is only used when logging JavaScript console messages via lm.
-func newConn(ctx context.Context, sm *session.Manager, id target.ID,
-	lm *jslog.Master, pageURL string, chromeErr func(error) error) (*Conn, error) {
-	testing.ContextLog(ctx, "Connecting to Chrome target ", string(id))
-	co, err := sm.Dial(ctx, id)
+func newConn(ctx context.Context, s *cdputil.Session, id target.ID,
+	lm *jslog.Master, pageURL string, chromeErr func(error) error) (c *Conn, retErr error) {
+	co, err := s.NewConn(ctx, id)
 	if err != nil {
 		return nil, err
 	}
 	defer func() {
-		if co != nil {
+		if retErr != nil {
 			co.Close()
 		}
 	}()
 
-	cl := cdp.NewClient(co)
-	if _, err := cl.Target.AttachToTarget(ctx, &target.AttachToTargetArgs{TargetID: id}); err != nil {
-		return nil, err
-	}
-
-	if err := cl.Runtime.Enable(ctx); err != nil {
-		return nil, err
-	}
-
-	if err = cl.Page.Enable(ctx); err != nil {
-		return nil, err
-	}
-
-	ev, err := cl.Runtime.ConsoleAPICalled(ctx)
+	ev, err := co.ConsoleAPICalled(ctx)
 	if err != nil {
 		return nil, err
 	}
 
-	c := &Conn{
+	return &Conn{
 		co:        co,
-		cl:        cl,
-		targetID:  id,
 		lw:        lm.NewWorker(string(id), pageURL, ev),
 		chromeErr: chromeErr,
-	}
-	co = nil
-	return c, nil
+	}, nil
 }
 
 // Close closes the connection to the target and frees related resources.
@@ -98,13 +70,7 @@ func (c *Conn) CloseTarget(ctx context.Context) error {
 	if c.locked {
 		return errors.New("can't close target for locked connection")
 	}
-	args := &target.CloseTargetArgs{TargetID: c.targetID}
-	if reply, err := c.cl.Target.CloseTarget(ctx, args); err != nil {
-		return err
-	} else if !reply.Success {
-		return errors.New("failed to close target")
-	}
-	return nil
+	return c.co.CloseTarget(ctx)
 }
 
 // Exec executes the JavaScript expression expr and discards its result.
@@ -144,93 +110,32 @@ func (c *Conn) EvalPromise(ctx context.Context, expr string, out interface{}) er
 
 // doEval is a helper function that evaluates JavaScript code for Exec, Eval, and EvalPromise.
 func (c *Conn) doEval(ctx context.Context, expr string, awaitPromise bool, out interface{}) error {
-	args := runtime.NewEvaluateArgs(expr)
-	if awaitPromise {
-		args = args.SetAwaitPromise(true)
-	}
-	if out != nil {
-		args = args.SetReturnByValue(true)
-	}
-
-	repl, err := c.cl.Runtime.Evaluate(ctx, args)
+	text, exc, err := c.co.Eval(ctx, expr, awaitPromise, out)
 	if err != nil {
+		if exc != nil {
+			c.lw.Report(time.Now(), "eval-error", text, exc.StackTrace)
+		}
 		return err
 	}
-	exc := repl.ExceptionDetails
-	if exc != nil {
-		text := getExceptionText(repl.ExceptionDetails)
-		c.lw.Report(time.Now(), "eval-error", text, exc.StackTrace)
-		return errors.Errorf("got exception: %s", text)
-	}
-	if out == nil {
-		return nil
-	}
-	return json.Unmarshal(repl.Result.Value, out)
-}
-
-// getExceptionText extracts an error string from the exception described by d.
-//
-// The Chrome DevTools Protocol reports exceptions (and failed promises) in different ways depending
-// on how they occur. This function tries to return a single-line string that contains the original error.
-//
-// Exec, Eval: throw new Error("foo"):
-//	.Text:                  "Uncaught"
-//	.Error:                 "runtime.ExceptionDetails: Uncaught exception at 0:0: Error: foo\n  <stack>"
-//	.Exception.Description: "Error: foo\n  <stack>"
-//	.Exception.Value:       null
-//
-// EvalPromise: reject("foo"):
-//	.Text:                  "Uncaught (in promise)"
-//	.Error:                 "runtime.ExceptionDetails: Uncaught (in promise) exception at 0:0"
-//	.Exception.Description: nil
-//	.Exception.Value:       "foo"
-//
-// EvalPromise: reject(new Error("foo")), throw new Error("foo"):
-//	.Text:                  "Uncaught (in promise) Error: foo"
-//	.Error:                 "runtime.ExceptionDetails: Uncaught (in promise) Error: foo exception at 0:0"
-//	.Exception.Description: nil
-//	.Exception.Value:       {}
-func getExceptionText(d *runtime.ExceptionDetails) string {
-	if d.Exception != nil && d.Exception.Description != nil {
-		return strings.Split(*d.Exception.Description, "\n")[0]
-	}
-	var s string
-	if err := json.Unmarshal(d.Exception.Value, &s); err == nil {
-		return d.Text + ": " + s
-	}
-	return d.Text
+	return nil
 }
 
 // WaitForExpr repeatedly evaluates the JavaScript expression expr until it evaluates to true.
 // Errors returned by Eval are treated the same as expr == false.
 func (c *Conn) WaitForExpr(ctx context.Context, expr string) error {
-	return c.waitForExprImpl(ctx, expr, false)
+	return c.waitForExprImpl(ctx, expr, cdputil.ContinueOnError)
 }
 
 // WaitForExprFailOnErr repeatedly evaluates the JavaScript expression expr until it evaluates to true.
 // It returns immediately if Eval returns an error.
 func (c *Conn) WaitForExprFailOnErr(ctx context.Context, expr string) error {
-	return c.waitForExprImpl(ctx, expr, true)
+	return c.waitForExprImpl(ctx, expr, cdputil.ExitOnError)
 }
 
 // waitForExprImpl repeatedly evaluates the JavaScript expression expr until it evaluates to true.
 // The behavior on evaluation errors depends on the value of exitOnError.
-func (c *Conn) waitForExprImpl(ctx context.Context, expr string, exitOnError bool) error {
-	boolExpr := "!!(" + expr + ")"
-	falseErr := errors.Errorf("%q is false", boolExpr)
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		v := false
-		if err := c.Eval(ctx, boolExpr, &v); err != nil {
-			if exitOnError {
-				return testing.PollBreak(err)
-			}
-			return err
-		}
-		if !v {
-			return falseErr
-		}
-		return nil
-	}, &testing.PollOptions{Interval: 10 * time.Millisecond}); err != nil {
+func (c *Conn) waitForExprImpl(ctx context.Context, expr string, ea cdputil.ErrorAction) error {
+	if err := c.co.WaitForExpr(ctx, expr, ea); err != nil {
 		return c.chromeErr(err)
 	}
 	return nil
@@ -238,33 +143,10 @@ func (c *Conn) waitForExprImpl(ctx context.Context, expr string, exitOnError boo
 
 // PageContent returns the current top-level page content.
 func (c *Conn) PageContent(ctx context.Context) (string, error) {
-	doc, err := c.cl.DOM.GetDocument(ctx, nil)
-	if err != nil {
-		return "", err
-	}
-	result, err := c.cl.DOM.GetOuterHTML(ctx, &dom.GetOuterHTMLArgs{
-		NodeID: &doc.Root.NodeID,
-	})
-	if err != nil {
-		return "", err
-	}
-	return result.OuterHTML, nil
+	return c.co.PageContent(ctx)
 }
 
 // Navigate navigates to url.
 func (c *Conn) Navigate(ctx context.Context, url string) error {
-	testing.ContextLog(ctx, "Navigating to ", url)
-	fired, err := c.cl.Page.DOMContentEventFired(ctx)
-	if err != nil {
-		return err
-	}
-	defer fired.Close()
-
-	if _, err := c.cl.Page.Navigate(ctx, page.NewNavigateArgs(url)); err != nil {
-		return err
-	}
-	if _, err = fired.Recv(); err != nil {
-		return err
-	}
-	return nil
+	return c.co.Navigate(ctx, url)
 }

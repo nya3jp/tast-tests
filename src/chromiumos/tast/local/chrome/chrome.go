@@ -645,7 +645,7 @@ func (c *Chrome) NewConn(ctx context.Context, url string) (*Conn, error) {
 // newConnInternal is a convenience function that creates a new Conn connected to the specified target.
 // url is only used for logging JavaScript console messages.
 func (c *Chrome) newConnInternal(ctx context.Context, id target.ID, url string) (*Conn, error) {
-	return newConn(ctx, c.devsess.Manager, id, c.logMaster, url, c.chromeErr)
+	return newConn(ctx, c.devsess, id, c.logMaster, url, c.chromeErr)
 }
 
 // Target contains information about an available debugging target to which a connection can be established.
