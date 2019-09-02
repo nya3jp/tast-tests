@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "632cd6d5_3e971578",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/window_manager_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-02T10:11:21Z",
+      "side": 1,
+      "message": "huge nit: apps?",
+      "range": {
+        "startLine": 770,
+        "startChar": 6,
+        "endLine": 770,
+        "endChar": 9
+      },
+      "revId": "6d28a3ab3acd32ac64b075097c871ad1e0a2ffd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
