@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc5faf9c_3cd41dee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-09-03T18:30:18Z",
+      "side": 1,
+      "message": "Make this either constatnt or maybe we should do what ARC tests are doing because ARC also affects performance.",
+      "revId": "8726921f44583cc929b18e1ce0b8d1c7601e8f75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc766e4d_e0e31722",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2019-09-03T18:30:18Z",
+      "side": 1,
+      "message": "I think we should wait for 1 seconds to trigger occlusion tracker.\n(and we should fix native test as well)",
+      "revId": "8726921f44583cc929b18e1ce0b8d1c7601e8f75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
