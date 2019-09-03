@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "36cc5530_b7e28877",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2019-09-03T17:51:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c050eefc_a70945d4",
+      "range": {
+        "startLine": 115,
+        "startChar": 29,
+        "endLine": 115,
+        "endChar": 39
+      },
+      "revId": "510e856811183712815e37c352efe176d681b63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5419f2d9_d28be0d9",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "510e856811183712815e37c352efe176d681b63e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1386519_7a85aabc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2019-09-03T17:51:52Z",
+      "side": 1,
+      "message": "There isn\u0027t a good reason to force-enable UseARC, I changed it to have it be specified on the memory user side if we will be running android tasks.",
+      "parentUuid": "5419f2d9_d28be0d9",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 3
+      },
+      "revId": "510e856811183712815e37c352efe176d681b63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8c4c99ad_932adb44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2019-09-03T17:51:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fab59dd5_ec77067b",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 27
+      },
+      "revId": "510e856811183712815e37c352efe176d681b63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ad360e4_8ce52e65",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "510e856811183712815e37c352efe176d681b63e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6e1c326_26edab9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2019-09-03T17:51:52Z",
+      "side": 1,
+      "message": "Found here: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1779126/2",
+      "parentUuid": "6ad360e4_8ce52e65",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 18
+      },
+      "revId": "510e856811183712815e37c352efe176d681b63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "41b619c8_0fa2ae76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2019-09-03T17:51:52Z",
+      "side": 1,
+      "message": "Here: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1779126/2",
+      "parentUuid": "e6c992d9_64ac4817",
+      "range": {
+        "startLine": 244,
+        "startChar": 1,
+        "endLine": 244,
+        "endChar": 14
+      },
+      "revId": "510e856811183712815e37c352efe176d681b63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e75df858_1a83d183",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/mempressure_task.go",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "510e856811183712815e37c352efe176d681b63e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd57bc59_5b52e584",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/mempressure_task.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2019-09-03T17:51:52Z",
+      "side": 1,
+      "message": "Here: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1779126/2",
+      "parentUuid": "e75df858_1a83d183",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 20
+      },
+      "revId": "510e856811183712815e37c352efe176d681b63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "768e1557_726e9f70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/mempressure_task.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2019-09-03T17:51:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06343102_94ae209c",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 19
+      },
+      "revId": "510e856811183712815e37c352efe176d681b63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d10e44a0_3afe7f8a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 2
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "d0290549_b76ceb01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2019-09-03T17:51:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d10e44a0_3afe7f8a",
+      "range": {
+        "startLine": 521,
+        "startChar": 5,
+        "endLine": 521,
+        "endChar": 15
+      },
+      "revId": "510e856811183712815e37c352efe176d681b63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b71af843_83791883",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
         "patchSetId": 2
@@ -197,6 +389,30 @@
       "writtenOn": "2019-08-27T01:45:34Z",
       "side": 1,
       "message": "This perf recording is for platform.Mempressure, but I believe it\u0027s not intended for platform.MemoryUser.\n\nPlease refactor mempressure.Run.",
+      "range": {
+        "startLine": 1193,
+        "startChar": 0,
+        "endLine": 1195,
+        "endChar": 2
+      },
+      "revId": "510e856811183712815e37c352efe176d681b63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e48980c_955a2706",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1195,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2019-09-03T17:51:52Z",
+      "side": 1,
+      "message": "I\u0027m still figuring out what perf metrics we want for platform.MemoryUser and I will upload a separate cl for that. In the mean time, I can change platform.Mempressure to not save the perf recording if it is part of platform.MemoryUser.",
+      "parentUuid": "b71af843_83791883",
       "range": {
         "startLine": 1193,
         "startChar": 0,
