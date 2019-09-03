@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4ff0c3ec_89b57c5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-09-03T21:55:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d09ad77_d704404d",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 14
+      },
+      "revId": "b2a6b80f0b732a3bdd6a46498b6fcefae20d7e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "efe14d1a_1f2b34ef",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "b2a6b80f0b732a3bdd6a46498b6fcefae20d7e40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b4353a7_55143f6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usb_bouncer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-09-03T21:55:29Z",
+      "side": 1,
+      "message": "The original thought was for the switches to always precede the parameters, but the implementation doesn\u0027t care, so I switched it to your suggestion.",
+      "parentUuid": "efe14d1a_1f2b34ef",
+      "range": {
+        "startLine": 88,
+        "startChar": 7,
+        "endLine": 88,
+        "endChar": 48
+      },
+      "revId": "b2a6b80f0b732a3bdd6a46498b6fcefae20d7e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
