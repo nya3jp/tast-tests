@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "5f62520b_4fc6c757",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-03T23:21:20Z",
+      "side": 1,
+      "message": "fixed. thanks.",
+      "parentUuid": "75971980_291f483c",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "f23fceabf03a62537c9566cb4d47bd5200f22fb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d85377ed_8806b206",
         "filename": "src/chromiumos/tast/local/arc/pre.go",
         "patchSetId": 2
