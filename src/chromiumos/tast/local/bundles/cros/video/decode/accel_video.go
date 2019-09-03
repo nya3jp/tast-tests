@@ -323,10 +323,19 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, filename strin
 	}
 
 	p := perf.NewValues()
-	if err := parseUncappedPerfMetrics(filepath.Join(s.OutDir(), uncappedTestname+".json"), p); err != nil {
+	uncappedJson, err := findFileInDir(s.OutDir(), uncappedTestname+".json")
+	if err != nil || uncappedJson == "" {
+		s.Fatal("Failed to find uncapped performance metrics file: ", err)
+	}
+	cappedJson, err := findFileInDir(s.OutDir(), cappedTestname+".json")
+	if err != nil || cappedJson == "" {
+		s.Fatal("Failed to find capped performance metrics file: ", err)
+	}
+
+	if err := parseUncappedPerfMetrics(uncappedJson, p); err != nil {
 		s.Fatal("Failed to parse uncapped performance metrics: ", err)
 	}
-	if err := parseCappedPerfMetrics(filepath.Join(s.OutDir(), cappedTestname+".json"), p); err != nil {
+	if err := parseCappedPerfMetrics(cappedJson, p); err != nil {
 		s.Fatal("Failed to parse capped performance metrics: ", err)
 	}
 

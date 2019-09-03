@@ -7,6 +7,7 @@ package decode
 import (
 	"encoding/json"
 	"os"
+	"path/filepath"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/perf"
@@ -97,4 +98,20 @@ func parseCappedPerfMetrics(metricsPath string, p *perf.Values) error {
 	}, metrics.FrameDecodeTimePercentile50)
 
 	return nil
+}
+
+// findFileInDir finds fileName under baseDirPath and returns its absolute file path.
+func findFileInDir(baseDirPath string, fileName string) (string, error) {
+	filePath := ""
+	err := filepath.Walk(baseDirPath,
+		func(path string, info os.FileInfo, err error) error {
+			if err != nil {
+				return err
+			}
+			if !info.IsDir() && info.Name() == fileName {
+				filePath = path
+			}
+			return nil
+		})
+	return filePath, err
 }
