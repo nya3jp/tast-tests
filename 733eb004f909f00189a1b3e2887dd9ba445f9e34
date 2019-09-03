@@ -473,6 +473,23 @@
       "revId": "733eb004f909f00189a1b3e2887dd9ba445f9e34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4854d48e_6fabc34c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-03T16:48:21Z",
+      "side": 1,
+      "message": "nit and optional:\nI guess it looks easier to read if  move `checkUrls` is outside the loop (and convert it into a \"set\" (e.g: map[string]bool)).\n\nWith that, you can move the \"for _, url :\u003d range checkUrls { checkNavigation(url) }\" outside the loop too. The benefit would be that if there is a duplicate, it won\u0027t get processed again.",
+      "revId": "733eb004f909f00189a1b3e2887dd9ba445f9e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
