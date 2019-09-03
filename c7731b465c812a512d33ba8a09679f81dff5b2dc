@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bad2733e_b8077389",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-09-03T06:44:49Z",
+      "side": 1,
+      "message": "To be honest I have no background on Android application implementation. But if I get more knowledge on it, we could build up more powerful APK for testing.",
+      "parentUuid": "01b7a48b_5dc57055",
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "52e6551d_a293ae08",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5b4ee63_b083abab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-09-03T06:44:49Z",
+      "side": 1,
+      "message": "Here is the source code:\nhttps://cs.corp.google.com/arc-nyc-mr1/vendor/google_arc/packages/development/ArcVideoTest/src/org/chromium/arc/testapp/video/MainActivity.java?g\u003d0\n\nAnd this is originally used by autotest cheets_MediaPlayerVideoHWDecodeUsed.\nhttps://cs.corp.google.com/chromeos_internal/src/third_party/autotest-tests-cheets/client/site_tests/cheets_MediaPlayerVideoHWDecodeUsed/cheets_MediaPlayerVideoHWDecodeUsed.py",
+      "parentUuid": "52e6551d_a293ae08",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
