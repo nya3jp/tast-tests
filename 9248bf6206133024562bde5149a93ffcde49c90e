@@ -51,6 +51,47 @@
       "revId": "9248bf6206133024562bde5149a93ffcde49c90e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d4d4d7d_523cd7bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-09-03T23:41:37Z",
+      "side": 1,
+      "message": "we should create a bug here.",
+      "parentUuid": "e45d4b9f_579496f7",
+      "revId": "9248bf6206133024562bde5149a93ffcde49c90e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c39655c8_a21f9783",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gfxinfo/gfxinfo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-09-03T23:41:37Z",
+      "side": 1,
+      "message": "you can just return this.\n\nreturn a.Command(...).Run()",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 58
+      },
+      "revId": "9248bf6206133024562bde5149a93ffcde49c90e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
