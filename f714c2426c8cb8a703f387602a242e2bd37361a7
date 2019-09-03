@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c99777a_fb341992",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-03T01:15:21Z",
+      "side": 1,
+      "message": "style: var testArgs []selinux.FileTestCase",
+      "revId": "f714c2426c8cb8a703f387602a242e2bd37361a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e82ddac_c11e8f46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-03T01:15:21Z",
+      "side": 1,
+      "message": "style: var gpuDevices []string",
+      "revId": "f714c2426c8cb8a703f387602a242e2bd37361a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cf974ec_e0dfed4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-03T01:15:21Z",
+      "side": 1,
+      "message": "Could you check the error?",
+      "range": {
+        "startLine": 54,
+        "startChar": 11,
+        "endLine": 54,
+        "endChar": 12
+      },
+      "revId": "f714c2426c8cb8a703f387602a242e2bd37361a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a25f15a_d248c27b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-03T01:15:21Z",
+      "side": 1,
+      "message": "maybe: deviceLink \u003d strings.TrimSuffix(deviceLink, \"/virtio\") ?",
+      "revId": "f714c2426c8cb8a703f387602a242e2bd37361a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e315d61_f1be3aa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-03T01:15:21Z",
+      "side": 1,
+      "message": "I couldn\u0027t find some entries in this in the original autotest.\nCould you clarify where they come from in commit message?",
+      "revId": "f714c2426c8cb8a703f387602a242e2bd37361a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e696304_ff818951",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-03T01:15:21Z",
+      "side": 1,
+      "message": "nit: dup entry.",
+      "revId": "f714c2426c8cb8a703f387602a242e2bd37361a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b94a6f17_1b13b786",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-03T01:15:21Z",
+      "side": 1,
+      "message": "nit: nice to inherit the comment when tmpfs and when debugfs_sync?",
+      "revId": "f714c2426c8cb8a703f387602a242e2bd37361a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
