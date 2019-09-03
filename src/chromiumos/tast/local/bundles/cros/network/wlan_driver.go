@@ -97,6 +97,7 @@ var wlanDeviceLookup = map[wlanDeviceInfo]string{
 	// as an identifier.
 	// 0x02f0 is for Quasar on CML, 0x0074 is for HrP2
 	{vendor: "0x8086", device: "0x02f0", subsystem: "0x0034"}: intel9000,
+	{vendor: "0x8086", device: "0x02f0", subsystem: "0x4070"}: intel22560,
 	{vendor: "0x8086", device: "0x02f0", subsystem: "0x0074"}: intel22560,
 	{vendor: "0x02d0", device: "0x4354"}:                      broadcomBCM4354SDIO,
 	{vendor: "0x14e4", device: "0x43ec"}:                      broadcomBCM4356PCIE,
