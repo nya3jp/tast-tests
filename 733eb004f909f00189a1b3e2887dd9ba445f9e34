@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "527576dc_85aedf72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-03T09:57:37Z",
+      "side": 1,
+      "message": "Could you pass testexec.DumpLogOnError, and remove cmd.DumpLog below?",
+      "range": {
+        "startLine": 41,
+        "startChar": 19,
+        "endLine": 41,
+        "endChar": 20
+      },
+      "revId": "733eb004f909f00189a1b3e2887dd9ba445f9e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "179fbd47_302a67da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-03T09:57:37Z",
+      "side": 1,
+      "message": "failed to ...\nwebsever: prefix is not needed, because Tast framework would print the function name. I know it\u0027s not your change, but could you update the error message while your are here?",
+      "range": {
+        "startLine": 43,
+        "startChar": 11,
+        "endLine": 43,
+        "endChar": 23
+      },
+      "revId": "733eb004f909f00189a1b3e2887dd9ba445f9e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad8baaec_9b79ea48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-03T09:57:37Z",
+      "side": 1,
+      "message": "While you are here, could you make this Fatal and remove the return below?",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 9
+      },
+      "revId": "733eb004f909f00189a1b3e2887dd9ba445f9e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "241dfe72_9632988e",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
         "patchSetId": 2
@@ -81,6 +150,305 @@
       "revId": "733eb004f909f00189a1b3e2887dd9ba445f9e34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9212ac98_24279ef0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-03T09:57:37Z",
+      "side": 1,
+      "message": "Could you make the error message more specific to what is tested?\nI\u0027m not sure that details of what is tested, but how about something like:\ns.Fatalf(\"failed to bind %v:%d: %v\", sockaddr.Addr, sockaddr.Port, err)",
+      "range": {
+        "startLine": 62,
+        "startChar": 33,
+        "endLine": 62,
+        "endChar": 44
+      },
+      "revId": "733eb004f909f00189a1b3e2887dd9ba445f9e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80ac5667_09999451",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-03T09:57:37Z",
+      "side": 1,
+      "message": "failed to ...\nsame as above.",
+      "range": {
+        "startLine": 62,
+        "startChar": 11,
+        "endLine": 62,
+        "endChar": 24
+      },
+      "revId": "733eb004f909f00189a1b3e2887dd9ba445f9e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7841b2a_bc48b137",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-03T09:57:37Z",
+      "side": 1,
+      "message": "cmd.DumpLog is for command runtime error, and not meaningful if cmd.Start() has failed.\nYou may want to pass testexec.DumpLogOnError to Wait() instead.",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 19
+      },
+      "revId": "733eb004f909f00189a1b3e2887dd9ba445f9e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec47b3c8_7e5465ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-03T09:57:37Z",
+      "side": 1,
+      "message": "Could you use fatal above and remove this return?",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 9
+      },
+      "revId": "733eb004f909f00189a1b3e2887dd9ba445f9e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ebc0a78_769fa07f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-03T09:57:37Z",
+      "side": 1,
+      "message": "Don\u0027t we have to worry about race condition, like the last port finishes its set up before the second to the last one?",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 45
+      },
+      "revId": "733eb004f909f00189a1b3e2887dd9ba445f9e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c114659e_3aab4e64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-03T09:57:37Z",
+      "side": 1,
+      "message": "Could you check the error?\nif err :\u003d conn.Close(); err !\u003d nil {\n  return testing.PollBreak(err)\n}",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 14
+      },
+      "revId": "733eb004f909f00189a1b3e2887dd9ba445f9e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18fd0d81_0158721f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-03T09:57:37Z",
+      "side": 1,
+      "message": "you can combine these.\nif err :\u003d ...; err !\u003d nil {",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 3
+      },
+      "revId": "733eb004f909f00189a1b3e2887dd9ba445f9e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92b296de_6e114aba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-03T09:57:37Z",
+      "side": 1,
+      "message": "Hmm. Not sure why they were missed before, but similarity as above, could you change them? e.g.\ns.Fatal(\"failed waiting for to python webserver to start up: \", err)\n\nAnd remove return below.",
+      "range": {
+        "startLine": 83,
+        "startChar": 11,
+        "endLine": 83,
+        "endChar": 23
+      },
+      "revId": "733eb004f909f00189a1b3e2887dd9ba445f9e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14020474_c4cb0796",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-03T09:57:37Z",
+      "side": 1,
+      "message": "Same here. e.g. s.Fatal(\"failed to create renderer: \", err)",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 8
+      },
+      "revId": "733eb004f909f00189a1b3e2887dd9ba445f9e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd0e6868_c43341d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-03T09:57:37Z",
+      "side": 1,
+      "message": "navigating to ...",
+      "range": {
+        "startLine": 98,
+        "startChar": 13,
+        "endLine": 98,
+        "endChar": 51
+      },
+      "revId": "733eb004f909f00189a1b3e2887dd9ba445f9e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da490915_e0650608",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-03T09:57:37Z",
+      "side": 1,
+      "message": "Same here. Also, could you include url to make debug easier on failure? I\u0027d suggest something like:\ns.Errorf(\"failed to get page content for %s: %v\", url, err)",
+      "range": {
+        "startLine": 103,
+        "startChar": 12,
+        "endLine": 103,
+        "endChar": 35
+      },
+      "revId": "733eb004f909f00189a1b3e2887dd9ba445f9e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6713477d_413c670c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-03T09:57:37Z",
+      "side": 1,
+      "message": "same as above. Also, Go encourages got, want order. I\u0027d suggest something like\ns.Errorf(\"unexpected page content for %s; got %q, want %q\", url, actual, expectedWebContent)",
+      "range": {
+        "startLine": 107,
+        "startChar": 12,
+        "endLine": 107,
+        "endChar": 85
+      },
+      "revId": "733eb004f909f00189a1b3e2887dd9ba445f9e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1e1082d_0ca1432d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-03T09:57:37Z",
+      "side": 1,
+      "message": "var checkURLs []string\n\nAcronyms should have consistent case. https://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 25
+      },
+      "revId": "733eb004f909f00189a1b3e2887dd9ba445f9e34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
