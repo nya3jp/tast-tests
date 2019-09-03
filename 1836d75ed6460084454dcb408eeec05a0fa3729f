@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c18f0c2d_6890f44e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-09-03T23:37:52Z",
+      "side": 1,
+      "message": "thanks changed. (although used class for simplicity)\nI think it needs to begin with capital letter, to be able to be used in accessibility_event.go",
+      "parentUuid": "f48a4108_8f6fe892",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 6
+      },
+      "revId": "1836d75ed6460084454dcb408eeec05a0fa3729f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5f26917b_60c96f29",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-08-29T17:01:15Z",
       "side": 1,
       "message": "How about creating a new function to get the focused node in accessibility.go (in this CL)?\nThis can eliminate duplicated code a lot.",
+      "range": {
+        "startLine": 213,
+        "startChar": 19,
+        "endLine": 214,
+        "endChar": 28
+      },
+      "revId": "1836d75ed6460084454dcb408eeec05a0fa3729f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a4a2b99_0e3facae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-09-03T23:37:52Z",
+      "side": 1,
+      "message": "That\u0027s something that I would like to do. However, I am not sure how to return a node in this type of context...\nSince node is a javascript object, and I have no idea how this would be achieved in go.\nlet\u0027s talk about this offline, when you get back!",
+      "parentUuid": "5f26917b_60c96f29",
       "range": {
         "startLine": 213,
         "startChar": 19,
