@@ -170,6 +170,23 @@
     },
     {
       "key": {
+        "uuid": "0bcdaab0_23c67645",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf_h264_1080p_30fps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-03T14:53:14Z",
+      "side": 1,
+      "message": "nit: are you interested in to consolidate tests by parameterized test now?\n\ncf) http://go/tast-writing#Parameterized-tests",
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f80a18f4_ee19e259",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
         "patchSetId": 2
@@ -186,6 +203,29 @@
         "startChar": 2,
         "endLine": 22,
         "endChar": 28
+      },
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1617a0e8_47a53585",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-03T14:53:14Z",
+      "side": 1,
+      "message": "nit: filepath.Join(...)",
+      "range": {
+        "startLine": 69,
+        "startChar": 14,
+        "endLine": 69,
+        "endChar": 37
       },
       "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
