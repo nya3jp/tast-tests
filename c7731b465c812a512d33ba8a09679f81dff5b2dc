@@ -1,0 +1,233 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01b7a48b_5dc57055",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-03T05:41:47Z",
+      "side": 1,
+      "message": "How about having ARC video playback non-perf tests as well?",
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52e6551d_a293ae08",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-03T05:41:47Z",
+      "side": 1,
+      "message": "Where did you get this APK from?\nCan we see the source code of this APK?",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7195b9e_62adab02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf_h264_1080p_30fps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-03T05:41:47Z",
+      "side": 1,
+      "message": "nit: H.264",
+      "range": {
+        "startLine": 19,
+        "startChar": 85,
+        "endLine": 19,
+        "endChar": 89
+      },
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4595affb_4769307c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf_h264_1080p_30fps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-03T05:41:47Z",
+      "side": 1,
+      "message": "Why not testing on boards that don\u0027t have HW acceleration?\n\nNon-ARC++ playback perf tests don\u0027t specify autotest-capability, for example.\ne.g.\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/playback_perf_av1_480p_30fps.go\n\nAlso, if we can allow SW decoding, we might be able to support ARCVM already.\ne.g. arc.UIAutomator, which runs APK, supports ARC++ and ARCVM in same test code\nBut, it should be a different issue.",
+      "range": {
+        "startLine": 19,
+        "startChar": 65,
+        "endLine": 19,
+        "endChar": 80
+      },
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ff1f4bf_99b3a86b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf_h264_1080p_30fps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-03T05:41:47Z",
+      "side": 1,
+      "message": "[]string{\"group:crosbolt\", \"crosbolt_perbuild\"}\n\nsame for other tests",
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fc33f84_ab8a5586",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf_h264_1080p_30fps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-03T05:41:47Z",
+      "side": 1,
+      "message": "nit: H.264",
+      "range": {
+        "startLine": 28,
+        "startChar": 39,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f80a18f4_ee19e259",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-03T05:41:47Z",
+      "side": 1,
+      "message": "optional: Can we have this constant outside of this function? So, we can use this \"Data\" attribute in each test file.",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 28
+      },
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd46c9ae_947613bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-03T05:41:47Z",
+      "side": 1,
+      "message": "Question: what\u0027s the meaning of each command line flag?",
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b567640_8aa42efe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-03T05:41:47Z",
+      "side": 1,
+      "message": "wild guess: Doesn\u0027t keyEventPlay return an error if video is not played?",
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63150d15_163cc6bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-03T05:41:47Z",
+      "side": 1,
+      "message": "huge nit: \u0027:\u0027 might be preferred than \"\u003d\"?",
+      "range": {
+        "startLine": 94,
+        "startChar": 25,
+        "endLine": 94,
+        "endChar": 26
+      },
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e57679a_20a8a2e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-03T05:41:47Z",
+      "side": 1,
+      "message": "no need \"tast_\" prefix\nWe only use this prefix only when we have same metrics in autotests.\ncf. crbug.com/955957",
+      "range": {
+        "startLine": 97,
+        "startChar": 14,
+        "endLine": 97,
+        "endChar": 19
+      },
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
