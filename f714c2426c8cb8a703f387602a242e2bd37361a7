@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "58e4bc13_c128c649",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-09-03T05:15:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c99777a_fb341992",
+      "revId": "f714c2426c8cb8a703f387602a242e2bd37361a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e82ddac_c11e8f46",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "f714c2426c8cb8a703f387602a242e2bd37361a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eea9d957_e18fd790",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-09-03T05:15:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e82ddac_c11e8f46",
+      "revId": "f714c2426c8cb8a703f387602a242e2bd37361a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "09839b20_c9ef886c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-09-03T05:15:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cf974ec_e0dfed4c",
+      "range": {
+        "startLine": 54,
+        "startChar": 11,
+        "endLine": 54,
+        "endChar": 12
+      },
+      "revId": "f714c2426c8cb8a703f387602a242e2bd37361a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a25f15a_d248c27b",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
         "patchSetId": 1
@@ -70,6 +130,24 @@
       "writtenOn": "2019-09-03T01:15:21Z",
       "side": 1,
       "message": "maybe: deviceLink \u003d strings.TrimSuffix(deviceLink, \"/virtio\") ?",
+      "revId": "f714c2426c8cb8a703f387602a242e2bd37361a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79015ff1_87f85054",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-09-03T05:15:27Z",
+      "side": 1,
+      "message": "it\u0027s not a suffix\nit\u0027s something looks like:\n../../pci12:45:67/aaaaa/virtio0/devices/renderD128",
+      "parentUuid": "3a25f15a_d248c27b",
       "revId": "f714c2426c8cb8a703f387602a242e2bd37361a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "41b89384_5f440e54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-09-03T05:15:27Z",
+      "side": 1,
+      "message": "ha. deleted.\ni didn\u0027t realize the original test only check the label starts with u:object_r:sysfs instead of checking it is sysfs.\nthat\u0027s i wonder why it\u0027s failing on my betty for those additional directories.",
+      "parentUuid": "8e315d61_f1be3aa5",
+      "revId": "f714c2426c8cb8a703f387602a242e2bd37361a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e696304_ff818951",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
         "patchSetId": 1
@@ -107,6 +203,24 @@
       "revId": "f714c2426c8cb8a703f387602a242e2bd37361a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b030572_f41e8be3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-09-03T05:15:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e696304_ff818951",
+      "revId": "f714c2426c8cb8a703f387602a242e2bd37361a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
