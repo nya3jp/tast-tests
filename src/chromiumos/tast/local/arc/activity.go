@@ -117,7 +117,7 @@ type taskInfo struct {
 }
 
 const (
-	// borderOffsetForNormal represents the the distance in pixels outside the border
+	// borderOffsetForNormal represents the distance in pixels outside the border
 	// at which a "normal" window should be grabbed from.
 	// The value, in theory, should be between -1 (kResizeInsideBoundsSize) and
 	// 30 (kResizeOutsideBoundsSize * kResizeOutsideBoundsScaleForTouch).
