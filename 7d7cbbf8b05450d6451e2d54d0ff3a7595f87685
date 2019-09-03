@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "967d0b62_7d9c166f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-09-03T18:55:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4602cd4f_550bfac4",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 31
+      },
+      "revId": "7d7cbbf8b05450d6451e2d54d0ff3a7595f87685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4259579_9eeca392",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "67764db2_2d0f0ba9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-09-03T18:55:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4259579_9eeca392",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 10
+      },
+      "revId": "7d7cbbf8b05450d6451e2d54d0ff3a7595f87685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aea5c8c4_13acbf30",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-09-02T08:54:28Z",
       "side": 1,
       "message": "Hmm, it sounds risky to lose the connectivity, but I assume this is unavoidable and we really want to test the case of static IP addresses. If the test were about pushing/poping profiles and making sure configuration changes, then we could possibly avoid altering the static IP address config...",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 61
+      },
+      "revId": "7d7cbbf8b05450d6451e2d54d0ff3a7595f87685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5a5a65e_e9ccde2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-09-03T18:55:08Z",
+      "side": 1,
+      "message": "Right. Right now, pushing and popping the profiles won\u0027t actually change the IP (it\u0027ll only change the in-memory static IP - see crbug.com/997392), but that should be resolved in the near future, at which point this test will actually do what it\u0027s intended to do.\n\nAs of now, it may as well be testing any other property.\n\nOn a related note, if we lose connectivity because the IP changes, will the test just timeout and fail?",
+      "parentUuid": "aea5c8c4_13acbf30",
       "range": {
         "startLine": 34,
         "startChar": 1,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "5c840b89_ca06cfab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-09-03T18:55:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c16580d2_83666535",
+      "range": {
+        "startLine": 68,
+        "startChar": 59,
+        "endLine": 68,
+        "endChar": 65
+      },
+      "revId": "7d7cbbf8b05450d6451e2d54d0ff3a7595f87685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4021c62_faea36ef",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2019-09-02T08:54:28Z",
       "side": 1,
       "message": "QQ: How did you choose this address?",
+      "range": {
+        "startLine": 98,
+        "startChar": 54,
+        "endLine": 98,
+        "endChar": 66
+      },
+      "revId": "7d7cbbf8b05450d6451e2d54d0ff3a7595f87685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9263621_567b228f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-09-03T18:55:08Z",
+      "side": 1,
+      "message": "network_VPNConnect autotest uses it so I arbitrarily decided to use the same one. Should I use a different one?",
+      "parentUuid": "c4021c62_faea36ef",
       "range": {
         "startLine": 98,
         "startChar": 54,
@@ -137,6 +257,30 @@
       "revId": "7d7cbbf8b05450d6451e2d54d0ff3a7595f87685",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e5d6c0e_f14f451b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-09-03T18:55:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d7e3223_a2018c25",
+      "range": {
+        "startLine": 100,
+        "startChar": 69,
+        "endLine": 100,
+        "endChar": 70
+      },
+      "revId": "7d7cbbf8b05450d6451e2d54d0ff3a7595f87685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
