@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "e2aeaba4_1e85a1e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/configure_service_for_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-03T15:03:17Z",
+      "side": 1,
+      "message": "FYI: in some cases, optional values are represented by *T. E.g., *bool. If the value is a pointer to true, it is true (present), if a pointer to false, it is false, and if nil, it is missing. (Though I\u0027m not very sure if dbusutil supports it, and if not it is out-of-scope at the moment, I think.)",
+      "parentUuid": "fcb31263_030910a2",
+      "revId": "217ddccc3fe3050f83e6819d5a4d3103600dbbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc69f65a_e58d3985",
         "filename": "src/chromiumos/tast/local/shill/shill.go",
         "patchSetId": 1
