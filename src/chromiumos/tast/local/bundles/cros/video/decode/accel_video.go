@@ -323,10 +323,30 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, filename strin
 	}
 
 	p := perf.NewValues()
-	if err := parseUncappedPerfMetrics(filepath.Join(s.OutDir(), uncappedTestname+".json"), p); err != nil {
+	uncappedJson := filepath.Join(s.OutDir(), "VideoDecoderTest", uncappedTestname+".json")
+	if _, err := os.Stat(uncappedJson); os.IsNotExist(err) {
+		// Try with the old saved file place.
+		// TODO(hiroh): Remove this fallback once crrev.com/c/1778104 is landed.
+		uncappedJson = filepath.Join(s.OutDir(), uncappedTestname+".json")
+		if _, err := os.Stat(uncappedJson); os.IsNotExist(err) {
+			s.Fatal("Failed to find uncapped performance metrics file: ", err)
+		}
+	}
+
+	cappedJson := filepath.Join(s.OutDir(), "VideoDecoderTest", cappedTestname+".json")
+	if _, err := os.Stat(cappedJson); os.IsNotExist(err) {
+		// Try with the old saved file place.
+		// TODO(hiroh): Remove this fallback once crrev.com/c/1778104 is landed.
+		cappedJson = filepath.Join(s.OutDir(), cappedTestname+".json")
+		if _, err := os.Stat(cappedJson); os.IsNotExist(err) {
+			s.Fatal("Failed to find uncapped performance metrics file: ", err)
+		}
+	}
+
+	if err := parseUncappedPerfMetrics(uncappedJson, p); err != nil {
 		s.Fatal("Failed to parse uncapped performance metrics: ", err)
 	}
-	if err := parseCappedPerfMetrics(filepath.Join(s.OutDir(), cappedTestname+".json"), p); err != nil {
+	if err := parseCappedPerfMetrics(cappedJson, p); err != nil {
 		s.Fatal("Failed to parse capped performance metrics: ", err)
 	}
 
