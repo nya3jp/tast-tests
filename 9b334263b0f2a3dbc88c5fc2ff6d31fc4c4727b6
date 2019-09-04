@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e2e6432_0b91c27c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-04T08:50:32Z",
+      "side": 1,
+      "message": "Hmm, I thought we can manage chrome options as an array, but it seems not possible because chrome.option is unexported. Sorry for inconvenience.\n\nI filed crbug.com/1000574 for this issue, so would you mind adding a TODO comment here, such as:\n\n // TODO(crbug.com/1000574): Use []chrome.Option to pass options.",
+      "range": {
+        "startLine": 602,
+        "startChar": 0,
+        "endLine": 606,
+        "endChar": 2
+      },
+      "revId": "9b334263b0f2a3dbc88c5fc2ff6d31fc4c4727b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d450e57_8bdde852",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-04T08:50:32Z",
+      "side": 1,
+      "message": "style: For every non-inline comments, please end sentences with a period.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences\n\nSame for other comments too.",
+      "range": {
+        "startLine": 1037,
+        "startChar": 67,
+        "endLine": 1037,
+        "endChar": 78
+      },
+      "revId": "9b334263b0f2a3dbc88c5fc2ff6d31fc4c4727b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aae3884e_5a6c037e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1038,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-04T08:50:32Z",
+      "side": 1,
+      "message": "I recommend removing this variable; see my comment below.",
+      "range": {
+        "startLine": 1038,
+        "startChar": 1,
+        "endLine": 1038,
+        "endChar": 11
+      },
+      "revId": "9b334263b0f2a3dbc88c5fc2ff6d31fc4c4727b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4a90564_f66db2d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-04T08:50:32Z",
+      "side": 1,
+      "message": "I recommend removing these two and passing chrome.Chrome directly to Run. See my comment below.",
+      "range": {
+        "startLine": 1039,
+        "startChar": 0,
+        "endLine": 1042,
+        "endChar": 18
+      },
+      "revId": "9b334263b0f2a3dbc88c5fc2ff6d31fc4c4727b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf2c6590_c6875090",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-04T08:50:32Z",
+      "side": 1,
+      "message": "As I commented in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1753189/2/src/chromiumos/tast/local/bundles/cros/platform/mempressure/mempressure.go#521\n\nI recommend all callers of Run (including platform/memory_pressure.go) to set ChromeInst and WPR in RunParameters. Then we don\u0027t need to handle these slightly different cases.\n\nThat is, platform/memory_pressure.go will be like:\n\n func MemoryPressure(ctx context.Context, s *testing.State) {\n   p :\u003d \u0026mempressure.RunParameters{\n     DormantCodePath:          s.DataPath(mempressure.DormantCode),\n     PageFilePath:             s.DataPath(mempressure.CompressibleData),\n     PageFileCompressionRatio: 0.40,\n     WPRArchivePath:           s.DataPath(mempressure.WPRArchiveName),\n   }\n   cr, wpr, err :\u003d mempressure.InitBrowser(ctx, p)\n   if err !\u003d nil {\n     s.Fatal(...)\n   }\n   defer cr.Close(ctx)\n   defer wpr.Wait()\n   defer wpr.Process.Signal(os.Interrupt) // send SIGINT to exit properly in recording mode.\n\n   mempressure.Run(ctx, s, cr, p)\n }\n\nNote that chrome.Chrome is now passed as an argument of Run because mutating RunParameters between InitBrowser and Run is weird. Also we no longer need to pass testexec.Cmd.",
+      "range": {
+        "startLine": 1106,
+        "startChar": 0,
+        "endLine": 1126,
+        "endChar": 2
+      },
+      "revId": "9b334263b0f2a3dbc88c5fc2ff6d31fc4c4727b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
