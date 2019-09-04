@@ -52,6 +52,24 @@
       "revId": "624189f52484b275c258e611c37723c40960f034",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2af663cb_b664e585",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2019-09-04T03:39:07Z",
+      "side": 1,
+      "message": "I don\u0027t want to break the tests as intended.\nLet me write two paths.",
+      "parentUuid": "84efa5ad_824a432a",
+      "revId": "624189f52484b275c258e611c37723c40960f034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
