@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "673219d0_9ab70026",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-04T08:33:44Z",
+      "side": 1,
+      "message": "Then,\n\nif renderDs, err :\u003d filepath.Glob(...); err !\u003d nil {\n  // Report an error here, but continue to check rules listed below.\n  s.Error(...)\n} else {\n  for _, entryTree :\u003d range renderDs {\n    ...\n  }\n}",
+      "parentUuid": "b67a7bc0_1e2d8a53",
+      "revId": "47693a00522eb7927e6bc9006da740c0e94da70e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4bf50095_caac521f",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
         "patchSetId": 3
