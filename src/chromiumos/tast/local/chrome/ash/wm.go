@@ -12,7 +12,7 @@ import (
 	"chromiumos/tast/local/chrome"
 )
 
-// WindowStateType represents the different window state type in ASH.
+// WindowStateType represents the different window state type in Ash.
 type WindowStateType string
 
 // As defined in ash::WindowStateType here:
@@ -24,9 +24,10 @@ const (
 	WindowStateFullscreen   WindowStateType = "Fullscreen"
 	WindowStateLeftSnapped  WindowStateType = "LeftSnapped"
 	WindowStateRightSnapped WindowStateType = "RightSnapped"
+	WindowStatePIP          WindowStateType = "PIP"
 )
 
-// WMEventType represents the different WM Event type in ash.
+// WMEventType represents the different WM Event type in Ash.
 type WMEventType string
 
 // As defined in ash::wm::WMEventType here:
@@ -40,7 +41,7 @@ const (
 	WMEventSnapRight  WMEventType = "WMEventSnapRight"
 )
 
-// SnapPosition represents the different snap posiiton in split view.
+// SnapPosition represents the different snap position in split view.
 type SnapPosition string
 
 // As defined in ash::SplitViewController here:
@@ -59,7 +60,7 @@ type Rect struct {
 	Height int `json:"height"`
 }
 
-// ArcAppWindowInfo contains various information on an ash window
+// ArcAppWindowInfo represents the ARC window info as returned from Ash.
 type ArcAppWindowInfo struct {
 	Bounds      Rect `json:"bounds"`
 	IsAnimating bool `json:"is_animating"`
@@ -96,7 +97,7 @@ func SetARCAppWindowState(ctx context.Context, c *chrome.Conn, pkgName string, e
 	return state, nil
 }
 
-// GetARCAppWindowInfo queries into ash and get various information on an ARC window.
+// GetARCAppWindowInfo queries into Ash and returns the ARC window info.
 // Currently, this returns information on the top window of a specified app.
 func GetARCAppWindowInfo(ctx context.Context, c *chrome.Conn, pkgName string) (ArcAppWindowInfo, error) {
 	expr := fmt.Sprintf(
