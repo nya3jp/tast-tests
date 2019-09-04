@@ -701,8 +701,8 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
 	c.testExtConn.locked = true
 
 	// Ensure that we don't attempt to use the extension before its APIs are available: https://crbug.com/789313
-	if err := c.testExtConn.WaitForExpr(ctx, "chrome.autotestPrivate"); err != nil {
-		return nil, errors.Wrap(err, "chrome.autotestPrivate unavailable")
+	if err := c.testExtConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
+		return nil, errors.Wrap(err, "test API extension is unavailable")
 	}
 
 	testing.ContextLog(ctx, "Test API extension is ready")
