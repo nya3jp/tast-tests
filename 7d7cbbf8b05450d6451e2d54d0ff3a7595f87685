@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "dfc489d7_b82a38fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-04T10:26:30Z",
+      "side": 1,
+      "message": "Hmm. I see.\n\nIf the host does not see heartbeat messages for a minute, test execution is aborted. The problem is that all remaining tests are aborted, not only this test, so we really want to minimize such probability of possible.",
+      "parentUuid": "e5a5a65e_e9ccde2e",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 61
+      },
+      "revId": "7d7cbbf8b05450d6451e2d54d0ff3a7595f87685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c16580d2_83666535",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
         "patchSetId": 1
@@ -234,6 +258,30 @@
       "revId": "7d7cbbf8b05450d6451e2d54d0ff3a7595f87685",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0e2fa06_f0a7ffb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-04T10:26:30Z",
+      "side": 1,
+      "message": "I see. I just thought this might conflict with real private addresses. If you know better choice please try it. I\u0027m not an expert in this area :)",
+      "parentUuid": "d9263621_567b228f",
+      "range": {
+        "startLine": 98,
+        "startChar": 54,
+        "endLine": 98,
+        "endChar": 66
+      },
+      "revId": "7d7cbbf8b05450d6451e2d54d0ff3a7595f87685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
