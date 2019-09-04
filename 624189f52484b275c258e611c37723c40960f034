@@ -34,6 +34,24 @@
       "revId": "624189f52484b275c258e611c37723c40960f034",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84efa5ad_824a432a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-09-04T03:13:01Z",
+      "side": 1,
+      "message": "Either we try 2 hard-coded paths with a TODO to remove the first path, or we just live with the fact the tests will be broken for a short time.\n\nI would just update the path to the new path, and submit once you see the next Chrome uprev. It\u0027s not a big deal if the perf tests are broken for 1 day.",
+      "parentUuid": "4ce21e70_d20a9208",
+      "revId": "624189f52484b275c258e611c37723c40960f034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
