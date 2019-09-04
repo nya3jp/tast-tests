@@ -30,7 +30,6 @@ func init() {
 			"chromeos-kernel@google.com",
 			"chromeos-power@google.com",
 		},
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"wilco"},
 		// The EC seems to poll the Peak Shift settings in a ~60 second loop, so
 		// it can take up to 80 seconds for policy changes to take effect.
