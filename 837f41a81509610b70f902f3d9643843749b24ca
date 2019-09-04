@@ -121,6 +121,24 @@
       "revId": "837f41a81509610b70f902f3d9643843749b24ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02d46c71_505d9064",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1356044
+      },
+      "writtenOn": "2019-09-04T08:26:22Z",
+      "side": 1,
+      "message": "It may be a bit redundant to loop through all cameras, so I think it\u0027s fine to only switch once. What do you think?",
+      "parentUuid": "b6ea35f8_436c8878",
+      "revId": "837f41a81509610b70f902f3d9643843749b24ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
