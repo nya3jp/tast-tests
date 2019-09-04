@@ -172,6 +172,24 @@
     },
     {
       "key": {
+        "uuid": "45df34e2_a90aaa6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-09-04T03:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "224410b4_2703cb50",
+      "revId": "f714c2426c8cb8a703f387602a242e2bd37361a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e315d61_f1be3aa5",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
         "patchSetId": 1
@@ -274,6 +292,24 @@
       "revId": "f714c2426c8cb8a703f387602a242e2bd37361a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99a8fce6_ad5b852d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-09-04T03:14:27Z",
+      "side": 1,
+      "message": "done.\nplease review again.\ni think the host should always have debugfs_sync if it exist, otherwise it shouldn\u0027t exist.\nthe the arc bind-mount may have tmpfs for older kernels (host doesn\u0027t exist).",
+      "parentUuid": "ac3321a3_abfec276",
+      "revId": "f714c2426c8cb8a703f387602a242e2bd37361a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
