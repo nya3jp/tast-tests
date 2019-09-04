@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a2442d5c_0e0381f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/data/fluffy_interop_std_config.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-04T21:53:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae7d2c87_0e3752de",
+      "revId": "b809c08d2f3a4d22410eb0663e2e221c6aa76e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66627324_4d446881",
         "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/data/fluffy_interop_std_config.json",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2019-09-04T19:32:16Z",
       "side": 1,
       "message": "any reason why we have these blank lines?",
+      "revId": "b809c08d2f3a4d22410eb0663e2e221c6aa76e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12a6fc3c_82b25be7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/data/fluffy_interop_std_config.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-04T21:53:37Z",
+      "side": 1,
+      "message": "Removed as part of linting.",
+      "parentUuid": "66627324_4d446881",
       "revId": "b809c08d2f3a4d22410eb0663e2e221c6aa76e08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "e2c9389b_ad3e54d7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-04T21:53:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f8a097c_cae3e1fe",
+      "revId": "b809c08d2f3a4d22410eb0663e2e221c6aa76e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6fe105e_e9597b2e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
         "patchSetId": 2
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "91a7ae0b_7c8d5e30",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-04T21:53:37Z",
+      "side": 1,
+      "message": "I don\u0027t think so? I think it\u0027s useful to show the intended servod target in case the fluffy is at the wrong port.",
+      "parentUuid": "d6fe105e_e9597b2e",
+      "revId": "b809c08d2f3a4d22410eb0663e2e221c6aa76e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6853f21f_f97861e8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
         "patchSetId": 2
@@ -81,6 +153,30 @@
       "writtenOn": "2019-09-04T19:32:16Z",
       "side": 1,
       "message": "Shouldn\u0027t this fatal?",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "b809c08d2f3a4d22410eb0663e2e221c6aa76e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2368d4d_a5611345",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-04T21:53:37Z",
+      "side": 1,
+      "message": "Yep, agreed.",
+      "parentUuid": "6853f21f_f97861e8",
       "range": {
         "startLine": 45,
         "startChar": 4,
@@ -116,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "7c957600_694ecfb4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-04T21:53:37Z",
+      "side": 1,
+      "message": "Agreed. I\u0027ll move these up.",
+      "parentUuid": "2b6a42c0_4a86fd83",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "b809c08d2f3a4d22410eb0663e2e221c6aa76e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7d3dd460_20349e61",
         "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
         "patchSetId": 2
@@ -130,6 +250,24 @@
       "revId": "b809c08d2f3a4d22410eb0663e2e221c6aa76e08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67fcd0d7_50907e59",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-04T21:53:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d3dd460_20349e61",
+      "revId": "b809c08d2f3a4d22410eb0663e2e221c6aa76e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -156,6 +294,30 @@
     },
     {
       "key": {
+        "uuid": "726856fe_3d7ee12d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-04T21:53:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0c44da5_b645a49d",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 3
+      },
+      "revId": "b809c08d2f3a4d22410eb0663e2e221c6aa76e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a37bb2cb_4a596d30",
         "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
         "patchSetId": 2
@@ -167,6 +329,30 @@
       "writtenOn": "2019-09-04T19:32:16Z",
       "side": 1,
       "message": "Since maxPwr and expectedVoltageMV are declared as float64 on L84 I don\u0027t think we need to cast all these numbers here and below.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 38
+      },
+      "revId": "b809c08d2f3a4d22410eb0663e2e221c6aa76e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9692a5e8_0b589a24",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-04T21:53:37Z",
+      "side": 1,
+      "message": "Got it, removed.",
+      "parentUuid": "a37bb2cb_4a596d30",
       "range": {
         "startLine": 94,
         "startChar": 0,
@@ -202,6 +388,30 @@
     },
     {
       "key": {
+        "uuid": "ec434d10_148714e3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-04T21:53:37Z",
+      "side": 1,
+      "message": "The former. The actual margin needed via the USB PD spec was already applied at L104.",
+      "parentUuid": "4b200cf6_64ce320e",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 38
+      },
+      "revId": "b809c08d2f3a4d22410eb0663e2e221c6aa76e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9c23f74_9a5637aa",
         "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
         "patchSetId": 2
@@ -225,6 +435,30 @@
     },
     {
       "key": {
+        "uuid": "fe22ec9e_bd30a7c4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-04T21:53:37Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "c9c23f74_9a5637aa",
+      "range": {
+        "startLine": 119,
+        "startChar": 3,
+        "endLine": 121,
+        "endChar": 3
+      },
+      "revId": "b809c08d2f3a4d22410eb0663e2e221c6aa76e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b44558fe_d2a9d7d3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
         "patchSetId": 2
@@ -236,6 +470,30 @@
       "writtenOn": "2019-09-04T19:32:16Z",
       "side": 1,
       "message": "does this matter/is this actionable for people running the test locally? otherwise I\u0027m not sure if we want to even bother logging it.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 2
+      },
+      "revId": "b809c08d2f3a4d22410eb0663e2e221c6aa76e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc22b22a_c3c3fee1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-04T21:53:37Z",
+      "side": 1,
+      "message": "For some reason, I thought if I didn\u0027t explicitly handle an err, it causes the whole test to fail. I\u0027m not sure...",
+      "parentUuid": "b44558fe_d2a9d7d3",
       "range": {
         "startLine": 126,
         "startChar": 0,
