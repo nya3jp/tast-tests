@@ -1,0 +1,250 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae7d2c87_0e3752de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/data/fluffy_interop_std_config.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-04T19:32:16Z",
+      "side": 1,
+      "message": "The whitespace in this file is inconsistent: one indent is 4 spaces and two indents is a tab character. It looks like the standard style in tast is 2 space indentation and the only other json file with tabs uses them for all indentation.\n\nCan we run this through either\n\npython -m json.tool\n\nor use python\u0027s json.dumps with indent\u003d(2|4), separators\u003d(\u0027,\u0027, \u0027: \u0027)\n\nto clean this up?",
+      "revId": "b809c08d2f3a4d22410eb0663e2e221c6aa76e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66627324_4d446881",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/data/fluffy_interop_std_config.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-04T19:32:16Z",
+      "side": 1,
+      "message": "any reason why we have these blank lines?",
+      "revId": "b809c08d2f3a4d22410eb0663e2e221c6aa76e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f8a097c_cae3e1fe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-04T19:32:16Z",
+      "side": 1,
+      "message": "nit: remove this blank line",
+      "revId": "b809c08d2f3a4d22410eb0663e2e221c6aa76e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6fe105e_e9597b2e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-04T19:32:16Z",
+      "side": 1,
+      "message": "is this log line spammy?",
+      "revId": "b809c08d2f3a4d22410eb0663e2e221c6aa76e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6853f21f_f97861e8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-04T19:32:16Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this fatal?",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "b809c08d2f3a4d22410eb0663e2e221c6aa76e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b6a42c0_4a86fd83",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-04T19:32:16Z",
+      "side": 1,
+      "message": "Why not do these first to fail as fast as possible if there\u0027s an issue with the static test configuration?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "b809c08d2f3a4d22410eb0663e2e221c6aa76e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d3dd460_20349e61",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-04T19:32:16Z",
+      "side": 1,
+      "message": "maybe s.Fatalf(\"Max power request %q was not a valid number\", maxPwrReq)\n\n(I kind of think this should be a fatal since the test can\u0027t continue meaningfully if maxPwrReq is invalid.)",
+      "revId": "b809c08d2f3a4d22410eb0663e2e221c6aa76e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0c44da5_b645a49d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-04T19:32:16Z",
+      "side": 1,
+      "message": "instead of doing this every time why not do it once when you read maxPwrReq above?",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 3
+      },
+      "revId": "b809c08d2f3a4d22410eb0663e2e221c6aa76e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a37bb2cb_4a596d30",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-04T19:32:16Z",
+      "side": 1,
+      "message": "Since maxPwr and expectedVoltageMV are declared as float64 on L84 I don\u0027t think we need to cast all these numbers here and below.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 38
+      },
+      "revId": "b809c08d2f3a4d22410eb0663e2e221c6aa76e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b200cf6_64ce320e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-04T19:32:16Z",
+      "side": 1,
+      "message": "is this for dealing with noisy measurement or is the actual value possibly going to need this margin?",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 38
+      },
+      "revId": "b809c08d2f3a4d22410eb0663e2e221c6aa76e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9c23f74_9a5637aa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-04T19:32:16Z",
+      "side": 1,
+      "message": "This seems kind of spammy.",
+      "range": {
+        "startLine": 119,
+        "startChar": 3,
+        "endLine": 121,
+        "endChar": 3
+      },
+      "revId": "b809c08d2f3a4d22410eb0663e2e221c6aa76e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b44558fe_d2a9d7d3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-04T19:32:16Z",
+      "side": 1,
+      "message": "does this matter/is this actionable for people running the test locally? otherwise I\u0027m not sure if we want to even bother logging it.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 2
+      },
+      "revId": "b809c08d2f3a4d22410eb0663e2e221c6aa76e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
