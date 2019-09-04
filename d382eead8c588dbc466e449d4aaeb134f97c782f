@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a1f4d563_cdbd641a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-09-04T20:04:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "201f8905_e1f9173b",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 30
+      },
+      "revId": "d382eead8c588dbc466e449d4aaeb134f97c782f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fdc71cc9_8a3ad118",
         "filename": "src/chromiumos/tast/local/chrome/ash/overview.go",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "d382eead8c588dbc466e449d4aaeb134f97c782f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "203d5951_7481e523",
+        "filename": "src/chromiumos/tast/local/chrome/ash/overview.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-09-04T20:04:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdc71cc9_8a3ad118",
+      "range": {
+        "startLine": 15,
+        "startChar": 74,
+        "endLine": 15,
+        "endChar": 78
+      },
+      "revId": "d382eead8c588dbc466e449d4aaeb134f97c782f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "c64b7832_dc290dac",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-09-04T20:04:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f1c968b_aa919acd",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 65
+      },
+      "revId": "d382eead8c588dbc466e449d4aaeb134f97c782f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "160acc09_2a581039",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 8
@@ -106,6 +178,30 @@
       "writtenOn": "2019-09-04T07:08:40Z",
       "side": 1,
       "message": "You can use testing.Sleep(), though testing.Poll is better if possible.\nhttp://cs/chromeos_public/src/platform/tast/src/chromiumos/tast/testing/util.go?l\u003d19",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 2
+      },
+      "revId": "d382eead8c588dbc466e449d4aaeb134f97c782f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0d7a911_51d3baa0",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-09-04T20:04:38Z",
+      "side": 1,
+      "message": "Thanks, I haven\u0027t noticed testing.Sleep(). Using it. For now, I\u0027m afraid that there\u0027s no use of testing.Poll() -- there are no good ways to check of being stabilized. Added TODO and I\u0027ll reconsider this later.",
+      "parentUuid": "160acc09_2a581039",
       "range": {
         "startLine": 120,
         "startChar": 0,
@@ -138,6 +234,30 @@
       "revId": "d382eead8c588dbc466e449d4aaeb134f97c782f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9eb78023_61636025",
+        "filename": "src/chromiumos/tast/local/chrome/metrics/histogram.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-09-04T20:04:38Z",
+      "side": 1,
+      "message": "Fixed. Indeed there\u0027s some chance of that. I believe it\u0027s very unlikely to happen but that\u0027s safer.",
+      "parentUuid": "2fca7610_20df5569",
+      "range": {
+        "startLine": 114,
+        "startChar": 9,
+        "endLine": 114,
+        "endChar": 49
+      },
+      "revId": "d382eead8c588dbc466e449d4aaeb134f97c782f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
