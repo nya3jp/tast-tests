@@ -23,7 +23,6 @@ func init() {
 			"chromeos-wilco@google.com", // Possesses some more domain-specific knowledge.
 			"chromeos-kernel@google.com",
 		},
-		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"wilco"},
 		Timeout:      30 * time.Second,
 	})
