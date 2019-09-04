@@ -16,6 +16,24 @@
       "revId": "a28f2ac7418826c613cd7a822a05e0f5a316de2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fa6c410_7b1b0541",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/reboot_new.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-04T00:28:15Z",
+      "side": 1,
+      "message": "Sure, done: crbug.com/1000505",
+      "parentUuid": "20100eb0_88940b68",
+      "revId": "a28f2ac7418826c613cd7a822a05e0f5a316de2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
