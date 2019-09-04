@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58a62a7a_b0742ba8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-04T21:58:50Z",
+      "side": 1,
+      "message": "nit: redundant given the log message",
+      "range": {
+        "startLine": 57,
+        "startChar": 43,
+        "endLine": 57,
+        "endChar": 98
+      },
+      "revId": "e0f4230119ea81e7f7272b9526ecbb61482b22e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
