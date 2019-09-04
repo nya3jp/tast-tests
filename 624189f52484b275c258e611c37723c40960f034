@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca747d8d_461c9f6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-09-04T02:56:14Z",
+      "side": 1,
+      "message": "I don\u0027t really like adding a function like this. While it makes the code more flexible, it also makes it more complex to read and maintain for very little benefit. What we want is to avoid the tests being broken after the next Chrome uprev. But adding 20+ lines of code just to avoid the tests being potentially broken for a day seems like overkill.",
+      "revId": "624189f52484b275c258e611c37723c40960f034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
