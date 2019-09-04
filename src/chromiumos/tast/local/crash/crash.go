@@ -23,7 +23,7 @@ import (
 )
 
 const (
-	crashTestInProgressDir = "/run/crash_reporter"
+	crashTestInProgressDir = "/mnt/stateful_partition/etc/crash"
 	// crashTestInProgressFile is a special control file that tells crash_reporter
 	// to act normally during a crash test. Usually, crash_reporter is being told
 	// (by /mnt/stateful_partition/etc/collect_chrome_crashes) to be more
