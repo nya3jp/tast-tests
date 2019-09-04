@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3eb9f5d2_cbcc8094",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-04T10:31:31Z",
+      "side": 1,
+      "message": "Could you move this def to L107 (just before the usage) ?",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 16
+      },
+      "revId": "138bb1403e8a1e8592306d0e25c4d8ca80f3ab14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b9d42bd_ba50939a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-04T10:31:31Z",
+      "side": 1,
+      "message": "nit: I think make(map[string]bool) is more common.",
+      "range": {
+        "startLine": 81,
+        "startChar": 14,
+        "endLine": 81,
+        "endChar": 31
+      },
+      "revId": "138bb1403e8a1e8592306d0e25c4d8ca80f3ab14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94ff0ed7_f58a43ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-04T10:31:31Z",
+      "side": 1,
+      "message": "I think the last _ is not needed.",
+      "range": {
+        "startLine": 109,
+        "startChar": 5,
+        "endLine": 109,
+        "endChar": 11
+      },
+      "revId": "138bb1403e8a1e8592306d0e25c4d8ca80f3ab14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bff2c4b5_3eb05f71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/webserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-04T10:31:31Z",
+      "side": 1,
+      "message": "return checkNavigation(url)\nwould work?",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 4
+      },
+      "revId": "138bb1403e8a1e8592306d0e25c4d8ca80f3ab14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
