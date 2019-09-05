@@ -1,0 +1,163 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "729337ba_8f3ca0a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-05T08:35:00Z",
+      "side": 1,
+      "message": "return visible, nil",
+      "range": {
+        "startLine": 549,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 17
+      },
+      "revId": "2cd8bc9194c69cc2944f29441296041db399e4af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "080a08d7_14df3dcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-05T08:35:00Z",
+      "side": 1,
+      "message": "returns an error here, and print the error message with testName in the call site.",
+      "revId": "2cd8bc9194c69cc2944f29441296041db399e4af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb793835_17f83614",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-05T08:35:00Z",
+      "side": 1,
+      "message": "Please split the test logic for preview metadata and save metadata.",
+      "revId": "2cd8bc9194c69cc2944f29441296041db399e4af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41666cd1_9f192c77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-05T08:35:00Z",
+      "side": 1,
+      "message": "This is not available on most devices.",
+      "revId": "2cd8bc9194c69cc2944f29441296041db399e4af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05d44cdc_70cbd2df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-05T08:35:00Z",
+      "side": 1,
+      "message": "You cannot always do that. There are devices with only one camera.",
+      "revId": "2cd8bc9194c69cc2944f29441296041db399e4af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9114dd88_7803ddfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-05T08:35:00Z",
+      "side": 1,
+      "message": "The test logic is highly tight with the action orders, so restartApp does not make sense in many cases. I would prefer to have a finer control to Fatal() or Error() instead of always error and restartApp.",
+      "revId": "2cd8bc9194c69cc2944f29441296041db399e4af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bcfa3c3_7bb2a545",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-05T08:35:00Z",
+      "side": 1,
+      "message": "Please remove the sleep here, and poll in verifyExpertMode instead.",
+      "revId": "2cd8bc9194c69cc2944f29441296041db399e4af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b99da1a_e1ed31da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-05T08:35:00Z",
+      "side": 1,
+      "message": "Please remove the sleep here.",
+      "revId": "2cd8bc9194c69cc2944f29441296041db399e4af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "571fbf01_561ebddf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-05T08:35:00Z",
+      "side": 1,
+      "message": "Please remove this. Expert mode might not available here.",
+      "revId": "2cd8bc9194c69cc2944f29441296041db399e4af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
