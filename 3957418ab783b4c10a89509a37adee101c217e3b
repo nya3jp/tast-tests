@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "1c1ddccd_396d1d3e",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T15:46:28Z",
+      "side": 1,
+      "message": "Could you add package document?",
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f0797c4_dd44763d",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T15:46:28Z",
+      "side": 1,
+      "message": "Unused other than initialization.",
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd0d186f_33c94c4d",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T15:46:28Z",
+      "side": 1,
+      "message": "Unused other than initialization.",
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fee59ad7_b40b758a",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 1
@@ -96,6 +147,29 @@
     },
     {
       "key": {
+        "uuid": "bdb49986_c7a575b6",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T15:46:28Z",
+      "side": 1,
+      "message": "Could you create the instance at the latest point?\nIn this case, just before the return.",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 5
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "99266cac_350aa554",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 1
@@ -143,6 +217,53 @@
     },
     {
       "key": {
+        "uuid": "4d857a68_860bed3c",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T15:46:28Z",
+      "side": 1,
+      "message": "Could you leave the TODO comment with the filed bug here?",
+      "parentUuid": "ecb62bca_859ebb9c",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 35
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f066fa2_0abbf060",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T15:46:28Z",
+      "side": 1,
+      "message": "Could you return nil on error?",
+      "range": {
+        "startLine": 95,
+        "startChar": 8,
+        "endLine": 95,
+        "endChar": 12
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e6ddda4_0aa86a7c",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 1
@@ -183,6 +304,189 @@
         "startChar": 21,
         "endLine": 99,
         "endChar": 25
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1bfadda_c6893b1d",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T15:46:28Z",
+      "side": 1,
+      "message": "Looks redundant. DumpLog logs the subprocess\u0027s unconsumed output. Here it failed to start, so there\u0027d be no logs.",
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "024e30c6_714b3798",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T15:46:28Z",
+      "side": 1,
+      "message": "Could you log the error, too?",
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a8a460b_6a2e053e",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T15:46:28Z",
+      "side": 1,
+      "message": "You can pass testexec.DumpLogOnError to Wait(), instead.",
+      "range": {
+        "startLine": 122,
+        "startChar": 3,
+        "endLine": 122,
+        "endChar": 24
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b5f399e_59805aba",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T15:46:28Z",
+      "side": 1,
+      "message": "pingDone :\u003d make(chan error, 1)\n\nOtherwise, L130 will block until pingDone is consumed.",
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c851c6f6_7baf1243",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T15:46:28Z",
+      "side": 1,
+      "message": "govet errors.\n\nsrc/chromiumos/tast/local/policy/fakedms/fakedms.go:128: the pingCancel function is not used on all paths (possible context leak)\nsrc/chromiumos/tast/local/policy/fakedms/fakedms.go:146: this return statement may be reached without using the pingCancel var defined on line 128\n\npingCancel needs to be called in the defer function immediately followed by this line.\n\nRecommendation:\n\ndefer func() {\n  pingCancel()\n  \u003c- pingDone\n}()\n\nhere. Then you can remove L137-L139.\nAlso, you can close pingDone at the end of goroutine, so that this could handle success case, too.",
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27d1bf86_b3cb2e32",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T15:46:28Z",
+      "side": 1,
+      "message": "Could you check the error, and handle it (at lease logging)?\nDitto for below.",
+      "range": {
+        "startLine": 144,
+        "startChar": 3,
+        "endLine": 144,
+        "endChar": 18
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eca1bcff_4cc3484b",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T15:46:28Z",
+      "side": 1,
+      "message": "Could you respect the timeout of ctx, too?",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 2
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faf34279_8044494f",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T15:46:28Z",
+      "side": 1,
+      "message": "nit/style:\n\nfdms.URL + \"/configuration/test/exit\"\n\nto concat two terms.",
+      "range": {
+        "startLine": 155,
+        "startChar": 23,
+        "endLine": 155,
+        "endChar": 74
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b35bbdd0_4030df14",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T15:46:28Z",
+      "side": 1,
+      "message": "Could you respect timeout of ctx, too?",
+      "range": {
+        "startLine": 164,
+        "startChar": 3,
+        "endLine": 164,
+        "endChar": 38
       },
       "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
