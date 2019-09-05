@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bb7291b_d216c4ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-09-05T22:48:09Z",
+      "side": 1,
+      "message": "this test wont cover our code, you\u0027d need crostini.Launcher*",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 26
+      },
+      "revId": "b6b297eca049b86cdd70d489110551acdce6899c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
