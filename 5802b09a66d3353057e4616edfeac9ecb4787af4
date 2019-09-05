@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "506186f0_e9693eb3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-05T17:10:59Z",
+      "side": 1,
+      "message": "nit: \u003c x \u003c",
+      "range": {
+        "startLine": 120,
+        "startChar": 73,
+        "endLine": 120,
+        "endChar": 77
+      },
+      "revId": "5802b09a66d3353057e4616edfeac9ecb4787af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7736f697_25899a68",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 6
