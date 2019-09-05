@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ae3bbda3_179a4a83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-09-05T21:57:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "789f9313_61472640",
+      "revId": "ff2b8ad39ede9c5bed03909b718c227a354a0972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca69cf31_b2daff75",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
         "patchSetId": 8
@@ -33,6 +51,24 @@
       "revId": "ff2b8ad39ede9c5bed03909b718c227a354a0972",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c76b46d9_28aa82f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-09-05T21:57:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca69cf31_b2daff75",
+      "revId": "ff2b8ad39ede9c5bed03909b718c227a354a0972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "f9b8aa1a_40da9304",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-09-05T21:57:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8a21220_f2cc052a",
+      "revId": "ff2b8ad39ede9c5bed03909b718c227a354a0972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45e479bd_8ce1a093",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
         "patchSetId": 8
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "70beb0c4_4dabe4fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-09-05T21:57:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "45e479bd_8ce1a093",
+      "revId": "ff2b8ad39ede9c5bed03909b718c227a354a0972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3de6005a_bf0a5f42",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
         "patchSetId": 8
@@ -84,6 +156,24 @@
       "revId": "ff2b8ad39ede9c5bed03909b718c227a354a0972",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "866463ed_20086a0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2019-09-05T21:57:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3de6005a_bf0a5f42",
+      "revId": "ff2b8ad39ede9c5bed03909b718c227a354a0972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
