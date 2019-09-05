@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d37eea4_739980f3",
+        "filename": "helpers/local/platform.UserCrash.crasher.crasher.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T10:10:50Z",
+      "side": 1,
+      "message": "Looks weird. This file does not use std:: namespace.\n\nEither importing C header file, or using std:: prefixed function looks needed.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 17
+      },
+      "revId": "acc679baefd876ef5e3dd7dc509ac8e042f461dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95bb4014_3947cd91",
+        "filename": "helpers/local/platform.UserCrash.crasher.crasher.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T10:10:50Z",
+      "side": 1,
+      "message": "Clar: do we want to successfully complete in case of pid sending failure, too?",
+      "range": {
+        "startLine": 39,
+        "startChar": 11,
+        "endLine": 39,
+        "endChar": 12
+      },
+      "revId": "acc679baefd876ef5e3dd7dc509ac8e042f461dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "006d8beb_7ce93254",
+        "filename": "helpers/local/platform.UserCrash.crasher.crasher.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T10:10:50Z",
+      "side": 1,
+      "message": "EINTR needs to be handled. I think HANDLE_EINTR macro in libchrome can be ported here for the purpose. Nice to comment why to avoid linking libchrome here, too.",
+      "revId": "acc679baefd876ef5e3dd7dc509ac8e042f461dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eadc6a8a_4b37bce9",
+        "filename": "helpers/local/platform.UserCrash.crasher.crasher.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T10:10:50Z",
+      "side": 1,
+      "message": "Ditto for EINTR.",
+      "revId": "acc679baefd876ef5e3dd7dc509ac8e042f461dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
