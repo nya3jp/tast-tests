@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "04fcee1c_76215d73",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-05T20:13:49Z",
+      "side": 1,
+      "message": "fixed. Although for me \"pb\" (from proto-buf) is more clear than \"server\". \"server\" is usually used to represent services.",
+      "parentUuid": "10ae0fc2_2e48f389",
+      "revId": "d1380d7e53cf88cbfb33a8b816ba5e23c85699fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd79265c_66d0856f",
         "filename": "src/chromiumos/tast/local/arc/pre.go",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "77ec9147_e8b19677",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-05T20:13:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd79265c_66d0856f",
+      "range": {
+        "startLine": 267,
+        "startChar": 12,
+        "endLine": 267,
+        "endChar": 22
+      },
+      "revId": "d1380d7e53cf88cbfb33a8b816ba5e23c85699fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dac5ce8d_faf6f9ac",
         "filename": "src/chromiumos/tast/local/arc/pre.go",
         "patchSetId": 3
@@ -56,6 +98,24 @@
       "revId": "d1380d7e53cf88cbfb33a8b816ba5e23c85699fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8a72c37_7152da2b",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-05T20:13:49Z",
+      "side": 1,
+      "message": "good point. \nI double-checked it, and \"am force-stop\" does not return any error, regardless of the package name (at least not in P).\nBut moved as you pointed-out, it makes sense to move it before the \"uninstall\".",
+      "parentUuid": "dac5ce8d_faf6f9ac",
+      "revId": "d1380d7e53cf88cbfb33a8b816ba5e23c85699fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
