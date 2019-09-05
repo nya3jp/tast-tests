@@ -40,8 +40,9 @@ func SetBounds(ctx context.Context, s *testing.State) {
 		unresizableButtonID   = pkg + ":id/go_unresizable_button"
 		resizableButtonID     = pkg + ":id/go_resizable_button"
 
-		initialHeight = 500
-		initialWidth  = 600
+		// TODO(hirokisato) find a reliable way to share constants
+		initialHeight = 600
+		initialWidth  = 700
 	)
 
 	// The bounds below are specified in
@@ -53,7 +54,7 @@ func SetBounds(ctx context.Context, s *testing.State) {
 	// When the activity requests smaller bounds than its min-size, ARC framework expands the bounds to the its min-size.
 	// The min-size is specified in AndrodiManifest.xml.
 	smallerBounds := arc.Rect{
-		Left: 200, Top: 200, Width: 300, Height: 400,
+		Left: 200, Top: 200, Width: 600, Height: 500,
 	}
 
 	a := s.PreValue().(arc.PreData).ARC
