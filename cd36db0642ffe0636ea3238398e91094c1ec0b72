@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "042a427f_ca67b742",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-09-05T09:16:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90f192a7_23cf64bc",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 62
+      },
+      "revId": "cd36db0642ffe0636ea3238398e91094c1ec0b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40b250a2_ad1bebbd",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "cd36db0642ffe0636ea3238398e91094c1ec0b72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "249135f3_90f9e4d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-09-05T09:16:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40b250a2_ad1bebbd",
+      "range": {
+        "startLine": 76,
+        "startChar": 49,
+        "endLine": 76,
+        "endChar": 80
+      },
+      "revId": "cd36db0642ffe0636ea3238398e91094c1ec0b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
