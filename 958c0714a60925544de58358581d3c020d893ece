@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81b0851e_1109e4ac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T01:36:48Z",
+      "side": 1,
+      "message": "Do you need to disable the test? I.e., is this only for manual test?\nIf so, could you remove \"informational\", and comment the reason?\nIf not, i.e., it is necessary to run continuously on bot, could you remove \"disabled\"?",
+      "revId": "958c0714a60925544de58358581d3c020d893ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4192c3df_8d04670f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T01:36:48Z",
+      "side": 1,
+      "message": "nit/style: could you combine the lines to make scope minimize?\n\nif err :\u003d json.Unmarshal(...); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 16
+      },
+      "revId": "958c0714a60925544de58358581d3c020d893ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f168c10_841eb48e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T01:36:48Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 17
+      },
+      "revId": "958c0714a60925544de58358581d3c020d893ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40b1f13c_e17ad13c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T01:36:48Z",
+      "side": 1,
+      "message": "either:\n\ns.Error(...)\ncontinue\n\nto run a test for the next cfg, or\n\ns.Fatal(...)\n\nto quit the whole test run.\n\nDitto for below.",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 53
+      },
+      "revId": "958c0714a60925544de58358581d3c020d893ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cf9669a_05f38d57",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T01:36:48Z",
+      "side": 1,
+      "message": "testing.Sleep is in general the source of flakiness.\nCould you instead use testing.Poll() and check some condition this is waiting for?",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 41
+      },
+      "revId": "958c0714a60925544de58358581d3c020d893ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8a1cda9_e7605e55",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T01:36:48Z",
+      "side": 1,
+      "message": "Could you;\n\n- describe what is the fail? Something like \"Unexpected voltage at port %d(%s): \" or something?\n- There\u0027s common pattern to describe actual vs expected values in error messages, which is \"got ..; want ...\". Could you follow the pattern?",
+      "revId": "958c0714a60925544de58358581d3c020d893ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "370401b1_2c1753fd",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T01:36:48Z",
+      "side": 1,
+      "message": "setter returns value sounds a bit weird. Could you elaborate what it is?\nOr, I guess it is success or not. If so, could you just return an error in case of failure?\nAt least, it shouldn\u0027t be ignored the caller, I think.",
+      "revId": "958c0714a60925544de58358581d3c020d893ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
