@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "eae1e23d_1c1d732d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-05T15:56:03Z",
+      "side": 1,
+      "message": "nit: s/Json/JSON/\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 326,
+        "startChar": 9,
+        "endLine": 326,
+        "endChar": 13
+      },
+      "revId": "4966338d791341b46758872254aa7e7e97f82def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f986c6a2_b263c5d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 2
