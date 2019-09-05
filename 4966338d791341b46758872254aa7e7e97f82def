@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c02fa617_8a7a6f55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-05T10:26:06Z",
+      "side": 1,
+      "message": "chromium:917951?\nAnyway, I think we should have a bug not to forget to remove the check for old paths.",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 17,
+        "endChar": 8
+      },
+      "revId": "4966338d791341b46758872254aa7e7e97f82def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f986c6a2_b263c5d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-05T10:26:06Z",
+      "side": 1,
+      "message": "capped",
+      "range": {
+        "startLine": 342,
+        "startChar": 27,
+        "endLine": 342,
+        "endChar": 35
+      },
+      "revId": "4966338d791341b46758872254aa7e7e97f82def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
