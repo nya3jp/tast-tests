@@ -35,7 +35,7 @@ func LoggedIn() testing.Precondition { return loggedInPre }
 // NewPrecondition creates a new precondition that can be shared by tests
 // that require an already-started Chrome object that was created with opts.
 // suffix is appended to precondition's name.
-func NewPrecondition(suffix string, opts ...option) testing.Precondition {
+func NewPrecondition(suffix string, opts ...Option) testing.Precondition {
 	return &preImpl{
 		name:    "chrome_" + suffix,
 		timeout: resetTimeout + LoginTimeout,
@@ -50,7 +50,7 @@ type preImpl struct {
 	name    string        // testing.PreconditionImpl.String
 	timeout time.Duration // testing.PreconditionImpl.Timeout
 	cr      *Chrome       // underlying Chrome instance
-	opts    []option      // options that should be passed to New
+	opts    []Option      // Options that should be passed to New
 }
 
 func (p *preImpl) String() string         { return p.name }
