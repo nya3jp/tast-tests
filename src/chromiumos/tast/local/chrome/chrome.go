@@ -106,14 +106,14 @@ const (
 	fetchPolicy                   // fetch policies like a regular user
 )
 
-// option is a self-referential function can be used to configure Chrome.
+// Option is a self-referential function can be used to configure Chrome.
 // See https://commandcenter.blogspot.com.au/2014/01/self-referential-functions-and-design.html
 // for details about this pattern.
-type option func(c *Chrome)
+type Option func(c *Chrome)
 
-// Auth returns an option that can be passed to New to configure the login credentials used by Chrome.
+// Auth returns an Option that can be passed to New to configure the login credentials used by Chrome.
 // Please do not check in real credentials to public repositories when using this in conjunction with GAIALogin.
-func Auth(user, pass, gaiaID string) option {
+func Auth(user, pass, gaiaID string) Option {
 	return func(c *Chrome) {
 		c.user = user
 		c.pass = pass
@@ -121,66 +121,66 @@ func Auth(user, pass, gaiaID string) option {
 	}
 }
 
-// KeepState returns an option that can be passed to New to preserve the state such as
+// KeepState returns an Option that can be passed to New to preserve the state such as
 // files under /home/chronos and the user's existing cryptohome (if any) instead of
 // wiping them before logging in.
-func KeepState() option {
+func KeepState() Option {
 	return func(c *Chrome) { c.keepState = true }
 }
 
-// GAIALogin returns an option that can be passed to New to perform a real GAIA-based login rather
+// GAIALogin returns an Option that can be passed to New to perform a real GAIA-based login rather
 // than the default fake login.
-func GAIALogin() option {
+func GAIALogin() Option {
 	return func(c *Chrome) { c.loginMode = gaiaLogin }
 }
 
-// NoLogin returns an option that can be passed to New to avoid logging in.
+// NoLogin returns an Option that can be passed to New to avoid logging in.
 // Chrome is still restarted with testing-friendly behavior.
-func NoLogin() option {
+func NoLogin() Option {
 	return func(c *Chrome) { c.loginMode = noLogin }
 }
 
-// GuestLogin returns an option that can be passed to New to log in as guest
+// GuestLogin returns an Option that can be passed to New to log in as guest
 // user.
-func GuestLogin() option {
+func GuestLogin() Option {
 	return func(c *Chrome) {
 		c.loginMode = guestLogin
 		c.user = cryptohome.GuestUser
 	}
 }
 
-// Region returns an option that can be passed to New to set the region deciding
+// Region returns an Option that can be passed to New to set the region deciding
 // the locale used in the OOBE screen and the user sessions. region is a
 // two-letter code such as "us", "fr", or "ja".
-func Region(region string) option {
+func Region(region string) Option {
 	return func(c *Chrome) {
 		c.region = region
 	}
 }
 
-// FetchPolicy returns an option that can be passed to New to let the device do a policy fetch
+// FetchPolicy returns an Option that can be passed to New to let the device do a policy fetch
 // upon login. By default, policies are not fetched.
-func FetchPolicy() option {
+func FetchPolicy() Option {
 	return func(c *Chrome) { c.policyMode = fetchPolicy }
 }
 
-// ARCEnabled returns an option that can be passed to New to enable ARC (without Play Store)
+// ARCEnabled returns an Option that can be passed to New to enable ARC (without Play Store)
 // for the user session with mock GAIA account.
-func ARCEnabled() option {
+func ARCEnabled() Option {
 	return func(c *Chrome) { c.arcMode = arcEnabled }
 }
 
-// ARCSupported returns an option that can be passed to New to allow to enable ARC with Play Store gaia opt-in for the user
+// ARCSupported returns an Option that can be passed to New to allow to enable ARC with Play Store gaia opt-in for the user
 // session with real GAIA account.
 // In this case ARC is not launched by default and is required to be launched by user policy or from UI.
-func ARCSupported() option {
+func ARCSupported() Option {
 	return func(c *Chrome) { c.arcMode = arcSupported }
 }
 
-// RestrictARCCPU returns an option that can be passed to New which controls whether
+// RestrictARCCPU returns an Option that can be passed to New which controls whether
 // to let Chrome use CGroups to limit the CPU time of ARC when in the background.
 // Most ARC-related tests should not pass this option.
-func RestrictARCCPU() option {
+func RestrictARCCPU() Option {
 	return func(c *Chrome) { c.restrictARCCPU = true }
 }
 
@@ -188,19 +188,19 @@ func RestrictARCCPU() option {
 // real device. If this option is not used, the Chrome instances created by this package
 // will skip calling crash_reporter and write any dumps into /home/chronos/crash directly
 // from breakpad. This option restores the normal behavior of calling crash_reporter.
-func CrashNormalMode() option {
+func CrashNormalMode() Option {
 	return func(c *Chrome) { c.breakpadTestMode = false }
 }
 
-// ExtraArgs returns an option that can be passed to New to append additional arguments to Chrome's command line.
-func ExtraArgs(args ...string) option {
+// ExtraArgs returns an Option that can be passed to New to append additional arguments to Chrome's command line.
+func ExtraArgs(args ...string) Option {
 	return func(c *Chrome) { c.extraArgs = append(c.extraArgs, args...) }
 }
 
-// UnpackedExtension returns an option that can be passed to New to make Chrome load an unpacked
+// UnpackedExtension returns an Option that can be passed to New to make Chrome load an unpacked
 // extension in the supplied directory.
 // Ownership of the extension directory and its contents may be modified by New.
-func UnpackedExtension(dir string) option {
+func UnpackedExtension(dir string) Option {
 	return func(c *Chrome) { c.extDirs = append(c.extDirs, dir) }
 }
 
@@ -243,7 +243,7 @@ func (c *Chrome) DebugAddrPort() string {
 
 // New restarts the ui job, tells Chrome to enable testing, and (by default) logs in.
 // The NoLogin option can be passed to avoid logging in.
-func New(ctx context.Context, opts ...option) (*Chrome, error) {
+func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 	if locked {
 		panic("Cannot create Chrome instance while precondition is being used")
 	}
