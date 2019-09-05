@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edb6a47e_191528c3",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T16:03:16Z",
+      "side": 1,
+      "message": "Why not just use server?",
+      "revId": "35711a4d29211077f005e4b0fd0f99fffffd499e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb1aa84b_f3e321ee",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T16:03:16Z",
+      "side": 1,
+      "message": "nit: \n\nif a.GetName() !\u003d name {\n  continue\n}\n\nto unindent one level.\n\n(optional): or if we could assume the name is unique, you can break here, and check the windows outside of this for loop?",
+      "range": {
+        "startLine": 264,
+        "startChar": 5,
+        "endLine": 264,
+        "endChar": 29
+      },
+      "revId": "35711a4d29211077f005e4b0fd0f99fffffd499e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
