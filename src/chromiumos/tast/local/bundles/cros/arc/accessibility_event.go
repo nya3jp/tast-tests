@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"fmt"
 	"reflect"
 	"time"
 
@@ -38,71 +37,6 @@ func init() {
 	})
 }
 
-// waitForElementChecked polls until UI element has been checked, otherwise returns error after 30 seconds.
-func waitForElementChecked(ctx context.Context, chromeVoxConn *chrome.Conn, className string) error {
-	script := fmt.Sprintf(
-		`new Promise((resolve, reject) => {
-			chrome.automation.getFocus((node) => {
-				if (node.className === '%s') {
-					resolve(node.checked);
-				} else {
-					reject();
-				}
-			});
-		})`, className)
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var checked string
-		if err := chromeVoxConn.EvalPromise(ctx, script, &checked); err != nil {
-			return err
-		}
-		if checked == "false" {
-			return errors.Errorf("%s is unchecked", className)
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-		return errors.Wrap(err, "failed to check if element is checked")
-	}
-	return nil
-}
-
-// waitForValueFocused polls until specified UI element with specified value (expectedValue) has focus.
-// Returns error after 30 seconds.
-func waitForValueFocused(ctx context.Context, chromeVoxConn *chrome.Conn, className string, expectedValue int) error {
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var gotValue int
-		gotValue, err := getValueForFocusedElement(ctx, chromeVoxConn, className)
-		if err != nil {
-			return err
-		}
-		if gotValue != expectedValue {
-			return errors.Errorf("%q does not have expected value; got %d, want %d", className, gotValue, expectedValue)
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-		return errors.Wrap(err, "timed out waiting for element to receive focus")
-	}
-	return nil
-}
-
-// getValueForFocusedElement returns the value of the currently focused element.
-func getValueForFocusedElement(ctx context.Context, chromeVoxConn *chrome.Conn, elementClass string) (int, error) {
-	var currentValue int
-	script := fmt.Sprintf(`
-		new Promise((resolve, reject) => {
-			chrome.automation.getFocus((node) => {
-				if (node.className === %q) {
-					resolve(node.valueForRange);
-				} else {
-					reject();
-				}
-			});
-		})`, elementClass)
-	if err := chromeVoxConn.EvalPromise(ctx, script, &currentValue); err != nil {
-		return 0, errors.Wrapf(err, "could not get value of focused element %q", elementClass)
-	}
-	return currentValue, nil
-}
-
 // verifyLogs gets the current ChromeVox log and checks that it matches with expected log.
 // Note that as the initial a11y focus is unstable, checkOnlyLatest=true can be used to check only the latest logs.
 func verifyLogs(ctx context.Context, chromeVoxConn *chrome.Conn, expectedLogs []eventLog, checkOnlyLatest bool) error {
@@ -122,10 +56,12 @@ func verifyLogs(ctx context.Context, chromeVoxConn *chrome.Conn, expectedLogs []
 }
 
 // focusAndIncrementElement uses ChromeVox navigation (using Tab), to navigate to the next
-// UI element (specified by elementClass, and is expected to be a seekBar).
+// UI element (specified by node).
 // ChromeVox will then interact with the seekBar, by incrementing its value using '='.
+// node is the node that initially receives focus, and expectedNode is the node containing
+// the expected value after incrementing node.
 // Returns an error indicating the success of both actions.
-func focusAndIncrementElement(ctx context.Context, chromeVoxConn *chrome.Conn, elementClass string, initialValue, expectedValue int) error {
+func focusAndIncrementElement(ctx context.Context, chromeVoxConn *chrome.Conn, node, expectedNode *accessibility.AutomationNode) error {
 	ew, err := input.Keyboard(ctx)
 	if err != nil {
 		return errors.Wrap(err, "error with creating EventWriter from keyboard")
@@ -138,7 +74,7 @@ func focusAndIncrementElement(ctx context.Context, chromeVoxConn *chrome.Conn, e
 	}
 
 	// Make sure that seekBar is focused with expected initial value.
-	if err := waitForValueFocused(ctx, chromeVoxConn, elementClass, initialValue); err != nil {
+	if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, node); err != nil {
 		return errors.Wrap(err, "timed out polling for element")
 	}
 
@@ -148,16 +84,16 @@ func focusAndIncrementElement(ctx context.Context, chromeVoxConn *chrome.Conn, e
 	}
 
 	// Check that seekbar was incremented correctly.
-	if err := waitForValueFocused(ctx, chromeVoxConn, elementClass, expectedValue); err != nil {
+	if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, expectedNode); err != nil {
 		return errors.Wrap(err, "timed out polling for element incremented")
 	}
 	return nil
 }
 
 // focusAndCheckElement uses ChromeVox navigation (using Tab), to navigate to the next
-// UI element (specified by elementClass), and activates it (using Search + Space).
+// UI element (specified by node), and activates it (using Search + Space).
 // Returns an error indicating the success of both actions.
-func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, elementClass string) error {
+func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, node, expectedNode *accessibility.AutomationNode) error {
 	ew, err := input.Keyboard(ctx)
 	if err != nil {
 		return errors.Wrap(err, "error with creating EventWriter from keyboard")
@@ -174,7 +110,7 @@ func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, eleme
 	}
 
 	// Wait for element to receive focus.
-	if err := accessibility.WaitForElementFocused(ctx, chromeVoxConn, elementClass); err != nil {
+	if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, node); err != nil {
 		return errors.Wrap(err, "timed out polling for element")
 	}
 
@@ -188,7 +124,7 @@ func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, eleme
 	}
 
 	// Poll until the element has been checked.
-	if err := waitForElementChecked(ctx, chromeVoxConn, elementClass); err != nil {
+	if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, expectedNode); err != nil {
 		return errors.Wrap(err, "failed to check toggled state")
 	}
 
@@ -262,7 +198,16 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	}{
 		{
 			action: func() error {
-				return focusAndCheckElement(ctx, chromeVoxConn, toggleButton)
+				return focusAndCheckElement(ctx, chromeVoxConn,
+					&accessibility.AutomationNode{
+						ClassName: toggleButton,
+						Tooltip:   "button tooltip",
+						Checked:   "false",
+					}, &accessibility.AutomationNode{
+						ClassName: toggleButton,
+						Tooltip:   "button tooltip",
+						Checked:   "true",
+					})
 			},
 			expected: []eventLog{
 				eventLog{"focus", "OFF", appName},
@@ -270,7 +215,17 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			},
 		}, {
 			action: func() error {
-				return focusAndCheckElement(ctx, chromeVoxConn, checkBox)
+				return focusAndCheckElement(ctx, chromeVoxConn,
+					&accessibility.AutomationNode{
+						ClassName: checkBox,
+						Tooltip:   "checkbox tooltip",
+						Checked:   "false",
+					},
+					&accessibility.AutomationNode{
+						ClassName: checkBox,
+						Tooltip:   "checkbox tooltip",
+						Checked:   "true",
+					})
 			},
 			expected: []eventLog{
 				eventLog{"focus", "CheckBox", appName},
@@ -278,7 +233,15 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			},
 		}, {
 			action: func() error {
-				return focusAndIncrementElement(ctx, chromeVoxConn, seekBar, seekBarInitialValue, seekBarExpectedValue)
+				return focusAndIncrementElement(ctx, chromeVoxConn,
+					&accessibility.AutomationNode{
+						ClassName:     seekBar,
+						ValueForRange: seekBarInitialValue,
+					},
+					&accessibility.AutomationNode{
+						ClassName:     seekBar,
+						ValueForRange: seekBarExpectedValue,
+					})
 			},
 			expected: []eventLog{
 				eventLog{"focus", "seekBar", appName},
@@ -286,7 +249,15 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			},
 		}, {
 			action: func() error {
-				return focusAndIncrementElement(ctx, chromeVoxConn, seekBar, seekBarDiscreteInitialValue, seekBarDiscreteExpectedValue)
+				return focusAndIncrementElement(ctx, chromeVoxConn,
+					&accessibility.AutomationNode{
+						ClassName:     seekBar,
+						ValueForRange: seekBarDiscreteInitialValue,
+					},
+					&accessibility.AutomationNode{
+						ClassName:     seekBar,
+						ValueForRange: seekBarDiscreteExpectedValue,
+					})
 			},
 			expected: []eventLog{
 				eventLog{"focus", "seekBarDiscrete", appName},
