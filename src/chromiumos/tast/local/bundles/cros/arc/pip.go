@@ -58,7 +58,6 @@ func init() {
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"tablet_mode", "android_p", "chrome"},
 		Data:         []string{"ArcPipTastTest.apk"},
-		Pre:          arc.Booted(),
 	})
 }
 
@@ -69,15 +68,26 @@ func PIP(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// For debugging, create a Chrome session with chrome.ExtraArgs("--show-taps")
-	cr := s.PreValue().(arc.PreData).Chrome
+	// Restart the session to make sure no app is open.
+	// This test requires this because whether an app is open or not affects the visibility of auto-hide shelf in tablet mode.
+	// TODO(takise): Remove this once crbug.com/974068 is fixed.
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--show-taps"))
+	if err != nil {
+		s.Fatal("Failed to connect to Chrome: ", err)
+	}
+	defer cr.Close(ctx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	a := s.PreValue().(arc.PreData).ARC
+	// TODO(takise): Remove this once crbug.com/974068 is fixed.
+	a, err := arc.New(ctx, s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to start ARC: ", err)
+	}
+	defer a.Close()
 
 	const apkName = "ArcPipTastTest.apk"
 	s.Log("Installing ", apkName)
