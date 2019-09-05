@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "49ecad35_b9bb138a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-05T20:37:58Z",
+      "side": 1,
+      "message": "good catch; done",
+      "parentUuid": "506186f0_e9693eb3",
+      "range": {
+        "startLine": 120,
+        "startChar": 73,
+        "endLine": 120,
+        "endChar": 77
+      },
+      "revId": "5802b09a66d3353057e4616edfeac9ecb4787af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7736f697_25899a68",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "5802b09a66d3353057e4616edfeac9ecb4787af4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da0926ab_89d40f4d",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-05T20:37:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7736f697_25899a68",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 13
+      },
+      "revId": "5802b09a66d3353057e4616edfeac9ecb4787af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
