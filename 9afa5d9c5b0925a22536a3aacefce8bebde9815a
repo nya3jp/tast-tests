@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d140f3f_78a874b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T16:39:54Z",
+      "side": 1,
+      "message": "Could you explicitly comment that, even in this failure case, you\u0027d like to run the following cases, too, for trajectory?",
+      "revId": "9afa5d9c5b0925a22536a3aacefce8bebde9815a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
