@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10ae0fc2_2e48f389",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T16:25:53Z",
+      "side": 1,
+      "message": "why not just use server?",
+      "revId": "d1380d7e53cf88cbfb33a8b816ba5e23c85699fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd79265c_66d0856f",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T16:25:53Z",
+      "side": 1,
+      "message": "p.arc.Command to be consistent?",
+      "range": {
+        "startLine": 267,
+        "startChar": 12,
+        "endLine": 267,
+        "endChar": 22
+      },
+      "revId": "d1380d7e53cf88cbfb33a8b816ba5e23c85699fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dac5ce8d_faf6f9ac",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T16:25:53Z",
+      "side": 1,
+      "message": "If the running package is the one installed later, I guess adb am force-stop would report an error, because it is uninstalled above?\n\nCould you double check?\n\nEither, move this above? or ignore if it is not in origInstalledPkgs, too?\n\n(Sorry I didn\u0027t come up with this question in the previous iteration).",
+      "revId": "d1380d7e53cf88cbfb33a8b816ba5e23c85699fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
