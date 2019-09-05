@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ac9162a9_8555cd7d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T16:35:06Z",
+      "side": 1,
+      "message": "Sorry for false positive of the lint error.\nIt is already filed a bug.\n\ncrbug.com/983002",
+      "parentUuid": "e1bc021a_ccd7856d",
+      "revId": "958c0714a60925544de58358581d3c020d893ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4192c3df_8d04670f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
         "patchSetId": 4
@@ -189,6 +207,30 @@
       "side": 1,
       "message": "Without actually sniffing PD traffic, we can\u0027t tell the exact point that this should be ready. I believe I understand the intention though. I could add a TODO, but it will take a lot of extra work to surface that information and add a dependency on possibly a second instance of servod to monitor the EC console log. For this test, I don\u0027t want to require that a servo flex must be connected to the DUT.",
       "parentUuid": "9cf9669a_05f38d57",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 41
+      },
+      "revId": "958c0714a60925544de58358581d3c020d893ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dea7b8d7_54ceaf90",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T16:35:06Z",
+      "side": 1,
+      "message": "Ok, so because this is manual test only (at least for now), it\u0027s ok, but it\u0027d be a blocker to run this test continuously.\n\nCould you comment the background, file a bug, and add TODO refering the bug, too?",
+      "parentUuid": "a648fc97_da53f233",
       "range": {
         "startLine": 74,
         "startChar": 2,

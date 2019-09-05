@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7736f697_25899a68",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-05T16:35:06Z",
+      "side": 1,
+      "message": "Could you comment what you mentioned in the reply to my question? i.e. why you ignore this here?\n\nor, if the val represents whether or not xmlrpc succeeds semantically, alternatively;\n\nif err :\u003d s.run(...); err !\u003d nil {\n  return err\n}\nif !val {\n  return errors.New(...)\n}\nreturn nil",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 13
+      },
+      "revId": "5802b09a66d3353057e4616edfeac9ecb4787af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
