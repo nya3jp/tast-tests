@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90f192a7_23cf64bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-05T08:11:40Z",
+      "side": 1,
+      "message": "Could you use TODO(crbug.com/XXXXXX) format instead? It\u0027s preferred format than TODO(username).\n\n // TODO(crbug.com/974068): Re-add this once the precondition issue is fixed.",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 62
+      },
+      "revId": "cd36db0642ffe0636ea3238398e91094c1ec0b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40b250a2_ad1bebbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-05T08:11:40Z",
+      "side": 1,
+      "message": "Is this argument required, or is it for debugging? Please remove it before submitting if it\u0027s for debugging.",
+      "range": {
+        "startLine": 76,
+        "startChar": 49,
+        "endLine": 76,
+        "endChar": 80
+      },
+      "revId": "cd36db0642ffe0636ea3238398e91094c1ec0b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
