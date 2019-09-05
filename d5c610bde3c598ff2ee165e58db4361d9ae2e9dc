@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e49f0f5_86d52fd5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-09-05T15:05:08Z",
+      "side": 1,
+      "message": "nit: a commit message should not exceed 72 chars per line",
+      "range": {
+        "startLine": 12,
+        "startChar": 67,
+        "endLine": 12,
+        "endChar": 73
+      },
+      "revId": "d5c610bde3c598ff2ee165e58db4361d9ae2e9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "204955e5_c902fc5e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-09-05T15:05:08Z",
+      "side": 1,
+      "message": "nit: \"requires the window to be in freeform mode\"",
+      "range": {
+        "startLine": 12,
+        "startChar": 13,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "d5c610bde3c598ff2ee165e58db4361d9ae2e9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e70ec17_80c05b8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-09-05T15:05:08Z",
+      "side": 1,
+      "message": "I think these numbers are duplicated between the apk and here. Do we have any way to consolidate them?",
+      "revId": "d5c610bde3c598ff2ee165e58db4361d9ae2e9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
