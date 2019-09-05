@@ -167,6 +167,8 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the actual accessibility tree for current desktop: ", err)
 	}
 
+	testing.ContextLog(ctx, "node name:"+root.Name)
+	testing.ContextLog(ctx, "node string:"+root.Role)
 	// Find the root node of Android application.
 	appRoot, ok := findNode(root, expected.Name, expected.Role)
 	if appRoot == nil || !ok {

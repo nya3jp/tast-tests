@@ -33,6 +33,36 @@ const (
 	extURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/cvox2/background/background.html"
 )
 
+// AutomationNode represents an accessibility struct, which contains properties from chrome.automation.Autotmation.
+// This is defined at:
+// https://developer.chrome.com/extensions/automation#type-AutomationNode
+// Only the properties which are used in tast tests are defined here.
+type AutomationNode struct {
+	ClassName    string
+	Tooltip      string
+	Checked      string
+	CurrentValue int
+}
+
+// GetFocusedNode returns the currently focused node of ChromeVox.
+func GetFocusedNode(ctx context.Context, chromeVoxConn *chrome.Conn) (AutomationNode, error) {
+	var automationNode AutomationNode
+	const script = `new Promise((resolve, reject) => {
+			chrome.automation.getFocus((node) => {
+				resolve({
+					Tooltip: node.tooltip,
+					Checked: node.checked,
+					ClassName: node.className,
+					CurrentValue: node.valueForRange
+				});
+			});
+		})`
+	if err := chromeVoxConn.EvalPromise(ctx, script, &automationNode); err != nil {
+		return AutomationNode{}, err
+	}
+	return automationNode, nil
+}
+
 // Enabled checks if accessibility is enabled in Android.
 func Enabled(ctx context.Context, a *arc.ARC) (bool, error) {
 	res, err := a.Command(ctx, "settings", "--user", "0", "get", "secure", "accessibility_enabled").Output(testexec.DumpLogOnError)
@@ -160,19 +190,12 @@ func InstallAndStartSampleApp(ctx context.Context, a *arc.ARC, apkPath string) e
 // WaitForElementFocused polls until the specified UI element (focusClassName) has focus.
 // Returns an error after 30 seconds.
 func WaitForElementFocused(ctx context.Context, chromeVoxConn *chrome.Conn, focusClassName string) error {
-	const script = `new Promise((resolve, reject) => {
-			chrome.automation.getFocus((node) => {
-				resolve(node.className);
-			});
-		})`
 	// Wait for focusClassName to receive focus.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var currFocusClassName string
-		if err := chromeVoxConn.EvalPromise(ctx, script, &currFocusClassName); err != nil {
+		if node, err := GetFocusedNode(ctx, chromeVoxConn); err != nil {
 			return err
-		}
-		if strings.TrimSpace(currFocusClassName) != focusClassName {
-			return errors.Errorf("%q does not have focus, %q has focus instead", focusClassName, currFocusClassName)
+		} else if strings.TrimSpace(node.ClassName) != focusClassName {
+			return errors.Errorf("%q does not have focus, %q has focus instead", focusClassName, node.ClassName)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
