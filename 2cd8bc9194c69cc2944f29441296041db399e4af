@@ -2,6 +2,63 @@
   "comments": [
     {
       "key": {
+        "uuid": "7ac86336_4a20db25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-05T18:28:38Z",
+      "side": 1,
+      "message": "It seems like we now do a bunch of waiting for photos to appear on disk.\n* Do we not care about the timer for the cases past L420? Should this repeated block be factored out? (L401-407, which is already repeated above in L390-397 above anyway)\n* Or would it be better to factor out something that takes a list of patterns, and then we can pass in all the patterns we want to see in one go and not have to branch a lot based on the three different bools here?",
+      "revId": "2cd8bc9194c69cc2944f29441296041db399e4af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec33fc90_766bfabb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-05T18:28:38Z",
+      "side": 1,
+      "message": "maybe either change this to\n\nif !isSaveMetadata || !isExpert {\n  return fileInfos, nil\n}\n\nor do this after each GetState call above, then you can reduce the rest of this function by one level of indentation and make it a little easier to follow.",
+      "revId": "2cd8bc9194c69cc2944f29441296041db399e4af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cfe7b8e_617324b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-05T18:28:38Z",
+      "side": 1,
+      "message": "This isn\u0027t always the right pattern; I think you want metadataPattern here.",
+      "range": {
+        "startLine": 427,
+        "startChar": 73,
+        "endLine": 427,
+        "endChar": 88
+      },
+      "revId": "2cd8bc9194c69cc2944f29441296041db399e4af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "729337ba_8f3ca0a0",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 7
