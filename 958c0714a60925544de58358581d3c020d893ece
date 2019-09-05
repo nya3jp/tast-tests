@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e1bc021a_ccd7856d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-05T04:12:24Z",
+      "side": 1,
+      "message": "Currently, for the time being the plan is to run the test manually. Once we scale it out in the future, it would be nice to have this continuously. However, it will be a long time before that happens. Initially, I didn\u0027t have the informational attribute, but the presubmit check complained.\n\n    \n                \n\n            * Hook script \"tools/check_informational.py ${PRESUBMIT_COMMIT}\" failed with code 1:\n              Tests in following new files should have \"informational\" attribute:\n              \n                src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go\n              \n              See: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#code-location",
+      "parentUuid": "81b0851e_1109e4ac",
+      "revId": "958c0714a60925544de58358581d3c020d893ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4192c3df_8d04670f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "958c0714a60925544de58358581d3c020d893ece",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90c714af_49843804",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-05T04:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4192c3df_8d04670f",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 16
+      },
+      "revId": "958c0714a60925544de58358581d3c020d893ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "e482db7a_751856e3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-05T04:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40b1f13c_e17ad13c",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 53
+      },
+      "revId": "958c0714a60925544de58358581d3c020d893ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9cf9669a_05f38d57",
         "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
         "patchSetId": 4
@@ -99,6 +165,30 @@
       "writtenOn": "2019-09-05T01:36:48Z",
       "side": 1,
       "message": "testing.Sleep is in general the source of flakiness.\nCould you instead use testing.Poll() and check some condition this is waiting for?",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 41
+      },
+      "revId": "958c0714a60925544de58358581d3c020d893ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a648fc97_da53f233",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-05T04:12:24Z",
+      "side": 1,
+      "message": "Without actually sniffing PD traffic, we can\u0027t tell the exact point that this should be ready. I believe I understand the intention though. I could add a TODO, but it will take a lot of extra work to surface that information and add a dependency on possibly a second instance of servod to monitor the EC console log. For this test, I don\u0027t want to require that a servo flex must be connected to the DUT.",
+      "parentUuid": "9cf9669a_05f38d57",
       "range": {
         "startLine": 74,
         "startChar": 2,
@@ -128,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "18d9172b_89527085",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-05T04:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8a1cda9_e7605e55",
+      "revId": "958c0714a60925544de58358581d3c020d893ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "370401b1_2c1753fd",
         "filename": "src/chromiumos/tast/remote/servo/methods.go",
         "patchSetId": 4
@@ -139,6 +247,24 @@
       "writtenOn": "2019-09-05T01:36:48Z",
       "side": 1,
       "message": "setter returns value sounds a bit weird. Could you elaborate what it is?\nOr, I guess it is success or not. If so, could you just return an error in case of failure?\nAt least, it shouldn\u0027t be ignored the caller, I think.",
+      "revId": "958c0714a60925544de58358581d3c020d893ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "082a74c7_e035b00b",
+        "filename": "src/chromiumos/tast/remote/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-05T04:12:24Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s a little weird. the run() method needs the arg as the response contains whether the xml-rpc call succeeded or not. Omitting this variable causes it to fail to unmarshall the xmlrpc response. However it seems strange because if the call didn\u0027t succeed, I believe run() will return an error in err anyways so the variable seems useless.\n\nI have changed this to just return err and ignore the dummy val.",
+      "parentUuid": "370401b1_2c1753fd",
       "revId": "958c0714a60925544de58358581d3c020d893ece",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
