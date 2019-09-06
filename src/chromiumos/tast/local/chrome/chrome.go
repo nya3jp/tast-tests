@@ -616,13 +616,13 @@ func (c *Chrome) restartSession(ctx context.Context) error {
 // If url is empty, an empty page (about:blank) is opened. Otherwise, the page
 // from the specified URL is opened. You can assume that the page loading has
 // been finished when this function returns.
-func (c *Chrome) NewConn(ctx context.Context, url string) (*Conn, error) {
+func (c *Chrome) NewConn(ctx context.Context, url string, opts ...cdputil.CreateTargetOption) (*Conn, error) {
 	if url == "" {
 		testing.ContextLog(ctx, "Creating new blank page")
 	} else {
 		testing.ContextLog(ctx, "Creating new page with URL ", url)
 	}
-	targetID, err := c.devsess.CreateTarget(ctx, url)
+	targetID, err := c.devsess.CreateTarget(ctx, url, opts...)
 	if err != nil {
 		return nil, err
 	}
