@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "30d159be_e174a01b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1356044
+      },
+      "writtenOn": "2019-09-06T01:43:50Z",
+      "side": 1,
+      "message": "I have refactored by getting a list of patterns. This also included the timer case. Thanks for the suggestion.",
+      "parentUuid": "7ac86336_4a20db25",
+      "revId": "2cd8bc9194c69cc2944f29441296041db399e4af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec33fc90_766bfabb",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 7
