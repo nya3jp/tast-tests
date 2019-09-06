@@ -29,6 +29,7 @@ const (
 	checkBoxID        = "org.chromium.arc.testapp.accessibilitytest:id/checkBox"
 	seekBarID         = "org.chromium.arc.testapp.accessibilitytest:id/seekBar"
 	seekBarDiscreteID = "org.chromium.arc.testapp.accessibilitytest:id/seekBarDiscrete"
+	webViewID = "org.chromium.arc.testapp.accessibilitytest:id/webView"
 
 	extURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/cvox2/background/background.html"
 )
@@ -142,17 +143,10 @@ func InstallAndStartSampleApp(ctx context.Context, a *arc.ARC, apkPath string) e
 
 	// Check UI components exist as expected.
 	const timeout = 30 * time.Second
-	if err := d.Object(ui.ID(toggleButtonID)).WaitForExists(ctx, timeout); err != nil {
-		return err
-	}
-	if err := d.Object(ui.ID(checkBoxID)).WaitForExists(ctx, timeout); err != nil {
-		return err
-	}
-	if err := d.Object(ui.ID(seekBarID)).WaitForExists(ctx, timeout); err != nil {
-		return err
-	}
-	if err := d.Object(ui.ID(seekBarDiscreteID)).WaitForExists(ctx, timeout); err != nil {
-		return err
+	for _, id := range []string{toggleButtonID, checkBoxID, seekBarID, seekBarDiscreteID, webViewID} {
+		if err := d.Object(ui.ID(id)).WaitForExists(ctx, timeout); err != nil {
+			return err
+		}
 	}
 	return nil
 }
