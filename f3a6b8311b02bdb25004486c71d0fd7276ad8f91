@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4b5398c_b462822a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-06T01:15:08Z",
+      "side": 1,
+      "message": "Could you also run accessibilityTree?\nbecause getFocusedNode is used in both test.",
+      "range": {
+        "startLine": 19,
+        "startChar": 25,
+        "endLine": 19,
+        "endChar": 43
+      },
+      "revId": "f3a6b8311b02bdb25004486c71d0fd7276ad8f91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e8566a5_76b62b9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-06T01:15:08Z",
+      "side": 1,
+      "message": "one more indent?",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 5
+      },
+      "revId": "f3a6b8311b02bdb25004486c71d0fd7276ad8f91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cb0e2a8_9cfb6916",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-06T01:15:08Z",
+      "side": 1,
+      "message": "Could you add a comment that `resolve(node)` doesn\u0027t work here because properties are defined using javascript getters?",
+      "range": {
+        "startLine": 50,
+        "startChar": 17,
+        "endLine": 59,
+        "endChar": 5
+      },
+      "revId": "f3a6b8311b02bdb25004486c71d0fd7276ad8f91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b6b1c19_90ca1e46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-06T01:15:08Z",
+      "side": 1,
+      "message": "Currently, there are 3 functions that are doing similar operations: waitForElementFocused, waitForValueFocused, waitForElementChecked.\n\nI think this we can extract common operation form them and use a function like below:\n\nfunc WaitForFocusedNode(... expected Node) err {\n\tif err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n\t\tnode, err :\u003d GetFocusedNode(ctx, chromeVoxConn);\n\t\tif err !\u003d nil {\n\t\t\treturn err\n\t\t}\n\t\tif diff :\u003d cmp.Diff(node, expected, cmpopts.EquateEmpty()); diff !\u003d \"\" {\n\t\t\treturn errors.Errorf(....)\n\t\t}\n\t\treturn nil\n\t}, \u0026testing.PollOptions{Timeout: 30 * time.Second}); err !\u003d nil {\n\t\treturn errors.Wrap(err, \"failed to get current focus\")\n\t}\n\treturn nil\n}",
+      "range": {
+        "startLine": 192,
+        "startChar": 5,
+        "endLine": 192,
+        "endChar": 26
+      },
+      "revId": "f3a6b8311b02bdb25004486c71d0fd7276ad8f91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
