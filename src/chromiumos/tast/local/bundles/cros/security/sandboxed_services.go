@@ -225,7 +225,10 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		truncateProcName("dev_debug_vboot"):    {}, // executed by chromeos-setgoodkernel: https://crbug.com/962134
 	}
 	if moblab.IsMoblab() {
-		ignoredAncestorNames[truncateProcName("apache2")] = struct{}{} // serves UI and runs other procs: https://crbug.com/962137
+		ignoredAncestorNames[truncateProcName("apache2")] = struct{}{}         // serves UI and runs other procs: https://crbug.com/962137
+		ignoredAncestorNames[truncateProcName("dockerd")] = struct{}{}         // Used to run envoy proxy required for grpc-web based UI
+		ignoredAncestorNames[truncateProcName("containerd-shim")] = struct{}{} // Used to run envoy proxy required for grpc-web based UI
+		ignoredAncestorNames[truncateProcName("containerd")] = struct{}{}      // Used to run envoy proxy required for grpc-web based UI
 	}
 
 	baselineMap := make(map[string][]*procReqs, len(baseline))
