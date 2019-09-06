@@ -24,7 +24,11 @@
         {
           "name": "seekBarDiscrete",
           "role": "slider"
-        }
+        },
+	{
+	  "name": "webView",
+	  "role": "webView"
+	}
       ]
     }
   ]
