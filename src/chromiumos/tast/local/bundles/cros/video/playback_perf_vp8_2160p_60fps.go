@@ -21,7 +21,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"2160p_60fps_600frames.vp8.webm"},
 		// Default timeout (i.e. 2 minutes) is not enough for low-end devices.
-		Timeout: 3 * time.Minute,
+		Timeout: 5 * time.Minute,
 	})
 }
 

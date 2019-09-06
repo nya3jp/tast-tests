@@ -21,7 +21,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"720p_60fps_600frames.av1.mp4"},
 		// Default timeout (i.e. 2 minutes) is not enough for low-end devices.
-		Timeout: 3 * time.Minute,
+		Timeout: 5 * time.Minute,
 	})
 }
 
