@@ -38,6 +38,11 @@ func PrivilegedFiles(ctx context.Context, s *testing.State) {
 		"/mnt/stateful_partition",
 	})
 
+	// Moblab runs some services in a docker container.
+	if moblab.IsMoblab() {
+		skippedDirs["/mnt/moblab/containers/docker"] = struct{}{}
+	}
+
 	// Files permitted to have the setuid and setgid bits set.
 	// No error is reported if these files are missing or don't have the bit.
 	setuidBaseline := makeStringSet([]string{
