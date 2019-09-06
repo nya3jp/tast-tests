@@ -106,6 +106,11 @@ func New(ctx context.Context, cr *chrome.Chrome, scriptPaths []string) (*App, er
 	}
 	defer bconn.Close()
 
+	// Wait until the page is loaded. This ensures 'cca' is available below.
+	if err := bconn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
+		return nil, err
+	}
+
 	// TODO(shik): Remove the else branch after CCA get updated.
 	const prepareForTesting = `
 		window.readyForTesting = new Promise((resolve) => {

@@ -18,11 +18,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     CCAUIModes,
-		Desc:     "Opens CCA and verifies the use cases of mode selector and portrait, square modes",
-		Contacts: []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
-		// TODO(shik): Re-enabled it after b/138828180 resolved.
-		Attr:         []string{"disabled"},
+		Func:         CCAUIModes,
+		Desc:         "Opens CCA and verifies the use cases of mode selector and portrait, square modes",
+		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinCamera},
 		Data:         []string{"cca_ui.js", "human_face.y4m"},
 	})
@@ -68,6 +67,7 @@ func CCAUIModes(ctx context.Context, s *testing.State) {
 		if err != nil {
 			return false, err
 		}
+		defer file.Close()
 		image, err := jpeg.Decode(file)
 		if err != nil {
 			return false, err
