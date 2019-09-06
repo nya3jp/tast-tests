@@ -157,7 +157,8 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				{notCmdline, ".*(frecon|agetty|ping|recover_duts).*", notStr("minijailed"), zeroProcs, domainIsolationErrorMessage},
 				{notExe, "/sbin/init", notStr("cros_init"), zeroProcs, domainIsolationErrorMessage},
 				// coreutils and ping are excluded for recover_duts scripts.
-				{notExe, "(/bin/([db]a)?sh|/usr/bin/coreutils|/bin/ping)", notStr("cros_init_scripts"), zeroProcs, domainIsolationErrorMessage},
+				// TODO(crbug.com/1001250, crrev.com/c/1768801): remove brcm_patchram_plus exception.
+				{notExe, "(/bin/([db]a)?sh|/usr/bin/coreutils|/bin/ping|brcm_patchram_plus)", notStr("cros_init_scripts"), zeroProcs, domainIsolationErrorMessage},
 				{notExe, "/sbin/minijail0", notStr("minijail"), zeroProcs, domainIsolationErrorMessage},
 			}...)
 		case Unstable:
