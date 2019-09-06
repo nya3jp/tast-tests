@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be6da9de_c71792d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-06T10:07:13Z",
+      "side": 1,
+      "message": "remove this, or check empty only. This could be done before unmarshal",
+      "revId": "0d85c081d50a8b28d55c212d48533ffb27559e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0608a30b_bfde2859",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-06T10:07:13Z",
+      "side": 1,
+      "message": "no need for local function",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 19
+      },
+      "revId": "0d85c081d50a8b28d55c212d48533ffb27559e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0753c87b_d5527aae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-06T10:07:13Z",
+      "side": 1,
+      "message": "no need for local function",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 19
+      },
+      "revId": "0d85c081d50a8b28d55c212d48533ffb27559e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edebba5d_8afda2ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-06T10:07:13Z",
+      "side": 1,
+      "message": "remove this function",
+      "revId": "0d85c081d50a8b28d55c212d48533ffb27559e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
