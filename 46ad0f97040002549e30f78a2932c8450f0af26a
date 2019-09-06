@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bda1e5bb_17bb8149",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-09-06T22:35:21Z",
+      "side": 1,
+      "message": "I would consider just having the \"base crash name\" as another test param, to remove some of the logic\n\nI don\u0027t think the current approach is that bad, though. I would comment what \"base\" is, though; I can see that you are taking the service name and replacing -\u0027s with _\u0027s, but it\u0027s not clear why. (I assume because that\u0027s the base name of the crash files that crash_reporter will generate, right?)",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 98
+      },
+      "revId": "46ad0f97040002549e30f78a2932c8450f0af26a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
