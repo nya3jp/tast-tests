@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb0c2f05_79b2618a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-06T02:44:17Z",
+      "side": 1,
+      "message": "patterns",
+      "range": {
+        "startLine": 370,
+        "startChar": 1,
+        "endLine": 370,
+        "endChar": 20
+      },
+      "revId": "81a94348de19218473a7b9ac1deed6198b510274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a20611c_fa38a956",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-06T02:44:17Z",
+      "side": 1,
+      "message": "[]os.FileInfo{}, to be consistent with the existing code. Please check other usages as well.",
+      "range": {
+        "startLine": 407,
+        "startChar": 14,
+        "endLine": 407,
+        "endChar": 36
+      },
+      "revId": "81a94348de19218473a7b9ac1deed6198b510274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d48145d_f76dd9b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-06T02:44:17Z",
+      "side": 1,
+      "message": "resule",
+      "range": {
+        "startLine": 510,
+        "startChar": 5,
+        "endLine": 510,
+        "endChar": 11
+      },
+      "revId": "81a94348de19218473a7b9ac1deed6198b510274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7dbfec5_a47e6e5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-06T02:44:17Z",
+      "side": 1,
+      "message": "\u0027expert\u0027",
+      "range": {
+        "startLine": 524,
+        "startChar": 36,
+        "endLine": 524,
+        "endChar": 38
+      },
+      "revId": "81a94348de19218473a7b9ac1deed6198b510274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3709260_93380f87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-06T02:44:17Z",
+      "side": 1,
+      "message": "\u003d\u003d\u003d",
+      "range": {
+        "startLine": 533,
+        "startChar": 63,
+        "endLine": 533,
+        "endChar": 65
+      },
+      "revId": "81a94348de19218473a7b9ac1deed6198b510274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6c8c00b_753d2346",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-06T02:44:17Z",
+      "side": 1,
+      "message": "strings.Replace on regexp looks hacky to me, and it does not verify that the file name without extension is actually same.",
+      "revId": "81a94348de19218473a7b9ac1deed6198b510274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6be7b626_d4b466ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 8
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-06T02:44:17Z",
+      "side": 1,
+      "message": "Please rebase. It\u0027s already in https://crrev.com/c/1779768",
+      "revId": "81a94348de19218473a7b9ac1deed6198b510274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
