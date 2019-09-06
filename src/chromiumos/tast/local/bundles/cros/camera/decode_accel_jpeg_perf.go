@@ -136,7 +136,7 @@ func runJPEGPerfBenchmark(ctx context.Context, s *testing.State, tempDir string,
 	// process to finish for the complete logs.
 	const exec = "jpeg_decode_accelerator_unittest"
 	logPath := fmt.Sprintf("%s/%s.%s.log", s.OutDir(), exec, filter)
-	cpuUsage, err := cpu.MeasureProcessCPU(ctx, measureDuration, cpu.WaitProcess,
+	cpuUsage, err := cpu.MeasureProcessCPU(ctx, s, measureDuration, cpu.WaitProcess,
 		gtest.New(
 			filepath.Join(chrome.BinTestDir, exec),
 			gtest.Logfile(logPath),

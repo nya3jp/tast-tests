@@ -34,7 +34,7 @@ const (
 
 // MeasureProcessCPU starts one or more gtest processes and measures CPU usage for the given duration.
 // The average usage over all CPU cores is returned as a percentage.
-func MeasureProcessCPU(ctx context.Context, duration time.Duration,
+func MeasureProcessCPU(ctx context.Context, s *testing.State, duration time.Duration,
 	exitOption ExitOption, ts ...*gtest.GTest) (float64, error) {
 	const (
 		stabilize   = 1 * time.Second // time to wait for CPU to stabilize after launching proc.
@@ -67,7 +67,7 @@ func MeasureProcessCPU(ctx context.Context, duration time.Duration,
 					}
 				}
 				if err != nil {
-					testing.ContextLog(ctx, "Failed waiting for the command to exit: ", err)
+					s.Fatal("Failed waiting for the command to exit: ", err)
 				}
 			}
 		}()
