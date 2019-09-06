@@ -93,6 +93,30 @@
       "revId": "1836d75ed6460084454dcb408eeec05a0fa3729f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "128886c4_5be216e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-09-06T00:00:23Z",
+      "side": 1,
+      "message": "Thanks for offline discsussion :)",
+      "parentUuid": "7a4a2b99_0e3facae",
+      "range": {
+        "startLine": 213,
+        "startChar": 19,
+        "endLine": 214,
+        "endChar": 28
+      },
+      "revId": "1836d75ed6460084454dcb408eeec05a0fa3729f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
