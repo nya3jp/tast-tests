@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c99f374e_f404e7f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-06T07:32:06Z",
+      "side": 1,
+      "message": "I think we don\u0027t need to check the time of metadata here. What\u0027s useful might be checking whether it\u0027s a valid json.",
+      "revId": "ba17e9d86777818d43209e36ebbd24234276a59a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ff5e137_a263ac1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-06T07:32:06Z",
+      "side": 1,
+      "message": "patterns",
+      "range": {
+        "startLine": 676,
+        "startChar": 1,
+        "endLine": 676,
+        "endChar": 17
+      },
+      "revId": "ba17e9d86777818d43209e36ebbd24234276a59a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2e5904e_79b3b7f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-06T07:32:06Z",
+      "side": 1,
+      "message": "info",
+      "range": {
+        "startLine": 677,
+        "startChar": 8,
+        "endLine": 677,
+        "endChar": 16
+      },
+      "revId": "ba17e9d86777818d43209e36ebbd24234276a59a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8876b785_7d2cf20b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-06T07:32:06Z",
+      "side": 1,
+      "message": "This is technically wrong. You should escape this by QuoteMeta().",
+      "range": {
+        "startLine": 678,
+        "startChar": 27,
+        "endLine": 678,
+        "endChar": 79
+      },
+      "revId": "ba17e9d86777818d43209e36ebbd24234276a59a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09a07505_b0333119",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-06T07:32:06Z",
+      "side": 1,
+      "message": "pattern",
+      "range": {
+        "startLine": 678,
+        "startChar": 2,
+        "endLine": 678,
+        "endChar": 17
+      },
+      "revId": "ba17e9d86777818d43209e36ebbd24234276a59a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "705b32ec_b89ff0ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-06T07:32:06Z",
+      "side": 1,
+      "message": "unused",
+      "range": {
+        "startLine": 61,
+        "startChar": 26,
+        "endLine": 61,
+        "endChar": 34
+      },
+      "revId": "ba17e9d86777818d43209e36ebbd24234276a59a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee69500e_7699b790",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-06T07:32:06Z",
+      "side": 1,
+      "message": "Inline the two verify* functions here, and define the whole function outside of CCAUIExpert().",
+      "revId": "ba17e9d86777818d43209e36ebbd24234276a59a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
