@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "111b8c4d_5ac37db3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-06T01:45:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "204955e5_c902fc5e",
+      "range": {
+        "startLine": 12,
+        "startChar": 13,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "d5c610bde3c598ff2ee165e58db4361d9ae2e9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0007ca78_f2baaf7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-06T01:45:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e49f0f5_86d52fd5",
+      "range": {
+        "startLine": 12,
+        "startChar": 67,
+        "endLine": 12,
+        "endChar": 73
+      },
+      "revId": "d5c610bde3c598ff2ee165e58db4361d9ae2e9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e70ec17_80c05b8d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
         "patchSetId": 2
@@ -59,6 +107,24 @@
       "writtenOn": "2019-09-05T15:05:08Z",
       "side": 1,
       "message": "I think these numbers are duplicated between the apk and here. Do we have any way to consolidate them?",
+      "revId": "d5c610bde3c598ff2ee165e58db4361d9ae2e9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "011f0a59_5fb2e6c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-06T01:45:37Z",
+      "side": 1,
+      "message": "I agree with the issue, but I have no idea (and if we could do it, I think this means that we don\u0027t need to upload apk to the cloud storage?).\n\njust added a TODO comment.",
+      "parentUuid": "6e70ec17_80c05b8d",
       "revId": "d5c610bde3c598ff2ee165e58db4361d9ae2e9dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
