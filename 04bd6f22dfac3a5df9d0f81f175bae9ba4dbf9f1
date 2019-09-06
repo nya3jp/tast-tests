@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ec08256_f7af390e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-06T02:30:04Z",
+      "side": 1,
+      "message": "as you modified apk, could you run AccessibilityTree test? (maybe you need to update expected tree file.)",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 50
+      },
+      "revId": "04bd6f22dfac3a5df9d0f81f175bae9ba4dbf9f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
