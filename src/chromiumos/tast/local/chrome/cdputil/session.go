@@ -142,9 +142,41 @@ func (s *Session) DebugAddrPort() string {
 	return s.addr
 }
 
-// CreateTarget opens a new tab displaying the given url.
-func (s *Session) CreateTarget(ctx context.Context, url string) (target.ID, error) {
-	reply, err := s.client.Target.CreateTarget(ctx, &target.CreateTargetArgs{URL: url})
+// CreateTargetOption specifies opptional parameter.
+type CreateTargetOption interface {
+	update(args *target.CreateTargetArgs)
+}
+
+type targetBackgroundOption struct{}
+
+func (b targetBackgroundOption) update(args *target.CreateTargetArgs) {
+	args.SetBackground(true)
+}
+
+// WithBackground returns an option to create the target in background.
+func WithBackground() CreateTargetOption {
+	return targetBackgroundOption{}
+}
+
+type targetNewWindowOption struct{}
+
+func (b targetNewWindowOption) update(args *target.CreateTargetArgs) {
+	args.SetNewWindow(true)
+}
+
+// WithNewWindow returns an option to create the target in a new window.
+func WithNewWindow() CreateTargetOption {
+	return targetNewWindowOption{}
+}
+
+// CreateTarget opens a new tab displaying the given url. Additional options
+// customizes the target.
+func (s *Session) CreateTarget(ctx context.Context, url string, opts ...CreateTargetOption) (target.ID, error) {
+	args := target.NewCreateTargetArgs(url)
+	for _, opt := range opts {
+		opt.update(args)
+	}
+	reply, err := s.client.Target.CreateTarget(ctx, args)
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to create a target of %s", url)
 	}
