@@ -45,6 +45,8 @@ func waitForElementChecked(ctx context.Context, chromeVoxConn *chrome.Conn, clas
 			chrome.automation.getFocus((node) => {
 				if (node.className === '%s') {
 					resolve(node.checked);
+				} else {
+					reject();
 				}
 			});
 		})`, className)
