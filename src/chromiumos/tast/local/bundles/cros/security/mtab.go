@@ -132,6 +132,7 @@ func Mtab(ctx context.Context, s *testing.State) {
 	if moblab.IsMoblab() {
 		expMounts["/mnt/moblab"] = mountSpec{nil, "ext4", "rw"}
 		expMounts["/mnt/moblab-settings"] = mountSpec{nil, "ext4", "rw,nosuid"}
+		expMounts["/mnt/moblab/containers/docker"] = mountSpec{nil, "ext4", "rw"}
 	}
 
 	// Regular expression matching mounts under /run/daemon-store, and corresponding spec.
@@ -148,6 +149,10 @@ func Mtab(ctx context.Context, s *testing.State) {
 		// imageloader creates mount point at /run/imageloader/{id}/{package}.
 		"/run/imageloader/[^/]+/[^/]+",
 	}
+	if moblab.IsMoblab() {
+		ignoredLiveMountPatterns = append(ignoredLiveMountPatterns, "^/mnt/moblab/containers/docker/.*")
+	}
+
 	ignoredLiveMountsRegexp := regexp.MustCompile(fmt.Sprintf("^(%s)$", strings.Join(ignoredLiveMountPatterns, "|")))
 
 	// Filesystem types that are skipped.
