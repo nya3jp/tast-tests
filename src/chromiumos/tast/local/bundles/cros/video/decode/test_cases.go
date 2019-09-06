@@ -82,18 +82,3 @@ var DecodeAccelSanityVP93 = TestVideoData{
 	MinFPSNoRender:   0,
 	Profile:          videotype.VP9Prof,
 }
-
-// DecodeAccelSanityVP90CtsShowExistingFrame is the test parameters of
-// video_decode_accelerator_unittest for "vda_sanity-vp90_2_17_show_existing_frame.vp9".
-// It is from Android CTS:
-// https://android.googlesource.com/platform/cts/+/master/tests/tests/media/res/raw/vp90_2_17_show_existing_frame.vp9
-// which causes elm kernel crash (crbug.com/900467).
-var DecodeAccelSanityVP90CtsShowExistingFrame = TestVideoData{
-	Name:             "vda_sanity-vp90_2_17_show_existing_frame.vp9",
-	Size:             videotype.NewSize(352, 288),
-	NumFrames:        30,
-	NumFragments:     30,
-	MinFPSWithRender: 0,
-	MinFPSNoRender:   0,
-	Profile:          videotype.VP9Prof,
-}
