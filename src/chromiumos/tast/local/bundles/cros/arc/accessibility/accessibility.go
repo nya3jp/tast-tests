@@ -29,6 +29,7 @@ const (
 	checkBoxID        = "org.chromium.arc.testapp.accessibilitytest:id/checkBox"
 	seekBarID         = "org.chromium.arc.testapp.accessibilitytest:id/seekBar"
 	seekBarDiscreteID = "org.chromium.arc.testapp.accessibilitytest:id/seekBarDiscrete"
+	webViewID = "org.chromium.arc.testapp.accessibilitytest:id/webView"
 
 	extURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/cvox2/background/background.html"
 )
