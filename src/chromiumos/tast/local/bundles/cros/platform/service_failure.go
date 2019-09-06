@@ -20,8 +20,9 @@ import (
 )
 
 type failureParams struct {
-	envVar     string
-	logMessage string
+	envVar        string
+	logMessage    string
+	servicePrefix string
 }
 
 func init() {
@@ -34,20 +35,44 @@ func init() {
 		Params: []testing.Param{{
 			Name: "pre_start",
 			Val: failureParams{
-				envVar:     "PRE_START_EXIT",
-				logMessage: "pre-start process",
+				envVar:        "PRE_START_EXIT",
+				logMessage:    "pre-start process",
+				servicePrefix: "",
 			},
 		}, {
 			Name: "main",
 			Val: failureParams{
-				envVar:     "MAIN_EXIT",
-				logMessage: "main process",
+				envVar:        "MAIN_EXIT",
+				logMessage:    "main process",
+				servicePrefix: "",
 			},
 		}, {
 			Name: "post_start",
 			Val: failureParams{
-				envVar:     "POST_START_EXIT",
-				logMessage: "post-start process",
+				envVar:        "POST_START_EXIT",
+				logMessage:    "post-start process",
+				servicePrefix: "",
+			},
+		}, {
+			Name: "arc_pre_start",
+			Val: failureParams{
+				envVar:        "PRE_START_EXIT",
+				logMessage:    "pre-start process",
+				servicePrefix: "arc-",
+			},
+		}, {
+			Name: "arc_main",
+			Val: failureParams{
+				envVar:        "MAIN_EXIT",
+				logMessage:    "main process",
+				servicePrefix: "arc-",
+			},
+		}, {
+			Name: "arc_post_start",
+			Val: failureParams{
+				envVar:        "POST_START_EXIT",
+				logMessage:    "post-start process",
+				servicePrefix: "arc-",
 			},
 		}},
 	})
@@ -55,9 +80,10 @@ func init() {
 
 func ServiceFailure(ctx context.Context, s *testing.State) {
 	const systemCrashDir = "/var/spool/crash"
-	const failingServiceName = "failing-service"
 
 	params := s.Param().(failureParams)
+
+	failingServiceName := params.servicePrefix + "failing-service"
 
 	if err := localCrash.SetUpCrashTest(); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
@@ -86,8 +112,8 @@ func ServiceFailure(ctx context.Context, s *testing.State) {
 
 	expectedLogMsg := fmt.Sprintf("%s %s", failingServiceName, params.logMessage)
 
-	expectedRegexes := []string{`service_failure_failing_service\.\d{8}\.\d{6}\.0\.log`,
-		`service_failure_failing_service\.\d{8}\.\d{6}\.0\.meta`}
+	base := strings.Replace(params.servicePrefix+"service_failure_"+failingServiceName, "-", "_", -1)
+	expectedRegexes := []string{base + `\.\d{8}\.\d{6}\.0\.log`, base + `\.\d{8}\.\d{6}\.0\.meta`}
 
 	files, err := localCrash.WaitForCrashFiles(ctx, localCrash.SystemCrashDir, oldFiles, expectedRegexes)
 	if err != nil {
