@@ -167,6 +167,53 @@
     },
     {
       "key": {
+        "uuid": "dd38ca62_aff96416",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-09-06T17:14:41Z",
+      "side": 1,
+      "message": "We have this problem with every test that restarts Shill, as well as a variety of other sorts of operations (e.g., static IP tests). That\u0027s one reason I filed https://crbug.com/991699, but I don\u0027t feel like anyone really answered to that part of my questions.\n\nI would definitely *like* to avoid restarting Shill so much for these tests, but when that limits our ability to actually test things, I figured we have to just do our best.",
+      "parentUuid": "dfc489d7_b82a38fe",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 61
+      },
+      "revId": "7d7cbbf8b05450d6451e2d54d0ff3a7595f87685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3055846a_d94a3089",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-09-06T17:14:41Z",
+      "side": 1,
+      "message": "not checking errors? but then, that\u0027s the same problem oka@ never finished resolving:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1776524\n\nand led to the TODO in network.DefaultProfileServices. We could at least use the same approach (check os.NotExist()).",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 20
+      },
+      "revId": "7d7cbbf8b05450d6451e2d54d0ff3a7595f87685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c16580d2_83666535",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
         "patchSetId": 1
@@ -211,6 +258,29 @@
       "revId": "7d7cbbf8b05450d6451e2d54d0ff3a7595f87685",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "210ee8b3_163834bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-09-06T17:14:41Z",
+      "side": 1,
+      "message": "I think we have shill package definitions for this now. Oh, but\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1772825\ndidn\u0027t land yet. I guess let\u0027s submit that.",
+      "range": {
+        "startLine": 82,
+        "startChar": 78,
+        "endLine": 82,
+        "endChar": 82
+      },
+      "revId": "7d7cbbf8b05450d6451e2d54d0ff3a7595f87685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
