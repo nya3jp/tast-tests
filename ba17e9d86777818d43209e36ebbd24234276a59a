@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bf76f0fe_c8eeb254",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1356044
+      },
+      "writtenOn": "2019-09-06T08:49:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c99f374e_f404e7f0",
+      "revId": "ba17e9d86777818d43209e36ebbd24234276a59a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ff5e137_a263ac1e",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 10
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "e4dbfc90_f00b8304",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1356044
+      },
+      "writtenOn": "2019-09-06T08:49:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ff5e137_a263ac1e",
+      "range": {
+        "startLine": 676,
+        "startChar": 1,
+        "endLine": 676,
+        "endChar": 17
+      },
+      "revId": "ba17e9d86777818d43209e36ebbd24234276a59a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2e5904e_79b3b7f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 10
@@ -62,6 +104,30 @@
       "revId": "ba17e9d86777818d43209e36ebbd24234276a59a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b8b713d_aa98f035",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1356044
+      },
+      "writtenOn": "2019-09-06T08:49:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2e5904e_79b3b7f9",
+      "range": {
+        "startLine": 677,
+        "startChar": 8,
+        "endLine": 677,
+        "endChar": 16
+      },
+      "revId": "ba17e9d86777818d43209e36ebbd24234276a59a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +177,54 @@
     },
     {
       "key": {
+        "uuid": "cfad89e1_3dd3406b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1356044
+      },
+      "writtenOn": "2019-09-06T08:49:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8876b785_7d2cf20b",
+      "range": {
+        "startLine": 678,
+        "startChar": 27,
+        "endLine": 678,
+        "endChar": 79
+      },
+      "revId": "ba17e9d86777818d43209e36ebbd24234276a59a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5c30556_1ae7ceb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1356044
+      },
+      "writtenOn": "2019-09-06T08:49:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09a07505_b0333119",
+      "range": {
+        "startLine": 678,
+        "startChar": 2,
+        "endLine": 678,
+        "endChar": 17
+      },
+      "revId": "ba17e9d86777818d43209e36ebbd24234276a59a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "705b32ec_b89ff0ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
         "patchSetId": 10
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "22553f92_3a1b6d26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1356044
+      },
+      "writtenOn": "2019-09-06T08:49:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "705b32ec_b89ff0ab",
+      "range": {
+        "startLine": 61,
+        "startChar": 26,
+        "endLine": 61,
+        "endChar": 34
+      },
+      "revId": "ba17e9d86777818d43209e36ebbd24234276a59a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee69500e_7699b790",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
         "patchSetId": 10
@@ -148,6 +286,24 @@
       "revId": "ba17e9d86777818d43209e36ebbd24234276a59a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8cbc334_c97267be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1356044
+      },
+      "writtenOn": "2019-09-06T08:49:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee69500e_7699b790",
+      "revId": "ba17e9d86777818d43209e36ebbd24234276a59a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -174,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "a6a28af1_ae8c6722",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1356044
+      },
+      "writtenOn": "2019-09-06T08:49:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d73e0b4_f52a378e",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 8
+      },
+      "revId": "ba17e9d86777818d43209e36ebbd24234276a59a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e42888b7_07a13549",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
         "patchSetId": 10
@@ -185,6 +365,24 @@
       "writtenOn": "2019-09-06T07:40:30Z",
       "side": 1,
       "message": "I think the enabled\u003dtrue case is already covered when waiting, and the enabled\u003dfalse case will always passing given the current waiting logic. So this function seems to be useless?",
+      "revId": "ba17e9d86777818d43209e36ebbd24234276a59a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76bfd34f_877035c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_expert.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1356044
+      },
+      "writtenOn": "2019-09-06T08:49:37Z",
+      "side": 1,
+      "message": "I think if enabled\u003dfalse but metadata files are saved, then this function will return false.",
+      "parentUuid": "e42888b7_07a13549",
       "revId": "ba17e9d86777818d43209e36ebbd24234276a59a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
