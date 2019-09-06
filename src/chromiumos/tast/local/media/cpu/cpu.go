@@ -35,7 +35,7 @@ const (
 // MeasureProcessCPU starts one or more gtest processes and measures CPU usage for the given duration.
 // The average usage over all CPU cores is returned as a percentage.
 func MeasureProcessCPU(ctx context.Context, duration time.Duration,
-	exitOption ExitOption, ts ...*gtest.GTest) (float64, error) {
+	exitOption ExitOption, ts ...*gtest.GTest) (cpuUsage float64, err error) {
 	const (
 		stabilize   = 1 * time.Second // time to wait for CPU to stabilize after launching proc.
 		cleanupTime = 5 * time.Second // time reserved for cleanup after measuring.
@@ -43,52 +43,52 @@ func MeasureProcessCPU(ctx context.Context, duration time.Duration,
 
 	for _, t := range ts {
 		// Start the process asynchronously by calling the provided startup function.
-		cmd, err := t.Start(ctx)
-		if err != nil {
-			return 0.0, errors.Wrap(err, "failed to run binary")
+		cmd, cmdErr := t.Start(ctx)
+		if cmdErr != nil {
+			return 0.0, errors.Wrap(cmdErr, "failed to run binary")
 		}
 
 		// Clean up the process upon exiting the function.
 		defer func() {
 			if exitOption == KillProcess {
-				if err := cmd.Kill(); err != nil {
-					testing.ContextLog(ctx, "Failed to kill process: ", err)
+				if cmdErr = cmd.Kill(); cmdErr != nil {
+					testing.ContextLog(ctx, "Failed to kill process: ", cmdErr)
 				}
 			}
 			// Wait for the process to finish. After killing the process we still need
 			// to wait for all resources to get released.
-			if err := cmd.Wait(); err != nil {
+			if cmdErr = cmd.Wait(); cmdErr != nil {
 				if exitOption == KillProcess {
-					ws, ok := testexec.GetWaitStatus(err)
+					ws, ok := testexec.GetWaitStatus(cmdErr)
 					if ok && ws.Signaled() && ws.Signal() == syscall.SIGKILL {
 						// In KillProcess case, it is expected the process is terminated by SIGKILL,
 						// so ignore the error in this case.
-						err = nil
+						cmdErr = nil
 					}
 				}
-				if err != nil {
-					testing.ContextLog(ctx, "Failed waiting for the command to exit: ", err)
+				if cmdErr != nil {
+					testing.ContextLog(ctx, "Failed waiting for the command to exit: ", cmdErr)
+					err = cmdErr
 				}
 			}
 		}()
-
 	}
 
 	// Use a shorter context to leave time for cleanup upon failure.
 	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
 	defer cancel()
 
-	if err := testing.Sleep(ctx, stabilize); err != nil {
+	if err = testing.Sleep(ctx, stabilize); err != nil {
 		return 0.0, errors.Wrap(err, "failed waiting for CPU usage to stabilize")
 	}
 
 	testing.ContextLog(ctx, "Measuring CPU usage for ", duration.Round(time.Second))
-	cpuUsage, err := MeasureUsage(ctx, duration)
+	cpuUsage, err = MeasureUsage(ctx, duration)
 	if err != nil {
 		return 0.0, errors.Wrap(err, "failed to measure CPU usage on running command")
 	}
 
-	return cpuUsage, nil
+	return cpuUsage, err
 }
 
 // SetUpBenchmark performs setup needed for running benchmarks. It disables CPU frequency scaling
