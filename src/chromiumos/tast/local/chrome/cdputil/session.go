@@ -140,9 +140,31 @@ func (s *Session) DebugAddrPort() string {
 	return s.addr
 }
 
-// CreateTarget opens a new tab displaying the given url.
-func (s *Session) CreateTarget(ctx context.Context, url string) (target.ID, error) {
-	reply, err := s.client.Target.CreateTarget(ctx, &target.CreateTargetArgs{URL: url})
+// CreateTargetOption specifies opptional parameter.
+type CreateTargetOption func(args *target.CreateTargetArgs)
+
+// WithBackground returns an option to create the target in background.
+func WithBackground() CreateTargetOption {
+	return func(args *target.CreateTargetArgs) {
+		args.SetBackground(true)
+	}
+}
+
+// WithNewWindow returns an option to create the target in a new window.
+func WithNewWindow() CreateTargetOption {
+	return func(args *target.CreateTargetArgs) {
+		args.SetNewWindow(true)
+	}
+}
+
+// CreateTarget opens a new tab displaying the given url. Additional options
+// customizes the target.
+func (s *Session) CreateTarget(ctx context.Context, url string, opts ...CreateTargetOption) (target.ID, error) {
+	args := target.NewCreateTargetArgs(url)
+	for _, opt := range opts {
+		opt(args)
+	}
+	reply, err := s.client.Target.CreateTarget(ctx, args)
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to create a target of %s", url)
 	}
