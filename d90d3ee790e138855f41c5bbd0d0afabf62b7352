@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53c0f621_cb664ed1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-06T05:34:37Z",
+      "side": 1,
+      "message": "IIUC tablet mode support and touch screen are different concept (e.g. a device may have touch screen but does not support tablet mode). I\u0027m afraid declaring tablet_mode here might decrease the test coverage...\n\nWhat do you think about avoiding to declare tablet_mode and just calling ash.SetTabletModeEnabled(false) unconditionally?",
+      "range": {
+        "startLine": 24,
+        "startChar": 49,
+        "endLine": 24,
+        "endChar": 60
+      },
+      "revId": "d90d3ee790e138855f41c5bbd0d0afabf62b7352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
