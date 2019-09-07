@@ -5,6 +5,7 @@
 import("//common-mk/pkg_config.gni")
 
 executable("graphics.GBM.gbmtest") {
+  ldflags = [ "-fuse-ld=gold" ]
   pkg_deps = [
     "gbm",
     "libdrm",
