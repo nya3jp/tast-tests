@@ -28,6 +28,15 @@ func init() {
 			"jorgelo@chromium.org", // Security team
 			"chromeos-security@google.com",
 		},
+		Params: []testing.Param{{
+			Name: "dynamic",
+			Val:  true,
+		}, {
+			Name: "static",
+			Val:  false,
+			// Sanitizer builds do not support static linking
+			ExtraSoftwareDeps: []string{"no_asan", "no_msan", "no_ubsan"},
+		}},
 	})
 }
 
@@ -175,6 +184,7 @@ func Minijail(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	isDynamicallyLinked := s.Param().(bool)
 	chrootArgs := []string{"-C", "%T/c"}
 	pivotrootArgs := []string{"-P", "%T/c"}
 	usernsArgs := []string{"-m0 1000 1", "-M0 1000 1"}
@@ -374,7 +384,10 @@ func Minijail(ctx context.Context, s *testing.State) {
 			check: checkRegexp("^0\n0\n$"),
 		},
 	} {
-		runTestCase(&tc, false) // non-static
-		runTestCase(&tc, true)  // static
+		if isDynamicallyLinked {
+			runTestCase(&tc, false) // dynamic
+		} else {
+			runTestCase(&tc, true) // static
+		}
 	}
 }
