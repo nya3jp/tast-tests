@@ -20,6 +20,13 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type linkMode int
+
+const (
+	staticLink linkMode = iota
+	dynamicLink
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: Minijail,
@@ -28,6 +35,15 @@ func init() {
 			"jorgelo@chromium.org", // Security team
 			"chromeos-security@google.com",
 		},
+		Params: []testing.Param{{
+			Name: "dynamic",
+			Val:  dynamicLink,
+		}, {
+			Name: "static",
+			Val:  staticLink,
+			// Sanitizer builds do not support static linking
+			ExtraSoftwareDeps: []string{"no_asan", "no_msan", "no_ubsan"},
+		}},
 	})
 }
 
@@ -65,7 +81,7 @@ func Minijail(ctx context.Context, s *testing.State) {
 		check  checkFunc // optional function to run after test
 	}
 
-	runTestCase := func(tc *testCase, static bool) {
+	runTestCase := func(tc *testCase, lm linkMode) {
 		// Construct a human-readable test name.
 		name := tc.name
 		if static {
@@ -97,7 +113,7 @@ func Minijail(ctx context.Context, s *testing.State) {
 		}
 
 		shell := bashPath
-		if static {
+		if lm == staticLink {
 			shell = staticBashPath
 		}
 
@@ -374,7 +390,6 @@ func Minijail(ctx context.Context, s *testing.State) {
 			check: checkRegexp("^0\n0\n$"),
 		},
 	} {
-		runTestCase(&tc, false) // non-static
-		runTestCase(&tc, true)  // static
+		runTestCase(&tc, s.Param().(linkMode))
 	}
 }
