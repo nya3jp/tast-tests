@@ -21,6 +21,12 @@ import (
 )
 
 func init() {
+	type linkMode int
+
+	const (
+		static linkMode = iota
+		dynamic
+	)
 	testing.AddTest(&testing.Test{
 		Func: Minijail,
 		Desc: "Verifies minijail0's basic functionality",
@@ -28,6 +34,15 @@ func init() {
 			"jorgelo@chromium.org", // Security team
 			"chromeos-security@google.com",
 		},
+		Params: []testing.Param{{
+			Name: "dynamic",
+			Val:  dynamic,
+		}, {
+			Name: "static",
+			Val:  static,
+			// Sanitizer builds do not support static linking
+			ExtraSoftwareDeps: []string{"no_asan", "no_msan", "no_ubsan"},
+		}},
 	})
 }
 
@@ -374,7 +389,6 @@ func Minijail(ctx context.Context, s *testing.State) {
 			check: checkRegexp("^0\n0\n$"),
 		},
 	} {
-		runTestCase(&tc, false) // non-static
-		runTestCase(&tc, true)  // static
+		runTestCase(&tc, s.Param().(int) == 0)
 	}
 }
