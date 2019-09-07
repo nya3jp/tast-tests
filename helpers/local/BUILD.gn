@@ -100,7 +100,6 @@ group("all") {
   deps = [
     ":graphics.GBM.gbmtest",
     ":kernel.PerfCallgraph.graph",
-    ":security.Minijail.staticbashexec",
     ":security.MinijailSeccomp.fail",
     ":security.MinijailSeccomp.ok",
     ":security.MinijailSeccomp.open",
@@ -112,4 +111,7 @@ group("all") {
     ":security.AltSyscall.mmap",
     ":security.AltSyscall.read",
   ]
+  if (!(use.asan || use.msan)) {
+    deps += [":security.Minijail.staticbashexec"]
+  }
 }
