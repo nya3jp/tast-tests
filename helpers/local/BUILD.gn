@@ -59,7 +59,9 @@ executable("security.AltSyscall.read") {
 
 
 executable("security.Minijail.staticbashexec") {
-  ldflags = [ "-static" ]
+  if (!(use.asan || use.msan)) {
+    ldflags = [ "-static" ]
+  }
   sources = [
     "security.Minijail.staticbashexec.c",
   ]
