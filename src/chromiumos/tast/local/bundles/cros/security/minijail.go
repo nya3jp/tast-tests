@@ -28,6 +28,7 @@ func init() {
 			"jorgelo@chromium.org", // Security team
 			"chromeos-security@google.com",
 		},
+		SoftwareDeps: []string{"no_asan", "no_msan", "no_ubsan"},
 	})
 }
 
