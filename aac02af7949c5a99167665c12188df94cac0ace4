@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a6563f7_723b995f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-08T17:32:15Z",
+      "side": 1,
+      "message": "Note: this is an edge case for critical promotion policy, IMHO.\nThough, technically, this can be safely promoted, unlike simpler \"fixed\" bug case. WDYT?",
+      "revId": "aac02af7949c5a99167665c12188df94cac0ace4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
