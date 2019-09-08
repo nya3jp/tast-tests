@@ -11,7 +11,12 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+
+	"chromiumos/tast/errors"
 )
+
+// TestExtensionID is an extension ID for the test extension.
+const TestExtensionID = "behllobkkfkfnphdnhnkndlbkcpglgmj"
 
 // readKeyFromExtensionManifest returns the decoded public key from an
 // extension manifest located at path. An error is returned if the manifest
@@ -130,5 +135,12 @@ tast.promisify = function(f) {
 			return "", err
 		}
 	}
-	return ComputeExtensionID(dir)
+	id, err = ComputeExtensionID(dir)
+	if err != nil {
+		return "", err
+	}
+	if id != TestExtensionID {
+		return "", errors.Errorf("unexpected extension ID: got %q; want %q", id, TestExtensionID)
+	}
+	return id, nil
 }
