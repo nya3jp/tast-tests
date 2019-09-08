@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/testexec"
 )
 
@@ -21,8 +22,7 @@ import (
 // path. It will use the CLI screenshot command to perform the screen capture.
 func Capture(ctx context.Context, path string) error {
 	cmd := testexec.CommandContext(ctx, "screenshot", "--internal", path)
-	if err := cmd.Run(); err != nil {
-		cmd.DumpLog(ctx)
+	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 		return errors.Errorf("failed running %q", strings.Join(cmd.Args, " "))
 	}
 	return nil
@@ -35,8 +35,26 @@ func CaptureChrome(ctx context.Context, cr *chrome.Chrome, path string) error {
 	if err != nil {
 		return err
 	}
+	return captureInternal(ctx, path, func(code string, out interface{}) error {
+		return tconn.EvalPromise(ctx, code, out)
+	})
+}
+
+// CaptureCDP takes a screenshot and saves it as a PNG image at path, similar to
+// CaptureChrome.
+// The diff from CaptureChrome is that this function takes *cdputil.Conn, which
+// is used by chrome.Conn. Thus, CaptureChrome records logs in case of error,
+// while this does not.
+func CaptureCDP(ctx context.Context, conn *cdputil.Conn, path string) error {
+	return captureInternal(ctx, path, func(code string, out interface{}) error {
+		_, _, err := conn.Eval(ctx, code, true /* awaitPromise */, out)
+		return err
+	})
+}
+
+func captureInternal(ctx context.Context, path string, eval func(code string, out interface{}) error) error {
 	var base64PNG string
-	if err = tconn.EvalPromise(ctx,
+	if err := eval(
 		`new Promise(function(resolve, reject) {
 		   chrome.autotestPrivate.takeScreenshot(function(base64PNG) {
 		     if (chrome.runtime.lastError === undefined) {
@@ -48,6 +66,7 @@ func CaptureChrome(ctx context.Context, cr *chrome.Chrome, path string) error {
 		 })`, &base64PNG); err != nil {
 		return err
 	}
+
 	f, err := os.Create(path)
 	if err != nil {
 		return err
