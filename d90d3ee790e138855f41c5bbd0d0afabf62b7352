@@ -22,6 +22,30 @@
       "revId": "d90d3ee790e138855f41c5bbd0d0afabf62b7352",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cbaa624_eca8591f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-08T23:58:34Z",
+      "side": 1,
+      "message": "I\u0027m sorry I found that this test does not require touch screen support. (I confused with another test that I\u0027m working on.)\nI deleted declaring \u0027tablet_mode\u0027.\n\nBTW, example/touch.go and arc/resize_activity.go also declare \u0027tablet_mode\u0027 and the comment on each source code says that it is for ensuring touch screen support.",
+      "parentUuid": "53c0f621_cb664ed1",
+      "range": {
+        "startLine": 24,
+        "startChar": 49,
+        "endLine": 24,
+        "endChar": 60
+      },
+      "revId": "d90d3ee790e138855f41c5bbd0d0afabf62b7352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
