@@ -24,7 +24,7 @@ func init() {
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeJPEG},
-		Data:         []string{"bali_640x360_P420.yuv"},
+		Data:         []string{"bali_640x368_P420.yuv"},
 	})
 }
 
@@ -44,7 +44,7 @@ func EncodeAccelJPEG(ctx context.Context, s *testing.State) {
 		gtest.Logfile(filepath.Join(s.OutDir(), "gtest.log")),
 		gtest.ExtraArgs(
 			logging.ChromeVmoduleFlag(),
-			fmt.Sprintf("--yuv_filenames=%s:640x360", s.DataPath("bali_640x360_P420.yuv"))),
+			fmt.Sprintf("--yuv_filenames=%s:640x368", s.DataPath("bali_640x368_P420.yuv"))),
 		gtest.UID(int(sysutil.ChronosUID)),
 	).Run(ctx); err != nil {
 		s.Errorf("Failed to run %v: %v", exec, err)
