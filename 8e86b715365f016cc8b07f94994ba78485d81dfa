@@ -22,6 +22,30 @@
       "revId": "8e86b715365f016cc8b07f94994ba78485d81dfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5337c7e1_3263219a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/midis.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-09T10:21:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5497494_d9eec76f",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 17
+      },
+      "revId": "8e86b715365f016cc8b07f94994ba78485d81dfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
