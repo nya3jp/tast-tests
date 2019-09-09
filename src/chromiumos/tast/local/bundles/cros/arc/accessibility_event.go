@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"fmt"
 	"reflect"
 	"time"
 
@@ -40,23 +39,11 @@ func init() {
 
 // waitForElementChecked polls until UI element has been checked, otherwise returns error after 30 seconds.
 func waitForElementChecked(ctx context.Context, chromeVoxConn *chrome.Conn, className string) error {
-	script := fmt.Sprintf(
-		`new Promise((resolve, reject) => {
-			chrome.automation.getFocus((node) => {
-				if (node.className === '%s') {
-					resolve(node.checked);
-				} else {
-					reject();
-				}
-			});
-		})`, className)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var checked string
-		if err := chromeVoxConn.EvalPromise(ctx, script, &checked); err != nil {
+		if node, err := accessibility.GetFocusedNode(ctx, chromeVoxConn); err != nil {
 			return err
-		}
-		if checked == "false" {
-			return errors.Errorf("%s is unchecked", className)
+		} else if node.Checked == "false" {
+			return errors.Errorf("%q has focus, instead of %q", node.ClassName, className)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
@@ -67,15 +54,15 @@ func waitForElementChecked(ctx context.Context, chromeVoxConn *chrome.Conn, clas
 
 // waitForValueFocused polls until specified UI element with specified value (expectedValue) has focus.
 // Returns error after 30 seconds.
-func waitForValueFocused(ctx context.Context, chromeVoxConn *chrome.Conn, className string, expectedValue int) error {
+func waitForValueFocused(ctx context.Context, chromeVoxConn *chrome.Conn, node accessibility.AutomationNode) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var gotValue int
-		gotValue, err := getValueForFocusedElement(ctx, chromeVoxConn, className)
+		gotValue, err := getValueForFocusedElement(ctx, chromeVoxConn, node.ClassName)
 		if err != nil {
 			return err
 		}
-		if gotValue != expectedValue {
-			return errors.Errorf("%q does not have expected value; got %d, want %d", className, gotValue, expectedValue)
+		if gotValue != node.ValueForRange {
+			return errors.Errorf("%q does not have expected value; got %d, want %d", node.ClassName, gotValue, node.ValueForRange)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
@@ -86,21 +73,14 @@ func waitForValueFocused(ctx context.Context, chromeVoxConn *chrome.Conn, classN
 
 // getValueForFocusedElement returns the value of the currently focused element.
 func getValueForFocusedElement(ctx context.Context, chromeVoxConn *chrome.Conn, elementClass string) (int, error) {
-	var currentValue int
-	script := fmt.Sprintf(`
-		new Promise((resolve, reject) => {
-			chrome.automation.getFocus((node) => {
-				if (node.className === %q) {
-					resolve(node.valueForRange);
-				} else {
-					reject();
-				}
-			});
-		})`, elementClass)
-	if err := chromeVoxConn.EvalPromise(ctx, script, &currentValue); err != nil {
+	node, err := accessibility.GetFocusedNode(ctx, chromeVoxConn)
+	if err != nil {
 		return 0, errors.Wrapf(err, "could not get value of focused element %q", elementClass)
+
+	} else if node.ClassName != elementClass {
+		return 0, errors.Errorf("%q has focus instead of %q", node.ClassName, elementClass)
 	}
-	return currentValue, nil
+	return node.ValueForRange, nil
 }
 
 // verifyLogs gets the current ChromeVox log and checks that it matches with expected log.
@@ -120,7 +100,7 @@ func verifyLogs(ctx context.Context, chromeVoxConn *chrome.Conn, expectedLogs []
 // UI element (specified by elementClass, and is expected to be a seekBar).
 // ChromeVox will then interact with the seekBar, by incrementing its value using '='.
 // Returns an error indicating the success of both actions.
-func focusAndIncrementElement(ctx context.Context, chromeVoxConn *chrome.Conn, elementClass string, expectedLogs []eventLog, initialValue, expectedValue int) error {
+func focusAndIncrementElement(ctx context.Context, chromeVoxConn *chrome.Conn, node accessibility.AutomationNode, expectedLogs []eventLog, expectedValue int) error {
 	ew, err := input.Keyboard(ctx)
 	if err != nil {
 		return errors.Wrap(err, "error with creating EventWriter from keyboard")
@@ -138,7 +118,7 @@ func focusAndIncrementElement(ctx context.Context, chromeVoxConn *chrome.Conn, e
 	}
 
 	// Make sure that seekBar is focused with expected initial value.
-	if err := waitForValueFocused(ctx, chromeVoxConn, elementClass, initialValue); err != nil {
+	if err := waitForValueFocused(ctx, chromeVoxConn, node); err != nil {
 		return errors.Wrap(err, "timed out polling for element")
 	}
 
@@ -147,8 +127,13 @@ func focusAndIncrementElement(ctx context.Context, chromeVoxConn *chrome.Conn, e
 		return errors.Wrap(err, "Accel(=) returned error")
 	}
 
+	expectedNode := accessibility.AutomationNode{
+               ClassName: node.ClassName,
+               ValueForRange: expectedValue,
+	}
+
 	// Check that seekbar was incremented correctly.
-	if err := waitForValueFocused(ctx, chromeVoxConn, elementClass, expectedValue); err != nil {
+	if err := waitForValueFocused(ctx, chromeVoxConn, expectedNode); err != nil {
 		return errors.Wrap(err, "timed out polling for element incremented")
 	}
 	if err := verifyLogs(ctx, chromeVoxConn, expectedLogs); err != nil {
@@ -160,7 +145,7 @@ func focusAndIncrementElement(ctx context.Context, chromeVoxConn *chrome.Conn, e
 // focusAndCheckElement uses ChromeVox navigation (using Tab), to navigate to the next
 // UI element (specified by elementClass), and activates it (using Search + Space).
 // Returns an error indicating the success of both actions.
-func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, elementClass string, expectedLogs []eventLog) error {
+func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, node accessibility.AutomationNode, expectedLogs []eventLog) error {
 	ew, err := input.Keyboard(ctx)
 	if err != nil {
 		return errors.Wrap(err, "error with creating EventWriter from keyboard")
@@ -181,8 +166,13 @@ func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, eleme
 	}
 
 	// Wait for element to receive focus.
-	if err := accessibility.WaitForElementFocused(ctx, chromeVoxConn, elementClass); err != nil {
+	if err := accessibility.WaitForFocusedNode(ctx, chromeVoxConn, node); err != nil {
 		return errors.Wrap(err, "timed out polling for element")
+	}
+
+	// Check tooltip value.
+	if err := checkTooltipProperty(ctx, chromeVoxConn, node.Tooltip); err != nil {
+		return errors.Wrap(err, "property was not correct")
 	}
 
 	// Activate (check) the currently focused UI element.
@@ -195,13 +185,23 @@ func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, eleme
 	}
 
 	// Poll until the element has been checked.
-	if err := waitForElementChecked(ctx, chromeVoxConn, elementClass); err != nil {
+	if err := waitForElementChecked(ctx, chromeVoxConn, node.ClassName); err != nil {
 		return errors.Wrap(err, "failed to check toggled state")
 	}
 
 	// Determine if output matches expected value, and write to file if it does not match.
 	if err := verifyLogs(ctx, chromeVoxConn, expectedLogs); err != nil {
 		return err
+	}
+	return nil
+}
+
+// checkTooltipProperty checks that the tooltip value on the focused node.
+func checkTooltipProperty(ctx context.Context, chromeVoxConn *chrome.Conn, wantTooltip string) error {
+	if node, err := accessibility.GetFocusedNode(ctx, chromeVoxConn); err != nil {
+		return err
+	} else if node.Tooltip != wantTooltip {
+		return errors.Errorf("%q does not have expected tooltip; got %q, want %q", node.ClassName, node.Tooltip, wantTooltip)
 	}
 	return nil
 }
@@ -281,7 +281,13 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		expectedEventLog("focus", "OFF"),
 		expectedEventLog("checkedStateChanged", "ON"),
 	}
-	if err := focusAndCheckElement(ctx, chromeVoxConn, toggleButton, toggleButtonLogs); err != nil {
+
+	toggleButtonNode := accessibility.AutomationNode{
+		ClassName: toggleButton,
+		Tooltip:   "button tooltip",
+		Checked: "false",
+	}
+	if err := focusAndCheckElement(ctx, chromeVoxConn, toggleButtonNode, toggleButtonLogs); err != nil {
 		s.Fatal("Failed focusing toggle button: ", err)
 	}
 
@@ -290,7 +296,12 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		expectedEventLog("focus", "CheckBox"),
 		expectedEventLog("checkedStateChanged", "CheckBox"),
 	}
-	if err := focusAndCheckElement(ctx, chromeVoxConn, checkBox, checkBoxLogs); err != nil {
+	checkBoxNode := accessibility.AutomationNode{
+		ClassName: checkBox,
+		Tooltip:   "checkbox tooltip",
+		Checked: "false",
+	}
+	if err := focusAndCheckElement(ctx, chromeVoxConn, checkBoxNode, checkBoxLogs); err != nil {
 		s.Fatal("Failed focusing checkbox: ", err)
 	}
 
@@ -299,16 +310,25 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		expectedEventLog("focus", "seekBar"),
 		expectedEventLog("valueChanged", "seekBar"),
 	}
-	if err := focusAndIncrementElement(ctx, chromeVoxConn, seekBar, seekBarLogs, seekBarInitialValue, seekBarExpectedValue); err != nil {
+	seekBarNode := accessibility.AutomationNode{
+               ClassName: seekBar,
+               ValueForRange: seekBarInitialValue,
+       }
+
+	if err := focusAndIncrementElement(ctx, chromeVoxConn, seekBarNode, seekBarLogs, seekBarExpectedValue); err != nil {
 		s.Fatal("Failed focusing seekBar: ", err)
 	}
 
 	// Focus to and increment seekBarDiscrete element.
+	seekBarDiscreteNode := accessibility.AutomationNode{
+               ClassName: seekBar,
+               ValueForRange: seekBarDiscreteInitialValue,
+       }
 	seekBarDiscreteLogs := []eventLog{
 		expectedEventLog("focus", "seekBarDiscrete"),
 		expectedEventLog("valueChanged", "seekBarDiscrete"),
 	}
-	if err := focusAndIncrementElement(ctx, chromeVoxConn, seekBar, seekBarDiscreteLogs, seekBarDiscreteInitialValue, seekBarDiscreteExpectedValue); err != nil {
+	if err := focusAndIncrementElement(ctx, chromeVoxConn, seekBarDiscreteNode, seekBarDiscreteLogs, seekBarDiscreteExpectedValue); err != nil {
 		s.Fatal("Failed focusing seekBarDiscrete: ", err)
 	}
 }
