@@ -97,8 +97,8 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.Path("encrypted/var/lib/gentoo"), users("root"), chk.NotMode(022), chk.SkipChildren()),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/imageloader"), users("imageloaderd"), groups("imageloaderd"), chk.NotMode(022)),
 		chk.NewPattern(chk.Path("encrypted/var/lib/metrics/uma-events"), users("metrics"), groups("metrics"), chk.Mode(0666)),
-		chk.NewPattern(chk.Path("encrypted/var/lib/metrics"), users("metrics"), groups("metrics"), chk.Mode(0755)),                     // directory itself
-		chk.NewPattern(chk.Tree("encrypted/var/lib/metrics"), users("metrics"), groups("metrics"), chk.Mode(0644), chk.SkipChildren()), // children
+		chk.NewPattern(chk.Path("encrypted/var/lib/metrics"), users("metrics"), groups("metrics"), chk.Mode(0755)),                                     // directory itself
+		chk.NewPattern(chk.Tree("encrypted/var/lib/metrics"), users("metrics", "root"), groups("metrics", "root"), chk.Mode(0644), chk.SkipChildren()), // children
 		chk.NewPattern(chk.Tree("encrypted/var/lib/ml_service"), users("ml-service"), groups("ml-service"), chk.NotMode(02)),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/modemfwd"), users("modem"), groups("modem"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/oobe_config_restore"), users("oobe_config_restore"), groups("oobe_config_restore"), chk.NotMode(022)),
