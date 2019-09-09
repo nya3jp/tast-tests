@@ -48,9 +48,6 @@ func init() {
 // Ideally the performance test should be moved to a separate binary.
 var jpegPerfTestFiles = []string{
 	"peach_pi-1280x720.jpg",
-	"peach_pi-40x23.jpg",
-	"peach_pi-41x22.jpg",
-	"peach_pi-41x23.jpg",
 	"pixel-1280x720.jpg",
 }
 
