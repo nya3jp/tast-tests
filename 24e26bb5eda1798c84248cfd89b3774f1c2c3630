@@ -16,6 +16,24 @@
       "revId": "24e26bb5eda1798c84248cfd89b3774f1c2c3630",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8924856a_34737fde",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-09T06:45:33Z",
+      "side": 1,
+      "message": "I am guessing some mysterious things is happening in finalizer. However, diving into the finalizer is complicated...\n\nAnyways, FD leak is a problem which needs to fix, and it resolves the crash issue. Please let me send this to CQ.",
+      "parentUuid": "b2eb7e67_8b845620",
+      "revId": "24e26bb5eda1798c84248cfd89b3774f1c2c3630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
