@@ -1,0 +1,457 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43ee6db9_c98cde36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-09T14:24:57Z",
+      "side": 1,
+      "message": "IIUC, Chrome must be the first element, because it is already launched (verified above).\nOtherwise, the check below (at L72) would fail.\n\nCould you explicitly clarify in the comment?",
+      "range": {
+        "startLine": 47,
+        "startChar": 27,
+        "endLine": 47,
+        "endChar": 38
+      },
+      "revId": "391dc813268a3ff1c70f07828d28b64bb4994208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b55f14a_5aa30c62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-09T14:24:57Z",
+      "side": 1,
+      "message": "nice to clarify what app.",
+      "range": {
+        "startLine": 49,
+        "startChar": 18,
+        "endLine": 49,
+        "endChar": 23
+      },
+      "revId": "391dc813268a3ff1c70f07828d28b64bb4994208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08a12023_141d4a2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-09T14:24:57Z",
+      "side": 1,
+      "message": "If failed to launch, the following test scenario does not make sense, IIUC.\nSo, here s.Fatalf().",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 11
+      },
+      "revId": "391dc813268a3ff1c70f07828d28b64bb4994208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af349a9e_4b359dae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-09T14:24:57Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 55,
+        "startChar": 3,
+        "endLine": 55,
+        "endChar": 11
+      },
+      "revId": "391dc813268a3ff1c70f07828d28b64bb4994208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c99f7d3_9edbbdb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-09T14:24:57Z",
+      "side": 1,
+      "message": "Could you check the number of elements between shelfItems and defaulApps to avoid out-of-range access?\n\nnit/style/optional:\n\nfor i, shelfItem :\u003d range shelfItems {\n  expect :\u003d defaultApps[i]\n  ...\n}\n\nnot to access array elements by index, in order to avoid mistakes.",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 28
+      },
+      "revId": "391dc813268a3ff1c70f07828d28b64bb4994208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cb5e861_cdb277b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-09T14:24:57Z",
+      "side": 1,
+      "message": "nit/style: Could you reorder to be aligned with the message below?\n\nif shelfItem.AppID !\u003d expect.ID {\n  ...\n}",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 45
+      },
+      "revId": "391dc813268a3ff1c70f07828d28b64bb4994208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5151afff_d10f474c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-09T14:24:57Z",
+      "side": 1,
+      "message": "Could you use \"got ...; want ...\" pattern which is used across various go tests?\n\n\"App IDs did not match: got %q; want %q\", ...",
+      "range": {
+        "startLine": 73,
+        "startChar": 13,
+        "endLine": 73,
+        "endChar": 57
+      },
+      "revId": "391dc813268a3ff1c70f07828d28b64bb4994208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32d6f90f_b7f7284b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-09T14:24:57Z",
+      "side": 1,
+      "message": "Same.",
+      "revId": "391dc813268a3ff1c70f07828d28b64bb4994208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b80ebadc_cc3eb553",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-09T14:24:57Z",
+      "side": 1,
+      "message": "Same.",
+      "revId": "391dc813268a3ff1c70f07828d28b64bb4994208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba24c359_0548544c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-09T14:24:57Z",
+      "side": 1,
+      "message": "If the test works as expected this check works, but if not, this looks a bit weird in precise, because defaultApps is accessed by shelfItems\u0027s index, while it is mismatched.\n\nFor better maintenance and stabilization, could you move this out from this loop,\nand check in another for-loop below?\n\nAlso, obtaining the icon can be done just before the new for-loop.",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 3
+      },
+      "revId": "391dc813268a3ff1c70f07828d28b64bb4994208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b76084f2_e7dc4e84",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-09T14:24:57Z",
+      "side": 1,
+      "message": "nit: in Go\u0027s naming rule, we often drop getter method prefixes, like \"Get\", \"Is\", \"Has\" etc.\nSo, ShelfItems() ?",
+      "range": {
+        "startLine": 141,
+        "startChar": 3,
+        "endLine": 141,
+        "endChar": 6
+      },
+      "revId": "391dc813268a3ff1c70f07828d28b64bb4994208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1df9bc85_f3e6c1ae",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-09T14:24:57Z",
+      "side": 1,
+      "message": "Ditto: AppShown() ?",
+      "range": {
+        "startLine": 151,
+        "startChar": 3,
+        "endLine": 151,
+        "endChar": 13
+      },
+      "revId": "391dc813268a3ff1c70f07828d28b64bb4994208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c03340e9_f3116314",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-09T14:24:57Z",
+      "side": 1,
+      "message": "nit: shelf. (it needs trailing period).\n\ncf) https://golang.org/doc/effective_go.html#commentary\n\n\u003d\u003d quote \u003d\u003d\nDoc comments work best as complete sentences, which allow a wide variety of automated presentations. The first sentence should be a one-sentence summary that starts with the name being declared.\n\u003d\u003d quote end \u003d\u003d\n\nHow about:\n\nAppShown checks if the app specified by appID is shown in the shelf.",
+      "range": {
+        "startLine": 151,
+        "startChar": 41,
+        "endLine": 151,
+        "endChar": 46
+      },
+      "revId": "391dc813268a3ff1c70f07828d28b64bb4994208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "009bfab3_3e3de85b",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-09T14:24:57Z",
+      "side": 1,
+      "message": "Can be simply WaitForApp()? Or, to distinguish launched app, and app icon in the shelf, WaitForAppIcon()?\n\nAs for comment, how about;\n\n// WaitForApp waits for the app specified by appID to be shown in the shelf.",
+      "range": {
+        "startLine": 163,
+        "startChar": 3,
+        "endLine": 163,
+        "endChar": 21
+      },
+      "revId": "391dc813268a3ff1c70f07828d28b64bb4994208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "486d8681_d0ca71ac",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-09T14:24:57Z",
+      "side": 1,
+      "message": "Could you call AppShown()?",
+      "range": {
+        "startLine": 167,
+        "startChar": 2,
+        "endLine": 175,
+        "endChar": 12
+      },
+      "revId": "391dc813268a3ff1c70f07828d28b64bb4994208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b2e674d_0bdbeb09",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-09T14:24:57Z",
+      "side": 1,
+      "message": "Is this really necessary? IIUC, the above readyState check ensures it. (It was recently changed cf) crbug.com/1000110).",
+      "range": {
+        "startLine": 742,
+        "startChar": 1,
+        "endLine": 745,
+        "endChar": 0
+      },
+      "revId": "391dc813268a3ff1c70f07828d28b64bb4994208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94cb2bd6_f5a4ea7b",
+        "filename": "src/chromiumos/tast/local/ui/apps/apps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-09T14:24:57Z",
+      "side": 1,
+      "message": "Could you add package doc?\n\nBTW, by moving values, this only contains LaunchApp. Do you have any plans to add more and more utilities here? If not, maybe you can move to other package, like ash or chrome ...? WDYT?",
+      "revId": "391dc813268a3ff1c70f07828d28b64bb4994208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f7d114c_f2239736",
+        "filename": "src/chromiumos/tast/local/ui/apps/apps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-09T14:24:57Z",
+      "side": 1,
+      "message": "Document needs to be complete sentences. cf) https://golang.org/doc/effective_go.html#commentary\n\n\u003d\u003d quote \u003d\u003d\nDoc comments work best as complete sentences, which allow a wide variety of automated presentations. The first sentence should be a one-sentence summary that starts with the name being declared.\n\u003d\u003d quote end \u003d\u003d\n\nYou\u0027d need to end with period. Ditto for below.",
+      "revId": "391dc813268a3ff1c70f07828d28b64bb4994208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc912931_d4b2319b",
+        "filename": "src/chromiumos/tast/local/ui/apps/apps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-09T14:24:57Z",
+      "side": 1,
+      "message": "Could you add document for public fields, too?",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 12
+      },
+      "revId": "391dc813268a3ff1c70f07828d28b64bb4994208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83280950_3d4d695d",
+        "filename": "src/chromiumos/tast/local/ui/apps/apps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-09T14:24:57Z",
+      "side": 1,
+      "message": "How about;\n\n// LaunchApp launches an app specified by appID.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 39
+      },
+      "revId": "391dc813268a3ff1c70f07828d28b64bb4994208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bd0556e_6b44c134",
+        "filename": "src/chromiumos/tast/local/ui/filesapp/filesapp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-09T14:24:57Z",
+      "side": 1,
+      "message": "Could you replace this by apps.Files.ID?",
+      "revId": "391dc813268a3ff1c70f07828d28b64bb4994208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
