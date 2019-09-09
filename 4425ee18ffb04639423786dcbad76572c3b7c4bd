@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f79ccf7f_8a36f3b3",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-09T13:50:31Z",
+      "side": 1,
+      "message": "to be consistent with below; \"Stop any packages that weren\u0027t ...\"?\n(TBH, I\u0027m not very sure if we should use singular form or plural form..., but I think they should be consistent in either way).",
+      "range": {
+        "startLine": 261,
+        "startChar": 13,
+        "endLine": 261,
+        "endChar": 32
+      },
+      "revId": "4425ee18ffb04639423786dcbad76572c3b7c4bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c3b1bd4_d0a93e89",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-09T13:50:31Z",
+      "side": 1,
+      "message": "\"pm\", \"uninstall\" (two string literals)?",
+      "range": {
+        "startLine": 278,
+        "startChar": 31,
+        "endLine": 278,
+        "endChar": 46
+      },
+      "revId": "4425ee18ffb04639423786dcbad76572c3b7c4bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
