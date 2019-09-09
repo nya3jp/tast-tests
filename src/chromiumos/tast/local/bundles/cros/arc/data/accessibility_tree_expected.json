@@ -5,6 +5,15 @@
     {
       "role": "genericContainer",
       "children": [
+	{
+	  "role": "genericContainer",
+	  "children": [
+	    {
+	      "name": "Hello world.",
+	      "role": "genericContainer"
+	    }
+	  ]
+	},
         {
           "name": "Accessibility Test App",
           "role": "staticText"
