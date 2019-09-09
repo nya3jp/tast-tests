@@ -20,7 +20,7 @@ func init() {
 		Func:         OverviewPerf,
 		Desc:         "Measures animation smoothness of entering/exiting the overview mode",
 		Contacts:     []string{"mukai@chromium.org", "oshima@chromium.org", "chromeos-wmp@google.com"},
-		Attr:         []string{"disabled", "group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      time.Minute,
 	})
