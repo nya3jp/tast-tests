@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "365eaf67_d13992e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_launched_apps.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-09T23:22:04Z",
+      "side": 1,
+      "message": "make sure selfItem and defaultApps are the same length first, or you\u0027ll get an error here",
+      "revId": "0c73abd9daa577146371916b93448725f2d0f5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
