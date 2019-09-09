@@ -46,6 +46,30 @@
       "revId": "d90d3ee790e138855f41c5bbd0d0afabf62b7352",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a43abbfd_362c7428",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-09T09:52:58Z",
+      "side": 1,
+      "message": "Thanks! Let me check example.Touch etc. separately.",
+      "parentUuid": "3cbaa624_eca8591f",
+      "range": {
+        "startLine": 24,
+        "startChar": 49,
+        "endLine": 24,
+        "endChar": 60
+      },
+      "revId": "d90d3ee790e138855f41c5bbd0d0afabf62b7352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
