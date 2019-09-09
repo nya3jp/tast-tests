@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38698912_878a5ff1",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-09T23:37:43Z",
+      "side": 1,
+      "message": "It is frowned upon to pass testing.State around (unlike in Autotest, all your possible test failures should be obvious from the main test body).\n\nThis function already returns an error value, and you already check it and call s.Error from the main test.  Is there some reason this case needs to be Fatal?  If not, you can just return an error below instead.",
+      "revId": "fa7548a67011efcbac3fbb985da9a04982660fde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
