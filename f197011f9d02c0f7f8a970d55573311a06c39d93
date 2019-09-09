@@ -22,6 +22,30 @@
       "revId": "f197011f9d02c0f7f8a970d55573311a06c39d93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99aabc64_40ae5413",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-09-09T20:27:11Z",
+      "side": 1,
+      "message": "Thanks for the comment. Done.",
+      "parentUuid": "a4b7997f_e9051434",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 0
+      },
+      "revId": "f197011f9d02c0f7f8a970d55573311a06c39d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
