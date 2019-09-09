@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4b7997f_e9051434",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-09T14:31:08Z",
+      "side": 1,
+      "message": "drive-by: you can just use a closure.\n\ntype CreateTargetOption func(args *target.CreateTargetArgs)\n\nfunc WithBackground() CreateTargetOption {\n  return func(args *target.CreateTargetArgs) { args.SetBackground(true) }\n}\n\nfunc WithNewWindow() CreateTargetOption {\n  return func(args *target.CreateTargetArgs) { args.SetNewWindow(true) }\n}\n\nthen\n\nfunc (...) CreatTarget(..., opts ...CreateTargetOption) ... {\n  args :\u003d target.NewCreateTargetArgs(url)\n  for _, opt :\u003d range opts {\n    opt(args)\n  }\n  ...\n}\n\ncf) https://commandcenter.blogspot.com/2014/01/self-referential-functions-and-design.html",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 0
+      },
+      "revId": "f197011f9d02c0f7f8a970d55573311a06c39d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
