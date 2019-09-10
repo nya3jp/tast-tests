@@ -22,7 +22,6 @@ func init() {
 			"arc-storage@google.com",
 		},
 		SoftwareDeps: []string{"android", "chrome"},
-		Attr:         []string{"informational"},
 		Data:         []string{"capybara.jpg"},
 		Pre:          arc.Booted(),
 	})
