@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "d7ed7560_b0035cb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-10T08:45:29Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "7f56b6aa_0b486566",
+      "range": {
+        "startLine": 204,
+        "startChar": 20,
+        "endLine": 204,
+        "endChar": 29
+      },
+      "revId": "e006527bf1f9c51506077dbd00b9e038cb4acc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95edf020_99f2b423",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 13
@@ -140,6 +164,30 @@
       "revId": "e006527bf1f9c51506077dbd00b9e038cb4acc01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63ce35a1_b4b31120",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-10T08:45:29Z",
+      "side": 1,
+      "message": "Thanks! It seems better!",
+      "parentUuid": "3c90f11f_1e5b058e",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "e006527bf1f9c51506077dbd00b9e038cb4acc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

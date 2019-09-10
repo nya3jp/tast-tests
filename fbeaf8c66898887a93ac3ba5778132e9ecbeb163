@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e934ecd1_49b7affc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-10T08:45:29Z",
+      "side": 1,
+      "message": "Now that difference between focusAndCheckElement and focusAndIncrementElement is only what key event to send and existence of WaitForChromeVoxStopSpeaking!\n\nIt\u0027s up to you to refactor this in this CL or in the part of b:140696360.",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 57,
+        "endChar": 29
+      },
+      "revId": "fbeaf8c66898887a93ac3ba5778132e9ecbeb163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bf2d958_74bc511c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-10T08:45:29Z",
+      "side": 1,
+      "message": "nit: It would be helpful to add a comment what `node` and `excpectedNode` means",
+      "range": {
+        "startLine": 57,
+        "startChar": 104,
+        "endLine": 57,
+        "endChar": 122
+      },
+      "revId": "fbeaf8c66898887a93ac3ba5778132e9ecbeb163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcc0c008_cd742aec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-10T08:45:29Z",
+      "side": 1,
+      "message": "very very nit:\nOnly in this section, the order to declare node and log is different.",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 2
+      },
+      "revId": "fbeaf8c66898887a93ac3ba5778132e9ecbeb163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
