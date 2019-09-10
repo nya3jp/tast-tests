@@ -158,13 +158,8 @@ func WaitForUserMount(ctx context.Context, user string) error {
 		return err
 	}
 
-	// Reserve a bit of time to log the status before ctx's deadline: https://crbug.com/864282
-	var timeout time.Duration
-	if dl, ok := ctx.Deadline(); ok {
-		timeout = dl.Sub(time.Now()) - (3 * time.Second) // testing.Poll ignores negative timeouts
-	}
-
-	testing.ContextLogf(ctx, "Waiting for cryptohome for user %q", user)
+	const waitTimeout = 30 * time.Second
+	testing.ContextLogf(ctx, "Waiting for cryptohome for user %q with timeout %v", user, waitTimeout)
 	err = testing.Poll(ctx, func(ctx context.Context) error {
 		partitions, err := disk.Partitions(true /* all */)
 		if err != nil {
@@ -185,7 +180,7 @@ func WaitForUserMount(ctx context.Context, user string) error {
 			return err
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: timeout, Interval: mountPollInterval})
+	}, &testing.PollOptions{Timeout: waitTimeout, Interval: mountPollInterval})
 
 	if err != nil {
 		return errors.Wrapf(err, "not mounted for %s", user)
