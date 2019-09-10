@@ -128,6 +128,24 @@
       "revId": "d5c610bde3c598ff2ee165e58db4361d9ae2e9dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68821989_a4957e40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-10T01:04:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "011f0a59_5fb2e6c0",
+      "revId": "d5c610bde3c598ff2ee165e58db4361d9ae2e9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
