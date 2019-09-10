@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49cc4aea_49f96fd7",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-10T10:43:05Z",
+      "side": 1,
+      "message": "This is exceptional case, I think, but having context.Context in a field is not recommended.\nhttps://github.com/golang/go/wiki/CodeReviewComments#contexts\n\nCould you explicitly comment the reason?",
+      "revId": "d0fc278c0fe645d7528c2859b4c3186e679d50f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b435786b_8061d195",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-10T10:43:05Z",
+      "side": 1,
+      "message": "nit:\n\ndc :\u003d \u0026dummyConn {ch: make(chan uint64)}\ndc.ctx, dc.cancel \u003d ...",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 26
+      },
+      "revId": "d0fc278c0fe645d7528c2859b4c3186e679d50f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e25733b_6c06bb05",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-10T10:43:05Z",
+      "side": 1,
+      "message": "Instead, could you refer *dummyConn, in order not to distribute the ctx in a field as explained above?",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 28
+      },
+      "revId": "d0fc278c0fe645d7528c2859b4c3186e679d50f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa1ef1fb_26d0919a",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-10T10:43:05Z",
+      "side": 1,
+      "message": "(optional) These are like queue. How about operating them as queue?\nSpecifically, current implementation repeatedly use nextResponse, that sounds not ideal.\n\nIf you\u0027d like to keep this as \"last-one\" approach, could you explicitly comment?",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 0
+      },
+      "revId": "d0fc278c0fe645d7528c2859b4c3186e679d50f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57c33f93_b9673271",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-10T10:43:05Z",
+      "side": 1,
+      "message": "How about just returning an error, and handle it in caller?\nIn general it\u0027s nice to avoid dependency to *testing.T, if it is easy.",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 2
+      },
+      "revId": "d0fc278c0fe645d7528c2859b4c3186e679d50f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3887d156_956ac100",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-10T10:43:05Z",
+      "side": 1,
+      "message": "Thank you for adding unittest!!",
+      "revId": "d0fc278c0fe645d7528c2859b4c3186e679d50f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
