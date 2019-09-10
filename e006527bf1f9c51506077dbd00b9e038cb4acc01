@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9bfe0df8_8226ef99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-09-10T07:31:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a92d2601_b39b3113",
+      "range": {
+        "startLine": 198,
+        "startChar": 73,
+        "endLine": 198,
+        "endChar": 85
+      },
+      "revId": "e006527bf1f9c51506077dbd00b9e038cb4acc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "005faa98_688a5bb5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 13
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "7f56b6aa_0b486566",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-09-10T07:31:35Z",
+      "side": 1,
+      "message": "removed.\n(I think it was added initially as a sanity check.)",
+      "parentUuid": "005faa98_688a5bb5",
+      "range": {
+        "startLine": 204,
+        "startChar": 20,
+        "endLine": 204,
+        "endChar": 29
+      },
+      "revId": "e006527bf1f9c51506077dbd00b9e038cb4acc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95edf020_99f2b423",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 13
@@ -59,6 +107,30 @@
       "writtenOn": "2019-09-10T00:38:37Z",
       "side": 1,
       "message": "nit:\nThe first node (Line75) is given by the caller, but the second expected node is created inside this function.\nThis is a bit strange to me.\n\nThough the number of the arguments increases, I prefer to unify them in both focusAndIncrementElement and focusAndCheckElement.",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "e006527bf1f9c51506077dbd00b9e038cb4acc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c90f11f_1e5b058e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-09-10T07:31:35Z",
+      "side": 1,
+      "message": "sure. I agree!",
+      "parentUuid": "95edf020_99f2b423",
       "range": {
         "startLine": 84,
         "startChar": 1,
