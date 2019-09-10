@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2a90bed2_b935536b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2019-09-10T12:58:16Z",
+      "side": 1,
+      "message": "If you pass a file handle as --startup-pipe, I think it attempts to write the length of a string and then the string itself which will be a JSON structure containing \u0027port\u0027.\n\nWaiting for that to be written is also how the C++ side currently determines that the server is ready to accept incoming requests.\n\nPython side impl:\nhttps://cs.chromium.org/chromium/src/components/policy/test_support/policy_testserver.py?l\u003d1746\u0026rcl\u003d6c33e7e917890a932ab14174413ba1a15b1156e2\n\nhttps://cs.chromium.org/chromium/src/net/tools/testserver/testserver_base.py?l\u003d255\u0026rcl\u003d567df473cf35b412f32b5dc1ea8c5055590b7068\n\nhttps://cs.chromium.org/chromium/src/net/tools/testserver/testserver_base.py?l\u003d227\u0026rcl\u003d567df473cf35b412f32b5dc1ea8c5055590b7068\n\nC++ side usage:\nhttps://cs.chromium.org/chromium/src/net/test/spawned_test_server/local_test_server_posix.cc?l\u003d127\u0026rcl\u003d58d2b3ae88e2f1513cd39184519e55e61e9d9800\n\nhttps://cs.chromium.org/chromium/src/net/test/spawned_test_server/local_test_server_posix.cc?l\u003d169\u0026rcl\u003d58d2b3ae88e2f1513cd39184519e55e61e9d9800",
+      "range": {
+        "startLine": 21,
+        "startChar": 69,
+        "endLine": 22,
+        "endChar": 65
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c1ddccd_396d1d3e",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 1
@@ -311,6 +334,29 @@
     },
     {
       "key": {
+        "uuid": "f23f98a7_53e5f51b",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2019-09-10T12:58:16Z",
+      "side": 1,
+      "message": "nit: starts? :)",
+      "range": {
+        "startLine": 111,
+        "startChar": 3,
+        "endLine": 111,
+        "endChar": 13
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1bfadda_c6893b1d",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 1
@@ -396,6 +442,29 @@
       "writtenOn": "2019-09-05T15:46:28Z",
       "side": 1,
       "message": "govet errors.\n\nsrc/chromiumos/tast/local/policy/fakedms/fakedms.go:128: the pingCancel function is not used on all paths (possible context leak)\nsrc/chromiumos/tast/local/policy/fakedms/fakedms.go:146: this return statement may be reached without using the pingCancel var defined on line 128\n\npingCancel needs to be called in the defer function immediately followed by this line.\n\nRecommendation:\n\ndefer func() {\n  pingCancel()\n  \u003c- pingDone\n}()\n\nhere. Then you can remove L137-L139.\nAlso, you can close pingDone at the end of goroutine, so that this could handle success case, too.",
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d94f7e34_089536ef",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2019-09-10T12:58:16Z",
+      "side": 1,
+      "message": "I think we could avoid this and maybe only do one thing as a sanity check if we use the --startup-pipe .",
+      "range": {
+        "startLine": 130,
+        "startChar": 14,
+        "endLine": 130,
+        "endChar": 26
+      },
       "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
