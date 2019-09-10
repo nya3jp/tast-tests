@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "43a4d855_2e34c001",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-10T16:38:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d17e5c47_497e6424",
+      "range": {
+        "startLine": 38,
+        "startChar": 13,
+        "endLine": 38,
+        "endChar": 25
+      },
+      "revId": "96af84878f1acc5bd9ca901797d3abcd243198c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8edca969_94e8d1ea",
         "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "96af84878f1acc5bd9ca901797d3abcd243198c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c57fa3e4_f0c3c15b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-10T16:38:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8edca969_94e8d1ea",
+      "range": {
+        "startLine": 42,
+        "startChar": 13,
+        "endLine": 42,
+        "endChar": 25
+      },
+      "revId": "96af84878f1acc5bd9ca901797d3abcd243198c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
