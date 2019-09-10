@@ -7,6 +7,7 @@ package usbc
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"strconv"
 	"time"
@@ -27,12 +28,23 @@ func init() {
 		Desc:     "Uses fluffy with the standard charger configuration to check that expected voltages are reached",
 		Contacts: []string{"aaboagye@chromium.org"},
 		Data:     []string{"fluffy_interop_std_config.json"},
-		Vars:     []string{"usbc.MaxPwrReqMW"},
+		Vars:     []string{"usbc.MaxPwrReqMW", "ServodPort", "ServodHost"},
 		Attr:     []string{"disabled"}, // This test requires a specific setup and due to the availability of fluffy, is a manual test.
 	})
 }
 
 func FluffyInteropStd(c context.Context, s *testing.State) {
+	// Obtain the servod host and port if provided.
+	servodHost, ok := s.Var("ServodHost")
+	if !ok {
+		servodHost = "localhost"
+	}
+	servodPort, ok := s.Var("ServodPort")
+	if !ok {
+		servodPort = "9999"
+	}
+	scfg := fmt.Sprintf("%s:%s", servodHost, servodPort)
+
 	// Retrieve the maximum power that the DUT will request.
 	maxPwrReq := s.RequiredVar("usbc.MaxPwrReqMW")
 	maxPwr, err := strconv.ParseFloat(maxPwrReq, 32)
@@ -54,8 +66,8 @@ func FluffyInteropStd(c context.Context, s *testing.State) {
 	}
 
 	// Setup a servo host connected to fluffy.
-	s.Log("Setting up connection to servod at localhost:9999")
-	fluffy, err := servo.Default(c)
+	s.Logf("Setting up connection to servod at %s", scfg)
+	fluffy, err := servo.New(c, scfg)
 	if err != nil {
 		s.Fatal("Failed to connect to servod: ", err)
 	}
