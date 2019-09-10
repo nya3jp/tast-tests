@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/arc/ArcMulticastForwarderTest_20191008.apk",
+  "size": 16865,
+  "sha256sum": "da34ae9070df5fda30c319f57b009c800a64635e84f07cfdebdaf0800d671167"
+}
