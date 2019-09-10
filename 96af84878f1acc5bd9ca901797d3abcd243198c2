@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d17e5c47_497e6424",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-10T09:48:24Z",
+      "side": 1,
+      "message": "It\u0027s common to name it ok. Could you follow the pattern?",
+      "range": {
+        "startLine": 38,
+        "startChar": 13,
+        "endLine": 38,
+        "endChar": 25
+      },
+      "revId": "96af84878f1acc5bd9ca901797d3abcd243198c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8edca969_94e8d1ea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-10T09:48:24Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 42,
+        "startChar": 13,
+        "endLine": 42,
+        "endChar": 25
+      },
+      "revId": "96af84878f1acc5bd9ca901797d3abcd243198c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
