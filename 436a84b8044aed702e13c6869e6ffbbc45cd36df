@@ -22,6 +22,30 @@
       "revId": "436a84b8044aed702e13c6869e6ffbbc45cd36df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bff9d0f8_5e939a25",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/usbc/fluffy_interop_std.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-09-10T01:26:30Z",
+      "side": 1,
+      "message": "Yep, it appears it does (use the New method instead of Default). I can address that in a follow up CL.",
+      "parentUuid": "b683ce66_81b153f0",
+      "range": {
+        "startLine": 57,
+        "startChar": 53,
+        "endLine": 57,
+        "endChar": 57
+      },
+      "revId": "436a84b8044aed702e13c6869e6ffbbc45cd36df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
