@@ -17,6 +17,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -319,5 +320,29 @@ func GetDirtyWritebackDuration() (time.Duration, error) {
 	if err != nil {
 		return -1, errors.Wrapf(err, "could not parse %v", filepath.Base(dirtyWritebackCentisecsPath))
 	}
-	return time.Duration(centisecs) * (time.Second / 100), nil
+}
+
+type perfTestPre struct{}
+
+// Ported from PerfControl.
+func PerfTestPre() *perfTestPre {
+	return &perfTestPre{}
+}
+
+var _ testing.Precondition = PerfTestPre()
+
+func (*perfTestPre) String() string {
+	return "perf_test_pre"
+}
+
+func (*perfTestPre) Timeout() time.Duration {
+	return 60 * time.Second
+}
+
+func (*perfTestPre) Prepare(ctx context.Context, s *testing.State) interface{} {
+	cpu.WaitUntilIdle(ctx)
+	
+}
+
+func (*perfTestPre) Close(ctx context.Context, s *testing.State) interface{} {
 }
