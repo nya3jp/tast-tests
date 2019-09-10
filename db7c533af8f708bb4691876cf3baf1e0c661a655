@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0d240c5_7616f5aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2019-09-10T02:36:17Z",
+      "side": 1,
+      "message": "Msg does not match the CL.\n\nAlso the line is too long. Please use a shorter msg and move this to the detailed commit msg.",
+      "range": {
+        "startLine": 7,
+        "startChar": 39,
+        "endLine": 7,
+        "endChar": 48
+      },
+      "revId": "db7c533af8f708bb4691876cf3baf1e0c661a655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
