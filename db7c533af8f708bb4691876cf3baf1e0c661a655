@@ -22,6 +22,29 @@
       "revId": "db7c533af8f708bb4691876cf3baf1e0c661a655",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acfdc774_39d195f7",
+        "filename": "helpers/local/BUILD.gn",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2019-09-10T02:37:59Z",
+      "side": 1,
+      "message": "Hmm, why did you remove \"-fuse-ld\u003dgold\". Please do not pass sanitizer flags unconditionally. They should be based on USE flags.",
+      "range": {
+        "startLine": 8,
+        "startChar": 14,
+        "endLine": 8,
+        "endChar": 34
+      },
+      "revId": "db7c533af8f708bb4691876cf3baf1e0c661a655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
