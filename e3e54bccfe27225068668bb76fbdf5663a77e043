@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e189d6d_14c1e62d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-10T14:56:50Z",
+      "side": 1,
+      "message": "nit:\nthere is not need to call stop here. This CL should take care of it:\nhttps://crrev.com/c/1776506",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 20
+      },
+      "revId": "e3e54bccfe27225068668bb76fbdf5663a77e043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
