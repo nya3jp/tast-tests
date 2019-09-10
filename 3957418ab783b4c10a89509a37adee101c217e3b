@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "33f2c75a_b0745457",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-10T23:32:30Z",
+      "side": 1,
+      "message": "cool - that\u0027s a much better solution!",
+      "parentUuid": "2a90bed2_b935536b",
+      "range": {
+        "startLine": 21,
+        "startChar": 69,
+        "endLine": 22,
+        "endChar": 65
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c1ddccd_396d1d3e",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bc33788_d64e548a",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-10T23:32:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c1ddccd_396d1d3e",
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "4f83d268_bfb10c09",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-10T23:32:30Z",
+      "side": 1,
+      "message": "Will be used in the code I took out of this CL for simplicity\u0027s sake, since policy representation is another can of worms",
+      "parentUuid": "6f0797c4_dd44763d",
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd0d186f_33c94c4d",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 1
@@ -73,6 +133,24 @@
       "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96e6d3c0_8d23bdb9",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-10T23:32:30Z",
+      "side": 1,
+      "message": "fair enough; I had originally intended for the server to keep track of it, but current implementation leaves disposing of the file to the caller (or leaving it in the results folder, as will probably happen most of the time)",
+      "parentUuid": "dd0d186f_33c94c4d",
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -120,6 +198,30 @@
       "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c9450c2_32df798b",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-10T23:32:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ec4c424_d7054810",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 25
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -190,6 +292,30 @@
       "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e8e973e_ab59be13",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-10T23:32:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdb49986_c7a575b6",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 5
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -264,6 +390,30 @@
     },
     {
       "key": {
+        "uuid": "6fdd03dc_aff2ba9b",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-10T23:32:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d857a68_860bed3c",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 35
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f066fa2_0abbf060",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 1
@@ -284,6 +434,30 @@
       "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c58f2d2_2346e809",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-10T23:32:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f066fa2_0abbf060",
+      "range": {
+        "startLine": 95,
+        "startChar": 8,
+        "endLine": 95,
+        "endChar": 12
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -334,6 +508,30 @@
     },
     {
       "key": {
+        "uuid": "d2c90211_a28bc1ec",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-10T23:32:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44a58c19_898520f8",
+      "range": {
+        "startLine": 99,
+        "startChar": 21,
+        "endLine": 99,
+        "endChar": 25
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f23f98a7_53e5f51b",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 1
@@ -357,6 +555,30 @@
     },
     {
       "key": {
+        "uuid": "244e1848_03848621",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-10T23:32:30Z",
+      "side": 1,
+      "message": "start is the name of the function :)",
+      "parentUuid": "f23f98a7_53e5f51b",
+      "range": {
+        "startLine": 111,
+        "startChar": 3,
+        "endLine": 111,
+        "endChar": 13
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1bfadda_c6893b1d",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 1
@@ -374,6 +596,24 @@
     },
     {
       "key": {
+        "uuid": "49165155_af713594",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-10T23:32:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1bfadda_c6893b1d",
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "024e30c6_714b3798",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 1
@@ -388,6 +628,24 @@
       "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43fe85e7_0d02ee75",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-10T23:32:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "024e30c6_714b3798",
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -414,6 +672,30 @@
     },
     {
       "key": {
+        "uuid": "47fc7384_0b51f883",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-10T23:32:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a8a460b_6a2e053e",
+      "range": {
+        "startLine": 122,
+        "startChar": 3,
+        "endLine": 122,
+        "endChar": 24
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b5f399e_59805aba",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 1
@@ -431,6 +713,24 @@
     },
     {
       "key": {
+        "uuid": "e1d767fc_618bd2e3",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-10T23:32:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b5f399e_59805aba",
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c851c6f6_7baf1243",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 1
@@ -445,6 +745,24 @@
       "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6f86d00_53544b82",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-10T23:32:30Z",
+      "side": 1,
+      "message": "Done except only calling pingCancel - pingDone only gets set by pingCancel if the polling hasn\u0027t already completed",
+      "parentUuid": "c851c6f6_7baf1243",
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -471,6 +789,30 @@
     },
     {
       "key": {
+        "uuid": "12cad574_d792b967",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-10T23:32:30Z",
+      "side": 1,
+      "message": "I essentially swapped polling for a response from /ping to polling for the file to be written.",
+      "parentUuid": "d94f7e34_089536ef",
+      "range": {
+        "startLine": 130,
+        "startChar": 14,
+        "endLine": 130,
+        "endChar": 26
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27d1bf86_b3cb2e32",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 1
@@ -491,6 +833,30 @@
       "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fa6bf2a_5c5d8438",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-10T23:32:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27d1bf86_b3cb2e32",
+      "range": {
+        "startLine": 144,
+        "startChar": 3,
+        "endLine": 144,
+        "endChar": 18
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -517,6 +883,30 @@
     },
     {
       "key": {
+        "uuid": "075c55b2_af2c3d68",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-10T23:32:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eca1bcff_4cc3484b",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 2
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "faf34279_8044494f",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 1
@@ -540,6 +930,30 @@
     },
     {
       "key": {
+        "uuid": "a88d1235_e680feeb",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-10T23:32:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faf34279_8044494f",
+      "range": {
+        "startLine": 155,
+        "startChar": 23,
+        "endLine": 155,
+        "endChar": 74
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b35bbdd0_4030df14",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 1
@@ -560,6 +974,30 @@
       "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2309acf_ef4c8bac",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-10T23:32:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b35bbdd0_4030df14",
+      "range": {
+        "startLine": 164,
+        "startChar": 3,
+        "endLine": 164,
+        "endChar": 38
+      },
+      "revId": "3957418ab783b4c10a89509a37adee101c217e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
