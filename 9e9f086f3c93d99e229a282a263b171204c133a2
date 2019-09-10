@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b947b45_7b5790d8",
+        "filename": "src/chromiumos/tast/local/faillog/faillog.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-10T11:41:56Z",
+      "side": 1,
+      "message": "Did you intend to leave this logging?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 67
+      },
+      "revId": "9e9f086f3c93d99e229a282a263b171204c133a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "542f1a63_b1bc8271",
+        "filename": "src/chromiumos/tast/local/screenshot/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-10T11:41:56Z",
+      "side": 1,
+      "message": "nit: Naming this argument \"png\" is a bit strange since \"eval\" and \"code\" sounds generic.",
+      "range": {
+        "startLine": 55,
+        "startChar": 78,
+        "endLine": 55,
+        "endChar": 81
+      },
+      "revId": "9e9f086f3c93d99e229a282a263b171204c133a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
