@@ -321,3 +321,13 @@ func GetDirtyWritebackDuration() (time.Duration, error) {
 	}
 	return time.Duration(centisecs) * (time.Second / 100), nil
 }
+
+
+
+// FIXME(oka): Porting http://cs/chromeos_public/src/third_party/autotest/files/client/cros/graphics/graphics_utils.py?l=35.
+// Refactor it later.
+/////////////////////
+
+struct GraphcsTest {
+
+}
