@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ff10c67_bdaa72c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-09-10T14:39:28Z",
+      "side": 1,
+      "message": "nit: maybe s/optImpl/options/ ? I don\u0027t see what\u0027s it Impl of :-)",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 12
+      },
+      "revId": "5d9ec914a163738816cbe1712d14f01d8be01128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "927e1f42_8bafc1fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-09-10T14:39:28Z",
+      "side": 1,
+      "message": "Can we indent this like the others?",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 6
+      },
+      "revId": "5d9ec914a163738816cbe1712d14f01d8be01128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1936333_dbb9d84e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-09-10T14:39:28Z",
+      "side": 1,
+      "message": "The OCD in me tells me we should order these tests alphabetically by name,\nso this would go first.",
+      "range": {
+        "startLine": 54,
+        "startChar": 23,
+        "endLine": 54,
+        "endChar": 34
+      },
+      "revId": "5d9ec914a163738816cbe1712d14f01d8be01128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52561432_f9e394e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-09-10T14:39:28Z",
+      "side": 1,
+      "message": "ToT tears down and restarts Chrome between executions but now that we\nhave all the tests in one place, could we avoid that and just tear down\nonce before and then restore at the end? Just an idea.",
+      "range": {
+        "startLine": 103,
+        "startChar": 38,
+        "endLine": 103,
+        "endChar": 43
+      },
+      "revId": "5d9ec914a163738816cbe1712d14f01d8be01128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ed0e71d_31eeae62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-09-10T14:39:28Z",
+      "side": 1,
+      "message": "nit: fits in one line.",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 42
+      },
+      "revId": "5d9ec914a163738816cbe1712d14f01d8be01128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
