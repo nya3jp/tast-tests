@@ -70,6 +70,30 @@
       "revId": "d90d3ee790e138855f41c5bbd0d0afabf62b7352",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55300579_6f5fafc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-10T01:04:22Z",
+      "side": 1,
+      "message": "Thank you!",
+      "parentUuid": "a43abbfd_362c7428",
+      "range": {
+        "startLine": 24,
+        "startChar": 49,
+        "endLine": 24,
+        "endChar": 60
+      },
+      "revId": "d90d3ee790e138855f41c5bbd0d0afabf62b7352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
