@@ -187,6 +187,30 @@
       "revId": "f3a6b8311b02bdb25004486c71d0fd7276ad8f91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55a1166c_5aff7b61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-10T00:38:37Z",
+      "side": 1,
+      "message": "thank you! the code became simplified and easy to understand!",
+      "parentUuid": "b7519cf7_79147dd4",
+      "range": {
+        "startLine": 192,
+        "startChar": 5,
+        "endLine": 192,
+        "endChar": 26
+      },
+      "revId": "f3a6b8311b02bdb25004486c71d0fd7276ad8f91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
