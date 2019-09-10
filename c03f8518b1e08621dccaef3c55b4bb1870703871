@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef599f9d_c7c62376",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-10T01:29:40Z",
+      "side": 1,
+      "message": "style/optional: you can inline cmd.\n\nif err :\u003d d.Command(\"touch\", \"/run/crash_reporter/crash-test-in-progress\").Run(ctx); err !\u003d nil {\n ...\n}\n\nsame for below.",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 23
+      },
+      "revId": "c03f8518b1e08621dccaef3c55b4bb1870703871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4bc34af_a713059f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/lock_core_pattern.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-10T01:29:40Z",
+      "side": 1,
+      "message": "Instead of ignoring error, could you use \"-f\"?\n\nif err :\u003d d.Command(\"rm\", \"-f\", ...).Run(ctx); err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 14
+      },
+      "revId": "c03f8518b1e08621dccaef3c55b4bb1870703871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
