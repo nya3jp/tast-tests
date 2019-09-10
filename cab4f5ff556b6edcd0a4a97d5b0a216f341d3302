@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b7eef62_60ba8696",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-10T11:51:27Z",
+      "side": 1,
+      "message": "I recommend to avoid the common name \"err\" to avoid unexpectedly masking it by a local variable. How about \"retErr\" for example?",
+      "range": {
+        "startLine": 38,
+        "startChar": 63,
+        "endLine": 38,
+        "endChar": 66
+      },
+      "revId": "cab4f5ff556b6edcd0a4a97d5b0a216f341d3302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6459a2d_8df5760e",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-10T11:51:27Z",
+      "side": 1,
+      "message": "We don\u0027t need to rename this to cmdErr if we name the return value differently.",
+      "range": {
+        "startLine": 46,
+        "startChar": 7,
+        "endLine": 46,
+        "endChar": 13
+      },
+      "revId": "cab4f5ff556b6edcd0a4a97d5b0a216f341d3302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8df40a1e_8eff2bf5",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-10T11:51:27Z",
+      "side": 1,
+      "message": "Please return nil instead to make it clear nil is returned here. You can still override the return value.\n\nhttps://play.golang.org/p/85OAPCQ8GJ8",
+      "range": {
+        "startLine": 91,
+        "startChar": 18,
+        "endLine": 91,
+        "endChar": 21
+      },
+      "revId": "cab4f5ff556b6edcd0a4a97d5b0a216f341d3302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
