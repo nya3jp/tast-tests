@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4190cf5f_3dbf0a3a",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-10T00:15:48Z",
+      "side": 1,
+      "message": "I don\u0027t see \"android.com\" prefix in the Go packages installed by aosp-frameworks-base-proto. I believe this will compile by stripping \"android.com/\" prefix.\n\n$ equery f aosp-frameworks-base-proto\n * Searching for aosp-frameworks-base-proto ...\n * Contents of chromeos-base/aosp-frameworks-base-proto-20190812:\n/usr\n/usr/lib\n/usr/lib/gopath\n/usr/lib/gopath/src\n/usr/lib/gopath/src/frameworks\n/usr/lib/gopath/src/frameworks/base\n/usr/lib/gopath/src/frameworks/base/core\n/usr/lib/gopath/src/frameworks/base/core/proto\n/usr/lib/gopath/src/frameworks/base/core/proto/android\n/usr/lib/gopath/src/frameworks/base/core/proto/android/app\n/usr/lib/gopath/src/frameworks/base/core/proto/android/app/activitymanager.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/app/enums.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/app/notification.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/app/profilerinfo.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/app/statusbarmanager.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/app/window_configuration.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/content\n/usr/lib/gopath/src/frameworks/base/core/proto/android/content/activityinfo.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/content/component_name.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/content/configuration.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/content/intent.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/content/locale.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/content/package_item_info.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/graphics\n/usr/lib/gopath/src/frameworks/base/core/proto/android/graphics/pixelformat.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/graphics/point.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/graphics/rect.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/internal\n/usr/lib/gopath/src/frameworks/base/core/proto/android/internal/processstats.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/os\n/usr/lib/gopath/src/frameworks/base/core/proto/android/os/bundle.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/os/looper.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/os/message.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/os/messagequeue.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/os/patternmatcher.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/os/powermanager.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/os/worksource.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/server\n/usr/lib/gopath/src/frameworks/base/core/proto/android/server/activitymanagerservice.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/server/animationadapter.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/server/appwindowthumbnail.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/server/intentresolver.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/server/surfaceanimator.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/server/windowmanagerservice.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/util\n/usr/lib/gopath/src/frameworks/base/core/proto/android/util/common.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/view\n/usr/lib/gopath/src/frameworks/base/core/proto/android/view/display.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/view/displaycutout.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/view/displayinfo.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/view/enums.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/view/remote_animation_target.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/view/surface.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/view/surfacecontrol.pb.go\n/usr/lib/gopath/src/frameworks/base/core/proto/android/view/windowlayoutparams.pb.go\n/usr/lib/gopath/src/frameworks/base/libs\n/usr/lib/gopath/src/frameworks/base/libs/incident\n/usr/lib/gopath/src/frameworks/base/libs/incident/proto\n/usr/lib/gopath/src/frameworks/base/libs/incident/proto/android\n/usr/lib/gopath/src/frameworks/base/libs/incident/proto/android/privacy.pb.go",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 56
+      },
+      "revId": "65dc2766e04d407f6ea028ba0937727c68a4984a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
