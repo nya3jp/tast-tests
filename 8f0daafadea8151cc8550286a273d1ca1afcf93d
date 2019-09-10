@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1b66af4_ff9ece7e",
+        "filename": "src/chromiumos/tast/local/ui/apps/apps.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-10T10:46:50Z",
+      "side": 1,
+      "message": "nit: \"Chrome extension ID\" to be clearer?",
+      "range": {
+        "startLine": 17,
+        "startChar": 14,
+        "endLine": 17,
+        "endChar": 16
+      },
+      "revId": "8f0daafadea8151cc8550286a273d1ca1afcf93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
