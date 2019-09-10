@@ -28,7 +28,6 @@ func HeavyMemoryUser(ctx context.Context, s *testing.State) {
 		"https://drive.google.com",
 		"https://photos.google.com",
 		"https://news.google.com",
-		"https://plus.google.com",
 		"https://maps.google.com",
 		"https://play.google.com/store",
 		"https://play.google.com/music",
