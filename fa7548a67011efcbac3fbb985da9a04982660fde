@@ -16,6 +16,24 @@
       "revId": "fa7548a67011efcbac3fbb985da9a04982660fde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9369c7ec_6cbccbe4",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-09-10T00:45:31Z",
+      "side": 1,
+      "message": "Yeah, I don\u0027t like passing the testing.State around either, but I couldn\u0027t find another clean way to make the tests fail when something in the defer statements fails. But I just realized I can overwrite the return values from a defer statement, if the return values are named.",
+      "parentUuid": "38698912_878a5ff1",
+      "revId": "fa7548a67011efcbac3fbb985da9a04982660fde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
