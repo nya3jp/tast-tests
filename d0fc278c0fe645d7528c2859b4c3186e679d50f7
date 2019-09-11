@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "302027c8_a00da605",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-09-11T03:28:02Z",
+      "side": 1,
+      "message": "Thanks for the pointing, I\u0027ve forgotten about that.\nThinking about it, I guess I can simply use a channel rather than keeping the context itself.",
+      "parentUuid": "49cc4aea_49f96fd7",
+      "revId": "d0fc278c0fe645d7528c2859b4c3186e679d50f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b435786b_8061d195",
         "filename": "src/chromiumos/tast/local/chrome/cdputil/session_test.go",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "d0fc278c0fe645d7528c2859b4c3186e679d50f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d96b743d_b6798aff",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-09-11T03:28:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b435786b_8061d195",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 26
+      },
+      "revId": "d0fc278c0fe645d7528c2859b4c3186e679d50f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "70deda6a_4c8741f7",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-09-11T03:28:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e25733b_6c06bb05",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 28
+      },
+      "revId": "d0fc278c0fe645d7528c2859b4c3186e679d50f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa1ef1fb_26d0919a",
         "filename": "src/chromiumos/tast/local/chrome/cdputil/session_test.go",
         "patchSetId": 3
@@ -76,6 +142,30 @@
       "writtenOn": "2019-09-10T10:43:05Z",
       "side": 1,
       "message": "(optional) These are like queue. How about operating them as queue?\nSpecifically, current implementation repeatedly use nextResponse, that sounds not ideal.\n\nIf you\u0027d like to keep this as \"last-one\" approach, could you explicitly comment?",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 0
+      },
+      "revId": "d0fc278c0fe645d7528c2859b4c3186e679d50f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2306d699_20ae4fb9",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-09-11T03:28:02Z",
+      "side": 1,
+      "message": "done with a slice.",
+      "parentUuid": "aa1ef1fb_26d0919a",
       "range": {
         "startLine": 90,
         "startChar": 1,
@@ -108,6 +198,30 @@
       "revId": "d0fc278c0fe645d7528c2859b4c3186e679d50f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08e7881f_5bcd8bb3",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-09-11T03:28:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57c33f93_b9673271",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 2
+      },
+      "revId": "d0fc278c0fe645d7528c2859b4c3186e679d50f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
