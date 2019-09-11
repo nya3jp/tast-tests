@@ -153,11 +153,11 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				{exe, "/usr/sbin/trunksd", "cros_trunksd", zeroProcs, ""},
 				{exe, "/usr/sbin/update_engine", "cros_update_engine", zeroProcs, ""},
 				{exe, "/usr/sbin/wpa_supplicant", "wpa_supplicant", zeroProcs, ""},
-				{notCmdline, ".*(frecon|agetty|ping|recover_duts|udevadm|update_rw_vpd).*", notStr("chromeos"), zeroProcs, domainIsolationErrorMessage},
+				{notCmdline, ".*(frecon|agetty|ping|recover_duts|udevadm|update_rw_vpd|mosys|vpd|flashrom).*", notStr("chromeos"), zeroProcs, domainIsolationErrorMessage},
 				{notCmdline, ".*(frecon|agetty|ping|recover_duts).*", notStr("minijailed"), zeroProcs, domainIsolationErrorMessage},
 				{notExe, "/sbin/init", notStr("cros_init"), zeroProcs, domainIsolationErrorMessage},
 				// coreutils and ping are excluded for recover_duts scripts.
-				{notExe, "(/bin/([db]a)?sh|/usr/bin/coreutils|/bin/ping)", notStr("cros_init_scripts"), zeroProcs, domainIsolationErrorMessage},
+				{notExe, "(/bin/([db]a)?sh|/usr/bin/coreutils|/bin/ping|brcm_patchram_plus)", notStr("cros_init_scripts"), zeroProcs, domainIsolationErrorMessage},
 				{notExe, "/sbin/minijail0", notStr("minijail"), zeroProcs, domainIsolationErrorMessage},
 			}...)
 		case Unstable:
