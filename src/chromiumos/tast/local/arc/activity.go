@@ -221,7 +221,9 @@ func (ac *Activity) WindowBounds(ctx context.Context) (Rect, error) {
 	// Fullscreen and maximized windows already include the caption height. PiP windows don't have caption.
 	if t.windowState == WindowStateFullscreen ||
 		t.windowState == WindowStateMaximized ||
-		t.windowState == WindowStatePIP {
+		t.windowState == WindowStatePIP ||
+		// TODO(b/141175230): Freeform windows should not include caption. Remove check once bug gets fixed.
+		(t.windowState == WindowStateNormal && t.bounds.Top == 0) {
 		return t.bounds, nil
 	}
 
