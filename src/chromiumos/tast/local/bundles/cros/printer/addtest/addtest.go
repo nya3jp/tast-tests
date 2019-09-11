@@ -9,6 +9,7 @@ import (
 	"context"
 	"io/ioutil"
 	"path/filepath"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/diff"
@@ -18,6 +19,34 @@ import (
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
+
+// cleanPSContents filters any unwanted lines from |content| to ensure a stable
+// diff.
+func cleanPSContents(content string) (string, error) {
+	// Matches the embedded poppler version in the PS file. This gets
+	// outdated on every poppler uprev, so we strip it out.
+	var popplerVersionInPSRegex = regexp.MustCompile("(?m)^.*poppler.*version:.*[\r\n]")
+
+	for _, r := range []*regexp.Regexp{popplerVersionInPSRegex} {
+		content = r.ReplaceAllLiteralString(content, "")
+	}
+	return content, nil
+}
+
+// diffFiles cleans both PostScript args before returning their diff.
+func diffFiles(ctx context.Context, output, golden string) (string, error) {
+	result, err := cleanPSContents(output)
+	if err != nil {
+		return "", err
+	}
+
+	expected, err := cleanPSContents(golden)
+	if err != nil {
+		return "", err
+	}
+
+	return diff.Diff(result, expected)
+}
 
 // Run executes the main test logic with given parameters.
 func Run(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile, diffFile string) {
@@ -70,7 +99,7 @@ func Run(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile
 		s.Fatal("Fake printer didn't receive a request: ", err)
 	}
 
-	diff, err := diff.Diff(string(request), string(expect))
+	diff, err := diffFiles(ctx, string(request), string(expect))
 	if err != nil {
 		s.Fatal("Unexpected diff output: ", err)
 	}
