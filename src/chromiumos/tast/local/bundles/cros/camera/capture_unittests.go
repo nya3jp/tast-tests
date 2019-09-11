@@ -32,8 +32,19 @@ func init() {
 			"chromeos-camera-eng@google.com",
 		},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera, "camera_720p"},
+		SoftwareDeps: []string{"chrome", "camera_720p"},
 		Data:         []string{"bear.mjpeg"},
+		Params: []testing.Param{{
+			Name:              "usb",
+			ExtraSoftwareDeps: []string{caps.BuiltinUSBCamera},
+		}, {
+			Name:              "mipi",
+			ExtraSoftwareDeps: []string{caps.BuiltinMIPICamera},
+		}, {
+			Name:              "vivid",
+			ExtraSoftwareDeps: []string{caps.VividCamera},
+		},
+		},
 	})
 }
 
