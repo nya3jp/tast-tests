@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "280be2c1_b5a89dab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1301133
+      },
+      "writtenOn": "2019-09-11T06:12:39Z",
+      "side": 1,
+      "message": "This change shouldn\u0027t depend on the package uprev, since the test should work regardless of the package version.",
+      "revId": "dd77eb08c963074279a9a6ce9b58a6a45e82a541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
