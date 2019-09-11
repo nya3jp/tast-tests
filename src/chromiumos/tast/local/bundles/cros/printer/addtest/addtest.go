@@ -9,6 +9,7 @@ import (
 	"context"
 	"io/ioutil"
 	"path/filepath"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/diff"
@@ -18,6 +19,15 @@ import (
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
+
+// cleanPSContents filters any unwanted lines from |content| to ensure a stable
+// diff.
+func cleanPSContents(content string) string {
+	// Matches the embedded poppler version in the PS file. This gets
+	// outdated on every poppler uprev, so we strip it out.
+	r := regexp.MustCompile("(?m)^.*poppler.*version:.*[\r\n]")
+	return r.ReplaceAllLiteralString(content, "")
+}
 
 // Run executes the main test logic with given parameters.
 func Run(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile, diffFile string) {
@@ -70,7 +80,7 @@ func Run(ctx context.Context, s *testing.State, ppdFile, toPrintFile, goldenFile
 		s.Fatal("Fake printer didn't receive a request: ", err)
 	}
 
-	diff, err := diff.Diff(string(request), string(expect))
+	diff, err := diff.Diff(cleanPSContents(string(request)), cleanPSContents(string(expect)))
 	if err != nil {
 		s.Fatal("Unexpected diff output: ", err)
 	}
