@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4581f406_e7f4adca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2019-09-11T21:59:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de7babf9_e58e96fc",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 84
+      },
+      "revId": "6e097f56c09cb811081ad502da7f66083f1bdb0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d4cd825_2e5fea69",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 4
