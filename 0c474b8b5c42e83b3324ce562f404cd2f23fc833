@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f9e85ae2_5a313c71",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-11T07:15:22Z",
+      "side": 1,
+      "message": "I had tried to do that without much luck, but I poked at it some more and ReadAt(... 0) worked - so I guess the python server was moving the read cursor?  Anyway, I\u0027ve switched to using a pipe instead to avoid the issue",
+      "parentUuid": "837762cb_b5858ebd",
+      "revId": "0c474b8b5c42e83b3324ce562f404cd2f23fc833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5888194a_33ca4b12",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "0c474b8b5c42e83b3324ce562f404cd2f23fc833",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b83c2f61_463712f4",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-11T07:15:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5888194a_33ca4b12",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 8
+      },
+      "revId": "0c474b8b5c42e83b3324ce562f404cd2f23fc833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "babc6746_8fc6a5d7",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-11T07:15:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d107df9_82c1df53",
+      "range": {
+        "startLine": 112,
+        "startChar": 55,
+        "endLine": 112,
+        "endChar": 57
+      },
+      "revId": "0c474b8b5c42e83b3324ce562f404cd2f23fc833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "988f110d_fd4d082e",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 2
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "0b4b59c8_864d91f4",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-11T07:15:22Z",
+      "side": 1,
+      "message": "I\u0027ve redone this bit, so I\u0027ll close out the comments that are no longer relevant",
+      "parentUuid": "988f110d_fd4d082e",
+      "revId": "0c474b8b5c42e83b3324ce562f404cd2f23fc833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71093e5a_6ec51352",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 2
@@ -96,6 +180,24 @@
       "revId": "0c474b8b5c42e83b3324ce562f404cd2f23fc833",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d354894_3ca30c06",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-11T07:15:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71093e5a_6ec51352",
+      "revId": "0c474b8b5c42e83b3324ce562f404cd2f23fc833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "6d67c285_72cbb7a8",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-11T07:15:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3623f610_b822bf28",
+      "range": {
+        "startLine": 137,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 3
+      },
+      "revId": "0c474b8b5c42e83b3324ce562f404cd2f23fc833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "890fb75e_8ffc582e",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 2
@@ -142,6 +268,30 @@
       "revId": "0c474b8b5c42e83b3324ce562f404cd2f23fc833",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3564340c_bc0b8b83",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-11T07:15:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "890fb75e_8ffc582e",
+      "range": {
+        "startLine": 141,
+        "startChar": 9,
+        "endLine": 141,
+        "endChar": 10
+      },
+      "revId": "0c474b8b5c42e83b3324ce562f404cd2f23fc833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -168,6 +318,30 @@
     },
     {
       "key": {
+        "uuid": "9b0c5478_b40b5ba3",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-11T07:15:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3f7e995_650075ad",
+      "range": {
+        "startLine": 152,
+        "startChar": 2,
+        "endLine": 152,
+        "endChar": 13
+      },
+      "revId": "0c474b8b5c42e83b3324ce562f404cd2f23fc833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e321a405_d884ba65",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 2
@@ -185,6 +359,24 @@
     },
     {
       "key": {
+        "uuid": "3279df54_3f3d35b4",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-11T07:15:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e321a405_d884ba65",
+      "revId": "0c474b8b5c42e83b3324ce562f404cd2f23fc833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06985c15_033d1124",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 2
@@ -199,6 +391,24 @@
       "revId": "0c474b8b5c42e83b3324ce562f404cd2f23fc833",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "866c1b1c_0471f0e5",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-11T07:15:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06985c15_033d1124",
+      "revId": "0c474b8b5c42e83b3324ce562f404cd2f23fc833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
