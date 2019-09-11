@@ -62,12 +62,18 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get tablet mode: ", err)
 	}
-	// Be nice and restore tablet mode to its original state on exit.
-	defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeEnabled)
-
-	// Force Chrome to be in clamshell mode, where windows are resizable.
-	if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
-		s.Fatal("Failed to disable tablet mode: ", err)
+	if tabletModeEnabled {
+		// Be nice and restore tablet mode to its original state on exit.
+		defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeEnabled)
+		if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
+			s.Fatal("Failed to set tablet mode disabled: ", err)
+		}
+		// TODO(crbug.com/1002958): Wait for "tablet mode animation is finished" in a reliable way.
+		// If an activity is launched while the tablet mode animation is active, the activity
+		// will be launched in un undefined state, making the test flaky.
+		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+			s.Fatal("Failed to wait until tablet-mode animation finished: ", err)
+		}
 	}
 
 	a := s.PreValue().(arc.PreData).ARC
@@ -81,6 +87,9 @@ func ResizeActivity(ctx context.Context, s *testing.State) {
 	if err := act.Start(ctx); err != nil {
 		s.Fatal("Failed start Settings activity: ", err)
 	}
+	// This is an issue to re-enable the tablet mode at the end of the test when
+	// there is a freeform app still open. See: https://crbug.com/1002666
+	defer act.Stop(ctx)
 
 	if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
 		s.Fatal("Failed to set window state to Normal: ", err)
