@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edb8a73a_a2babdcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-11T05:28:42Z",
+      "side": 1,
+      "message": "Error message is for human, not for systematic check.\nIt could be changed any time for readability, and I don\u0027t think it is a way to go for maintenance.\n\nCould you elaborate why you are trying to avoid fixing in gtest side?\ngtest exit status 1 does not guarantee what was wrong.\nIf it is expected that the test could be failed but should not be crashed, it should be implemented so in a guaranteed way, IMO.",
+      "revId": "534f888219fcf48ef7dfe80840918e64aba30545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
