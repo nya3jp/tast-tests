@@ -210,7 +210,7 @@ func (ac *Activity) Stop(ctx context.Context) error {
 
 // WindowBounds returns the window bounding box of the activity in pixels.
 // The caption bounds, in case it is present, is included as part of the window bounds.
-// This is the size that the activity thinks it has, although the surface size could be smaller.
+// This is the same size as the one reported by Chrome/Aura.
 // See: SurfaceBounds
 func (ac *Activity) WindowBounds(ctx context.Context) (Rect, error) {
 	t, err := ac.getTaskInfo(ctx)
@@ -242,34 +242,11 @@ func (ac *Activity) WindowBounds(ctx context.Context) (Rect, error) {
 // And does not include the shelf size if the activity is fullscreen/maximized and the shelf is in "always show" mode.
 // See: WindowBounds
 func (ac *Activity) SurfaceBounds(ctx context.Context) (Rect, error) {
-	cmd := ac.a.Command(ctx, "dumpsys", "window", "windows")
-	output, err := cmd.Output()
+	t, err := ac.getTaskInfo(ctx)
 	if err != nil {
-		return Rect{}, errors.Wrap(err, "failed to launch dumpsys")
+		return Rect{}, errors.Wrap(err, "failed to get task info")
 	}
-
-	// Looking for:
-	//   Window #0 Window{a486f07 u0 com.android.settings/com.android.settings.Settings}:
-	//     mDisplayId=0 stackId=2 mSession=Session{dd34b88 2586:1000} mClient=android.os.BinderProxy@705e146
-	//     mHasSurface=true isReadyForDisplay()=true mWindowRemovalAllowed=false
-	//     [...many other properties...]
-	//     mFrame=[0,0][1536,1936] last=[0,0][1536,1936]
-	// We are interested in "mFrame="
-	regStr := `(?m)` + // Enable multiline.
-		`^\s*Window #\d+ Window{\S+ \S+ ` + regexp.QuoteMeta(ac.pkgName+"/"+ac.pkgName+ac.activityName) + `}:$` + // Match our activity
-		`(?:\n.*?)*` + // Skip entire lines with a non-greedy search...
-		`^\s*mFrame=\[(\d+),(\d+)\]\[(\d+),(\d+)\]` // ...until we match the first mFrame=
-	re := regexp.MustCompile(regStr)
-	groups := re.FindStringSubmatch(string(output))
-	if len(groups) != 5 {
-		testing.ContextLog(ctx, string(output))
-		return Rect{}, errors.New("failed to parse dumpsys output; activity not running perhaps?")
-	}
-	bounds, err := parseBounds(groups[1:5])
-	if err != nil {
-		return Rect{}, err
-	}
-	return bounds, nil
+	return t.bounds, nil
 }
 
 // Close closes the resources associated with the Activity instance.
