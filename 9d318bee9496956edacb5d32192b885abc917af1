@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c6f43c4_9f531e54",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2019-09-11T19:49:41Z",
+      "side": 1,
+      "message": "The TEST\u003d line is supposed to list the steps you took to make sure your CL was correct.\n\nIn this case I expect this should at least list that you run the test with and without ASan/UBSan/MSAn and everything passed.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "9d318bee9496956edacb5d32192b885abc917af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
