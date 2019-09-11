@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cda11b3d_003b1b53",
+        "filename": "src/chromiumos/tast/local/chrome/cdputil/session_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-11T05:19:04Z",
+      "side": 1,
+      "message": "nit/style: could you overwrite ctx for simplicity, and define dc at latest point?\n\nctx, cancel :\u003d context.WithCancel(ctx)\ndc :\u003d \u0026dummyConn{\n  done: make(chan struct{}),\n  cancel: cancel,\n}\n...",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 19
+      },
+      "revId": "7c14c3af8c8cf43d243d024e87974e30ca5a5d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
