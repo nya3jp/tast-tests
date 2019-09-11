@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "609f3f71_f3d09575",
+        "filename": "helpers/local/BUILD.gn",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2019-09-11T15:22:22Z",
+      "side": 1,
+      "message": "This test doesn\u0027t make sense if the binary is not compiled statically, so we should just skip the test in the ASan case.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 1
+      },
+      "revId": "1c78cd2d1e6e99f5791f29b837f6d3f4965b96a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
