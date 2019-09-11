@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "de7babf9_e58e96fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-11T18:02:57Z",
+      "side": 1,
+      "message": "Yes. I filed this bug. I\u0027ll discuss it with oshima@\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1002958",
+      "parentUuid": "5509fd68_1c909f09",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 84
+      },
+      "revId": "6e097f56c09cb811081ad502da7f66083f1bdb0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d4cd825_2e5fea69",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
         "patchSetId": 4
