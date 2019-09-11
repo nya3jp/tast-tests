@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "ebfdcfdd_c8229d48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-09-11T03:53:03Z",
+      "side": 1,
+      "message": "The test will now also fail if the process crashes. I hope this doesn\u0027t surface too many new errors. I already had to do many fixes to the DecodeAccelSanityVP90CtsShowExistingFrame test as this test used the wrong video file format and the test would always crash (so it was not testing what it was supposed to be testing).\n\nIf too many errors show up I can always change the behavior later.",
+      "parentUuid": "fe5ab9a4_bca98bae",
+      "range": {
+        "startLine": 409,
+        "startChar": 56,
+        "endLine": 410,
+        "endChar": 26
+      },
+      "revId": "f377da280adc834799da05966a87dd51b5cc7260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bbb3728d_443efd4b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 4
@@ -286,6 +310,30 @@
       "side": 1,
       "message": "\u003e Kernel crashes should not happen under any circumstances. If a crash this serious happens I think it\u0027s OK that other tests won\u0027t be run. This is already the current behavior of the test, so if we really want to make changes here it should be done in a separate CL.\n\nGot it. Thank you for explanation.\nFor this case, could you add a reference to crbug.com/998464 for test isolation?\n\n\u003e When the test crashes no report is produced, so it\u0027s easy to differentiate between crash and test failure. I did have to create crrev.com/c/1772938 to prevent a crash on failure.\n\nThat is not guaranteed, IIUC. Indeed it could be the current behavior, but actually, we probably would like to have more precise report. cf) crbug.com/989887.\nCould you avoid depending on the behavior?",
       "parentUuid": "fd4ab1f5_2edaf0ca",
+      "range": {
+        "startLine": 414,
+        "startChar": 1,
+        "endLine": 414,
+        "endChar": 5
+      },
+      "revId": "f377da280adc834799da05966a87dd51b5cc7260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3097913_42abe948",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-09-11T03:53:03Z",
+      "side": 1,
+      "message": "I can look at the returned error message to differentiate between test failure and crash.\n\nCrash:\n signal: aborted (core dumped)\nExpected test failure:\n exit status 1",
+      "parentUuid": "fc0c2173_48b771b4",
       "range": {
         "startLine": 414,
         "startChar": 1,
