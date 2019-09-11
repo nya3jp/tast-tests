@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "cc8a92cc_c21a1275",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-09-11T04:46:55Z",
+      "side": 1,
+      "message": "Done. I just found that I miss-ordered mnl. Do you have any tip on how to do it faster than using my poor eye?",
+      "parentUuid": "65298c4b_b4c7dda0",
+      "range": {
+        "startLine": 105,
+        "startChar": 23,
+        "endLine": 105,
+        "endChar": 30
+      },
+      "revId": "b125a0283200d9298cd9433f80f8a0347792ce49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d3a5da3_a30c840f",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
         "patchSetId": 3
@@ -68,6 +92,30 @@
       "revId": "b125a0283200d9298cd9433f80f8a0347792ce49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0343256f_a0c2ce4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-09-11T04:46:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d3a5da3_a30c840f",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 133,
+        "endChar": 3
+      },
+      "revId": "b125a0283200d9298cd9433f80f8a0347792ce49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "15cbcaef_95116fd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-09-11T04:46:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15ee3eea_f1e5d1dd",
+      "range": {
+        "startLine": 140,
+        "startChar": 53,
+        "endLine": 140,
+        "endChar": 66
+      },
+      "revId": "b125a0283200d9298cd9433f80f8a0347792ce49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c217ecd5_8c998e61",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
         "patchSetId": 3
@@ -114,6 +186,30 @@
       "revId": "b125a0283200d9298cd9433f80f8a0347792ce49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f62016e8_6412ff39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-09-11T04:46:55Z",
+      "side": 1,
+      "message": "Changed to \"display_connected\" and dropped the ExtraSoftwareDeps above.",
+      "parentUuid": "c217ecd5_8c998e61",
+      "range": {
+        "startLine": 145,
+        "startChar": 3,
+        "endLine": 152,
+        "endChar": 4
+      },
+      "revId": "b125a0283200d9298cd9433f80f8a0347792ce49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "54eb3661_f50a6843",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-09-11T04:46:55Z",
+      "side": 1,
+      "message": "Thanks. Good catch.",
+      "parentUuid": "aab65446_526b3042",
+      "range": {
+        "startLine": 169,
+        "startChar": 49,
+        "endLine": 169,
+        "endChar": 56
+      },
+      "revId": "b125a0283200d9298cd9433f80f8a0347792ce49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ebb748d_0a4faf85",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
         "patchSetId": 3
@@ -151,6 +271,30 @@
       "writtenOn": "2019-09-11T03:27:03Z",
       "side": 1,
       "message": "Two things:\n- s/SetUp/setUp/\n- This comment needs updating: we could, and do in l.136 call\nseveral runTest() back to back with a single setUp() call.",
+      "range": {
+        "startLine": 181,
+        "startChar": 37,
+        "endLine": 181,
+        "endChar": 75
+      },
+      "revId": "b125a0283200d9298cd9433f80f8a0347792ce49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25081511_10bf9b70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-09-11T04:46:55Z",
+      "side": 1,
+      "message": "Done s/SetUp/setUp\nI think the comment still holds but I\u0027m glad to change if you feel strong about it.",
+      "parentUuid": "5ebb748d_0a4faf85",
       "range": {
         "startLine": 181,
         "startChar": 37,

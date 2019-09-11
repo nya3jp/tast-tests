@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6780e909_b312ee1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-09-11T04:46:55Z",
+      "side": 1,
+      "message": "Note that I also dropped the ExtraSoftwareDeps as I think these never got checked when we run it manually. But correct me if I\u0027m wrong.",
+      "revId": "18bf803851d5d0e3063f8770fc121dc418e3fcfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
