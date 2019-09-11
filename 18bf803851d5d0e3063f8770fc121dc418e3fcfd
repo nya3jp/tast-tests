@@ -16,6 +16,47 @@
       "revId": "18bf803851d5d0e3063f8770fc121dc418e3fcfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e3e31c2_5ebe41f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-09-11T15:12:18Z",
+      "side": 1,
+      "message": "IIUC we do it now ourselves in l.115, correct?",
+      "parentUuid": "6780e909_b312ee1e",
+      "revId": "18bf803851d5d0e3063f8770fc121dc418e3fcfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c0e1c88_e025d918",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-09-11T15:12:18Z",
+      "side": 1,
+      "message": "micro-nit: could you also say that this method can be called repeateadly?\nSth like \"This method may be called several times as long as setUp() has\nbeen invoked beforehand\" or some such.",
+      "range": {
+        "startLine": 171,
+        "startChar": 75,
+        "endLine": 171,
+        "endChar": 76
+      },
+      "revId": "18bf803851d5d0e3063f8770fc121dc418e3fcfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
