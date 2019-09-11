@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1f0731d5_b2b93f66",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-11T17:30:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aba1f715_96caeff9",
+      "range": {
+        "startLine": 74,
+        "startChar": 28,
+        "endLine": 74,
+        "endChar": 53
+      },
+      "revId": "5d0497250c4c83b78e5f990dbb1e6bc3f3506829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8ca6a93_501b639c",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "5d0497250c4c83b78e5f990dbb1e6bc3f3506829",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc540e66_03709fbb",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-11T17:30:24Z",
+      "side": 1,
+      "message": "I\u0027ve expanded the documentation, but overall since this function is not exported I\u0027m not too concerned.  No test will be able to call it directly, and it\u0027s separated out from New() mostly for readability\u0027s sake.  I\u0027ve also moved Ping() out of the way since that function is no longer part of start().\n\ngolang style is to use very short variable names for values of limited scope, which I think this is - but I\u0027ve changed it to p for pipe and to match pDone and pResult.",
+      "parentUuid": "c8ca6a93_501b639c",
+      "range": {
+        "startLine": 108,
+        "startChar": 48,
+        "endLine": 108,
+        "endChar": 49
+      },
+      "revId": "5d0497250c4c83b78e5f990dbb1e6bc3f3506829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8f9e1687_45686a37",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-11T17:30:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90ec6243_14e12e27",
+      "range": {
+        "startLine": 120,
+        "startChar": 60,
+        "endLine": 120,
+        "endChar": 69
+      },
+      "revId": "5d0497250c4c83b78e5f990dbb1e6bc3f3506829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5802c81_94307251",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "5d0497250c4c83b78e5f990dbb1e6bc3f3506829",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9eb57463_596cb6a9",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-11T17:30:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5802c81_94307251",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 7
+      },
+      "revId": "5d0497250c4c83b78e5f990dbb1e6bc3f3506829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
