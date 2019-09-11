@@ -22,6 +22,30 @@
       "revId": "e3e54bccfe27225068668bb76fbdf5663a77e043",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08473764_594def48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2019-09-11T22:08:13Z",
+      "side": 1,
+      "message": "Discussed offline and filed a bug https://crbug.com/1002666.",
+      "parentUuid": "9e189d6d_14c1e62d",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 20
+      },
+      "revId": "e3e54bccfe27225068668bb76fbdf5663a77e043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
