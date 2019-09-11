@@ -1,0 +1,204 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "837762cb_b5858ebd",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-11T04:59:07Z",
+      "side": 1,
+      "message": "pipePath is not needed. You can just pass the opened *os.File to the start(), and read from it with sync.",
+      "revId": "0c474b8b5c42e83b3324ce562f404cd2f23fc833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5888194a_33ca4b12",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-11T04:59:07Z",
+      "side": 1,
+      "message": "nit/optional: how about just \"done\" here?",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 8
+      },
+      "revId": "0c474b8b5c42e83b3324ce562f404cd2f23fc833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d107df9_82c1df53",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-11T04:59:07Z",
+      "side": 1,
+      "message": "nit: no \": \" at the end. It is handled by errors package. (Sorry I overlooked this in the last iteration).",
+      "range": {
+        "startLine": 112,
+        "startChar": 55,
+        "endLine": 112,
+        "endChar": 57
+      },
+      "revId": "0c474b8b5c42e83b3324ce562f404cd2f23fc833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "988f110d_fd4d082e",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-11T04:59:07Z",
+      "side": 1,
+      "message": "You can poll the file directly. Could you find my comment above?",
+      "revId": "0c474b8b5c42e83b3324ce562f404cd2f23fc833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71093e5a_6ec51352",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-11T04:59:07Z",
+      "side": 1,
+      "message": "To match with the comment;\n\nif !bytes.HasPrefix(b, []byte(\"$\\0\\0\\0\")) {\n  ...\n}",
+      "revId": "0c474b8b5c42e83b3324ce562f404cd2f23fc833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3623f610_b822bf28",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-11T04:59:07Z",
+      "side": 1,
+      "message": "Do we need to check the trailing \u0027}\u0027? Is checking error for json.Unmarshal not enough?",
+      "range": {
+        "startLine": 137,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 3
+      },
+      "revId": "0c474b8b5c42e83b3324ce562f404cd2f23fc833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "890fb75e_8ffc582e",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-11T04:59:07Z",
+      "side": 1,
+      "message": "huge nit: \":\u003d\"",
+      "range": {
+        "startLine": 141,
+        "startChar": 9,
+        "endLine": 141,
+        "endChar": 10
+      },
+      "revId": "0c474b8b5c42e83b3324ce562f404cd2f23fc833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3f7e995_650075ad",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-11T04:59:07Z",
+      "side": 1,
+      "message": "For better encapsulation, I\u0027d recommend to use send a pair of (addr, err).\nAlso, you can just inline pipePoll inside the func to be slightly better encapsulation.",
+      "range": {
+        "startLine": 152,
+        "startChar": 2,
+        "endLine": 152,
+        "endChar": 13
+      },
+      "revId": "0c474b8b5c42e83b3324ce562f404cd2f23fc833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e321a405_d884ba65",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-11T04:59:07Z",
+      "side": 1,
+      "message": "Could you include ctx.Err() ?",
+      "revId": "0c474b8b5c42e83b3324ce562f404cd2f23fc833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06985c15_033d1124",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-11T04:59:07Z",
+      "side": 1,
+      "message": "Could you add log? Probably same for L197 case?",
+      "revId": "0c474b8b5c42e83b3324ce562f404cd2f23fc833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
