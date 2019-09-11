@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5509fd68_1c909f09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-11T13:27:59Z",
+      "side": 1,
+      "message": "Do you have any concrete plan to address this TODO? If so, could you file a tracking bug with a description of the approach?\n\nAs you know, sleeping for a fixed amount of time is popular source of flakiness and inefficiency. We should almost always avoid it.\n\nIf there is a concrete plan, I think it\u0027s okay, but otherwise I\u0027m afraid this TODO might never be addressed...",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 84
+      },
+      "revId": "6e097f56c09cb811081ad502da7f66083f1bdb0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d4cd825_2e5fea69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-11T13:27:59Z",
+      "side": 1,
+      "message": "maybe: freeform?",
+      "range": {
+        "startLine": 91,
+        "startChar": 15,
+        "endLine": 91,
+        "endChar": 23
+      },
+      "revId": "6e097f56c09cb811081ad502da7f66083f1bdb0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
