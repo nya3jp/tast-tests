@@ -85,14 +85,9 @@ func cryptoDigest(method, data string, size int) (_ []byte, err error) {
 	if err.(unix.Errno) != 0 {
 		return nil, errors.Wrap(err, "failed on accept syscall")
 	}
-	defer func() {
-		if cerr := unix.Close(int(hashFD)); cerr != nil && err == nil {
-			err = errors.Wrap(cerr, "failed to close FD used for hash computation")
-		}
-	}()
-
 	// Create an io.ReadWriter for the FD. Filename doesn't matter; it's not a real file in the file system.
 	h := os.NewFile(hashFD, "")
+	defer h.Close()
 	if _, err := io.WriteString(h, data); err != nil {
 		return nil, errors.Wrap(err, "failed to write data to compute hash for")
 	}
