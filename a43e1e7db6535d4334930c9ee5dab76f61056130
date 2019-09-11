@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0da9f79_a96eddea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-11T13:55:17Z",
+      "side": 1,
+      "message": "huge nit: I recommend \"FocusedNode\" since we tend to omit \"get\" for getters in Go.\n\nhttps://golang.org/doc/effective_go.html#Getters",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 19
+      },
+      "revId": "a43e1e7db6535d4334930c9ee5dab76f61056130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af078478_25653842",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-11T13:55:17Z",
+      "side": 1,
+      "message": "If type T is not a value-like type (e.g. time.Time), typically *T is used to carry values. In this case AutomationNode is not a value-like type IIUC, so I recommend always using *AutomationNode.\n\nSame comment goes for functions taking AutomationNode as arguments.",
+      "range": {
+        "startLine": 54,
+        "startChar": 70,
+        "endLine": 54,
+        "endChar": 84
+      },
+      "revId": "a43e1e7db6535d4334930c9ee5dab76f61056130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4b76f27_60c96c54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-11T13:55:17Z",
+      "side": 1,
+      "message": "nit: control flow here is a bit inconsistent, how about:\n\n if err !\u003d nil {\n   ...\n }\n if focusedNode.ClassName !\u003d node.ClassName {\n   ...\n }\n if diff :\u003d cmp.Diff(...); diff !\u003d \"\" {\n   ...\n }\n\nor\n\n if err !\u003d nil {\n   ...\n } else if focusedNode.ClassName !\u003d node.ClassName {\n   ...\n } else if diff :\u003d cmp.Diff(...); diff !\u003d \"\" {\n   ...\n }",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 7
+      },
+      "revId": "a43e1e7db6535d4334930c9ee5dab76f61056130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25af34b5_ba00b866",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-11T13:55:17Z",
+      "side": 1,
+      "message": "Please avoid including multiline messages in \"error\" type:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting\n\nIn this case AutomationNode type is fairly small, how about printing the whole struct?\n\n errors.Errorf(\"focused node is %q, want %q\", focusedNode, node)",
+      "range": {
+        "startLine": 209,
+        "startChar": 25,
+        "endLine": 209,
+        "endChar": 71
+      },
+      "revId": "a43e1e7db6535d4334930c9ee5dab76f61056130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
