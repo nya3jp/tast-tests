@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05dd4a85_eeb59174",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_activity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-11T22:50:55Z",
+      "side": 1,
+      "message": "nit: \nTODO(rbug.com/1002666): Remove act.Stop() once the bug gets fixed.",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 20
+      },
+      "revId": "4b045f30d9e44b56ba1cb134944992b0564ba16e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
