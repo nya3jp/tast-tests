@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abb7b7c9_89186581",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2019-09-11T17:35:57Z",
+      "side": 1,
+      "message": "nit: BTW, is this a word? I don\u0027t know it yet :)",
+      "range": {
+        "startLine": 74,
+        "startChar": 46,
+        "endLine": 74,
+        "endChar": 49
+      },
+      "revId": "0adf70d62d503af8dda79ef017c484666692846c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
