@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aba1f715_96caeff9",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2019-09-11T08:28:04Z",
+      "side": 1,
+      "message": "nit: I think it would be clearer to say:\n\n3 is the file descriptor assigned to cmd.ExtraFiles[0] (set further below).\nSee documentation of cmd.ExtraFiles for details.",
+      "range": {
+        "startLine": 74,
+        "startChar": 28,
+        "endLine": 74,
+        "endChar": 53
+      },
+      "revId": "5d0497250c4c83b78e5f990dbb1e6bc3f3506829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8ca6a93_501b639c",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2019-09-11T08:28:04Z",
+      "side": 1,
+      "message": "Should we document that start() expects |f| to remain valid during its execution, but does not care about it afterwards? (so it\u0027s clear that the deferred close() done in New(..) is OK )\n\nAlso nit: Could we use a more descriptive argument name for this, e.g. startup_pipe ? (not sure about golang style) :)",
+      "range": {
+        "startLine": 108,
+        "startChar": 48,
+        "endLine": 108,
+        "endChar": 49
+      },
+      "revId": "5d0497250c4c83b78e5f990dbb1e6bc3f3506829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90ec6243_14e12e27",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2019-09-11T08:28:04Z",
+      "side": 1,
+      "message": "nit: has completed starting up.",
+      "range": {
+        "startLine": 120,
+        "startChar": 60,
+        "endLine": 120,
+        "endChar": 69
+      },
+      "revId": "5d0497250c4c83b78e5f990dbb1e6bc3f3506829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5802c81_94307251",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2019-09-11T08:28:04Z",
+      "side": 1,
+      "message": "Do we want a shorter timeout here than the test timeout?\nSounds like if the server has not started up in e.g. 10 seconds something should be seriously wrong and we could abort early.",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 7
+      },
+      "revId": "5d0497250c4c83b78e5f990dbb1e6bc3f3506829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
