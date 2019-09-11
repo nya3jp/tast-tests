@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61f0a7e2_d99631b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/addtest/addtest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-11T19:48:34Z",
+      "side": 1,
+      "message": "two things:\n* Since this is a local with a very limited scope and a commented purpose, you can call this something simpler (regex or r or whatnot).\n* It doesn\u0027t need to be var, you can assign this with\n\n regex :\u003d regexp.MustCompile(\"...\")",
+      "revId": "f9b6c635834eb238085ba82abd5f3421c510f4b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39b6463a_a2003ceb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/addtest/addtest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-11T19:48:34Z",
+      "side": 1,
+      "message": "since this ranging over a statically-known array with one element, why not just\n\n return regex.ReplaceAllLiteralString(content, \"\")",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 20
+      },
+      "revId": "f9b6c635834eb238085ba82abd5f3421c510f4b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b35b30b_c5474553",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/addtest/addtest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-11T19:48:34Z",
+      "side": 1,
+      "message": "doesn\u0027t look like we use this in here",
+      "range": {
+        "startLine": 37,
+        "startChar": 15,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "f9b6c635834eb238085ba82abd5f3421c510f4b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
