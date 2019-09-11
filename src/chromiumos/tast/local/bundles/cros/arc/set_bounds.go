@@ -76,28 +76,18 @@ func SetBounds(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get device: ", err)
 	}
 
-	disp, err := arc.NewDisplay(a, arc.DefaultDisplayID)
-	if err != nil {
-		s.Fatal("Failed to obtain a default display: ", err)
-	}
-
 	if err := act.WaitForIdle(ctx, time.Second); err != nil {
 		s.Fatal("Failed to wait for idle activity: ", err)
 	}
 
-	captionHeight, err := disp.CaptionHeight(ctx)
-	if err != nil {
-		s.Fatal("Failed to get arc size: ", err)
-	}
-
 	// Validate initial window size.
-	activityBounds, err := act.WindowBounds(ctx)
+	activityBounds, err := act.SurfaceBounds(ctx)
 	if err != nil {
 		s.Fatal("Failed to get window bounds: ", err)
 	}
 
-	if activityBounds.Height != initialHeight+captionHeight || activityBounds.Width != initialWidth {
-		s.Fatalf("Unexpected window size: got (%d, %d); want (%d, %d)", activityBounds.Width, activityBounds.Height, initialWidth, initialHeight+captionHeight)
+	if activityBounds.Height != initialHeight || activityBounds.Width != initialWidth {
+		s.Fatalf("Unexpected window size: got (%d, %d); want (%d, %d)", activityBounds.Width, activityBounds.Height, initialWidth, initialHeight)
 	}
 
 	clickButtonAndValidateBounds := func(buttonId string, expected arc.Rect) {
@@ -108,9 +98,7 @@ func SetBounds(ctx context.Context, s *testing.State) {
 
 		// Wait until the bounds to be the expected one.
 		err := testing.Poll(ctx, func(ctx context.Context) error {
-			bounds, err := act.WindowBounds(ctx)
-			bounds.Top += captionHeight
-			bounds.Height -= captionHeight
+			bounds, err := act.SurfaceBounds(ctx)
 			if err != nil {
 				s.Fatal("Failed to get window bounds: ", err)
 			}
