@@ -23,7 +23,7 @@ func init() {
 		Contacts: []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		// TODO(shik): Re-enabled it after b/138828180 resolved.
 		Attr:         []string{"disabled"},
-		SoftwareDeps: []string{"chrome", caps.BuiltinCamera},
+		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js", "human_face.y4m"},
 	})
 }

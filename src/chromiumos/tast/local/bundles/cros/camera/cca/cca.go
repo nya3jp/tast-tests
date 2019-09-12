@@ -343,6 +343,15 @@ func (a *App) GetState(ctx context.Context, state string) (bool, error) {
 	return result, nil
 }
 
+// IsTabletMode returns true if the device is under tablet mode.
+func (a *App) IsTabletMode(ctx context.Context) (bool, error) {
+	var isTabletMode bool
+	if err := a.conn.EvalPromise(ctx, "Tast.isTabletMode()", &isTabletMode); err != nil {
+		return false, err
+	}
+	return isTabletMode, nil
+}
+
 // PortraitModeSupported returns whether portrait mode is supported by the current active video device.
 func (a *App) PortraitModeSupported(ctx context.Context) (bool, error) {
 	var result bool
