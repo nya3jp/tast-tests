@@ -16,6 +16,24 @@
       "revId": "534f888219fcf48ef7dfe80840918e64aba30545",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efcadb15_021b2808",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-09-12T08:10:21Z",
+      "side": 1,
+      "message": "I think the caller (the gtest object in Tast) should be able to differentiate between the binary crashing and tests failing.\n- I find it quite dirty to add a parameter such as \"--pass_all_tests\" to the video_decode_accelerator_tests binary. I want to keep those tests clean and easy to use, and don\u0027t want to end up in a situation where we have parameters such as \"--ignore_this_thing\". A parameter to overwrite test results doesn\u0027t seem like good practice IMHO.\n- This would also mean I would have to add this parameter to our performance tests, image processor tests,... should I need similar behavior in the future.\n\nAs I see it, it\u0027s the caller\u0027s responsibility to differentiate between a crash and test failure. There are multiple options to do so. Maybe we should agree on some behavior for the gtest Tast object?",
+      "parentUuid": "edb8a73a_a2babdcd",
+      "revId": "534f888219fcf48ef7dfe80840918e64aba30545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
