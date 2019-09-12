@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "08224eaf_11a3ed29",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-09-12T08:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b7eef62_60ba8696",
+      "range": {
+        "startLine": 38,
+        "startChar": 63,
+        "endLine": 38,
+        "endChar": 66
+      },
+      "revId": "cab4f5ff556b6edcd0a4a97d5b0a216f341d3302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6459a2d_8df5760e",
         "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "390daf5a_31c4caec",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-09-12T08:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6459a2d_8df5760e",
+      "range": {
+        "startLine": 46,
+        "startChar": 7,
+        "endLine": 46,
+        "endChar": 13
+      },
+      "revId": "cab4f5ff556b6edcd0a4a97d5b0a216f341d3302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8df40a1e_8eff2bf5",
         "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "cab4f5ff556b6edcd0a4a97d5b0a216f341d3302",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e44aeb3_fb09fea9",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-09-12T08:37:03Z",
+      "side": 1,
+      "message": "Interesting, didn\u0027t know that would work, thanks!",
+      "parentUuid": "8df40a1e_8eff2bf5",
+      "range": {
+        "startLine": 91,
+        "startChar": 18,
+        "endLine": 91,
+        "endChar": 21
+      },
+      "revId": "cab4f5ff556b6edcd0a4a97d5b0a216f341d3302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
