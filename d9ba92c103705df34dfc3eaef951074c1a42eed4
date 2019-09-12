@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c58de5a_ac19022a",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-12T12:17:54Z",
+      "side": 1,
+      "message": "How about overwriting retErr only when it is nil? Otherwise the first error is hidden, which might be a bit confusing on debugging failures.",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 17
+      },
+      "revId": "d9ba92c103705df34dfc3eaef951074c1a42eed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
