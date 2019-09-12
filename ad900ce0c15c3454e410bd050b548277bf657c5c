@@ -46,6 +46,30 @@
       "revId": "ad900ce0c15c3454e410bd050b548277bf657c5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "850d152e_9a15435f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1342022
+      },
+      "writtenOn": "2019-09-12T18:02:52Z",
+      "side": 1,
+      "message": "I have added Params for non-static and static tests. Please let me know if I missed something. Thanks.",
+      "parentUuid": "6209b75c_0ed6bc53",
+      "range": {
+        "startLine": 378,
+        "startChar": 2,
+        "endLine": 379,
+        "endChar": 35
+      },
+      "revId": "ad900ce0c15c3454e410bd050b548277bf657c5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
