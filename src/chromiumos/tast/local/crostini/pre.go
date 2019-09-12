@@ -44,6 +44,10 @@ func StartedByArtifact() testing.Precondition { return startedByArtifactPre }
 // use pass enable-gpu to vm instance to allow gpu being used.
 func StartedGPUEnabled() testing.Precondition { return startedGPUEnabledPre }
 
+// StartedARCEnabled is similar to StartedByArtifact, but will start Chrome
+// with ARC enabled.
+func StartedARCEnabled() testing.Precondition { return startedARCEnabledPre }
+
 type setupMode int
 
 const (
@@ -70,14 +74,22 @@ var startedGPUEnabledPre = &preImpl{
 	mode:    gpu,
 }
 
+var startedARCEnabledPre = &preImpl{
+	name:       "crostini_started_arc_enabled",
+	timeout:    chrome.LoginTimeout + 10*time.Minute,
+	mode:       artifact,
+	arcEnabled: true,
+}
+
 // Implementation of crostini's precondition.
 type preImpl struct {
-	name    string
-	timeout time.Duration
-	cr      *chrome.Chrome
-	tconn   *chrome.Conn
-	cont    *vm.Container
-	mode    setupMode
+	name       string
+	timeout    time.Duration
+	cr         *chrome.Chrome
+	tconn      *chrome.Conn
+	cont       *vm.Container
+	mode       setupMode
+	arcEnabled bool
 }
 
 // Interface methods for a testing.Precondition.
@@ -105,8 +117,13 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 		}
 	}()
 
+	opt := chrome.ARCDisabled()
+	if p.arcEnabled {
+		opt = chrome.ARCEnabled()
+	}
+
 	var err error
-	if p.cr, err = chrome.New(ctx); err != nil {
+	if p.cr, err = chrome.New(ctx, opt); err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
 	s.Log("Enabling Crostini preference setting")
