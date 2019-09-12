@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "20a87568_f4b1879e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vp8_odd_dimensions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-12T12:14:34Z",
+      "side": 1,
+      "message": "I\u0027m just curious: what happens if we run this test? I assume something really bad happens given that we disable it rather than tracking status in informational testing.",
+      "range": {
+        "startLine": 20,
+        "startChar": 24,
+        "endLine": 20,
+        "endChar": 75
+      },
+      "revId": "d5c5ff956103dfa87a62747b68d3f2dc755f13fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "98f0d46c_983774d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vp9_odd_dimensions.go",
         "patchSetId": 3
