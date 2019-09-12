@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc9099cc_76297d80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-09-12T02:12:26Z",
+      "side": 1,
+      "message": "unless you need to treat the 2 separately, it\u0027s common to use shadow (reassign) ctx each time\ns/watchCancel/cancel",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 23
+      },
+      "revId": "c91aece308414789c48dc8d69738fe5849e84399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a5e6c1e_ea27c4ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-09-12T02:12:26Z",
+      "side": 1,
+      "message": "I\u0027m not sure why tast has it\u0027s own error package or what the semantics are but in Go errors strings are not full sentences which is why they always start in lowercase. So while these look right to me, they\u0027re inconsistent with the ones above... If this intentional then ignore this comment.",
+      "range": {
+        "startLine": 91,
+        "startChar": 25,
+        "endLine": 91,
+        "endChar": 31
+      },
+      "revId": "c91aece308414789c48dc8d69738fe5849e84399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70b44794_681f2c5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-09-12T02:12:26Z",
+      "side": 1,
+      "message": "can you add a comment describing this function (and indicating it closes over d so shouldn\u0027t be called concurrently?",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 9
+      },
+      "revId": "c91aece308414789c48dc8d69738fe5849e84399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42ab541b_a380ae55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-09-12T02:12:26Z",
+      "side": 1,
+      "message": "didn\u0027t you write this once before? make a net testing package maybe?",
+      "range": {
+        "startLine": 152,
+        "startChar": 5,
+        "endLine": 152,
+        "endChar": 17
+      },
+      "revId": "c91aece308414789c48dc8d69738fe5849e84399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47355092_f55ea75c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multicast_forwarder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2019-09-12T02:12:26Z",
+      "side": 1,
+      "message": "if !sc.Scan() {\n  continue\n}\n\nunnest...",
+      "revId": "c91aece308414789c48dc8d69738fe5849e84399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
