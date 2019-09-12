@@ -9,10 +9,13 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
+	"chromiumos/tast/crash"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/gtest"
@@ -223,6 +226,12 @@ func RunAccelVideoTestNew(ctx context.Context, s *testing.State, filename string
 	upstart.StopJob(shortCtx, "ui")
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
+	// List old crash dumps so we can store any new crash dumps after test execution.
+	oldCrashDumps, err := crash.GetCrashes(crash.ChromeCrashDir)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to list old crash dumps: ", err)
+	}
+
 	args := []string{
 		s.DataPath(filename),
 		s.DataPath(filename + ".json"),
@@ -244,6 +253,43 @@ func RunAccelVideoTestNew(ctx context.Context, s *testing.State, filename string
 			for _, name := range report.FailedTestNames() {
 				s.Error(name, " failed")
 			}
+		}
+
+		// Check whether any new core dumps were generated
+		newCrashDumps, err := crash.GetCrashes(crash.ChromeCrashDir)
+		if err != nil {
+			s.Fatal("Failed to list new crash dumps: ", err)
+		}
+
+		var coreDumpFile string
+		oldCrashDumpMap := make(map[string]bool)
+		for _, oldCrashDump := range oldCrashDumps {
+			oldCrashDumpMap[oldCrashDump] = true
+		}
+		for _, newCrashDump := range newCrashDumps {
+			if _, ok := oldCrashDumpMap[newCrashDump]; !ok && strings.HasSuffix(newCrashDump, ".core") {
+				coreDumpFile = newCrashDump
+				break
+			}
+		}
+		if coreDumpFile == "" {
+			testing.ContextLog(ctx, "No new core dumps found")
+			return
+		}
+
+		// The core dump files can be quite big, so we use gdb to extract the
+		// stack trace from the core dump. The stack trace is stored in the
+		// output directory so it's saved as test artifact.
+		output, err := testexec.CommandContext(ctx, "gdb", "--batch",
+			"--quiet", "-ex", "thread apply all bt full", "-ex", "quit",
+			filepath.Join(chrome.BinTestDir, exec), coreDumpFile).CombinedOutput()
+		if err != nil {
+			s.Fatal("Failed to extract stack trace from core dump: ", err)
+		}
+
+		stackTracePath := filepath.Join(s.OutDir(), "stacktrace.log")
+		if err := ioutil.WriteFile(stackTracePath, output, os.ModePerm); err != nil {
+			s.Fatal("Failed to write stack trace to file: ", err)
 		}
 	}
 }
