@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28691c1f_7f7e217d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-12T01:08:27Z",
+      "side": 1,
+      "message": "Could you split the test into two parameterized test?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-tests\n\nfor non-static and static. Then, disable only static part?",
+      "range": {
+        "startLine": 378,
+        "startChar": 2,
+        "endLine": 379,
+        "endChar": 35
+      },
+      "revId": "ad900ce0c15c3454e410bd050b548277bf657c5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
