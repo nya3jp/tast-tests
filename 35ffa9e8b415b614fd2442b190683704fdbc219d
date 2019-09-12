@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e276e48_577b5531",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-12T01:21:39Z",
+      "side": 1,
+      "message": "nit:\nAccording to your comments on crbug.com/1003016, this comment is a bit confusing to me.\nFor example, TaskRecordArc.mAppBounds corresponds to SurfaceBounds, not WindowBounds.\n\nHow about replacing \u0027the activity thinks it has\u0027 by \u0027Chrome/Aura thinks it has\u0027?",
+      "range": {
+        "startLine": 213,
+        "startChar": 2,
+        "endLine": 213,
+        "endChar": 96
+      },
+      "revId": "35ffa9e8b415b614fd2442b190683704fdbc219d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
