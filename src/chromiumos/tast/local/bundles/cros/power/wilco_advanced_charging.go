@@ -47,7 +47,7 @@ func init() {
 // The policy also affects the charging rate, but it is easier just to test for
 // charging/no-charging. This serves mostly as an integration test, to check
 // that we can communicate with the EC. See the following link for more info:
-// https://www.chromium.org/administrators/policy-list-3#DeviceAdvancedBatteryChargeModeEnabled
+// https://cloud.google.com/docs/chrome-enterprise/policies/?policy=DeviceAdvancedBatteryChargeModeEnabled
 func WilcoAdvancedCharging(ctx context.Context, s *testing.State) {
 	// If the main body of the test times out, we still want to reserve a few
 	// seconds to allow for our cleanup code to run.
