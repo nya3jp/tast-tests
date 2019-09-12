@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4cad685_9905f3ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-12T14:05:48Z",
+      "side": 1,
+      "message": "style: In go, prefixes of getters, like \"Get\", \"is\", \"has\" etc, are dropped.\nGpuDevices().",
+      "range": {
+        "startLine": 171,
+        "startChar": 3,
+        "endLine": 171,
+        "endChar": 16
+      },
+      "revId": "fbdcf4f56c4167f0b8373d83214ef66003617c36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7a2a538_5aebe8de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-12T14:05:48Z",
+      "side": 1,
+      "message": "This is only needed in selinux_files_arc.\nSo, how about moving L190-210 to the file?\nYou can call GpuDevices() then iterate over the returned value.",
+      "range": {
+        "startLine": 173,
+        "startChar": 32,
+        "endLine": 173,
+        "endChar": 46
+      },
+      "revId": "fbdcf4f56c4167f0b8373d83214ef66003617c36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66825c0a_e79af03f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-12T14:05:48Z",
+      "side": 1,
+      "message": "huge nit: based on surrounding context, \"gpu\" looks clear enough.\nHow about just \"devices\", as go prefers shorter name?",
+      "range": {
+        "startLine": 174,
+        "startChar": 5,
+        "endLine": 174,
+        "endChar": 15
+      },
+      "revId": "fbdcf4f56c4167f0b8373d83214ef66003617c36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb76fdf9_53235da2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-12T14:05:48Z",
+      "side": 1,
+      "message": "Should these be empty arrays? Or, should it be necessary to run loop at L180 till end?",
+      "range": {
+        "startLine": 183,
+        "startChar": 10,
+        "endLine": 183,
+        "endChar": 34
+      },
+      "revId": "fbdcf4f56c4167f0b8373d83214ef66003617c36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef064a03_22f9f204",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-12T14:05:48Z",
+      "side": 1,
+      "message": "nit/style: you can revert this part \"testArgs :\u003d\" because there\u0027s no code to append to declared testArgs above.",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 11
+      },
+      "revId": "fbdcf4f56c4167f0b8373d83214ef66003617c36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
