@@ -9,10 +9,12 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/crash"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/gtest"
@@ -21,6 +23,7 @@ import (
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/local/sysutil"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -222,6 +225,12 @@ func RunAccelVideoTestNew(ctx context.Context, s *testing.State, filename string
 	upstart.StopJob(shortCtx, "ui")
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
+	// List old crash dumps so we can store any new crash dumps after test execution.
+	oldCrashDumps, err := crash.GetCrashes(crash.ChromeCrashDir)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to list old crash dumps: ", err)
+	}
+
 	args := []string{
 		s.DataPath(filename),
 		s.DataPath(filename + ".json"),
@@ -243,6 +252,31 @@ func RunAccelVideoTestNew(ctx context.Context, s *testing.State, filename string
 			for _, name := range report.FailedTestNames() {
 				s.Error(name, " failed")
 			}
+		}
+
+		// Collect all new crash dumps that were generated. The crash dumps can
+		// be quite big so they are compressed into crashdumps.zip. The archive
+		// is stored in the output directory so it's saved as test artifact.
+		crashDumpFolder, err := ioutil.TempDir("", "crashdumps")
+		if err != nil {
+			s.Fatal("Failed to create temporary crash dump folder: ", err)
+		}
+		newCrashDumps, err := crash.GetCrashes(crash.ChromeCrashDir)
+		if err != nil {
+			s.Fatal("Failed to list new crash dumps: ", err)
+		}
+		warnings, err := crash.CopyNewFiles(crashDumpFolder, newCrashDumps, oldCrashDumps, 3)
+		if err != nil {
+			s.Fatal("Failed to copy crash dumps: ", err)
+		}
+		for file, err := range warnings {
+			testing.ContextLogf(ctx, "Failed to copy crash dump %s: %v", file, err)
+		}
+		crashDumpZip := filepath.Join(s.OutDir(), "crashdumps.zip")
+		testing.ContextLog(ctx, "Storing crash dumps in ", crashDumpZip)
+		zipCmd := testexec.CommandContext(ctx, "zip", "-mr", crashDumpZip, crashDumpFolder)
+		if err := zipCmd.Run(); err != nil {
+			s.Fatal("Failed to compress crash dumps: ", err)
 		}
 	}
 }
