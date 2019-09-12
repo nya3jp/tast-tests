@@ -10,6 +10,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/camera/cca"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/caps"
+	"chromiumos/tast/local/media/vm"
 	"chromiumos/tast/testing"
 )
 
@@ -19,7 +20,7 @@ func init() {
 		Desc:         "Opens CCA and verifies the multi-camera related use cases",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome", caps.BuiltinCamera},
+		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
 		Pre:          chrome.LoggedIn(),
 	})
@@ -44,10 +45,36 @@ func CCAUIMultiCamera(ctx context.Context, s *testing.State) {
 		s.Fatal("Can't get number of cameras: ", err)
 	}
 
-	// CCA should open front camera as default.
-	if err := app.CheckFacing(ctx, cca.FacingFront); err != nil {
-		s.Fatal("Check facing failed: ", err)
+	tconn, err := cr.TestAPIConn(ctx)
+
+	checkFacing := func() {
+		// If it is a VM, there is no need to check the camera facing since it don't
+		// have any builtin cameras.
+		if vm.IsRunningOnVM() {
+			return
+		}
+
+		// CCA should open back camera as default if the device is under tablet
+		// mode and open front camera as default for clamshell mode.
+		var isTabletMode bool
+		if err := tconn.EvalPromise(ctx,
+			`tast.promisify(chrome.autotestPrivate.isTabletModeEnabled)()`,
+			&isTabletMode); err != nil {
+			s.Fatal("Failed to recognize device mode: ", err)
+		}
+		var defaultFacing cca.Facing
+		if isTabletMode {
+			defaultFacing = cca.FacingBack
+		} else {
+			defaultFacing = cca.FacingFront
+		}
+
+		if err := app.CheckFacing(ctx, defaultFacing); err != nil {
+			s.Fatal("Check facing failed: ", err)
+		}
 	}
+
+	checkFacing()
 
 	if numCameras > 1 {
 		// Set grid option.
@@ -81,8 +108,7 @@ func CCAUIMultiCamera(ctx context.Context, s *testing.State) {
 		s.Fatal("Preview is inactive after launching App: ", err)
 	}
 
-	// CCA should still open front camera regardless of what was opened last time.
-	if err := app.CheckFacing(ctx, cca.FacingFront); err != nil {
-		s.Fatal("Check facing failed: ", err)
-	}
+	// CCA should still open default camera regardless of what was opened last
+	// time.
+	checkFacing()
 }

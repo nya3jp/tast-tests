@@ -19,7 +19,7 @@ func init() {
 		Desc:         "Opens CCA and verifies the use cases of preview options like grid and mirror",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"chrome", caps.BuiltinCamera},
+		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
 		Pre:          chrome.LoggedIn(),
 	})
@@ -45,12 +45,25 @@ func CCAUIPreviewOptions(ctx context.Context, s *testing.State) {
 		s.Error("Mirroring button unexpectedly disappeared")
 	}
 
-	// The default camera should be front camera, and mirroring should be enabled.
-	if mirrored, err := app.Mirrored(ctx); err != nil {
-		s.Error("Failed to get mirrored state: ", err)
-	} else if !mirrored {
-		s.Error("Mirroring unexpectedly disabled")
+	checkMirror := func() bool {
+		var facing cca.Facing
+		if facing, err = app.GetFacing(ctx); err != nil {
+			s.Fatal("Failed to get camera facing")
+			return false
+		}
+		// Mirror should be enabled for front / external camera and should be
+		// disabled for back camera.
+		var mirrored bool
+		if mirrored, err = app.Mirrored(ctx); err != nil {
+			s.Error("Failed to get mirrored state: ", err)
+		} else if mirrored != (facing != cca.FacingBack) {
+			s.Errorf("Mirroring state is unexpected: got %v, want %v", mirrored, facing != cca.FacingBack)
+		}
+		return mirrored
 	}
+
+	// Check mirror for default camera.
+	firstCameraDefaultMirror := checkMirror()
 
 	_, err = app.ToggleMirroringOption(ctx)
 	if err != nil {
@@ -64,34 +77,28 @@ func CCAUIPreviewOptions(ctx context.Context, s *testing.State) {
 
 	if numCameras > 1 {
 		s.Log("Testing multi-camera scenario")
-		// Switch camera.
+		for i := 1; i < numCameras; i++ {
+			// Switch camera.
+			if err := app.SwitchCamera(ctx); err != nil {
+				s.Fatal("Switching camera failed: ", err)
+			}
+
+			// Check default mirrored.
+			checkMirror()
+		}
+
+		// Switch back to the first camera.
 		if err := app.SwitchCamera(ctx); err != nil {
 			s.Fatal("Switching camera failed: ", err)
 		}
 
-		facing, err := app.GetFacing(ctx)
-		if err != nil {
-			s.Fatal("Geting facing failed: ", err)
-		}
-
-		// Front facing and external camera should turn on mirror by default.
-		// Back camera should not.
+		// Mirror state should persist for each camera respectively. Since the
+		// mirror state of first camera is toggled, the state should be different
+		// from the default one.
 		if mirrored, err := app.Mirrored(ctx); err != nil {
 			s.Error("Failed to get mirrored state: ", err)
-		} else if mirrored != (facing != cca.FacingBack) {
-			s.Errorf("Mirroring state is unexpected: got %v, want %v", mirrored, facing != cca.FacingBack)
-		}
-
-		// Switch camera.
-		if err := app.SwitchCamera(ctx); err != nil {
-			s.Fatal("Switching camera failed: ", err)
-		}
-
-		// Mirror state should persist for each camera respectively.
-		if mirrored, err := app.Mirrored(ctx); err != nil {
-			s.Error("Failed to get mirrored state: ", err)
-		} else if mirrored {
-			s.Error("Mirroring unexpectedly enabled")
+		} else if mirrored == firstCameraDefaultMirror {
+			s.Error("Mirroring does not persist correctly")
 		}
 	}
 }
