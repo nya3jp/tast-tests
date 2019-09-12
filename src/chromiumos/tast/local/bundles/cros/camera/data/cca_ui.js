@@ -259,5 +259,14 @@ window.Tast = class {
     }
     return track.getSettings().deviceId;
   }
+
+  /**
+   * Gets if the device is under tablet mode.
+   * @return {boolean} True if the device is under tablet mode.
+   */
+  static async isTabletMode() {
+    const chromeHelper = cca.mojo.ChromeHelper.getInstance();
+    return await chromeHelper.isTabletMode();
+  }
 };
 })();

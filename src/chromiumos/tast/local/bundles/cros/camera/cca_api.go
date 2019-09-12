@@ -21,7 +21,7 @@ func init() {
 		Desc:         "Verifies that the private JavaScript APIs CCA relies on work as expected",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{caps.BuiltinCamera, "chrome"},
+		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_api_can_access_external_storage.js"},
 	})
 }
