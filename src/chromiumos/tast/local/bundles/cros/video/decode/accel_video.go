@@ -13,6 +13,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/crash"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/gtest"
@@ -222,6 +223,12 @@ func RunAccelVideoTestNew(ctx context.Context, s *testing.State, filename string
 	upstart.StopJob(shortCtx, "ui")
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
+	// List old crash dumps so we can store any new crash dumps after test execution.
+	oldCrashDumps, err := crash.GetCrashes(crash.ChromeCrashDir)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to list old crash dumps: ", err)
+	}
+
 	args := []string{
 		s.DataPath(filename),
 		s.DataPath(filename + ".json"),
@@ -242,6 +249,17 @@ func RunAccelVideoTestNew(ctx context.Context, s *testing.State, filename string
 		if report != nil {
 			for _, name := range report.FailedTestNames() {
 				s.Error(name, " failed")
+			}
+		}
+
+		// Copy any new crash dumps that were generated to the test directory
+		// so they are stored as test artifacts.
+		newCrashDumps, err := crash.GetCrashes(crash.ChromeCrashDir)
+		if err != nil {
+			testing.ContextLog(ctx, "Failed to list new crash dumps: ", err)
+		} else {
+			if _, err = crash.CopyNewFiles(s.OutDir(), newCrashDumps, oldCrashDumps, 0); err != nil {
+				testing.ContextLog(ctx, "Failed to copy crash dump files dumps: ", err)
 			}
 		}
 	}
