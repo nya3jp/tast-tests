@@ -47,7 +47,7 @@ func init() {
 //  - Use AC, but don't charge the battery (medium AC usage)
 //  - Don't use AC, and run off just the battery. (no AC usage)
 // For more information, see
-// https://www.chromium.org/administrators/policy-list-3#DevicePowerPeakShiftEnabled
+// https://cloud.google.com/docs/chrome-enterprise/policies/?policy=DevicePowerPeakShiftEnabled
 //
 // In order to test all aspects of the policy, it must be possible for the
 // EC to charge the battery. That would require the battery level to be
