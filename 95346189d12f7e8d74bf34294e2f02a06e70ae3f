@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5782cef8_b868895f",
+        "filename": "helpers/local/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-09-12T13:54:19Z",
+      "side": 1,
+      "message": "We need another rule here to generate symbol dump file for breakpad like:\n$ dumpsyms platform.UserCrash.crasher \u003e platform.UserCrash.crasher.sym\nand then .ebuild will also need update to install this file or deliver as a test data file.",
+      "revId": "95346189d12f7e8d74bf34294e2f02a06e70ae3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
