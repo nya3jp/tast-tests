@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "ffa669ca_495e6890",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-13T07:38:11Z",
+      "side": 1,
+      "message": "Never mind.",
+      "parentUuid": "93248270_e5aaee79",
+      "range": {
+        "startLine": 440,
+        "startChar": 58,
+        "endLine": 440,
+        "endChar": 68
+      },
+      "revId": "4f0be9f1ba68e3e824e11bdc198b949f72875b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee202ba5_34c7d616",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 2
