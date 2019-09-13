@@ -8,6 +8,7 @@ package assistant
 import (
 	"context"
 	"fmt"
+	"strconv"
 
 	"chromiumos/tast/local/chrome"
 )
@@ -55,4 +56,22 @@ func SendTextQuery(ctx context.Context, tconn *chrome.Conn, query string) (Respo
 	var re Response
 	err := tconn.EvalPromise(ctx, expr, &re)
 	return re, err
+}
+
+// ToggleHotword turns on/off "OK Google" hotword detection for Assistant.
+func ToggleHotword(ctx context.Context, tconn *chrome.Conn, enabled bool) error {
+	e := strconv.FormatBool(enabled)
+	expr := fmt.Sprintf(
+		`new Promise((resolve, reject) => {
+		  chrome.autotestPrivate.setWhitelistedPref(
+		      'settings.voice_interaction.hotword.enabled', %s,
+		      () => {
+		        if (chrome.runtime.lastError === undefined) {
+		          resolve();
+		        } else {
+		          reject(chrome.runtime.lastError.message);
+		        }
+		      });
+		  })`, e)
+	return tconn.EvalPromise(ctx, expr, nil)
 }
