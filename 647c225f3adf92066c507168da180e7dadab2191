@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "869eccaa_1a94cf7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/arc_proto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1315044
+      },
+      "writtenOn": "2019-09-13T21:05:29Z",
+      "side": 1,
+      "message": "I think it will just gets 0 for different displays. But it\u0027s OK if we don\u0027t use it and just test fetching the proto.",
+      "range": {
+        "startLine": 66,
+        "startChar": 26,
+        "endLine": 66,
+        "endChar": 31
+      },
+      "revId": "647c225f3adf92066c507168da180e7dadab2191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
