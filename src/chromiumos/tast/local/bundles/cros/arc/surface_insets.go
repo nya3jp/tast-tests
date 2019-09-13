@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -20,7 +21,7 @@ func init() {
 		Desc:         "Test to handle SurfaceInsets not to exceed android window frame",
 		Contacts:     []string{"hirokisato@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"informational"},
-		SoftwareDeps: []string{"android_p", "chrome"},
+		SoftwareDeps: []string{"android_p", "chrome", "tablet_mode"}, // "tablet_mode" to ensure touchview.
 		Data:         []string{"ArcSurfaceInsetsTestApp.apk"},
 		Pre:          arc.Booted(),
 	})
@@ -32,6 +33,32 @@ func SurfaceInsets(ctx context.Context, s *testing.State) {
 		pkg = "org.chromium.arc.testapp.surfaceinsets"
 		cls = ".MainActivity"
 	)
+
+	cr := s.PreValue().(arc.PreData).Chrome
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	// Restore tablet mode to its original state on exit.
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get tablet mode: ", err)
+	}
+	if tabletModeEnabled {
+		defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeEnabled)
+
+		if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
+			s.Fatal("Failed to disable tablet mode: ", err)
+		}
+		// TODO(crbug.com/1002958): Wait for "tablet mode animation is finished" in a reliable way.
+		// If an activity is launched while the tablet mode animation is active, the activity
+		// will be launched in un undefined state, making the test flaky.
+		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+			s.Fatal("Failed to wait until tablet-mode animation finished: ", err)
+		}
+	}
 
 	// Prepare TouchScreen.
 	// Touchscreen bounds: The size of the touchscreen might not be the same
@@ -71,6 +98,10 @@ func SurfaceInsets(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set window state to Normal: ", err)
 	}
 
+	if err := act.WaitForIdle(ctx, time.Second); err != nil {
+		s.Fatal("Failed to wait for idle activity: ", err)
+	}
+
 	disp, err := arc.NewDisplay(a, arc.DefaultDisplayID)
 	if err != nil {
 		s.Fatal("Failed to obtain a default display: ", err)
@@ -107,7 +138,7 @@ func SurfaceInsets(ctx context.Context, s *testing.State) {
 		// TODO(hirokisato) : Do not hard code the calculation of caption position below.
 		// Instead, we should get Chrome constants in real time.
 		buttonCoordX := float64(activityBounds.Left+activityBounds.Width-arcCaptionHeight/2-arcCaptionHeight) * arcPixelToTouchFactorW
-		buttonCoordY := float64(activityBounds.Top+arcCaptionHeight) * arcPixelToTouchFactorH
+		buttonCoordY := float64(activityBounds.Top+arcCaptionHeight-arcCaptionHeight/10) * arcPixelToTouchFactorH
 
 		stw.Move(input.TouchCoord(buttonCoordX), input.TouchCoord(buttonCoordY))
 		stw.End()
