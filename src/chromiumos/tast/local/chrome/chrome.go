@@ -98,14 +98,6 @@ const (
 	guestLogin                  // sign in as ephemeral guest user
 )
 
-// policyMode describes how/if Chrome should get policies.
-type policyMode int
-
-const (
-	noPolicy    policyMode = iota // do not fetch policies
-	fetchPolicy                   // fetch policies like a regular user
-)
-
 // Option is a self-referential function can be used to configure Chrome.
 // See https://commandcenter.blogspot.com.au/2014/01/self-referential-functions-and-design.html
 // for details about this pattern.
@@ -158,10 +150,20 @@ func Region(region string) Option {
 	}
 }
 
-// FetchPolicy returns an Option that can be passed to New to let the device do a policy fetch
-// upon login. By default, policies are not fetched.
+// FetchPolicy returns an option that can be passed to New to let the device do a
+// policy fetch upon login. By default, policies are not fetched.
 func FetchPolicy() Option {
-	return func(c *Chrome) { c.policyMode = fetchPolicy }
+	return func(c *Chrome) { c.policyEnabled = true }
+}
+
+// DMSUrl returns an option that can be passed to New to direct the device to fetch
+// policies from the policy server at the given url.
+// This option will also set the FetchPolicy option (no need to pass it too).
+func DMSUrl(url string) Option {
+	return func(c *Chrome) {
+		c.policyEnabled = true
+		c.dmsAddr = url
+	}
 }
 
 // ARCDisabled returns an Option that can be passed to New to disable ARC.
@@ -219,7 +221,8 @@ type Chrome struct {
 	keepState          bool
 	loginMode          loginMode
 	region             string
-	policyMode         policyMode
+	policyEnabled      bool   // flag to enable policy fetch
+	dmsAddr            string // optional value of device-management-url
 	arcMode            arcMode
 	restrictARCCPU     bool // a flag to control cpu restrictions on ARC
 	// If breakpadTestMode is true, tell Chrome's breakpad to always write
@@ -263,7 +266,7 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		keepState:        false,
 		loginMode:        fakeLogin,
 		region:           "us",
-		policyMode:       noPolicy,
+		policyEnabled:    false,
 		breakpadTestMode: true,
 		watcher:          newBrowserWatcher(),
 		logMaster:        jslog.NewMaster(),
@@ -530,11 +533,13 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 	if len(c.extDirs) > 0 {
 		args = append(args, "--load-extension="+strings.Join(c.extDirs, ","))
 	}
-	switch c.policyMode {
-	case noPolicy:
-		args = append(args, "--profile-requires-policy=false")
-	case fetchPolicy:
+	if c.policyEnabled {
 		args = append(args, "--profile-requires-policy=true")
+	} else {
+		args = append(args, "--profile-requires-policy=false")
+	}
+	if c.dmsAddr != "" {
+		args = append(args, "--device-management-url="+c.dmsAddr)
 	}
 	switch c.arcMode {
 	case arcDisabled:
