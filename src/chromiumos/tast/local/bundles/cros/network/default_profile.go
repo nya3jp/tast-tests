@@ -14,6 +14,7 @@ import (
 
 	"github.com/godbus/dbus"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
@@ -66,34 +67,25 @@ func DefaultProfile(ctx context.Context, s *testing.State) {
 	}
 
 	// Wait for default profile creation.
-	func() {
-		ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
-		defer cancel()
-
-		isDefaultProfileReady := func() bool {
-			if _, err := os.Stat(filePath); err != nil {
-				return false
-			}
-
-			profiles, err := manager.GetProfiles(ctx)
-			if err != nil {
-				s.Fatal("Failed getting profiles: ", err)
-			}
-
-			for _, p := range profiles {
-				if p == objectPath {
-					return true
-				}
-			}
-			return false
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if _, err := os.Stat(filePath); err != nil {
+			return err
 		}
 
-		for !isDefaultProfileReady() {
-			if err := testing.Sleep(ctx, 100*time.Millisecond); err != nil {
-				s.Fatal("Timed out waiting for the default profile to get ready: ", err)
+		profiles, err := manager.GetProfiles(ctx)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+
+		for _, p := range profiles {
+			if p == objectPath {
+				return nil
 			}
 		}
-	}()
+		return errors.New("default profile not found")
+	}, &testing.PollOptions{Timeout: 5 * time.Second, Interval: 100 * time.Millisecond}); err != nil {
+		s.Fatal("Timed out waiting for the default profile to get ready: ", err)
+	}
 
 	// Read the default profile and check expected settings.
 	b, err := ioutil.ReadFile(filePath)
