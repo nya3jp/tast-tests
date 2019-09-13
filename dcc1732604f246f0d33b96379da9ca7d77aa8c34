@@ -22,6 +22,30 @@
       "revId": "dcc1732604f246f0d33b96379da9ca7d77aa8c34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecf4f58c_fee1a087",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2019-09-13T00:24:01Z",
+      "side": 1,
+      "message": "Don\u0027t know.  This should stop the bleeding.  We can look at adding reads now.  Let\u0027s add a read in a separate test.  Resolving comment, as we can use b:140889941 to discuss further.",
+      "parentUuid": "21969ad6_2392d5dd",
+      "range": {
+        "startLine": 34,
+        "startChar": 43,
+        "endLine": 34,
+        "endChar": 47
+      },
+      "revId": "dcc1732604f246f0d33b96379da9ca7d77aa8c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
