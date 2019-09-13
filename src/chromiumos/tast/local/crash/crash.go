@@ -8,6 +8,7 @@ package crash
 
 import (
 	"context"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -32,6 +33,8 @@ const (
 	crashTestInProgressFile = "crash-test-in-progress"
 	// SystemCrashDir is the directory where system crash reports go.
 	SystemCrashDir = "/var/spool/crash"
+	// Directory to stash real crashes in during crash tests.
+	systemCrashStash = "/var/spool/crash.real"
 )
 
 // RestartAnomalyDetector restarts the anomaly detector and waits for it to open the journal.
@@ -111,6 +114,22 @@ func SetUpCrashTest() error {
 // setUpCrashTestWithDirectory is a helper function for SetUpCrashTest. We need
 // this as a separate function for testing.
 func setUpCrashTestWithDirectory(dir string) error {
+	// Move all crash into stash directory so a full diirectory won't stop
+	// us from saving crash report
+	if err := os.MkdirAll(systemCrashStash, 0755); err != nil {
+		return errors.Wrap(err, "couldn't make stash crash dir")
+	}
+	files, err := ioutil.ReadDir(SystemCrashDir)
+	if err != nil {
+		return errors.Wrap(err, "couldn't read existing crashes")
+	}
+	for _, f := range files {
+		if err := os.Rename(filepath.Join(SystemCrashDir, f.Name()),
+			filepath.Join(systemCrashStash, f.Name())); err != nil {
+			return errors.Wrapf(err, "couldn't move file: %v", f.Name())
+		}
+	}
+
 	if err := os.MkdirAll(dir, 0755); err != nil {
 		return errors.Wrapf(err, "could not make directory %v", dir)
 	}
@@ -138,6 +157,22 @@ func TearDownCrashTest() error {
 // tearDownCrashTestWithDirectory is a helper function for TearDownCrashTest. We need
 // this as a separate function for testing.
 func tearDownCrashTestWithDirectory(dir string) error {
+	files, err := ioutil.ReadDir(systemCrashStash)
+	if err != nil {
+		return errors.Wrap(err, "couldn't read prior crashes")
+	}
+	for _, f := range files {
+		if err := os.Rename(filepath.Join(systemCrashStash, f.Name()),
+			filepath.Join(SystemCrashDir, f.Name())); err != nil {
+			return errors.Wrapf(err, "couldn't restore file: %v", f.Name())
+		}
+	}
+	if err := os.Remove(systemCrashStash); err != nil {
+		if !os.IsNotExist(err) {
+			return errors.Wrap(err, "couldn't remove stash")
+		}
+	}
+
 	filePath := filepath.Join(dir, crashTestInProgressFile)
 	if err := os.Remove(filePath); err != nil {
 		if os.IsNotExist(err) {
