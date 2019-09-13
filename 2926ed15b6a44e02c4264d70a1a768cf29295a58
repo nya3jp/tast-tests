@@ -22,6 +22,53 @@
       "revId": "2926ed15b6a44e02c4264d70a1a768cf29295a58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54a038f2_fd23c261",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-13T21:32:26Z",
+      "side": 1,
+      "message": "Could always change this comment to \"Device management URL, or empty if omitted\"",
+      "parentUuid": "bf9fd628_91005c26",
+      "range": {
+        "startLine": 225,
+        "startChar": 30,
+        "endLine": 225,
+        "endChar": 38
+      },
+      "revId": "2926ed15b6a44e02c4264d70a1a768cf29295a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3daf0aaf_ce25d3a1",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-13T21:32:26Z",
+      "side": 1,
+      "message": "does this flag do anything if policyEnabled is false?",
+      "range": {
+        "startLine": 541,
+        "startChar": 0,
+        "endLine": 543,
+        "endChar": 2
+      },
+      "revId": "2926ed15b6a44e02c4264d70a1a768cf29295a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
