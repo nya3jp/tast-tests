@@ -123,21 +123,18 @@ func installServer(ctx context.Context, a *arc.ARC) error {
 
 // waitServer waits for UI Automator server to come up.
 func (d *Device) waitServer(ctx context.Context) error {
-	for {
-		if ok := func() bool {
-			ctx, cancel := context.WithTimeout(ctx, 200*time.Millisecond)
-			defer cancel()
-			var res string
-			return d.call(ctx, "ping", &res) == nil && res == "pong"
-		}(); ok {
-			break
-		}
-
-		if err := testing.Sleep(ctx, 100*time.Millisecond); err != nil {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		ctx, cancel := context.WithTimeout(ctx, 200*time.Millisecond)
+		defer cancel()
+		var res string
+		if err := d.call(ctx, "ping", &res); err != nil {
 			return err
 		}
-	}
-	return nil
+		if res != "pong" {
+			return errors.Errorf("unexpected reply: got %q", res)
+		}
+		return nil
+	}, &testing.PollOptions{Interval: 100 * time.Millisecond})
 }
 
 // EnableDebug enables verbose RPC logging.
