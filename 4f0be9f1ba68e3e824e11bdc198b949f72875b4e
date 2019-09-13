@@ -164,6 +164,30 @@
     },
     {
       "key": {
+        "uuid": "d381ee38_e8d26b55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-13T08:11:02Z",
+      "side": 1,
+      "message": "Let me mark this as optional. At least it confirms with the existing design.",
+      "parentUuid": "d356d273_443b6005",
+      "range": {
+        "startLine": 620,
+        "startChar": 0,
+        "endLine": 620,
+        "endChar": 93
+      },
+      "revId": "4f0be9f1ba68e3e824e11bdc198b949f72875b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c974d06_36aa1b1b",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
         "patchSetId": 2
