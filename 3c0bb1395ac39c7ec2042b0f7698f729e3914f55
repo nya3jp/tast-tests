@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0847974e_e052e1f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/run_with_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-13T08:16:33Z",
+      "side": 1,
+      "message": "Go doesn\u0027t have line length limit. Could you make it one line?",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 44,
+        "endChar": 5
+      },
+      "revId": "3c0bb1395ac39c7ec2042b0f7698f729e3914f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
