@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "a59c86d1_36c4e58a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2019-09-13T13:10:44Z",
+      "side": 1,
+      "message": "\"dynamic\" is definitely better.",
+      "parentUuid": "05241829_1f36ac93",
+      "range": {
+        "startLine": 32,
+        "startChar": 10,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "567fdf2295b0b3032b8eafc5d278221a4a806f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "53bef278_5cb42f5f",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail.go",
         "patchSetId": 13
