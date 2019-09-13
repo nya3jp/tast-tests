@@ -64,6 +64,7 @@ var runeKeyCodes = map[rune]EventCode{
 	'.':  KEY_DOT,
 	'/':  KEY_SLASH,
 	' ':  KEY_SPACE,
+	'\x1b': KEY_ESC,
 }
 
 // runeKeyCodes contains runes that can be typed by holding Shift and pressing a
