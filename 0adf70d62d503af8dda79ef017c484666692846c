@@ -46,6 +46,30 @@
       "revId": "0adf70d62d503af8dda79ef017c484666692846c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c0c2ba7_9ae18a82",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2019-09-13T19:16:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58c7f8b8_beee139c",
+      "range": {
+        "startLine": 74,
+        "startChar": 46,
+        "endLine": 74,
+        "endChar": 49
+      },
+      "revId": "0adf70d62d503af8dda79ef017c484666692846c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
