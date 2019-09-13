@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c49a5331_0d42204f",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-13T01:00:46Z",
+      "side": 1,
+      "message": "I\u0027d recommend writing out to OutDir as a binary file instead since the dump can be large.",
+      "revId": "0c412c21663fb63c0d9468afd15c157f81388d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
