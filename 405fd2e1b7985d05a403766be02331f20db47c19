@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a83f825a_5d8b186d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-09-13T05:20:07Z",
+      "side": 1,
+      "message": "Maybe we don\u0027t need this comment.",
+      "range": {
+        "startLine": 24,
+        "startChar": 67,
+        "endLine": 24,
+        "endChar": 101
+      },
+      "revId": "405fd2e1b7985d05a403766be02331f20db47c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73e16d72_dd21e699",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2019-09-13T05:20:07Z",
+      "side": 1,
+      "message": "Is ash.SetTabletModeEnabled reliable now? I remember in the past it was also flaky so I used Chrome flag instead. Takise-san might know something.",
+      "range": {
+        "startLine": 52,
+        "startChar": 12,
+        "endLine": 52,
+        "endChar": 36
+      },
+      "revId": "405fd2e1b7985d05a403766be02331f20db47c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
