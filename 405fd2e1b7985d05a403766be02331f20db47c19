@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "34fa03c6_33524c97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-13T07:14:23Z",
+      "side": 1,
+      "message": "I was completely mis-understanding the term touchview. I delete this dependency.",
+      "parentUuid": "a83f825a_5d8b186d",
+      "range": {
+        "startLine": 24,
+        "startChar": 67,
+        "endLine": 24,
+        "endChar": 101
+      },
+      "revId": "405fd2e1b7985d05a403766be02331f20db47c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73e16d72_dd21e699",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-09-13T05:20:07Z",
       "side": 1,
       "message": "Is ash.SetTabletModeEnabled reliable now? I remember in the past it was also flaky so I used Chrome flag instead. Takise-san might know something.",
+      "range": {
+        "startLine": 52,
+        "startChar": 12,
+        "endLine": 52,
+        "endChar": 36
+      },
+      "revId": "405fd2e1b7985d05a403766be02331f20db47c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "463a0bd1_ea00fa03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-13T07:14:23Z",
+      "side": 1,
+      "message": "I think it is not reliable. That\u0027s why I added Sleep below.\nAs far as I know, after the issue (crbug.com/1002958) is resolved, it will be more reliable than now.\n\nMy understanding is :\nUsing Chrome flag reduces the flakiness, but we cannot use precondition and it makes tast slower.\nUsing ash flag is preferable from tast-test efficiency, but is flaky now.\n\nI think stability is more important than efficiency in this case, and I\u0027ll use Chrome flag.\n\nThank you!",
+      "parentUuid": "73e16d72_dd21e699",
       "range": {
         "startLine": 52,
         "startChar": 12,
