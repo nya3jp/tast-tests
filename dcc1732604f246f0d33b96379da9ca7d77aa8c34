@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21969ad6_2392d5dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/flashrom.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-09-13T00:14:26Z",
+      "side": 1,
+      "message": "I\u0027ve no objection to getting this most basic test in first, but is reading from SPI flash actually an issue?  I thought it was only wear from writes that was the main concern with frequent firmware reflashing.",
+      "range": {
+        "startLine": 34,
+        "startChar": 43,
+        "endLine": 34,
+        "endChar": 47
+      },
+      "revId": "dcc1732604f246f0d33b96379da9ca7d77aa8c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
