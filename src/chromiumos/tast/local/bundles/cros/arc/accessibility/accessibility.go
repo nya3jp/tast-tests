@@ -59,6 +59,12 @@ func ChromeVoxExtConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, erro
 		return nil, errors.Wrap(err, "ChromeVox unavailable")
 	}
 
+	// Enable speech logging.
+	if err := extConn.Exec(ctx, "ConsoleTts.getInstance().setEnabled(true)"); err != nil {
+		extConn.Close()
+		return nil, errors.Wrap(err, "could not enable speech logging")
+	}
+
 	testing.ContextLog(ctx, "Extension is ready")
 	return extConn, nil
 }
@@ -195,5 +201,38 @@ func WaitForChromeVoxStopSpeaking(ctx context.Context, chromeVoxConn *chrome.Con
 	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
 		return errors.Wrap(err, "timed out waiting for ChromeVox to finish speaking")
 	}
+	return nil
+}
+
+// speechLog represents a log of accessibility speech.
+type speechLog struct {
+	Text string `json:"textString_"`
+	// other values are not used in test.
+}
+
+// WaitForChromeVoxReady polls until ChromeVox speaks that it's ready.
+func WaitForChromeVoxReady(ctx context.Context, chromeVoxConn *chrome.Conn) error {
+	const expect = "ChromeVox spoken feedback is ready" // Assuming that tast runs in English environment.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var logs []speechLog
+		if err := chromeVoxConn.Eval(ctx, "LogStore.instance.getLogsOfType(LogStore.LogType.SPEECH)", &logs); err != nil {
+			return err
+		}
+		for _, log := range logs {
+			if log.Text == expect {
+				return nil
+			}
+		}
+		return errors.Errorf("Speech log does not have the expected text %q", expect)
+	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+		return errors.Wrap(err, "timed out waiting for ChromeVox Ready")
+	}
+
+	// Wait for ChromeVox to stop speaking before interacting with it further.
+	if err := WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "ChromeVox is ready")
 	return nil
 }

@@ -247,9 +247,8 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	}
 	defer chromeVoxConn.Close()
 
-	// Wait for ChromeVox to stop speaking before interacting with it further.
-	if err := accessibility.WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
-		s.Fatal("Could not wait for ChromeVox to stop speaking: ", err)
+	if err := accessibility.WaitForChromeVoxReady(ctx, chromeVoxConn); err != nil {
+		s.Fatal("Could not wait for ChromeVox Ready: ", err)
 	}
 
 	// Set up event stream logging for accessibility events.
