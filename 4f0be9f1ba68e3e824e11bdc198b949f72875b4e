@@ -1,0 +1,464 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d867b7a_839a6e60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-13T07:34:52Z",
+      "side": 1,
+      "message": "Could you mention that Closing App is caller\u0027s responsibility while your are here?",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 69
+      },
+      "revId": "4f0be9f1ba68e3e824e11bdc198b949f72875b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93248270_e5aaee79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-13T07:34:52Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with internal implementation, but I wonder if this information cannot be computed inside App, as it looks like an App\u0027s attribute.",
+      "range": {
+        "startLine": 440,
+        "startChar": 58,
+        "endLine": 440,
+        "endChar": 68
+      },
+      "revId": "4f0be9f1ba68e3e824e11bdc198b949f72875b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee202ba5_34c7d616",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-13T07:34:52Z",
+      "side": 1,
+      "message": "Why don\u0027t you change the parameter type of SetTimerOption to TimerState ?",
+      "range": {
+        "startLine": 441,
+        "startChar": 33,
+        "endLine": 441,
+        "endChar": 54
+      },
+      "revId": "4f0be9f1ba68e3e824e11bdc198b949f72875b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f068c2b_d7004306",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-13T07:34:52Z",
+      "side": 1,
+      "message": "info\nfor consistency?",
+      "range": {
+        "startLine": 463,
+        "startChar": 1,
+        "endLine": 463,
+        "endChar": 7
+      },
+      "revId": "4f0be9f1ba68e3e824e11bdc198b949f72875b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fe78112_1e0712db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-13T07:34:52Z",
+      "side": 1,
+      "message": "In Go error message, got want order is preferred.\nhttps://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 467,
+        "startChar": 28,
+        "endLine": 467,
+        "endChar": 118
+      },
+      "revId": "4f0be9f1ba68e3e824e11bdc198b949f72875b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d356d273_443b6005",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-13T07:34:52Z",
+      "side": 1,
+      "message": "I think this function is too generic. Could you have more specific function?\nIdeally the user of App should not know about implementation details.\n(Actually the same applies for ClickWithSelector I think...) WDYT?",
+      "range": {
+        "startLine": 620,
+        "startChar": 0,
+        "endLine": 620,
+        "endChar": 93
+      },
+      "revId": "4f0be9f1ba68e3e824e11bdc198b949f72875b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c974d06_36aa1b1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-13T07:34:52Z",
+      "side": 1,
+      "message": "Could you document the parameter to the function, and how returned error is handled?",
+      "range": {
+        "startLine": 650,
+        "startChar": 33,
+        "endLine": 650,
+        "endChar": 41
+      },
+      "revId": "4f0be9f1ba68e3e824e11bdc198b949f72875b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce784670_7730fb3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-13T07:34:52Z",
+      "side": 1,
+      "message": "Thru means through? I\u0027d full-spell it.",
+      "range": {
+        "startLine": 650,
+        "startChar": 6,
+        "endLine": 650,
+        "endChar": 10
+      },
+      "revId": "4f0be9f1ba68e3e824e11bdc198b949f72875b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e291569_cf532dd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-13T07:34:52Z",
+      "side": 1,
+      "message": "I think it\u0027s already logged inside RunThruCameras.",
+      "range": {
+        "startLine": 66,
+        "startChar": 10,
+        "endLine": 66,
+        "endChar": 21
+      },
+      "revId": "4f0be9f1ba68e3e824e11bdc198b949f72875b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0d99c41_4b3c1f36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-13T07:34:52Z",
+      "side": 1,
+      "message": "I understand you did\u0027t change existing behavior, but don\u0027t we have to return error here? Does the following test (next call of run or f) works without problem after this path?",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 16
+      },
+      "revId": "4f0be9f1ba68e3e824e11bdc198b949f72875b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01258c87_a4057b22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-13T07:34:52Z",
+      "side": 1,
+      "message": "Could you document what rtype is for?\nMaybe something like resolutionType is better name?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 17
+      },
+      "revId": "4f0be9f1ba68e3e824e11bdc198b949f72875b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "114741ee_79e96858",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-13T07:34:52Z",
+      "side": 1,
+      "message": "Shouldn\u0027t it be continue?",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 9
+      },
+      "revId": "4f0be9f1ba68e3e824e11bdc198b949f72875b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72503228_407c5dfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-13T07:34:52Z",
+      "side": 1,
+      "message": "nit: swap r and c to match the got, want order in the error message?",
+      "range": {
+        "startLine": 120,
+        "startChar": 6,
+        "endLine": 120,
+        "endChar": 49
+      },
+      "revId": "4f0be9f1ba68e3e824e11bdc198b949f72875b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14742de3_11f6e645",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-13T07:34:52Z",
+      "side": 1,
+      "message": "How about returning \u0026ent.Video here? I think the API becomes clearer.",
+      "range": {
+        "startLine": 137,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 46
+      },
+      "revId": "4f0be9f1ba68e3e824e11bdc198b949f72875b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4d524c1_0837be86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-13T07:34:52Z",
+      "side": 1,
+      "message": "Could you include path to the error message?",
+      "range": {
+        "startLine": 141,
+        "startChar": 27,
+        "endLine": 141,
+        "endChar": 61
+      },
+      "revId": "4f0be9f1ba68e3e824e11bdc198b949f72875b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3804e4e5_700b8ed5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-13T07:34:52Z",
+      "side": 1,
+      "message": "Could you document this function?",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 103
+      },
+      "revId": "4f0be9f1ba68e3e824e11bdc198b949f72875b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "597f8243_499f4c59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-13T07:34:52Z",
+      "side": 1,
+      "message": "t looks a bit too cryptic, given it\u0027s a function parameter.\nHow about rt standing for resolution type?",
+      "range": {
+        "startLine": 181,
+        "startChar": 57,
+        "endLine": 181,
+        "endChar": 58
+      },
+      "revId": "4f0be9f1ba68e3e824e11bdc198b949f72875b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "892fa8bb_9007aee4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-13T07:34:52Z",
+      "side": 1,
+      "message": "name, s string",
+      "range": {
+        "startLine": 184,
+        "startChar": 21,
+        "endLine": 184,
+        "endChar": 42
+      },
+      "revId": "4f0be9f1ba68e3e824e11bdc198b949f72875b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fb067da_7bda572d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-13T07:34:52Z",
+      "side": 1,
+      "message": "How about naming it selector, or buttonSelector ?",
+      "range": {
+        "startLine": 184,
+        "startChar": 34,
+        "endLine": 184,
+        "endChar": 35
+      },
+      "revId": "4f0be9f1ba68e3e824e11bdc198b949f72875b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9740afb8_15545a5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-13T07:34:52Z",
+      "side": 1,
+      "message": "You may remove it?",
+      "range": {
+        "startLine": 336,
+        "startChar": 30,
+        "endLine": 336,
+        "endChar": 36
+      },
+      "revId": "4f0be9f1ba68e3e824e11bdc198b949f72875b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
