@@ -14,22 +14,38 @@ import (
 func TestSetUpAndTearDownCrashTest(t *testing.T) {
 	// We can't use the normal file location /run/crash_reporter; we don't have
 	// permission to write there. Instead write to a location under /tmp.
-	dir, err := ioutil.TempDir("", "TestSetUpAndTearDownCrashTest")
+	runDir, err := ioutil.TempDir("", "TestSetUpAndTearDownCrashTest")
+	if err != nil {
+		t.Fatalf("ioutil.TempDir: %v", err)
+	}
+	sysCrashDir, err := ioutil.TempDir("", "TestSetUpAndTearDownCrashTest")
+	if err != nil {
+		t.Fatalf("ioutil.TempDir: %v", err)
+	}
+	sysStashDir, err := ioutil.TempDir("", "TestSetUpAndTearDownCrashTest")
+	if err != nil {
+		t.Fatalf("ioutil.TempDir: %v", err)
+	}
+	userCrashDir, err := ioutil.TempDir("", "TestSetUpAndTearDownCrashTest")
+	if err != nil {
+		t.Fatalf("ioutil.TempDir: %v", err)
+	}
+	userStashDir, err := ioutil.TempDir("", "TestSetUpAndTearDownCrashTest")
 	if err != nil {
 		t.Fatalf("ioutil.TempDir: %v", err)
 	}
 
-	if err := setUpCrashTestWithDirectory(dir); err != nil {
-		t.Fatalf("setUpCrashTestWithDirectory(%s): %v", dir, err)
+	if err := setUpCrashTestWithDirectories(runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir); err != nil {
+		t.Fatalf("setUpCrashTestWithDirectories(%s, %s, %s, %s, %s): %v", runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, err)
 	}
 
-	file := filepath.Join(dir, "crash-test-in-progress")
+	file := filepath.Join(runDir, "crash-test-in-progress")
 	if _, err := os.Stat(file); err != nil {
 		t.Errorf("Cannot stat %s: %v", file, err)
 	}
 
-	if err := tearDownCrashTestWithDirectory(dir); err != nil {
-		t.Errorf("tearDownCrashTestWithDirectory(%s): %v", dir, err)
+	if err := tearDownCrashTestWithDirectories(runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir); err != nil {
+		t.Errorf("tearDownCrashTestWithDirectories(%s, %s, %s, %s, %s): %v", runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir, err)
 	}
 
 	if _, err := os.Stat(file); err == nil {

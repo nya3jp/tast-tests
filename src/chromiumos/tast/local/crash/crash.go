@@ -8,6 +8,7 @@ package crash
 
 import (
 	"context"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -32,6 +33,12 @@ const (
 	crashTestInProgressFile = "crash-test-in-progress"
 	// SystemCrashDir is the directory where system crash reports go.
 	SystemCrashDir = "/var/spool/crash"
+	// Directory to stash pre-existing system crashes during crash tests.
+	systemCrashStash = "/var/spool/crash.real"
+	// LocalCrashDir is the directory where user crash reports go.
+	LocalCrashDir = "/home/chronos/crash"
+	// Directory to stash pre-existing user crashes during crash tests.
+	localCrashStash = "/home/chronos/crash.real"
 )
 
 // RestartAnomalyDetector restarts the anomaly detector and waits for it to open the journal.
@@ -101,21 +108,50 @@ func WaitForCrashFiles(ctx context.Context, dir string, oldFiles []string, regex
 	return files, nil
 }
 
+// moveAllCrashesTo moves crashes from |source| to |target|. This allows us to
+// start crash tests with an empty spool directory, reducing risk of flakes if
+// the dir is already full when the test starts.
+func moveAllCrashesTo(source string, target string) error {
+	if err := os.MkdirAll(target, 0755); err != nil {
+		return errors.Wrapf(err, "couldn't make stash crash dir %s", target)
+	}
+	files, err := ioutil.ReadDir(source)
+	if err != nil {
+		return errors.Wrapf(err, "couldn't read existing crashes from %s", source)
+	}
+	for _, f := range files {
+		if err := os.Rename(filepath.Join(source, f.Name()), filepath.Join(target, f.Name())); err != nil {
+			return errors.Wrapf(err, "couldn't move file: %v", f.Name())
+		}
+	}
+	return nil
+}
+
 // SetUpCrashTest indicates that we are running a test that involves the crash
 // reporting system (crash_reporter, crash_sender, or anomaly_detector). The
 // test should "defer TearDownCrashTest()" after calling this.
 func SetUpCrashTest() error {
-	return setUpCrashTestWithDirectory(crashTestInProgressDir)
+	return setUpCrashTestWithDirectories(crashTestInProgressDir, SystemCrashDir, systemCrashStash,
+		LocalCrashDir, localCrashStash)
 }
 
-// setUpCrashTestWithDirectory is a helper function for SetUpCrashTest. We need
+// setUpCrashTestWithDirectories is a helper function for SetUpCrashTest. We need
 // this as a separate function for testing.
-func setUpCrashTestWithDirectory(dir string) error {
-	if err := os.MkdirAll(dir, 0755); err != nil {
-		return errors.Wrapf(err, "could not make directory %v", dir)
+func setUpCrashTestWithDirectories(inProgDir string, sysCrashDir string, sysCrashStash string, userCrashDir string, userCrashStash string) error {
+	// Move all crashes into stash directory so a full directory won't stop
+	// us from saving a new crash report
+	if err := moveAllCrashesTo(sysCrashDir, sysCrashStash); err != nil {
+		return err
+	}
+	if err := moveAllCrashesTo(userCrashDir, userCrashStash); err != nil {
+		return err
 	}
 
-	filePath := filepath.Join(dir, crashTestInProgressFile)
+	if err := os.MkdirAll(inProgDir, 0755); err != nil {
+		return errors.Wrapf(err, "could not make directory %v", inProgDir)
+	}
+
+	filePath := filepath.Join(inProgDir, crashTestInProgressFile)
 	f, err := os.Create(filePath)
 	if err != nil {
 		if os.IsExist(err) {
@@ -130,15 +166,35 @@ func setUpCrashTestWithDirectory(dir string) error {
 	return nil
 }
 
-// TearDownCrashTest undoes the work of SetUpCrashTest.
-func TearDownCrashTest() error {
-	return tearDownCrashTestWithDirectory(crashTestInProgressDir)
+func cleanUpStashDir(stashDir string, realDir string) error {
+	if err := moveAllCrashesTo(stashDir, realDir); err != nil {
+		return err
+	}
+	if err := os.Remove(stashDir); err != nil {
+		if !os.IsNotExist(err) {
+			return errors.Wrapf(err, "couldn't remove stash dir: %v", stashDir)
+		}
+	}
+	return nil
 }
 
-// tearDownCrashTestWithDirectory is a helper function for TearDownCrashTest. We need
+// TearDownCrashTest undoes the work of SetUpCrashTest.
+func TearDownCrashTest() error {
+	return tearDownCrashTestWithDirectories(crashTestInProgressDir, SystemCrashDir, systemCrashStash,
+		LocalCrashDir, localCrashStash)
+}
+
+// tearDownCrashTestWithDirectories is a helper function for TearDownCrashTest. We need
 // this as a separate function for testing.
-func tearDownCrashTestWithDirectory(dir string) error {
-	filePath := filepath.Join(dir, crashTestInProgressFile)
+func tearDownCrashTestWithDirectories(inProgDir string, sysCrashDir string, sysCrashStash string, userCrashDir string, userCrashStash string) error {
+	if err := cleanUpStashDir(sysCrashStash, sysCrashDir); err != nil {
+		return err
+	}
+	if err := cleanUpStashDir(userCrashStash, userCrashDir); err != nil {
+		return err
+	}
+
+	filePath := filepath.Join(inProgDir, crashTestInProgressFile)
 	if err := os.Remove(filePath); err != nil {
 		if os.IsNotExist(err) {
 			// Something else already removed the file. Well, whatever, we're in the
