@@ -252,6 +252,11 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not wait for ChromeVox to stop speaking: ", err)
 	}
 
+	// TODO (sarakato)
+	// Investigation part of tree serialization timing see (b/131123212).
+	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+		s.Fatal("Could not sleep: ", err)
+	}
 	// Set up event stream logging for accessibility events.
 	if err := chromeVoxConn.EvalPromise(ctx, `
 		new Promise((resolve, reject) => {
