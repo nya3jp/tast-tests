@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce34bd5c_727db050",
+        "filename": "helpers/local/BUILD.gn",
+        "patchSetId": 13
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-13T04:39:30Z",
+      "side": 1,
+      "message": "Could you comment why this is excluded?",
+      "revId": "567fdf2295b0b3032b8eafc5d278221a4a806f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05241829_1f36ac93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-13T04:39:30Z",
+      "side": 1,
+      "message": "suggestion: \"dynamic\" (Jorge, any thoughts?)",
+      "range": {
+        "startLine": 32,
+        "startChar": 10,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "567fdf2295b0b3032b8eafc5d278221a4a806f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53bef278_5cb42f5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-13T04:39:30Z",
+      "side": 1,
+      "message": "Could you run this only on non-static case?",
+      "revId": "567fdf2295b0b3032b8eafc5d278221a4a806f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2613726_2693d009",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-13T04:39:30Z",
+      "side": 1,
+      "message": "And this only on static case?",
+      "revId": "567fdf2295b0b3032b8eafc5d278221a4a806f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
