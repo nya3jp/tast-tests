@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -22,7 +23,6 @@ func init() {
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Data:         []string{"ArcSurfaceInsetsTestApp.apk"},
-		Pre:          arc.Booted(),
 	})
 }
 
@@ -32,6 +32,14 @@ func SurfaceInsets(ctx context.Context, s *testing.State) {
 		pkg = "org.chromium.arc.testapp.surfaceinsets"
 		cls = ".MainActivity"
 	)
+
+	// TODO(crbug.com/1002958) Replace with Ash API to enable clamshell mode once it gets fixed.
+	// With the Ash flag, we can also use precondition arc.Booted() and tast efficiency improves with it.
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=clamshell"))
+	if err != nil {
+		s.Fatal("Failed to connect to Chrome: ", err)
+	}
+	defer cr.Close(ctx)
 
 	// Prepare TouchScreen.
 	// Touchscreen bounds: The size of the touchscreen might not be the same
@@ -51,8 +59,12 @@ func SurfaceInsets(ctx context.Context, s *testing.State) {
 	}
 	defer stw.Close()
 
-	// Prepare ARC.
-	a := s.PreValue().(arc.PreData).ARC
+	a, err := arc.New(ctx, s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to start ARC: ", err)
+	}
+	defer a.Close()
+
 	if err := a.Install(ctx, s.DataPath(apk)); err != nil {
 		s.Fatal("Failed installing app: ", err)
 	}
@@ -69,6 +81,10 @@ func SurfaceInsets(ctx context.Context, s *testing.State) {
 
 	if err := act.SetWindowState(ctx, arc.WindowStateNormal); err != nil {
 		s.Fatal("Failed to set window state to Normal: ", err)
+	}
+
+	if err := act.WaitForIdle(ctx, time.Second); err != nil {
+		s.Fatal("Failed to wait for idle activity: ", err)
 	}
 
 	disp, err := arc.NewDisplay(a, arc.DefaultDisplayID)
@@ -89,7 +105,7 @@ func SurfaceInsets(ctx context.Context, s *testing.State) {
 	arcPixelToTouchFactorW := touchWidth / float64(arcDisplaySize.W)
 	arcPixelToTouchFactorH := touchHeight / float64(arcDisplaySize.H)
 
-	// Repeat to validate b/80441010.
+	// Repeat twice to validate b/80441010.
 	for _, op := range []string{"maximize", "restore", "maximize", "restore"} {
 		s.Logf("Pressing %q", op)
 
@@ -104,10 +120,10 @@ func SurfaceInsets(ctx context.Context, s *testing.State) {
 		}
 
 		// Touch lower edge of the restore/maximize button to validate that any surface does not cover the caption button.
-		// TODO(hirokisato) : Do not hard code the calculation of caption position below.
+		// TODO(crbug.com/1005010) : Do not hard code the calculation of caption position below.
 		// Instead, we should get Chrome constants in real time.
 		buttonCoordX := float64(activityBounds.Left+activityBounds.Width-arcCaptionHeight/2-arcCaptionHeight) * arcPixelToTouchFactorW
-		buttonCoordY := float64(activityBounds.Top+arcCaptionHeight) * arcPixelToTouchFactorH
+		buttonCoordY := float64(activityBounds.Top+arcCaptionHeight-arcCaptionHeight/10) * arcPixelToTouchFactorH
 
 		stw.Move(input.TouchCoord(buttonCoordX), input.TouchCoord(buttonCoordY))
 		stw.End()
