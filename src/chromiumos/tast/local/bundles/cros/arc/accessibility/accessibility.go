@@ -31,6 +31,8 @@ const (
 	seekBarDiscreteID = "org.chromium.arc.testapp.accessibilitytest:id/seekBarDiscrete"
 
 	extURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/cvox2/background/background.html"
+
+	enabledMessage = "ChromeVox spoken feedback is ready"
 )
 
 // Enabled checks if accessibility is enabled in Android.
@@ -57,6 +59,12 @@ func ChromeVoxExtConn(ctx context.Context, c *chrome.Chrome) (*chrome.Conn, erro
 	if err := extConn.WaitForExpr(ctx, "ChromeVoxState.instance"); err != nil {
 		extConn.Close()
 		return nil, errors.Wrap(err, "ChromeVox unavailable")
+	}
+
+	// Enable speech logging.
+	if err := extConn.Exec(ctx, "ConsoleTts.getInstance().setEnabled(true)"); err != nil {
+		extConn.Close()
+		return nil, errors.Wrap(err, "could not enable speech logging")
 	}
 
 	testing.ContextLog(ctx, "Extension is ready")
@@ -195,5 +203,38 @@ func WaitForChromeVoxStopSpeaking(ctx context.Context, chromeVoxConn *chrome.Con
 	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
 		return errors.Wrap(err, "timed out waiting for ChromeVox to finish speaking")
 	}
+	return nil
+}
+
+// speechLog represents a log of accessibility speech.
+type speechLog struct {
+	Text string `json:"textString_"`
+	// Other values are not used in test.
+}
+
+// WaitForChromeVoxReady polls until ChromeVox speaks that it's ready.
+// This assumes that the test runs in English environment.
+func WaitForChromeVoxReady(ctx context.Context, chromeVoxConn *chrome.Conn) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var logs []speechLog
+		if err := chromeVoxConn.Eval(ctx, "LogStore.instance.getLogsOfType(LogStore.LogType.SPEECH)", &logs); err != nil {
+			return err
+		}
+		for _, log := range logs {
+			if log.Text == enabledMessage {
+				return nil
+			}
+		}
+		return errors.Errorf("Speech log does not have the expected text %q", enabledMessage)
+	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+		return errors.Wrap(err, "timed out waiting for ChromeVox to be ready")
+	}
+
+	// Wait for ChromeVox to stop speaking before interacting with it further.
+	if err := WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "ChromeVox is ready")
 	return nil
 }
