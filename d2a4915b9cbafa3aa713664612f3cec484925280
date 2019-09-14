@@ -45,6 +45,30 @@
       "revId": "d2a4915b9cbafa3aa713664612f3cec484925280",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d0fefa9_51d98765",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-09-14T00:30:05Z",
+      "side": 1,
+      "message": "That sounds right to me and is also a good point. I\u0027ll use os.Remove() instead (and add cleanup before test starts as well).",
+      "parentUuid": "9acb884e_84c36849",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 52
+      },
+      "revId": "d2a4915b9cbafa3aa713664612f3cec484925280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
