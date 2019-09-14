@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "8a0ce77b_9ecabe9a",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-14T00:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54a038f2_fd23c261",
+      "range": {
+        "startLine": 225,
+        "startChar": 30,
+        "endLine": 225,
+        "endChar": 38
+      },
+      "revId": "2926ed15b6a44e02c4264d70a1a768cf29295a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3daf0aaf_ce25d3a1",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2019-09-13T21:32:26Z",
       "side": 1,
       "message": "does this flag do anything if policyEnabled is false?",
+      "range": {
+        "startLine": 541,
+        "startChar": 0,
+        "endLine": 543,
+        "endChar": 2
+      },
+      "revId": "2926ed15b6a44e02c4264d70a1a768cf29295a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56c61722_24a7d3b3",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-14T00:01:17Z",
+      "side": 1,
+      "message": "I foresee three use cases here:\n- no policy related things needed, set policy fetch to be false (default, no Option passed)\n- policies should be fetched but default DMS is used (FetchPolicy Option)\n- policies should be fetched and other DMS is used (DMSUrl Option used, or can set both options)\n\nMy understanding is that you can set the DMS flag if --profile-requires-policy\u003dfalse is set, but Chrome will still skip the step where it makes calls to the DMS and it will have no effect.  Hence why the Option that sets c.dmsAddr also sets c.policyEnabled.\n\nWould you prefer the logic ensuring both flags are set together happens here instead?",
+      "parentUuid": "3daf0aaf_ce25d3a1",
       "range": {
         "startLine": 541,
         "startChar": 0,
