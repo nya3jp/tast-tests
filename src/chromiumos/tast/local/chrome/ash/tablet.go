@@ -36,15 +36,6 @@ func SetTabletModeEnabled(ctx context.Context, c *chrome.Conn, enabled bool) err
 // TabletModeEnabled gets the tablet mode enabled status.
 func TabletModeEnabled(ctx context.Context, tconn *chrome.Conn) (bool, error) {
 	var enabled bool
-	err := tconn.EvalPromise(ctx,
-		`new Promise(function(resolve, reject) {
-		  chrome.autotestPrivate.isTabletModeEnabled(function(enabled) {
-		    if (chrome.runtime.lastError) {
-		      reject(new Error(chrome.runtime.lastError.message));
-		    } else {
-		      resolve(enabled);
-		    }
-		  })
-		})`, &enabled)
+	err := tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.isTabletModeEnabled)()`, &enabled)
 	return enabled, err
 }
