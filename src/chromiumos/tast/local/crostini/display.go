@@ -16,6 +16,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/colorcmp"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
@@ -107,12 +108,6 @@ func PrimaryDisplayScaleFactor(ctx context.Context, tconn *chrome.Conn) (factor 
 	return factor, err
 }
 
-// TabletModeEnabled returns whether tablet mode is enabled on the device.
-func TabletModeEnabled(ctx context.Context, tconn *chrome.Conn) (tabletMode bool, err error) {
-	err = tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.isTabletModeEnabled)()`, &tabletMode)
-	return tabletMode, err
-}
-
 // VerifyWindowDensities compares the sizes, which should be from
 // PollWindowSize() at low and high density. It returns an error if
 // something is wrong with the sizes (not just if the high-density
@@ -122,7 +117,7 @@ func VerifyWindowDensities(ctx context.Context, tconn *chrome.Conn, sizeHighDens
 		return errors.Errorf("app high density size %v greater than low density size %v", sizeHighDensity, sizeLowDensity)
 	}
 
-	tabletMode, err := TabletModeEnabled(ctx, tconn)
+	tabletMode, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed getting tablet mode")
 	}
