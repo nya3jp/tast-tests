@@ -30,7 +30,26 @@ var cleanPdfRegex = regexp.MustCompile("(?m)" +
 	// is removed so that file comparison will pass.
 	`|(^\/ModDate\(D:[0-9]{14}-[0-9]{2}'[0-9]{2}'\)$)`)
 
+// This regex is used to clear away the font 'IDs' in the FontDescriptor fields
+// which may differ between systems. Thus if two FontDescriptor lines refer to
+// the same font we can ignore any difference between the IDs.
+var cleanBaseFontRegex = regexp.MustCompile(
+	`(\/BaseFont\/)([A-Z]{6}\+)([a-zA-Z]+\/FontDescriptor)`)
+
+var cleanFontNameRegex = regexp.MustCompile(
+	`(\/FontName\/)([A-Z]{6}\+)([a-zA-Z]+\/FontBBox)`)
+
+func cleanFontDescriptors(contents string, re *regexp.Regexp) string {
+	return re.ReplaceAllStringFunc(contents,
+		func(m string) string {
+			parts := re.FindStringSubmatch(m)
+			return parts[1] + parts[3]
+		})
+}
+
 func cleanPdfContents(contents string) string {
+	contents = cleanFontDescriptors(contents, cleanBaseFontRegex)
+	contents = cleanFontDescriptors(contents, cleanFontNameRegex)
 	return cleanPdfRegex.ReplaceAllLiteralString(contents, "")
 }
 
