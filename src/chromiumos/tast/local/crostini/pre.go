@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -30,6 +31,7 @@ type PreData struct {
 	Chrome      *chrome.Chrome
 	TestAPIConn *chrome.Conn
 	Container   *vm.Container
+	Keyboard    *input.KeyboardEventWriter
 }
 
 // StartedByDownload is a precondition that ensures a tast test will
@@ -101,11 +103,12 @@ var startedByInstallerPre = &preImpl{
 type preImpl struct {
 	name       string
 	timeout    time.Duration
+	mode       setupMode
+	arcEnabled bool
 	cr         *chrome.Chrome
 	tconn      *chrome.Conn
 	cont       *vm.Container
-	mode       setupMode
-	arcEnabled bool
+	keyboard   *input.KeyboardEventWriter
 }
 
 // Interface methods for a testing.Precondition.
@@ -190,6 +193,9 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	default:
 		s.Fatal("Unrecognized mode: ", p.mode)
 	}
+	if p.keyboard, err = input.Keyboard(ctx); err != nil {
+		s.Fatal("Failed to create keyboard device: ", err)
+	}
 
 	// Stop the apt-daily systemd timers since they may end up running while we
 	// are executing the tests and cause failures due to resource contention.
@@ -225,6 +231,13 @@ func (p *preImpl) Close(ctx context.Context, s *testing.State) {
 // cleanUp de-initializes the precondition by closing/cleaning-up the relevant
 // fields and resetting the struct's fields.
 func (p *preImpl) cleanUp(ctx context.Context, s *testing.State) {
+	if p.keyboard != nil {
+		if err := p.keyboard.Close(); err != nil {
+			s.Error("Failure closing keyboard: ", err)
+		}
+		p.keyboard = nil
+	}
+
 	if p.cont != nil {
 		if err := p.cont.DumpLog(ctx, s.OutDir()); err != nil {
 			s.Error("Failure dumping container log: ", err)
@@ -255,5 +268,5 @@ func (p *preImpl) buildPreData(ctx context.Context, s *testing.State) PreData {
 	if err := p.cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
-	return PreData{p.cr, p.tconn, p.cont}
+	return PreData{p.cr, p.tconn, p.cont, p.keyboard}
 }

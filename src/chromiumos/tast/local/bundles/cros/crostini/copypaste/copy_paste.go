@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crostini"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
@@ -77,7 +78,7 @@ type TestParameters struct {
 }
 
 // RunTest Runs a copy paste test with the supplied parameters.
-func RunTest(ctx context.Context, s *testing.State, tconn *chrome.Conn, cont *vm.Container, copy *CopyConfig, paste *PasteConfig) {
+func RunTest(ctx context.Context, s *testing.State, tconn *chrome.Conn, cont *vm.Container, keyboard *input.KeyboardEventWriter, copy *CopyConfig, paste *PasteConfig) {
 
 	s.Log("Installing GTK3 dependencies")
 	cmd := cont.Command(ctx, "sudo", "apt-get", "-y", "install", "python3-gi", "python3-gi-cairo", "gir1.2-gtk-3.0")
@@ -96,12 +97,12 @@ func RunTest(ctx context.Context, s *testing.State, tconn *chrome.Conn, cont *vm
 	// Add the names of the backends used by each part of the test to differentiate the data used by each test run.
 	copiedData := fmt.Sprintf("%v to %v %s", copy.gdkBackend, paste.gdkBackend, utf8Data)
 
-	output, err := crostini.RunWindowedApp(ctx, tconn, cont, 5*time.Second, copyAppletTitle, append(copy.cmdArgs, copiedData))
+	output, err := crostini.RunWindowedApp(ctx, tconn, cont, keyboard, 5*time.Second, copyAppletTitle, append(copy.cmdArgs, copiedData))
 	if err != nil {
 		s.Fatal("Failed to run copy applet: ", err)
 	}
 
-	output, err = crostini.RunWindowedApp(ctx, tconn, cont, 5*time.Second, pasteAppletTitle, paste.cmdArgs)
+	output, err = crostini.RunWindowedApp(ctx, tconn, cont, keyboard, 5*time.Second, pasteAppletTitle, paste.cmdArgs)
 	if err != nil {
 		s.Fatal("Failed to run paste application: ", err)
 	}
