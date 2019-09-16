@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a48df19_0a74d11d",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-09-16T22:55:41Z",
+      "side": 1,
+      "message": "minor: preserve order between struct elements and initializations, this is after cont so it should be initialized after cont is (~ L 180)\n\nWhile you\u0027re there, super nit, can you please move \"mode\" to be above \"cr\" which the previous committer neglected to do",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 2
+      },
+      "revId": "76518cee657ba0461720eb39e04c2209b7ddcaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0d99e71_52e0340d",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-09-16T22:55:41Z",
+      "side": 1,
+      "message": "uninitialize in reverse-order of initialization, given the above comment, this should be uninitialized first",
+      "range": {
+        "startLine": 240,
+        "startChar": 1,
+        "endLine": 245,
+        "endChar": 2
+      },
+      "revId": "76518cee657ba0461720eb39e04c2209b7ddcaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
