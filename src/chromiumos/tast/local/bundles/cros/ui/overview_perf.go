@@ -10,10 +10,25 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
 )
+
+type shellModeType int
+
+const (
+	clamshellMode shellModeType = iota
+	tabletMode
+)
+
+func (sm shellModeType) String() string {
+	if sm == tabletMode {
+		return "tablet"
+	}
+	return "clamshell"
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -23,11 +38,23 @@ func init() {
 		Attr:         []string{"disabled", "group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      time.Minute,
+		Params:       testing.Combine(testing.NewAxis("mode", clamshellMode, tabletMode), testing.NewAxis("windows", 1, 2, 4, 8, 16)),
 	})
 }
 
 func OverviewPerf(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx)
+	var param struct {
+		Windows int
+		Mode    shellModeType
+	}
+	if err := s.ConvertParam(&param); err != nil {
+		s.Fatal("Failed to convert param: ", err)
+	}
+	modeFlag := "clamshell"
+	if param.Mode == tabletMode {
+		modeFlag = "touch_view"
+	}
+	cr, err := chrome.New(ctx, chrome.ExtraArgs("--force-tablet-mode="+modeFlag))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
@@ -39,11 +66,13 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	}
 	defer tconn.Close()
 
-	conn, err := cr.NewConn(ctx, "")
-	if err != nil {
-		s.Fatal("Failed to open a new connection: ", err)
+	for i := 0; i < param.Windows; i++ {
+		conn, err := cr.NewConn(ctx, "about:", cdputil.WithNewWindow())
+		if err != nil {
+			s.Fatal("Failed to open a new connection: ", err)
+		}
+		defer conn.Close()
 	}
-	defer conn.Close()
 
 	if err = ash.WaitForSystemUIStabilized(ctx); err != nil {
 		s.Fatal("Failed to wait for system UI to be stabilized: ", err)
@@ -59,16 +88,21 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	}
 
 	pv := perf.NewValues()
-	for _, histName := range []string{
-		"Ash.Overview.AnimationSmoothness.Enter.SingleClamshellMode",
-		"Ash.Overview.AnimationSmoothness.Exit.SingleClamshellMode",
+	for _, prefix := range []string{
+		"Ash.Overview.AnimationSmoothness.Enter",
+		"Ash.Overview.AnimationSmoothness.Exit",
 	} {
+		suffix := "SingleClamshellMode"
+		if param.Mode == tabletMode {
+			suffix = "TabletMode"
+		}
+		histName := prefix + "." + suffix
 		histogram, err := metrics.GetHistogram(ctx, cr, histName)
 		if err != nil {
 			s.Fatalf("Failed to get histogram %s: %v", histName, err)
 		}
 		pv.Set(perf.Metric{
-			Name:      histName,
+			Name:      prefix,
 			Unit:      "percent",
 			Direction: perf.BiggerIsBetter,
 		}, histogram.Mean())
