@@ -22,7 +22,7 @@ func init() {
 		Desc: "Verifies that the crypto user API can't be used to load arbitrary modules, using the kernel module test_module",
 		Contacts: []string{
 			"briannorris@chromium.org", // Original test author
-			"chromeos-kernel@google.com",
+			"chromeos-kernel-test@google.com",
 			"oka@chromium.org", // Tast port author
 		},
 	})

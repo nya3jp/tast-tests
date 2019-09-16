@@ -23,7 +23,7 @@ func init() {
 		Contacts: []string{
 			"ncrews@chromium.org",       // Test author and EC kernel driver author.
 			"chromeos-wilco@google.com", // Possesses some more domain-specific knowledge.
-			"chromeos-kernel@google.com",
+			"chromeos-kernel-test@google.com",
 			"chromeos-power@google.com",
 		},
 		// Because this test requires the battery to be in a certain state, this

@@ -22,7 +22,7 @@ func init() {
 		Desc: "Checks that required network protocols are supported by the kernel",
 		Contacts: []string{
 			"kirtika@chromium.org", // Connectivity team
-			"chromeos-kernel@google.com",
+			"chromeos-kernel-test@google.com",
 		},
 	})
 }

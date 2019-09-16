@@ -20,7 +20,7 @@ func init() {
 		Desc: "Fails if timers have nanosecond resolution that is not 1 ns",
 		Contacts: []string{
 			"tbroch@chromium.org",
-			"chromeos-kernel@google.com", // Kernel team list
+			"chromeos-kernel-test@google.com",
 			"kathrelkeld@chromium.org",   // Tast port author
 		},
 	})

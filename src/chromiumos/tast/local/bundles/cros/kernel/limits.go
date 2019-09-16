@@ -19,7 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     Limits,
 		Desc:     "Checks kernel limits and settings in /proc",
-		Contacts: []string{"chromeos-kernel@google.com"},
+		Contacts: []string{"chromeos-kernel-test@google.com"},
 	})
 }
 
