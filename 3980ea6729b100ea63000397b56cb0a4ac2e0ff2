@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1487fe16_ca24c2cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-09-16T20:09:02Z",
+      "side": 1,
+      "message": "BTW, I\u0027m not super happy about having to memorize all these paths, when they really are implementation details. But on the other hand, they *are* a more reliable option for cleanup.\n\nAlternatively, you could\n(a) not care if the cleanup is perfect in the presence of shill crashes -- (that just means the image is bad) and\n(b) do a non-fatal (i.e., don\u0027t propagate the error if it fails) manager.RemoveProfile(...) on both test profiles first, to ensure they don\u0027t already have existing garbage\n\nBut the current approach is probably good enough.",
+      "range": {
+        "startLine": 32,
+        "startChar": 29,
+        "endLine": 32,
+        "endChar": 67
+      },
+      "revId": "3980ea6729b100ea63000397b56cb0a4ac2e0ff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
