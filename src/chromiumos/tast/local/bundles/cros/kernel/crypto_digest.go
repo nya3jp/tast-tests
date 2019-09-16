@@ -27,7 +27,7 @@ func init() {
 		Desc: "Tests the crypto user API to compute message digests",
 		Contacts: []string{
 			"briannorris@chromium.org", // Original test author
-			"chromeos-kernel@google.com",
+			"chromeos-kernel-test@google.com",
 			"oka@chromium.org", // Tast port author
 		},
 		Attr: []string{"informational"},

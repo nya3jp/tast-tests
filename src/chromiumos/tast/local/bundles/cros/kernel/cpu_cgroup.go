@@ -18,7 +18,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     CPUCgroup,
 		Desc:     "Verifies that kernel CPU cgroups can be created",
-		Contacts: []string{"chromeos-kernel@google.com"},
+		Contacts: []string{"chromeos-kernel-test@google.com"},
 	})
 }
 
