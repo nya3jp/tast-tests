@@ -22,6 +22,30 @@
       "revId": "3980ea6729b100ea63000397b56cb0a4ac2e0ff2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3443566f_49ab791b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-09-16T22:54:52Z",
+      "side": 1,
+      "message": "I like the alternative a little better - it feels a little less hacky than directly using os.Remove().",
+      "parentUuid": "1487fe16_ca24c2cc",
+      "range": {
+        "startLine": 32,
+        "startChar": 29,
+        "endLine": 32,
+        "endChar": 67
+      },
+      "revId": "3980ea6729b100ea63000397b56cb0a4ac2e0ff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
