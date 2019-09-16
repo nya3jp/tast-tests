@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d6de12b_1d197786",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-09-16T22:18:56Z",
+      "side": 1,
+      "message": "What about /home/chronos/crash?",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 17
+      },
+      "revId": "1a5189e96c682b8d276deab414f9aea82aabaa7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8026202_125541bc",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-09-16T22:18:56Z",
+      "side": 1,
+      "message": "nit: spelling",
+      "range": {
+        "startLine": 117,
+        "startChar": 50,
+        "endLine": 117,
+        "endChar": 60
+      },
+      "revId": "1a5189e96c682b8d276deab414f9aea82aabaa7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25b9b606_2e5544c1",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-09-16T22:18:56Z",
+      "side": 1,
+      "message": "nit: crashes, plural",
+      "range": {
+        "startLine": 117,
+        "startChar": 13,
+        "endLine": 117,
+        "endChar": 18
+      },
+      "revId": "1a5189e96c682b8d276deab414f9aea82aabaa7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f144b1e_851a80c2",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-09-16T22:18:56Z",
+      "side": 1,
+      "message": "nit: \"saving a new crash report\"",
+      "range": {
+        "startLine": 118,
+        "startChar": 12,
+        "endLine": 118,
+        "endChar": 24
+      },
+      "revId": "1a5189e96c682b8d276deab414f9aea82aabaa7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3583dd19_9be4ada4",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-09-16T22:18:56Z",
+      "side": 1,
+      "message": "Did you consider just renaming the directory?",
+      "range": {
+        "startLine": 127,
+        "startChar": 15,
+        "endLine": 127,
+        "endChar": 21
+      },
+      "revId": "1a5189e96c682b8d276deab414f9aea82aabaa7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
