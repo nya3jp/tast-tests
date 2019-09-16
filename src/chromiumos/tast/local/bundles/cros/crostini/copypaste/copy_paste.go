@@ -96,12 +96,14 @@ func RunTest(ctx context.Context, s *testing.State, tconn *chrome.Conn, cont *vm
 	// Add the names of the backends used by each part of the test to differentiate the data used by each test run.
 	copiedData := fmt.Sprintf("%v to %v %s", copy.gdkBackend, paste.gdkBackend, utf8Data)
 
-	output, err := crostini.RunWindowedApp(ctx, tconn, cont, 5*time.Second, copyAppletTitle, append(copy.cmdArgs, copiedData))
+	// When getting a keyboard device in tablet mode, we create a new virtual keyboard and wait 5 seconds to let chrome detect it. Therefore, the timeout must allow for more then that to give time for everything else to run as well.
+	runWindowedAppTimeout := 10 * time.Second
+	output, err := crostini.RunWindowedApp(ctx, tconn, cont, runWindowedAppTimeout, copyAppletTitle, append(copy.cmdArgs, copiedData))
 	if err != nil {
 		s.Fatal("Failed to run copy applet: ", err)
 	}
 
-	output, err = crostini.RunWindowedApp(ctx, tconn, cont, 5*time.Second, pasteAppletTitle, paste.cmdArgs)
+	output, err = crostini.RunWindowedApp(ctx, tconn, cont, runWindowedAppTimeout, pasteAppletTitle, paste.cmdArgs)
 	if err != nil {
 		s.Fatal("Failed to run paste application: ", err)
 	}
