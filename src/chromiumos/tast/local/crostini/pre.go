@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -30,6 +31,7 @@ type PreData struct {
 	Chrome      *chrome.Chrome
 	TestAPIConn *chrome.Conn
 	Container   *vm.Container
+	Keyboard    *input.KeyboardEventWriter
 }
 
 // StartedByDownload is a precondition that ensures a tast test will
@@ -88,12 +90,13 @@ var startedByInstallerPre = &preImpl{
 
 // Implementation of crostini's precondition.
 type preImpl struct {
-	name    string
-	timeout time.Duration
-	cr      *chrome.Chrome
-	tconn   *chrome.Conn
-	cont    *vm.Container
-	mode    setupMode
+	name     string
+	timeout  time.Duration
+	cr       *chrome.Chrome
+	tconn    *chrome.Conn
+	cont     *vm.Container
+	mode     setupMode
+	keyboard *input.KeyboardEventWriter
 }
 
 // Interface methods for a testing.Precondition.
@@ -127,6 +130,9 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	}
 	if p.tconn, err = p.cr.TestAPIConn(ctx); err != nil {
 		s.Fatal("Failed to create test API connection: ", err)
+	}
+	if p.keyboard, err = input.Keyboard(ctx); err != nil {
+		s.Fatal("Failed to create keyboard device: ", err)
 	}
 	if p.mode == installer {
 		s.Logf("Notifying chrome of a pre-existing component %q at %q", vm.TerminaComponentName, vm.TerminaMountDir)
@@ -230,6 +236,13 @@ func (p *preImpl) cleanUp(ctx context.Context, s *testing.State) {
 		}
 		p.cr = nil
 	}
+
+	if p.keyboard != nil {
+		if err := p.keyboard.Close(); err != nil {
+			s.Error("Failure closing keyboard: ", err)
+		}
+		p.keyboard = nil
+	}
 }
 
 // buildPreData is a helper method that resets the machine state in
@@ -238,5 +251,5 @@ func (p *preImpl) buildPreData(ctx context.Context, s *testing.State) PreData {
 	if err := p.cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
-	return PreData{p.cr, p.tconn, p.cont}
+	return PreData{p.cr, p.tconn, p.cont, p.keyboard}
 }

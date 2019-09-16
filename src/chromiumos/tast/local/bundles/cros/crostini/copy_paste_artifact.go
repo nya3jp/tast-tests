@@ -59,6 +59,6 @@ func init() {
 func CopyPasteArtifact(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 	param := s.Param().(copypaste.TestParameters)
-	copypaste.RunTest(ctx, s, pre.TestAPIConn, pre.Container,
+	copypaste.RunTest(ctx, s, pre.TestAPIConn, pre.Container, pre.Keyboard,
 		param.Copy, param.Paste)
 }
