@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "c7f114a0_91dcb20e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1111649
+      },
+      "writtenOn": "2019-09-16T23:14:03Z",
+      "side": 1,
+      "message": "Done\n\nThanks for the suggestion.",
+      "parentUuid": "08aeda23_8d6b2893",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 19
+      },
+      "revId": "957b98fe6139a61f344f9dd941060dcaf797eb66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b120867_cb9e5234",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/storageinfo/storageinfo.go",
         "patchSetId": 5
