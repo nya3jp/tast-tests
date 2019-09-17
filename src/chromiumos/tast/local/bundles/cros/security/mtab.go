@@ -104,6 +104,7 @@ func Mtab(ctx context.Context, s *testing.State) {
 		"/run/imageloader/PepperFlashPlayer": {nil, "squashfs", "ro,nodev,nosuid"},
 		"/run/imageloader":                   {nil, "tmpfs", defaultRW},
 		"/run/lock":                          {nil, "tmpfs", defaultRW},
+		"/run/namespaces":                    {nil, "tmpfs", defaultRW}, // This is a bind mount
 		"/run/netns":                         {nil, "tmpfs", defaultRW}, // TODO: avoid creating mountpoint under /run: crbug.com/757953
 		"/sys":                               {nil, "sysfs", defaultRW},
 		"/sys/fs/cgroup/cpuacct":             {nil, "cgroup", defaultRW},
