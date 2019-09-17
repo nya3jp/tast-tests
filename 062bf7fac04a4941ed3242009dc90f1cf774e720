@@ -1,0 +1,481 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5d73d82_bda90a66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-17T23:20:44Z",
+      "side": 1,
+      "message": "\"Test that keys of ARC apps are stored in Chrome OS\"",
+      "range": {
+        "startLine": 25,
+        "startChar": 17,
+        "endLine": 25,
+        "endChar": 71
+      },
+      "revId": "062bf7fac04a4941ed3242009dc90f1cf774e720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31795a51_06226ee8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-17T23:20:44Z",
+      "side": 1,
+      "message": "Use android_p",
+      "range": {
+        "startLine": 28,
+        "startChar": 26,
+        "endLine": 28,
+        "endChar": 38
+      },
+      "revId": "062bf7fac04a4941ed3242009dc90f1cf774e720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8005cde9_b186c62d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-17T23:20:44Z",
+      "side": 1,
+      "message": "Seems those two can be replaced with a single\n\n    componentName \u003d \"PACKAGE/CLASS\"",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 44
+      },
+      "revId": "062bf7fac04a4941ed3242009dc90f1cf774e720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8ebb2dc_55e273b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-17T23:20:44Z",
+      "side": 1,
+      "message": "Can this same logic of idPrefix+\"someId\" be used above for buttons?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 47
+      },
+      "revId": "062bf7fac04a4941ed3242009dc90f1cf774e720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a65360e_399949f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-17T23:20:44Z",
+      "side": 1,
+      "message": "unused?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 30
+      },
+      "revId": "062bf7fac04a4941ed3242009dc90f1cf774e720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22a18d85_1d55b0ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-17T23:20:44Z",
+      "side": 1,
+      "message": "I don\u0027t think this is a good idea, I\u0027d rather be able to look at a function and know what it needs.\n\nNo helper uses all parameters, the most needed is 3 out of the 7, and one of them is testing.State used to report errors which is something we should avoid doing from a helper function.",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 20
+      },
+      "revId": "062bf7fac04a4941ed3242009dc90f1cf774e720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ff378f0_bf7c7deb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-17T23:20:44Z",
+      "side": 1,
+      "message": "This is a constant.",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 13
+      },
+      "revId": "062bf7fac04a4941ed3242009dc90f1cf774e720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7c8e923_1120a542",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-17T23:20:44Z",
+      "side": 1,
+      "message": "Inline below in the one place that uses it.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 39
+      },
+      "revId": "062bf7fac04a4941ed3242009dc90f1cf774e720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bac3edd_17dd1e77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-17T23:20:44Z",
+      "side": 1,
+      "message": "This is simple enough it should probably be inlined in callers.\n\nIt basically calls a function and checks for errors, which the caller will have to do when it calls this too.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 83
+      },
+      "revId": "062bf7fac04a4941ed3242009dc90f1cf774e720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c16da4b_35c53777",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-17T23:20:44Z",
+      "side": 1,
+      "message": "The prevailing pattern in go is that if a function does some computation that can fail, it must return that error.\n\nCallers must verify the return is non error before accessing results, potentially just returning the error again.\n\nThis continues up the call stack until someone can handle that error, most commonly the main function that drives the program or whatever started the current request.\n\nThis means that this line should return an error that main will handle, instead of halting the test directly with s.Fatal.\n\nThe same advice applies in other functions here.",
+      "range": {
+        "startLine": 99,
+        "startChar": 8,
+        "endLine": 99,
+        "endChar": 14
+      },
+      "revId": "062bf7fac04a4941ed3242009dc90f1cf774e720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39fc2a8f_b735ba1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-17T23:20:44Z",
+      "side": 1,
+      "message": "Inline in the one place that calls it.",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 63
+      },
+      "revId": "062bf7fac04a4941ed3242009dc90f1cf774e720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fedc95a8_5faa413d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-17T23:20:44Z",
+      "side": 1,
+      "message": "Is there a reason why you can ignore errors here but not in L112 and L117?",
+      "revId": "062bf7fac04a4941ed3242009dc90f1cf774e720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fb1d563_18d5f45b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-17T23:20:44Z",
+      "side": 1,
+      "message": "This actually does not check if a key exists.",
+      "range": {
+        "startLine": 122,
+        "startChar": 5,
+        "endLine": 122,
+        "endChar": 22
+      },
+      "revId": "062bf7fac04a4941ed3242009dc90f1cf774e720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5012db22_916d8b52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-17T23:20:44Z",
+      "side": 1,
+      "message": "This could be something like \"ls \u003ckeystore_path\u003e/*\u003cprivate_key_suffix\u003e\", then you don\u0027t need the loop.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 68
+      },
+      "revId": "062bf7fac04a4941ed3242009dc90f1cf774e720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0372c45_f0db5746",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-17T23:20:44Z",
+      "side": 1,
+      "message": "clar: Why is this necessary? Can you document it?",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 37
+      },
+      "revId": "062bf7fac04a4941ed3242009dc90f1cf774e720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed923ab1_1fd9e341",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-17T23:20:44Z",
+      "side": 1,
+      "message": "Inline",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 64
+      },
+      "revId": "062bf7fac04a4941ed3242009dc90f1cf774e720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a5a4631_52fd64e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-17T23:20:44Z",
+      "side": 1,
+      "message": "Use filepath.Join()",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 44
+      },
+      "revId": "062bf7fac04a4941ed3242009dc90f1cf774e720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b6380cc_edae4127",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-17T23:20:44Z",
+      "side": 1,
+      "message": "Inline",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 76
+      },
+      "revId": "062bf7fac04a4941ed3242009dc90f1cf774e720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ca1dbb3_4cf280a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-17T23:20:44Z",
+      "side": 1,
+      "message": "Why is this necessary?",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 23
+      },
+      "revId": "062bf7fac04a4941ed3242009dc90f1cf774e720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "657d2412_19828124",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-17T23:20:44Z",
+      "side": 1,
+      "message": "This function is the most important thing in this file, it should come before all the other helpers right after init.",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 55
+      },
+      "revId": "062bf7fac04a4941ed3242009dc90f1cf774e720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a5f9405_f67f0fc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-17T23:20:44Z",
+      "side": 1,
+      "message": "nit: \"to initialize\"",
+      "range": {
+        "startLine": 226,
+        "startChar": 18,
+        "endLine": 226,
+        "endChar": 30
+      },
+      "revId": "062bf7fac04a4941ed3242009dc90f1cf774e720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

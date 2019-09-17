@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "9293b6d8_e396f39e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-17T23:20:44Z",
+      "side": 1,
+      "message": "Extracting the helper functions to outside your main test method does not make the flow easier to understand.\n\nHave you considered reducing the number of buttons in the test app? Can we have a single \"Run Test\" button that does everything we need?\n\nOtherwise, have you considered other alternatives?",
+      "parentUuid": "f41d56e0_73b6eab5",
+      "revId": "724e61ae280c951faf10ba531b1b1ad9bde7275f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "342b4f28_4c339a6a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
         "patchSetId": 1
