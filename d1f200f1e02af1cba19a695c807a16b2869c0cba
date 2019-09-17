@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad78c988_c6297492",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-09-17T01:37:25Z",
+      "side": 1,
+      "message": "nit: s/o/O",
+      "range": {
+        "startLine": 210,
+        "startChar": 4,
+        "endLine": 210,
+        "endChar": 5
+      },
+      "revId": "d1f200f1e02af1cba19a695c807a16b2869c0cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26682501_7b8b6655",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-09-17T01:37:25Z",
+      "side": 1,
+      "message": "nit: move the comment to the line above?",
+      "range": {
+        "startLine": 215,
+        "startChar": 52,
+        "endLine": 215,
+        "endChar": 103
+      },
+      "revId": "d1f200f1e02af1cba19a695c807a16b2869c0cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a46488ac_1c79f71d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-09-17T01:37:25Z",
+      "side": 1,
+      "message": "move this to consts declaration in lines 22-33?\nand rename variable ?",
+      "range": {
+        "startLine": 215,
+        "startChar": 7,
+        "endLine": 215,
+        "endChar": 13
+      },
+      "revId": "d1f200f1e02af1cba19a695c807a16b2869c0cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3bfff5b_c447b47f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-09-17T01:37:25Z",
+      "side": 1,
+      "message": "nit: to be ready?\nit\u0027s confusing how the \u0027R\u0027 is in capitals\n(same in accessibility_event.go)",
+      "range": {
+        "startLine": 228,
+        "startChar": 59,
+        "endLine": 228,
+        "endChar": 64
+      },
+      "revId": "d1f200f1e02af1cba19a695c807a16b2869c0cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
