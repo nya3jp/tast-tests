@@ -16,6 +16,24 @@
       "revId": "92e220ada6d7a1118d5859308ddbedb63ddf5c0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64806ad1_b48a49c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-17T05:15:08Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "39130d5f_3f1f312f",
+      "revId": "92e220ada6d7a1118d5859308ddbedb63ddf5c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
