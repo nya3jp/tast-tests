@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "99b4cff7_20cdee43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-09-17T18:41:26Z",
+      "side": 1,
+      "message": "That\u0027s true. I think informational is meant to promote to CQ in the future? Maybe I am wrong about it.\nDone.",
+      "parentUuid": "01db0342_18ed75f7",
+      "range": {
+        "startLine": 61,
+        "startChar": 3,
+        "endLine": 61,
+        "endChar": 61
+      },
+      "revId": "beb4ad7b6b0043de7c8e918378f587e2266cae6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d8507471_7c552ec1",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
         "patchSetId": 5
@@ -59,6 +83,24 @@
       "writtenOn": "2019-09-17T13:55:43Z",
       "side": 1,
       "message": "Why do we give up running these tests individually? Having them was separate tests is convenient to track pass/fail status separately.",
+      "revId": "beb4ad7b6b0043de7c8e918378f587e2266cae6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63544658_682474e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-09-17T18:41:26Z",
+      "side": 1,
+      "message": "I think either way is good to me. This is just a same approach we used in our autotest world.",
+      "parentUuid": "d8507471_7c552ec1",
       "revId": "beb4ad7b6b0043de7c8e918378f587e2266cae6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -88,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "48e4f1b2_55e9d4ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-09-17T18:41:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c51702c_aeed2acd",
+      "range": {
+        "startLine": 123,
+        "startChar": 27,
+        "endLine": 123,
+        "endChar": 35
+      },
+      "revId": "beb4ad7b6b0043de7c8e918378f587e2266cae6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2aa6cda6_e568bf4a",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
         "patchSetId": 5
@@ -111,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "4b67711a_ca3a7dbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-09-17T18:41:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2aa6cda6_e568bf4a",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 49
+      },
+      "revId": "beb4ad7b6b0043de7c8e918378f587e2266cae6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b598b8b_c320584e",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
         "patchSetId": 5
@@ -122,6 +212,30 @@
       "writtenOn": "2019-09-17T13:55:43Z",
       "side": 1,
       "message": "Please avoid skipping tests by checking conditions at runtime.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#device-dependencies\n\nFor software dependencies, please use SoftwareDeps. For hardware dependencies, currently it is blocked by crbug.com/950346... :(",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 21
+      },
+      "revId": "beb4ad7b6b0043de7c8e918378f587e2266cae6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6dbc560_fc5dfdf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-09-17T18:41:26Z",
+      "side": 1,
+      "message": "I don\u0027t see another way to doing this if we want to have graphics.DRM.all and the bvt suite. My guess this the reason the ported tast drm test use vgem_test instead of swrast_test.\nAny suggestions?",
+      "parentUuid": "9b598b8b_c320584e",
       "range": {
         "startLine": 139,
         "startChar": 0,
