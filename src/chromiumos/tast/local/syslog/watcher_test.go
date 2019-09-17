@@ -9,6 +9,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"sync"
 	"testing"
 	"time"
 
@@ -429,7 +430,11 @@ func TestWaitForMessageMessageAddedDuring(t *testing.T) {
 	}
 	defer w.Close()
 
+	var wg sync.WaitGroup
+	wg.Add(1)
+
 	go func() {
+		defer wg.Done()
 		// As best we can, try to ensure main thread is already inside
 		// WaitForMessage() when we write to the file. We have no way to know when
 		// WaitForMessage() actually starts polling, so we do the best we can.
@@ -446,6 +451,9 @@ func TestWaitForMessageMessageAddedDuring(t *testing.T) {
 	if err := w.WaitForMessage(context.Background(), target); err != nil {
 		t.Errorf("WaitForMessage failed: %v", err)
 	}
+
+	// Don't close or remove the file before the goroutine calls file.Sync().
+	wg.Wait()
 }
 
 func TestWaitForMessageFails(t *testing.T) {
