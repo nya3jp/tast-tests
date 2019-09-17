@@ -16,6 +16,24 @@
       "revId": "0c412c21663fb63c0d9468afd15c157f81388d7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "635079cd_3fb674cc",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-17T19:45:53Z",
+      "side": 1,
+      "message": "sure. I moved the dumpsys logic to the \"dumpsys\" file. I\u0027ll include your comment in \"dumpsys.go\" once I add protobuf there.",
+      "parentUuid": "c49a5331_0d42204f",
+      "revId": "0c412c21663fb63c0d9468afd15c157f81388d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
