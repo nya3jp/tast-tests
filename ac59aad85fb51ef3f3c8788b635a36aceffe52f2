@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d9b911e_43da9cd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ghostscript/compare.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2019-09-17T05:01:43Z",
+      "side": 1,
+      "message": "It would be good to include an example line",
+      "revId": "ac59aad85fb51ef3f3c8788b635a36aceffe52f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
