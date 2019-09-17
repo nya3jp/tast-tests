@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18e573c8_87eae462",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-17T08:42:34Z",
+      "side": 1,
+      "message": "Could you check the status by using the proper methods?\n\nhttps://golang.org/pkg/syscall/#WaitStatus\n\nWhat condition do you actually need to check?",
+      "revId": "f44186b254cfc81f695b044428e316804a85d369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
