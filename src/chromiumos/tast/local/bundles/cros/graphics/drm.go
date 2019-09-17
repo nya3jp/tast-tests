@@ -10,6 +10,8 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/shutil"
@@ -20,18 +22,19 @@ import (
 type drmTest struct {
 	command []string      // The command path to be run. This should be relative to /usr/local/bin.
 	timeout time.Duration // Timeout to run the drmTest.
+	runDeps []string      // The dependencies that should be check in runtime.
 }
 
 func init() {
 	var (
-		atomic       = drmTest{command: []string{"atomictest", "-a", "-t", "all"}, timeout: 5 * time.Minute}
-		drmCursor    = drmTest{command: []string{"drm_cursor_test"}, timeout: 20 * time.Second}
-		linearBo     = drmTest{command: []string{"linear_bo_test"}, timeout: 20 * time.Second}
-		mmap         = drmTest{command: []string{"mmap_test"}, timeout: 5 * time.Minute}
-		nullPlatform = drmTest{command: []string{"null_platform_test"}, timeout: 20 * time.Second}
-		swrast       = drmTest{command: []string{"swrast_test"}, timeout: 20 * time.Second}
-		vgem         = drmTest{command: []string{"vgem_test"}, timeout: 20 * time.Second}
-		vkGlow       = drmTest{command: []string{"vk_glow"}, timeout: 20 * time.Second}
+		atomic       = drmTest{command: []string{"atomictest", "-a", "-t", "all"}, timeout: 5 * time.Minute, runDeps: []string{"display_connected", "drm_atomic"}}
+		drmCursor    = drmTest{command: []string{"drm_cursor_test"}, timeout: 20 * time.Second, runDeps: []string{"display_connected"}}
+		linearBo     = drmTest{command: []string{"linear_bo_test"}, timeout: 20 * time.Second, runDeps: []string{"display_connected"}}
+		mmap         = drmTest{command: []string{"mmap_test"}, timeout: 5 * time.Minute, runDeps: []string{"display_connected"}}
+		nullPlatform = drmTest{command: []string{"null_platform_test"}, timeout: 20 * time.Second, runDeps: []string{"display_connected"}}
+		swrast       = drmTest{command: []string{"swrast_test"}, timeout: 20 * time.Second, runDeps: []string{}}
+		vgem         = drmTest{command: []string{"vgem_test"}, timeout: 20 * time.Second, runDeps: []string{"display_connected"}}
+		vkGlow       = drmTest{command: []string{"vk_glow"}, timeout: 20 * time.Second, runDeps: []string{"display_connected", "vulkan"}}
 	)
 
 	testing.AddTest(&testing.Test{
@@ -49,18 +52,16 @@ func init() {
 				linearBo,
 				nullPlatform,
 				vgem},
-			ExtraSoftwareDeps: []string{"display_backlight"},
-			ExtraAttr:         []string{"informational"},
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name:              "atomic_test",
 			Val:               []drmTest{atomic},
-			ExtraSoftwareDeps: []string{"display_backlight", "drm_atomic"},
+			ExtraSoftwareDeps: []string{"drm_atomic"},
 			ExtraAttr:         []string{"informational"},
 		}, {
-			Name:              "mmap_test",
-			Val:               []drmTest{mmap},
-			ExtraSoftwareDeps: []string{"display_backlight"},
-			ExtraAttr:         []string{"informational"},
+			Name:      "mmap_test",
+			Val:       []drmTest{mmap},
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "swrast_test",
 			Val:       []drmTest{swrast},
@@ -68,7 +69,7 @@ func init() {
 		}, {
 			Name:              "vk_glow",
 			Val:               []drmTest{vkGlow},
-			ExtraSoftwareDeps: []string{"display_backlight", "vulkan"},
+			ExtraSoftwareDeps: []string{"vulkan"},
 			ExtraAttr:         []string{"informational"},
 		}},
 		Timeout: 5 * time.Minute,
@@ -83,8 +84,50 @@ func DRM(ctx context.Context, s *testing.State) {
 
 	testOpts := s.Param().([]drmTest)
 	for _, testOpt := range testOpts {
+		shouldRun, err := checkRunAttr(ctx, s.SoftwareDeps(), testOpt.runDeps)
+		if err != nil {
+			s.Error("Failed to check attribute: ", err)
+		}
+		if !shouldRun {
+			continue
+		}
 		runTest(ctx, s, testOpt.timeout, testOpt.command[0], testOpt.command[1:]...)
 	}
+}
+
+// checkRunAttr checks the runDeps config to decide whether we should run the test.
+// TODO(pwang): runtime dependency is not recommended in tast. Hardware Dependency is currently blocked by crbug.com/950346. We should consider using it once it is done.
+func checkRunAttr(ctx context.Context, softDeps, attrs []string) (bool, error) {
+	for _, attr := range attrs {
+		switch attr {
+		case "display_connected":
+			connectCount, err := graphics.NumberOfOutputsConnected(ctx)
+			if err != nil {
+				return false, errors.Wrapf(err, "failed to check test attribute %s", attr)
+			}
+			if connectCount == 0 {
+				testing.ContextLog(ctx, "No connector detected. Skipping test")
+				return false, nil
+			}
+		case "vulkan":
+			hasVulkan, err := graphics.SupportsVulkanForDEQP(ctx)
+			if err != nil {
+				return false, errors.Wrapf(err, "failed to check test attribute %s", attr)
+			}
+			if !hasVulkan {
+				for _, softDep := range softDeps {
+					if softDep == "vulkan" {
+						return false, errors.New("vulkan is not available but softDeps is set")
+					}
+				}
+				testing.ContextLog(ctx, "Vulkan is not available. Skipping test")
+				return false, nil
+			}
+		default:
+			testing.ContextLogf(ctx, "Unrocognized runAttr %s. Assuming it is guarded by tast SoftwareDeps", attr)
+		}
+	}
+	return true, nil
 }
 
 // setUp prepares the testing environment to run runTest().
