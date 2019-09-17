@@ -81,9 +81,20 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 		)
 	}
 
+	iioDevices, err := selinux.IIOSensorDevices()
+	if err != nil {
+		s.Error("Failed to enumerate iio devices: ", err)
+	}
+	for _, iioDevice := range iioDevices {
+		testArgs = append(
+			testArgs,
+			[]arcFileTestCase{
+				{iioDevice, false, "cros_sensor_hal_sysfs", true, selinux.IIOSensorFilter},
+				{iioDevice, false, "sysfs", true, selinux.InvertFilterSkipFile(selinux.IIOSensorFilter)},
+			}...)
+	}
+
 	testArgs = append(testArgs, []arcFileTestCase{
-		// TODO(fqj): Missing file tests from cheets_SELinux*.py are:
-		// _check_iio_sys_devices_labels
 		{"/mnt/stateful_partition/unencrypted/apkcache", false, "apkcache_file", false, nil},
 		{"/mnt/stateful_partition/unencrypted/art-data/dalvik-cache/", false, "dalvikcache_data_file", true, nil},
 		{"/opt/google/chrome/chrome", false, "chrome_browser_exec", false, nil},

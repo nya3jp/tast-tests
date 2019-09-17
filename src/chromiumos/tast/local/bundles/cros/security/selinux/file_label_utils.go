@@ -177,12 +177,14 @@ func GpuDevices() ([]string, error) {
 		return devices, errors.Wrap(err, "unable to locate render devices")
 	}
 	var firstErr error
+	var errCnt int
 	for _, entryTree := range renderDs {
 		deviceReal, err := filepath.EvalSymlinks(filepath.Join(entryTree, "device"))
 		if err != nil {
-			if firstErr == nil {
+			if firstErr != nil {
 				firstErr = errors.Wrap(err, "unable to resolve absolute deviceReal")
 			}
+			errCnt++
 			continue
 		}
 		// entryTree may link to something looks like
@@ -191,5 +193,68 @@ func GpuDevices() ([]string, error) {
 		deviceReal = strings.SplitN(deviceReal, "/virtio", 2)[0]
 		devices = append(devices, deviceReal)
 	}
-	return devices, firstErr
+	if firstErr == nil {
+		return devices, nil
+	}
+	return devices, errors.Wrapf(firstErr, "%d errors have occurred, first error is:", errCnt)
+}
+
+// IIOSensorDevices returns the folder for cros-ec related iio devices. even
+// with err, devices without errors are still returned.
+func IIOSensorDevices() ([]string, error) {
+	var devices []string
+	trees, err := filepath.Glob("/sys/bus/iio/devices/iio:device*")
+	if err != nil {
+		return devices, errors.Wrap(err, "unable to locate iio devices")
+	}
+	var firstErr error
+	var errCnt int
+	for _, entry := range trees {
+		name, err := ioutil.ReadFile(filepath.Join(entry, "name"))
+		if err != nil {
+			if firstErr != nil {
+				firstErr = errors.Wrap(err, "unable to determine device name")
+			}
+			errCnt++
+			continue
+		}
+		deviceReal, err := filepath.EvalSymlinks(entry)
+		if err != nil {
+			if firstErr != nil {
+				firstErr = errors.Wrap(err, "failed to evaluate symlink for iio device")
+			}
+			errCnt++
+			continue
+		}
+		if strings.HasPrefix(string(name), "cros-ec") {
+			devices = append(devices, deviceReal)
+		}
+	}
+	if firstErr == nil {
+		return devices, nil
+	}
+	return devices, errors.Wrapf(firstErr, "%d errors have occurred, first error is:", errCnt)
+}
+
+// IIOSensorFilter returns pairs of FilterResult to check only files that
+// should have cros_sensor_hal_sysfs labeled.
+func IIOSensorFilter(p string, fi os.FileInfo) (skipFile, skipSubdir FilterResult) {
+	sensorFiles := map[string]bool{
+		"flush":                               true,
+		"frequency":                           true,
+		"sampling_frequency":                  true,
+		"in_activity_still_change_falling_en": true,
+	}
+	ringFiles := map[string]bool{
+		"enable":          true,
+		"length":          true,
+		"current_trigger": true,
+	}
+	if sensorFiles[fi.Name()] {
+		return Check, Check
+	}
+	if strings.Contains(p, "cros-ec-ring") && ringFiles[fi.Name()] {
+		return Check, Check
+	}
+	return Skip, Check
 }
