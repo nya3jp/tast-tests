@@ -19,14 +19,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PeerConnH264,
-		Desc: "Verifies that WebRTC loopback works (H264)",
-		Contacts: []string{
-			"keiichiw@chromium.org", // Video team
-			"shik@chromium.org",     // Camera team
-			"chromeos-camera-eng@google.com",
-		},
-		Attr: []string{"informational"},
+		Func:     PeerConnH264,
+		Desc:     "Verifies that WebRTC loopback works (H264)",
+		Contacts: []string{"mcasas@chromium.org", "chromeos-video-eng@google.com"},
+		Attr:     []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome", "chrome_internal"},
 		Pre:          pre.ChromeVideo(),
