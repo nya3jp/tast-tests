@@ -7,6 +7,7 @@ package arc
 import (
 	"context"
 	"io/ioutil"
+	"path/filepath"
 	"regexp"
 	"strconv"
 	"time"
@@ -18,6 +19,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const finskyPrefs = "/opt/google/containers/android/rootfs/android-data/data/data/com.android.vending/shared_prefs/finsky.xml"
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PlayStorePersistent,
@@ -25,9 +28,9 @@ func init() {
 		Contacts:     []string{"khmel@chromium.org", "jhorwich@chromium.org", "arc-core@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"android_all_both", "chrome"},
-		// 1 min for ARC is provisioned, 3 minutes max waiting for daily hygiene, and
-		// 1 min max waiting for CPU is idle. Normally test takes ~2.5 minutes to complete.
-		Timeout: 5 * time.Minute,
+		// 1 min for ARC is provisioned, 4 minutes max waiting for daily hygiene, and
+		// 1 min max waiting for CPU is idle. Normally test takes ~2.5-3.5 minutes to complete.
+		Timeout: 6 * time.Minute,
 	})
 }
 
@@ -57,7 +60,7 @@ func getPlayStorePid(ctx context.Context, a *arc.ARC) (uint, error) {
 func waitForDailyHygieneDone(ctx context.Context) error {
 	re := regexp.MustCompile(`<int name="dailyhygiene-last-version" value="\d+"`)
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		out, err := ioutil.ReadFile("/opt/google/containers/android/rootfs/android-data/data/data/com.android.vending/shared_prefs/finsky.xml")
+		out, err := ioutil.ReadFile(finskyPrefs)
 		if err != nil {
 			// It is OK if it does not exist yet
 			return err
@@ -68,7 +71,7 @@ func waitForDailyHygieneDone(ctx context.Context) error {
 		}
 
 		return nil
-	}, &testing.PollOptions{Timeout: 3 * time.Minute, Interval: 5 * time.Second})
+	}, &testing.PollOptions{Timeout: 4 * time.Minute, Interval: 5 * time.Second})
 }
 
 func PlayStorePersistent(ctx context.Context, s *testing.State) {
@@ -92,6 +95,19 @@ func PlayStorePersistent(ctx context.Context, s *testing.State) {
 
 	s.Log("Wating for daily hygiene done")
 	if err := waitForDailyHygieneDone(ctx); err != nil {
+		destFinskyPref := filepath.Join(s.OutDir(), "finsky.xml")
+
+		out, err2 := ioutil.ReadFile(finskyPrefs)
+		if err2 == nil {
+			if err2 := ioutil.WriteFile(destFinskyPref, out, 0644); err2 != nil {
+				s.Error("Failed to write Finsky prefs: ", err2)
+			} else {
+				s.Errorf("Finsky prefs saved on failure to %q: ", destFinskyPref)
+			}
+		} else {
+			s.Error("Failed to read Finsky prefs: ", err2)
+		}
+
 		s.Fatal("Failed to wait daily hygiene is done: ", err)
 	}
 
