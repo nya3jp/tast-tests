@@ -23,17 +23,6 @@ type drmTest struct {
 }
 
 func init() {
-	var (
-		atomic       = drmTest{command: []string{"atomictest", "-a", "-t", "all"}, timeout: 5 * time.Minute}
-		drmCursor    = drmTest{command: []string{"drm_cursor_test"}, timeout: 20 * time.Second}
-		linearBo     = drmTest{command: []string{"linear_bo_test"}, timeout: 20 * time.Second}
-		mmap         = drmTest{command: []string{"mmap_test"}, timeout: 5 * time.Minute}
-		nullPlatform = drmTest{command: []string{"null_platform_test"}, timeout: 20 * time.Second}
-		swrast       = drmTest{command: []string{"swrast_test"}, timeout: 20 * time.Second}
-		vgem         = drmTest{command: []string{"vgem_test"}, timeout: 20 * time.Second}
-		vkGlow       = drmTest{command: []string{"vk_glow"}, timeout: 20 * time.Second}
-	)
-
 	testing.AddTest(&testing.Test{
 		Func: DRM,
 		Desc: "Verifies DRM-related test binaries run successfully",
@@ -43,34 +32,41 @@ func init() {
 			"hidehiko@chromium.org", // Tast port.
 		},
 		Params: []testing.Param{{
-			Name: "bvt",
-			Val: []drmTest{
-				drmCursor,
-				linearBo,
-				nullPlatform,
-				vgem},
-			ExtraSoftwareDeps: []string{"display_backlight"},
-			ExtraAttr:         []string{"informational"},
-		}, {
-			Name:              "atomic_test",
-			Val:               []drmTest{atomic},
+			Name: "atomic_test",
+			Val: drmTest{
+				command: []string{"atomictest", "-a", "-t", "all"},
+				timeout: 5 * time.Minute,
+			},
 			ExtraSoftwareDeps: []string{"display_backlight", "drm_atomic"},
-			ExtraAttr:         []string{"informational"},
+		}, {
+			Name:              "drm_cursor_test",
+			Val:               drmTest{command: []string{"drm_cursor_test"}, timeout: 20 * time.Second},
+			ExtraSoftwareDeps: []string{"display_backlight"},
+		}, {
+			Name:              "linear_bo_test",
+			Val:               drmTest{command: []string{"linear_bo_test"}, timeout: 20 * time.Second},
+			ExtraSoftwareDeps: []string{"display_backlight"},
 		}, {
 			Name:              "mmap_test",
-			Val:               []drmTest{mmap},
+			Val:               drmTest{command: []string{"mmap_test"}, timeout: 5 * time.Minute},
 			ExtraSoftwareDeps: []string{"display_backlight"},
-			ExtraAttr:         []string{"informational"},
 		}, {
-			Name:      "swrast_test",
-			Val:       []drmTest{swrast},
-			ExtraAttr: []string{"informational"},
+			Name:              "null_platform_test",
+			Val:               drmTest{command: []string{"null_platform_test"}, timeout: 20 * time.Second},
+			ExtraSoftwareDeps: []string{"display_backlight"},
+		}, {
+			Name: "swrast_test",
+			Val:  drmTest{command: []string{"swrast_test"}, timeout: 20 * time.Second},
+		}, {
+			Name:              "vgem_test",
+			Val:               drmTest{command: []string{"vgem_test"}, timeout: 20 * time.Second},
+			ExtraSoftwareDeps: []string{"display_backlight"},
 		}, {
 			Name:              "vk_glow",
-			Val:               []drmTest{vkGlow},
+			Val:               drmTest{command: []string{"vk_glow"}, timeout: 20 * time.Second},
 			ExtraSoftwareDeps: []string{"display_backlight", "vulkan"},
-			ExtraAttr:         []string{"informational"},
 		}},
+		Attr:    []string{"informational"},
 		Timeout: 5 * time.Minute,
 	})
 }
@@ -81,10 +77,8 @@ func DRM(ctx context.Context, s *testing.State) {
 	}
 	defer tearDown(ctx)
 
-	testOpts := s.Param().([]drmTest)
-	for _, testOpt := range testOpts {
-		runTest(ctx, s, testOpt.timeout, testOpt.command[0], testOpt.command[1:]...)
-	}
+	testOpt := s.Param().(drmTest)
+	runTest(ctx, s, testOpt.timeout, testOpt.command[0], testOpt.command[1:]...)
 }
 
 // setUp prepares the testing environment to run runTest().
