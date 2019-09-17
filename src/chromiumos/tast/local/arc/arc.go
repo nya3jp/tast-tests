@@ -129,12 +129,10 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		}
 
 		// Connect to ADB.
-		// TODO(jasongustaman): Use adbConnect instead when adb-proxy change (b/135150238) landed.
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			return BootstrapCommand(ctx, "/system/bin/true").Run()
-		}, &testing.PollOptions{Interval: time.Second}); err != nil {
-			return nil, errors.Wrap(err, "Android VM did not come up: can't connect to ADB")
+		if err := connectADB(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed connecting to ADB")
 		}
+
 	} else {
 		if err := WaitAndroidInit(ctx); err != nil {
 			return nil, errors.Wrap(err, "Android failed to boot in very early stage")
@@ -168,7 +166,6 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 
 	var ch chan error
 	if !vm {
-		// TODO(jasongustaman): use errgroup here.
 		// Android container is up. Set up ADB auth in parallel to Android boot since
 		// ADB local server takes a few seconds to start up.
 		testing.ContextLog(ctx, "Setting up ADB auth")
