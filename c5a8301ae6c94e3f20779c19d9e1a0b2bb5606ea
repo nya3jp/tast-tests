@@ -16,6 +16,24 @@
       "revId": "c5a8301ae6c94e3f20779c19d9e1a0b2bb5606ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7ed08f3_a181c8b3",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-09-17T14:21:24Z",
+      "side": 1,
+      "message": "I don\u0027t think there\u0027s any API that will let us test if something has been copied to the clipboard, and when we previously discussed this we felt that if copying takes too long then that is a failure from the users perspective anyway.",
+      "parentUuid": "e0a7aaf1_aba0c0ab",
+      "revId": "c5a8301ae6c94e3f20779c19d9e1a0b2bb5606ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
