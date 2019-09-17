@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "366ba08d_7816bfb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/cpu_cgroup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-17T09:42:48Z",
+      "side": 1,
+      "message": "optional:\nTast team strongly encourage to add an individual engineer for can be primary contact in case of test failures. Would you mind to be the owner of this?\n\ncf) https://chromium.git.corp.google.com/chromiumos/platform/tast/+/d1e3288be2b61e776815d1075d0a7107a16c1083/src/chromiumos/tast/testing/test.go#45",
+      "revId": "d9b63982bd774a40006f923f1478a9d6cabeca9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cae35fbf_bf4cbf3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/limits.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-17T09:42:48Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "d9b63982bd774a40006f923f1478a9d6cabeca9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b1a4fe7_76194878",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/perf_callgraph.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-17T09:42:48Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "d9b63982bd774a40006f923f1478a9d6cabeca9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
