@@ -193,3 +193,52 @@ func GpuDevices() ([]string, error) {
 	}
 	return devices, firstErr
 }
+
+// IioSensorDevices returns the folder for cros-ec related iio devices.
+func IioSensorDevices() ([]string, error) {
+	var devices []string
+	trees, err := filepath.Glob("/sys/bus/iio/devices/iio:device*")
+	if err != nil {
+		return devices, errors.Wrap(err, "unable to locate iio devices")
+	}
+	var lastErr error
+	for _, entry := range trees {
+		name, err := ioutil.ReadFile(filepath.Join(entry, "name"))
+		if err != nil {
+			lastErr = errors.Wrap(err, "unable to determine device name")
+			continue
+		}
+		deviceReal, err := filepath.EvalSymlinks(entry)
+		if err != nil {
+			lastErr = errors.Wrap(err, "failed to evaluate symlink for iio device")
+			continue
+		}
+		if strings.HasPrefix(string(name), "cros-ec") {
+			devices = append(devices, deviceReal)
+		}
+	}
+	return devices, lastErr
+}
+
+// IioSensorFilter returns pairs of FilterResult to check only files that
+// should have cros_sensor_hal_sysfs labeled.
+func IioSensorFilter(p string, fi os.FileInfo) (skipFile, skipSubdir FilterResult) {
+	sensorFiles := map[string]bool{
+		"flush":                             true,
+		"frequency":                         true,
+		"sampling_frequency":                true,
+		"in_active_still_change_falling_en": true,
+	}
+	ringFiles := map[string]bool{
+		"enable":          true,
+		"length":          true,
+		"current_trigger": true,
+	}
+	if sensorFiles[fi.Name()] {
+		return Check, Check
+	}
+	if strings.Contains(p, "cros-ec-ring") && ringFiles[fi.Name()] {
+		return Check, Check
+	}
+	return Skip, Check
+}
