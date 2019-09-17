@@ -45,6 +45,40 @@
       "revId": "6c30f1e3e1c8c24f77876ee4a98ba21b78609036",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57b0223e_522de9d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-17T21:09:34Z",
+      "side": 1,
+      "message": "please check and raise this error if it is not nil",
+      "revId": "6c30f1e3e1c8c24f77876ee4a98ba21b78609036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4892ceab_13db009e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_system.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-17T21:09:34Z",
+      "side": 1,
+      "message": "Please make a note either here or at the function declaration that only devices without errors are returned.  This setup goes against the usual pattern of returning nil on error, so flagging that makes it less surprising.",
+      "revId": "6c30f1e3e1c8c24f77876ee4a98ba21b78609036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
