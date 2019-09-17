@@ -22,9 +22,9 @@ func init() {
 		Func: PeerConnVP8,
 		Desc: "Verifies that WebRTC loopback works (VP8)",
 		Contacts: []string{
-			"keiichiw@chromium.org", // Video team
-			"shik@chromium.org",     // Camera team
-			"chromeos-camera-eng@google.com",
+			"mcasas@chromium.org",
+			"chromeos-gfx-video@google.com",
+			"chromeos-video-eng@google.com",
 		},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome"},

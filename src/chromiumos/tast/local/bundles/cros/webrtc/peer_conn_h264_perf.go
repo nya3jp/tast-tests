@@ -22,9 +22,9 @@ func init() {
 		Func: PeerConnH264Perf,
 		Desc: "Captures performance data about WebRTC loopback (H264)",
 		Contacts: []string{
-			"keiichiw@chromium.org", // Video team
-			"shik@chromium.org",     // Camera team
-			"chromeos-camera-eng@google.com",
+			"mcasas@chromium.org",
+			"chromeos-gfx-video@google.com",
+			"chromeos-video-eng@google.com",
 		},
 		Attr: []string{"group:crosbolt", "crosbolt_perbuild"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
