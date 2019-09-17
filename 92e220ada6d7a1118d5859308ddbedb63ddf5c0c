@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39130d5f_3f1f312f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-09-17T04:33:06Z",
+      "side": 1,
+      "message": "Can you add a TODO here so that we won\u0027t forget to use the ash flag again once the flakiness has been fixed in the futrue?",
+      "revId": "92e220ada6d7a1118d5859308ddbedb63ddf5c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
