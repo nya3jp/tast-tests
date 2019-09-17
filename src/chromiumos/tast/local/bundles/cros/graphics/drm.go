@@ -10,6 +10,8 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/shutil"
@@ -24,14 +26,14 @@ type option struct {
 
 func init() {
 	allTestOpts := map[string]option{
-		"atomic_test":        {command: []string{"atomictest", "-a", "-t", "all"}, timeout: 5 * time.Minute},
-		"drm_cursor_test":    {command: []string{"drm_cursor_test"}, timeout: 20 * time.Second},
-		"linear_bo_test":     {command: []string{"linear_bo_test"}, timeout: 20 * time.Second},
-		"mmap_test":          {command: []string{"mmap_test"}, timeout: 5 * time.Minute},
-		"null_platform_test": {command: []string{"null_platform_test"}, timeout: 20 * time.Second},
-		"swrast_test":        {command: []string{"swrast_test"}, timeout: 20 * time.Second},
-		"vgem_test":          {command: []string{"vgem_test"}, timeout: 20 * time.Second},
-		"vk_glow":            {command: []string{"vk_glow"}, timeout: 20 * time.Second},
+		"atomic_test":        {command: []string{"atomictest", "-a", "-t", "all"}, timeout: 5 * time.Minute, runDeps: []string{"display_connected", "drm_atomic"}},
+		"drm_cursor_test":    {command: []string{"drm_cursor_test"}, timeout: 20 * time.Second, runDeps: []string{"display_connected"}},
+		"linear_bo_test":     {command: []string{"linear_bo_test"}, timeout: 20 * time.Second, runDeps: []string{"display_connected"}},
+		"mmap_test":          {command: []string{"mmap_test"}, timeout: 5 * time.Minute, runDeps: []string{"display_connected"}},
+		"null_platform_test": {command: []string{"null_platform_test"}, timeout: 20 * time.Second, runDeps: []string{"display_connected"}},
+		"swrast_test":        {command: []string{"swrast_test"}, timeout: 20 * time.Second, runDeps: []string{}},
+		"vgem_test":          {command: []string{"vgem_test"}, timeout: 20 * time.Second, runDeps: []string{"display_connected"}},
+		"vk_glow":            {command: []string{"vk_glow"}, timeout: 20 * time.Second, runDeps: []string{"display_connected", "vulkan"}},
 	}
 
 	testing.AddTest(&testing.Test{
@@ -48,19 +50,17 @@ func init() {
 				allTestOpts["drm_cursor_test"],
 				allTestOpts["linear_bo_test"],
 				allTestOpts["null_platform_test"],
-				allTestOpts["vgem_test"]},
-			ExtraSoftwareDeps: []string{"display_backlight"},
-			ExtraAttr:         []string{"informational"},
+				allTestOpts["swrast_test"]},
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name:              "atomic_test",
 			Val:               []option{allTestOpts["atomic_test"]},
-			ExtraSoftwareDeps: []string{"display_backlight", "drm_atomic"},
+			ExtraSoftwareDeps: []string{"drm_atomic"},
 			ExtraAttr:         []string{"informational"},
 		}, {
-			Name:              "mmap_test",
-			Val:               []option{allTestOpts["mmap_test"]},
-			ExtraSoftwareDeps: []string{"display_backlight"},
-			ExtraAttr:         []string{"informational"},
+			Name:      "mmap_test",
+			Val:       []option{allTestOpts["mmap_test"]},
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name:      "swrast_test",
 			Val:       []option{allTestOpts["swrast_test"]},
@@ -68,7 +68,7 @@ func init() {
 		}, {
 			Name:              "vk_glow",
 			Val:               []option{allTestOpts["vk_glow"]},
-			ExtraSoftwareDeps: []string{"display_backlight", "vulkan"},
+			ExtraSoftwareDeps: []string{"vulkan"},
 			ExtraAttr:         []string{"informational"},
 		}},
 		Timeout: 5 * time.Minute,
@@ -83,9 +83,46 @@ func DRM(ctx context.Context, s *testing.State) {
 
 	testOpts := s.Param().([]option)
 	for _, testOpt := range testOpts {
+		shouldRun, err := checkRunAttr(ctx, testOpt.runDeps)
+		if err != nil {
+			s.Error("Failed to check attribute: ", err)
+		}
+		if !shouldRun {
+			continue
+		}
+
 		cmd := "/usr/local/bin/" + testOpt.command[0]
 		runTest(ctx, s, testOpt.timeout, cmd, testOpt.command[1:]...)
 	}
+}
+
+// checkRunAttr checks the runDeps config to decide whether we should run the test.
+func checkRunAttr(ctx context.Context, attrs []string) (bool, error) {
+	for _, attr := range attrs {
+		switch attr {
+		case "display_connected":
+			connectCount, err := graphics.GetNumberOfOutputsConnected(ctx)
+			if err != nil {
+				return false, errors.Wrapf(err, "failed to check test attribute %s", attr)
+			}
+			if connectCount == 0 {
+				testing.ContextLog(ctx, "No connector detected. Skipping test")
+				return false, nil
+			}
+		case "vulkan":
+			hasVulkan, err := graphics.SupportsVulkanForDEQP(ctx)
+			if err != nil {
+				return false, errors.Wrapf(err, "failed to check test attribute %s", attr)
+			}
+			if !hasVulkan {
+				testing.ContextLog(ctx, "Vulkan is not available. Skipping test")
+				return false, nil
+			}
+		default:
+			testing.ContextLogf(ctx, "Unrocognized runAttr %s. Assuming it is guarded by tast SoftwareDeps", attr)
+		}
+	}
+	return true, nil
 }
 
 // setUp prepares the testing environment to run runTest().
