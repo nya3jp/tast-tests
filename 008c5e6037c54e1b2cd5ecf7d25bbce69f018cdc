@@ -22,6 +22,40 @@
       "revId": "008c5e6037c54e1b2cd5ecf7d25bbce69f018cdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a868d5d7_b76daf07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-17T20:37:50Z",
+      "side": 1,
+      "message": "nit: it\u0027s no longer using a Precondition, so reword this comment to not use \"Prepare\"(\"Start ARC\"?) or delete it entirely since the error message below makes this readable regardless",
+      "revId": "008c5e6037c54e1b2cd5ecf7d25bbce69f018cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29106f53_52888d43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-17T20:37:50Z",
+      "side": 1,
+      "message": "is there a bug for this and if not can you file one and reference it here?",
+      "revId": "008c5e6037c54e1b2cd5ecf7d25bbce69f018cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
