@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e6bca15d_b34a3e8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ghostscript/compare.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-09-17T16:31:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f44a0ef9_81c48314",
+      "revId": "ac59aad85fb51ef3f3c8788b635a36aceffe52f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d9b911e_43da9cd2",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/ghostscript/compare.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "ac59aad85fb51ef3f3c8788b635a36aceffe52f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be882962_36294f65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ghostscript/compare.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-09-17T16:31:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d9b911e_43da9cd2",
+      "revId": "ac59aad85fb51ef3f3c8788b635a36aceffe52f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
