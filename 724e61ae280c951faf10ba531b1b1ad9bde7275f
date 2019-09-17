@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "334427b1_5cdf9588",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-17T05:48:45Z",
+      "side": 1,
+      "message": "This test is looking too complex. I think the helper functions are making the flow harder to follow. It\u0027s quite unclear to me what is being tested.\n\nWhat can we do to simplify this? Can we e.g. reduce the number of buttons in the app?\n\nIdeally we could have a simple prepare-execute-verify flow like in the unit tests. We may not get there, but I think we can get closer.",
+      "revId": "724e61ae280c951faf10ba531b1b1ad9bde7275f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "342b4f28_4c339a6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-17T05:48:45Z",
+      "side": 1,
+      "message": "Can we change this package name to e.g. demo.keystoreexerciser?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 42
+      },
+      "revId": "724e61ae280c951faf10ba531b1b1ad9bde7275f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
