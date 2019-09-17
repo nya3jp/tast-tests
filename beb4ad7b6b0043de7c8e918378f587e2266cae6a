@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "95293592_112d724b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-09-17T20:18:00Z",
+      "side": 1,
+      "message": "Splitted. Done.",
+      "parentUuid": "7a0c284c_61149244",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "beb4ad7b6b0043de7c8e918378f587e2266cae6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01db0342_18ed75f7",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
         "patchSetId": 5
