@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a745aab0_602b15b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_insets.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-17T15:11:15Z",
+      "side": 1,
+      "message": "huge nit: Ash, add final \u0027.\u0027, add Reference to bug: https://crbug.com/1002958\n\nE.g:\n// TODO(hirokisato): Replace with Ash API to enable clamshell mode once crbug.com/1002958 gets fixed.",
+      "range": {
+        "startLine": 36,
+        "startChar": 29,
+        "endLine": 36,
+        "endChar": 32
+      },
+      "revId": "008c5e6037c54e1b2cd5ecf7d25bbce69f018cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
