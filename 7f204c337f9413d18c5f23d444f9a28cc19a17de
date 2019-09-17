@@ -70,6 +70,30 @@
       "revId": "7f204c337f9413d18c5f23d444f9a28cc19a17de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ae94b76_4c4e7093",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peer_conn_h264.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-17T16:49:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "757385cf_d905b8cc",
+      "range": {
+        "startLine": 24,
+        "startChar": 42,
+        "endLine": 24,
+        "endChar": 43
+      },
+      "revId": "7f204c337f9413d18c5f23d444f9a28cc19a17de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
