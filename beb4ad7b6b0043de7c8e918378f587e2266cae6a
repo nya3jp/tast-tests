@@ -245,6 +245,30 @@
       "revId": "beb4ad7b6b0043de7c8e918378f587e2266cae6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28d2ee88_2828ca94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-09-17T18:48:58Z",
+      "side": 1,
+      "message": "btw there\u0027s difference between SoftDeps: \"display_backlight\" and display_connected here.",
+      "parentUuid": "a6dbc560_fc5dfdf6",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 21
+      },
+      "revId": "beb4ad7b6b0043de7c8e918378f587e2266cae6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
