@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2527ca3f_bd9b98de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-09-17T22:17:25Z",
+      "side": 1,
+      "message": "Not yet but I can create one for it. I just noticed we haven\u0027t migrated the toggle hotword API from autotest as well.",
+      "parentUuid": "900812e4_a798acc3",
+      "revId": "9045525a825baef7389590f43a00c130cf1011b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7331fc00_2cc6ad62",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2019-09-17T09:53:49Z",
       "side": 1,
       "message": "could you run \"src/platform/tast/fast_build.sh -T\" at least?",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 14
+      },
+      "revId": "9045525a825baef7389590f43a00c130cf1011b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9d10e55_b715c94a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-09-17T22:17:25Z",
+      "side": 1,
+      "message": "I run ./fast_build.sh -T and observed the following test failure every time w/ and w/o my change. Anything I might be missing here? Thanks.\n\n--- FAIL: TestPolicyGeneratorAddStraceLog (0.00s)\n    policy_generator_test.go:160: \"strace\" [\"strace\" \"-f\" \"-o\" \"/tmp/tast_strace_858985368\" \"--\" \"/sbin/minijail0\" \"-n\" \"/bin/echo\" \"test string\"] failed with exec: \"strace\": executable file not found in $PATH.",
+      "parentUuid": "7331fc00_2cc6ad62",
       "range": {
         "startLine": 14,
         "startChar": 5,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "e7a98973_a65dc5cf",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-09-17T22:17:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9779ce2_3d82609a",
+      "range": {
+        "startLine": 85,
+        "startChar": 3,
+        "endLine": 85,
+        "endChar": 16
+      },
+      "revId": "9045525a825baef7389590f43a00c130cf1011b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75e35d3d_793d2a81",
         "filename": "src/chromiumos/tast/local/assistant/assistant.go",
         "patchSetId": 2
@@ -79,6 +145,24 @@
       "revId": "9045525a825baef7389590f43a00c130cf1011b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcffb1a9_64af67a7",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-09-17T22:17:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75e35d3d_793d2a81",
+      "revId": "9045525a825baef7389590f43a00c130cf1011b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
