@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "f44a0ef9_81c48314",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/ghostscript/compare.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-17T10:00:15Z",
+      "side": 1,
+      "message": "style: Could you write the comment in doc style?\n\ncf) https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences\n\n\u003d\u003d quote \u003d\u003d\nComments should begin with the name of the thing being described and end in a period:\n\u003d\u003d quote end \u003d\u003d",
+      "revId": "ac59aad85fb51ef3f3c8788b635a36aceffe52f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d9b911e_43da9cd2",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/ghostscript/compare.go",
         "patchSetId": 1
