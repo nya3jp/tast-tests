@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "29cd269c_c6b36c8d",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-17T20:29:53Z",
+      "side": 1,
+      "message": "as discussed off-line, the above msg solves it.",
+      "parentUuid": "c48f1238_1f742ccc",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 12
+      },
+      "revId": "1c6e8c3434eebbbfecaad3a55d995842c519a760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbbf0031_6f5291a1",
         "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "1c6e8c3434eebbbfecaad3a55d995842c519a760",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "249cb775_70bc2ee1",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-17T20:29:53Z",
+      "side": 1,
+      "message": "as discussed off-line, the plan to is replace this function with the probobuf one in a future CL.",
+      "parentUuid": "fbbf0031_6f5291a1",
+      "range": {
+        "startLine": 173,
+        "startChar": 14,
+        "endLine": 173,
+        "endChar": 40
+      },
+      "revId": "1c6e8c3434eebbbfecaad3a55d995842c519a760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
