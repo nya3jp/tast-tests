@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0a7aaf1_aba0c0ab",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-17T10:14:38Z",
+      "side": 1,
+      "message": "Could you avoid waiting by sleep, because this is source of test flakiness?\nInstead, could you wait some condition is satisfied? testing.Poll() may help you to write it.\n\ncf) crbug.com/1003670",
+      "revId": "c5a8301ae6c94e3f20779c19d9e1a0b2bb5606ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
