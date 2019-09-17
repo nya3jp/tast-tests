@@ -10,11 +10,14 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"strconv"
 	"strings"
 	"syscall"
+	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -29,9 +32,53 @@ const (
 	// CrashReporterPath is the full path of the crash reporter binary.
 	CrashReporterPath = "/sbin/crash_reporter"
 
+	crasherPath        = "/usr/libexec/tast/helpers/local/cros/platform.UserCrash.crasher"
 	crashSenderRateDir = "/var/lib/crash_sender"
 	pauseFile          = "/var/lib/crash_sender_paused"
 )
+
+// CrasherOptions stores configurations for running crasher process.
+type CrasherOptions struct {
+	Username   string
+	CauseCrash bool
+	Consent    bool
+}
+
+// CrasherResult stores result status and outputs from a crasher prcess execution.
+type CrasherResult struct {
+	ReturnCode int
+	Crashed    bool
+	Output     string
+}
+
+// DefaultCrasherOptions creates a CrasherOptions object with default values.
+func DefaultCrasherOptions() CrasherOptions {
+	var o CrasherOptions
+	o.CauseCrash = true
+	o.Consent = true
+	return o
+}
+
+// exitCode extracts exit code from error returned by exec.Command.Run().
+// Equivalent to this in Go version >= 1.12: (*cmd.ProcessState).ExitCode()
+// This will return code for backward compatibility.
+func exitCode(err error) (int, error) {
+	e, ok := err.(*exec.ExitError)
+	if !ok {
+		return 0, errors.Wrap(err, "failed to cast to exec.ExitError")
+	}
+	s, ok := e.Sys().(syscall.WaitStatus)
+	if !ok {
+		return 0, errors.Wrap(err, "failed to cast to syscall.WaitStatus")
+	}
+	if s.Exited() {
+		return s.ExitStatus(), nil
+	}
+	if !s.Signaled() {
+		return 0, errors.Wrap(err, "unexpected exit status")
+	}
+	return -int(s.Signal()), nil
+}
 
 // enableSystemSending allows to run system crash_sender.
 func enableSystemSending() error {
@@ -126,6 +173,104 @@ func initializeCrashReporter(ctx context.Context) error {
 	// while any tests are running, otherwise a crashy system can make
 	// these tests flaky.
 	return replaceCrashFilterIn("none")
+}
+
+// runCrasherProcess runs the crasher process.
+// Will wait up to 10 seconds for crash_reporter to report the crash.
+// crash_reporter_caught will be marked as true when the "Received crash
+// notification message..." appears. While associated logs are likely to be
+// available at this point, the function does not guarantee this.
+func runCrasherProcess(ctx context.Context, opts CrasherOptions) (CrasherResult, error) {
+	var command []string
+	if opts.Username != "root" {
+		command = []string{"su", opts.Username, "-c"}
+	}
+	basename := filepath.Base(crasherPath)
+	replaceCrashFilterIn(basename)
+	command = append(command, crasherPath)
+	if !opts.CauseCrash {
+		command = append(command, "--nocrash")
+	}
+	metrics.SetConsent(ctx, TestCert, opts.Consent)
+	cmd := testexec.CommandContext(ctx, command[0], command[1:]...)
+	var result CrasherResult
+
+	out, err := cmd.CombinedOutput()
+	var crasherExitCode int
+	if err != nil {
+		var err2 error
+		crasherExitCode, err2 = exitCode(err)
+		if err2 != nil {
+			return result, errors.Wrapf(err2, "failed to get crasher exit code: %v", err)
+		}
+	} else {
+		crasherExitCode = 0
+	}
+
+	// Wait until no crash_reporter is running.
+	var o testing.PollOptions
+	o.Timeout = time.Duration(10) * time.Second
+	err = testing.Poll(ctx, func(ctx context.Context) error {
+		cmd := testexec.CommandContext(ctx, "pgrep", "-f", "crash_reporter.*:"+basename)
+		err := cmd.Run()
+		if err == nil {
+			return errors.New("still have a process")
+		}
+		code, err2 := exitCode(err)
+		if err2 != nil {
+			// Failed to extrat exit code.
+			cmd.DumpLog(ctx)
+			// TODO: should we early time out here?
+			return err2
+		}
+		if code == 0 {
+			// This is unexpected. If code is 0, err should be nil.
+			return errors.New("still have a process, but somewhat strange")
+		}
+		return nil
+	}, &o)
+	if err != nil {
+		// TODO(yamaguchi): include log reader message in this error.
+		return result, errors.New("Timeout waiting for crash_reporter to finish: ")
+	}
+
+	var expectedExitCode int
+	if opts.Username == "root" {
+		expectedExitCode = -int(syscall.SIGSEGV)
+	} else {
+		expectedExitCode = 128 + int(syscall.SIGSEGV)
+	}
+	result.Crashed = (crasherExitCode == expectedExitCode)
+	result.Output = string(out)
+	result.ReturnCode = crasherExitCode
+	testing.ContextLog(ctx, "Crasher process result: ", result)
+	return result, nil
+}
+
+// RunCrasherProcessAndAnalyze executes a crasher process and extracts result data from dumps and logs.
+func RunCrasherProcessAndAnalyze(ctx context.Context, opts CrasherOptions) (CrasherResult, error) {
+	result, err := runCrasherProcess(ctx, opts)
+	if err != nil {
+		return result, errors.Wrap(err, "failed to execute and capture result of crasher: ")
+	}
+	// TODO(yamaguchi): implement syslog reader and verify crash based on it as well.
+	if !result.Crashed /* || !result.CrashReporterCaught */ {
+		return result, nil
+	}
+	// TODO(yamaguchi): Add logic to examine contents of crash dir and store them to result.
+	return result, nil
+}
+
+// CheckCrashingProcess runs crasher process and verifies that it's processed.
+func CheckCrashingProcess(ctx context.Context, opts CrasherOptions) error {
+	result, err := RunCrasherProcessAndAnalyze(ctx, opts)
+	if err != nil {
+		return errors.Wrap(err, "failed to run and analyze crasher")
+	}
+	if !result.Crashed {
+		return errors.Errorf("Crasher returned %d instead of crashing", result.ReturnCode)
+	}
+	return nil
 }
 
 func runCrashTest(ctx context.Context, s *testing.State, testFunc func(context.Context, *testing.State), initialize bool) error {
