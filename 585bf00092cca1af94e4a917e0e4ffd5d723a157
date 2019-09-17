@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75ea8436_1f7a7f76",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-17T13:27:40Z",
+      "side": 1,
+      "message": "Users of the chrome package has three options about policy server:\n\n1. No policy server\n2. Production policy server\n3. Custom policy server\n\nI\u0027d recommend naming Options so that these three choices are clear to users. For example:\n\n func NoPolicy() Option // default, maybe not needed\n func ProdPolicy() Option\n func CustomPolicy(dmsURL string) Option\n\nNote that I\u0027m not familiar with this area so I\u0027m not sure wording is appropriate (e.g. \"prod policy\" vs \"custom policy\"). My point is that it\u0027s good to have similar names for them (e.g. all ending with \"Policy\").",
+      "range": {
+        "startLine": 153,
+        "startChar": 3,
+        "endLine": 153,
+        "endChar": 14
+      },
+      "revId": "585bf00092cca1af94e4a917e0e4ffd5d723a157",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "047e6285_54632493",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-17T13:27:40Z",
+      "side": 1,
+      "message": "We may want to also set dmsAddr \u003d \"\" so that it is clear the production server is used.",
+      "range": {
+        "startLine": 156,
+        "startChar": 26,
+        "endLine": 156,
+        "endChar": 50
+      },
+      "revId": "585bf00092cca1af94e4a917e0e4ffd5d723a157",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
