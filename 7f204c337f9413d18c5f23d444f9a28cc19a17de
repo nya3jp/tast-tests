@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5aeefab_3a8f725c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peer_conn_h264.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-09-17T14:29:22Z",
+      "side": 1,
+      "message": "Would you mind adding \"chromeos-gfx-video@google.com\" as well please?\nHere and in the tests below that I\u0027m receiving.",
+      "range": {
+        "startLine": 24,
+        "startChar": 42,
+        "endLine": 24,
+        "endChar": 43
+      },
+      "revId": "7f204c337f9413d18c5f23d444f9a28cc19a17de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
