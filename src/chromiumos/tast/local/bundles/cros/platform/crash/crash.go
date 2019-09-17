@@ -10,7 +10,6 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
-	"strconv"
 	"strings"
 	"syscall"
 
@@ -86,11 +85,11 @@ func replaceCrashFilterIn(param string) error {
 			// remove from list
 			continue
 		}
-		newargs = append(newargs, "--filter_in="+strconv.Quote(param))
+		newargs = append(newargs, "--filter_in="+param)
 		replaced = true
 	}
 	if len(param) != 0 && !replaced {
-		newargs = append(newargs, "--filter_in="+strconv.Quote(param))
+		newargs = append(newargs, "--filter_in="+param)
 	}
 	pattern = strings.Join(newargs, " ")
 
