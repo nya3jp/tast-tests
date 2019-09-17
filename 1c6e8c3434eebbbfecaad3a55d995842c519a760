@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c48f1238_1f742ccc",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1315044
+      },
+      "writtenOn": "2019-09-17T20:18:38Z",
+      "side": 1,
+      "message": "I guess the result of variable names will be capitalized as needed?",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 12
+      },
+      "revId": "1c6e8c3434eebbbfecaad3a55d995842c519a760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbbf0031_6f5291a1",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1315044
+      },
+      "writtenOn": "2019-09-17T20:18:38Z",
+      "side": 1,
+      "message": "Sorry, not very clear here. Still needs dumpsys or because it will be replaced with proto in future?",
+      "range": {
+        "startLine": 173,
+        "startChar": 14,
+        "endLine": 173,
+        "endChar": 40
+      },
+      "revId": "1c6e8c3434eebbbfecaad3a55d995842c519a760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
