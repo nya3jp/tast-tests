@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/testexec"
@@ -36,14 +37,22 @@ func init() {
 }
 
 func Sanity(ctx context.Context, s *testing.State) {
-	// Explicitly switching to GUI. If the display is sleeping, this turns
-	// on it.
-	if err := switchToGUI(ctx); err != nil {
-		s.Fatal("Failed to switch to GUI: ", err)
+	// TODO(pwang): Switch to use hardware dependency once it is ready.
+	// Pass the test if there's no monitors detected. This makes sure that there's something on the screen even for board with no internal monitor.
+
+	number, err := graphics.NumberOfOutputsConnected(ctx)
+	if err != nil {
+		s.Fatal("Failed to get current connected monitors: ", err)
 	}
 
-	testSomethingOnScreen(ctx, s)
-	testGeneratedScreenshot(ctx, s)
+	if number > 0 {
+		// Explicitly switching to GUI. If the display is sleeping, this turns on it.
+		if err := switchToGUI(ctx); err != nil {
+			s.Fatal("Failed to switch to GUI: ", err)
+		}
+		testSomethingOnScreen(ctx, s)
+		testGeneratedScreenshot(ctx, s)
+	}
 }
 
 func switchToGUI(ctx context.Context) error {
