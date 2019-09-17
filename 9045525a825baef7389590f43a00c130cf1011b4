@@ -16,6 +16,69 @@
       "revId": "9045525a825baef7389590f43a00c130cf1011b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7331fc00_2cc6ad62",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-17T09:53:49Z",
+      "side": 1,
+      "message": "could you run \"src/platform/tast/fast_build.sh -T\" at least?",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 14
+      },
+      "revId": "9045525a825baef7389590f43a00c130cf1011b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9779ce2_3d82609a",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-17T09:53:49Z",
+      "side": 1,
+      "message": "This actually does not toggling.\nMaybe SetHotwordEnabled?",
+      "range": {
+        "startLine": 85,
+        "startChar": 3,
+        "endLine": 85,
+        "endChar": 16
+      },
+      "revId": "9045525a825baef7389590f43a00c130cf1011b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75e35d3d_793d2a81",
+        "filename": "src/chromiumos/tast/local/assistant/assistant.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-17T09:53:49Z",
+      "side": 1,
+      "message": "could you use tast.promisify to simplify the call and for consistent error handling?",
+      "revId": "9045525a825baef7389590f43a00c130cf1011b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
