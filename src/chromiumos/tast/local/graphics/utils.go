@@ -35,6 +35,23 @@ const (
 // APIType identifies a graphics API that can be tested by DEQP.
 type APIType int
 
+// Connector identifies the attributes gathered from modetest.
+type Connector struct {
+	cid       int      // connector id
+	ctype     string   // connector type, e.g. 'eDP', 'HDMI-A', 'DP'
+	connected bool     // true if the connector is connected
+	size      [2]int   // current screen size, e.g. (1024, 768)
+	encoder   int      // encoder id
+	modes     [][2]int // List of resolution tuples, e.g. [[1920, 1080], [1600, 900], ...]
+}
+
+var (
+	modesetConnectorPattern = regexp.MustCompile(`^(\d+)\s+\d+\s+(connected|disconnected)\s+(\S+)\s+\d+x\d+\s+\d+\s+\d+`)
+
+	// Group names match the drmModeModeInfo struct
+	modesetModePattern = regexp.MustCompile(`\s+(?P<name>.+)\s+(?P<vrefresh>\d+)\s+(?P<hdisplay>\d+)\s+(?P<hsync_start>\d+)\s+(?P<hsync_end>\d+)\s+(?P<htotal>\d+)\s+(?P<vdisplay>\d+)\s+(?P<vsync_start>\d+)\s+(?P<vsync_end>\d+)\s+(?P<vtotal>\d+)\s+(?P<clock>\d+)\s+flags:.+type: preferred`)
+)
+
 const (
 	// UnknownAPI represents an unknown API.
 	UnknownAPI APIType = iota
@@ -320,4 +337,70 @@ func GetDirtyWritebackDuration() (time.Duration, error) {
 		return -1, errors.Wrapf(err, "could not parse %v", filepath.Base(dirtyWritebackCentisecsPath))
 	}
 	return time.Duration(centisecs) * (time.Second / 100), nil
+}
+
+// ModetestConnectors retrieves a list of connectors using modetest.
+func ModetestConnectors(ctx context.Context) ([]*Connector, error) {
+	output, err := testexec.CommandContext(ctx, "modetest", "-c").Output()
+	if err != nil {
+		return nil, err
+	}
+
+	var connectors []*Connector
+	for _, line := range strings.Split(string(output), "\n") {
+		matches := modesetConnectorPattern.FindStringSubmatch(line)
+		if matches != nil {
+			cid, err := strconv.Atoi(matches[1])
+			if err != nil {
+				return nil, errors.Wrapf(err, "failed to parse cid %s", matches[1])
+			}
+			connected := false
+			if matches[2] == "connected" {
+				connected = true
+			}
+			ctype := matches[3]
+			size := [2]int{-1, -1}
+			encoder := -1
+			modes := [][2]int{[2]int{-1, -1}}
+			connectors = append(connectors, &Connector{cid, ctype, connected, size, encoder, modes})
+		} else {
+			matches = modesetModePattern.FindStringSubmatch(line)
+			if matches != nil {
+				var size [2]int
+				var err error
+				for i, name := range modesetModePattern.SubexpNames() {
+					if name == "hdisplay" {
+						size[0], err = strconv.Atoi(matches[i])
+					} else if name == "vdisplay" {
+						size[1], err = strconv.Atoi(matches[i])
+					}
+					if err != nil {
+						return connectors, errors.Wrapf(err, "failed to parse %s", name)
+					}
+				}
+				if len(connectors) == 0 {
+					return connectors, errors.Wrap(err, "failed to update last connector")
+				}
+				// Update the last connector in the list.
+				connectors[len(connectors)-1].size = size
+			}
+		}
+	}
+	return connectors, nil
+}
+
+// NumberOfOutputsConnected parses the output of modetest to determine the number of connected displays.
+// And returns the number of connected displays.
+func NumberOfOutputsConnected(ctx context.Context) (int, error) {
+	connectors, err := ModetestConnectors(ctx)
+	if err != nil {
+		return 0, err
+	}
+	connected := 0
+	for _, connector := range connectors {
+		if connector.connected {
+			connected++
+		}
+	}
+	return connected, nil
 }
