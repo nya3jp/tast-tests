@@ -22,6 +22,30 @@
       "revId": "f9a613160eb707adad7aa5e0bbcadf0c849d642a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b63ebb1_681ac91a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-09-17T17:58:05Z",
+      "side": 1,
+      "message": "Thanks for suggestion!",
+      "parentUuid": "3c31d0ef_dd1b193b",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 3
+      },
+      "revId": "f9a613160eb707adad7aa5e0bbcadf0c849d642a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
