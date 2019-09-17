@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c31d0ef_dd1b193b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_persistent.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-17T17:10:03Z",
+      "side": 1,
+      "message": "if out, rerr :\u003d ioutil.ReadFile(...); rerr !\u003d nil {\n  s.Error(\"Failed to read Finsky prefs: \", rerr)\n} else if werr :\u003d ioutil.WriteFile(destFinskyPref, out, 0644); werr !\u003d nil {\n  s.Error(\"Failed to write Finsky prefs: \", werr)\n} else {\n  s.Log(\"Finsky prefs is saved to finsky.xml\")\n}\n\nAt the last line, s.Log() looks better, because, focusing on saving finsky.xml, it succeeds so nice to avoid s.Error().\nAlso, in log message, we encourage to print \"OutDir()\". OutDir() is the directory storing the output data for this test case, so it should be clear.",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 3
+      },
+      "revId": "f9a613160eb707adad7aa5e0bbcadf0c849d642a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
