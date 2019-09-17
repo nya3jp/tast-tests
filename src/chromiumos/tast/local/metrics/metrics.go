@@ -20,16 +20,31 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const (
+	legacyConsent = "/home/chronos/Consent To Send Stats"
+)
+
+// HasConsent checks if the system has metrics consent.
+func HasConsent() (bool, error) {
+	if _, err := os.Stat(legacyConsent); err != nil {
+		if os.IsNotExist(err) {
+			return false, nil
+		}
+		return false, errors.Wrapf(err, "failed to examine legacy consent file: %s", legacyConsent)
+	}
+	return true, nil
+}
+
 // SetConsent sets up the system to have, or not to have metrics consent. Note
 // that if you use chrome.New() after this, you must use chrome.KeepState() as
 // one of the parameters. certFile should be the complete path to a PKCS #12
 // format file.
 func SetConsent(ctx context.Context, certFile string, consent bool) error {
-	const (
-		legacyConsent = "/home/chronos/Consent To Send Stats"
-	)
-
-	testing.ContextLog(ctx, "Setting up consent")
+	if consent {
+		testing.ContextLog(ctx, "Setting up consent")
+	} else {
+		testing.ContextLog(ctx, "Removing consent")
+	}
 	privKey, err := session.ExtractPrivKey(certFile)
 	if err != nil {
 		return errors.Wrap(err, "failed to parse PKCS #12 file")

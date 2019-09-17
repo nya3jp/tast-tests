@@ -79,6 +79,39 @@ func testReporterStartup(ctx context.Context, s *testing.State) {
 	}
 }
 
+// testNoCrash tests that crasher can exit normally.
+func testNoCrash(ctx context.Context, s *testing.State) {
+	opts := crash.DefaultCrasherOptions()
+	opts.Username = "root"
+	opts.CauseCrash = false
+	result, err := crash.RunCrasherProcessAndAnalyze(ctx, opts)
+	if err != nil {
+		s.Error("testNoCrash failed: ", err)
+	}
+	// TODO(yamaguchi): verify crash reporter hadn't caught a crash after adding syslog reader.
+	if result.Crashed || /* result.CrashReporterCaught || */ result.ReturnCode != 0 {
+		s.Error("testNoCrash failed: not expecting crash")
+	}
+}
+
+// testChronosCrasher tests that crasher exits by SIGSEGV with user "chronos".
+func testChronosCrasher(ctx context.Context, s *testing.State) {
+	opts := crash.DefaultCrasherOptions()
+	opts.Username = "chronos"
+	if err := crash.CheckCrashingProcess(ctx, opts); err != nil {
+		s.Error("testChronosCrasher failed: ", err)
+	}
+}
+
+// testRootCrasher tests that crasher exits by SIGSEGV with the root user.
+func testRootCrasher(ctx context.Context, s *testing.State) {
+	opts := crash.DefaultCrasherOptions()
+	opts.Username = "root"
+	if err := crash.CheckCrashingProcess(ctx, opts); err != nil {
+		s.Error("testRootCrasher failed: ", err)
+	}
+}
+
 func UserCrash(ctx context.Context, s *testing.State) {
 	if err := upstart.RestartJob(ctx, "ui"); err != nil {
 		s.Fatal("Failed to restart UI job")
@@ -89,5 +122,10 @@ func UserCrash(ctx context.Context, s *testing.State) {
 	// crash.RunCrashTests(ctx, s, []func(context.Context, *testing.State){testReporterStartup}, false)
 
 	// Run all tests.
-	crash.RunCrashTests(ctx, s, []func(context.Context, *testing.State){testReporterStartup}, true)
+	crash.RunCrashTests(ctx, s, []func(context.Context, *testing.State){
+		testReporterStartup,
+		testNoCrash,
+		testChronosCrasher,
+		testRootCrasher,
+	}, true)
 }
