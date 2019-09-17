@@ -46,32 +46,33 @@ func init() {
 			"hidehiko@chromium.org", // Tast port.
 		},
 		Params: []testing.Param{{
-			Name: "bvt",
-			Val: []drmTest{
-				drmCursor,
-				linearBo,
-				nullPlatform,
-				vgem},
-			ExtraAttr: []string{"informational"},
-		}, {
 			Name:              "atomic_test",
 			Val:               []drmTest{atomic},
 			ExtraSoftwareDeps: []string{"drm_atomic"},
-			ExtraAttr:         []string{"informational"},
 		}, {
-			Name:      "mmap_test",
-			Val:       []drmTest{mmap},
-			ExtraAttr: []string{"informational"},
+			Name: "drm_cursor_test",
+			Val:  []drmTest{drmCursor},
 		}, {
-			Name:      "swrast_test",
-			Val:       []drmTest{swrast},
-			ExtraAttr: []string{"informational"},
+			Name: "linear_bo_test",
+			Val:  []drmTest{linearBo},
+		}, {
+			Name: "mmap_test",
+			Val:  []drmTest{mmap},
+		}, {
+			Name: "null_platform_test",
+			Val:  []drmTest{nullPlatform},
+		}, {
+			Name: "swrast_test",
+			Val:  []drmTest{swrast},
+		}, {
+			Name: "vgem_test",
+			Val:  []drmTest{vgem},
 		}, {
 			Name:              "vk_glow",
 			Val:               []drmTest{vkGlow},
 			ExtraSoftwareDeps: []string{"vulkan"},
-			ExtraAttr:         []string{"informational"},
 		}},
+		Attr:    []string{"informational"},
 		Timeout: 5 * time.Minute,
 	})
 }
