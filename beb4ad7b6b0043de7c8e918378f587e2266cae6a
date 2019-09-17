@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a0c284c_61149244",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-17T13:55:43Z",
+      "side": 1,
+      "message": "This CL does several orthogonal things at once. Would you mind splitting it logically? (please see also go/small-cls) At least, one CL should concentrate on converting existing tests to parameterized tests without changing test behavior, and another CL on introducing new tests.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "beb4ad7b6b0043de7c8e918378f587e2266cae6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01db0342_18ed75f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-17T13:55:43Z",
+      "side": 1,
+      "message": "What\u0027s the point of running this test on crosbolt? This test does not report any metrics IIUC...",
+      "range": {
+        "startLine": 61,
+        "startChar": 3,
+        "endLine": 61,
+        "endChar": 61
+      },
+      "revId": "beb4ad7b6b0043de7c8e918378f587e2266cae6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8507471_7c552ec1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-17T13:55:43Z",
+      "side": 1,
+      "message": "Why do we give up running these tests individually? Having them was separate tests is convenient to track pass/fail status separately.",
+      "revId": "beb4ad7b6b0043de7c8e918378f587e2266cae6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c51702c_aeed2acd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-17T13:55:43Z",
+      "side": 1,
+      "message": "This math.Max seems unnecessary (no option has timeout shorter than 20s)",
+      "range": {
+        "startLine": 123,
+        "startChar": 27,
+        "endLine": 123,
+        "endChar": 35
+      },
+      "revId": "beb4ad7b6b0043de7c8e918378f587e2266cae6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2aa6cda6_e568bf4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-17T13:55:43Z",
+      "side": 1,
+      "message": "We should avoid splitting command line strings by ourselves in general. I instead recommend using []string literal, or passing a string to \"sh -c\".",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 49
+      },
+      "revId": "beb4ad7b6b0043de7c8e918378f587e2266cae6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b598b8b_c320584e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-17T13:55:43Z",
+      "side": 1,
+      "message": "Please avoid skipping tests by checking conditions at runtime.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#device-dependencies\n\nFor software dependencies, please use SoftwareDeps. For hardware dependencies, currently it is blocked by crbug.com/950346... :(",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 21
+      },
+      "revId": "beb4ad7b6b0043de7c8e918378f587e2266cae6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
