@@ -19,13 +19,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PeerConnVP8Perf,
-		Desc: "Captures performance data about WebRTC loopback (VP8)",
-		Contacts: []string{
-			"keiichiw@chromium.org", // Video team
-			"shik@chromium.org",     // Camera team
-			"chromeos-camera-eng@google.com",
-		},
+		Func:         PeerConnVP8Perf,
+		Desc:         "Captures performance data about WebRTC loopback (VP8)",
+		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome"},
 		Pre:          pre.ChromeCameraPerf(),
