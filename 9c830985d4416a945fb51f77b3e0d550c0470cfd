@@ -16,6 +16,24 @@
       "revId": "9c830985d4416a945fb51f77b3e0d550c0470cfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50da56cb_b9fd1834",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-17T16:59:13Z",
+      "side": 1,
+      "message": "good point. looks like a bug. filed bug.",
+      "parentUuid": "2d059a26_1ef8ee28",
+      "revId": "9c830985d4416a945fb51f77b3e0d550c0470cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
