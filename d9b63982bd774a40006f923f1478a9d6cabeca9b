@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "39550886_7d19e66f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/cpu_cgroup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1146659
+      },
+      "writtenOn": "2019-09-17T13:15:20Z",
+      "side": 1,
+      "message": "The whole point of selecting a team with limited size was to 1) not spam a larger list, 2) enable a possible rotation, and 3) avoid having to change source code whenever a single point person changes [and, with it, 3a), avoid situations where the single contact point is obsolete or unavailable].\nThe desire to have individual engineers from outside the tast team as contact persons listed in source files needs to be discussed further. It exceeds the scope of the tast team and would need discussion on Chrome OS team level.",
+      "parentUuid": "366ba08d_7816bfb7",
+      "revId": "d9b63982bd774a40006f923f1478a9d6cabeca9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cae35fbf_bf4cbf3a",
         "filename": "src/chromiumos/tast/local/bundles/cros/kernel/limits.go",
         "patchSetId": 1
