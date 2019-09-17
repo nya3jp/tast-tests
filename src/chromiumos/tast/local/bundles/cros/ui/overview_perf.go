@@ -6,10 +6,12 @@ package ui
 
 import (
 	"context"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
@@ -23,10 +25,29 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      time.Minute,
+		Vars:         []string{"windows", "url"},
+		Params: []testing.Param{
+			{Val: 2},
+			{Name: "windows_8", Val: 8},
+		},
 	})
 }
 
 func OverviewPerf(ctx context.Context, s *testing.State) {
+	windows := s.Param().(int)
+	if windowsStr, ok := s.Var("windows"); ok {
+		if parsed, err := strconv.ParseUint(windowsStr, 10, 8); err == nil {
+			windows = int(parsed)
+		} else {
+			s.Logf("Failed to parse %s: %v", windowsStr, err)
+		}
+	}
+
+	url := "chrome://version"
+	if urlVar, ok := s.Var("url"); ok {
+		url = urlVar
+	}
+
 	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
@@ -39,11 +60,13 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	}
 	defer tconn.Close()
 
-	conn, err := cr.NewConn(ctx, "")
-	if err != nil {
-		s.Fatal("Failed to open a new connection: ", err)
+	for i := 0; i < windows; i++ {
+		conn, err := cr.NewConn(ctx, url, cdputil.WithNewWindow())
+		if err != nil {
+			s.Fatal("Failed to open a new connection: ", err)
+		}
+		defer conn.Close()
 	}
-	defer conn.Close()
 
 	if err = ash.WaitForSystemUIStabilized(ctx); err != nil {
 		s.Fatal("Failed to wait for system UI to be stabilized: ", err)
