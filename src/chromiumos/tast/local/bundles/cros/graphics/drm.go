@@ -45,6 +45,19 @@ func init() {
 			"hidehiko@chromium.org", // Tast port.
 		},
 		Params: []testing.Param{{
+			Name: "all",
+			Val: []option{
+				allTestOpts["atomic_test"],
+				allTestOpts["drm_cursor_test"],
+				allTestOpts["mmap_test"],
+				allTestOpts["null_platform_test"],
+				allTestOpts["linear_bo_test"],
+				allTestOpts["swrast_test"],
+				allTestOpts["vgem_test"],
+				allTestOpts["vk_glow"],
+			},
+			ExtraAttr: []string{"informational"},
+		}, {
 			Name: "bvt",
 			Val: []option{
 				allTestOpts["drm_cursor_test"],
@@ -52,24 +65,38 @@ func init() {
 				allTestOpts["null_platform_test"],
 				allTestOpts["swrast_test"]},
 			ExtraAttr: []string{"informational"},
+		}, { // All the remaining tests are disabled and only can be run manually.
+			Name:      "atomic_test",
+			Val:       []option{allTestOpts["atomic_test"]},
+			ExtraAttr: []string{"disabled"},
 		}, {
-			Name:              "atomic_test",
-			Val:               []option{allTestOpts["atomic_test"]},
-			ExtraSoftwareDeps: []string{"drm_atomic"},
-			ExtraAttr:         []string{"informational"},
+			Name:      "drm_cursor_test",
+			Val:       []option{allTestOpts["drm_cursor_test"]},
+			ExtraAttr: []string{"disabled"},
+		}, {
+			Name:      "linear_bo_test",
+			Val:       []option{allTestOpts["linear_bo_test"]},
+			ExtraAttr: []string{"disabled"},
 		}, {
 			Name:      "mmap_test",
 			Val:       []option{allTestOpts["mmap_test"]},
-			ExtraAttr: []string{"informational"},
+			ExtraAttr: []string{"disabled"},
+		}, {
+			Name:      "null_platform_test",
+			Val:       []option{allTestOpts["null_platform_test"]},
+			ExtraAttr: []string{"disabled"},
 		}, {
 			Name:      "swrast_test",
 			Val:       []option{allTestOpts["swrast_test"]},
-			ExtraAttr: []string{"informational"},
+			ExtraAttr: []string{"disabled"},
 		}, {
-			Name:              "vk_glow",
-			Val:               []option{allTestOpts["vk_glow"]},
-			ExtraSoftwareDeps: []string{"vulkan"},
-			ExtraAttr:         []string{"informational"},
+			Name:      "vgem_test",
+			Val:       []option{allTestOpts["vgem_test"]},
+			ExtraAttr: []string{"disabled"},
+		}, {
+			Name:      "vk_glow",
+			Val:       []option{allTestOpts["vk_glow"]},
+			ExtraAttr: []string{"disabled"},
 		}},
 		Timeout: 5 * time.Minute,
 	})
