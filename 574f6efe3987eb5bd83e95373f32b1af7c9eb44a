@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc7f190e_ad266abb",
+        "filename": "src/chromiumos/tast/local/input/key_mappings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-09-18T22:10:03Z",
+      "side": 1,
+      "message": "nit: what about \\x1b instead of octal. Hex seems more ubiquitous. Feel free to push back",
+      "range": {
+        "startLine": 67,
+        "startChar": 3,
+        "endLine": 67,
+        "endChar": 6
+      },
+      "revId": "574f6efe3987eb5bd83e95373f32b1af7c9eb44a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
