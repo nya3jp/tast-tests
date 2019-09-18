@@ -34,6 +34,24 @@
       "revId": "c5a8301ae6c94e3f20779c19d9e1a0b2bb5606ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85f2e6fd_582f641a",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-18T06:35:54Z",
+      "side": 1,
+      "message": "Can API work to make sure clipboard status?\n\nhttps://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API\n\nBTW, according to the commit message, this looks out of scope of this CL.\nIf this is needed for the stabilization, WDYT to split into this part to another CL (incl. API work)?",
+      "parentUuid": "d7ed08f3_a181c8b3",
+      "revId": "c5a8301ae6c94e3f20779c19d9e1a0b2bb5606ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
