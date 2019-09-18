@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0109052b_c1bca93a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-09-18T00:57:59Z",
+      "side": 1,
+      "message": "Please add a tracking bug.",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "d1adb74dd38170e76f1e086c6abad102d202f11f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0c086dda_85f569a9",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
         "patchSetId": 1
