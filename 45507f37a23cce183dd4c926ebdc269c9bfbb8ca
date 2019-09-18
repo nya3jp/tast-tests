@@ -22,6 +22,236 @@
       "revId": "45507f37a23cce183dd4c926ebdc269c9bfbb8ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ec5c626_5c2d4911",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T01:44:52Z",
+      "side": 1,
+      "message": "We can get a list of software deps by s.SoftwareDeps(). You can use it to detect if \"vulkan\" is in deps.",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 16
+      },
+      "revId": "45507f37a23cce183dd4c926ebdc269c9bfbb8ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd5e6255_fe19f4a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T01:44:52Z",
+      "side": 1,
+      "message": "In this case, the test declares \"vulkan\" software deps but it is not actually available on the device. I believe this should be reported as an error instead of passing silently.",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 120,
+        "endChar": 4
+      },
+      "revId": "45507f37a23cce183dd4c926ebdc269c9bfbb8ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23cb2e55_83b903ea",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T01:44:52Z",
+      "side": 1,
+      "message": "Could you declare them as regexp variables instead to avoid compiling these regexps every time they are used?\n\nvar (\n  modesetConnectorPattern \u003d regexp.MustCompile(`...`)\n  ...\n)",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 1
+      },
+      "revId": "45507f37a23cce183dd4c926ebdc269c9bfbb8ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "439018b7_429a1517",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T01:44:52Z",
+      "side": 1,
+      "message": "I recommend writing a unit test for this function since the parsing is not trivial.",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 71
+      },
+      "revId": "45507f37a23cce183dd4c926ebdc269c9bfbb8ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b56e6ad_50146f0b",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T01:44:52Z",
+      "side": 1,
+      "message": "I recommend always returning non-trivial structs as pointers.\n\n ([]*Connector, error)",
+      "range": {
+        "startLine": 343,
+        "startChar": 51,
+        "endLine": 343,
+        "endChar": 60
+      },
+      "revId": "45507f37a23cce183dd4c926ebdc269c9bfbb8ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "276bf190_f1ec6fcb",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T01:44:52Z",
+      "side": 1,
+      "message": "style: Usually a getter of foo is named Foo() rather than GetFoo() in Go.\n\nhttps://golang.org/doc/effective_go.html#Getters",
+      "range": {
+        "startLine": 343,
+        "startChar": 5,
+        "endLine": 343,
+        "endChar": 26
+      },
+      "revId": "45507f37a23cce183dd4c926ebdc269c9bfbb8ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30f09f46_5055417c",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T01:44:52Z",
+      "side": 1,
+      "message": "I recommend to wrap this to indicate which value we failed to parse: errors.Wrap(err, \"failed to parse cid\")",
+      "range": {
+        "startLine": 357,
+        "startChar": 16,
+        "endLine": 357,
+        "endChar": 19
+      },
+      "revId": "45507f37a23cce183dd4c926ebdc269c9bfbb8ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5c40d32_74dcae06",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T01:44:52Z",
+      "side": 1,
+      "message": "This way, err can ignored. How about:\n\n for i, name :\u003d range modeRe.SubexpNames() {\n   var err error\n   if name \u003d\u003d \"hdisplay\" {\n     size[0], err \u003d ...\n   } else if ... {\n     size[1], err \u003d ...\n   }\n   if err !\u003d nil {\n     return nil, errors.Wrapf(err, \"failed to parse %s\", name)\n   }\n }",
+      "range": {
+        "startLine": 375,
+        "startChar": 6,
+        "endLine": 375,
+        "endChar": 45
+      },
+      "revId": "45507f37a23cce183dd4c926ebdc269c9bfbb8ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7df8ea49_1d8ba2f5",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T01:44:52Z",
+      "side": 1,
+      "message": "We should return an error if len(connectors) \u003d\u003d 0.",
+      "range": {
+        "startLine": 383,
+        "startChar": 4,
+        "endLine": 384,
+        "endChar": 45
+      },
+      "revId": "45507f37a23cce183dd4c926ebdc269c9bfbb8ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36a03457_fd570879",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T01:44:52Z",
+      "side": 1,
+      "message": "ditto (getter)",
+      "range": {
+        "startLine": 393,
+        "startChar": 5,
+        "endLine": 393,
+        "endChar": 32
+      },
+      "revId": "45507f37a23cce183dd4c926ebdc269c9bfbb8ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
