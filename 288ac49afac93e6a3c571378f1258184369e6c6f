@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "300331fe_c6cd3dfd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-18T06:11:22Z",
+      "side": 1,
+      "message": "b:141208279",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "288ac49afac93e6a3c571378f1258184369e6c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b3f2beb_baa97c8a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
         "patchSetId": 1
