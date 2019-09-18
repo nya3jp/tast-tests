@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f3422a1_e4aa198a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-18T04:32:39Z",
+      "side": 1,
+      "message": "Put the error check right after the error is created, i.e. at line 85",
+      "revId": "39f16b438ca704de6a8ad8abe99ced7243f7875d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
