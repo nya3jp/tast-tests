@@ -6,11 +6,13 @@ package shill
 
 import (
 	"context"
+	"time"
 
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/testing"
 )
 
 // ServiceProperty is the type for service property names.
@@ -27,6 +29,7 @@ const (
 	ServicePropertyType           ServiceProperty = "Type"
 	ServicePropertyMode           ServiceProperty = "Mode"
 	ServicePropertySSID           ServiceProperty = "SSID"
+	ServicePropertyState          ServiceProperty = "State"
 	ServicePropertyStaticIPConfig ServiceProperty = "StaticIPConfig"
 	ServicePropertySecurityClass  ServiceProperty = "SecurityClass"
 
@@ -34,18 +37,23 @@ const (
 	ServicePropertyWiFiHiddenSSID ServiceProperty = "WiFi.HiddenSSID"
 )
 
+// ServiceConnectedStates is a list of service states that are considered connected.
+var ServiceConnectedStates = []interface{}{"portal", "no-connectivity", "redirect-found", "portal-suspected", "online", "ready"}
+
 // Service wraps a Service D-Bus object in shill.
 type Service struct {
-	obj dbus.BusObject
+	conn *dbus.Conn
+	obj  dbus.BusObject
+	path dbus.ObjectPath
 }
 
 // NewService connects to a service in Shill.
 func NewService(ctx context.Context, path dbus.ObjectPath) (*Service, error) {
-	_, obj, err := dbusutil.Connect(ctx, dbusService, path)
+	conn, obj, err := dbusutil.Connect(ctx, dbusService, path)
 	if err != nil {
 		return nil, err
 	}
-	s := &Service{obj: obj}
+	s := &Service{conn: conn, obj: obj, path: path}
 	return s, nil
 }
 
@@ -61,4 +69,58 @@ func (s *Service) GetProperties(ctx context.Context) (map[ServiceProperty]interf
 // SetProperty sets a string property to the given value
 func (s *Service) SetProperty(ctx context.Context, property ServiceProperty, val interface{}) error {
 	return call(ctx, s.obj, dbusServiceInterface, "SetProperty", property, val).Err
+}
+
+// WaitForPropertyIn waits until a property is in a list of expected values
+func (s *Service) WaitForPropertyIn(ctx context.Context, property ServiceProperty, expected []interface{}, timeout time.Duration) error {
+	props, err := s.GetProperties(ctx)
+	if err != nil {
+		return err
+	}
+	for _, v := range expected {
+		if v == props[property] {
+			return nil
+		}
+	}
+
+	spec := dbusutil.MatchSpec{
+		Type:      "signal",
+		Path:      s.path,
+		Interface: dbusServiceInterface,
+		Member:    "PropertyChanged",
+	}
+	sw, err := dbusutil.NewSignalWatcher(ctx, s.conn, spec)
+	if err != nil {
+		return err
+	}
+	defer sw.Close(ctx)
+	timeoutFunc := func() error {
+		return errors.New("timed out waiting for property")
+	}
+	for t := time.Now().Add(timeout); time.Now().Before(t); {
+		select {
+		case sig := <-sw.Signals:
+			if len(sig.Body) < 2 {
+				continue
+			}
+			if foundProp, ok := sig.Body[0].(string); !ok || string(property) != foundProp {
+				continue
+			}
+			foundVal, ok := sig.Body[1].(dbus.Variant)
+			if !ok {
+				continue
+			}
+			for _, expectedVal := range expected {
+				if expectedVal == foundVal.Value() {
+					return nil
+				}
+			}
+		case <-time.After(t.Sub(time.Now())):
+			return timeoutFunc()
+		case <-ctx.Done():
+			return ctx.Err()
+		}
+		testing.Sleep(ctx, 200*time.Millisecond)
+	}
+	return timeoutFunc()
 }
