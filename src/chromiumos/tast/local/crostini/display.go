@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"image/color"
 	"image/png"
+	"io"
 	"os"
 	"strings"
 	"time"
@@ -139,18 +140,44 @@ func VerifyWindowDensities(ctx context.Context, tconn *chrome.Conn, sizeHighDens
 }
 
 // RunWindowedApp Runs the command |cmdline| in the container, waits
-// for the window |windowName| to open, sends it a key press event, and
-// then closes all open windows. Note that this will close windows
-// other then the one with title |windowName|! The return value is a
-// string containing the what program wrote to stdout.
-func RunWindowedApp(ctx context.Context, tconn *chrome.Conn, cont *vm.Container, keyboard *input.KeyboardEventWriter, timeout time.Duration, windowName string, cmdline []string) (string, error) {
+// for the window |windowName| to open, sends it a key press event,
+// runs |condition|, and then closes all open windows. Note that this
+// will close windows other then the one with title |windowName|! The
+// return value is a string containing the what program wrote to
+// stdout. The intended use of |channel| is to delay closing the
+// application window until some event has occurred. If |condition|
+// returns an error then the call will be considered a failure and the
+// error will be propagated.
+func RunWindowedApp(ctx context.Context, tconn *chrome.Conn, cont *vm.Container, keyboard *input.KeyboardEventWriter, timeout time.Duration, condition func(context.Context, <-chan []byte) error, windowName string, cmdline []string) (string, error) {
 	ctx, cancel := context.WithTimeout(ctx, timeout)
 	defer cancel()
 
 	testing.ContextLogf(ctx, "Starting %v application", windowName)
 	cmd := cont.Command(ctx, cmdline...)
 	var buf bytes.Buffer
-	cmd.Stdout = &buf
+
+	// Some callers need to wait on data from the application's stdout. Unfortunatly, go doesn't provide a cancelable way to wait on a io operation, so we need to construct one out of goroutines and channels. We do this by copying the data to a pipe, which will be read by a goroutine, which copies it to a channel. The other end of the channel is passed to the |conditon| closure, which can then wait on it simultanously with |ctx.Done()|, allowing this operation to be canceled. The writer end of the pipe will be closed when this function returns, which will cause the read end to return an EOF error, causing the goroutine to also end, even on context expiry.
+	pipeReader, pipeWriter := io.Pipe()
+	defer pipeWriter.Close()
+	multiWriter := io.MultiWriter(&buf, pipeWriter)
+	cmd.Stdout = multiWriter
+
+	c := make(chan []byte)
+	go func() {
+		var data [1024]byte
+		var err error
+		var n int
+		for ; ; n, err = pipeReader.Read(data[0:1024]) {
+			if n > 0 {
+				c <- data[0:n]
+			}
+			// |err| must be checked after processing any returned data, per the documentation for io.Reader
+			if err != nil {
+				break
+			}
+		}
+	}()
+
 	if err := cmd.Start(); err != nil {
 		return "", errors.Wrapf(err, "failed to start command %v", cmdline)
 	}
@@ -164,6 +191,10 @@ func RunWindowedApp(ctx context.Context, tconn *chrome.Conn, cont *vm.Container,
 	testing.ContextLog(ctx, "Sending keypress to ", windowName)
 	if err := keyboard.Type(ctx, " "); err != nil {
 		return "", errors.Wrapf(err, "failed to send keypress to window while running %v", cmdline)
+	}
+
+	if err := condition(ctx, c); err != nil {
+		return "", errors.Wrapf(err, "failed to call condition closure while running %v", cmdline)
 	}
 
 	// TODO(crbug.com/996609) Change this to only close the window that just got opened.

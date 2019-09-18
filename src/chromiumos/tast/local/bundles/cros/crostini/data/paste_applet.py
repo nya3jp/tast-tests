@@ -19,6 +19,8 @@ class PasteWindow(Gtk.Window):
   def paste(self, *args):
     text = self.clipboard.wait_for_text()
     print(text, end='')
+    # We must flush stdout here so the test can know it's okay to close this app
+    sys.stdout.flush()
 
 window = PasteWindow()
 window.present()
