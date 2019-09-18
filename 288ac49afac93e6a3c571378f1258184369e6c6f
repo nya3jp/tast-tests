@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b3f2beb_baa97c8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-18T06:07:31Z",
+      "side": 1,
+      "message": "nit:\nCould you add the same comment as http://crrev/c/1801404?\n\n// TODO(crbug.com/1002958) Replace with Ash API to enable clamshell mode once it gets fixed.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 99
+      },
+      "revId": "288ac49afac93e6a3c571378f1258184369e6c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edf8562f_924101f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/set_bounds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-18T06:07:31Z",
+      "side": 1,
+      "message": "nit: could you move this section after defining bounds?\nbecause bounds definitions are also consts used in this test, I think they should be placed continuously.",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 20
+      },
+      "revId": "288ac49afac93e6a3c571378f1258184369e6c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
