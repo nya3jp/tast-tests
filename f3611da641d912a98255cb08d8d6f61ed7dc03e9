@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e56a5d19_a7ad8ce3",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-18T22:35:24Z",
+      "side": 1,
+      "message": "I discussed this with nya@ on another CL.\nHe suggested to write this directly to disk in s.OutDir().\nThe output of this is about 3.5Kb. And while this bug ( http://crbug.com/972457 ) is still open, I would prefer to have it as it is.",
+      "range": {
+        "startLine": 295,
+        "startChar": 2,
+        "endLine": 296,
+        "endChar": 74
+      },
+      "revId": "f3611da641d912a98255cb08d8d6f61ed7dc03e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
