@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "15216cc2_53b0501e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-18T10:00:27Z",
+      "side": 1,
+      "message": "Because this is a library shared across various tests, it\u0027s nice to start from a concrete use case, so I\u0027d appreciate if you share it.",
+      "parentUuid": "2527ca3f_bd9b98de",
+      "revId": "9045525a825baef7389590f43a00c130cf1011b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7331fc00_2cc6ad62",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -72,6 +90,30 @@
       "side": 1,
       "message": "I run ./fast_build.sh -T and observed the following test failure every time w/ and w/o my change. Anything I might be missing here? Thanks.\n\n--- FAIL: TestPolicyGeneratorAddStraceLog (0.00s)\n    policy_generator_test.go:160: \"strace\" [\"strace\" \"-f\" \"-o\" \"/tmp/tast_strace_858985368\" \"--\" \"/sbin/minijail0\" \"-n\" \"/bin/echo\" \"test string\"] failed with exec: \"strace\": executable file not found in $PATH.",
       "parentUuid": "7331fc00_2cc6ad62",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 14
+      },
+      "revId": "9045525a825baef7389590f43a00c130cf1011b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8548996_11ae6316",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-18T10:00:27Z",
+      "side": 1,
+      "message": "Have you run in chroot? If not, could you run inside the chroot?",
+      "parentUuid": "d9d10e55_b715c94a",
       "range": {
         "startLine": 14,
         "startChar": 5,
