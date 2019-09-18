@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "221d82ef_515f7a0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-09-18T01:07:32Z",
+      "side": 1,
+      "message": "Some of these tests could be promoted to the CQ, but I think that is waiting for resolution of crbug.com/933110.\nWe should also create a graphics and a video nightly suite for tast for the remaining tests. I filed crbug.com/1005027 for tracking. For now keeping informational is fine.",
+      "parentUuid": "96ae910b_da894057",
+      "range": {
+        "startLine": 61,
+        "startChar": 3,
+        "endLine": 61,
+        "endChar": 61
+      },
+      "revId": "beb4ad7b6b0043de7c8e918378f587e2266cae6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d8507471_7c552ec1",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
         "patchSetId": 5
