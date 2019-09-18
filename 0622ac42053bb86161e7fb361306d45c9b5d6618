@@ -140,6 +140,30 @@
       "revId": "0622ac42053bb86161e7fb361306d45c9b5d6618",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39fe7ccf_fd77bda3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_test_internal.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2019-09-18T15:50:34Z",
+      "side": 1,
+      "message": "containerd is only included in the moblab and lakitu overlays so it\u0027s not currently possible to include it in any regular shipping boards, so this should be fine.",
+      "parentUuid": "74ad1ca5_91e1b8bd",
+      "range": {
+        "startLine": 156,
+        "startChar": 144,
+        "endLine": 156,
+        "endChar": 154
+      },
+      "revId": "0622ac42053bb86161e7fb361306d45c9b5d6618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
