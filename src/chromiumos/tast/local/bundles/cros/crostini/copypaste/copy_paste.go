@@ -97,12 +97,18 @@ func RunTest(ctx context.Context, s *testing.State, tconn *chrome.Conn, cont *vm
 	// Add the names of the backends used by each part of the test to differentiate the data used by each test run.
 	copiedData := fmt.Sprintf("%v to %v %s", copy.gdkBackend, paste.gdkBackend, utf8Data)
 
-	output, err := crostini.RunWindowedApp(ctx, tconn, cont, keyboard, 5*time.Second, copyAppletTitle, append(copy.cmdArgs, copiedData))
+	if err := tconn.Exec(ctx, `copy_promise = new Promise((resolve, reject) => {chrome.autotestPrivate.onClipboardDataChanged.addListener((e) => {resolve();});})`); err != nil {
+		s.Fatal("Failed to set listener for 'copy' event: ", err)
+	}
+
+	output, err := crostini.RunWindowedApp(ctx, tconn, cont, keyboard, 5*time.Second, func(ctx context.Context) error {
+		return tconn.EvalPromise(ctx, "copy_promise", nil)
+	}, true, copyAppletTitle, append(copy.cmdArgs, copiedData))
 	if err != nil {
 		s.Fatal("Failed to run copy applet: ", err)
 	}
 
-	output, err = crostini.RunWindowedApp(ctx, tconn, cont, keyboard, 5*time.Second, pasteAppletTitle, paste.cmdArgs)
+	output, err = crostini.RunWindowedApp(ctx, tconn, cont, keyboard, 5*time.Second, nil, false, pasteAppletTitle, paste.cmdArgs)
 	if err != nil {
 		s.Fatal("Failed to run paste application: ", err)
 	}
