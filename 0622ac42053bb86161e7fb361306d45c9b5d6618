@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "927693ad_925a994b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-09-18T04:18:45Z",
+      "side": 1,
+      "message": "maybe use this as commit subject.\nthat ref change is because i forgot to change it after some experiments :-(",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 49
+      },
+      "revId": "0622ac42053bb86161e7fb361306d45c9b5d6618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74ad1ca5_91e1b8bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_test_internal.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-09-18T04:18:45Z",
+      "side": 1,
+      "message": "generally lgtm\nmaybe a little bit worried about containerd if something called containerd on the user-boards are not blocked in the future?\nhow do you think of it Jorge? +jorgelo",
+      "range": {
+        "startLine": 156,
+        "startChar": 144,
+        "endLine": 156,
+        "endChar": 154
+      },
+      "revId": "0622ac42053bb86161e7fb361306d45c9b5d6618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c6bff8b_ac67e3a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_test_internal.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-09-18T04:18:45Z",
+      "side": 1,
+      "message": "typo?",
+      "range": {
+        "startLine": 156,
+        "startChar": 120,
+        "endLine": 156,
+        "endChar": 129
+      },
+      "revId": "0622ac42053bb86161e7fb361306d45c9b5d6618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
