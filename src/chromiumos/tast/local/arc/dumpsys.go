@@ -6,8 +6,14 @@ package arc
 
 import (
 	"context"
+	"io/ioutil"
+	"path"
 	"regexp"
 	"strconv"
+	"strings"
+
+	"android.com/frameworks/base/core/proto/android/server"
+	"github.com/golang/protobuf/proto"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
@@ -52,6 +58,8 @@ func (a *ARC) DumpsysActivityActivities(ctx context.Context) ([]TaskInfo, error)
 		return a.dumpsysActivityActivitiesN(ctx)
 	case SDKP:
 		return a.dumpsysActivityActivitiesP(ctx)
+	case SDKQ:
+		return a.dumpsysActivityActivitiesQ(ctx)
 	default:
 		return nil, errors.Errorf("unsupported Android version %d", n)
 	}
@@ -270,6 +278,92 @@ func (a *ARC) dumpsysActivityActivitiesP(ctx context.Context) (tasks []TaskInfo,
 		}
 		t.windowState = WindowState(windowState)
 		tasks = append(tasks, t)
+	}
+	return tasks, nil
+}
+
+// dumpsysActivityActivitiesQ returns the "dumpsys activity activities" output as a list of TaskInfo.
+// Should only be called on ARC Q devices.
+func (a *ARC) dumpsysActivityActivitiesQ(ctx context.Context) (tasks []TaskInfo, err error) {
+	output, err := a.Command(ctx, "dumpsys", "activity", "--proto", "activities").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not get 'dumpsys activity --proto activities' output")
+	}
+
+	am := &server.ActivityManagerServiceDumpActivitiesProto{}
+	if err := proto.Unmarshal(output, am); err != nil {
+		if dir, ok := testing.ContextOutDir(ctx); !ok {
+			testing.ContextLog(ctx, "Failed to save protobuf message. Could not get ContextOutDir()")
+		} else if f, err := ioutil.TempFile(dir, "activity-activities-protobuf-message-*.bin"); err != nil {
+			testing.ContextLog(ctx, "Failed to save protobuf message. Could not create temp file: ", err)
+		} else {
+			defer f.Close()
+			if _, err := f.Write(output); err != nil {
+				testing.ContextLog(ctx, "Failed to save protobuf message. Could not write to file: ", err)
+			} else {
+				testing.ContextLogf(ctx, "Protobuf message saved in test out directory. Filename: %q", path.Base(f.Name()))
+			}
+		}
+		return nil, errors.Wrap(err, "failed to parse activity manager protobuf")
+	}
+
+	super := am.GetActivityStackSupervisor()
+	for _, d := range super.GetDisplays() {
+		for _, stack := range d.GetStacks() {
+			for _, t := range stack.GetTasks() {
+				ti := TaskInfo{}
+				ti.ID = int(t.GetId())
+				ti.StackID = int(stack.GetId())
+				ti.StackSize = len(stack.GetTasks())
+				// Some special activities like arc.Dummy and arc.Home don't have the OrigActivity.
+				// In those cases, just get the RealActivity.
+				name := t.GetOrigActivity()
+				if name == "" {
+					name = t.GetRealActivity()
+				}
+				// Neither package name or activity name are allowed to use "/". Testing for "len != 2" is safe.
+				s := strings.Split(name, "/")
+				if len(s) != 2 {
+					return nil, errors.Errorf("failed to parse activity name %q", name)
+				}
+				ti.PkgName = s[0]
+				ti.ActivityName = s[1]
+				b := t.GetBounds()
+				ti.Bounds = Rect{
+					Left:   int(b.GetLeft()),
+					Top:    int(b.GetTop()),
+					Width:  int(b.GetRight() - b.GetLeft()),
+					Height: int(b.GetBottom() - b.GetTop())}
+				// Any value different than 0 (RESIZE_MODE_UNRESIZEABLE) means it is resizable. Defined in ActivityInfo.java. See:
+				// https://android.googlesource.com/platform/frameworks/base/+/refs/heads/android10-dev/core/java/android/content/pm/ActivityInfo.java
+				ti.resizable = t.GetResizeMode() != 0
+
+				conf := t.GetConfigurationContainer().GetMergedOverrideConfiguration()
+				winConf := conf.GetWindowConfiguration()
+				wm := winConf.GetWindowingMode()
+				// Windowing mode constants taken from WindowConfiguration.java. See:
+				// https://android.googlesource.com/platform/frameworks/base/+/refs/heads/android10-dev/core/java/android/app/WindowConfiguration.java
+				// TODO(crbug.com/1005422) Minimized, Maximized and PIP modes are not supported. Find a replacement.
+				// WINDOWING_MODE_PINNED is an acceptable temporay substitute for PIP.
+				ws := map[int32]WindowState{
+					1: WindowStateFullscreen,
+					2: WindowStatePIP, // WINDOWING_MODE_PINNED
+					3: WindowStatePrimarySnapped,
+					4: WindowStateSecondarySnapped,
+					5: WindowStateNormal,
+				}
+				val, ok := ws[wm]
+				if !ok {
+					return nil, errors.Errorf("unsupported window state value: %d", ws)
+				}
+				ti.windowState = val
+
+				// TODO(crbug.com/1005422): Protobuf output does not provide "idle" information. Find a replacement.
+				ti.idle = false
+
+				tasks = append(tasks, ti)
+			}
+		}
 	}
 	return tasks, nil
 }
