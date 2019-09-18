@@ -139,11 +139,15 @@ func VerifyWindowDensities(ctx context.Context, tconn *chrome.Conn, sizeHighDens
 }
 
 // RunWindowedApp Runs the command |cmdline| in the container, waits
-// for the window |windowName| to open, sends it a key press event, and
-// then closes all open windows. Note that this will close windows
-// other then the one with title |windowName|! The return value is a
-// string containing the what program wrote to stdout.
-func RunWindowedApp(ctx context.Context, tconn *chrome.Conn, cont *vm.Container, keyboard *input.KeyboardEventWriter, timeout time.Duration, windowName string, cmdline []string) (string, error) {
+// for the window |windowName| to open, sends it a key press event,
+// waits to receive a message on |channel|, and then closes all open
+// windows. Note that this will close windows other then the one with
+// title |windowName|! The return value is a string containing the what
+// program wrote to stdout. The intended use of |channel| is to delay
+// closing the application window until some event has occurred. If a
+// non-nil error is sent on |channel| then the call will be considered
+// a failure and the error will be propagated.
+func RunWindowedApp(ctx context.Context, tconn *chrome.Conn, cont *vm.Container, keyboard *input.KeyboardEventWriter, timeout time.Duration, channel <-chan error, windowName string, cmdline []string) (string, error) {
 	ctx, cancel := context.WithTimeout(ctx, timeout)
 	defer cancel()
 
@@ -164,6 +168,15 @@ func RunWindowedApp(ctx context.Context, tconn *chrome.Conn, cont *vm.Container,
 	testing.ContextLog(ctx, "Sending keypress to ", windowName)
 	if err := keyboard.Type(ctx, " "); err != nil {
 		return "", errors.Wrapf(err, "failed to send keypress to window while running %v", cmdline)
+	}
+
+	select {
+	case err = <-channel:
+		if err != nil {
+			return "", errors.Wrapf(err, "waiting for condition failed while running %v", cmdline)
+		}
+	case <-ctx.Done():
+		return "", errors.New("context deadline expired")
 	}
 
 	// TODO(crbug.com/996609) Change this to only close the window that just got opened.
