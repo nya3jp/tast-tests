@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "51942715_bbb4c239",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-18T18:11:08Z",
+      "side": 1,
+      "message": "Not necessarily. Here you\u0027re pressing 8 buttons, each one calls a function. You could instead press one button which in the app calls the 8 functions underneath, for example. I think that\u0027s not over complicated.\n\nThis app is meant for this test, so it makes total sense that it has a single button to \"Run Test\".",
+      "parentUuid": "70c94011_e95e6938",
+      "revId": "724e61ae280c951faf10ba531b1b1ad9bde7275f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "342b4f28_4c339a6a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
         "patchSetId": 1
