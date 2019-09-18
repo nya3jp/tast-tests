@@ -68,6 +68,30 @@
       "revId": "0622ac42053bb86161e7fb361306d45c9b5d6618",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7625f07f_7578357c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/processes_test_internal.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-09-18T04:20:46Z",
+      "side": 1,
+      "message": "seems not a typo but a apache command tool.\n\ncould you please add a few comments like L159 that \nmoblab|autotest|devserver|roatelogs|apache2|envoy|containerd are needed to have exceptions for moblab.",
+      "parentUuid": "1c6bff8b_ac67e3a0",
+      "range": {
+        "startLine": 156,
+        "startChar": 120,
+        "endLine": 156,
+        "endChar": 129
+      },
+      "revId": "0622ac42053bb86161e7fb361306d45c9b5d6618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
