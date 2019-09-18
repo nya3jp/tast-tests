@@ -9,8 +9,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -27,48 +25,20 @@ func init() {
 
 func StartSludge(ctx context.Context, s *testing.State) {
 	const (
-		// Const values from /etc/init/wilco_dtc.conf on device
-		wilcoVMJob         = "wilco_dtc"
-		wilcoVMCID         = "512"
-		wilcoVMStartupPort = 7788
+		storagePath = "/opt/dtc/storage"
+		diagPath    = "/opt/dtc/diagnostics"
 	)
-
-	// Load the vhost-vsock module
-	if err := testexec.CommandContext(ctx, "modprobe", "-q", "vhost-vsock").Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Unable to load vhost-vsock module: ", err)
-	}
-
-	server, err := vm.NewStartupListenerServer(wilcoVMStartupPort)
-	if err != nil {
-		s.Fatal("Unable to start VM startup listener gRPC server: ", err)
-	}
-
-	if err := server.Start(); err != nil {
-		s.Fatal("Unable to start listening server: ", err)
-	}
-	defer server.Stop()
-
-	s.Log("Restarting Wilco DTC daemon")
-	if err := upstart.RestartJob(ctx, wilcoVMJob); err != nil {
-		s.Fatal("Wilco DTC process could not start: ", err)
-	}
 
 	startCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
-	if err := server.WaitReady(startCtx); err != nil {
-		s.Fatal("Error waiting for Wilco DTC VM to start: ", err)
-	}
+
+	vm.StartSludge(startCtx, true)
+	defer vm.StopSludge(ctx)
 
 	for _, name := range []string{"ddv", "sa"} {
 		s.Logf("Checking %v process", name)
 
-		cmd := testexec.CommandContext(ctx,
-			"vsh", "--cid="+wilcoVMCID, "--", "pgrep", name)
-		// Add a dummy buffer for stdin to force allocating a pipe. vsh uses
-		// epoll internally and generates a warning (EPERM) if stdin is /dev/null.
-		cmd.Stdin = &bytes.Buffer{}
-
-		out, err := cmd.Output(testexec.DumpLogOnError)
+		out, err := vm.SendVshCommand(ctx, vm.WilcoVMCID, "pgrep", name)
 		if err != nil {
 			s.Errorf("Process %v not found: %v", name, err)
 		} else {
@@ -76,8 +46,14 @@ func StartSludge(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	s.Log("Stopping Wilco DTC daemon")
-	if err := upstart.StopJob(ctx, wilcoVMJob); err != nil {
-		s.Error("Unable to stop Wilco DTC daemon")
+	for _, path := range []string{storagePath, diagPath} {
+		s.Logf("Checking %v path", path)
+
+		_, err := vm.SendVshCommand(ctx, vm.WilcoVMCID, "test", "-d", path)
+		if err != nil {
+			s.Errorf("Path %v does not exist inside VM: %v", path, err)
+		} else {
+			s.Logf("Path %v is mounted inside VM", path)
+		}
 	}
 }
