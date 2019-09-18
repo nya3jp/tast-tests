@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "70c94011_e95e6938",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356516
+      },
+      "writtenOn": "2019-09-18T14:29:34Z",
+      "side": 1,
+      "message": "Well, with extracting nested functions flow in the main method is now corresponds to prepare-execute-verify flow (here it\u0027s more like prepare-execute). Yes, I agree that the flow still may be non-obvious. \n\nBut as for replacing all the buttons with single one - yes, it will definitely improve test readablity, but won\u0027t it be overcomplication for the application itself - the whole logics in one button?",
+      "parentUuid": "9293b6d8_e396f39e",
+      "revId": "724e61ae280c951faf10ba531b1b1ad9bde7275f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "342b4f28_4c339a6a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
         "patchSetId": 1
