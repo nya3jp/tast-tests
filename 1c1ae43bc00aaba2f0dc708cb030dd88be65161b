@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20a9c204_f8ff9842",
+        "filename": "tools/generate_external_file.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T01:58:04Z",
+      "side": 1,
+      "message": "Sorry I missed this in last iteration, but would you mind adding a date suffix (_YYYYMMDD) to data files? It\u0027s recommended way to \"version-control\" external data files.\n\nGiven that we\u0027re automating it, we might want to use more granular timestamp (e.g. _YYYYMMDD-HHMMSS) to avoid conflicts.",
+      "range": {
+        "startLine": 70,
+        "startChar": 35,
+        "endLine": 70,
+        "endChar": 44
+      },
+      "revId": "1c1ae43bc00aaba2f0dc708cb030dd88be65161b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f465304c_d8ba4fa1",
+        "filename": "tools/generate_external_file.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T01:58:04Z",
+      "side": 1,
+      "message": "style nit: \u0027\\n\u0027",
+      "range": {
+        "startLine": 91,
+        "startChar": 18,
+        "endLine": 91,
+        "endChar": 23
+      },
+      "revId": "1c1ae43bc00aaba2f0dc708cb030dd88be65161b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2201e0d3_80bf18ca",
+        "filename": "tools/generate_external_file.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T01:58:04Z",
+      "side": 1,
+      "message": "QQ: What\u0027s errors\u003dTrue? I read the official doc but its meaning was not clear to me...",
+      "range": {
+        "startLine": 96,
+        "startChar": 25,
+        "endLine": 96,
+        "endChar": 36
+      },
+      "revId": "1c1ae43bc00aaba2f0dc708cb030dd88be65161b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88f6745a_2f967ab7",
+        "filename": "tools/generate_external_file.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T01:58:04Z",
+      "side": 1,
+      "message": "How about just calling gsutil with subprocess.check_call? Then we don\u0027t need to handle returncode and stderr.",
+      "range": {
+        "startLine": 97,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 50
+      },
+      "revId": "1c1ae43bc00aaba2f0dc708cb030dd88be65161b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
