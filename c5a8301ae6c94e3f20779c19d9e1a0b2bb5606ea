@@ -52,6 +52,24 @@
       "revId": "c5a8301ae6c94e3f20779c19d9e1a0b2bb5606ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcc44892_5b4a48a8",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-09-18T07:22:56Z",
+      "side": 1,
+      "message": "Yeah, I\u0027ll split this bit out.",
+      "parentUuid": "85f2e6fd_582f641a",
+      "revId": "c5a8301ae6c94e3f20779c19d9e1a0b2bb5606ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
