@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04868088_873c283e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T00:17:01Z",
+      "side": 1,
+      "message": "\"option\" sounds a bit generic. How about drmTest or drmSubtest since this struct defines a subtest scenario of DRM tests?\n\nAlso, would you mind adding a brief doccomment describing this struct?",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 11
+      },
+      "revId": "6c39be8a32a1a7a0721ac5dc609a84bd0fa5bfaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96f19a1e_03d72cad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T00:17:01Z",
+      "side": 1,
+      "message": "runDeps is not used in this CL yet, would you mind removing it for now?",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 17
+      },
+      "revId": "6c39be8a32a1a7a0721ac5dc609a84bd0fa5bfaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "070680e1_a82b8d85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T00:17:01Z",
+      "side": 1,
+      "message": "Now this map looks unnecessary since each item is used just once.\n\n\nIn case we still want this kind of map: using map[string]option is weak to typo (e.g. allTestOpts[\"atomic_teest\"] compiles). In this case you can define these option values as different variables, then typo is caught statically.\n\n func init() {\n   var (\n     atomic \u003d option{\n       command: []string{...},\n       timeout: ...,\n     }\n     drmCursor \u003d option{\n       ...\n     }\n     ...\n   )\n   ...\n }",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "6c39be8a32a1a7a0721ac5dc609a84bd0fa5bfaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf16042f_638a977d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T00:17:01Z",
+      "side": 1,
+      "message": "If the point of consolidating multiple tests into one is overhead, please use preconditions instead:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Preconditions\n\nCurrently there is no existing precondition for \"ui is stopped\", but it should be trivial to introduce such one.\n\nWe used to combine multiple tests for efficiency in Autotest, but it is a technical limitation specific to Autotest.",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 15
+      },
+      "revId": "6c39be8a32a1a7a0721ac5dc609a84bd0fa5bfaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90d47062_306fa98f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T00:17:01Z",
+      "side": 1,
+      "message": "huge nit: We should be able to omit prepending /usr/local/bin since it\u0027s in $PATH.",
+      "range": {
+        "startLine": 86,
+        "startChar": 9,
+        "endLine": 86,
+        "endChar": 27
+      },
+      "revId": "6c39be8a32a1a7a0721ac5dc609a84bd0fa5bfaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
