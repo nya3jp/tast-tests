@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "96ae910b_da894057",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T00:17:01Z",
+      "side": 1,
+      "message": "You\u0027re right, basically all informational tests are supposed to be promoted to CQ. If you don\u0027t intend to promote them, maybe we should introduce a new group for graphics tests (e.g. group:graphics) which run as a part of a graphics suite (e.g. suite:graphics_per-day). That said, since they are currently informational, I\u0027d recommend keeping them informational in this CL and consider moving them to another suite in a different CL.",
+      "parentUuid": "99b4cff7_20cdee43",
+      "range": {
+        "startLine": 61,
+        "startChar": 3,
+        "endLine": 61,
+        "endChar": 61
+      },
+      "revId": "beb4ad7b6b0043de7c8e918378f587e2266cae6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d8507471_7c552ec1",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
         "patchSetId": 5
@@ -293,6 +317,30 @@
       "revId": "beb4ad7b6b0043de7c8e918378f587e2266cae6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebade874_9c700a9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T00:17:01Z",
+      "side": 1,
+      "message": "I\u0027ll reply to this question in crrev.com/c/1808490.",
+      "parentUuid": "28d2ee88_2828ca94",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 21
+      },
+      "revId": "beb4ad7b6b0043de7c8e918378f587e2266cae6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
