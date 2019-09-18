@@ -100,7 +100,6 @@ group("all") {
   deps = [
     ":graphics.GBM.gbmtest",
     ":kernel.PerfCallgraph.graph",
-    ":security.Minijail.staticbashexec",
     ":security.MinijailSeccomp.fail",
     ":security.MinijailSeccomp.ok",
     ":security.MinijailSeccomp.open",
@@ -112,4 +111,8 @@ group("all") {
     ":security.AltSyscall.mmap",
     ":security.AltSyscall.read",
   ]
+  # Sanitizer builds do not support static linking.
+  if (!(use.asan || use.msan || use.ubsan)) {
+    deps += [":security.Minijail.staticbashexec"]
+  }
 }
