@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d2b43aa1_93232712",
+        "filename": "tools/generate_external_file.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-09-18T17:06:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20a9c204_f8ff9842",
+      "range": {
+        "startLine": 70,
+        "startChar": 35,
+        "endLine": 70,
+        "endChar": 44
+      },
+      "revId": "1c1ae43bc00aaba2f0dc708cb030dd88be65161b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f465304c_d8ba4fa1",
         "filename": "tools/generate_external_file.py",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "1c1ae43bc00aaba2f0dc708cb030dd88be65161b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dd60795_044ff279",
+        "filename": "tools/generate_external_file.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-09-18T17:06:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f465304c_d8ba4fa1",
+      "range": {
+        "startLine": 91,
+        "startChar": 18,
+        "endLine": 91,
+        "endChar": 23
+      },
+      "revId": "1c1ae43bc00aaba2f0dc708cb030dd88be65161b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0be6f4f5_e445138e",
+        "filename": "tools/generate_external_file.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-09-18T17:06:02Z",
+      "side": 1,
+      "message": "Yeah I personally found the Python docs somewhat disappointing in that they don\u0027t provide meaningful explanations for the use of a lot of the arguments to functions. AFAIK this argument is simply used to enable capturing stderr.",
+      "parentUuid": "2201e0d3_80bf18ca",
+      "range": {
+        "startLine": 96,
+        "startChar": 25,
+        "endLine": 96,
+        "endChar": 36
+      },
+      "revId": "1c1ae43bc00aaba2f0dc708cb030dd88be65161b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88f6745a_2f967ab7",
         "filename": "tools/generate_external_file.py",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "1c1ae43bc00aaba2f0dc708cb030dd88be65161b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e25f095_132ee42e",
+        "filename": "tools/generate_external_file.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-09-18T17:06:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88f6745a_2f967ab7",
+      "range": {
+        "startLine": 97,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 50
+      },
+      "revId": "1c1ae43bc00aaba2f0dc708cb030dd88be65161b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
