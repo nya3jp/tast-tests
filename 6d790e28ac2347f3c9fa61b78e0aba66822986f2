@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68eef443_c7225de8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-09-18T00:25:28Z",
+      "side": 1,
+      "message": "name, selector string\nYou can omit a parameter type if the next argument\u0027s parameter type is the same.",
+      "range": {
+        "startLine": 186,
+        "startChar": 21,
+        "endLine": 186,
+        "endChar": 49
+      },
+      "revId": "6d790e28ac2347f3c9fa61b78e0aba66822986f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
