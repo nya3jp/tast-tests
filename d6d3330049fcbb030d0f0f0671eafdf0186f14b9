@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b23c675_4a563df5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T08:37:01Z",
+      "side": 1,
+      "message": "This change depends on crrev.com/c/1779124, but the relation chain is reversed. Could you swap the order?",
+      "range": {
+        "startLine": 124,
+        "startChar": 30,
+        "endLine": 124,
+        "endChar": 41
+      },
+      "revId": "d6d3330049fcbb030d0f0f0671eafdf0186f14b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28f30725_3ca94123",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T08:37:01Z",
+      "side": 1,
+      "message": "We also need to call te.wpr.Wait to release resources.\n\nhttps://godoc.org/os/exec#Cmd.Wait",
+      "range": {
+        "startLine": 222,
+        "startChar": 2,
+        "endLine": 222,
+        "endChar": 37
+      },
+      "revId": "d6d3330049fcbb030d0f0f0671eafdf0186f14b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "148c5fb6_134b403e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T08:37:01Z",
+      "side": 1,
+      "message": "style: For every non-inline comments, please end sentences with a period.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences\n\nSame for other comments too.",
+      "range": {
+        "startLine": 229,
+        "startChar": 7,
+        "endLine": 229,
+        "endChar": 65
+      },
+      "revId": "d6d3330049fcbb030d0f0f0671eafdf0186f14b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd3b51a2_a27d0a2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/mempressure_task.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T08:37:01Z",
+      "side": 1,
+      "message": "This looks still unused.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 20
+      },
+      "revId": "d6d3330049fcbb030d0f0f0671eafdf0186f14b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

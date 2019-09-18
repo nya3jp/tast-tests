@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce9a2e1d_9b69152b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T08:37:01Z",
+      "side": 1,
+      "message": "This package is introduced in crrev.com/c/1779124. The relation chain is reversed.",
+      "revId": "66aa71405068c424462e305fc77b6fd8dc8bdc68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0e55f7c_0ce3fccd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T08:37:01Z",
+      "side": 1,
+      "message": "Can we always use chromewpr by setting UseLiveSites when necessary? It will simplify the flow.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 20
+      },
+      "revId": "66aa71405068c424462e305fc77b6fd8dc8bdc68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "150aef0d_10994a4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T08:37:01Z",
+      "side": 1,
+      "message": "All these params translate to fields in chromewpr.Params (MemoryPressureWPR -\u003e UseLiveSites, UseARC -\u003e UseARC). Can we have chromewpr.Params only?",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 12
+      },
+      "revId": "66aa71405068c424462e305fc77b6fd8dc8bdc68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05687999_6b8fb1b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/mempressure_task.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T08:37:01Z",
+      "side": 1,
+      "message": "Could you move this file to crrev.com/c/1779126 which actually uses this task?",
+      "revId": "66aa71405068c424462e305fc77b6fd8dc8bdc68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
