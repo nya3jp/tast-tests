@@ -80,7 +80,10 @@ func AssistantTimeQuery(ctx context.Context, s *testing.State) {
 	latest := now.Add(tolerance)
 	for _, assistantTime := range results {
 		s.Logf("Comparing Assistant time %v with the current time %v", assistantTime, now)
-		if assistantTime.After(earliest) && assistantTime.Before(latest) {
+		// Both boundary values must be allowed given our interpretation rules. It is worth
+		// mentioning that t.Before(t) and t.After(t) will both return false, so we check it
+		// by excluding values fall beyond the range.
+		if !(assistantTime.Before(earliest) || assistantTime.After(latest)) {
 			return
 		}
 	}
