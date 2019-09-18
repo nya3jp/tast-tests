@@ -748,6 +748,10 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
 		return nil, errors.Wrap(err, "test API extension is unavailable")
 	}
 
+	if err := c.testExtConn.Exec(ctx, "chrome.autotestPrivate.initializeEvents()"); err != nil {
+		return nil, errors.Wrap(err, "failed to initialize test API events")
+	}
+
 	testing.ContextLog(ctx, "Test API extension is ready")
 	return c.testExtConn, nil
 }
