@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1e7f1c4_5ffee23c",
+        "filename": "src/chromiumos/tast/local/shill/service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T07:55:01Z",
+      "side": 1,
+      "message": "Declaring this as []interface{} is odd. Could you add a brief comment why it\u0027s []interface{}? (I think it\u0027s intended to be passed to WaitForPropertyIn)\n\nIdeally WaitForPropertyIn should accept (expected interface{}), not (expected []interface{}), so that it can accept []string for example. But it might involve some work with the reflect package, so you might want to defer it until we find out it\u0027s really good.",
+      "range": {
+        "startLine": 41,
+        "startChar": 29,
+        "endLine": 41,
+        "endChar": 42
+      },
+      "revId": "e1ee33368ef75bac1d97792be909c6b1d7ff672a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68e7da9d_21f526ed",
+        "filename": "src/chromiumos/tast/local/shill/service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T07:55:01Z",
+      "side": 1,
+      "message": "This looks like a race: if a property is updated after GetProperties but before SignalWatcher is installed, the event is not observed.\n\nEasiest way to resolve would be to install the SignalWatcher before calling GetProperties.",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 20
+      },
+      "revId": "e1ee33368ef75bac1d97792be909c6b1d7ff672a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c17a5ba8_12b1b4e9",
+        "filename": "src/chromiumos/tast/local/shill/service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T07:55:01Z",
+      "side": 1,
+      "message": "You can honor the timeout easily by manipulating the context:\n\n ctx, cancel :\u003d context.WithTimeout(ctx, timeout)\n defer cancel()\n\n // use ctx below ...",
+      "range": {
+        "startLine": 100,
+        "startChar": 5,
+        "endLine": 100,
+        "endChar": 58
+      },
+      "revId": "e1ee33368ef75bac1d97792be909c6b1d7ff672a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63c47384_86c4024a",
+        "filename": "src/chromiumos/tast/local/shill/service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T07:55:01Z",
+      "side": 1,
+      "message": "What is this sleep for?",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 42
+      },
+      "revId": "e1ee33368ef75bac1d97792be909c6b1d7ff672a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
