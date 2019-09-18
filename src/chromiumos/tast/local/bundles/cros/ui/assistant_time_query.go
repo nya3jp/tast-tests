@@ -80,7 +80,7 @@ func AssistantTimeQuery(ctx context.Context, s *testing.State) {
 	latest := now.Add(tolerance)
 	for _, assistantTime := range results {
 		s.Logf("Comparing Assistant time %v with the current time %v", assistantTime, now)
-		if assistantTime.After(earliest) && assistantTime.Before(latest) {
+		if !(assistantTime.Before(earliest) || assistantTime.After(latest)) {
 			return
 		}
 	}
