@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ea6b7ca_c129ac57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/chromewpr/chromewpr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T08:28:38Z",
+      "side": 1,
+      "message": "In general, this new package is excellent! Thanks for factoring out this package.",
+      "revId": "3e2170438f2b336be1cce523cad32be1b802a73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79867504_de2d20dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/chromewpr/chromewpr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T08:28:38Z",
+      "side": 1,
+      "message": "huge nit: just wpr (or even w) should be fine. IIUC Go rarely uses the term \"instance\".",
+      "range": {
+        "startLine": 111,
+        "startChar": 5,
+        "endLine": 111,
+        "endChar": 12
+      },
+      "revId": "3e2170438f2b336be1cce523cad32be1b802a73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79b96db4_fb0d8e47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/chromewpr/chromewpr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T08:28:38Z",
+      "side": 1,
+      "message": "I know this is broken in ToT, but while you\u0027re at it: could you add tentativeWPR.Wait() to release resources?\n\n\u003e Wait releases any resources associated with the Cmd.\nhttps://godoc.org/os/exec#Cmd.Wait\n\n if err :\u003d tentativeWPR.Kill(); err !\u003d nil { ... }\n if err :\u003d tentativeWPR.Wait(); err !\u003d nil { ... }",
+      "range": {
+        "startLine": 128,
+        "startChar": 3,
+        "endLine": 130,
+        "endChar": 4
+      },
+      "revId": "3e2170438f2b336be1cce523cad32be1b802a73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b597bdb_cd978e69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/chromewpr/chromewpr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T08:28:38Z",
+      "side": 1,
+      "message": "This should not happen, but if it ever happens, we should return an error instead of silently falling back to replay.\n\n default:\n   return nil, errors.Errorf(\"unknown WPR mode %q\", p.Mode)",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 161,
+        "endChar": 17
+      },
+      "revId": "3e2170438f2b336be1cce523cad32be1b802a73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f9cbc66_e51c617f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/chromewpr/chromewpr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T08:28:38Z",
+      "side": 1,
+      "message": "Actually this bug has been resolved! :) Could you try using []chrome.Option?\n\n opts \u003d []chrome.Option{chrome.ExtraArgs(args...)}\n if p.UseARC {\n    opts \u003d append(opts, chrome.ARCEnabled())\n }\n tentativeCr, err \u003d chrome.New(ctx, opts...)",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 65
+      },
+      "revId": "3e2170438f2b336be1cce523cad32be1b802a73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7e62624_28f7daab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/chromewpr/chromewpr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T08:28:38Z",
+      "side": 1,
+      "message": "Chrome.Close can return an error. I think we want to consider it. In this kind of case where multiple errors can happen, popular strategy is to return the first error.\n\n var firstErr error\n if err :\u003d w.Chrome.Close(ctx); err !\u003d nil \u0026\u0026 firstErr \u003d\u003d nil {\n   firstErr \u003d err\n }\n if w.WPRProc !\u003d nil {\n   if err :\u003d ...; err !\u003d nil \u0026\u0026 firstErr \u003d\u003d nil{\n     firstErr \u003d err\n   }\n }\n return firstErr",
+      "range": {
+        "startLine": 220,
+        "startChar": 1,
+        "endLine": 220,
+        "endChar": 20
+      },
+      "revId": "3e2170438f2b336be1cce523cad32be1b802a73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b770757_d1bca527",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/chromewpr/chromewpr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T08:28:38Z",
+      "side": 1,
+      "message": "nit: testexec.Cmd.Signal can be used for shortcut.",
+      "range": {
+        "startLine": 223,
+        "startChar": 12,
+        "endLine": 223,
+        "endChar": 36
+      },
+      "revId": "3e2170438f2b336be1cce523cad32be1b802a73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6ad1e3e_c2dbf604",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/chromewpr/chromewpr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-18T08:28:38Z",
+      "side": 1,
+      "message": "We have to call w.WPRProc.Wait() for the same reason as above.",
+      "range": {
+        "startLine": 225,
+        "startChar": 2,
+        "endLine": 225,
+        "endChar": 3
+      },
+      "revId": "3e2170438f2b336be1cce523cad32be1b802a73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
