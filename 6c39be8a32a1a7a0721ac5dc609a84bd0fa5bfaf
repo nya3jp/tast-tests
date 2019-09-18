@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "264d5ad8_cb3b1c63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-09-18T21:23:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04868088_873c283e",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 11
+      },
+      "revId": "6c39be8a32a1a7a0721ac5dc609a84bd0fa5bfaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96f19a1e_03d72cad",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "6c39be8a32a1a7a0721ac5dc609a84bd0fa5bfaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbddbd11_64dc739b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-09-18T21:23:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96f19a1e_03d72cad",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 17
+      },
+      "revId": "6c39be8a32a1a7a0721ac5dc609a84bd0fa5bfaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2fac3d3e_7c786094",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-09-18T21:23:36Z",
+      "side": 1,
+      "message": "thanks for the suggestion. Done.",
+      "parentUuid": "070680e1_a82b8d85",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "6c39be8a32a1a7a0721ac5dc609a84bd0fa5bfaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf16042f_638a977d",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
         "patchSetId": 7
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "86956b11_2f949d0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-09-18T21:23:36Z",
+      "side": 1,
+      "message": "Ok. let\u0027s keep this test as refactoring into parameterize test and do this in the other cl.",
+      "parentUuid": "cf16042f_638a977d",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 15
+      },
+      "revId": "6c39be8a32a1a7a0721ac5dc609a84bd0fa5bfaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90d47062_306fa98f",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
         "patchSetId": 7
@@ -114,6 +210,30 @@
       "revId": "6c39be8a32a1a7a0721ac5dc609a84bd0fa5bfaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f1b205a_2a358ce9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-09-18T21:23:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90d47062_306fa98f",
+      "range": {
+        "startLine": 86,
+        "startChar": 9,
+        "endLine": 86,
+        "endChar": 27
+      },
+      "revId": "6c39be8a32a1a7a0721ac5dc609a84bd0fa5bfaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
