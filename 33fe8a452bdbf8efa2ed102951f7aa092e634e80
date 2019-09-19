@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0771314_c42c1ce3",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T19:10:57Z",
+      "side": 1,
+      "message": "style: Could you merge these lines? Also, maybe logging on failure?\n\nif dir, ok :\u003d testing.ContextOutDir(ctx); !ok {\n  testing.ContextLog(\"Failed to ...\")\n} else if ... {\n  ... // L296-L301.\n}\n\nyou can cascade to avoid deep indent, I think.",
+      "range": {
+        "startLine": 294,
+        "startChar": 2,
+        "endLine": 295,
+        "endChar": 9
+      },
+      "revId": "33fe8a452bdbf8efa2ed102951f7aa092e634e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd15fd0d_7c00e3db",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T19:10:57Z",
+      "side": 1,
+      "message": "Could you log on error?",
+      "range": {
+        "startLine": 296,
+        "startChar": 84,
+        "endLine": 296,
+        "endChar": 94
+      },
+      "revId": "33fe8a452bdbf8efa2ed102951f7aa092e634e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f002f7cb_ac86e17c",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T19:10:57Z",
+      "side": 1,
+      "message": "Could you log on error?",
+      "range": {
+        "startLine": 298,
+        "startChar": 34,
+        "endLine": 298,
+        "endChar": 44
+      },
+      "revId": "33fe8a452bdbf8efa2ed102951f7aa092e634e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
