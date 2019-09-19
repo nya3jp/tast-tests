@@ -8,10 +8,8 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"time"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/testing"
 )
 
 // WindowStateType represents the different window state type in Ash.
@@ -152,17 +150,4 @@ func SwapWindowsInSplitView(ctx context.Context, c *chrome.Conn) error {
 		  });
 		})`
 	return c.EvalPromise(ctx, expr, nil)
-}
-
-// WaitForSystemUIStabilized waits a bit until the system UI state is stabilized
-// and ready for performance test. Some initialization might skew the performance
-// result.
-func WaitForSystemUIStabilized(ctx context.Context) error {
-	// The duration to wait for system UI stabilized.
-	const timeUntilSystemUIStabilized time.Duration = 5 * time.Second
-
-	// Right now, it just waits a bit.
-	// TODO(mukai, oshima): find the way to check the status and replace this by
-	// testing.Poll().  See: https://crbug.com/1001314
-	return testing.Sleep(ctx, timeUntilSystemUIStabilized)
 }
