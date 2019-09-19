@@ -1,0 +1,238 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6d7ff2a_6f3b862a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T08:11:10Z",
+      "side": 1,
+      "message": "Could you split this into another CL?\nIt\u0027s nice to keep focusing on one thing in one CL.\n\ntast-tests repository uses PCQ, so it should be much less painful than LCQ, I think.",
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16c9423a_25515060",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T08:11:10Z",
+      "side": 1,
+      "message": "Could you handle error?",
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1d175ad_97c19ed7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T08:11:10Z",
+      "side": 1,
+      "message": "Now you can merge them to make the var scope as small as possible.\n\nif out, err :\u003d vm.VSHCommand(...).Output(...); err !\u003d nil {\n  ...\n} else {\n  ...\n}",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 3
+      },
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b96e5f5_da553042",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T08:11:10Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 3
+      },
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2668f7ef_f4a853e7",
+        "filename": "src/chromiumos/tast/local/vm/sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T08:11:10Z",
+      "side": 1,
+      "message": "Any plans that this is used by tests other than vm packages?\nIf not, could you keep this in src/chromiumos/tast/local/bundles/cros/vm/${subpackage}/sludge.go?",
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfe178bd_b6ce2e07",
+        "filename": "src/chromiumos/tast/local/vm/sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T08:11:10Z",
+      "side": 1,
+      "message": "nit: you can use present form.\n\nStartSluge starts the upstart process ...\n\nditto for below.",
+      "range": {
+        "startLine": 24,
+        "startChar": 15,
+        "endLine": 24,
+        "endChar": 25
+      },
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "992943fb_5f1cb69b",
+        "filename": "src/chromiumos/tast/local/vm/sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T08:11:10Z",
+      "side": 1,
+      "message": "nit/style: could you remove unnecessary empty line?",
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ecdce8e_a8741149",
+        "filename": "src/chromiumos/tast/local/vm/sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T08:11:10Z",
+      "side": 1,
+      "message": "Can this be\n\nenv :\u003d fmt.Sprintf(\"STARTUP_PROCESSES\u003d%t\", startProcesses)\n\nto be clearer?",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2198e7a_7e18ce47",
+        "filename": "src/chromiumos/tast/local/vm/sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T08:11:10Z",
+      "side": 1,
+      "message": "In this case, wilcoVMJob will be retained.",
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35434b6b_9acc86b6",
+        "filename": "src/chromiumos/tast/local/vm/sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T08:11:10Z",
+      "side": 1,
+      "message": "Could you add these methods when necessary with actual use?",
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a7708bb_c3bd9934",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T08:11:10Z",
+      "side": 1,
+      "message": "Instead, how about just return *testexec.Cmd instance and let callers call Output/Run accordingly?\n\nActually, you are just discarding unused out.",
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ece6f785_21cc7b63",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T08:11:10Z",
+      "side": 1,
+      "message": "In Go, acronyms should be all capital letters, so \"VSH\"",
+      "range": {
+        "startLine": 339,
+        "startChar": 9,
+        "endLine": 339,
+        "endChar": 12
+      },
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
