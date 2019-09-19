@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "15afbfc2_d4fc9ce1",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-19T16:40:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "965aeef1_eac5aa11",
+      "range": {
+        "startLine": 55,
+        "startChar": 6,
+        "endLine": 55,
+        "endChar": 8
+      },
+      "revId": "f3611da641d912a98255cb08d8d6f61ed7dc03e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02f5246f_63e386f6",
         "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
         "patchSetId": 7
@@ -39,6 +63,24 @@
       "revId": "f3611da641d912a98255cb08d8d6f61ed7dc03e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cc0063a_fea5db25",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-19T16:40:18Z",
+      "side": 1,
+      "message": "Only in Q. Let me know if you want me to add a more descriptive message.\n\nP will be almost the same as Q, but Q deprecated some protobuf messages, so Q needs to call some messages that are not present on P.\n\nI\u0027ll address the \"migrate P from regexp to protobuf\" in a future CL.",
+      "parentUuid": "02f5246f_63e386f6",
+      "revId": "f3611da641d912a98255cb08d8d6f61ed7dc03e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "f3611da641d912a98255cb08d8d6f61ed7dc03e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc13fdf6_8731916d",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-19T16:40:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f83b2387_3afc8d6e",
+      "range": {
+        "startLine": 287,
+        "startChar": 8,
+        "endLine": 288,
+        "endChar": 28
+      },
+      "revId": "f3611da641d912a98255cb08d8d6f61ed7dc03e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -112,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "baab1288_db97392f",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-19T16:40:18Z",
+      "side": 1,
+      "message": "This error shouldn\u0027t be triggered that often.. in fact I expect to be triggered only when we start testing on R... \n\nIn any case, I\u0027ve just tried migrating to TempFile() and I realized that context.Context doesn\u0027t have the \"testing.State\" object. \n\nWhat would be the recommended way to get the \"OutDir()\" if I cannot access testing.State? \nPassing either testing.State or OutDir() seems like overkill.\n\nthanks.",
+      "parentUuid": "769bbaab_3073e195",
+      "range": {
+        "startLine": 295,
+        "startChar": 2,
+        "endLine": 296,
+        "endChar": 74
+      },
+      "revId": "f3611da641d912a98255cb08d8d6f61ed7dc03e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "996cdcc2_6ca6ebd7",
         "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
         "patchSetId": 7
@@ -126,6 +216,24 @@
       "revId": "f3611da641d912a98255cb08d8d6f61ed7dc03e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73197553_6e34a2cf",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-19T16:40:18Z",
+      "side": 1,
+      "message": "Yes :(",
+      "parentUuid": "996cdcc2_6ca6ebd7",
+      "revId": "f3611da641d912a98255cb08d8d6f61ed7dc03e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
