@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3fc83e15_5a1925ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-19T23:53:18Z",
+      "side": 1,
+      "message": "Good suggestion. Done.",
+      "parentUuid": "f6d7ff2a_6f3b862a",
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16c9423a_25515060",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8841623c_023df1ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-19T23:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16c9423a_25515060",
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "f2023126_a6639bd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-19T23:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1d175ad_97c19ed7",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 3
+      },
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b96e5f5_da553042",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
         "patchSetId": 2
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "284d1ae6_690b0eaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/start_sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-19T23:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b96e5f5_da553042",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 3
+      },
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2668f7ef_f4a853e7",
         "filename": "src/chromiumos/tast/local/vm/sludge.go",
         "patchSetId": 2
@@ -93,6 +177,24 @@
       "writtenOn": "2019-09-19T08:11:10Z",
       "side": 1,
       "message": "Any plans that this is used by tests other than vm packages?\nIf not, could you keep this in src/chromiumos/tast/local/bundles/cros/vm/${subpackage}/sludge.go?",
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc14de64_af5c8006",
+        "filename": "src/chromiumos/tast/local/vm/sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-19T23:53:18Z",
+      "side": 1,
+      "message": "I was planning on adding a folder to group tests called wilco which would hold start_sludge.go, and other tests that I am in the process of writing. They exercise end to end wilco functionality more than just the VM. Based on that, does it still make sense to add a subpackage folder?",
+      "parentUuid": "2668f7ef_f4a853e7",
       "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -122,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "6eeeb942_d60524c1",
+        "filename": "src/chromiumos/tast/local/vm/sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-19T23:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfe178bd_b6ce2e07",
+      "range": {
+        "startLine": 24,
+        "startChar": 15,
+        "endLine": 24,
+        "endChar": 25
+      },
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "992943fb_5f1cb69b",
         "filename": "src/chromiumos/tast/local/vm/sludge.go",
         "patchSetId": 2
@@ -136,6 +262,24 @@
       "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36303eda_d21ac6a8",
+        "filename": "src/chromiumos/tast/local/vm/sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-19T23:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "992943fb_5f1cb69b",
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -162,6 +306,30 @@
     },
     {
       "key": {
+        "uuid": "3d353663_6b156ca0",
+        "filename": "src/chromiumos/tast/local/vm/sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-19T23:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ecdce8e_a8741149",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2198e7a_7e18ce47",
         "filename": "src/chromiumos/tast/local/vm/sludge.go",
         "patchSetId": 2
@@ -179,6 +347,24 @@
     },
     {
       "key": {
+        "uuid": "c32fc8d7_a888b968",
+        "filename": "src/chromiumos/tast/local/vm/sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-19T23:53:18Z",
+      "side": 1,
+      "message": "I added a shutdown attempt to the job it if fails from here.",
+      "parentUuid": "a2198e7a_7e18ce47",
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35434b6b_9acc86b6",
         "filename": "src/chromiumos/tast/local/vm/sludge.go",
         "patchSetId": 2
@@ -193,6 +379,24 @@
       "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b344ade5_763d9957",
+        "filename": "src/chromiumos/tast/local/vm/sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-19T23:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35434b6b_9acc86b6",
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -233,6 +437,48 @@
       "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afb69931_d549f618",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-19T23:53:18Z",
+      "side": 1,
+      "message": "Yeah I think it could go either way. If you feel strongly that it should return the command, I can change it.",
+      "parentUuid": "3a7708bb_c3bd9934",
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a6b529a_fd166cc0",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-19T23:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ece6f785_21cc7b63",
+      "range": {
+        "startLine": 339,
+        "startChar": 9,
+        "endLine": 339,
+        "endChar": 12
+      },
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
