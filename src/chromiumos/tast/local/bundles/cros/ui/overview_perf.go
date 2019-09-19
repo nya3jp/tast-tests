@@ -23,11 +23,20 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      time.Minute,
+		Params: []testing.Param{
+			{Val: "clamshell"},
+			{
+				Name:              "tablet",
+				Val:               "touch_view",
+				ExtraSoftwareDeps: []string{"tablet_mode"},
+			},
+		},
 	})
 }
 
 func OverviewPerf(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx)
+	mode := s.Param().(string)
+	cr, err := chrome.New(ctx, chrome.ExtraArgs("--force-tablet-mode="+mode))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
@@ -51,18 +60,26 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 
 	for i := 0; i < 10; i++ {
 		if err = ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
-			s.Fatal("It does not appear to be in the overview mode: ", err)
+			s.Fatal("Failed to enter into the overview mode: ", err)
 		}
 		if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
-			s.Fatal("It does not appear to be in the overview mode: ", err)
+			s.Fatal("Failed to exit from the overview mode: ", err)
 		}
 	}
 
+	suffix := "SingleClamshellMode"
+	if inTabletMode, err := ash.TabletModeEnabled(ctx, tconn); err != nil {
+		s.Fatal("Failed to obtain the tablet mode status: ", err)
+	} else if inTabletMode {
+		suffix = "TabletMode"
+	}
+
 	pv := perf.NewValues()
-	for _, histName := range []string{
-		"Ash.Overview.AnimationSmoothness.Enter.SingleClamshellMode",
-		"Ash.Overview.AnimationSmoothness.Exit.SingleClamshellMode",
+	for _, prefix := range []string{
+		"Ash.Overview.AnimationSmoothness.Enter",
+		"Ash.Overview.AnimationSmoothness.Exit",
 	} {
+		histName := prefix + "." + suffix
 		histogram, err := metrics.GetHistogram(ctx, cr, histName)
 		if err != nil {
 			s.Fatalf("Failed to get histogram %s: %v", histName, err)
