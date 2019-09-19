@@ -70,6 +70,24 @@
       "revId": "c5a8301ae6c94e3f20779c19d9e1a0b2bb5606ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7938519a_6a954a28",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-09-19T07:11:35Z",
+      "side": 1,
+      "message": "That API seems to only be triggered by things that happen inside of chrome. No javascript event is sent if a copy or paste is performed outside of chrome, even if chrome is mediating the events.",
+      "parentUuid": "dcc44892_5b4a48a8",
+      "revId": "c5a8301ae6c94e3f20779c19d9e1a0b2bb5606ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
