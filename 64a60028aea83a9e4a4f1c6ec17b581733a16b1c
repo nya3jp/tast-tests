@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e004c3ad_4752a185",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-19T10:36:37Z",
+      "side": 1,
+      "message": "This CL includes actual apk...\nWould you upload the .external file?",
+      "range": {
+        "startLine": 12,
+        "startChar": 12,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "64a60028aea83a9e4a4f1c6ec17b581733a16b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33c56d71_acf696ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-19T10:36:37Z",
+      "side": 1,
+      "message": "I think we don\u0027t need this (see the comment below)",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "64a60028aea83a9e4a4f1c6ec17b581733a16b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7d80177_ce945113",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-19T10:36:37Z",
+      "side": 1,
+      "message": "This section is common across all ARC accessibility tast tests.\nHow about creating a function to execute these steps?\n\nI think arc.mediasession.RunTest is a good example.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/mediasession/mediasession.go?dr\u003dC\u0026g\u003d0\u0026l\u003d81",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 0
+      },
+      "revId": "64a60028aea83a9e4a4f1c6ec17b581733a16b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc02c9a9_90649e24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-19T10:36:37Z",
+      "side": 1,
+      "message": "Do we need this set up in this test?",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "64a60028aea83a9e4a4f1c6ec17b581733a16b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25120e6f_716e07ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-19T10:36:37Z",
+      "side": 1,
+      "message": "I think we don\u0027t need for each log to have the name.\nHow about changing like this:\n\nexpectedSpeechLog :\u003d [] struct {\n\tclassName   string // className that should have focus.\n\texpectedLog string // expectedLog from ChromeVox, when className is focused.\n} {\n\t{\n\t\tclassName:   accessibility.ToggleButton,\n\t\texpectedLog: \"OFF Toggle Button Not pressed button tooltip Press Search+Space to toggle.\",\n\t}, {\n\t\tclassName:   accessibility.CheckBox,\n\t\texpectedLog: \"CheckBox Check box Not checked checkbox tooltip Press Search+Space to toggle.\",\n\t}, {\n\t\tclassName:   accessibility.SeekBar,\n\t\texpectedLog: \"seekBar Slider 25 Min 0 Max 100\",\n\t}, {\n\t\tclassName:   accessibility.SeekBar,\n\t\texpectedLog: \"seekBarDiscrete Slider 3 Min 0 Max 10\",\n\t}, {\n\t\tclassName:   accessibility.SeekBar,\n\t\texpectedLog: \"ANNOUNCE Button Press Search plus Space to activate.\",\n\t}, {\n\t\tclassName:   accessibility.EditText,\n\t\texpectedLog: \"Enter some text here. Edit text Enter Text Here Double tap to start editing\",\n\t}\n}",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 2
+      },
+      "revId": "64a60028aea83a9e4a4f1c6ec17b581733a16b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a8efaa3_bb2efe27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-19T10:36:37Z",
+      "side": 1,
+      "message": "I feel that this can invoke test flakiness.\nI don\u0027t know the order of \"changing the focus\" and \"logging the speech\".\nIf it is guaranteed that logging the speech finishes before changing the focus, it is fine. But if not, it is dangerous and we need to use polling.\n\nDo you have any idea on it?",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 3
+      },
+      "revId": "64a60028aea83a9e4a4f1c6ec17b581733a16b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
