@@ -25,6 +25,7 @@ const (
 // Service property names defined in dbus-constants.h .
 const (
 	// Service property names.
+	ServicePropertyDevice         ServiceProperty = "Device"
 	ServicePropertyName           ServiceProperty = "Name"
 	ServicePropertyType           ServiceProperty = "Type"
 	ServicePropertyMode           ServiceProperty = "Mode"
@@ -55,6 +56,27 @@ func NewService(ctx context.Context, path dbus.ObjectPath) (*Service, error) {
 	}
 	s := &Service{conn: conn, obj: obj, path: path}
 	return s, nil
+}
+
+// GetDevice returns the Device object corresponding to the Service object
+func (s *Service) GetDevice(ctx context.Context) (*Device, error) {
+	serviceProps, err := s.GetProperties(ctx)
+	if err != nil {
+		return nil, err
+	}
+	devicePath, ok := serviceProps[ServicePropertyDevice]
+	if !ok {
+		return nil, errors.New("no device associated with service")
+	}
+	deviceObjPath, ok := devicePath.(dbus.ObjectPath)
+	if !ok {
+		return nil, errors.New("device path is not string type")
+	}
+	device, err := NewDevice(ctx, deviceObjPath)
+	if err != nil {
+		return nil, err
+	}
+	return device, nil
 }
 
 // GetProperties returns a list of properties provided by the service.
