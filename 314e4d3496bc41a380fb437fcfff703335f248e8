@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f1a2f0a_f7c14b54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/assistant_time_query.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T08:44:39Z",
+      "side": 1,
+      "message": "Could you explicitly comment that the both boundary must be allowed?\nIt is important to mention t.Before(t) and t.After(t) return false.",
+      "revId": "314e4d3496bc41a380fb437fcfff703335f248e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
