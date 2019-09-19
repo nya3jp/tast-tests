@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90ef0210_6b12c4e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T09:12:09Z",
+      "side": 1,
+      "message": "It is necessary to depend on 1790740, too.",
+      "revId": "f7396edf811129f859db4e64e9e1e1a9dc9db180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
