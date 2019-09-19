@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "02dae52a_29b9fa38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2019-09-19T00:31:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce9a2e1d_9b69152b",
+      "revId": "66aa71405068c424462e305fc77b6fd8dc8bdc68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0e55f7c_0ce3fccd",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
         "patchSetId": 5
@@ -39,6 +57,30 @@
       "revId": "66aa71405068c424462e305fc77b6fd8dc8bdc68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b44b605_d0534c34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2019-09-19T00:31:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0e55f7c_0ce3fccd",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 20
+      },
+      "revId": "66aa71405068c424462e305fc77b6fd8dc8bdc68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "50ae8f2a_7898c52b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/memory_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2019-09-19T00:31:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "150aef0d_10994a4f",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 12
+      },
+      "revId": "66aa71405068c424462e305fc77b6fd8dc8bdc68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05687999_6b8fb1b7",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/mempressure_task.go",
         "patchSetId": 5
@@ -79,6 +145,24 @@
       "revId": "66aa71405068c424462e305fc77b6fd8dc8bdc68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "037c1eb4_3b7982f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/memoryuser/mempressure_task.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2019-09-19T00:31:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05687999_6b8fb1b7",
+      "revId": "66aa71405068c424462e305fc77b6fd8dc8bdc68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
