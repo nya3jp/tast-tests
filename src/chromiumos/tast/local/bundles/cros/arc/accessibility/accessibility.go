@@ -35,6 +35,17 @@ const (
 	webViewID         = "org.chromium.arc.testapp.accessibilitytest:id/webView"
 
 	extURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/cvox2/background/background.html"
+
+	enabledMessage = "ChromeVox spoken feedback is ready"
+
+	// CheckBox class for UI widget.
+	CheckBox = "android.widget.CheckBox"
+	// EditText class for UI widget.
+	EditText = "android.widget.EditText"
+	// SeekBar class for UI widget.
+	SeekBar = "android.widget.SeekBar"
+	// ToggleButton class for UI widget.
+	ToggleButton = "android.widget.ToggleButton"
 )
 
 // AutomationNode represents an accessibility struct, which contains properties from chrome.automation.Autotmation.
@@ -235,4 +246,25 @@ func WaitForChromeVoxReady(ctx context.Context, chromeVoxConn *chrome.Conn) erro
 
 	testing.ContextLog(ctx, "ChromeVox is ready")
 	return nil
+}
+
+// GetSpeechLog obtains the speech log of ChromeVox.
+func GetSpeechLog(ctx context.Context, chromeVoxConn *chrome.Conn) ([]string, error) {
+	// speechLog represents a log of accessibility speech.
+	type speechLog struct {
+		Text string `json:"textString_"`
+		// Other values are not used in test.
+	}
+	var logs []speechLog
+	if err := chromeVoxConn.Eval(ctx, "LogStore.instance.getLogsOfType(LogStore.LogType.SPEECH)", &logs); err != nil {
+		return nil, err
+	}
+
+	var gotLogs []string
+	for _, log := range logs {
+		if log.Text != "" {
+			gotLogs = append(gotLogs, log.Text)
+		}
+	}
+	return gotLogs, nil
 }
