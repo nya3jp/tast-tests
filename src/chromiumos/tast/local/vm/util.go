@@ -6,6 +6,7 @@ package vm
 
 import (
 	"bufio"
+	"bytes"
 	"context"
 	"fmt"
 	"io"
@@ -330,4 +331,16 @@ func CreateDefaultVMContainer(ctx context.Context, dir, user string, t Container
 		return nil, errors.Wrap(err, "failed to create default Container")
 	}
 	return container, nil
+}
+
+// CreateVSHCommand creates a command to be run in a VM over vsh. The |command|
+// variatic parameter is a list of strings, starting with the command and
+// followed be the associated parameters. The command object is returned.
+func CreateVSHCommand(ctx context.Context, cid string, command ...string) *testexec.Cmd {
+	params := append([]string{"--cid=" + cid, "--"}, command...)
+	cmd := testexec.CommandContext(ctx, "vsh", params...)
+	// Add a dummy buffer for stdin to force allocating a pipe. vsh uses
+	// epoll internally and generates a warning (EPERM) if stdin is /dev/null.
+	cmd.Stdin = &bytes.Buffer{}
+	return cmd
 }
