@@ -20,6 +20,7 @@ const (
 	// WilcoVMCID is the context ID for the VM
 	WilcoVMCID         = 512
 	wilcoVMJob         = "wilco_dtc"
+	wilcoSupportJob    = "wilco_dtc_supportd"
 	wilcoVMStartupPort = 7788
 )
 
@@ -60,6 +61,22 @@ func StartSludge(ctx context.Context, startProcesses bool) error {
 func StopSludge(ctx context.Context) error {
 	if err := upstart.StopJob(ctx, wilcoVMJob); err != nil {
 		return errors.Wrap(err, "unable to stop Wilco DTC daemon")
+	}
+	return nil
+}
+
+// StartWilcoSupportDaemon starts the upstart process wilco_dtc_supportd.
+func StartWilcoSupportDaemon(ctx context.Context) error {
+	if err := upstart.RestartJob(ctx, wilcoSupportJob); err != nil {
+		return errors.Wrap(err, "wilco DTC Support daemon could not start")
+	}
+	return nil
+}
+
+// StopWilcoSupportDaemon stops the upstart process wilco_dtc_supportd.
+func StopWilcoSupportDaemon(ctx context.Context) error {
+	if err := upstart.StopJob(ctx, wilcoSupportJob); err != nil {
+		return errors.Wrap(err, "unable to stop Wilco DTC Support daemon")
 	}
 	return nil
 }
