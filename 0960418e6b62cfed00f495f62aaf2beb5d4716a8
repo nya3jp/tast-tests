@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d2633ae_a5ee36de",
+        "filename": "tools/generate_external_file.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T10:33:59Z",
+      "side": 1,
+      "message": "nit: external_file",
+      "range": {
+        "startLine": 98,
+        "startChar": 12,
+        "endLine": 98,
+        "endChar": 40
+      },
+      "revId": "0960418e6b62cfed00f495f62aaf2beb5d4716a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
