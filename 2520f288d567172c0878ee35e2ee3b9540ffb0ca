@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22f6c851_4aae986f",
+        "filename": "src/chromiumos/tast/local/shill/service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-19T09:02:44Z",
+      "side": 1,
+      "message": "Optional: It might be easier to convert expected to []interface{} since we refer expectedSlice twice (here and below).",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "2520f288d567172c0878ee35e2ee3b9540ffb0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51e2fd58_683c6718",
+        "filename": "src/chromiumos/tast/local/shill/service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-19T09:02:44Z",
+      "side": 1,
+      "message": "dbusutil.NewSignalWatcher may also hung (e.g. when dbus daemon is frozen). In that case ctx\u0027s original timeout is used and the \"timeout\" arg is not honored, which might be a bit surprising to users of this API. How about calling context.WithTimeout at the beginning of this function so that timeout is enforced for all operations here?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 15
+      },
+      "revId": "2520f288d567172c0878ee35e2ee3b9540ffb0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
