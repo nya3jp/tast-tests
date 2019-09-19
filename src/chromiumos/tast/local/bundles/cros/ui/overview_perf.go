@@ -22,7 +22,7 @@ func init() {
 		Contacts:     []string{"mukai@chromium.org", "oshima@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      time.Minute,
+		Timeout:      3 * time.Minute / 2,
 	})
 }
 
@@ -45,33 +45,52 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
-	if err = ash.WaitForSystemUIStabilized(ctx); err != nil {
-		s.Fatal("Failed to wait for system UI to be stabilized: ", err)
-	}
-
-	for i := 0; i < 10; i++ {
-		if err = ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
-			s.Fatal("It does not appear to be in the overview mode: ", err)
-		}
-		if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
-			s.Fatal("It does not appear to be in the overview mode: ", err)
-		}
-	}
-
 	pv := perf.NewValues()
-	for _, histName := range []string{
-		"Ash.Overview.AnimationSmoothness.Enter.SingleClamshellMode",
-		"Ash.Overview.AnimationSmoothness.Exit.SingleClamshellMode",
-	} {
-		histogram, err := metrics.GetHistogram(ctx, cr, histName)
-		if err != nil {
-			s.Fatalf("Failed to get histogram %s: %v", histName, err)
+	// Run overview mode enter/exit flow twice; one for the clamshell mode and the
+	// other for the tablet mode.
+	for t := 0; t < 2; t++ {
+		if err = ash.WaitForSystemUIStabilized(ctx); err != nil {
+			s.Fatal("Failed to wait for system UI to be stabilized: ", err)
 		}
-		pv.Set(perf.Metric{
-			Name:      histName,
-			Unit:      "percent",
-			Direction: perf.BiggerIsBetter,
-		}, histogram.Mean())
+
+		for i := 0; i < 10; i++ {
+			if err = ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+				s.Fatal("Failed to enter into the overview mode: ", err)
+			}
+			if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+				s.Fatal("Failed to exit from the overview mode: ", err)
+			}
+		}
+
+		inTabletMode, err := ash.TabletModeEnabled(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to obtain the tablet mode status: ", err)
+		}
+
+		suffix := "SingleClamshellMode"
+		if inTabletMode {
+			suffix = "TabletMode"
+		}
+
+		for _, prefix := range []string{
+			"Ash.Overview.AnimationSmoothness.Enter",
+			"Ash.Overview.AnimationSmoothness.Exit",
+		} {
+			histName := prefix + "." + suffix
+			histogram, err := metrics.GetHistogram(ctx, cr, histName)
+			if err != nil {
+				s.Fatalf("Failed to get histogram %s: %v", histName, err)
+			}
+			pv.Set(perf.Metric{
+				Name:      histName,
+				Unit:      "percent",
+				Direction: perf.BiggerIsBetter,
+			}, histogram.Mean())
+		}
+
+		if err = ash.SetTabletModeEnabled(ctx, tconn, !inTabletMode); err != nil {
+			s.Fatalf("Failed to set tablet mode %v: %v", !inTabletMode, err)
+		}
 	}
 
 	if err := pv.Save(s.OutDir()); err != nil {
