@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bc07fc6_b38eca54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/chromewpr/chromewpr.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-19T09:12:10Z",
+      "side": 1,
+      "message": "Sorry I overlooked this in earlier iteration, but can we unexport this member (i.e. wprProc)? IIUC users of the chromewpr package doesn\u0027t need access to testexec.Cmd.",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 8
+      },
+      "revId": "e5e8cf553f5f79d67ca0982fad170d887eb587f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "581aa479_3aa24ba8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/chromewpr/chromewpr.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-19T09:12:10Z",
+      "side": 1,
+      "message": "style: var opts []chrome.Option\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 26
+      },
+      "revId": "e5e8cf553f5f79d67ca0982fad170d887eb587f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccc35bc2_e239caf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/chromewpr/chromewpr.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-19T09:12:10Z",
+      "side": 1,
+      "message": "Wow, good catch. Do we want to do the same thing for p.FakeLargeScreen?",
+      "range": {
+        "startLine": 118,
+        "startChar": 28,
+        "endLine": 118,
+        "endChar": 37
+      },
+      "revId": "e5e8cf553f5f79d67ca0982fad170d887eb587f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6a25ce8_6a5d2772",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/chromewpr/chromewpr.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-19T09:12:10Z",
+      "side": 1,
+      "message": "Please check the error of Wait as well.",
+      "range": {
+        "startLine": 232,
+        "startChar": 2,
+        "endLine": 232,
+        "endChar": 18
+      },
+      "revId": "e5e8cf553f5f79d67ca0982fad170d887eb587f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
