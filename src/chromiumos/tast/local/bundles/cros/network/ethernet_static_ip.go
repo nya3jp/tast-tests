@@ -6,9 +6,11 @@ package network
 
 import (
 	"context"
+	"net"
 	"os"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
@@ -26,11 +28,49 @@ func init() {
 	})
 }
 
+func getIPForEthernet() (string, error) {
+	ifaces, err := net.Interfaces()
+	if err != nil {
+		return "", err
+	}
+
+	for _, iface := range ifaces {
+		if iface.Name == "eth0" {
+			addrs, err := iface.Addrs()
+			if err != nil {
+				return "", err
+			}
+			for _, a := range addrs {
+				if ipnet, ok := a.(*net.IPNet); ok && ipnet.IP.To4() != nil {
+					return ipnet.IP.String(), nil
+				}
+			}
+		}
+	}
+	return "", errors.New("no IPv4 address found for eth0")
+}
+
+func waitForEthernetIP(ctx context.Context, expected string, timeout time.Duration) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if ip, err := getIPForEthernet(); err != nil {
+			return err
+		} else if ip != expected {
+			return errors.Errorf("wrong IP address for Ethernet: got %v, want %v", ip, expected)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func EthernetStaticIP(ctx context.Context, s *testing.State) {
 	const (
 		defaultProfilePath     = "/var/cache/shill/default.profile"
 		testDefaultProfileName = "ethTestProfile"
 		testUserProfileName    = "ethTestProfile2"
+		testIP1                = "10.9.8.2"
+		testIP2                = "10.9.8.3"
 	)
 
 	// We lose connectivity along the way here, and if that races with the
@@ -102,18 +142,14 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed creating shill service proxy: ", err)
 	}
-	if err = service.SetProperty(ctx, shill.ServicePropertyStaticIPConfig, map[string]interface{}{shill.IPConfigPropertyAddress: "10.9.8.2"}); err != nil {
+	if err = service.SetProperty(ctx, shill.ServicePropertyStaticIPConfig, map[string]interface{}{shill.IPConfigPropertyAddress: testIP1}); err != nil {
 		s.Fatal("Failed to set property: ", err)
 	}
 
 	// Test that static IP has been set.
 	s.Log("Finding service with set static IP")
-	defaultProfileProps := map[shill.ServiceProperty]interface{}{
-		shill.ServicePropertyType:           "ethernet",
-		shill.ServicePropertyStaticIPConfig: map[string]interface{}{shill.IPConfigPropertyAddress: "10.9.8.2"},
-	}
-	if err = manager.WaitForServiceProperties(ctx, defaultProfileProps, 5*time.Second); err != nil {
-		s.Fatal("Unable to find service: ", err)
+	if err = waitForEthernetIP(ctx, testIP1, 5*time.Second); err != nil {
+		s.Fatal("Unable to find expected IP for Ethernet: ", err)
 	}
 
 	// Test that after profile push, property is still there.
@@ -125,15 +161,22 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 	if _, err = manager.PushProfile(ctx, testUserProfileName); err != nil {
 		s.Fatal("Failed to push profile: ", err)
 	}
+	defaultProfileProps := map[shill.ServiceProperty]interface{}{
+		shill.ServicePropertyType:           "ethernet",
+		shill.ServicePropertyStaticIPConfig: map[string]interface{}{shill.IPConfigPropertyAddress: testIP1},
+	}
 	if err = manager.WaitForServiceProperties(ctx, defaultProfileProps, 5*time.Second); err != nil {
 		s.Fatal("Unable to find service: ", err)
+	}
+	if err = waitForEthernetIP(ctx, testIP1, 5*time.Second); err != nil {
+		s.Fatal("Unable to find expected IP for Ethernet: ", err)
 	}
 
 	// Configure service for user profile with different static IP.
 	s.Log("Configure different static IP for the new profile")
 	userProfileProps := map[shill.ServiceProperty]interface{}{
 		shill.ServicePropertyType:           "ethernet",
-		shill.ServicePropertyStaticIPConfig: map[string]interface{}{shill.IPConfigPropertyAddress: "10.9.8.3"},
+		shill.ServicePropertyStaticIPConfig: map[string]interface{}{shill.IPConfigPropertyAddress: testIP2},
 	}
 	if _, err = manager.ConfigureServiceForProfile(ctx, userProfileObjectPath, userProfileProps); err != nil {
 		s.Fatal("Unable to configure service: ", err)
@@ -141,8 +184,8 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 
 	// Test that new static IP is there.
 	s.Log("Finding service with new static IP")
-	if err = manager.WaitForServiceProperties(ctx, userProfileProps, 5*time.Second); err != nil {
-		s.Fatal("Unable to find service: ", err)
+	if err = waitForEthernetIP(ctx, testIP2, 5*time.Second); err != nil {
+		s.Fatal("Unable to find expected IP for Ethernet: ", err)
 	}
 
 	// Test that after profile pop, first static IP is there.
@@ -150,16 +193,16 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 	if err = manager.PopProfile(ctx, testUserProfileName); err != nil {
 		s.Fatal("Unable to pop profile: ", err)
 	}
-	if err = manager.WaitForServiceProperties(ctx, defaultProfileProps, 5*time.Second); err != nil {
-		s.Fatal("Unable to find service: ", err)
+	if err = waitForEthernetIP(ctx, testIP1, 5*time.Second); err != nil {
+		s.Fatal("Unable to find expected IP for Ethernet: ", err)
 	}
 
 	// Test that after push, second static IP is there again.
-	s.Log("Re-pushing the same user profile and checking that static IP")
+	s.Log("Re-pushing the same user profile and checking that static IP changes")
 	if _, err = manager.PushProfile(ctx, testUserProfileName); err != nil {
 		s.Fatal("Failed to push profile: ", err)
 	}
-	if err = manager.WaitForServiceProperties(ctx, userProfileProps, 5*time.Second); err != nil {
-		s.Fatal("Unable to find service: ", err)
+	if err = waitForEthernetIP(ctx, testIP2, 5*time.Second); err != nil {
+		s.Fatal("Unable to find expected IP for Ethernet: ", err)
 	}
 }
