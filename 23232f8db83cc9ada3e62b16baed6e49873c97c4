@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca649242_388dac28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T08:38:48Z",
+      "side": 1,
+      "message": "How about just\n\nrequireDisplay bool\n\n# Could you find my inline comment, below, too.",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 75
+      },
+      "revId": "23232f8db83cc9ada3e62b16baed6e49873c97c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee4a032d_a6c8540d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T08:38:48Z",
+      "side": 1,
+      "message": "clar/nit: this is actually the test configuration, rather than options...?\nHow about \"subtests\"? or \"testcases\"?",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 9
+      },
+      "revId": "23232f8db83cc9ada3e62b16baed6e49873c97c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b13d9261_36fae7c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T08:38:48Z",
+      "side": 1,
+      "message": "Assuming we agree that vulkan test can be extracted into other test, this is effectively runtime-display check only.\nHow about just focusing on it?\n\nif subtest.requireDisplay {\n  if connected, err :\u003d displayConnected(...); err !\u003d nil {\n    s.Fatal(...)\n  } else if !connected {\n    // Temporarily skip. This should be replaced by Hardware dependency.\n    // TODO(crbug.com/950346): Extract this check to another test to make sure if HWDeps of Display works as expected.\n    s.Log(...)\n    continue\n  }\n}\n...",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 72
+      },
+      "revId": "23232f8db83cc9ada3e62b16baed6e49873c97c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b6fc846_95d44cac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/drm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T08:38:48Z",
+      "side": 1,
+      "message": "It checks if \"vulkan\" SoftwareDeps is specified, checking if it is actually supported.\nThus, IIUC, this is no longer a part of DRM test. Could you extract this into another test?\n\nThe skipping vulkan should be already handled by SoftwareDeps declaration.",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 125,
+        "endChar": 4
+      },
+      "revId": "23232f8db83cc9ada3e62b16baed6e49873c97c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec85c975_33c206e9",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T08:38:48Z",
+      "side": 1,
+      "message": "nit/style: I\u0027d recommend to unindent in the following style.\n\nif matches :\u003d modesetConnectorPattern.FindStringSubmatch(line); matches !\u003d nil {\n  ...  // L353-L366\n  continue\n}\n\nif matches :\u003d modesetModePattern.FindStringSubmatch(line); matches !\u003d nil {\n  ...\n  continue\n}\n\n...",
+      "range": {
+        "startLine": 351,
+        "startChar": 2,
+        "endLine": 352,
+        "endChar": 21
+      },
+      "revId": "23232f8db83cc9ada3e62b16baed6e49873c97c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d541c913_f8840b04",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T08:38:48Z",
+      "side": 1,
+      "message": "nit/style: connected :\u003d (matches[2] \u003d\u003d \"connected\")",
+      "range": {
+        "startLine": 357,
+        "startChar": 3,
+        "endLine": 360,
+        "endChar": 4
+      },
+      "revId": "23232f8db83cc9ada3e62b16baed6e49873c97c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "437c002f_9648a594",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T08:38:48Z",
+      "side": 1,
+      "message": "nit/style: how about inline the values for simplicity?\n\nconnectors \u003d append(connectors, \u0026Connector{\n    cid: cid,\n    ctype: matches[3],\n    connected: matches[2] \u003d\u003d \"connected,\n    ...\n})",
+      "range": {
+        "startLine": 365,
+        "startChar": 35,
+        "endLine": 365,
+        "endChar": 90
+      },
+      "revId": "23232f8db83cc9ada3e62b16baed6e49873c97c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5cd93f4_cbb8a211",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T08:38:48Z",
+      "side": 1,
+      "message": "style: could you declare an variable at latest timing?\n(in this case, at L372, i.e. inside for below)",
+      "revId": "23232f8db83cc9ada3e62b16baed6e49873c97c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "058493e2_ffd10e73",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T08:38:48Z",
+      "side": 1,
+      "message": "nit: \"nil\"",
+      "range": {
+        "startLine": 382,
+        "startChar": 12,
+        "endLine": 382,
+        "endChar": 22
+      },
+      "revId": "23232f8db83cc9ada3e62b16baed6e49873c97c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
