@@ -2,6 +2,69 @@
   "comments": [
     {
       "key": {
+        "uuid": "965aeef1_eac5aa11",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T09:22:00Z",
+      "side": 1,
+      "message": "Could you use SDKN, SDKP and SDKQ?",
+      "range": {
+        "startLine": 55,
+        "startChar": 6,
+        "endLine": 55,
+        "endChar": 8
+      },
+      "revId": "f3611da641d912a98255cb08d8d6f61ed7dc03e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02f5246f_63e386f6",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T09:22:00Z",
+      "side": 1,
+      "message": "Clar: does this work on ARC P, too?",
+      "revId": "f3611da641d912a98255cb08d8d6f61ed7dc03e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f83b2387_3afc8d6e",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T09:22:00Z",
+      "side": 1,
+      "message": "You can inline, and I\u0027d recommend to add testexec.DumpLogOnError.\n\noutput, err :\u003d a.Command(ctx, ...).Output(testexec.DumpLogOnError)",
+      "range": {
+        "startLine": 287,
+        "startChar": 8,
+        "endLine": 288,
+        "endChar": 28
+      },
+      "revId": "f3611da641d912a98255cb08d8d6f61ed7dc03e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e56a5d19_a7ad8ce3",
         "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
         "patchSetId": 7
@@ -19,6 +82,47 @@
         "endLine": 296,
         "endChar": 74
       },
+      "revId": "f3611da641d912a98255cb08d8d6f61ed7dc03e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "769bbaab_3073e195",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T09:22:00Z",
+      "side": 1,
+      "message": "3.5KB with multiple lines sounds concerning...\nDo we really hit the global error cases often for this test?",
+      "parentUuid": "e56a5d19_a7ad8ce3",
+      "range": {
+        "startLine": 295,
+        "startChar": 2,
+        "endLine": 296,
+        "endChar": 74
+      },
+      "revId": "f3611da641d912a98255cb08d8d6f61ed7dc03e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "996cdcc2_6ca6ebd7",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-19T09:22:00Z",
+      "side": 1,
+      "message": "oh... even in android framework internally, there\u0027s more than one definition of window state...",
       "revId": "f3611da641d912a98255cb08d8d6f61ed7dc03e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
