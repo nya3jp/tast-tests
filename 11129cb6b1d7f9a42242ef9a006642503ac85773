@@ -1,0 +1,439 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e77f846_d7039e04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-19T23:39:18Z",
+      "side": 1,
+      "message": "generally: I think it\u0027s standard to include a space after // in line comments, so we should do that everywhere here. (Also, not doing as much seems to confuse the gerrit syntax highlighting at times...)",
+      "revId": "11129cb6b1d7f9a42242ef9a006642503ac85773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56d38ed2_d4c70267",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-19T23:39:18Z",
+      "side": 1,
+      "message": "nit:\n\nconst (\n  wordLen \u003d 4\n  cr50HeaderSize \u003d 12\n  cr50RespHeaderSize \u003d 12\n)",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 29
+      },
+      "revId": "11129cb6b1d7f9a42242ef9a006642503ac85773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00fd67df_9ef28973",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-19T23:39:18Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need to name the struct or function the comment applies to if it\u0027s right above the definition like this.",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "11129cb6b1d7f9a42242ef9a006642503ac85773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcc8e314_2cbd6a7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-19T23:39:18Z",
+      "side": 1,
+      "message": "does this need to be visible?",
+      "revId": "11129cb6b1d7f9a42242ef9a006642503ac85773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5edb8e1_ca0ddd90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-19T23:39:18Z",
+      "side": 1,
+      "message": "This seems kind of indirect -- inBuf isn\u0027t really used for anything other than passing state around between internal methods that are only called in here.\n\nAny reason why getTrunksCmd can\u0027t just take the byte array and pass it to parseInBuf without having to go through this intermediate step?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 27
+      },
+      "revId": "11129cb6b1d7f9a42242ef9a006642503ac85773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab81a111_ca92abdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-19T23:39:18Z",
+      "side": 1,
+      "message": "should be fine just to do\n\n w.S.Fatal(\"Cannot parse trunks input: \", err)",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 50
+      },
+      "revId": "11129cb6b1d7f9a42242ef9a006642503ac85773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbb9eee0_db958b66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-19T23:39:18Z",
+      "side": 1,
+      "message": "what does this comment apply to?",
+      "revId": "11129cb6b1d7f9a42242ef9a006642503ac85773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbe63b84_4b2313c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-19T23:39:18Z",
+      "side": 1,
+      "message": "if there\u0027s no format string it should just be s.Fatal",
+      "range": {
+        "startLine": 84,
+        "startChar": 6,
+        "endLine": 84,
+        "endChar": 12
+      },
+      "revId": "11129cb6b1d7f9a42242ef9a006642503ac85773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab2552b1_dbea0b6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-19T23:39:18Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 90,
+        "startChar": 6,
+        "endLine": 90,
+        "endChar": 12
+      },
+      "revId": "11129cb6b1d7f9a42242ef9a006642503ac85773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81d1930b_98eb4acf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-19T23:39:18Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 96,
+        "startChar": 6,
+        "endLine": 96,
+        "endChar": 12
+      },
+      "revId": "11129cb6b1d7f9a42242ef9a006642503ac85773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12835160_475bd32d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-19T23:39:18Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 103,
+        "startChar": 7,
+        "endLine": 103,
+        "endChar": 13
+      },
+      "revId": "11129cb6b1d7f9a42242ef9a006642503ac85773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9ba752f_379f3ecc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-19T23:39:18Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like we use block-comment style for multi-line comments. Can we just make these normal line comments and remove the leading # on each line?",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 34
+      },
+      "revId": "11129cb6b1d7f9a42242ef9a006642503ac85773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19ff68fc_6bc6b90b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-19T23:39:18Z",
+      "side": 1,
+      "message": "If you put a TODO here, please file a bug and put the crbug.com link in the TODO so it doesn\u0027t get lost.",
+      "revId": "11129cb6b1d7f9a42242ef9a006642503ac85773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78269b48_1ca0bbb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-19T23:39:18Z",
+      "side": 1,
+      "message": "If this array is supposed to be of a specific size and the index has some meaning, it should be a struct instead",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 20
+      },
+      "revId": "11129cb6b1d7f9a42242ef9a006642503ac85773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08c3629c_c815cdbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-19T23:39:18Z",
+      "side": 1,
+      "message": "as above re: block comments",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 3
+      },
+      "revId": "11129cb6b1d7f9a42242ef9a006642503ac85773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69eada4d_5cff4abf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-19T23:39:18Z",
+      "side": 1,
+      "message": "the init func usually goes first in the file",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 1
+      },
+      "revId": "11129cb6b1d7f9a42242ef9a006642503ac85773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d91fdf8_0c93de50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-19T23:39:18Z",
+      "side": 1,
+      "message": "this should probably be a Fatal, right?",
+      "revId": "11129cb6b1d7f9a42242ef9a006642503ac85773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fb5f5dc_e54b4a3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-19T23:39:18Z",
+      "side": 1,
+      "message": "Dunno if this log line is super important but if you want to keep it around there\u0027s no reason to Logf a static string like this. But if you want to make sure this doesn\u0027t get out of step with L214 then put the filename up with the consts at the top of the file and do something like:\n\n vectorsBytes, err :\u003d ioutil.ReadFile(s.DataPath(aesECBTestPath))\n // ...\n s.Log(\"Read internal data file \", aesECBTestPath)",
+      "revId": "11129cb6b1d7f9a42242ef9a006642503ac85773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ab470a8_6dcb33eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-19T23:39:18Z",
+      "side": 1,
+      "message": "this should probably be\n\n s.Fatal(\"Failed to parse vector set: \", err)",
+      "revId": "11129cb6b1d7f9a42242ef9a006642503ac85773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ee53ba8_4092cdd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-19T23:39:18Z",
+      "side": 1,
+      "message": "possible nit: did \"go fmt\" choose not to put a space before this?",
+      "range": {
+        "startLine": 231,
+        "startChar": 58,
+        "endLine": 231,
+        "endChar": 59
+      },
+      "revId": "11129cb6b1d7f9a42242ef9a006642503ac85773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a7b8a4a_b09f8e09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-19T23:39:18Z",
+      "side": 1,
+      "message": "as above re: bare TODOs",
+      "revId": "11129cb6b1d7f9a42242ef9a006642503ac85773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
