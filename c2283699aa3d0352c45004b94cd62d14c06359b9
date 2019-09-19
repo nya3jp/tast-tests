@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c59a4b0_9f2a1209",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-19T10:22:37Z",
+      "side": 1,
+      "message": "Why do we have to wait for this long time? If we\u0027re waiting for something (like CPU gets idle), could you poll such condition instead?",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "c2283699aa3d0352c45004b94cd62d14c06359b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21603c09_b434cc29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-19T10:22:37Z",
+      "side": 1,
+      "message": "Usually 90s is long, but I assume such long wait can be possible because this is memory pressure test.",
+      "range": {
+        "startLine": 70,
+        "startChar": 32,
+        "endLine": 70,
+        "endChar": 48
+      },
+      "revId": "c2283699aa3d0352c45004b94cd62d14c06359b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad334ca8_94f6355d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-19T10:22:37Z",
+      "side": 1,
+      "message": "Again, do we need this sleep? We\u0027ll wait for the UI anyway.",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 36
+      },
+      "revId": "c2283699aa3d0352c45004b94cd62d14c06359b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a991aef8_8f9da3c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-19T10:22:37Z",
+      "side": 1,
+      "message": "time.Since() is handy to compute the elapsed time.\n\ntime.Duration implements pretty stringify method, I recommend printing it as is. You might want to call Truncate or Round for better formatting though, e.g.\n\n loadingTime :\u003d time.Since(startTime).Truncate(time.Millisecond)\n s.Log(\"Loading time is: \", loadingTime)\n s.Log(\"Video length is: 90s, difference is: \", (loadingTime - 90 * time.Second))",
+      "range": {
+        "startLine": 77,
+        "startChar": 41,
+        "endLine": 77,
+        "endChar": 52
+      },
+      "revId": "c2283699aa3d0352c45004b94cd62d14c06359b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4041f4b_903a7ffc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-19T10:22:37Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 36
+      },
+      "revId": "c2283699aa3d0352c45004b94cd62d14c06359b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a067490f_b8e2c04d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-19T10:22:37Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 36
+      },
+      "revId": "c2283699aa3d0352c45004b94cd62d14c06359b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bad7c3f_c4f191d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/mempressure_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-19T10:22:37Z",
+      "side": 1,
+      "message": "same here (time.Duration)",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 70
+      },
+      "revId": "c2283699aa3d0352c45004b94cd62d14c06359b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
