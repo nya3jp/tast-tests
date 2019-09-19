@@ -24,6 +24,11 @@ func init() {
 }
 
 func StartSludge(ctx context.Context, s *testing.State) {
+	const (
+		storagePath = "/opt/dtc/storage"
+		diagPath    = "/opt/dtc/diagnostics"
+	)
+
 	startCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
 
@@ -39,6 +44,16 @@ func StartSludge(ctx context.Context, s *testing.State) {
 			s.Errorf("Process %v not found: %v", name, err)
 		} else {
 			s.Logf("Process %v started with PID %s", name, bytes.TrimSpace(out))
+		}
+	}
+
+	for _, path := range []string{storagePath, diagPath} {
+		s.Logf("Checking %v path", path)
+
+		if _, err := vm.SendVSHCommand(ctx, vm.WilcoVMCID, "test", "-d", path); err != nil {
+			s.Errorf("Path %v does not exist inside VM: %v", path, err)
+		} else {
+			s.Logf("Path %v is mounted inside VM", path)
 		}
 	}
 }
