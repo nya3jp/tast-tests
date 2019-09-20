@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "04456d60_3fed8799",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-20T20:13:57Z",
+      "side": 1,
+      "message": "Yep Fatal is probably what we want. The rest of the test depends on this condition succeeding. Thanks!",
+      "parentUuid": "43484cb6_51ad0894",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 9
+      },
+      "revId": "6b11cc80c7be30bac634e2c0b11a65a8d27ac841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca3ffc62_953f21f3",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "6b11cc80c7be30bac634e2c0b11a65a8d27ac841",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "594d2770_0faeb2d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-20T20:13:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca3ffc62_953f21f3",
+      "range": {
+        "startLine": 66,
+        "startChar": 17,
+        "endLine": 66,
+        "endChar": 66
+      },
+      "revId": "6b11cc80c7be30bac634e2c0b11a65a8d27ac841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7be76c77_a9d5dae0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-20T20:13:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cded9974_75678902",
+      "range": {
+        "startLine": 67,
+        "startChar": 6,
+        "endLine": 67,
+        "endChar": 9
+      },
+      "revId": "6b11cc80c7be30bac634e2c0b11a65a8d27ac841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23b633c1_2c673092",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "6b11cc80c7be30bac634e2c0b11a65a8d27ac841",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "682559bc_5196409c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-20T20:13:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23b633c1_2c673092",
+      "range": {
+        "startLine": 85,
+        "startChar": 54,
+        "endLine": 85,
+        "endChar": 56
+      },
+      "revId": "6b11cc80c7be30bac634e2c0b11a65a8d27ac841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "01029dd9_8e1ad0da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-20T20:13:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13b7887c_9dcfc258",
+      "range": {
+        "startLine": 92,
+        "startChar": 46,
+        "endLine": 92,
+        "endChar": 48
+      },
+      "revId": "6b11cc80c7be30bac634e2c0b11a65a8d27ac841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4092226c_9ec3430c",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "6b11cc80c7be30bac634e2c0b11a65a8d27ac841",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba9de89d_e6ee1d94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-20T20:13:57Z",
+      "side": 1,
+      "message": "That seems better to me. Done.",
+      "parentUuid": "4092226c_9ec3430c",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 13
+      },
+      "revId": "6b11cc80c7be30bac634e2c0b11a65a8d27ac841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
