@@ -75,8 +75,8 @@ func WilcoChargeModes(ctx context.Context, s *testing.State) {
 			}
 			// To be able to differentiate between charging modes we need to be able to
 			// charge, with the battery level above 55%.
-			if !status.LinePowerConnected || status.BatteryPercent < 55 || status.BatteryStatus == "Full" {
-				err := errors.Errorf("not in a testable state: AC=%v with battery=%v%% with status %q; expected AC=true with battery>55%% with status!=\"Full\"", status.LinePowerConnected, status.BatteryPercent, status.BatteryStatus)
+			if !status.LinePowerConnected || status.BatteryPercent < 55 || status.BatteryStatus == "Fully charged" {
+				err := errors.Errorf("not in a testable state: AC=%v with battery=%v%% with status %q; expected AC=true with battery>55%% with status!=\"Fully charged\"", status.LinePowerConnected, status.BatteryPercent, status.BatteryStatus)
 				return testing.PollBreak(err)
 			}
 			charging := status.BatteryCurrent > .01
