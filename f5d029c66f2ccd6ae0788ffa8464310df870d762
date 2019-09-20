@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "633dc9ba_9b1bec8c",
+        "filename": "src/chromiumos/tast/local/vm/sludge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-20T15:27:01Z",
+      "side": 1,
+      "message": "In this kind of case, we just log the later err (stopErr, in this case), and returns the original error.\n\nif stopErr :\u003d ...; stopErr !\u003d nil {\n  testing.ContextLogf(ctx, ...)\n}\nreturn errors.Wrap(err, \"...\")",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 42
+      },
+      "revId": "f5d029c66f2ccd6ae0788ffa8464310df870d762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

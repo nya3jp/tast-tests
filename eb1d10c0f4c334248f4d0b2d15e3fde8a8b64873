@@ -201,6 +201,24 @@
     },
     {
       "key": {
+        "uuid": "5b439c5c_3d392e6d",
+        "filename": "src/chromiumos/tast/local/vm/sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-20T15:27:01Z",
+      "side": 1,
+      "message": "I think subpackage looks better, still.\n\nYou can move the subpackage, too, along with wilco category introducing.",
+      "parentUuid": "cc14de64_af5c8006",
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cfe178bd_b6ce2e07",
         "filename": "src/chromiumos/tast/local/vm/sludge.go",
         "patchSetId": 2
@@ -479,6 +497,24 @@
       "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "38e71a66_0b689587",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-20T15:27:01Z",
+      "side": 1,
+      "message": "Not very strong in this CL now, because you removed \"_, err\" part.\nHowever, in the next CL, you\u0027d introduce the part, again, I think, and then I\u0027d recommend to do so.",
+      "parentUuid": "afb69931_d549f618",
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
