@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2feca7f2_e7343869",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-09-20T01:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d6de12b_1d197786",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 17
+      },
+      "revId": "1a5189e96c682b8d276deab414f9aea82aabaa7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8026202_125541bc",
         "filename": "src/chromiumos/tast/local/crash/crash.go",
         "patchSetId": 1
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "b0d3cfcc_dd138c52",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-09-20T01:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8026202_125541bc",
+      "range": {
+        "startLine": 117,
+        "startChar": 50,
+        "endLine": 117,
+        "endChar": 60
+      },
+      "revId": "1a5189e96c682b8d276deab414f9aea82aabaa7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f968e160_d6e00730",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-09-20T01:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25b9b606_2e5544c1",
+      "range": {
+        "startLine": 117,
+        "startChar": 13,
+        "endLine": 117,
+        "endChar": 18
+      },
+      "revId": "1a5189e96c682b8d276deab414f9aea82aabaa7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f144b1e_851a80c2",
         "filename": "src/chromiumos/tast/local/crash/crash.go",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "15f9e440_75c14bc2",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-09-20T01:19:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f144b1e_851a80c2",
+      "range": {
+        "startLine": 118,
+        "startChar": 12,
+        "endLine": 118,
+        "endChar": 24
+      },
+      "revId": "1a5189e96c682b8d276deab414f9aea82aabaa7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3583dd19_9be4ada4",
         "filename": "src/chromiumos/tast/local/crash/crash.go",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "1a5189e96c682b8d276deab414f9aea82aabaa7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45c06033_d231aba7",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-09-20T01:19:09Z",
+      "side": 1,
+      "message": "Yes, but it has two issues:\n1) If a previous test failed to remove the stash directory, os.Rename will silently fail.\n2) On the other end, if we want to _save_ certain crash reports after the test (for example, the service failure test will save crash report files if expected contents aren\u0027t found), we don\u0027t want to overwrite the directory.",
+      "parentUuid": "3583dd19_9be4ada4",
+      "range": {
+        "startLine": 127,
+        "startChar": 15,
+        "endLine": 127,
+        "endChar": 21
+      },
+      "revId": "1a5189e96c682b8d276deab414f9aea82aabaa7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
