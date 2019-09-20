@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "b39e80e2_0e3efee9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-20T23:12:09Z",
+      "side": 1,
+      "message": "I don\u0027t think the length of time this context gives you is guaranteed to be larger than what you have here. Try something like ctxutil.Shorten to ensure this timeout is shorter than the one for the whole test.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_2.md#test-setup",
+      "revId": "2dd5dbffa8cffdb648ebff6b89ece2b29629fafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9407f41e_45307d3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-20T23:12:09Z",
+      "side": 1,
+      "message": "nit: \"...status: got %s, ...\"",
+      "range": {
+        "startLine": 98,
+        "startChar": 45,
+        "endLine": 98,
+        "endChar": 54
+      },
+      "revId": "2dd5dbffa8cffdb648ebff6b89ece2b29629fafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3c29c997_3dabf8c0",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
         "patchSetId": 3
