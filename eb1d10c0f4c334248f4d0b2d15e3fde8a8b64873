@@ -219,6 +219,24 @@
     },
     {
       "key": {
+        "uuid": "c257488e_9a2d516f",
+        "filename": "src/chromiumos/tast/local/vm/sludge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-20T20:12:28Z",
+      "side": 1,
+      "message": "Ok sounds good. I created a wilco test folder, and moved the sludge.go helper library into cros/bundles/wilco/vm since it is only used in this group of tests.",
+      "parentUuid": "5b439c5c_3d392e6d",
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cfe178bd_b6ce2e07",
         "filename": "src/chromiumos/tast/local/vm/sludge.go",
         "patchSetId": 2
@@ -515,6 +533,24 @@
       "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f67b40a8_6c1f2ed6",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-20T20:12:28Z",
+      "side": 1,
+      "message": "Sounds good. Done.",
+      "parentUuid": "38e71a66_0b689587",
+      "revId": "eb1d10c0f4c334248f4d0b2d15e3fde8a8b64873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

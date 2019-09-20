@@ -22,6 +22,30 @@
       "revId": "f5d029c66f2ccd6ae0788ffa8464310df870d762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b25b9258_6f8eba91",
+        "filename": "src/chromiumos/tast/local/vm/sludge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-20T20:12:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "633dc9ba_9b1bec8c",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 42
+      },
+      "revId": "f5d029c66f2ccd6ae0788ffa8464310df870d762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
