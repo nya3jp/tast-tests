@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "bc2a0f22_6c975301",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-09-20T22:22:52Z",
+      "side": 1,
+      "message": "Sure:)",
+      "parentUuid": "eb920f07_1b774e3f",
+      "revId": "9045525a825baef7389590f43a00c130cf1011b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7331fc00_2cc6ad62",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -183,6 +201,30 @@
       "revId": "9045525a825baef7389590f43a00c130cf1011b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "452e9109_404a764b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1299444
+      },
+      "writtenOn": "2019-09-20T22:22:52Z",
+      "side": 1,
+      "message": "Mark this as resolved per offline discussion.",
+      "parentUuid": "33921843_45735afe",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 14
+      },
+      "revId": "9045525a825baef7389590f43a00c130cf1011b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
