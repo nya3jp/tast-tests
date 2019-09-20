@@ -1,0 +1,102 @@
+// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package platform
+
+import (
+	"context"
+	"os"
+	"strings"
+
+	"chromiumos/tast/crash"
+	platformCrash "chromiumos/tast/local/bundles/cros/platform/crash"
+	localCrash "chromiumos/tast/local/crash"
+	"chromiumos/tast/local/metrics"
+	"chromiumos/tast/local/testexec"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func: SuspendFailure,
+		Desc: "Verify suspend failures are logged as expected",
+		Contacts: []string{
+			"dbasehore@google.com",
+			"mutexlox@google.com",
+			"cros-monitoring-forensics@chromium.org",
+		},
+		Attr: []string{"informational"},
+		Data: []string{platformCrash.TestCert},
+	})
+}
+
+func SuspendFailure(ctx context.Context, s *testing.State) {
+	const systemCrashDir = "/var/spool/crash"
+	const suspendFailureName = "suspend-failure"
+
+	if err := localCrash.SetUpCrashTest(); err != nil {
+		s.Fatal("SetUpCrashTest failed: ", err)
+	}
+	defer localCrash.TearDownCrashTest()
+
+	if err := metrics.SetConsent(ctx, s.DataPath(platformCrash.TestCert), true); err != nil {
+		s.Fatal("Failed to set consent: ", err)
+	}
+
+	oldFiles, err := crash.GetCrashes(systemCrashDir)
+	if err != nil {
+		s.Fatal("Failed to get original crashes: ", err)
+	}
+
+	// Restart anomaly detector to clear its cache of recently seen service
+	// failures and ensure this one is logged.
+	if err := localCrash.RestartAnomalyDetector(ctx); err != nil {
+		s.Fatal("Failed to restart anomaly detector: ", err)
+	}
+
+	s.Log("Inducing artificial suspend permission failure")
+	perm, err := testexec.CommandContext(ctx, "stat", "-c%a", "/sys/power/state").Output(testexec.DumpLogOnError)
+	if err != nil {
+		s.Fatal("Failed to run 'stat -c='%a' /sys/power/state': ", err)
+	}
+
+	// Remove all permissions on /sys/power/state to induce the failure on write
+	err = testexec.CommandContext(ctx, "chmod", "000", "/sys/power/state").Run()
+	if err != nil {
+		s.Fatal("Failed to set permissions on /sys/power/state: ", err)
+	}
+
+	// Error is expected here
+	testexec.CommandContext(ctx, "powerd_dbus_suspend", "--timeout=10").Run()
+
+	err = testexec.CommandContext(ctx, "chmod", strings.TrimRight(string(perm), "\r\n"), "/sys/power/state").Run()
+	if err != nil {
+		s.Error("Failed to reset permissions (", string(perm), ") on /sys/power/state: ", err)
+		// We're messed up enough that rebooting the machine is best here.
+		testexec.CommandContext(ctx, "reboot").Run()
+	}
+
+	err = testexec.CommandContext(ctx, "restart", "powerd").Run()
+	if err != nil {
+		s.Error("Failed to restart powerd: ", err)
+		// If we fail to restart powerd, we'll shut down in ~100 seconds, so
+		// just reboot.
+		testexec.CommandContext(ctx, "reboot").Run()
+	}
+
+	expectedRegexes := []string{`suspend_failure\.\d{8}\.\d{6}\.0\.log`,
+		`suspend_failure\.\d{8}\.\d{6}\.0\.meta`}
+
+	files, err := localCrash.WaitForCrashFiles(ctx, localCrash.SystemCrashDir, oldFiles, expectedRegexes)
+	if err != nil {
+		s.Error("Couldn't find expected files: ", err)
+	}
+
+	// Clean up files.
+	for _, f := range files {
+		if err := os.Remove(f); err != nil {
+			s.Logf("Couldn't clean up %s: %v", f, err)
+		}
+	}
+}
