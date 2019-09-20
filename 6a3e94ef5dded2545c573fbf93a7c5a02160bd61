@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69ce395c_a6d9e25d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/suspend_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-09-20T23:42:51Z",
+      "side": 1,
+      "message": "nit: this is now exposed as localCrash.SystemCrashDir (we need to fix the other tests to use it)",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 42
+      },
+      "revId": "6a3e94ef5dded2545c573fbf93a7c5a02160bd61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c27652fb_b1f0f52c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/suspend_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-09-20T23:42:51Z",
+      "side": 1,
+      "message": "nit: for scripts and tests I prefer long-form flags for readability (here, --format\u003d%a)",
+      "range": {
+        "startLine": 59,
+        "startChar": 53,
+        "endLine": 59,
+        "endChar": 54
+      },
+      "revId": "6a3e94ef5dded2545c573fbf93a7c5a02160bd61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9a52155_3682f2c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/suspend_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-09-20T23:42:51Z",
+      "side": 1,
+      "message": "Can you make this fail if err \u003d\u003d nil? that way, if `powerd_dbus_suspend` changes in the future to either not use /sys/power/state, or fix its permissions, or something, this test will detect it and fail with a clear error.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 74
+      },
+      "revId": "6a3e94ef5dded2545c573fbf93a7c5a02160bd61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "685b65e3_94b85709",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/suspend_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-09-20T23:42:51Z",
+      "side": 1,
+      "message": "nit, optional: maybe add that this is because sysfs is recreated on reboot?",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 68
+      },
+      "revId": "6a3e94ef5dded2545c573fbf93a7c5a02160bd61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84952b26_d5378950",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/suspend_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-09-20T23:42:51Z",
+      "side": 1,
+      "message": "Can you please comment as to why  we need to restart powerd?",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 62
+      },
+      "revId": "6a3e94ef5dded2545c573fbf93a7c5a02160bd61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "666b208d_8257eb9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/suspend_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-09-20T23:42:51Z",
+      "side": 1,
+      "message": "I vaguely recall that we discussed that you wanted to check that the log contained the failure message. Is that still true? (I don\u0027t care much either way, but wanted to make sure it was deliberate :-) )",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 6
+      },
+      "revId": "6a3e94ef5dded2545c573fbf93a7c5a02160bd61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
