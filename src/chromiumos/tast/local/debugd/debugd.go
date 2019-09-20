@@ -112,10 +112,12 @@ func (d *Debugd) CupsAddManuallyConfiguredPrinter(ctx context.Context, name, uri
 	return CUPSResult(status), nil
 }
 
-// SetSchedulerConfiguration calls debugd's SetSchedulerConfiguration D-Bus method.
+// SetSchedulerConfiguration calls debugd's SetSchedulerConfigurationV2 D-Bus method.
 func (d *Debugd) SetSchedulerConfiguration(ctx context.Context, param Scheduler) (err error) {
 	result := false
-	if err := d.call(ctx, "SetSchedulerConfiguration", string(param)).Store(&result); err != nil {
+	var numCoresDisabled uint32
+	// TODO(abhishekbh): Support calling the D-Bus method with lock_policy=true, and add test cases to debugd/core_scheduler.go.
+	if err := d.call(ctx, "SetSchedulerConfigurationV2", string(param), false).Store(&result, &numCoresDisabled); err != nil {
 		return err
 	} else if !result {
 		return errors.New("SetSchedulerConfiguration returned false")
