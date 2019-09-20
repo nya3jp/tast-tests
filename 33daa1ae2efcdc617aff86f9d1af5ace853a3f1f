@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5bf25b9_096adf10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2019-09-20T16:38:09Z",
+      "side": 1,
+      "message": "sorry I don\u0027t know too much about tast. But when and how does Params get passed into the test function?",
+      "revId": "33daa1ae2efcdc617aff86f9d1af5ace853a3f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01818b05_b80d7dbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2019-09-20T16:38:09Z",
+      "side": 1,
+      "message": "does this mean that we put the animation smoothness in clamshell mode and in tablet mode metrics together?",
+      "revId": "33daa1ae2efcdc617aff86f9d1af5ace853a3f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
