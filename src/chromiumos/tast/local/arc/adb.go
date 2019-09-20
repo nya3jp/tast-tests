@@ -10,6 +10,7 @@ import (
 	"os"
 	"regexp"
 	"strings"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
@@ -119,11 +120,33 @@ func setUpADB(ctx context.Context) error {
 	return nil
 }
 
-// connectADB connects to the remote ADB daemon.
+// connectADB connects to the remote ADB daemon. This is high level flow that has several attempts
+// to connect to adbd and restarts adbd between attempts.
 // After this function returns successfully, we can assume that ADB connection is ready.
 func connectADB(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "connect_adb")
 	defer st.End()
+
+	// Have 3 attempts to connect to adbd.
+	attempts := 3
+	for {
+		err := connectADBAttempt(ctx)
+		if err == nil {
+			return nil
+		}
+		attempts--
+		if attempts == 0 {
+			return err
+		}
+		if err = restartADBDaemon(ctx); err != nil {
+			return errors.Wrap(err, "failed to restart adbd")
+		}
+	}
+}
+
+// connectADB makes attempt to connect to the remote ADB daemon.
+// After this function returns successfully, we can assume that ADB connection is ready.
+func connectADBAttempt(ctx context.Context) error {
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		out, err := adbCommand(ctx, "connect", adbAddr).Output()
@@ -140,7 +163,7 @@ func connectADB(ctx context.Context) error {
 			return errors.Errorf("failed to connect ADB (output: %q)", msg)
 		}
 		return nil
-	}, nil); err != nil {
+	}, &testing.PollOptions{Timeout: 20 * time.Second}); err != nil {
 		return err
 	}
 
