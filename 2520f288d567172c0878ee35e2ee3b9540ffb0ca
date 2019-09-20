@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6e1b1405_d33f95f5",
+        "filename": "src/chromiumos/tast/local/shill/service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-20T07:42:34Z",
+      "side": 1,
+      "message": "Yes, that is exactly what I meant :)",
+      "parentUuid": "2e6a1b2b_6d09c450",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "2520f288d567172c0878ee35e2ee3b9540ffb0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51e2fd58_683c6718",
         "filename": "src/chromiumos/tast/local/shill/service.go",
         "patchSetId": 2
