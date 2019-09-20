@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b9808b57_3c06e897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-09-20T21:38:01Z",
+      "side": 1,
+      "message": "The \u0027Val\u0027 will be passed to the \"testing.State\" object. The line 38 s.Param() returns this \u0027val\u0027.\n\nSpecifying params creates different test cases. In this case, there would be ui.OverviewPerf which is for clamshell mode, and ui.OverviewPerf.tablet for the tablet mode. See https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-tests",
+      "parentUuid": "f5bf25b9_096adf10",
+      "revId": "33daa1ae2efcdc617aff86f9d1af5ace853a3f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "01818b05_b80d7dbc",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-09-20T16:38:09Z",
       "side": 1,
       "message": "does this mean that we put the animation smoothness in clamshell mode and in tablet mode metrics together?",
+      "revId": "33daa1ae2efcdc617aff86f9d1af5ace853a3f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da7d3fe1_7bc4a3a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-09-20T21:38:01Z",
+      "side": 1,
+      "message": "No, they share the same name but they are separated into two test cases.\n\nSo, ui.OverviewPerf will start reporting Ash.Overview.AnimationSmoothness.Enter (or Exit) for clamshell mode. The new test case ui.OverviewPerf.tablet reports data points for the same name, for tablet mode.\n\nBut I changed my mind -- reverted back to histName here, considering eventually we are also going to record both of SingleClamshellMode (i.e. maximized window) vs ClamshellMode (i.e. normal window).",
+      "parentUuid": "01818b05_b80d7dbc",
       "revId": "33daa1ae2efcdc617aff86f9d1af5ace853a3f1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
