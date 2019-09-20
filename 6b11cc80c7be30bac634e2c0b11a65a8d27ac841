@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43484cb6_51ad0894",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-20T17:13:52Z",
+      "side": 1,
+      "message": "Fatal perhaps? If the test cannot continue, then it should be s.Fatal().\n(valid for this s.Error() and remaining ones)\n\nrule of thumb: Use s.Error() if you are testing more than one thing in your test file. Perhaps a test with more than one subtests. You can s.Error() each subtests.\n\nIf you are testing just one thing, either do s.Fatal() (the test will abort)... and if there is something wrong but the test can continue, you can log the anomaly with s.Log()\n\nIf you are performing different subtests, then ignore my comment :)",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 9
+      },
+      "revId": "6b11cc80c7be30bac634e2c0b11a65a8d27ac841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca3ffc62_953f21f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-20T17:13:52Z",
+      "side": 1,
+      "message": "nit: perhaps adding a link to doc or source code... something that explains what these constants are",
+      "range": {
+        "startLine": 66,
+        "startChar": 17,
+        "endLine": 66,
+        "endChar": 66
+      },
+      "revId": "6b11cc80c7be30bac634e2c0b11a65a8d27ac841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cded9974_75678902",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-20T17:13:52Z",
+      "side": 1,
+      "message": "check error",
+      "range": {
+        "startLine": 67,
+        "startChar": 6,
+        "endLine": 67,
+        "endChar": 9
+      },
+      "revId": "6b11cc80c7be30bac634e2c0b11a65a8d27ac841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23b633c1_2c673092",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-20T17:13:52Z",
+      "side": 1,
+      "message": "include `err` in the error description.",
+      "range": {
+        "startLine": 85,
+        "startChar": 54,
+        "endLine": 85,
+        "endChar": 56
+      },
+      "revId": "6b11cc80c7be30bac634e2c0b11a65a8d27ac841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13b7887c_9dcfc258",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-20T17:13:52Z",
+      "side": 1,
+      "message": "nit:\ninclude the `ecRes.Status` in error report.",
+      "range": {
+        "startLine": 92,
+        "startChar": 46,
+        "endLine": 92,
+        "endChar": 48
+      },
+      "revId": "6b11cc80c7be30bac634e2c0b11a65a8d27ac841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4092226c_9ec3430c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-20T17:13:52Z",
+      "side": 1,
+      "message": "if \"vm.SendVSHCommand()\" returns a meaningful error description, then you can do:\n\nreturn vm.SendVSHCommand(....)",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 13
+      },
+      "revId": "6b11cc80c7be30bac634e2c0b11a65a8d27ac841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
