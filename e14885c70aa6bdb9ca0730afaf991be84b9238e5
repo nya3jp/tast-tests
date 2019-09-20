@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b12e6f4_037d8af9",
+        "filename": "src/chromiumos/tast/local/arc/dumpsys.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-20T00:16:33Z",
+      "side": 1,
+      "message": "nit: put a \"Looking for:\" to be consistent with the comment in dumpsysActivityActivitiesP",
+      "revId": "e14885c70aa6bdb9ca0730afaf991be84b9238e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
