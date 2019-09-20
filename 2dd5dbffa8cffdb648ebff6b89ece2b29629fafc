@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c29c997_3dabf8c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-20T22:16:22Z",
+      "side": 1,
+      "message": "nit:  remove the \"|\" from |name| and |body|.\nUnfortunately godoc does not support them.",
+      "range": {
+        "startLine": 103,
+        "startChar": 68,
+        "endLine": 103,
+        "endChar": 74
+      },
+      "revId": "2dd5dbffa8cffdb648ebff6b89ece2b29629fafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33424d7e_af61c5a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-20T22:16:22Z",
+      "side": 1,
+      "message": "nit: you can omit this, this it is implied by the  \"error\" in the returns values.",
+      "range": {
+        "startLine": 105,
+        "startChar": 11,
+        "endLine": 105,
+        "endChar": 25
+      },
+      "revId": "2dd5dbffa8cffdb648ebff6b89ece2b29629fafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
