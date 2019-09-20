@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c11f7d78_615ca578",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2019-09-20T23:17:33Z",
+      "side": 1,
+      "message": "Arbitrarily chosen dummy numbers. Please provide suggestions for better thresholds.",
+      "revId": "374b4b500ddfbb4f3ae101bdf6eefdc16d69f6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3ade46b_51e5813c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2019-09-20T23:17:33Z",
+      "side": 1,
+      "message": "WRDS and EWRD mean more than \"tablet mode\" and \"clamshell mode\"[1], but that is how they apply for our usage. Would it worth explaining this nuance in a comment here?\n\n[1]: slide 23 of https://drive.google.com/open?id\u003d0Bz2Hi7s82eJGZTVIbEw0Y3BqU3lTeHdmSnNpLUd0S3FQM0hZ",
+      "revId": "374b4b500ddfbb4f3ae101bdf6eefdc16d69f6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
