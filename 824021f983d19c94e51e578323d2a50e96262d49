@@ -22,6 +22,30 @@
       "revId": "824021f983d19c94e51e578323d2a50e96262d49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd3a6c1e_fdc93463",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-09-20T22:54:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80041188_10175162",
+      "range": {
+        "startLine": 58,
+        "startChar": 10,
+        "endLine": 58,
+        "endChar": 53
+      },
+      "revId": "824021f983d19c94e51e578323d2a50e96262d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
