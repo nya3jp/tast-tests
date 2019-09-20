@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6eaff6c_66eb976c",
+        "filename": "src/chromiumos/tast/local/arc/README_dumpsys.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-20T00:28:09Z",
+      "side": 1,
+      "message": "parse the Protobuf output over the",
+      "range": {
+        "startLine": 8,
+        "startChar": 14,
+        "endLine": 8,
+        "endChar": 44
+      },
+      "revId": "6e7e2e35993811950f3ce8de108fcf94340eb84c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d8cdc57_fb43a417",
+        "filename": "src/chromiumos/tast/local/arc/README_dumpsys.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-20T00:28:09Z",
+      "side": 1,
+      "message": "structured,",
+      "range": {
+        "startLine": 19,
+        "startChar": 31,
+        "endLine": 19,
+        "endChar": 41
+      },
+      "revId": "6e7e2e35993811950f3ce8de108fcf94340eb84c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e60be9a9_deb1411c",
+        "filename": "src/chromiumos/tast/local/arc/README_dumpsys.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-20T00:28:09Z",
+      "side": 1,
+      "message": "The",
+      "range": {
+        "startLine": 20,
+        "startChar": 27,
+        "endLine": 20,
+        "endChar": 34
+      },
+      "revId": "6e7e2e35993811950f3ce8de108fcf94340eb84c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6493b2d1_ffe11255",
+        "filename": "src/chromiumos/tast/local/arc/README_dumpsys.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-20T00:28:09Z",
+      "side": 1,
+      "message": "We",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 6
+      },
+      "revId": "6e7e2e35993811950f3ce8de108fcf94340eb84c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a984029c_71f93efa",
+        "filename": "src/chromiumos/tast/local/arc/README_dumpsys.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-20T00:28:09Z",
+      "side": 1,
+      "message": "forwards compatible",
+      "range": {
+        "startLine": 36,
+        "startChar": 43,
+        "endLine": 36,
+        "endChar": 63
+      },
+      "revId": "6e7e2e35993811950f3ce8de108fcf94340eb84c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1726d12e_0702464d",
+        "filename": "src/chromiumos/tast/local/arc/README_dumpsys.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-20T00:28:09Z",
+      "side": 1,
+      "message": "I\u0027d omit the specific filename here and substitute in \"the file reference in the error report\" instead - it\u0027s very tempting when skimming a README to copy/paste paths.",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 51
+      },
+      "revId": "6e7e2e35993811950f3ce8de108fcf94340eb84c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46165fdb_6dda20e5",
+        "filename": "src/chromiumos/tast/local/arc/README_dumpsys.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-20T00:28:09Z",
+      "side": 1,
+      "message": "Android and the version from which the files were taken",
+      "range": {
+        "startLine": 112,
+        "startChar": 57,
+        "endLine": 113,
+        "endChar": 31
+      },
+      "revId": "6e7e2e35993811950f3ce8de108fcf94340eb84c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8e2bd20_87c583a7",
+        "filename": "src/chromiumos/tast/local/arc/README_dumpsys.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-20T00:28:09Z",
+      "side": 1,
+      "message": "If",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 7
+      },
+      "revId": "6e7e2e35993811950f3ce8de108fcf94340eb84c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
