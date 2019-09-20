@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f910ccb0_62ae2c25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-20T21:06:36Z",
+      "side": 1,
+      "message": "(I\u0027m assuming that s.Error() is intended here, and not s.Fatal)\n\nYou should only \"defer wvm.Stop()\" on success.\n\ne.g:\n\nif err :\u003d ... {\n} else {\n  defer wvm.Stop()...\n}\n\nAnd if case you don\u0027t need to use WilCoSupportDaemon any more, you can just close it directly, without calling defer.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 38
+      },
+      "revId": "c2c3d0a1bcfed75435859cba5095915023ace6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5aaab391_94d31805",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-20T21:06:36Z",
+      "side": 1,
+      "message": "huge nit:\nProbably I should have been more explicit. there is pattern in Go to report these kind of errors: \"got , want\".\ne.g:\n\"Unexpected EC telemetry status response; got %s, want GetEcTelemetryResponse_STATUS_OK\" )\n\n(rephrase at needed)",
+      "range": {
+        "startLine": 98,
+        "startChar": 12,
+        "endLine": 98,
+        "endChar": 51
+      },
+      "revId": "c2c3d0a1bcfed75435859cba5095915023ace6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fe0669b_65822d08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-20T21:06:36Z",
+      "side": 1,
+      "message": "documentation for this func",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 17
+      },
+      "revId": "c2c3d0a1bcfed75435859cba5095915023ace6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1fd5029_aaebf30b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-20T21:06:36Z",
+      "side": 1,
+      "message": "nit:\nname, body string",
+      "range": {
+        "startLine": 102,
+        "startChar": 38,
+        "endLine": 102,
+        "endChar": 63
+      },
+      "revId": "c2c3d0a1bcfed75435859cba5095915023ace6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
