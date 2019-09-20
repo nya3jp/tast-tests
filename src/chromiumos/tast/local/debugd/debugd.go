@@ -115,7 +115,8 @@ func (d *Debugd) CupsAddManuallyConfiguredPrinter(ctx context.Context, name, uri
 // SetSchedulerConfiguration calls debugd's SetSchedulerConfiguration D-Bus method.
 func (d *Debugd) SetSchedulerConfiguration(ctx context.Context, param Scheduler) (err error) {
 	result := false
-	if err := d.call(ctx, "SetSchedulerConfiguration", string(param)).Store(&result); err != nil {
+	var numCoresDisabled uint32
+	if err := d.call(ctx, "SetSchedulerConfiguration", string(param)).Store(&result, &numCoresDisabled); err != nil {
 		return err
 	} else if !result {
 		return errors.New("SetSchedulerConfiguration returned false")
