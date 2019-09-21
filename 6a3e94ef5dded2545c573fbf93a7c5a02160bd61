@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "458ba2af_354404b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/suspend_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2019-09-21T00:21:44Z",
+      "side": 1,
+      "message": "Good catch. It\u0027s not going to be a common occurrence since we have a 10 second delay on retry and the race seems to land just after with the 10 second timeout, but it could technically happen.",
+      "parentUuid": "bd670cd8_4026c14c",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 62
+      },
+      "revId": "6a3e94ef5dded2545c573fbf93a7c5a02160bd61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "666b208d_8257eb9a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/suspend_failure.go",
         "patchSetId": 1
