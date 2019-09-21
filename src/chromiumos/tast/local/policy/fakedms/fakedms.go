@@ -11,6 +11,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -35,9 +36,10 @@ var testserverPythonImports = []string{
 
 // A FakeDMS struct contains information about a running policy_testserver instance.
 type FakeDMS struct {
-	cmd  *testexec.Cmd // fakedms process
-	URL  string        // fakedms url; needs to be passed to Chrome; set in start()
-	done chan struct{} // channel that is closed when Wait() completes
+	cmd        *testexec.Cmd // fakedms process
+	URL        string        // fakedms url; needs to be passed to Chrome; set in start()
+	done       chan struct{} // channel that is closed when Wait() completes
+	policyPath string        // where policies are written for server to read
 }
 
 // New creates and starts a fake Domain Management Server to serve policies.
@@ -83,8 +85,9 @@ func New(ctx context.Context, outDir string) (*FakeDMS, error) {
 	cmd.ExtraFiles = []*os.File{fw}
 
 	fdms := &FakeDMS{
-		cmd:  cmd,
-		done: make(chan struct{}, 1),
+		cmd:        cmd,
+		done:       make(chan struct{}, 1),
+		policyPath: policyPath,
 	}
 
 	if err = fdms.start(ctx, fr); err != nil {
@@ -155,6 +158,19 @@ func (fdms *FakeDMS) start(ctx context.Context, p *os.File) error {
 	}
 
 	testing.ContextLog(ctx, "FakeDMS is up and running on ", fdms.URL)
+	return nil
+}
+
+// WritePolicyBlob will write the given PolicyBlob to be read by the FakeDMS.
+func (fdms *FakeDMS) WritePolicyBlob(pb *PolicyBlob) error {
+	pJSON, err := json.Marshal(pb)
+	if err != nil {
+		return errors.Wrap(err, "could not convert policies to JSON")
+	}
+
+	if err = ioutil.WriteFile(fdms.policyPath, pJSON, 0644); err != nil {
+		return errors.Wrap(err, "could not write JSON to file")
+	}
 	return nil
 }
 
