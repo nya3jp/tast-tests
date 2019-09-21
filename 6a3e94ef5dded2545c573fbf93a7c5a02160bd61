@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "bd670cd8_4026c14c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/suspend_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-09-21T00:18:54Z",
+      "side": 1,
+      "message": "Should this happen before we fix permissions? If we do it in this order, I think there\u0027s a race that could cause the device to suspend if we lose.",
+      "parentUuid": "6b6151c1_d85efc70",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 62
+      },
+      "revId": "6a3e94ef5dded2545c573fbf93a7c5a02160bd61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "666b208d_8257eb9a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/suspend_failure.go",
         "patchSetId": 1
@@ -281,6 +305,30 @@
       "revId": "6a3e94ef5dded2545c573fbf93a7c5a02160bd61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2958ab1b_46e997bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/suspend_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-09-21T00:18:54Z",
+      "side": 1,
+      "message": "Makes sense. Thanks!",
+      "parentUuid": "b703975e_103c0079",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 6
+      },
+      "revId": "6a3e94ef5dded2545c573fbf93a7c5a02160bd61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
