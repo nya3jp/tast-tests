@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c1c8666_db962977",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/start_sludge.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-09-23T23:45:10Z",
+      "side": 1,
+      "message": "+ chromeos-wilco@google.com?",
+      "range": {
+        "startLine": 22,
+        "startChar": 25,
+        "endLine": 22,
+        "endChar": 80
+      },
+      "revId": "e461911eff7c526272b804904e3d24c45562c654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "486335d2_50d6956c",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-09-23T23:45:10Z",
+      "side": 1,
+      "message": "should be \"cid, command string\".\n\nAlso did you contemplate cid as an int?",
+      "range": {
+        "startLine": 339,
+        "startChar": 43,
+        "endLine": 339,
+        "endChar": 69
+      },
+      "revId": "e461911eff7c526272b804904e3d24c45562c654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
