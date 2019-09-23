@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5624ce0e_01219cdf",
+        "filename": "src/chromiumos/tast/local/arc/README_dumpsys.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-23T14:52:13Z",
+      "side": 1,
+      "message": "Could you mention that this is supported only P and later?\nN is still in our production.",
+      "revId": "df3391acd135037f34a22a0144dcd70e26576fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e17f5b0_62a94054",
+        "filename": "src/chromiumos/tast/local/arc/README_dumpsys.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-23T14:52:13Z",
+      "side": 1,
+      "message": "I think it\u0027s nice to mention the purpose, still.\n\n\"text\" is mainly for human readability for developers. or something?",
+      "range": {
+        "startLine": 16,
+        "startChar": 11,
+        "endLine": 16,
+        "endChar": 40
+      },
+      "revId": "df3391acd135037f34a22a0144dcd70e26576fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bb1d015_9f5b9026",
+        "filename": "src/chromiumos/tast/local/arc/README_dumpsys.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-23T14:52:13Z",
+      "side": 1,
+      "message": "Protobuf has also text serialization format, thus it is nice to avoid \"binary\" is the characteristic of protobuf.\n(optional/recommendation): it\u0027s nice to mention that the protobuf format is reliable to parse.\n\nRecommendation:\n\n\"With --protobuf option, dumpsys outputs the binary serialized protobuf data, which is structured, so it is easy and reliable to be parsed.\" or something...?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 63
+      },
+      "revId": "df3391acd135037f34a22a0144dcd70e26576fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd728669_be95c47e",
+        "filename": "src/chromiumos/tast/local/arc/README_dumpsys.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-23T14:52:13Z",
+      "side": 1,
+      "message": "nit: maybe \"schema\"?",
+      "range": {
+        "startLine": 19,
+        "startChar": 69,
+        "endLine": 19,
+        "endChar": 75
+      },
+      "revId": "df3391acd135037f34a22a0144dcd70e26576fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10649366_20913f24",
+        "filename": "src/chromiumos/tast/local/arc/README_dumpsys.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-23T14:52:13Z",
+      "side": 1,
+      "message": "nit: schema?",
+      "range": {
+        "startLine": 36,
+        "startChar": 13,
+        "endLine": 36,
+        "endChar": 21
+      },
+      "revId": "df3391acd135037f34a22a0144dcd70e26576fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69cbbb1d_3ac01eef",
+        "filename": "src/chromiumos/tast/local/arc/README_dumpsys.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-23T14:52:13Z",
+      "side": 1,
+      "message": "This section discusses two different topics:\n- schame to represent the dumpsys result.\n- actual data of dumpsys result.\n\nIIUC, Android framework keeps backward compatibility in terms of the first item, while such fields could be deprecated (so that dumpsys in new Android version may not return).\n\n\"message\" here looks ambiguous.\n\nSome recommendation:\n\nThe protobuf schema of \"dumpsys\" is maintained to keep forward compatibility.\nIt means, if a field in a message \u0027X\u0027 is present on older Android, it will be present\nin on newer Android, too, with same type and same tag.\nHowever, such fields could be deprecated. Thus, even if such fields are present in\n.proto files, actual return value from dumpsys command may not include them.",
+      "range": {
+        "startLine": 37,
+        "startChar": 23,
+        "endLine": 37,
+        "endChar": 30
+      },
+      "revId": "df3391acd135037f34a22a0144dcd70e26576fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "684978de_a424fa74",
+        "filename": "src/chromiumos/tast/local/arc/README_dumpsys.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-23T14:52:13Z",
+      "side": 1,
+      "message": "Could you use switch stmt?\n\nI think it is nice to avoid \"call\" here.\nprotobuf is used for gRPC args, but it is not used for dumpsys.\nMaybe \"calculate result by message \"X\"\", or something?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 1
+      },
+      "revId": "df3391acd135037f34a22a0144dcd70e26576fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1d53d58_de696d23",
+        "filename": "src/chromiumos/tast/local/arc/README_dumpsys.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-23T14:52:13Z",
+      "side": 1,
+      "message": "Let\u0027s make it clear that this is serialized data.\n\nRecommendation:\n\"it means that the serialized data returned from dumpsys could not be parsed with the current protobuf schema\"",
+      "range": {
+        "startLine": 64,
+        "startChar": 30,
+        "endLine": 64,
+        "endChar": 37
+      },
+      "revId": "df3391acd135037f34a22a0144dcd70e26576fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b304bae_a1afc52b",
+        "filename": "src/chromiumos/tast/local/arc/README_dumpsys.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-23T14:52:13Z",
+      "side": 1,
+      "message": "nit: this file is not in android_src root, but in tast test result output directory.\nNice to mention it.",
+      "range": {
+        "startLine": 77,
+        "startChar": 153,
+        "endLine": 77,
+        "endChar": 183
+      },
+      "revId": "df3391acd135037f34a22a0144dcd70e26576fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c495c2ea_10b6703a",
+        "filename": "src/chromiumos/tast/local/arc/README_dumpsys.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-23T14:52:13Z",
+      "side": 1,
+      "message": "Clar/nit: AOSP \u003d Android open source project. So, Android AOSP is dupped \"Android\".\nIs it commonly used... (I\u0027m not very familiar with the usage in Android development...)?\nOr, should we use just AOSP?",
+      "range": {
+        "startLine": 122,
+        "startChar": 43,
+        "endLine": 122,
+        "endChar": 55
+      },
+      "revId": "df3391acd135037f34a22a0144dcd70e26576fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a3adf7a_d74a6018",
+        "filename": "src/chromiumos/tast/local/arc/README_dumpsys.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-23T14:52:13Z",
+      "side": 1,
+      "message": "in precise, this is not true, because it pins the version. Maybe\n\nFetches the .proto files from the specified version of AOSP.",
+      "range": {
+        "startLine": 122,
+        "startChar": 36,
+        "endLine": 122,
+        "endChar": 42
+      },
+      "revId": "df3391acd135037f34a22a0144dcd70e26576fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90de1d1a_6276ae41",
+        "filename": "src/chromiumos/tast/local/arc/README_dumpsys.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-23T14:52:13Z",
+      "side": 1,
+      "message": "Could you add a quick summary of how to update? Or add a reference to the update procedure?",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 29
+      },
+      "revId": "df3391acd135037f34a22a0144dcd70e26576fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
