@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90ccd963_18224e94",
+        "filename": "src/chromiumos/tast/local/debugd/debugd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-23T15:23:39Z",
+      "side": 1,
+      "message": "Could you comment this is unused?\n(optional): or return this actually, and ignore in the caller?",
+      "revId": "0d794f880f3573f948699ae860bebd66ef636198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
