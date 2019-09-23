@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36bcb2ed_3d417c3a",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-09-23T22:00:15Z",
+      "side": 1,
+      "message": "This actually creates the stash directories, which isn\u0027t going to be case in the real usage. (The stash directories won\u0027t exist in advance.) Suggestion: Create a single TempDir, and then put all of these (runDir, sysCrashDir, sysStashDir, userCrashDir, userStashDir) as subdirectories. Only create the subdirectories you actually expect to exist in advance. \n\nIf you want to test the case that the stash directories already exist \u0026 have files, may be we need two test cases?",
+      "range": {
+        "startLine": 50,
+        "startChar": 28,
+        "endLine": 50,
+        "endChar": 35
+      },
+      "revId": "c905e95db8598b0b33d9416a4522939fab459600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f423b6a_595a4d25",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-09-23T22:00:15Z",
+      "side": 1,
+      "message": "Check the stash directories are empty?",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 0
+      },
+      "revId": "c905e95db8598b0b33d9416a4522939fab459600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
