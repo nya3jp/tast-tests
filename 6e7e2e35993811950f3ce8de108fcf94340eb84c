@@ -351,6 +351,30 @@
       "revId": "6e7e2e35993811950f3ce8de108fcf94340eb84c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f34def3_0e53fc76",
+        "filename": "src/chromiumos/tast/local/arc/README_dumpsys.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-23T20:15:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8e2bd20_87c583a7",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 7
+      },
+      "revId": "6e7e2e35993811950f3ce8de108fcf94340eb84c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
