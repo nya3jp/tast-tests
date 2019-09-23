@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5840490a_0dbbca38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-23T15:34:50Z",
+      "side": 1,
+      "message": "Could you add chromiumos/tast/local/bundles/cros/wilco/doc.go and explain what test should wilco package contain?\nIt\u0027ll be a guideline to maintain what\u0027s expected in wilco, and what\u0027s not.",
+      "revId": "6a686db28405a33879d9849c86972ef0a311746f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8452ced9_8d140d77",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-23T15:34:50Z",
+      "side": 1,
+      "message": "(optional): IIUC, command should not be empty. In the case, how about;\n\nCreateVSHCommand(ctx context.Context, cid, command string, args ...string) *testexec.Cmd {\n  params :\u003d append([]string{\"--cid\u003d\" + cid, \"--\", command}, args...)\n  ...\n}\n\nIn this way, compiler can find missing \"command\" case by mistake.\n\n(Sorry, I overlooked this in the last iteration).",
+      "range": {
+        "startLine": 339,
+        "startChar": 55,
+        "endLine": 339,
+        "endChar": 72
+      },
+      "revId": "6a686db28405a33879d9849c86972ef0a311746f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
