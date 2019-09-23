@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36fb8943_2e458c98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/start_sludge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-09-23T23:51:09Z",
+      "side": 1,
+      "message": "nit: Maybe change to one single array called requiredMountPoints or similar? It\u0027s just a bit weird to have them defined as two separate variables even though they always will be used together.",
+      "range": {
+        "startLine": 51,
+        "startChar": 31,
+        "endLine": 51,
+        "endChar": 52
+      },
+      "revId": "a5e1c45e8d21c1c456bae76c9a8d8e693308bf38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
