@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9bd36a99_dfce257d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1342022
+      },
+      "writtenOn": "2019-09-23T22:36:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97747a29_c7f6f3ea",
+      "range": {
+        "startLine": 33,
+        "startChar": 9,
+        "endLine": 33,
+        "endChar": 13
+      },
+      "revId": "dfc1def404ecbf889782f8dbefd49fed24b6acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6287f9b4_ff81c1f6",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail.go",
         "patchSetId": 16
@@ -36,6 +60,30 @@
       "writtenOn": "2019-09-19T09:10:30Z",
       "side": 1,
       "message": "style: you should be able to pass the retrieved value directly to the second parameter.",
+      "range": {
+        "startLine": 387,
+        "startChar": 2,
+        "endLine": 391,
+        "endChar": 3
+      },
+      "revId": "dfc1def404ecbf889782f8dbefd49fed24b6acbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51f78365_c401d504",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1342022
+      },
+      "writtenOn": "2019-09-23T22:36:08Z",
+      "side": 1,
+      "message": "Does the updated code look fine? Thanks.",
+      "parentUuid": "6287f9b4_ff81c1f6",
       "range": {
         "startLine": 387,
         "startChar": 2,
