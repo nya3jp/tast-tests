@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33170c8c_f50f64e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/suspend_failure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-23T18:00:21Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we be deferring this after L67 rather than doing it here?",
+      "revId": "584543949021e0ad5cf24f8404ef21e412dd4312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a85ca13_a37630ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/suspend_failure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-23T18:00:21Z",
+      "side": 1,
+      "message": "should be\n\n s.Errorf(\"Failed to reset permissions (%v) on /sys/power/state: %v\", perm, err)",
+      "revId": "584543949021e0ad5cf24f8404ef21e412dd4312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
