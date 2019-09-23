@@ -612,6 +612,30 @@
     },
     {
       "key": {
+        "uuid": "9e3c3524_4bdb967b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-23T18:15:59Z",
+      "side": 1,
+      "message": "You can pass this around as an interface{} and then cast to a specific struct depending on the algorithm, but as you said it\u0027s fine to leave this to a future CL when there are more algorithms to handle.",
+      "parentUuid": "c98481ed_4213f1c5",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 20
+      },
+      "revId": "11129cb6b1d7f9a42242ef9a006642503ac85773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08c3629c_c815cdbd",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
         "patchSetId": 6
