@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c9400ef4_db4f416e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-23T16:25:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5840490a_0dbbca38",
+      "revId": "6a686db28405a33879d9849c86972ef0a311746f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8452ced9_8d140d77",
         "filename": "src/chromiumos/tast/local/vm/util.go",
         "patchSetId": 5
@@ -39,6 +57,30 @@
       "revId": "6a686db28405a33879d9849c86972ef0a311746f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29f5eb26_c6e84a17",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-23T16:25:15Z",
+      "side": 1,
+      "message": "That makes sense to me, and the function signature doesn\u0027t appear to change externally. Done.",
+      "parentUuid": "8452ced9_8d140d77",
+      "range": {
+        "startLine": 339,
+        "startChar": 55,
+        "endLine": 339,
+        "endChar": 72
+      },
+      "revId": "6a686db28405a33879d9849c86972ef0a311746f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
