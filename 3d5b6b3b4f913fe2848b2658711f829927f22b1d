@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0aed184_a79b8cf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 19
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-23T05:04:24Z",
+      "side": 1,
+      "message": "Could we check this matches the result from autotest private api?",
+      "revId": "3d5b6b3b4f913fe2848b2658711f829927f22b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8aab90c_0da5475f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 19
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-23T05:04:24Z",
+      "side": 1,
+      "message": "Could we also check that isSupported() matches whether cros-camera service exists?",
+      "revId": "3d5b6b3b4f913fe2848b2658711f829927f22b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a0c41eb_5080fadb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 19
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-23T05:04:24Z",
+      "side": 1,
+      "message": ".find({ kind } \u003d\u003e kind \u003d\u003d\u003d \u0027videoinput\u0027)",
+      "range": {
+        "startLine": 275,
+        "startChar": 25,
+        "endLine": 275,
+        "endChar": 72
+      },
+      "revId": "3d5b6b3b4f913fe2848b2658711f829927f22b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
