@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "677d4dde_799fbc9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-23T16:25:46Z",
+      "side": 1,
+      "message": "It\u0027s not guaranteed to be larger, but startCtx is either going to be 5 seconds from when it was created, or the parent\u0027s deadline if it is shorter that 5 seconds. I\u0027m trying to specify that the StartSludge call and STartWilcoSupportDaemon calls should take no more than 5 seconds. I think the ctxutil.Shorten call would be more useful for guaranteeing a cleanup time. If the parent context is shorter than 5 seconds, then either call is not going to work.",
+      "parentUuid": "b39e80e2_0e3efee9",
+      "revId": "2dd5dbffa8cffdb648ebff6b89ece2b29629fafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9407f41e_45307d3b",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "2dd5dbffa8cffdb648ebff6b89ece2b29629fafc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b140f8c9_6519732e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-23T16:25:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9407f41e_45307d3b",
+      "range": {
+        "startLine": 98,
+        "startChar": 45,
+        "endLine": 98,
+        "endChar": 54
+      },
+      "revId": "2dd5dbffa8cffdb648ebff6b89ece2b29629fafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "6c5f7c74_2d013885",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-23T16:25:46Z",
+      "side": 1,
+      "message": "Good to know, thanks!",
+      "parentUuid": "3c29c997_3dabf8c0",
+      "range": {
+        "startLine": 103,
+        "startChar": 68,
+        "endLine": 103,
+        "endChar": 74
+      },
+      "revId": "2dd5dbffa8cffdb648ebff6b89ece2b29629fafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33424d7e_af61c5a3",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
         "patchSetId": 3
@@ -85,6 +151,30 @@
       "revId": "2dd5dbffa8cffdb648ebff6b89ece2b29629fafc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46030ba5_a4f9c93b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-23T16:25:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33424d7e_af61c5a3",
+      "range": {
+        "startLine": 105,
+        "startChar": 11,
+        "endLine": 105,
+        "endChar": 25
+      },
+      "revId": "2dd5dbffa8cffdb648ebff6b89ece2b29629fafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
