@@ -18,7 +18,7 @@ import (
 
 // Regular expression used to match a line from the output of the lpstat
 // command.
-const lpstatPatternPrefix = `device for (-[-a-zA-Z0-9]+): `
+const lpstatPatternPrefix = `device for ([-a-zA-Z0-9]+): `
 
 // PrinterNameByURI runs the lpstat command to search for a configured printer
 // which corresponds to |uri|. Return the name of the matching printer if found.
