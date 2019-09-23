@@ -107,17 +107,41 @@ func runTrace(ctx context.Context, cont *vm.Container, traceFile, traceName stri
 // decompressTrace trys to decompress the trace into trace format if possible. If the input is uncompressed, this function will do nothing.
 // Returns the uncompressed file absolute path.
 func decompressTrace(ctx context.Context, cont *vm.Container, traceFile string) (string, error) {
-	if filepath.Ext(traceFile) != ".bz2" {
+        ext := filepath.Ext(traceFile)
+	if ext != ".bz2" && ext != ".xz" {
 		return traceFile, nil
 	}
 	testing.ContextLog(ctx, "Decompressing trace file ", traceFile)
-	cmd := cont.Command(ctx, "bunzip2", traceFile)
-	output, err := cmd.CombinedOutput()
-	if err != nil {
-		testing.ContextLog(ctx, string(output))
-		return "", errors.Wrap(err, "failed to decompress bz2")
+	if ext == ".bz2" {
+		cmd := cont.Command(ctx, "bunzip2", traceFile)
+		output, err := cmd.CombinedOutput()
+		if err != nil {
+			testing.ContextLog(ctx, string(output))
+			return "", errors.Wrap(err, "failed to decompress bz2")
+		}
 	}
-	return strings.TrimSuffix(traceFile, filepath.Ext(traceFile)), nil
+	if ext == ".xz" {
+		cmd := cont.Command(ctx, "sudo", "apt-get", "install", "xz-utils")
+		output, err := cmd.CombinedOutput()
+		testing.ContextLog(ctx, string(output))
+		cmd = cont.Command(ctx, "which", "xz")
+		output, err = cmd.CombinedOutput()
+		testing.ContextLog(ctx, string(output))
+		cmd = cont.Command(ctx, "rm", "-rf", "/tmp/*")
+		output, err = cmd.CombinedOutput()
+		testing.ContextLog(ctx, string(output))
+		cmd = cont.Command(ctx, "df", "-h")
+		output, err = cmd.CombinedOutput()
+		testing.ContextLog(ctx, string(output))
+		cmd = cont.Command(ctx, "xz", "-d", traceFile)
+		output, err = cmd.CombinedOutput()
+		testing.ContextLog(ctx, string(output))
+		if err != nil {
+			testing.ContextLog(ctx, string(output))
+			return "", errors.Wrap(err, "failed to decompress xz")
+		}
+	}
+	return strings.TrimSuffix(traceFile, ext), nil
 }
 
 // parseResult parses the output of apitrace and return the perfs.
