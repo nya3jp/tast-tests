@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30f1ed68_376e75f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-09-23T22:59:18Z",
+      "side": 1,
+      "message": "We should testing.ContextLog() the name of the test when it starts so that we know which test failed if we get one of the errors below. You added it into one error message but there are other errors. Alternative might be to modify all the error messages, but I think adding testing.ContextLog() would be cleaner and easier",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 1
+      },
+      "revId": "678e074f749664a4201d935aa05cea4c0e85cacf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
