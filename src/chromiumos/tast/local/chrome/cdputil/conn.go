@@ -12,6 +12,7 @@ import (
 
 	"github.com/mafredri/cdp"
 	"github.com/mafredri/cdp/protocol/dom"
+	"github.com/mafredri/cdp/protocol/input"
 	"github.com/mafredri/cdp/protocol/page"
 	"github.com/mafredri/cdp/protocol/runtime"
 	"github.com/mafredri/cdp/protocol/target"
@@ -209,4 +210,14 @@ func (c *Conn) Navigate(ctx context.Context, url string) error {
 		return err
 	}
 	return nil
+}
+
+// Dispatches a key event to the page.
+func (c *Conn) DispatchKeyEvent(ctx context.Context, args *input.DispatchKeyEventArgs) error {
+	return c.cl.Input.DispatchKeyEvent(ctx, args)
+}
+
+// Dispatches a mouse event to the page.
+func (c *Conn) DispatchMouseEvent(ctx context.Context, args *input.DispatchMouseEventArgs) error {
+	return c.cl.Input.DispatchMouseEvent(ctx, args)
 }
