@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a033d59_3d424251",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2019-09-23T23:28:16Z",
+      "side": 1,
+      "message": "optional: do you think it might be more clear if the two are written in the same form? i.e.\n{\n  Name: \"clamshell\",\n  Val: \"clamshell\",\n},\n{\n  Name: \"tablet\",\n  Val: \"touch_view\",\n  ExtraSoftwareDeps: []string{\"tablet_mode\"},\n},\nor we\u0027re trying the maintain the original test name?",
+      "revId": "c20de20774e6ce2929af4d973696226e82b93047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
