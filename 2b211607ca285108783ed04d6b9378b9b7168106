@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "997df06f_461cf5e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2019-09-23T14:01:32Z",
+      "side": 1,
+      "message": "Will it be possible to change the policy on the fly and verify it? It would be very useful: checking that blocked apps get uninstalled once prohibited by policy!",
+      "range": {
+        "startLine": 19,
+        "startChar": 12,
+        "endLine": 19,
+        "endChar": 34
+      },
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a7d5d247_1ddbc564",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
         "patchSetId": 1
@@ -59,6 +82,29 @@
       "writtenOn": "2019-09-23T12:43:27Z",
       "side": 1,
       "message": "I see a lot of duplication here and many of them we can avoid.\n\nWhat about next:\n\n1) To avoid Stat/Status field duplication use:\n    type PolicyBase struct{\n      Status Status\n    }\n\n    type CookiesAllowedForURLs struct {\n      PolicyBase\n      Value []string\n    }\n\n2) To avoid Scope() duplication:\n    type UserScopeBase struct {}\n    func (UserScopeBase) Scope() Scope {\n      return UserScope\n    }\n\n    type DeviceScopeBase struct {}\n    func (DeviceScopeBase) Scope() Scope {\n      return DeviceScope\n    }\n    \n    ....\n    type CookiesAllowedForURLs struct {\n      PolicyBase\n      UserScopeBase\n      Value []string\n    }\n    \n3) To avoid Type() let\u0027s use the same technique as for Scope()\n   Moreover we can have some base structs like:\n\n    type IntTypeBase struct {\n      Value int\n    }\n    func (b IntTypeBase) Type() Type {\n      return IntType\n    }\n    func (b IntTypeBase) UntypedV() interface{} {\n      return b.Value\n    }\n\n    ...\n\n    type IncognitoModeAvailability struct {\n\tPolicyBase\n        UserScopeBase\n        IntTypeBase\n    }\n \n4) Add EmptyField struct.",
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a9dd4cc_718f9d47",
+        "filename": "src/chromiumos/tast/local/policy/defs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2019-09-23T14:01:32Z",
+      "side": 1,
+      "message": "Imagine how fast it will grow covering all policies, not only trivial ones.\n\nWill it be possible to have a separate folder with definition files (one per policy)?\n\nOr even better: having the script which pre-generates it from the existing templates might solve the problem.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 77
+      },
       "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -203,6 +249,29 @@
     },
     {
       "key": {
+        "uuid": "c8d12aca_8bd0559b",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2019-09-23T14:01:32Z",
+      "side": 1,
+      "message": "I still don\u0027t get where policyPath is initialized?",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 11
+      },
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ed8d21b3_3e04dab0",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 1
@@ -219,6 +288,75 @@
         "startChar": 11,
         "endLine": 165,
         "endChar": 12
+      },
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99510f2d_c54f81b2",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/policy_blob.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2019-09-23T14:01:32Z",
+      "side": 1,
+      "message": "what\u0027s about other attributes?\nLike expected errors, initial enrollment state \u0026 etc.?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 22
+      },
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86db92ea_621fdacf",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/policy_blob.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2019-09-23T14:01:32Z",
+      "side": 1,
+      "message": "Does it make sense to be able to set PolicyUser via NewPolicyBlob()\u0027s parameter and make tast-user a default value if nothing is passed?",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 50
+      },
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c5c637e_ea3090aa",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/policy_blob.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2019-09-23T14:01:32Z",
+      "side": 1,
+      "message": "Why suggested? It confuses me a bit, since there are mandatory\u0026recommended user policies...",
+      "range": {
+        "startLine": 87,
+        "startChar": 22,
+        "endLine": 87,
+        "endChar": 44
       },
       "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -311,6 +449,52 @@
         "startChar": 0,
         "endLine": 64,
         "endChar": 59
+      },
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9b273c1_2af97f9b",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2019-09-23T14:01:32Z",
+      "side": 1,
+      "message": "What\u0027s about converting DUTPolicy to Policy[], sort and compare with ps by some Policy.Compare or Policy.EqualsTo function?",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 37
+      },
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e0b426a_e9f79f39",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2019-09-23T14:01:32Z",
+      "side": 1,
+      "message": "What if there are some additional not-checked policies left in dps?",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 30
       },
       "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
