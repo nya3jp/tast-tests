@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67990fa8_cd65cbec",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-09-23T23:51:56Z",
+      "side": 1,
+      "message": "Is there a reason why we do this instead of using the net package?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 1
+      },
+      "revId": "8ca7d3f1df1dcbe200bc8fcc0eccc3d6a39cc80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
