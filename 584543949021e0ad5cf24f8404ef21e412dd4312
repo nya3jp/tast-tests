@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "06c7071b_3c2f1473",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/suspend_failure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2019-09-23T23:01:58Z",
+      "side": 1,
+      "message": "I should add a wakeup_timeout\u003d20 arg here just in case we accidentally suspend successfully (for whatever reason).",
+      "revId": "584543949021e0ad5cf24f8404ef21e412dd4312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33170c8c_f50f64e4",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/suspend_failure.go",
         "patchSetId": 4
@@ -13,6 +30,24 @@
       "writtenOn": "2019-09-23T18:00:21Z",
       "side": 1,
       "message": "Shouldn\u0027t we be deferring this after L67 rather than doing it here?",
+      "revId": "584543949021e0ad5cf24f8404ef21e412dd4312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "163666cf_27927e50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/suspend_failure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2019-09-23T23:01:58Z",
+      "side": 1,
+      "message": "If chmod fails to run, the permissions aren\u0027t changed, so there\u0027s no need to reset the permissions. We modify the permissions to create a temporary state which will cause suspend to fail.",
+      "parentUuid": "33170c8c_f50f64e4",
       "revId": "584543949021e0ad5cf24f8404ef21e412dd4312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -33,6 +68,24 @@
       "revId": "584543949021e0ad5cf24f8404ef21e412dd4312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ca86444_53529b90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/suspend_failure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2019-09-23T23:01:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a85ca13_a37630ed",
+      "revId": "584543949021e0ad5cf24f8404ef21e412dd4312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
