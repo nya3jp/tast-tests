@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "981a1589_9f42332a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/vm/sludge.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-09-23T23:53:08Z",
+      "side": 1,
+      "message": "This probably should get introduced when it is actually used, in a later CL.",
+      "revId": "e461911eff7c526272b804904e3d24c45562c654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "486335d2_50d6956c",
         "filename": "src/chromiumos/tast/local/vm/util.go",
         "patchSetId": 6
