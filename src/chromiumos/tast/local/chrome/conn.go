@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"github.com/mafredri/cdp/protocol/input"
 	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/errors"
@@ -149,4 +150,14 @@ func (c *Conn) PageContent(ctx context.Context) (string, error) {
 // Navigate navigates to url.
 func (c *Conn) Navigate(ctx context.Context, url string) error {
 	return c.co.Navigate(ctx, url)
+}
+
+// DispatchKeyEvent executes a key event (i.e. arrowDown, Enter)
+func (c *Conn) DispatchKeyEvent(ctx context.Context, args *input.DispatchKeyEventArgs) error {
+	return c.co.DispatchKeyEvent(ctx, args)
+}
+
+// DispatchMouseEvent executes a mouse event (i.e. mouseMoves, mousePressed, mouseReleased)
+func (c *Conn) DispatchMouseEvent(ctx context.Context, args *input.DispatchMouseEventArgs) error {
+	return c.co.DispatchMouseEvent(ctx, args)
 }
