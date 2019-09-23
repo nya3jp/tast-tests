@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "b0458a2b_0e7bca7a",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-09-23T23:51:01Z",
+      "side": 1,
+      "message": "Just saw the parent CL. Resolving this.",
+      "parentUuid": "5f3495ef_5225a8a0",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 1
+      },
+      "revId": "0cd4a8dfaee51a75ff23705b441c27774c559877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5ff3c72_9047b4b8",
         "filename": "src/chromiumos/tast/local/network/interface.go",
         "patchSetId": 1
