@@ -6,6 +6,7 @@ package selinux
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -41,6 +42,24 @@ func IgnorePaths(pathsToIgnore []string) FileLabelCheckFilter {
 	return func(p string, _ os.FileInfo) (FilterResult, FilterResult) {
 		for _, path := range pathsToIgnore {
 			if p == path {
+				return Skip, Skip
+			}
+		}
+		return Check, Check
+	}
+}
+
+// IgnorePathsRegex returns a FileLabelCheckFilter which allows the test to
+// skip files or directories matching pathsToIgnore, including its
+// subdirectory.
+func IgnorePathsRegex(pathsToIgnore []string) FileLabelCheckFilter {
+	var compiled []*regexp.Regexp
+	for _, path := range pathsToIgnore {
+		compiled = append(compiled, regexp.MustCompile(fmt.Sprintf("^%s$", path)))
+	}
+	return func(p string, _ os.FileInfo) (FilterResult, FilterResult) {
+		for _, pattern := range compiled {
+			if pattern.MatchString(p) {
 				return Skip, Skip
 			}
 		}
