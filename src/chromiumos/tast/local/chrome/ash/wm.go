@@ -64,8 +64,9 @@ type Rect struct {
 
 // ArcAppWindowInfo represents the ARC window info as returned from Ash.
 type ArcAppWindowInfo struct {
-	Bounds      Rect `json:"bounds"`
-	IsAnimating bool `json:"is_animating"`
+	Bounds      Rect   `json:"bounds"`
+	IsAnimating bool   `json:"is_animating"`
+	DisplayID   string `json:"display_id"`
 }
 
 // WindowStateChange represents the change sent to chrome.autotestPrivate.setArcAppWindowState function.
@@ -117,7 +118,7 @@ func GetARCAppWindowInfo(ctx context.Context, c *chrome.Conn, pkgName string) (A
 	if err := c.EvalPromise(ctx, expr, &info); err != nil {
 		return ArcAppWindowInfo{}, err
 	}
-	return ArcAppWindowInfo{info.Bounds, info.IsAnimating}, nil
+	return ArcAppWindowInfo{info.Bounds, info.IsAnimating, info.DisplayID}, nil
 }
 
 // GetARCAppWindowState gets the Chrome side window state of the ARC app window with pkgName.
