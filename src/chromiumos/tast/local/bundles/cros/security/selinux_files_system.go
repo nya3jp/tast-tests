@@ -103,7 +103,7 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/sbin/setfiles", Context: "cros_restorecon_exec", Recursive: false, Filter: nil, Log: false},
 		{Path: "/sbin/udevd", Context: "cros_udevd_exec", Recursive: false, Filter: nil, Log: false},
 		{Path: "/sbin/upstart-socket-bridge", Context: "upstart_socket_bridge_exec", Recursive: false, Filter: nil, Log: false},
-		{Path: "/sys", Context: "sysfs.*", Recursive: true, Filter: selinux.IgnorePaths(append(append([]string{
+		{Path: "/sys", Context: "sysfs.*", Recursive: true, Filter: selinux.IgnorePathsRegex(append(append([]string{
 			"/sys/bus/iio/devices",
 			"/sys/class/drm",
 			"/sys/devices/system/cpu",
@@ -112,6 +112,7 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 			"/sys/fs/selinux",
 			"/sys/kernel/config",
 			"/sys/kernel/debug",
+			"/sys/kernel/slab/nf_conntrack_.*",
 		}, gpuDevices...), crosEcIioDevices...)), Log: false},
 		{Path: "/sys/devices/system/cpu", Context: "sysfs", Recursive: true, Filter: systemCPUFilter(writable), Log: false},
 		{Path: "/sys/devices/system/cpu", Context: "sysfs_devices_system_cpu", Recursive: true, Filter: systemCPUFilter(readonly), Log: false},
