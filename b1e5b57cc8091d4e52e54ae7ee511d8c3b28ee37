@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "16ca3411_b3960ac8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-09-24T22:14:39Z",
+      "side": 1,
+      "message": "Thanks, done. (I think it can be casted to *chrome.Chrome, as https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome#LoggedIn shows).",
+      "parentUuid": "7bc77325_5f6bb61e",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "b1e5b57cc8091d4e52e54ae7ee511d8c3b28ee37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "118e282e_d7bfe6c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "b1e5b57cc8091d4e52e54ae7ee511d8c3b28ee37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "245a4e51_7bca0b0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-09-24T22:14:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "118e282e_d7bfe6c8",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "b1e5b57cc8091d4e52e54ae7ee511d8c3b28ee37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a4ea34d5_65d062a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-09-24T22:14:39Z",
+      "side": 1,
+      "message": "Ooh, I didn\u0027t notice that. Done.",
+      "parentUuid": "c838ef74_299ed589",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 3
+      },
+      "revId": "b1e5b57cc8091d4e52e54ae7ee511d8c3b28ee37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b714b25_9961f1af",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "b1e5b57cc8091d4e52e54ae7ee511d8c3b28ee37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ae22e68_33ec2c9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-09-24T22:14:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b714b25_9961f1af",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 3
+      },
+      "revId": "b1e5b57cc8091d4e52e54ae7ee511d8c3b28ee37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
