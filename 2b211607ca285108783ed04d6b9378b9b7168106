@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d3f9e387_82f5e941",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-24T06:18:43Z",
+      "side": 1,
+      "message": "dbeckett@ has been working on an AutotestPrivate function to trigger policy reload, though that won\u0027t work for policies which require reboot",
+      "parentUuid": "997df06f_461cf5e3",
+      "range": {
+        "startLine": 19,
+        "startChar": 12,
+        "endLine": 19,
+        "endChar": 34
+      },
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a7d5d247_1ddbc564",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
         "patchSetId": 1
@@ -88,6 +112,24 @@
     },
     {
       "key": {
+        "uuid": "0d4108ef_fe9b4b19",
+        "filename": "src/chromiumos/tast/local/policy/defs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-24T06:18:43Z",
+      "side": 1,
+      "message": "I\u0027ve added you to the doc where I explored some of the options for this, if that\u0027s easier for you.  I did consider using embedded structs, but it makes the policy struct creation more annoying.  E.g. in case 4) you\u0027d have to write it as \n\np :\u003d IncognitoModeAvailability{IntTypeBase: IntTypeBase{4}, PolicyBase: PolicyBase{status}}\ninstead of {Status: status, Val: 4}\n\nIt seems to me a matter of which code we want to be prettier",
+      "parentUuid": "28cb1256_ae6d1d5a",
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3a9dd4cc_718f9d47",
         "filename": "src/chromiumos/tast/local/policy/defs.go",
         "patchSetId": 1
@@ -111,6 +153,30 @@
     },
     {
       "key": {
+        "uuid": "9434843b_e749ab14",
+        "filename": "src/chromiumos/tast/local/policy/defs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-24T06:18:43Z",
+      "side": 1,
+      "message": "I definitely agree that automating this from policy_templates is the best thing to do here",
+      "parentUuid": "3a9dd4cc_718f9d47",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 77
+      },
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad168625_18c95543",
         "filename": "src/chromiumos/tast/local/policy/defs.go",
         "patchSetId": 1
@@ -122,6 +188,30 @@
       "writtenOn": "2019-09-23T12:43:27Z",
       "side": 1,
       "message": "Why do not use full name `Status`?",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 5
+      },
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9915534_6c181851",
+        "filename": "src/chromiumos/tast/local/policy/defs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-24T06:18:43Z",
+      "side": 1,
+      "message": "go prefers shorter names whenever reasonable",
+      "parentUuid": "ad168625_18c95543",
       "range": {
         "startLine": 22,
         "startChar": 1,
@@ -180,6 +270,30 @@
     },
     {
       "key": {
+        "uuid": "bdf773bc_175b9a95",
+        "filename": "src/chromiumos/tast/local/policy/defs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-24T06:18:43Z",
+      "side": 1,
+      "message": "URLs is the go standard way of writing the name and Urls is the policy name - but I think a case can be made here to stick with Urls.\n\nI\u0027m a little concerned about using reflect in this case since it\u0027s more complicated to understand/remember for test writers.  Though I suppose for the most part they shouldn\u0027t need the name at all.",
+      "parentUuid": "83f4b71d_8850b2bc",
+      "range": {
+        "startLine": 27,
+        "startChar": 56,
+        "endLine": 27,
+        "endChar": 77
+      },
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e6aba4ff_e08bf117",
         "filename": "src/chromiumos/tast/local/policy/defs.go",
         "patchSetId": 1
@@ -203,6 +317,30 @@
     },
     {
       "key": {
+        "uuid": "516c6c6c_a2431fc9",
+        "filename": "src/chromiumos/tast/local/policy/defs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-24T06:18:43Z",
+      "side": 1,
+      "message": "yes",
+      "parentUuid": "e6aba4ff_e08bf117",
+      "range": {
+        "startLine": 94,
+        "startChar": 22,
+        "endLine": 94,
+        "endChar": 25
+      },
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2cb5fee6_21e3a8ba",
         "filename": "src/chromiumos/tast/local/policy/defs.go",
         "patchSetId": 1
@@ -214,6 +352,30 @@
       "writtenOn": "2019-09-23T12:43:27Z",
       "side": 1,
       "message": "Why do not pass two DeviceAutoUpdateTimeRestrictionsDayMinuteHour objects instead?",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 45
+      },
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c1c7f3d_c55d74e1",
+        "filename": "src/chromiumos/tast/local/policy/defs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-24T06:18:43Z",
+      "side": 1,
+      "message": "I was trying to make adding an element easier in a test and/or illustrate that each policy could be somewhat tailored to whatever the test creator wanted to have, as long as it implements the Policy interface.  Agreed that it\u0027s not strictly necessary",
+      "parentUuid": "2cb5fee6_21e3a8ba",
       "range": {
         "startLine": 188,
         "startChar": 0,
@@ -272,6 +434,30 @@
     },
     {
       "key": {
+        "uuid": "2769995a_5a526233",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-24T06:18:43Z",
+      "side": 1,
+      "message": "it is a file created in line 52/54 below.  Putting it in the results directory makes debugging easier, I think",
+      "parentUuid": "c8d12aca_8bd0559b",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 11
+      },
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ed8d21b3_3e04dab0",
         "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
         "patchSetId": 1
@@ -283,6 +469,30 @@
       "writtenOn": "2019-09-23T12:43:27Z",
       "side": 1,
       "message": "Can you remove it since you do not change fdms in this function?",
+      "range": {
+        "startLine": 165,
+        "startChar": 11,
+        "endLine": 165,
+        "endChar": 12
+      },
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16b8cbb2_8d49dca1",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-24T06:18:43Z",
+      "side": 1,
+      "message": "but this function uses a value from the fdms (policyPath)",
+      "parentUuid": "ed8d21b3_3e04dab0",
       "range": {
         "startLine": 165,
         "startChar": 11,
@@ -318,6 +528,30 @@
     },
     {
       "key": {
+        "uuid": "f12042d3_be110b33",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/policy_blob.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-24T06:18:43Z",
+      "side": 1,
+      "message": "whoops, you\u0027re right I left those off.  I\u0027ll look over this list again",
+      "parentUuid": "99510f2d_c54f81b2",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 22
+      },
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "86db92ea_621fdacf",
         "filename": "src/chromiumos/tast/local/policy/fakedms/policy_blob.go",
         "patchSetId": 1
@@ -341,6 +575,30 @@
     },
     {
       "key": {
+        "uuid": "9a0d2e11_89898f9d",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/policy_blob.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-24T06:18:43Z",
+      "side": 1,
+      "message": "I was using this user while testing, but you\u0027re right that\u0027s better behavior here",
+      "parentUuid": "86db92ea_621fdacf",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 50
+      },
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c5c637e_ea3090aa",
         "filename": "src/chromiumos/tast/local/policy/fakedms/policy_blob.go",
         "patchSetId": 1
@@ -352,6 +610,30 @@
       "writtenOn": "2019-09-23T14:01:32Z",
       "side": 1,
       "message": "Why suggested? It confuses me a bit, since there are mandatory\u0026recommended user policies...",
+      "range": {
+        "startLine": 87,
+        "startChar": 22,
+        "endLine": 87,
+        "endChar": 44
+      },
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c80d9818_e573e782",
+        "filename": "src/chromiumos/tast/local/policy/fakedms/policy_blob.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-24T06:18:43Z",
+      "side": 1,
+      "message": "I will change them all to be \"recommended\"",
+      "parentUuid": "8c5c637e_ea3090aa",
       "range": {
         "startLine": 87,
         "startChar": 22,
@@ -398,6 +680,30 @@
       "writtenOn": "2019-09-23T12:43:27Z",
       "side": 1,
       "message": "Can we avoid it using reflection?",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 39
+      },
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e3ceddd_9bf9a7e8",
+        "filename": "src/chromiumos/tast/local/policy/policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-24T06:18:43Z",
+      "side": 1,
+      "message": "I did play around with reflection and it got very ugly - I\u0027m willing to look again, since there are some changes here since then that would make that easier",
+      "parentUuid": "89d2cd07_3db99999",
       "range": {
         "startLine": 26,
         "startChar": 1,
@@ -490,6 +796,30 @@
       "writtenOn": "2019-09-23T14:01:32Z",
       "side": 1,
       "message": "What if there are some additional not-checked policies left in dps?",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 30
+      },
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c7b0a5c_65ddb06e",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-24T06:18:43Z",
+      "side": 1,
+      "message": "there definitely could be - if you\u0027re looking at a real login there will be many default policies in these results.  It made sense to me that if a test needs to check if a policy is not set it should pass that in here flagged as unset.\n\nI will make that clearer",
+      "parentUuid": "7e0b426a_e9f79f39",
       "range": {
         "startLine": 49,
         "startChar": 1,
