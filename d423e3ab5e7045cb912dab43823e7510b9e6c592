@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd7b3e21_819f442f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/lp/cups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2019-09-24T02:34:10Z",
+      "side": 1,
+      "message": "Can you make this an optional group?  It\u0027s possible a name won\u0027t have this.  Also, if we want to be more permissive, it looks like we already allow \u0027-\u0027 anyway.  We could just delete the leading \u0027-\u0027.",
+      "range": {
+        "startLine": 21,
+        "startChar": 41,
+        "endLine": 21,
+        "endChar": 48
+      },
+      "revId": "d423e3ab5e7045cb912dab43823e7510b9e6c592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
