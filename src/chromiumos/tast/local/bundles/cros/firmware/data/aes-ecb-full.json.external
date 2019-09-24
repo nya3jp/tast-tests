@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/firmware/aes-ecb-test.json",
+  "size": 324353,
+  "sha256sum": "2b03a2356d00a1f248958e9ade3c620e9293fe24bcc22857857c511f9b6af669"
+}

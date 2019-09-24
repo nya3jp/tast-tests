@@ -1,0 +1,307 @@
+{
+  "vsId" : 37508,
+  "algorithm" : "ACVP-AES-ECB",
+  "revision" : "1.0",
+  "isSample" : true,
+  "testGroups" : [ {
+    "tgId" : 1,
+    "testType" : "AFT",
+    "direction" : "encrypt",
+    "keyLen" : 128,
+    "tests" : [ {
+      "tcId" : 1,
+      "pt" : "F34481EC3CC627BACD5DC3FB08F273E6",
+      "key" : "00000000000000000000000000000000"
+    }]
+  }, {
+    "tgId" : 2,
+    "testType" : "AFT",
+    "direction" : "encrypt",
+    "keyLen" : 128,
+    "tests" : [ {
+      "tcId" : 8,
+      "pt" : "00000000000000000000000000000000",
+      "key" : "10A58869D74BE5A374CF867CFB473859"
+    }]
+  }, {
+    "tgId" : 3,
+    "testType" : "AFT",
+    "direction" : "encrypt",
+    "keyLen" : 128,
+    "tests" : [ {
+      "tcId" : 29,
+      "pt" : "80000000000000000000000000000000",
+      "key" : "00000000000000000000000000000000"
+    }]
+  }, {
+    "tgId" : 4,
+    "testType" : "AFT",
+    "direction" : "encrypt",
+    "keyLen" : 128,
+    "tests" : [ {
+      "tcId" : 157,
+      "pt" : "00000000000000000000000000000000",
+      "key" : "80000000000000000000000000000000"
+    }]
+  }, {
+    "tgId" : 5,
+    "testType" : "AFT",
+    "direction" : "encrypt",
+    "keyLen" : 192,
+    "tests" : [ {
+      "tcId" : 285,
+      "pt" : "1B077A6AF4B7F98229DE786D7516B639",
+      "key" : "000000000000000000000000000000000000000000000000"
+    }]
+  }, {
+    "tgId" : 6,
+    "testType" : "AFT",
+    "direction" : "encrypt",
+    "keyLen" : 192,
+    "tests" : [ {
+      "tcId" : 291,
+      "pt" : "00000000000000000000000000000000",
+      "key" : "E9F065D7C13573587F7875357DFBB16C53489F6A4BD0F7CD"
+    }]
+  }, {
+    "tgId" : 7,
+    "testType" : "AFT",
+    "direction" : "encrypt",
+    "keyLen" : 192,
+    "tests" : [ {
+      "tcId" : 315,
+      "pt" : "80000000000000000000000000000000",
+      "key" : "000000000000000000000000000000000000000000000000"
+    }]
+  }, {
+    "tgId" : 8,
+    "testType" : "AFT",
+    "direction" : "encrypt",
+    "keyLen" : 192,
+    "tests" : [ {
+      "tcId" : 443,
+      "pt" : "00000000000000000000000000000000",
+      "key" : "800000000000000000000000000000000000000000000000"
+    }]
+  }, {
+    "tgId" : 9,
+    "testType" : "AFT",
+    "direction" : "encrypt",
+    "keyLen" : 256,
+    "tests" : [ {
+      "tcId" : 635,
+      "pt" : "014730F80AC625FE84F026C60BFD547D",
+      "key" : "0000000000000000000000000000000000000000000000000000000000000000"
+    }]
+  }, {
+    "tgId" : 10,
+    "testType" : "AFT",
+    "direction" : "encrypt",
+    "keyLen" : 256,
+    "tests" : [ {
+      "tcId" : 640,
+      "pt" : "00000000000000000000000000000000",
+      "key" : "C47B0294DBBBEE0FEC4757F22FFEEE3587CA4730C3D33B691DF38BAB076BC558"
+    }]
+  }, {
+    "tgId" : 11,
+    "testType" : "AFT",
+    "direction" : "encrypt",
+    "keyLen" : 256,
+    "tests" : [ {
+      "tcId" : 656,
+      "pt" : "80000000000000000000000000000000",
+      "key" : "0000000000000000000000000000000000000000000000000000000000000000"
+    }]
+  }, {
+    "tgId" : 12,
+    "testType" : "AFT",
+    "direction" : "encrypt",
+    "keyLen" : 256,
+    "tests" : [ {
+      "tcId" : 784,
+      "pt" : "00000000000000000000000000000000",
+      "key" : "8000000000000000000000000000000000000000000000000000000000000000"
+    }]
+  }, {
+    "tgId" : 13,
+    "testType" : "AFT",
+    "direction" : "decrypt",
+    "keyLen" : 128,
+    "tests" : [ {
+      "tcId" : 1040,
+      "key" : "00000000000000000000000000000000",
+      "ct" : "0336763E966D92595A567CC9CE537F5E"
+    }]
+  }, {
+    "tgId" : 14,
+    "testType" : "AFT",
+    "direction" : "decrypt",
+    "keyLen" : 128,
+    "tests" : [ {
+      "tcId" : 1047,
+      "key" : "10A58869D74BE5A374CF867CFB473859",
+      "ct" : "6D251E6944B051E04EAA6FB4DBF78465"
+    }]
+  }, {
+    "tgId" : 15,
+    "testType" : "AFT",
+    "direction" : "decrypt",
+    "keyLen" : 128,
+    "tests" : [ {
+      "tcId" : 1068,
+      "key" : "00000000000000000000000000000000",
+      "ct" : "3AD78E726C1EC02B7EBFE92B23D9EC34"
+    }]
+  }, {
+    "tgId" : 16,
+    "testType" : "AFT",
+    "direction" : "decrypt",
+    "keyLen" : 128,
+    "tests" : [ {
+      "tcId" : 1196,
+      "key" : "80000000000000000000000000000000",
+      "ct" : "0EDD33D3C621E546455BD8BA1418BEC8"
+    }]
+  }, {
+    "tgId" : 17,
+    "testType" : "AFT",
+    "direction" : "decrypt",
+    "keyLen" : 192,
+    "tests" : [ {
+      "tcId" : 1324,
+      "key" : "000000000000000000000000000000000000000000000000",
+      "ct" : "275CFC0413D8CCB70513C3859B1D0F72"
+    }]
+  }, {
+    "tgId" : 18,
+    "testType" : "AFT",
+    "direction" : "decrypt",
+    "keyLen" : 192,
+    "tests" : [ {
+      "tcId" : 1330,
+      "key" : "E9F065D7C13573587F7875357DFBB16C53489F6A4BD0F7CD",
+      "ct" : "0956259C9CD5CFD0181CCA53380CDE06"
+    }]
+  }, {
+    "tgId" : 19,
+    "testType" : "AFT",
+    "direction" : "decrypt",
+    "keyLen" : 192,
+    "tests" : [ {
+      "tcId" : 1354,
+      "key" : "000000000000000000000000000000000000000000000000",
+      "ct" : "6CD02513E8D4DC986B4AFE087A60BD0C"
+    }]
+  }, {
+    "tgId" : 20,
+    "testType" : "AFT",
+    "direction" : "decrypt",
+    "keyLen" : 192,
+    "tests" : [ {
+      "tcId" : 1482,
+      "key" : "800000000000000000000000000000000000000000000000",
+      "ct" : "DE885DC87F5A92594082D02CC1E1B42C"
+    }]
+  }, {
+    "tgId" : 21,
+    "testType" : "AFT",
+    "direction" : "decrypt",
+    "keyLen" : 256,
+    "tests" : [ {
+      "tcId" : 1674,
+      "key" : "0000000000000000000000000000000000000000000000000000000000000000",
+      "ct" : "5C9D844ED46F9885085E5D6A4F94C7D7"
+    }]
+  }, {
+    "tgId" : 22,
+    "testType" : "AFT",
+    "direction" : "decrypt",
+    "keyLen" : 256,
+    "tests" : [ {
+      "tcId" : 1679,
+      "key" : "C47B0294DBBBEE0FEC4757F22FFEEE3587CA4730C3D33B691DF38BAB076BC558",
+      "ct" : "46F2FB342D6F0AB477476FC501242C5F"
+    }]
+  }, {
+    "tgId" : 23,
+    "testType" : "AFT",
+    "direction" : "decrypt",
+    "keyLen" : 256,
+    "tests" : [ {
+      "tcId" : 1695,
+      "key" : "0000000000000000000000000000000000000000000000000000000000000000",
+      "ct" : "DDC6BF790C15760D8D9AEB6F9A75FD4E"
+    }]
+  }, {
+    "tgId" : 24,
+    "testType" : "AFT",
+    "direction" : "decrypt",
+    "keyLen" : 256,
+    "tests" : [ {
+      "tcId" : 1823,
+      "key" : "8000000000000000000000000000000000000000000000000000000000000000",
+      "ct" : "E35A6DCB19B201A01EBCFA8AA22B5759"
+    }]
+  }, {
+    "tgId" : 25,
+    "testType" : "AFT",
+    "direction" : "encrypt",
+    "keyLen" : 128,
+    "tests" : [ {
+      "tcId" : 2079,
+      "pt" : "9BE083087B6D3AB28A7996A0DDD54BD4",
+      "key" : "0075B281A02DCCCD60E77753C4C6C045"
+    }]
+  }, {
+    "tgId" : 26,
+    "testType" : "AFT",
+    "direction" : "encrypt",
+    "keyLen" : 192,
+    "tests" : [ {
+      "tcId" : 2089,
+      "pt" : "96911480CD395F5864F98A07F908B77D",
+      "key" : "389F7CCB19755CB1CC0E40440FA7F75A57577460A5661AE6"
+    }]
+  }, {
+    "tgId" : 27,
+    "testType" : "AFT",
+    "direction" : "encrypt",
+    "keyLen" : 256,
+    "tests" : [ {
+      "tcId" : 2099,
+      "pt" : "8BA04B40C5966BF9E24A12DAF6C1F239",
+      "key" : "848CB7EFB814AD6F4D74F2EFB56CB483912531ACD5F7A23544108C5CB6E5C0BD"
+    }]
+  }, {
+    "tgId" : 28,
+    "testType" : "AFT",
+    "direction" : "decrypt",
+    "keyLen" : 128,
+    "tests" : [ {
+      "tcId" : 2109,
+      "key" : "3A8A1C4747AD09A93A4E6334E2658B64",
+      "ct" : "BF5981167B8C65B59C008B5B4FDC7719"
+    }]
+  }, {
+    "tgId" : 29,
+    "testType" : "AFT",
+    "direction" : "decrypt",
+    "keyLen" : 192,
+    "tests" : [ {
+      "tcId" : 2119,
+      "key" : "B468983DC92FF52C87D8A182FE88D045D3EA3DB82B2E39C4",
+      "ct" : "DE92EFC6B47BC38D9A721E4D5D180D2D"
+    }]
+  }, {
+    "tgId" : 30,
+    "testType" : "AFT",
+    "direction" : "decrypt",
+    "keyLen" : 256,
+    "tests" : [ {
+      "tcId" : 2129,
+      "key" : "62AAE0072B2EF160901A890FD2D25BC21F4B1356D7AC575CEBF2CC0688EA28E0",
+      "ct" : "6F133D7E82C136BEB089BF441CBD62D2"
+    }]
+  }]
+}
