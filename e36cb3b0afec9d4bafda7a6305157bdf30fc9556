@@ -93,6 +93,30 @@
       "revId": "e36cb3b0afec9d4bafda7a6305157bdf30fc9556",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1045ae19_16069407",
+        "filename": "src/chromiumos/tast/local/arc/README_dumpsys.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-24T16:55:00Z",
+      "side": 1,
+      "message": "Mmmm... I dig further and you are right. It should never fail.\nAndroid Q introduced a incompatible change, they changed the type of field :(.\nAnd that\u0027s why it is failing.\n\non P:\nmessage KeyguardControllerProto {\n    option (.android.msg_privacy).dest \u003d DEST_AUTOMATIC;\n\n    optional bool keyguard_showing \u003d 1;\n    optional bool keyguard_occluded \u003d 2;   // \u003c---- LOOK AT THIS ONE\n}\n\n\n\non Q:\n\nmessage KeyguardControllerProto {\n    option (.android.msg_privacy).dest \u003d DEST_AUTOMATIC;\n\n    optional bool keyguard_showing \u003d 1;\n    repeated KeyguardOccludedProto keyguard_occluded_states\u003d 2; // \u003c---- LOOK AT THIS ONE\n    optional bool aod_showing \u003d 3;\n}\n\nmessage KeyguardOccludedProto {\n    option (.android.msg_privacy).dest \u003d DEST_AUTOMATIC;\n\n    optional int32 display_id \u003d 1;\n    optional bool keyguard_occluded \u003d 2;\n}",
+      "parentUuid": "98be96e5_4393b1e4",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 72
+      },
+      "revId": "e36cb3b0afec9d4bafda7a6305157bdf30fc9556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
