@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6be7e493_48be6e19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-24T14:09:37Z",
+      "side": 1,
+      "message": "To use this in both init() and Minijail(), could you move this out from init()?\n\nAlong with the change, I think it\u0027s better to name staticLink and dynamicLink.",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 2
+      },
+      "revId": "cb2bd3098c35298876a6669e3933f90b32435d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f726c54b_4e3adcd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-24T14:09:37Z",
+      "side": 1,
+      "message": "Could you take linkMode here?",
+      "range": {
+        "startLine": 83,
+        "startChar": 35,
+        "endLine": 83,
+        "endChar": 46
+      },
+      "revId": "cb2bd3098c35298876a6669e3933f90b32435d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53bf0c2c_1124a4c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-24T14:09:37Z",
+      "side": 1,
+      "message": "And so this will be \"mode \u003d\u003d static\" or something.",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 11
+      },
+      "revId": "cb2bd3098c35298876a6669e3933f90b32435d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8b9a709_f99518ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-24T14:09:37Z",
+      "side": 1,
+      "message": "Could you cast to linkMode, instead?",
+      "range": {
+        "startLine": 392,
+        "startChar": 30,
+        "endLine": 392,
+        "endChar": 33
+      },
+      "revId": "cb2bd3098c35298876a6669e3933f90b32435d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
