@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "771d374c_f34f4adc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-09-24T01:00:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff11035c_c132b5e5",
+      "range": {
+        "startLine": 10,
+        "startChar": 61,
+        "endLine": 10,
+        "endChar": 69
+      },
+      "revId": "8ca7d3f1df1dcbe200bc8fcc0eccc3d6a39cc80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e649365a_449a46c9",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "27fbdadf_f9e2e07a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-09-24T01:00:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e649365a_449a46c9",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 59
+      },
+      "revId": "8ca7d3f1df1dcbe200bc8fcc0eccc3d6a39cc80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "315a2ccd_e18ca0c5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
@@ -59,6 +107,30 @@
       "writtenOn": "2019-09-24T00:23:11Z",
       "side": 1,
       "message": "This isn\u0027t correct. This function returns all network interfaces that are wireless interfaces. \nThey may or may not be correlated with the current wifi network. \ne.g. wlan0 is the default card on the system, and in a hypothetical world, you plug in a USB-based\nmlan0 adapter. You are connected via wlan0, but this function will still return both wlan0 and mlan0?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 60
+      },
+      "revId": "8ca7d3f1df1dcbe200bc8fcc0eccc3d6a39cc80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31f645b1_cd6e86ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-09-24T01:00:43Z",
+      "side": 1,
+      "message": "It returns the first seen wifi interface\u0027s name.",
+      "parentUuid": "315a2ccd_e18ca0c5",
       "range": {
         "startLine": 13,
         "startChar": 0,
@@ -91,6 +163,30 @@
       "revId": "8ca7d3f1df1dcbe200bc8fcc0eccc3d6a39cc80d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cbd09d2_a73d8b19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-09-24T01:00:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e80b00e5_3b4a680f",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 12
+      },
+      "revId": "8ca7d3f1df1dcbe200bc8fcc0eccc3d6a39cc80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "ff42cc7a_14eb58a4",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-09-24T01:00:43Z",
+      "side": 1,
+      "message": "Per comment on https://crrev.com/c/1819140/1/src/chromiumos/tast/local/network/interface.go, maybe Interface() is no longer needed for now. Do you agree to remove it?",
+      "parentUuid": "372dbf75_720f40a5",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 1
+      },
+      "revId": "8ca7d3f1df1dcbe200bc8fcc0eccc3d6a39cc80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "27433e13_4f9dc0e0",
         "filename": "src/chromiumos/tast/local/network/interface.go",
         "patchSetId": 7
@@ -152,6 +272,30 @@
       "writtenOn": "2019-09-24T00:41:54Z",
       "side": 1,
       "message": "Given that it\u0027s possible (but not expected) to have more than 1 WiFi interface, should this fail if it finds more than 1 WiFi interface?\n\nAlso, this phrase doesn\u0027t really make sense. Maybe \"the name of the WiFi interface\"?",
+      "range": {
+        "startLine": 27,
+        "startChar": 25,
+        "endLine": 27,
+        "endChar": 59
+      },
+      "revId": "8ca7d3f1df1dcbe200bc8fcc0eccc3d6a39cc80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f468b7a6_21a1db1e",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-09-24T01:00:43Z",
+      "side": 1,
+      "message": "Two approaches: either it returns all wifi interfaces\u0027 names or raise an error if there\u0027s more than one wifi interfaces.",
+      "parentUuid": "27433e13_4f9dc0e0",
       "range": {
         "startLine": 27,
         "startChar": 25,
@@ -211,6 +355,30 @@
     },
     {
       "key": {
+        "uuid": "8d4f7e75_fb832887",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-09-24T01:00:43Z",
+      "side": 1,
+      "message": "I\u0027m thinking to squash them. However, Kirtika raised a question about if retrieving wifi interfaces from sysfs is more robust than from shill.",
+      "parentUuid": "35d02b8b_b9086b90",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 57
+      },
+      "revId": "8ca7d3f1df1dcbe200bc8fcc0eccc3d6a39cc80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "94f2c3fc_fe67e203",
         "filename": "src/chromiumos/tast/local/network/interface.go",
         "patchSetId": 7
@@ -245,6 +413,30 @@
       "writtenOn": "2019-09-24T00:33:20Z",
       "side": 1,
       "message": "Yes, please get rid of this. This was a bad inheritance from network_UdevRename IIRC.",
+      "parentUuid": "94f2c3fc_fe67e203",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 48
+      },
+      "revId": "8ca7d3f1df1dcbe200bc8fcc0eccc3d6a39cc80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "330d8a0f_bfed34a7",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-09-24T01:00:43Z",
+      "side": 1,
+      "message": "I\u0027m thinking if we shall just upload the following CL: https://crrev.com/c/1819140 and discard this one.",
       "parentUuid": "94f2c3fc_fe67e203",
       "range": {
         "startLine": 36,
