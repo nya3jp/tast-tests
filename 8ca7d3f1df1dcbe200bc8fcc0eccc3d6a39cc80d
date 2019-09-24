@@ -141,6 +141,29 @@
     },
     {
       "key": {
+        "uuid": "03e83320_a292a14c",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-09-24T00:33:20Z",
+      "side": 1,
+      "message": "You are currently handling this bug. Can\u0027t we just fix any deficiencies now?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 57
+      },
+      "revId": "8ca7d3f1df1dcbe200bc8fcc0eccc3d6a39cc80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "94f2c3fc_fe67e203",
         "filename": "src/chromiumos/tast/local/network/interface.go",
         "patchSetId": 7
@@ -152,6 +175,30 @@
       "writtenOn": "2019-09-24T00:23:11Z",
       "side": 1,
       "message": "I think this was a hack (temporary!) until we could figure out a way to get the \u0027type\u0027 of interface\nfrom sysfs itself and filter the list of interfaces for type \u0027wireless\u0027",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 48
+      },
+      "revId": "8ca7d3f1df1dcbe200bc8fcc0eccc3d6a39cc80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2395693_4a4a5149",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-09-24T00:33:20Z",
+      "side": 1,
+      "message": "Yes, please get rid of this. This was a bad inheritance from network_UdevRename IIRC.",
+      "parentUuid": "94f2c3fc_fe67e203",
       "range": {
         "startLine": 36,
         "startChar": 1,
