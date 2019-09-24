@@ -15,6 +15,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/colorcmp"
 	"chromiumos/tast/local/screenshot"
 )
@@ -40,6 +41,32 @@ func CountPixels(image image.Image, clr color.Color) int {
 // GrabScreenshot creates a screenshot and returns an image.Image.
 // The path of the image is generated ramdomly in /tmp.
 func GrabScreenshot(ctx context.Context, cr *chrome.Chrome) (image.Image, error) {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	infos, err := display.GetInfo(ctx, tconn)
+	if err != nil {
+		return nil, err
+	}
+
+	primaryDispID := ""
+	for _, info := range infos {
+		if info.IsPrimary {
+			primaryDispID = info.ID
+			break
+		}
+	}
+	if primaryDispID == "" {
+		return nil, errors.New("not able to find the primary display")
+	}
+
+	return GrabScreenshotForDisplay(ctx, cr, primaryDispID)
+}
+
+// GrabScreenshotForDisplay takes a screenshot for a given displayID and returns an image.Image.
+func GrabScreenshotForDisplay(ctx context.Context, cr *chrome.Chrome, displayID string) (image.Image, error) {
 	fd, err := ioutil.TempFile("", "screenshot")
 	if err != nil {
 		return nil, errors.Wrap(err, "error opening screenshot file")
@@ -47,13 +74,13 @@ func GrabScreenshot(ctx context.Context, cr *chrome.Chrome) (image.Image, error)
 	defer os.Remove(fd.Name())
 	defer fd.Close()
 
-	if err := screenshot.CaptureChrome(ctx, cr, fd.Name()); err != nil {
+	if err := screenshot.CaptureChromeForDisplay(ctx, cr, displayID, fd.Name()); err != nil {
 		return nil, errors.Wrap(err, "failed to capture screenshot")
 	}
 
 	img, _, err := image.Decode(fd)
 	if err != nil {
-		return nil, errors.Wrap(err, "error decoding image file")
+		return nil, errors.Wrap(err, "error decoding image")
 	}
 	return img, nil
 }
