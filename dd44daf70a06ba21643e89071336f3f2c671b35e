@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af3efd9b_82dc822c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/document/compare.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2019-09-24T23:23:32Z",
+      "side": 1,
+      "message": "Can you get git to detect that this file moved?",
+      "revId": "dd44daf70a06ba21643e89071336f3f2c671b35e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
