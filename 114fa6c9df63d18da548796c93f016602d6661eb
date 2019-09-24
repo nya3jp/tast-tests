@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a3c89f8_dbbf4c7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-24T22:20:33Z",
+      "side": 1,
+      "message": "nit add:\ndefer ash.SetTabletModeEnabled(ctx, tconn, originalTabletMode)\n\n\"defer\" will get called when it goes out of scope (similar to RAII in C++).\nSo, if there is s.Fatal() down below, \"defer\" will still be called.",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 2
+      },
+      "revId": "114fa6c9df63d18da548796c93f016602d6661eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3951f1a3_eaaf9c7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-24T22:20:33Z",
+      "side": 1,
+      "message": "no need for this one, if you add the defer at the top.",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "114fa6c9df63d18da548796c93f016602d6661eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
