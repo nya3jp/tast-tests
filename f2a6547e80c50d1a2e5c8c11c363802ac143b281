@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "75dd9c60_9459f905",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-24T01:01:32Z",
+      "side": 1,
+      "message": "another possible improvement (although might not be applicable, depends on what you are testing).\n\n- you can reuse the existing Chrome session. See: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#preconditions\n\n- and if so, you can just call ash.SetTabletModeEnabled() [1]\n  If you do so, make sure to restore it to the original value.\n\n\n[1]: https://godoc.org/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/ash#SetTabletModeEnabled",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 74
+      },
+      "revId": "f2a6547e80c50d1a2e5c8c11c363802ac143b281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "663f4921_37a8c214",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
         "patchSetId": 3
