@@ -14,11 +14,13 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         PlaybackVDPerfVP92160P60FPS,
-		Desc:         "Measures video playback performance with/without HW acceleration for a VP9 2160p@60fps video using a media::VideoDecoder",
-		Contacts:     []string{"akahuang@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome"},
+		Func:     PlaybackVDPerfVP92160P60FPS,
+		Desc:     "Measures video playback performance with/without HW acceleration for a VP9 2160p@60fps video using a media::VideoDecoder",
+		Contacts: []string{"akahuang@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
+		Attr:     []string{"group:crosbolt", "crosbolt_perbuild"},
+		// TODO(b/137916185): Remove dependency on android capability. It's used here
+		// to guarantee import-mode support, which is required by the new VD's.
+		SoftwareDeps: []string{"android", "chrome"},
 		Data:         []string{"2160p_60fps_600frames.vp9.webm"},
 		// Default timeout (i.e. 2 minutes) is not enough for low-end devices.
 		Timeout: 5 * time.Minute,
