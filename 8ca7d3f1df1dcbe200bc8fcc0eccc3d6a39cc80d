@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "ff11035c_c132b5e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-09-24T00:23:11Z",
+      "side": 1,
+      "message": "typos",
+      "range": {
+        "startLine": 10,
+        "startChar": 61,
+        "endLine": 10,
+        "endChar": 69
+      },
+      "revId": "8ca7d3f1df1dcbe200bc8fcc0eccc3d6a39cc80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e649365a_449a46c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-09-24T00:23:11Z",
+      "side": 1,
+      "message": "Do we need this much detail (\"slice\")? Or can we just say \"returns a list of available network interfaces\"",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 59
+      },
+      "revId": "8ca7d3f1df1dcbe200bc8fcc0eccc3d6a39cc80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "315a2ccd_e18ca0c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-09-24T00:23:11Z",
+      "side": 1,
+      "message": "This isn\u0027t correct. This function returns all network interfaces that are wireless interfaces. \nThey may or may not be correlated with the current wifi network. \ne.g. wlan0 is the default card on the system, and in a hypothetical world, you plug in a USB-based\nmlan0 adapter. You are connected via wlan0, but this function will still return both wlan0 and mlan0?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 60
+      },
+      "revId": "8ca7d3f1df1dcbe200bc8fcc0eccc3d6a39cc80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e80b00e5_3b4a680f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-09-24T00:23:11Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 12
+      },
+      "revId": "8ca7d3f1df1dcbe200bc8fcc0eccc3d6a39cc80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "67990fa8_cd65cbec",
         "filename": "src/chromiumos/tast/local/network/interface.go",
         "patchSetId": 7
@@ -18,6 +110,53 @@
         "startChar": 0,
         "endLine": 25,
         "endChar": 1
+      },
+      "revId": "8ca7d3f1df1dcbe200bc8fcc0eccc3d6a39cc80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "372dbf75_720f40a5",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-09-24T00:23:11Z",
+      "side": 1,
+      "message": "I didn\u0027t look too closely (so could be wrong) but we\u0027ve relied on crawling sysfs for an accurate list of interfaces so far. I skimmed through https://golang.org/src/net/interface_linux.go and it looks like it relies on receiving a netlink message from a device to build up the interface table. \nI\u0027d like to see if the functions are equivalent in the corner-case scenarios: \n- does the \"net\" packages\u0027s interfacetable include wlan0 when you are connected on wwan0 or eth0 \n- how about when all interfaces are present but disabled?\n\n@Dean: Are you able to run these comparison checks?",
+      "parentUuid": "67990fa8_cd65cbec",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 1
+      },
+      "revId": "8ca7d3f1df1dcbe200bc8fcc0eccc3d6a39cc80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94f2c3fc_fe67e203",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1158909
+      },
+      "writtenOn": "2019-09-24T00:23:11Z",
+      "side": 1,
+      "message": "I think this was a hack (temporary!) until we could figure out a way to get the \u0027type\u0027 of interface\nfrom sysfs itself and filter the list of interfaces for type \u0027wireless\u0027",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 48
       },
       "revId": "8ca7d3f1df1dcbe200bc8fcc0eccc3d6a39cc80d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
