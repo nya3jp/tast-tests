@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "313154bc_0efb0cd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-24T07:21:19Z",
+      "side": 1,
+      "message": "MatchString is partial string match, while you\u0027d need full-string match.\n\n(optional): you can combine the patterns. So, I\u0027d recommend something like\n\nvar quoted []string\nfor _, path :\u003d range pathsToIgnore {\n  quoted \u003d append(quoted, fmt.Sprintf(\"(^%s$)\", regexp.QuoteMeta(path)))\n}\nre :\u003d regexp.MustCompile(strings.Join(quoted, \"|\"))\n\nThen you can just re.MatchString(p) in returned closure.",
+      "revId": "a42055a798c226961746abc1dee13c582f8d3cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
