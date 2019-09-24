@@ -16,6 +16,24 @@
       "revId": "f44186b254cfc81f695b044428e316804a85d369",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eb4b0cd_21d20f68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-09-24T06:46:06Z",
+      "side": 1,
+      "message": "Thanks for the info! I need to differentiate between test failure (return value 1) and crash. I printed all of the info in WaitStatus to check what I can use:\n\nNormal test failure:\n\u003e Exited: true\n\u003e Signaled: false\n\u003e Stopped: false\n\u003e ExitStatus: 1\n\u003e Signal: signal -1\n\u003e StopSignal: signal -1\n\u003e TrapCause: -1\n\n\nCrash:\n\u003e Exited: false\n\u003e Signaled: true\n\u003e Stopped: false\n\u003e ExitStatus: -1\n\u003e Signal: trace/breakpoint trap\n\u003e StopSignal: signal -1\n\u003e TrapCause: -1\n\n\nI think the best check I can do here is check whether \"ExitStatus() !\u003d 1\". In the normal case we expect the test to fail, which means video_decode_accelerator_tests exits successfully and returns \u0027EXIT_FAILURE\u0027, which is \u00271\u0027. All other combinations probably point to an issue. I can improve the check later if I see the test failing incorrectly.",
+      "parentUuid": "18e573c8_87eae462",
+      "revId": "f44186b254cfc81f695b044428e316804a85d369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
