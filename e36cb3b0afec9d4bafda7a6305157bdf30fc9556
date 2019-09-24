@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a42bb6fc_e70940d8",
+        "filename": "src/chromiumos/tast/local/arc/README_dumpsys.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-24T20:32:18Z",
+      "side": 1,
+      "message": "tagging it as resolved. LMK I should update the doc.",
+      "parentUuid": "c07c0dad_dbfed3c5",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 3
+      },
+      "revId": "e36cb3b0afec9d4bafda7a6305157bdf30fc9556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1f3ff8d_287b0456",
         "filename": "src/chromiumos/tast/local/arc/README_dumpsys.md",
         "patchSetId": 8
@@ -117,6 +141,30 @@
       "revId": "e36cb3b0afec9d4bafda7a6305157bdf30fc9556",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73e8fe05_bca026ff",
+        "filename": "src/chromiumos/tast/local/arc/README_dumpsys.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-24T20:32:18Z",
+      "side": 1,
+      "message": "Sent new patchset with updated doc.",
+      "parentUuid": "1045ae19_16069407",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 72
+      },
+      "revId": "e36cb3b0afec9d4bafda7a6305157bdf30fc9556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
