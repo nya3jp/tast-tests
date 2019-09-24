@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "c9da52ae_660d1487",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-09-24T13:29:46Z",
+      "side": 1,
+      "message": "Should these style things (ie calls which will be made on every single test) be moved into a framework/utils file? Similar to the current autotest style",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 0
+      },
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a7d5d247_1ddbc564",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
         "patchSetId": 1
@@ -341,6 +364,29 @@
     },
     {
       "key": {
+        "uuid": "5ef501fe_47a26c59",
+        "filename": "src/chromiumos/tast/local/policy/defs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-09-24T13:29:46Z",
+      "side": 1,
+      "message": "Is it needed to define a compare for every single policy? Would it not be easier/less duplication/maintenance to compare at the verify_policy.go level? There is only going to be a few corner cases to handle there (obfuscation, etc)",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 35
+      },
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2cb5fee6_21e3a8ba",
         "filename": "src/chromiumos/tast/local/policy/defs.go",
         "patchSetId": 1
@@ -404,6 +450,29 @@
         "startChar": 0,
         "endLine": 228,
         "endChar": 20
+      },
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9224f192_3027fa52",
+        "filename": "src/chromiumos/tast/local/policy/defs_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-09-24T13:29:46Z",
+      "side": 1,
+      "message": "visual spacing (or was this intentional?)",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 5
       },
       "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -825,6 +894,75 @@
         "startChar": 1,
         "endLine": 49,
         "endChar": 30
+      },
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46d7acce_7f125912",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-09-24T13:29:46Z",
+      "side": 1,
+      "message": "Want to add a todo for source as well?",
+      "range": {
+        "startLine": 72,
+        "startChar": 10,
+        "endLine": 72,
+        "endChar": 19
+      },
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c88f641b_09dd4491",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-09-24T13:29:46Z",
+      "side": 1,
+      "message": "I believe \"scope\" will be reporting as \"machine\" when coming from the API",
+      "range": {
+        "startLine": 78,
+        "startChar": 57,
+        "endLine": 78,
+        "endChar": 63
+      },
+      "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a27615b6_4a5c0383",
+        "filename": "src/chromiumos/tast/local/policy/verify_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-09-24T13:29:46Z",
+      "side": 1,
+      "message": "Probably will need to add cases for when there can be some level of mismatch. eg obfuscated policies.",
+      "range": {
+        "startLine": 83,
+        "startChar": 14,
+        "endLine": 83,
+        "endChar": 22
       },
       "revId": "2b211607ca285108783ed04d6b9378b9b7168106",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
