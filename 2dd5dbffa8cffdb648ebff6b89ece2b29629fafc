@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ea804c33_f6f063c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-09-24T18:20:11Z",
+      "side": 1,
+      "message": "The current method looks good to me for the startup tasks.",
+      "parentUuid": "677d4dde_799fbc9b",
+      "revId": "2dd5dbffa8cffdb648ebff6b89ece2b29629fafc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9407f41e_45307d3b",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
         "patchSetId": 3
