@@ -206,21 +206,9 @@ type speechLog struct {
 	// Other values are not used in test.
 }
 
-// WaitForChromeVoxReady polls until ChromeVox speaks that it's ready.
-// This assumes that the test runs in English environment.
+// WaitForChromeVoxReady polls until ChromeVox becomes active.
 func WaitForChromeVoxReady(ctx context.Context, chromeVoxConn *chrome.Conn) error {
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var logs []speechLog
-		if err := chromeVoxConn.Eval(ctx, "LogStore.instance.getLogsOfType(LogStore.LogType.SPEECH)", &logs); err != nil {
-			return err
-		}
-		for _, log := range logs {
-			if log.Text == enabledMessage {
-				return nil
-			}
-		}
-		return errors.Errorf("speech log does not have the expected text %q", enabledMessage)
-	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+	if err := chromeVoxConn.WaitForExprFailOnErr(ctx, "cvox.ChromeVox.isActive"); err != nil {
 		return errors.Wrap(err, "timed out waiting for ChromeVox to be ready")
 	}
 
