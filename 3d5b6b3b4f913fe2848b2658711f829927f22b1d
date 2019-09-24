@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "fed83fc0_6924fe6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca/cca.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-24T07:19:41Z",
+      "side": 1,
+      "message": "No need of fmt.Sprintf; could you convert it to a constant?\n\n const code \u003d \"...\"",
+      "range": {
+        "startLine": 614,
+        "startChar": 1,
+        "endLine": 614,
+        "endChar": 50
+      },
+      "revId": "3d5b6b3b4f913fe2848b2658711f829927f22b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96d4e48d_7d87cc87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_mojo.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-24T07:19:41Z",
+      "side": 1,
+      "message": "huge nit: I believe we can name it CCAUIMojo. \"Mojo\" seems not an acronym; in official docs it is mentioned as \"Mojo\".\n\nhttps://chromium.googlesource.com/chromium/src/+/master/mojo/README.md",
+      "range": {
+        "startLine": 18,
+        "startChar": 16,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "3d5b6b3b4f913fe2848b2658711f829927f22b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20e1371f_307b8a40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_mojo.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-24T07:19:41Z",
+      "side": 1,
+      "message": "nit\u0026optional: doc comment of the test main function is optional.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Documentation",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 12
+      },
+      "revId": "3d5b6b3b4f913fe2848b2658711f829927f22b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84a94ff7_7741256a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_mojo.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-24T07:19:41Z",
+      "side": 1,
+      "message": "nit: Can we fit this in one line?",
+      "range": {
+        "startLine": 36,
+        "startChar": 37,
+        "endLine": 37,
+        "endChar": 27
+      },
+      "revId": "3d5b6b3b4f913fe2848b2658711f829927f22b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d0aed184_a79b8cf3",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
         "patchSetId": 19
@@ -13,6 +105,24 @@
       "writtenOn": "2019-09-23T05:04:24Z",
       "side": 1,
       "message": "Could we check this matches the result from autotest private api?",
+      "revId": "3d5b6b3b4f913fe2848b2658711f829927f22b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ac4c7dc_c29fb2dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 19
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-24T07:19:41Z",
+      "side": 1,
+      "message": "Also, what is the point of calling this function when its return value is not inspected? Would you mind adding a brief commment explaning why we call this function?",
+      "parentUuid": "d0aed184_a79b8cf3",
       "revId": "3d5b6b3b4f913fe2848b2658711f829927f22b1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -52,6 +162,29 @@
         "startChar": 25,
         "endLine": 275,
         "endChar": 72
+      },
+      "revId": "3d5b6b3b4f913fe2848b2658711f829927f22b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5e5345b_7e418639",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 19
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-24T07:19:41Z",
+      "side": 1,
+      "message": "If cca.mojo.DeviceOperator.isSupported() returns false, the test passes without further testing. I just want to make sure it\u0027s expected.",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 5
       },
       "revId": "3d5b6b3b4f913fe2848b2658711f829927f22b1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
