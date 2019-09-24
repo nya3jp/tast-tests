@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bc77325_5f6bb61e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-24T21:33:12Z",
+      "side": 1,
+      "message": "and since you are not using the Ash switch any more, would you mind switching to using a precondition.\n\neg:\n        // Add in the \"testing.AddTest()\"\n        Pre:  chrome.LoggedIn()       \n \n\n        // And replace cr :\u003d chrome.New() with this one.\n\tcr :\u003d s.PreValue().(arc.PreData).Chrome",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "b1e5b57cc8091d4e52e54ae7ee511d8c3b28ee37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "118e282e_d7bfe6c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-24T21:33:12Z",
+      "side": 1,
+      "message": "nit:\n\nperhaps doing something like:\n\nfor enabled :\u003d range []bool{false, true} {\n\n  // at the very beginning...\n  if err \u003d ash.SetTabletModeEnabled(ctx, tconn, enabled); err !\u003d nil {\n\t\t\ts.Fatalf(\"Failed to set tablet mode %v: %v\", !inTabletMode, err)\n   }\n  ...\n  ...\n}",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "b1e5b57cc8091d4e52e54ae7ee511d8c3b28ee37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c838ef74_299ed589",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-24T21:33:12Z",
+      "side": 1,
+      "message": "sorry, I missed it in the first pass, perhaps: cpu.WaitUntilIdle() ?\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go?l\u003d151",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 3
+      },
+      "revId": "b1e5b57cc8091d4e52e54ae7ee511d8c3b28ee37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b714b25_9961f1af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-24T21:33:12Z",
+      "side": 1,
+      "message": "when the test ends, it leaves the chromebook in a different tablet-mode than the original.\nI would good to restore it.\ne.g: before starting the test you can do:\n\n\ttabletModeEnabled, err :\u003d ash.TabletModeEnabled(ctx, tconn)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to get tablet mode: \", err)\n\t}\n\t// Be nice and restore tablet mode to its original state on exit.\n\tdefer ash.SetTabletModeEnabled(ctx, tconn, tabletModeEnabled)",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 3
+      },
+      "revId": "b1e5b57cc8091d4e52e54ae7ee511d8c3b28ee37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
