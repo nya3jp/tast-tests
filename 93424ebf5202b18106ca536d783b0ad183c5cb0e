@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10e8d2e1_5b60ffd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-09-24T17:58:02Z",
+      "side": 1,
+      "message": "+ chromeos-wilco@google.com?",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 58
+      },
+      "revId": "93424ebf5202b18106ca536d783b0ad183c5cb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58cab09f_20602b8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-09-24T17:58:02Z",
+      "side": 1,
+      "message": "Unmarshal the GetOsVersionResponse just like you unmarshaled and checks the contents of the GetEcTelemetryResponse?",
+      "revId": "93424ebf5202b18106ca536d783b0ad183c5cb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6cb7d53_d2f3916c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-09-24T17:58:02Z",
+      "side": 1,
+      "message": "Consider storing this as a named constant ecFwLabelRequestPayload?",
+      "range": {
+        "startLine": 69,
+        "startChar": 17,
+        "endLine": 69,
+        "endChar": 41
+      },
+      "revId": "93424ebf5202b18106ca536d783b0ad183c5cb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "032af55b_f12282bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-09-24T17:58:02Z",
+      "side": 1,
+      "message": "consider defining this inside the main test function so that you don\u0027t have to pass in the context as a parameter. This would also allow you to check for errors inside this function, instead of repeating the error checking as done above.\n\nAlso, per our discussion offline, if we want to have three different sub-tests:\n1. getOsVersion\n2. getEcTelemetry\n3. listen for EcEventNotification\nthen I think it would be worth it to add another util function that can parse the returned JSON back into a proto and verify it. This would be useful for all three cases.",
+      "range": {
+        "startLine": 107,
+        "startChar": 5,
+        "endLine": 107,
+        "endChar": 17
+      },
+      "revId": "93424ebf5202b18106ca536d783b0ad183c5cb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
