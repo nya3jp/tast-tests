@@ -41,7 +41,8 @@ func WilcoECRTC(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	const (
-		sleepTime = 3 * time.Second
+		numRTCRetries = 5
+		sleepTime     = 3 * time.Second
 		// There is an upstart job that continually keeps the EC RTC in sync with
 		// local time. We need to disable it during the test.
 		upstartJobName = "wilco_sync_ec_rtc"
@@ -54,17 +55,26 @@ func WilcoECRTC(ctx context.Context, s *testing.State) {
 	wilcoECRTC := rtc.RTC{DevName: "rtc1", LocalTime: true, NoAdjfile: true}
 
 	readECRTC := func() time.Time {
-		t, err := wilcoECRTC.Read(mainCtx)
-		if err != nil {
-			s.Fatal("Failed to read EC RTC: ", err)
+		var err error
+		for i := 0; i < numRTCRetries; i++ {
+			t, err := wilcoECRTC.Read(mainCtx)
+			if err == nil {
+				return t
+			}
 		}
-		return t
+		s.Fatal("Failed to read EC RTC: ", err)
+		return time.Time{}
 	}
 
 	writeECRTC := func(ctx context.Context, t time.Time) {
-		if err := wilcoECRTC.Write(ctx, t); err != nil {
-			s.Fatal("Failed to write EC RTC: ", err)
+		var err error
+		for i := 0; i < numRTCRetries; i++ {
+			err = wilcoECRTC.Write(ctx, t)
+			if err == nil {
+				return
+			}
 		}
+		s.Fatal("Failed to write EC RTC: ", err)
 	}
 
 	// Sanity check before we do more complicated testing.
