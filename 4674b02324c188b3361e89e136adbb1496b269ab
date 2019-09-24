@@ -22,6 +22,30 @@
       "revId": "4674b02324c188b3361e89e136adbb1496b269ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebdbf7dd_dcd81940",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-24T20:24:28Z",
+      "side": 1,
+      "message": "Good call. Adding cleanup context.",
+      "parentUuid": "ed46c2d1_84006195",
+      "range": {
+        "startLine": 44,
+        "startChar": 7,
+        "endLine": 44,
+        "endChar": 26
+      },
+      "revId": "4674b02324c188b3361e89e136adbb1496b269ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

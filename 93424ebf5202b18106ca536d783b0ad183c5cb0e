@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "782d688d_b5934d83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-24T20:24:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10e8d2e1_5b60ffd3",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 58
+      },
+      "revId": "93424ebf5202b18106ca536d783b0ad183c5cb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58cab09f_20602b8f",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
         "patchSetId": 4
@@ -63,6 +87,24 @@
       "revId": "93424ebf5202b18106ca536d783b0ad183c5cb0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4310b27f_4eac36c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-24T20:24:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58cab09f_20602b8f",
+      "revId": "93424ebf5202b18106ca536d783b0ad183c5cb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -89,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "5f622aa3_5433ba37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-24T20:24:28Z",
+      "side": 1,
+      "message": "Arrays cannot be stored as constants since they are always calculated at runtime. Because of this, I don\u0027t think it makes sense to store it as a separate variable.",
+      "parentUuid": "b6cb7d53_d2f3916c",
+      "range": {
+        "startLine": 69,
+        "startChar": 17,
+        "endLine": 69,
+        "endChar": 41
+      },
+      "revId": "93424ebf5202b18106ca536d783b0ad183c5cb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "032af55b_f12282bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
         "patchSetId": 4
@@ -100,6 +166,30 @@
       "writtenOn": "2019-09-24T17:58:02Z",
       "side": 1,
       "message": "consider defining this inside the main test function so that you don\u0027t have to pass in the context as a parameter. This would also allow you to check for errors inside this function, instead of repeating the error checking as done above.\n\nAlso, per our discussion offline, if we want to have three different sub-tests:\n1. getOsVersion\n2. getEcTelemetry\n3. listen for EcEventNotification\nthen I think it would be worth it to add another util function that can parse the returned JSON back into a proto and verify it. This would be useful for all three cases.",
+      "range": {
+        "startLine": 107,
+        "startChar": 5,
+        "endLine": 107,
+        "endChar": 17
+      },
+      "revId": "93424ebf5202b18106ca536d783b0ad183c5cb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cf80424_7660bb5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-24T20:24:28Z",
+      "side": 1,
+      "message": "comment #1: I don\u0027t think it\u0027s worth making this function anonymous just to save passing the context. It\u0027s nice for the error checking to be specific to the call that was made. If someone else feels strongly about this, I am open to reconsider.\ncomment #2: done.",
+      "parentUuid": "032af55b_f12282bc",
       "range": {
         "startLine": 107,
         "startChar": 5,
