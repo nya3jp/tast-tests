@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7b9b0223_b9afb62f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/start_sludge.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-24T18:02:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c1c8666_db962977",
+      "range": {
+        "startLine": 22,
+        "startChar": 25,
+        "endLine": 22,
+        "endChar": 80
+      },
+      "revId": "e461911eff7c526272b804904e3d24c45562c654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "981a1589_9f42332a",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/vm/sludge.go",
         "patchSetId": 6
@@ -39,6 +63,24 @@
       "revId": "e461911eff7c526272b804904e3d24c45562c654",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c447251_84854127",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/vm/sludge.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-24T18:02:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "981a1589_9f42332a",
+      "revId": "e461911eff7c526272b804904e3d24c45562c654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "e461911eff7c526272b804904e3d24c45562c654",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4776aef0_6f019a07",
+        "filename": "src/chromiumos/tast/local/vm/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-24T18:02:10Z",
+      "side": 1,
+      "message": "int would probably be better.",
+      "parentUuid": "486335d2_50d6956c",
+      "range": {
+        "startLine": 339,
+        "startChar": 43,
+        "endLine": 339,
+        "endChar": 69
+      },
+      "revId": "e461911eff7c526272b804904e3d24c45562c654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
