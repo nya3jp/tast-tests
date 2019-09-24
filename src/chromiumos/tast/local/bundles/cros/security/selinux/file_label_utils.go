@@ -48,6 +48,24 @@ func IgnorePaths(pathsToIgnore []string) FileLabelCheckFilter {
 	}
 }
 
+// IgnorePathsRegex returns a FileLabelCheckFilter which allows the test to
+// skip files or directories matching pathsToIgnore, including its
+// subdirectory.
+func IgnorePathsRegex(pathsToIgnore []string) FileLabelCheckFilter {
+	var compiled []*regexp.Regexp
+	for _, path := range pathsToIgnore {
+		compiled = append(compiled, regexp.MustCompile(path))
+	}
+	return func(p string, _ os.FileInfo) (FilterResult, FilterResult) {
+		for _, pattern := range compiled {
+			if pattern.MatchString(p) {
+				return Skip, Skip
+			}
+		}
+		return Check, Check
+	}
+}
+
 // IgnorePathsButNotContents returns a FileLabelCheckFilter which allows the test
 // to skip files matching pathsToIgnore, but not its subdirectory.
 func IgnorePathsButNotContents(pathsToIgnore []string) FileLabelCheckFilter {
