@@ -74,6 +74,31 @@ type windowStateChange struct {
 	FailIfNoChange bool        `json:"failIfNoChange,omitempty"`
 }
 
+// SetActiveWindowState represents the change sent to chrome.autotestPrivate.setActiveWindowState function.
+func SetActiveWindowState(ctx context.Context, c *chrome.Conn, et WMEventType) (WindowStateType, error) {
+	change, err := json.Marshal(&windowStateChange{EventType: et})
+	if err != nil {
+		return WindowStateNormal, err
+	}
+
+	expr := fmt.Sprintf(
+		`new Promise(function(resolve, reject) {
+		  chrome.autotestPrivate.setActiveWindowState(%s, function(state) {
+		    if (chrome.runtime.lastError) {
+		      reject(new Error(chrome.runtime.lastError.message));
+		    } else {
+		      resolve(state);
+		    }
+		  });
+		})`, string(change))
+
+	var state WindowStateType
+	if err := c.EvalPromise(ctx, expr, &state); err != nil {
+		return WindowStateNormal, err
+	}
+	return state, nil
+}
+
 // SetARCAppWindowState sends WM event to ARC app window to change its window state, and returns the expected new state type.
 func SetARCAppWindowState(ctx context.Context, c *chrome.Conn, pkgName string, et WMEventType) (WindowStateType, error) {
 	change, err := json.Marshal(&windowStateChange{EventType: et})
