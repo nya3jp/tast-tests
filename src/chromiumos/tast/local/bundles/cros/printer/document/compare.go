@@ -2,7 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ghostscript
+// Package document provides common utilities for performing comparison between
+// documents produced during testing.
+package document
 
 import (
 	"context"
@@ -14,21 +16,32 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// TODO(crbug.com/973637): Investigate why it is that CUPS is inconsistent on
+// settings the values for the "For" and "Title" fields in the resulting PDF.
+// Once the root cause is determined and fixed we should perform the PDF
+// comparison without stripping the fields.
+
 // cleanPdfRegex used to clear away PDF document fields which cause
 // discrepencies when attempting to perform a diff between PDF documents. These
 // fields have no bearing on the actual content of the document, so it is safe
 // to clear them away.
 var cleanPdfRegex = regexp.MustCompile("(?m)" +
 	// matches the "ID" embedded in the PDF file which uniquely
-	// identifies the document. This line is removed so that file comparison will
-	// pass.
-	`(^\/ID \[<[A-F0-9]+><[A-F0-9]+>\]$)` +
+	// identifies the document.
+	`(\/ID \[<[a-fA-F0-9]+><[a-fA-F0-9]+>\])` +
 	// matches the "CreationDate" field embedded in the PDF file.
-	// This field is removed so that the file comparison will pass.
-	`|(^\/CreationDate\(D:[0-9]{14}-[0-9]{2}'[0-9]{2}'\)$)` +
-	// matches the "ModDate" field embedded in the PDF file. This field
-	// is removed so that file comparison will pass.
-	`|(^\/ModDate\(D:[0-9]{14}-[0-9]{2}'[0-9]{2}'\)$)`)
+	`|(\/CreationDate\(D:[0-9]{14}-[0-9]{2}'[0-9]{2}'\))` +
+	// matches the "ModDate" field embedded in the PDF file.
+	`|(\/ModDate\(D:[0-9]{14}-[0-9]{2}'[0-9]{2}'\))` +
+	// matches the "For" comment field which specifies the user that created the
+	// file.
+	`|(^%%For: \(\w+\)$)` +
+	// matches the "Title" comment field which specifies the title of original
+	// document.
+	`|(^%%Title: \([\w\.]+\)$)` +
+	// matches the comment field which specifies the version of poppler used to
+	// produce the pdf.
+	`|(^%Produced by poppler.*$)`)
 
 // cleanBaseFontRegex is used to clear away the font 'IDs' in the
 // FontDescriptor fields which may differ between systems. Thus if two
@@ -64,21 +77,16 @@ func cleanPdfContents(contents string) string {
 	return cleanPdfRegex.ReplaceAllLiteralString(contents, "")
 }
 
-// compareFiles compare the string outputContents to the contents of the file
-// golden and returns an error if there are any differences. If there are any
-// differences between the compared file contents, then the results of the diff
-// are written to diffPath.
-func compareFiles(ctx context.Context, outputContents, golden, diffPath string) error {
-	goldenBytes, err := ioutil.ReadFile(golden)
-	if err != nil {
-		return errors.Wrapf(err, "failed to read file %s", golden)
-	}
+// CompareFileContents compares the string contents given by output and golden
+// and returns an error if there are any differences. If there are any
+// differences between the given file contents then the results of the diff are
+// written to diffPath.
+func CompareFileContents(ctx context.Context, output, golden, diffPath string) error {
+	output = cleanPdfContents(output)
+	golden = cleanPdfContents(golden)
 
-	outputContents = cleanPdfContents(outputContents)
-	goldenContents := cleanPdfContents(string(goldenBytes))
-
-	testing.ContextLog(ctx, "Comparing gstoraster output and ", golden)
-	diff, err := diff.Diff(outputContents, goldenContents)
+	testing.ContextLog(ctx, "Comparing output with golden file")
+	diff, err := diff.Diff(output, golden)
 	if err != nil {
 		return errors.Wrap(err, "unexpected diff output")
 	}
@@ -90,4 +98,20 @@ func compareFiles(ctx context.Context, outputContents, golden, diffPath string) 
 		return errors.New("result file did not match the expected file")
 	}
 	return nil
+}
+
+// CompareFiles loads the contents of the given output and golden files and
+// compares them for differences. If there are any differences between the two
+// files then an error will be returned and the result of the diff are written
+// to diffPath.
+func CompareFiles(ctx context.Context, output, golden, diffPath string) error {
+	outputBytes, err := ioutil.ReadFile(output)
+	if err != nil {
+		return errors.Wrapf(err, "failed to read file %s", output)
+	}
+	goldenBytes, err := ioutil.ReadFile(golden)
+	if err != nil {
+		return errors.Wrapf(err, "failed to read file %s", golden)
+	}
+	return CompareFileContents(ctx, string(outputBytes), string(goldenBytes), diffPath)
 }

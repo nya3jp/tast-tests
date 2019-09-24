@@ -12,6 +12,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"chromiumos/tast/local/bundles/cros/printer/document"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
@@ -21,7 +22,7 @@ import (
 // the contents of the given golden file. Some filters may require an extra
 // environment variable to be set, which is given by envVar.
 func RunTest(ctx context.Context, s *testing.State, gsFilter, input, golden, envVar string) {
-	inputContents, err := ioutil.ReadFile(s.DataPath(input))
+	inputContents, err := ioutil.ReadFile(input)
 	if err != nil {
 		s.Fatal("Failed to load file contents: ", err)
 	}
@@ -55,8 +56,13 @@ func RunTest(ctx context.Context, s *testing.State, gsFilter, input, golden, env
 		s.Fatalf("Failed to run %s command: %v", gsFilter, err)
 	}
 
+	goldenBytes, err := ioutil.ReadFile(golden)
+	if err != nil {
+		s.Fatalf("Failed to read file %s: %v", golden, err)
+	}
+
 	diffPath := filepath.Join(s.OutDir(), "diff.txt")
-	if err := compareFiles(ctx, string(output), s.DataPath(golden), diffPath); err != nil {
+	if err := document.CompareFileContents(ctx, string(output), string(goldenBytes), diffPath); err != nil {
 		s.Error("Printed file differs from golden file: ", err)
 	}
 }

@@ -30,5 +30,5 @@ func Gstoraster(ctx context.Context, s *testing.State) {
 		input    = "gstoraster_input.pdf"
 		golden   = "gstoraster_golden.pwg"
 	)
-	ghostscript.RunTest(ctx, s, gsFilter, input, golden, "" /*envVar*/)
+	ghostscript.RunTest(ctx, s, gsFilter, s.DataPath(input), s.DataPath(golden), "" /*envVar*/)
 }
