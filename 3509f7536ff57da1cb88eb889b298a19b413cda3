@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7969ed8c_63fc62d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/service_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-24T07:45:04Z",
+      "side": 1,
+      "message": "This kind of logging makes it a bit more difficult to read logs when they contain multiple tests.\n\nInstead I recommend including tt.name in test failure messages. This also makes it a lot easier to debug failures since test failure messages are indexed and shown in various dashboards, e.g. Stainless.\n\nI know it\u0027s boring to do it in every s.Fatal/s.Error calls. One way would be to use a function returning error:\n\n for _, tt :\u003d range testParams {\n   if err :\u003d func() error {\n     ...\n   }(); err !\u003d nil {\n     s.Error(\"%s failed: %v\", tt.name, err)\n   }\n }\n\nOr, if you\u0027re not in hurry, you might want to wait for crbug.com/1007138.",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 103
+      },
+      "revId": "3509f7536ff57da1cb88eb889b298a19b413cda3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
