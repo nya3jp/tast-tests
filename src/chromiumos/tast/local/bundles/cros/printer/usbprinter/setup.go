@@ -13,30 +13,11 @@ import (
 	"io"
 	"io/ioutil"
 	"os"
-	"regexp"
 
-	"chromiumos/tast/diff"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/testing"
 )
-
-// idInPDFRegex matches the "ID" embedded in the PDF file which uniquely
-// identifies the document. This line is removed so that file comparison will
-// pass.
-var idInPDFRegex = regexp.MustCompile("(?m)^.*\\/ID \\[<[a-f0-9]+><[a-f0-9]+>\\] >>[\r\n]")
-
-// TODO(crbug.com/973637): Investigate why it is that CUPS is inconsistent on
-// settings the values for the "For" and "Title" fields in the resulting PDF.
-// Once the root cause is determined and fixed we should perform the PDF
-// comparison without stripping the fields and can remove these regexes.
-
-// usernameInPDFRegex matches the line with "For" field embedded in the PDF.
-var usernameInPDFRegex = regexp.MustCompile("(?m)^%%For: \\(\\w+\\)$")
-
-// documentTitleInPDFRegex matches the line with the "Title" field embedded in
-// the PDF.
-var documentTitleInPDFRegex = regexp.MustCompile("(?m)^%%Title: \\([\\w\\.]+\\)$")
 
 // DevInfo contains information used to identify a USB device.
 type DevInfo struct {
@@ -165,46 +146,4 @@ func Start(ctx context.Context, devInfo DevInfo, descriptors, attributes, record
 
 	cmdToKill = nil
 	return launch, nil
-}
-
-func cleanPDFContents(f string) (string, error) {
-	bytes, err := ioutil.ReadFile(f)
-	if err != nil {
-		return "", errors.Wrapf(err, "failed to read file %s", f)
-	}
-
-	content := string(bytes)
-	for _, r := range []*regexp.Regexp{idInPDFRegex, usernameInPDFRegex, documentTitleInPDFRegex} {
-		content = r.ReplaceAllLiteralString(content, "")
-	}
-	return content, nil
-}
-
-// compareFiles performs a diff between the given files output and golden. If
-// the contents of the files are not the same then the result from the diff
-// command will be written to diffPath.
-func compareFiles(ctx context.Context, output, golden, diffPath string) error {
-	result, err := cleanPDFContents(output)
-	if err != nil {
-		return err
-	}
-
-	expected, err := cleanPDFContents(golden)
-	if err != nil {
-		return err
-	}
-
-	testing.ContextLogf(ctx, "Comparing files %v and %v", output, golden)
-	diff, err := diff.Diff(result, expected)
-	if err != nil {
-		return errors.Wrap(err, "unexpected diff output")
-	}
-	if diff != "" {
-		testing.ContextLog(ctx, "Dumping diff to ", diffPath)
-		if err := ioutil.WriteFile(diffPath, []byte(diff), 0644); err != nil {
-			testing.ContextLog(ctx, "Failed to dump diff: ", err)
-		}
-		return errors.New("result file did not match the expected file")
-	}
-	return nil
 }

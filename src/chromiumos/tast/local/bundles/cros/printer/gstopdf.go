@@ -31,5 +31,5 @@ func Gstopdf(ctx context.Context, s *testing.State) {
 		golden   = "gstopdf_golden.pdf"
 		envVar   = "CUPS_SERVERBIN=/usr/libexec/cups"
 	)
-	ghostscript.RunTest(ctx, s, gsFilter, input, golden, envVar)
+	ghostscript.RunTest(ctx, s, gsFilter, s.DataPath(input), s.DataPath(golden), envVar)
 }
