@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9daef093_08dead2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-09-24T17:57:30Z",
+      "side": 1,
+      "message": "My intention was to limit the tablet mode case to tablet devices only; that\u0027s why I added as a param with ExtraSoftwareDeps.\n\nBut Daisy also commented the same thing, so that is a signal. Rewritten to remove the params.",
+      "parentUuid": "75dd9c60_9459f905",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 74
+      },
+      "revId": "f2a6547e80c50d1a2e5c8c11c363802ac143b281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "663f4921_37a8c214",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-09-24T00:50:29Z",
       "side": 1,
       "message": "what about removing this, and below do:\n\n`\nhistName :\u003d prefix + \".\" + mode\n`\n?",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "f2a6547e80c50d1a2e5c8c11c363802ac143b281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bb2fc93_dde10b31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-09-24T17:57:30Z",
+      "side": 1,
+      "message": "This is used for the name of histogram defined in chromium code base, suffix needs to be \"SingleClamshellMode\" or \"TabletMode\". Also \"mode\" value needs to be either of \"clamshell\" or \"touch_view\". They\u0027re not reusable here.",
+      "parentUuid": "663f4921_37a8c214",
       "range": {
         "startLine": 73,
         "startChar": 1,
