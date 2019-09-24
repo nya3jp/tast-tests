@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f3f2e3d4_26b59cdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-24T21:41:25Z",
+      "side": 1,
+      "message": "For reference, the current (latest patchset) logic LGTM. But I wasn\u0027t referring to put the \"enable / disable\" in the same subtest... I was just suggesting to replace the chrome.ExtraArgs() with setAshTabletMode().  Only because if you use any chrome.ExtraArgs you cannot reuse the existing Chrome session, making the tests slower.",
+      "parentUuid": "9daef093_08dead2e",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 74
+      },
+      "revId": "f2a6547e80c50d1a2e5c8c11c363802ac143b281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "663f4921_37a8c214",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
         "patchSetId": 3
