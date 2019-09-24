@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3ceb657e_ed07227f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1342022
+      },
+      "writtenOn": "2019-09-24T21:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6be7e493_48be6e19",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 2
+      },
+      "revId": "cb2bd3098c35298876a6669e3933f90b32435d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f726c54b_4e3adcd7",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail.go",
         "patchSetId": 18
@@ -45,6 +69,30 @@
       "revId": "cb2bd3098c35298876a6669e3933f90b32435d63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "deffce00_2384287c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1342022
+      },
+      "writtenOn": "2019-09-24T21:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f726c54b_4e3adcd7",
+      "range": {
+        "startLine": 83,
+        "startChar": 35,
+        "endLine": 83,
+        "endChar": 46
+      },
+      "revId": "cb2bd3098c35298876a6669e3933f90b32435d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7d52eb65_df72297b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1342022
+      },
+      "writtenOn": "2019-09-24T21:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53bf0c2c_1124a4c5",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 11
+      },
+      "revId": "cb2bd3098c35298876a6669e3933f90b32435d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8b9a709_f99518ff",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail.go",
         "patchSetId": 18
@@ -82,6 +154,30 @@
       "writtenOn": "2019-09-24T14:09:37Z",
       "side": 1,
       "message": "Could you cast to linkMode, instead?",
+      "range": {
+        "startLine": 392,
+        "startChar": 30,
+        "endLine": 392,
+        "endChar": 33
+      },
+      "revId": "cb2bd3098c35298876a6669e3933f90b32435d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd6c257c_219a4f40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1342022
+      },
+      "writtenOn": "2019-09-24T21:13:13Z",
+      "side": 1,
+      "message": "Good catch. Thanks!",
+      "parentUuid": "d8b9a709_f99518ff",
       "range": {
         "startLine": 392,
         "startChar": 30,
