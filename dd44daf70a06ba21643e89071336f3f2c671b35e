@@ -16,6 +16,24 @@
       "revId": "dd44daf70a06ba21643e89071336f3f2c671b35e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a25c022_6b4540c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/document/compare.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1242535
+      },
+      "writtenOn": "2019-09-24T23:32:42Z",
+      "side": 1,
+      "message": "The local commit shows this change as a rename, I\u0027m not sure why it appears this way in gerrit.",
+      "parentUuid": "af3efd9b_82dc822c",
+      "revId": "dd44daf70a06ba21643e89071336f3f2c671b35e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
