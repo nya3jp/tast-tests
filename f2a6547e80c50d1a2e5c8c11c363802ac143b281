@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "663f4921_37a8c214",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-24T00:50:29Z",
+      "side": 1,
+      "message": "what about removing this, and below do:\n\n`\nhistName :\u003d prefix + \".\" + mode\n`\n?",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "f2a6547e80c50d1a2e5c8c11c363802ac143b281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
