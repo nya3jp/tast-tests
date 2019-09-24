@@ -16,6 +16,24 @@
       "revId": "c20de20774e6ce2929af4d973696226e82b93047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e0d7074_9a7e9150",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000479
+      },
+      "writtenOn": "2019-09-24T00:39:06Z",
+      "side": 1,
+      "message": "Done. I just think like to keep the original test name, but honestly, I do not care much.",
+      "parentUuid": "0a033d59_3d424251",
+      "revId": "c20de20774e6ce2929af4d973696226e82b93047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
