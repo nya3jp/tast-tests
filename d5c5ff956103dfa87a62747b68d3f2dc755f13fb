@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "31347bcf_f242ceae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-09-24T07:11:30Z",
+      "side": 1,
+      "message": "Verified using vpxdec and the results are identical.",
+      "parentUuid": "4ba13754_081aca89",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 63
+      },
+      "revId": "d5c5ff956103dfa87a62747b68d3f2dc755f13fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20a87568_f4b1879e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vp8_odd_dimensions.go",
         "patchSetId": 3
@@ -95,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "590d34c4_2880fea1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vp9_odd_dimensions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-09-24T07:11:30Z",
+      "side": 1,
+      "message": "Sure, more owners is always better :-)",
+      "parentUuid": "98f0d46c_983774d0",
+      "range": {
+        "startLine": 19,
+        "startChar": 21,
+        "endLine": 19,
+        "endChar": 46
+      },
+      "revId": "d5c5ff956103dfa87a62747b68d3f2dc755f13fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81dfbf9a_84bccc92",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vp9_odd_dimensions.go",
         "patchSetId": 3
@@ -115,6 +163,30 @@
       "revId": "d5c5ff956103dfa87a62747b68d3f2dc755f13fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89a5473b_4bf9ccc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vp9_odd_dimensions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-09-24T07:11:30Z",
+      "side": 1,
+      "message": "All new tests need to be informational, checks won\u0027t even allow uploading the CL without this. The new video decoder tests are also flaky at rare occasions, so it\u0027s better to keep this informational for now.",
+      "parentUuid": "81dfbf9a_84bccc92",
+      "range": {
+        "startLine": 21,
+        "startChar": 25,
+        "endLine": 21,
+        "endChar": 41
+      },
+      "revId": "d5c5ff956103dfa87a62747b68d3f2dc755f13fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
