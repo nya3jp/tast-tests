@@ -22,6 +22,30 @@
       "revId": "a5e1c45e8d21c1c456bae76c9a8d8e693308bf38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d03c6e2_0702247e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/start_sludge.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-24T18:02:35Z",
+      "side": 1,
+      "message": "I think it makes sense to keep them separate. It\u0027s clearer what each one represents and if they ever change where the location is not as obvious, we won\u0027t have to split them.",
+      "parentUuid": "36fb8943_2e458c98",
+      "range": {
+        "startLine": 51,
+        "startChar": 31,
+        "endLine": 51,
+        "endChar": 52
+      },
+      "revId": "a5e1c45e8d21c1c456bae76c9a8d8e693308bf38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
