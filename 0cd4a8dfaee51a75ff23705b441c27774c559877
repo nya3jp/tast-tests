@@ -118,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "24b9ce54_9a4850a9",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-09-24T01:01:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5ff3c72_9047b4b8",
+      "range": {
+        "startLine": 34,
+        "startChar": 31,
+        "endLine": 34,
+        "endChar": 36
+      },
+      "revId": "0cd4a8dfaee51a75ff23705b441c27774c559877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d057ddbe_eb5a662b",
         "filename": "src/chromiumos/tast/local/network/interface.go",
         "patchSetId": 1
@@ -141,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "ff4ddea8_ce1e4bc5",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-09-24T01:01:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d057ddbe_eb5a662b",
+      "range": {
+        "startLine": 38,
+        "startChar": 31,
+        "endLine": 38,
+        "endChar": 36
+      },
+      "revId": "0cd4a8dfaee51a75ff23705b441c27774c559877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a24e31ce_9dc35b26",
         "filename": "src/chromiumos/tast/local/shill/manager.go",
         "patchSetId": 1
@@ -161,6 +209,30 @@
       "revId": "0cd4a8dfaee51a75ff23705b441c27774c559877",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a434a446_8fd3944a",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-09-24T01:01:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a24e31ce_9dc35b26",
+      "range": {
+        "startLine": 113,
+        "startChar": 3,
+        "endLine": 113,
+        "endChar": 13
+      },
+      "revId": "0cd4a8dfaee51a75ff23705b441c27774c559877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
