@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f91d059_1f8c35df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_rtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-25T06:00:03Z",
+      "side": 1,
+      "message": "This won\u0027t assign to the outer `err` unfortunately.\nhttps://play.golang.org/p/pmRE_ehBXWW\n\nAlso I recommend logging the encountered error for debugging.\n\nFor example:\n\n for i :\u003d 0; ; i++ {\n   t, err :\u003d wilcoECRTC.Read(mainCtx)\n   if err \u003d\u003d nil {\n     return t\n   }\n   s.Logf(\"Failed to read EC RTC (trial %d/%d): %v\", i+1, numRTCRetries, err)\n   if i \u003e\u003d numRTCRetries-1 {\n     s.Fatal(\"Failed to read EC RTC: \", err)\n   }\n }",
+      "range": {
+        "startLine": 60,
+        "startChar": 3,
+        "endLine": 60,
+        "endChar": 37
+      },
+      "revId": "32ade4d033e3ae7aac74b5bc155984ff78ffd34e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
