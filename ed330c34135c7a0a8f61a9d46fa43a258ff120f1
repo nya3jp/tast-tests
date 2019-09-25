@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9caa2513_98e78284",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-09-25T17:47:15Z",
+      "side": 1,
+      "message": "nit: is not",
+      "range": {
+        "startLine": 56,
+        "startChar": 15,
+        "endLine": 56,
+        "endChar": 28
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "704af383_102c0459",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-09-25T17:47:15Z",
+      "side": 1,
+      "message": "This might race. We should poll getMacAddress() instead. Same with other calls below.",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 33
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2269dd3_0769c770",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-09-25T17:47:15Z",
+      "side": 1,
+      "message": "Can we do an s.Log after each call for sanity checking?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 0
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
