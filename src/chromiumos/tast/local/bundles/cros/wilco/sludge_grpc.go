@@ -45,7 +45,10 @@ func SludgeGRPC(ctx context.Context, s *testing.State) {
 	// Expect the services to start within 5 seconds.
 	startCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
-	if err := wvm.StartSludge(startCtx, false); err != nil {
+
+	config := wvm.DefaultSludgeConfig()
+	config.StartProcesses = false
+	if err := wvm.StartSludge(startCtx, config); err != nil {
 		s.Fatal("Unable to Start Sludge VM: ", err)
 	}
 	defer wvm.StopSludge(cleanupCtx)
