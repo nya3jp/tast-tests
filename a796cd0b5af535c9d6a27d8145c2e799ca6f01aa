@@ -46,6 +46,30 @@
       "revId": "a796cd0b5af535c9d6a27d8145c2e799ca6f01aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ef8d504_eeb3628b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-09-25T02:44:47Z",
+      "side": 1,
+      "message": "If we\u0027re waiting on a copy operation to happen, we have to start listening before the copy starts, which means we need to create the promise and wait on it in different places.",
+      "parentUuid": "735a2b21_b3ab3f90",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 2
+      },
+      "revId": "a796cd0b5af535c9d6a27d8145c2e799ca6f01aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
