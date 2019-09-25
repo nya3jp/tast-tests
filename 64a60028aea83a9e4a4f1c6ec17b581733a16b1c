@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "dd27224c_029bea59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-25T06:38:01Z",
+      "side": 1,
+      "message": "Sure!",
+      "parentUuid": "8c1652dc_b27eca8a",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 0
+      },
+      "revId": "64a60028aea83a9e4a4f1c6ec17b581733a16b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc02c9a9_90649e24",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
         "patchSetId": 3
@@ -187,6 +211,30 @@
       "revId": "64a60028aea83a9e4a4f1c6ec17b581733a16b1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b4416ce_8d5f7cb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-25T06:38:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43fccd22_6548ce04",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "64a60028aea83a9e4a4f1c6ec17b581733a16b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -272,6 +320,30 @@
       "side": 1,
       "message": "that\u0027s true.",
       "parentUuid": "9a8efaa3_bb2efe27",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 3
+      },
+      "revId": "64a60028aea83a9e4a4f1c6ec17b581733a16b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8b4ec51_de5dcb17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-25T06:38:01Z",
+      "side": 1,
+      "message": "How about using polling here?\n(waiting until the log contain the expected one.)",
+      "parentUuid": "07155d57_bb410a37",
       "range": {
         "startLine": 143,
         "startChar": 0,
