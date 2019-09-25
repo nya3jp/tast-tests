@@ -19,6 +19,13 @@ func ChromeVideo() testing.Precondition { return chromeVideoPre }
 
 var chromeVideoPre = chrome.NewPrecondition("video", chromeArgs)
 
+// ChromeVideoWithFakeWebcam returns precondition equal to ChromeVideo above,
+// supplementing it with the use of a fake video/audio capture device (a.k.a.
+// "fake webcam"), see https://webrtc.org/testing/.
+func ChromeVideoWithFakeWebcam() testing.Precondition { return chromeVideoWithFakeWebcamPre }
+
+var chromeVideoWithFakeWebcamPre = chrome.NewPrecondition("video", chromeArgs, chromeFakeWebcamArgs)
+
 // ChromeVideoVD returns a precondition similar to ChromeVideo specified above. In addition this
 // precondition specifies that the new media::VideoDecoder-based video decoders need to used
 // (see go/vd-migration). This precondition must not be used for performance tests, as verbose
@@ -41,6 +48,9 @@ var chromeArgs = chrome.ExtraArgs(
 	"--autoplay-policy=no-user-gesture-required",
 	// Avoid the need to grant camera/microphone permissions.
 	"--use-fake-ui-for-media-stream")
+
+var chromeFakeWebcamArgs = chrome.ExtraArgs(
+	"--use-fake-device-for-media-stream")
 
 var chromeVDArgs = chrome.ExtraArgs(
 	// Enable verbose log messages for media::VideoDecoder-related components.

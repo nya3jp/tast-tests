@@ -22,14 +22,13 @@ func init() {
 		Func: PeerConnH264,
 		Desc: "Verifies that WebRTC loopback works (H264)",
 		Contacts: []string{
-			"keiichiw@chromium.org", // Video team
-			"shik@chromium.org",     // Camera team
-			"chromeos-camera-eng@google.com",
+			"mcasas@chromium.org",
+			"chromeos-gfx-video@google.com",
 		},
 		Attr: []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome", "chrome_internal"},
-		Pre:          pre.ChromeVideo(),
+		Pre:          pre.ChromeVideoWithFakeWebcam(),
 		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback_camera.html"),
 	})
 }
