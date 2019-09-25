@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f437a457_5b2a55e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/Sunflower.apk.external",
+        "patchSetId": 8
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-09-25T16:08:54Z",
+      "side": 1,
+      "message": "nit: name looks not correlated with test and slightly confusion. Would it be better to change it if possible?",
+      "range": {
+        "startLine": 2,
+        "startChar": 61,
+        "endLine": 2,
+        "endChar": 86
+      },
+      "revId": "eea02f170caf6ef996ce9e6cb31de50d70fa933b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43729601_f1076e28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-09-25T16:08:54Z",
+      "side": 1,
+      "message": "nit: should we leave it in reasonable state on err too?",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 41
+      },
+      "revId": "eea02f170caf6ef996ce9e6cb31de50d70fa933b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78f8e209_08206d33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-09-25T16:08:54Z",
+      "side": 1,
+      "message": "to confirm that we really need to log all samples.",
+      "range": {
+        "startLine": 109,
+        "startChar": 19,
+        "endLine": 109,
+        "endChar": 26
+      },
+      "revId": "eea02f170caf6ef996ce9e6cb31de50d70fa933b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "494d8b4d_92a53c73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2019-09-25T16:08:54Z",
+      "side": 1,
+      "message": "this is non-stable. I would prefer to analyze some adb ui hierarchy or similar probably to see that rotation is done. Also waiting it before waiting for idle looks bit strange.",
+      "range": {
+        "startLine": 164,
+        "startChar": 13,
+        "endLine": 164,
+        "endChar": 47
+      },
+      "revId": "eea02f170caf6ef996ce9e6cb31de50d70fa933b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
