@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89049c60_85c4518f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2019-09-25T15:39:19Z",
+      "side": 0,
+      "message": "You\u0027re fixing the wrong thing.\n\nThis test is not testing whether chronos belongs in the audio group, it\u0027s testing whether the -G Minijail command-line is working. The way to properly fix this test is to replace \"audio\" for another group that chronos belongs to.",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 35
+      },
+      "revId": "b8b8faef122d0d8858f7d69e9bf50e1ebc95dd2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
