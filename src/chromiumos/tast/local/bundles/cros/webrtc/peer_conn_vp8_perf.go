@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/media/caps"
 	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/perf"
@@ -27,20 +26,16 @@ func init() {
 			"chromeos-video-eng@google.com",
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome"},
-		Pre:          pre.ChromeCameraPerf(),
+		SoftwareDeps: []string{"chrome"},
+		Pre:          pre.ChromeFakeCameraPerf(),
 		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback_camera.html"),
 	})
 }
 
-// PeerConnVP8Perf is the full version of webrtc.PeerConnVP8. This
-// test performs a WebRTC loopback call for 20 seconds. If there is no error
-// while exercising the camera, it uploads statistics of black/frozen frames and
-// input/output FPS will be logged.
-//
-// This test uses the real webcam unless it is running under QEMU. Under QEMU,
-// it uses "vivid" instead, which is the virtual video test driver and can be
-// used as an external USB camera.
+// PeerConnVP8Perf is the performance-collection version of webrtc.PeerConnVP8.
+// This test performs a WebRTC loopback call for 20 seconds. If there is no
+// error while exercising the camera, it uploads statistics of black/frozen
+// frames and input/output FPS will be logged.
 func PeerConnVP8Perf(ctx context.Context, s *testing.State) {
 	// Run loopback call for 20 seconds.
 	result := webrtc.RunPeerConn(ctx, s,
