@@ -8,8 +8,10 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"math"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -118,6 +120,20 @@ func GetARCAppWindowInfo(ctx context.Context, c *chrome.Conn, pkgName string) (A
 		return ArcAppWindowInfo{}, err
 	}
 	return ArcAppWindowInfo{info.Bounds, info.IsAnimating}, nil
+}
+
+// ChromeBoundsInPx returns the Chrome-side bounds of an ARC window with the given package name in pixels.
+func ChromeBoundsInPx(ctx context.Context, tconn *chrome.Conn, pkgName string, dsf float64) (Rect, error) {
+	info, err := GetARCAppWindowInfo(ctx, tconn, pkgName)
+	if err != nil {
+		return Rect{}, errors.Wrap(err, "failed to Get ARC App Window Info")
+	}
+	bounds := info.Bounds
+	return Rect{
+		int(math.Round(float64(bounds.Left) * dsf)),
+		int(math.Round(float64(bounds.Top) * dsf)),
+		int(math.Round(float64(bounds.Width) * dsf)),
+		int(math.Round(float64(bounds.Height) * dsf))}, nil
 }
 
 // GetARCAppWindowState gets the Chrome side window state of the ARC app window with pkgName.
