@@ -22,6 +22,30 @@
       "revId": "31673be492ba73e87865a50c7ff8705c5886d2a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cec82ba_d21bbe90",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-09-25T01:41:30Z",
+      "side": 1,
+      "message": "Yes, because we can\u0027t have the app window getting closed before it has pasted from the clipboard.",
+      "parentUuid": "7ff74913_a687afd6",
+      "range": {
+        "startLine": 174,
+        "startChar": 2,
+        "endLine": 178,
+        "endChar": 3
+      },
+      "revId": "31673be492ba73e87865a50c7ff8705c5886d2a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
