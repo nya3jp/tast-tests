@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0dc9653a_62a894c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-09-25T05:52:50Z",
+      "side": 1,
+      "message": "sorry this is a mistake.\nI\u0027ve removed it now.",
+      "parentUuid": "e004c3ad_4752a185",
+      "range": {
+        "startLine": 12,
+        "startChar": 12,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "64a60028aea83a9e4a4f1c6ec17b581733a16b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33c56d71_acf696ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "64a60028aea83a9e4a4f1c6ec17b581733a16b1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbcf35d4_e9293b40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-09-25T05:52:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33c56d71_acf696ba",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "64a60028aea83a9e4a4f1c6ec17b581733a16b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8c1652dc_b27eca8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-09-25T05:52:50Z",
+      "side": 1,
+      "message": "let me address this in a separate CL.\n(https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1824205)",
+      "parentUuid": "b7d80177_ce945113",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 0
+      },
+      "revId": "64a60028aea83a9e4a4f1c6ec17b581733a16b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc02c9a9_90649e24",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2019-09-19T10:36:37Z",
       "side": 1,
       "message": "Do we need this set up in this test?",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "64a60028aea83a9e4a4f1c6ec17b581733a16b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43fccd22_6548ce04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-09-25T05:52:50Z",
+      "side": 1,
+      "message": "thanks :)",
+      "parentUuid": "fc02c9a9_90649e24",
       "range": {
         "startLine": 73,
         "startChar": 1,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "7eced186_ebfcc5e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-09-25T05:52:50Z",
+      "side": 1,
+      "message": "thanks! this looks good!",
+      "parentUuid": "25120e6f_716e07ca",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 2
+      },
+      "revId": "64a60028aea83a9e4a4f1c6ec17b581733a16b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a8efaa3_bb2efe27",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
         "patchSetId": 3
@@ -128,6 +248,30 @@
       "writtenOn": "2019-09-19T10:36:37Z",
       "side": 1,
       "message": "I feel that this can invoke test flakiness.\nI don\u0027t know the order of \"changing the focus\" and \"logging the speech\".\nIf it is guaranteed that logging the speech finishes before changing the focus, it is fine. But if not, it is dangerous and we need to use polling.\n\nDo you have any idea on it?",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 3
+      },
+      "revId": "64a60028aea83a9e4a4f1c6ec17b581733a16b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07155d57_bb410a37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-09-25T05:52:50Z",
+      "side": 1,
+      "message": "that\u0027s true.",
+      "parentUuid": "9a8efaa3_bb2efe27",
       "range": {
         "startLine": 143,
         "startChar": 0,
