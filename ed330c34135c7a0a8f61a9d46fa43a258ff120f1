@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "880b8514_e12110e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-09-25T17:50:12Z",
+      "side": 1,
+      "message": "nit: add this and Ethernet.LinkUp as constants in device.go",
+      "range": {
+        "startLine": 49,
+        "startChar": 17,
+        "endLine": 49,
+        "endChar": 41
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9caa2513_98e78284",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
         "patchSetId": 1
