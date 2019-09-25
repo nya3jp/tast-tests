@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "780d9e93_596b8461",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-25T06:12:37Z",
+      "side": 1,
+      "message": "Could you describe more background of increasing the timeout?\n\nIn general, tests with 10 minutes timeout is too long to put in the commit queue. And it is known that tests outside of the commit queue are not cared by people.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "88c1fb0acf5239b87f31725e6e5a8bbf4efdb932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
