@@ -8,6 +8,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"math"
 	"time"
 
 	"chromiumos/tast/local/chrome"
@@ -118,6 +119,15 @@ func GetARCAppWindowInfo(ctx context.Context, c *chrome.Conn, pkgName string) (A
 		return ArcAppWindowInfo{}, err
 	}
 	return ArcAppWindowInfo{info.Bounds, info.IsAnimating}, nil
+}
+
+// ConvertBoundsFromDpToPx converts the given bounds in DP to pixles based on the given device scale factor.
+func ConvertBoundsFromDpToPx(bounds Rect, dsf float64) Rect {
+	return Rect{
+		int(math.Round(float64(bounds.Left) * dsf)),
+		int(math.Round(float64(bounds.Top) * dsf)),
+		int(math.Round(float64(bounds.Width) * dsf)),
+		int(math.Round(float64(bounds.Height) * dsf))}
 }
 
 // GetARCAppWindowState gets the Chrome side window state of the ARC app window with pkgName.
