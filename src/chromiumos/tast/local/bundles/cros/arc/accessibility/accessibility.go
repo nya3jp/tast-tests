@@ -257,3 +257,44 @@ func GetSpeechLog(ctx context.Context, chromeVoxConn *chrome.Conn) ([]string, er
 	}
 	return gotLogs, nil
 }
+
+// RunTest starts Chrome with the accessibility features enabled.
+// It install the ArcAccessibilityTestApplication, launches it, and waits
+// for it (and ChromeBox) to be ready.
+func RunTest(ctx context.Context, s *testing.State, f func(a *arc.ARC, conn *chrome.Conn)) {
+	const (
+		apkName = "ArcAccessibilityTest.apk"
+		appName = "Accessibility Test App"
+	)
+	cr, err := NewChrome(ctx)
+	if err != nil {
+		s.Fatal(err) // NOLINT: arc/ui returns loggable errors
+	}
+	defer cr.Close(ctx)
+
+	a, err := NewARC(ctx, s.OutDir())
+	if err != nil {
+		s.Fatal(err) // NOLINT: arc/ui returns loggable errors
+	}
+	defer a.Close()
+
+	if err := InstallAndStartSampleApp(ctx, a, s.DataPath(apkName)); err != nil {
+		s.Fatal("Setting up ARC environment with accessibility failed: ", err)
+	}
+
+	if err := EnableSpokenFeedback(ctx, cr, a); err != nil {
+		s.Fatal(err) // NOLINT: arc/ui returns loggable errors
+	}
+
+	chromeVoxConn, err := ChromeVoxExtConn(ctx, cr)
+	if err != nil {
+		s.Fatal("Creating connection to ChromeVox extension failed: ", err)
+	}
+	defer chromeVoxConn.Close()
+
+	if err := WaitForChromeVoxReady(ctx, chromeVoxConn); err != nil {
+		s.Fatal("Could not wait for ChromeVox to be ready: ", err)
+	}
+
+	f(a, chromeVoxConn)
+}
