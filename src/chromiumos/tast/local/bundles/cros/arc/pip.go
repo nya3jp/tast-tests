@@ -163,10 +163,18 @@ func PIP(ctx context.Context, s *testing.State) {
 			// Press button that triggers PIP mode in activity.
 			const pipButtonID = pkgName + ":id/enter_pip"
 			must(dev.Object(ui.ID(pipButtonID)).Click(ctx))
-			// TODO(b/131248000) WaitForIdle doesn't catch all PIP possible animations.
-			// Add temporary delay until it gets fixed.
-			must(testing.Sleep(ctx, 200*time.Millisecond))
-			must(act.WaitForIdle(ctx, 10*time.Second))
+
+			// Everything must be committed at the same time when entering PIP, so just checking window state should work.
+			testing.Poll(ctx, func(ctx context.Context) error {
+				actual, err := ash.GetARCAppWindowState(ctx, tconn, pkgName)
+				if err != nil {
+					return testing.PollBreak(errors.Wrap(err, "failed to get Ash window state"))
+				}
+				if actual != ash.WindowStatePIP {
+					return errors.New("the window isn't PIP yet")
+				}
+				return nil
+			}, &testing.PollOptions{Timeout: 10 * time.Second})
 
 			if err := test.fn(ctx, tconn, act, dev, dispMode); err != nil {
 				path := fmt.Sprintf("%s/screenshot-pip-failed-test-%d.png", s.OutDir(), idx)
