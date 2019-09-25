@@ -22,6 +22,30 @@
       "revId": "32ade4d033e3ae7aac74b5bc155984ff78ffd34e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "133d30d8_8512d4aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/wilco_ec_rtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-09-25T15:05:59Z",
+      "side": 1,
+      "message": "Thanks Shuhei, good suggestions, I\u0027ll do this.",
+      "parentUuid": "0f91d059_1f8c35df",
+      "range": {
+        "startLine": 60,
+        "startChar": 3,
+        "endLine": 60,
+        "endChar": 37
+      },
+      "revId": "32ade4d033e3ae7aac74b5bc155984ff78ffd34e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
