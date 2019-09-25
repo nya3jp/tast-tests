@@ -272,7 +272,7 @@ func measureCPUUsage(ctx context.Context, conn *chrome.Conn) (usage float64, err
 	}
 
 	testing.ContextLogf(ctx, "Sleeping %v to measure CPU usage while playing video", measurementDuration.Round(time.Second))
-	usage, err = cpu.MeasureUsage(ctx, measurementDuration)
+	usage, err = cpu.MeasureCPUUsage(ctx, measurementDuration)
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to measure CPU usage")
 	}

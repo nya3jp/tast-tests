@@ -114,7 +114,7 @@ func measureCPU(ctx context.Context, cr *chrome.Chrome, p *perf.Values, config M
 		return err
 	}
 	testing.ContextLog(ctx, "Measuring CPU usage for ", config.CPUMeasure)
-	cpuUsage, err := cpu.MeasureUsage(ctx, config.CPUMeasure)
+	cpuUsage, err := cpu.MeasureCPUUsage(ctx, config.CPUMeasure)
 	if err != nil {
 		return err
 	}
