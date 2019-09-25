@@ -46,6 +46,30 @@
       "revId": "31673be492ba73e87865a50c7ff8705c5886d2a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a401bc9_6140fd74",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-09-25T02:00:16Z",
+      "side": 1,
+      "message": "offline discussion, having another flag for this",
+      "parentUuid": "2cec82ba_d21bbe90",
+      "range": {
+        "startLine": 174,
+        "startChar": 2,
+        "endLine": 178,
+        "endChar": 3
+      },
+      "revId": "31673be492ba73e87865a50c7ff8705c5886d2a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
