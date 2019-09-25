@@ -57,7 +57,21 @@ var chromeVDArgs = chrome.ExtraArgs(
 // This precondition should be used only used for performance tests.
 func ChromeCameraPerf() testing.Precondition { return chromeCameraPerfPre }
 
-var chromeCameraPerfPre = chrome.NewPrecondition("camera_perf",
+var chromeCameraPerfPre = chrome.NewPrecondition("cameraPerf",
 	chrome.ExtraArgs(
+		// Avoid the need to grant camera/microphone permissions.
+		"--use-fake-ui-for-media-stream"))
+
+// ChromeFakeCameraPerf returns a precondition for Chrome to be started using
+// the fake video/audio capture device (a.k.a. "fake webcam", see
+// https://webrtc.org/testing), without asking for user permission, and without
+// verboselogging that can affect the performance. This precondition should be
+// used only used for performance tests.
+func ChromeFakeCameraPerf() testing.Precondition { return chromeFakeCameraPerfPre }
+
+var chromeFakeCameraPerfPre = chrome.NewPrecondition("fakeCameraPerf",
+	chrome.ExtraArgs(
+		// Use a fake video/audio capture device instead of webcam(s)/microphone(s).
+		"--use-fake-device-for-media-stream",
 		// Avoid the need to grant camera/microphone permissions.
 		"--use-fake-ui-for-media-stream"))
