@@ -6,6 +6,7 @@ package security
 
 import (
 	"context"
+	"strings"
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/security/selinux"
@@ -23,5 +24,18 @@ func init() {
 }
 
 func SELinuxProcessesARC(ctx context.Context, s *testing.State) {
+	// Check Android init domain
+	a := s.PreValue().(arc.PreData).ARC
+	c, err := a.Command(ctx, "cat", "/proc/1/attr/current").Output()
+	if err != nil {
+		s.Error("Failed to check Android init context: ", err)
+	} else {
+		c2 := strings.TrimSuffix(string(c), "\x00")
+		if c2 != "u:r:init:s0" {
+			s.Errorf("Android init context must be %q but got %q", "u:r:init:s0", c2)
+		}
+	}
+
+	// Check everything else
 	selinux.ProcessesTestInternal(ctx, s, []selinux.ProcessTestCaseSelector{selinux.Stable})
 }
