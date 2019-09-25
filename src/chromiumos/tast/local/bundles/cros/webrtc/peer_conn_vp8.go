@@ -22,13 +22,12 @@ func init() {
 		Func: PeerConnVP8,
 		Desc: "Verifies that WebRTC loopback works (VP8)",
 		Contacts: []string{
-			"keiichiw@chromium.org", // Video team
-			"shik@chromium.org",     // Camera team
-			"chromeos-camera-eng@google.com",
+			"mcasas@chromium.org",
+			"chromeos-gfx-video@google.com",
 		},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome"},
-		Pre:          pre.ChromeVideo(),
+		Pre:          pre.ChromeVideoWithFakeWebcam(),
 		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback_camera.html"),
 	})
 }
