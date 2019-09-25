@@ -22,6 +22,30 @@
       "revId": "c5740adcf4b3f47f38c4b3c4aa086832c151f516",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c296927_aba1bfc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-25T16:44:43Z",
+      "side": 1,
+      "message": "Thanks :) Done.",
+      "parentUuid": "c703e17d_551b972e",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 3
+      },
+      "revId": "c5740adcf4b3f47f38c4b3c4aa086832c151f516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
