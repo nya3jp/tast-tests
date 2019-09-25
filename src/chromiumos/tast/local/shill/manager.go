@@ -92,9 +92,23 @@ func (m *Manager) WaitForServiceProperties(ctx context.Context, props map[Servic
 	return nil
 }
 
+type managerProps map[string]interface{}
+
+func (m *managerProps) getDBusPaths(key string) ([]dbus.ObjectPath, error) {
+	value, ok := (*m)[key]
+	if !ok {
+		return nil, errors.Errorf("property is not present: %s", key)
+	}
+	arr, ok := value.([]dbus.ObjectPath)
+	if !ok {
+		return nil, errors.Errorf("can not convert value to []dbus.ObjectPath: %v", value)
+	}
+	return arr, nil
+}
+
 // getProperties returns a list of properties provided by the service.
-func (m *Manager) getProperties(ctx context.Context) (map[string]interface{}, error) {
-	props := make(map[string]interface{})
+func (m *Manager) getProperties(ctx context.Context) (managerProps, error) {
+	props := make(managerProps)
 	if err := call(ctx, m.obj, dbusManagerInterface, "GetProperties").Store(&props); err != nil {
 		return nil, errors.Wrap(err, "failed getting properties")
 	}
@@ -107,7 +121,16 @@ func (m *Manager) GetProfiles(ctx context.Context) ([]dbus.ObjectPath, error) {
 	if err != nil {
 		return nil, err
 	}
-	return props["Profiles"].([]dbus.ObjectPath), nil
+	return props.getDBusPaths("Profiles")
+}
+
+// GetDevices returns a list of devices.
+func (m *Manager) GetDevices(ctx context.Context) ([]dbus.ObjectPath, error) {
+	props, err := m.getProperties(ctx)
+	if err != nil {
+		return nil, err
+	}
+	return props.getDBusPaths("Devices")
 }
 
 // ConfigureService configures a service with the given properties.
