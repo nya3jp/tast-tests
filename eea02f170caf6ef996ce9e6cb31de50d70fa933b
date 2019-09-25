@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6ba4551f_68773e5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/Sunflower.apk.external",
+        "patchSetId": 8
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-25T22:11:43Z",
+      "side": 1,
+      "message": "As discussed it offline, keeping it as it is since it belongs to the Sunflower apk.",
+      "parentUuid": "f437a457_5b2a55e5",
+      "range": {
+        "startLine": 2,
+        "startChar": 61,
+        "endLine": 2,
+        "endChar": 86
+      },
+      "revId": "eea02f170caf6ef996ce9e6cb31de50d70fa933b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43729601_f1076e28",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "eea02f170caf6ef996ce9e6cb31de50d70fa933b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b60c6c03_ac2a6e05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-25T22:11:43Z",
+      "side": 1,
+      "message": "yes. This test is reusing the Chrome session. meaning that also another test can reuse the Chrome session. so, if the test fails in the middle it might leave the device with an unexpected rotation. \nthis line what is does is to restore the rotation to 0 at exit time.",
+      "parentUuid": "43729601_f1076e28",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 41
+      },
+      "revId": "eea02f170caf6ef996ce9e6cb31de50d70fa933b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bec2e4d8_8bf953d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-25T22:11:43Z",
+      "side": 1,
+      "message": "I wouldn\u0027t know if all samples are needed. But this is the same logic used in the original test:\nhttp://cs/chromeos_internal/src/third_party/autotest-tests-cheets/client/site_tests/cheets_ScreenRotation/cheets_ScreenRotation.py?l\u003d46\n\nbut what I missed was to print the average value for each key. Not sure whether this is needed (printing the avg.) but doing so since the original was doing it.",
+      "parentUuid": "78f8e209_08206d33",
+      "range": {
+        "startLine": 109,
+        "startChar": 19,
+        "endLine": 109,
+        "endChar": 26
+      },
+      "revId": "eea02f170caf6ef996ce9e6cb31de50d70fa933b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "494d8b4d_92a53c73",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
         "patchSetId": 8
@@ -91,6 +163,30 @@
       "revId": "eea02f170caf6ef996ce9e6cb31de50d70fa933b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c99bd092_f7301de1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-25T22:11:43Z",
+      "side": 1,
+      "message": "discussed this offline.\nBut yes, you are right. there is a bug about this. ideally we should have proper fix soon™.\n\nI\u0027ll remove the WatiForIdle",
+      "parentUuid": "494d8b4d_92a53c73",
+      "range": {
+        "startLine": 164,
+        "startChar": 13,
+        "endLine": 164,
+        "endChar": 47
+      },
+      "revId": "eea02f170caf6ef996ce9e6cb31de50d70fa933b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
