@@ -38,7 +38,7 @@ func StartSludge(ctx context.Context, s *testing.State) {
 	startCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
 
-	if err := wvm.StartSludge(startCtx, true); err != nil {
+	if err := wvm.StartSludge(startCtx, wvm.DefaultSludgeConfig()); err != nil {
 		s.Fatal("Unable to start sludge VM: ", err)
 	}
 	defer wvm.StopSludge(ctx)

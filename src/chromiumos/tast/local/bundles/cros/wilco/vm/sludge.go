@@ -24,10 +24,26 @@ const (
 	wilcoVMStartupPort = 7788
 )
 
+// SludgeConfig contains different configuration options for starting the Sludge
+// VM.
+type SludgeConfig struct {
+	StartProcesses bool
+	TestDbusConfig bool
+}
+
+// DefaultSludgeConfig creates and returns a SludgeConfig with the default
+// values. These default values are the ones used for the production VM.
+func DefaultSludgeConfig() *SludgeConfig {
+	c := SludgeConfig{}
+	c.StartProcesses = true
+	c.TestDbusConfig = false
+	return &c
+}
+
 // StartSludge starts the upstart process wilco_dtc and wait until the VM is
 // fully ready. The parameter start_processes will determine if the
 // init processes of the Sludge VM are run (DDV and SA).
-func StartSludge(ctx context.Context, startProcesses bool) error {
+func StartSludge(ctx context.Context, config *SludgeConfig) error {
 	// Load the vhost-vsock module
 	if err := testexec.CommandContext(ctx, "modprobe", "-q", "vhost-vsock").Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "unable to load vhost-vsock module")
@@ -43,8 +59,9 @@ func StartSludge(ctx context.Context, startProcesses bool) error {
 		return errors.Wrap(err, "unable to start listening server")
 	}
 
-	env := fmt.Sprintf("STARTUP_PROCESSES=%t", startProcesses)
-	if err := upstart.RestartJob(ctx, wilcoVMJob, env); err != nil {
+	startEnv := fmt.Sprintf("STARTUP_PROCESSES=%t", config.StartProcesses)
+	dbusEnv := fmt.Sprintf("TEST_DBUS_CONFIG=%t", config.TestDbusConfig)
+	if err := upstart.RestartJob(ctx, wilcoVMJob, startEnv, dbusEnv); err != nil {
 		return errors.Wrap(err, "wilco DTC daemon could not start")
 	}
 
