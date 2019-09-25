@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "aa960494_ba0f3ed9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-25T23:33:32Z",
+      "side": 1,
+      "message": "It\u0027s good to actually write the actual commands you use to test. This makes it easier for someone else to reproduce.",
+      "revId": "374b4b500ddfbb4f3ae101bdf6eefdc16d69f6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c11f7d78_615ca578",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
         "patchSetId": 1
@@ -19,6 +36,92 @@
     },
     {
       "key": {
+        "uuid": "7addd01a_9de4b11a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-25T23:33:32Z",
+      "side": 1,
+      "message": "I would move the const block into the top of the function in which they are used.",
+      "parentUuid": "c11f7d78_615ca578",
+      "revId": "374b4b500ddfbb4f3ae101bdf6eefdc16d69f6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ede5670_d89b02ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-25T23:33:32Z",
+      "side": 1,
+      "message": "Is this a test that will be run in the CQ? Or is this something that we want people to be able to run at one off times?",
+      "revId": "374b4b500ddfbb4f3ae101bdf6eefdc16d69f6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11c7385b_3a1e29d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-25T23:33:32Z",
+      "side": 1,
+      "message": "Add this to the const block inside of the function",
+      "revId": "374b4b500ddfbb4f3ae101bdf6eefdc16d69f6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ad3a47b_abe0b9a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-25T23:33:32Z",
+      "side": 1,
+      "message": "I think this and all the other s.Fatatf calls should just be s.Fatal(\"Could not read SSDT data: \", err)",
+      "revId": "374b4b500ddfbb4f3ae101bdf6eefdc16d69f6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2ffb862_72ce2910",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-25T23:33:32Z",
+      "side": 1,
+      "message": "In these error messages, you can include the error returned from the function s.Error(\"Could not run iasl on Dut: \", err). This helps give a nice chain of error messages that you can trace.\n\nAlso, can the test continue if you are unable to run iasl? If that\u0027s the case this should probably be s.Fatal",
+      "revId": "374b4b500ddfbb4f3ae101bdf6eefdc16d69f6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e3ade46b_51e5813c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
         "patchSetId": 1
@@ -30,6 +133,57 @@
       "writtenOn": "2019-09-20T23:17:33Z",
       "side": 1,
       "message": "WRDS and EWRD mean more than \"tablet mode\" and \"clamshell mode\"[1], but that is how they apply for our usage. Would it worth explaining this nuance in a comment here?\n\n[1]: slide 23 of https://drive.google.com/open?id\u003d0Bz2Hi7s82eJGZTVIbEw0Y3BqU3lTeHdmSnNpLUd0S3FQM0hZ",
+      "revId": "374b4b500ddfbb4f3ae101bdf6eefdc16d69f6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d05278db_8177b288",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-25T23:33:32Z",
+      "side": 1,
+      "message": "Chain the error messages like in Line 117",
+      "revId": "374b4b500ddfbb4f3ae101bdf6eefdc16d69f6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a285dbe_953b714a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-25T23:33:32Z",
+      "side": 1,
+      "message": "It seems like this calculation for tablets and the one for clamshells are exactly the same. Would it be possible to factor out a helper function that is used twice in these cases? Are both tests applicable to a single device?",
+      "revId": "374b4b500ddfbb4f3ae101bdf6eefdc16d69f6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "392b0311_d2ef7ed7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-25T23:33:32Z",
+      "side": 1,
+      "message": "Chain the error messages.",
       "revId": "374b4b500ddfbb4f3ae101bdf6eefdc16d69f6d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
