@@ -318,7 +318,7 @@ func Minijail(ctx context.Context, s *testing.State) {
 			name:  "usergroups-add-new",
 			cmd:   "groups",
 			args:  []string{"-u", "chronos", "-g", "chronos", "-G"},
-			check: checkRegexp(`\baudio\b`),
+			check: checkRegexp(`\bcras\b`),
 		},
 		{
 			name: "usergroups-remove-orig",
