@@ -11,6 +11,7 @@ import (
 	"math"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -74,6 +75,17 @@ type windowStateChange struct {
 	EventType      WMEventType `json:"eventType"`
 	FailIfNoChange bool        `json:"failIfNoChange,omitempty"`
 }
+
+// BorderType represents one side of a bounds.
+type BorderType int
+
+// This set of consts represents one side of a bounds.
+const (
+	Left BorderType = iota
+	Right
+	Top
+	Bottom
+)
 
 // SetARCAppWindowState sends WM event to ARC app window to change its window state, and returns the expected new state type.
 func SetARCAppWindowState(ctx context.Context, c *chrome.Conn, pkgName string, et WMEventType) (WindowStateType, error) {
@@ -162,6 +174,44 @@ func SwapWindowsInSplitView(ctx context.Context, c *chrome.Conn) error {
 		  });
 		})`
 	return c.EvalPromise(ctx, expr, nil)
+}
+
+// WaitForNewBoundsBorderWithMargin waits until Chrome animation finishes completely and check the position of an edge of a window with the given package name.
+// More specifically, this checks the edge of the window bounds specified by the border parameter matches the expectedValue parameter,
+// allowing an error within the margin parameter.
+// expectedValue is expected to be in pixels, but the window bounds GetARCAppWindowInfo returns in DP, so dsf is used to convert it to PX.
+func WaitForNewBoundsBorderWithMargin(ctx context.Context, tconn *chrome.Conn, expectedValue int, border BorderType, dsf float64, margin int, pkgName string) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		info, err := GetARCAppWindowInfo(ctx, tconn, pkgName)
+		if err != nil {
+			return errors.New("failed to Get Arc App Window Info")
+		}
+		bounds := info.Bounds
+		isAnimating := info.IsAnimating
+
+		if isAnimating {
+			return errors.New("the window is still animating")
+		}
+
+		var currentValue int
+		switch border {
+		case Left:
+			currentValue = int(math.Round(float64(bounds.Left) * dsf))
+		case Top:
+			currentValue = int(math.Round(float64(bounds.Top) * dsf))
+		case Right:
+			currentValue = int(math.Round(float64(bounds.Left+bounds.Width) * dsf))
+		case Bottom:
+			currentValue = int(math.Round(float64(bounds.Top+bounds.Height) * dsf))
+		default:
+			return testing.PollBreak(errors.Errorf("unknown border type %v", border))
+		}
+		if currentValue < expectedValue-margin || expectedValue+margin < currentValue {
+			errors.Errorf("the PIP window doesn't have the expected bounds yet; got %d, want %d", currentValue, expectedValue)
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 // WaitForSystemUIStabilized waits a bit until the system UI state is stabilized
