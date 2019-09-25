@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2da036d_9b9cc8c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-25T19:57:31Z",
+      "side": 1,
+      "message": "nit: could you describe a bit more what this CL does?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "50ef0e6b866ea7253e5c02e1eccd2a6b2a72894e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1f3c205_559f46e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-25T19:57:31Z",
+      "side": 1,
+      "message": "nit: since this is the test name, I would make it shorter. e.g:\n\n\"Activity visible when other is maximized\"... or something like that.",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 112
+      },
+      "revId": "50ef0e6b866ea7253e5c02e1eccd2a6b2a72894e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc6206c5_43fb6a2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-25T19:57:31Z",
+      "side": 1,
+      "message": "huge nit: whether",
+      "range": {
+        "startLine": 173,
+        "startChar": 30,
+        "endLine": 173,
+        "endChar": 32
+      },
+      "revId": "50ef0e6b866ea7253e5c02e1eccd2a6b2a72894e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19e56dde_7b166611",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-25T19:57:31Z",
+      "side": 1,
+      "message": "If you are going to use \"tconn\" to all subtests, perhaps you can pass it as argument.\nI noticed that \"launchActivityOnExternalDisplay\" already uses it.",
+      "range": {
+        "startLine": 175,
+        "startChar": 1,
+        "endLine": 178,
+        "endChar": 2
+      },
+      "revId": "50ef0e6b866ea7253e5c02e1eccd2a6b2a72894e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd5db3ce_b6d3ab15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-25T19:57:31Z",
+      "side": 1,
+      "message": "similarly as above, these test names seems to be a bit too long. Would it be possible to make the test name shorter?\n\nFor example, the name of the test (not subtest) already implies that you are maximizing the activity... so it is redundant to have in the subtest (at least here, where the name is too long)",
+      "range": {
+        "startLine": 257,
+        "startChar": 4,
+        "endLine": 257,
+        "endChar": 101
+      },
+      "revId": "50ef0e6b866ea7253e5c02e1eccd2a6b2a72894e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6e8802d_0ce951ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-25T19:57:31Z",
+      "side": 1,
+      "message": "trying to understand: why this test also tests for black background? could add more info?",
+      "range": {
+        "startLine": 268,
+        "startChar": 13,
+        "endLine": 268,
+        "endChar": 29
+      },
+      "revId": "50ef0e6b866ea7253e5c02e1eccd2a6b2a72894e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b8e3595_72d1b1a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-25T19:57:31Z",
+      "side": 1,
+      "message": "perhaps you can move this inside the \"func() { }\"",
+      "range": {
+        "startLine": 275,
+        "startChar": 2,
+        "endLine": 278,
+        "endChar": 3
+      },
+      "revId": "50ef0e6b866ea7253e5c02e1eccd2a6b2a72894e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae46f463_8ab889f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-25T19:57:31Z",
+      "side": 1,
+      "message": "huge nit:\nperhaps \"ensureWindowState\" is more clear than \"ensureSetWindowState\"",
+      "range": {
+        "startLine": 320,
+        "startChar": 5,
+        "endLine": 320,
+        "endChar": 25
+      },
+      "revId": "50ef0e6b866ea7253e5c02e1eccd2a6b2a72894e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a2d7150_9ad0a452",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-25T19:57:31Z",
+      "side": 1,
+      "message": "what if it is being passed a value that is not in the dictionary?",
+      "range": {
+        "startLine": 332,
+        "startChar": 57,
+        "endLine": 332,
+        "endChar": 86
+      },
+      "revId": "50ef0e6b866ea7253e5c02e1eccd2a6b2a72894e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15c8a8f7_88e80e20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-25T19:57:31Z",
+      "side": 1,
+      "message": "is this act.WaitForIdle() needed?",
+      "range": {
+        "startLine": 336,
+        "startChar": 1,
+        "endLine": 338,
+        "endChar": 2
+      },
+      "revId": "50ef0e6b866ea7253e5c02e1eccd2a6b2a72894e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cf64280_3d070c37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-25T19:57:31Z",
+      "side": 1,
+      "message": "trying to understand: why are you converting the bounds to string? Can you compare the bounds directly?",
+      "range": {
+        "startLine": 352,
+        "startChar": 19,
+        "endLine": 352,
+        "endChar": 38
+      },
+      "revId": "50ef0e6b866ea7253e5c02e1eccd2a6b2a72894e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80e7ce87_0d18b39f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-25T19:57:31Z",
+      "side": 1,
+      "message": "background is usually abbreviated like \"bkg\"",
+      "range": {
+        "startLine": 364,
+        "startChar": 16,
+        "endLine": 364,
+        "endChar": 19
+      },
+      "revId": "50ef0e6b866ea7253e5c02e1eccd2a6b2a72894e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cec1fc11_faba10e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screenshot/screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-25T19:57:31Z",
+      "side": 1,
+      "message": "as discussed off-line, these changes might not be needed.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 56
+      },
+      "revId": "50ef0e6b866ea7253e5c02e1eccd2a6b2a72894e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
