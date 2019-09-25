@@ -521,20 +521,20 @@ func testPIPToggleTabletMode(ctx context.Context, tconn *chrome.Conn, act *arc.A
 	}
 	defer ash.SetTabletModeEnabled(ctx, tconn, tabletEnabled)
 
+	// TODO(takise): Currently there's no way to know if "everything's been done and nothing's changed on both Chrome and Android side".
+	// We are thinking of adding a new sync logic for Tast tests, but until it gets done, we need to sleep for a while here.
+	testing.Sleep(ctx, time.Second)
+
 	testing.ContextLogf(ctx, "Setting 'tablet mode enabled = %t'", !tabletEnabled)
 	if err := ash.SetTabletModeEnabled(ctx, tconn, !tabletEnabled); err != nil {
 		return errors.New("failed to set tablet mode")
 	}
 
-	info, err = ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
-	if err != nil {
-		return errors.Wrap(err, "could not get PIP window bounds")
+	if err = waitForNewBoundsWithMargin(ctx, tconn, origBounds.Left, left, dispMode.DeviceScaleFactor, pipPositionErrorMarginPX); err != nil {
+		return errors.Wrap(err, "failed swipe to left")
 	}
-	bounds := ash.ConvertBoundsFromDpToPx(info.Bounds, dispMode.DeviceScaleFactor)
-	testing.ContextLogf(ctx, "Bounds after toggling tablet mode: %+v", origBounds)
-
-	if origBounds != bounds {
-		return errors.Errorf("invalid position %+v; want %+v", origBounds, bounds)
+	if err = waitForNewBoundsWithMargin(ctx, tconn, origBounds.Top, top, dispMode.DeviceScaleFactor, pipPositionErrorMarginPX); err != nil {
+		return errors.Wrap(err, "failed swipe to left")
 	}
 	return nil
 }
