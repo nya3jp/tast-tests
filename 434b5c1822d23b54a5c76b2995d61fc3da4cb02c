@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3a44eb4f_45c3d085",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-25T07:57:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5364754b_fc75c89e",
+      "range": {
+        "startLine": 7,
+        "startChar": 49,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "434b5c1822d23b54a5c76b2995d61fc3da4cb02c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae236b15_dfe8ba84",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9e033c47_f6e40ac7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-25T07:57:17Z",
+      "side": 1,
+      "message": "Thanks, I updated the whole sentence.",
+      "parentUuid": "ae236b15_dfe8ba84",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "434b5c1822d23b54a5c76b2995d61fc3da4cb02c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31d314a5_279f39f9",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "434b5c1822d23b54a5c76b2995d61fc3da4cb02c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c2f113b_0af4b56e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-09-25T07:57:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31d314a5_279f39f9",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "434b5c1822d23b54a5c76b2995d61fc3da4cb02c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
