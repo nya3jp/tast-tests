@@ -8,7 +8,11 @@ package cpu
 import (
 	"context"
 	"io/ioutil"
+	"os"
 	"path/filepath"
+	"regexp"
+	"strconv"
+	"sync"
 	"syscall"
 	"time"
 
@@ -31,6 +35,9 @@ const (
 	// WaitProcess option waits for the child process to finish.
 	WaitProcess
 )
+
+// Command used to measure power consumption, only supported on Intel platforms.
+const raplExec = "/usr/bin/dump_intel_rapl_consumption"
 
 // MeasureProcessCPU starts one or more gtest processes and measures CPU usage for the given duration.
 // The average usage over all CPU cores is returned as a percentage.
@@ -83,7 +90,7 @@ func MeasureProcessCPU(ctx context.Context, duration time.Duration,
 	}
 
 	testing.ContextLog(ctx, "Measuring CPU usage for ", duration.Round(time.Second))
-	cpuUsage, err := MeasureUsage(ctx, duration)
+	cpuUsage, err := MeasureCPUUsage(ctx, duration)
 	if err != nil {
 		return 0.0, errors.Wrap(err, "failed to measure CPU usage on running command")
 	}
@@ -187,7 +194,7 @@ func waitUntilIdleStep(ctx context.Context, timeout time.Duration, maxUsage floa
 	const measureDuration = time.Second
 	err = testing.Poll(ctx, func(ctx context.Context) error {
 		var e error
-		usage, e = MeasureUsage(ctx, measureDuration)
+		usage, e = MeasureCPUUsage(ctx, measureDuration)
 		if e != nil {
 			return testing.PollBreak(errors.Wrap(e, "failed measuring CPU usage"))
 		}
@@ -202,9 +209,43 @@ func waitUntilIdleStep(ctx context.Context, timeout time.Duration, maxUsage floa
 	return usage, nil
 }
 
-// MeasureUsage measures utilization across all CPUs during duration.
+// MeasureUsage measures the average utilization across all CPUs and the
+// average power consumption during the specified duration. Measuring power
+// consumption is currently not supported on all platforms. A map is returned
+// containing CPU usage (percentage in [0-100] range) and power consumption
+// (Watts) if supported.
+func MeasureUsage(ctx context.Context, duration time.Duration) (map[string]float64, error) {
+	// Start measuring CPU usage asynchronously.
+	measurements := make(map[string]float64)
+	var retErr error
+	var wg sync.WaitGroup
+	wg.Add(1)
+	go func() {
+		defer wg.Done()
+		measurements["cpu"], retErr = MeasureCPUUsage(ctx, duration)
+	}()
+
+	// Start measuring power usage asynchronously. Power usage is currently only
+	// measured on Intel devices that support the dump_intel_rapl_consumption
+	// command.
+	if _, err := os.Stat(raplExec); !os.IsNotExist(err) {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			if measurements["power"], err = MeasurePowerUsage(ctx, duration); err != nil {
+				testing.ContextLog(ctx, "Measuring power consumption failed: ", err)
+				delete(measurements, "power")
+			}
+		}()
+	}
+
+	wg.Wait()
+	return measurements, retErr
+}
+
+// MeasureCPUUsage measures utilization across all CPUs during duration.
 // Returns a percentage in the range [0.0, 100.0].
-func MeasureUsage(ctx context.Context, duration time.Duration) (float64, error) {
+func MeasureCPUUsage(ctx context.Context, duration time.Duration) (float64, error) {
 	// Get the total time the CPU spent in different states (read from
 	// /proc/stat on linux machines).
 	statBegin, err := getStat()
@@ -236,6 +277,29 @@ func MeasureUsage(ctx context.Context, duration time.Duration) (float64, error) 
 	}
 
 	return (activeTimeEnd - activeTimeBegin) / (totalTimeEnd - totalTimeBegin) * 100.0, nil
+}
+
+// MeasurePowerUsage measures power usage during the specified duration. The
+// average power consumption (in Watts) is returned.
+func MeasurePowerUsage(ctx context.Context, duration time.Duration) (float64, error) {
+	cmd := testexec.CommandContext(ctx, raplExec, "--interval_ms="+
+		strconv.FormatInt(int64(duration/time.Millisecond), 10))
+	powerUsageOutput, err := cmd.CombinedOutput()
+	if err != nil {
+		return 0.0, err
+	}
+
+	var powerUsageRegex = regexp.MustCompile(`(\d+\.\d+)`)
+	match := powerUsageRegex.FindAllString(string(powerUsageOutput), 1)
+	if len(match) != 1 {
+		return 0.0, errors.Errorf("failed to parse output of %s", raplExec)
+	}
+	powerUsage, err := strconv.ParseFloat(match[0], 64)
+	if err != nil {
+		return 0.0, err
+	}
+
+	return powerUsage, nil
 }
 
 // getStat returns utilization stats across all CPUs as reported by /proc/stat.
