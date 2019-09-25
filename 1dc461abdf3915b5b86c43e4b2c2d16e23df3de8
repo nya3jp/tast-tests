@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dea940f7_24baf202",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-09-25T18:35:04Z",
+      "side": 1,
+      "message": "This additional error message seems useless to me,as the info contained in err is sufficient. How about doing the actual error logging in the helper function so you can remove this branch of the if statement?\n\nSame as above, if you do the actual logging in dpslUtilSend() then you don\u0027t need one of the clauses of the if statement.\n\nThese won\u0027t decrease the indentation, but still should make the paths less complex.",
+      "range": {
+        "startLine": 75,
+        "startChar": 3,
+        "endLine": 75,
+        "endChar": 60
+      },
+      "revId": "1dc461abdf3915b5b86c43e4b2c2d16e23df3de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c83129c0_af6b1a64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-09-25T18:35:04Z",
+      "side": 1,
+      "message": "The nesting above could maybe be minimized by factoring this out into a helper function \n\nmakeGRPCRequestFromVM(name string, in proto.Message, out proto.Message*) {}\n\nfrom which you return early on errors, as opposed to the bulk of the work being done in the else clauses. I suggested passing in the response as a parameter, instead of getting it as a return value, so you can specify the type. Then you can actually check the contents of the response out here.",
+      "revId": "1dc461abdf3915b5b86c43e4b2c2d16e23df3de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f3299fa_d7e66522",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-09-25T18:35:04Z",
+      "side": 1,
+      "message": "should be proto.Message* I think, otherwise you are getting passed a copy?",
+      "range": {
+        "startLine": 127,
+        "startChar": 34,
+        "endLine": 127,
+        "endChar": 50
+      },
+      "revId": "1dc461abdf3915b5b86c43e4b2c2d16e23df3de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22f1ebda_5138fbea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-09-25T18:35:04Z",
+      "side": 1,
+      "message": "how about using descriptor.ForMessage(pb).GetName() of github.com/golang/protobuf/proto/descriptor to actually get the name of the pb type, e.g. \"GetOsVersionResponse\" ?",
+      "range": {
+        "startLine": 138,
+        "startChar": 51,
+        "endLine": 138,
+        "endChar": 56
+      },
+      "revId": "1dc461abdf3915b5b86c43e4b2c2d16e23df3de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
