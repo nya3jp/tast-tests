@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c09ab423_90195d7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-25T17:26:45Z",
+      "side": 1,
+      "message": "if you are waiting for the the \"tablet mode animation\" to finish, you can replace the \"TODO (takise)\" with \"TODOD (crbug.com/1002958)\"",
+      "range": {
+        "startLine": 519,
+        "startChar": 1,
+        "endLine": 519,
+        "endChar": 27
+      },
+      "revId": "9bf7d0b7969520de7621e44ef25cd8a2a40df95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
