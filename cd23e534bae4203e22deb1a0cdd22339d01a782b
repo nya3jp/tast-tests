@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fffe04e_f926ba18",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-25T06:04:34Z",
+      "side": 1,
+      "message": "This CL does not pass preupload hooks. Please make sure you\u0027re using \"repo\" command to upload your changes, as described in Chromium OS contributing guide:\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md\n\n Errors in PROJECT *chromiumos/platform/tast-tests*!\n    COMMIT cd23e534:  \n        Description:  \n            \u003etast-tests: ACVP tests for cr50 FIPS certification.\n            \u003e\n            \u003eAdd AES-ECB ACVP test.\n            \u003e\n            \u003eBUG\u003db:139501822\n            \u003eTEST\u003d\u0027firmware.ACVP\u0027 on cr50 compiled with aes_command_handler\n            \u003e\n            \u003eCq-Depend: chromium:1808333\n            \u003eChange-Id: I1180f28e15957b5afd4d377127f5ba8540d81177\n            \u003e\n            \u003e\n        Errors:\n            * Files not formatted with gofmt:\n                * src/chromiumos/tast/local/bundles/cros/firmware/acvp.go\n            * Hook script \"tools/run_lint.sh -commit\u003d${PRESUBMIT_COMMIT}\" failed with code 1:\n              src/chromiumos/tast/local/bundles/cros/firmware/acvp.go:80:1: Comment on function getTrunksCmd should be of the form \"getTrunksCmd ...\"\n              src/chromiumos/tast/local/bundles/cros/firmware/acvp.go:125:1: Comment on function populateOutBuf should be of the form \"populateOutBuf ...\"\n              src/chromiumos/tast/local/bundles/cros/firmware/acvp.go:152:1: Comment on function getAESCommand should be of the form \"getAESCommand ...\"\n              src/chromiumos/tast/local/bundles/cros/firmware/acvp.go:210:1: comment on exported function ACVP should be of the form \"ACVP ...\"\n              src/chromiumos/tast/local/bundles/cros/firmware/acvp.go:241:3: Test failure messages should be capitalized\n              src/chromiumos/tast/local/bundles/cros/firmware/acvp.go:243:2: Use s.Log(\"\u003cmsg\u003e\") instead of s.Logf(\"\u003cmsg\u003e\")\n              \n              Refer the following documents for details:\n                https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting\n                https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#log-vs-logf\n                https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences\n                https://golang.org/wiki/CodeReviewComments#doc-comments",
+      "revId": "cd23e534bae4203e22deb1a0cdd22339d01a782b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
