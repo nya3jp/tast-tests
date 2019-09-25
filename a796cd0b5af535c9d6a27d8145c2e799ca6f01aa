@@ -70,6 +70,30 @@
       "revId": "a796cd0b5af535c9d6a27d8145c2e799ca6f01aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "458830b2_b0c3a6e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-09-25T02:57:22Z",
+      "side": 1,
+      "message": "ok, i\u0027d like a comment explaining that",
+      "parentUuid": "8ef8d504_eeb3628b",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 2
+      },
+      "revId": "a796cd0b5af535c9d6a27d8145c2e799ca6f01aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
