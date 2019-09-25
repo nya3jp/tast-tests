@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ff74913_a687afd6",
+        "filename": "src/chromiumos/tast/local/crostini/display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-09-25T01:38:42Z",
+      "side": 1,
+      "message": "did you mean to move this into the \"if condition !\u003d nil\" block?\n\nGiven that the current behaviour is still close all windows, i think its fine to leave outside because it works if the app closes itself or not.",
+      "range": {
+        "startLine": 174,
+        "startChar": 2,
+        "endLine": 178,
+        "endChar": 3
+      },
+      "revId": "31673be492ba73e87865a50c7ff8705c5886d2a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
