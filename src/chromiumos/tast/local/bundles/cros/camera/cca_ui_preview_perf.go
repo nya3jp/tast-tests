@@ -88,7 +88,7 @@ func measureCPUUsage(ctx context.Context, app *cca.App, measureDuration time.Dur
 	}
 
 	testing.ContextLog(ctx, "Measuring CPU usage for ", measureDuration)
-	cpuUsage, err := cpu.MeasureUsage(ctx, measureDuration)
+	cpuUsage, err := cpu.MeasureCPUUsage(ctx, measureDuration)
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to measure CPU usage")
 	}

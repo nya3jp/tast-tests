@@ -73,6 +73,7 @@ const (
 	// Description for measured values shown in dashboard.
 	// A video description (e.g. h264_1080p) is appended to them.
 	cpuUsageDesc            metricDesc = "video_cpu_usage_"
+	powerUsageDesc          metricDesc = "video_power_usage_"
 	droppedFrameDesc        metricDesc = "video_dropped_frames_"
 	droppedFramePercentDesc metricDesc = "video_dropped_frames_percent_"
 
@@ -90,6 +91,7 @@ type metricDef struct {
 // metricDefs is a list of metric measured in this test.
 var metricDefs = []metricDef{
 	{cpuUsageDesc, "percent", perf.SmallerIsBetter},
+	{powerUsageDesc, "watt", perf.SmallerIsBetter},
 	{droppedFrameDesc, "frames", perf.SmallerIsBetter},
 	{droppedFramePercentDesc, "percent", perf.SmallerIsBetter},
 }
@@ -272,7 +274,7 @@ func savePerfResults(ctx context.Context, perfData collectedPerfData, videoDesc,
 			for _, pp := range perfPrefixes {
 				// TODO(hiroh): Remove prefix "tast_" after removing video_PlaybackPerf in autotest.
 				perfName := "tast_" + pp + string(m.desc) + videoDesc
-				if !found {
+				if !found && m.desc != powerUsageDesc {
 					return errors.Errorf("no performance result for %s: %v", perfName, perfData)
 				}
 				p.Set(perf.Metric{Name: perfName, Unit: m.unit, Direction: m.dir}, float64(val))
@@ -290,14 +292,19 @@ func measureCPUUsage(ctx context.Context, conn *chrome.Conn) (map[metricDesc]met
 	}
 
 	testing.ContextLogf(ctx, "Sleeping %v to measure CPU usage while playing video", measurementDuration.Round(time.Second))
-	cpuUsage, err := cpu.MeasureUsage(ctx, measurementDuration)
+	measurements, err := cpu.MeasureUsage(ctx, measurementDuration)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to measure CPU usage")
 	}
 
-	return map[metricDesc]metricValue{
-		cpuUsageDesc: metricValue(cpuUsage),
-	}, nil
+	// Create metrics map, power is only measured on Intel platforms.
+	metrics := map[metricDesc]metricValue{
+		cpuUsageDesc: metricValue(measurements["cpu"]),
+	}
+	if _, ok := measurements["power"]; ok {
+		metrics[powerUsageDesc] = metricValue(measurements["power"])
+	}
+	return metrics, nil
 }
 
 // getDroppedFrameCount obtains the number of decoded frames and dropped frames pecentage.
