@@ -22,6 +22,30 @@
       "revId": "88c1fb0acf5239b87f31725e6e5a8bbf4efdb932",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80427a6c_fb84fa28",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2019-09-25T06:13:52Z",
+      "side": 1,
+      "message": "What is the maximum allowable time for the tests to run in CQ?",
+      "parentUuid": "780d9e93_596b8461",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "88c1fb0acf5239b87f31725e6e5a8bbf4efdb932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
