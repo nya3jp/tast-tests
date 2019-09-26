@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c77994cf_b6815dce",
+        "filename": "src/chromiumos/tast/local/debugd/debugd.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2019-09-26T22:07:14Z",
+      "side": 1,
+      "message": "hidehiko@, outside my change, the original method was deprecated and replaced with \"V2\" one which takes one more boolean argument. Let me call the new one because numCoresDisabled is only supported by the v2 method.\n\nabhishekbh@, I guess you want to add test cases for |lock_policy| to platform/tast-tests/src/chromiumos/tast/local/bundles/cros/debugd/core_scheduler.go. Added a TODO.",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 52
+      },
+      "revId": "c222a228e8ed35cb08038c2ec05be9cb90858a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
