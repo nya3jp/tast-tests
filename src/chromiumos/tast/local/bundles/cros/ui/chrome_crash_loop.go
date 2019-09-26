@@ -56,7 +56,7 @@ func ChromeCrashLoop(ctx context.Context, s *testing.State) {
 	}
 	defer w.Close()
 
-	cr, err := chrome.New(ctx, chrome.CrashNormalMode(), chrome.KeepState())
+	cr, err := chrome.New(ctx, chrome.CrashNormalMode(), chrome.KeepState(), chrome.ExtraArgs(chromecrash.VModuleFlag))
 	if err != nil {
 		s.Fatal("chrome.New() failed: ", err)
 	}
