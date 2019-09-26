@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "98e04dbb_fb5638da",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-09-26T05:08:38Z",
+      "side": 1,
+      "message": "i dont think it does, but i also dont intend/need it to.\n\nthat is, the tests already can\u0027t make strong guarantees about the container state so long as they run in sequence.\n\nWith the download precondition i think the SetUpComponent above will re-download the image (when rerunning the precondition), that might override the container\u0027s current state but ive not checked/verified that.\n\nWere you expecting to be able to re-initialize the container as well?",
+      "parentUuid": "d7d7931a_580c7a76",
+      "range": {
+        "startLine": 178,
+        "startChar": 22,
+        "endLine": 178,
+        "endChar": 46
+      },
+      "revId": "7ce3ec6cf3c7e45771c9c8cd1d801abe377c1d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b81331e5_aeecd764",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "7ce3ec6cf3c7e45771c9c8cd1d801abe377c1d34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb9c2774_fe08af4b",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-09-26T05:08:38Z",
+      "side": 1,
+      "message": "it worked in my tests, as in the precondition did not re-run between tests, unless those tests brought down the vm\n\nWhat were you doing where \"echo\" didnt work?",
+      "parentUuid": "b81331e5_aeecd764",
+      "range": {
+        "startLine": 281,
+        "startChar": 29,
+        "endLine": 281,
+        "endChar": 33
+      },
+      "revId": "7ce3ec6cf3c7e45771c9c8cd1d801abe377c1d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
