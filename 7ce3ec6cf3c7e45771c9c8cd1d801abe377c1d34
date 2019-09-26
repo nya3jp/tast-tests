@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "87ed7512_b18078a5",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-09-26T05:44:05Z",
+      "side": 1,
+      "message": "What sort of state are you trying to reset? If you\u0027re just trying to restart the VM and container then you don\u0027t want to redownload the component. If you want to completely reset the VM state, then you also want to delete the VM disk.\n\nJust restarting is probably fine for now.",
+      "parentUuid": "98e04dbb_fb5638da",
+      "range": {
+        "startLine": 178,
+        "startChar": 22,
+        "endLine": 178,
+        "endChar": 46
+      },
+      "revId": "7ce3ec6cf3c7e45771c9c8cd1d801abe377c1d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b81331e5_aeecd764",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 1
