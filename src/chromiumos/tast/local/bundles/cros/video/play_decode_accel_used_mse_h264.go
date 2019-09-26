@@ -28,6 +28,9 @@ func init() {
 			"bear-320x240-audio-only.aac.mp4",
 			"bear-320x240.h264.mpd",
 		),
+		// Marked informational due to flakiness on ToT.
+		// TODO(crbug.com/1008317): Promote to critical again.
+		Attr: []string{"informational"},
 	})
 }
 
