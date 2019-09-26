@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f6efb96b_12217a49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-26T21:41:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f6054de_9b08cc26",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "55e44d281ceef83d5a2d730767d5873af17ed122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd935567_9e0a3e6c",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "55e44d281ceef83d5a2d730767d5873af17ed122",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "157bb57a_b950b5a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-26T21:41:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd935567_9e0a3e6c",
+      "range": {
+        "startLine": 28,
+        "startChar": 83,
+        "endLine": 28,
+        "endChar": 123
+      },
+      "revId": "55e44d281ceef83d5a2d730767d5873af17ed122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "548cb976_f887b4fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-26T21:41:56Z",
+      "side": 1,
+      "message": "Removed the logging for starting the test, but I think the output is useful to keep.",
+      "parentUuid": "b840088f_c69dc3b4",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 68,
+        "endChar": 18
+      },
+      "revId": "55e44d281ceef83d5a2d730767d5873af17ed122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03162999_ece22e08",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
         "patchSetId": 10
@@ -91,6 +163,30 @@
       "revId": "55e44d281ceef83d5a2d730767d5873af17ed122",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "092cf30b_a82f3e89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-26T21:41:56Z",
+      "side": 1,
+      "message": "I think it\u0027s important to keep since the error conditions are a bit weird (Milestone is 0 represents an error).",
+      "parentUuid": "03162999_ece22e08",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 53
+      },
+      "revId": "55e44d281ceef83d5a2d730767d5873af17ed122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "c205c044_40009aed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-26T21:41:56Z",
+      "side": 1,
+      "message": "This would require keeping the state parameter to this function, and I think it makes sense to remove it. I also think keeping both tests returning errors consistent is more understandable. The response is printed in full on either error, so it should be easy to debug from there.",
+      "parentUuid": "7613a74f_cae12602",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 2
+      },
+      "revId": "55e44d281ceef83d5a2d730767d5873af17ed122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9873d79a_593a1526",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
         "patchSetId": 10
@@ -137,6 +257,30 @@
       "revId": "55e44d281ceef83d5a2d730767d5873af17ed122",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e80f147_d8ab7032",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-26T21:41:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9873d79a_593a1526",
+      "range": {
+        "startLine": 115,
+        "startChar": 55,
+        "endLine": 115,
+        "endChar": 100
+      },
+      "revId": "55e44d281ceef83d5a2d730767d5873af17ed122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "707006b1_985cd868",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-26T21:41:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bda28e1_8de2f802",
+      "range": {
+        "startLine": 124,
+        "startChar": 29,
+        "endLine": 124,
+        "endChar": 67
+      },
+      "revId": "55e44d281ceef83d5a2d730767d5873af17ed122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e133a1da_6b67d664",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
         "patchSetId": 10
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "23ccd768_14ee2fba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-26T21:41:56Z",
+      "side": 1,
+      "message": "The DumpLogOnError option will provide both stdout and stderr if the command fails.",
+      "parentUuid": "e133a1da_6b67d664",
+      "range": {
+        "startLine": 126,
+        "startChar": 17,
+        "endLine": 126,
+        "endChar": 23
+      },
+      "revId": "55e44d281ceef83d5a2d730767d5873af17ed122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91c8d162_ac9dae85",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
         "patchSetId": 10
@@ -197,6 +389,30 @@
       "writtenOn": "2019-09-26T17:30:34Z",
       "side": 1,
       "message": "nit: maybe change msg-\u003ein and pb-\u003eout ? Or something a bit more meaningful?",
+      "range": {
+        "startLine": 142,
+        "startChar": 22,
+        "endLine": 142,
+        "endChar": 36
+      },
+      "revId": "55e44d281ceef83d5a2d730767d5873af17ed122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24f25768_a73eda0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-26T21:41:56Z",
+      "side": 1,
+      "message": "The function\u0027s name says that it will parse the \"msg\". Also the description says it will parse it into the proto definition. In the context of the actual work of the function, I think `in` and `out` make less sense.",
+      "parentUuid": "91c8d162_ac9dae85",
       "range": {
         "startLine": 142,
         "startChar": 22,
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "ad1ff52c_3c43a136",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-26T21:41:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "224e6d6a_51fd4ebf",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 54
+      },
+      "revId": "55e44d281ceef83d5a2d730767d5873af17ed122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a16d263a_ac593b73",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
         "patchSetId": 10
@@ -252,6 +492,30 @@
       "revId": "55e44d281ceef83d5a2d730767d5873af17ed122",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffff2b89_52b5fc67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-26T21:41:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a16d263a_ac593b73",
+      "range": {
+        "startLine": 152,
+        "startChar": 34,
+        "endLine": 152,
+        "endChar": 59
+      },
+      "revId": "55e44d281ceef83d5a2d730767d5873af17ed122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
