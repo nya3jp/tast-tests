@@ -17,7 +17,9 @@ import (
 // performance tests, as verbose logging might affect the performance.
 func ChromeVideo() testing.Precondition { return chromeVideoPre }
 
-var chromeVideoPre = chrome.NewPrecondition("video", chromeArgs)
+// TODO(b/141652665): Update flags controlling ChromeosVideoDecoder feature once always enabled by default.
+var chromeVideoPre = chrome.NewPrecondition("video", chromeArgs,
+	chrome.ExtraArgs("--disable-features=ChromeosVideoDecoder"))
 
 // ChromeVideoVD returns a precondition similar to ChromeVideo specified above. In addition this
 // precondition specifies that the new media::VideoDecoder-based video decoders need to used
