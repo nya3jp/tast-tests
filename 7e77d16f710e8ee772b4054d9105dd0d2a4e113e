@@ -22,6 +22,75 @@
       "revId": "7e77d16f710e8ee772b4054d9105dd0d2a4e113e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fff4c84_e83a958f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-26T14:41:39Z",
+      "side": 1,
+      "message": "Could you declare vars at latest timing?",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 15
+      },
+      "revId": "7e77d16f710e8ee772b4054d9105dd0d2a4e113e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "555e2d97_6e6fa14e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-26T14:41:39Z",
+      "side": 1,
+      "message": "nit/style: j \u003d j+2 and remove L205?",
+      "range": {
+        "startLine": 192,
+        "startChar": 32,
+        "endLine": 192,
+        "endChar": 36
+      },
+      "revId": "7e77d16f710e8ee772b4054d9105dd0d2a4e113e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc8ae21c_3eb82386",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-26T14:41:39Z",
+      "side": 1,
+      "message": "These are highly depending on how grabSamles is implemented. Instead, could you calculate them in the function for better encapsulation? (You can return structured data).",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 1
+      },
+      "revId": "7e77d16f710e8ee772b4054d9105dd0d2a4e113e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
