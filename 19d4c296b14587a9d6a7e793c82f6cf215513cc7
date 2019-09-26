@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aba6e8e6_0575ce34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-09-26T21:01:23Z",
+      "side": 1,
+      "message": "This test will run on special FIPS builds of cr50 firmware that expose the internal cryptographic functions as TPM commands. The purpose of the test is FIPS ACVP certification for the algorithms implemented in cr50.\n\nThe full test data for each algorithm is provided by NIST and running the test on that data takes ~5 hours on average.\n\nThe short test data is a subset of the full data, and is intended to be run periodically on FIPS builds to ensure continued compliance to FIPS ACVP standards.",
+      "parentUuid": "1fb698fe_ebf5186b",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 45
+      },
+      "revId": "19d4c296b14587a9d6a7e793c82f6cf215513cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1cdc6b06_e6bcdae2",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
         "patchSetId": 12
@@ -45,6 +69,30 @@
       "revId": "19d4c296b14587a9d6a7e793c82f6cf215513cc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "840cce79_a3666ca8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-09-26T21:01:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cdc6b06_e6bcdae2",
+      "range": {
+        "startLine": 236,
+        "startChar": 4,
+        "endLine": 236,
+        "endChar": 23
+      },
+      "revId": "19d4c296b14587a9d6a7e793c82f6cf215513cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
