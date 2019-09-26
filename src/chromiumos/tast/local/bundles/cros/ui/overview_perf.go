@@ -6,10 +6,12 @@ package ui
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
@@ -24,7 +26,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
-		Timeout:      3 * time.Minute / 2,
+		Timeout:      2 * time.Minute,
 	})
 }
 
@@ -37,12 +39,6 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	}
 	defer tconn.Close()
 
-	conn, err := cr.NewConn(ctx, "")
-	if err != nil {
-		s.Fatal("Failed to open a new connection: ", err)
-	}
-	defer conn.Close()
-
 	originalTabletMode, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to obtain the tablet mode status: ", err)
@@ -51,45 +47,56 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 
-	// Run overview mode enter/exit flow twice; one for the clamshell mode and the
-	// other for the tablet mode.
-	for _, inTabletMode := range []bool{false, true} {
-		if err = ash.SetTabletModeEnabled(ctx, tconn, inTabletMode); err != nil {
-			s.Fatalf("Failed to set tablet mode %v: %v", inTabletMode, err)
+	currentWindows := 0
+	// Run the overview mode enter/exit flow for various situations.
+	// - change the number of browser windows, 2 or 8
+	// - the window system status; clamshell mode with maximized windows or
+	//   tablet mode. TODO(mukai): add clamshell mode with normal windows.
+	for _, windows := range []int{2, 8} {
+		for ; currentWindows < windows; currentWindows++ {
+			conn, err := cr.NewConn(ctx, "", cdputil.WithNewWindow())
+			if err != nil {
+				s.Fatal("Failed to open a new connection: ", err)
+			}
+			defer conn.Close()
 		}
 
-		if err = cpu.WaitUntilIdle(ctx); err != nil {
-			s.Fatal("Failed to wait for system UI to be stabilized: ", err)
-		}
+		for _, inTabletMode := range []bool{false, true} {
+			if err = ash.SetTabletModeEnabled(ctx, tconn, inTabletMode); err != nil {
+				s.Fatalf("Failed to set tablet mode %v: %v", inTabletMode, err)
+			}
 
-		for i := 0; i < 10; i++ {
+			if err = cpu.WaitUntilIdle(ctx); err != nil {
+				s.Fatal("Failed to wait for system UI to be stabilized: ", err)
+			}
+
 			if err = ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 				s.Fatal("Failed to enter into the overview mode: ", err)
 			}
 			if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
 				s.Fatal("Failed to exit from the overview mode: ", err)
 			}
-		}
 
-		suffix := "SingleClamshellMode"
-		if inTabletMode {
-			suffix = "TabletMode"
-		}
-
-		for _, prefix := range []string{
-			"Ash.Overview.AnimationSmoothness.Enter",
-			"Ash.Overview.AnimationSmoothness.Exit",
-		} {
-			histName := prefix + "." + suffix
-			histogram, err := metrics.GetHistogram(ctx, cr, histName)
-			if err != nil {
-				s.Fatalf("Failed to get histogram %s: %v", histName, err)
+			suffix := "SingleClamshellMode"
+			if inTabletMode {
+				suffix = "TabletMode"
 			}
-			pv.Set(perf.Metric{
-				Name:      histName,
-				Unit:      "percent",
-				Direction: perf.BiggerIsBetter,
-			}, histogram.Mean())
+
+			for _, prefix := range []string{
+				"Ash.Overview.AnimationSmoothness.Enter",
+				"Ash.Overview.AnimationSmoothness.Exit",
+			} {
+				histName := prefix + "." + suffix
+				histogram, err := metrics.GetHistogram(ctx, cr, histName)
+				if err != nil {
+					s.Fatalf("Failed to get histogram %s: %v", histName, err)
+				}
+				pv.Set(perf.Metric{
+					Name:      fmt.Sprintf("%s.%dwindows", histName, currentWindows),
+					Unit:      "percent",
+					Direction: perf.BiggerIsBetter,
+				}, histogram.Mean())
+			}
 		}
 	}
 
