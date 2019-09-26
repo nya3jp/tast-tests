@@ -16,6 +16,13 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// perftestURL specifies the URL to be used for the browser windows for
+// performance tests of UI animation and smoothness. The empty URL (about:blank)
+// should be avoided since it's too simple for performance test. The new tab
+// page (chrome://newtab) would be great but it is not stable (e.g. the logo can
+// be replaced on holidays).
+const perftestURL string = "chrome://settings"
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         OverviewPerf,
@@ -37,7 +44,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	}
 	defer tconn.Close()
 
-	conn, err := cr.NewConn(ctx, "")
+	conn, err := cr.NewConn(ctx, perftestURL)
 	if err != nil {
 		s.Fatal("Failed to open a new connection: ", err)
 	}
