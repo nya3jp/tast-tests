@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/testexec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -123,8 +124,13 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 	defer st.End()
 
 	if p.cont != nil {
-		// TODO(hollingum): sanity checks on the incoming state, see local/arc/pre.go.
-		return p.buildPreData(ctx, s)
+		if err := p.verifyPrecondition(ctx); err != nil {
+			s.Log("Precondition unsatisifed: ", err)
+			p.cont = nil
+			p.Close(ctx, s)
+		} else {
+			return p.buildPreData(ctx, s)
+		}
 	}
 
 	// If initialization fails, this defer is used to clean-up the partially-initialized pre.
@@ -155,7 +161,6 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 			vm.TerminaComponentName, vm.TerminaMountDir), nil); err != nil {
 			s.Fatal("Failed to run autotestPrivate.registerComponent: ", err)
 		}
-
 	} else {
 		s.Log("Enabling Crostini preference setting")
 		if err = vm.EnableCrostini(ctx, p.tconn); err != nil {
@@ -188,7 +193,6 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.State) interface{} {
 			if err := p.tconn.EvalPromise(ctx, `tast.promisify(chrome.autotestPrivate.runCrostiniInstaller)()`, nil); err != nil {
 				s.Fatal("Running autotestPrivate.runCrostiniInstaller failed: ", err)
 			}
-
 		}
 	default:
 		s.Fatal("Unrecognized mode: ", p.mode)
@@ -269,4 +273,10 @@ func (p *preImpl) buildPreData(ctx context.Context, s *testing.State) PreData {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
 	return PreData{p.cr, p.tconn, p.cont, p.keyboard}
+}
+
+// verifyPrecondition returns an error if the current p.cont is not in
+// a ready state to run tests.
+func (p *preImpl) verifyPrecondition(ctx context.Context) error {
+	return p.cont.Command(ctx, "echo").Run(testexec.DumpLogOnError)
 }
