@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "6a43740a_48b95db0",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2019-09-26T06:16:48Z",
+      "side": 1,
+      "message": "resolved offline, just confirmed that it caches the download automatically so this really is just a restart (as intended)",
+      "parentUuid": "87ed7512_b18078a5",
+      "range": {
+        "startLine": 178,
+        "startChar": 22,
+        "endLine": 178,
+        "endChar": 46
+      },
+      "revId": "7ce3ec6cf3c7e45771c9c8cd1d801abe377c1d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b81331e5_aeecd764",
         "filename": "src/chromiumos/tast/local/crostini/pre.go",
         "patchSetId": 1
