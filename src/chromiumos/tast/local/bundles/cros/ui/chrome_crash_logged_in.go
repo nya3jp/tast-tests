@@ -38,7 +38,7 @@ func ChromeCrashLoggedIn(ctx context.Context, s *testing.State) {
 		s.Fatal("SetConsent failed: ", err)
 	}
 
-	cr, err := chrome.New(ctx, chrome.CrashNormalMode(), chrome.KeepState())
+	cr, err := chrome.New(ctx, chrome.CrashNormalMode(), chrome.KeepState(), chrome.ExtraArgs(chromecrash.VModuleFlag))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
