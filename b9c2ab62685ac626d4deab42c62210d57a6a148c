@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f67dd8d_3a29db28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-26T13:30:38Z",
+      "side": 1,
+      "message": "Could you handle the error?\n\nif err :\u003d testing.Poll(\n    ...\n); err !\u003d nil {\n    s.Fatal(...)\n}",
+      "range": {
+        "startLine": 168,
+        "startChar": 3,
+        "endLine": 177,
+        "endChar": 54
+      },
+      "revId": "b9c2ab62685ac626d4deab42c62210d57a6a148c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
