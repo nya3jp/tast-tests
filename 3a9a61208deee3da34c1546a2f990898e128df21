@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e67df342_78ab7124",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-26T12:18:03Z",
+      "side": 1,
+      "message": "Isn\u0027t this still too big?\nAccording to [1], the size limitation for all Tast tests seems to be 20MB. If so, crash dump shouldn\u0027t be acceptable.\n\n\nBut, we might have some infra update that I don\u0027t know. I\u0027d like to here Tast owner\u0027s thought.\n\n[1] https://bugs.chromium.org/p/chromium/issues/detail?id\u003d934090#c10",
+      "range": {
+        "startLine": 14,
+        "startChar": 33,
+        "endLine": 14,
+        "endChar": 51
+      },
+      "revId": "3a9a61208deee3da34c1546a2f990898e128df21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32f56bc7_56b560c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-26T12:18:03Z",
+      "side": 1,
+      "message": "Question: Can multiple dump files be created? Can\u0027t we make this 1?\n\nAnyway, it\u0027s somehow scary to have no limitation. For example, this uses 3 as the limit. \nhttps://cs.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/runner/sys_info.go?rcl\u003de96973b86aed3668339f33407f2eb6d39413b5a0\u0026l\u003d114",
+      "range": {
+        "startLine": 261,
+        "startChar": 76,
+        "endLine": 261,
+        "endChar": 77
+      },
+      "revId": "3a9a61208deee3da34c1546a2f990898e128df21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17550712_21eb4dfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-26T12:18:03Z",
+      "side": 1,
+      "message": "How about printing warnings?",
+      "range": {
+        "startLine": 261,
+        "startChar": 6,
+        "endLine": 261,
+        "endChar": 7
+      },
+      "revId": "3a9a61208deee3da34c1546a2f990898e128df21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bad79b5d_09992684",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-26T12:18:03Z",
+      "side": 1,
+      "message": "Hmm, it seems that crash.CopyNewFiles always return \u0027nil\u0027 for err?\n\nI think this line must be \"return warnings, err\":\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/crash/crash.go?rcl\u003de96973b86aed3668339f33407f2eb6d39413b5a0\u0026l\u003d139\n\nWDYT? If my understanding is correct, would you mind fixing this library?",
+      "range": {
+        "startLine": 261,
+        "startChar": 15,
+        "endLine": 261,
+        "endChar": 33
+      },
+      "revId": "3a9a61208deee3da34c1546a2f990898e128df21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ed06602_628c074d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-26T12:18:03Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 262,
+        "startChar": 60,
+        "endLine": 262,
+        "endChar": 66
+      },
+      "revId": "3a9a61208deee3da34c1546a2f990898e128df21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
