@@ -71,6 +71,75 @@
     },
     {
       "key": {
+        "uuid": "a003edfa_8fc3a17b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T09:10:11Z",
+      "side": 1,
+      "message": "This function is a bit involved; I recommend writing a unit test for it.",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 28
+      },
+      "revId": "374b4b500ddfbb4f3ae101bdf6eefdc16d69f6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bf1a972_bc6eecef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T09:10:11Z",
+      "side": 1,
+      "message": "style: var intValues []int64\nhttps://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 23
+      },
+      "revId": "374b4b500ddfbb4f3ae101bdf6eefdc16d69f6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f9736aa_f5b62a18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T09:10:11Z",
+      "side": 1,
+      "message": "style: WifiCheckSARTable\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms\n\nI know this rule does not work well with \"WiFi\", but I think it\u0027s good to follow for SAR.",
+      "range": {
+        "startLine": 95,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 22
+      },
+      "revId": "374b4b500ddfbb4f3ae101bdf6eefdc16d69f6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "11c7385b_3a1e29d6",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
         "patchSetId": 1
@@ -99,6 +168,70 @@
       "writtenOn": "2019-09-25T23:33:32Z",
       "side": 1,
       "message": "I think this and all the other s.Fatatf calls should just be s.Fatal(\"Could not read SSDT data: \", err)",
+      "revId": "374b4b500ddfbb4f3ae101bdf6eefdc16d69f6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3471c792_10875d26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T09:10:11Z",
+      "side": 1,
+      "message": "+1 :)\n\nPlease also use %v to format error values, it\u0027s more typical in Tast code.",
+      "parentUuid": "5ad3a47b_abe0b9a9",
+      "revId": "374b4b500ddfbb4f3ae101bdf6eefdc16d69f6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5220fda_de7ba0ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T09:10:11Z",
+      "side": 1,
+      "message": "Please avoid specifying /tmp explicitly; setting \"\" will use the default path.\nhttps://godoc.org/io/ioutil#TempFile\n\nAnd actually in Tast tests the default path is overridden to /usr/local/tmp because /tmp (tmpfs) consumes memory.",
+      "range": {
+        "startLine": 104,
+        "startChar": 33,
+        "endLine": 104,
+        "endChar": 39
+      },
+      "revId": "374b4b500ddfbb4f3ae101bdf6eefdc16d69f6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad3c351e_58fe2781",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/wifi_check_sar_table.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T09:10:11Z",
+      "side": 1,
+      "message": "huge nit: \n\n if err :\u003d cmd.Run(); err !\u003d nil { ...",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 16
+      },
       "revId": "374b4b500ddfbb4f3ae101bdf6eefdc16d69f6d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
