@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06ed85c0_fc419efd",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T08:54:04Z",
+      "side": 1,
+      "message": "huge nit: I recommend following the same documentation format as exported constants for symmetricity :)\n\n // systemCrashStash is the directory ...",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 16
+      },
+      "revId": "e45347e42497d099edb14895a3bc074fa54d9092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d7c1092_30185f5a",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T08:54:04Z",
+      "side": 1,
+      "message": "nit: You can omit repeated types in Go:\n\n (source, target string)",
+      "range": {
+        "startLine": 114,
+        "startChar": 22,
+        "endLine": 114,
+        "endChar": 50
+      },
+      "revId": "e45347e42497d099edb14895a3bc074fa54d9092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dd95cde_e3479fd0",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T08:54:04Z",
+      "side": 1,
+      "message": "Is it possible that the source directory does not exist?",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 37
+      },
+      "revId": "e45347e42497d099edb14895a3bc074fa54d9092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92e1c0db_2c4b9876",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T08:54:04Z",
+      "side": 1,
+      "message": "nit: You can omit repeated types in Go:\n\n (inProgDir, sysCrashDir, sysCrashStash, userCrashDir, userCrashStash string)",
+      "range": {
+        "startLine": 140,
+        "startChar": 35,
+        "endLine": 140,
+        "endChar": 137
+      },
+      "revId": "e45347e42497d099edb14895a3bc074fa54d9092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "483c32ef_996dd9d0",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T08:54:04Z",
+      "side": 1,
+      "message": "In this case I guess we want to revert the stash of sysCrashDir.\n\nSame for other error cases below.",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 147,
+        "endChar": 12
+      },
+      "revId": "e45347e42497d099edb14895a3bc074fa54d9092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d28ebbdf_d10dcf2b",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T08:54:04Z",
+      "side": 1,
+      "message": "Hmm, I don\u0027t think this ever happens; os.Create succeeds even if the file already exists.\nhttps://godoc.org/os#Create\n\nBTW, totally optional, but you can use ioutil.WriteFile with nil content to do this quickly:\n\n if err :\u003d ioutil.WriteFile(filePath, nil, 0644); err !\u003d nil { ... }\n\nhttps://godoc.org/io/ioutil#WriteFile",
+      "range": {
+        "startLine": 157,
+        "startChar": 2,
+        "endLine": 157,
+        "endChar": 22
+      },
+      "revId": "e45347e42497d099edb14895a3bc074fa54d9092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4197d2c9_c74856bf",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T08:54:04Z",
+      "side": 1,
+      "message": "Do we want to clear the content of realDir in advance? Or do you intend that it is individual test\u0027s responsibility to clean up the crash dirs?",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 2
+      },
+      "revId": "e45347e42497d099edb14895a3bc074fa54d9092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aed7b204_ffd667a3",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T08:54:04Z",
+      "side": 1,
+      "message": "I guess we want to continue cleanup even if we encounter errors during it. Typical way to do this is to return the first encountered error:\n\n var firstErr error\n\n if err :\u003d ...; err !\u003d nil \u0026\u0026 firstErr \u003d nil {\n   firstErr \u003d err\n }\n if err :\u003d ...; err !\u003d nil \u0026\u0026 firstErr \u003d nil {\n   firstErr \u003d err\n }\n ...",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 2
+      },
+      "revId": "e45347e42497d099edb14895a3bc074fa54d9092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea4c5026_922dd5f9",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T08:54:04Z",
+      "side": 1,
+      "message": "huge nit: nil is more direct way to represent an empty []byte.",
+      "range": {
+        "startLine": 29,
+        "startChar": 32,
+        "endLine": 29,
+        "endChar": 42
+      },
+      "revId": "e45347e42497d099edb14895a3bc074fa54d9092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04401372_89871f9f",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T08:54:04Z",
+      "side": 1,
+      "message": "0744 is a bit unusual permission, is it intentional?",
+      "range": {
+        "startLine": 29,
+        "startChar": 44,
+        "endLine": 29,
+        "endChar": 48
+      },
+      "revId": "e45347e42497d099edb14895a3bc074fa54d9092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa0151a9_d289ef59",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T08:54:04Z",
+      "side": 1,
+      "message": "\": \" is not needed; it\u0027s inserted by errors.Wrapf.",
+      "range": {
+        "startLine": 42,
+        "startChar": 56,
+        "endLine": 42,
+        "endChar": 58
+      },
+      "revId": "e45347e42497d099edb14895a3bc074fa54d9092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d230a8ca_a38833ac",
+        "filename": "src/chromiumos/tast/local/crash/crash_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T08:54:04Z",
+      "side": 1,
+      "message": "nit\u0026optional: How about creating one root temp dir and creating its subdirectories?\n\n tempDir, err :\u003d ioutil.TempDir(\"\", \"\")\n if err !\u003d nil { ... }\n\n var (\n   sysCrashDir   \u003d filepath.Join(tempDir, \"crash\")\n   sysCrashStash \u003d filepath.Join(tempDir, \"crash.stash\")\n   ...\n )\n\n for _, p :\u003d range []string{sysCrashDir, sysCrashStash, ...} {\n   if err :\u003d os.Mkdir(p, 0755); err !\u003d nil { ... }\n }",
+      "range": {
+        "startLine": 51,
+        "startChar": 16,
+        "endLine": 51,
+        "endChar": 67
+      },
+      "revId": "e45347e42497d099edb14895a3bc074fa54d9092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
