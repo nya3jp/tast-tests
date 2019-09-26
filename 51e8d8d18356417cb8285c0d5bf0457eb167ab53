@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ddd6507c_87264ab4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-26T14:59:07Z",
+      "side": 1,
+      "message": "huge nit: I\u0027m trying to understand the meaning of this... perhaps there is a missing word in that sentence?",
+      "range": {
+        "startLine": 152,
+        "startChar": 77,
+        "endLine": 152,
+        "endChar": 107
+      },
+      "revId": "51e8d8d18356417cb8285c0d5bf0457eb167ab53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
