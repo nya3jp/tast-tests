@@ -46,6 +46,30 @@
       "revId": "b8b8faef122d0d8858f7d69e9bf50e1ebc95dd2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "818daf83_3b11ef30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/minijail.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2019-09-26T03:33:30Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "8899a9f6_c1a6d0b1",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 35
+      },
+      "revId": "b8b8faef122d0d8858f7d69e9bf50e1ebc95dd2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
