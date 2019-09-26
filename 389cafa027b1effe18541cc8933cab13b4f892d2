@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad1aa6cd_f0ca5181",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-26T21:54:06Z",
+      "side": 1,
+      "message": "since this is the last one, you can avoid the \"if err :\u003d ... ; err !\u003d nil\".\n\nYou can just do:\n\nreturn ensureSetWindowState(....)",
+      "range": {
+        "startLine": 280,
+        "startChar": 3,
+        "endLine": 280,
+        "endChar": 13
+      },
+      "revId": "389cafa027b1effe18541cc8933cab13b4f892d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "335ce6b3_eff7436f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-26T21:54:06Z",
+      "side": 1,
+      "message": "(here and in the rest) when you return an error, it should start in lower case:\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 342,
+        "startChar": 24,
+        "endLine": 342,
+        "endChar": 25
+      },
+      "revId": "389cafa027b1effe18541cc8933cab13b4f892d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "629e201c_cbaa9720",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-26T21:54:06Z",
+      "side": 1,
+      "message": "nit: change order of parameters (missed this on the first pass).\n\neg: ensureNoBlackBkg(.. cr *chrome.Chrome, tconn *chrome.Conn)\n\nThis is because tconn is \"less\" important than cr.",
+      "range": {
+        "startLine": 368,
+        "startChar": 43,
+        "endLine": 368,
+        "endChar": 80
+      },
+      "revId": "389cafa027b1effe18541cc8933cab13b4f892d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

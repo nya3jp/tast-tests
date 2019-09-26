@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "e7feab7b_27f1f3bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-26T21:54:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "233e17da_a5a1bdac",
+      "range": {
+        "startLine": 175,
+        "startChar": 1,
+        "endLine": 178,
+        "endChar": 2
+      },
+      "revId": "50ef0e6b866ea7253e5c02e1eccd2a6b2a72894e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd5db3ce_b6d3ab15",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
         "patchSetId": 1
@@ -284,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "c3d7b1d2_db9e157e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-26T21:54:06Z",
+      "side": 1,
+      "message": "Could you add a comment on the code then? It is not obvious why it is needed. thanks.",
+      "parentUuid": "a0e2943a_7213a30f",
+      "range": {
+        "startLine": 268,
+        "startChar": 13,
+        "endLine": 268,
+        "endChar": 29
+      },
+      "revId": "50ef0e6b866ea7253e5c02e1eccd2a6b2a72894e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b8e3595_72d1b1a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
         "patchSetId": 1
@@ -366,6 +414,30 @@
       "side": 1,
       "message": "I have extra operation like SetARCAppWindowState which I think ensureSetWindowState sounds much better. I need set window state and make sure it sets to the required window state at the end.\n\nensureWindowState is just like only checking if it is required window state.",
       "parentUuid": "ae46f463_8ab889f7",
+      "range": {
+        "startLine": 320,
+        "startChar": 5,
+        "endLine": 320,
+        "endChar": 25
+      },
+      "revId": "50ef0e6b866ea7253e5c02e1eccd2a6b2a72894e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77dd781c_61186c30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-26T21:54:06Z",
+      "side": 1,
+      "message": "so, what about \"setWindowState\" then? would that work?",
+      "parentUuid": "44e47b1b_88875b43",
       "range": {
         "startLine": 320,
         "startChar": 5,
