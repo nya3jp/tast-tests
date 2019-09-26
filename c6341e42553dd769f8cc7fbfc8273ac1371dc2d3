@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9b0ed7c_212ba9c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_logged_in.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-09-26T16:44:50Z",
+      "side": 1,
+      "message": "Super-nit: Maybe this can go in a string constant in the chromecrash module?",
+      "range": {
+        "startLine": 42,
+        "startChar": 19,
+        "endLine": 42,
+        "endChar": 74
+      },
+      "revId": "c6341e42553dd769f8cc7fbfc8273ac1371dc2d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
