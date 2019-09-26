@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7b50f77f_dd0245b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-09-26T16:00:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5fe5f09_78dd89dd",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 38
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b23c5213_e77dbf71",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6e8fa4db_0153f96e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-09-26T16:00:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b23c5213_e77dbf71",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 59
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "504d647b_20d1a599",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "366efd8a_1234b0de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-09-26T16:00:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "504d647b_20d1a599",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +189,54 @@
     },
     {
       "key": {
+        "uuid": "57912ad9_f540d3d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-09-26T16:00:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "880b8514_e12110e9",
+      "range": {
+        "startLine": 49,
+        "startChar": 17,
+        "endLine": 49,
+        "endChar": 41
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7dbd4b93_5ef4fc4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-09-26T16:00:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed74f018_ba313bf9",
+      "range": {
+        "startLine": 49,
+        "startChar": 55,
+        "endLine": 49,
+        "endChar": 91
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa43d572_a261f874",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4630b4e7_9d2ec81c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-09-26T16:00:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa43d572_a261f874",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 16
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "89ff9192_89524627",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-09-26T16:00:24Z",
+      "side": 1,
+      "message": "I guess is should be `does not have`. We are trying to find connected to the network USB Ethernet devices.",
+      "parentUuid": "9caa2513_98e78284",
+      "range": {
+        "startLine": 56,
+        "startChar": 15,
+        "endLine": 56,
+        "endChar": 28
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a2d270d_ade11f07",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
         "patchSetId": 1
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "93f73085_68162b30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-09-26T16:00:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a2d270d_ade11f07",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 20
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "704af383_102c0459",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
         "patchSetId": 1
@@ -206,6 +398,30 @@
       "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7981ad4a_abb9ad2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-09-26T16:00:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "704af383_102c0459",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 33
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -256,6 +472,30 @@
     },
     {
       "key": {
+        "uuid": "6ae3db2c_59bdaaa0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-09-26T16:00:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f15483f1_9baad513",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 0
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7f90d40_ceae44fb",
         "filename": "src/chromiumos/tast/local/shill/device.go",
         "patchSetId": 1
@@ -276,6 +516,30 @@
       "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "081f5a4f_cfda7cde",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-09-26T16:00:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7f90d40_ceae44fb",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -302,6 +566,30 @@
     },
     {
       "key": {
+        "uuid": "a8517b3b_2eab6214",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-09-26T16:00:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55a7da62_52815a43",
+      "range": {
+        "startLine": 39,
+        "startChar": 6,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ee7d34c_35aeb130",
         "filename": "src/chromiumos/tast/local/shill/manager.go",
         "patchSetId": 1
@@ -325,6 +613,30 @@
     },
     {
       "key": {
+        "uuid": "4391042d_9fce2b3f",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-09-26T16:00:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ee7d34c_35aeb130",
+      "range": {
+        "startLine": 113,
+        "startChar": 32,
+        "endLine": 113,
+        "endChar": 40
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fde40e76_d4966c24",
         "filename": "src/chromiumos/tast/local/shill/manager.go",
         "patchSetId": 1
@@ -345,6 +657,30 @@
       "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcc3d93a_cd277ce1",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-09-26T16:00:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fde40e76_d4966c24",
+      "range": {
+        "startLine": 119,
+        "startChar": 25,
+        "endLine": 119,
+        "endChar": 45
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
