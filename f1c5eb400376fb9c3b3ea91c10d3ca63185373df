@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69375ae9_96790217",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_dtc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-26T17:06:55Z",
+      "side": 1,
+      "message": "seems like you have some leading spaces/inconsistent indentation in here?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 7
+      },
+      "revId": "f1c5eb400376fb9c3b3ea91c10d3ca63185373df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
