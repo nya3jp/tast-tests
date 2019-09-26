@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "533a50ea_df844351",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-26T02:38:57Z",
+      "side": 1,
+      "message": "Why not changing PeerConn{H264,VP8}Perf as well?\n\nWhen we modify the perf tests, we might want to change this function as well.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/webrtc/camera.go?rcl\u003dd2229f5f9eb5b97e154d778128c7f513c13f9074\u0026l\u003d112\nWe only counted broken frames when vivid is used to avoid flakiness caused by real hardware. But, we don\u0027t need to care it with fake webcam.",
+      "revId": "a661c370ad9569194a202777cd0e7a0216fa0215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "041d1946_5d947585",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peer_conn_h264.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-26T02:38:57Z",
+      "side": 1,
+      "message": "This should conflict with CL:1809018, which has been blocked on CQ many times.\nOne solution is to rebase this CL on CL:1809018, but it\u0027d be okay to keep this until that is merged.",
+      "revId": "a661c370ad9569194a202777cd0e7a0216fa0215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6274f762_2927f530",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peer_conn_h264.go",
         "patchSetId": 4
@@ -18,6 +52,69 @@
         "startChar": 25,
         "endLine": 29,
         "endChar": 50
+      },
+      "revId": "a661c370ad9569194a202777cd0e7a0216fa0215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf8dbfb2_1d7ba8b4",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-26T02:38:57Z",
+      "side": 1,
+      "message": "This field must be a unique identifier for this precondition.\nSo, this should be \"videoFakeWebcam\" or something like this?",
+      "range": {
+        "startLine": 28,
+        "startChar": 58,
+        "endLine": 28,
+        "endChar": 65
+      },
+      "revId": "a661c370ad9569194a202777cd0e7a0216fa0215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77bb33e1_8dac23f9",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-26T02:38:57Z",
+      "side": 1,
+      "message": "Could you add a comment about what this arg is for?\n// Feed a test pattern to getUserMedia() instead of live camera input",
+      "revId": "a661c370ad9569194a202777cd0e7a0216fa0215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebfcb5ca_9078f87e",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-26T02:38:57Z",
+      "side": 1,
+      "message": "no need? \n(not related to this CL, though)",
+      "range": {
+        "startLine": 69,
+        "startChar": 54,
+        "endLine": 69,
+        "endChar": 58
       },
       "revId": "a661c370ad9569194a202777cd0e7a0216fa0215",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
