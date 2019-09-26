@@ -18,7 +18,12 @@ import (
 // affect the performance.
 func ChromeVideo() testing.Precondition { return chromeVideoPre }
 
-var chromeVideoPre = chrome.NewPrecondition("video", chromeArgs)
+// TODO(b/141652665): Currently the ChromeosVideoDecoder feature is enabled on
+// x% of devices depending on the branch, so we need to use both enable and
+// disable flags to garantuee correct behavior. Once the feature is always
+// enabled we can remove the "--enable-features" flag on chromeVDArgs.
+var chromeVideoPre = chrome.NewPrecondition("video", chromeArgs,
+	chrome.ExtraArgs("--disable-features=ChromeosVideoDecoder"))
 
 // ChromeVideoWithFakeWebcam returns precondition equal to ChromeVideo above,
 // supplementing it with the use of a fake video/audio capture device (a.k.a.

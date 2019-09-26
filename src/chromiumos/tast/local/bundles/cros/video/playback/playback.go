@@ -149,8 +149,14 @@ func measureWithConfig(ctx context.Context, fileSystem http.FileSystem, videoNam
 		chromeArgs = append(chromeArgs, "--disable-accelerated-video-decode")
 	}
 
+	// TODO(b/141652665): Currently the ChromeosVideoDecoder feature is enabled
+	// on x% of devices depending on the branch, so we need to use both enable
+	// and disable flags to guarantee correct behavior. Once the feature is
+	// always enabled we can remove the "--enable-features" flag here.
 	if decoderType == VD {
 		chromeArgs = append(chromeArgs, "--enable-features=ChromeosVideoDecoder")
+	} else {
+		chromeArgs = append(chromeArgs, "--disable-features=ChromeosVideoDecoder")
 	}
 
 	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))
