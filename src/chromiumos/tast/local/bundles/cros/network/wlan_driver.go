@@ -28,6 +28,7 @@ func init() {
 			"chromeos-kernel-wifi@google.com", // Connectivity team
 			"oka@chromium.org",                // Tast port author
 		},
+		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"wifi"},
 
 		// TODO(crbug.com/984433): Consider skipping nyan_kitty. It has been skipped in the original test as it's unresolvably flaky (crrev.com/c/944502), exhibiting very similar symptoms to crbug.com/693724, b/65858242, b/36264732.
