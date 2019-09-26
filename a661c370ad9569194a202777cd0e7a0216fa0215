@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2764904b_c65d2c11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-09-26T15:29:46Z",
+      "side": 1,
+      "message": "Yeah! I have done that in a parallel CL to reduce the load on\nreviewers and to keep this change focused. (I tried to upload \nthat as a dependent CL but somehow it didn\u0027t work, stay tuned)",
+      "parentUuid": "533a50ea_df844351",
+      "revId": "a661c370ad9569194a202777cd0e7a0216fa0215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "041d1946_5d947585",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peer_conn_h264.go",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "a661c370ad9569194a202777cd0e7a0216fa0215",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b49e6607_366f479d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peer_conn_h264.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-09-26T15:29:46Z",
+      "side": 1,
+      "message": "Oh yeah, sorry somehow I confused that CL. I\u0027ll rebase this if it\nlands first.",
+      "parentUuid": "041d1946_5d947585",
+      "revId": "a661c370ad9569194a202777cd0e7a0216fa0215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "1e9d5bf4_16c7d3f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peer_conn_h264.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-09-26T15:29:46Z",
+      "side": 1,
+      "message": "Ah, good catch, removing it.",
+      "parentUuid": "6274f762_2927f530",
+      "range": {
+        "startLine": 29,
+        "startChar": 25,
+        "endLine": 29,
+        "endChar": 50
+      },
+      "revId": "a661c370ad9569194a202777cd0e7a0216fa0215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ad882aa_5348dc90",
         "filename": "src/chromiumos/tast/local/media/pre/pre.go",
         "patchSetId": 4
@@ -70,6 +130,30 @@
       "writtenOn": "2019-09-26T08:59:18Z",
       "side": 1,
       "message": "This sounds cool :)",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 51
+      },
+      "revId": "a661c370ad9569194a202777cd0e7a0216fa0215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "656e66fa_4356bcb7",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-09-26T15:29:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1ad882aa_5348dc90",
       "range": {
         "startLine": 23,
         "startChar": 0,
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "161baf04_a80022e2",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-09-26T15:29:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf8dbfb2_1d7ba8b4",
+      "range": {
+        "startLine": 28,
+        "startChar": 58,
+        "endLine": 28,
+        "endChar": 65
+      },
+      "revId": "a661c370ad9569194a202777cd0e7a0216fa0215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77bb33e1_8dac23f9",
         "filename": "src/chromiumos/tast/local/media/pre/pre.go",
         "patchSetId": 4
@@ -119,6 +227,24 @@
       "revId": "a661c370ad9569194a202777cd0e7a0216fa0215",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18b7cd1c_0443e896",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-09-26T15:29:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77bb33e1_8dac23f9",
+      "revId": "a661c370ad9569194a202777cd0e7a0216fa0215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -142,6 +268,30 @@
       "revId": "a661c370ad9569194a202777cd0e7a0216fa0215",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90cd42e6_cf1bbfc6",
+        "filename": "src/chromiumos/tast/local/media/pre/pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-09-26T15:29:46Z",
+      "side": 1,
+      "message": "Why not, let\u0027s remove it :-)",
+      "parentUuid": "ebfcb5ca_9078f87e",
+      "range": {
+        "startLine": 69,
+        "startChar": 54,
+        "endLine": 69,
+        "endChar": 58
+      },
+      "revId": "a661c370ad9569194a202777cd0e7a0216fa0215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
