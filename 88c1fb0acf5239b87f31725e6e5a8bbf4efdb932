@@ -46,6 +46,30 @@
       "revId": "88c1fb0acf5239b87f31725e6e5a8bbf4efdb932",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d069b8e3_4b47fa1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T08:11:02Z",
+      "side": 1,
+      "message": "There\u0027s no written threshold. It depends on features --- for example, taking a lot of time to bring up VM would be fine, as long as we use preconditions to reuse VM instances. That said, I would like an ARC test to run in ~5 minutes, given that arc.Booted precondition is used (thus ARC boot time is not counted).",
+      "parentUuid": "80427a6c_fb84fa28",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "88c1fb0acf5239b87f31725e6e5a8bbf4efdb932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
