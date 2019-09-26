@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f6054de_9b08cc26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-09-26T17:30:34Z",
+      "side": 1,
+      "message": "nit: maybe dtc_protos? something to show that this contains the proto defs?",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "55e44d281ceef83d5a2d730767d5873af17ed122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd935567_9e0a3e6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-09-26T17:30:34Z",
+      "side": 1,
+      "message": "nit: wordsmithing: \"...to the wilco_dtc_supportd daemon on the host\"",
+      "range": {
+        "startLine": 28,
+        "startChar": 83,
+        "endLine": 28,
+        "endChar": 123
+      },
+      "revId": "55e44d281ceef83d5a2d730767d5873af17ed122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b840088f_c69dc3b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-09-26T17:30:34Z",
+      "side": 1,
+      "message": "Not obvious, but it\u0027s recommended to avoid passing testing.State unless required. You can use\ntesting.ContextLog() instead of the s.Log() calls:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\nSame for below functions.\n\nAlternatively, I would feel fine just removing this logging? Nothing should be blocking for a long time, so I don\u0027t need a status update warning me that things are about to pause.",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 68,
+        "endChar": 18
+      },
+      "revId": "55e44d281ceef83d5a2d730767d5873af17ed122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03162999_ece22e08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-09-26T17:30:34Z",
+      "side": 1,
+      "message": "nit: I would just delete this. Or it should probably be added to the equivalent lines below.",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 53
+      },
+      "revId": "55e44d281ceef83d5a2d730767d5873af17ed122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7613a74f_cae12602",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-09-26T17:30:34Z",
+      "side": 1,
+      "message": "nit: If the version number is incorrect it doesn\u0027t catch the milestone error cuz it returns too early. Not a big deal, but maybe you could actually do the s.Error() calls here directly instead of returning, so you could log both errors. Then this function would not have a return value, and you could do all logging here, and could avoid testing the return value of this function.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 2
+      },
+      "revId": "55e44d281ceef83d5a2d730767d5873af17ed122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9873d79a_593a1526",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-09-26T17:30:34Z",
+      "side": 1,
+      "message": "in, out descriptor.Message ?",
+      "range": {
+        "startLine": 115,
+        "startChar": 55,
+        "endLine": 115,
+        "endChar": 100
+      },
+      "revId": "55e44d281ceef83d5a2d730767d5873af17ed122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bda28e1_8de2f802",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-09-26T17:30:34Z",
+      "side": 1,
+      "message": "Why not \"--message_body\u003d\"+body ? Here body is an actual string, not bytes as below.",
+      "range": {
+        "startLine": 124,
+        "startChar": 29,
+        "endLine": 124,
+        "endChar": 67
+      },
+      "revId": "55e44d281ceef83d5a2d730767d5873af17ed122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e133a1da_6b67d664",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-09-26T17:30:34Z",
+      "side": 1,
+      "message": "tricky: I think this should be CombinedOutput so that we also get the command\u0027s err stream too. You can test this by not starting wilco_dtc_supportd to cause the util to give an error.",
+      "range": {
+        "startLine": 126,
+        "startChar": 17,
+        "endLine": 126,
+        "endChar": 23
+      },
+      "revId": "55e44d281ceef83d5a2d730767d5873af17ed122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91c8d162_ac9dae85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-09-26T17:30:34Z",
+      "side": 1,
+      "message": "nit: maybe change msg-\u003ein and pb-\u003eout ? Or something a bit more meaningful?",
+      "range": {
+        "startLine": 142,
+        "startChar": 22,
+        "endLine": 142,
+        "endChar": 36
+      },
+      "revId": "55e44d281ceef83d5a2d730767d5873af17ed122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "224e6d6a_51fd4ebf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-09-26T17:30:34Z",
+      "side": 1,
+      "message": "Wait, are there two errors here?\n1. jsn does not contain a \"body\" field\n2. the actual marshaling fails\nIf so this should probably be split up into two different checks and different error messages.",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 54
+      },
+      "revId": "55e44d281ceef83d5a2d730767d5873af17ed122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a16d263a_ac593b73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_grpc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-09-26T17:30:34Z",
+      "side": 1,
+      "message": "does string(jsonStr) not work? Also, maybe jsnStr could be jsnBytes?",
+      "range": {
+        "startLine": 152,
+        "startChar": 34,
+        "endLine": 152,
+        "endChar": 59
+      },
+      "revId": "55e44d281ceef83d5a2d730767d5873af17ed122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
