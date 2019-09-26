@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71aa5812_8bd478be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-26T06:39:54Z",
+      "side": 1,
+      "message": "Questions: \n* Is RAPL available on _all_ Intel Chromebook?\n* Doesn\u0027t ARM have any RAPL alternative?\n\nTodd may know.",
+      "range": {
+        "startLine": 10,
+        "startChar": 55,
+        "endLine": 10,
+        "endChar": 70
+      },
+      "revId": "2c49444bd4f0220fd17d361f5edf3e46fc4e1ce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb46b645_3fb745fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-26T06:39:54Z",
+      "side": 1,
+      "message": "Now, this function also provides power consumption.",
+      "revId": "2c49444bd4f0220fd17d361f5edf3e46fc4e1ce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb85be78_5151513d",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-26T06:39:54Z",
+      "side": 1,
+      "message": "This sentence might be misleading because CPU usage MUST be contained but power consumption MAY be contained.\nThough it\u0027s explained in the next sentence, I wonder if we cannot make it clearer.",
+      "range": {
+        "startLine": 214,
+        "startChar": 3,
+        "endLine": 214,
+        "endChar": 78
+      },
+      "revId": "2c49444bd4f0220fd17d361f5edf3e46fc4e1ce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efefa114_72750e5f",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-26T06:39:54Z",
+      "side": 1,
+      "message": "Hmm, iiuc, there is a race around update of err.\nWhat will happen when MeasureCPUUsage reported an error before MeasurePowerUsage succeeded? I guess err returned by MeasureCPUUsage will be overwritten.\nIf the order is inverted, the error would be reported.",
+      "revId": "2c49444bd4f0220fd17d361f5edf3e46fc4e1ce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
