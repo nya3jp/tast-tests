@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
+	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 )
 
@@ -69,7 +70,7 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 
 	// Use a total of 16 windows for this test, so that scrolling can happen.
 	for i := 0; i < 16; i++ {
-		conn, err := cr.NewConn(ctx, "about:blank", cdputil.WithNewWindow())
+		conn, err := cr.NewConn(ctx, ui.PerftestURL, cdputil.WithNewWindow())
 		if err != nil {
 			s.Fatal("Failed to open a new connection for a new window: ", err)
 		}

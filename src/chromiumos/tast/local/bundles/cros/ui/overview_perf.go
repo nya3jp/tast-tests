@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/perf"
+	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 )
 
@@ -54,7 +55,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	//   tablet mode. TODO(mukai): add clamshell mode with normal windows.
 	for _, windows := range []int{2, 8} {
 		for ; currentWindows < windows; currentWindows++ {
-			conn, err := cr.NewConn(ctx, "", cdputil.WithNewWindow())
+			conn, err := cr.NewConn(ctx, ui.PerftestURL, cdputil.WithNewWindow())
 			if err != nil {
 				s.Fatal("Failed to open a new connection: ", err)
 			}
