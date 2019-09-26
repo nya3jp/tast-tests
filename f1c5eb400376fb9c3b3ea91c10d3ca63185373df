@@ -46,6 +46,29 @@
       "revId": "f1c5eb400376fb9c3b3ea91c10d3ca63185373df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96cf3c7d_100b1fb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/vm/sludge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-09-26T23:19:41Z",
+      "side": 1,
+      "message": "maybe \"the values that are used in production\"? And possibly rename to ProdSludgeConfig?",
+      "range": {
+        "startLine": 34,
+        "startChar": 63,
+        "endLine": 35,
+        "endChar": 9
+      },
+      "revId": "f1c5eb400376fb9c3b3ea91c10d3ca63185373df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
