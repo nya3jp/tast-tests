@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "c5fe5f09_78dd89dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T08:36:42Z",
+      "side": 1,
+      "message": "style: SetUSBEthernetMACAddressSource\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms\n\nI know it\u0027s based on DBus method name, but Tast tests have its own naming convention...",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 38
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b23c5213_e77dbf71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T08:36:42Z",
+      "side": 1,
+      "message": "\"Test FooBar D-Bus method\" is not very easy to understand for someone taking a look at test failures. Could you describe the feature this test checks, not its internal?",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 59
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "504d647b_20d1a599",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T08:36:42Z",
+      "side": 1,
+      "message": "In general, variable names in this file is a bit long like Java... :) In Go shorter names are much preferred.\nhttps://golang.org/doc/effective_go.html#names\n\nIn this case, how about (eth, name)?",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "880b8514_e12110e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
         "patchSetId": 1
@@ -25,6 +94,52 @@
     },
     {
       "key": {
+        "uuid": "ed74f018_ba313bf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T08:36:42Z",
+      "side": 1,
+      "message": "one-value type assertion can cause panic, could you avoid that?",
+      "range": {
+        "startLine": 49,
+        "startChar": 55,
+        "endLine": 49,
+        "endChar": 91
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa43d572_a261f874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T08:36:42Z",
+      "side": 1,
+      "message": "Generally we should avoid in-band errors:\nhttps://github.com/golang/go/wiki/CodeReviewComments#in-band-errors\n\nIn this case, I think we can call s.Fatal. Then the returned *shill.Device is always non-nil.\n\n s.Fatal(\"DUT does not have connected to the network USB Ethernet adapter\")\n return nil, \"\" // never reached\n // or, panic(\"never reached\")",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 16
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9caa2513_98e78284",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
         "patchSetId": 1
@@ -41,6 +156,29 @@
         "startChar": 15,
         "endLine": 56,
         "endChar": 28
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a2d270d_ade11f07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T08:36:42Z",
+      "side": 1,
+      "message": "style: setMACAddressSource\n\nSame for other inline functions below.",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 20
       },
       "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -87,6 +225,122 @@
         "startChar": 0,
         "endLine": 117,
         "endChar": 0
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f15483f1_9baad513",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T08:36:42Z",
+      "side": 1,
+      "message": "In general I recommend logging before testing:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "parentUuid": "d2269dd3_0769c770",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 0
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7f90d40_ceae44fb",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T08:36:42Z",
+      "side": 1,
+      "message": "Defining a new type here is not very useful unless we also define its values. For example:\n\n type DeviceProperty string\n\n const (\n   USBEthernetMACAddressSource DeviceProperty \u003d \"Ethernet.UsbEthernetMacAddressSource\"\n   ...\n )",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55a7da62_52815a43",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T08:36:42Z",
+      "side": 1,
+      "message": "We should use consistent receiver type (in this case, *Device):\nhttps://github.com/golang/go/wiki/CodeReviewComments#receiver-type\n\nAlso note that this method creates an unnecessary copy of Device when it\u0027s called.",
+      "range": {
+        "startLine": 39,
+        "startChar": 6,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ee7d34c_35aeb130",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T08:36:42Z",
+      "side": 1,
+      "message": "devices",
+      "range": {
+        "startLine": 113,
+        "startChar": 32,
+        "endLine": 113,
+        "endChar": 40
+      },
+      "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fde40e76_d4966c24",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-26T08:36:42Z",
+      "side": 1,
+      "message": "I recommend two-value type assertion here too. (it\u0027s unfortunate GetProfiles already does one-value type assertion...)",
+      "range": {
+        "startLine": 119,
+        "startChar": 25,
+        "endLine": 119,
+        "endChar": 45
       },
       "revId": "ed330c34135c7a0a8f61a9d46fa43a258ff120f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
