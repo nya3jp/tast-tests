@@ -70,6 +70,30 @@
       "revId": "88c1fb0acf5239b87f31725e6e5a8bbf4efdb932",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f743d4f9_9e36bd92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-09-27T05:19:40Z",
+      "side": 1,
+      "message": "Discussed this with Eliot offline and we decided to go with 5 min for now.",
+      "parentUuid": "d069b8e3_4b47fa1b",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "88c1fb0acf5239b87f31725e6e5a8bbf4efdb932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
