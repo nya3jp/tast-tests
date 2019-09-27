@@ -16,11 +16,11 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: MediaRecorderEncodeAccelUsedVP8,
-		Desc: "Checks VP8 video encode acceleration is used in MediaRecorder",
+		Desc: "Verifies that VP8 video encode accelerator is used in MediaRecorder",
 		Contacts: []string{
-			"hiroh@chromium.org", // Video team
-			"wtlee@chromium.org", // Camera team
-			"chromeos-camera-eng@google.com",
+			"mcasas@chromium.org",
+			"chromeos-gfx-video@google.com",
+			"chromeos-video-eng@google.com",
 		},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeVP8},
@@ -29,5 +29,5 @@ func init() {
 }
 
 func MediaRecorderEncodeAccelUsedVP8(ctx context.Context, s *testing.State) {
-	mediarecorder.VerifyEncodeAccelUsed(ctx, s, videotype.VP8)
+	mediarecorder.VerifyMediaRecorderUsesEncodeAccelerator(ctx, s, videotype.VP8)
 }
