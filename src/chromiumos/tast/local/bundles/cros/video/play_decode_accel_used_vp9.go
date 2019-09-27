@@ -22,6 +22,9 @@ func init() {
 		SoftwareDeps: []string{caps.HWDecodeVP9, "chrome"},
 		Pre:          pre.ChromeVideo(),
 		Data:         []string{"720_vp9.webm", "video.html"},
+		// Marked informational due to flakiness on ToT.
+		// TODO(crbug.com/1008317): Promote to critical again.
+		Attr: []string{"informational"},
 	})
 }
 
