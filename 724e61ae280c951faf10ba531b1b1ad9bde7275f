@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "64a8ad44_cd88ac12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356516
+      },
+      "writtenOn": "2019-09-27T14:07:48Z",
+      "side": 1,
+      "message": "Yes, okay, then this will be a good simplification for tast test.",
+      "parentUuid": "51942715_bbb4c239",
+      "revId": "724e61ae280c951faf10ba531b1b1ad9bde7275f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "342b4f28_4c339a6a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
         "patchSetId": 1
