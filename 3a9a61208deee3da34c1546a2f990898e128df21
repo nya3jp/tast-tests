@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "d290e291_d73ee023",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-09-27T04:32:05Z",
+      "side": 1,
+      "message": "| Ah, I guess the original author\u0027s intention would be \"named return values\". So, the correct\n| fix would be making this line to simply \"return\".\n\nThe return value error is never set, all errors are currently warnings. The line \"err :\u003d\" actually creates a new variable rather than overwriting the return value with the same name. But changing this to \"err \u003d\" would change all warnings into errors.\n\nThe only correct fix IMHO is to remove the error return value completely, as it\u0027s never used anyway.",
+      "parentUuid": "d7a21f50_9a5268ba",
+      "range": {
+        "startLine": 261,
+        "startChar": 15,
+        "endLine": 261,
+        "endChar": 33
+      },
+      "revId": "3a9a61208deee3da34c1546a2f990898e128df21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ed06602_628c074d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 1
