@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "00e5df59_1a845ab2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-09-27T03:02:49Z",
+      "side": 1,
+      "message": "Thanks for the info Todd! I updated the description to clarify that it currently only works on Intel KBL.\n\nI think for now it\u0027s enough to focus on a limited set of boards. That should already help us catch most power regressions.",
+      "parentUuid": "6339da4c_832091a0",
+      "range": {
+        "startLine": 10,
+        "startChar": 55,
+        "endLine": 10,
+        "endChar": 70
+      },
+      "revId": "2c49444bd4f0220fd17d361f5edf3e46fc4e1ce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb46b645_3fb745fa",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
         "patchSetId": 2
@@ -63,6 +87,24 @@
       "revId": "2c49444bd4f0220fd17d361f5edf3e46fc4e1ce3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9baac441_47d6603f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-09-27T03:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb46b645_3fb745fa",
+      "revId": "2c49444bd4f0220fd17d361f5edf3e46fc4e1ce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -89,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "59300b0a_4c64f2b3",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-09-27T03:02:49Z",
+      "side": 1,
+      "message": "Updated the comment to make this clearer.",
+      "parentUuid": "fb85be78_5151513d",
+      "range": {
+        "startLine": 214,
+        "startChar": 3,
+        "endLine": 214,
+        "endChar": 78
+      },
+      "revId": "2c49444bd4f0220fd17d361f5edf3e46fc4e1ce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "efefa114_72750e5f",
         "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
         "patchSetId": 2
@@ -103,6 +169,24 @@
       "revId": "2c49444bd4f0220fd17d361f5edf3e46fc4e1ce3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4546c793_0f077e43",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-09-27T03:02:49Z",
+      "side": 1,
+      "message": "Yeah, I considered this, but in the rare case that both fail it doesn\u0027t really matter which error is reported.\n\nBut it seems that the dump_intel_rapl_consumption command is also deployed on non-Intel-KBL devices, so it might fail even if the command is present. So I changed the code to always print a warning if measuring power consumption failed.",
+      "parentUuid": "efefa114_72750e5f",
+      "revId": "2c49444bd4f0220fd17d361f5edf3e46fc4e1ce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
