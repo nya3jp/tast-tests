@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "af5839ee_b407733f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-09-27T10:42:32Z",
+      "side": 1,
+      "message": "shill.DevicePropEthernetBusType is Ethrernet property only. That\u0027s why we will fail each time if add s.Fatal.\n\nBut it can be done for shill.DevicePropName since it\u0027s property for each device.",
+      "parentUuid": "0849624c_7345bc68",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 12
+      },
+      "revId": "05a7e03bc9666f7cf848450119e21fcff3b1e56c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "747ee9c9_bc088ab9",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
         "patchSetId": 4
