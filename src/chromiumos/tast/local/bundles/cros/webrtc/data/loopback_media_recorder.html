@@ -36,7 +36,7 @@ async function startRecordingForResult(codec) {
 // stopRecording().
 async function startRecording(codec) {
   // This records from a fake media device.
-  const stream = await navigator.mediaDevices.getUserMedia({audio: true, video: {width: 1280, height: 720}});
+  const stream = await navigator.mediaDevices.getUserMedia({audio: true, video: {width: 1280, height: 720}, frameRate: 120});
 
   document.getElementById('video').srcObject = stream;
   const mimeType = 'video/webm; codecs=' + codec;
