@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57ab10ad_42b25136",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_used_mse_vp9.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2019-09-27T01:52:03Z",
+      "side": 1,
+      "message": "This causes the build failure because \u0027Attr\u0027 is already defined above.",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 34
+      },
+      "revId": "9b4c2dfdbde7e87220dcd54ffea990b1cf545e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
