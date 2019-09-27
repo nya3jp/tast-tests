@@ -187,6 +187,30 @@
       "revId": "7e77d16f710e8ee772b4054d9105dd0d2a4e113e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29006bee_9b2587b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-27T04:21:22Z",
+      "side": 1,
+      "message": "Oh, I meant to tweak in the function. Actually you did for \"Janky frames\" tweak in the function. These look same.",
+      "parentUuid": "c77d5074_9e8b2035",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 1
+      },
+      "revId": "7e77d16f710e8ee772b4054d9105dd0d2a4e113e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
