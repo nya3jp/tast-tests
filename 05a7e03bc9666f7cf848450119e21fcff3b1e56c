@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5c0af70_41a05095",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-27T09:42:13Z",
+      "side": 1,
+      "message": "nit: I recommend using filepath.Join in this case:\n\n filepath.Join(\"/sys/firmware/vpd/ro\", vpd)\n\nhttps://godoc.org/path/filepath#Join",
+      "range": {
+        "startLine": 42,
+        "startChar": 32,
+        "endLine": 42,
+        "endChar": 62
+      },
+      "revId": "05a7e03bc9666f7cf848450119e21fcff3b1e56c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0849624c_7345bc68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-27T09:42:13Z",
+      "side": 1,
+      "message": "You may want to abort by s.Fatal instead since it should be unexpected that bustype is not a string. Same for propname below.",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 12
+      },
+      "revId": "05a7e03bc9666f7cf848450119e21fcff3b1e56c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "747ee9c9_bc088ab9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-27T09:42:13Z",
+      "side": 1,
+      "message": "typo: Timed",
+      "range": {
+        "startLine": 143,
+        "startChar": 12,
+        "endLine": 143,
+        "endChar": 17
+      },
+      "revId": "05a7e03bc9666f7cf848450119e21fcff3b1e56c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
