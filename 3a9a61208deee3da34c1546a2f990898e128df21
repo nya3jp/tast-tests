@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "d7a21f50_9a5268ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-27T04:02:23Z",
+      "side": 1,
+      "message": "\u003e To make it more confusing there is a named return value \"err\" that is shadowed by a local variable. \n\nAh, I guess the original author\u0027s intention would be \"named return values\". So, the correct fix would be making this line to simply \"return\".\n\nThen, error will be reported only when fsutil.CopyFile fails.\n\n\u003e But this is definitely out of scope for this CL.\n\nYes, I agree. Also, this CL cannot the fix because it\u0027s in /platform/tast not /platform/tast-tests.\nI\u0027d appreciate if you could create a separate CL.",
+      "parentUuid": "06bad210_862ce5ae",
+      "range": {
+        "startLine": 261,
+        "startChar": 15,
+        "endLine": 261,
+        "endChar": 33
+      },
+      "revId": "3a9a61208deee3da34c1546a2f990898e128df21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ed06602_628c074d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 1
