@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be37a39c_bb48cfa9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-27T10:21:50Z",
+      "side": 1,
+      "message": "cr50ReadWriteCloser is a bit long name, could you try shortening it? For example, cr50IO.",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 24
+      },
+      "revId": "d4fa8d17dc972f91c62455032a93222f5c0570c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf6c20a2_7e7150c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-27T10:21:50Z",
+      "side": 1,
+      "message": "It is generally discouraged to include context.Context and testing.State in a struct.\n\nhttps://godoc.org/context\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\nThat said, I think it\u0027s difficult to remove context.Context because Write needs to start an external command. So ctx is okay.\n\nOTOH I believe we can remove testing.State by returning error instead of calling s.Fatal.",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 23
+      },
+      "revId": "d4fa8d17dc972f91c62455032a93222f5c0570c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ef89231_185f81d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-27T10:21:50Z",
+      "side": 1,
+      "message": "Printing escaped value with %q is not very useful due to double-escaping. How about:\n\n return 0, errors.Wrap(err, shutil.EscapeSlice(cmd.Args))\n\nThen the error is like:\n\n trunk_send --raw --foo --bar: exit status 1",
+      "range": {
+        "startLine": 65,
+        "startChar": 14,
+        "endLine": 65,
+        "endChar": 58
+      },
+      "revId": "d4fa8d17dc972f91c62455032a93222f5c0570c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9120fdfc_ae719b09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-27T10:21:50Z",
+      "side": 1,
+      "message": "In general I recommend avoiding indirection if possible to make the code easier to read.\n\nIn this case I believe it can be as simple as:\n\n switch algType {\n case \"AES\":\n   return getAESCommand(algArgs)\n default:\n   return \"\", errors.Errorf(...)\n }",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 16
+      },
+      "revId": "d4fa8d17dc972f91c62455032a93222f5c0570c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a561b50_c4f02e6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-27T10:21:50Z",
+      "side": 1,
+      "message": "After removing testing.State, this method can be a simple function (not associated to cr50ReadWriteCloser).",
+      "range": {
+        "startLine": 97,
+        "startChar": 5,
+        "endLine": 97,
+        "endChar": 29
+      },
+      "revId": "d4fa8d17dc972f91c62455032a93222f5c0570c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e96005f0_5a2fc315",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-27T10:21:50Z",
+      "side": 1,
+      "message": "Please check and return an error.",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 7
+      },
+      "revId": "d4fa8d17dc972f91c62455032a93222f5c0570c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53a46985_a8225313",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-27T10:21:50Z",
+      "side": 1,
+      "message": "It would be helpful for debugging to include the actual size. Same comment for other checks too.",
+      "range": {
+        "startLine": 137,
+        "startChar": 27,
+        "endLine": 137,
+        "endChar": 41
+      },
+      "revId": "d4fa8d17dc972f91c62455032a93222f5c0570c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
