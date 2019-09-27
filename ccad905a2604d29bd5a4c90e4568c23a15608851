@@ -16,6 +16,29 @@
       "revId": "ccad905a2604d29bd5a4c90e4568c23a15608851",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5784c589_4b7a6f4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_decode_accel_h264_240p.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-27T20:24:32Z",
+      "side": 1,
+      "message": "any reason these were changed to normal strings? We do replicate them in a few tests and a few places.",
+      "range": {
+        "startLine": 23,
+        "startChar": 25,
+        "endLine": 23,
+        "endChar": 42
+      },
+      "revId": "ccad905a2604d29bd5a4c90e4568c23a15608851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
