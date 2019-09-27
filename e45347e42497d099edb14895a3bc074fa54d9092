@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "fe676e92_7108dbed",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-09-27T21:15:54Z",
+      "side": 1,
+      "message": "Done.\n\nNeat! I had no idea you could refer to the return value like this. That\u0027s cool.",
+      "parentUuid": "46692d55_20018f59",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 147,
+        "endChar": 12
+      },
+      "revId": "e45347e42497d099edb14895a3bc074fa54d9092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d28ebbdf_d10dcf2b",
         "filename": "src/chromiumos/tast/local/crash/crash.go",
         "patchSetId": 8
