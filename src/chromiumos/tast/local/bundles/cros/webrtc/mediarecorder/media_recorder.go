@@ -25,7 +25,6 @@ import (
 	"chromiumos/tast/local/media/constants"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/histogram"
-	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/perf"
 	"chromiumos/tast/testing"
@@ -282,24 +281,27 @@ func measureCPUUsage(ctx context.Context, conn *chrome.Conn) (usage float64, err
 	return usage, nil
 }
 
-// VerifyEncodeAccelUsed checks whether HW encode is used for given codec when running
-// MediaRecorder.
-func VerifyEncodeAccelUsed(ctx context.Context, s *testing.State, codec videotype.Codec) {
+// VerifyMediaRecorderUsesEncodeAccelerator checks whether MediaRecorder uses HW encoder for |codec|.
+func VerifyMediaRecorderUsesEncodeAccelerator(ctx context.Context, s *testing.State, codec videotype.Codec) {
 	if err := audio.Mute(ctx); err != nil {
 		s.Fatal("Failed to mute device: ", err)
 	}
 	defer audio.Unmute(ctx)
 
 	chromeArgs := []string{
-		logging.ChromeVmoduleFlag(),
+		// Enable verbose log messages for video components.
+		"--vmodule=" +
+			"*/media/gpu/*=2," +
+			"*/third_party/blink/renderer/modules/mediarecorder/*=2",
+		// Use a fake media capture device instead of live webcam(s)/microphone(s).
 		// See https://webrtc.org/testing/
-		// "--use-fake-device-for-media-stream" feeds a test pattern to getUserMedia() instead of live camera input.
-		// "--use-fake-ui-for-media-stream" avoids the need to grant camera/microphone permissions.
 		"--use-fake-device-for-media-stream",
+		// Avoids the need to grant camera/microphone permissions.
 		"--use-fake-ui-for-media-stream",
 	}
 	if codec == videotype.VP9 {
-		// Vaapi VP9 Encoder is disabled by default on Chrome. Enable the feature by the command line option.
+		// TODO(crbug.com/811912): Remove this specific when VA-API VP9 encder is
+		// enabled by default.
 		chromeArgs = append(chromeArgs, "--enable-features=VaapiVP9Encoder")
 	}
 
