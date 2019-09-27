@@ -66,10 +66,11 @@ the current ones. To run all VD video decoder performance tests run:
 
 ## Video encoder tests
 
-These tests run the _video_encode_accelerator_unittest_ to test encoding raw
-video frames. They are implemented directly on top of the video encoder
-implementations. Tests are available that test encoding H.264, VP8 and VP9
-videos using various resolutions.
+These tests run the
+[video_encode_accelerator_unittest](https://cs.chromium.org/chromium/src/media/gpu/video_encode_accelerator_unittest.cc)
+to test encoding raw video frames. They are implemented directly on top of the
+video encoder implementations. Tests are available that test encoding H.264, VP8
+and VP9 videos using various resolutions.
 
 To run all video encode tests use:
 
@@ -78,9 +79,10 @@ To run all video encode tests use:
 ## Video encoder performance tests
 
 These tests measure video encode performance by running the
-_video_encode_accelerator_unittest_. They are implemented directly on top of the
-video encoder implementations. Various metrics are collected such as CPU usage.
-Tests are available for various codecs and resolutions. To run all tests use:
+[video_encode_accelerator_unittest](https://cs.chromium.org/chromium/src/media/gpu/video_encode_accelerator_unittest.cc).
+They are implemented directly on top of the video encoder implementations.
+Various metrics are collected such as CPU usage. Tests are available for various
+codecs and resolutions. To run all tests use:
 
     tast run $HOST video.EncodeAccelPerf*
 
@@ -104,7 +106,7 @@ successful. Fallback on a software video decoder is not allowed. Tests are
 available for H.264, VP8 and VP9, both for normal videos and videos using MSE.
 To run these tests use:
 
-    tast run $HOST video.PlayDecodeAccelUsedH264{H264,VP8,VP9}* video.PlayDecodeAccelUsedMSE*
+    tast run $HOST video.PlayDecodeAccelUsed{H264,VP8,VP9}* video.PlayDecodeAccelUsedMSE*
 
 Additionally there are variants of these tests with 'VD' in their names present.
 These test the new video decoder implementations, which are set to replace the
