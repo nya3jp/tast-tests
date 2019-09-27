@@ -171,7 +171,7 @@ func DMSPolicy(url string) Option {
 	}
 }
 
-// EnterpriseEnroll returns an Option that can be passed to New to enable enterprise
+// EnterpriseEnroll returns an Option that can be passed to New to enable Enterprise
 // enrollment.
 func EnterpriseEnroll() Option {
 	return func(c *Chrome) { c.enroll = true }
@@ -539,7 +539,7 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 		"--cros-region=" + c.region,                  // Force the region.
 		"--cros-regions-mode=hide",                   // Ignore default values in VPD.
 	}
-	if c.enroll {
+	if c.enrollment {
 		args = append(args, "--disable-policy-key-verification")
 		args = append(args, "--ignore-urlfetcher-cert-requests")
 	}
