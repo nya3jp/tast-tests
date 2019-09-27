@@ -22,6 +22,30 @@
       "revId": "c222a228e8ed35cb08038c2ec05be9cb90858a7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f373f2ca_9774ce88",
+        "filename": "src/chromiumos/tast/local/debugd/debugd.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1137924
+      },
+      "writtenOn": "2019-09-27T03:04:41Z",
+      "side": 1,
+      "message": "Will do in a separate CL and add golang to my resume :p",
+      "parentUuid": "c77994cf_b6815dce",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 52
+      },
+      "revId": "c222a228e8ed35cb08038c2ec05be9cb90858a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
