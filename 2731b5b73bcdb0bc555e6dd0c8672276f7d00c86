@@ -81,6 +81,30 @@
       "revId": "2731b5b73bcdb0bc555e6dd0c8672276f7d00c86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b0a60e1_cb045158",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-27T04:45:51Z",
+      "side": 1,
+      "message": "That\u0027s not what I meant. \nFor example, if tast.video.DecodeAccelVP8 and tast.video.DecodeAccelH264 crashed, we got 4MB. The limitation is for the sum of artifacts created by all tests run by a same builder.",
+      "parentUuid": "064fc06c_4de38859",
+      "range": {
+        "startLine": 14,
+        "startChar": 28,
+        "endLine": 14,
+        "endChar": 78
+      },
+      "revId": "2731b5b73bcdb0bc555e6dd0c8672276f7d00c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
