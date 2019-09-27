@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "623e84fe_15fe4f67",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-09-27T04:32:05Z",
+      "side": 1,
+      "message": "Collecting crash dumps on crashes is very useful, so I would like to keep this indefinitely.",
+      "parentUuid": "6bd06170_0bf5ad34",
+      "revId": "2731b5b73bcdb0bc555e6dd0c8672276f7d00c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96dedced_a763c2b4",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2019-09-27T04:02:23Z",
       "side": 1,
       "message": "If multiple test crashed in one test run, the size will be multiplied.\n\nAccording to the log, the maximum count of \"core dumped\" in one run is 3 so far. In such case, the size will be 6MB, which might be on the borderline?\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026first_date\u003d2019-09-21\u0026last_date\u003d2019-09-27\u0026suite\u003dbvt-tast-informational\u0026test\u003dtast.video.DecodeAccel\u0026status\u003dFAIL\u0026reason\u003dsegmentation+fault\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\n\nI\u0027d like to hear hidehiko@-san\u0027s thought.",
+      "range": {
+        "startLine": 14,
+        "startChar": 28,
+        "endLine": 14,
+        "endChar": 78
+      },
+      "revId": "2731b5b73bcdb0bc555e6dd0c8672276f7d00c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "064fc06c_4de38859",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-09-27T04:32:05Z",
+      "side": 1,
+      "message": "These tests only run the binary once, so only one set of crash dump files can be generated. A set of crash dump files consists of three different files.\n\nThe comment in CopyNewFiles mentions: \"it limits the maximum number of files that will be copied for each base executable\". So if we set the limit to 3, and only run a single executable, the total size of crash dumps is always around 2MB.",
+      "parentUuid": "96dedced_a763c2b4",
       "range": {
         "startLine": 14,
         "startChar": 28,
