@@ -424,6 +424,24 @@
     },
     {
       "key": {
+        "uuid": "8c685fed_288ef20f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-09-27T08:30:53Z",
+      "side": 1,
+      "message": "As I studied [1], --activity-clear-top should be redundant since we only have one activity.\n\n[1] https://developer.android.com/reference/android/content/Intent.html#FLAG_ACTIVITY_CLEAR_TOP",
+      "parentUuid": "dd46c9ae_947613bd",
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b567640_8aa42efe",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
         "patchSetId": 2
