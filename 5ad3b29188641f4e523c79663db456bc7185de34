@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60e52eb8_bacca6fd",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-27T04:24:37Z",
+      "side": 1,
+      "message": "Hmm, I\u0027m not 100% sure but concurrent update of map would be unsafe.\nAccording to https://golang.org/doc/faq#atomic_maps, we cannot say it\u0027s safe when concurrent update happens. So, it\u0027d be safer to create |measurements| after wg.Wait().\n\nOr, perhaps, can we call MeasuerCPUUsage and MeasurePowerUsage sequentially?",
+      "range": {
+        "startLine": 225,
+        "startChar": 2,
+        "endLine": 225,
+        "endChar": 21
+      },
+      "revId": "5ad3b29188641f4e523c79663db456bc7185de34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

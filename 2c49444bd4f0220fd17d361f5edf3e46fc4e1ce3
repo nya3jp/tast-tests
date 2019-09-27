@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "ee2e13a8_a19a15f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-27T04:24:37Z",
+      "side": 1,
+      "message": "sgtm.\nLet me add Harry in CC.",
+      "parentUuid": "00e5df59_1a845ab2",
+      "range": {
+        "startLine": 10,
+        "startChar": 55,
+        "endLine": 10,
+        "endChar": 70
+      },
+      "revId": "2c49444bd4f0220fd17d361f5edf3e46fc4e1ce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb46b645_3fb745fa",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
         "patchSetId": 2
