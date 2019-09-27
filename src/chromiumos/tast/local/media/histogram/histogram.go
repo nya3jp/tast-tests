@@ -38,7 +38,7 @@ func WasHWAccelUsed(ctx context.Context, cr *chrome.Chrome, initHistogram *metri
 		return false, nil
 	}
 
-	testing.ContextLogf(ctx, "Got update to %s histogram: %v", histogramName, histogramDiff.Buckets)
+	testing.ContextLogf(ctx, "Got update to %s histogram: %s", histogramName, histogramDiff)
 	if len(histogramDiff.Buckets) > 1 {
 		return false, errors.Wrapf(err, "unexpected histogram update: %v", histogramDiff)
 	}
@@ -46,7 +46,7 @@ func WasHWAccelUsed(ctx context.Context, cr *chrome.Chrome, initHistogram *metri
 	diff := histogramDiff.Buckets[0]
 	hwAccelUsed := diff.Min == successValue && diff.Max == successValue+1 && diff.Count >= 1
 	if !hwAccelUsed {
-		testing.ContextLogf(ctx, "Histogram update: %v, if HW accel were used, it should be [%d, %d 1]", diff, successValue, successValue+1)
+		testing.ContextLogf(ctx, "Histogram update: %s, if HW accel were used, it should be [[%d, %d) 1]", histogramDiff, successValue, successValue+1)
 	} else if diff.Count > 1 {
 		testing.ContextLog(ctx, "Note that more than one successful count is observed: ", diff.Count)
 	}

@@ -11,10 +11,12 @@ const recordedChunks = [];
 let startTime = 0;
 let elapsedTime = 0;
 
-// Starts recording with specified video codec and get the first recorded blob in returning promise.
+const userMediaConstraints = {audio: true, video: {width: 1280, height: 720}};
+
+// Starts recording with specified video |codec| and waits for the first
+// recorded blob in ondataavailable.
 async function startRecordingForResult(codec) {
-  // This records from a fake media device.
-  const stream = await navigator.mediaDevices.getUserMedia({audio: false, video: true});
+  const stream = await navigator.mediaDevices.getUserMedia(userMediaConstraints);
 
   document.getElementById('video').srcObject = stream;
   const mimeType = 'video/webm; codecs=' + codec;
@@ -24,19 +26,21 @@ async function startRecordingForResult(codec) {
     recorder.ondataavailable = (event) => {
       if (event.data.size > 0) {
         resolve();
-      } else {
-        reject(new Error('Recorded data size is zero'));
       }
     };
-    recorder.start(1);
+    recorder.onerror = (event) => {
+      reject(new Error('MediaRecorder error ' + event.error));
+    };
+    // Let the MediaRecorder accumulate a few milliseconds, otherwise we might
+    // receive just bits and pieces of the container header in  ondataavailable.
+    recorder.start(100);
   });
 }
 
-// Starts recording with specified video codec. Recording result will not be available until calling
-// stopRecording().
+// Starts recording with the specified video |codec|.
+// Recording result will not be available until calling stopRecording().
 async function startRecording(codec) {
-  // This records from a fake media device.
-  const stream = await navigator.mediaDevices.getUserMedia({audio: true, video: {width: 1280, height: 720}});
+  const stream = await navigator.mediaDevices.getUserMedia(userMediaConstraints);
 
   document.getElementById('video').srcObject = stream;
   const mimeType = 'video/webm; codecs=' + codec;
@@ -53,14 +57,14 @@ async function startRecording(codec) {
       resolve();
     };
     mediaRecorder.onerror = (event) => {
-      reject(new Error('Recorded data size is zero'));
+      reject(new Error('MediaRecorder error ' + event.error));
     };
     mediaRecorder.start();
   });
 }
 
-// Stops recording and returning a promise with recorded video content in base64 format.
-// |elapsedTime| is also calculated.
+// Stops recording and returning a promise with recorded video content in
+// base64 format. |elapsedTime| is also updated.
 function stopRecording() {
   return new Promise((resolve, reject) => {
     mediaRecorder.onstop = (event) => {
