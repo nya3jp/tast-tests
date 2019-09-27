@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "2064ed56_694d5c6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-27T04:45:51Z",
+      "side": 1,
+      "message": "Oh, it\u0027s \":\u003d\" not \"\u003d\". Thanks for the clarification!",
+      "parentUuid": "d290e291_d73ee023",
+      "range": {
+        "startLine": 261,
+        "startChar": 15,
+        "endLine": 261,
+        "endChar": 33
+      },
+      "revId": "3a9a61208deee3da34c1546a2f990898e128df21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ed06602_628c074d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 1
