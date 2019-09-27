@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ced9da9d_18007bb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peer_conn_h264_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-09-27T15:20:08Z",
+      "side": 1,
+      "message": "Bringing here a comment from keiichiw@chromium.org in\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1825322/4//COMMIT_MSG\n\n\u003e When we modify the perf tests, we might want to change this function as well.\n\u003e https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/webrtc/camera.go?rcl\u003dd2229f5f9eb5b97e154d778128c7f513c13f9074\u0026l\u003d112\n\u003e We only counted broken frames when vivid is used to avoid flakiness caused by real hardware. But, we don\u0027t need to care it with fake webcam.",
+      "range": {
+        "startLine": 42,
+        "startChar": 18,
+        "endLine": 42,
+        "endChar": 29
+      },
+      "revId": "5a3bfa81b972d730cda5928b1bdfcb6e9e4e9776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
