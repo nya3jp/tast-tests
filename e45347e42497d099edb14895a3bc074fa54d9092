@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "46692d55_20018f59",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-27T10:26:19Z",
+      "side": 1,
+      "message": "One idiom is:\n\n func newX() (x *X, retErr error) {\n   a, err :\u003d newA()\n   if err !\u003d nil {\n     return nil, err\n   }\n   defer func() {\n     if retErr !\u003d nil {\n       a.Close()\n     }\n   }()\n\n   b, err :\u003d newB()\n   if err !\u003d nil {\n     return nil, err\n   }\n   defer func() {\n     if retErr !\u003d nil {\n       b.Close()\n     }\n   }()\n\n   ...\n\n   return \u0026X{a: a, b: b}, nil\n }",
+      "parentUuid": "aef1f482_e05d7ff0",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 147,
+        "endChar": 12
+      },
+      "revId": "e45347e42497d099edb14895a3bc074fa54d9092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d28ebbdf_d10dcf2b",
         "filename": "src/chromiumos/tast/local/crash/crash.go",
         "patchSetId": 8
@@ -319,6 +343,30 @@
       "side": 1,
       "message": "That should be each individual test\u0027s responsibility. If something goes wrong with one of the tests, we may want to leave the crash files they generated for debugging purposes.",
       "parentUuid": "4197d2c9_c74856bf",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 2
+      },
+      "revId": "e45347e42497d099edb14895a3bc074fa54d9092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f2ce246_c3082d66",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-27T10:26:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9fc64a91_2a1b9225",
       "range": {
         "startLine": 170,
         "startChar": 0,
