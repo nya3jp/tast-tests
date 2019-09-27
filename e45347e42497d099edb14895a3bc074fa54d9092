@@ -379,6 +379,30 @@
     },
     {
       "key": {
+        "uuid": "b18ecbf6_efbcf6cf",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-27T11:09:51Z",
+      "side": 1,
+      "message": "Ah but I think it\u0027d better to leave  crash dumps useful for debugging as test output files (at s.OutDir).\n\nIf we do so, I guess it\u0027s easier to clear the dir since crash tests don\u0027t need to clean up files by themselves?",
+      "parentUuid": "5f2ce246_c3082d66",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 2
+      },
+      "revId": "e45347e42497d099edb14895a3bc074fa54d9092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aed7b204_ffd667a3",
         "filename": "src/chromiumos/tast/local/crash/crash.go",
         "patchSetId": 8
