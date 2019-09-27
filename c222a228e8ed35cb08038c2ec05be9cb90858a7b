@@ -46,6 +46,30 @@
       "revId": "c222a228e8ed35cb08038c2ec05be9cb90858a7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36699aef_5cd61415",
+        "filename": "src/chromiumos/tast/local/debugd/debugd.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2019-09-27T03:09:14Z",
+      "side": 1,
+      "message": "Ack :)",
+      "parentUuid": "f373f2ca_9774ce88",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 52
+      },
+      "revId": "c222a228e8ed35cb08038c2ec05be9cb90858a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
