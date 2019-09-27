@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2387840_9a77462c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollmentutils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-27T21:04:51Z",
+      "side": 1,
+      "message": "change this file to be enrollment.go instead - it\u0027s shorter and still gets the point across.  Also this isn\u0027t strictly policy related and maybe should live with the chrome code?",
+      "revId": "e3cc5e9e8130b79dd98261e11335d0cfa6228b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88db0580_8e5599b8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollmentutils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-27T21:04:51Z",
+      "side": 1,
+      "message": "you\u0027re gonna need a docstring here and throughout for exported functions",
+      "revId": "e3cc5e9e8130b79dd98261e11335d0cfa6228b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7450f243_ca68f7b0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollmentutils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-27T21:04:51Z",
+      "side": 1,
+      "message": "don\u0027t use testing.State as an input in this file - instead of failing in a library function you\u0027ll want to return an error (which you\u0027re already doing) and have the caller decide what to do with it",
+      "revId": "e3cc5e9e8130b79dd98261e11335d0cfa6228b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef2f5aa6_70855389",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollmentutils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-27T21:04:51Z",
+      "side": 1,
+      "message": "why not just stdout?",
+      "revId": "e3cc5e9e8130b79dd98261e11335d0cfa6228b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e02c44a_97b0b931",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollmentutils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-27T21:04:51Z",
+      "side": 1,
+      "message": "theoretically you could use a bufio scanner with a stdout pipe here, but as long as it\u0027s short this is fine",
+      "revId": "e3cc5e9e8130b79dd98261e11335d0cfa6228b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c5e8d52_c6f1844b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollmentutils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-27T21:04:51Z",
+      "side": 1,
+      "message": "split on : and then use Trim()?",
+      "revId": "e3cc5e9e8130b79dd98261e11335d0cfa6228b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dd8a2ad_30a99b3b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enrollmentutils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-27T21:04:51Z",
+      "side": 1,
+      "message": "this seems like it belongs somewhere more global than in the policy package",
+      "revId": "e3cc5e9e8130b79dd98261e11335d0cfa6228b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
