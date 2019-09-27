@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "14e66ea1_5d441567",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-09-27T08:26:57Z",
+      "side": 1,
+      "message": "I think the current arc e2e tests are better because we have more information across AMediaCodec API. In APK manner, the function will be limited by widget. It is difficult to do detailed investigation unless you need to implement like CTS tests.",
+      "parentUuid": "bad2733e_b8077389",
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52e6551d_a293ae08",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -130,6 +148,54 @@
     },
     {
       "key": {
+        "uuid": "c3b105db_b2508c5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf_h264_1080p_30fps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-09-27T08:26:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7195b9e_62adab02",
+      "range": {
+        "startLine": 19,
+        "startChar": 85,
+        "endLine": 19,
+        "endChar": 89
+      },
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fe715cb_2bd45ab1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf_h264_1080p_30fps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-09-27T08:26:57Z",
+      "side": 1,
+      "message": "\u003e Why not testing on boards that don\u0027t have HW acceleration?\n\nI think it\u0027s a good idea.\nHowever the video player widget in APK is not able to choose codec (HW or SW), so we cannot do the measurement for both like PlaybackPerf. (priority: HW \u003e SW)\n\n\u003e Also, if we can allow SW decoding, we might be able to support ARCVM already.\n\nWe still consider HW decoding for ARCVM playback. So it doesn\u0027t matter.",
+      "parentUuid": "4595affb_4769307c",
+      "range": {
+        "startLine": 19,
+        "startChar": 65,
+        "endLine": 19,
+        "endChar": 80
+      },
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ff1f4bf_99b3a86b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf_h264_1080p_30fps.go",
         "patchSetId": 2
@@ -144,6 +210,24 @@
       "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b6009d4_73d6e161",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf_h264_1080p_30fps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-09-27T08:26:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ff1f4bf_99b3a86b",
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -170,6 +254,30 @@
     },
     {
       "key": {
+        "uuid": "60a7a5f0_239c4cff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf_h264_1080p_30fps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-09-27T08:26:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fc33f84_ab8a5586",
+      "range": {
+        "startLine": 28,
+        "startChar": 39,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0bcdaab0_23c67645",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf_h264_1080p_30fps.go",
         "patchSetId": 2
@@ -181,6 +289,24 @@
       "writtenOn": "2019-09-03T14:53:14Z",
       "side": 1,
       "message": "nit: are you interested in to consolidate tests by parameterized test now?\n\ncf) http://go/tast-writing#Parameterized-tests",
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fb8e19f_ebff9068",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf_h264_1080p_30fps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-09-27T08:26:57Z",
+      "side": 1,
+      "message": "Sure, I will take a look in next patchset",
+      "parentUuid": "0bcdaab0_23c67645",
       "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -210,6 +336,30 @@
     },
     {
       "key": {
+        "uuid": "3187a682_59d808f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-09-27T08:26:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f80a18f4_ee19e259",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 28
+      },
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1617a0e8_47a53585",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
         "patchSetId": 2
@@ -230,6 +380,30 @@
       "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "699a666c_0f6e8e74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-09-27T08:26:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1617a0e8_47a53585",
+      "range": {
+        "startLine": 69,
+        "startChar": 14,
+        "endLine": 69,
+        "endChar": 37
+      },
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -267,6 +441,24 @@
     },
     {
       "key": {
+        "uuid": "29264ccf_ff39839c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-09-27T08:26:57Z",
+      "side": 1,
+      "message": "Unfortunately no. I found a way to get the total played duration from Activity. It could be used to judge if video is played well since we always play the arbitrary seconds for CPU measurement.",
+      "parentUuid": "2b567640_8aa42efe",
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63150d15_163cc6bb",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
         "patchSetId": 2
@@ -290,6 +482,30 @@
     },
     {
       "key": {
+        "uuid": "60724ad7_648e58a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-09-27T08:26:57Z",
+      "side": 1,
+      "message": "I consider \":\" will attach error message, so I use \"\u003d\"",
+      "parentUuid": "63150d15_163cc6bb",
+      "range": {
+        "startLine": 94,
+        "startChar": 25,
+        "endLine": 94,
+        "endChar": 26
+      },
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e57679a_20a8a2e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
         "patchSetId": 2
@@ -310,6 +526,30 @@
       "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f14827c_6630a161",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-09-27T08:26:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e57679a_20a8a2e2",
+      "range": {
+        "startLine": 97,
+        "startChar": 14,
+        "endLine": 97,
+        "endChar": 19
+      },
+      "revId": "c7731b465c812a512d33ba8a09679f81dff5b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
