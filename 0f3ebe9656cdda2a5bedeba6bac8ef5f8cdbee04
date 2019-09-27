@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "97947e6c_7ca85654",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_dtc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-27T16:16:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b55d7092_ba25d408",
+      "range": {
+        "startLine": 22,
+        "startChar": 35,
+        "endLine": 22,
+        "endChar": 109
+      },
+      "revId": "0f3ebe9656cdda2a5bedeba6bac8ef5f8cdbee04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb6772c4_fd9ad29c",
         "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_dtc.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "0f3ebe9656cdda2a5bedeba6bac8ef5f8cdbee04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cf2a3ff_bfbf6e52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/sludge_dtc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2019-09-27T16:16:22Z",
+      "side": 1,
+      "message": "It\u0027s only applicable in this test since the DTC testing utilities are using that service. In sludge_grpc.go, the DTC binaries are not started, and in start_sludge.go we are just testing that the VM can start and run the binaries.",
+      "parentUuid": "bb6772c4_fd9ad29c",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 9
+      },
+      "revId": "0f3ebe9656cdda2a5bedeba6bac8ef5f8cdbee04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
