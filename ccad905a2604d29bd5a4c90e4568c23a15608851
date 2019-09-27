@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e838bc0_1e384250",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-27T04:50:58Z",
+      "side": 1,
+      "message": "Could you also add a comment about which critical tests will be removed?",
+      "revId": "ccad905a2604d29bd5a4c90e4568c23a15608851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
