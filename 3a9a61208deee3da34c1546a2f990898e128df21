@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "da4cf3cb_c4f4eb55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-09-27T02:01:56Z",
+      "side": 1,
+      "message": "I made some changes to compress the crash dumps. When compressed they only seem to take about ~2MB, which should be acceptable.",
+      "parentUuid": "e67df342_78ab7124",
+      "range": {
+        "startLine": 14,
+        "startChar": 33,
+        "endLine": 14,
+        "endChar": 51
+      },
+      "revId": "3a9a61208deee3da34c1546a2f990898e128df21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32f56bc7_56b560c4",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 1
@@ -94,6 +118,78 @@
     },
     {
       "key": {
+        "uuid": "027f59ec_b222de54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-09-27T02:01:56Z",
+      "side": 1,
+      "message": "I\u0027ve never seen more than 3 being generated (dmp, core, meta) by a single crash. I don\u0027t think it\u0027s possible to generate more than this. But I agree it\u0027s probably safer to add a limit, so I changed it to 3.",
+      "parentUuid": "32f56bc7_56b560c4",
+      "range": {
+        "startLine": 261,
+        "startChar": 76,
+        "endLine": 261,
+        "endChar": 77
+      },
+      "revId": "3a9a61208deee3da34c1546a2f990898e128df21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de7102d3_83be28c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-09-27T02:01:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17550712_21eb4dfc",
+      "range": {
+        "startLine": 261,
+        "startChar": 6,
+        "endLine": 261,
+        "endChar": 7
+      },
+      "revId": "3a9a61208deee3da34c1546a2f990898e128df21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06bad210_862ce5ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-09-27T02:01:56Z",
+      "side": 1,
+      "message": "You are correct, all errors are considered as non-fatal. To make it more confusing there is a named return value \"err\" that is shadowed by a local variable. I guess the best way to fix is removing the error from return values as it will always be nil. But this is definitely out of scope for this CL.",
+      "parentUuid": "bad79b5d_09992684",
+      "range": {
+        "startLine": 261,
+        "startChar": 15,
+        "endLine": 261,
+        "endChar": 33
+      },
+      "revId": "3a9a61208deee3da34c1546a2f990898e128df21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ed06602_628c074d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "3a9a61208deee3da34c1546a2f990898e128df21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "babef4b2_57721660",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-09-27T02:01:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ed06602_628c074d",
+      "range": {
+        "startLine": 262,
+        "startChar": 60,
+        "endLine": 262,
+        "endChar": 66
+      },
+      "revId": "3a9a61208deee3da34c1546a2f990898e128df21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
