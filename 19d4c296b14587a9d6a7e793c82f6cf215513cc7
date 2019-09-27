@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "38fedaa8_943097e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-27T10:21:50Z",
+      "side": 1,
+      "message": "Thanks for clarification. Do you mean this test is automatically scheduled? Or do you mean it is run manually?",
+      "parentUuid": "aba6e8e6_0575ce34",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 45
+      },
+      "revId": "19d4c296b14587a9d6a7e793c82f6cf215513cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1cdc6b06_e6bcdae2",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
         "patchSetId": 12
