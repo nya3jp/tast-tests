@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82465afc_69055344",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 22
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-27T10:21:55Z",
+      "side": 1,
+      "message": "space?",
+      "range": {
+        "startLine": 267,
+        "startChar": 11,
+        "endLine": 267,
+        "endChar": 12
+      },
+      "revId": "94cc76e2c495adc203c362e6a22199bd97133f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bfb8f07_af3efd02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 22
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-27T10:21:55Z",
+      "side": 1,
+      "message": "indent. ref: http://go/js-style#jsdoc-line-wrapping\n\nCould you also help fix the indentation in L191? thanks.",
+      "revId": "94cc76e2c495adc203c362e6a22199bd97133f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48bda017_c67096fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 22
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-27T10:21:55Z",
+      "side": 1,
+      "message": "!\u003d\u003d",
+      "range": {
+        "startLine": 278,
+        "startChar": 36,
+        "endLine": 278,
+        "endChar": 37
+      },
+      "revId": "94cc76e2c495adc203c362e6a22199bd97133f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a98242f8_40d51886",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/cca_ui.js",
+        "patchSetId": 22
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-09-27T10:21:55Z",
+      "side": 1,
+      "message": "Could we use template literal `...` here?",
+      "revId": "94cc76e2c495adc203c362e6a22199bd97133f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
