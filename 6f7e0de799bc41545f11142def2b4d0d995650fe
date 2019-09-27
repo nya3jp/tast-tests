@@ -1,0 +1,353 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "faf02a28_b680a6d0",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-27T21:26:43Z",
+      "side": 1,
+      "message": "Enterprise",
+      "range": {
+        "startLine": 174,
+        "startChar": 74,
+        "endLine": 174,
+        "endChar": 84
+      },
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08a3b5cb_9f200765",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-27T21:26:43Z",
+      "side": 1,
+      "message": "\"whether device should be enrolled\"",
+      "range": {
+        "startLine": 237,
+        "startChar": 30,
+        "endLine": 237,
+        "endChar": 47
+      },
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a007dc91_7c38561a",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-27T21:26:43Z",
+      "side": 1,
+      "message": "append can take multiple arguments, so you can put this on one line",
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b1e2466_97d72549",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-27T21:26:43Z",
+      "side": 1,
+      "message": "WebView (and isGAIAWebView below)",
+      "range": {
+        "startLine": 783,
+        "startChar": 47,
+        "endLine": 783,
+        "endChar": 54
+      },
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2655d9e_da544015",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-27T21:26:43Z",
+      "side": 1,
+      "message": "pick either Enrollment (here) or enrollment (used elsewhere)",
+      "range": {
+        "startLine": 843,
+        "startChar": 50,
+        "endLine": 843,
+        "endChar": 60
+      },
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c35e635d_12d72b33",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-27T21:26:43Z",
+      "side": 1,
+      "message": "omit - this part is implied.  Or say \"returned\" instead of raised",
+      "range": {
+        "startLine": 845,
+        "startChar": 32,
+        "endLine": 845,
+        "endChar": 61
+      },
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f313b8d6_e7e1f841",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 846,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-27T21:26:43Z",
+      "side": 1,
+      "message": "why is this exported?",
+      "range": {
+        "startLine": 846,
+        "startChar": 17,
+        "endLine": 846,
+        "endChar": 45
+      },
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce2996a1_bb88edca",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-27T21:26:43Z",
+      "side": 1,
+      "message": "use :\u003d instead of var",
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82076846_335ceab8",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-27T21:26:43Z",
+      "side": 1,
+      "message": "just opt as a name?",
+      "range": {
+        "startLine": 849,
+        "startChar": 5,
+        "endLine": 849,
+        "endChar": 17
+      },
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29ee08e3_1fa15e2c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-27T21:26:43Z",
+      "side": 1,
+      "message": "it\u0027s personal preference, but I think the polling function is long enough here that it makes sense to define it above and pass in the function name here",
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dda3571_65a8c9ec",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-27T21:26:43Z",
+      "side": 1,
+      "message": "wrap err instead of just making a new one",
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5de0004_3437816c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-27T21:26:43Z",
+      "side": 1,
+      "message": "It\u0027s",
+      "range": {
+        "startLine": 859,
+        "startChar": 6,
+        "endLine": 859,
+        "endChar": 9
+      },
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c28ec9a3_69514348",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-27T21:26:43Z",
+      "side": 1,
+      "message": "the error you\u0027re wrapping around has the same text",
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4e66bf9_5fe3984d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-27T21:26:43Z",
+      "side": 1,
+      "message": "not this name gets across what it\u0027s doing, since \"complete\" could mean a lot of things",
+      "range": {
+        "startLine": 888,
+        "startChar": 17,
+        "endLine": 888,
+        "endChar": 39
+      },
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb472d35_5b49c50c",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-27T21:26:43Z",
+      "side": 1,
+      "message": "wrap the errors in this function with more context, e.g. \"Could not enroll: \"",
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a93ec3b_3e1a82ad",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-27T21:26:43Z",
+      "side": 1,
+      "message": "use %t then you don\u0027t need to format below",
+      "range": {
+        "startLine": 924,
+        "startChar": 79,
+        "endLine": 924,
+        "endChar": 80
+      },
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d05f7edd_f52f1d83",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 934,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-27T21:26:43Z",
+      "side": 1,
+      "message": "does this work with the GAIALogin case?",
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
