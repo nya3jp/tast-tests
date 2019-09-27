@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cd9cf14_5a1b9cbf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-27T04:21:22Z",
+      "side": 1,
+      "message": "nice :-)",
+      "revId": "7fbb4c5a0e162b063eea5dd194bf9f45c3f75a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9d413b5_ce252527",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-27T04:21:22Z",
+      "side": 1,
+      "message": "testing.PollBreak here?",
+      "range": {
+        "startLine": 275,
+        "startChar": 10,
+        "endLine": 275,
+        "endChar": 24
+      },
+      "revId": "7fbb4c5a0e162b063eea5dd194bf9f45c3f75a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a51fd15_dcffe37e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-27T04:21:22Z",
+      "side": 1,
+      "message": "Clar: at this moment, the rotation is completed? Then, do you need to wait for idle?",
+      "revId": "7fbb4c5a0e162b063eea5dd194bf9f45c3f75a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
