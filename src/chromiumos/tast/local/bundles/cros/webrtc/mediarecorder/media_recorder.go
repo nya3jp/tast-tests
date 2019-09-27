@@ -19,7 +19,6 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/constants"
@@ -60,14 +59,10 @@ func getMetricName(name string, hwAccelUsed bool) string {
 }
 
 // MeasurePerf measures the frame processing time and CPU usage while recording and report the results.
-func MeasurePerf(ctx context.Context, fileSystem http.FileSystem, outDir string, codec videotype.Codec, streamFile string, fps int) error {
-	if err := audio.Mute(ctx); err != nil {
-		return errors.Wrap(err, "failed to mute device")
-	}
-	defer audio.Unmute(ctx)
+func MeasurePerf(ctx context.Context, fileSystem http.FileSystem, outDir string, codec videotype.Codec, streamFile string) error {
 
 	p := perf.NewValues()
-	hwAccelUsed, err := measureAndReport(ctx, fileSystem, outDir, codec, streamFile, fps, true, p)
+	hwAccelUsed, err := measureAndReport(ctx, fileSystem, outDir, codec, streamFile, true, p)
 	if err != nil {
 		return err
 	}
@@ -79,7 +74,7 @@ func MeasurePerf(ctx context.Context, fileSystem http.FileSystem, outDir string,
 		}
 		return nil
 	}
-	_, err = measureAndReport(ctx, fileSystem, outDir, codec, streamFile, fps, false, p)
+	_, err = measureAndReport(ctx, fileSystem, outDir, codec, streamFile, false, p)
 	if err != nil {
 		return err
 	}
@@ -90,23 +85,26 @@ func MeasurePerf(ctx context.Context, fileSystem http.FileSystem, outDir string,
 }
 
 func measureAndReport(ctx context.Context, fileSystem http.FileSystem, outDir string, codec videotype.Codec,
-	streamFile string, fps int, hwAccelEnabled bool, p *perf.Values) (hwAccelUsed bool, err error) {
-	processingTime, cpuUsage, hwAccelUsed, err := doMeasurePerf(ctx, fileSystem, outDir, codec, !hwAccelEnabled, streamFile, fps)
+	streamFile string, hwAccelEnabled bool, p *perf.Values) (hwAccelUsed bool, err error) {
+	processingTimePerFrame, cpuUsage, hwAccelUsed, err := doMeasurePerf(ctx, fileSystem, outDir, codec, !hwAccelEnabled, streamFile)
 	if err != nil {
 		return hwAccelUsed, errors.Wrapf(err, "failed to measure perf. HWAccel requested = %v used = %v", hwAccelEnabled, hwAccelUsed)
 	}
-	testing.ContextLogf(ctx, "HW requested = %v used = %v processing time = %v cpu usage = %v", hwAccelEnabled, hwAccelUsed, processingTime, cpuUsage)
-	reportPerf(processingTime, cpuUsage, hwAccelUsed, p)
+	testing.ContextLogf(ctx, "HW requested = %v, used = %v, processing time per frame = %v, cpu usage = %v", hwAccelEnabled, hwAccelUsed, processingTimePerFrame, cpuUsage)
+	reportPerf(processingTimePerFrame, cpuUsage, hwAccelUsed, p)
 	return hwAccelUsed, nil
 }
 
-func getChromeArgs(fps int, streamFile string, disableHWAccel bool, codec videotype.Codec) (chromeArgs []string) {
+func getChromeArgs(streamFile string, disableHWAccel bool, codec videotype.Codec) (chromeArgs []string) {
 	chromeArgs = []string{
-		// "--use-fake-ui-for-media-stream" avoids the need to grant camera/microphone permissions.
-		// "--use-fake-device-for-media-stream" feeds fake stream with specified fps to getUserMedia() instead of live camera input.
-		// "--use-file-for-fake-video-capture=" feeds a Y4M test file to getUserMedia() instead of live camera input.
+		// Use a fake media capture device instead of live webcam(s)/microphone(s);
+		// this is needed to enable use-file-for-fake-video-capture below.
+		// See https://webrtc.org/testing/
+		"--use-fake-device-for-media-stream",
+		// Avoids the need to grant camera/microphone permissions.
 		"--use-fake-ui-for-media-stream",
-		fmt.Sprintf("--use-fake-device-for-media-stream=\"fps=%d\"", fps),
+		// Read a test file as input for the fake media capture device. The file,
+		// usually a Y4M, specifies resolution (size) and frame rate.
 		"--use-file-for-fake-video-capture=" + streamFile,
 	}
 	if disableHWAccel {
@@ -119,20 +117,20 @@ func getChromeArgs(fps int, streamFile string, disableHWAccel bool, codec videot
 	return chromeArgs
 }
 
-func reportPerf(processingTime time.Duration, cpuUsage float64, hwAccelUsed bool, p *perf.Values) {
+func reportPerf(processingTimePerFrame time.Duration, cpuUsage float64, hwAccelUsed bool, p *perf.Values) {
 	metricName := getMetricName("frame_processing_time", hwAccelUsed)
-	reportMetric(metricName, "millisecond", float64(processingTime.Nanoseconds()*1000000), perf.SmallerIsBetter, p)
+	reportMetric(metricName, "millisecond", float64(processingTimePerFrame.Nanoseconds()*1000000), perf.SmallerIsBetter, p)
 	metricName = getMetricName("cpu_usage", hwAccelUsed)
 	reportMetric(metricName, "percent", cpuUsage, perf.SmallerIsBetter, p)
 }
 
 // doMeasurePerf measures the frame processing time and CPU usage while recording.
 func doMeasurePerf(ctx context.Context, fileSystem http.FileSystem, outDir string, codec videotype.Codec, disableHWAccel bool,
-	streamFile string, fps int) (processingTime time.Duration, cpuUsage float64, hwAccelUsed bool, err error) {
+	streamFile string) (processingTimePerFrame time.Duration, cpuUsage float64, hwAccelUsed bool, err error) {
 	// time reserved for cleanup.
 	const cleanupTime = 10 * time.Second
 
-	cr, err := chrome.New(ctx, chrome.ExtraArgs(getChromeArgs(fps, streamFile, disableHWAccel, codec)...))
+	cr, err := chrome.New(ctx, chrome.ExtraArgs(getChromeArgs(streamFile, disableHWAccel, codec)...))
 	if err != nil {
 		return 0, 0, false, errors.Wrap(err, "failed to connect to Chrome")
 	}
@@ -213,8 +211,8 @@ func doMeasurePerf(ctx context.Context, fileSystem http.FileSystem, outDir strin
 		return 0, 0, false, errors.Wrap(err, "failed to compute number of frames")
 	}
 
-	processingTime = time.Duration(elapsedTimeMs/frames) * time.Millisecond
-	return processingTime, cpuUsage, hwUsed, nil
+	processingTimePerFrame = time.Duration(elapsedTimeMs/frames) * time.Millisecond
+	return processingTimePerFrame, cpuUsage, hwUsed, nil
 }
 
 // computeNumFrames computes number of frames in the given MKV video byte array.
@@ -283,11 +281,6 @@ func measureCPUUsage(ctx context.Context, conn *chrome.Conn) (usage float64, err
 
 // VerifyMediaRecorderUsesEncodeAccelerator checks whether MediaRecorder uses HW encoder for |codec|.
 func VerifyMediaRecorderUsesEncodeAccelerator(ctx context.Context, s *testing.State, codec videotype.Codec) {
-	if err := audio.Mute(ctx); err != nil {
-		s.Fatal("Failed to mute device: ", err)
-	}
-	defer audio.Unmute(ctx)
-
 	chromeArgs := []string{
 		// Enable verbose log messages for video components.
 		"--vmodule=" +
