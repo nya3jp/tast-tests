@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "548c3c9d_ea389ac3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-27T15:09:51Z",
+      "side": 1,
+      "message": "How about having links in reference-style instead of inline-style?\ne.g.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast/docs/writing_tests.md?rcl\u003de96973b86aed3668339f33407f2eb6d39413b5a0\u0026l\u003d150\n\nReference-style would improve readability of Markdown\u0027s source because some long links occur multiple times.",
+      "revId": "08a6a2ca427ca39379a371249080df553780b920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
