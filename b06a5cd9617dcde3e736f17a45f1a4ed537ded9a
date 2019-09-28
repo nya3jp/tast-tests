@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd0050cf_48a4be52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_media_recorder.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-09-28T00:32:02Z",
+      "side": 1,
+      "message": "(Un-)Intentional space?",
+      "range": {
+        "startLine": 26,
+        "startChar": 29,
+        "endLine": 26,
+        "endChar": 30
+      },
+      "revId": "b06a5cd9617dcde3e736f17a45f1a4ed537ded9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
