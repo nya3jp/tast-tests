@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "3c1a2797_d639c903",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1346474
+      },
+      "writtenOn": "2019-09-28T00:20:42Z",
+      "side": 1,
+      "message": "The test is run manually at this time. However, we have a goal in the future to set up automation, although no concrete plans on how to achieve that.",
+      "parentUuid": "38fedaa8_943097e3",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 45
+      },
+      "revId": "19d4c296b14587a9d6a7e793c82f6cf215513cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1cdc6b06_e6bcdae2",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
         "patchSetId": 12
