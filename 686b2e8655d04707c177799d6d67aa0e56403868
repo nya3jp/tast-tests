@@ -22,6 +22,30 @@
       "revId": "686b2e8655d04707c177799d6d67aa0e56403868",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33b77cf3_65cb141e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-09-30T09:02:32Z",
+      "side": 1,
+      "message": "Created https://crbug.com/1009335\n\nAlso, instead of always waiting for 10 seconds, I have another workaround:\nrun the test, if diff histogram is unexpected, run again. The assumption is that the background video is not repeatedly played.\nWhat do you think about the workaround? The good side is that it can save the 10 seconds sleep for general good case.",
+      "parentUuid": "60a08ff8_8171d5bc",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 44
+      },
+      "revId": "686b2e8655d04707c177799d6d67aa0e56403868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
