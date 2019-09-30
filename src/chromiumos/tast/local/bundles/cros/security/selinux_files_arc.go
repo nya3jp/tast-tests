@@ -61,14 +61,14 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 	for _, gpuDevice := range gpuDevices {
 		testArgs = append(testArgs,
 			[]arcFileTestCase{
-				{filepath.Join(gpuDevice, "config"), false, "gpu_device", false, nil},
-				{filepath.Join(gpuDevice, "device"), false, "gpu_device", false, nil},
-				{filepath.Join(gpuDevice, "drm"), false, "gpu_device", false, nil},
-				{filepath.Join(gpuDevice, "subsystem_device"), false, "gpu_device", false, nil},
-				{filepath.Join(gpuDevice, "subsystem_vendor"), false, "gpu_device", false, nil},
-				{filepath.Join(gpuDevice, "uevent"), false, "gpu_device", false, nil},
-				{filepath.Join(gpuDevice, "vendor"), false, "gpu_device", false, nil},
-				{gpuDevice, false, "sysfs", true, selinux.IgnorePaths([]string{
+				{path: filepath.Join(gpuDevice, "config"), context: "gpu_device"},
+				{path: filepath.Join(gpuDevice, "device"), context: "gpu_device"},
+				{path: filepath.Join(gpuDevice, "drm"), context: "gpu_device"},
+				{path: filepath.Join(gpuDevice, "subsystem_device"), context: "gpu_device"},
+				{path: filepath.Join(gpuDevice, "subsystem_vendor"), context: "gpu_device"},
+				{path: filepath.Join(gpuDevice, "uevent"), context: "gpu_device"},
+				{path: filepath.Join(gpuDevice, "vendor"), context: "gpu_device"},
+				{path: gpuDevice, context: "sysfs", recursive: true, filter: selinux.IgnorePaths([]string{
 					filepath.Join(gpuDevice, "config"),
 					filepath.Join(gpuDevice, "device"),
 					filepath.Join(gpuDevice, "drm"),
@@ -89,45 +89,45 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 		testArgs = append(
 			testArgs,
 			[]arcFileTestCase{
-				{iioDevice, false, "cros_sensor_hal_sysfs", true, selinux.IIOSensorFilter},
-				{iioDevice, false, "sysfs", true, selinux.InvertFilterSkipFile(selinux.IIOSensorFilter)},
+				{path: iioDevice, context: "cros_sensor_hal_sysfs", recursive: true, filter: selinux.IIOSensorFilter},
+				{path: iioDevice, context: "sysfs", recursive: true, filter: selinux.InvertFilterSkipFile(selinux.IIOSensorFilter)},
 			}...)
 	}
 
 	testArgs = append(testArgs, []arcFileTestCase{
-		{"/mnt/stateful_partition/unencrypted/apkcache", false, "apkcache_file", false, nil},
-		{"/mnt/stateful_partition/unencrypted/art-data/dalvik-cache/", false, "dalvikcache_data_file", true, nil},
-		{"/opt/google/chrome/chrome", false, "chrome_browser_exec", false, nil},
-		{"/run/arc/adbd", false, "device", false, nil},
-		{"/run/arc/bugreport", false, "debug_bugreport", false, nil},
-		{"/run/arc/bugreport/pipe", false, "debug_bugreport", false, nil},
-		{"/run/arc/cmdline.android", false, "(proc_cmdline|proc)", false, nil}, // N or below is proc
-		{"/run/arc/debugfs", false, "(debugfs|tmpfs)", false, nil},
-		{"/run/arc/fake_kptr_restrict", false, "proc_security", false, nil},
-		{"/run/arc/fake_mmap_rnd_bits", false, "proc_security", false, nil},
-		{"/run/arc/fake_mmap_rnd_compat_bits", false, "proc_security", false, nil},
-		{"/run/arc/media", false, "tmpfs", false, nil},
-		{"/run/arc/obb", false, "tmpfs", false, nil},
-		{"/run/arc/oem/etc", false, "oemfs", true, nil},
-		{"/run/arc/properties/build.prop", false, "system_file", false, nil},
-		{"/run/arc/properties/default.prop", false, "rootfs", false, nil},
-		{"/run/arc/sdcard", false, "storage_file", false, nil},
-		{"/run/arc/shared_mounts", false, "tmpfs", false, nil},
-		{"/run/camera", false, "(camera_dir|camera_socket)", false, nil}, // N or below is camera_socket
-		{"/run/camera/camera.sock", false, "camera_socket", false, selinux.SkipNotExist},
-		{"/run/camera/camera3.sock", false, "camera_socket", false, selinux.SkipNotExist},
-		{"/run/chrome/arc_bridge.sock", false, "arc_bridge_socket", false, nil},
-		{"/run/chrome/wayland-0", false, "wayland_socket", false, nil},
-		{"/run/cras", false, "cras_socket", true, nil},
-		{"/run/session_manager", false, "cros_run_session_manager", true, nil},
-		{"/sys/kernel/debug/sync/sw_sync", false, "debugfs_sw_sync", false, selinux.SkipNotExist},
-		{"/usr/sbin/arc-setup", false, "cros_arc_setup_exec", false, nil},
-		{"/var/log/chrome", false, "cros_var_log_chrome", true, nil},
-		{"dev/ptmx", true, "ptmx_device", false, nil},
-		{"dev/random", true, "random_device", false, nil},
-		{"dev/urandom", true, "u?random_device", false, nil},
-		{"oem", true, "oemfs", false, nil},
-		{"sys/kernel/debug/sync", true, "tmpfs|debugfs_sync", false, nil}, // pre-3.18 doesn't have debugfs/sync, thus ARC container has a tmpfs fake.
+		{path: "/mnt/stateful_partition/unencrypted/apkcache", context: "apkcache_file"},
+		{path: "/mnt/stateful_partition/unencrypted/art-data/dalvik-cache/", context: "dalvikcache_data_file", recursive: true},
+		{path: "/opt/google/chrome/chrome", context: "chrome_browser_exec"},
+		{path: "/run/arc/adbd", context: "device"},
+		{path: "/run/arc/bugreport", context: "debug_bugreport"},
+		{path: "/run/arc/bugreport/pipe", context: "debug_bugreport"},
+		{path: "/run/arc/cmdline.android", context: "(proc_cmdline|proc)"}, // N or below is proc
+		{path: "/run/arc/debugfs", context: "(debugfs|tmpfs)"},
+		{path: "/run/arc/fake_kptr_restrict", context: "proc_security"},
+		{path: "/run/arc/fake_mmap_rnd_bits", context: "proc_security"},
+		{path: "/run/arc/fake_mmap_rnd_compat_bits", context: "proc_security"},
+		{path: "/run/arc/media", context: "tmpfs"},
+		{path: "/run/arc/obb", context: "tmpfs"},
+		{path: "/run/arc/oem/etc", context: "oemfs", recursive: true},
+		{path: "/run/arc/properties/build.prop", context: "system_file"},
+		{path: "/run/arc/properties/default.prop", context: "rootfs"},
+		{path: "/run/arc/sdcard", context: "storage_file"},
+		{path: "/run/arc/shared_mounts", context: "tmpfs"},
+		{path: "/run/camera", context: "(camera_dir|camera_socket)"}, // N or below is camera_socket
+		{path: "/run/camera/camera.sock", context: "camera_socket", filter: selinux.SkipNotExist},
+		{path: "/run/camera/camera3.sock", context: "camera_socket", filter: selinux.SkipNotExist},
+		{path: "/run/chrome/arc_bridge.sock", context: "arc_bridge_socket"},
+		{path: "/run/chrome/wayland-0", context: "wayland_socket"},
+		{path: "/run/cras", context: "cras_socket", recursive: true},
+		{path: "/run/session_manager", context: "cros_run_session_manager", recursive: true},
+		{path: "/sys/kernel/debug/sync/sw_sync", context: "debugfs_sw_sync", filter: selinux.SkipNotExist},
+		{path: "/usr/sbin/arc-setup", context: "cros_arc_setup_exec"},
+		{path: "/var/log/chrome", context: "cros_var_log_chrome", recursive: true},
+		{path: "dev/ptmx", isAndroidPath: true, context: "ptmx_device"},
+		{path: "dev/random", isAndroidPath: true, context: "random_device"},
+		{path: "dev/urandom", isAndroidPath: true, context: "u?random_device"},
+		{path: "oem", isAndroidPath: true, context: "oemfs"},
+		{path: "sys/kernel/debug/sync", isAndroidPath: true, context: "tmpfs|debugfs_sync"}, // pre-3.18 doesn't have debugfs/sync, thus ARC container has a tmpfs fake.
 	}...)
 
 	for _, testArg := range testArgs {
