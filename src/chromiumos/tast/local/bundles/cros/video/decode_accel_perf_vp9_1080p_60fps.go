@@ -18,7 +18,7 @@ func init() {
 		Desc:         "Runs video_decode_accelerator_perf_tests with a VP9 1080p@60fps video",
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome", caps.HWDecodeVP9},
+		SoftwareDeps: []string{"chrome", caps.HWDecodeVP9_60},
 		Data:         []string{"1080p_60fps_600frames.vp9.ivf", "1080p_60fps_600frames.vp9.ivf.json"},
 	})
 }
