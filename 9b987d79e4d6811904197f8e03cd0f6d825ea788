@@ -22,6 +22,126 @@
       "revId": "9b987d79e4d6811904197f8e03cd0f6d825ea788",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dfa23d6_e8137d13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-30T22:32:54Z",
+      "side": 1,
+      "message": "\"No wifi interfaces found\"",
+      "range": {
+        "startLine": 34,
+        "startChar": 11,
+        "endLine": 34,
+        "endChar": 34
+      },
+      "revId": "9b987d79e4d6811904197f8e03cd0f6d825ea788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b184bea3_7c576331",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-30T22:32:54Z",
+      "side": 1,
+      "message": "\"More than one wifi interface found\"",
+      "range": {
+        "startLine": 36,
+        "startChar": 11,
+        "endLine": 36,
+        "endChar": 40
+      },
+      "revId": "9b987d79e4d6811904197f8e03cd0f6d825ea788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0d9fc75_b53bb5bb",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-30T22:32:54Z",
+      "side": 1,
+      "message": "Expand on this - \"found in the DUT\u0027s /sys/class directory\" perhaps",
+      "revId": "9b987d79e4d6811904197f8e03cd0f6d825ea788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "400dbb1a_4a0d8ae0",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-30T22:32:54Z",
+      "side": 1,
+      "message": "same here - make it clear how these two functions differ and add some detail as to what the function is actually looking up",
+      "revId": "9b987d79e4d6811904197f8e03cd0f6d825ea788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d1e6c5a_a8a3d8d6",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-30T22:32:54Z",
+      "side": 1,
+      "message": "use \"WiFi\" when capitalizing",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 19
+      },
+      "revId": "9b987d79e4d6811904197f8e03cd0f6d825ea788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "665ee578_69384119",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002858
+      },
+      "writtenOn": "2019-09-30T22:32:54Z",
+      "side": 1,
+      "message": "Personal preference, but I\u0027d prefer you create a new []string and append to it rather than overwriting the ifaces list in this for loop.  Editing a slice while stepping over it makes this a little harder to read, and I don\u0027t think that\u0027s worth the small performance improvement here.",
+      "revId": "9b987d79e4d6811904197f8e03cd0f6d825ea788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
