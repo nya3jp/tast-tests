@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3d4a8fd_ce8cb32c",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-30T10:17:07Z",
+      "side": 1,
+      "message": "By moving this, I\u0027d recommend to follow the Ricardo\u0027s suggestion. I.e., just have the converting scale.\n\nIn ash module, there\u0027s two APIs which returns ARC App\u0027s bounding box.\n\ninfo, err :\u003d GetARCAppWindowInfo(...)\n...\ninfo.Bounds\n\nand\n\nChromeBoundsInPx(...)\n\nHowever, they are returning different values (i.e. in different coordinates).\nThat looks confusing.\nConverting method wouldn\u0027t fail, so extra lines in callers will be just one line for each caller.",
+      "revId": "8686ee97f734f77eaac55de18a62f46ad1586d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
