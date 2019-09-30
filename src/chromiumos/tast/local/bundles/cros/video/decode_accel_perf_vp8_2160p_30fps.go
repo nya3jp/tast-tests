@@ -18,7 +18,7 @@ func init() {
 		Desc:         "Runs video_decode_accelerator_perf_tests with a VP8 2160p@30fps video",
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome", caps.HWDecodeVP8},
+		SoftwareDeps: []string{"chrome", caps.HWDecodeVP8_4K},
 		Data:         []string{"2160p_30fps_300frames.vp8.ivf", "2160p_30fps_300frames.vp8.ivf.json"},
 	})
 }
