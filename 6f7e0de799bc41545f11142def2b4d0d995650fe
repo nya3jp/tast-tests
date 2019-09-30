@@ -65,6 +65,23 @@
     },
     {
       "key": {
+        "uuid": "a750205d_19a20ecb",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-30T10:04:06Z",
+      "side": 1,
+      "message": "Could you add comment what these do and why they need for each?",
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7b1e2466_97d72549",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 3
@@ -82,6 +99,69 @@
         "endLine": 783,
         "endChar": 54
       },
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a0fe7ec_6ac730fc",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-30T10:04:06Z",
+      "side": 1,
+      "message": "nit: Returns",
+      "range": {
+        "startLine": 785,
+        "startChar": 3,
+        "endLine": 785,
+        "endChar": 10
+      },
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cddcdc4_5f703c2d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-30T10:04:06Z",
+      "side": 1,
+      "message": "Nice to avoid \"get\" prefix.\n\ncf) go/gocomments#TOC-Getters",
+      "range": {
+        "startLine": 786,
+        "startChar": 17,
+        "endLine": 786,
+        "endChar": 20
+      },
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "962b1185_5f4039cc",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-30T10:04:06Z",
+      "side": 1,
+      "message": "err is returned, so it should be handled in the caller.",
       "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -214,6 +294,24 @@
     },
     {
       "key": {
+        "uuid": "2c6dbb0c_5ba37f82",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-30T10:04:06Z",
+      "side": 1,
+      "message": "I think that\u0027s fine, and is used in Tast commonly.",
+      "parentUuid": "29ee08e3_1fa15e2c",
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3dda3571_65a8c9ec",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 3
@@ -225,6 +323,40 @@
       "writtenOn": "2019-09-27T21:26:43Z",
       "side": 1,
       "message": "wrap err instead of just making a new one",
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "505bb869_dbe2eedf",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-30T10:04:06Z",
+      "side": 1,
+      "message": "Should we check this outside of the Poll?\nAs for page loading, you can wait for the load is completed, I think.",
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8e41499_70f653d6",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-30T10:04:06Z",
+      "side": 1,
+      "message": "Could you declare the var at the latest timing? (move to L872)?",
       "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -248,6 +380,92 @@
         "endLine": 859,
         "endChar": 9
       },
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecb718cd_67f69702",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-30T10:04:06Z",
+      "side": 1,
+      "message": "What the URL would looks like? I\u0027m a bit worried about accidental substring match, because \"apps\" is very short.",
+      "range": {
+        "startLine": 861,
+        "startChar": 31,
+        "endLine": 861,
+        "endChar": 45
+      },
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f8e8e1b_f630c80f",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-30T10:04:06Z",
+      "side": 1,
+      "message": "Could you close the connection, properly?\nAlso, nice to avoid \"temp\". Probably \"conn\" is enough.",
+      "range": {
+        "startLine": 864,
+        "startChar": 3,
+        "endLine": 864,
+        "endChar": 11
+      },
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9edfab3d_6aa553d0",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-30T10:04:06Z",
+      "side": 1,
+      "message": "TODO should be formed either;\n- TODO(username): or\n- TODO(crbug.com/XXXXXX): ...\nto make the responsibility clearer.",
+      "range": {
+        "startLine": 866,
+        "startChar": 7,
+        "endLine": 866,
+        "endChar": 11
+      },
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b96f6438_7ef0e865",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-30T10:04:06Z",
+      "side": 1,
+      "message": "Could you handle an error?",
       "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -305,6 +523,40 @@
       "writtenOn": "2019-09-27T21:26:43Z",
       "side": 1,
       "message": "wrap the errors in this function with more context, e.g. \"Could not enroll: \"",
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d99b0ba5_f80c40da",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-30T10:04:06Z",
+      "side": 1,
+      "message": "This looks no-op? What was intended to be done here?",
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad15fdbe_1cb04102",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-30T10:04:06Z",
+      "side": 1,
+      "message": "Line comment should be completed. (missing a trailing period).",
       "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
