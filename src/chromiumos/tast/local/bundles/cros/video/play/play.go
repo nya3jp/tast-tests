@@ -44,6 +44,13 @@ const (
 	CheckHistogram
 )
 
+const (
+	// Time to sleep before snapshoting the first histogram.
+	// TODO(crbug.com/1008317): find a better mechanism to detect the target video's
+	// property, specifically video decoder being used.
+	waitForOobeVideoDuration = 10 * time.Second
+)
+
 // MSEDataFiles returns a list of required files that tests that play MSE videos.
 func MSEDataFiles() []string {
 	return []string{
@@ -308,6 +315,12 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
+	testing.ContextLogf(ctx, "Sleeping %v to wait for OOBE video being played",
+		waitForOobeVideoDuration.Round(time.Second))
+	if err := testing.Sleep(ctx, waitForOobeVideoDuration); err != nil {
+		s.Fatalf("Failed sleeping %v for OOBE video being played: %v",
+			waitForOobeVideoDuration.Round(time.Second), err)
+	}
 
 	if mode == CheckHistogram {
 		initHistogram, errorHistogram, err = snapshotHistogram(ctx, cr)
