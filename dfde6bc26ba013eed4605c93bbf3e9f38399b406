@@ -72,6 +72,54 @@
     },
     {
       "key": {
+        "uuid": "a68b2d8b_57a7d235",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-09-30T01:46:56Z",
+      "side": 1,
+      "message": "Ricardo, yeah I thought the same thing, but given there\u0027s no situation where we need the bounds in DP, I thought it might be a bit overkill to split it. Instead, I just changed the name from getChromeBounds to ChromeBoundsInPx.\n\nAbe-san, yes we may use this in other tests, so I moved it to wm.go.",
+      "parentUuid": "847de480_3189f6b3",
+      "range": {
+        "startLine": 647,
+        "startChar": 62,
+        "endLine": 647,
+        "endChar": 65
+      },
+      "revId": "dfde6bc26ba013eed4605c93bbf3e9f38399b406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f22c9df_2a6253ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-09-30T01:46:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71b45d5f_7f7af77a",
+      "range": {
+        "startLine": 647,
+        "startChar": 5,
+        "endLine": 647,
+        "endChar": 20
+      },
+      "revId": "dfde6bc26ba013eed4605c93bbf3e9f38399b406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c0f3fe7_26b9516c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 5
@@ -112,6 +160,48 @@
     },
     {
       "key": {
+        "uuid": "28188770_72e9e651",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-09-30T01:46:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c0f3fe7_26b9516c",
+      "range": {
+        "startLine": 650,
+        "startChar": 47,
+        "endLine": 650,
+        "endChar": 50
+      },
+      "revId": "dfde6bc26ba013eed4605c93bbf3e9f38399b406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d024edad_c3032d8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-09-30T01:46:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f8c9b24_29718cc3",
+      "revId": "dfde6bc26ba013eed4605c93bbf3e9f38399b406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cface499_a9040259",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 5
@@ -126,6 +216,24 @@
       "revId": "dfde6bc26ba013eed4605c93bbf3e9f38399b406",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b540e38_1fb929ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-09-30T01:46:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cface499_a9040259",
+      "revId": "dfde6bc26ba013eed4605c93bbf3e9f38399b406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
