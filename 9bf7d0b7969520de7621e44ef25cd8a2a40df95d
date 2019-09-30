@@ -46,6 +46,30 @@
       "revId": "9bf7d0b7969520de7621e44ef25cd8a2a40df95d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f73ceaa_e86f8228",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2019-09-30T19:12:06Z",
+      "side": 1,
+      "message": "Following the chromium standard it should be TODO(takise): and then reference the bug separately. I did not see the todo(\u003cbug number\u003e) notation yet. Please correct me if I am wrong.",
+      "parentUuid": "b0ed7e4d_99498427",
+      "range": {
+        "startLine": 519,
+        "startChar": 1,
+        "endLine": 519,
+        "endChar": 27
+      },
+      "revId": "9bf7d0b7969520de7621e44ef25cd8a2a40df95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
