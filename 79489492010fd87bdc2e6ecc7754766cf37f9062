@@ -1,0 +1,596 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3220374_842ad65c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data/KeystoreExerciser.apk.external",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-30T13:00:15Z",
+      "side": 1,
+      "message": "Let\u0027s rename the apk file to KeymasterTest.apk",
+      "revId": "79489492010fd87bdc2e6ecc7754766cf37f9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7ec51e0_edf4d15f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-30T13:00:15Z",
+      "side": 1,
+      "message": "Can we change the package name to e.g. test.keymaster?",
+      "range": {
+        "startLine": 37,
+        "startChar": 18,
+        "endLine": 37,
+        "endChar": 40
+      },
+      "revId": "79489492010fd87bdc2e6ecc7754766cf37f9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48334e70_9bc33b55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-30T13:00:15Z",
+      "side": 1,
+      "message": "Do we need both? Feels like we could achieve the same with one textview.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 53
+      },
+      "revId": "79489492010fd87bdc2e6ecc7754766cf37f9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02ccead3_8c5801cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-30T13:00:15Z",
+      "side": 1,
+      "message": "unused?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 48
+      },
+      "revId": "79489492010fd87bdc2e6ecc7754766cf37f9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49be301d_6b1cd116",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-30T13:00:15Z",
+      "side": 1,
+      "message": "nit: \"appUID\"",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 6
+      },
+      "revId": "79489492010fd87bdc2e6ecc7754766cf37f9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e33013ed_defb7e9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-30T13:00:15Z",
+      "side": 1,
+      "message": "nit: \"to retrieve\"",
+      "range": {
+        "startLine": 86,
+        "startChar": 18,
+        "endLine": 86,
+        "endChar": 26
+      },
+      "revId": "79489492010fd87bdc2e6ecc7754766cf37f9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af9de9da_48ae077b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-30T13:00:15Z",
+      "side": 1,
+      "message": "Can we remove this line? This log doesn\u0027t seem useful.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 28
+      },
+      "revId": "79489492010fd87bdc2e6ecc7754766cf37f9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8233abd0_e5ff9028",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-30T13:00:15Z",
+      "side": 1,
+      "message": "clar: I\u0027d expect the APK is not persisted across tast tests, so we\u0027re guaranteed to always install a new app in L76, which means there should be no lingering keys from previous runs.\n\nIs this actually necessary?",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 47
+      },
+      "revId": "79489492010fd87bdc2e6ecc7754766cf37f9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edf7cae9_e2eb3f2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-30T13:00:15Z",
+      "side": 1,
+      "message": "You are checking for errors.",
+      "range": {
+        "startLine": 94,
+        "startChar": 49,
+        "endLine": 94,
+        "endChar": 74
+      },
+      "revId": "79489492010fd87bdc2e6ecc7754766cf37f9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57df3fef_0a73dc46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-30T13:00:15Z",
+      "side": 1,
+      "message": "One more thing we can do to simplify this flow is to extract the two test types (encrypt / sign) into test parameters. WDYT?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-tests",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 121
+      },
+      "revId": "79489492010fd87bdc2e6ecc7754766cf37f9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f75ed7b5_f77b38b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-30T13:00:15Z",
+      "side": 1,
+      "message": "I\u0027m not a big fan of this \"must\" pattern in general. We lose the chance to give more information about the error and just say \"Failed\", so unless it\u0027s something very obvious like WaitForExists I\u0027d rather not use it.\n\nThat said, if you do use it, let\u0027s make it a closure inside the main test function to tighten scope and then you can capture testing.State.",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 9
+      },
+      "revId": "79489492010fd87bdc2e6ecc7754766cf37f9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c482c0b7_4a028c3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-30T13:00:15Z",
+      "side": 1,
+      "message": "Maybe change to \"getTestAppUID\"?",
+      "range": {
+        "startLine": 130,
+        "startChar": 5,
+        "endLine": 130,
+        "endChar": 18
+      },
+      "revId": "79489492010fd87bdc2e6ecc7754766cf37f9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19668747_a47567ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-30T13:00:15Z",
+      "side": 1,
+      "message": "\"list packages\"",
+      "range": {
+        "startLine": 134,
+        "startChar": 41,
+        "endLine": 134,
+        "endChar": 61
+      },
+      "revId": "79489492010fd87bdc2e6ecc7754766cf37f9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b86b4f8e_a21758ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-30T13:00:15Z",
+      "side": 1,
+      "message": "\"app uid not found in pm list packages\"",
+      "range": {
+        "startLine": 140,
+        "startChar": 25,
+        "endLine": 140,
+        "endChar": 60
+      },
+      "revId": "79489492010fd87bdc2e6ecc7754766cf37f9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "267af275_171c43be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-30T13:00:15Z",
+      "side": 1,
+      "message": "Let\u0027s have some consistency on the ordering of these helpers. E.g. group arc related functions, cros related functions, verifyKeyGenerated is quite important so it should probably be higher up.",
+      "range": {
+        "startLine": 146,
+        "startChar": 5,
+        "endLine": 146,
+        "endChar": 17
+      },
+      "revId": "79489492010fd87bdc2e6ecc7754766cf37f9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "462dbbc3_66e853e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-30T13:00:15Z",
+      "side": 1,
+      "message": "This deletes all files in a directory. Maybe rename to convey that?",
+      "range": {
+        "startLine": 160,
+        "startChar": 5,
+        "endLine": 160,
+        "endChar": 22
+      },
+      "revId": "79489492010fd87bdc2e6ecc7754766cf37f9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf6fda52_ffead8dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-30T13:00:15Z",
+      "side": 1,
+      "message": "nit: you haven\u0027t tried to delete anything yet, something like \"failed to list Chrome OS keys for deletion\" makes more sense",
+      "range": {
+        "startLine": 163,
+        "startChar": 27,
+        "endLine": 163,
+        "endChar": 43
+      },
+      "revId": "79489492010fd87bdc2e6ecc7754766cf37f9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffa9bb2a_50c10562",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-30T13:00:15Z",
+      "side": 1,
+      "message": "If this is a file (not a directory) doesn\u0027t \"os.Remove(file)\" make more sense?",
+      "range": {
+        "startLine": 166,
+        "startChar": 11,
+        "endLine": 166,
+        "endChar": 20
+      },
+      "revId": "79489492010fd87bdc2e6ecc7754766cf37f9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b36e4f6_0dbab59d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-30T13:00:15Z",
+      "side": 1,
+      "message": "it\u0027s an HMAC tag",
+      "range": {
+        "startLine": 181,
+        "startChar": 43,
+        "endLine": 181,
+        "endChar": 64
+      },
+      "revId": "79489492010fd87bdc2e6ecc7754766cf37f9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9424abc_06df3670",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-30T13:00:15Z",
+      "side": 1,
+      "message": "nit: \"are\"",
+      "range": {
+        "startLine": 181,
+        "startChar": 25,
+        "endLine": 181,
+        "endChar": 27
+      },
+      "revId": "79489492010fd87bdc2e6ecc7754766cf37f9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "450143ee_d77471f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-30T13:00:15Z",
+      "side": 1,
+      "message": "file name",
+      "range": {
+        "startLine": 182,
+        "startChar": 67,
+        "endLine": 182,
+        "endChar": 71
+      },
+      "revId": "79489492010fd87bdc2e6ecc7754766cf37f9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b424ac20_050d96a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-30T13:00:15Z",
+      "side": 1,
+      "message": "nit: period",
+      "range": {
+        "startLine": 183,
+        "startChar": 15,
+        "endLine": 183,
+        "endChar": 18
+      },
+      "revId": "79489492010fd87bdc2e6ecc7754766cf37f9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7788e722_b7209266",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-30T13:00:15Z",
+      "side": 1,
+      "message": "nit: Let\u0027s be consistent with naming. Either both \"*Len\" or both \"*Length\".",
+      "range": {
+        "startLine": 186,
+        "startChar": 4,
+        "endLine": 186,
+        "endChar": 28
+      },
+      "revId": "79489492010fd87bdc2e6ecc7754766cf37f9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d7b03ae_148af5bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-30T13:00:15Z",
+      "side": 1,
+      "message": "In practice this logic will never fail, all possible blobs have dataLen \u003e filenameLength.\n\nCan we tighten this further to make it obvious we won\u0027t try to interpret standard Android keys like references?",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 42
+      },
+      "revId": "79489492010fd87bdc2e6ecc7754766cf37f9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b9bf9e6_f81cfe46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-30T13:00:15Z",
+      "side": 1,
+      "message": "This checks if a file exists in a given directory. Maybe rename to convey that? And update error message.",
+      "range": {
+        "startLine": 192,
+        "startChar": 5,
+        "endLine": 192,
+        "endChar": 23
+      },
+      "revId": "79489492010fd87bdc2e6ecc7754766cf37f9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23e376cb_3c096c06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-09-30T13:00:15Z",
+      "side": 1,
+      "message": "We can skip the private key existence check since it\u0027s covered by \"cat\" done under L218.\n\nI don\u0027t see much value in checking the cert because it\u0027s not related to our features nor the keymaster.",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 2
+      },
+      "revId": "79489492010fd87bdc2e6ecc7754766cf37f9062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
