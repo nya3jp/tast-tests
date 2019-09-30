@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c555b42_c94d00a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2019-09-30T21:22:23Z",
+      "side": 1,
+      "message": "declaimer: I don\u0027t know much about tast, but would it be possible to always return false when ARCVM is in use? When it is, /run/chrome/is_arcvm exists and its content is \"1\".",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 39
+      },
+      "revId": "fd8852cbbf00b63e3a0eb4f96cd114c349ec4c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90b83e78_14be5e5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shutdown.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2019-09-30T21:22:23Z",
+      "side": 1,
+      "message": "same. I believe the map should be empty for ARCVM.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 33
+      },
+      "revId": "fd8852cbbf00b63e3a0eb4f96cd114c349ec4c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
