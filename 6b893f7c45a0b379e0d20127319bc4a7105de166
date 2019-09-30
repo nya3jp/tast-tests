@@ -16,6 +16,24 @@
       "revId": "6b893f7c45a0b379e0d20127319bc4a7105de166",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdb0aa0d_8af83067",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1342022
+      },
+      "writtenOn": "2019-09-30T17:36:13Z",
+      "side": 1,
+      "message": "Thanks for the instructions. I\u0027ve verified on a DUT that the tests with the change worked and tast-local-tests-cros built successfully. While running fast_build.sh -T, most tests passed except the following errors, which however seems to happen anyway even without my change. My source code was just synced as of the writing. Let me know if this is not an known issue and I will file a bug. Thanks.\n\nok  \tchromiumos/tast/local/bundles/cros/security/fscaps\t(cached)\n--- FAIL: TestPolicyGeneratorAddStraceLog (0.01s)\n    policy_generator_test.go:160: \"/usr/bin/strace\" [\"strace\" \"-f\" \"-o\" \"/tmp/tast_strace_260126364\" \"--\" \"/sbin/minijail0\" \"-n\" \"/bin/echo\" \"test string\"] failed with signal: segmentation fault.\nFAIL\nFAIL\tchromiumos/tast/local/bundles/cros/security/seccomp\t0.047s",
+      "parentUuid": "929eeb74_4d9aa968",
+      "revId": "6b893f7c45a0b379e0d20127319bc4a7105de166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
