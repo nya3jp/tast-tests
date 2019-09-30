@@ -12,7 +12,6 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
-	"syscall"
 
 	selinux "github.com/opencontainers/selinux/go-selinux"
 
@@ -33,7 +32,7 @@ const (
 )
 
 // FileLabelCheckFilter returns true if the file described by path
-// and fi should be skipped. fi may be nil if the file does not exist.
+// and fi should be skipped. fi is never nil.
 type FileLabelCheckFilter func(path string, fi os.FileInfo) (skipFile, skipSubdir FilterResult)
 
 // IgnorePaths returns a FileLabelCheckFilter which allows the test to skip files
@@ -89,15 +88,6 @@ func IgnorePathButNotContents(pathToIgnore string) FileLabelCheckFilter {
 // CheckAll returns (Check, Check) to let the test to check all files
 func CheckAll(_ string, _ os.FileInfo) (FilterResult, FilterResult) { return Check, Check }
 
-// SkipNotExist is a FileLabelCheckFilter that returns (Skip, Skip) if
-// path p doesn't exist.
-func SkipNotExist(p string, fi os.FileInfo) (FilterResult, FilterResult) {
-	if fi == nil {
-		return Skip, Skip
-	}
-	return Check, Check
-}
-
 // InvertFilterSkipFile takes one filter and return a FileLabelCheckFilter which
 // reverses the boolean value for skipFile.
 func InvertFilterSkipFile(filter FileLabelCheckFilter) FileLabelCheckFilter {
@@ -130,14 +120,6 @@ func checkFileContext(ctx context.Context, path string, expected *regexp.Regexp,
 	return nil
 }
 
-// isENOTDIR return true if err means ENOTDIR.
-func isENOTDIR(err error) bool {
-	if pathError, ok := err.(*os.PathError); ok {
-		return pathError.Err == syscall.ENOTDIR
-	}
-	return false
-}
-
 // CheckContextReq holds parameters given to CheckContext.
 type CheckContextReq struct {
 	// Path is a file path to check.
@@ -152,6 +134,11 @@ type CheckContextReq struct {
 	// Filter is a function to filter files to check. It may not be nil.
 	Filter FileLabelCheckFilter
 
+	// IgnoreErrors indicates whether system call errors for Path should be
+	// ignored. If Recursive is true, system call errors for child files are
+	// always ignored regardless of this value to avoid typical race conditions.
+	IgnoreErrors bool
+
 	// Log indicates whether to log successful checks.
 	Log bool
 }
@@ -160,9 +147,10 @@ type CheckContextReq struct {
 // passed through s.
 func CheckContext(ctx context.Context, s *testing.State, req *CheckContextReq) {
 	fi, err := os.Lstat(req.Path)
-	// ENOTDIR is returned to stat /a/b where /a is a file.
-	if err != nil && !(os.IsNotExist(err) || isENOTDIR(err)) {
-		s.Errorf("Failed to stat %v: %v", req.Path, err)
+	if err != nil {
+		if !req.IgnoreErrors {
+			s.Errorf("Failed to stat %v: %v", req.Path, err)
+		}
 		return
 	}
 
@@ -174,29 +162,26 @@ func CheckContext(ctx context.Context, s *testing.State, req *CheckContextReq) {
 		}
 	}
 
-	if req.Recursive && skipSubdir == Check {
-		if fi == nil {
-			// This should only happen that path specified in the test data doesn't exist.
-			s.Errorf("Directory to check doesn't exist: %q", req.Path)
-			return
-		}
-		if !fi.IsDir() {
-			return
-		}
-		fis, err := ioutil.ReadDir(req.Path)
-		if err != nil {
+	if !req.Recursive || skipSubdir == Skip || !fi.IsDir() {
+		return
+	}
+
+	fis, err := ioutil.ReadDir(req.Path)
+	if err != nil {
+		if !req.IgnoreErrors {
 			s.Errorf("Failed to list directory %s: %s", req.Path, err)
-			return
 		}
-		for _, fi := range fis {
-			CheckContext(ctx, s, &CheckContextReq{
-				Path:      filepath.Join(req.Path, fi.Name()),
-				Expected:  req.Expected,
-				Recursive: req.Recursive,
-				Filter:    req.Filter,
-				Log:       req.Log,
-			})
-		}
+		return
+	}
+	for _, fi := range fis {
+		CheckContext(ctx, s, &CheckContextReq{
+			Path:         filepath.Join(req.Path, fi.Name()),
+			Expected:     req.Expected,
+			Recursive:    req.Recursive,
+			Filter:       req.Filter,
+			IgnoreErrors: true, // always ignore errors for child files
+			Log:          req.Log,
+		})
 	}
 }
 

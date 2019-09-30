@@ -32,6 +32,7 @@ type arcFileTestCase struct {
 	context       string
 	recursive     bool
 	filter        selinux.FileLabelCheckFilter // nil is selinux.CheckAll
+	ignoreErrors  bool
 }
 
 func SELinuxFilesARC(ctx context.Context, s *testing.State) {
@@ -114,13 +115,13 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 		{path: "/run/arc/sdcard", context: "storage_file"},
 		{path: "/run/arc/shared_mounts", context: "tmpfs"},
 		{path: "/run/camera", context: "(camera_dir|camera_socket)"}, // N or below is camera_socket
-		{path: "/run/camera/camera.sock", context: "camera_socket", filter: selinux.SkipNotExist},
-		{path: "/run/camera/camera3.sock", context: "camera_socket", filter: selinux.SkipNotExist},
+		{path: "/run/camera/camera.sock", context: "camera_socket", ignoreErrors: true},
+		{path: "/run/camera/camera3.sock", context: "camera_socket", ignoreErrors: true},
 		{path: "/run/chrome/arc_bridge.sock", context: "arc_bridge_socket"},
 		{path: "/run/chrome/wayland-0", context: "wayland_socket"},
 		{path: "/run/cras", context: "cras_socket", recursive: true},
 		{path: "/run/session_manager", context: "cros_run_session_manager", recursive: true},
-		{path: "/sys/kernel/debug/sync/sw_sync", context: "debugfs_sw_sync", filter: selinux.SkipNotExist},
+		{path: "/sys/kernel/debug/sync/sw_sync", context: "debugfs_sw_sync", ignoreErrors: true},
 		{path: "/usr/sbin/arc-setup", context: "cros_arc_setup_exec"},
 		{path: "/var/log/chrome", context: "cros_var_log_chrome", recursive: true},
 		{path: "dev/ptmx", isAndroidPath: true, context: "ptmx_device"},
@@ -145,11 +146,12 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 			continue
 		}
 		selinux.CheckContext(ctx, s, &selinux.CheckContextReq{
-			Path:      path,
-			Expected:  expected,
-			Recursive: testArg.recursive,
-			Filter:    filter,
-			Log:       false,
+			Path:         path,
+			Expected:     expected,
+			Recursive:    testArg.recursive,
+			Filter:       filter,
+			IgnoreErrors: testArg.ignoreErrors,
+			Log:          false,
 		})
 	}
 	selinux.CheckHomeDirectory(ctx, s)
