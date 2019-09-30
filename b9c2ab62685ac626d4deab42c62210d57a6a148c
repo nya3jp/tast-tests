@@ -22,6 +22,30 @@
       "revId": "b9c2ab62685ac626d4deab42c62210d57a6a148c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee90e283_d07ad9de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-09-30T01:50:56Z",
+      "side": 1,
+      "message": "Made it to pass the return value to must() instead.",
+      "parentUuid": "2f67dd8d_3a29db28",
+      "range": {
+        "startLine": 168,
+        "startChar": 3,
+        "endLine": 177,
+        "endChar": 54
+      },
+      "revId": "b9c2ab62685ac626d4deab42c62210d57a6a148c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
