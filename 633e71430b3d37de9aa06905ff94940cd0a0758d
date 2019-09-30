@@ -22,6 +22,30 @@
       "revId": "633e71430b3d37de9aa06905ff94940cd0a0758d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "357f58d8_eaa3bac9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-09-30T02:34:23Z",
+      "side": 1,
+      "message": "Woops... fixed, thanks!",
+      "parentUuid": "048a547b_7983e900",
+      "range": {
+        "startLine": 154,
+        "startChar": 25,
+        "endLine": 154,
+        "endChar": 34
+      },
+      "revId": "633e71430b3d37de9aa06905ff94940cd0a0758d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
