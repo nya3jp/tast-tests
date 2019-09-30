@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60a08ff8_8171d5bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-30T08:30:47Z",
+      "side": 1,
+      "message": "Do you have a concrete plan to fix this without sleep? Otherwise I\u0027m afraid this won\u0027t be resolved forever. At very least, please file a separate bug to remove this sleep, rather than crbug.com/1008317 which will be closed once the tests are re-promoted.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 44
+      },
+      "revId": "686b2e8655d04707c177799d6d67aa0e56403868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
