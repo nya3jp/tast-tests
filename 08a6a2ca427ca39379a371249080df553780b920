@@ -34,6 +34,24 @@
       "revId": "08a6a2ca427ca39379a371249080df553780b920",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e3845b6_8a1df494",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-30T06:11:02Z",
+      "side": 1,
+      "message": "Rendering results won\u0027t be changed regardless of link style, IIUC. \n\nFor example, this Markdown uses refernece-style, go/tast-writing shows inline links.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast/docs/writing_tests.md",
+      "parentUuid": "1c018d43_8d8b08c1",
+      "revId": "08a6a2ca427ca39379a371249080df553780b920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
