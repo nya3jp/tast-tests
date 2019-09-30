@@ -105,6 +105,47 @@
       "revId": "2731b5b73bcdb0bc555e6dd0c8672276f7d00c86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "248d903f_bc1a7509",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-30T09:40:32Z",
+      "side": 1,
+      "message": "It\u0027s concerning.\nActually, the test is used by 15 cases, so it\u0027s up to 30 MB.\nThat sounds too huge to me.\n\nWhat kind of data do you need? Is there any alternative, like stacktrace, logs, etc.?",
+      "parentUuid": "5b0a60e1_cb045158",
+      "range": {
+        "startLine": 14,
+        "startChar": 28,
+        "endLine": 14,
+        "endChar": 78
+      },
+      "revId": "2731b5b73bcdb0bc555e6dd0c8672276f7d00c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a090db3d_a015ba28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-30T09:40:32Z",
+      "side": 1,
+      "message": "Could you use go API whenever possible?\nhttps://golang.org/pkg/archive/zip/",
+      "revId": "2731b5b73bcdb0bc555e6dd0c8672276f7d00c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
