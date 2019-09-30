@@ -22,6 +22,9 @@ func init() {
 		SoftwareDeps: []string{"chrome", caps.HWEncodeH264},
 		Data:         []string{encode.Tulip180P.Name},
 		Timeout:      4 * time.Minute,
+		// Marked informational due to failures on ToT.
+		// TODO(crbug.com/1009297): Promote to critical again.
+		Attr: []string{"informational"},
 	})
 }
 
