@@ -25,7 +25,7 @@ func init() {
 			"arc-eng@google.com",
 			"hidehiko@chromium.org", // Tast port author.
 		},
-		SoftwareDeps: []string{"android", "chrome"},
+		SoftwareDeps: []string{"android_both", "chrome"},
 		Timeout:      4 * time.Minute,
 	})
 }
@@ -64,38 +64,45 @@ func Shutdown(ctx context.Context, s *testing.State) {
 		s.Fatal("ARC was not relaunched. Got PID: ", oldPID)
 	}
 
-	// Make sure that ARC related mount points are released, except
-	// ones for Mini container.
-	ms, err := sysutil.MountInfoForPID(sysutil.SelfPID)
-	if err != nil {
-		s.Fatal("Failed to get mount info: ", err)
-	}
+	if enabled, err := arc.VMEnabled(); err != nil {
+		s.Fatal("Failed to check whether ARCVM is enabled: ", err)
+	} else if !enabled {
+		// Check mount points only for ARC container.
+		// ARCVM doesn't have these mount points in in the host side.
 
-	isARCMount := func(path string) bool {
-		return strings.HasPrefix(path, "/opt/google/containers/android/") ||
-			strings.HasPrefix(path, "/opt/google/containers/arc-") ||
-			strings.HasPrefix(path, "/run/arc/")
-	}
-
-	miniContainerMounts := map[string]struct{}{
-		"/opt/google/containers/android/rootfs/root":                        {},
-		"/opt/google/containers/arc-obb-mounter/mountpoints/container-root": {},
-		"/opt/google/containers/arc-sdcard/mountpoints/container-root":      {},
-		"/run/arc/adbd":            {},
-		"/run/arc/debugfs/tracing": {},
-		"/run/arc/media":           {},
-		"/run/arc/obb":             {},
-		"/run/arc/oem":             {},
-		"/run/arc/sdcard":          {},
-		"/run/arc/shared_mounts":   {},
-	}
-
-	for _, m := range ms {
-		if !isARCMount(m.MountPath) {
-			continue
+		// Make sure that ARC related mount points are released, except
+		// ones for Mini container.
+		ms, err := sysutil.MountInfoForPID(sysutil.SelfPID)
+		if err != nil {
+			s.Fatal("Failed to get mount info: ", err)
 		}
-		if _, ok := miniContainerMounts[m.MountPath]; !ok {
-			s.Error("Mountpoint leaked after logout: ", m.MountPath)
+
+		isARCMount := func(path string) bool {
+			return strings.HasPrefix(path, "/opt/google/containers/android/") ||
+				strings.HasPrefix(path, "/opt/google/containers/arc-") ||
+				strings.HasPrefix(path, "/run/arc/")
+		}
+
+		miniContainerMounts := map[string]struct{}{
+			"/opt/google/containers/android/rootfs/root":                        {},
+			"/opt/google/containers/arc-obb-mounter/mountpoints/container-root": {},
+			"/opt/google/containers/arc-sdcard/mountpoints/container-root":      {},
+			"/run/arc/adbd":            {},
+			"/run/arc/debugfs/tracing": {},
+			"/run/arc/media":           {},
+			"/run/arc/obb":             {},
+			"/run/arc/oem":             {},
+			"/run/arc/sdcard":          {},
+			"/run/arc/shared_mounts":   {},
+		}
+
+		for _, m := range ms {
+			if !isARCMount(m.MountPath) {
+				continue
+			}
+			if _, ok := miniContainerMounts[m.MountPath]; !ok {
+				s.Error("Mountpoint leaked after logout: ", m.MountPath)
+			}
 		}
 	}
 }
