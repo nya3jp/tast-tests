@@ -52,6 +52,24 @@
       "revId": "fa8df78e03a5dccb4f9853c46aeb820b4f8495b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30fe8828_049b4877",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1137124
+      },
+      "writtenOn": "2019-09-30T05:20:46Z",
+      "side": 1,
+      "message": "because the commit message only mentioned removed-before-check race conditions.",
+      "parentUuid": "b446c64d_ec557c98",
+      "revId": "fa8df78e03a5dccb4f9853c46aeb820b4f8495b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
