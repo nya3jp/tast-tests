@@ -211,6 +211,30 @@
       "revId": "7e77d16f710e8ee772b4054d9105dd0d2a4e113e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4ef0bca_5e1eeafd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-09-30T16:58:00Z",
+      "side": 1,
+      "message": "ah. got it. fixed.",
+      "parentUuid": "29006bee_9b2587b5",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 1
+      },
+      "revId": "7e77d16f710e8ee772b4054d9105dd0d2a4e113e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
