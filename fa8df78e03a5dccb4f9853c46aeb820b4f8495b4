@@ -16,6 +16,24 @@
       "revId": "fa8df78e03a5dccb4f9853c46aeb820b4f8495b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aece57e7_53f4d88e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux/file_label_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-09-30T05:18:22Z",
+      "side": 1,
+      "message": "I don\u0027t think so. I/O on special filesystems (such as sysfs and procfs) can return arbitrary errors like EIO. In such case I don\u0027t think this test should fail because it\u0027s not really an SELinux issue. This test\u0027s purpose is to check SELinux contexts, so it should be torelant to other errors.",
+      "parentUuid": "5ab10d64_d3429171",
+      "revId": "fa8df78e03a5dccb4f9853c46aeb820b4f8495b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
