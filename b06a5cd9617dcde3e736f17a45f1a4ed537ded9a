@@ -22,6 +22,30 @@
       "revId": "b06a5cd9617dcde3e736f17a45f1a4ed537ded9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bae3351_8df168ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_media_recorder.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-09-30T14:18:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd0050cf_48a4be52",
+      "range": {
+        "startLine": 26,
+        "startChar": 29,
+        "endLine": 26,
+        "endChar": 30
+      },
+      "revId": "b06a5cd9617dcde3e736f17a45f1a4ed537ded9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
