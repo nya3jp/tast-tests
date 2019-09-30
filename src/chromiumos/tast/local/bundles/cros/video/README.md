@@ -114,8 +114,11 @@ current ones. To run all VD video play tests run:
 The video playback performance tests measure video decoder performance by
 playing a video in the Chrome browser. These tests exercise the full Chrome
 stack, as opposed to the video decoder performance tests that only measure the
-performance of the actual video decoder implementations. Various metrics are
-collected such as CPU usage and the number of dropped frames.
+performance of the actual video decoder implementations. Both software and
+hardware video decoder performance is measured. If hardware decoding is not
+supported for the video stream only software performance will be reported.
+Various metrics are collected such as CPU usage and the number of dropped
+frames.
 
 Tests are available for various codecs and resolutions, both in 30 and 60fps
 variants. To run all tests use:
