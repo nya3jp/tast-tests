@@ -22,6 +22,30 @@
       "revId": "9bf7d0b7969520de7621e44ef25cd8a2a40df95d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0ed7e4d_99498427",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-09-30T01:05:13Z",
+      "side": 1,
+      "message": "As we are discussing on the email thread, currently there\u0027s no way to do this properly.",
+      "parentUuid": "c09ab423_90195d7f",
+      "range": {
+        "startLine": 519,
+        "startChar": 1,
+        "endLine": 519,
+        "endChar": 27
+      },
+      "revId": "9bf7d0b7969520de7621e44ef25cd8a2a40df95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
