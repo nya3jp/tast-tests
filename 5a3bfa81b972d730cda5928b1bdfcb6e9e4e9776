@@ -46,6 +46,30 @@
       "revId": "5a3bfa81b972d730cda5928b1bdfcb6e9e4e9776",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56f4ca6b_e3879201",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peer_conn_h264_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-09-30T20:17:58Z",
+      "side": 1,
+      "message": "I see. I think it makes sense to extend the check for PeerConn, but since\ncheckVideoHealth() is used from other parts, let me splinter it into another\nCL: crrev.com/c/1830087",
+      "parentUuid": "4dd699d6_4ae73875",
+      "range": {
+        "startLine": 42,
+        "startChar": 18,
+        "endLine": 42,
+        "endChar": 29
+      },
+      "revId": "5a3bfa81b972d730cda5928b1bdfcb6e9e4e9776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
