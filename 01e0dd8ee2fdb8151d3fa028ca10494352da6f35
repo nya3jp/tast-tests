@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ce926cf_5114873b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-09-30T18:01:35Z",
+      "side": 1,
+      "message": "@any of the tast people: is there a way to skip a test if the DUT doesn\u0027t meet these conditions (as opposed to failing it)? I\u0027m concerned that this test will show a bunch of failures when (if?) it is run on non-Wilco devices.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 32
+      },
+      "revId": "01e0dd8ee2fdb8151d3fa028ca10494352da6f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1574d437_97d4d4d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-09-30T18:01:35Z",
+      "side": 1,
+      "message": "nit: typo",
+      "range": {
+        "startLine": 36,
+        "startChar": 17,
+        "endLine": 36,
+        "endChar": 31
+      },
+      "revId": "01e0dd8ee2fdb8151d3fa028ca10494352da6f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b5cedc8_0080f4e0",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2019-09-30T18:01:35Z",
+      "side": 1,
+      "message": "nit: can we spell this out for consistency with ServiceProperty?",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 15
+      },
+      "revId": "01e0dd8ee2fdb8151d3fa028ca10494352da6f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
