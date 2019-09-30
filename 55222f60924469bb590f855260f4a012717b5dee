@@ -68,6 +68,30 @@
       "revId": "55222f60924469bb590f855260f4a012717b5dee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3e8d63e_4de74e9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2019-09-30T09:16:19Z",
+      "side": 1,
+      "message": "The reason is described in the comment above. The promise must be created before the test applet tries to copy to the clipboard or we might miss the event, and waiting on it must be done after or we will block forever.",
+      "parentUuid": "91663981_a951979c",
+      "range": {
+        "startLine": 106,
+        "startChar": 33,
+        "endLine": 106,
+        "endChar": 45
+      },
+      "revId": "55222f60924469bb590f855260f4a012717b5dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
