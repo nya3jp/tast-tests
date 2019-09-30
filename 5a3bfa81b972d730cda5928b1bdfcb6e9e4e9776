@@ -22,6 +22,30 @@
       "revId": "5a3bfa81b972d730cda5928b1bdfcb6e9e4e9776",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dd699d6_4ae73875",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peer_conn_h264_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-09-30T05:57:51Z",
+      "side": 1,
+      "message": "I just realized that this is not related to webrtc.PeerConnPerf but webrtc.PeerConn functionality tests, but let me elaborate this.\n\nIn the original versions of camera.GetUserMedia* and webrtc.PeerConn*, we originally checked the followings on each board:\n(1) whether the number of frame is non-zero\n(2) whether ratio of bad frames (black or frozen) is below threshold\n\nHowever, we  realized that (2) was too strict for boards with real webcams and decided to check (2) only when vivid is used (i.e. only on VM boards).\ncf. crbug.com/898745\n\nNow, we changed to use fake webcam and should be free from flakiness caused by real webcams. \nSo, I wonder if we cannot check ratio of black/frozen frames on every board.",
+      "parentUuid": "ced9da9d_18007bb9",
+      "range": {
+        "startLine": 42,
+        "startChar": 18,
+        "endLine": 42,
+        "endChar": 29
+      },
+      "revId": "5a3bfa81b972d730cda5928b1bdfcb6e9e4e9776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
