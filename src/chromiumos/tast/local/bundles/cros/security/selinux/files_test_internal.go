@@ -38,6 +38,12 @@ func FilesTestInternal(ctx context.Context, s *testing.State, testCases []FileTe
 			s.Errorf("Failed to compile expected context %q: %v", testCase.Context, err)
 			continue
 		}
-		CheckContext(ctx, s, testCase.Path, expected, testCase.Recursive, filter, testCase.Log)
+		CheckContext(ctx, s, &CheckContextReq{
+			Path:      testCase.Path,
+			Expected:  expected,
+			Recursive: testCase.Recursive,
+			Filter:    filter,
+			Log:       testCase.Log,
+		})
 	}
 }

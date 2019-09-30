@@ -138,46 +138,64 @@ func isENOTDIR(err error) bool {
 	return false
 }
 
-// CheckContext checks path, optionally recursively, except files where
-// filter returns true, to have selinux label match expected.
-// Errors are passed through s.
-// If recursive is true, this function will be called recursively for every
-// subdirectory within path, unless the filter indicates the subdir should
-// be skipped.
-// If log is true, any check will be logged even it succeeds.
-func CheckContext(ctx context.Context, s *testing.State, path string, expected *regexp.Regexp, recursive bool, filter FileLabelCheckFilter, log bool) {
-	fi, err := os.Lstat(path)
+// CheckContextReq holds parameters given to CheckContext.
+type CheckContextReq struct {
+	// Path is a file path to check.
+	Path string
+
+	// Expected is a regexp that should match with the SELinux context of files.
+	Expected *regexp.Regexp
+
+	// Recursive indicates whether to check child files recursively.
+	Recursive bool
+
+	// Filter is a function to filter files to check. It may not be nil.
+	Filter FileLabelCheckFilter
+
+	// Log indicates whether to log successful checks.
+	Log bool
+}
+
+// CheckContext checks path to have selinux label match expected. Errors are
+// passed through s.
+func CheckContext(ctx context.Context, s *testing.State, req *CheckContextReq) {
+	fi, err := os.Lstat(req.Path)
 	// ENOTDIR is returned to stat /a/b where /a is a file.
 	if err != nil && !(os.IsNotExist(err) || isENOTDIR(err)) {
-		s.Errorf("Failed to stat %v: %v", path, err)
+		s.Errorf("Failed to stat %v: %v", req.Path, err)
 		return
 	}
 
-	skipFile, skipSubdir := filter(path, fi)
+	skipFile, skipSubdir := req.Filter(req.Path, fi)
 
 	if skipFile == Check {
-		if err = checkFileContext(ctx, path, expected, log); err != nil {
-			s.Errorf("Failed file context check for %v: %v", path, err)
+		if err = checkFileContext(ctx, req.Path, req.Expected, req.Log); err != nil {
+			s.Errorf("Failed file context check for %v: %v", req.Path, err)
 		}
 	}
 
-	if recursive && skipSubdir == Check {
+	if req.Recursive && skipSubdir == Check {
 		if fi == nil {
 			// This should only happen that path specified in the test data doesn't exist.
-			s.Errorf("Directory to check doesn't exist: %q", path)
+			s.Errorf("Directory to check doesn't exist: %q", req.Path)
 			return
 		}
 		if !fi.IsDir() {
 			return
 		}
-		fis, err := ioutil.ReadDir(path)
+		fis, err := ioutil.ReadDir(req.Path)
 		if err != nil {
-			s.Errorf("Failed to list directory %s: %s", path, err)
+			s.Errorf("Failed to list directory %s: %s", req.Path, err)
 			return
 		}
 		for _, fi := range fis {
-			subpath := filepath.Join(path, fi.Name())
-			CheckContext(ctx, s, subpath, expected, recursive, filter, log)
+			CheckContext(ctx, s, &CheckContextReq{
+				Path:      filepath.Join(req.Path, fi.Name()),
+				Expected:  req.Expected,
+				Recursive: req.Recursive,
+				Filter:    req.Filter,
+				Log:       req.Log,
+			})
 		}
 	}
 }
