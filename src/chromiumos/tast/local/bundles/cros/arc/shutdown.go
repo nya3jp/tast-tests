@@ -25,7 +25,7 @@ func init() {
 			"arc-eng@google.com",
 			"hidehiko@chromium.org", // Tast port author.
 		},
-		SoftwareDeps: []string{"android", "chrome"},
+		SoftwareDeps: []string{"android_both", "chrome"},
 		Timeout:      4 * time.Minute,
 	})
 }
@@ -63,6 +63,14 @@ func Shutdown(ctx context.Context, s *testing.State) {
 	if err == nil && newPID == oldPID {
 		s.Fatal("ARC was not relaunched. Got PID: ", oldPID)
 	}
+
+	if enabled, err := arc.VMEnabled(); err != nil {
+		s.Fatal("Failed to check whether ARCVM is enabled: ", err)
+	} else if enabled {
+		return
+	}
+
+	// Check mount points for ARC container
 
 	// Make sure that ARC related mount points are released, except
 	// ones for Mini container.
