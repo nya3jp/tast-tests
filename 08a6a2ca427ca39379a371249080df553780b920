@@ -52,6 +52,24 @@
       "revId": "08a6a2ca427ca39379a371249080df553780b920",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab51f43a_18cce8da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-09-30T10:20:41Z",
+      "side": 1,
+      "message": "I also prefer reference-style for consistency with other docs in Tast.",
+      "parentUuid": "0e3845b6_8a1df494",
+      "revId": "08a6a2ca427ca39379a371249080df553780b920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
