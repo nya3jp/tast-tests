@@ -24,11 +24,11 @@ func init() {
 func SELinuxFilesSystemInformational(ctx context.Context, s *testing.State) {
 	// Files to be tested.
 	testArgs := []selinux.FileTestCase{
-		{Path: "/var/log/arc.log", Context: "cros_arc_log", Recursive: false, Filter: nil, Log: true},
-		{Path: "/var/log/boot.log", Context: "cros_boot_log", Recursive: false, Filter: nil, Log: true},
-		{Path: "/var/log/messages", Context: "cros_syslog", Recursive: false, Filter: nil, Log: true},
-		{Path: "/var/log/net.log", Context: "cros_net_log", Recursive: false, Filter: nil, Log: true},
-		{Path: "/var/log/secure", Context: "cros_secure_log", Recursive: false, Filter: nil, Log: true},
+		{Path: "/var/log/arc.log", Context: "cros_arc_log", Log: true},
+		{Path: "/var/log/boot.log", Context: "cros_boot_log", Log: true},
+		{Path: "/var/log/messages", Context: "cros_syslog", Log: true},
+		{Path: "/var/log/net.log", Context: "cros_net_log", Log: true},
+		{Path: "/var/log/secure", Context: "cros_secure_log", Log: true},
 	}
 
 	selinux.FilesTestInternal(ctx, s, testArgs)
