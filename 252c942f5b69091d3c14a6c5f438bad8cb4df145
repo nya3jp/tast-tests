@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ff6b0ae_f702a42b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peer_conn_vp9.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-30T19:01:04Z",
+      "side": 1,
+      "message": "nit: should probably stick a comment on the end here that you\u0027re the test author",
+      "revId": "252c942f5b69091d3c14a6c5f438bad8cb4df145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b89834a9_2446d369",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peer_conn_vp9.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-30T19:01:04Z",
+      "side": 1,
+      "message": "any reason you factor this out here but not in PeerConnVP9Perf?",
+      "revId": "252c942f5b69091d3c14a6c5f438bad8cb4df145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e701fe6f_8ba1a123",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peer_conn_vp9_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-30T19:01:04Z",
+      "side": 1,
+      "message": "nit: add comment that you\u0027re the test author",
+      "revId": "252c942f5b69091d3c14a6c5f438bad8cb4df145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a86c8619_324dce16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peer_conn_vp9_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-09-30T19:01:04Z",
+      "side": 1,
+      "message": "Should just return early if you have a failure here and drop the indentation level below by one.",
+      "revId": "252c942f5b69091d3c14a6c5f438bad8cb4df145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
