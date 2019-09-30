@@ -99,18 +99,18 @@ func (s *frameStats) frozenFramesPercentage() float64 {
 	return percentage(s.FrozenFrames, s.TotalFrames)
 }
 
-// checkVideoHealth checks if video frames were healthy.
-// We basically check whether a video frame was displayed.
-// If the test ran under QEMU, we also check the ratio of broken frames.
-// This is because we are free from hardware flakiness in that case.
-func (s *frameStats) checkVideoHealth() error {
+// checkVideoHealth checks whether a video frame was displayed. If
+// checkForBlackAndFrozenFrames is true, this function will check that there
+// were no frozen or black frames.
+func (s *frameStats) checkVideoHealth(checkForBlackAndFrozenFrames bool) error {
 	if s.TotalFrames == 0 {
 		return errors.New("no frame was displayed")
 	}
 
-	// If the test was running under QEMU, check the percentage of broken frames.
-	if vm.IsRunningOnVM() {
-		// Ratio of broken frames must be less than |threshold| %.
+	// Check the percentage of broken frames. This test might be too strict for
+	// real cameras, but should work fine with the Fake video/audio capture device
+	// that should be used for WebRTC tests.
+	if checkForBlackAndFrozenFrames {
 		const threshold = 1.0
 		blackPercentage := s.blackFramesPercentage()
 		frozenPercentage := s.frozenFramesPercentage()
@@ -194,7 +194,10 @@ func RunGetUserMedia(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 			}
 		}
 
-		if err := result.FrameStats.checkVideoHealth(); err != nil {
+		// Only check the percentage of broken and black frames if we are
+		// running under QEMU, see crbug.com/898745.
+		checkForBlackAndFrozenFrames := vm.IsRunningOnVM()
+		if err := result.FrameStats.checkVideoHealth(checkForBlackAndFrozenFrames); err != nil {
 			s.Errorf("%dx%d was not healthy: %v", result.Width, result.Height, err)
 		}
 	}
@@ -272,7 +275,7 @@ func RunPeerConn(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 		}
 	}
 
-	if err := result.FrameStats.checkVideoHealth(); err != nil {
+	if err := result.FrameStats.checkVideoHealth(true); err != nil {
 		s.Error("Video was not healthy: ", err)
 	}
 
