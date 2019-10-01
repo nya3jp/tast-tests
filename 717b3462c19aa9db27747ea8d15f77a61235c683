@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8bcc072b_6c049b50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-01T08:36:21Z",
+      "side": 1,
+      "message": "nit: CombinedOutput",
+      "range": {
+        "startLine": 79,
+        "startChar": 15,
+        "endLine": 79,
+        "endChar": 21
+      },
+      "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb807d04_bba97cc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-01T08:36:21Z",
+      "side": 1,
+      "message": "(optional): in general, it\u0027s better to avoid negated flag/names.\nHow about checksumTest, and negate the return value?",
+      "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
