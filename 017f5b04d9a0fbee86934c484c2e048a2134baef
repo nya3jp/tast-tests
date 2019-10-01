@@ -16,6 +16,24 @@
       "revId": "017f5b04d9a0fbee86934c484c2e048a2134baef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c47b9663_4d9558fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-01T21:58:44Z",
+      "side": 1,
+      "message": "Originally, I thought that waiting for the activity to be idle after the rotation was Ok.\nBut you comment made me rethink about it, and we shouldn\u0027t wait for the activity to be idle, at least not inside \"rotateDisplaySync\".\n\nAccording to tedlai@ (original author) this test should only capture frames duration rotation.\nSo, we should stop capturing frames as soon as the rotation is finished.\nWhich makes me think that the original autotest test with the sleep(5) might have been generating not so accurate data (speculation from my side, since I\u0027m not sure how Inbox behaved).\n\nWhat I did to fix this, is to wait until no new frames are available. After that, it is safe to reset the stats and start the rotation.",
+      "parentUuid": "21108ce7_40d2fe8a",
+      "revId": "017f5b04d9a0fbee86934c484c2e048a2134baef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
