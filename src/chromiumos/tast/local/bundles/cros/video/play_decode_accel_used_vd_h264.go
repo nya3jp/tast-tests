@@ -24,7 +24,7 @@ func init() {
 		// TODO(b/137916185): Remove dependency on android capability. It's used here
 		// to guarantee import-mode support, which is required by the new VD's.
 		SoftwareDeps: []string{caps.HWDecodeH264, "android", "chrome", "chrome_internal"},
-		Data:         []string{"720_h264.mp4", "video.html"},
+		Data:         []string{"720_h264.mp4", "video.html", play.ChromeMediaInternalsUtilsJSFile},
 		Pre:          pre.ChromeVideoVD(),
 	})
 }
@@ -33,5 +33,5 @@ func init() {
 // media::VideoDecoder was used (see go/vd-migration).
 func PlayDecodeAccelUsedVDH264(ctx context.Context, s *testing.State) {
 	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"720_h264.mp4", play.NormalVideo, play.CheckHistogram)
+		"720_h264.mp4", play.NormalVideo, play.VerifyHWAcceleratorUsed)
 }
