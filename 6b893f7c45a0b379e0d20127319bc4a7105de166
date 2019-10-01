@@ -52,6 +52,24 @@
       "revId": "6b893f7c45a0b379e0d20127319bc4a7105de166",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07952d93_edc8722c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-01T02:00:21Z",
+      "side": 1,
+      "message": "Also, if you have some specific condition to reproduce the issue, could you share it with us?",
+      "parentUuid": "21567df7_0f426d94",
+      "revId": "6b893f7c45a0b379e0d20127319bc4a7105de166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
