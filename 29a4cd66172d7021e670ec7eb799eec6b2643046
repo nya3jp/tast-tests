@@ -22,6 +22,30 @@
       "revId": "29a4cd66172d7021e670ec7eb799eec6b2643046",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05d0afbb_3b6c21ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1111649
+      },
+      "writtenOn": "2019-10-01T20:44:09Z",
+      "side": 1,
+      "message": "Done\n\nThanks again Shuhei.",
+      "parentUuid": "9c18c7d8_3607cc41",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "29a4cd66172d7021e670ec7eb799eec6b2643046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
