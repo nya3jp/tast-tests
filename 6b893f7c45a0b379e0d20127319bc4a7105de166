@@ -34,6 +34,24 @@
       "revId": "6b893f7c45a0b379e0d20127319bc4a7105de166",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21567df7_0f426d94",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-01T01:58:30Z",
+      "side": 1,
+      "message": "There\u0027s no known issue about it.\nJust in case, could you...\n\n- \"repo sync\" to ToT\n- rebase your CL on it\n- build image once on some boards, e.g.\n  - (chroot)% export BOARD\u003dbetty\n  - (chroot)% setup_board --board\u003d$BOARD --force \u0026\u0026 ./build_packages --board\u003d$BOARD --withdev \u0026\u0026 ./build_image --board\u003d$BOARD --noenable_rootfs_verification test\n- Then run \"platform/tast/fast_build.sh -T\" again.\n\nThough, I don\u0027t think this causes the error. If it still reproduces the error, could you file a bug?",
+      "parentUuid": "cdb0aa0d_8af83067",
+      "revId": "6b893f7c45a0b379e0d20127319bc4a7105de166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
