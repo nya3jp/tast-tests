@@ -16,6 +16,24 @@
       "revId": "39413fb7dd0661f9a38ab8c4347149241c57797a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90060d0c_a4334654",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2019-10-01T09:29:15Z",
+      "side": 1,
+      "message": "Is it useful to extract just this polling logic from this function?",
+      "parentUuid": "07f8df6a_6a255f17",
+      "revId": "39413fb7dd0661f9a38ab8c4347149241c57797a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
