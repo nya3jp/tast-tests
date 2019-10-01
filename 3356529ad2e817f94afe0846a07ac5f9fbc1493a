@@ -1,0 +1,250 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edfe4bf9_1480da12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-01T17:53:54Z",
+      "side": 1,
+      "message": "nit/style:\n\nreturn CrasherOptions{\n  CauseCrash: true,\n  Consent: true,\n}",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 9
+      },
+      "revId": "3356529ad2e817f94afe0846a07ac5f9fbc1493a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5b9b72d_1fdbc786",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-01T17:53:54Z",
+      "side": 1,
+      "message": "Could you add TODO to migrate after 1.12 uprev?",
+      "revId": "3356529ad2e817f94afe0846a07ac5f9fbc1493a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d82b774_b486be03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-01T17:53:54Z",
+      "side": 1,
+      "message": "Could you handle error?",
+      "revId": "3356529ad2e817f94afe0846a07ac5f9fbc1493a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2077a3fa_67cd0143",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-01T17:53:54Z",
+      "side": 1,
+      "message": "Should this be reset at the end of this test?",
+      "revId": "3356529ad2e817f94afe0846a07ac5f9fbc1493a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1b91532_cd0ca949",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-01T17:53:54Z",
+      "side": 1,
+      "message": "Could you declare the result at L243 as compound literal?",
+      "revId": "3356529ad2e817f94afe0846a07ac5f9fbc1493a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9367298_b24c1c99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-01T17:53:54Z",
+      "side": 1,
+      "message": "nit/style:\n\nif err :\u003d testing.Poll(..., func(...) error {\n  ...\n}, \u0026testing.PollOptions{Timeout: 10 * time.Second}); err !\u003d nil {\n  ...\n}\n\nis a common pattern.",
+      "range": {
+        "startLine": 212,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 58
+      },
+      "revId": "3356529ad2e817f94afe0846a07ac5f9fbc1493a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b759d9b7_6db3b89f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-01T17:53:54Z",
+      "side": 1,
+      "message": "nit: err is unused hereafter, so you can just overwrite it.",
+      "range": {
+        "startLine": 220,
+        "startChar": 8,
+        "endLine": 220,
+        "endChar": 12
+      },
+      "revId": "3356529ad2e817f94afe0846a07ac5f9fbc1493a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2607abba_744db545",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-01T17:53:54Z",
+      "side": 1,
+      "message": "nit: Wrap",
+      "range": {
+        "startLine": 234,
+        "startChar": 24,
+        "endLine": 234,
+        "endChar": 27
+      },
+      "revId": "3356529ad2e817f94afe0846a07ac5f9fbc1493a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17204140_90b785b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-01T17:53:54Z",
+      "side": 1,
+      "message": "Could you add comment of this calculation?",
+      "range": {
+        "startLine": 238,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 2
+      },
+      "revId": "3356529ad2e817f94afe0846a07ac5f9fbc1493a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d2d9a1e_d74d4361",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-01T17:53:54Z",
+      "side": 1,
+      "message": "Error message should be completed sentences.\nCould you fix? Ditto for below.",
+      "range": {
+        "startLine": 89,
+        "startChar": 11,
+        "endLine": 89,
+        "endChar": 12
+      },
+      "revId": "3356529ad2e817f94afe0846a07ac5f9fbc1493a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaf27b94_bbad2761",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-01T17:53:54Z",
+      "side": 1,
+      "message": "This is set by DefaultCrasherOptions",
+      "revId": "3356529ad2e817f94afe0846a07ac5f9fbc1493a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ab3ceb5_46db10f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-01T17:53:54Z",
+      "side": 1,
+      "message": "style: could you merge those lines?",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 16
+      },
+      "revId": "3356529ad2e817f94afe0846a07ac5f9fbc1493a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
