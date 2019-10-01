@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "f46ef3b7_9fec8475",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-10-01T20:08:34Z",
+      "side": 1,
+      "message": "tast.graphics.gl_bench doesn\u0027t sound right to me as it actually runs glbench. May we change to tast.graphics.glbench?",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 15
+      },
+      "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b4cf936_e231b43f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-10-01T20:08:34Z",
+      "side": 1,
+      "message": "nit. Can you inline this?",
+      "range": {
+        "startLine": 73,
+        "startChar": 46,
+        "endLine": 73,
+        "endChar": 50
+      },
+      "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8bcc072b_6c049b50",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
         "patchSetId": 3
@@ -18,6 +64,29 @@
         "startChar": 15,
         "endLine": 79,
         "endChar": 21
+      },
+      "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c2fdeb3_fd854203",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-10-01T20:08:34Z",
+      "side": 1,
+      "message": "May we have this in separate line for readability? \nfmt.Fprintln(f, \"# ---------------------------------------------------\")\n...",
+      "range": {
+        "startLine": 92,
+        "startChar": 17,
+        "endLine": 97,
+        "endChar": 38
       },
       "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
