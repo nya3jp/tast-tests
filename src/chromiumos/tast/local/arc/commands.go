@@ -9,16 +9,11 @@ import (
 	"strings"
 
 	"chromiumos/tast/local/testexec"
-	"chromiumos/tast/shutil"
 )
 
 // Command runs a command in Android container via adb.
 func (a *ARC) Command(ctx context.Context, name string, arg ...string) *testexec.Cmd {
-	// adb exec-out is like adb shell, but skips CR/LF conversion.
-	// Unfortunately, adb exec-out always passes the command line to /bin/sh, so
-	// we need to escape arguments.
-	shell := "exec " + shutil.EscapeSlice(append([]string{name}, arg...))
-	return adbCommand(ctx, "exec-out", shell)
+	return adbCommand(ctx, append([]string{"shell", name}, arg...)...)
 }
 
 // BootstrapCommand runs a command with android-sh.
