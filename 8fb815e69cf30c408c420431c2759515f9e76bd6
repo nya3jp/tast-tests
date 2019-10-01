@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bcc08d60_7810f763",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-01T15:14:40Z",
+      "side": 1,
+      "message": "VM and Q are both experimental and flaky in terms of test trajectory.\nI do want to focus on the current production, first.",
+      "parentUuid": "78e41d66_5a8c88f8",
+      "range": {
+        "startLine": 22,
+        "startChar": 36,
+        "endLine": 22,
+        "endChar": 43
+      },
+      "revId": "8fb815e69cf30c408c420431c2759515f9e76bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07a4224c_cecce040",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sanity.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "8fb815e69cf30c408c420431c2759515f9e76bd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a0e7bd8_85b3ea9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-01T15:14:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07a4224c_cecce040",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 8
+      },
+      "revId": "8fb815e69cf30c408c420431c2759515f9e76bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
