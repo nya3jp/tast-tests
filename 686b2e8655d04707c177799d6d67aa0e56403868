@@ -46,6 +46,30 @@
       "revId": "686b2e8655d04707c177799d6d67aa0e56403868",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c54315c_0666f817",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-01T07:54:55Z",
+      "side": 1,
+      "message": "After thinking twice, I think we should avoid this workaround even temporarily. TestPlay function has 15 callers today, so this workaround can waste up to 2.5 minutes.\n\nRegarding your workaround: it\u0027s almost the same as retrying the whole test (although it\u0027s quicker). Retrying a test to \"suppress\" flakiness is usually a bad idea: it makes it even more difficult to find the root cause.\n\nAnyway, thanks for filing a bug, let us discuss there.",
+      "parentUuid": "33b77cf3_65cb141e",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 44
+      },
+      "revId": "686b2e8655d04707c177799d6d67aa0e56403868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
