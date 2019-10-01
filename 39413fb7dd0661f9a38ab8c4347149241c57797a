@@ -52,6 +52,24 @@
       "revId": "39413fb7dd0661f9a38ab8c4347149241c57797a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e00bc3fb_cc60bdc6",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-01T17:26:41Z",
+      "side": 1,
+      "message": "+1 for moving it to ash/wm.go\n\nAdditionally I\u0027d add a \"get aura window id for ARC package name\" (or something like that) function in autotest_private_api.cc, and then have a \"ash.Window.WaitForState(id, state)\"",
+      "parentUuid": "e7474206_691bfc6e",
+      "revId": "39413fb7dd0661f9a38ab8c4347149241c57797a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
