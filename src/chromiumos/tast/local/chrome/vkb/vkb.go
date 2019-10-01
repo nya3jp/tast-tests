@@ -11,6 +11,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 )
 
 // ShowVirtualKeyboard forces the virtual keyboard to open.
@@ -167,4 +168,20 @@ func GetSuggestions(ctx context.Context, kconn *chrome.Conn) ([]string, error) {
 	})()
 `, &suggestions)
 	return suggestions, err
+}
+
+// GetBounds returns the global bounds of the virtual keyboard in dp.
+func GetBounds(ctx context.Context, kconn *chrome.Conn) (ash.Rect, error) {
+	var r ash.Rect
+	if err := kconn.EvalPromise(ctx,
+		`new Promise(function(resolve, reject) {
+		  chrome.automation.getDesktop(function(root){
+		    const keyboard = root.find({ attributes: { role: 'keyboard' }});
+		    resolve(keyboard.location);
+		  });
+		});
+		`, &r); err != nil {
+		return ash.Rect{}, err
+	}
+	return r, nil
 }

@@ -1,0 +1,163 @@
+// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package arc
+
+import (
+	"context"
+	"time"
+
+	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/ui"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/vkb"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         SoftInputMode,
+		Desc:         "Checks that softInputMode is properly handled",
+		Contacts:     []string{"tetsui@chromium.org", "arc-framework@google.com"},
+		Attr:         []string{"informational"},
+		SoftwareDeps: []string{"android_p", "chrome"},
+		Data:         []string{"ArcSoftInputModeTest.apk"},
+		Timeout:      4 * time.Minute,
+	})
+}
+
+func SoftInputMode(ctx context.Context, s *testing.State) {
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view", "--enable-virtual-keyboard"))
+	if err != nil {
+		s.Fatal("Failed to connect to Chrome: ", err)
+	}
+	defer cr.Close(ctx)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Creating test API connection failed: ", err)
+	}
+
+	a, err := arc.New(ctx, s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to start ARC: ", err)
+	}
+	defer a.Close()
+
+	d, err := ui.NewDevice(ctx, a)
+	if err != nil {
+		s.Fatal("Failed initializing UI Automator: ", err)
+	}
+	defer d.Close()
+
+	const (
+		apk = "ArcSoftInputModeTest.apk"
+		pkg = "org.chromium.arc.testapp.softinputmode"
+	)
+
+	s.Log("Installing app")
+	if err := a.Install(ctx, s.DataPath(apk)); err != nil {
+		s.Fatal("Failed installing app: ", err)
+	}
+
+	info, err := display.GetInternalInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get internal display: ", err)
+	}
+	var mode *display.DisplayMode
+	for _, m := range info.Modes {
+		if m.IsSelected {
+			mode = m
+			break
+		}
+	}
+	if mode == nil {
+		s.Fatal("Failed to get selected mode")
+	}
+	dsf := mode.DeviceScaleFactor
+
+	runTest := func(activityName string, rotation int) {
+		display.SetDisplayProperties(ctx, tconn, info.ID,
+			display.DisplayProperties{Rotation: &rotation})
+
+		firstAct, err := arc.NewActivity(a, "com.android.settings", ".Settings")
+		if err != nil {
+			s.Fatal("Failed to create a new activity: ", err)
+		}
+		defer firstAct.Close()
+
+		if err := firstAct.Start(ctx); err != nil {
+			s.Fatal("Failed to start the activity: ", err)
+		}
+		defer firstAct.Stop(ctx)
+
+		if err := firstAct.WaitForIdle(ctx, 30*time.Second); err != nil {
+			s.Fatal("Failed to wait for the activity: ", err)
+		}
+
+		const pkg = "org.chromium.arc.testapp.softinputmode"
+		secondAct, err := arc.NewActivity(a, pkg, activityName)
+		if err != nil {
+			s.Fatal("Failed to create a new activity: ", err)
+		}
+		defer secondAct.Close()
+
+		if err := secondAct.Start(ctx); err != nil {
+			s.Fatal("Failed to start the activity: ", err)
+		}
+		defer secondAct.Stop(ctx)
+
+		if err := secondAct.WaitForIdle(ctx, 30*time.Second); err != nil {
+			s.Fatal("Failed to wait for the activity: ", err)
+		}
+
+		if _, err := ash.SetARCAppWindowState(ctx, tconn, secondAct.PackageName(), ash.WMEventSnapRight); err != nil {
+			s.Fatal("Failed to snap app in split view: ", err)
+		}
+
+		if _, err := ash.SetARCAppWindowState(ctx, tconn, firstAct.PackageName(), ash.WMEventSnapLeft); err != nil {
+			s.Fatal("Failed to snap app in split view: ", err)
+		}
+
+		const fieldID = "org.chromium.arc.testapp.softinputmode:id/text"
+		field := d.Object(ui.ID(fieldID))
+		if err := field.WaitForExists(ctx, 30*time.Second); err != nil {
+			s.Fatal("Failed to find field: ", err)
+		}
+		if err := field.Click(ctx); err != nil {
+			s.Fatal("Failed to click the field: ", err)
+		}
+		if err := vkb.WaitUntilShown(ctx, tconn); err != nil {
+			s.Fatal("Failed to wait for the virtual keyboard to show: ", err)
+		}
+		if err := vkb.WaitUntilButtonsRender(ctx, tconn); err != nil {
+			s.Fatal("Failed to wait for the virtual keyboard to render: ", err)
+		}
+		vkbRect, err := vkb.GetBounds(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to get vkb bounds: ", err)
+		}
+		vkbRect = ash.ConvertBoundsFromDpToPx(vkbRect, dsf)
+
+		fieldRect, err := field.GetBounds(ctx)
+		if err != nil {
+			s.Fatal("Failed to get bounds: ", err)
+		}
+
+		vkbBottom := vkbRect.Top + vkbRect.Height
+		fieldBottom := fieldRect.Top + fieldRect.Height
+		if vkbBottom < fieldBottom {
+			s.Fatalf("The virtual keyboard covers the input field: %d < %d",
+				vkbBottom, fieldBottom)
+		}
+	}
+
+	for _, activityName := range []string{".AdjustPanActivity", ".AdjustResizeActivity"} {
+		for _, rotation := range []int{0, 270} {
+			runTest(activityName, rotation)
+		}
+	}
+}
