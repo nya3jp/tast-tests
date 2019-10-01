@@ -336,7 +336,7 @@ func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to Poin
 	return ac.swipe(ctx, src, to, t)
 }
 
-// SetWindowState sets the window state. Note this method is async, so ensure to call WaitForIdle after this.
+// SetWindowState sets the window state. Note this method is async, so ensure to call ash.WaitForArcAppWindowState after this.
 // Supported states: WindowStateNormal, WindowStateMaximized, WindowStateFullscreen, WindowStateMinimized
 func (ac *Activity) SetWindowState(ctx context.Context, state WindowState) error {
 	t, err := ac.getTaskInfo(ctx)
