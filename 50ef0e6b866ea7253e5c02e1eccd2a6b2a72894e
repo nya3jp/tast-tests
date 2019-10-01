@@ -356,6 +356,30 @@
     },
     {
       "key": {
+        "uuid": "027d953e_83146d6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2019-10-01T19:32:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c566ae7d_64d52e94",
+      "range": {
+        "startLine": 268,
+        "startChar": 13,
+        "endLine": 268,
+        "endChar": 29
+      },
+      "revId": "50ef0e6b866ea7253e5c02e1eccd2a6b2a72894e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b8e3595_72d1b1a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
         "patchSetId": 1
@@ -486,6 +510,30 @@
       "side": 1,
       "message": "ping?",
       "parentUuid": "77dd781c_61186c30",
+      "range": {
+        "startLine": 320,
+        "startChar": 5,
+        "endLine": 320,
+        "endChar": 25
+      },
+      "revId": "50ef0e6b866ea7253e5c02e1eccd2a6b2a72894e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c0ac988_958fd54e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2019-10-01T19:32:10Z",
+      "side": 1,
+      "message": "I think ensureSetWindowState is better since it is more clear and distinguishes between ash#SetArcAppWindowState which doesn\u0027t check the final window state.\nHere I am doing to have both setWindowState and check final window state.\n1) check the window state.\n2) if it is not the expected window state, go setWindowState.\n3) check whether the final window state is the requested one.",
+      "parentUuid": "1aa96221_f88f998c",
       "range": {
         "startLine": 320,
         "startChar": 5,
