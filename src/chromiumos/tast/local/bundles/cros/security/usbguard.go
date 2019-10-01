@@ -81,6 +81,23 @@ func USBGuard(ctx context.Context, s *testing.State) {
 		return enabled, err
 	}
 
+	isScreenLocked := func() (bool, error) {
+		const (
+			dbusName   = "org.chromium.SessionManager"
+			dbusPath   = "/org/chromium/SessionManager"
+			dbusMethod = "org.chromium.SessionManagerInterface.IsScreenLocked"
+		)
+
+		_, obj, err := dbusutil.Connect(ctx, dbusName, dbus.ObjectPath(dbusPath))
+		if err != nil {
+			return false, err
+		}
+
+		enabled := false
+		err = obj.CallWithContext(ctx, dbusMethod, 0).Store(&enabled)
+		return enabled, err
+	}
+
 	lockScreen := func() error {
 		const (
 			dbusName   = "org.chromium.SessionManager"
@@ -223,7 +240,7 @@ func USBGuard(ctx context.Context, s *testing.State) {
 		}
 		defer func() {
 			if err := sw.Close(ctx); err != nil {
-				s.Error("Failed to close session manager client: ", err)
+				s.Error("Failed to close session manager ScreenIsLocked watcher: ", err)
 			}
 		}()
 
@@ -254,13 +271,45 @@ func USBGuard(ctx context.Context, s *testing.State) {
 			}
 		}
 
+		// Watch for the ScreenIsUnlocked signal.
+		swUnlocked, err := sm.WatchScreenIsUnlocked(ctx)
+		if err != nil {
+			s.Error("Failed to observe the lock screen being dismissed: ", err)
+			return
+		}
+		defer func() {
+			if err := swUnlocked.Close(ctx); err != nil {
+				s.Error("Failed to close session manager ScreenIsUnlocked watcher: ", err)
+			}
+		}()
+
 		s.Log("Unlocking the screen")
 		if err = unlockScreen(); err != nil {
 			s.Error("Failed to unlock the screen: ", err)
 			return
 		}
+
+		s.Log("Verifying the lock screen is dismissed")
+		select {
+		case <-swUnlocked.Signals:
+			s.Log("Got ScreenIsUnlocked signal")
+		case <-ctx.Done():
+			s.Error("Didn't get ScreenIsUnlocked signal: ", ctx.Err())
+			return
+		}
+
 		if err = expectUsbguardRunning(false /*running*/, false /*onLockScreen*/); err != nil {
 			s.Errorf("Unexpected final job status for %q: %v", usbguardJob, err)
+		}
+
+		locked, err := isScreenLocked()
+		if err != nil {
+			s.Error("Failed to get lock screen state: ", err)
+			return
+		}
+		if locked {
+			s.Error("Got locked; expected unlocked")
+			return
 		}
 	}
 
