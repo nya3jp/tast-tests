@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "365c3ba9_de21d791",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peer_conn_vp9.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-01T00:07:36Z",
+      "side": 1,
+      "message": "Yes, PeerConnVP9Perf is consistent with the\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/webrtc/peer_conn_h264_perf.go?q\u003dRunPeerConn\u0026dr\u003dC\u0026l\u003d48\nand\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/webrtc/peer_conn_vp8_perf.go?dr\u003dC\u0026g\u003d0\u0026l\u003d48.\n\nI\u0027m not sure I understand the recommendation, should I fix all those in this CL \nor in a follow up?",
+      "parentUuid": "9c21ea22_57273413",
+      "revId": "252c942f5b69091d3c14a6c5f438bad8cb4df145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e701fe6f_8ba1a123",
         "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peer_conn_vp9_perf.go",
         "patchSetId": 2
