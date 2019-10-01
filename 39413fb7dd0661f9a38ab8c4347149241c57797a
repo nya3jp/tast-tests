@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07f8df6a_6a255f17",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-10-01T08:37:26Z",
+      "side": 1,
+      "message": "I think we may want to put this polling logic to wm.go?",
+      "revId": "39413fb7dd0661f9a38ab8c4347149241c57797a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
