@@ -32,5 +32,5 @@ func init() {
 // checks if video decode accelerator was used.
 func PlayDecodeAccelUsedVP8(ctx context.Context, s *testing.State) {
 	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"720_vp8.webm", play.NormalVideo, play.CheckHistogram)
+		"720_vp8.webm", play.NormalVideo)
 }

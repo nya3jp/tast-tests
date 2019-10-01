@@ -27,5 +27,5 @@ func init() {
 // PlayVP8 plays 720_vp8.webm with Chrome.
 func PlayVP8(ctx context.Context, s *testing.State) {
 	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"720_vp8.webm", play.NormalVideo, play.NoCheckHistogram)
+		"720_vp8.webm", play.NormalVideo)
 }
