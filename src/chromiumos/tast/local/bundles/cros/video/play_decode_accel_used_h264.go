@@ -6,6 +6,7 @@ package video
 
 import (
 	"context"
+	"io/ioutil"
 
 	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/local/chrome"
@@ -21,7 +22,7 @@ func init() {
 		Contacts: []string{"deanliao@chromium.org", "chromeos-video-eng@google.com"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{caps.HWDecodeH264, "chrome", "chrome_internal"},
-		Data:         []string{"720_h264.mp4", "video.html"},
+		Data:         []string{"720_h264.mp4", "video.html", "chrome_media_internals_utils.js"},
 		Pre:          pre.ChromeVideo(),
 		// Marked informational due to flakiness on ToT.
 		// TODO(crbug.com/1008317): Promote to critical again.
@@ -32,6 +33,12 @@ func init() {
 // PlayDecodeAccelUsedH264 plays 720_h264.mp4 with Chrome and
 // checks if video decode accelerator was used.
 func PlayDecodeAccelUsedH264(ctx context.Context, s *testing.State) {
+	extraChromeMediaInternalsUtilsJS, err :=
+		ioutil.ReadFile(s.DataPath("chrome_media_internals_utils.js"))
+	if err != nil {
+		s.Fatal("Failed to read chrome://media-internals JS: ", err)
+	}
+
 	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"720_h264.mp4", play.NormalVideo, play.CheckHistogram)
+		"720_h264.mp4", play.NormalVideo, string(extraChromeMediaInternalsUtilsJS))
 }

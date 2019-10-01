@@ -6,6 +6,7 @@ package video
 
 import (
 	"context"
+	"io/ioutil"
 
 	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/local/chrome"
@@ -22,11 +23,17 @@ func init() {
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Pre:          pre.ChromeVideoVD(),
-		Data:         []string{"720_h264.mp4", "video.html"},
+		Data:         []string{"720_h264.mp4", "video.html", "chrome_media_internals_utils.js"},
 	})
 }
 
 func PlayVDH264(ctx context.Context, s *testing.State) {
+	extraChromeMediaInternalsUtilsJS, err :=
+		ioutil.ReadFile(s.DataPath("chrome_media_internals_utils.js"))
+	if err != nil {
+		s.Fatal("Failed to read chrome://media-internals JS: ", err)
+	}
+
 	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"720_h264.mp4", play.NormalVideo, play.NoCheckHistogram)
+		"720_h264.mp4", play.NormalVideo, string(extraChromeMediaInternalsUtilsJS))
 }

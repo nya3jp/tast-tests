@@ -6,6 +6,7 @@ package video
 
 import (
 	"context"
+	"io/ioutil"
 
 	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/local/chrome"
@@ -21,7 +22,7 @@ func init() {
 		Contacts:     []string{"akahuang@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWDecodeVP9, "chrome"},
-		Data:         []string{"720_vp9.webm", "video.html"},
+		Data:         []string{"720_vp9.webm", "video.html", "chrome_media_internals_utils.js"},
 		Pre:          pre.ChromeVideoVD(),
 	})
 }
@@ -29,6 +30,12 @@ func init() {
 // PlayDecodeAccelUsedVDVP9 plays 720_vp9.webm with Chrome and checks if a
 // media::VideoDecoder was used (see go/vd-migration).
 func PlayDecodeAccelUsedVDVP9(ctx context.Context, s *testing.State) {
+	extraChromeMediaInternalsUtilsJS, err :=
+		ioutil.ReadFile(s.DataPath("chrome_media_internals_utils.js"))
+	if err != nil {
+		s.Fatal("Failed to read chrome://media-internals JS: ", err)
+	}
+
 	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"720_vp9.webm", play.NormalVideo, play.CheckHistogram)
+		"720_vp9.webm", play.NormalVideo, string(extraChromeMediaInternalsUtilsJS))
 }
