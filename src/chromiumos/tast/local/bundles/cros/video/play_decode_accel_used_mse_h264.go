@@ -39,5 +39,5 @@ func init() {
 // After that, it checks if video decode accelerator was used.
 func PlayDecodeAccelUsedMSEH264(ctx context.Context, s *testing.State) {
 	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"bear-320x240.h264.mpd", play.MSEVideo, play.CheckHistogram)
+		"bear-320x240.h264.mpd", play.MSEVideo)
 }
