@@ -36,7 +36,7 @@ const (
 	// VModuleFlag is passed to Chrome when testing Chrome crashes. It allows us
 	// to debug certain failures, particularly cases where consent didn't get set
 	// up correctly, as well as any problems with the upcoming crashpad changeover.
-	VModuleFlag = "--vmodule=breakpad_linux=1,crashpad=1,crashpad_linux=1"
+	VModuleFlag = "--vmodule=chrome_crash_reporter_client=1,breakpad_linux=1,crashpad=1,crashpad_linux=1"
 )
 
 func cryptohomeCrashDirs(ctx context.Context) ([]string, error) {
