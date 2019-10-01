@@ -232,6 +232,10 @@ func testPIPResize(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, d
 		return errors.Wrap(err, "could not activate PIP menu")
 	}
 
+	if err := act.WaitForIdle(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "could not resume PIP menu actiivty")
+	}
+
 	info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
 	if err != nil {
 		return errors.Wrap(err, "could not get PIP window bounds")
