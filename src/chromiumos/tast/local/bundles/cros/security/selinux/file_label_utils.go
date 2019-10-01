@@ -115,10 +115,6 @@ func InvertFilterSkipFile(filter FileLabelCheckFilter) FileLabelCheckFilter {
 func checkFileContext(ctx context.Context, path string, expected *regexp.Regexp, log bool) error {
 	actual, err := selinux.FileLabel(path)
 	if err != nil {
-		// TODO(fqj): log disappeared file.
-		if os.IsNotExist(err) {
-			return nil
-		}
 		return errors.Wrap(err, "failed to get file context")
 	}
 	if !expected.MatchString(actual) {
@@ -169,34 +165,28 @@ func CheckContext(ctx context.Context, s *testing.State, req *CheckContextReq) {
 	skipFile, skipSubdir := req.Filter(req.Path, fi)
 
 	if skipFile == Check {
-		if err = checkFileContext(ctx, req.Path, req.Expected, req.Log); err != nil {
+		if err := checkFileContext(ctx, req.Path, req.Expected, req.Log); err != nil {
 			s.Errorf("Failed file context check for %v: %v", req.Path, err)
 		}
 	}
 
-	if req.Recursive && skipSubdir == Check {
-		if fi == nil {
-			// This should only happen that path specified in the test data doesn't exist.
-			s.Errorf("Directory to check doesn't exist: %q", req.Path)
-			return
-		}
-		if !fi.IsDir() {
-			return
-		}
-		fis, err := ioutil.ReadDir(req.Path)
-		if err != nil {
-			s.Errorf("Failed to list directory %s: %s", req.Path, err)
-			return
-		}
-		for _, fi := range fis {
-			CheckContext(ctx, s, &CheckContextReq{
-				Path:      filepath.Join(req.Path, fi.Name()),
-				Expected:  req.Expected,
-				Recursive: req.Recursive,
-				Filter:    req.Filter,
-				Log:       req.Log,
-			})
-		}
+	if fi == nil || !fi.IsDir() || !req.Recursive || skipSubdir == Skip {
+		return
+	}
+
+	fis, err := ioutil.ReadDir(req.Path)
+	if err != nil {
+		s.Errorf("Failed to list directory %s: %s", req.Path, err)
+		return
+	}
+	for _, fi := range fis {
+		CheckContext(ctx, s, &CheckContextReq{
+			Path:      filepath.Join(req.Path, fi.Name()),
+			Expected:  req.Expected,
+			Recursive: req.Recursive,
+			Filter:    req.Filter,
+			Log:       req.Log,
+		})
 	}
 }
 
