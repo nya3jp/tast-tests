@@ -30,7 +30,7 @@ func init() {
 			Name:              "stress",
 			Val:               10,
 			ExtraAttr:         []string{"informational"},
-			ExtraSoftwareDeps: []string{"android"},
+			ExtraSoftwareDeps: []string{"android_both"},
 		}},
 	})
 }
