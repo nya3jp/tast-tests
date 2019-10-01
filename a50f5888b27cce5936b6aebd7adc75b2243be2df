@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fe85179_cf5af55f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-01T09:58:31Z",
+      "side": 1,
+      "message": "Because callers can call GetARCAppWindowInfo directly, you don\u0027t need this.\nLet\u0027s avoid too-many aliases of functions to make maintenance easier.",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 1
+      },
+      "revId": "a50f5888b27cce5936b6aebd7adc75b2243be2df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
