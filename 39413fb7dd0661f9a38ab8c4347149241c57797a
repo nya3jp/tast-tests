@@ -34,6 +34,24 @@
       "revId": "39413fb7dd0661f9a38ab8c4347149241c57797a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7474206_691bfc6e",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-10-01T10:09:11Z",
+      "side": 1,
+      "message": "I mean it might better to move this whole function to wm.go and changes it so that it takes package name as a parameter because this function queries into Chrome side and those kinds of functions are defined in wm.go. I think activity.go is used to query into Android side.",
+      "parentUuid": "90060d0c_a4334654",
+      "revId": "39413fb7dd0661f9a38ab8c4347149241c57797a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
