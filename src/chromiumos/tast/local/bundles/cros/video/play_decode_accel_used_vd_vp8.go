@@ -23,7 +23,7 @@ func init() {
 		// TODO(b/137916185): Remove dependency on android capability. It's used here
 		// to guarantee import-mode support, which is required by the new VD's.
 		SoftwareDeps: []string{caps.HWDecodeVP8, "android", "chrome"},
-		Data:         []string{"720_vp8.webm", "video.html"},
+		Data:         []string{"720_vp8.webm", "video.html", play.ChromeMediaInternalsUtilsJSFile},
 		Pre:          pre.ChromeVideoVD(),
 	})
 }
@@ -32,5 +32,5 @@ func init() {
 // media::VideoDecoder was used (see go/vd-migration).
 func PlayDecodeAccelUsedVDVP8(ctx context.Context, s *testing.State) {
 	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"720_vp8.webm", play.NormalVideo, play.CheckHistogram)
+		"720_vp8.webm", play.NormalVideo, play.VerifyHwAcceleratorUsed)
 }

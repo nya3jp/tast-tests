@@ -32,6 +32,6 @@ func init() {
 
 // PlayVP9 plays 720_vp9.webm with Chrome.
 func PlayVP9(ctx context.Context, s *testing.State) {
-	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"720_vp9.webm", play.NormalVideo, play.NoCheckHistogram)
+	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome), "720_vp9.webm",
+		play.NormalVideo, play.NoVerifyHwAcceleratorUsed)
 }

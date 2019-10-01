@@ -34,5 +34,5 @@ func init() {
 // PlayH264 plays 720_h264.mp4 with Chrome.
 func PlayH264(ctx context.Context, s *testing.State) {
 	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"720_h264.mp4", play.NormalVideo, play.NoCheckHistogram)
+		"720_h264.mp4", play.NormalVideo, play.NoVerifyHwAcceleratorUsed)
 }
