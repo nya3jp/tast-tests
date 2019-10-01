@@ -69,6 +69,30 @@
       "revId": "8cb2b684f7592f6cbf24ed5b43c99d87182b8e81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "444e9ef9_ebe99270",
+        "filename": "src/chromiumos/tast/local/webrtc/camera.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-01T23:21:26Z",
+      "side": 1,
+      "message": "Ah, it\u0027s just a suggestion for future improvement. This shouldn\u0027t be in this CL.\nSorry for the confusing comment.",
+      "parentUuid": "1125db6a_c79a3a96",
+      "range": {
+        "startLine": 110,
+        "startChar": 44,
+        "endLine": 110,
+        "endChar": 46
+      },
+      "revId": "8cb2b684f7592f6cbf24ed5b43c99d87182b8e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
