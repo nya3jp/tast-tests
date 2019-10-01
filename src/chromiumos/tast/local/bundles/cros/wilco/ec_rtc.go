@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package kernel
+package wilco
 
 import (
 	"context"
@@ -16,7 +16,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WilcoECRTC,
+		Func: ECRTC,
 		Desc: "Checks that the EC RTC on Wilco devices is readable, writable, and updates itself",
 		Contacts: []string{
 			"ncrews@chromium.org",       // Test author and EC kernel driver author.
@@ -28,12 +28,12 @@ func init() {
 	})
 }
 
-// WilcoECRTC tests the RTC contained within the EC on Wilco devices. As a
+// ECRTC tests the RTC contained within the EC on Wilco devices. As a
 // first check it reads the current time. Then, for a more detailed check,
 // it sets the time to a dummy time, sleeps for a bit, and reads the
 // time again. The RTC better have updated itself. The test attempts to
 // reset the RTC back to time.Now() after failure or completion.
-func WilcoECRTC(ctx context.Context, s *testing.State) {
+func ECRTC(ctx context.Context, s *testing.State) {
 	// If the main body of the test times out, we still want to reserve a few
 	// seconds to allow for our cleanup code to run.
 	cleanupCtx := ctx
