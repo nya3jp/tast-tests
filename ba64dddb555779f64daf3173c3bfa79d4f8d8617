@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d771dca_89cefc72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2019-10-01T21:48:16Z",
+      "side": 1,
+      "message": "IIRC named return is not encouraged in go.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters",
+      "parentUuid": "45fd1731_66a6bc0a",
+      "range": {
+        "startLine": 98,
+        "startChar": 83,
+        "endLine": 98,
+        "endChar": 96
+      },
+      "revId": "ba64dddb555779f64daf3173c3bfa79d4f8d8617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "69fc834b_88c38d76",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 2
