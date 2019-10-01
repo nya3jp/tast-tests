@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d664f0fe_1c8903ef",
+        "filename": "src/chromiumos/tast/local/webrtc/camera.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-01T16:28:48Z",
+      "side": 1,
+      "message": "nope. This function allows 1% of broken frames.\n\nBTW, I\u0027m not sure 1% is a proper threshold. We\u0027ll be able to change this value by checking values at crosbolt after CL:1827677 is landed.",
+      "range": {
+        "startLine": 110,
+        "startChar": 44,
+        "endLine": 110,
+        "endChar": 46
+      },
+      "revId": "8cb2b684f7592f6cbf24ed5b43c99d87182b8e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

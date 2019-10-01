@@ -34,6 +34,24 @@
       "revId": "d100dd5e18ce70e4bf3168967d2bda76916f2622",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c46c927a_26fb5ba7",
+        "filename": "src/chromiumos/tast/local/webrtc/camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-01T16:28:48Z",
+      "side": 1,
+      "message": "\u003e I could counter saying that defining an enum always leaves me wondering at the \ncall site if there are more than 2 values, so forces me to click through and\nsee the values. IOW, booleans can only be true or false, but enums can be \nanything.  \n\nHmm, I\u0027m not sure if it\u0027s a problem. Though enums can be anything we define, we can easily find possible enum values. \n\nWhat I wanted to say was runTest(ctx, CheckA, NotCheckB) would be easier to understand than runTest(ctx, true, false).\n\nBut, this must depend on the situation and this is out of scope of this CL.\nThanks for splitting the function!",
+      "parentUuid": "958f5dc1_6b773bce",
+      "revId": "d100dd5e18ce70e4bf3168967d2bda76916f2622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
