@@ -16,6 +16,24 @@
       "revId": "d100dd5e18ce70e4bf3168967d2bda76916f2622",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "958f5dc1_6b773bce",
+        "filename": "src/chromiumos/tast/local/webrtc/camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-01T15:03:43Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t think passing a Boolean variable as flag is good for the readability, because it\u0027s not clear for callers what the flag is for.\n\u003e In fact, we avoid using Boolean arguments in general. (e.g. Define a new type with meaningful names instead of using Boolean [1].)\n\nI could counter saying that defining an enum always leaves me wondering at the \ncall site if there are more than 2 values, so forces me to click through and\nsee the values. IOW, booleans can only be true or false, but enums can be \nanything.  \n\nAll said, the suggestion of having two functions sounds good :-) done.\n\n\u003e \n\u003e In our case, how about splitting this function to checkTotalFrames() and checkBrokenFrames()?\n\u003e So, we can easily understand what\u0027s tested when we read RunGetUserMedia and RunPeerConn.\n\u003e \n\u003e [1] https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go?rcl\u003dd5a817cd04d842c6f2be2c677dd18d19437e24ce\u0026l\u003d61",
+      "parentUuid": "0e7347e2_7f8aba11",
+      "revId": "d100dd5e18ce70e4bf3168967d2bda76916f2622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
