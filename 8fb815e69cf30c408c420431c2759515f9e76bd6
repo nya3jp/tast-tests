@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78e41d66_5a8c88f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-01T14:00:16Z",
+      "side": 1,
+      "message": "Can we make this \"android_all_both\"?",
+      "range": {
+        "startLine": 22,
+        "startChar": 36,
+        "endLine": 22,
+        "endChar": 43
+      },
+      "revId": "8fb815e69cf30c408c420431c2759515f9e76bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07a4224c_cecce040",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sanity.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-01T14:00:16Z",
+      "side": 1,
+      "message": "nit: no need?\nsame for else-if-section.",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 8
+      },
+      "revId": "8fb815e69cf30c408c420431c2759515f9e76bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
