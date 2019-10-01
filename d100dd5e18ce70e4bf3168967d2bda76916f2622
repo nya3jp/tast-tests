@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e7347e2_7f8aba11",
+        "filename": "src/chromiumos/tast/local/webrtc/camera.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-01T14:10:46Z",
+      "side": 1,
+      "message": "I don\u0027t think passing a Boolean variable as flag is good for the readability, because it\u0027s not clear for callers what the flag is for.\nIn fact, we avoid using Boolean arguments in general. (e.g. Define a new type with meaningful names instead of using Boolean [1].)\n\nIn our case, how about splitting this function to checkTotalFrames() and checkBrokenFrames()?\nSo, we can easily understand what\u0027s tested when we read RunGetUserMedia and RunPeerConn.\n\n[1] https://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go?rcl\u003dd5a817cd04d842c6f2be2c677dd18d19437e24ce\u0026l\u003d61",
+      "revId": "d100dd5e18ce70e4bf3168967d2bda76916f2622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
