@@ -9,8 +9,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"math"
+	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
 )
 
 // WindowStateType represents the different window state type in Ash.
@@ -147,6 +150,21 @@ func GetARCAppWindowState(ctx context.Context, c *chrome.Conn, pkgName string) (
 		return WindowStateNormal, err
 	}
 	return state, nil
+}
+
+// WaitForARCAppWindowState waits for a window state to appear on the Chrome side. If you expect an Activity's window state
+// to change, this method will guarantee that the state change has fully occurred and propagated to the Chrome side.
+func WaitForARCAppWindowState(ctx context.Context, c *chrome.Conn, pkgName string, state WindowStateType) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		actual, err := GetARCAppWindowState(ctx, c, pkgName)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get Ash window state"))
+		}
+		if actual != state {
+			return errors.Errorf("the window isn't state %s yet", state)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 // SwapWindowsInSplitView swaps the positions of snapped windows in split view.
