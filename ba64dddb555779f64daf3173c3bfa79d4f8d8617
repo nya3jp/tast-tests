@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45fd1731_66a6bc0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-01T21:42:23Z",
+      "side": 1,
+      "message": "How about using \"Named return values\" instead of adding adding \"theURL\" for each return statement?",
+      "range": {
+        "startLine": 98,
+        "startChar": 83,
+        "endLine": 98,
+        "endChar": 96
+      },
+      "revId": "ba64dddb555779f64daf3173c3bfa79d4f8d8617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69fc834b_88c38d76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-01T21:42:23Z",
+      "side": 1,
+      "message": "How about using for-of statement to iterate listOfItems?\nhttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of\nhttps://google.github.io/styleguide/jsguide.html#features-for-loops\n\nEven without for-of, \u0027let\u0027 should be added for declaration of \u0027i\u0027.",
+      "revId": "ba64dddb555779f64daf3173c3bfa79d4f8d8617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a4dd925_70ef4c9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-01T21:42:23Z",
+      "side": 1,
+      "message": "Could you have this JS code in a separate file in /bundles/cros/video/data/?\nThen, it\u0027d be easier to maintain the code.\n\nWe already have some JS files under /bundles/cros/camera/data/ for the same reason.",
+      "range": {
+        "startLine": 269,
+        "startChar": 46,
+        "endLine": 315,
+        "endChar": 3
+      },
+      "revId": "ba64dddb555779f64daf3173c3bfa79d4f8d8617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
