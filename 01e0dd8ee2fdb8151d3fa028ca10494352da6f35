@@ -116,6 +116,30 @@
       "revId": "01e0dd8ee2fdb8151d3fa028ca10494352da6f35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "396fad77_ac846455",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-01T09:45:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b5cedc8_0080f4e0",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 15
+      },
+      "revId": "01e0dd8ee2fdb8151d3fa028ca10494352da6f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
