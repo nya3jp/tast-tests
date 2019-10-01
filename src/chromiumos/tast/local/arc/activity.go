@@ -13,6 +13,8 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -336,7 +338,7 @@ func (ac *Activity) ResizeWindow(ctx context.Context, border BorderType, to Poin
 	return ac.swipe(ctx, src, to, t)
 }
 
-// SetWindowState sets the window state. Note this method is async, so ensure to call WaitForIdle after this.
+// SetWindowState sets the window state. Note this method is async, so ensure to call WaitForAshWindowState after this.
 // Supported states: WindowStateNormal, WindowStateMaximized, WindowStateFullscreen, WindowStateMinimized
 func (ac *Activity) SetWindowState(ctx context.Context, state WindowState) error {
 	t, err := ac.getTaskInfo(ctx)
@@ -363,6 +365,26 @@ func (ac *Activity) GetWindowState(ctx context.Context) (WindowState, error) {
 		return WindowStateNormal, errors.Wrap(err, "could not get task info")
 	}
 	return task.windowState, nil
+}
+
+// WaitForAshWindowState waits for a window state to appear on the Chrome side. If you expect an Activity's window state
+// to change, this method will guarantee that the state change has fully occurred and propagated to the Chrome side.
+func (ac *Activity) WaitForAshWindowState(ctx context.Context, tconn *chrome.Conn, state ash.WindowStateType) error {
+	t, err := ac.getTaskInfo(ctx)
+	if err != nil {
+		return errors.Wrap(err, "could not get task info")
+	}
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		actual, err := ash.GetARCAppWindowState(ctx, tconn, t.PkgName)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get Ash window state"))
+		}
+		if actual != state {
+			return errors.Errorf("the window isn't state %s yet", state)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 // WaitForIdle returns whether the activity is idle.
