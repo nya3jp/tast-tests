@@ -8,6 +8,7 @@ package play
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
 	"time"
@@ -18,7 +19,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/constants"
-	"chromiumos/tast/local/media/histogram"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -34,14 +34,19 @@ const (
 	MSEVideo
 )
 
-// HistogramMode represents a mode of TestPlay.
-type HistogramMode int
+// VerifyHWAcceleratorMode represents a mode of TestPlay.
+type VerifyHWAcceleratorMode int
 
 const (
-	// NoCheckHistogram is a mode that plays a video without checking histograms.
-	NoCheckHistogram HistogramMode = iota
-	// CheckHistogram is a mode that checks MediaGVD histograms after playing a video.
-	CheckHistogram
+	// NoVerifyHWAcceleratorUsed is a mode that plays a video without checking usage of the hardware accelerator.
+	NoVerifyHWAcceleratorUsed VerifyHWAcceleratorMode = iota
+	// VerifyHWAcceleratorUsed is a mode that checks a video is played using a hardware accelerator.
+	VerifyHWAcceleratorUsed
+)
+
+const (
+	// ChromeMediaInternalsUtilsJSFile is a JS file containing utils to interact with chrome://media-internals.
+	ChromeMediaInternalsUtilsJSFile = "chrome_media_internals_utils.js"
 )
 
 // MSEDataFiles returns a list of required files that tests that play MSE videos.
@@ -105,12 +110,12 @@ func loadPage(ctx context.Context, cr *chrome.Chrome, url string) (*chrome.Conn,
 
 // playVideo invokes loadVideo(), plays a normal video in video.html, and checks if it has progress.
 // videoFile is the file name which is played there.
-// baseURL is the base URL which serves video playback testing webpage.
-func playVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL string) error {
+// url is the URL of the video playback testing webpage.
+func playVideo(ctx context.Context, cr *chrome.Chrome, videoFile, url string) error {
 	ctx, st := timing.Start(ctx, "play_video")
 	defer st.End()
 
-	conn, err := loadPage(ctx, cr, baseURL+"/video.html")
+	conn, err := loadPage(ctx, cr, url)
 	if err != nil {
 		return err
 	}
@@ -167,12 +172,12 @@ func waitForShakaPlayerTestDone(ctx context.Context, conn *chrome.Conn) error {
 
 // playMSEVideo plays an MSE video stream via Shaka player, and checks its play progress.
 // mpdFile is the name of MPD file for the video stream.
-// baseURL is the base URL which serves shaka player webpage.
-func playMSEVideo(ctx context.Context, cr *chrome.Chrome, mpdFile, baseURL string) error {
+// url is the URL of the shaka player webpage.
+func playMSEVideo(ctx context.Context, cr *chrome.Chrome, mpdFile, url string) error {
 	ctx, st := timing.Start(ctx, "play_mse_video")
 	defer st.End()
 
-	conn, err := loadPage(ctx, cr, baseURL+"/shaka.html")
+	conn, err := loadPage(ctx, cr, url)
 	if err != nil {
 		return err
 	}
@@ -249,49 +254,68 @@ func playSeekVideo(ctx context.Context, cr *chrome.Chrome, videoFile, baseURL st
 	return nil
 }
 
-// snapshotHistogram snapshots histogram of MediaGVDInitStatus and MediaGVDError.
-func snapshotHistogram(ctx context.Context, cr *chrome.Chrome) (initHistogram, errorHistogram *metrics.Histogram, err error) {
+// snapshotErrorHistogram snapshots the histogram of MediaGVDError.
+func snapshotErrorHistogram(ctx context.Context, cr *chrome.Chrome) (errorHistogram *metrics.Histogram, err error) {
 	ctx, st := timing.Start(ctx, "snapshot_histogram")
 	defer st.End()
-	initHistogram, err = metrics.GetHistogram(ctx, cr, constants.MediaGVDInitStatus)
-	if err != nil {
-		return nil, nil, errors.Wrap(err, "failed to get MediaGVDInitStatus")
-	}
 	errorHistogram, err = metrics.GetHistogram(ctx, cr, constants.MediaGVDError)
 	if err != nil {
-		return nil, nil, errors.Wrap(err, "failed to get MediaGVDError")
-
+		return nil, errors.Wrap(err, "failed to get MediaGVDError")
 	}
 	return
 }
 
-// expectHistogram expects video decoder accelerator is used with no error code.
-// Note that it takes at most one second to wait for error histogram.
-func expectHistogram(ctx context.Context, cr *chrome.Chrome, initHistogram, errorHistogram *metrics.Histogram) error {
-	ctx, st := timing.Start(ctx, "expect_histogram")
-	defer st.End()
-	// Check for MediaGVDInitStatus
-
-	if hwAccelUsed, err := histogram.WasHWAccelUsed(ctx, cr, initHistogram, constants.MediaGVDInitStatus, int64(constants.MediaGVDInitSuccess)); err != nil {
-		return errors.Wrap(err, "failed to get MediaGVDInitStatus")
-	} else if !hwAccelUsed {
-		return errors.New("hardware acceleration was not used for playing a video")
-	}
-
-	// Check for MediaGVDError
+// expectErrorHistogram expects video decoder accelerator is used with no error
+// code.
+func expectErrorHistogram(ctx context.Context, cr *chrome.Chrome, errorHistogram *metrics.Histogram) error {
 	if histogramDiff, err := metrics.WaitForHistogramUpdate(ctx, cr, constants.MediaGVDError, errorHistogram, time.Second); err == nil {
 		return errors.Errorf("GPU video decode error occurred while playing a video: %v", histogramDiff)
 	}
 	return nil
 }
 
-// TestPlay checks that the video file named filename can be played back.
+func openChromeMediaInternalsPageAndInjectJS(ctx context.Context, cr *chrome.Chrome, extraJS string) (*chrome.Conn, error) {
+	const url = "chrome://media-internals"
+	conn, err := cr.NewConn(ctx, url)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to open "+url)
+	}
+	err = conn.WaitForExpr(ctx, "document.readyState === 'complete'")
+	if err != nil {
+		conn.Close()
+		return nil, err
+	}
+	if err = conn.Exec(ctx, extraJS); err != nil {
+		conn.Close()
+		return nil, err
+	}
+	return conn, nil
+}
+
+// checkIfURLUsesPlatformVideoDecoder digs into chrome://media-internals to find
+// out if the given theURL is/was played with a platform video decoder (i.e. a
+// hardware accelerated video decoder).
+// chromeMediaInternalsConn must be a connection to a media-internals tab.
+func checkIfURLUsesPlatformVideoDecoder(ctx context.Context, s *testing.State, chromeMediaInternalsConn *chrome.Conn, theURL string) (usesPlatformVideoDecoder bool, err error) {
+	checkForPlatformVideoDecoder :=
+		fmt.Sprintf(`checkChromeMediaInternalsIsPlatformVideoDecoderForURL(%q);`, theURL)
+
+	if err := chromeMediaInternalsConn.EvalPromise(ctx, checkForPlatformVideoDecoder, &usesPlatformVideoDecoder); err != nil {
+		s.Fatal("Checking chrome://media-internals failed: ", err)
+	}
+	if err != nil {
+		return false, err
+	}
+	return usesPlatformVideoDecoder, err
+}
+
+// TestPlay checks that the video file named filename can be played back using
+// a video decode accelerator.
 // videotype represents a type of a given video. If it is MSEVideo, filename is a name
 // of MPD file.
-// If mode is CheckHistogram, this function also checks if hardware accelerator
-// was used properly.
+// If mode is VerifyHWAcceleratorUsed, this function also checks if hardware accelerator was used.
 func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
-	filename string, videotype VideoType, mode HistogramMode) {
+	filename string, videotype VideoType, mode VerifyHWAcceleratorMode) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -303,34 +327,60 @@ func TestPlay(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 	}
 	defer audio.Unmute(ctx)
 
-	// initHistogram and errorHistogram are used in CheckHistogram mode
-	var initHistogram, errorHistogram *metrics.Histogram
+	var chromeMediaInternalsConn *chrome.Conn
+	if mode == VerifyHWAcceleratorUsed {
+		extraChromeMediaInternalsUtilsJS, err :=
+			ioutil.ReadFile(s.DataPath("chrome_media_internals_utils.js"))
+		if err != nil {
+			s.Fatal("Failed to read chrome://media-internals JS: ", err)
+		}
+
+		chromeMediaInternalsConn, err = openChromeMediaInternalsPageAndInjectJS(ctx, cr, string(extraChromeMediaInternalsUtilsJS))
+		if err != nil {
+			s.Fatal("Failed to open chrome://media-internals: ", err)
+		}
+		defer chromeMediaInternalsConn.Close()
+		defer chromeMediaInternalsConn.CloseTarget(ctx)
+	}
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
-	if mode == CheckHistogram {
-		initHistogram, errorHistogram, err = snapshotHistogram(ctx, cr)
+	var errorHistogram *metrics.Histogram
+	if mode == VerifyHWAcceleratorUsed {
+		errorHistogram, err = snapshotErrorHistogram(ctx, cr)
 		if err != nil {
-			s.Fatal("Failed to snapshot histogram: ", err)
+			s.Fatal("Failed to snapshot error histogram: ", err)
 		}
 	}
 
-	// Play a video
 	var playErr error
+	var url string
 	switch videotype {
 	case NormalVideo:
-		playErr = playVideo(ctx, cr, filename, server.URL)
+		url = server.URL + "/video.html"
+		playErr = playVideo(ctx, cr, filename, url)
 	case MSEVideo:
-		playErr = playMSEVideo(ctx, cr, filename, server.URL)
+		url = server.URL + "/shaka.html"
+		playErr = playMSEVideo(ctx, cr, filename, url)
 	}
 	if playErr != nil {
-		s.Fatalf("Failed to play %v: %v", filename, playErr)
+		s.Fatalf("Failed to play %v (%v): %v", filename, url, playErr)
 	}
 
-	if mode == CheckHistogram {
-		if err := expectHistogram(ctx, cr, initHistogram, errorHistogram); err != nil {
-			s.Fatal("Failed to check histogram: ", err)
+	if mode == VerifyHWAcceleratorUsed {
+		usesPlatformVideoDecoder, err := checkIfURLUsesPlatformVideoDecoder(ctx, s, chromeMediaInternalsConn, url)
+		if err != nil {
+			s.Fatal("Failed to parse chrome:media-internals: ", err)
+		}
+		s.Log("usesPlatformVideoDecoder? ", usesPlatformVideoDecoder)
+
+		if !usesPlatformVideoDecoder {
+			s.Fatal("Video Decode Accelerator was not used when it was expected to")
+		}
+
+		if err := expectErrorHistogram(ctx, cr, errorHistogram); err != nil {
+			s.Fatal("Error during histogram check: ", err)
 		}
 	}
 }
