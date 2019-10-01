@@ -144,15 +144,17 @@ func PIP(ctx context.Context, s *testing.State) {
 
 		type testFunc func(context.Context, *chrome.Conn, *arc.Activity, *ui.Device, *display.DisplayMode) error
 		for idx, test := range []struct {
-			name string
-			fn   testFunc
+			name     string
+			fn       testFunc
+			enterPip bool
 		}{
-			{"PIP Move", testPIPMove},
-			{"PIP Resize", testPIPResize},
-			{"PIP Fling", testPIPFling},
-			{"PIP GravityStatusArea", testPIPGravityStatusArea},
-			{"PIP GravityShelfAutoHide", testPIPGravityShelfAutoHide},
-			{"PIP Toggle Tablet mode", testPIPToggleTabletMode},
+			{name: "PIP Move", fn: testPIPMove, enterPip: true},
+			{name: "PIP Resize", fn: testPIPResize, enterPip: true},
+			{name: "PIP Fling", fn: testPIPFling, enterPip: true},
+			{name: "PIP GravityStatusArea", fn: testPIPGravityStatusArea, enterPip: true},
+			{name: "PIP GravityShelfAutoHide", fn: testPIPGravityShelfAutoHide, enterPip: true},
+			{name: "PIP Toggle Tablet mode", fn: testPIPToggleTabletMode, enterPip: true},
+			{name: "PIP AutoPIP Minimize", fn: testPIPAutoPIPMinimize, enterPip: false},
 		} {
 			s.Logf("Running %q", test.name)
 			// Clear task WM state. Windows should be positioned at their default location.
@@ -161,21 +163,13 @@ func PIP(ctx context.Context, s *testing.State) {
 			}
 			must(act.Start(ctx))
 			must(act.WaitForIdle(ctx, 10*time.Second))
-			// Press button that triggers PIP mode in activity.
-			const pipButtonID = pkgName + ":id/enter_pip"
-			must(dev.Object(ui.ID(pipButtonID)).Click(ctx))
 
-			// Everything must be committed at the same time when entering PIP, so just checking window state should work.
-			must(testing.Poll(ctx, func(ctx context.Context) error {
-				actual, err := ash.GetARCAppWindowState(ctx, tconn, pkgName)
-				if err != nil {
-					return testing.PollBreak(errors.Wrap(err, "failed to get Ash window state"))
-				}
-				if actual != ash.WindowStatePIP {
-					return errors.New("the window isn't PIP yet")
-				}
-				return nil
-			}, &testing.PollOptions{Timeout: 10 * time.Second}))
+			if test.enterPip {
+				// Press button that triggers PIP mode in activity.
+				const pipButtonID = pkgName + ":id/enter_pip"
+				must(dev.Object(ui.ID(pipButtonID)).Click(ctx))
+				must(ash.WaitForARCAppWindowState(ctx, tconn, pkgName, ash.WindowStatePIP))
+			}
 
 			if err := test.fn(ctx, tconn, act, dev, dispMode); err != nil {
 				path := fmt.Sprintf("%s/screenshot-pip-failed-test-%d.png", s.OutDir(), idx)
@@ -537,6 +531,20 @@ func testPIPToggleTabletMode(ctx context.Context, tconn *chrome.Conn, act *arc.A
 	if origBounds != bounds {
 		return errors.Errorf("invalid position %+v; want %+v", origBounds, bounds)
 	}
+	return nil
+}
+
+// testPIPAutoPIPMinimize verifies that minimizing an auto-PIP window will trigger PIP.
+// TODO(edcourtney): Also test the multi-activity case.
+func testPIPAutoPIPMinimize(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+	if err := act.SetWindowState(ctx, arc.WindowStateMinimized); err != nil {
+		return errors.Wrap(err, "failed to set window state to minimized")
+	}
+
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, pkgName, ash.WindowStatePIP); err != nil {
+		return errors.Wrap(err, "did not enter PIP")
+	}
+
 	return nil
 }
 
