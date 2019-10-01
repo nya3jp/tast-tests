@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87bbdc39_677225b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-01T18:00:07Z",
+      "side": 1,
+      "message": "huge nit: append \u0027.\u0027",
+      "range": {
+        "startLine": 114,
+        "startChar": 19,
+        "endLine": 114,
+        "endChar": 20
+      },
+      "revId": "3cc72a4c5848cba115a34b87f3dca96c3d500c3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c839cde6_ee07c745",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-01T18:00:07Z",
+      "side": 1,
+      "message": "nit: checks",
+      "range": {
+        "startLine": 352,
+        "startChar": 22,
+        "endLine": 352,
+        "endChar": 29
+      },
+      "revId": "3cc72a4c5848cba115a34b87f3dca96c3d500c3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cc36fb5_5648ade0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-01T18:00:07Z",
+      "side": 1,
+      "message": "apparently \"act\" is not being used",
+      "range": {
+        "startLine": 353,
+        "startChar": 65,
+        "endLine": 353,
+        "endChar": 82
+      },
+      "revId": "3cc72a4c5848cba115a34b87f3dca96c3d500c3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
