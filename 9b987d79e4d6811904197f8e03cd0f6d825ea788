@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dc9d2bab_95b71a57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-01T04:13:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4fb9b16_48042a12",
+      "range": {
+        "startLine": 21,
+        "startChar": 22,
+        "endLine": 21,
+        "endChar": 42
+      },
+      "revId": "9b987d79e4d6811904197f8e03cd0f6d825ea788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7dfa23d6_e8137d13",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "416601d9_f7415ec2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-01T04:13:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dfa23d6_e8137d13",
+      "range": {
+        "startLine": 34,
+        "startChar": 11,
+        "endLine": 34,
+        "endChar": 34
+      },
+      "revId": "9b987d79e4d6811904197f8e03cd0f6d825ea788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1308487c_120333f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2019-09-30T23:31:34Z",
       "side": 1,
       "message": "this is going to fail on older Marvell-WiFi devices, which start up with 3 WiFi interfaces: a P2P-client, an AP, and a managed interface.\n\nYou might want to modify the semantics of WifiInterfaces to claim which types you\u0027re looking for.\n\nOr...Shill would already do this for you :)",
+      "range": {
+        "startLine": 35,
+        "startChar": 11,
+        "endLine": 35,
+        "endChar": 27
+      },
+      "revId": "9b987d79e4d6811904197f8e03cd0f6d825ea788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56d54278_b901158a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-01T04:13:08Z",
+      "side": 1,
+      "message": "Oh, that +1 on shill approach.",
+      "parentUuid": "1308487c_120333f0",
       "range": {
         "startLine": 35,
         "startChar": 11,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "631f7eee_8407a685",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/iw_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-01T04:13:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b184bea3_7c576331",
+      "range": {
+        "startLine": 36,
+        "startChar": 11,
+        "endLine": 36,
+        "endChar": 40
+      },
+      "revId": "9b987d79e4d6811904197f8e03cd0f6d825ea788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0d9fc75_b53bb5bb",
         "filename": "src/chromiumos/tast/local/network/interface.go",
         "patchSetId": 3
@@ -111,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "42f078f0_57bf93c0",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-01T04:13:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0d9fc75_b53bb5bb",
+      "revId": "9b987d79e4d6811904197f8e03cd0f6d825ea788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "400dbb1a_4a0d8ae0",
         "filename": "src/chromiumos/tast/local/network/interface.go",
         "patchSetId": 3
@@ -125,6 +239,24 @@
       "revId": "9b987d79e4d6811904197f8e03cd0f6d825ea788",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de6833ff_aed35676",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-01T04:13:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "400dbb1a_4a0d8ae0",
+      "revId": "9b987d79e4d6811904197f8e03cd0f6d825ea788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "a3ca4c9e_ca89f0b7",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-01T04:13:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d1e6c5a_a8a3d8d6",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 19
+      },
+      "revId": "9b987d79e4d6811904197f8e03cd0f6d825ea788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "665ee578_69384119",
         "filename": "src/chromiumos/tast/local/network/interface.go",
         "patchSetId": 3
@@ -165,6 +321,24 @@
       "revId": "9b987d79e4d6811904197f8e03cd0f6d825ea788",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c324793_bb0f55b0",
+        "filename": "src/chromiumos/tast/local/network/interface.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-01T04:13:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "665ee578_69384119",
+      "revId": "9b987d79e4d6811904197f8e03cd0f6d825ea788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
