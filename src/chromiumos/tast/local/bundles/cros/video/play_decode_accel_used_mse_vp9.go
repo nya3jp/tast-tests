@@ -26,6 +26,7 @@ func init() {
 			"bear-320x240-video-only.vp9.webm",
 			"bear-320x240-audio-only.opus.webm",
 			"bear-320x240.vp9.mpd",
+			play.ChromeMediaInternalsUtilsJSFile,
 		),
 	})
 }
@@ -35,5 +36,5 @@ func init() {
 // After that, it checks if video decode accelerator was used.
 func PlayDecodeAccelUsedMSEVP9(ctx context.Context, s *testing.State) {
 	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"bear-320x240.vp9.mpd", play.MSEVideo, play.CheckHistogram)
+		"bear-320x240.vp9.mpd", play.MSEVideo, play.VerifyHWAcceleratorUsed)
 }
