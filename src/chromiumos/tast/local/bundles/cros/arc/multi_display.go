@@ -7,14 +7,22 @@ package arc
 import (
 	"context"
 	"fmt"
+	"image"
+	"image/color"
+	"image/png"
+	"io/ioutil"
+	"os"
+	"reflect"
 	"regexp"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	arcscreenshot "chromiumos/tast/local/bundles/cros/arc/screenshot"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
@@ -26,6 +34,9 @@ const (
 	// Apk compiled against target SDK 24 (N)
 	wmPkgMD = "org.chromium.arc.testapp.windowmanager24"
 	wmApkMD = "ArcWMTestApp_24.apk"
+
+	settingsPkgMD = "com.android.settings"
+	settingsActMD = ".Settings"
 
 	// Different activities used by the subtests.
 	nonResizeableUnspecifiedActivityMD = "org.chromium.arc.testapp.windowmanager.NonResizeableUnspecifiedActivity"
@@ -62,8 +73,8 @@ func MultiDisplay(ctx context.Context, s *testing.State) {
 	}
 
 	// TODO(ruanc): This part can be removed if hardware dependency for multi-display is available.
-	if len(displayInfos) < 2 {
-		s.Fatalf("Not enough connected displays: got %d; want >= 2", len(displayInfos))
+	if len(displayInfos) != 2 {
+		s.Fatalf("Not enough connected displays: got %d; want 2", len(displayInfos))
 	}
 
 	if err := a.Install(ctx, s.DataPath(wmApkMD)); err != nil {
@@ -93,12 +104,14 @@ func MultiDisplay(ctx context.Context, s *testing.State) {
 		name string
 		fn   testFunc
 	}{
-		// Based on http://b/129564108
+		// Based on http://b/129564108.
 		{"Launch activity on external display", launchActivityOnExternalDisplay},
+		// Based on http://b/110105532.
+		{"Activity is visible when other is maximized", maximizeVisibility},
 	} {
 		s.Logf("Running test %q", test.name)
 
-		// Log test resut
+		// Log test result
 		if err := test.fn(ctx, cr, a); err != nil {
 			for _, info := range displayInfos {
 				path := fmt.Sprintf("%s/screenshot-multi-display-failed-test-%d-%q.png", s.OutDir(), idx, info.ID)
@@ -160,7 +173,122 @@ func launchActivityOnExternalDisplay(ctx context.Context, cr *chrome.Chrome, a *
 	return nil
 }
 
-// ensureWindowOnDisplay checks wheater a window is on a certain display.
+// maximizeVisibility checkes whether the window is visible on one display if another window is maximized on the other display.
+func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+
+	// Start settings activity and set it to normal window state.
+	settingsAct, err := arc.NewActivity(a, settingsPkgMD, settingsActMD)
+	if err != nil {
+		return err
+	}
+	defer settingsAct.Close()
+
+	if err := settingsAct.Start(ctx); err != nil {
+		return err
+	}
+	defer settingsAct.Stop(ctx)
+	if err := settingsAct.WaitForIdle(ctx, 10*time.Second); err != nil {
+		return err
+	}
+
+	if err := ensureSetWindowState(ctx, tconn, settingsPkgMD, settingsAct, ash.WindowStateNormal); err != nil {
+		return err
+	}
+
+	// Start WM activity and set it to normal window state.
+	wmAct, err := arc.NewActivity(a, wmPkgMD, resizeableUnspecifiedActivityMD)
+	if err != nil {
+		return err
+	}
+	defer wmAct.Close()
+
+	if err := wmAct.Start(ctx); err != nil {
+		return err
+	}
+	defer wmAct.Stop(ctx)
+	if err := wmAct.WaitForIdle(ctx, 10*time.Second); err != nil {
+		return err
+	}
+
+	if err := ensureSetWindowState(ctx, tconn, wmPkgMD, wmAct, ash.WindowStateNormal); err != nil {
+		return err
+	}
+
+	// Get external display ID.
+	infos, err := display.GetInfo(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	var extDispID string
+	for _, info := range infos {
+		if !info.IsInternal {
+			extDispID = info.ID
+			break
+		}
+	}
+
+	// Move wm Activity to external display by keyboard shortcut and ensure it is on external display.
+	kb, err := input.Keyboard(ctx)
+	kb.Accel(ctx, "Alt+Search+m")
+
+	if err := wmAct.WaitForIdle(ctx, 10*time.Second); err != nil {
+		return err
+	}
+
+	if err := ensureWindowOnDisplay(ctx, tconn, wmPkgMD, extDispID); err != nil {
+		return err
+	}
+
+	// Preserve WindowInfo.
+	wmWinInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wmPkgMD)
+	if err != nil {
+		return err
+	}
+
+	settingsWinInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, settingsPkgMD)
+	if err != nil {
+		return err
+	}
+
+	for _, test := range []struct {
+		name       string
+		maxAct     *arc.Activity
+		maxPkgName string
+
+		checkAct        *arc.Activity
+		checkPkgName    string
+		checkAppWinInfo ash.ArcAppWindowInfo
+	}{
+		{"Maximize the activity on primary display", settingsAct, settingsPkgMD, wmAct, wmPkgMD, wmWinInfo},
+		{"Maximize the activity on external display", wmAct, wmPkgMD, settingsAct, settingsPkgMD, settingsWinInfo},
+	} {
+		if err := func() error {
+			if err := ensureSetWindowState(ctx, tconn, test.maxPkgName, test.maxAct, ash.WindowStateMaximized); err != nil {
+				return err
+			}
+			if err := ensureWindowStable(ctx, tconn, test.checkAct, test.checkPkgName, test.checkAppWinInfo); err != nil {
+				return err
+			}
+			if err := ensureNoBlackBkg(ctx, cr, tconn); err != nil {
+				return err
+			}
+			// Reset maximized window to normal.
+			return ensureSetWindowState(ctx, tconn, test.maxPkgName, test.maxAct, ash.WindowStateNormal)
+		}(); err != nil {
+			return errors.Wrapf(err, "subtest failed when: %q", test.name)
+		}
+
+	}
+	return nil
+}
+
+// Helper functions.
+
+// ensureWindowOnDisplay checks whether a window is on a certain display.
 func ensureWindowOnDisplay(ctx context.Context, tconn *chrome.Conn, pkgName, dispID string) error {
 	windowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
 	if err != nil {
@@ -192,4 +320,103 @@ func startActivityOnDisplay(ctx context.Context, a *arc.ARC, pkgName, actName, d
 		return errors.New("failed to start activity")
 	}
 	return nil
+}
+
+// ensureSetWindowState checks whether the window is in requested window state. If not, make sure to set window state into the requested window state.
+func ensureSetWindowState(ctx context.Context, c *chrome.Conn, pkgName string, act *arc.Activity, expectedState ash.WindowStateType) error {
+	if state, err := ash.GetARCAppWindowState(ctx, c, pkgName); err != nil {
+		return err
+	} else if state == expectedState {
+		return nil
+	}
+	windowEventMap := map[ash.WindowStateType]ash.WMEventType{
+		ash.WindowStateNormal:     ash.WMEventNormal,
+		ash.WindowStateMaximized:  ash.WMEventMaximize,
+		ash.WindowStateMinimized:  ash.WMEventMinimize,
+		ash.WindowStateFullscreen: ash.WMEventFullscreen,
+	}
+	if wmEvent, ok := windowEventMap[expectedState]; !ok {
+		return errors.Errorf("didn't find the event for window state: %q", expectedState)
+	} else {
+		state, err := ash.SetARCAppWindowState(ctx, c, pkgName, wmEvent)
+		if err != nil {
+			return err
+		}
+		if state != expectedState {
+			return errors.Errorf("unexpected window state: got %s; want %s", state, expectedState)
+		}
+		return nil
+	}
+}
+
+// ensureWindowStable checkes whether the window moves its position.
+func ensureWindowStable(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, pkgName string, expectedWindowInfo ash.ArcAppWindowInfo) error {
+	windowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get window info for window: %q", pkgName)
+	}
+	if !reflect.DeepEqual(windowInfo.Bounds, expectedWindowInfo.Bounds) || windowInfo.DisplayID != expectedWindowInfo.DisplayID {
+		return errors.Errorf("window moves: got bounds %+v (displayID %q); expected bounds %+v (displayID %q)", windowInfo.Bounds, windowInfo.DisplayID, expectedWindowInfo.Bounds, expectedWindowInfo.DisplayID)
+	}
+	return nil
+}
+
+// ensureNoBlackBkg checks whether there is black background.
+func ensureNoBlackBkg(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn) error {
+	infos, err := display.GetInfo(ctx, tconn)
+	if err != nil {
+		return err
+	}
+
+	for _, info := range infos {
+		img, err := grabScreenshotForDisplay(ctx, cr, info.ID)
+		if err != nil {
+			return err
+		}
+		blackPixels := arcscreenshot.CountPixels(img, color.RGBA{0, 0, 0, 255})
+		rect := img.Bounds()
+		totalPixels := (rect.Max.Y - rect.Min.Y) * (rect.Max.X - rect.Min.X)
+		percent := blackPixels * 100 / totalPixels
+		testing.ContextLogf(ctx, "Black pixels = %d / %d (%d%%)", blackPixels, totalPixels, percent)
+
+		// "3 percent" is arbitrary.
+		if percent > 3 {
+			// Save image with black pixels.
+			dir, ok := testing.ContextOutDir(ctx)
+			if !ok {
+				return errors.New("failed to get directory for saving files")
+			}
+			path := fmt.Sprintf("%s/screenshot-failed-%s.png", dir, info.ID)
+			fd, err := os.Create(path)
+			if err != nil {
+				return errors.Wrapf(err, "failed to create screenshot")
+			}
+			defer fd.Close()
+			png.Encode(fd, img)
+
+			testing.ContextLogf(ctx, "Image containing the black pixels: %s", path)
+			return errors.Errorf("test failed: contains %d / %d (%d%%) black pixels", blackPixels, totalPixels, percent)
+		}
+	}
+	return nil
+}
+
+// grabScreenshotForDisplay takes a screenshot for a given displayID and returns an image.Image.
+func grabScreenshotForDisplay(ctx context.Context, cr *chrome.Chrome, displayID string) (image.Image, error) {
+	fd, err := ioutil.TempFile("", "screenshot")
+	if err != nil {
+		return nil, errors.Wrap(err, "error opening screenshot file")
+	}
+	defer os.Remove(fd.Name())
+	defer fd.Close()
+
+	if err := screenshot.CaptureChromeForDisplay(ctx, cr, displayID, fd.Name()); err != nil {
+		return nil, errors.Wrap(err, "failed to capture screenshot")
+	}
+
+	img, _, err := image.Decode(fd)
+	if err != nil {
+		return nil, errors.Wrap(err, "error decoding image")
+	}
+	return img, nil
 }
