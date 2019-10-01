@@ -21,7 +21,14 @@ func init() {
 		Contacts:     []string{"deanliao@chromium.org", "chromeos-video-eng@google.com"},
 		SoftwareDeps: []string{caps.HWDecodeVP9, "chrome"},
 		Pre:          pre.ChromeVideo(),
+<<<<<<< HEAD   (42c9c5 Handles case when MojoConnector is deprecated)
 		Data:         []string{"720_vp9.webm", "video.html"},
+=======
+		Data:         []string{"720_vp9.webm", "video.html", play.ChromeMediaInternalsUtilsJSFile},
+		// Marked informational due to flakiness on ToT.
+		// TODO(crbug.com/1008317): Promote to critical again.
+		Attr: []string{"group:mainline", "informational"},
+>>>>>>> CHANGE (cbe911 tast/video: Use media-internals for hw accelerator usage che)
 	})
 }
 
@@ -29,5 +36,5 @@ func init() {
 // checks if video decode accelerator was used.
 func PlayDecodeAccelUsedVP9(ctx context.Context, s *testing.State) {
 	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"720_vp9.webm", play.NormalVideo, play.CheckHistogram)
+		"720_vp9.webm", play.NormalVideo, play.VerifyHWAcceleratorUsed)
 }

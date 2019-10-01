@@ -21,8 +21,15 @@ func init() {
 		Contacts: []string{"akahuang@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:     []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
+<<<<<<< HEAD   (42c9c5 Handles case when MojoConnector is deprecated)
 		SoftwareDeps: []string{caps.HWDecodeH264, "chrome", "chrome_internal"},
 		Data:         []string{"720_h264.mp4", "video.html"},
+=======
+		// TODO(b/137916185): Remove dependency on android capability. It's used here
+		// to guarantee import-mode support, which is required by the new VD's.
+		SoftwareDeps: []string{caps.HWDecodeH264, "android", "chrome", "chrome_internal"},
+		Data:         []string{"720_h264.mp4", "video.html", play.ChromeMediaInternalsUtilsJSFile},
+>>>>>>> CHANGE (cbe911 tast/video: Use media-internals for hw accelerator usage che)
 		Pre:          pre.ChromeVideoVD(),
 	})
 }
@@ -31,5 +38,5 @@ func init() {
 // media::VideoDecoder was used (see go/vd-migration).
 func PlayDecodeAccelUsedVDH264(ctx context.Context, s *testing.State) {
 	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"720_h264.mp4", play.NormalVideo, play.CheckHistogram)
+		"720_h264.mp4", play.NormalVideo, play.VerifyHWAcceleratorUsed)
 }

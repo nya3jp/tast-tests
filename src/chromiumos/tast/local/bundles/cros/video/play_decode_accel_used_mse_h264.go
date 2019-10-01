@@ -27,6 +27,7 @@ func init() {
 			"bear-320x240-video-only.h264.mp4",
 			"bear-320x240-audio-only.aac.mp4",
 			"bear-320x240.h264.mpd",
+			play.ChromeMediaInternalsUtilsJSFile,
 		),
 	})
 }
@@ -36,5 +37,5 @@ func init() {
 // After that, it checks if video decode accelerator was used.
 func PlayDecodeAccelUsedMSEH264(ctx context.Context, s *testing.State) {
 	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"bear-320x240.h264.mpd", play.MSEVideo, play.CheckHistogram)
+		"bear-320x240.h264.mpd", play.MSEVideo, play.VerifyHWAcceleratorUsed)
 }

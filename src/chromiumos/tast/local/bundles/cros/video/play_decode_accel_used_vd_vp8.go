@@ -16,12 +16,23 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
+<<<<<<< HEAD   (42c9c5 Handles case when MojoConnector is deprecated)
 		Func:         PlayDecodeAccelUsedVDVP8,
 		Desc:         "Verifies that VP8 video decode acceleration works in Chrome when using a media::VideoDecoder",
 		Contacts:     []string{"akahuang@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWDecodeVP8, "chrome"},
 		Data:         []string{"720_vp8.webm", "video.html"},
+=======
+		Func:     PlayDecodeAccelUsedVDVP8,
+		Desc:     "Verifies that VP8 video decode acceleration works in Chrome when using a media::VideoDecoder",
+		Contacts: []string{"akahuang@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
+		Attr:     []string{"group:mainline", "informational"},
+		// TODO(b/137916185): Remove dependency on android capability. It's used here
+		// to guarantee import-mode support, which is required by the new VD's.
+		SoftwareDeps: []string{caps.HWDecodeVP8, "android", "chrome"},
+		Data:         []string{"720_vp8.webm", "video.html", play.ChromeMediaInternalsUtilsJSFile},
+>>>>>>> CHANGE (cbe911 tast/video: Use media-internals for hw accelerator usage che)
 		Pre:          pre.ChromeVideoVD(),
 	})
 }
@@ -30,5 +41,5 @@ func init() {
 // media::VideoDecoder was used (see go/vd-migration).
 func PlayDecodeAccelUsedVDVP8(ctx context.Context, s *testing.State) {
 	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"720_vp8.webm", play.NormalVideo, play.CheckHistogram)
+		"720_vp8.webm", play.NormalVideo, play.VerifyHWAcceleratorUsed)
 }
