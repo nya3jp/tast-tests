@@ -62,13 +62,13 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 	for _, gpuDevice := range gpuDevices {
 		testArgs = append(testArgs,
 			[]arcFileTestCase{
-				{path: filepath.Join(gpuDevice, "config"), context: "gpu_device"},
-				{path: filepath.Join(gpuDevice, "device"), context: "gpu_device"},
-				{path: filepath.Join(gpuDevice, "drm"), context: "gpu_device"},
-				{path: filepath.Join(gpuDevice, "subsystem_device"), context: "gpu_device"},
-				{path: filepath.Join(gpuDevice, "subsystem_vendor"), context: "gpu_device"},
+				{path: filepath.Join(gpuDevice, "config"), context: "gpu_device", filter: selinux.SkipNotExist},
+				{path: filepath.Join(gpuDevice, "device"), context: "gpu_device", filter: selinux.SkipNotExist},
+				{path: filepath.Join(gpuDevice, "drm"), context: "gpu_device", filter: selinux.SkipNotExist},
+				{path: filepath.Join(gpuDevice, "subsystem_device"), context: "gpu_device", filter: selinux.SkipNotExist},
+				{path: filepath.Join(gpuDevice, "subsystem_vendor"), context: "gpu_device", filter: selinux.SkipNotExist},
 				{path: filepath.Join(gpuDevice, "uevent"), context: "gpu_device"},
-				{path: filepath.Join(gpuDevice, "vendor"), context: "gpu_device"},
+				{path: filepath.Join(gpuDevice, "vendor"), context: "gpu_device", filter: selinux.SkipNotExist},
 				{path: gpuDevice, context: "sysfs", recursive: true, filter: selinux.IgnorePaths([]string{
 					filepath.Join(gpuDevice, "config"),
 					filepath.Join(gpuDevice, "device"),
