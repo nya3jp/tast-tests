@@ -29,5 +29,5 @@ func init() {
 
 func PlayVDVP9(ctx context.Context, s *testing.State) {
 	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"720_vp9.webm", play.NormalVideo, play.NoCheckHistogram)
+		"720_vp9.webm", play.NormalVideo, play.NoVerifyHWAcceleratorUsed)
 }
