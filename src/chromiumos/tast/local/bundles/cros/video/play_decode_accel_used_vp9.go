@@ -21,7 +21,7 @@ func init() {
 		Contacts:     []string{"deanliao@chromium.org", "chromeos-video-eng@google.com"},
 		SoftwareDeps: []string{caps.HWDecodeVP9, "chrome"},
 		Pre:          pre.ChromeVideo(),
-		Data:         []string{"720_vp9.webm", "video.html"},
+		Data:         []string{"720_vp9.webm", "video.html", play.ChromeMediaInternalsUtilsJSFile},
 	})
 }
 
@@ -29,5 +29,5 @@ func init() {
 // checks if video decode accelerator was used.
 func PlayDecodeAccelUsedVP9(ctx context.Context, s *testing.State) {
 	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"720_vp9.webm", play.NormalVideo, play.CheckHistogram)
+		"720_vp9.webm", play.NormalVideo, play.VerifyHWAcceleratorUsed)
 }

@@ -21,7 +21,7 @@ func init() {
 		Contacts:     []string{"akahuang@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"informational"},
 		SoftwareDeps: []string{caps.HWDecodeVP9, "chrome"},
-		Data:         []string{"720_vp9.webm", "video.html"},
+		Data:         []string{"720_vp9.webm", "video.html", play.ChromeMediaInternalsUtilsJSFile},
 		Pre:          pre.ChromeVideoVD(),
 	})
 }
@@ -30,5 +30,5 @@ func init() {
 // media::VideoDecoder was used (see go/vd-migration).
 func PlayDecodeAccelUsedVDVP9(ctx context.Context, s *testing.State) {
 	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"720_vp9.webm", play.NormalVideo, play.CheckHistogram)
+		"720_vp9.webm", play.NormalVideo, play.VerifyHWAcceleratorUsed)
 }
