@@ -22,6 +22,30 @@
       "revId": "db2f1d7b48d788d18c397f1253a503c9189f8863",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51c9ccdc_4c1363bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-01T13:09:16Z",
+      "side": 1,
+      "message": "I tried doing that indeed: moving to a Pre system like PeerConn\n\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/webrtc/peer_conn_vp8.go?q\u003dpeerconnvp8+package:%5Echromeos_public$\u0026dr\u003dCSs\u0026l\u003d29\n\nbut it changed significantly the code here, since we wouldn\u0027t be able to \nlaunch Chrome as in l.308, so I decided to take a stab at\nit later on, since this CL is supposed to change things little (except\nfor the ondataavailable size check and the improved error message in\nthe html file).",
+      "parentUuid": "6f49aec8_e5c26a0f",
+      "range": {
+        "startLine": 295,
+        "startChar": 3,
+        "endLine": 295,
+        "endChar": 59
+      },
+      "revId": "db2f1d7b48d788d18c397f1253a503c9189f8863",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
