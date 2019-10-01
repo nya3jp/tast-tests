@@ -18,7 +18,7 @@ func init() {
 		Func:         CrostiniTraceGlxgears,
 		Desc:         "Replay graphics trace in Crostini VM",
 		Contacts:     []string{"chromeos-gfx@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:graphics", "graphics_trace", "graphics_perbuild"},
 		Data:         []string{crostini.ImageArtifact, "crostini_trace_glxgears.trace"},
 		Pre:          crostini.StartedGPUEnabled(),
 		Timeout:      5 * time.Minute,
