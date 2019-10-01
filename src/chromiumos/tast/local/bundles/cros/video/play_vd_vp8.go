@@ -6,6 +6,7 @@ package video
 
 import (
 	"context"
+	"io/ioutil"
 
 	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/local/chrome"
@@ -23,11 +24,17 @@ func init() {
 		// to guarantee import-mode support, which is required by the new VD's.
 		SoftwareDeps: []string{"android", "chrome"},
 		Pre:          pre.ChromeVideoVD(),
-		Data:         []string{"720_vp8.webm", "video.html"},
+		Data:         []string{"720_vp8.webm", "video.html", "chrome_media_internals_utils.js"},
 	})
 }
 
 func PlayVDVP8(ctx context.Context, s *testing.State) {
+	extraChromeMediaInternalsUtilsJS, err :=
+		ioutil.ReadFile(s.DataPath("chrome_media_internals_utils.js"))
+	if err != nil {
+		s.Fatal("Failed to read chrome://media-internals JS: ", err)
+	}
+
 	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"720_vp8.webm", play.NormalVideo, play.NoCheckHistogram)
+		"720_vp8.webm", play.NormalVideo, string(extraChromeMediaInternalsUtilsJS))
 }

@@ -6,6 +6,7 @@ package video
 
 import (
 	"context"
+	"io/ioutil"
 
 	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/local/chrome"
@@ -24,7 +25,7 @@ func init() {
 		// TODO(b/137916185): Remove dependency on android capability. It's used here
 		// to guarantee import-mode support, which is required by the new VD's.
 		SoftwareDeps: []string{caps.HWDecodeH264, "android", "chrome", "chrome_internal"},
-		Data:         []string{"720_h264.mp4", "video.html"},
+		Data:         []string{"720_h264.mp4", "video.html", "chrome_media_internals_utils.js"},
 		Pre:          pre.ChromeVideoVD(),
 	})
 }
@@ -32,6 +33,12 @@ func init() {
 // PlayDecodeAccelUsedVDH264 plays 720_h264.mp4 with Chrome and checks if a
 // media::VideoDecoder was used (see go/vd-migration).
 func PlayDecodeAccelUsedVDH264(ctx context.Context, s *testing.State) {
+	extraChromeMediaInternalsUtilsJS, err :=
+		ioutil.ReadFile(s.DataPath("chrome_media_internals_utils.js"))
+	if err != nil {
+		s.Fatal("Failed to read chrome://media-internals JS: ", err)
+	}
+
 	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"720_h264.mp4", play.NormalVideo, play.CheckHistogram)
+		"720_h264.mp4", play.NormalVideo, string(extraChromeMediaInternalsUtilsJS))
 }
