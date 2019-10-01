@@ -10,8 +10,10 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/testexec"
 )
 
 const (
@@ -109,4 +111,32 @@ func directWriteFile(ctx context.Context, filename string, data []byte) error {
 	cmd := BootstrapCommand(ctx, "/system/bin/sh", "-c", "cat > \"$1\"", "-", filename)
 	cmd.Stdin = bytes.NewBuffer(data)
 	return cmd.Run()
+}
+
+// TempDir creates a temporary directory under ARCTmpDirPath in Android,
+// then returns its absolute path.
+// It is caller's responsibility to remove all the contents in the directory
+// after its use. One of the typical use cases will be as follows:
+//
+//   tmpdir, err := a.MktempDir(ctx)
+//   if err != nil {
+//     ... // error handling
+//   }
+//   defer a.RemoveAll(tmpdir)
+//   ... // Main code using tmpdir.
+func (a *ARC) TempDir(ctx context.Context) (string, error) {
+	out, err := a.Command(ctx, "mktemp", "-d", "-p", ARCTmpDirPath).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", err
+	}
+	return strings.TrimSpace(string(out)), nil
+}
+
+// RemoveAll removes all files and directories under the path in Android.
+// The path must be abspath.
+func (a *ARC) RemoveAll(ctx context.Context, path string) error {
+	if !filepath.IsAbs(path) {
+		return errors.Errorf("path (%q) needs to be absolute path", path)
+	}
+	return a.Command(ctx, "rm", "-rf", path).Run(testexec.DumpLogOnError)
 }
