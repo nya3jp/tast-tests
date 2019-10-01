@@ -92,6 +92,30 @@
       "revId": "55222f60924469bb590f855260f4a012717b5dee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad328fa9_a6ca7101",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copypaste/copy_paste.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-01T07:58:12Z",
+      "side": 1,
+      "message": "My bad, sorry for overlooking the comment :(",
+      "parentUuid": "b3e8d63e_4de74e9c",
+      "range": {
+        "startLine": 106,
+        "startChar": 33,
+        "endLine": 106,
+        "endChar": 45
+      },
+      "revId": "55222f60924469bb590f855260f4a012717b5dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
