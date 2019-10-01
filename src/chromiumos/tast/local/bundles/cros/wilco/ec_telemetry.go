@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package kernel
+package wilco
 
 import (
 	"bytes"
@@ -15,7 +15,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WilcoECTelemetry,
+		Func: ECTelemetry,
 		Desc: "Checks that telemetry requests to the EC (e.g. hardware temperature or fan state info) work on Wilco devices",
 		Contacts: []string{
 			"ncrews@chromium.org",       // Test author and EC kernel driver author.
@@ -27,7 +27,7 @@ func init() {
 	})
 }
 
-// WilcoECTelemetry tests the Wilco EC's ability to respond to telemetry
+// ECTelemetry tests the Wilco EC's ability to respond to telemetry
 // commands. The Wilco EC is able to return telemetry information (such
 // as temperature and fan state) via sysfs: You write a binary command
 // to the sysfs file, the kernel driver performs some filtering on the
@@ -41,7 +41,7 @@ func init() {
 //
 // See https://chromium.googlesource.com/chromiumos/third_party/kernel/+/ea0f6a09a7a993fc7c781fd8ca675b29c42d4719/drivers/platform/chrome/wilco_ec/telemetry.c
 // for the kernel driver.
-func WilcoECTelemetry(ctx context.Context, s *testing.State) {
+func ECTelemetry(ctx context.Context, s *testing.State) {
 	type errMsg string
 
 	// These are intended to be merely human-readable and may not necessarily
