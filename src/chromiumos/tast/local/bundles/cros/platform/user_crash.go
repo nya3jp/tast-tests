@@ -20,8 +20,7 @@ import (
 )
 
 const (
-	leaveCorePath            = "/root/.leave_core"
-	crashReporterEnabledPath = "/var/lib/crash_reporter/crash-handling-enabled"
+	leaveCorePath = "/root/.leave_core"
 )
 
 func init() {
@@ -63,9 +62,9 @@ func testReporterStartup(ctx context.Context, s *testing.State) {
 	// seconds between those steps, and a file from a prior boot will almost
 	// always have been written out much further back in time than our
 	// current boot time.
-	f, err := os.Stat(crashReporterEnabledPath)
+	f, err := os.Stat(crash.CrashReporterEnabledPath)
 	if err != nil || !f.Mode().IsRegular() {
-		s.Error("Crash reporter enabled file flag is not present at ", crashReporterEnabledPath)
+		s.Error("Crash reporter enabled file flag is not present at ", crash.CrashReporterEnabledPath)
 		return
 	}
 	flagTime := time.Since(f.ModTime())
