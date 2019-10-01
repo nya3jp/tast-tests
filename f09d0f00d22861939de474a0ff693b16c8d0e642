@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbe08596_943ca5a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shutdown.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-01T08:01:00Z",
+      "side": 1,
+      "message": "Would you mind inserting a comment describing why we do this?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 49
+      },
+      "revId": "f09d0f00d22861939de474a0ff693b16c8d0e642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8f637ae_daab430e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shutdown.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-01T08:01:00Z",
+      "side": 1,
+      "message": "style: Please make a full sentence by adding a period.\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 73,
+        "startChar": 34,
+        "endLine": 73,
+        "endChar": 40
+      },
+      "revId": "f09d0f00d22861939de474a0ff693b16c8d0e642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
