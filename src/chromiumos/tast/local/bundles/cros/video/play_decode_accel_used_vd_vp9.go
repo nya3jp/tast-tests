@@ -30,5 +30,5 @@ func init() {
 // media::VideoDecoder was used (see go/vd-migration).
 func PlayDecodeAccelUsedVDVP9(ctx context.Context, s *testing.State) {
 	play.TestPlay(ctx, s, s.PreValue().(*chrome.Chrome),
-		"720_vp9.webm", play.NormalVideo, play.CheckHistogram)
+		"720_vp9.webm", play.NormalVideo)
 }
