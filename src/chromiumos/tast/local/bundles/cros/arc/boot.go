@@ -32,6 +32,7 @@ func init() {
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android"},
 		}},
+		Attr: []string{"group:mainline"},
 	})
 }
 
