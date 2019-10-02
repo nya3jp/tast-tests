@@ -25,11 +25,12 @@ func init() {
 		Timeout:      25 * time.Minute,
 		Params: []testing.Param{{
 			Val:               1,
+			ExtraAttr:         []string{"group:mainline"},
 			ExtraSoftwareDeps: []string{"android_all_both"},
 		}, {
 			Name:              "stress",
 			Val:               10,
-			ExtraAttr:         []string{"informational"},
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android"},
 		}},
 	})
