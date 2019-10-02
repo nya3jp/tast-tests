@@ -51,8 +51,8 @@
   },
   {
     "port": 10,
-    "device": "Donette",
-    "maxPwrMW": 15000
+    "device": "Tetra",
+    "maxPwrMW": 18000
   },
   {
     "port": 11,
@@ -61,8 +61,8 @@
   },
   {
     "port": 12,
-    "device": "Wacom 100W",
-    "maxPwrMW": 100000
+    "device": "HooToo Shuttle",
+    "maxPwrMW": 60000
   },
   {
     "port": 13,
@@ -71,22 +71,32 @@
   },
   {
     "port": 14,
-    "device": "GCorp Generic USB-C hub",
-    "maxPwrMW": 60000
-  },
-  {
-    "port": 15,
     "device": "Apple USB-C Digital AV Multiport Adapter (2019)",
     "maxPwrMW": 60000
   },
   {
-    "port": 16,
+    "port": 15,
     "device": "Anker Atom 30W",
     "maxPwrMW": 30000
   },
   {
+    "port": 16,
+    "device": "Wacom 100W",
+    "maxPwrMW": 100000
+  },
+  {
     "port": 17,
-    "device": "HooToo Shuttle",
+    "device": "Belkin 27W",
+    "maxPwrMW": 27000
+  },
+  {
+    "port": 18,
+    "device": "Load",
+    "maxPwrMW": 15000
+  },
+  {
+    "port": 19,
+    "device": "Gcorp Generic USB-C hub",
     "maxPwrMW": 60000
   }
 ]
