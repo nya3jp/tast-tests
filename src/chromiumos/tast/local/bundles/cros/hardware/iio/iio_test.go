@@ -15,18 +15,20 @@ import (
 
 func TestGetSensors(t *testing.T) {
 	defer setupTestFiles(t, map[string]string{
-		"bad:device/name":           "bad",
-		"iio:device0/name":          "cros-ec-accel",
-		"iio:device0/location":      "lid",
-		"iio:device0/id":            "0",
-		"iio:device0/scale":         "0.25",
-		"iio:device0/min_frequency": "100",
-		"iio:device0/max_frequency": "1000",
-		"iio:device1/name":          "cros-ec-gyro",
-		"iio:device1/location":      "base",
-		"iio:device1/id":            "1",
-		"iio:device2/name":          "cros-ec-unknown",
-		"iio:device3/name":          "cros-ec-ring",
+		"bad:device/name":                   "bad",
+		"iio:device0/name":                  "cros-ec-accel",
+		"iio:device0/location":              "lid",
+		"iio:device0/id":                    "0",
+		"iio:device0/scale":                 "0.25",
+		"iio:device0/frequency":             "100",
+		"iio:device0/min_frequency":         "100",
+		"iio:device0/max_frequency":         "1000",
+		"iio:device1/name":                  "cros-ec-gyro",
+		"iio:device1/location":              "base",
+		"iio:device1/id":                    "1",
+		"iio:device1/buffer/hwfifo_timeout": "0",
+		"iio:device2/name":                  "cros-ec-unknown",
+		"iio:device3/name":                  "cros-ec-ring",
 	})()
 
 	sensors, err := GetSensors()
@@ -35,9 +37,9 @@ func TestGetSensors(t *testing.T) {
 	}
 
 	expected := []*Sensor{
-		{Accel, Lid, "iio:device0", 0, .25, 100, 1000},
-		{Gyro, Base, "iio:device1", 1, 0, 0, 0},
-		{Ring, None, "iio:device3", 0, 0, 0, 0},
+		{Accel, Lid, "iio:device0", 0, .25, 100, 1000, true},
+		{Gyro, Base, "iio:device1", 1, 0, 0, 0, false},
+		{Ring, None, "iio:device3", 0, 0, 0, 0, false},
 	}
 
 	if !reflect.DeepEqual(expected, sensors) {
