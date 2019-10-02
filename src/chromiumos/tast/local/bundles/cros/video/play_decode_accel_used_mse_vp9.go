@@ -16,9 +16,14 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         PlayDecodeAccelUsedMSEVP9,
-		Desc:         "Verifies that VP9 video decode acceleration works when MSE is used",
-		Contacts:     []string{"deanliao@chromium.org", "chromeos-video-eng@google.com"},
+		Func: PlayDecodeAccelUsedMSEVP9,
+		Desc: "Verifies that VP9 video decode acceleration works when MSE is used",
+		Contacts: []string{
+			"acourbot@chromium.org",
+			"mcasas@chromium.org",
+			"chromeos-gfx-video@google.com",
+			"chromeos-video-eng@google.com",
+		},
 		SoftwareDeps: []string{caps.HWDecodeVP9, "chrome"},
 		Pre:          pre.ChromeVideo(),
 		Data: append(
