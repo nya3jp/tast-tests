@@ -21,7 +21,7 @@ func init() {
 		Func:         VirtualKeyboardSuggestions,
 		Desc:         "Checks that the virtual keyboard displays suggestions",
 		Contacts:     []string{"essential-inputs-team@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 	})
 }

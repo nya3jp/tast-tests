@@ -22,6 +22,7 @@ func init() {
 			"chromeos-ui@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 

@@ -25,7 +25,7 @@ func init() {
 			"dhaddock@chromium.org",
 			"chromeos-files-syd@google.com",
 		},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
 	})

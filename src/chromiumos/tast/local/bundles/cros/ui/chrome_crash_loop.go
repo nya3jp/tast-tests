@@ -27,7 +27,7 @@ func init() {
 		Func:     ChromeCrashLoop,
 		Desc:     "Checks that if Chrome crashes repeatedly when logged in, it does an immediate crash upload",
 		Contacts: []string{"iby@chromium.org", "cros-monitoring-forensics@google.com"},
-		Attr:     []string{"informational"},
+		Attr:     []string{"group:mainline", "informational"},
 		// chrome_internal because only official builds are even considered to have
 		// metrics consent; see ChromeCrashReporterClient::GetCollectStatsConsent()
 		SoftwareDeps: []string{"chrome", "chrome_internal"},

@@ -18,6 +18,7 @@ func init() {
 		Desc:         "Checks that Chrome writes crash dumps while not logged in; old version that does not invoke crash_reporter",
 		Contacts:     []string{"iby@chromium.org", "chromeos-ui@google.com"},
 		SoftwareDeps: []string{"chrome"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
