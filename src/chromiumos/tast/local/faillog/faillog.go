@@ -22,16 +22,18 @@ import (
 )
 
 // Save saves a faillog unconditionally.
-func Save(ctx context.Context, s *testing.State) {
+func Save(ctx context.Context) {
 	// If test setup failed, then the output dir may not exist.
-	if s.OutDir() == "" {
+	dir, ok := testing.ContextOutDir(ctx)
+	if !ok || dir == "" {
+		testing.ContextLog(ctx, "Failed to get name of directory")
 		return
 	}
-	if _, err := os.Stat(s.OutDir()); err != nil {
+	if _, err := os.Stat(dir); err != nil {
 		return
 	}
 
-	dir := filepath.Join(s.OutDir(), "faillog")
+	dir = filepath.Join(dir, "faillog")
 	if err := os.MkdirAll(dir, 0755); err != nil {
 		return
 	}
