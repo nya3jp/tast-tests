@@ -25,7 +25,7 @@ func init() {
 		},
 		// Marked informational due to flakiness on ToT.
 		// TODO(crbug.com/1004835): Promote to critical again.
-		Attr: []string{"informational"},
+		Attr: []string{"group:mainline", "informational"},
 	})
 }
 
