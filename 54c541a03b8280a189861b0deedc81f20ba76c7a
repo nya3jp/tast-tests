@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bcbc698_ff653a8a",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-10-02T21:05:58Z",
+      "side": 1,
+      "message": "The current zstd can handle zstd, gzip, xz, lzma, and lz4.",
+      "range": {
+        "startLine": 124,
+        "startChar": 6,
+        "endLine": 124,
+        "endChar": 11
+      },
+      "revId": "54c541a03b8280a189861b0deedc81f20ba76c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "797ba0bd_8e6ac5f5",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-10-02T21:05:58Z",
+      "side": 1,
+      "message": "\"zstd\", \"-d\", \"-f\"\n\nI don\u0027t think the decrompressor uses more than one thread, but maybe in a future version. So maybe it won\u0027t hurt to have -T0.",
+      "range": {
+        "startLine": 125,
+        "startChar": 28,
+        "endLine": 125,
+        "endChar": 42
+      },
+      "revId": "54c541a03b8280a189861b0deedc81f20ba76c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
