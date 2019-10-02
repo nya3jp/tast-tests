@@ -16,7 +16,7 @@ func init() {
 		Func:     ArtifactFiles,
 		Desc:     "Demonstrates how to use artifact data files",
 		Contacts: []string{"nya@chromium.org", "tast-users@chromium.org"},
-		Attr:     []string{"informational"},
+		Attr:     []string{"group:mainline", "informational"},
 		Data:     []string{"artifact_files_UPLOADED"},
 	})
 }

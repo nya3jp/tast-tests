@@ -21,6 +21,7 @@ func init() {
 			"data_files_internal.txt",
 			"data_files_external.txt",
 		},
+		Attr: []string{"group:mainline"},
 	})
 }
 

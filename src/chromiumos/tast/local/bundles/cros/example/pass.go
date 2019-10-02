@@ -15,6 +15,7 @@ func init() {
 		Func:     Pass,
 		Desc:     "Always passes",
 		Contacts: []string{"tast-owners@google.com"},
+		Attr:     []string{"group:mainline"},
 	})
 }
 

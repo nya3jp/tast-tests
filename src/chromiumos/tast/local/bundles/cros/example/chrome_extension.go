@@ -23,6 +23,7 @@ func init() {
 		Contacts:     []string{"chromeos-ui@google.com"},
 		Data:         []string{"chrome_extension_manifest.json"},
 		SoftwareDeps: []string{"chrome"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 

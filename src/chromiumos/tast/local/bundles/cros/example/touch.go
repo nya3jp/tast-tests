@@ -20,7 +20,7 @@ func init() {
 		Func:     Touch,
 		Desc:     "Demonstrates injecting touch events",
 		Contacts: []string{"ricardoq@chromium.org", "tast-users@chromium.org"},
-		Attr:     []string{"informational"},
+		Attr:     []string{"group:mainline", "informational"},
 		// Adding 'tablet_mode' since it guarantees touch support.
 		SoftwareDeps: []string{"chrome", "tablet_mode"},
 		Pre:          chrome.LoggedIn(),

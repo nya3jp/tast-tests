@@ -22,7 +22,7 @@ func init() {
 		Func:         Keyboard,
 		Desc:         "Demonstrates injecting keyboard events",
 		Contacts:     []string{"tast-owners@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
 	})
