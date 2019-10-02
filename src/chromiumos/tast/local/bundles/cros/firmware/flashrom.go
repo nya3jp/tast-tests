@@ -24,7 +24,7 @@ func init() {
 			"quasisec@chromium.org",        // CrOS Flashrom Maintainer
 			"chromeos-firmware@google.com", // CrOS Firmware Developers
 		},
-		Attr: []string{"informational"},
+		Attr: []string{"group:mainline", "informational"},
 	})
 }
 

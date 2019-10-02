@@ -26,7 +26,7 @@ func init() {
 		Func:         ALSAConformance,
 		Desc:         "Runs alsa_conformance_test to test basic functions of ALSA",
 		Contacts:     []string{"yuhsuan@chromium.org", "cychiang@chromium.org"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"audio_play", "audio_record"},
 	})
 }

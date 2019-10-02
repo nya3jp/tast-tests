@@ -25,6 +25,7 @@ func init() {
 			"mnissler@chromium.org",
 		},
 		SoftwareDeps: []string{"amd64"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 

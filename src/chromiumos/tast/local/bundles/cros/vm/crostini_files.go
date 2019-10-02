@@ -24,7 +24,7 @@ func init() {
 		Func:         CrostiniFiles,
 		Desc:         "Checks that crostini files integration works including sshfs, shared folders, backup",
 		Contacts:     []string{"joelhockey@chromium.org", "jkardatzke@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      10 * time.Minute,
 		SoftwareDeps: []string{"chrome", "vm_host"},
 	})
