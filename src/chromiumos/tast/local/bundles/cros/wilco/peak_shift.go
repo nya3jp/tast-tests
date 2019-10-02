@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package power
+package wilco
 
 import (
 	"context"
@@ -22,7 +22,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WilcoPeakShift,
+		Func: PeakShift,
 		Desc: "Checks that basic Peak Shift works on Wilco devices",
 		Contacts: []string{
 			"ncrews@chromium.org",       // Test author and EC kernel driver author.
@@ -39,7 +39,7 @@ func init() {
 	})
 }
 
-// WilcoPeakShift performs basic tests of the Peak Shift behavior on Wilco devices.
+// PeakShift performs basic tests of the Peak Shift behavior on Wilco devices.
 // The Peak Shift policy on Wilco devices uses the EC to schedule when the
 // DUT uses AC power. Specifically, by using the policy it is possible to
 // schedule 3 different modes:
@@ -61,7 +61,7 @@ func init() {
 //
 // TODO(b/138940522): Add a more thorough, slower, manual test for
 // all aspects of the policy.
-func WilcoPeakShift(ctx context.Context, s *testing.State) {
+func PeakShift(ctx context.Context, s *testing.State) {
 	// If the main body of the test times out, we still want to reserve a few
 	// seconds to allow for our cleanup code to run.
 	cleanupCtx := ctx

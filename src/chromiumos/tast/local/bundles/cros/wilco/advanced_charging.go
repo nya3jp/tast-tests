@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package power
+package wilco
 
 import (
 	"context"
@@ -22,7 +22,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WilcoAdvancedCharging,
+		Func: AdvancedCharging,
 		Desc: "Checks that basic Advanced Charging works on Wilco devices",
 		Contacts: []string{
 			"ncrews@chromium.org",       // Test author and EC kernel driver author.
@@ -38,7 +38,7 @@ func init() {
 	})
 }
 
-// WilcoAdvancedCharging tests the Advanced Charging policy behavior on Wilco
+// AdvancedCharging tests the Advanced Charging policy behavior on Wilco
 // devices. The Advanced Charging policy on Wilco devices uses the EC to
 // schedule different battery charging policies. When the policy is disabled,
 // the device acts as normal. When the policy is enabled, then
@@ -48,7 +48,7 @@ func init() {
 // charging/no-charging. This serves mostly as an integration test, to check
 // that we can communicate with the EC. See the following link for more info:
 // https://cloud.google.com/docs/chrome-enterprise/policies/?policy=DeviceAdvancedBatteryChargeModeEnabled
-func WilcoAdvancedCharging(ctx context.Context, s *testing.State) {
+func AdvancedCharging(ctx context.Context, s *testing.State) {
 	// If the main body of the test times out, we still want to reserve a few
 	// seconds to allow for our cleanup code to run.
 	cleanupCtx := ctx

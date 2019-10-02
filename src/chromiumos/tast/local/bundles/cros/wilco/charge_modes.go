@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package power
+package wilco
 
 import (
 	"context"
@@ -18,7 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WilcoChargeModes,
+		Func: ChargeModes,
 		Desc: "Checks that the basic Charge Mode works on Wilco devices",
 		Contacts: []string{
 			"ncrews@chromium.org",       // Test author and EC kernel driver author.
@@ -34,12 +34,12 @@ func init() {
 	})
 }
 
-// WilcoChargeModes tests basic control of the various charge modes that the
+// ChargeModes tests basic control of the various charge modes that the
 // Wilco EC provides. Specifically, it checks that we can control whether or
 // not charging happens by adjusting the Charge Stop Theshold while in Custom
 // mode. This test is intended as an integration test and fails to check for
 // the various other aspects of the Charge Mode policy.
-func WilcoChargeModes(ctx context.Context, s *testing.State) {
+func ChargeModes(ctx context.Context, s *testing.State) {
 	const (
 		// Location of sysfs files that control Charge Mode
 		chargerDir = "/sys/class/power_supply/wilco-charger/"
