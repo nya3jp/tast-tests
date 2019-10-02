@@ -16,7 +16,7 @@ func init() {
 		Func:     ReconnectToDUT,
 		Desc:     "Demonstrates connecting to and disconnecting from DUT",
 		Contacts: []string{"tast-owners@google.com"},
-		Attr:     []string{"informational"},
+		Attr:     []string{"group:mainline", "informational"},
 	})
 }
 
