@@ -22,7 +22,7 @@ func init() {
 			"norvez@chromium.org",
 			"chromeos-fingerprint@google.com",
 		},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"biometrics_daemon"},
 	})
 }

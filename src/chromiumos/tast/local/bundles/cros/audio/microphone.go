@@ -26,7 +26,7 @@ func init() {
 			"cychiang@chromium.org", // Media team
 			"hidehiko@chromium.org", // Tast port author
 		},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"audio_record"},
 	})
 }

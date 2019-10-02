@@ -20,6 +20,7 @@ func init() {
 			"nya@chromium.org",      // Tast port author
 		},
 		SoftwareDeps: []string{"audio_play"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
