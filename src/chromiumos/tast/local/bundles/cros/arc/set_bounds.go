@@ -20,7 +20,7 @@ func init() {
 		Func:         SetBounds,
 		Desc:         "Test to handle SetTaskWindowBounds in ARC++ companion library",
 		Contacts:     []string{"hirokisato@google.com", "arc-framework+tast@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Data:         []string{"ArcSetBoundsTest.apk"},
 		Timeout:      4 * time.Minute,

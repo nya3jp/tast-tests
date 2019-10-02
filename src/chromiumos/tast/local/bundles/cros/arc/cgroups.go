@@ -22,7 +22,7 @@ func init() {
 		Func:         Cgroups,
 		Desc:         "Checks that foreground/background status of ARC applications reflects properly in cgroup limits",
 		Contacts:     []string{"sonnyrao@chromium.org", "arc-eng@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android", "android_p", "chrome"},
 		Timeout:      4 * time.Minute,
 	})

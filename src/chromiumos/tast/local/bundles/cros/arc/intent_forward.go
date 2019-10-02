@@ -24,6 +24,7 @@ func init() {
 		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"android", "chrome"},
 		Pre:          arc.Booted(),
+		Attr:         []string{"group:mainline"},
 	})
 }
 

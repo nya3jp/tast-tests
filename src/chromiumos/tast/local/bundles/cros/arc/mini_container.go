@@ -20,7 +20,7 @@ func init() {
 		Func:         MiniContainer,
 		Desc:         "Ensures Android mini container is upgraded after login",
 		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android", "chrome"},
 		Timeout:      4 * time.Minute,
 	})

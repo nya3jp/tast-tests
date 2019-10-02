@@ -26,7 +26,7 @@ func init() {
 		Func:         BlackFlash,
 		Desc:         "Checks that Black flashes don't appear when ARC applications change window states",
 		Contacts:     []string{"takise@chromium.org", "arc-framework+tast@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Pre:          arc.Booted(),
 		Data:         []string{"ArcBlackFlashTest.apk"},

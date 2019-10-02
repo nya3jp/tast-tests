@@ -22,7 +22,7 @@ func init() {
 		Func:         MediaSessionGainTransient,
 		Desc:         "Checks Android transient audio focus requests are forwarded to Chrome",
 		Contacts:     []string{"beccahughes@chromium.org", "arc-eng@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Timeout:      4 * time.Minute,
 		Data: []string{

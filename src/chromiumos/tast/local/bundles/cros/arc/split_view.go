@@ -20,7 +20,7 @@ func init() {
 		Func:         SplitView,
 		Desc:         "Tests split view works properly with ARC apps",
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Timeout:      4 * time.Minute,
 	})

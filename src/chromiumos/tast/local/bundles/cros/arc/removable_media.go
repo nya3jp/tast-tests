@@ -24,6 +24,7 @@ func init() {
 		SoftwareDeps: []string{"android", "chrome"},
 		Data:         []string{"capybara.jpg"},
 		Pre:          arc.Booted(),
+		Attr:         []string{"group:mainline"},
 	})
 }
 
