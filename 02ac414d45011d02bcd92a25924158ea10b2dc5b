@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9ce8d8cc_926a23b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-02T20:06:45Z",
+      "side": 1,
+      "message": "Do we use any of these functions yet? If not, can we hold off on adding them until they are used somewhere?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 18
+      },
+      "revId": "02ac414d45011d02bcd92a25924158ea10b2dc5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26076eee_709478f8",
         "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
         "patchSetId": 6
