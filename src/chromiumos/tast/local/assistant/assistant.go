@@ -76,7 +76,7 @@ func SendTextQuery(ctx context.Context, tconn *chrome.Conn, query string) (Query
 // resolved, it should be used to verify the service status before the real test starts.
 func WaitForServiceReady(ctx context.Context, tconn *chrome.Conn) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		_, err := SendTextQuery(ctx, tconn, "What's the time?")
+		_, err := SendTextQuery(ctx, tconn, "1+1=")
 		return err
 	}, &testing.PollOptions{Timeout: 20 * time.Second})
 }

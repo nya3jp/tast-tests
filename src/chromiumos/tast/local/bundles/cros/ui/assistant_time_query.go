@@ -54,13 +54,9 @@ func AssistantTimeQuery(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Verifying the time query response")
-	// TODO(meilinw): Remove this logic once we check in the new API.
-	fallback := queryStatus.Fallback
+	fallback := queryStatus.QueryResponse.Fallback
 	if fallback == "" {
-		if queryStatus.QueryResponse.Fallback == "" {
-			s.Fatal("No response sent back from Assistant")
-		}
-		fallback = queryStatus.QueryResponse.Fallback
+		s.Fatal("No response sent back from Assistant")
 	}
 
 	now := time.Now().UTC()
