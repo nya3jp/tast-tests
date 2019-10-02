@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aea983ac_e0907d4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-02T09:15:11Z",
+      "side": 1,
+      "message": "Could you wrap the error with some context?",
+      "range": {
+        "startLine": 227,
+        "startChar": 9,
+        "endLine": 227,
+        "endChar": 12
+      },
+      "revId": "a6816fcbcd9769ea22676076769c5bc13d96a86e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
