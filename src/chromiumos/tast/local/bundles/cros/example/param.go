@@ -20,7 +20,7 @@ func init() {
 		Func:     Param,
 		Desc:     "Parameterized test example",
 		Contacts: []string{"tast-owners@google.com"},
-		Attr:     []string{"informational"},
+		Attr:     []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			Name: "dog",
 			Val: animal{
