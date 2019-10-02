@@ -21,7 +21,7 @@ func init() {
 			"hidehiko@chromium.org", // Tast port author.
 		},
 		SoftwareDeps: []string{"mosys"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 	})
 }
 
