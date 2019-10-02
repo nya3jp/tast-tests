@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d497c96_7bdffd2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/high_res_timers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-02T08:05:41Z",
+      "side": 1,
+      "message": "Note: fixed gofmt error.",
+      "range": {
+        "startLine": 24,
+        "startChar": 28,
+        "endLine": 24,
+        "endChar": 50
+      },
+      "revId": "b328961fc7f3c7b5f2ca26174201393eb3c2fd60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
