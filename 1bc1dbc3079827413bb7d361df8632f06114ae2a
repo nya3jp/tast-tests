@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0996a9b_67ceee42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-10-02T13:41:38Z",
+      "side": 1,
+      "message": "Probably we should define this outside of CompanionLibrary().\n\npip.go is a good example of how to write multiple tests in a file.\n\nhttps://chromium.git.corp.google.com/chromiumos/platform/tast-tests/+/d2229f5f9eb5b97e154d778128c7f513c13f9074/src/chromiumos/tast/local/bundles/cros/arc/pip.go#138",
+      "revId": "1bc1dbc3079827413bb7d361df8632f06114ae2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d796574_6ee6c178",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-10-02T13:41:38Z",
+      "side": 1,
+      "message": "I think WaitForIdle doesn\u0027t work in this case.\n\nYou may need to poll and compare the number of lines in the text view.\n\nPlease refer to the following thread for more info:\nhttps://mail.google.com/mail/u/0/?source\u003dsync\u0026tf\u003d1\u0026view\u003dpt\u0026th\u003d16d67827236c8fa1\u0026search\u003dall\u0026msg",
+      "revId": "1bc1dbc3079827413bb7d361df8632f06114ae2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cf589a2_5e0dc058",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-10-02T13:41:38Z",
+      "side": 1,
+      "message": "You can change the variable name to isTabletMode or something and remove the above comment.",
+      "revId": "1bc1dbc3079827413bb7d361df8632f06114ae2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2e42923_435c2e92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-10-02T13:41:38Z",
+      "side": 1,
+      "message": "We can\u0027t use WaitForIdle here either.\nWe need to poll until modeFromAPI equals to test.modeStatus.",
+      "range": {
+        "startLine": 141,
+        "startChar": 3,
+        "endLine": 145,
+        "endChar": 4
+      },
+      "revId": "1bc1dbc3079827413bb7d361df8632f06114ae2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
