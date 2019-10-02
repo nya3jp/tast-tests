@@ -24,7 +24,7 @@ func init() {
 			"chromeos-gfx-video@google.com",
 			"chromeos-video-eng@google.com",
 		},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          pre.ChromeVideoWithFakeWebcam(),
 		Data:         append(webrtc.DataFiles(), "third_party/munge_sdp.js", "loopback_camera.html"),

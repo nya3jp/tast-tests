@@ -22,7 +22,7 @@ func init() {
 			"chromeos-gfx-video@google.com",
 			"chromeos-video-eng@google.com",
 		},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeVP8},
 		Data:         []string{"loopback_media_recorder.html"},
 	})

@@ -26,6 +26,7 @@ func init() {
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{"chrome", "chrome_internal", caps.HWEncodeH264},
 		Data:         []string{"loopback_media_recorder.html"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
