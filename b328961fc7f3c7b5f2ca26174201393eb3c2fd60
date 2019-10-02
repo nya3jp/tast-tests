@@ -22,6 +22,30 @@
       "revId": "b328961fc7f3c7b5f2ca26174201393eb3c2fd60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "465c9ad6_435b40e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/high_res_timers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-02T09:35:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3d497c96_7bdffd2f",
+      "range": {
+        "startLine": 24,
+        "startChar": 28,
+        "endLine": 24,
+        "endChar": 50
+      },
+      "revId": "b328961fc7f3c7b5f2ca26174201393eb3c2fd60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
