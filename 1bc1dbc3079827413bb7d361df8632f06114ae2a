@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0da34f81_048f49b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2019-10-02T14:13:23Z",
+      "side": 1,
+      "message": "I have created a master bug for you (b/141978622) and the bug for this CL (b/141978717). \n\nYou should take some time creating a short doc of why we want to test this, what functionality you want to test (and roughly how) \u0026 file then bugs for each of these sub functions like I did for you in this case (only add a bit more information to the bug + a reference to your doc).\n\nNote: Make sure that... \n- each bug is blocking the master bug\n- each bug is in the \"ChromeOS/ARC++/Framework/Developer Support\" component.",
+      "parentUuid": "a444d6b0_ae658c09",
+      "revId": "1bc1dbc3079827413bb7d361df8632f06114ae2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c0996a9b_67ceee42",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 2
