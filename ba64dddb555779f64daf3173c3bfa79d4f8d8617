@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "bcf4407b_de78fea2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-02T16:03:48Z",
+      "side": 1,
+      "message": "Good to know. Thanks!",
+      "parentUuid": "6d771dca_89cefc72",
+      "range": {
+        "startLine": 98,
+        "startChar": 83,
+        "endLine": 98,
+        "endChar": 96
+      },
+      "revId": "ba64dddb555779f64daf3173c3bfa79d4f8d8617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b89e734_f85ea8f0",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 2
@@ -157,6 +181,30 @@
       "writtenOn": "2019-10-01T21:42:23Z",
       "side": 1,
       "message": "Could you have this JS code in a separate file in /bundles/cros/video/data/?\nThen, it\u0027d be easier to maintain the code.\n\nWe already have some JS files under /bundles/cros/camera/data/ for the same reason.",
+      "range": {
+        "startLine": 269,
+        "startChar": 46,
+        "endLine": 315,
+        "endChar": 3
+      },
+      "revId": "ba64dddb555779f64daf3173c3bfa79d4f8d8617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bb2dfbc_d3833db7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-02T16:03:48Z",
+      "side": 1,
+      "message": "A Tast owner is supportive of having a separate JS file.\ncf. https://groups.google.com/a/chromium.org/d/msg/tast-users/EgY-2I9PBes/qpxDl-HNCgAJ",
+      "parentUuid": "3a4dd925_70ef4c9c",
       "range": {
         "startLine": 269,
         "startChar": 46,
