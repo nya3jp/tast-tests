@@ -49,6 +49,23 @@
     },
     {
       "key": {
+        "uuid": "5b89e734_f85ea8f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-02T00:15:20Z",
+      "side": 1,
+      "message": "Maybe in a separate CL: the function that checks if HW decoder/encoder is used is also used on other tests as well. Consider placing this in tast/local/media\n\nhttps://cs.corp.google.com/search/?q\u003dWasHWAccelUsed+file:%5Esrc/platform/tast-tests/src/chromiumos/tast/local/+package:%5Echromeos_public$\u0026type\u003dcs\n\nAnd we can discard the flaky histogram.WasHWAccelUsed().",
+      "revId": "ba64dddb555779f64daf3173c3bfa79d4f8d8617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "69fc834b_88c38d76",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 2
@@ -60,6 +77,69 @@
       "writtenOn": "2019-10-01T21:42:23Z",
       "side": 1,
       "message": "How about using for-of statement to iterate listOfItems?\nhttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of\nhttps://google.github.io/styleguide/jsguide.html#features-for-loops\n\nEven without for-of, \u0027let\u0027 should be added for declaration of \u0027i\u0027.",
+      "revId": "ba64dddb555779f64daf3173c3bfa79d4f8d8617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "179634cb_b24395c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-02T00:15:20Z",
+      "side": 1,
+      "message": "open the log for the player item.",
+      "range": {
+        "startLine": 289,
+        "startChar": 27,
+        "endLine": 289,
+        "endChar": 45
+      },
+      "revId": "ba64dddb555779f64daf3173c3bfa79d4f8d8617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "261ad856_d28d055c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-02T00:15:20Z",
+      "side": 1,
+      "message": "chrome://media-internals",
+      "range": {
+        "startLine": 296,
+        "startChar": 52,
+        "endLine": 296,
+        "endChar": 74
+      },
+      "revId": "ba64dddb555779f64daf3173c3bfa79d4f8d8617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb5d4f1d_08a10179",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-02T00:15:20Z",
+      "side": 1,
+      "message": "Just curious, are there any difference getting \"is_platform_video_decoder\" from player properties table and from log table?",
       "revId": "ba64dddb555779f64daf3173c3bfa79d4f8d8617",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -82,6 +162,29 @@
         "startChar": 46,
         "endLine": 315,
         "endChar": 3
+      },
+      "revId": "ba64dddb555779f64daf3173c3bfa79d4f8d8617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adb932c6_66396459",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-02T00:15:20Z",
+      "side": 1,
+      "message": "We may consider wrapping the above JS code into a function so that the caller only needs to pass an argument.",
+      "range": {
+        "startLine": 316,
+        "startChar": 2,
+        "endLine": 316,
+        "endChar": 24
       },
       "revId": "ba64dddb555779f64daf3173c3bfa79d4f8d8617",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
