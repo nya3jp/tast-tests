@@ -55,13 +55,9 @@ func testAssistantSimpleMathQuery(ctx context.Context, s *testing.State, tconn *
 	}
 
 	s.Log("Verifying the math query result")
-	// TODO(meilinw): Remove this logic once we check in the new API.
-	fallback := queryStatus.Fallback
+	fallback := queryStatus.QueryResponse.Fallback
 	if fallback == "" {
-		if queryStatus.QueryResponse.Fallback == "" {
-			s.Fatal("No response sent back from Assistant")
-		}
-		fallback = queryStatus.QueryResponse.Fallback
+		s.Fatal("No response sent back from Assistant")
 	}
 
 	// Parses the numeric components from the fallback string.
