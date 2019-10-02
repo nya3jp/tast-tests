@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc3bc3ca_873ad9ee",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-02T02:20:16Z",
+      "side": 1,
+      "message": "nit: How about MeasureUtilization ?\ncpu.MeasureCPUUsage stutters.",
+      "range": {
+        "startLine": 260,
+        "startChar": 5,
+        "endLine": 260,
+        "endChar": 20
+      },
+      "revId": "1b58cbd36979dc5c5f264ce8c4a6344b7e7e4072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94f9843a_7b92d245",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-02T02:20:16Z",
+      "side": 1,
+      "message": "nit: Returns ...",
+      "range": {
+        "startLine": 294,
+        "startChar": 73,
+        "endLine": 295,
+        "endChar": 52
+      },
+      "revId": "1b58cbd36979dc5c5f264ce8c4a6344b7e7e4072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
