@@ -23,7 +23,7 @@ func init() {
 		Contacts: []string{
 			"matthewmwang@chromium.org",
 		},
-		Attr: []string{"informational"},
+		Attr: []string{"group:mainline", "informational"},
 	})
 }
 

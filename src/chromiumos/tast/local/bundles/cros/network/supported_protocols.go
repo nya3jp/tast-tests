@@ -24,6 +24,7 @@ func init() {
 			"kirtika@chromium.org", // Connectivity team
 			"chromeos-kernel-test@google.com",
 		},
+		Attr: []string{"group:mainline"},
 	})
 }
 

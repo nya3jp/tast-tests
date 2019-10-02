@@ -22,7 +22,7 @@ func init() {
 			"chromeos-kernel-wifi@google.com", // WiFi team
 			"oka@chromium.org",                // Tast port author
 		},
-		Attr: []string{"informational"},
+		Attr: []string{"group:mainline", "informational"},
 	})
 }
 
