@@ -19,6 +19,7 @@ func init() {
 		Contacts:     []string{"meilinw@chromium.org", "xiaohuic@chromium.org"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Pre:          chrome.LoggedIn(),
+		Attr:         []string{"group:mainline"},
 	})
 }
 

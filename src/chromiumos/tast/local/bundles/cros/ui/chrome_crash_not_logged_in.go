@@ -23,7 +23,7 @@ func init() {
 		// chrome_internal because only official builds are even considered to have
 		// metrics consent; see ChromeCrashReporterClient::GetCollectStatsConsent()
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{chromecrash.TestCert},
 	})
 }

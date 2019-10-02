@@ -21,7 +21,7 @@ func init() {
 		Contacts: []string{
 			"dhaddock@chromium.org",
 		},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
 	})

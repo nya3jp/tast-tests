@@ -22,7 +22,7 @@ func init() {
 		Func:         AssistantTimeQuery,
 		Desc:         "Tests Assistant time query response",
 		Contacts:     []string{"meilinw@chromium.org", "xiaohuic@chromium.org"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Pre:          chrome.LoggedIn(),
 	})
