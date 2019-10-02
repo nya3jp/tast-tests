@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "3494bfb7_919a3829",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-02T02:29:31Z",
+      "side": 1,
+      "message": "raplExec is a command ...",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 80
+      },
+      "revId": "1b58cbd36979dc5c5f264ce8c4a6344b7e7e4072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da92c959_2a8ed07f",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-02T02:29:31Z",
+      "side": 1,
+      "message": "Don\u0027t you have to return error from MeasureUsage in this case?",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 77
+      },
+      "revId": "1b58cbd36979dc5c5f264ce8c4a6344b7e7e4072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "816292fa_55a79db6",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-02T02:29:31Z",
+      "side": 1,
+      "message": "I think you can update measurements inside goroutines.\nIt might be clearer because you don\u0027t have to define cpuUsage, powerUsage and powerErr on the top of the function.",
+      "range": {
+        "startLine": 244,
+        "startChar": 10,
+        "endLine": 252,
+        "endChar": 2
+      },
+      "revId": "1b58cbd36979dc5c5f264ce8c4a6344b7e7e4072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc3bc3ca_873ad9ee",
         "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
         "patchSetId": 4
