@@ -19,6 +19,7 @@ func init() {
 			"puthik@chromium.org", // Original Autotest author
 			"cros-partner-avl@google.com",
 		},
+		Attr: []string{"group:mainline"},
 	})
 }
 
