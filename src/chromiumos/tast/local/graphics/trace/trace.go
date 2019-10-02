@@ -107,17 +107,30 @@ func runTrace(ctx context.Context, cont *vm.Container, traceFile, traceName stri
 // decompressTrace trys to decompress the trace into trace format if possible. If the input is uncompressed, this function will do nothing.
 // Returns the uncompressed file absolute path.
 func decompressTrace(ctx context.Context, cont *vm.Container, traceFile string) (string, error) {
-	if filepath.Ext(traceFile) != ".bz2" {
-		return traceFile, nil
-	}
+	var decompressFile string
 	testing.ContextLog(ctx, "Decompressing trace file ", traceFile)
-	cmd := cont.Command(ctx, "bunzip2", traceFile)
-	output, err := cmd.CombinedOutput()
-	if err != nil {
-		testing.ContextLog(ctx, string(output))
-		return "", errors.Wrap(err, "failed to decompress bz2")
+	ext := filepath.Ext(traceFile)
+	switch ext {
+	case ".trace":
+		decompressFile = traceFile
+	case ".bz2":
+		output, err := cont.Command(ctx, "bunzip2", traceFile).CombinedOutput()
+		if err != nil {
+			testing.ContextLog(ctx, string(output))
+			return "", errors.Wrap(err, "failed to decompress bz2")
+		}
+		decompressFile = strings.TrimSuffix(traceFile, filepath.Ext(traceFile))
+	case ".zst", ".xz":
+		output, err := cont.Command(ctx, "zstd", "-d", "-f", "--rm", "-T0", traceFile).CombinedOutput()
+		if err != nil {
+			testing.ContextLog(ctx, string(output))
+			return "", errors.Wrap(err, "failed to decompress zst")
+		}
+		decompressFile = strings.TrimSuffix(traceFile, filepath.Ext(traceFile))
+	default:
+		return "", errors.Errorf("unknown trace extension: %s", ext)
 	}
-	return strings.TrimSuffix(traceFile, filepath.Ext(traceFile)), nil
+	return decompressFile, nil
 }
 
 // parseResult parses the output of apitrace and return the perfs.
