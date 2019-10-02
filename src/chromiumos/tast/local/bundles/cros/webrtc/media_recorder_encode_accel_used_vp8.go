@@ -22,7 +22,7 @@ func init() {
 			"wtlee@chromium.org", // Camera team
 			"chromeos-camera-eng@google.com",
 		},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeVP8},
 		Data:         []string{"loopback_media_recorder.html"},
 	})
