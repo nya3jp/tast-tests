@@ -46,6 +46,30 @@
       "revId": "1df5ce6f0b2063b91d22e31f797c6d81735a96c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "081be6a9_7fa55a60",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-02T12:23:31Z",
+      "side": 1,
+      "message": "That\u0027s true, I added only one CL. Thanks!",
+      "parentUuid": "7f60ad21_5e38a14d",
+      "range": {
+        "startLine": 11,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 13
+      },
+      "revId": "1df5ce6f0b2063b91d22e31f797c6d81735a96c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
