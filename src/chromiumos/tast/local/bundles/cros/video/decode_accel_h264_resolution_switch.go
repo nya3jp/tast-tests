@@ -17,7 +17,7 @@ func init() {
 		Func:         DecodeAccelH264ResolutionSwitch,
 		Desc:         "Runs Chrome video_decode_accelerator_tests with an H.264 resolution switching video",
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.HWDecodeH264},
 		Data:         []string{"switch_1080p_720p_240frames.h264", "switch_1080p_720p_240frames.h264.json"},
 	})

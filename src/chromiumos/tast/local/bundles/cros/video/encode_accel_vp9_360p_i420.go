@@ -19,7 +19,7 @@ func init() {
 		Func:         EncodeAccelVP9360PI420,
 		Desc:         "Runs Chrome video_encode_accelerator_unittest from 360p I420 raw frames to VP9 stream",
 		Contacts:     []string{"akahuang@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeVP9},
 		Data:         []string{encode.Tulip360P.Name},
 		Timeout:      4 * time.Minute,

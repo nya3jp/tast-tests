@@ -18,7 +18,7 @@ func init() {
 		Func:     SeekVDSwitchH264,
 		Desc:     "Verifies that H.264 resolution-changing seek works in Chrome when using a media::VideoDecoder",
 		Contacts: []string{"acourbot@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:     []string{"informational"},
+		Attr:     []string{"group:mainline", "informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		// TODO(b/137916185): Remove dependency on android capability. It's used here
 		// to guarantee import-mode support, which is required by the new VD's.

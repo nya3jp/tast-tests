@@ -18,7 +18,7 @@ func init() {
 		Func:     PlayVDH264,
 		Desc:     "Checks whether H.264 video playback is working when using a media::VideoDecoder (see go/vd-migration)",
 		Contacts: []string{"dstaessens@chromium.org", "akahuang@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:     []string{"informational"},
+		Attr:     []string{"group:mainline", "informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		// TODO(b/137916185): Remove dependency on android capability. It's used here
 		// to guarantee import-mode support, which is required by the new VD's.

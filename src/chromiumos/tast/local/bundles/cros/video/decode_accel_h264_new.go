@@ -18,7 +18,7 @@ func init() {
 		Func:         DecodeAccelH264New,
 		Desc:         "Run Chrome video_decode_accelerator_tests with an H.264 video",
 		Contacts:     []string{"acourbot@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.HWDecodeH264},
 		Data:         decode.DataFiles(videotype.H264Prof),
 	})

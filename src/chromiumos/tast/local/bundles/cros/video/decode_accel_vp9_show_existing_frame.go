@@ -17,7 +17,7 @@ func init() {
 		Func:         DecodeAccelVP9ShowExistingFrame,
 		Desc:         "Runs Chrome video_decode_accelerator_tests with a VP9 video that uses the show-existing-frame feature",
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.HWDecodeVP9},
 		Data:         []string{"vda_sanity-vp90_2_17_show_existing_frame.vp9", "vda_sanity-vp90_2_17_show_existing_frame.vp9.json"},
 	})

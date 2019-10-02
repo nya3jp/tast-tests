@@ -19,7 +19,7 @@ func init() {
 		Func:         ARCEncodeAccelH264I420,
 		Desc:         "Tests ARC e2e video encoding from I420 raw frames to an H.264 stream",
 		Contacts:     []string{"akahuang@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome", caps.HWEncodeH264},
 		Data:         []string{encode.Bear192P.Name},
 		Pre:          arc.Booted(), // TODO(akahuang): Implement new precondition to boot ARC and enable verbose at chromium.

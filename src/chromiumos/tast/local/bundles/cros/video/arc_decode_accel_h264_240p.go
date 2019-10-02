@@ -18,7 +18,7 @@ func init() {
 		Func:         ARCDecodeAccelH264240P,
 		Desc:         "Runs arcvideodecoder_test on ARC++ with an 240p H.264 video test-25fps.h264",
 		Contacts:     []string{"johnylin@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android", "chrome", caps.HWDecodeH264},
 		Data:         []string{decode.Test25FPSH264.Name, decode.Test25FPSH264.Name + ".json"},
 		Pre:          arc.Booted(),
