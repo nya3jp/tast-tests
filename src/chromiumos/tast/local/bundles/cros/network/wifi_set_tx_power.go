@@ -20,6 +20,7 @@ func init() {
 			"chromeos-kernel-wifi@google.com", // WiFi team
 		},
 		SoftwareDeps: []string{"tablet_mode"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 

@@ -22,7 +22,7 @@ func init() {
 			"matthewmwang@chromium.org",
 			"cros-networking@google.com",
 		},
-		Attr: []string{"informational"},
+		Attr: []string{"group:mainline", "informational"},
 	})
 }
 

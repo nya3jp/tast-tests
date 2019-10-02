@@ -29,7 +29,7 @@ func init() {
 			"oka@chromium.org",                // Tast port author
 		},
 		// TODO(crbug.com/1007252): Remove informational after fixing flakiness.
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"wifi"},
 
 		// TODO(crbug.com/984433): Consider skipping nyan_kitty. It has been skipped in the original test as it's unresolvably flaky (crrev.com/c/944502), exhibiting very similar symptoms to crbug.com/693724, b/65858242, b/36264732.

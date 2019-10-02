@@ -18,7 +18,7 @@ func init() {
 		Func:     TwoShills,
 		Desc:     "Verifies that an attempt to spawn a second instance of shill while an instance is already running will fail",
 		Contacts: []string{"billyzhao@google.com", "chromeos-kernel-wifi@google.com"},
-		Attr:     []string{"informational"},
+		Attr:     []string{"group:mainline", "informational"},
 	})
 }
 
