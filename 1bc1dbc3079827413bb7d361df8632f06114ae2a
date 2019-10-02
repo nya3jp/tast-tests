@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "33d50263_989c59d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-10-02T15:11:04Z",
+      "side": 1,
+      "message": "Thanks for your advice. Would you please give me some example of the doc? Such as docs of other test case?",
+      "parentUuid": "0da34f81_048f49b7",
+      "revId": "1bc1dbc3079827413bb7d361df8632f06114ae2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c0996a9b_67ceee42",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 2
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "21cfc057_b3e3f65b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-10-02T15:11:04Z",
+      "side": 1,
+      "message": "Thank you. Really a good example. I will change my code after read it.",
+      "parentUuid": "c0996a9b_67ceee42",
+      "revId": "1bc1dbc3079827413bb7d361df8632f06114ae2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9d796574_6ee6c178",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 2
@@ -65,6 +101,24 @@
       "writtenOn": "2019-10-02T13:41:38Z",
       "side": 1,
       "message": "I think WaitForIdle doesn\u0027t work in this case.\n\nYou may need to poll and compare the number of lines in the text view.\n\nPlease refer to the following thread for more info:\nhttps://mail.google.com/mail/u/0/?source\u003dsync\u0026tf\u003d1\u0026view\u003dpt\u0026th\u003d16d67827236c8fa1\u0026search\u003dall\u0026msg",
+      "revId": "1bc1dbc3079827413bb7d361df8632f06114ae2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "298abe26_bf46920b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1370589
+      },
+      "writtenOn": "2019-10-02T15:11:04Z",
+      "side": 1,
+      "message": "It\u0027s seems a wrong link of mail. The reason why I use the WaitForIdle is that I found the mode changing will cost a little time, so I want to make it waiting then invoke get mode API.",
+      "parentUuid": "9d796574_6ee6c178",
       "revId": "1bc1dbc3079827413bb7d361df8632f06114ae2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
