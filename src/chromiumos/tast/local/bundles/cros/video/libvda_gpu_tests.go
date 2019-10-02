@@ -16,7 +16,7 @@ func init() {
 		Func:         LibvdaGpuTests,
 		Desc:         "Runs the non-decoding tests targetting libvda's GPU implementation",
 		Contacts:     []string{"alexlau@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_vm", "chrome"},
 	})
 }

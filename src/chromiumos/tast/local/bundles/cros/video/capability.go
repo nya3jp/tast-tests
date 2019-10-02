@@ -22,7 +22,7 @@ func init() {
 		Func:     Capability,
 		Desc:     "Compare capabilities computed by autocaps package with ones detected by avtest_label_detect",
 		Contacts: []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:     []string{"informational"},
+		Attr:     []string{"group:mainline", "informational"},
 	})
 }
 

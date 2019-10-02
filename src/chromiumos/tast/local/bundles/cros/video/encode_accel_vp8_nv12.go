@@ -19,7 +19,7 @@ func init() {
 		Func:         EncodeAccelVP8NV12,
 		Desc:         "Run Chrome video_encode_accelerator_unittest from NV12 raw frames to VP8 stream",
 		Contacts:     []string{"akahuang@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.HWEncodeVP8},
 		Data:         []string{encode.Bear192P.Name},
 		Timeout:      4 * time.Minute,

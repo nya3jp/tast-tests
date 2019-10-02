@@ -25,7 +25,7 @@ func init() {
 		Pre:          pre.ChromeVideo(),
 		// Marked informational due to flakiness on ToT.
 		// TODO(crbug.com/1008317): Promote to critical again.
-		Attr: []string{"informational"},
+		Attr: []string{"group:mainline", "informational"},
 	})
 }
 

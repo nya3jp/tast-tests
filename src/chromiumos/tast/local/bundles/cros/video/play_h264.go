@@ -22,6 +22,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Pre:          pre.ChromeVideo(),
 		Data:         []string{"720_h264.mp4", "video.html"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 

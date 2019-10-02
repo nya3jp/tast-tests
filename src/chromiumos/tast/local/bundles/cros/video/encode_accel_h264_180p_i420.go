@@ -24,7 +24,7 @@ func init() {
 		Timeout:      4 * time.Minute,
 		// Marked informational due to failures on ToT.
 		// TODO(crbug.com/1009297): Promote to critical again.
-		Attr: []string{"informational"},
+		Attr: []string{"group:mainline", "informational"},
 	})
 }
 

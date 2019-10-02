@@ -19,6 +19,7 @@ func init() {
 		Contacts:     []string{"deanliao@chromium.org", "chromeos-video-eng@google.com"},
 		SoftwareDeps: []string{"chrome", caps.HWDecodeVP9},
 		Data:         []string{"vda_sanity-bear_profile1.vp9", "vda_sanity-bear_profile1.vp9.json"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
