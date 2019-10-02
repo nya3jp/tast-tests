@@ -1,3 +1,7 @@
+// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
 package iio
 
 import (
@@ -39,14 +43,15 @@ func TestRing(t *testing.T) {
 		"iio:device1/location":                            "lid",
 		"iio:device1/id":                                  "0",
 		"iio:device1/scale":                               "0.25",
+		"iio:device1/frequency":                           "100",
 		"iio:device1/min_frequency":                       "100",
 		"iio:device1/max_frequency":                       "1000",
 		"iio:device2/name":                                "cros-ec-gyro",
 		"iio:device2/location":                            "base",
 		"iio:device2/id":                                  "1",
 		"iio:device2/scale":                               "0.01",
-		"iio:device2/min_frequency":                       "2000",
-		"iio:device2/max_frequency":                       "5000",
+		"iio:device2/sampling_frequency_available":        "0.000000 2000.000000 5000.000000",
+		"iio:device2/buffer/hwfifo_timeout":               "0",
 	})()
 
 	ringData := []SensorReading{
@@ -116,7 +121,7 @@ func TestRing(t *testing.T) {
 	}
 	defer ring.Close()
 
-	read := []SensorReading{}
+	var read []SensorReading
 	timeout := time.After(5 * time.Second)
 l:
 	for {
