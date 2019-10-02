@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "a444d6b0_ae658c09",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-10-02T13:43:48Z",
+      "side": 1,
+      "message": "Please add a bug number here.\nIf there\u0027s no bug suitable for this, you may want to file a new one (e.g. \"Add a Tast test for Chrome OS Companion Library\".",
+      "revId": "1bc1dbc3079827413bb7d361df8632f06114ae2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c0996a9b_67ceee42",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 2
