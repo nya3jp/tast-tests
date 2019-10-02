@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c275735f_47c57740",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_ring.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-10-02T19:36:16Z",
+      "side": 1,
+      "message": "I think this should stay a Log otherwise boards without a ring will fail the test.",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "b86b1243e156f25eaf3ab852b78e96d3b0bc6a7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
