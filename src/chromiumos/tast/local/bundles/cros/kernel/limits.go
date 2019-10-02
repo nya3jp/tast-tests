@@ -20,6 +20,7 @@ func init() {
 		Func:     Limits,
 		Desc:     "Checks kernel limits and settings in /proc",
 		Contacts: []string{"chromeos-kernel-test@google.com"},
+		Attr:     []string{"group:mainline"},
 	})
 }
 
