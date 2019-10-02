@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b7b8a111_17e19296",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-10-02T04:51:03Z",
+      "side": 1,
+      "message": "nit: graphics.",
+      "range": {
+        "startLine": 7,
+        "startChar": 17,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f46ef3b7_9fec8475",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
         "patchSetId": 3
@@ -25,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "67f2d208_6baaf4aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-10-02T04:51:03Z",
+      "side": 1,
+      "message": "nit: To be consistent with the style on lns. 43 and 45, maybe:\n\n// fixedBadImagesFile contains images that are bad and for which a fix has been submitted.",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 4
+      },
+      "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9b4cf936_e231b43f",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
         "patchSetId": 3
@@ -41,6 +87,29 @@
         "startChar": 46,
         "endLine": 73,
         "endChar": 50
+      },
+      "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24e202b5_cbc390d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-10-02T04:51:03Z",
+      "side": 1,
+      "message": "nit: End with period.",
+      "range": {
+        "startLine": 77,
+        "startChar": 35,
+        "endLine": 77,
+        "endChar": 36
       },
       "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -87,6 +156,121 @@
         "startChar": 17,
         "endLine": 97,
         "endChar": 38
+      },
+      "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e349a3e5_07012ba2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-10-02T04:51:03Z",
+      "side": 1,
+      "message": "nit: gl_bench.go?",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 22
+      },
+      "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "743aa9bf_33e44373",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-10-02T04:51:03Z",
+      "side": 1,
+      "message": "nit: Add the @RESULT: to the comment for accuracy.",
+      "range": {
+        "startLine": 103,
+        "startChar": 3,
+        "endLine": 103,
+        "endChar": 4
+      },
+      "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4d269de_04967fa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-10-02T04:51:03Z",
+      "side": 1,
+      "message": "How do we tell which test corresponds to these messages? Should we output the test name?",
+      "range": {
+        "startLine": 157,
+        "startChar": 3,
+        "endLine": 157,
+        "endChar": 56
+      },
+      "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc6811e5_9c420f55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-10-02T04:51:03Z",
+      "side": 1,
+      "message": "nit: s/\"/\u0027.",
+      "range": {
+        "startLine": 171,
+        "startChar": 40,
+        "endLine": 171,
+        "endChar": 41
+      },
+      "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1879748a_9f0a472e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2019-10-02T04:51:03Z",
+      "side": 1,
+      "message": "that",
+      "range": {
+        "startLine": 191,
+        "startChar": 28,
+        "endLine": 191,
+        "endChar": 29
       },
       "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
