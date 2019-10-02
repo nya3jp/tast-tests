@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "4bc47c38_e70206d4",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-02T02:36:04Z",
+      "side": 1,
+      "message": "Consider returning a defined error from MeasurePowerUsage in the case of binary not found, then check the specific error on the caller side. e.g.\n\nvar UnsupportedOperation \u003d errors.New(...)\nMeasurePowerUsage(...) ... {\n  // On not found\n  return 0, UnsupportedOperation\n}\n\nOn caller:\nif powerUsage, powerErr \u003d MeasurePowerUsage(...); powerErr !\u003d UnsupportedOperation \u0026\u0026 powerErr !\u003d nil {\n  // report error\n}\n\nThen you don\u0027t need if _, powerErr \u003d os.Stat(raplExec); powerErr \u003d\u003d nil { on caller.",
+      "range": {
+        "startLine": 238,
+        "startChar": 29,
+        "endLine": 238,
+        "endChar": 46
+      },
+      "revId": "1b58cbd36979dc5c5f264ce8c4a6344b7e7e4072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da92c959_2a8ed07f",
         "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
         "patchSetId": 4
