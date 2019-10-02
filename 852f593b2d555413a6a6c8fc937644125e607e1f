@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a74c5373_9b834a8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-02T20:18:07Z",
+      "side": 1,
+      "message": "Do we get symbols by doing this? I\u0027d thought we didn\u0027t have symbols on the DUT but I could be mistaken about that.",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 73
+      },
+      "revId": "852f593b2d555413a6a6c8fc937644125e607e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95ac2bf8_4f612f41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-02T20:18:07Z",
+      "side": 1,
+      "message": "You should be able to use ioutil.WriteFile here.",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 3
+      },
+      "revId": "852f593b2d555413a6a6c8fc937644125e607e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
