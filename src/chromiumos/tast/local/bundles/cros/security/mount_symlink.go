@@ -23,6 +23,7 @@ func init() {
 			"chromeos-security@google.com",
 		},
 		SoftwareDeps: []string{"no_symlink_mount"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 

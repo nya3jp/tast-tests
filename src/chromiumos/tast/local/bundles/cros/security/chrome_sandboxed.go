@@ -24,6 +24,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
+		Attr:         []string{"group:mainline"},
 	})
 }
 

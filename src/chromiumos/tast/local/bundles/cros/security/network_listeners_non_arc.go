@@ -23,6 +23,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome", "no_android"},
 		Pre:          chrome.LoggedIn(),
+		Attr:         []string{"group:mainline"},
 	})
 }
 

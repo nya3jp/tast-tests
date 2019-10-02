@@ -23,6 +23,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "android"},
 		Pre:          arc.Booted(),
 		Timeout:      arc.BootTimeout,
+		Attr:         []string{"group:mainline"},
 	})
 }
 

@@ -44,6 +44,7 @@ func init() {
 			// Sanitizer builds do not support static linking
 			ExtraSoftwareDeps: []string{"no_asan", "no_msan", "no_ubsan"},
 		}},
+		Attr: []string{"group:mainline"},
 	})
 }
 

@@ -17,6 +17,7 @@ func init() {
 		Desc:         "Checks some SELinux status",
 		Contacts:     []string{"fqj@chromium.org", "jorgelo@chromium.org", "chromeos-security@google.com"},
 		SoftwareDeps: []string{"selinux"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
