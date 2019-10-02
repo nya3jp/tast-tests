@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce03ff56_fdd7da85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-02T15:01:38Z",
+      "side": 1,
+      "message": "nit:  (assuming it makes sense for your tests):\nsince you are using the \"ash.WaitForARCAppWindowState\" here, I\u0027d replace the \"act.SetWindowState\" with \"ash.SetARCAppWindowState\" (and you can get rid of the \"act\" parameter)",
+      "range": {
+        "startLine": 540,
+        "startChar": 1,
+        "endLine": 542,
+        "endChar": 2
+      },
+      "revId": "36d136da3e443daefa24bfa67c465e3bcf6fd6e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
