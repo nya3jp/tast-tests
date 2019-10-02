@@ -17,7 +17,7 @@ func init() {
 		Func:         Gstopdf,
 		Desc:         "Tests that the gstopdf CUPS filter produces expected output",
 		Contacts:     []string{"valleau@chromium.org"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "cups"},
 		Data:         []string{"gstopdf_input.ps", "gstopdf_golden.pdf"},
 		Pre:          chrome.LoggedIn(),
