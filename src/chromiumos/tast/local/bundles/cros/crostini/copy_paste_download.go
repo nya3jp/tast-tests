@@ -18,7 +18,7 @@ func init() {
 		Func:     CopyPasteDownload,
 		Desc:     "Test copy paste functionality (where crostini was downloaded first)",
 		Contacts: []string{"sidereal@google.com", "cros-containers-dev@google.com"},
-		Attr:     []string{"informational"},
+		Attr:     []string{"group:mainline", "informational"},
 		Data:     []string{copypaste.CopyApplet, copypaste.PasteApplet},
 		Params: []testing.Param{
 			{

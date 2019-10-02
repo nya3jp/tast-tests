@@ -21,7 +21,7 @@ func init() {
 		Func:         RunWithARC,
 		Desc:         "Checks that ARC(VM) runs in parallel with Crostini",
 		Contacts:     []string{"niwa@chromium.org", "arcvm-eng@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      7 * time.Minute,
 		Data:         []string{crostini.ImageArtifact},
 		Pre:          crostini.StartedARCEnabled(),

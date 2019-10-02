@@ -18,7 +18,7 @@ func init() {
 		Func:         GPUEnabledArtifact,
 		Desc:         "Ensures that when crostini boots from an artifact, the GPU is not enabled",
 		Contacts:     []string{"hollingum@google.com", "cros-containers-dev@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      7 * time.Minute,
 		Data:         []string{crostini.ImageArtifact},
 		Pre:          crostini.StartedByArtifact(),

@@ -18,7 +18,7 @@ func init() {
 		Func:         DisplayDensityX11,
 		Desc:         "Runs an X11 crostini application from the terminal in high/low DPI modes and compares sizes",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      7 * time.Minute,
 		Data:         []string{crostini.ImageArtifact},
 		Pre:          crostini.StartedByArtifact(),

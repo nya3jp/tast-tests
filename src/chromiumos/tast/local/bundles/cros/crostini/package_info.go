@@ -18,7 +18,7 @@ func init() {
 		Func:         PackageInfo,
 		Desc:         "Queries the information for a Debian package that we have copied into the container",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      7 * time.Minute,
 		Data:         []string{crostini.ImageArtifact, "package.deb"},
 		Pre:          crostini.StartedByArtifact(),

@@ -22,6 +22,7 @@ func init() {
 		Data:         []string{crostini.ImageArtifact},
 		Pre:          crostini.StartedByArtifact(),
 		SoftwareDeps: []string{"chrome", "vm_host"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
