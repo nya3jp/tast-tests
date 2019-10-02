@@ -17,7 +17,7 @@ func init() {
 		Func:         HAL3Stream,
 		Desc:         "Verifies camera stream function with HAL3 interface",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android", "arc_camera3", caps.BuiltinCamera},
 	})
 }

@@ -21,7 +21,7 @@ func init() {
 		Func:         GetUserMedia,
 		Desc:         "Verifies that getUserMedia captures video",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome", "camera_720p"},
 		Pre:          pre.ChromeVideo(),
 		Data:         append(webrtc.DataFiles(), "getusermedia.html"),
