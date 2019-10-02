@@ -131,15 +131,6 @@ var libgccWhitelist = []string{
 	"/usr/lib64/libSkyCamAIC.so",
 	"/usr/lib64/libSkyCamAICKBL.so",
 
-	// FIXME: Remove after Rust code is built with compiler-rt. crbug.com/814480
-	"/usr/sbin/mosys",
-	"/usr/bin/crosvm",
-	"/usr/bin/memd",
-	"/usr/bin/9s",
-	"/usr/bin/crostini_client",
-	"/usr/lib64/libqcow_utils.so",
-	"/usr/lib64/libcrosvm_plugin.so",
-
 	// FIXME: Remove after mesa is fixed to not need libgcc_s. crbug.com/808264
 	"/usr/lib/dri/kms_swrast_dri.so",
 	"/usr/lib/dri/swrast_dri.so",
