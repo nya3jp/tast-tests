@@ -26,7 +26,7 @@ func init() {
 		Func:         Clipboard,
 		Desc:         "Tests copying and pasting from Chrome to Android and vice versa",
 		Contacts:     []string{"ruanc@chromium.org", "niwa@chromium.org", "arc-eng@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_both", "chrome"},
 		Timeout:      4 * time.Minute,
 		Data: []string{

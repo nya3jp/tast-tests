@@ -26,7 +26,7 @@ func init() {
 			"chromeos-audio@google.com",
 			"hidehiko@chromium.org", // Tast port author
 		},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android", "chrome"},
 		Timeout:      4 * time.Minute,
 	})

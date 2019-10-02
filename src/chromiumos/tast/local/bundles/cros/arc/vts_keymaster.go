@@ -23,7 +23,7 @@ func init() {
 		Func:         VTSKeymaster,
 		Desc:         "Runs the Android VTS module VtsHalKeymasterV3_0Target",
 		Contacts:     []string{"edman@chromium.org", "arc-eng-muc@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		// TODO(edmanp): Download only one file for the current architecture.
 		Data: []string{

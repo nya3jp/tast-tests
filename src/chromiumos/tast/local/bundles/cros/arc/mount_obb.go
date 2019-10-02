@@ -39,6 +39,7 @@ func init() {
 		// it is not blocker, but we should revisit here.
 		SoftwareDeps: []string{"android", "chrome"},
 		Timeout:      4 * time.Minute,
+		Attr:         []string{"group:mainline"},
 	})
 }
 

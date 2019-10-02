@@ -21,7 +21,7 @@ func init() {
 		Func:         IMESwitchShortcut,
 		Desc:         "Chrome's IME switch shortcut can work on an Android app",
 		Contacts:     []string{"yhanada@chromium.org", "arc-eng@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android", "chrome"},
 		Data:         []string{"ArcKeyboardTest.apk"},
 		Pre:          arc.Booted(),

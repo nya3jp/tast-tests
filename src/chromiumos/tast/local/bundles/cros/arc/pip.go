@@ -55,7 +55,7 @@ func init() {
 		Func:         PIP,
 		Desc:         "Checks that ARC++ Picture-in-Picture works as expected",
 		Contacts:     []string{"edcourtney@chromium.org", "arc-framework+tast@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"tablet_mode", "android_p", "chrome"},
 		Data:         []string{"ArcPipTastTest.apk"},
 		Pre:          arc.Booted(),

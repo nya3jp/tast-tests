@@ -25,7 +25,7 @@ func init() {
 		Func:         MultiNetworkingConnectivity,
 		Desc:         "Checks connectivity while multi-networking is enabled",
 		Contacts:     []string{"jasongustaman@google.com", "arc-eng@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android", "chrome"},
 		Pre:          arc.Booted(),
 	})
