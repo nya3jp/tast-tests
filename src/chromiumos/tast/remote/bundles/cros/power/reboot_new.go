@@ -18,7 +18,7 @@ func init() {
 		Contacts:     []string{"nya@chromium.org", "tast-owners@google.com"},
 		SoftwareDeps: []string{"reboot"},
 		// TODO(crbug.com/1000505): Replace power.Reboot with this test once making sure it is stable.
-		Attr: []string{"informational"},
+		Attr: []string{"group:mainline", "informational"},
 	})
 }
 
