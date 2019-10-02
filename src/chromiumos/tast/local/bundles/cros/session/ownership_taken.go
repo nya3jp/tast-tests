@@ -24,6 +24,7 @@ func init() {
 			"hidehiko@chromium.org", // Tast port author
 		},
 		SoftwareDeps: []string{"chrome"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
