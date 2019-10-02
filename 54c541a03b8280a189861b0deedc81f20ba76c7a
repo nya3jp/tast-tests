@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d07b8d56_f6bd8b87",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-10-02T21:13:53Z",
+      "side": 1,
+      "message": "I have .xz files/tests and can land them. It will take work to update all the sha256. So maybe land this in two steps?\n\nDoes this work?\n\nswitch {\ncase ext \u003d\u003d \".zst\" || ext \u003d\u003d \".xz\":...",
+      "parentUuid": "dcf5cb3d_5d480d23",
+      "range": {
+        "startLine": 124,
+        "startChar": 6,
+        "endLine": 124,
+        "endChar": 11
+      },
+      "revId": "54c541a03b8280a189861b0deedc81f20ba76c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "797ba0bd_8e6ac5f5",
         "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I did a quick run and the time spent is at the same level either I add -T0 or not. \nIs there any real difference between \"zstd -d\" and \"unzstd\"?",
       "parentUuid": "797ba0bd_8e6ac5f5",
+      "range": {
+        "startLine": 125,
+        "startChar": 28,
+        "endLine": 125,
+        "endChar": 42
+      },
+      "revId": "54c541a03b8280a189861b0deedc81f20ba76c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6de6e081_3c699f94",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2019-10-02T21:13:53Z",
+      "side": 1,
+      "message": "No difference, except we only need the zstd binary and don\u0027t care if unzstd exists.\n\nAgain, you can leave -T0.",
+      "parentUuid": "ad556916_307f57da",
       "range": {
         "startLine": 125,
         "startChar": 28,
