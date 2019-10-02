@@ -22,7 +22,7 @@ func init() {
 			"kasaiah.bogineni@intel.com",
 			"ningappa.tirakannavar@intel.com",
 		},
-		Attr: []string{"informational"},
+		Attr: []string{"group:mainline", "informational"},
 	})
 }
 

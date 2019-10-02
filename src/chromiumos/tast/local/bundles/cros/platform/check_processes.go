@@ -20,6 +20,7 @@ func init() {
 		Func:     CheckProcesses,
 		Desc:     "Checks that all expected processes are running",
 		Contacts: []string{"nya@chromium.org"},
+		Attr:     []string{"group:mainline"},
 	})
 }
 

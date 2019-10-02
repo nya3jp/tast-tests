@@ -29,6 +29,7 @@ func init() {
 		Func:     P2PServer,
 		Desc:     "Tests that Chromium OS can serve files to local network peers with p2p-server",
 		Contacts: []string{"nya@chromium.org"},
+		Attr:     []string{"group:mainline"},
 	})
 }
 

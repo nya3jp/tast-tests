@@ -32,7 +32,7 @@ func init() {
 		Func:     UdevCrash,
 		Desc:     "Verify udev triggered crash works as expected",
 		Contacts: []string{"yamaguchi@chromium.org", "iby@chromium.org", "cros-monitoring-forensics@google.com"},
-		Attr:     []string{"informational"},
+		Attr:     []string{"group:mainline", "informational"},
 		Data:     []string{platform_crash.TestCert},
 	})
 }

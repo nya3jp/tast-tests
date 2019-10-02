@@ -23,6 +23,7 @@ func init() {
 		Func:     PartitionSizes,
 		Desc:     "Checks rootfs partition sizes",
 		Contacts: []string{"chromeos-systems@google.com"},
+		Attr:     []string{"group:mainline"},
 	})
 }
 

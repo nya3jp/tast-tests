@@ -21,7 +21,7 @@ func init() {
 		Func:     KernelWarning,
 		Desc:     "Verify kernel warnings are logged as expected",
 		Contacts: []string{"mutexlox@google.com", "cros-monitoring-forensics@chromium.org"},
-		Attr:     []string{"informational"},
+		Attr:     []string{"group:mainline", "informational"},
 		Data:     []string{platformCrash.TestCert},
 	})
 }

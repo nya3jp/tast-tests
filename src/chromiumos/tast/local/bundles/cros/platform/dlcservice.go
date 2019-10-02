@@ -26,6 +26,7 @@ func init() {
 		Desc:         "Verifies that DLC D-Bus API (install, uninstall, etc.) works",
 		Contacts:     []string{"xiaochu@chromium.org"},
 		SoftwareDeps: []string{"dlc"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 

@@ -26,6 +26,7 @@ func init() {
 			"wbbradley@chromium.org", // diag maintainer
 		},
 		SoftwareDeps: []string{"diagnostics", "wilco"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
