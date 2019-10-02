@@ -15,9 +15,14 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         PlayVP9,
-		Desc:         "Checks VP9 video playback is working",
-		Contacts:     []string{"deanliao@chromium.org", "chromeos-video-eng@google.com"},
+		Func: PlayVP9,
+		Desc: "Checks VP9 video playback is working",
+		Contacts: []string{
+			"acourbot@chromium.org",
+			"mcasas@chromium.org",
+			"chromeos-gfx-video@google.com",
+			"chromeos-video-eng@google.com",
+		},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          pre.ChromeVideo(),
 		Data:         []string{"720_vp9.webm", "video.html"},
