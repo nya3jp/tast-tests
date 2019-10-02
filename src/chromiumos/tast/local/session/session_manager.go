@@ -123,6 +123,20 @@ func (m *SessionManager) HandleSupervisedUserCreationFinished(
 	return m.call(ctx, "HandleSupervisedUserCreationFinished").Err
 }
 
+// IsScreenLocked calls SessionManager.IsScreenLocked D-Bus method.
+func (m *SessionManager) IsScreenLocked(ctx context.Context) (screenLocked bool, err error) {
+	c := m.call(ctx, "IsScreenLocked")
+	if err := c.Store(&screenLocked); err != nil {
+		return false, err
+	}
+	return screenLocked, nil
+}
+
+// LockScreen calls SessionManager.LockScreen D-Bus method.
+func (m *SessionManager) LockScreen(ctx context.Context) error {
+	return m.call(ctx, "LockScreen").Err
+}
+
 // RetrieveSessionState calls SessionManager.RetrieveSessionState D-Bus method.
 func (m *SessionManager) RetrieveSessionState(ctx context.Context) (string, error) {
 	c := m.call(ctx, "RetrieveSessionState")
