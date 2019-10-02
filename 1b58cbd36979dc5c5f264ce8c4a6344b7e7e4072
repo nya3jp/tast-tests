@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "600cd51b_0f0f93ac",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-02T03:06:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3494bfb7_919a3829",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 80
+      },
+      "revId": "1b58cbd36979dc5c5f264ce8c4a6344b7e7e4072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bc47c38_e70206d4",
         "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2019-10-02T02:36:04Z",
       "side": 1,
       "message": "Consider returning a defined error from MeasurePowerUsage in the case of binary not found, then check the specific error on the caller side. e.g.\n\nvar UnsupportedOperation \u003d errors.New(...)\nMeasurePowerUsage(...) ... {\n  // On not found\n  return 0, UnsupportedOperation\n}\n\nOn caller:\nif powerUsage, powerErr \u003d MeasurePowerUsage(...); powerErr !\u003d UnsupportedOperation \u0026\u0026 powerErr !\u003d nil {\n  // report error\n}\n\nThen you don\u0027t need if _, powerErr \u003d os.Stat(raplExec); powerErr \u003d\u003d nil { on caller.",
+      "range": {
+        "startLine": 238,
+        "startChar": 29,
+        "endLine": 238,
+        "endChar": 46
+      },
+      "revId": "1b58cbd36979dc5c5f264ce8c4a6344b7e7e4072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b11e3f92_3417e22f",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-02T03:06:13Z",
+      "side": 1,
+      "message": "I currently just check whether measurements[\"power\"] is present on the caller side. It\u0027s easier than doing various checks, or dealing with multiple returned error messages. It\u0027s stated in the documentation that \"power\" will only be present if supported, and the caller should keep that into account. I prefer to keep it this way, as not having power measurements is not really an error, but the default situation on lots of platforms. And if we choose to add more fields to the measurements later (memory usage etc?) it will quickly grow very complex when using errors.\n\nPlease note that I can\u0027t do \"if _, powerErr \u003d os.Stat(raplExec); powerErr \u003d\u003d nil\" on the caller side, as even when the command is there it might not actually work.",
+      "parentUuid": "4bc47c38_e70206d4",
       "range": {
         "startLine": 238,
         "startChar": 29,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9daa2e65_b95be77e",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-02T03:06:13Z",
+      "side": 1,
+      "message": "Measuring power usage is only supported on a limited set of devices. Some devices have the \"dump_intel_rapl_consumption\" command but it will give an error when running. If this happens we should just ignore the error and threat it the same as when the executable is not present.",
+      "parentUuid": "da92c959_2a8ed07f",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 77
+      },
+      "revId": "1b58cbd36979dc5c5f264ce8c4a6344b7e7e4072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "816292fa_55a79db6",
         "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
         "patchSetId": 4
@@ -82,6 +154,30 @@
       "writtenOn": "2019-10-02T02:29:31Z",
       "side": 1,
       "message": "I think you can update measurements inside goroutines.\nIt might be clearer because you don\u0027t have to define cpuUsage, powerUsage and powerErr on the top of the function.",
+      "range": {
+        "startLine": 244,
+        "startChar": 10,
+        "endLine": 252,
+        "endChar": 2
+      },
+      "revId": "1b58cbd36979dc5c5f264ce8c4a6344b7e7e4072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e69b4de_e71204b4",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-02T03:06:13Z",
+      "side": 1,
+      "message": "That\u0027s what I originally did, but as Keiichi commented:\n\n| Hmm, I\u0027m not 100% sure but concurrent update of map would be unsafe.\n| According to https://golang.org/doc/faq#atomic_maps, we cannot say it\u0027s safe when concurrent | | update happens. So, it\u0027d be safer to create |measurements| after wg.Wait().",
+      "parentUuid": "816292fa_55a79db6",
       "range": {
         "startLine": 244,
         "startChar": 10,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "0074ba63_57f51782",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-02T03:06:13Z",
+      "side": 1,
+      "message": "\"MeasureUtilization\" is not a good name IMHO, as it doesn\u0027t specify what utilization is measured. And we should keep the names of the CPU and Power usage function consistent.\n\nWe could use MeasureCPUUtilization and MeasurePowerUtilization, but I don\u0027t think it\u0027s an improvement over the current function name.",
+      "parentUuid": "dc3bc3ca_873ad9ee",
+      "range": {
+        "startLine": 260,
+        "startChar": 5,
+        "endLine": 260,
+        "endChar": 20
+      },
+      "revId": "1b58cbd36979dc5c5f264ce8c4a6344b7e7e4072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "94f9843a_7b92d245",
         "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
         "patchSetId": 4
@@ -137,6 +257,30 @@
       "revId": "1b58cbd36979dc5c5f264ce8c4a6344b7e7e4072",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da294a59_529a2f2b",
+        "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-02T03:06:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94f9843a_7b92d245",
+      "range": {
+        "startLine": 294,
+        "startChar": 73,
+        "endLine": 295,
+        "endChar": 52
+      },
+      "revId": "1b58cbd36979dc5c5f264ce8c4a6344b7e7e4072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
