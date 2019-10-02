@@ -18,7 +18,7 @@ func init() {
 		Func:     CopyPasteArtifact,
 		Desc:     "Test copy paste functionality (where crostini was shipped with the build)",
 		Contacts: []string{"sidereal@google.com", "cros-containers-dev@google.com"},
-		Attr:     []string{"informational"},
+		Attr:     []string{"group:mainline", "informational"},
 		Data:     []string{crostini.ImageArtifact, copypaste.CopyApplet, copypaste.PasteApplet},
 		Params: []testing.Param{
 			{

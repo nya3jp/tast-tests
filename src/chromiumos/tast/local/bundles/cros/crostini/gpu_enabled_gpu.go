@@ -18,7 +18,7 @@ func init() {
 		Func:         GPUEnabledGPU,
 		Desc:         "Ensures that when crostini boots with the GPU enabled, that it really is accessible as a device in the container",
 		Contacts:     []string{"hollingum@google.com", "cros-containers-dev@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      7 * time.Minute,
 		Data:         []string{crostini.ImageArtifact},
 		Pre:          crostini.StartedGPUEnabled(),
