@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1760d466_5788623b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-02T15:17:46Z",
+      "side": 1,
+      "message": "Instead of connecting D-Bus repeatedly, could you move these as a method of tast/local/session.SessionManager, and reuse |sm| at L231?",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "1a18802902802c8d18858bbf20ddff522e2509f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6bd120f_e8673434",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-02T15:17:46Z",
+      "side": 1,
+      "message": "How about checking isLocked here, too?",
+      "revId": "1a18802902802c8d18858bbf20ddff522e2509f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
