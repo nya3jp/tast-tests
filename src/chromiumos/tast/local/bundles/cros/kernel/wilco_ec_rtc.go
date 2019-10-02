@@ -25,6 +25,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"wilco"},
 		Timeout:      30 * time.Second,
+		Attr:         []string{"group:mainline"},
 	})
 }
 
