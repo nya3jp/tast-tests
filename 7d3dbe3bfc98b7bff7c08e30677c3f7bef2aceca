@@ -22,6 +22,30 @@
       "revId": "7d3dbe3bfc98b7bff7c08e30677c3f7bef2aceca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f217f6f2_1c6ddf11",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-10-02T12:42:17Z",
+      "side": 1,
+      "message": "I guess not.\nYou need |utility| to take TPM ownership and check TPM status.\n\nMeanwhile, may I ask why? Is there any usecase where you cannot have |utility|?",
+      "parentUuid": "591a41dd_f563e991",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 63
+      },
+      "revId": "7d3dbe3bfc98b7bff7c08e30677c3f7bef2aceca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
