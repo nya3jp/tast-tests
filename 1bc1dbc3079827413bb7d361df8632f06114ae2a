@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "3f85de23_42620a36",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2019-10-02T15:55:24Z",
+      "side": 1,
+      "message": "As this is not really a doc for a big review, you can use any document type you like (e.g. copy something like this \"go/chromeosclassification\").\nIf it would be design doc for a wider review you could use \"go/cros-sw-designdoc\" - but that is not required here.",
+      "parentUuid": "33d50263_989c59d0",
+      "revId": "1bc1dbc3079827413bb7d361df8632f06114ae2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c0996a9b_67ceee42",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 2
