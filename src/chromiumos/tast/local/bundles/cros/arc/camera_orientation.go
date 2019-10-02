@@ -24,7 +24,7 @@ func init() {
 			"chromeos-camera-eng@google.com",
 			"hidehiko@chromium.org", // Tast port author.
 		},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{"ArcCameraOrientationTest.apk"},
 		SoftwareDeps: []string{"android", "chrome", caps.BuiltinUSBCamera},
 		Pre:          arc.Booted(),

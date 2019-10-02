@@ -23,7 +23,7 @@ func init() {
 		Func:         NetworkdStability,
 		Desc:         "Checks that arc-networkd isn't respawning across ARC boots",
 		Contacts:     []string{"garrick@chromium.org", "arc-eng@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_both", "chrome"},
 		Timeout:      4 * time.Minute,
 	})

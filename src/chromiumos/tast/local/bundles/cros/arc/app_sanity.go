@@ -18,7 +18,7 @@ func init() {
 		Func:         AppSanity,
 		Desc:         "Sanity check to start a simple app",
 		Contacts:     []string{"oka@chromium.org", "arc-eng@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android", "chrome"},
 		Data:         []string{"app_sanity_hello_world.apk"},
 		Pre:          arc.Booted(),

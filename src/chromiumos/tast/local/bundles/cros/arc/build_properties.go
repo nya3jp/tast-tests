@@ -23,6 +23,7 @@ func init() {
 		Contacts:     []string{"niwa@chromium.org", "risan@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"android", "chrome"},
 		Timeout:      4 * time.Minute,
+		Attr:         []string{"group:mainline"},
 	})
 }
 

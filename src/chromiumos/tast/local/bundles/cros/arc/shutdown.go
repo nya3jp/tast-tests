@@ -27,6 +27,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"android", "chrome"},
 		Timeout:      4 * time.Minute,
+		Attr:         []string{"group:mainline"},
 	})
 }
 
