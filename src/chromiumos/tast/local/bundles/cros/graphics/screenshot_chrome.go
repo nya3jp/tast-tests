@@ -18,7 +18,7 @@ func init() {
 		Func:         ScreenshotChrome,
 		Desc:         "Takes a screenshot using Chrome",
 		Contacts:     []string{"jkardatzke@chromium.org"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
 	})

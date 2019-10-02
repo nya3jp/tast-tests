@@ -66,7 +66,7 @@ func init() {
 			Val:               drmTest{command: []string{"vk_glow"}, timeout: 20 * time.Second},
 			ExtraSoftwareDeps: []string{"display_backlight", "vulkan"},
 		}},
-		Attr:    []string{"informational"},
+		Attr:    []string{"group:mainline", "informational"},
 		Timeout: 5 * time.Minute,
 	})
 }
