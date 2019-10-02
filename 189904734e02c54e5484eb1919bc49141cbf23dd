@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "920c71cc_94c836fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-02T04:48:53Z",
+      "side": 1,
+      "message": "Generally I recommend writing down the concrete command you ran.\n\nIn this case I\u0027m interested in which tests you ran. I\u0027m pretty sure you ran arc.ADBSanity, but what about other ARC tests? They can start failing because arc.Command now recognizes abnormal program exits.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 17
+      },
+      "revId": "189904734e02c54e5484eb1919bc49141cbf23dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8d45d89_32430dae",
+        "filename": "src/chromiumos/tast/local/arc/commands.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-02T04:48:53Z",
+      "side": 1,
+      "message": "We still need shutil.EscapeSlice.\n\nlocalhost ~ # adb shell ls \u0027/hoge /hoge\u0027\nls: /hoge: No such file or directory\nls: /hoge: No such file or directory",
+      "range": {
+        "startLine": 16,
+        "startChar": 40,
+        "endLine": 16,
+        "endChar": 67
+      },
+      "revId": "189904734e02c54e5484eb1919bc49141cbf23dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27a9d464_74670135",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-02T04:48:53Z",
+      "side": 1,
+      "message": "I recommend creating a separate CL for this test, and submitting it before making a change to the arc package. Then we can observe any different in test history.",
+      "revId": "189904734e02c54e5484eb1919bc49141cbf23dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd3f9cf1_2a4bae30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-02T04:48:53Z",
+      "side": 1,
+      "message": "I\u0027d like to test binary cases in general, not limited to LF/CRLF. Would you mind including these cases:\n\n- A file contains \\n, \\r, \\r\\n\n- A file does not end with \\n\n- A file contains every possible byte (0x00-0xff)",
+      "range": {
+        "startLine": 45,
+        "startChar": 3,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "189904734e02c54e5484eb1919bc49141cbf23dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f826316_4d5f44c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-02T04:48:53Z",
+      "side": 1,
+      "message": "Why don\u0027t we override the error of the anonymous function here?\n\nAlso, we need to set success \u003d false in this case.",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 44
+      },
+      "revId": "189904734e02c54e5484eb1919bc49141cbf23dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "412e5d29_7ab3ece8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/adb_sanity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-02T04:48:53Z",
+      "side": 1,
+      "message": "This tests stdout (Android -\u003e CrOS). What do you think about testing stdin (CrOS -\u003e Android) as well?",
+      "range": {
+        "startLine": 85,
+        "startChar": 16,
+        "endLine": 85,
+        "endChar": 43
+      },
+      "revId": "189904734e02c54e5484eb1919bc49141cbf23dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
