@@ -93,6 +93,54 @@
       "revId": "8cb2b684f7592f6cbf24ed5b43c99d87182b8e81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f00fc424_ba823209",
+        "filename": "src/chromiumos/tast/local/webrtc/camera.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-02T00:35:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "444e9ef9_ebe99270",
+      "range": {
+        "startLine": 110,
+        "startChar": 44,
+        "endLine": 110,
+        "endChar": 46
+      },
+      "revId": "8cb2b684f7592f6cbf24ed5b43c99d87182b8e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0fc566a5_e1a685c3",
+        "filename": "src/chromiumos/tast/local/webrtc/camera.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-02T00:35:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d623db1_9c26541e",
+      "range": {
+        "startLine": 110,
+        "startChar": 70,
+        "endLine": 110,
+        "endChar": 74
+      },
+      "revId": "8cb2b684f7592f6cbf24ed5b43c99d87182b8e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
