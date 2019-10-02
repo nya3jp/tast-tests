@@ -21,7 +21,6 @@ func init() {
 			"mathewk@chromium.org", // Test author
 			"chromeos-sensors@google.com",
 		},
-		SoftwareDeps: []string{"cros_config"},
 	})
 }
 

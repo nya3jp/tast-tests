@@ -25,8 +25,7 @@ func init() {
 			"mathewk@chromium.org", // Test author
 			"chromeos-sensors@google.com",
 		},
-		SoftwareDeps: []string{"cros_config"},
-		Attr:         []string{"informational"},
+		Attr: []string{"informational"},
 	})
 }
 
@@ -43,7 +42,7 @@ func SensorRing(ctx context.Context, s *testing.State) {
 
 	ring, err := iio.NewRing(dutSensors)
 	if err != nil {
-		s.Log("Sensor ring not found: ", err)
+		s.Fatal("Sensor ring not found: ", err)
 		return
 	}
 

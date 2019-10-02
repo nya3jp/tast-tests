@@ -144,6 +144,9 @@ func (cr *CrosRing) Open(ctx context.Context) (<-chan *SensorReading, error) {
 			if err != nil {
 				return nil, errors.Wrap(err, "error parsing event")
 			}
+			if r == nil {
+				continue
+			}
 
 			if r.Flags&flushFlag != 0 {
 				delete(flush, r.ID)
@@ -160,6 +163,9 @@ func (cr *CrosRing) Open(ctx context.Context) (<-chan *SensorReading, error) {
 			r, err := cr.parseEvent(&d)
 			if err != nil {
 				return
+			}
+			if r == nil {
+				continue
 			}
 			events <- r
 		}
@@ -227,7 +233,9 @@ func (cr *CrosRing) parseEvent(b *BufferData) (*SensorReading, error) {
 
 	s, ok := cr.Sensors[uint(id)]
 	if !ok {
-		return nil, errors.Errorf("cannot find sensor with id %v", id)
+		// Sensor we do not support in this test:
+		// Activity, light. Just skip.
+		return nil, nil
 	}
 	ret.ID = uint(id)
 
