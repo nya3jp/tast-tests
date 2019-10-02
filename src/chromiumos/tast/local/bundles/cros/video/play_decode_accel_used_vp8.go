@@ -16,9 +16,14 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         PlayDecodeAccelUsedVP8,
-		Desc:         "Verifies that VP8 video decode acceleration works in Chrome",
-		Contacts:     []string{"deanliao@chromium.org", "chromeos-video-eng@google.com"},
+		Func: PlayDecodeAccelUsedVP8,
+		Desc: "Verifies that VP8 video decode acceleration works in Chrome",
+		Contacts: []string{
+			"acourbot@chromium.org",
+			"mcasas@chromium.org",
+			"chromeos-gfx-video@google.com",
+			"chromeos-video-eng@google.com",
+		},
 		SoftwareDeps: []string{caps.HWDecodeVP8, "chrome"},
 		Pre:          pre.ChromeVideo(),
 		Data:         []string{"720_vp8.webm", "video.html"},
