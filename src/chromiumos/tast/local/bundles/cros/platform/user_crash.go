@@ -32,7 +32,7 @@ func init() {
 			"domlaskowski@chromium.org", // Original autotest author
 			"yamaguchi@chromium.org",    // Tast port author
 		},
-		Attr: []string{"informational"},
+		Attr: []string{"group:mainline", "informational"},
 	})
 }
 

@@ -28,6 +28,7 @@ func init() {
 		Desc:         "Checks that memd works",
 		Contacts:     []string{"sonnyrao@chromium.org"},
 		SoftwareDeps: []string{"memd"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
