@@ -21,6 +21,7 @@ func init() {
 			"chromeos-security@google.com",
 		},
 		SoftwareDeps: []string{"alt_syscall"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 

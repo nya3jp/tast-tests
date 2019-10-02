@@ -17,7 +17,7 @@ func init() {
 		Func:         SELinuxFilesNonARC,
 		Desc:         "Checks SELinux labels on Chrome-specific files on devices that don't support ARC",
 		Contacts:     []string{"fqj@chromium.org", "jorgelo@chromium.org", "chromeos-security@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "selinux", "no_android"},
 	})
 }

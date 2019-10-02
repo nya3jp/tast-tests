@@ -23,6 +23,7 @@ func init() {
 			"chromeos-security@google.com",
 		},
 		SoftwareDeps: []string{"firewall"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 

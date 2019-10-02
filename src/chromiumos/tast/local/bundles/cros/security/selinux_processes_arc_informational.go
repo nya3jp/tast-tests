@@ -17,7 +17,7 @@ func init() {
 		Func:         SELinuxProcessesARCInformational,
 		Desc:         "Checks that processes are running in correct SELinux domain (new and flaky tests) after ARC boots",
 		Contacts:     []string{"fqj@chromium.org", "jorgelo@chromium.org", "chromeos-security@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android", "selinux", "chrome"},
 		Pre:          arc.Booted(),
 	})

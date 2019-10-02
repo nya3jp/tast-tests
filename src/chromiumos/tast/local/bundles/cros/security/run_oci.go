@@ -27,6 +27,7 @@ func init() {
 			"chromeos-security@google.com",
 		},
 		SoftwareDeps: []string{"oci"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 

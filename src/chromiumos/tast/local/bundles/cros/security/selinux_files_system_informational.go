@@ -16,7 +16,7 @@ func init() {
 		Func:         SELinuxFilesSystemInformational,
 		Desc:         "Checks that SELinux file labels are set correctly for system files (new testcases, flaky testcases)",
 		Contacts:     []string{"fqj@chromium.org", "jorgelo@chromium.org", "chromeos-security@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"selinux"},
 	})
 }

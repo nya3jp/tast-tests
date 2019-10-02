@@ -27,6 +27,7 @@ func init() {
 			minijailSeccompPrivDrop32Policy,
 			minijailSeccompPrivDrop64Policy,
 		},
+		Attr: []string{"group:mainline"},
 	})
 }
 
