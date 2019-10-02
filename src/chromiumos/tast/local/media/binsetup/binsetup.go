@@ -10,35 +10,34 @@ import (
 	"os"
 	"path/filepath"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
-	"chromiumos/tast/testing"
 )
 
 // CreateTempDataDir creates a world-readable temporary directory using the supplied prefix
-// and copies the supplied data file basenames into it. The directory's path is returned.
-// A fatal test error is reported using s if an error is encountered.
-func CreateTempDataDir(s *testing.State, prefix string, dataFiles []string) string {
+// and copies basenames of the supplied data file into it.
+// The directory's path and error are returned.
+func CreateTempDataDir(prefix string, srcs []string) (string, error) {
 	td, err := ioutil.TempDir("", prefix)
 	if err != nil {
-		s.Fatal("Failed to create temp dir: ", err)
+		return "", errors.Wrap(err, "failed to create temp dir")
 	}
 	if err := os.Chmod(td, 0755); err != nil {
 		os.RemoveAll(td)
-		s.Fatalf("Failed to chmod %v: %v", td, err)
+		return "", errors.Wrapf(err, "failed to chmod %v", td)
 	}
 
-	for _, fn := range dataFiles {
-		src := s.DataPath(fn)
-		dst := filepath.Join(td, fn)
+	for _, src := range srcs {
+		dst := filepath.Join(td, filepath.Base(src))
 		if err := fsutil.CopyFile(src, dst); err != nil {
 			os.RemoveAll(td)
-			s.Fatalf("Failed to copy test file %s to %s: %v", src, dst, err)
+			return "", errors.Wrapf(err, "failed to copy test file %s to %s", src, dst)
 		}
 		if err := os.Chmod(dst, 0644); err != nil {
 			os.RemoveAll(td)
-			s.Fatalf("Failed to chmod %v: %v", dst, err)
+			return "", errors.Wrapf(err, "failed to chmod %v", dst)
 		}
 	}
 
-	return td
+	return td, nil
 }
