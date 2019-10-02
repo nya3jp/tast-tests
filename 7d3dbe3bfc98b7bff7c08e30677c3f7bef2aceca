@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "591a41dd_f563e991",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2019-10-02T11:30:59Z",
+      "side": 1,
+      "message": "Can you take a context instead?",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 63
+      },
+      "revId": "7d3dbe3bfc98b7bff7c08e30677c3f7bef2aceca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
