@@ -17,7 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     PlayH264,
 		Desc:     "Checks H264 video playback is working",
-		Contacts: []string{"deanliao@chromium.org", "chromeos-video-eng@google.com"},
+		Contacts: []string{"acourbot@chromium.org", "mcasas@chromium.org", "chromeos-video-eng@google.com"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Pre:          pre.ChromeVideo(),
