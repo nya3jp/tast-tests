@@ -20,7 +20,7 @@ func init() {
 		Func:         SurfaceInsets,
 		Desc:         "Test to handle SurfaceInsets not to exceed android window frame",
 		Contacts:     []string{"hirokisato@google.com", "arc-framework+tast@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Data:         []string{"ArcSurfaceInsetsTestApp.apk"},
 		Timeout:      4 * time.Minute,

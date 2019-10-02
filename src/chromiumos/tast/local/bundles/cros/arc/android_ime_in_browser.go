@@ -25,7 +25,7 @@ func init() {
 		Func:         AndroidIMEInBrowser,
 		Desc:         "Checks Android IME in a browser window",
 		Contacts:     []string{"tetsui@chromium.org", "arc-eng@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Data:         []string{"ArcInputMethodTest.apk"},
 		Timeout:      4 * time.Minute,

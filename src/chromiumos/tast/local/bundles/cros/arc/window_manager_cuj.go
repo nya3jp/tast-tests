@@ -62,7 +62,7 @@ func init() {
 		Func:         WindowManagerCUJ,
 		Desc:         "Verifies that Window Manager Critical User Journey behaves as described in go/arc-wm-p",
 		Contacts:     []string{"ricardoq@chromium.org", "arc-framework+tast@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Data:         []string{"ArcWMTestApp_23.apk", "ArcWMTestApp_24.apk", "ArcPipTastTest.apk"},
 		Pre:          arc.Booted(),

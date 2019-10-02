@@ -25,6 +25,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"android", "chrome"},
 		Pre:          arc.Booted(),
+		Attr:         []string{"group:mainline"},
 	})
 }
 

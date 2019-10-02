@@ -20,7 +20,7 @@ func init() {
 		Func:         ImeBlockingVK,
 		Desc:         "Checks if IME is properly hidden by an ARC dialog in tablet mode",
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Data:         []string{"ArcImeBlockingTest.apk"},
 		Timeout:      4 * time.Minute,

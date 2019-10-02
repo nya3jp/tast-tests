@@ -23,6 +23,7 @@ func init() {
 		SoftwareDeps: []string{"android_both", "chrome"},
 		Data:         []string{"ArcKeyboardTest.apk"},
 		Pre:          arc.Booted(),
+		Attr:         []string{"group:mainline"},
 	})
 }
 

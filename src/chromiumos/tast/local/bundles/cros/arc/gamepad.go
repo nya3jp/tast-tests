@@ -21,7 +21,7 @@ func init() {
 		Func:         Gamepad,
 		Desc:         "Checks gamepad support works on Android",
 		Contacts:     []string{"tetsui@chromium.org", "arc-framework@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Data:         []string{"ArcGamepadTest.apk"},
 		Pre:          arc.Booted(),
