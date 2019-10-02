@@ -28,13 +28,14 @@ type SensorLocation string
 
 // Sensor represents one sensor on the DUT.
 type Sensor struct {
-	Name         SensorName
-	Location     SensorLocation
-	Path         string
-	ID           uint
-	Scale        float64
-	MinFrequency int
-	MaxFrequency int
+	Name          SensorName
+	Location      SensorLocation
+	Path          string
+	ID            uint
+	Scale         float64
+	MinFrequency  int
+	MaxFrequency  int
+	OldSysfsStyle bool
 }
 
 // SensorReading is one reading from a sensor.
@@ -138,6 +139,7 @@ func parseSensor(devName string) (*Sensor, error) {
 	var name SensorName
 	var id, minFreq, maxFreq int
 	var scale float64
+	var zeroInt, zeroFrac, minInt, minFrac, maxInt, maxFrac int
 
 	re := regexp.MustCompile(`^iio:device[0-9]+$`)
 	if !re.MatchString(devName) {
@@ -187,19 +189,42 @@ func parseSensor(devName string) (*Sensor, error) {
 		}
 	}
 
-	f, err := sensor.ReadAttr("min_frequency")
+	_, err = sensor.ReadAttr("frequency")
 	if err == nil {
-		minFreq, err = strconv.Atoi(f)
-		if err != nil {
-			return nil, errors.Wrapf(err, "invalid min frequency %q", f)
-		}
+		sensor.OldSysfsStyle = true
+	} else {
+		sensor.OldSysfsStyle = false
 	}
 
-	f, err = sensor.ReadAttr("max_frequency")
-	if err == nil {
-		maxFreq, err = strconv.Atoi(f)
-		if err != nil {
-			return nil, errors.Wrapf(err, "invalid max frequency %q", f)
+	if sensor.OldSysfsStyle {
+		f, err := sensor.ReadAttr("minFrequency")
+		if err == nil {
+			minFreq, err = strconv.Atoi(f)
+			if err != nil {
+				return nil, errors.Wrapf(err, "invalid min frequency %q", f)
+			}
+		}
+
+		f, err = sensor.ReadAttr("maxFrequency")
+		if err == nil {
+			maxFreq, err = strconv.Atoi(f)
+			if err != nil {
+				return nil, errors.Wrapf(err, "invalid max frequency %q", f)
+			}
+		}
+	} else {
+		f, err := sensor.ReadAttr("samplingFrequency_available")
+		if err == nil {
+			_, err = fmt.Sscanf(f, "%d.%06d %d.%06d %d.%06d",
+				&zeroInt, &zeroFrac, &minInt, &minFrac, &maxInt, &maxFrac)
+			if err != nil {
+				return nil, errors.Wrapf(err, "invalid frequency range %q", f)
+			}
+			if zeroInt != 0 || zeroFrac != 0 {
+				return nil, errors.Wrapf(err, "frequency range must start with 0 %q", f)
+			}
+			minFreq = minInt*1000 + minFrac/1000
+			maxFreq = maxInt*1000 + maxFrac/1000
 		}
 	}
 
