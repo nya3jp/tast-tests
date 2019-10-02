@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "387f79d1_4be89b67",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-02T20:35:44Z",
+      "side": 1,
+      "message": "How about shorten the name as \"GetDBusPaths\" ?\nAlso, do we need to make it a public function? How about defining it after getProperties()?",
+      "revId": "e0fc848d987e70c4c0e25e953c29ab0f2e8692d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
