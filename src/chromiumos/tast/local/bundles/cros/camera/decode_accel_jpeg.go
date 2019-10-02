@@ -62,7 +62,15 @@ func DecodeAccelJPEG(ctx context.Context, s *testing.State) {
 	// The JPEG decode test operates on all files in a single directory.
 	// testing.State doesn't guarantee that all data files will be stored in the same
 	// directory, so copy them to a temp dir.
-	tempDir := binsetup.CreateTempDataDir(s, "DecodeAccelJPEG.tast.", imageFiles)
+	var srcs []string
+	for _, fn := range imageFiles {
+		src := s.DataPath(fn)
+		srcs = append(srcs, src)
+	}
+	tempDir, err := binsetup.CreateTempDataDir("DecodeAccelJPEG.tast.", srcs)
+	if err != nil {
+		s.Fatal("Failed to create a temporary directory: ", err)
+	}
 	defer os.RemoveAll(tempDir)
 
 	// Execute the test binary.
