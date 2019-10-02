@@ -139,7 +139,6 @@ group("all") {
     ":security.AltSyscall.clock_adjtime",
     ":security.AltSyscall.mmap",
     ":security.AltSyscall.read",
-    ":security.Minijail.staticbashexec",
     ":security.MinijailSeccomp.fail",
     ":security.MinijailSeccomp.ok",
     ":security.MinijailSeccomp.open",
