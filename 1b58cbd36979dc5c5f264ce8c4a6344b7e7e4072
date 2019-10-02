@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "238f958a_c13a6c01",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-02T03:15:47Z",
+      "side": 1,
+      "message": "Correct, but after crrev.com/c/1797967, it should work in all Intels.",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "1b58cbd36979dc5c5f264ce8c4a6344b7e7e4072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3494bfb7_919a3829",
         "filename": "src/chromiumos/tast/local/media/cpu/cpu.go",
         "patchSetId": 4
