@@ -18,7 +18,7 @@ func init() {
 		Func:         CCAUIMultiCamera,
 		Desc:         "Opens CCA and verifies the multi-camera related use cases",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinCamera},
 		Data:         []string{"cca_ui.js"},
 		Pre:          chrome.LoggedIn(),

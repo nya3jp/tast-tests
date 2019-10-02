@@ -18,7 +18,7 @@ func init() {
 		Func:         CCAUIMojo,
 		Desc:         "Verifies that the private Mojo APIs CCA relies on work as expected",
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
 	})
