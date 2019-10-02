@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3124fa86_baabe88d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-10-02T16:02:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1760d466_5788623b",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "1a18802902802c8d18858bbf20ddff522e2509f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6bd120f_e8673434",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "1a18802902802c8d18858bbf20ddff522e2509f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbafd46d_3f34c39c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/usbguard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-10-02T16:02:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6bd120f_e8673434",
+      "revId": "1a18802902802c8d18858bbf20ddff522e2509f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
