@@ -132,6 +132,30 @@
     },
     {
       "key": {
+        "uuid": "90b0beaf_b87d2e9e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-02T08:16:16Z",
+      "side": 1,
+      "message": "I adapted the CL to extract the stack trace from the core dump. Now it\u0027s only a few kb.",
+      "parentUuid": "248d903f_bc1a7509",
+      "range": {
+        "startLine": 14,
+        "startChar": 28,
+        "endLine": 14,
+        "endChar": 78
+      },
+      "revId": "2731b5b73bcdb0bc555e6dd0c8672276f7d00c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a090db3d_a015ba28",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 2
@@ -146,6 +170,24 @@
       "revId": "2731b5b73bcdb0bc555e6dd0c8672276f7d00c86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42d8e290_2e67c568",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-02T08:16:16Z",
+      "side": 1,
+      "message": "Thanks for the info! The stack trace is now extracted from the core dump, so this is no longer relevant.",
+      "parentUuid": "a090db3d_a015ba28",
+      "revId": "2731b5b73bcdb0bc555e6dd0c8672276f7d00c86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
