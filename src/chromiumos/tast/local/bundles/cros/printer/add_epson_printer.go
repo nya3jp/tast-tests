@@ -21,7 +21,7 @@ func init() {
 			"xiaochu@chromium.org",  // Original autotest author
 			"hidehiko@chromium.org", // Tast port author
 		},
-		Attr:         []string{"informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "cups"},
 		Data:         []string{epsonPPDFile, epsonToPrintFile, epsonGoldenFile},
 		Pre:          chrome.LoggedIn(),
