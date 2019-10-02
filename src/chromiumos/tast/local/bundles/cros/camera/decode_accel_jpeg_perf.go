@@ -72,7 +72,14 @@ func DecodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 
 	// Move all files required by the JPEG decode test to a temp dir, as
 	// testing.State doesn't guarantee all files are located in the same dir.
-	tempDir := binsetup.CreateTempDataDir(s, "DecodeAccelJPEGPerf.tast.", jpegPerfTestFiles)
+	var srcs []string
+	for _, fn := range jpegPerfTestFiles {
+		srcs = append(srcs, s.DataPath(fn))
+	}
+	tempDir, err := binsetup.CreateTempDataDir("DecodeAccelJPEGPerf.tast.", srcs)
+	if err != nil {
+		s.Fatal("Failed to create a temporary directory: ", err)
+	}
 	defer os.RemoveAll(tempDir)
 
 	// Stop the UI job. While this isn't required to run the test binary, it's
