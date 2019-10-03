@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f073fe7_c40e284d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-03T11:43:18Z",
+      "side": 1,
+      "message": "Would you mind adding \"group:mainline\" to Attr?\n\nhttps://groups.google.com/a/chromium.org/d/topic/tast-users/nL7Gvea9Tgk/discussion",
+      "range": {
+        "startLine": 25,
+        "startChar": 25,
+        "endLine": 25,
+        "endChar": 35
+      },
+      "revId": "0b0d5d6cf65eec9aa8512ec72ecb193931ae4c84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "282c65b8_758ca1f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-03T11:43:18Z",
+      "side": 1,
+      "message": "defer d.Close()",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 2
+      },
+      "revId": "0b0d5d6cf65eec9aa8512ec72ecb193931ae4c84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d25904d3_ba9aae16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-03T11:43:18Z",
+      "side": 1,
+      "message": "Remove \"with\"?",
+      "range": {
+        "startLine": 101,
+        "startChar": 21,
+        "endLine": 101,
+        "endChar": 25
+      },
+      "revId": "0b0d5d6cf65eec9aa8512ec72ecb193931ae4c84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fe52adc_f8ff38c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-03T11:43:18Z",
+      "side": 1,
+      "message": "s.Fatal",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 16
+      },
+      "revId": "0b0d5d6cf65eec9aa8512ec72ecb193931ae4c84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f2134ae_892f91cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-03T11:43:18Z",
+      "side": 1,
+      "message": "Why do we compare length, rather than the whole content? This won\u0027t work if the original text has the same length as the final text.",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 16
+      },
+      "revId": "0b0d5d6cf65eec9aa8512ec72ecb193931ae4c84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e5cc11f_bbdd8001",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-03T11:43:18Z",
+      "side": 1,
+      "message": "nit: Mind using s.Fatal instead?\n\n s.Fatal(\"...: \", err)",
+      "range": {
+        "startLine": 132,
+        "startChar": 5,
+        "endLine": 132,
+        "endChar": 11
+      },
+      "revId": "0b0d5d6cf65eec9aa8512ec72ecb193931ae4c84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de8e9209_80c7ad48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-03T11:43:18Z",
+      "side": 1,
+      "message": "1s timeout sounds a bit short, are you fine with it?",
+      "range": {
+        "startLine": 140,
+        "startChar": 35,
+        "endLine": 140,
+        "endChar": 46
+      },
+      "revId": "0b0d5d6cf65eec9aa8512ec72ecb193931ae4c84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e8c1267_0ab8d731",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-03T11:43:18Z",
+      "side": 1,
+      "message": "Please include err here to give more details of the error.",
+      "range": {
+        "startLine": 142,
+        "startChar": 47,
+        "endLine": 142,
+        "endChar": 52
+      },
+      "revId": "0b0d5d6cf65eec9aa8512ec72ecb193931ae4c84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "163d00c8_45c5255a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-03T11:43:18Z",
+      "side": 1,
+      "message": "testing.Poll is not useful when the given function does not return non-nil errors.",
+      "range": {
+        "startLine": 162,
+        "startChar": 9,
+        "endLine": 162,
+        "endChar": 21
+      },
+      "revId": "0b0d5d6cf65eec9aa8512ec72ecb193931ae4c84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82623c07_c8b6cbdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-03T11:43:18Z",
+      "side": 1,
+      "message": "I guess you want to call this function outside of testing.Poll?",
+      "range": {
+        "startLine": 163,
+        "startChar": 17,
+        "endLine": 163,
+        "endChar": 37
+      },
+      "revId": "0b0d5d6cf65eec9aa8512ec72ecb193931ae4c84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04c55be6_5996d205",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-03T11:43:18Z",
+      "side": 1,
+      "message": "typo: tablet\n\nAlso, when isTabletMode \u003d false, we don\u0027t \"enable\" tablet mode, and this message might be a bit confusing.",
+      "range": {
+        "startLine": 164,
+        "startChar": 30,
+        "endLine": 164,
+        "endChar": 36
+      },
+      "revId": "0b0d5d6cf65eec9aa8512ec72ecb193931ae4c84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "945e2d56_b227af16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-03T11:43:18Z",
+      "side": 1,
+      "message": "I gess you want to return an error here, instead of s.Fatalf?",
+      "range": {
+        "startLine": 168,
+        "startChar": 4,
+        "endLine": 168,
+        "endChar": 12
+      },
+      "revId": "0b0d5d6cf65eec9aa8512ec72ecb193931ae4c84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
