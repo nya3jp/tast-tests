@@ -70,6 +70,24 @@
       "revId": "08a6a2ca427ca39379a371249080df553780b920",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "706a44b4_69781c4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-03T03:42:56Z",
+      "side": 1,
+      "message": "Ah, I misunderstood! Changed all links to reference style, looks better indeed, thanks!",
+      "parentUuid": "ab51f43a_18cce8da",
+      "revId": "08a6a2ca427ca39379a371249080df553780b920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
