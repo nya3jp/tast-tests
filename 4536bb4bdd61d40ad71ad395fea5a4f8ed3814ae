@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d1336b4_7b6f3c07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-03T20:09:59Z",
+      "side": 1,
+      "message": "Please remove this to make this test non-mainline.",
+      "range": {
+        "startLine": 20,
+        "startChar": 25,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "4536bb4bdd61d40ad71ad395fea5a4f8ed3814ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fafbc84a_17fde28c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vp92.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-03T20:09:59Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 20,
+        "startChar": 26,
+        "endLine": 20,
+        "endChar": 40
+      },
+      "revId": "4536bb4bdd61d40ad71ad395fea5a4f8ed3814ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
