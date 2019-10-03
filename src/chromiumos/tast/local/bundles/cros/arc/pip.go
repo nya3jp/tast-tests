@@ -178,6 +178,8 @@ func PIP(ctx context.Context, s *testing.State) {
 				{name: "PIP AutoPIP Minimize", fn: testPIPAutoPIPMinimize, initMethod: startActivity},
 				{name: "PIP AutoPIP New Android Window", fn: testPIPAutoPIPNewAndroidWindow, initMethod: doNothing},
 				{name: "PIP AutoPIP New Chrome Window", fn: testPIPAutoPIPNewChromeWindow, initMethod: startActivity},
+				{name: "PIP ExpandPIP Shelf Icon", fn: testPIPExpandViaShelfIcon, initMethod: enterPip},
+				{name: "PIP ExpandPIP Menu Touch", fn: testPIPExpandViaMenuTouch, initMethod: enterPip},
 			} {
 				if test.initMethod == startActivity || test.initMethod == enterPip {
 					if multiActivityPIP {
@@ -595,6 +597,24 @@ func testPIPAutoPIPMinimize(ctx context.Context, tconn *chrome.Conn, a *arc.ARC,
 	return nil
 }
 
+// testPIPExpandViaMenuTouch verifies that PIP window is properly expanded by touching menu.
+func testPIPExpandViaMenuTouch(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+	if err := expandPIPViaMenuTouch(ctx, tconn, pipAct, dev, dispMode); err != nil {
+		return errors.Wrap(err, "could not expand PIP")
+	}
+
+	return ash.WaitForARCAppWindowState(ctx, tconn, pkgName, ash.WindowStateMaximized)
+}
+
+// testPIPExpandViaShelfIcon verifies that PIP window is properly expanded by pressing shelf icon.
+func testPIPExpandViaShelfIcon(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+	if err := pressShelfIcon(ctx, tconn); err != nil {
+		return errors.Wrap(err, "could not expand PIP")
+	}
+
+	return ash.WaitForARCAppWindowState(ctx, tconn, pkgName, ash.WindowStateMaximized)
+}
+
 // testPIPAutoPIPNewAndroidWindow verifies that creating a new Android window that occludes an auto-PIP window will trigger PIP.
 func testPIPAutoPIPNewAndroidWindow(ctx context.Context, tconn *chrome.Conn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
 	const (
@@ -690,6 +710,60 @@ new Promise((resolve, reject) => {
 
 // helper functions
 
+// expandPIPViaMenuTouch injects touch events to the center of PIP window and expands PIP.
+// The first touch event shows PIP menu and subsequent events expand PIP.
+func expandPIPViaMenuTouch(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+	tsw, err := input.Touchscreen(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to open touchscreen device")
+	}
+	defer tsw.Close()
+
+	stw, err := tsw.NewSingleTouchWriter()
+	if err != nil {
+		return errors.Wrap(err, "could not create TouchEventWriter")
+	}
+	defer stw.Close()
+
+	dispW := dispMode.WidthInNativePixels
+	dispH := dispMode.HeightInNativePixels
+	pixelToTuxelX := float64(tsw.Width()) / float64(dispW)
+	pixelToTuxelY := float64(tsw.Height()) / float64(dispH)
+
+	window, err := getPIPWindow(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "could not get PIP window bounds")
+	}
+	bounds := ash.ConvertBoundsFromDpToPx(window.BoundsInRoot, dispMode.DeviceScaleFactor)
+
+	pixelX := float64(bounds.Left + bounds.Width/2)
+	pixelY := float64(bounds.Top + bounds.Height/2)
+	x := input.TouchCoord(pixelX * pixelToTuxelX)
+	y := input.TouchCoord(pixelY * pixelToTuxelY)
+
+	testing.ContextLogf(ctx, "Injecting touch event to {%f, %f} to expand PIP; display {%d, %d}, PIP bounds {(%d, %d), %dx%d}",
+		pixelX, pixelY, dispW, dispH, bounds.Left, bounds.Top, bounds.Width, bounds.Height)
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if err := stw.Move(x, y); err != nil {
+			return errors.Wrap(err, "failed to execute touch gesture")
+		}
+		if err := stw.End(); err != nil {
+			return errors.Wrap(err, "failed to finish swipe gesture")
+		}
+
+		windowState, err := ash.GetARCAppWindowState(ctx, tconn, pkgName)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get Ash window state"))
+		}
+		if windowState != ash.WindowStateMaximized {
+			return errors.New("the window isn't expanded yet")
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 500 * time.Millisecond})
+}
+
 // waitForPIPWindow keeps looking for a PIP window until it appears on the Chrome side.
 func waitForPIPWindow(ctx context.Context, tconn *chrome.Conn) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
@@ -773,6 +847,29 @@ func hideSystemStatusArea(ctx context.Context, tconn *chrome.Conn) error {
 	// Verify that it is hidden.
 	if _, err := getStatusAreaRect(ctx, tconn); err == nil {
 		return errors.New("failed to hide the Status Area")
+	}
+	return nil
+}
+
+// pressShelfIcon press the shelf icon of PIP window.
+func pressShelfIcon(ctx context.Context, tconn *chrome.Conn) error {
+	// There can be multiple icons on the shelf, but currently there's no way to find a specific icon.
+	// So here we assume the shelf icon of the PIP window is located on the right-most position on the shelf.
+	// This is currently true given that our apk is launched last, our apk is not pinned, and there are not too many apps opened.
+	err := tconn.EvalPromise(ctx,
+		`new Promise((resolve, reject) => {
+		  chrome.automation.getDesktop(function(root) {
+		    const icons = root.findAll({ attributes: { className: 'ash/ShelfAppButton'}});
+		    if (!icons || icons.length === 0) {
+		      reject("Failed to locate icon");
+		      return;
+		    }
+		    icons[icons.length - 1].doDefault();
+		    resolve();
+		  })
+		})`, nil)
+	if err != nil {
+		return errors.Wrap(err, "failed to find ShelfAppButton")
 	}
 	return nil
 }
