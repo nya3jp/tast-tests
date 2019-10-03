@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "65dab6f3_6bab60f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2019-10-03T08:29:55Z",
+      "side": 1,
+      "message": "can we leave out enterPip until it\u0027s used?",
+      "revId": "cba8201506f611a2e3de4d56eb539ca962fbba61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24d44851_c30b15c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2019-10-03T08:29:55Z",
+      "side": 1,
+      "message": "missing return",
+      "revId": "cba8201506f611a2e3de4d56eb539ca962fbba61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cafd67b6_06cb6b11",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 3
@@ -13,6 +47,57 @@
       "writtenOn": "2019-10-03T08:26:58Z",
       "side": 1,
       "message": "can we not compare by function? (curious, not asking to change; still, using a string for this feels weird to me)",
+      "revId": "cba8201506f611a2e3de4d56eb539ca962fbba61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24552014_8af1c07a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2019-10-03T08:29:55Z",
+      "side": 1,
+      "message": "missing return",
+      "revId": "cba8201506f611a2e3de4d56eb539ca962fbba61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "068c6303_781551fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2019-10-03T08:29:55Z",
+      "side": 1,
+      "message": "missing return",
+      "revId": "cba8201506f611a2e3de4d56eb539ca962fbba61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f4a42c6_3ee17a50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2019-10-03T08:29:55Z",
+      "side": 1,
+      "message": "nit: extra detail, like could not expand PIP via alt-tab?",
       "revId": "cba8201506f611a2e3de4d56eb539ca962fbba61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
