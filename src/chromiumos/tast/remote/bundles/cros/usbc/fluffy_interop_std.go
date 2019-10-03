@@ -12,6 +12,7 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/dut"
 	"chromiumos/tast/remote/servo"
 	"chromiumos/tast/testing"
 )
@@ -65,12 +66,20 @@ func FluffyInteropStd(c context.Context, s *testing.State) {
 		s.Fatal("Error decoding JSON file: ", err)
 	}
 
+	dut, ok := dut.FromContext(c)
+	if !ok {
+		s.Fatal("Failed to get DUT")
+	}
+
 	// Setup a servo host connected to fluffy.
 	s.Logf("Setting up connection to servod at %s", scfg)
-	fluffy, err := servo.New(c, scfg)
+	pxy, err := servo.NewProxy(c, scfg, dut.KeyFile(), dut.KeyDir())
 	if err != nil {
 		s.Fatal("Failed to connect to servod: ", err)
 	}
+	defer pxy.Close(c)
+
+	fluffy := pxy.Servo()
 
 	// For each charger, enable it, wait a bit and verify that the expected voltage is reached (with some margin).
 	for p := range cfg {
