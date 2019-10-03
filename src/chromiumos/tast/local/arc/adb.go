@@ -10,6 +10,10 @@ import (
 	"os"
 	"regexp"
 	"strings"
+	"syscall"
+	"time"
+
+	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/testexec"
@@ -92,8 +96,9 @@ func setUpADBAuth(ctx context.Context) error {
 	}
 
 	// Restart local ADB server to use the newly installed private key.
-	// We do not use adb kill-server since it is unreliable (crbug.com/855325).
-	testexec.CommandContext(ctx, "killall", "--quiet", "--wait", "-KILL", "adb").Run()
+	if err := killADBLocalServer(ctx); err != nil {
+		return errors.Wrap(err, "failed to kill ADB local server")
+	}
 	if err := adbCommand(ctx, "start-server").Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed starting ADB local server")
 	}
@@ -193,6 +198,43 @@ func restartADBDaemon(ctx context.Context) error {
 		return err
 	}
 	return setProp(ctx, "ctl.restart", "adbd")
+}
+
+// killADBLocalServer kills the existing ADB local server if it is running.
+//
+// We do not use adb kill-server since it is unreliable (crbug.com/855325).
+// We do not use killall since it can wait for orphan adb processes indefinitely (b/137797801).
+func killADBLocalServer(ctx context.Context) error {
+	ps, err := process.Processes()
+	if err != nil {
+		return err
+	}
+
+	for _, p := range ps {
+		if name, err := p.Name(); err != nil || name != "adb" {
+			continue
+		}
+		if ppid, err := p.Ppid(); err != nil || ppid != 1 {
+			continue
+		}
+
+		if err := syscall.Kill(int(p.Pid), syscall.SIGKILL); err != nil {
+			// In a very rare race condition, the server process might be already gone.
+			// Just log the error rather than reporting it to the caller.
+			testing.ContextLog(ctx, "Failed to kill ADB local server process: ", err)
+		}
+
+		// Wait for the process to exit for sure.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if _, err := process.NewProcess(p.Pid); err == nil {
+				return errors.Errorf("pid %d is still running", p.Pid)
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 3 * time.Second}); err != nil {
+			return errors.Wrap(err, "failed on waiting for ADB local server process to exit")
+		}
+	}
+	return nil
 }
 
 func setProp(ctx context.Context, name, value string) error {
