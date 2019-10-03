@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4e1d8877_f1749c79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-03T22:02:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c4f9d62_4f4d6de1",
+      "revId": "5fc56aa5c742a4cdc9d47062f5349de4c64825b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fad5fb9_75613b80",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
         "patchSetId": 13
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "8e4b52fd_fa0c3e5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-03T22:02:53Z",
+      "side": 1,
+      "message": "good catch. fixed.",
+      "parentUuid": "4fad5fb9_75613b80",
+      "range": {
+        "startLine": 163,
+        "startChar": 4,
+        "endLine": 169,
+        "endChar": 13
+      },
+      "revId": "5fc56aa5c742a4cdc9d47062f5349de4c64825b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8cfbab7c_c814231d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
         "patchSetId": 13
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "72ad5c5a_dce788c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-03T22:02:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cfbab7c_c814231d",
+      "revId": "5fc56aa5c742a4cdc9d47062f5349de4c64825b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa4aa257_64aa8892",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
         "patchSetId": 13
@@ -73,6 +133,24 @@
       "revId": "5fc56aa5c742a4cdc9d47062f5349de4c64825b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eb5d092_ef1db5ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-03T22:02:53Z",
+      "side": 1,
+      "message": "Done.\n\nI put it as a global variable. Not sure whether this is acceptable or not.\nThe rationale behind putting it as global is maintainability. I could declare the regexp inside `grabPerfSamples` but I\u0027ll have to add an extra param in `waitUntilFramesAvailable` which looks weird.\n\nIn any case, if you are not Ok with this, please, be as specific as possible where you\u0027d like to have it defined (just to avoid unnecessary code-review iterations).\n\nthanks.",
+      "parentUuid": "fa4aa257_64aa8892",
+      "revId": "5fc56aa5c742a4cdc9d47062f5349de4c64825b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
