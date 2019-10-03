@@ -22,6 +22,30 @@
       "revId": "b86b1243e156f25eaf3ab852b78e96d3b0bc6a7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f47c48c_9a479d7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_ring.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-10-03T04:14:33Z",
+      "side": 1,
+      "message": "Should we prevent SensorRing to run at all on these machines?\nTHere are several reasons beside not having a ring for NewRing to fail.\n\nWe could check with ectool inventory if EC has ring support.",
+      "parentUuid": "c275735f_47c57740",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "b86b1243e156f25eaf3ab852b78e96d3b0bc6a7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
