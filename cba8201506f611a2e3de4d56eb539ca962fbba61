@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cafd67b6_06cb6b11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2019-10-03T08:26:58Z",
+      "side": 1,
+      "message": "can we not compare by function? (curious, not asking to change; still, using a string for this feels weird to me)",
+      "revId": "cba8201506f611a2e3de4d56eb539ca962fbba61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4598c52f_64a067bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2019-10-03T08:26:58Z",
+      "side": 1,
+      "message": "I suppose there is no way to guarantee that this performs a short-alt tab, but maybe we can test to see if it actually did short-alt tab by checking if activation changed somehow?",
+      "revId": "cba8201506f611a2e3de4d56eb539ca962fbba61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
