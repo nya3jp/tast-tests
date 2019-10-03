@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17476eb4_bd122b1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-03T18:41:00Z",
+      "side": 1,
+      "message": "If the relevant bug is the one in the line above, I don\u0027t think we need this comment line.\n\nIf it\u0027s not, please file a bug for this and put the bug in the TODO(...) instead of an LDAP, since that is more stable in case things get reshuffled between people.",
+      "range": {
+        "startLine": 115,
+        "startChar": 9,
+        "endLine": 115,
+        "endChar": 19
+      },
+      "revId": "0219e81246c3b34132b7c1d309ed270e30444389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
