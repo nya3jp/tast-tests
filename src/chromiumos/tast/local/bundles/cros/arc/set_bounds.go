@@ -89,6 +89,7 @@ func SetBounds(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get device: ", err)
 	}
+	defer d.Close()
 
 	if err := act.WaitForIdle(ctx, time.Second); err != nil {
 		s.Fatal("Failed to wait for idle activity: ", err)
