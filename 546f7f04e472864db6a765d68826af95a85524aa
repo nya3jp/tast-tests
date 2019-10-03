@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d46dea6a_318c457b",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-03T23:59:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2cd6558_5d1ea12c",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 48
+      },
+      "revId": "546f7f04e472864db6a765d68826af95a85524aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a13d7400_97749a07",
         "filename": "src/chromiumos/tast/local/shill/wifi.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "546f7f04e472864db6a765d68826af95a85524aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b29e409_8b53b9d0",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-03T23:59:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a13d7400_97749a07",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "546f7f04e472864db6a765d68826af95a85524aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
