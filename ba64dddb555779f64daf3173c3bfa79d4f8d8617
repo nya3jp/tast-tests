@@ -373,6 +373,30 @@
     },
     {
       "key": {
+        "uuid": "52693d82_4255f3d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-03T20:44:14Z",
+      "side": 1,
+      "message": "Thanks folks, the pointers were helpful and I managed to splinter the JS\noff, please see PS4.",
+      "parentUuid": "6e63efd0_5eed7d2c",
+      "range": {
+        "startLine": 269,
+        "startChar": 46,
+        "endLine": 315,
+        "endChar": 3
+      },
+      "revId": "ba64dddb555779f64daf3173c3bfa79d4f8d8617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adb932c6_66396459",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 2
