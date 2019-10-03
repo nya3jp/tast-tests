@@ -349,6 +349,30 @@
     },
     {
       "key": {
+        "uuid": "6e63efd0_5eed7d2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-03T20:18:32Z",
+      "side": 1,
+      "message": "\u003e I would load as a string to the run in the EvalPromise in l.318\n\nSGTM. camera.CCAAPI does the same thing.\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/camera/cca_api.go?rcl\u003db35cc6794514694aa50f292b4e309d1386831c42\u0026l\u003d60",
+      "parentUuid": "73be2db7_6cecca6d",
+      "range": {
+        "startLine": 269,
+        "startChar": 46,
+        "endLine": 315,
+        "endChar": 3
+      },
+      "revId": "ba64dddb555779f64daf3173c3bfa79d4f8d8617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "adb932c6_66396459",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 2
