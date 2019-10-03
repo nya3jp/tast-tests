@@ -108,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "47e6ab0e_8a176b86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-03T04:23:37Z",
+      "side": 1,
+      "message": "It\u0027s a little bit too cryptic to me :Q And I would like to keep the variable name same as the argument name.",
+      "parentUuid": "56a20a44_710b13da",
+      "range": {
+        "startLine": 134,
+        "startChar": 5,
+        "endLine": 134,
+        "endChar": 16
+      },
+      "revId": "d75a467ac6c657c452215dd33279bb8852d69d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2721c4f7_4b63ab1c",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2.go",
         "patchSetId": 1
@@ -137,6 +161,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "2721c4f7_4b63ab1c",
+      "revId": "d75a467ac6c657c452215dd33279bb8852d69d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6d29cdc_4fdca00d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-03T04:23:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad081e96_51a2f974",
       "revId": "d75a467ac6c657c452215dd33279bb8852d69d19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -190,6 +232,30 @@
     },
     {
       "key": {
+        "uuid": "c8d76f55_6a235b23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-03T04:23:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "db805a68_1767b44d",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 21
+      },
+      "revId": "d75a467ac6c657c452215dd33279bb8852d69d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38df2621_28c2b705",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2.go",
         "patchSetId": 1
@@ -234,6 +300,30 @@
       "revId": "d75a467ac6c657c452215dd33279bb8852d69d19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e409e64_d259dce7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2019-10-03T04:23:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b3e5c3ea_28a8bcd1",
+      "range": {
+        "startLine": 178,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 17
+      },
+      "revId": "d75a467ac6c657c452215dd33279bb8852d69d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
