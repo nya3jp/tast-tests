@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6751076e_1fdafccb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-03T18:44:54Z",
+      "side": 1,
+      "message": "I\u0027m not even sure the full core dump helps you there, since you would still have to examine it with gdb that is pointed at a build root with the symbols, right? Whether or not we store the full dump doesn\u0027t help re: whether the binary is stripped beforehand.\n\nI guess to test this you can run an earlier PS with the stripped binary and see what happens?",
+      "parentUuid": "557db420_129c3827",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 73
+      },
+      "revId": "852f593b2d555413a6a6c8fc937644125e607e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95ac2bf8_4f612f41",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 4
