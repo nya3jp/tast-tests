@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c4f9d62_4f4d6de1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-03T01:43:32Z",
+      "side": 1,
+      "message": "nit/style: for consistency, could you add trailing \u0027,\u0027 and put \u0027}\u0027 to the next line?\n\n...\n    \"ricardoq@chromium.org\",\n},\nAttr: ...",
+      "revId": "5fc56aa5c742a4cdc9d47062f5349de4c64825b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fad5fb9_75613b80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-03T01:43:32Z",
+      "side": 1,
+      "message": "In this poll, IIUC, it could capture the numFrames just after rotation (i.e., it could be not yet finished).\nIs it intentional?",
+      "range": {
+        "startLine": 163,
+        "startChar": 4,
+        "endLine": 169,
+        "endChar": 13
+      },
+      "revId": "5fc56aa5c742a4cdc9d47062f5349de4c64825b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cfbab7c_c814231d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-03T01:43:32Z",
+      "side": 1,
+      "message": "Could you comment what\u0027s returned?",
+      "revId": "5fc56aa5c742a4cdc9d47062f5349de4c64825b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa4aa257_64aa8892",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/screen_rotation_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-03T01:43:32Z",
+      "side": 1,
+      "message": "Could you move this out from the method in order to avoid compiling for each call?",
+      "revId": "5fc56aa5c742a4cdc9d47062f5349de4c64825b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
