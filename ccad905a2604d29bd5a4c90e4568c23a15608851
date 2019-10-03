@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3caccb46_b19012a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-03T02:17:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e838bc0_1e384250",
+      "revId": "ccad905a2604d29bd5a4c90e4568c23a15608851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5784c589_4b7a6f4e",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_decode_accel_h264_240p.go",
         "patchSetId": 8
@@ -30,6 +48,30 @@
       "writtenOn": "2019-09-27T20:24:32Z",
       "side": 1,
       "message": "any reason these were changed to normal strings? We do replicate them in a few tests and a few places.",
+      "range": {
+        "startLine": 23,
+        "startChar": 25,
+        "endLine": 23,
+        "endChar": 42
+      },
+      "revId": "ccad905a2604d29bd5a4c90e4568c23a15608851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3d99b96_39e7a6eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_decode_accel_h264_240p.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-03T02:17:54Z",
+      "side": 1,
+      "message": "The old tests required all video metadata to be passed as parameters. This metadata was stored in the test_cases.go file, e.g.:\n\nvar Test25FPSH264 \u003d TestVideoData{\n\tName:             \"test-25fps.h264\",\n\tSize:             videotype.NewSize(320, 240),\n\tNumFrames:        250,\n\tNumFragments:     258,\n\tMinFPSWithRender: 35,\n\tMinFPSNoRender:   150,\n\tProfile:          videotype.H264Prof,\n}\n\nFor the new tests video metadata is stored in json files accompanying the test videos, so this file is no longer required. We could create a new file containing a list of all test video names, but I decided not to do this:\n- It\u0027s easier now to immediately see what test videos are used by the test.\n- Test videos are only used in 1-2 tests.\n- Maintaining a list of test videos would make changing test videos easier, but I don\u0027t think this will happen often, and changing 2 files instead of 1 file is not a big issue.",
+      "parentUuid": "5784c589_4b7a6f4e",
       "range": {
         "startLine": 23,
         "startChar": 25,
