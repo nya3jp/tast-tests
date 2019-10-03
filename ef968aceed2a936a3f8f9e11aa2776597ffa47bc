@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "512587ec_8f998aae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2019-10-03T00:35:14Z",
+      "side": 1,
+      "message": "Suggest standard Go format comment: \"apk is the name of a plain hello world app\"",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 9
+      },
+      "revId": "ef968aceed2a936a3f8f9e11aa2776597ffa47bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
