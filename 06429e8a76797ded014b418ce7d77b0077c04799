@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2660de84_bd16fb01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-03T18:14:22Z",
+      "side": 1,
+      "message": "Sure. What exactly does this do?",
+      "parentUuid": "53e6c538_a7552d25",
+      "revId": "06429e8a76797ded014b418ce7d77b0077c04799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a9ec92e5_509f1612",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
         "patchSetId": 6
@@ -33,6 +51,24 @@
       "revId": "06429e8a76797ded014b418ce7d77b0077c04799",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b48f941_3e4891af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-03T18:14:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9ec92e5_509f1612",
+      "revId": "06429e8a76797ded014b418ce7d77b0077c04799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "36bbc481_85caefcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-03T18:14:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eeb780ad_8dae341a",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 2
+      },
+      "revId": "06429e8a76797ded014b418ce7d77b0077c04799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3761a8ff_2f161a82",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
         "patchSetId": 6
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "ac30c38c_538a4703",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-03T18:14:22Z",
+      "side": 1,
+      "message": "If there are unexpected crashes that happen to occur during the test (e.g. from other system components), we still want to store them, so I\u0027d prefer to only remove the expected ones.",
+      "parentUuid": "3761a8ff_2f161a82",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 38
+      },
+      "revId": "06429e8a76797ded014b418ce7d77b0077c04799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "044c4471_502dfe13",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
         "patchSetId": 6
@@ -102,6 +186,30 @@
       "revId": "06429e8a76797ded014b418ce7d77b0077c04799",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f60e8158_73ce4d8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-03T18:14:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "044c4471_502dfe13",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 9
+      },
+      "revId": "06429e8a76797ded014b418ce7d77b0077c04799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
