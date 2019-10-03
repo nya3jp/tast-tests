@@ -63,6 +63,8 @@ func init() {
 	})
 }
 
+type testFunc func(context.Context, *chrome.Conn, *arc.Activity, *ui.Device, *display.DisplayMode) error
+
 func PIP(ctx context.Context, s *testing.State) {
 	must := func(err error) {
 		if err != nil {
@@ -142,7 +144,6 @@ func PIP(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to set tablet mode enabled to %t: %v", tabletMode, err)
 		}
 
-		type testFunc func(context.Context, *chrome.Conn, *arc.Activity, *ui.Device, *display.DisplayMode) error
 		for idx, test := range []struct {
 			name string
 			fn   testFunc
@@ -153,6 +154,7 @@ func PIP(ctx context.Context, s *testing.State) {
 			{"PIP GravityStatusArea", testPIPGravityStatusArea},
 			{"PIP GravityShelfAutoHide", testPIPGravityShelfAutoHide},
 			{"PIP Toggle Tablet mode", testPIPToggleTabletMode},
+			{"PIP Expand", testPIPExpand},
 		} {
 			s.Logf("Running %q", test.name)
 			// Clear task WM state. Windows should be positioned at their default location.
@@ -544,7 +546,143 @@ func testPIPToggleTabletMode(ctx context.Context, tconn *chrome.Conn, act *arc.A
 	return nil
 }
 
+// testPIPExpand verifies that PIP window is expanded in various ways properly.
+func testPIPExpand(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+	for _, test := range []struct {
+		name     string
+		fn       testFunc
+		enterPip bool
+	}{
+		{name: "PIP Expand Via Shelf Icon", fn: testPIPExpandViaShelfIcon, enterPip: true},
+		{name: "PIP Expand Via Menu Touch", fn: testPIPExpandViaMenuTouch, enterPip: true},
+		// TODO(takise): change enterPip to false once long alt tab has become ready.
+		{name: "PIP Expand Via Alt Tab", fn: testPIPExpandViaAltTab, enterPip: true},
+	} {
+		tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+		if err != nil {
+			errors.Wrapf(err, "failed to get tablet mode in %s test", test.name)
+		}
+
+		if tabletModeEnabled && test.name == "PIP Expand Via Alt Tab" {
+			// Keyboard is disabled in tablet mode, so we don't need to test alt tab in this case.
+			continue
+		}
+
+		testing.ContextLogf(ctx, "Running %q", test.name)
+
+		if test.enterPip {
+			// Press button that triggers PIP mode in activity.
+			const pipButtonID = pkgName + ":id/enter_pip"
+			if err := dev.Object(ui.ID(pipButtonID)).Click(ctx); err != nil {
+				errors.Wrapf(err, "failed to click pip button in %s test", test.name)
+			}
+			if err := ash.WaitForARCAppWindowState(ctx, tconn, pkgName, ash.WindowStatePIP); err != nil {
+				errors.Wrapf(err, "could not enter pip in %s test", test.name)
+			}
+		}
+
+		if err := test.fn(ctx, tconn, act, dev, dispMode); err != nil {
+			return errors.Wrapf(err, "%s test failed", test.name)
+		}
+	}
+
+	return nil
+}
+
+// testPIPExpandViaMenuTouch verifies that PIP window is properly expanded by touching menu.
+func testPIPExpandViaMenuTouch(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+	if err := expandPIPViaMenuTouch(ctx, tconn, act, dev, dispMode); err != nil {
+		return errors.Wrap(err, "could not expand PIP")
+	}
+
+	return ash.WaitForARCAppWindowState(ctx, tconn, pkgName, ash.WindowStateMaximized)
+}
+
+// testPIPExpandViaShelfIcon verifies that PIP window is properly expanded by pressing shelf icon.
+func testPIPExpandViaShelfIcon(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+	if err := pressShelfIcon(ctx, tconn); err != nil {
+		return errors.Wrap(err, "could not expand PIP")
+	}
+
+	return ash.WaitForARCAppWindowState(ctx, tconn, pkgName, ash.WindowStateMaximized)
+}
+
+// testPIPExpandViaAltTab verifies that PIP window is properly expanded via alt tab.
+func testPIPExpandViaAltTab(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+	// TODO(takise): Add the case of long alt tab and with setting app open.
+	if err := shortAltTab(ctx); err != nil {
+		return errors.Wrap(err, "could not expand PIP")
+	}
+
+	return ash.WaitForARCAppWindowState(ctx, tconn, pkgName, ash.WindowStateMaximized)
+}
+
 // helper functions
+
+// shortAltTab injects Alt-Tab touch event. The keys are released before window cycler view get shown.
+func shortAltTab(ctx context.Context) error {
+	kw, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get keyboard")
+	}
+	return kw.Accel(ctx, "Alt+Tab")
+}
+
+// expandPIPViaMenuTouch injects touch events to the center of PIP window and expands PIP.
+// The first touch event shows PIP menu and subsequent events expand PIP.
+func expandPIPViaMenuTouch(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
+	tsw, err := input.Touchscreen(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to open touchscreen device")
+	}
+	defer tsw.Close()
+
+	stw, err := tsw.NewSingleTouchWriter()
+	if err != nil {
+		return errors.Wrap(err, "could not create TouchEventWriter")
+	}
+	defer stw.Close()
+
+	dispW := dispMode.WidthInNativePixels
+	dispH := dispMode.HeightInNativePixels
+	pixelToTuxelX := float64(tsw.Width()) / float64(dispW)
+	pixelToTuxelY := float64(tsw.Height()) / float64(dispH)
+
+	info, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
+	if err != nil {
+		return errors.Wrap(err, "could not get PIP window bounds")
+	}
+	bounds := ash.ConvertBoundsFromDpToPx(info.Bounds, dispMode.DeviceScaleFactor)
+
+	pixelX := float64(bounds.Left + bounds.Width/2)
+	pixelY := float64(bounds.Top + bounds.Height/2)
+	x := input.TouchCoord(pixelX * pixelToTuxelX)
+	y := input.TouchCoord(pixelY * pixelToTuxelY)
+
+	testing.ContextLogf(ctx, "Injecting touch event to {%f, %f} to expand PIP; display {%d, %d}, PIP bounds {(%d, %d), %dx%d}",
+		pixelX, pixelY, dispW, dispH, bounds.Left, bounds.Top, bounds.Width, bounds.Height)
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if err := stw.Move(x, y); err != nil {
+			return errors.Wrap(err, "failed to execute touch gesture")
+		}
+		if err := stw.End(); err != nil {
+			return errors.Wrap(err, "failed to finish swipe gesture")
+		}
+
+		windowState, err := ash.GetARCAppWindowState(ctx, tconn, pkgName)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get Ash window state"))
+		}
+		if windowState != ash.WindowStateMaximized {
+			return errors.New("the window isn't expanded yet")
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
+
+	return nil
+}
 
 // getInternalDisplayMode returns the display mode that is currently selected in the internal display.
 func getInternalDisplayMode(ctx context.Context, tconn *chrome.Conn) (*display.DisplayMode, error) {
@@ -627,6 +765,29 @@ func hideSystemStatusArea(ctx context.Context, tconn *chrome.Conn) error {
 	// Verify that it is hidden.
 	if _, err := getStatusAreaRect(ctx, tconn); err == nil {
 		return errors.New("failed to hide the Status Area")
+	}
+	return nil
+}
+
+// pressShelfIcon press the shelf icon of PIP window.
+func pressShelfIcon(ctx context.Context, tconn *chrome.Conn) error {
+	// There can be multiple icons on the shelf, but currently there's no way to find a specific icon.
+	// So here we assume the shelf icon of the PIP window is located on the right-most position on the shelf.
+	// This is currently true given that our apk is launched last, our apk is not pinned, and there are not too many apps opened.
+	err := tconn.EvalPromise(ctx,
+		`new Promise((resolve, reject) => {
+		  chrome.automation.getDesktop(function(root) {
+		    const icons = root.findAll({ attributes: { className: 'ash/ShelfAppButton'}});
+		    if (!icons || icons.length === 0) {
+		      reject("Failed to locate icon");
+		      return;
+		    }
+		    icons[icons.length - 1].doDefault();
+		    resolve();
+		  })
+		})`, nil)
+	if err != nil {
+		return errors.Wrap(err, "failed to find ShelfAppButton")
 	}
 	return nil
 }
