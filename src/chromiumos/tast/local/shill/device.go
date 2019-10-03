@@ -23,7 +23,8 @@ type DeviceProperty string
 // Device property names defined in dbus-constants.h .
 const (
 	// Device property names.
-	DevicePropertyName DeviceProperty = "Interface"
+	DevicePropertyInterface DeviceProperty = "Interface"
+	DevicePropertyType      DeviceProperty = "Type"
 
 	// Ethernet device property names.
 	DevicePropertyEthernetBusType   DeviceProperty = "Ethernet.DeviceBusType"
@@ -32,9 +33,11 @@ const (
 )
 
 // Device wraps a Device D-Bus object in shill.
+// It also caches device properties when GetProps() is called.
 type Device struct {
-	obj  dbus.BusObject
-	path dbus.ObjectPath
+	obj   dbus.BusObject
+	path  dbus.ObjectPath
+	props map[DeviceProperty]interface{}
 }
 
 // NewDevice connects to shill's Device.
@@ -43,7 +46,7 @@ func NewDevice(ctx context.Context, path dbus.ObjectPath) (*Device, error) {
 	if err != nil {
 		return nil, err
 	}
-	m := &Device{obj: obj, path: path}
+	m := &Device{obj: obj, path: path, props: make(map[DeviceProperty]interface{})}
 	return m, nil
 }
 
@@ -53,11 +56,25 @@ func (d *Device) String() string {
 
 // GetProps returns a list of properties provided by the device.
 func (d *Device) GetProps(ctx context.Context) (map[DeviceProperty]interface{}, error) {
-	props := make(map[DeviceProperty]interface{})
-	if err := call(ctx, d.obj, dbusDeviceInterface, "GetProperties").Store(&props); err != nil {
+	if err := call(ctx, d.obj, dbusDeviceInterface, "GetProperties").Store(&d.props); err != nil {
 		return nil, errors.Wrap(err, "failed getting properties")
 	}
-	return props, nil
+	return d.props, nil
+}
+
+// GetStringProps returns (props[key], nil) if |key| exists and its value type is string.
+// Otherwise, returns "", error.
+func (d *Device) GetStringProp(key DeviceProperty) (string, error) {
+	p, ok := d.props[key]
+	if !ok {
+		return "", errors.Errorf("shill device %s has no property %q", d.String(), key)
+	}
+	switch p.(type) {
+	case string:
+		return p.(string), nil
+	default:
+		return "", errors.Errorf("Type of the property %q in the shill device %s is not string", key, d.String())
+	}
 }
 
 // SetMACSource sets USB Ethernet MAC address source for the device.
