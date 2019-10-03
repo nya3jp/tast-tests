@@ -22,11 +22,10 @@ func init() {
 			"chromeos-gfx-video@google.com",
 			"chromeos-video-eng@google.com",
 		},
-		Attr: []string{"informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{"chrome", "chrome_internal", caps.HWEncodeH264},
 		Data:         []string{"loopback_media_recorder.html"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 	})
 }
 
