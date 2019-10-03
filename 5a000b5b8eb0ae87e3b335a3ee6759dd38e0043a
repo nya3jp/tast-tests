@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3061b438_56f1dae0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-03T01:44:01Z",
+      "side": 1,
+      "message": "You can inline:\n\nCrashResult{}",
+      "range": {
+        "startLine": 189,
+        "startChar": 9,
+        "endLine": 189,
+        "endChar": 17
+      },
+      "revId": "5a000b5b8eb0ae87e3b335a3ee6759dd38e0043a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
