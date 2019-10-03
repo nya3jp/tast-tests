@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d64fde4_e999ed9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-03T07:31:09Z",
+      "side": 1,
+      "message": "nit spelling, \nalso maybe adding the bug and comment number (b/123397142 comment#19)\nwould be helpful for future reference.",
+      "range": {
+        "startLine": 113,
+        "startChar": 91,
+        "endLine": 113,
+        "endChar": 103
+      },
+      "revId": "70428fdef49434d86cb28431d4dd06693b1cfcaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c136621_64996cc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-03T07:31:09Z",
+      "side": 1,
+      "message": "please update comment, to explain the purpose of this newly added property.",
+      "range": {
+        "startLine": 171,
+        "startChar": 121,
+        "endLine": 171,
+        "endChar": 135
+      },
+      "revId": "70428fdef49434d86cb28431d4dd06693b1cfcaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
