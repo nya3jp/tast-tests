@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1030bd89_344253f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-03T13:57:44Z",
+      "side": 1,
+      "message": "style:\n\nsensor.OldSysfsStyle \u003d err \u003d\u003d nil",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 2
+      },
+      "revId": "3e264bf52de558765e720fe1968759a42c31ed56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28ceaea1_49406d02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-03T13:57:44Z",
+      "side": 1,
+      "message": "if err !\u003d nil, an error should be returned, too?\nIf not, could you comment?　(I know it is not newly introduced, but as you touch here).\n\nDitto for below.",
+      "range": {
+        "startLine": 201,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 3
+      },
+      "revId": "3e264bf52de558765e720fe1968759a42c31ed56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11a378b5_45fdc2fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-03T13:57:44Z",
+      "side": 1,
+      "message": "Could you comment this is truncation of significant digits?\nAlso, diff between the old one and new one?",
+      "range": {
+        "startLine": 226,
+        "startChar": 3,
+        "endLine": 227,
+        "endChar": 39
+      },
+      "revId": "3e264bf52de558765e720fe1968759a42c31ed56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
