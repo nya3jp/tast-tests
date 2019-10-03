@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c4740911_c3fa3d95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2019-10-03T21:02:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1461eb4d_16b6702e",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 9
+      },
+      "revId": "a60ffc06ab3491e0e45f9c1f7521029d2f650709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10914acf_1fc61143",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
         "patchSetId": 8
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "90a503e9_e8bb95cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2019-10-03T21:02:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "10914acf_1fc61143",
+      "range": {
+        "startLine": 364,
+        "startChar": 3,
+        "endLine": 364,
+        "endChar": 19
+      },
+      "revId": "a60ffc06ab3491e0e45f9c1f7521029d2f650709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d599275_ef4066e5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
         "patchSetId": 8
@@ -68,6 +116,30 @@
       "revId": "a60ffc06ab3491e0e45f9c1f7521029d2f650709",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5c4cacf_a3e145c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2019-10-03T21:02:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d599275_ef4066e5",
+      "range": {
+        "startLine": 395,
+        "startChar": 3,
+        "endLine": 395,
+        "endChar": 22
+      },
+      "revId": "a60ffc06ab3491e0e45f9c1f7521029d2f650709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
