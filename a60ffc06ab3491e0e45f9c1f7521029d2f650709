@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1461eb4d_16b6702e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-03T11:29:55Z",
+      "side": 1,
+      "message": "style: Please try to decrease indent level by early returns.\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow\n\n wmEvent, ok :\u003d ...\n if !ok {\n   return ...\n }\n ...",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 9
+      },
+      "revId": "a60ffc06ab3491e0e45f9c1f7521029d2f650709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10914acf_1fc61143",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-03T11:29:55Z",
+      "side": 1,
+      "message": "nit\u0026optional: \"bg\" might be more popular than \"bkg\", maybe? Not a big deal though :)",
+      "range": {
+        "startLine": 364,
+        "startChar": 3,
+        "endLine": 364,
+        "endChar": 19
+      },
+      "revId": "a60ffc06ab3491e0e45f9c1f7521029d2f650709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d599275_ef4066e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-03T11:29:55Z",
+      "side": 1,
+      "message": "png.Encode can return an error, please handle it.",
+      "range": {
+        "startLine": 395,
+        "startChar": 3,
+        "endLine": 395,
+        "endChar": 22
+      },
+      "revId": "a60ffc06ab3491e0e45f9c1f7521029d2f650709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
