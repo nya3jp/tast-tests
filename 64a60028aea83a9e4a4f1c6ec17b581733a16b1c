@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5cc81fb4_70eb7bbc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-03T14:53:13Z",
+      "side": 1,
+      "message": "ag/9487892 has the change for creating the new apk.\nI\u0027ll update the apk file here, once that is reviewed.",
+      "parentUuid": "0dc9653a_62a894c9",
+      "range": {
+        "startLine": 12,
+        "startChar": 12,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "64a60028aea83a9e4a4f1c6ec17b581733a16b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33c56d71_acf696ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
         "patchSetId": 3
@@ -353,6 +377,30 @@
       "revId": "64a60028aea83a9e4a4f1c6ec17b581733a16b1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c3090f6_3698fb5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-03T14:53:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8b4ec51_de5dcb17",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 3
+      },
+      "revId": "64a60028aea83a9e4a4f1c6ec17b581733a16b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

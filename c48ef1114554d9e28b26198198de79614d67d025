@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "e6f5d4b6_09abd523",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-03T14:53:13Z",
+      "side": 1,
+      "message": "right thanks!",
+      "parentUuid": "2c0a5338_d88c6a00",
+      "range": {
+        "startLine": 246,
+        "startChar": 5,
+        "endLine": 246,
+        "endChar": 17
+      },
+      "revId": "c48ef1114554d9e28b26198198de79614d67d025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "02457774_2ecc0bd5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
         "patchSetId": 6
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "840bb26b_325e2717",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-03T14:53:13Z",
+      "side": 1,
+      "message": "thanks, this field is no longer used.\nSo I think it\u0027s simpler if we use an array of strings.",
+      "parentUuid": "02457774_2ecc0bd5",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 11
+      },
+      "revId": "c48ef1114554d9e28b26198198de79614d67d025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6833ee70_fba0b16f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
         "patchSetId": 6
@@ -82,6 +130,30 @@
       "writtenOn": "2019-09-25T06:38:01Z",
       "side": 1,
       "message": "Just curious, what happens if it includes space or backspace?",
+      "range": {
+        "startLine": 119,
+        "startChar": 30,
+        "endLine": 119,
+        "endChar": 53
+      },
+      "revId": "c48ef1114554d9e28b26198198de79614d67d025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ecf22a1_93086921",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-03T14:53:13Z",
+      "side": 1,
+      "message": "do you mean typing \" \", and having \"space\" readout. (similarly for backspace)\nIf so, I think I\u0027ll defer them to separate change. \n(let\u0027s get an initial speech test landed first!)",
+      "parentUuid": "6833ee70_fba0b16f",
       "range": {
         "startLine": 119,
         "startChar": 30,
@@ -114,6 +186,30 @@
       "revId": "c48ef1114554d9e28b26198198de79614d67d025",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55ecf1ad_d2d32565",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-03T14:53:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dcdef97_d3a82a71",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 2
+      },
+      "revId": "c48ef1114554d9e28b26198198de79614d67d025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

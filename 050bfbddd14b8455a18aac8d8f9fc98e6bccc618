@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c434d011_c41ea237",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-03T14:53:13Z",
+      "side": 1,
+      "message": "sorry, I realised there needs to be a webview element here, let me add that in the next patchset.",
+      "range": {
+        "startLine": 81,
+        "startChar": 36,
+        "endLine": 82,
+        "endChar": 42
+      },
+      "revId": "050bfbddd14b8455a18aac8d8f9fc98e6bccc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
