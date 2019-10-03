@@ -75,7 +75,7 @@ func SetUSBEthernetMACAddressSource(ctx context.Context, s *testing.State) {
 			if !ok {
 				continue
 			}
-			name, ok := props[shill.DevicePropertyName].(string)
+			name, ok := props[shill.DevicePropertyInterface].(string)
 			if !ok {
 				s.Fatalf("Failed to get required device interface name: %+v", props)
 			}
