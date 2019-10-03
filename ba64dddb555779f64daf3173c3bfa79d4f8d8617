@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "038e0b24_81c9d4f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-03T14:54:05Z",
+      "side": 1,
+      "message": "Ah I thought I had tried that and saw that the element was not iterable,\nbut now it works, fo taken in, thanks!",
+      "parentUuid": "69fc834b_88c38d76",
+      "revId": "ba64dddb555779f64daf3173c3bfa79d4f8d8617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "179634cb_b24395c1",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 2
@@ -127,6 +145,30 @@
       "revId": "ba64dddb555779f64daf3173c3bfa79d4f8d8617",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acf9876a_75cef496",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-03T14:54:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "179634cb_b24395c1",
+      "range": {
+        "startLine": 289,
+        "startChar": 27,
+        "endLine": 289,
+        "endChar": 45
+      },
+      "revId": "ba64dddb555779f64daf3173c3bfa79d4f8d8617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -153,6 +195,30 @@
     },
     {
       "key": {
+        "uuid": "e8c96e96_bd5e6fba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-03T14:54:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "261ad856_d28d055c",
+      "range": {
+        "startLine": 296,
+        "startChar": 52,
+        "endLine": 296,
+        "endChar": 74
+      },
+      "revId": "ba64dddb555779f64daf3173c3bfa79d4f8d8617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb5d4f1d_08a10179",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 2
@@ -167,6 +233,24 @@
       "revId": "ba64dddb555779f64daf3173c3bfa79d4f8d8617",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d039dfc_f39616ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-03T14:54:05Z",
+      "side": 1,
+      "message": "Should be the same value.",
+      "parentUuid": "eb5d4f1d_08a10179",
+      "revId": "ba64dddb555779f64daf3173c3bfa79d4f8d8617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -214,6 +298,30 @@
       "revId": "ba64dddb555779f64daf3173c3bfa79d4f8d8617",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd89449f_e1fbe6c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-03T14:54:05Z",
+      "side": 1,
+      "message": "Hmm I tried taking a look at extracting this, and is not evident:\nmost of the html+js pairs I found basically bundle functionality \nwith exposing controls to the go (or autotest in the past) logic;\nin this case, we want to connect to chrome:media-internals and \nthen run a JS. I\u0027m not sure how/if I can do that from here, unless\nI\u0027d just have a .js that I would load as a string to the run in\nthe EvalPromise in l.318. Would that be better/enough?",
+      "parentUuid": "9bb2dfbc_d3833db7",
+      "range": {
+        "startLine": 269,
+        "startChar": 46,
+        "endLine": 315,
+        "endChar": 3
+      },
+      "revId": "ba64dddb555779f64daf3173c3bfa79d4f8d8617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
