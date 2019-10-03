@@ -143,6 +143,24 @@
     },
     {
       "key": {
+        "uuid": "b1d4e827_0ea0e243",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-10-03T00:39:43Z",
+      "side": 1,
+      "message": "WaitForIdle can only be used when the state of an activity changes from (non-resumed -\u003e resumed), but in this case, even before pushing the button, the app is already resumed. So this line doesn\u0027t wait for anything.\n\nI understand this is really confusing, so please ask me in person if you are still unclear.",
+      "parentUuid": "298abe26_bf46920b",
+      "revId": "1bc1dbc3079827413bb7d361df8632f06114ae2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0cf589a2_5e0dc058",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 2
