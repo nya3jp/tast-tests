@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a355b6ef_ac03e108",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1337274
+      },
+      "writtenOn": "2019-10-03T19:38:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbd41e91_f38d1d65",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 60
+      },
+      "revId": "0ab69c4943a6c3b666979d8abb7c15ea06c65cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13689c67_2ab97267",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2019-10-03T11:19:25Z",
       "side": 1,
       "message": "Could you give me background about the reason you want these functions? Particularly, doesn\u0027t it work in your case to send events by evaluating JS? IIUC these devtools functions send raw events, so it is more difficult to use than JS APIs.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "0ab69c4943a6c3b666979d8abb7c15ea06c65cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4021653c_f1e6abf1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1337274
+      },
+      "writtenOn": "2019-10-03T19:38:30Z",
+      "side": 1,
+      "message": "Devtools sends the Input.dispatch* events inside of a client send(). This is why we need to access the cdp.client pointer inside of the Conn struct in cdputil/conn.go. If you want to simulate clicking (as opposed to using JS selector or element .click() which has limitations on clicking some special elements such as drop down elements), we\u0027ll need to use devtools\u0027 API like puppeteer and selenium do. Let me know if you have any other questions or concerns on this.",
+      "parentUuid": "13689c67_2ab97267",
       "range": {
         "startLine": 11,
         "startChar": 0,
