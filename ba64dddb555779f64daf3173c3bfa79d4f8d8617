@@ -325,6 +325,30 @@
     },
     {
       "key": {
+        "uuid": "73be2db7_6cecca6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-03T16:16:27Z",
+      "side": 1,
+      "message": "Having an isolated JS file is easier to read/review/maintain.\nPlease see the example CL:\n1. Placing the js file in data/ and add filename in Data: field of test config:\nhttps://crrev.com/c/1573298/16/src/chromiumos/tast/local/bundles/cros/video/webrtc_encode_accel_used_vp8.go\n2. Read the file as string:\nhttps://crrev.com/c/1573298/16/src/chromiumos/tast/local/bundles/cros/video/webrtc_decode_perf.go#31\n3. Injects the JS string after page load:\nhttps://crrev.com/c/1573298/16/src/chromiumos/tast/local/bundles/cros/video/webrtc/webrtc_decode_perf.go#31",
+      "parentUuid": "dd89449f_e1fbe6c2",
+      "range": {
+        "startLine": 269,
+        "startChar": 46,
+        "endLine": 315,
+        "endChar": 3
+      },
+      "revId": "ba64dddb555779f64daf3173c3bfa79d4f8d8617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "adb932c6_66396459",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 2
