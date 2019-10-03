@@ -84,11 +84,13 @@ func SetBounds(ctx context.Context, s *testing.State) {
 	if err := act.Start(ctx); err != nil {
 		s.Fatal("Failed start Settings activity: ", err)
 	}
+	defer act.Stop(ctx)
 
 	d, err := ui.NewDevice(ctx, a)
 	if err != nil {
 		s.Fatal("Failed to get device: ", err)
 	}
+	defer d.Close()
 
 	if err := act.WaitForIdle(ctx, time.Second); err != nil {
 		s.Fatal("Failed to wait for idle activity: ", err)
