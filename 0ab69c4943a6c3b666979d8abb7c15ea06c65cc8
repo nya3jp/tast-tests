@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbd41e91_f38d1d65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-03T11:19:25Z",
+      "side": 1,
+      "message": "Please keep the first line short (up to 75 chars).",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 60
+      },
+      "revId": "0ab69c4943a6c3b666979d8abb7c15ea06c65cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13689c67_2ab97267",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-03T11:19:25Z",
+      "side": 1,
+      "message": "Could you give me background about the reason you want these functions? Particularly, doesn\u0027t it work in your case to send events by evaluating JS? IIUC these devtools functions send raw events, so it is more difficult to use than JS APIs.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "0ab69c4943a6c3b666979d8abb7c15ea06c65cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
