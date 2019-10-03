@@ -104,10 +104,15 @@ func getValueForFocusedElement(ctx context.Context, chromeVoxConn *chrome.Conn, 
 }
 
 // verifyLogs gets the current ChromeVox log and checks that it matches with expected log.
-func verifyLogs(ctx context.Context, chromeVoxConn *chrome.Conn, expectedLogs []eventLog) error {
+// Note that as the initial a11y focus is unstable, checkOnlyLatest=true can be used to check only the latest logs.
+func verifyLogs(ctx context.Context, chromeVoxConn *chrome.Conn, expectedLogs []eventLog, checkOnlyLatest bool) error {
 	var logs []eventLog
 	if err := chromeVoxConn.Eval(ctx, "LogStore.instance.getLogsOfType(LogStore.LogType.EVENT)", &logs); err != nil {
 		return errors.Wrap(err, "failed to get event logs")
+	}
+
+	if checkOnlyLatest && len(logs) > len(expectedLogs) {
+		logs = logs[len(logs)-len(expectedLogs) : len(logs)]
 	}
 
 	if !reflect.DeepEqual(logs, expectedLogs) {
@@ -120,17 +125,12 @@ func verifyLogs(ctx context.Context, chromeVoxConn *chrome.Conn, expectedLogs []
 // UI element (specified by elementClass, and is expected to be a seekBar).
 // ChromeVox will then interact with the seekBar, by incrementing its value using '='.
 // Returns an error indicating the success of both actions.
-func focusAndIncrementElement(ctx context.Context, chromeVoxConn *chrome.Conn, elementClass string, expectedLogs []eventLog, initialValue, expectedValue int) error {
+func focusAndIncrementElement(ctx context.Context, chromeVoxConn *chrome.Conn, elementClass string, initialValue, expectedValue int) error {
 	ew, err := input.Keyboard(ctx)
 	if err != nil {
 		return errors.Wrap(err, "error with creating EventWriter from keyboard")
 	}
 	defer ew.Close()
-
-	// Ensure that ChromeVox log is cleared before proceeding.
-	if err := chromeVoxConn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
-		return errors.Wrap(err, "error with clearing ChromeVox Log")
-	}
 
 	// Move focus to the next UI element.
 	if err := ew.Accel(ctx, "Tab"); err != nil {
@@ -151,26 +151,19 @@ func focusAndIncrementElement(ctx context.Context, chromeVoxConn *chrome.Conn, e
 	if err := waitForValueFocused(ctx, chromeVoxConn, elementClass, expectedValue); err != nil {
 		return errors.Wrap(err, "timed out polling for element incremented")
 	}
-	if err := verifyLogs(ctx, chromeVoxConn, expectedLogs); err != nil {
-		return err
-	}
 	return nil
 }
 
 // focusAndCheckElement uses ChromeVox navigation (using Tab), to navigate to the next
 // UI element (specified by elementClass), and activates it (using Search + Space).
 // Returns an error indicating the success of both actions.
-func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, elementClass string, expectedLogs []eventLog) error {
+func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, elementClass string) error {
 	ew, err := input.Keyboard(ctx)
 	if err != nil {
 		return errors.Wrap(err, "error with creating EventWriter from keyboard")
 	}
 	defer ew.Close()
 
-	// Ensure that ChromeVox log is cleared before proceeding.
-	if err := chromeVoxConn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
-		return errors.Wrap(err, "error with clearing ChromeVox Log")
-	}
 	// Move focus to the next UI element.
 	if err := ew.Accel(ctx, "Tab"); err != nil {
 		return errors.Wrap(err, "Accel(Tab) returned error")
@@ -199,10 +192,6 @@ func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, eleme
 		return errors.Wrap(err, "failed to check toggled state")
 	}
 
-	// Determine if output matches expected value, and write to file if it does not match.
-	if err := verifyLogs(ctx, chromeVoxConn, expectedLogs); err != nil {
-		return err
-	}
 	return nil
 }
 
@@ -267,47 +256,58 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 		s.Fatal("Enabling event stream logging failed: ", err)
 	}
 
-	expectedEventLog := func(eventType, targetName string) eventLog {
-		return eventLog{
-			EventType:  eventType,
-			TargetName: targetName,
-			RootName:   appName,
+	for i, test := range []struct {
+		action   func() error
+		expected []eventLog
+	}{
+		{
+			action: func() error {
+				return focusAndCheckElement(ctx, chromeVoxConn, toggleButton)
+			},
+			expected: []eventLog{
+				eventLog{"focus", "OFF", appName},
+				eventLog{"checkedStateChanged", "ON", appName},
+			},
+		}, {
+			action: func() error {
+				return focusAndCheckElement(ctx, chromeVoxConn, checkBox)
+			},
+			expected: []eventLog{
+				eventLog{"focus", "CheckBox", appName},
+				eventLog{"checkedStateChanged", "CheckBox", appName},
+			},
+		}, {
+			action: func() error {
+				return focusAndIncrementElement(ctx, chromeVoxConn, seekBar, seekBarInitialValue, seekBarExpectedValue)
+			},
+			expected: []eventLog{
+				eventLog{"focus", "seekBar", appName},
+				eventLog{"valueChanged", "seekBar", appName},
+			},
+		}, {
+			action: func() error {
+				return focusAndIncrementElement(ctx, chromeVoxConn, seekBar, seekBarDiscreteInitialValue, seekBarDiscreteExpectedValue)
+			},
+			expected: []eventLog{
+				eventLog{"focus", "seekBarDiscrete", appName},
+				eventLog{"valueChanged", "seekBarDiscrete", appName},
+			},
+		},
+	} {
+		// Ensure that ChromeVox log is cleared before proceeding.
+		if err := chromeVoxConn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
+			s.Fatal("Error with clearing ChromeVox Log: ", err)
 		}
-	}
 
-	// Focus to and toggle toggleButton element.
-	toggleButtonLogs := []eventLog{
-		expectedEventLog("focus", "OFF"),
-		expectedEventLog("checkedStateChanged", "ON"),
-	}
-	if err := focusAndCheckElement(ctx, chromeVoxConn, toggleButton, toggleButtonLogs); err != nil {
-		s.Fatal("Failed focusing toggle button: ", err)
-	}
+		if err := test.action(); err != nil {
+			s.Fatal("Failed to run the test: ", err)
+		}
 
-	// Focus to and check checkBox element.
-	checkBoxLogs := []eventLog{
-		expectedEventLog("focus", "CheckBox"),
-		expectedEventLog("checkedStateChanged", "CheckBox"),
-	}
-	if err := focusAndCheckElement(ctx, chromeVoxConn, checkBox, checkBoxLogs); err != nil {
-		s.Fatal("Failed focusing checkbox: ", err)
-	}
-
-	// Focus to and increment seekBar element.
-	seekBarLogs := []eventLog{
-		expectedEventLog("focus", "seekBar"),
-		expectedEventLog("valueChanged", "seekBar"),
-	}
-	if err := focusAndIncrementElement(ctx, chromeVoxConn, seekBar, seekBarLogs, seekBarInitialValue, seekBarExpectedValue); err != nil {
-		s.Fatal("Failed focusing seekBar: ", err)
-	}
-
-	// Focus to and increment seekBarDiscrete element.
-	seekBarDiscreteLogs := []eventLog{
-		expectedEventLog("focus", "seekBarDiscrete"),
-		expectedEventLog("valueChanged", "seekBarDiscrete"),
-	}
-	if err := focusAndIncrementElement(ctx, chromeVoxConn, seekBar, seekBarDiscreteLogs, seekBarDiscreteInitialValue, seekBarDiscreteExpectedValue); err != nil {
-		s.Fatal("Failed focusing seekBarDiscrete: ", err)
+		// Initial action sometimes invokes additional events (like focusing the entire application).
+		// Latest logs should only be checked on the first iteration. (b/123397142#comment19)
+		// TODO(b/142093176) Find the root cause.
+		if err := verifyLogs(ctx, chromeVoxConn, test.expected, i == 0); err != nil {
+			s.Fatal("Failed to verify the log: ", err)
+		}
 	}
 }
