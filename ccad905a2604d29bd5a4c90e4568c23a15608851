@@ -81,6 +81,30 @@
       "revId": "ccad905a2604d29bd5a4c90e4568c23a15608851",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "200b4862_9250d1d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_decode_accel_h264_240p.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-03T18:48:31Z",
+      "side": 1,
+      "message": "OK, sounds good.",
+      "parentUuid": "d3d99b96_39e7a6eb",
+      "range": {
+        "startLine": 23,
+        "startChar": 25,
+        "endLine": 23,
+        "endChar": 42
+      },
+      "revId": "ccad905a2604d29bd5a4c90e4568c23a15608851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
