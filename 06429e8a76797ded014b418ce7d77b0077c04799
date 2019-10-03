@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53e6c538_a7552d25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-03T14:22:32Z",
+      "side": 1,
+      "message": "Could you add \"group:mainline\" as PSA is sent?",
+      "revId": "06429e8a76797ded014b418ce7d77b0077c04799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9ec92e5_509f1612",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-03T14:22:32Z",
+      "side": 1,
+      "message": "Is 4 min timeout really need?\narc package used to require it for ARC boot. However, with arc.Booted() precondtion, it is no longer needed.\nI\u0027d like you to double check, and if not necessary, could you remove?\nNote that, by default, timeout is 2 mins, now.",
+      "revId": "06429e8a76797ded014b418ce7d77b0077c04799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eeb780ad_8dae341a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-03T14:22:32Z",
+      "side": 1,
+      "message": "nit/style:\n\nout, err :\u003d arc.BootstrapCommand(...)...\nif err !\u003d nil {\n  s.Fatal(...)\n}\npid :\u003d strings.TrimSpace(string(out))\n\nis the common style. Note that it is preferred to declare the vars at latest timing (in this case pid) with initial value, if possible.",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 2
+      },
+      "revId": "06429e8a76797ded014b418ce7d77b0077c04799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3761a8ff_2f161a82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-03T14:22:32Z",
+      "side": 1,
+      "message": "Note that in case of some unexpected cases, I don\u0027t think we can expect these files are properly retrieved, so there could be some files remaining?\n\nMaybe removing the files based on the diff from oldCrashes?\nWDYT?",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 38
+      },
+      "revId": "06429e8a76797ded014b418ce7d77b0077c04799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "044c4471_502dfe13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-03T14:22:32Z",
+      "side": 1,
+      "message": "Errorf,\n\nbecause we do not expect that the failing of the removal.",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 9
+      },
+      "revId": "06429e8a76797ded014b418ce7d77b0077c04799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
