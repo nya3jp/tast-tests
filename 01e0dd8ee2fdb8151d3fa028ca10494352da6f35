@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "5638b243_610c241c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-03T11:02:59Z",
+      "side": 1,
+      "message": "It seems we have \"wilco\" software dependency, is it suitable in this test?\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wilco/peak_shift.go?dr\u003dCSs\u0026g\u003d0\u0026l\u003d34\n\nIn general, if a test should run only on specific hardware or relies on specific software, we should declare as hardware/software dependencies in test metadata. Currently Tast supports software dependencies (go/tast-deps). Hardware dependency support is still WIP (crbug.com/950346).",
+      "parentUuid": "a326ac0d_18e79b8c",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 32
+      },
+      "revId": "01e0dd8ee2fdb8151d3fa028ca10494352da6f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b5cedc8_0080f4e0",
         "filename": "src/chromiumos/tast/local/shill/device.go",
         "patchSetId": 5
