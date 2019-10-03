@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7a3453d7_69a5f597",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-10-03T15:59:08Z",
+      "side": 1,
+      "message": "This is nice so that the test still works if new sensors are added. Can you also add the missing sensors to sensorNames in iio.go as well?",
+      "range": {
+        "startLine": 236,
+        "startChar": 2,
+        "endLine": 238,
+        "endChar": 17
+      },
+      "revId": "b86b1243e156f25eaf3ab852b78e96d3b0bc6a7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c275735f_47c57740",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_ring.go",
         "patchSetId": 1
@@ -37,6 +60,30 @@
       "side": 1,
       "message": "Should we prevent SensorRing to run at all on these machines?\nTHere are several reasons beside not having a ring for NewRing to fail.\n\nWe could check with ectool inventory if EC has ring support.",
       "parentUuid": "c275735f_47c57740",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "b86b1243e156f25eaf3ab852b78e96d3b0bc6a7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9e4994b_109bb297",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_ring.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-10-03T15:59:08Z",
+      "side": 1,
+      "message": "Ideally we would want to not run the test at all if there was no ring, but that is not currently a way to do that in tast. I think just adding a function called iio.HasRing(...) or something and exit early without an error would would nicely.",
+      "parentUuid": "9f47c48c_9a479d7c",
       "range": {
         "startLine": 45,
         "startChar": 4,
