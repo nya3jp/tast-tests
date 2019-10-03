@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "af5dbd21_edc95ca2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-03T00:44:52Z",
+      "side": 1,
+      "message": "Done, thanks for the reminder.",
+      "parentUuid": "848b5018_731bf13a",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 65
+      },
+      "revId": "29cac7ba06a350c879a8f2c71934e9a7c7789e9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50dd0667_6694e0ef",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "29cac7ba06a350c879a8f2c71934e9a7c7789e9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a992d9ac_9cd8e0c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-03T00:44:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50dd0667_6694e0ef",
+      "range": {
+        "startLine": 29,
+        "startChar": 69,
+        "endLine": 29,
+        "endChar": 91
+      },
+      "revId": "29cac7ba06a350c879a8f2c71934e9a7c7789e9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
