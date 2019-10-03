@@ -46,6 +46,30 @@
       "revId": "7d3dbe3bfc98b7bff7c08e30677c3f7bef2aceca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a079689d_d0b40107",
+        "filename": "src/chromiumos/tast/common/hwsec/utility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2019-10-03T09:04:35Z",
+      "side": 1,
+      "message": "fuck now i know what you are talking about.\n\nthanks for the review man!",
+      "parentUuid": "f217f6f2_1c6ddf11",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 63
+      },
+      "revId": "7d3dbe3bfc98b7bff7c08e30677c3f7bef2aceca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
