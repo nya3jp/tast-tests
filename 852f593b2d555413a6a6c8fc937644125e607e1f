@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "557db420_129c3827",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-03T03:24:12Z",
+      "side": 1,
+      "message": "That\u0027s a good question. I\u0027ve been testing with release builds of the test binary I created myself, but these are not stripped.\nI tested with a stripped binary and the crash dump contains a lot of \"No symbol table info available.\" If we want more detailed results we\u0027ll have no choice but to store the full core dump I guess.",
+      "parentUuid": "a74c5373_9b834a8a",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 73
+      },
+      "revId": "852f593b2d555413a6a6c8fc937644125e607e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95ac2bf8_4f612f41",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "852f593b2d555413a6a6c8fc937644125e607e1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cf8df96_5912dcb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-03T03:24:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95ac2bf8_4f612f41",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 3
+      },
+      "revId": "852f593b2d555413a6a6c8fc937644125e607e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
