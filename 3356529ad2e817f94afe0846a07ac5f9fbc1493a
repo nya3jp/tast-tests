@@ -447,6 +447,30 @@
     },
     {
       "key": {
+        "uuid": "f422f4b4_3c96c9f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-10-03T02:25:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d2d9a1e_d74d4361",
+      "range": {
+        "startLine": 89,
+        "startChar": 11,
+        "endLine": 89,
+        "endChar": 12
+      },
+      "revId": "3356529ad2e817f94afe0846a07ac5f9fbc1493a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eaf27b94_bbad2761",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
         "patchSetId": 4
@@ -461,6 +485,24 @@
       "revId": "3356529ad2e817f94afe0846a07ac5f9fbc1493a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07aced28_27e82557",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-10-03T02:25:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaf27b94_bbad2761",
+      "revId": "3356529ad2e817f94afe0846a07ac5f9fbc1493a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -484,6 +526,30 @@
       "revId": "3356529ad2e817f94afe0846a07ac5f9fbc1493a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a99575c1_4d5be5f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/user_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2019-10-03T02:25:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ab3ceb5_46db10f5",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 16
+      },
+      "revId": "3356529ad2e817f94afe0846a07ac5f9fbc1493a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
