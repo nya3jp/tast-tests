@@ -53,6 +53,70 @@
     },
     {
       "key": {
+        "uuid": "5f8b3a62_3d2e933f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-03T17:38:51Z",
+      "side": 1,
+      "message": "agreed. if needed you can add an extra field in the struct... like \"requires keyboard\".\n\nAdditionally, I guess (big \"I guess\"), it is possible to create a virtual keyboard (see input/keyboard.go) and inject the needed shortcut using the virtual keyboard.",
+      "parentUuid": "cafd67b6_06cb6b11",
+      "revId": "cba8201506f611a2e3de4d56eb539ca962fbba61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e607abe7_9c3653a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-03T17:38:51Z",
+      "side": 1,
+      "message": "please also log the msg saying that w/ testing.ContextLog(...)",
+      "range": {
+        "startLine": 568,
+        "startChar": 3,
+        "endLine": 568,
+        "endChar": 11
+      },
+      "revId": "cba8201506f611a2e3de4d56eb539ca962fbba61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de4e9335_f8d71c14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-03T17:38:51Z",
+      "side": 1,
+      "message": "huge nit: could you put this as the 1st line, above all the previous statements.",
+      "range": {
+        "startLine": 571,
+        "startChar": 2,
+        "endLine": 571,
+        "endChar": 51
+      },
+      "revId": "cba8201506f611a2e3de4d56eb539ca962fbba61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "24552014_8af1c07a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 3
@@ -87,6 +151,29 @@
     },
     {
       "key": {
+        "uuid": "c8e97bc1_2d91a7b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-03T17:38:51Z",
+      "side": 1,
+      "message": "huge nit: %q instead of %s",
+      "range": {
+        "startLine": 580,
+        "startChar": 46,
+        "endLine": 580,
+        "endChar": 48
+      },
+      "revId": "cba8201506f611a2e3de4d56eb539ca962fbba61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f4a42c6_3ee17a50",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 3
@@ -115,6 +202,29 @@
       "writtenOn": "2019-10-03T08:26:58Z",
       "side": 1,
       "message": "I suppose there is no way to guarantee that this performs a short-alt tab, but maybe we can test to see if it actually did short-alt tab by checking if activation changed somehow?",
+      "revId": "cba8201506f611a2e3de4d56eb539ca962fbba61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbe88973_7cab7a64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-03T17:38:51Z",
+      "side": 1,
+      "message": "(could be wrong, feel free to ignore)\n\ndo you need a \"Interval: 500 millis (or something)\" here? Not sure whether starting/ending a touch that often might trigger a gesture",
+      "range": {
+        "startLine": 682,
+        "startChar": 25,
+        "endLine": 682,
+        "endChar": 50
+      },
       "revId": "cba8201506f611a2e3de4d56eb539ca962fbba61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
