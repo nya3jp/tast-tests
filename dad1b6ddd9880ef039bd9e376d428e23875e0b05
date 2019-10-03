@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dee0bed2_0b0e2e15",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-03T23:18:59Z",
+      "side": 1,
+      "message": "I don\u0027t think this makes sense.\n|play.NoCheckHistogram| meant that this test doesn\u0027t care whether HW-accelerator is used or not.\nSo, we shouldn\u0027t use \"chrome_media_internals_utils.js\" shouldn\u0027t be used in video.Play{VP8,VP9,H264} and video.PlayVD{VP8,VP9,H264}.\nSorry for overlooking this point at earlier reviews.\n\nPerhaps, enum |CheckHistogram| and |NoCheckHistogram| are misleading names because we should always check MediaGVDError histogram.\n\nI\u0027d suggest:\n* Rename |CheckHistogram| to something like |CheckHWAccelUsed|.\n* Keep passing this enum as an argument of play.TestPlay.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 17
+      },
+      "revId": "dad1b6ddd9880ef039bd9e376d428e23875e0b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb741fa3_8f8652ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/chrome_media_internals_utils.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-03T23:18:59Z",
+      "side": 1,
+      "message": "const item",
+      "range": {
+        "startLine": 19,
+        "startChar": 9,
+        "endLine": 19,
+        "endChar": 13
+      },
+      "revId": "dad1b6ddd9880ef039bd9e376d428e23875e0b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f68d3f5_22470432",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/chrome_media_internals_utils.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-03T23:18:59Z",
+      "side": 1,
+      "message": "const logTableEntry",
+      "range": {
+        "startLine": 48,
+        "startChar": 9,
+        "endLine": 48,
+        "endChar": 22
+      },
+      "revId": "dad1b6ddd9880ef039bd9e376d428e23875e0b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "329db7cf_cddfb318",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play_decode_accel_used_h264.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-03T23:18:59Z",
+      "side": 1,
+      "message": "I wonder if we can\u0027t have this logic inside of play.TestPlay.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "dad1b6ddd9880ef039bd9e376d428e23875e0b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
