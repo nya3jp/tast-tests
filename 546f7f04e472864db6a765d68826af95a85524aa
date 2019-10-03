@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2cd6558_5d1ea12c",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-10-03T22:14:15Z",
+      "side": 1,
+      "message": "\"Name\" and \"Interface\" are actually the same thing ATM. But I\u0027d rather we be consistent and just use \"Interface\" everywhere and ignore \"Name\".\n\nFiled crbug.com/1011136.",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 48
+      },
+      "revId": "546f7f04e472864db6a765d68826af95a85524aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a13d7400_97749a07",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1288158
+      },
+      "writtenOn": "2019-10-03T22:14:15Z",
+      "side": 1,
+      "message": "nit: O",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "546f7f04e472864db6a765d68826af95a85524aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
