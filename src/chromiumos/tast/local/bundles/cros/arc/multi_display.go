@@ -108,6 +108,8 @@ func MultiDisplay(ctx context.Context, s *testing.State) {
 		{"Launch activity on external display", launchActivityOnExternalDisplay},
 		// Based on http://b/110105532.
 		{"Activity is visible when other is maximized", maximizeVisibility},
+		// Based on http://b/63773037 and http://b/140056612.
+		{"Relayout displays", relayoutDisplays},
 	} {
 		s.Logf("Running test %q", test.name)
 
@@ -195,7 +197,7 @@ func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) erro
 		return err
 	}
 
-	if err := ensureSetWindowState(ctx, tconn, settingsPkgMD, settingsAct, ash.WindowStateNormal); err != nil {
+	if err := ensureSetWindowState(ctx, tconn, settingsPkgMD, ash.WindowStateNormal); err != nil {
 		return err
 	}
 
@@ -214,7 +216,7 @@ func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) erro
 		return err
 	}
 
-	if err := ensureSetWindowState(ctx, tconn, wmPkgMD, wmAct, ash.WindowStateNormal); err != nil {
+	if err := ensureSetWindowState(ctx, tconn, wmPkgMD, ash.WindowStateNormal); err != nil {
 		return err
 	}
 
@@ -266,7 +268,7 @@ func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) erro
 		{"Maximize the activity on external display", wmAct, wmPkgMD, settingsPkgMD, settingsWinInfo},
 	} {
 		if err := func() error {
-			if err := ensureSetWindowState(ctx, tconn, test.maxPkgName, test.maxAct, ash.WindowStateMaximized); err != nil {
+			if err := ensureSetWindowState(ctx, tconn, test.maxPkgName, ash.WindowStateMaximized); err != nil {
 				return err
 			}
 			if err := ensureWindowStable(ctx, tconn, test.checkPkgName, test.checkAppWinInfo); err != nil {
@@ -277,11 +279,123 @@ func maximizeVisibility(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) erro
 				return err
 			}
 			// Reset maximized window to normal.
-			return ensureSetWindowState(ctx, tconn, test.maxPkgName, test.maxAct, ash.WindowStateNormal)
+			return ensureSetWindowState(ctx, tconn, test.maxPkgName, ash.WindowStateNormal)
 		}(); err != nil {
 			return errors.Wrapf(err, "subtest failed when: %q", test.name)
 		}
 
+	}
+	return nil
+}
+
+// relayoutDisplays checks whether the window moves position when relayout displays.
+func relayoutDisplays(ctx context.Context, cr *chrome.Chrome, a *arc.ARC) error {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return err
+	}
+
+	infos, err := display.GetInfo(ctx, tconn)
+	if err != nil {
+		return err
+	}
+
+	var internalDisplayInfo, externalDisplayInfo display.Info
+	for _, info := range infos {
+		if info.IsInternal {
+			internalDisplayInfo = info
+		} else {
+			externalDisplayInfo = info
+		}
+	}
+
+	// Start settings Activity on internal display.
+	settingsAct, err := arc.NewActivity(a, settingsPkgMD, settingsActMD)
+	if err != nil {
+		return err
+	}
+	defer settingsAct.Close()
+
+	if err := settingsAct.Start(ctx); err != nil {
+		return err
+	}
+	defer settingsAct.Stop(ctx)
+	if err := settingsAct.WaitForIdle(ctx, 10*time.Second); err != nil {
+		return err
+	}
+
+	// Start wm Activity on external display.
+	wmAct, err := arc.NewActivity(a, wmPkgMD, resizeableUnspecifiedActivityMD)
+	if err != nil {
+		return err
+	}
+	defer wmAct.Close()
+
+	if err := startActivityOnDisplay(ctx, a, wmPkgMD, resizeableUnspecifiedActivityMD, firstExternalDisplayID); err != nil {
+		return err
+	}
+	defer wmAct.Stop(ctx)
+	if err := wmAct.WaitForIdle(ctx, 10*time.Second); err != nil {
+		return err
+	}
+
+	for _, test := range []struct {
+		name        string
+		windowState ash.WindowStateType
+	}{
+		{"Relayout displays when windows are normal", ash.WindowStateNormal},
+		{"Relayout displays when windows are maximized", ash.WindowStateMaximized},
+	} {
+		if err := func() error {
+			testing.ContextLogf(ctx, "Running subtest %q", test.name)
+
+			if err := ensureSetWindowState(ctx, tconn, settingsPkgMD, test.windowState); err != nil {
+				return err
+			}
+			settingsWindowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, settingsPkgMD)
+			if err != nil {
+				return err
+			}
+
+			if err := ensureSetWindowState(ctx, tconn, wmPkgMD, test.windowState); err != nil {
+				return err
+			}
+			wmWindowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wmPkgMD)
+			if err != nil {
+				return err
+			}
+
+			// Relayout external display and make sure the windows will not move their positions or show black background.
+			for _, relayout := range []struct {
+				name   string
+				offset []int
+			}{
+				{"Relayout external display to the left side of internal display", []int{-externalDisplayInfo.Bounds.Width, 0}},
+				{"Relayout external display to the right side of internal display", []int{internalDisplayInfo.Bounds.Width, 0}},
+				{"Relayout external display on top of internal display", []int{0, -externalDisplayInfo.Bounds.Height}},
+				{"Relayout external display on bottom of internal display", []int{0, internalDisplayInfo.Bounds.Height}},
+			} {
+				if err := func() error {
+					p := display.DisplayProperties{BoundsOriginX: &relayout.offset[0], BoundsOriginY: &relayout.offset[1]}
+					if err := display.SetDisplayProperties(ctx, tconn, externalDisplayInfo.ID, p); err != nil {
+						return err
+					}
+					if err := ensureWindowStable(ctx, tconn, settingsPkgMD, settingsWindowInfo); err != nil {
+						return err
+					}
+					if err := ensureWindowStable(ctx, tconn, wmPkgMD, wmWindowInfo); err != nil {
+						return err
+					}
+					return ensureNoBlackBkg(ctx, cr, tconn)
+
+				}(); err != nil {
+					return errors.Wrapf(err, "subtest %q failed when %q", test.name, relayout.name)
+				}
+			}
+			return nil
+		}(); err != nil {
+			return err
+		}
 	}
 	return nil
 }
@@ -322,9 +436,9 @@ func startActivityOnDisplay(ctx context.Context, a *arc.ARC, pkgName, actName, d
 	return nil
 }
 
-// ensureSetWindowState checks whether the window is in requested window state. If not, make sure to set window state into the requested window state.
-func ensureSetWindowState(ctx context.Context, c *chrome.Conn, pkgName string, act *arc.Activity, expectedState ash.WindowStateType) error {
-	if state, err := ash.GetARCAppWindowState(ctx, c, pkgName); err != nil {
+// ensureSetWindowState checks whether the window is in requested window state. If not, make sure to set window state to the requested window state.
+func ensureSetWindowState(ctx context.Context, tconn *chrome.Conn, pkgName string, expectedState ash.WindowStateType) error {
+	if state, err := ash.GetARCAppWindowState(ctx, tconn, pkgName); err != nil {
 		return err
 	} else if state == expectedState {
 		return nil
@@ -339,7 +453,7 @@ func ensureSetWindowState(ctx context.Context, c *chrome.Conn, pkgName string, a
 	if !ok {
 		return errors.Errorf("didn't find the event for window state: %q", expectedState)
 	}
-	state, err := ash.SetARCAppWindowState(ctx, c, pkgName, wmEvent)
+	state, err := ash.SetARCAppWindowState(ctx, tconn, pkgName, wmEvent)
 	if err != nil {
 		return err
 	}
@@ -377,7 +491,7 @@ func ensureNoBlackBkg(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Conn
 		rect := img.Bounds()
 		totalPixels := (rect.Max.Y - rect.Min.Y) * (rect.Max.X - rect.Min.X)
 		percent := blackPixels * 100 / totalPixels
-		testing.ContextLogf(ctx, "Black pixels = %d / %d (%d%%)", blackPixels, totalPixels, percent)
+		testing.ContextLogf(ctx, "Black pixels = %d / %d (%d%%) on display %q", blackPixels, totalPixels, percent, info.ID)
 
 		// "3 percent" is arbitrary.
 		if percent > 3 {
