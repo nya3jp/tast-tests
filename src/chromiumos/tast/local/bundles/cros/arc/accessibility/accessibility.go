@@ -11,6 +11,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/google/go-cmp/cmp"
+	"github.com/google/go-cmp/cmp/cmpopts"
+
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/ui"
@@ -33,6 +36,39 @@ const (
 
 	extURL = "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief/cvox2/background/background.html"
 )
+
+// AutomationNode represents an accessibility struct, which contains properties from chrome.automation.Autotmation.
+// This is defined at:
+// https://developer.chrome.com/extensions/automation#type-AutomationNode
+// Only the properties which are used in tast tests are defined here.
+type AutomationNode struct {
+	ClassName     string
+	Tooltip       string
+	Checked       string
+	ValueForRange int
+}
+
+// FocusedNode returns the currently focused node of ChromeVox.
+// chrome.automation.AutomationNode properties are defined using getters
+// see: https://cs.chromium.org/chromium/src/extensions/renderer/resources/automation/automation_node.js?q=automationNode&sq=package:chromium&dr=CSs&l=1218
+// meaning that resolve(node) cannot be applied here.
+func FocusedNode(ctx context.Context, chromeVoxConn *chrome.Conn) (*AutomationNode, error) {
+	var automationNode AutomationNode
+	const script = `new Promise((resolve, reject) => {
+				chrome.automation.getFocus((node) => {
+					resolve({
+						Tooltip: node.tooltip,
+						Checked: node.checked,
+						ClassName: node.className,
+						ValueForRange: node.valueForRange
+					});
+				});
+			})`
+	if err := chromeVoxConn.EvalPromise(ctx, script, &automationNode); err != nil {
+		return nil, err
+	}
+	return &automationNode, nil
+}
 
 // Enabled checks if accessibility is enabled in Android.
 func Enabled(ctx context.Context, a *arc.ARC) (bool, error) {
@@ -151,22 +187,18 @@ func InstallAndStartSampleApp(ctx context.Context, a *arc.ARC, apkPath string) e
 	return nil
 }
 
-// WaitForElementFocused polls until the specified UI element (focusClassName) has focus.
+// WaitFocusedNode polls until the properties of the focused node matches node.
 // Returns an error after 30 seconds.
-func WaitForElementFocused(ctx context.Context, chromeVoxConn *chrome.Conn, focusClassName string) error {
-	const script = `new Promise((resolve, reject) => {
-			chrome.automation.getFocus((node) => {
-				resolve(node.className);
-			});
-		})`
+func WaitForFocusedNode(ctx context.Context, chromeVoxConn *chrome.Conn, node *AutomationNode) error {
 	// Wait for focusClassName to receive focus.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var currFocusClassName string
-		if err := chromeVoxConn.EvalPromise(ctx, script, &currFocusClassName); err != nil {
+		focusedNode, err := FocusedNode(ctx, chromeVoxConn)
+		if err != nil {
 			return err
-		}
-		if strings.TrimSpace(currFocusClassName) != focusClassName {
-			return errors.Errorf("%q does not have focus, %q has focus instead", focusClassName, currFocusClassName)
+		} else if focusedNode.ClassName != node.ClassName {
+			return errors.Errorf("%q does not have focus, %q has focus instead", focusedNode.ClassName, node.ClassName)
+		} else if diff := cmp.Diff(focusedNode, node, cmpopts.EquateEmpty()); diff != "" {
+			return errors.Errorf("focused node is %q, want %q", focusedNode, node)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
