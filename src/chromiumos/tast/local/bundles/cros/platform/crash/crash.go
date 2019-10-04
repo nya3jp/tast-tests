@@ -225,7 +225,7 @@ func disableSystemSending() error {
 	return nil
 }
 
-// setCrashTestInProgress creates a file to tell crash_repoter that a crash_repoter test is in progress.
+// setCrashTestInProgress creates a file to tell crash_reporter that a crash_reporter test is in progress.
 func setCrashTestInProgress() error {
 	if err := ioutil.WriteFile(crashTestInProgress, []byte("in-progress"), 0644); err != nil {
 		return errors.Wrapf(err, "failed writing in-progress state file %s", crashTestInProgress)
@@ -233,7 +233,7 @@ func setCrashTestInProgress() error {
 	return nil
 }
 
-// unsetCrashTestInProgress tells crash_repoter that no crash_repoter test is in progress.
+// unsetCrashTestInProgress tells crash_reporter that no crash_reporter test is in progress.
 func unsetCrashTestInProgress() error {
 	if err := os.Remove(crashTestInProgress); err != nil && !os.IsNotExist(err) {
 		return errors.Wrapf(err, "failed to remove in-progress state file %s", crashTestInProgress)
@@ -298,7 +298,7 @@ func replaceCrashFilterIn(param string) error {
 			continue
 		}
 		if len(param) == 0 {
-			// remove from list
+			// Remove from list.
 			continue
 		}
 		newargs = append(newargs, "--filter_in="+param)
@@ -347,7 +347,7 @@ func setUpTestCrashReporter(ctx context.Context) error {
 	if err := replaceCrashFilterIn("none"); err != nil {
 		return errors.Wrap(err, "failed after initializing crash reporter")
 	}
-	// Set the test status flag to make crash reporter
+	// Set the test status flag to make crash reporter.
 	if err := setCrashTestInProgress(); err != nil {
 		return errors.Wrap(err, "failed after initializing crash reporter")
 	}
@@ -473,10 +473,10 @@ func runCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult
 
 	var expectedExitCode int
 	if opts.Username == "root" {
-		// POSIX-style exit code for a signal
+		// POSIX-style exit code for a signal.
 		expectedExitCode = -int(syscall.SIGSEGV)
 	} else {
-		// bash-style exit code for a signal (because it's run with "su -c")
+		// Bash-style exit code for a signal (because it's run with "su -c").
 		expectedExitCode = 128 + int(syscall.SIGSEGV)
 	}
 	result := CrasherResult{
@@ -613,10 +613,87 @@ func RunCrasherProcessAndAnalyze(ctx context.Context, opts CrasherOptions) (*Cra
 	}
 
 	result.Minidump = crashReportFiles[".dmp"]
-	result.Basename = basename
+	result.Basename = filepath.Base(crasherPath)
 	result.Meta = crashReportFiles[".meta"]
 	result.Log = crashReportFiles[".log"]
 	return result, nil
+}
+
+// isFrameInStack searches for frame entries in the given stack dump text.
+// Returns true if an exact match is present.
+//
+// A frame entry looks like (alone on a line)
+// "16  crasher_nobreakpad!main [crasher.cc : 21 + 0xb]",
+// where 16 is the frame index (0 is innermost frame),
+// crasher_nobreakpad is the module name (executable or dso), main is the function name,
+// crasher.cc is the function name and 21 is the line number.
+//
+// We do not care about the full function signature - ie, is it
+// foo or foo(ClassA *).  These are present in function names
+// pulled by dump_syms for Stabs but not for DWARF.
+func isFrameInStack(ctx context.Context, frameIndex int, moduleName, functionName, fileName string,
+	lineNumber int, stack []byte) bool {
+	re := regexp.MustCompile(
+		fmt.Sprintf(`\n\s*%d\s+%s!%s.*\[\s*%s\s*:\s*%d\s.*\]`,
+			frameIndex, moduleName, functionName, fileName, lineNumber))
+	testing.ContextLog(ctx, "Searching for regexp ", re)
+	return re.FindSubmatch(stack) != nil
+}
+
+// verifyStack checks if a crash happened at the expected location.
+func verifyStack(ctx context.Context, stack []byte, basename string, fromCrashReporter bool) error {
+	testing.ContextLogf(ctx, "minidump_stackwalk output: %s", string(stack))
+
+	// Look for a line like:
+	// Crash reason:  SIGSEGV
+	// Crash reason:  SIGSEGV /0x00000000
+	match := regexp.MustCompile(`Crash reason:\s+([^\s]*)`).FindSubmatch(stack)
+	const expectedAddress = "0x16"
+	if match == nil || string(match[1]) != "SIGSEGV" {
+		return errors.New("Did not identify SIGSEGV cause")
+	}
+
+	match = regexp.MustCompile(`Crash address:\s+(.*)`).FindSubmatch(stack)
+	if match == nil || string(match[1]) != expectedAddress {
+		return errors.Errorf("Did not identify crash address %s", expectedAddress)
+	}
+
+	const (
+		bombSource    = `platform\.UserCrash\.crasher\.bomb\.cc`
+		crasherSource = `platform\.UserCrash\.crasher\.crasher\.cc`
+		recbomb       = "recbomb"
+	)
+
+	// Should identify crash at *(char*)0x16 assignment line.
+	if !isFrameInStack(ctx, 0, basename, recbomb, bombSource, 9, stack) {
+		return errors.New("Did not show crash line on stack")
+	}
+
+	// Should identify recursion line which is on the stack for 15 levels.
+	if !isFrameInStack(ctx, 15, basename, recbomb, bombSource, 12, stack) {
+		return errors.New("Did not show recursion line on stack")
+	}
+
+	// Should identify main line.
+	if !isFrameInStack(ctx, 16, basename, "main", crasherSource, 23, stack) {
+		return errors.New("Did not show main on stack")
+	}
+	return nil
+}
+
+// checkMinidumpStackwalk acquires stack dump log from minidump and verifies it.
+func checkMinidumpStackwalk(ctx context.Context, minidumpPath, basename string, fromCrashReporter bool) error {
+	symbolDir := filepath.Join(filepath.Dir(crasherPath), "symbols")
+	command := []string{"minidump_stackwalk", minidumpPath, symbolDir}
+	cmd := testexec.CommandContext(ctx, command[0], command[1:]...)
+	out, err := cmd.CombinedOutput(testexec.DumpLogOnError)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get minidump output %v", cmd)
+	}
+	if err := verifyStack(ctx, out, basename, fromCrashReporter); err != nil {
+		return errors.Wrap(err, "minidump stackwalk verification failed")
+	}
+	return nil
 }
 
 // CheckCrashingProcess runs crasher process and verifies that it's processed.
@@ -640,11 +717,16 @@ func CheckCrashingProcess(ctx context.Context, opts CrasherOptions) error {
 		return nil
 	}
 	if result.Minidump == "" {
-		return errors.New("crash reporter did not announce minidump")
+		return errors.New("crash reporter did not generate minidump")
 	}
 
-	// TODO(crbug.com/970930): Check minidump stack walk.
-	// TODO(crbug.com/970930): Check generated report sending.
+	// TODO(crbug.com/970930): Check that crash reporter announces minidump location to the log like "Stored minidump to /var/...."
+
+	if err := checkMinidumpStackwalk(ctx, result.Minidump, result.Basename, true); err != nil {
+		return err
+	}
+
+	// TODO(crbug.com/970930): Check that generated report is sent.
 
 	return nil
 }
