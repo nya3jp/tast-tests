@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f0bfd38_1141ff32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-04T00:24:45Z",
+      "side": 1,
+      "message": "probably \"offset arc.Point\" is better here (or similar)",
+      "range": {
+        "startLine": 371,
+        "startChar": 4,
+        "endLine": 371,
+        "endChar": 16
+      },
+      "revId": "46fc82d3dce91ea6826c8d375a4ad5d08e87da78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
