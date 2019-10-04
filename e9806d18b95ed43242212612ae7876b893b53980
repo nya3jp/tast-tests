@@ -378,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "b1b9b9ff_fc8098bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-04T22:37:15Z",
+      "side": 1,
+      "message": "OK, fine to leave as-is (or, as it was I guess). We don\u0027t want to introduce flakes. :) \n\nMaybe add a TODO to refactor it out?",
+      "parentUuid": "9e23c2f7_43fde940",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "e9806d18b95ed43242212612ae7876b893b53980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ed55ba85_1b8a36a5",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
         "patchSetId": 4
@@ -413,6 +437,30 @@
       "side": 1,
       "message": "With this removed the test consistently fails to find the expected files. Not sure too sure on the underlying cause and am investigating but will leave this here for now.",
       "parentUuid": "ed55ba85_1b8a36a5",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "e9806d18b95ed43242212612ae7876b893b53980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad29fb9e_f7749030",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-04T22:37:15Z",
+      "side": 1,
+      "message": "Ahh, that\u0027s right - the kernel parser also does this check, and this is part of that. Nevermind :-)",
+      "parentUuid": "e8ff1781_ca236141",
       "range": {
         "startLine": 90,
         "startChar": 0,
