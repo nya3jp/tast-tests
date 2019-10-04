@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "1a9147b2_aadf809e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-04T11:32:41Z",
+      "side": 1,
+      "message": "Renamed to glbench.go. The function name should be capitalized as it\u0027s exported.",
+      "parentUuid": "bbdaad93_fd6e4138",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 15
+      },
+      "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67f2d208_6baaf4aa",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
         "patchSetId": 3
@@ -116,6 +140,30 @@
       "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad44b50a_7cffd34c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-04T11:32:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67f2d208_6baaf4aa",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 4
+      },
+      "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -142,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "6d8d5d75_69515a82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-04T11:32:41Z",
+      "side": 1,
+      "message": "Later I will add hasty mode, and then args are changed depending on the value of hasty.",
+      "parentUuid": "9b4cf936_e231b43f",
+      "range": {
+        "startLine": 73,
+        "startChar": 46,
+        "endLine": 73,
+        "endChar": 50
+      },
+      "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24e202b5_cbc390d8",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
         "patchSetId": 3
@@ -165,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "a39af413_64338ca3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-04T11:32:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24e202b5_cbc390d8",
+      "range": {
+        "startLine": 77,
+        "startChar": 35,
+        "endLine": 77,
+        "endChar": 36
+      },
+      "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bcc072b_6c049b50",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
         "patchSetId": 3
@@ -185,6 +281,30 @@
       "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee15242a_d8d1140c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-04T11:32:41Z",
+      "side": 1,
+      "message": "I think it should be Output, because the origianl test computes summary from stdout.",
+      "parentUuid": "8bcc072b_6c049b50",
+      "range": {
+        "startLine": 79,
+        "startChar": 15,
+        "endLine": 79,
+        "endChar": 21
+      },
+      "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -234,6 +354,54 @@
     },
     {
       "key": {
+        "uuid": "ab4f5c2d_3394a092",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-04T11:32:41Z",
+      "side": 1,
+      "message": "Not sure if it improves readability, it will look like \n\n\tfmt.Fprintln(f, \"# ---------------------------------------------------\")\n\tfmt.Fprintf(f, \"# [%s]\\n\", cmdLine)\n\tfmt.Fprintf(f, \"%s\\n\", summary)\n\tfmt.Fprintln(f, \"# [graphics_GLBench.py postprocessing]\")\n\nThe columns of f doesn\u0027t align.",
+      "parentUuid": "1c2fdeb3_fd854203",
+      "range": {
+        "startLine": 92,
+        "startChar": 17,
+        "endLine": 97,
+        "endChar": 38
+      },
+      "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fde3205_e13148c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-04T11:32:41Z",
+      "side": 1,
+      "message": "Done.\nGood catch!",
+      "parentUuid": "e349a3e5_07012ba2",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 22
+      },
+      "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "743aa9bf_33e44373",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
         "patchSetId": 3
@@ -254,6 +422,30 @@
       "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f61c95d5_f57c525b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-04T11:32:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "743aa9bf_33e44373",
+      "range": {
+        "startLine": 103,
+        "startChar": 3,
+        "endLine": 103,
+        "endChar": 4
+      },
+      "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -280,6 +472,30 @@
     },
     {
       "key": {
+        "uuid": "49160b99_7223fa6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-04T11:32:41Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "c4d269de_04967fa2",
+      "range": {
+        "startLine": 157,
+        "startChar": 3,
+        "endLine": 157,
+        "endChar": 56
+      },
+      "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc6811e5_9c420f55",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
         "patchSetId": 3
@@ -300,6 +516,30 @@
       "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7737b5c6_fa9c66e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-04T11:32:41Z",
+      "side": 1,
+      "message": "Done\nOops. Good catch.",
+      "parentUuid": "fc6811e5_9c420f55",
+      "range": {
+        "startLine": 171,
+        "startChar": 40,
+        "endLine": 171,
+        "endChar": 41
+      },
+      "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -326,6 +566,30 @@
     },
     {
       "key": {
+        "uuid": "bbb8a4e8_460c6245",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-04T11:32:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1879748a_9f0a472e",
+      "range": {
+        "startLine": 191,
+        "startChar": 28,
+        "endLine": 191,
+        "endChar": 29
+      },
+      "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb807d04_bba97cc3",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
         "patchSetId": 3
@@ -340,6 +604,24 @@
       "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b857c59_47175834",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/gl_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-04T11:32:41Z",
+      "side": 1,
+      "message": "Given we have a string slice named noChecksumTests, just changing this function to checksumTest and doing negation on caller looks like a double (or triple?) negation to me.\nAlso I didn\u0027t come up with better naming for noChecksumTests slice (i.e. no negation). So I\u0027d keep it as is.",
+      "parentUuid": "fb807d04_bba97cc3",
+      "revId": "717b3462c19aa9db27747ea8d15f77a61235c683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
