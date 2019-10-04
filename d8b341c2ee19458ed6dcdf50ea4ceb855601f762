@@ -68,6 +68,29 @@
       "revId": "d8b341c2ee19458ed6dcdf50ea4ceb855601f762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5aef5f37_18038e3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-04T05:10:24Z",
+      "side": 1,
+      "message": "Just wondering if you can use the fixed time independently to the actual length of (x0, y0) - (x1, y1).",
+      "range": {
+        "startLine": 331,
+        "startChar": 43,
+        "endLine": 331,
+        "endChar": 54
+      },
+      "revId": "d8b341c2ee19458ed6dcdf50ea4ceb855601f762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
