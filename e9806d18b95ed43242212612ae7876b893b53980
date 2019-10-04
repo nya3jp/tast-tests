@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7a34b384_6ac52c15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2019-10-04T20:14:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5aa45c5_844a0be4",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 15
+      },
+      "revId": "e9806d18b95ed43242212612ae7876b893b53980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78ac92b6_62929fd2",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "e9806d18b95ed43242212612ae7876b893b53980",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "324f6204_f4d06301",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2019-10-04T20:14:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78ac92b6_62929fd2",
+      "range": {
+        "startLine": 33,
+        "startChar": 16,
+        "endLine": 33,
+        "endChar": 17
+      },
+      "revId": "e9806d18b95ed43242212612ae7876b893b53980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1844ec3e_eb68012d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2019-10-04T20:14:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b85df6da_f252e873",
+      "range": {
+        "startLine": 39,
+        "startChar": 35,
+        "endLine": 39,
+        "endChar": 63
+      },
+      "revId": "e9806d18b95ed43242212612ae7876b893b53980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d8e4abf_af546ab4",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "e9806d18b95ed43242212612ae7876b893b53980",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29b70d88_4147eb68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2019-10-04T20:14:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d8e4abf_af546ab4",
+      "range": {
+        "startLine": 60,
+        "startChar": 11,
+        "endLine": 61,
+        "endChar": 8
+      },
+      "revId": "e9806d18b95ed43242212612ae7876b893b53980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "eed28e4f_2585924b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2019-10-04T20:14:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12d5dc1b_e0cdcf2f",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 13
+      },
+      "revId": "e9806d18b95ed43242212612ae7876b893b53980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18ad9ba6_5a060573",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
         "patchSetId": 4
@@ -137,6 +257,30 @@
       "revId": "e9806d18b95ed43242212612ae7876b893b53980",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24ecb785_436f4aaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2019-10-04T20:14:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18ad9ba6_5a060573",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "e9806d18b95ed43242212612ae7876b893b53980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "01bea32d_88067dd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2019-10-04T20:14:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "281ae6e3_bad7ddb0",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 2
+      },
+      "revId": "e9806d18b95ed43242212612ae7876b893b53980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98c85445_bc57e961",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
         "patchSetId": 4
@@ -174,6 +342,30 @@
       "writtenOn": "2019-10-04T18:37:34Z",
       "side": 1,
       "message": "I\u0027m not quite sure I understand why we need to verify that crash reporting is enabled. If it\u0027s disabled, the test will already fail later (since the kernel won\u0027t invoke crash_reporter).\n\nIs this something you ran into while testing and had difficulty debugging?  If so, do you think you could pull it out into local/crash/crash.go as a utility function, so that all tests that rely on it being started can have the more clear error reporting?",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "e9806d18b95ed43242212612ae7876b893b53980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e23c2f7_43fde940",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2019-10-04T20:14:46Z",
+      "side": 1,
+      "message": "This is actually directly from testReporterStartup in user_crash.go which says vague message about being flakey hence why I added it here. It does seem to run fine without it on my atlas and eve though. I could split this out in user_crash and call that exported function or get rid of it if you know background",
+      "parentUuid": "98c85445_bc57e961",
       "range": {
         "startLine": 74,
         "startChar": 0,
@@ -206,6 +398,30 @@
       "revId": "e9806d18b95ed43242212612ae7876b893b53980",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8ff1781_ca236141",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1371177
+      },
+      "writtenOn": "2019-10-04T20:14:46Z",
+      "side": 1,
+      "message": "With this removed the test consistently fails to find the expected files. Not sure too sure on the underlying cause and am investigating but will leave this here for now.",
+      "parentUuid": "ed55ba85_1b8a36a5",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "e9806d18b95ed43242212612ae7876b893b53980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
