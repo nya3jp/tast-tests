@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e9882ff9_cc0e7dc2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1367607
+      },
+      "writtenOn": "2019-10-04T02:34:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83578824_9fd5b13b",
+      "revId": "df82a5f6097699bf04ceb93af23c7281aeefeaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47624372_308ba079",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg.go",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "ab15e645_9e008bce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/decode_accel_jpeg.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1367607
+      },
+      "writtenOn": "2019-10-04T02:34:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47624372_308ba079",
+      "range": {
+        "startLine": 68,
+        "startChar": 22,
+        "endLine": 68,
+        "endChar": 26
+      },
+      "revId": "df82a5f6097699bf04ceb93af23c7281aeefeaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1f5b337_8818d29e",
         "filename": "src/chromiumos/tast/local/media/binsetup/binsetup.go",
         "patchSetId": 2
@@ -62,6 +104,30 @@
       "revId": "df82a5f6097699bf04ceb93af23c7281aeefeaee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed08c5d0_86863e0c",
+        "filename": "src/chromiumos/tast/local/media/binsetup/binsetup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1367607
+      },
+      "writtenOn": "2019-10-04T02:34:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1f5b337_8818d29e",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 69
+      },
+      "revId": "df82a5f6097699bf04ceb93af23c7281aeefeaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
