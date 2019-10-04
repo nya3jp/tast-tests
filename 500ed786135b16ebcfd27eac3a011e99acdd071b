@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6daf2b0b_78498337",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-10-04T17:12:49Z",
+      "side": 1,
+      "message": "unused?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 59
+      },
+      "revId": "500ed786135b16ebcfd27eac3a011e99acdd071b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56ee773a_473e73f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-10-04T17:12:49Z",
+      "side": 1,
+      "message": "nit: just \"signature\" is enough, and \"encryption\" below",
+      "range": {
+        "startLine": 51,
+        "startChar": 10,
+        "endLine": 51,
+        "endChar": 33
+      },
+      "revId": "500ed786135b16ebcfd27eac3a011e99acdd071b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3e13f0c_67676021",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-10-04T17:12:49Z",
+      "side": 1,
+      "message": "nit: Let\u0027s simplify this to \"demo_signature\", and \"demo_encryption\" below.",
+      "range": {
+        "startLine": 53,
+        "startChar": 16,
+        "endLine": 53,
+        "endChar": 42
+      },
+      "revId": "500ed786135b16ebcfd27eac3a011e99acdd071b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05d5ece9_f0d63e4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-10-04T17:12:49Z",
+      "side": 1,
+      "message": "ditto, simplify to \"buttonSignature\"",
+      "range": {
+        "startLine": 54,
+        "startChar": 27,
+        "endLine": 54,
+        "endChar": 51
+      },
+      "revId": "500ed786135b16ebcfd27eac3a011e99acdd071b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d17f27c4_ae179cf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-10-04T17:12:49Z",
+      "side": 1,
+      "message": "This assignment looks kind of lost here.",
+      "revId": "500ed786135b16ebcfd27eac3a011e99acdd071b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bc0037e_499a40cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-10-04T17:12:49Z",
+      "side": 1,
+      "message": "I thought we discussed this was not necessary? Is it needed?",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 51
+      },
+      "revId": "500ed786135b16ebcfd27eac3a011e99acdd071b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe00094e_dff79ab6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-10-04T17:12:49Z",
+      "side": 1,
+      "message": "nit: something like \"Failed waiting for status textfield\" is more descriptive",
+      "range": {
+        "startLine": 126,
+        "startChar": 11,
+        "endLine": 126,
+        "endChar": 103
+      },
+      "revId": "500ed786135b16ebcfd27eac3a011e99acdd071b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afed7956_1205ea69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1230447
+      },
+      "writtenOn": "2019-10-04T17:12:49Z",
+      "side": 1,
+      "message": "You use \"arc\" and \"cros\" prefixes/suffixes to indicate where the variable or function is used. Let\u0027s be consistent, either use prefixes (\"arc*\") everywhere, or suffixes (\"*Arc\"), or neither (then use descriptive names to tell things apart).",
+      "range": {
+        "startLine": 141,
+        "startChar": 31,
+        "endLine": 141,
+        "endChar": 63
+      },
+      "revId": "500ed786135b16ebcfd27eac3a011e99acdd071b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
