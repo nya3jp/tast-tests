@@ -15,13 +15,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     DecodeAccelVDVP8,
-		Desc:     "Runs Chrome video_decode_accelerator_tests with an VP8 video on a media::VideoDecoder",
-		Contacts: []string{"acourbot@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
-		// TODO(b/137916185): Remove dependency on android capability. It's used here
-		// to guarantee import-mode support, which is required by the new VD's.
-		SoftwareDeps: []string{"android", "chrome", caps.HWDecodeVP8},
+		Func:         DecodeAccelVDVP8,
+		Desc:         "Runs Chrome video_decode_accelerator_tests with an VP8 video on a media::VideoDecoder",
+		Contacts:     []string{"acourbot@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"cros_video_decoder", "chrome", caps.HWDecodeVP8},
 		Data:         decode.DataFiles(videotype.VP8Prof),
 	})
 }

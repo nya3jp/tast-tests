@@ -20,9 +20,7 @@ func init() {
 		Contacts: []string{"dstaessens@chromium.org", "akahuang@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
-		// TODO(b/137916185): Remove dependency on android capability. It's used here
-		// to guarantee import-mode support, which is required by the new VD's.
-		SoftwareDeps: []string{"android", "chrome", "chrome_internal"},
+		SoftwareDeps: []string{"cros_video_decoder", "chrome", "chrome_internal"},
 		Pre:          pre.ChromeVideoVD(),
 		Data:         []string{"720_h264.mp4", "video.html"},
 	})
