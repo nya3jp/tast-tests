@@ -22,6 +22,30 @@
       "revId": "2fccde73e801cccc21aa3a0d8f5d39a49c5cb463",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d9ca8da_20b95938",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/mediarecorder/media_recorder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-04T14:12:21Z",
+      "side": 1,
+      "message": "Ah, my bad, assumed it was integer, changing it.",
+      "parentUuid": "cbbf18e3_d0e8dc2d",
+      "range": {
+        "startLine": 120,
+        "startChar": 16,
+        "endLine": 120,
+        "endChar": 42
+      },
+      "revId": "2fccde73e801cccc21aa3a0d8f5d39a49c5cb463",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
