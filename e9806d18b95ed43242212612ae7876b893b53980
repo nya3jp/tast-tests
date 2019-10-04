@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5aa45c5_844a0be4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-04T18:37:34Z",
+      "side": 1,
+      "message": "nit: use camelCase for this",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 15
+      },
+      "revId": "e9806d18b95ed43242212612ae7876b893b53980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78ac92b6_62929fd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-04T18:37:34Z",
+      "side": 1,
+      "message": "We may want to add \"group:mainline\" here, per a comment I got on https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1764531",
+      "range": {
+        "startLine": 33,
+        "startChar": 16,
+        "endLine": 33,
+        "endChar": 17
+      },
+      "revId": "e9806d18b95ed43242212612ae7876b893b53980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b85df6da_f252e873",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-04T18:37:34Z",
+      "side": 1,
+      "message": "nit: this is a bit brittle; if the core_pattern changes in the future we\u0027ll need to update this too. Can you instead append the --crash_test flag to  the command-line of the existing core_pattern, or find it in the command-line and remove it?",
+      "range": {
+        "startLine": 39,
+        "startChar": 35,
+        "endLine": 39,
+        "endChar": 63
+      },
+      "revId": "e9806d18b95ed43242212612ae7876b893b53980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d8e4abf_af546ab4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-04T18:37:34Z",
+      "side": 1,
+      "message": "Can you join these two lines? Go is very generous with going over 80 character lines, and in this case I think it\u0027d be more readable on one line.",
+      "range": {
+        "startLine": 60,
+        "startChar": 11,
+        "endLine": 61,
+        "endChar": 8
+      },
+      "revId": "e9806d18b95ed43242212612ae7876b893b53980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12d5dc1b_e0cdcf2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-04T18:37:34Z",
+      "side": 1,
+      "message": "This won\u0027t do anything. Did you mean s.Fatal?",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 13
+      },
+      "revId": "e9806d18b95ed43242212612ae7876b893b53980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18ad9ba6_5a060573",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-04T18:37:34Z",
+      "side": 1,
+      "message": "Can you please `defer replaceCorePattern(false)` immediately after this `if`? (so that the proper pattern gets restored)",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "e9806d18b95ed43242212612ae7876b893b53980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "281ae6e3_bad7ddb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-04T18:37:34Z",
+      "side": 1,
+      "message": "nit: Can you name this \"st\" or something similar? I was confused by the name and thought it was a file handle",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 2
+      },
+      "revId": "e9806d18b95ed43242212612ae7876b893b53980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98c85445_bc57e961",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-04T18:37:34Z",
+      "side": 1,
+      "message": "I\u0027m not quite sure I understand why we need to verify that crash reporting is enabled. If it\u0027s disabled, the test will already fail later (since the kernel won\u0027t invoke crash_reporter).\n\nIs this something you ran into while testing and had difficulty debugging?  If so, do you think you could pull it out into local/crash/crash.go as a utility function, so that all tests that rely on it being started can have the more clear error reporting?",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "e9806d18b95ed43242212612ae7876b893b53980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed55ba85_1b8a36a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crash_reporter_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2019-10-04T18:37:34Z",
+      "side": 1,
+      "message": "I don\u0027t believe this is necessary with the collector as it\u0027s written. For service failures, the ParseLogEntry method checks the hash of the crash, and only logs it if it wasn\u0027t already seen. The crash reporter failure detector doesn\u0027t do that, so I believe the restart isn\u0027t needed.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "e9806d18b95ed43242212612ae7876b893b53980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
