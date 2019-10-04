@@ -173,7 +173,7 @@ func PIP(ctx context.Context, s *testing.State) {
 
 			if test.initMethod == startActivity || test.initMethod == enterPip {
 				must(act.Start(ctx))
-				must(act.WaitForResumed(ctx, 10*time.Second))
+				must(ash.WaitForVisible(ctx, tconn, pkgName))
 			}
 
 			if test.initMethod == enterPip {
