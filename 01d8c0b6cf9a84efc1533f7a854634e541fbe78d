@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13364c4f_d1eb88df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-04T16:51:33Z",
+      "side": 1,
+      "message": "HW\n\u0027W\u0027 should be an upper case as HW is an acronym.\ncf. https://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 38,
+        "startChar": 11,
+        "endLine": 38,
+        "endChar": 13
+      },
+      "revId": "01d8c0b6cf9a84efc1533f7a854634e541fbe78d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
