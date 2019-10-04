@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ba9ea17_ef63c9d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-04T00:14:13Z",
+      "side": 1,
+      "message": "Is string() necessary?",
+      "range": {
+        "startLine": 315,
+        "startChar": 83,
+        "endLine": 315,
+        "endChar": 89
+      },
+      "revId": "a050a3f71296f77ba9616f870734df6d25894fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
