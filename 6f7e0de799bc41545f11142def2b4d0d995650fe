@@ -312,6 +312,24 @@
     },
     {
       "key": {
+        "uuid": "d0bd8959_4cc98348",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-04T17:59:05Z",
+      "side": 1,
+      "message": "Going to close per Hidehiko\u0027s comment",
+      "parentUuid": "2c6dbb0c_5ba37f82",
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3dda3571_65a8c9ec",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 3
@@ -343,6 +361,24 @@
       "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d23ba0e_b09c247b",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-04T17:59:05Z",
+      "side": 1,
+      "message": "I do not think so (Could be wrong though!). We are specifically looking for 1 target, when normally 2 are returned. Additionally there is a chance that the first target (ie what would break the loop in your proposed idea) is the wrong one. This would require use to re-enter the polling loop, or error out. \n\nUnless you see something drastically wrong with that logic, I will leave the iteration/check inside the poll loop",
+      "parentUuid": "505bb869_dbe2eedf",
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -420,6 +456,30 @@
       "writtenOn": "2019-09-30T10:04:06Z",
       "side": 1,
       "message": "Could you close the connection, properly?\nAlso, nice to avoid \"temp\". Probably \"conn\" is enough.",
+      "range": {
+        "startLine": 864,
+        "startChar": 3,
+        "endLine": 864,
+        "endChar": 11
+      },
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f562269_30c15621",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-04T17:59:05Z",
+      "side": 1,
+      "message": "Do we want to use the var \"conn\" when it is defined elsewhere inside of chrome? I can change the name to \"gaiaConn\" to be more clear and remove the use of \"temp\"\n\n\u0026 I will add a line to close the conn further below.",
+      "parentUuid": "6f8e8e1b_f630c80f",
       "range": {
         "startLine": 864,
         "startChar": 3,
@@ -512,6 +572,30 @@
     },
     {
       "key": {
+        "uuid": "0eabca26_fab1f3b5",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-04T17:59:05Z",
+      "side": 1,
+      "message": "The comment above this line is also pretty bad... I will adjust that too.\n\nThe goal of this is to enroll after the initial .loginForTesting() is called. Is the name \"FinishEnrollmentFlow\" better (finish because by the time this gets called its half way through the total flow).",
+      "parentUuid": "a4e66bf9_5fe3984d",
+      "range": {
+        "startLine": 888,
+        "startChar": 17,
+        "endLine": 888,
+        "endChar": 39
+      },
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb472d35_5b49c50c",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 3
@@ -540,6 +624,24 @@
       "writtenOn": "2019-09-30T10:04:06Z",
       "side": 1,
       "message": "This looks no-op? What was intended to be done here?",
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a3f02e7_c377cf9a",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-04T17:59:05Z",
+      "side": 1,
+      "message": "TBD, copied from Telemetry",
+      "parentUuid": "d99b0ba5_f80c40da",
       "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -597,6 +699,24 @@
       "writtenOn": "2019-09-27T21:26:43Z",
       "side": 1,
       "message": "does this work with the GAIALogin case?",
+      "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81cbc899_1e1a2018",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 934,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2019-10-04T17:59:05Z",
+      "side": 1,
+      "message": "Doubtful. I have not researched enrollment with gaia much yet, but the Telemetry flows are different.\n\nFow now I will probably disallow this (ie if real gaia and enroll, return an err), until I finish that.",
+      "parentUuid": "d05f7edd_f52f1d83",
       "revId": "6f7e0de799bc41545f11142def2b4d0d995650fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
