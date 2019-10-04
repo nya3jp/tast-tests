@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c830167_47f7ec83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-10-04T05:44:42Z",
+      "side": 1,
+      "message": "This seems to be defined multiple times in this file.\nMaybe you can make const variables global.",
+      "revId": "90bc239dacacc3e7f52e57a0f0b1cef4493ee577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1919235d_48324f4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-10-04T05:44:42Z",
+      "side": 1,
+      "message": "A similar log is printed on line 98, maybe this is not necessary.",
+      "revId": "90bc239dacacc3e7f52e57a0f0b1cef4493ee577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "242ffb83_c9218aac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-10-04T05:44:42Z",
+      "side": 1,
+      "message": "You don\u0027t need to poll in this function?\n\"StatusTextView not ready yet:\" means you want to try a few times until it succeeds I guess?",
+      "revId": "90bc239dacacc3e7f52e57a0f0b1cef4493ee577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b3b14f0_febac8ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-10-04T05:44:42Z",
+      "side": 1,
+      "message": "Maybe you want to use them in other tests as well in the future, so you may want to define them outside of the function?",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 2
+      },
+      "revId": "90bc239dacacc3e7f52e57a0f0b1cef4493ee577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd3299dd_3f365c93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-10-04T05:44:42Z",
+      "side": 1,
+      "message": "I think you can increase this to 10 sec just in case.",
+      "revId": "90bc239dacacc3e7f52e57a0f0b1cef4493ee577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e4dc76e_427ec7de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-10-04T05:44:42Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to poll here?",
+      "revId": "90bc239dacacc3e7f52e57a0f0b1cef4493ee577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59cab752_558405b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2019-10-04T05:44:42Z",
+      "side": 1,
+      "message": "10 sec just in case?",
+      "revId": "90bc239dacacc3e7f52e57a0f0b1cef4493ee577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
