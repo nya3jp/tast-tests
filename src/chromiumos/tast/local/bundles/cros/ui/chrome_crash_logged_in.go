@@ -44,12 +44,14 @@ func ChromeCrashLoggedIn(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	files, err := chromecrash.KillAndGetCrashFiles(ctx)
-	if err != nil {
-		s.Fatal("Couldn't kill Chrome or get files: ", err)
-	}
+	for _, ptype := range []chromecrash.ProcessType{chromecrash.Browser, chromecrash.GPUProcess, chromecrash.Broker} {
+		files, err := chromecrash.KillAndGetCrashFiles(ctx, ptype)
+		if err != nil {
+			s.Fatalf("Couldn't kill Chrome %s process or get files: %v", ptype, err)
+		}
 
-	if err = chromecrash.FindCrashFilesIn(chromecrash.CryptohomeCrashPattern, files); err != nil {
-		s.Error("Crash files weren't written to cryptohome: ", err)
+		if err = chromecrash.FindCrashFilesIn(chromecrash.CryptohomeCrashPattern, files); err != nil {
+			s.Errorf("Crash files weren't written to cryptohome after crashing the %s process: %v", ptype, err)
+		}
 	}
 }
