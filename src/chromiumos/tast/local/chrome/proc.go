@@ -72,6 +72,8 @@ func getProcesses(t string) ([]process.Process, error) {
 
 	// Wrap by whitespaces. Please see the comment below.
 	flg := " --type=" + t + " "
+	// Or accept the --type= flag on the end of the command line.
+	endFlg := " --type=" + t
 	var ret []process.Process
 	for _, proc := range ps {
 		if exe, err := proc.Exe(); err != nil || exe != ExecPath {
@@ -91,7 +93,7 @@ func getProcesses(t string) ([]process.Process, error) {
 		if err != nil {
 			continue
 		}
-		if strings.Contains(cmd, flg) {
+		if strings.Contains(cmd, flg) || strings.HasSuffix(cmd, endFlg) {
 			ret = append(ret, *proc)
 		}
 	}
@@ -106,4 +108,14 @@ func GetPluginProcesses() ([]process.Process, error) {
 // GetRendererProcesses returns Chrome renderer processes.
 func GetRendererProcesses() ([]process.Process, error) {
 	return getProcesses("renderer")
+}
+
+// GetGPUProcesses returns Chrome gpu-process processes.
+func GetGPUProcesses() ([]process.Process, error) {
+	return getProcesses("gpu-process")
+}
+
+// GetBrokerProcesses returns Chrome broker processes.
+func GetBrokerProcesses() ([]process.Process, error) {
+	return getProcesses("broker")
 }

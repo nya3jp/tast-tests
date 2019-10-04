@@ -94,7 +94,7 @@ func SuspendFailure(ctx context.Context, s *testing.State) {
 	expectedRegexes := []string{`suspend_failure\.\d{8}\.\d{6}\.0\.log`,
 		`suspend_failure\.\d{8}\.\d{6}\.0\.meta`}
 
-	files, err := localCrash.WaitForCrashFiles(ctx, localCrash.SystemCrashDir, oldFiles, expectedRegexes)
+	files, err := localCrash.WaitForCrashFiles(ctx, []string{localCrash.SystemCrashDir}, oldFiles, expectedRegexes)
 	if err != nil {
 		s.Error("Couldn't find expected files: ", err)
 	}
