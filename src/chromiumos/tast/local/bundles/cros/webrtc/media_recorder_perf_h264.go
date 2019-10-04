@@ -26,7 +26,7 @@ func init() {
 		// "chrome_internal" is needed because H.264 is a proprietary codec.
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Data:         []string{mediarecorder.PerfStreamFile, "loopback_media_recorder.html"},
-		Timeout:      3 * time.Minute,
+		Timeout:      5 * time.Minute,
 	})
 }
 

@@ -25,7 +25,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{mediarecorder.PerfStreamFile, "loopback_media_recorder.html"},
-		Timeout:      3 * time.Minute,
+		Timeout:      5 * time.Minute,
 	})
 }
 
