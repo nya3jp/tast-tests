@@ -37,7 +37,7 @@ function changeWindowState(predicate, getEventTarget, changeState) {
 
 window.Tast = class {
   static isVideoActive() {
-    const video = document.querySelector('video');
+    const video = document.querySelector('#preview-video');
     return video && video.srcObject && video.srcObject.active;
   }
 
@@ -194,8 +194,8 @@ window.Tast = class {
   static async getFacing() {
     if (cca.mojo.MojoConnector !== undefined) {
       // Fallback to old approaches. These should be deprecated soon.
-      const track =
-          document.querySelector('video').srcObject.getVideoTracks()[0];
+      const track = document.querySelector('#preview-video')
+                        .srcObject.getVideoTracks()[0];
       const mojoConnector = new cca.mojo.MojoConnector();
       const deviceOperator = await mojoConnector.getDeviceOperator();
       if (!deviceOperator) {
@@ -216,8 +216,8 @@ window.Tast = class {
           throw new Error('Unexpected CameraFacing value: ' + facing);
       }
     } else {
-      const track =
-          document.querySelector('video').srcObject.getVideoTracks()[0];
+      const track = document.querySelector('#preview-video')
+                        .srcObject.getVideoTracks()[0];
       const deviceOperator = await cca.mojo.DeviceOperator.getInstance();
       if (!deviceOperator) {
         // This might be a HALv1 device.
@@ -245,7 +245,7 @@ window.Tast = class {
    * @throws {Error} Failed to get device id from video stream.
    */
   static getDeviceId() {
-    const video = document.querySelector('video');
+    const video = document.querySelector('#preview-video');
     if (!video) {
       throw new Error('Cannot find video element.');
     }
