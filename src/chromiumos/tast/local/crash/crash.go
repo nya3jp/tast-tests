@@ -64,18 +64,22 @@ func RestartAnomalyDetector(ctx context.Context) error {
 	return nil
 }
 
-// WaitForCrashFiles waits for each regex in regexes to match a file in dir that is not also in oldFiles.
+// WaitForCrashFiles waits for each regex in regexes to match a file in dirs that is not also in oldFiles.
 // One might use it by
-// 1. Getting a list of already-extant files in dir.
-// 2. Doing some operation that will create new files in dir (e.g. inducing a crash).
+// 1. Getting a list of already-extant files in a directory.
+// 2. Doing some operation that will create new files in that directory (e.g. inducing a crash).
 // 3. Calling this method to wait for the expected files to appear.
 // On success, WaitForCrashFiles returns a list of the files that matched the regexes.
-func WaitForCrashFiles(ctx context.Context, dir string, oldFiles []string, regexes []string) ([]string, error) {
+func WaitForCrashFiles(ctx context.Context, dirs, oldFiles, regexes []string) ([]string, error) {
 	var files []string
 	err := testing.Poll(ctx, func(c context.Context) error {
-		newFiles, err := crash.GetCrashes(dir)
-		if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to get new crashes"))
+		var newFiles []string
+		for _, dir := range dirs {
+			dirFiles, err := crash.GetCrashes(dir)
+			if err != nil {
+				return testing.PollBreak(errors.Wrap(err, "failed to get new crashes"))
+			}
+			newFiles = append(newFiles, dirFiles...)
 		}
 		diffFiles := set.DiffStringSlice(newFiles, oldFiles)
 
@@ -84,6 +88,7 @@ func WaitForCrashFiles(ctx context.Context, dir string, oldFiles []string, regex
 		for _, re := range regexes {
 			match := false
 			for _, f := range diffFiles {
+				var err error
 				match, err = regexp.MatchString(re, f)
 				if err != nil {
 					return testing.PollBreak(errors.Wrapf(err, "invalid regexp %s", re))
