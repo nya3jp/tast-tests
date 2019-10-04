@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b07d0631_b220ae58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-04T00:18:23Z",
+      "side": 1,
+      "message": "Sorry that I missed the point, too.",
+      "parentUuid": "dee0bed2_0b0e2e15",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 17
+      },
+      "revId": "dad1b6ddd9880ef039bd9e376d428e23875e0b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb741fa3_8f8652ca",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/chrome_media_internals_utils.js",
         "patchSetId": 5
