@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "3003d7de_412d1e1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2019-10-04T10:07:59Z",
+      "side": 1,
+      "message": "Thanks for reply!\n\nCurrent policy implementation isn\u0027t Wilco specific, it\u0027s general. So, probably `wilco` software is not exactly what we want here.",
+      "parentUuid": "5638b243_610c241c",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 32
+      },
+      "revId": "01e0dd8ee2fdb8151d3fa028ca10494352da6f35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b5cedc8_0080f4e0",
         "filename": "src/chromiumos/tast/local/shill/device.go",
         "patchSetId": 5
