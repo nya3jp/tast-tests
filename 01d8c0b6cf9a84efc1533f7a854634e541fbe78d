@@ -22,6 +22,30 @@
       "revId": "01d8c0b6cf9a84efc1533f7a854634e541fbe78d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e4d38cc_de50eebd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-04T18:28:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13364c4f_d1eb88df",
+      "range": {
+        "startLine": 38,
+        "startChar": 11,
+        "endLine": 38,
+        "endChar": 13
+      },
+      "revId": "01d8c0b6cf9a84efc1533f7a854634e541fbe78d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
