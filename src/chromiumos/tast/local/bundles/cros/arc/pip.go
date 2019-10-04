@@ -321,11 +321,20 @@ func testPIPFling(ctx context.Context, tconn *chrome.Conn, act *arc.Activity, de
 
 		x0 := input.TouchCoord(pipCenterX * pixelToTuxelX)
 		y0 := input.TouchCoord(pipCenterY * pixelToTuxelY)
-		x1 := input.TouchCoord((pipCenterX + float64(dir.x*dispW/3)) * pixelToTuxelX)
-		y1 := input.TouchCoord((pipCenterY + float64(dir.y*dispH/3)) * pixelToTuxelY)
+		x1 := input.TouchCoord((pipCenterX + float64(dir.x*dispW/6)) * pixelToTuxelX)
+		y1 := input.TouchCoord((pipCenterY + float64(dir.y*dispH/6)) * pixelToTuxelY)
+		x2 := input.TouchCoord((pipCenterX + float64(dir.x*(dispW/6+dispW/3))) * pixelToTuxelX)
+		y2 := input.TouchCoord((pipCenterY + float64(dir.y*(dispH/6+dispH/3))) * pixelToTuxelY)
 
-		testing.ContextLogf(ctx, "Running swipe gesture from {%d,%d} to {%d,%d}", x0, y0, x1, y1)
-		if err := stw.Swipe(ctx, x0, y0, x1, y1, 200*time.Millisecond); err != nil {
+		testing.ContextLogf(ctx, "Running the first swipe gesture from {%d,%d} to {%d,%d} to ensure to start drag move", x0, y0, x1, y1)
+		// Swipe the PIP window slowly first to ensure to start drag move.
+		if err := stw.Swipe(ctx, x0, y0, x1, y1, time.Second); err != nil {
+			return errors.Wrap(err, "failed to execute a swipe gesture")
+		}
+
+		testing.ContextLogf(ctx, "Running the second swipe gesture from {%d,%d} to {%d,%d} to fling PIP", x1, y1, x2, y2)
+		// The swipe duration needs to be faster than 200 milliseconds. Otherwise, the swipe gesture could be handled as regular drag move.
+		if err := stw.Swipe(ctx, x1, y1, x2, y2, 50*time.Millisecond); err != nil {
 			return errors.Wrap(err, "failed to execute a swipe gesture")
 		}
 		if err := stw.End(); err != nil {
