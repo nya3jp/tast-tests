@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "1d930b57_8219690b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-04T17:33:02Z",
+      "side": 1,
+      "message": "\"chrome_internal\" is required there because we cannot decode H.264 on Chromium.\nIn this case, we don\u0027t need \"chrome_internal\" technically because \"android\" SoftwareDep guarantees Chromium is not used.\n\nBut, it\u0027d be okay to have it for consistency.",
+      "parentUuid": "be00aedc_029bc44f",
+      "revId": "472eba52eb99fa133aa742530987186173589864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "350063d3_82ac92a7",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
         "patchSetId": 4
@@ -230,6 +248,30 @@
       "side": 1,
       "message": "I already tried but Milliseconds() does not exist. I think it\u0027s due to library version.\n\nMilliseconds() is after 1.13\nhttps://golang.org/pkg/time/#Duration.Milliseconds",
       "parentUuid": "87eafa17_ec37674f",
+      "range": {
+        "startLine": 132,
+        "startChar": 15,
+        "endLine": 132,
+        "endChar": 57
+      },
+      "revId": "472eba52eb99fa133aa742530987186173589864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "858039f4_7ba71a3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-04T17:33:02Z",
+      "side": 1,
+      "message": "Ah, I see. Thank you for the clarification.",
+      "parentUuid": "ccc0bbff_6765742d",
       "range": {
         "startLine": 132,
         "startChar": 15,
