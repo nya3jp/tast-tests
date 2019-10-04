@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6e240e4b_3ee8e8b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_h264.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-04T02:46:55Z",
+      "side": 1,
+      "message": "Ah, I misunderstood the meaning of this attribute. It\u0027s okay because we have \"informational\" attribute at the same time. I was confused \u0027mainline\u0027 and \u0027critical\u0027.\nSorry for the noise!",
+      "parentUuid": "115baf27_522b188a",
+      "range": {
+        "startLine": 20,
+        "startChar": 25,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "4536bb4bdd61d40ad71ad395fea5a4f8ed3814ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fafbc84a_17fde28c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vp92.go",
         "patchSetId": 11
@@ -93,6 +117,30 @@
       "revId": "4536bb4bdd61d40ad71ad395fea5a4f8ed3814ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6377fa87_6c8d3290",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vp92.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-04T02:46:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2b3ee36c_d67d7ca4",
+      "range": {
+        "startLine": 20,
+        "startChar": 26,
+        "endLine": 20,
+        "endChar": 40
+      },
+      "revId": "4536bb4bdd61d40ad71ad395fea5a4f8ed3814ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
