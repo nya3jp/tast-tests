@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "57645385_32ab6deb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-04T18:57:10Z",
+      "side": 1,
+      "message": "it seems that you don\u0027t need the \"func()\" here... is this correct?\n\n(adding code inside an anonymous func() is helpful in certain cases when for example you need a \"defer\" to get executed after finishing the code block.\nCould be useful to do a logging \"err\".\nBut it seems you are not doing any of it here\n)",
+      "range": {
+        "startLine": 349,
+        "startChar": 2,
+        "endLine": 349,
+        "endChar": 26
+      },
+      "revId": "46fc82d3dce91ea6826c8d375a4ad5d08e87da78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7f0bfd38_1141ff32",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
         "patchSetId": 3
@@ -18,6 +41,52 @@
         "startChar": 4,
         "endLine": 371,
         "endChar": 16
+      },
+      "revId": "46fc82d3dce91ea6826c8d375a4ad5d08e87da78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91434c58_2c9852a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-04T18:57:10Z",
+      "side": 1,
+      "message": "nit: (shorter names makes them easier to read):\n\nThe parent test is called \"Relayout displays\"\nThe subtests are called \"Relayout displays when windows are ...\"\nThe relayouts are called \"Relayout external display to/on ...\"\n\nPerhaps the name can be shorter?\ne.g: Parent \"Relayout displays\" (unchanged)\nsubtest  -\u003e \"Maximized window (or Windows are maximized)\" / \"Normal window (or Windows are normal)\" ( \"relayout display\" is implied from parent)\nrelayout -\u003e \"From external to right side of internal display\"... (assuming it makes sense).\n\nYou can always add more context in the testing.ContextLogf() if needed.",
+      "range": {
+        "startLine": 373,
+        "startChar": 6,
+        "endLine": 373,
+        "endChar": 32
+      },
+      "revId": "46fc82d3dce91ea6826c8d375a4ad5d08e87da78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f2655ce_0cf6e95b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2019-10-04T18:57:10Z",
+      "side": 1,
+      "message": "log what\u0027s happening, like:\ntesting.ContextLogf(ctx, \"Running relayout %q\"...)  (I used \"relayout\", but used the appropriate word)",
+      "range": {
+        "startLine": 378,
+        "startChar": 27,
+        "endLine": 379,
+        "endChar": 5
       },
       "revId": "46fc82d3dce91ea6826c8d375a4ad5d08e87da78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
