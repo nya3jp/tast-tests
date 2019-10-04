@@ -14,6 +14,19 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type windowStateTest struct {
+	name                       string          // Name of test case
+	initialWindowState         arc.WindowState // Activity's initial window state
+	expectedInitialWindowState arc.WindowState // Activity's expected, initial window state
+	finalWindowState           arc.WindowState // Activity's final window state
+	expectedFinalWindowState   arc.WindowState // Activity's expected, final window state
+}
+
+type windowStateParams struct {
+	tabletMode bool              // True, if device should be in tablet mode
+	tests      []windowStateTest // Activity's initial window state
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WindowState,
@@ -23,6 +36,33 @@ func init() {
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Pre:          arc.Booted(),
 		Timeout:      5 * time.Minute,
+		Params: []testing.Param{{
+			Name: "clamshell",
+			Val: windowStateParams{
+				false, // Clamshell mode
+				[]windowStateTest{
+					{"MAXIMIZE <--> FULLSCREEN", arc.WindowStateMaximized, arc.WindowStateMaximized, arc.WindowStateFullscreen, arc.WindowStateFullscreen},
+					{"MAXIMIZE <--> MINIMIZE", arc.WindowStateMaximized, arc.WindowStateMaximized, arc.WindowStateMinimized, arc.WindowStateMinimized},
+					{"MAXIMIZE <--> NORMAL", arc.WindowStateMaximized, arc.WindowStateMaximized, arc.WindowStateNormal, arc.WindowStateNormal},
+					{"FULLSCREEN <--> MINIMIZE", arc.WindowStateFullscreen, arc.WindowStateFullscreen, arc.WindowStateMinimized, arc.WindowStateMinimized},
+					{"FULLSCREEN <--> NORMAL", arc.WindowStateFullscreen, arc.WindowStateFullscreen, arc.WindowStateNormal, arc.WindowStateNormal},
+					{"NORMAL <--> MINIMIZE", arc.WindowStateNormal, arc.WindowStateNormal, arc.WindowStateMinimized, arc.WindowStateMinimized},
+				},
+			},
+		}, {
+			Name: "tablet",
+			Val: windowStateParams{
+				true, // Tablet Mode
+				[]windowStateTest{
+					{"MAXIMIZE <--> FULLSCREEN", arc.WindowStateMaximized, arc.WindowStateMaximized, arc.WindowStateFullscreen, arc.WindowStateFullscreen},
+					{"MAXIMIZE <--> MINIMIZE", arc.WindowStateMaximized, arc.WindowStateMaximized, arc.WindowStateMinimized, arc.WindowStateMinimized},
+					{"MAXIMIZE <--> NORMAL", arc.WindowStateMaximized, arc.WindowStateMaximized, arc.WindowStateMaximized, arc.WindowStateMaximized},
+					{"FULLSCREEN <--> MINIMIZE", arc.WindowStateFullscreen, arc.WindowStateFullscreen, arc.WindowStateMinimized, arc.WindowStateMinimized},
+					{"FULLSCREEN <--> NORMAL", arc.WindowStateFullscreen, arc.WindowStateFullscreen, arc.WindowStateNormal, arc.WindowStateMaximized},
+					{"NORMAL <--> MINIMIZE", arc.WindowStateNormal, arc.WindowStateMaximized, arc.WindowStateMinimized, arc.WindowStateMinimized},
+				},
+			},
+		}},
 	})
 }
 
@@ -57,35 +97,15 @@ func WindowState(ctx context.Context, s *testing.State) {
 	// Number of window state transition tests.
 	const numTestCount = 25
 
+	testParams := s.Param().(windowStateParams)
+
+	s.Logf("Setting tablet mode enabled to %t", testParams.tabletMode)
+	if err := ash.SetTabletModeEnabled(ctx, tconn, testParams.tabletMode); err != nil {
+		s.Fatalf("Failed to set tablet mode enabled to %t: %v", testParams.tabletMode, err)
+	}
+
 	// Run the different test cases.
-	for _, test := range []struct {
-		name                       string
-		tabletMode                 bool
-		initialWindowState         arc.WindowState
-		expectedInitialWindowState arc.WindowState
-		finalWindowState           arc.WindowState
-		expectedFinalWindowState   arc.WindowState
-	}{
-		// Clamshell Mode.
-		{"MAXIMIZE <--> FULLSCREEN", false, arc.WindowStateMaximized, arc.WindowStateMaximized, arc.WindowStateFullscreen, arc.WindowStateFullscreen},
-		{"MAXIMIZE <--> MINIMIZE", false, arc.WindowStateMaximized, arc.WindowStateMaximized, arc.WindowStateMinimized, arc.WindowStateMinimized},
-		{"MAXIMIZE <--> NORMAL", false, arc.WindowStateMaximized, arc.WindowStateMaximized, arc.WindowStateNormal, arc.WindowStateNormal},
-		{"FULLSCREEN <--> MINIMIZE", false, arc.WindowStateFullscreen, arc.WindowStateFullscreen, arc.WindowStateMinimized, arc.WindowStateMinimized},
-		{"FULLSCREEN <--> NORMAL", false, arc.WindowStateFullscreen, arc.WindowStateFullscreen, arc.WindowStateNormal, arc.WindowStateNormal},
-		{"NORMAL <--> MINIMIZE", false, arc.WindowStateNormal, arc.WindowStateNormal, arc.WindowStateMinimized, arc.WindowStateMinimized},
-		// Tablet Mode.
-		{"MAXIMIZE <--> FULLSCREEN", true, arc.WindowStateMaximized, arc.WindowStateMaximized, arc.WindowStateFullscreen, arc.WindowStateFullscreen},
-		{"MAXIMIZE <--> MINIMIZE", true, arc.WindowStateMaximized, arc.WindowStateMaximized, arc.WindowStateMinimized, arc.WindowStateMinimized},
-		{"MAXIMIZE <--> NORMAL", true, arc.WindowStateMaximized, arc.WindowStateMaximized, arc.WindowStateMaximized, arc.WindowStateMaximized},
-		{"FULLSCREEN <--> MINIMIZE", true, arc.WindowStateFullscreen, arc.WindowStateFullscreen, arc.WindowStateMinimized, arc.WindowStateMinimized},
-		{"FULLSCREEN <--> NORMAL", true, arc.WindowStateFullscreen, arc.WindowStateFullscreen, arc.WindowStateNormal, arc.WindowStateMaximized},
-		{"NORMAL <--> MINIMIZE", true, arc.WindowStateNormal, arc.WindowStateMaximized, arc.WindowStateMinimized, arc.WindowStateMinimized},
-	} {
-		s.Logf("Running %s with tablet mode enabled=%t", test.name, test.tabletMode)
-		s.Logf("Setting tablet mode enabled to %t", test.tabletMode)
-		if err := ash.SetTabletModeEnabled(ctx, tconn, test.tabletMode); err != nil {
-			s.Fatalf("Failed to set tablet mode enabled to %t: %v", test.tabletMode, err)
-		}
+	for _, test := range testParams.tests {
 
 		// Set the activity to the initial WindowState.
 		if err := act.SetWindowState(ctx, test.initialWindowState); err != nil {
