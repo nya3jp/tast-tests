@@ -112,7 +112,7 @@ func ServiceFailure(ctx context.Context, s *testing.State) {
 		base := strings.Replace(tt.servicePrefix+"service_failure_"+failingServiceName, "-", "_", -1)
 		expectedRegexes := []string{base + `\.\d{8}\.\d{6}\.0\.log`, base + `\.\d{8}\.\d{6}\.0\.meta`}
 
-		files, err := localCrash.WaitForCrashFiles(ctx, localCrash.SystemCrashDir, oldFiles, expectedRegexes)
+		files, err := localCrash.WaitForCrashFiles(ctx, []string{localCrash.SystemCrashDir}, oldFiles, expectedRegexes)
 		if err != nil {
 			s.Errorf("%s: couldn't find expected files: %v", tt.name, err)
 		}

@@ -8,6 +8,7 @@ package chromecrash
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -19,6 +20,7 @@ import (
 	"chromiumos/tast/crash"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	localCrash "chromiumos/tast/local/crash"
 	"chromiumos/tast/local/set"
 	"chromiumos/tast/testing"
 )
@@ -38,6 +40,29 @@ const (
 	// up correctly, as well as any problems with the upcoming crashpad changeover.
 	VModuleFlag = "--vmodule=chrome_crash_reporter_client=1,breakpad_linux=1,crashpad=1,crashpad_linux=1"
 )
+
+// ProcessType is an enum listed the types of Chrome processes we can kill.
+type ProcessType int
+
+const (
+	// Browser indicates the root Chrome process, the one without a --type flag.
+	Browser ProcessType = iota
+	// GPUProcess indicates a process with --type=gpu-process. We use GPUProcess
+	// to stand in for most types of non-Browser processes, including renderer and
+	// zygote; given the comments above Chrome's NonBrowserCrashHandler class, the
+	// code path should be similar enough that we don't need separate tests for
+	// those process types.
+	GPUProcess
+	// Broker indicates a process with --type=broker. Broker processes go through
+	// a special code path because they are forked directly.
+	Broker
+)
+
+// String returns a string naming the given ProcessType, suitable for displaying
+// in log and error messages.
+func (ptype ProcessType) String() string {
+	return [...]string{"Browser", "GPUProcess", "Broker"}[ptype]
+}
 
 func cryptohomeCrashDirs(ctx context.Context) ([]string, error) {
 	// The crash subdirectory may not exist yet, so we can't just do
@@ -130,22 +155,103 @@ func getChromePIDs(ctx context.Context) ([]int, error) {
 	return pids, nil
 }
 
-// KillAndGetCrashFiles sends SIGSEGV to the root Chrome process, waits for it to
-// exit, finds all the new crash files, and then deletes them and returns their paths.
-func KillAndGetCrashFiles(ctx context.Context) ([]string, error) {
-	dirs, err := cryptohomeCrashDirs(ctx)
-	if err != nil {
-		return nil, err
+// getNonBrowserProcess returns the id of a single Chrome process of the
+// indicated type. If more than one such process exists, the first one is
+// returned. Does not wait for the process to come up.
+func getNonBrowserProcess(ctx context.Context, ptype ProcessType) (pid int, err error) {
+	var processes []process.Process
+	switch ptype {
+	case GPUProcess:
+		processes, err = chrome.GetGPUProcesses()
+	case Broker:
+		processes, err = chrome.GetBrokerProcesses()
+	default:
+		return -1, errors.Errorf("unknown ProcessType %s", ptype)
 	}
-	dirs = append(dirs, crash.DefaultDirs()...)
-	oldFiles, err := crash.GetCrashes(dirs...)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to get original crashes")
+		return -1, errors.Wrapf(err, "error looking for %s process", ptype)
+	}
+	if len(processes) == 0 {
+		return -1, errors.Errorf("no Chrome %s processes found", ptype)
+	}
+	return int(processes[0].Pid), nil
+}
+
+// waitForMetaFile waits for a .meta file corresponding to the given pid to appear
+// in one of the directories. Any file that matches a name in oldFiles is ignored.
+// Return nil if the file is found.
+func waitForMetaFile(ctx context.Context, pid int, dirs, oldFiles []string) error {
+	ending := fmt.Sprintf(".*\\.%d\\.meta", pid)
+	_, err := localCrash.WaitForCrashFiles(ctx, dirs, oldFiles, []string{ending})
+	if err != nil {
+		return errors.Wrap(err, "error waiting for .meta file")
+	}
+	return nil
+}
+
+// killNonBrowser implements KillAndGetCrashFiles for any process type OTHER
+// than the root Browser type.
+func killNonBrowser(ctx context.Context, ptype ProcessType, dirs, oldFiles []string) error {
+	testing.ContextLogf(ctx, "Hunting for a %s process", ptype)
+	var toKill int
+	// It's possible that the root browser process just started and hasn't created
+	// the GPU or broker process yet. Also, if the target process disappears during
+	// the 3 second stabilization period, we'd be willing to try a different one.
+	// Retry until we manage to successfully send a SEGV.
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		toKill, err = getNonBrowserProcess(ctx, ptype)
+		if err != nil {
+			return errors.Wrapf(err, "could not find %s process to kill", ptype)
+		}
+
+		// Sleep briefly after the Chrome process we want starts so it has time to set
+		// up breakpad.
+		const delay = 3 * time.Second
+		testing.ContextLogf(ctx, "Sleeping %v to wait for Chrome to stabilize", delay)
+		if err := testing.Sleep(ctx, delay); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "timed out while waiting for Chrome startup"))
+		}
+
+		testing.ContextLogf(ctx, "Sending SIGSEGV to target Chrome %s process %d", ptype, toKill)
+		if err = syscall.Kill(toKill, syscall.SIGSEGV); err != nil {
+			if errno, ok := err.(syscall.Errno); ok && errno == syscall.ESRCH {
+				return errors.Errorf("target process %d does not exist", toKill)
+			}
+			return testing.PollBreak(errors.Wrapf(err, "could not kill target process %d", toKill))
+		}
+		return nil
+	}, nil)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find & kill a %s process", ptype)
 	}
 
+	// We don't wait for the process to exit here. Most non-Browser processes
+	// don't actually exit when sent a SIGSEGV from outside the process. (This
+	// is the expected behavior -- see
+	// https://groups.google.com/a/chromium.org/d/msg/chromium-dev/W_vGBMHxZFQ/wPkqHBgBAgAJ)
+	// Instead, we wait for the crash meta file to be written out.
+	testing.ContextLog(ctx, "Waiting for meta file to appear")
+	if err = waitForMetaFile(ctx, toKill, dirs, oldFiles); err != nil {
+		return errors.Wrap(err, "failed waiting for target to write crash files")
+	}
+	return nil
+}
+
+// killBrowser implements the specialized logic for killing & waiting for the
+// root Browser process. The principle difference between this and killNonBrowser
+// is that this waits for the SEGV'ed process to die instead of waiting for a
+// .meta file. Why? First, because the ChromeCrash....Direct tests don't create
+// .meta files  -- they just create .dmp files with more-difficult-to-determine
+// names -- and ChromeCrashLoop doesn't create files at all on one of its kills.
+// Second, we really want the Browser process we kill here to exit before
+// ChromeCrash[Not]LoggedIn's loop tries to kill a non-Browser process; we don't
+// want the non-Browser kills to pick up an orphaned process, because they won't
+// create crash output correctly.
+func killBrowser(ctx context.Context) error {
 	pids, err := getChromePIDs(ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to find Chrome process IDs")
+		return errors.Wrap(err, "failed to find Chrome process IDs")
 	}
 
 	// Sleep briefly after Chrome starts so it has time to set up breakpad.
@@ -153,7 +259,7 @@ func KillAndGetCrashFiles(ctx context.Context) ([]string, error) {
 	const delay = 3 * time.Second
 	testing.ContextLogf(ctx, "Sleeping %v to wait for Chrome to stabilize", delay)
 	if err := testing.Sleep(ctx, delay); err != nil {
-		return nil, errors.Wrap(err, "timed out while waiting for Chrome startup")
+		return errors.Wrap(err, "timed out while waiting for Chrome startup")
 	}
 
 	// The root Chrome process (i.e. the one that doesn't have another Chrome process
@@ -161,13 +267,16 @@ func KillAndGetCrashFiles(ctx context.Context) ([]string, error) {
 	// to write a minidump file when it crashes.
 	rp, err := chrome.GetRootPID()
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to get root Chrome PID")
+		return errors.Wrap(err, "failed to get root Chrome PID")
 	}
 	testing.ContextLog(ctx, "Sending SIGSEGV to root Chrome process ", rp)
 	if err = syscall.Kill(rp, syscall.SIGSEGV); err != nil {
-		return nil, err
+		return errors.Wrap(err, "failed to kill process")
 	}
 
+	// Wait for all the processes to die (not just the root one). This avoids
+	// messing up other killNonBrowser tests that might try to kill an orphaned
+	// process.
 	testing.ContextLogf(ctx, "Waiting for %d Chrome process(es) to exit", len(pids))
 	err = testing.Poll(ctx, func(ctx context.Context) error {
 		if exist, err := anyPIDsExist(pids); err != nil {
@@ -178,9 +287,34 @@ func KillAndGetCrashFiles(ctx context.Context) ([]string, error) {
 		return nil
 	}, nil)
 	if err != nil {
-		return nil, errors.Wrap(err, "Chrome didn't exit")
+		return errors.Wrap(err, "Chrome didn't exit")
 	}
 	testing.ContextLog(ctx, "All Chrome processes exited")
+	return nil
+}
+
+// KillAndGetCrashFiles sends SIGSEGV to the given Chrome process, waits for it to
+// crash, finds all the new crash files, and then deletes them and returns their paths.
+func KillAndGetCrashFiles(ctx context.Context, ptype ProcessType) ([]string, error) {
+	dirs, err := cryptohomeCrashDirs(ctx)
+	if err != nil {
+		return nil, err
+	}
+	dirs = append(dirs, crash.DefaultDirs()...)
+	oldFiles, err := crash.GetCrashes(dirs...)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get original crashes")
+	}
+
+	if ptype == Browser {
+		if err = killBrowser(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to kill Browser process")
+		}
+	} else {
+		if err = killNonBrowser(ctx, ptype, dirs, oldFiles); err != nil {
+			return nil, errors.Wrapf(err, "failed to kill %s process", ptype.String())
+		}
+	}
 
 	newFiles, err := crash.GetCrashes(dirs...)
 	if err != nil {
