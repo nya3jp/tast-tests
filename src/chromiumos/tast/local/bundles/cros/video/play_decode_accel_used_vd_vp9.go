@@ -16,13 +16,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     PlayDecodeAccelUsedVDVP9,
-		Desc:     "Verifies that VP9 video decode acceleration works in Chrome when using a media::VideoDecoder",
-		Contacts: []string{"akahuang@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
-		// TODO(b/137916185): Remove dependency on android capability. It's used here
-		// to guarantee import-mode support, which is required by the new VD's.
-		SoftwareDeps: []string{caps.HWDecodeVP9, "android", "chrome"},
+		Func:         PlayDecodeAccelUsedVDVP9,
+		Desc:         "Verifies that VP9 video decode acceleration works in Chrome when using a media::VideoDecoder",
+		Contacts:     []string{"akahuang@chromium.org", "dstaessens@chromium.org", "chromeos-video-eng@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{caps.HWDecodeVP9, "cros_video_decoder", "chrome"},
 		Data:         []string{"720_vp9.webm", "video.html"},
 		Pre:          pre.ChromeVideoVD(),
 	})
