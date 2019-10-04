@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea868dc2_927620c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-04T05:07:20Z",
+      "side": 1,
+      "message": "Oops, sorry I overlooked in the last iteration. Could you run updated tests locally, too?",
+      "revId": "c8fe7b63a47388005278971c0b60e9786fe459b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
