@@ -14,13 +14,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     DecodeAccelVDPerfH2642160P30FPS,
-		Desc:     "Runs video_decode_accelerator_perf_tests with an H.264 2160p@30fps video on a media::VideoDecoder (see go/vd-migration)",
-		Contacts: []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:     []string{"group:crosbolt", "crosbolt_perbuild"},
-		// TODO(b/137916185): Remove dependency on android capability. It's used here
-		// to guarantee import-mode support, which is required by the new VD's.
-		SoftwareDeps: []string{"android", "chrome", caps.HWDecodeH264_4K},
+		Func:         DecodeAccelVDPerfH2642160P30FPS,
+		Desc:         "Runs video_decode_accelerator_perf_tests with an H.264 2160p@30fps video on a media::VideoDecoder (see go/vd-migration)",
+		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		SoftwareDeps: []string{"cros_video_decoder", "chrome", caps.HWDecodeH264_4K},
 		Data:         []string{"2160p_30fps_300frames.h264", "2160p_30fps_300frames.h264.json"},
 	})
 }
