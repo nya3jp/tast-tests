@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d2047eb_9d8a9e57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-04T05:08:08Z",
+      "side": 1,
+      "message": "Could you comment where (x1, y1) is?",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 79
+      },
+      "revId": "d8b341c2ee19458ed6dcdf50ea4ceb855601f762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dea1844e_b597db42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-04T05:08:08Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 89
+      },
+      "revId": "d8b341c2ee19458ed6dcdf50ea4ceb855601f762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b66f16a2_28799545",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2019-10-04T05:08:08Z",
+      "side": 1,
+      "message": "Why it\u0027s not just dispW/2 ?",
+      "range": {
+        "startLine": 326,
+        "startChar": 54,
+        "endLine": 326,
+        "endChar": 69
+      },
+      "revId": "d8b341c2ee19458ed6dcdf50ea4ceb855601f762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
