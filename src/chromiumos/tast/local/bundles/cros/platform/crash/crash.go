@@ -39,15 +39,19 @@ const (
 	// CrashReporterEnabledPath is the full path for crash handling data file.
 	CrashReporterEnabledPath = "/var/lib/crash_reporter/crash-handling-enabled"
 
-	crashTestInProgress = "/run/crash_reporter/crash-test-in-progress"
-	crasherPath         = "/usr/local/libexec/tast/helpers/local/cros/platform.UserCrash.crasher"
-
+	crashTestInProgress    = "/run/crash_reporter/crash-test-in-progress"
+	crasherPath            = "/usr/local/libexec/tast/helpers/local/cros/platform.UserCrash.crasher"
 	crashReporterLogFormat = "[user] Received crash notification for %s[%d] sig 11, user %s group %s (%s)"
 	crashSenderRateDir     = "/var/lib/crash_sender"
 	pauseFile              = "/var/lib/crash_sender_paused"
+	systemCrashDir         = "/var/spool/crash"
+	fallbackUserCrashDir   = "/home/chronos/crash"
+	userCrashDirs          = "/home/chronos/u-*/crash"
 )
 
 var pidRegex = regexp.MustCompile(`(?m)^pid=(\d+)$`)
+var userCrashDirRegex = regexp.MustCompile("/home/chronos/u-([a-f0-9]+)/crash")
+var nonAlphaNumericRegex = regexp.MustCompile("[^0-9A-Za-z]")
 
 // CrasherOptions stores configurations for running crasher process.
 type CrasherOptions struct {
@@ -66,6 +70,18 @@ type CrasherResult struct {
 
 	// CrashReporterCaught stores whether the crash reporter caught a segv.
 	CrashReporterCaught bool
+
+	// Minidump (.dmp) crash report filename.
+	Minidump string
+
+	// Basename of the crash report files.
+	Basename string
+
+	// .meta crash report filename.
+	Meta string
+
+	// .log crash report filename.
+	Log string
 }
 
 // DefaultCrasherOptions creates a CrasherOptions which actually cause and catch crash.
@@ -97,6 +113,90 @@ func exitCode(err error) (int, error) {
 		return 0, errors.Wrap(err, "unexpected exit status")
 	}
 	return -int(s.Signal()), nil
+}
+
+func checkCrashDirectoryPermissions(path string) error {
+	fileInfo, err := os.Stat(path)
+	if err != nil {
+		return err
+	}
+	s, ok := fileInfo.Sys().(*syscall.Stat_t)
+	if !ok {
+		return errors.New("failed to cast to Stat_t")
+	}
+	usr, err := user.LookupId(strconv.FormatInt(int64(s.Uid), 10))
+	if err != nil {
+		return err
+	}
+	grp, err := user.LookupGroupId(strconv.FormatInt(int64(s.Gid), 10))
+	if err != nil {
+		return err
+	}
+	mode := fileInfo.Mode()
+
+	permittedModes := make(map[os.FileMode]struct{})
+	var expectedUser string
+	var expectedGroup string
+	if strings.HasPrefix(path, "/var/spool/crash") {
+		if fileInfo.IsDir() {
+			files, err := ioutil.ReadDir(path)
+			if err != nil {
+				return errors.Wrapf(err, "failed to read directory %s", path)
+			}
+			for _, f := range files {
+				if err := checkCrashDirectoryPermissions(filepath.Join(path, f.Name())); err != nil {
+					return err
+				}
+			}
+			permittedModes[os.FileMode(0770)|os.ModeDir|os.ModeSetgid] = struct{}{}
+		} else {
+			permittedModes[os.FileMode(0660)] = struct{}{}
+			permittedModes[os.FileMode(0640)] = struct{}{}
+			permittedModes[os.FileMode(0644)] = struct{}{}
+		}
+		expectedUser = "root"
+		expectedGroup = "crash-access"
+	} else {
+		permittedModes[os.ModeDir|os.FileMode(0700)] = struct{}{}
+		expectedUser = "chronos"
+		expectedGroup = "chronos"
+	}
+	if usr.Username != expectedUser || grp.Name != expectedGroup {
+		return errors.Errorf("ownership of %s got %s.%s; want %s.%s",
+			path, usr.Username, grp.Name, expectedUser, expectedGroup)
+	}
+	if _, found := permittedModes[mode]; !found {
+		var keys []os.FileMode
+		for k := range permittedModes {
+			keys = append(keys, k)
+		}
+		return errors.Errorf("mode of %s got %v; want either of %v", path, mode, keys)
+	}
+	return nil
+}
+
+func getCrashDir(username string) (string, error) {
+	if username == "root" || username == "crash" {
+		return systemCrashDir, nil
+	}
+	p, err := filepath.Glob(userCrashDirs)
+	if err != nil {
+		// This only happens when userCrashDirs is malformed.
+		return "", errors.Wrapf(err, "failed to list up files with pattern [%s]", userCrashDirs)
+	}
+	if len(p) == 0 {
+		return fallbackUserCrashDir, nil
+	}
+	return p[0], nil
+}
+
+// canonicalizeCrashDir converts /home/chronos crash directory to /home/user counterpart.
+func canonicalizeCrashDir(path string) string {
+	m := userCrashDirRegex.FindStringSubmatch(path)
+	if m == nil {
+		return path
+	}
+	return filepath.Join("/home", m[1], "crash")
 }
 
 // enableSystemSending allows to run system crash_sender.
@@ -139,6 +239,39 @@ func unsetCrashTestInProgress() error {
 		return errors.Wrapf(err, "failed to remove in-progress state file %s", crashTestInProgress)
 	}
 	return nil
+}
+
+// stashCrashFiles moves contents of crash directory to a temporary backup directory.
+// Those files can be restored later by calling the function returned by this function.
+// Doesn't support recursive stashing.
+func stashCrashFiles(userName string) (func() error, error) {
+	crashDir, err := getCrashDir(userName)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to get crash dir for user %s", userName)
+	}
+	// Move to subdirectory that shares parent dir with the original, which should be in the same filesystem.
+	parent := filepath.Dir(crashDir)
+	tempDir, err := ioutil.TempDir(parent, "tast_unittest_crash.")
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to create temporary directory under %s", parent)
+	}
+	backup := filepath.Join(tempDir, "crash")
+	if err := os.Rename(crashDir, backup); err != nil {
+		return nil, errors.Wrapf(err, "failed to rename crash directory from %s to %s", crashDir, backup)
+	}
+	return func() error {
+		// remove all existing files in crash directory and restore stashed ones.
+		if err := os.RemoveAll(crashDir); err != nil {
+			return errors.Wrapf(err, "failed to remove content of crash directory %s before restoring", crashDir)
+		}
+		if err := os.Rename(backup, crashDir); err != nil {
+			return errors.Wrapf(err, "failed to restore crash directory from %s to %s", backup, crashDir)
+		}
+		if err := os.RemoveAll(tempDir); err != nil {
+			return errors.Wrapf(err, "failed to remove temporary directory %s", tempDir)
+		}
+		return nil
+	}, nil
 }
 
 // replaceCrashFilterIn replaces --filter_in= flag value of the crash reporter.
@@ -359,17 +492,140 @@ func runCrasherProcess(ctx context.Context, opts CrasherOptions) (*CrasherResult
 func RunCrasherProcessAndAnalyze(ctx context.Context, opts CrasherOptions) (*CrasherResult, error) {
 	result, err := runCrasherProcess(ctx, opts)
 	if err != nil {
-		return result, errors.Wrap(err, "failed to execute and capture result of crasher")
+		return nil, errors.Wrap(err, "failed to execute and capture result of crasher")
 	}
 	if !result.Crashed || !result.CrashReporterCaught {
 		return result, nil
 	}
-	// TODO(yamaguchi): Add logic to examine contents of crash dir and store them to result.
+	crashDir, err := getCrashDir(opts.Username)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to get crash directory for user [%s]", opts.Username)
+	}
+	if !opts.Consent {
+		if _, err := os.Stat(crashDir); err == nil || !os.IsNotExist(err) {
+			return nil, errors.Wrap(err, "crash directory should not exist")
+		}
+		return result, nil
+	}
+
+	if info, err := os.Stat(crashDir); err != nil || !info.IsDir() {
+		return nil, errors.Wrap(err, "crash directory does not exist")
+	}
+
+	crashDir = canonicalizeCrashDir(crashDir)
+	crashContents, err := ioutil.ReadDir(crashDir)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to read crash directory %s", crasherPath)
+	}
+
+	// The prefix of report file names. Basename of the executable, but non-alphanumerics replaced by underscores.
+	// See CrashCollector::Sanitize in src/platform2/crash-repoter/crash_collector.cc.
+	basename := nonAlphaNumericRegex.ReplaceAllLiteralString(filepath.Base(crasherPath), "_")
+
+	// A dict tracking files for each crash report.
+	crashReportFiles := make(map[string]string)
+	if err := checkCrashDirectoryPermissions(crashDir); err != nil {
+		return result, err
+	}
+
+	testing.ContextLogf(ctx, "Contents in %s: %s", crashDir, crashContents)
+
+	// Variables and their typical contents:
+	// basename: crasher_nobreakpad
+	// filename: crasher_nobreakpad.20181023.135339.16890.dmp
+	// ext: .dmp
+	for _, f := range crashContents {
+		if filepath.Ext(f.Name()) == ".core" {
+			// Ignore core files.  We'll test them later.
+			continue
+		}
+		if !strings.HasPrefix(f.Name(), basename+".") {
+			// Flag all unknown files.
+			return nil, errors.Errorf("crash reporter created an unknown file: %s / base=%s",
+				f.Name(), basename)
+		}
+		ext := filepath.Ext(f.Name())
+		testing.ContextLogf(ctx, "Found crash report file (%s): %s", ext, f.Name())
+		if data, ok := crashReportFiles[ext]; ok {
+			return nil, errors.Errorf("found multiple files with %s: %s and %s",
+				ext, f.Name(), data)
+		}
+		crashReportFiles[ext] = f.Name()
+	}
+
+	// Every crash report needs one of these to be valid.
+	reportRequiredFiletypes := []string{
+		".meta",
+	}
+	// Reports might have these and that's OK!
+	reportOptionalFiletypes := []string{
+		".dmp", ".log", ".proclog",
+	}
+
+	// Make sure we generated the exact set of files we expected.
+	var missingFileTypes []string
+	for _, rt := range reportRequiredFiletypes {
+		found := false
+		for k := range crashReportFiles {
+			if k == rt {
+				found = true
+				break
+			}
+		}
+		if !found {
+			missingFileTypes = append(missingFileTypes, rt)
+		}
+	}
+	if len(missingFileTypes) > 0 {
+		return nil, errors.Errorf("crash report is missing files: %v", missingFileTypes)
+	}
+
+	find := func(target string, lst []string) bool {
+		for _, v := range lst {
+			if target == v {
+				return true
+			}
+		}
+		return false
+	}
+	findInKey := func(target string, m map[string]string) bool {
+		_, found := m[target]
+		return found
+	}
+
+	var unknownFileTypes []string
+	for k := range crashReportFiles {
+		if !find(k, append(reportRequiredFiletypes, reportOptionalFiletypes...)) {
+			unknownFileTypes = append(missingFileTypes, k)
+		}
+	}
+	if len(unknownFileTypes) > 0 {
+		return nil, errors.Errorf("crash report includes unkown files: %v", unknownFileTypes)
+	}
+
+	// Create full paths for the logging code below.
+	for _, key := range append(reportRequiredFiletypes, reportOptionalFiletypes...) {
+		if findInKey(key, crashReportFiles) {
+			crashReportFiles[key] = filepath.Join(crashDir, crashReportFiles[key])
+		} else {
+			crashReportFiles[key] = ""
+		}
+	}
+
+	result.Minidump = crashReportFiles[".dmp"]
+	result.Basename = basename
+	result.Meta = crashReportFiles[".meta"]
+	result.Log = crashReportFiles[".log"]
 	return result, nil
 }
 
 // CheckCrashingProcess runs crasher process and verifies that it's processed.
 func CheckCrashingProcess(ctx context.Context, opts CrasherOptions) error {
+	restoreCrashFiles, err := stashCrashFiles(opts.Username)
+	if err != nil {
+		return errors.Wrap(err, "failed to stash crash files")
+	}
+	defer restoreCrashFiles()
 	result, err := RunCrasherProcessAndAnalyze(ctx, opts)
 	if err != nil {
 		return errors.Wrap(err, "failed to run and analyze crasher")
@@ -380,6 +636,16 @@ func CheckCrashingProcess(ctx context.Context, opts CrasherOptions) error {
 	if !result.CrashReporterCaught {
 		return errors.New("Logs do not contain crash_reporter message")
 	}
+	if !opts.Consent {
+		return nil
+	}
+	if result.Minidump == "" {
+		return errors.New("crash reporter did not announce minidump")
+	}
+
+	// TODO(crbug.com/970930): Check minidump stack walk.
+	// TODO(crbug.com/970930): Check generated report sending.
+
 	return nil
 }
 
