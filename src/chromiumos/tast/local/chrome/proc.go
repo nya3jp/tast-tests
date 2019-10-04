@@ -107,3 +107,8 @@ func GetPluginProcesses() ([]process.Process, error) {
 func GetRendererProcesses() ([]process.Process, error) {
 	return getProcesses("renderer")
 }
+
+// GetGPUProcesses returns Chrome gpu-process processes.
+func GetGPUProcesses() ([]process.Process, error) {
+	return getProcesses("gpu-process")
+}

@@ -45,14 +45,23 @@ func ChromeCrashNotLoggedIn(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	files, err := chromecrash.KillAndGetCrashFiles(ctx)
+	files, err := chromecrash.KillGPUProcessAndGetCrashFiles(ctx)
 	if err != nil {
-		s.Fatal("Couldn't kill Chrome or get dumps: ", err)
+		s.Fatal("Couldn't kill Chrome gpu-process or get files: ", err)
 	}
 
 	// Not-logged-in Chrome crashes get logged to /home/chronos/crash, not the
 	// default /var/spool/crash, since it still runs as user "chronos".
 	if err = chromecrash.FindCrashFilesIn(crash.ChromeCrashDir, files); err != nil {
-		s.Error("Crash files weren't written to /home/chronos/crash: ", err)
+		s.Error("Crash files weren't written to /home/chronos/crash after crashing gpu-process process: ", err)
+	}
+
+	files, err = chromecrash.KillBrowserAndGetCrashFiles(ctx)
+	if err != nil {
+		s.Fatal("Couldn't kill Chrome browser or get files: ", err)
+	}
+
+	if err = chromecrash.FindCrashFilesIn(crash.ChromeCrashDir, files); err != nil {
+		s.Error("Crash files weren't written to /home/chronos/crash after crashing browser process: ", err)
 	}
 }

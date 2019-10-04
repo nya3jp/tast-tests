@@ -8,6 +8,7 @@ package chromecrash
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -130,9 +131,127 @@ func getChromePIDs(ctx context.Context) ([]int, error) {
 	return pids, nil
 }
 
-// KillAndGetCrashFiles sends SIGSEGV to the root Chrome process, waits for it to
+// getGPUProcess returns the id of a single --type=gpu-process Chrome process.
+// If more than one gpu-process process exists, the first one is returned. (That
+// shouldn't happen, but we don't want to fail the test if it does.) Does not
+// wait for gpu-process to come up.
+func getGPUProcess(ctx context.Context) (pid int, err error) {
+	processes, err := chrome.GetGPUProcesses()
+	if err != nil {
+		return -1, errors.Wrap(err, "error looking for gpu-process")
+	}
+	if len(processes) == 0 {
+		return -1, errors.New("no Chrome GPU processes found")
+	}
+	return int(processes[0].Pid), nil
+}
+
+// waitForMetaFile waits for a .meta file corresponding to the given pid to appear
+// in one of the directories. Any file that matches a name in oldFiles is ignored.
+// Return nil if the file is found.
+func waitForMetaFile(ctx context.Context, pid int, dirs, oldFiles []string) error {
+	ending := fmt.Sprintf(".%d.meta", pid)
+
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		newFiles, err := crash.GetCrashes(dirs...)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get new crashes"))
+		}
+		newCrashFiles := set.DiffStringSlice(newFiles, oldFiles)
+		for _, file := range newCrashFiles {
+			if strings.HasSuffix(file, ending) {
+				return nil
+			}
+		}
+		return errors.Errorf("did not find file ending with %s", ending)
+	}, nil)
+	if err != nil {
+		return errors.Wrap(err, "error waiting for .meta file")
+	}
+	return nil
+}
+
+// KillGPUProcessAndGetCrashFiles sends SIGSEGV to a Chrome 'gpu-process' process,
+// waits for it to write out crash files, finds all the new crash files, and then
+// deletes them and returns their paths. This test is intended to cover the code
+// path used by most types of non-browser processes, such as renderer and zygote;
+// given the comments above Chrome's NonBrowserCrashHandler class, the code path
+// should be similar enough that we don't need separate tests for those process
+// types.
+// TODO(iby) Once crbug.com/1009785 is fixed, extend to be able to kill Broker
+// processes as well, which do have a different code path.
+func KillGPUProcessAndGetCrashFiles(ctx context.Context) ([]string, error) {
+	dirs, err := cryptohomeCrashDirs(ctx)
+	if err != nil {
+		return nil, err
+	}
+	dirs = append(dirs, crash.DefaultDirs()...)
+	oldFiles, err := crash.GetCrashes(dirs...)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get original crashes")
+	}
+
+	testing.ContextLog(ctx, "Hunting for a GPU process")
+	var toKill int
+	// It's possible that the root browser process just started and hasn't created
+	// the GPU process yet. Also, if the GPU process disappears during the 3 second
+	// stabilization period, we'd be willing to try a different one. Retry until
+	// we manage to successfully send a SEGV.
+	err = testing.Poll(ctx, func(ctx context.Context) error {
+		toKill, err = getGPUProcess(ctx)
+		if err != nil {
+			return errors.Wrap(err, "could not find GPU process to kill")
+		}
+
+		// Sleep briefly after the Chrome process we want starts so it has time to set
+		// up breakpad.
+		const delay = 3 * time.Second
+		testing.ContextLogf(ctx, "Sleeping %v to wait for Chrome to stabilize", delay)
+		if err := testing.Sleep(ctx, delay); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "timed out while waiting for Chrome startup"))
+		}
+
+		testing.ContextLog(ctx, "Sending SIGSEGV to target Chrome GPU process ", toKill)
+		if err = syscall.Kill(toKill, syscall.SIGSEGV); err != nil {
+			if errno, ok := err.(syscall.Errno); ok && errno == syscall.ESRCH {
+				return errors.Errorf("target process %d does not exist", toKill)
+			}
+			return testing.PollBreak(errors.Wrapf(err, "could not kill target process %d", toKill))
+		}
+		return nil
+	}, nil)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find & kill a gpu-process")
+	}
+
+	// We don't wait for the process to exit here. Most non-Browser processes
+	// don't actually exit when sent a SIGSEGV from outside the process. (This
+	// is the expected behavior -- see
+	// https://groups.google.com/a/chromium.org/d/msg/chromium-dev/W_vGBMHxZFQ/wPkqHBgBAgAJ)
+	// Instead, we wait for the crash meta file to be written out.
+	testing.ContextLog(ctx, "Waiting for meta file to appear")
+	if err = waitForMetaFile(ctx, toKill, dirs, oldFiles); err != nil {
+		return nil, errors.Wrap(err, "failed waiting for target to write crash files")
+	}
+
+	newFiles, err := crash.GetCrashes(dirs...)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get new crashes")
+	}
+	newCrashFiles := set.DiffStringSlice(newFiles, oldFiles)
+	for _, p := range newCrashFiles {
+		testing.ContextLog(ctx, "Found expected Chrome crash file ", p)
+	}
+
+	// Delete all crash files produced during this test: https://crbug.com/881638
+	deleteFiles(ctx, newCrashFiles)
+
+	return newCrashFiles, nil
+}
+
+// KillBrowserAndGetCrashFiles sends SIGSEGV to the root Chrome process, waits for it to
 // exit, finds all the new crash files, and then deletes them and returns their paths.
-func KillAndGetCrashFiles(ctx context.Context) ([]string, error) {
+func KillBrowserAndGetCrashFiles(ctx context.Context) ([]string, error) {
 	dirs, err := cryptohomeCrashDirs(ctx)
 	if err != nil {
 		return nil, err
