@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7f6f9e57_ff3e5e58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-04T20:48:40Z",
+      "side": 1,
+      "message": "ejcaruso@ said [1]:\n\u003e So it seems like this CL generally is trading off flakiness now for fragility later -- can\u0027t we get a private API for getting this information correctly, rather than poking around a UI page that might change element IDs and break this test with no warning?\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/1832413/7#message-d79b2b432751c8bd06eaef3dd23e73858616825b\n\nWe discussed this bit offline: although in theory media-internals can be \nchanged and break the operations in this CL, in practice this has seldom \nhappened because many downstream projects have come to rely on the entries; \nI remember when the video-stack introduced tabs that there was quite the \ndebate. \n\nWe could go ahead with this review as an improvement over the histograms\nflakiness (because here we target a specific URL) and give a thought at\nusing devtools, which would be documented and maintained, as opposed to\ne.g. private APIs like chrome.autotestPrivate.* that don\u0027t work e.g. on \nChromium builds :-(",
+      "range": {
+        "startLine": 10,
+        "startChar": 15,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "d1b1f1974aaf982f88f4b335c8887ab3918f4f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da391647_73e7b96b",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 7
@@ -22,6 +45,30 @@
       "revId": "d1b1f1974aaf982f88f4b335c8887ab3918f4f1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f21bc764_d6ce17a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-04T20:48:40Z",
+      "side": 1,
+      "message": "Done - I\u0027m constructing this on the fly before calling these two methods\nthat I\u0027m touching. Didn\u0027t see any value in moving that bit of code to a\nfunction since it\u0027d just be a switch-case just like we already have down\nbelow.",
+      "parentUuid": "da391647_73e7b96b",
+      "range": {
+        "startLine": 114,
+        "startChar": 83,
+        "endLine": 114,
+        "endChar": 89
+      },
+      "revId": "d1b1f1974aaf982f88f4b335c8887ab3918f4f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -48,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "9c10ab66_2dfdc901",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-04T20:48:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fada6590_fbb5edeb",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 7
+      },
+      "revId": "d1b1f1974aaf982f88f4b335c8887ab3918f4f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f722442_d3c34e5d",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 7
@@ -68,6 +139,30 @@
       "revId": "d1b1f1974aaf982f88f4b335c8887ab3918f4f1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b36c12f8_78ae0528",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-04T20:48:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f722442_d3c34e5d",
+      "range": {
+        "startLine": 177,
+        "startChar": 84,
+        "endLine": 177,
+        "endChar": 90
+      },
+      "revId": "d1b1f1974aaf982f88f4b335c8887ab3918f4f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "295d7c44_692f1021",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-04T20:48:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6fff59d_f502152d",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 181,
+        "endChar": 7
+      },
+      "revId": "d1b1f1974aaf982f88f4b335c8887ab3918f4f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "350bb486_0d7389ee",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
         "patchSetId": 7
@@ -114,6 +233,30 @@
       "revId": "d1b1f1974aaf982f88f4b335c8887ab3918f4f1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49e8de78_e385c6cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2019-10-04T20:48:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "350bb486_0d7389ee",
+      "range": {
+        "startLine": 360,
+        "startChar": 5,
+        "endLine": 360,
+        "endChar": 11
+      },
+      "revId": "d1b1f1974aaf982f88f4b335c8887ab3918f4f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
