@@ -66,6 +66,7 @@ type Rect struct {
 
 // ArcAppWindowInfo represents the ARC window info as returned from Ash.
 type ArcAppWindowInfo struct {
+	Visible     bool   `json:"is_visible"`
 	Bounds      Rect   `json:"bounds"`
 	IsAnimating bool   `json:"is_animating"`
 	DisplayID   string `json:"display_id"`
@@ -120,7 +121,7 @@ func GetARCAppWindowInfo(ctx context.Context, c *chrome.Conn, pkgName string) (A
 	if err := c.EvalPromise(ctx, expr, &info); err != nil {
 		return ArcAppWindowInfo{}, err
 	}
-	return ArcAppWindowInfo{info.Bounds, info.IsAnimating, info.DisplayID}, nil
+	return ArcAppWindowInfo{info.Visible, info.Bounds, info.IsAnimating, info.DisplayID}, nil
 }
 
 // ConvertBoundsFromDpToPx converts the given bounds in DP to pixles based on the given device scale factor.
@@ -163,6 +164,23 @@ func WaitForARCAppWindowState(ctx context.Context, c *chrome.Conn, pkgName strin
 		}
 		if actual != state {
 			return errors.Errorf("window isn't in expected state yet; got: %s, want: %s", state, actual)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
+}
+
+// WaitForVisible waits for a window to be visible on the Chrome side. Visibility is defined to be the corresponding
+// Aura window's visibility.
+func WaitForVisible(ctx context.Context, c *chrome.Conn, pkgName string) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		info, err := GetARCAppWindowInfo(ctx, c, pkgName)
+		if err != nil {
+			// The window may not yet be known to the Chrome side, so don't stop polling here.
+			return errors.Wrap(err, "failed to get ARC window info")
+		}
+
+		if !info.Visible {
+			return errors.New("the window is still invisible")
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
