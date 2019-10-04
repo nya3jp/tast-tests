@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cccae914_ec8f2081",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-10-04T07:26:02Z",
+      "side": 1,
+      "message": "I\u0027m not 100% sure but I don\u0027t think we need. What would need \"chrome_internal\"?",
+      "parentUuid": "d7cad191_b95a04f8",
+      "revId": "472eba52eb99fa133aa742530987186173589864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "350063d3_82ac92a7",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "472eba52eb99fa133aa742530987186173589864",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92db68dd_f417a9c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-10-04T07:26:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "350063d3_82ac92a7",
+      "revId": "472eba52eb99fa133aa742530987186173589864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "0e2f7dae_28a95b0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-10-04T07:26:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f93bebb_a2e4a842",
+      "revId": "472eba52eb99fa133aa742530987186173589864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "744244dc_c307f84c",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
         "patchSetId": 4
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "4c68526a_6088d2a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-10-04T07:26:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "744244dc_c307f84c",
+      "revId": "472eba52eb99fa133aa742530987186173589864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4d30845_298ff511",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
         "patchSetId": 4
@@ -84,6 +156,24 @@
       "revId": "472eba52eb99fa133aa742530987186173589864",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "103d9a2e_86d92f0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-10-04T07:26:02Z",
+      "side": 1,
+      "message": "It is the different approach, we have already called cpu.WaitUnitlIdle() earlier. This wait time is for the stabilization to avoid the burst from starting video playback.",
+      "parentUuid": "f4d30845_298ff511",
+      "revId": "472eba52eb99fa133aa742530987186173589864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "ccc0bbff_6765742d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-10-04T07:26:02Z",
+      "side": 1,
+      "message": "I already tried but Milliseconds() does not exist. I think it\u0027s due to library version.\n\nMilliseconds() is after 1.13\nhttps://golang.org/pkg/time/#Duration.Milliseconds",
+      "parentUuid": "87eafa17_ec37674f",
+      "range": {
+        "startLine": 132,
+        "startChar": 15,
+        "endLine": 132,
+        "endChar": 57
+      },
+      "revId": "472eba52eb99fa133aa742530987186173589864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3761a3dc_6fb77650",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
         "patchSetId": 4
@@ -133,6 +247,30 @@
     },
     {
       "key": {
+        "uuid": "c8736def_76a250e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-10-04T07:26:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3761a3dc_6fb77650",
+      "range": {
+        "startLine": 135,
+        "startChar": 48,
+        "endLine": 135,
+        "endChar": 50
+      },
+      "revId": "472eba52eb99fa133aa742530987186173589864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2582e1f0_dfe0e3ed",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
         "patchSetId": 4
@@ -147,6 +285,24 @@
       "revId": "472eba52eb99fa133aa742530987186173589864",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4c28b3a_6c2db91d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1112716
+      },
+      "writtenOn": "2019-10-04T07:26:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2582e1f0_dfe0e3ed",
+      "revId": "472eba52eb99fa133aa742530987186173589864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
