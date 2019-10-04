@@ -34,6 +34,24 @@
       "revId": "e0fc848d987e70c4c0e25e953c29ab0f2e8692d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eec3f3b_53eba6ea",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-04T13:15:55Z",
+      "side": 1,
+      "message": "Naming is fine. Yes, if the function is not used outside, it can be private.\n\nAs the type is first used in line 110 and the function GetDBusPathArray() is used in line 119, I think it is better to put them just before line 110. What do you think?",
+      "parentUuid": "049e329d_e7e9ea0d",
+      "revId": "e0fc848d987e70c4c0e25e953c29ab0f2e8692d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
