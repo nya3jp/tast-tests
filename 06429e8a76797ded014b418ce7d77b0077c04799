@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "7799ae92_2d189d80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-04T06:58:56Z",
+      "side": 1,
+      "message": "It is the label to run the test in CQ/Release builders.\nIt used to be unnecessary, because we interpreted that \"no group: prefixed label\" is \"group:mainline\". However, in the approach, we cannot run the test in both CQ/Release builders as well as other group, like perf or stress tests.",
+      "parentUuid": "2660de84_bd16fb01",
+      "revId": "06429e8a76797ded014b418ce7d77b0077c04799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5862096d_309468cf",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
         "patchSetId": 6
@@ -153,6 +171,30 @@
       "writtenOn": "2019-10-03T18:17:21Z",
       "side": 1,
       "message": "I think you can replace this by calling \"am crash\". E.g:\n\nout, err :\u003d a.Command(ctx, \"am\", \"crash\", \"org.chromium.arc.testapp.appsanitytast\").Output(testexec.DumpLogOnError)",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 0
+      },
+      "revId": "06429e8a76797ded014b418ce7d77b0077c04799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e0f8bbe_2308f5ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-04T06:58:56Z",
+      "side": 1,
+      "message": "nit: rather than Output, Run(), then please.",
+      "parentUuid": "c0e9234a_f16424a7",
       "range": {
         "startLine": 80,
         "startChar": 1,
