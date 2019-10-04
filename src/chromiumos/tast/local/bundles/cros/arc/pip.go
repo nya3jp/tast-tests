@@ -160,7 +160,7 @@ func PIP(ctx context.Context, s *testing.State) {
 				s.Error("Failed to clear WM state: ", err)
 			}
 			must(act.Start(ctx))
-			must(act.WaitForIdle(ctx, 10*time.Second))
+			must(ash.WaitForVisible(ctx, tconn, pkgName))
 			// Press button that triggers PIP mode in activity.
 			const pipButtonID = pkgName + ":id/enter_pip"
 			must(dev.Object(ui.ID(pipButtonID)).Click(ctx))

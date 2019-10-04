@@ -9,8 +9,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"math"
+	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
 )
 
 // WindowStateType represents the different window state type in Ash.
@@ -63,6 +66,7 @@ type Rect struct {
 
 // ArcAppWindowInfo represents the ARC window info as returned from Ash.
 type ArcAppWindowInfo struct {
+	Visible     bool   `json:"visible"`
 	Bounds      Rect   `json:"bounds"`
 	IsAnimating bool   `json:"is_animating"`
 	DisplayID   string `json:"display_id"`
@@ -117,7 +121,7 @@ func GetARCAppWindowInfo(ctx context.Context, c *chrome.Conn, pkgName string) (A
 	if err := c.EvalPromise(ctx, expr, &info); err != nil {
 		return ArcAppWindowInfo{}, err
 	}
-	return ArcAppWindowInfo{info.Bounds, info.IsAnimating, info.DisplayID}, nil
+	return ArcAppWindowInfo{info.Visible, info.Bounds, info.IsAnimating, info.DisplayID}, nil
 }
 
 // ConvertBoundsFromDpToPx converts the given bounds in DP to pixles based on the given device scale factor.
@@ -147,6 +151,22 @@ func GetARCAppWindowState(ctx context.Context, c *chrome.Conn, pkgName string) (
 		return WindowStateNormal, err
 	}
 	return state, nil
+}
+
+// WaitForVisible waits for a window to be visible.
+func WaitForVisible(ctx context.Context, c *chrome.Conn, pkgName string) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		info, err := GetARCAppWindowInfo(ctx, c, pkgName)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get ARC window info"))
+		}
+
+		if !info.Visible {
+			return errors.New("the window is still invisible yet")
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 // SwapWindowsInSplitView swaps the positions of snapped windows in split view.
