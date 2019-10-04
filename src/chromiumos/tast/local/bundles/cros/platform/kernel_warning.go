@@ -61,7 +61,7 @@ func KernelWarning(ctx context.Context, s *testing.State) {
 	expectedRegexes := []string{`kernel_warning\.\d{8}\.\d{6}\.0\.kcrash`,
 		`kernel_warning\.\d{8}\.\d{6}\.0\.log\.gz`,
 		`kernel_warning\.\d{8}\.\d{6}\.0\.meta`}
-	files, err := localCrash.WaitForCrashFiles(ctx, localCrash.SystemCrashDir, oldFiles, expectedRegexes)
+	files, err := localCrash.WaitForCrashFiles(ctx, []string{localCrash.SystemCrashDir}, oldFiles, expectedRegexes)
 	if err != nil {
 		s.Error("Couldn't find expected files: ", err)
 	}
