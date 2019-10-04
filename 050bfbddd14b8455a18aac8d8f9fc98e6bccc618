@@ -2,6 +2,92 @@
   "comments": [
     {
       "key": {
+        "uuid": "41039627_cf596a3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-10-04T01:56:27Z",
+      "side": 1,
+      "message": "Could you move this section to AccessibilitySpeech?\nspeech log is now used only from this test.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 0
+      },
+      "revId": "050bfbddd14b8455a18aac8d8f9fc98e6bccc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dd4ffe8_ea6c57de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-10-04T01:56:27Z",
+      "side": 1,
+      "message": "nit: using `LogStore.LogType.SPEECH` is more reliable.",
+      "range": {
+        "startLine": 234,
+        "startChar": 68,
+        "endLine": 234,
+        "endChar": 76
+      },
+      "revId": "050bfbddd14b8455a18aac8d8f9fc98e6bccc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d4fc6ed_7f95511b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-10-04T01:56:27Z",
+      "side": 1,
+      "message": "I think we don\u0027t need this line.",
+      "revId": "050bfbddd14b8455a18aac8d8f9fc98e6bccc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e636433_f00e0fb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-10-04T01:56:27Z",
+      "side": 1,
+      "message": "nit: usually the length of a slice is omitted.",
+      "range": {
+        "startLine": 78,
+        "startChar": 24,
+        "endLine": 78,
+        "endChar": 25
+      },
+      "revId": "050bfbddd14b8455a18aac8d8f9fc98e6bccc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c434d011_c41ea237",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
         "patchSetId": 11
@@ -22,6 +108,52 @@
       "revId": "050bfbddd14b8455a18aac8d8f9fc98e6bccc618",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90e8dced_c9fcbb83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-10-04T01:56:27Z",
+      "side": 1,
+      "message": "nit: How about clearing logs every time before each action?\n\nDoing the action just after clearing logs and checking the log just after doing the action make what is checked obvious.",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 3
+      },
+      "revId": "050bfbddd14b8455a18aac8d8f9fc98e6bccc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "683cc716_5f66f325",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-10-04T01:56:27Z",
+      "side": 1,
+      "message": "checkSpeechLog is used with testing.Poll only.\nHow about polling inside this function and rename it to waitForSpeechLog?",
+      "range": {
+        "startLine": 130,
+        "startChar": 5,
+        "endLine": 130,
+        "endChar": 19
+      },
+      "revId": "050bfbddd14b8455a18aac8d8f9fc98e6bccc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
