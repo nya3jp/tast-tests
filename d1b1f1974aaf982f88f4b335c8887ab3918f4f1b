@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da391647_73e7b96b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-04T20:05:28Z",
+      "side": 1,
+      "message": "Instead of constructing this URL and passing it back out, why not have some other function that constructs the normal and shaka URLs and then just pass those in instead of baseURL?",
+      "range": {
+        "startLine": 114,
+        "startChar": 83,
+        "endLine": 114,
+        "endChar": 89
+      },
+      "revId": "d1b1f1974aaf982f88f4b335c8887ab3918f4f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fada6590_fbb5edeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-04T20:05:28Z",
+      "side": 1,
+      "message": "should just call this \"url\"",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 7
+      },
+      "revId": "d1b1f1974aaf982f88f4b335c8887ab3918f4f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f722442_d3c34e5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-04T20:05:28Z",
+      "side": 1,
+      "message": "ditto re: just passing in the URL you actually want",
+      "range": {
+        "startLine": 177,
+        "startChar": 84,
+        "endLine": 177,
+        "endChar": 90
+      },
+      "revId": "d1b1f1974aaf982f88f4b335c8887ab3918f4f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6fff59d_f502152d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-04T20:05:28Z",
+      "side": 1,
+      "message": "ditto re: just \"url\"",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 181,
+        "endChar": 7
+      },
+      "revId": "d1b1f1974aaf982f88f4b335c8887ab3918f4f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "350bb486_0d7389ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2019-10-04T20:05:28Z",
+      "side": 1,
+      "message": "ditto re: just \"url\"",
+      "range": {
+        "startLine": 360,
+        "startChar": 5,
+        "endLine": 360,
+        "endChar": 11
+      },
+      "revId": "d1b1f1974aaf982f88f4b335c8887ab3918f4f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
