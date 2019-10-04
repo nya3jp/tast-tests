@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "d7cad191_b95a04f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-04T06:54:17Z",
+      "side": 1,
+      "message": "Do you need \"chrome_internal\" ExtraSoftwareDeps, here?",
+      "revId": "472eba52eb99fa133aa742530987186173589864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "350063d3_82ac92a7",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
         "patchSetId": 4
@@ -13,6 +30,57 @@
       "writtenOn": "2019-10-03T21:00:35Z",
       "side": 1,
       "message": "Could you add a link to Java source code of this APK as a comment?\nSo, we will be able to find how the APK works if necessary.",
+      "revId": "472eba52eb99fa133aa742530987186173589864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f93bebb_a2e4a842",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-04T06:54:17Z",
+      "side": 1,
+      "message": "you can just put this in arc_playback_perf.go, directly.",
+      "revId": "472eba52eb99fa133aa742530987186173589864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "744244dc_c307f84c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-04T06:54:17Z",
+      "side": 1,
+      "message": "I\u0027d recommend to pass testexec.DumpLogOnError to Run().\n\nDitto for below.",
+      "revId": "472eba52eb99fa133aa742530987186173589864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4d30845_298ff511",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-04T06:54:17Z",
+      "side": 1,
+      "message": "Maybe cpu.WaitUntilIdle() is better?",
       "revId": "472eba52eb99fa133aa742530987186173589864",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +127,23 @@
         "endLine": 135,
         "endChar": 50
       },
+      "revId": "472eba52eb99fa133aa742530987186173589864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2582e1f0_dfe0e3ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arcplayback/arc_playback.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-04T06:54:17Z",
+      "side": 1,
+      "message": "Could you check err?",
       "revId": "472eba52eb99fa133aa742530987186173589864",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
