@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7738d03c_1d9c9912",
+        "filename": "src/chromiumos/tast/local/arc/adb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-04T05:21:56Z",
+      "side": 1,
+      "message": "(optional): I think it\u0027s better to \"continue\" here, because, as commented, the testing.Poll below is to wait for the process exit triggered by this SIGKILL?\nIf the process is zombine (i.e., the process is terminated but not yet collected by init), it fails with ESRCH. Though, anyways it should be collected sometime very soon so the testing.Poll below will eventually success, IIUC.",
+      "revId": "78dcf22f6a9b25b9128309f51ea05e4ee9d44b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
