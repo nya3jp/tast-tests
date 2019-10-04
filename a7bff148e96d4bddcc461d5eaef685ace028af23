@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7377a53a_d7511cc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/config_changes.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-04T09:17:56Z",
+      "side": 1,
+      "message": "Where can I find the source of apk?",
+      "revId": "a7bff148e96d4bddcc461d5eaef685ace028af23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62546354_a34f428f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/config_changes.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2019-10-04T09:17:56Z",
+      "side": 1,
+      "message": "(optional) I\u0027d recommend to name this, like resumeCount etc.\ntext is the type of the field, but what it represents looks more important in this case, I think.",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 6
+      },
+      "revId": "a7bff148e96d4bddcc461d5eaef685ace028af23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
