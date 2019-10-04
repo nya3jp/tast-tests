@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "911c7634_08a5efd6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1367607
+      },
+      "writtenOn": "2019-10-04T05:07:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ceed385d_c92b263b",
+      "revId": "69cc95c47b1c146a543e6c6c32c0eed476058138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb947e40_8e381641",
         "filename": "src/chromiumos/tast/local/faillog/faillog.go",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "986ff610_a5bb1866",
+        "filename": "src/chromiumos/tast/local/faillog/faillog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1367607
+      },
+      "writtenOn": "2019-10-04T05:07:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb947e40_8e381641",
+      "range": {
+        "startLine": 27,
+        "startChar": 6,
+        "endLine": 27,
+        "endChar": 9
+      },
+      "revId": "69cc95c47b1c146a543e6c6c32c0eed476058138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71af2b88_f8f1b645",
         "filename": "src/chromiumos/tast/local/faillog/faillog.go",
         "patchSetId": 2
@@ -62,6 +104,30 @@
       "revId": "69cc95c47b1c146a543e6c6c32c0eed476058138",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "439433e8_96b924f7",
+        "filename": "src/chromiumos/tast/local/faillog/faillog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1367607
+      },
+      "writtenOn": "2019-10-04T05:07:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71af2b88_f8f1b645",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 2
+      },
+      "revId": "69cc95c47b1c146a543e6c6c32c0eed476058138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
