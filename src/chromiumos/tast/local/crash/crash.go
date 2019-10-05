@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/set"
 	"chromiumos/tast/local/syslog"
+	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -185,8 +186,16 @@ func cleanUpStashDir(stashDir, realDir string) error {
 
 // TearDownCrashTest undoes the work of SetUpCrashTest.
 func TearDownCrashTest() error {
-	return tearDownCrashTestWithDirectories(crashTestInProgressDir, SystemCrashDir, systemCrashStash,
-		LocalCrashDir, localCrashStash)
+	if err := tearDownCrashTestWithDirectories(crashTestInProgressDir, SystemCrashDir, systemCrashStash,
+		LocalCrashDir, localCrashStash); err != nil {
+		return err
+	}
+	// The user crash directory should always be owned by chronos not root. The
+	// unit tests don't run as root and can't chown, so skip this in tests.
+	if err := os.Chown(LocalCrashDir, int(sysutil.ChronosUID), int(sysutil.ChronosGID)); err != nil {
+		return errors.Wrapf(err, "couldn't chown %s", LocalCrashDir)
+	}
+	return nil
 }
 
 // tearDownCrashTestWithDirectories is a helper function for TearDownCrashTest. We need
@@ -199,13 +208,12 @@ func tearDownCrashTestWithDirectories(inProgDir, sysCrashDir, sysCrashStash, use
 	if err := cleanUpStashDir(userCrashStash, userCrashDir); err != nil && firstErr == nil {
 		firstErr = err
 	}
-
 	filePath := filepath.Join(inProgDir, crashTestInProgressFile)
 	if err := os.Remove(filePath); err != nil && firstErr == nil {
 		if os.IsNotExist(err) {
 			// Something else already removed the file. Well, whatever, we're in the
 			// correct state now (the file is gone).
-			return nil
+			return firstErr
 		}
 		return errors.Wrapf(err, "could not remove %v", filePath)
 	}
