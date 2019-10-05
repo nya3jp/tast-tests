@@ -17,7 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     IWScan,
 		Desc:     "Verifies `iw` Timed Scan executes and is parsed properly",
-		Contacts: []string{"billyzhao@google.com", "chromeos-kernel-wifi@google.com"},
+		Contacts: []string{"deanliao@google.com", "chromeos-kernel-wifi@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 	})
 }
