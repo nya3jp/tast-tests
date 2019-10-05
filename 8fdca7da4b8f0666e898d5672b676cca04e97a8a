@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "f8f95246_ee983db0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-05T03:09:36Z",
+      "side": 1,
+      "message": "to be precise: \"the WiFi driver is reloaded\"",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 38
+      },
+      "revId": "8fdca7da4b8f0666e898d5672b676cca04e97a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7724db36_5d2b054e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-05T03:09:36Z",
+      "side": 1,
+      "message": "Network interfaces should be the same after udev restart and WiFi driver restart.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 50
+      },
+      "revId": "8fdca7da4b8f0666e898d5672b676cca04e97a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9145ac46_952dfff7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2019-10-05T03:09:36Z",
+      "side": 1,
+      "message": "Is this still valid?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 74
+      },
+      "revId": "8fdca7da4b8f0666e898d5672b676cca04e97a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37399a61_b06c1f7b",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
         "patchSetId": 22
