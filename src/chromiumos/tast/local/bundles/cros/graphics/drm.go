@@ -38,35 +38,42 @@ func init() {
 				timeout: 5 * time.Minute,
 			},
 			ExtraSoftwareDeps: []string{"display_backlight", "drm_atomic"},
+			ExtraAttr:         []string{"group:mainline", "informational"},
 		}, {
 			Name:              "drm_cursor_test",
 			Val:               drmTest{command: []string{"drm_cursor_test"}, timeout: 20 * time.Second},
 			ExtraSoftwareDeps: []string{"display_backlight"},
+			ExtraAttr:         []string{"group:mainline"},
 		}, {
 			Name:              "linear_bo_test",
 			Val:               drmTest{command: []string{"linear_bo_test"}, timeout: 20 * time.Second},
 			ExtraSoftwareDeps: []string{"display_backlight"},
+			ExtraAttr:         []string{"group:mainline"},
 		}, {
 			Name:              "mmap_test",
 			Val:               drmTest{command: []string{"mmap_test"}, timeout: 5 * time.Minute},
 			ExtraSoftwareDeps: []string{"display_backlight"},
+			ExtraAttr:         []string{"group:mainline"},
 		}, {
 			Name:              "null_platform_test",
 			Val:               drmTest{command: []string{"null_platform_test"}, timeout: 20 * time.Second},
 			ExtraSoftwareDeps: []string{"display_backlight"},
+			ExtraAttr:         []string{"group:mainline"},
 		}, {
-			Name: "swrast_test",
-			Val:  drmTest{command: []string{"swrast_test"}, timeout: 20 * time.Second},
+			Name:      "swrast_test",
+			Val:       drmTest{command: []string{"swrast_test"}, timeout: 20 * time.Second},
+			ExtraAttr: []string{"group:mainline", "informational"},
 		}, {
 			Name:              "vgem_test",
 			Val:               drmTest{command: []string{"vgem_test"}, timeout: 20 * time.Second},
 			ExtraSoftwareDeps: []string{"display_backlight"},
+			ExtraAttr:         []string{"group:mainline", "informational"},
 		}, {
 			Name:              "vk_glow",
 			Val:               drmTest{command: []string{"vk_glow"}, timeout: 20 * time.Second},
 			ExtraSoftwareDeps: []string{"display_backlight", "vulkan"},
+			ExtraAttr:         []string{"group:mainline", "informational"},
 		}},
-		Attr:    []string{"group:mainline", "informational"},
 		Timeout: 5 * time.Minute,
 	})
 }
