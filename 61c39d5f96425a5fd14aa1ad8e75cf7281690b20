@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64dc541c_52f7c04f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/arc_playback_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2019-10-07T16:40:43Z",
+      "side": 1,
+      "message": "Please add a comment about the reason why \"chrome_internal\" is needed:\n// \"chrome_internal\" is needed because H.264 is a proprietary codec.",
+      "revId": "61c39d5f96425a5fd14aa1ad8e75cf7281690b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
