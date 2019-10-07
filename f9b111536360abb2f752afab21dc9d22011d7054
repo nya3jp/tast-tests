@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "729dfcbc_070c1946",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-10-07T02:43:27Z",
+      "side": 1,
+      "message": "Could you use WaitForChromeVoxReady instead?",
+      "range": {
+        "startLine": 67,
+        "startChar": 25,
+        "endLine": 67,
+        "endChar": 53
+      },
+      "revId": "f9b111536360abb2f752afab21dc9d22011d7054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afe8e255_c50e8279",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-10-07T02:43:27Z",
+      "side": 1,
+      "message": "Do we still need this?",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 2
+      },
+      "revId": "f9b111536360abb2f752afab21dc9d22011d7054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "34ab3e05_e92b78a8",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
         "patchSetId": 14
@@ -22,6 +68,29 @@
       "revId": "f9b111536360abb2f752afab21dc9d22011d7054",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "119e9e77_db5ce58f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2019-10-07T02:43:27Z",
+      "side": 1,
+      "message": "(optional)\n\nHow about creating an array of \"action and behavior\", and iterate over it?\nI think it makes clear what the test scenario is and easy to add other kind of actions.\n\nlike this:\n\nfor _, test :\u003d range []struct {\n\taction string\n\texpect string\n}{\n\t// Move focus to each of the UI elements, and check that ChromeVox log speaks as expected.\n\t{action: \"Tab\", expect: \"OFF Toggle Button ...\"},\n\t...\n\t// For each key typed, check that the ChromeVox log matches this.\n\t{action: \"a\", expect: \"a\"},\n\t...\n} {\n\tif err :\u003d chromeVoxConn.Exec(ctx, \"LogStore.instance.clearLog()\"); err !\u003d nil {\n\t\ts.Fatal(err, \"error with clearing ChromeVox Log\")\n\t}\n\n\tif err :\u003d ew.Accel(ctx, test.action); err !\u003d nil {\n\t\ts.Fatal(err, \"Accel(Tab) returned error\")\n\t}\n\n\tif err :\u003d waitForSpeechLog(ctx, chromeVoxConn, test.expect); err !\u003d nil {\n\t\ts.Fatal(err)\n\t}\n}",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 0
+      },
+      "revId": "f9b111536360abb2f752afab21dc9d22011d7054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
