@@ -21,7 +21,7 @@ func init() {
 		Desc:         "Checks Chrome virtual keyboard working on Android apps",
 		Contacts:     []string{"tetsui@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android", "chrome"},
+		SoftwareDeps: []string{"android_both", "chrome"},
 		Data:         []string{"ArcKeyboardTest.apk"},
 		Timeout:      4 * time.Minute,
 	})
