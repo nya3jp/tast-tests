@@ -116,17 +116,9 @@ func verifyLogs(ctx context.Context, chromeVoxConn *chrome.Conn, expectedLogs []
 	return nil
 }
 
-// focusAndIncrementElement uses ChromeVox navigation (using Tab), to navigate to the next
-// UI element (specified by elementClass, and is expected to be a seekBar).
-// ChromeVox will then interact with the seekBar, by incrementing its value using '='.
-// Returns an error indicating the success of both actions.
-func focusAndIncrementElement(ctx context.Context, chromeVoxConn *chrome.Conn, elementClass string, expectedLogs []eventLog, initialValue, expectedValue int) error {
-	ew, err := input.Keyboard(ctx)
-	if err != nil {
-		return errors.Wrap(err, "error with creating EventWriter from keyboard")
-	}
-	defer ew.Close()
-
+// moveToNext clears the ChromeVox log, and presses tab to move the ChromeVox focus
+// to the next element.
+func moveToNext(ctx context.Context, chromeVoxConn *chrome.Conn, ew *input.KeyboardEventWriter) error {
 	// Ensure that ChromeVox log is cleared before proceeding.
 	if err := chromeVoxConn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
 		return errors.Wrap(err, "error with clearing ChromeVox Log")
@@ -135,6 +127,22 @@ func focusAndIncrementElement(ctx context.Context, chromeVoxConn *chrome.Conn, e
 	// Move focus to the next UI element.
 	if err := ew.Accel(ctx, "Tab"); err != nil {
 		return errors.Wrap(err, "Accel(Tab) returned error")
+	}
+
+	// Wait for ChromeVox to stop speaking.
+	if err := accessibility.WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
+		return errors.Wrap(err, "could not check if ChromeVox is speaking")
+	}
+	return nil
+}
+
+// focusAndIncrementElement uses ChromeVox navigation (using Tab), to navigate to the next
+// UI element (specified by elementClass, and is expected to be a seekBar).
+// ChromeVox will then interact with the seekBar, by incrementing its value using '='.
+// Returns an error indicating the success of both actions.
+func focusAndIncrementElement(ctx context.Context, chromeVoxConn *chrome.Conn, elementClass string, expectedOutput []string, outputFilePath string, initialValue, expectedValue int) error {
+	if err := moveToNext(ctx, chromeVoxConn, ew); err != nil {
+		return err
 	}
 
 	// Make sure that seekBar is focused with expected initial value.
@@ -160,24 +168,9 @@ func focusAndIncrementElement(ctx context.Context, chromeVoxConn *chrome.Conn, e
 // focusAndCheckElement uses ChromeVox navigation (using Tab), to navigate to the next
 // UI element (specified by elementClass), and activates it (using Search + Space).
 // Returns an error indicating the success of both actions.
-func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, elementClass string, expectedLogs []eventLog) error {
-	ew, err := input.Keyboard(ctx)
-	if err != nil {
-		return errors.Wrap(err, "error with creating EventWriter from keyboard")
-	}
-	defer ew.Close()
-
-	// Ensure that ChromeVox log is cleared before proceeding.
-	if err := chromeVoxConn.Exec(ctx, "LogStore.instance.clearLog()"); err != nil {
-		return errors.Wrap(err, "error with clearing ChromeVox Log")
-	}
-	// Move focus to the next UI element.
-	if err := ew.Accel(ctx, "Tab"); err != nil {
-		return errors.Wrap(err, "Accel(Tab) returned error")
-	}
-
-	if err := accessibility.WaitForChromeVoxStopSpeaking(ctx, chromeVoxConn); err != nil {
-		return errors.Wrap(err, "could not check if ChromeVox is speaking")
+func focusAndCheckElement(ctx context.Context, chromeVoxConn *chrome.Conn, elementClass string, expectedOutput []string, outputFilePath string) error {
+	if err := moveToNext(ctx, chromeVoxConn, ew); err != nil {
+		return err
 	}
 
 	// Wait for element to receive focus.
