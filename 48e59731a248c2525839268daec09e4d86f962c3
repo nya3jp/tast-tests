@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3b6bf44_e8b95b0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/udev_rename.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-07T08:26:39Z",
+      "side": 1,
+      "message": "Could you add \"group:mainline\"? We\u0027re transitioning to explicit group declarations:\nhttps://groups.google.com/a/chromium.org/d/topic/tast-users/nL7Gvea9Tgk/discussion",
+      "range": {
+        "startLine": 28,
+        "startChar": 20,
+        "endLine": 28,
+        "endChar": 29
+      },
+      "revId": "48e59731a248c2525839268daec09e4d86f962c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
