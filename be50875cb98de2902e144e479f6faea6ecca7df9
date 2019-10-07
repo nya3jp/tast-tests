@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "20133185_bceb6117",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-07T06:21:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0289030_d03bd4b1",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 36
+      },
+      "revId": "be50875cb98de2902e144e479f6faea6ecca7df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e904a47a_5429a280",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "be50875cb98de2902e144e479f6faea6ecca7df9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4def926_30191899",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-07T06:21:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e904a47a_5429a280",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 0
+      },
+      "revId": "be50875cb98de2902e144e479f6faea6ecca7df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "75b143b3_a708e972",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-07T06:21:37Z",
+      "side": 1,
+      "message": "sg",
+      "parentUuid": "98e956be_40ee0ac5",
+      "range": {
+        "startLine": 282,
+        "startChar": 11,
+        "endLine": 290,
+        "endChar": 48
+      },
+      "revId": "be50875cb98de2902e144e479f6faea6ecca7df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca3c45f6_8dfec53a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 7
@@ -91,6 +163,30 @@
       "revId": "be50875cb98de2902e144e479f6faea6ecca7df9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47e17b41_d0a39fdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-07T06:21:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca3c45f6_8dfec53a",
+      "range": {
+        "startLine": 296,
+        "startChar": 11,
+        "endLine": 296,
+        "endChar": 32
+      },
+      "revId": "be50875cb98de2902e144e479f6faea6ecca7df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "95fe8b1c_15354712",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-07T06:21:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d0a54fe_89e9c322",
+      "range": {
+        "startLine": 37,
+        "startChar": 26,
+        "endLine": 37,
+        "endChar": 50
+      },
+      "revId": "be50875cb98de2902e144e479f6faea6ecca7df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c984d38e_10f5b27b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
         "patchSetId": 7
@@ -128,6 +248,24 @@
       "writtenOn": "2019-09-25T07:12:04Z",
       "side": 1,
       "message": "Because AccessibilityEvent was modified a lot in the tooltip test CL, could you rebase this relation chain onto crrev/c/1772904?\n\nOr, could you separate the change of moveToNext into another CL like below:\n - Keep this CL\u0027s relation chain. SpeechLog and RunTest, but exclude moveToNext change.\n - Create a new CL on MoveToNext, which depends on tooltip test.",
+      "revId": "be50875cb98de2902e144e479f6faea6ecca7df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9b371ed_fb94db57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-07T06:21:37Z",
+      "side": 1,
+      "message": "discussed this offline, let me update associated cls",
+      "parentUuid": "c984d38e_10f5b27b",
       "revId": "be50875cb98de2902e144e479f6faea6ecca7df9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
