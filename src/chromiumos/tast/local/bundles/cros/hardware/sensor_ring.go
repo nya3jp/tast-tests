@@ -104,8 +104,15 @@ func SensorRing(ctx context.Context, s *testing.State) {
 }
 
 func validate(rs []*iio.SensorReading, start, end time.Duration, sn *iio.Sensor, collectTime time.Duration, s *testing.State) {
-	// Expect that there are at least half the number of samples for the given frequency.
-	expected := int(float64(sn.MaxFrequency)/1e3*collectTime.Seconds()) / 2
+	var expected int
+
+	if sn.Name == iio.Light {
+		// Light is on-change only. At worse, we may not see any sample if the light is very steady.
+		expected = 0
+	} else {
+		// Expect that there are at least half the number of samples for the given frequency.
+		expected = int(float64(sn.MaxFrequency)/1e3*collectTime.Seconds()) / 2
+	}
 
 	if len(rs) < expected {
 		s.Errorf("Not enough data collected for %v %v with %.2f Hz in %v: got %v; expected at least %v",
