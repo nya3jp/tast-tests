@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b57ec74e_f6ef3653",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2019-10-07T03:57:59Z",
+      "side": 1,
+      "message": "If we have the full dump we can just build a non-stripped test binary locally (has to be the same version). This shouldn\u0027t be too difficult.\n\nIdeally I would like the video decoder tests to not be stripped, but as they are built as part of the chromeos-chrome target this might not be easy to change.",
+      "parentUuid": "6751076e_1fdafccb",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 73
+      },
+      "revId": "852f593b2d555413a6a6c8fc937644125e607e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95ac2bf8_4f612f41",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode/accel_video.go",
         "patchSetId": 4
