@@ -23,7 +23,7 @@ func init() {
 		Desc:         "Checks Android ducking audio focus requests are forwarded to Chrome",
 		Contacts:     []string{"beccahughes@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"android_p", "chrome"},
+		SoftwareDeps: []string{"android_p_both", "chrome"},
 		Timeout:      4 * time.Minute,
 		Data: []string{
 			"media_session_test.apk",
