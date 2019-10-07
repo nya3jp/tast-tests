@@ -38,6 +38,7 @@ func init() {
 				timeout: 5 * time.Minute,
 			},
 			ExtraSoftwareDeps: []string{"display_backlight", "drm_atomic"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "drm_cursor_test",
 			Val:               drmTest{command: []string{"drm_cursor_test"}, timeout: 20 * time.Second},
@@ -61,13 +62,15 @@ func init() {
 			Name:              "vgem_test",
 			Val:               drmTest{command: []string{"vgem_test"}, timeout: 20 * time.Second},
 			ExtraSoftwareDeps: []string{"display_backlight"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "vk_glow",
 			Val:               drmTest{command: []string{"vk_glow"}, timeout: 20 * time.Second},
 			ExtraSoftwareDeps: []string{"display_backlight", "vulkan"},
+			ExtraAttr:         []string{"informational"},
 		}},
-		Attr:    []string{"group:mainline", "informational"},
 		Timeout: 5 * time.Minute,
+		Attr:    []string{"group:mainline"},
 	})
 }
 
