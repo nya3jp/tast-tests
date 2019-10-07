@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "1e633c75_16f2de29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-07T08:19:02Z",
+      "side": 1,
+      "message": "Ack, thanks for clarification.",
+      "parentUuid": "d02a1d2a_789f028b",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 16
+      },
+      "revId": "0b0d5d6cf65eec9aa8512ec72ecb193931ae4c84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e5cc11f_bbdd8001",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
         "patchSetId": 3
