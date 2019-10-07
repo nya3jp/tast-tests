@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "bdd6d0ba_1168641c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-07T08:05:39Z",
+      "side": 1,
+      "message": "huge nit: Maybe pipTestFunc to avoid possible conflict with other tests?",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 13
+      },
+      "revId": "cba8201506f611a2e3de4d56eb539ca962fbba61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65dab6f3_6bab60f2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
         "patchSetId": 3
@@ -65,6 +88,24 @@
       "side": 1,
       "message": "agreed. if needed you can add an extra field in the struct... like \"requires keyboard\".\n\nAdditionally, I guess (big \"I guess\"), it is possible to create a virtual keyboard (see input/keyboard.go) and inject the needed shortcut using the virtual keyboard.",
       "parentUuid": "cafd67b6_06cb6b11",
+      "revId": "cba8201506f611a2e3de4d56eb539ca962fbba61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "270fe249_3c0b8982",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-07T08:05:39Z",
+      "side": 1,
+      "message": "+1 to adding an extra field. Alternatively we can change the slice of test cases conditionally:\n\n type testCase struct {\n   name string\n   fn testFunc\n   enterPip bool\n }\n\n tests :\u003d []testCase{...}\n if tabletModeEnabled {\n   tests \u003d append(tests, ...)\n }\n\n for _, test :\u003d range tests { ... }",
+      "parentUuid": "5f8b3a62_3d2e933f",
       "revId": "cba8201506f611a2e3de4d56eb539ca962fbba61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
