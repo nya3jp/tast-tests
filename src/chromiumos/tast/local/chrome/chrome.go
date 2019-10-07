@@ -11,6 +11,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"time"
 
@@ -170,6 +171,12 @@ func DMSPolicy(url string) Option {
 	}
 }
 
+// EnterpriseEnroll returns an Option that can be passed to New to enable Enterprise
+// Enrollment
+func EnterpriseEnroll() Option {
+	return func(c *Chrome) { c.enroll = true }
+}
+
 // ARCDisabled returns an Option that can be passed to New to disable ARC.
 func ARCDisabled() Option {
 	return func(c *Chrome) { c.arcMode = arcDisabled }
@@ -227,6 +234,7 @@ type Chrome struct {
 	region             string
 	policyEnabled      bool   // flag to enable policy fetch
 	dmsAddr            string // Device Management URL, or empty if using default
+	enroll             bool   // whether device should be enrolled
 	arcMode            arcMode
 	restrictARCCPU     bool // a flag to control cpu restrictions on ARC
 	// If breakpadTestMode is true, tell Chrome's breakpad to always write
@@ -271,6 +279,7 @@ func New(ctx context.Context, opts ...Option) (*Chrome, error) {
 		loginMode:        fakeLogin,
 		region:           "us",
 		policyEnabled:    false,
+		enroll:           false,
 		breakpadTestMode: true,
 		watcher:          newBrowserWatcher(),
 		logMaster:        jslog.NewMaster(),
@@ -530,6 +539,10 @@ func (c *Chrome) restartChromeForTesting(ctx context.Context) error {
 		"--cros-region=" + c.region,                  // Force the region.
 		"--cros-regions-mode=hide",                   // Ignore default values in VPD.
 	}
+	if c.enroll {
+		args = append(args, "--disable-policy-key-verification")
+		args = append(args, "--ignore-urlfetcher-cert-requests")
+	}
 
 	if c.loginMode != gaiaLogin {
 		args = append(args, "--disable-gaia-services")
@@ -748,10 +761,6 @@ func (c *Chrome) TestAPIConn(ctx context.Context) (*Conn, error) {
 		return nil, errors.Wrap(err, "test API extension is unavailable")
 	}
 
-	if err := c.testExtConn.Exec(ctx, "chrome.autotestPrivate.initializeEvents()"); err != nil {
-		return nil, errors.Wrap(err, "failed to initialize test API events")
-	}
-
 	testing.ContextLog(ctx, "Test API extension is ready")
 	return c.testExtConn, nil
 }
@@ -769,6 +778,25 @@ func (c *Chrome) getFirstOOBETarget(ctx context.Context) (*target.Info, error) {
 		return nil, nil
 	}
 	return targets[0], nil
+}
+
+// getEnterpriseEnrollTargets returns the Gaia webview targets, which are used
+// to help Enrollment on the device.
+// Returns nil if none are found.
+func (c *Chrome) getEnterpriseEnrollTargets(ctx context.Context) ([]*target.Info, error) {
+	isGAIAWebview := func(t *target.Info) bool {
+		return t.Type == "webview" && strings.HasPrefix(t.URL, "https://accounts.google.com/")
+	}
+
+	targets, err := c.devsess.FindTargets(ctx, isGAIAWebview)
+	if err != nil {
+		testing.ContextLog(ctx, "Error finding gaia targets: ", err)
+		return nil, err
+	}
+	if len(targets) == 0 {
+		return nil, nil
+	}
+	return targets, nil
 }
 
 // waitForOOBEConnection waits for that the OOBE page is shown, then returns
@@ -812,6 +840,72 @@ func (c *Chrome) waitForOOBEConnection(ctx context.Context) (*Conn, error) {
 	return connToRet, nil
 }
 
+// waitForEnrollmentLoginScreen will wait for the Enrollment screen to complete
+// and the Enrollment login screen to appear. If the login screen does not appear
+// the testing.Poll will timeout.
+func (c *Chrome) waitForEnrollmentLoginScreen(ctx context.Context) error {
+	loginBanner := "document.querySelectorAll('span[title= \"managedchrome.com\"]').length;"
+
+	pollOpt := &testing.PollOptions{Interval: 100 * time.Millisecond,
+		Timeout: 45 * time.Second}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		gaiaTargets, err := c.getEnterpriseEnrollTargets(ctx)
+		if err != nil {
+			return errors.New("no Enrollment webview targets")
+		}
+		for _, gaiaTarget := range gaiaTargets {
+			// It's common for multiple targets to be returned.
+			// We want to run the command specifically on the "apps" target.
+			if !strings.Contains(string(gaiaTarget.URL), "apps") {
+				continue
+			}
+			connTemp, err := c.newConnInternal(ctx, gaiaTarget.TargetID, gaiaTarget.URL)
+			if err != nil {
+				// TODO: Determine if this should be a failure or pass.
+				// Leaning towards pass due to Telemetry implementation, and the fact
+				// if the "managedchrome" query never returns anything an error will occur anyways.
+				testing.ContextLog(ctx, "Enrollment screen connection err occured here: ", err)
+				continue
+			}
+			content := -1
+			connTemp.Eval(ctx, loginBanner, &content)
+			// Found the login screen
+			if content == 1 {
+				return nil
+			}
+
+		}
+		return errors.New("Enterprise Enrollment login screen not found")
+	}, pollOpt); err != nil {
+		return errors.Wrap(c.chromeErr(err), "Enterprise Enrollment login screen not found")
+	}
+
+	return nil
+}
+
+// completeEnrollmentFlow will completed the Enrollment flow/login.
+func (c *Chrome) completeEnrollmentFlow(ctx context.Context, conn *Conn) error {
+	if err := c.waitForEnrollmentLoginScreen(ctx); err != nil {
+		return err
+	}
+
+	if err := conn.WaitForExpr(ctx, "typeof Oobe == 'function' && Oobe.readyForTesting"); err != nil {
+		return err
+	}
+	if err := conn.Exec(ctx, "typeof Oobe.loginForTesting == 'undefined'"); err != nil {
+		return err
+	}
+
+	// Now login like "normal".
+	if err := conn.Exec(ctx, fmt.Sprintf("Oobe.loginForTesting('%s', '%s', '%s', false); 0;",
+		c.user, c.pass, c.gaiaID)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 // logIn logs in to a freshly-restarted Chrome instance.
 // It waits for the login process to complete before returning.
 func (c *Chrome) logIn(ctx context.Context) error {
@@ -827,13 +921,17 @@ func (c *Chrome) logIn(ctx context.Context) error {
 
 	switch c.loginMode {
 	case fakeLogin:
-		if err = conn.Exec(ctx, fmt.Sprintf("Oobe.loginForTesting('%s', '%s', '%s', false)", c.user, c.pass, c.gaiaID)); err != nil {
+		if err = conn.Exec(ctx, fmt.Sprintf("Oobe.loginForTesting('%s', '%s', '%s', %t)",
+			c.user, c.pass, c.gaiaID, c.enroll)); err != nil {
 			return err
 		}
 	case gaiaLogin:
 		if err = c.performGAIALogin(ctx, conn); err != nil {
 			return err
 		}
+	}
+	if c.enroll {
+		c.completeEnrollmentFlow(ctx, conn)
 	}
 
 	if err = cryptohome.WaitForUserMount(ctx, c.normalizedUser); err != nil {
