@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56920b63_bc05c69e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-07T08:10:03Z",
+      "side": 1,
+      "message": "Could you check you\u0027re uploading your changes with \"repo upload\"? It seems repo upload hooks are not run with this CL.\n\n [nya@bep local]% repo upload . --cbr\n Errors in PROJECT *chromiumos/platform/tast-tests*!                                                             \n    COMMIT a9323acd:\n        Description:\n            \u003eAdded DispatchMouseEvent and DispatchKeyEvent to CDP, which will allow for mouse moving and clicking events based on element location and simulating physical key presses, similar to how puppeteer and selenium.\n            \u003e\n            \u003eBUG\u003dnone\n            \u003eTEST\u003dAble to click on DOM button with\n            \u003eDispatchMouseEventArgs. Location of the button can\n            \u003ebe found using:\n            \u003ex +\u003d w/2\n            \u003ey +\u003d h/2\n            \u003ewhere values are found using JS code:\n            \u003ex \u003d element.getBoundingClientRect().left\n            \u003ey \u003d element.getBoundingClientRect().top\n            \u003ew \u003d element.getBoundingClientRect().width\n            \u003eh \u003d element.getBoundingClientRect().height\n            \u003e\n            \u003eAble to press \"ArrowDown\" on a page using DispathKeyEventArgs\n            \u003e\n            \u003eRef:\n            \u003ehttps://github.com/mafredri/cdp/tree/master/protocol/input\n            \u003ehttps://github.com/GoogleChrome/puppeteer/blob/master/lib/Input.js\n            \u003e\n            \u003eChange-Id: I1e20b0a2ae5c8c3914deeac672ccb1bd3e115c6d\n            \u003eSigned-off-by: Daniel Gonzalez \u003cdaniel.d.gonzalez@intel.corp-partner.google.com\u003e\n            \u003e\n            \u003e\n        Errors:\n            * The first line must be less than 100 chars.\n            * Hook script \"tools/run_lint.sh -commit\u003d${PRESUBMIT_COMMIT}\" failed with code 1:\n              src/chromiumos/tast/local/chrome/cdputil/conn.go:215:1: comment on exported method Conn.DispatchKeyEvent should be of the form \"DispatchKeyEvent ...\"\n              src/chromiumos/tast/local/chrome/cdputil/conn.go:220:1: comment on exported method Conn.DispatchMouseEvent should be of the form \"DispatchMouseEvent ...\"\n              \n              Refer the following documents for details:\n                https://golang.org/wiki/CodeReviewComments#doc-comments\n              \n\nPlease refer the following doc about how to upload your changes:\nhttps://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md#Upload-changes",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "a9323acdcc5bb6bd4d9f329e6c753ffbcff30c10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
