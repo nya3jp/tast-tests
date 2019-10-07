@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9dc47a22_9bbacbb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1356516
+      },
+      "writtenOn": "2019-10-07T10:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6daf2b0b_78498337",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 59
+      },
+      "revId": "500ed786135b16ebcfd27eac3a011e99acdd071b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56ee773a_473e73f7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "500ed786135b16ebcfd27eac3a011e99acdd071b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a6de3e8_bb626ce4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1356516
+      },
+      "writtenOn": "2019-10-07T10:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56ee773a_473e73f7",
+      "range": {
+        "startLine": 51,
+        "startChar": 10,
+        "endLine": 51,
+        "endChar": 33
+      },
+      "revId": "500ed786135b16ebcfd27eac3a011e99acdd071b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2b912473_b17a1970",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1356516
+      },
+      "writtenOn": "2019-10-07T10:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3e13f0c_67676021",
+      "range": {
+        "startLine": 53,
+        "startChar": 16,
+        "endLine": 53,
+        "endChar": 42
+      },
+      "revId": "500ed786135b16ebcfd27eac3a011e99acdd071b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05d5ece9_f0d63e4c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
         "patchSetId": 5
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "3565d409_852e3659",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1356516
+      },
+      "writtenOn": "2019-10-07T10:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05d5ece9_f0d63e4c",
+      "range": {
+        "startLine": 54,
+        "startChar": 27,
+        "endLine": 54,
+        "endChar": 51
+      },
+      "revId": "500ed786135b16ebcfd27eac3a011e99acdd071b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d17f27c4_ae179cf2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
         "patchSetId": 5
@@ -108,6 +204,24 @@
       "revId": "500ed786135b16ebcfd27eac3a011e99acdd071b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d8966d5_35836340",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1356516
+      },
+      "writtenOn": "2019-10-07T10:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d17f27c4_ae179cf2",
+      "revId": "500ed786135b16ebcfd27eac3a011e99acdd071b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "b968aa10_2aed4d13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1356516
+      },
+      "writtenOn": "2019-10-07T10:15:59Z",
+      "side": 1,
+      "message": "Yes, I asked at the tast-users group to be completely sure about this.\nhttps://groups.google.com/a/chromium.org/forum/?utm_medium\u003demail\u0026utm_source\u003dfooter#!topic/tast-users/XWMSaOfqm68\n\narc.Booted removes the packages before running the test:\nhttps://cs.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/pre.go?q\u003dBooted\u0026sq\u003dpackage:chromeos\u0026dr\u003dCSs\u0026l\u003d251",
+      "parentUuid": "2bc0037e_499a40cb",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 51
+      },
+      "revId": "500ed786135b16ebcfd27eac3a011e99acdd071b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe00094e_dff79ab6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
         "patchSetId": 5
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "531c3f63_4aa0102a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1356516
+      },
+      "writtenOn": "2019-10-07T10:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe00094e_dff79ab6",
+      "range": {
+        "startLine": 126,
+        "startChar": 11,
+        "endLine": 126,
+        "endChar": 103
+      },
+      "revId": "500ed786135b16ebcfd27eac3a011e99acdd071b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "afed7956_1205ea69",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
         "patchSetId": 5
@@ -177,6 +339,30 @@
       "revId": "500ed786135b16ebcfd27eac3a011e99acdd071b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7993c416_c8bb20a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1356516
+      },
+      "writtenOn": "2019-10-07T10:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afed7956_1205ea69",
+      "range": {
+        "startLine": 141,
+        "startChar": 31,
+        "endLine": 141,
+        "endChar": 63
+      },
+      "revId": "500ed786135b16ebcfd27eac3a011e99acdd071b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
