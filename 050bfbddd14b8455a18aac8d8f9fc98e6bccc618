@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "00313365_8dc426f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-07T02:22:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41039627_cf596a3e",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 0
+      },
+      "revId": "050bfbddd14b8455a18aac8d8f9fc98e6bccc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4dd4ffe8_ea6c57de",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 11
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "bf93aef3_91e2e186",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-07T02:22:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dd4ffe8_ea6c57de",
+      "range": {
+        "startLine": 234,
+        "startChar": 68,
+        "endLine": 234,
+        "endChar": 76
+      },
+      "revId": "050bfbddd14b8455a18aac8d8f9fc98e6bccc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d4fc6ed_7f95511b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
         "patchSetId": 11
@@ -62,6 +110,24 @@
       "revId": "050bfbddd14b8455a18aac8d8f9fc98e6bccc618",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cf1006b_5ab0b17f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility/accessibility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-07T02:22:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d4fc6ed_7f95511b",
+      "revId": "050bfbddd14b8455a18aac8d8f9fc98e6bccc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "b653e63c_fab762f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-07T02:22:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e636433_f00e0fb9",
+      "range": {
+        "startLine": 78,
+        "startChar": 24,
+        "endLine": 78,
+        "endChar": 25
+      },
+      "revId": "050bfbddd14b8455a18aac8d8f9fc98e6bccc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c434d011_c41ea237",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
         "patchSetId": 11
@@ -99,6 +189,30 @@
       "writtenOn": "2019-10-03T14:53:13Z",
       "side": 1,
       "message": "sorry, I realised there needs to be a webview element here, let me add that in the next patchset.",
+      "range": {
+        "startLine": 81,
+        "startChar": 36,
+        "endLine": 82,
+        "endChar": 42
+      },
+      "revId": "050bfbddd14b8455a18aac8d8f9fc98e6bccc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5107001d_861fdbb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-07T02:22:26Z",
+      "side": 1,
+      "message": "fyi for webview element, since it is empty, it will just read \"Press Search plus Space to activate.\", which is intended (from: https://googleplex-android-review.git.corp.google.com/c/platform/vendor/google_arc/+/9342087)",
+      "parentUuid": "c434d011_c41ea237",
       "range": {
         "startLine": 81,
         "startChar": 36,
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "59bc0d9f_0e1d002d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-07T02:22:26Z",
+      "side": 1,
+      "message": "thanks, sounds good!",
+      "parentUuid": "90e8dced_c9fcbb83",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 3
+      },
+      "revId": "050bfbddd14b8455a18aac8d8f9fc98e6bccc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "683cc716_5f66f325",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
         "patchSetId": 11
@@ -154,6 +292,30 @@
       "revId": "050bfbddd14b8455a18aac8d8f9fc98e6bccc618",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1feb0bb9_323910dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-07T02:22:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "683cc716_5f66f325",
+      "range": {
+        "startLine": 130,
+        "startChar": 5,
+        "endLine": 130,
+        "endChar": 19
+      },
+      "revId": "050bfbddd14b8455a18aac8d8f9fc98e6bccc618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

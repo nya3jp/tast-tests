@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "e587011d_46dfd423",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-07T02:22:26Z",
+      "side": 1,
+      "message": "testing manually:\ntyping \" \" -\u003e reads out \"space\"\ntyping \"hello\", then backspace x5 -\u003e olleh (the typed characters in reverse, which is where the mouse cursor currently is).\n\nas far i can tell, both cases seem to show intended behaviour.",
+      "parentUuid": "d3d28155_267f1e98",
+      "range": {
+        "startLine": 119,
+        "startChar": 30,
+        "endLine": 119,
+        "endChar": 53
+      },
+      "revId": "c48ef1114554d9e28b26198198de79614d67d025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2dcdef97_d3a82a71",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
         "patchSetId": 6

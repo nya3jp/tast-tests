@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34ab3e05_e92b78a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/accessibility_speech.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2019-10-07T02:22:26Z",
+      "side": 1,
+      "message": "not related to this CL, but I\u0027ve realised ChromeVox is inconsistent with \"Search plus Space\", and \"Search+Space\". \n(using symbol and words)\nCreated: b/142214473",
+      "range": {
+        "startLine": 89,
+        "startChar": 9,
+        "endLine": 89,
+        "endChar": 26
+      },
+      "revId": "f9b111536360abb2f752afab21dc9d22011d7054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
