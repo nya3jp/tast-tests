@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47ad1d7e_b02b9b48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-07T08:19:02Z",
+      "side": 1,
+      "message": "must is used only three times. Would you mind inlining it with better messages, e.g.\n\n if err :\u003d act.Start(ctx); err !\u003d nil {\n   s.Fatal(\"Failed to start activity: \", err)\n }",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 26
+      },
+      "revId": "95e39d23d5ad583fe91ed170fa4af56cbe67a1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9daef3fa_e8a8a8f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-07T08:19:02Z",
+      "side": 1,
+      "message": "style nit: Please make comments full sentences.\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 118,
+        "startChar": 70,
+        "endLine": 118,
+        "endChar": 78
+      },
+      "revId": "95e39d23d5ad583fe91ed170fa4af56cbe67a1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49cc5799_5d252d4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-07T08:19:02Z",
+      "side": 1,
+      "message": "nit: getLastString is a trivial function, would you mind inlining it?",
+      "range": {
+        "startLine": 143,
+        "startChar": 17,
+        "endLine": 143,
+        "endChar": 58
+      },
+      "revId": "95e39d23d5ad583fe91ed170fa4af56cbe67a1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cade1f4d_4d245e6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-07T08:19:02Z",
+      "side": 1,
+      "message": "if !strings.HasPrefix(...)\n\nis a lot simpler.",
+      "range": {
+        "startLine": 144,
+        "startChar": 5,
+        "endLine": 144,
+        "endChar": 78
+      },
+      "revId": "95e39d23d5ad583fe91ed170fa4af56cbe67a1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c34ce217_ae47bef2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-07T08:19:02Z",
+      "side": 1,
+      "message": "Mind using %q since the message can contain whitespaces or even be empty?",
+      "range": {
+        "startLine": 145,
+        "startChar": 55,
+        "endLine": 145,
+        "endChar": 56
+      },
+      "revId": "95e39d23d5ad583fe91ed170fa4af56cbe67a1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9be00eb0_6295b310",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/companion_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2019-10-07T08:19:02Z",
+      "side": 1,
+      "message": "errors.Errorf just returns an error object. It\u0027s not useful at all if we don\u0027t use its return value.\n\nTo fix this, you can return ([]string, error) from this function.",
+      "range": {
+        "startLine": 175,
+        "startChar": 2,
+        "endLine": 176,
+        "endChar": 56
+      },
+      "revId": "95e39d23d5ad583fe91ed170fa4af56cbe67a1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
