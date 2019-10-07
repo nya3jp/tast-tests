@@ -296,6 +296,30 @@
     },
     {
       "key": {
+        "uuid": "7e836b32_156039e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1356516
+      },
+      "writtenOn": "2019-10-07T10:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc93199d_28000e55",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 51
+      },
+      "revId": "500ed786135b16ebcfd27eac3a011e99acdd071b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe00094e_dff79ab6",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/keymaster.go",
         "patchSetId": 5
