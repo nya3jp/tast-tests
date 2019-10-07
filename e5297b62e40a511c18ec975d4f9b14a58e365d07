@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cd8ac95_52dd26b4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/device_enroll.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1240199
+      },
+      "writtenOn": "2019-10-07T18:56:18Z",
+      "side": 1,
+      "message": "Does this test run on the DUT (i.e. a ChromeOS device), or run on a bot that is connected to the DUT?",
+      "revId": "e5297b62e40a511c18ec975d4f9b14a58e365d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f07bc61a_e8dd10cd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/device_enroll.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1240199
+      },
+      "writtenOn": "2019-10-07T18:56:18Z",
+      "side": 1,
+      "message": "Seems the part from line 54 to 84 belongs to a common library?",
+      "revId": "e5297b62e40a511c18ec975d4f9b14a58e365d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
